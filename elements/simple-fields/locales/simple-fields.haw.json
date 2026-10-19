@@ -5,5 +5,9 @@
   "recordAudio": "Hoʻopaʻa leo",
   "recordScreen": "Hoʻopaʻa pale",
   "cancel": "Kāpae",
-  "uploadMedia": "Hoʻouka media"
+  "uploadMedia": "Hoʻouka media",
+  "record": "Hoʻopaʻa",
+  "pause": "Hoʻomaha i ka hoʻopaʻa ʻana",
+  "stopSave": "Kū & Mālama",
+  "clickToTakePhoto": "Kaomi e paʻi kiʻi ai"
 }

@@ -1,0 +1,14 @@
+{
+  "title": "Vizuizi",
+  "enabled": "Imewezeshwa",
+  "block": "Kizuizi",
+  "preview": "Hakiki",
+  "filterBlocks": "Chuja vizuizi",
+  "requiredTextNote": "Baadhi ya lebo za maandishi zinahitajika na huwa zimewezeshwa kila wakati (zinaonyeshwa kama zimezimwa).",
+  "selectAll": "Chagua zote",
+  "deselectAll": "Ondoa uteuzi wote",
+  "save": "Hifadhi",
+  "noDescription": "Hakuna maelezo yanayopatikana.",
+  "details": "Maelezo zaidi",
+  "loadingInventory": "Inapakia orodha kamili ya vizuizi…"
+}

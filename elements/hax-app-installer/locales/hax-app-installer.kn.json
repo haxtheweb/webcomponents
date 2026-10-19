@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub ರಿಪಾಜಿಟರಿ",
   "anErrorOccurred": "ದೋಷ ಸಂಭವಿಸಿದೆ",
-  "retry": "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ"
+  "retry": "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+  "permissionRequired": "ಅನುಮತಿ ಅಗತ್ಯವಿದೆ",
+  "passwordRequirements": "ಪಾಸ್‌ವರ್ಡ್ ಅವಶ್ಯಕತೆಗಳು",
+  "requirementLength": "ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳು",
+  "requirementUppercase": "ಒಂದು ದೊಡ್ಡಕ್ಷರ",
+  "requirementLowercase": "ಒಂದು ಸಣ್ಣಕ್ಷರ",
+  "requirementNumber": "ಒಂದು ಸಂಖ್ಯೆ",
+  "requirementSymbol": "ಒಂದು ಚಿಹ್ನೆ"
 }

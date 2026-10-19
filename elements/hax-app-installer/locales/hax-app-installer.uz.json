@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub repositoriya",
   "anErrorOccurred": "Xatolik yuz berdi",
-  "retry": "Qayta urinish"
+  "retry": "Qayta urinish",
+  "permissionRequired": "Ruxsat talab qilinadi",
+  "passwordRequirements": "Parol talablari",
+  "requirementLength": "Kamida 8 ta belgi",
+  "requirementUppercase": "Bitta katta harf",
+  "requirementLowercase": "Bitta kichik harf",
+  "requirementNumber": "Bitta raqam",
+  "requirementSymbol": "Bitta maxsus belgi"
 }

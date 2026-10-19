@@ -1,0 +1,18 @@
+{
+  "title": "Platform özellikleri",
+  "experienceLevel": "Deneyim düzeyi",
+  "cmsFeatures": "CMS özellikleri",
+  "editorFeatures": "Düzenleyici özellikleri",
+  "blocks": "Bloklar",
+  "filterBlocks": "Blokları filtrele",
+  "requiredTextNote": "Bazı metin etiketleri zorunludur ve her zaman etkindir (devre dışı gösterilir).",
+  "download": "İskeleti indir",
+  "save": "Kaydet",
+  "generating": "İskelet oluşturuluyor…",
+  "generated": "İskelet indirildi",
+  "enabled": "Etkin",
+  "feature": "Özellik",
+  "details": "Ayrıntılar",
+  "featuresWarning": "Bu seçenekleri devre dışı bırakmak önemli içerik oluşturma ve yönetim yeteneklerini kaldırabilir.",
+  "largeSiteWarning": "Bu sitede çok sayıda sayfa var. İskelet oluşturma biraz zaman alabilir."
+}

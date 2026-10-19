@@ -122,5 +122,21 @@
   "recent": "Hiljutised",
   "popular": "Populaarsed",
   "copiedToClipboard": "Kopeeriti lõikelauale",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Pildi teave",
+  "imageActions": "Pilditoimingud",
+  "imageRecommendations": "Pildisoovitused",
+  "compressImage": "Tihenda pilti",
+  "resizeTo": "Muuda suurust:",
+  "created": "Loodud",
+  "size": "Suurus",
+  "dimensions": "Mõõtmed",
+  "type": "Tüüp",
+  "done": "valmis",
+  "noFileUuid": "Failiviide pole saadaval; toimingute lubamiseks laadi fail uuesti üles.",
+  "fileOpsUnavailable": "Failitoimingud pole selle saidi jaoks saadaval.",
+  "fileOpFailed": "Failitoiming ebaõnnestus.",
+  "fileExtensionNotAllowed": "See väli aktsepteerib ainult järgmisi failitüüpe:",
+  "fileTypeNotAllowed": "See väli aktsepteerib ainult järgmisi meediatüüpe:",
+  "transformFailed": "Üleslaadimisjärgne teisendus ebaõnnestus; algne fail säilitati."
 }

@@ -1,0 +1,21 @@
+{
+  "selectTarget": "ಗುರಿ ಆಯ್ಕೆಮಾಡಿ",
+  "importContentUnderThisPage": "ಈ ಪುಟದ ಅಡಿಯಲ್ಲಿ ವಿಷಯವನ್ನು ಆಮದು ಮಾಡಿ",
+  "importThisContent": "ಈ ವಿಷಯವನ್ನು ಆಮದು ಮಾಡಿ",
+  "thisPage": "ಈ ಪುಟ",
+  "newPage": "ಹೊಸ ಪುಟ",
+  "copyOf": "ಇದರ ನಕಲು",
+  "pageActions": "ಪುಟ ಕ್ರಿಯೆಗಳು",
+  "editTitle": "ಶೀರ್ಷಿಕೆ ಸಂಪಾದಿಸಿ",
+  "lock": "ಲಾಕ್ ಮಾಡಿ",
+  "unlock": "ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+  "moveUp": "ಮೇಲಕ್ಕೆ ಸರಿಸಿ",
+  "moveDown": "ಕೆಳಕ್ಕೆ ಸರಿಸಿ",
+  "makeChild": "ಉಪ ಪುಟವಾಗಿಸಿ",
+  "moveToParentLevel": "ಮೂಲ ಮಟ್ಟಕ್ಕೆ ಸರಿಸಿ",
+  "addPage": "ಪುಟ ಸೇರಿಸಿ",
+  "duplicate": "ನಕಲು ಮಾಡಿ",
+  "delete": "ಅಳಿಸಿ",
+  "restore": "ಮರುಸ್ಥಾಪಿಸಿ",
+  "goToPage": "ಪುಟಕ್ಕೆ ಹೋಗಿ"
+}

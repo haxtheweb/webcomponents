@@ -1,0 +1,14 @@
+{
+  "title": "Blokken",
+  "enabled": "Ynskeakele",
+  "block": "Blok",
+  "preview": "Foarbyld",
+  "filterBlocks": "Blokken filterje",
+  "requiredTextNote": "Guon teksttags binne ferplicht en altyd ynskeakele (útskeakele werjûn).",
+  "selectAll": "Alles selektearje",
+  "deselectAll": "Alles deselektearje",
+  "save": "Bewarje",
+  "noDescription": "Gjin beskriuwing beskikber.",
+  "details": "Details",
+  "loadingInventory": "Folsleine blokynventaris lade…"
+}

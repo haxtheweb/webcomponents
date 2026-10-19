@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Accions de l'esquema",
+  "editPage": "Edita la pàgina",
+  "addPage": "Afegeix una pàgina filla",
+  "moveUp": "Mou amunt",
+  "moveDown": "Mou avall",
+  "indent": "Augmenta el sagnat",
+  "outdent": "Redueix el sagnat",
+  "moveTo": "Mou a...",
+  "siteOutline": "Obre l'esquema del lloc",
+  "delete": "Suprimeix la pàgina",
+  "unlock": "Desbloqueja",
+  "lock": "Bloqueja"
+}

@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub-forðasafn",
   "anErrorOccurred": "Villa kom upp",
-  "retry": "Reyna aftur"
+  "retry": "Reyna aftur",
+  "permissionRequired": "Heimild krafist",
+  "passwordRequirements": "Kröfur um lykilorð",
+  "requirementLength": "Að minnsta kosti 8 stafir",
+  "requirementUppercase": "Einn hástafur",
+  "requirementLowercase": "Einn lágstafur",
+  "requirementNumber": "Ein tala",
+  "requirementSymbol": "Eitt tákn"
 }

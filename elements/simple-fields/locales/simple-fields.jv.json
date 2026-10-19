@@ -5,5 +5,9 @@
   "recordAudio": "Rekam swara",
   "recordScreen": "Rekam layar",
   "cancel": "Wurung",
-  "uploadMedia": "Unggah media"
+  "uploadMedia": "Unggah media",
+  "record": "Rekam",
+  "pause": "Ngaso ngrekam",
+  "stopSave": "Mandheg & Simpen",
+  "clickToTakePhoto": "Klik kanggo njupuk foto"
 }

@@ -122,5 +122,21 @@
   "recent": "Kamakailan",
   "popular": "Sikat",
   "copiedToClipboard": "Nakopya sa clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Impormasyon ng larawan",
+  "imageActions": "Mga aksyon sa larawan",
+  "imageRecommendations": "Mga rekomendasyon sa larawan",
+  "compressImage": "I-compress ang larawan",
+  "resizeTo": "Baguhin ang laki sa",
+  "created": "Ginawa",
+  "size": "Laki",
+  "dimensions": "Mga sukat",
+  "type": "Uri",
+  "done": "tapos na",
+  "noFileUuid": "Hindi available ang reference ng file; i-upload muli para paganahin ang mga aksyon.",
+  "fileOpsUnavailable": "Hindi available ang mga operasyon sa file para sa site na ito.",
+  "fileOpFailed": "Nabigo ang operasyon sa file.",
+  "fileExtensionNotAllowed": "Tumatanggap lang ang field na ito ng mga sumusunod na uri ng file:",
+  "fileTypeNotAllowed": "Tumatanggap lang ang field na ito ng mga sumusunod na uri ng media:",
+  "transformFailed": "Nabigo ang pagbabago pagkatapos ng upload; itinago ang orihinal na file."
 }

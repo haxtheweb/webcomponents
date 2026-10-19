@@ -1,0 +1,14 @@
+{
+  "title": "Bloklar",
+  "enabled": "Işjeň",
+  "block": "Blok",
+  "preview": "Öňünden görmek",
+  "filterBlocks": "Bloklary süzmek",
+  "requiredTextNote": "Käbir tekst bellikleri hökmany we hemişe işjeň (öçürilen ýaly görkezilýär).",
+  "selectAll": "Hemmesini saýlamak",
+  "deselectAll": "Hemmesiniň saýlanmagyny aýyrmak",
+  "save": "Ýatda saklamak",
+  "noDescription": "Düşündiriş ýok.",
+  "details": "Jikme-jiklikler",
+  "loadingInventory": "Bloklaryň doly sanawy ýüklenýär…"
+}

@@ -122,5 +122,21 @@
   "recent": "Azkenak",
   "popular": "Popularra",
   "copiedToClipboard": "Arbelera kopiatuta",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Irudiaren informazioa",
+  "imageActions": "Irudiaren ekintzak",
+  "imageRecommendations": "Irudiaren gomendioak",
+  "compressImage": "Konprimitu irudia",
+  "resizeTo": "Aldatu tamaina hona",
+  "created": "Sortua",
+  "size": "Tamaina",
+  "dimensions": "Neurriak",
+  "type": "Mota",
+  "done": "eginda",
+  "noFileUuid": "Fitxategiaren erreferentzia ez dago erabilgarri; kargatu berriro ekintzak gaitzeko.",
+  "fileOpsUnavailable": "Fitxategi-eragiketak ez daude erabilgarri gune honetan.",
+  "fileOpFailed": "Fitxategi-eragiketak huts egin du.",
+  "fileExtensionNotAllowed": "Eremu honek fitxategi-mota hauek bakarrik onartzen ditu:",
+  "fileTypeNotAllowed": "Eremu honek multimedia-mota hauek bakarrik onartzen ditu:",
+  "transformFailed": "Kargatu osteko eraldaketak huts egin du; jatorrizko fitxategia gorde da."
 }

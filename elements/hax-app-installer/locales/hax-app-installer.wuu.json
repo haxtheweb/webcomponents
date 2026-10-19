@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub 仓库",
   "anErrorOccurred": "发生错误",
-  "retry": "重试"
+  "retry": "重试",
+  "permissionRequired": "需要权限",
+  "passwordRequirements": "密码要求",
+  "requirementLength": "起码 8 个字符",
+  "requirementUppercase": "一个大写字母",
+  "requirementLowercase": "一个小写字母",
+  "requirementNumber": "一个数字",
+  "requirementSymbol": "一个符号"
 }

@@ -5,5 +5,9 @@
   "recordAudio": "Сними аудио",
   "recordScreen": "Сними екран",
   "cancel": "Откажи",
-  "uploadMedia": "Отпреми медиј"
+  "uploadMedia": "Отпреми медиј",
+  "record": "Сними",
+  "pause": "Паузирај снимање",
+  "stopSave": "Заустави и сачувај",
+  "clickToTakePhoto": "Кликните да снимите фотографију"
 }

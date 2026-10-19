@@ -1,0 +1,21 @@
+{
+  "selectTarget": "ជ្រើសរើសគោលដៅ",
+  "importContentUnderThisPage": "នាំចូលខ្លឹមសារនៅក្រោមទំព័រនេះ",
+  "importThisContent": "នាំចូលខ្លឹមសារនេះ",
+  "thisPage": "ទំព័រនេះ",
+  "newPage": "ទំព័រថ្មី",
+  "copyOf": "ច្បាប់ចម្លងនៃ",
+  "pageActions": "សកម្មភាពទំព័រ",
+  "editTitle": "កែសម្រួលចំណងជើង",
+  "lock": "ចាក់សោ",
+  "unlock": "ដោះសោ",
+  "moveUp": "ផ្លាស់ទីឡើងលើ",
+  "moveDown": "ផ្លាស់ទីចុះក្រោម",
+  "makeChild": "ធ្វើជាទំព័ររង",
+  "moveToParentLevel": "ផ្លាស់ទីទៅកម្រិតមេ",
+  "addPage": "បន្ថែមទំព័រ",
+  "duplicate": "ស្ទួន",
+  "delete": "លុប",
+  "restore": "ស្ដារ",
+  "goToPage": "ទៅកាន់ទំព័រ"
+}

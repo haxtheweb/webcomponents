@@ -5,5 +5,9 @@
   "recordAudio": "Rimayta waqaychay",
   "recordScreen": "Pantallata waqaychay",
   "cancel": "Sayay",
-  "uploadMedia": "Mitata churay"
+  "uploadMedia": "Mitata churay",
+  "record": "Grabay",
+  "pause": "Grabayta samachiy",
+  "stopSave": "Sayachiy waqaychay",
+  "clickToTakePhoto": "Foto hap'inapaq ñit'iy"
 }

@@ -1,0 +1,6 @@
+{
+  "pageTemplate": "Szablon strony",
+  "templateId": "ID szablonu",
+  "defaultTemplate": "Szablon domyślny",
+  "namedTemplate": "Szablon nazwany"
+}

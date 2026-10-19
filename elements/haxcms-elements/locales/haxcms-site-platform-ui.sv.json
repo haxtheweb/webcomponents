@@ -1,0 +1,18 @@
+{
+  "title": "Plattformsfunktioner",
+  "experienceLevel": "Erfarenhetsnivå",
+  "cmsFeatures": "CMS-funktioner",
+  "editorFeatures": "Redigerarfunktioner",
+  "blocks": "Block",
+  "filterBlocks": "Filtrera block",
+  "requiredTextNote": "Vissa texttaggar krävs och är alltid aktiverade (visas inaktiverade).",
+  "download": "Ladda ner skelett",
+  "save": "Spara",
+  "generating": "Genererar skelett…",
+  "generated": "Skelett nedladdat",
+  "enabled": "Aktiverad",
+  "feature": "Funktion",
+  "details": "Detaljer",
+  "featuresWarning": "Om du inaktiverar dessa alternativ kan viktiga redigerings- och administrationsfunktioner försvinna.",
+  "largeSiteWarning": "Den här webbplatsen har många sidor. Det kan ta en stund att generera skelettet."
+}

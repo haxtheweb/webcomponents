@@ -1,0 +1,14 @@
+{
+  "title": "Blocs",
+  "enabled": "Activat",
+  "block": "Bloc",
+  "preview": "Previsualització",
+  "filterBlocks": "Filtra els blocs",
+  "requiredTextNote": "Algunes etiquetes de text són obligatòries i sempre estan activades (es mostren desactivades).",
+  "selectAll": "Selecciona-ho tot",
+  "deselectAll": "Desselecciona-ho tot",
+  "save": "Desa",
+  "noDescription": "No hi ha cap descripció disponible.",
+  "details": "Detalls",
+  "loadingInventory": "S'està carregant l'inventari complet de blocs…"
+}

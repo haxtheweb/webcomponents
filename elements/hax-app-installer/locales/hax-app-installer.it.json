@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Repository GitHub",
   "anErrorOccurred": "Si è verificato un errore",
-  "retry": "Riprova"
+  "retry": "Riprova",
+  "permissionRequired": "Autorizzazione richiesta",
+  "passwordRequirements": "Requisiti della password",
+  "requirementLength": "Almeno 8 caratteri",
+  "requirementUppercase": "Una lettera maiuscola",
+  "requirementLowercase": "Una lettera minuscola",
+  "requirementNumber": "Un numero",
+  "requirementSymbol": "Un simbolo"
 }

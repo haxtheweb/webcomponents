@@ -122,5 +122,21 @@
   "recent": "اخیر",
   "popular": "محبوب",
   "copiedToClipboard": "در کلیپ‌بورد کپی شد",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "اطلاعات تصویر",
+  "imageActions": "اقدامات تصویر",
+  "imageRecommendations": "پیشنهادهای تصویر",
+  "compressImage": "فشرده‌سازی تصویر",
+  "resizeTo": "تغییر اندازه به",
+  "created": "ایجادشده",
+  "size": "اندازه",
+  "dimensions": "ابعاد",
+  "type": "نوع",
+  "done": "انجام شد",
+  "noFileUuid": "ارجاع فایل در دسترس نیست؛ برای فعال‌سازی اقدامات دوباره بارگذاری کنید.",
+  "fileOpsUnavailable": "عملیات فایل برای این سایت در دسترس نیست.",
+  "fileOpFailed": "عملیات فایل ناموفق بود.",
+  "fileExtensionNotAllowed": "این فیلد فقط انواع فایل زیر را می‌پذیرد:",
+  "fileTypeNotAllowed": "این فیلد فقط انواع رسانه زیر را می‌پذیرد:",
+  "transformFailed": "تبدیل پس از بارگذاری ناموفق بود؛ فایل اصلی نگه داشته شد."
 }

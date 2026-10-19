@@ -1,0 +1,11 @@
+{
+  "pagination": "Sayfalama",
+  "page": "Sayfa",
+  "of": "/",
+  "first": "İlk sayfa",
+  "previous": "Önceki sayfa",
+  "next": "Sonraki sayfa",
+  "last": "Son sayfa",
+  "showing": "Gösterilen:",
+  "to": "-"
+}

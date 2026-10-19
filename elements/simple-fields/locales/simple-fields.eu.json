@@ -5,5 +5,9 @@
   "recordAudio": "Grabatu audioa",
   "recordScreen": "Grabatu pantaila",
   "cancel": "Utzi",
-  "uploadMedia": "Igo multimedia"
+  "uploadMedia": "Igo multimedia",
+  "record": "Grabatu",
+  "pause": "Pausatu grabazioa",
+  "stopSave": "Gelditu eta gorde",
+  "clickToTakePhoto": "Egin klik argazkia ateratzeko"
 }

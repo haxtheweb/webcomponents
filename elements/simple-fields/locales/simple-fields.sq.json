@@ -5,5 +5,9 @@
   "recordAudio": "Regjistro audio",
   "recordScreen": "Regjistro ekranin",
   "cancel": "Anulo",
-  "uploadMedia": "Ngarko median"
+  "uploadMedia": "Ngarko median",
+  "record": "Regjistro",
+  "pause": "Pezullo regjistrimin",
+  "stopSave": "Ndalo & Ruaj",
+  "clickToTakePhoto": "Kliko për të bërë foto"
 }

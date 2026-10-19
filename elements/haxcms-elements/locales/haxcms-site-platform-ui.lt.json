@@ -1,0 +1,18 @@
+{
+  "title": "Platformos funkcijos",
+  "experienceLevel": "Patirties lygis",
+  "cmsFeatures": "CMS funkcijos",
+  "editorFeatures": "Redaktoriaus funkcijos",
+  "blocks": "Blokai",
+  "filterBlocks": "Filtruoti blokus",
+  "requiredTextNote": "Kai kurios teksto žymos yra privalomos ir visada įjungtos (rodomos kaip išjungtos).",
+  "download": "Atsisiųsti karkasą",
+  "save": "Išsaugoti",
+  "generating": "Generuojamas karkasas…",
+  "generated": "Karkasas atsisiųstas",
+  "enabled": "Įjungta",
+  "feature": "Funkcija",
+  "details": "Išsami informacija",
+  "featuresWarning": "Išjungus šias parinktis gali būti pašalintos svarbios kūrimo ir administravimo galimybės.",
+  "largeSiteWarning": "Šioje svetainėje daug puslapių. Karkaso generavimas gali užtrukti."
+}

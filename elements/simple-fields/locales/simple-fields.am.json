@@ -5,5 +5,9 @@
   "recordAudio": "ድምፅ ይቅረጹ",
   "recordScreen": "ማያ ገጽ ይቅረጹ",
   "cancel": "ይቅር",
-  "uploadMedia": "ሚዲያ ይስቀሉ"
+  "uploadMedia": "ሚዲያ ይስቀሉ",
+  "record": "ቅረጽ",
+  "pause": "ቀረጻን ለአፍታ አቁም",
+  "stopSave": "አቁም እና አስቀምጥ",
+  "clickToTakePhoto": "ፎቶ ለማንሳት ጠቅ ያድርጉ"
 }

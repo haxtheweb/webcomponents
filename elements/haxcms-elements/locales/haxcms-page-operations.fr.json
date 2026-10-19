@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Actions du plan",
+  "editPage": "Modifier la page",
+  "addPage": "Ajouter une sous-page",
+  "moveUp": "Monter",
+  "moveDown": "Descendre",
+  "indent": "Augmenter le retrait",
+  "outdent": "Diminuer le retrait",
+  "moveTo": "Déplacer vers...",
+  "siteOutline": "Ouvrir le plan du site",
+  "delete": "Supprimer la page",
+  "unlock": "Déverrouiller",
+  "lock": "Verrouiller"
+}

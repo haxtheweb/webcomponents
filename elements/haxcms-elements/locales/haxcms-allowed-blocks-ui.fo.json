@@ -1,0 +1,14 @@
+{
+  "title": "Blokkar",
+  "enabled": "Virkið",
+  "block": "Blokkur",
+  "preview": "Forsýning",
+  "filterBlocks": "Filtrera blokkar",
+  "requiredTextNote": "Nøkur tekstmerki eru kravd og altíð virkin (víst sum óvirkin).",
+  "selectAll": "Vel øll",
+  "deselectAll": "Frável øll",
+  "save": "Goym",
+  "noDescription": "Eingin lýsing tøk.",
+  "details": "Smálutir",
+  "loadingInventory": "Innlesur fulla blokkayvirlitið…"
+}

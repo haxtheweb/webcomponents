@@ -5,5 +5,9 @@
   "recordAudio": "บันทึกเสียง",
   "recordScreen": "บันทึกหน้าจอ",
   "cancel": "ยกเลิก",
-  "uploadMedia": "อัปโหลดสื่อ"
+  "uploadMedia": "อัปโหลดสื่อ",
+  "record": "บันทึก",
+  "pause": "หยุดบันทึกชั่วคราว",
+  "stopSave": "หยุดและบันทึก",
+  "clickToTakePhoto": "คลิกเพื่อถ่ายภาพ"
 }

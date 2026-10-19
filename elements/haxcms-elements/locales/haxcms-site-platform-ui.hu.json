@@ -1,0 +1,18 @@
+{
+  "title": "Platformfunkciók",
+  "experienceLevel": "Tapasztalati szint",
+  "cmsFeatures": "CMS-funkciók",
+  "editorFeatures": "Szerkesztőfunkciók",
+  "blocks": "Blokkok",
+  "filterBlocks": "Blokkok szűrése",
+  "requiredTextNote": "Néhány szövegcímke kötelező és mindig engedélyezett (letiltottként jelenik meg).",
+  "download": "Váz letöltése",
+  "save": "Mentés",
+  "generating": "Váz létrehozása…",
+  "generated": "Váz letöltve",
+  "enabled": "Engedélyezve",
+  "feature": "Funkció",
+  "details": "Részletek",
+  "featuresWarning": "Ezen beállítások letiltása fontos szerkesztési és adminisztrációs képességeket távolíthat el.",
+  "largeSiteWarning": "Ennek a webhelynek sok oldala van. A váz létrehozása eltarthat egy ideig."
+}

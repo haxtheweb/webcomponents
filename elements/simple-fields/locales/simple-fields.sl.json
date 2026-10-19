@@ -5,5 +5,9 @@
   "recordAudio": "Snemaj zvok",
   "recordScreen": "Snemaj zaslon",
   "cancel": "Prekliči",
-  "uploadMedia": "Naloži medij"
+  "uploadMedia": "Naloži medij",
+  "record": "Snemaj",
+  "pause": "Začasno ustavi snemanje",
+  "stopSave": "Ustavi in shrani",
+  "clickToTakePhoto": "Kliknite za fotografiranje"
 }

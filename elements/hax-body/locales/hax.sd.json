@@ -122,5 +122,21 @@
   "recent": "تازو",
   "popular": "مشهور",
   "copiedToClipboard": "ڪلپ بورڊ تي ڪاپي ٿي ويو",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "تصوير جي معلومات",
+  "imageActions": "تصوير جا عمل",
+  "imageRecommendations": "تصوير لاءِ سفارشون",
+  "compressImage": "تصوير ڪمپريس ڪريو",
+  "resizeTo": "سائيز تبديل ڪريو",
+  "created": "ٺاهيل",
+  "size": "سائيز",
+  "dimensions": "ماپون",
+  "type": "قسم",
+  "done": "ٿي ويو",
+  "noFileUuid": "فائل جو حوالو موجود ناهي؛ عمل فعال ڪرڻ لاءِ ٻيهر اپلوڊ ڪريو.",
+  "fileOpsUnavailable": "هن سائيٽ لاءِ فائل جا عمل موجود ناهن.",
+  "fileOpFailed": "فائل جو عمل ناڪام ٿيو.",
+  "fileExtensionNotAllowed": "هي فيلڊ صرف هيٺيان فائل قسم قبول ڪري ٿو:",
+  "fileTypeNotAllowed": "هي فيلڊ صرف هيٺيان ميڊيا قسم قبول ڪري ٿو:",
+  "transformFailed": "اپلوڊ کان پوءِ تبديلي ناڪام ٿي؛ اصل فائل رکي وئي."
 }

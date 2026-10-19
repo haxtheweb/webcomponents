@@ -5,5 +5,9 @@
   "recordAudio": "Tek upp ljóð",
   "recordScreen": "Tek upp skíggja",
   "cancel": "Avlýs",
-  "uploadMedia": "Uppskriva miðil"
+  "uploadMedia": "Uppskriva miðil",
+  "record": "Upptak",
+  "pause": "Steðga upptøku",
+  "stopSave": "Stoppa & goym",
+  "clickToTakePhoto": "Klikk fyri at taka mynd"
 }

@@ -5,5 +5,9 @@
   "recordAudio": "ບັນທຶກສຽງ",
   "recordScreen": "ບັນທຶກໜ້າຈໍ",
   "cancel": "ຍົກເລີກ",
-  "uploadMedia": "ອັບໂຫລດສື່"
+  "uploadMedia": "ອັບໂຫລດສື່",
+  "record": "ບັນທຶກ",
+  "pause": "ຢຸດການບັນທຶກຊົ່ວຄາວ",
+  "stopSave": "ຢຸດ ແລະ ບັນທຶກ",
+  "clickToTakePhoto": "ຄລິກເພື່ອຖ່າຍຮູບ"
 }

@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Doel selecteren",
+  "importContentUnderThisPage": "Inhoud onder deze pagina importeren",
+  "importThisContent": "Deze inhoud importeren",
+  "thisPage": "deze pagina",
+  "newPage": "Nieuwe pagina",
+  "copyOf": "Kopie van",
+  "pageActions": "Pagina-acties",
+  "editTitle": "Titel bewerken",
+  "lock": "Vergrendelen",
+  "unlock": "Ontgrendelen",
+  "moveUp": "Omhoog",
+  "moveDown": "Omlaag",
+  "makeChild": "Subpagina maken",
+  "moveToParentLevel": "Naar bovenliggend niveau",
+  "addPage": "Pagina toevoegen",
+  "duplicate": "Dupliceren",
+  "delete": "Verwijderen",
+  "restore": "Herstellen",
+  "goToPage": "Ga naar pagina"
+}

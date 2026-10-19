@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub সংগ্রহস্থল",
   "anErrorOccurred": "একটি ত্রুটি ঘটেছে",
-  "retry": "পুনরায় চেষ্টা করুন"
+  "retry": "পুনরায় চেষ্টা করুন",
+  "permissionRequired": "অনুমতি প্রয়োজন",
+  "passwordRequirements": "পাসওয়ার্ডের শর্তাবলি",
+  "requirementLength": "কমপক্ষে ৮টি অক্ষর",
+  "requirementUppercase": "একটি বড় হাতের অক্ষর",
+  "requirementLowercase": "একটি ছোট হাতের অক্ষর",
+  "requirementNumber": "একটি সংখ্যা",
+  "requirementSymbol": "একটি চিহ্ন"
 }

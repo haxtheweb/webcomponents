@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub רעפּאָזיטאָריע",
   "anErrorOccurred": "אַ טעות איז פֿאָרגעקומען",
-  "retry": "פּרוּוון נאָך אַמאָל"
+  "retry": "פּרוּוון נאָך אַמאָל",
+  "permissionRequired": "דערלויבעניש פֿאַרלאַנגט",
+  "passwordRequirements": "פּאַראָל־פֿאָדערונגען",
+  "requirementLength": "כאָטש 8 צײכנס",
+  "requirementUppercase": "אײן גרױסער אות",
+  "requirementLowercase": "אײן קלײנער אות",
+  "requirementNumber": "אײן נומער",
+  "requirementSymbol": "אײן סימבאָל"
 }

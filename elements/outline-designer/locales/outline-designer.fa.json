@@ -1,0 +1,21 @@
+{
+  "selectTarget": "انتخاب مقصد",
+  "importContentUnderThisPage": "وارد کردن محتوا زیر این صفحه",
+  "importThisContent": "وارد کردن این محتوا",
+  "thisPage": "این صفحه",
+  "newPage": "صفحه جدید",
+  "copyOf": "رونوشت از",
+  "pageActions": "اقدامات صفحه",
+  "editTitle": "ویرایش عنوان",
+  "lock": "قفل کردن",
+  "unlock": "باز کردن قفل",
+  "moveUp": "انتقال به بالا",
+  "moveDown": "انتقال به پایین",
+  "makeChild": "تبدیل به زیرصفحه",
+  "moveToParentLevel": "انتقال به سطح والد",
+  "addPage": "افزودن صفحه",
+  "duplicate": "تکثیر",
+  "delete": "حذف",
+  "restore": "بازیابی",
+  "goToPage": "رفتن به صفحه"
+}

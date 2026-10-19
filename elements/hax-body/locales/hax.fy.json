@@ -122,5 +122,21 @@
   "recent": "Resint",
   "popular": "Populêr",
   "copiedToClipboard": "Kopiearre nei klamboerd",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Ôfbyldingsynformaasje",
+  "imageActions": "Ôfbyldingsaksjes",
+  "imageRecommendations": "Oanbefellings foar de ôfbylding",
+  "compressImage": "Ôfbylding komprimearje",
+  "resizeTo": "Grutte feroarje nei",
+  "created": "Makke",
+  "size": "Grutte",
+  "dimensions": "Ofmjittings",
+  "type": "Type",
+  "done": "klear",
+  "noFileUuid": "Triemferwizing net beskikber; laad de triem opnij op om aksjes te aktivearjen.",
+  "fileOpsUnavailable": "Triemhannelingen binne net beskikber foar dizze side.",
+  "fileOpFailed": "Triemhanneling mislearre.",
+  "fileExtensionNotAllowed": "Dit fjild akseptearret allinnich de folgjende triemtypen:",
+  "fileTypeNotAllowed": "Dit fjild akseptearret allinnich de folgjende mediatypen:",
+  "transformFailed": "Bewurking nei it opladen mislearre; de oarspronklike triem is bewarre bleaun."
 }

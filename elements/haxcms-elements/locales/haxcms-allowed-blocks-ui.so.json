@@ -1,0 +1,14 @@
+{
+  "title": "Blokyada",
+  "enabled": "Shidan",
+  "block": "Blok",
+  "preview": "Hordhac",
+  "filterBlocks": "Sifee blokyada",
+  "requiredTextNote": "Calaamadaha qoraalka qaarkood waa lagama maarmaan waxayna had iyo jeer shidan yihiin (waxay u muuqdaan kuwo naafo ah).",
+  "selectAll": "Dooro dhammaan",
+  "deselectAll": "Ka saar doorashada dhammaan",
+  "save": "Kaydi",
+  "noDescription": "Sharaxaad lama hayo.",
+  "details": "Faahfaahin",
+  "loadingInventory": "Liiska buuxa ee blokyada waa la soo rarayaa…"
+}

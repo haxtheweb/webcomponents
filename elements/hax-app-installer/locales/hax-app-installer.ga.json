@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Stór GitHub",
   "anErrorOccurred": "Tharla earráid",
-  "retry": "Bain triail eile as"
+  "retry": "Bain triail eile as",
+  "permissionRequired": "Cead ag teastáil",
+  "passwordRequirements": "Riachtanais an phasfhocail",
+  "requirementLength": "8 gcarachtar ar a laghad",
+  "requirementUppercase": "Ceannlitir amháin",
+  "requirementLowercase": "Litir bheag amháin",
+  "requirementNumber": "Uimhir amháin",
+  "requirementSymbol": "Siombail amháin"
 }

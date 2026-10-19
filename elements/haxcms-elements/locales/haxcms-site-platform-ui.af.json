@@ -1,0 +1,18 @@
+{
+  "title": "Platformkenmerke",
+  "experienceLevel": "Ervaringsvlak",
+  "cmsFeatures": "CMS-kenmerke",
+  "editorFeatures": "Redigeerderkenmerke",
+  "blocks": "Blokke",
+  "filterBlocks": "Filtreer blokke",
+  "requiredTextNote": "Sommige teksetikette is verpligtend en altyd geaktiveer (gedeaktiveer gewys).",
+  "download": "Laai geraamte af",
+  "save": "Stoor",
+  "generating": "Genereer tans geraamte…",
+  "generated": "Geraamte afgelaai",
+  "enabled": "Geaktiveer",
+  "feature": "Kenmerk",
+  "details": "Besonderhede",
+  "featuresWarning": "Om hierdie opsies te deaktiveer kan belangrike outeurs- en administrasievermoëns verwyder.",
+  "largeSiteWarning": "Hierdie werf het baie bladsye. Geraamtegenerering kan 'n rukkie duur."
+}

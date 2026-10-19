@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub भण्डार",
   "anErrorOccurred": "एउटा त्रुटि भयो",
-  "retry": "पुनः प्रयास गर्नुहोस्"
+  "retry": "पुनः प्रयास गर्नुहोस्",
+  "permissionRequired": "अनुमति आवश्यक छ",
+  "passwordRequirements": "पासवर्डका आवश्यकताहरू",
+  "requirementLength": "कम्तीमा ८ वर्ण",
+  "requirementUppercase": "एउटा ठूलो अक्षर",
+  "requirementLowercase": "एउटा सानो अक्षर",
+  "requirementNumber": "एउटा अङ्क",
+  "requirementSymbol": "एउटा चिन्ह"
 }

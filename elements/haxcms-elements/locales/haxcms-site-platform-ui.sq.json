@@ -1,0 +1,18 @@
+{
+  "title": "Veçoritë e platformës",
+  "experienceLevel": "Niveli i përvojës",
+  "cmsFeatures": "Veçoritë e CMS",
+  "editorFeatures": "Veçoritë e redaktorit",
+  "blocks": "Blloqet",
+  "filterBlocks": "Filtro blloqet",
+  "requiredTextNote": "Disa etiketa teksti janë të detyrueshme dhe gjithmonë të aktivizuara (shfaqen të çaktivizuara).",
+  "download": "Shkarko skeletin",
+  "save": "Ruaj",
+  "generating": "Po gjenerohet skeleti…",
+  "generated": "Skeleti u shkarkua",
+  "enabled": "Aktivizuar",
+  "feature": "Veçoria",
+  "details": "Detajet",
+  "featuresWarning": "Çaktivizimi i këtyre opsioneve mund të heqë aftësi kryesore të krijimit dhe administrimit.",
+  "largeSiteWarning": "Ky sajt ka shumë faqe. Gjenerimi i skeletit mund të zgjasë pak."
+}

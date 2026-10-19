@@ -1,0 +1,18 @@
+{
+  "title": "Ngā Āhuatanga Pūhara",
+  "experienceLevel": "Taumata wheako",
+  "cmsFeatures": "Ngā āhuatanga CMS",
+  "editorFeatures": "Ngā āhuatanga ētita",
+  "blocks": "Ngā paraka",
+  "filterBlocks": "Tātari paraka",
+  "requiredTextNote": "He herenga ētahi tūtohu kuputuhi, ā, kua whakahohea i ngā wā katoa (e whakaatuhia ana kua monokia).",
+  "download": "Tikiake anga",
+  "save": "Tiaki",
+  "generating": "E waihanga ana i te anga…",
+  "generated": "Kua tikiakehia te anga",
+  "enabled": "Kua whakahohea",
+  "feature": "Āhuatanga",
+  "details": "Ngā taipitopito",
+  "featuresWarning": "Mā te whakaweto i ēnei kōwhiringa ka ngaro pea ētahi āheinga matua mō te tuhi me te whakahaere.",
+  "largeSiteWarning": "He maha ngā whārangi o tēnei pae. Tērā pea ka roa te waihanga anga."
+}

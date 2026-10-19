@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub repozitorij",
   "anErrorOccurred": "Došlo je do greške",
-  "retry": "Pokušaj ponovo"
+  "retry": "Pokušaj ponovo",
+  "permissionRequired": "Potrebna je dozvola",
+  "passwordRequirements": "Zahtjevi za lozinku",
+  "requirementLength": "Najmanje 8 znakova",
+  "requirementUppercase": "Jedno veliko slovo",
+  "requirementLowercase": "Jedno malo slovo",
+  "requirementNumber": "Jedan broj",
+  "requirementSymbol": "Jedan simbol"
 }

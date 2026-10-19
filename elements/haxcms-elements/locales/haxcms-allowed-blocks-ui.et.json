@@ -1,0 +1,14 @@
+{
+  "title": "Plokid",
+  "enabled": "Lubatud",
+  "block": "Plokk",
+  "preview": "Eelvaade",
+  "filterBlocks": "Filtreeri plokke",
+  "requiredTextNote": "Mõned tekstisildid on kohustuslikud ja alati lubatud (kuvatakse keelatuna).",
+  "selectAll": "Vali kõik",
+  "deselectAll": "Tühista kõik valikud",
+  "save": "Salvesta",
+  "noDescription": "Kirjeldus puudub.",
+  "details": "Üksikasjad",
+  "loadingInventory": "Plokkide täieliku loendi laadimine…"
+}

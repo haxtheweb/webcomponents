@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub-ის რეპოზიტორია",
   "anErrorOccurred": "შეცდომა მოხდა",
-  "retry": "თავიდან ცდა"
+  "retry": "თავიდან ცდა",
+  "permissionRequired": "საჭიროა ნებართვა",
+  "passwordRequirements": "პაროლის მოთხოვნები",
+  "requirementLength": "მინიმუმ 8 სიმბოლო",
+  "requirementUppercase": "ერთი დიდი ასო",
+  "requirementLowercase": "ერთი პატარა ასო",
+  "requirementNumber": "ერთი ციფრი",
+  "requirementSymbol": "ერთი სპეციალური სიმბოლო"
 }

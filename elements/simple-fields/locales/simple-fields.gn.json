@@ -5,5 +5,9 @@
   "recordAudio": "Eñongatu ñe'ẽ",
   "recordScreen": "Eñongatu mba'erechaha",
   "cancel": "Heja",
-  "uploadMedia": "Myenyhẽ media"
+  "uploadMedia": "Myenyhẽ media",
+  "record": "Mbopyahẽ",
+  "pause": "Mombyta ñembopyahẽ",
+  "stopSave": "Mombyta ha ñongatu",
+  "clickToTakePhoto": "Ejopy ejapo hag̃ua ta'ãnga"
 }

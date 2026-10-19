@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Depozit GitHub",
   "anErrorOccurred": "A apărut o eroare",
-  "retry": "Reîncercați"
+  "retry": "Reîncercați",
+  "permissionRequired": "Permisiune necesară",
+  "passwordRequirements": "Cerințe pentru parolă",
+  "requirementLength": "Cel puțin 8 caractere",
+  "requirementUppercase": "O literă mare",
+  "requirementLowercase": "O literă mică",
+  "requirementNumber": "O cifră",
+  "requirementSymbol": "Un simbol"
 }

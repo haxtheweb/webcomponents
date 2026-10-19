@@ -5,5 +5,9 @@
   "recordAudio": "오디오 녹음",
   "recordScreen": "화면 녹화",
   "cancel": "취소",
-  "uploadMedia": "미디어 업로드"
+  "uploadMedia": "미디어 업로드",
+  "record": "녹화",
+  "pause": "녹화 일시 정지",
+  "stopSave": "중지 및 저장",
+  "clickToTakePhoto": "클릭하여 사진 찍기"
 }

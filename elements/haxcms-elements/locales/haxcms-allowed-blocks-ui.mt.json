@@ -1,0 +1,14 @@
+{
+  "title": "Blokki",
+  "enabled": "Attivat",
+  "block": "Blokk",
+  "preview": "Previżjoni",
+  "filterBlocks": "Iffiltra l-blokki",
+  "requiredTextNote": "Xi tikketti tat-test huma meħtieġa u dejjem attivati (murija bħala diżattivati).",
+  "selectAll": "Agħżel kollox",
+  "deselectAll": "Neħħi l-għażla kollha",
+  "save": "Issejvja",
+  "noDescription": "L-ebda deskrizzjoni disponibbli.",
+  "details": "Dettalji",
+  "loadingInventory": "Qed jittella' l-inventarju sħiħ tal-blokki…"
+}

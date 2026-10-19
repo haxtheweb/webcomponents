@@ -122,5 +122,21 @@
   "recent": "Nylige",
   "popular": "Populære",
   "copiedToClipboard": "Kopiert til utklippstavle",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Bildeinformasjon",
+  "imageActions": "Bildehandlinger",
+  "imageRecommendations": "Bildeanbefalinger",
+  "compressImage": "Komprimer bilde",
+  "resizeTo": "Endre størrelse til",
+  "created": "Opprettet",
+  "size": "Størrelse",
+  "dimensions": "Dimensjoner",
+  "type": "Type",
+  "done": "ferdig",
+  "noFileUuid": "Filreferanse utilgjengelig; last opp på nytt for å aktivere handlinger.",
+  "fileOpsUnavailable": "Filoperasjoner er ikke tilgjengelige for dette nettstedet.",
+  "fileOpFailed": "Filoperasjonen mislyktes.",
+  "fileExtensionNotAllowed": "Dette feltet godtar bare følgende filtyper:",
+  "fileTypeNotAllowed": "Dette feltet godtar bare følgende medietyper:",
+  "transformFailed": "Behandling etter opplasting mislyktes; originalfilen ble beholdt."
 }

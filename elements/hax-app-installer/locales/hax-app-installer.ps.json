@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub ذخیره",
   "anErrorOccurred": "یوه ستونزه رامنځته شوه",
-  "retry": "بیا هڅه وکړئ"
+  "retry": "بیا هڅه وکړئ",
+  "permissionRequired": "اجازه اړینه ده",
+  "passwordRequirements": "د پټنوم اړتیاوې",
+  "requirementLength": "لږ تر لږه ۸ توري",
+  "requirementUppercase": "یو لوی توری",
+  "requirementLowercase": "یو کوچنی توری",
+  "requirementNumber": "یوه شمېره",
+  "requirementSymbol": "یوه نښه"
 }

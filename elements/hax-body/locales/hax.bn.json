@@ -122,5 +122,21 @@
   "recent": "সাম্প্রতিক",
   "popular": "জনপ্রিয়",
   "copiedToClipboard": "ক্লিপবোর্ডে কপি করা হয়েছে",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "ছবির তথ্য",
+  "imageActions": "ছবির কাজ",
+  "imageRecommendations": "ছবির সুপারিশ",
+  "compressImage": "ছবি সংকুচিত করুন",
+  "resizeTo": "আকার পরিবর্তন করুন",
+  "created": "তৈরি হয়েছে",
+  "size": "আকার",
+  "dimensions": "মাত্রা",
+  "type": "ধরন",
+  "done": "সম্পন্ন",
+  "noFileUuid": "ফাইলের রেফারেন্স পাওয়া যাচ্ছে না; কাজগুলো চালু করতে আবার আপলোড করুন।",
+  "fileOpsUnavailable": "এই সাইটের জন্য ফাইল অপারেশন উপলব্ধ নয়।",
+  "fileOpFailed": "ফাইল অপারেশন ব্যর্থ হয়েছে।",
+  "fileExtensionNotAllowed": "এই ফিল্ড শুধুমাত্র নিম্নলিখিত ফাইলের ধরন গ্রহণ করে:",
+  "fileTypeNotAllowed": "এই ফিল্ড শুধুমাত্র নিম্নলিখিত মিডিয়ার ধরন গ্রহণ করে:",
+  "transformFailed": "আপলোড-পরবর্তী রূপান্তর ব্যর্থ হয়েছে; মূল ফাইলটি রাখা হয়েছে।"
 }

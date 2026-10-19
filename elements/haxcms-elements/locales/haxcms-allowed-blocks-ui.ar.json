@@ -1,0 +1,14 @@
+{
+  "title": "الكتل",
+  "enabled": "مفعّل",
+  "block": "كتلة",
+  "preview": "معاينة",
+  "filterBlocks": "تصفية الكتل",
+  "requiredTextNote": "بعض وسوم النص مطلوبة ومفعّلة دائمًا (تظهر معطّلة).",
+  "selectAll": "تحديد الكل",
+  "deselectAll": "إلغاء تحديد الكل",
+  "save": "حفظ",
+  "noDescription": "لا يوجد وصف متاح.",
+  "details": "التفاصيل",
+  "loadingInventory": "جارٍ تحميل قائمة الكتل الكاملة…"
+}

@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Hifadhi ya GitHub",
   "anErrorOccurred": "Hitilafu imetokea",
-  "retry": "Jaribu tena"
+  "retry": "Jaribu tena",
+  "permissionRequired": "Ruhusa inahitajika",
+  "passwordRequirements": "Masharti ya nenosiri",
+  "requirementLength": "Angalau herufi 8",
+  "requirementUppercase": "Herufi kubwa moja",
+  "requirementLowercase": "Herufi ndogo moja",
+  "requirementNumber": "Nambari moja",
+  "requirementSymbol": "Alama moja"
 }

@@ -1,0 +1,21 @@
+{
+  "selectTarget": "લક્ષ્ય પસંદ કરો",
+  "importContentUnderThisPage": "આ પેજ હેઠળ સામગ્રી આયાત કરો",
+  "importThisContent": "આ સામગ્રી આયાત કરો",
+  "thisPage": "આ પેજ",
+  "newPage": "નવું પેજ",
+  "copyOf": "આની નકલ",
+  "pageActions": "પેજ ક્રિયાઓ",
+  "editTitle": "શીર્ષક સંપાદિત કરો",
+  "lock": "લૉક કરો",
+  "unlock": "અનલૉક કરો",
+  "moveUp": "ઉપર ખસેડો",
+  "moveDown": "નીચે ખસેડો",
+  "makeChild": "ચાઇલ્ડ બનાવો",
+  "moveToParentLevel": "પેરન્ટ સ્તર પર ખસેડો",
+  "addPage": "પેજ ઉમેરો",
+  "duplicate": "ડુપ્લિકેટ બનાવો",
+  "delete": "કાઢી નાખો",
+  "restore": "પુનઃસ્થાપિત કરો",
+  "goToPage": "પેજ પર જાઓ"
+}

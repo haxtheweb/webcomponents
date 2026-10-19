@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Kies teiken",
+  "importContentUnderThisPage": "Voer inhoud onder hierdie bladsy in",
+  "importThisContent": "Voer hierdie inhoud in",
+  "thisPage": "hierdie bladsy",
+  "newPage": "Nuwe bladsy",
+  "copyOf": "Kopie van",
+  "pageActions": "Bladsy-aksies",
+  "editTitle": "Wysig titel",
+  "lock": "Sluit",
+  "unlock": "Ontsluit",
+  "moveUp": "Skuif op",
+  "moveDown": "Skuif af",
+  "makeChild": "Maak subbladsy",
+  "moveToParentLevel": "Skuif na ouervlak",
+  "addPage": "Voeg bladsy by",
+  "duplicate": "Dupliseer",
+  "delete": "Skrap",
+  "restore": "Herstel",
+  "goToPage": "Gaan na bladsy"
+}

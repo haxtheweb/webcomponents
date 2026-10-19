@@ -1,0 +1,14 @@
+{
+  "title": "Bloki",
+  "enabled": "Włączone",
+  "block": "Blok",
+  "preview": "Podgląd",
+  "filterBlocks": "Filtruj bloki",
+  "requiredTextNote": "Niektóre znaczniki tekstowe są wymagane i zawsze włączone (pokazane jako wyłączone).",
+  "selectAll": "Zaznacz wszystko",
+  "deselectAll": "Odznacz wszystko",
+  "save": "Zapisz",
+  "noDescription": "Brak opisu.",
+  "details": "Szczegóły",
+  "loadingInventory": "Ładowanie pełnej listy bloków…"
+}

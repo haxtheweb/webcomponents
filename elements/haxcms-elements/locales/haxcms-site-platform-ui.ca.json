@@ -1,0 +1,18 @@
+{
+  "title": "Funcions de la plataforma",
+  "experienceLevel": "Nivell d'experiència",
+  "cmsFeatures": "Funcions del CMS",
+  "editorFeatures": "Funcions de l'editor",
+  "blocks": "Blocs",
+  "filterBlocks": "Filtra els blocs",
+  "requiredTextNote": "Algunes etiquetes de text són obligatòries i sempre estan activades (es mostren desactivades).",
+  "download": "Baixa l'esquelet",
+  "save": "Desa",
+  "generating": "S'està generant l'esquelet…",
+  "generated": "S'ha baixat l'esquelet",
+  "enabled": "Activat",
+  "feature": "Funció",
+  "details": "Detalls",
+  "featuresWarning": "Desactivar aquestes opcions pot eliminar funcions importants d'autoria i d'administració.",
+  "largeSiteWarning": "Aquest lloc té moltes pàgines. La generació de l'esquelet pot trigar una estona."
+}

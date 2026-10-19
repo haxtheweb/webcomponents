@@ -1,0 +1,18 @@
+{
+  "title": "የመድረክ ባህሪያት",
+  "experienceLevel": "የልምድ ደረጃ",
+  "cmsFeatures": "የCMS ባህሪያት",
+  "editorFeatures": "የአርታዒ ባህሪያት",
+  "blocks": "ብሎኮች",
+  "filterBlocks": "ብሎኮችን አጣራ",
+  "requiredTextNote": "አንዳንድ የጽሑፍ መለያዎች አስፈላጊ ናቸው እና ሁልጊዜ ነቅተዋል (ተሰናክለው ይታያሉ)።",
+  "download": "አጽም አውርድ",
+  "save": "አስቀምጥ",
+  "generating": "አጽም በማመንጨት ላይ…",
+  "generated": "አጽም ወርዷል",
+  "enabled": "ነቅቷል",
+  "feature": "ባህሪ",
+  "details": "ዝርዝሮች",
+  "featuresWarning": "እነዚህን አማራጮች ማሰናከል ዋና የአጻጻፍ እና የአስተዳደር ችሎታዎችን ሊያስወግድ ይችላል።",
+  "largeSiteWarning": "ይህ ጣቢያ ብዙ ገጾች አሉት። አጽም ማመንጨት የተወሰነ ጊዜ ሊወስድ ይችላል።"
+}

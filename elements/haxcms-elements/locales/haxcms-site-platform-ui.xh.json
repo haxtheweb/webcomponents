@@ -1,0 +1,18 @@
+{
+  "title": "Iimpawu zeqonga",
+  "experienceLevel": "Inqanaba lamava",
+  "cmsFeatures": "Iimpawu ze-CMS",
+  "editorFeatures": "Iimpawu zomhleli",
+  "blocks": "Iibhloko",
+  "filterBlocks": "Hluza iibhloko",
+  "requiredTextNote": "Ezinye iithegi zombhalo ziyafuneka kwaye zihlala zisebenza (ziboniswa zingasebenzi).",
+  "download": "Khuphela isakhelo",
+  "save": "Gcina",
+  "generating": "Kwenziwa isakhelo…",
+  "generated": "Isakhelo sikhutshelwe",
+  "enabled": "Yenziwe isebenze",
+  "feature": "Uphawu",
+  "details": "Iinkcukacha",
+  "featuresWarning": "Ukucima ezi ndlela kunokususa izakhono eziphambili zokubhala nolawulo.",
+  "largeSiteWarning": "Le sayithi inamaphepha amaninzi. Ukwenziwa kwesakhelo kungathatha ixesha."
+}

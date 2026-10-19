@@ -1,0 +1,14 @@
+{
+  "title": "Blocuri",
+  "enabled": "Activat",
+  "block": "Bloc",
+  "preview": "Previzualizare",
+  "filterBlocks": "Filtrează blocurile",
+  "requiredTextNote": "Unele etichete de text sunt obligatorii și mereu activate (afișate dezactivate).",
+  "selectAll": "Selectează tot",
+  "deselectAll": "Deselectează tot",
+  "save": "Salvează",
+  "noDescription": "Nicio descriere disponibilă.",
+  "details": "Detalii",
+  "loadingInventory": "Se încarcă inventarul complet de blocuri…"
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Blocs",
+  "enabled": "Activé",
+  "block": "Bloc",
+  "preview": "Aperçu",
+  "filterBlocks": "Filtrer les blocs",
+  "requiredTextNote": "Certaines balises de texte sont obligatoires et toujours activées (affichées désactivées).",
+  "selectAll": "Tout sélectionner",
+  "deselectAll": "Tout désélectionner",
+  "save": "Enregistrer",
+  "noDescription": "Aucune description disponible.",
+  "details": "Détails",
+  "loadingInventory": "Chargement de l'inventaire complet des blocs…"
+}

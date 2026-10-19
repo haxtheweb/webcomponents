@@ -1,0 +1,14 @@
+{
+  "title": "Blociau",
+  "enabled": "Wedi'i alluogi",
+  "block": "Bloc",
+  "preview": "Rhagolwg",
+  "filterBlocks": "Hidlo blociau",
+  "requiredTextNote": "Mae rhai tagiau testun yn ofynnol ac wedi'u galluogi bob amser (dangosir yn analluog).",
+  "selectAll": "Dewis y cyfan",
+  "deselectAll": "Dad-ddewis y cyfan",
+  "save": "Cadw",
+  "noDescription": "Dim disgrifiad ar gael.",
+  "details": "Manylion",
+  "loadingInventory": "Yn llwytho'r rhestr lawn o flociau…"
+}

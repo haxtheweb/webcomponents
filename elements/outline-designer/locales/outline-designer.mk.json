@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Изберете цел",
+  "importContentUnderThisPage": "Увези содржина под оваа страница",
+  "importThisContent": "Увези ја оваа содржина",
+  "thisPage": "оваа страница",
+  "newPage": "Нова страница",
+  "copyOf": "Копија од",
+  "pageActions": "Дејства за страницата",
+  "editTitle": "Уреди наслов",
+  "lock": "Заклучи",
+  "unlock": "Отклучи",
+  "moveUp": "Помести нагоре",
+  "moveDown": "Помести надолу",
+  "makeChild": "Направи подстраница",
+  "moveToParentLevel": "Премести на горното ниво",
+  "addPage": "Додај страница",
+  "duplicate": "Дуплирај",
+  "delete": "Избриши",
+  "restore": "Врати",
+  "goToPage": "Оди на страницата"
+}

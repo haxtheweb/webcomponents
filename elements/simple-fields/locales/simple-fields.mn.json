@@ -5,5 +5,9 @@
   "recordAudio": "Аудио бичих",
   "recordScreen": "Дэлгэц бичих",
   "cancel": "Цуцлах",
-  "uploadMedia": "Медиа байршуулах"
+  "uploadMedia": "Медиа байршуулах",
+  "record": "Бичих",
+  "pause": "Бичлэгийг түр зогсоох",
+  "stopSave": "Зогсоож хадгалах",
+  "clickToTakePhoto": "Зураг авахын тулд дарна уу"
 }
