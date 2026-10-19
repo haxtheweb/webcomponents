@@ -274,6 +274,11 @@ class JwtLogin extends LitElement {
           } else if (typeof token === "string") {
             actualJwt = token;
           }
+          // announce request tokens BEFORE the jwt changes so listeners have
+          // them in place when retried / follow-up calls fire
+          if (ctx === "login" || ctx === "refresh") {
+            this._dispatchSessionTokens(token, ctx);
+          }
           this._handleResponseSuccess(actualJwt, {
             ctx,
             element,
@@ -321,6 +326,47 @@ class JwtLogin extends LitElement {
         }
         break;
     }
+  }
+
+  /**
+   * Security (SEC-SESSION): HAXcms login and refresh responses carry the
+   * request tokens (userToken, and siteToken when a site resolves) next to
+   * the JWT, because connection-settings may omit them for anonymous page
+   * loads. Re-broadcast any that are present as `jwt-login-session-tokens`
+   * ({ userToken?, siteToken?, context }) so the host app can store them.
+   * Nothing is dispatched when neither token is present.
+   */
+  _dispatchSessionTokens(payload, context) {
+    if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
+      return;
+    }
+    const detail = {};
+    const sources = [payload];
+    if (payload.data && typeof payload.data === "object") {
+      sources.push(payload.data);
+    }
+    ["userToken", "siteToken"].forEach((key) => {
+      for (let i = 0; i < sources.length; i++) {
+        const value =
+          typeof sources[i][key] === "string" ? sources[i][key].trim() : "";
+        if (value !== "") {
+          detail[key] = value;
+          return;
+        }
+      }
+    });
+    if (!detail.userToken && !detail.siteToken) {
+      return;
+    }
+    detail.context = context;
+    this.dispatchEvent(
+      new CustomEvent("jwt-login-session-tokens", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: detail,
+      }),
+    );
   }
 
   _invokeRefreshCallback(element, jwt) {

@@ -5,6 +5,12 @@
 import { LitElement, html } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { configureHAXCMSSiteApiRegistry } from "@haxtheweb/haxcms-elements/lib/core/utils/haxcms-site-api-registry.js";
+import {
+  extractSessionRequestTokens,
+  hasSessionRequestTokens,
+  applySessionRequestTokens,
+  withSessionRequestTokens,
+} from "@haxtheweb/haxcms-elements/lib/core/utils/session-request-tokens.js";
 import { autorun, toJS } from "mobx";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
@@ -33,6 +39,7 @@ class HAXCMSBackendNodeJS extends LitElement {
         id="jwt"
         jwt="${this.jwt}"
         @jwt-changed="${this.jwtChanged}"
+        @jwt-login-session-tokens="${this.sessionTokensReceived}"
       ></jwt-login>
     `;
   }
@@ -107,6 +114,40 @@ class HAXCMSBackendNodeJS extends LitElement {
       }),
     );
   }
+  /**
+   * Security (SEC-SESSION): store the request tokens (userToken / siteToken)
+   * that login, refresh and connection-test responses now carry, so a page
+   * that loaded connection-settings anonymously can save without a reload.
+   * Updates globalThis.appSettings in place, replaces store.appSettings with a
+   * copy that has the tokens, applies them to the site API registry right
+   * away (a refresh retry may fire immediately after) and then re-syncs both
+   * registries.
+   * @param {Object} payload response body or { userToken, siteToken }
+   * @returns {boolean} true when tokens were found and applied
+   */
+  _applySessionRequestTokens(payload) {
+    const tokens = extractSessionRequestTokens(payload);
+    if (!hasSessionRequestTokens(tokens)) {
+      return false;
+    }
+    if (globalThis.appSettings && typeof globalThis.appSettings === "object") {
+      applySessionRequestTokens(globalThis.appSettings, tokens);
+    }
+    const current = store.appSettings ? toJS(store.appSettings) : {};
+    const next = withSessionRequestTokens(current, tokens);
+    if (next !== current) {
+      store.appSettings = next;
+    }
+    configureHAXCMSSiteApiRegistry(store.appSettings || next, this.jwt);
+    this._syncSiteApiRegistry();
+    return true;
+  }
+  // jwt-login re-broadcasts tokens from login / refresh responses
+  sessionTokensReceived(e) {
+    if (e && e.detail) {
+      this._applySessionRequestTokens(e.detail);
+    }
+  }
   async _syncSiteApiRegistry() {
     const appSettings = store.appSettings || {};
     // Bootstrap system API registry so @system/ entries are registered from
@@ -174,6 +215,8 @@ class HAXCMSBackendNodeJS extends LitElement {
       })
       .then((result) => {
         if (result && result.authenticated) {
+          // pick up request tokens before the jwt change fans out
+          this._applySessionRequestTokens(result);
           const nextJWT = result.jwt ? result.jwt : this.jwt;
           if (this._hasValidJWT(nextJWT)) {
             if (result.jwt && result.jwt !== this.jwt) {

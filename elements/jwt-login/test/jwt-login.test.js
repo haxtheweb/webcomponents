@@ -290,6 +290,82 @@ describe("jwt-login behavior", () => {
     expect(element._hasValidJwtForRefresh(123)).to.equal(false);
   });
 
+  it("login response tokens are re-broadcast as jwt-login-session-tokens", async () => {
+    const seen = [];
+    element.addEventListener("jwt-login-session-tokens", (e) =>
+      seen.push(e.detail),
+    );
+    globalThis.fetch = () =>
+      Promise.resolve(
+        okJson({ status: 200, jwt: "j", userToken: " u ", siteToken: "s" }),
+      );
+    await element.generateRequest("https://example.com/login", {}, {
+      context: "login",
+    });
+    await sleep(0);
+    expect(seen).to.deep.equal([
+      { userToken: "u", siteToken: "s", context: "login" },
+    ]);
+    expect(element.jwt).to.equal("j");
+  });
+
+  it("session tokens are read from an enveloped response", async () => {
+    const seen = [];
+    element.addEventListener("jwt-login-session-tokens", (e) =>
+      seen.push(e.detail),
+    );
+    globalThis.fetch = () =>
+      Promise.resolve(okJson({ data: { jwt: "j", userToken: "u" } }));
+    await element.generateRequest("https://example.com/login");
+    await sleep(0);
+    expect(seen).to.deep.equal([{ userToken: "u", context: "login" }]);
+  });
+
+  it("no session-tokens event without tokens, or for logout", async () => {
+    const seen = [];
+    element.addEventListener("jwt-login-session-tokens", (e) =>
+      seen.push(e.detail),
+    );
+    globalThis.fetch = () =>
+      Promise.resolve(okJson({ jwt: "j", userToken: "", siteToken: 7 }));
+    await element.generateRequest("https://example.com/login");
+    globalThis.fetch = () => Promise.resolve(okJson("string-jwt"));
+    await element.generateRequest("https://example.com/login");
+    globalThis.fetch = () =>
+      Promise.resolve(okJson({ status: 200, userToken: "u" }));
+    await element.generateRequest("https://example.com/logout", {}, {
+      context: "logout",
+    });
+    await sleep(0);
+    expect(seen).to.deep.equal([]);
+  });
+
+  it("refresh tokens arrive before the retry callback runs", async () => {
+    element.refreshUrl = "https://example.com/refresh";
+    const order = [];
+    element.addEventListener("jwt-login-session-tokens", (e) =>
+      order.push(["tokens", e.detail.userToken, e.detail.context]),
+    );
+    globalThis.fetch = () =>
+      Promise.resolve(okJson({ jwt: "refreshed", userToken: "fresh-u" }));
+    globalThis.dispatchEvent(
+      new CustomEvent("jwt-login-refresh-token", {
+        detail: {
+          element: {
+            obj: { retry: (jwt) => order.push(["retry", jwt]) },
+            callback: "retry",
+            params: [],
+          },
+        },
+      }),
+    );
+    await sleep(20);
+    expect(order).to.deep.equal([
+      ["tokens", "fresh-u", "refresh"],
+      ["retry", "refreshed"],
+    ]);
+  });
+
   it("requestRefreshToken refreshes and notifies the element", async () => {
     element.refreshUrl = "https://example.com/refresh";
     const calls = [];
