@@ -1272,15 +1272,13 @@
     },
     {
       "tag": "demo-snippet",
-      "title": "demo-snippet",
+      "title": "",
       "description": "is a helper element that displays the source of a code snippet and its rendered demo. It can be used for both native elements and Web Components. This is a modernized Lit-based version of the original P_lymer demo-snippet with dark mode compatibility using the DDD design system. Example of a nati...",
       "package": "@haxtheweb/demo-snippet",
       "import": "@haxtheweb/demo-snippet/demo-snippet.js",
       "type": "element",
-      "haxCapable": true,
-      "tags": [
-        "Other"
-      ]
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "design-system",
@@ -4505,7 +4503,11 @@
       "type": "element",
       "haxCapable": true,
       "tags": [
-        "Other"
+        "Media",
+        "screen",
+        "recording",
+        "video",
+        "capture"
       ]
     },
     {
