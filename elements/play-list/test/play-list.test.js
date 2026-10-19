@@ -715,10 +715,15 @@ describe("play-list test", () => {
 
   describe("Edge Cases and Error Handling", () => {
     it("should handle empty items array", async () => {
+      // render a carousel first so the empty case proves it is removed
+      element.items = [{ tag: "div", properties: {}, content: "Item 1" }];
+      await element.updateComplete;
+      expect(element.shadowRoot.querySelector(".carousel")).to.exist;
+
       element.items = [];
       await element.updateComplete;
 
-      const carousel = element.shadowRoot.querySelector("sl-carousel");
+      const carousel = element.shadowRoot.querySelector(".carousel");
       expect(carousel).to.not.exist;
     });
 
