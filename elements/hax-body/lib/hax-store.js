@@ -6689,7 +6689,7 @@ globalThis.HaxStore.requestAvailability = function () {
   if (!globalThis.HaxStore.instance) {
     globalThis.HaxStore.instance =
       globalThis.document.createElement("hax-store");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.HaxStore.instance);
     }
   }

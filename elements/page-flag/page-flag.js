@@ -305,7 +305,7 @@ globalThis.pageFlagManager.requestAvailability = () => {
     globalThis.pageFlagManager.instance = globalThis.document.createElement(
       pageFlagManagerEl.tag,
     );
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.pageFlagManager.instance);
     }
   }

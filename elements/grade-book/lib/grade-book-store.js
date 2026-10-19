@@ -67,7 +67,7 @@ globalThis.GradeBookStore.requestAvailability = function () {
   if (!globalThis.GradeBookStore.instance) {
     globalThis.GradeBookStore.instance =
       globalThis.document.createElement("grade-book-store");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.GradeBookStore.instance);
     }
   }

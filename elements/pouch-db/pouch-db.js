@@ -11,7 +11,7 @@ globalThis.PouchDb.requestAvailability = () => {
   // if there is no single instance, generate one and append it to end of the document
   if (!globalThis.PouchDb.instance) {
     globalThis.PouchDb.instance = globalThis.document.createElement("pouch-db");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.PouchDb.instance);
     }
   }

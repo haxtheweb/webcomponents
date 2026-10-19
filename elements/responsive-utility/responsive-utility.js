@@ -167,7 +167,7 @@ globalThis.ResponsiveUtility.requestAvailability = () => {
   ) {
     globalThis.ResponsiveUtility.instance =
       globalThis.document.createElement("responsive-utility");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(
         globalThis.ResponsiveUtility.instance,
       );

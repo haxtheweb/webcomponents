@@ -1064,7 +1064,7 @@ globalThis.AppHaxAPI.requestAvailability = () => {
     globalThis.AppHaxAPI.instance = globalThis.document.createElement(
       AppHaxBackendAPI.tag,
     );
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.AppHaxAPI.instance);
     }
   }

@@ -423,7 +423,7 @@ globalThis.RichTextEditorPrompt.requestAvailability = () => {
   if (!globalThis.RichTextEditorPrompt.instance) {
     globalThis.RichTextEditorPrompt.instance =
       globalThis.document.createElement("rich-text-editor-prompt");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(
         globalThis.RichTextEditorPrompt.instance,
       );

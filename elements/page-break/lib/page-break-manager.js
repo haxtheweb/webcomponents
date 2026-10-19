@@ -247,7 +247,7 @@ globalThis.PageBreakManager.requestAvailability = () => {
   if (!globalThis.PageBreakManager.instance) {
     globalThis.PageBreakManager.instance =
       globalThis.document.createElement("page-break-manager");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(
         globalThis.PageBreakManager.instance,
       );

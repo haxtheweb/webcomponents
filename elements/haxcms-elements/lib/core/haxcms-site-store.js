@@ -1763,7 +1763,7 @@ globalThis.HAXCMS.requestAvailability = () => {
   if (!globalThis.HAXCMS.instance) {
     globalThis.HAXCMS.instance =
       globalThis.document.createElement("haxcms-site-store");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.HAXCMS.instance);
     }
   }

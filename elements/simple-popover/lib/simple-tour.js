@@ -328,7 +328,7 @@ globalThis.SimpleTourManager.requestAvailability = () => {
   if (!globalThis.SimpleTourManager.instance) {
     globalThis.SimpleTourManager.instance =
       globalThis.document.createElement("simple-tour");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(
         globalThis.SimpleTourManager.instance,
       );

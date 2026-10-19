@@ -2272,7 +2272,7 @@ globalThis.GradeBook.requestAvailability = () => {
     } else {
       globalThis.GradeBook.instance =
         globalThis.document.createElement("grade-book");
-      if (globalThis.document.body) {
+      if (globalThis.document && globalThis.document.body) {
         globalThis.document.body.appendChild(globalThis.GradeBook.instance);
       }
     }

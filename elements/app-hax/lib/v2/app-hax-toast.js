@@ -257,7 +257,7 @@ globalThis.AppHaxToast.requestAvailability = () => {
     globalThis.AppHaxToast.instance = globalThis.document.createElement(
       AppHaxToast.tag,
     );
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.AppHaxToast.instance);
     }
   }

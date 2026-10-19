@@ -18,7 +18,7 @@ globalThis.JSONOutlineSchema.requestAvailability = () => {
     globalThis.JSONOutlineSchema.instance = globalThis.document.createElement(
       "json-outline-schema",
     );
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(
         globalThis.JSONOutlineSchema.instance,
       );

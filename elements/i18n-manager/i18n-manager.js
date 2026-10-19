@@ -7,7 +7,7 @@ import { LitElement } from "lit";
 globalThis.I18NManagerStore = globalThis.I18NManagerStore || {};
 globalThis.I18NManagerStore.requestAvailability = () => {
   if (!globalThis.I18NManagerStore.instance && globalThis.document) {
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.I18NManagerStore.instance =
         globalThis.document.createElement("i18n-manager");
       globalThis.document.body.appendChild(

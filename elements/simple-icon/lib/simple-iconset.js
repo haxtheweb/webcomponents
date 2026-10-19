@@ -121,7 +121,7 @@ globalThis.SimpleIconset.requestAvailability = () => {
   ) {
     globalThis.SimpleIconset.instance =
       globalThis.document.createElement("simple-iconset");
-    if (globalThis.document.body) {
+    if (globalThis.document && globalThis.document.body) {
       globalThis.document.body.appendChild(globalThis.SimpleIconset.instance);
     }
   }
