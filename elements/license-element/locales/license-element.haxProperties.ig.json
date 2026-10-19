@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ikikere",
+    "description": "Nye ikikere maka ọrụ gị."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha ọrụ a tụrụ aka na ya."
+      },
+      {
+        "property": "source",
+        "title": "Njikọ isi iyi",
+        "description": "URL isi iyi maka ọrụ nwere ikikere."
+      },
+      {
+        "property": "license",
+        "title": "Ikikere",
+        "description": "Ikikere etinyere na ọrụ a."
+      },
+      {
+        "property": "creator",
+        "title": "Onye okike",
+        "description": "Onye okike ma ọ bụ onye nwe ọrụ a."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Njikọ isi iyi",
+        "description": "Njikọ gaa na nkọwa ikikere ndị ọzọ."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Aha ndị ọzọ",
+        "description": "Aha maka nkọwa ikikere ndị ọzọ."
+      }
+    ]
+  }
+}

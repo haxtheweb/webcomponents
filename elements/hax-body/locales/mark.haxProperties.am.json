@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ማድመቂያ",
+    "description": "በመስመር ውስጥ ያለ ጽሑፍን አድምቅ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ጽሑፍ",
+        "description": "የደመቀ ጽሑፍ።"
+      }
+    ]
+  }
+}

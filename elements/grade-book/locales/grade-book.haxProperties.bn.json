@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "গ্রেড বুক",
+    "description": "রুব্রিকসহ একাধিক ব্যাকএন্ড সমর্থনকারী একটি হেডলেস গ্রেডবুক।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "উৎস",
+        "description": "ডেটা উৎসের ধরন (googledocs, url, json, filesystem)।",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL এন্ডপয়েন্ট (JSON)",
+          "json": "JSON ডেটা ব্লব",
+          "filesystem": "ফাইল সিস্টেম"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "উৎস ডেটা",
+        "description": "গ্রেডবুকের জন্য URL বা JSON ডেটা।"
+      },
+      {
+        "property": "forCourse",
+        "title": "কোর্সের রেফারেন্স",
+        "description": "প্রতিটি Assessment রিসোর্সে oer:forCourse হিসেবে প্রকাশিত কোর্স শনাক্তকারী।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Gettone CMS",
+    "description": "Gettone CMS affissatu da u backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Gettone",
+        "description": "Gettone di u nostru CMS"
+      }
+    ]
+  }
+}

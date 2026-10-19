@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "මූලික සබැඳිය",
+    "description": "මූලික සබැඳි මූලද්‍රව්‍යය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "සබැඳිය",
+        "description": "ගමනාන්ත URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "පෙළ",
+        "description": "දෘශ්‍යමාන සබැඳි පෙළ."
+      },
+      {
+        "attribute": "target",
+        "title": "ඉලක්කය",
+        "description": "සබැඳිය විවෘත කළ යුතු ස්ථානය.",
+        "options": {
+          "": "එම කවුළුවම",
+          "_blank": "නව කවුළුව - _blank",
+          "_top": "ඉහළම කවුළුව - _top",
+          "_parent": "මාපිය කවුළුව - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "මාතෘකා පෙළ",
+        "description": "ප්‍රවේශ්‍යතාව සහ SEO සඳහා උපදේශක මාතෘකාව."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "ගමනාන්තයට ඇති සම්බන්ධතාව (ආරක්ෂාව/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

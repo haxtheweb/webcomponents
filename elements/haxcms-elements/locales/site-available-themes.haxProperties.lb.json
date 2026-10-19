@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Disponibel Themen",
+    "description": "Disponibel HAXcms-Themen mat Live-Virschau-Wiessel uweisen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Usiichtsmodus",
+        "description": "Wielt, wéi d'Themen ugewise ginn",
+        "options": {
+          "gallery": "Galerie",
+          "table": "Tabell"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Detailer uweisen",
+        "description": "Theme-Beschreiwungen an zousätzlech Informatiounen uweisen"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Verstoppt an al Themen uweisen",
+        "description": "Verstoppt, al a schrecklech Themen zousätzlech zu den Dashboard-Standarden uweisen"
+      },
+      {
+        "property": "columns",
+        "title": "Kolonnen (Galerie)",
+        "description": "Zuel vu Kolonnen an der Galerieusiicht"
+      }
+    ]
+  }
+}

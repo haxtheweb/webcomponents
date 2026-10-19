@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Cárta retro",
+    "description": "Cárta simplí le dearadh retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Príomhtheideal an chárta."
+      },
+      {
+        "property": "url",
+        "description": "URL le hoscailt nuair a chliceáiltear ar an gcárta."
+      },
+      {
+        "property": "subtitle",
+        "title": "Fotheideal",
+        "description": "Fotheideal an chárta."
+      },
+      {
+        "property": "tags",
+        "title": "Clibeanna",
+        "description": "Clibeanna scartha le camóga."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Foinse meán",
+        "description": "Príomhfhoinse meán."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Foinse ar ainliú",
+        "description": "Foinse meán a thaispeántar nuair a ainlítear os cionn an chárta nó nuair a ghníomhachtaítear é."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath Aibhsithe",
+        "description": "Dath aiceanta a chuirtear i bhfeidhm ar fud an chárta."
+      },
+      {
+        "property": "dark",
+        "title": "Dorcha",
+        "description": "Úsáid bundathanna an mhóid dorcha."
+      }
+    ]
+  }
+}

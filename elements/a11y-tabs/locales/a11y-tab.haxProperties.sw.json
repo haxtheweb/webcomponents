@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Kichupo",
+    "description": "Kichupo kimoja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Aikoni ya Kichupo"
+      },
+      {
+        "property": "disabled",
+        "title": "Imezimwa"
+      },
+      {
+        "property": "label",
+        "title": "Lebo ya Kichupo"
+      },
+      {
+        "slot": "",
+        "title": "Maudhui ya Kichupo",
+        "description": "Maudhui ya kichupo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID ya Kipekee"
+      },
+      {
+        "property": "flag",
+        "title": "Maandishi ya Hiari ya Bendera"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Aikoni ya Hiari ya Bendera"
+      }
+    ]
+  }
+}

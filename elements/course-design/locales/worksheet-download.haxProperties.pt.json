@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Download de atividade",
+    "description": "Um botão para exibir arquivos disponíveis para download."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "O título do download."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "O link do download."
+      }
+    ]
+  }
+}

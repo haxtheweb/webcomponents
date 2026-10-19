@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "شڪل جو ڪيپشن",
+    "description": "شڪل لاءِ ڪيپشن."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ڪيپشن",
+        "description": "شڪل هيٺ ڏيکاريل متن."
+      }
+    ]
+  }
+}

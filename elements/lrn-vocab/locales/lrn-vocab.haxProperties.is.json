@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Orðaforði",
+    "description": "Orðaforðahugtak"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Hugtak"
+      },
+      {
+        "slot": "",
+        "title": "Skilgreining",
+        "description": "Skilgreiningin sem birtist þegar smellt er á hugtakið."
+      },
+      {
+        "property": "description",
+        "title": "Lýsing (OER Schema)",
+        "description": "OER Schema: stutt lýsing á orðaforðahugtakinu. Fyllt út sjálfkrafa úr skilgreiningartextanum ef það er skilið eftir autt."
+      }
+    ]
+  }
+}

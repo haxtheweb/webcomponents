@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Galwad i weithredu",
+    "description": "Botwm syml gyda dolen i weithredu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label y ddolen"
+      },
+      {
+        "property": "link",
+        "title": "Dolen",
+        "description": "Rhowch ddolen i unrhyw adnodd"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Cuddio'r eicon",
+        "description": "Cuddio'r eicon a ddefnyddir i acennu testun"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Eicon",
+        "description": "Eicon dolen weithredu"
+      }
+    ]
+  }
+}

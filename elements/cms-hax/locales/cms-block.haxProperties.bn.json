@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ব্লক",
+    "description": "ব্যাকএন্ডে রেন্ডার হওয়া CMS ব্লক"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "মডিউল",
+        "description": "আমাদের CMS থেকে লোড করার মডিউল"
+      },
+      {
+        "property": "blockDelta",
+        "title": "ডেল্টা",
+        "description": "আমাদের CMS থেকে লোড করার ব্লকের ডেল্টা"
+      }
+    ]
+  }
+}

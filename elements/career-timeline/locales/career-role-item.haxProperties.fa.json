@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "نقش شغلی",
+    "description": "یک نقش در یک سازمان"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان"
+      },
+      {
+        "property": "startDate",
+        "title": "تاریخ شروع"
+      },
+      {
+        "property": "endDate",
+        "title": "تاریخ پایان (اختیاری)"
+      },
+      {
+        "property": "skills",
+        "title": "مهارت‌های مرتبط",
+        "description": "برای شروع افزودن مهارت‌ها، دکمه + را انتخاب کنید"
+      }
+    ]
+  }
+}

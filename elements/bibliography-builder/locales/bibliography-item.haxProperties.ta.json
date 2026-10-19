@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "நூற்பட்டியல் உருப்படி",
+    "description": "பல வடிவங்கள் மற்றும் ஏற்றுமதி விருப்பங்களை ஆதரிக்கும், நூற்பட்டியலில் ஒற்றை மேற்கோளைக் குறிக்கும் உருப்படி."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "வகை",
+        "description": "மேற்கோள் வகை",
+        "options": {
+          "web": "வலை",
+          "journal": "இதழ்",
+          "book": "புத்தகம்"
+        }
+      },
+      {
+        "property": "title",
+        "title": "தலைப்பு",
+        "description": "உருப்படியின் தலைப்பு"
+      },
+      {
+        "property": "authors",
+        "title": "ஆசிரியர்(கள்)",
+        "description": "காலவரிசையில் உள்ள நிகழ்வுகள்"
+      },
+      {
+        "property": "publisher",
+        "title": "வெளியீட்டாளர்",
+        "description": "அசல் இணையதளம்"
+      }
+    ]
+  }
+}

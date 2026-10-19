@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "ਵਧਾਇਆ ਚਿੱਤਰ",
+    "description": "ਵੱਖ-ਵੱਖ ਸੁਧਾਰਾਂ ਨਾਲ ਚਿੱਤਰ ਪੇਸ਼ ਕਰਨ ਦਾ ਤਰੀਕਾ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ",
+        "description": "ਚਿੱਤਰ ਦਾ URL।"
+      },
+      {
+        "property": "alt",
+        "title": "ਵਿਕਲਪਿਕ ਟੈਕਸਟ",
+        "description": "ਨੇਤਰਹੀਣ ਵਰਤੋਂਕਾਰਾਂ ਲਈ ਚਿੱਤਰ ਦਾ ਵਰਣਨ ਕਰਨ ਵਾਲਾ ਟੈਕਸਟ।"
+      },
+      {
+        "property": "link",
+        "title": "ਲਿੰਕ",
+        "description": "ਚਿੱਤਰ ਨੂੰ ਕਿਸੇ URL ਨਾਲ ਲਿੰਕ ਕਰੋ"
+      },
+      {
+        "property": "card",
+        "title": "ਕਾਰਡ",
+        "description": "ਉੱਭਰੇ ਕਾਰਡ ਵਰਗੀ ਦਿੱਖ ਦੇਣ ਲਈ ਡ੍ਰੌਪ ਸ਼ੈਡੋ ਲਾਗੂ ਕਰੋ।"
+      },
+      {
+        "property": "box",
+        "title": "ਬਾਕਸ",
+        "description": "ਚਿੱਤਰ ਦੁਆਲੇ ਦ੍ਰਿਸ਼ਟੀ ਬਾਕਸ ਲਾਗੂ ਕਰੋ।"
+      },
+      {
+        "property": "offset",
+        "title": "ਆਫ਼ਸੈੱਟ",
+        "description": "ਚਿੱਤਰ 'ਤੇ ਖੱਬਾ ਜਾਂ ਸੱਜਾ ਆਫ਼ਸੈੱਟ ਲਾਗੂ ਕਰੋ।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "wide": "ਚੌੜਾ",
+          "narrow": "ਤੰਗ"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "ਸਰੋਤ ਹਵਾਲਾ",
+        "description": "ਚਿੱਤਰ ਲਈ ਹਵਾਲਾ।"
+      },
+      {
+        "property": "caption",
+        "title": "ਕੈਪਸ਼ਨ",
+        "description": "ਚਿੱਤਰ ਲਈ ਕੈਪਸ਼ਨ।"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ਚਿੱਤਰ ਸਿਰਲੇਖ",
+        "description": "ਚਿੱਤਰ ਲੇਬਲ ਲਈ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ਚਿੱਤਰ ਵਰਣਨ",
+        "description": "ਚਿੱਤਰ ਲੇਬਲ ਲਈ ਵਰਣਨ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "ਥੰਬਨੇਲ ਚਿੱਤਰ",
+        "description": "ਥੰਬਨੇਲ ਚਿੱਤਰ ਸਰੋਤ। ਥੰਬਨੇਲ ਦਿਖਾਉਂਦਾ ਹੈ ਪਰ ਪੂਰਾ ਸਰੋਤ ਮੋਡਲ ਵਿੱਚ ਖੋਲ੍ਹਦਾ ਹੈ।"
+      },
+      {
+        "property": "round",
+        "title": "ਗੋਲ ਚਿੱਤਰ",
+        "description": "ਚਿੱਤਰ ਦੀ ਦਿੱਖ ਨੂੰ ਗੋਲ ਆਕਾਰ ਵਿੱਚ ਕੱਟਦਾ ਹੈ।"
+      },
+      {
+        "property": "disableZoom",
+        "title": "ਚਿੱਤਰ ਮੋਡਲ ਬੰਦ ਕਰੋ",
+        "description": "ਕਲਿੱਕ ਕਰਨ 'ਤੇ ਚਿੱਤਰ ਨੂੰ ਚਿੱਤਰ ਨਿਰੀਖਕ ਡਾਇਲਾਗ ਵਿੱਚ ਖੁੱਲ੍ਹਣ ਤੋਂ ਰੋਕੋ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown ਵਜੋਂ ਰੈਂਡਰ ਕਰੋ",
+        "description": "ਕੈਪਸ਼ਨ ਅਤੇ ਹਵਾਲੇ ਨੂੰ markdown ਵਜੋਂ ਰੈਂਡਰ ਕਰੋ।"
+      }
+    ]
+  }
+}

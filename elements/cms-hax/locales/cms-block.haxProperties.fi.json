@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-lohko",
+    "description": "Taustapalvelussa renderöity CMS-lohko"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Moduuli",
+        "description": "CMS:stämme ladattava moduuli"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "CMS:stämme ladattavan lohkon delta"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS టోకెన్",
+    "description": "బ్యాకెండ్‌లో రెండర్ చేయబడిన CMS టోకెన్"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "టోకెన్",
+        "description": "మా CMS నుండి టోకెన్"
+      }
+    ]
+  }
+}

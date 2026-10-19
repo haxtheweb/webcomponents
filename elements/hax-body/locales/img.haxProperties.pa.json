@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ਮੁੱਢਲਾ ਚਿੱਤਰ",
+    "description": "ਮੁੱਢਲਾ ਚਿੱਤਰ ਐਲੀਮੈਂਟ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ਸਰੋਤ",
+        "description": "ਚਿੱਤਰ URL।"
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt ਲਿਖਤ",
+        "description": "ਪਹੁੰਚਯੋਗਤਾ ਅਤੇ SEO ਲਈ ਵਿਕਲਪਿਕ ਟੈਕਸਟ।"
+      },
+      {
+        "attribute": "height",
+        "title": "ਉਚਾਈ",
+        "description": "ਪਿਕਸਲਾਂ ਵਿੱਚ ਉਚਾਈ। ਕੁਦਰਤੀ ਆਕਾਰ ਵਰਤਣ ਲਈ ਖਾਲੀ ਛੱਡੋ।"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "ਚਿੱਤਰ ਲੋਡਿੰਗ",
+        "description": "ਚੁਣੋ ਕਿ ਚਿੱਤਰ ਕਦੋਂ ਲੋਡ ਹੋਵੇ।",
+        "options": {
+          "lazy": "ਦਿਖਾਈ ਦੇਣ 'ਤੇ ਲੋਡ ਕਰੋ",
+          "auto": "ਸਵੈਚਲਿਤ"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "ਰਿਸਪੌਂਸਿਵ ਸਰੋਤ (srcset)",
+        "description": "ਚਿੱਤਰ URL ਅਤੇ ਵਰਣਨਕਾਰ (ਜਿਵੇਂ 480w ਜਾਂ 2x) ਸੂਚੀਬੱਧ ਕਰੋ ਤਾਂ ਜੋ ਬ੍ਰਾਊਜ਼ਰ ਸਕ੍ਰੀਨ ਲਈ ਸਭ ਤੋਂ ਵਧੀਆ ਆਕਾਰ ਚੁਣ ਸਕਣ। ਮਿਆਰੀ srcset ਗੁਣ ਵਜੋਂ ਸਟੋਰ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।"
+      }
+    ]
+  }
+}

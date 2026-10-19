@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Veerupaigutus",
+    "description": "Paiguta materjal lihtsatesse veergudesse"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Veerupaigutus",
+        "description": "Nende üksuste esitusstiil (võib väikestel ekraanidel muutuda)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Keela kohanduvus",
+        "description": "Märgi ruut, et säilitada veerud suurematel ekraanidel, kuid virnastada need väikseimatel ekraanidel"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Üksuse sisevahe",
+        "description": "Sisevahe iga üksuse sees"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Üksuste veerised",
+        "description": "Veeris üksuste vahel"
+      }
+    ]
+  }
+}

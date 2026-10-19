@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Saýt görnüşi",
+    "description": "Ölçeglere görä saýt maglumatlaryny soraýan we görkezýän dinamiki blok"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Görnüşiň URL-i",
+        "description": "Görnüş maglumat akymy üçin sorag parametrleri. Muny Görnüşler dolandyryş panelinden alyp bilersiňiz."
+      },
+      {
+        "property": "renderer",
+        "title": "Görkeziş tertibi",
+        "description": "Görnüş netijeleriniň nähili görkezilmelidigi"
+      },
+      {
+        "property": "entity",
+        "title": "Obýekt görnüşi",
+        "description": "Jogaby derňemek üçin ulanylýan ýazgy görnüşi",
+        "options": {
+          "": "Deslapky (elementler)",
+          "item": "Element",
+          "page": "Sahypa",
+          "file": "Faýl",
+          "tag": "Bellik",
+          "block": "Blok",
+          "view": "Görnüş",
+          "theme": "Tema",
+          "region": "Sebit",
+          "customElement": "Ýörite element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Saýt görnüşini üz",
+        "description": "Göni redaktirlemek üçin statik mazmuna öwür; çeşmeden awtomatik täzelenmegi bes edýär."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Irudiaren epigrafea",
+    "description": "Irudi baten epigrafea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Irudi-oina",
+        "description": "Irudiaren azpian erakusten den testua."
+      }
+    ]
+  }
+}

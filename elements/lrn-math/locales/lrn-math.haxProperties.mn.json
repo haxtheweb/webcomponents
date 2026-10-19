@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Математик",
+    "description": "Математикийг сайхан харагдуулах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Математик",
+        "description": "Тэгшитгэлийг LaTeX хэлбэрээр оруулна уу"
+      }
+    ]
+  }
+}

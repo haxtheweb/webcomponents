@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Taken hoto",
+    "description": "Taken bayani don hoto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Taken hoto",
+        "description": "Rubutun da ake nunawa a ƙasan hoton."
+      }
+    ]
+  }
+}

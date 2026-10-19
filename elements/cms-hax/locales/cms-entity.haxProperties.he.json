@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ישות CMS",
+    "description": "ישות CMS המעובדת בצד השרת"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "סוג",
+        "description": "סוג מה-CMS שלנו",
+        "options": {
+          "node": "צומת",
+          "user": "משתמש",
+          "file": "קובץ"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "מזהה מה-CMS שלנו"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "מצב תצוגה",
+        "description": "מצב תצוגה מה-CMS שלנו"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Nasc bunúsach",
+    "description": "Eilimint naisc bhunúsach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Nasc",
+        "description": "URL an cheann scríbe."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Téacs",
+        "description": "Téacs infheicthe an naisc."
+      },
+      {
+        "attribute": "target",
+        "title": "Sprioc",
+        "description": "Cá háit a n-osclófar an nasc.",
+        "options": {
+          "": "An fhuinneog chéanna",
+          "_blank": "Fuinneog nua - _blank",
+          "_top": "An fhuinneog uachtarach - _top",
+          "_parent": "An máthairfhuinneog - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Téacs teidil",
+        "description": "Teideal comhairleach le haghaidh inrochtaineachta agus SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Gaol leis an gceann scríbe (slándáil/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Handlungsaufforderung",
+    "description": "Ein einfacher Button mit einem Link, um aktiv zu werden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Bezeichnung",
+        "description": "Linkbeschriftung"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Gib einen Link zu einer beliebigen Ressource ein"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Symbol ausblenden",
+        "description": "Das Symbol ausblenden, das den Text akzentuiert"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Symbol",
+        "description": "Symbol des Aktionslinks"
+      }
+    ]
+  }
+}

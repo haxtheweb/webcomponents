@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Επισήμανση",
+    "description": "Επισήμανση κειμένου εντός γραμμής."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Κείμενο",
+        "description": "Επισημασμένο κείμενο."
+      }
+    ]
+  }
+}

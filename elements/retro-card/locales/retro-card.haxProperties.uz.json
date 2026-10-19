@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro karta",
+    "description": "Retro dizayndagi oddiy karta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Kartaning asosiy sarlavhasi."
+      },
+      {
+        "property": "url",
+        "description": "Karta bosilganda ochiladigan URL manzil."
+      },
+      {
+        "property": "subtitle",
+        "title": "Kichik sarlavha",
+        "description": "Karta kichik sarlavhasi."
+      },
+      {
+        "property": "tags",
+        "title": "Teglar",
+        "description": "Vergul bilan ajratilgan teglar."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Media manbasi",
+        "description": "Asosiy media manbasi."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Ustiga olib borilgandagi manba",
+        "description": "Karta ustiga olib borilganda yoki faollashtirilganda koʻrsatiladigan media manbasi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Butun kartaga qoʻllanadigan urgʻu rangi."
+      },
+      {
+        "property": "dark",
+        "title": "Qorongʻi",
+        "description": "Qorongʻi rejim asosiy ranglaridan foydalanish."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P എലമെന്റ്",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "വാചകം",
+        "description": "സൈഡ്നോട്ടിന്റെ ഉള്ളടക്കം"
+      }
+    ]
+  }
+}

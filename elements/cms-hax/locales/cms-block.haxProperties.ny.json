@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Chipika cha CMS",
+    "description": "Chipika cha CMS choonetsedwa kumbuyo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Gawo",
+        "description": "Gawo loti litsegulidwe kuchokera ku CMS yathu"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta ya chipika choti chitsegulidwe kuchokera ku CMS yathu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Naključna vsebina strani",
+    "description": "Prikaži naključni element najvišje ravni z izbrane strani"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Stran",
+        "description": "Izberite stran, s katere se črpa naključna vsebina. Element bo naključno prikazal enega od elementov HTML najvišje ravni s te strani."
+      }
+    ]
+  }
+}

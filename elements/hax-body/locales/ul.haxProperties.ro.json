@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Listă cu marcatori",
+    "description": "Creează o listă cu marcatori."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stilul marcatorilor",
+        "description": "Stilul folosit pentru marcatorii listei neordonate.",
+        "options": {
+          "": "Implicit (pătrat)",
+          "list-disc": "Disc",
+          "list-circle": "Cerc",
+          "list-square": "Pătrat"
+        }
+      }
+    ]
+  }
+}

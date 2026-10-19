@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "מקור",
+        "description": "URL פֿאַר דעם רעסורס."
+      }
+    ]
+  }
+}

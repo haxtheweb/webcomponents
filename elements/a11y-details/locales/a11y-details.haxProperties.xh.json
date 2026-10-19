@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Iqhosha leeNkcukacha Elifikelelekayo",
+    "description": "Ukutyhilwa ngokuthe ngcembe okufikelelekayo ngeenkcukacha nesishwankathelo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Iqhosha",
+        "description": "Isishwankathelo somxholo ofihliweyo, umz. \"ulwazi\", \"imethadatha\", njl."
+      },
+      {
+        "slot": "details",
+        "title": "Inkcazo",
+        "description": "Inkcazo eneenkcukacha enokufihlwa okanye iboniswe"
+      },
+      {
+        "slot": "",
+        "title": "Iqhosha leNkcazo",
+        "description": "Okungagqibekanga kweqhosha elibonisa/elifihla umbhalo wenkcazo, umz. \"ulwazi\", \"imethadatha\", njl."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Umbhalo wesishwankathelo ongenyanzelekanga xa iinkcukacha zivuliwe"
+      },
+      {
+        "property": "closeText",
+        "title": "Umbhalo wesishwankathelo ongenyanzelekanga xa iinkcukacha zivaliwe"
+      }
+    ]
+  }
+}

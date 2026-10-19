@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "קאַרטל",
+    "description": "אַ קאַרטל מיט אָפּציאָנעלן אַקצענט־סטיל."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "קעפּל",
+        "description": "אַ קעפּל פֿאַרן קאַרטל."
+      },
+      {
+        "slot": "subheading",
+        "title": "אונטערקעפּל",
+        "description": "אַן אָפּציאָנעל אונטערקעפּל פֿאַרן קאַרטל."
+      },
+      {
+        "slot": "content",
+        "title": "אינהאַלט",
+        "description": "אינהאַלט פֿאַרן קאַרטל."
+      },
+      {
+        "slot": "footer",
+        "title": "פֿוס־שורה",
+        "description": "אַן אָפּציאָנעלע פֿוסנאָטע פֿאַרן קאַרטל."
+      },
+      {
+        "property": "imageSrc",
+        "title": "בילד",
+        "description": "אָפּציאָנעל בילד"
+      },
+      {
+        "property": "imageAlt",
+        "title": "בילד־alt־טעקסט",
+        "description": "אַלטערנאַטיווער טעקסט וואָס באַשרײַבט דאָס בילד פֿאַר עקראַן־לייענערס. לאָז ליידיק נאָר אויב דאָס בילד איז בלויז דעקאָראַטיוו."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "האָריזאָנטאַלע בילד־אויסגלײַכונג",
+        "options": {
+          "left": "לינקס",
+          "center": "צענטער",
+          "right": "רעכטס"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "ווערטיקאַלע בילד־אויסגלײַכונג",
+        "options": {
+          "top": "אויבן",
+          "center": "צענטער",
+          "bottom": "אונטן"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "אַן אָפּציאָנעלער אַקצענט־קאָליר."
+      },
+      {
+        "property": "dark",
+        "title": "טונקעלע טעמע",
+        "description": "אַקטיוויר די טונקעלע טעמע"
+      },
+      {
+        "property": "horizontal",
+        "title": "האָריזאָנטאַל",
+        "description": "האָריזאָנטאַלע אָריענטאַציע?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "קעפּל־אַקצענט",
+        "description": "אָנווענדן דעם אַקצענט־קאָליר אויפֿן קעפּל?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "הינטערגרונט־אַקצענט",
+        "description": "אָנווענדן דעם אַקצענט־קאָליר אויפֿן קאַרטל־הינטערגרונט?"
+      },
+      {
+        "property": "noBorder",
+        "title": "קיין ראַם־אַקצענט",
+        "description": "אַוועקנעמען דעם ראַם־אַקצענט?"
+      },
+      {
+        "property": "flat",
+        "title": "פֿלאַך",
+        "description": "אַוועקנעמען דעם קעסטל־שאָטן?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "ווינקל",
+        "description": "אינהאַלט פֿאַרן קאַרטל־ווינקל."
+      }
+    ]
+  }
+}

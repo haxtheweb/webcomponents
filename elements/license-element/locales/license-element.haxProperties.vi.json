@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Giấy phép",
+    "description": "Cung cấp giấy phép cho tác phẩm của bạn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề của tác phẩm được trích dẫn."
+      },
+      {
+        "property": "source",
+        "title": "Liên kết nguồn",
+        "description": "URL nguồn của tác phẩm được cấp phép."
+      },
+      {
+        "property": "license",
+        "title": "Giấy phép",
+        "description": "Giấy phép áp dụng cho tác phẩm này."
+      },
+      {
+        "property": "creator",
+        "title": "Tác giả",
+        "description": "Tác giả hoặc chủ sở hữu của tác phẩm này."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Liên kết nguồn",
+        "description": "Liên kết đến thông tin cấp phép bổ sung."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Nhãn thêm",
+        "description": "Nhãn cho thông tin cấp phép bổ sung."
+      }
+    ]
+  }
+}

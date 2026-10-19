@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "బుల్లెట్ జాబితా",
+    "description": "బుల్లెట్ జాబితాను సృష్టించండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "బుల్లెట్ శైలి",
+        "description": "క్రమరహిత జాబితా బుల్లెట్‌ల కోసం ఉపయోగించే శైలి.",
+        "options": {
+          "": "డిఫాల్ట్ (చతురస్రం)",
+          "list-disc": "డిస్క్",
+          "list-circle": "వృత్తం",
+          "list-square": "చతురస్రం"
+        }
+      }
+    ]
+  }
+}

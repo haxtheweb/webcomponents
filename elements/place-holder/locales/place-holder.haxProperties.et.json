@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kohatäide",
+    "description": "Kohatäide, mille saab teisendada valitud meediatüübiks"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tüüp",
+        "description": "Vidina tüüp, mida see asendamiseks aktsepteerib.",
+        "options": {
+          "text": "Tekst / sisu",
+          "document": "Dokument / fail",
+          "audio": "Heli",
+          "video": "Video",
+          "image": "Pilt",
+          "math": "Matemaatika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Tekst",
+        "description": "Kirjelda soovitud kohatäidet täpsemalt"
+      }
+    ]
+  }
+}

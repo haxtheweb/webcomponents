@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Посада",
+    "description": "Окрема посада в організації"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Назва"
+      },
+      {
+        "property": "startDate",
+        "title": "Дата початку"
+      },
+      {
+        "property": "endDate",
+        "title": "Дата завершення (необов'язково)"
+      },
+      {
+        "property": "skills",
+        "title": "Пов'язані навички",
+        "description": "Натисніть кнопку +, щоб почати додавати навички"
+      }
+    ]
+  }
+}

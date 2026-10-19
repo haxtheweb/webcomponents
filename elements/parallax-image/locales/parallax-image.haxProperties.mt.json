@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Immaġni parallax",
+    "description": "Immaġni li tiskrollja"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Immaġni",
+        "description": "immaġni li tintuża fl-isfond"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Żona tal-intestatura",
+        "description": "Żona tat-test tal-intestatura"
+      }
+    ]
+  }
+}

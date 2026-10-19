@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "لغت",
+    "description": "لغت جو لفظ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "اصطلاح"
+      },
+      {
+        "slot": "",
+        "title": "تعريف",
+        "description": "لفظ تي ڪلڪ ڪرڻ تي ڏيکاريل تعريف."
+      },
+      {
+        "property": "description",
+        "title": "وضاحت (OER Schema)",
+        "description": "OER Schema: لغت جي لفظ جي مختصر وضاحت. خالي ڇڏڻ تي تعريف واري متن مان پاڻمرادو ڀرجي ويندي."
+      }
+    ]
+  }
+}

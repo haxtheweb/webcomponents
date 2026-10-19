@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Вылучэнне",
+    "description": "Вылучыць тэкст у радку."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Тэкст",
+        "description": "Вылучаны тэкст."
+      }
+    ]
+  }
+}

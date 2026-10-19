@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Karriêre-item",
+    "description": "In yndividuele organisaasje en de byhearrende rollen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Namme fan organisaasje"
+      },
+      {
+        "property": "location",
+        "title": "Lokaasje"
+      },
+      {
+        "property": "source",
+        "title": "Boarne"
+      }
+    ]
+  }
+}

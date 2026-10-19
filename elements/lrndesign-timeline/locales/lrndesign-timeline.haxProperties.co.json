@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Cronulugia",
+    "description": "Una cronolugia d'eventi cù imagine è testu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Titulu di a cronulugia",
+        "description": "Un titulu per a cronolugia."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Un culore d'accentu facultativu."
+      },
+      {
+        "property": "dark",
+        "title": "Tema scuru",
+        "description": "Attivà u tema bughju"
+      },
+      {
+        "slot": "",
+        "title": "Descrizzione di a cronolugia",
+        "description": "Testu facultativu chì discrive a cronolugia."
+      },
+      {
+        "property": "events",
+        "title": "Eventi di a cronolugia",
+        "description": "L'eventi di a cronolugia"
+      }
+    ]
+  }
+}

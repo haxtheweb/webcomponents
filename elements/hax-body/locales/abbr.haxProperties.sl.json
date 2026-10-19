@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Okrajšava",
+    "description": "Okrajšava z opisom celotnega izraza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Besedilo",
+        "description": "Vidno besedilo okrajšave."
+      },
+      {
+        "attribute": "title",
+        "title": "Beseda",
+        "description": "Celoten izraz, prikazan ob prehodu z miško."
+      }
+    ]
+  }
+}

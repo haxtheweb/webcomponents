@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex-veljari",
+    "description": "Hexkotu-litaveljari"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Virði",
+        "description": "Sjálvsett hex-virði"
+      },
+      {
+        "property": "disabled",
+        "title": "Óvirkið",
+        "description": "Slókk tekstteigin"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Stór vísing",
+        "description": "Tak lit við í stóru vísingina"
+      }
+    ]
+  }
+}

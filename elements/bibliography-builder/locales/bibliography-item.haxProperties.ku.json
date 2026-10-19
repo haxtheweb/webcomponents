@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tişta bîbliyografyayê",
+    "description": "Tiştek ku jêgirtineke yekane di bîbliyografyayê de temsîl dike, bi piştgiriya gelek format û vebijarkên derxistinê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Cure",
+        "description": "Cureya jêgirtinê",
+        "options": {
+          "web": "Web",
+          "journal": "Kovar",
+          "book": "Pirtûk"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê tiştê"
+      },
+      {
+        "property": "authors",
+        "title": "Nivîskar",
+        "description": "Bûyerên di demnameyê de"
+      },
+      {
+        "property": "publisher",
+        "title": "Weşanger",
+        "description": "Malpera orîjînal"
+      }
+    ]
+  }
+}

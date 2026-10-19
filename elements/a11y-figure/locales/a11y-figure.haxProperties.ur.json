@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "وضاحتی شکل",
+    "description": "طویل وضاحت کے ساتھ قابل رسائی شکل"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "تصویر"
+      },
+      {
+        "property": "imgAlt",
+        "title": "متبادل متن"
+      },
+      {
+        "slot": "figcaption",
+        "title": "شکل کا کیپشن",
+        "description": "شکل کے کیپشن کا متن جو ہمیشہ نظر آتا ہے۔"
+      },
+      {
+        "slot": "details",
+        "title": "تفصیل",
+        "description": "تصویر کی تفصیلی وضاحت جسے چھپایا یا دکھایا جا سکتا ہے"
+      },
+      {
+        "slot": "summary",
+        "title": "تفصیل بٹن",
+        "description": "تفصیلی متن دکھانے/چھپانے والے بٹن کے لیے طے شدہ، مثلاً \"معلومات\"، \"میٹا ڈیٹا\" وغیرہ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "تفصیلات کھلی ہونے پر اختیاری خلاصہ متن"
+      },
+      {
+        "property": "closeText",
+        "title": "تفصیلات بند ہونے پر اختیاری خلاصہ متن"
+      }
+    ]
+  }
+}

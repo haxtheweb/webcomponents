@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Kiʻi kumu",
+    "description": "Mea kiʻi kumu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kumu",
+        "description": "URL kiʻi."
+      },
+      {
+        "attribute": "alt",
+        "title": "Kikokikona pani",
+        "description": "Kikokikona ʻē aʻe no ka hiki ke komo ʻia a me SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Kiʻekiʻe",
+        "description": "Kiʻekiʻe ma nā pika. Waiho hakahaka e hoʻohana ai i ka nui maoli."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Hoʻouka kiʻi",
+        "description": "Koho i ka manawa e hoʻouka ai ke kiʻi.",
+        "options": {
+          "lazy": "Hoʻouka ke ʻikea",
+          "auto": "ʻAkomi"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Nā kumu pane (srcset)",
+        "description": "Papa inoa i nā URL kiʻi a me nā mea wehewehe (e laʻa me 480w a i ʻole 2x) i koho nā polokalamu mākaʻikaʻi i ka nui maikaʻi loa no ka pakuhi. Mālama ʻia ma ke ʻano ʻano srcset maʻamau."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Girêdana HAX",
+    "description": "Girêdanek ji bo çavkaniyeke taybet di malpera ku tu li ser dixebitî de."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Hêman",
+        "description": "Tişta ku ji bo daneyên girêdan / sernavê were nîşandan"
+      }
+    ]
+  }
+}

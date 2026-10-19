@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Élément de carrière",
+    "description": "Une organisation et les postes qui y sont associés"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Nom de l'organisation"
+      },
+      {
+        "property": "location",
+        "title": "Lieu"
+      },
+      {
+        "property": "source",
+        "title": "Source"
+      }
+    ]
+  }
+}

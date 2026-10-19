@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "وضاحتي شڪل",
+    "description": "ڊگهي وضاحت سان رسائي لائق شڪل"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "تصوير"
+      },
+      {
+        "property": "imgAlt",
+        "title": "متبادل متن"
+      },
+      {
+        "slot": "figcaption",
+        "title": "شڪل جو ڪيپشن",
+        "description": "شڪل جي ڪيپشن جو متن جيڪو هميشه نظر اچي ٿو."
+      },
+      {
+        "slot": "details",
+        "title": "وضاحت",
+        "description": "تصوير جي تفصيلي وضاحت جيڪا لڪائي يا ڏيکاري سگهجي ٿي"
+      },
+      {
+        "slot": "summary",
+        "title": "وضاحت بٽڻ",
+        "description": "وضاحتي متن ڏيکاريندڙ/لڪائيندڙ بٽڻ لاءِ ڊفالٽ، مثال طور \"معلومات\"، \"ميٽا ڊيٽا\" وغيره."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "تفصيل کليل هجڻ وقت اختياري خلاصي جو متن"
+      },
+      {
+        "property": "closeText",
+        "title": "تفصيل بند هجڻ وقت اختياري خلاصي جو متن"
+      }
+    ]
+  }
+}

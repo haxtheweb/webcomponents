@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mawonedwe a CMS",
+    "description": "Mawonedwe a CMS oonetsedwa kumbuyo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Dzina",
+        "description": "Dzina la mawonedwe kuchokera ku CMS yathu"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Kuonetsa",
+        "description": "Kaonetsedwe mkati mwa mawonedwewo kuchokera ku CMS yathu"
+      }
+    ]
+  }
+}

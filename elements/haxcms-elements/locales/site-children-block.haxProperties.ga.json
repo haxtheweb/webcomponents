@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: bloc linbh",
+    "description": "Bloc dinimiciúil chun leanbh an leathanaigh reatha a thaispeáint"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Modh dinimiciúil",
+        "description": "Conas na leanaí a ríomh i gcoibhneas leis an eilimint seo",
+        "options": {
+          "active": "Leanaí gníomhacha",
+          "parent": "Leanaí an tuismitheora",
+          "ancestor": "Gach leanbh ón sinsear is airde"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Leibhéal tosaigh"
+      },
+      {
+        "property": "end",
+        "title": "Leibhéal deiridh"
+      }
+    ]
+  }
+}

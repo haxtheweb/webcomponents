@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "复古卡片",
+    "description": "具有复古设计的简单卡片。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "卡片主标题。"
+      },
+      {
+        "property": "url",
+        "description": "点击卡片时打开的 URL。"
+      },
+      {
+        "property": "subtitle",
+        "title": "副标题",
+        "description": "卡片副标题。"
+      },
+      {
+        "property": "tags",
+        "title": "标签",
+        "description": "以逗号分隔的标签。"
+      },
+      {
+        "property": "mediaSource",
+        "title": "媒体来源",
+        "description": "主要媒体来源。"
+      },
+      {
+        "property": "hoverSource",
+        "title": "悬停时的来源",
+        "description": "悬停或激活卡片时显示的媒体来源。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "应用于整张卡片的强调色。"
+      },
+      {
+        "property": "dark",
+        "title": "深色",
+        "description": "使用深色模式基础颜色。"
+      }
+    ]
+  }
+}

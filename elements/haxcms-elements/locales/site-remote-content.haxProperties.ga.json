@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ábhar Cianda",
+    "description": "Athúsáid ábhar ó shuíomh amháin i suíomh eile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Seoladh an tsuímh",
+        "description": "Greamaigh seoladh le tagairt a dhéanamh d'ábhar uaidh mura é an suíomh reatha é"
+      },
+      {
+        "property": "uuid",
+        "title": "Mír",
+        "description": "Mír le taispeáint do shonraí an naisc / an teidil"
+      },
+      {
+        "property": "breakreference",
+        "title": "Bris an tagairt",
+        "description": "Má chuireann tú tic sa bhosca seo, cóipeáiltear an t-ábhar cianda le haghaidh eagarthóireachta go háitiúil ach baintear an nasc. Ní bhfaighidh sé nuashonruithe a thuilleadh nuair a nuashonraítear an t-ábhar tagartha."
+      },
+      {
+        "property": "showTitle",
+        "title": "Taispeáin an teideal",
+        "description": "Cas air chun teideal na hacmhainne atá á taispeáint a thaispeáint"
+      }
+    ]
+  }
+}

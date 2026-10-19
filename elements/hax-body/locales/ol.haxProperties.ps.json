@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "شمېر لرونکی لېست",
+    "description": "شمېر لرونکی لېست جوړ کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "د شمېرې سټایل",
+        "description": "د ترتیب شوي لېست د شمېرنې لپاره کارول شوی سټایل.",
+        "options": {
+          "": "تلواله (لسیز)",
+          "list-decimal-leading-zero": "لسیز د مخکیني صفر سره (01، 02، 03)",
+          "list-lower-alpha": "کوچني لاتین توري (a، b، c)",
+          "list-upper-alpha": "لوی لاتین توري (A، B، C)",
+          "list-lower-roman": "کوچني رومي (i، ii، iii)",
+          "list-upper-roman": "لوی رومي (I، II، III)"
+        }
+      }
+    ]
+  }
+}

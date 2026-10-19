@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Hereket çagyryşy",
+    "description": "Hereket etmek üçin salgyly ýönekeý düwme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Bellik",
+        "description": "Salgy belligi"
+      },
+      {
+        "property": "link",
+        "title": "Baglanyşyk",
+        "description": "Islendik serişdä salgy giriziň"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Nyşany gizle",
+        "description": "Teksti bezemek üçin ulanylýan nyşany gizle"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Nyşan",
+        "description": "Hereket salgysynyň nyşany"
+      }
+    ]
+  }
+}

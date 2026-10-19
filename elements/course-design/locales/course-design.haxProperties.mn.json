@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Хичээлийн дизайн",
+    "description": "Сургалтын материал болон хичээлийн дизайны элементүүдийн сав."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Хичээлийн таних код",
+        "description": "OER Schema: хичээлийн таних код, жишээ нь MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Санал болгох улирал",
+        "description": "OER Schema: хичээл санал болгогдох улирал."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Хүргэх хэлбэр",
+        "description": "OER Schema: хичээлийг хүргэх хэлбэр (жишээ нь танхимаар, онлайн, хосолсон)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Үндсэн багш",
+        "description": "OER Schema: хичээлийн үндсэн багш."
+      },
+      {
+        "property": "syllabus",
+        "title": "Хөтөлбөрийн URL",
+        "description": "OER Schema: хичээлийн хөтөлбөрийн URL."
+      }
+    ]
+  }
+}

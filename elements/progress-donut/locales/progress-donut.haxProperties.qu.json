@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Ñawpaqman Puriy Donut",
+    "description": "Ñawpaqman puriy donut"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Suti",
+        "description": "Elementop sutin"
+      },
+      {
+        "property": "desc",
+        "title": "Willakuy",
+        "description": "Llapanpaq haykunalla suni willakuy"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Rikch'a pukyu",
+        "description": "Donut ukhupi siq'ip pukyun."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Siq'ip Rantin Qillqa",
+        "description": "Siq'ipaq rantin qillqa."
+      },
+      {
+        "property": "animated",
+        "title": "Kuyuchisqa",
+        "description": "Ñawpaq apamuypi ñawpaqman puriy kuyunanchus"
+      },
+      {
+        "property": "complete",
+        "title": "Tukusqa",
+        "description": "Tukusqa chaninkunap array-nin."
+      },
+      {
+        "property": "total",
+        "title": "Llapan",
+        "description": "Llapan kaqkuna tukusqa kaptin llapan."
+      },
+      {
+        "property": "startAngle",
+        "title": "Qallariy K'uchu",
+        "description": "Ñawpaqman puriy qallariq donut k'uchu"
+      }
+    ]
+  }
+}

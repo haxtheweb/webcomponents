@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Taos Dul Chun Cinn",
+    "description": "Taos dul chun cinn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Teideal na heiliminte"
+      },
+      {
+        "property": "desc",
+        "title": "Cur síos",
+        "description": "Cur síos fada inrochtana"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Foinse na hÍomhá",
+        "description": "Foinse na híomhá taobh istigh den taos."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Téacs Alt na hÍomhá",
+        "description": "Téacs alt don íomhá."
+      },
+      {
+        "property": "animated",
+        "title": "Beochanta",
+        "description": "Cé acu a bheochantar an dul chun cinn ar an gcéad lódáil"
+      },
+      {
+        "property": "complete",
+        "title": "Críochnaithe",
+        "description": "Eagar de luachanna críochnaithe."
+      },
+      {
+        "property": "total",
+        "title": "Iomlán",
+        "description": "Iomlán nuair atá na míreanna go léir críochnaithe."
+      },
+      {
+        "property": "startAngle",
+        "title": "Uillinn Tosaigh",
+        "description": "Uillinn an taos ag a dtosaíonn an dul chun cinn"
+      }
+    ]
+  }
+}

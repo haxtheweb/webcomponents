@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Uzaq məzmun",
+    "description": "Bir saytın məzmununu digərində təkrar istifadə edin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Sayt ünvanı",
+        "description": "Cari sayt deyilsə, məzmuna istinad ediləcək ünvanı yapışdırın"
+      },
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Keçid / başlıq məlumatları üçün göstəriləcək element"
+      },
+      {
+        "property": "breakreference",
+        "title": "İstinadı qır",
+        "description": "Bu qutunu işarələdikdə uzaq məzmun lokal redaktə üçün kopyalanır, lakin əlaqə silinir. İstinad materialı yeniləndikdə artıq yeniləmələr almayacaq."
+      },
+      {
+        "property": "showTitle",
+        "title": "Başlığı göstər",
+        "description": "Göstərilən resursun başlığını göstərmək üçün aktivləşdirin"
+      }
+    ]
+  }
+}

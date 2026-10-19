@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: undirkubbur",
+    "description": "Kvikur kubbur sem sýnir undirsíður núverandi síðu"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Kvik aðferð",
+        "description": "Hvernig undirsíður eru reiknaðar miðað við þessa einingu",
+        "options": {
+          "active": "Virkar undirsíður",
+          "parent": "Undirsíður yfirsíðu",
+          "ancestor": "Allar undirsíður frá efsta forföður"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Upphafsstig"
+      },
+      {
+        "property": "end",
+        "title": "Lokastig"
+      }
+    ]
+  }
+}

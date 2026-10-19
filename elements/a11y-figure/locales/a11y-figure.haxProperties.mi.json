@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Whakaahua Whakamārama",
+    "description": "Whakaahua wātea me te whakaahuatanga roa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Whakaahua"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Kupu Kē"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Tapanga Whakaahua",
+        "description": "Kuputuhi tapanga whakaahua e kitea ana i ngā wā katoa."
+      },
+      {
+        "slot": "details",
+        "title": "Whakaahuatanga",
+        "description": "Whakaahuatanga atahanga taipitopito ka taea te huna, te whakaatu rānei"
+      },
+      {
+        "slot": "summary",
+        "title": "Pātene Whakaahuatanga",
+        "description": "Taunoa mō te pātene e whakaatu/huna ana i te kuputuhi whakaahuatanga, hei tauira \"mōhiohio\", \"raraunga-taapiri\", me ērā atu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Kuputuhi whakarāpopoto kōwhiringa ina tuwhera ngā taipitopito"
+      },
+      {
+        "property": "closeText",
+        "title": "Kuputuhi whakarāpopoto kōwhiringa ina kati ngā taipitopito"
+      }
+    ]
+  }
+}

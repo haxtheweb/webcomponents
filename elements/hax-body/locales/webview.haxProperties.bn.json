@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "উৎস",
+        "description": "এই রিসোর্সের URL।"
+      }
+    ]
+  }
+}

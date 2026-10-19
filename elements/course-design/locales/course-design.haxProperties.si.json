@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "පාඨමාලා සැලසුම",
+    "description": "අධ්‍යාපනික ද්‍රව්‍ය සහ පාඨමාලා සැලසුම් මූලද්‍රව්‍ය සඳහා බහාලුම."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "පාඨමාලා හඳුනාගැනීම",
+        "description": "OER Schema: පාඨමාලාවේ හඳුනාගැනීම, උදා. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "පිරිනමන වාරය",
+        "description": "OER Schema: පාඨමාලාව පිරිනමන වාරය."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "බෙදාහැරීමේ ආකෘතිය",
+        "description": "OER Schema: පාඨමාලාව බෙදා හැරීමට භාවිත කරන ආකෘතිය (උදා. පුද්ගලිකව, සබැඳිව, මිශ්‍ර)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "ප්‍රාථමික උපදේශක",
+        "description": "OER Schema: පාඨමාලාව සඳහා ප්‍රාථමික උපදේශක."
+      },
+      {
+        "property": "syllabus",
+        "title": "විෂය නිර්දේශ URL",
+        "description": "OER Schema: පාඨමාලා විෂය නිර්දේශයට URL."
+      }
+    ]
+  }
+}

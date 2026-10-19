@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Lan-orriaren deskarga",
+    "description": "Deskargatzeko dauden fitxategiak bistaratzeko botoia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Deskargaren izenburua."
+      },
+      {
+        "property": "link",
+        "title": "Esteka",
+        "description": "Deskargaren esteka."
+      }
+    ]
+  }
+}

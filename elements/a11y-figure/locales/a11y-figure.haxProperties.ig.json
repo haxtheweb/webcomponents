@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Ọgụgụ nkọwa",
+    "description": "Ọgụgụ enweghị ihe mgbochi nwere nkọwa ogologo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Onyonyo"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Ederede Alt"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Nkọwa ọgụgụ",
+        "description": "Ederede nkọwa ọgụgụ na-egosi mgbe niile."
+      },
+      {
+        "slot": "details",
+        "title": "Nkọwa",
+        "description": "Nkọwa onyonyo zuru ezu enwere ike izo ma ọ bụ igosi"
+      },
+      {
+        "slot": "summary",
+        "title": "Bọtịnụ nkọwa",
+        "description": "Ndabere maka bọtịnụ na-egosi/na-ezo ederede nkọwa, dịka \"ozi\", \"metadata\", wdg."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Ederede nchịkọta nhọrọ mgbe nkọwa mepere emepe"
+      },
+      {
+        "property": "closeText",
+        "title": "Ederede nchịkọta nhọrọ mgbe nkọwa mechiri emechi"
+      }
+    ]
+  }
+}

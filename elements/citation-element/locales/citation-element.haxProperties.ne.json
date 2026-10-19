@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "सन्दर्भ",
+    "description": "तीन प्रस्तुति मोडसहितको उद्धरण तत्व।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "उद्धृत कृतिको शीर्षक।"
+      },
+      {
+        "property": "source",
+        "title": "स्रोत लिङ्क",
+        "description": "उद्धृत कृतिको स्रोत URL।"
+      },
+      {
+        "property": "date",
+        "title": "पहुँच गरिएको मिति",
+        "description": "स्रोत पहुँच गरिएको मिति।"
+      },
+      {
+        "property": "scope",
+        "title": "दायरा",
+        "description": "उद्धरण गर्ने तत्वको दायरा।",
+        "options": {
+          "sibling": "सहोदर तत्व",
+          "parent": "मूल तत्व"
+        }
+      },
+      {
+        "property": "license",
+        "title": "इजाजतपत्र",
+        "description": "उद्धृत कृतिको इजाजतपत्र।"
+      },
+      {
+        "property": "creator",
+        "title": "सर्जक",
+        "description": "उद्धृत कृतिको सर्जक वा मालिक।"
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema प्रकार",
+        "description": "यस उद्धरणका लागि OER Schema क्लास। पूर्वनिर्धारित oer:ReferencedMaterial हो; मान्य OER क्लास (जस्तै oer:SupportingMaterial) मात्र प्रयोग गरी ओभरराइड गर्नुहोस्।"
+      }
+    ]
+  }
+}

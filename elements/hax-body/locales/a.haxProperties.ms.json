@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Pautan asas",
+    "description": "Elemen pautan asas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Pautan",
+        "description": "URL destinasi."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Teks",
+        "description": "Teks pautan yang kelihatan."
+      },
+      {
+        "attribute": "target",
+        "title": "Sasaran",
+        "description": "Tempat untuk membuka pautan.",
+        "options": {
+          "": "Tetingkap yang sama",
+          "_blank": "Tetingkap baharu - _blank",
+          "_top": "Tetingkap teratas - _top",
+          "_parent": "Tetingkap induk - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Teks tajuk",
+        "description": "Tajuk nasihat untuk kebolehaksesan dan SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Hubungan dengan destinasi (keselamatan/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

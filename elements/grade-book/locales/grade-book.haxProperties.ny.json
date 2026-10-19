@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Buku la Magiredi",
+    "description": "Buku la magiredi lopanda mawonekedwe lomwe limathandizira makina osiyanasiyana akumbuyo okhala ndi njira zoyezera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Gwero",
+        "description": "Mtundu wa gwero la deta (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Malo a URL (JSON)",
+          "json": "Gulu la deta la JSON",
+          "filesystem": "Fayilo sisitimu"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Deta ya Gwero",
+        "description": "URL kapena deta ya JSON ya buku la magiredi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Maphunziro Ogwirizana",
+        "description": "Chizindikiro cha maphunziro chotulutsidwa ngati oer:forCourse pa chinthu chilichonse cha Kuyesa."
+      }
+    ]
+  }
+}

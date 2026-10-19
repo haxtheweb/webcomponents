@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "相对标题",
+    "description": "根据父标题输出正确个标题层级"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "父标题个资源 ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "停用链接按钮功能。"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "拿复制链接按钮对齐到标题最右边。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "寻勿着父标题辰光个标题层级。"
+      },
+      {
+        "property": "copyMessage",
+        "description": "覆盖复制链接提示消息个默认文字。"
+      },
+      {
+        "property": "linkLabel",
+        "description": "覆盖复制链接按钮个默认标签。"
+      },
+      {
+        "property": "linkIcon",
+        "description": "覆盖复制链接按钮个默认图标。"
+      },
+      {
+        "property": "closeLabel",
+        "description": "覆盖复制链接提示关闭按钮个默认标签。"
+      },
+      {
+        "property": "closeIcon",
+        "description": "覆盖复制链接提示关闭按钮个默认图标。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Item bibliografi",
+    "description": "Item yang mewakili satu petikan dalam bibliografi, menyokong pelbagai format dan pilihan eksport."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Jenis",
+        "description": "Jenis petikan",
+        "options": {
+          "web": "Web",
+          "journal": "Jurnal",
+          "book": "Buku"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk item"
+      },
+      {
+        "property": "authors",
+        "title": "Pengarang",
+        "description": "Peristiwa dalam garis masa"
+      },
+      {
+        "property": "publisher",
+        "title": "Penerbit",
+        "description": "Laman web asal"
+      }
+    ]
+  }
+}

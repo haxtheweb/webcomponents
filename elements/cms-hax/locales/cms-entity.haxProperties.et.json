@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS-i olem",
+    "description": "Taustsüsteemis renderdatud CMS-i olem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tüüp",
+        "description": "tüüp meie CMS-ist",
+        "options": {
+          "node": "Sõlm",
+          "user": "Kasutaja",
+          "file": "Fail"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID meie CMS-ist"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Kuvarežiim",
+        "description": "kuvarežiim meie CMS-ist"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "மின்னூல் பொத்தான்",
+    "description": "ஒரு மின்னூலுக்கு இணைக்கும் பொத்தான்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "தலைப்பு",
+        "description": "பொத்தானின் தலைப்பு."
+      },
+      {
+        "property": "link",
+        "title": "இணைப்பு",
+        "description": "சொடுக்கும்போது திசைதிருப்ப வேண்டிய இணைப்பு."
+      },
+      {
+        "property": "icon",
+        "title": "ஐகான்",
+        "description": "இந்த இணைப்பைக் குறிக்கும் சின்னம்"
+      }
+    ]
+  }
+}

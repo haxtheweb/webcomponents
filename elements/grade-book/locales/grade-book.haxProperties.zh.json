@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "成绩册",
+    "description": "支持多种后端和评分量规的无界面成绩册。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "来源",
+        "description": "数据源类型（googledocs、url、json、filesystem）。",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL 端点（JSON）",
+          "json": "JSON 数据块",
+          "filesystem": "文件系统"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "源数据",
+        "description": "成绩册的 URL 或 JSON 数据。"
+      },
+      {
+        "property": "forCourse",
+        "title": "课程引用",
+        "description": "在每个 Assessment 资源上作为 oer:forCourse 输出的课程标识。"
+      }
+    ]
+  }
+}

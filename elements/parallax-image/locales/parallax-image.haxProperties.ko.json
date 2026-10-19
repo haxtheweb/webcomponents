@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "패럴랙스 이미지",
+    "description": "스크롤에 따라 움직이는 이미지"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "이미지",
+        "description": "배경에 사용할 이미지"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "제목 영역",
+        "description": "제목 텍스트 영역"
+      }
+    ]
+  }
+}

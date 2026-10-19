@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "د عمل بلنه",
+    "description": "د عمل کولو لپاره د لینک سره یوه ساده تڼۍ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "د لینک لېبل"
+      },
+      {
+        "property": "link",
+        "title": "لینک",
+        "description": "هرې سرچینې ته یو لینک ولیکئ"
+      },
+      {
+        "property": "hideIcon",
+        "title": "آیکون پټ کړئ",
+        "description": "هغه آیکون پټ کړئ چې د متن د ټینګار لپاره کارول کېږي"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آیکن",
+        "description": "د عمل د لینک آیکون"
+      }
+    ]
+  }
+}

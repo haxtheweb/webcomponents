@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Selektor HEX",
+    "description": "Selektor koloru w kodzie HEX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Wartość",
+        "description": "Domyślna wartość HEX"
+      },
+      {
+        "property": "disabled",
+        "title": "Wyłączone",
+        "description": "Wyłącz pole tekstowe"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Duży podgląd",
+        "description": "Pokaż kolor w dużym podglądzie"
+      }
+    ]
+  }
+}

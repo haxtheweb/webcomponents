@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github പ്രിവ്യൂ",
+    "description": "ദീർഘ വിവരണത്തോടുകൂടിയ ആക്സസ് ചെയ്യാവുന്ന ചിത്രം"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "സ്ഥാപനം",
+        "description": "Github ഓർഗനൈസേഷന്റെ മെഷീൻ നാമം"
+      },
+      {
+        "property": "repo",
+        "title": "റിപ്പോസിറ്ററി",
+        "description": "റിപ്പോയുടെ മെഷീൻ നാമം"
+      },
+      {
+        "property": "extended",
+        "title": "വിപുലീകൃത കാഴ്ച",
+        "description": "എലമെന്റിൽ readme ഉൾപ്പെടുത്തുന്നു"
+      }
+    ]
+  }
+}

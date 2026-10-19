@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Atsauce",
+    "description": "Atsauces elements ar trim attēlošanas režīmiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Citētā darba nosaukums."
+      },
+      {
+        "property": "source",
+        "title": "Avota saite",
+        "description": "Citētā darba avota URL."
+      },
+      {
+        "property": "date",
+        "title": "Skatīšanas datums",
+        "description": "Datums, kad avots tika skatīts."
+      },
+      {
+        "property": "scope",
+        "title": "Tvērums",
+        "description": "Citējamā elementa tvērums.",
+        "options": {
+          "sibling": "Blakus elements",
+          "parent": "Vecākelements"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licence",
+        "description": "Citētā darba licence."
+      },
+      {
+        "property": "creator",
+        "title": "Autors",
+        "description": "Citētā darba autors vai īpašnieks."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema veids",
+        "description": "OER Schema klase šai atsaucei. Pēc noklusējuma oer:ReferencedMaterial; aizstājiet tikai ar derīgu OER klasi (piem., oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

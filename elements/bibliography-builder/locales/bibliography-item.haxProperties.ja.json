@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "参考文献項目",
+    "description": "参考文献内の 1 件の引用を表す項目で、複数の形式とエクスポートオプションに対応しています。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "種類",
+        "description": "引用の種類",
+        "options": {
+          "web": "Web",
+          "journal": "学術誌",
+          "book": "書籍"
+        }
+      },
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "項目のタイトル"
+      },
+      {
+        "property": "authors",
+        "title": "著者",
+        "description": "タイムラインのイベント"
+      },
+      {
+        "property": "publisher",
+        "title": "出版社",
+        "description": "元の Web サイト"
+      }
+    ]
+  }
+}

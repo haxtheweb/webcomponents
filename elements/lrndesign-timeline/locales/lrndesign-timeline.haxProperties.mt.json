@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Kronoloġija",
+    "description": "Kronoloġija ta' avvenimenti b'immaġnijiet u test"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Titlu tal-kronoloġija",
+        "description": "Titlu għall-kronoloġija."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi fakultattiv."
+      },
+      {
+        "property": "dark",
+        "title": "Tema skura",
+        "description": "Attiva t-Tema Skura"
+      },
+      {
+        "slot": "",
+        "title": "Deskrizzjoni tal-Kronoloġija",
+        "description": "Test opzjonali li jiddeskrivi l-kronoloġija."
+      },
+      {
+        "property": "events",
+        "title": "Avvenimenti tal-Kronoloġija",
+        "description": "L-avvenimenti fil-kronoloġija"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Masofaviy kontent",
+    "description": "Bir saytdagi kontentni boshqa saytda qayta ishlatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Sayt manzili",
+        "description": "Agar joriy sayt boʻlmasa, kontentga havola qilinadigan manzilni joylashtiring"
+      },
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Havola / sarlavha maʼlumotlari uchun koʻrsatiladigan element"
+      },
+      {
+        "property": "breakreference",
+        "title": "Havolani uzish",
+        "description": "Bu belgilansa, masofaviy kontent mahalliy tahrirlash uchun nusxalanadi, lekin bogʻlanish olib tashlanadi. Manba material yangilanganda u endi yangilanmaydi."
+      },
+      {
+        "property": "showTitle",
+        "title": "Sarlavhani koʻrsatish",
+        "description": "Koʻrsatilayotgan resurs sarlavhasini chiqarish uchun yoqing"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "רעטראָ־קאַרטל",
+    "description": "פּשוט קאַרטל מיט אַ רעטראָ־דיזיין."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "הויפּט־טיטל פֿונעם קאַרטל."
+      },
+      {
+        "property": "url",
+        "description": "URL צו עפֿענען ווען מע קליקט אויפֿן קאַרטל."
+      },
+      {
+        "property": "subtitle",
+        "title": "אונטערטיטל",
+        "description": "אונטערטיטל פֿונעם קאַרטל."
+      },
+      {
+        "property": "tags",
+        "title": "טעגן",
+        "description": "טעגן געטיילט מיט קאָמעס."
+      },
+      {
+        "property": "mediaSource",
+        "title": "מעדיע־מקור",
+        "description": "הויפּט־מעדיע־מקור."
+      },
+      {
+        "property": "hoverSource",
+        "title": "מקור בײַם דורכפֿירן",
+        "description": "מעדיע־מקור געוויזן ווען מע פֿירט דורך איבערן קאַרטל אָדער אַקטיווירט עס."
+      },
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "אַקצענט־קאָליר אָנגעווענדט איבערן גאַנצן קאַרטל."
+      },
+      {
+        "property": "dark",
+        "title": "טונקל",
+        "description": "באַניץ באַזע־קאָלירן פֿון טונקעלן מאָדוס."
+      }
+    ]
+  }
+}

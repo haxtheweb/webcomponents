@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "কোর্স মডেল",
+    "description": "বিস্তারিত, অ্যানিমেশন ও জ্ঞান যাচাইসহ কোর্সের ধারণাগুলোর জন্য ইন্টারঅ্যাকটিভ লেআউট।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "শিরোনাম"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "তথ্য এলাকা"
+      },
+      {
+        "title": "বিস্তারিত এলাকা"
+      },
+      {
+        "title": "অ্যানিমেশন এলাকা"
+      },
+      {
+        "title": "জ্ঞান যাচাই এলাকা"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "লোগো এলাকা"
+      }
+    ]
+  }
+}

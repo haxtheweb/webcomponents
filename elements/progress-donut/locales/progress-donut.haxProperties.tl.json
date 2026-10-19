@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Progress Donut",
+    "description": "Donut ng pag-usad"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Ang pamagat ng element"
+      },
+      {
+        "property": "desc",
+        "title": "Paglalarawan",
+        "description": "Accessible na mahabang paglalarawan"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Pinagmulan ng Larawan",
+        "description": "Source ng larawan sa loob ng donut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt Text ng Larawan",
+        "description": "Alt text para sa larawan."
+      },
+      {
+        "property": "animated",
+        "title": "Animated",
+        "description": "Kung mag-a-animate ang pag-usad sa unang pag-load"
+      },
+      {
+        "property": "complete",
+        "title": "Kumpleto",
+        "description": "Isang array ng mga nakumpletong value."
+      },
+      {
+        "property": "total",
+        "title": "Kabuuan",
+        "description": "Kabuuan kapag kumpleto na ang lahat ng item."
+      },
+      {
+        "property": "startAngle",
+        "title": "Simulang Anggulo",
+        "description": "Anggulo ng donut kung saan nagsisimula ang pag-usad"
+      }
+    ]
+  }
+}

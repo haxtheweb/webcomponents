@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matemātika",
+    "description": "Attēlojiet matemātiku glītā veidā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matemātika",
+        "description": "Ievadiet vienādojumu LaTeX formātā"
+      }
+    ]
+  }
+}

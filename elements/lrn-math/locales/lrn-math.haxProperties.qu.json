@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Yupay yachay",
+    "description": "Yupay yachayta sumaqta rikuchiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Yupay yachay",
+        "description": "Ecuacionta LaTeX hina qillqay"
+      }
+    ]
+  }
+}

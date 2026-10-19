@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "بهرنۍ ویب منځپانګه ځای پر ځای کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "سرچینه",
+        "description": "د دې سرچینې لپاره URL."
+      }
+    ]
+  }
+}

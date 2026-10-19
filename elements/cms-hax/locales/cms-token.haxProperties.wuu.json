@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS 令牌",
+    "description": "辣后端渲染个 CMS 令牌"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "令牌",
+        "description": "来自阿拉 CMS 个令牌"
+      }
+    ]
+  }
+}

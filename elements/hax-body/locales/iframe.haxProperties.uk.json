@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Вбудувати зовнішній вебвміст."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Джерело",
+        "description": "URL цього ресурсу."
+      }
+    ]
+  }
+}

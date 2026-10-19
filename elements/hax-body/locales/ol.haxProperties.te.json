@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "సంఖ్యల జాబితా",
+    "description": "సంఖ్యల జాబితాను సృష్టించండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "సంఖ్య శైలి",
+        "description": "క్రమ జాబితా సంఖ్యల కోసం ఉపయోగించే శైలి.",
+        "options": {
+          "": "డిఫాల్ట్ (దశాంశ)",
+          "list-decimal-leading-zero": "ముందు సున్నాతో దశాంశ (01, 02, 03)",
+          "list-lower-alpha": "చిన్న అక్షరాలు (a, b, c)",
+          "list-upper-alpha": "పెద్ద అక్షరాలు (A, B, C)",
+          "list-lower-roman": "చిన్న రోమన్ (i, ii, iii)",
+          "list-upper-roman": "పెద్ద రోమన్ (I, II, III)"
+        }
+      }
+    ]
+  }
+}

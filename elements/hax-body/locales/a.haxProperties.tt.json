@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Гади сылтама",
+    "description": "Гади сылтама элементы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Сылтама",
+        "description": "Максат URL'ы."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Күренеп торган сылтама тексты."
+      },
+      {
+        "attribute": "target",
+        "title": "Максат",
+        "description": "Сылтаманы кайда ачарга.",
+        "options": {
+          "": "Шул ук тәрәзә",
+          "_blank": "Яңа тәрәзә - _blank",
+          "_top": "Өске тәрәзә - _top",
+          "_parent": "Ата-ана тәрәзә - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Исем тексты",
+        "description": "Үтемлелек һәм SEO өчен киңәш исеме."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Максатка мөнәсәбәт (куркынычсызлык/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

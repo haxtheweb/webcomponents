@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ocena z zvezdicami",
+    "description": "Gradnik za prikaz ocene ali gumb za ocenjevanje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Rezultat",
+        "description": "Trenutna vrednost rezultata."
+      },
+      {
+        "property": "possible",
+        "title": "Možno",
+        "description": "Največji možni rezultat."
+      },
+      {
+        "property": "numStars",
+        "title": "Število zvezdic",
+        "description": "Število prikazanih zvezdic."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktivno",
+        "description": "Dovoli uporabniku, da nastavi oceno."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Način lestvice rubrike",
+        "description": "Za vsako zvezdico izdaj metapodatke OER Schema RubricScale in RubricLevel (levelOrdinal/levelPoints)."
+      }
+    ]
+  }
+}

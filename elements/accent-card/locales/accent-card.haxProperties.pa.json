@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "ਕਾਰਡ",
+    "description": "ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਸ਼ੈਲੀ ਵਾਲਾ ਕਾਰਡ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਕਾਰਡ ਲਈ ਸਿਰਲੇਖ।"
+      },
+      {
+        "slot": "subheading",
+        "title": "ਉਪ-ਸਿਰਲੇਖ",
+        "description": "ਕਾਰਡ ਲਈ ਵਿਕਲਪਿਕ ਉਪ-ਸਿਰਲੇਖ।"
+      },
+      {
+        "slot": "content",
+        "title": "ਸਮੱਗਰੀ",
+        "description": "ਕਾਰਡ ਲਈ ਸਮੱਗਰੀ।"
+      },
+      {
+        "slot": "footer",
+        "title": "ਫੁੱਟਰ",
+        "description": "ਕਾਰਡ ਲਈ ਵਿਕਲਪਿਕ ਫੁੱਟਰ।"
+      },
+      {
+        "property": "imageSrc",
+        "title": "ਚਿੱਤਰ",
+        "description": "ਵਿਕਲਪਿਕ ਚਿੱਤਰ"
+      },
+      {
+        "property": "imageAlt",
+        "title": "ਚਿੱਤਰ Alt ਟੈਕਸਟ",
+        "description": "ਸਕ੍ਰੀਨ ਰੀਡਰਾਂ ਲਈ ਚਿੱਤਰ ਦਾ ਵਰਣਨ ਕਰਨ ਵਾਲਾ ਵਿਕਲਪਿਕ ਟੈਕਸਟ। ਸਿਰਫ਼ ਤਾਂ ਹੀ ਖਾਲੀ ਛੱਡੋ ਜੇ ਚਿੱਤਰ ਸਿਰਫ਼ ਸਜਾਵਟੀ ਹੈ।"
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "ਚਿੱਤਰ ਖਿਤਿਜੀ ਇਕਸਾਰਤਾ",
+        "options": {
+          "left": "ਖੱਬੇ",
+          "center": "ਵਿਚਕਾਰ",
+          "right": "ਸੱਜੇ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "ਚਿੱਤਰ ਲੰਬਕਾਰੀ ਇਕਸਾਰਤਾ",
+        "options": {
+          "top": "ਉੱਪਰ",
+          "center": "ਵਿਚਕਾਰ",
+          "bottom": "ਹੇਠਾਂ"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
+      },
+      {
+        "property": "dark",
+        "title": "ਗੂੜ੍ਹੀ ਥੀਮ",
+        "description": "ਡਾਰਕ ਥੀਮ ਚਾਲੂ ਕਰੋ"
+      },
+      {
+        "property": "horizontal",
+        "title": "ਲੇਟਵੀਂ",
+        "description": "ਖਿਤਿਜੀ ਦਿਸ਼ਾ?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "ਸਿਰਲੇਖ ਐਕਸੈਂਟ",
+        "description": "ਸਿਰਲੇਖ 'ਤੇ ਐਕਸੈਂਟ ਰੰਗ ਲਾਗੂ ਕਰਨਾ ਹੈ?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "ਪਿਛੋਕੜ ਐਕਸੈਂਟ",
+        "description": "ਕਾਰਡ ਦੇ ਪਿਛੋਕੜ 'ਤੇ ਐਕਸੈਂਟ ਰੰਗ ਲਾਗੂ ਕਰਨਾ ਹੈ?"
+      },
+      {
+        "property": "noBorder",
+        "title": "ਬਾਰਡਰ ਐਕਸੈਂਟ ਨਹੀਂ",
+        "description": "ਬਾਰਡਰ ਐਕਸੈਂਟ ਹਟਾਉਣਾ ਹੈ?"
+      },
+      {
+        "property": "flat",
+        "title": "ਸਮਤਲ",
+        "description": "ਬਾਕਸ ਪਰਛਾਵਾਂ ਹਟਾਉਣਾ ਹੈ?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "ਕੋਨਾ",
+        "description": "ਕਾਰਡ ਦੇ ਕੋਨੇ ਲਈ ਸਮੱਗਰੀ।"
+      }
+    ]
+  }
+}

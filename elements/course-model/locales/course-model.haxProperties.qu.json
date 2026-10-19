@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "yachay modelo",
+    "description": "Yachay yuyaykunapaq kuyuq layout, detallekunawan, kuyuchiywan, yachay qhawarichiykunawan ima."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "suti"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Willakuy sitio"
+      },
+      {
+        "title": "Detallekuna sitio"
+      },
+      {
+        "title": "Kuyuchiy sitio"
+      },
+      {
+        "title": "Yachay Qhawarichiy sitio"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logo sitio"
+      }
+    ]
+  }
+}

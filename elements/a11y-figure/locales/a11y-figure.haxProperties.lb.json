@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Beschreiwend Figur",
+    "description": "Accessibel Figur mat laanger Beschreiwung"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Bild"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternativtext"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Bildënnerschrëft",
+        "description": "Text vun der Bildënnerschrëft, deen ëmmer siichtbar ass."
+      },
+      {
+        "slot": "details",
+        "title": "Beschreiwung",
+        "description": "Detailléiert Bildbeschreiwung, déi verstoppt oder ugewise ka ginn"
+      },
+      {
+        "slot": "summary",
+        "title": "Beschreiwungsknäppchen",
+        "description": "Standard fir de Knäppchen, deen de Beschreiwungstext weist/verstoppt, z. B. „Info“, „Metadaten“ asw."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Optionalen Resuméstext, wann d'Detailer op sinn"
+      },
+      {
+        "property": "closeText",
+        "title": "Optionalen Resuméstext, wann d'Detailer zou sinn"
+      }
+    ]
+  }
+}

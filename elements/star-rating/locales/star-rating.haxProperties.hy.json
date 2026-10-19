@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Աստղային գնահատական",
+    "description": "Գնահատականի ցուցադրման վիջեթ կամ գնահատելու կոճակ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Միավոր",
+        "description": "Ընթացիկ միավորի արժեքը։"
+      },
+      {
+        "property": "possible",
+        "title": "Հնարավոր",
+        "description": "Առավելագույն հնարավոր միավորը։"
+      },
+      {
+        "property": "numStars",
+        "title": "Աստղերի քանակ",
+        "description": "Ցուցադրվող աստղերի քանակը։"
+      },
+      {
+        "property": "interactive",
+        "title": "Ինտերակտիվ",
+        "description": "Թույլատրել օգտատիրոջը սահմանել գնահատականը։"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Գնահատման սանդղակի ռեժիմ",
+        "description": "Արտածել OER Schema RubricScale և RubricLevel մետատվյալներ (levelOrdinal/levelPoints) յուրաքանչյուր աստղի համար։"
+      }
+    ]
+  }
+}

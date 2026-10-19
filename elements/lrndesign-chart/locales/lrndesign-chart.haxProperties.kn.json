@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "description": "CSV ಆಧಾರದ ಮೇಲೆ ಪ್ರವೇಶಿಸಬಹುದಾದ ಚಾರ್ಟ್ ರಚಿಸುತ್ತದೆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
+      },
+      {
+        "property": "dark",
+        "title": "ಡಾರ್ಕ್ ಥೀಮ್",
+        "description": "ಡಾರ್ಕ್ ಥೀಮ್ ಸಕ್ರಿಯಗೊಳಿಸಿ"
+      },
+      {
+        "property": "dataSource",
+        "title": "CSV ಫೈಲ್",
+        "description": "CSV ಯಿಂದ ಡೇಟಾ ಲೋಡ್ ಮಾಡಿ."
+      },
+      {
+        "slot": "heading",
+        "title": "ಚಾರ್ಟ್ ಶೀರ್ಷಿಕೆ",
+        "description": "ನಿಮ್ಮ ಚಾರ್ಟ್‌ಗೆ ಪ್ರವೇಶಿಸಬಹುದಾದ ಪರ್ಯಾಯ ಪಠ್ಯ."
+      },
+      {
+        "slot": "desc",
+        "title": "ಚಾರ್ಟ್ ವಿವರಣೆ",
+        "description": "ನಿಮ್ಮ ಚಾರ್ಟ್‌ನ ಪ್ರವೇಶಿಸಬಹುದಾದ ವಿವರಣೆ."
+      },
+      {
+        "property": "scale",
+        "title": "ಮಾಪಕದ ಹೆಸರು",
+        "description": "ಚಾರ್ಟ್‌ನ ಅಗಲ:ಎತ್ತರ ಅನುಪಾತ ($ct-scales ಮತ್ತು $ct-scales-names ಗಾಗಿ https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings ನೋಡಿ).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "reverseData",
+        "title": "ಡೇಟಾ ಹಿಮ್ಮುಖಗೊಳಿಸಿ",
+        "description": "ಲೇಬಲ್‌ಗಳು, ಸರಣಿಯ ಕ್ರಮ ಹಾಗೂ ಸಂಪೂರ್ಣ ಸರಣಿ ಡೇಟಾ ಅರೇಗಳನ್ನು ಒಳಗೊಂಡಂತೆ ಡೇಟಾವನ್ನು ಹಿಮ್ಮುಖಗೊಳಿಸಿ."
+      },
+      {
+        "slot": "",
+        "title": "HTML ಕೋಷ್ಟಕ",
+        "description": "ಐಚ್ಛಿಕ: ಡೇಟಾವನ್ನು HTML ಕೋಷ್ಟಕವಾಗಿ ಲೋಡ್ ಮಾಡಿ."
+      }
+    ]
+  }
+}

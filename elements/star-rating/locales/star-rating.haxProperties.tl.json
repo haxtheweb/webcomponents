@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Star Rating",
+    "description": "Widget na nagpapakita ng rating o button para mag-rate."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Iskor",
+        "description": "Kasalukuyang value ng iskor."
+      },
+      {
+        "property": "possible",
+        "title": "Posible",
+        "description": "Pinakamataas na posibleng iskor."
+      },
+      {
+        "property": "numStars",
+        "title": "Bilang ng mga Bituin",
+        "description": "Bilang ng mga bituing ipapakita."
+      },
+      {
+        "property": "interactive",
+        "title": "Interactive",
+        "description": "Payagan ang user na mag-set ng rating."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubric Scale Mode",
+        "description": "Maglabas ng OER Schema RubricScale at RubricLevel metadata (levelOrdinal/levelPoints) para sa bawat bituin."
+      }
+    ]
+  }
+}

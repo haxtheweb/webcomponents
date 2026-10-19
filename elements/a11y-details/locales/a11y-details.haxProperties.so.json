@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Badhanka Faahfaahinta La Heli Karo",
+    "description": "Muujin tartiib ah oo la heli karo oo leh faahfaahin iyo soo koobid"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Badhan",
+        "description": "Soo koobidda waxyaabaha haddii la qariyo, tusaale \"info\", \"medatadata\", iwm."
+      },
+      {
+        "slot": "details",
+        "title": "Sharraxaad",
+        "description": "Sharraxaad faahfaahsan oo la qarin karo ama la muujin karo"
+      },
+      {
+        "slot": "",
+        "title": "Badhanka Sharraxaadda",
+        "description": "Caadiga badhanka muujiya/qariya qoraalka sharraxaadda, tusaale \"info\", \"medatadata\", iwm."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Qoraal soo koobid ikhtiyaari ah marka faahfaahintu furan tahay"
+      },
+      {
+        "property": "closeText",
+        "title": "Qoraal soo koobid ikhtiyaari ah marka faahfaahintu xidhan tahay"
+      }
+    ]
+  }
+}

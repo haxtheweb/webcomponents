@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "בלוק CMS",
+    "description": "בלוק CMS המעובד בצד השרת"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "מודול",
+        "description": "מודול לטעינה מה-CMS שלנו"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "ה-Delta של הבלוק לטעינה מה-CMS שלנו"
+      }
+    ]
+  }
+}

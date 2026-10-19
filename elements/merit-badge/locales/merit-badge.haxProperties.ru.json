@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Значок отличия",
+    "description": "Визуальный значок, сообщающий о получении навыка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Название значка",
+        "description": "Название, отображаемое на значке."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Изображение значка",
+        "description": "URL изображения для значка."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Сведения о значке",
+        "description": "Подробности о значке."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Гиперссылка",
+        "description": "Ссылка, связанная со значком."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Навыки значка",
+        "description": "Навыки, отображаемые на значке."
+      },
+      {
+        "property": "skill",
+        "title": "Навык (OER Schema)",
+        "description": "OER Schema: навык, полученный в результате достижения этой учебной цели."
+      }
+    ]
+  }
+}

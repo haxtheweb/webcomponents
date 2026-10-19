@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "时间线",
+    "description": "带图片搭文字个事件时间线"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "时间线标题",
+        "description": "时间线个标题。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "可选个强调色。"
+      },
+      {
+        "property": "dark",
+        "title": "深色主题",
+        "description": "启用深色主题"
+      },
+      {
+        "slot": "",
+        "title": "时间线描述",
+        "description": "描述时间线个可选文字。"
+      },
+      {
+        "property": "events",
+        "title": "时间线事件",
+        "description": "时间线里个事件"
+      }
+    ]
+  }
+}

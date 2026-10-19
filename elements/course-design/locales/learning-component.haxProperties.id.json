@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Komponen Pembelajaran",
+    "description": "Kartu bagi pengajar untuk mengomunikasikan pedagogi dan strategi pembelajaran."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Jenis",
+        "description": "Jenis kartu yang akan digunakan."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subjudul",
+        "description": "Subjudul kartu."
+      },
+      {
+        "property": "url",
+        "title": "Tautan",
+        "description": "Tautan opsional untuk kartu (Tautan tidak tersedia untuk Tujuan Pembelajaran)."
+      },
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Atur Judul, ini menggantikan judul berdasarkan jenis"
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Atur ikon, ini menggantikan ikon berdasarkan jenis"
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Atur warna aksen, ini menggantikan warna berdasarkan jenis"
+      },
+      {
+        "slot": "",
+        "title": "Isi"
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Immagine avanzata",
+    "description": "Un modo per presentare immagini con vari miglioramenti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origine",
+        "description": "L'URL dell'immagine."
+      },
+      {
+        "property": "alt",
+        "title": "Testo alternativo",
+        "description": "Testo che descrive l'immagine agli utenti non vedenti."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Collega l'immagine a un URL"
+      },
+      {
+        "property": "card",
+        "title": "Scheda",
+        "description": "Applica un'ombra per dare l'aspetto di una scheda in rilievo."
+      },
+      {
+        "property": "box",
+        "title": "Riquadro",
+        "description": "Applica un riquadro visivo attorno all'immagine."
+      },
+      {
+        "property": "offset",
+        "title": "Scostamento",
+        "description": "Applica uno scostamento a sinistra o a destra all'immagine.",
+        "options": {
+          "none": "nessuno",
+          "wide": "ampio",
+          "narrow": "stretto"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Fonte",
+        "description": "Citazione della fonte dell'immagine."
+      },
+      {
+        "property": "caption",
+        "title": "Didascalia",
+        "description": "Didascalia dell'immagine."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titolo della figura",
+        "description": "Titolo per l'etichetta della figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descrizione della figura",
+        "description": "Descrizione per l'etichetta della figura."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Immagine di anteprima",
+        "description": "Sorgente dell'immagine in miniatura. Mostra la miniatura ma apre la sorgente completa in una finestra modale."
+      },
+      {
+        "property": "round",
+        "title": "Immagine rotonda",
+        "description": "Ritaglia l'aspetto dell'immagine in forma circolare."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Disattiva finestra modale dell'immagine",
+        "description": "Impedisce che il clic apra l'immagine in una finestra di ispezione."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Visualizza come markdown",
+        "description": "Visualizza la didascalia e la citazione come markdown."
+      }
+    ]
+  }
+}

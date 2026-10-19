@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Donati ya Maendeleo",
+    "description": "Donati ya maendeleo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa cha kipengele"
+      },
+      {
+        "property": "desc",
+        "title": "Maelezo",
+        "description": "Maelezo marefu yanayofikika"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Chanzo cha Picha",
+        "description": "Chanzo cha picha ndani ya donati."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Maandishi Mbadala ya Picha",
+        "description": "Maandishi mbadala ya picha."
+      },
+      {
+        "property": "animated",
+        "title": "Yenye uhuishaji",
+        "description": "Kama maendeleo yanahuishwa wakati wa kupakia mara ya kwanza"
+      },
+      {
+        "property": "complete",
+        "title": "Imekamilika",
+        "description": "Safu ya thamani zilizokamilika."
+      },
+      {
+        "property": "total",
+        "title": "Jumla",
+        "description": "Jumla wakati vipengee vyote vimekamilika."
+      },
+      {
+        "property": "startAngle",
+        "title": "Pembe ya Kuanza",
+        "description": "Pembe ya donati ambapo maendeleo huanzia"
+      }
+    ]
+  }
+}

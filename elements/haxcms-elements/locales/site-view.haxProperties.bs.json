@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Prikaz sajta",
+    "description": "Dinamički blok koji pretražuje i prikazuje podatke sajta na osnovu kriterija"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL prikaza",
+        "description": "Parametri upita za izvor podataka prikaza. Možete ih dobiti s kontrolne table prikaza."
+      },
+      {
+        "property": "renderer",
+        "title": "Način prikaza",
+        "description": "Kako trebaju biti prikazani rezultati prikaza"
+      },
+      {
+        "property": "entity",
+        "title": "Vrsta entiteta",
+        "description": "Vrsta entiteta koja se koristi za raščlanjivanje odgovora",
+        "options": {
+          "": "Zadano (stavke)",
+          "item": "Stavka",
+          "page": "Stranica",
+          "file": "Datoteka",
+          "tag": "Oznaka",
+          "block": "Blok",
+          "view": "Prikaz",
+          "theme": "Tema",
+          "region": "Regija",
+          "customElement": "Prilagođeni element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Razbij prikaz sajta",
+        "description": "Pretvori u statički sadržaj za direktno uređivanje; zaustavlja automatsko ažuriranje iz izvora."
+      }
+    ]
+  }
+}

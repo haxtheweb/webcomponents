@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "การ์ด",
+    "description": "การ์ดที่มีการจัดรูปแบบเน้นสีเพิ่มเติมได้"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "หัวเรื่อง",
+        "description": "หัวเรื่องของการ์ด"
+      },
+      {
+        "slot": "subheading",
+        "title": "หัวเรื่องรอง",
+        "description": "หัวเรื่องรองของการ์ด (ไม่บังคับ)"
+      },
+      {
+        "slot": "content",
+        "title": "เนื้อหา",
+        "description": "เนื้อหาของการ์ด"
+      },
+      {
+        "slot": "footer",
+        "title": "ส่วนท้าย",
+        "description": "ส่วนท้ายของการ์ด (ไม่บังคับ)"
+      },
+      {
+        "property": "imageSrc",
+        "title": "รูปภาพ",
+        "description": "รูปภาพ (ไม่บังคับ)"
+      },
+      {
+        "property": "imageAlt",
+        "title": "ข้อความแสดงแทนรูปภาพ",
+        "description": "ข้อความแสดงแทนที่อธิบายรูปภาพสำหรับโปรแกรมอ่านหน้าจอ เว้นว่างไว้เฉพาะเมื่อรูปภาพใช้เพื่อการตกแต่งเท่านั้น"
+      },
+      {
+        "property": "imageAlign",
+        "title": "การจัดแนวรูปภาพ",
+        "description": "การจัดแนวรูปภาพในแนวนอน",
+        "options": {
+          "left": "ซ้าย",
+          "center": "กึ่งกลาง",
+          "right": "ขวา"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "การจัดแนวรูปภาพแนวตั้ง",
+        "description": "การจัดแนวรูปภาพในแนวตั้ง",
+        "options": {
+          "top": "บน",
+          "center": "กึ่งกลาง",
+          "bottom": "ล่าง"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีเน้นเสริม"
+      },
+      {
+        "property": "dark",
+        "title": "ธีมมืด",
+        "description": "เปิดใช้ธีมมืด"
+      },
+      {
+        "property": "horizontal",
+        "title": "แนวนอน",
+        "description": "แนวนอนหรือไม่?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "เน้นสีหัวเรื่อง",
+        "description": "ใช้สีเน้นกับหัวเรื่องหรือไม่?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "เน้นสีพื้นหลัง",
+        "description": "ใช้สีเน้นกับพื้นหลังการ์ดหรือไม่?"
+      },
+      {
+        "property": "noBorder",
+        "title": "ไม่มีเส้นขอบเน้นสี",
+        "description": "นำเส้นขอบเน้นสีออกหรือไม่?"
+      },
+      {
+        "property": "flat",
+        "title": "แบบเรียบ",
+        "description": "นำเงาของกล่องออกหรือไม่?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "มุม",
+        "description": "เนื้อหาสำหรับมุมการ์ด"
+      }
+    ]
+  }
+}

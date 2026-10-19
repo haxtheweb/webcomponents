@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "ບົດບາດອາຊີບ",
+    "description": "ບົດບາດໜຶ່ງພາຍໃນອົງກອນ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້"
+      },
+      {
+        "property": "startDate",
+        "title": "ວັນທີເລີ່ມຕົ້ນ"
+      },
+      {
+        "property": "endDate",
+        "title": "ວັນທີສິ້ນສຸດ (ບໍ່ບັງຄັບ)"
+      },
+      {
+        "property": "skills",
+        "title": "ທັກສະທີ່ກ່ຽວຂ້ອງ",
+        "description": "ເລືອກປຸ່ມ + ເພື່ອເລີ່ມເພີ່ມທັກສະ"
+      }
+    ]
+  }
+}

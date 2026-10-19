@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Ներդիր",
+    "description": "Մեկ ներդիր։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ներդիրի պատկերակ"
+      },
+      {
+        "property": "disabled",
+        "title": "Անջատված"
+      },
+      {
+        "property": "label",
+        "title": "Ներդիրի պիտակ"
+      },
+      {
+        "slot": "",
+        "title": "Ներդիրի բովանդակություն",
+        "description": "Ներդիրի բովանդակությունը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Եզակի ID"
+      },
+      {
+        "property": "flag",
+        "title": "Դրոշակի ընտրովի տեքստ"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Դրոշակի ընտրովի պատկերակ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "လုပ်ဆောင်ရန် ဖိတ်ခေါ်ချက်",
+    "description": "လုပ်ဆောင်ရန် လင့်ခ်ပါ ရိုးရှင်းသော ခလုတ်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "အညွှန်း",
+        "description": "လင့်ခ် တံဆိပ်"
+      },
+      {
+        "property": "link",
+        "title": "လင့်ခ်",
+        "description": "မည်သည့် အရင်းအမြစ်သို့မဆို လင့်ခ် ထည့်ပါ"
+      },
+      {
+        "property": "hideIcon",
+        "title": "အိုင်ကွန် ဝှက်ရန်",
+        "description": "စာသားကို accent ပေးရန် သုံးသော အိုင်ကွန်ကို ဝှက်ရန်"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "အိုင်ကွန်",
+        "description": "လုပ်ဆောင်ချက် လင့်ခ် အိုင်ကွန်"
+      }
+    ]
+  }
+}

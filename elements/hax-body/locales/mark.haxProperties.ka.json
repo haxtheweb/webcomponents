@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "მონიშვნა",
+    "description": "ხაზში ტექსტის მონიშვნა."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ტექსტი",
+        "description": "მონიშნული ტექსტი."
+      }
+    ]
+  }
+}

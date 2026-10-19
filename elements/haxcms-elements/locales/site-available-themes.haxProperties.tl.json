@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Mga Available na Tema",
+    "description": "Ipakita ang mga available na tema ng HAXcms na may live preview switching"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "View Mode",
+        "description": "Piliin kung paano ipapakita ang mga tema",
+        "options": {
+          "gallery": "Gallery",
+          "table": "Talahanayan"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Ipakita ang mga Detalye",
+        "description": "Ipakita ang mga paglalarawan ng tema at karagdagang impormasyon"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Ipakita ang mga Nakatago at Legacy na Tema",
+        "description": "Ipakita ang mga nakatago, legacy, at pangit na tema bukod sa mga default ng dashboard"
+      },
+      {
+        "property": "columns",
+        "title": "Mga Column (Gallery)",
+        "description": "Bilang ng mga column sa gallery view"
+      }
+    ]
+  }
+}

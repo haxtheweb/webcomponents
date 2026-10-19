@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS koʻrinishi",
+    "description": "Backendda koʻrsatiladigan CMS koʻrinishlari"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Ism",
+        "description": "CMS imizdagi koʻrinish nomi"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Koʻrinish",
+        "description": "CMS imizdagi oʻsha koʻrinish ichidagi displey"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Källhänvisning",
+    "description": "Källhänvisningselement med tre presentationslägen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel på det citerade verket."
+      },
+      {
+        "property": "source",
+        "title": "Källänk",
+        "description": "Käll-URL för det citerade verket."
+      },
+      {
+        "property": "date",
+        "title": "Hämtningsdatum",
+        "description": "Datum då källan hämtades."
+      },
+      {
+        "property": "scope",
+        "title": "Omfång",
+        "description": "Elementomfång att hänvisa till.",
+        "options": {
+          "sibling": "Syskonelement",
+          "parent": "Överordnat element"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licens",
+        "description": "Licens för det citerade verket."
+      },
+      {
+        "property": "creator",
+        "title": "Upphovsperson",
+        "description": "Upphovsperson eller ägare till det citerade verket."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema-typ",
+        "description": "OER Schema-klass för den här källhänvisningen. Standard är oer:ReferencedMaterial; åsidosätt endast med en giltig OER-klass (t.ex. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

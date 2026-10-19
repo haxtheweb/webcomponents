@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Element karriere",
+    "description": "Një organizatë e vetme dhe rolet e lidhura me të"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Emri i organizatës"
+      },
+      {
+        "property": "location",
+        "title": "Vendndodhja"
+      },
+      {
+        "property": "source",
+        "title": "Burimi"
+      }
+    ]
+  }
+}

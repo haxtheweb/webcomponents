@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Vue du site",
+    "description": "Un bloc dynamique qui interroge et affiche les données du site selon des critères"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL de la vue",
+        "description": "Paramètres de requête du flux de données de la vue. Vous pouvez les obtenir depuis le tableau de bord des vues."
+      },
+      {
+        "property": "renderer",
+        "title": "Mode d'affichage",
+        "description": "Mode d'affichage des résultats de la vue"
+      },
+      {
+        "property": "entity",
+        "title": "Type d'entité",
+        "description": "Type d'entité utilisé pour analyser la réponse",
+        "options": {
+          "": "Par défaut (éléments)",
+          "item": "Élément",
+          "page": "Page",
+          "file": "Fichier",
+          "tag": "Étiquette",
+          "block": "Bloc",
+          "view": "Vue",
+          "theme": "Thème",
+          "region": "Région",
+          "customElement": "Élément personnalisé"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Détacher la vue du site",
+        "description": "Convertir en contenu statique pour une modification directe ; arrête la mise à jour automatique depuis la source."
+      }
+    ]
+  }
+}

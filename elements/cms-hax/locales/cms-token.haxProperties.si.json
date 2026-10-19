@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS ටෝකනය",
+    "description": "පසුබිමේ විදැහූ CMS ටෝකනය"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ටෝකනය",
+        "description": "අපගේ CMS වෙතින් ටෝකනය"
+      }
+    ]
+  }
+}

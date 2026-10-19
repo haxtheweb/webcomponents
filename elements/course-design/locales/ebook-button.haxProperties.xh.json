@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iqhosha le-Ebook",
+    "description": "Iqhosha elidibanisa ne-Ebook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko seqhosha."
+      },
+      {
+        "property": "link",
+        "title": "Ikhonkco",
+        "description": "Ikhonkco lokuya kulo xa kucofwa."
+      },
+      {
+        "property": "icon",
+        "title": "I-icon",
+        "description": "I-icon emele eli khonkco"
+      }
+    ]
+  }
+}

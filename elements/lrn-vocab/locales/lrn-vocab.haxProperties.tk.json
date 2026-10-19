@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Söz",
+    "description": "Söz düşünjesi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termin"
+      },
+      {
+        "slot": "",
+        "title": "Kesgitleme",
+        "description": "Söz basylanda görkeziljek kesgitleme."
+      },
+      {
+        "property": "description",
+        "title": "Düşündiriş (OER Schema)",
+        "description": "OER Schema: söz düşünjesiniň gysga düşündirişi. Boş goýulsa, kesgitleme tekstinden awtomatik doldurylýar."
+      }
+    ]
+  }
+}

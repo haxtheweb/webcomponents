@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Reka, Bangun, Musnahkan",
+    "description": "Pelaksanaan sistem reka bentuk untuk HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Pilihan untuk dipaparkan",
+        "options": {
+          "*": "Panduan gaya penuh"
+        }
+      }
+    ]
+  }
+}

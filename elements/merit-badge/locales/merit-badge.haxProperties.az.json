@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Nailiyyət nişanı",
+    "description": "Bacarığın əldə edildiyini bildirən vizual nişan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Nişanın başlığı",
+        "description": "Nişanda göstərilən başlıq."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Nişanın şəkli",
+        "description": "Nişan üçün şəkil URL-i."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Nişanın təfərrüatları",
+        "description": "Nişan haqqında təfərrüatlar."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hiperkeçid",
+        "description": "Nişanla əlaqəli keçid."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Nişanın bacarıqları",
+        "description": "Nişanda göstərilən bacarıqlar."
+      },
+      {
+        "property": "skill",
+        "title": "Bacarıq (OER Schema)",
+        "description": "OER Schema: bu təlim məqsədinin tamamlanması ilə əldə edilən bacarıq."
+      }
+    ]
+  }
+}

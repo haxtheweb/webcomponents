@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Arokite Github",
+    "description": "Whakaahua wātea me te whakaahuatanga roa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Whakahaere",
+        "description": "Ingoa mīhini whakahaere Github"
+      },
+      {
+        "property": "repo",
+        "title": "Pūranga",
+        "description": "Ingoa mīhini repo"
+      },
+      {
+        "property": "extended",
+        "title": "Tirohanga Whānui",
+        "description": "Ka whakauru i te readme ki te huānga"
+      }
+    ]
+  }
+}

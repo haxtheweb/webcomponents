@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Bokabularyo",
+    "description": "Terminong bokabularyo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termino"
+      },
+      {
+        "slot": "",
+        "title": "Kahulugan",
+        "description": "Ang depinisyong ipapakita kapag na-click ang termino."
+      },
+      {
+        "property": "description",
+        "title": "Paglalarawan (OER Schema)",
+        "description": "OER Schema: maikling paglalarawan ng terminong bokabularyo. Awtomatikong pupunan mula sa teksto ng depinisyon kung iiwanang blangko."
+      }
+    ]
+  }
+}

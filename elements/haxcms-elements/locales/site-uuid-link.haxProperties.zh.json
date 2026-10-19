@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX 链接",
+    "description": "指向你正在编辑的站点中特定资源的链接。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "项目",
+        "description": "用于呈现链接 / 标题数据的项目"
+      }
+    ]
+  }
+}

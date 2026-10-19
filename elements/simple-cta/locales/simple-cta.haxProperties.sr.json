@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Позив на акцију",
+    "description": "Једноставно дугме са везом за предузимање акције."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Ознака",
+        "description": "Ознака везе"
+      },
+      {
+        "property": "link",
+        "title": "Веза",
+        "description": "Унесите везу ка било ком ресурсу"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Сакриј иконицу",
+        "description": "Сакриј иконицу која наглашава текст"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Иконица везе акције"
+      }
+    ]
+  }
+}

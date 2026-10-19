@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "መሠረታዊ ምስል",
+    "description": "መሠረታዊ የምስል አካል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ምንጭ",
+        "description": "የምስል URL።"
+      },
+      {
+        "attribute": "alt",
+        "title": "አማራጭ ጽሑፍ",
+        "description": "ለተደራሽነት እና ለSEO አማራጭ ጽሑፍ።"
+      },
+      {
+        "attribute": "height",
+        "title": "ቁመት",
+        "description": "ቁመት በፒክሰል። ተፈጥሯዊ መጠንን ለመጠቀም ባዶ ይተዉ።"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "የምስል አጫጫን",
+        "description": "ምስሉ መቼ እንደሚጫን ይምረጡ።",
+        "options": {
+          "lazy": "ሲታይ ጫን",
+          "auto": "ራስ-ሰር"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "ምላሽ ሰጪ ምንጮች (srcset)",
+        "description": "አሳሾች ለማያ ገጹ ምርጡን መጠን እንዲመርጡ የምስል URLዎችን እና ገላጮችን (ለምሳሌ 480w ወይም 2x) ይዘርዝሩ። እንደ መደበኛው srcset ባህሪ ይቀመጣል።"
+      }
+    ]
+  }
+}

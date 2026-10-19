@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Stjerrewurdearring",
+    "description": "Widget foar it toanen fan in wurdearring of knop om te wurdearjen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Skoare",
+        "description": "Hjoeddeiske skoarewearde."
+      },
+      {
+        "property": "possible",
+        "title": "Mooglik",
+        "description": "Maksimaal mooglike skoare."
+      },
+      {
+        "property": "numStars",
+        "title": "Tal stjerren",
+        "description": "Tal stjerren om te toanen."
+      },
+      {
+        "property": "interactive",
+        "title": "Ynteraktyf",
+        "description": "Brûkersynteraksje tastean om de wurdearring yn te stellen."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubrykskaalmodus",
+        "description": "OER-skema-metadata RubricScale en RubricLevel (levelOrdinal/levelPoints) útjaan foar elke stjer."
+      }
+    ]
+  }
+}

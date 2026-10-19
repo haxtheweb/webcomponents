@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kursmodell",
+    "description": "Interaktives Layout für Kurskonzepte mit Details, Animation und Wissenschecks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "Titel"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Informationsbereich"
+      },
+      {
+        "title": "Detailbereich"
+      },
+      {
+        "title": "Animationsbereich"
+      },
+      {
+        "title": "Wissenscheck-Bereich"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logobereich"
+      }
+    ]
+  }
+}

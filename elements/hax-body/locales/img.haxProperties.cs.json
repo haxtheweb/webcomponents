@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Základní obrázek",
+    "description": "Základní prvek obrázku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Zdroj",
+        "description": "URL obrázku."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alternativní text",
+        "description": "Alternativní text pro přístupnost a SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Výška",
+        "description": "Výška v pixelech. Ponechte prázdné pro přirozenou velikost."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Načítání obrázku",
+        "description": "Zvolte, kdy se obrázek načte.",
+        "options": {
+          "lazy": "Načíst, až bude viditelný",
+          "auto": "Automaticky"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responzivní zdroje (srcset)",
+        "description": "Uveďte URL obrázků a deskriptory (např. 480w nebo 2x), aby prohlížeče vybraly nejlepší velikost pro obrazovku. Ukládá se jako standardní atribut srcset."
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ρετρό κάρτα",
+    "description": "Απλή κάρτα με ρετρό σχεδίαση."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Κύριος τίτλος κάρτας."
+      },
+      {
+        "property": "url",
+        "description": "URL που ανοίγει όταν γίνεται κλικ στην κάρτα."
+      },
+      {
+        "property": "subtitle",
+        "title": "Υπότιτλος",
+        "description": "Υπότιτλος κάρτας."
+      },
+      {
+        "property": "tags",
+        "title": "Ετικέτες",
+        "description": "Ετικέτες χωρισμένες με κόμμα."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Πηγή πολυμέσου",
+        "description": "Κύρια πηγή πολυμέσου."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Πηγή κατά την αιώρηση",
+        "description": "Πηγή πολυμέσου που εμφανίζεται όταν ο δείκτης βρίσκεται πάνω από την κάρτα ή όταν ενεργοποιείται."
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "Χρώμα έμφασης που εφαρμόζεται σε όλη την κάρτα."
+      },
+      {
+        "property": "dark",
+        "title": "Σκούρο",
+        "description": "Χρήση βασικών χρωμάτων σκοτεινής λειτουργίας."
+      }
+    ]
+  }
+}

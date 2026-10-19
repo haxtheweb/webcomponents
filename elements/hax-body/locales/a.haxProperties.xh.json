@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Ikhonkco elisisiseko",
+    "description": "Into yekhonkco esisiseko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Ikhonkco",
+        "description": "I-URL yendawo eyiwa kuyo."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Umbhalo",
+        "description": "Umbhalo wekhonkco obonakalayo."
+      },
+      {
+        "attribute": "target",
+        "title": "Ekujoliswe kuko",
+        "description": "Apho ikhonkco liza kuvulelwa khona.",
+        "options": {
+          "": "Ifestile enye",
+          "_blank": "Ifestile entsha - _blank",
+          "_top": "Ifestile ephezulu - _top",
+          "_parent": "Ifestile engumzali - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Umbhalo wesihloko",
+        "description": "Isihloko sengcebiso sokufikeleleka ne-SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Ubudlelwane nendawo eyiwa kuyo (ukhuseleko/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

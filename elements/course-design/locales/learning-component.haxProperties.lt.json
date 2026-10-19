@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Mokymosi komponentas",
+    "description": "Kortelė, kuria dėstytojai perteikia pedagogiką ir mokymo strategijas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipas",
+        "description": "Naudojamos kortelės tipas."
+      },
+      {
+        "property": "subtitle",
+        "title": "Paantraštė",
+        "description": "Kortelės paantraštė."
+      },
+      {
+        "property": "url",
+        "title": "Nuoroda",
+        "description": "Neprivaloma kortelės nuoroda (mokymosi tikslams nuoroda negalima)."
+      },
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Nustatyti pavadinimą; tai pakeičia pagal tipą nustatytą pavadinimą"
+      },
+      {
+        "property": "icon",
+        "title": "Piktograma",
+        "description": "Nustatyti piktogramą; tai pakeičia pagal tipą nustatytą piktogramą"
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Nustatyti akcento spalvą; tai pakeičia pagal tipą nustatytą spalvą"
+      },
+      {
+        "slot": "",
+        "title": "Turinys"
+      }
+    ]
+  }
+}

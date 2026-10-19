@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Upakuaji wa Karatasi ya Kazi",
+    "description": "Kitufe cha kuonyesha faili zinazopatikana kwa kupakuliwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa cha upakuaji."
+      },
+      {
+        "property": "link",
+        "title": "Kiungo",
+        "description": "Kiungo cha upakuaji."
+      }
+    ]
+  }
+}

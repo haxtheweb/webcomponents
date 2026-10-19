@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ઇબુક બટન",
+    "description": "ઇબુક સાથે લિંક કરતું બટન."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "બટનનું શીર્ષક."
+      },
+      {
+        "property": "link",
+        "title": "લિંક",
+        "description": "ક્લિક કરવા પર રીડાયરેક્ટ થવાની લિંક."
+      },
+      {
+        "property": "icon",
+        "title": "આઇકન",
+        "description": "આ લિંકને દર્શાવતો આઇકન"
+      }
+    ]
+  }
+}

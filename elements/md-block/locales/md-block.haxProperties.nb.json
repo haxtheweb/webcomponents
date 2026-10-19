@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "En blokk med Markdown-innhold, direkte eller lastet eksternt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Rå Markdown"
+      },
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "Kildefil for Markdown"
+      }
+    ]
+  }
+}

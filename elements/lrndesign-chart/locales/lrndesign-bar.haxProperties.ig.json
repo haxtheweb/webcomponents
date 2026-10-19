@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Chaatị mmanya",
+    "description": "Na-emepụta chaatị dị mfe iru dabere na CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Agba Mkpụrụ",
+        "description": "Agba mkpụrụ nhọrọ."
+      },
+      {
+        "title": "Isiokwu Gbara Ọchịchịrị",
+        "description": "Gbanye isiokwu ọchịchịrị"
+      },
+      {
+        "title": "Faịlụ CSV",
+        "description": "Budata data site na CSV."
+      },
+      {
+        "title": "Aha chaatị",
+        "description": "Ederede alt dị mfe iru maka chaatị gị."
+      },
+      {
+        "title": "Nkọwa chaatị",
+        "description": "Nkọwa dị mfe iru nke chaatị gị."
+      },
+      {
+        "title": "Aha ọ̀tụ̀tụ̀",
+        "description": "Oke obosara:ogologo nke chaatị (Lee https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings maka $ct-scales na $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Gosi ndabere grid"
+      },
+      {
+        "title": "Mmanya n'ahịrị ụkwụ",
+        "description": "Na-atụgharị axis nke chaatị mmanya iji see chaatị mmanya n'ahịrị ụkwụ. Mara na ị ga-atụgharịkwa ntọala axis gị n'ihi na Axis Y ga-egosi akara ugbu a, Axis X ga-egosi uru."
+      },
+      {
+        "title": "Kpakọba mmanya",
+        "description": "Ọ bụrụ na etọọ ya na true, njirimara a ga-eme ka mmanya series kpakọba."
+      },
+      {
+        "title": "Kesaa series",
+        "description": "Ọ bụrụ na etọọ ya na true, mmanya ọ bụla ga-anọchite otu series, a na-atụkwa anya ka ndepụta data bụrụ ndepụta otu akụkụ nke uru data kama ndepụta series."
+      },
+      {
+        "title": "Oghere chaatị (elu)"
+      },
+      {
+        "title": "Oghere chaatị (ala)"
+      },
+      {
+        "title": "Oghere chaatị (aka ekpe)"
+      },
+      {
+        "title": "Oghere chaatị (aka nri)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tụgharịa data",
+        "description": "Tụgharịa data gụnyere akara, usoro series yana ndepụta data series niile."
+      },
+      {
+        "title": "Tebụl HTML",
+        "description": "Nhọrọ: Budata data dị ka tebụl HTML."
+      },
+      {
+        "title": "Opekempe chaatị",
+        "description": "Ịnọchi ala eke nke chaatị na-enye gị ohere ibugharị ma ọ bụ igbochi uru kachasị ala egosiri na chaatị"
+      },
+      {
+        "title": "Kachasị chaatị",
+        "description": "Ịnọchi elu eke nke chaatị na-enye gị ohere ibugharị ma ọ bụ igbochi uru kachasị elu egosiri na chaatị"
+      },
+      {
+        "title": "Axis X gosi grid",
+        "description": "Gosi grid nke Axis X."
+      },
+      {
+        "title": "Ndọpụ Axis X"
+      },
+      {
+        "title": "Ọnọdụ Axis X",
+        "description": "Ọnọdụ ebe a na-etinye akara. Enwere ike itọ ya na \"start\" ma ọ bụ \"end\" ebe \"start\" bụ aka ekpe ma ọ bụ elu na axis kwụ ọtọ, \"end\" bụkwa aka nri ma ọ bụ ala na axis n'ahịrị ụkwụ"
+      },
+      {
+        "title": "Axis X gosi akara",
+        "description": "Gosi akara nke Axis X."
+      },
+      {
+        "title": "Akara Axis X (ndọpụ n'ahịrị ụkwụ)",
+        "description": "Ọnọdụ n'ahịrị ụkwụ nke akara Axis X."
+      },
+      {
+        "title": "Akara Axis X (ndọpụ kwụ ọtọ)",
+        "description": "Ọnọdụ kwụ ọtọ nke akara Axis X."
+      },
+      {
+        "title": "Aha Axis X",
+        "description": "Aha nhọrọ maka Axis X."
+      },
+      {
+        "title": "Aha Axis X (ndọpụ n'ahịrị ụkwụ)",
+        "description": "Ọnọdụ n'ahịrị ụkwụ nke aha Axis X."
+      },
+      {
+        "title": "Aha Axis X (ndọpụ kwụ ọtọ)",
+        "description": "Ọnọdụ kwụ ọtọ nke aha Axis X."
+      },
+      {
+        "title": "Arịlịka aha Axis X",
+        "description": "Arịlịka nhọrọ maka aha Axis X.",
+        "options": {
+          "middle": "etiti",
+          "end": "njedebe",
+          "start": "mbido"
+        }
+      },
+      {
+        "title": "Oghere opekempe ọ̀tụ̀tụ̀ Axis X",
+        "description": "Na-akọwapụta ogologo opekempe na pixel nke nzọụkwụ ọ̀tụ̀tụ̀."
+      },
+      {
+        "title": "Ọ̀tụ̀tụ̀ Axis X (naanị ọnụọgụ zuru ezu)",
+        "description": "Jiri naanị ọnụọgụ zuru ezu maka nzọụkwụ ọ̀tụ̀tụ̀."
+      },
+      {
+        "title": "Axis Y: Gosi grid",
+        "description": "Gosi grid nke Axis Y."
+      },
+      {
+        "title": "Ndọpụ Axis Y"
+      },
+      {
+        "title": "Ọnọdụ Axis Y",
+        "description": "Ọnọdụ ebe a na-etinye akara. Enwere ike itọ ya na \"start\" ma ọ bụ \"end\" ebe \"start\" bụ aka ekpe ma ọ bụ elu na axis kwụ ọtọ, \"end\" bụkwa aka nri ma ọ bụ ala na axis n'ahịrị ụkwụ"
+      },
+      {
+        "title": "Axis Y gosi akara",
+        "description": "Gosi akara nke Axis Y."
+      },
+      {
+        "title": "Akara Axis Y (ndọpụ n'ahịrị ụkwụ)",
+        "description": "Ọnọdụ n'ahịrị ụkwụ nke akara Axis Y."
+      },
+      {
+        "title": "Akara Axis Y (ndọpụ kwụ ọtọ)",
+        "description": "Ọnọdụ kwụ ọtọ nke akara Axis Y."
+      },
+      {
+        "title": "Oghere opekempe ọ̀tụ̀tụ̀ Axis Y",
+        "description": "Na-akọwapụta ogologo opekempe na pixel nke nzọụkwụ ọ̀tụ̀tụ̀."
+      },
+      {
+        "title": "Ọ̀tụ̀tụ̀ Axis Y (naanị ọnụọgụ zuru ezu)",
+        "description": "Jiri naanị ọnụọgụ zuru ezu maka nzọụkwụ ọ̀tụ̀tụ̀."
+      },
+      {
+        "title": "Aha Axis Y",
+        "description": "Aha nhọrọ maka Axis Y."
+      },
+      {
+        "title": "Aha Axis Y (ndọpụ kwụ ọtọ)",
+        "description": "Ọnọdụ n'ahịrị ụkwụ nke aha Axis Y."
+      },
+      {
+        "title": "Aha Axis Y (ndọpụ n'ahịrị ụkwụ)",
+        "description": "Ọnọdụ n'ahịrị ụkwụ nke aha Axis Y."
+      },
+      {
+        "title": "Arịlịka aha Axis Y",
+        "description": "Arịlịka nhọrọ maka aha Axis Y.",
+        "options": {
+          "middle": "etiti",
+          "end": "njedebe",
+          "start": "mbido"
+        }
+      },
+      {
+        "title": "Tụgharịa aha Axis Y",
+        "description": "Tụgharịa aha maka Axis Y?"
+      },
+      {
+        "title": "Uru ntụaka",
+        "description": "Ọ gwụla ma etọrọ low/high n'ụzọ doro anya, chaatị mmanya ga-anọ n'etiti na efu na ndabere."
+      },
+      {
+        "title": "Anya n'etiti mmanya series",
+        "description": "Kọwapụta anya na pixel nke mmanya n'otu otu."
+      },
+      {
+        "title": "Ọnọdụ nkpakọba",
+        "description": "Ọ bụrụ na etọọ ya na \"true\" njirimara a ga-emepụta mkpokọta maka isi series ọ bụla. Nke a ga-emetụtakwa y-axis na oke chaatị niile. Ọ bụrụ na etọọ ya na \"false\" njirimara a ga-amanye mmanya akpakọbara ka ha see site n'ahịrị efu. N'ọnọdụ nkpakọba, njirimara \"seriesBarDistance\" agaghị enwe mmetụta."
+      }
+    ]
+  }
+}

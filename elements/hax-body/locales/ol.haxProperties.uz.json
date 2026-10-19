@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Raqamlangan roʻyxat",
+    "description": "Raqamlangan roʻyxat yaratish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Raqam uslubi",
+        "description": "Tartiblangan roʻyxat raqamlashi uchun ishlatiladigan uslub.",
+        "options": {
+          "": "Standart (oʻnlik)",
+          "list-decimal-leading-zero": "Boshida nol bilan oʻnlik (01, 02, 03)",
+          "list-lower-alpha": "Kichik harflar (a, b, c)",
+          "list-upper-alpha": "Katta harflar (A, B, C)",
+          "list-lower-roman": "Kichik rim raqamlari (i, ii, iii)",
+          "list-upper-roman": "Katta rim raqamlari (I, II, III)"
+        }
+      }
+    ]
+  }
+}

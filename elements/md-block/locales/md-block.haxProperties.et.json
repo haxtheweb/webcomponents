@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Markdowni sisu plokk, otse sisestatud või kaugelt laaditud"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Toores Markdown"
+      },
+      {
+        "property": "source",
+        "title": "Allikas",
+        "description": "Markdowni lähtefail"
+      }
+    ]
+  }
+}

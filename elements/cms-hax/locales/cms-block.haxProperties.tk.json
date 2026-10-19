@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS bloky",
+    "description": "Arka tarapda görkezilýän CMS bloky"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modul",
+        "description": "Biziň CMS-den ýüklenjek modul"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Biziň CMS-den ýüklenjek blogyň deltasy"
+      }
+    ]
+  }
+}

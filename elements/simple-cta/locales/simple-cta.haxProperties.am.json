@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "የተግባር ጥሪ",
+    "description": "እርምጃ ለመውሰድ አገናኝ ያለው ቀላል አዝራር።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "መለያ",
+        "description": "የአገናኝ መለያ"
+      },
+      {
+        "property": "link",
+        "title": "አገናኝ",
+        "description": "ወደ ማንኛውም ሀብት አገናኝ ያስገቡ"
+      },
+      {
+        "property": "hideIcon",
+        "title": "አዶን ደብቅ",
+        "description": "ጽሑፍን ለማጉላት የሚያገለግለውን አዶ ደብቅ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "አዶ",
+        "description": "የእርምጃ አገናኝ አዶ"
+      }
+    ]
+  }
+}

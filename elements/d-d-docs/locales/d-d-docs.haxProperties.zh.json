@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "设计、开发、摧毁",
+    "description": "HAX 的设计系统实现"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "要呈现的选项",
+        "options": {
+          "*": "完整样式指南"
+        }
+      }
+    ]
+  }
+}

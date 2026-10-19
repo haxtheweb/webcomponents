@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "소스",
+        "description": "이 리소스의 URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Karta",
+    "description": "Pojedyncza karta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona karty"
+      },
+      {
+        "property": "disabled",
+        "title": "Wyłączone"
+      },
+      {
+        "property": "label",
+        "title": "Etykieta karty"
+      },
+      {
+        "slot": "",
+        "title": "Zawartość karty",
+        "description": "Zawartość karty."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikalny ID"
+      },
+      {
+        "property": "flag",
+        "title": "Opcjonalny tekst flagi"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Opcjonalna ikona flagi"
+      }
+    ]
+  }
+}

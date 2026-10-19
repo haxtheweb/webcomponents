@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Angazia",
+    "description": "Angazia maandishi ya mstarini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Maandishi",
+        "description": "Maandishi yaliyoangaziwa."
+      }
+    ]
+  }
+}

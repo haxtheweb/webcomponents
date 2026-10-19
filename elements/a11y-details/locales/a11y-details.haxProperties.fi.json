@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Saavutettava lisätietopainike",
+    "description": "Saavutettava asteittainen paljastus details- ja summary-elementeillä"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Painike",
+        "description": "Yhteenveto sisällöstä, joka on piilotettu, esim. ”info”, ”metatiedot” jne."
+      },
+      {
+        "slot": "details",
+        "title": "Kuvaus",
+        "description": "Yksityiskohtainen kuvaus, joka voidaan piilottaa tai näyttää"
+      },
+      {
+        "slot": "",
+        "title": "Kuvauspainike",
+        "description": "Oletus painikkeelle, joka näyttää/piilottaa kuvaustekstin, esim. ”info”, ”metatiedot” jne."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Valinnainen yhteenvetoteksti, kun lisätiedot ovat auki"
+      },
+      {
+        "property": "closeText",
+        "title": "Valinnainen yhteenvetoteksti, kun lisätiedot ovat kiinni"
+      }
+    ]
+  }
+}

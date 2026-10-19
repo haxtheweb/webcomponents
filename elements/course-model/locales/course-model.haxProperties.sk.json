@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model kurzu",
+    "description": "Interaktívne rozloženie pre koncepty kurzu s podrobnosťami, animáciou a kontrolami vedomostí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "názov"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Informačná oblasť"
+      },
+      {
+        "title": "Oblasť podrobností"
+      },
+      {
+        "title": "Oblasť animácie"
+      },
+      {
+        "title": "Oblasť kontroly vedomostí"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Oblasť loga"
+      }
+    ]
+  }
+}

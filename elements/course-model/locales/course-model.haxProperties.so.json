@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "moodelka koorsada",
+    "description": "Qaab isdhexgal ah oo loogu talagalay fikradaha koorsada oo leh faahfaahin, dhaqdhaqaaq, iyo hubinta aqoonta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "cinwaan"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Meesha macluumaadka"
+      },
+      {
+        "title": "Meesha faahfaahinta"
+      },
+      {
+        "title": "Meesha dhaqdhaqaaqa"
+      },
+      {
+        "title": "Meesha Hubinta Aqoonta"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Meesha astaanta"
+      }
+    ]
+  }
+}

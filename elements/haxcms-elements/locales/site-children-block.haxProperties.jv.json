@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: blok anak",
+    "description": "Blok dinamis kanggo nampilake anak saka kaca saiki"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Metode dinamis",
+        "description": "Carane ngitung anak relatif marang elemen iki",
+        "options": {
+          "active": "Anak aktif",
+          "parent": "Anak saka induk",
+          "ancestor": "Kabeh anak saka leluhur paling dhuwur"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Tingkat wiwitan"
+      },
+      {
+        "property": "end",
+        "title": "Tingkat pungkasan"
+      }
+    ]
+  }
+}

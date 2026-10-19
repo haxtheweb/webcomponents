@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Jehechauka mba'e",
+    "description": "Mba'e ohechaukáva peteĩ jehechauka bibliografía-pe, oiporúva heta ysaja ha ñemondo jeporavorã."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Peteĩchagua",
+        "description": "Jehechauka reko",
+        "options": {
+          "web": "Ñanduti",
+          "journal": "Kuatiahai",
+          "book": "Aranduka"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Téra",
+        "description": "Mba'e réra"
+      },
+      {
+        "property": "authors",
+        "title": "Apohára(kuéra)",
+        "description": "Mba'e oikóva ára rysýipe"
+      },
+      {
+        "property": "publisher",
+        "title": "Omyasãiva",
+        "description": "Ñanduti renda ypykue"
+      }
+    ]
+  }
+}

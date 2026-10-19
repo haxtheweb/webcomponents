@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "အခြေခံ လင့်ခ်",
+    "description": "အခြေခံ လင့်ခ် အစိတ်အပိုင်း။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "လင့်ခ်",
+        "description": "ဦးတည်ရာ URL။"
+      },
+      {
+        "attribute": "innerText",
+        "title": "စာသား",
+        "description": "မြင်ရသော လင့်ခ် စာသား။"
+      },
+      {
+        "attribute": "target",
+        "title": "ပစ်မှတ်",
+        "description": "လင့်ခ်ကို ဖွင့်မည့်နေရာ။",
+        "options": {
+          "": "တူညီသော ဝင်းဒိုး",
+          "_blank": "ဝင်းဒိုး အသစ် - _blank",
+          "_top": "အပေါ်ဆုံး ဝင်းဒိုး - _top",
+          "_parent": "မိခင် ဝင်းဒိုး - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "ခေါင်းစဉ် စာသား",
+        "description": "လက်လှမ်းမီမှုနှင့် SEO အတွက် အကြံပြု ခေါင်းစဉ်။"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "ဦးတည်ရာနှင့် ဆက်နွယ်မှု (လုံခြုံရေး/SEO)။",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

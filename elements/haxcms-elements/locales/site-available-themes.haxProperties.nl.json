@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Beschikbare thema's",
+    "description": "Beschikbare HAXcms-thema's tonen met live wisselen voor voorbeeld"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Weergavemodus",
+        "description": "Kies hoe de thema's worden weergegeven",
+        "options": {
+          "gallery": "Galerij",
+          "table": "Tabel"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Details tonen",
+        "description": "Themabeschrijvingen en aanvullende informatie tonen"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Verborgen en verouderde thema's tonen",
+        "description": "Verborgen, verouderde en vreselijke thema's tonen naast de standaarden van het dashboard"
+      },
+      {
+        "property": "columns",
+        "title": "Kolommen (galerij)",
+        "description": "Aantal kolommen in galerijweergave"
+      }
+    ]
+  }
+}

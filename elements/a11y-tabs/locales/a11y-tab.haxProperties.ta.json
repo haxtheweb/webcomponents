@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "தாவல்",
+    "description": "ஒற்றைத் தாவல்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "தாவல் சின்னம்"
+      },
+      {
+        "property": "disabled",
+        "title": "முடக்கப்பட்டது"
+      },
+      {
+        "property": "label",
+        "title": "தாவல் லேபிள்"
+      },
+      {
+        "slot": "",
+        "title": "தாவல் உள்ளடக்கம்",
+        "description": "தாவலின் உள்ளடக்கம்."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "தனித்துவ ID"
+      },
+      {
+        "property": "flag",
+        "title": "விருப்பக் கொடி உரை"
+      },
+      {
+        "property": "flagIcon",
+        "title": "விருப்பக் கொடிச் சின்னம்"
+      }
+    ]
+  }
+}

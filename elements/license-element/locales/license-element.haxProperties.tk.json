@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ygtyýarnama",
+    "description": "Işiňiz üçin ygtyýarnama beriň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Salgylanýan işiň ady."
+      },
+      {
+        "property": "source",
+        "title": "Çeşme salgysy",
+        "description": "Ygtyýarnamaly işiň çeşme URL-i."
+      },
+      {
+        "property": "license",
+        "title": "Ygtyýarnama",
+        "description": "Bu işe ulanylýan ygtyýarnama."
+      },
+      {
+        "property": "creator",
+        "title": "Döredijisi",
+        "description": "Bu işiň döredijisi ýa-da eýesi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Çeşme salgysy",
+        "description": "Goşmaça ygtyýarnama jikme-jikliklerine salgy."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Goşmaça bellik",
+        "description": "Goşmaça ygtyýarnama jikme-jiklikleri üçin bellik."
+      }
+    ]
+  }
+}

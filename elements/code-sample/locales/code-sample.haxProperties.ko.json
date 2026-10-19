@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "코드 샘플",
+    "description": "페이지에 강조 표시된 코드 샘플"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "코드 강조",
+        "description": "코드 영역에 적용할 구문 강조",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON 데이터",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "클립보드에 복사 버튼",
+        "description": "오른쪽 위에 표시되는 클립보드에 복사 버튼"
+      },
+      {
+        "property": "highlightStart",
+        "title": "강조 시작",
+        "description": "강조를 시작할 줄 번호"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "강조 끝",
+        "description": "강조를 끝낼 줄"
+      }
+    ]
+  }
+}

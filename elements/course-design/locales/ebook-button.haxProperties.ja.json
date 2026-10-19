@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "電子書籍ボタン",
+    "description": "電子書籍にリンクするボタン。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "ボタンのタイトル。"
+      },
+      {
+        "property": "link",
+        "title": "リンク",
+        "description": "クリック時のリダイレクト先リンク。"
+      },
+      {
+        "property": "icon",
+        "title": "アイコン",
+        "description": "このリンクを表すアイコン"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Ҷойгир кардани мундариҷаи берунаи веб."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Манбаъ",
+        "description": "URL барои ин манбаъ."
+      }
+    ]
+  }
+}

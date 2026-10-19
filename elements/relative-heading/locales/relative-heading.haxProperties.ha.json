@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Kanu mai dangantaka",
+    "description": "yana fitar da tsarin matakan kanu daidai bisa kanun mahaifi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID na Albarkar Kanun Mahaifi"
+      },
+      {
+        "property": "disableLink",
+        "description": "Yana kashe fasalin maɓallin hanyar haɗi."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Yana daidaita maɓallin kwafi hanyar haɗi zuwa can dama na kanu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Matakin kanu idan ba a sami mahaifi ba."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Yana maye gurbin tsohon rubutu na saƙon toast na kwafi hanyar haɗi."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Yana maye gurbin tsohon lakabin maɓallin kwafi hanyar haɗi."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Yana maye gurbin tsohon gunkin maɓallin kwafi hanyar haɗi."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Yana maye gurbin tsohon lakabin maɓallin rufe toast na kwafi hanyar haɗi."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Yana maye gurbin tsohon gunkin maɓallin rufe toast na kwafi hanyar haɗi."
+      }
+    ]
+  }
+}

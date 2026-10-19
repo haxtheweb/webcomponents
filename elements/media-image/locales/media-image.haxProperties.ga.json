@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Íomhá Fheabhsaithe",
+    "description": "Bealach chun íomhánna a chur i láthair le feabhsuithe éagsúla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Foinse",
+        "description": "URL na híomhá."
+      },
+      {
+        "property": "alt",
+        "title": "Téacs malartach",
+        "description": "Téacs chun cur síos ar an íomhá d'úsáideoirí atá dall."
+      },
+      {
+        "property": "link",
+        "title": "Nasc",
+        "description": "Nasc an íomhá le URL"
+      },
+      {
+        "property": "card",
+        "title": "Cárta",
+        "description": "Cuir scáth titim i bhfeidhm chun cuma cárta ardaithe a thabhairt."
+      },
+      {
+        "property": "box",
+        "title": "Bosca",
+        "description": "Cuir bosca amhairc timpeall na híomhá."
+      },
+      {
+        "property": "offset",
+        "title": "Fritháireamh",
+        "description": "Cuir fritháireamh clé nó deas i bhfeidhm ar an íomhá.",
+        "options": {
+          "none": "dada",
+          "wide": "leathan",
+          "narrow": "cúng"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Lua",
+        "description": "Lua don íomhá."
+      },
+      {
+        "property": "caption",
+        "title": "Fotheideal",
+        "description": "Fotheideal don íomhá."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Teideal an Fhigiúir",
+        "description": "Teideal do lipéad an fhigiúir."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Cur Síos an Fhigiúir",
+        "description": "Cur síos do lipéad an fhigiúir."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Íomhá mhionsamhla",
+        "description": "Foinse na híomhá mionsamhla. Taispeánann sé mionsamhail ach osclaíonn sé an fhoinse iomlán i ndialóg."
+      },
+      {
+        "property": "round",
+        "title": "Íomhá chruinn",
+        "description": "Bearrann sé cuma na híomhá ina cruth ciorcail."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Díchumasaigh dialóg na híomhá",
+        "description": "Díchumasaigh cliceanna a osclaíonn an íomhá i ndialóg iniúchóra íomhánna."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Rindreáil mar markdown",
+        "description": "Rindreáil an fotheideal agus an lua mar markdown."
+      }
+    ]
+  }
+}

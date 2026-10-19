@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "מקור הציטוט",
+    "description": "רכיב מובאה עם שלושה מצבי הצגה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "כותרת היצירה המצוטטת."
+      },
+      {
+        "property": "source",
+        "title": "קישור למקור",
+        "description": "כתובת URL של המקור ליצירה המצוטטת."
+      },
+      {
+        "property": "date",
+        "title": "תאריך הצפייה",
+        "description": "התאריך שבו נצפה המקור."
+      },
+      {
+        "property": "scope",
+        "title": "היקף",
+        "description": "היקף הרכיב לציטוט.",
+        "options": {
+          "sibling": "רכיב אח",
+          "parent": "רכיב הורה"
+        }
+      },
+      {
+        "property": "license",
+        "title": "רישיון",
+        "description": "הרישיון של היצירה המצוטטת."
+      },
+      {
+        "property": "creator",
+        "title": "יוצר",
+        "description": "היוצר או הבעלים של היצירה המצוטטת."
+      },
+      {
+        "property": "typeof",
+        "title": "סוג OER Schema",
+        "description": "מחלקת OER Schema עבור מובאה זו. ברירת המחדל היא oer:ReferencedMaterial; יש לדרוס רק עם מחלקת OER תקינה (לדוגמה oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

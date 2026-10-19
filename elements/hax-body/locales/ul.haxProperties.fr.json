@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Liste à puces",
+    "description": "Créer une liste à puces."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Style de puce",
+        "description": "Style utilisé pour les puces de la liste non ordonnée.",
+        "options": {
+          "": "Par défaut (carré)",
+          "list-disc": "Disque",
+          "list-circle": "Cercle",
+          "list-square": "Carré"
+        }
+      }
+    ]
+  }
+}

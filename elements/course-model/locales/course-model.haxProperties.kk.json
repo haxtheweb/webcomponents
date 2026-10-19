@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "курс моделі",
+    "description": "Курс ұғымдарына арналған мәліметтері, анимациясы және білімді тексеруі бар интерактивті макет."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "атауы"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Ақпарат аймағы"
+      },
+      {
+        "title": "Мәліметтер аймағы"
+      },
+      {
+        "title": "Анимация аймағы"
+      },
+      {
+        "title": "Білімді тексеру аймағы"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Логотип аймағы"
+      }
+    ]
+  }
+}

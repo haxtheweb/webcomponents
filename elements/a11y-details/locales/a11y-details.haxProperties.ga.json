@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Cnaipe Sonraí Inrochtana",
+    "description": "Nochtadh forásach inrochtana le details agus summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Cnaipe",
+        "description": "Achoimre ar an ábhar atá ceilte, m.sh. \"eolas\", \"meiteashonraí\", srl."
+      },
+      {
+        "slot": "details",
+        "title": "Cur síos",
+        "description": "Cur síos mionsonraithe ar féidir é a cheilt nó a thaispeáint"
+      },
+      {
+        "slot": "",
+        "title": "Cnaipe Cur Síos",
+        "description": "Réamhshocrú don chnaipe a thaispeánann/a cheileann téacs an chur síos, m.sh. \"eolas\", \"meiteashonraí\", srl."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Téacs achoimre roghnach nuair atá na sonraí oscailte"
+      },
+      {
+        "property": "closeText",
+        "title": "Téacs achoimre roghnach nuair atá na sonraí dúnta"
+      }
+    ]
+  }
+}

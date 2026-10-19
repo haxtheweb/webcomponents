@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "بهتر ڪيل تصوير",
+    "description": "مختلف بهترين سان تصويرون پيش ڪرڻ جو طريقو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ذريعو",
+        "description": "تصوير جو URL."
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "نابين استعمال ڪندڙن لاءِ تصوير بيان ڪرڻ وارو متن."
+      },
+      {
+        "property": "link",
+        "title": "لنڪ",
+        "description": "تصوير کي ڪنهن URL سان ڳنڍيو"
+      },
+      {
+        "property": "card",
+        "title": "ڪارڊ",
+        "description": "اڀريل ڪارڊ جهڙو نظر اچڻ لاءِ پاڇو لاڳو ڪريو."
+      },
+      {
+        "property": "box",
+        "title": "خانو",
+        "description": "تصوير جي چوڌاري بصري خانو لاڳو ڪريو."
+      },
+      {
+        "property": "offset",
+        "title": "آفسيٽ",
+        "description": "تصوير تي کاٻي يا ساڄي آفسيٽ لاڳو ڪريو.",
+        "options": {
+          "none": "ڪوبه نه",
+          "wide": "ويڪرو",
+          "narrow": "سوڙهو"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "حوالو",
+        "description": "تصوير جو حوالو."
+      },
+      {
+        "property": "caption",
+        "title": "ڪيپشن",
+        "description": "تصوير جو ڪيپشن."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "شڪل جو عنوان",
+        "description": "شڪل جي ليبل لاءِ عنوان."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "شڪل جي وضاحت",
+        "description": "شڪل جي ليبل لاءِ وضاحت."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "ٿمب نيل تصوير",
+        "description": "ٿمب نيل تصوير جو ذريعو. ٿمب نيل ڏيکاري ٿو پر مڪمل ذريعو موڊل ۾ کولي ٿو."
+      },
+      {
+        "property": "round",
+        "title": "گول تصوير",
+        "description": "تصوير کي گول شڪل ۾ ڪٽي ٿو."
+      },
+      {
+        "property": "disableZoom",
+        "title": "تصوير موڊل بند ڪريو",
+        "description": "ڪلڪ ڪرڻ تي تصوير کي تصوير جانچيندڙ ڊائلاگ ۾ کولڻ بند ڪريو."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Markdown طور ڏيکاريو",
+        "description": "ڪيپشن ۽ حوالي کي Markdown طور ڏيکاريو."
+      }
+    ]
+  }
+}

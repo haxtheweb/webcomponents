@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Haskakawa",
+    "description": "Haskaka rubutu a layi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Rubutu",
+        "description": "Rubutu da aka haskaka."
+      }
+    ]
+  }
+}

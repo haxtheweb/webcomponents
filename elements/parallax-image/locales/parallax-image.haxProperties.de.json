@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallax-Bild",
+    "description": "Bild scrollt vorbei"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Bild",
+        "description": "Bild, das im Hintergrund verwendet wird"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Überschriftenbereich",
+        "description": "Textbereich der Überschrift"
+      }
+    ]
+  }
+}

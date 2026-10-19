@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "آڊيو",
+    "description": "هي ذريعي کان سواءِ وڊيو کي انتهائي رسائي لائق طريقي سان پيش ڪري سگهي ٿو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ذريعو",
+        "description": "هن ميڊيا جو URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "عنوان",
+        "description": "وڊيو هيٺ سادو عنوان"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "پليئر لاءِ ايڪسينٽ رنگ چونڊيو."
+      },
+      {
+        "property": "track",
+        "title": "بند ڪيپشن",
+        "description": "ڪيپشن فائل جو URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "ٿمب نيل تصوير",
+        "description": "اختياري. ٿمب نيل/پوسٽر تصوير جو URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "سکيا موڊ چالو ڪريو",
+        "description": "تيز اڳتي ۽ پوئتي ڪرڻ بند ڪري ٿو."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube تي کولڻ وارو بٽڻ هٽايو",
+        "description": "وڊيو YouTube تي کولڻ وارو بٽڻ هٽائي ٿو."
+      },
+      {
+        "property": "linkable",
+        "title": "شيئر لنڪ شامل ڪريو؟",
+        "description": "وڊيو شيئر ڪرڻ لاءِ لنڪ مهيا ڪري ٿو."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "ٻڌائي ٿو ته CORS استعمال ڪجي يا نه.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "پس منظر ۾ هلائڻ جي اجازت ڏيو",
+        "description": "جڏهن ٽيب تان فوڪس هٽي ته وڊيوز پاڻمرادو رڪجن / هلن ٿيون؛ هي ٽيب تي فوڪس کان سواءِ وڊيو هلائڻ ڏئي ٿو"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ٽرانسڪرپٽ لاءِ ڊارڪ ٿيم",
+        "description": "ٽرانسڪرپٽ لاءِ ڊارڪ ٿيم چالو ڪريو."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "انٽرايڪٽو بند ڪريو",
+        "description": "انٽرايڪٽو موڊ بند ڪريو جيڪو ٽرانسڪرپٽ کي ڪلڪ لائق بڻائي ٿو."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ٽائيم اسٽيمپ لڪايو",
+        "description": "ٽرانسڪرپٽ تي ٽائيم اسٽيمپ لڪايو."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ٽرانسڪرپٽ لڪايو",
+        "description": "ڊفالٽ طور ٽرانسڪرپٽ لڪايو."
+      },
+      {
+        "property": "lang",
+        "title": "ٻولي",
+        "description": "ميڊيا جي ٻولي."
+      }
+    ]
+  }
+}

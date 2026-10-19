@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Naqshadaha La Heli Karo",
+    "description": "Muuji naqshadaha HAXcms ee la heli karo oo leh beddel hordhac toos ah"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Habka Muuqaalka",
+        "description": "Dooro sida loo muujinayo naqshadaha",
+        "options": {
+          "gallery": "Sawir-gale",
+          "table": "Shax"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Muuji Faahfaahinta",
+        "description": "Muuji sharraxaadda naqshadaha iyo macluumaad dheeraad ah"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Muuji Naqshadaha Qarsoon iyo Kuwa Duugga ah",
+        "description": "Muuji naqshadaha qarsoon, duugga ah, iyo kuwa xun marka lagu daro caadiyada looxa"
+      },
+      {
+        "property": "columns",
+        "title": "Tiirar (Gallery)",
+        "description": "Tirada tiirarka ee muuqaalka gallery-ga"
+      }
+    ]
+  }
+}

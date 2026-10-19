@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Link HAX",
+    "description": "Link għal riżors speċifiku fis-sit li qed taħdem fuqu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Oġġett",
+        "description": "Oġġett li jrid jintwera għad-data tal-link / titlu"
+      }
+    ]
+  }
+}

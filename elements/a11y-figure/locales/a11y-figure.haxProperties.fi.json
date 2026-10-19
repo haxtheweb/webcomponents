@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Kuvaileva kuvio",
+    "description": "Saavutettava kuvio pitkällä kuvauksella"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Kuva"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Vaihtoehtoinen teksti"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Kuvion kuvateksti",
+        "description": "Kuvion kuvateksti, joka näkyy aina."
+      },
+      {
+        "slot": "details",
+        "title": "Kuvaus",
+        "description": "Yksityiskohtainen kuvan kuvaus, joka voidaan piilottaa tai näyttää"
+      },
+      {
+        "slot": "summary",
+        "title": "Kuvauspainike",
+        "description": "Oletus painikkeelle, joka näyttää/piilottaa kuvaustekstin, esim. ”info”, ”metatiedot” jne."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Valinnainen yhteenvetoteksti, kun lisätiedot ovat auki"
+      },
+      {
+        "property": "closeText",
+        "title": "Valinnainen yhteenvetoteksti, kun lisätiedot ovat kiinni"
+      }
+    ]
+  }
+}

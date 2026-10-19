@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Conteúdo remoto",
+    "description": "Reutilize conteúdo de um site em outro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Endereço do site",
+        "description": "Cole o endereço de onde referenciar o conteúdo, caso não seja o site atual"
+      },
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item a exibir para os dados do link/título"
+      },
+      {
+        "property": "breakreference",
+        "title": "Quebrar referência",
+        "description": "Marcar esta caixa copia o conteúdo remoto para edição local, mas remove a associação. Ele não receberá mais atualizações quando o material de referência for atualizado."
+      },
+      {
+        "property": "showTitle",
+        "title": "Mostrar título",
+        "description": "Ative para exibir o título do recurso exibido"
+      }
+    ]
+  }
+}

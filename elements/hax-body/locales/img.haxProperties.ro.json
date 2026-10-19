@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Imagine de bază",
+    "description": "Element de imagine de bază."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Sursă",
+        "description": "URL-ul imaginii."
+      },
+      {
+        "attribute": "alt",
+        "title": "Text alternativ",
+        "description": "Text alternativ pentru accesibilitate și SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Înălțime",
+        "description": "Înălțimea în pixeli. Lasă gol pentru a folosi dimensiunea naturală."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Încărcarea imaginii",
+        "description": "Alege când se încarcă imaginea.",
+        "options": {
+          "lazy": "Încarcă atunci când este vizibilă",
+          "auto": "Automat"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Surse responsive (srcset)",
+        "description": "Listează URL-urile imaginilor și descriptorii (de ex. 480w sau 2x), astfel încât browserele să aleagă cea mai bună dimensiune pentru ecran. Stocat ca atributul standard srcset."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Баҳодиҳӣ бо ситора",
+    "description": "Виҷети намоиши баҳо ё тугма барои баҳо додан."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Хол",
+        "description": "Қимати ҷории хол."
+      },
+      {
+        "property": "possible",
+        "title": "Имконпазир",
+        "description": "Холи ҳадди аксари имконпазир."
+      },
+      {
+        "property": "numStars",
+        "title": "Шумораи ситораҳо",
+        "description": "Шумораи ситораҳо барои намоиш."
+      },
+      {
+        "property": "interactive",
+        "title": "Интерактивӣ",
+        "description": "Ба корбар иҷозат диҳед, ки баҳоро муқаррар кунад."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Реҷаи миқёси рубрика",
+        "description": "Барои ҳар ситора метамаълумоти OER Schema RubricScale ва RubricLevel (levelOrdinal/levelPoints) барорад."
+      }
+    ]
+  }
+}

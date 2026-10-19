@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Άδεια",
+    "description": "Ορίστε μια άδεια για το έργο σας."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Τίτλος του έργου που παρατίθεται."
+      },
+      {
+        "property": "source",
+        "title": "Σύνδεσμος πηγής",
+        "description": "URL πηγής για το αδειοδοτημένο έργο."
+      },
+      {
+        "property": "license",
+        "title": "Άδεια",
+        "description": "Άδεια που εφαρμόζεται σε αυτό το έργο."
+      },
+      {
+        "property": "creator",
+        "title": "Δημιουργός",
+        "description": "Δημιουργός ή κάτοχος αυτού του έργου."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Σύνδεσμος πηγής",
+        "description": "Σύνδεσμος προς πρόσθετες λεπτομέρειες αδειοδότησης."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Ετικέτα «Περισσότερα»",
+        "description": "Ετικέτα για πρόσθετες λεπτομέρειες αδειοδότησης."
+      }
+    ]
+  }
+}

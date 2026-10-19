@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Karta",
+    "description": "Jedna karta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona karty"
+      },
+      {
+        "property": "disabled",
+        "title": "Zakázáno"
+      },
+      {
+        "property": "label",
+        "title": "Popisek karty"
+      },
+      {
+        "slot": "",
+        "title": "Obsah karty",
+        "description": "Obsah karty."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Jedinečné ID"
+      },
+      {
+        "property": "flag",
+        "title": "Volitelný text příznaku"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Volitelná ikona příznaku"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Eitem Gyrfa",
+    "description": "Sefydliad unigol a'i rolau cysylltiedig"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Enw'r Sefydliad"
+      },
+      {
+        "property": "location",
+        "title": "Lleoliad"
+      },
+      {
+        "property": "source",
+        "title": "Ffynhonnell"
+      }
+    ]
+  }
+}

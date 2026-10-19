@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "サイトビュー",
+    "description": "条件に基づいてサイトのデータを照会・表示する動的ブロック"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ビューURL",
+        "description": "ビューのデータフィードのクエリパラメーター。ビューのダッシュボードから取得できます。"
+      },
+      {
+        "property": "renderer",
+        "title": "表示モード",
+        "description": "ビューの結果の表示方法"
+      },
+      {
+        "property": "entity",
+        "title": "エンティティの種類",
+        "description": "レスポンスの解析に使用するエンティティの種類",
+        "options": {
+          "": "既定（items）",
+          "item": "項目",
+          "page": "ページ",
+          "file": "ファイル",
+          "tag": "タグ",
+          "block": "ブロック",
+          "view": "ビュー",
+          "theme": "テーマ",
+          "region": "リージョン",
+          "customElement": "カスタム要素"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "サイトビューを解除",
+        "description": "静的コンテンツに変換して直接編集できるようにします。ソースからの自動更新は停止します。"
+      }
+    ]
+  }
+}

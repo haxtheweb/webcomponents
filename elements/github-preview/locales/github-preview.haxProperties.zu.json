@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ukubuka Kuqala kwe-Github",
+    "description": "Isithombe esifinyelelekayo esinencazelo ende"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Inhlangano",
+        "description": "Igama lomshini lenhlangano ye-Github"
+      },
+      {
+        "property": "repo",
+        "title": "Inqolobane",
+        "description": "Igama lomshini le-repo"
+      },
+      {
+        "property": "extended",
+        "title": "Ukubuka Okunwetshiwe",
+        "description": "Kufaka i-readme esakhini"
+      }
+    ]
+  }
+}

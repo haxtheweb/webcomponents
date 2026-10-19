@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ebook votõ",
+    "description": "Peteĩ votõ ojoajúva peteĩ Ebook rehe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Téra",
+        "description": "Votõ réra."
+      },
+      {
+        "property": "link",
+        "title": "Joajuha",
+        "description": "Joajuha oho hag̃ua ojejopy jave."
+      },
+      {
+        "property": "icon",
+        "title": "Ta'ãnga'i",
+        "description": "Ta'ãnga'i ohechaukáva ko joajuha"
+      }
+    ]
+  }
+}

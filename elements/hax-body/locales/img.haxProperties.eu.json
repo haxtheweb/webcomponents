@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Oinarrizko irudia",
+    "description": "Oinarrizko irudi-elementua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Iturria",
+        "description": "Irudiaren URLa."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt testua",
+        "description": "Irisgarritasunerako eta SEOrako testu alternatiboa."
+      },
+      {
+        "attribute": "height",
+        "title": "Altuera",
+        "description": "Altuera pixeletan. Utzi hutsik berezko tamaina erabiltzeko."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Irudiaren karga",
+        "description": "Aukeratu noiz kargatzen den irudia.",
+        "options": {
+          "lazy": "Kargatu ikusgai dagoenean",
+          "auto": "Automatikoa"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Iturri moldakorrak (srcset)",
+        "description": "Zerrendatu irudien URLak eta deskriptoreak (adib. 480w edo 2x), nabigatzaileek pantailarako tamainarik onena aukera dezaten. srcset atributu estandar gisa gordetzen da."
+      }
+    ]
+  }
+}

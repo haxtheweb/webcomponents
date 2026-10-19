@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Паралакс-выява",
+    "description": "Выява, што пракручваецца"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Выява",
+        "description": "выява для фону"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Вобласць загалоўка",
+        "description": "Тэкставая вобласць загалоўка"
+      }
+    ]
+  }
+}

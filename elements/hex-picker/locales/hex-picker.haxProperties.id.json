@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pemilih Hex",
+    "description": "Pemilih warna kode hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Nilai",
+        "description": "Nilai hex default"
+      },
+      {
+        "property": "disabled",
+        "title": "Nonaktif",
+        "description": "Nonaktifkan bidang teks"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Tampilan Besar",
+        "description": "Sertakan warna dalam tampilan besar"
+      }
+    ]
+  }
+}

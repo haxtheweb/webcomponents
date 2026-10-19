@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Hljóð",
+    "description": "Þetta getur birt myndband á mjög aðgengilegan hátt óháð uppruna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Uppruni",
+        "description": "URL þessa miðils."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titill",
+        "description": "Einfaldur titill undir myndbandi"
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Veldu áherslulit spilarans."
+      },
+      {
+        "property": "track",
+        "title": "Skjátextar",
+        "description": "URL skjátextaskrárinnar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Smámynd",
+        "description": "Valfrjálst. URL smámyndar/forsíðumyndar."
+      },
+      {
+        "property": "learningMode",
+        "title": "Virkja námsham",
+        "description": "Gerir hraðspólun áfram og til baka óvirka."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Fjarlægja hnappinn „Opna á YouTube“",
+        "description": "Fjarlægir hnappinn til að opna myndbandið á YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Hafa með deilitengil?",
+        "description": "Veitir tengil til að deila myndbandinu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Gefur til kynna hvort nota eigi CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Leyfa spilun í bakgrunni",
+        "description": "Myndbönd gera hlé / spila sjálfkrafa þegar flipinn missir fókus; þetta leyfir myndbandi að spila án þess að flipinn hafi fókus"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Dökkt þema fyrir uppskrift",
+        "description": "Virkja dökkt þema fyrir uppskriftina."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Slökkva á gagnvirkni",
+        "description": "Slökkva á gagnvirkum ham sem gerir uppskriftina smellanlega."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Fela tímastimpla",
+        "description": "Fela tímastimplana í uppskriftinni."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Fela uppskrift",
+        "description": "Fela uppskrift sjálfgefið."
+      },
+      {
+        "property": "lang",
+        "title": "Tungumál",
+        "description": "Tungumál miðilsins."
+      }
+    ]
+  }
+}

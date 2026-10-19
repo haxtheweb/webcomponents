@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ჩანართი",
+    "description": "ერთი ჩანართი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ჩანართის ხატულა"
+      },
+      {
+        "property": "disabled",
+        "title": "გამორთული"
+      },
+      {
+        "property": "label",
+        "title": "ჩანართის წარწერა"
+      },
+      {
+        "slot": "",
+        "title": "ჩანართის კონტენტი",
+        "description": "ჩანართის კონტენტი."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "უნიკალური ID"
+      },
+      {
+        "property": "flag",
+        "title": "არასავალდებულო დროშის ტექსტი"
+      },
+      {
+        "property": "flagIcon",
+        "title": "არასავალდებულო დროშის ხატულა"
+      }
+    ]
+  }
+}

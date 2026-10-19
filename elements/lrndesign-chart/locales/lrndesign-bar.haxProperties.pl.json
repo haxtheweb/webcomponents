@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Wykres słupkowy",
+    "description": "Tworzy dostępny wykres na podstawie pliku CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kolor akcentu",
+        "description": "Opcjonalny kolor akcentu."
+      },
+      {
+        "title": "Ciemny motyw",
+        "description": "Włącz ciemny motyw"
+      },
+      {
+        "title": "Plik CSV",
+        "description": "Wczytaj dane z pliku CSV."
+      },
+      {
+        "title": "Tytuł wykresu",
+        "description": "Dostępny tekst alternatywny wykresu."
+      },
+      {
+        "title": "Opis wykresu",
+        "description": "Dostępny opis wykresu."
+      },
+      {
+        "title": "Nazwa skali",
+        "description": "Proporcja szerokość:wysokość wykresu (zobacz https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings – $ct-scales i $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Pokaż tło siatki"
+      },
+      {
+        "title": "Słupki poziome",
+        "description": "Odwraca osie wykresu słupkowego, aby narysować wykres słupkowy poziomy. Pamiętaj, że trzeba też odwrócić ustawienia osi, ponieważ oś Y będzie teraz wyświetlać etykiety, a oś X wartości."
+      },
+      {
+        "title": "Słupki skumulowane",
+        "description": "Jeśli ustawiono na true, słupki serii będą ułożone jeden na drugim."
+      },
+      {
+        "title": "Rozłóż serie",
+        "description": "Jeśli ustawiono na true, każdy słupek będzie reprezentował serię, a tablica danych powinna być jednowymiarową tablicą wartości, a nie tablicą serii."
+      },
+      {
+        "title": "Wypełnienie wykresu (góra)"
+      },
+      {
+        "title": "Wypełnienie wykresu (dół)"
+      },
+      {
+        "title": "Wypełnienie wykresu (lewo)"
+      },
+      {
+        "title": "Wypełnienie wykresu (prawo)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Odwróć dane",
+        "description": "Odwróć dane wraz z etykietami, kolejnością serii oraz całymi tablicami danych serii."
+      },
+      {
+        "title": "Tabela HTML",
+        "description": "Opcjonalnie: wczytaj dane jako tabelę HTML."
+      },
+      {
+        "title": "Minimum wykresu",
+        "description": "Nadpisanie naturalnego minimum wykresu pozwala powiększyć lub ograniczyć najniższą wyświetlaną wartość"
+      },
+      {
+        "title": "Maksimum wykresu",
+        "description": "Nadpisanie naturalnego maksimum wykresu pozwala powiększyć lub ograniczyć najwyższą wyświetlaną wartość"
+      },
+      {
+        "title": "Oś X – pokaż siatkę",
+        "description": "Pokaż siatkę osi X."
+      },
+      {
+        "title": "Przesunięcie osi X"
+      },
+      {
+        "title": "Położenie osi X",
+        "description": "Położenie etykiet. Można ustawić „start” lub „end”, gdzie „start” oznacza lewo lub górę na osi pionowej, a „end” prawo lub dół na osi poziomej"
+      },
+      {
+        "title": "Oś X – pokaż etykietę",
+        "description": "Pokaż etykietę osi X."
+      },
+      {
+        "title": "Etykieta osi X (przesunięcie poziome)",
+        "description": "Położenie poziome etykiet osi X."
+      },
+      {
+        "title": "Etykieta osi X (przesunięcie pionowe)",
+        "description": "Położenie pionowe etykiet osi X."
+      },
+      {
+        "title": "Tytuł osi X",
+        "description": "Opcjonalny tytuł osi X."
+      },
+      {
+        "title": "Tytuł osi X (przesunięcie poziome)",
+        "description": "Położenie poziome tytułu osi X."
+      },
+      {
+        "title": "Tytuł osi X (przesunięcie pionowe)",
+        "description": "Położenie pionowe tytułu osi X."
+      },
+      {
+        "title": "Zakotwiczenie tytułu osi X",
+        "description": "Opcjonalne zakotwiczenie tytułu osi X.",
+        "options": {
+          "middle": "środek",
+          "end": "koniec",
+          "start": "początek"
+        }
+      },
+      {
+        "title": "Minimalny odstęp skali osi X",
+        "description": "Określa minimalną wysokość kroków skali w pikselach."
+      },
+      {
+        "title": "Skala osi X (tylko liczby całkowite)",
+        "description": "Używaj tylko liczb całkowitych jako kroków skali."
+      },
+      {
+        "title": "Oś Y: pokaż siatkę",
+        "description": "Pokaż siatkę osi Y."
+      },
+      {
+        "title": "Przesunięcie osi Y"
+      },
+      {
+        "title": "Położenie osi Y",
+        "description": "Położenie etykiet. Można ustawić „start” lub „end”, gdzie „start” oznacza lewo lub górę na osi pionowej, a „end” prawo lub dół na osi poziomej"
+      },
+      {
+        "title": "Oś Y – pokaż etykietę",
+        "description": "Pokaż etykietę osi Y."
+      },
+      {
+        "title": "Etykieta osi Y (przesunięcie poziome)",
+        "description": "Położenie poziome etykiety osi Y."
+      },
+      {
+        "title": "Etykieta osi Y (przesunięcie pionowe)",
+        "description": "Położenie pionowe etykiety osi Y."
+      },
+      {
+        "title": "Minimalny odstęp skali osi Y",
+        "description": "Określa minimalną wysokość kroków skali w pikselach."
+      },
+      {
+        "title": "Skala osi Y (tylko liczby całkowite)",
+        "description": "Używaj tylko liczb całkowitych jako kroków skali."
+      },
+      {
+        "title": "Tytuł osi Y",
+        "description": "Opcjonalny tytuł osi Y."
+      },
+      {
+        "title": "Tytuł osi Y (przesunięcie pionowe)",
+        "description": "Położenie poziome tytułu osi Y."
+      },
+      {
+        "title": "Tytuł osi Y (przesunięcie poziome)",
+        "description": "Położenie poziome tytułu osi Y."
+      },
+      {
+        "title": "Zakotwiczenie tytułu osi Y",
+        "description": "Opcjonalne zakotwiczenie tytułu osi Y.",
+        "options": {
+          "middle": "środek",
+          "end": "koniec",
+          "start": "początek"
+        }
+      },
+      {
+        "title": "Odwrócenie tytułu osi Y",
+        "description": "Odwrócić tytuł osi Y?"
+      },
+      {
+        "title": "Wartość odniesienia",
+        "description": "Jeśli minimum/maksimum nie są jawnie ustawione, wykres słupkowy będzie domyślnie wyśrodkowany na zerze."
+      },
+      {
+        "title": "Odstęp słupków serii",
+        "description": "Określ odstęp w pikselach między słupkami w grupie."
+      },
+      {
+        "title": "Tryb kumulacji",
+        "description": "Jeśli ustawiono na „true”, ta właściwość utworzy sumę dla każdego punktu serii. Wpłynie to także na oś Y i ogólne granice wykresu. Jeśli ustawiono na „false”, skumulowane słupki będą rysowane od linii zera. W trybie skumulowanym właściwość „seriesBarDistance” nie ma wpływu."
+      }
+    ]
+  }
+}

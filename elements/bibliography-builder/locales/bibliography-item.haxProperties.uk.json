@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Бібліографічний запис",
+    "description": "Запис, що представляє одне посилання в бібліографії, з підтримкою кількох форматів і варіантів експорту."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Тип",
+        "description": "Тип джерела",
+        "options": {
+          "web": "Веб",
+          "journal": "Журнал",
+          "book": "Книга"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва запису"
+      },
+      {
+        "property": "authors",
+        "title": "Автор(и)",
+        "description": "Події на хронології"
+      },
+      {
+        "property": "publisher",
+        "title": "Видавець",
+        "description": "Оригінальний вебсайт"
+      }
+    ]
+  }
+}

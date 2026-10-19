@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex निवडक",
+    "description": "Hexcode रंग निवडक"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "मूल्य",
+        "description": "डीफॉल्ट hex मूल्य"
+      },
+      {
+        "property": "disabled",
+        "title": "अक्षम",
+        "description": "मजकूर क्षेत्र अक्षम करा"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "मोठे प्रदर्शन",
+        "description": "मोठ्या प्रदर्शनात रंग समाविष्ट करा"
+      }
+    ]
+  }
+}

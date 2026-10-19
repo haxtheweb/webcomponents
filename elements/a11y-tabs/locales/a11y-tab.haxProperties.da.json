@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Fane",
+    "description": "En enkelt fane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Faneikon"
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiveret"
+      },
+      {
+        "property": "label",
+        "title": "Fanenavn"
+      },
+      {
+        "slot": "",
+        "title": "Faneindhold",
+        "description": "Fanens indhold."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikt ID"
+      },
+      {
+        "property": "flag",
+        "title": "Valgfri flagtekst"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Valgfrit flagikon"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Oszlopos elrendezés",
+    "description": "Anyag elrendezése egyszerű oszlopokban"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Oszlopos elrendezés",
+        "description": "Az elemek megjelenítési stílusa (kis képernyőn változhat)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Reszponzivitás letiltása",
+        "description": "Jelöld be, hogy nagyobb képernyőkön megmaradjanak az oszlopok, a legkisebbeken viszont egymás alá kerüljenek"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Elemek belső margója",
+        "description": "Az egyes elemeken belüli belső margó"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Elemek margója",
+        "description": "Az elemek közötti margó"
+      }
+    ]
+  }
+}

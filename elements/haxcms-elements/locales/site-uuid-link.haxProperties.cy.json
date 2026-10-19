@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Dolen HAX",
+    "description": "Dolen i adnodd penodol yn y wefan rydych chi'n gweithio arni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Eitem",
+        "description": "Eitem i'w dangos ar gyfer data'r ddolen / teitl"
+      }
+    ]
+  }
+}

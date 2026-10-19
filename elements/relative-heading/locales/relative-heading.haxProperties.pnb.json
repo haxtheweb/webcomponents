@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "نسبتی سرخی",
+    "description": "اُتلے دی سرخی دے حساب نال ٹھیک سرخی درجہ بندی دیندا اے"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "اُتلی سرخی دی وسیلہ ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "لنک بٹن فیچر بند کردا اے۔"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "لنک کاپی بٹن نوں سرخی دے بالکل سجے پاسے رکھدا اے۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "جے اُتلا نہ لبھے تاں سرخی دا درجہ۔"
+      },
+      {
+        "property": "copyMessage",
+        "description": "لنک کاپی دے ٹوسٹ سنیہے دا ڈیفالٹ متن بدلدا اے۔"
+      },
+      {
+        "property": "linkLabel",
+        "description": "لنک کاپی بٹن دا ڈیفالٹ لیبل بدلدا اے۔"
+      },
+      {
+        "property": "linkIcon",
+        "description": "لنک کاپی بٹن دا ڈیفالٹ آئیکن بدلدا اے۔"
+      },
+      {
+        "property": "closeLabel",
+        "description": "لنک کاپی ٹوسٹ دے بند بٹن دا ڈیفالٹ لیبل بدلدا اے۔"
+      },
+      {
+        "property": "closeIcon",
+        "description": "لنک کاپی ٹوسٹ دے بند بٹن دا ڈیفالٹ آئیکن بدلدا اے۔"
+      }
+    ]
+  }
+}

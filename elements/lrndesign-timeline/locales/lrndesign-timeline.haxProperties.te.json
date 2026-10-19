@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "కాలక్రమం",
+    "description": "చిత్రాలు మరియు వచనంతో సంఘటనల టైమ్‌లైన్"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "కాలక్రమం శీర్షిక",
+        "description": "టైమ్‌లైన్ కోసం ఒక శీర్షిక."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ఐచ్ఛిక యాక్సెంట్ రంగు."
+      },
+      {
+        "property": "dark",
+        "title": "డార్క్ థీమ్",
+        "description": "డార్క్ థీమ్‌ను ప్రారంభించండి"
+      },
+      {
+        "slot": "",
+        "title": "టైమ్‌లైన్ వివరణ",
+        "description": "టైమ్‌లైన్‌ను వివరించే ఐచ్ఛిక వచనం."
+      },
+      {
+        "property": "events",
+        "title": "టైమ్‌లైన్ సంఘటనలు",
+        "description": "టైమ్‌లైన్‌లోని సంఘటనలు"
+      }
+    ]
+  }
+}

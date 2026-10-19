@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAX အတွက် ဒီဇိုင်းစနစ် အကောင်အထည်ဖော်မှု"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "ပြသမည့် ရွေးချယ်စရာ",
+        "options": {
+          "*": "စတိုင်လမ်းညွှန် အပြည့်အစုံ"
+        }
+      }
+    ]
+  }
+}

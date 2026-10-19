@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Ripa",
+    "description": "He ripa kotahi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ata Ripa"
+      },
+      {
+        "property": "disabled",
+        "title": "Kua monokia"
+      },
+      {
+        "property": "label",
+        "title": "Tapanga Ripa"
+      },
+      {
+        "slot": "",
+        "title": "Ihirangi Ripa",
+        "description": "Ngā ihirangi o te ripa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Ahurei"
+      },
+      {
+        "property": "flag",
+        "title": "Kuputuhi Haki Kōwhiringa"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Ata Haki Kōwhiringa"
+      }
+    ]
+  }
+}

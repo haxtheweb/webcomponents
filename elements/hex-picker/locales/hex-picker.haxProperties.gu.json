@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex પીકર",
+    "description": "Hexcode રંગ પીકર"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "મૂલ્ય",
+        "description": "ડિફૉલ્ટ hex મૂલ્ય"
+      },
+      {
+        "property": "disabled",
+        "title": "નિષ્ક્રિય",
+        "description": "ટેક્સ્ટ ફીલ્ડ અક્ષમ કરો"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "મોટું પ્રદર્શન",
+        "description": "મોટા પ્રદર્શનમાં રંગ શામેલ કરો"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Blokk tas-CMS",
+    "description": "Blokk tas-CMS irrenderjat fuq il-backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modulu",
+        "description": "Modulu li jrid jitgħabba mis-CMS tagħna"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta tal-blokk li jrid jitgħabba mis-CMS tagħna"
+      }
+    ]
+  }
+}

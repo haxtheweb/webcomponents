@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "سائٹ ویو",
+    "description": "اک ڈائنامک بلاک جیہڑا معیار مطابق سائٹ ڈیٹا کوئری کر کے وکھاندا اے"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ویو URL",
+        "description": "ویو ڈیٹا فیڈ لئی کوئری پیرامیٹر۔ تسیں ایہہ Views ڈیش بورڈ توں لے سکدے او۔"
+      },
+      {
+        "property": "renderer",
+        "title": "وکھاوݨ دا موڈ",
+        "description": "ویو دے نتیجے کیویں وکھائے جاݨ"
+      },
+      {
+        "property": "entity",
+        "title": "اکائی دی قسم",
+        "description": "جواب پارس کرن لئی ورتی اکائی دی قسم",
+        "options": {
+          "": "ڈیفالٹ (آئٹماں)",
+          "item": "آئٹم",
+          "page": "صفحہ",
+          "file": "فائل",
+          "tag": "ٹیگ",
+          "block": "بلاک",
+          "view": "ویو",
+          "theme": "تھیم",
+          "region": "علاقہ",
+          "customElement": "کسٹم عنصر"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "سائٹ ویو توڑو",
+        "description": "سدھی ایڈٹنگ لئی جامد مواد وچ بدلو؛ سورس توں آپے اپ ڈیٹ ہوݨا رُک جاندا اے۔"
+      }
+    ]
+  }
+}

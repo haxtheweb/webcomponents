@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Okwu",
+    "description": "Okwu mkpụrụ okwu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Okwu"
+      },
+      {
+        "slot": "",
+        "title": "Nkọwa",
+        "description": "Nkọwa a ga-egosi mgbe a pịrị okwu ahụ."
+      },
+      {
+        "property": "description",
+        "title": "Nkọwa (OER Schema)",
+        "description": "OER Schema: nkọwa dị mkpirikpi nke okwu mkpụrụ okwu ahụ. A na-ejupụta ya na-akpaghị aka site na ederede nkọwa ma ọ bụrụ na ahapụrụ ya efu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kart",
+    "description": "Kartek bi şêweya aksentê ya vebijarkî."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Sernav",
+        "description": "Sernivîsek ji bo kartê."
+      },
+      {
+        "slot": "subheading",
+        "title": "Binsernivîs",
+        "description": "Binsernivîseke vebijarkî ji bo kartê."
+      },
+      {
+        "slot": "content",
+        "title": "Naverok",
+        "description": "Naverok ji bo kartê."
+      },
+      {
+        "slot": "footer",
+        "title": "Binnivîs",
+        "description": "Binrûpeleke vebijarkî ji bo kartê."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Wêne",
+        "description": "Wêneyê vebijarkî"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Nivîsa Alt a Wêneyê",
+        "description": "Nivîsa alternatîf a ku wêneyê ji bo xwînerên ekranê dide nasîn. Tenê heke wêne bi tenê xemilandî be vala bihêle."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Rêzkirina Asoyî ya Wêneyê",
+        "options": {
+          "left": "çep",
+          "center": "navend",
+          "right": "rast"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Rêzkirina Stûnî ya Wêneyê",
+        "options": {
+          "top": "jor",
+          "center": "navend",
+          "bottom": "jêr"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengekî balkêş ê vebijarkî."
+      },
+      {
+        "property": "dark",
+        "title": "Mijara Tarî",
+        "description": "Temaya Tarî Çalak Bike"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horîzontal",
+        "description": "Arastekirina asoyî?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Aksenta Sernivîsê",
+        "description": "Rengê aksentê li sernivîsê bisepîne?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Aksenta Paşxaneyê",
+        "description": "Rengê aksentê li paşxaneya kartê bisepîne?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Bê Aksenta Sînorê",
+        "description": "Aksenta sînorê rake?"
+      },
+      {
+        "property": "flat",
+        "title": "Pehn",
+        "description": "Siya qutiyê rake?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Goşe",
+        "description": "Naverok ji bo goşeya kartê."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Un bloc de contingut markdown, directe o carregat remotament"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown en brut"
+      },
+      {
+        "property": "source",
+        "title": "Origen",
+        "description": "Fitxer font del markdown"
+      }
+    ]
+  }
+}

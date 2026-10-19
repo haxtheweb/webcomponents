@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Komponent edukacyjny",
+    "description": "Karta, za pomocą której prowadzący przekazują pedagogikę i strategie nauczania."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Typ",
+        "description": "Typ używanej karty."
+      },
+      {
+        "property": "subtitle",
+        "title": "Podtytuł",
+        "description": "Podtytuł karty."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Opcjonalny link karty (link niedostępny dla celów nauczania)."
+      },
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Ustaw tytuł; zastępuje tytuł wynikający z typu"
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ustaw ikonę; zastępuje ikonę wynikającą z typu"
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Ustaw kolor akcentu; zastępuje kolor wynikający z typu"
+      },
+      {
+        "slot": "",
+        "title": "Spis treści"
+      }
+    ]
+  }
+}

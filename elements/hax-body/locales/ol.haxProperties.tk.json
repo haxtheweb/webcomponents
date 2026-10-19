@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Sanly sanaw",
+    "description": "Belgilenen sanaw dörediň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "San stili",
+        "description": "Tertipli sanawy belgilemek üçin ulanylýan stil.",
+        "options": {
+          "": "Deslapky (onluk)",
+          "list-decimal-leading-zero": "Öňünde nol bilen onluk (01, 02, 03)",
+          "list-lower-alpha": "Kiçi harplar (a, b, c)",
+          "list-upper-alpha": "Baş harplar (A, B, C)",
+          "list-lower-roman": "Kiçi rim sanlary (i, ii, iii)",
+          "list-upper-roman": "Uly rim sanlary (I, II, III)"
+        }
+      }
+    ]
+  }
+}

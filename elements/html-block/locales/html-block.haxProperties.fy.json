@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML-blok",
+    "description": "In basis-HTML-blok dat HAXschema-keppeling leveret"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML-koade dy't jo yn de ynhâld presintearje wolle"
+      }
+    ]
+  }
+}

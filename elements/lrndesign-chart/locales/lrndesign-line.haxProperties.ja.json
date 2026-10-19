@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "折れ線グラフ",
+    "description": "CSV を基にアクセシブルなグラフを作成します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "アクセントカラー",
+        "description": "任意のアクセントカラー。"
+      },
+      {
+        "title": "ダークテーマ",
+        "description": "ダークテーマを有効にする"
+      },
+      {
+        "title": "CSVファイル",
+        "description": "CSVからデータを読み込みます。"
+      },
+      {
+        "title": "グラフのタイトル",
+        "description": "グラフのアクセシブルな代替テキスト。"
+      },
+      {
+        "title": "グラフの説明",
+        "description": "グラフのアクセシブルな説明。"
+      },
+      {
+        "title": "スケール名",
+        "description": "グラフの幅:高さの比率（$ct-scales と $ct-scales-names については https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings を参照）。",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "グリッド背景を表示"
+      },
+      {
+        "title": "領域を表示"
+      },
+      {
+        "title": "線を表示"
+      },
+      {
+        "title": "点を表示"
+      },
+      {
+        "title": "全幅"
+      },
+      {
+        "title": "点のラベルを表示"
+      },
+      {
+        "title": "グラフのパディング（上）"
+      },
+      {
+        "title": "グラフのパディング（下）"
+      },
+      {
+        "title": "グラフのパディング（左）"
+      },
+      {
+        "title": "グラフのパディング（右）"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "データを反転",
+        "description": "ラベル、系列の順序、各系列のデータ配列全体を含めてデータを反転します。"
+      },
+      {
+        "title": "HTMLテーブル",
+        "description": "任意：HTMLテーブルとしてデータを読み込みます。"
+      },
+      {
+        "title": "グラフの最小値",
+        "description": "グラフの本来の最小値を上書きすると、拡大表示したり、表示される最小値を制限したりできます"
+      },
+      {
+        "title": "グラフの最大値",
+        "description": "グラフの本来の最大値を上書きすると、拡大表示したり、表示される最大値を制限したりできます"
+      },
+      {
+        "title": "点のラベルを表示",
+        "options": {
+          "middle": "中央",
+          "start": "開始",
+          "end": "終了"
+        }
+      },
+      {
+        "title": "点のラベルのXオフセット"
+      },
+      {
+        "title": "点のラベルのYオフセット"
+      },
+      {
+        "title": "線を滑らかにする"
+      },
+      {
+        "title": "領域の基準",
+        "description": "面グラフの領域を閉じるために使用する基準値（通常は0）。"
+      },
+      {
+        "title": "X軸のグリッドを表示",
+        "description": "X軸のグリッドを表示します。"
+      },
+      {
+        "title": "X軸のオフセット"
+      },
+      {
+        "title": "X軸の位置",
+        "description": "ラベルを配置する位置。\"start\" または \"end\" を指定できます。\"start\" は縦軸では左、横軸では上に相当し、\"end\" は縦軸では右、横軸では下に相当します"
+      },
+      {
+        "title": "X軸のラベルを表示",
+        "description": "X軸のラベルを表示します。"
+      },
+      {
+        "title": "X軸のラベル（水平オフセット）",
+        "description": "X軸のラベルの水平位置。"
+      },
+      {
+        "title": "X軸のラベル（垂直オフセット）",
+        "description": "X軸のラベルの垂直位置。"
+      },
+      {
+        "title": "X軸のタイトル",
+        "description": "X軸の任意のタイトル。"
+      },
+      {
+        "title": "X軸のタイトル（水平オフセット）",
+        "description": "X軸のタイトルの水平位置。"
+      },
+      {
+        "title": "X軸のタイトル（垂直オフセット）",
+        "description": "X軸のタイトルの垂直位置。"
+      },
+      {
+        "title": "X軸のタイトルのアンカー",
+        "description": "X軸のタイトルの任意のアンカー。",
+        "options": {
+          "middle": "中央",
+          "end": "終了",
+          "start": "開始"
+        }
+      },
+      {
+        "title": "Y軸：グリッドを表示",
+        "description": "Y軸のグリッドを表示します。"
+      },
+      {
+        "title": "Y軸のオフセット"
+      },
+      {
+        "title": "Y軸の位置",
+        "description": "ラベルを配置する位置。\"start\" または \"end\" を指定できます。\"start\" は縦軸では左、横軸では上に相当し、\"end\" は縦軸では右、横軸では下に相当します"
+      },
+      {
+        "title": "Y軸のラベルを表示",
+        "description": "Y軸のラベルを表示します。"
+      },
+      {
+        "title": "Y軸のラベル（水平オフセット）",
+        "description": "Y軸のラベルの水平位置。"
+      },
+      {
+        "title": "Y軸のラベル（垂直オフセット）",
+        "description": "Y軸のラベルの垂直位置。"
+      },
+      {
+        "title": "Y軸の目盛りの最小間隔",
+        "description": "目盛りの間隔の最小の高さをピクセルで指定します。"
+      },
+      {
+        "title": "Y軸の目盛り（整数のみ）",
+        "description": "目盛りの間隔に整数値のみを使用します。"
+      },
+      {
+        "title": "Y軸のタイトル",
+        "description": "Y軸の任意のタイトル。"
+      },
+      {
+        "title": "Y軸のタイトル（垂直オフセット）",
+        "description": "Y軸のタイトルの水平位置。"
+      },
+      {
+        "title": "Y軸のタイトル（水平オフセット）",
+        "description": "Y軸のタイトルの水平位置。"
+      },
+      {
+        "title": "Y軸のタイトルのアンカー",
+        "description": "Y軸のタイトルの任意のアンカー。",
+        "options": {
+          "middle": "中央",
+          "end": "終了",
+          "start": "開始"
+        }
+      },
+      {
+        "title": "Y軸のタイトルを反転",
+        "description": "Y軸のタイトルを反転しますか？"
+      }
+    ]
+  }
+}

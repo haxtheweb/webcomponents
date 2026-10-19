@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "కెరీర్ పాత్ర",
+    "description": "సంస్థలోని ఒక వ్యక్తిగత పాత్ర"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "శీర్షిక"
+      },
+      {
+        "property": "startDate",
+        "title": "ప్రారంభ తేదీ"
+      },
+      {
+        "property": "endDate",
+        "title": "ముగింపు తేదీ (ఐచ్ఛికం)"
+      },
+      {
+        "property": "skills",
+        "title": "అనుబంధ నైపుణ్యాలు",
+        "description": "నైపుణ్యాలను జోడించడం ప్రారంభించడానికి + బటన్‌ను ఎంచుకోండి"
+      }
+    ]
+  }
+}

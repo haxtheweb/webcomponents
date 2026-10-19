@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Oġġett tal-Karriera",
+    "description": "Organizzazzjoni individwali u r-rwoli affiljati magħha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Isem l-Organizzazzjoni"
+      },
+      {
+        "property": "location",
+        "title": "Post"
+      },
+      {
+        "property": "source",
+        "title": "Sors"
+      }
+    ]
+  }
+}

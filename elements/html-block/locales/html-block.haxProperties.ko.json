@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML 블록",
+    "description": "HAXschema 연결을 제공하는 기본 HTML 블록"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "콘텐츠에 표시할 HTML 코드"
+      }
+    ]
+  }
+}

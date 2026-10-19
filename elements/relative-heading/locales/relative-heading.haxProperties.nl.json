@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relatieve kop",
+    "description": "geeft de juiste kophiërarchie weer op basis van de kop van het bovenliggende element"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Bron-ID van bovenliggende kop"
+      },
+      {
+        "property": "disableLink",
+        "description": "Schakelt de linkknopfunctie uit."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Lijnt de knop Link kopiëren helemaal rechts van de kop uit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Kopniveau als er geen bovenliggend element is gevonden."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Overschrijft de standaardtekst van de toastmelding bij link kopiëren."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Overschrijft het standaardlabel van de knop Link kopiëren."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Overschrijft het standaardpictogram van de knop Link kopiëren."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Overschrijft het standaardlabel van de sluitknop van de toastmelding bij link kopiëren."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Overschrijft het standaardpictogram van de sluitknop van de toastmelding bij link kopiëren."
+      }
+    ]
+  }
+}

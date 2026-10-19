@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Stytting",
+    "description": "Stytting við fullum heiti sum ráð."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekstur",
+        "description": "Sjónligur styttingartekstur."
+      },
+      {
+        "attribute": "title",
+        "title": "Orð",
+        "description": "Fult heiti víst við svevan."
+      }
+    ]
+  }
+}

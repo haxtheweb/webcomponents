@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Webhelynézet",
+    "description": "Dinamikus blokk, amely feltételek alapján lekérdezi és megjeleníti a webhely adatait"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Nézet URL-je",
+        "description": "A nézet adatfolyamának lekérdezési paraméterei. Ezt a Nézetek irányítópultról szerezheted be."
+      },
+      {
+        "property": "renderer",
+        "title": "Megjelenítési mód",
+        "description": "A nézet találatainak megjelenítési módja"
+      },
+      {
+        "property": "entity",
+        "title": "Entitástípus",
+        "description": "A válasz feldolgozásához használt entitástípus",
+        "options": {
+          "": "Alapértelmezett (items)",
+          "item": "Elem",
+          "page": "Oldal",
+          "file": "Fájl",
+          "tag": "Címke",
+          "block": "Blokk",
+          "view": "Nézet",
+          "theme": "Téma",
+          "region": "Régió",
+          "customElement": "Egyéni elem"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Webhelynézet szétbontása",
+        "description": "Átalakítás statikus tartalommá közvetlen szerkesztéshez; leállítja az automatikus frissítést a forrásból."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pukapuka Kaute",
+    "description": "He pukapuka kaute kore-upoko e tautoko ana i ngā tuarongo maha me ngā rubric."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pūtake",
+        "description": "Momo pūtake raraunga (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Pito URL (JSON)",
+          "json": "Pūranga raraunga JSON",
+          "filesystem": "Pūnaha kōnae"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Raraunga Pūtake",
+        "description": "URL, raraunga JSON rānei mō te pukapuka kaute."
+      },
+      {
+        "property": "forCourse",
+        "title": "Tohutoro Akoranga",
+        "description": "Tautuhi akoranga ka tukuna hei oer:forCourse ki ia rauemi Aromatawai."
+      }
+    ]
+  }
+}

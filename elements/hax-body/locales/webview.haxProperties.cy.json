@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Ffynhonnell",
+        "description": "URL yr adnodd hwn."
+      }
+    ]
+  }
+}

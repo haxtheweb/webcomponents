@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Cronologia",
+    "description": "Una cronologia d'esdeveniments amb imatges i text"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Títol de la cronologia",
+        "description": "Un títol per a la cronologia."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Un color d'accent opcional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema fosc",
+        "description": "Activa el tema fosc"
+      },
+      {
+        "slot": "",
+        "title": "Descripció de la cronologia",
+        "description": "Text opcional que descriu la cronologia."
+      },
+      {
+        "property": "events",
+        "title": "Esdeveniments de la cronologia",
+        "description": "Els esdeveniments de la cronologia"
+      }
+    ]
+  }
+}

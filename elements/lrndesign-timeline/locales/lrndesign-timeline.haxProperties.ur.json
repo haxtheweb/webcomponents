@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ٹائم لائن",
+    "description": "تصاویر اور متن کے ساتھ واقعات کی ٹائم لائن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "ٹائم لائن کا عنوان",
+        "description": "ٹائم لائن کا عنوان۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "اختیاری نمایاں رنگ۔"
+      },
+      {
+        "property": "dark",
+        "title": "گہری تھیم",
+        "description": "ڈارک تھیم فعال کریں"
+      },
+      {
+        "slot": "",
+        "title": "ٹائم لائن کی وضاحت",
+        "description": "ٹائم لائن کو بیان کرنے والا اختیاری متن۔"
+      },
+      {
+        "property": "events",
+        "title": "ٹائم لائن کے واقعات",
+        "description": "ٹائم لائن میں واقعات"
+      }
+    ]
+  }
+}

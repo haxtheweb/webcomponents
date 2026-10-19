@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ọdịnaya ibe enweghị usoro",
+    "description": "Gosi mmewere ọkwa kachasị elu enweghị usoro site na ibe ahọrọ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Ibe",
+        "description": "Họrọ ibe a ga-esi nweta ọdịnaya enweghị usoro. Mmewere ahụ ga-egosi otu n'ime mmewere HTML ọkwa kachasị elu nke ibe a n'enweghị usoro."
+      }
+    ]
+  }
+}

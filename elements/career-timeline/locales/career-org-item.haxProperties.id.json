@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Item Karier",
+    "description": "Satu organisasi dan peran-peran yang terkait"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Nama Organisasi"
+      },
+      {
+        "property": "location",
+        "title": "Lokasi"
+      },
+      {
+        "property": "source",
+        "title": "Sumber"
+      }
+    ]
+  }
+}

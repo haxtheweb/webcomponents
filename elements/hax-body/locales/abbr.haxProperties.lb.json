@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ofkierzung",
+    "description": "Ofkierzung mat Tooltip vum vollstännege Begrëff."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Siichtbaren Ofkierzungstext."
+      },
+      {
+        "attribute": "title",
+        "title": "Wuert",
+        "description": "Vollstännege Begrëff, dee beim Iwwerfuere gewise gëtt."
+      }
+    ]
+  }
+}

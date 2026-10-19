@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Sapalla Siq'i",
+    "description": "Sapalla siq'i elemento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Pukyu",
+        "description": "Siq'ip URL-nin."
+      },
+      {
+        "attribute": "alt",
+        "title": "Hukniray qillqa",
+        "description": "Llapanpaq haykunapaq SEO-paq ima rantin qillqa."
+      },
+      {
+        "attribute": "height",
+        "title": "Sayay",
+        "description": "Pixelkunapi sayay. Ch'usaqta saqiy kikin hatun kaynin llamk'achinapaq."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Siq'i apaykuy",
+        "description": "Hayk'aq siq'i apamukunanta akllay.",
+        "options": {
+          "lazy": "Rikukuq kaptin apamuy",
+          "auto": "Kikinmanta"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responsive pukyukuna (srcset)",
+        "description": "Siq'i URL-kunata willakuqkunatawan (rikch'anachiy 480w utaq 2x) qillqay navegadorkuna pantallapaq aswan allin hatun kayta akllanankupaq. Kikin srcset atributo hina waqaychasqa."
+      }
+    ]
+  }
+}

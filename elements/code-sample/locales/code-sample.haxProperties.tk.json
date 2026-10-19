@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kod mysaly",
+    "description": "Sahypada reňklenip görkezilýän kod mysaly"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kod reňklemesi",
+        "description": "Kod meýdanyna ulanyljak sintaksis reňklemesi",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON maglumatlary",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Buferde göçür düwmesi",
+        "description": "ýokarky sag burçda \"buferde göçür\" diýen düwme"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Reňklemäniň başy",
+        "description": "Reňklemäni başlamaly setir belgisi"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Reňklemäniň soňy",
+        "description": "Reňklemäni gutarmaly setir"
+      }
+    ]
+  }
+}

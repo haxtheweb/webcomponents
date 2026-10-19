@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ប្លង់ជួរឈរ",
+    "description": "រៀបចំសម្ភារៈជាជួរឈរសាមញ្ញ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "ប្លង់ជួរឈរ",
+        "description": "រចនាប័ទ្មសម្រាប់បង្ហាញធាតុទាំងនេះ (អាចប្រែប្រួលសម្រាប់អេក្រង់តូច)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "បិទការឆ្លើយតប",
+        "description": "គូសប្រអប់ដើម្បីរក្សាជួរឈរនៅលើអេក្រង់ធំ ខណៈនៅតែដាក់ជាជង់នៅលើអេក្រង់តូចបំផុត"
+      },
+      {
+        "property": "itemPadding",
+        "title": "ចន្លោះខាងក្នុងធាតុ",
+        "description": "ចន្លោះនៅខាងក្នុងធាតុនីមួយៗ"
+      },
+      {
+        "property": "itemMargin",
+        "title": "រឹមធាតុ",
+        "description": "រឹមរវាងធាតុ"
+      }
+    ]
+  }
+}

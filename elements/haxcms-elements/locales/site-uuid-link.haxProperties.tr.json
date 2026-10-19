@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX bağlantısı",
+    "description": "Üzerinde çalıştığınız sitedeki belirli bir kaynağa bağlantı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Öğe",
+        "description": "Bağlantı / başlık verisi için gösterilecek öğe"
+      }
+    ]
+  }
+}

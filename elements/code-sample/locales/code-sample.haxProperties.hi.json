@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "कोड नमूना",
+    "description": "पेज में हाइलाइट किया गया कोड का नमूना"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "कोड हाइलाइटिंग",
+        "description": "कोड क्षेत्र पर लागू करने के लिए सिंटैक्स हाइलाइटिंग",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON डेटा",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "क्लिपबोर्ड पर कॉपी करें बटन",
+        "description": "ऊपर दाईं ओर का बटन जिस पर क्लिपबोर्ड पर कॉपी करें लिखा है"
+      },
+      {
+        "property": "highlightStart",
+        "title": "हाइलाइट आरंभ",
+        "description": "हाइलाइटिंग शुरू करने की पंक्ति संख्या"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "हाइलाइट अंत",
+        "description": "हाइलाइटिंग समाप्त करने की पंक्ति"
+      }
+    ]
+  }
+}

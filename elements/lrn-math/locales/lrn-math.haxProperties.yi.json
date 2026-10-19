@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "מאַטעמאַטיק",
+    "description": "ווײַז מאַטעמאַטיק אויף אַ שיינעם אופֿן."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "מאַטעמאַטיק",
+        "description": "שרײַב אַרײַן די גלײַכונג ווי LaTeX"
+      }
+    ]
+  }
+}

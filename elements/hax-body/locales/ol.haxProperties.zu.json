@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Uhlu olunezinombolo",
+    "description": "Dala uhlu olunezinombolo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Isitayela sezinombolo",
+        "description": "Isitayela esisetshenziselwa ukubala uhlu oluhleliwe.",
+        "options": {
+          "": "Okuzenzakalelayo (amadesimali)",
+          "list-decimal-leading-zero": "Amadesimali ane-zero ngaphambili (01, 02, 03)",
+          "list-lower-alpha": "Izinhlamvu ezincane (a, b, c)",
+          "list-upper-alpha": "Izinhlamvu ezinkulu (A, B, C)",
+          "list-lower-roman": "Izinombolo zesiRoma ezincane (i, ii, iii)",
+          "list-upper-roman": "Izinombolo zesiRoma ezinkulu (I, II, III)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "远程内容",
+    "description": "拿一只网站个内容辣另一只网站里重用。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "网站地址",
+        "description": "要是勿是当前网站,贴上要引用内容个地址"
+      },
+      {
+        "property": "uuid",
+        "title": "项目",
+        "description": "链接 / 标题数据要渲染个项目"
+      },
+      {
+        "property": "breakreference",
+        "title": "断开引用",
+        "description": "勾牢搿只框会得拿远程内容复制到本地来编辑,但是会断开关联。引用材料更新以后,搿搭勿会再跟牢更新。"
+      },
+      {
+        "property": "showTitle",
+        "title": "显示标题",
+        "description": "打开就会显示所展示资源个标题"
+      }
+    ]
+  }
+}

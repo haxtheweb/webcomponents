@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Loopbaanrol",
+    "description": "'n Individuele rol binne 'n organisasie"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel"
+      },
+      {
+        "property": "startDate",
+        "title": "Begindatum"
+      },
+      {
+        "property": "endDate",
+        "title": "Einddatum (opsioneel)"
+      },
+      {
+        "property": "skills",
+        "title": "Geassosieerde vaardighede",
+        "description": "Kies die +-knoppie om vaardighede by te voeg"
+      }
+    ]
+  }
+}

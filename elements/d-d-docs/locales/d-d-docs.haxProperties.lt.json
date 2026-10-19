@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Kurti, plėtoti, griauti",
+    "description": "Dizaino sistemos įgyvendinimas HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Atvaizduojama parinktis",
+        "options": {
+          "*": "Visas stiliaus vadovas"
+        }
+      }
+    ]
+  }
+}

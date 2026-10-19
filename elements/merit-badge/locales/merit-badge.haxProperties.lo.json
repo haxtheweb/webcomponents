@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ເຫຼື້ອມກຽດຕິຄຸນ",
+    "description": "ເຫຼື້ອມທີ່ສະແດງການໄດ້ຮັບທັກສະ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "ຫົວຂໍ້ເຫຼື້ອມ",
+        "description": "ຫົວຂໍ້ທີ່ສະແດງເທິງເຫຼື້ອມ."
+      },
+      {
+        "property": "badgeImage",
+        "title": "ຮູບເຫຼື້ອມ",
+        "description": "URL ຮູບພາບສຳລັບເຫຼື້ອມ."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "ລາຍລະອຽດເຫຼື້ອມ",
+        "description": "ລາຍລະອຽດກ່ຽວກັບເຫຼື້ອມ."
+      },
+      {
+        "property": "hyperLink",
+        "title": "ໄຮເປີລິ້ງ",
+        "description": "ລິ້ງທີ່ກ່ຽວຂ້ອງກັບເຫຼື້ອມ."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "ທັກສະຂອງເຫຼື້ອມ",
+        "description": "ທັກສະທີ່ສະແດງເທິງເຫຼື້ອມ."
+      },
+      {
+        "property": "skill",
+        "title": "ທັກສະ (OER Schema)",
+        "description": "OER Schema: ທັກສະທີ່ໄດ້ຮຽນຮູ້ຈາກການບັນລຸຈຸດປະສົງການຮຽນຮູ້ນີ້."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "صورة أساسية",
+    "description": "عنصر صورة أساسي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "المصدر",
+        "description": "URL الصورة."
+      },
+      {
+        "attribute": "alt",
+        "title": "النص البديل",
+        "description": "نص بديل لسهولة الوصول وSEO."
+      },
+      {
+        "attribute": "height",
+        "title": "الارتفاع",
+        "description": "الارتفاع بالبكسل. اتركه فارغًا لاستخدام الحجم الطبيعي."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "طريقة تحميل الصورة",
+        "description": "اختر متى يتم تحميل الصورة.",
+        "options": {
+          "lazy": "التحميل عند الظهور",
+          "auto": "تلقائي"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "المصادر المتجاوبة (srcset)",
+        "description": "أدرج عناوين URL للصور والواصفات (مثل 480w أو 2x) ليختار المتصفح أفضل حجم للشاشة. تُخزَّن كسمة srcset القياسية."
+      }
+    ]
+  }
+}

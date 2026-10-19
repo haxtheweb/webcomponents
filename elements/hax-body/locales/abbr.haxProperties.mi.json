@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Whakapotonga",
+    "description": "Whakapotonga me te kōrero āwhina kupu-katoa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Kupu",
+        "description": "Kuputuhi whakapotonga e kitea ana."
+      },
+      {
+        "attribute": "title",
+        "title": "Kupu",
+        "description": "Kupu katoa e whakaaturia ana ina tau te atatohu."
+      }
+    ]
+  }
+}

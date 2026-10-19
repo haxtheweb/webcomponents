@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML בלאָק",
+    "description": "אַ גרונטיקער HTML בלאָק וואָס גיט HAXschema פֿאַרבינדונג"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML קאָד וואָס דו ווילסט ווײַזן אינעם אינהאַלט"
+      }
+    ]
+  }
+}

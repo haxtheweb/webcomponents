@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Ένα μπλοκ περιεχομένου markdown, άμεσα ή με απομακρυσμένη φόρτωση"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Ακατέργαστο markdown"
+      },
+      {
+        "property": "source",
+        "title": "Πηγή",
+        "description": "Αρχείο πηγής για markdown"
+      }
+    ]
+  }
+}

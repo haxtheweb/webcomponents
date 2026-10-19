@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kizuizi cha CMS",
+    "description": "Kizuizi cha CMS kinachoonyeshwa upande wa backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Moduli",
+        "description": "Moduli ya kupakia kutoka CMS yetu"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta ya kizuizi cha kupakia kutoka CMS yetu"
+      }
+    ]
+  }
+}

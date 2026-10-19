@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "出处",
+    "description": "有三种展示模式个引用元素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "被引用作品个标题。"
+      },
+      {
+        "property": "source",
+        "title": "来源链接",
+        "description": "被引用作品个来源 URL。"
+      },
+      {
+        "property": "date",
+        "title": "访问日期",
+        "description": "访问来源个日期。"
+      },
+      {
+        "property": "scope",
+        "title": "范围",
+        "description": "要引用个元素范围。",
+        "options": {
+          "sibling": "兄弟元素",
+          "parent": "父元素"
+        }
+      },
+      {
+        "property": "license",
+        "title": "许可",
+        "description": "被引用作品个许可。"
+      },
+      {
+        "property": "creator",
+        "title": "创作者",
+        "description": "被引用作品个创作者或者所有者。"
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema 类型",
+        "description": "搿条引用个 OER Schema 类。默认是 oer:ReferencedMaterial;只有用有效个 OER 类(比方 oer:SupportingMaterial)再好覆盖。"
+      }
+    ]
+  }
+}

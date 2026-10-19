@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Выделение",
+    "description": "Выделить текст в строке."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Выделенный текст."
+      }
+    ]
+  }
+}

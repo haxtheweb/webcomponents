@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Item Karir",
+    "description": "Organisasi individu lan peran sing gegandhengan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Jeneng Organisasi"
+      },
+      {
+        "property": "location",
+        "title": "Lokasi"
+      },
+      {
+        "property": "source",
+        "title": "Sumber"
+      }
+    ]
+  }
+}

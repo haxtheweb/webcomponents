@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "שטערן־אָפּשאַצונג",
+    "description": "ווידזשעט צו ווײַזן אַן אָפּשאַצונג אָדער קנעפּל צו אָפּשאַצן."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "רעזולטאַט",
+        "description": "איצטיקער רעזולטאַט־ווערט."
+      },
+      {
+        "property": "possible",
+        "title": "מעגלעך",
+        "description": "מאַקסימאַלער מעגלעכער רעזולטאַט."
+      },
+      {
+        "property": "numStars",
+        "title": "צאָל שטערן",
+        "description": "צאָל שטערן צו ווײַזן."
+      },
+      {
+        "property": "interactive",
+        "title": "אינטעראַקטיוו",
+        "description": "דערלויב דעם באַניצער צו באַשטימען די אָפּשאַצונג."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "רובריק־סקאַלע־מאָדוס",
+        "description": "גיב אַרויס OER Schema RubricScale און RubricLevel מעטאַדאַטן (levelOrdinal/levelPoints) פֿאַר יעדן שטערן."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Externe inhoud",
+    "description": "Inhoud van de ene site hergebruiken in een andere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Siteadres",
+        "description": "Plak het adres waaruit inhoud moet worden overgenomen als dat niet de huidige site is"
+      },
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item dat wordt weergegeven voor de link-/titelgegevens"
+      },
+      {
+        "property": "breakreference",
+        "title": "Verwijzing verbreken",
+        "description": "Als je dit vakje aanvinkt, wordt de externe inhoud gekopieerd om lokaal te bewerken, maar wordt de koppeling verwijderd. Er komen dan geen updates meer binnen als het bronmateriaal wordt bijgewerkt."
+      },
+      {
+        "property": "showTitle",
+        "title": "Titel tonen",
+        "description": "Schakel in om de titel van de getoonde bron weer te geven"
+      }
+    ]
+  }
+}

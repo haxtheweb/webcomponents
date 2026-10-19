@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Selettore esadecimale",
+    "description": "Selettore di colori esadecimali"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Valore",
+        "description": "Valore esadecimale predefinito"
+      },
+      {
+        "property": "disabled",
+        "title": "Disattivato",
+        "description": "Disattiva il campo di testo"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Visualizzazione grande",
+        "description": "Includi il colore in una visualizzazione grande"
+      }
+    ]
+  }
+}

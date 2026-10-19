@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Beskrywende figuur",
+    "description": "Toeganklike figuur met lang beskrywing"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Prent"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alt-teks"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Figuuronderskrif",
+        "description": "Figuuronderskrifteks wat altyd sigbaar is."
+      },
+      {
+        "slot": "details",
+        "title": "Beskrywing",
+        "description": "Gedetailleerde prentbeskrywing wat versteek of gewys kan word"
+      },
+      {
+        "slot": "summary",
+        "title": "Beskrywingknoppie",
+        "description": "Verstek vir knoppie wat beskrywingsteks wys/versteek, bv. \"inligting\", \"metadata\", ens."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Opsionele opsommingsteks wanneer besonderhede oop is"
+      },
+      {
+        "property": "closeText",
+        "title": "Opsionele opsommingsteks wanneer besonderhede toe is"
+      }
+    ]
+  }
+}

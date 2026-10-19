@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: bllok nënfaqesh",
+    "description": "Bllok dinamik për të shfaqur nënfaqet e faqes aktuale"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Metoda dinamike",
+        "description": "Si të llogariten nënfaqet në raport me këtë element",
+        "options": {
+          "active": "Nënfaqet aktive",
+          "parent": "Nënfaqet e prindit",
+          "ancestor": "Të gjitha nënfaqet nga paraardhësi më i lartë"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Niveli i fillimit"
+      },
+      {
+        "property": "end",
+        "title": "Niveli i mbarimit"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ሂሳብ",
+    "description": "ሂሳብን በሚያምር መልኩ አቅርብ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "ሂሳብ",
+        "description": "እኩልታን እንደ LaTeX ያስገቡ"
+      }
+    ]
+  }
+}

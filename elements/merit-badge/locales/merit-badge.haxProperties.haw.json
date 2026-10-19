@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Hōʻailona pono",
+    "description": "Hōʻailona ʻike maka e hōʻike ai i ka loaʻa ʻana o kahi mākau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Poʻo inoa hōʻailona",
+        "description": "Poʻo inoa i hōʻike ʻia ma ka hōʻailona."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Kiʻi hōʻailona",
+        "description": "URL kiʻi no ka hōʻailona."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Nā kikoʻī hōʻailona",
+        "description": "Nā kikoʻī e pili ana i ka hōʻailona."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Loulou",
+        "description": "Loulou pili i ka hōʻailona."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Nā mākau hōʻailona",
+        "description": "Nā mākau i hōʻike ʻia ma ka hōʻailona."
+      },
+      {
+        "property": "skill",
+        "title": "Mākau (OER Schema)",
+        "description": "OER Schema: he mākau i aʻo ʻia i loaʻa ma ka hoʻopau ʻana i kēia pahuhopu aʻo."
+      }
+    ]
+  }
+}

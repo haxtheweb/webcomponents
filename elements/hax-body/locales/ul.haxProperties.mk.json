@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Листа со точки",
+    "description": "Создај листа со точки."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Стил на точките",
+        "description": "Стил што се користи за точките на неподредената листа.",
+        "options": {
+          "": "Стандардно (квадрат)",
+          "list-disc": "Диск",
+          "list-circle": "Круг",
+          "list-square": "Квадрат"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS դիտում",
+    "description": "CMS դիտումներ՝ ցուցադրված սերվերի կողմում"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Անուն",
+        "description": "Դիտման անվանումը մեր CMS-ից"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Ցուցադրում",
+        "description": "Ցուցադրում այդ դիտման ներսում մեր CMS-ից"
+      }
+    ]
+  }
+}

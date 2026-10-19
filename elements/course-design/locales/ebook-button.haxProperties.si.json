@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ඊ-පොත් බොත්තම",
+    "description": "ඊ-පොතකට සබැඳෙන බොත්තමක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "බොත්තමේ මාතෘකාව."
+      },
+      {
+        "property": "link",
+        "title": "සබැඳිය",
+        "description": "ක්ලික් කළ විට යළි-යොමු කළ යුතු සබැඳිය."
+      },
+      {
+        "property": "icon",
+        "title": "නිරූපකය",
+        "description": "මෙම සබැඳිය නියෝජනය කිරීමට නිරූපකය"
+      }
+    ]
+  }
+}

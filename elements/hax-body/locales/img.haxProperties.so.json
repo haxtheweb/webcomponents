@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Sawir Aasaasi ah",
+    "description": "Curiye sawir aasaasi ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Isha",
+        "description": "URL-ka sawirka."
+      },
+      {
+        "attribute": "alt",
+        "title": "Qoraalka beddelka",
+        "description": "Qoraal beddel ah oo loogu talagalay gelitaanka iyo SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Dherer",
+        "description": "Dhererka pixel ahaan. Bannaan u daa si aad u isticmaasho cabbirka dabiiciga ah."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Soo dejinta sawirka",
+        "description": "Dooro goorta sawirku soo rarmo.",
+        "options": {
+          "lazy": "Soo rar marka uu muuqdo",
+          "auto": "Toos"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Ilaha jawaab-celinta (srcset)",
+        "description": "Liis garee URL-yada sawirrada iyo sharraxayaasha (tusaale 480w ama 2x) si baadhayaashu u doortaan cabbirka ugu fiican ee shaashadda. Waxaa loo kaydiyaa sida sifada caadiga ah ee srcset."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Vzdálený obsah",
+    "description": "Znovu použijte obsah z jednoho webu na jiném."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Adresa webu",
+        "description": "Vložte adresu, odkud se má obsah odkazovat, pokud nejde o aktuální web"
+      },
+      {
+        "property": "uuid",
+        "title": "Položka",
+        "description": "Položka k vykreslení pro odkaz / data názvu"
+      },
+      {
+        "property": "breakreference",
+        "title": "Zrušit odkaz",
+        "description": "Zaškrtnutím zkopírujete vzdálený obsah k místním úpravám, ale vazba se odstraní. Při aktualizaci referenčního materiálu již nebude dostávat aktualizace."
+      },
+      {
+        "property": "showTitle",
+        "title": "Zobrazit název",
+        "description": "Zapnutím vykreslíte název zobrazovaného zdroje"
+      }
+    ]
+  }
+}

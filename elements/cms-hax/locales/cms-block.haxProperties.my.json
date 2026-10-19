@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ဘလော့ခ်",
+    "description": "backend တွင် ပြသသော CMS ဘလော့ခ်"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Module",
+        "description": "ကျွန်ုပ်တို့၏ CMS မှ ဖွင့်မည့် module"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "ကျွန်ုပ်တို့၏ CMS မှ ဖွင့်မည့် ဘလော့ခ်၏ Delta"
+      }
+    ]
+  }
+}

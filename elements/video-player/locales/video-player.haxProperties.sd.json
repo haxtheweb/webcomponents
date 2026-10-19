@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "وڊيو",
+    "description": "ڪيترن ئي ذريعن مان رسائي لائق وڊيو پلي بيڪ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ذريعو",
+        "description": "هن ميڊيا جو URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "عنوان",
+        "description": "وڊيو هيٺ ڏيکاريل عنوان."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "پوسٽر تصوير",
+        "description": "پوسٽر تصوير جو URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "ٽيڪسٽ ٽريڪ",
+        "description": "وڊيو لاءِ بند ڪيپشن، سب ٽائيٽل، وضاحتون ۽ ٻيا ٽيڪسٽ ٽريڪ."
+      },
+      {
+        "property": "startTime",
+        "title": "شروعاتي وقت",
+        "description": "وڊيو ڪنهن خاص وقت (سيڪنڊن) تي شروع ڪريو."
+      },
+      {
+        "property": "endTime",
+        "title": "آخري وقت",
+        "description": "وڊيو ڪنهن خاص وقت (سيڪنڊن) تي ختم ڪريو، شروعاتي وقت گهرجي."
+      },
+      {
+        "property": "learningMode",
+        "title": "سکيا موڊ چالو ڪريو",
+        "description": "تيز اڳتي ۽ پوئتي ڪرڻ بند ڪري ٿو."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube تي کولڻ وارو بٽڻ هٽايو",
+        "description": "وڊيو YouTube تي کولڻ وارو بٽڻ هٽائي ٿو."
+      },
+      {
+        "property": "linkable",
+        "title": "شيئر لنڪ شامل ڪريو؟",
+        "description": "وڊيو شيئر ڪرڻ لاءِ لنڪ مهيا ڪري ٿو."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ٽائيم اسٽيمپ لڪايو",
+        "description": "ٽرانسڪرپٽ تي ٽائيم اسٽيمپ لڪايو."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ٽرانسڪرپٽ لڪايو",
+        "description": "ڊفالٽ طور ٽرانسڪرپٽ لڪايو."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "آڊيو وضاحت ٽريڪ",
+        "description": "آڊيو وضاحت ٽريڪ (MP3 فائل) جو URL جيڪو بصري عنصرن جي بيان ڪري ٿو."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "ٻڌائي ٿو ته CORS استعمال ڪجي يا نه.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "پس منظر ۾ هلائڻ جي اجازت ڏيو",
+        "description": "جڏهن براؤزر ٽيب تان فوڪس هٽي ته به هلندو رهي."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ٽرانسڪرپٽ لاءِ ڊارڪ ٿيم",
+        "description": "ٽرانسڪرپٽ لاءِ ڊارڪ ٿيم چالو ڪريو."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "انٽرايڪٽو بند ڪريو",
+        "description": "انٽرايڪٽو موڊ بند ڪريو جيڪو ٽرانسڪرپٽ کي ڪلڪ لائق بڻائي ٿو."
+      },
+      {
+        "property": "lang",
+        "title": "ٻولي",
+        "description": "ميڊيا جي ٻولي."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "(ختم ٿيل) پليئر لاءِ ايڪسينٽ رنگ چونڊيو."
+      }
+    ]
+  }
+}

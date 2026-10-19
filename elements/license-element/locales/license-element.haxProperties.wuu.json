@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "许可",
+    "description": "拨侬个作品加一只许可。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "被引用作品个标题。"
+      },
+      {
+        "property": "source",
+        "title": "来源链接",
+        "description": "授权作品个来源 URL。"
+      },
+      {
+        "property": "license",
+        "title": "许可",
+        "description": "搿只作品用个许可。"
+      },
+      {
+        "property": "creator",
+        "title": "创作者",
+        "description": "搿只作品个创作者或者所有者。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "来源链接",
+        "description": "更多许可详情个链接。"
+      },
+      {
+        "property": "moreLabel",
+        "title": "更多标签",
+        "description": "更多许可详情个标签。"
+      }
+    ]
+  }
+}

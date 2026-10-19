@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "කාලරේඛාව",
+    "description": "රූප සහ පෙළ සහිත සිදුවීම් කාලරේඛාවක්"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "කාලරේඛා මාතෘකාව",
+        "description": "කාලරේඛාව සඳහා මාතෘකාවක්."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "විකල්ප උච්චාරණ වර්ණයක්."
+      },
+      {
+        "property": "dark",
+        "title": "අඳුරු තේමාව",
+        "description": "අඳුරු තේමාව සක්‍රිය කරන්න"
+      },
+      {
+        "slot": "",
+        "title": "කාලරේඛා විස්තරය",
+        "description": "කාලරේඛාව විස්තර කරන විකල්ප පෙළ."
+      },
+      {
+        "property": "events",
+        "title": "කාලරේඛා සිදුවීම්",
+        "description": "කාලරේඛාවේ සිදුවීම්"
+      }
+    ]
+  }
+}

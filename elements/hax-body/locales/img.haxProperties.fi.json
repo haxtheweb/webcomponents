@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Peruskuva",
+    "description": "Peruskuvaelementti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Lähde",
+        "description": "Kuvan URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Vaihtoehtoinen teksti",
+        "description": "Vaihtoehtoinen teksti saavutettavuutta ja SEO:ta varten."
+      },
+      {
+        "attribute": "height",
+        "title": "Korkeus",
+        "description": "Korkeus pikseleinä. Jätä tyhjäksi käyttääksesi luonnollista kokoa."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Kuvan lataus",
+        "description": "Valitse, milloin kuva latautuu.",
+        "options": {
+          "lazy": "Lataa, kun näkyvissä",
+          "auto": "Automaattinen"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responsiiviset lähteet (srcset)",
+        "description": "Luettele kuvien URL-osoitteet ja kuvaajat (esim. 480w tai 2x), jotta selaimet valitsevat näytölle parhaan koon. Tallennetaan standardiin srcset-attribuuttiin."
+      }
+    ]
+  }
+}

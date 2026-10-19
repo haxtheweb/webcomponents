@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAX 个设计系统实现"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "要渲染个选项",
+        "options": {
+          "*": "完整样式指南"
+        }
+      }
+    ]
+  }
+}

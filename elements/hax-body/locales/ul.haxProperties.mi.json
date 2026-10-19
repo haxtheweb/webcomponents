@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Rārangi matatohu",
+    "description": "Waihanga rārangi matatohu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Kāhua matatohu",
+        "description": "Kāhua e whakamahia ana mō ngā matatohu rārangi kāore i te raupapa.",
+        "options": {
+          "": "Taunoa (tapawhā)",
+          "list-disc": "Kōpae",
+          "list-circle": "Porowhita",
+          "list-square": "Tapawhā"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Giorrúchán",
+    "description": "Giorrúchán le leid uirlise den téarma iomlán."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Téacs",
+        "description": "Téacs infheicthe an ghiorrúcháin."
+      },
+      {
+        "attribute": "title",
+        "title": "Focal",
+        "description": "Téarma iomlán a thaispeántar ar ainliú."
+      }
+    ]
+  }
+}

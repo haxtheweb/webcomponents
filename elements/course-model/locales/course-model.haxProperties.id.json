@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model mata kuliah",
+    "description": "Tata letak interaktif untuk konsep mata kuliah dengan detail, animasi, dan pemeriksaan pengetahuan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "judul"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Area informasi"
+      },
+      {
+        "title": "Area detail"
+      },
+      {
+        "title": "Area animasi"
+      },
+      {
+        "title": "Area Pemeriksaan Pengetahuan"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Area logo"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "അവലംബം",
+    "description": "മൂന്ന് അവതരണ മോഡുകളുള്ള സൈറ്റേഷൻ എലമെന്റ്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "ഉദ്ധരിച്ച കൃതിയുടെ തലക്കെട്ട്."
+      },
+      {
+        "property": "source",
+        "title": "ഉറവിട ലിങ്ക്",
+        "description": "ഉദ്ധരിച്ച കൃതിയുടെ ഉറവിട URL."
+      },
+      {
+        "property": "date",
+        "title": "ആക്സസ് ചെയ്ത തീയതി",
+        "description": "ഉറവിടം ആക്സസ് ചെയ്ത തീയതി."
+      },
+      {
+        "property": "scope",
+        "title": "സ്കോപ്പ്",
+        "description": "ഉദ്ധരിക്കേണ്ട എലമെന്റ് സ്കോപ്പ്.",
+        "options": {
+          "sibling": "സിബ്ലിംഗ് എലമെന്റ്",
+          "parent": "പാരന്റ് എലമെന്റ്"
+        }
+      },
+      {
+        "property": "license",
+        "title": "ലൈസൻസ്",
+        "description": "ഉദ്ധരിച്ച കൃതിയുടെ ലൈസൻസ്."
+      },
+      {
+        "property": "creator",
+        "title": "സ്രഷ്ടാവ്",
+        "description": "ഉദ്ധരിച്ച കൃതിയുടെ സ്രഷ്ടാവ് അല്ലെങ്കിൽ ഉടമ."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema തരം",
+        "description": "ഈ സൈറ്റേഷനുള്ള OER Schema ക്ലാസ്. ഡിഫോൾട്ട് oer:ReferencedMaterial ആണ്; സാധുവായ ഒരു OER ക്ലാസ് (ഉദാ. oer:SupportingMaterial) ഉപയോഗിച്ച് മാത്രം മാറ്റിസ്ഥാപിക്കുക."
+      }
+    ]
+  }
+}

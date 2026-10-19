@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Abreviatura",
+    "description": "Tam termin göstərən ipucu ilə abreviatura."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Mətn",
+        "description": "Görünən abreviatura mətni."
+      },
+      {
+        "attribute": "title",
+        "title": "Söz",
+        "description": "Üzərinə gəldikdə göstərilən tam termin."
+      }
+    ]
+  }
+}

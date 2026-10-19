@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "תמונה בסיסית",
+    "description": "רכיב תמונה בסיסי."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "מקור",
+        "description": "כתובת URL של התמונה."
+      },
+      {
+        "attribute": "alt",
+        "title": "טקסט חלופי",
+        "description": "טקסט חלופי לנגישות ול-SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "גובה",
+        "description": "גובה בפיקסלים. השאירו ריק כדי להשתמש בגודל הטבעי."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "טעינת תמונה",
+        "description": "בחרו מתי התמונה נטענת.",
+        "options": {
+          "lazy": "טעינה כשהיא גלויה",
+          "auto": "אוטומטי"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "מקורות רספונסיביים (srcset)",
+        "description": "רשמו כתובות URL של תמונות ומתארים (לדוגמה 480w או 2x) כדי שהדפדפנים יבחרו את הגודל המתאים ביותר למסך. נשמר כמאפיין srcset הסטנדרטי."
+      }
+    ]
+  }
+}

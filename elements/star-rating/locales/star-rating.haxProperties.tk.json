@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ýyldyz bahasy",
+    "description": "Baha görkezýän widget ýa-da baha bermek üçin düwme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Bal",
+        "description": "Häzirki bal bahasy."
+      },
+      {
+        "property": "possible",
+        "title": "Mümkin",
+        "description": "Mümkin bolan iň ýokary bal."
+      },
+      {
+        "property": "numStars",
+        "title": "Ýyldyzlaryň sany",
+        "description": "Görkeziljek ýyldyzlaryň sany."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktiw",
+        "description": "Ulanyja baha bellemäge rugsat ber."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubrika şkalasy tertibi",
+        "description": "Her ýyldyz üçin OER Schema RubricScale we RubricLevel metamaglumatlaryny (levelOrdinal/levelPoints) çykar."
+      }
+    ]
+  }
+}

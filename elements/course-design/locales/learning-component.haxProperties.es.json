@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Componente de aprendizaje",
+    "description": "Una tarjeta para que los instructores comuniquen la pedagogía y las estrategias didácticas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipo",
+        "description": "El tipo de tarjeta que se usará."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtítulo",
+        "description": "El subtítulo de la tarjeta."
+      },
+      {
+        "property": "url",
+        "title": "Enlace",
+        "description": "Un enlace opcional para la tarjeta (el enlace no está disponible para los objetivos de aprendizaje)."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Establece el título; reemplaza el título basado en el tipo"
+      },
+      {
+        "property": "icon",
+        "title": "Icono",
+        "description": "Establece el icono; reemplaza el icono basado en el tipo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Establece el color de acento; reemplaza el color basado en el tipo"
+      },
+      {
+        "slot": "",
+        "title": "Contenido"
+      }
+    ]
+  }
+}

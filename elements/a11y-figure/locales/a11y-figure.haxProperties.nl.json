@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Beschrijvende figuur",
+    "description": "Toegankelijke figuur met uitgebreide beschrijving"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Afbeelding"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alt-tekst"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Figuurbijschrift",
+        "description": "Bijschrift van de figuur dat altijd zichtbaar is."
+      },
+      {
+        "slot": "details",
+        "title": "Beschrijving",
+        "description": "Gedetailleerde afbeeldingsbeschrijving die kan worden verborgen of getoond"
+      },
+      {
+        "slot": "summary",
+        "title": "Beschrijvingsknop",
+        "description": "Standaardtekst voor de knop die de beschrijving toont/verbergt, bijv. \"info\", \"metagegevens\", enz."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Optionele samenvattingstekst wanneer de details open zijn"
+      },
+      {
+        "property": "closeText",
+        "title": "Optionele samenvattingstekst wanneer de details gesloten zijn"
+      }
+    ]
+  }
+}

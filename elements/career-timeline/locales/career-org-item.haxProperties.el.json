@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Στοιχείο καριέρας",
+    "description": "Ένας μεμονωμένος οργανισμός και οι σχετικοί ρόλοι του"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Όνομα οργανισμού"
+      },
+      {
+        "property": "location",
+        "title": "Τοποθεσία"
+      },
+      {
+        "property": "source",
+        "title": "Πηγή"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Bädda in externt webbinnehåll."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Källa",
+        "description": "URL för den här resursen."
+      }
+    ]
+  }
+}

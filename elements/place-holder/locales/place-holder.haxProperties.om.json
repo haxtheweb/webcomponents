@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Bakka bu'aa",
+    "description": "Bakka bu'aa gosa miidiyaa filatameetti jijjiiramuu danda'u"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Gosa",
+        "description": "Gosa meeshaa bakka buusuuf kun fudhatu.",
+        "options": {
+          "text": "Barreeffama / qabiyyee",
+          "document": "Sanada / faayilii",
+          "audio": "Sagalee",
+          "video": "Viidiyoo",
+          "image": "Suuraa",
+          "math": "Herrega"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Barreeffama",
+        "description": "Bakka bu'aa barbaadamu bal'inaan adda baasi"
+      }
+    ]
+  }
+}

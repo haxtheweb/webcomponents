@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML-blokk",
+    "description": "En enkel HTML-blokk som gir HAXschema-kobling"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML-kode du vil vise i innholdet"
+      }
+    ]
+  }
+}

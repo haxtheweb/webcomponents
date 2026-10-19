@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kutipan sumber",
+    "description": "Elemen kutipan kanthi telung mode presentasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Irah-irahan",
+        "description": "Judhul karya sing dikutip."
+      },
+      {
+        "property": "source",
+        "title": "Link sumber",
+        "description": "URL sumber kanggo karya sing dikutip."
+      },
+      {
+        "property": "date",
+        "title": "Tanggal diakses",
+        "description": "Tanggal sumber diakses."
+      },
+      {
+        "property": "scope",
+        "title": "Cakupan",
+        "description": "Cakupan elemen sing dikutip.",
+        "options": {
+          "sibling": "Elemen sedulur",
+          "parent": "Elemen induk"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lisènsi",
+        "description": "Lisensi kanggo karya sing dikutip."
+      },
+      {
+        "property": "creator",
+        "title": "Pangripta",
+        "description": "Pangripta utawa pemilik karya sing dikutip."
+      },
+      {
+        "property": "typeof",
+        "title": "Jinis OER Schema",
+        "description": "Kelas OER Schema kanggo kutipan iki. Gawane oer:ReferencedMaterial; ganti mung nganggo kelas OER sing valid (conto: oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

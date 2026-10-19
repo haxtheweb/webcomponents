@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ხედი",
+    "description": "CMS ხედები, რომლებიც backend-ზე რენდერდება"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "სახელი",
+        "description": "ხედის სახელი ჩვენი CMS-იდან"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "ჩვენება",
+        "description": "ჩვენების ვარიანტი ამ ხედში ჩვენი CMS-იდან"
+      }
+    ]
+  }
+}

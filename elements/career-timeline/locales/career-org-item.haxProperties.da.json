@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Karriereelement",
+    "description": "En enkelt organisation og dens tilknyttede roller"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Organisationens navn"
+      },
+      {
+        "property": "location",
+        "title": "Sted"
+      },
+      {
+        "property": "source",
+        "title": "Kilde"
+      }
+    ]
+  }
+}

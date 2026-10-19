@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "קאַריערע־עלעמענט",
+    "description": "אַן איינציקע אָרגאַניזאַציע און אירע פֿאַרבונדענע ראָלעס"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "נאָמען פֿון דער אָרגאַניזאַציע"
+      },
+      {
+        "property": "location",
+        "title": "אָרט"
+      },
+      {
+        "property": "source",
+        "title": "מקור"
+      }
+    ]
+  }
+}

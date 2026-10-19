@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Scheda",
+    "description": "Una scheda con stile di accento facoltativo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Intestazione",
+        "description": "Un titolo per la scheda."
+      },
+      {
+        "slot": "subheading",
+        "title": "Sottotitolo",
+        "description": "Un sottotitolo facoltativo per la scheda."
+      },
+      {
+        "slot": "content",
+        "title": "Contenuto",
+        "description": "Contenuto della scheda."
+      },
+      {
+        "slot": "footer",
+        "title": "Piè di tabella",
+        "description": "Un piè di pagina facoltativo per la scheda."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Immagine",
+        "description": "Immagine facoltativa"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Testo alternativo dell'immagine",
+        "description": "Testo alternativo che descrive l'immagine per i lettori di schermo. Lascia vuoto solo se l'immagine è puramente decorativa."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Allineamento orizzontale dell'immagine",
+        "options": {
+          "left": "sinistra",
+          "center": "centro",
+          "right": "destra"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Allineamento verticale dell'immagine",
+        "options": {
+          "top": "in alto",
+          "center": "centro",
+          "bottom": "in basso"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Un colore di accento facoltativo."
+      },
+      {
+        "property": "dark",
+        "title": "Tema scuro",
+        "description": "Attiva tema scuro"
+      },
+      {
+        "property": "horizontal",
+        "title": "Orizzontale",
+        "description": "Orientamento orizzontale?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Accento sul titolo",
+        "description": "Applicare il colore di accento al titolo?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Accento sullo sfondo",
+        "description": "Applicare il colore di accento allo sfondo della scheda?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Nessun bordo di accento",
+        "description": "Rimuovere il bordo di accento?"
+      },
+      {
+        "property": "flat",
+        "title": "Piatta",
+        "description": "Rimuovere l'ombra?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Angolo",
+        "description": "Contenuto per l'angolo della scheda."
+      }
+    ]
+  }
+}

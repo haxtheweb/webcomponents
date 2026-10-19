@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Mufananidzo Wakavandudzwa",
+    "description": "Nzira yekuratidza mifananidzo ine zvivandudzo zvakasiyana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kwakabva",
+        "description": "URL yemufananidzo."
+      },
+      {
+        "property": "alt",
+        "title": "Mamwe mavara",
+        "description": "Mavara anotsanangura mufananidzo kuvashandisi vasingaoni."
+      },
+      {
+        "property": "link",
+        "title": "Chinongedzo",
+        "description": "Batanidza mufananidzo kuURL"
+      },
+      {
+        "property": "card",
+        "title": "Kadhi",
+        "description": "Isa mumvuri kuti uite kunge kadhi rakasimudzwa."
+      },
+      {
+        "property": "box",
+        "title": "Bhokisi",
+        "description": "Isa bhokisi rinooneka kutenderedza mufananidzo."
+      },
+      {
+        "property": "offset",
+        "title": "Kutsauka",
+        "description": "Tsausa mufananidzo kuruboshwe kana kurudyi.",
+        "options": {
+          "none": "hapana",
+          "wide": "pamhi",
+          "narrow": "nhete"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Kwakatorwa",
+        "description": "Kududza kwemufananidzo."
+      },
+      {
+        "property": "caption",
+        "title": "Tsananguro yemufananidzo",
+        "description": "Caption yemufananidzo."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Zita reMufananidzo",
+        "description": "Zita rezita remufananidzo."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Tsananguro yeMufananidzo",
+        "description": "Tsananguro yezita remufananidzo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Mufananidzo mudiki",
+        "description": "Sosi yemufananidzo mudiki. Inoratidza mufananidzo mudiki asi inovhura sosi yakazara muhwindo."
+      },
+      {
+        "property": "round",
+        "title": "Mufananidzo wakatenderera",
+        "description": "Inocheka chitarisiko chemufananidzo kuti chive chakaita sedenderedzwa."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Dzima hwindo remufananidzo",
+        "description": "Dzima kudzvanya kunovhura mufananidzo muhwindo rekuongorora mufananidzo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Ratidza se markdown",
+        "description": "Ratidza caption nekududza se markdown."
+      }
+    ]
+  }
+}

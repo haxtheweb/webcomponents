@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-bloko",
+    "description": "CMS-bloko bildigita ĉe la backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modulo",
+        "description": "Modulo ŝargota el nia CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delto",
+        "description": "Delto de la bloko ŝargota el nia CMS"
+      }
+    ]
+  }
+}

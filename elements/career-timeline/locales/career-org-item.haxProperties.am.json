@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "የሙያ ንጥል",
+    "description": "አንድ ድርጅት እና ተዛማጅ ሚናዎቹ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "የድርጅት ስም"
+      },
+      {
+        "property": "location",
+        "title": "ቦታ"
+      },
+      {
+        "property": "source",
+        "title": "ምንጭ"
+      }
+    ]
+  }
+}

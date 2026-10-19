@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "moodela koorsii",
+    "description": "Qindaa'ina walqunnamtii yaadota koorsii bal'ina, animeeshinii fi madaallii beekumsaa wajjin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "mata duree"
+      },
+      {
+        "property": "src",
+        "title": "madda"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Naannoo odeeffannoo"
+      },
+      {
+        "title": "Naannoo bal'inaa"
+      },
+      {
+        "title": "Naannoo animeeshinii"
+      },
+      {
+        "title": "Naannoo Madaallii Beekumsaa"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Naannoo loogoo"
+      }
+    ]
+  }
+}

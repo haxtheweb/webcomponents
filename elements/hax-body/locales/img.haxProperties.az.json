@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Əsas şəkil",
+    "description": "Əsas şəkil elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Mənbə",
+        "description": "Şəklin URL-i."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt mətn",
+        "description": "Əlçatanlıq və SEO üçün alternativ mətn."
+      },
+      {
+        "attribute": "height",
+        "title": "Hündürlük",
+        "description": "Piksellə hündürlük. Təbii ölçüdən istifadə etmək üçün boş buraxın."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Şəklin yüklənməsi",
+        "description": "Şəklin nə vaxt yüklənəcəyini seçin.",
+        "options": {
+          "lazy": "Görünəndə yüklə",
+          "auto": "Avtomatik"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Adaptiv mənbələr (srcset)",
+        "description": "Brauzerlərin ekran üçün ən yaxşı ölçünü seçməsi üçün şəkil URL-lərini və deskriptorları (məs. 480w və ya 2x) sadalayın. Standart srcset atributu kimi saxlanılır."
+      }
+    ]
+  }
+}

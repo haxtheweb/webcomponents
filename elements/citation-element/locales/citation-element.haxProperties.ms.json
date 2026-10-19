@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Petikan sumber",
+    "description": "Elemen petikan dengan tiga mod persembahan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk karya yang dipetik."
+      },
+      {
+        "property": "source",
+        "title": "Pautan sumber",
+        "description": "URL sumber untuk karya yang dipetik."
+      },
+      {
+        "property": "date",
+        "title": "Tarikh diakses",
+        "description": "Tarikh sumber diakses."
+      },
+      {
+        "property": "scope",
+        "title": "Skop",
+        "description": "Skop elemen untuk dipetik.",
+        "options": {
+          "sibling": "Elemen adik-beradik",
+          "parent": "Elemen induk"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lesen",
+        "description": "Lesen untuk karya yang dipetik."
+      },
+      {
+        "property": "creator",
+        "title": "Pencipta",
+        "description": "Pencipta atau pemilik karya yang dipetik."
+      },
+      {
+        "property": "typeof",
+        "title": "Jenis OER Schema",
+        "description": "Kelas OER Schema untuk petikan ini. Lalai kepada oer:ReferencedMaterial; atasi hanya dengan kelas OER yang sah (cth. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

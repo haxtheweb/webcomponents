@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Ett block med Markdown-innehåll, direkt eller fjärrinläst"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Rå Markdown"
+      },
+      {
+        "property": "source",
+        "title": "Källa",
+        "description": "Källfil för Markdown"
+      }
+    ]
+  }
+}

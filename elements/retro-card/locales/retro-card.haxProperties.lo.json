@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ບັດຍ້ອນຍຸກ",
+    "description": "ບັດແບບງ່າຍທີ່ມີການອອກແບບຍ້ອນຍຸກ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ຫຼັກຂອງບັດ."
+      },
+      {
+        "property": "url",
+        "description": "URL ທີ່ຈະເປີດເມື່ອຄລິກບັດ."
+      },
+      {
+        "property": "subtitle",
+        "title": "ຫົວຂໍ້ຍ່ອຍ",
+        "description": "ຫົວຂໍ້ຍ່ອຍຂອງບັດ."
+      },
+      {
+        "property": "tags",
+        "title": "ແທັກ",
+        "description": "ແທັກທີ່ຂັ້ນດ້ວຍຈຸດ."
+      },
+      {
+        "property": "mediaSource",
+        "title": "ແຫຼ່ງສື່",
+        "description": "ແຫຼ່ງສື່ຫຼັກ."
+      },
+      {
+        "property": "hoverSource",
+        "title": "ແຫຼ່ງເມື່ອວາງເມົາສ໌",
+        "description": "ແຫຼ່ງສື່ທີ່ສະແດງເມື່ອວາງເມົາສ໌ເທິງບັດ ຫຼື ເປີດໃຊ້ງານ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນທີ່ນຳໃຊ້ທົ່ວບັດ."
+      },
+      {
+        "property": "dark",
+        "title": "ມືດ",
+        "description": "ໃຊ້ສີພື້ນຖານໂໝດມືດ."
+      }
+    ]
+  }
+}

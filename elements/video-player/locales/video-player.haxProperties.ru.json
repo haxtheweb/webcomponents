@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Видео",
+    "description": "Доступное воспроизведение видео из разных источников."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Источник",
+        "description": "URL этого медиа."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Название",
+        "description": "Название, показываемое под видео."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Постер",
+        "description": "URL изображения-постера."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Текстовые дорожки",
+        "description": "Скрытые субтитры, субтитры, описания и другие текстовые дорожки для видео."
+      },
+      {
+        "property": "startTime",
+        "title": "Время начала",
+        "description": "Начинать видео с определённого момента (в секундах)."
+      },
+      {
+        "property": "endTime",
+        "title": "Время окончания",
+        "description": "Заканчивать видео в определённый момент (в секундах); требуется время начала."
+      },
+      {
+        "property": "learningMode",
+        "title": "Включить режим обучения",
+        "description": "Отключает перемотку вперёд и назад."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Убрать кнопку «Открыть на YouTube»",
+        "description": "Удаляет кнопку для открытия видео на YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Добавить ссылку для обмена?",
+        "description": "Предоставляет ссылку, чтобы поделиться видео."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Скрыть метки времени",
+        "description": "Скрыть метки времени в расшифровке."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Скрыть расшифровку",
+        "description": "Скрывать расшифровку по умолчанию."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Дорожка аудиоописания",
+        "description": "URL дорожки аудиоописания (файл MP3), озвучивающей визуальные элементы."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Указывает, использовать ли CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Разрешить фоновое воспроизведение",
+        "description": "Продолжать воспроизведение, когда вкладка браузера теряет фокус."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Тёмная тема для расшифровки",
+        "description": "Включить тёмную тему для расшифровки."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Отключить интерактивность",
+        "description": "Отключить интерактивный режим, в котором расшифровка кликабельна."
+      },
+      {
+        "property": "lang",
+        "title": "Язык",
+        "description": "Язык медиа."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "(устарело) Выберите акцентный цвет проигрывателя."
+      }
+    ]
+  }
+}

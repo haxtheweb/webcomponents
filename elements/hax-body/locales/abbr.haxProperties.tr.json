@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kısaltma",
+    "description": "Tam terimi araç ipucunda gösteren kısaltma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Metin",
+        "description": "Görünür kısaltma metni."
+      },
+      {
+        "attribute": "title",
+        "title": "Sözcük",
+        "description": "Üzerine gelindiğinde gösterilen tam terim."
+      }
+    ]
+  }
+}

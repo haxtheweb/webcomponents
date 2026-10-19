@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kaart",
+    "description": "'n Kaart met opsionele aksentstilering."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Opskrif",
+        "description": "'n Opskrif vir kaart."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subopskrif",
+        "description": "'n Opsionele subopskrif vir kaart."
+      },
+      {
+        "slot": "content",
+        "title": "Inhoud",
+        "description": "Inhoud vir kaart."
+      },
+      {
+        "slot": "footer",
+        "title": "Voetskrif",
+        "description": "'n Opsionele voetskrif vir kaart."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Prent",
+        "description": "Opsionele prent"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Prent-alt-teks",
+        "description": "Alternatiewe teks wat die prent vir skermlesers beskryf. Laat slegs leeg as die prent suiwer dekoratief is."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Horisontale belyning van prent",
+        "options": {
+          "left": "links",
+          "center": "middel",
+          "right": "regs"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Vertikale belyning van prent",
+        "options": {
+          "top": "bo",
+          "center": "middel",
+          "bottom": "onder"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "'n Opsionele aksentkleur."
+      },
+      {
+        "property": "dark",
+        "title": "Donker tema",
+        "description": "Aktiveer donker tema"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horisontaal",
+        "description": "Horisontale oriëntasie?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Opskrifaksent",
+        "description": "Pas aksentkleur op opskrif toe?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Agtergrondaksent",
+        "description": "Pas aksentkleur op kaartagtergrond toe?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Geen randaksent nie",
+        "description": "Verwyder randaksent?"
+      },
+      {
+        "property": "flat",
+        "title": "Plat",
+        "description": "Verwyder blokskaduwee?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Hoek",
+        "description": "Inhoud vir kaarthoek."
+      }
+    ]
+  }
+}

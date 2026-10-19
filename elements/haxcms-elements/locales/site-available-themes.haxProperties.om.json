@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Teemiiwwan Jiran",
+    "description": "Teemiiwwan HAXcms jiran jijjiirraa agarsiisa duraa kallattiin agarsiisi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Haalata Ilaalchaa",
+        "description": "Teemiiwwan akkamitti akka agarsiifaman fili",
+        "options": {
+          "gallery": "Galmee suuraa",
+          "table": "Gabatee"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Bal'ina Agarsiisi",
+        "description": "Ibsa teemii fi odeeffannoo dabalataa agarsiisi"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Teemiiwwan Dhokatanii fi Durii Agarsiisi",
+        "description": "Durtii daashboordii irratti dabalataan teemiiwwan dhokatan, durii fi fokkisaa agarsiisi"
+      },
+      {
+        "property": "columns",
+        "title": "Utubaawwan (Galerii)",
+        "description": "Lakkoofsa utubaawwan ilaalcha galerii keessaa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "เสียง",
+    "description": "สามารถนำเสนอวิดีโอในรูปแบบที่เข้าถึงได้สูงไม่ว่าจะมาจากแหล่งใด"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "แหล่งที่มา",
+        "description": "URL ของสื่อนี้"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อเรื่องอย่างง่ายใต้วิดีโอ"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "เลือกสีเน้นสำหรับเครื่องเล่น"
+      },
+      {
+        "property": "track",
+        "title": "คำบรรยายแบบปิด",
+        "description": "URL ของไฟล์คำบรรยาย"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "ภาพขนาดย่อ",
+        "description": "ไม่บังคับ URL ของภาพขนาดย่อ/ภาพโปสเตอร์"
+      },
+      {
+        "property": "learningMode",
+        "title": "เปิดใช้โหมดการเรียนรู้",
+        "description": "ปิดใช้งานการกรอไปข้างหน้าและย้อนกลับ"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "นำปุ่มเปิดบน YouTube ออก",
+        "description": "นำปุ่มสำหรับเปิดวิดีโอบน YouTube ออก"
+      },
+      {
+        "property": "linkable",
+        "title": "รวมลิงก์แชร์หรือไม่?",
+        "description": "ให้ลิงก์สำหรับแชร์วิดีโอ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "ระบุว่าจะใช้ CORS หรือไม่",
+        "options": {
+          "anonymous": "ไม่ระบุตัวตน (anonymous)",
+          "use-credentials": "ใช้ข้อมูลรับรอง (use-credentials)"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "อนุญาตให้เล่นในเบื้องหลัง",
+        "description": "วิดีโอจะหยุด / เล่นโดยอัตโนมัติเมื่อแท็บไม่ได้อยู่ในโฟกัส ตัวเลือกนี้ทำให้วิดีโอเล่นได้โดยที่แท็บไม่ต้องอยู่ในโฟกัส"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ธีมมืดสำหรับบทถอดความ",
+        "description": "เปิดใช้ธีมมืดสำหรับบทถอดความ"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ปิดใช้การโต้ตอบ",
+        "description": "ปิดใช้โหมดโต้ตอบที่ทำให้คลิกบทถอดความได้"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ซ่อนการประทับเวลา",
+        "description": "ซ่อนการประทับเวลาในบทถอดความ"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ซ่อนบทถอดความ",
+        "description": "ซ่อนบทถอดความโดยค่าเริ่มต้น"
+      },
+      {
+        "property": "lang",
+        "title": "ภาษา",
+        "description": "ภาษาของสื่อ"
+      }
+    ]
+  }
+}

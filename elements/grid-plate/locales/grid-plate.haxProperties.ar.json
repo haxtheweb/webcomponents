@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "تخطيط الأعمدة",
+    "description": "تخطيط المواد في أعمدة بسيطة"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "تخطيط الأعمدة",
+        "description": "النمط المستخدم لعرض هذه العناصر (قد يتغير على الشاشات الصغيرة)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "تعطيل التجاوب",
+        "description": "حدد المربع للحفاظ على الأعمدة على الشاشات الأكبر مع استمرار التكديس على أصغر الشاشات"
+      },
+      {
+        "property": "itemPadding",
+        "title": "الحشو الداخلي للعنصر",
+        "description": "الحشو داخل كل عنصر"
+      },
+      {
+        "property": "itemMargin",
+        "title": "هوامش العناصر",
+        "description": "الهامش بين العناصر"
+      }
+    ]
+  }
+}

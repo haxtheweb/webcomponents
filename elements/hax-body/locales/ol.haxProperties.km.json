@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "បញ្ជីលេខរៀង",
+    "description": "បង្កើតបញ្ជីលេខរៀង។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "រចនាប័ទ្មលេខ",
+        "description": "រចនាប័ទ្មដែលប្រើសម្រាប់លេខរៀងបញ្ជីមានលំដាប់។",
+        "options": {
+          "": "លំនាំដើម (ទសភាគ)",
+          "list-decimal-leading-zero": "ទសភាគមានសូន្យនាំមុខ (01, 02, 03)",
+          "list-lower-alpha": "អក្សរឡាតាំងតូច (a, b, c)",
+          "list-upper-alpha": "អក្សរឡាតាំងធំ (A, B, C)",
+          "list-lower-roman": "លេខរ៉ូម៉ាំងតូច (i, ii, iii)",
+          "list-upper-roman": "លេខរ៉ូម៉ាំងធំ (I, II, III)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ligipääsetav üksikasjade nupp",
+    "description": "Ligipääsetav järkjärguline avamine elementidega details ja summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Nupp",
+        "description": "Peidetava sisu kokkuvõte, nt „teave”, „metaandmed” jne."
+      },
+      {
+        "slot": "details",
+        "title": "Kirjeldus",
+        "description": "Üksikasjalik kirjeldus, mida saab peita või näidata"
+      },
+      {
+        "slot": "",
+        "title": "Kirjelduse nupp",
+        "description": "Kirjeldusteksti näitava/peitva nupu vaikeväärtus, nt „teave”, „metaandmed” jne."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Valikuline kokkuvõtte tekst, kui üksikasjad on avatud"
+      },
+      {
+        "property": "closeText",
+        "title": "Valikuline kokkuvõtte tekst, kui üksikasjad on suletud"
+      }
+    ]
+  }
+}

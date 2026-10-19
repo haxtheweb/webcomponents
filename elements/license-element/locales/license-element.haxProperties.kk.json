@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Лицензия",
+    "description": "Жұмысыңызға лицензия беріңіз."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Тақырып",
+        "description": "Дәйексөз алынған жұмыстың атауы."
+      },
+      {
+        "property": "source",
+        "title": "Дереккөз сілтемесі",
+        "description": "Лицензияланған жұмыстың URL мекенжайы."
+      },
+      {
+        "property": "license",
+        "title": "Лицензия",
+        "description": "Осы жұмысқа қолданылатын лицензия."
+      },
+      {
+        "property": "creator",
+        "title": "Авторы",
+        "description": "Осы жұмыстың авторы немесе иесі."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Дереккөз сілтемесі",
+        "description": "Лицензиялау туралы қосымша мәліметтерге сілтеме."
+      },
+      {
+        "property": "moreLabel",
+        "title": "«Толығырақ» белгісі",
+        "description": "Лицензиялау туралы қосымша мәліметтердің белгісі."
+      }
+    ]
+  }
+}

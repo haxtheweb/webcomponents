@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "የሂደት ዶናት",
+    "description": "የሂደት ዶናት"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "የአካሉ ርዕስ"
+      },
+      {
+        "property": "desc",
+        "title": "መግለጫ",
+        "description": "ተደራሽ ረጅም መግለጫ"
+      },
+      {
+        "property": "imageSrc",
+        "title": "የምስል ምንጭ",
+        "description": "በዶናቱ ውስጥ ያለው የምስል ምንጭ።"
+      },
+      {
+        "property": "imageAlt",
+        "title": "የምስል አማራጭ ጽሑፍ",
+        "description": "ለምስሉ alt ጽሑፍ።"
+      },
+      {
+        "property": "animated",
+        "title": "እነማ ያለው",
+        "description": "ሂደቱ በመጀመሪያው ጭነት ላይ እነማ ይኑረው ወይም አይኑረው"
+      },
+      {
+        "property": "complete",
+        "title": "ተጠናቋል",
+        "description": "የተጠናቀቁ እሴቶች ድርድር።"
+      },
+      {
+        "property": "total",
+        "title": "ጠቅላላ",
+        "description": "ሁሉም ንጥሎች ሲጠናቀቁ ያለው ጠቅላላ።"
+      },
+      {
+        "property": "startAngle",
+        "title": "የመጀመሪያ ማዕዘን",
+        "description": "ሂደቱ የሚጀምርበት የዶናት ማዕዘን"
+      }
+    ]
+  }
+}

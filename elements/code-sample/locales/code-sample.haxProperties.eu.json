@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kode-lagina",
+    "description": "Orrian nabarmendutako kode-lagina"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kodearen nabarmentzea",
+        "description": "Kode-eremuari aplikatu beharreko sintaxi-nabarmentzea",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON datuak",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Arbelean kopiatzeko botoia",
+        "description": "goiko eskuineko izkinan \"kopiatu arbelean\" dioen botoia"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Nabarmentzearen hasiera",
+        "description": "Nabarmentzen hasteko lerro-zenbakia"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Nabarmentzearen amaiera",
+        "description": "Nabarmentzen amaitzeko lerroa"
+      }
+    ]
+  }
+}

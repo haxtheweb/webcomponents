@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Barra Chart",
+    "description": "CSV-man hina llapanpaq haykunalla chartta ruran."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rikchachiq llimpi",
+        "description": "Akllanalla rikchachiq llimpi."
+      },
+      {
+        "title": "Tutayaq tema",
+        "description": "Tuta Rikch'ayta Hap'ichiy"
+      },
+      {
+        "title": "CSV Willañiqi",
+        "description": "CSV-manta willakuykunata apamuy."
+      },
+      {
+        "title": "Chartpa Sutin",
+        "description": "Chartniykipaq llapanpaq haykunalla rantin qillqa."
+      },
+      {
+        "title": "Chartpa Willakuynin",
+        "description": "Chartniykip llapanpaq haykunalla willakuynin."
+      },
+      {
+        "title": "Escalap Sutin",
+        "description": "Chartpa kinray:sayay tupun ($ct-scales $ct-scales-names-paq qhaway https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Grid Qhipa Pampata Rikuchiy"
+      },
+      {
+        "title": "Kinray Barrakuna",
+        "description": "Barra chartpa ejenkunata t'ikran kinray barra chartta siq'inapaq. Yuyariy, eje churanakunaykitapas t'ikranayki tiyan, Y Eje kunanqa unanchakunata rikuchinqa, X Ejetaq chaninkunata."
+      },
+      {
+        "title": "Barrakunata Pataman Churay",
+        "description": "Arí nisqa kaptinqa kay kaqqa serie barrakunata pataman churanqa."
+      },
+      {
+        "title": "Seriekunata Rakiy",
+        "description": "Arí nisqa kaptinqa sapanka barra huk serieta rikuchinqa, willakuy arraytaq huk dimensionniyuq chanin array kanan, mana serie array-chu."
+      },
+      {
+        "title": "Chartpa Ukhu Ch'usaqnin (hanaq)"
+      },
+      {
+        "title": "Chartpa Ukhu Ch'usaqnin (uray)"
+      },
+      {
+        "title": "Chartpa Ukhu Ch'usaqnin (lluq'i)"
+      },
+      {
+        "title": "Chartpa Ukhu Ch'usaqnin (paña)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Willakuykunata T'ikray",
+        "description": "Willakuykunata t'ikray, unanchakunata, serie ch'uyanchayta, llapan serie willakuy arraykunatapas."
+      },
+      {
+        "title": "HTML Tabla",
+        "description": "Munaspalla: Willakuykunata HTML tabla hina apamuy."
+      },
+      {
+        "title": "Chartpa Aswan Pisin",
+        "description": "Chartpa kikin aswan pisinta rantispaqa hatunyachiyta utaq chartpa aswan pisi rikuchisqa chaninninta saqiyta atinki"
+      },
+      {
+        "title": "Chartpa Aswan Hatunnin",
+        "description": "Chartpa kikin aswan hatunninta rantispaqa hatunyachiyta utaq chartpa aswan hatun rikuchisqa chaninninta saqiyta atinki"
+      },
+      {
+        "title": "X-Eje Grid Rikuchiy",
+        "description": "X-Ejep gridninta rikuchiy."
+      },
+      {
+        "title": "X-Eje Karunchay"
+      },
+      {
+        "title": "X-Eje Maypi Kasqan",
+        "description": "Unanchakuna churasqa kanan sitio. \"start\" utaq \"end\" churakunman, \"start\" sayaq ejepi lluq'i utaq hanaq hinam, \"end\"-taq kinray ejepi paña utaq uray hinam"
+      },
+      {
+        "title": "X-Eje Unanchata Rikuchiy",
+        "description": "X-Ejep unanchanta rikuchiy."
+      },
+      {
+        "title": "X-Eje Unancha (kinray karunchay)",
+        "description": "X-Ejep unanchankunap kinray churasqan."
+      },
+      {
+        "title": "X-Eje Unancha (sayaq karunchay)",
+        "description": "X-Ejep unanchankunap sayaq churasqan."
+      },
+      {
+        "title": "X-Ejep Sutin",
+        "description": "X-ejepaq munaspalla suti."
+      },
+      {
+        "title": "X-Ejep Sutin (kinray karunchay)",
+        "description": "X-Ejep sutinpa kinray churasqan."
+      },
+      {
+        "title": "X-Ejep Sutin (sayaq karunchay)",
+        "description": "X-Ejep sutinpa sayaq churasqan."
+      },
+      {
+        "title": "X-Ejep Sutin Anclan",
+        "description": "X-ejep sutinpaq munaspalla ancla.",
+        "options": {
+          "middle": "chawpi",
+          "end": "tukukuy",
+          "start": "qallariy"
+        }
+      },
+      {
+        "title": "X-Eje Escala Aswan Pisi Ch'usaq",
+        "description": "Escala puriykunap aswan pisi sayayninta pixelpi willan."
+      },
+      {
+        "title": "X-Eje Escala (hunt'asqa yupaykunalla)",
+        "description": "Escala puriykunapaq hunt'asqa yupaykunallata llamk'achiy."
+      },
+      {
+        "title": "Y-Eje: Grid Rikuchiy",
+        "description": "Y-Ejep gridninta rikuchiy."
+      },
+      {
+        "title": "Y-Eje Karunchay"
+      },
+      {
+        "title": "Y-Eje Maypi Kasqan",
+        "description": "Unanchakuna churasqa kanan sitio. \"start\" utaq \"end\" churakunman, \"start\" sayaq ejepi lluq'i utaq hanaq hinam, \"end\"-taq kinray ejepi paña utaq uray hinam"
+      },
+      {
+        "title": "Y-Eje Unanchata Rikuchiy",
+        "description": "Y-Ejep unanchanta rikuchiy."
+      },
+      {
+        "title": "Y-Eje Unancha (kinray karunchay)",
+        "description": "Y-Ejep unanchanpa kinray churasqan."
+      },
+      {
+        "title": "Y-Eje Unancha (sayaq karunchay)",
+        "description": "Y-Ejep unanchanpa sayaq churasqan."
+      },
+      {
+        "title": "Y-Eje Escala Aswan Pisi Ch'usaq",
+        "description": "Escala puriykunap aswan pisi sayayninta pixelpi willan."
+      },
+      {
+        "title": "Y-Eje Escala (hunt'asqa yupaykunalla)",
+        "description": "Escala puriykunapaq hunt'asqa yupaykunallata llamk'achiy."
+      },
+      {
+        "title": "Y-Ejep Sutin",
+        "description": "Y-ejepaq munaspalla suti."
+      },
+      {
+        "title": "Y-Ejep Sutin (sayaq karunchay)",
+        "description": "Y-Ejep sutinpa kinray churasqan."
+      },
+      {
+        "title": "Y-Ejep Sutin (kinray karunchay)",
+        "description": "Y-Ejep sutinpa kinray churasqan."
+      },
+      {
+        "title": "Y-Ejep Sutin Anclan",
+        "description": "Y-ejep sutinpaq munaspalla ancla.",
+        "options": {
+          "middle": "chawpi",
+          "end": "tukukuy",
+          "start": "qallariy"
+        }
+      },
+      {
+        "title": "Y-Ejep Sutin T'ikray",
+        "description": "Y-ejep sutinta t'ikrankichu?"
+      },
+      {
+        "title": "Riqsichiy Chanin",
+        "description": "Aswan pisi/aswan hatun sut'ita mana churasqa kaptinqa, barra chartqa kikinmanta ch'usaqpi chawpichasqa kanqa."
+      },
+      {
+        "title": "Serie Barrakuna Karu Kaynin",
+        "description": "Huk huñupi barrakunap karu kayninta pixelpi willay."
+      },
+      {
+        "title": "Pataman Churay Kay",
+        "description": "\"true\" churasqa kaptinqa kay kaqqa sapanka serie puntopaq llapanta ruranqa. Kayqa y-ejetapas chartpa llapan saqiynintapas tikranqa. \"false\" churasqa kaptinqa pataman churasqa barrakunata ch'usaq siqimanta siq'inanta kamachinqa. Pataman churay kaypiqa \"seriesBarDistance\" kaqqa mana imatapas ruranqachu."
+      }
+    ]
+  }
+}

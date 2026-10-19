@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kartica",
+    "description": "Kartica z neobveznim poudarjenim slogom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Naslov",
+        "description": "Naslov kartice."
+      },
+      {
+        "slot": "subheading",
+        "title": "Podnaslov",
+        "description": "Neobvezen podnaslov kartice."
+      },
+      {
+        "slot": "content",
+        "title": "Vsebina",
+        "description": "Vsebina kartice."
+      },
+      {
+        "slot": "footer",
+        "title": "Noga",
+        "description": "Neobvezna noga kartice."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Slika",
+        "description": "Neobvezna slika"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Nadomestno besedilo slike",
+        "description": "Nadomestno besedilo, ki opisuje sliko za bralnike zaslona. Pustite prazno samo, če je slika zgolj okrasna."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Vodoravna poravnava slike",
+        "options": {
+          "left": "levo",
+          "center": "sredina",
+          "right": "desno"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Navpična poravnava slike",
+        "options": {
+          "top": "zgoraj",
+          "center": "sredina",
+          "bottom": "spodaj"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Neobvezna poudarna barva."
+      },
+      {
+        "property": "dark",
+        "title": "Temna tema",
+        "description": "Omogoči temno temo"
+      },
+      {
+        "property": "horizontal",
+        "title": "Vodoravno",
+        "description": "Vodoravna usmerjenost?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Poudarek naslova",
+        "description": "Uporabim poudarjeno barvo za naslov?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Poudarek ozadja",
+        "description": "Uporabim poudarjeno barvo za ozadje kartice?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Brez poudarka obrobe",
+        "description": "Odstranim poudarek obrobe?"
+      },
+      {
+        "property": "flat",
+        "title": "Ploščato",
+        "description": "Odstranim senco okvirja?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Kot",
+        "description": "Vsebina za kot kartice."
+      }
+    ]
+  }
+}

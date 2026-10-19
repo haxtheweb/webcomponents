@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Энгийн холбоос",
+    "description": "Энгийн холбоос элемент."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Холбоос",
+        "description": "Очих URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Харагдах холбоосын текст."
+      },
+      {
+        "attribute": "target",
+        "title": "Зорилт",
+        "description": "Холбоосыг хаана нээх.",
+        "options": {
+          "": "Ижил цонх",
+          "_blank": "Шинэ цонх - _blank",
+          "_top": "Дээд цонх - _top",
+          "_parent": "Эх цонх - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Гарчгийн текст",
+        "description": "Хүртээмж болон SEO-д зориулсан зөвлөх гарчиг."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Очих газартай харилцах холбоо (аюулгүй байдал/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

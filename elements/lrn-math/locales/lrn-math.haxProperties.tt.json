@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Математика",
+    "description": "Математиканы матур итеп күрсәтү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Математика",
+        "description": "Тигезләмәне LaTeX итеп кертегез"
+      }
+    ]
+  }
+}

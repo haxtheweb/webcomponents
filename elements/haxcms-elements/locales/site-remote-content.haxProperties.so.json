@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Waxyaabo Fog",
+    "description": "Dib u isticmaal waxyaabaha hal goob goob kale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Cinwaanka goobta",
+        "description": "Ku dheji cinwaanka laga tixraacayo waxyaabaha haddii aysan ahayn goobta hadda"
+      },
+      {
+        "property": "uuid",
+        "title": "Shay",
+        "description": "Shayga loo muujinayo xogta xiriirka / cinwaanka"
+      },
+      {
+        "property": "breakreference",
+        "title": "Jebi tixraaca",
+        "description": "Calaamadaynta sanduuqan waxay koobiyeysaa waxyaabaha fog si gudaha loogu tafatiro laakiin waxay ka saartaa xiriirka. Mar dambe ma heli doonto cusboonaysiin marka agabka tixraacu cusboonaado."
+      },
+      {
+        "property": "showTitle",
+        "title": "Muuji cinwaanka",
+        "description": "Daar si loo muujiyo cinwaanka ilaha la muujinayo"
+      }
+    ]
+  }
+}

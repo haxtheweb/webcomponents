@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "បន្លិច",
+    "description": "បន្លិចអត្ថបទក្នុងបន្ទាត់។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "អត្ថបទ",
+        "description": "អត្ថបទដែលបានបន្លិច។"
+      }
+    ]
+  }
+}

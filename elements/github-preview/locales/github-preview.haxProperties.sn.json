@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ongororo yeGithub",
+    "description": "Mufananidzo unowanikwa nevose une tsananguro refu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Sangano",
+        "description": "Zita remuchina resangano reGithub"
+      },
+      {
+        "property": "repo",
+        "title": "Dura",
+        "description": "Zita remuchina reRepo"
+      },
+      {
+        "property": "extended",
+        "title": "Maonero Akawedzerwa",
+        "description": "Inosanganisira readme muchinhu"
+      }
+    ]
+  }
+}

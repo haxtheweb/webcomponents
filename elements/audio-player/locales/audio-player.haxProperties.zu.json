@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Umsindo",
+    "description": "Lokhu kungabonisa ividiyo ngendlela efinyeleleka kakhulu kungakhathaliseki umthombo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "I-URL yale midiya."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Isihloko",
+        "description": "Isihloko esilula esingaphansi kwevidiyo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala wokugcizelela",
+        "description": "Khetha umbala wokugcizelela wesidlali."
+      },
+      {
+        "property": "track",
+        "title": "Imibhalo engezansi evaliwe",
+        "description": "I-URL yefayela lemibhalo engezansi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Isithonjana sesithombe",
+        "description": "Akuphoqelekile. I-URL yesithombe esincane/sephosta."
+      },
+      {
+        "property": "learningMode",
+        "title": "Vula imodi yokufunda",
+        "description": "Kuvala ukudlulisela phambili nokubuyisela emuva."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Susa inkinobho yokuvula ku-YouTube",
+        "description": "Kususa inkinobho yokuvula ividiyo ku-YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Faka isixhumanisi sokwabelana?",
+        "description": "Kunikeza isixhumanisi sokwabelana ngevidiyo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "I-Crossorigin",
+        "description": "Kubonisa ukuthi kusetshenziswe i-CORS yini.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Vumela ukudlala ngemuva",
+        "description": "Amavidiyo ayama / adlala ngokuzenzakalelayo lapho ithebhu ilahlekelwa ukugxila; lokhu kuvumela ividiyo ukuthi idlale ngaphandle kokuthi ithebhu igxile"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Ithimu emnyama yombhalo",
+        "description": "Vula ithimu emnyama yombhalo."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Vala Ukusebenzisana",
+        "description": "Vala imodi yokusebenzisana eyenza umbhalo uchofozeke."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Fihla izitembu zesikhathi",
+        "description": "Fihla izitembu zesikhathi embhalweni."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Fihla Umbhalo",
+        "description": "Fihla umbhalo ngokuzenzakalelayo."
+      },
+      {
+        "property": "lang",
+        "title": "Ulimi",
+        "description": "Ulimi lwemidiya."
+      }
+    ]
+  }
+}

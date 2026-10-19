@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Entità tas-CMS",
+    "description": "Entità tas-CMS irrenderjata fuq il-backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tip",
+        "description": "tip mis-CMS tagħna",
+        "options": {
+          "node": "Nodu",
+          "user": "Utent",
+          "file": "Fajl"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id mis-CMS tagħna"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Modalità tal-wiri",
+        "description": "mod tal-wiri mis-CMS tagħna"
+      }
+    ]
+  }
+}

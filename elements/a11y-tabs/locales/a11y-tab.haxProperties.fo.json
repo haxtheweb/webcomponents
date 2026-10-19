@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Teigur",
+    "description": "Ein einstakur teigur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Teigaikon"
+      },
+      {
+        "property": "disabled",
+        "title": "Óvirkið"
+      },
+      {
+        "property": "label",
+        "title": "Teigaheiti"
+      },
+      {
+        "slot": "",
+        "title": "Teigainnihald",
+        "description": "Innihald í teiginum."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Eintýtt ID"
+      },
+      {
+        "property": "flag",
+        "title": "Valfrír fánatekstur"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Valfrítt fánaikon"
+      }
+    ]
+  }
+}

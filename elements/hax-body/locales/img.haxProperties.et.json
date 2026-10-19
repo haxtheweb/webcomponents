@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Lihtne pilt",
+    "description": "Lihtne pildielement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Allikas",
+        "description": "Pildi URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alternatiivtekst",
+        "description": "Alternatiivtekst ligipääsetavuse ja SEO jaoks."
+      },
+      {
+        "attribute": "height",
+        "title": "Kõrgus",
+        "description": "Kõrgus pikslites. Loomuliku suuruse kasutamiseks jäta tühjaks."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Pildi laadimine",
+        "description": "Vali, millal pilt laaditakse.",
+        "options": {
+          "lazy": "Laadi, kui nähtav",
+          "auto": "Automaatne"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Kohanduvad allikad (srcset)",
+        "description": "Loetle pildi URL-id ja kirjeldajad (nt 480w või 2x), et brauserid valiksid ekraanile parima suuruse. Salvestatakse standardse srcset-atribuudina."
+      }
+    ]
+  }
+}

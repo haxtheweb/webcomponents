@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Vložení externího webového obsahu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Zdroj",
+        "description": "URL tohoto zdroje."
+      }
+    ]
+  }
+}

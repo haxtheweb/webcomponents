@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Chế độ xem CMS",
+    "description": "Chế độ xem CMS được hiển thị từ phía máy chủ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Tên",
+        "description": "Tên chế độ xem từ CMS của chúng tôi"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Hiển thị",
+        "description": "Kiểu hiển thị trong chế độ xem đó từ CMS của chúng tôi"
+      }
+    ]
+  }
+}

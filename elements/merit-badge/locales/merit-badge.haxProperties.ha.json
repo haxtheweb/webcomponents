@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Lambar Yabo",
+    "description": "Lamba ta gani don sanar da samun ƙwarewa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Taken Lamba",
+        "description": "Taken da ake nunawa a kan lambar."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Hoton Lamba",
+        "description": "URL na hoton lambar."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Cikakkun Bayanan Lamba",
+        "description": "Cikakkun bayanai game da lambar."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hanyar Haɗi",
+        "description": "Hanyar haɗin da ke da alaƙa da lambar."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Ƙwarewar Lamba",
+        "description": "Ƙwarewar da ake nunawa a kan lambar."
+      },
+      {
+        "property": "skill",
+        "title": "Ƙwarewa (OER Schema)",
+        "description": "OER Schema: ƙwarewar da aka koya wadda aka samu ta kammala wannan manufar koyo."
+      }
+    ]
+  }
+}

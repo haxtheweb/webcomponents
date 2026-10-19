@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Simbisa",
+    "description": "Simbisa mavara ari mumutsara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Mavara",
+        "description": "Mavara akasimbiswa."
+      }
+    ]
+  }
+}

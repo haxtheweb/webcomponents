@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "گریڈ بُک",
+    "description": "بغیر سر والی گریڈ بُک جیہڑی روبرکاں نال کئی بیک اینڈاں دی حمایت کردی اے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ذریعہ",
+        "description": "ڈیٹا ذریعے دی قسم (googledocs, url, json, filesystem)۔",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL ایںڈ پوائنٹ (JSON)",
+          "json": "JSON ڈیٹا بلاب",
+          "filesystem": "فائل سسٹم"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ذریعہ ڈیٹا",
+        "description": "گریڈ بُک لئی URL یا JSON ڈیٹا۔"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس حوالہ",
+        "description": "ہر Assessment وسیلے تے oer:forCourse وجوں دتی جاݨ والی کورس شناخت۔"
+      }
+    ]
+  }
+}

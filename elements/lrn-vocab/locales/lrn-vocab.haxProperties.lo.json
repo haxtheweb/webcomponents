@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "ຄຳສັບ",
+    "description": "ຄຳສັບ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "ຄຳສັບ"
+      },
+      {
+        "slot": "",
+        "title": "ຄຳນິຍາມ",
+        "description": "ຄຳນິຍາມທີ່ຈະສະແດງເມື່ອຄລິກຄຳສັບ."
+      },
+      {
+        "property": "description",
+        "title": "ຄຳອະທິບາຍ (OER Schema)",
+        "description": "OER Schema: ຄຳອະທິບາຍສັ້ນຂອງຄຳສັບ. ຈະຖືກຕື່ມອັດຕະໂນມັດຈາກຂໍ້ຄວາມຄຳນິຍາມຖ້າປ່ອຍຫວ່າງ."
+      }
+    ]
+  }
+}

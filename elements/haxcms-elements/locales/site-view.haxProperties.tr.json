@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Site Görünümü",
+    "description": "Ölçütlere göre site verilerini sorgulayıp görüntüleyen dinamik bir blok"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Görünüm URL'si",
+        "description": "Görünüm veri akışı için sorgu parametreleri. Bunu Görünümler panosundan alabilirsiniz."
+      },
+      {
+        "property": "renderer",
+        "title": "Görüntüleme modu",
+        "description": "Görünüm sonuçlarının nasıl görüntüleneceği"
+      },
+      {
+        "property": "entity",
+        "title": "Varlık türü",
+        "description": "Yanıtı ayrıştırmak için kullanılan varlık türü",
+        "options": {
+          "": "Varsayılan (öğeler)",
+          "item": "Öğe",
+          "page": "Sayfa",
+          "file": "Dosya",
+          "tag": "Etiket",
+          "block": "Blok",
+          "view": "Görünüm",
+          "theme": "Tema",
+          "region": "Bölge",
+          "customElement": "Özel Öğe"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Site görünümünü ayır",
+        "description": "Doğrudan düzenleme için statik içeriğe dönüştürün; kaynaktan otomatik güncellemeyi durdurur."
+      }
+    ]
+  }
+}

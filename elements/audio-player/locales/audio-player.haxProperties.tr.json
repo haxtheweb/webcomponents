@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Ses",
+    "description": "Bu, kaynağı ne olursa olsun videoyu son derece erişilebilir bir şekilde sunabilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kaynak",
+        "description": "Bu medyanın URL'si."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Başlık",
+        "description": "Videonun altında görünecek basit başlık"
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu rengi",
+        "description": "Oynatıcı için vurgu rengini seçin."
+      },
+      {
+        "property": "track",
+        "title": "Altyazılar",
+        "description": "Altyazı dosyasının URL'si."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Küçük resim",
+        "description": "İsteğe bağlı. Küçük resim/poster görselinin URL'si."
+      },
+      {
+        "property": "learningMode",
+        "title": "Öğrenme modunu etkinleştir",
+        "description": "İleri ve geri sarmayı devre dışı bırakır."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube'da aç düğmesini kaldır",
+        "description": "Videoyu YouTube'da açma düğmesini kaldırır."
+      },
+      {
+        "property": "linkable",
+        "title": "Paylaşım bağlantısı eklensin mi?",
+        "description": "Videoyu paylaşmak için bir bağlantı sağlar."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS kullanılıp kullanılmayacağını belirtir.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Arka planda oynatmaya izin ver",
+        "description": "Sekme odağı kaybettiğinde videolar otomatik olarak duraklar / oynar; bu, videonun sekme odakta olmadan oynatılmasını sağlar"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Transkript için karanlık tema",
+        "description": "Transkript için karanlık temayı etkinleştir."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Etkileşimi Devre Dışı Bırak",
+        "description": "Transkripti tıklanabilir yapan etkileşimli modu devre dışı bırak."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Zaman damgalarını gizle",
+        "description": "Transkriptteki zaman damgalarını gizle."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkripti Gizle",
+        "description": "Transkripti varsayılan olarak gizle."
+      },
+      {
+        "property": "lang",
+        "title": "Dil",
+        "description": "Medyanın dili."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "အတိုကောက်",
+    "description": "အပြည့်အစုံ tooltip ပါ အတိုကောက်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "စာသား",
+        "description": "မြင်ရသော အတိုကောက် စာသား။"
+      },
+      {
+        "attribute": "title",
+        "title": "စကားလုံး",
+        "description": "hover လုပ်သောအခါ ပြသော အပြည့်အစုံ ဝေါဟာရ။"
+      }
+    ]
+  }
+}

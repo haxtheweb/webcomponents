@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ציר זמן",
+    "description": "ציר זמן של אירועים עם תמונות וטקסט"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "כותרת ציר הזמן",
+        "description": "כותרת לציר הזמן."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע הדגשה אופציונלי."
+      },
+      {
+        "property": "dark",
+        "title": "ערכת נושא כהה",
+        "description": "הפעלת ערכת נושא כהה"
+      },
+      {
+        "slot": "",
+        "title": "תיאור ציר הזמן",
+        "description": "טקסט אופציונלי המתאר את ציר הזמן."
+      },
+      {
+        "property": "events",
+        "title": "אירועי ציר הזמן",
+        "description": "האירועים בציר הזמן"
+      }
+    ]
+  }
+}

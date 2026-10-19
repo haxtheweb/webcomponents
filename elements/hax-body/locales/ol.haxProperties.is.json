@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Númeraður listi",
+    "description": "Búa til tölusettan lista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stíll númera",
+        "description": "Stíll sem notaður er fyrir númerun raðaðs lista.",
+        "options": {
+          "": "Sjálfgefið (tugakerfi)",
+          "list-decimal-leading-zero": "Tugakerfi með núlli í byrjun (01, 02, 03)",
+          "list-lower-alpha": "Lágstafir (a, b, c)",
+          "list-upper-alpha": "Hástafir (A, B, C)",
+          "list-lower-roman": "Rómverskar lágstafatölur (i, ii, iii)",
+          "list-upper-roman": "Rómverskar hástafatölur (I, II, III)"
+        }
+      }
+    ]
+  }
+}

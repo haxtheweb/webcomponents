@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Komponent tat-Tagħlim",
+    "description": "Karta għall-għalliema biex jikkomunikaw il-pedagoġija u l-istrateġiji tat-tagħlim."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tip",
+        "description": "It-tip ta' karta li għandha tintuża."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sottotitlu",
+        "description": "Is-sottotitlu tal-karta."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Link opzjonali għall-karta (Il-link mhux disponibbli għall-Għanijiet tat-Tagħlim)."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Issettja t-Titlu, dan jissostitwixxi t-titlu bbażat fuq it-tip"
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Issettja l-ikona, din tissostitwixxi l-ikona bbażata fuq it-tip"
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Issettja l-kulur tal-aċċent, dan jissostitwixxi l-kulur ibbażat fuq it-tip"
+      },
+      {
+        "slot": "",
+        "title": "Kontenut"
+      }
+    ]
+  }
+}

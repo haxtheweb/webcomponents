@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Dylunio, Datblygu, Dinistrio",
+    "description": "Gweithrediad system ddylunio ar gyfer HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Opsiwn i'w ddangos",
+        "options": {
+          "*": "Canllaw arddull llawn"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Ikhadi",
+    "description": "Ikhadi elinesitayela sokugcizelela esingaphoqelekile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Isihloko",
+        "description": "Isihloko sekhadi."
+      },
+      {
+        "slot": "subheading",
+        "title": "Isihlokwana",
+        "description": "Isihlokwana esingaphoqelekile sekhadi."
+      },
+      {
+        "slot": "content",
+        "title": "Okuqukethwe",
+        "description": "Okuqukethwe kwekhadi."
+      },
+      {
+        "slot": "footer",
+        "title": "Unyawo",
+        "description": "I-footer engaphoqelekile yekhadi."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Isithombe",
+        "description": "Isithombe esingaphoqelekile"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Umbhalo Ongenye Wesithombe",
+        "description": "Umbhalo ongenye ochaza isithombe kubafundi besikrini. Shiya kungenalutho kuphela uma isithombe siwumhlobiso nje."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Ukuqondanisa Isithombe Ngokuvundlile",
+        "options": {
+          "left": "kwesobunxele",
+          "center": "maphakathi",
+          "right": "kwesokudla"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Ukuqondanisa Isithombe Ngokuqondile",
+        "options": {
+          "top": "phezulu",
+          "center": "maphakathi",
+          "bottom": "phansi"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala wokugcizelela ongawukhetha."
+      },
+      {
+        "property": "dark",
+        "title": "Itimu Emnyama",
+        "description": "Vula Ithimu Emnyama"
+      },
+      {
+        "property": "horizontal",
+        "title": "Okuvundlile",
+        "description": "Ukuma okuvundlile?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Ukugcizelela Kwesihloko",
+        "description": "Sebenzisa umbala wokugcizelela esihlokweni?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Ukugcizelela Kwangemuva",
+        "description": "Sebenzisa umbala wokugcizelela ngemuva kwekhadi?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Akukho Ukugcizelela Komngcele",
+        "description": "Susa ukugcizelela komngcele?"
+      },
+      {
+        "property": "flat",
+        "title": "Okuyisicaba",
+        "description": "Susa isithunzi sebhokisi?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Ikhona",
+        "description": "Okuqukethwe kwekhona lekhadi."
+      }
+    ]
+  }
+}

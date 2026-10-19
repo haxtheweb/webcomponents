@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kontenut Każwali tal-Paġna",
+    "description": "Uri element każwali tal-ogħla livell minn paġna magħżula"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Paġna",
+        "description": "Agħżel il-paġna minn fejn jittieħed kontenut każwali. L-element se juri b'mod każwali wieħed mill-elementi HTML tal-ogħla livell minn din il-paġna."
+      }
+    ]
+  }
+}

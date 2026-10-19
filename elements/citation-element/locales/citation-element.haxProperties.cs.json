@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Zdroj citace",
+    "description": "Prvek citace se třemi režimy prezentace."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Název citovaného díla."
+      },
+      {
+        "property": "source",
+        "title": "Odkaz na zdroj",
+        "description": "URL zdroje citovaného díla."
+      },
+      {
+        "property": "date",
+        "title": "Datum přístupu",
+        "description": "Datum, kdy byl zdroj použit."
+      },
+      {
+        "property": "scope",
+        "title": "Rozsah",
+        "description": "Rozsah prvku k citování.",
+        "options": {
+          "sibling": "Sourozenecký prvek",
+          "parent": "Nadřazený prvek"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licence",
+        "description": "Licence citovaného díla."
+      },
+      {
+        "property": "creator",
+        "title": "Tvůrce",
+        "description": "Tvůrce nebo vlastník citovaného díla."
+      },
+      {
+        "property": "typeof",
+        "title": "Typ OER Schema",
+        "description": "Třída OER Schema pro tuto citaci. Výchozí je oer:ReferencedMaterial; přepisujte pouze platnou třídou OER (např. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

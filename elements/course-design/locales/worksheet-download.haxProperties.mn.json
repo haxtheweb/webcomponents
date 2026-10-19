@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ажлын хуудас татах",
+    "description": "Татах боломжтой файлуудыг харуулах товчлуур."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Татах файлын гарчиг."
+      },
+      {
+        "property": "link",
+        "title": "Холбоос",
+        "description": "Татах холбоос."
+      }
+    ]
+  }
+}

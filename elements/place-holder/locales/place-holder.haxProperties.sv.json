@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Platshållare",
+    "description": "En platshållare som kan konverteras till den valda medietypen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Typ",
+        "description": "Typ av gizmo som accepteras som ersättning.",
+        "options": {
+          "text": "Text / innehåll",
+          "document": "Dokument / fil",
+          "audio": "Ljud",
+          "video": "Video",
+          "image": "Bild",
+          "math": "Matematik"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Text",
+        "description": "Beskriv den önskade platshållaren mer detaljerat"
+      }
+    ]
+  }
+}

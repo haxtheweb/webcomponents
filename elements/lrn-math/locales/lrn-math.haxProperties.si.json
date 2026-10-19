@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ගණිතය",
+    "description": "ගණිතය ලස්සනට ඉදිරිපත් කරන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "ගණිතය",
+        "description": "සමීකරණය LaTeX ලෙස ඇතුළු කරන්න"
+      }
+    ]
+  }
+}

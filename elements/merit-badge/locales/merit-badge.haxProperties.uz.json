@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Yutuq nishoni",
+    "description": "Koʻnikmani egallaganlikni bildiruvchi vizual nishon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Nishon sarlavhasi",
+        "description": "Nishonda koʻrsatiladigan sarlavha."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Nishon rasmi",
+        "description": "Nishon uchun rasm URL manzili."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Nishon tafsilotlari",
+        "description": "Nishon haqida tafsilotlar."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Giperhavola",
+        "description": "Nishon bilan bogʻliq havola."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Nishon koʻnikmalari",
+        "description": "Nishonda koʻrsatiladigan koʻnikmalar."
+      },
+      {
+        "property": "skill",
+        "title": "Koʻnikma (OER Schema)",
+        "description": "OER Schema: ushbu oʻquv maqsadini bajarish orqali egallangan koʻnikma."
+      }
+    ]
+  }
+}

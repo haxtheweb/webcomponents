@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Àmì CMS",
+    "description": "Àmì CMS tí a ṣe àfihàn rẹ̀ ní backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Àmì",
+        "description": "Àmì láti CMS wa"
+      }
+    ]
+  }
+}

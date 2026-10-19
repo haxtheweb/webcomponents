@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "ဆက်စပ် ခေါင်းစီး",
+    "description": "မိခင်၏ ခေါင်းစီးကို အခြေခံ၍ မှန်ကန်သော ခေါင်းစီး အဆင့်ဆင့်ကို ထုတ်ပေးသည်"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "မိခင် ခေါင်းစီး၏ Resource ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "လင့်ခ် ခလုတ် လုပ်ဆောင်ချက်ကို ပိတ်သည်။"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "လင့်ခ် ကူးယူရန် ခလုတ်ကို ခေါင်းစီး၏ ညာဘက်အစွန်းသို့ ချိန်ညှိသည်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "မိခင် မတွေ့ပါက ခေါင်းစီး အဆင့်။"
+      },
+      {
+        "property": "copyMessage",
+        "description": "လင့်ခ် ကူးယူမှု toast မက်ဆေ့ချ်အတွက် မူလ စာသားကို အစားထိုးသည်။"
+      },
+      {
+        "property": "linkLabel",
+        "description": "လင့်ခ် ကူးယူရန် ခလုတ်၏ မူလ တံဆိပ်ကို အစားထိုးသည်။"
+      },
+      {
+        "property": "linkIcon",
+        "description": "လင့်ခ် ကူးယူရန် ခလုတ်၏ မူလ အိုင်ကွန်ကို အစားထိုးသည်။"
+      },
+      {
+        "property": "closeLabel",
+        "description": "လင့်ခ် ကူးယူမှု toast ၏ ပိတ်ရန် ခလုတ်အတွက် မူလ တံဆိပ်ကို အစားထိုးသည်။"
+      },
+      {
+        "property": "closeIcon",
+        "description": "လင့်ခ် ကူးယူမှု toast ၏ ပိတ်ရန် ခလုတ်အတွက် မူလ အိုင်ကွန်ကို အစားထိုးသည်။"
+      }
+    ]
+  }
+}

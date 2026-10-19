@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Göreli başlık",
+    "description": "üst öğenin başlığına göre doğru başlık hiyerarşisini oluşturur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Üst Başlığın Kaynak ID'si"
+      },
+      {
+        "property": "disableLink",
+        "description": "Bağlantı düğmesi özelliğini devre dışı bırakır."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Bağlantıyı kopyala düğmesini başlığın en sağına hizalar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Üst öğe bulunamazsa başlık düzeyi."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Bağlantıyı kopyalama bildirim mesajının varsayılan metnini geçersiz kılar."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Bağlantıyı kopyala düğmesinin varsayılan etiketini geçersiz kılar."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Bağlantıyı kopyala düğmesinin varsayılan simgesini geçersiz kılar."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Bağlantıyı kopyalama bildiriminin kapat düğmesi için varsayılan etiketi geçersiz kılar."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Bağlantıyı kopyalama bildiriminin kapat düğmesi için varsayılan simgeyi geçersiz kılar."
+      }
+    ]
+  }
+}

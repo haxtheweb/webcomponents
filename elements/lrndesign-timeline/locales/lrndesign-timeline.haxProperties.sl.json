@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Časovnica",
+    "description": "Časovnica dogodkov s slikami in besedilom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Naslov časovnice",
+        "description": "Naslov časovnice."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Neobvezna poudarna barva."
+      },
+      {
+        "property": "dark",
+        "title": "Temna tema",
+        "description": "Omogoči temno temo"
+      },
+      {
+        "slot": "",
+        "title": "Opis časovnice",
+        "description": "Neobvezno besedilo, ki opisuje časovnico."
+      },
+      {
+        "property": "events",
+        "title": "Dogodki na časovnici",
+        "description": "Dogodki na časovnici"
+      }
+    ]
+  }
+}

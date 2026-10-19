@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX-link",
+    "description": "Een link naar een specifieke bron in de site waaraan je werkt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item dat wordt weergegeven voor de link-/titelgegevens"
+      }
+    ]
+  }
+}

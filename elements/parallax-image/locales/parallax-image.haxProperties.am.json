@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "የፓራላክስ ምስል",
+    "description": "የምስል ሽብለላ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "ምስል",
+        "description": "በዳራው ውስጥ የሚካተት ምስል"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "የርዕስ ቦታ",
+        "description": "የርዕስ ጽሑፍ ቦታ"
+      }
+    ]
+  }
+}

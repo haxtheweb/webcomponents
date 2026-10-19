@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Ljepper",
+    "description": "In inkelde ljepper."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ljepperikoan"
+      },
+      {
+        "property": "disabled",
+        "title": "Utskeakele"
+      },
+      {
+        "property": "label",
+        "title": "Ljepperlabel"
+      },
+      {
+        "slot": "",
+        "title": "Ljepperynhâld",
+        "description": "Ynhâld fan de ljepper."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unike ID"
+      },
+      {
+        "property": "flag",
+        "title": "Opsjonele flaggetekst"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Opsjoneel flaggeikoan"
+      }
+    ]
+  }
+}

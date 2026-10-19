@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Nisbi başlıq",
+    "description": "üst elementin başlığına əsasən düzgün başlıq iyerarxiyasını çıxarır"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Üst başlığın resurs ID-si"
+      },
+      {
+        "property": "disableLink",
+        "description": "Keçid düyməsi funksiyasını deaktiv edir."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Keçidi kopyalama düyməsini başlığın ən sağına düzləndirir."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Üst element tapılmadıqda başlıq səviyyəsi."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Keçid kopyalama bildirişinin standart mətnini əvəz edir."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Keçid kopyalama düyməsinin standart etiketini əvəz edir."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Keçid kopyalama düyməsinin standart ikonunu əvəz edir."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Keçid kopyalama bildirişinin bağlama düyməsi üçün standart etiketi əvəz edir."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Keçid kopyalama bildirişinin bağlama düyməsi üçün standart ikonu əvəz edir."
+      }
+    ]
+  }
+}

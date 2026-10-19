@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "mbo'esyry techapyrã",
+    "description": "Ñemohenda ojoapykuéva mbo'esyry ñe'ẽ he'iséva rehegua mba'emimi, ta'ãngamýi ha jeikuaa ñeha'ã reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "téra"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Marandu renda"
+      },
+      {
+        "title": "Mba'emimi renda"
+      },
+      {
+        "title": "Ta'ãngamýi renda"
+      },
+      {
+        "title": "Jeikuaa Ñeha'ã renda"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Ta'ãngaete renda"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Белгиленген тизме",
+    "description": "Белгиленген тизме түзүү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Белги стили",
+        "description": "Иреттелбеген тизменин белгилери үчүн колдонулган стиль.",
+        "options": {
+          "": "Демейки (чарчы)",
+          "list-disc": "Диск",
+          "list-circle": "Тегерек",
+          "list-square": "Чарчы"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html блок",
+    "description": "HAXschema холболт бүхий үндсэн HTML блок"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Агуулгад харуулахыг хүссэн HTML код"
+      }
+    ]
+  }
+}

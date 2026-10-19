@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Umthombo wesicatshulwa",
+    "description": "Into yentetho ecatshulweyo eneemo ezintathu zokubonisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko somsebenzi ocatshulweyo."
+      },
+      {
+        "property": "source",
+        "title": "Ikhonkco lomthombo",
+        "description": "I-URL yomthombo womsebenzi ocatshulweyo."
+      },
+      {
+        "property": "date",
+        "title": "Umhla wokufikelela",
+        "description": "Umhla omthombo ufikelelwe ngawo."
+      },
+      {
+        "property": "scope",
+        "title": "Ububanzi",
+        "description": "Ububanzi bento eza kucatshulwa.",
+        "options": {
+          "sibling": "Into engumzalwana",
+          "parent": "Into engumzali"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Ilayisensi",
+        "description": "Ilayisensi yomsebenzi ocatshulweyo."
+      },
+      {
+        "property": "creator",
+        "title": "Umyili",
+        "description": "Umyili okanye umnini womsebenzi ocatshulweyo."
+      },
+      {
+        "property": "typeof",
+        "title": "Uhlobo lweSkimu se-OER",
+        "description": "Iklasi yeSkimu se-OER yale ntetho ecatshulweyo. Okungagqibekanga yi-oer:ReferencedMaterial; yingqongqe kuphela ngeklasi ye-OER esebenzayo (umz. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

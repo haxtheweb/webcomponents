@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "અભ્યાસક્રમ મોડેલ",
+    "description": "વિગતો, એનિમેશન અને જ્ઞાન ચકાસણીઓ સાથે અભ્યાસક્રમ ખ્યાલો માટે ઇન્ટરેક્ટિવ લેઆઉટ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "શીર્ષક"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "માહિતી વિસ્તાર"
+      },
+      {
+        "title": "વિગતો વિસ્તાર"
+      },
+      {
+        "title": "એનિમેશન વિસ્તાર"
+      },
+      {
+        "title": "જ્ઞાન ચકાસણી વિસ્તાર"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "લોગો વિસ્તાર"
+      }
+    ]
+  }
+}

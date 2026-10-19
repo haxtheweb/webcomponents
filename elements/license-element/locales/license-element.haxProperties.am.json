@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ፈቃድ",
+    "description": "ለሥራዎ ፈቃድ ያቅርቡ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "የተጠቀሰው ሥራ ርዕስ።"
+      },
+      {
+        "property": "source",
+        "title": "የምንጭ አገናኝ",
+        "description": "ፈቃድ ለተሰጠው ሥራ የምንጭ URL።"
+      },
+      {
+        "property": "license",
+        "title": "ፈቃድ",
+        "description": "በዚህ ሥራ ላይ የተተገበረ ፈቃድ።"
+      },
+      {
+        "property": "creator",
+        "title": "ፈጣሪ",
+        "description": "የዚህ ሥራ ፈጣሪ ወይም ባለቤት።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "የምንጭ አገናኝ",
+        "description": "ወደ ተጨማሪ የፈቃድ ዝርዝሮች አገናኝ።"
+      },
+      {
+        "property": "moreLabel",
+        "title": "ተጨማሪ መለያ",
+        "description": "ለተጨማሪ የፈቃድ ዝርዝሮች መለያ።"
+      }
+    ]
+  }
+}

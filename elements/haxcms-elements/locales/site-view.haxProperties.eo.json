@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Reteja vido",
+    "description": "Dinamika bloko, kiu informpetas kaj montras retejajn datumojn laŭ kriterioj"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Vida URL",
+        "description": "Informpetaj parametroj por la vida datumfluo. Vi povas akiri ilin el la stirpanelo de vidoj."
+      },
+      {
+        "property": "renderer",
+        "title": "Montra reĝimo",
+        "description": "Kiel la vidaj rezultoj estu bildigitaj"
+      },
+      {
+        "property": "entity",
+        "title": "Entotipo",
+        "description": "Entotipo uzata por analizi la respondon",
+        "options": {
+          "": "Defaŭlta (items)",
+          "item": "Ero",
+          "page": "Paĝo",
+          "file": "Dosiero",
+          "tag": "Etikedo",
+          "block": "Bloko",
+          "view": "Vido",
+          "theme": "Temo",
+          "region": "Regiono",
+          "customElement": "Propra elemento"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Rompi retejan vidon",
+        "description": "Konverti al statika enhavo por rekta redaktado; ĉesigas aŭtomatan ĝisdatigon el la fonto."
+      }
+    ]
+  }
+}

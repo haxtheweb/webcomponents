@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Jadawalin Layi",
+    "description": "Yana ƙirƙirar jadawali mai sauƙin isa bisa CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na zaɓi."
+      },
+      {
+        "title": "Jigo Mai Duhu",
+        "description": "Kunna Jigon Duhu"
+      },
+      {
+        "title": "Fayil ɗin CSV",
+        "description": "Loda bayanai daga CSV."
+      },
+      {
+        "title": "Taken Jadawali",
+        "description": "Madadin rubutu mai sauƙin isa don jadawalinka."
+      },
+      {
+        "title": "Bayanin Jadawali",
+        "description": "Bayani mai sauƙin isa na jadawalinka."
+      },
+      {
+        "title": "Sunan Sikeli",
+        "description": "Ma'aunin faɗi:tsawo na jadawalin (Duba https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings don $ct-scales da $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Nuna Bangon Grid"
+      },
+      {
+        "title": "Nuna Fili"
+      },
+      {
+        "title": "Nuna Layi"
+      },
+      {
+        "title": "Nuna Digo"
+      },
+      {
+        "title": "Cikakken Faɗi"
+      },
+      {
+        "title": "Nuna Lakabin Digo"
+      },
+      {
+        "title": "Cikon Jadawali (sama)"
+      },
+      {
+        "title": "Cikon Jadawali (ƙasa)"
+      },
+      {
+        "title": "Cikon Jadawali (hagu)"
+      },
+      {
+        "title": "Cikon Jadawali (dama)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Juya Bayanai",
+        "description": "Juya bayanai gami da lakabi, tsarin jerin da kuma dukkan tarin bayanan jerin."
+      },
+      {
+        "title": "Teburin HTML",
+        "description": "Na zaɓi: Loda bayanai a matsayin teburin HTML."
+      },
+      {
+        "title": "Mafi Ƙanƙantar Jadawali",
+        "description": "Maye gurbin ƙanƙantar jadawalin ta halitta yana ba ka damar zuƙowa ko iyakance mafi ƙanƙantar ƙimar da jadawalin ke nunawa"
+      },
+      {
+        "title": "Mafi Girman Jadawali",
+        "description": "Maye gurbin girman jadawalin ta halitta yana ba ka damar zuƙowa ko iyakance mafi girman ƙimar da jadawalin ke nunawa"
+      },
+      {
+        "title": "Nuna Lakabin Digo",
+        "options": {
+          "middle": "Tsakiya",
+          "start": "Farawa",
+          "end": "Ƙarshe"
+        }
+      },
+      {
+        "title": "Kaucewar X na Lakabin Digo"
+      },
+      {
+        "title": "Kaucewar Y na Lakabin Digo"
+      },
+      {
+        "title": "Layi Mai Santsi"
+      },
+      {
+        "title": "Tushen Fili",
+        "description": "Tushen jadawalin fili da za a yi amfani da shi don rufe siffar filin (yawanci 0)."
+      },
+      {
+        "title": "Layin X Nuna Grid",
+        "description": "Nuna grid na Layin X."
+      },
+      {
+        "title": "Kaucewar Layin X"
+      },
+      {
+        "title": "Matsayin Layin X",
+        "description": "Matsayin da ake sanya lakabi. Ana iya saita shi zuwa \"start\" ko \"end\" inda \"start\" yayi daidai da hagu ko sama a layi na tsaye kuma \"end\" yayi daidai da dama ko ƙasa a layi na kwance"
+      },
+      {
+        "title": "Layin X Nuna Lakabi",
+        "description": "Nuna lakabin Layin X."
+      },
+      {
+        "title": "Lakabin Layin X (kaucewa a kwance)",
+        "description": "Matsayin lakabin Layin X a kwance."
+      },
+      {
+        "title": "Lakabin Layin X (kaucewa a tsaye)",
+        "description": "Matsayin lakabin Layin X a tsaye."
+      },
+      {
+        "title": "Taken Layin X",
+        "description": "Take na zaɓi don Layin X."
+      },
+      {
+        "title": "Taken Layin X (kaucewa a kwance)",
+        "description": "Matsayin taken Layin X a kwance."
+      },
+      {
+        "title": "Taken Layin X (kaucewa a tsaye)",
+        "description": "Matsayin taken Layin X a tsaye."
+      },
+      {
+        "title": "Angar Taken Layin X",
+        "description": "Anga na zaɓi don taken Layin X.",
+        "options": {
+          "middle": "tsakiya",
+          "end": "ƙarshe",
+          "start": "farko"
+        }
+      },
+      {
+        "title": "Layin Y: Nuna Grid",
+        "description": "Nuna grid na Layin Y."
+      },
+      {
+        "title": "Kaucewar Layin Y"
+      },
+      {
+        "title": "Matsayin Layin Y",
+        "description": "Matsayin da ake sanya lakabi. Ana iya saita shi zuwa \"start\" ko \"end\" inda \"start\" yayi daidai da hagu ko sama a layi na tsaye kuma \"end\" yayi daidai da dama ko ƙasa a layi na kwance"
+      },
+      {
+        "title": "Layin Y Nuna Lakabi",
+        "description": "Nuna lakabin Layin Y."
+      },
+      {
+        "title": "Lakabin Layin Y (kaucewa a kwance)",
+        "description": "Matsayin lakabin Layin Y a kwance."
+      },
+      {
+        "title": "Lakabin Layin Y (kaucewa a tsaye)",
+        "description": "Matsayin lakabin Layin Y a tsaye."
+      },
+      {
+        "title": "Mafi Ƙanƙantar Sarari na Sikelin Layin Y",
+        "description": "Yana ƙayyade mafi ƙanƙantar tsawo a pixel na matakan sikeli."
+      },
+      {
+        "title": "Sikelin Layin Y (cikakkun lambobi kawai)",
+        "description": "Yi amfani da cikakkun lambobi kawai don matakan sikeli."
+      },
+      {
+        "title": "Taken Layin Y",
+        "description": "Take na zaɓi don Layin Y."
+      },
+      {
+        "title": "Taken Layin Y (kaucewa a tsaye)",
+        "description": "Matsayin taken Layin Y a kwance."
+      },
+      {
+        "title": "Taken Layin Y (kaucewa a kwance)",
+        "description": "Matsayin taken Layin Y a kwance."
+      },
+      {
+        "title": "Angar Taken Layin Y",
+        "description": "Anga na zaɓi don taken Layin Y.",
+        "options": {
+          "middle": "tsakiya",
+          "end": "ƙarshe",
+          "start": "farko"
+        }
+      },
+      {
+        "title": "Juya Taken Layin Y",
+        "description": "A juya taken Layin Y?"
+      }
+    ]
+  }
+}

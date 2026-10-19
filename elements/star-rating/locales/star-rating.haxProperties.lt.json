@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Žvaigždučių įvertinimas",
+    "description": "Įvertinimo rodymo valdiklis arba vertinimo mygtukas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Rezultatas",
+        "description": "Dabartinė rezultato reikšmė."
+      },
+      {
+        "property": "possible",
+        "title": "Galimas",
+        "description": "Didžiausias galimas rezultatas."
+      },
+      {
+        "property": "numStars",
+        "title": "Žvaigždučių skaičius",
+        "description": "Rodomų žvaigždučių skaičius."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktyvus",
+        "description": "Leisti naudotojui nustatyti įvertinimą."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Vertinimo skalės režimas",
+        "description": "Kiekvienai žvaigždutei pateikti OER Schema RubricScale ir RubricLevel metaduomenis (levelOrdinal/levelPoints)."
+      }
+    ]
+  }
+}

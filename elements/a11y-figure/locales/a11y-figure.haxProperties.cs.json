@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Popisný obrázek",
+    "description": "Přístupný obrázek s dlouhým popisem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Obrázek"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternativní text"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Popisek obrázku",
+        "description": "Text popisku obrázku, který je vždy viditelný."
+      },
+      {
+        "slot": "details",
+        "title": "Popis",
+        "description": "Podrobný popis obrázku, který lze skrýt nebo zobrazit"
+      },
+      {
+        "slot": "summary",
+        "title": "Tlačítko popisu",
+        "description": "Výchozí text tlačítka, které zobrazuje/skrývá text popisu, např. „info“, „metadata“ atd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Volitelný text shrnutí, když jsou podrobnosti otevřené"
+      },
+      {
+        "property": "closeText",
+        "title": "Volitelný text shrnutí, když jsou podrobnosti zavřené"
+      }
+    ]
+  }
+}

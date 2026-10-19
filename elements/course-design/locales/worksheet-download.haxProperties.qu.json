@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Llamk'ay P'anqa Uraqachiy",
+    "description": "Uraqachinapaq kachkaq willañiqikunata rikuchinapaq boton."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Suti",
+        "description": "Uraqachiypa sutin."
+      },
+      {
+        "property": "link",
+        "title": "T'inki",
+        "description": "Uraqachiypa t'inkin."
+      }
+    ]
+  }
+}

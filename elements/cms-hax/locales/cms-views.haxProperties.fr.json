@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Vue CMS",
+    "description": "Vues CMS rendues côté serveur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Nom",
+        "description": "Nom de la vue de notre CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Affichage",
+        "description": "Affichage au sein de cette vue de notre CMS"
+      }
+    ]
+  }
+}

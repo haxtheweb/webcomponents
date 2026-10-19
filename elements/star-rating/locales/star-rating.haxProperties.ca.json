@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Valoració amb estrelles",
+    "description": "Giny de visualització de valoració o botó per valorar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Puntuació",
+        "description": "Valor de la puntuació actual."
+      },
+      {
+        "property": "possible",
+        "title": "Possible",
+        "description": "Puntuació màxima possible."
+      },
+      {
+        "property": "numStars",
+        "title": "Nombre d'estrelles",
+        "description": "Nombre d'estrelles que es mostraran."
+      },
+      {
+        "property": "interactive",
+        "title": "Interactiu",
+        "description": "Permet que l'usuari interactuï per definir la valoració."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Mode d'escala de rúbrica",
+        "description": "Emet metadades RubricScale i RubricLevel d'OER Schema (levelOrdinal/levelPoints) per a cada estrella."
+      }
+    ]
+  }
+}

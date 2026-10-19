@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Cerdyn",
+    "description": "Cerdyn gyda steilio acen dewisol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Pennawd",
+        "description": "Pennawd ar gyfer y cerdyn."
+      },
+      {
+        "slot": "subheading",
+        "title": "Is-bennawd",
+        "description": "Is-bennawd dewisol ar gyfer y cerdyn."
+      },
+      {
+        "slot": "content",
+        "title": "Cynnwys",
+        "description": "Cynnwys ar gyfer y cerdyn."
+      },
+      {
+        "slot": "footer",
+        "title": "Troedyn",
+        "description": "Troedyn dewisol ar gyfer y cerdyn."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Delwedd",
+        "description": "Delwedd ddewisol"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Testun Amgen y Ddelwedd",
+        "description": "Testun amgen sy'n disgrifio'r ddelwedd ar gyfer darllenwyr sgrin. Gadewch yn wag dim ond os yw'r ddelwedd yn addurnol yn unig."
+      },
+      {
+        "property": "imageAlign",
+        "title": "Aliniad y ddelwedd",
+        "description": "Aliniad Llorweddol y Ddelwedd",
+        "options": {
+          "left": "chwith",
+          "center": "canol",
+          "right": "de"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "Aliniad fertigol y ddelwedd",
+        "description": "Aliniad Fertigol y Ddelwedd",
+        "options": {
+          "top": "brig",
+          "center": "canol",
+          "bottom": "gwaelod"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw Acen",
+        "description": "Lliw acen dewisol."
+      },
+      {
+        "property": "dark",
+        "title": "Thema Dywyll",
+        "description": "Galluogi Thema Dywyll"
+      },
+      {
+        "property": "horizontal",
+        "title": "Llorweddol",
+        "description": "Cyfeiriadedd llorweddol?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Acen y Pennawd",
+        "description": "Cymhwyso lliw acen i'r pennawd?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Acen y Cefndir",
+        "description": "Cymhwyso lliw acen i gefndir y cerdyn?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Dim Acen Border",
+        "description": "Tynnu acen y border?"
+      },
+      {
+        "property": "flat",
+        "title": "Gwastad",
+        "description": "Tynnu cysgod y blwch?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Cornel",
+        "description": "Cynnwys ar gyfer cornel y cerdyn."
+      }
+    ]
+  }
+}

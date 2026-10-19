@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rantina",
+    "description": "Akllasqa media rikch'ayman tikrayta atikuq rantina"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Laya",
+        "description": "Kay rantinapaq chaskisqan gizmo rikch'ay.",
+        "options": {
+          "text": "Qillqa / ukhun",
+          "document": "Qillqa / willañiqi",
+          "audio": "Uyarina",
+          "video": "Video",
+          "image": "Rikch'a",
+          "math": "Yupay yachay"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Qillqa",
+        "description": "Munasqa rantinata aswan detalleyuqta riqsichiy"
+      }
+    ]
+  }
+}

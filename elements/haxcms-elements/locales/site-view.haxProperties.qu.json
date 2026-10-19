@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Tiyana Qhaway",
+    "description": "Criteriokunaman hina tiyanap willakuyninkunata tapuq rikuchiq kuyuq t'aqa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Qhaway URL",
+        "description": "Qhaway willakuy feed-paq tapuy parametrokuna. Kaytaqa Views tableromanta hap'iyta atinki."
+      },
+      {
+        "property": "renderer",
+        "title": "Rikuchiy modo",
+        "description": "Imayna qhaway tarisqakuna rikuchisqa kanan"
+      },
+      {
+        "property": "entity",
+        "title": "Entidadpa rikch'aynin",
+        "description": "Kutichiyta t'aqwinapaq llamk'achisqa entidad rikch'ay",
+        "options": {
+          "": "Kikin (kaqkuna)",
+          "item": "Imakuna",
+          "page": "Rapi",
+          "file": "Willañiqi",
+          "tag": "Etiqueta",
+          "block": "Bloque",
+          "view": "Qhaway",
+          "theme": "Tema",
+          "region": "Suyu",
+          "customElement": "Kikinpa Elemento"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Tiyana qhawayta p'akiy",
+        "description": "Chiqanmanta allichanapaq mana kuyuq ukhunman tikray; pukyumanta kikillanmanta musuqchakuyta sayachin."
+      }
+    ]
+  }
+}

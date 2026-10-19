@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kuatia'atã",
+    "description": "Peteĩ kora sa'y jehechaukaha ojeporavokuaáva reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Moakãha",
+        "description": "Peteĩ omoakãva korápe g̃uarã."
+      },
+      {
+        "slot": "subheading",
+        "title": "Omoakãva'i",
+        "description": "Peteĩ omoakãva'i ojeporavokuaáva korápe g̃uarã."
+      },
+      {
+        "slot": "content",
+        "title": "Tetepy",
+        "description": "Tetepy korápe g̃uarã."
+      },
+      {
+        "slot": "footer",
+        "title": "Py'ãkuatia",
+        "description": "Peteĩ py ojeporavokuaáva korápe g̃uarã."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Ta'ãnga",
+        "description": "Ta'ãnga ojeporavokuaáva"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Ta'ãnga Moñe'ẽrã Alt",
+        "description": "Moñe'ẽrã mbohekoviarã omombe'úva ta'ãnga mba'erechaha moñe'ẽhárape g̃uarã. Eheja nandi ta'ãnga ha'éramo jeguakárõ añoite."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Ta'ãnga Ñemohenda Asu-Akatúa",
+        "options": {
+          "left": "asu",
+          "center": "mbyte",
+          "right": "akatúa"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Ta'ãnga Ñemohenda Yvate-Yvy",
+        "options": {
+          "top": "yvate",
+          "center": "mbyte",
+          "bottom": "yvy"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y ojehechaukavéva ikatúramo."
+      },
+      {
+        "property": "dark",
+        "title": "Ñemohenda pytũ",
+        "description": "Emyendy Jeguakaha Ypytũ"
+      },
+      {
+        "property": "horizontal",
+        "title": "Atãvõ",
+        "description": "Ñemohenda asu-akatúa?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Omoakãva Sa'y Jehechaukaha",
+        "description": "Emoĩpa sa'y jehechaukaha omoakãvape?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Tapykue Sa'y Jehechaukaha",
+        "description": "Emoĩpa sa'y jehechaukaha kora tapykuépe?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Rembe'y Sa'y Jehechaukaha'ỹre",
+        "description": "Embogue rembe'y sa'y jehechaukaha?"
+      },
+      {
+        "property": "flat",
+        "title": "Plano",
+        "description": "Embogue kora ra'anga?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Ãngulo",
+        "description": "Tetepy kora ãngulope g̃uarã."
+      }
+    ]
+  }
+}

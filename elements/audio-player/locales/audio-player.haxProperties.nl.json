@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Dit kan video op een zeer toegankelijke manier presenteren, ongeacht de bron."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "De URL van deze media."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titel",
+        "description": "Eenvoudige titel onder de video"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Selecteer de accentkleur van de speler."
+      },
+      {
+        "property": "track",
+        "title": "Ondertiteling",
+        "description": "De URL van het ondertitelingsbestand."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Miniatuurafbeelding",
+        "description": "Optioneel. De URL van een miniatuur-/posterafbeelding."
+      },
+      {
+        "property": "learningMode",
+        "title": "Leermodus inschakelen",
+        "description": "Schakelt vooruit- en terugspoelen uit."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Knop Openen op YouTube verwijderen",
+        "description": "Verwijdert de knop om de video op YouTube te openen."
+      },
+      {
+        "property": "linkable",
+        "title": "Een deellink toevoegen?",
+        "description": "Biedt een link om de video te delen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Geeft aan of CORS moet worden gebruikt.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Afspelen op de achtergrond toestaan",
+        "description": "Video's pauzeren/spelen automatisch wanneer het tabblad de focus verliest; hiermee kan de video spelen zonder dat het tabblad focus heeft"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Donker thema voor transcript",
+        "description": "Donker thema inschakelen voor het transcript."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Interactief uitschakelen",
+        "description": "Interactieve modus uitschakelen die het transcript klikbaar maakt."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Tijdstempels verbergen",
+        "description": "De tijdstempels in het transcript verbergen."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transcript verbergen",
+        "description": "Transcript standaard verbergen."
+      },
+      {
+        "property": "lang",
+        "title": "Taal",
+        "description": "Taal van de media."
+      }
+    ]
+  }
+}

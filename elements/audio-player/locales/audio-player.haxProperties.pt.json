@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Áudio",
+    "description": "Isto pode apresentar vídeo de forma altamente acessível, independentemente da fonte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonte",
+        "description": "A URL desta mídia."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Título",
+        "description": "Título simples exibido abaixo do vídeo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Selecione a cor de destaque do player."
+      },
+      {
+        "property": "track",
+        "title": "Legendas ocultas",
+        "description": "A URL do arquivo de legendas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Imagem em miniatura",
+        "description": "Opcional. A URL de uma imagem em miniatura/pôster."
+      },
+      {
+        "property": "learningMode",
+        "title": "Ativar modo de aprendizagem",
+        "description": "Desativa avançar e retroceder."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Remover o botão Abrir no YouTube",
+        "description": "Remove o botão para abrir o vídeo no YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Incluir um link de compartilhamento?",
+        "description": "Fornece um link para compartilhar o vídeo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indica se deve usar CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Permitir reprodução em segundo plano",
+        "description": "Os vídeos pausam/reproduzem automaticamente quando a aba perde o foco; isto permite que o vídeo seja reproduzido sem que a aba esteja em foco"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema escuro para a transcrição",
+        "description": "Ativar o tema escuro para a transcrição."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Desativar interatividade",
+        "description": "Desativar o modo interativo que torna a transcrição clicável."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ocultar marcações de tempo",
+        "description": "Ocultar as marcações de tempo na transcrição."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ocultar transcrição",
+        "description": "Ocultar a transcrição por padrão."
+      },
+      {
+        "property": "lang",
+        "title": "Idioma",
+        "description": "Idioma da mídia."
+      }
+    ]
+  }
+}

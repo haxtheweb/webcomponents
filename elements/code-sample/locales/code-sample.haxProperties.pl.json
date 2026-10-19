@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Przykład kodu",
+    "description": "Przykład kodu wyróżniony na stronie"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Podświetlanie kodu",
+        "description": "Podświetlanie składni stosowane w obszarze kodu",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Dane JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Przycisk kopiowania do schowka",
+        "description": "przycisk w prawym górnym rogu z napisem kopiuj do schowka"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Początek wyróżnienia",
+        "description": "Numer wiersza, od którego zaczyna się wyróżnienie"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Koniec wyróżnienia",
+        "description": "Wiersz, na którym kończy się wyróżnienie"
+      }
+    ]
+  }
+}

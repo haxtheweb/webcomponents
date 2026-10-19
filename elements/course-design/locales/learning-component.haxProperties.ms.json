@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Komponen Pembelajaran",
+    "description": "Kad untuk pengajar menyampaikan pedagogi dan strategi pengajaran."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Jenis",
+        "description": "Jenis kad yang akan digunakan."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtajuk",
+        "description": "Subtajuk kad."
+      },
+      {
+        "property": "url",
+        "title": "Pautan",
+        "description": "Pautan pilihan untuk kad (Pautan tidak tersedia untuk Objektif Pembelajaran)."
+      },
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tetapkan Tajuk, ini mengatasi tajuk berasaskan jenis"
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Tetapkan ikon, ini mengatasi ikon berasaskan jenis"
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Tetapkan warna aksen, ini mengatasi warna berasaskan jenis"
+      },
+      {
+        "slot": "",
+        "title": "Kandungan"
+      }
+    ]
+  }
+}

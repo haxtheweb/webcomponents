@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Widok witryny",
+    "description": "Dynamiczny blok, który wyszukuje i wyświetla dane witryny według kryteriów"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL widoku",
+        "description": "Parametry zapytania kanału danych widoku. Możesz je uzyskać z panelu widoków."
+      },
+      {
+        "property": "renderer",
+        "title": "Tryb wyświetlania",
+        "description": "Sposób wyświetlania wyników widoku"
+      },
+      {
+        "property": "entity",
+        "title": "Typ encji",
+        "description": "Typ encji używany do analizy odpowiedzi",
+        "options": {
+          "": "Domyślny (items)",
+          "item": "Element",
+          "page": "Strona",
+          "file": "Plik",
+          "tag": "Tag",
+          "block": "Blok",
+          "view": "Widok",
+          "theme": "Motyw",
+          "region": "Region",
+          "customElement": "Element niestandardowy"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Odłącz widok witryny",
+        "description": "Zamień na treść statyczną do bezpośredniej edycji; zatrzymuje automatyczne aktualizacje ze źródła."
+      }
+    ]
+  }
+}

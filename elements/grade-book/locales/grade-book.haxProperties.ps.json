@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "د نمرو کتاب",
+    "description": "د سر پرته د نمرو کتاب چې د روبریکونو سره د ډېرو بیک اینډونو ملاتړ کوي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "سرچینه",
+        "description": "د معلوماتو سرچینې ډول (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "د URL پای ټکی (JSON)",
+          "json": "د JSON معلوماتو بلاب",
+          "filesystem": "د فایل سیسټم"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "سرچینه معلومات",
+        "description": "د نمرو کتاب لپاره URL یا JSON معلومات."
+      },
+      {
+        "property": "forCourse",
+        "title": "د کورس حواله",
+        "description": "د کورس پېژندونکی چې په هره ارزونې سرچینه کې د oer:forCourse په توګه خپرېږي."
+      }
+    ]
+  }
+}

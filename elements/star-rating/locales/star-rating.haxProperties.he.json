@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "דירוג כוכבים",
+    "description": "וידג'ט להצגת דירוג או כפתור לדירוג."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "ציון",
+        "description": "ערך הציון הנוכחי."
+      },
+      {
+        "property": "possible",
+        "title": "אפשרי",
+        "description": "הציון המרבי האפשרי."
+      },
+      {
+        "property": "numStars",
+        "title": "מספר הכוכבים",
+        "description": "מספר הכוכבים להצגה."
+      },
+      {
+        "property": "interactive",
+        "title": "אינטראקטיבי",
+        "description": "אפשור אינטראקציה של המשתמש לקביעת הדירוג."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "מצב סולם מחוון",
+        "description": "שידור מטא-נתוני RubricScale ו-RubricLevel של OER Schema ‏(levelOrdinal/levelPoints) עבור כל כוכב."
+      }
+    ]
+  }
+}

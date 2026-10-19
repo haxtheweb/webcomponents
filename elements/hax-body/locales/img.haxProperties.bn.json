@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "সাধারণ ছবি",
+    "description": "সাধারণ ছবির এলিমেন্ট।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "উৎস",
+        "description": "ছবির URL।"
+      },
+      {
+        "attribute": "alt",
+        "title": "বিকল্প টেক্সট",
+        "description": "অ্যাক্সেসযোগ্যতা ও SEO-এর জন্য বিকল্প টেক্সট।"
+      },
+      {
+        "attribute": "height",
+        "title": "উচ্চতা",
+        "description": "পিক্সেলে উচ্চতা। স্বাভাবিক আকার ব্যবহার করতে খালি রাখুন।"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "ছবি লোডের ধরন",
+        "description": "ছবি কখন লোড হবে বেছে নিন।",
+        "options": {
+          "lazy": "দৃশ্যমান হলে লোড করুন",
+          "auto": "স্বয়ংক্রিয়"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "রেসপনসিভ সোর্স (srcset)",
+        "description": "ছবির URL ও বর্ণনাকারী (যেমন 480w বা 2x) তালিকাভুক্ত করুন যাতে ব্রাউজার স্ক্রিনের জন্য সেরা আকার বেছে নেয়। মানক srcset অ্যাট্রিবিউট হিসেবে সংরক্ষিত হয়।"
+      }
+    ]
+  }
+}

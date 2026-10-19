@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Thẻ",
+    "description": "Một thẻ đơn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Biểu tượng thẻ"
+      },
+      {
+        "property": "disabled",
+        "title": "Vô hiệu hóa"
+      },
+      {
+        "property": "label",
+        "title": "Nhãn thẻ"
+      },
+      {
+        "slot": "",
+        "title": "Nội dung thẻ",
+        "description": "Nội dung của thẻ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID duy nhất"
+      },
+      {
+        "property": "flag",
+        "title": "Văn bản cờ đánh dấu (tùy chọn)"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Biểu tượng cờ đánh dấu (tùy chọn)"
+      }
+    ]
+  }
+}

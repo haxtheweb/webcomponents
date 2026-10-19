@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Quellenangabe",
+    "description": "Zitat-Element mit drei Darstellungsmodi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel des zitierten Werks."
+      },
+      {
+        "property": "source",
+        "title": "Quelllink",
+        "description": "Quell-URL des zitierten Werks."
+      },
+      {
+        "property": "date",
+        "title": "Abrufdatum",
+        "description": "Datum, an dem die Quelle abgerufen wurde."
+      },
+      {
+        "property": "scope",
+        "title": "Geltungsbereich",
+        "description": "Element-Geltungsbereich, der zitiert wird.",
+        "options": {
+          "sibling": "Geschwisterelement",
+          "parent": "Übergeordnetes Element"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lizenz",
+        "description": "Lizenz des zitierten Werks."
+      },
+      {
+        "property": "creator",
+        "title": "Urheber",
+        "description": "Urheber oder Eigentümer des zitierten Werks."
+      },
+      {
+        "property": "typeof",
+        "title": "OER-Schema-Typ",
+        "description": "OER-Schema-Klasse für dieses Zitat. Standard ist oer:ReferencedMaterial; nur mit einer gültigen OER-Klasse überschreiben (z. B. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

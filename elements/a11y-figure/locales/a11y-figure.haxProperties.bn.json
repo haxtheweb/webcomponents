@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "বর্ণনামূলক চিত্র",
+    "description": "দীর্ঘ বিবরণসহ অ্যাক্সেসযোগ্য চিত্র"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "ছবি"
+      },
+      {
+        "property": "imgAlt",
+        "title": "বিকল্প টেক্সট"
+      },
+      {
+        "slot": "figcaption",
+        "title": "চিত্রের ক্যাপশন",
+        "description": "চিত্রের ক্যাপশন টেক্সট যা সবসময় দৃশ্যমান।"
+      },
+      {
+        "slot": "details",
+        "title": "বিবরণ",
+        "description": "ছবির বিস্তারিত বিবরণ যা লুকানো বা দেখানো যায়"
+      },
+      {
+        "slot": "summary",
+        "title": "বিবরণ বাটন",
+        "description": "বিবরণ টেক্সট দেখানো/লুকানো বাটনের ডিফল্ট, যেমন \"info\", \"medatadata\" ইত্যাদি।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "বিস্তারিত খোলা থাকলে ঐচ্ছিক সারাংশ টেক্সট"
+      },
+      {
+        "property": "closeText",
+        "title": "বিস্তারিত বন্ধ থাকলে ঐচ্ছিক সারাংশ টেক্সট"
+      }
+    ]
+  }
+}

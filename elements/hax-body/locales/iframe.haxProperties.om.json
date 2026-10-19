@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Qabiyyee weebii alaa maxxansi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Madda",
+        "description": "URL qabeenya kanaa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Hoʻokō ʻōnaehana hoʻolālā no HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Koho e hōʻike ai",
+        "options": {
+          "*": "Alakaʻi kaila piha"
+        }
+      }
+    ]
+  }
+}

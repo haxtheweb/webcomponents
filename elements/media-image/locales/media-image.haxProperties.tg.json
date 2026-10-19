@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Тасвири такмилёфта",
+    "description": "Тарзи пешниҳоди тасвирҳо бо такмилҳои гуногун."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Манбаъ",
+        "description": "URL-и тасвир."
+      },
+      {
+        "property": "alt",
+        "title": "Матни алтернативӣ",
+        "description": "Матн барои тавсифи тасвир ба корбарони нобино."
+      },
+      {
+        "property": "link",
+        "title": "Пайванд",
+        "description": "Тасвирро ба URL пайванд кунед"
+      },
+      {
+        "property": "card",
+        "title": "Корт",
+        "description": "Сояи афтанда илова кунед, то ба корти баландшуда монанд шавад."
+      },
+      {
+        "property": "box",
+        "title": "Қуттӣ",
+        "description": "Атрофи тасвир қуттии визуалӣ илова кунед."
+      },
+      {
+        "property": "offset",
+        "title": "Ҷойивазкунӣ",
+        "description": "Тасвирро ба чап ё рост ҷойиваз кунед.",
+        "options": {
+          "none": "ҳеҷ",
+          "wide": "васеъ",
+          "narrow": "танг"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Иқтибос",
+        "description": "Иқтибос барои тасвир."
+      },
+      {
+        "property": "caption",
+        "title": "Тавзеҳ",
+        "description": "Зернавис барои тасвир."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Сарлавҳаи расм",
+        "description": "Сарлавҳа барои нишонаи расм."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Тавсифи расм",
+        "description": "Тавсиф барои нишонаи расм."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Тасвири хурд",
+        "description": "Манбаи тасвири хурд. Тасвири хурдро нишон медиҳад, вале манбаи пурраро дар равзанаи модалӣ мекушояд."
+      },
+      {
+        "property": "round",
+        "title": "Тасвири мудаввар",
+        "description": "Намуди тасвирро ба шакли доира мебуррад."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Хомӯш кардани равзанаи тасвир",
+        "description": "Кушодани тасвир дар равзанаи тафтиши тасвир бо кликро хомӯш кунед."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Ҳамчун markdown намоиш додан",
+        "description": "Зернавис ва иқтибосро ҳамчун markdown намоиш диҳед."
+      }
+    ]
+  }
+}

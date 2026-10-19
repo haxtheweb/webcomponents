@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Samfotin Github",
+    "description": "Hoto mai sauƙin isa tare da dogon bayani"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Ƙungiya",
+        "description": "Sunan na'ura na ƙungiyar Github"
+      },
+      {
+        "property": "repo",
+        "title": "Ma'aji",
+        "description": "Sunan na'ura na ma'aji"
+      },
+      {
+        "property": "extended",
+        "title": "Kallo Mai Faɗi",
+        "description": "Ya haɗa readme a cikin abu"
+      }
+    ]
+  }
+}

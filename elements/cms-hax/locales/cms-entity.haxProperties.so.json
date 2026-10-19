@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Hay'adda CMS",
+    "description": "Hay'adda CMS ee lagu muujiyo backend-ka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Nooc",
+        "description": "nooca ka yimid CMS-kayaga",
+        "options": {
+          "node": "Barbar",
+          "user": "Isticmaale",
+          "file": "Fayl"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id ka yimid CMS-kayaga"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Habka muujinta",
+        "description": "habka muujinta ee CMS-kayaga"
+      }
+    ]
+  }
+}

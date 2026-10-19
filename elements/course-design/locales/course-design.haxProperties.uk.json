@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Дизайн курсу",
+    "description": "Контейнер для навчальних матеріалів та елементів дизайну курсу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Ідентифікатор курсу",
+        "description": "OER Schema: ідентифікатор курсу, напр. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Семестр проведення",
+        "description": "OER Schema: семестр, у якому проводиться курс."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Формат проведення",
+        "description": "OER Schema: формат проведення курсу (напр. очно, онлайн, змішано)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Основний викладач",
+        "description": "OER Schema: основний викладач курсу."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL силабусу",
+        "description": "OER Schema: URL силабусу курсу."
+      }
+    ]
+  }
+}

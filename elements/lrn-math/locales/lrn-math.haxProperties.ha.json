@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Lissafi",
+    "description": "Gabatar da lissafi ta hanya mai kyau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Lissafi",
+        "description": "Shigar da daidaito a matsayin LaTeX"
+      }
+    ]
+  }
+}

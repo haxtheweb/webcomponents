@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Mea CMS",
+    "description": "Mea CMS i hōʻike ʻia ma ka hope"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "ʻAno",
+        "description": "ʻano mai kā mākou CMS",
+        "options": {
+          "node": "Kiko",
+          "user": "Mea hoʻohana",
+          "file": "Faila"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id mai kā mākou CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "ʻAno hōʻike",
+        "description": "ʻano hōʻike mai kā mākou CMS"
+      }
+    ]
+  }
+}

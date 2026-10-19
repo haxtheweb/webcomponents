@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Catalog",
+    "description": "Un catalog fără interfață care acceptă mai multe backenduri cu rubrici de evaluare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sursă",
+        "description": "Tipul sursei de date (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Endpoint URL (JSON)",
+          "json": "Bloc de date JSON",
+          "filesystem": "Sistem de fișiere"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Date sursă",
+        "description": "URL sau date JSON pentru catalog."
+      },
+      {
+        "property": "forCourse",
+        "title": "Referința cursului",
+        "description": "Identificatorul cursului emis ca oer:forCourse pentru fiecare resursă Assessment."
+      }
+    ]
+  }
+}

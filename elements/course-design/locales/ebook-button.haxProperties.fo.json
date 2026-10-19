@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-bókarknøttur",
+    "description": "Ein knøttur, ið leinkjar til eina e-bók."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Heitið á knøttinum."
+      },
+      {
+        "property": "link",
+        "title": "Leinki",
+        "description": "Leinkið at víðarisenda til við klikk."
+      },
+      {
+        "property": "icon",
+        "title": "Ímynd",
+        "description": "Ikon, ið umboðar hetta leinkið"
+      }
+    ]
+  }
+}

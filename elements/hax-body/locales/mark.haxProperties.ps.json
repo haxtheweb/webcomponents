@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "روښانه کول",
+    "description": "کرښه ییز متن روښانه کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "روښانه شوی متن."
+      }
+    ]
+  }
+}

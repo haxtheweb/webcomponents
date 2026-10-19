@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "โทเค็น CMS",
+    "description": "โทเค็น CMS ที่แสดงผลบนแบ็กเอนด์"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "โทเค็น",
+        "description": "โทเค็นจาก CMS ของเรา"
+      }
+    ]
+  }
+}

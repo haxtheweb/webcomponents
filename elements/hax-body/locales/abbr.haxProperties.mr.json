@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "संक्षेप",
+    "description": "पूर्ण-संज्ञा टूलटिपसह संक्षेप."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "मजकूर",
+        "description": "दिसणारा संक्षेप मजकूर."
+      },
+      {
+        "attribute": "title",
+        "title": "शब्द",
+        "description": "होव्हर केल्यावर दाखवलेली पूर्ण संज्ञा."
+      }
+    ]
+  }
+}

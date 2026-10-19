@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Orodha ya nambari",
+    "description": "Unda orodha ya nambari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Mtindo wa nambari",
+        "description": "Mtindo unaotumika kwa nambari za orodha yenye mpangilio.",
+        "options": {
+          "": "Chaguomsingi (desimali)",
+          "list-decimal-leading-zero": "Desimali yenye sifuri mwanzoni (01, 02, 03)",
+          "list-lower-alpha": "Herufi ndogo (a, b, c)",
+          "list-upper-alpha": "Herufi kubwa (A, B, C)",
+          "list-lower-roman": "Kirumi herufi ndogo (i, ii, iii)",
+          "list-upper-roman": "Kirumi herufi kubwa (I, II, III)"
+        }
+      }
+    ]
+  }
+}

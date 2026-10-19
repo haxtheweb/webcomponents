@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Conteúdo aleatório de página",
+    "description": "Exibir um elemento de nível superior aleatório de uma página selecionada"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Página",
+        "description": "Selecione a página da qual extrair conteúdo aleatório. O elemento exibirá aleatoriamente um dos elementos HTML de nível superior desta página."
+      }
+    ]
+  }
+}

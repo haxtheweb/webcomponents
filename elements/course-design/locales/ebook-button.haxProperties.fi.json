@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-kirjapainike",
+    "description": "Painike, joka linkittää e-kirjaan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Painikkeen otsikko."
+      },
+      {
+        "property": "link",
+        "title": "Linkki",
+        "description": "Linkki, johon ohjataan napsautettaessa."
+      },
+      {
+        "property": "icon",
+        "title": "Kuvake",
+        "description": "Tätä linkkiä edustava kuvake"
+      }
+    ]
+  }
+}

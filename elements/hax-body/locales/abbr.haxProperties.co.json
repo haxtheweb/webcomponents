@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Abbreviazione",
+    "description": "Abbreviazione cù infubulla di u termine cumpletu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Testu",
+        "description": "Testu visibile di l'abbreviazione."
+      },
+      {
+        "attribute": "title",
+        "title": "Parolla",
+        "description": "Termine cumpletu mustratu à u passaghju di u mouse."
+      }
+    ]
+  }
+}

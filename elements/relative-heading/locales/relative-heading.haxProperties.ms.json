@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Tajuk relatif",
+    "description": "mengeluarkan hierarki tajuk yang betul berdasarkan tajuk induk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID Sumber Tajuk Induk"
+      },
+      {
+        "property": "disableLink",
+        "description": "Melumpuhkan ciri butang pautan."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Menjajarkan butang salin pautan ke hujung kanan tajuk."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Aras tajuk jika induk tidak ditemui."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Mengatasi teks lalai untuk mesej toast salin pautan."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Mengatasi label lalai butang salin pautan."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Mengatasi ikon lalai butang salin pautan."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Mengatasi label lalai untuk butang tutup toast salin pautan."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Mengatasi ikon lalai untuk butang tutup toast salin pautan."
+      }
+    ]
+  }
+}

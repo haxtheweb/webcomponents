@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ihirangi Whārangi Matapōkere",
+    "description": "Whakaatu i tētahi huānga taumata-runga matapōkere mai i tētahi whārangi kua tīpakohia"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Whārangi",
+        "description": "Tīpakohia te whārangi hei tiki ihirangi matapōkere. Ka whakaatu matapōkere te huānga i tētahi o ngā huānga HTML taumata-runga o tēnei whārangi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Tortni grafikon",
+    "description": "Ustvari dostopen grafikon na podlagi CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poudarna barva",
+        "description": "Neobvezna poudarna barva."
+      },
+      {
+        "title": "Temna tema",
+        "description": "Omogoči temno temo"
+      },
+      {
+        "title": "Datoteka CSV",
+        "description": "Naloži podatke iz CSV."
+      },
+      {
+        "title": "Naslov grafikona",
+        "description": "Dostopno nadomestno besedilo za vaš grafikon."
+      },
+      {
+        "title": "Opis grafikona",
+        "description": "Dostopen opis vašega grafikona."
+      },
+      {
+        "title": "Ime razmerja",
+        "description": "Razmerje širina:višina grafikona (glejte https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings za $ct-scales in $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Krof"
+      },
+      {
+        "title": "Prikaži oznako"
+      },
+      {
+        "title": "Začetni kot"
+      },
+      {
+        "title": "Odmik"
+      },
+      {
+        "title": "Skupaj",
+        "description": "Neobvezna skupna vrednost, ki jo lahko določite. Če določite skupno vrednost, mora biti vsota vrednosti v nizu enaka tej vrednosti, da se nariše cela torta. S tem parametrom lahko narišete samo dele tortnih ali merilnih grafikonov."
+      },
+      {
+        "title": "Prezri prazne vrednosti",
+        "description": "Prazne vrednosti bodo prezrte, da se ne rišejo nepotrebni izseki in oznake."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Obrni podatke",
+        "description": "Obrni podatke, vključno z oznakami, vrstnim redom nizov in celotnimi podatkovnimi polji nizov."
+      },
+      {
+        "title": "Tabela HTML",
+        "description": "Neobvezno: naloži podatke kot tabelo HTML."
+      },
+      {
+        "title": "Debelina poteze krofa"
+      },
+      {
+        "title": "Poln krof",
+        "description": "Riši segmente krofa kot oblike namesto potez."
+      },
+      {
+        "title": "Smer oznak",
+        "description": "Riši segmente krofa kot oblike namesto potez.",
+        "options": {
+          "neutral": "nevtralno",
+          "explode": "navzven",
+          "implode": "navznoter"
+        }
+      },
+      {
+        "title": "Zamik oznak",
+        "description": "Zamik položaja oznake od standardnega položaja, ki je na polovici polmera. Vrednost je lahko pozitivna ali negativna. Pozitivne vrednosti postavijo oznako stran od središča."
+      },
+      {
+        "title": "Položaj oznak",
+        "options": {
+          "inside": "znotraj",
+          "outside": "zunaj",
+          "center": "sredina"
+        }
+      }
+    ]
+  }
+}

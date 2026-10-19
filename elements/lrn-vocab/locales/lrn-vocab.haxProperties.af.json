@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Woordeskat",
+    "description": "Woordeskatterm"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Term"
+      },
+      {
+        "slot": "",
+        "title": "Definisie",
+        "description": "Die definisie om te vertoon wanneer op die term geklik word."
+      },
+      {
+        "property": "description",
+        "title": "Beskrywing (OER Schema)",
+        "description": "OER Schema: 'n kort beskrywing van die woordeskatterm. Word outomaties uit die definisieteks ingevul as dit leeg gelaat word."
+      }
+    ]
+  }
+}

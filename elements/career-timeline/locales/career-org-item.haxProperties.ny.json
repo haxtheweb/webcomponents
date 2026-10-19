@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Chinthu cha Ntchito",
+    "description": "Bungwe limodzi ndi maudindo ake ogwirizana"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Dzina la Bungwe"
+      },
+      {
+        "property": "location",
+        "title": "Malo"
+      },
+      {
+        "property": "source",
+        "title": "Gwero"
+      }
+    ]
+  }
+}

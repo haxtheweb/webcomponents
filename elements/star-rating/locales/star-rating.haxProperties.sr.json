@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Оцена звездицама",
+    "description": "Виџет за приказ оцене или дугме за оцењивање."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Резултат",
+        "description": "Тренутна вредност резултата."
+      },
+      {
+        "property": "possible",
+        "title": "Могуће",
+        "description": "Највећи могући резултат."
+      },
+      {
+        "property": "numStars",
+        "title": "Број звездица",
+        "description": "Број звездица за приказ."
+      },
+      {
+        "property": "interactive",
+        "title": "Интерактивно",
+        "description": "Дозволи кориснику да постави оцену."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Режим скале рубрике",
+        "description": "Емитуј OER Schema метаподатке RubricScale и RubricLevel (levelOrdinal/levelPoints) за сваку звездицу."
+      }
+    ]
+  }
+}

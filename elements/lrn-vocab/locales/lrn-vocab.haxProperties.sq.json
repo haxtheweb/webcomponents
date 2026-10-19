@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Fjalor",
+    "description": "Term fjalori"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termi"
+      },
+      {
+        "slot": "",
+        "title": "Përkufizimi",
+        "description": "Përkufizimi që shfaqet kur klikohet termi."
+      },
+      {
+        "property": "description",
+        "title": "Përshkrimi (Skema OER)",
+        "description": "Skema OER: një përshkrim i shkurtër i termit të fjalorit. Plotësohet automatikisht nga teksti i përkufizimit nëse lihet bosh."
+      }
+    ]
+  }
+}

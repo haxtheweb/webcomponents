@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kāri",
+    "description": "He kāri me te kāhua arotahi kōwhiringa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Upoko",
+        "description": "He pane mō te kāri."
+      },
+      {
+        "slot": "subheading",
+        "title": "Pane-iti",
+        "description": "He pane-iti kōwhiringa mō te kāri."
+      },
+      {
+        "slot": "content",
+        "title": "Ihirangi",
+        "description": "Ihirangi mō te kāri."
+      },
+      {
+        "slot": "footer",
+        "title": "Hiku",
+        "description": "He hiku kōwhiringa mō te kāri."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Whakaahua",
+        "description": "Atahanga kōwhiringa"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Kuputuhi Alt Atahanga",
+        "description": "Kuputuhi kē e whakaahua ana i te atahanga mō ngā kaipānui mata. Waiho kau anake mēnā he whakapaipai noa te atahanga."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Whakahāngai Whakapae o te Atahanga",
+        "options": {
+          "left": "mauī",
+          "center": "waenganui",
+          "right": "matau"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Whakahāngai Poutū o te Atahanga",
+        "options": {
+          "top": "runga",
+          "center": "waenganui",
+          "bottom": "raro"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae Arotahi",
+        "description": "He tae arotahi kōwhiri."
+      },
+      {
+        "property": "dark",
+        "title": "Kaupapa Pōuri",
+        "description": "Whakahohe Kaupapa Āhua Pōuri"
+      },
+      {
+        "property": "horizontal",
+        "title": "Whakapae",
+        "description": "Takotoranga whakapae?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Arotahi Pane",
+        "description": "Hāngai i te tae arotahi ki te pane?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Arotahi Papamuri",
+        "description": "Hāngai i te tae arotahi ki te papamuri kāri?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Kāore he Arotahi Taitapa",
+        "description": "Tango i te arotahi taitapa?"
+      },
+      {
+        "property": "flat",
+        "title": "Papatahi",
+        "description": "Tango i te ātārangi pouaka?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Kokonga",
+        "description": "Ihirangi mō te kokonga kāri."
+      }
+    ]
+  }
+}

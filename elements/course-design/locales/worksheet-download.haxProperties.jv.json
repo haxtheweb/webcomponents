@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Undhuhan Lembar Kerja",
+    "description": "Tombol kanggo nampilake berkas sing kasedhiya kanggo diundhuh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Irah-irahan",
+        "description": "Judhul undhuhan."
+      },
+      {
+        "property": "link",
+        "title": "Pranala",
+        "description": "Link kanggo undhuhan."
+      }
+    ]
+  }
+}

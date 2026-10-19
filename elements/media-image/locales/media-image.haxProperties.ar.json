@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "صورة محسّنة",
+    "description": "طريقة لعرض الصور مع تحسينات متنوعة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "المصدر",
+        "description": "URL الصورة."
+      },
+      {
+        "property": "alt",
+        "title": "النص البديل",
+        "description": "نص يصف الصورة للمستخدمين المكفوفين."
+      },
+      {
+        "property": "link",
+        "title": "الرابط",
+        "description": "ربط الصورة بـ URL"
+      },
+      {
+        "property": "card",
+        "title": "بطاقة",
+        "description": "تطبيق ظل لإعطاء مظهر بطاقة مرتفعة."
+      },
+      {
+        "property": "box",
+        "title": "إطار",
+        "description": "تطبيق إطار مرئي حول الصورة."
+      },
+      {
+        "property": "offset",
+        "title": "الإزاحة",
+        "description": "تطبيق إزاحة لليسار أو لليمين على الصورة.",
+        "options": {
+          "none": "بلا",
+          "wide": "عريض",
+          "narrow": "ضيق"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "الاستشهاد",
+        "description": "الاستشهاد الخاص بالصورة."
+      },
+      {
+        "property": "caption",
+        "title": "التعليق",
+        "description": "التسمية التوضيحية للصورة."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "عنوان الشكل",
+        "description": "عنوان تسمية الشكل."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "وصف الشكل",
+        "description": "وصف تسمية الشكل."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "الصورة المصغرة",
+        "description": "مصدر الصورة المصغرة. يعرض الصورة المصغرة لكنه يفتح المصدر الكامل في نافذة منبثقة."
+      },
+      {
+        "property": "round",
+        "title": "صورة دائرية",
+        "description": "يقص مظهر الصورة ليكون على شكل دائرة."
+      },
+      {
+        "property": "disableZoom",
+        "title": "تعطيل نافذة الصورة",
+        "description": "تعطيل فتح الصورة في مربع حوار فاحص الصور عند النقر."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "العرض كـ Markdown",
+        "description": "عرض التسمية التوضيحية والاستشهاد كـ Markdown."
+      }
+    ]
+  }
+}

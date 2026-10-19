@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Heimild",
+    "description": "Tilvitnunareining með þremur framsetningarhömum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Titill verksins sem vitnað er í."
+      },
+      {
+        "property": "source",
+        "title": "Tengill á heimild",
+        "description": "URL heimildar verksins sem vitnað er í."
+      },
+      {
+        "property": "date",
+        "title": "Dagsetning skoðunar",
+        "description": "Dagsetningin þegar heimildin var skoðuð."
+      },
+      {
+        "property": "scope",
+        "title": "Umfang",
+        "description": "Umfang einingar sem vitna á í.",
+        "options": {
+          "sibling": "Systureining",
+          "parent": "Yfireining"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Leyfi",
+        "description": "Leyfi verksins sem vitnað er í."
+      },
+      {
+        "property": "creator",
+        "title": "Höfundur",
+        "description": "Höfundur eða eigandi verksins sem vitnað er í."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema-tegund",
+        "description": "OER Schema-flokkur fyrir þessa tilvitnun. Sjálfgefið er oer:ReferencedMaterial; breyttu aðeins í gildan OER-flokk (t.d. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

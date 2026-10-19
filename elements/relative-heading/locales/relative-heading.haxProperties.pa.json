@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "ਸਾਪੇਖ ਸਿਰਲੇਖ",
+    "description": "ਮੂਲ ਦੇ ਸਿਰਲੇਖ ਦੇ ਅਧਾਰ 'ਤੇ ਸਹੀ ਸਿਰਲੇਖ ਦਰਜਾਬੰਦੀ ਦਿੰਦਾ ਹੈ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ਮੂਲ ਸਿਰਲੇਖ ਦੀ ਸਰੋਤ ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "ਲਿੰਕ ਬਟਨ ਵਿਸ਼ੇਸ਼ਤਾ ਬੰਦ ਕਰਦਾ ਹੈ।"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "ਲਿੰਕ ਕਾਪੀ ਬਟਨ ਨੂੰ ਸਿਰਲੇਖ ਦੇ ਬਿਲਕੁਲ ਸੱਜੇ ਪਾਸੇ ਰੱਖਦਾ ਹੈ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "ਜੇ ਮੂਲ ਨਾ ਮਿਲੇ ਤਾਂ ਸਿਰਲੇਖ ਪੱਧਰ।"
+      },
+      {
+        "property": "copyMessage",
+        "description": "ਲਿੰਕ ਕਾਪੀ ਦੇ ਟੋਸਟ ਸੁਨੇਹੇ ਲਈ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਟੈਕਸਟ ਨੂੰ ਬਦਲਦਾ ਹੈ।"
+      },
+      {
+        "property": "linkLabel",
+        "description": "ਲਿੰਕ ਕਾਪੀ ਬਟਨ ਦੇ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਲੇਬਲ ਨੂੰ ਬਦਲਦਾ ਹੈ।"
+      },
+      {
+        "property": "linkIcon",
+        "description": "ਲਿੰਕ ਕਾਪੀ ਬਟਨ ਦੇ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਆਈਕਨ ਨੂੰ ਬਦਲਦਾ ਹੈ।"
+      },
+      {
+        "property": "closeLabel",
+        "description": "ਲਿੰਕ ਕਾਪੀ ਦੇ ਟੋਸਟ ਦੇ ਬੰਦ ਬਟਨ ਲਈ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਲੇਬਲ ਨੂੰ ਬਦਲਦਾ ਹੈ।"
+      },
+      {
+        "property": "closeIcon",
+        "description": "ਲਿੰਕ ਕਾਪੀ ਦੇ ਟੋਸਟ ਦੇ ਬੰਦ ਬਟਨ ਲਈ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਆਈਕਨ ਨੂੰ ਬਦਲਦਾ ਹੈ।"
+      }
+    ]
+  }
+}

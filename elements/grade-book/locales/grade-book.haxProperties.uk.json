@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Журнал оцінок",
+    "description": "Журнал оцінок без інтерфейсу з підтримкою кількох джерел даних і рубрик."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Джерело",
+        "description": "Тип джерела даних (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Кінцева точка URL (JSON)",
+          "json": "Блок даних JSON",
+          "filesystem": "Файлова система"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Вихідні дані",
+        "description": "URL або дані JSON для журналу оцінок."
+      },
+      {
+        "property": "forCourse",
+        "title": "Посилання на курс",
+        "description": "Ідентифікатор курсу, що передається як oer:forCourse у кожному ресурсі Assessment."
+      }
+    ]
+  }
+}

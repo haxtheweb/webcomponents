@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ambato",
+    "description": "Abun ambato tare da yanayin gabatarwa uku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Taken aikin da aka ambata."
+      },
+      {
+        "property": "source",
+        "title": "Hanyar haɗin tushe",
+        "description": "URL na tushen aikin da aka ambata."
+      },
+      {
+        "property": "date",
+        "title": "Ranar da aka samu",
+        "description": "Ranar da aka sami damar tushen."
+      },
+      {
+        "property": "scope",
+        "title": "Iyaka",
+        "description": "Iyakar abun da za a ambata.",
+        "options": {
+          "sibling": "Abu ɗan'uwa",
+          "parent": "Abu mahaifi"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lasisi",
+        "description": "Lasisin aikin da aka ambata."
+      },
+      {
+        "property": "creator",
+        "title": "Mahalicci",
+        "description": "Mahalicci ko mai aikin da aka ambata."
+      },
+      {
+        "property": "typeof",
+        "title": "Nau'in OER Schema",
+        "description": "Ajin OER Schema don wannan ambato. Tsoho shi ne oer:ReferencedMaterial; maye gurbinsa kawai da ajin OER mai inganci (misali oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "بنیادی تصویر",
+    "description": "بنیادی تصویری عنصر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ماخذ",
+        "description": "تصویر کا URL۔"
+      },
+      {
+        "attribute": "alt",
+        "title": "متبادل متن",
+        "description": "رسائی اور SEO کے لیے متبادل متن۔"
+      },
+      {
+        "attribute": "height",
+        "title": "اونچائی",
+        "description": "اونچائی پکسلز میں۔ فطری سائز استعمال کرنے کے لیے خالی چھوڑیں۔"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "تصویر لوڈنگ",
+        "description": "منتخب کریں کہ تصویر کب لوڈ ہو۔",
+        "options": {
+          "lazy": "نظر آنے پر لوڈ کریں",
+          "auto": "خودکار"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "ریسپانسیو سورسز (srcset)",
+        "description": "تصویری URLs اور ڈسکرپٹرز (مثلاً 480w یا 2x) درج کریں تاکہ براؤزرز اسکرین کے لیے بہترین سائز منتخب کریں۔ معیاری srcset ایٹریبیوٹ کے طور پر محفوظ ہوتا ہے۔"
+      }
+    ]
+  }
+}

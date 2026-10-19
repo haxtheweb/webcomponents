@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Selector hexadecimal",
+    "description": "Selector de color amb codi hexadecimal"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Valor",
+        "description": "Valor hexadecimal per defecte"
+      },
+      {
+        "property": "disabled",
+        "title": "Desactivat",
+        "description": "Desactiva el camp de text"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Visualització gran",
+        "description": "Inclou el color en una visualització gran"
+      }
+    ]
+  }
+}

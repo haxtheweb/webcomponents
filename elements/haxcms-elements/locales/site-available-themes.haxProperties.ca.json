@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Temes disponibles",
+    "description": "Mostra els temes de HAXcms disponibles amb canvi de previsualització en directe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Mode de visualització",
+        "description": "Tria com mostrar els temes",
+        "options": {
+          "gallery": "Galeria",
+          "table": "Taula"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Mostra els detalls",
+        "description": "Mostra les descripcions dels temes i informació addicional"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Mostra els temes ocults i antics",
+        "description": "Mostra els temes ocults, antics i horribles, a més dels predeterminats del tauler"
+      },
+      {
+        "property": "columns",
+        "title": "Columnes (galeria)",
+        "description": "Nombre de columnes a la vista de galeria"
+      }
+    ]
+  }
+}

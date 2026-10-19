@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro karta",
+    "description": "Jednoduchá karta v retro designu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Hlavní název karty."
+      },
+      {
+        "property": "url",
+        "description": "URL, která se otevře po kliknutí na kartu."
+      },
+      {
+        "property": "subtitle",
+        "title": "Podnázev",
+        "description": "Podnázev karty."
+      },
+      {
+        "property": "tags",
+        "title": "Štítky",
+        "description": "Štítky oddělené čárkami."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Zdroj média",
+        "description": "Primární zdroj média."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Zdroj při najetí myší",
+        "description": "Zdroj média zobrazený při najetí myší na kartu nebo její aktivaci."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňující barva",
+        "description": "Barva zvýraznění použitá na celou kartu."
+      },
+      {
+        "property": "dark",
+        "title": "Tmavý",
+        "description": "Použít základní barvy tmavého režimu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Eitem llyfryddiaeth",
+    "description": "Eitem sy'n cynrychioli un dyfyniad mewn llyfryddiaeth, gan gefnogi sawl fformat ac opsiynau allforio."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Math",
+        "description": "Math o ddyfyniad",
+        "options": {
+          "web": "Gwe",
+          "journal": "Cyfnodolyn",
+          "book": "Llyfr"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Teitl yr eitem"
+      },
+      {
+        "property": "authors",
+        "title": "Awdur(on)",
+        "description": "Y digwyddiadau yn y llinell amser"
+      },
+      {
+        "property": "publisher",
+        "title": "Cyhoeddwr",
+        "description": "Gwefan wreiddiol"
+      }
+    ]
+  }
+}

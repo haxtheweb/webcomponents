@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Einfache Link",
+    "description": "Einfacht Linkelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Link",
+        "description": "Zil-URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Siichtbaren Linktext."
+      },
+      {
+        "attribute": "target",
+        "title": "Zil",
+        "description": "Wou de Link opgemaach gëtt.",
+        "options": {
+          "": "Selwecht Fënster",
+          "_blank": "Nei Fënster - _blank",
+          "_top": "Iewescht Fënster - _top",
+          "_parent": "Iwwergeuerdent Fënster - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Titeltext",
+        "description": "Informativen Titel fir Accessibilitéit an SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Bezéiung zum Zil (Sécherheet/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

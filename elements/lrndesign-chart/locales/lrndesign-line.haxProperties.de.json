@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Liniendiagramm",
+    "description": "Erstellt ein barrierefreies Diagramm auf Basis einer CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Akzentfarbe",
+        "description": "Eine optionale Akzentfarbe."
+      },
+      {
+        "title": "Dunkles Design",
+        "description": "Dunkles Theme aktivieren"
+      },
+      {
+        "title": "CSV-Datei",
+        "description": "Daten aus einer CSV laden."
+      },
+      {
+        "title": "Diagrammtitel",
+        "description": "Barrierefreier Alternativtext für dein Diagramm."
+      },
+      {
+        "title": "Diagrammbeschreibung",
+        "description": "Barrierefreie Beschreibung deines Diagramms."
+      },
+      {
+        "title": "Skalenname",
+        "description": "Das Verhältnis Breite:Höhe des Diagramms (siehe https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings für $ct-scales und $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Rasterhintergrund anzeigen"
+      },
+      {
+        "title": "Fläche anzeigen"
+      },
+      {
+        "title": "Linie anzeigen"
+      },
+      {
+        "title": "Punkt anzeigen"
+      },
+      {
+        "title": "Volle Breite"
+      },
+      {
+        "title": "Punktbeschriftungen anzeigen"
+      },
+      {
+        "title": "Diagramm-Innenabstand (oben)"
+      },
+      {
+        "title": "Diagramm-Innenabstand (unten)"
+      },
+      {
+        "title": "Diagramm-Innenabstand (links)"
+      },
+      {
+        "title": "Diagramm-Innenabstand (rechts)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Daten umkehren",
+        "description": "Daten einschließlich Beschriftungen, Reihenfolge der Reihen sowie der gesamten Datenarrays der Reihen umkehren."
+      },
+      {
+        "title": "HTML-Tabelle",
+        "description": "Optional: Daten als HTML-Tabelle laden."
+      },
+      {
+        "title": "Diagramm-Minimum",
+        "description": "Durch Überschreiben des natürlichen Tiefstwerts des Diagramms kannst du hineinzoomen oder den niedrigsten angezeigten Wert begrenzen"
+      },
+      {
+        "title": "Diagramm-Maximum",
+        "description": "Durch Überschreiben des natürlichen Höchstwerts des Diagramms kannst du hineinzoomen oder den höchsten angezeigten Wert begrenzen"
+      },
+      {
+        "title": "Punktbeschriftungen anzeigen",
+        "options": {
+          "middle": "Mitte",
+          "start": "Beginn",
+          "end": "Ende"
+        }
+      },
+      {
+        "title": "Punktbeschriftungen: X-Versatz"
+      },
+      {
+        "title": "Punktbeschriftungen: Y-Versatz"
+      },
+      {
+        "title": "Linienglättung"
+      },
+      {
+        "title": "Flächenbasis",
+        "description": "Die Basis des Flächendiagramms, mit der die Flächenform geschlossen wird (normalerweise 0)."
+      },
+      {
+        "title": "X-Achse: Raster anzeigen",
+        "description": "Das Raster der X-Achse anzeigen."
+      },
+      {
+        "title": "X-Achse: Versatz"
+      },
+      {
+        "title": "X-Achse: Position",
+        "description": "Position, an der die Beschriftungen platziert werden. Kann auf \"start\" oder \"end\" gesetzt werden, wobei \"start\" links bzw. oben auf der vertikalen Achse und \"end\" rechts bzw. unten auf der horizontalen Achse entspricht"
+      },
+      {
+        "title": "X-Achse: Beschriftung anzeigen",
+        "description": "Die Beschriftung der X-Achse anzeigen."
+      },
+      {
+        "title": "X-Achse: Beschriftung (horizontaler Versatz)",
+        "description": "Horizontale Position der Beschriftungen der X-Achse."
+      },
+      {
+        "title": "X-Achse: Beschriftung (vertikaler Versatz)",
+        "description": "Vertikale Position der Beschriftungen der X-Achse."
+      },
+      {
+        "title": "X-Achse: Titel",
+        "description": "Optionaler Titel für die X-Achse."
+      },
+      {
+        "title": "X-Achse: Titel (horizontaler Versatz)",
+        "description": "Horizontale Position des Titels der X-Achse."
+      },
+      {
+        "title": "X-Achse: Titel (vertikaler Versatz)",
+        "description": "Vertikale Position des Titels der X-Achse."
+      },
+      {
+        "title": "X-Achse: Titelanker",
+        "description": "Optionaler Anker für den Titel der X-Achse.",
+        "options": {
+          "middle": "Mitte",
+          "end": "Ende",
+          "start": "Anfang"
+        }
+      },
+      {
+        "title": "Y-Achse: Raster anzeigen",
+        "description": "Das Raster der Y-Achse anzeigen."
+      },
+      {
+        "title": "Y-Achse: Versatz"
+      },
+      {
+        "title": "Y-Achse: Position",
+        "description": "Position, an der die Beschriftungen platziert werden. Kann auf \"start\" oder \"end\" gesetzt werden, wobei \"start\" links bzw. oben auf der vertikalen Achse und \"end\" rechts bzw. unten auf der horizontalen Achse entspricht"
+      },
+      {
+        "title": "Y-Achse: Beschriftung anzeigen",
+        "description": "Die Beschriftung der Y-Achse anzeigen."
+      },
+      {
+        "title": "Y-Achse: Beschriftung (horizontaler Versatz)",
+        "description": "Horizontale Position der Beschriftung der Y-Achse."
+      },
+      {
+        "title": "Y-Achse: Beschriftung (vertikaler Versatz)",
+        "description": "Vertikale Position der Beschriftung der Y-Achse."
+      },
+      {
+        "title": "Y-Achse: minimaler Skalenabstand",
+        "description": "Gibt die minimale Höhe der Skalenschritte in Pixeln an."
+      },
+      {
+        "title": "Y-Achse: Skala (nur Ganzzahlen)",
+        "description": "Nur ganzzahlige Werte für die Skalenschritte verwenden."
+      },
+      {
+        "title": "Y-Achse: Titel",
+        "description": "Optionaler Titel für die Y-Achse."
+      },
+      {
+        "title": "Y-Achse: Titel (vertikaler Versatz)",
+        "description": "Horizontale Position des Titels der Y-Achse."
+      },
+      {
+        "title": "Y-Achse: Titel (horizontaler Versatz)",
+        "description": "Horizontale Position des Titels der Y-Achse."
+      },
+      {
+        "title": "Y-Achse: Titelanker",
+        "description": "Optionaler Anker für den Titel der Y-Achse.",
+        "options": {
+          "middle": "Mitte",
+          "end": "Ende",
+          "start": "Anfang"
+        }
+      },
+      {
+        "title": "Y-Achse: Titel spiegeln",
+        "description": "Den Titel der Y-Achse spiegeln?"
+      }
+    ]
+  }
+}

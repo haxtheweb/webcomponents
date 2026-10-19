@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Sapalla t'inki",
+    "description": "Sapalla t'inki elemento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "T'inki",
+        "description": "Chayana URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Qillqa",
+        "description": "Rikukuq t'inki qillqa."
+      },
+      {
+        "attribute": "target",
+        "title": "Maypi",
+        "description": "Maypi t'inkita kichanapaq.",
+        "options": {
+          "": "Kikin ventana",
+          "_blank": "Musuq ventana - _blank",
+          "_top": "Hanaq ventana - _top",
+          "_parent": "Tayta ventana - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Suti qillqa",
+        "description": "Llapanpaq haykunapaq SEO-paq ima willaq suti."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Chayanawan tupay (waqaychay/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

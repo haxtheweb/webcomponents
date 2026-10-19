@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Základný odkaz",
+    "description": "Základný prvok odkazu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Odkaz",
+        "description": "Cieľová URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Viditeľný text odkazu."
+      },
+      {
+        "attribute": "target",
+        "title": "Cieľ",
+        "description": "Kde sa má odkaz otvoriť.",
+        "options": {
+          "": "Rovnaké okno",
+          "_blank": "Nové okno - _blank",
+          "_top": "Najvyššie okno - _top",
+          "_parent": "Nadradené okno - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Text titulku",
+        "description": "Informačný titulok pre prístupnosť a SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Vzťah k cieľu (bezpečnosť/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

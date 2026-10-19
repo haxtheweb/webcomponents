@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Daşky web mazmunyny ýerleşdir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Çeşme",
+        "description": "Bu serişde üçin URL."
+      }
+    ]
+  }
+}

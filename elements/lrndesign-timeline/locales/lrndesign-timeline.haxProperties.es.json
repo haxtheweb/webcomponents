@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Cronología",
+    "description": "Una línea de tiempo de eventos con imágenes y texto"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Título de la cronología",
+        "description": "Un título para la línea de tiempo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Un color de acento opcional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema oscuro",
+        "description": "Activar tema oscuro"
+      },
+      {
+        "slot": "",
+        "title": "Descripción de la línea de tiempo",
+        "description": "Texto opcional que describe la línea de tiempo."
+      },
+      {
+        "property": "events",
+        "title": "Eventos de la línea de tiempo",
+        "description": "Los eventos de la línea de tiempo"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex 取色器",
+    "description": "Hex 色码取色器"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "数值",
+        "description": "默认 hex 值"
+      },
+      {
+        "property": "disabled",
+        "title": "禁用",
+        "description": "停用文字框"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "大显示",
+        "description": "辣大显示里包含颜色"
+      }
+    ]
+  }
+}

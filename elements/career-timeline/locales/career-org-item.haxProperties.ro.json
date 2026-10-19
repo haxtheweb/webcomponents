@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Element de carieră",
+    "description": "O organizație individuală și rolurile asociate acesteia"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Numele organizației"
+      },
+      {
+        "property": "location",
+        "title": "Locație"
+      },
+      {
+        "property": "source",
+        "title": "Sursă"
+      }
+    ]
+  }
+}

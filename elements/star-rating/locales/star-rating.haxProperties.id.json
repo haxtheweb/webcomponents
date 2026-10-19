@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Rating Bintang",
+    "description": "Widget tampilan rating atau tombol untuk memberi rating."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Skor",
+        "description": "Nilai skor saat ini."
+      },
+      {
+        "property": "possible",
+        "title": "Maksimum",
+        "description": "Skor maksimum yang mungkin."
+      },
+      {
+        "property": "numStars",
+        "title": "Jumlah Bintang",
+        "description": "Jumlah bintang yang ditampilkan."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktif",
+        "description": "Izinkan interaksi pengguna untuk menetapkan rating."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Mode Skala Rubrik",
+        "description": "Keluarkan metadata RubricScale dan RubricLevel OER Schema (levelOrdinal/levelPoints) untuk setiap bintang."
+      }
+    ]
+  }
+}

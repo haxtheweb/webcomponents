@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Tusaale kood",
+    "description": "Tusaale kood ah oo bogga lagu iftiimiyay"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Iftiiminta koodhka",
+        "description": "Iftiiminta naxwaha ee lagu dabaqayo meesha koodhka",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Xog JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Badhanka u koobi sabuuradda",
+        "description": "badhan ku yaal dhinaca sare ee midig oo leh u koobi sabuuradda"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Bilowga iftiiminta",
+        "description": "Lambarka xariiqda laga bilaabayo iftiiminta"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Dhammaadka iftiiminta",
+        "description": "Xariiqda lagu dhammaynayo iftiiminta"
+      }
+    ]
+  }
+}

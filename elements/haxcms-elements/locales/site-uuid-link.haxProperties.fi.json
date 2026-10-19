@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX-linkki",
+    "description": "Linkki tiettyyn resurssiin sivustolla, jota työstät."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Kohde",
+        "description": "Kohde, jota käytetään linkin / otsikkotietojen näyttämiseen"
+      }
+    ]
+  }
+}

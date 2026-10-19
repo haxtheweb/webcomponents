@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ປຶ້ມຄະແນນ",
+    "description": "ປຶ້ມຄະແນນແບບ headless ທີ່ຮອງຮັບຫຼາຍ backend ພ້ອມເກນການໃຫ້ຄະແນນ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "ປະເພດແຫຼ່ງຂໍ້ມູນ (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "ກ້ອນຂໍ້ມູນ JSON",
+          "filesystem": "ລະບົບໄຟລ໌"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ຂໍ້ມູນແຫຼ່ງ",
+        "description": "URL ຫຼື ຂໍ້ມູນ JSON ສຳລັບປຶ້ມຄະແນນ."
+      },
+      {
+        "property": "forCourse",
+        "title": "ການອ້າງອີງຫຼັກສູດ",
+        "description": "ລະຫັດຫຼັກສູດທີ່ສົ່ງອອກເປັນ oer:forCourse ໃນແຕ່ລະຊັບພະຍາກອນການປະເມີນ."
+      }
+    ]
+  }
+}

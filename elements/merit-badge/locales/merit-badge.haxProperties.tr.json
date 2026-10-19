@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Başarı Rozeti",
+    "description": "Bir beceri kazanıldığını gösteren görsel rozet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Rozet Başlığı",
+        "description": "Rozette gösterilen başlık."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Rozet Görseli",
+        "description": "Rozet için görsel URL'si."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Rozet Ayrıntıları",
+        "description": "Rozet hakkında ayrıntılar."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Köprü",
+        "description": "Rozetle ilişkili bağlantı."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Rozet Becerileri",
+        "description": "Rozette gösterilen beceriler."
+      },
+      {
+        "property": "skill",
+        "title": "Beceri (OER Şeması)",
+        "description": "OER Şeması: bu öğrenme hedefinin tamamlanmasıyla kazanılan bir beceri."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Bloc o gynnwys markdown yn uniongyrchol neu wedi'i lwytho o bell"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown crai"
+      },
+      {
+        "property": "source",
+        "title": "Ffynhonnell",
+        "description": "Ffeil ffynhonnell ar gyfer markdown"
+      }
+    ]
+  }
+}

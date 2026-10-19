@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "어휘",
+    "description": "어휘 용어"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "용어"
+      },
+      {
+        "slot": "",
+        "title": "정의",
+        "description": "용어를 클릭하면 표시할 정의."
+      },
+      {
+        "property": "description",
+        "title": "설명 (OER Schema)",
+        "description": "OER Schema: 어휘 용어에 대한 간단한 설명. 비워 두면 정의 텍스트에서 자동으로 채워집니다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Karriere-Rolle",
+    "description": "Eine einzelne Rolle innerhalb einer Organisation"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel"
+      },
+      {
+        "property": "startDate",
+        "title": "Startdatum"
+      },
+      {
+        "property": "endDate",
+        "title": "Enddatum (optional)"
+      },
+      {
+        "property": "skills",
+        "title": "Zugehörige Fähigkeiten",
+        "description": "Wähle den Button +, um Fähigkeiten hinzuzufügen"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tydlyn",
+    "description": "'n Tydlyn van gebeure met prente en teks"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Tydlyntitel",
+        "description": "'n Titel vir die tydlyn."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "'n Opsionele aksentkleur."
+      },
+      {
+        "property": "dark",
+        "title": "Donker tema",
+        "description": "Aktiveer donker tema"
+      },
+      {
+        "slot": "",
+        "title": "Tydlynbeskrywing",
+        "description": "Opsionele teks wat die tydlyn beskryf."
+      },
+      {
+        "property": "events",
+        "title": "Tydlyngebeure",
+        "description": "Die gebeure in die tydlyn"
+      }
+    ]
+  }
+}

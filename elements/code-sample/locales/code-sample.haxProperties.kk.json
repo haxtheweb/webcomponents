@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Код үлгісі",
+    "description": "Бетте ерекшеленген код үлгісі"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Кодты ерекшелеу",
+        "description": "Код аймағына қолданылатын синтаксисті ерекшелеу",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON деректері",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Алмасу буферіне көшіру түймесі",
+        "description": "жоғарғы оң жақтағы «алмасу буферіне көшіру» түймесі"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Ерекшелеудің басы",
+        "description": "Ерекшелеу басталатын жол нөмірі"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Ерекшелеудің соңы",
+        "description": "Ерекшелеу аяқталатын жол"
+      }
+    ]
+  }
+}

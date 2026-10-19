@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Mmejuputa sistemu imewe maka HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Nhọrọ a ga-egosi",
+        "options": {
+          "*": "Ntuziaka ụdị zuru ezu"
+        }
+      }
+    ]
+  }
+}

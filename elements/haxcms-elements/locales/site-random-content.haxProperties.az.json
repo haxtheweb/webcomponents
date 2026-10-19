@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Təsadüfi səhifə məzmunu",
+    "description": "Seçilmiş səhifədən təsadüfi yuxarı səviyyəli element göstərin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Səhifə",
+        "description": "Təsadüfi məzmun götürüləcək səhifəni seçin. Element bu səhifədəki yuxarı səviyyəli HTML elementlərindən birini təsadüfi göstərəcək."
+      }
+    ]
+  }
+}

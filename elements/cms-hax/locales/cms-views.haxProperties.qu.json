@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS Qhaway",
+    "description": "Backend-pi rikuchisqa CMS qhawaykuna"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Suti",
+        "description": "CMS-nchikmanta qhawaypa sutin"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Rikuchiy",
+        "description": "CMS-nchikmanta chay qhaway ukhupi rikuchiy"
+      }
+    ]
+  }
+}

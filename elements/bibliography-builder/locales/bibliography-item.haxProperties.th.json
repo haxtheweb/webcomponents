@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "รายการบรรณานุกรม",
+    "description": "รายการที่แสดงการอ้างอิงเดียวในบรรณานุกรม รองรับหลายรูปแบบและตัวเลือกการส่งออก"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "ประเภท",
+        "description": "ประเภทการอ้างอิง",
+        "options": {
+          "web": "เว็บ",
+          "journal": "วารสาร",
+          "book": "หนังสือ"
+        }
+      },
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อเรื่องของรายการ"
+      },
+      {
+        "property": "authors",
+        "title": "ผู้แต่ง",
+        "description": "เหตุการณ์ในไทม์ไลน์"
+      },
+      {
+        "property": "publisher",
+        "title": "สำนักพิมพ์",
+        "description": "เว็บไซต์ต้นฉบับ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS көрінісі",
+    "description": "Серверде көрсетілетін CMS көріністері"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Аты",
+        "description": "Біздің CMS-тегі көріністің атауы"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Көрініс",
+        "description": "Біздің CMS-тегі сол көріністің ішіндегі дисплей"
+      }
+    ]
+  }
+}

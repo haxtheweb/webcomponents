@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "સંદર્ભ",
+    "description": "ત્રણ પ્રસ્તુતિ મોડ સાથેનો સંદર્ભ એલિમેન્ટ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "સંદર્ભિત કૃતિનું શીર્ષક."
+      },
+      {
+        "property": "source",
+        "title": "સ્રોત લિંક",
+        "description": "સંદર્ભિત કૃતિ માટે સ્રોત URL."
+      },
+      {
+        "property": "date",
+        "title": "ઍક્સેસ કર્યાની તારીખ",
+        "description": "સ્રોત ઍક્સેસ કર્યાની તારીખ."
+      },
+      {
+        "property": "scope",
+        "title": "અવકાશ",
+        "description": "સંદર્ભ આપવા માટેનો એલિમેન્ટ અવકાશ.",
+        "options": {
+          "sibling": "સમકક્ષ એલિમેન્ટ",
+          "parent": "પેરેન્ટ એલિમેન્ટ"
+        }
+      },
+      {
+        "property": "license",
+        "title": "લાઇસન્સ",
+        "description": "સંદર્ભિત કૃતિ માટે લાઇસન્સ."
+      },
+      {
+        "property": "creator",
+        "title": "સર્જક",
+        "description": "સંદર્ભિત કૃતિના સર્જક અથવા માલિક."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema પ્રકાર",
+        "description": "આ સંદર્ભ માટે OER Schema ક્લાસ. ડિફૉલ્ટ oer:ReferencedMaterial છે; ફક્ત માન્ય OER ક્લાસ (દા.ત. oer:SupportingMaterial) વડે જ બદલો."
+      }
+    ]
+  }
+}

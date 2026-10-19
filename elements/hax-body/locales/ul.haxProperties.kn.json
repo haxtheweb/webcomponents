@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "ಬುಲೆಟ್ ಪಟ್ಟಿ",
+    "description": "ಬುಲೆಟ್ ಪಟ್ಟಿ ರಚಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "ಬುಲೆಟ್ ಶೈಲಿ",
+        "description": "ಕ್ರಮರಹಿತ ಪಟ್ಟಿಯ ಬುಲೆಟ್‌ಗಳಿಗೆ ಬಳಸುವ ಶೈಲಿ.",
+        "options": {
+          "": "ಡೀಫಾಲ್ಟ್ (ಚೌಕ)",
+          "list-disc": "ಡಿಸ್ಕ್",
+          "list-circle": "ವೃತ್ತ",
+          "list-square": "ಚೌಕ"
+        }
+      }
+    ]
+  }
+}

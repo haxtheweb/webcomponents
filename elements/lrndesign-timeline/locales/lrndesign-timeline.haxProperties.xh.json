@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Umgca wexesha",
+    "description": "Umgca wexesha weziganeko onemifanekiso nombhalo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Isihloko somgca wexesha",
+        "description": "Isihloko somgca wexesha."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala ogqamisayo okhethwayo."
+      },
+      {
+        "property": "dark",
+        "title": "Umxholo oMnyama",
+        "description": "Vula uMxholo oMnyama"
+      },
+      {
+        "slot": "",
+        "title": "Inkcazo yoMgca weXesha",
+        "description": "Umbhalo ongenyanzelekanga ochaza umgca wexesha."
+      },
+      {
+        "property": "events",
+        "title": "Iziganeko zoMgca weXesha",
+        "description": "Iziganeko kumgca wexesha"
+      }
+    ]
+  }
+}

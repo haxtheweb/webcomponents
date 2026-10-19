@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Kaynakça öğesi",
+    "description": "Kaynakçada tek bir alıntıyı temsil eden, birden çok biçimi ve dışa aktarma seçeneğini destekleyen öğe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tür",
+        "description": "Alıntı türü",
+        "options": {
+          "web": "Web",
+          "journal": "Dergi",
+          "book": "Kitap"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Öğenin başlığı"
+      },
+      {
+        "property": "authors",
+        "title": "Yazar(lar)",
+        "description": "Zaman çizelgesindeki olaylar"
+      },
+      {
+        "property": "publisher",
+        "title": "Yayıncı",
+        "description": "Orijinal web sitesi"
+      }
+    ]
+  }
+}

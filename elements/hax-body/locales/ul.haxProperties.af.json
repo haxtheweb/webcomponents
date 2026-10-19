@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Kolpuntlys",
+    "description": "Skep 'n kolpuntlys."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Kolpuntstyl",
+        "description": "Styl wat vir kolpunte van ongeordende lyste gebruik word.",
+        "options": {
+          "": "Verstek (vierkant)",
+          "list-disc": "Skyf",
+          "list-circle": "Sirkel",
+          "list-square": "Vierkant"
+        }
+      }
+    ]
+  }
+}

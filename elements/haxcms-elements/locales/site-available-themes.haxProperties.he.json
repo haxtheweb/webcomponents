@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "ערכות נושא זמינות",
+    "description": "הצגת ערכות הנושא הזמינות של HAXcms עם החלפה בתצוגה מקדימה חיה"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "מצב תצוגה",
+        "description": "בחרו כיצד להציג את ערכות הנושא",
+        "options": {
+          "gallery": "גלריה",
+          "table": "טבלה"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "הצגת פרטים",
+        "description": "הצגת תיאורי ערכות הנושא ומידע נוסף"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "הצגת ערכות נושא נסתרות וישנות",
+        "description": "הצגת ערכות נושא נסתרות, ישנות ואיומות בנוסף לברירות המחדל של לוח הבקרה"
+      },
+      {
+        "property": "columns",
+        "title": "עמודות (גלריה)",
+        "description": "מספר העמודות בתצוגת הגלריה"
+      }
+    ]
+  }
+}

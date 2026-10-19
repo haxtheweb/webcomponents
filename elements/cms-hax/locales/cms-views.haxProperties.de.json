@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-Ansicht",
+    "description": "Im Backend gerenderte CMS-Ansichten"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Name",
+        "description": "Name der Ansicht aus unserem CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Anzeige",
+        "description": "Anzeige innerhalb dieser Ansicht aus unserem CMS"
+      }
+    ]
+  }
+}

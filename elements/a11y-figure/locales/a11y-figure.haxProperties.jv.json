@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Gambar Deskriptif",
+    "description": "Gambar sing bisa diakses kanthi katrangan dawa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Gambar"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Teks Alt"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Katrangan Gambar",
+        "description": "Teks katrangan gambar sing tansah katon."
+      },
+      {
+        "slot": "details",
+        "title": "Katrangan",
+        "description": "Katrangan gambar rinci sing bisa didhelikake utawa ditampilake"
+      },
+      {
+        "slot": "summary",
+        "title": "Tombol Katrangan",
+        "description": "Gawan kanggo tombol sing nampilake/ndhelikake teks katrangan, conto: \"info\", \"metadata\", lsp."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Teks ringkesan opsional nalika rincian dibukak"
+      },
+      {
+        "property": "closeText",
+        "title": "Teks ringkesan opsional nalika rincian ditutup"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Inel de progres",
+    "description": "Inel de progres"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul elementului"
+      },
+      {
+        "property": "desc",
+        "title": "Descriere",
+        "description": "Descriere lungă accesibilă"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Sursa imaginii",
+        "description": "Sursa imaginii din interiorul inelului."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Text alternativ al imaginii",
+        "description": "Text alternativ pentru imagine."
+      },
+      {
+        "property": "animated",
+        "title": "Animat",
+        "description": "Dacă progresul este animat la prima încărcare"
+      },
+      {
+        "property": "complete",
+        "title": "Finalizat",
+        "description": "Un tablou de valori finalizate."
+      },
+      {
+        "property": "total",
+        "title": "Total",
+        "description": "Totalul când toate elementele sunt finalizate."
+      },
+      {
+        "property": "startAngle",
+        "title": "Unghi de început",
+        "description": "Unghiul inelului de la care începe progresul"
+      }
+    ]
+  }
+}

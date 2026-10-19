@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Tampilan Situs",
+    "description": "Blok dinamis sing nggoleki lan nampilake data situs adhedhasar kritéria"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tampilan",
+        "description": "Parameter query kanggo feed data tampilan. Sampeyan bisa entuk iki saka dashboard Views."
+      },
+      {
+        "property": "renderer",
+        "title": "Mode tampilan",
+        "description": "Carane asil tampilan kudu dirender"
+      },
+      {
+        "property": "entity",
+        "title": "Jinis entitas",
+        "description": "Jinis entitas sing dienggo kanggo ngurai tanggapan",
+        "options": {
+          "": "Gawan (item)",
+          "item": "Item",
+          "page": "Kaca",
+          "file": "Berkas",
+          "tag": "Tag",
+          "block": "Blok",
+          "view": "Tampilan",
+          "theme": "Tema",
+          "region": "Wilayah",
+          "customElement": "Elemen Khusus"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Pedhot tampilan situs",
+        "description": "Owahi dadi isi statis kanggo disunting langsung; mandhegake nganyari otomatis saka sumber."
+      }
+    ]
+  }
+}

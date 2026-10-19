@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Wideo",
+    "description": "Dostępne odtwarzanie wideo z wielu źródeł."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Źródło",
+        "description": "URL tych multimediów."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Tytuł",
+        "description": "Tytuł wyświetlany pod wideo."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Obraz plakatu",
+        "description": "URL obrazu plakatu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Ścieżki tekstowe",
+        "description": "Napisy, napisy dla niesłyszących, opisy i inne ścieżki tekstowe wideo."
+      },
+      {
+        "property": "startTime",
+        "title": "Czas rozpoczęcia",
+        "description": "Rozpocznij wideo w określonym momencie (sekundy)."
+      },
+      {
+        "property": "endTime",
+        "title": "Czas zakończenia",
+        "description": "Zakończ wideo w określonym momencie (sekundy); wymaga czasu rozpoczęcia."
+      },
+      {
+        "property": "learningMode",
+        "title": "Włącz tryb nauki",
+        "description": "Wyłącza przewijanie do przodu i do tyłu."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Usuń przycisk otwierania w YouTube",
+        "description": "Usuwa przycisk otwierania wideo w YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Dołączyć link do udostępniania?",
+        "description": "Udostępnia link do wideo."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ukryj znaczniki czasu",
+        "description": "Ukryj znaczniki czasu w transkrypcji."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ukryj transkrypcję",
+        "description": "Domyślnie ukryj transkrypcję."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Ścieżka audiodeskrypcji",
+        "description": "URL ścieżki audiodeskrypcji (plik MP3), która opisuje słownie elementy wizualne."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Określa, czy używać CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Zezwól na odtwarzanie w tle",
+        "description": "Kontynuuj odtwarzanie, gdy karta przeglądarki straci fokus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Ciemny motyw transkrypcji",
+        "description": "Włącz ciemny motyw transkrypcji."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Wyłącz interaktywność",
+        "description": "Wyłącz tryb interaktywny, w którym transkrypcję można klikać."
+      },
+      {
+        "property": "lang",
+        "title": "Język",
+        "description": "Język multimediów."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "(przestarzałe) Wybierz kolor akcentu odtwarzacza."
+      }
+    ]
+  }
+}

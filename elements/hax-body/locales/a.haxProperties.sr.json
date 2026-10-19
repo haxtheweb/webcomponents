@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Основна веза",
+    "description": "Основни елемент везе."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Веза",
+        "description": "Одредишни URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Видљиви текст везе."
+      },
+      {
+        "attribute": "target",
+        "title": "Циљ",
+        "description": "Где отворити везу.",
+        "options": {
+          "": "Исти прозор",
+          "_blank": "Нови прозор - _blank",
+          "_top": "Највиши прозор - _top",
+          "_parent": "Родитељски прозор - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Текст наслова",
+        "description": "Саветодавни наслов за приступачност и SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Однос према одредишту (безбедност/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

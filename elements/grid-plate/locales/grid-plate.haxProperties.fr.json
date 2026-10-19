@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Mise en page en colonnes",
+    "description": "Disposer le contenu en colonnes simples"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Mise en page en colonnes",
+        "description": "Style de présentation de ces éléments (peut changer sur les petits écrans)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Désactiver l'adaptation",
+        "description": "Cochez la case pour conserver les colonnes sur les grands écrans tout en les empilant sur les plus petits"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Marge intérieure des éléments",
+        "description": "Marge intérieure de chaque élément"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Marges des éléments",
+        "description": "Marge entre les éléments"
+      }
+    ]
+  }
+}

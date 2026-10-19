@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Fi àkóónú wẹ́ẹ̀bù òde sínú."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Orísun",
+        "description": "URL fún ohun èlò yìí."
+      }
+    ]
+  }
+}

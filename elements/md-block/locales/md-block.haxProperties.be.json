@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Блок змесціва markdown, уведзенага непасрэдна або загружанага аддалена"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Зыходны markdown"
+      },
+      {
+        "property": "source",
+        "title": "Крыніца",
+        "description": "Зыходны файл markdown"
+      }
+    ]
+  }
+}

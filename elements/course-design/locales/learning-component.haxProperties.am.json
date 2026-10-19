@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "የመማሪያ አካል",
+    "description": "አስተማሪዎች የማስተማር ዘዴን እና የትምህርት ስልቶችን እንዲያስተላልፉ የሚያስችል ካርድ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "ዓይነት",
+        "description": "ጥቅም ላይ የሚውለው የካርድ ዓይነት።"
+      },
+      {
+        "property": "subtitle",
+        "title": "ንዑስ ርዕስ",
+        "description": "የካርዱ ንዑስ ርዕስ።"
+      },
+      {
+        "property": "url",
+        "title": "አገናኝ",
+        "description": "ለካርዱ አማራጭ አገናኝ (አገናኝ ለመማር ዓላማዎች አይገኝም)።"
+      },
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "ርዕስ ያዘጋጁ፤ ይህ በዓይነት ላይ የተመሠረተውን ርዕስ ይሽራል"
+      },
+      {
+        "property": "icon",
+        "title": "አዶ",
+        "description": "አዶ ያዘጋጁ፤ ይህ በዓይነት ላይ የተመሠረተውን አዶ ይሽራል"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "የአጽንዖት ቀለም ያዘጋጁ፤ ይህ በዓይነት ላይ የተመሠረተውን ቀለም ይሽራል"
+      },
+      {
+        "slot": "",
+        "title": "ማውጫ"
+      }
+    ]
+  }
+}

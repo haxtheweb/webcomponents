@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kaynak",
+    "description": "Üç sunum modu olan kaynakça öğesi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Alıntılanan eserin başlığı."
+      },
+      {
+        "property": "source",
+        "title": "Kaynak bağlantısı",
+        "description": "Alıntılanan eserin kaynak URL'si."
+      },
+      {
+        "property": "date",
+        "title": "Erişim tarihi",
+        "description": "Kaynağa erişilen tarih."
+      },
+      {
+        "property": "scope",
+        "title": "Kapsam",
+        "description": "Alıntılanacak öğe kapsamı.",
+        "options": {
+          "sibling": "Kardeş öğe",
+          "parent": "Üst öğe"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lisans",
+        "description": "Alıntılanan eserin lisansı."
+      },
+      {
+        "property": "creator",
+        "title": "Oluşturan",
+        "description": "Alıntılanan eserin oluşturucusu veya sahibi."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Şeması türü",
+        "description": "Bu kaynakça için OER Şeması sınıfı. Varsayılan olarak oer:ReferencedMaterial kullanılır; yalnızca geçerli bir OER sınıfıyla geçersiz kılın (ör. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

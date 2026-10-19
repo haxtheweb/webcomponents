@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html بلاک",
+    "description": "HAXschema جوڑ دین والا مُڈھلا HTML بلاک"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "مواد وچ وکھاؤن والا HTML کوڈ"
+      }
+    ]
+  }
+}

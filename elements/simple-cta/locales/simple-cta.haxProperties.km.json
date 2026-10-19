@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ការអំពាវនាវឱ្យធ្វើសកម្មភាព",
+    "description": "ប៊ូតុងសាមញ្ញជាមួយតំណដើម្បីធ្វើសកម្មភាព។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ស្លាក",
+        "description": "ស្លាកតំណ"
+      },
+      {
+        "property": "link",
+        "title": "តំណ",
+        "description": "បញ្ចូលតំណទៅធនធានណាមួយ"
+      },
+      {
+        "property": "hideIcon",
+        "title": "លាក់រូបតំណាង",
+        "description": "លាក់រូបតំណាងដែលប្រើដើម្បីសង្កត់អត្ថបទ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "រូបតំណាង",
+        "description": "រូបតំណាងតំណសកម្មភាព"
+      }
+    ]
+  }
+}

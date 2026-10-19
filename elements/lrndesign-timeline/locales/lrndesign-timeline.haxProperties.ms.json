@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Garis masa",
+    "description": "Garis masa peristiwa dengan imej dan teks"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Tajuk garis masa",
+        "description": "Tajuk untuk garis masa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen pilihan."
+      },
+      {
+        "property": "dark",
+        "title": "Tema Gelap",
+        "description": "Dayakan Tema Gelap"
+      },
+      {
+        "slot": "",
+        "title": "Perihalan Garis Masa",
+        "description": "Teks pilihan yang menerangkan garis masa."
+      },
+      {
+        "property": "events",
+        "title": "Peristiwa Garis Masa",
+        "description": "Peristiwa dalam garis masa"
+      }
+    ]
+  }
+}

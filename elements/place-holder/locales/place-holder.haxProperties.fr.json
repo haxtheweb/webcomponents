@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Espace réservé",
+    "description": "Un espace réservé qui peut être converti dans le type de média sélectionné"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Type",
+        "description": "Type de gadget accepté en remplacement.",
+        "options": {
+          "text": "Texte / contenu",
+          "document": "Document / fichier",
+          "audio": "Audio",
+          "video": "Vidéo",
+          "image": "Image",
+          "math": "Mathématiques"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Texte",
+        "description": "Précisez plus en détail l'espace réservé souhaité"
+      }
+    ]
+  }
+}

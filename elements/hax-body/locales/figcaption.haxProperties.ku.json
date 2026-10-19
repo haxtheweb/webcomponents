@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Binnivîsa wêneyê",
+    "description": "Binnivîs ji bo figureyekê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Binnivîs",
+        "description": "Nivîsa ku li binê figureyê tê nîşandan."
+      }
+    ]
+  }
+}

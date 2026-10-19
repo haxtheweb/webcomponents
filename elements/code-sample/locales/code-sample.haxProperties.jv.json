@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Conto kode",
+    "description": "Conto kode sing disorot ing kaca"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Panyorotan kode",
+        "description": "Panyorotan sintaksis sing ditrapake ing area kode",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Data JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Tombol salin menyang clipboard",
+        "description": "tombol ing sisih tengen ndhuwur sing muni salin menyang clipboard"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Wiwitan sorotan",
+        "description": "Nomer baris kanggo miwiti nyorot"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Pungkasan sorotan",
+        "description": "Baris kanggo mungkasi nyorot"
+      }
+    ]
+  }
+}

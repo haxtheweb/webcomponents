@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hōʻike mua Github",
+    "description": "Kiʻi hiki ke komo ʻia me ka wehewehe lōʻihi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Hui",
+        "description": "Inoa mīkini o ka hui Github"
+      },
+      {
+        "property": "repo",
+        "title": "Waihona",
+        "description": "Inoa mīkini o ka waihona"
+      },
+      {
+        "property": "extended",
+        "title": "Hiʻohiʻona hoʻonui ʻia",
+        "description": "Hoʻokomo i ka readme i loko o ka mea"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mkpirisi",
+    "description": "Mkpirisi nwere ndụmọdụ okwu zuru ezu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Ederede",
+        "description": "Ederede mkpirisi a na-ahụ anya."
+      },
+      {
+        "attribute": "title",
+        "title": "Okwu",
+        "description": "Okwu zuru ezu egosiri mgbe a gafere n'elu."
+      }
+    ]
+  }
+}

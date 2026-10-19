@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Einfacht Bild",
+    "description": "Einfacht Bildelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Quell",
+        "description": "Bild-URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alternativtext",
+        "description": "Alternativtext fir Accessibilitéit an SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Héicht",
+        "description": "Héicht a Pixel. Eidel loosse fir déi natierlech Gréisst ze benotzen."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Lueden vum Bild",
+        "description": "Wielt, wéini d'Bild gelueden gëtt.",
+        "options": {
+          "lazy": "Lueden, wann et siichtbar ass",
+          "auto": "Automatesch"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responsiv Quellen (srcset)",
+        "description": "Bild-URLen an Deskriptoren (z. B. 480w oder 2x) opzielen, sou datt de Browser déi bescht Gréisst fir den Ecran auswielt. Gëtt als Standard-srcset-Attribut gespäichert."
+      }
+    ]
+  }
+}

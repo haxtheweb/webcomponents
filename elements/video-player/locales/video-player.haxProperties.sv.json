@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Tillgänglig videouppspelning från flera källor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Källa",
+        "description": "URL för det här mediet."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titel",
+        "description": "Titel som visas under videon."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Affischbild",
+        "description": "URL till affischbild."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Textspår",
+        "description": "Undertexter för hörselskadade, översättningstexter, beskrivningar och andra textspår för videon."
+      },
+      {
+        "property": "startTime",
+        "title": "Starttid",
+        "description": "Starta videon vid en specifik tidpunkt (sekunder)."
+      },
+      {
+        "property": "endTime",
+        "title": "Sluttid",
+        "description": "Avsluta videon vid en specifik tidpunkt (sekunder), kräver en starttid."
+      },
+      {
+        "property": "learningMode",
+        "title": "Aktivera inlärningsläge",
+        "description": "Inaktiverar snabbspolning framåt och bakåt."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Ta bort knappen Öppna på YouTube",
+        "description": "Tar bort knappen för att öppna videon på YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Inkludera en delningslänk?",
+        "description": "Ger en länk för att dela videon."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Dölj tidsstämplar",
+        "description": "Dölj tidsstämplarna i transkriptionen."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Dölj transkription",
+        "description": "Dölj transkriptionen som standard."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Syntolkningsspår",
+        "description": "URL till ett syntolkningsspår (MP3-fil) som berättar om visuella element."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Anger om CORS ska användas.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Tillåt uppspelning i bakgrunden",
+        "description": "Fortsätt spela när webbläsarfliken tappar fokus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Mörkt tema för transkription",
+        "description": "Aktivera mörkt tema för transkriptionen."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Inaktivera interaktivitet",
+        "description": "Inaktivera interaktivt läge som gör transkriptionen klickbar."
+      },
+      {
+        "property": "lang",
+        "title": "Språk",
+        "description": "Mediets språk."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "(föråldrad) Välj spelarens accentfärg."
+      }
+    ]
+  }
+}

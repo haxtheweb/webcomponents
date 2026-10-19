@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "परवाना",
+    "description": "तुमच्या कार्यासाठी परवाना द्या."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "संदर्भित कार्याचे शीर्षक."
+      },
+      {
+        "property": "source",
+        "title": "स्रोत लिंक",
+        "description": "परवानाकृत कार्याची स्रोत URL."
+      },
+      {
+        "property": "license",
+        "title": "परवाना",
+        "description": "या कार्यावर लागू केलेला परवाना."
+      },
+      {
+        "property": "creator",
+        "title": "निर्माता",
+        "description": "या कार्याचा निर्माता किंवा मालक."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "स्रोत लिंक",
+        "description": "अतिरिक्त परवाना तपशीलांची लिंक."
+      },
+      {
+        "property": "moreLabel",
+        "title": "अधिक लेबल",
+        "description": "अतिरिक्त परवाना तपशीलांसाठी लेबल."
+      }
+    ]
+  }
+}

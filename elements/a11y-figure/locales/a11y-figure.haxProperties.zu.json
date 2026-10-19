@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Isithombe Esichazayo",
+    "description": "Isithombe esifinyelelekayo esinencazelo ende"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Isithombe"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Umbhalo Ongenye"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Incazelo Yesithombe",
+        "description": "Umbhalo wencazelo yesithombe ohlala ubonakala."
+      },
+      {
+        "slot": "details",
+        "title": "Incazelo",
+        "description": "Incazelo enemininingwane yesithombe engafihlwa noma iboniswe"
+      },
+      {
+        "slot": "summary",
+        "title": "Inkinobho Yencazelo",
+        "description": "Okuzenzakalelayo kwenkinobho ebonisa/efihla umbhalo wencazelo, isb. \"ulwazi\", \"imethadatha\", njll."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Umbhalo wesifinyezo ongaphoqelekile uma imininingwane ivuliwe"
+      },
+      {
+        "property": "closeText",
+        "title": "Umbhalo wesifinyezo ongaphoqelekile uma imininingwane ivaliwe"
+      }
+    ]
+  }
+}

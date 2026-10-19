@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P Öğesi",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Metin",
+        "description": "Yan notun içeriği"
+      }
+    ]
+  }
+}

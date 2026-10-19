@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tebhu",
+    "description": "Tebhu imwe chete."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Aikoni yeTebhu"
+      },
+      {
+        "property": "disabled",
+        "title": "Zvakadzimwa"
+      },
+      {
+        "property": "label",
+        "title": "Zita reTebhu"
+      },
+      {
+        "slot": "",
+        "title": "Zvirimo zveTebhu",
+        "description": "Zvirimo zvetebhu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Yakasiyana"
+      },
+      {
+        "property": "flag",
+        "title": "Mavara eMureza Asingamanikidzwe"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Aikoni yeMureza Isingamanikidzwe"
+      }
+    ]
+  }
+}

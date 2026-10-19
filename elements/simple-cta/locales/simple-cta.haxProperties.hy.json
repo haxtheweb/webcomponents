@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Գործողության կոչ",
+    "description": "Պարզ կոճակ՝ գործողության հղումով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Պիտակ",
+        "description": "Հղման պիտակ"
+      },
+      {
+        "property": "link",
+        "title": "Հղում",
+        "description": "Մուտքագրեք ցանկացած ռեսուրսի հղում"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Թաքցնել պատկերակը",
+        "description": "Թաքցնել տեքստը շեշտադրող պատկերակը"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Պատկերակ",
+        "description": "Գործողության հղման պատկերակ"
+      }
+    ]
+  }
+}

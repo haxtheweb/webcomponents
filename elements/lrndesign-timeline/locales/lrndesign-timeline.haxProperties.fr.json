@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Chronologie",
+    "description": "Une frise chronologique d'événements avec images et texte"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Titre de la chronologie",
+        "description": "Un titre pour la frise chronologique."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Une couleur d'accent facultative."
+      },
+      {
+        "property": "dark",
+        "title": "Thème sombre",
+        "description": "Activer le thème sombre"
+      },
+      {
+        "slot": "",
+        "title": "Description de la frise chronologique",
+        "description": "Texte facultatif décrivant la frise chronologique."
+      },
+      {
+        "property": "events",
+        "title": "Événements de la frise chronologique",
+        "description": "Les événements de la frise chronologique"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mallongigo",
+    "description": "Mallongigo kun ŝpruchelpilo de la plena termino."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teksto",
+        "description": "Videbla mallongiga teksto."
+      },
+      {
+        "attribute": "title",
+        "title": "Vorto",
+        "description": "Plena termino montrata ĉe ŝvebado."
+      }
+    ]
+  }
+}

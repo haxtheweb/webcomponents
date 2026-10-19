@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "بنيادي لنڪ",
+    "description": "بنيادي لنڪ عنصر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "لنڪ",
+        "description": "منزل جو URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "ظاهر ٿيندڙ لنڪ متن."
+      },
+      {
+        "attribute": "target",
+        "title": "ٽارگيٽ",
+        "description": "لنڪ ڪٿي کولڻي آهي.",
+        "options": {
+          "": "ساڳي ونڊو",
+          "_blank": "نئين ونڊو - _blank",
+          "_top": "مٿين ونڊو - _top",
+          "_parent": "پيرنٽ ونڊو - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "عنوان جو متن",
+        "description": "رسائي ۽ SEO لاءِ صلاحي عنوان."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "منزل سان تعلق (حفاظت/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

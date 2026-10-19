@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Pestaña",
+    "description": "Una sola pestaña."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icono de la pestaña"
+      },
+      {
+        "property": "disabled",
+        "title": "Desactivado"
+      },
+      {
+        "property": "label",
+        "title": "Etiqueta de la pestaña"
+      },
+      {
+        "slot": "",
+        "title": "Contenido de la pestaña",
+        "description": "El contenido de la pestaña."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID único"
+      },
+      {
+        "property": "flag",
+        "title": "Texto de indicador opcional"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Icono de indicador opcional"
+      }
+    ]
+  }
+}

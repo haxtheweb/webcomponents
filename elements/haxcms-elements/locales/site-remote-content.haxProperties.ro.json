@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Conținut la distanță",
+    "description": "Reutilizează conținut dintr-un site în altul."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Adresa site-ului",
+        "description": "Lipește adresa de la care se preia conținutul, dacă nu este site-ul curent"
+      },
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Elementul de afișat pentru datele linkului / titlului"
+      },
+      {
+        "property": "breakreference",
+        "title": "Rupe referința",
+        "description": "Bifarea acestei casete copiază conținutul la distanță pentru editare locală, dar elimină asocierea. Nu va mai primi actualizări când materialul de referință se actualizează."
+      },
+      {
+        "property": "showTitle",
+        "title": "Arată titlul",
+        "description": "Activează pentru a afișa titlul resursei prezentate"
+      }
+    ]
+  }
+}

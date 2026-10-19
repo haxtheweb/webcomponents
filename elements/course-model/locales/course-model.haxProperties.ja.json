@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "コースモデル",
+    "description": "詳細、アニメーション、理解度チェックを備えた、コースの概念を示すインタラクティブなレイアウト。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "タイトル"
+      },
+      {
+        "property": "src",
+        "title": "ソース"
+      },
+      {
+        "property": "alt",
+        "title": "代替テキスト"
+      },
+      {
+        "title": "情報エリア"
+      },
+      {
+        "title": "詳細エリア"
+      },
+      {
+        "title": "アニメーションエリア"
+      },
+      {
+        "title": "理解度チェックエリア"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "ロゴエリア"
+      }
+    ]
+  }
+}

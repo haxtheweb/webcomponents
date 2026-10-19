@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ٹائم لائن",
+    "description": "تصویراں تے متن نال واقعیاں دی ٹائم لائن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "ٹائم لائن دا سرناواں",
+        "description": "ٹائم لائن لئی سرناواں۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "اختیاری نمایاں رنگ۔"
+      },
+      {
+        "property": "dark",
+        "title": "گوڑھا تھیم",
+        "description": "ڈارک تھیم چالو کرو"
+      },
+      {
+        "slot": "",
+        "title": "ٹائم لائن دی تفصیل",
+        "description": "ٹائم لائن بیان کرن والا اختیاری متن۔"
+      },
+      {
+        "property": "events",
+        "title": "ٹائم لائن دے واقعے",
+        "description": "ٹائم لائن دے واقعے"
+      }
+    ]
+  }
+}

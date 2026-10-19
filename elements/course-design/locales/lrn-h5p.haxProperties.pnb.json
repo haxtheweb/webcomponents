@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P عنصر",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "متن",
+        "description": "حاشیے دے نوٹ دا مواد"
+      }
+    ]
+  }
+}

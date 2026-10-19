@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "타임라인",
+    "description": "이미지와 텍스트가 포함된 사건 타임라인"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "타임라인 제목",
+        "description": "타임라인의 제목."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "선택적 강조 색상입니다."
+      },
+      {
+        "property": "dark",
+        "title": "어두운 테마",
+        "description": "다크 테마 사용"
+      },
+      {
+        "slot": "",
+        "title": "타임라인 설명",
+        "description": "타임라인을 설명하는 선택적 텍스트."
+      },
+      {
+        "property": "events",
+        "title": "타임라인 이벤트",
+        "description": "타임라인의 이벤트"
+      }
+    ]
+  }
+}

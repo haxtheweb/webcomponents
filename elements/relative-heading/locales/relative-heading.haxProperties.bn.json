@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "আপেক্ষিক হেডিং",
+    "description": "প্যারেন্টের হেডিংয়ের ভিত্তিতে সঠিক হেডিং স্তরক্রম তৈরি করে"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "প্যারেন্ট হেডিংয়ের রিসোর্স ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "লিংক বাটন ফিচার বন্ধ করে।"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "লিংক কপি বাটনকে হেডিংয়ের একেবারে ডানে সারিবদ্ধ করে।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "প্যারেন্ট পাওয়া না গেলে হেডিং স্তর।"
+      },
+      {
+        "property": "copyMessage",
+        "description": "লিংক কপির টোস্ট বার্তার ডিফল্ট টেক্সট প্রতিস্থাপন করে।"
+      },
+      {
+        "property": "linkLabel",
+        "description": "লিংক কপি বাটনের ডিফল্ট লেবেল প্রতিস্থাপন করে।"
+      },
+      {
+        "property": "linkIcon",
+        "description": "লিংক কপি বাটনের ডিফল্ট আইকন প্রতিস্থাপন করে।"
+      },
+      {
+        "property": "closeLabel",
+        "description": "লিংক কপির টোস্টের বন্ধ বাটনের ডিফল্ট লেবেল প্রতিস্থাপন করে।"
+      },
+      {
+        "property": "closeIcon",
+        "description": "লিংক কপির টোস্টের বন্ধ বাটনের ডিফল্ট আইকন প্রতিস্থাপন করে।"
+      }
+    ]
+  }
+}

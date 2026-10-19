@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Rhestr wedi'i rhifo",
+    "description": "Creu rhestr wedi'i rhifo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Arddull rhifau",
+        "description": "Arddull a ddefnyddir ar gyfer rhifo rhestr drefnedig.",
+        "options": {
+          "": "Diofyn (degol)",
+          "list-decimal-leading-zero": "Degol gyda sero arweiniol (01, 02, 03)",
+          "list-lower-alpha": "Llythrennau bach (a, b, c)",
+          "list-upper-alpha": "Priflythrennau (A, B, C)",
+          "list-lower-roman": "Rhufeinig bach (i, ii, iii)",
+          "list-upper-roman": "Rhufeinig mawr (I, II, III)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Thực thể CMS",
+    "description": "Thực thể CMS được hiển thị từ phía máy chủ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Loại",
+        "description": "loại từ CMS của chúng tôi",
+        "options": {
+          "node": "Node",
+          "user": "Người dùng",
+          "file": "Tệp"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id từ CMS của chúng tôi"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Chế độ hiển thị",
+        "description": "chế độ hiển thị từ CMS của chúng tôi"
+      }
+    ]
+  }
+}

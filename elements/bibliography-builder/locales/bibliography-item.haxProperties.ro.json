@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Element de bibliografie",
+    "description": "Element care reprezintă o singură citare într-o bibliografie, cu suport pentru mai multe formate și opțiuni de export."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tip",
+        "description": "Tipul citării",
+        "options": {
+          "web": "Web",
+          "journal": "Revistă",
+          "book": "Carte"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul elementului"
+      },
+      {
+        "property": "authors",
+        "title": "Autor(i)",
+        "description": "Evenimentele din cronologie"
+      },
+      {
+        "property": "publisher",
+        "title": "Editor",
+        "description": "Site-ul web original"
+      }
+    ]
+  }
+}

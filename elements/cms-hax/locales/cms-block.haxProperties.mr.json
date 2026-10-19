@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ब्लॉक",
+    "description": "बॅकएंडवर प्रस्तुत केलेला CMS ब्लॉक"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "मॉड्यूल",
+        "description": "आमच्या CMS मधून लोड करायचे मॉड्यूल"
+      },
+      {
+        "property": "blockDelta",
+        "title": "डेल्टा",
+        "description": "आमच्या CMS मधून लोड करायच्या ब्लॉकचा डेल्टा"
+      }
+    ]
+  }
+}

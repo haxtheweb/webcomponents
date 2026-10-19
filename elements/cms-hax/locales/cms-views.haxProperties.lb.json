@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-Usiicht",
+    "description": "CMS-Usiichten, déi am Backend gerendert ginn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Numm",
+        "description": "Numm vun der Usiicht aus eisem CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Usiicht",
+        "description": "Display bannent där Usiicht aus eisem CMS"
+      }
+    ]
+  }
+}

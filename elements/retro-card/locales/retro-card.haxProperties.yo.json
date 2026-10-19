@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Káàdì àtijọ́",
+    "description": "Káàdì rírọrùn pẹ̀lú ìṣètò ti àtijọ́."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé pàtàkì káàdì."
+      },
+      {
+        "property": "url",
+        "description": "URL láti ṣí nígbà tí a bá tẹ káàdì."
+      },
+      {
+        "property": "subtitle",
+        "title": "Àkọlé-kékeré",
+        "description": "Àkọlé-kékeré káàdì."
+      },
+      {
+        "property": "tags",
+        "title": "Tágì",
+        "description": "Àwọn àmì-ọ̀rọ̀ tí a fi kọ́mà yà sọ́tọ̀."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Orísun mídíà",
+        "description": "Orísun mídíà àkọ́kọ́."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Orísun nígbà rírábàbà",
+        "description": "Orísun mídíà tí a fi hàn nígbà tí a bá rábàbà lé káàdì tàbí tí a bá tàn án."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ àfikún tí a lò jákèjádò káàdì."
+      },
+      {
+        "property": "dark",
+        "title": "Dúdú",
+        "description": "Lo àwọn àwọ̀ ìpìlẹ̀ ipò dúdú."
+      }
+    ]
+  }
+}

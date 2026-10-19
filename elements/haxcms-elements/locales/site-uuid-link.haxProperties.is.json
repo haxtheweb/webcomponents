@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX-tengill",
+    "description": "Tengill á tiltekið tilfang á vefnum sem þú ert að vinna í."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Atriði",
+        "description": "Atriði sem birta á fyrir tengilinn / titilgögnin"
+      }
+    ]
+  }
+}

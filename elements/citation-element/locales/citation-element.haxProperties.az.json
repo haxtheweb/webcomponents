@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "İstinad",
+    "description": "Üç təqdimat rejimi olan istinad elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "İstinad edilən əsərin başlığı."
+      },
+      {
+        "property": "source",
+        "title": "Mənbə keçidi",
+        "description": "İstinad edilən əsərin mənbə URL-i."
+      },
+      {
+        "property": "date",
+        "title": "Müraciət tarixi",
+        "description": "Mənbəyə müraciət edildiyi tarix."
+      },
+      {
+        "property": "scope",
+        "title": "Əhatə",
+        "description": "İstinad ediləcək elementin əhatəsi.",
+        "options": {
+          "sibling": "Qonşu element",
+          "parent": "Üst element"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lisenziya",
+        "description": "İstinad edilən əsərin lisenziyası."
+      },
+      {
+        "property": "creator",
+        "title": "Yaradıcı",
+        "description": "İstinad edilən əsərin yaradıcısı və ya sahibi."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema növü",
+        "description": "Bu istinad üçün OER Schema sinfi. Standart olaraq oer:ReferencedMaterial; yalnız etibarlı OER sinfi ilə əvəz edin (məs. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

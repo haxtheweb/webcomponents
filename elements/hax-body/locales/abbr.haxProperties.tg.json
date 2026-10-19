@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ихтисора",
+    "description": "Ихтисора бо маслиҳати истилоҳи пурра."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Матн",
+        "description": "Матни намоёни ихтисора."
+      },
+      {
+        "attribute": "title",
+        "title": "Калима",
+        "description": "Истилоҳи пурра, ки ҳангоми овардани курсор нишон дода мешавад."
+      }
+    ]
+  }
+}

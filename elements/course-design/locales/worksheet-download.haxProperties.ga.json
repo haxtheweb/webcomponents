@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Íoslódáil Bileog Oibre",
+    "description": "Cnaipe chun comhaid atá ar fáil le híoslódáil a thaispeáint."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Teideal na híoslódála."
+      },
+      {
+        "property": "link",
+        "title": "Nasc",
+        "description": "Nasc na híoslódála."
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "بیانیہ شکل",
+    "description": "لمی تفصیل والی پہنچ جوگی شکل"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "تصویر"
+      },
+      {
+        "property": "imgAlt",
+        "title": "متبادل متن"
+      },
+      {
+        "slot": "figcaption",
+        "title": "شکل دا کیپشن",
+        "description": "شکل دا کیپشن متن جیہڑا ہمیشہ نظر آندا اے۔"
+      },
+      {
+        "slot": "details",
+        "title": "تفصیل",
+        "description": "تصویر دی تفصیلی وضاحت جیہڑی لُکائی یا وکھائی جا سکدی اے"
+      },
+      {
+        "slot": "summary",
+        "title": "تفصیل بٹن",
+        "description": "تفصیلی متن وکھاؤن/لُکاؤن والے بٹن لئی ڈیفالٹ، مثلاً \"معلومات\"، \"میٹا ڈیٹا\" وغیرہ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "تفصیل کھلی ہوݨ تے اختیاری خلاصہ متن"
+      },
+      {
+        "property": "closeText",
+        "title": "تفصیل بند ہوݨ تے اختیاری خلاصہ متن"
+      }
+    ]
+  }
+}

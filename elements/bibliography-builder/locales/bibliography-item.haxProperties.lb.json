@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliographie-Element",
+    "description": "Element, dat een eenzegt Zitat an enger Bibliographie duerstellt, mat Ënnerstëtzung fir verschidde Formater an Exportoptiounen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Typ",
+        "description": "Zitattyp",
+        "options": {
+          "web": "Web",
+          "journal": "Zäitschrëft",
+          "book": "Buch"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel vum Element"
+      },
+      {
+        "property": "authors",
+        "title": "Auteur(en)",
+        "description": "D'Evenementer an der Zäitlinn"
+      },
+      {
+        "property": "publisher",
+        "title": "Verlag",
+        "description": "Original-Websäit"
+      }
+    ]
+  }
+}

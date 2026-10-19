@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS اینٹیٹی",
+    "description": "بیک اینڈ پر رینڈر ہونے والی CMS اینٹیٹی"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "قسم",
+        "description": "ہمارے CMS سے قسم",
+        "options": {
+          "node": "نوڈ",
+          "user": "صارف",
+          "file": "فائل"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ہمارے CMS سے id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "ڈسپلے موڈ",
+        "description": "ہمارے CMS سے ڈسپلے موڈ"
+      }
+    ]
+  }
+}

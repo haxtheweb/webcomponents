@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Подобрена слика",
+    "description": "Начин за прикажување слики со различни подобрувања."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Извор",
+        "description": "URL за сликата."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативен текст",
+        "description": "Текст што ја опишува сликата за корисници со оштетен вид."
+      },
+      {
+        "property": "link",
+        "title": "Врска",
+        "description": "Поврзи ја сликата со URL"
+      },
+      {
+        "property": "card",
+        "title": "Картичка",
+        "description": "Примени сенка за да изгледа како подигната картичка."
+      },
+      {
+        "property": "box",
+        "title": "Рамка",
+        "description": "Примени визуелна рамка околу сликата."
+      },
+      {
+        "property": "offset",
+        "title": "Поместување",
+        "description": "Примени лево или десно поместување на сликата.",
+        "options": {
+          "none": "нема",
+          "wide": "широко",
+          "narrow": "тесно"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Навод",
+        "description": "Цитат за сликата."
+      },
+      {
+        "property": "caption",
+        "title": "Опис",
+        "description": "Легенда за сликата."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Наслов на фигурата",
+        "description": "Наслов за ознаката на фигурата."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Опис на фигурата",
+        "description": "Опис за ознаката на фигурата."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Сликичка",
+        "description": "Извор на сликичката. Ја прикажува сликичката, но го отвора целиот извор во модален прозорец."
+      },
+      {
+        "property": "round",
+        "title": "Кружна слика",
+        "description": "Го сечи изгледот на сликата во форма на круг."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Оневозможи модален прозорец за сликата",
+        "description": "Оневозможи кликовите да ја отвораат сликата во дијалог за преглед на слики."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Прикажи како markdown",
+        "description": "Прикажи ги легендата и цитатот како markdown."
+      }
+    ]
+  }
+}

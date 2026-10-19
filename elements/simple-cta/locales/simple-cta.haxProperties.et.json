@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Tegevusele kutsumine",
+    "description": "Lihtne nupp lingiga tegutsemiseks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Silt",
+        "description": "Lingi silt"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Sisesta link mis tahes ressursile"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Peida ikoon",
+        "description": "Peida teksti rõhutamiseks kasutatav ikoon"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Tegevuslingi ikoon"
+      }
+    ]
+  }
+}

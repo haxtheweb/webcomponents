@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Ipa Iṣẹ́",
+    "description": "Ipa kan nínú àjọ kan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Àkọlé"
+      },
+      {
+        "property": "startDate",
+        "title": "Ọjọ́ Ìbẹ̀rẹ̀"
+      },
+      {
+        "property": "endDate",
+        "title": "Ọjọ́ Ìparí (Àṣàyàn)"
+      },
+      {
+        "property": "skills",
+        "title": "Àwọn Ọgbọ́n Tó Jọmọ́",
+        "description": "Yan bọ́tìnnì + láti bẹ̀rẹ̀ sí ní fi àwọn ọgbọ́n kún un"
+      }
+    ]
+  }
+}

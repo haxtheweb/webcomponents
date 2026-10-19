@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Boarne",
+        "description": "URL foar dizze boarne."
+      }
+    ]
+  }
+}

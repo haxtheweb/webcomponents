@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Willekeurige side-ynhâld",
+    "description": "In willekeurich elemint fan it boppeste nivo út in selektearre side toane"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Side",
+        "description": "Selektearje de side wêrút willekeurige ynhâld helle wurdt. It elemint toant willekeurich ien fan de HTML-eleminten fan it boppeste nivo fan dizze side."
+      }
+    ]
+  }
+}

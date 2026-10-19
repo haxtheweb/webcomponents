@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "වචන මාලාව",
+    "description": "වචන මාලා පදය"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "පදය"
+      },
+      {
+        "slot": "",
+        "title": "නිර්වචනය",
+        "description": "පදය ක්ලික් කළ විට පෙන්විය යුතු අර්ථ දැක්වීම."
+      },
+      {
+        "property": "description",
+        "title": "විස්තරය (OER Schema)",
+        "description": "OER Schema: වචන මාලා පදයේ කෙටි විස්තරයක්. හිස්ව තැබුවහොත් අර්ථ දැක්වීමේ පෙළෙන් ස්වයංක්‍රීයව පුරවනු ලැබේ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Suhteellinen otsikko",
+    "description": "tuottaa oikean otsikkohierarkian yläotsikon perusteella"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Yläotsikon resurssitunnus"
+      },
+      {
+        "property": "disableLink",
+        "description": "Poistaa linkkipainikeominaisuuden käytöstä."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Tasaa linkin kopiointipainikkeen otsikon oikeaan reunaan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Otsikkotaso, jos yläotsikkoa ei löydy."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Korvaa linkin kopioinnin ilmoitusviestin oletustekstin."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Korvaa linkin kopiointipainikkeen oletusnimen."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Korvaa linkin kopiointipainikkeen oletuskuvakkeen."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Korvaa linkin kopioinnin ilmoituksen sulkemispainikkeen oletusnimen."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Korvaa linkin kopioinnin ilmoituksen sulkemispainikkeen oletuskuvakkeen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "مجوز",
+    "description": "برای اثر خود مجوز تعیین کنید."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوان اثر مورد استناد."
+      },
+      {
+        "property": "source",
+        "title": "پیوند منبع",
+        "description": "URL منبع اثر دارای مجوز."
+      },
+      {
+        "property": "license",
+        "title": "مجوز",
+        "description": "مجوز اعمال‌شده بر این اثر."
+      },
+      {
+        "property": "creator",
+        "title": "پدیدآورنده",
+        "description": "پدیدآورنده یا مالک این اثر."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "پیوند منبع",
+        "description": "پیوند به جزئیات بیشتر مجوز."
+      },
+      {
+        "property": "moreLabel",
+        "title": "برچسب بیشتر",
+        "description": "برچسب برای جزئیات بیشتر مجوز."
+      }
+    ]
+  }
+}

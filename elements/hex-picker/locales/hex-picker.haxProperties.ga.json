@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Roghnóir Hex",
+    "description": "Roghnóir datha le cód hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Luach",
+        "description": "Luach hex réamhshocraithe"
+      },
+      {
+        "property": "disabled",
+        "title": "Díchumasaithe",
+        "description": "Díchumasaigh an réimse téacs"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Taispeáint Mhór",
+        "description": "Cuir dath san áireamh sa taispeáint mhór"
+      }
+    ]
+  }
+}

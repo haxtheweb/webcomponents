@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematika",
+    "description": "Pekné zobrazenie matematiky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematika",
+        "description": "Zadajte rovnicu ako LaTeX"
+      }
+    ]
+  }
+}

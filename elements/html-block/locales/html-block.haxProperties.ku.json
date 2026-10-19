@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Bloka HTML",
+    "description": "Bloka HTML a bingehîn ku girêdana HAXschema peyda dike"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Koda HTML ku dixwazî di naverokê de pêşkêş bikî"
+      }
+    ]
+  }
+}

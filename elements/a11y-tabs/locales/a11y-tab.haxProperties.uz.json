@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Bitta tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Tab belgisi"
+      },
+      {
+        "property": "disabled",
+        "title": "Oʻchirilgan"
+      },
+      {
+        "property": "label",
+        "title": "Tab yorligʻi"
+      },
+      {
+        "slot": "",
+        "title": "Tab kontenti",
+        "description": "Tab kontenti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Noyob ID"
+      },
+      {
+        "property": "flag",
+        "title": "Ixtiyoriy bayroqcha matni"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Ixtiyoriy bayroqcha belgisi"
+      }
+    ]
+  }
+}

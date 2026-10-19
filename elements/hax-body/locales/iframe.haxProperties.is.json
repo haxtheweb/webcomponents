@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Fella inn ytra vefefni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Uppruni",
+        "description": "URL þessa tilfangs."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "पाठ्यक्रम डिज़ाइन",
+    "description": "शैक्षिक सामग्री और पाठ्यक्रम डिज़ाइन एलिमेंट के लिए कंटेनर।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "पाठ्यक्रम पहचानकर्ता",
+        "description": "OER स्कीमा: पाठ्यक्रम का पहचानकर्ता, जैसे MATH-100।"
+      },
+      {
+        "property": "termOffered",
+        "title": "प्रस्तावित सत्र",
+        "description": "OER स्कीमा: वह सत्र जिसके दौरान पाठ्यक्रम प्रस्तावित है।"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "वितरण फ़ॉर्मेट",
+        "description": "OER स्कीमा: पाठ्यक्रम वितरित करने का फ़ॉर्मेट (जैसे व्यक्तिगत रूप से, ऑनलाइन, हाइब्रिड)।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "प्राथमिक प्रशिक्षक",
+        "description": "OER स्कीमा: पाठ्यक्रम के प्राथमिक प्रशिक्षक।"
+      },
+      {
+        "property": "syllabus",
+        "title": "पाठ्यक्रम विवरण URL",
+        "description": "OER स्कीमा: पाठ्यक्रम विवरण (सिलेबस) का URL।"
+      }
+    ]
+  }
+}

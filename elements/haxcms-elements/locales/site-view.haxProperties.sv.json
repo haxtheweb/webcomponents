@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Webbplatsvy",
+    "description": "Ett dynamiskt block som frågar efter och visar webbplatsdata baserat på kriterier"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Vy-URL",
+        "description": "Frågeparametrar för vyns dataflöde. Du kan hämta dem från vyöversikten."
+      },
+      {
+        "property": "renderer",
+        "title": "Visningsläge",
+        "description": "Hur vyns resultat ska renderas"
+      },
+      {
+        "property": "entity",
+        "title": "Entitetstyp",
+        "description": "Entitetstyp som används för att tolka svaret",
+        "options": {
+          "": "Standard (objekt)",
+          "item": "Objekt",
+          "page": "Sida",
+          "file": "Fil",
+          "tag": "Tagg",
+          "block": "Block",
+          "view": "Vy",
+          "theme": "Tema",
+          "region": "Region",
+          "customElement": "Anpassat element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Bryt upp webbplatsvy",
+        "description": "Konvertera till statiskt innehåll för direkt redigering; slutar uppdateras automatiskt från källan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: pehẽ ra'y",
+    "description": "Pehẽ oku'éva ohechaukáva kuatiarogue ko'ag̃agua ra'y"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Tape oku'éva",
+        "description": "Mba'éichapa oñembopapáta ra'ykuéra ko pehẽ rehe",
+        "options": {
+          "active": "Ra'y hekovéva",
+          "parent": "Túva ra'ykuéra",
+          "ancestor": "Opaite ra'y ypy yvatevévagui"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Ñepyrũ rupa"
+      },
+      {
+        "property": "end",
+        "title": "Paha rupa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Konten Jarak Jauh",
+    "description": "Gunakan ulang konten dari satu situs di situs lain."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Alamat situs",
+        "description": "Tempel alamat untuk mereferensikan konten jika bukan situs saat ini"
+      },
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item yang dirender untuk data tautan / judul"
+      },
+      {
+        "property": "breakreference",
+        "title": "Putuskan referensi",
+        "description": "Mencentang kotak ini menyalin konten jarak jauh untuk diedit secara lokal tetapi menghapus keterkaitannya. Konten tidak akan lagi menerima pembaruan saat materi referensi diperbarui."
+      },
+      {
+        "property": "showTitle",
+        "title": "Tampilkan judul",
+        "description": "Aktifkan untuk menampilkan judul sumber daya yang ditampilkan"
+      }
+    ]
+  }
+}

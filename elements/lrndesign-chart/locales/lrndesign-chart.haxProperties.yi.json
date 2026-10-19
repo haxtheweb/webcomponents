@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "description": "שאַפֿט אַ צוטריטלעכן דיאַגראַם באַזירט אויף אַ CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "אַן אָפּציאָנעלער אַקצענט־קאָליר."
+      },
+      {
+        "property": "dark",
+        "title": "טונקעלע טעמע",
+        "description": "אַקטיוויר די טונקעלע טעמע"
+      },
+      {
+        "property": "dataSource",
+        "title": "CSV טעקע",
+        "description": "לאָד דאַטן פֿון אַ CSV."
+      },
+      {
+        "slot": "heading",
+        "title": "דיאַגראַם־טיטל",
+        "description": "צוטריטלעכער alt־טעקסט פֿאַר דײַן דיאַגראַם."
+      },
+      {
+        "slot": "desc",
+        "title": "דיאַגראַם־באַשרײַבונג",
+        "description": "צוטריטלעכע באַשרײַבונג פֿון דײַן דיאַגראַם."
+      },
+      {
+        "property": "scale",
+        "title": "סקאַלע־נאָמען",
+        "description": "דער פּראָפּאָרץ ברייט:הייך פֿונעם דיאַגראַם (זע https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings פֿאַר $ct-scales און $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "reverseData",
+        "title": "איבערקער די דאַטן",
+        "description": "קער איבער די דאַטן אַרײַנגערעכנט די עטיקעטן, די סדר פֿון די סעריעס ווי אויך די גאַנצע סעריע־דאַטן־מאַסיוון."
+      },
+      {
+        "slot": "",
+        "title": "HTML טאַבעלע",
+        "description": "אָפּציאָנעל: לאָד די דאַטן ווי אַ HTML טאַבעלע."
+      }
+    ]
+  }
+}

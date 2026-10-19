@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ਗ੍ਰੇਡ ਬੁੱਕ",
+    "description": "ਰੂਬਰਿਕਾਂ ਸਮੇਤ ਕਈ ਬੈਕਐਂਡਾਂ ਦਾ ਸਮਰਥਨ ਕਰਨ ਵਾਲੀ ਹੈੱਡਲੈੱਸ ਗ੍ਰੇਡ ਬੁੱਕ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ",
+        "description": "ਡਾਟਾ ਸਰੋਤ ਕਿਸਮ (googledocs, url, json, filesystem)।",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL ਐਂਡਪੁਆਇੰਟ (JSON)",
+          "json": "JSON ਡਾਟਾ ਬਲੌਬ",
+          "filesystem": "ਫ਼ਾਈਲ ਸਿਸਟਮ"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ਸਰੋਤ ਡਾਟਾ",
+        "description": "ਗ੍ਰੇਡ ਬੁੱਕ ਲਈ URL ਜਾਂ JSON ਡਾਟਾ।"
+      },
+      {
+        "property": "forCourse",
+        "title": "ਕੋਰਸ ਹਵਾਲਾ",
+        "description": "ਹਰ ਮੁਲਾਂਕਣ ਸਰੋਤ 'ਤੇ oer:forCourse ਵਜੋਂ ਜਾਰੀ ਕੀਤਾ ਕੋਰਸ ਪਛਾਣਕਰਤਾ।"
+      }
+    ]
+  }
+}

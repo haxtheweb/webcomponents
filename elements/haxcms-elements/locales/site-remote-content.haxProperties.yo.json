@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Àkóónú Láti Ọ̀nà Jíjìn",
+    "description": "Tún lo àkóónú láti ojú òpó kan nínú òmíràn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Àdírẹ́sì ojú òpó",
+        "description": "Lẹ àdírẹ́sì láti tọ́ka sí àkóónú láti ibẹ̀ tí kì í bá ṣe ojú òpó lọ́wọ́lọ́wọ́"
+      },
+      {
+        "property": "uuid",
+        "title": "Ohun kan",
+        "description": "Ohun láti fi hàn fún dátà ìjápọ̀ / àkọlé"
+      },
+      {
+        "property": "breakreference",
+        "title": "Já ìtọ́kasí",
+        "description": "Sísàmì sí àpótí yìí ń ṣẹ̀dà àkóónú láti ọ̀nà jíjìn fún àtúnṣe níbí ṣùgbọ́n ó ń yọ ìsopọ̀ náà kúrò. Kò ní gba ìmúdójúìwọ̀n mọ́ nígbà tí ohun èlò ìtọ́kasí bá yípadà."
+      },
+      {
+        "property": "showTitle",
+        "title": "Fi àkọlé hàn",
+        "description": "Tàn án láti fi àkọlé ohun èlò tí a ń fi hàn hàn"
+      }
+    ]
+  }
+}

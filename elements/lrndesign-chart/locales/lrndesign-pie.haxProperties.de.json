@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Kreisdiagramm",
+    "description": "Erstellt ein barrierefreies Diagramm auf Basis einer CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Akzentfarbe",
+        "description": "Eine optionale Akzentfarbe."
+      },
+      {
+        "title": "Dunkles Design",
+        "description": "Dunkles Theme aktivieren"
+      },
+      {
+        "title": "CSV-Datei",
+        "description": "Daten aus einer CSV laden."
+      },
+      {
+        "title": "Diagrammtitel",
+        "description": "Barrierefreier Alternativtext für dein Diagramm."
+      },
+      {
+        "title": "Diagrammbeschreibung",
+        "description": "Barrierefreie Beschreibung deines Diagramms."
+      },
+      {
+        "title": "Skalenname",
+        "description": "Das Verhältnis Breite:Höhe des Diagramms (siehe https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings für $ct-scales und $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Ring"
+      },
+      {
+        "title": "Beschriftung anzeigen"
+      },
+      {
+        "title": "Startwinkel"
+      },
+      {
+        "title": "Innenabstand"
+      },
+      {
+        "title": "Gesamt",
+        "description": "Optionale Gesamtsumme, die du angeben kannst. Wenn du einen Gesamtwert angibst, muss die Summe der Werte in der Reihe diesem Wert entsprechen, damit ein voller Kreis gezeichnet wird. Mit diesem Parameter kannst du auch nur Teile eines Kreises oder Tachodiagramme zeichnen."
+      },
+      {
+        "title": "Leere Werte ignorieren",
+        "description": "Leere Werte werden ignoriert, um unnötige Segmente und Beschriftungen zu vermeiden."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Daten umkehren",
+        "description": "Daten einschließlich Beschriftungen, Reihenfolge der Reihen sowie der gesamten Datenarrays der Reihen umkehren."
+      },
+      {
+        "title": "HTML-Tabelle",
+        "description": "Optional: Daten als HTML-Tabelle laden."
+      },
+      {
+        "title": "Strichbreite des Rings"
+      },
+      {
+        "title": "Gefüllter Ring",
+        "description": "Ringsegmente als Formen statt als Striche zeichnen."
+      },
+      {
+        "title": "Beschriftungsrichtung",
+        "description": "Ringsegmente als Formen statt als Striche zeichnen.",
+        "options": {
+          "neutral": "neutral",
+          "explode": "nach außen",
+          "implode": "nach innen"
+        }
+      },
+      {
+        "title": "Beschriftungsversatz",
+        "description": "Versatz der Beschriftungsposition gegenüber der Standardposition, die bei halbem Radius liegt. Der Wert kann positiv oder negativ sein. Positive Werte positionieren die Beschriftung weiter vom Mittelpunkt entfernt."
+      },
+      {
+        "title": "Beschriftungsposition",
+        "options": {
+          "inside": "innen",
+          "outside": "außen",
+          "center": "zentriert"
+        }
+      }
+    ]
+  }
+}

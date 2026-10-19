@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Espaço reservado",
+    "description": "Um espaço reservado que pode ser convertido no tipo de mídia selecionado"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipo",
+        "description": "Tipo de gizmo que este aceita para substituição.",
+        "options": {
+          "text": "Texto / conteúdo",
+          "document": "Documento / arquivo",
+          "audio": "Áudio",
+          "video": "Vídeo",
+          "image": "Imagem",
+          "math": "Matemática"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Texto",
+        "description": "Identifique com mais detalhes o espaço reservado desejado"
+      }
+    ]
+  }
+}

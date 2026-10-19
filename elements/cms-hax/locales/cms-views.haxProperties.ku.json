@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Dîtina CMS",
+    "description": "Dîtinên CMS ku li backendê têne nîşandan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Nav",
+        "description": "Navê dîtinê ji CMS a me"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Nîşandan",
+        "description": "Nîşandan di nav wê dîtinê de ji CMS a me"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "ವೃತ್ತಿ ಪಾತ್ರ",
+    "description": "ಸಂಸ್ಥೆಯೊಳಗಿನ ಒಂದು ಪಾತ್ರ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ"
+      },
+      {
+        "property": "startDate",
+        "title": "ಪ್ರಾರಂಭ ದಿನಾಂಕ"
+      },
+      {
+        "property": "endDate",
+        "title": "ಅಂತಿಮ ದಿನಾಂಕ (ಐಚ್ಛಿಕ)"
+      },
+      {
+        "property": "skills",
+        "title": "ಸಂಬಂಧಿತ ಕೌಶಲ್ಯಗಳು",
+        "description": "ಕೌಶಲ್ಯಗಳನ್ನು ಸೇರಿಸಲು + ಬಟನ್ ಆಯ್ಕೆಮಾಡಿ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Forkortelse",
+    "description": "Forkortelse med verktøytips for hele begrepet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Synlig forkortelsestekst."
+      },
+      {
+        "attribute": "title",
+        "title": "Ord",
+        "description": "Hele begrepet som vises ved hover."
+      }
+    ]
+  }
+}

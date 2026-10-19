@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "د وړتیا بیج",
+    "description": "د یو مهارت د ترلاسه کولو د خبرولو لپاره لیدنی بیج."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "د بیج سرلیک",
+        "description": "په بیج ښودل شوی سرلیک."
+      },
+      {
+        "property": "badgeImage",
+        "title": "د بیج انځور",
+        "description": "د بیج لپاره د انځور URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "د بیج جزیات",
+        "description": "د بیج په اړه جزیات."
+      },
+      {
+        "property": "hyperLink",
+        "title": "هایپرلینک",
+        "description": "له بیج سره تړلی لینک."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "د بیج مهارتونه",
+        "description": "په بیج ښودل شوي مهارتونه."
+      },
+      {
+        "property": "skill",
+        "title": "مهارت (OER سکیما)",
+        "description": "OER سکیما: یو زده شوی مهارت چې د دې زده کړې موخې په بشپړولو سره ترلاسه شوی."
+      }
+    ]
+  }
+}

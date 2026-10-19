@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "ຕົວຢ່າງໂຄ້ດ",
+    "description": "ຕົວຢ່າງໂຄ້ດທີ່ໄຮໄລໃນໜ້າ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "ການໄຮໄລໂຄ້ດ",
+        "description": "ການໄຮໄລໄວຍາກອນທີ່ຈະນຳໃຊ້ກັບພື້ນທີ່ໂຄ້ດ",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "ຂໍ້ມູນ JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ປຸ່ມສຳເນົາໄປຄລິບບອດ",
+        "description": "ປຸ່ມຢູ່ມຸມຂວາເທິງທີ່ຂຽນວ່າ ສຳເນົາໄປຄລິບບອດ"
+      },
+      {
+        "property": "highlightStart",
+        "title": "ເລີ່ມໄຮໄລ",
+        "description": "ເລກແຖວທີ່ເລີ່ມໄຮໄລ"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "ສິ້ນສຸດໄຮໄລ",
+        "description": "ແຖວທີ່ສິ້ນສຸດການໄຮໄລ"
+      }
+    ]
+  }
+}

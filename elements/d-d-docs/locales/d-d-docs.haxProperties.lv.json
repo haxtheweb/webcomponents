@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Dizaina sistēmas ieviešana HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Attēlojamā opcija",
+        "options": {
+          "*": "Pilna stila rokasgrāmata"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Храналогія",
+    "description": "Храналогія падзей з выявамі і тэкстам"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Загаловак храналогіі",
+        "description": "Назва для храналогіі."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Неабавязковы акцэнтны колер."
+      },
+      {
+        "property": "dark",
+        "title": "Цёмная тэма",
+        "description": "Уключыць цёмную тэму"
+      },
+      {
+        "slot": "",
+        "title": "Апісанне храналогіі",
+        "description": "Неабавязковы тэкст з апісаннем храналогіі."
+      },
+      {
+        "property": "events",
+        "title": "Падзеі храналогіі",
+        "description": "Падзеі ў храналогіі"
+      }
+    ]
+  }
+}

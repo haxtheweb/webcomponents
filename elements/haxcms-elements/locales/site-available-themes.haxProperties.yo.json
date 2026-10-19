@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Àwọn Àkòrí Tó Wà",
+    "description": "Fi àwọn àkòrí HAXcms tó wà hàn pẹ̀lú yíyí àwòtẹ́lẹ̀ láàyè"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Ipò Ìwò",
+        "description": "Yan bí o ṣe fẹ́ fi àwọn àkòrí hàn",
+        "options": {
+          "gallery": "Àkójọ àwòrán",
+          "table": "Tábìlì"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Fi Àwọn Àlàyé Hàn",
+        "description": "Fi àwọn àpèjúwe àkòrí àti àlàyé míràn hàn"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Fi Àwọn Àkòrí Tí A Fi Pamọ́ àti Ti Àtijọ́ Hàn",
+        "description": "Fi àwọn àkòrí tí a fi pamọ́, ti àtijọ́, àti burúkú hàn pẹ̀lú àwọn àkọ́kọ́ pátákó ìdarí"
+      },
+      {
+        "property": "columns",
+        "title": "Àwọn Òpó (Àkójọ Àwòrán)",
+        "description": "Iye òpó nínú ìwò àkójọ àwòrán"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ynhâld op ôfstân",
+    "description": "Ynhâld fan ien webstee werbrûke yn in oare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Websteeadres",
+        "description": "Plak it adres om ynhâld nei te ferwizen as it net de hjoeddeiske webstee is"
+      },
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item om wer te jaan foar de keppeling-/titelgegevens"
+      },
+      {
+        "property": "breakreference",
+        "title": "Ferwizing ferbrekke",
+        "description": "As jo dit fakje oanfinkje, wurdt de ynhâld op ôfstân kopiearre foar lokaal bewurkjen, mar wurdt de ferbining fuorthelle. It krijt gjin bywurkings mear as it ferwizingsmateriaal bywurke wurdt."
+      },
+      {
+        "property": "showTitle",
+        "title": "Titel toane",
+        "description": "Skeakelje yn om de titel fan de toande boarne wer te jaan"
+      }
+    ]
+  }
+}

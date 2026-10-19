@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Zbatimi i sistemit të dizajnit për HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Opsioni për t'u shfaqur",
+        "options": {
+          "*": "Udhëzuesi i plotë i stilit"
+        }
+      }
+    ]
+  }
+}

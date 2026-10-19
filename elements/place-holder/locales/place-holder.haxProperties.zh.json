@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "占位符",
+    "description": "可转换为所选媒体类型的占位符"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "类型",
+        "description": "此占位符可替换成的组件类型。",
+        "options": {
+          "text": "文本 / 内容",
+          "document": "文档 / 文件",
+          "audio": "音频",
+          "video": "视频",
+          "image": "图像",
+          "math": "数学公式"
+        }
+      },
+      {
+        "property": "text",
+        "title": "文本",
+        "description": "更详细地说明所需的占位内容"
+      }
+    ]
+  }
+}

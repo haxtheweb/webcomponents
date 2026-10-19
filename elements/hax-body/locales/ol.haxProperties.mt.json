@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Lista numerata",
+    "description": "Oħloq lista numerata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stil tan-numri",
+        "description": "Stil użat għan-numerazzjoni tal-lista ordnata.",
+        "options": {
+          "": "Default (deċimali)",
+          "list-decimal-leading-zero": "Deċimali biż-żero ta' quddiem (01, 02, 03)",
+          "list-lower-alpha": "Ittri żgħar (a, b, c)",
+          "list-upper-alpha": "Ittri kbar (A, B, C)",
+          "list-lower-roman": "Numri Rumani żgħar (i, ii, iii)",
+          "list-upper-roman": "Numri Rumani kbar (I, II, III)"
+        }
+      }
+    ]
+  }
+}

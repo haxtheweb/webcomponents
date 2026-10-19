@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Tarjeta retro",
+    "description": "Tarjeta sencilla con un diseño retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título principal de la tarjeta."
+      },
+      {
+        "property": "url",
+        "description": "URL que se abre al hacer clic en la tarjeta."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtítulo",
+        "description": "Subtítulo de la tarjeta."
+      },
+      {
+        "property": "tags",
+        "title": "Etiquetas",
+        "description": "Etiquetas separadas por comas."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Fuente multimedia",
+        "description": "Fuente multimedia principal."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Fuente al pasar el cursor",
+        "description": "Fuente multimedia que se muestra al pasar el cursor sobre la tarjeta o activarla."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Color de acento aplicado a toda la tarjeta."
+      },
+      {
+        "property": "dark",
+        "title": "Oscuro",
+        "description": "Usar los colores base del modo oscuro."
+      }
+    ]
+  }
+}

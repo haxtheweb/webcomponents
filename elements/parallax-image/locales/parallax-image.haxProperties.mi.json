@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Atahanga parallax",
+    "description": "Panuku atahanga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Whakaahua",
+        "description": "atahanga hei papamuri"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Wāhi pane",
+        "description": "Wāhi kuputuhi pane"
+      }
+    ]
+  }
+}

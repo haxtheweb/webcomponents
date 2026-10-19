@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licență",
+    "description": "Furnizează o licență pentru lucrarea ta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul lucrării citate."
+      },
+      {
+        "property": "source",
+        "title": "Linkul sursei",
+        "description": "URL-ul sursei lucrării licențiate."
+      },
+      {
+        "property": "license",
+        "title": "Licență",
+        "description": "Licența aplicată acestei lucrări."
+      },
+      {
+        "property": "creator",
+        "title": "Creator",
+        "description": "Creatorul sau proprietarul acestei lucrări."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Linkul sursei",
+        "description": "Link către detalii suplimentare despre licență."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Eticheta „mai mult”",
+        "description": "Eticheta pentru detalii suplimentare despre licență."
+      }
+    ]
+  }
+}

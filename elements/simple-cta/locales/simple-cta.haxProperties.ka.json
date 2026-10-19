@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "მოწოდება მოქმედებისკენ",
+    "description": "მარტივი ღილაკი ბმულით მოქმედებისთვის."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "იარლიყი",
+        "description": "ბმულის წარწერა"
+      },
+      {
+        "property": "link",
+        "title": "ბმული",
+        "description": "შეიყვანეთ ბმული ნებისმიერ რესურსზე"
+      },
+      {
+        "property": "hideIcon",
+        "title": "ხატულის დამალვა",
+        "description": "ტექსტის აქცენტისთვის გამოყენებული ხატულის დამალვა"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ხატულა",
+        "description": "მოქმედების ბმულის ხატულა"
+      }
+    ]
+  }
+}

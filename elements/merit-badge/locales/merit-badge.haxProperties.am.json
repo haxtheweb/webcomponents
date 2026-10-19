@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "የብቃት ባጅ",
+    "description": "ክህሎት መገኘቱን የሚያሳውቅ ምስላዊ ባጅ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "የባጅ ርዕስ",
+        "description": "በባጁ ላይ የሚታይ ርዕስ።"
+      },
+      {
+        "property": "badgeImage",
+        "title": "የባጅ ምስል",
+        "description": "ለባጁ የምስል URL።"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "የባጅ ዝርዝሮች",
+        "description": "ስለ ባጁ ዝርዝሮች።"
+      },
+      {
+        "property": "hyperLink",
+        "title": "አገናኝ",
+        "description": "ከባጁ ጋር የተያያዘ አገናኝ።"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "የባጅ ክህሎቶች",
+        "description": "በባጁ ላይ የሚታዩ ክህሎቶች።"
+      },
+      {
+        "property": "skill",
+        "title": "ክህሎት (OER Schema)",
+        "description": "OER Schema: ይህን የመማር ዓላማ በማጠናቀቅ የተገኘ የተማረ ክህሎት።"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "ලබා ගත හැකි තේමා",
+    "description": "සජීවී පෙරදසුන් මාරුවීම සමඟ ලබා ගත හැකි HAXcms තේමා පෙන්වන්න"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "දසුන් ප්‍රකාරය",
+        "description": "තේමා පෙන්වන ආකාරය තෝරන්න",
+        "options": {
+          "gallery": "ගැලරිය",
+          "table": "වගුව"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "විස්තර පෙන්වන්න",
+        "description": "තේමා විස්තර සහ අමතර තොරතුරු පෙන්වන්න"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "සැඟවුණු සහ පැරණි තේමා පෙන්වන්න",
+        "description": "උපකරණ පුවරු පෙරනිමිවලට අමතරව සැඟවුණු, පැරණි සහ භයානක තේමා පෙන්වන්න"
+      },
+      {
+        "property": "columns",
+        "title": "තීරු (ගැලරිය)",
+        "description": "ගැලරි දසුනේ තීරු ගණන"
+      }
+    ]
+  }
+}

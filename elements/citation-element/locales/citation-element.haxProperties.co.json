@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Riferimentu",
+    "description": "Elementu di citazione cù trè modi di presentazione."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Titulu di l'opera citata."
+      },
+      {
+        "property": "source",
+        "title": "Ligame fonte",
+        "description": "URL fonte di l'opera citata."
+      },
+      {
+        "property": "date",
+        "title": "Data di cunsultazione",
+        "description": "Data à a quale a fonte hè stata cunsultata."
+      },
+      {
+        "property": "scope",
+        "title": "Portata",
+        "description": "Portata di l'elementu da cità.",
+        "options": {
+          "sibling": "Elementu fratellu",
+          "parent": "Elementu parente"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licenza",
+        "description": "Licenza di l'opera citata."
+      },
+      {
+        "property": "creator",
+        "title": "Creatore",
+        "description": "Creatore o pruprietariu di l'opera citata."
+      },
+      {
+        "property": "typeof",
+        "title": "Tipu OER Schema",
+        "description": "Classe OER Schema per sta citazione. Predefinita à oer:ReferencedMaterial; rimpiazzate solu cù una classe OER valida (p. es. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

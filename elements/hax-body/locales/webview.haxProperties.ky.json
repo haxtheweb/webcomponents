@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Булак",
+        "description": "Бул ресурстун URL дареги."
+      }
+    ]
+  }
+}

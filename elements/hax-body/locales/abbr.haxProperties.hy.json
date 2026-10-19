@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Հապավում",
+    "description": "Հապավում՝ ամբողջական տերմինի հուշումով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Տեքստ",
+        "description": "Հապավման տեսանելի տեքստ։"
+      },
+      {
+        "attribute": "title",
+        "title": "Բառ",
+        "description": "Ամբողջական տերմինը, որը ցուցադրվում է սավառնելիս։"
+      }
+    ]
+  }
+}

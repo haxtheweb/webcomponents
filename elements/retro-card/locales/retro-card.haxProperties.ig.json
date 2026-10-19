@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kaadị retro",
+    "description": "Kaadị dị mfe nwere ụdị retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha kaadị bụ isi."
+      },
+      {
+        "property": "url",
+        "description": "URL a ga-emepe mgbe a pịrị kaadị ahụ."
+      },
+      {
+        "property": "subtitle",
+        "title": "Aha nta",
+        "description": "Aha nta kaadị."
+      },
+      {
+        "property": "tags",
+        "title": "Mkpado",
+        "description": "Mkpado ekewapụtara site na rịkọm."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Isi iyi mgbasa ozi",
+        "description": "Isi iyi mgbasa ozi bụ isi."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Isi iyi mgbe a gafere n'elu",
+        "description": "Isi iyi mgbasa ozi egosiri mgbe a gafere n'elu kaadị ma ọ bụ mee ka ọ rụọ ọrụ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba Mkpụrụ",
+        "description": "Agba accent etinyere na kaadị niile."
+      },
+      {
+        "property": "dark",
+        "title": "Ọchịchịrị",
+        "description": "Jiri agba ntọala ọnọdụ ọchịchịrị."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "બાહ્ય વેબ સામગ્રી એમ્બેડ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "સ્રોત",
+        "description": "આ સંસાધન માટે URL."
+      }
+    ]
+  }
+}

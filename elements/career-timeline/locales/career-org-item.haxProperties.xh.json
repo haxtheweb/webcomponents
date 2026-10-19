@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Into yoMsebenzi",
+    "description": "Umbutho omnye kunye neendima zawo ezinxulumeneyo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Igama loMbutho"
+      },
+      {
+        "property": "location",
+        "title": "Indawo"
+      },
+      {
+        "property": "source",
+        "title": "Umthombo"
+      }
+    ]
+  }
+}

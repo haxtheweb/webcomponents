@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Laikini",
+    "description": "Hāʻawi i laikini no kāu hana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Poʻo inoa",
+        "description": "Poʻo inoa o ka hana i kuhia ʻia."
+      },
+      {
+        "property": "source",
+        "title": "Loulou kumu",
+        "description": "URL kumu no ka hana i laikini ʻia."
+      },
+      {
+        "property": "license",
+        "title": "Laikini",
+        "description": "Laikini i kau ʻia ma kēia hana."
+      },
+      {
+        "property": "creator",
+        "title": "Mea hana",
+        "description": "Mea hana a i ʻole mea nona kēia hana."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Loulou kumu",
+        "description": "Loulou i nā kikoʻī laikini hou aku."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Lepili hou aku",
+        "description": "Lepili no nā kikoʻī laikini hou aku."
+      }
+    ]
+  }
+}

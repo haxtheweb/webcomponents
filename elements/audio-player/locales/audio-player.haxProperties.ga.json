@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Fuaim",
+    "description": "Is féidir leis seo físeán a chur i láthair ar bhealach an-inrochtana beag beann ar an bhfoinse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Foinse",
+        "description": "URL na meán seo."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Teideal",
+        "description": "Teideal simplí faoin bhfíseán"
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "Roghnaigh an dath aiceanta don seinnteoir."
+      },
+      {
+        "property": "track",
+        "title": "Fotheidil",
+        "description": "URL an chomhaid fotheideal."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Íomhá mhionsamhla",
+        "description": "Roghnach. URL íomhá mhionsamhla/phóstaeir."
+      },
+      {
+        "property": "learningMode",
+        "title": "Cumasaigh an mód foghlama",
+        "description": "Díchumasaíonn sé luasbhrostú agus atochras."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Bain an cnaipe oscail ar YouTube",
+        "description": "Baineann sé an cnaipe chun an físeán a oscailt ar YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Cuir nasc comhroinnte san áireamh?",
+        "description": "Soláthraíonn sé nasc chun an físeán a chomhroinnt."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Léiríonn sé cé acu ar cheart CORS a úsáid.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Ceadaigh seinm sa chúlra",
+        "description": "Cuirtear físeáin ar sos / seinntear iad go huathoibríoch nuair a chailleann an cluaisín fócas; cuireann sé seo ar chumas an fhíseáin seinm gan fócas a bheith ar an gcluaisín"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Téama dorcha don tras-scríbhinn",
+        "description": "Cumasaigh an téama dorcha don tras-scríbhinn."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Díchumasaigh an Mód Idirghníomhach",
+        "description": "Díchumasaigh an mód idirghníomhach a fhágann gur féidir cliceáil ar an tras-scríbhinn."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Folaigh stampaí ama",
+        "description": "Folaigh na stampaí ama ar an tras-scríbhinn."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Folaigh an Tras-scríbhinn",
+        "description": "Folaigh an tras-scríbhinn de réir réamhshocraithe."
+      },
+      {
+        "property": "lang",
+        "title": "Teanga",
+        "description": "Teanga na meán."
+      }
+    ]
+  }
+}

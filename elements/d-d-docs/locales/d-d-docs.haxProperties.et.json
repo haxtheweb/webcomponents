@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAX-i disainisüsteemi teostus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Kuvatav valik",
+        "options": {
+          "*": "Täielik stiilijuhend"
+        }
+      }
+    ]
+  }
+}

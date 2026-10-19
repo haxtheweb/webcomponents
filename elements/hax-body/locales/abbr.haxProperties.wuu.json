@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "缩写",
+    "description": "带完整术语提示个缩写。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "文字",
+        "description": "看得见个缩写文字。"
+      },
+      {
+        "attribute": "title",
+        "title": "词语",
+        "description": "鼠标移上去显示个完整术语。"
+      }
+    ]
+  }
+}

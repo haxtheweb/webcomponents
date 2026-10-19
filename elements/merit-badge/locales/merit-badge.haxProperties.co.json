@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Badge di meritu",
+    "description": "Badge visuale per cumunicà l'acquistu d'una cumpetenza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Titulu di u badge",
+        "description": "Titulu affissatu nant'à u badge."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Imagine di u badge",
+        "description": "URL di l'imagine per u badge."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Dettagli di u badge",
+        "description": "Dettagli nant'à u badge."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Ipertestu",
+        "description": "Ligame assuciatu à u badge."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Cumpetenze di u badge",
+        "description": "Cumpetenze affissate nant'à u badge."
+      },
+      {
+        "property": "skill",
+        "title": "Cumpetenza (OER Schema)",
+        "description": "OER Schema: una cumpetenza amparata ottenuta cumpiendu st'obiettivu d'apprendimentu."
+      }
+    ]
+  }
+}

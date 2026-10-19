@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Iegult ārēju tīmekļa saturu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Avots",
+        "description": "Šī resursa URL."
+      }
+    ]
+  }
+}

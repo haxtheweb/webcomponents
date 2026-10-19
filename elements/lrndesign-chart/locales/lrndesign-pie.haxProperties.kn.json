@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "ಪೈ ಚಾರ್ಟ್",
+    "description": "CSV ಆಧಾರದ ಮೇಲೆ ಪ್ರವೇಶಿಸಬಹುದಾದ ಚಾರ್ಟ್ ರಚಿಸುತ್ತದೆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
+      },
+      {
+        "title": "ಡಾರ್ಕ್ ಥೀಮ್",
+        "description": "ಡಾರ್ಕ್ ಥೀಮ್ ಸಕ್ರಿಯಗೊಳಿಸಿ"
+      },
+      {
+        "title": "CSV ಫೈಲ್",
+        "description": "CSV ಯಿಂದ ಡೇಟಾ ಲೋಡ್ ಮಾಡಿ."
+      },
+      {
+        "title": "ಚಾರ್ಟ್ ಶೀರ್ಷಿಕೆ",
+        "description": "ನಿಮ್ಮ ಚಾರ್ಟ್‌ಗೆ ಪ್ರವೇಶಿಸಬಹುದಾದ ಪರ್ಯಾಯ ಪಠ್ಯ."
+      },
+      {
+        "title": "ಚಾರ್ಟ್ ವಿವರಣೆ",
+        "description": "ನಿಮ್ಮ ಚಾರ್ಟ್‌ನ ಪ್ರವೇಶಿಸಬಹುದಾದ ವಿವರಣೆ."
+      },
+      {
+        "title": "ಮಾಪಕದ ಹೆಸರು",
+        "description": "ಚಾರ್ಟ್‌ನ ಅಗಲ:ಎತ್ತರ ಅನುಪಾತ ($ct-scales ಮತ್ತು $ct-scales-names ಗಾಗಿ https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings ನೋಡಿ).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "ಡೋನಟ್"
+      },
+      {
+        "title": "ಲೇಬಲ್ ತೋರಿಸಿ"
+      },
+      {
+        "title": "ಪ್ರಾರಂಭ ಕೋನ"
+      },
+      {
+        "title": "ಪ್ಯಾಡಿಂಗ್"
+      },
+      {
+        "title": "ಒಟ್ಟು",
+        "description": "ನೀವು ನಿರ್ದಿಷ್ಟಪಡಿಸಬಹುದಾದ ಐಚ್ಛಿಕ ಒಟ್ಟು. ಒಟ್ಟು ಮೌಲ್ಯವನ್ನು ನಿರ್ದಿಷ್ಟಪಡಿಸಿದರೆ, ಪೂರ್ಣ ಪೈ ರಚಿಸಲು ಸರಣಿಯಲ್ಲಿನ ಮೌಲ್ಯಗಳ ಮೊತ್ತ ಈ ಒಟ್ಟಿಗೆ ಸಮನಾಗಿರಬೇಕು. ಪೈನ ಭಾಗಗಳನ್ನು ಮಾತ್ರ ಅಥವಾ ಗೇಜ್ ಚಾರ್ಟ್‌ಗಳನ್ನು ರಚಿಸಲು ಈ ಪ್ಯಾರಾಮೀಟರ್ ಬಳಸಬಹುದು."
+      },
+      {
+        "title": "ಖಾಲಿ ಮೌಲ್ಯಗಳನ್ನು ನಿರ್ಲಕ್ಷಿಸಿ",
+        "description": "ಅನಗತ್ಯ ತುಂಡುಗಳು ಮತ್ತು ಲೇಬಲ್‌ಗಳನ್ನು ರಚಿಸುವುದನ್ನು ತಪ್ಪಿಸಲು ಖಾಲಿ ಮೌಲ್ಯಗಳನ್ನು ನಿರ್ಲಕ್ಷಿಸಲಾಗುತ್ತದೆ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ಡೇಟಾ ಹಿಮ್ಮುಖಗೊಳಿಸಿ",
+        "description": "ಲೇಬಲ್‌ಗಳು, ಸರಣಿಯ ಕ್ರಮ ಹಾಗೂ ಸಂಪೂರ್ಣ ಸರಣಿ ಡೇಟಾ ಅರೇಗಳನ್ನು ಒಳಗೊಂಡಂತೆ ಡೇಟಾವನ್ನು ಹಿಮ್ಮುಖಗೊಳಿಸಿ."
+      },
+      {
+        "title": "HTML ಕೋಷ್ಟಕ",
+        "description": "ಐಚ್ಛಿಕ: ಡೇಟಾವನ್ನು HTML ಕೋಷ್ಟಕವಾಗಿ ಲೋಡ್ ಮಾಡಿ."
+      },
+      {
+        "title": "ಡೋನಟ್ ಗೆರೆಯ ಅಗಲ"
+      },
+      {
+        "title": "ಘನ ಡೋನಟ್",
+        "description": "ಡೋನಟ್ ಭಾಗಗಳನ್ನು ಗೆರೆಗಳ ಬದಲಿಗೆ ಆಕಾರಗಳಾಗಿ ರಚಿಸಿ."
+      },
+      {
+        "title": "ಲೇಬಲ್ ದಿಕ್ಕು",
+        "description": "ಡೋನಟ್ ಭಾಗಗಳನ್ನು ಗೆರೆಗಳ ಬದಲಿಗೆ ಆಕಾರಗಳಾಗಿ ರಚಿಸಿ.",
+        "options": {
+          "neutral": "ತಟಸ್ಥ",
+          "explode": "ಹೊರಮುಖ",
+          "implode": "ಒಳಮುಖ"
+        }
+      },
+      {
+        "title": "ಲೇಬಲ್ ಆಫ್‌ಸೆಟ್",
+        "description": "ತ್ರಿಜ್ಯದ ಅರ್ಧ ದೂರವಾಗಿರುವ ಪ್ರಮಾಣಿತ ಸ್ಥಾನದಿಂದ ಲೇಬಲ್ ಸ್ಥಾನದ ಆಫ್‌ಸೆಟ್. ಈ ಮೌಲ್ಯ ಧನಾತ್ಮಕ ಅಥವಾ ಋಣಾತ್ಮಕವಾಗಿರಬಹುದು. ಧನಾತ್ಮಕ ಮೌಲ್ಯಗಳು ಲೇಬಲ್ ಅನ್ನು ಕೇಂದ್ರದಿಂದ ದೂರ ಇರಿಸುತ್ತವೆ."
+      },
+      {
+        "title": "ಲೇಬಲ್ ಸ್ಥಾನ",
+        "options": {
+          "inside": "ಒಳಗೆ",
+          "outside": "ಹೊರಗೆ",
+          "center": "ಮಧ್ಯ"
+        }
+      }
+    ]
+  }
+}

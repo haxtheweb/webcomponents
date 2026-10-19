@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mẫu mã",
+    "description": "Một đoạn mã mẫu được tô sáng trong trang"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tô sáng mã",
+        "description": "Kiểu tô sáng cú pháp áp dụng cho vùng mã",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Dữ liệu JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Nút sao chép vào bộ nhớ tạm",
+        "description": "nút ở góc trên bên phải để sao chép vào bộ nhớ tạm"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Bắt đầu tô sáng",
+        "description": "Số dòng bắt đầu tô sáng"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Kết thúc tô sáng",
+        "description": "Dòng kết thúc tô sáng"
+      }
+    ]
+  }
+}

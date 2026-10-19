@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ٹیب",
+    "description": "ایک واحد ٹیب۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ٹیب آئیکن"
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال"
+      },
+      {
+        "property": "label",
+        "title": "ٹیب لیبل"
+      },
+      {
+        "slot": "",
+        "title": "ٹیب کا مواد",
+        "description": "ٹیب کا مواد۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "منفرد ID"
+      },
+      {
+        "property": "flag",
+        "title": "اختیاری فلیگ متن"
+      },
+      {
+        "property": "flagIcon",
+        "title": "اختیاری فلیگ آئیکن"
+      }
+    ]
+  }
+}

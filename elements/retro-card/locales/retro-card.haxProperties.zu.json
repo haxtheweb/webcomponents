@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ikhadi le-retro",
+    "description": "Ikhadi elilula elinomklamo we-retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko esiyinhloko sekhadi."
+      },
+      {
+        "property": "url",
+        "description": "I-URL okufanele ivulwe lapho ikhadi lichofozwa."
+      },
+      {
+        "property": "subtitle",
+        "title": "Isihlokwana",
+        "description": "Isihlokwana sekhadi."
+      },
+      {
+        "property": "tags",
+        "title": "Omaka",
+        "description": "Omaka abahlukaniswe ngokhefana."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Umthombo wemidiya",
+        "description": "Umthombo wemidiya oyinhloko."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Umthombo lapho kudlulwa ngesikhombi",
+        "description": "Umthombo wemidiya oboniswa lapho ikhadi lidlulwa ngesikhombi noma livulwa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala wokugcizelela osetshenziswa kulo lonke ikhadi."
+      },
+      {
+        "property": "dark",
+        "title": "Okumnyama",
+        "description": "Sebenzisa imibala eyisisekelo yemodi emnyama."
+      }
+    ]
+  }
+}

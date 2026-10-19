@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "ფარდობითი სათაური",
+    "description": "გამოაქვს სათაურების სწორი იერარქია მშობლის სათაურის მიხედვით"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "მშობელი სათაურის რესურსის ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "თიშავს ბმულის ღილაკის ფუნქციას."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "ბმულის კოპირების ღილაკს სათაურის უკიდურეს მარჯვენა მხარეს ასწორებს."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "სათაურის დონე, თუ მშობელი ვერ მოიძებნა."
+      },
+      {
+        "property": "copyMessage",
+        "description": "ცვლის ბმულის კოპირების შეტყობინების ნაგულისხმევ ტექსტს."
+      },
+      {
+        "property": "linkLabel",
+        "description": "ცვლის ბმულის კოპირების ღილაკის ნაგულისხმევ წარწერას."
+      },
+      {
+        "property": "linkIcon",
+        "description": "ცვლის ბმულის კოპირების ღილაკის ნაგულისხმევ ხატულას."
+      },
+      {
+        "property": "closeLabel",
+        "description": "ცვლის ბმულის კოპირების შეტყობინების დახურვის ღილაკის ნაგულისხმევ წარწერას."
+      },
+      {
+        "property": "closeIcon",
+        "description": "ცვლის ბმულის კოპირების შეტყობინების დახურვის ღილაკის ნაგულისხმევ ხატულას."
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Doonaatii Tarkaanfii",
+    "description": "Doonaatii tarkaanfii"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mata duree",
+        "description": "Mata duree elementii"
+      },
+      {
+        "property": "desc",
+        "title": "Ibsa",
+        "description": "Ibsa dheeraa dhaqqabamaa"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Madda Suuraa",
+        "description": "Madda suuraa doonaatii keessaa."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Barreeffama Alt Suuraa",
+        "description": "Barreeffama alt suuraaf."
+      },
+      {
+        "property": "animated",
+        "title": "Animeeshinii qabu",
+        "description": "Tarkaanfiin yeroo fe'iinsa jalqabaa animeeshinii godhuu fi dhiisuu"
+      },
+      {
+        "property": "complete",
+        "title": "Xumurame",
+        "description": "Tarree gatiiwwan xumuramanii."
+      },
+      {
+        "property": "total",
+        "title": "Waliigala",
+        "description": "Waliigala yeroo wantoonni hundi xumuraman."
+      },
+      {
+        "property": "startAngle",
+        "title": "Golboo Jalqabaa",
+        "description": "Golboo doonaatii tarkaanfiin itti jalqabu"
+      }
+    ]
+  }
+}

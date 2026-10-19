@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Elenco puntato",
+    "description": "Crea un elenco puntato."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stile dei punti elenco",
+        "description": "Stile usato per i punti degli elenchi non ordinati.",
+        "options": {
+          "": "Predefinito (quadrato)",
+          "list-disc": "Disco",
+          "list-circle": "Cerchio",
+          "list-square": "Quadrato"
+        }
+      }
+    ]
+  }
+}

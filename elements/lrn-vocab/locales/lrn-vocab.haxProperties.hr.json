@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Rječnik",
+    "description": "Pojam iz rječnika"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Pojam"
+      },
+      {
+        "slot": "",
+        "title": "Definicija",
+        "description": "Definicija koja se prikazuje kada se klikne pojam."
+      },
+      {
+        "property": "description",
+        "title": "Opis (OER Schema)",
+        "description": "OER Schema: kratak opis pojma iz rječnika. Automatski se popunjava iz teksta definicije ako se ostavi prazno."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Destaque",
+    "description": "Destacar texto em linha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Texto",
+        "description": "Texto destacado."
+      }
+    ]
+  }
+}

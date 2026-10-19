@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Аудио",
+    "description": "Позволяет показывать видео максимально доступно независимо от источника."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Источник",
+        "description": "URL этого медиа."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Название",
+        "description": "Простое название под видео"
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "Выберите акцентный цвет проигрывателя."
+      },
+      {
+        "property": "track",
+        "title": "Скрытые субтитры",
+        "description": "URL файла субтитров."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Миниатюра",
+        "description": "Необязательно. URL миниатюры/постера."
+      },
+      {
+        "property": "learningMode",
+        "title": "Включить режим обучения",
+        "description": "Отключает перемотку вперёд и назад."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Убрать кнопку «Открыть на YouTube»",
+        "description": "Удаляет кнопку для открытия видео на YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Добавить ссылку для обмена?",
+        "description": "Предоставляет ссылку, чтобы поделиться видео."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Указывает, использовать ли CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Разрешить фоновое воспроизведение",
+        "description": "Видео автоматически ставятся на паузу / воспроизводятся при потере фокуса вкладкой; этот параметр позволяет воспроизводить видео без фокуса на вкладке"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Тёмная тема для расшифровки",
+        "description": "Включить тёмную тему для расшифровки."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Отключить интерактивность",
+        "description": "Отключить интерактивный режим, в котором расшифровка кликабельна."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Скрыть метки времени",
+        "description": "Скрыть метки времени в расшифровке."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Скрыть расшифровку",
+        "description": "Скрывать расшифровку по умолчанию."
+      },
+      {
+        "property": "lang",
+        "title": "Язык",
+        "description": "Язык медиа."
+      }
+    ]
+  }
+}

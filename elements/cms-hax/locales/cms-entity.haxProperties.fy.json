@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS-entiteit",
+    "description": "CMS-entiteit wurdt op de backend werjûn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Type",
+        "description": "type út ús CMS",
+        "options": {
+          "node": "Knooppunt",
+          "user": "Brûker",
+          "file": "Triem"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id út ús CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Werjeftemodus",
+        "description": "werjeftemodus út ús CMS"
+      }
+    ]
+  }
+}

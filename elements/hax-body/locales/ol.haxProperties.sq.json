@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Listë e numëruar",
+    "description": "Krijo një listë të numëruar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stili i numrave",
+        "description": "Stili që përdoret për numërimin e listës së renditur.",
+        "options": {
+          "": "Parazgjedhur (dhjetor)",
+          "list-decimal-leading-zero": "Dhjetor me zero në fillim (01, 02, 03)",
+          "list-lower-alpha": "Shkronja të vogla (a, b, c)",
+          "list-upper-alpha": "Shkronja të mëdha (A, B, C)",
+          "list-lower-roman": "Romake të vogla (i, ii, iii)",
+          "list-upper-roman": "Romake të mëdha (I, II, III)"
+        }
+      }
+    ]
+  }
+}

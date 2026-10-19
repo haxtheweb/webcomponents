@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Цэгтэй жагсаалт",
+    "description": "Цэгтэй жагсаалт үүсгэх."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Цэгийн хэв маяг",
+        "description": "Эрэмбэгүй жагсаалтын цэгт ашиглах хэв маяг.",
+        "options": {
+          "": "Анхдагч (дөрвөлжин)",
+          "list-disc": "Диск",
+          "list-circle": "Тойрог",
+          "list-square": "Дөрвөлжин"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Blok treści markdown wpisanej bezpośrednio lub wczytanej zdalnie"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Surowy markdown"
+      },
+      {
+        "property": "source",
+        "title": "Źródło",
+        "description": "Plik źródłowy markdown"
+      }
+    ]
+  }
+}

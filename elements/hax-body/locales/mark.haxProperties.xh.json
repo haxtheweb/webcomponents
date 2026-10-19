@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Qaqambisa",
+    "description": "Qaqambisa umbhalo ongaphakathi komgca."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Umbhalo",
+        "description": "Umbhalo oqaqambisiweyo."
+      }
+    ]
+  }
+}

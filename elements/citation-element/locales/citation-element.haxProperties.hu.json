@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Forrásmegjelölés",
+    "description": "Forrásmegjelölés elem három megjelenítési móddal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "A hivatkozott mű címe."
+      },
+      {
+        "property": "source",
+        "title": "Forráshivatkozás",
+        "description": "A hivatkozott mű forrás-URL-je."
+      },
+      {
+        "property": "date",
+        "title": "Hozzáférés dátuma",
+        "description": "A forráshoz való hozzáférés dátuma."
+      },
+      {
+        "property": "scope",
+        "title": "Hatókör",
+        "description": "A hivatkozandó elem hatóköre.",
+        "options": {
+          "sibling": "Testvérelem",
+          "parent": "Szülőelem"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licenc",
+        "description": "A hivatkozott mű licence."
+      },
+      {
+        "property": "creator",
+        "title": "Alkotó",
+        "description": "A hivatkozott mű alkotója vagy tulajdonosa."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema típus",
+        "description": "A hivatkozás OER Schema osztálya. Alapértelmezés: oer:ReferencedMaterial; csak érvényes OER-osztállyal írd felül (pl. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

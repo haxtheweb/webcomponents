@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Bildënnerschrëft",
+    "description": "Ënnerschrëft fir eng Figur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Beschrëftung",
+        "description": "Text, deen ënner der Figur ugewise gëtt."
+      }
+    ]
+  }
+}

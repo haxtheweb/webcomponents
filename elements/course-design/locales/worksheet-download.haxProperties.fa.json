@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "بارگیری کاربرگ",
+    "description": "دکمه‌ای برای نمایش فایل‌های قابل بارگیری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوان بارگیری."
+      },
+      {
+        "property": "link",
+        "title": "پیوند",
+        "description": "پیوند بارگیری."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Kariyer Öğesi",
+    "description": "Bir kuruluş ve ona bağlı roller"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Kuruluş Adı"
+      },
+      {
+        "property": "location",
+        "title": "Konum"
+      },
+      {
+        "property": "source",
+        "title": "Kaynak"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS bloks",
+    "description": "CMS bloks, kas atveidots aizmugursistēmā"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modulis",
+        "description": "Modulis, ko ielādēt no mūsu CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "No mūsu CMS ielādējamā bloka delta"
+      }
+    ]
+  }
+}

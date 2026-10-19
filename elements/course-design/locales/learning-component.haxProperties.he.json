@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "רכיב למידה",
+    "description": "כרטיס שבאמצעותו מרצים מתקשרים פדגוגיה ואסטרטגיות הוראה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "סוג",
+        "description": "סוג הכרטיס שבו ייעשה שימוש."
+      },
+      {
+        "property": "subtitle",
+        "title": "כותרת משנה",
+        "description": "כותרת המשנה של הכרטיס."
+      },
+      {
+        "property": "url",
+        "title": "קישור",
+        "description": "קישור אופציונלי לכרטיס (הקישור אינו זמין עבור יעדי למידה)."
+      },
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "הגדרת כותרת, דורסת את הכותרת המבוססת על הסוג"
+      },
+      {
+        "property": "icon",
+        "title": "סמל",
+        "description": "הגדרת סמל, דורסת את הסמל המבוסס על הסוג"
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "הגדרת צבע הדגשה, דורסת את הצבע המבוסס על הסוג"
+      },
+      {
+        "slot": "",
+        "title": "תוכן עניינים"
+      }
+    ]
+  }
+}

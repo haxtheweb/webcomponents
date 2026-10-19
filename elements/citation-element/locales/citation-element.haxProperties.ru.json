@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Источник цитаты",
+    "description": "Элемент ссылки на источник с тремя режимами отображения."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Название",
+        "description": "Название цитируемой работы."
+      },
+      {
+        "property": "source",
+        "title": "Ссылка на источник",
+        "description": "URL источника цитируемой работы."
+      },
+      {
+        "property": "date",
+        "title": "Дата обращения",
+        "description": "Дата обращения к источнику."
+      },
+      {
+        "property": "scope",
+        "title": "Область",
+        "description": "Область элементов для цитирования.",
+        "options": {
+          "sibling": "Соседний элемент",
+          "parent": "Родительский элемент"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Лицензия",
+        "description": "Лицензия цитируемой работы."
+      },
+      {
+        "property": "creator",
+        "title": "Автор",
+        "description": "Автор или владелец цитируемой работы."
+      },
+      {
+        "property": "typeof",
+        "title": "Тип OER Schema",
+        "description": "Класс OER Schema для этой ссылки. По умолчанию oer:ReferencedMaterial; заменяйте только допустимым классом OER (например, oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

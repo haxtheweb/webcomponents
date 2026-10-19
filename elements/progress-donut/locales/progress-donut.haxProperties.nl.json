@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Voortgangsdonut",
+    "description": "Donut voor voortgang"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "De titel van het element"
+      },
+      {
+        "property": "desc",
+        "title": "Beschrijving",
+        "description": "Toegankelijke uitgebreide beschrijving"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Afbeeldingsbron",
+        "description": "Bron van de afbeelding in de donut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-tekst afbeelding",
+        "description": "Alt-tekst voor de afbeelding."
+      },
+      {
+        "property": "animated",
+        "title": "Geanimeerd",
+        "description": "Of de voortgang bij de eerste keer laden wordt geanimeerd"
+      },
+      {
+        "property": "complete",
+        "title": "Voltooid",
+        "description": "Een array met voltooide waarden."
+      },
+      {
+        "property": "total",
+        "title": "Totaal",
+        "description": "Totaal wanneer alle items voltooid zijn."
+      },
+      {
+        "property": "startAngle",
+        "title": "Beginhoek",
+        "description": "Hoek van de donut waar de voortgang begint"
+      }
+    ]
+  }
+}

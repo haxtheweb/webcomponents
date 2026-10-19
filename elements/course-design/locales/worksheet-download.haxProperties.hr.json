@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Preuzimanje radnog lista",
+    "description": "Gumb za prikaz datoteka dostupnih za preuzimanje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov preuzimanja."
+      },
+      {
+        "property": "link",
+        "title": "Poveznica",
+        "description": "Poveznica za preuzimanje."
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Erweidert Bild",
+    "description": "Eng Manéier, Biller mat verschiddene Verbesserungen ze presentéieren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quell",
+        "description": "D'URL fir d'Bild."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativen Text",
+        "description": "Text, deen d'Bild fir blann Benotzer beschreift."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "D'Bild mat enger URL verlinken"
+      },
+      {
+        "property": "card",
+        "title": "Kaart",
+        "description": "E Schiet applizéieren, sou datt et ausgesäit wéi eng erhuewe Kaart."
+      },
+      {
+        "property": "box",
+        "title": "Këscht",
+        "description": "Eng visuell Këscht ëm d'Bild applizéieren."
+      },
+      {
+        "property": "offset",
+        "title": "Versatz",
+        "description": "E Versatz lénks oder riets op d'Bild applizéieren.",
+        "options": {
+          "none": "keen",
+          "wide": "breet",
+          "narrow": "schmuel"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Quellenugab",
+        "description": "Zitat fir d'Bild."
+      },
+      {
+        "property": "caption",
+        "title": "Beschrëftung",
+        "description": "Bildënnerschrëft fir d'Bild."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figurtitel",
+        "description": "Titel fir d'Figurbezeechnung."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figurbeschreiwung",
+        "description": "Beschreiwung fir d'Figurbezeechnung."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Virschaubild",
+        "description": "Quell vum Virschaubild. Weist d'Virschaubild, mécht awer déi voll Quell an engem Modal op."
+      },
+      {
+        "property": "round",
+        "title": "Ronnt Bild",
+        "description": "Schneit d'Bild sou, datt et ronn ausgesäit."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Bildmodal desaktivéieren",
+        "description": "Verhënnert, datt Klicks d'Bild an engem Bildinspektor-Dialog opmaachen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Als Markdown renderen",
+        "description": "D'Bildënnerschrëft an d'Zitat als Markdown renderen."
+      }
+    ]
+  }
+}

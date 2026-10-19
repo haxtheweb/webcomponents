@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ਤਰੱਕੀ ਡੋਨਟ",
+    "description": "ਤਰੱਕੀ ਡੋਨਟ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਐਲੀਮੈਂਟ ਦਾ ਸਿਰਲੇਖ"
+      },
+      {
+        "property": "desc",
+        "title": "ਵੇਰਵਾ",
+        "description": "ਪਹੁੰਚਯੋਗ ਲੰਮਾ ਵਰਣਨ"
+      },
+      {
+        "property": "imageSrc",
+        "title": "ਚਿੱਤਰ ਸਰੋਤ",
+        "description": "ਡੋਨਟ ਅੰਦਰਲੇ ਚਿੱਤਰ ਦਾ ਸਰੋਤ।"
+      },
+      {
+        "property": "imageAlt",
+        "title": "ਚਿੱਤਰ Alt ਟੈਕਸਟ",
+        "description": "ਚਿੱਤਰ ਲਈ alt ਟੈਕਸਟ।"
+      },
+      {
+        "property": "animated",
+        "title": "ਐਨੀਮੇਟਿਡ",
+        "description": "ਕੀ ਪਹਿਲੀ ਵਾਰ ਲੋਡ ਹੋਣ 'ਤੇ ਤਰੱਕੀ ਐਨੀਮੇਟ ਹੁੰਦੀ ਹੈ"
+      },
+      {
+        "property": "complete",
+        "title": "ਪੂਰਾ",
+        "description": "ਪੂਰੇ ਹੋਏ ਮੁੱਲਾਂ ਦੀ ਐਰੇ।"
+      },
+      {
+        "property": "total",
+        "title": "ਕੁੱਲ",
+        "description": "ਸਾਰੀਆਂ ਆਈਟਮਾਂ ਪੂਰੀਆਂ ਹੋਣ 'ਤੇ ਕੁੱਲ।"
+      },
+      {
+        "property": "startAngle",
+        "title": "ਸ਼ੁਰੂਆਤੀ ਕੋਣ",
+        "description": "ਡੋਨਟ ਦਾ ਕੋਣ ਜਿੱਥੋਂ ਤਰੱਕੀ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ"
+      }
+    ]
+  }
+}

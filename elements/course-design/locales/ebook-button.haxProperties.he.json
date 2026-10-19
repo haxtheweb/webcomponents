@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "כפתור ספר אלקטרוני",
+    "description": "כפתור המקשר לספר אלקטרוני."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "כותרת הכפתור."
+      },
+      {
+        "property": "link",
+        "title": "קישור",
+        "description": "הקישור שאליו יופנו בלחיצה."
+      },
+      {
+        "property": "icon",
+        "title": "סמל",
+        "description": "סמל לייצוג קישור זה"
+      }
+    ]
+  }
+}

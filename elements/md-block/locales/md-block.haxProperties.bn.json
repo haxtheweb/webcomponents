@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "সরাসরি বা রিমোট থেকে লোড করা markdown কনটেন্টের একটি ব্লক"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "কাঁচা markdown"
+      },
+      {
+        "property": "source",
+        "title": "উৎস",
+        "description": "markdown-এর সোর্স ফাইল"
+      }
+    ]
+  }
+}

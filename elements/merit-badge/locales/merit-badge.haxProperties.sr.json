@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Значка заслуга",
+    "description": "Визуелна значка која показује стицање вештине."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Наслов значке",
+        "description": "Наслов приказан на значки."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Слика значке",
+        "description": "URL слике за значку."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Детаљи значке",
+        "description": "Детаљи о значки."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Хипервеза",
+        "description": "Веза повезана са значком."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Вештине значке",
+        "description": "Вештине приказане на значки."
+      },
+      {
+        "property": "skill",
+        "title": "Вештина (OER Schema)",
+        "description": "OER Schema: научена вештина стечена испуњењем овог циља учења."
+      }
+    ]
+  }
+}

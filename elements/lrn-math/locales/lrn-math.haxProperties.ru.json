@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Математика",
+    "description": "Красиво отображает математические формулы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Математика",
+        "description": "Введите уравнение в LaTeX"
+      }
+    ]
+  }
+}

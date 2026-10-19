@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro-kort",
+    "description": "Einfalt kort við retro-sniði."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Høvuðsheiti á kortinum."
+      },
+      {
+        "property": "url",
+        "description": "URL at opna, tá ið klikt verður á kortið."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undirheiti",
+        "description": "Undirheiti á kortinum."
+      },
+      {
+        "property": "tags",
+        "title": "Frámerki",
+        "description": "Frámerki skild sundur við komma."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Miðilskelda",
+        "description": "Høvuðs miðilskelda."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Kelda við svevan",
+        "description": "Miðilskelda víst, tá ið svevað verður yvir kortið, ella tað verður virkjað."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Dámlitur nýttur á alt kortið."
+      },
+      {
+        "property": "dark",
+        "title": "Myrkt",
+        "description": "Nýt grundlitir í myrkum hátti."
+      }
+    ]
+  }
+}

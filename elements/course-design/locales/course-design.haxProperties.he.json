@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "עיצוב קורס",
+    "description": "מכל לחומרי לימוד ולרכיבי עיצוב קורס."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "מזהה הקורס",
+        "description": "OER Schema: מזהה הקורס, לדוגמה MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "סמסטר",
+        "description": "OER Schema: הסמסטר שבו הקורס מוצע."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "פורמט ההעברה",
+        "description": "OER Schema: הפורמט שבו מועבר הקורס (לדוגמה פרונטלי, מקוון, היברידי)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "מרצה ראשי",
+        "description": "OER Schema: המרצה הראשי של הקורס."
+      },
+      {
+        "property": "syllabus",
+        "title": "כתובת URL של הסילבוס",
+        "description": "OER Schema: כתובת URL לסילבוס הקורס."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Układ kolumn",
+    "description": "Układaj materiały w prostych kolumnach"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Układ kolumn",
+        "description": "Styl prezentacji tych elementów (może się zmienić na małych ekranach)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Wyłącz responsywność",
+        "description": "Zaznacz, aby zachować kolumny na większych ekranach, a na najmniejszych nadal układać je jedna pod drugą"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Wypełnienie elementu",
+        "description": "Wypełnienie wewnątrz każdego elementu"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Marginesy elementów",
+        "description": "Margines między elementami"
+      }
+    ]
+  }
+}

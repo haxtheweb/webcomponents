@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "ویدیو",
+    "description": "پخش ویدیوی دسترس‌پذیر از منابع متعدد."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "منبع",
+        "description": "URL این رسانه."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "عنوان",
+        "description": "عنوانی که زیر ویدیو نمایش داده می‌شود."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "تصویر پوستر",
+        "description": "URL تصویر پوستر."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "ترک‌های متنی",
+        "description": "زیرنویس‌های ناشنوایان، زیرنویس‌ها، توصیف‌ها و سایر ترک‌های متنی ویدیو."
+      },
+      {
+        "property": "startTime",
+        "title": "زمان شروع",
+        "description": "شروع ویدیو از زمان مشخص (ثانیه)."
+      },
+      {
+        "property": "endTime",
+        "title": "زمان پایان",
+        "description": "پایان ویدیو در زمان مشخص (ثانیه)؛ به زمان شروع نیاز دارد."
+      },
+      {
+        "property": "learningMode",
+        "title": "فعال کردن حالت یادگیری",
+        "description": "جلو و عقب بردن سریع را غیرفعال می‌کند."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "حذف دکمه باز کردن در YouTube",
+        "description": "دکمه باز کردن ویدیو در YouTube را حذف می‌کند."
+      },
+      {
+        "property": "linkable",
+        "title": "پیوند اشتراک‌گذاری اضافه شود؟",
+        "description": "پیوندی برای اشتراک‌گذاری ویدیو فراهم می‌کند."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "پنهان کردن برچسب‌های زمانی",
+        "description": "برچسب‌های زمانی رونوشت را پنهان کنید."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "پنهان کردن رونوشت",
+        "description": "رونوشت به‌طور پیش‌فرض پنهان باشد."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "ترک توصیف صوتی",
+        "description": "URL ترک توصیف صوتی (فایل MP3) که عناصر بصری را روایت می‌کند."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "مشخص می‌کند که آیا از CORS استفاده شود یا نه.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "اجازه پخش در پس‌زمینه",
+        "description": "ادامه پخش وقتی زبانه مرورگر از کانون خارج می‌شود."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "پوسته تاریک برای رونوشت",
+        "description": "فعال کردن پوسته تاریک برای رونوشت."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "غیرفعال کردن حالت تعاملی",
+        "description": "حالت تعاملی را که رونوشت را قابل کلیک می‌کند غیرفعال کنید."
+      },
+      {
+        "property": "lang",
+        "title": "زبان",
+        "description": "زبان رسانه."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "(منسوخ) رنگ تأکیدی پخش‌کننده را انتخاب کنید."
+      }
+    ]
+  }
+}

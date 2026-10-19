@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Helu hōkū",
+    "description": "Mea hōʻike helu a i ʻole pihi e helu ai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Helu",
+        "description": "Waiwai helu o kēia manawa."
+      },
+      {
+        "property": "possible",
+        "title": "Hiki",
+        "description": "Helu kiʻekiʻe loa hiki."
+      },
+      {
+        "property": "numStars",
+        "title": "Helu o nā hōkū",
+        "description": "Helu o nā hōkū e hōʻike ai."
+      },
+      {
+        "property": "interactive",
+        "title": "Launa",
+        "description": "ʻAe i ka launa ʻana o ka mea hoʻohana e hoʻonoho ai i ka helu."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "ʻAno pālākiō rubric",
+        "description": "Hoʻopuka i ka metadata OER Schema RubricScale a me RubricLevel (levelOrdinal/levelPoints) no kēlā me kēia hōkū."
+      }
+    ]
+  }
+}

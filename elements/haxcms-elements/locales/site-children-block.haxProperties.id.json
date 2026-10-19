@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: blok anak",
+    "description": "Blok dinamis untuk menampilkan anak dari halaman saat ini"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Metode dinamis",
+        "description": "Cara menghitung anak relatif terhadap elemen ini",
+        "options": {
+          "active": "Anak aktif",
+          "parent": "Anak dari induk",
+          "ancestor": "Semua anak dari leluhur tertinggi"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Tingkat awal"
+      },
+      {
+        "property": "end",
+        "title": "Tingkat akhir"
+      }
+    ]
+  }
+}

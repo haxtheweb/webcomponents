@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub 미리 보기",
+    "description": "긴 설명이 포함된 접근성 높은 그림"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "조직",
+        "description": "GitHub 조직의 시스템 이름"
+      },
+      {
+        "property": "repo",
+        "title": "저장소",
+        "description": "저장소 시스템 이름"
+      },
+      {
+        "property": "extended",
+        "title": "확장 보기",
+        "description": "요소에 README 포함"
+      }
+    ]
+  }
+}

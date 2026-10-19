@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Pihi kikoʻī hiki ke komo ʻia",
+    "description": "Hōʻike holomua hiki ke komo ʻia me nā kikoʻī a me ka hōʻuluʻulu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Pihi",
+        "description": "Hōʻuluʻulu o ka ʻike inā hūnā ʻia, e laʻa me \"ʻike\", \"metadata\", a pēlā aku."
+      },
+      {
+        "slot": "details",
+        "title": "Wehewehe",
+        "description": "Wehewehe kikoʻī hiki ke hūnā ʻia a hōʻike ʻia paha"
+      },
+      {
+        "slot": "",
+        "title": "Pihi wehewehe",
+        "description": "Paʻamau no ka pihi e hōʻike/hūnā ana i ke kikokikona wehewehe, e laʻa me \"ʻike\", \"metadata\", a pēlā aku."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Kikokikona hōʻuluʻulu koho ke wehe ʻia nā kikoʻī"
+      },
+      {
+        "property": "closeText",
+        "title": "Kikokikona hōʻuluʻulu koho ke pani ʻia nā kikoʻī"
+      }
+    ]
+  }
+}

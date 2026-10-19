@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Oś czasu",
+    "description": "Oś czasu wydarzeń z obrazami i tekstem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Tytuł osi czasu",
+        "description": "Tytuł osi czasu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Opcjonalny kolor akcentu."
+      },
+      {
+        "property": "dark",
+        "title": "Ciemny motyw",
+        "description": "Włącz ciemny motyw"
+      },
+      {
+        "slot": "",
+        "title": "Opis osi czasu",
+        "description": "Opcjonalny tekst opisujący oś czasu."
+      },
+      {
+        "property": "events",
+        "title": "Wydarzenia osi czasu",
+        "description": "Wydarzenia na osi czasu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "איור מתואר",
+    "description": "איור נגיש עם תיאור ארוך"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "תמונה"
+      },
+      {
+        "property": "imgAlt",
+        "title": "טקסט חלופי"
+      },
+      {
+        "slot": "figcaption",
+        "title": "כיתוב האיור",
+        "description": "טקסט כיתוב האיור שגלוי תמיד."
+      },
+      {
+        "slot": "details",
+        "title": "תיאור",
+        "description": "תיאור מפורט של התמונה שניתן להסתיר או להציג"
+      },
+      {
+        "slot": "summary",
+        "title": "כפתור תיאור",
+        "description": "ברירת המחדל לכפתור שמציג/מסתיר את טקסט התיאור, לדוגמה \"מידע\", \"מטא-נתונים\" וכו'."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "טקסט תקציר אופציונלי כשהפרטים פתוחים"
+      },
+      {
+        "property": "closeText",
+        "title": "טקסט תקציר אופציונלי כשהפרטים סגורים"
+      }
+    ]
+  }
+}

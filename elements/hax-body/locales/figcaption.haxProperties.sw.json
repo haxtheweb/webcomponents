@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Maelezo mafupi ya kielelezo",
+    "description": "Maelezo mafupi ya kielelezo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Maelezo mafupi",
+        "description": "Maandishi yanayoonyeshwa chini ya kielelezo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Тікелей немесе қашықтан жүктелетін markdown мазмұны блогы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Өңделмеген markdown"
+      },
+      {
+        "property": "source",
+        "title": "Дереккөз",
+        "description": "Markdown бастапқы файлы"
+      }
+    ]
+  }
+}

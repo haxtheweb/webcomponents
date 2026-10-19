@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Hvatning til aðgerða",
+    "description": "Einfaldur hnappur með tengli til að grípa til aðgerða."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Heiti",
+        "description": "Merki tengils"
+      },
+      {
+        "property": "link",
+        "title": "Tengill",
+        "description": "Sláðu inn tengil á hvaða tilfang sem er"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Fela tákn",
+        "description": "Fela táknið sem notað er til að leggja áherslu á texta"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Tákn",
+        "description": "Tákn aðgerðartengils"
+      }
+    ]
+  }
+}

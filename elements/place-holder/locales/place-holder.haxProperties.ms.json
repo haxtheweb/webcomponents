@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Pemegang tempat",
+    "description": "Pemegang tempat yang boleh ditukar kepada jenis media yang telah dipilih"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Jenis",
+        "description": "Jenis gizmo yang diterima ini sebagai pengganti.",
+        "options": {
+          "text": "Teks / kandungan",
+          "document": "Dokumen / fail",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Imej",
+          "math": "Matematik"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Teks",
+        "description": "Kenal pasti pemegang tempat yang dikehendaki dengan lebih terperinci"
+      }
+    ]
+  }
+}

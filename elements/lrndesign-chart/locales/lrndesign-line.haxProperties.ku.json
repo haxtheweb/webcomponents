@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Nexşeya Xêzî",
+    "description": "Li ser bingeha CSVyekê nexşeyeke gihîştbar diafirîne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rengê Balkêş",
+        "description": "Rengekî balkêş ê vebijarkî."
+      },
+      {
+        "title": "Mijara Tarî",
+        "description": "Temaya Tarî Çalak Bike"
+      },
+      {
+        "title": "Pelê CSV",
+        "description": "Daneyan ji CSVyekê bar bike."
+      },
+      {
+        "title": "Sernavê Nexşeyê",
+        "description": "Nivîsa alt a gihîştbar ji bo nexşeya te."
+      },
+      {
+        "title": "Danasîna Nexşeyê",
+        "description": "Danasîna gihîştbar a nexşeya te."
+      },
+      {
+        "title": "Navê Pîvanê",
+        "description": "Rêjeya firehî:bilindahiyê ya nexşeyê (ji bo $ct-scales û $ct-scales-names binêre https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Paşxaneya Torê Nîşan Bide"
+      },
+      {
+        "title": "Qadê Nîşan Bide"
+      },
+      {
+        "title": "Xetê Nîşan Bide"
+      },
+      {
+        "title": "Xalê Nîşan Bide"
+      },
+      {
+        "title": "Firehiya Tevahî"
+      },
+      {
+        "title": "Etîketên Xalan Nîşan Bide"
+      },
+      {
+        "title": "Valahiya Nexşeyê (jor)"
+      },
+      {
+        "title": "Valahiya Nexşeyê (jêr)"
+      },
+      {
+        "title": "Valahiya Nexşeyê (çep)"
+      },
+      {
+        "title": "Valahiya Nexşeyê (rast)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Daneyan Berevajî Bike",
+        "description": "Daneyan berevajî bike, di nav de etîket, rêza seriyan û hemû rêzikên daneyên seriyan."
+      },
+      {
+        "title": "Tabloya HTML",
+        "description": "Vebijarkî: Daneyan wekî tabloyeke HTML bar bike."
+      },
+      {
+        "title": "Kêmtirîna Nexşeyê",
+        "description": "Guhertina nizmiya xwezayî ya nexşeyê dihêle tu nêzîk bikî an nirxa herî nizm a nîşandayî ya nexşeyê sînor bikî"
+      },
+      {
+        "title": "Zêdetirîna Nexşeyê",
+        "description": "Guhertina bilindiya xwezayî ya nexşeyê dihêle tu nêzîk bikî an nirxa herî bilind a nîşandayî ya nexşeyê sînor bikî"
+      },
+      {
+        "title": "Etîketên Xalan Nîşan Bide",
+        "options": {
+          "middle": "Navîn",
+          "start": "Destpêk",
+          "end": "Dawî"
+        }
+      },
+      {
+        "title": "Dûrkirina X a Etîketên Xalan"
+      },
+      {
+        "title": "Dûrkirina Y a Etîketên Xalan"
+      },
+      {
+        "title": "Xeta Nerm"
+      },
+      {
+        "title": "Bingeha Qadê",
+        "description": "Bingeha nexşeya qadê ku ji bo girtina şiklê qadê tê bikaranîn (bi gelemperî 0 e)."
+      },
+      {
+        "title": "Eksena X Torê Nîşan Bide",
+        "description": "Tora Eksena X nîşan bide."
+      },
+      {
+        "title": "Dûrkirina Eksena X"
+      },
+      {
+        "title": "Cihê Eksena X",
+        "description": "Cihê ku etîket lê têne danîn. Dikare wekî \"start\" an \"end\" were danîn, ku \"start\" li ser eksena stûnî bi çep an jor û \"end\" li ser eksena asoyî bi rast an jêr re wekhev e"
+      },
+      {
+        "title": "Eksena X Etîketê Nîşan Bide",
+        "description": "Etîketa Eksena X nîşan bide."
+      },
+      {
+        "title": "Etîketa Eksena X (dûrkirina asoyî)",
+        "description": "Cihê asoyî yê etîketên Eksena X."
+      },
+      {
+        "title": "Etîketa Eksena X (dûrkirina stûnî)",
+        "description": "Cihê stûnî yê etîketên Eksena X."
+      },
+      {
+        "title": "Sernavê Eksena X",
+        "description": "Sernavê vebijarkî ji bo eksena X."
+      },
+      {
+        "title": "Sernavê Eksena X (dûrkirina asoyî)",
+        "description": "Cihê asoyî yê sernavê Eksena X."
+      },
+      {
+        "title": "Sernavê Eksena X (dûrkirina stûnî)",
+        "description": "Cihê stûnî yê sernavê Eksena X."
+      },
+      {
+        "title": "Lengera Sernavê Eksena X",
+        "description": "Lengera vebijarkî ji bo sernavê eksena X.",
+        "options": {
+          "middle": "navîn",
+          "end": "dawî",
+          "start": "destpêk"
+        }
+      },
+      {
+        "title": "Eksena Y: Torê Nîşan Bide",
+        "description": "Tora Eksena Y nîşan bide."
+      },
+      {
+        "title": "Dûrkirina Eksena Y"
+      },
+      {
+        "title": "Cihê Eksena Y",
+        "description": "Cihê ku etîket lê têne danîn. Dikare wekî \"start\" an \"end\" were danîn, ku \"start\" li ser eksena stûnî bi çep an jor û \"end\" li ser eksena asoyî bi rast an jêr re wekhev e"
+      },
+      {
+        "title": "Eksena Y Etîketê Nîşan Bide",
+        "description": "Etîketa Eksena Y nîşan bide."
+      },
+      {
+        "title": "Etîketa Eksena Y (dûrkirina asoyî)",
+        "description": "Cihê asoyî yê etîketa Eksena Y."
+      },
+      {
+        "title": "Etîketa Eksena Y (dûrkirina stûnî)",
+        "description": "Cihê stûnî yê etîketa Eksena Y."
+      },
+      {
+        "title": "Valahiya Kêmtirîn a Pîvana Eksena Y",
+        "description": "Bilindahiya kêmtirîn a gavên pîvanê bi pîkselan diyar dike."
+      },
+      {
+        "title": "Pîvana Eksena Y (tenê hejmarên tam)",
+        "description": "Ji bo gavên pîvanê tenê nirxên hejmarên tam bi kar bîne."
+      },
+      {
+        "title": "Sernavê Eksena Y",
+        "description": "Sernavê vebijarkî ji bo eksena Y."
+      },
+      {
+        "title": "Sernavê Eksena Y (dûrkirina stûnî)",
+        "description": "Cihê asoyî yê sernavê Eksena Y."
+      },
+      {
+        "title": "Sernavê Eksena Y (dûrkirina asoyî)",
+        "description": "Cihê asoyî yê sernavê Eksena Y."
+      },
+      {
+        "title": "Lengera Sernavê Eksena Y",
+        "description": "Lengera vebijarkî ji bo sernavê eksena Y.",
+        "options": {
+          "middle": "navîn",
+          "end": "dawî",
+          "start": "destpêk"
+        }
+      },
+      {
+        "title": "Zivirandina Sernavê Eksena Y",
+        "description": "Sernavê eksena Y bizivirîne?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Thèmes disponibles",
+    "description": "Afficher les thèmes HAXcms disponibles avec changement d'aperçu en direct"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Mode d'affichage",
+        "description": "Choisissez comment afficher les thèmes",
+        "options": {
+          "gallery": "Galerie",
+          "table": "Tableau"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Afficher les détails",
+        "description": "Afficher les descriptions des thèmes et des informations supplémentaires"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Afficher les thèmes cachés et obsolètes",
+        "description": "Afficher les thèmes cachés, obsolètes et affreux en plus des thèmes par défaut du tableau de bord"
+      },
+      {
+        "property": "columns",
+        "title": "Colonnes (galerie)",
+        "description": "Nombre de colonnes en vue galerie"
+      }
+    ]
+  }
+}

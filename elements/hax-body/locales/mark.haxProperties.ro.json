@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Evidențiere",
+    "description": "Evidențiază text inline."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Text evidențiat."
+      }
+    ]
+  }
+}

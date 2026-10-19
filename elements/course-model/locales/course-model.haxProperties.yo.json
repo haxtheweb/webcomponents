@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "àwòṣe ẹ̀kọ́",
+    "description": "Ìṣètò ìbáṣepọ̀ fún àwọn èrò ẹ̀kọ́ pẹ̀lú àlàyé, ìṣípòpadà, àti àyẹ̀wò ìmọ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "àkọlé"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Agbègbè àlàyé"
+      },
+      {
+        "title": "Agbègbè àwọn àlàyé"
+      },
+      {
+        "title": "Agbègbè ìṣípòpadà"
+      },
+      {
+        "title": "Agbègbè Àyẹ̀wò Ìmọ̀"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Agbègbè àmì"
+      }
+    ]
+  }
+}

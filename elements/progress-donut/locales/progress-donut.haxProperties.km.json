@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ដូណាត់វឌ្ឍនភាព",
+    "description": "ដូណាត់វឌ្ឍនភាព"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងនៃធាតុ"
+      },
+      {
+        "property": "desc",
+        "title": "ការពិពណ៌នា",
+        "description": "ការពិពណ៌នាវែងដែលងាយស្រួលចូលប្រើ"
+      },
+      {
+        "property": "imageSrc",
+        "title": "ប្រភពរូបភាព",
+        "description": "ប្រភពរូបភាពនៅក្នុងដូណាត់។"
+      },
+      {
+        "property": "imageAlt",
+        "title": "អត្ថបទជំនួសរូបភាព",
+        "description": "អត្ថបទជំនួសសម្រាប់រូបភាព។"
+      },
+      {
+        "property": "animated",
+        "title": "មានចលនា",
+        "description": "ថាតើវឌ្ឍនភាពមានចលនាពេលផ្ទុកលើកដំបូងឬអត់"
+      },
+      {
+        "property": "complete",
+        "title": "បានបញ្ចប់",
+        "description": "អារេនៃតម្លៃដែលបានបញ្ចប់។"
+      },
+      {
+        "property": "total",
+        "title": "សរុប",
+        "description": "សរុបពេលធាតុទាំងអស់បានបញ្ចប់។"
+      },
+      {
+        "property": "startAngle",
+        "title": "មុំចាប់ផ្ដើម",
+        "description": "មុំដូណាត់ដែលវឌ្ឍនភាពចាប់ផ្ដើម"
+      }
+    ]
+  }
+}

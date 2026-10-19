@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Nút chi tiết dễ tiếp cận",
+    "description": "Hiển thị dần nội dung dễ tiếp cận với detail và summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Nút",
+        "description": "Tóm tắt nội dung khi bị ẩn, ví dụ: \"thông tin\", \"siêu dữ liệu\", v.v."
+      },
+      {
+        "slot": "details",
+        "title": "Mô tả",
+        "description": "Mô tả chi tiết có thể ẩn hoặc hiện"
+      },
+      {
+        "slot": "",
+        "title": "Nút mô tả",
+        "description": "Mặc định cho nút hiện/ẩn văn bản mô tả, ví dụ: \"thông tin\", \"siêu dữ liệu\", v.v."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Văn bản tóm tắt tùy chọn khi chi tiết đang mở"
+      },
+      {
+        "property": "closeText",
+        "title": "Văn bản tóm tắt tùy chọn khi chi tiết đang đóng"
+      }
+    ]
+  }
+}

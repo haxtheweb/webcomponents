@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Библиографски елемент",
+    "description": "Елемент, представящ единичен цитат в библиография, с поддръжка на различни формати и опции за експорт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Тип",
+        "description": "Тип на цитата",
+        "options": {
+          "web": "Уеб",
+          "journal": "Списание",
+          "book": "Книга"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Заглавие",
+        "description": "Заглавие на елемента"
+      },
+      {
+        "property": "authors",
+        "title": "Автор(и)",
+        "description": "Събитията във времевата линия"
+      },
+      {
+        "property": "publisher",
+        "title": "Издател",
+        "description": "Оригинален уебсайт"
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "相对标题",
+    "description": "根据父级标题输出正确的标题层级"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "父级标题的资源 ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "禁用链接按钮功能。"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "将复制链接按钮对齐到标题的最右侧。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "找不到父级时使用的标题级别。"
+      },
+      {
+        "property": "copyMessage",
+        "description": "覆盖复制链接提示消息的默认文本。"
+      },
+      {
+        "property": "linkLabel",
+        "description": "覆盖复制链接按钮的默认标签。"
+      },
+      {
+        "property": "linkIcon",
+        "description": "覆盖复制链接按钮的默认图标。"
+      },
+      {
+        "property": "closeLabel",
+        "description": "覆盖复制链接提示消息关闭按钮的默认标签。"
+      },
+      {
+        "property": "closeIcon",
+        "description": "覆盖复制链接提示消息关闭按钮的默认图标。"
+      }
+    ]
+  }
+}

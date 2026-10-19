@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Comhpháirt Foghlama",
+    "description": "Cárta do theagascóirí chun oideolaíocht agus straitéisí teagaisc a chur in iúl."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Cineál",
+        "description": "An cineál cárta le húsáid."
+      },
+      {
+        "property": "subtitle",
+        "title": "Fotheideal",
+        "description": "Fotheideal an chárta."
+      },
+      {
+        "property": "url",
+        "title": "Nasc",
+        "description": "Nasc roghnach don chárta (Níl nasc ar fáil do Chuspóirí Foghlama)."
+      },
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Socraigh Teideal, sáraíonn sé seo an teideal bunaithe ar chineál"
+      },
+      {
+        "property": "icon",
+        "title": "Deilbhín",
+        "description": "Socraigh deilbhín, sáraíonn sé seo an deilbhín bunaithe ar chineál"
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "Socraigh dath aiceanta, sáraíonn sé seo an dath bunaithe ar chineál"
+      },
+      {
+        "slot": "",
+        "title": "Clár Ábhair"
+      }
+    ]
+  }
+}

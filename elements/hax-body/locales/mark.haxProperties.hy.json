@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ընդգծում",
+    "description": "Ընդգծել տողային տեքստը։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Տեքստ",
+        "description": "Ընդգծված տեքստ։"
+      }
+    ]
+  }
+}

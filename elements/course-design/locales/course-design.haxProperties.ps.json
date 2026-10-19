@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "د کورس ډیزاین",
+    "description": "د تعلیمي موادو او د کورس د ډیزاین عناصرو لپاره کانټینر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "د کورس پېژندونکی",
+        "description": "OER سکیما: د کورس پېژندونکی، لکه MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "وړاندې شوی سمستر",
+        "description": "OER سکیما: هغه سمستر چې کورس پکې وړاندې کېږي."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "د وړاندې کولو بڼه",
+        "description": "OER سکیما: د کورس د وړاندې کولو بڼه (لکه حضوري، آنلاین، ګډه)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "لومړنی ښوونکی",
+        "description": "OER سکیما: د کورس لومړنی ښوونکی."
+      },
+      {
+        "property": "syllabus",
+        "title": "د درسي پروګرام URL",
+        "description": "OER سکیما: د کورس درسي پروګرام ته URL."
+      }
+    ]
+  }
+}

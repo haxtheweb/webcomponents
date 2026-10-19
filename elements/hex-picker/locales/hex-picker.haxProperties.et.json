@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "HEX-värvivalija",
+    "description": "HEX-koodiga värvivalija"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Väärtus",
+        "description": "HEX-vaikeväärtus"
+      },
+      {
+        "property": "disabled",
+        "title": "Keelatud",
+        "description": "Keela tekstiväli"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Suur kuva",
+        "description": "Kaasa värv suures kuvas"
+      }
+    ]
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Grafico a barre",
+    "description": "Crea un grafico accessibile a partire da un CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Colore di accento",
+        "description": "Un colore di accento facoltativo."
+      },
+      {
+        "title": "Tema scuro",
+        "description": "Attiva tema scuro"
+      },
+      {
+        "title": "File CSV",
+        "description": "Carica dati da un CSV."
+      },
+      {
+        "title": "Titolo del grafico",
+        "description": "Testo alternativo accessibile per il grafico."
+      },
+      {
+        "title": "Descrizione del grafico",
+        "description": "Descrizione accessibile del grafico."
+      },
+      {
+        "title": "Nome della scala",
+        "description": "Il rapporto larghezza:altezza del grafico (vedi https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings per $ct-scales e $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Mostra griglia di sfondo"
+      },
+      {
+        "title": "Barre orizzontali",
+        "description": "Inverte gli assi del grafico a barre per disegnare un grafico a barre orizzontali. Tieni presente che devi invertire anche le impostazioni degli assi, poiché l'asse Y mostrerà ora le etichette e l'asse X i valori."
+      },
+      {
+        "title": "Barre impilate",
+        "description": "Se impostata su true, questa proprietà fa impilare le barre delle serie."
+      },
+      {
+        "title": "Distribuisci serie",
+        "description": "Se impostata su true, ogni barra rappresenterà una serie e l'array di dati dovrà essere un array monodimensionale di valori anziché un array di serie."
+      },
+      {
+        "title": "Spaziatura del grafico (sopra)"
+      },
+      {
+        "title": "Spaziatura del grafico (sotto)"
+      },
+      {
+        "title": "Spaziatura del grafico (sinistra)"
+      },
+      {
+        "title": "Spaziatura del grafico (destra)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Inverti dati",
+        "description": "Inverte i dati, incluse le etichette, l'ordine delle serie e gli interi array di dati delle serie."
+      },
+      {
+        "title": "Tabella HTML",
+        "description": "Facoltativo: carica i dati come tabella HTML."
+      },
+      {
+        "title": "Minimo del grafico",
+        "description": "Sostituire il minimo naturale del grafico permette di ingrandire o limitare il valore più basso mostrato"
+      },
+      {
+        "title": "Massimo del grafico",
+        "description": "Sostituire il massimo naturale del grafico permette di ingrandire o limitare il valore più alto mostrato"
+      },
+      {
+        "title": "Asse X: mostra griglia",
+        "description": "Mostra la griglia dell'asse X."
+      },
+      {
+        "title": "Scostamento asse X"
+      },
+      {
+        "title": "Posizione asse X",
+        "description": "Posizione in cui sono collocate le etichette. Può essere impostata su \"start\" o \"end\", dove \"start\" equivale a sinistra o in alto sull'asse verticale e \"end\" equivale a destra o in basso sull'asse orizzontale"
+      },
+      {
+        "title": "Asse X: mostra etichetta",
+        "description": "Mostra l'etichetta dell'asse X."
+      },
+      {
+        "title": "Etichetta asse X (scostamento orizzontale)",
+        "description": "Posizione orizzontale delle etichette dell'asse X."
+      },
+      {
+        "title": "Etichetta asse X (scostamento verticale)",
+        "description": "Posizione verticale delle etichette dell'asse X."
+      },
+      {
+        "title": "Titolo asse X",
+        "description": "Titolo facoltativo per l'asse X."
+      },
+      {
+        "title": "Titolo asse X (scostamento orizzontale)",
+        "description": "Posizione orizzontale del titolo dell'asse X."
+      },
+      {
+        "title": "Titolo asse X (scostamento verticale)",
+        "description": "Posizione verticale del titolo dell'asse X."
+      },
+      {
+        "title": "Ancoraggio titolo asse X",
+        "description": "Ancoraggio facoltativo per il titolo dell'asse X.",
+        "options": {
+          "middle": "centro",
+          "end": "fine",
+          "start": "inizio"
+        }
+      },
+      {
+        "title": "Spazio minimo scala asse X",
+        "description": "Specifica l'altezza minima in pixel degli intervalli della scala."
+      },
+      {
+        "title": "Scala asse X (solo interi)",
+        "description": "Usa solo valori interi (numeri interi) per gli intervalli della scala."
+      },
+      {
+        "title": "Asse Y: mostra griglia",
+        "description": "Mostra la griglia dell'asse Y."
+      },
+      {
+        "title": "Scostamento asse Y"
+      },
+      {
+        "title": "Posizione asse Y",
+        "description": "Posizione in cui sono collocate le etichette. Può essere impostata su \"start\" o \"end\", dove \"start\" equivale a sinistra o in alto sull'asse verticale e \"end\" equivale a destra o in basso sull'asse orizzontale"
+      },
+      {
+        "title": "Asse Y: mostra etichetta",
+        "description": "Mostra l'etichetta dell'asse Y."
+      },
+      {
+        "title": "Etichetta asse Y (scostamento orizzontale)",
+        "description": "Posizione orizzontale dell'etichetta dell'asse Y."
+      },
+      {
+        "title": "Etichetta asse Y (scostamento verticale)",
+        "description": "Posizione verticale dell'etichetta dell'asse Y."
+      },
+      {
+        "title": "Spazio minimo scala asse Y",
+        "description": "Specifica l'altezza minima in pixel degli intervalli della scala."
+      },
+      {
+        "title": "Scala asse Y (solo interi)",
+        "description": "Usa solo valori interi (numeri interi) per gli intervalli della scala."
+      },
+      {
+        "title": "Titolo asse Y",
+        "description": "Titolo facoltativo per l'asse Y."
+      },
+      {
+        "title": "Titolo asse Y (scostamento verticale)",
+        "description": "Posizione orizzontale del titolo dell'asse Y."
+      },
+      {
+        "title": "Titolo asse Y (scostamento orizzontale)",
+        "description": "Posizione orizzontale del titolo dell'asse Y."
+      },
+      {
+        "title": "Ancoraggio titolo asse Y",
+        "description": "Ancoraggio facoltativo per il titolo dell'asse Y.",
+        "options": {
+          "middle": "centro",
+          "end": "fine",
+          "start": "inizio"
+        }
+      },
+      {
+        "title": "Capovolgi titolo asse Y",
+        "description": "Capovolgere il titolo dell'asse Y?"
+      },
+      {
+        "title": "Valore di riferimento",
+        "description": "A meno che minimo/massimo non siano impostati esplicitamente, il grafico a barre sarà centrato sullo zero per impostazione predefinita."
+      },
+      {
+        "title": "Distanza tra le barre delle serie",
+        "description": "Specifica la distanza in pixel tra le barre di un gruppo."
+      },
+      {
+        "title": "Modalità di impilamento",
+        "description": "Se impostata su \"true\", questa proprietà calcola un totale per ogni punto delle serie, influenzando anche l'asse Y e i limiti complessivi del grafico. Se impostata su \"false\", forza le barre impilate a partire dalla linea dello zero. In modalità impilata la proprietà \"seriesBarDistance\" non ha effetto."
+      }
+    ]
+  }
+}

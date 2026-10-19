@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Imaxe mellorada",
+    "description": "Un xeito de presentar imaxes con varias melloras."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orixe",
+        "description": "O URL da imaxe."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto para describir a imaxe a usuarios con discapacidade visual."
+      },
+      {
+        "property": "link",
+        "title": "Ligazón",
+        "description": "Ligar a imaxe a un URL"
+      },
+      {
+        "property": "card",
+        "title": "Tarxeta",
+        "description": "Aplicar unha sombra para darlle aparencia de tarxeta elevada."
+      },
+      {
+        "property": "box",
+        "title": "Caixa",
+        "description": "Aplicar unha caixa visual arredor da imaxe."
+      },
+      {
+        "property": "offset",
+        "title": "Desprazamento",
+        "description": "Aplicar un desprazamento á esquerda ou á dereita á imaxe.",
+        "options": {
+          "none": "ningún",
+          "wide": "ancho",
+          "narrow": "estreito"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Cita",
+        "description": "Cita da imaxe."
+      },
+      {
+        "property": "caption",
+        "title": "Lenda",
+        "description": "Pé da imaxe."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Título da figura",
+        "description": "Título para a etiqueta da figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descrición da figura",
+        "description": "Descrición para a etiqueta da figura."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Imaxe en miniatura",
+        "description": "Fonte da imaxe en miniatura. Mostra a miniatura pero abre a fonte completa nunha xanela modal."
+      },
+      {
+        "property": "round",
+        "title": "Imaxe redonda",
+        "description": "Recorta a aparencia da imaxe en forma de círculo."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Desactivar a xanela modal da imaxe",
+        "description": "Desactiva que os clics abran a imaxe nun diálogo de inspección de imaxes."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Mostrar como markdown",
+        "description": "Mostrar o pé e a cita como markdown."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relative heading",
+    "description": "naglalabas ng tamang hierarchy ng heading batay sa heading ng parent"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Resource ID ng Heading ng Parent"
+      },
+      {
+        "property": "disableLink",
+        "description": "Dini-disable ang feature ng link button."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Inihahanay ang copy link button sa pinakakanan ng heading."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Antas ng heading kung hindi makita ang parent."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Pinapalitan ang default na teksto ng toast message ng copy link."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Pinapalitan ang default na label ng copy link button."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Pinapalitan ang default na icon ng copy link button."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Pinapalitan ang default na label ng close button ng toast ng copy link."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Pinapalitan ang default na icon ng close button ng toast ng copy link."
+      }
+    ]
+  }
+}

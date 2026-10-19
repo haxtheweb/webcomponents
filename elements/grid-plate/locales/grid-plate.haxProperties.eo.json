@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kolumna aranĝo",
+    "description": "Aranĝi materialon en simplaj kolumnoj"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Kolumna aranĝo",
+        "description": "Stilo por prezenti ĉi tiujn erojn (povas ŝanĝiĝi por malgrandaj ekranoj)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Malŝalti respondemecon",
+        "description": "Marku la skatolon por konservi kolumnojn sur pli grandaj ekranoj, dum ili ankoraŭ stakiĝas sur la plej malgrandaj ekranoj"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Ena marĝeno de eroj",
+        "description": "Ena marĝeno ene de ĉiu ero"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Marĝenoj de eroj",
+        "description": "Marĝeno inter eroj"
+      }
+    ]
+  }
+}

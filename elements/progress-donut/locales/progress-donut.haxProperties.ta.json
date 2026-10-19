@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "முன்னேற்ற வளையம்",
+    "description": "முன்னேற்ற வளையம்"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "தலைப்பு",
+        "description": "உறுப்பின் தலைப்பு"
+      },
+      {
+        "property": "desc",
+        "title": "விளக்கம்",
+        "description": "அணுகக்கூடிய நீண்ட விவரம்"
+      },
+      {
+        "property": "imageSrc",
+        "title": "பட மூலம்",
+        "description": "வளையத்தின் உள்ளே உள்ள படத்தின் மூலம்."
+      },
+      {
+        "property": "imageAlt",
+        "title": "பட மாற்று உரை",
+        "description": "படத்திற்கான மாற்று உரை."
+      },
+      {
+        "property": "animated",
+        "title": "அசைவூட்டம்",
+        "description": "முதல் ஏற்றத்தில் முன்னேற்றம் அசைவூட்டப்பட வேண்டுமா"
+      },
+      {
+        "property": "complete",
+        "title": "முடிந்தது",
+        "description": "முடிக்கப்பட்ட மதிப்புகளின் அணி."
+      },
+      {
+        "property": "total",
+        "title": "மொத்தம்",
+        "description": "அனைத்து உருப்படிகளும் முடிந்தபோது உள்ள மொத்தம்."
+      },
+      {
+        "property": "startAngle",
+        "title": "தொடக்கக் கோணம்",
+        "description": "முன்னேற்றம் தொடங்கும் வளையக் கோணம்"
+      }
+    ]
+  }
+}

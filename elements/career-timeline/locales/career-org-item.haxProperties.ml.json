@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "കരിയർ ഇനം",
+    "description": "ഒരു വ്യക്തിഗത ഓർഗനൈസേഷനും അതുമായി ബന്ധപ്പെട്ട റോളുകളും"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "ഓർഗനൈസേഷന്റെ പേര്"
+      },
+      {
+        "property": "location",
+        "title": "സ്ഥലം"
+      },
+      {
+        "property": "source",
+        "title": "ഉറവിടം"
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Կոդի օրինակ",
+    "description": "Էջում ընդգծված կոդի օրինակ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Կոդի ընդգծում",
+        "description": "Կոդի դաշտի վրա կիրառվող շարահյուսական ընդգծում",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON տվյալներ",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Սեղմատախտակին պատճենելու կոճակ",
+        "description": "կոճակ վերևի աջ անկյունում՝ «պատճենել սեղմատախտակին» գրությամբ"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Ընդգծման սկիզբ",
+        "description": "Տողի համարը, որից սկսել ընդգծումը"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Ընդգծման ավարտ",
+        "description": "Տողը, որում ավարտել ընդգծումը"
+      }
+    ]
+  }
+}

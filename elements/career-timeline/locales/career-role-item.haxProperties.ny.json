@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Udindo wa Ntchito",
+    "description": "Udindo umodzi mkati mwa bungwe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mutu"
+      },
+      {
+        "property": "startDate",
+        "title": "Tsiku Loyambira"
+      },
+      {
+        "property": "endDate",
+        "title": "Tsiku Lomaliza (Losankha)"
+      },
+      {
+        "property": "skills",
+        "title": "Maluso Ogwirizana",
+        "description": "Sankhani batani la + kuti muyambe kuonjezera maluso"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Корти ретро",
+    "description": "Корти оддӣ бо тарҳи ретро."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Сарлавҳа",
+        "description": "Сарлавҳаи асосии корт."
+      },
+      {
+        "property": "url",
+        "description": "URL, ки ҳангоми клик бар корт кушода мешавад."
+      },
+      {
+        "property": "subtitle",
+        "title": "Зерсарлавҳа",
+        "description": "Зерсарлавҳаи корт."
+      },
+      {
+        "property": "tags",
+        "title": "Тегҳо",
+        "description": "Барчаспҳо бо вергул ҷудошуда."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Манбаи медиа",
+        "description": "Манбаи асосии медиа."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Манбаъ ҳангоми овардани курсор",
+        "description": "Манбаи медиа, ки ҳангоми овардани курсор ё фаъол кардани корт нишон дода мешавад."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидӣ, ки дар тамоми корт истифода мешавад."
+      },
+      {
+        "property": "dark",
+        "title": "Торик",
+        "description": "Рангҳои асосии реҷаи торикро истифода баред."
+      }
+    ]
+  }
+}

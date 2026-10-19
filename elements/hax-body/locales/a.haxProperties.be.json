@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Простая спасылка",
+    "description": "Базавы элемент спасылкі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Спасылка",
+        "description": "URL прызначэння."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Тэкст",
+        "description": "Бачны тэкст спасылкі."
+      },
+      {
+        "attribute": "target",
+        "title": "Мэта",
+        "description": "Дзе адкрываць спасылку.",
+        "options": {
+          "": "Тое ж акно",
+          "_blank": "Новае акно - _blank",
+          "_top": "Верхняе акно - _top",
+          "_parent": "Бацькоўскае акно - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Тэкст загалоўка",
+        "description": "Дапаможны загаловак для даступнасці і SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Сувязь са старонкай прызначэння (бяспека/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

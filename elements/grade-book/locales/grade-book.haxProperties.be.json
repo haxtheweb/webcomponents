@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Журнал адзнак",
+    "description": "Бязгаловы журнал адзнак з падтрымкай некалькіх бэкендаў і рубрык."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Крыніца",
+        "description": "Тып крыніцы даных (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-адрас (JSON)",
+          "json": "Блок даных JSON",
+          "filesystem": "Файлавая сістэма"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Даныя крыніцы",
+        "description": "URL або JSON-даныя для журнала адзнак."
+      },
+      {
+        "property": "forCourse",
+        "title": "Спасылка на курс",
+        "description": "Ідэнтыфікатар курса, які выводзіцца як oer:forCourse у кожным рэсурсе ацэньвання."
+      }
+    ]
+  }
+}

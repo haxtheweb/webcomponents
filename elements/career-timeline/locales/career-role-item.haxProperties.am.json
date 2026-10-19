@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "የሙያ ሚና",
+    "description": "በድርጅት ውስጥ ያለ አንድ ሚና"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ርዕስ"
+      },
+      {
+        "property": "startDate",
+        "title": "የመጀመሪያ ቀን"
+      },
+      {
+        "property": "endDate",
+        "title": "የመጨረሻ ቀን (አማራጭ)"
+      },
+      {
+        "property": "skills",
+        "title": "ተዛማጅ ክህሎቶች",
+        "description": "ክህሎቶችን ማከል ለመጀመር የ+ አዝራሩን ይምረጡ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Blok CMS",
+    "description": "Blok CMS sing dirender ing backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modul",
+        "description": "Modul sing diemot saka CMS kita"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta blok sing diemot saka CMS kita"
+      }
+    ]
+  }
+}

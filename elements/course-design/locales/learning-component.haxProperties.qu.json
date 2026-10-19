@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Yachay T'aqa",
+    "description": "Yachachiqkunapaq tarjeta, yachachiy ñankunata yachachiy estrategiakunata willanankupaq."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Laya",
+        "description": "Llamk'achinapaq tarjetap rikch'aynin."
+      },
+      {
+        "property": "subtitle",
+        "title": "Uku Suti",
+        "description": "Tarjetap uku sutin."
+      },
+      {
+        "property": "url",
+        "title": "T'inki",
+        "description": "Tarjetapaq munaspalla t'inki (Yachay Munasqakunapaq t'inki mana kanchu)."
+      },
+      {
+        "property": "title",
+        "title": "Suti",
+        "description": "Sutita churay, kayqa rikch'ayman hina sutita rantin"
+      },
+      {
+        "property": "icon",
+        "title": "Unancha",
+        "description": "Iconota churay, kayqa rikch'ayman hina iconota rantin"
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Accent llimpita churay, kayqa rikch'ayman hina llimpita rantin"
+      },
+      {
+        "slot": "",
+        "title": "Ukhunkuna"
+      }
+    ]
+  }
+}

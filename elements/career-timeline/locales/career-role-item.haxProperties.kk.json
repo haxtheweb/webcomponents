@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Мансаптағы рөл",
+    "description": "Ұйым ішіндегі жеке рөл"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Тақырып"
+      },
+      {
+        "property": "startDate",
+        "title": "Басталу күні"
+      },
+      {
+        "property": "endDate",
+        "title": "Аяқталу күні (міндетті емес)"
+      },
+      {
+        "property": "skills",
+        "title": "Байланысты дағдылар",
+        "description": "Дағдыларды қосуды бастау үшін + түймесін таңдаңыз"
+      }
+    ]
+  }
+}

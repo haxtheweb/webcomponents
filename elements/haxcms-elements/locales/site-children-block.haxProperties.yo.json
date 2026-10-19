@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: búlọ́ọ̀kù ọmọ",
+    "description": "Búlọ́ọ̀kù alágbèéká láti fi ọmọ ojú-ìwé lọ́wọ́lọ́wọ́ hàn"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Ọ̀nà alágbèéká",
+        "description": "Bí a ṣe ń ṣírò àwọn ọmọ ní ìbámu pẹ̀lú ẹ̀yà yìí",
+        "options": {
+          "active": "Àwọn ọmọ tó ń ṣiṣẹ́",
+          "parent": "Àwọn ọmọ òbí",
+          "ancestor": "Gbogbo ọmọ láti ọ̀dọ̀ baba-ńlá tó ga jùlọ"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Ìpele ìbẹ̀rẹ̀"
+      },
+      {
+        "property": "end",
+        "title": "Ìpele ìparí"
+      }
+    ]
+  }
+}

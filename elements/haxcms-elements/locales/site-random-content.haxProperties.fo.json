@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tilvildarligt síðuinnihald",
+    "description": "Vís eitt tilvildarligt element á ovasta stigi frá einari valdari síðu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Síða",
+        "description": "Vel síðuna at taka tilvildarligt innihald frá. Elementið vísir tilvildarliga eitt av HTML-elementunum á ovasta stigi frá hesi síðuni."
+      }
+    ]
+  }
+}

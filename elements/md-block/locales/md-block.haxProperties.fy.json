@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "In blok markdown-ynhâld, direkt of op ôfstân laden"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Rauwe markdown"
+      },
+      {
+        "property": "source",
+        "title": "Boarne",
+        "description": "Boarnetriem foar markdown"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Номериран списък",
+    "description": "Създаване на номериран списък."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Стил на номерацията",
+        "description": "Стил, използван за номерацията на номерирания списък.",
+        "options": {
+          "": "По подразбиране (десетични)",
+          "list-decimal-leading-zero": "Десетични с водеща нула (01, 02, 03)",
+          "list-lower-alpha": "Малки букви (a, b, c)",
+          "list-upper-alpha": "Главни букви (A, B, C)",
+          "list-lower-roman": "Малки римски цифри (i, ii, iii)",
+          "list-upper-roman": "Главни римски цифри (I, II, III)"
+        }
+      }
+    ]
+  }
+}

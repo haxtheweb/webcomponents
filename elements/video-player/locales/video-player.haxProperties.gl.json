@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Vídeo",
+    "description": "Reprodución de vídeo accesible desde varias fontes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orixe",
+        "description": "URL deste multimedia."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Título",
+        "description": "Título mostrado debaixo do vídeo."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Imaxe de póster",
+        "description": "URL da imaxe de póster."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Pistas de texto",
+        "description": "Subtítulos pechados, subtítulos, descricións e outras pistas de texto do vídeo."
+      },
+      {
+        "property": "startTime",
+        "title": "Tempo de inicio",
+        "description": "Iniciar o vídeo nun momento concreto (segundos)."
+      },
+      {
+        "property": "endTime",
+        "title": "Tempo de fin",
+        "description": "Rematar o vídeo nun momento concreto (segundos); require un tempo de inicio."
+      },
+      {
+        "property": "learningMode",
+        "title": "Activar o modo de aprendizaxe",
+        "description": "Desactiva o avance e o retroceso rápidos."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Quitar o botón de abrir en YouTube",
+        "description": "Quita o botón para abrir o vídeo en YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Incluír unha ligazón para compartir?",
+        "description": "Ofrece unha ligazón para compartir o vídeo."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ocultar as marcas de tempo",
+        "description": "Ocultar as marcas de tempo na transcrición."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ocultar a transcrición",
+        "description": "Ocultar a transcrición de forma predeterminada."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Pista de audiodescrición",
+        "description": "URL dunha pista de audiodescrición (ficheiro MP3) que narra os elementos visuais."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indica se se debe usar CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Permitir a reprodución en segundo plano",
+        "description": "Seguir reproducindo cando a lapela do navegador perde o foco."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema escuro para a transcrición",
+        "description": "Activar o tema escuro para a transcrición."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Desactivar interactivo",
+        "description": "Desactivar o modo interactivo que fai que se poida facer clic na transcrición."
+      },
+      {
+        "property": "lang",
+        "title": "Idioma",
+        "description": "Idioma do multimedia."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "(obsoleto) Selecciona a cor de acento do reprodutor."
+      }
+    ]
+  }
+}

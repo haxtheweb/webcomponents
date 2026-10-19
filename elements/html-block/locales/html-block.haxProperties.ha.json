@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Toshen Html",
+    "description": "Toshen HTML na asali da ke samar da haɗin HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Lambar HTML da kake son gabatarwa a abun ciki"
+      }
+    ]
+  }
+}

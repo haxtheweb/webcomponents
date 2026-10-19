@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Belgili roʻyxat",
+    "description": "Belgili roʻyxat yaratish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Belgi uslubi",
+        "description": "Tartiblanmagan roʻyxat belgilari uchun ishlatiladigan uslub.",
+        "options": {
+          "": "Standart (kvadrat)",
+          "list-disc": "Disk",
+          "list-circle": "Doira",
+          "list-square": "Kvadrat"
+        }
+      }
+    ]
+  }
+}

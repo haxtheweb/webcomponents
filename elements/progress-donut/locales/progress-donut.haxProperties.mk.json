@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Крофна за напредок",
+    "description": "Крофна за напредување"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов на елементот"
+      },
+      {
+        "property": "desc",
+        "title": "Опис",
+        "description": "Достапен долг опис"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Извор на сликата",
+        "description": "Извор на сликата во крофната."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Алтернативен текст на сликата",
+        "description": "Алтернативен текст за сликата."
+      },
+      {
+        "property": "animated",
+        "title": "Анимирано",
+        "description": "Дали напредокот се анимира при првото вчитување"
+      },
+      {
+        "property": "complete",
+        "title": "Завршено",
+        "description": "Низа од завршени вредности."
+      },
+      {
+        "property": "total",
+        "title": "Вкупно",
+        "description": "Вкупно кога сите ставки се завршени."
+      },
+      {
+        "property": "startAngle",
+        "title": "Почетен агол",
+        "description": "Агол на крофната каде што започнува напредокот"
+      }
+    ]
+  }
+}

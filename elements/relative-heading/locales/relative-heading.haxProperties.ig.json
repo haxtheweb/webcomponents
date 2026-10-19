@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Isiokwu metụtara",
+    "description": "na-ewepụta usoro isiokwu ziri ezi dabere n'isiokwu nne na nna"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID akụrụngwa nke isiokwu nne na nna"
+      },
+      {
+        "property": "disableLink",
+        "description": "Na-agbanyụ njirimara bọtịnụ njikọ."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Na-ahazi bọtịnụ detuo njikọ n'akụkụ aka nri kachasị nke isiokwu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Ọkwa isiokwu ma ọ bụrụ na ahụghị nne na nna."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Na-anọchi ederede ndabere maka ozi toast nke detuo njikọ."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Na-anọchi aha ndabere nke bọtịnụ detuo njikọ."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Na-anọchi akara ngosi ndabere nke bọtịnụ detuo njikọ."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Na-anọchi aha ndabere maka bọtịnụ mechie nke toast detuo njikọ."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Na-anọchi akara ngosi ndabere maka bọtịnụ mechie nke toast detuo njikọ."
+      }
+    ]
+  }
+}

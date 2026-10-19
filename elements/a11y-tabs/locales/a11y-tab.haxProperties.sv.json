@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Flik",
+    "description": "En enskild flik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Flikikon"
+      },
+      {
+        "property": "disabled",
+        "title": "Inaktiverad"
+      },
+      {
+        "property": "label",
+        "title": "Fliketikett"
+      },
+      {
+        "slot": "",
+        "title": "Flikinnehåll",
+        "description": "Flikens innehåll."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikt ID"
+      },
+      {
+        "property": "flag",
+        "title": "Valfri flaggtext"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Valfri flaggikon"
+      }
+    ]
+  }
+}

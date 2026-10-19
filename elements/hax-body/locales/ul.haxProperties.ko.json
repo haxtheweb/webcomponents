@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "글머리 기호 목록",
+    "description": "글머리 기호 목록을 만듭니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "글머리 기호 스타일",
+        "description": "순서 없는 목록 글머리 기호에 사용할 스타일.",
+        "options": {
+          "": "기본값 (사각형)",
+          "list-disc": "채워진 원",
+          "list-circle": "원",
+          "list-square": "사각형"
+        }
+      }
+    ]
+  }
+}

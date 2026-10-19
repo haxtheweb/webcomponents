@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Ndepụta nwere ọnụọgụ",
+    "description": "Mepụta ndepụta nwere nọmba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Ụdị nọmba",
+        "description": "Ụdị e ji akọ nọmba ndepụta nwere usoro.",
+        "options": {
+          "": "Ndabere (decimal)",
+          "list-decimal-leading-zero": "Decimal nwere efu n'ihu (01, 02, 03)",
+          "list-lower-alpha": "Mkpụrụedemede nta (a, b, c)",
+          "list-upper-alpha": "Mkpụrụedemede ukwu (A, B, C)",
+          "list-lower-roman": "Roman nta (i, ii, iii)",
+          "list-upper-roman": "Roman ukwu (I, II, III)"
+        }
+      }
+    ]
+  }
+}

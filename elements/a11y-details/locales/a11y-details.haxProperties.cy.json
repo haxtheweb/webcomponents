@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Botwm Manylion Hygyrch",
+    "description": "Datgelu cynyddol hygyrch gyda manylion a chrynodeb"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Botwm",
+        "description": "Crynodeb o'r cynnwys sydd wedi'i guddio, e.e. \"gwybodaeth\", \"metadata\", ac ati."
+      },
+      {
+        "slot": "details",
+        "title": "Disgrifiad",
+        "description": "Disgrifiad manwl y gellir ei guddio neu ei ddangos"
+      },
+      {
+        "slot": "",
+        "title": "Botwm Disgrifiad",
+        "description": "Rhagosodiad ar gyfer y botwm sy'n dangos/cuddio testun y disgrifiad, e.e. \"gwybodaeth\", \"metadata\", ac ati."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Testun crynodeb dewisol pan fo'r manylion ar agor"
+      },
+      {
+        "property": "closeText",
+        "title": "Testun crynodeb dewisol pan fo'r manylion ar gau"
+      }
+    ]
+  }
+}

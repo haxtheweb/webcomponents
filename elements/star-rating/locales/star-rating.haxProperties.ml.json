@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "സ്റ്റാർ റേറ്റിംഗ്",
+    "description": "റേറ്റിംഗ് പ്രദർശന വിജറ്റ് അല്ലെങ്കിൽ റേറ്റ് ചെയ്യാനുള്ള ബട്ടൺ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "സ്കോർ",
+        "description": "നിലവിലെ സ്കോർ മൂല്യം."
+      },
+      {
+        "property": "possible",
+        "title": "സാധ്യമായത്",
+        "description": "സാധ്യമായ പരമാവധി സ്കോർ."
+      },
+      {
+        "property": "numStars",
+        "title": "നക്ഷത്രങ്ങളുടെ എണ്ണം",
+        "description": "പ്രദർശിപ്പിക്കേണ്ട നക്ഷത്രങ്ങളുടെ എണ്ണം."
+      },
+      {
+        "property": "interactive",
+        "title": "ഇന്ററാക്ടീവ്",
+        "description": "റേറ്റിംഗ് സജ്ജമാക്കാൻ ഉപയോക്തൃ ഇടപെടൽ അനുവദിക്കുക."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "റൂബ്രിക് സ്കെയിൽ മോഡ്",
+        "description": "ഓരോ നക്ഷത്രത്തിനും OER Schema RubricScale, RubricLevel മെറ്റാഡാറ്റ (levelOrdinal/levelPoints) പുറപ്പെടുവിക്കുക."
+      }
+    ]
+  }
+}

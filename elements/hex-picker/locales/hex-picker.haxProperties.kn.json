@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex ಪಿಕರ್",
+    "description": "Hex ಕೋಡ್ ಬಣ್ಣ ಪಿಕರ್"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ಮೌಲ್ಯ",
+        "description": "ಡೀಫಾಲ್ಟ್ hex ಮೌಲ್ಯ"
+      },
+      {
+        "property": "disabled",
+        "title": "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ",
+        "description": "ಪಠ್ಯ ಕ್ಷೇತ್ರವನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "ದೊಡ್ಡ ಪ್ರದರ್ಶನ",
+        "description": "ದೊಡ್ಡ ಪ್ರದರ್ಶನದಲ್ಲಿ ಬಣ್ಣವನ್ನು ಸೇರಿಸಿ"
+      }
+    ]
+  }
+}

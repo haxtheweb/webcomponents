@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "سرعنوان نسبی",
+    "description": "سلسله‌مراتب درست سرعنوان را بر اساس سرعنوان والد تولید می‌کند"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "شناسه منبع سرعنوان والد"
+      },
+      {
+        "property": "disableLink",
+        "description": "قابلیت دکمه پیوند را غیرفعال می‌کند."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "دکمه کپی پیوند را در منتهی‌الیه راست سرعنوان تراز می‌کند."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "سطح سرعنوان در صورت یافت نشدن والد."
+      },
+      {
+        "property": "copyMessage",
+        "description": "متن پیش‌فرض پیام اعلان کپی پیوند را بازنویسی می‌کند."
+      },
+      {
+        "property": "linkLabel",
+        "description": "برچسب پیش‌فرض دکمه کپی پیوند را بازنویسی می‌کند."
+      },
+      {
+        "property": "linkIcon",
+        "description": "نماد پیش‌فرض دکمه کپی پیوند را بازنویسی می‌کند."
+      },
+      {
+        "property": "closeLabel",
+        "description": "برچسب پیش‌فرض دکمه بستن اعلان کپی پیوند را بازنویسی می‌کند."
+      },
+      {
+        "property": "closeIcon",
+        "description": "نماد پیش‌فرض دکمه بستن اعلان کپی پیوند را بازنویسی می‌کند."
+      }
+    ]
+  }
+}

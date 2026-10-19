@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Kariérna rola",
+    "description": "Jednotlivá rola v rámci organizácie"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Názov"
+      },
+      {
+        "property": "startDate",
+        "title": "Dátum začiatku"
+      },
+      {
+        "property": "endDate",
+        "title": "Dátum ukončenia (voliteľné)"
+      },
+      {
+        "property": "skills",
+        "title": "Súvisiace zručnosti",
+        "description": "Výberom tlačidla + začnete pridávať zručnosti"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Svetainės rodinys",
+    "description": "Dinaminis blokas, kuris pagal kriterijus užklausia ir rodo svetainės duomenis"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Rodinio URL",
+        "description": "Rodinio duomenų srauto užklausos parametrai. Juos galite gauti rodinių skydelyje."
+      },
+      {
+        "property": "renderer",
+        "title": "Rodymo režimas",
+        "description": "Kaip turėtų būti atvaizduojami rodinio rezultatai"
+      },
+      {
+        "property": "entity",
+        "title": "Objekto tipas",
+        "description": "Objekto tipas, naudojamas atsakymui analizuoti",
+        "options": {
+          "": "Numatytasis (elementai)",
+          "item": "Elementas",
+          "page": "Puslapis",
+          "file": "Failas",
+          "tag": "Žymė",
+          "block": "Blokas",
+          "view": "Rodinys",
+          "theme": "Tema",
+          "region": "Regionas",
+          "customElement": "Pasirinktinis elementas"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Atsieti svetainės rodinį",
+        "description": "Paversti statiniu turiniu, kad būtų galima tiesiogiai redaguoti; nebeatnaujinama automatiškai iš šaltinio."
+      }
+    ]
+  }
+}

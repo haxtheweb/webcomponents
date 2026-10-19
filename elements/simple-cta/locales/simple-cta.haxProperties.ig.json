@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Oku ime ihe",
+    "description": "Bọtịnụ dị mfe nwere njikọ iji mee ihe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Akara aha",
+        "description": "Aha njikọ"
+      },
+      {
+        "property": "link",
+        "title": "Njikọ",
+        "description": "Tinye njikọ gaa n'akụrụngwa ọ bụla"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Zoo akara ngosi",
+        "description": "Zoo akara ngosi e ji eme ka ederede pụta ìhè"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Akara ngosi",
+        "description": "Akara ngosi njikọ omume"
+      }
+    ]
+  }
+}

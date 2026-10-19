@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX-skakel",
+    "description": "'n Skakel na 'n spesifieke hulpbron in die webwerf waaraan jy werk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item om vir die skakel / titeldata te vertoon"
+      }
+    ]
+  }
+}

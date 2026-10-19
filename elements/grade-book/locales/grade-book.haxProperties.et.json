@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Hinneteraamat",
+    "description": "Liideseta hinneteraamat, mis toetab mitut taustsüsteemi ja hindamismaatrikseid."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Allikas",
+        "description": "Andmeallika tüüp (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-i lõpp-punkt (JSON)",
+          "json": "JSON-andmeplokk",
+          "filesystem": "Failisüsteem"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Lähteandmed",
+        "description": "Hinneteraamatu URL või JSON-andmed."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursuse viide",
+        "description": "Kursuse tunnus, mis väljastatakse iga hindamisressursi juures kui oer:forCourse."
+      }
+    ]
+  }
+}

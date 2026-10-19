@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "সাধারণ লিংক",
+    "description": "সাধারণ লিংক এলিমেন্ট।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "লিংক",
+        "description": "গন্তব্য URL।"
+      },
+      {
+        "attribute": "innerText",
+        "title": "টেক্সট",
+        "description": "দৃশ্যমান লিংক টেক্সট।"
+      },
+      {
+        "attribute": "target",
+        "title": "টার্গেট",
+        "description": "লিংকটি কোথায় খুলবে।",
+        "options": {
+          "": "একই উইন্ডো",
+          "_blank": "নতুন উইন্ডো - _blank",
+          "_top": "শীর্ষ উইন্ডো - _top",
+          "_parent": "প্যারেন্ট উইন্ডো - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "শিরোনাম টেক্সট",
+        "description": "অ্যাক্সেসযোগ্যতা ও SEO-এর জন্য পরামর্শমূলক শিরোনাম।"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "গন্তব্যের সাথে সম্পর্ক (নিরাপত্তা/SEO)।",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

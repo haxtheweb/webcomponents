@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Oortjie",
+    "description": "'n Enkele oortjie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Oortjie-ikoon"
+      },
+      {
+        "property": "disabled",
+        "title": "Gedeaktiveer"
+      },
+      {
+        "property": "label",
+        "title": "Oortjie-etiket"
+      },
+      {
+        "slot": "",
+        "title": "Oortjie-inhoud",
+        "description": "'n Inhoud van die oortjie."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unieke ID"
+      },
+      {
+        "property": "flag",
+        "title": "Opsionele vlagteks"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Opsionele vlagikoon"
+      }
+    ]
+  }
+}

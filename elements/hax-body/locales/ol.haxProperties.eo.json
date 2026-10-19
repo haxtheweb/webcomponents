@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Numerita listo",
+    "description": "Krei numeritan liston."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Numera stilo",
+        "description": "Stilo uzata por numerado de ordigita listo.",
+        "options": {
+          "": "Defaŭlta (dekuma)",
+          "list-decimal-leading-zero": "Dekuma kun antaŭa nulo (01, 02, 03)",
+          "list-lower-alpha": "Minusklaj literoj (a, b, c)",
+          "list-upper-alpha": "Majusklaj literoj (A, B, C)",
+          "list-lower-roman": "Minusklaj romiaj (i, ii, iii)",
+          "list-upper-roman": "Majusklaj romiaj (I, II, III)"
+        }
+      }
+    ]
+  }
+}

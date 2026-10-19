@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Cuncepimentu di corsu",
+    "description": "Cuntenitore per materiali educativi è elementi di cuncepimentu di corsu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identificadore di u corsu",
+        "description": "OER Schema: l'identificadore di u corsu, p. es. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Periodu prupostu",
+        "description": "OER Schema: u periodu durante u quale u corsu hè prupostu."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Furmatu di diffusione",
+        "description": "OER Schema: u furmatu adupratu per dà u corsu (p. es. in presenza, in linea, ibridu)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Insignante principale",
+        "description": "OER Schema: l'insignante principale di u corsu."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL di u prugramma di u corsu",
+        "description": "OER Schema: URL di u prugramma di u corsu."
+      }
+    ]
+  }
+}

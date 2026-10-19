@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Ukážka kódu",
+    "description": "Ukážka kódu zvýraznená na stránke"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Zvýrazňovanie kódu",
+        "description": "Zvýrazňovanie syntaxe, ktoré sa použije na oblasť kódu",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Dáta JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Tlačidlo kopírovania do schránky",
+        "description": "tlačidlo vpravo hore s textom kopírovať do schránky"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Začiatok zvýraznenia",
+        "description": "Číslo riadku, kde začína zvýraznenie"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Koniec zvýraznenia",
+        "description": "Riadok, na ktorom končí zvýraznenie"
+      }
+    ]
+  }
+}

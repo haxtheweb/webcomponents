@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "វីដេអូ",
+    "description": "ការចាក់វីដេអូដែលងាយស្រួលចូលប្រើពីប្រភពច្រើន។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ប្រភព",
+        "description": "URL សម្រាប់មេឌៀនេះ។"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងដែលបង្ហាញនៅខាងក្រោមវីដេអូ។"
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "រូបភាពផ្ទាំងរូប",
+        "description": "URL រូបភាពផ្ទាំងរូប។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "បទអត្ថបទ",
+        "description": "អក្សររត់ អក្សររត់បកប្រែ ការពិពណ៌នា និងបទអត្ថបទផ្សេងទៀតសម្រាប់វីដេអូ។"
+      },
+      {
+        "property": "startTime",
+        "title": "ពេលចាប់ផ្ដើម",
+        "description": "ចាប់ផ្ដើមវីដេអូនៅពេលជាក់លាក់ (វិនាទី)។"
+      },
+      {
+        "property": "endTime",
+        "title": "ពេលបញ្ចប់",
+        "description": "បញ្ចប់វីដេអូនៅពេលជាក់លាក់ (វិនាទី) តម្រូវឱ្យមានពេលចាប់ផ្ដើម។"
+      },
+      {
+        "property": "learningMode",
+        "title": "បើករបៀបសិក្សា",
+        "description": "បិទការរំកិលទៅមុខលឿន និងថយក្រោយ។"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "ដកប៊ូតុងបើកនៅលើ YouTube ចេញ",
+        "description": "ដកប៊ូតុងសម្រាប់បើកវីដេអូនៅលើ YouTube ចេញ។"
+      },
+      {
+        "property": "linkable",
+        "title": "រួមបញ្ចូលតំណចែករំលែក?",
+        "description": "ផ្ដល់តំណដើម្បីចែករំលែកវីដេអូ។"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "លាក់ត្រាពេលវេលា",
+        "description": "លាក់ត្រាពេលវេលានៅលើប្រតិចារិក។"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "លាក់ប្រតិចារិក",
+        "description": "លាក់ប្រតិចារិកតាមលំនាំដើម។"
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "បទការពិពណ៌នាជាសំឡេង",
+        "description": "URL ទៅកាន់បទការពិពណ៌នាជាសំឡេង (ឯកសារ MP3) ដែលនិទានអំពីធាតុដែលមើលឃើញ។"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "បង្ហាញថាតើត្រូវប្រើ CORS ឬអត់។",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "អនុញ្ញាតការចាក់នៅផ្ទៃខាងក្រោយ",
+        "description": "បន្តចាក់ពេលផ្ទាំងកម្មវិធីរុករកបាត់ការផ្ដោត។"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ធីមងងឹតសម្រាប់ប្រតិចារិក",
+        "description": "បើកធីមងងឹតសម្រាប់ប្រតិចារិក។"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "បិទអន្តរកម្ម",
+        "description": "បិទរបៀបអន្តរកម្មដែលធ្វើឱ្យប្រតិចារិកអាចចុចបាន។"
+      },
+      {
+        "property": "lang",
+        "title": "ភាសា",
+        "description": "ភាសារបស់មេឌៀ។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "(លែងប្រើ) ជ្រើសរើសពណ៌សង្កត់សម្រាប់កម្មវិធីចាក់។"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "ಬಾಹ್ಯ ವೆಬ್ ವಿಷಯವನ್ನು ಎಂಬೆಡ್ ಮಾಡಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ಮೂಲ",
+        "description": "ಈ ಸಂಪನ್ಮೂಲದ URL."
+      }
+    ]
+  }
+}

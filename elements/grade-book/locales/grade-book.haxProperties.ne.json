@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ग्रेड बुक",
+    "description": "रुब्रिकसहित धेरै ब्याकएन्डहरू समर्थन गर्ने हेडलेस ग्रेडबुक।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "डेटा स्रोत प्रकार (googledocs, url, json, filesystem)।",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON डेटा ब्लब",
+          "filesystem": "फाइल प्रणाली"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "स्रोत डेटा",
+        "description": "ग्रेडबुकका लागि URL वा JSON डेटा।"
+      },
+      {
+        "property": "forCourse",
+        "title": "पाठ्यक्रम सन्दर्भ",
+        "description": "हरेक Assessment स्रोतमा oer:forCourse को रूपमा राखिने पाठ्यक्रम पहिचानकर्ता।"
+      }
+    ]
+  }
+}

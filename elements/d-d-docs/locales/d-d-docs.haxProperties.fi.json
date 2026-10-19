@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAXin suunnittelujärjestelmän toteutus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Näytettävä vaihtoehto",
+        "options": {
+          "*": "Koko tyyliopas"
+        }
+      }
+    ]
+  }
+}

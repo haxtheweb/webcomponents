@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: የንዑስ ብሎክ",
+    "description": "የአሁኑን ገጽ ንዑሳን ለማሳየት ተለዋዋጭ ብሎክ"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "ተለዋዋጭ ዘዴ",
+        "description": "ንዑሳኑን ከዚህ አካል አንጻር እንዴት እንደሚሰላ",
+        "options": {
+          "active": "ንቁ ንዑሳን",
+          "parent": "የወላጅ ንዑሳን",
+          "ancestor": "ከከፍተኛው ቅድመ አያት ሁሉም ንዑሳን"
+        }
+      },
+      {
+        "property": "start",
+        "title": "የመጀመሪያ ደረጃ"
+      },
+      {
+        "property": "end",
+        "title": "የመጨረሻ ደረጃ"
+      }
+    ]
+  }
+}

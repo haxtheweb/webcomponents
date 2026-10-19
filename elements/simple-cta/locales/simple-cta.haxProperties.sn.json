@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Kudana kuchiito",
+    "description": "Bhatani rakareruka rine chinongedzo chekuita chiito."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Zita",
+        "description": "Zita rechinongedzo"
+      },
+      {
+        "property": "link",
+        "title": "Chinongedzo",
+        "description": "Isa chinongedzo kune chero chiwanikwa"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Vanza aikoni",
+        "description": "Vanza aikoni inoshandiswa kusimbisa mavara"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni yechinongedzo chechiito"
+      }
+    ]
+  }
+}

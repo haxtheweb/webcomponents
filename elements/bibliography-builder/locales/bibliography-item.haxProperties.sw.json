@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Kipengee cha bibliografia",
+    "description": "Kipengee kinachowakilisha nukuu moja katika bibliografia, kinachotumia miundo mbalimbali na chaguo za kuhamisha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Aina",
+        "description": "Aina ya nukuu",
+        "options": {
+          "web": "Wavuti",
+          "journal": "Jarida",
+          "book": "Kitabu"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa cha kipengee"
+      },
+      {
+        "property": "authors",
+        "title": "Mwandishi/Waandishi",
+        "description": "Matukio katika ratiba ya matukio"
+      },
+      {
+        "property": "publisher",
+        "title": "Mchapishaji",
+        "description": "Tovuti asili"
+      }
+    ]
+  }
+}

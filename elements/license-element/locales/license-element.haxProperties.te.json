@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "లైసెన్స్",
+    "description": "మీ రచనకు లైసెన్స్‌ను అందించండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "ఉల్లేఖించిన రచన యొక్క శీర్షిక."
+      },
+      {
+        "property": "source",
+        "title": "మూల లింక్",
+        "description": "లైసెన్స్ పొందిన రచన కోసం మూల URL."
+      },
+      {
+        "property": "license",
+        "title": "లైసెన్స్",
+        "description": "ఈ రచనకు వర్తించే లైసెన్స్."
+      },
+      {
+        "property": "creator",
+        "title": "సృష్టికర్త",
+        "description": "ఈ రచన యొక్క సృష్టికర్త లేదా యజమాని."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "మూల లింక్",
+        "description": "అదనపు లైసెన్సింగ్ వివరాలకు లింక్."
+      },
+      {
+        "property": "moreLabel",
+        "title": "మరిన్ని లేబుల్",
+        "description": "అదనపు లైసెన్సింగ్ వివరాల కోసం లేబుల్."
+      }
+    ]
+  }
+}

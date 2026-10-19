@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Progresa ringo",
+    "description": "Progresa ringo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "La titolo de la elemento"
+      },
+      {
+        "property": "desc",
+        "title": "Priskribo",
+        "description": "Alirebla longa priskribo"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Bilda fonto",
+        "description": "Fonto de la bildo ene de la ringo."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternativa teksto de bildo",
+        "description": "Alternativa teksto por la bildo."
+      },
+      {
+        "property": "animated",
+        "title": "Animaciita",
+        "description": "Ĉu la progreso animaciiĝas ĉe la unua ŝargo"
+      },
+      {
+        "property": "complete",
+        "title": "Finita",
+        "description": "Tabelo de kompletigitaj valoroj."
+      },
+      {
+        "property": "total",
+        "title": "Totalo",
+        "description": "Totalo kiam ĉiuj eroj estas kompletaj."
+      },
+      {
+        "property": "startAngle",
+        "title": "Komenca angulo",
+        "description": "Ringa angulo, kie la progreso komenciĝas"
+      }
+    ]
+  }
+}

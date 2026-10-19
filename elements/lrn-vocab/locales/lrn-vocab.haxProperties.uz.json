@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Lugʻat",
+    "description": "Lugʻat atamasi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Atama"
+      },
+      {
+        "slot": "",
+        "title": "Taʼrif",
+        "description": "Atama bosilganda koʻrsatiladigan taʼrif."
+      },
+      {
+        "property": "description",
+        "title": "Tavsif (OER Schema)",
+        "description": "OER Schema: lugʻat atamasining qisqacha tavsifi. Boʻsh qoldirilsa, taʼrif matnidan avtomatik toʻldiriladi."
+      }
+    ]
+  }
+}

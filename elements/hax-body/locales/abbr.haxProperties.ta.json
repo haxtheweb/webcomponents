@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "சுருக்கம்",
+    "description": "முழுச் சொல் உதவிக்குறிப்புடன் கூடிய சுருக்கம்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "உரை",
+        "description": "தெரியும் சுருக்க உரை."
+      },
+      {
+        "attribute": "title",
+        "title": "சொல்",
+        "description": "சுட்டியை வைக்கும்போது காட்டப்படும் முழுச் சொல்."
+      }
+    ]
+  }
+}

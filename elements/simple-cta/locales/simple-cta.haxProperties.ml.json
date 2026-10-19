@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "പ്രവർത്തനത്തിനുള്ള ആഹ്വാനം",
+    "description": "പ്രവർത്തിക്കാനുള്ള ലിങ്കുള്ള ഒരു ലളിതമായ ബട്ടൺ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ലേബൽ",
+        "description": "ലിങ്ക് ലേബൽ"
+      },
+      {
+        "property": "link",
+        "title": "ലിങ്ക്",
+        "description": "ഏതെങ്കിലും റിസോഴ്സിലേക്കുള്ള ലിങ്ക് നൽകുക"
+      },
+      {
+        "property": "hideIcon",
+        "title": "ഐക്കൺ മറയ്ക്കുക",
+        "description": "ടെക്സ്റ്റിന് ആക്സന്റ് നൽകാൻ ഉപയോഗിക്കുന്ന ഐക്കൺ മറയ്ക്കുക"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ഐക്കൺ",
+        "description": "പ്രവർത്തന ലിങ്ക് ഐക്കൺ"
+      }
+    ]
+  }
+}

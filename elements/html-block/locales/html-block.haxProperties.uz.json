@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML bloki",
+    "description": "HAXschema ulanishini taqdim etuvchi oddiy HTML bloki"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Kontentda koʻrsatmoqchi boʻlgan HTML kodingiz"
+      }
+    ]
+  }
+}

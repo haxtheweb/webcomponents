@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Àkọlé-àlàyé àwòrán",
+    "description": "Àkọlé-àlàyé fún àwòrán kan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Àkọlé àwòrán",
+        "description": "Ọ̀rọ̀ tí a fi hàn ní ìsàlẹ̀ àwòrán."
+      }
+    ]
+  }
+}

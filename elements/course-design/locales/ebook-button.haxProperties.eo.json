@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-libra butono",
+    "description": "Butono, kiu ligas al e-libro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "La titolo de la butono."
+      },
+      {
+        "property": "link",
+        "title": "Ligilo",
+        "description": "La ligilo al kiu alidirekti ĉe alklako."
+      },
+      {
+        "property": "icon",
+        "title": "Piktogramo",
+        "description": "Piktogramo por reprezenti ĉi tiun ligilon"
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Chithunzi Chowongoleredwa",
+    "description": "Njira yoonetsera zithunzi ndi zowongolera zosiyanasiyana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Gwero",
+        "description": "URL ya chithunzi."
+      },
+      {
+        "property": "alt",
+        "title": "Mawu ena ofotokozera",
+        "description": "Mawu ofotokozera chithunzi kwa ogwiritsa ntchito omwe sapenya."
+      },
+      {
+        "property": "link",
+        "title": "Ulalo",
+        "description": "Lumikizani chithunzi ku URL"
+      },
+      {
+        "property": "card",
+        "title": "Khadi",
+        "description": "Ikani mthunzi kuti chioneke ngati khadi lokwezedwa."
+      },
+      {
+        "property": "box",
+        "title": "Bokosi",
+        "description": "Ikani bokosi looneka mozungulira chithunzi."
+      },
+      {
+        "property": "offset",
+        "title": "Kusuntha",
+        "description": "Sunthirani chithunzi kumanzere kapena kumanja.",
+        "options": {
+          "none": "palibe",
+          "wide": "chachikulu",
+          "narrow": "chopapatiza"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Gwero la mawu",
+        "description": "Mawu ogwidwa a chithunzi."
+      },
+      {
+        "property": "caption",
+        "title": "Mawu ofotokoza",
+        "description": "Mawu ofotokozera chithunzi."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Mutu wa Chithunzi",
+        "description": "Mutu wa chizindikiro cha chithunzi."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Kufotokozera kwa Chithunzi",
+        "description": "Kufotokozera kwa chizindikiro cha chithunzi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Chithunzi chaching'ono",
+        "description": "Gwero la chithunzi chaching'ono. Chimaonetsa chithunzi chaching'ono koma chimatsegula gwero lonse m'zenera."
+      },
+      {
+        "property": "round",
+        "title": "Chithunzi chozungulira",
+        "description": "Chimadula maonekedwe a chithunzi kuti chikhale chozungulira."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Zimitsani zenera la chithunzi",
+        "description": "Zimitsani kudina komwe kumatsegula chithunzi m'bokosi loyang'anira zithunzi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Onetsani ngati markdown",
+        "description": "Onetsani mawu ofotokozera ndi mawu ogwidwa ngati markdown."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "บล็อกเนื้อหา Markdown ที่ใส่โดยตรงหรือโหลดจากระยะไกล"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown ดิบ"
+      },
+      {
+        "property": "source",
+        "title": "แหล่งที่มา",
+        "description": "ไฟล์ต้นฉบับของ Markdown"
+      }
+    ]
+  }
+}

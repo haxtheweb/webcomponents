@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ریاضی",
+    "description": "ریاضی کو خوبصورت انداز میں پیش کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "ریاضی",
+        "description": "مساوات LaTeX کی صورت میں درج کریں"
+      }
+    ]
+  }
+}

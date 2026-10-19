@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "ٻاهريون ويب مواد ايمبيڊ ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ذريعو",
+        "description": "هن وسيلي جو URL."
+      }
+    ]
+  }
+}

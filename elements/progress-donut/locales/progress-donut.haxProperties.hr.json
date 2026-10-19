@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Krafna napretka",
+    "description": "Krafna napredovanja"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov elementa"
+      },
+      {
+        "property": "desc",
+        "title": "Opis",
+        "description": "Pristupačni dugi opis"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Izvor slike",
+        "description": "Izvor slike unutar krafne."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternativni tekst slike",
+        "description": "Alternativni tekst slike."
+      },
+      {
+        "property": "animated",
+        "title": "Animirano",
+        "description": "Animira li se napredak pri prvom učitavanju"
+      },
+      {
+        "property": "complete",
+        "title": "Dovršeno",
+        "description": "Niz dovršenih vrijednosti."
+      },
+      {
+        "property": "total",
+        "title": "Ukupno",
+        "description": "Ukupno kada su sve stavke dovršene."
+      },
+      {
+        "property": "startAngle",
+        "title": "Početni kut",
+        "description": "Kut krafne na kojem napredak počinje"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex Seçici",
+    "description": "Hex kodu renk seçici"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Değer",
+        "description": "Varsayılan hex değeri"
+      },
+      {
+        "property": "disabled",
+        "title": "Devre dışı",
+        "description": "Metin alanını devre dışı bırak"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Büyük Gösterim",
+        "description": "Rengi büyük gösterimde dahil et"
+      }
+    ]
+  }
+}

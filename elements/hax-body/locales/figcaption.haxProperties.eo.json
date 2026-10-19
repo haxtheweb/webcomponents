@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Figura apudskribo",
+    "description": "Apudskribo por figuro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Apudskribo",
+        "description": "Teksto montrata sub la figuro."
+      }
+    ]
+  }
+}

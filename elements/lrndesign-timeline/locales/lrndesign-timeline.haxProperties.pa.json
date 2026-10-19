@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ਸਮਾਂ-ਰੇਖਾ",
+    "description": "ਚਿੱਤਰਾਂ ਅਤੇ ਟੈਕਸਟ ਨਾਲ ਘਟਨਾਵਾਂ ਦੀ ਟਾਈਮਲਾਈਨ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "ਸਮਾਂ-ਰੇਖਾ ਦਾ ਸਿਰਲੇਖ",
+        "description": "ਟਾਈਮਲਾਈਨ ਲਈ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਇੱਕ ਵਿਕਲਪਿਕ ਐਕਸੈਂਟ ਰੰਗ।"
+      },
+      {
+        "property": "dark",
+        "title": "ਗੂੜ੍ਹੀ ਥੀਮ",
+        "description": "ਡਾਰਕ ਥੀਮ ਚਾਲੂ ਕਰੋ"
+      },
+      {
+        "slot": "",
+        "title": "ਟਾਈਮਲਾਈਨ ਵਰਣਨ",
+        "description": "ਟਾਈਮਲਾਈਨ ਦਾ ਵਰਣਨ ਕਰਨ ਵਾਲਾ ਵਿਕਲਪਿਕ ਟੈਕਸਟ।"
+      },
+      {
+        "property": "events",
+        "title": "ਟਾਈਮਲਾਈਨ ਘਟਨਾਵਾਂ",
+        "description": "ਟਾਈਮਲਾਈਨ ਵਿਚਲੀਆਂ ਘਟਨਾਵਾਂ"
+      }
+    ]
+  }
+}

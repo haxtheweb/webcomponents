@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Osnovna povezava",
+    "description": "Osnovni element povezave."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Povezava",
+        "description": "Ciljni URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Besedilo",
+        "description": "Vidno besedilo povezave."
+      },
+      {
+        "attribute": "target",
+        "title": "Cilj",
+        "description": "Kje naj se povezava odpre.",
+        "options": {
+          "": "Isto okno",
+          "_blank": "Novo okno - _blank",
+          "_top": "Najvišje okno - _top",
+          "_parent": "Nadrejeno okno - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Besedilo naslova",
+        "description": "Svetovalni naslov za dostopnost in SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Razmerje do cilja (varnost/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

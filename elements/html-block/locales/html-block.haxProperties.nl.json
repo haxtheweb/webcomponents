@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML-blok",
+    "description": "Een eenvoudig HTML-blok met HAXschema-koppeling"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML-code die je in de inhoud wilt tonen"
+      }
+    ]
+  }
+}

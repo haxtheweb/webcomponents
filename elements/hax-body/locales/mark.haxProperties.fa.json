@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "برجسته‌سازی",
+    "description": "برجسته‌سازی متن درون‌خطی."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "متن برجسته‌شده."
+      }
+    ]
+  }
+}

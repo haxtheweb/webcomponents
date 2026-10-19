@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Ενσωμάτωση εξωτερικού περιεχομένου ιστού."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Πηγή",
+        "description": "URL για αυτόν τον πόρο."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "数式",
+    "description": "数式をきれいに表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "数式",
+        "description": "数式を LaTeX で入力"
+      }
+    ]
+  }
+}

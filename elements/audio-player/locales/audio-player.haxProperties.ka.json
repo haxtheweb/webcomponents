@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "აუდიო",
+    "description": "აჩვენებს ვიდეოს მაღალი ხელმისაწვდომობით, წყაროს მიუხედავად."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "წყარო",
+        "description": "ამ მედიის URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "სათაური",
+        "description": "მარტივი სათაური ვიდეოს ქვემოთ"
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "აირჩიეთ პლეერის აქცენტის ფერი."
+      },
+      {
+        "property": "track",
+        "title": "დახურული სუბტიტრები",
+        "description": "სუბტიტრების ფაილის URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "მინიატურა",
+        "description": "არასავალდებულო. მინიატურის/პოსტერის სურათის URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "სასწავლო რეჟიმის ჩართვა",
+        "description": "თიშავს წინ და უკან გადახვევას."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "„YouTube-ზე გახსნის“ ღილაკის მოშორება",
+        "description": "შლის ღილაკს, რომელიც ვიდეოს YouTube-ზე ხსნის."
+      },
+      {
+        "property": "linkable",
+        "title": "დავამატოთ გაზიარების ბმული?",
+        "description": "იძლევა ვიდეოს გასაზიარებელ ბმულს."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "მიუთითებს, გამოიყენოს თუ არა CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "ფონური დაკვრის დაშვება",
+        "description": "ვიდეოები ავტომატურად ჩერდება / ეშვება, როცა ჩანართი ფოკუსს კარგავს; ეს საშუალებას აძლევს ვიდეოს, დაიკრას ჩანართის ფოკუსის გარეშე"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ტრანსკრიპტის მუქი თემა",
+        "description": "ტრანსკრიპტისთვის მუქი თემის ჩართვა."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ინტერაქტიულობის გამორთვა",
+        "description": "ინტერაქტიული რეჟიმის გამორთვა, რომელიც ტრანსკრიპტს დაწკაპუნებადს ხდის."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "დროის ნიშნულების დამალვა",
+        "description": "ტრანსკრიპტში დროის ნიშნულების დამალვა."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ტრანსკრიპტის დამალვა",
+        "description": "ტრანსკრიპტის ნაგულისხმევად დამალვა."
+      },
+      {
+        "property": "lang",
+        "title": "ენა",
+        "description": "მედიის ენა."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Okuqukethwe Kwekhasi Okungahleliwe",
+    "description": "Bonisa isakhi esingahleliwe sezinga eliphezulu kusuka ekhasini elikhethiwe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Ikhasi",
+        "description": "Khetha ikhasi okufanele kuthathwe kulo okuqukethwe okungahleliwe. Isakhi sizobonisa ngokungahleliwe esinye sezakhi ze-HTML zezinga eliphezulu kusuka kuleli khasi."
+      }
+    ]
+  }
+}

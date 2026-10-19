@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "مخفف",
+    "description": "مڪمل اصطلاح واري ٽول ٽپ سان مخفف."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "ظاهر ٿيندڙ مخفف جو متن."
+      },
+      {
+        "attribute": "title",
+        "title": "لفظ",
+        "description": "هوور تي ڏيکاريل مڪمل اصطلاح."
+      }
+    ]
+  }
+}

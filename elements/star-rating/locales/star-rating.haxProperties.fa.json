@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "امتیاز ستاره‌ای",
+    "description": "ابزارک نمایش امتیاز یا دکمه امتیازدهی."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "امتیاز",
+        "description": "مقدار امتیاز فعلی."
+      },
+      {
+        "property": "possible",
+        "title": "ممکن",
+        "description": "حداکثر امتیاز ممکن."
+      },
+      {
+        "property": "numStars",
+        "title": "تعداد ستاره‌ها",
+        "description": "تعداد ستاره‌هایی که نمایش داده می‌شوند."
+      },
+      {
+        "property": "interactive",
+        "title": "تعاملی",
+        "description": "اجازه تعامل کاربر برای تعیین امتیاز."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "حالت مقیاس روبریک",
+        "description": "درج فراداده RubricScale و RubricLevel از OER Schema (levelOrdinal/levelPoints) برای هر ستاره."
+      }
+    ]
+  }
+}

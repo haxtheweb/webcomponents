@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ronîkirin",
+    "description": "Nivîsa di nav rêzê de ronî bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Nivîs",
+        "description": "Nivîsa ronîkirî."
+      }
+    ]
+  }
+}

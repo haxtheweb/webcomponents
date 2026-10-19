@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ukadiriaji wa Nyota",
+    "description": "Wijeti ya kuonyesha ukadiriaji au kitufe cha kukadiria."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Alama",
+        "description": "Thamani ya alama ya sasa."
+      },
+      {
+        "property": "possible",
+        "title": "Inayowezekana",
+        "description": "Alama za juu zinazowezekana."
+      },
+      {
+        "property": "numStars",
+        "title": "Idadi ya Nyota",
+        "description": "Idadi ya nyota za kuonyesha."
+      },
+      {
+        "property": "interactive",
+        "title": "Shirikishi",
+        "description": "Ruhusu mtumiaji kuingiliana ili kuweka ukadiriaji."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Hali ya Kipimo cha Rubriki",
+        "description": "Toa metadata ya OER Schema RubricScale na RubricLevel (levelOrdinal/levelPoints) kwa kila nyota."
+      }
+    ]
+  }
+}

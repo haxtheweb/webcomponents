@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Mba'epu",
+    "description": "Kóva ikatu ohechauka ta'angambyry ojeikekuaa porãitévape ndaha'éiramo jepe ypykue."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Reñoiha",
+        "description": "URL ko momarandu ñemyasãime g̃uarã."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Téra",
+        "description": "Téra mbykymi ta'angambyry guýpe g̃uarã"
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Eiporavo sa'y jehechaukaha mboguatahápe g̃uarã."
+      },
+      {
+        "property": "track",
+        "title": "Subtítulo",
+        "description": "URL subtítulo marandurendápe g̃uarã."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Ta'ãnga'i",
+        "description": "Ojeporavokuaáva. URL ta'ãnga'i/póster ta'ãngape g̃uarã."
+      },
+      {
+        "property": "learningMode",
+        "title": "Emyendy jeikuaa reko",
+        "description": "Ombogue tenonde pya'e ha jevy pya'e."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Embogue YouTube-pe jeike votõ",
+        "description": "Omboguete votõ ombojurujáva ta'angambyry YouTube-pe."
+      },
+      {
+        "property": "linkable",
+        "title": "Emoingépa joajuha moherakuãrã?",
+        "description": "Ome'ẽ joajuha emoherakuã hag̃ua ta'angambyry."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Ohechauka ojepurútapa CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Emoneĩ ñemboguata tapykuépe",
+        "description": "Ta'angambyry opyta / oñemboguata ijeheguíkuri tendayke ohejávo jeporavo; kóva omoneĩ ta'angambyry oñemboguata tendayke noñeporavói jave"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Jeguakaha ypytũ transcripción-pe g̃uarã",
+        "description": "Emyendy jeguakaha ypytũ transcripción-pe g̃uarã."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Embogue Ojoapykuéva",
+        "description": "Embogue reko ojoapykuéva ojapóva transcripción ikatu hag̃uáicha ojejopy."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Emokañy aravo techaukaha",
+        "description": "Emokañy aravo techaukaha transcripción-pe."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Emokañy Transcripción",
+        "description": "Emokañy transcripción ypyguáva ramo."
+      },
+      {
+        "property": "lang",
+        "title": "Ñe'ẽ",
+        "description": "Momarandu ñemyasãi ñe'ẽ."
+      }
+    ]
+  }
+}

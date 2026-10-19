@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Alapkép",
+    "description": "Alapvető képelem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Forrás",
+        "description": "A kép URL-je."
+      },
+      {
+        "attribute": "alt",
+        "title": "Helyettesítő szöveg",
+        "description": "Alternatív szöveg az akadálymentességhez és a SEO-hoz."
+      },
+      {
+        "attribute": "height",
+        "title": "Magasság",
+        "description": "Magasság pixelben. Hagyd üresen a természetes mérethez."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Képbetöltés",
+        "description": "Válaszd ki, mikor töltődjön be a kép.",
+        "options": {
+          "lazy": "Betöltés, amikor láthatóvá válik",
+          "auto": "Automatikus"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Reszponzív források (srcset)",
+        "description": "Sorold fel a kép URL-jeit és leíróit (pl. 480w vagy 2x), hogy a böngészők a képernyőhöz legjobb méretet válasszák. A szabványos srcset attribútumként tárolódik."
+      }
+    ]
+  }
+}

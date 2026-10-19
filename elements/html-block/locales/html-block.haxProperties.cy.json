@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Bloc HTML",
+    "description": "Bloc HTML sylfaenol sy'n darparu cysylltiadau HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Cod HTML rydych chi am ei gyflwyno yn y cynnwys"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Vòng tiến độ",
+    "description": "Biểu đồ vòng tiến độ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề của phần tử"
+      },
+      {
+        "property": "desc",
+        "title": "Mô tả",
+        "description": "Mô tả chi tiết dễ tiếp cận"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Nguồn hình ảnh",
+        "description": "Nguồn hình ảnh bên trong vòng."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Văn bản thay thế cho hình ảnh",
+        "description": "Văn bản thay thế cho hình ảnh."
+      },
+      {
+        "property": "animated",
+        "title": "Hoạt ảnh",
+        "description": "Tiến độ có hiệu ứng chuyển động khi tải lần đầu hay không"
+      },
+      {
+        "property": "complete",
+        "title": "Hoàn tất",
+        "description": "Mảng các giá trị đã hoàn thành."
+      },
+      {
+        "property": "total",
+        "title": "Tổng",
+        "description": "Tổng khi tất cả các mục đã hoàn thành."
+      },
+      {
+        "property": "startAngle",
+        "title": "Góc bắt đầu",
+        "description": "Góc của vòng nơi tiến độ bắt đầu"
+      }
+    ]
+  }
+}

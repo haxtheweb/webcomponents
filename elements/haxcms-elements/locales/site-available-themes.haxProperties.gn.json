@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Jeguakaha Oĩva",
+    "description": "Ehechauka HAXcms jeguakaha oĩva jehecha ypy hekovéva moambue reheve"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Jehecha Reko",
+        "description": "Eiporavo mba'éichapa ojehechaukáta jeguakaha",
+        "options": {
+          "gallery": "Ta'ãngaryru",
+          "table": "Tabla"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Ehechauka Mba'emimi",
+        "description": "Ehechauka jeguakaha ñemoha'ãnga ha marandu ambue"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Ehechauka Jeguakaha Kañymbyre ha Itujáva",
+        "description": "Ehechauka jeguakaha kañymbyre, itujáva ha vaieterei ñemboguatarenda ypyguáva ykére"
+      },
+      {
+        "property": "columns",
+        "title": "Ysyry (Ta'ãngaty)",
+        "description": "Ysyry papapy ta'ãngaty jehechápe"
+      }
+    ]
+  }
+}

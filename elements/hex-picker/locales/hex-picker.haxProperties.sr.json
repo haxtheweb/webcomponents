@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Бирач хекс боје",
+    "description": "Бирач боје хекс кода"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Вредност",
+        "description": "Подразумевана хекс вредност"
+      },
+      {
+        "property": "disabled",
+        "title": "Онемогућено",
+        "description": "Онемогући текстуално поље"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Велики приказ",
+        "description": "Укључи боју у великом приказу"
+      }
+    ]
+  }
+}

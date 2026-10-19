@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Àwòrán Parallax",
+    "description": "Àwòrán tó ń yí lọ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Àwòrán",
+        "description": "àwòrán tí yóò wà lẹ́yìn"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Agbègbè àkọlé",
+        "description": "Agbègbè ọ̀rọ̀ àkọlé"
+      }
+    ]
+  }
+}

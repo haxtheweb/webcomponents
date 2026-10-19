@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS marķieris",
+    "description": "CMS marķieris, kas atveidots aizmugursistēmā"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Marķieris",
+        "description": "Marķieris no mūsu CMS"
+      }
+    ]
+  }
+}

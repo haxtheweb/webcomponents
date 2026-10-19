@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Hoto Mai Bayani",
+    "description": "Hoto mai sauƙin isa tare da dogon bayani"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Hoto"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Rubutun Madadi"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Taken Hoto",
+        "description": "Rubutun taken hoto da ke bayyane koyaushe."
+      },
+      {
+        "slot": "details",
+        "title": "Bayani",
+        "description": "Cikakken bayanin hoto da za a iya ɓoyewa ko nunawa"
+      },
+      {
+        "slot": "summary",
+        "title": "Maɓallin Bayani",
+        "description": "Tsoho don maɓallin da ke nunawa/ɓoye rubutun bayani, misali \"info\", \"medatadata\", da sauransu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Rubutun taƙaitawa na zaɓi idan cikakkun bayanai a buɗe suke"
+      },
+      {
+        "property": "closeText",
+        "title": "Rubutun taƙaitawa na zaɓi idan cikakkun bayanai a rufe suke"
+      }
+    ]
+  }
+}

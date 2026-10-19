@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "کورس ڈیزائن",
+    "description": "تعلیمی مواد تے کورس ڈیزائن عناصر لئی ڈبہ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "کورس شناخت",
+        "description": "OER سکیما: کورس دی شناخت، مثلاً MATH-100۔"
+      },
+      {
+        "property": "termOffered",
+        "title": "پیش کیتا سمسٹر",
+        "description": "OER سکیما: اوہ سمسٹر جیہدے وچ کورس پیش کیتا جاندا اے۔"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "ترسیل دا فارمیٹ",
+        "description": "OER سکیما: کورس پہنچاؤن لئی ورتیا فارمیٹ (مثلاً آمنے سامنے، آن لائن، رلواں)۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "مُڈھلا استاد",
+        "description": "OER سکیما: کورس دا مُڈھلا استاد۔"
+      },
+      {
+        "property": "syllabus",
+        "title": "نصاب URL",
+        "description": "OER سکیما: کورس نصاب دا URL۔"
+      }
+    ]
+  }
+}

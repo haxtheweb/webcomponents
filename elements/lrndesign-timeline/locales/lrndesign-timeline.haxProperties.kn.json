@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ಕಾಲರೇಖೆ",
+    "description": "ಚಿತ್ರಗಳು ಮತ್ತು ಪಠ್ಯದೊಂದಿಗೆ ಘಟನೆಗಳ ಟೈಮ್‌ಲೈನ್"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "ಕಾಲರೇಖೆಯ ಶೀರ್ಷಿಕೆ",
+        "description": "ಟೈಮ್‌ಲೈನ್‌ಗೆ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಐಚ್ಛಿಕ ಒತ್ತು ಬಣ್ಣ."
+      },
+      {
+        "property": "dark",
+        "title": "ಡಾರ್ಕ್ ಥೀಮ್",
+        "description": "ಡಾರ್ಕ್ ಥೀಮ್ ಸಕ್ರಿಯಗೊಳಿಸಿ"
+      },
+      {
+        "slot": "",
+        "title": "ಟೈಮ್‌ಲೈನ್ ವಿವರಣೆ",
+        "description": "ಟೈಮ್‌ಲೈನ್ ಅನ್ನು ವಿವರಿಸುವ ಐಚ್ಛಿಕ ಪಠ್ಯ."
+      },
+      {
+        "property": "events",
+        "title": "ಟೈಮ್‌ಲೈನ್ ಘಟನೆಗಳು",
+        "description": "ಟೈಮ್‌ಲೈನ್‌ನಲ್ಲಿನ ಘಟನೆಗಳು"
+      }
+    ]
+  }
+}

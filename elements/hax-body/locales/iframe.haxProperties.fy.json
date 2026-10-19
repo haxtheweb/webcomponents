@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Eksterne webynhâld ynslute."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Boarne",
+        "description": "URL foar dizze boarne."
+      }
+    ]
+  }
+}

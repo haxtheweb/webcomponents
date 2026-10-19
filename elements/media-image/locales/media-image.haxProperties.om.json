@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Suuraa Fooyya'e",
+    "description": "Mala suuraalee fooyya'iinsa garaagaraa wajjin dhiyeessuu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Madda",
+        "description": "URL suuraa."
+      },
+      {
+        "property": "alt",
+        "title": "Barreeffama bakka bu'aa",
+        "description": "Fayyadamtoota hin argineef suuraa ibsuuf barreeffama."
+      },
+      {
+        "property": "link",
+        "title": "Hidhoo",
+        "description": "Suuraa URL tti liinkii godhi"
+      },
+      {
+        "property": "card",
+        "title": "Kaardii",
+        "description": "Akka kaardii ol ka'e fakkaatuuf gaaddidduu itti raawwadhu."
+      },
+      {
+        "property": "box",
+        "title": "Saanduqa",
+        "description": "Suuraa naannoo isaatti saanduqa mul'ataa raawwadhu."
+      },
+      {
+        "property": "offset",
+        "title": "Fageenya",
+        "description": "Suuraa irratti fageenya bitaa yookaan mirgaa raawwadhu.",
+        "options": {
+          "none": "homaa",
+          "wide": "bal'aa",
+          "narrow": "dhiphaa"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Wabii",
+        "description": "Wabii suuraa."
+      },
+      {
+        "property": "caption",
+        "title": "Ibsa suuraa",
+        "description": "Ibsa suuraa."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Mata Duree Fakkii",
+        "description": "Mata duree maqaa fakkiitiif."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Ibsa Fakkii",
+        "description": "Ibsa maqaa fakkiitiif."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Suuraa xiqqaa",
+        "description": "Madda suuraa xiqqaa. Suuraa xiqqaa agarsiisa garuu madda guutuu moodaalii keessatti bana."
+      },
+      {
+        "property": "round",
+        "title": "Suuraa geengoo",
+        "description": "Bifa suuraa akka geengootti mura."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Moodaalii suuraa dhorki",
+        "description": "Cuqaasni suuraa diyaaloogii qoraa suuraa keessatti akka hin banne dhorki."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Akka markdown tti agarsiisi",
+        "description": "Ibsa suuraa fi wabii akka markdown tti agarsiisi."
+      }
+    ]
+  }
+}

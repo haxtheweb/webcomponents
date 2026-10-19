@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Component d'aprenentatge",
+    "description": "Una targeta perquè els docents comuniquin la pedagogia i les estratègies didàctiques."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipus",
+        "description": "El tipus de targeta que s'utilitzarà."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtítol",
+        "description": "El subtítol de la targeta."
+      },
+      {
+        "property": "url",
+        "title": "Enllaç",
+        "description": "Un enllaç opcional per a la targeta (l'enllaç no està disponible per als objectius d'aprenentatge)."
+      },
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Defineix el títol; substitueix el títol basat en el tipus"
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Defineix la icona; substitueix la icona basada en el tipus"
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Defineix el color d'accent; substitueix el color basat en el tipus"
+      },
+      {
+        "slot": "",
+        "title": "Continguts"
+      }
+    ]
+  }
+}

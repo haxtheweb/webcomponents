@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Ndepụta nwere ntụpọ",
+    "description": "Mepụta ndepụta nwere ntụpọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Ụdị ntụpọ",
+        "description": "Ụdị e ji eme ntụpọ ndepụta enweghị usoro.",
+        "options": {
+          "": "Ndabere (square)",
+          "list-disc": "Diski",
+          "list-circle": "Okirikiri",
+          "list-square": "Square"
+        }
+      }
+    ]
+  }
+}

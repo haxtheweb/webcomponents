@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Nisbiy sarlavha",
+    "description": "yuqori sarlavhaga asoslanib toʻgʻri sarlavha ierarxiyasini chiqaradi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Yuqori sarlavhaning resurs ID si"
+      },
+      {
+        "property": "disableLink",
+        "description": "Havola tugmasi funksiyasini oʻchiradi."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Havolani nusxalash tugmasini sarlavhaning eng oʻng tomoniga tekislaydi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Yuqori sarlavha topilmasa, sarlavha darajasi."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Havolani nusxalash bildirishnomasining standart matnini almashtiradi."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Havolani nusxalash tugmasining standart yorligʻini almashtiradi."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Havolani nusxalash tugmasining standart belgisini almashtiradi."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Havolani nusxalash bildirishnomasidagi yopish tugmasining standart yorligʻini almashtiradi."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Havolani nusxalash bildirishnomasidagi yopish tugmasining standart belgisini almashtiradi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Vzdelávací komponent",
+    "description": "Karta, pomocou ktorej vyučujúci komunikujú pedagogiku a vyučovacie stratégie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Typ",
+        "description": "Typ karty, ktorý sa má použiť."
+      },
+      {
+        "property": "subtitle",
+        "title": "Podnadpis",
+        "description": "Podnadpis karty."
+      },
+      {
+        "property": "url",
+        "title": "Odkaz",
+        "description": "Voliteľný odkaz karty (odkaz nie je dostupný pre vzdelávacie ciele)."
+      },
+      {
+        "property": "title",
+        "title": "Názov",
+        "description": "Nastaviť názov, prepíše názov podľa typu"
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Nastaviť ikonu, prepíše ikonu podľa typu"
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Nastaviť farbu zvýraznenia, prepíše farbu podľa typu"
+      },
+      {
+        "slot": "",
+        "title": "Obsah"
+      }
+    ]
+  }
+}

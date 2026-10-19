@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Maonero eSaiti",
+    "description": "Bhuroko rinochinja rinobvunza nekuratidza data resaiti zvichienderana nezviyero"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL yeMaonero",
+        "description": "Maparamita embvunzo efeed yedata remaonero. Unogona kuawana kubva padhashibhodhi reViews."
+      },
+      {
+        "property": "renderer",
+        "title": "Mamiriro ekuratidza",
+        "description": "Kuratidzwa kunofanira kuitwa mhinduro dzemaonero"
+      },
+      {
+        "property": "entity",
+        "title": "Mhando yechinhu",
+        "description": "Mhando yechinhu inoshandiswa kuverenga mhinduro",
+        "options": {
+          "": "Zvakagara zviripo (zvinhu)",
+          "item": "Chinhu",
+          "page": "Peji",
+          "file": "Faira",
+          "tag": "Chiratidzo",
+          "block": "Bhuroko",
+          "view": "Maonero",
+          "theme": "Dingindira",
+          "region": "Nharaunda",
+          "customElement": "Chinhu Chakagadzirwa"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Gura maonero esaiti",
+        "description": "Shandura kuita zvirimo zvisingachinji kuti zvigadziriswe zvakananga; zvinomira kuvandudzwa zvega kubva kusosi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licenc",
+    "description": "Adj meg licencet a művedhez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "A hivatkozott mű címe."
+      },
+      {
+        "property": "source",
+        "title": "Forráshivatkozás",
+        "description": "A licencelt mű forrás-URL-je."
+      },
+      {
+        "property": "license",
+        "title": "Licenc",
+        "description": "A műre alkalmazott licenc."
+      },
+      {
+        "property": "creator",
+        "title": "Alkotó",
+        "description": "A mű alkotója vagy tulajdonosa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Forráshivatkozás",
+        "description": "Hivatkozás a további licencrészletekre."
+      },
+      {
+        "property": "moreLabel",
+        "title": "További címke",
+        "description": "A további licencrészletek címkéje."
+      }
+    ]
+  }
+}

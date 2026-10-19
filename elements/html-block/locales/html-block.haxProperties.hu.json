@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML-blokk",
+    "description": "Alapvető HTML-blokk HAXschema-bekötéssel"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "A tartalomban megjelenítendő HTML-kód"
+      }
+    ]
+  }
+}

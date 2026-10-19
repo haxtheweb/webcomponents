@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS వీక్షణ",
+    "description": "బ్యాకెండ్‌లో రెండర్ చేయబడిన CMS వీక్షణలు"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "పేరు",
+        "description": "మా CMS నుండి వీక్షణ పేరు"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "ప్రదర్శన",
+        "description": "మా CMS నుండి ఆ వీక్షణలోని ప్రదర్శన"
+      }
+    ]
+  }
+}

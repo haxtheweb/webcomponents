@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Nedlasting av arbeidsark",
+    "description": "En knapp for å vise filer som kan lastes ned."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Tittelen på nedlastingen."
+      },
+      {
+        "property": "link",
+        "title": "Lenke",
+        "description": "Lenken til nedlastingen."
+      }
+    ]
+  }
+}

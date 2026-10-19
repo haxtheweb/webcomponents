@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html t'aqa",
+    "description": "HAXschema t'inkiyta quq sapalla HTML t'aqa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Ukhunpi rikuchiyta munasqayki HTML código"
+      }
+    ]
+  }
+}

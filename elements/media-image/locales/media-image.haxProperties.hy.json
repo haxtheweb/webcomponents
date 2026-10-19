@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Ընդլայնված նկար",
+    "description": "Նկարներ ներկայացնելու եղանակ՝ տարբեր բարելավումներով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Աղբյուր",
+        "description": "Նկարի URL-ը։"
+      },
+      {
+        "property": "alt",
+        "title": "Այլընտրանքային տեքստ",
+        "description": "Տեքստ, որը նկարագրում է պատկերը տեսողության խնդիրներ ունեցող օգտատերերի համար։"
+      },
+      {
+        "property": "link",
+        "title": "Հղում",
+        "description": "Կապել նկարը URL-ի հետ"
+      },
+      {
+        "property": "card",
+        "title": "Քարտ",
+        "description": "Կիրառել ստվեր՝ բարձրացված քարտի տեսք տալու համար։"
+      },
+      {
+        "property": "box",
+        "title": "Շրջանակ",
+        "description": "Կիրառել տեսողական շրջանակ նկարի շուրջ։"
+      },
+      {
+        "property": "offset",
+        "title": "Շեղում",
+        "description": "Կիրառել ձախ կամ աջ շեղում նկարի վրա։",
+        "options": {
+          "none": "ոչ մեկը",
+          "wide": "լայն",
+          "narrow": "նեղ"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Մեջբերման աղբյուր",
+        "description": "Նկարի աղբյուրի հղումը։"
+      },
+      {
+        "property": "caption",
+        "title": "Ենթագիր",
+        "description": "Նկարի ենթագիրը։"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Պատկերի վերնագիր",
+        "description": "Պատկերի պիտակի վերնագիրը։"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Պատկերի նկարագրություն",
+        "description": "Պատկերի պիտակի նկարագրությունը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Մանրապատկեր",
+        "description": "Մանրապատկերի աղբյուր։ Ցույց է տալիս մանրապատկերը, բայց բացում է ամբողջական աղբյուրը պատուհանում։"
+      },
+      {
+        "property": "round",
+        "title": "Կլոր նկար",
+        "description": "Կտրում է նկարի տեսքը շրջանաձև։"
+      },
+      {
+        "property": "disableZoom",
+        "title": "Անջատել նկարի պատուհանը",
+        "description": "Անջատել սեղմումները, որոնք բացում են նկարը դիտման պատուհանում։"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Ցուցադրել որպես markdown",
+        "description": "Ցուցադրել ենթագիրը և աղբյուրի հղումը որպես markdown։"
+      }
+    ]
+  }
+}

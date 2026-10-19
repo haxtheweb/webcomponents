@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Үгсийн сан",
+    "description": "Нэр томьёо"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Нэр томьёо"
+      },
+      {
+        "slot": "",
+        "title": "Тодорхойлолт",
+        "description": "Нэр томьёог товшиход харуулах тодорхойлолт."
+      },
+      {
+        "property": "description",
+        "title": "Тайлбар (OER Schema)",
+        "description": "OER Schema: нэр томьёоны товч тайлбар. Хоосон үлдээвэл тодорхойлолтын текстээс автоматаар бөглөгдөнө."
+      }
+    ]
+  }
+}

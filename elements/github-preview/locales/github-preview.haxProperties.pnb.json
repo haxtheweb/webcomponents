@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github جھلک",
+    "description": "لمی تفصیل والی پہنچ جوگی شکل"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ادارہ",
+        "description": "Github ادارے دا مشینی ناں"
+      },
+      {
+        "property": "repo",
+        "title": "ریپوزٹری",
+        "description": "ریپو دا مشینی ناں"
+      },
+      {
+        "property": "extended",
+        "title": "ودھایا ویو",
+        "description": "عنصر وچ readme شامل کردا اے"
+      }
+    ]
+  }
+}

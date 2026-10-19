@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "פּאַראַלאַקס־בילד",
+    "description": "בילד בלעטערט פֿאַרבײַ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "בילד",
+        "description": "בילד וואָס זאָל זײַן אינעם הינטערגרונט"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "קעפּל־שטח",
+        "description": "קעפּל־טעקסט־שטח"
+      }
+    ]
+  }
+}

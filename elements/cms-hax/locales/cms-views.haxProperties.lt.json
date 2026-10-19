@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS rodinys",
+    "description": "CMS rodiniai, atvaizduojami serveryje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Vardas",
+        "description": "Rodinio pavadinimas iš mūsų CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Rodymas",
+        "description": "To rodinio atvaizdavimas iš mūsų CMS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "ລາຍການຫົວຂໍ້ຍ່ອຍ",
+    "description": "ສ້າງລາຍການຫົວຂໍ້ຍ່ອຍ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "ຮູບແບບຫົວຂໍ້ຍ່ອຍ",
+        "description": "ຮູບແບບທີ່ໃຊ້ສຳລັບຫົວຂໍ້ຍ່ອຍຂອງລາຍການບໍ່ມີລຳດັບ.",
+        "options": {
+          "": "ຄ່າເລີ່ມຕົ້ນ (ສີ່ຫຼ່ຽມ)",
+          "list-disc": "ຈຸດທຶບ",
+          "list-circle": "ວົງມົນ",
+          "list-square": "ສີ່ຫຼ່ຽມ"
+        }
+      }
+    ]
+  }
+}

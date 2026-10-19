@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS-i token",
+    "description": "Taustsüsteemis renderdatud CMS-i token"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Token",
+        "description": "Token meie CMS-ist"
+      }
+    ]
+  }
+}

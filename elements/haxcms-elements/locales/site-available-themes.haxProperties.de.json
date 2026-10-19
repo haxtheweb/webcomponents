@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Verfügbare Themes",
+    "description": "Verfügbare HAXcms-Themes mit Live-Vorschau-Umschaltung anzeigen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Ansichtsmodus",
+        "description": "Wähle, wie die Themes angezeigt werden",
+        "options": {
+          "gallery": "Galerie",
+          "table": "Tabelle"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Details anzeigen",
+        "description": "Theme-Beschreibungen und weitere Informationen anzeigen"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Versteckte und veraltete Themes anzeigen",
+        "description": "Zusätzlich zu den Dashboard-Standards versteckte, veraltete und schreckliche Themes anzeigen"
+      },
+      {
+        "property": "columns",
+        "title": "Spalten (Galerie)",
+        "description": "Anzahl der Spalten in der Galerieansicht"
+      }
+    ]
+  }
+}

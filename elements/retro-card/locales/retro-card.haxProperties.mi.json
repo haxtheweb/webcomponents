@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kāri tawhito",
+    "description": "Kāri māmā me te hoahoa tawhito."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Taitara kāri matua."
+      },
+      {
+        "property": "url",
+        "description": "URL hei whakatuwhera ina pāwhiritia te kāri."
+      },
+      {
+        "property": "subtitle",
+        "title": "Taitara-iti",
+        "description": "Taitara-iti kāri."
+      },
+      {
+        "property": "tags",
+        "title": "Ngā Tūtohu",
+        "description": "Ngā tūtohu kua wehea ki te piko."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Pūtake pāpāho",
+        "description": "Pūtake pāpāho matua."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Pūtake ina tau",
+        "description": "Pūtake pāpāho e whakaaturia ana ina tau te atatohu ki te kāri, ina whakahohea rānei."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae Arotahi",
+        "description": "Tae arotahi ka hāngaitia puta noa i te kāri."
+      },
+      {
+        "property": "dark",
+        "title": "Pōuri",
+        "description": "Whakamahia ngā tae pūtake aratau pōuri."
+      }
+    ]
+  }
+}

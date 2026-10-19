@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Merita insigno",
+    "description": "Vida insigno por komuniki akiron de kapablo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Insigna titolo",
+        "description": "Titolo montrata sur la insigno."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Insigna bildo",
+        "description": "Bilda URL por la insigno."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Insignaj detaloj",
+        "description": "Detaloj pri la insigno."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hiperligilo",
+        "description": "Ligilo asociita kun la insigno."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Insignaj kapabloj",
+        "description": "Kapabloj montrataj sur la insigno."
+      },
+      {
+        "property": "skill",
+        "title": "Kapablo (OER Schema)",
+        "description": "OER Schema: lernita kapablo akirita per kompletigo de ĉi tiu lerncelo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Tarjeta",
+    "description": "Munaspalla accent rikch'ayniyuq tarjeta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Uma suti",
+        "description": "Tarjetapaq umanchay."
+      },
+      {
+        "slot": "subheading",
+        "title": "Uku umanchay",
+        "description": "Tarjetapaq munaspalla uku umanchay."
+      },
+      {
+        "slot": "content",
+        "title": "Ukhunpi kaq",
+        "description": "Tarjetapaq ukhun."
+      },
+      {
+        "slot": "footer",
+        "title": "Chaki",
+        "description": "Tarjetapaq munaspalla chaki t'aqa."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Rikch'a",
+        "description": "Munaspalla siq'i"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Siq'ip Rantin Qillqa",
+        "description": "Pantalla ñawinchaqkunapaq siq'ita willaq rantin qillqa. Siq'i sumaqchanallapaq kaptinlla ch'usaqta saqiy."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Siq'ip Kinray Churasqan",
+        "options": {
+          "left": "lluq'i",
+          "center": "chawpi",
+          "right": "paña"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Siq'ip Sayaq Churasqan",
+        "options": {
+          "top": "hanaq",
+          "center": "chawpi",
+          "bottom": "uray"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Rikchachiq llimpi",
+        "description": "Akllanalla rikchachiq llimpi."
+      },
+      {
+        "property": "dark",
+        "title": "Tutayaq tema",
+        "description": "Tuta Rikch'ayta Hap'ichiy"
+      },
+      {
+        "property": "horizontal",
+        "title": "Siriq",
+        "description": "Kinraychu?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Umanchay Accent",
+        "description": "Accent llimpita umanchayman churankichu?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Qhipa Pampa Accent",
+        "description": "Accent llimpita tarjetap qhipa pampanman churankichu?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Mana Pata Accent",
+        "description": "Pata accentta hurqunkichu?"
+      },
+      {
+        "property": "flat",
+        "title": "Pampa",
+        "description": "Caja llantuta hurqunkichu?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "K'uchu",
+        "description": "Tarjetap k'uchunpaq ukhun."
+      }
+    ]
+  }
+}

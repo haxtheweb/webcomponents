@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Download della scheda di lavoro",
+    "description": "Un pulsante per mostrare i file disponibili per il download."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Il titolo del download."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Il link per il download."
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Danh sách đánh số",
+    "description": "Tạo danh sách đánh số."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Kiểu đánh số",
+        "description": "Kiểu dùng để đánh số danh sách có thứ tự.",
+        "options": {
+          "": "Mặc định (số thập phân)",
+          "list-decimal-leading-zero": "Số thập phân có số 0 đứng đầu (01, 02, 03)",
+          "list-lower-alpha": "Chữ thường (a, b, c)",
+          "list-upper-alpha": "Chữ hoa (A, B, C)",
+          "list-lower-roman": "Số La Mã thường (i, ii, iii)",
+          "list-upper-roman": "Số La Mã hoa (I, II, III)"
+        }
+      }
+    ]
+  }
+}

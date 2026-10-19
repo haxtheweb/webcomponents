@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "තරු ශ්‍රේණිගත කිරීම",
+    "description": "ශ්‍රේණිගත කිරීම පෙන්වන විජට් එකක් හෝ ශ්‍රේණිගත කිරීමට බොත්තමක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "ලකුණු",
+        "description": "වත්මන් ලකුණු අගය."
+      },
+      {
+        "property": "possible",
+        "title": "හැකි",
+        "description": "උපරිම හැකි ලකුණු."
+      },
+      {
+        "property": "numStars",
+        "title": "තරු ගණන",
+        "description": "පෙන්විය යුතු තරු ගණන."
+      },
+      {
+        "property": "interactive",
+        "title": "අන්තර්ක්‍රියාකාරී",
+        "description": "ශ්‍රේණිගත කිරීම සැකසීමට පරිශීලක අන්තර්ක්‍රියාවට ඉඩ දෙන්න."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubric පරිමාණ ප්‍රකාරය",
+        "description": "එක් එක් තරුව සඳහා OER Schema RubricScale සහ RubricLevel පාරදත්ත (levelOrdinal/levelPoints) නිකුත් කරන්න."
+      }
+    ]
+  }
+}

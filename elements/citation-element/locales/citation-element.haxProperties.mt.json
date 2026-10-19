@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ċitazzjoni",
+    "description": "Element taċ-ċitazzjoni bi tliet modi ta' preżentazzjoni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlu tax-xogħol iċċitat."
+      },
+      {
+        "property": "source",
+        "title": "Link tas-sors",
+        "description": "URL tas-sors għax-xogħol iċċitat."
+      },
+      {
+        "property": "date",
+        "title": "Data tal-aċċess",
+        "description": "Data meta s-sors ġie aċċessat."
+      },
+      {
+        "property": "scope",
+        "title": "Ambitu",
+        "description": "Ambitu tal-element li jrid jiġi ċċitat.",
+        "options": {
+          "sibling": "Element fl-istess livell",
+          "parent": "Element ġenitur"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Liċenzja",
+        "description": "Liċenzja għax-xogħol iċċitat."
+      },
+      {
+        "property": "creator",
+        "title": "Kreatur",
+        "description": "Kreatur jew sid tax-xogħol iċċitat."
+      },
+      {
+        "property": "typeof",
+        "title": "Tip ta' OER Schema",
+        "description": "Klassi OER Schema għal din iċ-ċitazzjoni. Default għal oer:ReferencedMaterial; ibdilha biss bi klassi OER valida (eż. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kizuizi cha Html",
+    "description": "Kizuizi cha msingi cha HTML kinachotoa muunganisho wa HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Msimbo wa HTML unaotaka kuwasilisha katika maudhui"
+      }
+    ]
+  }
+}

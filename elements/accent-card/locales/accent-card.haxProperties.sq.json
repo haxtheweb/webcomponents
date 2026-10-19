@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kartë",
+    "description": "Një kartë me stilizim opsional theksues."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Titulli",
+        "description": "Një titull për kartën."
+      },
+      {
+        "slot": "subheading",
+        "title": "Nëntitulli",
+        "description": "Një nëntitull opsional për kartën."
+      },
+      {
+        "slot": "content",
+        "title": "Përmbajtja",
+        "description": "Përmbajtja e kartës."
+      },
+      {
+        "slot": "footer",
+        "title": "Fundfaqja",
+        "description": "Një fund opsional për kartën."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Imazhi",
+        "description": "Imazh opsional"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Teksti alternativ i imazhit",
+        "description": "Tekst alternativ që e përshkruan imazhin për lexuesit e ekranit. Lëre bosh vetëm nëse imazhi është thjesht dekorativ."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Shtrirja horizontale e imazhit",
+        "options": {
+          "left": "majtas",
+          "center": "në qendër",
+          "right": "djathtas"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Shtrirja vertikale e imazhit",
+        "options": {
+          "top": "lart",
+          "center": "në qendër",
+          "bottom": "poshtë"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Një ngjyrë theksuese opsionale."
+      },
+      {
+        "property": "dark",
+        "title": "Tema e errët",
+        "description": "Aktivizo temën e errët"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Orientim horizontal?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Theksim i titullit",
+        "description": "Të zbatohet ngjyra theksuese te titulli?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Theksim i sfondit",
+        "description": "Të zbatohet ngjyra theksuese në sfondin e kartës?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Pa theksim kufiri",
+        "description": "Të hiqet theksimi i kufirit?"
+      },
+      {
+        "property": "flat",
+        "title": "E sheshtë",
+        "description": "Të hiqet hija e kutisë?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Këndi",
+        "description": "Përmbajtja për këndin e kartës."
+      }
+    ]
+  }
+}

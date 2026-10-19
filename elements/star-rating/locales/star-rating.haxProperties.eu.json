@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Izar bidezko balorazioa",
+    "description": "Balorazioa bistaratzeko widgeta edo baloratzeko botoia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Puntuazioa",
+        "description": "Uneko puntuazio-balioa."
+      },
+      {
+        "property": "possible",
+        "title": "Posiblea",
+        "description": "Lor daitekeen puntuazio maximoa."
+      },
+      {
+        "property": "numStars",
+        "title": "Izar kopurua",
+        "description": "Bistaratu beharreko izar kopurua."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktiboa",
+        "description": "Baimendu erabiltzaileari balorazioa ezartzea."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Errubrika-eskala modua",
+        "description": "Igorri OER Schema RubricScale eta RubricLevel metadatuak (levelOrdinal/levelPoints) izar bakoitzerako."
+      }
+    ]
+  }
+}

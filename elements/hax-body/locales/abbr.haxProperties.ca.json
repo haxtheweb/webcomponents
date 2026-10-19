@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Abreviatura",
+    "description": "Abreviatura amb indicació del terme complet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Text visible de l'abreviatura."
+      },
+      {
+        "attribute": "title",
+        "title": "Paraula",
+        "description": "Terme complet que es mostra en passar-hi per sobre."
+      }
+    ]
+  }
+}

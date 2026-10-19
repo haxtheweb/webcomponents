@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kadhi reRetro",
+    "description": "Kadhi rakareruka rine dhizaini yeretro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Zita guru rekadhi."
+      },
+      {
+        "property": "url",
+        "description": "URL inovhurwa kana kadhi radzvanywa."
+      },
+      {
+        "property": "subtitle",
+        "title": "Zita diki",
+        "description": "Zita diki rekadhi."
+      },
+      {
+        "property": "tags",
+        "title": "Matagi",
+        "description": "Zviratidzo zvakapatsanurwa nemakoma."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Sosi yemidhiya",
+        "description": "Sosi huru yemidhiya."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Sosi pakupfuura nembeva",
+        "description": "Sosi yemidhiya inoratidzwa kana mbeva ichipfuura pakadhi kana kadhi rabatidzwa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rweaccent runoshandiswa pakadhi rose."
+      },
+      {
+        "property": "dark",
+        "title": "Rima",
+        "description": "Shandisa mavara ekutanga emodhi yerima."
+      }
+    ]
+  }
+}

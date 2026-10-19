@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Umzobo Ochazayo",
+    "description": "Umzobo ofikelelekayo onenkcazo ende"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Umfanekiso"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Umbhalo Ongenayo"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Inkcazelo yoMzobo",
+        "description": "Umbhalo wenkcazelo yomzobo ohlala ubonakala."
+      },
+      {
+        "slot": "details",
+        "title": "Inkcazo",
+        "description": "Inkcazo yomfanekiso eneenkcukacha enokufihlwa okanye iboniswe"
+      },
+      {
+        "slot": "summary",
+        "title": "Iqhosha leNkcazo",
+        "description": "Okungagqibekanga kweqhosha elibonisa/elifihla umbhalo wenkcazo, umz. \"ulwazi\", \"imethadatha\", njl."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Umbhalo wesishwankathelo ongenyanzelekanga xa iinkcukacha zivuliwe"
+      },
+      {
+        "property": "closeText",
+        "title": "Umbhalo wesishwankathelo ongenyanzelekanga xa iinkcukacha zivaliwe"
+      }
+    ]
+  }
+}

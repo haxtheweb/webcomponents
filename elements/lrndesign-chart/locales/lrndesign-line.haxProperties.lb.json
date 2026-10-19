@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Linnendiagramm",
+    "description": "Erstellt en accessibelen Diagramm op Basis vun engem CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Akzentfaarf",
+        "description": "Eng optional Akzentfaarf."
+      },
+      {
+        "title": "Däischtert Thema",
+        "description": "Däischtert Theme aktivéieren"
+      },
+      {
+        "title": "CSV-Fichier",
+        "description": "Donnéeën aus engem CSV lueden."
+      },
+      {
+        "title": "Diagrammtitel",
+        "description": "Accessibelen Alt-Text fir Ären Diagramm."
+      },
+      {
+        "title": "Diagrammbeschreiwung",
+        "description": "Accessibel Beschreiwung vun Ärem Diagramm."
+      },
+      {
+        "title": "Skalennumm",
+        "description": "D'Verhältnis Breet:Héicht vum Diagramm (kuckt https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings fir $ct-scales an $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Gitterhannergrond uweisen"
+      },
+      {
+        "title": "Fläch uweisen"
+      },
+      {
+        "title": "Linn uweisen"
+      },
+      {
+        "title": "Punkt uweisen"
+      },
+      {
+        "title": "Voll Breet"
+      },
+      {
+        "title": "Punktbezeechnungen uweisen"
+      },
+      {
+        "title": "Diagramm-Padding (uewen)"
+      },
+      {
+        "title": "Diagramm-Padding (ënnen)"
+      },
+      {
+        "title": "Diagramm-Padding (lénks)"
+      },
+      {
+        "title": "Diagramm-Padding (riets)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Donnéeën ëmdréinen",
+        "description": "Donnéeën ëmdréinen, inklusiv Bezeechnungen, d'Reiefolleg vun de Serien an déi ganz Seriendaten-Arrays."
+      },
+      {
+        "title": "HTML-Tabell",
+        "description": "Optional: Donnéeën als HTML-Tabell lueden."
+      },
+      {
+        "title": "Diagramm-Minimum",
+        "description": "Wann Dir den natierlechen Minimum vum Diagramm iwwerschreift, kënnt Dir eranzoomen oder de klengsten ugewisene Wäert vum Diagramm begrenzen"
+      },
+      {
+        "title": "Diagramm-Maximum",
+        "description": "Wann Dir den natierleche Maximum vum Diagramm iwwerschreift, kënnt Dir eranzoomen oder de gréissten ugewisene Wäert vum Diagramm begrenzen"
+      },
+      {
+        "title": "Punktbezeechnungen uweisen",
+        "options": {
+          "middle": "Mëtt",
+          "start": "Ufank",
+          "end": "Enn"
+        }
+      },
+      {
+        "title": "X-Versatz vun de Punktbezeechnungen"
+      },
+      {
+        "title": "Y-Versatz vun de Punktbezeechnungen"
+      },
+      {
+        "title": "Linn glätten"
+      },
+      {
+        "title": "Flächebasis",
+        "description": "D'Basis fir d'Flächendiagramm, déi benotzt gëtt, fir d'Fläch zouzemaachen (normalerweis 0)."
+      },
+      {
+        "title": "X-Achs: Gitter uweisen",
+        "description": "D'Gitter vun der X-Achs uweisen."
+      },
+      {
+        "title": "X-Achs-Versatz"
+      },
+      {
+        "title": "X-Achs-Positioun",
+        "description": "Positioun, wou d'Bezeechnunge placéiert ginn. Ka op „start“ oder „end“ gesat ginn, wou „start“ lénks oder uewen op der vertikaler Achs entsprécht an „end“ riets oder ënnen op der horizontaler Achs"
+      },
+      {
+        "title": "X-Achs: Bezeechnung uweisen",
+        "description": "D'Bezeechnung vun der X-Achs uweisen."
+      },
+      {
+        "title": "X-Achs-Bezeechnung (horizontale Versatz)",
+        "description": "Horizontal Positioun vun de Bezeechnunge vun der X-Achs."
+      },
+      {
+        "title": "X-Achs-Bezeechnung (vertikale Versatz)",
+        "description": "Vertikal Positioun vun de Bezeechnunge vun der X-Achs."
+      },
+      {
+        "title": "X-Achs-Titel",
+        "description": "Optionalen Titel fir d'X-Achs."
+      },
+      {
+        "title": "X-Achs-Titel (horizontale Versatz)",
+        "description": "Horizontal Positioun vum Titel vun der X-Achs."
+      },
+      {
+        "title": "X-Achs-Titel (vertikale Versatz)",
+        "description": "Vertikal Positioun vum Titel vun der X-Achs."
+      },
+      {
+        "title": "Anker vum X-Achs-Titel",
+        "description": "Optionalen Anker fir den Titel vun der X-Achs.",
+        "options": {
+          "middle": "Mëtt",
+          "end": "Enn",
+          "start": "Ufank"
+        }
+      },
+      {
+        "title": "Y-Achs: Gitter uweisen",
+        "description": "D'Gitter vun der Y-Achs uweisen."
+      },
+      {
+        "title": "Y-Achs-Versatz"
+      },
+      {
+        "title": "Y-Achs-Positioun",
+        "description": "Positioun, wou d'Bezeechnunge placéiert ginn. Ka op „start“ oder „end“ gesat ginn, wou „start“ lénks oder uewen op der vertikaler Achs entsprécht an „end“ riets oder ënnen op der horizontaler Achs"
+      },
+      {
+        "title": "Y-Achs: Bezeechnung uweisen",
+        "description": "D'Bezeechnung vun der Y-Achs uweisen."
+      },
+      {
+        "title": "Y-Achs-Bezeechnung (horizontale Versatz)",
+        "description": "Horizontal Positioun vun der Bezeechnung vun der Y-Achs."
+      },
+      {
+        "title": "Y-Achs-Bezeechnung (vertikale Versatz)",
+        "description": "Vertikal Positioun vun der Bezeechnung vun der Y-Achs."
+      },
+      {
+        "title": "Y-Achs: Minimalabstand vun der Skala",
+        "description": "Gëtt d'Minimalhéicht vun de Skaleschrëtt a Pixel un."
+      },
+      {
+        "title": "Y-Achs-Skala (nëmme ganz Zuelen)",
+        "description": "Nëmme ganz Zuelen fir d'Skaleschrëtt benotzen."
+      },
+      {
+        "title": "Y-Achs-Titel",
+        "description": "Optionalen Titel fir d'Y-Achs."
+      },
+      {
+        "title": "Y-Achs-Titel (vertikale Versatz)",
+        "description": "Horizontal Positioun vum Titel vun der Y-Achs."
+      },
+      {
+        "title": "Y-Achs-Titel (horizontale Versatz)",
+        "description": "Horizontal Positioun vum Titel vun der Y-Achs."
+      },
+      {
+        "title": "Anker vum Y-Achs-Titel",
+        "description": "Optionalen Anker fir den Titel vun der Y-Achs.",
+        "options": {
+          "middle": "Mëtt",
+          "end": "Enn",
+          "start": "Ufank"
+        }
+      },
+      {
+        "title": "Y-Achs-Titel ëmdréinen",
+        "description": "Den Titel vun der Y-Achs ëmdréinen?"
+      }
+    ]
+  }
+}

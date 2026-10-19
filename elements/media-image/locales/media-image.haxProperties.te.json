@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "మెరుగుపరచిన చిత్రం",
+    "description": "వివిధ మెరుగుదలలతో చిత్రాలను ప్రదర్శించే మార్గం."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "మూలం",
+        "description": "చిత్రం కోసం URL."
+      },
+      {
+        "property": "alt",
+        "title": "ప్రత్యామ్నాయ టెక్స్ట్",
+        "description": "దృష్టి లేని వినియోగదారులకు చిత్రాన్ని వివరించే టెక్స్ట్."
+      },
+      {
+        "property": "link",
+        "title": "లింక్",
+        "description": "చిత్రాన్ని ఒక URLకు లింక్ చేయండి"
+      },
+      {
+        "property": "card",
+        "title": "కార్డ్",
+        "description": "పైకి లేచిన కార్డ్‌లా కనిపించేలా డ్రాప్ షాడోను వర్తింపజేయండి."
+      },
+      {
+        "property": "box",
+        "title": "పెట్టె",
+        "description": "చిత్రం చుట్టూ దృశ్యమాన పెట్టెను వర్తింపజేయండి."
+      },
+      {
+        "property": "offset",
+        "title": "ఆఫ్‌సెట్",
+        "description": "చిత్రానికి ఎడమ లేదా కుడి ఆఫ్‌సెట్‌ను వర్తింపజేయండి.",
+        "options": {
+          "none": "ఏదీ లేదు",
+          "wide": "వెడల్పు",
+          "narrow": "ఇరుకు"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "ఆధారం",
+        "description": "చిత్రం కోసం ఉల్లేఖనం."
+      },
+      {
+        "property": "caption",
+        "title": "చిత్ర శీర్షిక",
+        "description": "చిత్రం కోసం శీర్షిక."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "చిత్ర శీర్షిక",
+        "description": "చిత్ర లేబుల్ కోసం శీర్షిక."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "చిత్ర వివరణ",
+        "description": "చిత్ర లేబుల్ కోసం వివరణ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "థంబ్‌నెయిల్ చిత్రం",
+        "description": "థంబ్‌నెయిల్ చిత్ర మూలం. థంబ్‌నెయిల్‌ను చూపిస్తుంది కానీ పూర్తి మూలాన్ని మోడల్‌లో తెరుస్తుంది."
+      },
+      {
+        "property": "round",
+        "title": "గుండ్రని చిత్రం",
+        "description": "చిత్రం రూపాన్ని వృత్తాకారంలో కత్తిరిస్తుంది."
+      },
+      {
+        "property": "disableZoom",
+        "title": "చిత్ర మోడల్‌ను నిలిపివేయండి",
+        "description": "క్లిక్‌లు చిత్రాన్ని చిత్ర పరిశీలక డైలాగ్‌లో తెరవడాన్ని నిలిపివేయండి."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdownగా రెండర్ చేయండి",
+        "description": "శీర్షిక మరియు ఉల్లేఖనాన్ని markdownగా రెండర్ చేయండి."
+      }
+    ]
+  }
+}

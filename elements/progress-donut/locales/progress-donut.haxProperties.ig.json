@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Donut ọganihu",
+    "description": "Donut ọganihu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha nke mmewere ahụ"
+      },
+      {
+        "property": "desc",
+        "title": "Nkọwa",
+        "description": "Nkọwa ogologo dị mfe iru"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Isi Mmalite Onyonyo",
+        "description": "Isi iyi onyonyo dị n'ime donut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Ederede alt onyonyo",
+        "description": "Ederede alt maka onyonyo."
+      },
+      {
+        "property": "animated",
+        "title": "Na-emegharị emegharị",
+        "description": "Ma ọganihu ọ na-emegharị mgbe mbụ ebudatara ya"
+      },
+      {
+        "property": "complete",
+        "title": "Agwụla",
+        "description": "Ndepụta nke uru emechara."
+      },
+      {
+        "property": "total",
+        "title": "Mkpokọta",
+        "description": "Mkpokọta mgbe ihe niile zuru ezu."
+      },
+      {
+        "property": "startAngle",
+        "title": "Akụkụ mbido",
+        "description": "Akụkụ donut ebe ọganihu na-amalite"
+      }
+    ]
+  }
+}

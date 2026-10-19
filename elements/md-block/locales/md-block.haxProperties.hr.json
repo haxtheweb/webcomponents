@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Blok markdown sadržaja, izravno ili učitan s udaljenog izvora"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Neobrađeni markdown"
+      },
+      {
+        "property": "source",
+        "title": "Izvor",
+        "description": "Izvorna datoteka za markdown"
+      }
+    ]
+  }
+}

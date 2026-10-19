@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Lencana Prestasi",
+    "description": "Lencana visual kanggo nuduhake olehe katrampilan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Judhul Lencana",
+        "description": "Judhul sing ditampilake ing lencana."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Gambar Lencana",
+        "description": "URL gambar kanggo lencana."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Rincian Lencana",
+        "description": "Rincian babagan lencana."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlink",
+        "description": "Link sing gegandhengan karo lencana."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Katrampilan Lencana",
+        "description": "Katrampilan sing ditampilake ing lencana."
+      },
+      {
+        "property": "skill",
+        "title": "Katrampilan (OER Schema)",
+        "description": "OER Schema: katrampilan sing disinaoni sing dipikolehi kanthi ngrampungake tujuan sinau iki."
+      }
+    ]
+  }
+}

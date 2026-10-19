@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Seletor hexadecimal",
+    "description": "Seletor de cores por código hexadecimal"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Valor",
+        "description": "Valor hexadecimal padrão"
+      },
+      {
+        "property": "disabled",
+        "title": "Desativado",
+        "description": "Desativar o campo de texto"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Exibição grande",
+        "description": "Incluir a cor em exibição grande"
+      }
+    ]
+  }
+}

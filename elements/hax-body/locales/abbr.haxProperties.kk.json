@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Аббревиатура",
+    "description": "Толық терминді көрсететін кеңесі бар аббревиатура."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Мәтін",
+        "description": "Көрінетін аббревиатура мәтіні."
+      },
+      {
+        "attribute": "title",
+        "title": "Сөз",
+        "description": "Меңзер апарғанда көрсетілетін толық термин."
+      }
+    ]
+  }
+}

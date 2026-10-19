@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Donati ya Kupita Patsogolo",
+    "description": "Donati ya kupita patsogolo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wa chinthu"
+      },
+      {
+        "property": "desc",
+        "title": "Kufotokozera",
+        "description": "Kufotokozera kwautali kopezeka kwa onse"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Gwero la Chithunzi",
+        "description": "Gwero la chithunzi mkati mwa donati."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Mawu Ena a Chithunzi",
+        "description": "Mawu ena a chithunzi."
+      },
+      {
+        "property": "animated",
+        "title": "Choyenda",
+        "description": "Ngati kupita patsogolo kumayenda pakutsegula koyamba"
+      },
+      {
+        "property": "complete",
+        "title": "Yatha",
+        "description": "Gulu la mitengo yomalizidwa."
+      },
+      {
+        "property": "total",
+        "title": "Zonse",
+        "description": "Chiwerengero chonse zinthu zonse zikamalizidwa."
+      },
+      {
+        "property": "startAngle",
+        "title": "Ngodya Yoyambira",
+        "description": "Ngodya ya donati pomwe kupita patsogolo kumayambira"
+      }
+    ]
+  }
+}

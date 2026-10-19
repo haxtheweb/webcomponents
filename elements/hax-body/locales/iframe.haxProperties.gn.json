@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Emoĩ ñanduti retepy okapegua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Reñoiha",
+        "description": "URL ko mba'erepýpe g̃uarã."
+      }
+    ]
+  }
+}

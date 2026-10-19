@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ebook button",
+    "description": "Isang button na nagli-link sa isang Ebook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Ang pamagat ng button."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Ang link na pupuntahan kapag na-click."
+      },
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Icon na kumakatawan sa link na ito"
+      }
+    ]
+  }
+}

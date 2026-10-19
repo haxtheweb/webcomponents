@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Layout em colunas",
+    "description": "Organize o material em colunas simples"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Layout em colunas",
+        "description": "Estilo de apresentação destes itens (pode mudar em telas pequenas)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Desativar responsividade",
+        "description": "Marque a caixa para manter as colunas em telas maiores, ainda empilhando nas telas menores"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Preenchimento dos itens",
+        "description": "Preenchimento interno de cada item"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Margens dos itens",
+        "description": "Margem entre os itens"
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "კოდის ნიმუში",
+    "description": "გვერდზე გამოკვეთილი კოდის ნიმუში"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "კოდის გამოკვეთა",
+        "description": "სინტაქსის გამოკვეთა, რომელიც კოდის არეზე გამოიყენება",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON მონაცემები",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ბუფერში კოპირების ღილაკი",
+        "description": "ღილაკი ზედა მარჯვენა კუთხეში წარწერით „ბუფერში კოპირება“"
+      },
+      {
+        "property": "highlightStart",
+        "title": "გამოკვეთის დასაწყისი",
+        "description": "ხაზის ნომერი, საიდანაც იწყება გამოკვეთა"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "გამოკვეთის დასასრული",
+        "description": "ხაზი, რომელზეც მთავრდება გამოკვეთა"
+      }
+    ]
+  }
+}

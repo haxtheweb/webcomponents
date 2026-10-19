@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Daxistina Pelê Xebatê",
+    "description": "Bişkokek ji bo nîşandana pelên ku ji bo daxistinê berdest in."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê daxistinê."
+      },
+      {
+        "property": "link",
+        "title": "Girêdan",
+        "description": "Girêdana daxistinê."
+      }
+    ]
+  }
+}

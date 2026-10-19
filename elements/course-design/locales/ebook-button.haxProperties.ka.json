@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ელწიგნის ღილაკი",
+    "description": "ღილაკი, რომელიც ელწიგნს უკავშირდება."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "ღილაკის სათაური."
+      },
+      {
+        "property": "link",
+        "title": "ბმული",
+        "description": "ბმული, რომელზეც დაწკაპუნებისას გადამისამართდება."
+      },
+      {
+        "property": "icon",
+        "title": "ხატულა",
+        "description": "ამ ბმულის აღმნიშვნელი ხატულა"
+      }
+    ]
+  }
+}

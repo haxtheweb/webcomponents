@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Bicihanîna pergala sêwirandinê ji bo HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Vebijarka ku were nîşandan",
+        "options": {
+          "*": "Rêbera şêwazê ya tevahî"
+        }
+      }
+    ]
+  }
+}

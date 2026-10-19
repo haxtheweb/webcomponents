@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "ভিডিও",
+    "description": "একাধিক সোর্স থেকে অ্যাক্সেসযোগ্য ভিডিও প্লেব্যাক।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "উৎস",
+        "description": "এই মিডিয়ার URL।"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "শিরোনাম",
+        "description": "ভিডিওর নিচে দেখানো শিরোনাম।"
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "পোস্টার ছবি",
+        "description": "পোস্টার ছবির URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "টেক্সট ট্র্যাক",
+        "description": "ভিডিওর ক্লোজড ক্যাপশন, সাবটাইটেল, বর্ণনা এবং অন্যান্য টেক্সট ট্র্যাক।"
+      },
+      {
+        "property": "startTime",
+        "title": "শুরুর সময়",
+        "description": "নির্দিষ্ট সময়ে (সেকেন্ড) ভিডিও শুরু করুন।"
+      },
+      {
+        "property": "endTime",
+        "title": "শেষের সময়",
+        "description": "নির্দিষ্ট সময়ে (সেকেন্ড) ভিডিও শেষ করুন, শুরুর সময় আবশ্যক।"
+      },
+      {
+        "property": "learningMode",
+        "title": "লার্নিং মোড চালু করুন",
+        "description": "দ্রুত সামনে ও পেছনে যাওয়া বন্ধ করে।"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube-এ খোলার বাটন সরান",
+        "description": "ভিডিওটি YouTube-এ খোলার বাটন সরিয়ে দেয়।"
+      },
+      {
+        "property": "linkable",
+        "title": "শেয়ার লিংক যোগ করবেন?",
+        "description": "ভিডিও শেয়ার করার একটি লিংক দেয়।"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "টাইমস্ট্যাম্প লুকান",
+        "description": "ট্রান্সক্রিপ্টের টাইমস্ট্যাম্প লুকান।"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ট্রান্সক্রিপ্ট লুকান",
+        "description": "ডিফল্টভাবে ট্রান্সক্রিপ্ট লুকান।"
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "অডিও বর্ণনা ট্র্যাক",
+        "description": "একটি অডিও বর্ণনা ট্র্যাকের URL (MP3 ফাইল) যা ভিজ্যুয়াল উপাদানগুলোর বর্ণনা দেয়।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS ব্যবহার করা হবে কিনা নির্দেশ করে।",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "ব্যাকগ্রাউন্ডে চালানোর অনুমতি দিন",
+        "description": "ব্রাউজার ট্যাব থেকে ফোকাস সরে গেলেও চালু রাখুন।"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ট্রান্সক্রিপ্টের জন্য ডার্ক থিম",
+        "description": "ট্রান্সক্রিপ্টের জন্য ডার্ক থিম চালু করুন।"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ইন্টারঅ্যাকটিভ বন্ধ করুন",
+        "description": "ট্রান্সক্রিপ্ট ক্লিকযোগ্য করার ইন্টারঅ্যাকটিভ মোড বন্ধ করুন।"
+      },
+      {
+        "property": "lang",
+        "title": "ভাষা",
+        "description": "মিডিয়ার ভাষা।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "(অপ্রচলিত) প্লেয়ারের অ্যাকসেন্ট রং নির্বাচন করুন।"
+      }
+    ]
+  }
+}

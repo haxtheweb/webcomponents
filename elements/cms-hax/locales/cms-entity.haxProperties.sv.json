@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS-entitet",
+    "description": "CMS-entitet som renderas i backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Typ",
+        "description": "typ från vårt CMS",
+        "options": {
+          "node": "Nod",
+          "user": "Användare",
+          "file": "Fil"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id från vårt CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Visningsläge",
+        "description": "visningsläge från vårt CMS"
+      }
+    ]
+  }
+}

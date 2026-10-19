@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Hal tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Astaanta Tab-ka"
+      },
+      {
+        "property": "disabled",
+        "title": "La damiyay"
+      },
+      {
+        "property": "label",
+        "title": "Calaamadda Tab-ka"
+      },
+      {
+        "slot": "",
+        "title": "Waxyaabaha Tab-ka",
+        "description": "Waxyaabaha tab-ka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Gaar ah"
+      },
+      {
+        "property": "flag",
+        "title": "Qoraal Calan Ikhtiyaari ah"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Astaan Calan Ikhtiyaari ah"
+      }
+    ]
+  }
+}

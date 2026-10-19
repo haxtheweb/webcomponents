@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Codevoorbeeld",
+    "description": "Een codevoorbeeld dat op de pagina wordt gemarkeerd"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Codemarkering",
+        "description": "Syntaxismarkering die op het codegebied wordt toegepast",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-gegevens",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Knop Kopiëren naar klembord",
+        "description": "knop rechtsboven met de tekst kopiëren naar klembord"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Begin markering",
+        "description": "Regelnummer waar de markering begint"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Einde markering",
+        "description": "Regel waar de markering eindigt"
+      }
+    ]
+  }
+}

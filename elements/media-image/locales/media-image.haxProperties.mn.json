@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Сайжруулсан зураг",
+    "description": "Зургийг олон төрлийн сайжруулалттай харуулах арга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Эх сурвалж",
+        "description": "Зургийн URL."
+      },
+      {
+        "property": "alt",
+        "title": "Орлох текст",
+        "description": "Хараагүй хэрэглэгчдэд зургийг тайлбарлах текст."
+      },
+      {
+        "property": "link",
+        "title": "Холбоос",
+        "description": "Зургийг URL руу холбох"
+      },
+      {
+        "property": "card",
+        "title": "Карт",
+        "description": "Өргөгдсөн карт мэт харагдуулахын тулд сүүдэр хэрэглэх."
+      },
+      {
+        "property": "box",
+        "title": "Хайрцаг",
+        "description": "Зургийн эргэн тойронд харагдах хайрцаг хэрэглэх."
+      },
+      {
+        "property": "offset",
+        "title": "Шилжилт",
+        "description": "Зурагт зүүн эсвэл баруун шилжилт хэрэглэх.",
+        "options": {
+          "none": "байхгүй",
+          "wide": "өргөн",
+          "narrow": "нарийн"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Эш татлага",
+        "description": "Зургийн ишлэл."
+      },
+      {
+        "property": "caption",
+        "title": "Тайлбар",
+        "description": "Зургийн тайлбар."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Зургийн гарчиг",
+        "description": "Зургийн шошгын гарчиг."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Зургийн тайлбар",
+        "description": "Зургийн шошгын тайлбар."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Жижиг зураг",
+        "description": "Жижиг зургийн эх сурвалж. Жижиг зургийг харуулах боловч бүтэн эхийг модал цонхонд нээнэ."
+      },
+      {
+        "property": "round",
+        "title": "Дугуй зураг",
+        "description": "Зургийн харагдацыг дугуй хэлбэрээр тайрна."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Зургийн модал цонхыг идэвхгүй болгох",
+        "description": "Товшиход зургийг зураг шалгагч цонхонд нээхийг идэвхгүй болгох."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Markdown хэлбэрээр харуулах",
+        "description": "Тайлбар болон ишлэлийг markdown хэлбэрээр харуулах."
+      }
+    ]
+  }
+}

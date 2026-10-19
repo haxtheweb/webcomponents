@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ឧបករណ៍ជ្រើសរើស Hex",
+    "description": "ឧបករណ៍ជ្រើសរើសពណ៌តាមកូដ Hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "តម្លៃ",
+        "description": "តម្លៃ hex លំនាំដើម"
+      },
+      {
+        "property": "disabled",
+        "title": "បានបិទ",
+        "description": "បិទវាលអត្ថបទ"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "ការបង្ហាញធំ",
+        "description": "រួមបញ្ចូលពណ៌ក្នុងការបង្ហាញធំ"
+      }
+    ]
+  }
+}

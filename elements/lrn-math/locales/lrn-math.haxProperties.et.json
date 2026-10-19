@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matemaatika",
+    "description": "Esita matemaatikat kenal viisil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matemaatika",
+        "description": "Sisesta võrrand LaTeX-ina"
+      }
+    ]
+  }
+}

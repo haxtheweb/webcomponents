@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "دفتر الدرجات",
+    "description": "دفتر درجات بدون واجهة يدعم واجهات خلفية متعددة مع معايير التقييم."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "المصدر",
+        "description": "نوع مصدر البيانات (googledocs، url، json، filesystem).",
+        "options": {
+          "googledocs": "مستندات Google",
+          "url": "نقطة نهاية URL (JSON)",
+          "json": "كتلة بيانات JSON",
+          "filesystem": "نظام الملفات"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "بيانات المصدر",
+        "description": "URL أو بيانات JSON لدفتر الدرجات."
+      },
+      {
+        "property": "forCourse",
+        "title": "مرجع المقرر",
+        "description": "معرّف المقرر الصادر كـ oer:forCourse على كل مورد تقييم."
+      }
+    ]
+  }
+}

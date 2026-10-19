@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "باہرلا ویب مواد ایمبیڈ کرو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ذریعہ",
+        "description": "ایس وسیلے دا URL۔"
+      }
+    ]
+  }
+}

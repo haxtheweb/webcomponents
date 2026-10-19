@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Miramira",
+    "description": "Miramira kuputuhi ā-rārangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Kupu",
+        "description": "Kuputuhi kua miramiratia."
+      }
+    ]
+  }
+}

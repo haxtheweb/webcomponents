@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Diseinatu, Garatu, Suntsitu",
+    "description": "HAXerako diseinu-sistemaren inplementazioa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Errendatu beharreko aukera",
+        "options": {
+          "*": "Estilo-gida osoa"
+        }
+      }
+    ]
+  }
+}

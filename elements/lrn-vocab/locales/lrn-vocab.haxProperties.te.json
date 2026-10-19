@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "పదకోశం",
+    "description": "పదజాల పదం"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "పదం"
+      },
+      {
+        "slot": "",
+        "title": "నిర్వచనం",
+        "description": "పదాన్ని క్లిక్ చేసినప్పుడు ప్రదర్శించాల్సిన నిర్వచనం."
+      },
+      {
+        "property": "description",
+        "title": "వివరణ (OER Schema)",
+        "description": "OER Schema: పదజాల పదం యొక్క సంక్షిప్త వివరణ. ఖాళీగా వదిలితే నిర్వచన వచనం నుండి స్వయంచాలకంగా నింపబడుతుంది."
+      }
+    ]
+  }
+}

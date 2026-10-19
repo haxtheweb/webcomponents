@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "ವರ್ಧಿತ ಚಿತ್ರ",
+    "description": "ವಿವಿಧ ವರ್ಧನೆಗಳೊಂದಿಗೆ ಚಿತ್ರಗಳನ್ನು ಪ್ರಸ್ತುತಪಡಿಸುವ ವಿಧಾನ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ಮೂಲ",
+        "description": "ಚಿತ್ರದ URL."
+      },
+      {
+        "property": "alt",
+        "title": "ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ದೃಷ್ಟಿಹೀನ ಬಳಕೆದಾರರಿಗೆ ಚಿತ್ರವನ್ನು ವಿವರಿಸುವ ಪಠ್ಯ."
+      },
+      {
+        "property": "link",
+        "title": "ಲಿಂಕ್",
+        "description": "ಚಿತ್ರವನ್ನು URL ಗೆ ಲಿಂಕ್ ಮಾಡಿ"
+      },
+      {
+        "property": "card",
+        "title": "ಕಾರ್ಡ್",
+        "description": "ಎತ್ತರಿಸಿದ ಕಾರ್ಡ್‌ನಂತೆ ಕಾಣಲು ನೆರಳು ಅನ್ವಯಿಸಿ."
+      },
+      {
+        "property": "box",
+        "title": "ಪೆಟ್ಟಿಗೆ",
+        "description": "ಚಿತ್ರದ ಸುತ್ತ ದೃಶ್ಯ ಪೆಟ್ಟಿಗೆ ಅನ್ವಯಿಸಿ."
+      },
+      {
+        "property": "offset",
+        "title": "ಆಫ್‌ಸೆಟ್",
+        "description": "ಚಿತ್ರಕ್ಕೆ ಎಡ ಅಥವಾ ಬಲ ಆಫ್‌ಸೆಟ್ ಅನ್ವಯಿಸಿ.",
+        "options": {
+          "none": "ಯಾವುದೂ ಇಲ್ಲ",
+          "wide": "ಅಗಲ",
+          "narrow": "ಕಿರಿದು"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "ಉಲ್ಲೇಖ",
+        "description": "ಚಿತ್ರದ ಉಲ್ಲೇಖ."
+      },
+      {
+        "property": "caption",
+        "title": "ಚಿತ್ರ ಶೀರ್ಷಿಕೆ",
+        "description": "ಚಿತ್ರದ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ಚಿತ್ರದ ಶೀರ್ಷಿಕೆ",
+        "description": "ಚಿತ್ರ ಲೇಬಲ್‌ನ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ಚಿತ್ರದ ವಿವರಣೆ",
+        "description": "ಚಿತ್ರ ಲೇಬಲ್‌ನ ವಿವರಣೆ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "ಥಂಬ್‌ನೇಲ್ ಚಿತ್ರ",
+        "description": "ಥಂಬ್‌ನೇಲ್ ಚಿತ್ರದ ಮೂಲ. ಥಂಬ್‌ನೇಲ್ ತೋರಿಸುತ್ತದೆ ಆದರೆ ಮೋಡಲ್‌ನಲ್ಲಿ ಪೂರ್ಣ ಮೂಲವನ್ನು ತೆರೆಯುತ್ತದೆ."
+      },
+      {
+        "property": "round",
+        "title": "ವೃತ್ತಾಕಾರದ ಚಿತ್ರ",
+        "description": "ಚಿತ್ರದ ನೋಟವನ್ನು ವೃತ್ತಾಕಾರಕ್ಕೆ ಕತ್ತರಿಸುತ್ತದೆ."
+      },
+      {
+        "property": "disableZoom",
+        "title": "ಚಿತ್ರ ಮೋಡಲ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ",
+        "description": "ಕ್ಲಿಕ್‌ಗಳು ಚಿತ್ರವನ್ನು ಚಿತ್ರ ಪರೀಕ್ಷಕ ಡೈಲಾಗ್‌ನಲ್ಲಿ ತೆರೆಯುವುದನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown ಆಗಿ ಪ್ರದರ್ಶಿಸಿ",
+        "description": "ಶೀರ್ಷಿಕೆ ಮತ್ತು ಉಲ್ಲೇಖವನ್ನು markdown ಆಗಿ ಪ್ರದರ್ಶಿಸಿ."
+      }
+    ]
+  }
+}

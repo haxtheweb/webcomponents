@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Item ng bibliograpiya",
+    "description": "Item na kumakatawan sa iisang sanggunian sa isang bibliograpiya, na sumusuporta sa maraming format at opsyon sa pag-export."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Uri",
+        "description": "Uri ng sanggunian",
+        "options": {
+          "web": "Web",
+          "journal": "Journal",
+          "book": "Aklat"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Pamagat ng item"
+      },
+      {
+        "property": "authors",
+        "title": "May-akda",
+        "description": "Ang mga kaganapan sa timeline"
+      },
+      {
+        "property": "publisher",
+        "title": "Tagapaglathala",
+        "description": "Orihinal na website"
+      }
+    ]
+  }
+}

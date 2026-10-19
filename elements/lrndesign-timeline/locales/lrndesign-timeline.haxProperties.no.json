@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tidslinje",
+    "description": "En tidslinje med hendelser med bilder og tekst"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Tittel på tidslinje",
+        "description": "En tittel for tidslinjen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "En valgfri aksentfarge."
+      },
+      {
+        "property": "dark",
+        "title": "Mørkt tema",
+        "description": "Aktiver mørkt tema"
+      },
+      {
+        "slot": "",
+        "title": "Beskrivelse av tidslinjen",
+        "description": "Valgfri tekst som beskriver tidslinjen."
+      },
+      {
+        "property": "events",
+        "title": "Hendelser i tidslinjen",
+        "description": "Hendelsene i tidslinjen"
+      }
+    ]
+  }
+}

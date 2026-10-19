@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Cronologie",
+    "description": "O cronologie de evenimente cu imagini și text"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Titlul cronologiei",
+        "description": "Un titlu pentru cronologie."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "O culoare de accent opțională."
+      },
+      {
+        "property": "dark",
+        "title": "Temă întunecată",
+        "description": "Activează tema întunecată"
+      },
+      {
+        "slot": "",
+        "title": "Descrierea cronologiei",
+        "description": "Text opțional care descrie cronologia."
+      },
+      {
+        "property": "events",
+        "title": "Evenimentele cronologiei",
+        "description": "Evenimentele din cronologie"
+      }
+    ]
+  }
+}

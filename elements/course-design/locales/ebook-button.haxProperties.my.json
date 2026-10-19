@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ebook ခလုတ်",
+    "description": "Ebook သို့ လင့်ခ်ချိတ်သော ခလုတ်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "ခလုတ်၏ ခေါင်းစဉ်။"
+      },
+      {
+        "property": "link",
+        "title": "လင့်ခ်",
+        "description": "နှိပ်သောအခါ ပြန်ညွှန်းမည့် လင့်ခ်။"
+      },
+      {
+        "property": "icon",
+        "title": "အိုင်ကွန်",
+        "description": "ဤလင့်ခ်ကို ကိုယ်စားပြုမည့် အိုင်ကွန်"
+      }
+    ]
+  }
+}

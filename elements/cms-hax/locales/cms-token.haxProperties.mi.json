@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tohu CMS",
+    "description": "Tohu CMS ka whakaaturia ki te tuarongo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Tohu",
+        "description": "Tohu mai i tō mātou CMS"
+      }
+    ]
+  }
+}

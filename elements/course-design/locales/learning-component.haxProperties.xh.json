@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Icandelo lokuFunda",
+    "description": "Ikhadi labahlohli lokunxibelelana ngepedagogi nangamaqhinga okufundisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Uhlobo",
+        "description": "Uhlobo lwekhadi oluza kusetyenziswa."
+      },
+      {
+        "property": "subtitle",
+        "title": "Isihloko esingaphantsi",
+        "description": "Isihloko esingaphantsi sekhadi."
+      },
+      {
+        "property": "url",
+        "title": "Ikhonkco",
+        "description": "Ikhonkco elingenyanzelekanga lekhadi (Ikhonkco alifumaneki kwiiNjongo zokuFunda)."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Seta iSihloko, oku kungqongqa isihloko esisekelwe kuhlobo"
+      },
+      {
+        "property": "icon",
+        "title": "I-icon",
+        "description": "Seta i-icon, oku kungqongqa i-icon esekelwe kuhlobo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala ogqamisayo",
+        "description": "Seta umbala wogxininiso, oku kungqongqa umbala osekelwe kuhlobo"
+      },
+      {
+        "slot": "",
+        "title": "Iziqulatho"
+      }
+    ]
+  }
+}

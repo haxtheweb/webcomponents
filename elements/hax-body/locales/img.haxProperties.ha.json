@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Hoto na Asali",
+    "description": "Abun hoto na asali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Tushe",
+        "description": "URL na hoto."
+      },
+      {
+        "attribute": "alt",
+        "title": "Rubutun madadi",
+        "description": "Madadin rubutu don sauƙin isa da SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Tsawo",
+        "description": "Tsawo a pixels. Bar shi babu komai don amfani da girman halitta."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Lodawar hoto",
+        "description": "Zaɓi lokacin da hoton zai loda.",
+        "options": {
+          "lazy": "Loda idan ana gani",
+          "auto": "Atomatik"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Tushe masu daidaitawa (srcset)",
+        "description": "Jera URLs na hotuna da masu bayyanawa (misali 480w ko 2x) don burauzoji su zaɓi mafi kyawun girma ga allo. Ana adana shi a matsayin daidaitacciyar sifar srcset."
+      }
+    ]
+  }
+}

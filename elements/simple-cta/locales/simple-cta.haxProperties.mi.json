@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Karanga ki te mahi",
+    "description": "He pātene māmā me tētahi hono hei mahi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Tapanga",
+        "description": "Tapanga hono"
+      },
+      {
+        "property": "link",
+        "title": "Hono",
+        "description": "Tāurua he hono ki tētahi rauemi"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Huna ata",
+        "description": "Huna i te ata e whakamahia ana hei whakanui i te kuputuhi"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ata tohu",
+        "description": "Ata hono mahi"
+      }
+    ]
+  }
+}

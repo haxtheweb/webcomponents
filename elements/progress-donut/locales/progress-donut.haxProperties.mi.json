@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Tōnati Ahunga Whakamua",
+    "description": "Tōnati ahunga whakamua"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Te taitara o te huānga"
+      },
+      {
+        "property": "desc",
+        "title": "Whakaahuatanga",
+        "description": "Whakaahuatanga roa wātea"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Pūtake Whakaahua",
+        "description": "Pūtake o te atahanga i roto i te tōnati."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Kuputuhi Alt Atahanga",
+        "description": "Kuputuhi alt mō te atahanga."
+      },
+      {
+        "property": "animated",
+        "title": "Hākoritia",
+        "description": "Mēnā ka hākoritia te ahunga whakamua i te utanga tuatahi"
+      },
+      {
+        "property": "complete",
+        "title": "Kua oti",
+        "description": "He huānga o ngā uara kua oti."
+      },
+      {
+        "property": "total",
+        "title": "Tapeke",
+        "description": "Tapeke ina oti ngā tūemi katoa."
+      },
+      {
+        "property": "startAngle",
+        "title": "Koki Tīmata",
+        "description": "Koki tōnati ka tīmata ai te ahunga whakamua"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Cursusontwerp",
+    "description": "Container voor educatief materiaal en elementen van cursusontwerp."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Cursuscode",
+        "description": "OER Schema: de code van de cursus, bijv. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Aangeboden in periode",
+        "description": "OER Schema: de periode waarin de cursus wordt aangeboden."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Onderwijsvorm",
+        "description": "OER Schema: de vorm waarin de cursus wordt gegeven (bijv. op locatie, online, hybride)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Hoofddocent",
+        "description": "OER Schema: de hoofddocent van de cursus."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL van studiehandleiding",
+        "description": "OER Schema: URL naar de studiehandleiding van de cursus."
+      }
+    ]
+  }
+}

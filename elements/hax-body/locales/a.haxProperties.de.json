@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Einfacher Link",
+    "description": "Einfaches Link-Element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Link",
+        "description": "Ziel-URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Sichtbarer Linktext."
+      },
+      {
+        "attribute": "target",
+        "title": "Ziel",
+        "description": "Wo der Link geöffnet werden soll.",
+        "options": {
+          "": "Gleiches Fenster",
+          "_blank": "Neues Fenster - _blank",
+          "_top": "Oberstes Fenster - _top",
+          "_parent": "Übergeordnetes Fenster - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Titeltext",
+        "description": "Hinweistitel für Barrierefreiheit und SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Beziehung zum Ziel (Sicherheit/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

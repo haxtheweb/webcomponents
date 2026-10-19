@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "हायलाइट",
+    "description": "इनलाइन मजकूर हायलाइट करा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "मजकूर",
+        "description": "हायलाइट केलेला मजकूर."
+      }
+    ]
+  }
+}

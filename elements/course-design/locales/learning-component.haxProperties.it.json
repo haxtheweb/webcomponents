@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Componente di apprendimento",
+    "description": "Una scheda con cui i docenti comunicano la pedagogia e le strategie didattiche."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipo",
+        "description": "Il tipo di scheda da usare."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sottotitolo",
+        "description": "Il sottotitolo della scheda."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Un link facoltativo per la scheda (link non disponibile per gli obiettivi di apprendimento)."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Imposta il titolo; sostituisce il titolo basato sul tipo"
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Imposta l'icona; sostituisce l'icona basata sul tipo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Imposta il colore di risalto; sostituisce il colore basato sul tipo"
+      },
+      {
+        "slot": "",
+        "title": "Contenuti"
+      }
+    ]
+  }
+}

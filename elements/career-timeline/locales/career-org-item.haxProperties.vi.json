@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Mục sự nghiệp",
+    "description": "Một tổ chức cụ thể và các vai trò liên quan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Tên tổ chức"
+      },
+      {
+        "property": "location",
+        "title": "Địa điểm"
+      },
+      {
+        "property": "source",
+        "title": "Nguồn"
+      }
+    ]
+  }
+}

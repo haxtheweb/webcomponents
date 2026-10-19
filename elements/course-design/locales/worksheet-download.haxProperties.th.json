@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ดาวน์โหลดใบงาน",
+    "description": "ปุ่มสำหรับแสดงไฟล์ที่พร้อมให้ดาวน์โหลด"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อของรายการดาวน์โหลด"
+      },
+      {
+        "property": "link",
+        "title": "ลิงก์",
+        "description": "ลิงก์สำหรับดาวน์โหลด"
+      }
+    ]
+  }
+}

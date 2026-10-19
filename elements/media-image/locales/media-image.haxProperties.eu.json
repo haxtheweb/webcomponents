@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Irudi hobetua",
+    "description": "Irudiak hainbat hobekuntzarekin aurkezteko modu bat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Iturria",
+        "description": "Irudiaren URLa."
+      },
+      {
+        "property": "alt",
+        "title": "Testu alternatiboa",
+        "description": "Irudia ikusmen-urritasuna duten erabiltzaileei deskribatzeko testua."
+      },
+      {
+        "property": "link",
+        "title": "Esteka",
+        "description": "Estekatu irudia URL batera"
+      },
+      {
+        "property": "card",
+        "title": "Txartela",
+        "description": "Aplikatu itzal bat txartel goratu baten itxura emateko."
+      },
+      {
+        "property": "box",
+        "title": "Koadroa",
+        "description": "Aplikatu koadro bisual bat irudiaren inguruan."
+      },
+      {
+        "property": "offset",
+        "title": "Desplazamendua",
+        "description": "Aplikatu ezkerreko edo eskuineko desplazamendua irudiari.",
+        "options": {
+          "none": "bat ere ez",
+          "wide": "zabala",
+          "narrow": "estua"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Aipamena",
+        "description": "Irudiaren aipamena."
+      },
+      {
+        "property": "caption",
+        "title": "Irudi-oina",
+        "description": "Irudiaren epigrafea."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Irudiaren izenburua",
+        "description": "Irudi-etiketaren izenburua."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Irudiaren deskribapena",
+        "description": "Irudi-etiketaren deskribapena."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Koadro txikiko irudia",
+        "description": "Koadro txikiko irudiaren iturburua. Koadro txikia erakusten du, baina jatorrizko osoa leiho modalean irekitzen du."
+      },
+      {
+        "property": "round",
+        "title": "Irudi biribila",
+        "description": "Irudiaren itxura zirkulu forman mozten du."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Desgaitu irudiaren leiho modala",
+        "description": "Desgaitu klik egitean irudia irudi-ikuskatzailearen elkarrizketa-koadroan irekitzea."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Errendatu markdown gisa",
+        "description": "Errendatu epigrafea eta aipamena markdown gisa."
+      }
+    ]
+  }
+}

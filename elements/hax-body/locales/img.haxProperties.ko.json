@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "기본 이미지",
+    "description": "기본 이미지 요소."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "소스",
+        "description": "이미지 URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "대체 텍스트",
+        "description": "접근성과 SEO를 위한 대체 텍스트."
+      },
+      {
+        "attribute": "height",
+        "title": "높이",
+        "description": "높이(픽셀). 원래 크기를 사용하려면 비워 두세요."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "이미지 로딩 방식",
+        "description": "이미지를 불러올 시점을 선택합니다.",
+        "options": {
+          "lazy": "보일 때 불러오기",
+          "auto": "자동"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "반응형 소스 (srcset)",
+        "description": "이미지 URL과 설명자(예: 480w 또는 2x)를 나열하면 브라우저가 화면에 가장 적합한 크기를 선택합니다. 표준 srcset 속성으로 저장됩니다."
+      }
+    ]
+  }
+}

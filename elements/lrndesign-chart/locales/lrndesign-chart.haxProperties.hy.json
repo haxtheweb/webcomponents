@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "description": "Ստեղծում է մատչելի գծապատկեր CSV-ի հիման վրա։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Ըստ ցանկության շեշտադրման գույն։"
+      },
+      {
+        "property": "dark",
+        "title": "Մուգ թեմա",
+        "description": "Միացնել մութ թեման"
+      },
+      {
+        "property": "dataSource",
+        "title": "CSV ֆայլ",
+        "description": "Բեռնել տվյալներ CSV-ից։"
+      },
+      {
+        "slot": "heading",
+        "title": "Գծապատկերի վերնագիր",
+        "description": "Ձեր գծապատկերի մատչելի այլընտրանքային տեքստ։"
+      },
+      {
+        "slot": "desc",
+        "title": "Գծապատկերի նկարագրություն",
+        "description": "Ձեր գծապատկերի մատչելի նկարագրություն։"
+      },
+      {
+        "property": "scale",
+        "title": "Մասշտաբի անվանում",
+        "description": "Գծապատկերի լայնություն:բարձրություն հարաբերակցությունը (տե՛ս https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings՝ $ct-scales և $ct-scales-names համար)։",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "reverseData",
+        "title": "Շրջել տվյալները",
+        "description": "Շրջել տվյալները՝ ներառյալ պիտակները, շարքերի հերթականությունը և շարքերի տվյալների ամբողջ զանգվածները։"
+      },
+      {
+        "slot": "",
+        "title": "HTML աղյուսակ",
+        "description": "Ընտրովի՝ բեռնել տվյալները որպես HTML աղյուսակ։"
+      }
+    ]
+  }
+}

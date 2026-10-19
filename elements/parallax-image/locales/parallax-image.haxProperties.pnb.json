@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "پیرالیکس تصویر",
+    "description": "سکرول نال ہلدی تصویر"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "تصویر",
+        "description": "پچھوکڑ وچ ورتی جاݨ والی تصویر"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "سرخی والا حصہ",
+        "description": "سرخی متن والا حصہ"
+      }
+    ]
+  }
+}

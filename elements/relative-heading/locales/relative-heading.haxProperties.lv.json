@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relatīvs virsraksts",
+    "description": "izvada pareizu virsrakstu hierarhiju, pamatojoties uz vecākelementa virsrakstu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Vecākvirsraksta resursa ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "Atspējo saites pogas funkciju."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Līdzina saites kopēšanas pogu virsraksta labajā malā."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Virsraksta līmenis, ja vecākelements nav atrasts."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Aizstāj saites kopēšanas paziņojuma noklusējuma tekstu."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Aizstāj saites kopēšanas pogas noklusējuma etiķeti."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Aizstāj saites kopēšanas pogas noklusējuma ikonu."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Aizstāj saites kopēšanas paziņojuma aizvēršanas pogas noklusējuma etiķeti."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Aizstāj saites kopēšanas paziņojuma aizvēršanas pogas noklusējuma ikonu."
+      }
+    ]
+  }
+}

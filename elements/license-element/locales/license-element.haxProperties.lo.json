@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ໃບອະນຸຍາດ",
+    "description": "ລະບຸໃບອະນຸຍາດສຳລັບຜົນງານຂອງທ່ານ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ຂອງຜົນງານທີ່ອ້າງອີງ."
+      },
+      {
+        "property": "source",
+        "title": "ລິ້ງແຫຼ່ງທີ່ມາ",
+        "description": "URL ແຫຼ່ງທີ່ມາຂອງຜົນງານທີ່ມີໃບອະນຸຍາດ."
+      },
+      {
+        "property": "license",
+        "title": "ໃບອະນຸຍາດ",
+        "description": "ໃບອະນຸຍາດທີ່ນຳໃຊ້ກັບຜົນງານນີ້."
+      },
+      {
+        "property": "creator",
+        "title": "ຜູ້ສ້າງ",
+        "description": "ຜູ້ສ້າງ ຫຼື ເຈົ້າຂອງຜົນງານນີ້."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "ລິ້ງແຫຼ່ງທີ່ມາ",
+        "description": "ລິ້ງໄປຫາລາຍລະອຽດໃບອະນຸຍາດເພີ່ມເຕີມ."
+      },
+      {
+        "property": "moreLabel",
+        "title": "ປ້າຍເພີ່ມເຕີມ",
+        "description": "ປ້າຍສຳລັບລາຍລະອຽດໃບອະນຸຍາດເພີ່ມເຕີມ."
+      }
+    ]
+  }
+}

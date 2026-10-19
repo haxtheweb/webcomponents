@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ڪورس ماڊل",
+    "description": "تفصيلن، اينيميشن ۽ علم جي جانچ سان ڪورس جي تصورن لاءِ انٽرايڪٽو ترتيب."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "عنوان"
+      },
+      {
+        "property": "src",
+        "title": "ذريعو"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن"
+      },
+      {
+        "title": "معلومات جو حصو"
+      },
+      {
+        "title": "تفصيلن جو حصو"
+      },
+      {
+        "title": "اينيميشن جو حصو"
+      },
+      {
+        "title": "علم جي جانچ جو حصو"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "لوگو جو حصو"
+      }
+    ]
+  }
+}

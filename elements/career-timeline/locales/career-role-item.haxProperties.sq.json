@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Rol në karrierë",
+    "description": "Një rol i vetëm brenda një organizate"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulli"
+      },
+      {
+        "property": "startDate",
+        "title": "Data e fillimit"
+      },
+      {
+        "property": "endDate",
+        "title": "Data e mbarimit (opsionale)"
+      },
+      {
+        "property": "skills",
+        "title": "Aftësitë e lidhura",
+        "description": "Zgjidh butonin + për të filluar shtimin e aftësive"
+      }
+    ]
+  }
+}

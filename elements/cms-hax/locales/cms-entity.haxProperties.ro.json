@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Entitate CMS",
+    "description": "Entitate CMS randată în backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tip",
+        "description": "tipul din CMS-ul nostru",
+        "options": {
+          "node": "Nod",
+          "user": "Utilizator",
+          "file": "Fișier"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID-ul din CMS-ul nostru"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Mod de afișare",
+        "description": "modul de afișare din CMS-ul nostru"
+      }
+    ]
+  }
+}

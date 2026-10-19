@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Sổ điểm",
+    "description": "Sổ điểm không giao diện, hỗ trợ nhiều backend với tiêu chí chấm điểm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Nguồn",
+        "description": "Loại nguồn dữ liệu (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Điểm cuối URL (JSON)",
+          "json": "Khối dữ liệu JSON",
+          "filesystem": "Hệ thống tệp"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Dữ liệu nguồn",
+        "description": "URL hoặc dữ liệu JSON cho sổ điểm."
+      },
+      {
+        "property": "forCourse",
+        "title": "Tham chiếu khóa học",
+        "description": "Mã khóa học được xuất dưới dạng oer:forCourse trên mỗi tài nguyên Assessment."
+      }
+    ]
+  }
+}

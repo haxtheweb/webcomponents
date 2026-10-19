@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "공로 배지",
+    "description": "기술 습득을 나타내는 시각적 배지."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "배지 제목",
+        "description": "배지에 표시되는 제목."
+      },
+      {
+        "property": "badgeImage",
+        "title": "배지 이미지",
+        "description": "배지의 이미지 URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "배지 세부 정보",
+        "description": "배지에 대한 세부 정보."
+      },
+      {
+        "property": "hyperLink",
+        "title": "하이퍼링크",
+        "description": "배지와 연결된 링크."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "배지 기술",
+        "description": "배지에 표시되는 기술."
+      },
+      {
+        "property": "skill",
+        "title": "기술 (OER Schema)",
+        "description": "OER Schema: 이 학습 목표를 완료하여 습득한 기술."
+      }
+    ]
+  }
+}

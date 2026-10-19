@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "گريڊ بڪ",
+    "description": "هيڊ لیس گريڊ بڪ جيڪو روبرڪس سان ڪيترن ئي بيڪ اينڊز کي سپورٽ ڪري ٿو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ذريعو",
+        "description": "ڊيٽا ذريعي جو قسم (googledocs، url، json، filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL اينڊ پوائنٽ (JSON)",
+          "json": "JSON ڊيٽا بلاب",
+          "filesystem": "فائل سسٽم"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ذريعي جي ڊيٽا",
+        "description": "گريڊ بڪ لاءِ URL يا JSON ڊيٽا."
+      },
+      {
+        "property": "forCourse",
+        "title": "ڪورس جو حوالو",
+        "description": "ڪورس جي سڃاڻپ جيڪا هر Assessment وسيلي تي oer:forCourse طور ڏني ويندي آهي."
+      }
+    ]
+  }
+}

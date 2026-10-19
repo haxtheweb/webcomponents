@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Kirjeldav joonis",
+    "description": "Ligipääsetav joonis pika kirjeldusega"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Pilt"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternatiivtekst"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Joonise pealdis",
+        "description": "Joonise pealdise tekst, mis on alati nähtav."
+      },
+      {
+        "slot": "details",
+        "title": "Kirjeldus",
+        "description": "Üksikasjalik pildi kirjeldus, mida saab peita või näidata"
+      },
+      {
+        "slot": "summary",
+        "title": "Kirjelduse nupp",
+        "description": "Kirjeldusteksti näitava/peitva nupu vaikeväärtus, nt „teave”, „metaandmed” jne."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Valikuline kokkuvõtte tekst, kui üksikasjad on avatud"
+      },
+      {
+        "property": "closeText",
+        "title": "Valikuline kokkuvõtte tekst, kui üksikasjad on suletud"
+      }
+    ]
+  }
+}

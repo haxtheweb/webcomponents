@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "คำศัพท์",
+    "description": "คำศัพท์"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "คำ"
+      },
+      {
+        "slot": "",
+        "title": "คำจำกัดความ",
+        "description": "คำนิยามที่จะแสดงเมื่อคลิกคำศัพท์"
+      },
+      {
+        "property": "description",
+        "title": "คำอธิบาย (OER Schema)",
+        "description": "OER Schema: คำอธิบายสั้นๆ ของคำศัพท์ จะเติมจากข้อความคำนิยามโดยอัตโนมัติหากเว้นว่างไว้"
+      }
+    ]
+  }
+}

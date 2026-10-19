@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "നേരിട്ടോ റിമോട്ടായോ ലോഡ് ചെയ്ത markdown ഉള്ളടക്കത്തിന്റെ ഒരു ബ്ലോക്ക്"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "റോ markdown"
+      },
+      {
+        "property": "source",
+        "title": "ഉറവിടം",
+        "description": "markdown-നുള്ള ഉറവിട ഫയൽ"
+      }
+    ]
+  }
+}

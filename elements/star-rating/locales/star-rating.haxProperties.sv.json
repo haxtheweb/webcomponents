@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Stjärnbetyg",
+    "description": "Widget för att visa betyg eller knapp för att betygsätta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Poäng",
+        "description": "Aktuellt poängvärde."
+      },
+      {
+        "property": "possible",
+        "title": "Möjliga",
+        "description": "Maximal möjlig poäng."
+      },
+      {
+        "property": "numStars",
+        "title": "Antal stjärnor",
+        "description": "Antal stjärnor att visa."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktiv",
+        "description": "Låt användaren ange betyget."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Läge för bedömningsskala",
+        "description": "Skicka OER Schema-metadata RubricScale och RubricLevel (levelOrdinal/levelPoints) för varje stjärna."
+      }
+    ]
+  }
+}

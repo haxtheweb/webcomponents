@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "முன்னிலைப்படுத்து",
+    "description": "வரியுள் உரையை முன்னிலைப்படுத்தவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "உரை",
+        "description": "முன்னிலைப்படுத்தப்பட்ட உரை."
+      }
+    ]
+  }
+}

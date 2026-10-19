@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "પ્રગતિ ડોનટ",
+    "description": "પ્રગતિ ડોનટ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "એલિમેન્ટનું શીર્ષક"
+      },
+      {
+        "property": "desc",
+        "title": "વર્ણન",
+        "description": "સુલભ લાંબું વર્ણન"
+      },
+      {
+        "property": "imageSrc",
+        "title": "છબી સ્રોત",
+        "description": "ડોનટની અંદરની છબીનો સ્રોત."
+      },
+      {
+        "property": "imageAlt",
+        "title": "છબી Alt ટેક્સ્ટ",
+        "description": "છબી માટે alt ટેક્સ્ટ."
+      },
+      {
+        "property": "animated",
+        "title": "એનિમેટેડ",
+        "description": "પ્રથમ લોડ પર પ્રગતિ એનિમેટ થાય કે નહીં"
+      },
+      {
+        "property": "complete",
+        "title": "પૂર્ણ",
+        "description": "પૂર્ણ થયેલાં મૂલ્યોની એરે."
+      },
+      {
+        "property": "total",
+        "title": "કુલ",
+        "description": "બધી આઇટમ્સ પૂર્ણ થાય ત્યારે કુલ."
+      },
+      {
+        "property": "startAngle",
+        "title": "શરૂઆતનો ખૂણો",
+        "description": "ડોનટનો ખૂણો જ્યાંથી પ્રગતિ શરૂ થાય છે"
+      }
+    ]
+  }
+}

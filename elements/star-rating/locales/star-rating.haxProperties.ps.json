@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "د ستورو درجه بندي",
+    "description": "د درجه بندي ښودنې وجټ یا د درجه بندي تڼۍ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "نمره",
+        "description": "د اوسنۍ نمرې ارزښت."
+      },
+      {
+        "property": "possible",
+        "title": "ممکن",
+        "description": "اعظمي ممکنه نمره."
+      },
+      {
+        "property": "numStars",
+        "title": "د ستورو شمېر",
+        "description": "د ښودلو لپاره د ستورو شمېر."
+      },
+      {
+        "property": "interactive",
+        "title": "متقابل",
+        "description": "کارن ته د درجه بندي د ټاکلو اجازه ورکړئ."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "د روبریک پیمانې حالت",
+        "description": "د هر ستوري لپاره د OER سکیما RubricScale او RubricLevel میټاډېټا (levelOrdinal/levelPoints) خپره کړئ."
+      }
+    ]
+  }
+}

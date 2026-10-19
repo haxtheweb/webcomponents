@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Disenyo ng Kurso",
+    "description": "Lalagyan para sa mga materyales pang-edukasyon at mga element ng disenyo ng kurso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identifier ng Kurso",
+        "description": "OER Schema: ang identifier ng kurso, hal. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Terminong Iniaalok",
+        "description": "OER Schema: ang termino kung kailan iniaalok ang kurso."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Format ng Paghahatid",
+        "description": "OER Schema: ang format na ginagamit sa paghahatid ng kurso (hal. harapan, online, hybrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Pangunahing Instruktor",
+        "description": "OER Schema: ang pangunahing instruktor ng kurso."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL ng Syllabus",
+        "description": "OER Schema: URL ng syllabus ng kurso."
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Нумерисана листа",
+    "description": "Направи нумерисану листу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Стил бројева",
+        "description": "Стил који се користи за нумерисање уређене листе.",
+        "options": {
+          "": "Подразумевано (децимално)",
+          "list-decimal-leading-zero": "Децимално са водећом нулом (01, 02, 03)",
+          "list-lower-alpha": "Мала слова (a, b, c)",
+          "list-upper-alpha": "Велика слова (A, B, C)",
+          "list-lower-roman": "Мали римски бројеви (i, ii, iii)",
+          "list-upper-roman": "Велики римски бројеви (I, II, III)"
+        }
+      }
+    ]
+  }
+}

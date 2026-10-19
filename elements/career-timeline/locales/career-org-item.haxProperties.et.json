@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Karjäärikirje",
+    "description": "Üksik organisatsioon ja sellega seotud rollid"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Organisatsiooni nimi"
+      },
+      {
+        "property": "location",
+        "title": "Asukoht"
+      },
+      {
+        "property": "source",
+        "title": "Allikas"
+      }
+    ]
+  }
+}

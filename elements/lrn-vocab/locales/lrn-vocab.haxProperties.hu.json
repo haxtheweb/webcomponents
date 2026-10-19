@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Szószedet",
+    "description": "Szókincselem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Kifejezés"
+      },
+      {
+        "slot": "",
+        "title": "Meghatározás",
+        "description": "A kifejezésre kattintáskor megjelenő definíció."
+      },
+      {
+        "property": "description",
+        "title": "Leírás (OER Schema)",
+        "description": "OER Schema: a szókincselem rövid leírása. Ha üresen hagyod, a definíció szövegéből töltődik ki."
+      }
+    ]
+  }
+}

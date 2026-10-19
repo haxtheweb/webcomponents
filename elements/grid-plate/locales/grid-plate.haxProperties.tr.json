@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Sütun düzeni",
+    "description": "Materyali basit sütunlarla düzenleyin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Sütun Düzeni",
+        "description": "Bu öğelerin sunulma stili (küçük ekranlarda değişebilir)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Duyarlı tasarımı devre dışı bırak",
+        "description": "Sütunları büyük ekranlarda korurken en küçük ekranlarda yine de alt alta dizmek için kutuyu işaretleyin"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Öğe İç Boşluğu",
+        "description": "Her öğenin içindeki boşluk"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Öğe kenar boşlukları",
+        "description": "Öğeler arasındaki boşluk"
+      }
+    ]
+  }
+}

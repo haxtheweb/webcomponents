@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pamilih Hex",
+    "description": "Pamilih warna kode hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Nilai",
+        "description": "Nilai hex gawan"
+      },
+      {
+        "property": "disabled",
+        "title": "Dipateni",
+        "description": "Pateni kolom teks"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Tampilan Gedhe",
+        "description": "Lebokake warna ing tampilan gedhe"
+      }
+    ]
+  }
+}

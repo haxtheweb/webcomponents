@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kaardii durii",
+    "description": "Kaardii salphaa dizaayinii durii qabu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mata duree",
+        "description": "Mata duree kaardii ijoo."
+      },
+      {
+        "property": "url",
+        "description": "URL yeroo kaardiin cuqaasamu banamu."
+      },
+      {
+        "property": "subtitle",
+        "title": "Mata duree xiqqaa",
+        "description": "Mata duree xiqqaa kaardii."
+      },
+      {
+        "property": "tags",
+        "title": "Mallattoolee",
+        "description": "Mallattoolee qoqqoodduun adda baafaman."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Madda miidiyaa",
+        "description": "Madda miidiyaa ijoo."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Madda yeroo itti dhaabbatamu",
+        "description": "Madda miidiyaa yeroo kaardiin itti dhaabbatamu yookaan hojii irra oolu agarsiifamu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu Calaqqee",
+        "description": "Halluu cimsaa kaardii guutuu irratti raawwatamu."
+      },
+      {
+        "property": "dark",
+        "title": "Dukkana",
+        "description": "Halluuwwan bu'uuraa haalata dukkanaa fayyadami."
+      }
+    ]
+  }
+}

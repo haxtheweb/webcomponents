@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Ein blokkur við markdown-innihaldi, beinleiðis ella innlisið úr fjarstaði"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Rátt markdown"
+      },
+      {
+        "property": "source",
+        "title": "Kelda",
+        "description": "Keldufíla til markdown"
+      }
+    ]
+  }
+}

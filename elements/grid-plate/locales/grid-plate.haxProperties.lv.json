@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kolonnu izkārtojums",
+    "description": "Izkārtojiet materiālu vienkāršās kolonnās"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Kolonnu izkārtojums",
+        "description": "Šo vienumu attēlošanas stils (mazos ekrānos var mainīties)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Atspējot adaptivitāti",
+        "description": "Atzīmējiet rūtiņu, lai saglabātu kolonnas lielākos ekrānos, vienlaikus tās sakraujot vismazākajos ekrānos"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Vienuma iekšējā atkāpe",
+        "description": "Iekšējā atkāpe katrā vienumā"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Vienumu malas",
+        "description": "Atstarpe starp vienumiem"
+      }
+    ]
+  }
+}

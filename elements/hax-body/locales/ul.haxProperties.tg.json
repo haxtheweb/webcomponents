@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Рӯйхати нуқтадор",
+    "description": "Рӯйхати нишонадор созед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Услуби нишона",
+        "description": "Услубе, ки барои нишонаҳои рӯйхати бетартиб истифода мешавад.",
+        "options": {
+          "": "Пешфарз (мураббаъ)",
+          "list-disc": "Диск",
+          "list-circle": "Доира",
+          "list-square": "Мураббаъ"
+        }
+      }
+    ]
+  }
+}

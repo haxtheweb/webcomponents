@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "बुनियादी छवि",
+    "description": "बुनियादी छवि एलिमेंट।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "स्रोत",
+        "description": "छवि URL।"
+      },
+      {
+        "attribute": "alt",
+        "title": "वैकल्पिक टेक्स्ट",
+        "description": "सुलभता और SEO के लिए वैकल्पिक टेक्स्ट।"
+      },
+      {
+        "attribute": "height",
+        "title": "ऊँचाई",
+        "description": "पिक्सेल में ऊँचाई। स्वाभाविक आकार उपयोग करने के लिए खाली छोड़ें।"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "छवि लोडिंग",
+        "description": "चुनें कि छवि कब लोड हो।",
+        "options": {
+          "lazy": "दिखाई देने पर लोड करें",
+          "auto": "स्वचालित"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "रिस्पॉन्सिव स्रोत (srcset)",
+        "description": "छवि URL और डिस्क्रिप्टर (जैसे 480w या 2x) सूचीबद्ध करें ताकि ब्राउज़र स्क्रीन के लिए सबसे अच्छा आकार चुनें। मानक srcset एट्रिब्यूट के रूप में संग्रहीत।"
+      }
+    ]
+  }
+}

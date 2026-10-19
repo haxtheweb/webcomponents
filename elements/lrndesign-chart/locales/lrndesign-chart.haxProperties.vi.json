@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "description": "Tạo biểu đồ dễ tiếp cận dựa trên tệp CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn tùy chọn."
+      },
+      {
+        "property": "dark",
+        "title": "Giao diện tối",
+        "description": "Bật giao diện tối"
+      },
+      {
+        "property": "dataSource",
+        "title": "Tệp CSV",
+        "description": "Tải dữ liệu từ tệp CSV."
+      },
+      {
+        "slot": "heading",
+        "title": "Tiêu đề biểu đồ",
+        "description": "Văn bản thay thế dễ tiếp cận cho biểu đồ của bạn."
+      },
+      {
+        "slot": "desc",
+        "title": "Mô tả biểu đồ",
+        "description": "Mô tả dễ tiếp cận cho biểu đồ của bạn."
+      },
+      {
+        "property": "scale",
+        "title": "Tên tỷ lệ",
+        "description": "Tỷ lệ rộng:cao của biểu đồ (xem https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings để biết $ct-scales và $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "reverseData",
+        "title": "Đảo ngược dữ liệu",
+        "description": "Đảo ngược dữ liệu bao gồm nhãn, thứ tự chuỗi dữ liệu cũng như toàn bộ mảng dữ liệu của chuỗi."
+      },
+      {
+        "slot": "",
+        "title": "Bảng HTML",
+        "description": "Tùy chọn: Tải dữ liệu dưới dạng bảng HTML."
+      }
+    ]
+  }
+}

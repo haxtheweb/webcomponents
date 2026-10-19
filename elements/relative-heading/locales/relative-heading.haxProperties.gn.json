@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Omoakãva ojoajúva",
+    "description": "omosẽ omoakãva ñemohenda hekopetéva túva omoakãva rehegua"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Túva Omoakãva Mba'erepy ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "Ombogue joajuha votõ."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Omohenda joajuha monguatia votõ omoakãva akatúa gotyoitépe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Omoakãva rupa túva ndojejuhúiramo."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Omyengovia moñe'ẽrã ypyguáva joajuha monguatia marandu'ípe g̃uarã."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Omyengovia joajuha monguatia votõ réra ypyguáva."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Omyengovia joajuha monguatia votõ ta'ãnga'i ypyguáva."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Omyengovia réra ypyguáva joajuha monguatia marandu'i mbotyha votõme g̃uarã."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Omyengovia ta'ãnga'i ypyguáva joajuha monguatia marandu'i mbotyha votõme g̃uarã."
+      }
+    ]
+  }
+}

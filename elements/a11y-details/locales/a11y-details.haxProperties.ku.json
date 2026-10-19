@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bişkoka Hûrgiliyan a Gihîştbar",
+    "description": "Vekirina pêşverû ya gihîştbar bi detail û summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Bişkok",
+        "description": "Kurteya naverokê ku heke veşartî be, mînak \"agahî\", \"metadane\", hwd."
+      },
+      {
+        "slot": "details",
+        "title": "Danasîn",
+        "description": "Danasîna berfireh ku dikare were veşartin an nîşandan"
+      },
+      {
+        "slot": "",
+        "title": "Bişkoka Danasînê",
+        "description": "Xwerû ji bo bişkoka ku nivîsa danasînê nîşan dide/vedişêre, mînak \"agahî\", \"metadane\", hwd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Nivîsa kurteyê ya vebijarkî dema hûrgilî vekirî ne"
+      },
+      {
+        "property": "closeText",
+        "title": "Nivîsa kurteyê ya vebijarkî dema hûrgilî girtî ne"
+      }
+    ]
+  }
+}

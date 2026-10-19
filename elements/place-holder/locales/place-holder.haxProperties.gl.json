@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Marcador de posición",
+    "description": "Un marcador de posición que se pode converter no tipo de multimedia seleccionado"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipo",
+        "description": "Tipo de gizmo que acepta para a substitución.",
+        "options": {
+          "text": "Texto / contido",
+          "document": "Documento / ficheiro",
+          "audio": "Audio",
+          "video": "Vídeo",
+          "image": "Imaxe",
+          "math": "Matemáticas"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Texto",
+        "description": "Identifica con máis detalle o marcador de posición desexado"
+      }
+    ]
+  }
+}

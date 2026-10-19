@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Toegankelijke detailknop",
+    "description": "Toegankelijke geleidelijke onthulling met details en samenvatting"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Knop",
+        "description": "Samenvatting van de inhoud als die verborgen is, bijv. \"info\", \"metagegevens\", enz."
+      },
+      {
+        "slot": "details",
+        "title": "Beschrijving",
+        "description": "Gedetailleerde beschrijving die kan worden verborgen of getoond"
+      },
+      {
+        "slot": "",
+        "title": "Beschrijvingsknop",
+        "description": "Standaardtekst voor de knop die de beschrijving toont/verbergt, bijv. \"info\", \"metagegevens\", enz."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Optionele samenvattingstekst wanneer de details open zijn"
+      },
+      {
+        "property": "closeText",
+        "title": "Optionele samenvattingstekst wanneer de details gesloten zijn"
+      }
+    ]
+  }
+}

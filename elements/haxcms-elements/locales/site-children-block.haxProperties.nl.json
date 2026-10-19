@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: onderliggend blok",
+    "description": "Dynamisch blok dat onderliggende pagina's van de huidige pagina toont"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dynamische methode",
+        "description": "Hoe de onderliggende items ten opzichte van dit element worden bepaald",
+        "options": {
+          "active": "Actieve onderliggende items",
+          "parent": "Onderliggende items van bovenliggende pagina",
+          "ancestor": "Alle onderliggende items vanaf de hoogste voorouder"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Beginniveau"
+      },
+      {
+        "property": "end",
+        "title": "Eindniveau"
+      }
+    ]
+  }
+}

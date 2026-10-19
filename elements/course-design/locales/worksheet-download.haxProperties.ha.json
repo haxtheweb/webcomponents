@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Sauke Takardar Aiki",
+    "description": "Maɓalli don nuna fayilolin da ake iya saukewa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Taken abun saukewa."
+      },
+      {
+        "property": "link",
+        "title": "Mahaɗi",
+        "description": "Hanyar haɗin saukewa."
+      }
+    ]
+  }
+}

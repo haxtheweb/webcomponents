@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "அடிப்படை இணைப்பு",
+    "description": "அடிப்படை இணைப்பு உறுப்பு."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "இணைப்பு",
+        "description": "இலக்கு URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "உரை",
+        "description": "தெரியும் இணைப்பு உரை."
+      },
+      {
+        "attribute": "target",
+        "title": "இலக்கு",
+        "description": "இணைப்பை எங்கே திறக்க வேண்டும்.",
+        "options": {
+          "": "அதே சாளரம்",
+          "_blank": "புதிய சாளரம் - _blank",
+          "_top": "மேல் சாளரம் - _top",
+          "_parent": "பெற்றோர் சாளரம் - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "தலைப்பு உரை",
+        "description": "அணுகல்தன்மை மற்றும் SEO க்கான ஆலோசனைத் தலைப்பு."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "இலக்குடனான உறவு (பாதுகாப்பு/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

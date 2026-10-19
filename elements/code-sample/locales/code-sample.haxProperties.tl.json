@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Halimbawa ng code",
+    "description": "Isang halimbawa ng code na naka-highlight sa pahina"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Pag-highlight ng code",
+        "description": "Syntax highlighting na ilalapat sa lugar ng code",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON data",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Button na kopyahin sa clipboard",
+        "description": "button sa kanang itaas na nagsasabing kopyahin sa clipboard"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Simula ng highlight",
+        "description": "Numero ng linya kung saan magsisimula ang pag-highlight"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Dulo ng highlight",
+        "description": "Linya kung saan tatapusin ang pag-highlight"
+      }
+    ]
+  }
+}

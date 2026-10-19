@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Citare",
+    "description": "Element de citare cu trei moduri de prezentare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul lucrării citate."
+      },
+      {
+        "property": "source",
+        "title": "Linkul sursei",
+        "description": "URL-ul sursei lucrării citate."
+      },
+      {
+        "property": "date",
+        "title": "Data accesării",
+        "description": "Data la care a fost accesată sursa."
+      },
+      {
+        "property": "scope",
+        "title": "Domeniu",
+        "description": "Domeniul elementului de citat.",
+        "options": {
+          "sibling": "Element frate",
+          "parent": "Element părinte"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licență",
+        "description": "Licența lucrării citate."
+      },
+      {
+        "property": "creator",
+        "title": "Creator",
+        "description": "Creatorul sau proprietarul lucrării citate."
+      },
+      {
+        "property": "typeof",
+        "title": "Tip OER Schema",
+        "description": "Clasa OER Schema pentru această citare. Implicit oer:ReferencedMaterial; înlocuiește doar cu o clasă OER validă (de ex. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

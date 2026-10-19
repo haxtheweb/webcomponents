@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Токени CMS",
+    "description": "Токени CMS, ки дар бэкенд намоиш дода мешавад"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Токен",
+        "description": "Токен аз CMS-и мо"
+      }
+    ]
+  }
+}

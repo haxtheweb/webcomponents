@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Design de curs",
+    "description": "Container pentru materiale educaționale și elemente de design al cursului."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identificatorul cursului",
+        "description": "OER Schema: identificatorul cursului, de ex. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Perioada în care este oferit",
+        "description": "OER Schema: perioada în care este oferit cursul."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Formatul de livrare",
+        "description": "OER Schema: formatul folosit pentru livrarea cursului (de ex. față în față, online, hibrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Instructorul principal",
+        "description": "OER Schema: instructorul principal al cursului."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL-ul programei",
+        "description": "OER Schema: URL-ul programei cursului."
+      }
+    ]
+  }
+}

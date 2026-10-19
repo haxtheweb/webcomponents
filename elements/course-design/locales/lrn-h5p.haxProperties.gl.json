@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Elemento H5P",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Texto",
+        "description": "Contido da nota lateral"
+      }
+    ]
+  }
+}

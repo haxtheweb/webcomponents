@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Nopelnu nozīmīte",
+    "description": "Vizuāla nozīmīte, kas apliecina prasmes iegūšanu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Nozīmītes nosaukums",
+        "description": "Uz nozīmītes attēlotais nosaukums."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Nozīmītes attēls",
+        "description": "Nozīmītes attēla URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Nozīmītes detaļas",
+        "description": "Detaļas par nozīmīti."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hipersaite",
+        "description": "Ar nozīmīti saistītā saite."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Nozīmītes prasmes",
+        "description": "Uz nozīmītes attēlotās prasmes."
+      },
+      {
+        "property": "skill",
+        "title": "Prasme (OER Schema)",
+        "description": "OER Schema: apgūta prasme, kas iegūta, sasniedzot šo mācību mērķi."
+      }
+    ]
+  }
+}

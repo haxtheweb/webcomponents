@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Pātene Taipitopito Wātea",
+    "description": "Whakakitenga haere wātea me ngā taipitopito me te whakarāpopototanga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Pātene",
+        "description": "Whakarāpopototanga o ngā ihirangi ina hunaia, hei tauira \"mōhiohio\", \"raraunga-taapiri\", me ērā atu."
+      },
+      {
+        "slot": "details",
+        "title": "Whakaahuatanga",
+        "description": "Whakaahuatanga taipitopito ka taea te huna, te whakaatu rānei"
+      },
+      {
+        "slot": "",
+        "title": "Pātene Whakaahuatanga",
+        "description": "Taunoa mō te pātene e whakaatu/huna ana i te kuputuhi whakaahuatanga, hei tauira \"mōhiohio\", \"raraunga-taapiri\", me ērā atu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Kuputuhi whakarāpopoto kōwhiringa ina tuwhera ngā taipitopito"
+      },
+      {
+        "property": "closeText",
+        "title": "Kuputuhi whakarāpopoto kōwhiringa ina kati ngā taipitopito"
+      }
+    ]
+  }
+}

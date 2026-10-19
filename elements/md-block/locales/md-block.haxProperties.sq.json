@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Një bllok përmbajtjeje markdown, i drejtpërdrejtë ose i ngarkuar nga larg"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown i papërpunuar"
+      },
+      {
+        "property": "source",
+        "title": "Burimi",
+        "description": "Skedari burimor për markdown"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Lista b'punti",
+    "description": "Oħloq lista b'punti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stil tal-punti",
+        "description": "Stil użat għall-punti tal-lista mhux ordnata.",
+        "options": {
+          "": "Default (kwadru)",
+          "list-disc": "Diska",
+          "list-circle": "Ċirku",
+          "list-square": "Kwadru"
+        }
+      }
+    ]
+  }
+}

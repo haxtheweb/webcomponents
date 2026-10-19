@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Fremhævning",
+    "description": "Fremhæv inline-tekst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Fremhævet tekst."
+      }
+    ]
+  }
+}

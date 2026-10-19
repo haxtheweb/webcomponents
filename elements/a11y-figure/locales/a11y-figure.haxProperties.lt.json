@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Aprašomoji iliustracija",
+    "description": "Prieinama iliustracija su išsamiu aprašu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Vaizdas"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternatyvusis tekstas"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Iliustracijos antraštė",
+        "description": "Iliustracijos antraštės tekstas, kuris visada matomas."
+      },
+      {
+        "slot": "details",
+        "title": "Aprašas",
+        "description": "Išsamus paveikslėlio aprašas, kurį galima paslėpti arba parodyti"
+      },
+      {
+        "slot": "summary",
+        "title": "Aprašo mygtukas",
+        "description": "Numatytasis mygtuko, rodančio / slepiančio aprašo tekstą, užrašas, pvz., „info“, „metaduomenys“ ir pan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Neprivalomas santraukos tekstas, kai detalės atidarytos"
+      },
+      {
+        "property": "closeText",
+        "title": "Neprivalomas santraukos tekstas, kai detalės uždarytos"
+      }
+    ]
+  }
+}

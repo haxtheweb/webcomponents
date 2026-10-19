@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pulsante ebook",
+    "description": "Un pulsante che rimanda a un ebook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Il titolo del pulsante."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Il link a cui reindirizzare al clic."
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona che rappresenta questo link"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Göni ýa-da daşdan ýüklenen markdown mazmun bloky"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Çig markdown"
+      },
+      {
+        "property": "source",
+        "title": "Çeşme",
+        "description": "Markdown üçin çeşme faýly"
+      }
+    ]
+  }
+}

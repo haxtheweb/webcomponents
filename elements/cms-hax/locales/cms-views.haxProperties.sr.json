@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS приказ",
+    "description": "CMS прикази приказани на бекенду"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Име",
+        "description": "Назив приказа из нашег CMS-а"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Приказ",
+        "description": "Приказ унутар тог прегледа из нашег CMS-а"
+      }
+    ]
+  }
+}

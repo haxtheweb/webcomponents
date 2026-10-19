@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Suoraan tai etänä ladattu markdown-sisältölohko"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Raaka markdown"
+      },
+      {
+        "property": "source",
+        "title": "Lähde",
+        "description": "Markdownin lähdetiedosto"
+      }
+    ]
+  }
+}

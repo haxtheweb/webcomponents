@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "ਬਾਹਰੀ ਵੈੱਬ ਸਮੱਗਰੀ ਏਮਬੈੱਡ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ਸਰੋਤ",
+        "description": "ਇਸ ਸਰੋਤ ਲਈ URL।"
+      }
+    ]
+  }
+}

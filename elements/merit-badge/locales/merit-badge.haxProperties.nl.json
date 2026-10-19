@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Verdienstebadge",
+    "description": "Visuele badge die aangeeft dat een vaardigheid is behaald."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Badgetitel",
+        "description": "Titel die op de badge wordt getoond."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Badgeafbeelding",
+        "description": "Afbeeldings-URL voor de badge."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Badgedetails",
+        "description": "Details over de badge."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlink",
+        "description": "Link die bij de badge hoort."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Badgevaardigheden",
+        "description": "Vaardigheden die op de badge worden getoond."
+      },
+      {
+        "property": "skill",
+        "title": "Vaardigheid (OER Schema)",
+        "description": "OER Schema: een aangeleerde vaardigheid die is behaald door dit leerdoel af te ronden."
+      }
+    ]
+  }
+}

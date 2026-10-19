@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "කෙටි යෙදුම",
+    "description": "සම්පූර්ණ පද ඉඟි පෙළක් සහිත කෙටි යෙදුම."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "පෙළ",
+        "description": "දෘශ්‍යමාන කෙටි යෙදුම් පෙළ."
+      },
+      {
+        "attribute": "title",
+        "title": "වචනය",
+        "description": "හෝවර් කිරීමේදී පෙන්වන සම්පූර්ණ පදය."
+      }
+    ]
+  }
+}

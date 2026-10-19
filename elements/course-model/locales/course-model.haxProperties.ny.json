@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "chitsanzo cha maphunziro",
+    "description": "Makonzedwe ochita nawo a mfundo za maphunziro okhala ndi zambiri, makanema ojambula, ndi mayeso a chidziwitso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "mutu"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Malo a zambiri"
+      },
+      {
+        "title": "Malo a tsatanetsatane"
+      },
+      {
+        "title": "Malo a kanema wojambula"
+      },
+      {
+        "title": "Malo a Kuyesa Chidziwitso"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Malo a chizindikiro"
+      }
+    ]
+  }
+}

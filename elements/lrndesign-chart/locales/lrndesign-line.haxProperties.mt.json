@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Grafika tal-Linji",
+    "description": "Joħloq grafika aċċessibbli bbażata fuq CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi fakultattiv."
+      },
+      {
+        "title": "Tema skura",
+        "description": "Attiva t-Tema Skura"
+      },
+      {
+        "title": "Fajl CSV",
+        "description": "Għabbi d-data minn CSV."
+      },
+      {
+        "title": "Titlu tal-Grafika",
+        "description": "Test alternattiv aċċessibbli għall-grafika tiegħek."
+      },
+      {
+        "title": "Deskrizzjoni tal-Grafika",
+        "description": "Deskrizzjoni aċċessibbli tal-grafika tiegħek."
+      },
+      {
+        "title": "Isem tal-Iskala",
+        "description": "Il-proporzjon wisa':għoli tal-grafika (Ara https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings għal $ct-scales u $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Uri l-Isfond tal-Grilja"
+      },
+      {
+        "title": "Uri ż-Żona"
+      },
+      {
+        "title": "Uri l-Linja"
+      },
+      {
+        "title": "Uri l-Punt"
+      },
+      {
+        "title": "Wisa' Sħiħa"
+      },
+      {
+        "title": "Uri t-Tikketti tal-Punti"
+      },
+      {
+        "title": "Padding tal-Grafika (fuq)"
+      },
+      {
+        "title": "Padding tal-Grafika (isfel)"
+      },
+      {
+        "title": "Padding tal-Grafika (xellug)"
+      },
+      {
+        "title": "Padding tal-Grafika (lemin)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aqleb id-Data",
+        "description": "Aqleb id-data inklużi t-tikketti, l-ordni tas-serje kif ukoll l-arrays kollha tad-data tas-serje."
+      },
+      {
+        "title": "Tabella HTML",
+        "description": "Opzjonali: Għabbi d-data bħala tabella HTML."
+      },
+      {
+        "title": "Minimu tal-Grafika",
+        "description": "Is-sostituzzjoni tal-minimu naturali tal-grafika tippermettilek tagħmel żum jew tillimita l-inqas valur muri tal-grafika"
+      },
+      {
+        "title": "Massimu tal-Grafika",
+        "description": "Is-sostituzzjoni tal-massimu naturali tal-grafika tippermettilek tagħmel żum jew tillimita l-ogħla valur muri tal-grafika"
+      },
+      {
+        "title": "Uri t-Tikketti tal-Punti",
+        "options": {
+          "middle": "Nofs",
+          "start": "Bidu",
+          "end": "Tmiem"
+        }
+      },
+      {
+        "title": "Spostament X tat-Tikketti tal-Punti"
+      },
+      {
+        "title": "Spostament Y tat-Tikketti tal-Punti"
+      },
+      {
+        "title": "Linja Lixxa"
+      },
+      {
+        "title": "Bażi taż-Żona",
+        "description": "Il-bażi għall-grafika taż-żona li tintuża biex tagħlaq il-forma taż-żona (normalment hija 0)."
+      },
+      {
+        "title": "Ass X Uri l-Grilja",
+        "description": "Uri l-grilja tal-Ass X."
+      },
+      {
+        "title": "Spostament tal-Ass X"
+      },
+      {
+        "title": "Pożizzjoni tal-Ass X",
+        "description": "Pożizzjoni fejn jitqiegħdu t-tikketti. Tista' tiġi ssettjata għal \"start\" jew \"end\" fejn \"start\" huwa ekwivalenti għal xellug jew fuq fuq ass vertikali u \"end\" huwa ekwivalenti għal lemin jew isfel fuq ass orizzontali"
+      },
+      {
+        "title": "Ass X Uri t-Tikketta",
+        "description": "Uri t-tikketta tal-Ass X."
+      },
+      {
+        "title": "Tikketta tal-Ass X (spostament orizzontali)",
+        "description": "Pożizzjoni orizzontali tat-tikketti tal-Ass X."
+      },
+      {
+        "title": "Tikketta tal-Ass X (spostament vertikali)",
+        "description": "Pożizzjoni vertikali tat-tikketti tal-Ass X."
+      },
+      {
+        "title": "Titlu tal-Ass X",
+        "description": "Titlu opzjonali għall-ass X."
+      },
+      {
+        "title": "Titlu tal-Ass X (spostament orizzontali)",
+        "description": "Pożizzjoni orizzontali tat-titlu tal-Ass X."
+      },
+      {
+        "title": "Titlu tal-Ass X (spostament vertikali)",
+        "description": "Pożizzjoni vertikali tat-titlu tal-Ass X."
+      },
+      {
+        "title": "Ankra tat-Titlu tal-Ass X",
+        "description": "Ankra opzjonali għat-titlu tal-ass X.",
+        "options": {
+          "middle": "nofs",
+          "end": "tmiem",
+          "start": "bidu"
+        }
+      },
+      {
+        "title": "Ass Y: Uri l-Grilja",
+        "description": "Uri l-grilja tal-Ass Y."
+      },
+      {
+        "title": "Spostament tal-Ass Y"
+      },
+      {
+        "title": "Pożizzjoni tal-Ass Y",
+        "description": "Pożizzjoni fejn jitqiegħdu t-tikketti. Tista' tiġi ssettjata għal \"start\" jew \"end\" fejn \"start\" huwa ekwivalenti għal xellug jew fuq fuq ass vertikali u \"end\" huwa ekwivalenti għal lemin jew isfel fuq ass orizzontali"
+      },
+      {
+        "title": "Ass Y Uri t-Tikketta",
+        "description": "Uri t-tikketta tal-Ass Y."
+      },
+      {
+        "title": "Tikketta tal-Ass Y (spostament orizzontali)",
+        "description": "Pożizzjoni orizzontali tat-tikketta tal-Ass Y."
+      },
+      {
+        "title": "Tikketta tal-Ass Y (spostament vertikali)",
+        "description": "Pożizzjoni vertikali tat-tikketta tal-Ass Y."
+      },
+      {
+        "title": "Spazju Minimu tal-Iskala tal-Ass Y",
+        "description": "Jispeċifika l-għoli minimu f'pixels tal-passi tal-iskala."
+      },
+      {
+        "title": "Skala tal-Ass Y (numri interi biss)",
+        "description": "Uża biss valuri interi (numri sħaħ) għall-passi tal-iskala."
+      },
+      {
+        "title": "Titlu tal-Ass Y",
+        "description": "Titlu opzjonali għall-ass Y."
+      },
+      {
+        "title": "Titlu tal-Ass Y (spostament vertikali)",
+        "description": "Pożizzjoni orizzontali tat-titlu tal-Ass Y."
+      },
+      {
+        "title": "Titlu tal-Ass Y (spostament orizzontali)",
+        "description": "Pożizzjoni orizzontali tat-titlu tal-Ass Y."
+      },
+      {
+        "title": "Ankra tat-Titlu tal-Ass Y",
+        "description": "Ankra opzjonali għat-titlu tal-ass Y.",
+        "options": {
+          "middle": "nofs",
+          "end": "tmiem",
+          "start": "bidu"
+        }
+      },
+      {
+        "title": "Aqleb it-Titlu tal-Ass Y",
+        "description": "Taqleb it-titlu għall-ass Y?"
+      }
+    ]
+  }
+}

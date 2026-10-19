@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: undirblokkur",
+    "description": "Dynamiskur blokkur til at vísa undirlutir á núverandi síðu"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dynamiskur háttur",
+        "description": "Hvussu undirlutirnir skulu roknast í mun til hetta elementið",
+        "options": {
+          "active": "Virknir undirlutir",
+          "parent": "Undirlutir hjá yvirlutinum",
+          "ancestor": "Allir undirlutir frá hægsta forfedrinum"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Byrjanarstig"
+      },
+      {
+        "property": "end",
+        "title": "Endastig"
+      }
+    ]
+  }
+}

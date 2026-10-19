@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Pakuhi pai",
+    "description": "Hana i kahi pakuhi hiki ke komo ʻia ma muli o kahi CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Waihoʻoluʻu Kiko",
+        "description": "He waihoʻoluʻu kiko koho."
+      },
+      {
+        "title": "Kumuhana Pōuliuli",
+        "description": "Hoʻā i ke kumuhana pōʻeleʻele"
+      },
+      {
+        "title": "Faila CSV",
+        "description": "Hoʻouka i ka ʻikepili mai kahi CSV."
+      },
+      {
+        "title": "Poʻo inoa pakuhi",
+        "description": "Kikokikona alt hiki ke komo ʻia no kāu pakuhi."
+      },
+      {
+        "title": "Wehewehe pakuhi",
+        "description": "Wehewehe hiki ke komo ʻia o kāu pakuhi."
+      },
+      {
+        "title": "Inoa pālākiō",
+        "description": "Ka lākiō o ka laulā:kiʻekiʻe o ka pakuhi (E nānā iā https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings no $ct-scales a me $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Kuʻi"
+      },
+      {
+        "title": "Hōʻike i ka lepili"
+      },
+      {
+        "title": "Huina hoʻomaka"
+      },
+      {
+        "title": "Pale"
+      },
+      {
+        "title": "Huina",
+        "description": "Huina koho hiki iā ʻoe ke hōʻike. Ma ka hōʻike ʻana i kahi waiwai huina, pono ka huina o nā waiwai ma ka pūʻulu e like me kēia huina e kaha ai i kahi pai piha. Hiki iā ʻoe ke hoʻohana i kēia ʻāpana e kaha ai i nā ʻāpana o ka pai a i ʻole nā pakuhi ana wale nō."
+      },
+      {
+        "title": "Haʻalele i nā waiwai hakahaka",
+        "description": "E haʻalele ʻia nā waiwai hakahaka e pale ai i ke kaha ʻana i nā ʻāpana a me nā lepili pono ʻole."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Hoʻohuli i ka ʻikepili",
+        "description": "Hoʻohuli i ka ʻikepili me nā lepili, ke kaʻina o nā pūʻulu a me nā papa ʻikepili pūʻulu holoʻokoʻa."
+      },
+      {
+        "title": "Papa HTML",
+        "description": "Koho: Hoʻouka i ka ʻikepili ma ke ʻano papa HTML."
+      },
+      {
+        "title": "Laulā kaha kuʻi"
+      },
+      {
+        "title": "Kuʻi paʻa",
+        "description": "Kaha i nā ʻāpana kuʻi ma ke ʻano kinona ma kahi o nā kaha."
+      },
+      {
+        "title": "Kuhikuhina lepili",
+        "description": "Kaha i nā ʻāpana kuʻi ma ke ʻano kinona ma kahi o nā kaha.",
+        "options": {
+          "neutral": "kūwaena",
+          "explode": "pahū i waho",
+          "implode": "pahū i loko"
+        }
+      },
+      {
+        "title": "Kaʻawale lepili",
+        "description": "Kaʻawale kūlana lepili mai ke kūlana maʻamau, ʻo ia ka hapalua o ke kaʻawale o ka radius. Hiki i kēia waiwai ke lilo i ka ʻaoʻao maikaʻi a i ʻole ka ʻaoʻao ʻino. E kau nā waiwai maikaʻi i ka lepili i kahi mamao mai ke kikowaena."
+      },
+      {
+        "title": "Kūlana lepili",
+        "options": {
+          "inside": "loko",
+          "outside": "waho",
+          "center": "waena"
+        }
+      }
+    ]
+  }
+}

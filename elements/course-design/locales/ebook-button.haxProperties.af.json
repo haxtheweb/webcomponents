@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-boekknoppie",
+    "description": "'n Knoppie wat na 'n e-boek skakel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Die titel van die knoppie."
+      },
+      {
+        "property": "link",
+        "title": "Skakel",
+        "description": "Die skakel om na te herlei wanneer daarop geklik word."
+      },
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Ikoon om hierdie skakel voor te stel"
+      }
+    ]
+  }
+}

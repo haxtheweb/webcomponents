@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Luettelomerkeillä varustettu luettelo",
+    "description": "Luo luettelomerkeillä varustettu luettelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Luettelomerkin tyyli",
+        "description": "Järjestämättömän luettelon luettelomerkeissä käytettävä tyyli.",
+        "options": {
+          "": "Oletus (neliö)",
+          "list-disc": "Täytetty ympyrä",
+          "list-circle": "Ympyrä",
+          "list-square": "Neliö"
+        }
+      }
+    ]
+  }
+}

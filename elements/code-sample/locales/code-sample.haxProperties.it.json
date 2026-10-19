@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Esempio di codice",
+    "description": "Un esempio di codice evidenziato nella pagina"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Evidenziazione del codice",
+        "description": "Evidenziazione della sintassi da applicare all'area del codice",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Dati JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Pulsante Copia negli appunti",
+        "description": "pulsante in alto a destra con la scritta copia negli appunti"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Inizio evidenziazione",
+        "description": "Numero di riga da cui iniziare l'evidenziazione"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Fine evidenziazione",
+        "description": "Riga in cui terminare l'evidenziazione"
+      }
+    ]
+  }
+}

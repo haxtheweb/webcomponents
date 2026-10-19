@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Жетістік белгісі",
+    "description": "Дағдыны меңгергенін білдіретін көрнекі белгі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Белгі атауы",
+        "description": "Белгіде көрсетілетін атау."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Белгі суреті",
+        "description": "Белгі суретінің URL мекенжайы."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Белгі мәліметтері",
+        "description": "Белгі туралы мәліметтер."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Гиперсілтеме",
+        "description": "Белгімен байланысты сілтеме."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Белгі дағдылары",
+        "description": "Белгіде көрсетілетін дағдылар."
+      },
+      {
+        "property": "skill",
+        "title": "Дағды (OER Schema)",
+        "description": "OER Schema: осы оқу мақсатын орындау арқылы меңгерілген дағды."
+      }
+    ]
+  }
+}

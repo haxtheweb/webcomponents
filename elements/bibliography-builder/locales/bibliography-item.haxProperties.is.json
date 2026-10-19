@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Heimildaratriði",
+    "description": "Atriði sem táknar eina tilvitnun í heimildaskrá, styður mörg snið og útflutningsvalkosti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tegund",
+        "description": "Tegund tilvitnunar",
+        "options": {
+          "web": "Vefur",
+          "journal": "Tímarit",
+          "book": "Bók"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Titill atriðisins"
+      },
+      {
+        "property": "authors",
+        "title": "Höfundur/höfundar",
+        "description": "Atburðirnir á tímalínunni"
+      },
+      {
+        "property": "publisher",
+        "title": "Útgefandi",
+        "description": "Upprunalegur vefur"
+      }
+    ]
+  }
+}

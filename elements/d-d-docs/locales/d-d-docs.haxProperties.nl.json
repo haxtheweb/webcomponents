@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Implementatie van het designsysteem voor HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Weer te geven optie",
+        "options": {
+          "*": "Volledige stijlgids"
+        }
+      }
+    ]
+  }
+}

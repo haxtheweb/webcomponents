@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Genommerde lys",
+    "description": "Skep 'n genommerde lys."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Nommerstyl",
+        "description": "Styl wat vir die nommering van geordende lyste gebruik word.",
+        "options": {
+          "": "Verstek (desimaal)",
+          "list-decimal-leading-zero": "Desimaal met voorloopnul (01, 02, 03)",
+          "list-lower-alpha": "Klein letters (a, b, c)",
+          "list-upper-alpha": "Hoofletters (A, B, C)",
+          "list-lower-roman": "Klein Romeinse syfers (i, ii, iii)",
+          "list-upper-roman": "Groot Romeinse syfers (I, II, III)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "អក្សរកាត់",
+    "description": "អក្សរកាត់ជាមួយព័ត៌មានជំនួយពាក្យពេញ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "អត្ថបទ",
+        "description": "អត្ថបទអក្សរកាត់ដែលមើលឃើញ។"
+      },
+      {
+        "attribute": "title",
+        "title": "ពាក្យ",
+        "description": "ពាក្យពេញដែលបង្ហាញពេលដាក់ទ្រនិចពីលើ។"
+      }
+    ]
+  }
+}

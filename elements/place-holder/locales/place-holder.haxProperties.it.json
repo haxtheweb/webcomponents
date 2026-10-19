@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Segnaposto",
+    "description": "Un segnaposto che può essere convertito nel tipo di contenuto multimediale selezionato"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipo",
+        "description": "Tipo di elemento accettato come sostituto.",
+        "options": {
+          "text": "Testo / contenuto",
+          "document": "Documento / file",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Immagine",
+          "math": "Matematica"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Testo",
+        "description": "Descrivi in maggiore dettaglio il segnaposto desiderato"
+      }
+    ]
+  }
+}

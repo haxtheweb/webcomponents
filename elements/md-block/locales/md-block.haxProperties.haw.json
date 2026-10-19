@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "He poloka ʻike markdown pololei a i hoʻouka ʻia mai kahi mamao"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown maka"
+      },
+      {
+        "property": "source",
+        "title": "Kumu",
+        "description": "Faila kumu no ka markdown"
+      }
+    ]
+  }
+}

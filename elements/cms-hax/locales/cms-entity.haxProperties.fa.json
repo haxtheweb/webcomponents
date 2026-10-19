@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "موجودیت CMS",
+    "description": "موجودیت CMS که در بک‌اند نمایش داده می‌شود"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "نوع",
+        "description": "نوع از CMS ما",
+        "options": {
+          "node": "گره",
+          "user": "کاربر",
+          "file": "فایل"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "شناسه از CMS ما"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "حالت نمایش",
+        "description": "حالت نمایش از CMS ما"
+      }
+    ]
+  }
+}

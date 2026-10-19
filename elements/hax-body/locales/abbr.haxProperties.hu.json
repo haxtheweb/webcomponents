@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Rövidítés",
+    "description": "Rövidítés a teljes kifejezést mutató elemleírással."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Szöveg",
+        "description": "Látható rövidítésszöveg."
+      },
+      {
+        "attribute": "title",
+        "title": "Szó",
+        "description": "Rámutatáskor megjelenő teljes kifejezés."
+      }
+    ]
+  }
+}

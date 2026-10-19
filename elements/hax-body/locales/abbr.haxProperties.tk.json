@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Gysgaltma",
+    "description": "Doly adalgaly maslahat bilen gysgaltma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Görünýän gysgaltma teksti."
+      },
+      {
+        "attribute": "title",
+        "title": "Söz",
+        "description": "Kursor getirilende görkezilýän doly adalga."
+      }
+    ]
+  }
+}

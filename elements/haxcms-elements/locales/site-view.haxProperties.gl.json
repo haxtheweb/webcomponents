@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Vista do sitio",
+    "description": "Un bloque dinámico que consulta e mostra datos do sitio segundo uns criterios"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL da vista",
+        "description": "Parámetros de consulta para a fonte de datos da vista. Podes obtelos no panel de Vistas."
+      },
+      {
+        "property": "renderer",
+        "title": "Modo de visualización",
+        "description": "Como se deben mostrar os resultados da vista"
+      },
+      {
+        "property": "entity",
+        "title": "Tipo de entidade",
+        "description": "Tipo de entidade usado para analizar a resposta",
+        "options": {
+          "": "Predeterminado (elementos)",
+          "item": "Elemento",
+          "page": "Páxina",
+          "file": "Ficheiro",
+          "tag": "Etiqueta",
+          "block": "Bloque",
+          "view": "Vista",
+          "theme": "Tema",
+          "region": "Rexión",
+          "customElement": "Elemento personalizado"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Romper a vista do sitio",
+        "description": "Converter en contido estático para editalo directamente; deixa de actualizarse automaticamente desde a fonte."
+      }
+    ]
+  }
+}

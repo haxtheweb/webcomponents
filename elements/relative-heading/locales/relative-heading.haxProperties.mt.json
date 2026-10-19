@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Intestatura relattiva",
+    "description": "joħroġ il-ġerarkija t-tajba tal-intestaturi bbażata fuq l-intestatura tal-ġenitur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID tar-Riżors tal-Intestatura Ġenitur"
+      },
+      {
+        "property": "disableLink",
+        "description": "Jiddiżattiva l-karatteristika tal-buttuna tal-link."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Jallinja l-buttuna ikkopja l-link fl-estrem tal-lemin tal-intestatura."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Livell tal-intestatura jekk il-ġenitur ma jinstabx."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Jissostitwixxi t-test default tal-messaġġ toast ta' ikkopja l-link."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Jissostitwixxi t-tikketta default tal-buttuna ikkopja l-link."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Jissostitwixxi l-ikona default tal-buttuna ikkopja l-link."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Jissostitwixxi t-tikketta default tal-buttuna tal-għeluq tat-toast ta' ikkopja l-link."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Jissostitwixxi l-ikona default tal-buttuna tal-għeluq tat-toast ta' ikkopja l-link."
+      }
+    ]
+  }
+}

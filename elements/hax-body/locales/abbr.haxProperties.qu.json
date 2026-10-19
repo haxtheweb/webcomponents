@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Pisiyachisqa simi",
+    "description": "Hunt'asqa simi tooltipniyuq pisiyachisqa simi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Qillqa",
+        "description": "Rikukuq pisiyachisqa simi qillqa."
+      },
+      {
+        "attribute": "title",
+        "title": "Simi",
+        "description": "Hanaqninpi kaptin rikuchisqa hunt'asqa simi."
+      }
+    ]
+  }
+}

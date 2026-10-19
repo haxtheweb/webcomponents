@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Výzva k akci",
+    "description": "Jednoduché tlačítko s odkazem k provedení akce."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Popisek",
+        "description": "Popisek odkazu"
+      },
+      {
+        "property": "link",
+        "title": "Odkaz",
+        "description": "Zadejte odkaz na libovolný zdroj"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Skrýt ikonu",
+        "description": "Skrýt ikonu zvýrazňující text"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona odkazu akce"
+      }
+    ]
+  }
+}

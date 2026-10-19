@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ប្លុក CMS",
+    "description": "ប្លុក CMS ដែលបង្ហាញនៅផ្នែកខាងក្រោយ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "ម៉ូឌុល",
+        "description": "ម៉ូឌុលដែលត្រូវផ្ទុកពី CMS របស់យើង"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta នៃប្លុកដែលត្រូវផ្ទុកពី CMS របស់យើង"
+      }
+    ]
+  }
+}

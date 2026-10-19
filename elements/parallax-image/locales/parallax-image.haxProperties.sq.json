@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Imazh paralaks",
+    "description": "Imazh që lëviz me rrëshqitjen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Imazhi",
+        "description": "imazhi që do të përdoret në sfond"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Zona e titullit",
+        "description": "Zona e tekstit të titullit"
+      }
+    ]
+  }
+}

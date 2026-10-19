@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "שמע",
+    "description": "מאפשר להציג וידאו באופן נגיש במיוחד, ללא תלות במקור."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "כתובת ה-URL של מדיה זו."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "כותרת",
+        "description": "כותרת פשוטה מתחת לווידאו"
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "בחרו את צבע ההדגשה של הנגן."
+      },
+      {
+        "property": "track",
+        "title": "כתוביות",
+        "description": "כתובת ה-URL של קובץ הכתוביות."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "תמונה ממוזערת",
+        "description": "אופציונלי. כתובת ה-URL של תמונה ממוזערת/פוסטר."
+      },
+      {
+        "property": "learningMode",
+        "title": "הפעלת מצב למידה",
+        "description": "משבית הרצה קדימה ואחורה."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "הסרת הכפתור לפתיחה ב-YouTube",
+        "description": "מסיר את הכפתור לפתיחת הווידאו ב-YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "לכלול קישור לשיתוף?",
+        "description": "מספק קישור לשיתוף הווידאו."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "מציין אם להשתמש ב-CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "אפשור השמעה ברקע",
+        "description": "סרטונים נעצרים / מתנגנים אוטומטית כשהכרטיסייה מאבדת פוקוס; אפשרות זו מאפשרת לווידאו להתנגן גם כשהכרטיסייה אינה בפוקוס"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ערכת נושא כהה לתמליל",
+        "description": "הפעלת ערכת נושא כהה לתמליל."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "השבתת אינטראקטיביות",
+        "description": "השבתת המצב האינטראקטיבי שהופך את התמליל ללחיץ."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "הסתרת חותמות זמן",
+        "description": "הסתרת חותמות הזמן בתמליל."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "הסתרת התמליל",
+        "description": "הסתרת התמליל כברירת מחדל."
+      },
+      {
+        "property": "lang",
+        "title": "שפה",
+        "description": "שפת המדיה."
+      }
+    ]
+  }
+}

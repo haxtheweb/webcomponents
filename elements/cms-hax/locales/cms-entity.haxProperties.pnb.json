@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS اکائی",
+    "description": "بیک اینڈ تے بݨی CMS اکائی"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "قسم",
+        "description": "ساڈے CMS توں قسم",
+        "options": {
+          "node": "نوڈ",
+          "user": "صارف",
+          "file": "فائل"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ساڈے CMS توں id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "وکھاوݨ دا موڈ",
+        "description": "ساڈے CMS توں وکھالا موڈ"
+      }
+    ]
+  }
+}

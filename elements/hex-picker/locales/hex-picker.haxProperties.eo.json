@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Heksa elektilo",
+    "description": "Heksakoda kolorelektilo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Valoro",
+        "description": "Defaŭlta heksa valoro"
+      },
+      {
+        "property": "disabled",
+        "title": "Malŝaltita",
+        "description": "Malŝalti la tekstokampon"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Granda montrado",
+        "description": "Inkluzivi koloron en granda montrado"
+      }
+    ]
+  }
+}

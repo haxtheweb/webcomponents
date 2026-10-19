@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kampjun tal-kodiċi",
+    "description": "Kampjun ta' kodiċi enfasizzat fil-paġna"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Enfasi tal-kodiċi",
+        "description": "Enfasi tas-sintassi li għandha tiġi applikata għaż-żona tal-kodiċi",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Data JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Buttuna Ikkopja fil-clipboard",
+        "description": "buttuna fuq in-naħa ta' fuq tal-lemin li tgħid ikkopja fil-clipboard"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Bidu tal-enfasi",
+        "description": "Numru tal-linja fejn tibda l-enfasi"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Tmiem tal-enfasi",
+        "description": "Linja fejn tispiċċa l-enfasi"
+      }
+    ]
+  }
+}

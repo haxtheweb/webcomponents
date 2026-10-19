@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Liis dhibcood",
+    "description": "Abuur liis dhibcood."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Qaabka dhibicda",
+        "description": "Qaabka loo isticmaalo dhibcaha liiska aan la kala horraysiin.",
+        "options": {
+          "": "Caadi (afargeesle)",
+          "list-disc": "Saxan",
+          "list-circle": "Goobaabin",
+          "list-square": "Afargeesle"
+        }
+      }
+    ]
+  }
+}

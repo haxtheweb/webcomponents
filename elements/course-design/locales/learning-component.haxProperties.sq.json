@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Komponent mësimor",
+    "description": "Një kartë për instruktorët për të komunikuar pedagogjinë dhe strategjitë mësimore."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Lloji",
+        "description": "Lloji i kartës që do të përdoret."
+      },
+      {
+        "property": "subtitle",
+        "title": "Nëntitulli",
+        "description": "Nëntitulli i kartës."
+      },
+      {
+        "property": "url",
+        "title": "Lidhja",
+        "description": "Një lidhje opsionale për kartën (lidhja nuk është e disponueshme për objektivat mësimore)."
+      },
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Vendos titullin; ky mbishkruan titullin sipas llojit"
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Vendos ikonën; kjo mbishkruan ikonën sipas llojit"
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Vendos ngjyrën theksuese; kjo mbishkruan ngjyrën sipas llojit"
+      },
+      {
+        "slot": "",
+        "title": "Përmbajtja"
+      }
+    ]
+  }
+}

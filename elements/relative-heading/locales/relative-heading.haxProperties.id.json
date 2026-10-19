@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Judul relatif",
+    "description": "menghasilkan hierarki judul yang benar berdasarkan judul induk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID Sumber Daya Judul Induk"
+      },
+      {
+        "property": "disableLink",
+        "description": "Menonaktifkan fitur tombol tautan."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Meratakan tombol salin tautan ke ujung kanan judul."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Tingkat judul jika induk tidak ditemukan."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Menggantikan teks default untuk pesan toast salin tautan."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Menggantikan label default tombol salin tautan."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Menggantikan ikon default tombol salin tautan."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Menggantikan label default untuk tombol tutup toast salin tautan."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Menggantikan ikon default untuk tombol tutup toast salin tautan."
+      }
+    ]
+  }
+}

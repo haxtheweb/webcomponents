@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallax na larawan",
+    "description": "Pag-scroll ng larawan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Larawan",
+        "description": "larawang gagamitin sa background"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Lugar ng heading",
+        "description": "Lugar ng teksto ng heading"
+      }
+    ]
+  }
+}

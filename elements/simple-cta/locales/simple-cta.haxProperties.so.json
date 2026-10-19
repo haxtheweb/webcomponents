@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ugu yeedh ficil",
+    "description": "Badhan fudud oo leh xiriir lagu qaado ficil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Calaamad",
+        "description": "Calaamadda xiriirka"
+      },
+      {
+        "property": "link",
+        "title": "Xiriiriye",
+        "description": "Geli xiriir ilo kasta"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Qari astaanta",
+        "description": "Qari astaanta loo isticmaalo xoojinta qoraalka"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Astaan",
+        "description": "Astaanta xiriirka ficilka"
+      }
+    ]
+  }
+}

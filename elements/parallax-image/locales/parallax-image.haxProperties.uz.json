@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallaks rasm",
+    "description": "Aylantirilganda harakatlanuvchi rasm"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Rasm",
+        "description": "fonda ishlatiladigan rasm"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Sarlavha maydoni",
+        "description": "Sarlavha matni maydoni"
+      }
+    ]
+  }
+}

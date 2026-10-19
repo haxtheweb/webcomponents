@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematîk",
+    "description": "Matematîkê bi awayekî xweşik pêşkêş bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematîk",
+        "description": "Hevkêşeyê wekî LaTeX binivîse"
+      }
+    ]
+  }
+}

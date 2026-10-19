@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Дневник оцена",
+    "description": "Дневник оцена без интерфејса који подржава више бекендова са рубрикама."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Извор",
+        "description": "Тип извора података (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL крајња тачка (JSON)",
+          "json": "JSON блок података",
+          "filesystem": "Систем датотека"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Изворни подаци",
+        "description": "URL или JSON подаци за дневник оцена."
+      },
+      {
+        "property": "forCourse",
+        "title": "Референца курса",
+        "description": "Идентификатор курса који се емитује као oer:forCourse за сваки ресурс процене."
+      }
+    ]
+  }
+}

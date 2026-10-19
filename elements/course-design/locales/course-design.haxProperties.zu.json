@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Ukuklama Isifundo",
+    "description": "Isiqukathi sezinto zokufunda nezakhi zokuklama isifundo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Isihlonzi Sesifundo",
+        "description": "I-OER Schema: isihlonzi sesifundo, isb. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Ithemu Okunikezwa Ngayo",
+        "description": "I-OER Schema: ithemu lapho isifundo sinikezwa khona."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Ifomethi Yokuletha",
+        "description": "I-OER Schema: ifomethi esetshenziselwa ukuletha isifundo (isb. ubuso nobuso, ku-inthanethi, okuxubile)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Umfundisi Oyinhloko",
+        "description": "I-OER Schema: umfundisi oyinhloko wesifundo."
+      },
+      {
+        "property": "syllabus",
+        "title": "I-URL Yohlelo Lwesifundo",
+        "description": "I-OER Schema: i-URL eya ohlelweni lwesifundo."
+      }
+    ]
+  }
+}

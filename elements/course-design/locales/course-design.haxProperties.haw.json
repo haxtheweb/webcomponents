@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Hoʻolālā papa",
+    "description": "Pahu no nā mea aʻo a me nā mea hoʻolālā papa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Mea hōʻike papa",
+        "description": "OER Schema: ka mea hōʻike o ka papa, e laʻa me MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Kau i hāʻawi ʻia",
+        "description": "OER Schema: ke kau e hāʻawi ʻia ai ka papa."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "ʻAno hāʻawi",
+        "description": "OER Schema: ke ʻano i hoʻohana ʻia e hāʻawi ai i ka papa (e laʻa me ke alo a he alo, pūnaewele, hui pū)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Kumu mua",
+        "description": "OER Schema: ke kumu mua no ka papa."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL papa haʻawina",
+        "description": "OER Schema: URL i ka papa haʻawina o ka papa."
+      }
+    ]
+  }
+}

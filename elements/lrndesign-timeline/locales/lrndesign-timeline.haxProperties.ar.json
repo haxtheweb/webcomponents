@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "خط زمني",
+    "description": "مخطط زمني للأحداث مع صور ونصوص"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "عنوان الخط الزمني",
+        "description": "عنوان للمخطط الزمني."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون تمييز اختياري."
+      },
+      {
+        "property": "dark",
+        "title": "السمة الداكنة",
+        "description": "تفعيل السمة الداكنة"
+      },
+      {
+        "slot": "",
+        "title": "وصف المخطط الزمني",
+        "description": "نص اختياري يصف المخطط الزمني."
+      },
+      {
+        "property": "events",
+        "title": "أحداث المخطط الزمني",
+        "description": "الأحداث في المخطط الزمني"
+      }
+    ]
+  }
+}

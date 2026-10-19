@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Mawonedwe a Webusayiti",
+    "description": "Chipika chosintha chomwe chimafunsa ndi kuonetsa deta ya webusayiti molingana ndi njira"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL ya Mawonedwe",
+        "description": "Magawo a funso a chakudya cha deta ya mawonedwe. Mutha kuwapeza pa dashibodi ya Mawonedwe."
+      },
+      {
+        "property": "renderer",
+        "title": "Njira yowonetsera",
+        "description": "Momwe zotsatira za mawonedwe ziyenera kuonetsedwera"
+      },
+      {
+        "property": "entity",
+        "title": "Mtundu wa chinthu",
+        "description": "Mtundu wa chinthu wogwiritsidwa ntchito pomasulira yankho",
+        "options": {
+          "": "Chokhazikika (zinthu)",
+          "item": "Chinthu",
+          "page": "Tsamba",
+          "file": "Fayilo",
+          "tag": "Tag",
+          "block": "Buloko",
+          "view": "Mawonedwe",
+          "theme": "Mawonekedwe",
+          "region": "Dera",
+          "customElement": "Chinthu cha Mwamakonda"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Dulani mawonedwe a webusayiti",
+        "description": "Sinthani kukhala zinthu zokhazikika kuti musinthe mwachindunji; zimasiya kusinthidwa zokha kuchokera ku gwero."
+      }
+    ]
+  }
+}

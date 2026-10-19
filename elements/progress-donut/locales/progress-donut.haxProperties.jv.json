@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Donat Kemajuan",
+    "description": "Donat kemajuan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Irah-irahan",
+        "description": "Judhul elemen"
+      },
+      {
+        "property": "desc",
+        "title": "Katrangan",
+        "description": "Katrangan dawa sing gampang diakses"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Sumber Gambar",
+        "description": "Sumber gambar ing njero donat."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Teks Alt Gambar",
+        "description": "Teks alt kanggo gambar."
+      },
+      {
+        "property": "animated",
+        "title": "Animasi",
+        "description": "Apa kemajuan dianimasi nalika diemot kapisan"
+      },
+      {
+        "property": "complete",
+        "title": "Rampung",
+        "description": "Larik nilai sing wis rampung."
+      },
+      {
+        "property": "total",
+        "title": "Total",
+        "description": "Total nalika kabeh item rampung."
+      },
+      {
+        "property": "startAngle",
+        "title": "Sudut Wiwitan",
+        "description": "Sudut donat ing ngendi kemajuan diwiwiti"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ретро карта",
+    "description": "Ретро дизайндағы қарапайым карта."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Тақырып",
+        "description": "Картаның негізгі атауы."
+      },
+      {
+        "property": "url",
+        "description": "Картаны басқанда ашылатын URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "Тақырыпша",
+        "description": "Карта тақырыпшасы."
+      },
+      {
+        "property": "tags",
+        "title": "Тегтер",
+        "description": "Үтірмен бөлінген тегтер."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Медиа көзі",
+        "description": "Негізгі медиа көзі."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Меңзер апарғандағы көз",
+        "description": "Картаға меңзер апарғанда немесе белсендірілгенде көрсетілетін медиа көзі."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Бүкіл картаға қолданылатын акцент түсі."
+      },
+      {
+        "property": "dark",
+        "title": "Қараңғы",
+        "description": "Қараңғы режимнің негізгі түстерін пайдалану."
+      }
+    ]
+  }
+}

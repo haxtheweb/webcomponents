@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "เอนทิตี CMS",
+    "description": "เอนทิตี CMS ที่แสดงผลบนแบ็กเอนด์"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "ประเภท",
+        "description": "ประเภทจาก CMS ของเรา",
+        "options": {
+          "node": "โหนด",
+          "user": "ผู้ใช้",
+          "file": "ไฟล์"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID จาก CMS ของเรา"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "โหมดการแสดงผล",
+        "description": "โหมดการแสดงผลจาก CMS ของเรา"
+      }
+    ]
+  }
+}

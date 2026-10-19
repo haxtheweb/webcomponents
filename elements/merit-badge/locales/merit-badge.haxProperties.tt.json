@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Казаныш билгесе",
+    "description": "Күнекмә үзләштерүне белдерүче визуаль билге."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Билге исеме",
+        "description": "Билгедә күрсәтелә торган исем."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Билге рәсеме",
+        "description": "Билге өчен рәсем URL'ы."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Билге турында тулырак",
+        "description": "Билге турында тулырак мәгълүмат."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Гиперсылтама",
+        "description": "Билге белән бәйле сылтама."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Билге күнекмәләре",
+        "description": "Билгедә күрсәтелә торган күнекмәләр."
+      },
+      {
+        "property": "skill",
+        "title": "Күнекмә (OER Schema)",
+        "description": "OER Schema: бу уку максатын үтәү нәтиҗәсендә алынган күнекмә."
+      }
+    ]
+  }
+}

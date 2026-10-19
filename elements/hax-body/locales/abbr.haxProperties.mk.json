@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Кратенка",
+    "description": "Кратенка со совет со целосниот поим."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Видлив текст на кратенката."
+      },
+      {
+        "attribute": "title",
+        "title": "Збор",
+        "description": "Целосен поим прикажан при лебдење."
+      }
+    ]
+  }
+}

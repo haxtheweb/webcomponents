@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS 뷰",
+    "description": "백엔드에서 렌더링되는 CMS 뷰"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "이름",
+        "description": "CMS의 뷰 이름"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "표시",
+        "description": "CMS의 해당 뷰 내 디스플레이"
+      }
+    ]
+  }
+}

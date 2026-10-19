@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Kuleana ʻoihana",
+    "description": "He kuleana hoʻokahi i loko o kahi hui"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Poʻo inoa"
+      },
+      {
+        "property": "startDate",
+        "title": "Lā hoʻomaka"
+      },
+      {
+        "property": "endDate",
+        "title": "Lā pau (Koho)"
+      },
+      {
+        "property": "skills",
+        "title": "Nā mākau pili",
+        "description": "Koho i ka pihi + e hoʻomaka ai i ka hoʻohui ʻana i nā mākau"
+      }
+    ]
+  }
+}

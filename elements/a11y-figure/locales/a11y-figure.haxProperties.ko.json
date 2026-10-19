@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "설명형 그림",
+    "description": "긴 설명이 포함된 접근성 높은 그림"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "이미지"
+      },
+      {
+        "property": "imgAlt",
+        "title": "대체 텍스트"
+      },
+      {
+        "slot": "figcaption",
+        "title": "그림 캡션",
+        "description": "항상 표시되는 그림 캡션 텍스트."
+      },
+      {
+        "slot": "details",
+        "title": "설명",
+        "description": "숨기거나 표시할 수 있는 자세한 이미지 설명"
+      },
+      {
+        "slot": "summary",
+        "title": "설명 버튼",
+        "description": "설명 텍스트를 표시/숨기는 버튼의 기본값 (예: \"정보\", \"메타데이터\" 등)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "세부 정보가 열려 있을 때의 선택적 요약 텍스트"
+      },
+      {
+        "property": "closeText",
+        "title": "세부 정보가 닫혀 있을 때의 선택적 요약 텍스트"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Liña do tempo",
+    "description": "Unha liña do tempo de eventos con imaxes e texto"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Título da liña do tempo",
+        "description": "Un título para a liña do tempo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Unha cor de realce opcional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema escuro",
+        "description": "Activar o tema escuro"
+      },
+      {
+        "slot": "",
+        "title": "Descrición da liña do tempo",
+        "description": "Texto opcional que describe a liña do tempo."
+      },
+      {
+        "property": "events",
+        "title": "Eventos da liña do tempo",
+        "description": "Os eventos da liña do tempo"
+      }
+    ]
+  }
+}

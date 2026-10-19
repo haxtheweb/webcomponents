@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ibhulokhi yengane",
+    "description": "Ibhulokhi eguquguqukayo yokubonisa ingane yekhasi lamanje"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Indlela eguquguqukayo",
+        "description": "Ukuthi zibalwa kanjani izingane ngokuhlobene nalesi sakhi",
+        "options": {
+          "active": "Izingane ezisebenzayo",
+          "parent": "Izingane zomzali",
+          "ancestor": "Zonke izingane kusuka kukhokho ophezulu kakhulu"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Izinga lokuqala"
+      },
+      {
+        "property": "end",
+        "title": "Izinga lokugcina"
+      }
+    ]
+  }
+}

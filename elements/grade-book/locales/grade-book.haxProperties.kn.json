@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ಅಂಕ ಪುಸ್ತಕ",
+    "description": "ರೂಬ್ರಿಕ್‌ಗಳೊಂದಿಗೆ ಹಲವು ಬ್ಯಾಕೆಂಡ್‌ಗಳನ್ನು ಬೆಂಬಲಿಸುವ ಹೆಡ್‌ಲೆಸ್ ಅಂಕ ಪುಸ್ತಕ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ಮೂಲ",
+        "description": "ಡೇಟಾ ಮೂಲದ ಪ್ರಕಾರ (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL ಎಂಡ್‌ಪಾಯಿಂಟ್ (JSON)",
+          "json": "JSON ಡೇಟಾ ಬ್ಲಾಬ್",
+          "filesystem": "ಫೈಲ್ ಸಿಸ್ಟಮ್"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ಮೂಲ ಡೇಟಾ",
+        "description": "ಅಂಕ ಪುಸ್ತಕಕ್ಕಾಗಿ URL ಅಥವಾ JSON ಡೇಟಾ."
+      },
+      {
+        "property": "forCourse",
+        "title": "ಕೋರ್ಸ್ ಉಲ್ಲೇಖ",
+        "description": "ಪ್ರತಿ Assessment ಸಂಪನ್ಮೂಲದಲ್ಲಿ oer:forCourse ಆಗಿ ಹೊರಸೂಸಲಾಗುವ ಕೋರ್ಸ್ ಗುರುತಿಸುವಿಕೆ."
+      }
+    ]
+  }
+}

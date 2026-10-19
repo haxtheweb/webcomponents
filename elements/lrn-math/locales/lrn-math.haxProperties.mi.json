@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Pāngarau",
+    "description": "Whakaatu pāngarau i tētahi āhua ātaahua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Pāngarau",
+        "description": "Tāurua te whārite hei LaTeX"
+      }
+    ]
+  }
+}

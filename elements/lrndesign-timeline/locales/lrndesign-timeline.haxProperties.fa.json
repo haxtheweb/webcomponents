@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "خط زمانی",
+    "description": "خط زمانی رویدادها با تصویر و متن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "عنوان خط زمانی",
+        "description": "عنوانی برای خط زمانی."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی اختیاری."
+      },
+      {
+        "property": "dark",
+        "title": "پوستهٔ تیره",
+        "description": "فعال کردن پوسته تاریک"
+      },
+      {
+        "slot": "",
+        "title": "توضیحات خط زمانی",
+        "description": "متن اختیاری در توصیف خط زمانی."
+      },
+      {
+        "property": "events",
+        "title": "رویدادهای خط زمانی",
+        "description": "رویدادهای خط زمانی"
+      }
+    ]
+  }
+}

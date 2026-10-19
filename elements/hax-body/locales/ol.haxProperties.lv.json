@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Numurēts saraksts",
+    "description": "Izveidot numurētu sarakstu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Numurēšanas stils",
+        "description": "Numurēta saraksta numerācijas stils.",
+        "options": {
+          "": "Noklusējums (decimālskaitļi)",
+          "list-decimal-leading-zero": "Decimālskaitļi ar sākuma nulli (01, 02, 03)",
+          "list-lower-alpha": "Mazie burti (a, b, c)",
+          "list-upper-alpha": "Lielie burti (A, B, C)",
+          "list-lower-roman": "Mazie romiešu cipari (i, ii, iii)",
+          "list-upper-roman": "Lielie romiešu cipari (I, II, III)"
+        }
+      }
+    ]
+  }
+}

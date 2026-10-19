@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "รูปภาพพารัลแลกซ์",
+    "description": "รูปภาพเลื่อนตาม"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "รูปภาพ",
+        "description": "รูปภาพที่จะใช้เป็นพื้นหลัง"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "พื้นที่หัวเรื่อง",
+        "description": "พื้นที่ข้อความหัวเรื่อง"
+      }
+    ]
+  }
+}

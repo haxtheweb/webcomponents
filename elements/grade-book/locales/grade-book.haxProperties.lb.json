@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Notebuch",
+    "description": "En headless Notebuch, dat verschidde Backends mat Bewäertungsrastere ënnerstëtzt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quell",
+        "description": "Typ vun der Datequell (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-Endpunkt (JSON)",
+          "json": "JSON-Dateblob",
+          "filesystem": "Fichierssystem"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Quelldonnéeën",
+        "description": "URL oder JSON-Donnéeë fir d'Notebuch."
+      },
+      {
+        "property": "forCourse",
+        "title": "Coursreferenz",
+        "description": "Coursidentifikator, deen als oer:forCourse op all Assessment-Ressource ausgi gëtt."
+      }
+    ]
+  }
+}

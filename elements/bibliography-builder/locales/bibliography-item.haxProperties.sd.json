@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ڪتابيات جي شيءِ",
+    "description": "ڪتابيات ۾ هڪ حوالي جي نمائندگي ڪندڙ شيءِ، ڪيترن ئي فارميٽن ۽ برآمد جي آپشنن سان."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "قسم",
+        "description": "حوالي جو قسم",
+        "options": {
+          "web": "ويب",
+          "journal": "جرنل",
+          "book": "ڪتاب"
+        }
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "شيءِ جو عنوان"
+      },
+      {
+        "property": "authors",
+        "title": "ليکڪ",
+        "description": "ٽائيم لائن ۾ واقعا"
+      },
+      {
+        "property": "publisher",
+        "title": "پبلشر",
+        "description": "اصل ويب سائيٽ"
+      }
+    ]
+  }
+}

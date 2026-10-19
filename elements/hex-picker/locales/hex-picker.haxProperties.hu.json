@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex-színválasztó",
+    "description": "Hexkódos színválasztó"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Érték",
+        "description": "Alapértelmezett hex-érték"
+      },
+      {
+        "property": "disabled",
+        "title": "Letiltva",
+        "description": "A szövegmező letiltása"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Nagy megjelenítés",
+        "description": "Szín megjelenítése nagy méretben"
+      }
+    ]
+  }
+}

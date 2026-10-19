@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Прогресс боҗрасы",
+    "description": "Алгарыш боҗрасы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Элемент исеме"
+      },
+      {
+        "property": "desc",
+        "title": "Тасвирлама",
+        "description": "Үтемле озын тасвирлама"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Рәсем чыганагы",
+        "description": "Боҗра эчендәге рәсем чыганагы."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Рәсемнең альтернатив тексты",
+        "description": "Рәсем өчен альтернатив текст."
+      },
+      {
+        "property": "animated",
+        "title": "Анимацияле",
+        "description": "Беренче йөкләнгәндә прогресс анимацияләнәме"
+      },
+      {
+        "property": "complete",
+        "title": "Тәмамланды",
+        "description": "Тәмамланган кыйммәтләр массивы."
+      },
+      {
+        "property": "total",
+        "title": "Барлыгы",
+        "description": "Барлык элементлар тәмамланганда гомуми сан."
+      },
+      {
+        "property": "startAngle",
+        "title": "Башлангыч почмак",
+        "description": "Прогресс башлана торган боҗра почмагы"
+      }
+    ]
+  }
+}

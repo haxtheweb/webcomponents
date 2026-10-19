@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Orixe",
+        "description": "URL deste recurso."
+      }
+    ]
+  }
+}

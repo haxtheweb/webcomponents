@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "جاسازی محتوای وب خارجی."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "منبع",
+        "description": "URL این منبع."
+      }
+    ]
+  }
+}

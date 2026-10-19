@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Tilgjengelig videoavspilling fra flere kilder."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "URL for dette mediet."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Tittel",
+        "description": "Tittel som vises under videoen."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Plakatbilde",
+        "description": "URL til plakatbilde."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Tekstspor",
+        "description": "Teksting, undertekster, beskrivelser og andre tekstspor for videoen."
+      },
+      {
+        "property": "startTime",
+        "title": "Starttid",
+        "description": "Start videoen på et bestemt tidspunkt (sekunder)."
+      },
+      {
+        "property": "endTime",
+        "title": "Sluttid",
+        "description": "Avslutt videoen på et bestemt tidspunkt (sekunder), krever en starttid."
+      },
+      {
+        "property": "learningMode",
+        "title": "Aktiver læringsmodus",
+        "description": "Deaktiverer spoling forover og bakover."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Fjern knappen Åpne på YouTube",
+        "description": "Fjerner knappen for å åpne videoen på YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Ta med en delingslenke?",
+        "description": "Gir en lenke for å dele videoen."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Skjul tidsstempler",
+        "description": "Skjul tidsstemplene i transkripsjonen."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Skjul transkripsjon",
+        "description": "Skjul transkripsjonen som standard."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Synstolkingsspor",
+        "description": "URL til et synstolkingsspor (MP3-fil) som beskriver visuelle elementer."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Angir om CORS skal brukes.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Tillat avspilling i bakgrunnen",
+        "description": "Fortsett avspillingen når nettleserfanen mister fokus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Mørkt tema for transkripsjon",
+        "description": "Aktiver mørkt tema for transkripsjonen."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Deaktiver interaktivitet",
+        "description": "Deaktiver interaktiv modus som gjør transkripsjonen klikkbar."
+      },
+      {
+        "property": "lang",
+        "title": "Språk",
+        "description": "Språket i mediet."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "(foreldet) Velg aksentfargen for spilleren."
+      }
+    ]
+  }
+}

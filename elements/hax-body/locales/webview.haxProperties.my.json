@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ရင်းမြစ်",
+        "description": "ဤအရင်းအမြစ်အတွက် URL။"
+      }
+    ]
+  }
+}

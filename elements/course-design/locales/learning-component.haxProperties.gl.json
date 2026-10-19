@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Compoñente de aprendizaxe",
+    "description": "Unha tarxeta para que o profesorado comunique a pedagoxía e as estratexias didácticas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipo",
+        "description": "O tipo de tarxeta que se usará."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtítulo",
+        "description": "O subtítulo da tarxeta."
+      },
+      {
+        "property": "url",
+        "title": "Ligazón",
+        "description": "Unha ligazón opcional para a tarxeta (a ligazón non está dispoñible para os obxectivos de aprendizaxe)."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Define o título; isto substitúe o título baseado no tipo"
+      },
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Define a icona; isto substitúe a icona baseada no tipo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Define a cor de acento; isto substitúe a cor baseada no tipo"
+      },
+      {
+        "slot": "",
+        "title": "Contidos"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Podpis ilustracji",
+    "description": "Podpis ilustracji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Podpis",
+        "description": "Tekst wyświetlany pod ilustracją."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Sematkan konten web eksternal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Sumber",
+        "description": "URL untuk sumber daya ini."
+      }
+    ]
+  }
+}

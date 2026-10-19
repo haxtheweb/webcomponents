@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Buton detajesh i qasshëm",
+    "description": "Zbulim progresiv i qasshëm me detaje dhe përmbledhje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Butoni",
+        "description": "Përmbledhje e përmbajtjes që fshihet, p.sh. \"info\", \"metadata\" etj."
+      },
+      {
+        "slot": "details",
+        "title": "Përshkrimi",
+        "description": "Përshkrim i detajuar që mund të fshihet ose të shfaqet"
+      },
+      {
+        "slot": "",
+        "title": "Butoni i përshkrimit",
+        "description": "Parazgjedhja për butonin që shfaq/fsheh tekstin e përshkrimit, p.sh. \"info\", \"metadata\" etj."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Tekst përmbledhës opsional kur detajet janë të hapura"
+      },
+      {
+        "property": "closeText",
+        "title": "Tekst përmbledhës opsional kur detajet janë të mbyllura"
+      }
+    ]
+  }
+}

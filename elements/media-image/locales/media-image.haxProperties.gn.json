@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Ta'ãnga Iporãvéva",
+    "description": "Peteĩ tape ojehechauka hag̃ua ta'ãnga heta ñemoporã reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Reñoiha",
+        "description": "URL ta'ãngape g̃uarã."
+      },
+      {
+        "property": "alt",
+        "title": "Moñe'ẽrã mbohekoviaha",
+        "description": "Moñe'ẽrã omyesakã hag̃ua ta'ãnga umi ohecha'ỹvape g̃uarã."
+      },
+      {
+        "property": "link",
+        "title": "Joajuha",
+        "description": "Embojoaju ta'ãnga peteĩ URL rehe"
+      },
+      {
+        "property": "card",
+        "title": "Kuatia'atã",
+        "description": "Emoĩ ra'anga ojehecha hag̃ua peteĩ kora yvatevéicha."
+      },
+      {
+        "property": "box",
+        "title": "Kora",
+        "description": "Emoĩ peteĩ kora ta'ãnga jerére."
+      },
+      {
+        "property": "offset",
+        "title": "Ñemombyry",
+        "description": "Emoĩ ñemombyry asu térã akatúa gotyo ta'ãngape.",
+        "options": {
+          "none": "mba'eve",
+          "wide": "ipe'a",
+          "narrow": "ipo'i"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Mbojoapy",
+        "description": "Jehechauka ta'ãngape g̃uarã."
+      },
+      {
+        "property": "caption",
+        "title": "Ñe'ẽ'i",
+        "description": "Teratee ta'ãngape g̃uarã."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Ta'ãnga Réra",
+        "description": "Téra ta'ãnga techaukahápe g̃uarã."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Ta'ãnga Ñemoha'ãnga",
+        "description": "Ñemoha'ãnga ta'ãnga techaukahápe g̃uarã."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Ta'ãnga'i",
+        "description": "Ta'ãnga'i ypykue. Ohechauka ta'ãnga'i ha katu ombojuruja ypykue tuichakue ovetã'ípe."
+      },
+      {
+        "property": "round",
+        "title": "Ta'ãnga apu'a",
+        "description": "Oikytĩ ta'ãnga jehecha apu'a háicha."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Embogue ta'ãnga ovetã'i",
+        "description": "Embogue jejopy ombojurujáva ta'ãnga ta'ãnga jehesa'ỹijoha ovetãme."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Ehechauka markdown ramo",
+        "description": "Ehechauka teratee ha jehechauka markdown ramo."
+      }
+    ]
+  }
+}

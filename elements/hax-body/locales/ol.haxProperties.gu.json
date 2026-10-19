@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "ક્રમાંકિત સૂચિ",
+    "description": "ક્રમાંકિત સૂચિ બનાવો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "ક્રમાંક શૈલી",
+        "description": "ક્રમિત સૂચિના ક્રમાંકન માટે વપરાતી શૈલી.",
+        "options": {
+          "": "ડિફૉલ્ટ (દશાંશ)",
+          "list-decimal-leading-zero": "આગળ શૂન્ય સાથે દશાંશ (01, 02, 03)",
+          "list-lower-alpha": "નાના આલ્ફા (a, b, c)",
+          "list-upper-alpha": "મોટા આલ્ફા (A, B, C)",
+          "list-lower-roman": "નાના રોમન (i, ii, iii)",
+          "list-upper-roman": "મોટા રોમન (I, II, III)"
+        }
+      }
+    ]
+  }
+}
