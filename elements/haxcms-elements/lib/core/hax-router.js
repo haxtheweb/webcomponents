@@ -154,12 +154,27 @@ export class HaxRouter {
   }
 
   /**
+   * Static hosts (surge, netlify, gh-pages, static exports) serve a page
+   * folder as `slug/` or `slug/index.html`, while routes are registered as
+   * the bare `slug`. Strip a trailing `index.html` and trailing slash so all
+   * three forms match the same route. Root stays `/`.
+   */
+  _normalizeStaticPathname(pathname) {
+    let normalized = pathname.replace(/\/index\.html?$/i, "/");
+    if (normalized.length > 1 && normalized.endsWith("/")) {
+      normalized = normalized.replace(/\/+$/, "");
+    }
+    return normalized === "" ? "/" : normalized;
+  }
+
+  /**
    * Match pathname against defined routes
    */
   _matchRoute(pathname) {
     if (!pathname.startsWith("/")) {
       pathname = "/" + pathname;
     }
+    pathname = this._normalizeStaticPathname(pathname);
 
     for (const route of this.routes) {
       const routePath = route.path;
