@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "ሚም",
+    "description": "ከምስል ሚም ይስሩ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "ምንጭ",
+        "description": "ለሚም ምስሉ የምንጭ URL።"
+      },
+      {
+        "property": "topText",
+        "title": "የላይኛው ጽሑፍ",
+        "description": "የሚሙ የላይኛው ጽሑፍ።"
+      },
+      {
+        "property": "bottomText",
+        "title": "የታችኛው ጽሑፍ",
+        "description": "የሚሙ የታችኛው ጽሑፍ።"
+      },
+      {
+        "property": "alt",
+        "title": "አማራጭ ጽሑፍ",
+        "description": "ምስሉን ማየት ለማይችሉ ተጠቃሚዎች የሚገልጽ ጽሑፍ።"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "ትንሽ መጫወቻን የምታደባ ድመት",
+        "topText": "አመጣሁልህ",
+        "bottomText": "ሞትን"
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Búðu til meme úr mynd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Uppruni",
+        "description": "URL uppruna fyrir mynd meme-sins."
+      },
+      {
+        "property": "topText",
+        "title": "Efri texti",
+        "description": "Efri texti meme-sins."
+      },
+      {
+        "property": "bottomText",
+        "title": "Neðri texti",
+        "description": "Neðri texti meme-sins."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-texti",
+        "description": "Texti sem lýsir myndinni fyrir blinda notendur."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Köttur að læðast að litlu leikfangi",
+        "topText": "Ég færi þér",
+        "bottomText": "dauðann"
+      }
+    }
+  ]
+}

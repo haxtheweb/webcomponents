@@ -1,33 +1,36 @@
 {
   "gizmo": {
-    "title": "Mem",
-    "description": "Skapa ett mem från en bild"
+    "title": "Meme",
+    "description": "Gör ett meme av en bild."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "Källa",
-        "description": "Käll-URL för elementet som citeras"
+        "description": "Käll-URL för meme-bilden."
       },
       {
+        "property": "topText",
         "title": "Övre text",
-        "description": "Övre texten i memet"
+        "description": "Memets övre text."
       },
       {
+        "property": "bottomText",
         "title": "Nedre text",
-        "description": "Nedre texten i memet"
+        "description": "Memets nedre text."
       },
       {
+        "property": "alt",
         "title": "Alternativ text",
-        "description": "Text för att beskriva bilden för synskadade användare"
+        "description": "Text som beskriver bilden för användare med synnedsättning."
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "Katt som förföljer en liten leksak",
+        "alt": "Katt som smyger på en liten leksak",
         "topText": "Jag ger dig",
         "bottomText": "döden"
       }

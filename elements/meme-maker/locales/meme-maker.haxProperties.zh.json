@@ -1,38 +1,37 @@
 {
   "gizmo": {
     "title": "表情包",
-    "description": "用图片制作表情包"
+    "description": "用图片制作表情包。"
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "来源",
-        "description": "您引用元素的源URL"
+        "description": "表情包图片的来源 URL。"
       },
       {
-        "title": "顶部文本",
-        "description": "表情包的顶部文本"
+        "property": "topText",
+        "title": "顶部文字",
+        "description": "表情包的顶部文字。"
       },
       {
-        "title": "底部文本",
-        "description": "表情包的底部文本"
+        "property": "bottomText",
+        "title": "底部文字",
+        "description": "表情包的底部文字。"
       },
       {
+        "property": "alt",
         "title": "替代文本",
-        "description": "为视觉障碍用户描述图像的文本"
-      }
-    ],
-    "advanced": [
-      {
-        "description": "用空格分隔的ID列表，用于描述图像的元素"
+        "description": "向视障用户描述图片的文字。"
       }
     ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "猫咪正在追踪小玩具",
-        "topText": "我给你带来",
+        "alt": "猫正在悄悄接近一个小玩具",
+        "topText": "我为你带来",
         "bottomText": "死亡"
       }
     }

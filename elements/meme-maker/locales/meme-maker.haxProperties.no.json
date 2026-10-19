@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Lag et meme av et bilde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Kilde",
+        "description": "Kilde-URL for meme-bildet."
+      },
+      {
+        "property": "topText",
+        "title": "Topptekst",
+        "description": "Teksten øverst på memet."
+      },
+      {
+        "property": "bottomText",
+        "title": "Bunntekst",
+        "description": "Teksten nederst på memet."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ tekst",
+        "description": "Tekst som beskriver bildet for synshemmede brukere."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Katt som sniker seg innpå en liten leke",
+        "topText": "Jeg bringer deg",
+        "bottomText": "døden"
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Мем",
+    "description": "Суреттен мем жасаңыз."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Дереккөз",
+        "description": "Мем суретінің дереккөз URL мекенжайы."
+      },
+      {
+        "property": "topText",
+        "title": "Жоғарғы мәтін",
+        "description": "Мемнің жоғарғы мәтіні."
+      },
+      {
+        "property": "bottomText",
+        "title": "Төменгі мәтін",
+        "description": "Мемнің төменгі мәтіні."
+      },
+      {
+        "property": "alt",
+        "title": "Балама мәтін",
+        "description": "Көру қабілеті жоқ пайдаланушыларға суретті сипаттайтын мәтін."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Кішкентай ойыншыққа аңдып жатқан мысық",
+        "topText": "Мен саған",
+        "bottomText": "ажал әкелдім"
+      }
+    }
+  ]
+}

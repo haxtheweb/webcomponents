@@ -1,0 +1,11 @@
+{
+  "userAccess": "Brukertilgang",
+  "enterUsername": "Skriv inn brukernavn for å gi tilgang",
+  "usernamePlaceholder": "Brukernavn",
+  "addUser": "Legg til bruker",
+  "cancel": "Avbryt",
+  "userAccessGranted": "Brukertilgang ble gitt!",
+  "userNotFound": "Bruker ikke funnet eller uautorisert",
+  "loadingAddingUser": "Legger til bruker...",
+  "grantAccessTo": "Gi tilgang til:"
+}

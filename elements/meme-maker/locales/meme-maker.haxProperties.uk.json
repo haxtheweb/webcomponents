@@ -1,34 +1,37 @@
 {
   "gizmo": {
     "title": "Мем",
-    "description": "Створіть мем із зображення"
+    "description": "Створіть мем із зображення."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "Джерело",
-        "description": "URL-адреса джерела елемента, який цитується"
+        "description": "URL джерела зображення для мему."
       },
       {
+        "property": "topText",
         "title": "Верхній текст",
-        "description": "Верхній текст мема"
+        "description": "Верхній текст мему."
       },
       {
+        "property": "bottomText",
         "title": "Нижній текст",
-        "description": "Нижній текст мема"
+        "description": "Нижній текст мему."
       },
       {
+        "property": "alt",
         "title": "Альтернативний текст",
-        "description": "Текст для опису зображення слабозорим користувачам"
+        "description": "Текст, що описує зображення для незрячих користувачів."
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "Кіт переслідує маленьку іграшку",
-        "topText": "Я приношу тобі",
+        "alt": "Кіт підкрадається до маленької іграшки",
+        "topText": "Я несу вам",
         "bottomText": "смерть"
       }
     }

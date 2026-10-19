@@ -5,5 +5,6 @@
   "systemAudio": "Включване на системния звук",
   "microphoneAudio": "Включване на микрофон",
   "recordingStarted": "Записът започна",
-  "recordingStopped": "Записът спря"
+  "recordingStopped": "Записът спря",
+  "audioOptions": "Настройки на звука"
 }

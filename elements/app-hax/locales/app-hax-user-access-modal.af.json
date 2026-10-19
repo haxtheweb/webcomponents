@@ -1,0 +1,11 @@
+{
+  "userAccess": "Gebruikerstoegang",
+  "enterUsername": "Voer gebruikersnaam in om toegang te verleen",
+  "usernamePlaceholder": "Gebruikersnaam",
+  "addUser": "Voeg gebruiker by",
+  "cancel": "Kanselleer",
+  "userAccessGranted": "Gebruikerstoegang suksesvol verleen!",
+  "userNotFound": "Gebruiker nie gevind nie of ongemagtig",
+  "loadingAddingUser": "Voeg tans gebruiker by...",
+  "grantAccessTo": "Verleen toegang aan:"
+}

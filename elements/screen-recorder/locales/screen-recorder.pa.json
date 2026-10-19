@@ -5,5 +5,6 @@
   "systemAudio": "ਸਿਸਟਮ ਆਡਿਓ ਸ਼ਾਮਲ ਕਰੋ",
   "microphoneAudio": "ਮਾਈਕਰੋਫ਼ੋਨ ਸ਼ਾਮਲ ਕਰੋ",
   "recordingStarted": "ਰਿਕਾਰਡਿੰਗ ਸ਼ੁਰੂ ਹੋਈ",
-  "recordingStopped": "ਰਿਕਾਰਡਿੰਗ ਰੋਕ ਦਿੱਤੀ ਗਈ"
+  "recordingStopped": "ਰਿਕਾਰਡਿੰਗ ਰੋਕ ਦਿੱਤੀ ਗਈ",
+  "audioOptions": "ਆਡੀਓ ਵਿਕਲਪ"
 }

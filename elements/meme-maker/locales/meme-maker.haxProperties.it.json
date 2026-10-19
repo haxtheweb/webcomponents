@@ -1,33 +1,36 @@
 {
   "gizmo": {
     "title": "Meme",
-    "description": "Crea un meme da un'immagine"
+    "description": "Crea un meme da un'immagine."
   },
   "settings": {
     "configure": [
       {
-        "title": "Fonte",
-        "description": "L'URL di origine dell'elemento che viene citato"
+        "property": "imageUrl",
+        "title": "Origine",
+        "description": "URL di origine dell'immagine del meme."
       },
       {
+        "property": "topText",
         "title": "Testo superiore",
-        "description": "Testo superiore del meme"
+        "description": "Testo superiore del meme."
       },
       {
+        "property": "bottomText",
         "title": "Testo inferiore",
-        "description": "Testo inferiore del meme"
+        "description": "Testo inferiore del meme."
       },
       {
+        "property": "alt",
         "title": "Testo alternativo",
-        "description": "Testo per descrivere l'immagine agli utenti non vedenti"
+        "description": "Testo che descrive l'immagine agli utenti non vedenti."
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "Gatto che insegue un piccolo giocattolo",
+        "alt": "Gatto che punta un piccolo giocattolo",
         "topText": "Ti porto",
         "bottomText": "la morte"
       }

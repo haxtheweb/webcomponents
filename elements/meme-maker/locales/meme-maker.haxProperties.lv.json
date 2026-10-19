@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mēms",
+    "description": "Izveidojiet mēmu no attēla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Avots",
+        "description": "Mēma attēla avota URL."
+      },
+      {
+        "property": "topText",
+        "title": "Augšējais teksts",
+        "description": "Mēma augšējais teksts."
+      },
+      {
+        "property": "bottomText",
+        "title": "Apakšējais teksts",
+        "description": "Mēma apakšējais teksts."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatīvais teksts",
+        "description": "Teksts, kas apraksta attēlu neredzīgiem lietotājiem."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kaķis lavās pie mazas rotaļlietas",
+        "topText": "Es jums nesu",
+        "bottomText": "nāvi"
+      }
+    }
+  ]
+}

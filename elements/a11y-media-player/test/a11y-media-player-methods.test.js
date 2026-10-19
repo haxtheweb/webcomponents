@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
 import "../a11y-media-player.js";
 import { installOfflineYouTubeStubs } from "./offline-stubs.js";
@@ -459,7 +459,13 @@ describe("a11y-media-player seek handlers and slider", () => {
     el.__loadedTracks = fake;
     await el.updateComplete;
     el._handleTimeUpdate();
-    await sleep(80);
+    // the adoption happens in a rAF callback, which only fires when the page
+    // produces a frame; poll instead of a fixed sleep that flakes under load
+    await waitUntil(
+      () => el.__currentTime === 10,
+      "timeupdate rAF never adopted the media time",
+      { interval: 20, timeout: 5000 },
+    );
     expect(el.__currentTime).to.equal(10);
   });
 
@@ -534,7 +540,14 @@ describe("a11y-media-player cue seek handlers", () => {
       html`<a11y-media-player youtube-id="abc123"></a11y-media-player>`,
     );
     await el.updateComplete;
-    await sleep(100);
+    // the youtube child only renders on the player's second update, and its
+    // player builds during that child's first update; wait for it rather than
+    // a fixed sleep that flakes under load
+    await waitUntil(
+      () => el.youtube && el.youtube.__yt,
+      "youtube child player never initialized",
+      { interval: 20, timeout: 5000 },
+    );
     // a real duration keeps seek() from clamping to 0
     el.youtube.__yt.durationVal = 100;
   });

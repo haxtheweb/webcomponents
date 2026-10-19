@@ -1,0 +1,11 @@
+{
+  "userAccess": "ສິດເຂົ້າເຖິງຂອງຜູ້ໃຊ້",
+  "enterUsername": "ປ້ອນຊື່ຜູ້ໃຊ້ເພື່ອໃຫ້ສິດເຂົ້າເຖິງ",
+  "usernamePlaceholder": "ຊື່ຜູ້ໃຊ້",
+  "addUser": "ເພີ່ມຜູ້ໃຊ້",
+  "cancel": "ຍົກເລີກ",
+  "userAccessGranted": "ໃຫ້ສິດເຂົ້າເຖິງແກ່ຜູ້ໃຊ້ສຳເລັດແລ້ວ!",
+  "userNotFound": "ບໍ່ພົບຜູ້ໃຊ້ ຫຼື ບໍ່ມີສິດ",
+  "loadingAddingUser": "ກຳລັງເພີ່ມຜູ້ໃຊ້...",
+  "grantAccessTo": "ໃຫ້ສິດເຂົ້າເຖິງແກ່:"
+}

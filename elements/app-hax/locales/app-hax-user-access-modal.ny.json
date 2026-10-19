@@ -1,0 +1,11 @@
+{
+  "userAccess": "Mwayi wa ogwiritsa ntchito",
+  "enterUsername": "Lowetsani dzina la wogwiritsa ntchito kuti mumupatse mwayi",
+  "usernamePlaceholder": "Dzina la wogwiritsa ntchito",
+  "addUser": "Onjezani wogwiritsa ntchito",
+  "cancel": "Letsani",
+  "userAccessGranted": "Mwayi waperekedwa bwino!",
+  "userNotFound": "Wogwiritsa ntchito sanapezeke kapena alibe chilolezo",
+  "loadingAddingUser": "Akuwonjezera wogwiritsa ntchito...",
+  "grantAccessTo": "Patsani mwayi kwa:"
+}

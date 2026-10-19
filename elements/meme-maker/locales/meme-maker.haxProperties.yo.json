@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mííìmù",
+    "description": "Ṣe mííìmù láti inú àwòrán kan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Orísun",
+        "description": "URL orísun fún àwòrán mííìmù."
+      },
+      {
+        "property": "topText",
+        "title": "Ọ̀rọ̀ òkè",
+        "description": "Ọ̀rọ̀ òkè mííìmù náà."
+      },
+      {
+        "property": "bottomText",
+        "title": "Ọ̀rọ̀ ìsàlẹ̀",
+        "description": "Ọ̀rọ̀ ìsàlẹ̀ mííìmù náà."
+      },
+      {
+        "property": "alt",
+        "title": "Ọ̀rọ̀ àfidípò",
+        "description": "Ọ̀rọ̀ láti ṣàpèjúwe àwòrán fún àwọn olùmúlò tí kò ríran."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Ológbò ń yọ́ tẹ̀lé ohun ìṣeré kékeré kan",
+        "topText": "Mo mú wá fún ọ",
+        "bottomText": "ikú"
+      }
+    }
+  ]
+}

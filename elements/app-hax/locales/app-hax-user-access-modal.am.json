@@ -1,0 +1,11 @@
+{
+  "userAccess": "የተጠቃሚ መዳረሻ",
+  "enterUsername": "መዳረሻ ለመስጠት የተጠቃሚ ስም ያስገቡ",
+  "usernamePlaceholder": "የተጠቃሚ ስም",
+  "addUser": "ተጠቃሚ አክል",
+  "cancel": "ሰርዝ",
+  "userAccessGranted": "የተጠቃሚ መዳረሻ በተሳካ ሁኔታ ተሰጥቷል!",
+  "userNotFound": "ተጠቃሚው አልተገኘም ወይም ፈቃድ የለውም",
+  "loadingAddingUser": "ተጠቃሚ በማከል ላይ...",
+  "grantAccessTo": "መዳረሻ ስጥ ለ:"
+}

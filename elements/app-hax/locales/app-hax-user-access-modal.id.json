@@ -1,0 +1,11 @@
+{
+  "userAccess": "Akses Pengguna",
+  "enterUsername": "Masukkan nama pengguna untuk memberikan akses",
+  "usernamePlaceholder": "Nama pengguna",
+  "addUser": "Tambah Pengguna",
+  "cancel": "Batal",
+  "userAccessGranted": "Akses pengguna berhasil diberikan!",
+  "userNotFound": "Pengguna tidak ditemukan atau tidak berwenang",
+  "loadingAddingUser": "Menambahkan pengguna...",
+  "grantAccessTo": "Berikan akses kepada:"
+}

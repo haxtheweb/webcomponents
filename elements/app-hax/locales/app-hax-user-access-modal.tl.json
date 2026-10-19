@@ -1,0 +1,11 @@
+{
+  "userAccess": "Access ng User",
+  "enterUsername": "Ilagay ang username para bigyan ng access",
+  "usernamePlaceholder": "Username",
+  "addUser": "Magdagdag ng User",
+  "cancel": "Kanselahin",
+  "userAccessGranted": "Matagumpay na nabigyan ng access ang user!",
+  "userNotFound": "Hindi nahanap ang user o walang pahintulot",
+  "loadingAddingUser": "Idinadagdag ang user...",
+  "grantAccessTo": "Bigyan ng access si:"
+}

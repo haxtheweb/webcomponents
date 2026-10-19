@@ -1,34 +1,37 @@
 {
   "gizmo": {
     "title": "મીમ",
-    "description": "એક છબીમાંથી મીમ બનાવો"
+    "description": "છબીમાંથી મીમ બનાવો."
   },
   "settings": {
     "configure": [
       {
+        "property": "imageUrl",
         "title": "સ્રોત",
-        "description": "તત્વ માટે સ્રોત URL કે જે ટાંકવામાં આવે છે"
+        "description": "મીમ છબી માટેનું સ્રોત URL."
       },
       {
+        "property": "topText",
         "title": "ઉપરનું લખાણ",
-        "description": "મીમનું ઉપરનું લખાણ"
+        "description": "મીમનું ઉપરનું લખાણ."
       },
       {
+        "property": "bottomText",
         "title": "નીચેનું લખાણ",
-        "description": "મીમનું નીચેનું લખાણ"
+        "description": "મીમનું નીચેનું લખાણ."
       },
       {
+        "property": "alt",
         "title": "વૈકલ્પિક લખાણ",
-        "description": "દૃષ્ટિહીન વપરાશકર્તાઓ માટે છબીનું વર્ણન કરવા માટે લખાણ"
+        "description": "દૃષ્ટિહીન વપરાશકર્તાઓ માટે છબીનું વર્ણન કરતું લખાણ."
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {
       "properties": {
-        "alt": "નાનકડા રમકડાનો પીછો કરતી બિલાડી",
-        "topText": "હું તમારા માટે લાવું છું",
+        "alt": "નાના રમકડાનો શિકાર કરતી બિલાડી",
+        "topText": "હું તારા માટે લાવી છું",
         "bottomText": "મૃત્યુ"
       }
     }

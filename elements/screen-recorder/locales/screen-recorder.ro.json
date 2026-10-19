@@ -5,5 +5,6 @@
   "systemAudio": "Include sunetul sistemului",
   "microphoneAudio": "Include microfonul",
   "recordingStarted": "Înregistrarea a început",
-  "recordingStopped": "Înregistrarea s-a oprit"
+  "recordingStopped": "Înregistrarea s-a oprit",
+  "audioOptions": "Opțiuni audio"
 }

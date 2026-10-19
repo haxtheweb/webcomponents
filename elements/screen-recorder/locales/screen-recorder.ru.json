@@ -5,5 +5,6 @@
   "systemAudio": "Включить системный звук",
   "microphoneAudio": "Включить микрофон",
   "recordingStarted": "Запись начата",
-  "recordingStopped": "Запись остановлена"
+  "recordingStopped": "Запись остановлена",
+  "audioOptions": "Параметры звука"
 }

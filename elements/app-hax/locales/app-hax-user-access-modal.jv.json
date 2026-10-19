@@ -1,0 +1,11 @@
+{
+  "userAccess": "Akses Panganggo",
+  "enterUsername": "Lebokna jeneng panganggo kanggo menehi akses",
+  "usernamePlaceholder": "Jeneng panganggo",
+  "addUser": "Tambah Panganggo",
+  "cancel": "Batal",
+  "userAccessGranted": "Akses panganggo kasil diwenehake!",
+  "userNotFound": "Panganggo ora ketemu utawa ora duwe wewenang",
+  "loadingAddingUser": "Lagi nambahake panganggo...",
+  "grantAccessTo": "Wenehi akses marang:"
+}

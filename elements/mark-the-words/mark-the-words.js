@@ -15,6 +15,11 @@ export class MarkTheWords extends QuestionElement {
 
   constructor() {
     super();
+    // QuestionElement's shared strings live in each question type's own namespace
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.guessDataValue = "displayedAnswers";
     this.displayedAnswers = [];
     this.wordList = [];

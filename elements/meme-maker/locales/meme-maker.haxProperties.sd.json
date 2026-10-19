@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "ميم",
+    "description": "تصوير مان ميم ٺاهيو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "ذريعو",
+        "description": "ميم تصوير جو ذريعو URL."
+      },
+      {
+        "property": "topText",
+        "title": "مٿيون متن",
+        "description": "ميم جو مٿيون متن."
+      },
+      {
+        "property": "bottomText",
+        "title": "هيٺيون متن",
+        "description": "ميم جو هيٺيون متن."
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "نابين استعمال ڪندڙن لاءِ تصوير بيان ڪرڻ وارو متن."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "ٻلي ننڍي رانديڪي جي تاڙ ۾",
+        "topText": "مان توهان لاءِ آڻيان ٿو",
+        "bottomText": "موت"
+      }
+    }
+  ]
+}

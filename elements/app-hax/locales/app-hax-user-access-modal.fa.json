@@ -1,0 +1,11 @@
+{
+  "userAccess": "دسترسی کاربر",
+  "enterUsername": "نام کاربری را برای اعطای دسترسی وارد کنید",
+  "usernamePlaceholder": "نام کاربری",
+  "addUser": "افزودن کاربر",
+  "cancel": "لغو",
+  "userAccessGranted": "دسترسی کاربر با موفقیت اعطا شد!",
+  "userNotFound": "کاربر یافت نشد یا مجاز نیست",
+  "loadingAddingUser": "در حال افزودن کاربر...",
+  "grantAccessTo": "اعطای دسترسی به:"
+}
