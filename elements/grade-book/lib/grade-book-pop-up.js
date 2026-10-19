@@ -81,9 +81,12 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
         }
         .active-submission {
           overflow: hidden;
-          /* 16:9 aspect ratio */
-          padding-top: 56.25%;
           position: relative;
+        }
+        /* video / iframe submissions keep a 16:9 frame; markdown
+           submissions flow at their natural height */
+        .active-submission.video {
+          aspect-ratio: var(--ddd-aspect-video, 16 / 9);
         }
 
         .active-submission iframe {
@@ -137,7 +140,7 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
         >
           <button>${this.t.openInNewWindow}</button></a
         >
-        <div class="active-submission">
+        <div class="active-submission video">
           <iframe
             width="560"
             height="315"

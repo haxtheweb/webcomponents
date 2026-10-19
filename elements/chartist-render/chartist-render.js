@@ -398,19 +398,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-square:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 100%;
-          }
-          .ct-square:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: var(--ddd-aspect-square, 1 / 1);
           }
           .ct-square > svg {
             display: block;
@@ -423,19 +411,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-minor-second:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 93.75%;
-          }
-          .ct-minor-second:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 16 / 15;
           }
           .ct-minor-second > svg {
             display: block;
@@ -448,19 +424,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-major-second:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 88.88889%;
-          }
-          .ct-major-second:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 9 / 8;
           }
           .ct-major-second > svg {
             display: block;
@@ -473,19 +437,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-minor-third:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 83.33333%;
-          }
-          .ct-minor-third:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 6 / 5;
           }
           .ct-minor-third > svg {
             display: block;
@@ -498,19 +450,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-major-third:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 80%;
-          }
-          .ct-major-third:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 5 / 4;
           }
           .ct-major-third > svg {
             display: block;
@@ -523,19 +463,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-perfect-fourth:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 75%;
-          }
-          .ct-perfect-fourth:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: var(--ddd-aspect-standard, 4 / 3);
           }
           .ct-perfect-fourth > svg {
             display: block;
@@ -548,19 +476,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-perfect-fifth:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 66.66667%;
-          }
-          .ct-perfect-fifth:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 3 / 2;
           }
           .ct-perfect-fifth > svg {
             display: block;
@@ -573,19 +489,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-minor-sixth:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 62.5%;
-          }
-          .ct-minor-sixth:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 8 / 5;
           }
           .ct-minor-sixth > svg {
             display: block;
@@ -598,19 +502,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-golden-section:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 61.8047%;
-          }
-          .ct-golden-section:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 1.618 / 1;
           }
           .ct-golden-section > svg {
             display: block;
@@ -623,19 +515,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-major-sixth:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 60%;
-          }
-          .ct-major-sixth:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 5 / 3;
           }
           .ct-major-sixth > svg {
             display: block;
@@ -648,19 +528,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-minor-seventh:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 56.25%;
-          }
-          .ct-minor-seventh:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: var(--ddd-aspect-video, 16 / 9);
           }
           .ct-minor-seventh > svg {
             display: block;
@@ -673,19 +541,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-major-seventh:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 53.33333%;
-          }
-          .ct-major-seventh:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 15 / 8;
           }
           .ct-major-seventh > svg {
             display: block;
@@ -698,19 +554,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-octave:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 50%;
-          }
-          .ct-octave:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 2 / 1;
           }
           .ct-octave > svg {
             display: block;
@@ -723,19 +567,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-major-tenth:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 40%;
-          }
-          .ct-major-tenth:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 5 / 2;
           }
           .ct-major-tenth > svg {
             display: block;
@@ -748,19 +580,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-major-eleventh:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 37.5%;
-          }
-          .ct-major-eleventh:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 8 / 3;
           }
           .ct-major-eleventh > svg {
             display: block;
@@ -773,19 +593,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-major-twelfth:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 33.33333%;
-          }
-          .ct-major-twelfth:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 3 / 1;
           }
           .ct-major-twelfth > svg {
             display: block;
@@ -798,19 +606,7 @@ const ChartistRenderSuper = function (SuperClass) {
             display: block;
             position: relative;
             width: 100%;
-          }
-          .ct-double-octave:before {
-            display: block;
-            float: left;
-            content: "";
-            width: 0;
-            height: 0;
-            padding-bottom: 25%;
-          }
-          .ct-double-octave:after {
-            content: "";
-            display: table;
-            clear: both;
+            aspect-ratio: 4 / 1;
           }
           .ct-double-octave > svg {
             display: block;
