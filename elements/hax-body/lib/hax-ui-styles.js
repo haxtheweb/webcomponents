@@ -328,7 +328,7 @@ export const HaxHexagon = [
     }
     hexagon-loader[loading] {
       display: block;
-      opacity: 0.8;
+      opacity: var(--ddd-opacity-80, 0.8);
     }
   `,
 ];

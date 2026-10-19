@@ -1054,7 +1054,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           );
           background: transparent;
           cursor: pointer;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           min-height: var(--ddd-spacing-8, 32px);
           box-sizing: border-box;
           position: relative;
@@ -1160,7 +1160,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           border-color: var(--ddd-theme-default-slateGray, #666);
           background: var(--ddd-theme-default-white, white);
           color: var(--ddd-theme-default-coalyGray, #222);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           box-sizing: border-box;
           font-family: var(--ddd-font-primary, sans-serif);
           margin: 0;
@@ -1215,7 +1215,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           margin-bottom: 0;
           box-sizing: border-box;
           font-family: var(--ddd-font-primary, sans-serif);
-          transition: box-shadow 0.3s ease-in-out;
+          transition: box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
         :host([dark]) .filter,
         body.dark-mode .filter {
@@ -1241,7 +1241,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           font-weight: var(--ddd-font-weight-medium, 500);
           cursor: pointer;
           box-shadow: var(--ddd-boxShadow-sm);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           outline: none;
           min-height: var(--ddd-spacing-7, 28px);
           text-align: left;
@@ -1385,7 +1385,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           gap: var(--ddd-spacing-1, 4px);
           box-shadow: var(--ddd-boxShadow-sm);
           cursor: pointer;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           min-height: var(--ddd-spacing-7, 28px);
         }
         .reset-button:hover,

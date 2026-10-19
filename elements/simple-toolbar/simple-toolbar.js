@@ -49,7 +49,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             font-size: inherit;
             margin: 0;
             padding: 0;
-            transition: all 0.6s ease-in-out;
+            transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
             transition: z-index 0s;
           }
           :host([hidden]) {
@@ -59,7 +59,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             height: 0;
           }
           :host([disabled]) {
-            opacity: 0.6;
+            opacity: var(--ddd-opacity-60, 0.6);
             pointer-events: none;
           }
           :host(:focus-within) {

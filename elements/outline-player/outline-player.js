@@ -124,7 +124,7 @@ class OutlinePlayer extends SchemaBehaviors(
           margin: 40px;
           padding: 0 16px 16px 16px;
           flex: none;
-          transition: 0.6s opacity ease-in-out;
+          transition: var(--ddd-duration-slow, 0.6s) opacity ease-in-out;
           background-color: light-dark(#ffffff, var(--ddd-primary-4));
           color: inherit;
           border-radius: 4px;
@@ -157,7 +157,7 @@ class OutlinePlayer extends SchemaBehaviors(
           overflow-y: auto;
           box-shadow: 0 0 6px -3px var(--outline-player-dark);
           z-index: 1000000;
-          transition: width 0.3s ease;
+          transition: width var(--ddd-duration-normal, 0.3s) ease;
           background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
@@ -172,7 +172,7 @@ class OutlinePlayer extends SchemaBehaviors(
             bottom: 0;
             width: 300px;
             transform: translateX(-100%);
-            transition: transform 0.3s ease;
+            transition: transform var(--ddd-duration-normal, 0.3s) ease;
             height: 100vh;
             overflow-y: auto;
           }
@@ -187,7 +187,7 @@ class OutlinePlayer extends SchemaBehaviors(
             z-index: 999999;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity var(--ddd-duration-normal, 0.3s) ease;
           }
           .scrim.opened {
             opacity: 1;

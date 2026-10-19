@@ -40,7 +40,7 @@ class SiteDotIndicator extends LitElement {
           margin-left: 0;
         }
         li {
-          transition: 0.3s all ease-in-out;
+          transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
           display: inline-block;
           width: 10px;
           height: 10px;

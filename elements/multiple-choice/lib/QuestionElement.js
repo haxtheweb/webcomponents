@@ -433,7 +433,7 @@ export class QuestionElement extends SchemaBehaviors(
           border: var(--ddd-border-md);
           border-radius: var(--ddd-radius-sm);
           box-shadow: var(--ddd-boxShadow-sm);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           --simple-fields-background-color: transparent;
           --simple-toolbar-button-border-color: var(
             --simple-colors-default-theme-grey-4
@@ -483,14 +483,14 @@ export class QuestionElement extends SchemaBehaviors(
         }
         grid-plate {
           view-transition-name: grid-shift;
-          transition: 0.3s ease-in-out height;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in-out height;
         }
         details {
           max-width: unset;
         }
         details[open] {
           view-transition-name: details-open;
-          transition: 0.3s ease-in-out height;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in-out height;
         }
         details[open] p {
           padding: var(--ddd-spacing-2);
@@ -596,7 +596,7 @@ export class QuestionElement extends SchemaBehaviors(
         simple-toolbar-button {
           font-size: var(--ddd-font-size-xs);
           font-family: var(--ddd-font-navigation);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           border: none;
           border-radius: var(--ddd-radius-xs);
         }

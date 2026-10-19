@@ -40,7 +40,7 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
           background-color: var(--simple-colors-default-theme-accent-color-3);
           color: var(--simple-colors-default-theme-accent-color-12);
           border-color: var(--simple-colors-default-theme-accent-color-12);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         .all-tags {

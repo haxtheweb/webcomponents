@@ -114,8 +114,8 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
           white-space: nowrap;
           text-overflow: ellipsis;
           transition:
-            font 0.3s ease-in-out,
-            border 0.3s ease-in-out;
+            font var(--ddd-duration-normal, 0.3s) ease-in-out,
+            border var(--ddd-duration-normal, 0.3s) ease-in-out;
           border-left: rgba(0, 0, 0, 0.1) 1px solid;
         }
         .link:not(.active):hover {

@@ -95,7 +95,7 @@ export const SimpleFieldsLabelStyles = [
     :host([focused]) .label-main,
     :host(:focus-within) .label-main {
       color: var(--simple-fields-accent-color, #3f51b5);
-      transition: color 0.3s ease-in-out;
+      transition: color var(--ddd-duration-normal, 0.3s) ease-in-out;
       font-weight: var(--ddd-font-weight-bold);
     }
     .label-main {
@@ -315,7 +315,7 @@ export const SimpleFieldsRowStyles = [
         --simple-fields-row-hover-background-color,
         light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12))
       );
-      transition: background-color 0.3s ease-in-out;
+      transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
     }
     :host([row-layout]:focus-within) {
       outline: var(--simple-fields-row-focus-outline-width, 1px) solid
@@ -324,7 +324,7 @@ export const SimpleFieldsRowStyles = [
           var(--simple-fields-accent-color, #3f51b5)
         );
       outline-offset: -1px;
-      transition: outline-color 0.3s ease-in-out;
+      transition: outline-color var(--ddd-duration-normal, 0.3s) ease-in-out;
     }
     /* Ubuntu-style settings rows are start-aligned (issue #2996).
        The pre-existing .inline label rule sets text-align to
@@ -376,7 +376,7 @@ export const SimpleFieldsFieldsetStyles = [
         var(--simple-fields-border-color-light, #ccc)
       );
       border-radius: var(--simple-fields-border-radius, 4px);
-      transition: all 0.3s ease-in-out;
+      transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
       max-width: calc(100% - 2 * var(--simple-fields-margin, 16px) - 2px);
     }
     :host(:last-of-type) {
@@ -393,7 +393,7 @@ export const SimpleFieldsFieldsetStyles = [
     }
     :host([error]) *[part="legend"] {
       color: var(--simple-fields-error-color, #b40000);
-      transition: all 0.3s ease-in-out;
+      transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
     }
   `,
 ];

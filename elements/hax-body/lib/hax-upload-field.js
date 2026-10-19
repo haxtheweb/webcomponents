@@ -217,7 +217,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           color: var(--ddd-theme-default-skyBlue);
         }
         .rec-chip:disabled {
-          opacity: 0.6;
+          opacity: var(--ddd-opacity-60, 0.6);
           cursor: default;
         }
         .rec-more {

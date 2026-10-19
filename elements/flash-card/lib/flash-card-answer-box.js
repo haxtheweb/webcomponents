@@ -184,6 +184,17 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
           var(--ddd-theme-default-linkLight)
         );
         outline-offset: 0;
+        color: var(--lowContrast-override, var(--ddd-theme-bgContrast, white));
+        font-size: var(--ddd-font-size-s);
+        font-family: var(--ddd-font-navigation);
+        margin: none;
+        padding: var(--ddd-spacing-2);
+        border-radius: 0 var(--ddd-radius-md) var(--ddd-radius-md) 0;
+        border: var(--ddd-border-sm);
+        overflow: hidden;
+        width: 50em;
+        height: 45px;
+        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
       }
       input:disabled:not(.correct):not(.incorrect) {
         opacity: 0.7;
@@ -240,15 +251,27 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
       simple-toolbar-button {
         font-size: var(--ddd-font-size-xs);
         font-family: var(--ddd-font-navigation);
-        transition: all 0.3s ease-in-out;
-        border: none;
-        border-radius: var(--ddd-radius-xs);
-        background-color: var(
-          --ddd-theme-primary,
-          var(--ddd-theme-default-link)
+        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+      }
+      .retry simple-icon-button-lite:hover,
+      .retry simple-icon-button-lite:focus {
+        box-shadow: var(--ddd-boxShadow-sm);
+        border-color: light-dark(
+          var(--ddd-theme-default-wonderPurple),
+          var(--ddd-theme-default-linkLight)
+        );
+        /* accent1/accent8 were undefined token names; the defined accent
+           palette tokens preserve the intended subtle hover tint */
+        background-color: light-dark(
+          var(--ddd-accent-1),
+          var(--ddd-accent-8)
         );
         color: var(--lowContrast-override, var(--ddd-theme-bgContrast, white));
       }
+      button:hover {
+        opacity: var(--ddd-opacity-80, 0.8);
+      }
+      button:disabled,
       simple-toolbar-button[disabled] {
         background-color: light-dark(
           var(--ddd-theme-default-limestoneLight),

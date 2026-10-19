@@ -47,7 +47,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
           cursor: pointer;
           transition:
             color,
-            outline 0.3s ease-in-out;
+            outline var(--ddd-duration-normal, 0.3s) ease-in-out;
           outline: 2px transparent;
           min-width: unset;
           background-color: var(
@@ -80,7 +80,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
         simple-icon-lite {
           display: block;
           font-size: 16px;
-          transition: 0.3s color ease;
+          transition: var(--ddd-duration-normal, 0.3s) color ease;
           --simple-icon-width: var(--site-menu-button-icon-width, 32px);
           --simple-icon-height: var(--site-menu-button-icon-height, 32px);
           color: var(--site-menu-button-icon-fill-color, light-dark(

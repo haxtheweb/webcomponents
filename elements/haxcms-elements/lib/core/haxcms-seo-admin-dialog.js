@@ -229,7 +229,7 @@ class HAXCMSSEOAdminDialog extends DDD {
           outline: 2px solid var(--ddd-theme-default-keystoneYellow);
         }
         button.action[disabled] {
-          opacity: 0.6;
+          opacity: var(--ddd-opacity-60, 0.6);
           cursor: not-allowed;
         }
         simple-fields {

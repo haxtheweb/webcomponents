@@ -670,7 +670,7 @@ class GradeBookLite extends UIRenderPieces(
           margin: 2px;
         }
         .active-student-grade-history button {
-          opacity: 0.4;
+          opacity: var(--ddd-opacity-40, 0.4);
           background-color: transparent;
           border: 0;
           padding: 0;
@@ -876,7 +876,7 @@ class GradeBookLite extends UIRenderPieces(
         .col-highlight,
         tr:hover td,
         tr:hover th {
-          transition: 0.3s ease-in-out all;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in-out all;
           background-color: var(
             --simple-colors-default-theme-yellow-2
           ) !important;

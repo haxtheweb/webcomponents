@@ -2816,8 +2816,8 @@
       },
       "tooltip": {
         "$type": "number",
-        "$value": 500,
-        "$description": "Tooltips and popovers",
+        "$value": 10100,
+        "$description": "Tooltips and popovers, above modals",
         "$extensions": {
           "org.haxtheweb.ddd": {
             "cssVar": "--ddd-z-tooltip"

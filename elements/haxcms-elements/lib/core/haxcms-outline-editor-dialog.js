@@ -60,7 +60,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           border-radius: var(--ddd-radius-sm);
           font-family: var(--ddd-font-navigation);
           cursor: pointer;
-          transition: background-color 0.3s ease;
+          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
         }
         button.hax-modal-btn.import {
           margin-left: var(--ddd-spacing-3);

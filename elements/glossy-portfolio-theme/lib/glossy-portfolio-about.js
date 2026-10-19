@@ -104,7 +104,7 @@ export class GlossyPortfolioAbout extends DDDSuper(I18NMixin(LitElement)) {
         font-size: var(--ddd-font-size-xxs, 20px);
         letter-spacing: 0.6px;
         color: #FFFFFF;
-        opacity: 0.8;
+        opacity: var(--ddd-opacity-80, 0.8);
         line-height: 150%;
       }
 
@@ -149,7 +149,7 @@ export class GlossyPortfolioAbout extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--ddd-font-size-4xs, 16px);
           letter-spacing: 0.6px;
           color: #FFFFFF;
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
           line-height: 150%;
         }
       

@@ -23,7 +23,7 @@ class PlaceHolder extends DDD {
         :host {
           display: block;
           border: none;
-          transition: 0.3s all linear;
+          transition: var(--ddd-duration-normal, 0.3s) all linear;
         }
         :host([drag-over]) {
           border: var(

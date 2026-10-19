@@ -106,7 +106,7 @@ class ChatSuggestion extends DDD {
         :host([disabled]) .chat-suggestion-wrapper {
           background-color: var(--ddd-theme-default-discoveryCoral);
           cursor: default;
-          opacity: 0.6;
+          opacity: var(--ddd-opacity-60, 0.6);
         }
 
         :host([chosen-prompt]) .chat-suggestion-wrapper {

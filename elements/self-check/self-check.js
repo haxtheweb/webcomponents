@@ -61,11 +61,11 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         :host([correct]) {
-          animation: answerReveal 0.6s ease-in-out;
+          animation: answerReveal var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         :host([hidden]),
         *[hidden] {
@@ -79,7 +79,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-lg);
           box-shadow: var(--ddd-boxShadow-sm);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         :host([correct]) div.card {
@@ -96,7 +96,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           width: var(--ddd-icon-xl);
           margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
           padding: var(--ddd-spacing-1);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           color: light-dark(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
@@ -258,7 +258,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           width: 100%;
           top: 0;
           left: calc(100%);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           position: absolute;
           border-left: 4px solid var(--ddd-theme-default-opportunityGreen);
         }
@@ -268,7 +268,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           opacity: 1;
           position: relative;
           left: 0;
-          animation: slideInAnswer 0.3s ease-out;
+          animation: slideInAnswer var(--ddd-duration-normal, 0.3s) ease-out;
         }
 
         /* Animations for smooth answer reveal */

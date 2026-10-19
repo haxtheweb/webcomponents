@@ -80,7 +80,7 @@ export class LrnH5p extends LitElement {
           left: 0;
           top: 0;
           transform: translateY(-100%);
-          transition: transform 0.3s ease-in-out;
+          transition: transform var(--ddd-duration-normal, 0.3s) ease-in-out;
           /* material blue chip migrates to the DDD link tokens */
           background: var(--ddd-theme-default-link);
           color: var(--ddd-theme-default-white);

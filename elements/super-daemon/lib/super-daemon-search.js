@@ -459,8 +459,8 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
             );
           border-radius: var(--ddd-drop-zone-radius, 0);
           transition:
-            outline 0.15s ease-in-out,
-            background-color 0.15s ease-in-out;
+            outline var(--ddd-duration-fast, 0.15s) ease-in-out,
+            background-color var(--ddd-duration-fast, 0.15s) ease-in-out;
         }
         :host(.window-file-drag),
         :host(.window-file-drag) .voice,
@@ -488,7 +488,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           --simple-icon-width: 100px;
           --simple-icon-button-border-radius: 0;
           color: var(--simple-colors-default-theme-grey-10, grey);
-          transition: color 0.6s ease-in-out;
+          transition: color var(--ddd-duration-slow, 0.6s) ease-in-out;
           margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-1);
         }
         :host([mini]) .voice {

@@ -197,7 +197,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         left: 0;
         right: 0;
         z-index: 10;
-        transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out, border-color var(--ddd-duration-normal, 0.3s) ease-in-out;
       }
       
       /* Adjust header position when user is logged in to accommodate HAX editing bar */
@@ -292,14 +292,14 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         border-radius: 2rem;
         width: 100%;
         background-color: var(--spacebook-theme-bg-gray-50);
-        opacity: 0.8;
-        transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        opacity: var(--ddd-opacity-80, 0.8);
+        transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out, opacity var(--ddd-duration-normal, 0.3s) ease-in-out;
       }
 
       .header-buttons:hover {
         background-color: var(--spacebook-theme-bg-gray-100);
         opacity: 1;
-        transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out, opacity var(--ddd-duration-normal, 0.3s) ease-in-out;
       }
 
       :host([dark-mode]) .header-buttons {
@@ -390,7 +390,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         width: 16rem;
         background-color: var(--spacebook-theme-bg-white);
         border-right: 1px solid var(--spacebook-theme-border-gray-100);
-        transition: left 0.3s ease;
+        transition: left var(--ddd-duration-normal, 0.3s) ease;
         overflow-x: hidden;
         overflow-y: auto;
         padding: 1.5rem 1rem;
@@ -490,7 +490,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         z-index: 4;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
+        transition: opacity var(--ddd-duration-normal, 0.3s) ease, visibility var(--ddd-duration-normal, 0.3s) ease;
       }
       
       :host([mobile-nav-open]) .mobile-nav-overlay {
@@ -508,7 +508,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       .main-content {
         padding-top: 4em;
         min-height: 100vh;
-        transition: transform 0.3s ease;
+        transition: transform var(--ddd-duration-normal, 0.3s) ease;
         overflow-x: hidden;
       }
       

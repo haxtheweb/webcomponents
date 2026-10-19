@@ -43,7 +43,7 @@ class MapMenuSubmenu extends LitElement {
         }
 
         #container ::slotted(map-menu-builder)::after {
-          transition: 0.3s ease-in-out all;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in-out all;
         }
         :host([opened]) #container ::slotted(map-menu-builder)::after {
           display: block;
@@ -58,7 +58,7 @@ class MapMenuSubmenu extends LitElement {
             );
         }
         a11y-collapse::before {
-          transition: 0.3s ease-in-out all;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in-out all;
         }
         :host([opened]) a11y-collapse::before {
           display: block;

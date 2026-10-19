@@ -144,7 +144,7 @@ class RpgCharacter extends SimpleColors {
           text-align: initial;
         }
         div {
-          transition: 0.3s ease-in-out background-color;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in-out background-color;
           margin: 0;
           padding: 0;
           text-align: initial;

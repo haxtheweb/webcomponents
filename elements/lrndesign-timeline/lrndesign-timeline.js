@@ -126,7 +126,7 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
 
         .media-outer > div {
           opacity: 1;
-          transition: opacity 0.6s;
+          transition: opacity var(--ddd-duration-slow, 0.6s);
         }
 
         .media-outer > div,
@@ -201,7 +201,7 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
             border-top: 0px solid transparent;
             border-bottom: 0px solid transparent;
             border-left: 0px solid transparent;
-            transition: all 0.3s;
+            transition: all var(--ddd-duration-normal, 0.3s);
           }
 
           :host(:not([timeline-size="xs"]))
@@ -239,7 +239,7 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
             height: 50px;
             opacity: 0;
             width: 0px;
-            transition: opacity 0.3s;
+            transition: opacity var(--ddd-duration-normal, 0.3s);
             background-color: var(--lrndesign-timeline-background);
           }
 
@@ -265,7 +265,7 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
             display: flex;
             padding: 20px 20px 20px 50px;
             opacity: 0;
-            transition: opacity 0.3s delay 0.3s;
+            transition: opacity var(--ddd-duration-normal, 0.3s) delay var(--ddd-duration-normal, 0.3s);
           }
 
           :host(:not([timeline-size="xs"]))
@@ -283,7 +283,7 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
             background-color: var(--lrndesign-timeline-background);
             border: 1px solid var(--lrndesign-timeline-background);
             border-radius: 3px;
-            transition: all 0.6s ease-in-out;
+            transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
           }
 
           :host(:not([timeline-size="xs"])) .event:last-of-type .details {

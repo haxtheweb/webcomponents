@@ -200,7 +200,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         }
 
         :host([edit-mode]) .drawer {
-          opacity: 0.2;
+          opacity: var(--ddd-opacity-20, 0.2);
           pointer-events: none;
         }
 
@@ -216,7 +216,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           width: 300px;
           height: 100vh;
           overflow-y: auto;
-          transition: 0.3s linear all;
+          transition: var(--ddd-duration-normal, 0.3s) linear all;
           box-shadow: var(
             --learn-two-theme-drawer-box-shadow,
             var(--ddd-boxShadow-sm)

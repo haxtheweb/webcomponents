@@ -46,8 +46,8 @@ class HaxorSlevin extends HAXCMSThemeParts(
             var(--ddd-theme-default-white)
           );
           transition:
-            0.6s ease-in-out color,
-            0.6s ease-in-out background-color;
+            var(--ddd-duration-slow, 0.6s) ease-in-out color,
+            var(--ddd-duration-slow, 0.6s) ease-in-out background-color;
         }
         site-modal:not(:defined),
         site-rss-button:not(:defined),
@@ -68,7 +68,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
           display: none;
         }
         :host([edit-mode]) accent-card {
-          opacity: 0.2;
+          opacity: var(--ddd-opacity-20, 0.2);
           pointer-events: none;
         }
         accent-card {
@@ -130,8 +130,8 @@ class HaxorSlevin extends HAXCMSThemeParts(
           -webkit-filter: saturate(30%);
           filter: saturate(30%);
           transition:
-            0.3s ease-in-out opacity,
-            0.3s ease-in-out filter;
+            var(--ddd-duration-normal, 0.3s) ease-in-out opacity,
+            var(--ddd-duration-normal, 0.3s) ease-in-out filter;
           cursor: pointer;
         }
         .article-link:nth-of-type(1) {
@@ -145,7 +145,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
         .article-link accent-card::part(image) {
           -webkit-filter: saturate(0%);
           filter: saturate(0%);
-          transition: 0.3s ease-in-out all;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in-out all;
         }
         .article-link:nth-of-type(1) accent-card::part(image) {
           -webkit-filter: saturate(80%);
@@ -204,11 +204,11 @@ class HaxorSlevin extends HAXCMSThemeParts(
           z-index: 99;
           margin-left: max(-10vw, -96px);
           opacity: 1;
-          transition: 0.3s opacity linear;
+          transition: var(--ddd-duration-normal, 0.3s) opacity linear;
         }
         .social-float.disable-items {
           pointer-events: none;
-          opacity: 0.2 !important;
+          opacity: var(--ddd-opacity-20, 0.2) !important;
         }
         .social-float ul {
           padding: 0;
@@ -266,7 +266,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
           height: 36px;
           z-index: 100;
           opacity: 1;
-          transition: 0.3s opacity linear;
+          transition: var(--ddd-duration-normal, 0.3s) opacity linear;
         }
         .annoy-user.disable-items {
           pointer-events: none;
@@ -324,7 +324,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
           #home {
             padding-left: 8px;
             padding-right: 8px;
-            transition: 0.6s opacity ease-in-out;
+            transition: var(--ddd-duration-slow, 0.6s) opacity ease-in-out;
           }
           .hide-small {
             display: none !important;
