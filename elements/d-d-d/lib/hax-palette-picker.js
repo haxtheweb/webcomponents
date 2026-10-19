@@ -194,7 +194,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
         :host([disabled]) .option {
           pointer-events: none;
           cursor: not-allowed;
-          opacity: 0.7;
+          opacity: var(--ddd-opacity-80, 0.7);
         }
         .sr-only {
           position: absolute;

@@ -689,7 +689,7 @@ export class QuestionElement extends SchemaBehaviors(
             var(--ddd-theme-default-slateGray)
           );
           color: light-dark(black, white);
-          opacity: 0.7;
+          opacity: var(--ddd-opacity-80, 0.7);
         }
         :host simple-toolbar-button:hover::part(button),
         :host simple-toolbar-button:focus::part(button),
@@ -725,11 +725,11 @@ export class QuestionElement extends SchemaBehaviors(
           margin: 0px;
         }
         simple-fields-field[disabled]:not(.correct):not(.incorrect) {
-          opacity: 0.7;
+          opacity: var(--ddd-opacity-80, 0.7);
           color: unset;
         }
         button[disabled]:not(.correct):not(.incorrect) {
-          opacity: 0.7;
+          opacity: var(--ddd-opacity-80, 0.7);
         }
 
         h4 {

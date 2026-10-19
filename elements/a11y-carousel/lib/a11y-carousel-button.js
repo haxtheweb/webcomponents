@@ -22,7 +22,7 @@ class a11yCarouselButton extends LitElement {
           display: none !important;
         }
         :host([disabled]) {
-          opacity: 0.5;
+          opacity: var(--ddd-state-disabled-opacity, 0.5);
         }
         @media print {
           :host {

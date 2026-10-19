@@ -438,7 +438,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         .launcher[disabled],
         .launcher.disabled {
           cursor: not-allowed;
-          opacity: 0.7;
+          opacity: var(--ddd-opacity-80, 0.7);
           transform: none;
           box-shadow: none;
         }
@@ -624,7 +624,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           width: fit-content;
           cursor: not-allowed;
-          opacity: 0.7;
+          opacity: var(--ddd-opacity-80, 0.7);
         }
         .code-editor-grid {
           display: grid;
@@ -926,7 +926,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           );
         }
         .settings-option-row.disabled {
-          opacity: 0.58;
+          opacity: var(--ddd-opacity-60, 0.58);
           background-color: light-dark(
             rgba(0, 0, 0, 0),
             rgba(255, 255, 255, 0.02)

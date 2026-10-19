@@ -111,7 +111,7 @@ export const SimpleTagLiteSuper = function (SuperClass) {
             display: none;
           }
           :host([disabled]):not([readonly]) {
-            opacity: 0.5;
+            opacity: var(--ddd-state-disabled-opacity, 0.5);
           }
         `,
       ];

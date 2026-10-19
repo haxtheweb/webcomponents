@@ -1115,7 +1115,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .btn:disabled {
-          opacity: 0.5;
+          opacity: var(--ddd-state-disabled-opacity, 0.5);
           cursor: not-allowed;
         }
 

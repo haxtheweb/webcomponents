@@ -407,7 +407,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         .button:disabled {
-          opacity: 0.5;
+          opacity: var(--ddd-state-disabled-opacity, 0.5);
           cursor: not-allowed;
         }
 

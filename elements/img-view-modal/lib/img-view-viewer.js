@@ -156,7 +156,7 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
           color: var(--img-view-viewer-color);
         }
         button[disabled] {
-          opacity: 0.5;
+          opacity: var(--ddd-state-disabled-opacity, 0.5);
           cursor: not-allowed;
         }
         button.flex-grow {
