@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Dhaftar poin",
+    "description": "Gawe dhaptar poin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Gaya poin",
+        "description": "Gaya sing dienggo kanggo poin dhaptar ora urut.",
+        "options": {
+          "": "Gawan (kothak)",
+          "list-disc": "Cakram",
+          "list-circle": "Bunderan",
+          "list-square": "Kothak"
+        }
+      }
+    ]
+  }
+}

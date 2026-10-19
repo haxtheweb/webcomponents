@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Վաստակի կրծքանշան",
+    "description": "Տեսողական կրծքանշան՝ հմտության ձեռքբերումը հաղորդելու համար։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Կրծքանշանի վերնագիր",
+        "description": "Կրծքանշանի վրա ցուցադրվող վերնագիր։"
+      },
+      {
+        "property": "badgeImage",
+        "title": "Կրծքանշանի նկար",
+        "description": "Կրծքանշանի նկարի URL։"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Կրծքանշանի մանրամասներ",
+        "description": "Մանրամասներ կրծքանշանի մասին։"
+      },
+      {
+        "property": "hyperLink",
+        "title": "Հիպերհղում",
+        "description": "Կրծքանշանի հետ կապված հղում։"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Կրծքանշանի հմտություններ",
+        "description": "Կրծքանշանի վրա ցուցադրվող հմտություններ։"
+      },
+      {
+        "property": "skill",
+        "title": "Հմտություն (OER Schema)",
+        "description": "OER Schema՝ այս ուսումնական նպատակի ավարտով ձեռք բերված հմտություն։"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "iframe-এ বাহ্যিক ওয়েব বিষয়বস্তু এমবেড করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "রিসোর্স URL",
+        "description": "রিসোর্স URL।"
+      },
+      {
+        "property": "height",
+        "title": "উচ্চতা",
+        "description": "iframe-এর উচ্চতা।"
+      },
+      {
+        "property": "width",
+        "title": "প্রস্থ",
+        "description": "iframe-এর প্রস্থ।"
+      }
+    ]
+  }
+}

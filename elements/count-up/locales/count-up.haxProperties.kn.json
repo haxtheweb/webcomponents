@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ಎಣಿಕೆ ಏರಿಕೆ",
+    "description": "ಸ್ಕ್ರೋಲ್ ಮಾಡಿ ನೋಟಕ್ಕೆ ಬಂದಾಗ ಸಂಖ್ಯೆಯು ಗುರಿ ಮೌಲ್ಯದವರೆಗೆ ಏರುವಂತೆ ಅನಿಮೇಟ್ ಮಾಡಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "ಅಂತಿಮ ಮೌಲ್ಯ",
+        "description": "ಎಣಿಕೆ ತಲುಪಬೇಕಾದ ಸಂಖ್ಯೆ."
+      },
+      {
+        "property": "start",
+        "title": "ಆರಂಭಿಕ ಮೌಲ್ಯ",
+        "description": "ಎಣಿಕೆ ಪ್ರಾರಂಭವಾಗುವ ಸಂಖ್ಯೆ."
+      },
+      {
+        "property": "duration",
+        "title": "ಅವಧಿ",
+        "description": "ಎಣಿಕೆ ಅನಿಮೇಷನ್ ತೆಗೆದುಕೊಳ್ಳಬೇಕಾದ ಸೆಕೆಂಡುಗಳು."
+      },
+      {
+        "property": "prefixtext",
+        "title": "ಪೂರ್ವಪ್ರತ್ಯಯ ಪಠ್ಯ",
+        "description": "ಸಂಖ್ಯೆಯ ಮೊದಲು ತೋರಿಸುವ ಪಠ್ಯ (ಉದಾ. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "ಪ್ರತ್ಯಯ ಪಠ್ಯ",
+        "description": "ಸಂಖ್ಯೆಯ ನಂತರ ತೋರಿಸುವ ಪಠ್ಯ (ಉದಾ. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "ಪೂರ್ವಪ್ರತ್ಯಯ ಸ್ಲಾಟ್",
+        "description": "ಸಂಖ್ಯೆಯ ಮೊದಲು ಐಚ್ಛಿಕ ಸ್ಲಾಟ್ ವಿಷಯ."
+      },
+      {
+        "slot": "suffix",
+        "title": "ಪ್ರತ್ಯಯ ಸ್ಲಾಟ್",
+        "description": "ಸಂಖ್ಯೆಯ ನಂತರ ಐಚ್ಛಿಕ ಸ್ಲಾಟ್ ವಿಷಯ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "ದಶಮಾಂಶ ಸ್ಥಾನಗಳು",
+        "description": "ಪ್ರದರ್ಶಿಸಬೇಕಾದ ದಶಮಾಂಶ ಸ್ಥಾನಗಳ ಸಂಖ್ಯೆ."
+      },
+      {
+        "property": "separator",
+        "title": "ಸಾವಿರ ವಿಭಜಕ",
+        "description": "ಸಾವಿರಗಳ ಗುಂಪುಗಳನ್ನು ಬೇರ್ಪಡಿಸುವ ಅಕ್ಷರ."
+      },
+      {
+        "property": "decimal",
+        "title": "ದಶಮಾಂಶ ಅಕ್ಷರ",
+        "description": "ದಶಮಾಂಶ ಬಿಂದುವಿಗೆ ಬಳಸುವ ಅಕ್ಷರ."
+      },
+      {
+        "property": "noeasing",
+        "title": "ಈಸಿಂಗ್ ಇಲ್ಲ",
+        "description": "ಎಣಿಕೆ ರೇಖೀಯವಾಗಿರಲು ಈಸಿಂಗ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ."
+      }
+    ]
+  }
+}

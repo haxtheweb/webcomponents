@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "සෘජුව හෝ දුරස්ථව පූරණය කළ markdown අන්තර්ගත කොටසක්"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "අමු markdown"
+      },
+      {
+        "property": "source",
+        "title": "මූලාශ්‍රය",
+        "description": "markdown සඳහා මූලාශ්‍ර ගොනුව"
+      }
+    ]
+  }
+}

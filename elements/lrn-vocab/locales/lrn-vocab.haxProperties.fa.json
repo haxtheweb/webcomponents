@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "واژگان",
+    "description": "اصطلاح واژگان"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "اصطلاح"
+      },
+      {
+        "slot": "",
+        "title": "تعریف",
+        "description": "تعریفی که هنگام کلیک روی اصطلاح نمایش داده می‌شود."
+      },
+      {
+        "property": "description",
+        "title": "توضیحات (OER Schema)",
+        "description": "OER Schema: توضیح کوتاهی از اصطلاح واژگان. اگر خالی بماند، به‌طور خودکار از متن تعریف پر می‌شود."
+      }
+    ]
+  }
+}

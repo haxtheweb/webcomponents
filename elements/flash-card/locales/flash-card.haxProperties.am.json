@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ፍላሽ ካርድ",
+    "description": "ፊትና ጀርባ ባላቸው ፍላሽ ካርዶች ጽንሰ-ሐሳቦችን ተለማመድ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "የካርዱ ፊት",
+        "description": "የፊት ጽሑፍ ወይም ጥያቄ።"
+      },
+      {
+        "slot": "back",
+        "title": "የካርዱ ጀርባ",
+        "description": "የሚጠበቅ መልስ።"
+      },
+      {
+        "property": "imgSource",
+        "title": "የምስል ምንጭ",
+        "description": "ለካርዱ የሚውል የምስል ፋይል። የምስል ቁልፍ ቃልን ይሽራል።"
+      },
+      {
+        "property": "typeOfAction",
+        "title": "የድርጊት ዓይነት",
+        "description": "OER Schema፦ ይህ ልምምድ የሚያካትተው የድርጊት ዓይነት (ለምሳሌ ማንበብ፣ መጻፍ፣ መሥራት፣ መመርመር፣ ማዳመጥ፣ መመልከት፣ ማሰላሰል፣ መወያየት፣ መታዘብ፣ ማቅረብ፣ መመዘን)።"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "የመማር ዓላማ",
+        "description": "OER Schema፦ ይህ ልምምድ የሚደግፈው የመማር ዓላማ ID ወይም URL።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ጨለማ",
+        "description": "ጨለማ ሁነታን ተጠቀም።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "የካርድ አጽንዖት ቀለም።"
+      },
+      {
+        "property": "imgKeyword",
+        "title": "የምስል ቁልፍ ቃል",
+        "description": "የዘፈቀደ ምስል ቁልፍ ቃል። በምስል ምንጭ ይሻራል።"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Externer Inhalt",
+    "description": "Inhalte einer Website in einer anderen wiederverwenden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Website-Adresse",
+        "description": "Adresse einfügen, von der Inhalte referenziert werden, falls nicht die aktuelle Website"
+      },
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Element, das für die Link-/Titeldaten dargestellt wird"
+      },
+      {
+        "property": "breakreference",
+        "title": "Verknüpfung lösen",
+        "description": "Wenn du dieses Kontrollkästchen aktivierst, wird der externe Inhalt zur lokalen Bearbeitung kopiert, aber die Verknüpfung entfernt. Er erhält keine Aktualisierungen mehr, wenn das Referenzmaterial aktualisiert wird."
+      },
+      {
+        "property": "showTitle",
+        "title": "Titel anzeigen",
+        "description": "Einschalten, um den Titel der angezeigten Ressource darzustellen"
+      }
+    ]
+  }
+}

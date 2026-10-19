@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Trình xem PDF trên trình duyệt",
+    "description": "Nhúng tệp PDF nội tuyến với bố cục thẻ và nút tải xuống tùy chọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Vị trí của tệp PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Tiêu đề",
+        "description": "Văn bản tiêu đề thẻ."
+      },
+      {
+        "property": "card",
+        "title": "Bố cục thẻ",
+        "description": "Hiển thị PDF trong một thẻ kèm nút tải xuống."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Nhãn tải xuống",
+        "description": "Nhãn cho nút tải xuống."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Thông báo không hỗ trợ",
+        "description": "Thông báo khi trình duyệt không thể hiển thị tệp PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Thông báo liên kết không hỗ trợ",
+        "description": "Văn bản liên kết khi trình duyệt không thể hiển thị tệp PDF."
+      },
+      {
+        "property": "width",
+        "title": "Chiều rộng",
+        "description": "Chiều rộng trình xem PDF."
+      },
+      {
+        "property": "height",
+        "title": "Chiều cao",
+        "description": "Chiều cao trình xem PDF."
+      }
+    ]
+  }
+}

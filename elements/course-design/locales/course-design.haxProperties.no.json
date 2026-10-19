@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Emnedesign",
+    "description": "Beholder for læringsmateriell og elementer for emnedesign."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Emnekode",
+        "description": "OER Schema: emnets identifikator, f.eks. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Semester",
+        "description": "OER Schema: semesteret emnet tilbys i."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Undervisningsform",
+        "description": "OER Schema: formatet emnet gis i (f.eks. fysisk, nettbasert, hybrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Hovedfaglærer",
+        "description": "OER Schema: hovedfaglæreren for emnet."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL til emneplan",
+        "description": "OER Schema: URL til emneplanen."
+      }
+    ]
+  }
+}

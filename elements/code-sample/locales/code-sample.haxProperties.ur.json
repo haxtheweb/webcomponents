@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "کوڈ کا نمونہ",
+    "description": "صفحے میں نمایاں کیا گیا کوڈ کا نمونہ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "کوڈ ہائی لائٹنگ",
+        "description": "کوڈ کے حصے پر لاگو کرنے کے لیے سنٹیکس ہائی لائٹنگ",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON ڈیٹا",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "کلپ بورڈ پر کاپی کا بٹن",
+        "description": "اوپر دائیں جانب بٹن جس پر کلپ بورڈ پر کاپی لکھا ہو"
+      },
+      {
+        "property": "highlightStart",
+        "title": "ہائی لائٹ کا آغاز",
+        "description": "ہائی لائٹنگ شروع کرنے کی سطر کا نمبر"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "ہائی لائٹ کا اختتام",
+        "description": "ہائی لائٹنگ ختم کرنے کی سطر"
+      }
+    ]
+  }
+}

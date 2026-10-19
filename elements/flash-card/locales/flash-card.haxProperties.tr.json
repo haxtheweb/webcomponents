@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Bilgi kartı",
+    "description": "Ön ve arka yüzlü bilgi kartlarıyla kavramları çalışın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Kartın Ön Yüzü",
+        "description": "Ön yüz metni veya soru."
+      },
+      {
+        "slot": "back",
+        "title": "Kartın Arka Yüzü",
+        "description": "Beklenen yanıt."
+      },
+      {
+        "property": "imgSource",
+        "title": "Görsel Kaynağı",
+        "description": "Kart için kullanılan görsel dosyası. Görsel Anahtar Sözcüğü'nü geçersiz kılar."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Eylem Türü",
+        "description": "OER Schema: bu alıştırmanın içerdiği eylem türü (ör. Okuma, Yazma, Yapma, Araştırma, Dinleme, İzleme, Düşünme, Tartışma, Gözlemleme, Sunma, Değerlendirme)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Öğrenme Hedefi",
+        "description": "OER Schema: bu alıştırmanın desteklediği öğrenme hedefinin ID'si veya URL'si."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Koyu",
+        "description": "Koyu modu kullan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "Kart vurgu rengi."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Görsel Anahtar Sözcüğü",
+        "description": "Rastgele görsel anahtar sözcüğü. Görsel Kaynağı tarafından geçersiz kılınır."
+      }
+    ]
+  }
+}

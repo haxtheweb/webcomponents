@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Xronologiya",
+    "description": "Rasmlar va matnli voqealar vaqt chizigʻi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Xronologiya sarlavhasi",
+        "description": "Vaqt chizigʻi sarlavhasi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Ixtiyoriy urgʻu rangi."
+      },
+      {
+        "property": "dark",
+        "title": "Qorongʻi mavzu",
+        "description": "Qorongʻi mavzuni yoqish"
+      },
+      {
+        "slot": "",
+        "title": "Vaqt chizigʻi tavsifi",
+        "description": "Vaqt chizigʻini tavsiflovchi ixtiyoriy matn."
+      },
+      {
+        "property": "events",
+        "title": "Vaqt chizigʻi voqealari",
+        "description": "Vaqt chizigʻidagi voqealar"
+      }
+    ]
+  }
+}

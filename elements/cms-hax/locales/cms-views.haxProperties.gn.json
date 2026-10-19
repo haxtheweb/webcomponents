@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS Jehecha",
+    "description": "CMS jehecha ojehechaukáva backend-pe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Téra",
+        "description": "Jehecha réra ore CMS-gui"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Jehechauka",
+        "description": "Jehechauka upe jehecha ryepýpe ore CMS-gui"
+      }
+    ]
+  }
+}

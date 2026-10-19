@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS skats",
+    "description": "CMS skati, kas atveidoti aizmugursistēmā"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Vārds",
+        "description": "Skata nosaukums no mūsu CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Attēlojums",
+        "description": "Attēlojums šajā skatā no mūsu CMS"
+      }
+    ]
+  }
+}

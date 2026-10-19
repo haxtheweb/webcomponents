@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Մաթեմատիկա",
+    "description": "Ներկայացրեք մաթեմատիկան գեղեցիկ տեսքով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Մաթեմատիկա",
+        "description": "Մուտքագրեք հավասարումը LaTeX-ով"
+      }
+    ]
+  }
+}

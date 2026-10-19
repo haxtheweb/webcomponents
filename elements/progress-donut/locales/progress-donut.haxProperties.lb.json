@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Fortschrëtts-Donut",
+    "description": "Fortschrëtts-Donut"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Den Titel vum Element"
+      },
+      {
+        "property": "desc",
+        "title": "Beschreiwung",
+        "description": "Accessibel laang Beschreiwung"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Bildquell",
+        "description": "Quell vum Bild am Donut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-Text vum Bild",
+        "description": "Alt-Text fir d'Bild."
+      },
+      {
+        "property": "animated",
+        "title": "Animéiert",
+        "description": "Ob de Fortschrëtt beim éischte Lueden animéiert gëtt"
+      },
+      {
+        "property": "complete",
+        "title": "Fäerdeg",
+        "description": "Eng Lëscht vun ofgeschlossene Wäerter."
+      },
+      {
+        "property": "total",
+        "title": "Total",
+        "description": "Total, wann all Elementer ofgeschloss sinn."
+      },
+      {
+        "property": "startAngle",
+        "title": "Startwénkel",
+        "description": "Wénkel vum Donut, wou de Fortschrëtt ufänkt"
+      }
+    ]
+  }
+}

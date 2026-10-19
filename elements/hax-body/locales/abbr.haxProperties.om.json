@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Gabaabsa",
+    "description": "Gabaabsa ibsa jecha guutuu wajjin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Barreeffama",
+        "description": "Barreeffama gabaabsaa mul'atu."
+      },
+      {
+        "attribute": "title",
+        "title": "Jecha",
+        "description": "Jecha guutuu yeroo itti dhaabbatamu agarsiifamu."
+      }
+    ]
+  }
+}

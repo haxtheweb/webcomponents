@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ഹെക്സ് പിക്കർ",
+    "description": "ഹെക്സ്കോഡ് കളർ പിക്കർ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "മൂല്യം",
+        "description": "ഡിഫോൾട്ട് ഹെക്സ് മൂല്യം"
+      },
+      {
+        "property": "disabled",
+        "title": "പ്രവർത്തനരഹിതം",
+        "description": "ടെക്സ്റ്റ് ഫീൽഡ് പ്രവർത്തനരഹിതമാക്കുക"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "വലിയ ഡിസ്പ്ലേ",
+        "description": "വലിയ ഡിസ്പ്ലേയിൽ നിറം ഉൾപ്പെടുത്തുക"
+      }
+    ]
+  }
+}

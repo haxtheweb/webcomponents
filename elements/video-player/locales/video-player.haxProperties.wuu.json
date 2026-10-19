@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "视频",
+    "description": "跨多种来源个无障碍视频播放。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "来源",
+        "description": "搿只媒体个 URL。"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "标题",
+        "description": "视频下头显示个标题。"
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "封面图",
+        "description": "封面图 URL。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "文字轨道",
+        "description": "视频个隐藏字幕、字幕、描述搭其他文字轨道。"
+      },
+      {
+        "property": "startTime",
+        "title": "开始辰光",
+        "description": "视频从指定辰光开始(秒)。"
+      },
+      {
+        "property": "endTime",
+        "title": "结束辰光",
+        "description": "视频到指定辰光结束(秒),要先设开始辰光。"
+      },
+      {
+        "property": "learningMode",
+        "title": "启用学习模式",
+        "description": "停用快进搭快退。"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "移脱「辣 YouTube 打开」按钮",
+        "description": "移脱辣 YouTube 上打开视频个按钮。"
+      },
+      {
+        "property": "linkable",
+        "title": "包含分享链接?",
+        "description": "提供一只分享视频个链接。"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "隐藏时间戳",
+        "description": "隐藏字幕稿上个时间戳。"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "隐藏字幕稿",
+        "description": "默认隐藏字幕稿。"
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "音频描述轨道",
+        "description": "音频描述轨道（MP3 文件）个 URL，用来讲解画面里个视觉内容。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "跨域",
+        "description": "表示用勿用 CORS。",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "允许后台播放",
+        "description": "浏览器标签页呒没焦点个辰光也继续播放。"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "字幕稿深色主题",
+        "description": "字幕稿启用深色主题。"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "停用互动",
+        "description": "停用让字幕稿可以点个互动模式。"
+      },
+      {
+        "property": "lang",
+        "title": "语言",
+        "description": "媒体个语言。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "(已弃用)选播放器个强调色。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Opruff zur Aktioun",
+    "description": "En einfache Knäppchen mat engem Link fir eppes ze maachen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Bezeechnung",
+        "description": "Linkbezeechnung"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Gitt e Link op eng Ressource an"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ikon verstoppen",
+        "description": "Den Ikon verstoppen, deen den Text akzentuéiert"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon vum Aktiounslink"
+      }
+    ]
+  }
+}

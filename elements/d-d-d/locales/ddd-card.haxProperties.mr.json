@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "कार्ड",
+    "description": "DDD डिझाइन सिस्टमने शैलीबद्ध केलेला कार्ड घटक."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "प्रतिमा",
+        "description": "पर्यायी प्रतिमा."
+      },
+      {
+        "property": "alt",
+        "title": "प्रतिमेचा पर्यायी मजकूर",
+        "description": "प्रतिमेचे वर्णन करणारा पर्यायी मजकूर."
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "कार्डचे शीर्षक."
+      },
+      {
+        "slot": "",
+        "title": "सामग्री",
+        "description": "कार्डचा सामग्री भाग."
+      },
+      {
+        "property": "href",
+        "title": "लिंक",
+        "description": "बटण लिंकची URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "लेबल",
+        "description": "बटणाचे लेबल."
+      },
+      {
+        "property": "noArrow",
+        "title": "बाण नाही",
+        "description": "बटणावरील बाण लपवा."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "लिंक: लक्ष्य",
+        "description": "लिंक कुठे उघडायची.",
+        "options": {
+          "": "त्याच विंडोमध्ये",
+          "_blank": "नवीन विंडो - _blank",
+          "_top": "सर्वात वरची विंडो - _top",
+          "_parent": "मूळ विंडो - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "लिंक: rel",
+        "description": "लिंक केलेले संसाधन आणि सध्याचे दस्तऐवज यांच्यातील संबंध."
+      }
+    ]
+  }
+}

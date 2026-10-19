@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Основна врска",
+    "description": "Основен елемент за врска."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Врска",
+        "description": "Одредишен URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Видлив текст на врската."
+      },
+      {
+        "attribute": "target",
+        "title": "Цел",
+        "description": "Каде да се отвори врската.",
+        "options": {
+          "": "Истиот прозорец",
+          "_blank": "Нов прозорец - _blank",
+          "_top": "Највисок прозорец - _top",
+          "_parent": "Матичен прозорец - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Текст на насловот",
+        "description": "Советодавен наслов за пристапност и SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Однос со одредиштето (безбедност/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

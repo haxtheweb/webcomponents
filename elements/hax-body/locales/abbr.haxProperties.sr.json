@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Скраћеница",
+    "description": "Скраћеница са описом пуног појма."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Видљиви текст скраћенице."
+      },
+      {
+        "attribute": "title",
+        "title": "Реч",
+        "description": "Пун појам приказан при преласку мишем."
+      }
+    ]
+  }
+}

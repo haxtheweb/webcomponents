@@ -1,0 +1,11 @@
+{
+  "userAccess": "Användaråtkomst",
+  "enterUsername": "Ange användarnamn för att ge åtkomst",
+  "usernamePlaceholder": "Användarnamn",
+  "addUser": "Lägg till användare",
+  "cancel": "Avbryt",
+  "userAccessGranted": "Användaren har fått åtkomst!",
+  "userNotFound": "Användaren hittades inte eller saknar behörighet",
+  "loadingAddingUser": "Lägger till användare...",
+  "grantAccessTo": "Ge åtkomst till:"
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "คำกระตุ้นการตัดสินใจ",
+    "description": "ปุ่มเรียบง่ายพร้อมลิงก์เพื่อดำเนินการ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ป้ายกำกับ",
+        "description": "ป้ายกำกับลิงก์"
+      },
+      {
+        "property": "link",
+        "title": "ลิงก์",
+        "description": "ป้อนลิงก์ไปยังแหล่งข้อมูลใดก็ได้"
+      },
+      {
+        "property": "hideIcon",
+        "title": "ซ่อนไอคอน",
+        "description": "ซ่อนไอคอนที่ใช้เน้นข้อความ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ไอคอน",
+        "description": "ไอคอนลิงก์การดำเนินการ"
+      }
+    ]
+  }
+}

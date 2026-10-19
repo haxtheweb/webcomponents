@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) 嵌入",
+    "description": "勒上下文里嵌入 X 浪个推文。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "推文 URL",
+        "description": "要嵌入个推文个 URL。"
+      },
+      {
+        "attribute": "data-theme",
+        "title": "主题",
+        "description": "X 推文个浅色或者深色主题。",
+        "options": {
+          "light": "浅色",
+          "dark": "深色"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "点击辰光勿弹窗",
+        "description": "勿让用户勒 x.com 浪打开推文。"
+      }
+    ]
+  }
+}

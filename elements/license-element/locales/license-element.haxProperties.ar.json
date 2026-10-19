@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "الترخيص",
+    "description": "قدّم ترخيصًا لعملك."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "عنوان العمل المستشهد به."
+      },
+      {
+        "property": "source",
+        "title": "رابط المصدر",
+        "description": "URL مصدر العمل المرخّص."
+      },
+      {
+        "property": "license",
+        "title": "الترخيص",
+        "description": "الترخيص المطبق على هذا العمل."
+      },
+      {
+        "property": "creator",
+        "title": "المؤلف",
+        "description": "مؤلف هذا العمل أو مالكه."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "رابط المصدر",
+        "description": "رابط إلى تفاصيل ترخيص إضافية."
+      },
+      {
+        "property": "moreLabel",
+        "title": "تسمية المزيد",
+        "description": "تسمية تفاصيل الترخيص الإضافية."
+      }
+    ]
+  }
+}

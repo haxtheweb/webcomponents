@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Sarakeasettelu",
+    "description": "Aseta materiaali yksinkertaisiin sarakkeisiin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Sarakeasettelu",
+        "description": "Kohteiden esitystyyli (voi muuttua pienillä näytöillä)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Poista responsiivisuus käytöstä",
+        "description": "Valitse ruutu säilyttääksesi sarakkeet suuremmilla näytöillä, mutta pinoaksesi ne pienimmillä näytöillä"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Kohteen sisämarginaali",
+        "description": "Sisämarginaali jokaisen kohteen sisällä"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Kohteiden marginaalit",
+        "description": "Kohteiden välinen marginaali"
+      }
+    ]
+  }
+}

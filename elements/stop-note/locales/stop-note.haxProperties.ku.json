@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Nota Rawestanê",
+    "description": "Peyamek ji bo hişyarkirina xwendevanan li ser rêwerzên taybet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê nota rawestanê binivîse."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "URL-eke derveyî binivîse."
+      },
+      {
+        "property": "status",
+        "title": "Rewş",
+        "description": "Diyarkirina rewşê reng û îkonan li gorî wê diguherîne",
+        "options": {
+          "stop": "Raweste",
+          "warning": "Hişyarî",
+          "success": "Pejirandin",
+          "info": "Agahdarî"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Nivîsa Notê",
+        "description": "Nivîs ji bo nota rawestanê."
+      }
+    ]
+  }
+}

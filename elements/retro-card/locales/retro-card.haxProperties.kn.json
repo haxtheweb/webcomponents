@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ರೆಟ್ರೊ ಕಾರ್ಡ್",
+    "description": "ರೆಟ್ರೊ ವಿನ್ಯಾಸದ ಸರಳ ಕಾರ್ಡ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಕಾರ್ಡ್‌ನ ಮುಖ್ಯ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "url",
+        "description": "ಕಾರ್ಡ್ ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ ತೆರೆಯಬೇಕಾದ URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "ಉಪಶೀರ್ಷಿಕೆ",
+        "description": "ಕಾರ್ಡ್ ಉಪಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "tags",
+        "title": "ಟ್ಯಾಗ್‌ಗಳು",
+        "description": "ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಿದ ಟ್ಯಾಗ್‌ಗಳು."
+      },
+      {
+        "property": "mediaSource",
+        "title": "ಮೀಡಿಯಾ ಮೂಲ",
+        "description": "ಪ್ರಾಥಮಿಕ ಮೀಡಿಯಾ ಮೂಲ."
+      },
+      {
+        "property": "hoverSource",
+        "title": "ಹೋವರ್‌ನಲ್ಲಿ ಮೂಲ",
+        "description": "ಕಾರ್ಡ್ ಮೇಲೆ ಹೋವರ್ ಮಾಡಿದಾಗ ಅಥವಾ ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ ತೋರಿಸುವ ಮೀಡಿಯಾ ಮೂಲ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಕಾರ್ಡ್‌ನಾದ್ಯಂತ ಅನ್ವಯಿಸುವ ಆಕ್ಸೆಂಟ್ ಬಣ್ಣ."
+      },
+      {
+        "property": "dark",
+        "title": "ಡಾರ್ಕ್",
+        "description": "ಡಾರ್ಕ್ ಮೋಡ್ ಮೂಲ ಬಣ್ಣಗಳನ್ನು ಬಳಸಿ."
+      }
+    ]
+  }
+}

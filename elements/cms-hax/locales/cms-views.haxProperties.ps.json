@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS لید",
+    "description": "په بیک اینډ کې ښودل شوي CMS لیدونه"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "نوم",
+        "description": "زموږ له CMS څخه د لید نوم"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "ښودنه",
+        "description": "زموږ له CMS څخه د هغه لید دننه ښودنه"
+      }
+    ]
+  }
+}

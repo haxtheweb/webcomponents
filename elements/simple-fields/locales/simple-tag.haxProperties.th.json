@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "แท็ก / ป้ายแคปซูล",
+    "description": "ป้ายกำกับรูปทรงแคปซูลขนาดกะทัดรัดพร้อมสีเน้น ปุ่มยกเลิก หรือการสลับเสริม"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ป้ายกำกับ",
+        "description": "ข้อความที่แสดงภายในแคปซูล"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "ชื่อสีเน้นของ SimpleColors สำหรับพื้นหลังแคปซูล",
+        "options": {
+          "": "-- ค่าเริ่มต้น --",
+          "red": "แดง",
+          "pink": "ชมพู",
+          "purple": "ม่วง",
+          "deep-purple": "ม่วงเข้ม",
+          "indigo": "คราม",
+          "blue": "น้ำเงิน",
+          "light-blue": "ฟ้าอ่อน",
+          "cyan": "ฟ้าอมเขียว",
+          "teal": "เขียวหัวเป็ด",
+          "green": "เขียว",
+          "light-green": "เขียวอ่อน",
+          "lime": "เขียวมะนาว",
+          "yellow": "เหลือง",
+          "amber": "อำพัน",
+          "orange": "ส้ม",
+          "deep-orange": "ส้มเข้ม",
+          "brown": "น้ำตาล",
+          "blue-grey": "เทาอมฟ้า",
+          "grey": "เทา"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "สีเน้นอัตโนมัติ",
+        "description": "กำหนดสีเน้นจากข้อความป้ายกำกับโดยอัตโนมัติ"
+      },
+      {
+        "property": "cancelButton",
+        "title": "ปุ่มยกเลิก",
+        "description": "แสดงปุ่มไอคอนลบ/ยกเลิกภายในแคปซูล"
+      },
+      {
+        "property": "readonly",
+        "title": "อ่านอย่างเดียว",
+        "description": "ซ่อนปุ่มยกเลิกเพื่อให้แคปซูลใช้แสดงผลเท่านั้น"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "สลับได้",
+        "description": "ทำให้แคปซูลสลับเปิด/ปิดเมื่อคลิกปุ่ม"
+      },
+      {
+        "property": "toggled",
+        "title": "สลับเปิดอยู่",
+        "description": "แคปซูลกำลังสลับเปิดอยู่หรือไม่"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "ไอคอนเมื่อสลับเปิด",
+        "description": "ไอคอนที่จะแสดงเมื่อแคปซูลสลับเปิด"
+      },
+      {
+        "property": "disabled",
+        "title": "ปิดใช้งาน",
+        "description": "ปิดใช้งานการโต้ตอบกับแคปซูล"
+      }
+    ]
+  }
+}

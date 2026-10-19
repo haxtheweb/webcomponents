@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Hoʻolālā kolamu",
+    "description": "Hoʻonohonoho i nā mea ma nā kolamu maʻalahi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Hoʻolālā kolamu",
+        "description": "Kaila e hōʻike ai i kēia mau mea (hiki ke loli no nā pakuhi liʻiliʻi)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Hoʻopio i ka pane",
+        "description": "Kaha i ka pahu e mālama ai i nā kolamu ma nā pakuhi nui ʻoiai e hoʻopuʻu mau ana ma nā pakuhi liʻiliʻi loa"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Pale o loko o ka mea",
+        "description": "Pale i loko o kēlā me kēia mea"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Nā kaʻe mea",
+        "description": "Kaʻe ma waena o nā mea"
+      }
+    ]
+  }
+}

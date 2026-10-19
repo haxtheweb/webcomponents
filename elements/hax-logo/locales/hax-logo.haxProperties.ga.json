@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ealaín focal HAX",
+    "description": "Eilimint lógó do HAX, eilimint atá in ann HAX a úsáid, ar ndóigh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Méid an lógó HAX le cur isteach",
+        "options": {
+          "mini": "Mion",
+          "small": "Beag",
+          "normal": "Gnáth",
+          "large": "Mór"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Cé acu ar cheart an lógó a thiontú go ceannlitreacha nó nár cheart"
+      }
+    ]
+  }
+}

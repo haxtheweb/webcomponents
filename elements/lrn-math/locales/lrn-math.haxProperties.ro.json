@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematică",
+    "description": "Prezintă formule matematice într-un mod plăcut vizual."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematică",
+        "description": "Introdu ecuația în LaTeX"
+      }
+    ]
+  }
+}

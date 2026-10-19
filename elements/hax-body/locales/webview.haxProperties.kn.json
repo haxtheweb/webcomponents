@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ಮೂಲ",
+        "description": "ಈ ಸಂಪನ್ಮೂಲದ URL."
+      }
+    ]
+  }
+}

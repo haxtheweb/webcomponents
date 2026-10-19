@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "நினைவு அட்டை",
+    "description": "முன்-பின் நினைவு அட்டைகள் மூலம் கருத்துகளைப் பயிற்சி செய்யவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "அட்டையின் முன்பக்கம்",
+        "description": "முன்பக்க உரை அல்லது கேள்வி."
+      },
+      {
+        "slot": "back",
+        "title": "அட்டையின் பின்பக்கம்",
+        "description": "எதிர்பார்க்கப்படும் பதில்."
+      },
+      {
+        "property": "imgSource",
+        "title": "பட மூலம்",
+        "description": "அட்டைக்குப் பயன்படும் படக் கோப்பு. படச் சொல்லை மேலெழுதும்."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "செயல் வகை",
+        "description": "OER Schema: இந்தப் பயிற்சியில் உள்ள செயல் வகை (எ.கா. Reading, Writing, Making, Researching, Listening, Watching, Reflecting, Discussing, Observing, Presenting, Assess)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "கற்றல் நோக்கம்",
+        "description": "OER Schema: இந்தப் பயிற்சி ஆதரிக்கும் கற்றல் நோக்கத்தின் ID அல்லது URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "இருண்ட",
+        "description": "இருண்ட பயன்முறையைப் பயன்படுத்தவும்."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "அட்டையின் அழுத்த நிறம்."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "படச் சொல்",
+        "description": "சீரற்ற படத்திற்கான சொல். பட மூலத்தால் மேலெழுதப்படும்."
+      }
+    ]
+  }
+}

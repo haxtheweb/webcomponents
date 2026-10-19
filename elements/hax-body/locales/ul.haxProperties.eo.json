@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Bula listo",
+    "description": "Krei bulan liston."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Bula stilo",
+        "description": "Stilo uzata por buloj de neordigita listo.",
+        "options": {
+          "": "Defaŭlta (kvadrato)",
+          "list-disc": "Disko",
+          "list-circle": "Cirklo",
+          "list-square": "Kvadrato"
+        }
+      }
+    ]
+  }
+}

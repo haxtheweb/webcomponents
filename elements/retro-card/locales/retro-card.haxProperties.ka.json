@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "რეტრო ბარათი",
+    "description": "მარტივი ბარათი რეტრო დიზაინით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "ბარათის მთავარი სათაური."
+      },
+      {
+        "property": "url",
+        "description": "URL, რომელიც ბარათზე დაწკაპუნებისას გაიხსნება."
+      },
+      {
+        "property": "subtitle",
+        "title": "ქვესათაური",
+        "description": "ბარათის ქვესათაური."
+      },
+      {
+        "property": "tags",
+        "title": "ტეგები",
+        "description": "მძიმით გამოყოფილი ტეგები."
+      },
+      {
+        "property": "mediaSource",
+        "title": "მედიის წყარო",
+        "description": "ძირითადი მედიის წყარო."
+      },
+      {
+        "property": "hoverSource",
+        "title": "წყარო მიტანისას",
+        "description": "მედიის წყარო, რომელიც ჩანს ბარათზე კურსორის მიტანისას ან გააქტიურებისას."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "მთელ ბარათზე გამოყენებული აქცენტის ფერი."
+      },
+      {
+        "property": "dark",
+        "title": "მუქი",
+        "description": "მუქი რეჟიმის საბაზისო ფერების გამოყენება."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "عنوان نسبي",
+    "description": "يُخرج التسلسل الهرمي الصحيح للعناوين بناءً على عنوان العنصر الأصل"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "معرّف مورد عنوان العنصر الأصل"
+      },
+      {
+        "property": "disableLink",
+        "description": "يعطّل ميزة زر الرابط."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "يحاذي زر نسخ الرابط إلى أقصى يمين العنوان."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "مستوى العنوان إذا لم يتم العثور على العنصر الأصل."
+      },
+      {
+        "property": "copyMessage",
+        "description": "يتجاوز النص الافتراضي لرسالة التنبيه الخاصة بنسخ الرابط."
+      },
+      {
+        "property": "linkLabel",
+        "description": "يتجاوز التسمية الافتراضية لزر نسخ الرابط."
+      },
+      {
+        "property": "linkIcon",
+        "description": "يتجاوز الأيقونة الافتراضية لزر نسخ الرابط."
+      },
+      {
+        "property": "closeLabel",
+        "description": "يتجاوز التسمية الافتراضية لزر إغلاق رسالة التنبيه الخاصة بنسخ الرابط."
+      },
+      {
+        "property": "closeIcon",
+        "description": "يتجاوز الأيقونة الافتراضية لزر إغلاق رسالة التنبيه الخاصة بنسخ الرابط."
+      }
+    ]
+  }
+}

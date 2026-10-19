@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ihe ọkpụkpọ 3D",
+    "description": "Ihe ọkpụkpọ faịlụ 3D / eziokwu agbakwunyere (AR)."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isi mmalite",
+        "description": "URL maka faịlụ AR a."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Ọnọdụ X nke ihe ahụ na AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Ọnọdụ Y nke ihe ahụ na AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Ọnọdụ Z nke ihe ahụ na AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Agba mbara igwe",
+        "description": "Họrọ agba mbara igwe n'ihe nkiri ahụ."
+      }
+    ]
+  }
+}

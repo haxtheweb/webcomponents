@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ñe'ẽryru",
+    "description": "Ñe'ẽ ñe'ẽryrugua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Ñe'ẽ"
+      },
+      {
+        "property": "information",
+        "title": "Ñemyesakã",
+        "description": "Ñemyesakã ojehechaukáva ojejopy jave ñe'ẽ."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Ovetã'i",
+        "description": "Ehechauka ñemyesakã ovetã'ípe tysýipe rangue."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Joajuha",
+        "description": "Joajuha ojoapýva rysýi ojoajúva ko ñe'ẽ ndive."
+      }
+    ]
+  }
+}

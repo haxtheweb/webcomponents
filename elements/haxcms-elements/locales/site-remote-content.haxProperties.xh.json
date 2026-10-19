@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Umxholo Okude",
+    "description": "Sebenzisa kwakhona umxholo ovela kwenye isayithi kwenye."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Idilesi yesayithi",
+        "description": "Ncamathisela idilesi yokubhekisa kumxholo ukuba ayisiyiyo isayithi yangoku"
+      },
+      {
+        "property": "uuid",
+        "title": "Into",
+        "description": "Into eza kuboniswa kwikhonkco / kwidatha yesihloko"
+      },
+      {
+        "property": "breakreference",
+        "title": "Qhawula isalathiso",
+        "description": "Ukuphawula le bhokisi kukopa umxholo okude ukuze uhlelwe ekhompyutheni kodwa kususa unxulumano. Awuyi kuphinda ufumane uhlaziyo xa izixhobo ekubhekiselwa kuzo zihlaziywa."
+      },
+      {
+        "property": "showTitle",
+        "title": "Bonisa isihloko",
+        "description": "Vula ukuze kuboniswe isihloko sesixhobo esiboniswayo"
+      }
+    ]
+  }
+}

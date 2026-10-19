@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Starfsferilsatriði",
+    "description": "Einstök stofnun og tengd hlutverk hennar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Heiti stofnunar"
+      },
+      {
+        "property": "location",
+        "title": "Staðsetning"
+      },
+      {
+        "property": "source",
+        "title": "Uppruni"
+      }
+    ]
+  }
+}

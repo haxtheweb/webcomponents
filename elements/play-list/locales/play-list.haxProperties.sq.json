@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Listë luajtjeje",
+    "description": "Shfaq çdo lloj përmbajtjeje në një listë luajtjeje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Burimi",
+        "description": "Përmbajtja e shfaqur në listën e luajtjes."
+      },
+      {
+        "property": "edit",
+        "title": "Modaliteti i redaktimit",
+        "description": "Kalo midis modalitetit të redaktimit dhe parapamjes për listën e luajtjes."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigimi",
+        "description": "Shfaq butonat e navigimit përpara dhe prapa."
+      },
+      {
+        "property": "pagination",
+        "title": "Faqosja",
+        "description": "Shfaq pikat e faqosjes."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientimi",
+        "description": "Orientimi i diapozitivëve.",
+        "options": {
+          "horizontal": "Horizontal",
+          "vertical": "Vertikal"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Diapozitivi fillestar",
+        "description": "Indeksi i diapozitivit që fokusohet fillimisht."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Raporti i pamjes",
+        "description": "Raporti i pamjes së diapozitivëve.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

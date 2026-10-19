@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Element de passos",
+    "description": "Element que forma part d'una llista de passos"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Títol"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mufananidzo weParallax",
+    "description": "Mufananidzo unofamba pakuskrora"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Mufananidzo",
+        "description": "mufananidzo unoiswa kumashure"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Nzvimbo yemusoro",
+        "description": "Nzvimbo yemavara emusoro"
+      }
+    ]
+  }
+}

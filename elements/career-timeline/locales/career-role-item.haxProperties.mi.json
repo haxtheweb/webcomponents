@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Tūranga Umanga",
+    "description": "He tūranga takitahi i roto i tētahi whakahaere"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Taitara"
+      },
+      {
+        "property": "startDate",
+        "title": "Rā Tīmata"
+      },
+      {
+        "property": "endDate",
+        "title": "Rā Mutunga (Kōwhiringa)"
+      },
+      {
+        "property": "skills",
+        "title": "Ngā Pūkenga Hono",
+        "description": "Tīpakohia te pātene + hei tīmata ki te tāpiri pūkenga"
+      }
+    ]
+  }
+}

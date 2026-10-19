@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Koleksiyon satırı",
+    "description": "Koleksiyon listesinde kullanılan; metin, bağlantı, simge, etiketler ve isteğe bağlı görsel içeren satır tarzı öğe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Bağlantı",
+        "description": "Bu satırın hedef URL'si."
+      },
+      {
+        "property": "image",
+        "title": "Görsel",
+        "description": "Satırın görseli."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Görseli açıklayan alternatif metin."
+      },
+      {
+        "property": "line1",
+        "title": "Satır 1",
+        "description": "Metnin ilk satırı."
+      },
+      {
+        "property": "line2",
+        "title": "Satır 2",
+        "description": "Metnin ikinci satırı."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Simge",
+        "description": "Satırı temsil eden simge."
+      },
+      {
+        "property": "saturate",
+        "title": "Doygunluk efekti",
+        "description": "Kullanıcı odaklandığında görsel doygunluğunu değiştir."
+      },
+      {
+        "property": "tags",
+        "title": "Etiketler",
+        "description": "Virgülle ayrılmış etiket listesi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Renk",
+        "description": "Simge ve etiketler için kullanılan renk."
+      }
+    ]
+  }
+}

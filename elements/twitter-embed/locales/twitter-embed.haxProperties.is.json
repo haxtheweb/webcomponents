@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) ívefjun",
+    "description": "Ívefja tíst frá X í samhengi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL tísts",
+        "description": "URL tístsins sem á að ívefja."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Þema",
+        "description": "Ljóst eða dökkt þema fyrir tíst á X.",
+        "options": {
+          "light": "Ljóst",
+          "dark": "Dökkt"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Koma í veg fyrir sprettiglugga við smell",
+        "description": "Koma í veg fyrir að notendur opni tístið á x.com."
+      }
+    ]
+  }
+}

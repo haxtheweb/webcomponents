@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Σήμα εκδήλωσης",
+    "description": "Στοιχείο σήματος εκδήλωσης."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Εικόνα TV",
+        "description": "Εικόνα που εμφανίζεται στην TV."
+      },
+      {
+        "property": "logo",
+        "title": "Λογότυπο",
+        "description": "Λογότυπο που εμφανίζεται στη γωνία του σήματος."
+      },
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Τίτλος που εμφανίζεται στην κορυφή του σήματος."
+      },
+      {
+        "property": "name",
+        "title": "Όνομα",
+        "description": "Όνομα που εμφανίζεται στο σήμα."
+      },
+      {
+        "property": "position",
+        "title": "Θέση",
+        "description": "Ρόλος ή τίτλος του ατόμου."
+      },
+      {
+        "property": "organization",
+        "title": "Οργανισμός",
+        "description": "Οργανισμός στον οποίο εργάζεται το άτομο."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Χρώμα TV",
+        "description": "Επιλέξτε το χρώμα της TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "Κύριο χρώμα φόντου ή κειμένου."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Χρώμα κουμπιών",
+        "description": "Χρώμα των κουμπιών της TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Σέπια",
+        "description": "Εφαρμογή εφέ σέπια."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Ασπρόμαυρο",
+        "description": "Εφαρμογή ασπρόμαυρου εφέ."
+      }
+    ]
+  }
+}

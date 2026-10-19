@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "पोस्टकार्ड",
+    "description": "एक मज़ेदार मीडिया तत्व जो कहीं से भेजे गए असली पोस्टकार्ड जैसा दिखता है"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "प्रति",
+        "description": "यह किसे भेजा जा रहा है?"
+      },
+      {
+        "property": "from",
+        "title": "प्रेषक",
+        "description": "आप कौन हैं?"
+      },
+      {
+        "property": "message",
+        "title": "संदेश",
+        "description": "आप क्या कहना चाहते हैं?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "डाक मुहर का स्थान",
+        "description": "यह कार्ड कहाँ से भेजा गया?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "मुख्य फ़ोटो स्रोत",
+        "description": "आपकी फ़ोटो कहाँ स्थित है?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "डाक टिकट फ़ोटो स्रोत",
+        "description": "आपकी फ़ोटो कहाँ स्थित है?"
+      }
+    ]
+  }
+}

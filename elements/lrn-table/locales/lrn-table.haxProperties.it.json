@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tabella CSV",
+    "description": "Genera una tabella da un file CSV, ovunque si trovi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Origine",
+        "description": "URL di questo file CSV."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo della tabella da generare."
+      },
+      {
+        "property": "description",
+        "title": "Descrizione",
+        "description": "Descrizione più dettagliata per migliorare l'accessibilità dei dati della tabella."
+      }
+    ]
+  }
+}

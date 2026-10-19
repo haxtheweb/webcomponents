@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Paralaks şəkli",
+    "description": "Sürüşdürmə ilə hərəkət edən şəkil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Şəkil",
+        "description": "fonda istifadə ediləcək şəkil"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Başlıq sahəsi",
+        "description": "Başlıq mətni sahəsi"
+      }
+    ]
+  }
+}

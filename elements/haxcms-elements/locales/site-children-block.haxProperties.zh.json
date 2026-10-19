@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms：子页面区块",
+    "description": "显示当前页面子页面的动态区块"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "动态方式",
+        "description": "如何相对于此元素计算子页面",
+        "options": {
+          "active": "活动页面的子页面",
+          "parent": "父页面的子页面",
+          "ancestor": "最高祖先页面的所有子页面"
+        }
+      },
+      {
+        "property": "start",
+        "title": "起始层级"
+      },
+      {
+        "property": "end",
+        "title": "结束层级"
+      }
+    ]
+  }
+}

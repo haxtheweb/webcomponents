@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "日期",
+    "description": "显示日历日期搭详情。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "月份",
+        "description": "卡片浪显示个月份。"
+      },
+      {
+        "property": "date",
+        "title": "日",
+        "description": "月里个日数。"
+      },
+      {
+        "property": "day",
+        "title": "星期",
+        "description": "星期几个文字。"
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "活动名称。"
+      },
+      {
+        "property": "location",
+        "title": "地点",
+        "description": "活动地点。"
+      },
+      {
+        "property": "startTime",
+        "title": "开始",
+        "description": "开始辰光。"
+      },
+      {
+        "property": "endTime",
+        "title": "结束",
+        "description": "结束辰光。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "可选个强调色。"
+      },
+      {
+        "property": "dark",
+        "title": "深色主题",
+        "description": "开启深色主题。"
+      }
+    ]
+  }
+}

@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub репозиториясы",
   "anErrorOccurred": "Ката кетти",
-  "retry": "Кайра аракет кылуу"
+  "retry": "Кайра аракет кылуу",
+  "permissionRequired": "Уруксат талап кылынат",
+  "passwordRequirements": "Сырсөзгө талаптар",
+  "requirementLength": "Кеминде 8 белги",
+  "requirementUppercase": "Бир баш тамга",
+  "requirementLowercase": "Бир кичине тамга",
+  "requirementNumber": "Бир сан",
+  "requirementSymbol": "Бир символ"
 }

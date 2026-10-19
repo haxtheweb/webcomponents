@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Scelta multipla",
+    "description": "Dumanda d'autovalutazione à scelta multipla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Dumanda",
+        "description": "Dumanda à a quale l'utilizatori devenu risponde."
+      },
+      {
+        "property": "randomize",
+        "title": "À l'azardu",
+        "description": "Mischjà e risposte dinamicamente."
+      },
+      {
+        "property": "singleOption",
+        "title": "Risposta unica",
+        "description": "Permette una sola risposta."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Furmatu di nutazione",
+        "description": "OER Schema: furmatu di nutazione di sta valutazione (per esempiu punti, lettera, percentuale, cumpimentu)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ughjettivu d'amparera",
+        "description": "OER Schema: ughjettivu d'amparera assuciatu à sta valutazione."
+      },
+      {
+        "property": "forCourse",
+        "title": "Corsu",
+        "description": "OER Schema: corsu per u quale hè destinata sta valutazione."
+      },
+      {
+        "property": "answers",
+        "title": "Risposte"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome di u quiz",
+        "description": "Nome di u quiz adupratu per l'identificazione xAPI in i sistemi d'analitica."
+      }
+    ]
+  }
+}

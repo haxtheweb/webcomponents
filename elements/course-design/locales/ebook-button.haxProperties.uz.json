@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Elektron kitob tugmasi",
+    "description": "Elektron kitobga havola qiluvchi tugma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Tugma sarlavhasi."
+      },
+      {
+        "property": "link",
+        "title": "Havola",
+        "description": "Bosilganda yoʻnaltiriladigan havola."
+      },
+      {
+        "property": "icon",
+        "title": "Belgi",
+        "description": "Bu havolani ifodalovchi belgi"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Ikani ndemanga za Disqus patsamba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Dzina lalifupi",
+        "description": "Dzina lalifupi la tsamba, lomwe limatsogolera wolandira script wa Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL ya Tsamba",
+        "description": "URL ya tsamba lomwe ndemangazo zalumikizidwa."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Chizindikiritso cha tsamba",
+        "description": "Chizindikiritso chapadera cha ndemanga za tsamba."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Mutu wa tsamba",
+        "description": "Mutu wa tsamba lomwe ndemangazo zalumikizidwa."
+      },
+      {
+        "property": "loadingText",
+        "title": "Mawu otsegula",
+        "description": "Mawu olengezedwa ndemanga zikutsegula."
+      },
+      {
+        "property": "lang",
+        "title": "Chilankhulo",
+        "description": "Khodi ya chilankhulo cha mawonekedwe a Disqus, mwachitsanzo en."
+      }
+    ]
+  }
+}

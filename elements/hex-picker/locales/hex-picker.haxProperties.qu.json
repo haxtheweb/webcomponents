@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex Akllaq",
+    "description": "Hexcode llimpi akllaq"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Chanin",
+        "description": "Kikin hex chanin"
+      },
+      {
+        "property": "disabled",
+        "title": "Hark'asqa",
+        "description": "Qillqa campota wañuchiy"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Hatun Rikuchiy",
+        "description": "Hatun rikuchiypi llimpita apay"
+      }
+    ]
+  }
+}

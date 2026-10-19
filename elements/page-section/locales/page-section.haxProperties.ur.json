@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "صفحہ سیکشن",
+    "description": "صفحے کے مواد اور اسکرین پر مبنی لے آؤٹس کے لیے سیکشن کنٹینر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "ڈیزائن انداز",
+        "description": "پہلے سے طے شدہ انداز جو متعلقہ ترتیبات کو اپ ڈیٹ کرتا ہے۔"
+      },
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "سیکشن کا پس منظر میڈیا۔"
+      },
+      {
+        "property": "bg",
+        "title": "پس منظر کا رنگ",
+        "description": "تصویر نہ ہونے پر پس منظر کا رنگ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "اسکرول بٹن",
+        "description": "اگلے سیکشن تک اسکرول کرنے والا بٹن دکھائیں۔"
+      },
+      {
+        "property": "fold",
+        "title": "فولڈ دکھائیں",
+        "description": "سیکشن کے نیچے بصری فولڈ دکھائیں۔"
+      },
+      {
+        "property": "full",
+        "title": "پوری اسکرین کا سائز",
+        "description": "ناظر کی اسکرین کی پوری اونچائی بھریں۔"
+      },
+      {
+        "property": "filter",
+        "title": "فلٹر لاگو کریں",
+        "description": "پس منظر کی تصویر پر بصری فلٹر لاگو کریں۔"
+      },
+      {
+        "slot": "",
+        "title": "مواد",
+        "description": "سیکشن کا مواد۔"
+      },
+      {
+        "slot": "entice",
+        "title": "ترغیب",
+        "description": "اختیاری ترغیبی مواد۔"
+      },
+      {
+        "slot": "buttons",
+        "title": "بٹن",
+        "description": "متن کے نیچے دکھایا جانے والا بٹنوں کا گروپ۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "اینکر متن",
+        "description": "نیویگیشن میں دکھایا جانے والا اینکر لیبل۔"
+      }
+    ]
+  }
+}

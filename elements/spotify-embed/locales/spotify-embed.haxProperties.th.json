@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "ตัวครอบสำหรับเครื่องเล่น Spotify ที่ฝัง"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "แหล่งที่มา",
+        "description": "ลิงก์ฝังหรือลิงก์แชร์จาก Spotify"
+      },
+      {
+        "property": "theme",
+        "title": "ธีม",
+        "description": "ธีมสีพื้นหลังสำหรับเครื่องเล่น",
+        "options": {
+          "": "ค่าเริ่มต้น",
+          "0": "ดำ"
+        }
+      },
+      {
+        "property": "size",
+        "title": "ขนาด",
+        "description": "ขนาดเครื่องเล่น",
+        "options": {
+          "normal": "ค่าเริ่มต้น",
+          "compact": "กะทัดรัด"
+        }
+      }
+    ]
+  }
+}

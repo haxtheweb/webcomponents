@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Discord-Communitys über eine Freigabe-URL einbetten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ressourcen-URL",
+        "description": "Ressourcen-URL."
+      },
+      {
+        "property": "height",
+        "title": "Höhe",
+        "description": "Höhe des Inhaltsrahmens."
+      },
+      {
+        "property": "width",
+        "title": "Breite",
+        "description": "Breite des Inhaltsrahmens."
+      }
+    ]
+  }
+}

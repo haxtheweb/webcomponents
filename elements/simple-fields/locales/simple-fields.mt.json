@@ -5,5 +5,9 @@
   "recordAudio": "Reġistra awdjo",
   "recordScreen": "Reġistra l-iskrin",
   "cancel": "Annulla",
-  "uploadMedia": "Tella' l-midja"
+  "uploadMedia": "Tella' l-midja",
+  "record": "Irrekordja",
+  "pause": "Waqqaf ir-reġistrazzjoni temporanjament",
+  "stopSave": "Waqqaf u Ssejvja",
+  "clickToTakePhoto": "Ikklikkja biex tieħu ritratt"
 }

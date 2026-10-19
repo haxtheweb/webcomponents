@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Блоки CMS",
+    "description": "Блоки CMS, ки дар бэкенд намоиш дода мешавад"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Модул",
+        "description": "Модул барои боркунӣ аз CMS-и мо"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta-и блок барои боркунӣ аз CMS-и мо"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Nā Lepili",
+    "description": "Papa lepili maʻalahi no ka hōʻike ʻana ma ka ʻaoʻao."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Nā Lepili",
+        "description": "Papa lepili i hoʻokaʻawale ʻia me ke koma."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Waihoʻoluʻu Kiko ʻAkomi",
+        "description": "E hoʻonoho ʻakomi i ka waihoʻoluʻu kiko ma muli o ka lepili."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu",
+        "description": "Waihoʻoluʻu no nā lepili."
+      }
+    ]
+  }
+}

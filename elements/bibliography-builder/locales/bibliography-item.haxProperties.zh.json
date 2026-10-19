@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "参考文献条目",
+    "description": "表示参考文献中单条引文的条目，支持多种格式和导出选项。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "类型",
+        "description": "引文类型",
+        "options": {
+          "web": "网页",
+          "journal": "期刊",
+          "book": "图书"
+        }
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "条目的标题"
+      },
+      {
+        "property": "authors",
+        "title": "作者",
+        "description": "时间线中的事件"
+      },
+      {
+        "property": "publisher",
+        "title": "出版者",
+        "description": "原始网站"
+      }
+    ]
+  }
+}

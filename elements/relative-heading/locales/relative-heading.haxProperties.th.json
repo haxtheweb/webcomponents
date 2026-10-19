@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "หัวเรื่องแบบสัมพัทธ์",
+    "description": "แสดงลำดับชั้นหัวเรื่องที่ถูกต้องตามหัวเรื่องของหน้าแม่"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID ทรัพยากรของหัวเรื่องแม่"
+      },
+      {
+        "property": "disableLink",
+        "description": "ปิดใช้ฟีเจอร์ปุ่มลิงก์"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "จัดปุ่มคัดลอกลิงก์ไว้ชิดขวาสุดของหัวเรื่อง"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "ระดับหัวเรื่องหากไม่พบหัวเรื่องแม่"
+      },
+      {
+        "property": "copyMessage",
+        "description": "แทนที่ข้อความเริ่มต้นของข้อความแจ้งเตือนเมื่อคัดลอกลิงก์"
+      },
+      {
+        "property": "linkLabel",
+        "description": "แทนที่ป้ายกำกับเริ่มต้นของปุ่มคัดลอกลิงก์"
+      },
+      {
+        "property": "linkIcon",
+        "description": "แทนที่ไอคอนเริ่มต้นของปุ่มคัดลอกลิงก์"
+      },
+      {
+        "property": "closeLabel",
+        "description": "แทนที่ป้ายกำกับเริ่มต้นของปุ่มปิดในข้อความแจ้งเตือนการคัดลอกลิงก์"
+      },
+      {
+        "property": "closeIcon",
+        "description": "แทนที่ไอคอนเริ่มต้นของปุ่มปิดในข้อความแจ้งเตือนการคัดลอกลิงก์"
+      }
+    ]
+  }
+}

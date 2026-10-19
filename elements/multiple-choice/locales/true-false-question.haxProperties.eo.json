@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Demando Vera / Malvera",
+    "description": "Vera-malvera demando"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Demando",
+        "description": "Demando, al kiu uzantoj respondu."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Ĝusta respondo"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nomo de la kvizo",
+        "description": "Nomo de la kvizo transdonata por uzo en xAPI-medioj por identigi ĉi tiun elementon"
+      }
+    ]
+  }
+}

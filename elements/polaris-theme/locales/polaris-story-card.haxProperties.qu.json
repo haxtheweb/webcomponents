@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris willakuy tarjeta",
+    "description": "Polaris willakuy tarjetata rikuchiy: qhipa rikch'awan, pilar sutichaywan, hatun qillqawanpas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Qhipa rikch'a",
+        "description": "Tarjetapa qhipanpi rikukuq rikch'a URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Qhipapa sayaynin",
+        "description": "Qhipa rikch'a tarjetata imayna hunt'achisqan (CSS background-size).",
+        "options": {
+          "cover": "Qatay (cover)",
+          "contain": "Ukhuchay (contain)",
+          "auto": "Kikinmanta (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Qhipapa k'askakuynin",
+        "description": "Uraykuchkaptin qhipa rikch'a imayna kasqan (CSS background-attachment).",
+        "options": {
+          "scroll": "Uraykuy (scroll)",
+          "fixed": "Takyasqa (fixed)",
+          "local": "Kaypi (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Pilar sutichay",
+        "description": "Tarjetapa hanaqninpi rikukuq hatun sanampakunapi pisi sutichay. Pakanapaq ch'usaqta saqiy."
+      },
+      {
+        "property": "label",
+        "title": "Tarjeta qillqa",
+        "description": "Uray panelpi rikukuq hatun qillqa."
+      },
+      {
+        "property": "link",
+        "title": "T'inki",
+        "description": "Llapan tarjetata p'istuq akllanalla chayana URL."
+      }
+    ]
+  }
+}

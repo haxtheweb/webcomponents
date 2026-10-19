@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Fertsjinstebadge",
+    "description": "Fisuele badge om oan te jaan dat in feardichheid helle is."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Badgetitel",
+        "description": "Titel toand op de badge."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Badgeôfbylding",
+        "description": "Ofbyldings-URL foar de badge."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Badgedetails",
+        "description": "Details oer de badge."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperkeppeling",
+        "description": "Keppeling dy't by de badge heart."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Badgefeardichheden",
+        "description": "Feardichheden toand op de badge."
+      },
+      {
+        "property": "skill",
+        "title": "Feardichheid (OER-skema)",
+        "description": "OER-skema: in learde feardichheid dy't helle is troch dit leardoel te foltôgjen."
+      }
+    ]
+  }
+}

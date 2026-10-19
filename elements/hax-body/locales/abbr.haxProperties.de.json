@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Abkürzung",
+    "description": "Abkürzung mit Tooltip für den vollständigen Begriff."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Sichtbarer Abkürzungstext."
+      },
+      {
+        "attribute": "title",
+        "title": "Wort",
+        "description": "Vollständiger Begriff, der beim Hovern angezeigt wird."
+      }
+    ]
+  }
+}

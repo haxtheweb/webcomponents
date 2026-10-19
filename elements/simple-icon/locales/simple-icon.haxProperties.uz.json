@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Belgi",
+    "description": "Toʻliq belgilar kutubxonasidan belgi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Belgi",
+        "description": "Koʻrsatiladigan belgi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Belgi uchun urgʻu rangi."
+      },
+      {
+        "property": "dark",
+        "title": "Qorongʻi",
+        "description": "Qorongʻi rejimdan foydalanish (teskari ranglar toʻplami)."
+      }
+    ]
+  }
+}

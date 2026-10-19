@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Baajị ihe ùgwù",
+    "description": "Baajị a na-ahụ anya iji gosi inweta nka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Aha baajị",
+        "description": "Aha egosiri na baajị."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Onyonyo baajị",
+        "description": "URL onyonyo maka baajị."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Nkọwa baajị",
+        "description": "Nkọwa gbasara baajị."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlink",
+        "description": "Njikọ jikọtara na baajị."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Nka baajị",
+        "description": "Nka egosiri na baajị."
+      },
+      {
+        "property": "skill",
+        "title": "Nka (OER Schema)",
+        "description": "OER Schema: nka a mụtara enwetara site n'imecha ebumnobi mmụta a."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "तस्बिर खण्ड",
+    "description": "पृष्ठको खण्ड छुट्याउने पूर्ण चौडाइको तस्बिर।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "पृष्ठभूमि तस्बिर।"
+      },
+      {
+        "property": "caption",
+        "description": "पाठ शीर्षक।"
+      }
+    ]
+  }
+}

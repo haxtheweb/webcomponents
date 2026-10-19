@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ichki sahifalar bloki",
+    "description": "Joriy sahifaning ichki sahifalarini koʻrsatuvchi dinamik blok"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dinamik usul",
+        "description": "Ushbu elementga nisbatan ichki sahifalarni qanday hisoblash",
+        "options": {
+          "active": "Faol ichki sahifalar",
+          "parent": "Yuqori sahifaning ichki sahifalari",
+          "ancestor": "Eng yuqori ajdoddan boshlab barcha ichki sahifalar"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Boshlangʻich daraja"
+      },
+      {
+        "property": "end",
+        "title": "Yakuniy daraja"
+      }
+    ]
+  }
+}

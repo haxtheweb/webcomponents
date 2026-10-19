@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX simi sumaq",
+    "description": "HAX-paq logo elemento, HAX-wan llamk'aq elemento hina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Churanapaq HAX logopa sayaynin",
+        "options": {
+          "mini": "Ancha huch'uy",
+          "small": "Huch'uy",
+          "normal": "Kikin",
+          "large": "Hatun"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Logota hatun sanampakunaman tikrachinapaq"
+      }
+    ]
+  }
+}

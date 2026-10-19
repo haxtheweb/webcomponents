@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Iki bisa nampilake video kanthi cara sing gampang diakses apa wae sumbere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL kanggo media iki."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Irah-irahan",
+        "description": "Judhul prasaja ing ngisor video"
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna aksen",
+        "description": "Pilih warna aksen kanggo pamuter."
+      },
+      {
+        "property": "track",
+        "title": "Subtitle tertutup",
+        "description": "URL kanggo berkas subtitle."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Gambar thumbnail",
+        "description": "Opsional. URL kanggo gambar thumbnail/poster."
+      },
+      {
+        "property": "learningMode",
+        "title": "Aktifake mode sinau",
+        "description": "Mateni maju cepet lan mundur."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Busak tombol bukak ing YouTube",
+        "description": "Mbusak tombol kanggo mbukak video ing YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Lebokake link kanggo mbagekake?",
+        "description": "Nyedhiyakake link kanggo mbagekake video."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Nuduhake apa nggunakake CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Idini puter ing latar mburi",
+        "description": "Video mandheg / muter kanthi otomatis nalika tab ilang fokus; iki ngidini video muter tanpa tab duwe fokus"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema peteng kanggo transkrip",
+        "description": "Aktifake tema peteng kanggo transkrip."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Pateni Interaktif",
+        "description": "Pateni mode interaktif sing nggawe transkrip bisa diklik."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Dhelikake cap wektu",
+        "description": "Dhelikake cap wektu ing transkrip."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Dhelikake Transkrip",
+        "description": "Dhelikake transkrip kanthi gawan."
+      },
+      {
+        "property": "lang",
+        "title": "Basa",
+        "description": "Basa saka media."
+      }
+    ]
+  }
+}

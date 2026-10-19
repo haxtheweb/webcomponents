@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Qabiyyee Fuulaa Carraa",
+    "description": "Fuula filatame irraa elementii sadarkaa olaanaa carraan agarsiisi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Fuula",
+        "description": "Fuula qabiyyee carraa irraa fudhatamu fili. Elementichi elementoota HTML sadarkaa olaanaa fuula kanaa keessaa tokko carraan agarsiisa."
+      }
+    ]
+  }
+}

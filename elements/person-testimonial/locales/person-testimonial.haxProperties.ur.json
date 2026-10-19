@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "تصویری اقتباس",
+    "description": "اختیاری تصویر کے ساتھ اسٹائل شدہ اقتباس۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "تاثرات میں تصویر شامل کریں۔"
+      },
+      {
+        "property": "name",
+        "title": "پورا نام",
+        "description": "تاثرات دینے والے شخص کا نام۔"
+      },
+      {
+        "property": "position",
+        "title": "عہدہ یا ملازمت کا عنوان",
+        "description": "شخص کا عہدہ یا ملازمت کا عنوان۔"
+      },
+      {
+        "slot": "",
+        "title": "اقتباس",
+        "description": "تاثرات کے مصنف کا اقتباس۔"
+      }
+    ]
+  }
+}

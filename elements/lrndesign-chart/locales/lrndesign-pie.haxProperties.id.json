@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Diagram Lingkaran",
+    "description": "Membuat diagram yang aksesibel berdasarkan CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Warna Aksen",
+        "description": "Warna aksen opsional."
+      },
+      {
+        "title": "Tema Gelap",
+        "description": "Aktifkan Tema Gelap"
+      },
+      {
+        "title": "File CSV",
+        "description": "Muat data dari CSV."
+      },
+      {
+        "title": "Judul Diagram",
+        "description": "Teks alt yang aksesibel untuk diagram Anda."
+      },
+      {
+        "title": "Deskripsi Diagram",
+        "description": "Deskripsi yang aksesibel untuk diagram Anda."
+      },
+      {
+        "title": "Nama Skala",
+        "description": "Rasio lebar:tinggi diagram (Lihat https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings untuk $ct-scales dan $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Donat"
+      },
+      {
+        "title": "Tampilkan Label"
+      },
+      {
+        "title": "Sudut Awal"
+      },
+      {
+        "title": "Padding"
+      },
+      {
+        "title": "Total",
+        "description": "Total opsional yang dapat Anda tentukan. Dengan menentukan nilai total, jumlah nilai dalam seri harus sama dengan total ini untuk menggambar lingkaran penuh. Anda dapat menggunakan parameter ini untuk menggambar hanya sebagian diagram lingkaran atau diagram pengukur."
+      },
+      {
+        "title": "Abaikan Nilai Kosong",
+        "description": "Nilai kosong akan diabaikan agar tidak menggambar irisan dan label yang tidak perlu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Balik Data",
+        "description": "Balik data termasuk label, urutan seri, serta seluruh larik data seri."
+      },
+      {
+        "title": "Tabel HTML",
+        "description": "Opsional: Muat data sebagai tabel HTML."
+      },
+      {
+        "title": "Lebar Goresan Donat"
+      },
+      {
+        "title": "Donat Padat",
+        "description": "Gambar segmen donat sebagai bentuk, bukan goresan."
+      },
+      {
+        "title": "Arah Label",
+        "description": "Gambar segmen donat sebagai bentuk, bukan goresan.",
+        "options": {
+          "neutral": "netral",
+          "explode": "ke luar",
+          "implode": "ke dalam"
+        }
+      },
+      {
+        "title": "Offset Label",
+        "description": "Offset posisi label dari posisi standar, yaitu setengah jarak jari-jari. Nilai ini bisa positif atau negatif. Nilai positif akan menempatkan label menjauh dari pusat."
+      },
+      {
+        "title": "Posisi Label",
+        "options": {
+          "inside": "di dalam",
+          "outside": "di luar",
+          "center": "tengah"
+        }
+      }
+    ]
+  }
+}

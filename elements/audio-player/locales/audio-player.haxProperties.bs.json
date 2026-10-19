@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Ovo može prikazati video na vrlo pristupačan način bez obzira na izvor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Izvor",
+        "description": "URL ovog medija."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Naslov",
+        "description": "Jednostavan naslov ispod videa"
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Odaberite boju naglaska za plejer."
+      },
+      {
+        "property": "track",
+        "title": "Titlovi",
+        "description": "URL datoteke s titlovima."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Sličica",
+        "description": "Opcionalno. URL sličice/poster slike."
+      },
+      {
+        "property": "learningMode",
+        "title": "Omogući način učenja",
+        "description": "Onemogućava premotavanje naprijed i nazad."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Ukloni dugme Otvori na YouTubeu",
+        "description": "Uklanja dugme za otvaranje videa na YouTubeu."
+      },
+      {
+        "property": "linkable",
+        "title": "Uključiti link za dijeljenje?",
+        "description": "Pruža link za dijeljenje videa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Označava da li koristiti CORS.",
+        "options": {
+          "anonymous": "anonimno",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Dozvoli reprodukciju u pozadini",
+        "description": "Videozapisi se automatski pauziraju / pokreću kada kartica izgubi fokus; ovo omogućava reprodukciju videa bez fokusa na kartici"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tamna tema za transkript",
+        "description": "Omogući tamnu temu za transkript."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Onemogući interaktivnost",
+        "description": "Onemogući interaktivni način koji transkript čini klikabilnim."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Sakrij vremenske oznake",
+        "description": "Sakrij vremenske oznake u transkriptu."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Sakrij transkript",
+        "description": "Sakrij transkript prema zadanim postavkama."
+      },
+      {
+        "property": "lang",
+        "title": "Jezik",
+        "description": "Jezik medija."
+      }
+    ]
+  }
+}

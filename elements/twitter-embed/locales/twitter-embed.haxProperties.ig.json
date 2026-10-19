@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Ntinye Twitter (X)",
+    "description": "Tinye tweet sitere na X n'ọnọdụ ya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL Tweet",
+        "description": "URL nke tweet a ga-etinye."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Isiokwu",
+        "description": "Isiokwu nchara nchara ma ọ bụ ọchịchịrị maka tweet X.",
+        "options": {
+          "light": "Nchara nchara",
+          "dark": "Ọchịchịrị"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Gbochie windo mpụta mgbe a pịrị",
+        "description": "Gbochie ndị ọrụ imepe tweet ahụ na x.com."
+      }
+    ]
+  }
+}

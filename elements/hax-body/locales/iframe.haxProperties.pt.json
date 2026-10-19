@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Incorporar conteúdo web externo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Fonte",
+        "description": "URL deste recurso."
+      }
+    ]
+  }
+}

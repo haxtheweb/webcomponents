@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Rêxistina stûnan",
+    "description": "Materyalê di stûnên sade de bi cih bike"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Rêxistina Stûnan",
+        "description": "Şêwaza pêşkêşkirina van tiştan (dibe ku ji bo ekranên biçûk biguhere)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Responsive neçalak bike",
+        "description": "Qutiyê nîşan bike da ku stûn li ser ekranên mezin bimînin, lê li ser ekranên herî biçûk dîsa li ser hev rêz bibin"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Valahiya Hundirîn a Tiştan",
+        "description": "Valahiya hundirîn di nav her tiştî de"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Kenarên tiştan",
+        "description": "Kenara navbera tiştan"
+      }
+    ]
+  }
+}

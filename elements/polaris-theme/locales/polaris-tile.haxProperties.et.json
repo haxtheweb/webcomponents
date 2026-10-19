@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polarise paan",
+    "description": "Kuva Polarise paan pealkirja, valikulise lisateksti ja valikulise lingiga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Põhitekst",
+        "description": "Paani põhitekst."
+      },
+      {
+        "property": "line2",
+        "title": "Lisatekst",
+        "description": "Valikuline lisatekst."
+      },
+      {
+        "property": "type",
+        "title": "Paani stiil",
+        "description": "Paani eelseadistatud visuaalne stiil.",
+        "options": {
+          "1": "Stiil 1",
+          "2": "Stiil 2",
+          "3": "Stiil 3",
+          "4": "Stiil 4",
+          "5": "Stiil 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Taustapilt",
+        "description": "Taustapildi URL, mida kasutavad pilti toetavad paanistiilid."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Valikuline siht-URL paani toimingu jaoks."
+      }
+    ]
+  }
+}

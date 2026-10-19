@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "పదకోశం",
+    "description": "పదకోశ పదం."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "పదం"
+      },
+      {
+        "property": "information",
+        "title": "నిర్వచనం",
+        "description": "పదాన్ని క్లిక్ చేసినప్పుడు చూపబడే నిర్వచనం."
+      },
+      {
+        "property": "popoverMode",
+        "title": "పాప్‌ఓవర్",
+        "description": "నిర్వచనాన్ని ఇన్‌లైన్‌కు బదులుగా పాప్‌ఓవర్‌లో ప్రదర్శించండి."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "లింక్‌లు",
+        "description": "ఈ పదంతో అనుబంధించిన అనుబంధ లింక్‌ల జాబితా."
+      }
+    ]
+  }
+}

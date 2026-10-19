@@ -122,5 +122,21 @@
   "recent": "Së fundmi",
   "popular": "Popullore",
   "copiedToClipboard": "U kopjua në clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Informacioni i imazhit",
+  "imageActions": "Veprimet e imazhit",
+  "imageRecommendations": "Rekomandimet për imazhin",
+  "compressImage": "Ngjesh imazhin",
+  "resizeTo": "Ndrysho përmasat në",
+  "created": "Krijuar",
+  "size": "Madhësia",
+  "dimensions": "Përmasat",
+  "type": "Lloji",
+  "done": "u krye",
+  "noFileUuid": "Referenca e skedarit nuk është e disponueshme; ngarkojeni përsëri për të aktivizuar veprimet.",
+  "fileOpsUnavailable": "Veprimet me skedarë nuk janë të disponueshme për këtë sajt.",
+  "fileOpFailed": "Veprimi me skedarin dështoi.",
+  "fileExtensionNotAllowed": "Kjo fushë pranon vetëm llojet e mëposhtme të skedarëve:",
+  "fileTypeNotAllowed": "Kjo fushë pranon vetëm llojet e mëposhtme të medias:",
+  "transformFailed": "Transformimi pas ngarkimit dështoi; skedari origjinal u ruajt."
 }

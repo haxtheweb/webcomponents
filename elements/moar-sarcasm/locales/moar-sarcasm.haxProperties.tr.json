@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "İğneleme",
+    "description": "Metni alaycı bir şekilde sunma"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Metin",
+        "description": "Alaycı hale getirilecek metin"
+      }
+    ]
+  }
+}

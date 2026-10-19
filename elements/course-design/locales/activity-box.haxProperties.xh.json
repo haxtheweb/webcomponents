@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ibhokisi yoMsebenzi",
+    "description": "Ibhloko encinci yesihloko enesitayile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "I-icon",
+        "description": "I-icon eboniswa ecaleni kwebhokisi yomsebenzi."
+      },
+      {
+        "property": "tag",
+        "title": "Ithegi yebhokisi yomsebenzi",
+        "description": "Ithegi eboniswa kwibhokisi yomsebenzi."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Ungafaki Mbala",
+        "description": "Thintela imibala ekubeni isetyenziswe kwi-icon."
+      }
+    ]
+  }
+}

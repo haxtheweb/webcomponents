@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "ធ្វើឱ្យ GIF មានចលនាអាចចូលប្រើបាន។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF មានចលនា",
+        "description": "URL សម្រាប់ GIF មានចលនា។"
+      },
+      {
+        "property": "alt",
+        "title": "អត្ថបទជំនួស",
+        "description": "អត្ថបទជំនួសសម្រាប់រូបភាព។"
+      },
+      {
+        "property": "longdesc",
+        "title": "ការពិពណ៌នាវែង",
+        "description": "ការពិពណ៌នាវែងនៃ GIF សម្រាប់ភាពងាយស្រួលចូលប្រើ។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "រូបភាពនឹង",
+        "description": "URL សម្រាប់កំណែរូបភាពនឹងនៃ GIF។"
+      }
+    ]
+  }
+}

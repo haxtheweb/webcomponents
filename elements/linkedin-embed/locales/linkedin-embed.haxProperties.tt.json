@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn урнаштыру",
+    "description": "LinkedIn профиль карточкасын урнаштырырга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Шәхси исем",
+        "description": "LinkedIn шәхси кулланучы исеме өлеше."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Локаль",
+        "description": "en_US кебек локаль метамәгълүмат кыйммәте."
+      }
+    ]
+  }
+}

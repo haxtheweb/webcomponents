@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "لفظ",
+    "description": "ذخیرہ الفاظ دا لفظ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "اصطلاح"
+      },
+      {
+        "slot": "",
+        "title": "تعریف",
+        "description": "لفظ تے کلک کرن تے وکھاؤن والی تعریف۔"
+      },
+      {
+        "property": "description",
+        "title": "تفصیل (OER سکیما)",
+        "description": "OER سکیما: ذخیرہ الفاظ دے لفظ دی چھوٹی تفصیل۔ خالی چھڈن تے تعریف دے متن توں آپے بھر جاندی اے۔"
+      }
+    ]
+  }
+}

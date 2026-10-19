@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "کاشی Polaris",
+    "description": "نمایش کاشی Polaris با عنوان، متن پشتیبان اختیاری و پیوند اختیاری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "متن اصلی",
+        "description": "متن اصلی کاشی."
+      },
+      {
+        "property": "line2",
+        "title": "متن فرعی",
+        "description": "متن پشتیبان اختیاری."
+      },
+      {
+        "property": "type",
+        "title": "سبک کاشی",
+        "description": "سبک دیداری ازپیش‌تعیین‌شدهٔ کاشی.",
+        "options": {
+          "1": "سبک ۱",
+          "2": "سبک ۲",
+          "3": "سبک ۳",
+          "4": "سبک ۴",
+          "5": "سبک ۵"
+        }
+      },
+      {
+        "property": "image",
+        "title": "تصویر پس‌زمینه",
+        "description": "URL تصویر پس‌زمینه که سبک‌های کاشی دارای تصویر از آن استفاده می‌کنند."
+      },
+      {
+        "property": "link",
+        "title": "پیوند",
+        "description": "URL مقصد اختیاری برای کنش کاشی."
+      }
+    ]
+  }
+}

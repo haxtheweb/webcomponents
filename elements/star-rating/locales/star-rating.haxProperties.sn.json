@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Chiyero cheNyeredzi",
+    "description": "Wijeti yekuratidza chiyero kana bhatani rekuyera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Mamakisi",
+        "description": "Kukosha kwemamakisi aripo."
+      },
+      {
+        "property": "possible",
+        "title": "Zvinogoneka",
+        "description": "Mamakisi epamusoro anogoneka."
+      },
+      {
+        "property": "numStars",
+        "title": "Nhamba yeNyeredzi",
+        "description": "Nhamba yenyeredzi dzinoratidzwa."
+      },
+      {
+        "property": "interactive",
+        "title": "Inopindurana",
+        "description": "Bvumira mushandisi kuisa chiyero."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Modhi yeChiyero cheRubric",
+        "description": "Buritsa metadata yeOER Schema RubricScale neRubricLevel (levelOrdinal/levelPoints) panyeredzi imwe neimwe."
+      }
+    ]
+  }
+}

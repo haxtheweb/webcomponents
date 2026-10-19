@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tabs",
+    "description": "Sett ta' tabs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Tikketta (għall-aċċessibbiltà)",
+        "description": "Tikketta aċċessibbli għas-sett ta' tabs."
+      },
+      {
+        "property": "disabled",
+        "title": "Diżattivat",
+        "description": "Iddiżattiva t-tabs kollha."
+      },
+      {
+        "property": "hidden",
+        "title": "Moħbi",
+        "description": "Aħbi s-sett ta' tabs."
+      },
+      {
+        "property": "sticky",
+        "title": "Fiss",
+        "description": "Żomm it-tabs orizzontali fin-naħa ta' fuq waqt li tiskrollja."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Breakpoint tat-tqassim",
+        "description": "Breakpoint għal tabs orizzontali; uża -1 għal vertikali biss."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Breakpoint tal-ikoni",
+        "description": "Breakpoint biex jintwera t-test mal-ikoni. Il-valur awtomatiku huwa 0; uża -1 għall-modalità ta' ikoni biss."
+      },
+      {
+        "slot": "",
+        "title": "Tabs",
+        "description": "Serje ta' elementi <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID uniku",
+        "description": "ID uniku għal dan is-sett ta' tabs."
+      }
+    ]
+  }
+}

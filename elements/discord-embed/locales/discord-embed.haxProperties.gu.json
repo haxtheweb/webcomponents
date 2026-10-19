@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "શેર URL પરથી Discord સમુદાયો એમ્બેડ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "સંસાધન URL",
+        "description": "સંસાધન URL."
+      },
+      {
+        "property": "height",
+        "title": "ઊંચાઈ",
+        "description": "સામગ્રી ફ્રેમની ઊંચાઈ."
+      },
+      {
+        "property": "width",
+        "title": "પહોળાઈ",
+        "description": "સામગ્રી ફ્રેમની પહોળાઈ."
+      }
+    ]
+  }
+}

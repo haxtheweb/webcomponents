@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html block",
+    "description": "Isang pangunahing HTML block na nagbibigay ng HAXschema wiring"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML code na gusto mong ipakita sa nilalaman"
+      }
+    ]
+  }
+}

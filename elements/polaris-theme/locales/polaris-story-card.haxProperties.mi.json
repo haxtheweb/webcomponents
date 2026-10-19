@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kāri kōrero Polaris",
+    "description": "Whakaaturia tētahi kāri kōrero Polaris me tētahi whakaahua papamuri, tapanga pou, me te kupu upoko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Whakaahua papamuri",
+        "description": "URL whakaahua ka whakaaturia hei papamuri o te kāri."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Rahi papamuri",
+        "description": "Me pēhea te whakaahua papamuri e whakakī ai i te kāri (CSS background-size).",
+        "options": {
+          "cover": "Uhi (cover)",
+          "contain": "Pupuri (contain)",
+          "auto": "Aunoa (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Tāpiritanga papamuri",
+        "description": "Te whanonga o te whakaahua papamuri i te wā panuku (CSS background-attachment).",
+        "options": {
+          "scroll": "Panuku (scroll)",
+          "fixed": "Pūmau (fixed)",
+          "local": "Paetata (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Tapanga pou",
+        "description": "He tapanga pū matua poto ka whakaaturia ki runga o te kāri. Waiho kia wātea hei huna."
+      },
+      {
+        "property": "label",
+        "title": "Kupu kāri",
+        "description": "Kupu matua ka whakaaturia i te pae raro."
+      },
+      {
+        "property": "link",
+        "title": "Hono",
+        "description": "URL taunga kōwhiri e takai ana i te kāri katoa."
+      }
+    ]
+  }
+}

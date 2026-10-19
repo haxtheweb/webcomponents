@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "గ్రంథసూచి అంశం",
+    "description": "గ్రంథసూచిలో ఒకే ఉల్లేఖనాన్ని సూచించే అంశం, బహుళ ఫార్మాట్‌లు మరియు ఎగుమతి ఎంపికలకు మద్దతిస్తుంది."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "రకం",
+        "description": "ఉల్లేఖన రకం",
+        "options": {
+          "web": "వెబ్",
+          "journal": "జర్నల్",
+          "book": "పుస్తకం"
+        }
+      },
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "అంశం యొక్క శీర్షిక"
+      },
+      {
+        "property": "authors",
+        "title": "రచయిత(లు)",
+        "description": "టైమ్‌లైన్‌లోని సంఘటనలు"
+      },
+      {
+        "property": "publisher",
+        "title": "ప్రచురణకర్త",
+        "description": "అసలు వెబ్‌సైట్"
+      }
+    ]
+  }
+}

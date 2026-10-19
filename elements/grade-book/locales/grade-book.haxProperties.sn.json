@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Bhuku reMamakisi",
+    "description": "Bhuku remamakisi risina musoro rinotsigira mabackend akawanda nema rubric."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kwakabva",
+        "description": "Mhando yesosi yedata (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "Blob yedata reJSON",
+          "filesystem": "Fairo sisitimu"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Data reSosi",
+        "description": "URL kana data reJSON rebhuku remamakisi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kududza Kosi",
+        "description": "Chiziviso chekosi chinoburitswa se oer:forCourse pane imwe neimwe Assessment resource."
+      }
+    ]
+  }
+}

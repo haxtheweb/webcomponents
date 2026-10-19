@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "فلیش کارڈ",
+    "description": "اگلے تے پچھلے پاسے والے فلیش کارڈاں نال تصورات دی مشق کرو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "کارڈ دا اگلا پاسا",
+        "description": "اگلے پاسے دا متن یا سوال۔"
+      },
+      {
+        "slot": "back",
+        "title": "کارڈ دا پچھلا پاسا",
+        "description": "متوقع جواب۔"
+      },
+      {
+        "property": "imgSource",
+        "title": "تصویر دا سرچشمہ",
+        "description": "کارڈ لئی ورتی جاوݨ والی تصویر فائل۔ ایہہ تصویر کی ورڈ اُتے حاوی اے۔"
+      },
+      {
+        "property": "typeOfAction",
+        "title": "عمل دی قسم",
+        "description": "OER Schema: ایس مشق وچ شامل عمل دی قسم (جیویں پڑھنا، لکھنا، بناوݨا، تحقیق، سنݨا، ویکھݨا، غور کرنا، گل بات، مشاہدہ، پیش کرنا، جائزہ)۔"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "سکھݨ دا مقصد",
+        "description": "OER Schema: اوس سکھݨ دے مقصد دا ID یا URL جیہدی ایہہ مشق مدد کردی اے۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "گوڑھا",
+        "description": "گوڑھا موڈ ورتو۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "کارڈ دا نمایاں رنگ۔"
+      },
+      {
+        "property": "imgKeyword",
+        "title": "تصویر کی ورڈ",
+        "description": "بے ترتیب تصویر لئی کی ورڈ۔ تصویر دا سرچشمہ ایہدے اُتے حاوی اے۔"
+      }
+    ]
+  }
+}

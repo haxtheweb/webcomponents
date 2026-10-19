@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Sehemu ya picha",
+    "description": "Picha ya upana kamili inayogawa sehemu ya ukurasa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Picha ya usuli."
+      },
+      {
+        "property": "caption",
+        "description": "Kichwa cha maandishi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Poskad",
+    "description": "Bahan media yang menyeronokkan yang direka untuk kelihatan seperti poskad fizikal dari suatu tempat"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kepada",
+        "description": "Kepada siapa ini dihantar?"
+      },
+      {
+        "property": "from",
+        "title": "Daripada",
+        "description": "Siapakah anda?"
+      },
+      {
+        "property": "message",
+        "title": "Mesej",
+        "description": "Apakah yang ingin anda katakan?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Cop Pos Dari",
+        "description": "Dari manakah kad ini dihantar?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Sumber Foto Utama",
+        "description": "Di manakah foto anda terletak?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Sumber Foto Setem",
+        "description": "Di manakah foto anda terletak?"
+      }
+    ]
+  }
+}

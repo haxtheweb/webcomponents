@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "قائمة تشغيل",
+    "description": "عرض أي نوع من المحتوى في قائمة تشغيل."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "المصدر",
+        "description": "المحتوى المعروض في قائمة التشغيل."
+      },
+      {
+        "property": "edit",
+        "title": "وضع التحرير",
+        "description": "التبديل بين وضع التحرير ووضع المعاينة لقائمة التشغيل."
+      },
+      {
+        "property": "navigation",
+        "title": "التنقل",
+        "description": "إظهار أزرار التنقل للأمام والخلف."
+      },
+      {
+        "property": "pagination",
+        "title": "ترقيم الصفحات",
+        "description": "إظهار نقاط ترقيم الصفحات."
+      },
+      {
+        "property": "orientation",
+        "title": "الاتجاه",
+        "description": "اتجاه الشرائح.",
+        "options": {
+          "horizontal": "أفقي",
+          "vertical": "عمودي"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "الشريحة الأولى",
+        "description": "فهرس الشريحة التي يُركَّز عليها في البداية."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "نسبة العرض إلى الارتفاع",
+        "description": "نسبة العرض إلى الارتفاع للشرائح.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

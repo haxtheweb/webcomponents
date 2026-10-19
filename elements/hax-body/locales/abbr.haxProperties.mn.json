@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Товчилсон үг",
+    "description": "Бүтэн нэр томьёоны зөвлөмж бүхий товчилсон үг."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Харагдах товчилсон текст."
+      },
+      {
+        "attribute": "title",
+        "title": "Үг",
+        "description": "Курсор аваачихад харагдах бүтэн нэр томьёо."
+      }
+    ]
+  }
+}

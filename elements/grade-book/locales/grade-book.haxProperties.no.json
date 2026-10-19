@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Karakterbok",
+    "description": "En hodeløs karakterbok som støtter flere backender med vurderingsrubrikker."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "Type datakilde (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-endepunkt (JSON)",
+          "json": "JSON-datablob",
+          "filesystem": "Filsystem"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Kildedata",
+        "description": "URL eller JSON-data for karakterboken."
+      },
+      {
+        "property": "forCourse",
+        "title": "Emnereferanse",
+        "description": "Emneidentifikator som angis som oer:forCourse på hver Assessment-ressurs."
+      }
+    ]
+  }
+}

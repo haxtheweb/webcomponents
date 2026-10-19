@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Comparaison d'images",
+    "description": "Faire glisser une image par-dessus une autre pour les comparer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Image du dessus",
+        "description": "Image du dessus à faire glisser sur l'image du dessous."
+      },
+      {
+        "property": "topAlt",
+        "title": "Texte alternatif de l'image du dessus",
+        "description": "Texte alternatif obligatoire pour l'accessibilité."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Image du dessous",
+        "description": "Image du dessous affichée sous l'image du dessus."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Texte alternatif de l'image du dessous",
+        "description": "Texte alternatif obligatoire pour l'accessibilité."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Comportement",
+        "description": "Choisissez le mode balayage (par défaut) ou le mode opacité de l'image du dessus."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Couleur de la barre du curseur."
+      },
+      {
+        "property": "dark",
+        "title": "Sombre",
+        "description": "Inverser la couleur de la barre du curseur."
+      },
+      {
+        "property": "position",
+        "title": "Position initiale",
+        "description": "Position de départ, de 0 à 100."
+      }
+    ]
+  }
+}

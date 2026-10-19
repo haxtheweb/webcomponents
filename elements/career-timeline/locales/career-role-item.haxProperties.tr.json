@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Kariyer Rolü",
+    "description": "Bir kuruluş içindeki tek bir rol"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlık"
+      },
+      {
+        "property": "startDate",
+        "title": "Başlangıç Tarihi"
+      },
+      {
+        "property": "endDate",
+        "title": "Bitiş Tarihi (İsteğe Bağlı)"
+      },
+      {
+        "property": "skills",
+        "title": "İlişkili Beceriler",
+        "description": "Beceri eklemeye başlamak için + düğmesini seçin"
+      }
+    ]
+  }
+}

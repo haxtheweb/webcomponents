@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Utheving",
+    "description": "Uthev tekst i linjen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Uthevet tekst."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bhokisi reChiitwa",
+    "description": "Bhuroka diki remusoro rakashongedzwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni inoratidzwa parutivi pebhokisi rechiitwa."
+      },
+      {
+        "property": "tag",
+        "title": "Tagi yebhokisi rechiitwa",
+        "description": "Tagi inoratidzwa mubhokisi rechiitwa."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Pasina Kupa Ruvara",
+        "description": "Dzivirira kuti mavara arege kuiswa paaikoni."
+      }
+    ]
+  }
+}

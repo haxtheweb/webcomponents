@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "ការរចនាវគ្គសិក្សា",
+    "description": "ធុងសម្រាប់សម្ភារៈអប់រំ និងធាតុរចនាវគ្គសិក្សា។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "លេខសម្គាល់វគ្គសិក្សា",
+        "description": "OER Schema៖ លេខសម្គាល់នៃវគ្គសិក្សា ឧ. MATH-100។"
+      },
+      {
+        "property": "termOffered",
+        "title": "វគ្គដែលផ្ដល់ជូន",
+        "description": "OER Schema៖ វគ្គសិក្សាឆមាសដែលវគ្គសិក្សាត្រូវបានផ្ដល់ជូន។"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "ទម្រង់នៃការបង្រៀន",
+        "description": "OER Schema៖ ទម្រង់ដែលប្រើដើម្បីបង្រៀនវគ្គសិក្សា (ឧ. ផ្ទាល់ អនឡាញ ចម្រុះ)។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "គ្រូបង្រៀនចម្បង",
+        "description": "OER Schema៖ គ្រូបង្រៀនចម្បងសម្រាប់វគ្គសិក្សា។"
+      },
+      {
+        "property": "syllabus",
+        "title": "URL កម្មវិធីសិក្សា",
+        "description": "OER Schema៖ URL ទៅកម្មវិធីសិក្សានៃវគ្គសិក្សា។"
+      }
+    ]
+  }
+}

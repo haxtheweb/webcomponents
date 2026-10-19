@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "מעם",
+    "description": "מאַכט אַ מעם פֿון אַ בילד."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "מקור",
+        "description": "מקור־URL פֿאַרן מעם־בילד."
+      },
+      {
+        "property": "topText",
+        "title": "אױבערשטער טעקסט",
+        "description": "אױבערשטער טעקסט פֿונעם מעם."
+      },
+      {
+        "property": "bottomText",
+        "title": "אונטערשטער טעקסט",
+        "description": "אונטערשטער טעקסט פֿונעם מעם."
+      },
+      {
+        "property": "alt",
+        "title": "אַלטערנאַטיווער טעקסט",
+        "description": "טעקסט וואָס באַשרײַבט דאָס בילד פֿאַר בלינדע באַניצער."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "קאַץ גנבֿעט זיך צו צו אַ קלײנער שפּילכל",
+        "topText": "איך ברענג אײַך",
+        "bottomText": "דעם טויט"
+      }
+    }
+  ]
+}

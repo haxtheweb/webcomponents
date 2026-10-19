@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Libro de cualificacións",
+    "description": "Un libro de cualificacións sen interface que admite varios backends con rúbricas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orixe",
+        "description": "Tipo de fonte de datos (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Punto final URL (JSON)",
+          "json": "Bloque de datos JSON",
+          "filesystem": "Sistema de ficheiros"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Datos de orixe",
+        "description": "URL ou datos JSON para o libro de cualificacións."
+      },
+      {
+        "property": "forCourse",
+        "title": "Referencia do curso",
+        "description": "Identificador do curso emitido como oer:forCourse en cada recurso Assessment."
+      }
+    ]
+  }
+}

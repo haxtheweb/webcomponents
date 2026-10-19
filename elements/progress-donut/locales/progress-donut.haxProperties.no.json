@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Fremdriftsring",
+    "description": "Fremdriftsring"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Tittelen på elementet"
+      },
+      {
+        "property": "desc",
+        "title": "Beskrivelse",
+        "description": "Tilgjengelig lang beskrivelse"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Bildekilde",
+        "description": "Kilde for bildet inne i ringen."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-tekst for bilde",
+        "description": "Alt-tekst for bildet."
+      },
+      {
+        "property": "animated",
+        "title": "Animert",
+        "description": "Om fremdriften animeres ved første innlasting"
+      },
+      {
+        "property": "complete",
+        "title": "Fullført",
+        "description": "En matrise med fullførte verdier."
+      },
+      {
+        "property": "total",
+        "title": "Totalt",
+        "description": "Totalt når alle elementer er fullført."
+      },
+      {
+        "property": "startAngle",
+        "title": "Startvinkel",
+        "description": "Vinkelen på ringen der fremdriften starter"
+      }
+    ]
+  }
+}

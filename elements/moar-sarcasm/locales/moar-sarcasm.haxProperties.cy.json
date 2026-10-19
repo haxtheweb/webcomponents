@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Coegni",
+    "description": "Cyflwyno testun mewn ffordd bryfoclyd"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Testun",
+        "description": "Testun i'w wneud yn goeglyd"
+      }
+    ]
+  }
+}

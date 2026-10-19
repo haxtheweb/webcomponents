@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Grundläggande bild",
+    "description": "Grundläggande bildelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Källa",
+        "description": "Bild-URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt-text",
+        "description": "Alternativ text för tillgänglighet och SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Höjd",
+        "description": "Höjd i pixlar. Lämna tomt för att använda naturlig storlek."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Bildinläsning",
+        "description": "Välj när bilden läses in.",
+        "options": {
+          "lazy": "Läs in när synlig",
+          "auto": "Automatisk"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responsiva källor (srcset)",
+        "description": "Ange bild-URL:er och deskriptorer (t.ex. 480w eller 2x) så att webbläsare väljer den bästa storleken för skärmen. Lagras som standardattributet srcset."
+      }
+    ]
+  }
+}

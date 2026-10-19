@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Zavihki",
+    "description": "Nabor zavihkov."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Oznaka (za dostopnost)",
+        "description": "Dostopna oznaka nabora zavihkov."
+      },
+      {
+        "property": "disabled",
+        "title": "Onemogočeno",
+        "description": "Onemogoči vse zavihke."
+      },
+      {
+        "property": "hidden",
+        "title": "Skrito",
+        "description": "Skrij nabor zavihkov."
+      },
+      {
+        "property": "sticky",
+        "title": "Pripeto",
+        "description": "Med drsenjem obdrži vodoravne zavihke na vrhu."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Prelomna točka postavitve",
+        "description": "Prelomna točka za vodoravne zavihke; za samo navpične uporabite -1."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Prelomna točka ikon",
+        "description": "Prelomna točka za prikaz besedila z ikonami. Privzeto je 0; za način samo z ikonami uporabite -1."
+      },
+      {
+        "slot": "",
+        "title": "Zavihki",
+        "description": "Niz elementov <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Enolični ID",
+        "description": "Enolični ID tega nabora zavihkov."
+      }
+    ]
+  }
+}

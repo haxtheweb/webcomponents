@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify پلیئر ایمبیڈاں لئی ریپر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "سرچشمہ",
+        "description": "Spotify توں ایمبیڈ یا شیئر لنک۔"
+      },
+      {
+        "property": "theme",
+        "title": "تھیم",
+        "description": "پلیئر لئی پچھوکڑ رنگ دا تھیم۔",
+        "options": {
+          "": "ڈیفالٹ",
+          "0": "کالا"
+        }
+      },
+      {
+        "property": "size",
+        "title": "سائز",
+        "description": "پلیئر دا سائز۔",
+        "options": {
+          "normal": "ڈیفالٹ",
+          "compact": "سنگھیڑیا"
+        }
+      }
+    ]
+  }
+}

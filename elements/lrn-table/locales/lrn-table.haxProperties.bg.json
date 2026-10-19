@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV таблица",
+    "description": "Може да генерира таблица от CSV файл, където и да се намира той."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Източник",
+        "description": "URL на този CSV файл."
+      },
+      {
+        "property": "title",
+        "title": "Заглавие",
+        "description": "Заглавие на таблицата, която ще бъде генерирана."
+      },
+      {
+        "property": "description",
+        "title": "Описание",
+        "description": "По-подробно описание за по-добра достъпност на данните в таблицата."
+      }
+    ]
+  }
+}

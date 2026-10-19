@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Àtẹ Pai",
+    "description": "Ó ń ṣẹ̀dá àtẹ tó ṣeé wọlé sí tó dá lórí CSV kan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ ìtẹnumọ́ àṣàyàn."
+      },
+      {
+        "title": "Àkòrí Dúdú",
+        "description": "Tan Àkòrí Dúdú"
+      },
+      {
+        "title": "Fáìlì CSV",
+        "description": "Gbé dátà wọlé láti CSV kan."
+      },
+      {
+        "title": "Àkọlé Àtẹ",
+        "description": "Ọ̀rọ̀ àfirọ́pò tó ṣeé wọlé sí fún àtẹ rẹ."
+      },
+      {
+        "title": "Àpèjúwe Àtẹ",
+        "description": "Àpèjúwe tó ṣeé wọlé sí fún àtẹ rẹ."
+      },
+      {
+        "title": "Orúkọ Ìwọ̀n",
+        "description": "Ìpín fífẹ̀:gíga àtẹ náà (Wo https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings fún $ct-scales àti $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Dónút"
+      },
+      {
+        "title": "Fi Àkọlé Hàn"
+      },
+      {
+        "title": "Igun Ìbẹ̀rẹ̀"
+      },
+      {
+        "title": "Àlàfo Inú"
+      },
+      {
+        "title": "Àpapọ̀",
+        "description": "Àpapọ̀ (àṣàyàn) tí o lè sọ. Nípa sísọ iye àpapọ̀ kan, àròpọ̀ àwọn iye nínú ìtẹ̀léra gbọ́dọ̀ jẹ́ àpapọ̀ yìí láti ya pai kíkún. O lè lo pàrámítà yìí láti ya apá kan pai tàbí àtẹ ìwọ̀n nìkan."
+      },
+      {
+        "title": "Fojú Fo Àwọn Iye Òfìfo",
+        "description": "A ó fojú fo àwọn iye òfìfo láti yẹra fún yíya àwọn ègé àti àkọlé tí kò pọn dandan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Yí Dátà Padà",
+        "description": "Yí dátà padà pẹ̀lú àwọn àkọlé, ètò àwọn ìtẹ̀léra àti gbogbo àkójọ dátà ìtẹ̀léra."
+      },
+      {
+        "title": "Tábìlì HTML",
+        "description": "Àṣàyàn: Gbé dátà wọlé bí tábìlì HTML."
+      },
+      {
+        "title": "Fífẹ̀ Ìlà Dónút"
+      },
+      {
+        "title": "Dónút Kíkún",
+        "description": "Ya àwọn ègé dónút bí ìrísí dípò ìlà."
+      },
+      {
+        "title": "Ìdarí Àkọlé",
+        "description": "Ya àwọn ègé dónút bí ìrísí dípò ìlà.",
+        "options": {
+          "neutral": "àárín-gbùngbùn",
+          "explode": "fọ́n jáde",
+          "implode": "fà wọlé"
+        }
+      },
+      {
+        "title": "Ìyàsípò Àkọlé",
+        "description": "Ìyàsípò ipò àkọlé láti ipò ìlànà tó jẹ́ ìdajì ìjìnnà rédíọ̀sì. Iye yìí lè jẹ́ rere tàbí òdì. Àwọn iye rere yóò gbé àkọlé jìnnà sí àárín."
+      },
+      {
+        "title": "Ipò Àkọlé",
+        "options": {
+          "inside": "nínú",
+          "outside": "òde",
+          "center": "àárín"
+        }
+      }
+    ]
+  }
+}

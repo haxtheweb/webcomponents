@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "څو انتخابي",
+    "description": "د ځان ازموینې څو انتخابي پوښتنه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "پوښتنه",
+        "description": "هغه پوښتنه چې کاروونکي یې باید ځواب کړي."
+      },
+      {
+        "property": "randomize",
+        "title": "تصادفي کول",
+        "description": "ځوابونه په متحرک ډول تصادفي کړئ."
+      },
+      {
+        "property": "singleOption",
+        "title": "یو ځواب",
+        "description": "یوازې یو ځواب ته اجازه ورکړئ."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "د نمرو بڼه",
+        "description": "OER Schema: د دې ارزونې د نمرو بڼه (لکه نمرې، توری، سلنه، بشپړتیا)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "د زده کړې موخه",
+        "description": "OER Schema: د دې ارزونې پورې تړلې د زده کړې موخه."
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: هغه کورس چې دا ارزونه ورته ټاکل شوې."
+      },
+      {
+        "property": "answers",
+        "title": "ځوابونه"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "د ازموینې نوم",
+        "description": "د ازموینې نوم چې د تحلیلي سیسټمونو په xAPI پېژندنه کې کارول کېږي."
+      }
+    ]
+  }
+}

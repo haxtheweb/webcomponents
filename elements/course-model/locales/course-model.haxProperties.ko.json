@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "과정 모델",
+    "description": "세부 정보, 애니메이션, 지식 확인을 포함한 과정 개념용 대화형 레이아웃."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "제목"
+      },
+      {
+        "property": "src",
+        "title": "소스"
+      },
+      {
+        "property": "alt",
+        "title": "대체 텍스트"
+      },
+      {
+        "title": "정보 영역"
+      },
+      {
+        "title": "세부 정보 영역"
+      },
+      {
+        "title": "애니메이션 영역"
+      },
+      {
+        "title": "지식 확인 영역"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "로고 영역"
+      }
+    ]
+  }
+}

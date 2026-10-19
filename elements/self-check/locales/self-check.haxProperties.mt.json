@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Awtoverifika",
+    "description": "L-utenti jistgħu jlestu awtoverifika."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Immaġni",
+        "description": "Immaġni għall-awtoverifika."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlu tal-awtoverifika."
+      },
+      {
+        "property": "alt",
+        "title": "Test alternattiv",
+        "description": "Test alternattiv għall-immaġni."
+      },
+      {
+        "slot": "question",
+        "title": "Mistoqsija"
+      },
+      {
+        "slot": "",
+        "title": "Tweġiba"
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tat-tema",
+        "description": "Agħżel kulur tat-tema mis-sistema tad-disinn.",
+        "options": {
+          "primary": "Primarju",
+          "accent": "Enfasi",
+          "success": "Suċċess",
+          "warning": "Twissija",
+          "error": "Żball",
+          "info": "Informazzjoni"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Għan tat-tagħlim",
+        "description": "Referenza tal-għan tat-tagħlim maħruġa bħala oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Jivvaluta",
+        "description": "Referenza tal-attività maħruġa bħala oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Link għal aktar",
+        "description": "Link għal informazzjoni addizzjonali."
+      }
+    ]
+  }
+}

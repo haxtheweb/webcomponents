@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Pirsa Lihevanînê",
+    "description": "Çalakiya lihevanînê ya kişandin û berdanê ku pirsan bi bersivên wan ên rast re dike cot."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pirs",
+        "description": "Pirs ji bo bikarhêneran. Armancên berdanê nîşan bike, paşê bersivan heta armanca din rêz bike."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formata nirxandinê",
+        "description": "OER Schema: formata nirxandinê ji bo vê nirxandinê (mînak xal, tîp, ji sedî, temamkirin)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Armanca fêrbûnê",
+        "description": "OER Schema: armanca fêrbûnê ya bi vê nirxandinê ve girêdayî."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kursa ku ev nirxandin jê re hatiye amadekirin."
+      },
+      {
+        "property": "answers",
+        "title": "Bersiv"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navê quizê",
+        "description": "Navê quizê ku ji bo naskirina xAPI di pergalên analîtîkê de tê bikaranîn."
+      }
+    ]
+  }
+}

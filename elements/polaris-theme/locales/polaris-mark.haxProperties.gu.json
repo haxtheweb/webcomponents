@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris ચિહ્ન",
+    "description": "વૈકલ્પિક કૉલેજ નામ અને ગંતવ્ય URL સાથે PSU ઓળખ ચિહ્ન બતાવો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "કૉલેજનું નામ",
+        "description": "ચિહ્નની બાજુમાં બતાવાતું નામ."
+      },
+      {
+        "property": "name2",
+        "title": "કૉલેજનું નામ 2",
+        "description": "પહેલા કૉલેજ નામની નીચે બતાવાતું બીજું નામ."
+      },
+      {
+        "property": "name3",
+        "title": "કૉલેજનું નામ 3",
+        "description": "બીજા કૉલેજ નામની નીચે બતાવાતું ત્રીજું નામ."
+      },
+      {
+        "property": "url",
+        "title": "લિંક",
+        "description": "ચિહ્ન પર ક્લિક કરવામાં આવે ત્યારે ગંતવ્ય URL."
+      },
+      {
+        "property": "type",
+        "title": "પ્રકાર",
+        "description": "ચિહ્નનો દૃશ્ય પ્રકાર.",
+        "options": {
+          "default": "ડિફૉલ્ટ",
+          "light": "હળવું",
+          "dark": "ડાર્ક"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "ઊભું લેઆઉટ",
+        "description": "આડી રેખા સાથે ત્રીજું નામ બીજા નામની નીચે બતાવો."
+      }
+    ]
+  }
+}

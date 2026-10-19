@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kāleka",
+    "description": "He kāleka i hoʻonani ʻia me ka ʻōnaehana hoʻolālā DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Kiʻi",
+        "description": "Kiʻi koho."
+      },
+      {
+        "property": "alt",
+        "title": "Pani kiʻi",
+        "description": "Kikokikona pani e wehewehe ana i ke kiʻi."
+      },
+      {
+        "property": "title",
+        "title": "Poʻo Inoa",
+        "description": "Poʻo inoa o ke kāleka."
+      },
+      {
+        "slot": "",
+        "title": "Ka ʻIkepili",
+        "description": "Wahi ʻikepili o ke kāleka."
+      },
+      {
+        "property": "href",
+        "title": "Loulou",
+        "description": "URL loulou o ke pihi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Lepili",
+        "description": "Lepili o ke pihi."
+      },
+      {
+        "property": "noArrow",
+        "title": "ʻAʻohe Pua",
+        "description": "E hūnā i ka pua o ke pihi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Loulou: pahuhopu",
+        "description": "Ka wahi e wehe ai i ka loulou.",
+        "options": {
+          "": "Puka aniani like",
+          "_blank": "Puka aniani hou - _blank",
+          "_top": "Puka aniani luna - _top",
+          "_parent": "Puka aniani makua - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Loulou: rel",
+        "description": "Ka pilina ma waena o ke kumuwaiwai i loulou ʻia a me ka palapala o kēia manawa."
+      }
+    ]
+  }
+}

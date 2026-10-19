@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Saanduqa cuqaatu",
+    "description": "Saanduqa tokko kan babal'atuu fi cuqaatu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Mataduree",
+        "description": "Barreeffama saanduqa cuqaatuuf."
+      },
+      {
+        "property": "expanded",
+        "title": "Babal'ate",
+        "description": "Akka durtiitti babal'isi."
+      },
+      {
+        "property": "headingButton",
+        "title": "Qabduu Mata-duree",
+        "description": "Mallattoo qofa osoo hin taane mataduree guutuu tuqamaa godhi."
+      },
+      {
+        "property": "icon",
+        "title": "Mallattoo",
+        "description": "Mallattoo qabduu babal'isuu/cuqaasuu."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Mallattoo (yeroo babal'atu)",
+        "description": "Mallattoo filannoo haala babal'ateef."
+      },
+      {
+        "slot": "",
+        "title": "Qabiyyee",
+        "description": "Qabiyyee saanduqa cuqaatuu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Ibsa xiqqaa",
+        "description": "Ibsa xiqqaa qabduu babal'isuu/cuqaasuu."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Ibsa xiqqaa (yeroo babal'atu)",
+        "description": "Ibsa xiqqaa qabduu babal'isuu/cuqaasuu yeroo babal'atu."
+      }
+    ]
+  }
+}

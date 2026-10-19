@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Şekil ýazgysy",
+    "description": "Şekil üçin ýazgy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ýazgy",
+        "description": "Şekiliň aşagynda görkezilýän tekst."
+      }
+    ]
+  }
+}

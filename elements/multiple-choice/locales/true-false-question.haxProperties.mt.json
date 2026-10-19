@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Mistoqsija Veru / Falz",
+    "description": "Mistoqsija veru jew falz"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Mistoqsija",
+        "description": "Mistoqsija biex l-utenti jwieġbu għaliha."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Tweġiba korretta"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Isem il-kwizz",
+        "description": "Isem il-kwizz mgħoddi għall-użu f'ambjenti mmexxija minn xAPI għall-identifikazzjoni ta' dan l-oġġett"
+      }
+    ]
+  }
+}

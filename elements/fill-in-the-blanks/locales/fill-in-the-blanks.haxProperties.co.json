@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Riempie i vioti",
+    "description": "Attività di valutazione induve i sculari compienu e parolle chì mancanu in un enunciatu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Dumanda",
+        "description": "Dumanda à a quale l'utilizatori devenu risponde."
+      },
+      {
+        "property": "statement",
+        "title": "Enunciatu",
+        "description": "Enunciatu chì serà cunvertitu in l'interazione di marcà e parolle."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Furmatu di nutazione",
+        "description": "OER Schema: furmatu di nutazione di sta valutazione (per esempiu punti, lettera, percentuale, cumpimentu)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ughjettivu d'amparera",
+        "description": "OER Schema: ughjettivu d'amparera assuciatu à sta valutazione."
+      },
+      {
+        "property": "forCourse",
+        "title": "Corsu",
+        "description": "OER Schema: corsu per u quale hè destinata sta valutazione."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome di u quiz",
+        "description": "Nome di u quiz trasmessu per identificà st'elementu in l'ambienti basati nant'à xAPI"
+      }
+    ]
+  }
+}

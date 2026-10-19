@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Jerin masu ba da gudummawa na GitHub",
+    "description": "Ana nuna su a matsayin haruffan RPG ta amfani da GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Ƙungiya",
+        "description": "Sunan ƙungiya daga github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Ma'aji",
+        "description": "Sunan ma'aji daga github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Iyaka",
+        "description": "Iyakance adadin masu ba da gudummawa da ake nunawa."
+      }
+    ]
+  }
+}

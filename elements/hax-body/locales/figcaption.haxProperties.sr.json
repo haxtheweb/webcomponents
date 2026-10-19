@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Натпис слике",
+    "description": "Натпис за слику."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Натпис",
+        "description": "Текст приказан испод слике."
+      }
+    ]
+  }
+}

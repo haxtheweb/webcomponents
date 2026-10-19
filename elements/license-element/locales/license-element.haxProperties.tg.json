@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Иҷозатнома",
+    "description": "Барои асари худ иҷозатнома пешниҳод кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Сарлавҳа",
+        "description": "Сарлавҳаи асари иқтибосшуда."
+      },
+      {
+        "property": "source",
+        "title": "Пайванди манбаъ",
+        "description": "URL-и манбаи асари иҷозатномадор."
+      },
+      {
+        "property": "license",
+        "title": "Иҷозатнома",
+        "description": "Иҷозатномае, ки ба ин асар татбиқ мешавад."
+      },
+      {
+        "property": "creator",
+        "title": "Эҷодкор",
+        "description": "Эҷодкор ё соҳиби ин асар."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Пайванди манбаъ",
+        "description": "Пайванд ба тафсилоти иловагии иҷозатнома."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Нишонаи «Бештар»",
+        "description": "Нишона барои тафсилоти иловагии иҷозатнома."
+      }
+    ]
+  }
+}

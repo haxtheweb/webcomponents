@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub දායකයින් ලැයිස්තුව",
+    "description": "GitHub API භාවිතයෙන් RPG චරිත ලෙස විදහා දැක්වේ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "සංවිධානය",
+        "description": "github.com/ORG/REPO වෙතින් සංවිධානයේ නම."
+      },
+      {
+        "property": "repo",
+        "title": "ගබඩාව",
+        "description": "github.com/ORG/REPO වෙතින් ගබඩාවේ නම."
+      },
+      {
+        "property": "limit",
+        "title": "සීමාව",
+        "description": "පෙන්වන දායකයින් ගණන සීමා කරන්න."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Ενσωμάτωση σχολίων Disqus σε μια σελίδα."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Σύντομο όνομα",
+        "description": "Το σύντομο όνομα του ιστότοπου, που καθορίζει τον διακομιστή του σεναρίου Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL σελίδας",
+        "description": "Το URL της σελίδας στην οποία είναι συνδεδεμένο το νήμα σχολίων."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Αναγνωριστικό σελίδας",
+        "description": "Το μοναδικό αναγνωριστικό για το νήμα σχολίων της σελίδας."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Τίτλος σελίδας",
+        "description": "Ο τίτλος της σελίδας στην οποία είναι συνδεδεμένο το νήμα σχολίων."
+      },
+      {
+        "property": "loadingText",
+        "title": "Κείμενο φόρτωσης",
+        "description": "Κείμενο που ανακοινώνεται όσο φορτώνουν τα σχόλια."
+      },
+      {
+        "property": "lang",
+        "title": "Γλώσσα",
+        "description": "Κωδικός γλώσσας για τη διεπαφή Disqus, π.χ. en."
+      }
+    ]
+  }
+}

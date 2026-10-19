@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "थीम वाला Polaris कॉल-टू-एक्शन बटन प्रदर्शित करें।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "बटन टेक्स्ट",
+        "description": "कॉल-टू-एक्शन बटन में दिखाया जाने वाला टेक्स्ट।"
+      },
+      {
+        "property": "link",
+        "title": "लिंक",
+        "description": "बटन के लिए गंतव्य URL।"
+      },
+      {
+        "property": "type",
+        "title": "प्रकार",
+        "description": "दृश्य शैली का प्रकार।",
+        "options": {
+          "primary": "प्राथमिक",
+          "tinted": "हल्का रंगा",
+          "light": "हल्का"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "आउटलाइन शैली",
+        "description": "आउटलाइन शैली सक्षम करें।"
+      },
+      {
+        "property": "filled",
+        "title": "भरी हुई शैली",
+        "description": "भरी हुई शैली सक्षम करें।"
+      }
+    ]
+  }
+}

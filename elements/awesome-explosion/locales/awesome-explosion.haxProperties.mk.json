@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Одлична експлозија",
+    "description": "Интерактивна анимација на експлозија со изборни звучни ефекти."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Големина",
+        "description": "Поставете ја големината на експлозијата.",
+        "options": {
+          "tiny": "Мајушна",
+          "small": "Мала",
+          "medium": "Средна",
+          "large": "Голема",
+          "epic": "Епска"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Боја",
+        "description": "Поставете ја темата на бојата на експлозијата.",
+        "options": {
+          "": "Стандардно",
+          "red": "Црвена",
+          "blue": "Сина",
+          "purple": "Виолетова",
+          "orange": "Портокалова",
+          "yellow": "Жолта"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Звучни ефекти",
+        "description": "Овозможи звучни ефекти."
+      },
+      {
+        "property": "resetSound",
+        "title": "Ресетирај звук",
+        "description": "Звукот секогаш да почнува од почеток."
+      },
+      {
+        "property": "image",
+        "title": "Сопствена слика",
+        "description": "Изборен URL за сопствена слика на експлозија."
+      },
+      {
+        "property": "sound",
+        "title": "Сопствен звук",
+        "description": "Изборен URL за сопствен звучен ефект."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Оневозможено",
+        "description": "Оневозможи ги сите интеракции."
+      }
+    ]
+  }
+}

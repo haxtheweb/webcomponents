@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub פֿאָרויסבליק",
+    "description": "צוטריטלעכע פֿיגור מיט לאַנגער באַשרײַבונג"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "אָרגאַניזאַציע",
+        "description": "מאַשין־נאָמען פֿון דער GitHub אָרגאַניזאַציע"
+      },
+      {
+        "property": "repo",
+        "title": "רעפּאָזיטאָריע",
+        "description": "מאַשין־נאָמען פֿונעם רעפּאָ"
+      },
+      {
+        "property": "extended",
+        "title": "פֿאַרברייטערטער אָנבליק",
+        "description": "נעמט אַרײַן דעם readme אינעם עלעמענט"
+      }
+    ]
+  }
+}

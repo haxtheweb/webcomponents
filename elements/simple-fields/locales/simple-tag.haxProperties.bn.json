@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "ট্যাগ / পিল",
+    "description": "ঐচ্ছিক অ্যাকসেন্ট রং, বাতিল বোতাম বা টগলসহ একটি ছোট পিল-আকৃতির লেবেল।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "লেবেল",
+        "description": "পিলের ভেতরে দেখানো টেক্সট।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "পিলের পটভূমির জন্য SimpleColors অ্যাকসেন্টের নাম।",
+        "options": {
+          "": "-- ডিফল্ট --",
+          "red": "লাল",
+          "pink": "গোলাপি",
+          "purple": "বেগুনি",
+          "deep-purple": "গাঢ় বেগুনি",
+          "indigo": "নীলাভ বেগুনি (ইন্ডিগো)",
+          "blue": "নীল",
+          "light-blue": "হালকা নীল",
+          "cyan": "সায়ান",
+          "teal": "টিল",
+          "green": "সবুজ",
+          "light-green": "হালকা সবুজ",
+          "lime": "লেবু সবুজ",
+          "yellow": "হলুদ",
+          "amber": "অ্যাম্বার",
+          "orange": "কমলা",
+          "deep-orange": "গাঢ় কমলা",
+          "brown": "বাদামি",
+          "blue-grey": "নীলাভ ধূসর",
+          "grey": "ধূসর"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "স্বয়ংক্রিয় অ্যাকসেন্ট রং",
+        "description": "লেবেলের টেক্সট থেকে স্বয়ংক্রিয়ভাবে অ্যাকসেন্ট রং নির্ধারণ করুন।"
+      },
+      {
+        "property": "cancelButton",
+        "title": "বাতিল বোতাম",
+        "description": "পিলের ভেতরে একটি সরান/বাতিল আইকন বোতাম দেখান।"
+      },
+      {
+        "property": "readonly",
+        "title": "শুধু পড়ার জন্য",
+        "description": "বাতিল বোতাম লুকান যাতে পিল শুধু প্রদর্শনের জন্য থাকে।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "টগলযোগ্য",
+        "description": "বোতামে ক্লিক করলে পিল চালু/বন্ধ টগল হবে।"
+      },
+      {
+        "property": "toggled",
+        "title": "টগল করা",
+        "description": "পিলটি বর্তমানে টগল করে চালু আছে কিনা।"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "টগল আইকন",
+        "description": "পিল টগল করে চালু থাকলে দেখানো আইকন।"
+      },
+      {
+        "property": "disabled",
+        "title": "নিষ্ক্রিয়",
+        "description": "পিলের সাথে ইন্টারঅ্যাকশন নিষ্ক্রিয় করুন।"
+      }
+    ]
+  }
+}

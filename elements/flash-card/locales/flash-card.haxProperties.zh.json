@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "抽认卡",
+    "description": "使用正反面抽认卡练习概念。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "卡片正面",
+        "description": "正面文本或问题。"
+      },
+      {
+        "slot": "back",
+        "title": "卡片背面",
+        "description": "预期答案。"
+      },
+      {
+        "property": "imgSource",
+        "title": "图像来源",
+        "description": "卡片所用的图像文件。会覆盖图像关键词。"
+      },
+      {
+        "property": "typeOfAction",
+        "title": "活动类型",
+        "description": "OER Schema：此练习涉及的活动类型（例如阅读、写作、制作、研究、聆听、观看、反思、讨论、观察、展示、评估）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学习目标",
+        "description": "OER Schema：此练习所支持的学习目标的 ID 或 URL。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "深色",
+        "description": "使用深色模式。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "卡片强调色。"
+      },
+      {
+        "property": "imgKeyword",
+        "title": "图像关键词",
+        "description": "随机图像关键词。会被图像来源覆盖。"
+      }
+    ]
+  }
+}

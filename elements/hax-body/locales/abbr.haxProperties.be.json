@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Абрэвіятура",
+    "description": "Абрэвіятура з падказкай поўнага тэрміна."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Тэкст",
+        "description": "Бачны тэкст абрэвіятуры."
+      },
+      {
+        "attribute": "title",
+        "title": "Слова",
+        "description": "Поўны тэрмін, які паказваецца пры навядзенні."
+      }
+    ]
+  }
+}

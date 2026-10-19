@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Spurning með stuttu svari",
+    "description": "Láta notandann svara einfaldri spurningu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spurning",
+        "description": "Spurning sem notendur svara."
+      },
+      {
+        "property": "answers",
+        "title": "Möguleg svör"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Heiti prófs",
+        "description": "Heiti prófs sem sent er inn til notkunar í xAPI-umhverfum til að auðkenna þetta atriði"
+      }
+    ]
+  }
+}

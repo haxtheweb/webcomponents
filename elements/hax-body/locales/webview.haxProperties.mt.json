@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Sors",
+        "description": "URL għal dan ir-riżors."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "הילע פֿאַר אײַנגעבעטע Spotify־שפּילערס."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "אײַנבעט־ אָדער טיילן־לינק פֿון Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "טעמע",
+        "description": "הינטערגרונט־קאָליר־טעמע פֿאַרן שפּילער.",
+        "options": {
+          "": "דעפֿאָלט",
+          "0": "שוואַרץ"
+        }
+      },
+      {
+        "property": "size",
+        "title": "גרייס",
+        "description": "גרייס פֿונעם שפּילער.",
+        "options": {
+          "normal": "דעפֿאָלט",
+          "compact": "קאָמפּאַקט"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "தகுதிப் பதக்கம்",
+    "description": "ஒரு திறனைப் பெற்றதைத் தெரிவிக்கும் காட்சிப் பதக்கம்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "பதக்கத் தலைப்பு",
+        "description": "பதக்கத்தில் காட்டப்படும் தலைப்பு."
+      },
+      {
+        "property": "badgeImage",
+        "title": "பதக்கப் படம்",
+        "description": "பதக்கத்திற்கான பட URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "பதக்க விவரங்கள்",
+        "description": "பதக்கம் பற்றிய விவரங்கள்."
+      },
+      {
+        "property": "hyperLink",
+        "title": "மீஇணைப்பு",
+        "description": "பதக்கத்துடன் தொடர்புடைய இணைப்பு."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "பதக்கத் திறன்கள்",
+        "description": "பதக்கத்தில் காட்டப்படும் திறன்கள்."
+      },
+      {
+        "property": "skill",
+        "title": "திறன் (OER Schema)",
+        "description": "OER Schema: இந்தக் கற்றல் நோக்கத்தை முடிப்பதன் மூலம் பெறப்பட்ட கற்ற திறன்."
+      }
+    ]
+  }
+}

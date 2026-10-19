@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "すごい爆発",
+    "description": "効果音付きにもできるインタラクティブな爆発アニメーション。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "サイズ",
+        "description": "爆発のサイズを設定します。",
+        "options": {
+          "tiny": "極小",
+          "small": "小",
+          "medium": "中",
+          "large": "大",
+          "epic": "特大"
+        }
+      },
+      {
+        "property": "color",
+        "title": "色",
+        "description": "爆発のカラーテーマを設定します。",
+        "options": {
+          "": "既定",
+          "red": "赤",
+          "blue": "青",
+          "purple": "紫",
+          "orange": "オレンジ",
+          "yellow": "黄"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "効果音",
+        "description": "効果音を有効にします。"
+      },
+      {
+        "property": "resetSound",
+        "title": "音をリセット",
+        "description": "毎回最初から音を再生し直します。"
+      },
+      {
+        "property": "image",
+        "title": "カスタム画像",
+        "description": "カスタム爆発画像の任意のURL。"
+      },
+      {
+        "property": "sound",
+        "title": "カスタム音",
+        "description": "カスタム効果音の任意のURL。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "無効",
+        "description": "すべての操作を無効にします。"
+      }
+    ]
+  }
+}

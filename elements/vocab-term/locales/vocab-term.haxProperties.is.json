@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Orðaforði",
+    "description": "Orðaforðahugtak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Hugtak"
+      },
+      {
+        "property": "information",
+        "title": "Skilgreining",
+        "description": "Skilgreining sem birtist þegar smellt er á hugtakið."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Sprettigluggi",
+        "description": "Birta skilgreininguna í sprettiglugga í stað þess að hafa hana innfellda."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Tenglar",
+        "description": "Listi yfir viðbótartengla tengda þessu hugtaki."
+      }
+    ]
+  }
+}

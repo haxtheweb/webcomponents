@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA ya Polaris",
+    "description": "Onetsani batani loitanira kuchitapo kanthu la Polaris lokongoletsedwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Mawu a batani",
+        "description": "Mawu owonetsedwa pa batani loitanira kuchitapo kanthu."
+      },
+      {
+        "property": "link",
+        "title": "Ulalo",
+        "description": "URL yopitako ya batani."
+      },
+      {
+        "property": "type",
+        "title": "Mtundu",
+        "description": "Mtundu wa kalembedwe kowoneka.",
+        "options": {
+          "primary": "Wamkulu",
+          "tinted": "Wopakidwa pang'ono",
+          "light": "Chowala"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Kalembedwe ka mzere wozungulira",
+        "description": "Yatsani kalembedwe ka mzere wozungulira."
+      },
+      {
+        "property": "filled",
+        "title": "Kalembedwe kodzaza",
+        "description": "Yatsani kalembedwe kodzaza."
+      }
+    ]
+  }
+}

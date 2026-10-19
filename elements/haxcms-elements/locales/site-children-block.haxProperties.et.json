@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: alamplokk",
+    "description": "Dünaamiline plokk praeguse lehe alamlehtede kuvamiseks"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dünaamiline meetod",
+        "description": "Kuidas arvutada alamlehti selle elemendi suhtes",
+        "options": {
+          "active": "Aktiivsed alamlehed",
+          "parent": "Ülemlehe alamlehed",
+          "ancestor": "Kõik kõrgeima eellase alamlehed"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Algustase"
+      },
+      {
+        "property": "end",
+        "title": "Lõputase"
+      }
+    ]
+  }
+}

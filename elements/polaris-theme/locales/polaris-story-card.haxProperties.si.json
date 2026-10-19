@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris කතා කාඩ්පත",
+    "description": "පසුබිම් රූපයක්, කුළුණු ලේබලයක් සහ සිරස්තල පෙළක් සහිත Polaris කතා කාඩ්පතක් පෙන්වන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "පසුබිම් රූපය",
+        "description": "කාඩ්පතේ පසුබිම ලෙස පෙන්වන රූප URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "පසුබිම් ප්‍රමාණය",
+        "description": "පසුබිම් රූපය කාඩ්පත පුරවන ආකාරය (CSS background-size).",
+        "options": {
+          "cover": "ආවරණය (cover)",
+          "contain": "අඩංගු කරන්න (contain)",
+          "auto": "ස්වයංක්‍රීය (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "පසුබිම් ඇමුණුම",
+        "description": "අනුචලනය කිරීමේදී පසුබිම් රූපය හැසිරෙන ආකාරය (CSS background-attachment).",
+        "options": {
+          "scroll": "අනුචලනය (scroll)",
+          "fixed": "ස්ථාවර (fixed)",
+          "local": "ස්ථානීය (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "කුළුණු ලේබලය",
+        "description": "කාඩ්පතේ ඉහළින් පෙන්වන කෙටි කැපිටල් අකුරු ලේබලය. සැඟවීමට හිස්ව තබන්න."
+      },
+      {
+        "property": "label",
+        "title": "කාඩ්පතේ පෙළ",
+        "description": "පහළ පැනලයේ පෙන්වන ප්‍රාථමික පෙළ."
+      },
+      {
+        "property": "link",
+        "title": "සබැඳිය",
+        "description": "සම්පූර්ණ කාඩ්පත ආවරණය කරන විකල්ප ගමනාන්ත URL."
+      }
+    ]
+  }
+}

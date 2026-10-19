@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "গণিত",
+    "description": "গণিত সুন্দরভাবে উপস্থাপন করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "গণিত",
+        "description": "LaTeX হিসেবে সমীকরণ লিখুন"
+      }
+    ]
+  }
+}

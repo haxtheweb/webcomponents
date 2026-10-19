@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "זעלבסט־קאָנטראָל",
+    "description": "באַניצער קענען דורכפֿירן אַ זעלבסט־קאָנטראָל."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "בילד",
+        "description": "בילד פֿאַרן זעלבסט־קאָנטראָל."
+      },
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "טיטל פֿונעם זעלבסט־קאָנטראָל."
+      },
+      {
+        "property": "alt",
+        "title": "אַלטערנאַטיווער טעקסט",
+        "description": "Alt־טעקסט פֿאַרן בילד."
+      },
+      {
+        "slot": "question",
+        "title": "פֿראַגע"
+      },
+      {
+        "slot": "",
+        "title": "ענטפֿער"
+      },
+      {
+        "property": "accentColor",
+        "title": "טעמע־קאָליר",
+        "description": "קלײַבט אויס אַ טעמע־קאָליר פֿון דער דיזײַן־סיסטעם.",
+        "options": {
+          "primary": "הויפּט",
+          "accent": "אַקצענט",
+          "success": "הצלחה",
+          "warning": "וואָרענונג",
+          "error": "טעות",
+          "info": "אינפֿאָרמאַציע"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "לערן־ציל",
+        "description": "רעפֿערענץ צום לערן־ציל אַרויסגעגעבן ווי oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "אָפּשאַצט",
+        "description": "רעפֿערענץ צו דער טעטיקייט אַרויסגעגעבן ווי oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "לינק פֿאַר מער",
+        "description": "לינק צו נאָך אינפֿאָרמאַציע."
+      }
+    ]
+  }
+}

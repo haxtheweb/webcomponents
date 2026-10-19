@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Qısa cavablı sual",
+    "description": "İstifadəçidən sadə suala cavab verməsini istəyin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Sual",
+        "description": "İstifadəçilərin cavablandıracağı sual."
+      },
+      {
+        "property": "answers",
+        "title": "Mümkün cavablar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testin adı",
+        "description": "Bu elementin identifikasiyası üçün xAPI əsaslı mühitlərdə istifadəyə ötürülən test adı"
+      }
+    ]
+  }
+}

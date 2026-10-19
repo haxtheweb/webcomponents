@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Isang block ng markdown na nilalaman, direkta o nilo-load mula sa remote"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Hilaw na markdown"
+      },
+      {
+        "property": "source",
+        "title": "Pinagmulan",
+        "description": "Source file para sa markdown"
+      }
+    ]
+  }
+}

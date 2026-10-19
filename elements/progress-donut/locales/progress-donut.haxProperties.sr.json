@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Крофна напретка",
+    "description": "Крофна напредовања"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов елемента"
+      },
+      {
+        "property": "desc",
+        "title": "Опис",
+        "description": "Приступачан дуги опис"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Извор слике",
+        "description": "Извор слике унутар крофне."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt текст слике",
+        "description": "Alt текст за слику."
+      },
+      {
+        "property": "animated",
+        "title": "Анимирано",
+        "description": "Да ли се напредак анимира при првом учитавању"
+      },
+      {
+        "property": "complete",
+        "title": "Завршено",
+        "description": "Низ завршених вредности."
+      },
+      {
+        "property": "total",
+        "title": "Укупно",
+        "description": "Укупно када су све ставке завршене."
+      },
+      {
+        "property": "startAngle",
+        "title": "Почетни угао",
+        "description": "Угао крофне на којем почиње напредак"
+      }
+    ]
+  }
+}

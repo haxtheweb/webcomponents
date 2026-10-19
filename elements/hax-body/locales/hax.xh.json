@@ -122,5 +122,21 @@
   "recent": "Kutshanje",
   "popular": "Edumileyo",
   "copiedToClipboard": "Kutiwe kwikhiphobhodi",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Iinkcukacha zomfanekiso",
+  "imageActions": "Izenzo zomfanekiso",
+  "imageRecommendations": "Iingcebiso zomfanekiso",
+  "compressImage": "Cinezela umfanekiso",
+  "resizeTo": "Tshintsha ubungakanani ube",
+  "created": "Wenziwe",
+  "size": "Ubungakanani",
+  "dimensions": "Imilinganiselo",
+  "type": "Uhlobo",
+  "done": "kugqityiwe",
+  "noFileUuid": "Isalathiso sefayile asifumaneki; layisha kwakhona ukuze uvule izenzo.",
+  "fileOpsUnavailable": "Imisebenzi yeefayile ayifumaneki kule sayithi.",
+  "fileOpFailed": "Umsebenzi wefayile awuphumelelanga.",
+  "fileExtensionNotAllowed": "Le ndawo yamkela kuphela ezi ntlobo zeefayile zilandelayo:",
+  "fileTypeNotAllowed": "Le ndawo yamkela kuphela ezi ntlobo zemidiya zilandelayo:",
+  "transformFailed": "Ukuguqulwa emva kokulayisha akuphumelelanga; ifayile yokuqala igciniwe."
 }

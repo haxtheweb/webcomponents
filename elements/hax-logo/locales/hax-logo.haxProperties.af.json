@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX-woordkuns",
+    "description": "Logo-element vir HAX, natuurlik as 'n HAX-geskikte element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Grootte van die HAX-logo om te plaas",
+        "options": {
+          "mini": "Mini",
+          "small": "Klein",
+          "normal": "Normaal",
+          "large": "Groot"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Of die logo na hoofletters omgeskakel moet word"
+      }
+    ]
+  }
+}

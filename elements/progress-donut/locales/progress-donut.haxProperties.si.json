@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ප්‍රගති ඩෝනට්",
+    "description": "ප්‍රගති ඩෝනට්"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "මූලද්‍රව්‍යයේ මාතෘකාව"
+      },
+      {
+        "property": "desc",
+        "title": "විස්තරය",
+        "description": "ප්‍රවේශ විය හැකි දිගු විස්තරය"
+      },
+      {
+        "property": "imageSrc",
+        "title": "රූප මූලාශ්‍රය",
+        "description": "ඩෝනට් තුළ ඇති රූපයේ මූලාශ්‍රය."
+      },
+      {
+        "property": "imageAlt",
+        "title": "රූපයේ Alt පෙළ",
+        "description": "රූපය සඳහා alt පෙළ."
+      },
+      {
+        "property": "animated",
+        "title": "සජීවිකරණය",
+        "description": "පළමු පූරණයේදී ප්‍රගතිය සජීවිකරණය වේද යන්න"
+      },
+      {
+        "property": "complete",
+        "title": "සම්පූර්ණයි",
+        "description": "සම්පූර්ණ කළ අගයන්ගේ අරාවක්."
+      },
+      {
+        "property": "total",
+        "title": "එකතුව",
+        "description": "සියලු අයිතම සම්පූර්ණ වූ විට එකතුව."
+      },
+      {
+        "property": "startAngle",
+        "title": "ආරම්භක කෝණය",
+        "description": "ප්‍රගතිය ආරම්භ වන ඩෝනට් කෝණය"
+      }
+    ]
+  }
+}

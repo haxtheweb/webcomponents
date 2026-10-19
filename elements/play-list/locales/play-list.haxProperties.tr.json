@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Oynatma listesi",
+    "description": "Her tür içeriği bir oynatma listesinde gösterin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kaynak",
+        "description": "Oynatma listesinde gösterilen içerik."
+      },
+      {
+        "property": "edit",
+        "title": "Düzenleme modu",
+        "description": "Oynatma listesi için düzenleme ve önizleme modu arasında geçiş yap."
+      },
+      {
+        "property": "navigation",
+        "title": "Gezinme",
+        "description": "İleri ve geri gezinme düğmelerini göster."
+      },
+      {
+        "property": "pagination",
+        "title": "Sayfalandırma",
+        "description": "Sayfalandırma noktalarını göster."
+      },
+      {
+        "property": "orientation",
+        "title": "Yönlendirme",
+        "description": "Slaytların yönlendirmesi.",
+        "options": {
+          "horizontal": "Yatay",
+          "vertical": "Dikey"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Başlangıç slaytı",
+        "description": "Başlangıçta odaklanılacak slayt dizini."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "En Boy Oranı",
+        "description": "Slaytların en boy oranı.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

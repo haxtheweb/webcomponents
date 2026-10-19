@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Сцяжок старонкі",
+    "description": "Рэдакцыйная нататка для аўтараў старонкі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Акцэнтны колер сцяжка старонкі."
+      },
+      {
+        "property": "label",
+        "title": "Метка",
+        "description": "Тэкст меткі сцяжка старонкі."
+      }
+    ]
+  }
+}

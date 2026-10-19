@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Paŝa elemento",
+    "description": "Elemento, kiu estas parto de paŝolisto"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo"
+      }
+    ]
+  }
+}

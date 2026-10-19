@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kaarka sheekada Polaris",
+    "description": "Muuji kaar sheeko Polaris oo leh sawir asal ah, calaamad tiir, iyo qoraal cinwaan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Sawirka asalka",
+        "description": "URL-ka sawirka loo muujiyo asalka kaarka."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Cabbirka asalka",
+        "description": "Sida sawirka asalku u buuxiyo kaarka (CSS background-size).",
+        "options": {
+          "cover": "Dabool (cover)",
+          "contain": "Ku jiri (contain)",
+          "auto": "Toos (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Ku-dhegidda asalka",
+        "description": "Sida sawirka asalku u dhaqmo marka la rogrogayo (CSS background-attachment).",
+        "options": {
+          "scroll": "Rogrogid (scroll)",
+          "fixed": "Go'an (fixed)",
+          "local": "Gudaha (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Calaamadda tiirka",
+        "description": "Calaamad gaaban oo xarfo waaweyn ah oo ka muuqata xagga sare ee kaarka. Banneey si loo qariyo."
+      },
+      {
+        "property": "label",
+        "title": "Qoraalka kaarka",
+        "description": "Qoraalka koowaad ee ka muuqda qaybta hoose."
+      },
+      {
+        "property": "link",
+        "title": "Xiriiriye",
+        "description": "URL ikhtiyaari ah oo loo socdo oo duubaya kaarka oo dhan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "ਸੰਯੁਕਤ ਰਾਸ਼ਟਰ ਟਿਕਾਊ ਵਿਕਾਸ ਟੀਚਾ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "ਟੀਚਾ",
+        "description": "UN SDG ਨੰਬਰ।"
+      },
+      {
+        "property": "colorOnly",
+        "title": "ਸਿਰਫ਼ ਰੰਗ",
+        "description": "ਸਿਰਫ਼ ਟੀਚੇ ਦਾ ਰੰਗ ਦਿਖਾਓ।"
+      }
+    ]
+  }
+}

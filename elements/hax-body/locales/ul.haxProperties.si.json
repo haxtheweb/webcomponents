@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "බුලට් ලැයිස්තුව",
+    "description": "බුලට් ලැයිස්තුවක් සාදන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "බුලට් විලාසය",
+        "description": "අනුපිළිවෙළ නොකළ ලැයිස්තු බුලට් සඳහා භාවිත කරන විලාසය.",
+        "options": {
+          "": "පෙරනිමි (හතරැස්)",
+          "list-disc": "තැටිය",
+          "list-circle": "රවුම",
+          "list-square": "හතරැස"
+        }
+      }
+    ]
+  }
+}

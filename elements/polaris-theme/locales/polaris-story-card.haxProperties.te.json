@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris కథ కార్డ్",
+    "description": "నేపథ్య చిత్రం, స్తంభ లేబుల్ మరియు ముఖ్యాంశ వచనంతో Polaris కథ కార్డ్‌ను ప్రదర్శించండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "నేపథ్య చిత్రం",
+        "description": "కార్డ్ నేపథ్యంగా చూపబడే చిత్ర URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "నేపథ్య పరిమాణం",
+        "description": "నేపథ్య చిత్రం కార్డ్‌ను ఎలా నింపుతుంది (CSS background-size).",
+        "options": {
+          "cover": "కవర్ (cover)",
+          "contain": "ఇముడ్చు (contain)",
+          "auto": "ఆటో (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "నేపథ్య అటాచ్‌మెంట్",
+        "description": "స్క్రోల్ చేస్తున్నప్పుడు నేపథ్య చిత్రం ఎలా ప్రవర్తిస్తుంది (CSS background-attachment).",
+        "options": {
+          "scroll": "స్క్రోల్ (scroll)",
+          "fixed": "స్థిరం (fixed)",
+          "local": "స్థానిక (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "స్తంభ లేబుల్",
+        "description": "కార్డ్ పైభాగంలో చూపబడే చిన్న పెద్ద-అక్షరాల లేబుల్. దాచడానికి ఖాళీగా వదిలేయండి."
+      },
+      {
+        "property": "label",
+        "title": "కార్డ్ వచనం",
+        "description": "దిగువ ప్యానెల్‌లో ప్రదర్శించబడే ప్రాథమిక వచనం."
+      },
+      {
+        "property": "link",
+        "title": "లింక్",
+        "description": "మొత్తం కార్డ్‌ను చుట్టే ఐచ్ఛిక గమ్యస్థాన URL."
+      }
+    ]
+  }
+}

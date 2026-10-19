@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn енгізу",
+    "description": "LinkedIn профиль картасын енгізу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Жеке атау",
+        "description": "LinkedIn жеке пайдаланушы атауы бөлігі."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Локаль",
+        "description": "en_US сияқты локаль метадеректерінің мәні."
+      }
+    ]
+  }
+}

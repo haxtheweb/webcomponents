@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "אַודיאָ אין טעקסט",
+    "description": "שפּילן אַודיאָ אין טעקסט צו דערגאַנצן דעם אינהאַלט פֿון דער זײַט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "MP3־טעקע אָדער URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "אַקצענט־קאָליר פֿון קאַרטל."
+      },
+      {
+        "property": "shiny",
+        "title": "בלאַנק",
+        "description": "ניצן אַ העלערן אַקצענט־הינטערגרונט אַנשטאָט גרוי."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "טונקל",
+        "description": "ניצן טונקעלן מאָדע."
+      }
+    ]
+  }
+}

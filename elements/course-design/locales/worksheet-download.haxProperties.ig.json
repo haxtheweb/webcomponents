@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ibudata mpempe ọrụ",
+    "description": "Bọtịnụ maka igosi faịlụ dị maka ibudata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha nke ibudata ahụ."
+      },
+      {
+        "property": "link",
+        "title": "Njikọ",
+        "description": "Njikọ maka ibudata ahụ."
+      }
+    ]
+  }
+}

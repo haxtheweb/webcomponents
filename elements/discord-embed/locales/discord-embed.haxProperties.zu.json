@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Shumeka imiphakathi ye-Discord nge-URL yokwabelana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "I-URL Yensiza",
+        "description": "I-URL yensiza."
+      },
+      {
+        "property": "height",
+        "title": "Ubude",
+        "description": "Ubude bohlaka lokuqukethwe."
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi",
+        "description": "Ububanzi bohlaka lokuqukethwe."
+      }
+    ]
+  }
+}

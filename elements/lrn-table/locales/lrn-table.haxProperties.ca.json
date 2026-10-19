@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Taula CSV",
+    "description": "Pot generar una taula a partir d'un fitxer CSV, sigui on sigui."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Font",
+        "description": "URL d'aquest fitxer CSV."
+      },
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Títol de la taula que es generarà."
+      },
+      {
+        "property": "description",
+        "title": "Descripció",
+        "description": "Descripció més detallada per millorar l'accessibilitat de les dades de la taula."
+      }
+    ]
+  }
+}

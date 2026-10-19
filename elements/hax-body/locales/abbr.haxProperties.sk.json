@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Skratka",
+    "description": "Skratka s bublinou s celým výrazom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Viditeľný text skratky."
+      },
+      {
+        "attribute": "title",
+        "title": "Slovo",
+        "description": "Celý výraz zobrazený pri prejdení myšou."
+      }
+    ]
+  }
+}

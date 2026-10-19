@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Sektordiagramm",
+    "description": "Loob CSV-l põhineva ligipääsetava diagrammi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rõhuvärv",
+        "description": "Valikuline rõhuvärv."
+      },
+      {
+        "title": "Tume teema",
+        "description": "Luba tume teema"
+      },
+      {
+        "title": "CSV-fail",
+        "description": "Laadi andmed CSV-st."
+      },
+      {
+        "title": "Diagrammi pealkiri",
+        "description": "Sinu diagrammi ligipääsetav alt-tekst."
+      },
+      {
+        "title": "Diagrammi kirjeldus",
+        "description": "Sinu diagrammi ligipääsetav kirjeldus."
+      },
+      {
+        "title": "Skaala nimi",
+        "description": "Diagrammi laiuse ja kõrguse suhe (vt $ct-scales ja $ct-scales-names kohta https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Rõngas"
+      },
+      {
+        "title": "Näita silti"
+      },
+      {
+        "title": "Algusnurk"
+      },
+      {
+        "title": "Sisevahe"
+      },
+      {
+        "title": "Kokku",
+        "description": "Valikuline koguväärtus, mida saad määrata. Koguväärtuse määramisel peab seeria väärtuste summa olema täisringi joonistamiseks võrdne selle koguväärtusega. Selle parameetriga saad joonistada ainult osa sektordiagrammist või mõõdikdiagramme."
+      },
+      {
+        "title": "Eira tühje väärtusi",
+        "description": "Tühje väärtusi eiratakse, et vältida tarbetute sektorite ja siltide joonistamist."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pööra andmed ümber",
+        "description": "Pööra andmed ümber, sealhulgas sildid, seeriate järjekord ja kogu seeriate andmemassiivid."
+      },
+      {
+        "title": "HTML-tabel",
+        "description": "Valikuline: laadi andmed HTML-tabelina."
+      },
+      {
+        "title": "Rõnga joone laius"
+      },
+      {
+        "title": "Täidetud rõngas",
+        "description": "Joonista rõnga segmendid kujunditena, mitte joontena."
+      },
+      {
+        "title": "Sildi suund",
+        "description": "Joonista rõnga segmendid kujunditena, mitte joontena.",
+        "options": {
+          "neutral": "neutraalne",
+          "explode": "väljapoole",
+          "implode": "sissepoole"
+        }
+      },
+      {
+        "title": "Sildi nihe",
+        "description": "Sildi asukoha nihe standardasukohast, mis on pool raadiusest. See väärtus võib olla positiivne või negatiivne. Positiivsed väärtused paigutavad sildi keskmest eemale."
+      },
+      {
+        "title": "Sildi asukoht",
+        "options": {
+          "inside": "sees",
+          "outside": "väljas",
+          "center": "keskel"
+        }
+      }
+    ]
+  }
+}

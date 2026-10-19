@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus teswirleri",
+    "description": "Disqus teswir web hyzmaty bilen integrasiýa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Gysga ady",
+        "description": "Disqus-daky emlägiň gysga ady"
+      }
+    ]
+  }
+}

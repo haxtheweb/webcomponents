@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Pogled CMS",
+    "description": "Pogledi CMS, upodobljeni v zaledju"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Ime",
+        "description": "Ime pogleda iz našega CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Prikaz",
+        "description": "Prikaz znotraj tega pogleda iz našega CMS"
+      }
+    ]
+  }
+}

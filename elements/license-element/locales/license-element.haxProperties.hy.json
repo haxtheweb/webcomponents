@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Լիցենզիա",
+    "description": "Տրամադրեք լիցենզիա ձեր աշխատանքի համար։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Հղվող աշխատանքի վերնագիրը։"
+      },
+      {
+        "property": "source",
+        "title": "Աղբյուրի հղում",
+        "description": "Լիցենզավորված աշխատանքի աղբյուրի URL-ը։"
+      },
+      {
+        "property": "license",
+        "title": "Լիցենզիա",
+        "description": "Այս աշխատանքի վրա կիրառված լիցենզիան։"
+      },
+      {
+        "property": "creator",
+        "title": "Ստեղծող",
+        "description": "Այս աշխատանքի ստեղծողը կամ սեփականատերը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Աղբյուրի հղում",
+        "description": "Հղում լիցենզավորման լրացուցիչ մանրամասներին։"
+      },
+      {
+        "property": "moreLabel",
+        "title": "«Ավելին» պիտակ",
+        "description": "Լիցենզավորման լրացուցիչ մանրամասների պիտակ։"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "တက်ဘ်",
+    "description": "တက်ဘ် တစ်ခု။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "တက်ဘ် အိုင်ကွန်"
+      },
+      {
+        "property": "disabled",
+        "title": "ပိတ်ထားသည်"
+      },
+      {
+        "property": "label",
+        "title": "တက်ဘ် တံဆိပ်"
+      },
+      {
+        "slot": "",
+        "title": "တက်ဘ် အကြောင်းအရာ",
+        "description": "တက်ဘ်၏ အကြောင်းအရာ။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "သီးသန့် ID"
+      },
+      {
+        "property": "flag",
+        "title": "ရွေးချယ်နိုင်သော အလံ စာသား"
+      },
+      {
+        "property": "flagIcon",
+        "title": "ရွေးချယ်နိုင်သော အလံ အိုင်ကွန်"
+      }
+    ]
+  }
+}

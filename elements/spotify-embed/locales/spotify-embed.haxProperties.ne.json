@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify प्लेयर इम्बेडहरूका लागि र्‍यापर।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "Spotify को इम्बेड वा सेयर लिङ्क।"
+      },
+      {
+        "property": "theme",
+        "title": "थिम",
+        "description": "प्लेयरको पृष्ठभूमि रङ थिम।",
+        "options": {
+          "": "पूर्वनिर्धारित",
+          "0": "कालो"
+        }
+      },
+      {
+        "property": "size",
+        "title": "आकार",
+        "description": "प्लेयरको आकार।",
+        "options": {
+          "normal": "पूर्वनिर्धारित",
+          "compact": "सानो (कम्प्याक्ट)"
+        }
+      }
+    ]
+  }
+}

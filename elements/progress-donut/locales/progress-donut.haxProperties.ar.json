@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "حلقة التقدم",
+    "description": "حلقة التقدم"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "عنوان العنصر"
+      },
+      {
+        "property": "desc",
+        "title": "الوصف",
+        "description": "وصف مطوّل يسهل الوصول إليه"
+      },
+      {
+        "property": "imageSrc",
+        "title": "مصدر الصورة",
+        "description": "مصدر الصورة داخل الحلقة."
+      },
+      {
+        "property": "imageAlt",
+        "title": "النص البديل للصورة",
+        "description": "النص البديل للصورة."
+      },
+      {
+        "property": "animated",
+        "title": "متحرك",
+        "description": "ما إذا كان التقدم يتحرك عند التحميل الأول"
+      },
+      {
+        "property": "complete",
+        "title": "مكتمل",
+        "description": "مصفوفة من القيم المكتملة."
+      },
+      {
+        "property": "total",
+        "title": "الإجمالي",
+        "description": "الإجمالي عند اكتمال جميع العناصر."
+      },
+      {
+        "property": "startAngle",
+        "title": "زاوية البداية",
+        "description": "زاوية الحلقة التي يبدأ منها التقدم"
+      }
+    ]
+  }
+}

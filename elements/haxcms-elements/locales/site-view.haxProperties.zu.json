@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Ukubuka Kwesayithi",
+    "description": "Ibhulokhi eguquguqukayo ebuza futhi ibonise idatha yesayithi ngokusekelwe kwimibandela"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "I-URL Yokubuka",
+        "description": "Amapharamitha ombuzo wokuphakelwayo kwedatha yokubuka. Ungakuthola lokhu kudeshibhodi Yokubuka."
+      },
+      {
+        "property": "renderer",
+        "title": "Imodi yokubonisa",
+        "description": "Ukuthi imiphumela yokubuka kufanele iboniswe kanjani"
+      },
+      {
+        "property": "entity",
+        "title": "Uhlobo lwento",
+        "description": "Uhlobo lwento olusetshenziselwa ukuhlaziya impendulo",
+        "options": {
+          "": "Okuzenzakalelayo (izinto)",
+          "item": "Into",
+          "page": "Ikhasi",
+          "file": "Ifayela",
+          "tag": "Umaka",
+          "block": "Ibhulokhi",
+          "view": "Ukubuka",
+          "theme": "Itimu",
+          "region": "Isifunda",
+          "customElement": "Isakhi Esingokwezifiso"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Nqamula ukubuka kwesayithi",
+        "description": "Guqulela kokuqukethwe okungashintshi ukuze kuhlelwe ngqo; kumisa ukubuyekeza okuzenzakalelayo kusuka emthonjeni."
+      }
+    ]
+  }
+}

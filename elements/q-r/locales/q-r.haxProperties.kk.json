@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR код",
+    "description": "Смартфоннан сканерлеуге арналған код."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR деректері",
+        "description": "QR кодқа арналған деректер көзі."
+      },
+      {
+        "property": "title",
+        "title": "Балама атау",
+        "description": "QR код дереккөзіне байланыстырылған балама атау."
+      },
+      {
+        "property": "modulesize",
+        "title": "Өлшемі",
+        "description": "QR кодтың өлшемі."
+      },
+      {
+        "property": "margin",
+        "title": "Шегініс",
+        "description": "Код айналасындағы жиек."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Шығыс пішімі",
+        "description": "Шығару пішімі.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Pyetje renditjeje",
+    "description": "Rendit elementet në rendin e saktë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pyetja",
+        "description": "Titulli i pyetjes."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formati i vlerësimit",
+        "description": "OER Schema: formati i vlerësimit për këtë test (p.sh. pikë, shkronjë, përqindje, përfundim)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objektivi mësimor",
+        "description": "OER Schema: objektivi mësimor i lidhur me këtë vlerësim."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursi",
+        "description": "OER Schema: kursi për të cilin është menduar ky vlerësim."
+      },
+      {
+        "property": "answers",
+        "title": "Përgjigjet",
+        "description": "Renditja e përgjigjeve përcakton sekuencën e saktë."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Emri i kuizit",
+        "description": "Emri i kuizit i përdorur për identifikim xAPI në sistemet analitike."
+      }
+    ]
+  }
+}

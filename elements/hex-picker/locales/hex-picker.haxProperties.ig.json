@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Onye ọhọrọ Hex",
+    "description": "Onye ọhọrọ agba hexcode"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Uru",
+        "description": "Uru hex ndabere"
+      },
+      {
+        "property": "disabled",
+        "title": "Agbanyụrụ",
+        "description": "Gbanyụọ ubi ederede"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Ngosipụta buru ibu",
+        "description": "Tinye agba na ngosipụta buru ibu"
+      }
+    ]
+  }
+}

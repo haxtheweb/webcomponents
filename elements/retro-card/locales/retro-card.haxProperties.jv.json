@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kertu retro",
+    "description": "Kertu prasaja kanthi desain retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Irah-irahan",
+        "description": "Judhul utama kertu."
+      },
+      {
+        "property": "url",
+        "description": "URL sing dibukak nalika kertu diklik."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subjudhul",
+        "description": "Subjudhul kertu."
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Tag sing dipisahake koma."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Sumber media",
+        "description": "Sumber media utama."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Sumber nalika hover",
+        "description": "Sumber media sing ditampilake nalika kertu di-hover utawa diaktifake."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna Aksen",
+        "description": "Warna aksen sing ditrapake ing kabeh kertu."
+      },
+      {
+        "property": "dark",
+        "title": "Peteng",
+        "description": "Gunakake warna dhasar mode peteng."
+      }
+    ]
+  }
+}

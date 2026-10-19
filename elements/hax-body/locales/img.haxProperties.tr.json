@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Temel Görsel",
+    "description": "Temel görsel öğesi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kaynak",
+        "description": "Görsel URL'si."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt metin",
+        "description": "Erişilebilirlik ve SEO için alternatif metin."
+      },
+      {
+        "attribute": "height",
+        "title": "Yükseklik",
+        "description": "Piksel cinsinden yükseklik. Doğal boyutu kullanmak için boş bırakın."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Görsel yükleme",
+        "description": "Görselin ne zaman yükleneceğini seçin.",
+        "options": {
+          "lazy": "Görünür olduğunda yükle",
+          "auto": "Otomatik"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Duyarlı kaynaklar (srcset)",
+        "description": "Tarayıcıların ekrana en uygun boyutu seçebilmesi için görsel URL'lerini ve tanımlayıcıları (ör. 480w veya 2x) listeleyin. Standart srcset özniteliği olarak saklanır."
+      }
+    ]
+  }
+}

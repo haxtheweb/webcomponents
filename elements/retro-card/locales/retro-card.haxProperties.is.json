@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retró-spjald",
+    "description": "Einfalt spjald með retró-hönnun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Aðaltitill spjalds."
+      },
+      {
+        "property": "url",
+        "description": "URL sem opnast þegar smellt er á spjaldið."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undirtitill",
+        "description": "Undirtitill spjalds."
+      },
+      {
+        "property": "tags",
+        "title": "Merki",
+        "description": "Merki aðskilin með kommum."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Uppruni miðils",
+        "description": "Aðaluppruni miðils."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Uppruni við yfirsvif",
+        "description": "Uppruni miðils sem sýndur er þegar bendill er yfir spjaldinu eða það virkjað."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Áherslulitur sem notaður er á allt spjaldið."
+      },
+      {
+        "property": "dark",
+        "title": "Dökkt",
+        "description": "Nota grunnliti dökks hams."
+      }
+    ]
+  }
+}

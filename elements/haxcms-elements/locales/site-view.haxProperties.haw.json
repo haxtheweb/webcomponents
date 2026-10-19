@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Hiʻohiʻona pūnaewele",
+    "description": "He poloka loli e nīnau a hōʻike ana i ka ʻikepili pūnaewele ma muli o nā kumu koho"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL hiʻohiʻona",
+        "description": "Nā ʻāpana nīnau no ke kahawai ʻikepili hiʻohiʻona. Hiki iā ʻoe ke kiʻi i kēia mai ka papa hana Views."
+      },
+      {
+        "property": "renderer",
+        "title": "ʻAno hōʻike",
+        "description": "Pehea e hōʻike ʻia ai nā hualoaʻa hiʻohiʻona"
+      },
+      {
+        "property": "entity",
+        "title": "ʻAno mea",
+        "description": "ʻAno mea i hoʻohana ʻia no ka kālailai ʻana i ka pane",
+        "options": {
+          "": "Paʻamau (nā mea)",
+          "item": "Mea",
+          "page": "ʻAoʻao",
+          "file": "Faila",
+          "tag": "Lepili",
+          "block": "Poloka",
+          "view": "Hiʻohiʻona",
+          "theme": "Kumuhana",
+          "region": "Wahi",
+          "customElement": "Mea pilikino"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Hoʻokaʻawale i ka hiʻohiʻona pūnaewele",
+        "description": "Hoʻololi i ʻike paʻa no ka hoʻoponopono pololei; hoʻōki i ka hoʻohou ʻakomi mai ke kumu."
+      }
+    ]
+  }
+}

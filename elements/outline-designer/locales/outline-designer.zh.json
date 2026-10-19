@@ -1,0 +1,21 @@
+{
+  "selectTarget": "选择目标",
+  "importContentUnderThisPage": "将内容导入到此页面下",
+  "importThisContent": "导入此内容",
+  "thisPage": "此页面",
+  "newPage": "新页面",
+  "copyOf": "副本：",
+  "pageActions": "页面操作",
+  "editTitle": "编辑标题",
+  "lock": "锁定",
+  "unlock": "解锁",
+  "moveUp": "上移",
+  "moveDown": "下移",
+  "makeChild": "设为子页面",
+  "moveToParentLevel": "移到上一级",
+  "addPage": "添加页面",
+  "duplicate": "复制",
+  "delete": "删除",
+  "restore": "恢复",
+  "goToPage": "转到页面"
+}

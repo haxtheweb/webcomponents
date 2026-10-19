@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Multiple choice",
+    "description": "Multiple choice-spørgsmål til selvtjek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spørgsmål",
+        "description": "Spørgsmål, som brugerne skal besvare."
+      },
+      {
+        "property": "randomize",
+        "title": "Tilfældig rækkefølge",
+        "description": "Bland svarene dynamisk."
+      },
+      {
+        "property": "singleOption",
+        "title": "Ét svar",
+        "description": "Tillad kun ét svar."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bedømmelsesformat",
+        "description": "OER Schema: bedømmelsesformat for denne vurdering (f.eks. point, bogstav, procent, gennemførelse)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurdering."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus, som denne vurdering er beregnet til."
+      },
+      {
+        "property": "answers",
+        "title": "Svar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Quizzens navn",
+        "description": "Quiznavn brugt til xAPI-identifikation i analysesystemer."
+      }
+    ]
+  }
+}

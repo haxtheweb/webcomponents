@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Ɓangaren Koyo",
+    "description": "Kati ga malamai don sanar da ilimin koyarwa da dabarun koyarwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Nau'i",
+        "description": "Nau'in katin da za a yi amfani da shi."
+      },
+      {
+        "property": "subtitle",
+        "title": "Ƙaramin Take",
+        "description": "Ƙaramin taken katin."
+      },
+      {
+        "property": "url",
+        "title": "Mahaɗi",
+        "description": "Hanyar haɗi na zaɓi don katin (Babu hanyar haɗi don Manufofin Koyo)."
+      },
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Saita Take, wannan yana maye gurbin take bisa nau'i"
+      },
+      {
+        "property": "icon",
+        "title": "Alama",
+        "description": "Saita gunki, wannan yana maye gurbin gunki bisa nau'i"
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin ƙawa",
+        "description": "Saita launin accent, wannan yana maye gurbin launi bisa nau'i"
+      },
+      {
+        "slot": "",
+        "title": "Abubuwan ciki"
+      }
+    ]
+  }
+}

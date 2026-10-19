@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Llyfr Graddau",
+    "description": "Llyfr graddau di-ben sy'n cefnogi sawl ôl-wyneb gyda chyfarwyddiadau marcio."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ffynhonnell",
+        "description": "Math o ffynhonnell ddata (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Pwynt terfyn URL (JSON)",
+          "json": "Blob data JSON",
+          "filesystem": "System ffeiliau"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Data Ffynhonnell",
+        "description": "URL neu ddata JSON ar gyfer y llyfr graddau."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cyfeirnod y Cwrs",
+        "description": "Dynodydd y cwrs a allyrrir fel oer:forCourse ar bob adnodd Asesu."
+      }
+    ]
+  }
+}

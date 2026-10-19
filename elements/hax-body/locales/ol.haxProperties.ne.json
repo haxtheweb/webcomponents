@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "अङ्कित सूची",
+    "description": "अङ्कित सूची बनाउनुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "अङ्क शैली",
+        "description": "क्रमित सूची अङ्कनका लागि प्रयोग हुने शैली।",
+        "options": {
+          "": "पूर्वनिर्धारित (दशमलव)",
+          "list-decimal-leading-zero": "अगाडि शून्यसहित दशमलव (01, 02, 03)",
+          "list-lower-alpha": "सानो वर्णमाला (a, b, c)",
+          "list-upper-alpha": "ठूलो वर्णमाला (A, B, C)",
+          "list-lower-roman": "सानो रोमन (i, ii, iii)",
+          "list-upper-roman": "ठूलो रोमन (I, II, III)"
+        }
+      }
+    ]
+  }
+}

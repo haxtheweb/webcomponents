@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ynfolje fan de gatten",
+    "description": "Toetsaktiviteit wêrby't learders ûntbrekkende wurden yn in útspraak oanfolje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fraach",
+        "description": "Fraach dêr't brûkers op reagearje moatte."
+      },
+      {
+        "property": "statement",
+        "title": "Utspraak",
+        "description": "Utspraak dy't omsetten wurdt yn de ynteraksje 'markearje de wurden'."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Beoardielingsformaat",
+        "description": "OER Schema: beoardielingsformaat foar dizze toets (bgl. punten, letter, persintaazje, foltôging)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leardoel",
+        "description": "OER Schema: leardoel dat by dizze toets heart."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus dêr't dizze toets foar bedoeld is."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Namme fan de kwis",
+        "description": "Kwisnamme dy't trochjûn wurdt foar identifikaasje fan dit item yn xAPI-basearre omjouwings"
+      }
+    ]
+  }
+}

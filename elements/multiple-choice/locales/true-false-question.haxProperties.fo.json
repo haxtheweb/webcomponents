@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Satt / ósatt-spurningur",
+    "description": "Spurningur um satt ella ósatt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spurningur",
+        "description": "Spurningur, sum brúkarar skulu svara."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Rætt svar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn á spurnakappingini",
+        "description": "Navn á spurnakappingini, sum verður latið inn til brúks í xAPI-stýrdum umhvørvum at eyðmerkja henda lutin"
+      }
+    ]
+  }
+}

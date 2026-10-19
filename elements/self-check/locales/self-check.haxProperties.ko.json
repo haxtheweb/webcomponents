@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "자가 점검",
+    "description": "사용자가 자가 점검을 완료할 수 있습니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "이미지",
+        "description": "자가 점검 이미지입니다."
+      },
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "자가 점검 제목입니다."
+      },
+      {
+        "property": "alt",
+        "title": "대체 텍스트",
+        "description": "이미지의 대체 텍스트입니다."
+      },
+      {
+        "slot": "question",
+        "title": "질문"
+      },
+      {
+        "slot": "",
+        "title": "정답"
+      },
+      {
+        "property": "accentColor",
+        "title": "테마 색상",
+        "description": "디자인 시스템에서 테마 색상을 선택합니다.",
+        "options": {
+          "primary": "기본",
+          "accent": "강조",
+          "success": "성공",
+          "warning": "경고",
+          "error": "오류",
+          "info": "정보"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "학습 목표",
+        "description": "oer:hasLearningObjective로 출력되는 학습 목표 참조입니다."
+      },
+      {
+        "property": "assessing",
+        "title": "평가 대상",
+        "description": "oer:assessing으로 출력되는 활동 참조입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "더 보기 링크",
+        "description": "추가 정보로 연결되는 링크입니다."
+      }
+    ]
+  }
+}

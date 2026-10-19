@@ -1,0 +1,14 @@
+{
+  "title": "Mabhuroko",
+  "enabled": "Zvabatidzwa",
+  "block": "Bhuroko",
+  "preview": "Ongorora kutanga",
+  "filterBlocks": "Sefa mabhuroko",
+  "requiredTextNote": "Mamwe ma tag emavara anodiwa uye anogara akabatidzwa (anoratidzwa asingashandike).",
+  "selectAll": "Sarudza zvese",
+  "deselectAll": "Bvisa sarudzo dzese",
+  "save": "Chengeta",
+  "noDescription": "Hapana tsananguro iripo.",
+  "details": "Ruzivo",
+  "loadingInventory": "Kurodha mabhuroko ese…"
+}

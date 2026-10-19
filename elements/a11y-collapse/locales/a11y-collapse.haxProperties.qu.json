@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Wichq'akuq wiñay",
+    "description": "Huk kichakuq wichq'akuq wiñaylla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Uma qillqa",
+        "description": "Wichq'anapaq qillqa."
+      },
+      {
+        "property": "expanded",
+        "title": "Kichasqa",
+        "description": "Qallariypi kichasqa kachun."
+      },
+      {
+        "property": "headingButton",
+        "title": "Uma qillqa ñit'ina",
+        "description": "Llapan uma qillqata ñit'ina kachun, manam unanchallatachu."
+      },
+      {
+        "property": "icon",
+        "title": "Unancha",
+        "description": "Kichana/wichq'ana ñit'inapa unanchan."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Unancha (kichasqa kaqtin)",
+        "description": "Kichasqa kaqpaq akllanalla unancha."
+      },
+      {
+        "slot": "",
+        "title": "Ukhunpi kaq",
+        "description": "Wichq'anapa ukhunpi kaq."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Yanapaq willay",
+        "description": "Kichana/wichq'ana ñit'inapaq yanapaq willay."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Yanapaq willay (kichasqa kaqtin)",
+        "description": "Kichasqa kaqtin kichana/wichq'ana ñit'inapaq yanapaq willay."
+      }
+    ]
+  }
+}

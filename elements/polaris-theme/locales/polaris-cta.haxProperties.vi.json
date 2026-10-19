@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Hiển thị nút kêu gọi hành động Polaris theo chủ đề."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Văn bản nút",
+        "description": "Văn bản hiển thị trong nút kêu gọi hành động."
+      },
+      {
+        "property": "link",
+        "title": "Liên kết",
+        "description": "URL đích cho nút."
+      },
+      {
+        "property": "type",
+        "title": "Biến thể",
+        "description": "Biến thể kiểu trực quan.",
+        "options": {
+          "primary": "Chính",
+          "tinted": "Nhuộm màu",
+          "light": "Sáng"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Kiểu viền",
+        "description": "Bật kiểu viền."
+      },
+      {
+        "property": "filled",
+        "title": "Kiểu tô đầy",
+        "description": "Bật kiểu tô đầy."
+      }
+    ]
+  }
+}

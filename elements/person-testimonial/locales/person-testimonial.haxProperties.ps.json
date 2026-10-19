@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "انځوریز اقتباس",
+    "description": "ښکلی شوی اقتباس له اختیاري انځور سره."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "انځور",
+        "description": "شاهدۍ ته انځور ورزیات کړئ."
+      },
+      {
+        "property": "name",
+        "title": "بشپړ نوم",
+        "description": "د هغه کس نوم چې شاهدي ورکوي."
+      },
+      {
+        "property": "position",
+        "title": "منصب یا دنده",
+        "description": "د کس منصب یا دنده."
+      },
+      {
+        "slot": "",
+        "title": "اقتباس",
+        "description": "د شاهدۍ د لیکوال اقتباس."
+      }
+    ]
+  }
+}

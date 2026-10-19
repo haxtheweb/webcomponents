@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Patobulintas paveikslėlis",
+    "description": "Būdas pateikti paveikslėlius su įvairiais patobulinimais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Šaltinis",
+        "description": "Paveikslėlio URL."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatyvusis tekstas",
+        "description": "Tekstas, aprašantis vaizdą neregiams naudotojams."
+      },
+      {
+        "property": "link",
+        "title": "Nuoroda",
+        "description": "Susieti paveikslėlį su URL"
+      },
+      {
+        "property": "card",
+        "title": "Kortelė",
+        "description": "Pritaikyti šešėlį, kad atrodytų kaip iškilusi kortelė."
+      },
+      {
+        "property": "box",
+        "title": "Rėmelis",
+        "description": "Pritaikyti vizualų rėmelį aplink paveikslėlį."
+      },
+      {
+        "property": "offset",
+        "title": "Poslinkis",
+        "description": "Pritaikyti paveikslėliui poslinkį į kairę arba dešinę.",
+        "options": {
+          "none": "nėra",
+          "wide": "platus",
+          "narrow": "siauras"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Šaltinio nuoroda",
+        "description": "Paveikslėlio šaltinio nuoroda."
+      },
+      {
+        "property": "caption",
+        "title": "Paveikslėlio aprašas",
+        "description": "Paveikslėlio antraštė."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Iliustracijos pavadinimas",
+        "description": "Iliustracijos žymos pavadinimas."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Iliustracijos aprašas",
+        "description": "Iliustracijos žymos aprašas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Miniatiūra",
+        "description": "Miniatiūros šaltinis. Rodoma miniatiūra, bet modaliniame lange atidaromas visas šaltinis."
+      },
+      {
+        "property": "round",
+        "title": "Apvalus paveikslėlis",
+        "description": "Apkerpa paveikslėlį į apskritimo formą."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Išjungti paveikslėlio modalinį langą",
+        "description": "Išjungti paveikslėlio atidarymą peržiūros dialoge spustelėjus."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Atvaizduoti kaip Markdown",
+        "description": "Atvaizduoti antraštę ir šaltinio nuorodą kaip Markdown."
+      }
+    ]
+  }
+}

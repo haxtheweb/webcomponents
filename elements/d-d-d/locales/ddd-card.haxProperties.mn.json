@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Карт",
+    "description": "DDD дизайн системээр загварчилсан карт бүрэлдэхүүн."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Зураг",
+        "description": "Нэмэлт зураг."
+      },
+      {
+        "property": "alt",
+        "title": "Зургийн орлуулах текст",
+        "description": "Зургийг тайлбарласан орлуулах текст."
+      },
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Картын гарчиг."
+      },
+      {
+        "slot": "",
+        "title": "Агуулга",
+        "description": "Картын агуулгын хэсэг."
+      },
+      {
+        "property": "href",
+        "title": "Холбоос",
+        "description": "Товчны холбоосын URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Шошго",
+        "description": "Товчны шошго."
+      },
+      {
+        "property": "noArrow",
+        "title": "Сумгүй",
+        "description": "Товчны сумыг нуух."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Холбоос: зорилт",
+        "description": "Холбоосыг хаана нээх.",
+        "options": {
+          "": "Ижил цонх",
+          "_blank": "Шинэ цонх - _blank",
+          "_top": "Дээд цонх - _top",
+          "_parent": "Эх цонх - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Холбоос: rel",
+        "description": "Холбосон нөөц ба одоогийн баримт бичгийн хоорондын хамаарал."
+      }
+    ]
+  }
+}

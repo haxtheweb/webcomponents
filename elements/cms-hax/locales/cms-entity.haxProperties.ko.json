@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS 엔티티",
+    "description": "백엔드에서 렌더링되는 CMS 엔티티"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "유형",
+        "description": "CMS의 유형",
+        "options": {
+          "node": "노드",
+          "user": "사용자",
+          "file": "파일"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "CMS의 ID"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "표시 모드",
+        "description": "CMS의 표시 모드"
+      }
+    ]
+  }
+}

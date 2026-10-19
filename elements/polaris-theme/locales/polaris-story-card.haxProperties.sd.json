@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris ڪهاڻي ڪارڊ",
+    "description": "پس منظر تصوير، ٿنڀي جي ليبل ۽ سرخي متن سان Polaris ڪهاڻي ڪارڊ ڏيکاريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "پس منظر جي تصوير",
+        "description": "ڪارڊ جي پس منظر طور ڏيکاريل تصوير جو URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "پس منظر جي سائيز",
+        "description": "پس منظر جي تصوير ڪارڊ کي ڪيئن ڀري ٿي (CSS background-size).",
+        "options": {
+          "cover": "ڍڪيو (cover)",
+          "contain": "اندر سمايو (contain)",
+          "auto": "خودڪار (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "پس منظر جو ڳنڍڻ",
+        "description": "اسڪرول ڪرڻ وقت پس منظر جي تصوير جو رويو (CSS background-attachment).",
+        "options": {
+          "scroll": "اسڪرول (scroll)",
+          "fixed": "مقرر (fixed)",
+          "local": "مقامي (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "ٿنڀي جو ليبل",
+        "description": "ڪارڊ جي مٿان ڏيکاريل مختصر وڏن اکرن وارو ليبل. لڪائڻ لاءِ خالي ڇڏيو."
+      },
+      {
+        "property": "label",
+        "title": "ڪارڊ جو متن",
+        "description": "هيٺين پينل ۾ ڏيکاريل بنيادي متن."
+      },
+      {
+        "property": "link",
+        "title": "لنڪ",
+        "description": "اختياري منزل جو URL جيڪو پوري ڪارڊ کي ويڙهي ٿو."
+      }
+    ]
+  }
+}

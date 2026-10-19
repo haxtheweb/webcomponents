@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lapas enkurs",
+    "description": "Saites uz konkrētām multivides vietām lapā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Lapas mērķis",
+        "description": "ID vai resurss, uz kuru norāda šis enkurs."
+      },
+      {
+        "property": "value",
+        "title": "Dziļās saites vērtība",
+        "description": "Dziļās saites vērtība (piemēram, laikspiedols vai slaida ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Vietnes entītija",
+        "description": "Neobligāta vietnes entītija saistīto jēdzienu attēlošanas vadībai."
+      }
+    ]
+  }
+}

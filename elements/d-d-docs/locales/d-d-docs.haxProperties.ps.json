@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "ډیزاین، پراختیا، ړنګول",
+    "description": "د HAX لپاره د ډیزاین سیسټم پلي کول"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "د ښودلو انتخاب",
+        "options": {
+          "*": "بشپړ سټایل لارښود"
+        }
+      }
+    ]
+  }
+}

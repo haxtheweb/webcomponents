@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ഗണിതം",
+    "description": "ഗണിതം മനോഹരമായ രീതിയിൽ അവതരിപ്പിക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "ഗണിതം",
+        "description": "സമവാക്യം LaTeX ആയി നൽകുക"
+      }
+    ]
+  }
+}

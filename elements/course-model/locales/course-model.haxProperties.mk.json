@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "модел на курс",
+    "description": "Интерактивен распоред за концепти на курсот со детали, анимација и проверки на знаењето."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "наслов"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Област за информации"
+      },
+      {
+        "title": "Област за детали"
+      },
+      {
+        "title": "Област за анимација"
+      },
+      {
+        "title": "Област за проверка на знаењето"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Област за лого"
+      }
+    ]
+  }
+}

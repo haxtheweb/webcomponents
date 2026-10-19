@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Медиен цитат",
+    "description": "Изображение с цитат, източник и незадължителен надпис."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Цитат",
+        "description": "Текст на цитата."
+      },
+      {
+        "slot": "author",
+        "title": "Автор",
+        "description": "Автор на цитата."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Данни за автора",
+        "description": "Данни за автора."
+      },
+      {
+        "slot": "caption",
+        "title": "Надпис",
+        "description": "Надпис към изображението."
+      },
+      {
+        "property": "src",
+        "title": "Източник на изображението",
+        "description": "Файл с изображение за медийния цитат."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативен текст",
+        "description": "Алтернативен текст за изображението."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Акцентен цвят на картата."
+      }
+    ]
+  }
+}

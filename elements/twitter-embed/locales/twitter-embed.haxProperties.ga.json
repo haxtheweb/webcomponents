@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Leabú Twitter (X)",
+    "description": "Leabaigh tvuít ó X i gcomhthéacs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL an tvuít",
+        "description": "URL an tvuít le leabú."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Téama",
+        "description": "Téama éadrom nó dorcha do thvuíteanna X.",
+        "options": {
+          "light": "Éadrom",
+          "dark": "Dorcha"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Cuir cosc ar phreabfhuinneog ar chliceáil",
+        "description": "Cuir cosc ar úsáideoirí an tvuít a oscailt ar x.com."
+      }
+    ]
+  }
+}

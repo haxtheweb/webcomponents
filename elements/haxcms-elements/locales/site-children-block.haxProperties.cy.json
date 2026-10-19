@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: bloc plentyn",
+    "description": "Bloc dynamig i ddangos plentyn y dudalen gyfredol"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dull dynamig",
+        "description": "Sut i gyfrifo'r plant mewn perthynas â'r elfen hon",
+        "options": {
+          "active": "Plant gweithredol",
+          "parent": "Plant y rhiant",
+          "ancestor": "Pob plentyn o'r hynafiad uchaf"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Lefel dechrau"
+      },
+      {
+        "property": "end",
+        "title": "Lefel gorffen"
+      }
+    ]
+  }
+}

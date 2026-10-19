@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kitufe cha kitabu pepe",
+    "description": "Kitufe kinachounganisha na Kitabu pepe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa cha kitufe."
+      },
+      {
+        "property": "link",
+        "title": "Kiungo",
+        "description": "Kiungo cha kuelekeza wakati wa kubofya."
+      },
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni ya kuwakilisha kiungo hiki"
+      }
+    ]
+  }
+}

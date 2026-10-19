@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG ገጸ-ባህሪ",
+    "description": "ከHAX የመጣ አዝናኝ ገጸ-ባህሪ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "ስም",
+        "description": "የዘፈቀደ ገጸ-ባህሪ ለማመንጨት የሚውል ቃል።"
+      },
+      {
+        "property": "hat",
+        "title": "ኮፍያ",
+        "description": "የኮፍያ ቅጥ።",
+        "options": {
+          "none": "ነባሪ",
+          "random": "የዘፈቀደ",
+          "bunny": "ጥንቸል",
+          "cowboy": "ላም ጠባቂ",
+          "education": "ትምህርት",
+          "construction": "ግንባታ",
+          "warning": "ማስጠንቀቂያ",
+          "watermelon": "ሐብሐብ",
+          "coffee": "ቡና",
+          "knight": "ባላባት",
+          "ninja": "ኒንጃ",
+          "party": "ድግስ",
+          "error": "ስህተት",
+          "edit": "አርትዕ"
+        }
+      },
+      {
+        "property": "width",
+        "title": "ስፋት",
+        "description": "የገጸ-ባህሪው ስፋት በፒክስል።"
+      },
+      {
+        "property": "height",
+        "title": "ቁመት",
+        "description": "የገጸ-ባህሪው ቁመት በፒክስል።"
+      },
+      {
+        "property": "fire",
+        "title": "እየነደደ ነው?",
+        "description": "ገጸ-ባህሪው እየነደደ እንደሆነ።"
+      },
+      {
+        "property": "walking",
+        "title": "እየተራመደ ነው?",
+        "description": "የመራመድ እነማ፤ ሲነድ ይሮጣል።"
+      }
+    ]
+  }
+}

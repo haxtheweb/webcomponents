@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Card",
+    "description": "Isang card na may opsyonal na accent styling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Pamuhatan",
+        "description": "Isang heading para sa card."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subheading",
+        "description": "Isang opsyonal na subheading para sa card."
+      },
+      {
+        "slot": "content",
+        "title": "Nilalaman",
+        "description": "Nilalaman para sa card."
+      },
+      {
+        "slot": "footer",
+        "title": "Footer",
+        "description": "Isang opsyonal na footer para sa card."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Larawan",
+        "description": "Opsyonal na larawan"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt Text ng Larawan",
+        "description": "Alternatibong teksto na naglalarawan sa larawan para sa mga screen reader. Iwanang walang laman kung pandekorasyon lamang ang larawan."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Pahalang na Alignment ng Larawan",
+        "options": {
+          "left": "kaliwa",
+          "center": "gitna",
+          "right": "kanan"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Patayong Alignment ng Larawan",
+        "options": {
+          "top": "itaas",
+          "center": "gitna",
+          "bottom": "ibaba"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Opsyonal na accent na kulay."
+      },
+      {
+        "property": "dark",
+        "title": "Madilim na Tema",
+        "description": "I-enable ang Madilim na Tema"
+      },
+      {
+        "property": "horizontal",
+        "title": "Pahalang",
+        "description": "Pahalang na oryentasyon?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Accent ng Heading",
+        "description": "Ilapat ang accent color sa heading?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Accent ng Background",
+        "description": "Ilapat ang accent color sa background ng card?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Walang Border Accent",
+        "description": "Alisin ang border accent?"
+      },
+      {
+        "property": "flat",
+        "title": "Flat",
+        "description": "Alisin ang box shadow?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Sulok",
+        "description": "Nilalaman para sa sulok ng card."
+      }
+    ]
+  }
+}

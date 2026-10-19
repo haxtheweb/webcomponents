@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "タグ",
+    "description": "ページに表示するシンプルなタグリスト。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "タグ",
+        "description": "カンマ区切りのタグのリスト。"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "自動アクセントカラー",
+        "description": "ラベルに基づいてアクセントカラーを自動設定します。"
+      },
+      {
+        "property": "accentColor",
+        "title": "色",
+        "description": "タグの色。"
+      }
+    ]
+  }
+}

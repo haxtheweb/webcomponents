@@ -331,6 +331,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       showMore: "More",
       userAccess: "User Access",
     };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     if (
       typeof globalThis.speechSynthesis !== "undefined" &&
       (globalThis.SpeechRecognition ||

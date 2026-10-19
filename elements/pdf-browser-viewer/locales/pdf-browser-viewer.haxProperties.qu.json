@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Navegadorpi PDF qhawana",
+    "description": "PDF willañiqita rapiman churay, akllanalla tarjeta layoutwan uraykachiy ñit'inawanpas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF willañiqi maypi kasqan."
+      },
+      {
+        "property": "heading",
+        "title": "Uma qillqa",
+        "description": "Tarjetapa uma qillqan."
+      },
+      {
+        "property": "card",
+        "title": "Tarjeta layout",
+        "description": "PDF-ta tarjetapi uraykachiy ñit'inawan rikuchiy."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Uraykachiy sutichay",
+        "description": "Uraykachiy ñit'inapa sutichaynin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mana atikuq willay",
+        "description": "Navegador PDF willañiqikunata mana rikuchiyta atiqtin willay."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mana atikuq t'inki willay",
+        "description": "Navegador PDF willañiqikunata mana rikuchiyta atiqtin t'inki qillqa."
+      },
+      {
+        "property": "width",
+        "title": "Kinraynin",
+        "description": "PDF qhawanapa kinraynin."
+      },
+      {
+        "property": "height",
+        "title": "Sayaynin",
+        "description": "PDF qhawanapa sayaynin."
+      }
+    ]
+  }
+}

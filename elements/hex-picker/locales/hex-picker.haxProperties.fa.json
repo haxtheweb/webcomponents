@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "انتخابگر Hex",
+    "description": "انتخابگر رنگ کد Hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "مقدار",
+        "description": "مقدار hex پیش‌فرض"
+      },
+      {
+        "property": "disabled",
+        "title": "غیرفعال",
+        "description": "غیرفعال کردن فیلد متنی"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "نمایش بزرگ",
+        "description": "نمایش رنگ در نمای بزرگ"
+      }
+    ]
+  }
+}

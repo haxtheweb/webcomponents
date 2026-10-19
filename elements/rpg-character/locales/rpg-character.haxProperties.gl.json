@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Personaxe de RPG",
+    "description": "Personaxe divertido de HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nome",
+        "description": "Palabra usada para xerar un personaxe aleatorio."
+      },
+      {
+        "property": "hat",
+        "title": "Chapeu",
+        "description": "Estilo do chapeu.",
+        "options": {
+          "none": "Predeterminado",
+          "random": "Aleatorio",
+          "bunny": "Coello",
+          "cowboy": "Vaqueiro",
+          "education": "Educación",
+          "construction": "Construción",
+          "warning": "Aviso",
+          "watermelon": "Sandía",
+          "coffee": "Café",
+          "knight": "Cabaleiro",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "error": "Erro",
+          "edit": "Editar"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Largura",
+        "description": "Largura do personaxe en píxeles."
+      },
+      {
+        "property": "height",
+        "title": "Altura",
+        "description": "Altura do personaxe en píxeles."
+      },
+      {
+        "property": "fire",
+        "title": "En chamas?",
+        "description": "Se o personaxe está en chamas."
+      },
+      {
+        "property": "walking",
+        "title": "Camiñando?",
+        "description": "Animación de camiñar; corre cando está en chamas."
+      }
+    ]
+  }
+}

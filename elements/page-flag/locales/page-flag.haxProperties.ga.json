@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bratach leathanaigh",
+    "description": "Nóta eagarthóireachta d'údair leathanach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Dath Aibhsithe",
+        "description": "Dath aibhsithe don bhratach leathanaigh."
+      },
+      {
+        "property": "label",
+        "title": "Lipéad",
+        "description": "Téacs lipéid don bhratach leathanaigh."
+      }
+    ]
+  }
+}

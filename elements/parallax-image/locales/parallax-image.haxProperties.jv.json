@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Gambar paralaks",
+    "description": "Gambar gulung"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Gambar",
+        "description": "gambar sing dilebokake ing latar mburi"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Area judhul",
+        "description": "Area teks judhul"
+      }
+    ]
+  }
+}

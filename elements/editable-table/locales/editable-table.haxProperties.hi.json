@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "तालिका",
+    "description": "वेब के लिए तालिका-आधारित डेटा।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "पंक्ति हेडर",
+        "description": "पहली पंक्ति को हेडर मानें।"
+      },
+      {
+        "property": "columnHeader",
+        "title": "कॉलम हेडर",
+        "description": "पहले कॉलम को हेडर मानें।"
+      },
+      {
+        "property": "footer",
+        "title": "फ़ुटर",
+        "description": "अंतिम पंक्ति को फ़ुटर मानें।"
+      },
+      {
+        "property": "sort",
+        "title": "क्रमबद्ध करने योग्य",
+        "description": "कॉलम मानों के अनुसार क्रमबद्ध करने की अनुमति दें।"
+      },
+      {
+        "property": "filter",
+        "title": "फ़िल्टर की अनुमति दें",
+        "description": "कॉलम मानों के अनुसार फ़िल्टर करने की अनुमति दें।"
+      },
+      {
+        "property": "numericStyles",
+        "title": "संख्यात्मक शैली",
+        "description": "संख्यात्मक कॉलम पर संख्यात्मक शैली लागू करें।"
+      },
+      {
+        "property": "responsive",
+        "title": "रिस्पॉन्सिव",
+        "description": "छोटी स्क्रीन पर तालिका का लेआउट समायोजित करें।"
+      },
+      {
+        "property": "rubricMode",
+        "title": "रूब्रिक मोड",
+        "description": "इस तालिका को OER Schema Rubric के रूप में मानें ताकि Rubric, RubricScale, RubricCriterion और RubricLevel मेटाडेटा उत्पन्न हो।"
+      },
+      {
+        "property": "rubricType",
+        "title": "रूब्रिक प्रकार",
+        "description": "oer:rubricType के रूप में उत्पन्न रूब्रिक शैली (केवल तब सार्थक जब रूब्रिक मोड चालू हो)।",
+        "options": {
+          "": "(कोई नहीं)",
+          "analytic": "विश्लेषणात्मक",
+          "holistic": "समग्र",
+          "single-point": "एकल बिंदु",
+          "checklist": "जाँच सूची"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "बॉर्डर वाली"
+      },
+      {
+        "property": "condensed",
+        "title": "पंक्तियाँ संकुचित करें",
+        "description": "पंक्ति की ऊँचाई कम करें।"
+      },
+      {
+        "property": "striped",
+        "title": "धारीदार पंक्तियाँ",
+        "description": "हर दूसरी पंक्ति को छायांकित करें।"
+      },
+      {
+        "property": "downloadable",
+        "title": "डाउनलोड बटन",
+        "description": "तालिका डाउनलोड करने के लिए बटन जोड़ें।"
+      },
+      {
+        "property": "copyable",
+        "title": "कॉपी बटन",
+        "description": "तालिका का CSV डेटा कॉपी करने के लिए बटन जोड़ें।"
+      },
+      {
+        "property": "printable",
+        "title": "प्रिंट बटन",
+        "description": "केवल तालिका प्रिंट करने के लिए बटन जोड़ें।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV डेटा",
+        "description": "अपलोड की गई CSV फ़ाइल से तालिका बनाएँ।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "শব্দভান্ডার",
+    "description": "শব্দভান্ডারের পরিভাষা।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "পরিভাষা"
+      },
+      {
+        "property": "information",
+        "title": "সংজ্ঞা",
+        "description": "পরিভাষায় ক্লিক করলে দেখানো সংজ্ঞা।"
+      },
+      {
+        "property": "popoverMode",
+        "title": "পপওভার",
+        "description": "সংজ্ঞাটি ইনলাইনের পরিবর্তে পপওভারে দেখান।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "লিংক",
+        "description": "এই পরিভাষার সাথে সংশ্লিষ্ট সম্পূরক লিংকের তালিকা।"
+      }
+    ]
+  }
+}

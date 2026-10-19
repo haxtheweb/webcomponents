@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Múltipla escolha",
+    "description": "Pergunta de autoavaliação de múltipla escolha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pergunta",
+        "description": "Pergunta para os usuários responderem."
+      },
+      {
+        "property": "randomize",
+        "title": "Embaralhar",
+        "description": "Embaralhar as respostas dinamicamente."
+      },
+      {
+        "property": "singleOption",
+        "title": "Resposta única",
+        "description": "Permitir apenas uma resposta."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de avaliação",
+        "description": "OER Schema: formato de avaliação desta atividade (ex.: pontos, letra, porcentagem, conclusão)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objetivo de aprendizagem",
+        "description": "OER Schema: objetivo de aprendizagem associado a esta avaliação."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso ao qual esta avaliação se destina."
+      },
+      {
+        "property": "answers",
+        "title": "Respostas"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome do questionário",
+        "description": "Nome do questionário usado para identificação xAPI em sistemas de análise."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mgbakọ na mwepụ",
+    "description": "Gosi mgbakọ na mwepụ n'ụzọ mara mma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Mgbakọ na mwepụ",
+        "description": "Tinye nhatanha dị ka LaTeX"
+      }
+    ]
+  }
+}

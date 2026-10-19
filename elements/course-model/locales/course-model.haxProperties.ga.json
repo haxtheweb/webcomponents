@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "samhail chúrsa",
+    "description": "Leagan amach idirghníomhach do choincheapa cúrsa le sonraí, beochan agus seiceálacha eolais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "teideal"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Limistéar faisnéise"
+      },
+      {
+        "title": "Limistéar sonraí"
+      },
+      {
+        "title": "Limistéar beochana"
+      },
+      {
+        "title": "Limistéar Seiceála Eolais"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Limistéar lógó"
+      }
+    ]
+  }
+}

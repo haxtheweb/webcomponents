@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Taphataa Unity",
+    "description": "Taphataa Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Kaayyoo",
+        "description": "Karaa ijaarsa taphichaa."
+      },
+      {
+        "property": "compression",
+        "title": "Mala cuqaasuu",
+        "description": "Dheeressa faayilii cuqaasuu qabeenya taphichaatiif."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL Dabarsaa",
+        "description": "URL qabeenya dabarsaa."
+      },
+      {
+        "property": "companyname",
+        "title": "Maqaa Dhaabbataa",
+        "description": "Maqaa dhaabbataa."
+      },
+      {
+        "property": "productname",
+        "title": "Maqaa Oomishaa",
+        "description": "Mata-duree taphichaa."
+      },
+      {
+        "property": "productversion",
+        "title": "Fooyya'iinsa Oomishaa",
+        "description": "Fooyya'iinsa gadi lakkifame."
+      },
+      {
+        "property": "width",
+        "title": "Bal'ina Canvas",
+        "description": "Bal'ina CSS canvas (fkn. px ykn em)."
+      },
+      {
+        "property": "height",
+        "title": "Dheerina Canvas",
+        "description": "Dheerina CSS canvas (fkn. px ykn em)."
+      },
+      {
+        "property": "background",
+        "title": "Duuba Canvas",
+        "description": "Duuba CSS canvas."
+      }
+    ]
+  }
+}

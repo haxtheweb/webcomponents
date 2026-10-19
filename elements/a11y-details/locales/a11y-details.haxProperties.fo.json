@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Atkomiligur smálutaknøttur",
+    "description": "Atkomilig stigvís avdúking við smálutum og samandrátti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Knøttur",
+        "description": "Samandráttur av innihaldinum, ið er fjalt, t.d. \"kunning\", \"metadátur\" o.a."
+      },
+      {
+        "slot": "details",
+        "title": "Lýsing",
+        "description": "Nágreinilig lýsing, ið kann fjalast ella vísast"
+      },
+      {
+        "slot": "",
+        "title": "Lýsingarknøttur",
+        "description": "Sjálvsett fyri knøtt, ið vísir/fjalir lýsingartekst, t.d. \"kunning\", \"metadátur\" o.a."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Valfrír samandráttartekstur, tá ið smálutirnir eru opnir"
+      },
+      {
+        "property": "closeText",
+        "title": "Valfrír samandráttartekstur, tá ið smálutirnir eru latnir aftur"
+      }
+    ]
+  }
+}

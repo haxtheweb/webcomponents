@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ofkoarting",
+    "description": "Ofkoarting mei tooltip foar de folsleine term."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Sichtbere ôfkoartingstekst."
+      },
+      {
+        "attribute": "title",
+        "title": "Wurd",
+        "description": "Folsleine term toand by hoverjen."
+      }
+    ]
+  }
+}

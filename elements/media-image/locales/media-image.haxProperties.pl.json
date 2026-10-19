@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Rozszerzony obraz",
+    "description": "Sposób prezentowania obrazów z różnymi ulepszeniami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Źródło",
+        "description": "URL obrazu."
+      },
+      {
+        "property": "alt",
+        "title": "Tekst alternatywny",
+        "description": "Tekst opisujący obraz dla osób niewidomych."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Podlinkuj obraz do adresu URL"
+      },
+      {
+        "property": "card",
+        "title": "Karta",
+        "description": "Dodaj cień, aby obraz wyglądał jak uniesiona karta."
+      },
+      {
+        "property": "box",
+        "title": "Ramka",
+        "description": "Dodaj wizualną ramkę wokół obrazu."
+      },
+      {
+        "property": "offset",
+        "title": "Przesunięcie",
+        "description": "Zastosuj przesunięcie obrazu w lewo lub w prawo.",
+        "options": {
+          "none": "brak",
+          "wide": "szerokie",
+          "narrow": "wąskie"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Źródło cytatu",
+        "description": "Źródło obrazu."
+      },
+      {
+        "property": "caption",
+        "title": "Podpis",
+        "description": "Podpis obrazu."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Tytuł ilustracji",
+        "description": "Tytuł etykiety ilustracji."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Opis ilustracji",
+        "description": "Opis etykiety ilustracji."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Miniatura",
+        "description": "Źródło miniatury. Pokazuje miniaturę, ale otwiera pełne źródło w oknie."
+      },
+      {
+        "property": "round",
+        "title": "Okrągły obraz",
+        "description": "Przycina obraz do kształtu koła."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Wyłącz okno obrazu",
+        "description": "Wyłącz otwieranie obrazu w oknie inspektora po kliknięciu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Renderuj jako markdown",
+        "description": "Renderuj podpis i źródło jako markdown."
+      }
+    ]
+  }
+}

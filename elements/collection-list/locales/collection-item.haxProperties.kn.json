@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "ಸಂಗ್ರಹ ಐಟಂ",
+    "description": "ಸಂಗ್ರಹ ಪಟ್ಟಿಯೊಳಗೆ ಬಳಸಲು ಕಾರ್ಡ್ ಶೈಲಿಯ ಐಟಂ, ಪಠ್ಯ, ಲಿಂಕ್ ಮತ್ತು ಐಚ್ಛಿಕ ಮಾಧ್ಯಮದೊಂದಿಗೆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "ಲಿಂಕ್",
+        "description": "ಈ ಕಾರ್ಡ್‌ನ ಗಮ್ಯಸ್ಥಾನ URL."
+      },
+      {
+        "property": "image",
+        "title": "ಚಿತ್ರ",
+        "description": "ಹಿನ್ನೆಲೆ ಚಿತ್ರ."
+      },
+      {
+        "property": "line1",
+        "title": "ಸಾಲು 1",
+        "description": "ಮೊದಲ ಸಾಲಿನ ಪಠ್ಯ."
+      },
+      {
+        "property": "line2",
+        "title": "ಸಾಲು 2",
+        "description": "ಎರಡನೇ ಸಾಲಿನ ಪಠ್ಯ."
+      },
+      {
+        "property": "line3",
+        "title": "ಸಾಲು 3",
+        "description": "ಮೂರನೇ ಸಾಲಿನ ಪಠ್ಯ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ಐಕಾನ್",
+        "description": "ಕಾರ್ಡ್ ಅನ್ನು ಪ್ರತಿನಿಧಿಸುವ ಐಕಾನ್."
+      },
+      {
+        "property": "saturate",
+        "title": "ಸ್ಯಾಚುರೇಶನ್ ಪರಿಣಾಮ",
+        "description": "ಬಳಕೆದಾರ ಫೋಕಸ್ ಮಾಡಿದಾಗ ಚಿತ್ರದ ಸ್ಯಾಚುರೇಶನ್ ಬದಲಿಸಿ."
+      },
+      {
+        "property": "tags",
+        "title": "ಟ್ಯಾಗ್‌ಗಳು",
+        "description": "ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಿದ ಟ್ಯಾಗ್‌ಗಳ ಪಟ್ಟಿ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಬಣ್ಣ",
+        "description": "ಟ್ಯಾಗ್‌ಗಳಿಗೆ ಬಳಸುವ ಬಣ್ಣ."
+      },
+      {
+        "property": "alt",
+        "title": "ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ಲಿಂಕ್ ಅನ್ನು ವಿವರಿಸುವ ಪರ್ಯಾಯ ಪಠ್ಯ."
+      }
+    ]
+  }
+}

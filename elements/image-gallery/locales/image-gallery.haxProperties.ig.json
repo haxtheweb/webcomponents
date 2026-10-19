@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Ụlọ Ngosi Onyonyo",
+    "description": "Ụlọ ngosi na-egosi onyonyo na nhazi grid, masonry, ma ọ bụ slideshow."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Ọnọdụ ngosi",
+        "description": "Otu a ga-esi gosi onyonyo n'ụlọ ngosi ahụ.",
+        "options": {
+          "grid": "Grid",
+          "masonry": "Masonry",
+          "gallery": "Ụlọ ngosi"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Ndekọ nọ n'ọrụ",
+        "description": "Ndekọ onyonyo a ga-amalite na ya n'ọnọdụ ụlọ ngosi."
+      }
+    ]
+  }
+}

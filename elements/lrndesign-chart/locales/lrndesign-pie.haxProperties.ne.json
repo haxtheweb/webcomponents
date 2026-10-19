@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "पाई चार्ट",
+    "description": "CSV मा आधारित पहुँचयोग्य चार्ट बनाउँछ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "एक्सेन्ट रङ",
+        "description": "वैकल्पिक एक्सेन्ट रङ।"
+      },
+      {
+        "title": "गाढा थिम",
+        "description": "डार्क थिम सक्षम गर्नुहोस्"
+      },
+      {
+        "title": "CSV फाइल",
+        "description": "CSV बाट डेटा लोड गर्नुहोस्।"
+      },
+      {
+        "title": "चार्टको शीर्षक",
+        "description": "तपाईंको चार्टका लागि पहुँचयोग्य alt पाठ।"
+      },
+      {
+        "title": "चार्टको विवरण",
+        "description": "तपाईंको चार्टको पहुँचयोग्य विवरण।"
+      },
+      {
+        "title": "मापनको नाम",
+        "description": "चार्टको चौडाइ:उचाइ अनुपात ($ct-scales र $ct-scales-names का लागि https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings हेर्नुहोस्)।",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "डोनट"
+      },
+      {
+        "title": "लेबल देखाउनुहोस्"
+      },
+      {
+        "title": "सुरु कोण"
+      },
+      {
+        "title": "प्याडिङ"
+      },
+      {
+        "title": "कुल",
+        "description": "तपाईंले निर्दिष्ट गर्न सक्ने वैकल्पिक कुल। कुल मान निर्दिष्ट गर्दा, पूर्ण पाई कोर्न शृङ्खलाका मानहरूको योग यही कुल हुनुपर्छ। पाईको केही भाग मात्र वा गेज चार्ट कोर्न यो प्यारामिटर प्रयोग गर्न सक्नुहुन्छ।"
+      },
+      {
+        "title": "खाली मानहरू बेवास्ता गर्नुहोस्",
+        "description": "अनावश्यक टुक्रा र लेबलहरू कोर्नबाट बच्न खाली मानहरू बेवास्ता गरिनेछन्।"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "डेटा उल्टाउनुहोस्",
+        "description": "लेबल, शृङ्खलाको क्रम र सम्पूर्ण शृङ्खला डेटा एरेहरूसहित डेटा उल्टाउनुहोस्।"
+      },
+      {
+        "title": "HTML तालिका",
+        "description": "वैकल्पिक: डेटा HTML तालिकाको रूपमा लोड गर्नुहोस्।"
+      },
+      {
+        "title": "डोनट रेखा चौडाइ"
+      },
+      {
+        "title": "ठोस डोनट",
+        "description": "डोनट खण्डहरू रेखाको सट्टा आकृतिको रूपमा कोर्नुहोस्।"
+      },
+      {
+        "title": "लेबल दिशा",
+        "description": "डोनट खण्डहरू रेखाको सट्टा आकृतिको रूपमा कोर्नुहोस्।",
+        "options": {
+          "neutral": "तटस्थ",
+          "explode": "बाहिरतिर",
+          "implode": "भित्रतिर"
+        }
+      },
+      {
+        "title": "लेबल अफसेट",
+        "description": "अर्धव्यासको आधा दूरीमा रहेको मानक स्थितिबाट लेबल स्थितिको अफसेट। यो मान धनात्मक वा ऋणात्मक हुन सक्छ। धनात्मक मानले लेबललाई केन्द्रबाट टाढा राख्छ।"
+      },
+      {
+        "title": "लेबल स्थिति",
+        "options": {
+          "inside": "भित्र",
+          "outside": "बाहिर",
+          "center": "बीच"
+        }
+      }
+    ]
+  }
+}

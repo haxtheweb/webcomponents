@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Pukyu willay",
+    "description": "Kimsa rikuchiy kayniyuq cita elemento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Suti",
+        "description": "Citasqa llamk'aypa sutin."
+      },
+      {
+        "property": "source",
+        "title": "Pukyu t'inki",
+        "description": "Citasqa llamk'aypa pukyu URL-nin."
+      },
+      {
+        "property": "date",
+        "title": "Qhawasqa p'unchaw",
+        "description": "Pukyu qhawasqa p'unchaw."
+      },
+      {
+        "property": "scope",
+        "title": "Chayana",
+        "description": "Citanapaq elementop chayanan.",
+        "options": {
+          "sibling": "Wawqi elemento",
+          "parent": "Tayta elemento"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licencia",
+        "description": "Citasqa llamk'aypa licencian."
+      },
+      {
+        "property": "creator",
+        "title": "Ruraq",
+        "description": "Citasqa llamk'aypa ruraqnin utaq dueñon."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema rikch'ay",
+        "description": "Kay citapaq OER Schema clase. Kikinmanta oer:ReferencedMaterial; allin OER clasewanlla rantiy (rikch'anachiy oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: Kand-Block",
+    "description": "Dynamesche Block, deen d'Kanner vun der aktueller Säit weist"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dynamesch Method",
+        "description": "Wéi d'Kanner relativ zu dësem Element berechent ginn",
+        "options": {
+          "active": "Aktiv Kanner",
+          "parent": "Kanner vum iwwergeuerdenten Element",
+          "ancestor": "All Kanner vum héichste Virfahr"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Ufanksniveau"
+      },
+      {
+        "property": "end",
+        "title": "Ennniveau"
+      }
+    ]
+  }
+}

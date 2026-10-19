@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licenza",
+    "description": "Furnite una licenza per u vostru travagliu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Titulu di l'opera citata."
+      },
+      {
+        "property": "source",
+        "title": "Ligame fonte",
+        "description": "URL fonte di l'opera sottu licenza."
+      },
+      {
+        "property": "license",
+        "title": "Licenza",
+        "description": "Licenza appiecata à st'opera."
+      },
+      {
+        "property": "creator",
+        "title": "Creatore",
+        "description": "Creatore o pruprietariu di st'opera."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Ligame fonte",
+        "description": "Ligame versu dettagli supplementarii di licenza."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Etichetta Di più",
+        "description": "Etichetta per i dettagli supplementarii di licenza."
+      }
+    ]
+  }
+}

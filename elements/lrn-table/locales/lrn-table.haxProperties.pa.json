@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV ਸਾਰਣੀ",
+    "description": "ਇਹ CSV ਫ਼ਾਈਲ ਤੋਂ ਸਾਰਣੀ ਬਣਾ ਸਕਦਾ ਹੈ, ਭਾਵੇਂ ਉਹ ਕਿਤੇ ਵੀ ਹੋਵੇ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "ਸਰੋਤ",
+        "description": "ਇਸ CSV ਫ਼ਾਈਲ ਦਾ URL।"
+      },
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਬਣਾਈ ਜਾਣ ਵਾਲੀ ਸਾਰਣੀ ਦਾ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "description",
+        "title": "ਵੇਰਵਾ",
+        "description": "ਸਾਰਣੀ ਡਾਟਾ ਦੀ ਬਿਹਤਰ ਪਹੁੰਚਯੋਗਤਾ ਲਈ ਵਧੇਰੇ ਵਿਸਤ੍ਰਿਤ ਵੇਰਵਾ।"
+      }
+    ]
+  }
+}

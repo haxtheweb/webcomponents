@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Igalari yeMifanekiso",
+    "description": "Igalari ebonisa imifanekiso ngokwegridi, ngokwezitena okanye ngomboniso wezilayidi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Imowudi yokubonisa",
+        "description": "Indlela yokubonisa imifanekiso kwigalari.",
+        "options": {
+          "grid": "Igridi",
+          "masonry": "Izitena",
+          "gallery": "Igalari"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Isalathiso esisebenzayo",
+        "description": "Isalathiso somfanekiso ekuqalwa ngawo kwimowudi yegalari."
+      }
+    ]
+  }
+}

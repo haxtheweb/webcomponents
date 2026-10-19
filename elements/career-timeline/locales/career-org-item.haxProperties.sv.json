@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Karriärpost",
+    "description": "En enskild organisation och dess tillhörande roller"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Organisationens namn"
+      },
+      {
+        "property": "location",
+        "title": "Plats"
+      },
+      {
+        "property": "source",
+        "title": "Källa"
+      }
+    ]
+  }
+}

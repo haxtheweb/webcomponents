@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Значка за заслуги",
+    "description": "Визуална значка, обозначаваща придобиването на умение."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Заглавие на значката",
+        "description": "Заглавие, показвано върху значката."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Изображение на значката",
+        "description": "URL на изображението за значката."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Подробности за значката",
+        "description": "Подробности за значката."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Хипервръзка",
+        "description": "Връзка, свързана със значката."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Умения на значката",
+        "description": "Умения, показвани върху значката."
+      },
+      {
+        "property": "skill",
+        "title": "Умение (OER Schema)",
+        "description": "OER Schema: умение, придобито чрез постигане на тази учебна цел."
+      }
+    ]
+  }
+}

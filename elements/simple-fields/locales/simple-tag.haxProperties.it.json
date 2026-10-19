@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Etichetta",
+    "description": "Un'etichetta compatta a forma di pillola con colore di accento, pulsante di annullamento o interruttore facoltativi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etichetta",
+        "description": "Testo mostrato nell'etichetta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Nome dell'accento SimpleColors per lo sfondo dell'etichetta.",
+        "options": {
+          "": "-- predefinito --",
+          "red": "Rosso",
+          "pink": "Rosa",
+          "purple": "Viola",
+          "deep-purple": "Viola intenso",
+          "indigo": "Indaco",
+          "blue": "Blu",
+          "light-blue": "Azzurro",
+          "cyan": "Ciano",
+          "teal": "Verde acqua",
+          "green": "Verde",
+          "light-green": "Verde chiaro",
+          "lime": "Lime",
+          "yellow": "Giallo",
+          "amber": "Ambra",
+          "orange": "Arancione",
+          "deep-orange": "Arancione intenso",
+          "brown": "Marrone",
+          "blue-grey": "Grigio blu",
+          "grey": "Grigio"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Colore di accento automatico",
+        "description": "Ricava automaticamente il colore di accento dal testo dell'etichetta."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Pulsante di annullamento",
+        "description": "Mostra un pulsante icona di rimozione/annullamento nell'etichetta."
+      },
+      {
+        "property": "readonly",
+        "title": "Sola lettura",
+        "description": "Nascondi il pulsante di annullamento in modo che l'etichetta sia solo visualizzata."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Attivabile",
+        "description": "Fai sì che l'etichetta si attivi/disattivi quando si fa clic sul pulsante."
+      },
+      {
+        "property": "toggled",
+        "title": "Attivato",
+        "description": "Se l'etichetta è attualmente attivata."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Icona attivata",
+        "description": "Icona da mostrare quando l'etichetta è attivata."
+      },
+      {
+        "property": "disabled",
+        "title": "Disattivato",
+        "description": "Disattiva l'interazione con l'etichetta."
+      }
+    ]
+  }
+}

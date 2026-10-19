@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Elemento di raccolta",
+    "description": "Elemento a scheda da usare in un elenco di raccolta, con testo, link e contenuti multimediali facoltativi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "URL di destinazione per questa scheda."
+      },
+      {
+        "property": "image",
+        "title": "Immagine",
+        "description": "Immagine di sfondo."
+      },
+      {
+        "property": "line1",
+        "title": "Riga 1",
+        "description": "Prima riga di testo."
+      },
+      {
+        "property": "line2",
+        "title": "Riga 2",
+        "description": "Seconda riga di testo."
+      },
+      {
+        "property": "line3",
+        "title": "Riga 3",
+        "description": "Terza riga di testo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona che rappresenta la scheda."
+      },
+      {
+        "property": "saturate",
+        "title": "Effetto saturazione",
+        "description": "Modifica la saturazione dell'immagine quando riceve il focus."
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Elenco di tag separati da virgole."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore",
+        "description": "Colore usato per i tag."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Testo alternativo che descrive il link."
+      }
+    ]
+  }
+}

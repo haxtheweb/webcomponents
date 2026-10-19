@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Lihtne link",
+    "description": "Lihtne lingielement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Link",
+        "description": "Siht-URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Nähtav lingi tekst."
+      },
+      {
+        "attribute": "target",
+        "title": "Sihtkoht",
+        "description": "Kus link avada.",
+        "options": {
+          "": "Samas aknas",
+          "_blank": "Uues aknas - _blank",
+          "_top": "Ülemises aknas - _top",
+          "_parent": "Ülemaknas - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Pealkirja tekst",
+        "description": "Nõuandev pealkiri ligipääsetavuse ja SEO jaoks."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Seos sihtkohaga (turvalisus/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

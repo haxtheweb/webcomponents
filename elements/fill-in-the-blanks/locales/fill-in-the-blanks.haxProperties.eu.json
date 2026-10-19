@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Bete hutsuneak",
+    "description": "Ikasleek enuntziatu bateko falta diren hitzak osatzen dituzten ebaluazio jarduera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Galdera",
+        "description": "Erabiltzaileek erantzun beharreko galdera."
+      },
+      {
+        "property": "statement",
+        "title": "Enuntziatua",
+        "description": "Hitzak markatzeko interakzio bihurtuko den enuntziatua."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Kalifikazio formatua",
+        "description": "OER Schema: ebaluazio honen kalifikazio formatua (adib. puntuak, letra, ehunekoa, osatzea)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ikaskuntza helburua",
+        "description": "OER Schema: ebaluazio honi lotutako ikaskuntza helburua."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikastaroa",
+        "description": "OER Schema: ebaluazio hau zein ikastarorako den."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Galdetegiaren izena",
+        "description": "xAPI bidezko inguruneetan elementu hau identifikatzeko pasatzen den galdetegiaren izena"
+      }
+    ]
+  }
+}

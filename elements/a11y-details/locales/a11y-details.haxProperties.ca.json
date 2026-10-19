@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Botó de detalls accessible",
+    "description": "Divulgació progressiva accessible amb detall i resum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Botó",
+        "description": "Resum del contingut que s'amaga, p. ex. \"informació\", \"metadades\", etc."
+      },
+      {
+        "slot": "details",
+        "title": "Descripció",
+        "description": "Descripció detallada que es pot amagar o mostrar"
+      },
+      {
+        "slot": "",
+        "title": "Botó de descripció",
+        "description": "Valor per defecte del botó que mostra/amaga el text de descripció, p. ex. \"informació\", \"metadades\", etc."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Text de resum opcional quan els detalls estan oberts"
+      },
+      {
+        "property": "closeText",
+        "title": "Text de resum opcional quan els detalls estan tancats"
+      }
+    ]
+  }
+}

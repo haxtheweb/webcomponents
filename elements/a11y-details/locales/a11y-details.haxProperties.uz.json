@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Qulay tafsilotlar tugmasi",
+    "description": "Tafsilot va qisqacha mazmun bilan qulay bosqichma-bosqich ochiluvchi blok"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Tugma",
+        "description": "Yashirilgan kontentning qisqacha mazmuni, masalan, \"maʼlumot\", \"metamaʼlumotlar\" va h.k."
+      },
+      {
+        "slot": "details",
+        "title": "Tavsif",
+        "description": "Yashirish yoki koʻrsatish mumkin boʻlgan batafsil tavsif"
+      },
+      {
+        "slot": "",
+        "title": "Tavsif tugmasi",
+        "description": "Tavsif matnini koʻrsatuvchi/yashiruvchi tugma uchun standart matn, masalan, \"maʼlumot\", \"metamaʼlumotlar\" va h.k."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Tafsilotlar ochiq boʻlganda ixtiyoriy qisqacha matn"
+      },
+      {
+        "property": "closeText",
+        "title": "Tafsilotlar yopiq boʻlganda ixtiyoriy qisqacha matn"
+      }
+    ]
+  }
+}

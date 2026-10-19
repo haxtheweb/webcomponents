@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-Visualiséierer",
+    "description": "MIDI am Kontext mat Visualiséierung ofspillen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quell",
+        "description": "Fichier-URL fir ofzespillen."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualiséierung",
+        "description": "Visualiséierungsstil fir de Musekfichier.",
+        "options": {
+          "staff": "Notesystem",
+          "piano-roll": "Piano Roll",
+          "waterfall": "Piano + Waasserfall"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Waasserfall verstoppen",
+        "description": "Waasserfall-Noten an der Piano-Visualiséierung verstoppen."
+      }
+    ]
+  }
+}

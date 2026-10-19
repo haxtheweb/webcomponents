@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Fídíò",
+    "description": "Ìṣeré fídíò tó ṣeé wọlé sí láti oríṣiríṣi orísun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orísun",
+        "description": "URL fún mídíà yìí."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Àkọlé",
+        "description": "Àkọlé tí a fi hàn ní ìsàlẹ̀ fídíò."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Àwòrán pósítà",
+        "description": "URL àwòrán pósítà."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Àwọn ipa ọ̀rọ̀",
+        "description": "Àkọlé àpèjúwe, àkọlé ìtúmọ̀, àpèjúwe, àti àwọn ipa ọ̀rọ̀ mìíràn fún fídíò náà."
+      },
+      {
+        "property": "startTime",
+        "title": "Àkókò ìbẹ̀rẹ̀",
+        "description": "Bẹ̀rẹ̀ fídíò ní àkókò kan pàtó (ìṣẹ́jú-àáyá)."
+      },
+      {
+        "property": "endTime",
+        "title": "Àkókò ìparí",
+        "description": "Parí fídíò ní àkókò kan pàtó (ìṣẹ́jú-àáyá), ó nílò àkókò ìbẹ̀rẹ̀."
+      },
+      {
+        "property": "learningMode",
+        "title": "Tan ipò ẹ̀kọ́",
+        "description": "Ó ń pa sísáré síwájú àti yíyí padà sẹ́yìn."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Yọ bọ́tìnnì ṣíṣí lórí YouTube kúrò",
+        "description": "Ó ń yọ bọ́tìnnì fún ṣíṣí fídíò lórí YouTube kúrò."
+      },
+      {
+        "property": "linkable",
+        "title": "Fi ìjápọ̀ ìpín kún un?",
+        "description": "Ó ń pèsè ìjápọ̀ láti pín fídíò náà."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Fi àwọn àmì àkókò pamọ́",
+        "description": "Fi àwọn àmì àkókò pamọ́ lórí àkọsílẹ̀ ọ̀rọ̀."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Fi Àkọsílẹ̀ Ọ̀rọ̀ Pamọ́",
+        "description": "Fi àkọsílẹ̀ ọ̀rọ̀ pamọ́ ní àkọ́kọ́."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Ipa àpèjúwe ohùn",
+        "description": "URL sí ipa àpèjúwe ohùn (fáìlì MP3) tí ó ń ṣàlàyé àwọn ohun tí a lè rí."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Ó ń fi hàn bóyá kí a lo CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Gbà láàyè ìṣeré lábẹ́lẹ̀",
+        "description": "Máa ṣeré nìṣó nígbà tí táàbù aṣàwárí bá pàdánù ìfojúsí."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Àkòrí dúdú fún àkọsílẹ̀ ọ̀rọ̀",
+        "description": "Tan àkòrí dúdú fún àkọsílẹ̀ ọ̀rọ̀."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Pa Ìbáṣepọ̀",
+        "description": "Pa ipò ìbáṣepọ̀ tó ń jẹ́ kí àkọsílẹ̀ ọ̀rọ̀ ṣeé tẹ̀."
+      },
+      {
+        "property": "lang",
+        "title": "Èdè",
+        "description": "Èdè mídíà náà."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "(a ti fẹ̀yìn rẹ̀ tì) Yan àwọ̀ àfikún fún ẹ̀rọ ìṣeré."
+      }
+    ]
+  }
+}

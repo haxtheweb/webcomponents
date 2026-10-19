@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Audio sebaris",
+    "description": "Puter audio sebaris kanggo nambahi isi kaca."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "Berkas MP3 utawa URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna Aksen",
+        "description": "Werna aksen kertu."
+      },
+      {
+        "property": "shiny",
+        "title": "Mengkilap",
+        "description": "Gunakake latar mburi aksen sing luwih padhang tinimbang abu-abu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Peteng",
+        "description": "Gunakake mode peteng."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "การให้คะแนนแบบดาว",
+    "description": "วิดเจ็ตแสดงคะแนนหรือปุ่มสำหรับให้คะแนน"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "คะแนน",
+        "description": "ค่าคะแนนปัจจุบัน"
+      },
+      {
+        "property": "possible",
+        "title": "คะแนนเต็ม",
+        "description": "คะแนนสูงสุดที่เป็นไปได้"
+      },
+      {
+        "property": "numStars",
+        "title": "จำนวนดาว",
+        "description": "จำนวนดาวที่จะแสดง"
+      },
+      {
+        "property": "interactive",
+        "title": "โต้ตอบได้",
+        "description": "อนุญาตให้ผู้ใช้โต้ตอบเพื่อกำหนดคะแนน"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "โหมดสเกลรูบริก",
+        "description": "ส่งออกเมทาดาทา RubricScale และ RubricLevel ของ OER Schema (levelOrdinal/levelPoints) สำหรับดาวแต่ละดวง"
+      }
+    ]
+  }
+}

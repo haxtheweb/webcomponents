@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Selftoets",
+    "description": "Gebruikers kan 'n selftoets voltooi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Prent",
+        "description": "Prent vir die selftoets."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel van die selftoets."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-teks",
+        "description": "Alt-teks vir die prent."
+      },
+      {
+        "slot": "question",
+        "title": "Vraag"
+      },
+      {
+        "slot": "",
+        "title": "Antwoord"
+      },
+      {
+        "property": "accentColor",
+        "title": "Temakleur",
+        "description": "Kies 'n temakleur uit die ontwerpstelsel.",
+        "options": {
+          "primary": "Primêr",
+          "accent": "Aksent",
+          "success": "Sukses",
+          "warning": "Waarskuwing",
+          "error": "Fout",
+          "info": "Inligting"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leeruitkoms",
+        "description": "Leeruitkoms-verwysing uitgestuur as oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Assesseer",
+        "description": "Aktiwiteitsverwysing uitgestuur as oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Meer-skakel",
+        "description": "Skakel na bykomende inligting."
+      }
+    ]
+  }
+}

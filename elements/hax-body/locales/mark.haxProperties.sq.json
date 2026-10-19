@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Theksim",
+    "description": "Thekso tekstin në rresht."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teksti",
+        "description": "Teksti i theksuar."
+      }
+    ]
+  }
+}

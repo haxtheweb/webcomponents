@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Llibre de qualificacions",
+    "description": "Un llibre de qualificacions sense interfície que admet diversos backends amb rúbriques."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origen",
+        "description": "Tipus d'origen de dades (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Punt final URL (JSON)",
+          "json": "Blob de dades JSON",
+          "filesystem": "Sistema de fitxers"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Dades d'origen",
+        "description": "URL o dades JSON per al llibre de qualificacions."
+      },
+      {
+        "property": "forCourse",
+        "title": "Referència del curs",
+        "description": "Identificador del curs emès com a oer:forCourse a cada recurs d'avaluació."
+      }
+    ]
+  }
+}

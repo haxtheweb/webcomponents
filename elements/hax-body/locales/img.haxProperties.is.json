@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Einföld mynd",
+    "description": "Einföld myndaeining."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Uppruni",
+        "description": "URL myndar."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt-texti",
+        "description": "Annar texti fyrir aðgengi og SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Hæð",
+        "description": "Hæð í dílum. Skildu eftir autt til að nota upprunalega stærð."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Hleðsla myndar",
+        "description": "Veldu hvenær myndin hleðst.",
+        "options": {
+          "lazy": "Hlaða þegar sýnileg",
+          "auto": "Sjálfvirkt"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Aðlögunarhæfar uppsprettur (srcset)",
+        "description": "Skráðu URL mynda og lýsingar (t.d. 480w eða 2x) svo vafrar velji bestu stærðina fyrir skjáinn. Vistað sem staðlaða srcset-eigindin."
+      }
+    ]
+  }
+}

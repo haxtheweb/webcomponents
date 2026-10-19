@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "רשימה פֿון GitHub־מיטאַרבעטער",
+    "description": "געוויזן ווי RPG־פּערזאָנאַזשן דורך דעם GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "אָרגאַניזאַציע",
+        "description": "אָרגאַניזאַציע־נאָמען פֿון github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "רעפּאָזיטאָריע",
+        "description": "רעפּאָזיטאָריע־נאָמען פֿון github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "גרענעץ",
+        "description": "באַגרענעצן די צאָל געוויזענע מיטאַרבעטער."
+      }
+    ]
+  }
+}

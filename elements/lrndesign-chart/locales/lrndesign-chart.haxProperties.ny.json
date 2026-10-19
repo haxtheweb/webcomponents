@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "description": "Imapanga tchati chopezeka kwa onse chochokera ku CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wosankha."
+      },
+      {
+        "property": "dark",
+        "title": "Mawonekedwe Akuda",
+        "description": "Yatsani Mawonekedwe Amdima"
+      },
+      {
+        "property": "dataSource",
+        "title": "Fayilo ya CSV",
+        "description": "Tsegulani deta kuchokera ku CSV."
+      },
+      {
+        "slot": "heading",
+        "title": "Mutu wa Tchati",
+        "description": "Mawu ena opezeka kwa onse a tchati chanu."
+      },
+      {
+        "slot": "desc",
+        "title": "Kufotokozera kwa Tchati",
+        "description": "Kufotokozera kopezeka kwa onse kwa tchati chanu."
+      },
+      {
+        "property": "scale",
+        "title": "Dzina la Muyeso",
+        "description": "Chiyerekezo cha m'lifupi:kutalika kwa tchati (Onani https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings kuti mupeze $ct-scales ndi $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "reverseData",
+        "title": "Tembenuzani Deta",
+        "description": "Tembenuzani deta kuphatikizapo zizindikiro, kutsatana kwa magulu komanso magulu onse a deta."
+      },
+      {
+        "slot": "",
+        "title": "Tebulo la HTML",
+        "description": "Chosankha: Tsegulani deta ngati tebulo la HTML."
+      }
+    ]
+  }
+}

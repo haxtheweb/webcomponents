@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ఫ్లాష్ కార్డ్",
+    "description": "ముందు-వెనుక ఫ్లాష్ కార్డ్‌లతో భావనలను సాధన చేయండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "కార్డ్ ముందు భాగం",
+        "description": "ముందు వచనం లేదా ప్రశ్న."
+      },
+      {
+        "slot": "back",
+        "title": "కార్డ్ వెనుక భాగం",
+        "description": "ఆశించిన సమాధానం."
+      },
+      {
+        "property": "imgSource",
+        "title": "చిత్ర మూలం",
+        "description": "కార్డ్ కోసం ఉపయోగించే చిత్ర ఫైల్. చిత్ర కీవర్డ్‌ను భర్తీ చేస్తుంది."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "చర్య రకం",
+        "description": "OER Schema: ఈ సాధనలో ఉండే చర్య రకం (ఉదా. Reading, Writing, Making, Researching, Listening, Watching, Reflecting, Discussing, Observing, Presenting, Assess)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "అభ్యాస లక్ష్యం",
+        "description": "OER Schema: ఈ సాధన మద్దతు ఇచ్చే అభ్యాస లక్ష్యం యొక్క ID లేదా URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "డార్క్",
+        "description": "డార్క్ మోడ్ ఉపయోగించండి."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "కార్డ్ యాక్సెంట్ రంగు."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "చిత్ర కీవర్డ్",
+        "description": "యాదృచ్ఛిక చిత్ర కీవర్డ్. చిత్ర మూలం దీన్ని భర్తీ చేస్తుంది."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tehtävälaatikko",
+    "description": "Pieni muotoiltu otsikkolohko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Kuvake",
+        "description": "Tehtävälaatikon vieressä näytettävä kuvake."
+      },
+      {
+        "property": "tag",
+        "title": "Tehtävälaatikon tunniste",
+        "description": "Tehtävälaatikossa näytettävä tunniste."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Ei väritystä",
+        "description": "Estä värien käyttö kuvakkeessa."
+      }
+    ]
+  }
+}

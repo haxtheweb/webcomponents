@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Polaris-ის თემატური მოწოდების ღილაკის ჩვენება."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "ღილაკის ტექსტი",
+        "description": "მოწოდების ღილაკზე ნაჩვენები ტექსტი."
+      },
+      {
+        "property": "link",
+        "title": "ბმული",
+        "description": "ღილაკის დანიშნულების URL."
+      },
+      {
+        "property": "type",
+        "title": "ვარიანტი",
+        "description": "ვიზუალური სტილის ვარიანტი.",
+        "options": {
+          "primary": "ძირითადი",
+          "tinted": "შეფერილი",
+          "light": "ღია"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "კონტურული სტილი",
+        "description": "კონტურული გაფორმების ჩართვა."
+      },
+      {
+        "property": "filled",
+        "title": "შევსებული სტილი",
+        "description": "შევსებული გაფორმების ჩართვა."
+      }
+    ]
+  }
+}

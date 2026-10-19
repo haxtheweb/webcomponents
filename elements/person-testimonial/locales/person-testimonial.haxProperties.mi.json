@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Whakahua Whakaahua",
+    "description": "He whakahua kua whakarākeitia me tētahi whakaahua kōwhiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Whakaahua",
+        "description": "Tāpiritia he whakaahua ki te kōrero taunaki."
+      },
+      {
+        "property": "name",
+        "title": "Ingoa Katoa",
+        "description": "Ingoa o te tangata nāna te kōrero taunaki."
+      },
+      {
+        "property": "position",
+        "title": "Tūranga, Taitara Mahi rānei",
+        "description": "Te tūranga, te taitara mahi rānei o te tangata."
+      },
+      {
+        "slot": "",
+        "title": "Whakahua",
+        "description": "Whakahua mai i te kaituhi o te kōrero taunaki."
+      }
+    ]
+  }
+}

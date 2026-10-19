@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Бет белгісі",
+    "description": "Бет авторларына арналған редакциялық ескертпе."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Бет белгісінің екпін түсі."
+      },
+      {
+        "property": "label",
+        "title": "Белгі",
+        "description": "Бет белгісінің мәтіні."
+      }
+    ]
+  }
+}

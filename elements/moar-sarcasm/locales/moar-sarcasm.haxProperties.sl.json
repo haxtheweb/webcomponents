@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkazem",
+    "description": "Predstavitev besedila na provokativen način"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Besedilo",
+        "description": "Besedilo, ki naj postane sarkastično"
+      }
+    ]
+  }
+}

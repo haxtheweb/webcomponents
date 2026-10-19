@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS entitatea",
+    "description": "Backend-ean errendatutako CMS entitatea"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Mota",
+        "description": "gure CMSko mota",
+        "options": {
+          "node": "Nodoa",
+          "user": "Erabiltzailea",
+          "file": "Fitxategia"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "gure CMSko IDa"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Bistaratze modua",
+        "description": "gure CMSko bistaratze modua"
+      }
+    ]
+  }
+}

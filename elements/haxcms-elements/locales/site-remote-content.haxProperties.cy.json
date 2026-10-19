@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Cynnwys o Bell",
+    "description": "Ailddefnyddio cynnwys o un wefan mewn un arall."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Cyfeiriad y wefan",
+        "description": "Gludwch y cyfeiriad i gyfeirio at gynnwys ohono os nad y wefan gyfredol yw hi"
+      },
+      {
+        "property": "uuid",
+        "title": "Eitem",
+        "description": "Eitem i'w dangos ar gyfer data'r ddolen / teitl"
+      },
+      {
+        "property": "breakreference",
+        "title": "Torri'r cyfeiriad",
+        "description": "Mae ticio'r blwch hwn yn copïo'r cynnwys o bell i'w olygu'n lleol ond yn tynnu'r cysylltiad. Ni fydd yn cael diweddariadau mwyach pan fydd y deunydd cyfeirio'n diweddaru."
+      },
+      {
+        "property": "showTitle",
+        "title": "Dangos y teitl",
+        "description": "Trowch ymlaen i ddangos teitl yr adnodd sy'n cael ei ddangos"
+      }
+    ]
+  }
+}

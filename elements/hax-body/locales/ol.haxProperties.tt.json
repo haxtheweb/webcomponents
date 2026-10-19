@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Номерлы исемлек",
+    "description": "Номерлы исемлек ясау."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Номер стиле",
+        "description": "Тәртипле исемлекне номерлау өчен кулланыла торган стиль.",
+        "options": {
+          "": "Килешү буенча (унлы)",
+          "list-decimal-leading-zero": "Алдан ноль белән унлы (01, 02, 03)",
+          "list-lower-alpha": "Кечкенә хәрефләр (a, b, c)",
+          "list-upper-alpha": "Баш хәрефләр (A, B, C)",
+          "list-lower-roman": "Кечкенә рим саннары (i, ii, iii)",
+          "list-upper-roman": "Зур рим саннары (I, II, III)"
+        }
+      }
+    ]
+  }
+}

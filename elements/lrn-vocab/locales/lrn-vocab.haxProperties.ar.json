@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "مفردات",
+    "description": "مصطلح مفردات"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "المصطلح"
+      },
+      {
+        "slot": "",
+        "title": "التعريف",
+        "description": "التعريف المراد عرضه عند النقر على المصطلح."
+      },
+      {
+        "property": "description",
+        "title": "الوصف (OER Schema)",
+        "description": "OER Schema: وصف قصير لمصطلح المفردات. يُملأ تلقائيًا من نص التعريف إذا تُرك فارغًا."
+      }
+    ]
+  }
+}

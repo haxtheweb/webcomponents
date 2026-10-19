@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Sgôr Seren",
+    "description": "Teclyn dangos sgôr neu fotwm i roi sgôr."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Sgôr",
+        "description": "Gwerth y sgôr gyfredol."
+      },
+      {
+        "property": "possible",
+        "title": "Posibl",
+        "description": "Y sgôr uchaf bosibl."
+      },
+      {
+        "property": "numStars",
+        "title": "Nifer y Sêr",
+        "description": "Nifer y sêr i'w dangos."
+      },
+      {
+        "property": "interactive",
+        "title": "Rhyngweithiol",
+        "description": "Caniatáu i'r defnyddiwr ryngweithio i osod y sgôr."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Modd Graddfa Cyfarwyddyd Marcio",
+        "description": "Allyrru metadata RubricScale a RubricLevel OER Schema (levelOrdinal/levelPoints) ar gyfer pob seren."
+      }
+    ]
+  }
+}

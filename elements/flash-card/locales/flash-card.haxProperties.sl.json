@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Učna kartica",
+    "description": "Vadite pojme z dvostranskimi učnimi karticami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Sprednja stran kartice",
+        "description": "Besedilo ali vprašanje na sprednji strani."
+      },
+      {
+        "slot": "back",
+        "title": "Zadnja stran kartice",
+        "description": "Pričakovani odgovor."
+      },
+      {
+        "property": "imgSource",
+        "title": "Vir slike",
+        "description": "Slikovna datoteka, uporabljena za kartico. Ima prednost pred ključno besedo slike."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Vrsta dejavnosti",
+        "description": "OER Schema: vrsta dejavnosti, ki jo vključuje ta vaja (npr. branje, pisanje, ustvarjanje, raziskovanje, poslušanje, gledanje, razmislek, razprava, opazovanje, predstavitev, ocenjevanje)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Učni cilj",
+        "description": "OER Schema: ID ali URL učnega cilja, ki ga ta vaja podpira."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Temno",
+        "description": "Uporabi temni način."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Poudarna barva kartice."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Ključna beseda slike",
+        "description": "Ključna beseda za naključno sliko. Vir slike ima prednost pred njo."
+      }
+    ]
+  }
+}

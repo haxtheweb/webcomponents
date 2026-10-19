@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "קורס־דיזיין",
+    "description": "קאָנטיינער פֿאַר לערן־מאַטעריאַלן און קורס־דיזיין־עלעמענטן."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "קורס־אידענטיפֿיקאַטאָר",
+        "description": "OER Schema: דער אידענטיפֿיקאַטאָר פֿונעם קורס, למשל MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "סעמעסטער",
+        "description": "OER Schema: דער סעמעסטער אין וועלכן דער קורס ווערט אָנגעבאָטן."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "אָנבאָט־פֿאָרמאַט",
+        "description": "OER Schema: דער פֿאָרמאַט וואָס מע באַניצט צו געבן דעם קורס (למשל פּערזענלעך, אָנליין, היבריד)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "הויפּט־לערער",
+        "description": "OER Schema: דער הויפּט־לערער פֿונעם קורס."
+      },
+      {
+        "property": "syllabus",
+        "title": "סילאַבוס־URL",
+        "description": "OER Schema: URL צום קורס־סילאַבוס."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Pitakonan Pasangan",
+    "description": "Kagiyatan masangake kanthi seret-lan-selehake sing nggandhengake pitakonan karo wangsulan sing bener."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pitakonan",
+        "description": "Pitakonan kanggo pangguna. Tandhani target selehan, banjur dhaptar wangsulan nganti target sabanjure."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format biji",
+        "description": "OER Schema: format biji kanggo penilaian iki (contone poin, huruf, persen, rampung)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan sinau",
+        "description": "OER Schema: tujuan sinau sing ana gandhengane karo penilaian iki."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus sing dituju penilaian iki."
+      },
+      {
+        "property": "answers",
+        "title": "Wangsulan"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jeneng kuis",
+        "description": "Jeneng kuis sing digunakake kanggo identifikasi xAPI ing sistem analitik."
+      }
+    ]
+  }
+}

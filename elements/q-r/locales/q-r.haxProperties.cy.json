@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Cod QR",
+    "description": "Cod i'w sganio o ffôn clyfar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Data QR",
+        "description": "Ffynhonnell y data ar gyfer y cod QR."
+      },
+      {
+        "property": "title",
+        "title": "Teitl amgen",
+        "description": "Teitl amgen sy'n gysylltiedig â ffynhonnell y cod QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Maint",
+        "description": "Maint y cod QR."
+      },
+      {
+        "property": "margin",
+        "title": "Ymyl",
+        "description": "Ymyl o amgylch y cod."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Fformat allbwn",
+        "description": "Fformat i'w allbynnu.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

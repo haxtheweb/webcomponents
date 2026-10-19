@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "د انځورونو ګالري",
+    "description": "یوه ګالري چې انځورونه په جالۍ، خښتیز یا سلایډ شو بڼه وړاندې کوي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "د ښودلو حالت",
+        "description": "په ګالري کې انځورونه څنګه وړاندې شي.",
+        "options": {
+          "grid": "جالۍ",
+          "masonry": "خښتیز",
+          "gallery": "ګالري"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "فعال شمېره",
+        "description": "په ګالري حالت کې د پیل لپاره د فعال انځور شمېره."
+      }
+    ]
+  }
+}

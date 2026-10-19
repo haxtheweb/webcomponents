@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stapitem",
+    "description": "Item dat diel is fan in stappelist"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel"
+      }
+    ]
+  }
+}

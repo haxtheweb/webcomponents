@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Permet de présenter une vidéo de manière hautement accessible, quelle que soit sa source."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "L'URL de ce média."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titre",
+        "description": "Titre simple sous la vidéo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "Sélectionnez la couleur d'accent du lecteur."
+      },
+      {
+        "property": "track",
+        "title": "Sous-titres",
+        "description": "L'URL du fichier de sous-titres."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Image miniature",
+        "description": "Facultatif. L'URL d'une image miniature/affiche."
+      },
+      {
+        "property": "learningMode",
+        "title": "Activer le mode apprentissage",
+        "description": "Désactive l'avance et le retour rapides."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Supprimer le bouton d'ouverture sur YouTube",
+        "description": "Supprime le bouton permettant d'ouvrir la vidéo sur YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Inclure un lien de partage ?",
+        "description": "Fournit un lien pour partager la vidéo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indique s'il faut utiliser CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Autoriser la lecture en arrière-plan",
+        "description": "Les vidéos se mettent en pause / reprennent automatiquement lorsque l'onglet perd le focus ; cette option permet de lire la vidéo sans que l'onglet ait le focus"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Thème sombre pour la transcription",
+        "description": "Activer le thème sombre pour la transcription."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Désactiver l'interactivité",
+        "description": "Désactiver le mode interactif qui rend la transcription cliquable."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Masquer les horodatages",
+        "description": "Masquer les horodatages de la transcription."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Masquer la transcription",
+        "description": "Masquer la transcription par défaut."
+      },
+      {
+        "property": "lang",
+        "title": "Langue",
+        "description": "Langue du média."
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Тегерек диаграмма",
+    "description": "CSV негизинде жеткиликтүү диаграмма түзөт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Акцент түсү",
+        "description": "Кошумча акцент түсү."
+      },
+      {
+        "title": "Караңгы тема",
+        "description": "Караңгы теманы иштетүү"
+      },
+      {
+        "title": "CSV файлы",
+        "description": "CSV файлынан маалыматтарды жүктөө."
+      },
+      {
+        "title": "Диаграмманын аталышы",
+        "description": "Диаграммаңыз үчүн жеткиликтүү alt тексти."
+      },
+      {
+        "title": "Диаграмманын сыпаттамасы",
+        "description": "Диаграммаңыздын жеткиликтүү сыпаттамасы."
+      },
+      {
+        "title": "Масштабдын аталышы",
+        "description": "Диаграмманын туурасынын бийиктигине катышы ($ct-scales жана $ct-scales-names үчүн https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings караңыз).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Шакек"
+      },
+      {
+        "title": "Белгини көрсөтүү"
+      },
+      {
+        "title": "Баштапкы бурч"
+      },
+      {
+        "title": "Чегиниш"
+      },
+      {
+        "title": "Жалпы",
+        "description": "Көрсөтө турган кошумча жалпы сумма. Жалпы маанини көрсөтсөңүз, толук тегеректи тартуу үчүн сериядагы маанилердин суммасы ушул жалпы мааниге барабар болушу керек. Бул параметрди тегеректин бир бөлүгүн же өлчөгүч диаграммаларын тартуу үчүн колдонсоңуз болот."
+      },
+      {
+        "title": "Бош маанилерди этибарга албоо",
+        "description": "Керексиз бөлүктөрдү жана белгилерди тартпоо үчүн бош маанилер этибарга алынбайт."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Маалыматтарды тескери буруу",
+        "description": "Маалыматтарды, анын ичинде белгилерди, серияларынын иретин жана бүт серия маалымат массивдерин тескери буруу."
+      },
+      {
+        "title": "HTML таблица",
+        "description": "Милдеттүү эмес: маалыматтарды HTML таблица катары жүктөө."
+      },
+      {
+        "title": "Шакектин сызык калыңдыгы"
+      },
+      {
+        "title": "Тутумдаш шакек",
+        "description": "Шакек сегменттерин сызык эмес, фигура катары тартуу."
+      },
+      {
+        "title": "Белгинин багыты",
+        "description": "Шакек сегменттерин сызык эмес, фигура катары тартуу.",
+        "options": {
+          "neutral": "нейтралдуу",
+          "explode": "сыртка",
+          "implode": "ичкери"
+        }
+      },
+      {
+        "title": "Белгинин жылышы",
+        "description": "Белгинин радиустун жарымындагы стандарттык ордунан жылышы. Бул маани оң же терс болушу мүмкүн. Оң маанилер белгини борбордон алыстатат."
+      },
+      {
+        "title": "Белгинин орду",
+        "options": {
+          "inside": "ичинде",
+          "outside": "сыртында",
+          "center": "борбор"
+        }
+      }
+    ]
+  }
+}

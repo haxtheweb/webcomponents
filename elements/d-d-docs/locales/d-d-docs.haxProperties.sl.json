@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Implementacija oblikovnega sistema za HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Možnost za prikaz",
+        "options": {
+          "*": "Celoten slogovni vodnik"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "미디어 인용",
+    "description": "인용문, 출처, 선택적 캡션이 있는 이미지입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "인용문",
+        "description": "인용문 텍스트입니다."
+      },
+      {
+        "slot": "author",
+        "title": "저자",
+        "description": "인용문의 저자입니다."
+      },
+      {
+        "slot": "author-detail",
+        "title": "저자 세부 정보",
+        "description": "저자 세부 정보입니다."
+      },
+      {
+        "slot": "caption",
+        "title": "캡션",
+        "description": "이미지 캡션입니다."
+      },
+      {
+        "property": "src",
+        "title": "이미지 소스",
+        "description": "미디어 인용에 사용되는 이미지 파일입니다."
+      },
+      {
+        "property": "alt",
+        "title": "대체 텍스트",
+        "description": "이미지의 대체 텍스트입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "카드 강조 색상입니다."
+      }
+    ]
+  }
+}

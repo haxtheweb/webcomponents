@@ -1,0 +1,18 @@
+{
+  "title": "Vipengele vya jukwaa",
+  "experienceLevel": "Kiwango cha uzoefu",
+  "cmsFeatures": "Vipengele vya CMS",
+  "editorFeatures": "Vipengele vya kihariri",
+  "blocks": "Vizuizi",
+  "filterBlocks": "Chuja vizuizi",
+  "requiredTextNote": "Baadhi ya lebo za maandishi zinahitajika na huwa zimewezeshwa kila wakati (zinaonyeshwa kama zimezimwa).",
+  "download": "Pakua kiunzi",
+  "save": "Hifadhi",
+  "generating": "Inaunda kiunzi…",
+  "generated": "Kiunzi kimepakuliwa",
+  "enabled": "Imewezeshwa",
+  "feature": "Kipengele",
+  "details": "Maelezo zaidi",
+  "featuresWarning": "Kuzima chaguo hizi kunaweza kuondoa uwezo muhimu wa uandishi na usimamizi.",
+  "largeSiteWarning": "Tovuti hii ina kurasa nyingi. Kuunda kiunzi kunaweza kuchukua muda."
+}

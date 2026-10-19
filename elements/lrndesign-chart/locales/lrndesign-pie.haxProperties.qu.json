@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Muyu Chart",
+    "description": "CSV-man hina llapanpaq haykunalla chartta ruran."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rikchachiq llimpi",
+        "description": "Akllanalla rikchachiq llimpi."
+      },
+      {
+        "title": "Tutayaq tema",
+        "description": "Tuta Rikch'ayta Hap'ichiy"
+      },
+      {
+        "title": "CSV Willañiqi",
+        "description": "CSV-manta willakuykunata apamuy."
+      },
+      {
+        "title": "Chartpa Sutin",
+        "description": "Chartniykipaq llapanpaq haykunalla rantin qillqa."
+      },
+      {
+        "title": "Chartpa Willakuynin",
+        "description": "Chartniykip llapanpaq haykunalla willakuynin."
+      },
+      {
+        "title": "Escalap Sutin",
+        "description": "Chartpa kinray:sayay tupun ($ct-scales $ct-scales-names-paq qhaway https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Donut"
+      },
+      {
+        "title": "Unanchata Rikuchiy"
+      },
+      {
+        "title": "Qallariy K'uchu"
+      },
+      {
+        "title": "Ukhu ch'usaq"
+      },
+      {
+        "title": "Llapan",
+        "description": "Munaspalla churanayki llapan. Llapan chaninta churaspaqa, seriepi chaninkunap yapasqanqa kay llapan kanan hunt'asqa muyuta siq'inapaq. Kay parametrota llamk'achiyta atinki muyup utaq tupuq chartkunap partenkunallata siq'inapaq."
+      },
+      {
+        "title": "Ch'usaq Chaninkunata Qhawaypaq Saqiy",
+        "description": "Ch'usaq chaninkunaqa mana qhawasqa kanqachu mana necesitasqa t'aqakunata unanchakunata ima mana siq'inapaq."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Willakuykunata T'ikray",
+        "description": "Willakuykunata t'ikray, unanchakunata, serie ch'uyanchayta, llapan serie willakuy arraykunatapas."
+      },
+      {
+        "title": "HTML Tabla",
+        "description": "Munaspalla: Willakuykunata HTML tabla hina apamuy."
+      },
+      {
+        "title": "Donut Siqip Kinraynin"
+      },
+      {
+        "title": "Hunt'asqa Donut",
+        "description": "Donut t'aqakunata rikch'aykuna hina siq'iy, mana siqikuna hinachu."
+      },
+      {
+        "title": "Unanchap Ñannin",
+        "description": "Donut t'aqakunata rikch'aykuna hina siq'iy, mana siqikuna hinachu.",
+        "options": {
+          "neutral": "chawpi",
+          "explode": "hawaman",
+          "implode": "ukhuman"
+        }
+      },
+      {
+        "title": "Unancha Karunchay",
+        "description": "Unanchap churasqan kikin churasqanmanta karunchay, chayqa radiop kuskan karunmi. Kay chaninqa positivo utaq negativo kanman. Positivo chaninkunaqa unanchata chawpimanta karuman churanqa."
+      },
+      {
+        "title": "Unanchap Churasqan",
+        "options": {
+          "inside": "ukhupi",
+          "outside": "hawapi",
+          "center": "chawpi"
+        }
+      }
+    ]
+  }
+}

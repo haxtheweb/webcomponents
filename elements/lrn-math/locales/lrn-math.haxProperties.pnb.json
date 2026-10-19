@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "حساب",
+    "description": "حساب نوں سوہݨے طریقے نال وکھاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "حساب",
+        "description": "مساوات LaTeX وجوں لکھو"
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Karta",
+    "description": "Karta z opcjonalnym stylem akcentu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Nagłówek",
+        "description": "Nagłówek karty."
+      },
+      {
+        "slot": "subheading",
+        "title": "Podtytuł",
+        "description": "Opcjonalny podtytuł karty."
+      },
+      {
+        "slot": "content",
+        "title": "Zawartość",
+        "description": "Treść karty."
+      },
+      {
+        "slot": "footer",
+        "title": "Stopka",
+        "description": "Opcjonalna stopka karty."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Obraz",
+        "description": "Opcjonalny obraz"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Tekst alternatywny obrazu",
+        "description": "Tekst alternatywny opisujący obraz dla czytników ekranu. Pozostaw pusty tylko wtedy, gdy obraz jest czysto dekoracyjny."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Wyrównanie obrazu w poziomie",
+        "options": {
+          "left": "do lewej",
+          "center": "do środka",
+          "right": "do prawej"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Wyrównanie obrazu w pionie",
+        "options": {
+          "top": "do góry",
+          "center": "do środka",
+          "bottom": "do dołu"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Opcjonalny kolor akcentu."
+      },
+      {
+        "property": "dark",
+        "title": "Ciemny motyw",
+        "description": "Włącz ciemny motyw"
+      },
+      {
+        "property": "horizontal",
+        "title": "Pozioma",
+        "description": "Orientacja pozioma?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Akcent nagłówka",
+        "description": "Zastosować kolor akcentu do nagłówka?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Akcent tła",
+        "description": "Zastosować kolor akcentu do tła karty?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Bez akcentu obramowania",
+        "description": "Usunąć akcent obramowania?"
+      },
+      {
+        "property": "flat",
+        "title": "Płaska",
+        "description": "Usunąć cień?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Narożnik",
+        "description": "Treść narożnika karty."
+      }
+    ]
+  }
+}

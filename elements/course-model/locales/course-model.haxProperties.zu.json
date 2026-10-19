@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "imodeli yesifundo",
+    "description": "Isakhiwo esisebenzisanayo semiqondo yesifundo enemininingwane, opopayi, nokuhlolwa kolwazi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "isihloko"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Indawo yolwazi"
+      },
+      {
+        "title": "Indawo yemininingwane"
+      },
+      {
+        "title": "Indawo kapopayi"
+      },
+      {
+        "title": "Indawo Yokuhlolwa Kolwazi"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Indawo yelogo"
+      }
+    ]
+  }
+}

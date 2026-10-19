@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Koodinäyte",
+    "description": "Sivulla korostettu koodinäyte"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Koodin korostus",
+        "description": "Koodialueeseen sovellettava syntaksikorostus",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-data",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Kopioi leikepöydälle -painike",
+        "description": "oikeassa yläkulmassa oleva painike, jossa lukee kopioi leikepöydälle"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Korostuksen alku",
+        "description": "Rivinumero, josta korostus alkaa"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Korostuksen loppu",
+        "description": "Rivi, johon korostus päättyy"
+      }
+    ]
+  }
+}

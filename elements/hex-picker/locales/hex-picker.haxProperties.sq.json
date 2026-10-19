@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Zgjedhës Hex",
+    "description": "Zgjedhës ngjyrash me kod hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Vlera",
+        "description": "Vlera hex e parazgjedhur"
+      },
+      {
+        "property": "disabled",
+        "title": "I çaktivizuar",
+        "description": "Çaktivizo fushën e tekstit"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Shfaqje e madhe",
+        "description": "Përfshi ngjyrën në shfaqje të madhe"
+      }
+    ]
+  }
+}

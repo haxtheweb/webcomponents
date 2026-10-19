@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Anneau de progression",
+    "description": "Anneau de progression"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Le titre de l'élément"
+      },
+      {
+        "property": "desc",
+        "title": "Description",
+        "description": "Description longue accessible"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Source de l'image",
+        "description": "Source de l'image à l'intérieur de l'anneau."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Texte alternatif de l'image",
+        "description": "Texte alternatif de l'image."
+      },
+      {
+        "property": "animated",
+        "title": "Animé",
+        "description": "Indique si la progression est animée au premier chargement"
+      },
+      {
+        "property": "complete",
+        "title": "Terminé",
+        "description": "Un tableau de valeurs terminées."
+      },
+      {
+        "property": "total",
+        "title": "Total",
+        "description": "Total lorsque tous les éléments sont terminés."
+      },
+      {
+        "property": "startAngle",
+        "title": "Angle de départ",
+        "description": "Angle de l'anneau où commence la progression"
+      }
+    ]
+  }
+}

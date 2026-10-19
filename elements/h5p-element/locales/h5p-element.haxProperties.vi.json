@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Trình bao bọc H5P để tải và trình bày tệp .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Mã nhúng iframe H5P"
+      }
+    ]
+  }
+}

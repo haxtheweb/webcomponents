@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Chidimbu",
+    "description": "Chidimbu chine tooltip yezwi rakazara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Mavara",
+        "description": "Mavara echidimbu anooneka."
+      },
+      {
+        "attribute": "title",
+        "title": "Izwi",
+        "description": "Izwi rakazara rinoratidzwa kana mbeva yapfuura pamusoro."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Comhaireamh Suas",
+    "description": "Beochan d'uimhir ag comhaireamh suas go dtí sprioc-luach nuair a scrollaítear isteach san amharc í."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Luach deiridh",
+        "description": "An uimhir le comhaireamh suas chuici."
+      },
+      {
+        "property": "start",
+        "title": "Luach tosaigh",
+        "description": "An uimhir le comhaireamh suas uaithi."
+      },
+      {
+        "property": "duration",
+        "title": "Fad",
+        "description": "Líon na soicindí a mhairfidh beochan an chomhairimh."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Téacs réimíre",
+        "description": "Téacs a thaispeántar roimh an uimhir (m.sh. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Téacs iarmhíre",
+        "description": "Téacs a thaispeántar i ndiaidh na huimhreach (m.sh. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Sliotán réimíre",
+        "description": "Ábhar roghnach sa sliotán roimh an uimhir."
+      },
+      {
+        "slot": "suffix",
+        "title": "Sliotán iarmhíre",
+        "description": "Ábhar roghnach sa sliotán i ndiaidh na huimhreach."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Ionaid deachúlacha",
+        "description": "Líon na n-ionad deachúlach le taispeáint."
+      },
+      {
+        "property": "separator",
+        "title": "Deighilteoir na mílte",
+        "description": "Carachtar a scarann grúpaí na mílte."
+      },
+      {
+        "property": "decimal",
+        "title": "Carachtar deachúlach",
+        "description": "Carachtar a úsáidtear don phointe deachúlach."
+      },
+      {
+        "property": "noeasing",
+        "title": "Gan maolú",
+        "description": "Díchumasaigh an maolú ionas go mbeidh an comhaireamh líneach."
+      }
+    ]
+  }
+}

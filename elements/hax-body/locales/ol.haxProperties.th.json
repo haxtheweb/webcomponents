@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "รายการลำดับเลข",
+    "description": "สร้างรายการแบบมีหมายเลข"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "รูปแบบหมายเลข",
+        "description": "รูปแบบที่ใช้สำหรับหมายเลขของรายการแบบมีลำดับ",
+        "options": {
+          "": "ค่าเริ่มต้น (เลขฐานสิบ)",
+          "list-decimal-leading-zero": "เลขฐานสิบนำหน้าด้วยศูนย์ (01, 02, 03)",
+          "list-lower-alpha": "อักษรตัวพิมพ์เล็ก (a, b, c)",
+          "list-upper-alpha": "อักษรตัวพิมพ์ใหญ่ (A, B, C)",
+          "list-lower-roman": "เลขโรมันตัวพิมพ์เล็ก (i, ii, iii)",
+          "list-upper-roman": "เลขโรมันตัวพิมพ์ใหญ่ (I, II, III)"
+        }
+      }
+    ]
+  }
+}

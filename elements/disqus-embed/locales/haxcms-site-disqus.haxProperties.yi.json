@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus־קאָמענטאַרן",
+    "description": "אינטעגראַציע מיטן Disqus־קאָמענטאַר־וועבסערוויס"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "קורצער נאָמען",
+        "description": "קורצער נאָמען פֿון דער אייגנשאַפֿט אויף Disqus"
+      }
+    ]
+  }
+}

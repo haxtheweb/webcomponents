@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Baaj Dhacdo",
+    "description": "Qayb baaj dhacdo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Sawirka TV-ga",
+        "description": "Sawirka ka muuqda TV-ga."
+      },
+      {
+        "property": "logo",
+        "title": "Astaanta Shirkadda",
+        "description": "Astaanta ka muuqata geeska baajka."
+      },
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka ka muuqda xagga sare ee baajka."
+      },
+      {
+        "property": "name",
+        "title": "Magac",
+        "description": "Magaca ka muuqda baajka."
+      },
+      {
+        "property": "position",
+        "title": "Jago",
+        "description": "Doorka ama jagada qofka."
+      },
+      {
+        "property": "organization",
+        "title": "Hay'ad",
+        "description": "Hay'adda uu qofku u shaqeeyo."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Midabka TV-ga",
+        "description": "Dooro midabka TV-ga."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka xoojinta",
+        "description": "Midabka ugu muhiimsan ee asalka ama qoraalka."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Midabka furayaasha",
+        "description": "Midabka furayaasha TV-ga."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Ku dabaq saamaynta sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Madow iyo cad",
+        "description": "Ku dabaq saamaynta madow iyo cad."
+      }
+    ]
+  }
+}

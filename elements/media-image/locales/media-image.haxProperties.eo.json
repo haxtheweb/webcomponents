@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Plibonigita bildo",
+    "description": "Maniero prezenti bildojn kun diversaj plibonigoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonto",
+        "description": "La URL por la bildo."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativa teksto",
+        "description": "Teksto por priskribi la bildon al nevidantaj uzantoj."
+      },
+      {
+        "property": "link",
+        "title": "Ligilo",
+        "description": "Ligi la bildon al URL"
+      },
+      {
+        "property": "card",
+        "title": "Karto",
+        "description": "Apliki ĵetitan ombron por doni la aspekton de levita karto."
+      },
+      {
+        "property": "box",
+        "title": "Skatolo",
+        "description": "Apliki videblan skatolon ĉirkaŭ la bildo."
+      },
+      {
+        "property": "offset",
+        "title": "Deŝovo",
+        "description": "Apliki maldekstran aŭ dekstran deŝovon al la bildo.",
+        "options": {
+          "none": "neniu",
+          "wide": "larĝa",
+          "narrow": "mallarĝa"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Fontindiko",
+        "description": "Citaĵo por la bildo."
+      },
+      {
+        "property": "caption",
+        "title": "Apudskribo",
+        "description": "Apudskribo por la bildo."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figura titolo",
+        "description": "Titolo por la figura etikedo."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figura priskribo",
+        "description": "Priskribo por la figura etikedo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Miniatura bildo",
+        "description": "Fonto de miniatura bildo. Montras la miniaturon sed malfermas la plenan fonton en dialogo."
+      },
+      {
+        "property": "round",
+        "title": "Ronda bildo",
+        "description": "Tondas la aspekton de la bildo al cirkla formo."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Malŝalti bildan dialogon",
+        "description": "Malŝalti, ke klakoj malfermu la bildon en bildinspektila dialogo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Bildigi kiel Markdown",
+        "description": "Bildigi la apudskribon kaj citaĵon kiel Markdown."
+      }
+    ]
+  }
+}

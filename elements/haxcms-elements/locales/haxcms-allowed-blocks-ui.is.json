@@ -1,0 +1,14 @@
+{
+  "title": "Kubbar",
+  "enabled": "Virkt",
+  "block": "Kubbur",
+  "preview": "Forskoðun",
+  "filterBlocks": "Sía kubba",
+  "requiredTextNote": "Sum textamerki eru nauðsynleg og alltaf virk (sýnd óvirk).",
+  "selectAll": "Velja allt",
+  "deselectAll": "Afvelja allt",
+  "save": "Vista",
+  "noDescription": "Engin lýsing tiltæk.",
+  "details": "Nánar",
+  "loadingInventory": "Hleð öllum kubbalistanum…"
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Vdelava komentarjev Disqus na stran."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Kratko ime",
+        "description": "Kratko ime spletnega mesta, ki določa gostitelja skripta Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL strani",
+        "description": "URL strani, na katero je pripeta nit komentarjev."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identifikator strani",
+        "description": "Enolični identifikator niti komentarjev strani."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Naslov strani",
+        "description": "Naslov strani, na katero je pripeta nit komentarjev."
+      },
+      {
+        "property": "loadingText",
+        "title": "Besedilo nalaganja",
+        "description": "Besedilo, ki se sporoči med nalaganjem komentarjev."
+      },
+      {
+        "property": "lang",
+        "title": "Jezik",
+        "description": "Koda jezika vmesnika Disqus, npr. en."
+      }
+    ]
+  }
+}

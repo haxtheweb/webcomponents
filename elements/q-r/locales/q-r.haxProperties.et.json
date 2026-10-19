@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR-kood",
+    "description": "Nutitelefoniga skannitav kood."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR-andmed",
+        "description": "QR-koodi andmete allikas."
+      },
+      {
+        "property": "title",
+        "title": "Alternatiivpealkiri",
+        "description": "QR-koodi allikaga lingitud alternatiivpealkiri."
+      },
+      {
+        "property": "modulesize",
+        "title": "Suurus",
+        "description": "QR-koodi suurus."
+      },
+      {
+        "property": "margin",
+        "title": "Veeris",
+        "description": "Koodi ümbritsev ala."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Väljundvorming",
+        "description": "Vorming, milles kood väljastatakse.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

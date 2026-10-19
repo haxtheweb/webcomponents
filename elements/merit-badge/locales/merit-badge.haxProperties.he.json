@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "תג הצטיינות",
+    "description": "תג חזותי להצגת רכישת מיומנות."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "כותרת התג",
+        "description": "הכותרת המוצגת על התג."
+      },
+      {
+        "property": "badgeImage",
+        "title": "תמונת התג",
+        "description": "כתובת URL של תמונת התג."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "פרטי התג",
+        "description": "פרטים על התג."
+      },
+      {
+        "property": "hyperLink",
+        "title": "היפר-קישור",
+        "description": "הקישור המשויך לתג."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "מיומנויות התג",
+        "description": "המיומנויות המוצגות על התג."
+      },
+      {
+        "property": "skill",
+        "title": "מיומנות (OER Schema)",
+        "description": "OER Schema: מיומנות נלמדת שנרכשת בהשלמת יעד למידה זה."
+      }
+    ]
+  }
+}

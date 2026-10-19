@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kuvake",
+    "description": "Kuvake koko kuvakekirjastosta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Kuvake",
+        "description": "Näytettävä kuvake."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Kuvakkeen korostusväri."
+      },
+      {
+        "property": "dark",
+        "title": "Tumma",
+        "description": "Käytä tummaa tilaa (käänteiset värit)."
+      }
+    ]
+  }
+}

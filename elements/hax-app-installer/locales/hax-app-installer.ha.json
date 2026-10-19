@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Ma'ajiyar GitHub",
   "anErrorOccurred": "Akwai kuskure da ya faru",
-  "retry": "Sake ƙoƙari"
+  "retry": "Sake ƙoƙari",
+  "permissionRequired": "Ana buƙatar izini",
+  "passwordRequirements": "Sharuɗɗan kalmar sirri",
+  "requirementLength": "Aƙalla haruffa 8",
+  "requirementUppercase": "Babban harafi ɗaya",
+  "requirementLowercase": "Ƙaramin harafi ɗaya",
+  "requirementNumber": "Lamba ɗaya",
+  "requirementSymbol": "Alama ɗaya"
 }

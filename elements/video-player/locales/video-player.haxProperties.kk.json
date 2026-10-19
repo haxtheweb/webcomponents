@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Бейне",
+    "description": "Бірнеше көзден қолжетімді бейне ойнату."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Дереккөз",
+        "description": "Осы медианың URL мекенжайы."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Тақырып",
+        "description": "Бейненің астында көрсетілетін атау."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Постер суреті",
+        "description": "Постер суретінің URL мекенжайы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Мәтіндік жолдар",
+        "description": "Бейнеге арналған субтитрлер, сипаттамалар және басқа мәтіндік жолдар."
+      },
+      {
+        "property": "startTime",
+        "title": "Басталу уақыты",
+        "description": "Бейнені белгілі бір уақыттан бастау (секунд)."
+      },
+      {
+        "property": "endTime",
+        "title": "Аяқталу уақыты",
+        "description": "Бейнені белгілі бір уақытта аяқтау (секунд), басталу уақытын талап етеді."
+      },
+      {
+        "property": "learningMode",
+        "title": "Оқу режимін қосу",
+        "description": "Алға және артқа айналдыруды өшіреді."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "«YouTube-та ашу» түймесін алып тастау",
+        "description": "Бейнені YouTube-та ашу түймесін алып тастайды."
+      },
+      {
+        "property": "linkable",
+        "title": "Бөлісу сілтемесін қосу керек пе?",
+        "description": "Бейнемен бөлісу сілтемесін береді."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Уақыт белгілерін жасыру",
+        "description": "Транскрипттегі уақыт белгілерін жасыру."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Транскриптті жасыру",
+        "description": "Транскриптті әдепкі бойынша жасыру."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Аудиосипаттама жолы",
+        "description": "Көрнекі элементтерді баяндайтын аудиосипаттама жолының (MP3 файлы) URL мекенжайы."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS пайдалану-пайдаланбауды көрсетеді.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Фондық ойнатуға рұқсат беру",
+        "description": "Браузер қойындысы фокусты жоғалтқанда ойнатуды жалғастыру."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Транскрипт үшін қараңғы тақырып",
+        "description": "Транскрипт үшін қараңғы тақырыпты қосу."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Интерактивтілікті өшіру",
+        "description": "Транскриптті басуға болатын ететін интерактивті режимді өшіру."
+      },
+      {
+        "property": "lang",
+        "title": "Тіл",
+        "description": "Медианың тілі."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "(ескірген) Ойнатқыштың акцент түсін таңдаңыз."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "دکمه کتاب الکترونیکی",
+    "description": "دکمه‌ای که به یک کتاب الکترونیکی پیوند دارد."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوان دکمه."
+      },
+      {
+        "property": "link",
+        "title": "پیوند",
+        "description": "پیوندی که با کلیک به آن هدایت می‌شود."
+      },
+      {
+        "property": "icon",
+        "title": "نماد",
+        "description": "نمادی برای نمایش این پیوند"
+      }
+    ]
+  }
+}

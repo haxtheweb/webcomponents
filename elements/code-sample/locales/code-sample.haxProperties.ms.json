@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Sampel kod",
+    "description": "Sampel kod yang diserlahkan dalam halaman"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Penyerlahan kod",
+        "description": "Penyerlahan sintaks untuk digunakan pada kawasan kod",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Data JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Butang salin ke papan keratan",
+        "description": "butang di kanan atas yang berbunyi salin ke papan keratan"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Mula serlahan",
+        "description": "Nombor baris untuk mula menyerlah"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Tamat serlahan",
+        "description": "Baris untuk menamatkan serlahan"
+      }
+    ]
+  }
+}

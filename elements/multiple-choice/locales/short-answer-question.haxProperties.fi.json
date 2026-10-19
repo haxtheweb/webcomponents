@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Lyhyen vastauksen kysymys",
+    "description": "Pyydä käyttäjää vastaamaan peruskysymykseen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Kysymys",
+        "description": "Kysymys, johon käyttäjät vastaavat."
+      },
+      {
+        "property": "answers",
+        "title": "Mahdolliset vastaukset"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tietovisan nimi",
+        "description": "Tietovisan nimi, jota käytetään xAPI-pohjaisissa ympäristöissä tämän kohteen tunnistamiseen"
+      }
+    ]
+  }
+}

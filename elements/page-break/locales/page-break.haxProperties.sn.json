@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Ruzivo rwepeji",
+    "description": "Tsanangura kupatsanurwa kunooneka pakati pemapeji uko maCMS anogona kushandisa kugadzira mapeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Musoro unoratidzwa mudingindira nemusoro wekutanga."
+      },
+      {
+        "property": "pageType",
+        "title": "Mhando",
+        "description": "Zita rinoratidza mamiriro epeji.",
+        "options": {
+          "": "-- hapana --",
+          "content": "Zvirimo",
+          "assessment": "Ongororo",
+          "quiz": "Kuedzwa",
+          "submission": "Kuendesa",
+          "lesson": "Chidzidzo",
+          "module": "Chikamu chekosi",
+          "task": "Basa",
+          "activity": "Chiitwa",
+          "project": "Purojekiti",
+          "practice": "Kudzidzira",
+          "unit": "Yuniti",
+          "objectives": "Zvinangwa Zvekudzidza",
+          "connection": "Kubatana",
+          "knowledge": "Waizviziva Here?",
+          "strategy": "Nzira Yekudzidza",
+          "discuss": "Kurukura",
+          "listen": "Teerera",
+          "make": "Gadzira",
+          "observe": "Cherechedza",
+          "present": "Ratidza",
+          "reading": "Kuverenga",
+          "reflect": "Fungisisa",
+          "research": "Tsvakurudza",
+          "watch": "Tarisa",
+          "write": "Nyora"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Matagi",
+        "description": "Rondedzero yematagi akapatsanurwa nemakoma."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL yeChinongedzo",
+        "description": "URL yekuendesa inoratidzwa pachinzvimbo chezvirimo zvepeji."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Pekuvhurira Chinongedzo",
+        "description": "Vhura zvinongedzo muhwindo rimwe chete kana muhwindo idzva.",
+        "options": {
+          "_self": "Hwindo rimwe chete",
+          "_blank": "Hwindo idzva"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Zvakaburitswa",
+        "description": "Mapeji asina kuburitswa anovigwa kuvashandisi."
+      },
+      {
+        "property": "locked",
+        "title": "Kiya peji",
+        "description": "Kiya kana kuvhura zvinhu zvose zviri papeji iyi."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Tsiva slug inozvigadzira",
+        "description": "Kiya slug kuti irege kuzvigadziridza zvichienderana nemusoro kana mubereki."
+      },
+      {
+        "property": "slug",
+        "title": "Nzira",
+        "description": "Slug yeURL yepeji iyi."
+      },
+      {
+        "property": "image",
+        "title": "Midhiya",
+        "description": "Midhiya inomiririra peji, inoshandiswa mune mamwe madingindira nemaonero."
+      },
+      {
+        "property": "parent",
+        "title": "Mubereki",
+        "description": "Nzira yepeji yemubereki."
+      },
+      {
+        "property": "noderefs",
+        "title": "Zvirimo zvakabatana",
+        "description": "Mapeji akabatana nepeji iyi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Tsananguro",
+        "description": "Tsananguro inoshandiswa muunganidzo nekuvandudza injini dzekutsvaka (SEO)."
+      },
+      {
+        "property": "entityType",
+        "title": "Mhando yeChinhu",
+        "description": "Inova peji kunze kwekunge zvasetwa neimwe nzira.",
+        "options": {
+          "page": "Peji (zvakajairwa)",
+          "taxonomy": "Kurongwa kwemapoka",
+          "taxonomyTerm": "Izwi reKurongwa",
+          "region": "Nharaunda"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni yakabatanidzwa nepeji iyi musaiti."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rwekusimbisa",
+        "description": "Ruvara rwakabatanidzwa nepeji iyi musaiti."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Viga mumenyu",
+        "description": "Viga peji iyi mumamenyu asi uchichengeta URL yayo."
+      },
+      {
+        "property": "order",
+        "title": "Kurongeka",
+        "description": "Kurongeka zvichienderana nemamwe mapeji ehama."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Dingindira repeji",
+        "description": "Tsiva dingindira repeji iyi chete."
+      },
+      {
+        "property": "author",
+        "title": "Munyori",
+        "description": "Zita remushandisi wemunhu wekupedzisira kugadzirisa peji iyi."
+      }
+    ]
+  }
+}

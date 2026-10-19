@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Hoahoa, Whakawhanake, Whakangaro",
+    "description": "Whakatinanatanga pūnaha hoahoa mō HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Kōwhiringa hei whakaatu",
+        "options": {
+          "*": "Aratohu kāhua katoa"
+        }
+      }
+    ]
+  }
+}

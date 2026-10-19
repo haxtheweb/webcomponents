@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "સીધી અથવા દૂરથી લોડ કરેલી markdown સામગ્રીનો બ્લોક"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "કાચું markdown"
+      },
+      {
+        "property": "source",
+        "title": "સ્રોત",
+        "description": "markdown માટે સ્રોત ફાઇલ"
+      }
+    ]
+  }
+}

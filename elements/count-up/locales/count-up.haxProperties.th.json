@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "นับขึ้น",
+    "description": "แสดงแอนิเมชันตัวเลขนับขึ้นไปจนถึงค่าเป้าหมายเมื่อเลื่อนมาถึง"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "ค่าสิ้นสุด",
+        "description": "ตัวเลขที่จะนับขึ้นไปถึง"
+      },
+      {
+        "property": "start",
+        "title": "ค่าเริ่มต้น",
+        "description": "ตัวเลขที่จะเริ่มนับขึ้น"
+      },
+      {
+        "property": "duration",
+        "title": "ระยะเวลา",
+        "description": "จำนวนวินาทีที่แอนิเมชันการนับควรใช้"
+      },
+      {
+        "property": "prefixtext",
+        "title": "ข้อความนำหน้า",
+        "description": "ข้อความที่แสดงก่อนตัวเลข (เช่น '$')"
+      },
+      {
+        "property": "suffixtext",
+        "title": "ข้อความต่อท้าย",
+        "description": "ข้อความที่แสดงหลังตัวเลข (เช่น '%')"
+      },
+      {
+        "slot": "prefix",
+        "title": "สล็อตนำหน้า",
+        "description": "เนื้อหาในสล็อตเสริมก่อนตัวเลข"
+      },
+      {
+        "slot": "suffix",
+        "title": "สล็อตต่อท้าย",
+        "description": "เนื้อหาในสล็อตเสริมหลังตัวเลข"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "ตำแหน่งทศนิยม",
+        "description": "จำนวนตำแหน่งทศนิยมที่จะแสดง"
+      },
+      {
+        "property": "separator",
+        "title": "ตัวคั่นหลักพัน",
+        "description": "อักขระที่คั่นกลุ่มหลักพัน"
+      },
+      {
+        "property": "decimal",
+        "title": "อักขระทศนิยม",
+        "description": "อักขระที่ใช้เป็นจุดทศนิยม"
+      },
+      {
+        "property": "noeasing",
+        "title": "ไม่มีการเปลี่ยนความเร็ว",
+        "description": "ปิดการเปลี่ยนความเร็วเพื่อให้การนับเป็นเชิงเส้น"
+      }
+    ]
+  }
+}

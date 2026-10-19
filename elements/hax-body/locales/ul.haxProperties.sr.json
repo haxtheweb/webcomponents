@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Листа са набрајањем",
+    "description": "Направи листу са набрајањем."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Стил набрајања",
+        "description": "Стил који се користи за ознаке неуређене листе.",
+        "options": {
+          "": "Подразумевано (квадрат)",
+          "list-disc": "Диск",
+          "list-circle": "Круг",
+          "list-square": "Квадрат"
+        }
+      }
+    ]
+  }
+}

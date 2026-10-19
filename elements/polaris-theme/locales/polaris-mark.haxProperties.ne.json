@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris चिन्ह",
+    "description": "वैकल्पिक कलेजको नाम र गन्तव्य URL सहित PSU पहिचान चिन्ह देखाउनुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "कलेजको नाम",
+        "description": "चिन्हको छेउमा देखाइने नाम।"
+      },
+      {
+        "property": "name2",
+        "title": "कलेजको नाम 2",
+        "description": "पहिलो कलेजको नाममुनि देखाइने दोस्रो नाम।"
+      },
+      {
+        "property": "name3",
+        "title": "कलेजको नाम 3",
+        "description": "दोस्रो कलेजको नाममुनि देखाइने तेस्रो नाम।"
+      },
+      {
+        "property": "url",
+        "title": "लिङ्क",
+        "description": "चिन्हमा क्लिक गर्दा जाने गन्तव्य URL।"
+      },
+      {
+        "property": "type",
+        "title": "भेरियन्ट",
+        "description": "चिन्हको दृश्य भेरियन्ट।",
+        "options": {
+          "default": "पूर्वनिर्धारित",
+          "light": "हल्का",
+          "dark": "गाढा"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "ठाडो लेआउट",
+        "description": "तेस्रो नामलाई दोस्रो नाममुनि तेर्सो रेखासहित देखाउनुहोस्।"
+      }
+    ]
+  }
+}

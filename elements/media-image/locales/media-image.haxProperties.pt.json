@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Imagem aprimorada",
+    "description": "Uma forma de apresentar imagens com diversos aprimoramentos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonte",
+        "description": "A URL da imagem."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto que descreve a imagem para usuários com deficiência visual."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Vincular a imagem a uma URL"
+      },
+      {
+        "property": "card",
+        "title": "Cartão",
+        "description": "Aplicar uma sombra para dar a aparência de um cartão elevado."
+      },
+      {
+        "property": "box",
+        "title": "Caixa",
+        "description": "Aplicar uma caixa visual ao redor da imagem."
+      },
+      {
+        "property": "offset",
+        "title": "Deslocamento",
+        "description": "Aplicar um deslocamento à esquerda ou à direita na imagem.",
+        "options": {
+          "none": "nenhum",
+          "wide": "largo",
+          "narrow": "estreito"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Fonte",
+        "description": "Citação da imagem."
+      },
+      {
+        "property": "caption",
+        "title": "Legenda",
+        "description": "Legenda da imagem."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Título da figura",
+        "description": "Título do rótulo da figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descrição da figura",
+        "description": "Descrição do rótulo da figura."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Imagem em miniatura",
+        "description": "Origem da imagem em miniatura. Mostra a miniatura, mas abre a origem completa em um modal."
+      },
+      {
+        "property": "round",
+        "title": "Imagem redonda",
+        "description": "Recorta a aparência da imagem em formato de círculo."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Desativar modal da imagem",
+        "description": "Desativar a abertura da imagem em uma caixa de diálogo de inspeção ao clicar."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Renderizar como markdown",
+        "description": "Renderizar a legenda e a citação como markdown."
+      }
+    ]
+  }
+}

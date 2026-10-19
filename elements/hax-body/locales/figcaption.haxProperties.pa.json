@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ਚਿੱਤਰ ਕੈਪਸ਼ਨ",
+    "description": "ਚਿੱਤਰ ਲਈ ਕੈਪਸ਼ਨ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ਕੈਪਸ਼ਨ",
+        "description": "ਚਿੱਤਰ ਹੇਠਾਂ ਦਿਖਾਇਆ ਟੈਕਸਟ।"
+      }
+    ]
+  }
+}

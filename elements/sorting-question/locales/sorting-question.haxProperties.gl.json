@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Pregunta de ordenar",
+    "description": "Ordena os elementos na orde correcta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Cabeceira da pregunta."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de cualificación",
+        "description": "OER Schema: formato de cualificación desta avaliación (p. ex. puntos, letra, porcentaxe, completado)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obxectivo de aprendizaxe",
+        "description": "OER Schema: obxectivo de aprendizaxe asociado a esta avaliación."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso ao que se destina esta avaliación."
+      },
+      {
+        "property": "answers",
+        "title": "Respostas",
+        "description": "A orde das respostas define a secuencia correcta."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome do cuestionario",
+        "description": "Nome do cuestionario usado para a identificación xAPI en sistemas de analítica."
+      }
+    ]
+  }
+}

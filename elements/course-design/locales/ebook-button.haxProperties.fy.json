@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-boekknop",
+    "description": "In knop dy't keppelet nei in e-boek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "De titel fan de knop."
+      },
+      {
+        "property": "link",
+        "title": "Keppeling",
+        "description": "De keppeling om nei troch te ferwizen by in klik."
+      },
+      {
+        "property": "icon",
+        "title": "Ikoan",
+        "description": "Ikoan foar dizze keppeling"
+      }
+    ]
+  }
+}

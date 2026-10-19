@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "بليٽ وار فهرست",
+    "description": "بليٽ وار فهرست ٺاهيو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "بليٽ جو انداز",
+        "description": "غير ترتيب وار فهرست جي بليٽن لاءِ استعمال ٿيندڙ انداز.",
+        "options": {
+          "": "ڊفالٽ (چورس)",
+          "list-disc": "ڊسڪ",
+          "list-circle": "دائرو",
+          "list-square": "چورس"
+        }
+      }
+    ]
+  }
+}

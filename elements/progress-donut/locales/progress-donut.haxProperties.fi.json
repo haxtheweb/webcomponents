@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Edistymisrengas",
+    "description": "Edistymisrengas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Elementin otsikko"
+      },
+      {
+        "property": "desc",
+        "title": "Kuvaus",
+        "description": "Saavutettava pitkä kuvaus"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Kuvan lähde",
+        "description": "Renkaan sisällä olevan kuvan lähde."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Kuvan vaihtoehtoinen teksti",
+        "description": "Kuvan vaihtoehtoinen teksti."
+      },
+      {
+        "property": "animated",
+        "title": "Animoitu",
+        "description": "Animoidaanko edistyminen ensimmäisellä latauskerralla"
+      },
+      {
+        "property": "complete",
+        "title": "Valmis",
+        "description": "Taulukko suoritetuista arvoista."
+      },
+      {
+        "property": "total",
+        "title": "Yhteensä",
+        "description": "Kokonaismäärä, kun kaikki kohteet on suoritettu."
+      },
+      {
+        "property": "startAngle",
+        "title": "Aloituskulma",
+        "description": "Renkaan kulma, josta edistyminen alkaa"
+      }
+    ]
+  }
+}

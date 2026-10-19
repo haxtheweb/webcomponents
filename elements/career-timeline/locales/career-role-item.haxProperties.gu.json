@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "કારકિર્દી ભૂમિકા",
+    "description": "સંસ્થામાં એક વ્યક્તિગત ભૂમિકા"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "શીર્ષક"
+      },
+      {
+        "property": "startDate",
+        "title": "શરૂઆતની તારીખ"
+      },
+      {
+        "property": "endDate",
+        "title": "અંતિમ તારીખ (વૈકલ્પિક)"
+      },
+      {
+        "property": "skills",
+        "title": "સંકળાયેલાં કૌશલ્યો",
+        "description": "કૌશલ્યો ઉમેરવાનું શરૂ કરવા માટે + બટન પસંદ કરો"
+      }
+    ]
+  }
+}

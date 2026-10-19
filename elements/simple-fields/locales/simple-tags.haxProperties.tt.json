@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Теглар",
+    "description": "Биттә күрсәтү өчен гади теглар исемлеге."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Теглар",
+        "description": "Өтерләр белән аерылган теглар исемлеге."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Автоматик ассызык төсе",
+        "description": "Ассызык төсен тамгага карап автоматик билгеләргә."
+      },
+      {
+        "property": "accentColor",
+        "title": "Төс",
+        "description": "Теглар өчен төс."
+      }
+    ]
+  }
+}

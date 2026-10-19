@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Täpploend",
+    "description": "Loo täpploend."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Täpi stiil",
+        "description": "Järjestamata loendi täppide stiil.",
+        "options": {
+          "": "Vaikimisi (ruut)",
+          "list-disc": "Ketas",
+          "list-circle": "Ring",
+          "list-square": "Ruut"
+        }
+      }
+    ]
+  }
+}

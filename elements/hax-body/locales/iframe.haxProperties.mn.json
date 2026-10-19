@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Гадаад вэб агуулга суулгах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Эх сурвалж",
+        "description": "Энэ нөөцийн URL."
+      }
+    ]
+  }
+}

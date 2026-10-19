@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Pitanje označavanja",
+    "description": "Odaberite oznake kako biste odgovorili na pitanje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pitanje",
+        "description": "Pitanje na koje korisnici odgovaraju."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format ocjenjivanja",
+        "description": "OER Schema: format ocjenjivanja za ovu procjenu (npr. bodovi, slovna ocjena, postotak, dovršenost)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ishod učenja",
+        "description": "OER Schema: ishod učenja povezan s ovom procjenom."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kolegij",
+        "description": "OER Schema: kolegij kojem je ova procjena namijenjena."
+      },
+      {
+        "property": "answers",
+        "title": "Odgovori"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Naziv kviza",
+        "description": "Naziv kviza koji se koristi za xAPI identifikaciju u analitičkim sustavima."
+      }
+    ]
+  }
+}

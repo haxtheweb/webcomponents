@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "מראה־מקום",
+    "description": "ציטאַט־עלעמענט מיט דרײַ אויסשטעל־מאָדוסן."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "טיטל פֿונעם ציטירטן ווערק."
+      },
+      {
+        "property": "source",
+        "title": "מקור־לינק",
+        "description": "מקור־URL פֿונעם ציטירטן ווערק."
+      },
+      {
+        "property": "date",
+        "title": "צוטריט־דאַטע",
+        "description": "דאַטע ווען מע האָט צוגעגריפֿן צום מקור."
+      },
+      {
+        "property": "scope",
+        "title": "פֿאַרנעם",
+        "description": "עלעמענט־פֿאַרנעם צו ציטירן.",
+        "options": {
+          "sibling": "שכנישער עלעמענט",
+          "parent": "עלטערן־עלעמענט"
+        }
+      },
+      {
+        "property": "license",
+        "title": "לייסענס",
+        "description": "ליצענץ פֿונעם ציטירטן ווערק."
+      },
+      {
+        "property": "creator",
+        "title": "שאַפֿער",
+        "description": "שאַפֿער אָדער באַזיצער פֿונעם ציטירטן ווערק."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema טיפּ",
+        "description": "OER Schema קלאַס פֿאַר דעם ציטאַט. פֿאַרויסגעשטעלט אויף oer:ReferencedMaterial; פֿאַרבײַט נאָר מיט אַ גילטיקן OER קלאַס (למשל oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "תרשים עוגה",
+    "description": "יוצר תרשים נגיש על בסיס CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "צבע הדגשה",
+        "description": "צבע הדגשה אופציונלי."
+      },
+      {
+        "title": "ערכת נושא כהה",
+        "description": "הפעלת ערכת נושא כהה"
+      },
+      {
+        "title": "קובץ CSV",
+        "description": "טעינת נתונים מ-CSV."
+      },
+      {
+        "title": "כותרת התרשים",
+        "description": "טקסט חלופי נגיש לתרשים שלכם."
+      },
+      {
+        "title": "תיאור התרשים",
+        "description": "תיאור נגיש של התרשים שלכם."
+      },
+      {
+        "title": "שם קנה המידה",
+        "description": "היחס רוחב:גובה של התרשים (ראו https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings עבור $ct-scales ו-$ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "דונאט"
+      },
+      {
+        "title": "הצגת תווית"
+      },
+      {
+        "title": "זווית התחלה"
+      },
+      {
+        "title": "ריפוד"
+      },
+      {
+        "title": "סך הכול",
+        "description": "סך כולל אופציונלי שניתן לציין. כאשר מציינים ערך כולל, סכום הערכים בסדרה חייב להיות שווה לו כדי לשרטט עוגה מלאה. ניתן להשתמש בפרמטר זה כדי לשרטט רק חלקים מעוגה או תרשימי מד."
+      },
+      {
+        "title": "התעלמות מערכים ריקים",
+        "description": "המערכת תתעלם מערכים ריקים כדי להימנע משרטוט פרוסות ותוויות מיותרות."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "היפוך הנתונים",
+        "description": "היפוך הנתונים כולל התוויות, סדר הסדרות וכן מערכי הנתונים המלאים של הסדרות."
+      },
+      {
+        "title": "טבלת HTML",
+        "description": "אופציונלי: טעינת נתונים כטבלת HTML."
+      },
+      {
+        "title": "עובי קו הדונאט"
+      },
+      {
+        "title": "דונאט מלא",
+        "description": "שרטוט מקטעי הדונאט כצורות במקום כקווים."
+      },
+      {
+        "title": "כיוון התוויות",
+        "description": "שרטוט מקטעי הדונאט כצורות במקום כקווים.",
+        "options": {
+          "neutral": "ניטרלי",
+          "explode": "החוצה",
+          "implode": "פנימה"
+        }
+      },
+      {
+        "title": "היסט התווית",
+        "description": "היסט מיקום התווית מהמיקום הרגיל, שהוא מחצית מרחק הרדיוס. ערך זה יכול להיות חיובי או שלילי. ערכים חיוביים ימקמו את התווית הרחק מהמרכז."
+      },
+      {
+        "title": "מיקום התווית",
+        "options": {
+          "inside": "בפנים",
+          "outside": "בחוץ",
+          "center": "מרכז"
+        }
+      }
+    ]
+  }
+}

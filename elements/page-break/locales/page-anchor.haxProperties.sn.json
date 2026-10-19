@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Chisungo chePeji",
+    "description": "Batanidza kunzvimbo chaidzo mumidhiya iri papeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Chinangwa chepeji",
+        "description": "ID kana chiwanikwa chinonongedzwa nechisungo ichi."
+      },
+      {
+        "property": "value",
+        "title": "Kukosha kwechinongedzo chakadzama",
+        "description": "Kukosha kwechinongedzo chakadzama (semuenzaniso nguva kana ID yesiraidhi)."
+      },
+      {
+        "property": "entityId",
+        "title": "Chinhu chesaiti",
+        "description": "Chinhu chesaiti chisingamanikidzwi chekudzora maratidziro epfungwa dzakabatana."
+      }
+    ]
+  }
+}

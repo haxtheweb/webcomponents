@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Ligame di basa",
+    "description": "Elementu di ligame di basa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Ligame",
+        "description": "URL di destinazione."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Testu",
+        "description": "Testu visibile di u ligame."
+      },
+      {
+        "attribute": "target",
+        "title": "Destinazione",
+        "description": "Induve apre u ligame.",
+        "options": {
+          "": "Listessa finestra",
+          "_blank": "Finestra nova - _blank",
+          "_top": "Finestra superiore - _top",
+          "_parent": "Finestra parente - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Testu di titulu",
+        "description": "Titulu indicativu per l'accessibilità è u SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Relazione cù a destinazione (sicurezza/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

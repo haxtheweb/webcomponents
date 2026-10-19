@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Ibheji yoMsitho",
+    "description": "Icandelo lebheji yomsitho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Umfanekiso we-TV",
+        "description": "Umfanekiso oboniswa kwi-TV."
+      },
+      {
+        "property": "logo",
+        "title": "Ilogo",
+        "description": "Ilogo eboniswa ekoneni yebheji."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko esiboniswa phezulu kwebheji."
+      },
+      {
+        "property": "name",
+        "title": "Igama",
+        "description": "Igama eliboniswa ebhejini."
+      },
+      {
+        "property": "position",
+        "title": "Isikhundla",
+        "description": "Indima okanye isikhundla somntu."
+      },
+      {
+        "property": "organization",
+        "title": "Umbutho",
+        "description": "Umbutho umntu asebenzela wona."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Umbala we-TV",
+        "description": "Khetha umbala we-TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala ogqamisayo",
+        "description": "Umbala ophambili wangasemva okanye wombhalo."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Umbala wamaqhosha ajikayo",
+        "description": "Umbala wamaqhosha ajikayo e-TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "I-Sepia",
+        "description": "Sebenzisa isiphumo se-sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Mnyama namhlophe",
+        "description": "Sebenzisa isiphumo esimnyama namhlophe."
+      }
+    ]
+  }
+}

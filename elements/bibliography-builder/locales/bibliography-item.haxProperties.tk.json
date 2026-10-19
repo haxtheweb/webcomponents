@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografiýa elementi",
+    "description": "Bibliografiýadaky ýeke salgylanmany aňladýan element, birnäçe formaty we eksport mümkinçiliklerini goldaýar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Görnüşi",
+        "description": "Salgylanma görnüşi",
+        "options": {
+          "web": "Web",
+          "journal": "Žurnal",
+          "book": "Kitap"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Elementiň ady"
+      },
+      {
+        "property": "authors",
+        "title": "Awtor(lar)",
+        "description": "Wagt çyzygyndaky wakalar"
+      },
+      {
+        "property": "publisher",
+        "title": "Neşirýatçy",
+        "description": "Asyl web saýt"
+      }
+    ]
+  }
+}

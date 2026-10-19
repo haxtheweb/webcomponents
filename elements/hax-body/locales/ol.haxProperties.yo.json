@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Àkójọ onínọ́mbà",
+    "description": "Ṣẹ̀dá àkójọ onínọ́mbà."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Ara nọ́mbà",
+        "description": "Ara tí a ń lò fún nọ́mbà àkójọ onítò.",
+        "options": {
+          "": "Àkọ́kọ́ (dẹ́símà)",
+          "list-decimal-leading-zero": "Dẹ́símà pẹ̀lú òdo ìbẹ̀rẹ̀ (01, 02, 03)",
+          "list-lower-alpha": "Lẹ́tà kékeré (a, b, c)",
+          "list-upper-alpha": "Lẹ́tà ńlá (A, B, C)",
+          "list-lower-roman": "Rómánù kékeré (i, ii, iii)",
+          "list-upper-roman": "Rómánù ńlá (I, II, III)"
+        }
+      }
+    ]
+  }
+}

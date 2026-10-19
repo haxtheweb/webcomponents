@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX 艺术字",
+    "description": "HAX 的徽标元素，显然也是一个支持 HAX 的元素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "要放置的 HAX 徽标大小",
+        "options": {
+          "mini": "迷你",
+          "small": "小",
+          "normal": "正常",
+          "large": "大"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "是否将徽标转换为大写"
+      }
+    ]
+  }
+}

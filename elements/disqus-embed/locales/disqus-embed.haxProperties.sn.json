@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Isa makomendi eDisqus papeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Zita pfupi",
+        "description": "Zita pfupi resaiti, rinotungamira hosti yescript yeDisqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL yePeji",
+        "description": "URL yepeji iyo tambo yemakomendi yakabatanidzwa nayo."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Chiziviso chePeji",
+        "description": "Chiziviso chakasiyana chetambo yemakomendi yepeji."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Musoro wePeji",
+        "description": "Musoro wepeji iyo tambo yemakomendi yakabatanidzwa nayo."
+      },
+      {
+        "property": "loadingText",
+        "title": "Mavara ekurodha",
+        "description": "Mavara anoziviswa makomendi achiri kurodha."
+      },
+      {
+        "property": "lang",
+        "title": "Mutauro",
+        "description": "Kodhi yemutauro wechiratidziro cheDisqus, semuenzaniso en."
+      }
+    ]
+  }
+}

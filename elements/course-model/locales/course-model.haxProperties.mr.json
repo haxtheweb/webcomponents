@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "अभ्यासक्रम मॉडेल",
+    "description": "तपशील, अ‍ॅनिमेशन आणि ज्ञान तपासण्यांसह अभ्यासक्रम संकल्पनांसाठी परस्परसंवादी लेआउट."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "शीर्षक"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "माहिती क्षेत्र"
+      },
+      {
+        "title": "तपशील क्षेत्र"
+      },
+      {
+        "title": "अ‍ॅनिमेशन क्षेत्र"
+      },
+      {
+        "title": "ज्ञान तपासणी क्षेत्र"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "लोगो क्षेत्र"
+      }
+    ]
+  }
+}

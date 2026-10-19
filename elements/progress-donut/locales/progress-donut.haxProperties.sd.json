@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "پيش رفت ڊونٽ",
+    "description": "پيش رفت جو ڊونٽ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنصر جو عنوان"
+      },
+      {
+        "property": "desc",
+        "title": "وضاحت",
+        "description": "رسائي لائق ڊگهي وضاحت"
+      },
+      {
+        "property": "imageSrc",
+        "title": "تصوير جو ذريعو",
+        "description": "ڊونٽ اندر تصوير جو ذريعو."
+      },
+      {
+        "property": "imageAlt",
+        "title": "تصوير جو متبادل متن",
+        "description": "تصوير لاءِ متبادل متن."
+      },
+      {
+        "property": "animated",
+        "title": "متحرڪ",
+        "description": "ڇا پهرين لوڊ تي پيش رفت متحرڪ ٿئي"
+      },
+      {
+        "property": "complete",
+        "title": "مڪمل",
+        "description": "مڪمل ٿيل قدرن جي قطار."
+      },
+      {
+        "property": "total",
+        "title": "ڪل",
+        "description": "جڏهن سڀ شيون مڪمل هجن ته ڪل."
+      },
+      {
+        "property": "startAngle",
+        "title": "شروعاتي زاويو",
+        "description": "ڊونٽ جو زاويو جتان پيش رفت شروع ٿئي"
+      }
+    ]
+  }
+}

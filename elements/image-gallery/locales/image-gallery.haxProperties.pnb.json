@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "تصویر گیلری",
+    "description": "اک گیلری جیہڑی تصویراں گرڈ، میسنری یا سلائیڈ شو ترتیب وچ پیش کردی اے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "وکھاوݨ دا موڈ",
+        "description": "گیلری وچ تصویراں کیویں پیش کرنیاں نیں۔",
+        "options": {
+          "grid": "گرڈ",
+          "masonry": "میسنری",
+          "gallery": "گیلری"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "فعال انڈیکس",
+        "description": "گیلری موڈ وچ شروع کرن لئی فعال تصویر دا انڈیکس۔"
+      }
+    ]
+  }
+}

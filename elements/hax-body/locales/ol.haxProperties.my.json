@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "နံပါတ်တပ် စာရင်း",
+    "description": "နံပါတ်တပ် စာရင်း ဖန်တီးရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "နံပါတ် စတိုင်",
+        "description": "အစီအစဉ်ရှိ စာရင်း နံပါတ်တပ်ရန် သုံးသော စတိုင်။",
+        "options": {
+          "": "မူလ (ဒဿမ)",
+          "list-decimal-leading-zero": "ရှေ့တွင် သုညပါ ဒဿမ (01, 02, 03)",
+          "list-lower-alpha": "စာလုံးအသေး (a, b, c)",
+          "list-upper-alpha": "စာလုံးအကြီး (A, B, C)",
+          "list-lower-roman": "ရောမ ဂဏန်း အသေး (i, ii, iii)",
+          "list-upper-roman": "ရောမ ဂဏန်း အကြီး (I, II, III)"
+        }
+      }
+    ]
+  }
+}

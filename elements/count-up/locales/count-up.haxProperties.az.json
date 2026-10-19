@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Artan sayğac",
+    "description": "Görünüşə sürüşdürüldükdə ədədin hədəf dəyərə qədər artaraq sayılmasını animasiya et."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Son dəyər",
+        "description": "Sayılmanın çatacağı ədəd."
+      },
+      {
+        "property": "start",
+        "title": "Başlanğıc dəyər",
+        "description": "Sayılmanın başlayacağı ədəd."
+      },
+      {
+        "property": "duration",
+        "title": "Müddət",
+        "description": "Sayma animasiyasının çəkəcəyi saniyələr."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Prefiks mətni",
+        "description": "Ədəddən əvvəl göstərilən mətn (məs. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Suffiks mətni",
+        "description": "Ədəddən sonra göstərilən mətn (məs. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefiks yuvası",
+        "description": "Ədəddən əvvəl ixtiyari yerləşdirilən məzmun."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffiks yuvası",
+        "description": "Ədəddən sonra ixtiyari yerləşdirilən məzmun."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Onluq yerləri",
+        "description": "Göstəriləcək onluq yerlərin sayı."
+      },
+      {
+        "property": "separator",
+        "title": "Minlik ayırıcı",
+        "description": "Minlik qrupları ayıran simvol."
+      },
+      {
+        "property": "decimal",
+        "title": "Onluq simvolu",
+        "description": "Onluq nöqtə üçün istifadə olunan simvol."
+      },
+      {
+        "property": "noeasing",
+        "title": "Yumşaltmasız",
+        "description": "Sayma xətti olsun deyə yumşaltmanı deaktiv et."
+      }
+    ]
+  }
+}

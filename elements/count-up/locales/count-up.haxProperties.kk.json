@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Санауыш",
+    "description": "Көрініс аймағына айналдырылғанда санды мақсатты мәнге дейін анимациямен санау."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Соңғы мән",
+        "description": "Санау аяқталатын сан."
+      },
+      {
+        "property": "start",
+        "title": "Бастапқы мән",
+        "description": "Санау басталатын сан."
+      },
+      {
+        "property": "duration",
+        "title": "Ұзақтығы",
+        "description": "Санау анимациясына кететін секундтар."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Префикс мәтіні",
+        "description": "Саннан бұрын көрсетілетін мәтін (мысалы, '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Суффикс мәтіні",
+        "description": "Саннан кейін көрсетілетін мәтін (мысалы, '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Префикс слоты",
+        "description": "Саннан бұрынғы қосымша слот мазмұны."
+      },
+      {
+        "slot": "suffix",
+        "title": "Суффикс слоты",
+        "description": "Саннан кейінгі қосымша слот мазмұны."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Ондық таңбалар",
+        "description": "Көрсетілетін ондық таңбалар саны."
+      },
+      {
+        "property": "separator",
+        "title": "Мыңдықтар бөлгіші",
+        "description": "Мыңдық топтарды бөлетін таңба."
+      },
+      {
+        "property": "decimal",
+        "title": "Ондық таңба",
+        "description": "Ондық бөлгіш ретінде қолданылатын таңба."
+      },
+      {
+        "property": "noeasing",
+        "title": "Біркелкі жылдамдық",
+        "description": "Санау сызықты болуы үшін баяулауды өшіру."
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "මීම්",
+    "description": "රූපයකින් මීම් එකක් සාදන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "මූලාශ්‍රය",
+        "description": "මීම් රූපය සඳහා මූලාශ්‍ර URL."
+      },
+      {
+        "property": "topText",
+        "title": "ඉහළ පෙළ",
+        "description": "මීම් එකේ ඉහළ පෙළ."
+      },
+      {
+        "property": "bottomText",
+        "title": "පහළ පෙළ",
+        "description": "මීම් එකේ පහළ පෙළ."
+      },
+      {
+        "property": "alt",
+        "title": "විකල්ප පෙළ",
+        "description": "පෙනීම නොමැති පරිශීලකයින්ට රූපය විස්තර කිරීමට පෙළ."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "කුඩා සෙල්ලම් බඩුවක් ලුහුබඳින පූසා",
+        "topText": "මම ඔබට ගෙනෙන්නේ",
+        "bottomText": "මරණය"
+      }
+    }
+  ]
+}

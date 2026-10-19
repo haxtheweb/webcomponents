@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Dostopni gumb s podrobnostmi",
+    "description": "Dostopno postopno razkrivanje s podrobnostmi in povzetkom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Gumb",
+        "description": "Povzetek vsebine, ki je skrita, npr. »informacije«, »metapodatki« itd."
+      },
+      {
+        "slot": "details",
+        "title": "Opis",
+        "description": "Podroben opis, ki ga je mogoče skriti ali prikazati"
+      },
+      {
+        "slot": "",
+        "title": "Gumb opisa",
+        "description": "Privzeto za gumb, ki prikaže/skrije besedilo opisa, npr. »informacije«, »metapodatki« itd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Neobvezno besedilo povzetka, ko so podrobnosti odprte"
+      },
+      {
+        "property": "closeText",
+        "title": "Neobvezno besedilo povzetka, ko so podrobnosti zaprte"
+      }
+    ]
+  }
+}

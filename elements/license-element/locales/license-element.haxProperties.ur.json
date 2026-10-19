@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "لائسنس",
+    "description": "اپنے کام کے لیے لائسنس فراہم کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "حوالہ دیے گئے کام کا عنوان۔"
+      },
+      {
+        "property": "source",
+        "title": "سورس لنک",
+        "description": "لائسنس یافتہ کام کا سورس URL۔"
+      },
+      {
+        "property": "license",
+        "title": "لائسنس",
+        "description": "اس کام پر لاگو لائسنس۔"
+      },
+      {
+        "property": "creator",
+        "title": "تخلیق کار",
+        "description": "اس کام کا تخلیق کار یا مالک۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "سورس لنک",
+        "description": "لائسنس کی اضافی تفصیلات کا لنک۔"
+      },
+      {
+        "property": "moreLabel",
+        "title": "مزید کا لیبل",
+        "description": "لائسنس کی اضافی تفصیلات کا لیبل۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "የመጽሐፍ ቅዱሳዊ ዝርዝር ንጥል",
+    "description": "በመጽሐፍ ቅዱሳዊ ዝርዝር ውስጥ አንድ ጥቅስን የሚወክል፣ ብዙ ቅርጸቶችን እና የመላኪያ አማራጮችን የሚደግፍ ንጥል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "ዓይነት",
+        "description": "የጥቅስ ዓይነት",
+        "options": {
+          "web": "ድር",
+          "journal": "መጽሔት",
+          "book": "መጽሐፍ"
+        }
+      },
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "የንጥሉ ርዕስ"
+      },
+      {
+        "property": "authors",
+        "title": "ደራሲ(ዎች)",
+        "description": "በጊዜ መስመሩ ውስጥ ያሉ ክስተቶች"
+      },
+      {
+        "property": "publisher",
+        "title": "አሳታሚ",
+        "description": "የመጀመሪያው ድረ-ገጽ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bokosi la Ntchito",
+    "description": "Bokosi laling'ono la mutu lokongoletsedwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Chizindikiro",
+        "description": "Chizindikiro chowonetsedwa pambali pa bokosi la ntchito."
+      },
+      {
+        "property": "tag",
+        "title": "Tagi ya bokosi la ntchito",
+        "description": "Tagi yowonetsedwa mu bokosi la ntchito."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Popanda Mitundu",
+        "description": "Letsani mitundu kuti isaikidwe pa chizindikiro."
+      }
+    ]
+  }
+}

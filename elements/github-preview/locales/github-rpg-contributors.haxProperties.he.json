@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "רשימת תורמים ב-GitHub",
+    "description": "מוצגים כדמויות RPG באמצעות ה-API של GitHub."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ארגון",
+        "description": "שם הארגון מתוך github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "מאגר",
+        "description": "שם המאגר מתוך github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "מגבלה",
+        "description": "הגבלת מספר התורמים המוצגים."
+      }
+    ]
+  }
+}

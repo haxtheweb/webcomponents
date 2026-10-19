@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallaks surat",
+    "description": "Surat aýlanýar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Surat",
+        "description": "fonda ulanyljak surat"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Sözbaşy meýdany",
+        "description": "Sözbaşy teksti meýdany"
+      }
+    ]
+  }
+}

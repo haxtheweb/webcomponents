@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Bokosi lotseka",
+    "description": "Bokosi limodzi lotsegula ndi kutseka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Mutu",
+        "description": "Mawu a bokosi lotseka."
+      },
+      {
+        "property": "expanded",
+        "title": "Lotsegulidwa",
+        "description": "Tsegulani mwachisawawa."
+      },
+      {
+        "property": "headingButton",
+        "title": "Batani la Mutu",
+        "description": "Pangani mutu wonse kukhala wodina m'malo mwa chizindikiro chokha."
+      },
+      {
+        "property": "icon",
+        "title": "Chizindikiro",
+        "description": "Chizindikiro cha batani lotsegula/kutseka."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Chizindikiro (likatsegulidwa)",
+        "description": "Chizindikiro chosankha cha batani likatsegulidwa."
+      },
+      {
+        "slot": "",
+        "title": "Zomwe zili mkati",
+        "description": "Zomwe zili mkati mwa bokosi lotseka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Malangizo",
+        "description": "Malangizo a batani lotsegula/kutseka."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Malangizo (likatsegulidwa)",
+        "description": "Malangizo a batani lotsegula/kutseka likatsegulidwa."
+      }
+    ]
+  }
+}

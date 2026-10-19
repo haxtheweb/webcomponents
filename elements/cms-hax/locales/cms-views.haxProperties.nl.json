@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-weergave",
+    "description": "CMS-weergaven die op de backend worden weergegeven"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Naam",
+        "description": "Naam van de weergave uit ons CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Weergave",
+        "description": "Display binnen die weergave uit ons CMS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "פעולת משתמש",
+    "description": "מעקב אחר פעולות משתמש ושליחת נתונים למאגרי xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "אירוע למעקב",
+        "description": "פעולת המשתמש שמפעילה אירוע זה.",
+        "options": {
+          "visibility": "יכול לראות את זה",
+          "keydown": "הקשה על מקש כאן",
+          "click": "לחיצה על זה",
+          "hover": "ריחוף מעל זה"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "מעקב בכל פעם",
+        "description": "כברירת מחדל, רק המופע הראשון נרשם במעקב."
+      }
+    ]
+  }
+}

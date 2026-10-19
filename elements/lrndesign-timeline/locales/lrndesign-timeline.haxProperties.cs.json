@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Časová osa",
+    "description": "Časová osa událostí s obrázky a textem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Název časové osy",
+        "description": "Název časové osy."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňující barva",
+        "description": "Volitelná zvýrazňující barva."
+      },
+      {
+        "property": "dark",
+        "title": "Tmavý motiv",
+        "description": "Zapnout tmavý motiv"
+      },
+      {
+        "slot": "",
+        "title": "Popis časové osy",
+        "description": "Volitelný text popisující časovou osu."
+      },
+      {
+        "property": "events",
+        "title": "Události časové osy",
+        "description": "Události na časové ose"
+      }
+    ]
+  }
+}

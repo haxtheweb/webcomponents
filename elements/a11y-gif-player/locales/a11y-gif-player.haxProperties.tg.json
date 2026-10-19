@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "GIF-ҳои аниматсиониро дастрас кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF-и аниматсионӣ",
+        "description": "URL барои GIF-и аниматсионӣ."
+      },
+      {
+        "property": "alt",
+        "title": "Матни алтернативӣ",
+        "description": "Матни алтернативӣ барои тасвир."
+      },
+      {
+        "property": "longdesc",
+        "title": "Тавсифи муфассал",
+        "description": "Тавсифи муфассали GIF барои дастрасӣ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Тасвири статикӣ",
+        "description": "URL барои варианти статикии GIF."
+      }
+    ]
+  }
+}

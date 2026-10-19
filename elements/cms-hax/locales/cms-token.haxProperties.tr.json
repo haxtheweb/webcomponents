@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS Belirteci",
+    "description": "Arka uçta işlenen CMS belirteci"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Belirteç",
+        "description": "CMS'imizden belirteç"
+      }
+    ]
+  }
+}

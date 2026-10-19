@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "عارض PDF في المتصفح",
+    "description": "تضمين ملف PDF ضمن الصفحة مع تخطيط بطاقة وزر تنزيل اختياريين."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL ملف PDF",
+        "description": "موقع ملف PDF."
+      },
+      {
+        "property": "heading",
+        "title": "العنوان",
+        "description": "نص عنوان البطاقة."
+      },
+      {
+        "property": "card",
+        "title": "تخطيط البطاقة",
+        "description": "عرض ملف PDF في بطاقة مع زر تنزيل."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "تسمية التنزيل",
+        "description": "تسمية زر التنزيل."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "رسالة عدم الدعم",
+        "description": "الرسالة المعروضة عندما يتعذر على المتصفح عرض ملفات PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "رسالة رابط عدم الدعم",
+        "description": "نص الرابط عندما يتعذر على المتصفح عرض ملفات PDF."
+      },
+      {
+        "property": "width",
+        "title": "العرض",
+        "description": "عرض عارض PDF."
+      },
+      {
+        "property": "height",
+        "title": "الارتفاع",
+        "description": "ارتفاع عارض PDF."
+      }
+    ]
+  }
+}

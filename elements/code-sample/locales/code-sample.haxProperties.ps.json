@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "د کوډ بېلګه",
+    "description": "په پاڼه کې د روښانه شوي کوډ یوه بېلګه"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "د کوډ روښانه کول",
+        "description": "د کوډ په سیمه د پلي کېدونکي ترکیب روښانه کول",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON معلومات",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "کلیپ بورډ ته د کاپي تڼۍ",
+        "description": "په پورته ښي کونج کې تڼۍ چې وايي کلیپ بورډ ته کاپي کړئ"
+      },
+      {
+        "property": "highlightStart",
+        "title": "د روښانه کولو پیل",
+        "description": "د کرښې شمېره چې روښانه کول پرې پیلېږي"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "د روښانه کولو پای",
+        "description": "هغه کرښه چې روښانه کول پرې پای ته رسېږي"
+      }
+    ]
+  }
+}

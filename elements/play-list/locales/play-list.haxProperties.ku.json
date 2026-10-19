@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Lîsteya lêdanê",
+    "description": "Her cure naverokê di lîsteya lêdanê de nîşan bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Çavkanî",
+        "description": "Naveroka ku di lîsteya lêdanê de tê nîşandan."
+      },
+      {
+        "property": "edit",
+        "title": "Moda sererastkirinê",
+        "description": "Ji bo lîsteya lêdanê di navbera moda sererastkirin û pêşdîtinê de biguherîne."
+      },
+      {
+        "property": "navigation",
+        "title": "Navîgasyon",
+        "description": "Bişkokên navîgasyonê yên pêş û paş nîşan bide."
+      },
+      {
+        "property": "pagination",
+        "title": "Rûpelkirin",
+        "description": "Xalên rûpelkirinê nîşan bide."
+      },
+      {
+        "property": "orientation",
+        "title": "Arasteyî",
+        "description": "Arasteyiya slaytan.",
+        "options": {
+          "horizontal": "Horîzontal",
+          "vertical": "Vertîkal"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Slayta destpêkê",
+        "description": "Endeksa slayta ku di destpêkê de li ser fokus bibe."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Rêjeya Aliyan",
+        "description": "Rêjeya aliyan a slaytan.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

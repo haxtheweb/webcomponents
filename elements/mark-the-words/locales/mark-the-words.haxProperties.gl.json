@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Marcar as palabras",
+    "description": "Identifica conceptos facendo clic en palabras dentro dun texto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Pregunta á que deben responder os usuarios."
+      },
+      {
+        "property": "statement",
+        "title": "Enunciado",
+        "description": "Enunciado que se converterá na interacción de marcar as palabras."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de cualificación",
+        "description": "OER Schema: formato de cualificación desta avaliación (p. ex. puntos, letra, porcentaxe, completado)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obxectivo de aprendizaxe",
+        "description": "OER Schema: obxectivo de aprendizaxe asociado a esta avaliación."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso ao que se destina esta avaliación."
+      },
+      {
+        "property": "answers",
+        "title": "Respostas"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome do cuestionario",
+        "description": "Nome do cuestionario que se pasa para usar en contornos baseados en xAPI e identificar este elemento"
+      }
+    ]
+  }
+}

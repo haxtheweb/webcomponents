@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Ku dhex dar bulshooyinka Discord adigoo isticmaalaya URL wadaag."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL-ka Kheyraadka",
+        "description": "URL-ka kheyraadka."
+      },
+      {
+        "property": "height",
+        "title": "Dherer",
+        "description": "Dhererka qaabka nuxurka."
+      },
+      {
+        "property": "width",
+        "title": "Ballac",
+        "description": "Ballaca qaabka nuxurka."
+      }
+    ]
+  }
+}

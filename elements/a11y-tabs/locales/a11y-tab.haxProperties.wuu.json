@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "标签页",
+    "description": "单只标签页。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "标签页图标"
+      },
+      {
+        "property": "disabled",
+        "title": "禁用"
+      },
+      {
+        "property": "label",
+        "title": "标签页名称"
+      },
+      {
+        "slot": "",
+        "title": "标签页内容",
+        "description": "标签页个内容。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "唯一 ID"
+      },
+      {
+        "property": "flag",
+        "title": "可选标记文字"
+      },
+      {
+        "property": "flagIcon",
+        "title": "可选标记图标"
+      }
+    ]
+  }
+}

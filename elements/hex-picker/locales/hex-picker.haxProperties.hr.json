@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Birač heksadecimalne boje",
+    "description": "Birač boje heksadecimalnim kodom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Vrijednost",
+        "description": "Zadana heksadecimalna vrijednost"
+      },
+      {
+        "property": "disabled",
+        "title": "Onemogućeno",
+        "description": "Onemogući tekstno polje"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Veliki prikaz",
+        "description": "Uključi boju u veliki prikaz"
+      }
+    ]
+  }
+}

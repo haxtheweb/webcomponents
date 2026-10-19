@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "గ్రేడ్ బుక్",
+    "description": "రూబ్రిక్‌లతో బహుళ బ్యాకెండ్‌లకు మద్దతిచ్చే హెడ్‌లెస్ గ్రేడ్‌బుక్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "మూలం",
+        "description": "డేటా మూలం రకం (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL ఎండ్‌పాయింట్ (JSON)",
+          "json": "JSON డేటా బ్లాబ్",
+          "filesystem": "ఫైల్ సిస్టమ్"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "మూల డేటా",
+        "description": "గ్రేడ్‌బుక్ కోసం URL లేదా JSON డేటా."
+      },
+      {
+        "property": "forCourse",
+        "title": "కోర్సు సూచన",
+        "description": "ప్రతి Assessment వనరుపై oer:forCourseగా విడుదల చేయబడే కోర్సు ఐడెంటిఫైయర్."
+      }
+    ]
+  }
+}

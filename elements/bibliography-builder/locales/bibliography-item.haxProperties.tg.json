@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Унсури библиография",
+    "description": "Унсуре, ки як иқтибосро дар библиография ифода мекунад ва форматҳои гуногун ва имконоти содиротро дастгирӣ мекунад."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Навъ",
+        "description": "Навъи иқтибос",
+        "options": {
+          "web": "Веб",
+          "journal": "Журнал",
+          "book": "Китоб"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Сарлавҳа",
+        "description": "Сарлавҳаи унсур"
+      },
+      {
+        "property": "authors",
+        "title": "Муаллиф(он)",
+        "description": "Рӯйдодҳо дар хатти замон"
+      },
+      {
+        "property": "publisher",
+        "title": "Ношир",
+        "description": "Вебсомонаи аслӣ"
+      }
+    ]
+  }
+}

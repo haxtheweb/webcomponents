@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallax kép",
+    "description": "Görgetéssel mozgó kép"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Kép",
+        "description": "a háttérben megjelenő kép"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Címsorterület",
+        "description": "Címsor szövegterülete"
+      }
+    ]
+  }
+}

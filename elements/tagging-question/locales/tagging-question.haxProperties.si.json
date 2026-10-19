@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ටැග් කිරීමේ ප්‍රශ්නය",
+    "description": "ප්‍රශ්නයට පිළිතුරු දීමට ටැග තෝරන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ප්‍රශ්නය",
+        "description": "පරිශීලකයින් පිළිතුරු දිය යුතු ප්‍රශ්නය."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ශ්‍රේණිගත කිරීමේ ආකෘතිය",
+        "description": "OER Schema: මෙම තක්සේරුව සඳහා ශ්‍රේණිගත කිරීමේ ආකෘතිය (උදා. ලකුණු, අකුරු ශ්‍රේණිය, ප්‍රතිශතය, සම්පූර්ණ කිරීම)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ඉගෙනුම් අරමුණ",
+        "description": "OER Schema: මෙම තක්සේරුවට සම්බන්ධ ඉගෙනුම් අරමුණ."
+      },
+      {
+        "property": "forCourse",
+        "title": "පාඨමාලාව",
+        "description": "OER Schema: මෙම තක්සේරුව අදහස් කරන පාඨමාලාව."
+      },
+      {
+        "property": "answers",
+        "title": "පිළිතුරු"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ප්‍රශ්නාවලියේ නම",
+        "description": "විශ්ලේෂණ පද්ධතිවල xAPI හඳුනා ගැනීම සඳහා භාවිත ප්‍රශ්නාවලි නම."
+      }
+    ]
+  }
+}

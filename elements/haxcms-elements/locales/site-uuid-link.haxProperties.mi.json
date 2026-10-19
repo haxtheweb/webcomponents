@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Hono HAX",
+    "description": "He hono ki tētahi rauemi motuhake i te pae e mahi ana koe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Tūemi",
+        "description": "Tūemi hei whakaatu mō ngā raraunga hono / taitara"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX hivatkozás",
+    "description": "Hivatkozás egy adott erőforrásra azon a webhelyen, amelyen dolgozol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Elem",
+        "description": "A hivatkozáshoz / címadatokhoz megjelenítendő elem"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Leerkomponent",
+    "description": "'n Kaart vir dosente om pedagogie en onderrigstrategieë te kommunikeer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipe",
+        "description": "Die tipe kaart wat gebruik moet word."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtitel",
+        "description": "Die subtitel van die kaart."
+      },
+      {
+        "property": "url",
+        "title": "Skakel",
+        "description": "'n Opsionele skakel vir die kaart (skakel nie beskikbaar vir leerdoelwitte nie)."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Stel titel; dit oorskryf die tipegebaseerde titel"
+      },
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Stel ikoon; dit oorskryf die tipegebaseerde ikoon"
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Stel aksentkleur; dit oorskryf die tipegebaseerde kleur"
+      },
+      {
+        "slot": "",
+        "title": "Inhoud"
+      }
+    ]
+  }
+}

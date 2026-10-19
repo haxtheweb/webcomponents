@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "הדגשה בצבע",
+    "description": "הדגשת טקסט בשורה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "טקסט",
+        "description": "טקסט מודגש."
+      }
+    ]
+  }
+}

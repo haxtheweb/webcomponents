@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ajakan tumindak",
+    "description": "Tombol prasaja kanthi link kanggo tumindak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label link"
+      },
+      {
+        "property": "link",
+        "title": "Pranala",
+        "description": "Lebokake link menyang sumber apa wae"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Dhelikake lambang",
+        "description": "Dhelikake lambang sing dienggo kanggo aksen teks"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Lambang link tumindak"
+      }
+    ]
+  }
+}

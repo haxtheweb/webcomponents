@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Bed Discord-gemeenskappe in vanaf 'n deel-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Hulpbron-URL",
+        "description": "Hulpbron-URL."
+      },
+      {
+        "property": "height",
+        "title": "Hoogte",
+        "description": "Hoogte van die inhoudsraam."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Breedte van die inhoudsraam."
+      }
+    ]
+  }
+}

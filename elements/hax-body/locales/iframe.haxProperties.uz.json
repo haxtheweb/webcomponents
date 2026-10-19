@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Tashqi veb-kontentni joylash."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Manba",
+        "description": "Ushbu resurs URL manzili."
+      }
+    ]
+  }
+}

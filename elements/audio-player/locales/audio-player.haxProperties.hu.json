@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Hang",
+    "description": "Forrástól függetlenül, rendkívül akadálymentes módon jeleníti meg a videót."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Forrás",
+        "description": "A média URL-je."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Cím",
+        "description": "Egyszerű cím a videó alá"
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Válaszd ki a lejátszó kiemelőszínét."
+      },
+      {
+        "property": "track",
+        "title": "Feliratok",
+        "description": "A feliratfájl URL-je."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Bélyegkép",
+        "description": "Opcionális. A bélyegkép/poszterkép URL-je."
+      },
+      {
+        "property": "learningMode",
+        "title": "Tanulási mód engedélyezése",
+        "description": "Letiltja az előre- és visszatekerést."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Megnyitás YouTube-on gomb eltávolítása",
+        "description": "Eltávolítja a videó YouTube-on való megnyitására szolgáló gombot."
+      },
+      {
+        "property": "linkable",
+        "title": "Megosztási hivatkozással?",
+        "description": "Hivatkozást biztosít a videó megosztásához."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Jelzi, hogy használjon-e CORS-t.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Háttérlejátszás engedélyezése",
+        "description": "A videók automatikusan szünetelnek / elindulnak, ha a lap elveszíti a fókuszt; ezzel a videó fókusz nélkül is lejátszható"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Sötét téma az átirathoz",
+        "description": "Sötét téma engedélyezése az átirathoz."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Interaktivitás letiltása",
+        "description": "Az átiratot kattinthatóvá tevő interaktív mód letiltása."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Időbélyegek elrejtése",
+        "description": "Az időbélyegek elrejtése az átiratban."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Átirat elrejtése",
+        "description": "Átirat alapértelmezett elrejtése."
+      },
+      {
+        "property": "lang",
+        "title": "Nyelv",
+        "description": "A média nyelve."
+      }
+    ]
+  }
+}

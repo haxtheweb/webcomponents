@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Табела",
+    "description": "Табеларни податоци за веб."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Заглавие на ред",
+        "description": "Првиот ред да се третира како заглавие."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Заглавие на колона",
+        "description": "Првата колона да се третира како заглавие."
+      },
+      {
+        "property": "footer",
+        "title": "Подножје",
+        "description": "Последниот ред да се третира како подножје."
+      },
+      {
+        "property": "sort",
+        "title": "Подредливо",
+        "description": "Дозволи подредување по вредностите во колоните."
+      },
+      {
+        "property": "filter",
+        "title": "Дозволи филтер",
+        "description": "Дозволи филтрирање по вредностите во колоните."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Нумерички стил",
+        "description": "Примени нумерички стил на нумеричките колони."
+      },
+      {
+        "property": "responsive",
+        "title": "Респонзивно",
+        "description": "Прилагоди го распоредот на табелата на мали екрани."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Режим на рубрика",
+        "description": "Толкувај ја оваа табела како OER Schema Rubric за да се емитуваат метаподатоци Rubric, RubricScale, RubricCriterion и RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Тип на рубрика",
+        "description": "Стил на рубриката емитуван како oer:rubricType (има смисла само кога е вклучен режимот на рубрика).",
+        "options": {
+          "": "(нема)",
+          "analytic": "Аналитичка",
+          "holistic": "Холистичка",
+          "single-point": "Со една точка",
+          "checklist": "Список за проверка"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Со рабови"
+      },
+      {
+        "property": "condensed",
+        "title": "Збиени редови",
+        "description": "Намали ја висината на редовите."
+      },
+      {
+        "property": "striped",
+        "title": "Пругасти редови",
+        "description": "Засенчи го секој втор ред."
+      },
+      {
+        "property": "downloadable",
+        "title": "Копче за преземање",
+        "description": "Додај копче за преземање на табелата."
+      },
+      {
+        "property": "copyable",
+        "title": "Копче за копирање",
+        "description": "Додај копче за копирање на CSV-податоците од табелата."
+      },
+      {
+        "property": "printable",
+        "title": "Копче за печатење",
+        "description": "Додај копче за печатење само на табелата."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-податоци",
+        "description": "Создај табела од подигната CSV-датотека."
+      }
+    ]
+  }
+}

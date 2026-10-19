@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "페이지 플래그",
+    "description": "페이지 작성자를 위한 편집 메모입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "페이지 플래그의 강조 색상입니다."
+      },
+      {
+        "property": "label",
+        "title": "레이블",
+        "description": "페이지 플래그의 레이블 텍스트입니다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Komponenta učenja",
+    "description": "Kartica pomoću koje nastavnici prenose pedagogiju i nastavne strategije."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Vrsta",
+        "description": "Vrsta kartice koja će se koristiti."
+      },
+      {
+        "property": "subtitle",
+        "title": "Podnaslov",
+        "description": "Podnaslov kartice."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Opcionalni link za karticu (link nije dostupan za ciljeve učenja)."
+      },
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Postavite naslov; ovo zamjenjuje naslov zasnovan na vrsti"
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Postavite ikonu; ovo zamjenjuje ikonu zasnovanu na vrsti"
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Postavite boju naglaska; ovo zamjenjuje boju zasnovanu na vrsti"
+      },
+      {
+        "slot": "",
+        "title": "Sadržaj"
+      }
+    ]
+  }
+}

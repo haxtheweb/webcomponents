@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Componentă de învățare",
+    "description": "Un card prin care instructorii comunică pedagogia și strategiile de instruire."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tip",
+        "description": "Tipul de card folosit."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtitlu",
+        "description": "Subtitlul cardului."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Un link opțional pentru card (linkul nu este disponibil pentru Obiectivele de învățare)."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Setează titlul; acesta înlocuiește titlul bazat pe tip"
+      },
+      {
+        "property": "icon",
+        "title": "Pictogramă",
+        "description": "Setează pictograma; aceasta înlocuiește pictograma bazată pe tip"
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Setează culoarea de accent; aceasta înlocuiește culoarea bazată pe tip"
+      },
+      {
+        "slot": "",
+        "title": "Cuprins"
+      }
+    ]
+  }
+}

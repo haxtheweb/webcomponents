@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkażmu",
+    "description": "Preżentazzjoni ta' test b'mod ta' troll"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Test",
+        "description": "Test li għandu jsir sarkastiku"
+      }
+    ]
+  }
+}

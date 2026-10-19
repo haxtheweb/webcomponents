@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Огноо",
+    "description": "Календарийн огноог дэлгэрэнгүйтэй нь харуулах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Сар",
+        "description": "Карт дээр харуулах сар."
+      },
+      {
+        "property": "date",
+        "title": "Сарын өдөр",
+        "description": "Сарын өдрийн тоо."
+      },
+      {
+        "property": "day",
+        "title": "Гараг",
+        "description": "Долоо хоногийн гараг текстээр."
+      },
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Арга хэмжээний нэр."
+      },
+      {
+        "property": "location",
+        "title": "Байршил",
+        "description": "Арга хэмжээний байршил."
+      },
+      {
+        "property": "startTime",
+        "title": "Эхлэх",
+        "description": "Эхлэх цаг."
+      },
+      {
+        "property": "endTime",
+        "title": "Дуусах",
+        "description": "Дуусах цаг."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Нэмэлт онцлох өнгө."
+      },
+      {
+        "property": "dark",
+        "title": "Бараан загвар",
+        "description": "Бараан загварыг идэвхжүүлэх."
+      }
+    ]
+  }
+}

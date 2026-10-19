@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Contador",
+    "description": "Anima um número contando até um valor-alvo quando ele aparece na tela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Valor final",
+        "description": "O número até o qual contar."
+      },
+      {
+        "property": "start",
+        "title": "Valor inicial",
+        "description": "O número a partir do qual contar."
+      },
+      {
+        "property": "duration",
+        "title": "Duração",
+        "description": "Segundos que a animação da contagem deve levar."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Texto de prefixo",
+        "description": "Texto mostrado antes do número (ex.: '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Texto de sufixo",
+        "description": "Texto mostrado depois do número (ex.: '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot de prefixo",
+        "description": "Conteúdo opcional no slot antes do número."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot de sufixo",
+        "description": "Conteúdo opcional no slot depois do número."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Casas decimais",
+        "description": "Número de casas decimais a exibir."
+      },
+      {
+        "property": "separator",
+        "title": "Separador de milhares",
+        "description": "Caractere que separa os grupos de milhares."
+      },
+      {
+        "property": "decimal",
+        "title": "Caractere decimal",
+        "description": "Caractere usado como separador decimal."
+      },
+      {
+        "property": "noeasing",
+        "title": "Sem suavização",
+        "description": "Desativar a suavização para que a contagem seja linear."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P အစိတ်အပိုင်း",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "စာသား",
+        "description": "ဘေးမှတ်စု၏ အကြောင်းအရာ"
+      }
+    ]
+  }
+}

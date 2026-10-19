@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub biltegia",
   "anErrorOccurred": "Errore bat gertatu da",
-  "retry": "Berriz saiatu"
+  "retry": "Berriz saiatu",
+  "permissionRequired": "Baimena behar da",
+  "passwordRequirements": "Pasahitzaren baldintzak",
+  "requirementLength": "Gutxienez 8 karaktere",
+  "requirementUppercase": "Letra larri bat",
+  "requirementLowercase": "Letra xehe bat",
+  "requirementNumber": "Zenbaki bat",
+  "requirementSymbol": "Ikur bat"
 }

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "الدور المهني",
+    "description": "دور فردي داخل مؤسسة"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "العنوان"
+      },
+      {
+        "property": "startDate",
+        "title": "تاريخ البدء"
+      },
+      {
+        "property": "endDate",
+        "title": "تاريخ الانتهاء (اختياري)"
+      },
+      {
+        "property": "skills",
+        "title": "المهارات المرتبطة",
+        "description": "اختر الزر + للبدء في إضافة المهارات"
+      }
+    ]
+  }
+}

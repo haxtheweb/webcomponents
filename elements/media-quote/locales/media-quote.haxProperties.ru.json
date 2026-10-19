@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Медиацитата",
+    "description": "Изображение с цитатой, источником и необязательной подписью."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Цитата",
+        "description": "Текст цитаты."
+      },
+      {
+        "slot": "author",
+        "title": "Автор",
+        "description": "Автор цитаты."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Сведения об авторе",
+        "description": "Сведения об авторе."
+      },
+      {
+        "slot": "caption",
+        "title": "Подпись",
+        "description": "Подпись к изображению."
+      },
+      {
+        "property": "src",
+        "title": "Источник изображения",
+        "description": "Файл изображения для медиацитаты."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернативный текст",
+        "description": "Альтернативный текст для изображения."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "Акцентный цвет карточки."
+      }
+    ]
+  }
+}

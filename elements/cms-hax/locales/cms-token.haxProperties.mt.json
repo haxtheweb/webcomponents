@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Token tas-CMS",
+    "description": "Token tas-CMS irrenderjat fuq il-backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Token",
+        "description": "Token mis-CMS tagħna"
+      }
+    ]
+  }
+}

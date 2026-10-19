@@ -1,0 +1,18 @@
+{
+  "title": "Fonctionnalités de la plateforme",
+  "experienceLevel": "Niveau d'expérience",
+  "cmsFeatures": "Fonctionnalités du CMS",
+  "editorFeatures": "Fonctionnalités de l'éditeur",
+  "blocks": "Blocs",
+  "filterBlocks": "Filtrer les blocs",
+  "requiredTextNote": "Certaines balises de texte sont obligatoires et toujours activées (affichées désactivées).",
+  "download": "Télécharger le squelette",
+  "save": "Enregistrer",
+  "generating": "Génération du squelette…",
+  "generated": "Squelette téléchargé",
+  "enabled": "Activé",
+  "feature": "Fonctionnalité",
+  "details": "Détails",
+  "featuresWarning": "Désactiver ces options peut supprimer des capacités majeures de création et d'administration.",
+  "largeSiteWarning": "Ce site comporte de nombreuses pages. La génération du squelette peut prendre un certain temps."
+}

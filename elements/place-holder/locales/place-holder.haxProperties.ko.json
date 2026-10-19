@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "자리 표시자",
+    "description": "선택한 미디어 유형으로 변환할 수 있는 자리 표시자"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "유형",
+        "description": "이 자리 표시자를 대체할 수 있는 요소 유형.",
+        "options": {
+          "text": "텍스트 / 콘텐츠",
+          "document": "문서 / 파일",
+          "audio": "오디오",
+          "video": "비디오",
+          "image": "이미지",
+          "math": "수학"
+        }
+      },
+      {
+        "property": "text",
+        "title": "텍스트",
+        "description": "원하는 자리 표시자를 더 자세히 설명하세요"
+      }
+    ]
+  }
+}

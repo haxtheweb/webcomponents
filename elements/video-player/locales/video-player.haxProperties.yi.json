@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "ווידעאָ",
+    "description": "צוטריטלעכע ווידעאָ־שפּילונג פֿון פֿאַרשידענע מקורים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "URL פֿאַר דער מעדיע."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "טיטל",
+        "description": "טיטל געוויזן אונטערן ווידעאָ."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "פּלאַקאַט־בילד",
+        "description": "URL פֿונעם פּלאַקאַט־בילד."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "טעקסט־שפּורן",
+        "description": "אונטערשריפֿטן, איבערזעצונגען, באַשרײַבונגען און אַנדערע טעקסט־שפּורן פֿאַרן ווידעאָ."
+      },
+      {
+        "property": "startTime",
+        "title": "אָנהייב־צײַט",
+        "description": "הייב אָן דעם ווידעאָ בײַ אַ באַשטימטער צײַט (סעקונדעס)."
+      },
+      {
+        "property": "endTime",
+        "title": "סוף־צײַט",
+        "description": "ענדיק דעם ווידעאָ בײַ אַ באַשטימטער צײַט (סעקונדעס), פֿאָדערט אַן אָנהייב־צײַט."
+      },
+      {
+        "property": "learningMode",
+        "title": "אַקטיוויר לערן־מאָדוס",
+        "description": "דעאַקטיווירט פֿאָרויס־ און צוריקשפּולן."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "נעם אַוועק דאָס קנעפּל עפֿענען אויף YouTube",
+        "description": "נעמט אַוועק דאָס קנעפּל צו עפֿענען דעם ווידעאָ אויף YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "אַרײַננעמען אַ טייל־לינק?",
+        "description": "גיט אַ לינק צו טיילן דעם ווידעאָ."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "באַהאַלט צײַט־שטעמפּלען",
+        "description": "באַהאַלט די צײַט־שטעמפּלען אויפֿן טראַנסקריפּט."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "באַהאַלט דעם טראַנסקריפּט",
+        "description": "באַהאַלט דעם טראַנסקריפּט פֿון פֿאַרויס."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "אױדיאָ־באַשרײַבונג־שפּור",
+        "description": "URL צו אַן אױדיאָ־באַשרײַבונג־שפּור (MP3 טעקע) וואָס דערציילט וועגן די וויזועלע עלעמענטן."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "ווײַזט צי צו באַניצן CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "דערלויב שפּילן אין הינטערגרונט",
+        "description": "שפּיל ווײַטער ווען דער בלעטערער־טאַב פֿאַרלירט פֿאָקוס."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "טונקעלע טעמע פֿאַרן טראַנסקריפּט",
+        "description": "אַקטיוויר די טונקעלע טעמע פֿאַרן טראַנסקריפּט."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "דעאַקטיוויר אינטעראַקטיוו",
+        "description": "דעאַקטיוויר דעם אינטעראַקטיוון מאָדוס וואָס מאַכט דעם טראַנסקריפּט קליקבאַר."
+      },
+      {
+        "property": "lang",
+        "title": "שפּראַך",
+        "description": "שפּראַך פֿון דער מעדיע."
+      },
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "(פֿאַרעלטערט) קלײַב דעם אַקצענט־קאָליר פֿאַרן שפּילער."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Сыртқы веб-мазмұнды iframe ішіне енгізу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ресурс URL-і",
+        "description": "Ресурс URL-і."
+      },
+      {
+        "property": "height",
+        "title": "Биіктігі",
+        "description": "Iframe биіктігі."
+      },
+      {
+        "property": "width",
+        "title": "Ені",
+        "description": "Iframe ені."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Búlọ́ọ̀kù Html",
+    "description": "Búlọ́ọ̀kù HTML ìpìlẹ̀ tó ń pèsè ìsopọ̀ HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Kóòdù HTML tí o fẹ́ ṣàfihàn nínú àkóónú"
+      }
+    ]
+  }
+}

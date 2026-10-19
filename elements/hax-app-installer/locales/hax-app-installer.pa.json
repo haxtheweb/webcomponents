@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub ਰਿਪੋਜ਼ਟਰੀ",
   "anErrorOccurred": "ਇੱਕ ਗਲਤੀ ਹੋਈ",
-  "retry": "ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
+  "retry": "ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
+  "permissionRequired": "ਇਜਾਜ਼ਤ ਲੋੜੀਂਦੀ ਹੈ",
+  "passwordRequirements": "ਪਾਸਵਰਡ ਦੀਆਂ ਲੋੜਾਂ",
+  "requirementLength": "ਘੱਟੋ-ਘੱਟ 8 ਅੱਖਰ",
+  "requirementUppercase": "ਇੱਕ ਵੱਡਾ ਅੱਖਰ",
+  "requirementLowercase": "ਇੱਕ ਛੋਟਾ ਅੱਖਰ",
+  "requirementNumber": "ਇੱਕ ਅੰਕ",
+  "requirementSymbol": "ਇੱਕ ਚਿੰਨ੍ਹ"
 }

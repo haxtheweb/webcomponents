@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ihe nchịkọta",
+    "description": "Ihe ụdị kaadị maka iji n'ime ndepụta nchịkọta, nwere ederede, njikọ, na mgbasa ozi nhọrọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Njikọ",
+        "description": "URL ebe a na-aga maka kaadị a."
+      },
+      {
+        "property": "image",
+        "title": "Onyonyo",
+        "description": "Onyonyo azụ."
+      },
+      {
+        "property": "line1",
+        "title": "Ahịrị 1",
+        "description": "Ahịrị mbụ nke ederede."
+      },
+      {
+        "property": "line2",
+        "title": "Ahịrị 2",
+        "description": "Ahịrị nke abụọ nke ederede."
+      },
+      {
+        "property": "line3",
+        "title": "Ahịrị 3",
+        "description": "Ahịrị nke atọ nke ederede."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Akara ngosi",
+        "description": "Akara ngosi na-anọchi anya kaadị ahụ."
+      },
+      {
+        "property": "saturate",
+        "title": "Mmetụta njupụta agba",
+        "description": "Gbanwee njupụta agba onyonyo mgbe onye ọrụ lekwasịrị ya anya."
+      },
+      {
+        "property": "tags",
+        "title": "Mkpado",
+        "description": "Ndepụta mkpado ekewapụtara na rịkọm."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba",
+        "description": "Agba eji maka mkpado."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Ederede ọzọ na-akọwa njikọ ahụ."
+      }
+    ]
+  }
+}

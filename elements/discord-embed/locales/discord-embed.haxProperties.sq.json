@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Ngulit komunitete Discord nga një URL ndarjeje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL-ja e burimit",
+        "description": "URL-ja e burimit."
+      },
+      {
+        "property": "height",
+        "title": "Lartësia",
+        "description": "Lartësia e kornizës së përmbajtjes."
+      },
+      {
+        "property": "width",
+        "title": "Gjerësia",
+        "description": "Gjerësia e kornizës së përmbajtjes."
+      }
+    ]
+  }
+}

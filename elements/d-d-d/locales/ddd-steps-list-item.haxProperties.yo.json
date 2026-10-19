@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ẹyọ ìgbésẹ̀",
+    "description": "Ẹyọ tí ó jẹ́ apá kan àtòjọ ìgbésẹ̀"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Àkọlé"
+      }
+    ]
+  }
+}

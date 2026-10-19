@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "صفحے اُتے Disqus تبصرے ایمبیڈ کرو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "مختصر ناں",
+        "description": "سائٹ دا مختصر ناں، جیہڑا Disqus سکرپٹ ہوسٹ نوں چلاندا اے۔"
+      },
+      {
+        "property": "pageURL",
+        "title": "صفحے دا URL",
+        "description": "اوس صفحے دا URL جیہدے نال تبصریاں دی لڑی جڑی اے۔"
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "صفحے دا شناخت کار",
+        "description": "صفحے دی تبصرہ لڑی دا منفرد شناخت کار۔"
+      },
+      {
+        "property": "pageTitle",
+        "title": "صفحے دا عنوان",
+        "description": "اوس صفحے دا عنوان جیہدے نال تبصریاں دی لڑی جڑی اے۔"
+      },
+      {
+        "property": "loadingText",
+        "title": "لوڈنگ متن",
+        "description": "تبصرے لوڈ ہوندیاں ہوئیاں اعلان کیتا جاوݨ والا متن۔"
+      },
+      {
+        "property": "lang",
+        "title": "بولی",
+        "description": "Disqus انٹرفیس لئی بولی دا کوڈ، جیویں en۔"
+      }
+    ]
+  }
+}

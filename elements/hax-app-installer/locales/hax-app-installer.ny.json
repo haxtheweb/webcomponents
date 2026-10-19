@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Malo osungira GitHub",
   "anErrorOccurred": "Kwabuka cholakwika",
-  "retry": "Yesaninso"
+  "retry": "Yesaninso",
+  "permissionRequired": "Chilolezo chikufunika",
+  "passwordRequirements": "Zofunika pa mawu achinsinsi",
+  "requirementLength": "Zilembo 8 kapena kuposerapo",
+  "requirementUppercase": "Chilembo chimodzi chachikulu",
+  "requirementLowercase": "Chilembo chimodzi chaching'ono",
+  "requirementNumber": "Nambala imodzi",
+  "requirementSymbol": "Chizindikiro chimodzi"
 }

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "mô hình khóa học",
+    "description": "Bố cục tương tác cho các khái niệm của khóa học với chi tiết, hoạt ảnh và bài kiểm tra kiến thức."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "tiêu đề"
+      },
+      {
+        "property": "src",
+        "title": "nguồn"
+      },
+      {
+        "property": "alt",
+        "title": "văn bản thay thế"
+      },
+      {
+        "title": "Vùng thông tin"
+      },
+      {
+        "title": "Vùng chi tiết"
+      },
+      {
+        "title": "Vùng hoạt ảnh"
+      },
+      {
+        "title": "Vùng kiểm tra kiến thức"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Vùng logo"
+      }
+    ]
+  }
+}

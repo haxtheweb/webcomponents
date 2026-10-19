@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "אמנות מילים של HAX",
+    "description": "רכיב לוגו של HAX, וכמובן רכיב התומך ב-HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "גודל לוגו ה-HAX שיוצב",
+        "options": {
+          "mini": "מיני",
+          "small": "קטן",
+          "normal": "רגיל",
+          "large": "גדול"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "האם להמיר את הלוגו לאותיות רישיות"
+      }
+    ]
+  }
+}

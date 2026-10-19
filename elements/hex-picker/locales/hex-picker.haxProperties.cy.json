@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Dewisydd Hex",
+    "description": "Dewisydd lliw cod hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Gwerth",
+        "description": "Gwerth hex diofyn"
+      },
+      {
+        "property": "disabled",
+        "title": "Wedi'i analluogi",
+        "description": "Analluogi'r maes testun"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Dangosiad Mawr",
+        "description": "Cynnwys lliw mewn dangosiad mawr"
+      }
+    ]
+  }
+}

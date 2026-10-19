@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "יעד פיתוח בר־קיימא של האומות המאוחדות."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "יעד",
+        "description": "מספר ה-SDG של ה-UN."
+      },
+      {
+        "property": "colorOnly",
+        "title": "צבע בלבד",
+        "description": "הצגת צבע היעד בלבד."
+      }
+    ]
+  }
+}

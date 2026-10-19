@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Isithombe Esiyisisekelo",
+    "description": "Isakhi sesithombe esiyisisekelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Umthombo",
+        "description": "I-URL yesithombe."
+      },
+      {
+        "attribute": "alt",
+        "title": "Umbhalo ongenye",
+        "description": "Umbhalo ongenye wokufinyeleleka ne-SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Ukuphakama",
+        "description": "Ukuphakama kuma-pixel. Shiya kungenalutho ukuze kusetshenziswe usayizi wemvelo."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Ukulayishwa kwesithombe",
+        "description": "Khetha ukuthi isithombe silayisha nini.",
+        "options": {
+          "lazy": "Layisha uma kubonakala",
+          "auto": "Okuzenzakalelayo"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Imithombo esabelayo (srcset)",
+        "description": "Faka ohlwini ama-URL ezithombe nezichazi (isb. 480w noma 2x) ukuze iziphequluli zikhethe usayizi ongcono kakhulu wesikrini. Kugcinwa njengesibaluli esijwayelekile se-srcset."
+      }
+    ]
+  }
+}

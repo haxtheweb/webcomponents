@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Chithunzi Chosavuta",
+    "description": "Sinthani zithunzi ndi magawo osavuta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Gwero",
+        "description": "URL ya gwero la chithunzi."
+      },
+      {
+        "property": "height",
+        "title": "Kutalika",
+        "description": "Kutalika kosankha kwa chithunzi."
+      },
+      {
+        "property": "width",
+        "title": "M'lifupi",
+        "description": "M'lifupi mosankha mwa chithunzi."
+      },
+      {
+        "property": "alt",
+        "title": "Mawu ofotokoza chithunzi",
+        "description": "Zothandiza kwa owerenga zenera ndi SEO yabwino."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Ubwino",
+        "description": "Ubwino wa chithunzi popanga (JPEG yokha)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Patsogolo pa Kutsitsa",
+        "description": "Lingaliro la magwiridwe antchito kwa masakatuli amakono.",
+        "options": {
+          "auto": "Zokha",
+          "high": "Mmwamba",
+          "low": "Pansi"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Njira yomasulira",
+        "description": "Lingaliro la magwiridwe antchito powonetsa zithunzi m'masakatuli amakono.",
+        "options": {
+          "auto": "Zokha",
+          "async": "Mosadikira"
+        }
+      }
+    ]
+  }
+}

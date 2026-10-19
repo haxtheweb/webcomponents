@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Lerro-grafikoa",
+    "description": "CSV batean oinarritutako grafiko irisgarria sortzen du."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nabarmentze kolorea",
+        "description": "Aukerako nabarmentze kolorea."
+      },
+      {
+        "title": "Gai iluna",
+        "description": "Gaitu gai iluna"
+      },
+      {
+        "title": "CSV fitxategia",
+        "description": "Kargatu datuak CSV batetik."
+      },
+      {
+        "title": "Grafikoaren izenburua",
+        "description": "Zure grafikoaren testu alternatibo irisgarria."
+      },
+      {
+        "title": "Grafikoaren deskribapena",
+        "description": "Zure grafikoaren deskribapen irisgarria."
+      },
+      {
+        "title": "Eskalaren izena",
+        "description": "Grafikoaren zabalera:altuera proportzioa (ikus https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings $ct-scales eta $ct-scales-names-erako).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Erakutsi saretako atzeko planoa"
+      },
+      {
+        "title": "Erakutsi area"
+      },
+      {
+        "title": "Erakutsi lerroa"
+      },
+      {
+        "title": "Erakutsi puntua"
+      },
+      {
+        "title": "Zabalera osoa"
+      },
+      {
+        "title": "Erakutsi puntuen etiketak"
+      },
+      {
+        "title": "Grafikoaren betegarria (goian)"
+      },
+      {
+        "title": "Grafikoaren betegarria (behean)"
+      },
+      {
+        "title": "Grafikoaren betegarria (ezkerrean)"
+      },
+      {
+        "title": "Grafikoaren betegarria (eskuinean)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Alderantzikatu datuak",
+        "description": "Alderantzikatu datuak, etiketak, serieen ordena eta serieen datu-matrize osoak barne."
+      },
+      {
+        "title": "HTML taula",
+        "description": "Aukerakoa: kargatu datuak HTML taula gisa."
+      },
+      {
+        "title": "Grafikoaren minimoa",
+        "description": "Grafikoaren berezko minimoa gainidazteak handiagotzea edo grafikoaren bistaratutako balio baxuena mugatzea ahalbidetzen du"
+      },
+      {
+        "title": "Grafikoaren maximoa",
+        "description": "Grafikoaren berezko maximoa gainidazteak handiagotzea edo grafikoaren bistaratutako balio altuena mugatzea ahalbidetzen du"
+      },
+      {
+        "title": "Erakutsi puntuen etiketak",
+        "options": {
+          "middle": "Erdia",
+          "start": "Hasiera",
+          "end": "Amaiera"
+        }
+      },
+      {
+        "title": "Puntuen etiketen X desplazamendua"
+      },
+      {
+        "title": "Puntuen etiketen Y desplazamendua"
+      },
+      {
+        "title": "Lerro leuna"
+      },
+      {
+        "title": "Arearen oinarria",
+        "description": "Area-grafikoaren oinarria, area-forma ixteko erabiliko dena (normalean 0 da)."
+      },
+      {
+        "title": "X ardatza: erakutsi sareta",
+        "description": "Erakutsi X ardatzaren sareta."
+      },
+      {
+        "title": "X ardatzaren desplazamendua"
+      },
+      {
+        "title": "X ardatzaren posizioa",
+        "description": "Etiketak kokatzen diren posizioa. \"start\" edo \"end\" gisa ezar daiteke; \"start\" ardatz bertikaleko ezkerra edo goia da, eta \"end\" ardatz horizontaleko eskuina edo behea"
+      },
+      {
+        "title": "X ardatza: erakutsi etiketa",
+        "description": "Erakutsi X ardatzaren etiketa."
+      },
+      {
+        "title": "X ardatzaren etiketa (desplazamendu horizontala)",
+        "description": "X ardatzaren etiketen posizio horizontala."
+      },
+      {
+        "title": "X ardatzaren etiketa (desplazamendu bertikala)",
+        "description": "X ardatzaren etiketen posizio bertikala."
+      },
+      {
+        "title": "X ardatzaren izenburua",
+        "description": "X ardatzaren aukerako izenburua."
+      },
+      {
+        "title": "X ardatzaren izenburua (desplazamendu horizontala)",
+        "description": "X ardatzaren izenburuaren posizio horizontala."
+      },
+      {
+        "title": "X ardatzaren izenburua (desplazamendu bertikala)",
+        "description": "X ardatzaren izenburuaren posizio bertikala."
+      },
+      {
+        "title": "X ardatzaren izenburuaren aingura",
+        "description": "X ardatzaren izenburuaren aukerako aingura.",
+        "options": {
+          "middle": "erdia",
+          "end": "amaiera",
+          "start": "hasiera"
+        }
+      },
+      {
+        "title": "Y ardatza: erakutsi sareta",
+        "description": "Erakutsi Y ardatzaren sareta."
+      },
+      {
+        "title": "Y ardatzaren desplazamendua"
+      },
+      {
+        "title": "Y ardatzaren posizioa",
+        "description": "Etiketak kokatzen diren posizioa. \"start\" edo \"end\" gisa ezar daiteke; \"start\" ardatz bertikaleko ezkerra edo goia da, eta \"end\" ardatz horizontaleko eskuina edo behea"
+      },
+      {
+        "title": "Y ardatza: erakutsi etiketa",
+        "description": "Erakutsi Y ardatzaren etiketa."
+      },
+      {
+        "title": "Y ardatzaren etiketa (desplazamendu horizontala)",
+        "description": "Y ardatzaren etiketaren posizio horizontala."
+      },
+      {
+        "title": "Y ardatzaren etiketa (desplazamendu bertikala)",
+        "description": "Y ardatzaren etiketaren posizio bertikala."
+      },
+      {
+        "title": "Y ardatzaren eskalaren gutxieneko tartea",
+        "description": "Eskala-urratsen gutxieneko altuera pixeletan zehazten du."
+      },
+      {
+        "title": "Y ardatzaren eskala (osokoak soilik)",
+        "description": "Erabili balio osokoak soilik (zenbaki osoak) eskala-urratsetarako."
+      },
+      {
+        "title": "Y ardatzaren izenburua",
+        "description": "Y ardatzaren aukerako izenburua."
+      },
+      {
+        "title": "Y ardatzaren izenburua (desplazamendu bertikala)",
+        "description": "Y ardatzaren izenburuaren posizio horizontala."
+      },
+      {
+        "title": "Y ardatzaren izenburua (desplazamendu horizontala)",
+        "description": "Y ardatzaren izenburuaren posizio horizontala."
+      },
+      {
+        "title": "Y ardatzaren izenburuaren aingura",
+        "description": "Y ardatzaren izenburuaren aukerako aingura.",
+        "options": {
+          "middle": "erdia",
+          "end": "amaiera",
+          "start": "hasiera"
+        }
+      },
+      {
+        "title": "Irauli Y ardatzaren izenburua",
+        "description": "Irauli Y ardatzaren izenburua?"
+      }
+    ]
+  }
+}

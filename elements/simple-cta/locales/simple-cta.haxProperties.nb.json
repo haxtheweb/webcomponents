@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Handlingsoppfordring",
+    "description": "En enkel knapp med en lenke for å utføre en handling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etikett",
+        "description": "Lenketekst"
+      },
+      {
+        "property": "link",
+        "title": "Lenke",
+        "description": "Skriv inn en lenke til en hvilken som helst ressurs"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Skjul ikon",
+        "description": "Skjul ikonet som brukes til å fremheve teksten"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon for handlingslenke"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Reproductor de Unity",
+    "description": "Reproductor WebGL de Unity."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Destino",
+        "description": "Ruta a la compilación del juego."
+      },
+      {
+        "property": "compression",
+        "title": "Método de compresión",
+        "description": "Extensión de archivo de compresión para los recursos del juego."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL de streaming",
+        "description": "URL de los recursos de streaming."
+      },
+      {
+        "property": "companyname",
+        "title": "Nombre de la empresa",
+        "description": "Nombre de la empresa."
+      },
+      {
+        "property": "productname",
+        "title": "Nombre del producto",
+        "description": "Título del juego."
+      },
+      {
+        "property": "productversion",
+        "title": "Versión del producto",
+        "description": "Versión de lanzamiento."
+      },
+      {
+        "property": "width",
+        "title": "Ancho del lienzo",
+        "description": "Ancho CSS del lienzo (por ejemplo, px o em)."
+      },
+      {
+        "property": "height",
+        "title": "Altura del lienzo",
+        "description": "Altura CSS del lienzo (por ejemplo, px o em)."
+      },
+      {
+        "property": "background",
+        "title": "Fondo del lienzo",
+        "description": "Fondo CSS del lienzo."
+      }
+    ]
+  }
+}

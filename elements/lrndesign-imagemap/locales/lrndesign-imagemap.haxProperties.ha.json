@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Taswirar hoto",
+    "description": "Taswirar hoto mai sauƙin isa tare da wurare masu mu'amala."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Lakabi",
+        "description": "Lakabin taswirar hoton."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Bayanan wurare masu mu'amala",
+        "description": "Wurare masu mu'amala a kan taswirar hoton."
+      }
+    ]
+  }
+}

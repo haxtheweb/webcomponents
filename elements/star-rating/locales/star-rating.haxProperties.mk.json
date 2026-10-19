@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Оценка со ѕвезди",
+    "description": "Елемент за прикажување оценка или копче за оценување."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Резултат",
+        "description": "Тековна вредност на резултатот."
+      },
+      {
+        "property": "possible",
+        "title": "Можно",
+        "description": "Максимален можен резултат."
+      },
+      {
+        "property": "numStars",
+        "title": "Број на ѕвезди",
+        "description": "Број на ѕвезди за прикажување."
+      },
+      {
+        "property": "interactive",
+        "title": "Интерактивно",
+        "description": "Дозволи корисничка интеракција за поставување на оценката."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Режим на скала на рубрика",
+        "description": "Емитувај OER Schema метаподатоци RubricScale и RubricLevel (levelOrdinal/levelPoints) за секоја ѕвезда."
+      }
+    ]
+  }
+}

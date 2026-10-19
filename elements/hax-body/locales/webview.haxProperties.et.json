@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Allikas",
+        "description": "Selle ressursi URL."
+      }
+    ]
+  }
+}

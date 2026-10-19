@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Etichetă / Pastilă",
+    "description": "O etichetă compactă în formă de pastilă, cu culoare de accent, buton de anulare sau comutare opționale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etichetă",
+        "description": "Textul afișat în pastilă."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Numele de accent SimpleColors pentru fundalul pastilei.",
+        "options": {
+          "": "-- implicit --",
+          "red": "Roșu",
+          "pink": "Roz",
+          "purple": "Violet",
+          "deep-purple": "Violet închis",
+          "indigo": "Indigo",
+          "blue": "Albastru",
+          "light-blue": "Albastru deschis",
+          "cyan": "Cyan",
+          "teal": "Turcoaz",
+          "green": "Verde",
+          "light-green": "Verde deschis",
+          "lime": "Lime",
+          "yellow": "Galben",
+          "amber": "Chihlimbar",
+          "orange": "Portocaliu",
+          "deep-orange": "Portocaliu închis",
+          "brown": "Maro",
+          "blue-grey": "Gri albăstrui",
+          "grey": "Gri"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Culoare de accent automată",
+        "description": "Derivă automat culoarea de accent din textul etichetei."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Buton de anulare",
+        "description": "Afișează un buton cu pictogramă de eliminare/anulare în pastilă."
+      },
+      {
+        "property": "readonly",
+        "title": "Doar citire",
+        "description": "Ascunde butonul de anulare, astfel încât pastila să fie doar de afișare."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Comutare",
+        "description": "Pastila se activează/dezactivează la clic pe buton."
+      },
+      {
+        "property": "toggled",
+        "title": "Activată",
+        "description": "Dacă pastila este activată în prezent."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Pictogramă activată",
+        "description": "Pictograma afișată când pastila este activată."
+      },
+      {
+        "property": "disabled",
+        "title": "Dezactivat",
+        "description": "Dezactivează interacțiunea cu pastila."
+      }
+    ]
+  }
+}

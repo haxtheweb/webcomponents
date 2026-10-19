@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "נגן Unity",
+    "description": "נגן Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "יעד",
+        "description": "הנתיב לגרסת הבנייה של המשחק."
+      },
+      {
+        "property": "compression",
+        "title": "שיטת דחיסה",
+        "description": "סיומת קובץ הדחיסה עבור נכסי המשחק."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL להזרמה",
+        "description": "URL של נכסי ההזרמה."
+      },
+      {
+        "property": "companyname",
+        "title": "שם החברה",
+        "description": "שם החברה."
+      },
+      {
+        "property": "productname",
+        "title": "שם המוצר",
+        "description": "שם המשחק."
+      },
+      {
+        "property": "productversion",
+        "title": "גרסת המוצר",
+        "description": "גרסת השחרור."
+      },
+      {
+        "property": "width",
+        "title": "רוחב הקנבס",
+        "description": "רוחב ה-CSS של הקנבס (למשל px או em)."
+      },
+      {
+        "property": "height",
+        "title": "גובה הקנבס",
+        "description": "גובה ה-CSS של הקנבס (למשל px או em)."
+      },
+      {
+        "property": "background",
+        "title": "רקע הקנבס",
+        "description": "רקע ה-CSS של הקנבס."
+      }
+    ]
+  }
+}

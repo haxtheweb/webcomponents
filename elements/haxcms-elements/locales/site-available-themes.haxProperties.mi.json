@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Ngā Kaupapa Āhua e Wātea Ana",
+    "description": "Whakaatu i ngā kaupapa āhua HAXcms e wātea ana me te whakawhiti arokite ora"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Aratau Tiro",
+        "description": "Kōwhiria me pēhea te whakaatu i ngā kaupapa āhua",
+        "options": {
+          "gallery": "Taiwhanga",
+          "table": "Ripanga"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Whakaatu Taipitopito",
+        "description": "Whakaatu i ngā whakaahuatanga kaupapa āhua me ētahi atu mōhiohio"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Whakaatu Kaupapa Āhua Huna me ngā Mea Tawhito",
+        "description": "Whakaatu i ngā kaupapa āhua huna, tawhito, kino rawa hoki i tua atu i ngā taunoa papatohu"
+      },
+      {
+        "property": "columns",
+        "title": "Tīwae (Taiwhanga)",
+        "description": "Te maha o ngā tīwae i te tirohanga taiwhanga"
+      }
+    ]
+  }
+}

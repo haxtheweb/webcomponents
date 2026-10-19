@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Veldu áfangastað",
+  "importContentUnderThisPage": "Flytja inn efni undir þessa síðu",
+  "importThisContent": "Flytja inn þetta efni",
+  "thisPage": "þessi síða",
+  "newPage": "Ný síða",
+  "copyOf": "Afrit af",
+  "pageActions": "Síðuaðgerðir",
+  "editTitle": "Breyta titli",
+  "lock": "Læsa",
+  "unlock": "Aflæsa",
+  "moveUp": "Færa upp",
+  "moveDown": "Færa niður",
+  "makeChild": "Gera að undirsíðu",
+  "moveToParentLevel": "Færa á yfirstig",
+  "addPage": "Bæta við síðu",
+  "duplicate": "Tvöfalda",
+  "delete": "Eyða",
+  "restore": "Endurheimta",
+  "goToPage": "Fara á síðu"
+}

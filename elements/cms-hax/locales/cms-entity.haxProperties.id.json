@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Entitas CMS",
+    "description": "Entitas CMS yang dirender di backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Jenis",
+        "description": "jenis dari CMS kami",
+        "options": {
+          "node": "Node",
+          "user": "Pengguna",
+          "file": "File"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID dari CMS kami"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Mode tampilan",
+        "description": "mode tampilan dari CMS kami"
+      }
+    ]
+  }
+}

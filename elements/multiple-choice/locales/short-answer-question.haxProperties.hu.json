@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Rövid válaszos kérdés",
+    "description": "A felhasználó válaszoljon egy egyszerű kérdésre"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Kérdés",
+        "description": "A kérdés, amelyre a felhasználók válaszolnak."
+      },
+      {
+        "property": "answers",
+        "title": "Lehetséges válaszok"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "A kvíz neve",
+        "description": "A kvíz neve, amely xAPI-alapú környezetekben az elem azonosítására szolgál"
+      }
+    ]
+  }
+}

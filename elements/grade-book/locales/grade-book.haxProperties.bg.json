@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Дневник с оценки",
+    "description": "Дневник с оценки без собствен интерфейс, който поддържа различни бекенди с рубрики."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Източник",
+        "description": "Тип на източника на данни (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL крайна точка (JSON)",
+          "json": "JSON данни",
+          "filesystem": "Файлова система"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Изходни данни",
+        "description": "URL или JSON данни за дневника с оценки."
+      },
+      {
+        "property": "forCourse",
+        "title": "Препратка към курс",
+        "description": "Идентификатор на курса, извеждан като oer:forCourse за всеки ресурс за оценяване."
+      }
+    ]
+  }
+}

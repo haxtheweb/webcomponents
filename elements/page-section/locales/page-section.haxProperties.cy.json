@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Adran tudalen",
+    "description": "Cynhwysydd adran ar gyfer cynnwys tudalen a chynlluniau sgrin lawn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Triniaeth ddylunio",
+        "description": "Arddull ragosodedig sy'n diweddaru gosodiadau cysylltiedig."
+      },
+      {
+        "property": "image",
+        "title": "Delwedd",
+        "description": "Cyfryngau cefndir ar gyfer yr adran."
+      },
+      {
+        "property": "bg",
+        "title": "Lliw cefndir",
+        "description": "Lliw cefndir pan nad oes delwedd wedi'i gosod."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Botwm sgrolio",
+        "description": "Dangos botwm sy'n sgrolio i'r adran nesaf."
+      },
+      {
+        "property": "fold",
+        "title": "Dangos plyg",
+        "description": "Dangos plyg gweledol ar waelod yr adran."
+      },
+      {
+        "property": "full",
+        "title": "Maint sgrin lawn",
+        "description": "Llenwi uchder sgrin y gwyliwr."
+      },
+      {
+        "property": "filter",
+        "title": "Rhoi Hidlydd",
+        "description": "Rhoi hidlydd gweledol ar y ddelwedd gefndir."
+      },
+      {
+        "slot": "",
+        "title": "Cynnwys",
+        "description": "Cynnwys yr adran."
+      },
+      {
+        "slot": "entice",
+        "title": "Denu",
+        "description": "Cynnwys denu dewisol."
+      },
+      {
+        "slot": "buttons",
+        "title": "Botymau",
+        "description": "Grŵp o fotymau a ddangosir o dan y testun."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Testun angor",
+        "description": "Label angor a ddangosir yn y llywio."
+      }
+    ]
+  }
+}

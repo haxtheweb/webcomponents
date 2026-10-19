@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Značka Polaris",
+    "description": "Zobrazte identifikační značku PSU s volitelným názvem fakulty a cílovou URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Název fakulty",
+        "description": "Název zobrazený vedle značky."
+      },
+      {
+        "property": "name2",
+        "title": "Název fakulty 2",
+        "description": "Druhý název zobrazený pod prvním názvem fakulty."
+      },
+      {
+        "property": "name3",
+        "title": "Název fakulty 3",
+        "description": "Třetí název zobrazený pod druhým názvem fakulty."
+      },
+      {
+        "property": "url",
+        "title": "Odkaz",
+        "description": "Cílová URL po kliknutí na značku."
+      },
+      {
+        "property": "type",
+        "title": "Varianta",
+        "description": "Vizuální varianta značky.",
+        "options": {
+          "default": "Výchozí",
+          "light": "Světlá",
+          "dark": "Tmavý"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Svislé rozvržení",
+        "description": "Zobrazit třetí název pod druhým názvem s vodorovnou čarou."
+      }
+    ]
+  }
+}

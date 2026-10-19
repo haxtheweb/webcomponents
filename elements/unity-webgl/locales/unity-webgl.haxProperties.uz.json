@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity pleyeri",
+    "description": "Unity WebGL pleyeri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Nishon",
+        "description": "Oʻyin yigʻmasiga yoʻl."
+      },
+      {
+        "property": "compression",
+        "title": "Siqish usuli",
+        "description": "Oʻyin resurslari uchun siqilgan fayl kengaytmasi."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Striming URL",
+        "description": "Striming resurslari URL manzili."
+      },
+      {
+        "property": "companyname",
+        "title": "Kompaniya nomi",
+        "description": "Kompaniya nomi."
+      },
+      {
+        "property": "productname",
+        "title": "Mahsulot nomi",
+        "description": "Oʻyin nomi."
+      },
+      {
+        "property": "productversion",
+        "title": "Mahsulot versiyasi",
+        "description": "Reliz versiyasi."
+      },
+      {
+        "property": "width",
+        "title": "Kanva kengligi",
+        "description": "Kanvaning CSS kengligi (masalan, px yoki em)."
+      },
+      {
+        "property": "height",
+        "title": "Kanva balandligi",
+        "description": "Kanvaning CSS balandligi (masalan, px yoki em)."
+      },
+      {
+        "property": "background",
+        "title": "Kanva foni",
+        "description": "Kanvaning CSS foni."
+      }
+    ]
+  }
+}

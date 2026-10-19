@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Roghnaigh sprioc",
+  "importContentUnderThisPage": "Iompórtáil ábhar faoin leathanach seo",
+  "importThisContent": "Iompórtáil an t-ábhar seo",
+  "thisPage": "an leathanach seo",
+  "newPage": "Leathanach nua",
+  "copyOf": "Cóip de",
+  "pageActions": "Gníomhartha leathanaigh",
+  "editTitle": "Cuir an teideal in eagar",
+  "lock": "Glasáil",
+  "unlock": "Díghlasáil",
+  "moveUp": "Bog suas",
+  "moveDown": "Bog síos",
+  "makeChild": "Déan leanbh de",
+  "moveToParentLevel": "Bog go leibhéal an tuismitheora",
+  "addPage": "Cuir leathanach leis",
+  "duplicate": "Dúblaigh",
+  "delete": "Scrios",
+  "restore": "Athchóirigh",
+  "goToPage": "Téigh go dtí an leathanach"
+}

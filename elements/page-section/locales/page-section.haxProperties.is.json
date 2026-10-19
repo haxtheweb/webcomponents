@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Síðuhluti",
+    "description": "Hlutagámur fyrir efni síðu og skjámiðað útlit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Hönnunarmeðferð",
+        "description": "Forstilltur stíll sem uppfærir tengdar stillingar."
+      },
+      {
+        "property": "image",
+        "title": "Mynd",
+        "description": "Bakgrunnsmiðill fyrir hlutann."
+      },
+      {
+        "property": "bg",
+        "title": "Bakgrunnslitur",
+        "description": "Bakgrunnslitur þegar engin mynd er stillt."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Skrunhnappur",
+        "description": "Sýna hnapp sem skrunar að næsta hluta."
+      },
+      {
+        "property": "fold",
+        "title": "Sýna brot",
+        "description": "Sýna sjónrænt brot neðst í hlutanum."
+      },
+      {
+        "property": "full",
+        "title": "Full skjástærð",
+        "description": "Fylla skjáhæð áhorfandans."
+      },
+      {
+        "property": "filter",
+        "title": "Nota síu",
+        "description": "Nota sjónræna síu á bakgrunnsmyndina."
+      },
+      {
+        "slot": "",
+        "title": "Efni",
+        "description": "Efni hlutans."
+      },
+      {
+        "slot": "entice",
+        "title": "Tálbeita",
+        "description": "Valfrjálst tálbeituefni."
+      },
+      {
+        "slot": "buttons",
+        "title": "Hnappar",
+        "description": "Hnappahópur sem birtist fyrir neðan textann."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Akkeristexti",
+        "description": "Akkerismerki sem birtist í leiðsögn."
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabel",
+    "description": "Data berbasis tabel untuk web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Header Baris",
+        "description": "Perlakukan baris pertama sebagai header."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Header Kolom",
+        "description": "Perlakukan kolom pertama sebagai header."
+      },
+      {
+        "property": "footer",
+        "title": "Footer",
+        "description": "Perlakukan baris terakhir sebagai footer."
+      },
+      {
+        "property": "sort",
+        "title": "Dapat Diurutkan",
+        "description": "Izinkan pengurutan berdasarkan nilai kolom."
+      },
+      {
+        "property": "filter",
+        "title": "Izinkan Filter",
+        "description": "Izinkan pemfilteran berdasarkan nilai kolom."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Gaya Numerik",
+        "description": "Terapkan gaya numerik pada kolom angka."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsif",
+        "description": "Sesuaikan tata letak tabel di layar kecil."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mode Rubrik",
+        "description": "Tafsirkan tabel ini sebagai Rubric OER Schema sehingga metadata Rubric, RubricScale, RubricCriterion, dan RubricLevel dihasilkan."
+      },
+      {
+        "property": "rubricType",
+        "title": "Jenis Rubrik",
+        "description": "Gaya rubrik yang dihasilkan sebagai oer:rubricType (hanya berarti saat Mode Rubrik aktif).",
+        "options": {
+          "": "(tidak ada)",
+          "analytic": "Analitik",
+          "holistic": "Holistik",
+          "single-point": "Satu Poin",
+          "checklist": "Daftar periksa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Berbingkai"
+      },
+      {
+        "property": "condensed",
+        "title": "Rapatkan Baris",
+        "description": "Kurangi tinggi baris."
+      },
+      {
+        "property": "striped",
+        "title": "Baris Belang",
+        "description": "Beri arsiran pada setiap baris berselang."
+      },
+      {
+        "property": "downloadable",
+        "title": "Tombol Unduh",
+        "description": "Tambahkan tombol untuk mengunduh tabel."
+      },
+      {
+        "property": "copyable",
+        "title": "Tombol Salin",
+        "description": "Tambahkan tombol untuk menyalin data CSV tabel."
+      },
+      {
+        "property": "printable",
+        "title": "Tombol Cetak",
+        "description": "Tambahkan tombol untuk mencetak tabel saja."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Data CSV",
+        "description": "Buat tabel dari file CSV yang diunggah."
+      }
+    ]
+  }
+}

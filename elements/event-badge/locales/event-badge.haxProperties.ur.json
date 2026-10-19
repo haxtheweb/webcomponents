@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "تقریب بیج",
+    "description": "تقریب بیج کا جزو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV تصویر",
+        "description": "TV پر دکھائی جانے والی تصویر۔"
+      },
+      {
+        "property": "logo",
+        "title": "لوگو",
+        "description": "بیج کے کونے میں دکھایا جانے والا لوگو۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "بیج کے اوپر دکھایا جانے والا عنوان۔"
+      },
+      {
+        "property": "name",
+        "title": "نام",
+        "description": "بیج پر دکھایا جانے والا نام۔"
+      },
+      {
+        "property": "position",
+        "title": "عہدہ",
+        "description": "شخص کا کردار یا عہدہ۔"
+      },
+      {
+        "property": "organization",
+        "title": "ادارہ",
+        "description": "وہ ادارہ جس کے لیے شخص کام کرتا ہے۔"
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV کا رنگ",
+        "description": "TV کا رنگ منتخب کریں۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "بنیادی پس منظر یا متن کا رنگ۔"
+      },
+      {
+        "property": "knobcolor",
+        "title": "نوب کا رنگ",
+        "description": "TV کے نوبز کا رنگ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "سیپیا",
+        "description": "سیپیا اثر لاگو کریں۔"
+      },
+      {
+        "property": "blackwhite",
+        "title": "سیاہ و سفید",
+        "description": "سیاہ و سفید اثر لاگو کریں۔"
+      }
+    ]
+  }
+}

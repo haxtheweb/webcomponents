@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "プレイリスト",
+    "description": "あらゆる種類のコンテンツをプレイリストで表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ソース",
+        "description": "プレイリストに表示するコンテンツ。"
+      },
+      {
+        "property": "edit",
+        "title": "編集モード",
+        "description": "プレイリストの編集モードとプレビューモードを切り替えます。"
+      },
+      {
+        "property": "navigation",
+        "title": "ナビゲーション",
+        "description": "進む・戻るナビゲーションボタンを表示します。"
+      },
+      {
+        "property": "pagination",
+        "title": "ページネーション",
+        "description": "ページネーションのドットを表示します。"
+      },
+      {
+        "property": "orientation",
+        "title": "向き",
+        "description": "スライドの向き。",
+        "options": {
+          "horizontal": "横",
+          "vertical": "縦"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "開始スライド",
+        "description": "最初にフォーカスするスライドのインデックス。"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "アスペクト比",
+        "description": "スライドのアスペクト比。",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

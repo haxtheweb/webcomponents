@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Cartão de matéria Polaris",
+    "description": "Exibe um cartão de matéria Polaris com imagem de fundo, rótulo de pilar e texto de manchete."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagem de fundo",
+        "description": "URL da imagem mostrada como fundo do cartão."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Tamanho do fundo",
+        "description": "Como a imagem de fundo preenche o cartão (CSS background-size).",
+        "options": {
+          "cover": "Cobrir (cover)",
+          "contain": "Conter (contain)",
+          "auto": "Automático (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fixação do fundo",
+        "description": "Como a imagem de fundo se comporta ao rolar (CSS background-attachment).",
+        "options": {
+          "scroll": "Rolar (scroll)",
+          "fixed": "Fixo (fixed)",
+          "local": "Local (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Rótulo de pilar",
+        "description": "Rótulo curto em maiúsculas mostrado no topo do cartão. Deixe vazio para ocultar."
+      },
+      {
+        "property": "label",
+        "title": "Texto do cartão",
+        "description": "Texto principal exibido no painel inferior."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "URL de destino opcional que envolve todo o cartão."
+      }
+    ]
+  }
+}

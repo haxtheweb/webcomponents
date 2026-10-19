@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Simge",
+    "description": "Tam simge kitaplığından bir simge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Simge",
+        "description": "Gösterilecek simge."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu rengi",
+        "description": "Simgenin vurgu rengi."
+      },
+      {
+        "property": "dark",
+        "title": "Koyu",
+        "description": "Koyu modu kullan (ters renk kümesi)."
+      }
+    ]
+  }
+}

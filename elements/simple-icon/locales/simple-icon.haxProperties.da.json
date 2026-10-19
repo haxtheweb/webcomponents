@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikon",
+    "description": "Ikon fra det fulde ikonbibliotek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon, der skal vises."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "Accentfarve til ikonet."
+      },
+      {
+        "property": "dark",
+        "title": "Mørk",
+        "description": "Brug mørk tilstand (inverteret farvesæt)."
+      }
+    ]
+  }
+}

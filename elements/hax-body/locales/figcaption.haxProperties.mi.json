@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tapanga whakaahua",
+    "description": "Tapanga mō tētahi whakaahua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Kupu whakamārama",
+        "description": "Kuputuhi e whakaaturia ana i raro i te whakaahua."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "E hōʻike i kekahi pihi kāhea-i-ka-hana Polaris me ke kumuhana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Kikokikona pihi",
+        "description": "Kikokikona i hōʻike ʻia ma ke pihi kāhea-i-ka-hana."
+      },
+      {
+        "property": "link",
+        "title": "Loulou",
+        "description": "URL e hele ai ke pihi."
+      },
+      {
+        "property": "type",
+        "title": "Mana",
+        "description": "Mana kaila ʻike ʻia.",
+        "options": {
+          "primary": "Mua",
+          "tinted": "Kāpala māmā",
+          "light": "Māmā"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Kaila lihi",
+        "description": "E hoʻā i ke kaila lihi."
+      },
+      {
+        "property": "filled",
+        "title": "Kaila piha",
+        "description": "E hoʻā i ke kaila piha."
+      }
+    ]
+  }
+}

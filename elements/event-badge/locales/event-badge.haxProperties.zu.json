@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Ibheji Lomcimbi",
+    "description": "Ingxenye yebheji lomcimbi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Isithombe se-TV",
+        "description": "Isithombe esiboniswa ku-TV."
+      },
+      {
+        "property": "logo",
+        "title": "Ilogo",
+        "description": "Ilogo eboniswa ekhoneni lebheji."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko esiboniswa phezulu ebhejini."
+      },
+      {
+        "property": "name",
+        "title": "Igama",
+        "description": "Igama eliboniswa ebhejini."
+      },
+      {
+        "property": "position",
+        "title": "Isikhundla",
+        "description": "Indima noma isikhundla somuntu."
+      },
+      {
+        "property": "organization",
+        "title": "Inhlangano",
+        "description": "Inhlangano umuntu asebenzela yona."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Umbala we-TV",
+        "description": "Khetha umbala we-TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala oyinhloko wangemuva noma wombhalo."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Umbala wezinkinobho ezijikayo",
+        "description": "Umbala wezinkinobho ezijikayo ze-TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "I-Sepia",
+        "description": "Faka umphumela we-sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Okumnyama nokumhlophe",
+        "description": "Faka umphumela omnyama nomhlophe."
+      }
+    ]
+  }
+}

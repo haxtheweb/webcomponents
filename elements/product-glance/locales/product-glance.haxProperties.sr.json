@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Преглед производа",
+    "description": "Блок за брзи преглед производа."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона која представља појам."
+      },
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Главни појам на први поглед."
+      },
+      {
+        "property": "subtitle",
+        "title": "Поднаслов",
+        "description": "Додатни детаљ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Акцентна боја иконе."
+      }
+    ]
+  }
+}

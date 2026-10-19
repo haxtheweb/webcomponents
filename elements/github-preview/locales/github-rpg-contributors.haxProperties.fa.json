@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "فهرست مشارکت‌کنندگان GitHub",
+    "description": "به‌صورت شخصیت‌های RPG با استفاده از API گیت‌هاب (GitHub) نمایش داده می‌شود."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "سازمان",
+        "description": "نام سازمان از github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "مخزن",
+        "description": "نام مخزن از github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "حد",
+        "description": "محدود کردن تعداد مشارکت‌کنندگان نمایش‌داده‌شده."
+      }
+    ]
+  }
+}

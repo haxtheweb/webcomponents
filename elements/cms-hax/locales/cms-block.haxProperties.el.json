@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Μπλοκ CMS",
+    "description": "Μπλοκ CMS που αποδίδεται στο backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Ενότητα",
+        "description": "Λειτουργική μονάδα προς φόρτωση από το CMS μας"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta του μπλοκ προς φόρτωση από το CMS μας"
+      }
+    ]
+  }
+}

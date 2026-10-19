@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "साधी प्रतिमा",
+    "description": "साध्या पॅरामीटरसह प्रतिमांमध्ये बदल करा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "स्रोत",
+        "description": "प्रतिमा स्रोत URL."
+      },
+      {
+        "property": "height",
+        "title": "उंची",
+        "description": "पर्यायी प्रतिमा उंची."
+      },
+      {
+        "property": "width",
+        "title": "रुंदी",
+        "description": "पर्यायी प्रतिमा रुंदी."
+      },
+      {
+        "property": "alt",
+        "title": "पर्यायी मजकूर",
+        "description": "स्क्रीन रीडरसाठी आणि सुधारित SEO साठी उपयुक्त."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "गुणवत्ता",
+        "description": "तयार करताना प्रतिमेची गुणवत्ता (फक्त JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "आणण्याचा प्राधान्यक्रम",
+        "description": "आधुनिक ब्राउझरसाठी कार्यक्षमता संकेत.",
+        "options": {
+          "auto": "स्वयंचलित",
+          "high": "उच्च",
+          "low": "निम्न"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "डीकोडिंग पद्धत",
+        "description": "आधुनिक ब्राउझरमध्ये प्रतिमा रेंडरिंगसाठी कार्यक्षमता संकेत.",
+        "options": {
+          "auto": "स्वयंचलित",
+          "async": "असिंक्रोनस"
+        }
+      }
+    ]
+  }
+}

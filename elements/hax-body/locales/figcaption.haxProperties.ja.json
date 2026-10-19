@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "図のキャプション",
+    "description": "図のキャプション。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "キャプション",
+        "description": "図の下に表示されるテキスト。"
+      }
+    ]
+  }
+}

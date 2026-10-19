@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Toeganklike besonderhede-knoppie",
+    "description": "Toeganklike progressiewe onthulling met besonderhede en opsomming"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Knoppie",
+        "description": "Opsomming van die inhoud wat versteek word, bv. \"inligting\", \"metadata\", ens."
+      },
+      {
+        "slot": "details",
+        "title": "Beskrywing",
+        "description": "Gedetailleerde beskrywing wat versteek of gewys kan word"
+      },
+      {
+        "slot": "",
+        "title": "Beskrywingknoppie",
+        "description": "Verstek vir knoppie wat beskrywingsteks wys/versteek, bv. \"inligting\", \"metadata\", ens."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Opsionele opsommingsteks wanneer besonderhede oop is"
+      },
+      {
+        "property": "closeText",
+        "title": "Opsionele opsommingsteks wanneer besonderhede toe is"
+      }
+    ]
+  }
+}

@@ -1,24 +1,28 @@
 {
   "gizmo": {
-    "title": "Insertar en Twitter (X)",
-    "description": "Insertar un tweet de Twitter en contexto"
+    "title": "Inserción de Twitter (X)",
+    "description": "Inserta un tuit de X en contexto."
   },
   "settings": {
     "configure": [
       {
-        "description": "URL del tweet en cuestión que se incrustará"
+        "attribute": "tweet",
+        "title": "URL del tuit",
+        "description": "URL del tuit que se insertará."
       },
       {
+        "attribute": "data-theme",
         "title": "Tema",
-        "description": "Versión clara u oscura de los tweets de Twitter",
+        "description": "Tema claro u oscuro para los tuits de X.",
         "options": {
-          "light": "Ligera",
+          "light": "Claro",
           "dark": "Oscuro"
         }
       },
       {
-        "title": "Evitar ventanas emergentes al hacer clic",
-        "description": "Esto impide que el usuario haga clic en el tweet y vaya a x.com."
+        "attribute": "no-popups",
+        "title": "Evitar ventana emergente al hacer clic",
+        "description": "Impedir que los usuarios abran el tuit en x.com."
       }
     ]
   }

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Καρτέλα",
+    "description": "Μία μεμονωμένη καρτέλα."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Εικονίδιο καρτέλας"
+      },
+      {
+        "property": "disabled",
+        "title": "Απενεργοποιημένο"
+      },
+      {
+        "property": "label",
+        "title": "Ετικέτα καρτέλας"
+      },
+      {
+        "slot": "",
+        "title": "Περιεχόμενο καρτέλας",
+        "description": "Το περιεχόμενο της καρτέλας."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Μοναδικό ID"
+      },
+      {
+        "property": "flag",
+        "title": "Προαιρετικό κείμενο σήμανσης"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Προαιρετικό εικονίδιο σήμανσης"
+      }
+    ]
+  }
+}

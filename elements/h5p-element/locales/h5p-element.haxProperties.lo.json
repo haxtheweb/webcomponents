@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "ຕົວຫໍ່ H5P ສຳລັບໂຫຼດ ແລະ ນຳສະເໜີໄຟລ໌ .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "ລະຫັດຝັງ iframe ຂອງ H5P"
+      }
+    ]
+  }
+}

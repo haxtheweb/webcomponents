@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Qadam elementi",
+    "description": "Qadamlar roʻyxatining bir qismi boʻlgan element"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sarlavha"
+      }
+    ]
+  }
+}

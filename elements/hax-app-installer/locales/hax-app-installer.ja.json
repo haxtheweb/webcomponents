@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub リポジトリ",
   "anErrorOccurred": "エラーが発生しました",
-  "retry": "再試行"
+  "retry": "再試行",
+  "permissionRequired": "権限が必要です",
+  "passwordRequirements": "パスワードの要件",
+  "requirementLength": "8文字以上",
+  "requirementUppercase": "大文字を1文字",
+  "requirementLowercase": "小文字を1文字",
+  "requirementNumber": "数字を1文字",
+  "requirementSymbol": "記号を1文字"
 }

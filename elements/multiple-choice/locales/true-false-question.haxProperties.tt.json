@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Дөрес / Ялган соравы",
+    "description": "Дөрес яки ялган соравы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Сорау",
+        "description": "Кулланучылар җавап бирәсе сорау."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Дөрес җавап"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тест исеме",
+        "description": "Бу элементны танып белү өчен xAPI нигезендәге мохитләрдә кулланыла торган тест исеме"
+      }
+    ]
+  }
+}

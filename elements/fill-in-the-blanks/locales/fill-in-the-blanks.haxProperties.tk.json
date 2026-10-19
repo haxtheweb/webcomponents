@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Boşluklary dolduryň",
+    "description": "Okuwçylaryň sözlemdäki ýetmeýän sözleri doldurýan baha beriş işjeňligi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Sorag",
+        "description": "Ulanyjylaryň jogap bermeli soragy."
+      },
+      {
+        "property": "statement",
+        "title": "Sözlem",
+        "description": "Sözleri belläň täsirleşmesine öwrüljek sözlem."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Baha beriş formaty",
+        "description": "OER Schema: bu baha beriş üçin baha formaty (meselem, ballar, harp, göterim, tamamlama)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Okuw maksady",
+        "description": "OER Schema: bu baha beriş bilen baglanyşykly okuw maksady."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: bu baha berişiň niýetlenen kursy."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testiň ady",
+        "description": "Bu elementi kesgitlemek üçin xAPI esasly gurşawlarda ulanylýan testiň ady"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Библиография элементы",
+    "description": "Библиографиядәге бер цитатаны күрсәтүче элемент, берничә форматны һәм экспорт вариантларын хуплый."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Төр",
+        "description": "Цитата төре",
+        "options": {
+          "web": "Веб",
+          "journal": "Журнал",
+          "book": "Китап"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Элемент исеме"
+      },
+      {
+        "property": "authors",
+        "title": "Автор(лар)",
+        "description": "Вакыт сызыгындагы вакыйгалар"
+      },
+      {
+        "property": "publisher",
+        "title": "Нәшрият",
+        "description": "Чыганак веб-сайт"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Tūemi Umanga",
+    "description": "He whakahaere takitahi me ōna tūranga hono"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Ingoa Whakahaere"
+      },
+      {
+        "property": "location",
+        "title": "Wāhi"
+      },
+      {
+        "property": "source",
+        "title": "Pūtake"
+      }
+    ]
+  }
+}

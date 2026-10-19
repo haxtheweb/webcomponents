@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "ನೇರವಾಗಿ ಅಥವಾ ದೂರದಿಂದ ಲೋಡ್ ಮಾಡಿದ markdown ವಿಷಯದ ಬ್ಲಾಕ್"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "ಕಚ್ಚಾ markdown"
+      },
+      {
+        "property": "source",
+        "title": "ಮೂಲ",
+        "description": "markdown ಗಾಗಿ ಮೂಲ ಫೈಲ್"
+      }
+    ]
+  }
+}

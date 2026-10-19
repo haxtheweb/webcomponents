@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Àwòrán Ìpìlẹ̀",
+    "description": "Ẹ̀yà àwòrán ìpìlẹ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Orísun",
+        "description": "URL àwòrán."
+      },
+      {
+        "attribute": "alt",
+        "title": "Ọ̀rọ̀ alt",
+        "description": "Ọ̀rọ̀ àfirọ́pò fún ìráyèsí àti SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Gíga",
+        "description": "Gíga ní píksẹ́lì. Fi sílẹ̀ ní òfìfo láti lo ìtóbi àdáyébá."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Ìgbéwọlé àwòrán",
+        "description": "Yan ìgbà tí àwòrán yóò gbé wọlé.",
+        "options": {
+          "lazy": "Gbé wọlé nígbà tí a bá rí i",
+          "auto": "Aládàáṣe"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Àwọn orísun ìdáhùnpadà (srcset)",
+        "description": "To àwọn URL àwòrán àti aṣàpèjúwe (fún àpẹẹrẹ 480w tàbí 2x) kí àwọn aṣàwárí lè yan ìtóbi tó dára jùlọ fún ojú-iboju. A tọ́jú rẹ̀ bí àbùdá srcset ìlànà."
+      }
+    ]
+  }
+}

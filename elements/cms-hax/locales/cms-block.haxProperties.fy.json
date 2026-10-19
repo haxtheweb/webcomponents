@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-blok",
+    "description": "CMS-blok wurdt op de backend werjûn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Module",
+        "description": "Module om út ús CMS te laden"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta fan it blok om út ús CMS te laden"
+      }
+    ]
+  }
+}

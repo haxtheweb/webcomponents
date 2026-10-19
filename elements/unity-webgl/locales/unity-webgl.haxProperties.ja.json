@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unityプレーヤー",
+    "description": "Unity WebGLプレーヤー。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ターゲット",
+        "description": "ゲームビルドへのパス。"
+      },
+      {
+        "property": "compression",
+        "title": "圧縮方式",
+        "description": "ゲームアセットの圧縮ファイルの拡張子。"
+      },
+      {
+        "property": "streamingurl",
+        "title": "ストリーミングURL",
+        "description": "ストリーミングアセットのURL。"
+      },
+      {
+        "property": "companyname",
+        "title": "会社名",
+        "description": "会社名。"
+      },
+      {
+        "property": "productname",
+        "title": "製品名",
+        "description": "ゲームのタイトル。"
+      },
+      {
+        "property": "productversion",
+        "title": "製品バージョン",
+        "description": "リリースバージョン。"
+      },
+      {
+        "property": "width",
+        "title": "キャンバスの幅",
+        "description": "キャンバスのCSSの幅（例: px や em）。"
+      },
+      {
+        "property": "height",
+        "title": "キャンバスの高さ",
+        "description": "キャンバスのCSSの高さ（例: px や em）。"
+      },
+      {
+        "property": "background",
+        "title": "キャンバスの背景",
+        "description": "キャンバスのCSSの背景。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Ingxenye Yokufunda",
+    "description": "Ikhadi labafundisi lokukhuluma ngezindlela zokufundisa namasu okufundisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Uhlobo",
+        "description": "Uhlobo lwekhadi okufanele lisetshenziswe."
+      },
+      {
+        "property": "subtitle",
+        "title": "Isihlokwana",
+        "description": "Isihlokwana sekhadi."
+      },
+      {
+        "property": "url",
+        "title": "Isixhumanisi",
+        "description": "Isixhumanisi esingaphoqelekile sekhadi (Isixhumanisi asitholakali Ezinhlosweni Zokufunda)."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Setha Isihloko, lokhu kweqa isihloko esisekelwe ohlotsheni"
+      },
+      {
+        "property": "icon",
+        "title": "Isithonjana",
+        "description": "Setha isithonjana, lokhu kweqa isithonjana esisekelwe ohlotsheni"
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala wokugcizelela",
+        "description": "Setha umbala wokugcizelela, lokhu kweqa umbala osekelwe ohlotsheni"
+      },
+      {
+        "slot": "",
+        "title": "Okuqukethwe"
+      }
+    ]
+  }
+}

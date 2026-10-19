@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "카드",
+    "description": "선택적 강조 스타일이 적용된 카드."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "제목",
+        "description": "카드의 제목."
+      },
+      {
+        "slot": "subheading",
+        "title": "부제목",
+        "description": "카드의 선택적 부제목."
+      },
+      {
+        "slot": "content",
+        "title": "콘텐츠",
+        "description": "카드 콘텐츠."
+      },
+      {
+        "slot": "footer",
+        "title": "바닥글",
+        "description": "카드의 선택적 푸터."
+      },
+      {
+        "property": "imageSrc",
+        "title": "이미지",
+        "description": "선택적 이미지"
+      },
+      {
+        "property": "imageAlt",
+        "title": "이미지 대체 텍스트",
+        "description": "화면 낭독기를 위해 이미지를 설명하는 대체 텍스트입니다. 이미지가 순전히 장식용인 경우에만 비워 두세요."
+      },
+      {
+        "property": "imageAlign",
+        "title": "이미지 정렬",
+        "description": "이미지 가로 정렬",
+        "options": {
+          "left": "왼쪽",
+          "center": "가운데",
+          "right": "오른쪽"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "이미지 세로 정렬",
+        "description": "이미지 세로 정렬",
+        "options": {
+          "top": "위쪽",
+          "center": "가운데",
+          "bottom": "아래쪽"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "선택적 강조 색상입니다."
+      },
+      {
+        "property": "dark",
+        "title": "어두운 테마",
+        "description": "다크 테마 사용"
+      },
+      {
+        "property": "horizontal",
+        "title": "가로",
+        "description": "가로 방향으로 표시할까요?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "제목 강조",
+        "description": "제목에 강조 색상을 적용할까요?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "배경 강조",
+        "description": "카드 배경에 강조 색상을 적용할까요?"
+      },
+      {
+        "property": "noBorder",
+        "title": "테두리 강조 없음",
+        "description": "테두리 강조를 제거할까요?"
+      },
+      {
+        "property": "flat",
+        "title": "평면",
+        "description": "상자 그림자를 제거할까요?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "모서리",
+        "description": "카드 모서리의 콘텐츠."
+      }
+    ]
+  }
+}

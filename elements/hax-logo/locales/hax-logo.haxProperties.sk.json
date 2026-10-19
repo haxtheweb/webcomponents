@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX nápis",
+    "description": "Prvok loga HAX, samozrejme ako prvok podporujúci HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Veľkosť umiestneného loga HAX",
+        "options": {
+          "mini": "Mini",
+          "small": "Malá",
+          "normal": "Normálna",
+          "large": "Veľká"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Či sa má logo previesť na veľké písmená"
+      }
+    ]
+  }
+}

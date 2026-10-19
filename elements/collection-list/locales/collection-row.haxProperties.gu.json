@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "સંગ્રહ પંક્તિ",
+    "description": "સંગ્રહ સૂચિની અંદર વાપરવા માટે પંક્તિ-શૈલીની આઇટમ, જેમાં લખાણ, લિંક, આઇકન, ટૅગ્સ અને વૈકલ્પિક છબી હોય છે."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "લિંક",
+        "description": "આ પંક્તિ માટે ગંતવ્ય URL."
+      },
+      {
+        "property": "image",
+        "title": "છબી",
+        "description": "પંક્તિ માટેની છબી."
+      },
+      {
+        "property": "alt",
+        "title": "વૈકલ્પિક લખાણ",
+        "description": "છબીનું વર્ણન કરતું વૈકલ્પિક લખાણ."
+      },
+      {
+        "property": "line1",
+        "title": "પંક્તિ 1",
+        "description": "લખાણની પહેલી પંક્તિ."
+      },
+      {
+        "property": "line2",
+        "title": "પંક્તિ 2",
+        "description": "લખાણની બીજી પંક્તિ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "આઇકન",
+        "description": "પંક્તિને દર્શાવતું આઇકન."
+      },
+      {
+        "property": "saturate",
+        "title": "સંતૃપ્તિ અસર",
+        "description": "વપરાશકર્તા ફોકસ કરે ત્યારે છબીની સંતૃપ્તિ બદલો."
+      },
+      {
+        "property": "tags",
+        "title": "ટૅગ્સ",
+        "description": "અલ્પવિરામથી અલગ કરેલી ટૅગ્સની સૂચિ."
+      },
+      {
+        "property": "accentColor",
+        "title": "રંગ",
+        "description": "આઇકન અને ટૅગ્સ માટે વપરાતો રંગ."
+      }
+    ]
+  }
+}

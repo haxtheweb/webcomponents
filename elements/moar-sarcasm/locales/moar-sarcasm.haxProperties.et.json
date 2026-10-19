@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkasm",
+    "description": "Esitab teksti trollivalt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Tekst",
+        "description": "Tekst, mis muudetakse sarkastiliseks"
+      }
+    ]
+  }
+}

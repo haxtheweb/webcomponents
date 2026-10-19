@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Sagalee",
+    "description": "Kun madda kamiyyuu irraa viidiyoo haala baay'ee dhaqqabamaa ta'een dhiyeessuu danda'a."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Madda",
+        "description": "URL miidiyaa kanaa."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Mata duree",
+        "description": "Mata duree salphaa viidiyoo jalaaf"
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu calaqqee",
+        "description": "Halluu cimsaa taphataaf fili."
+      },
+      {
+        "property": "track",
+        "title": "Ibsa barreeffamaa",
+        "description": "URL faayilii ibsa barreeffamaa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Suuraa xiqqaa",
+        "description": "Dirqama miti. URL suuraa xiqqaa/poostarii."
+      },
+      {
+        "property": "learningMode",
+        "title": "Haalata barumsaa dandeessisi",
+        "description": "Dafanii fuuldura deemuu fi duubatti deebi'uu dhorka."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Qabduu YouTube irratti banuu balleessi",
+        "description": "Qabduu viidiyoo YouTube irratti banuu balleessa."
+      },
+      {
+        "property": "linkable",
+        "title": "Liinkii qoodii dabaluu?",
+        "description": "Viidiyoo qooduuf liinkii kenna."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS fayyadamuu fi dhiisuu agarsiisa.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Taphachiisa duubaa hayyami",
+        "description": "Viidiyoowwan yeroo taabiin xiyyeeffannaa dhabu ofumaan dhaabatu / taphatu; kun taabiin xiyyeeffannaa utuu hin qabaatin viidiyoon akka taphatu dandeessisa"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Teemii dukkanaa barreeffama dubbii",
+        "description": "Barreeffama dubbiitiif teemii dukkanaa dandeessisi."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Walqunnamtii Dhorki",
+        "description": "Haalata walqunnamtii barreeffama dubbii cuqaasamaa taasisu dhorki."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Mallattoo yeroo dhoksi",
+        "description": "Barreeffama dubbii irratti mallattoo yeroo dhoksi."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Barreeffama Dubbii Dhoksi",
+        "description": "Durtiidhaan barreeffama dubbii dhoksi."
+      },
+      {
+        "property": "lang",
+        "title": "Afaan",
+        "description": "Afaan miidiyaa."
+      }
+    ]
+  }
+}

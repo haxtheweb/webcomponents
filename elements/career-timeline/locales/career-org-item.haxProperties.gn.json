@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Tembiapo Rape Mba'e",
+    "description": "Peteĩ atyguasu ha hembiapo ojoajúva"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Atyguasu Réra"
+      },
+      {
+        "property": "location",
+        "title": "Tenda"
+      },
+      {
+        "property": "source",
+        "title": "Reñoiha"
+      }
+    ]
+  }
+}

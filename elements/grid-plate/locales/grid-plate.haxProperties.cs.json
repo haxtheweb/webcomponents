@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Rozvržení do sloupců",
+    "description": "Rozvržení materiálu do jednoduchých sloupců"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Rozvržení sloupců",
+        "description": "Styl prezentace těchto položek (na malých obrazovkách se může změnit)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Vypnout responzivitu",
+        "description": "Zaškrtnutím zachováte sloupce na větších obrazovkách, na nejmenších se budou stále skládat pod sebe"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Vnitřní okraj položek",
+        "description": "Vnitřní okraj uvnitř každé položky"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Okraje položek",
+        "description": "Okraj mezi položkami"
+      }
+    ]
+  }
+}

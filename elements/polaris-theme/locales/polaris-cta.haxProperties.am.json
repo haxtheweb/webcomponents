@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "ገጽታ ያለው የPolaris ለድርጊት ጥሪ አዝራር አሳይ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "የአዝራር ጽሑፍ",
+        "description": "በለድርጊት ጥሪ አዝራሩ ውስጥ የሚታይ ጽሑፍ።"
+      },
+      {
+        "property": "link",
+        "title": "አገናኝ",
+        "description": "ለአዝራሩ የመድረሻ URL።"
+      },
+      {
+        "property": "type",
+        "title": "ልዩነት",
+        "description": "ምስላዊ የቅጥ ልዩነት።",
+        "options": {
+          "primary": "ዋና",
+          "tinted": "ቅልም ያለው",
+          "light": "ብሩህ"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "የዝርዝር መስመር ቅጥ",
+        "description": "የዝርዝር መስመር አያያዝን አንቃ።"
+      },
+      {
+        "property": "filled",
+        "title": "የተሞላ ቅጥ",
+        "description": "የተሞላ አያያዝን አንቃ።"
+      }
+    ]
+  }
+}

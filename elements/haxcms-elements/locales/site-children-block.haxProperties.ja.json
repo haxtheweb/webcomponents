@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: 子ブロック",
+    "description": "現在のページの子を表示する動的ブロック"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "動的な方法",
+        "description": "この要素を基準に子をどのように算出するか",
+        "options": {
+          "active": "アクティブな子",
+          "parent": "親の子",
+          "ancestor": "最上位の祖先からのすべての子"
+        }
+      },
+      {
+        "property": "start",
+        "title": "開始レベル"
+      },
+      {
+        "property": "end",
+        "title": "終了レベル"
+      }
+    ]
+  }
+}

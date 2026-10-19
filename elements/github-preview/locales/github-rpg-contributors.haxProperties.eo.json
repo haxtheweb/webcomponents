@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Listo de GitHub-kontribuantoj",
+    "description": "Montrataj kiel RPG-roluloj per la GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizaĵo",
+        "description": "Nomo de organizaĵo el github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Deponejo",
+        "description": "Nomo de deponejo el github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limo",
+        "description": "Limigi la nombron de montrataj kontribuantoj."
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "మూలం",
+        "description": "ఈ వనరు కోసం URL."
+      }
+    ]
+  }
+}

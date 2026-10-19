@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Incwadi yaManqaku",
+    "description": "Incwadi yamanqaku engenantloko exhasa ii-backend ezininzi ezineerubrikhi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "Uhlobo lomthombo wedatha (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Indawo ye-URL (JSON)",
+          "json": "Iqhekeza ledatha le-JSON",
+          "filesystem": "Inkqubo yeefayile"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Idatha yoMthombo",
+        "description": "I-URL okanye idatha ye-JSON yencwadi yamanqaku."
+      },
+      {
+        "property": "forCourse",
+        "title": "Isalathiso seKhosi",
+        "description": "Isichongi sekhosi esikhutshwa njenge-oer:forCourse kwisixhobo ngasinye soVavanyo."
+      }
+    ]
+  }
+}

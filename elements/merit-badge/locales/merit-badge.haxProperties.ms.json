@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Lencana Merit",
+    "description": "Lencana visual untuk menyampaikan pencapaian sesuatu kemahiran."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Tajuk Lencana",
+        "description": "Tajuk yang dipaparkan pada lencana."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Imej Lencana",
+        "description": "URL imej untuk lencana."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Butiran Lencana",
+        "description": "Butiran tentang lencana."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hiperpautan",
+        "description": "Pautan yang dikaitkan dengan lencana."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Kemahiran Lencana",
+        "description": "Kemahiran yang dipaparkan pada lencana."
+      },
+      {
+        "property": "skill",
+        "title": "Kemahiran (OER Schema)",
+        "description": "OER Schema: kemahiran yang dipelajari dan diperoleh dengan melengkapkan objektif pembelajaran ini."
+      }
+    ]
+  }
+}

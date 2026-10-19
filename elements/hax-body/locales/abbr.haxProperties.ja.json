@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "略語",
+    "description": "正式名称のツールチップ付きの略語。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "テキスト",
+        "description": "表示される略語のテキスト。"
+      },
+      {
+        "attribute": "title",
+        "title": "語句",
+        "description": "ホバー時に表示される正式名称。"
+      }
+    ]
+  }
+}

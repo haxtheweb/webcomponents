@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Gulu la Tsegulani ndi Tsekani",
+    "description": "Gulu la zinthu zotsegula ndi kutseka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Tsegulani chimodzi chokha",
+        "description": "Chinthu chimodzi chokha chingatsegulidwe."
+      },
+      {
+        "slot": "",
+        "title": "Zinthu Zotseka",
+        "description": "Zinthu zotseka."
+      }
+    ]
+  }
+}

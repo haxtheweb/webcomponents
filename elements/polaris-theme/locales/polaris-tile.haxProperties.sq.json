@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Pllakë Polaris",
+    "description": "Shfaq një pllakë Polaris me titull, tekst mbështetës opsional dhe lidhje opsionale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Teksti kryesor",
+        "description": "Teksti kryesor i pllakës."
+      },
+      {
+        "property": "line2",
+        "title": "Teksti dytësor",
+        "description": "Tekst mbështetës opsional."
+      },
+      {
+        "property": "type",
+        "title": "Stili i pllakës",
+        "description": "Stili vizual i paracaktuar i pllakës.",
+        "options": {
+          "1": "Stili 1",
+          "2": "Stili 2",
+          "3": "Stili 3",
+          "4": "Stili 4",
+          "5": "Stili 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Imazhi i sfondit",
+        "description": "URL-ja e imazhit të sfondit e përdorur nga stilet e pllakave që mbështesin imazhe."
+      },
+      {
+        "property": "link",
+        "title": "Lidhja",
+        "description": "URL opsionale e destinacionit për veprimin e pllakës."
+      }
+    ]
+  }
+}

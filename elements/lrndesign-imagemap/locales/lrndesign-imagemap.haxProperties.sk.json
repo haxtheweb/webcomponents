@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Obrázková mapa",
+    "description": "Prístupná obrázková mapa s interaktívnymi aktívnymi bodmi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Označenie",
+        "description": "Označenie obrázkovej mapy."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Podrobnosti aktívnych bodov",
+        "description": "Interaktívne aktívne body na obrázkovej mape."
+      }
+    ]
+  }
+}

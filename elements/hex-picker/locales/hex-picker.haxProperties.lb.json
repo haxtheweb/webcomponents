@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex-Picker",
+    "description": "Hexcode-Faarfwieler"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Wäert",
+        "description": "Standard-Hexwäert"
+      },
+      {
+        "property": "disabled",
+        "title": "Desaktivéiert",
+        "description": "Textfeld desaktivéieren"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Grouss Affichage",
+        "description": "Faarf a grousser Affichage uweisen"
+      }
+    ]
+  }
+}

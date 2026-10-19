@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ichki audio",
+    "description": "Sahifa kontentini toʻldirish uchun audioni matn ichida ijro etish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manba",
+        "description": "MP3 fayli yoki URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Kartaning urgʻu rangi."
+      },
+      {
+        "property": "shiny",
+        "title": "Yaltiroq",
+        "description": "Kulrang oʻrniga ochroq urgʻu fonidan foydalanish."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Qorongʻi",
+        "description": "Qorongʻi rejimdan foydalanish."
+      }
+    ]
+  }
+}

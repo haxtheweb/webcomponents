@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Mea hōʻike MIDI",
+    "description": "E hoʻokani i ka MIDI ma kona pōʻaiapili me ka hōʻike kiʻi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kumu",
+        "description": "URL faila e hoʻokani ai."
+      },
+      {
+        "property": "visualizer",
+        "title": "Hōʻike kiʻi",
+        "description": "Kaila hōʻike kiʻi no ka faila mele.",
+        "options": {
+          "staff": "Kōkua mele",
+          "piano-roll": "ʻŌwili piano",
+          "waterfall": "Piano + wailele"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Hūnā i ka wailele",
+        "description": "E hūnā i nā leo wailele ma ka hōʻike piano."
+      }
+    ]
+  }
+}

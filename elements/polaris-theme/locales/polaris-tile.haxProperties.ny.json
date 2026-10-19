@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Tayilo ya Polaris",
+    "description": "Onetsani tayilo ya Polaris yokhala ndi mutu, mawu othandizira osankha, ndi ulalo wosankha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Mawu akuluakulu",
+        "description": "Mawu akuluakulu a tayilo."
+      },
+      {
+        "property": "line2",
+        "title": "Mawu achiwiri",
+        "description": "Mawu othandizira osankha."
+      },
+      {
+        "property": "type",
+        "title": "Kalembedwe ka tayilo",
+        "description": "Kalembedwe kokonzedweratu ka tayilo.",
+        "options": {
+          "1": "Kalembedwe 1",
+          "2": "Kalembedwe 2",
+          "3": "Kalembedwe 3",
+          "4": "Kalembedwe 4",
+          "5": "Kalembedwe 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Chithunzi chakumbuyo",
+        "description": "URL ya chithunzi chakumbuyo yogwiritsidwa ntchito ndi makalembedwe a tayilo omwe amalandira zithunzi."
+      },
+      {
+        "property": "link",
+        "title": "Ulalo",
+        "description": "URL yosankha yopitako ya ntchito ya tayilo."
+      }
+    ]
+  }
+}

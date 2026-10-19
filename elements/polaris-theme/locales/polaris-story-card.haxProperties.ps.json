@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "د Polaris کیسې کارت",
+    "description": "د Polaris کیسې کارت له شالید انځور، د ستن لیبل او سرلیک متن سره وښایئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "د شالید انځور",
+        "description": "د انځور URL چې د کارت د شالید په توګه ښودل کېږي."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "د شالید اندازه",
+        "description": "د شالید انځور کارت څنګه ډکوي (CSS background-size).",
+        "options": {
+          "cover": "پوښل (cover)",
+          "contain": "ځایول (contain)",
+          "auto": "اتومات (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "د شالید نښلول",
+        "description": "د سکرول پر مهال د شالید انځور څنګه چلند کوي (CSS background-attachment).",
+        "options": {
+          "scroll": "سکرول (scroll)",
+          "fixed": "ثابت (fixed)",
+          "local": "ځایي (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "د ستن لیبل",
+        "description": "لنډ لوی توري لیبل چې د کارت په سر کې ښودل کېږي. د پټولو لپاره یې تش پرېږدئ."
+      },
+      {
+        "property": "label",
+        "title": "د کارت متن",
+        "description": "لومړنی متن چې په لاندیني تخته کې ښودل کېږي."
+      },
+      {
+        "property": "link",
+        "title": "لینک",
+        "description": "اختیاري منزل URL چې ټول کارت رانغاړي."
+      }
+    ]
+  }
+}

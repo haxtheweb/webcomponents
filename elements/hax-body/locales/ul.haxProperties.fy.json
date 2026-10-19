@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Opsommingslist",
+    "description": "In opsommingslist meitsje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Opsommingsstyl",
+        "description": "Styl brûkt foar opsommingstekens fan net-oardere listen.",
+        "options": {
+          "": "Standert (fjouwerkant)",
+          "list-disc": "Skiif",
+          "list-circle": "Sirkel",
+          "list-square": "Fjouwerkant"
+        }
+      }
+    ]
+  }
+}

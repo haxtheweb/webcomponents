@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Tehtäväpaperin lataus",
+    "description": "Painike ladattavissa olevien tiedostojen näyttämiseen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Latauksen otsikko."
+      },
+      {
+        "property": "link",
+        "title": "Linkki",
+        "description": "Latauksen linkki."
+      }
+    ]
+  }
+}

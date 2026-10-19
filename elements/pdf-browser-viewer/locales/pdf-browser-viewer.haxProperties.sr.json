@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF прегледач у претраживачу",
+    "description": "Уградите PDF датотеку у страницу са опционалним распоредом картице и дугметом за преузимање."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF-а",
+        "description": "Локација PDF датотеке."
+      },
+      {
+        "property": "heading",
+        "title": "Наслов",
+        "description": "Текст наслова картице."
+      },
+      {
+        "property": "card",
+        "title": "Распоред картице",
+        "description": "Прикажи PDF у картици са дугметом за преузимање."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Ознака преузимања",
+        "description": "Ознака дугмета за преузимање."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Порука о неподржаности",
+        "description": "Порука када претраживач не може да прикаже PDF датотеке."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Порука везе о неподржаности",
+        "description": "Текст везе када претраживач не може да прикаже PDF датотеке."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина PDF прегледача."
+      },
+      {
+        "property": "height",
+        "title": "Висина",
+        "description": "Висина PDF прегледача."
+      }
+    ]
+  }
+}

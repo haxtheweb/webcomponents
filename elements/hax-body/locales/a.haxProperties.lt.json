@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Paprasta nuoroda",
+    "description": "Paprastas nuorodos elementas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Nuoroda",
+        "description": "Paskirties URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Tekstas",
+        "description": "Matomas nuorodos tekstas."
+      },
+      {
+        "attribute": "target",
+        "title": "Paskirtis",
+        "description": "Kur atverti nuorodą.",
+        "options": {
+          "": "Tas pats langas",
+          "_blank": "Naujas langas – _blank",
+          "_top": "Viršutinis langas – _top",
+          "_parent": "Tėvinis langas – _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Pavadinimo tekstas",
+        "description": "Patariamasis pavadinimas prieinamumui ir SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Ryšys su paskirties vieta (saugumas / SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

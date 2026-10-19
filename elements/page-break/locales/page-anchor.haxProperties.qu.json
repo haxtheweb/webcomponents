@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rapi ancla",
+    "description": "Rapipi mediapa sapanka chimpunkunaman t'inki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Rapipi maypi",
+        "description": "Kay ancla rikuchisqan ID utaq pukyu."
+      },
+      {
+        "property": "value",
+        "title": "Ukhu t'inki chanin",
+        "description": "Ukhu t'inki chanin (kayhina pacha chimpu utaq diapositiva ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Sitio entidad",
+        "description": "Tupaq yuyaykuna imayna rikukunanta kamachinapaq akllanalla sitio entidad."
+      }
+    ]
+  }
+}

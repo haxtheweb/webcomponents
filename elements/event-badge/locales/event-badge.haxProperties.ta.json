@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "நிகழ்வு பேட்ஜ்",
+    "description": "நிகழ்வு பேட்ஜ் கூறு."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV படம்",
+        "description": "TV-யில் காட்டப்படும் படம்."
+      },
+      {
+        "property": "logo",
+        "title": "லோகோ",
+        "description": "பேட்ஜின் மூலையில் காட்டப்படும் லோகோ."
+      },
+      {
+        "property": "title",
+        "title": "தலைப்பு",
+        "description": "பேட்ஜின் மேலே காட்டப்படும் தலைப்பு."
+      },
+      {
+        "property": "name",
+        "title": "பெயர்",
+        "description": "பேட்ஜில் காட்டப்படும் பெயர்."
+      },
+      {
+        "property": "position",
+        "title": "பதவி",
+        "description": "நபரின் பங்கு அல்லது பதவி."
+      },
+      {
+        "property": "organization",
+        "title": "நிறுவனம்",
+        "description": "நபர் பணிபுரியும் நிறுவனம்."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV நிறம்",
+        "description": "TV-க்கான நிறத்தைத் தேர்ந்தெடுக்கவும்."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "முதன்மைப் பின்னணி அல்லது உரை நிறம்."
+      },
+      {
+        "property": "knobcolor",
+        "title": "குமிழ் நிறம்",
+        "description": "TV குமிழ்களின் நிறம்."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "செப்பியா",
+        "description": "செப்பியா விளைவைப் பயன்படுத்தவும்."
+      },
+      {
+        "property": "blackwhite",
+        "title": "கருப்பு வெள்ளை",
+        "description": "கருப்பு-வெள்ளை விளைவைப் பயன்படுத்தவும்."
+      }
+    ]
+  }
+}

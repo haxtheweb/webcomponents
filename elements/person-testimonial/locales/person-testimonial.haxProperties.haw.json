@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ʻŌlelo me ke Kiʻi",
+    "description": "He ʻōlelo me ke kaila a me ke kiʻi koho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Kiʻi",
+        "description": "E hoʻohui i kekahi kiʻi i ka hōʻike."
+      },
+      {
+        "property": "name",
+        "title": "Inoa Piha",
+        "description": "Inoa o ke kanaka e hāʻawi ana i ka hōʻike."
+      },
+      {
+        "property": "position",
+        "title": "Kūlana a Poʻo Inoa ʻOihana paha",
+        "description": "Kūlana a poʻo inoa ʻoihana paha o ke kanaka."
+      },
+      {
+        "slot": "",
+        "title": "ʻŌlelo",
+        "description": "ʻŌlelo mai ka mea nāna ka hōʻike."
+      }
+    ]
+  }
+}

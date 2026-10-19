@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ûnderside-blok",
+    "description": "Dynamysk blok om ûndersiden fan de hjoeddeiske side te toanen"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dynamyske metoade",
+        "description": "Hoe't de ûndersiden relatyf oan dit elemint berekkene wurde",
+        "options": {
+          "active": "Aktive ûndersiden",
+          "parent": "Undersiden fan boppelizzende side",
+          "ancestor": "Alle ûndersiden fan de heechste foarâlder"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Begjinnivo"
+      },
+      {
+        "property": "end",
+        "title": "Einnivo"
+      }
+    ]
+  }
+}

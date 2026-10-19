@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Boka Rinovhurika Nekuvharika",
+    "description": "Boka rezvinhu zvinovhurika nekuvharika."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Vhura chimwe chete",
+        "description": "Chinhu chimwe chete chete ndicho chinogona kuvhurwa."
+      },
+      {
+        "slot": "",
+        "title": "Zvinhu Zvinovharika",
+        "description": "Zvinhu zvinovharika."
+      }
+    ]
+  }
+}

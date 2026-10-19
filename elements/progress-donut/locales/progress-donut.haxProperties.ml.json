@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "പുരോഗതി ഡോനട്ട്",
+    "description": "പുരോഗതി ഡോനട്ട്"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "എലമെന്റിന്റെ തലക്കെട്ട്"
+      },
+      {
+        "property": "desc",
+        "title": "വിവരണം",
+        "description": "ആക്സസ് ചെയ്യാവുന്ന ദീർഘ വിവരണം"
+      },
+      {
+        "property": "imageSrc",
+        "title": "ചിത്ര ഉറവിടം",
+        "description": "ഡോനട്ടിനുള്ളിലെ ചിത്രത്തിന്റെ ഉറവിടം."
+      },
+      {
+        "property": "imageAlt",
+        "title": "ചിത്ര Alt ടെക്സ്റ്റ്",
+        "description": "ചിത്രത്തിനുള്ള Alt ടെക്സ്റ്റ്."
+      },
+      {
+        "property": "animated",
+        "title": "ആനിമേറ്റഡ്",
+        "description": "ആദ്യ ലോഡിൽ പുരോഗതി ആനിമേറ്റ് ചെയ്യണോ എന്ന്"
+      },
+      {
+        "property": "complete",
+        "title": "പൂർത്തിയായി",
+        "description": "പൂർത്തിയായ മൂല്യങ്ങളുടെ ഒരു അറേ."
+      },
+      {
+        "property": "total",
+        "title": "ആകെ",
+        "description": "എല്ലാ ഇനങ്ങളും പൂർത്തിയാകുമ്പോഴുള്ള ആകെ."
+      },
+      {
+        "property": "startAngle",
+        "title": "ആരംഭ കോൺ",
+        "description": "പുരോഗതി ആരംഭിക്കുന്ന ഡോനട്ട് കോൺ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Trình phát tài liệu web component"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Ẩn cửa sổ",
+        "description": "Ẩn cửa sổ đầu ra, hữu ích khi chỉ dùng terminal"
+      }
+    ]
+  }
+}

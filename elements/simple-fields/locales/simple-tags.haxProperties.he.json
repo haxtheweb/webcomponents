@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "תגיות",
+    "description": "רשימת תגיות פשוטה להצגה בעמוד."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "תגיות",
+        "description": "רשימת תגיות מופרדות בפסיקים."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "צבע הדגשה אוטומטי",
+        "description": "הגדרת צבע ההדגשה באופן אוטומטי לפי התווית."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע",
+        "description": "צבע התגיות."
+      }
+    ]
+  }
+}

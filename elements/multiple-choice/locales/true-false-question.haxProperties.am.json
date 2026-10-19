@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "እውነት / ሐሰት ጥያቄ",
+    "description": "የእውነት ሐሰት ጥያቄ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ጥያቄ",
+        "description": "ተጠቃሚዎች የሚመልሱት ጥያቄ።"
+      },
+      {
+        "property": "_tfanswer",
+        "title": "ትክክለኛ መልስ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "የፈተናው ስም",
+        "description": "ይህን ንጥል ለመለየት በxAPI የሚመሩ አካባቢዎች ውስጥ ጥቅም ላይ የሚውል የፈተና ስም"
+      }
+    ]
+  }
+}

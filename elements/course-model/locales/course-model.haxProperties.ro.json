@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model de curs",
+    "description": "Machetă interactivă pentru conceptele cursului, cu detalii, animație și verificări ale cunoștințelor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titlu"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Zona de informații"
+      },
+      {
+        "title": "Zona de detalii"
+      },
+      {
+        "title": "Zona de animație"
+      },
+      {
+        "title": "Zona de verificare a cunoștințelor"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Zona siglei"
+      }
+    ]
+  }
+}

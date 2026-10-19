@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Reprodutor 3D",
+    "description": "Un reprodutor de ficheiros 3D / realidade aumentada."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orixe",
+        "description": "O URL deste ficheiro AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Posición X do elemento en AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Posición Y do elemento en AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Posición Z do elemento en AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Cor do ceo",
+        "description": "Selecciona a cor do ceo na escena."
+      }
+    ]
+  }
+}

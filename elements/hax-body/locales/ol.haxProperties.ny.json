@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Mndandanda wa manambala",
+    "description": "Pangani mndandanda wa manambala."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Kalembedwe ka manambala",
+        "description": "Kalembedwe kogwiritsidwa ntchito pa manambala a mndandanda wotsatana.",
+        "options": {
+          "": "Chokhazikika (decimal)",
+          "list-decimal-leading-zero": "Decimal yokhala ndi ziro patsogolo (01, 02, 03)",
+          "list-lower-alpha": "Zilembo zazing'ono (a, b, c)",
+          "list-upper-alpha": "Zilembo zazikulu (A, B, C)",
+          "list-lower-roman": "Ziroma zazing'ono (i, ii, iii)",
+          "list-upper-roman": "Ziroma zazikulu (I, II, III)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Карт",
+    "description": "Нэмэлт онцлох загвартай карт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Гарчиг",
+        "description": "Картын гарчиг."
+      },
+      {
+        "slot": "subheading",
+        "title": "Дэд гарчиг",
+        "description": "Картын нэмэлт дэд гарчиг."
+      },
+      {
+        "slot": "content",
+        "title": "Агуулга",
+        "description": "Картын агуулга."
+      },
+      {
+        "slot": "footer",
+        "title": "Хөл хэсэг",
+        "description": "Картын нэмэлт хөл хэсэг."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Зураг",
+        "description": "Нэмэлт зураг"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Зургийн alt текст",
+        "description": "Дэлгэц уншигчид зориулж зургийг тайлбарласан орлуулах текст. Зөвхөн зураг цэвэр чимэглэлийн зориулалттай бол хоосон үлдээнэ үү."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Зургийн хэвтээ тэгшилгээ",
+        "options": {
+          "left": "зүүн",
+          "center": "төв",
+          "right": "баруун"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Зургийн босоо тэгшилгээ",
+        "options": {
+          "top": "дээд",
+          "center": "төв",
+          "bottom": "доод"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Нэмэлт онцлох өнгө."
+      },
+      {
+        "property": "dark",
+        "title": "Бараан загвар",
+        "description": "Бараан загварыг идэвхжүүлэх"
+      },
+      {
+        "property": "horizontal",
+        "title": "Хэвтээ",
+        "description": "Хэвтээ чиглэлтэй юу?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Гарчгийн онцлох өнгө",
+        "description": "Гарчигт онцлох өнгө хэрэглэх үү?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Дэвсгэрийн онцлох өнгө",
+        "description": "Картын дэвсгэрт онцлох өнгө хэрэглэх үү?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Хүрээний онцлолгүй",
+        "description": "Хүрээний онцлолыг хасах уу?"
+      },
+      {
+        "property": "flat",
+        "title": "Хавтгай",
+        "description": "Сүүдрийг хасах уу?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Булан",
+        "description": "Картын булангийн агуулга."
+      }
+    ]
+  }
+}

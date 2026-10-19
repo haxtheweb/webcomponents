@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "تعليقات Disqus",
+    "description": "تكامل مع خدمة التعليقات Disqus على الويب"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "الاسم المختصر",
+        "description": "الاسم المختصر للموقع على Disqus"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Lærukomponentur",
+    "description": "Eitt kort, ið lærarar kunnu nýta til at greiða frá námsfrøði og undirvísingarleistum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Slag",
+        "description": "Slagið av korti, ið skal nýtast."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undirheiti",
+        "description": "Undirheitið á kortinum."
+      },
+      {
+        "property": "url",
+        "title": "Leinki",
+        "description": "Eitt valfrítt leinki til kortið (leinki ikki tøkt fyri lærumál)."
+      },
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Set heiti, hetta skrivar yvir heitið grundað á slag"
+      },
+      {
+        "property": "icon",
+        "title": "Ímynd",
+        "description": "Set ikon, hetta skrivar yvir ikonið grundað á slag"
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Set dámlit, hetta skrivar yvir litin grundaðan á slag"
+      },
+      {
+        "slot": "",
+        "title": "Innihald"
+      }
+    ]
+  }
+}

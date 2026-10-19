@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Àkíyèsí Ìdádúró",
+    "description": "Ìfiránṣẹ́ láti kìlọ̀ fún àwọn òǹkàwé nípa àwọn ìtọ́sọ́nà pàtó."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Tẹ àkọlé fún àkíyèsí ìdádúró."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Tẹ URL ìta kan."
+      },
+      {
+        "property": "status",
+        "title": "Ipò",
+        "description": "Ṣíṣètò ipò ń yí àwọn àwọ̀ àti àmì padà láti bá a mu",
+        "options": {
+          "stop": "Dúró",
+          "warning": "Ìkìlọ̀",
+          "success": "Ìfìdímúlẹ̀",
+          "info": "Ìkéde"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Ọ̀rọ̀ Àkíyèsí",
+        "description": "Ọ̀rọ̀ fún àkíyèsí ìdádúró."
+      }
+    ]
+  }
+}

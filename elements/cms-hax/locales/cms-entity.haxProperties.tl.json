@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS Entity",
+    "description": "CMS entity na nire-render sa backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Uri",
+        "description": "uri mula sa aming CMS",
+        "options": {
+          "node": "Node",
+          "user": "User",
+          "file": "File"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id mula sa aming CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Display mode",
+        "description": "display mode mula sa aming CMS"
+      }
+    ]
+  }
+}

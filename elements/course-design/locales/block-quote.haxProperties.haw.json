@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Poloka ʻŌlelo",
+    "description": "He poloka ʻōlelo ʻōlelo ʻia me ke kaila."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Kuhikuhina",
+        "description": "Kikokikona kuhikuhina."
+      },
+      {
+        "property": "alt",
+        "title": "Pani",
+        "description": "Kikokikona pani no ke kiʻi."
+      },
+      {
+        "property": "image",
+        "title": "Kiʻi",
+        "description": "Kiʻi i hōʻike ʻia me ka ʻōlelo ʻōlelo ʻia."
+      }
+    ]
+  }
+}

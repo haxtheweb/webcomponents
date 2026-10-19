@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ציטוט עם תמונה",
+    "description": "ציטוט מעוצב עם תמונה אופציונלית."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "תמונה",
+        "description": "הוספת תמונה להמלצה."
+      },
+      {
+        "property": "name",
+        "title": "שם מלא",
+        "description": "שם האדם הנותן את ההמלצה."
+      },
+      {
+        "property": "position",
+        "title": "תפקיד או תואר משרה",
+        "description": "התפקיד או תואר המשרה של האדם."
+      },
+      {
+        "slot": "",
+        "title": "ציטוט",
+        "description": "ציטוט מכותב ההמלצה."
+      }
+    ]
+  }
+}

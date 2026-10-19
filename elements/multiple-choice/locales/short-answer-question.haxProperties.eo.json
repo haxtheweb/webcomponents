@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Mallongresponda demando",
+    "description": "La uzanto respondu bazan demandon"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Demando",
+        "description": "Demando, al kiu uzantoj respondu."
+      },
+      {
+        "property": "answers",
+        "title": "Eblaj respondoj"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nomo de la kvizo",
+        "description": "Nomo de la kvizo transdonata por uzo en xAPI-medioj por identigi ĉi tiun elementon"
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Linea di cullezzione",
+    "description": "Elementu in forma di linea per una lista di cullezzione, cù testu, ligame, icona, etichette è imagine facultativa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Ligame",
+        "description": "URL di destinazione di sta linea."
+      },
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Imagine di a linea."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Testu alternativu chì discrive l'imagine."
+      },
+      {
+        "property": "line1",
+        "title": "Linea 1",
+        "description": "Prima linea di testu."
+      },
+      {
+        "property": "line2",
+        "title": "Linea 2",
+        "description": "Seconda linea di testu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona chì riprisenta a linea."
+      },
+      {
+        "property": "saturate",
+        "title": "Effettu di saturazione",
+        "description": "Cambià a saturazione di l'imagine quandu riceve u focus."
+      },
+      {
+        "property": "tags",
+        "title": "Etichette",
+        "description": "Lista d'etichette spiccate da virgule."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore",
+        "description": "Culore di l'icona è di l'etichette."
+      }
+    ]
+  }
+}

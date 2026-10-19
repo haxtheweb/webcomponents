@@ -5,5 +5,9 @@
   "recordAudio": "Tallenna ääntä",
   "recordScreen": "Tallenna näyttö",
   "cancel": "Peruuta",
-  "uploadMedia": "Lataa media"
+  "uploadMedia": "Lataa media",
+  "record": "Tallenna",
+  "pause": "Keskeytä tallennus",
+  "stopSave": "Lopeta ja tallenna",
+  "clickToTakePhoto": "Ota kuva napsauttamalla"
 }

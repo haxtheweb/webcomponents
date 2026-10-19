@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Lijst met opsommingstekens",
+    "description": "Een lijst met opsommingstekens maken."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stijl van opsommingsteken",
+        "description": "Stijl voor de opsommingstekens van ongeordende lijsten.",
+        "options": {
+          "": "Standaard (vierkant)",
+          "list-disc": "Schijf",
+          "list-circle": "Cirkel",
+          "list-square": "Vierkant"
+        }
+      }
+    ]
+  }
+}

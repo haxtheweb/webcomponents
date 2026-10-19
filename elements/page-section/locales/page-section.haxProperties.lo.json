@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "ສ່ວນຂອງໜ້າ",
+    "description": "ກ່ອງສ່ວນສຳລັບເນື້ອຫາໜ້າ ແລະ ໂຄງຮ່າງຕາມໜ້າຈໍ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "ການອອກແບບ",
+        "description": "ຮູບແບບທີ່ຕັ້ງໄວ້ລ່ວງໜ້າ ເຊິ່ງອັບເດດການຕັ້ງຄ່າທີ່ກ່ຽວຂ້ອງ."
+      },
+      {
+        "property": "image",
+        "title": "ຮູບພາບ",
+        "description": "ສື່ພື້ນຫຼັງສຳລັບສ່ວນນີ້."
+      },
+      {
+        "property": "bg",
+        "title": "ສີພື້ນຫຼັງ",
+        "description": "ສີພື້ນຫຼັງເມື່ອບໍ່ໄດ້ຕັ້ງຮູບພາບ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "ປຸ່ມເລື່ອນ",
+        "description": "ສະແດງປຸ່ມທີ່ເລື່ອນໄປຫາສ່ວນຖັດໄປ."
+      },
+      {
+        "property": "fold",
+        "title": "ສະແດງຮອຍພັບ",
+        "description": "ສະແດງຮອຍພັບແບບເຫັນໄດ້ຢູ່ລຸ່ມສຸດຂອງສ່ວນ."
+      },
+      {
+        "property": "full",
+        "title": "ຂະໜາດເຕັມໜ້າຈໍ",
+        "description": "ເຕັມຄວາມສູງໜ້າຈໍຂອງຜູ້ເບິ່ງ."
+      },
+      {
+        "property": "filter",
+        "title": "ນຳໃຊ້ຕົວກອງ",
+        "description": "ນຳໃຊ້ຕົວກອງພາບກັບຮູບພາບພື້ນຫຼັງ."
+      },
+      {
+        "slot": "",
+        "title": "ເນື້ອຫາ",
+        "description": "ເນື້ອຫາຂອງສ່ວນ."
+      },
+      {
+        "slot": "entice",
+        "title": "ດຶງດູດ",
+        "description": "ເນື້ອຫາດຶງດູດທາງເລືອກ."
+      },
+      {
+        "slot": "buttons",
+        "title": "ປຸ່ມ",
+        "description": "ກຸ່ມປຸ່ມທີ່ສະແດງຢູ່ກ້ອງຂໍ້ຄວາມ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "ຂໍ້ຄວາມຈຸດຍຶດ",
+        "description": "ປ້າຍຈຸດຍຶດທີ່ສະແດງໃນການນຳທາງ."
+      }
+    ]
+  }
+}

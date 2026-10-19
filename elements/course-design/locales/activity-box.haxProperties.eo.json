@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aktiveca skatolo",
+    "description": "Malgranda stiligita titola bloko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Piktogramo",
+        "description": "Piktogramo montrata apud la aktiveca skatolo."
+      },
+      {
+        "property": "tag",
+        "title": "Etikedo de aktiveca skatolo",
+        "description": "Etikedo montrata en la aktiveca skatolo."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Sen kolorigo",
+        "description": "Malhelpi aplikon de koloroj al la piktogramo."
+      }
+    ]
+  }
+}

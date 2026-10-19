@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Amharc CMS",
+    "description": "Amharcanna CMS rindreáilte ar an inneall"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Ainm",
+        "description": "Ainm an amhairc ónár CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Taispeáint",
+        "description": "Taispeáint laistigh den amharc sin ónár CMS"
+      }
+    ]
+  }
+}

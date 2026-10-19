@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "የደረጃ ንጥል",
+    "description": "የደረጃዎች ዝርዝር አካል የሆነ ንጥል"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ርዕስ"
+      }
+    ]
+  }
+}

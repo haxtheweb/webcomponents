@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "ユーザーアクション",
+    "description": "ユーザーの操作を追跡し、データをxAPIストアに送信します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "追跡するイベント",
+        "description": "このイベントを発生させるユーザーの操作。",
+        "options": {
+          "visibility": "これが見える",
+          "keydown": "ここでキーを押す",
+          "click": "これをクリック",
+          "hover": "これにカーソルを合わせる"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "毎回追跡",
+        "description": "既定では最初の1回のみ追跡します。"
+      }
+    ]
+  }
+}

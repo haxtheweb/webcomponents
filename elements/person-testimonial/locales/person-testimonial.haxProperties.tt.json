@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Рәсемле цитата блогы",
+    "description": "Өстәмә рәсемле бизәлгән цитата."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Рәсем",
+        "description": "Бәяләмәгә рәсем өстәгез."
+      },
+      {
+        "property": "name",
+        "title": "Тулы исем",
+        "description": "Бәяләмә бирүче кешенең исеме."
+      },
+      {
+        "property": "position",
+        "title": "Вазыйфа яки эш урыны",
+        "description": "Кешенең вазыйфасы яки эш исеме."
+      },
+      {
+        "slot": "",
+        "title": "Цитата",
+        "description": "Бәяләмә авторыннан цитата."
+      }
+    ]
+  }
+}

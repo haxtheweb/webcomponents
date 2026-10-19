@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF naršyklės peržiūros priemonė",
+    "description": "Įterpti PDF failą tekste su pasirenkamu kortelės išdėstymu ir atsisiuntimo mygtuku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF failo vieta."
+      },
+      {
+        "property": "heading",
+        "title": "Antraštė",
+        "description": "Kortelės antraštės tekstas."
+      },
+      {
+        "property": "card",
+        "title": "Kortelės išdėstymas",
+        "description": "Rodyti PDF kortelėje su atsisiuntimo mygtuku."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Atsisiuntimo etiketė",
+        "description": "Atsisiuntimo mygtuko etiketė."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Nepalaikymo pranešimas",
+        "description": "Pranešimas, kai naršyklė negali rodyti PDF failų."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Nepalaikymo nuorodos pranešimas",
+        "description": "Nuorodos tekstas, kai naršyklė negali rodyti PDF failų."
+      },
+      {
+        "property": "width",
+        "title": "Plotis",
+        "description": "PDF peržiūros priemonės plotis."
+      },
+      {
+        "property": "height",
+        "title": "Aukštis",
+        "description": "PDF peržiūros priemonės aukštis."
+      }
+    ]
+  }
+}

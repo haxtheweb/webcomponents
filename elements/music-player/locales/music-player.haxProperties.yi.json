@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI־וויזואַליזירער",
+    "description": "שפּילן MIDI אין קאָנטעקסט מיט וויזואַליזאַציע."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "URL פֿון דער טעקע צו שפּילן."
+      },
+      {
+        "property": "visualizer",
+        "title": "וויזואַליזאַציע",
+        "description": "וויזואַליזאַציע־סטיל פֿאַר דער מוזיק־טעקע.",
+        "options": {
+          "staff": "נאָטן־שורות",
+          "piano-roll": "פּיאַנאָ־ראָלע",
+          "waterfall": "פּיאַנאָ + וואַסערפֿאַל"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "באַהאַלטן וואַסערפֿאַל",
+        "description": "באַהאַלטן די וואַסערפֿאַל־נאָטן אין דער פּיאַנאָ־וויזואַליזאַציע."
+      }
+    ]
+  }
+}

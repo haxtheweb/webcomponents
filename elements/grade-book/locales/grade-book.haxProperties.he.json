@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "גיליון ציונים",
+    "description": "גיליון ציונים ללא ממשק התומך בצדי שרת מרובים עם מחוונים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "סוג מקור הנתונים (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "נקודת קצה URL ‏(JSON)",
+          "json": "גוש נתוני JSON",
+          "filesystem": "מערכת קבצים"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "נתוני מקור",
+        "description": "כתובת URL או נתוני JSON עבור גיליון הציונים."
+      },
+      {
+        "property": "forCourse",
+        "title": "הפניה לקורס",
+        "description": "מזהה הקורס המשודר כ-oer:forCourse בכל משאב הערכה."
+      }
+    ]
+  }
+}

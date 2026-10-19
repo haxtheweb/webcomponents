@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Napis HAX",
+    "description": "Element logotipa HAX, seveda kot element, združljiv s HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Velikost logotipa HAX za postavitev",
+        "options": {
+          "mini": "Mini",
+          "small": "Majhna",
+          "normal": "Običajna",
+          "large": "Velika"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Ali naj se logotip pretvori v velike črke"
+      }
+    ]
+  }
+}

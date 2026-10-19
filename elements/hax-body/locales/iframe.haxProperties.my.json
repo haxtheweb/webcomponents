@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "ပြင်ပ ဝဘ် အကြောင်းအရာကို မြှုပ်ရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ရင်းမြစ်",
+        "description": "ဤအရင်းအမြစ်အတွက် URL။"
+      }
+    ]
+  }
+}

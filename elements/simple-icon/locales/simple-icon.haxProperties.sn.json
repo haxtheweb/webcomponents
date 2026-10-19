@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aikoni",
+    "description": "Aikoni kubva muraibhurari yose yemaaikoni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni yekuratidza."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rweaikoni."
+      },
+      {
+        "property": "dark",
+        "title": "Rima",
+        "description": "Shandisa mamiriro erima (mavara akapindurwa)."
+      }
+    ]
+  }
+}

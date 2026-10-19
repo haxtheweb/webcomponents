@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ntinye LinkedIn",
+    "description": "Tinye kaadị profaịlụ LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Aha pụrụ iche",
+        "description": "Akụkụ aha njirimara pụrụ iche na LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Mpaghara asụsụ",
+        "description": "Uru metadata mpaghara asụsụ dịka en_US."
+      }
+    ]
+  }
+}

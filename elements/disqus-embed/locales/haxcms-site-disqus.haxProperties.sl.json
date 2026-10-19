@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Komentarji Disqus",
+    "description": "Integracija s spletno storitvijo za komentiranje Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Kratko ime",
+        "description": "Kratko ime lastnosti na Disqus"
+      }
+    ]
+  }
+}

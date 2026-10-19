@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Coursdesign",
+    "description": "Container fir pädagogesch Materialien a Coursdesign-Elementer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Coursidentifikator",
+        "description": "OER Schema: den Identifikator vum Cours, z. B. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Ugebueden Trimester",
+        "description": "OER Schema: den Trimester, an deem de Cours ugebuede gëtt."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Ënnerrechtsform",
+        "description": "OER Schema: d'Format, a deem de Cours ofgehale gëtt (z. B. Präsenz, online, hybrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Haaptenseignant",
+        "description": "OER Schema: den Haaptenseignant vum Cours."
+      },
+      {
+        "property": "syllabus",
+        "title": "Syllabus-URL",
+        "description": "OER Schema: URL zum Syllabus vum Cours."
+      }
+    ]
+  }
+}

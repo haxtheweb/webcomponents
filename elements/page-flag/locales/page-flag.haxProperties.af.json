@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bladsyvlag",
+    "description": "Redaksionele nota vir bladsyskrywers."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Aksentkleur vir die bladsyvlag."
+      },
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Etiketteks vir die bladsyvlag."
+      }
+    ]
+  }
+}

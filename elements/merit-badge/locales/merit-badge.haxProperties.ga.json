@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Suaitheantas Fiúntais",
+    "description": "Suaitheantas amhairc chun scil a fháil a chur in iúl."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Teideal an tSuaitheantais",
+        "description": "Teideal a thaispeántar ar an suaitheantas."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Íomhá an tSuaitheantais",
+        "description": "URL íomhá don suaitheantas."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Sonraí an tSuaitheantais",
+        "description": "Sonraí faoin suaitheantas."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hipearnasc",
+        "description": "Nasc a bhaineann leis an suaitheantas."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Scileanna an tSuaitheantais",
+        "description": "Scileanna a thaispeántar ar an suaitheantas."
+      },
+      {
+        "property": "skill",
+        "title": "Scil (Scéimre OER)",
+        "description": "Scéimre OER: scil foghlamtha a fhaightear trí an cuspóir foghlama seo a chur i gcrích."
+      }
+    ]
+  }
+}

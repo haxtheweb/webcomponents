@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "คำย่อ",
+    "description": "คำย่อพร้อมคำแนะนำเครื่องมือแสดงคำเต็ม"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ข้อความ",
+        "description": "ข้อความคำย่อที่มองเห็นได้"
+      },
+      {
+        "attribute": "title",
+        "title": "คำ",
+        "description": "คำเต็มที่แสดงเมื่อวางเมาส์"
+      }
+    ]
+  }
+}

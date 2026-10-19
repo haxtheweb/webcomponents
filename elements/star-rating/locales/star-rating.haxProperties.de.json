@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Sternebewertung",
+    "description": "Widget zur Anzeige einer Bewertung oder Button zum Bewerten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Punktzahl",
+        "description": "Aktueller Punktwert."
+      },
+      {
+        "property": "possible",
+        "title": "Möglich",
+        "description": "Maximal mögliche Punktzahl."
+      },
+      {
+        "property": "numStars",
+        "title": "Anzahl der Sterne",
+        "description": "Anzahl der anzuzeigenden Sterne."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktiv",
+        "description": "Benutzerinteraktion zum Festlegen der Bewertung erlauben."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Bewertungsskalen-Modus",
+        "description": "OER-Schema-Metadaten RubricScale und RubricLevel (levelOrdinal/levelPoints) für jeden Stern ausgeben."
+      }
+    ]
+  }
+}

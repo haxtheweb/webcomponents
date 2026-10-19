@@ -5,5 +5,6 @@
   "systemAudio": "Inkluder systemlyd",
   "microphoneAudio": "Inkluder mikrofon",
   "recordingStarted": "Opptak startet",
-  "recordingStopped": "Opptak stoppet"
+  "recordingStopped": "Opptak stoppet",
+  "audioOptions": "Lydalternativer"
 }

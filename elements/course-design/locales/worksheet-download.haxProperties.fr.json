@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Téléchargement de fiche d'exercices",
+    "description": "Un bouton pour afficher des fichiers disponibles au téléchargement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Le titre du téléchargement."
+      },
+      {
+        "property": "link",
+        "title": "Lien",
+        "description": "Le lien du téléchargement."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "කුසලතා ලාංඡනය",
+    "description": "කුසලතාවක් ලබා ගැනීම සන්නිවේදනය කිරීමට දෘශ්‍ය ලාංඡනය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "ලාංඡන මාතෘකාව",
+        "description": "ලාංඡනයේ පෙන්වන මාතෘකාව."
+      },
+      {
+        "property": "badgeImage",
+        "title": "ලාංඡන රූපය",
+        "description": "ලාංඡනය සඳහා රූප URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "ලාංඡන විස්තර",
+        "description": "ලාංඡනය පිළිබඳ විස්තර."
+      },
+      {
+        "property": "hyperLink",
+        "title": "අධිසබැඳිය",
+        "description": "ලාංඡනයට සම්බන්ධ සබැඳිය."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "ලාංඡන කුසලතා",
+        "description": "ලාංඡනයේ පෙන්වන කුසලතා."
+      },
+      {
+        "property": "skill",
+        "title": "කුසලතාව (OER Schema)",
+        "description": "OER Schema: මෙම ඉගෙනුම් අරමුණ සම්පූර්ණ කිරීමෙන් ලබා ගත් ඉගෙන ගත් කුසලතාවක්."
+      }
+    ]
+  }
+}

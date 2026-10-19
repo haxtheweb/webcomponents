@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Бројач навише",
+    "description": "Анимирај број који броји до циљне вредности када се појави на екрану."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Крајња вредност",
+        "description": "Број до којег се броји."
+      },
+      {
+        "property": "start",
+        "title": "Почетна вредност",
+        "description": "Број од којег почиње бројање."
+      },
+      {
+        "property": "duration",
+        "title": "Трајање",
+        "description": "Број секунди колико траје анимација бројања."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Текст префикса",
+        "description": "Текст приказан пре броја (нпр. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Текст суфикса",
+        "description": "Текст приказан после броја (нпр. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Слот префикса",
+        "description": "Опционални садржај у слоту пре броја."
+      },
+      {
+        "slot": "suffix",
+        "title": "Слот суфикса",
+        "description": "Опционални садржај у слоту после броја."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Децимална места",
+        "description": "Број децималних места за приказ."
+      },
+      {
+        "property": "separator",
+        "title": "Сепаратор хиљада",
+        "description": "Знак који раздваја групе хиљада."
+      },
+      {
+        "property": "decimal",
+        "title": "Децимални знак",
+        "description": "Знак који се користи као децимални зарез."
+      },
+      {
+        "property": "noeasing",
+        "title": "Без ублажавања",
+        "description": "Искључи ублажавање тако да бројање буде линеарно."
+      }
+    ]
+  }
+}

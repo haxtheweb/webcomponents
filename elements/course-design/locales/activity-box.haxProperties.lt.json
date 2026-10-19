@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Veiklos langelis",
+    "description": "Nedidelis stilizuotos antraštės blokas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Piktograma",
+        "description": "Šalia veiklos langelio rodoma piktograma."
+      },
+      {
+        "property": "tag",
+        "title": "Veiklos langelio žymė",
+        "description": "Veiklos langelyje rodoma žymė."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Be spalvinimo",
+        "description": "Neleisti taikyti spalvų piktogramai."
+      }
+    ]
+  }
+}

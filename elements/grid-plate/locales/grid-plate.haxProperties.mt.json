@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Tqassim f'kolonni",
+    "description": "Qassam il-materjal f'kolonni sempliċi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Tqassim f'Kolonni",
+        "description": "Stil biex jiġu ppreżentati dawn l-oġġetti (jista' jinbidel għal skrins żgħar)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Iddiżattiva r-responsività",
+        "description": "Immarka l-kaxxa biex iżżomm il-kolonni fuq skrins akbar filwaqt li xorta jinġabru fuq xulxin fl-iżgħar skrins"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Padding tal-Oġġett",
+        "description": "Padding ġewwa kull oġġett"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Marġini tal-oġġetti",
+        "description": "Marġni bejn l-oġġetti"
+      }
+    ]
+  }
+}

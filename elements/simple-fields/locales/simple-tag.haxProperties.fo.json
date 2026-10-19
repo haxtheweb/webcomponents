@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Frámerki / pilla",
+    "description": "Eitt tætt pillulagað heiti við valfríum dámliti, avlýsingarknøtti ella skifti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Heiti",
+        "description": "Tekstur, sum verður vístur inni í pilluni."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "SimpleColors-dámlitanavn til bakgrundina á pilluni.",
+        "options": {
+          "": "-- standard --",
+          "red": "Reyður",
+          "pink": "Ljósareyður",
+          "purple": "Lilla",
+          "deep-purple": "Myrkalilla",
+          "indigo": "Indigo",
+          "blue": "Bláur",
+          "light-blue": "Ljósabláur",
+          "cyan": "Cyan",
+          "teal": "Blágrønur",
+          "green": "Grønur",
+          "light-green": "Ljósagrønur",
+          "lime": "Limegrønur",
+          "yellow": "Gulur",
+          "amber": "Raf",
+          "orange": "Appelsingulur",
+          "deep-orange": "Myrkaappelsingulur",
+          "brown": "Brúnur",
+          "blue-grey": "Blágráur",
+          "grey": "Gráur"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Sjálvvirkin dámlitur",
+        "description": "Avleið dámlitin sjálvvirkið úr heitistekstinum."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Avlýsingarknøttur",
+        "description": "Vís ein strika/avlýs-ímyndarknøtt inni í pilluni."
+      },
+      {
+        "property": "readonly",
+        "title": "Bert lesing",
+        "description": "Fjal avlýsingarknøttin, so at pillan bert er til vísingar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Skiftir",
+        "description": "Lat pilluna skifta tendrað/sløkt, tá klikt verður á knøttin."
+      },
+      {
+        "property": "toggled",
+        "title": "Tendrað",
+        "description": "Um pillan í løtuni er tendrað."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ímynd tá tendrað",
+        "description": "Ímynd, sum verður víst, tá pillan er tendrað."
+      },
+      {
+        "property": "disabled",
+        "title": "Óvirkið",
+        "description": "Ger samvirkan við pilluna óvirkna."
+      }
+    ]
+  }
+}

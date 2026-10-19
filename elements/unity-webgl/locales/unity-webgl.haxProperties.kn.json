@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity ಪ್ಲೇಯರ್",
+    "description": "Unity WebGL ಪ್ಲೇಯರ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ಗುರಿ",
+        "description": "ಆಟದ ಬಿಲ್ಡ್‌ಗೆ ಮಾರ್ಗ."
+      },
+      {
+        "property": "compression",
+        "title": "ಸಂಕುಚನ ವಿಧಾನ",
+        "description": "ಆಟದ ಸ್ವತ್ತುಗಳಿಗಾಗಿ ಸಂಕುಚನ ಫೈಲ್ ವಿಸ್ತರಣೆ."
+      },
+      {
+        "property": "streamingurl",
+        "title": "ಸ್ಟ್ರೀಮಿಂಗ್ URL",
+        "description": "ಸ್ಟ್ರೀಮಿಂಗ್ ಸ್ವತ್ತುಗಳ URL."
+      },
+      {
+        "property": "companyname",
+        "title": "ಕಂಪನಿಯ ಹೆಸರು",
+        "description": "ಕಂಪನಿಯ ಹೆಸರು."
+      },
+      {
+        "property": "productname",
+        "title": "ಉತ್ಪನ್ನದ ಹೆಸರು",
+        "description": "ಆಟದ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "productversion",
+        "title": "ಉತ್ಪನ್ನದ ಆವೃತ್ತಿ",
+        "description": "ಬಿಡುಗಡೆ ಆವೃತ್ತಿ."
+      },
+      {
+        "property": "width",
+        "title": "ಕ್ಯಾನ್ವಾಸ್ ಅಗಲ",
+        "description": "ಕ್ಯಾನ್ವಾಸ್ CSS ಅಗಲ (ಉದಾಹರಣೆಗೆ px ಅಥವಾ em)."
+      },
+      {
+        "property": "height",
+        "title": "ಕ್ಯಾನ್ವಾಸ್ ಎತ್ತರ",
+        "description": "ಕ್ಯಾನ್ವಾಸ್ CSS ಎತ್ತರ (ಉದಾಹರಣೆಗೆ px ಅಥವಾ em)."
+      },
+      {
+        "property": "background",
+        "title": "ಕ್ಯಾನ್ವಾಸ್ ಹಿನ್ನೆಲೆ",
+        "description": "ಕ್ಯಾನ್ವಾಸ್ CSS ಹಿನ್ನೆಲೆ."
+      }
+    ]
+  }
+}

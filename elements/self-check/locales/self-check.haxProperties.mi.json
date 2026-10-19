@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Arotake Whaiaro",
+    "description": "Ka taea e ngā kaiwhakamahi te whakaoti arotake whaiaro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Whakaahua",
+        "description": "Whakaahua mō te arotake whaiaro."
+      },
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Taitara o te arotake whaiaro."
+      },
+      {
+        "property": "alt",
+        "title": "Kupu Kē",
+        "description": "Kupu kē mō te whakaahua."
+      },
+      {
+        "slot": "question",
+        "title": "Pātai"
+      },
+      {
+        "slot": "",
+        "title": "Whakautu"
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae Kaupapa",
+        "description": "Kōwhiria he tae kaupapa mai i te pūnaha hoahoa.",
+        "options": {
+          "primary": "Matua",
+          "accent": "Arotahi",
+          "success": "Angitu",
+          "warning": "Whakatūpato",
+          "error": "Hapa",
+          "info": "Mōhiohio"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Whāinga Ako",
+        "description": "Tohutoro whāinga ako ka tukuna hei oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "E aromatawai ana",
+        "description": "Tohutoro ngohe ka tukuna hei oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Hono atu anō",
+        "description": "Hono ki ētahi atu mōhiohio."
+      }
+    ]
+  }
+}

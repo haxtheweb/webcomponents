@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "ဇယား",
+    "description": "ဝဘ်အတွက် ဇယားအခြေပြု ဒေတာ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "အတန်း ခေါင်းစီး",
+        "description": "ပထမ အတန်းကို ခေါင်းစီးအဖြစ် သတ်မှတ်ရန်။"
+      },
+      {
+        "property": "columnHeader",
+        "title": "ကော်လံ ခေါင်းစီး",
+        "description": "ပထမ ကော်လံကို ခေါင်းစီးအဖြစ် သတ်မှတ်ရန်။"
+      },
+      {
+        "property": "footer",
+        "title": "အောက်ခြေ",
+        "description": "နောက်ဆုံး အတန်းကို အောက်ခြေအဖြစ် သတ်မှတ်ရန်။"
+      },
+      {
+        "property": "sort",
+        "title": "စီနိုင်သည်",
+        "description": "ကော်လံ တန်ဖိုးများအလိုက် စီခွင့်ပြုရန်။"
+      },
+      {
+        "property": "filter",
+        "title": "စစ်ထုတ်ခွင့်ပြုရန်",
+        "description": "ကော်လံ တန်ဖိုးများအလိုက် စစ်ထုတ်ခွင့်ပြုရန်။"
+      },
+      {
+        "property": "numericStyles",
+        "title": "ဂဏန်း ပုံစံ",
+        "description": "ဂဏန်း ကော်လံများတွင် ဂဏန်းပုံစံ သက်ရောက်စေရန်။"
+      },
+      {
+        "property": "responsive",
+        "title": "တုံ့ပြန်မှုရှိသော",
+        "description": "မျက်နှာပြင်ငယ်များတွင် ဇယား အပြင်အဆင်ကို ချိန်ညှိရန်။"
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric မုဒ်",
+        "description": "Rubric, RubricScale, RubricCriterion နှင့် RubricLevel metadata ထုတ်ပေးနိုင်ရန် ဤဇယားကို OER Schema Rubric အဖြစ် အဓိပ္ပာယ်ဖွင့်ရန်။"
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubric အမျိုးအစား",
+        "description": "oer:rubricType အဖြစ် ထုတ်ပေးသော rubric ပုံစံ (Rubric မုဒ် ဖွင့်ထားမှသာ အဓိပ္ပာယ်ရှိသည်)။",
+        "options": {
+          "": "(မရှိ)",
+          "analytic": "ခွဲခြမ်းစိတ်ဖြာ",
+          "holistic": "ခြုံငုံ",
+          "single-point": "အမှတ်တစ်ခုတည်း",
+          "checklist": "စစ်ဆေးစာရင်း"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "ဘောင်ခတ်ထားသည်"
+      },
+      {
+        "property": "condensed",
+        "title": "အတန်းများ ချုံ့ရန်",
+        "description": "အတန်း အမြင့်ကို လျှော့ရန်။"
+      },
+      {
+        "property": "striped",
+        "title": "အစင်းကြောင်း အတန်းများ",
+        "description": "တစ်တန်းကျော် အရိပ်ထည့်ရန်။"
+      },
+      {
+        "property": "downloadable",
+        "title": "ဒေါင်းလုဒ် ခလုတ်",
+        "description": "ဇယားကို ဒေါင်းလုဒ်လုပ်ရန် ခလုတ်ထည့်ပါ။"
+      },
+      {
+        "property": "copyable",
+        "title": "ကော်ပီ ခလုတ်",
+        "description": "ဇယား၏ CSV ဒေတာကို ကော်ပီကူးရန် ခလုတ်ထည့်ပါ။"
+      },
+      {
+        "property": "printable",
+        "title": "ပရင့် ခလုတ်",
+        "description": "ဇယားကိုသာ ပရင့်ထုတ်ရန် ခလုတ်ထည့်ပါ။"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV ဒေတာ",
+        "description": "အပ်လုဒ်လုပ်ထားသော CSV ဖိုင်မှ ဇယား ဖန်တီးရန်။"
+      }
+    ]
+  }
+}

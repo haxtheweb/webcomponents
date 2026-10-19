@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Nuna maɓallin kira-zuwa-aiki na Polaris mai jigo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Rubutun maɓalli",
+        "description": "Rubutun da ake nunawa a cikin maɓallin kira-zuwa-aiki."
+      },
+      {
+        "property": "link",
+        "title": "Mahaɗi",
+        "description": "URL na inda maɓallin zai kai."
+      },
+      {
+        "property": "type",
+        "title": "Bambanci",
+        "description": "Bambancin salon gani.",
+        "options": {
+          "primary": "Babba",
+          "tinted": "Mai ɗan launi",
+          "light": "Haske"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Salon mai iyaka",
+        "description": "Kunna salon iyaka."
+      },
+      {
+        "property": "filled",
+        "title": "Salon cike",
+        "description": "Kunna salon cike."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Figuerbyskrift",
+    "description": "Byskrift foar in figuer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Underskrift",
+        "description": "Tekst toand ûnder de figuer."
+      }
+    ]
+  }
+}

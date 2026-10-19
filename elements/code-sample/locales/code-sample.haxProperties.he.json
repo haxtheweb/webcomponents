@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "דוגמת קוד",
+    "description": "דוגמת קוד מודגשת בדף"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "הדגשת קוד",
+        "description": "הדגשת תחביר שתוחל על אזור הקוד",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "נתוני JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "כפתור העתקה ללוח",
+        "description": "כפתור בפינה הימנית העליונה שכתוב עליו העתקה ללוח"
+      },
+      {
+        "property": "highlightStart",
+        "title": "תחילת הדגשה",
+        "description": "מספר השורה שבה תתחיל ההדגשה"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "סוף הדגשה",
+        "description": "השורה שבה תסתיים ההדגשה"
+      }
+    ]
+  }
+}

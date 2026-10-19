@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "संयुक्त राष्ट्र सतत विकास लक्ष्य।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "लक्ष्य",
+        "description": "UN SDG संख्या।"
+      },
+      {
+        "property": "colorOnly",
+        "title": "केवल रंग",
+        "description": "केवल लक्ष्य का रंग दिखाएँ।"
+      }
+    ]
+  }
+}

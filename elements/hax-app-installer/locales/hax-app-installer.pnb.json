@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub ریپوزیٹری",
   "anErrorOccurred": "ہک خرابی پیش آ گئی",
-  "retry": "دوبارہ کوشش کرو"
+  "retry": "دوبارہ کوشش کرو",
+  "permissionRequired": "اجازت ضروری اے",
+  "passwordRequirements": "پاس ورڈ دیاں شرطاں",
+  "requirementLength": "گھٹو گھٹ 8 حرف",
+  "requirementUppercase": "اک وڈا حرف",
+  "requirementLowercase": "اک نکا حرف",
+  "requirementNumber": "اک ہندسہ",
+  "requirementSymbol": "اک علامت"
 }

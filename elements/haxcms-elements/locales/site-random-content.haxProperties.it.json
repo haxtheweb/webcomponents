@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Contenuto casuale di pagina",
+    "description": "Mostra un elemento di primo livello casuale da una pagina selezionata"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Pagina",
+        "description": "Seleziona la pagina da cui prendere contenuti casuali. L'elemento mostrerà a caso uno degli elementi HTML di primo livello di questa pagina."
+      }
+    ]
+  }
+}

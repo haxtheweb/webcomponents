@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Malo a Zithunzi",
+    "description": "Malo owonetsera zithunzi m'magridi, mumiyala, kapena muwonetsero wa masilaidi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Njira yowonetsera",
+        "description": "Momwe zithunzi ziwonetsedwere m'malo a zithunzi.",
+        "options": {
+          "grid": "Gridi",
+          "masonry": "Miyala",
+          "gallery": "Malo a zithunzi"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Nambala yogwira ntchito",
+        "description": "Nambala ya chithunzi choyambira m'njira ya malo a zithunzi."
+      }
+    ]
+  }
+}

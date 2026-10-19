@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Ngulit përmbajtje të jashtme ueb."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Burimi",
+        "description": "URL-ja e këtij burimi."
+      }
+    ]
+  }
+}

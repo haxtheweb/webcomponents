@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "פֿאַרבעסערט בילד",
+    "description": "אַן אופֿן צו ווײַזן בילדער מיט פֿאַרשידענע פֿאַרבעסערונגען."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "די URL פֿונעם בילד."
+      },
+      {
+        "property": "alt",
+        "title": "אַלטערנאַטיווער טעקסט",
+        "description": "טעקסט וואָס באַשרײַבט דאָס בילד פֿאַר בלינדע באַניצער."
+      },
+      {
+        "property": "link",
+        "title": "לינק",
+        "description": "פֿאַרלינק דאָס בילד צו אַ URL"
+      },
+      {
+        "property": "card",
+        "title": "קאַרטל",
+        "description": "לייג צו אַ שאָטן כּדי עס זאָל אויסזען ווי אַן אויפֿגעהויבן קאַרטל."
+      },
+      {
+        "property": "box",
+        "title": "קעסטל",
+        "description": "לייג צו אַ וויזועל קעסטל אַרום דעם בילד."
+      },
+      {
+        "property": "offset",
+        "title": "אָפּרוק",
+        "description": "לייג צו אַ לינקן אָדער רעכטן אָפּרוק צום בילד.",
+        "options": {
+          "none": "קיין",
+          "wide": "ברייט",
+          "narrow": "שמאָל"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "מראה־מקום",
+        "description": "ציטאַט פֿאַרן בילד."
+      },
+      {
+        "property": "caption",
+        "title": "אונטערשריפֿט",
+        "description": "אונטערשריפֿט פֿאַרן בילד."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "פֿיגור־טיטל",
+        "description": "טיטל פֿאַרן פֿיגור־עטיקעט."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "פֿיגור־באַשרײַבונג",
+        "description": "באַשרײַבונג פֿאַרן פֿיגור־עטיקעט."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "מיניאַטור־בילד",
+        "description": "מקור פֿונעם מיניאַטור־בילד. ווײַזט די מיניאַטור אָבער עפֿנט דעם פֿולן מקור אין אַ דיאַלאָג."
+      },
+      {
+        "property": "round",
+        "title": "קײַלעכדיק בילד",
+        "description": "שנײַדט אויס דאָס בילד אין דער פֿאָרעם פֿון אַ קרײַז."
+      },
+      {
+        "property": "disableZoom",
+        "title": "דעאַקטיוויר דעם בילד־דיאַלאָג",
+        "description": "דעאַקטיוויר אַז קליקן זאָל עפֿענען דאָס בילד אין אַ בילד־אינספּעקטאָר־דיאַלאָג."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "ווײַז ווי markdown",
+        "description": "ווײַז די אונטערשריפֿט און דעם ציטאַט ווי markdown."
+      }
+    ]
+  }
+}

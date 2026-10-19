@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Iflegi yekhasi",
+    "description": "Inqaku lokuhlela lababhali bamakhasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala ogqamisayo weflegi yekhasi."
+      },
+      {
+        "property": "label",
+        "title": "Ileyibhile",
+        "description": "Umbhalo weleyibhile yeflegi yekhasi."
+      }
+    ]
+  }
+}

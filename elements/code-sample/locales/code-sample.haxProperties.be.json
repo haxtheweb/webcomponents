@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Прыклад кода",
+    "description": "Прыклад кода з падсветкай на старонцы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Падсветка кода",
+        "description": "Падсветка сінтаксісу для вобласці кода",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Даныя JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Кнопка капіравання ў буфер абмену",
+        "description": "кнопка ў правым верхнім куце з надпісам «Капіраваць у буфер абмену»"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Пачатак падсветкі",
+        "description": "Нумар радка, з якога пачынаецца падсветка"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Канец падсветкі",
+        "description": "Радок, на якім заканчваецца падсветка"
+      }
+    ]
+  }
+}

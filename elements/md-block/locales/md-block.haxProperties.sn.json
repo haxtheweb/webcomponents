@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Bhuroko rezvirimo zvemarkdown zvakananga kana zvinorodhwa kubva kure"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown isina kugadziriswa"
+      },
+      {
+        "property": "source",
+        "title": "Kwakabva",
+        "description": "Faira resosi remarkdown"
+      }
+    ]
+  }
+}

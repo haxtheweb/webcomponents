@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "წყაროს მითითება",
+    "description": "ციტირების ელემენტი წარმოდგენის სამი რეჟიმით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "ციტირებული ნაშრომის სათაური."
+      },
+      {
+        "property": "source",
+        "title": "წყაროს ბმული",
+        "description": "ციტირებული ნაშრომის წყაროს URL."
+      },
+      {
+        "property": "date",
+        "title": "წვდომის თარიღი",
+        "description": "წყაროზე წვდომის თარიღი."
+      },
+      {
+        "property": "scope",
+        "title": "მოქმედების არე",
+        "description": "ციტირებადი ელემენტის არე.",
+        "options": {
+          "sibling": "მეზობელი ელემენტი",
+          "parent": "მშობელი ელემენტი"
+        }
+      },
+      {
+        "property": "license",
+        "title": "ლიცენზია",
+        "description": "ციტირებული ნაშრომის ლიცენზია."
+      },
+      {
+        "property": "creator",
+        "title": "შემქმნელი",
+        "description": "ციტირებული ნაშრომის შემქმნელი ან მფლობელი."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema ტიპი",
+        "description": "ამ ციტირების OER Schema კლასი. ნაგულისხმევია oer:ReferencedMaterial; შეცვალეთ მხოლოდ სწორი OER კლასით (მაგ. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

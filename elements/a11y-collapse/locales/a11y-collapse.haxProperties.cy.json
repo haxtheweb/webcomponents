@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Cynhwysydd y gellir ei chwympo",
+    "description": "Cynhwysydd sengl y gellir ei ehangu a'i chwympo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Pennawd",
+        "description": "Testun ar gyfer y panel chwympo."
+      },
+      {
+        "property": "expanded",
+        "title": "Wedi'i ehangu",
+        "description": "Ehangu yn ddiofyn."
+      },
+      {
+        "property": "headingButton",
+        "title": "Botwm Pennawd",
+        "description": "Gwneud y pennawd cyfan yn gliciadwy yn hytrach na'r eicon yn unig."
+      },
+      {
+        "property": "icon",
+        "title": "Eicon",
+        "description": "Eicon ar gyfer y botwm ehangu/chwympo."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Eicon (pan fydd wedi'i ehangu)",
+        "description": "Eicon dewisol ar gyfer cyflwr ehangedig y botwm."
+      },
+      {
+        "slot": "",
+        "title": "Cynnwys",
+        "description": "Cynnwys ar gyfer y panel chwympo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Cyngor offer",
+        "description": "Cyngor offer ar gyfer y botwm ehangu/chwympo."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Cyngor offer (pan fydd wedi'i ehangu)",
+        "description": "Cyngor offer ar gyfer y botwm ehangu/chwympo pan fydd wedi'i ehangu."
+      }
+    ]
+  }
+}

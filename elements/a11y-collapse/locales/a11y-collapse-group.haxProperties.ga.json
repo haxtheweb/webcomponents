@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Grúpa Leathnaigh/Laghdaigh",
+    "description": "Grúpa d'eilimintí leathnaithe agus laghdaithe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Leathnaigh ceann amháin",
+        "description": "Ní féidir ach mír amháin a leathnú."
+      },
+      {
+        "slot": "",
+        "title": "Míreanna Laghdaithe",
+        "description": "Na míreanna laghdaithe."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "ലളിതമായ ചിത്രം",
+    "description": "ലളിതമായ പാരാമീറ്ററുകൾ ഉപയോഗിച്ച് ചിത്രങ്ങൾ കൈകാര്യം ചെയ്യുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ഉറവിടം",
+        "description": "ചിത്ര ഉറവിട URL."
+      },
+      {
+        "property": "height",
+        "title": "ഉയരം",
+        "description": "ഐച്ഛിക ചിത്ര ഉയരം."
+      },
+      {
+        "property": "width",
+        "title": "വീതി",
+        "description": "ഐച്ഛിക ചിത്ര വീതി."
+      },
+      {
+        "property": "alt",
+        "title": "ആൾട്ട് ടെക്സ്റ്റ്",
+        "description": "സ്ക്രീൻ റീഡറുകൾക്കും മെച്ചപ്പെട്ട SEO-യ്ക്കും ഉപയോഗപ്രദം."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "ഗുണനിലവാരം",
+        "description": "സൃഷ്ടിക്കുമ്പോഴുള്ള ചിത്ര ഗുണനിലവാരം (JPEG മാത്രം)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "ലഭ്യമാക്കൽ മുൻഗണന",
+        "description": "ആധുനിക ബ്രൗസറുകൾക്കുള്ള പ്രകടന സൂചന.",
+        "options": {
+          "auto": "സ്വയമേവ",
+          "high": "ഉയർന്നത്",
+          "low": "താഴ്ന്നത്"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "ഡീകോഡിംഗ് രീതി",
+        "description": "ആധുനിക ബ്രൗസറുകളിൽ ചിത്രം പ്രദർശിപ്പിക്കുന്നതിനുള്ള പ്രകടന സൂചന.",
+        "options": {
+          "auto": "സ്വയമേവ",
+          "async": "അസിങ്ക്"
+        }
+      }
+    ]
+  }
+}

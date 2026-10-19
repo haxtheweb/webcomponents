@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn embed",
+    "description": "Mag-embed ng profile card ng LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Vanity name",
+        "description": "Bahagi ng vanity username sa LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Locale",
+        "description": "Halaga ng metadata ng locale gaya ng en_US."
+      }
+    ]
+  }
+}

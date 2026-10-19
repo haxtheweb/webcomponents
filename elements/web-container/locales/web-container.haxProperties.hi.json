@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS कंटेनर"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "संपादक छिपाएँ",
+        "description": "फ़ाइल संपादन इंटरफ़ेस छिपाएँ।"
+      },
+      {
+        "property": "hideTerminal",
+        "title": "टर्मिनल छिपाएँ",
+        "description": "स्वतः चलने वाले प्रोग्राम के लिए टर्मिनल छिपाएँ।"
+      },
+      {
+        "property": "hideWindow",
+        "title": "विंडो छिपाएँ",
+        "description": "केवल-टर्मिनल उपयोग के लिए आउटपुट विंडो छिपाएँ।"
+      },
+      {
+        "slot": "",
+        "title": "कमांड",
+        "description": "लोड करने से पहले चलाए जाने वाले कमांड (प्रति पंक्ति एक)।"
+      }
+    ]
+  }
+}

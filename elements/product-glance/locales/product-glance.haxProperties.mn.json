@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Бүтээгдэхүүний тойм",
+    "description": "Бүтээгдэхүүний товч тоймын блок."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Дүрс тэмдэг",
+        "description": "Ойлголтыг илэрхийлэх дүрс тэмдэг."
+      },
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Товч харахад гол ойлголт."
+      },
+      {
+        "property": "subtitle",
+        "title": "Дэд гарчиг",
+        "description": "Нэмэлт дэлгэрэнгүй."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Дүрс тэмдгийн онцлох өнгө."
+      }
+    ]
+  }
+}

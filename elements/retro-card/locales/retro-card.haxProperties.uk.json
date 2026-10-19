@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ретро-картка",
+    "description": "Проста картка в ретро-стилі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Основна назва картки."
+      },
+      {
+        "property": "url",
+        "description": "URL, що відкривається після натискання на картку."
+      },
+      {
+        "property": "subtitle",
+        "title": "Підзаголовок",
+        "description": "Підзаголовок картки."
+      },
+      {
+        "property": "tags",
+        "title": "Теги",
+        "description": "Теги через кому."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Джерело медіа",
+        "description": "Основне джерело медіа."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Джерело під час наведення",
+        "description": "Джерело медіа, що показується під час наведення на картку або її активації."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Акцентний колір, що застосовується до всієї картки."
+      },
+      {
+        "property": "dark",
+        "title": "Темна",
+        "description": "Використовувати базові кольори темного режиму."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Wanta Hojii",
+    "description": "Dhaabbata tokkoo fi gaheewwan isaa walqabatan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Maqaa Dhaabbataa"
+      },
+      {
+        "property": "location",
+        "title": "Bakka"
+      },
+      {
+        "property": "source",
+        "title": "Madda"
+      }
+    ]
+  }
+}

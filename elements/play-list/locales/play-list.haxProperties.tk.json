@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Oýnatma sanawy",
+    "description": "Islendik mazmuny oýnatma sanawynda görkeziň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Çeşme",
+        "description": "Oýnatma sanawynda görkezilýän mazmun."
+      },
+      {
+        "property": "edit",
+        "title": "Redaktirleme tertibi",
+        "description": "Oýnatma sanawy üçin redaktirleme we öňünden görmek tertibiniň arasynda geçiň."
+      },
+      {
+        "property": "navigation",
+        "title": "Nawigasiýa",
+        "description": "Öňe we yza nawigasiýa düwmelerini görkez."
+      },
+      {
+        "property": "pagination",
+        "title": "Sahypalara bölmek",
+        "description": "Sahypa nokatlaryny görkez."
+      },
+      {
+        "property": "orientation",
+        "title": "Ugry",
+        "description": "Slaýdlaryň ugry.",
+        "options": {
+          "horizontal": "Keseligine",
+          "vertical": "Dikligine"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Başlanýan slaýd",
+        "description": "Ilki ünsi jemlemeli slaýdyň indeksi."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Taraplaryň gatnaşygy",
+        "description": "Slaýdlaryň taraplarynyň gatnaşygy.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

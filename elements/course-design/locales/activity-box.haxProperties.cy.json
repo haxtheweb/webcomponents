@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Blwch Gweithgaredd",
+    "description": "Bloc pennawd bach wedi'i steilio."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Eicon",
+        "description": "Eicon a ddangosir wrth ymyl y blwch gweithgaredd."
+      },
+      {
+        "property": "tag",
+        "title": "Tag blwch gweithgaredd",
+        "description": "Tag a ddangosir yn y blwch gweithgaredd."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Dim Lliwio",
+        "description": "Atal lliwiau rhag cael eu rhoi ar yr eicon."
+      }
+    ]
+  }
+}

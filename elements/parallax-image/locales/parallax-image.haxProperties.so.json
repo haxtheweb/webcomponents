@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Sawirka Parallax",
+    "description": "Sawirka la rogrogo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Sawir",
+        "description": "sawirka lagu dari doono asalka"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Meesha madaxa",
+        "description": "Meesha qoraalka madaxa"
+      }
+    ]
+  }
+}

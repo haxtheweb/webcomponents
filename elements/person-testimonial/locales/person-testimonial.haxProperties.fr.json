@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citation avec image",
+    "description": "Citation stylisée avec une image facultative."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Image",
+        "description": "Ajouter une image au témoignage."
+      },
+      {
+        "property": "name",
+        "title": "Nom complet",
+        "description": "Nom de la personne qui témoigne."
+      },
+      {
+        "property": "position",
+        "title": "Poste ou fonction",
+        "description": "Poste ou fonction de la personne."
+      },
+      {
+        "slot": "",
+        "title": "Citation",
+        "description": "Citation de l'auteur du témoignage."
+      }
+    ]
+  }
+}

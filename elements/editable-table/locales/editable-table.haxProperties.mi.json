@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Ripanga",
+    "description": "Raraunga ā-ripanga mō te tukutuku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Pane Rārangi",
+        "description": "Whakaarohia te rārangi tuatahi hei pane."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Pane Tīwae",
+        "description": "Whakaarohia te tīwae tuatahi hei pane."
+      },
+      {
+        "property": "footer",
+        "title": "Hiku",
+        "description": "Whakaarohia te rārangi whakamutunga hei hiku."
+      },
+      {
+        "property": "sort",
+        "title": "Ka taea te kōmaka",
+        "description": "Tukuna te kōmaka mā ngā uara tīwae."
+      },
+      {
+        "property": "filter",
+        "title": "Tukuna te Tātari",
+        "description": "Tukuna te tātari mā ngā uara tīwae."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Kāhua Tau",
+        "description": "Whakahāngaitia te kāhua tau ki ngā tīwae tau."
+      },
+      {
+        "property": "responsive",
+        "title": "Urutau",
+        "description": "Whakaritea te tahora o te ripanga i ngā mata iti."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Aratau Rūpiri",
+        "description": "Whakamāoritia tēnei ripanga hei OER Schema Rubric kia tukuna ai ngā raraunga tāhuhu Rubric, RubricScale, RubricCriterion, me RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Momo Rūpiri",
+        "description": "Te kāhua rūpiri ka tukuna hei oer:rubricType (he whai tikanga anake ina hohe te Aratau Rūpiri).",
+        "options": {
+          "": "(kore)",
+          "analytic": "Ā-tātari",
+          "holistic": "Ā-katoa",
+          "single-point": "Pito Kotahi",
+          "checklist": "Rārangi Taki"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Whai Tapa"
+      },
+      {
+        "property": "condensed",
+        "title": "Whakapoto Rārangi",
+        "description": "Whakaitihia te teitei o ngā rārangi."
+      },
+      {
+        "property": "striped",
+        "title": "Rārangi Rōnaki",
+        "description": "Whakamarumarutia ia rārangi tuarua."
+      },
+      {
+        "property": "downloadable",
+        "title": "Pātene Tikiake",
+        "description": "Tāpiritia tētahi pātene hei tikiake i te ripanga."
+      },
+      {
+        "property": "copyable",
+        "title": "Pātene Tārua",
+        "description": "Tāpiritia tētahi pātene hei tārua i ngā raraunga CSV o te ripanga."
+      },
+      {
+        "property": "printable",
+        "title": "Pātene Tā",
+        "description": "Tāpiritia tētahi pātene hei tā i te ripanga anake."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Raraunga CSV",
+        "description": "Hangaia he ripanga mai i tētahi kōnae CSV kua tukuake."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Datum",
+    "description": "Ein Kalenderdatum mit Details anzeigen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Monat",
+        "description": "Auf der Karte angezeigter Monat."
+      },
+      {
+        "property": "date",
+        "title": "Tag des Monats",
+        "description": "Tag des Monats als Zahl."
+      },
+      {
+        "property": "day",
+        "title": "Wochentag",
+        "description": "Wochentag als Text."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Name der Veranstaltung."
+      },
+      {
+        "property": "location",
+        "title": "Ort",
+        "description": "Ort der Veranstaltung."
+      },
+      {
+        "property": "startTime",
+        "title": "Beginn",
+        "description": "Startzeit."
+      },
+      {
+        "property": "endTime",
+        "title": "Ende",
+        "description": "Endzeit."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Eine optionale Akzentfarbe."
+      },
+      {
+        "property": "dark",
+        "title": "Dunkles Design",
+        "description": "Dunkles Design aktivieren."
+      }
+    ]
+  }
+}

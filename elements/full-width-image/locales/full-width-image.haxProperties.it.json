@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Sezione immagine",
+    "description": "Immagine a larghezza piena che separa una sezione della pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Immagine di sfondo."
+      },
+      {
+        "property": "caption",
+        "description": "Intestazione di testo."
+      }
+    ]
+  }
+}

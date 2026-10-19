@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Карта",
+    "description": "DDD дизайн системасы менен стилдештирилген карта компоненти."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Сүрөт",
+        "description": "Кошумча сүрөт."
+      },
+      {
+        "property": "alt",
+        "title": "Сүрөттүн alt тексти",
+        "description": "Сүрөттү сүрөттөгөн альтернативдик текст."
+      },
+      {
+        "property": "title",
+        "title": "Аталыш",
+        "description": "Картанын аталышы."
+      },
+      {
+        "slot": "",
+        "title": "Мазмун",
+        "description": "Картанын мазмун аймагы."
+      },
+      {
+        "property": "href",
+        "title": "Шилтеме",
+        "description": "Баскычтын шилтеме URL дареги."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Энбелги",
+        "description": "Баскычтын энбелгиси."
+      },
+      {
+        "property": "noArrow",
+        "title": "Жебесиз",
+        "description": "Баскычтын жебесин жашыруу."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Шилтеме: target",
+        "description": "Шилтемени кайда ачуу.",
+        "options": {
+          "": "Ошол эле терезе",
+          "_blank": "Жаңы терезе - _blank",
+          "_top": "Жогорку терезе - _top",
+          "_parent": "Ата терезе - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Шилтеме: rel",
+        "description": "Шилтемеленген ресурс менен учурдагы документтин ортосундагы байланыш."
+      }
+    ]
+  }
+}

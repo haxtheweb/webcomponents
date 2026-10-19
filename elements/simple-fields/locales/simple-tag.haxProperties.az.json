@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Teq / Həb",
+    "description": "İxtiyari vurğu rəngi, ləğv düyməsi və ya keçidi olan yığcam həb formalı etiket."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etiket",
+        "description": "Həbin içində göstərilən mətn."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "Həbin fonu üçün SimpleColors vurğu adı.",
+        "options": {
+          "": "-- defolt --",
+          "red": "Qırmızı",
+          "pink": "Çəhrayı",
+          "purple": "Bənövşəyi",
+          "deep-purple": "Tünd bənövşəyi",
+          "indigo": "İndiqo",
+          "blue": "Mavi",
+          "light-blue": "Açıq mavi",
+          "cyan": "Firuzəyi",
+          "teal": "Göy-yaşıl",
+          "green": "Yaşıl",
+          "light-green": "Açıq yaşıl",
+          "lime": "Laym",
+          "yellow": "Sarı",
+          "amber": "Kəhrəba",
+          "orange": "Narıncı",
+          "deep-orange": "Tünd narıncı",
+          "brown": "Qəhvəyi",
+          "blue-grey": "Mavi-boz",
+          "grey": "Boz"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Avtomatik vurğu rəngi",
+        "description": "Vurğu rəngini etiket mətnindən avtomatik müəyyən et."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Ləğv düyməsi",
+        "description": "Həbin içində silmə/ləğv ikon düyməsini göstər."
+      },
+      {
+        "property": "readonly",
+        "title": "Yalnız oxumaq üçün",
+        "description": "Həb yalnız göstərmək üçün olsun deyə ləğv düyməsini gizlət."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Keçid edir",
+        "description": "Düyməyə kliklədikdə həbin aktiv/deaktiv vəziyyətə keçməsini təmin et."
+      },
+      {
+        "property": "toggled",
+        "title": "Aktiv",
+        "description": "Həbin hazırda aktiv olub-olmadığı."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Aktiv vəziyyət ikonu",
+        "description": "Həb aktiv olduqda göstəriləcək ikon."
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiv",
+        "description": "Həblə qarşılıqlı təsiri deaktiv et."
+      }
+    ]
+  }
+}

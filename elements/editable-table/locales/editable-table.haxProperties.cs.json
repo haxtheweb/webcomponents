@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabulka",
+    "description": "Tabulková data pro web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Záhlaví řádku",
+        "description": "Považovat první řádek za záhlaví."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Záhlaví sloupce",
+        "description": "Považovat první sloupec za záhlaví."
+      },
+      {
+        "property": "footer",
+        "title": "Zápatí",
+        "description": "Považovat poslední řádek za zápatí."
+      },
+      {
+        "property": "sort",
+        "title": "Řaditelné",
+        "description": "Povolit řazení podle hodnot sloupců."
+      },
+      {
+        "property": "filter",
+        "title": "Povolit filtr",
+        "description": "Povolit filtrování podle hodnot sloupců."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Číselné formátování",
+        "description": "Použít číselné formátování na číselné sloupce."
+      },
+      {
+        "property": "responsive",
+        "title": "Responzivní",
+        "description": "Přizpůsobit rozvržení tabulky na malých obrazovkách."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Režim rubriky",
+        "description": "Interpretovat tuto tabulku jako OER Schema Rubric, aby se generovala metadata Rubric, RubricScale, RubricCriterion a RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Typ rubriky",
+        "description": "Styl rubriky generovaný jako oer:rubricType (má smysl jen při zapnutém režimu rubriky).",
+        "options": {
+          "": "(žádný)",
+          "analytic": "Analytická",
+          "holistic": "Holistická",
+          "single-point": "Jednobodová",
+          "checklist": "Kontrolní seznam"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "S okraji"
+      },
+      {
+        "property": "condensed",
+        "title": "Zhustit řádky",
+        "description": "Zmenšit výšku řádků."
+      },
+      {
+        "property": "striped",
+        "title": "Pruhované řádky",
+        "description": "Podbarvit každý druhý řádek."
+      },
+      {
+        "property": "downloadable",
+        "title": "Tlačítko stažení",
+        "description": "Přidat tlačítko pro stažení tabulky."
+      },
+      {
+        "property": "copyable",
+        "title": "Tlačítko kopírování",
+        "description": "Přidat tlačítko pro zkopírování dat tabulky ve formátu CSV."
+      },
+      {
+        "property": "printable",
+        "title": "Tlačítko tisku",
+        "description": "Přidat tlačítko pro tisk pouze tabulky."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Data CSV",
+        "description": "Vytvořit tabulku z nahraného souboru CSV."
+      }
+    ]
+  }
+}

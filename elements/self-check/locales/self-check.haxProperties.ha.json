@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Duba Kai",
+    "description": "Masu amfani za su iya kammala duba kai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Hoto",
+        "description": "Hoton duba kai."
+      },
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Taken duba kai."
+      },
+      {
+        "property": "alt",
+        "title": "Rubutun Madadi",
+        "description": "Rubutun madadi na hoton."
+      },
+      {
+        "slot": "question",
+        "title": "Tambaya"
+      },
+      {
+        "slot": "",
+        "title": "Amsa"
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin Jigo",
+        "description": "Zaɓi launin jigo daga tsarin zane.",
+        "options": {
+          "primary": "Babba",
+          "accent": "Ƙawa",
+          "success": "Nasara",
+          "warning": "Gargaɗi",
+          "error": "Kuskure",
+          "info": "Bayani"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Manufar Koyo",
+        "description": "Nassoshin manufar koyo da ake fitarwa a matsayin oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Ana tantancewa",
+        "description": "Nassoshin aiki da ake fitarwa a matsayin oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ƙarin mahaɗi",
+        "description": "Mahaɗi zuwa ƙarin bayani."
+      }
+    ]
+  }
+}

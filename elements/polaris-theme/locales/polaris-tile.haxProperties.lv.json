@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris flīze",
+    "description": "Rādīt Polaris flīzi ar nosaukumu, neobligātu papildu tekstu un neobligātu saiti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Galvenais teksts",
+        "description": "Flīzes galvenais teksts."
+      },
+      {
+        "property": "line2",
+        "title": "Sekundārais teksts",
+        "description": "Neobligāts papildu teksts."
+      },
+      {
+        "property": "type",
+        "title": "Flīzes stils",
+        "description": "Iepriekš iestatīts flīzes vizuālais stils.",
+        "options": {
+          "1": "1. stils",
+          "2": "2. stils",
+          "3": "3. stils",
+          "4": "4. stils",
+          "5": "5. stils"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Fona attēls",
+        "description": "Fona attēla URL, ko izmanto flīžu stili ar attēlu atbalstu."
+      },
+      {
+        "property": "link",
+        "title": "Saite",
+        "description": "Neobligāts flīzes darbības mērķa URL."
+      }
+    ]
+  }
+}

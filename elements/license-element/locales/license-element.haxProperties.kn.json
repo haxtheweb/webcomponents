@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ಪರವಾನಗಿ",
+    "description": "ನಿಮ್ಮ ಕೃತಿಗೆ ಪರವಾನಗಿ ಒದಗಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಉಲ್ಲೇಖಿಸಿದ ಕೃತಿಯ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "source",
+        "title": "ಮೂಲ ಲಿಂಕ್",
+        "description": "ಪರವಾನಗಿ ಪಡೆದ ಕೃತಿಯ ಮೂಲ URL."
+      },
+      {
+        "property": "license",
+        "title": "ಪರವಾನಗಿ",
+        "description": "ಈ ಕೃತಿಗೆ ಅನ್ವಯಿಸುವ ಪರವಾನಗಿ."
+      },
+      {
+        "property": "creator",
+        "title": "ರಚನೆಕಾರ",
+        "description": "ಈ ಕೃತಿಯ ರಚನೆಕಾರ ಅಥವಾ ಮಾಲೀಕ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "ಮೂಲ ಲಿಂಕ್",
+        "description": "ಹೆಚ್ಚುವರಿ ಪರವಾನಗಿ ವಿವರಗಳ ಲಿಂಕ್."
+      },
+      {
+        "property": "moreLabel",
+        "title": "ಇನ್ನಷ್ಟು ಲೇಬಲ್",
+        "description": "ಹೆಚ್ಚುವರಿ ಪರವಾನಗಿ ವಿವರಗಳ ಲೇಬಲ್."
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "കോഡ് സാമ്പിൾ",
+    "description": "പേജിൽ ഹൈലൈറ്റ് ചെയ്ത കോഡിന്റെ ഒരു സാമ്പിൾ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "കോഡ് ഹൈലൈറ്റിംഗ്",
+        "description": "കോഡ് ഏരിയയിൽ പ്രയോഗിക്കേണ്ട സിന്റാക്സ് ഹൈലൈറ്റിംഗ്",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON ഡാറ്റ",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തുക ബട്ടൺ",
+        "description": "മുകളിൽ വലത് വശത്ത് ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തുക എന്ന് പറയുന്ന ബട്ടൺ"
+      },
+      {
+        "property": "highlightStart",
+        "title": "ഹൈലൈറ്റ് ആരംഭം",
+        "description": "ഹൈലൈറ്റിംഗ് ആരംഭിക്കേണ്ട വരി നമ്പർ"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "ഹൈലൈറ്റ് അവസാനം",
+        "description": "ഹൈലൈറ്റിംഗ് അവസാനിക്കേണ്ട വരി"
+      }
+    ]
+  }
+}

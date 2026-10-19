@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "टैग",
+    "description": "पृष्ठ पर प्रदर्शन के लिए सरल टैग सूची।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "टैग",
+        "description": "अल्पविराम से अलग की गई टैग सूची।"
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "स्वचालित एक्सेंट रंग",
+        "description": "लेबल के आधार पर एक्सेंट रंग स्वचालित रूप से सेट करें।"
+      },
+      {
+        "property": "accentColor",
+        "title": "रंग",
+        "description": "टैग का रंग।"
+      }
+    ]
+  }
+}

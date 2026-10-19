@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ulanyjy hereketi",
+    "description": "Ulanyjy hereketlerini yzarlaň we maglumatlary xAPI ammarlaryna iberiň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Yzarlanjak waka",
+        "description": "Bu wakany döredýän ulanyjy hereketi.",
+        "options": {
+          "visibility": "Muny görüp bilýär",
+          "keydown": "Şu ýerde düwme basyň",
+          "click": "Muňa basyň",
+          "hover": "Kursory munuň üstünde saklaň"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Her gezek yzarla",
+        "description": "Deslapky ýagdaýda diňe birinji gezek yzarlanýar."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-karakter",
+    "description": "Vicces karakter a HAX-tól."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Név",
+        "description": "Véletlenszerű karakter létrehozásához használt szó."
+      },
+      {
+        "property": "hat",
+        "title": "Kalap",
+        "description": "Kalap stílusa.",
+        "options": {
+          "none": "Alapértelmezett",
+          "random": "Véletlenszerű",
+          "bunny": "Nyuszi",
+          "cowboy": "Cowboy",
+          "education": "Oktatás",
+          "construction": "Építkezés",
+          "warning": "Figyelmeztetés",
+          "watermelon": "Görögdinnye",
+          "coffee": "Kávé",
+          "knight": "Lovag",
+          "ninja": "Nindzsa",
+          "party": "Buli",
+          "error": "Hiba",
+          "edit": "Szerkesztés"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Szélesség",
+        "description": "A karakter szélessége képpontban."
+      },
+      {
+        "property": "height",
+        "title": "Magasság",
+        "description": "A karakter magassága képpontban."
+      },
+      {
+        "property": "fire",
+        "title": "Lángol?",
+        "description": "Lángol-e a karakter."
+      },
+      {
+        "property": "walking",
+        "title": "Sétál?",
+        "description": "Sétaanimáció; lángoláskor fut."
+      }
+    ]
+  }
+}

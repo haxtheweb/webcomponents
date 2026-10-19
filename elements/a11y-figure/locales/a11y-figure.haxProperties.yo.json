@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Àwòrán Àpèjúwe",
+    "description": "Àwòrán tó ṣeé wọlé sí pẹ̀lú àpèjúwe gígùn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Àwòrán"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Ọ̀rọ̀ àfirọ́pò"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Àkọlé-àlàyé Àwòrán",
+        "description": "Ọ̀rọ̀ àkọlé-àlàyé àwòrán tí a máa ń rí nígbà gbogbo."
+      },
+      {
+        "slot": "details",
+        "title": "Àpèjúwe",
+        "description": "Àpèjúwe àwòrán kíkún tí a lè fi pamọ́ tàbí fi hàn"
+      },
+      {
+        "slot": "summary",
+        "title": "Bọ́tìnnì Àpèjúwe",
+        "description": "Àkọ́kọ́ fún bọ́tìnnì tó ń fi ọ̀rọ̀ àpèjúwe hàn/pamọ́, fún àpẹẹrẹ \"àlàyé\", \"dátà àpèjúwe\", abbl."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Ọ̀rọ̀ àkópọ̀ (àṣàyàn) nígbà tí àwọn àlàyé bá ṣí"
+      },
+      {
+        "property": "closeText",
+        "title": "Ọ̀rọ̀ àkópọ̀ (àṣàyàn) nígbà tí àwọn àlàyé bá tì"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Kahanga-hangang Pagsabog",
+    "description": "Interactive na animation ng pagsabog na may opsyonal na sound effects."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Laki",
+        "description": "Itakda ang laki ng pagsabog.",
+        "options": {
+          "tiny": "Napakaliit",
+          "small": "Maliit",
+          "medium": "Katamtaman",
+          "large": "Malaki",
+          "epic": "Epiko"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Kulay",
+        "description": "Itakda ang tema ng kulay ng pagsabog.",
+        "options": {
+          "": "Default",
+          "red": "Pula",
+          "blue": "Asul",
+          "purple": "Lila",
+          "orange": "Kahel",
+          "yellow": "Dilaw"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Sound Effects",
+        "description": "I-enable ang sound effects."
+      },
+      {
+        "property": "resetSound",
+        "title": "I-reset ang Tunog",
+        "description": "Simulan muli ang tunog mula sa umpisa sa bawat pagkakataon."
+      },
+      {
+        "property": "image",
+        "title": "Custom na Larawan",
+        "description": "Opsyonal na URL para sa custom na larawan ng pagsabog."
+      },
+      {
+        "property": "sound",
+        "title": "Custom na Tunog",
+        "description": "Opsyonal na URL para sa custom na sound effect."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Naka-disable",
+        "description": "I-disable ang lahat ng interaksyon."
+      }
+    ]
+  }
+}

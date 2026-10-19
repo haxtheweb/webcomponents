@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Loulou kumu",
+    "description": "Mea loulou kumu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Loulou",
+        "description": "URL e hele ai."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Kikokikona",
+        "description": "Kikokikona loulou ʻike ʻia."
+      },
+      {
+        "attribute": "target",
+        "title": "Pahuhopu",
+        "description": "Ka wahi e wehe ai i ka loulou.",
+        "options": {
+          "": "Puka aniani like",
+          "_blank": "Puka aniani hou - _blank",
+          "_top": "Puka aniani luna - _top",
+          "_parent": "Puka aniani makua - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Kikokikona poʻo inoa",
+        "description": "Poʻo inoa aʻo no ka hiki ke komo ʻia a me SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Pilina me kahi e hele ai (palekana/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkazam",
+    "description": "Prikaz teksta na trolerski način"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Tekst",
+        "description": "Tekst koji treba učiniti sarkastičnim"
+      }
+    ]
+  }
+}

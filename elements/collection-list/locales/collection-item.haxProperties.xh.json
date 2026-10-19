@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Into yengqokelela",
+    "description": "Into enjengekhadi esetyenziswa kuluhlu lwengqokelela, enombhalo, ikhonkco kunye nemidiya ekhethwayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Ikhonkco",
+        "description": "I-URL ekuyiwa kuyo yeli khadi."
+      },
+      {
+        "property": "image",
+        "title": "Umfanekiso",
+        "description": "Umfanekiso ongasemva."
+      },
+      {
+        "property": "line1",
+        "title": "Umgca 1",
+        "description": "Umgca wokuqala wombhalo."
+      },
+      {
+        "property": "line2",
+        "title": "Umgca 2",
+        "description": "Umgca wesibini wombhalo."
+      },
+      {
+        "property": "line3",
+        "title": "Umgca 3",
+        "description": "Umgca wesithathu wombhalo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "I-icon",
+        "description": "I-icon emele eli khadi."
+      },
+      {
+        "property": "saturate",
+        "title": "Isiphumo sokuqina kombala",
+        "description": "Tshintsha ukuqina kombala womfanekiso xa umsebenzisi egxila kuwo."
+      },
+      {
+        "property": "tags",
+        "title": "Iithegi",
+        "description": "Uluhlu lweethegi ezahlulwe ngeekoma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala",
+        "description": "Umbala osetyenziselwa iithegi."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo ongenayo",
+        "description": "Umbhalo ongenayo ochaza ikhonkco."
+      }
+    ]
+  }
+}

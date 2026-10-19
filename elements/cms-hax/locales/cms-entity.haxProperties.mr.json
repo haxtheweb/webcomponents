@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS संस्था",
+    "description": "बॅकएंडवर प्रस्तुत केलेली CMS संस्था"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "प्रकार",
+        "description": "आमच्या CMS मधील प्रकार",
+        "options": {
+          "node": "नोड",
+          "user": "वापरकर्ता",
+          "file": "फाइल"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "आमच्या CMS मधील id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "प्रदर्शन मोड",
+        "description": "आमच्या CMS मधील प्रदर्शन मोड"
+      }
+    ]
+  }
+}

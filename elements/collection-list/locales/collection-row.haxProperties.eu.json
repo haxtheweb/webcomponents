@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Bilduma errenkada",
+    "description": "Bilduma zerrenda baten barruan erabiltzeko errenkada motako elementua, testua, esteka, ikonoa, etiketak eta aukerako irudia dituena."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Esteka",
+        "description": "Errenkada honen helburuko URLa."
+      },
+      {
+        "property": "image",
+        "title": "Irudia",
+        "description": "Errenkadaren irudia."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Irudia deskribatzen duen testu alternatiboa."
+      },
+      {
+        "property": "line1",
+        "title": "1. lerroa",
+        "description": "Testuaren lehen lerroa."
+      },
+      {
+        "property": "line2",
+        "title": "2. lerroa",
+        "description": "Testuaren bigarren lerroa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikonoa",
+        "description": "Errenkada adierazten duen ikonoa."
+      },
+      {
+        "property": "saturate",
+        "title": "Saturazio efektua",
+        "description": "Aldatu irudiaren saturazioa erabiltzaileak fokua jartzean."
+      },
+      {
+        "property": "tags",
+        "title": "Etiketak",
+        "description": "Komaz bereizitako etiketen zerrenda."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolorea",
+        "description": "Ikonorako eta etiketetarako erabilitako kolorea."
+      }
+    ]
+  }
+}

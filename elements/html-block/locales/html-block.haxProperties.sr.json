@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML блок",
+    "description": "Основни HTML блок који пружа HAXschema повезивање"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML код који желите да прикажете у садржају"
+      }
+    ]
+  }
+}

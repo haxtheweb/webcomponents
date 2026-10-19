@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Amlíne",
+    "description": "Amlíne imeachtaí le híomhánna agus téacs"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Teideal na hamlíne",
+        "description": "Teideal don amlíne."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath Aibhsithe",
+        "description": "Dath aibhsithe roghnach."
+      },
+      {
+        "property": "dark",
+        "title": "Téama Dorcha",
+        "description": "Cumasaigh an Téama Dorcha"
+      },
+      {
+        "slot": "",
+        "title": "Cur Síos na hAmlíne",
+        "description": "Téacs roghnach a chuireann síos ar an amlíne."
+      },
+      {
+        "property": "events",
+        "title": "Imeachtaí na hAmlíne",
+        "description": "Na himeachtaí san amlíne"
+      }
+    ]
+  }
+}

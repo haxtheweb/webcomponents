@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lebo",
+    "description": "Orodha rahisi ya lebo ya kuonyeshwa kwenye ukurasa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Lebo",
+        "description": "Orodha ya lebo zilizotenganishwa kwa koma."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Rangi ya Msisitizo ya Kiotomatiki",
+        "description": "Weka rangi ya msisitizo kiotomatiki kulingana na lebo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi",
+        "description": "Rangi ya lebo."
+      }
+    ]
+  }
+}

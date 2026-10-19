@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallaksebillede",
+    "description": "Billede, der ruller forbi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Billede",
+        "description": "billede, der skal indgå i baggrunden"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Overskriftsområde",
+        "description": "Område til overskriftstekst"
+      }
+    ]
+  }
+}

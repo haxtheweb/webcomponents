@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "کارت پستال",
+    "description": "یک قطعهٔ رسانه‌ای سرگرم‌کننده که شبیه کارت پستالی واقعی از جایی است"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "به",
+        "description": "این برای چه کسی است؟"
+      },
+      {
+        "property": "from",
+        "title": "از",
+        "description": "شما چه کسی هستید؟"
+      },
+      {
+        "property": "message",
+        "title": "پیام",
+        "description": "چه می‌خواهید بگویید؟"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "مهر پستی از",
+        "description": "این کارت از کجا فرستاده شده است؟"
+      },
+      {
+        "property": "photoSrc",
+        "title": "منبع عکس اصلی",
+        "description": "عکس شما کجاست؟"
+      },
+      {
+        "property": "stampSrc",
+        "title": "منبع عکس تمبر",
+        "description": "عکس شما کجاست؟"
+      }
+    ]
+  }
+}

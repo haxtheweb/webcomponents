@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Էջի դրոշակ",
+    "description": "Խմբագրական նշում էջի հեղինակների համար։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Էջի դրոշակի շեշտադրման գույնը։"
+      },
+      {
+        "property": "label",
+        "title": "Պիտակ",
+        "description": "Էջի դրոշակի պիտակի տեքստը։"
+      }
+    ]
+  }
+}

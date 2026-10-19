@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Mawu",
+    "description": "Liwu la mawu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Liwu"
+      },
+      {
+        "property": "information",
+        "title": "Tanthauzo",
+        "description": "Tanthauzo lowonetsedwa liwu likadindidwa."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Zenera lotuluka",
+        "description": "Onetsani tanthauzo pazenera lotuluka m'malo mwa mkati mwa mawu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Maulalo",
+        "description": "Mndandanda wa maulalo owonjezera okhudzana ndi liwu ili."
+      }
+    ]
+  }
+}

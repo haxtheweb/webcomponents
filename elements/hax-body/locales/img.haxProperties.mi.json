@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Atahanga Taketake",
+    "description": "Huānga atahanga taketake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Pūtake",
+        "description": "URL atahanga."
+      },
+      {
+        "attribute": "alt",
+        "title": "Kupu kē",
+        "description": "Kuputuhi kē mō te wātea me te SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Teitei",
+        "description": "Teitei i ngā pika. Waiho kau hei whakamahi i te rahi māori."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Te uta whakaahua",
+        "description": "Kōwhiria āhea ka uta te atahanga.",
+        "options": {
+          "lazy": "Uta ina kitea",
+          "auto": "Aunoa"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Ngā pūtake urutau (srcset)",
+        "description": "Rārangitia ngā URL atahanga me ngā kaiwhakaahua (hei tauira 480w, 2x rānei) kia kōwhiria e ngā pūtirotiro te rahi pai rawa mō te mata. Ka penapenahia hei huanga srcset paerewa."
+      }
+    ]
+  }
+}

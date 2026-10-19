@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Карта",
+    "description": "Компонент карта, стилизиран с дизайн системата DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Изображение",
+        "description": "Незадължително изображение."
+      },
+      {
+        "property": "alt",
+        "title": "Alt на изображението",
+        "description": "Алтернативен текст, описващ изображението."
+      },
+      {
+        "property": "title",
+        "title": "Заглавие",
+        "description": "Заглавие на картата."
+      },
+      {
+        "slot": "",
+        "title": "Съдържание",
+        "description": "Област за съдържание на картата."
+      },
+      {
+        "property": "href",
+        "title": "Връзка",
+        "description": "URL на връзката на бутона."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Етикет",
+        "description": "Етикет на бутона."
+      },
+      {
+        "property": "noArrow",
+        "title": "Без стрелка",
+        "description": "Скриване на стрелката на бутона."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Връзка: target",
+        "description": "Къде да се отвори връзката.",
+        "options": {
+          "": "Същия прозорец",
+          "_blank": "Нов прозорец - _blank",
+          "_top": "Горен прозорец - _top",
+          "_parent": "Родителски прозорец - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Връзка: rel",
+        "description": "Връзка между свързания ресурс и текущия документ."
+      }
+    ]
+  }
+}

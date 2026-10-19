@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": ".h5p файлдарын жүктөө жана көрсөтүү үчүн h5p ороосу"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe кыстаруу коду"
+      }
+    ]
+  }
+}

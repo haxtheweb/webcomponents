@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kursusmodel",
+    "description": "Ynteraktive opmaak foar kursuskonsepten mei details, animaasje en kennistests."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titel"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Ynformaasjegebiet"
+      },
+      {
+        "title": "Detailgebiet"
+      },
+      {
+        "title": "Animaasjegebiet"
+      },
+      {
+        "title": "Kennistestgebiet"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logogebiet"
+      }
+    ]
+  }
+}

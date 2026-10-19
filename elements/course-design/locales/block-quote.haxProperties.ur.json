@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "اقتباس بلاک",
+    "description": "اسٹائل شدہ اقتباس بلاک۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "حوالہ",
+        "description": "حوالے کا متن۔"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "تصویر کے لیے متبادل متن۔"
+      },
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "اقتباس کے ساتھ دکھائی جانے والی تصویر۔"
+      }
+    ]
+  }
+}

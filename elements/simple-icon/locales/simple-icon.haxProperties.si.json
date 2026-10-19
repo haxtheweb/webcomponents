@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "නිරූපකය",
+    "description": "සම්පූර්ණ නිරූපක පුස්තකාලයෙන් නිරූපකයක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "නිරූපකය",
+        "description": "විදහා දැක්විය යුතු නිරූපකය."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "නිරූපකය සඳහා උච්චාරණ වර්ණය."
+      },
+      {
+        "property": "dark",
+        "title": "අඳුරු",
+        "description": "අඳුරු ප්‍රකාරය භාවිත කරන්න (ප්‍රතිලෝම වර්ණ කට්ටලය)."
+      }
+    ]
+  }
+}

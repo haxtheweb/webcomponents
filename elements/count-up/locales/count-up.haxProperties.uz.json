@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Hisoblagich",
+    "description": "Koʻrinish maydoniga kirganda sonni maqsadli qiymatgacha oshib borishini animatsiya qilish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Yakuniy qiymat",
+        "description": "Hisoblash yakunlanadigan son."
+      },
+      {
+        "property": "start",
+        "title": "Boshlangʻich qiymat",
+        "description": "Hisoblash boshlanadigan son."
+      },
+      {
+        "property": "duration",
+        "title": "Davomiylik",
+        "description": "Hisoblash animatsiyasi davom etadigan soniyalar."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Prefiks matni",
+        "description": "Sondan oldin koʻrsatiladigan matn (masalan, '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Suffiks matni",
+        "description": "Sondan keyin koʻrsatiladigan matn (masalan, '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefiks sloti",
+        "description": "Sondan oldingi ixtiyoriy slot kontenti."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffiks sloti",
+        "description": "Sondan keyingi ixtiyoriy slot kontenti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Kasr xonalari",
+        "description": "Koʻrsatiladigan kasr xonalari soni."
+      },
+      {
+        "property": "separator",
+        "title": "Minglik ajratgichi",
+        "description": "Minglik guruhlarini ajratuvchi belgi."
+      },
+      {
+        "property": "decimal",
+        "title": "Kasr belgisi",
+        "description": "Kasr nuqtasi uchun ishlatiladigan belgi."
+      },
+      {
+        "property": "noeasing",
+        "title": "Silliqlashsiz",
+        "description": "Hisoblash chiziqli boʻlishi uchun silliqlashni oʻchirish."
+      }
+    ]
+  }
+}

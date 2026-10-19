@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Container na nako-collapse",
+    "description": "Iisang container na nae-expand at nako-collapse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Heading",
+        "description": "Teksto para sa collapse."
+      },
+      {
+        "property": "expanded",
+        "title": "Naka-expand",
+        "description": "Naka-expand bilang default."
+      },
+      {
+        "property": "headingButton",
+        "title": "Button ng Heading",
+        "description": "Gawing naki-click ang buong heading sa halip na ang icon lang."
+      },
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Icon para sa button na pang-expand/collapse."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Icon (kapag naka-expand)",
+        "description": "Opsyonal na icon para sa naka-expand na estado ng toggle."
+      },
+      {
+        "slot": "",
+        "title": "Nilalaman",
+        "description": "Nilalaman para sa collapse."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Tooltip",
+        "description": "Tooltip para sa button na pang-expand/collapse."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Tooltip (kapag naka-expand)",
+        "description": "Tooltip para sa button na pang-expand/collapse kapag naka-expand."
+      }
+    ]
+  }
+}

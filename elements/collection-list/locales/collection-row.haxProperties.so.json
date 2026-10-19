@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Saf ururin",
+    "description": "Walax saf u eg oo loogu talagalay liiska ururinta, leh qoraal, xiriiriye, astaan, summado, iyo sawir ikhtiyaari ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Xiriiriye",
+        "description": "URL-ka loo socdo ee safkan."
+      },
+      {
+        "property": "image",
+        "title": "Sawir",
+        "description": "Sawirka safka."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Qoraal beddel ah oo sharaxaya sawirka."
+      },
+      {
+        "property": "line1",
+        "title": "Sadar 1",
+        "description": "Sadarka koowaad ee qoraalka."
+      },
+      {
+        "property": "line2",
+        "title": "Sadar 2",
+        "description": "Sadarka labaad ee qoraalka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Astaan",
+        "description": "Astaanta matalaysa safka."
+      },
+      {
+        "property": "saturate",
+        "title": "Saamaynta dhereg midabka",
+        "description": "Beddel dhereg midabka sawirka marka isticmaaluhu diiradda saaro."
+      },
+      {
+        "property": "tags",
+        "title": "Summado",
+        "description": "Liis summado ah oo hakad lagu kala saaray."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midab",
+        "description": "Midabka loo isticmaalo astaanta iyo summadaha."
+      }
+    ]
+  }
+}

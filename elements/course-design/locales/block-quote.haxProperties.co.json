@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Citazione in bloccu",
+    "description": "Bloccu di citazione cù stile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Riferimentu",
+        "description": "Testu di u riferimentu."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Testu alternativu per l'imagine."
+      },
+      {
+        "property": "image",
+        "title": "Imagine",
+        "description": "Imagine affissata cù a citazione."
+      }
+    ]
+  }
+}

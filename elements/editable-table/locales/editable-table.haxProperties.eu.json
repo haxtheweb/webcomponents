@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Taula",
+    "description": "Weberako taula bidezko datuak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Errenkada goiburua",
+        "description": "Tratatu lehen errenkada goiburu gisa."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Zutabe goiburua",
+        "description": "Tratatu lehen zutabea goiburu gisa."
+      },
+      {
+        "property": "footer",
+        "title": "Orri-oina",
+        "description": "Tratatu azken errenkada orri-oin gisa."
+      },
+      {
+        "property": "sort",
+        "title": "Ordenagarria",
+        "description": "Baimendu zutabeen balioen arabera ordenatzea."
+      },
+      {
+        "property": "filter",
+        "title": "Baimendu iragazkia",
+        "description": "Baimendu zutabeen balioen arabera iragaztea."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Zenbakizko estiloa",
+        "description": "Aplikatu zenbakizko estiloa zenbakizko zutabeei."
+      },
+      {
+        "property": "responsive",
+        "title": "Moldakorra",
+        "description": "Egokitu taularen diseinua pantaila txikietan."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Errubrika modua",
+        "description": "Interpretatu taula hau OER Schema Rubric gisa, Rubric, RubricScale, RubricCriterion eta RubricLevel metadatuak sor daitezen."
+      },
+      {
+        "property": "rubricType",
+        "title": "Errubrika mota",
+        "description": "oer:rubricType gisa sortzen den errubrika estiloa (Errubrika modua aktibatuta dagoenean soilik du zentzua).",
+        "options": {
+          "": "(bat ere ez)",
+          "analytic": "Analitikoa",
+          "holistic": "Holistikoa",
+          "single-point": "Puntu bakarrekoa",
+          "checklist": "Egiaztapen zerrenda"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Ertzduna"
+      },
+      {
+        "property": "condensed",
+        "title": "Trinkotu errenkadak",
+        "description": "Murriztu errenkaden altuera."
+      },
+      {
+        "property": "striped",
+        "title": "Errenkada marradunak",
+        "description": "Itzaleztatu errenkadak txandaka."
+      },
+      {
+        "property": "downloadable",
+        "title": "Deskargatzeko botoia",
+        "description": "Gehitu taula deskargatzeko botoi bat."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopiatzeko botoia",
+        "description": "Gehitu taularen CSV datuak kopiatzeko botoi bat."
+      },
+      {
+        "property": "printable",
+        "title": "Inprimatzeko botoia",
+        "description": "Gehitu taula soilik inprimatzeko botoi bat."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV datuak",
+        "description": "Sortu taula bat igotako CSV fitxategi batetik."
+      }
+    ]
+  }
+}

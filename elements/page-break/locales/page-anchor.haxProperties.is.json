@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Síðuakkeri",
+    "description": "Tengja í ákveðna staði í miðlum á síðunni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Markmið á síðu",
+        "description": "Auðkenni (ID) eða auðlind sem þetta akkeri vísar á."
+      },
+      {
+        "property": "value",
+        "title": "Gildi djúptengils",
+        "description": "Gildi djúptengils (t.d. tímastimpill eða ID glæru)."
+      },
+      {
+        "property": "entityId",
+        "title": "Eining vefsvæðis",
+        "description": "Valfrjáls eining vefsvæðis til að stýra birtingu tengdra hugtaka."
+      }
+    ]
+  }
+}

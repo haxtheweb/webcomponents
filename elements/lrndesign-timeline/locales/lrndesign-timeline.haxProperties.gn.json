@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ára rysýi",
+    "description": "Peteĩ ára rysýi mba'e oikova'ekue ta'ãnga ha moñe'ẽrã reheve"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Ára rysýi réra",
+        "description": "Peteĩ téra ára rysýipe g̃uarã."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y ojehechaukavéva ikatúramo."
+      },
+      {
+        "property": "dark",
+        "title": "Ñemohenda pytũ",
+        "description": "Emyendy Jeguakaha Ypytũ"
+      },
+      {
+        "slot": "",
+        "title": "Ára Rysýi Ñemoha'ãnga",
+        "description": "Moñe'ẽrã ojeporavokuaáva omombe'úva ára rysýi."
+      },
+      {
+        "property": "events",
+        "title": "Ára Rysýi Mba'e Oikóva",
+        "description": "Mba'e oikóva ára rysýipe"
+      }
+    ]
+  }
+}

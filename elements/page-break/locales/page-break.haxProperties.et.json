@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Lehe üksikasjad",
+    "description": "Määra lehtede vaheline visuaalne eraldus, mida sisuhaldussüsteemid saavad lehtede loomiseks kasutada."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Teemas ja esimeses pealkirjas kuvatav pealkiri."
+      },
+      {
+        "property": "pageType",
+        "title": "Tüüp",
+        "description": "Lehe konteksti visuaalne silt.",
+        "options": {
+          "": "-- puudub --",
+          "content": "Sisu",
+          "assessment": "Hindamine",
+          "quiz": "Test",
+          "submission": "Esitamine",
+          "lesson": "Õppetund",
+          "module": "Moodul",
+          "task": "Ülesanne",
+          "activity": "Tegevus",
+          "project": "Projekt",
+          "practice": "Harjutus",
+          "unit": "Õppeüksus",
+          "objectives": "Õpieesmärgid",
+          "connection": "Seos",
+          "knowledge": "Kas teadsid?",
+          "strategy": "Õpistrateegia",
+          "discuss": "Aruta",
+          "listen": "Kuula",
+          "make": "Loo",
+          "observe": "Vaatle",
+          "present": "Esitle",
+          "reading": "Lugemine",
+          "reflect": "Mõtiskle",
+          "research": "Uuri",
+          "watch": "Vaata",
+          "write": "Kirjuta"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Sildid",
+        "description": "Komadega eraldatud siltide loend."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Lingi URL",
+        "description": "Ümbersuunamise URL, mida kuvatakse lehe sisu asemel."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Lingi sihtkoht",
+        "description": "Ava lingid samas või uues aknas.",
+        "options": {
+          "_self": "Samas aknas",
+          "_blank": "Uus aken"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Avaldatud",
+        "description": "Avaldamata lehed on lõppkasutajate eest peidetud."
+      },
+      {
+        "property": "locked",
+        "title": "Lukusta leht",
+        "description": "Lukusta või ava kõik selle lehe elemendid."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Alista automaatne lühinimi",
+        "description": "Takista lühinime automaatset uuendamist pealkirja või ülemlehe põhjal."
+      },
+      {
+        "property": "slug",
+        "title": "Tee",
+        "description": "Selle lehe URL-i lühinimi."
+      },
+      {
+        "property": "image",
+        "title": "Meedia",
+        "description": "Lehte esindav meedia, mida kasutatakse mõnes teemas ja vaates."
+      },
+      {
+        "property": "parent",
+        "title": "Ülemleht",
+        "description": "Ülemlehe tee."
+      },
+      {
+        "property": "noderefs",
+        "title": "Seotud sisu",
+        "description": "Selle lehega seotud lehed."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Kirjeldus",
+        "description": "Kirjeldus, mida kasutatakse kogumikes ja otsingumootoritele optimeerimisel."
+      },
+      {
+        "property": "entityType",
+        "title": "Olemi tüüp",
+        "description": "Vaikimisi leht, kui pole määratud teisiti.",
+        "options": {
+          "page": "Leht (vaikimisi)",
+          "taxonomy": "Taksonoomia",
+          "taxonomyTerm": "Taksonoomia termin",
+          "region": "Piirkond"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Selle lehega saidil seotud ikoon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Selle lehega saidil seotud värv."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Peida menüüs",
+        "description": "Peida see leht menüüdest, säilitades selle URL-i."
+      },
+      {
+        "property": "order",
+        "title": "Järjekord",
+        "description": "Järjekord samal tasemel olevate lehtede suhtes."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Lehe teema",
+        "description": "Alista teema ainult selle lehe jaoks."
+      },
+      {
+        "property": "author",
+        "title": "Autor",
+        "description": "Selle lehe viimase muutja kasutajanimi."
+      }
+    ]
+  }
+}

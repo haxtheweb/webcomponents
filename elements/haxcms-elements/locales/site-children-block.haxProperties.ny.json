@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: chipika cha ana",
+    "description": "Chipika chosintha choonetsa ana a tsamba lino"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Njira yosintha",
+        "description": "Momwe mungawerengere ana molingana ndi chinthu ichi",
+        "options": {
+          "active": "Ana a tsamba logwira ntchito",
+          "parent": "Ana a kholo",
+          "ancestor": "Ana onse kuchokera kwa kholo lapamwamba kwambiri"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Mlingo woyambira"
+      },
+      {
+        "property": "end",
+        "title": "Mlingo womaliza"
+      }
+    ]
+  }
+}

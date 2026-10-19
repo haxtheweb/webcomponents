@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "کلیکشن آئٹم",
+    "description": "کلیکشن فہرست کے اندر استعمال کے لیے کارڈ نما آئٹم، جس میں متن، لنک اور اختیاری میڈیا ہو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "لنک",
+        "description": "اس کارڈ کا منزل URL۔"
+      },
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "پس منظر کی تصویر۔"
+      },
+      {
+        "property": "line1",
+        "title": "سطر 1",
+        "description": "متن کی پہلی سطر۔"
+      },
+      {
+        "property": "line2",
+        "title": "سطر 2",
+        "description": "متن کی دوسری سطر۔"
+      },
+      {
+        "property": "line3",
+        "title": "سطر 3",
+        "description": "متن کی تیسری سطر۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "کارڈ کی نمائندگی کرنے والا آئیکن۔"
+      },
+      {
+        "property": "saturate",
+        "title": "سیچوریشن اثر",
+        "description": "صارف کے فوکس پر تصویر کی سیچوریشن بدلیں۔"
+      },
+      {
+        "property": "tags",
+        "title": "ٹیگز",
+        "description": "کوما سے الگ ٹیگز کی فہرست۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ",
+        "description": "ٹیگز کے لیے استعمال ہونے والا رنگ۔"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "لنک کی وضاحت کرنے والا متبادل متن۔"
+      }
+    ]
+  }
+}

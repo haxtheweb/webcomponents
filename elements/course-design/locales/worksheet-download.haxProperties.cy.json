@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Llwytho Taflen Waith i Lawr",
+    "description": "Botwm ar gyfer dangos ffeiliau sydd ar gael i'w llwytho i lawr."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Teitl y lawrlwythiad."
+      },
+      {
+        "property": "link",
+        "title": "Dolen",
+        "description": "Y ddolen ar gyfer y lawrlwythiad."
+      }
+    ]
+  }
+}

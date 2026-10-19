@@ -5,5 +5,9 @@
   "recordAudio": "غږ ریکارډ کړئ",
   "recordScreen": "سکرین ریکارډ کړئ",
   "cancel": "لغوه کړئ",
-  "uploadMedia": "میډیا اپلوډ کړئ"
+  "uploadMedia": "میډیا اپلوډ کړئ",
+  "record": "ثبتول",
+  "pause": "ثبت ودروئ",
+  "stopSave": "ودروئ او خوندي کړئ",
+  "clickToTakePhoto": "د انځور اخیستلو لپاره کلیک وکړئ"
 }

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "پیوند پایه",
+    "description": "عنصر پیوند پایه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "پیوند",
+        "description": "URL مقصد."
+      },
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "متن نمایان پیوند."
+      },
+      {
+        "attribute": "target",
+        "title": "مقصد",
+        "description": "پیوند کجا باز شود.",
+        "options": {
+          "": "همان پنجره",
+          "_blank": "پنجرهٔ جدید - _blank",
+          "_top": "پنجرهٔ بالایی - _top",
+          "_parent": "پنجرهٔ والد - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "متن عنوان",
+        "description": "عنوان راهنما برای دسترس‌پذیری و SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "رابطه با مقصد (امنیت/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Línurit",
+    "description": "Býr til aðgengilegt graf út frá CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Áherslulitur",
+        "description": "Valfrjáls áherslulitur."
+      },
+      {
+        "title": "Dökkt þema",
+        "description": "Virkja dökkt þema"
+      },
+      {
+        "title": "CSV-skrá",
+        "description": "Hlaða gögnum úr CSV."
+      },
+      {
+        "title": "Titill grafs",
+        "description": "Aðgengilegur alt-texti fyrir grafið þitt."
+      },
+      {
+        "title": "Lýsing grafs",
+        "description": "Aðgengileg lýsing á grafinu þínu."
+      },
+      {
+        "title": "Heiti kvarða",
+        "description": "Hlutfall breiddar:hæðar grafsins (sjá https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings fyrir $ct-scales og $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Sýna bakgrunnsnet"
+      },
+      {
+        "title": "Sýna svæði"
+      },
+      {
+        "title": "Sýna línu"
+      },
+      {
+        "title": "Sýna punkt"
+      },
+      {
+        "title": "Full breidd"
+      },
+      {
+        "title": "Sýna merki punkta"
+      },
+      {
+        "title": "Spássía grafs (efst)"
+      },
+      {
+        "title": "Spássía grafs (neðst)"
+      },
+      {
+        "title": "Spássía grafs (vinstri)"
+      },
+      {
+        "title": "Spássía grafs (hægri)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Snúa gögnum við",
+        "description": "Snúa gögnum við, þar með talið merkjum, röð gagnaraða og öllum gagnafylkjum raðanna."
+      },
+      {
+        "title": "HTML-tafla",
+        "description": "Valfrjálst: Hlaða gögnum sem HTML-töflu."
+      },
+      {
+        "title": "Lággildi grafs",
+        "description": "Með því að hnekkja náttúrulegu lággildi grafsins geturðu þysjað inn eða takmarkað lægsta gildið sem birtist"
+      },
+      {
+        "title": "Hágildi grafs",
+        "description": "Með því að hnekkja náttúrulegu hágildi grafsins geturðu þysjað inn eða takmarkað hæsta gildið sem birtist"
+      },
+      {
+        "title": "Sýna merki punkta",
+        "options": {
+          "middle": "Miðja",
+          "start": "Upphaf",
+          "end": "Lok"
+        }
+      },
+      {
+        "title": "X-hliðrun merkja punkta"
+      },
+      {
+        "title": "Y-hliðrun merkja punkta"
+      },
+      {
+        "title": "Mjúk lína"
+      },
+      {
+        "title": "Grunnur svæðis",
+        "description": "Grunnurinn fyrir svæðisritið sem notaður er til að loka svæðisforminu (er venjulega 0)."
+      },
+      {
+        "title": "X-ás: sýna net",
+        "description": "Sýna net X-ássins."
+      },
+      {
+        "title": "Hliðrun X-áss"
+      },
+      {
+        "title": "Staðsetning X-áss",
+        "description": "Staðsetning merkja. Hægt er að stilla á \"start\" eða \"end\" þar sem \"start\" jafngildir vinstri eða efst á lóðréttum ási og \"end\" jafngildir hægri eða neðst á láréttum ási"
+      },
+      {
+        "title": "X-ás: sýna merki",
+        "description": "Sýna merki X-ássins."
+      },
+      {
+        "title": "Merki X-áss (lárétt hliðrun)",
+        "description": "Lárétt staðsetning merkja X-ássins."
+      },
+      {
+        "title": "Merki X-áss (lóðrétt hliðrun)",
+        "description": "Lóðrétt staðsetning merkja X-ássins."
+      },
+      {
+        "title": "Titill X-áss",
+        "description": "Valfrjáls titill X-áss."
+      },
+      {
+        "title": "Titill X-áss (lárétt hliðrun)",
+        "description": "Lárétt staðsetning titils X-ássins."
+      },
+      {
+        "title": "Titill X-áss (lóðrétt hliðrun)",
+        "description": "Lóðrétt staðsetning titils X-ássins."
+      },
+      {
+        "title": "Akkeri titils X-áss",
+        "description": "Valfrjálst akkeri fyrir titil X-áss.",
+        "options": {
+          "middle": "miðja",
+          "end": "endir",
+          "start": "upphaf"
+        }
+      },
+      {
+        "title": "Y-ás: sýna net",
+        "description": "Sýna net Y-ássins."
+      },
+      {
+        "title": "Hliðrun Y-áss"
+      },
+      {
+        "title": "Staðsetning Y-áss",
+        "description": "Staðsetning merkja. Hægt er að stilla á \"start\" eða \"end\" þar sem \"start\" jafngildir vinstri eða efst á lóðréttum ási og \"end\" jafngildir hægri eða neðst á láréttum ási"
+      },
+      {
+        "title": "Y-ás: sýna merki",
+        "description": "Sýna merki Y-ássins."
+      },
+      {
+        "title": "Merki Y-áss (lárétt hliðrun)",
+        "description": "Lárétt staðsetning merkis Y-ássins."
+      },
+      {
+        "title": "Merki Y-áss (lóðrétt hliðrun)",
+        "description": "Lóðrétt staðsetning merkis Y-ássins."
+      },
+      {
+        "title": "Lágmarksbil kvarða Y-áss",
+        "description": "Tilgreinir lágmarkshæð kvarðaskrefa í dílum."
+      },
+      {
+        "title": "Kvarði Y-áss (aðeins heiltölur)",
+        "description": "Nota aðeins heiltölur fyrir kvarðaskrefin."
+      },
+      {
+        "title": "Titill Y-áss",
+        "description": "Valfrjáls titill Y-áss."
+      },
+      {
+        "title": "Titill Y-áss (lóðrétt hliðrun)",
+        "description": "Lárétt staðsetning titils Y-ássins."
+      },
+      {
+        "title": "Titill Y-áss (lárétt hliðrun)",
+        "description": "Lárétt staðsetning titils Y-ássins."
+      },
+      {
+        "title": "Akkeri titils Y-áss",
+        "description": "Valfrjálst akkeri fyrir titil Y-áss.",
+        "options": {
+          "middle": "miðja",
+          "end": "endir",
+          "start": "upphaf"
+        }
+      },
+      {
+        "title": "Snúa titli Y-áss",
+        "description": "Snúa titli Y-áss?"
+      }
+    ]
+  }
+}

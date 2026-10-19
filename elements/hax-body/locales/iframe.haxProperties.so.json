@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Ku dheji waxyaabo web dibadeed."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Isha",
+        "description": "URL-ka ilahan."
+      }
+    ]
+  }
+}

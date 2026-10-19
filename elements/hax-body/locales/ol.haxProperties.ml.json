@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "നമ്പറിട്ട ലിസ്റ്റ്",
+    "description": "ഒരു നമ്പറിട്ട ലിസ്റ്റ് സൃഷ്ടിക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "നമ്പർ ശൈലി",
+        "description": "ക്രമമുള്ള ലിസ്റ്റ് നമ്പറിംഗിന് ഉപയോഗിക്കുന്ന ശൈലി.",
+        "options": {
+          "": "ഡിഫോൾട്ട് (ദശാംശം)",
+          "list-decimal-leading-zero": "മുന്നിൽ പൂജ്യമുള്ള ദശാംശം (01, 02, 03)",
+          "list-lower-alpha": "ചെറിയക്ഷര ആൽഫ (a, b, c)",
+          "list-upper-alpha": "വലിയക്ഷര ആൽഫ (A, B, C)",
+          "list-lower-roman": "ചെറിയക്ഷര റോമൻ (i, ii, iii)",
+          "list-upper-roman": "വലിയക്ഷര റോമൻ (I, II, III)"
+        }
+      }
+    ]
+  }
+}

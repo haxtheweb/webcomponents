@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "کیریئر کا کردار",
+    "description": "کسی تنظیم کے اندر ایک انفرادی کردار"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان"
+      },
+      {
+        "property": "startDate",
+        "title": "تاریخ آغاز"
+      },
+      {
+        "property": "endDate",
+        "title": "تاریخ اختتام (اختیاری)"
+      },
+      {
+        "property": "skills",
+        "title": "متعلقہ مہارتیں",
+        "description": "مہارتیں شامل کرنا شروع کرنے کے لیے + بٹن منتخب کریں"
+      }
+    ]
+  }
+}

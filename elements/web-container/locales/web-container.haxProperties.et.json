@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-konteiner"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Peida redaktor",
+        "description": "Peida failide muutmise liides."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Peida terminal",
+        "description": "Peida terminal automaatselt käivituvate programmide puhul."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Peida aken",
+        "description": "Peida väljundaken ainult terminali kasutamiseks."
+      },
+      {
+        "slot": "",
+        "title": "Käsud",
+        "description": "Enne laadimist käivitatavad käsud (üks rea kohta)."
+      }
+    ]
+  }
+}

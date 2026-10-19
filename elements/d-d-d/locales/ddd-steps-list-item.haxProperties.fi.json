@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Vaihe",
+    "description": "Vaiheluetteloon kuuluva kohde"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Otsikko"
+      }
+    ]
+  }
+}

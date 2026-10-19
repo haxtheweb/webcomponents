@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Zobrazení CMS",
+    "description": "Zobrazení CMS vykreslená na backendu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Jméno",
+        "description": "Název zobrazení z našeho CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Zobrazení",
+        "description": "Display v rámci tohoto zobrazení z našeho CMS"
+      }
+    ]
+  }
+}

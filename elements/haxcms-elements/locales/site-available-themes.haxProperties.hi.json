@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "उपलब्ध थीम",
+    "description": "लाइव पूर्वावलोकन स्विचिंग के साथ उपलब्ध HAXcms थीम दिखाएँ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "व्यू मोड",
+        "description": "चुनें कि थीम कैसे दिखाई जाएँ",
+        "options": {
+          "gallery": "गैलरी",
+          "table": "तालिका"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "विवरण दिखाएँ",
+        "description": "थीम विवरण और अतिरिक्त जानकारी दिखाएँ"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "छिपी और पुरानी थीम दिखाएँ",
+        "description": "डैशबोर्ड डिफ़ॉल्ट के अलावा छिपी, पुरानी और भयानक थीम भी दिखाएँ"
+      },
+      {
+        "property": "columns",
+        "title": "कॉलम (गैलरी)",
+        "description": "गैलरी व्यू में कॉलम की संख्या"
+      }
+    ]
+  }
+}

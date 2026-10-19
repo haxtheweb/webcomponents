@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Shenja Polaris",
+    "description": "Shfaq shenjën e identitetit PSU me emër opsional kolegji dhe URL destinacioni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Emri i kolegjit",
+        "description": "Emri i shfaqur pranë shenjës."
+      },
+      {
+        "property": "name2",
+        "title": "Emri i kolegjit 2",
+        "description": "Emri i dytë i shfaqur poshtë emrit të parë të kolegjit."
+      },
+      {
+        "property": "name3",
+        "title": "Emri i kolegjit 3",
+        "description": "Emri i tretë i shfaqur poshtë emrit të dytë të kolegjit."
+      },
+      {
+        "property": "url",
+        "title": "Lidhja",
+        "description": "URL-ja e destinacionit kur klikohet shenja."
+      },
+      {
+        "property": "type",
+        "title": "Varianti",
+        "description": "Varianti vizual i shenjës.",
+        "options": {
+          "default": "Parazgjedhje",
+          "light": "E çelët",
+          "dark": "E errët"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Paraqitje vertikale",
+        "description": "Shfaq emrin e tretë poshtë emrit të dytë me një vijë horizontale."
+      }
+    ]
+  }
+}

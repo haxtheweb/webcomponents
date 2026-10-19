@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Redovalnica",
+    "description": "Redovalnica brez vmesnika, ki podpira več zaledij z rubrikami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Vir",
+        "description": "Vrsta vira podatkov (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Dokumenti",
+          "url": "Končna točka URL (JSON)",
+          "json": "Blok podatkov JSON",
+          "filesystem": "Datotečni sistem"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Izvorni podatki",
+        "description": "URL ali podatki JSON za redovalnico."
+      },
+      {
+        "property": "forCourse",
+        "title": "Sklic na predmet",
+        "description": "Identifikator predmeta, izdan kot oer:forCourse na vsakem viru Assessment."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "پيرالاڪس تصوير",
+    "description": "تصوير اسڪرول"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "تصوير",
+        "description": "پس منظر ۾ شامل ٿيڻ واري تصوير"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "هيڊنگ جو حصو",
+        "description": "هيڊنگ متن جو حصو"
+      }
+    ]
+  }
+}

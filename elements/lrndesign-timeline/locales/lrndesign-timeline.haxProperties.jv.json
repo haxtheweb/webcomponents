@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Garis wektu",
+    "description": "Linimasa prastawa kanthi gambar lan teks"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Irah-irahan garis wektu",
+        "description": "Judhul kanggo linimasa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna Aksen",
+        "description": "Werna aksen opsional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema Peteng",
+        "description": "Aktifake Tema Peteng"
+      },
+      {
+        "slot": "",
+        "title": "Katrangan Linimasa",
+        "description": "Teks opsional sing nggambarake linimasa."
+      },
+      {
+        "property": "events",
+        "title": "Prastawa Linimasa",
+        "description": "Prastawa ing linimasa"
+      }
+    ]
+  }
+}

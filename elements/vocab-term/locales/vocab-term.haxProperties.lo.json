@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ຄຳສັບ",
+    "description": "ຄຳສັບສຳຄັນ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "ຄຳສັບ"
+      },
+      {
+        "property": "information",
+        "title": "ຄຳນິຍາມ",
+        "description": "ຄຳນິຍາມທີ່ສະແດງເມື່ອຄລິກຄຳສັບ."
+      },
+      {
+        "property": "popoverMode",
+        "title": "ປັອບໂອເວີ",
+        "description": "ສະແດງຄຳນິຍາມໃນປັອບໂອເວີ ແທນທີ່ຈະສະແດງໃນແຖວ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "ລິ້ງ",
+        "description": "ລາຍການລິ້ງເສີມທີ່ກ່ຽວຂ້ອງກັບຄຳສັບນີ້."
+      }
+    ]
+  }
+}

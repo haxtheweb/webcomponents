@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Tøk tema",
+    "description": "Vís tøk HAXcms-tema við beinleiðis forsýningarskifti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Vísingarháttur",
+        "description": "Vel, hvussu temuni skulu vísast",
+        "options": {
+          "gallery": "Myndasavn",
+          "table": "Talva"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Vís smálutir",
+        "description": "Vís temalýsingar og eyka upplýsingar"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Vís fjald og gomul tema",
+        "description": "Vís fjald, gomul og ræðulig tema umframt sjálvsettu tema á stýriborðinum"
+      },
+      {
+        "property": "columns",
+        "title": "Teigar (myndasavn)",
+        "description": "Tal av teigum í myndasavnsvísing"
+      }
+    ]
+  }
+}

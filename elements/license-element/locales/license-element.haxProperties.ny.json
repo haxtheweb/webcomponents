@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Layisensi",
+    "description": "Perekani chilolezo cha ntchito yanu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wa ntchito yogwidwa."
+      },
+      {
+        "property": "source",
+        "title": "Ulalo wa gwero",
+        "description": "URL ya gwero la ntchito yokhala ndi chilolezo."
+      },
+      {
+        "property": "license",
+        "title": "Layisensi",
+        "description": "Chilolezo choikidwa pa ntchito iyi."
+      },
+      {
+        "property": "creator",
+        "title": "Wopanga",
+        "description": "Wopanga kapena mwini wa ntchito iyi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Ulalo wa gwero",
+        "description": "Ulalo wa zambiri zowonjezera za chilolezo."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Dzina la zambiri",
+        "description": "Dzina la zambiri zowonjezera za chilolezo."
+      }
+    ]
+  }
+}

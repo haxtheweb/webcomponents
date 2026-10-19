@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "אוצר מילים",
+    "description": "מונח אוצר מילים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "מונח"
+      },
+      {
+        "property": "information",
+        "title": "הגדרה",
+        "description": "ההגדרה המוצגת בעת לחיצה על המונח."
+      },
+      {
+        "property": "popoverMode",
+        "title": "חלון צץ",
+        "description": "הצגת ההגדרה בחלון צץ במקום בתוך השורה."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "קישורים",
+        "description": "רשימת קישורים משלימים המשויכים למונח זה."
+      }
+    ]
+  }
+}

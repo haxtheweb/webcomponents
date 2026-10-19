@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Plazhalter",
+    "description": "E Plazhalter, deen an den ausgewielte Medientyp ëmgewandelt ka ginn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Typ",
+        "description": "Typ vu Gizmo, deen dëst als Ersatz akzeptéiert.",
+        "options": {
+          "text": "Text / Inhalt",
+          "document": "Dokument / Fichier",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Bild",
+          "math": "Mathematik"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Text",
+        "description": "De gewënschte Plazhalter méi am Detail beschreiwen"
+      }
+    ]
+  }
+}

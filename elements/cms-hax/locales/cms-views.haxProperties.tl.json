@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS View",
+    "description": "Mga CMS view na nire-render sa backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Pangalan",
+        "description": "Pangalan ng view mula sa aming CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Pagpapakita",
+        "description": "Display sa loob ng view na iyon mula sa aming CMS"
+      }
+    ]
+  }
+}

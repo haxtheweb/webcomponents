@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ブロック",
+    "description": "バックエンドでレンダリングされる CMS ブロック"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "モジュール",
+        "description": "CMS から読み込むモジュール"
+      },
+      {
+        "property": "blockDelta",
+        "title": "デルタ",
+        "description": "CMS から読み込むブロックのデルタ"
+      }
+    ]
+  }
+}

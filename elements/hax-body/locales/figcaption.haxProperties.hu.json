@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ábrafelirat",
+    "description": "Ábra felirata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Képaláírás",
+        "description": "Az ábra alatt megjelenő szöveg."
+      }
+    ]
+  }
+}

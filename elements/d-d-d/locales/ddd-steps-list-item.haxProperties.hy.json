@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Քայլի տարր",
+    "description": "Քայլերի ցանկի մաս կազմող տարր"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Վերնագիր"
+      }
+    ]
+  }
+}

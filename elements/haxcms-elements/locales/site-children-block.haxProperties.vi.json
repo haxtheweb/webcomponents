@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: khối trang con",
+    "description": "Khối động hiển thị các trang con của trang hiện tại"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Phương pháp động",
+        "description": "Cách xác định các trang con tương ứng với phần tử này",
+        "options": {
+          "active": "Các trang con đang hoạt động",
+          "parent": "Các trang con của trang cha",
+          "ancestor": "Tất cả trang con từ trang tổ tiên cao nhất"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Cấp bắt đầu"
+      },
+      {
+        "property": "end",
+        "title": "Cấp kết thúc"
+      }
+    ]
+  }
+}

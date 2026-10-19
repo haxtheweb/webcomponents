@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "基本图片",
+    "description": "基本图片元素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "来源",
+        "description": "图片 URL。"
+      },
+      {
+        "attribute": "alt",
+        "title": "替代文字",
+        "description": "为无障碍搭 SEO 用个替代文字。"
+      },
+      {
+        "attribute": "height",
+        "title": "高度",
+        "description": "高度(像素)。留空就用原始大小。"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "图片加载方式",
+        "description": "选图片啥辰光载入。",
+        "options": {
+          "lazy": "看得见个辰光再载入",
+          "auto": "自动"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "响应式来源 (srcset)",
+        "description": "列出图片 URL 搭描述符(比方 480w 或者 2x),让浏览器为屏幕拣最合适个尺寸。作为标准 srcset 属性保存。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "நட்சத்திர மதிப்பீடு",
+    "description": "மதிப்பீட்டைக் காட்டும் விட்ஜெட் அல்லது மதிப்பிடுவதற்கான பொத்தான்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "மதிப்பெண்",
+        "description": "தற்போதைய மதிப்பெண் மதிப்பு."
+      },
+      {
+        "property": "possible",
+        "title": "சாத்தியமானது",
+        "description": "அதிகபட்ச சாத்தியமான மதிப்பெண்."
+      },
+      {
+        "property": "numStars",
+        "title": "நட்சத்திரங்களின் எண்ணிக்கை",
+        "description": "காட்ட வேண்டிய நட்சத்திரங்களின் எண்ணிக்கை."
+      },
+      {
+        "property": "interactive",
+        "title": "ஊடாடும்",
+        "description": "மதிப்பீட்டை அமைக்கப் பயனர் ஊடாடலை அனுமதிக்கவும்."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "மதிப்பீட்டு அளவுகோல் பயன்முறை",
+        "description": "ஒவ்வொரு நட்சத்திரத்திற்கும் OER Schema RubricScale மற்றும் RubricLevel மீதரவை (levelOrdinal/levelPoints) வெளியிடவும்."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ufupisho",
+    "description": "Ufupisho wenye kidokezo cha istilahi kamili."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Maandishi",
+        "description": "Maandishi ya ufupisho yanayoonekana."
+      },
+      {
+        "attribute": "title",
+        "title": "Neno",
+        "description": "Istilahi kamili inayoonyeshwa wakati wa kupita juu."
+      }
+    ]
+  }
+}

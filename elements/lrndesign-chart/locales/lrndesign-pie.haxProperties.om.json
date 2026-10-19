@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Chaartii Geengoo",
+    "description": "CSV irratti hundaa'uun chaartii dhaqqabamaa uuma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Halluu Calaqqee",
+        "description": "Halluu calaqqee filannoo."
+      },
+      {
+        "title": "Haala Dukkanaa",
+        "description": "Teemii Dukkanaa Dandeessisi"
+      },
+      {
+        "title": "Faayilii CSV",
+        "description": "Daataa CSV irraa fe'i."
+      },
+      {
+        "title": "Mata Duree Chaartii",
+        "description": "Barreeffama alt dhaqqabamaa chaartii keetiif."
+      },
+      {
+        "title": "Ibsa Chaartii",
+        "description": "Ibsa dhaqqabamaa chaartii keetii."
+      },
+      {
+        "title": "Maqaa Safartuu",
+        "description": "Hariiroo bal'ina:dheerina chaartii (Ilaali https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings $ct-scales fi $ct-scales-names f).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Doonaatii"
+      },
+      {
+        "title": "Maqaa Agarsiisi"
+      },
+      {
+        "title": "Golboo Jalqabaa"
+      },
+      {
+        "title": "Iddoo Keessaa"
+      },
+      {
+        "title": "Waliigala",
+        "description": "Waliigala dirqama hin taane ibsuu dandeessu. Gatii waliigalaa ibsuun, geengoo guutuu kaasuuf ida'amni gatiiwwan tarree keessaa waliigala kana ta'uu qaba. Qabxii kana fayyadamuun kutaa geengoo qofa yookaan chaartii safartuu kaasuu dandeessa."
+      },
+      {
+        "title": "Gatiiwwan Duwwaa Tuffadhu",
+        "description": "Kutaawwan fi maqaalee hin barbaachisne kaasuu irraa of qusachuuf gatiiwwan duwwaan ni tuffatamu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Daataa Garagalchi",
+        "description": "Daataa maqaalee, tartiiba tarree fi tarree daataa guutuu dabalatee garagalchi."
+      },
+      {
+        "title": "Gabatee HTML",
+        "description": "Dirqama miti: Daataa akka gabatee HTML tti fe'i."
+      },
+      {
+        "title": "Bal'ina Sarara Doonaatii"
+      },
+      {
+        "title": "Doonaatii Jabaa",
+        "description": "Kutaalee doonaatii sarara utuu hin taane akka bifaatti kaasi."
+      },
+      {
+        "title": "Kallattii Maqaa",
+        "description": "Kutaalee doonaatii sarara utuu hin taane akka bifaatti kaasi.",
+        "options": {
+          "neutral": "giddu-galeessa",
+          "explode": "ala baasi",
+          "implode": "keessa galchi"
+        }
+      },
+      {
+        "title": "Fageenya Maqaa",
+        "description": "Fageenya bakka maqaa bakka idilee irraa, kan walakkaa fageenya raadiyesii ta'e. Gatiin kun pozatiivii yookaan negaatiivii ta'uu danda'a. Gatiiwwan pozatiivii maqaa giddu-galeessa irraa fageessu."
+      },
+      {
+        "title": "Bakka Maqaa",
+        "options": {
+          "inside": "keessa",
+          "outside": "ala",
+          "center": "gidduu"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "تصويري ڀيٽ",
+    "description": "ڀيٽ لاءِ هڪ تصوير کي ٻي مٿان سوائپ ڪريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "مٿين تصوير",
+        "description": "هيٺين تصوير مٿان سوائپ ڪرڻ لاءِ مٿين تصوير."
+      },
+      {
+        "property": "topAlt",
+        "title": "مٿين تصوير جو متبادل متن",
+        "description": "رسائي لاءِ لازمي متبادل متن."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "هيٺين تصوير",
+        "description": "مٿين تصوير هيٺان ڏيکاريل هيٺين تصوير."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "هيٺين تصوير جو متبادل متن",
+        "description": "رسائي لاءِ لازمي متبادل متن."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "رويو",
+        "description": "وائپ موڊ (ڊفالٽ) يا مٿين تصوير جي شفافيت وارو موڊ چونڊيو."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "سلائيڊر بار جو رنگ."
+      },
+      {
+        "property": "dark",
+        "title": "ڊارڪ",
+        "description": "سلائيڊر بار جو رنگ اُبتو ڪريو."
+      },
+      {
+        "property": "position",
+        "title": "شروعاتي پوزيشن",
+        "description": "0 کان 100 تائين شروعاتي پوزيشن."
+      }
+    ]
+  }
+}

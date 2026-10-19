@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Botwm e-lyfr",
+    "description": "Botwm sy'n cysylltu ag e-lyfr."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Teitl y botwm."
+      },
+      {
+        "property": "link",
+        "title": "Dolen",
+        "description": "Y ddolen i ailgyfeirio iddi wrth glicio."
+      },
+      {
+        "property": "icon",
+        "title": "Eicon",
+        "description": "Eicon i gynrychioli'r ddolen hon"
+      }
+    ]
+  }
+}

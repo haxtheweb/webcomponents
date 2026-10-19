@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "វាក្យសព្ទ",
+    "description": "ពាក្យវាក្យសព្ទ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "ពាក្យ"
+      },
+      {
+        "property": "information",
+        "title": "និយមន័យ",
+        "description": "និយមន័យដែលបង្ហាញពេលចុចពាក្យ។"
+      },
+      {
+        "property": "popoverMode",
+        "title": "ផ្ទាំងលេចឡើង",
+        "description": "បង្ហាញនិយមន័យក្នុងផ្ទាំងលេចឡើង ជំនួសឱ្យក្នុងជួរ។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "តំណ",
+        "description": "បញ្ជីតំណបន្ថែមដែលពាក់ព័ន្ធនឹងពាក្យនេះ។"
+      }
+    ]
+  }
+}

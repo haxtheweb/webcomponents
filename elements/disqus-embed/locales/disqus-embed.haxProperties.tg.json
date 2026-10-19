@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Шарҳҳои Disqus-ро дар саҳифа ҷойгир кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Номи кӯтоҳ",
+        "description": "Номи кӯтоҳи сайт, ки ҳости скрипти Disqus-ро муайян мекунад."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL-и саҳифа",
+        "description": "URL-и саҳифае, ки риштаи шарҳҳо ба он пайваст аст."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Мушаххаскунандаи саҳифа",
+        "description": "Мушаххаскунандаи ягона барои риштаи шарҳҳои саҳифа."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Унвони саҳифа",
+        "description": "Унвони саҳифае, ки риштаи шарҳҳо ба он пайваст аст."
+      },
+      {
+        "property": "loadingText",
+        "title": "Матни боркунӣ",
+        "description": "Матне, ки ҳангоми боркунии шарҳҳо эълон мешавад."
+      },
+      {
+        "property": "lang",
+        "title": "Забон",
+        "description": "Рамзи забон барои интерфейси Disqus, масалан en."
+      }
+    ]
+  }
+}

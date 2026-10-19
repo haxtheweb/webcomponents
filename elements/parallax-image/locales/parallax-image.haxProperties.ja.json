@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "パララックス画像",
+    "description": "スクロールに合わせて動く画像"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "画像",
+        "description": "背景に使用する画像"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "見出しエリア",
+        "description": "見出しテキストエリア"
+      }
+    ]
+  }
+}

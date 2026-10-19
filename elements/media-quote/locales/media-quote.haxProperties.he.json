@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "ציטוט עם מדיה",
+    "description": "תמונה עם ציטוט, מקור ציטוט וכיתוב אופציונלי."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "ציטוט",
+        "description": "טקסט הציטוט."
+      },
+      {
+        "slot": "author",
+        "title": "מחבר",
+        "description": "מחבר הציטוט."
+      },
+      {
+        "slot": "author-detail",
+        "title": "פרטי המחבר",
+        "description": "פרטי המחבר."
+      },
+      {
+        "slot": "caption",
+        "title": "כיתוב",
+        "description": "כיתוב התמונה."
+      },
+      {
+        "property": "src",
+        "title": "מקור התמונה",
+        "description": "קובץ התמונה המשמש לציטוט עם המדיה."
+      },
+      {
+        "property": "alt",
+        "title": "טקסט חלופי",
+        "description": "טקסט חלופי לתמונה."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע ההדגשה של הכרטיס."
+      }
+    ]
+  }
+}

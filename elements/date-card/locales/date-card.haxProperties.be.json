@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Дата",
+    "description": "Паказаць каляндарную дату з падрабязнасцямі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Месяц",
+        "description": "Месяц, які паказваецца на картцы."
+      },
+      {
+        "property": "date",
+        "title": "Дзень месяца",
+        "description": "Дзень месяца лікам."
+      },
+      {
+        "property": "day",
+        "title": "Дзень тыдня",
+        "description": "Дзень тыдня тэкстам."
+      },
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва падзеі."
+      },
+      {
+        "property": "location",
+        "title": "Месца",
+        "description": "Месца правядзення падзеі."
+      },
+      {
+        "property": "startTime",
+        "title": "Пачатак",
+        "description": "Час пачатку."
+      },
+      {
+        "property": "endTime",
+        "title": "Канец",
+        "description": "Час заканчэння."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "Неабавязковы акцэнтны колер."
+      },
+      {
+        "property": "dark",
+        "title": "Цёмная тэма",
+        "description": "Уключыць цёмную тэму."
+      }
+    ]
+  }
+}

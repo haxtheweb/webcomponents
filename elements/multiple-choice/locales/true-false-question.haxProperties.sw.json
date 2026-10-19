@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Swali la Kweli / Si Kweli",
+    "description": "Swali la kweli au si kweli"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Swali",
+        "description": "Swali ambalo watumiaji watajibu."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Jibu Sahihi"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jina la jaribio",
+        "description": "Jina la jaribio linalopitishwa kwa matumizi katika mazingira yanayoendeshwa na xAPI ili kutambulisha kipengee hiki"
+      }
+    ]
+  }
+}

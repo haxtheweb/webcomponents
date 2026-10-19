@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "បញ្ជីចាក់",
+    "description": "បង្ហាញខ្លឹមសារគ្រប់ប្រភេទក្នុងបញ្ជីចាក់។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ប្រភព",
+        "description": "ខ្លឹមសារបង្ហាញក្នុងបញ្ជីចាក់។"
+      },
+      {
+        "property": "edit",
+        "title": "របៀបកែសម្រួល",
+        "description": "ប្តូររវាងរបៀបកែសម្រួល និងមើលជាមុនសម្រាប់បញ្ជីចាក់។"
+      },
+      {
+        "property": "navigation",
+        "title": "ការរុករក",
+        "description": "បង្ហាញប៊ូតុងរុករកទៅមុខ និងថយក្រោយ។"
+      },
+      {
+        "property": "pagination",
+        "title": "ការបែងចែកទំព័រ",
+        "description": "បង្ហាញចំណុចបែងចែកទំព័រ។"
+      },
+      {
+        "property": "orientation",
+        "title": "ទិស",
+        "description": "ទិសនៃស្លាយ។",
+        "options": {
+          "horizontal": "ផ្តេក",
+          "vertical": "បញ្ឈរ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "ស្លាយចាប់ផ្តើម",
+        "description": "លិបិក្រមស្លាយដែលត្រូវផ្តោតដំបូង។"
+      },
+      {
+        "property": "aspectRatio",
+        "title": "សមាមាត្រ",
+        "description": "សមាមាត្រនៃស្លាយ។",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

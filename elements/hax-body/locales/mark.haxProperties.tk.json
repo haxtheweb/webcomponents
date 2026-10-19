@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Reňkle",
+    "description": "Setir içindäki teksti reňkle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Reňklenen tekst."
+      }
+    ]
+  }
+}

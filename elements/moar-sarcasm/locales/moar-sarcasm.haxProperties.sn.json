@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kusvora",
+    "description": "Kuratidza mavara nenzira yekuseka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Mavara",
+        "description": "Mavara ekuita ekusvora"
+      }
+    ]
+  }
+}

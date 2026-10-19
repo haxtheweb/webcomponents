@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kolonnelayout",
+    "description": "Material an einfache Kolonnen arrangéieren"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Kolonnelayout",
+        "description": "Stil fir dës Elementer ze presentéieren (kann op klengen Ecranen änneren)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Responsiv desaktivéieren",
+        "description": "Kräizt d'Këscht un, fir Kolonnen op méi groussen Ecranen ze halen, während se op de klengsten Ecranen trotzdeem gestapelt ginn"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Element-Padding",
+        "description": "Padding an all Element"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Element-Marge",
+        "description": "Marge tëscht den Elementer"
+      }
+    ]
+  }
+}

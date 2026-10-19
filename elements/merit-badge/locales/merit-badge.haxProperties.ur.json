@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "میرٹ بیج",
+    "description": "کسی مہارت کے حصول کو ظاہر کرنے والا بصری بیج۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "بیج کا عنوان",
+        "description": "بیج پر دکھایا جانے والا عنوان۔"
+      },
+      {
+        "property": "badgeImage",
+        "title": "بیج کی تصویر",
+        "description": "بیج کے لیے تصویر کا URL۔"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "بیج کی تفصیلات",
+        "description": "بیج کے بارے میں تفصیلات۔"
+      },
+      {
+        "property": "hyperLink",
+        "title": "ہائپر لنک",
+        "description": "بیج سے منسلک لنک۔"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "بیج کی مہارتیں",
+        "description": "بیج پر دکھائی جانے والی مہارتیں۔"
+      },
+      {
+        "property": "skill",
+        "title": "مہارت (OER Schema)",
+        "description": "OER Schema: اس تعلیمی مقصد کی تکمیل سے حاصل ہونے والی مہارت۔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Fjölvalsspurning",
+    "description": "Fjölvalsspurning til sjálfsprófunar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spurning",
+        "description": "Spurning sem notendur svara."
+      },
+      {
+        "property": "randomize",
+        "title": "Slembiraða",
+        "description": "Raða svörum af handahófi."
+      },
+      {
+        "property": "singleOption",
+        "title": "Eitt svar",
+        "description": "Leyfa aðeins eitt svar."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið fyrir þetta mat (t.d. stig, bókstafur, prósenta, lokið)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Námsmarkmið",
+        "description": "OER Schema: námsmarkmið tengt þessu mati."
+      },
+      {
+        "property": "forCourse",
+        "title": "Námskeið",
+        "description": "OER Schema: námskeiðið sem þetta mat er ætlað."
+      },
+      {
+        "property": "answers",
+        "title": "Svör"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Heiti prófs",
+        "description": "Heiti prófs notað til xAPI-auðkenningar í greiningarkerfum."
+      }
+    ]
+  }
+}

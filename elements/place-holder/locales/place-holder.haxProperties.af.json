@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Plekhouer",
+    "description": "'n Plekhouer wat omgeskakel kan word na die mediatipe wat gekies is"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipe",
+        "description": "Tipe toestel wat hierdie vir vervanging aanvaar.",
+        "options": {
+          "text": "Teks / inhoud",
+          "document": "Dokument / lêer",
+          "audio": "Oudio",
+          "video": "Video",
+          "image": "Prent",
+          "math": "Wiskunde"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Teks",
+        "description": "Identifiseer die verlangde plekhouer in groter besonderhede"
+      }
+    ]
+  }
+}

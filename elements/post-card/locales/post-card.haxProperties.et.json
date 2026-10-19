@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Postkaart",
+    "description": "Mänguline meediaelement, mis näeb välja nagu kuskilt saadetud päris postkaart"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kellele",
+        "description": "Kellele see läheb?"
+      },
+      {
+        "property": "from",
+        "title": "Kellelt",
+        "description": "Kes sa oled?"
+      },
+      {
+        "property": "message",
+        "title": "Sõnum",
+        "description": "Mida sa öelda tahad?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Postitempel",
+        "description": "Kust see kaart saadeti?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Põhifoto allikas",
+        "description": "Kus su foto asub?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Margi foto allikas",
+        "description": "Kus su foto asub?"
+      }
+    ]
+  }
+}

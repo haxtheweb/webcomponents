@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "करियर भूमिका",
+    "description": "किसी संगठन के भीतर एक व्यक्तिगत भूमिका"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक"
+      },
+      {
+        "property": "startDate",
+        "title": "आरंभ तिथि"
+      },
+      {
+        "property": "endDate",
+        "title": "समाप्ति तिथि (वैकल्पिक)"
+      },
+      {
+        "property": "skills",
+        "title": "संबद्ध कौशल",
+        "description": "कौशल जोड़ना शुरू करने के लिए + बटन चुनें"
+      }
+    ]
+  }
+}

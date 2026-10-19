@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Isticanje",
+    "description": "Istakni tekst u redu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Istaknuti tekst."
+      }
+    ]
+  }
+}

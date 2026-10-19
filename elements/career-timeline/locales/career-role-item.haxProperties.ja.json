@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "経歴の役割",
+    "description": "組織内の個々の役割"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "タイトル"
+      },
+      {
+        "property": "startDate",
+        "title": "開始日"
+      },
+      {
+        "property": "endDate",
+        "title": "終了日 (任意)"
+      },
+      {
+        "property": "skills",
+        "title": "関連スキル",
+        "description": "+ ボタンを選択してスキルの追加を開始します"
+      }
+    ]
+  }
+}

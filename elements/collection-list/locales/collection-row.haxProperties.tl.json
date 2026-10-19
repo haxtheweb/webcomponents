@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Row ng koleksyon",
+    "description": "Item na hugis-row para gamitin sa loob ng listahan ng koleksyon, may teksto, link, icon, tag, at opsyonal na larawan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Destinasyong URL para sa row na ito."
+      },
+      {
+        "property": "image",
+        "title": "Larawan",
+        "description": "Larawan para sa row."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternatibong teksto na naglalarawan sa larawan."
+      },
+      {
+        "property": "line1",
+        "title": "Linya 1",
+        "description": "Unang linya ng teksto."
+      },
+      {
+        "property": "line2",
+        "title": "Linya 2",
+        "description": "Ikalawang linya ng teksto."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Icon na kumakatawan sa row."
+      },
+      {
+        "property": "saturate",
+        "title": "Epekto ng saturation",
+        "description": "Baguhin ang saturation ng larawan kapag naka-focus ang user."
+      },
+      {
+        "property": "tags",
+        "title": "Mga Tag",
+        "description": "Listahan ng mga tag na pinaghihiwalay ng kuwit."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulay",
+        "description": "Kulay na ginagamit para sa icon at mga tag."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Cerdyn Post",
+    "description": "Darn cyfryngau chwareus sydd i fod i edrych fel cerdyn post go iawn o rywle"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "At",
+        "description": "At bwy mae hwn yn mynd?"
+      },
+      {
+        "property": "from",
+        "title": "Oddi wrth",
+        "description": "Pwy ydych chi?"
+      },
+      {
+        "property": "message",
+        "title": "Neges",
+        "description": "Beth ydych chi eisiau ei ddweud?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Marc Post O",
+        "description": "O ble cafodd y cerdyn hwn ei anfon?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Ffynhonnell y Prif Lun",
+        "description": "Ble mae eich llun wedi'i leoli?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Ffynhonnell Llun y Stamp",
+        "description": "Ble mae eich llun wedi'i leoli?"
+      }
+    ]
+  }
+}

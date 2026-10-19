@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Užduočių lapo atsisiuntimas",
+    "description": "Mygtukas, rodantis atsisiunčiamus failus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Atsisiuntimo pavadinimas."
+      },
+      {
+        "property": "link",
+        "title": "Nuoroda",
+        "description": "Atsisiuntimo nuoroda."
+      }
+    ]
+  }
+}

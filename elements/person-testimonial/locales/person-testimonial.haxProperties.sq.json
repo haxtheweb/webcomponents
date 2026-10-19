@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Citat me imazh",
+    "description": "Citat me stil me imazh opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imazhi",
+        "description": "Shto një imazh te dëshmia."
+      },
+      {
+        "property": "name",
+        "title": "Emri i plotë",
+        "description": "Emri i personit që jep dëshminë."
+      },
+      {
+        "property": "position",
+        "title": "Pozicioni ose titulli i punës",
+        "description": "Pozicioni ose titulli i punës së personit."
+      },
+      {
+        "slot": "",
+        "title": "Citati",
+        "description": "Citat nga autori i dëshmisë."
+      }
+    ]
+  }
+}

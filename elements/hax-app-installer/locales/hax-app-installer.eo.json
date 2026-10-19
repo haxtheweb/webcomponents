@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub-deponejo",
   "anErrorOccurred": "Eraro okazis",
-  "retry": "Reprovi"
+  "retry": "Reprovi",
+  "permissionRequired": "Permeso necesas",
+  "passwordRequirements": "Postuloj pri pasvorto",
+  "requirementLength": "Almenaŭ 8 signoj",
+  "requirementUppercase": "Unu majuskla litero",
+  "requirementLowercase": "Unu minuskla litero",
+  "requirementNumber": "Unu cifero",
+  "requirementSymbol": "Unu simbolo"
 }

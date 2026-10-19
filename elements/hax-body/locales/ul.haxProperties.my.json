@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "ကျည်ဆံ စာရင်း",
+    "description": "ကျည်ဆံ စာရင်း ဖန်တီးရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "ကျည်ဆံ စတိုင်",
+        "description": "အစီအစဉ်မဲ့ စာရင်း ကျည်ဆံများအတွက် သုံးသော စတိုင်။",
+        "options": {
+          "": "မူလ (စတုရန်း)",
+          "list-disc": "ဝိုင်းပြည့်",
+          "list-circle": "စက်ဝိုင်း",
+          "list-square": "စတုရန်း"
+        }
+      }
+    ]
+  }
+}

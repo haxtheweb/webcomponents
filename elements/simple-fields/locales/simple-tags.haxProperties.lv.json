@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Birkas",
+    "description": "Vienkāršs birku saraksts attēlošanai lapā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Birkas",
+        "description": "Ar komatiem atdalīts birku saraksts."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automātiska akcenta krāsa",
+        "description": "Automātiski iestatīt akcenta krāsu, pamatojoties uz etiķeti."
+      },
+      {
+        "property": "accentColor",
+        "title": "Krāsa",
+        "description": "Birku krāsa."
+      }
+    ]
+  }
+}

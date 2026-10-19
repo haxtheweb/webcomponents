@@ -122,5 +122,21 @@
   "recent": "ਹਾਲੀਆ",
   "popular": "ਪ੍ਰਸਿੱਧ",
   "copiedToClipboard": "ਕਲਿੱਪਬੋਰਡ 'ਤੇ ਕਾਪੀ ਹੋਇਆ",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "ਚਿੱਤਰ ਜਾਣਕਾਰੀ",
+  "imageActions": "ਚਿੱਤਰ ਕਾਰਵਾਈਆਂ",
+  "imageRecommendations": "ਚਿੱਤਰ ਸਿਫ਼ਾਰਸ਼ਾਂ",
+  "compressImage": "ਚਿੱਤਰ ਸੰਕੁਚਿਤ ਕਰੋ",
+  "resizeTo": "ਆਕਾਰ ਬਦਲੋ",
+  "created": "ਬਣਾਇਆ ਗਿਆ",
+  "size": "ਆਕਾਰ",
+  "dimensions": "ਮਾਪ",
+  "type": "ਕਿਸਮ",
+  "done": "ਹੋ ਗਿਆ",
+  "noFileUuid": "ਫਾਈਲ ਹਵਾਲਾ ਉਪਲਬਧ ਨਹੀਂ; ਕਾਰਵਾਈਆਂ ਚਾਲੂ ਕਰਨ ਲਈ ਮੁੜ ਅੱਪਲੋਡ ਕਰੋ।",
+  "fileOpsUnavailable": "ਇਸ ਸਾਈਟ ਲਈ ਫਾਈਲ ਕਾਰਵਾਈਆਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ।",
+  "fileOpFailed": "ਫਾਈਲ ਕਾਰਵਾਈ ਅਸਫਲ ਰਹੀ।",
+  "fileExtensionNotAllowed": "ਇਹ ਖੇਤਰ ਸਿਰਫ਼ ਹੇਠ ਲਿਖੀਆਂ ਫਾਈਲ ਕਿਸਮਾਂ ਸਵੀਕਾਰ ਕਰਦਾ ਹੈ:",
+  "fileTypeNotAllowed": "ਇਹ ਖੇਤਰ ਸਿਰਫ਼ ਹੇਠ ਲਿਖੀਆਂ ਮੀਡੀਆ ਕਿਸਮਾਂ ਸਵੀਕਾਰ ਕਰਦਾ ਹੈ:",
+  "transformFailed": "ਅੱਪਲੋਡ ਤੋਂ ਬਾਅਦ ਦੀ ਤਬਦੀਲੀ ਅਸਫਲ ਰਹੀ; ਅਸਲ ਫਾਈਲ ਰੱਖੀ ਗਈ।"
 }

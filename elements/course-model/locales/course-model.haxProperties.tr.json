@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ders modeli",
+    "description": "Ayrıntılar, animasyon ve bilgi kontrolleri içeren, ders kavramları için etkileşimli düzen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "başlık"
+      },
+      {
+        "property": "src",
+        "title": "kaynak"
+      },
+      {
+        "property": "alt",
+        "title": "alternatif metin"
+      },
+      {
+        "title": "Bilgi alanı"
+      },
+      {
+        "title": "Ayrıntılar alanı"
+      },
+      {
+        "title": "Animasyon alanı"
+      },
+      {
+        "title": "Bilgi Kontrolü alanı"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logo alanı"
+      }
+    ]
+  }
+}

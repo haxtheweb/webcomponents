@@ -1,0 +1,18 @@
+{
+  "title": "Taybetmendiyên platformê",
+  "experienceLevel": "Asta ezmûnê",
+  "cmsFeatures": "Taybetmendiyên CMS",
+  "editorFeatures": "Taybetmendiyên edîtorê",
+  "blocks": "Blok",
+  "filterBlocks": "Blokan parzûn bike",
+  "requiredTextNote": "Hin etîketên nivîsê pêwîst in û her tim çalak in (wek neçalak têne nîşandan).",
+  "download": "Îskeletê daxîne",
+  "save": "Tomar bike",
+  "generating": "Îskelet tê çêkirin…",
+  "generated": "Îskelet hat daxistin",
+  "enabled": "Çalak",
+  "feature": "Taybetmendî",
+  "details": "Hûrgulî",
+  "featuresWarning": "Neçalakkirina van vebijarkan dikare kapasîteyên sereke yên nivîsandin û rêveberiyê rake.",
+  "largeSiteWarning": "Gelek rûpelên vê malperê hene. Çêkirina îskeletê dibe ku demekê bigire."
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mathematik",
+    "description": "Mathematik ansprechend darstellen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Mathematik",
+        "description": "Gleichung als LaTeX eingeben"
+      }
+    ]
+  }
+}

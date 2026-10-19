@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "የጥቅስ ብሎክ",
+    "description": "ቅጥ ያለው የጥቅስ ብሎክ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "ዋቢ",
+        "description": "የዋቢ ጽሑፍ።"
+      },
+      {
+        "property": "alt",
+        "title": "አማራጭ ጽሑፍ",
+        "description": "ለምስሉ አማራጭ ጽሑፍ።"
+      },
+      {
+        "property": "image",
+        "title": "ምስል",
+        "description": "ከጥቅሱ ጋር የሚታይ ምስል።"
+      }
+    ]
+  }
+}

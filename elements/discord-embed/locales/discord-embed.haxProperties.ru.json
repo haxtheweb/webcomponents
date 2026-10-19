@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Встраивание сообществ Discord по ссылке-приглашению."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ресурса",
+        "description": "URL ресурса."
+      },
+      {
+        "property": "height",
+        "title": "Высота",
+        "description": "Высота фрейма содержимого."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина фрейма содержимого."
+      }
+    ]
+  }
+}

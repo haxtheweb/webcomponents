@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Onyesho la GitHub",
+    "description": "Kielelezo kinachofikika chenye maelezo marefu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Shirika",
+        "description": "Jina la mashine la shirika la GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Hazina",
+        "description": "Jina la mashine la hazina"
+      },
+      {
+        "property": "extended",
+        "title": "Mwonekano Uliopanuliwa",
+        "description": "Hujumuisha readme ndani ya kipengele"
+      }
+    ]
+  }
+}

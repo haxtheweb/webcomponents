@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Karriär-Element",
+    "description": "Eng eenzel Organisatioun an déi zougehéiereg Rollen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Numm vun der Organisatioun"
+      },
+      {
+        "property": "location",
+        "title": "Plaz"
+      },
+      {
+        "property": "source",
+        "title": "Quell"
+      }
+    ]
+  }
+}

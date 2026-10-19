@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "کارت رترو",
+    "description": "کارت ساده با طراحی رترو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوان اصلی کارت."
+      },
+      {
+        "property": "url",
+        "description": "URL که با کلیک روی کارت باز می‌شود."
+      },
+      {
+        "property": "subtitle",
+        "title": "زیرعنوان",
+        "description": "زیرعنوان کارت."
+      },
+      {
+        "property": "tags",
+        "title": "برچسب‌ها",
+        "description": "برچسب‌های جداشده با کاما."
+      },
+      {
+        "property": "mediaSource",
+        "title": "منبع رسانه",
+        "description": "منبع رسانه اصلی."
+      },
+      {
+        "property": "hoverSource",
+        "title": "منبع هنگام قرار گرفتن نشانگر",
+        "description": "منبع رسانه‌ای که هنگام قرار گرفتن نشانگر روی کارت یا فعال شدن آن نمایش داده می‌شود."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی که در سراسر کارت اعمال می‌شود."
+      },
+      {
+        "property": "dark",
+        "title": "تیره",
+        "description": "استفاده از رنگ‌های پایه حالت تاریک."
+      }
+    ]
+  }
+}

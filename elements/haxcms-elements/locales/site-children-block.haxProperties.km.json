@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms៖ ប្លុកកូន",
+    "description": "ប្លុកថាមវន្តដើម្បីបង្ហាញកូននៃទំព័របច្ចុប្បន្ន"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "វិធីសាស្ត្រថាមវន្ត",
+        "description": "របៀបគណនាកូនទាក់ទងនឹងធាតុនេះ",
+        "options": {
+          "active": "កូនសកម្ម",
+          "parent": "កូនរបស់មេ",
+          "ancestor": "កូនទាំងអស់ពីបុព្វបុរសខ្ពស់បំផុត"
+        }
+      },
+      {
+        "property": "start",
+        "title": "កម្រិតចាប់ផ្ដើម"
+      },
+      {
+        "property": "end",
+        "title": "កម្រិតបញ្ចប់"
+      }
+    ]
+  }
+}

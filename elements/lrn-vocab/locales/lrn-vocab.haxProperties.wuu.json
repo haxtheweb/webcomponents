@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "词汇",
+    "description": "词汇术语"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "术语"
+      },
+      {
+        "slot": "",
+        "title": "定义",
+        "description": "点术语个辰光显示个定义。"
+      },
+      {
+        "property": "description",
+        "title": "描述(OER Schema)",
+        "description": "OER Schema:词汇术语个简短描述。留空个话会从定义文字里自动填。"
+      }
+    ]
+  }
+}

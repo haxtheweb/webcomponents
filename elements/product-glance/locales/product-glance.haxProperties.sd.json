@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "پراڊڪٽ جي جھلڪ",
+    "description": "پراڊڪٽ جي تڪڙي جائزي جو بلاڪ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "آئڪن",
+        "description": "تصور جي نمائندگي ڪندڙ آئڪن."
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "هڪ نظر ۾ بنيادي تصور."
+      },
+      {
+        "property": "subtitle",
+        "title": "ذيلي عنوان",
+        "description": "اضافي تفصيل."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "آئڪن لاءِ نمايان رنگ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kursa dizains",
+    "description": "Konteiners mācību materiāliem un kursa dizaina elementiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kursa identifikators",
+        "description": "OER Schema: kursa identifikators, piem., MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Piedāvāšanas semestris",
+        "description": "OER Schema: semestris, kurā kurss tiek piedāvāts."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Norises formāts",
+        "description": "OER Schema: kursa norises formāts (piem., klātienē, tiešsaistē, jaukts)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Galvenais pasniedzējs",
+        "description": "OER Schema: kursa galvenais pasniedzējs."
+      },
+      {
+        "property": "syllabus",
+        "title": "Kursa programmas URL",
+        "description": "OER Schema: URL uz kursa programmu."
+      }
+    ]
+  }
+}

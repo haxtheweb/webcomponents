@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Targeta de memòria",
+    "description": "Practica conceptes amb targetes de memòria d'anvers i revers."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Anvers de la targeta",
+        "description": "Text o pregunta de l'anvers."
+      },
+      {
+        "slot": "back",
+        "title": "Revers de la targeta",
+        "description": "Resposta esperada."
+      },
+      {
+        "property": "imgSource",
+        "title": "Font de la imatge",
+        "description": "Fitxer d'imatge utilitzat per a la targeta. Substitueix la paraula clau de la imatge."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tipus d'acció",
+        "description": "OER Schema: el tipus d'acció que implica aquesta pràctica (p. ex. llegir, escriure, crear, investigar, escoltar, mirar, reflexionar, debatre, observar, presentar, avaluar)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objectiu d'aprenentatge",
+        "description": "OER Schema: ID o URL de l'objectiu d'aprenentatge que dona suport aquesta pràctica."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Fosc",
+        "description": "Utilitza el mode fosc."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Color d'accent de la targeta."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Paraula clau de la imatge",
+        "description": "Paraula clau per a una imatge aleatòria. La substitueix la font de la imatge."
+      }
+    ]
+  }
+}

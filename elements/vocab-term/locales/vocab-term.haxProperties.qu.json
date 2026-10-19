@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Simi qullqa",
+    "description": "Simi qullqapa siminin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Simi"
+      },
+      {
+        "property": "information",
+        "title": "Sut'ichay",
+        "description": "Simita ñit'iqtin rikukuq sut'ichay."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Pop-over",
+        "description": "Sut'ichayta siqi ukhupi rantinpi pop-overpi rikuchiy."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "T'inkikuna",
+        "description": "Kay simiwan t'inkisqa yapa t'inkikunapa listan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Tillgängliga teman",
+    "description": "Visa tillgängliga HAXcms-teman med direkt förhandsvisning vid byte"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Visningsläge",
+        "description": "Välj hur teman ska visas",
+        "options": {
+          "gallery": "Galleri",
+          "table": "Tabell"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Visa detaljer",
+        "description": "Visa temabeskrivningar och ytterligare information"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Visa dolda och äldre teman",
+        "description": "Visa dolda, äldre och hemska teman utöver översiktens standardteman"
+      },
+      {
+        "property": "columns",
+        "title": "Kolumner (galleri)",
+        "description": "Antal kolumner i gallerivyn"
+      }
+    ]
+  }
+}

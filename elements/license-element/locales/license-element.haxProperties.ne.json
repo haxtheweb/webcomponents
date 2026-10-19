@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "इजाजतपत्र",
+    "description": "आफ्नो कामका लागि इजाजतपत्र दिनुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "उद्धृत कृतिको शीर्षक।"
+      },
+      {
+        "property": "source",
+        "title": "स्रोत लिङ्क",
+        "description": "इजाजतप्राप्त कृतिको स्रोत URL।"
+      },
+      {
+        "property": "license",
+        "title": "इजाजतपत्र",
+        "description": "यस कृतिमा लागू इजाजतपत्र।"
+      },
+      {
+        "property": "creator",
+        "title": "सर्जक",
+        "description": "यस कृतिको सर्जक वा मालिक।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "स्रोत लिङ्क",
+        "description": "थप इजाजतपत्र विवरणको लिङ्क।"
+      },
+      {
+        "property": "moreLabel",
+        "title": "थप लेबल",
+        "description": "थप इजाजतपत्र विवरणका लागि लेबल।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF ब्राउझर व्ह्यूअर",
+    "description": "पर्यायी कार्ड लेआउट आणि डाउनलोड बटणासह PDF फाइल ओळीतच एम्बेड करा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL",
+        "description": "PDF फाइलचे स्थान."
+      },
+      {
+        "property": "heading",
+        "title": "शीर्षक",
+        "description": "कार्ड शीर्षकाचा मजकूर."
+      },
+      {
+        "property": "card",
+        "title": "कार्ड लेआउट",
+        "description": "डाउनलोड बटणासह PDF कार्डमध्ये दाखवा."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "डाउनलोड लेबल",
+        "description": "डाउनलोड बटणासाठी लेबल."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "असमर्थित संदेश",
+        "description": "ब्राउझर PDF फाइल दाखवू शकत नसताना दिसणारा संदेश."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "असमर्थित लिंक संदेश",
+        "description": "ब्राउझर PDF फाइल दाखवू शकत नसताना दिसणारा लिंक मजकूर."
+      },
+      {
+        "property": "width",
+        "title": "रुंदी",
+        "description": "PDF व्ह्यूअरची रुंदी."
+      },
+      {
+        "property": "height",
+        "title": "उंची",
+        "description": "PDF व्ह्यूअरची उंची."
+      }
+    ]
+  }
+}

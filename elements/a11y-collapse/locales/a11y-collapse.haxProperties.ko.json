@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "접을 수 있는 컨테이너",
+    "description": "펼치고 접을 수 있는 단일 컨테이너입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "제목",
+        "description": "접기 영역의 텍스트입니다."
+      },
+      {
+        "property": "expanded",
+        "title": "펼침",
+        "description": "기본적으로 펼칩니다."
+      },
+      {
+        "property": "headingButton",
+        "title": "제목 버튼",
+        "description": "아이콘만이 아니라 제목 전체를 클릭할 수 있게 합니다."
+      },
+      {
+        "property": "icon",
+        "title": "아이콘",
+        "description": "펼치기/접기 토글 버튼의 아이콘입니다."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "아이콘(펼쳤을 때)",
+        "description": "펼친 토글 상태에 사용할 선택적 아이콘입니다."
+      },
+      {
+        "slot": "",
+        "title": "콘텐츠",
+        "description": "접기 영역의 콘텐츠입니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "툴팁",
+        "description": "펼치기/접기 토글 버튼의 툴팁입니다."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "툴팁(펼쳤을 때)",
+        "description": "펼쳤을 때 펼치기/접기 버튼의 툴팁입니다."
+      }
+    ]
+  }
+}

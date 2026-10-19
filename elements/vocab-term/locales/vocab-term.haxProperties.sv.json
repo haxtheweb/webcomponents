@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Glosa",
+    "description": "Ordförrådsterm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Term"
+      },
+      {
+        "property": "information",
+        "title": "Definition",
+        "description": "Definition som visas när man klickar på termen."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Visa definitionen i en popover i stället för i texten."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Länkar",
+        "description": "Lista över kompletterande länkar som hör till termen."
+      }
+    ]
+  }
+}

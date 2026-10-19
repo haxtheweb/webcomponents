@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Opisna slika",
+    "description": "Dostopna slika z dolgim opisom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Slika"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Nadomestno besedilo"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Napis slike",
+        "description": "Besedilo napisa slike, ki je vedno vidno."
+      },
+      {
+        "slot": "details",
+        "title": "Opis",
+        "description": "Podroben opis slike, ki ga je mogoče skriti ali prikazati"
+      },
+      {
+        "slot": "summary",
+        "title": "Gumb opisa",
+        "description": "Privzeto za gumb, ki prikaže/skrije besedilo opisa, npr. »informacije«, »metapodatki« itd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Neobvezno besedilo povzetka, ko so podrobnosti odprte"
+      },
+      {
+        "property": "closeText",
+        "title": "Neobvezno besedilo povzetka, ko so podrobnosti zaprte"
+      }
+    ]
+  }
+}

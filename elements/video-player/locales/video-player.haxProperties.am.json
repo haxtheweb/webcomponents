@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "ቪዲዮ",
+    "description": "በብዙ ምንጮች ላይ ተደራሽ የቪዲዮ ማጫወት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ምንጭ",
+        "description": "የዚህ ሚዲያ URL።"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ርዕስ",
+        "description": "ከቪዲዮው በታች የሚታይ ርዕስ።"
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "የፖስተር ምስል",
+        "description": "የፖስተር ምስል URL።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "የጽሑፍ ትራኮች",
+        "description": "ለቪዲዮው የተዘጉ መግለጫ ጽሑፎች፣ ንዑስ ርዕሶች፣ መግለጫዎች እና ሌሎች የጽሑፍ ትራኮች።"
+      },
+      {
+        "property": "startTime",
+        "title": "የመጀመሪያ ጊዜ",
+        "description": "ቪዲዮውን በተወሰነ ጊዜ (ሰከንዶች) ጀምር።"
+      },
+      {
+        "property": "endTime",
+        "title": "የማብቂያ ጊዜ",
+        "description": "ቪዲዮውን በተወሰነ ጊዜ (ሰከንዶች) አቁም፤ የመጀመሪያ ጊዜ ያስፈልገዋል።"
+      },
+      {
+        "property": "learningMode",
+        "title": "የመማሪያ ሁነታን አንቃ",
+        "description": "በፍጥነት ወደፊት መሄድን እና ወደኋላ መመለስን ያሰናክላል።"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "የYouTube ላይ ክፈት አዝራርን አስወግድ",
+        "description": "ቪዲዮውን በYouTube ላይ ለመክፈት የሚያገለግለውን አዝራር ያስወግዳል።"
+      },
+      {
+        "property": "linkable",
+        "title": "የማጋሪያ አገናኝ ይካተት?",
+        "description": "ቪዲዮውን ለማጋራት አገናኝ ያቀርባል።"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "የጊዜ ማህተሞችን ደብቅ",
+        "description": "በግልባጩ ላይ ያሉትን የጊዜ ማህተሞች ደብቅ።"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ግልባጭን ደብቅ",
+        "description": "ግልባጩን በነባሪ ደብቅ።"
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "የድምፅ መግለጫ ትራክ",
+        "description": "የእይታ ክፍሎችን የሚተርክ የድምፅ መግለጫ ትራክ (MP3 ፋይል) URL።"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS ጥቅም ላይ እንደሚውል ያመለክታል።",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "የዳራ ማጫወትን ፍቀድ",
+        "description": "የአሳሹ ትር ትኩረት ሲያጣ መጫወቱን ቀጥል።"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ለግልባጩ የጨለማ ገጽታ",
+        "description": "ለግልባጩ የጨለማ ገጽታን አንቃ።"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "በይነተገናኝን አሰናክል",
+        "description": "ግልባጩን ጠቅ ሊደረግ የሚችል የሚያደርገውን በይነተገናኝ ሁነታ አሰናክል።"
+      },
+      {
+        "property": "lang",
+        "title": "ቋንቋ",
+        "description": "የሚዲያው ቋንቋ።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "(ጊዜው ያለፈበት) ለአጫዋቹ የአጽንዖት ቀለም ይምረጡ።"
+      }
+    ]
+  }
+}

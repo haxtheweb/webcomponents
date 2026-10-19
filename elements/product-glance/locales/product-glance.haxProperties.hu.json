@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Termék dióhéjban",
+    "description": "Gyors termékáttekintő blokk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "A fogalmat jelölő ikon."
+      },
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "A fő fogalom röviden."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alcím",
+        "description": "További részlet."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Az ikon kiemelőszíne."
+      }
+    ]
+  }
+}

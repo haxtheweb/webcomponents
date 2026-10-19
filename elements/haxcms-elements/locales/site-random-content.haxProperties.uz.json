@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tasodifiy sahifa kontenti",
+    "description": "Tanlangan sahifadan tasodifiy yuqori darajali elementni koʻrsatish"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Sahifa",
+        "description": "Tasodifiy kontent olinadigan sahifani tanlang. Element ushbu sahifadagi yuqori darajali HTML elementlardan birini tasodifiy koʻrsatadi."
+      }
+    ]
+  }
+}

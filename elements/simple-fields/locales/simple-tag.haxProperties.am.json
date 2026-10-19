@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "መለያ / ክኒን",
+    "description": "አማራጭ የአጽንዖት ቀለም፣ የመሰረዣ አዝራር ወይም መቀያየሪያ ያለው የታመቀ ክኒን ቅርጽ ያለው መለያ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "መለያ",
+        "description": "በክኒኑ ውስጥ የሚታይ ጽሑፍ።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "ለክኒኑ ጀርባ የSimpleColors የአጽንዖት ስም።",
+        "options": {
+          "": "-- ነባሪ --",
+          "red": "ቀይ",
+          "pink": "ሮዝ",
+          "purple": "ሐምራዊ",
+          "deep-purple": "ጥቁር ሐምራዊ",
+          "indigo": "ኢንዲጎ",
+          "blue": "ሰማያዊ",
+          "light-blue": "ፈዛዛ ሰማያዊ",
+          "cyan": "ሳያን",
+          "teal": "ሻይ አረንጓዴ",
+          "green": "አረንጓዴ",
+          "light-green": "ፈዛዛ አረንጓዴ",
+          "lime": "ሎሚ አረንጓዴ",
+          "yellow": "ቢጫ",
+          "amber": "አምበር",
+          "orange": "ብርቱካናማ",
+          "deep-orange": "ጥቁር ብርቱካናማ",
+          "brown": "ቡናማ",
+          "blue-grey": "ሰማያዊ ግራጫ",
+          "grey": "ግራጫ"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "ራስ-ሰር የአጽንዖት ቀለም",
+        "description": "የአጽንዖት ቀለሙን ከመለያው ጽሑፍ በራስ-ሰር አውጣ።"
+      },
+      {
+        "property": "cancelButton",
+        "title": "የመሰረዣ አዝራር",
+        "description": "በክኒኑ ውስጥ የማስወገጃ/የመሰረዣ አዶ አዝራር አሳይ።"
+      },
+      {
+        "property": "readonly",
+        "title": "ለንባብ ብቻ",
+        "description": "ክኒኑ ለማሳያ ብቻ እንዲሆን የመሰረዣ አዝራሩን ደብቅ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "ይቀያየራል",
+        "description": "አዝራሩ ጠቅ ሲደረግ ክኒኑ እንዲበራ/እንዲጠፋ አድርግ።"
+      },
+      {
+        "property": "toggled",
+        "title": "በርቷል",
+        "description": "ክኒኑ በአሁኑ ጊዜ በርቶ እንደሆነ።"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "የበራ አዶ",
+        "description": "ክኒኑ ሲበራ የሚታይ አዶ።"
+      },
+      {
+        "property": "disabled",
+        "title": "ተሰናክሏል",
+        "description": "ከክኒኑ ጋር ያለውን መስተጋብር አሰናክል።"
+      }
+    ]
+  }
+}

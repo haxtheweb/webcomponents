@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Meel-hayn",
+    "description": "Meel-hayn loo beddeli karo nooca warbaahinta la doortay"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Nooc",
+        "description": "Nooca qalabka ay tani aqbasho beddel ahaan.",
+        "options": {
+          "text": "Qoraal / waxyaabo",
+          "document": "Dukumenti / fayl",
+          "audio": "Cod",
+          "video": "Fiidiyow",
+          "image": "Sawir",
+          "math": "Xisaab"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Qoraal",
+        "description": "Si faahfaahsan u qeex meel-haynta la doonayo"
+      }
+    ]
+  }
+}

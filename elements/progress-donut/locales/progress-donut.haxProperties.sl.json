@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Krof napredka",
+    "description": "Krof napredovanja"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov elementa"
+      },
+      {
+        "property": "desc",
+        "title": "Opis",
+        "description": "Dostopen dolgi opis"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Vir slike",
+        "description": "Vir slike v krofu."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Nadomestno besedilo slike",
+        "description": "Nadomestno besedilo slike."
+      },
+      {
+        "property": "animated",
+        "title": "Animirano",
+        "description": "Ali se napredek ob prvem nalaganju animira"
+      },
+      {
+        "property": "complete",
+        "title": "Dokončano",
+        "description": "Polje dokončanih vrednosti."
+      },
+      {
+        "property": "total",
+        "title": "Skupaj",
+        "description": "Skupna vrednost, ko so vsi elementi dokončani."
+      },
+      {
+        "property": "startAngle",
+        "title": "Začetni kot",
+        "description": "Kot krofa, kjer se napredek začne"
+      }
+    ]
+  }
+}

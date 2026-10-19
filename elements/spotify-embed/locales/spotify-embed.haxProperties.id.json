@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Pembungkus untuk sematan pemutar Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "Tautan sematan atau berbagi dari Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema warna latar belakang untuk pemutar.",
+        "options": {
+          "": "Bawaan",
+          "0": "Hitam"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Ukuran",
+        "description": "Ukuran pemutar.",
+        "options": {
+          "normal": "Bawaan",
+          "compact": "Ringkas"
+        }
+      }
+    ]
+  }
+}

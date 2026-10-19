@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Ta'ãngamýi",
+    "description": "Ta'angambyry ñemboguata ojeikekuaáva heta ypykuégui."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Reñoiha",
+        "description": "URL ko momarandu ñemyasãime g̃uarã."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Téra",
+        "description": "Téra ojehechaukáva ta'angambyry guýpe."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Póster ta'ãnga",
+        "description": "Póster ta'ãnga URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Moñe'ẽrã rape",
+        "description": "Subtítulo, myesakã ha ambue moñe'ẽrã rape ta'ãngamýi rehegua."
+      },
+      {
+        "property": "startTime",
+        "title": "Ñepyrũ aravo",
+        "description": "Eñepyrũ ta'angambyry peteĩ aravo ojeporavóvape (aravo'ive)."
+      },
+      {
+        "property": "endTime",
+        "title": "Paha aravo",
+        "description": "Emohu'ã ta'angambyry peteĩ aravo ojeporavóvape (aravo'ive), oikotevẽ ñepyrũ aravo."
+      },
+      {
+        "property": "learningMode",
+        "title": "Emyendy jeikuaa reko",
+        "description": "Ombogue tenonde pya'e ha jevy pya'e."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Embogue YouTube-pe jeike votõ",
+        "description": "Omboguete votõ ombojurujáva ta'angambyry YouTube-pe."
+      },
+      {
+        "property": "linkable",
+        "title": "Emoingépa joajuha moherakuãrã?",
+        "description": "Ome'ẽ joajuha emoherakuã hag̃ua ta'angambyry."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Emokañy aravo techaukaha",
+        "description": "Emokañy aravo techaukaha transcripción-pe."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Emokañy Transcripción",
+        "description": "Emokañy transcripción ypyguáva ramo."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Myesakã ñe'ẽme rape",
+        "description": "URL peteĩ myesakã ñe'ẽme rape (marandurenda MP3) omombe'úva mba'e ojehecháva."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Ohechauka ojepurútapa CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Emoneĩ ñemboguata tapykuépe",
+        "description": "Eku'ejey ñemboguata kundahára tendayke ohejávo jeporavo."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Jeguakaha ypytũ transcripción-pe g̃uarã",
+        "description": "Emyendy jeguakaha ypytũ transcripción-pe g̃uarã."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Embogue Ojoapykuéva",
+        "description": "Embogue reko ojoapykuéva ojapóva transcripción ikatu hag̃uáicha ojejopy."
+      },
+      {
+        "property": "lang",
+        "title": "Ñe'ẽ",
+        "description": "Momarandu ñemyasãi ñe'ẽ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "(ojeporuvéma'ỹva) Eiporavo sa'y jehechaukaha mboguatahápe g̃uarã."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pregunta de resposta curta",
+    "description": "Fai que o usuario responda unha pregunta básica"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pregunta",
+        "description": "Pregunta á que deben responder os usuarios."
+      },
+      {
+        "property": "answers",
+        "title": "Respostas posibles"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome do cuestionario",
+        "description": "Nome do cuestionario que se pasa para usar en contornos baseados en xAPI e identificar este elemento"
+      }
+    ]
+  }
+}

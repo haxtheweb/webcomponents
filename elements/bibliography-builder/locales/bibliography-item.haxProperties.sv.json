@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografipost",
+    "description": "Post som representerar en enskild källhänvisning i en bibliografi, med stöd för flera format och exportalternativ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Typ",
+        "description": "Typ av källhänvisning",
+        "options": {
+          "web": "Webb",
+          "journal": "Tidskrift",
+          "book": "Bok"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Postens titel"
+      },
+      {
+        "property": "authors",
+        "title": "Författare",
+        "description": "Händelserna på tidslinjen"
+      },
+      {
+        "property": "publisher",
+        "title": "Utgivare",
+        "description": "Ursprunglig webbplats"
+      }
+    ]
+  }
+}

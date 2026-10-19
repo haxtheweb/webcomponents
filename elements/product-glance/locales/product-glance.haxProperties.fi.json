@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Tuotekatsaus",
+    "description": "Lohko tuotteen nopeaan yleiskatsaukseen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Kuvake",
+        "description": "Käsitettä edustava kuvake."
+      },
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Pääkäsite yhdellä silmäyksellä."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alaotsikko",
+        "description": "Lisätiedot."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Kuvakkeen korostusväri."
+      }
+    ]
+  }
+}

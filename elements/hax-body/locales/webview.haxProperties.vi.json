@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Nguồn",
+        "description": "URL của tài nguyên này."
+      }
+    ]
+  }
+}

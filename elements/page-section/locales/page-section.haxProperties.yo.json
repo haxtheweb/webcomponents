@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Apá ojú-ìwé",
+    "description": "Àpótí apá fún àkóónú ojú-ìwé àti àwọn ìtò tí ó dá lórí ojú-ìbòjú."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Ìṣètò àpẹẹrẹ",
+        "description": "Ìrísí tí a ti ṣètò tẹ́lẹ̀ tí ó ń ṣàtúnṣe àwọn ètò tí ó jọmọ́."
+      },
+      {
+        "property": "image",
+        "title": "Àwòrán",
+        "description": "Mídíà ẹ̀yìn fún apá náà."
+      },
+      {
+        "property": "bg",
+        "title": "Àwọ̀ ẹ̀yìn",
+        "description": "Àwọ̀ ẹ̀yìn nígbà tí kò sí àwòrán."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Bọ́tìnnì yíyí-lọ",
+        "description": "Fi bọ́tìnnì kan hàn tí ó ń yí lọ sí apá tó kàn."
+      },
+      {
+        "property": "fold",
+        "title": "Fi ìká hàn",
+        "description": "Fi ìká tí a lè rí hàn ní ìsàlẹ̀ apá náà."
+      },
+      {
+        "property": "full",
+        "title": "Ìwọ̀n gbogbo ojú-ìbòjú",
+        "description": "Kún gíga ojú-ìbòjú olùwò."
+      },
+      {
+        "property": "filter",
+        "title": "Lo Àlẹ̀mọ́",
+        "description": "Lo àlẹ̀mọ́ ìrísí sí àwòrán ẹ̀yìn."
+      },
+      {
+        "slot": "",
+        "title": "Àkóónú",
+        "description": "Àkóónú apá."
+      },
+      {
+        "slot": "entice",
+        "title": "Ìfàmọ́ra",
+        "description": "Àkóónú ìfàmọ́ra àṣàyàn."
+      },
+      {
+        "slot": "buttons",
+        "title": "Àwọn bọ́tìnnì",
+        "description": "Àkójọ bọ́tìnnì tí a fi hàn lábẹ́ ọ̀rọ̀."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ọ̀rọ̀ ìdákọ̀ró",
+        "description": "Àmì-orúkọ ìdákọ̀ró tí a fi hàn nínú ìlọ-kiri."
+      }
+    ]
+  }
+}

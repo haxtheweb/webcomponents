@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Paĝa ankro",
+    "description": "Ligi al specifaj punktoj en aŭdvidaĵoj sur la paĝo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Paĝa celo",
+        "description": "ID aŭ rimedo, al kiu ĉi tiu ankro montras."
+      },
+      {
+        "property": "value",
+        "title": "Valoro de profunda ligilo",
+        "description": "Valoro de profunda ligilo (ekzemple tempomarko aŭ ID de lumbildo)."
+      },
+      {
+        "property": "entityId",
+        "title": "Reteja ento",
+        "description": "Nedeviga reteja ento por regi la prezenton de rilataj konceptoj."
+      }
+    ]
+  }
+}

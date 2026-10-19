@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Спіс удзельнікаў GitHub",
+    "description": "Адлюстроўваюцца як персанажы RPG з дапамогай GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Арганізацыя",
+        "description": "Назва арганізацыі з github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Рэпазіторый",
+        "description": "Назва рэпазіторыя з github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Ліміт",
+        "description": "Абмежаваць колькасць паказаных удзельнікаў."
+      }
+    ]
+  }
+}

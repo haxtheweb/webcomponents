@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galerija slika",
+    "description": "Galerija koja prikazuje slike u rasporedu rešetke, zidarskom rasporedu ili kao dijaprojekciju."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Način prikaza",
+        "description": "Kako prikazati slike u galeriji.",
+        "options": {
+          "grid": "Rešetka",
+          "masonry": "Zidarski raspored",
+          "gallery": "Galerija"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Aktivni indeks",
+        "description": "Indeks aktivne slike od koje se počinje u načinu galerije."
+      }
+    ]
+  }
+}

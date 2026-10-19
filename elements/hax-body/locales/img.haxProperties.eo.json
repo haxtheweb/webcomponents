@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Baza bildo",
+    "description": "Baza bilda elemento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Fonto",
+        "description": "Bilda URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alternativa teksto",
+        "description": "Alternativa teksto por alirebleco kaj SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Alto",
+        "description": "Alto en rastrumeroj. Lasu malplena por uzi la naturan grandon."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Ŝargado de bildo",
+        "description": "Elektu kiam la bildo ŝargiĝas.",
+        "options": {
+          "lazy": "Ŝargi kiam videbla",
+          "auto": "Aŭtomata"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Respondemaj fontoj (srcset)",
+        "description": "Listigu bildajn URL-ojn kaj priskribilojn (ekz. 480w aŭ 2x), por ke retumiloj elektu la plej taŭgan grandon por la ekrano. Konservata kiel la norma atributo srcset."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Fitxa",
+    "description": "Fitxa bakarra."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Fitxaren ikonoa"
+      },
+      {
+        "property": "disabled",
+        "title": "Desgaituta"
+      },
+      {
+        "property": "label",
+        "title": "Fitxaren etiketa"
+      },
+      {
+        "slot": "",
+        "title": "Fitxaren edukia",
+        "description": "Fitxaren edukia."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID bakarra"
+      },
+      {
+        "property": "flag",
+        "title": "Aukerako bandera-testua"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Aukerako bandera-ikonoa"
+      }
+    ]
+  }
+}

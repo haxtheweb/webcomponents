@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Elenco numerato",
+    "description": "Crea un elenco numerato."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stile di numerazione",
+        "description": "Stile usato per la numerazione degli elenchi ordinati.",
+        "options": {
+          "": "Predefinito (decimale)",
+          "list-decimal-leading-zero": "Decimale con zero iniziale (01, 02, 03)",
+          "list-lower-alpha": "Lettere minuscole (a, b, c)",
+          "list-upper-alpha": "Lettere maiuscole (A, B, C)",
+          "list-lower-roman": "Numeri romani minuscoli (i, ii, iii)",
+          "list-upper-roman": "Numeri romani maiuscoli (I, II, III)"
+        }
+      }
+    ]
+  }
+}

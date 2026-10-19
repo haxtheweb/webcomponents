@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tableau",
+    "description": "Données sous forme de tableau pour le web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "En-tête de ligne",
+        "description": "Traiter la première ligne comme un en-tête."
+      },
+      {
+        "property": "columnHeader",
+        "title": "En-tête de colonne",
+        "description": "Traiter la première colonne comme un en-tête."
+      },
+      {
+        "property": "footer",
+        "title": "Pied de tableau",
+        "description": "Traiter la dernière ligne comme un pied de tableau."
+      },
+      {
+        "property": "sort",
+        "title": "Triable",
+        "description": "Permettre le tri selon les valeurs des colonnes."
+      },
+      {
+        "property": "filter",
+        "title": "Autoriser le filtrage",
+        "description": "Permettre le filtrage selon les valeurs des colonnes."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Style numérique",
+        "description": "Appliquer un style numérique aux colonnes numériques."
+      },
+      {
+        "property": "responsive",
+        "title": "Adaptatif",
+        "description": "Ajuster la mise en page du tableau sur les petits écrans."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mode grille d'évaluation",
+        "description": "Interpréter ce tableau comme une Rubric OER Schema afin d'émettre les métadonnées Rubric, RubricScale, RubricCriterion et RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Type de grille d'évaluation",
+        "description": "Style de grille émis en tant que oer:rubricType (pertinent uniquement lorsque le mode grille d'évaluation est activé).",
+        "options": {
+          "": "(aucun)",
+          "analytic": "Analytique",
+          "holistic": "Holistique",
+          "single-point": "Critère unique",
+          "checklist": "Liste de contrôle"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Avec bordures"
+      },
+      {
+        "property": "condensed",
+        "title": "Lignes condensées",
+        "description": "Réduire la hauteur des lignes."
+      },
+      {
+        "property": "striped",
+        "title": "Lignes alternées",
+        "description": "Ombrer une ligne sur deux."
+      },
+      {
+        "property": "downloadable",
+        "title": "Bouton de téléchargement",
+        "description": "Ajouter un bouton pour télécharger le tableau."
+      },
+      {
+        "property": "copyable",
+        "title": "Bouton de copie",
+        "description": "Ajouter un bouton pour copier les données CSV du tableau."
+      },
+      {
+        "property": "printable",
+        "title": "Bouton d'impression",
+        "description": "Ajouter un bouton pour imprimer uniquement le tableau."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Données CSV",
+        "description": "Créer un tableau à partir d'un fichier CSV téléversé."
+      }
+    ]
+  }
+}

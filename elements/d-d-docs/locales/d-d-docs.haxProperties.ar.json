@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "صمّم، طوّر، دمّر",
+    "description": "تطبيق نظام التصميم لـ HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "الخيار المراد عرضه",
+        "options": {
+          "*": "دليل الأنماط الكامل"
+        }
+      }
+    ]
+  }
+}

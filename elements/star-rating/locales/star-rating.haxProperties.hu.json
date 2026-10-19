@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Csillagos értékelés",
+    "description": "Értékelést megjelenítő modul vagy értékelőgomb."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Pontszám",
+        "description": "Aktuális pontszám."
+      },
+      {
+        "property": "possible",
+        "title": "Lehetséges",
+        "description": "Maximálisan elérhető pontszám."
+      },
+      {
+        "property": "numStars",
+        "title": "Csillagok száma",
+        "description": "Megjelenítendő csillagok száma."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktív",
+        "description": "A felhasználó maga állíthatja be az értékelést."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Értékelési skála mód",
+        "description": "OER Schema RubricScale és RubricLevel metaadatok (levelOrdinal/levelPoints) kiadása minden csillaghoz."
+      }
+    ]
+  }
+}

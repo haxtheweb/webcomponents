@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Nummeréiert Lëscht",
+    "description": "Eng nummeréiert Lëscht erstellen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Nummeréierungsstil",
+        "description": "Stil fir d'Nummeréierung vun der nummeréierter Lëscht.",
+        "options": {
+          "": "Standard (Dezimal)",
+          "list-decimal-leading-zero": "Dezimal mat féierender Null (01, 02, 03)",
+          "list-lower-alpha": "Kleng Buschtawen (a, b, c)",
+          "list-upper-alpha": "Grouss Buschtawen (A, B, C)",
+          "list-lower-roman": "Kleng réimesch Zuelen (i, ii, iii)",
+          "list-upper-roman": "Grouss réimesch Zuelen (I, II, III)"
+        }
+      }
+    ]
+  }
+}

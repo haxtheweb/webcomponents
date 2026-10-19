@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Cita multimedia",
+    "description": "Imaxe cunha cita, referencia e lenda opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Cita",
+        "description": "Texto da cita."
+      },
+      {
+        "slot": "author",
+        "title": "Autor",
+        "description": "Autor da cita."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Detalles do autor",
+        "description": "Detalles do autor."
+      },
+      {
+        "slot": "caption",
+        "title": "Lenda",
+        "description": "Lenda da imaxe."
+      },
+      {
+        "property": "src",
+        "title": "Orixe da imaxe",
+        "description": "Ficheiro de imaxe usado para a cita multimedia."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto alternativo para a imaxe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Cor de realce da tarxeta."
+      }
+    ]
+  }
+}

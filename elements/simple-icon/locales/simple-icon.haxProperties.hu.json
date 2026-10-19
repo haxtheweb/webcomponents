@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikon",
+    "description": "Ikon a teljes ikonkönyvtárból."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "A megjelenítendő ikon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Az ikon kiemelőszíne."
+      },
+      {
+        "property": "dark",
+        "title": "Sötét",
+        "description": "Sötét mód használata (invertált színkészlet)."
+      }
+    ]
+  }
+}

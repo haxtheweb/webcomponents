@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Prenos delovnega lista",
+    "description": "Gumb za prikaz datotek, ki so na voljo za prenos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov prenosa."
+      },
+      {
+        "property": "link",
+        "title": "Povezava",
+        "description": "Povezava za prenos."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Çäre nyşany",
+    "description": "Çäre nyşany komponenti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV suraty",
+        "description": "Telewizorda görkezilýän surat."
+      },
+      {
+        "property": "logo",
+        "title": "Logotip",
+        "description": "Nyşanyň burçunda görkezilýän logotip."
+      },
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Nyşanyň ýokarsynda görkezilýän at."
+      },
+      {
+        "property": "name",
+        "title": "Ady",
+        "description": "Nyşanda görkezilýän at."
+      },
+      {
+        "property": "position",
+        "title": "Wezipe",
+        "description": "Adamyň roly ýa-da wezipesi."
+      },
+      {
+        "property": "organization",
+        "title": "Gurama",
+        "description": "Adamyň işleýän guramasy."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV reňki",
+        "description": "Telewizoryň reňkini saýlaň."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Esasy fon ýa-da tekst reňki."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Düwmejik reňki",
+        "description": "Telewizor düwmejikleriniň reňki."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepiýa",
+        "description": "Sepiýa effektini ulan."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Ak-gara",
+        "description": "Ak-gara effektini ulan."
+      }
+    ]
+  }
+}

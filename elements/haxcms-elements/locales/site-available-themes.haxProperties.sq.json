@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Temat e disponueshme",
+    "description": "Shfaq temat e disponueshme të HAXcms me ndërrim të drejtpërdrejtë të pamjes paraprake"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Modaliteti i pamjes",
+        "description": "Zgjidh si të shfaqen temat",
+        "options": {
+          "gallery": "Galeria",
+          "table": "Tabelë"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Shfaq detajet",
+        "description": "Shfaq përshkrimet e temave dhe informacion shtesë"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Shfaq temat e fshehura dhe të vjetra",
+        "description": "Shfaq temat e fshehura, të vjetra dhe të tmerrshme përveç parazgjedhjeve të panelit"
+      },
+      {
+        "property": "columns",
+        "title": "Kolonat (galeria)",
+        "description": "Numri i kolonave në pamjen e galerisë"
+      }
+    ]
+  }
+}

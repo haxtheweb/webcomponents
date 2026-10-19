@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Garso įrašai",
+    "description": "Leidžia pateikti vaizdo įrašą labai prieinamu būdu, nepriklausomai nuo šaltinio."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Šaltinis",
+        "description": "Šios medijos URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Pavadinimas",
+        "description": "Paprastas pavadinimas po vaizdo įrašu"
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Pasirinkite grotuvo akcento spalvą."
+      },
+      {
+        "property": "track",
+        "title": "Subtitrai",
+        "description": "Subtitrų failo URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Miniatiūra",
+        "description": "Neprivaloma. Miniatiūros / plakato paveikslėlio URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "Įjungti mokymosi režimą",
+        "description": "Išjungia prasukimą pirmyn ir atgal."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Pašalinti mygtuką „Atidaryti YouTube“",
+        "description": "Pašalina mygtuką, kuriuo vaizdo įrašas atidaromas YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Įtraukti bendrinimo nuorodą?",
+        "description": "Pateikia nuorodą vaizdo įrašui bendrinti."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Nurodo, ar naudoti CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Leisti atkūrimą fone",
+        "description": "Vaizdo įrašai automatiškai pristabdomi / paleidžiami, kai skirtukas praranda fokusą; ši parinktis leidžia vaizdo įrašui groti, kai skirtukas neaktyvus"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tamsi tema nuorašui",
+        "description": "Įjungti tamsiąją temą nuorašui."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Išjungti interaktyvumą",
+        "description": "Išjungti interaktyvų režimą, kuriame nuorašą galima spustelėti."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Slėpti laiko žymas",
+        "description": "Slėpti laiko žymas nuoraše."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Slėpti nuorašą",
+        "description": "Pagal numatytuosius nustatymus slėpti nuorašą."
+      },
+      {
+        "property": "lang",
+        "title": "Kalba",
+        "description": "Medijos kalba."
+      }
+    ]
+  }
+}

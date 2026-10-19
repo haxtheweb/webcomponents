@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model kursi",
+    "description": "Faqosje interaktive për konceptet e kursit me detaje, animacion dhe kontrolle njohurish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titulli"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Zona e informacionit"
+      },
+      {
+        "title": "Zona e detajeve"
+      },
+      {
+        "title": "Zona e animacionit"
+      },
+      {
+        "title": "Zona e kontrollit të njohurive"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Zona e logos"
+      }
+    ]
+  }
+}

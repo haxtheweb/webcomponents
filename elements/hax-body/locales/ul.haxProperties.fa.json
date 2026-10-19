@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "فهرست نشانه‌دار",
+    "description": "ایجاد فهرست نشانه‌دار."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "سبک نشانه",
+        "description": "سبک مورد استفاده برای نشانه‌های فهرست نامرتب.",
+        "options": {
+          "": "پیش‌فرض (مربع)",
+          "list-disc": "دیسک",
+          "list-circle": "دایره",
+          "list-square": "مربع"
+        }
+      }
+    ]
+  }
+}

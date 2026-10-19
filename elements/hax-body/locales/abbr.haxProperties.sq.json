@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Shkurtim",
+    "description": "Shkurtim me këshillë që tregon termin e plotë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teksti",
+        "description": "Teksti i dukshëm i shkurtimit."
+      },
+      {
+        "attribute": "title",
+        "title": "Fjala",
+        "description": "Termi i plotë që shfaqet kur kalon miu sipër."
+      }
+    ]
+  }
+}

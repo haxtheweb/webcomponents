@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "活动徽章",
+    "description": "活动徽章组件。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV 图像",
+        "description": "显示在 TV 上的图像。"
+      },
+      {
+        "property": "logo",
+        "title": "徽标",
+        "description": "显示在徽章角落的徽标。"
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "显示在徽章顶部的标题。"
+      },
+      {
+        "property": "name",
+        "title": "姓名",
+        "description": "显示在徽章上的姓名。"
+      },
+      {
+        "property": "position",
+        "title": "职位",
+        "description": "此人的角色或职务。"
+      },
+      {
+        "property": "organization",
+        "title": "组织",
+        "description": "此人所在的组织。"
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV 颜色",
+        "description": "选择 TV 的颜色。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "主要背景色或文本颜色。"
+      },
+      {
+        "property": "knobcolor",
+        "title": "旋钮颜色",
+        "description": "TV 旋钮的颜色。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "复古棕褐色",
+        "description": "应用复古棕褐色效果。"
+      },
+      {
+        "property": "blackwhite",
+        "title": "黑白",
+        "description": "应用黑白效果。"
+      }
+    ]
+  }
+}

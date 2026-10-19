@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex ټاکونکی",
+    "description": "د Hexcode رنګ ټاکونکی"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ارزښت",
+        "description": "تلواله hex ارزښت"
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "د متن ساحه غیر فعاله کړئ"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "لویه ښودنه",
+        "description": "رنګ په لویه ښودنه کې شامل کړئ"
+      }
+    ]
+  }
+}

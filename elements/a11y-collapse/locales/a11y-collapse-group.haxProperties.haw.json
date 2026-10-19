@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Pūʻulu Hoʻonui a Hoʻopiliki",
+    "description": "He pūʻulu o nā mea hoʻonui a hoʻopiliki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Hoʻonui i hoʻokahi wale nō",
+        "description": "Hoʻokahi wale nō mea e hiki ke hoʻonui ʻia."
+      },
+      {
+        "slot": "",
+        "title": "Nā Mea Hoʻopiliki",
+        "description": "Nā mea hoʻopiliki."
+      }
+    ]
+  }
+}

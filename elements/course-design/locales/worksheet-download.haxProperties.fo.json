@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Niðurtøka av arbeiðsarki",
+    "description": "Ein knøttur til at vísa fílur, ið eru tøkar at taka niður."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Heitið á niðurtøkuni."
+      },
+      {
+        "property": "link",
+        "title": "Leinki",
+        "description": "Leinkið til niðurtøkuna."
+      }
+    ]
+  }
+}

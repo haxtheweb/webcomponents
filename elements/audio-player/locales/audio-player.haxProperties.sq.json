@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Ky mund të paraqesë video në mënyrë shumë të qasshme, pavarësisht burimit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Burimi",
+        "description": "URL-ja e kësaj medie."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titulli",
+        "description": "Titull i thjeshtë poshtë videos"
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Zgjidh ngjyrën theksuese për luajtësin."
+      },
+      {
+        "property": "track",
+        "title": "Titrat",
+        "description": "URL-ja e skedarit të titrave."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Imazhi miniaturë",
+        "description": "Opsionale. URL-ja e një imazhi miniaturë/posteri."
+      },
+      {
+        "property": "learningMode",
+        "title": "Aktivizo modalitetin e të mësuarit",
+        "description": "Çaktivizon kalimin përpara dhe mbrapa."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Hiq butonin e hapjes në YouTube",
+        "description": "Heq butonin për hapjen e videos në YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Të përfshihet lidhje ndarjeje?",
+        "description": "Jep një lidhje për të ndarë videon."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Tregon nëse duhet përdorur CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Lejo luajtjen në sfond",
+        "description": "Videot ndalen / luhen automatikisht kur skeda humbet fokusin; kjo lejon që videoja të luhet pa qenë skeda në fokus"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Temë e errët për transkriptin",
+        "description": "Aktivizo temën e errët për transkriptin."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Çaktivizo interaktivitetin",
+        "description": "Çaktivizo modalitetin interaktiv që e bën transkriptin të klikueshëm."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Fshih vulat kohore",
+        "description": "Fshih vulat kohore në transkript."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Fshih transkriptin",
+        "description": "Fshih transkriptin si parazgjedhje."
+      },
+      {
+        "property": "lang",
+        "title": "Gjuha",
+        "description": "Gjuha e medias."
+      }
+    ]
+  }
+}

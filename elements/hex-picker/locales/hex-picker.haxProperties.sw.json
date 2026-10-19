@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kichaguzi cha Hex",
+    "description": "Kichaguzi cha rangi kwa msimbo wa hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Thamani",
+        "description": "Thamani chaguomsingi ya hex"
+      },
+      {
+        "property": "disabled",
+        "title": "Imezimwa",
+        "description": "Zima sehemu ya maandishi"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Onyesho Kubwa",
+        "description": "Jumuisha rangi katika onyesho kubwa"
+      }
+    ]
+  }
+}

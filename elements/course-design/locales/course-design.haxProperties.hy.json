@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Դասընթացի ձևավորում",
+    "description": "Կոնտեյներ ուսումնական նյութերի և դասընթացի ձևավորման տարրերի համար։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Դասընթացի նույնացուցիչ",
+        "description": "OER Schema՝ դասընթացի նույնացուցիչը, օր.՝ MATH-100։"
+      },
+      {
+        "property": "termOffered",
+        "title": "Առաջարկվող կիսամյակ",
+        "description": "OER Schema՝ կիսամյակը, որի ընթացքում առաջարկվում է դասընթացը։"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Անցկացման ձևաչափ",
+        "description": "OER Schema՝ դասընթացի անցկացման ձևաչափը (օր.՝ առկա, առցանց, հիբրիդային)։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Գլխավոր դասախոս",
+        "description": "OER Schema՝ դասընթացի գլխավոր դասախոսը։"
+      },
+      {
+        "property": "syllabus",
+        "title": "Ծրագրի URL",
+        "description": "OER Schema՝ դասընթացի ծրագրի URL-ը։"
+      }
+    ]
+  }
+}

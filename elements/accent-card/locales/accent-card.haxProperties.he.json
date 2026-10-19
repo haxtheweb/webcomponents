@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "כרטיס",
+    "description": "כרטיס עם עיצוב הדגשה אופציונלי."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "כותרת",
+        "description": "כותרת לכרטיס."
+      },
+      {
+        "slot": "subheading",
+        "title": "כותרת משנה",
+        "description": "כותרת משנה אופציונלית לכרטיס."
+      },
+      {
+        "slot": "content",
+        "title": "תוכן",
+        "description": "תוכן לכרטיס."
+      },
+      {
+        "slot": "footer",
+        "title": "כותרת תחתונה",
+        "description": "כותרת תחתונה אופציונלית לכרטיס."
+      },
+      {
+        "property": "imageSrc",
+        "title": "תמונה",
+        "description": "תמונה אופציונלית"
+      },
+      {
+        "property": "imageAlt",
+        "title": "טקסט חלופי לתמונה",
+        "description": "טקסט חלופי המתאר את התמונה עבור קוראי מסך. השאירו ריק רק אם התמונה דקורטיבית בלבד."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "יישור אופקי של התמונה",
+        "options": {
+          "left": "שמאל",
+          "center": "מרכז",
+          "right": "ימין"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "יישור אנכי של התמונה",
+        "options": {
+          "top": "למעלה",
+          "center": "מרכז",
+          "bottom": "למטה"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע הדגשה אופציונלי."
+      },
+      {
+        "property": "dark",
+        "title": "ערכת נושא כהה",
+        "description": "הפעלת ערכת נושא כהה"
+      },
+      {
+        "property": "horizontal",
+        "title": "אופקי",
+        "description": "כיוון אופקי?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "הדגשת כותרת",
+        "description": "להחיל צבע הדגשה על הכותרת?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "הדגשת רקע",
+        "description": "להחיל צבע הדגשה על רקע הכרטיס?"
+      },
+      {
+        "property": "noBorder",
+        "title": "ללא הדגשת גבול",
+        "description": "להסיר את הדגשת הגבול?"
+      },
+      {
+        "property": "flat",
+        "title": "שטוח",
+        "description": "להסיר את הצל?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "פינה",
+        "description": "תוכן לפינת הכרטיס."
+      }
+    ]
+  }
+}

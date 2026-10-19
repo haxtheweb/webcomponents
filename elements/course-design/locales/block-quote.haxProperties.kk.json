@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Дәйексөз блогы",
+    "description": "Безендірілген дәйексөз блогы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Дереккөз сілтемесі",
+        "description": "Дереккөз мәтіні."
+      },
+      {
+        "property": "alt",
+        "title": "Балама",
+        "description": "Суреттің балама мәтіні."
+      },
+      {
+        "property": "image",
+        "title": "Сурет",
+        "description": "Дәйексөзбен бірге көрсетілетін сурет."
+      }
+    ]
+  }
+}

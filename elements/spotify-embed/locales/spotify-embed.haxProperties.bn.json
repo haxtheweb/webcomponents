@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify প্লেয়ার এমবেডের র‍্যাপার।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "উৎস",
+        "description": "Spotify থেকে এমবেড বা শেয়ার লিংক।"
+      },
+      {
+        "property": "theme",
+        "title": "থিম",
+        "description": "প্লেয়ারের পটভূমির রঙের থিম।",
+        "options": {
+          "": "ডিফল্ট",
+          "0": "কালো"
+        }
+      },
+      {
+        "property": "size",
+        "title": "আকার",
+        "description": "প্লেয়ারের আকার।",
+        "options": {
+          "normal": "ডিফল্ট",
+          "compact": "সংক্ষিপ্ত"
+        }
+      }
+    ]
+  }
+}

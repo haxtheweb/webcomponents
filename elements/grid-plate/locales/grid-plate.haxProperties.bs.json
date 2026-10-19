@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Raspored kolona",
+    "description": "Rasporedite materijal u jednostavne kolone"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Raspored kolona",
+        "description": "Stil za prikaz ovih stavki (može se promijeniti na malim ekranima)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Onemogući responzivnost",
+        "description": "Označite okvir da zadržite kolone na većim ekranima, uz slaganje na najmanjim ekranima"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Unutrašnja margina stavke",
+        "description": "Unutrašnja margina u svakoj stavci"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Margine stavki",
+        "description": "Margina između stavki"
+      }
+    ]
+  }
+}

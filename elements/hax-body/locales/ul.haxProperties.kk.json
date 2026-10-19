@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Таңбалауышты тізім",
+    "description": "Маркерленген тізім жасау."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Маркер стилі",
+        "description": "Реттелмеген тізім маркерлеріне қолданылатын стиль.",
+        "options": {
+          "": "Әдепкі (шаршы)",
+          "list-disc": "Диск",
+          "list-circle": "Шеңбер",
+          "list-square": "Шаршы"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Görsel karşılaştırma",
+    "description": "Karşılaştırmak için bir görseli diğerinin üzerinde kaydırın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Üst görsel",
+        "description": "Alt görselin üzerinde kaydırılacak üst görsel."
+      },
+      {
+        "property": "topAlt",
+        "title": "Üst görsel alt metni",
+        "description": "Erişilebilirlik için gerekli alt metin."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Alt görsel",
+        "description": "Üst görselin altında gösterilen görsel."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alt görsel alt metni",
+        "description": "Erişilebilirlik için gerekli alt metin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Davranış",
+        "description": "Silme modunu (varsayılan) veya üst görsel opaklık modunu seçin."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "Kaydırıcı çubuğu rengi."
+      },
+      {
+        "property": "dark",
+        "title": "Koyu",
+        "description": "Kaydırıcı çubuğu rengini tersine çevir."
+      },
+      {
+        "property": "position",
+        "title": "Başlangıç Konumu",
+        "description": "0 ile 100 arasında başlangıç konumu."
+      }
+    ]
+  }
+}

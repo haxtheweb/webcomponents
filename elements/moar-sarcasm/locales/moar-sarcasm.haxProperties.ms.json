@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sindiran",
+    "description": "Mempersembahkan teks secara mengusik"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Teks",
+        "description": "Teks untuk dijadikan sindiran"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ẹ̀rọ ìṣeré ìwé àlàyé èròjà wẹ́ẹ̀bù"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Fi fèrèsé pamọ́",
+        "description": "Fi fèrèsé ìjáde pamọ́, ó wúlò nígbà tí èrò náà jẹ́ ìtẹ̀wé-àṣẹ nìkan"
+      }
+    ]
+  }
+}

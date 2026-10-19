@@ -1,0 +1,14 @@
+{
+  "title": "Lohkot",
+  "enabled": "Käytössä",
+  "block": "Lohko",
+  "preview": "Esikatselu",
+  "filterBlocks": "Suodata lohkoja",
+  "requiredTextNote": "Jotkin tekstitagit ovat pakollisia ja aina käytössä (näytetään harmaina).",
+  "selectAll": "Valitse kaikki",
+  "deselectAll": "Poista kaikki valinnat",
+  "save": "Tallenna",
+  "noDescription": "Kuvausta ei ole saatavilla.",
+  "details": "Tiedot",
+  "loadingInventory": "Ladataan koko lohkovalikoimaa…"
+}

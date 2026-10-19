@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Zufälliger Seiteninhalt",
+    "description": "Ein zufälliges Element der obersten Ebene aus einer ausgewählten Seite anzeigen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Seite",
+        "description": "Wähle die Seite, aus der zufällige Inhalte entnommen werden. Das Element zeigt zufällig eines der HTML-Elemente der obersten Ebene dieser Seite an."
+      }
+    ]
+  }
+}

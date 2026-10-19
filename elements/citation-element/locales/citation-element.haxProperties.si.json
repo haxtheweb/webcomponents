@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "මූලාශ්‍ර දැක්වීම",
+    "description": "ඉදිරිපත් කිරීමේ ප්‍රකාර තුනක් සහිත උපුටා දැක්වීම් මූලද්‍රව්‍යය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "උපුටා දක්වන ලද කෘතියේ මාතෘකාව."
+      },
+      {
+        "property": "source",
+        "title": "මූලාශ්‍ර සබැඳිය",
+        "description": "උපුටා දක්වන ලද කෘතිය සඳහා මූලාශ්‍ර URL."
+      },
+      {
+        "property": "date",
+        "title": "ප්‍රවේශ වූ දිනය",
+        "description": "මූලාශ්‍රයට ප්‍රවේශ වූ දිනය."
+      },
+      {
+        "property": "scope",
+        "title": "විෂය පථය",
+        "description": "උපුටා දැක්විය යුතු මූලද්‍රව්‍ය විෂය පථය.",
+        "options": {
+          "sibling": "සහෝදර මූලද්‍රව්‍යය",
+          "parent": "මාපිය මූලද්‍රව්‍යය"
+        }
+      },
+      {
+        "property": "license",
+        "title": "බලපත්‍රය",
+        "description": "උපුටා දක්වන ලද කෘතිය සඳහා බලපත්‍රය."
+      },
+      {
+        "property": "creator",
+        "title": "නිර්මාතෘ",
+        "description": "උපුටා දක්වන ලද කෘතියේ නිර්මාතෘ හෝ හිමිකරු."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema වර්ගය",
+        "description": "මෙම උපුටා දැක්වීම සඳහා OER Schema පන්තිය. පෙරනිමිය oer:ReferencedMaterial වේ; වලංගු OER පන්තියකින් පමණක් අභිබවා යන්න (උදා. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

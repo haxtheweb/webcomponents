@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Tirohanga Pae",
+    "description": "He poraka hihiri e uiui ana, e whakaatu ana hoki i ngā raraunga pae i runga i ngā paearu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tirohanga",
+        "description": "Ngā tawhā uiui mō te whāngai raraunga tirohanga. Ka taea e koe te tiki i tēnei mai i te papatohu Tirohanga."
+      },
+      {
+        "property": "renderer",
+        "title": "Aratau whakaatu",
+        "description": "Me pēhea te whakaatu i ngā hua tirohanga"
+      },
+      {
+        "property": "entity",
+        "title": "Momo hinonga",
+        "description": "Momo hinonga e whakamahia ana hei poroporo i te urupare",
+        "options": {
+          "": "Taunoa (tūemi)",
+          "item": "Tūemi",
+          "page": "Whārangi",
+          "file": "Kōnae",
+          "tag": "Tūtohu",
+          "block": "Paraka",
+          "view": "Tirohanga",
+          "theme": "Kaupapa",
+          "region": "Rohe",
+          "customElement": "Huānga Ritenga"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Wāwāhi tirohanga pae",
+        "description": "Huri hei ihirangi pateko mō te whakatika hāngai; ka mutu te whakahou aunoa mai i te pūtake."
+      }
+    ]
+  }
+}

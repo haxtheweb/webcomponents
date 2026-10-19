@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tebụl",
+    "description": "Data dabere na tebụl maka webụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Isi Ahịrị",
+        "description": "Were ahịrị mbụ dịka isi."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Isi Kọlụm",
+        "description": "Were kọlụm mbụ dịka isi."
+      },
+      {
+        "property": "footer",
+        "title": "Ala peeji",
+        "description": "Were ahịrị ikpeazụ dịka ala."
+      },
+      {
+        "property": "sort",
+        "title": "Enwere ike ịhazi",
+        "description": "Kwe ka ahazi site na uru kọlụm."
+      },
+      {
+        "property": "filter",
+        "title": "Kwe ka E Nyochaa",
+        "description": "Kwe ka e nyochaa site na uru kọlụm."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Nhazi Nọmba",
+        "description": "Tinye nhazi nọmba na kọlụm nọmba."
+      },
+      {
+        "property": "responsive",
+        "title": "Na-agbanwe agbanwe",
+        "description": "Gbanwee nhazi tebụl na obere ihuenyo."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Ọnọdụ Rubric",
+        "description": "Were tebụl a dịka OER Schema Rubric ka e wepụta metadata Rubric, RubricScale, RubricCriterion, na RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Ụdị Rubric",
+        "description": "Ụdị rubric e wepụtara dịka oer:rubricType (bara uru naanị mgbe Ọnọdụ Rubric gbanyere).",
+        "options": {
+          "": "(ọ dịghị)",
+          "analytic": "Nyocha nkewa",
+          "holistic": "Nke zuru oke",
+          "single-point": "Otu Isi",
+          "checklist": "Ndepụta nlele"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Nwere oke"
+      },
+      {
+        "property": "condensed",
+        "title": "Mee Ahịrị Ka Ha Dị Mkpụmkpụ",
+        "description": "Belata ogo ahịrị."
+      },
+      {
+        "property": "striped",
+        "title": "Ahịrị Nwere Ọdịiche",
+        "description": "Tinye ndò na ahịrị ọ bụla nke abụọ."
+      },
+      {
+        "property": "downloadable",
+        "title": "Bọtịnụ Nbudata",
+        "description": "Tinye bọtịnụ iji budata tebụl ahụ."
+      },
+      {
+        "property": "copyable",
+        "title": "Bọtịnụ Nnomi",
+        "description": "Tinye bọtịnụ iji detuo data CSV tebụl."
+      },
+      {
+        "property": "printable",
+        "title": "Bọtịnụ Mbipụta",
+        "description": "Tinye bọtịnụ iji bipụta naanị tebụl ahụ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Data CSV",
+        "description": "Mepụta tebụl site na faịlụ CSV ebugoro."
+      }
+    ]
+  }
+}

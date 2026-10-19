@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Visualizzatore PDF del browser",
+    "description": "Incorpora un file PDF in linea con layout a scheda e pulsante di download facoltativi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL del PDF",
+        "description": "Posizione del file PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Intestazione",
+        "description": "Testo dell'intestazione della scheda."
+      },
+      {
+        "property": "card",
+        "title": "Layout a scheda",
+        "description": "Mostra il PDF in una scheda con un pulsante di download."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Etichetta di download",
+        "description": "Etichetta per il pulsante di download."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Messaggio di mancato supporto",
+        "description": "Messaggio mostrato quando il browser non può visualizzare file PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Messaggio del link di mancato supporto",
+        "description": "Testo del link quando il browser non può visualizzare file PDF."
+      },
+      {
+        "property": "width",
+        "title": "Larghezza",
+        "description": "Larghezza del visualizzatore PDF."
+      },
+      {
+        "property": "height",
+        "title": "Altezza",
+        "description": "Altezza del visualizzatore PDF."
+      }
+    ]
+  }
+}

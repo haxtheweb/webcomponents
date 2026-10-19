@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Gelişmiş Görsel",
+    "description": "Görselleri çeşitli geliştirmelerle sunmanın bir yolu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kaynak",
+        "description": "Görselin URL'si."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatif metin",
+        "description": "Görseli görme engelli kullanıcılara tanımlayan metin."
+      },
+      {
+        "property": "link",
+        "title": "Bağlantı",
+        "description": "Görseli bir URL'ye bağla"
+      },
+      {
+        "property": "card",
+        "title": "Kart",
+        "description": "Yükseltilmiş bir kart görünümü vermek için gölge uygulayın."
+      },
+      {
+        "property": "box",
+        "title": "Kutu",
+        "description": "Görselin etrafına görsel bir kutu uygulayın."
+      },
+      {
+        "property": "offset",
+        "title": "Kaydırma",
+        "description": "Görsele sola veya sağa kaydırma uygulayın.",
+        "options": {
+          "none": "yok",
+          "wide": "geniş",
+          "narrow": "dar"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Kaynak",
+        "description": "Görsel için kaynakça."
+      },
+      {
+        "property": "caption",
+        "title": "Görsel açıklaması",
+        "description": "Görsel için alt yazı."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Şekil Başlığı",
+        "description": "Şekil etiketi için başlık."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Şekil Açıklaması",
+        "description": "Şekil etiketi için açıklama."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Küçük resim",
+        "description": "Küçük resim kaynağı. Küçük resmi gösterir ancak tam kaynağı bir pencerede açar."
+      },
+      {
+        "property": "round",
+        "title": "Yuvarlak görsel",
+        "description": "Görselin görünümünü daire şeklinde kırpar."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Görsel penceresini devre dışı bırak",
+        "description": "Tıklamaların görseli bir görsel inceleme penceresinde açmasını devre dışı bırakın."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Markdown olarak işle",
+        "description": "Alt yazıyı ve kaynakçayı Markdown olarak işleyin."
+      }
+    ]
+  }
+}

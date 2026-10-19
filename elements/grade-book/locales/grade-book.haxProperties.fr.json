@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Carnet de notes",
+    "description": "Un carnet de notes sans interface qui prend en charge plusieurs backends avec des grilles d'évaluation."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "Type de source de données (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Point de terminaison URL (JSON)",
+          "json": "Bloc de données JSON",
+          "filesystem": "Système de fichiers"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Données sources",
+        "description": "URL ou données JSON du carnet de notes."
+      },
+      {
+        "property": "forCourse",
+        "title": "Référence du cours",
+        "description": "Identifiant du cours émis en tant que oer:forCourse sur chaque ressource Assessment."
+      }
+    ]
+  }
+}

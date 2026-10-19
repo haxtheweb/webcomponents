@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Selbstkontroll",
+    "description": "Benotzer kënnen eng Selbstkontroll maachen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Bild fir d'Selbstkontroll."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel vun der Selbstkontroll."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativtext",
+        "description": "Alternativtext fir d'Bild."
+      },
+      {
+        "slot": "question",
+        "title": "Fro"
+      },
+      {
+        "slot": "",
+        "title": "Äntwert"
+      },
+      {
+        "property": "accentColor",
+        "title": "Themafaarf",
+        "description": "Eng Themafaarf aus dem Designsystem wielen.",
+        "options": {
+          "primary": "Primär",
+          "accent": "Akzent",
+          "success": "Erfolleg",
+          "warning": "Warnung",
+          "error": "Feeler",
+          "info": "Info"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Léierzil",
+        "description": "Referenz op d'Léierzil, ausginn als oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Bewäert",
+        "description": "Aktivitéitsreferenz, ausginn als oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Méi-Link",
+        "description": "Link op zousätzlech Informatiounen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Кальцавы індыкатар прагрэсу",
+    "description": "Кальцавая дыяграма прагрэсу"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Загаловак",
+        "description": "Назва элемента"
+      },
+      {
+        "property": "desc",
+        "title": "Апісанне",
+        "description": "Даступнае падрабязнае апісанне"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Крыніца выявы",
+        "description": "Крыніца выявы ўнутры кальца."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Альтэрнатыўны тэкст выявы",
+        "description": "Альтэрнатыўны тэкст для выявы."
+      },
+      {
+        "property": "animated",
+        "title": "Анімаваны",
+        "description": "Ці анімуецца прагрэс пры першай загрузцы"
+      },
+      {
+        "property": "complete",
+        "title": "Выканана",
+        "description": "Масіў выкананых значэнняў."
+      },
+      {
+        "property": "total",
+        "title": "Усяго",
+        "description": "Агульная колькасць, калі ўсе пункты выкананы."
+      },
+      {
+        "property": "startAngle",
+        "title": "Пачатковы вугал",
+        "description": "Вугал кальца, з якога пачынаецца прагрэс"
+      }
+    ]
+  }
+}

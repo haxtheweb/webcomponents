@@ -122,5 +122,21 @@
   "recent": "Diweddar",
   "popular": "Poblogaidd",
   "copiedToClipboard": "Copïwyd i'r clipfwrdd",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Gwybodaeth am y ddelwedd",
+  "imageActions": "Gweithredoedd delwedd",
+  "imageRecommendations": "Argymhellion delwedd",
+  "compressImage": "Cywasgu'r ddelwedd",
+  "resizeTo": "Newid maint i",
+  "created": "Crëwyd",
+  "size": "Maint",
+  "dimensions": "Dimensiynau",
+  "type": "Math",
+  "done": "wedi gorffen",
+  "noFileUuid": "Nid yw cyfeirnod y ffeil ar gael; uwchlwythwch eto i alluogi gweithredoedd.",
+  "fileOpsUnavailable": "Nid yw gweithrediadau ffeil ar gael ar gyfer y wefan hon.",
+  "fileOpFailed": "Methodd y gweithrediad ffeil.",
+  "fileExtensionNotAllowed": "Mae'r maes hwn ond yn derbyn y mathau canlynol o ffeiliau:",
+  "fileTypeNotAllowed": "Mae'r maes hwn ond yn derbyn y mathau canlynol o gyfryngau:",
+  "transformFailed": "Methodd y trawsnewid ar ôl uwchlwytho; cadwyd y ffeil wreiddiol."
 }

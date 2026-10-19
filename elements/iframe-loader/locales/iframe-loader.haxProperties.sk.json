@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Vloženie externého webového obsahu do iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL zdroja",
+        "description": "URL zdroja."
+      },
+      {
+        "property": "height",
+        "title": "Výška",
+        "description": "Výška iframe."
+      },
+      {
+        "property": "width",
+        "title": "Šírka",
+        "description": "Šírka iframe."
+      }
+    ]
+  }
+}

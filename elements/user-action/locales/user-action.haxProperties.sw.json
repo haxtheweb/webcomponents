@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Kitendo cha mtumiaji",
+    "description": "Fuatilia vitendo vya mtumiaji na utume data kwenye hifadhi za xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Tukio la kufuatilia",
+        "description": "Kitendo cha mtumiaji kinachoanzisha tukio hili.",
+        "options": {
+          "visibility": "Anaweza kuona hiki",
+          "keydown": "Bonyeza kitufe hapa",
+          "click": "Bofya hiki",
+          "hover": "Elea juu ya hiki"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Fuatilia kila mara",
+        "description": "Kwa chaguo-msingi, tukio la kwanza pekee hufuatiliwa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "दिनांक",
+    "description": "तपशीलांसह कॅलेंडर दिनांक दाखवा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "महिना",
+        "description": "कार्डवर दाखवलेला महिना."
+      },
+      {
+        "property": "date",
+        "title": "महिन्याचा दिवस",
+        "description": "महिन्याचा अंकी दिवस."
+      },
+      {
+        "property": "day",
+        "title": "आठवड्याचा दिवस",
+        "description": "आठवड्याचा दिवस मजकुरात."
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "कार्यक्रमाचे नाव."
+      },
+      {
+        "property": "location",
+        "title": "ठिकाण",
+        "description": "कार्यक्रमाचे ठिकाण."
+      },
+      {
+        "property": "startTime",
+        "title": "प्रारंभ",
+        "description": "प्रारंभ वेळ."
+      },
+      {
+        "property": "endTime",
+        "title": "समाप्ती",
+        "description": "समाप्ती वेळ."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "पर्यायी उठाव रंग."
+      },
+      {
+        "property": "dark",
+        "title": "गडद थीम",
+        "description": "गडद थीम सक्षम करा."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Hawaasa Discord URL qoodinsaa irraa galchi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL Qabeenyaa",
+        "description": "URL qabeenyaa."
+      },
+      {
+        "property": "height",
+        "title": "Dheerina",
+        "description": "Dheerina caaccuu qabiyyee."
+      },
+      {
+        "property": "width",
+        "title": "Bal'ina",
+        "description": "Bal'ina caaccuu qabiyyee."
+      }
+    ]
+  }
+}

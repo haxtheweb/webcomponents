@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Wizualizator MIDI",
+    "description": "Odtwarzaj MIDI w kontekście z wizualizacją."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Źródło",
+        "description": "URL pliku do odtworzenia."
+      },
+      {
+        "property": "visualizer",
+        "title": "Wizualizacja",
+        "description": "Styl wizualizacji pliku muzycznego.",
+        "options": {
+          "staff": "Pięciolinia",
+          "piano-roll": "Rolka pianina",
+          "waterfall": "Pianino + wodospad"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Ukryj wodospad",
+        "description": "Ukryj nuty wodospadu w wizualizacji pianina."
+      }
+    ]
+  }
+}

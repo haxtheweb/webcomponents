@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Orðfeingi",
+    "description": "Orðfeingisheiti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Heiti"
+      },
+      {
+        "slot": "",
+        "title": "Allýsing",
+        "description": "Allýsingin at vísa, tá ið klikt verður á heitið."
+      },
+      {
+        "property": "description",
+        "title": "Lýsing (OER Schema)",
+        "description": "OER Schema: ein stutt lýsing av orðfeingisheitinum. Verður fylt út sjálvvirkandi úr allýsingartekstinum, um tað verður latið vera tómt."
+      }
+    ]
+  }
+}

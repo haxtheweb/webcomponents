@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "मूलभूत प्रतिमा",
+    "description": "मूलभूत प्रतिमा घटक."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "स्रोत",
+        "description": "प्रतिमा URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "पर्यायी मजकूर",
+        "description": "सुलभता आणि SEO साठी पर्यायी मजकूर."
+      },
+      {
+        "attribute": "height",
+        "title": "उंची",
+        "description": "पिक्सेलमध्ये उंची. नैसर्गिक आकार वापरण्यासाठी रिकामे ठेवा."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "प्रतिमा लोडिंग",
+        "description": "प्रतिमा केव्हा लोड होईल ते निवडा.",
+        "options": {
+          "lazy": "दिसल्यावर लोड करा",
+          "auto": "स्वयंचलित"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "प्रतिसादात्मक स्रोत (srcset)",
+        "description": "प्रतिमा URL आणि वर्णनक (उदा. 480w किंवा 2x) सूचीबद्ध करा जेणेकरून ब्राउझर स्क्रीनसाठी सर्वोत्तम आकार निवडतील. मानक srcset गुणधर्म म्हणून संग्रहित."
+      }
+    ]
+  }
+}

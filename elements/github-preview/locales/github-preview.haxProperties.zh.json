@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub 预览",
+    "description": "带长描述的无障碍图片"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "组织",
+        "description": "GitHub 组织的机器名"
+      },
+      {
+        "property": "repo",
+        "title": "仓库",
+        "description": "仓库的机器名"
+      },
+      {
+        "property": "extended",
+        "title": "扩展视图",
+        "description": "在元素中包含 README"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Yorliqlar",
+    "description": "Yorliqlar toʻplami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Yorliq (qulaylik uchun)",
+        "description": "Yorliqlar toʻplami uchun qulay yorliq."
+      },
+      {
+        "property": "disabled",
+        "title": "Oʻchirilgan",
+        "description": "Barcha yorliqlarni oʻchirib qoʻyish."
+      },
+      {
+        "property": "hidden",
+        "title": "Yashirin",
+        "description": "Yorliqlar toʻplamini yashirish."
+      },
+      {
+        "property": "sticky",
+        "title": "Yopishqoq",
+        "description": "Aylantirishda gorizontal yorliqlarni yuqorida ushlab turish."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Maket chegara nuqtasi",
+        "description": "Gorizontal yorliqlar uchun chegara nuqtasi; faqat vertikal uchun -1 dan foydalaning."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Belgi chegara nuqtasi",
+        "description": "Belgilar bilan matnni koʻrsatish uchun chegara nuqtasi. Standart qiymat 0; faqat belgi rejimi uchun -1 dan foydalaning."
+      },
+      {
+        "slot": "",
+        "title": "Yorliqlar",
+        "description": "<a11y-tab/> elementlari ketma-ketligi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Noyob ID",
+        "description": "Ushbu yorliqlar toʻplami uchun noyob ID."
+      }
+    ]
+  }
+}

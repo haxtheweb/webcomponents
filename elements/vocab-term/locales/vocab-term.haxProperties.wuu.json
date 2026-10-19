@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "词汇",
+    "description": "词汇术语。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "术语"
+      },
+      {
+        "property": "information",
+        "title": "定义",
+        "description": "点术语辰光显示个定义。"
+      },
+      {
+        "property": "popoverMode",
+        "title": "弹出框",
+        "description": "用弹出框显示定义，勿内嵌。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "链接",
+        "description": "搭搿只术语相关个补充链接列表。"
+      }
+    ]
+  }
+}

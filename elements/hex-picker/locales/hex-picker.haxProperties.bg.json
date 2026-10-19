@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Избор на HEX цвят",
+    "description": "Избор на цвят по HEX код"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Стойност",
+        "description": "HEX стойност по подразбиране"
+      },
+      {
+        "property": "disabled",
+        "title": "Деактивирано",
+        "description": "Изключване на текстовото поле"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Голям изглед",
+        "description": "Включване на цвета в голям изглед"
+      }
+    ]
+  }
+}

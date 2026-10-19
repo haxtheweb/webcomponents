@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Liên kết HAX",
+    "description": "Liên kết đến một tài nguyên cụ thể trong trang web bạn đang làm việc."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Mục",
+        "description": "Mục dùng để hiển thị liên kết / dữ liệu tiêu đề"
+      }
+    ]
+  }
+}

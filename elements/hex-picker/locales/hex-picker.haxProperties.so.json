@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Dooraha Hex",
+    "description": "Dooraha midabka koodhka hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Qiime",
+        "description": "Qiimaha hex ee caadiga ah"
+      },
+      {
+        "property": "disabled",
+        "title": "La damiyay",
+        "description": "Dami goobta qoraalka"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Muujin Weyn",
+        "description": "Ku dar midabka muujinta weyn"
+      }
+    ]
+  }
+}

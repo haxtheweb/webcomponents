@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris نشان",
+    "description": "اختیاری کالج کے نام اور منزل URL کے ساتھ PSU شناختی نشان دکھائیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "کالج کا نام",
+        "description": "نشان کے ساتھ دکھایا جانے والا نام۔"
+      },
+      {
+        "property": "name2",
+        "title": "کالج کا نام 2",
+        "description": "کالج کے پہلے نام کے نیچے دکھایا جانے والا دوسرا نام۔"
+      },
+      {
+        "property": "name3",
+        "title": "کالج کا نام 3",
+        "description": "کالج کے دوسرے نام کے نیچے دکھایا جانے والا تیسرا نام۔"
+      },
+      {
+        "property": "url",
+        "title": "لنک",
+        "description": "نشان پر کلک کرنے پر منزل URL۔"
+      },
+      {
+        "property": "type",
+        "title": "قسم",
+        "description": "نشان کی بصری قسم۔",
+        "options": {
+          "default": "طے شدہ",
+          "light": "ہلکا",
+          "dark": "گہرا"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "عمودی لے آؤٹ",
+        "description": "تیسرا نام دوسرے نام کے نیچے افقی لکیر کے ساتھ دکھائیں۔"
+      }
+    ]
+  }
+}

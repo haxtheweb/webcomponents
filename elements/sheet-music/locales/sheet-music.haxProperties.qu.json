@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Taki qillqa",
+    "description": "Taki qillqakunata, guitarra tablaturakunata, partitura qillqakunatapas alphaTex utaq MusicXML-wan rikuchin pukllanpas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex qillqa",
+        "description": "Taki qillqapaq siqi ukhupi alphaTex qillqa. Qillqata ruranapaq chaylla allichay; templatepi waqaychakun, ch'usaqkuna qhipakunanpaq."
+      },
+      {
+        "property": "source",
+        "title": "Partitura willañiqi",
+        "description": "MusicXML (.xml/.musicxml/.mxl) utaq Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) willañiqita wicharichiy utaq t'inkiy. Churasqa kaqtin siqi ukhupi alphaTex-ta rantin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Uyarikuy pukllay",
+        "description": "Kikinmanta kawsachisqa - ukhupi kaq sintetizadorwan taki qillqata uyariy. Qhawanallapaq (mana uyarikuyniyuq) modopaq wañuchiy."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Rikuchiy akllanakunata rikuchiy",
+        "description": "Puklliq barrapi zoom, chutay, layout ñit'inakunata rikuchiy."
+      },
+      {
+        "property": "showExport",
+        "title": "Lluqsichiy ñit'inakunata rikuchiy",
+        "description": "Puklliq barrapi MIDI uraykachiy, imprimiy/PDF ñit'inakunata rikuchiy."
+      }
+    ]
+  }
+}

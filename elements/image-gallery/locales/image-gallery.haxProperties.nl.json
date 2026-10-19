@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Afbeeldingengalerij",
+    "description": "Een galerij die afbeeldingen toont als raster, metselwerk of diavoorstelling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Weergavemodus",
+        "description": "Hoe de afbeeldingen in de galerij worden getoond.",
+        "options": {
+          "grid": "Raster",
+          "masonry": "Metselwerk",
+          "gallery": "Galerij"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Actieve index",
+        "description": "Index van de actieve afbeelding waarmee de galerijmodus begint."
+      }
+    ]
+  }
+}

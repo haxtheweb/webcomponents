@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Karakterbog",
+    "description": "En headless karakterbog, der understøtter flere backends med rubrikker."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "Datakildetype (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-endpoint (JSON)",
+          "json": "JSON-dataklump",
+          "filesystem": "Filsystem"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Kildedata",
+        "description": "URL eller JSON-data til karakterbogen."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursusreference",
+        "description": "Kursus-id, der udsendes som oer:forCourse på hver Assessment-ressource."
+      }
+    ]
+  }
+}

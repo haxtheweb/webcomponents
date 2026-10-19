@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Mawu",
+    "description": "Liwu la mawu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Liwu"
+      },
+      {
+        "slot": "",
+        "title": "Tanthauzo",
+        "description": "Tanthauzo loti lionetsedwe liwu likadinidwa."
+      },
+      {
+        "property": "description",
+        "title": "Kufotokozera (OER Schema)",
+        "description": "OER Schema: kufotokozera kwachidule kwa liwu. Kumadzazidwa kokha kuchokera ku mawu a tanthauzo ngati kwasiyidwa kopanda kanthu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Карточка",
+    "description": "DDD дизайн системасы белән бизәлгән карточка компоненты."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Рәсем",
+        "description": "Өстәмә рәсем."
+      },
+      {
+        "property": "alt",
+        "title": "Рәсемнең alt тексты",
+        "description": "Рәсемне тасвирлаучы альтернатив текст."
+      },
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Карточка исеме."
+      },
+      {
+        "slot": "",
+        "title": "Эчтәлек",
+        "description": "Карточканың эчтәлек өлкәсе."
+      },
+      {
+        "property": "href",
+        "title": "Сылтама",
+        "description": "Төймә сылтамасының URL адресы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Тамга",
+        "description": "Төймә тамгасы."
+      },
+      {
+        "property": "noArrow",
+        "title": "Уксыз",
+        "description": "Төймә угын яшерергә."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Сылтама: максат",
+        "description": "Сылтаманы кайда ачарга.",
+        "options": {
+          "": "Шул ук тәрәзә",
+          "_blank": "Яңа тәрәзә - _blank",
+          "_top": "Өске тәрәзә - _top",
+          "_parent": "Ата-ана тәрәзә - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Сылтама: rel",
+        "description": "Бәйләнгән ресурс белән хәзерге документ арасындагы мөнәсәбәт."
+      }
+    ]
+  }
+}

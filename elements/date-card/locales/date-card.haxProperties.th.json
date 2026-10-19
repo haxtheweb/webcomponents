@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "วันที่",
+    "description": "แสดงวันที่ในปฏิทินพร้อมรายละเอียด"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "เดือน",
+        "description": "เดือนที่แสดงบนการ์ด"
+      },
+      {
+        "property": "date",
+        "title": "วันที่ของเดือน",
+        "description": "วันที่ของเดือนเป็นตัวเลข"
+      },
+      {
+        "property": "day",
+        "title": "วันในสัปดาห์",
+        "description": "วันในสัปดาห์เป็นข้อความ"
+      },
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อกิจกรรม"
+      },
+      {
+        "property": "location",
+        "title": "สถานที่",
+        "description": "สถานที่จัดกิจกรรม"
+      },
+      {
+        "property": "startTime",
+        "title": "เริ่ม",
+        "description": "เวลาเริ่ม"
+      },
+      {
+        "property": "endTime",
+        "title": "สิ้นสุด",
+        "description": "เวลาสิ้นสุด"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีเน้นเสริม"
+      },
+      {
+        "property": "dark",
+        "title": "ธีมมืด",
+        "description": "เปิดใช้งานธีมมืด"
+      }
+    ]
+  }
+}

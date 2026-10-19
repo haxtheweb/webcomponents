@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "تقريب جو بيج",
+    "description": "تقريب جي بيج جو جزو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV تصوير",
+        "description": "TV تي ڏيکاريل تصوير."
+      },
+      {
+        "property": "logo",
+        "title": "لوگو",
+        "description": "بيج جي ڪنڊ ۾ ڏيکاريل لوگو."
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "بيج جي مٿان ڏيکاريل عنوان."
+      },
+      {
+        "property": "name",
+        "title": "نالو",
+        "description": "بيج تي ڏيکاريل نالو."
+      },
+      {
+        "property": "position",
+        "title": "عهدو",
+        "description": "شخص جو ڪردار يا عهدو."
+      },
+      {
+        "property": "organization",
+        "title": "ادارو",
+        "description": "اهو ادارو جنهن لاءِ شخص ڪم ڪري ٿو."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV رنگ",
+        "description": "TV لاءِ رنگ چونڊيو."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "بنيادي پس منظر يا متن جو رنگ."
+      },
+      {
+        "property": "knobcolor",
+        "title": "نوب جو رنگ",
+        "description": "TV جي نوبن جو رنگ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "سيپيا",
+        "description": "سيپيا اثر لاڳو ڪريو."
+      },
+      {
+        "property": "blackwhite",
+        "title": "ڪارو ۽ اڇو",
+        "description": "ڪارو-اڇو اثر لاڳو ڪريو."
+      }
+    ]
+  }
+}

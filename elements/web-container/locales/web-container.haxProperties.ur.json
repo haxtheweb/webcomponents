@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS کنٹینر"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "ایڈیٹر چھپائیں",
+        "description": "فائل ترمیم کا انٹرفیس چھپائیں۔"
+      },
+      {
+        "property": "hideTerminal",
+        "title": "ٹرمینل چھپائیں",
+        "description": "خود بخود چلنے والے پروگراموں کے لیے ٹرمینل چھپائیں۔"
+      },
+      {
+        "property": "hideWindow",
+        "title": "ونڈو چھپائیں",
+        "description": "صرف ٹرمینل کے استعمال کے لیے آؤٹ پٹ ونڈو چھپائیں۔"
+      },
+      {
+        "slot": "",
+        "title": "کمانڈز",
+        "description": "لوڈ ہونے سے پہلے چلائی جانے والی کمانڈز (ہر سطر میں ایک)۔"
+      }
+    ]
+  }
+}

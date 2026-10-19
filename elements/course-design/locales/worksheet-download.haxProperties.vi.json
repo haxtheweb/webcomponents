@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Tải phiếu bài tập",
+    "description": "Nút hiển thị các tệp có thể tải xuống."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề của tệp tải xuống."
+      },
+      {
+        "property": "link",
+        "title": "Liên kết",
+        "description": "Liên kết tải xuống."
+      }
+    ]
+  }
+}

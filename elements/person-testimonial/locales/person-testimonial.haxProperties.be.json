@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Цытата з выявай",
+    "description": "Стылізаваная цытата з неабавязковай выявай."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Выява",
+        "description": "Дадаць выяву да водгуку."
+      },
+      {
+        "property": "name",
+        "title": "Поўнае імя",
+        "description": "Імя чалавека, які дае водгук."
+      },
+      {
+        "property": "position",
+        "title": "Пасада",
+        "description": "Пасада чалавека."
+      },
+      {
+        "slot": "",
+        "title": "Цытата",
+        "description": "Цытата аўтара водгуку."
+      }
+    ]
+  }
+}

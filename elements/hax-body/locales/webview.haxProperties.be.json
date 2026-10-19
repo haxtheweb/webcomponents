@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Крыніца",
+        "description": "URL гэтага рэсурсу."
+      }
+    ]
+  }
+}

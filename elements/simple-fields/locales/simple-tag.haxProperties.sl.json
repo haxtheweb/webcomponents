@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Oznaka / značka",
+    "description": "Kompaktna oznaka v obliki kapsule z neobvezno poudarno barvo, gumbom za preklic ali preklopom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Oznaka",
+        "description": "Besedilo, prikazano v znački."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Ime poudarne barve SimpleColors za ozadje značke.",
+        "options": {
+          "": "-- privzeto --",
+          "red": "Rdeča",
+          "pink": "Rožnata",
+          "purple": "Vijolična",
+          "deep-purple": "Temno vijolična",
+          "indigo": "Indigo",
+          "blue": "Modra",
+          "light-blue": "Svetlo modra",
+          "cyan": "Cian",
+          "teal": "Modrozelena",
+          "green": "Zelena",
+          "light-green": "Svetlo zelena",
+          "lime": "Limetina",
+          "yellow": "Rumena",
+          "amber": "Jantarna",
+          "orange": "Oranžna",
+          "deep-orange": "Temno oranžna",
+          "brown": "Rjava",
+          "blue-grey": "Modrosiva",
+          "grey": "Siva"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Samodejna poudarna barva",
+        "description": "Samodejno izpelji poudarno barvo iz besedila oznake."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Gumb za preklic",
+        "description": "Prikaži ikonski gumb za odstranitev/preklic v znački."
+      },
+      {
+        "property": "readonly",
+        "title": "Samo za branje",
+        "description": "Skrij gumb za preklic, da je značka samo za prikaz."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Preklaplja",
+        "description": "Ob kliku na gumb naj se značka vklopi/izklopi."
+      },
+      {
+        "property": "toggled",
+        "title": "Vklopljeno",
+        "description": "Ali je značka trenutno vklopljena."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikona vklopa",
+        "description": "Ikona, prikazana, ko je značka vklopljena."
+      },
+      {
+        "property": "disabled",
+        "title": "Onemogočeno",
+        "description": "Onemogoči interakcijo z značko."
+      }
+    ]
+  }
+}

@@ -52,7 +52,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
 
     this.registerLocalization({
       context: this,
-      basePath: import.meta.url,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
     });
   }
 

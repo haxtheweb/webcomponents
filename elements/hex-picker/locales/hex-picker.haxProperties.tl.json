@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex Picker",
+    "description": "Pampili ng kulay gamit ang hexcode"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Halaga",
+        "description": "Default na hex value"
+      },
+      {
+        "property": "disabled",
+        "title": "Naka-disable",
+        "description": "I-disable ang text field"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Malaking Display",
+        "description": "Isama ang kulay sa malaking display"
+      }
+    ]
+  }
+}

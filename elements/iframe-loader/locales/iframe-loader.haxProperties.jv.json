@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Lebokake isi web eksternal ing iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL Sumber Daya",
+        "description": "URL sumber daya."
+      },
+      {
+        "property": "height",
+        "title": "Dhuwur",
+        "description": "Dhuwure iframe."
+      },
+      {
+        "property": "width",
+        "title": "Amba",
+        "description": "Ambane iframe."
+      }
+    ]
+  }
+}

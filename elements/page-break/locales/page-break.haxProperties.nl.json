@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Paginadetails",
+    "description": "Definieer een visuele scheiding tussen pagina's die een CMS kan gebruiken om pagina's te maken."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel die in het thema en als eerste kop wordt getoond."
+      },
+      {
+        "property": "pageType",
+        "title": "Type",
+        "description": "Visueel label voor de paginacontext.",
+        "options": {
+          "": "-- geen --",
+          "content": "Inhoud",
+          "assessment": "Beoordeling",
+          "quiz": "Quiz",
+          "submission": "Inzending",
+          "lesson": "Les",
+          "module": "Module",
+          "task": "Taak",
+          "activity": "Activiteit",
+          "project": "Project",
+          "practice": "Oefening",
+          "unit": "Eenheid",
+          "objectives": "Leerdoelen",
+          "connection": "Verband",
+          "knowledge": "Wist je dat?",
+          "strategy": "Leerstrategie",
+          "discuss": "Bespreken",
+          "listen": "Luisteren",
+          "make": "Maken",
+          "observe": "Observeren",
+          "present": "Presenteren",
+          "reading": "Lezen",
+          "reflect": "Reflecteren",
+          "research": "Onderzoeken",
+          "watch": "Kijken",
+          "write": "Schrijven"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Door komma's gescheiden lijst met tags."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Link-URL",
+        "description": "Doorverwijs-URL die wordt getoond in plaats van de pagina-inhoud."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Linkdoel",
+        "description": "Open links in hetzelfde venster of in een nieuw venster.",
+        "options": {
+          "_self": "Zelfde venster",
+          "_blank": "Nieuw venster"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Gepubliceerd",
+        "description": "Niet-gepubliceerde pagina's zijn verborgen voor eindgebruikers."
+      },
+      {
+        "property": "locked",
+        "title": "Pagina vergrendelen",
+        "description": "Vergrendel of ontgrendel alle elementen op deze pagina."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Automatische slug overschrijven",
+        "description": "Bescherm de slug tegen automatische updates op basis van titel of bovenliggende pagina."
+      },
+      {
+        "property": "slug",
+        "title": "Pad",
+        "description": "URL-slug voor deze pagina."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Media die de pagina vertegenwoordigt, gebruikt in sommige thema's en weergaven."
+      },
+      {
+        "property": "parent",
+        "title": "Bovenliggend",
+        "description": "Pad van de bovenliggende pagina."
+      },
+      {
+        "property": "noderefs",
+        "title": "Gerelateerde inhoud",
+        "description": "Pagina's die verband houden met deze pagina."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Beschrijving",
+        "description": "Beschrijving voor collecties en zoekmachineoptimalisatie."
+      },
+      {
+        "property": "entityType",
+        "title": "Entiteitstype",
+        "description": "Standaard pagina, tenzij anders ingesteld.",
+        "options": {
+          "page": "Pagina (standaard)",
+          "taxonomy": "Taxonomie",
+          "taxonomyTerm": "Taxonomieterm",
+          "region": "Regio"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Pictogram",
+        "description": "Pictogram dat bij deze pagina op de site hoort."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Kleur die bij deze pagina op de site hoort."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Verbergen in menu",
+        "description": "Verberg deze pagina in menu's, maar behoud de URL."
+      },
+      {
+        "property": "order",
+        "title": "Volgorde",
+        "description": "Volgorde ten opzichte van naastliggende pagina's."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Paginathema",
+        "description": "Overschrijf het thema alleen voor deze pagina."
+      },
+      {
+        "property": "author",
+        "title": "Auteur",
+        "description": "Gebruikersnaam van de persoon die deze pagina het laatst heeft gewijzigd."
+      }
+    ]
+  }
+}

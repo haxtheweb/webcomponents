@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Twitter (X) embed",
+    "description": "Mag-embed ng tweet mula sa X sa konteksto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL ng Tweet",
+        "description": "URL ng tweet na ie-embed."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Maliwanag o madilim na tema para sa mga tweet sa X.",
+        "options": {
+          "light": "Maliwanag",
+          "dark": "Madilim"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Pigilan ang popup sa pag-click",
+        "description": "Pigilan ang mga user na buksan ang tweet sa x.com."
+      }
+    ]
+  }
+}

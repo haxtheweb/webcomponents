@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Carte poștală",
+    "description": "Un element media jucăuș care arată ca o carte poștală reală trimisă de undeva"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Către",
+        "description": "Cui îi este destinată?"
+      },
+      {
+        "property": "from",
+        "title": "De la",
+        "description": "Cine sunteți?"
+      },
+      {
+        "property": "message",
+        "title": "Mesaj",
+        "description": "Ce doriți să spuneți?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Ștampilată în",
+        "description": "De unde a fost trimisă această carte poștală?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Sursa fotografiei principale",
+        "description": "Unde se află fotografia dvs.?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Sursa fotografiei timbrului",
+        "description": "Unde se află fotografia dvs.?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Аудио",
+    "description": "Бұл дереккөзіне қарамастан бейнені жоғары қолжетімді түрде көрсете алады."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Дереккөз",
+        "description": "Осы медианың URL мекенжайы."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Тақырып",
+        "description": "Бейне астындағы қысқа атау"
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "Ойнатқыштың акцент түсін таңдаңыз."
+      },
+      {
+        "property": "track",
+        "title": "Субтитрлер",
+        "description": "Субтитр файлының URL мекенжайы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Нобай суреті",
+        "description": "Міндетті емес. Нобай/постер суретінің URL мекенжайы."
+      },
+      {
+        "property": "learningMode",
+        "title": "Оқу режимін қосу",
+        "description": "Алға және артқа айналдыруды өшіреді."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "«YouTube-та ашу» түймесін алып тастау",
+        "description": "Бейнені YouTube-та ашу түймесін алып тастайды."
+      },
+      {
+        "property": "linkable",
+        "title": "Бөлісу сілтемесін қосу керек пе?",
+        "description": "Бейнемен бөлісу сілтемесін береді."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS пайдалану-пайдаланбауды көрсетеді.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Фондық ойнатуға рұқсат беру",
+        "description": "Қойынды фокусты жоғалтқанда бейне автоматты түрде кідіртіледі / ойнатылады; бұл бейненің қойынды фокуссыз да ойнатылуына мүмкіндік береді"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Транскрипт үшін қараңғы тақырып",
+        "description": "Транскрипт үшін қараңғы тақырыпты қосу."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Интерактивтілікті өшіру",
+        "description": "Транскриптті басуға болатын ететін интерактивті режимді өшіру."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Уақыт белгілерін жасыру",
+        "description": "Транскрипттегі уақыт белгілерін жасыру."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Транскриптті жасыру",
+        "description": "Транскриптті әдепкі бойынша жасыру."
+      },
+      {
+        "property": "lang",
+        "title": "Тіл",
+        "description": "Медианың тілі."
+      }
+    ]
+  }
+}

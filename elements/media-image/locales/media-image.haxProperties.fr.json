@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Image enrichie",
+    "description": "Une façon de présenter des images avec diverses améliorations."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "L'URL de l'image."
+      },
+      {
+        "property": "alt",
+        "title": "Texte alternatif",
+        "description": "Texte décrivant l'image pour les utilisateurs non voyants."
+      },
+      {
+        "property": "link",
+        "title": "Lien",
+        "description": "Lier l'image à une URL"
+      },
+      {
+        "property": "card",
+        "title": "Carte",
+        "description": "Appliquer une ombre portée pour donner l'apparence d'une carte surélevée."
+      },
+      {
+        "property": "box",
+        "title": "Cadre",
+        "description": "Appliquer un cadre visuel autour de l'image."
+      },
+      {
+        "property": "offset",
+        "title": "Décalage",
+        "description": "Appliquer un décalage à gauche ou à droite à l'image.",
+        "options": {
+          "none": "aucun",
+          "wide": "large",
+          "narrow": "étroit"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Source de la citation",
+        "description": "Source de l'image."
+      },
+      {
+        "property": "caption",
+        "title": "Légende",
+        "description": "Légende de l'image."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titre de la figure",
+        "description": "Titre de l'étiquette de figure."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Description de la figure",
+        "description": "Description de l'étiquette de figure."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Image miniature",
+        "description": "Source de l'image miniature. Affiche la miniature mais ouvre l'image complète dans une fenêtre modale."
+      },
+      {
+        "property": "round",
+        "title": "Image ronde",
+        "description": "Recadre l'apparence de l'image en forme de cercle."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Désactiver la fenêtre modale de l'image",
+        "description": "Empêcher les clics d'ouvrir l'image dans une boîte de dialogue d'inspection."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Afficher en markdown",
+        "description": "Afficher la légende et la source en markdown."
+      }
+    ]
+  }
+}

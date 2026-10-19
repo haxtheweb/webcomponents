@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Тэгі",
+    "description": "Просты спіс тэгаў для паказу на старонцы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Тэгі",
+        "description": "Спіс тэгаў праз коску."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Аўтаматычны акцэнтны колер",
+        "description": "Аўтаматычна задаваць акцэнтны колер паводле меткі."
+      },
+      {
+        "property": "accentColor",
+        "title": "Колер",
+        "description": "Колер для тэгаў."
+      }
+    ]
+  }
+}

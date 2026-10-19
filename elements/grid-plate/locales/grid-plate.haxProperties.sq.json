@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Faqosje me kolona",
+    "description": "Vendos materialin në kolona të thjeshta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Faqosja me kolona",
+        "description": "Stili për paraqitjen e këtyre elementeve (mund të ndryshojë në ekrane të vogla)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Çaktivizo përshtatjen",
+        "description": "Shëno kutinë për të mbajtur kolonat në ekrane më të mëdha, ndërsa në ekranet më të vogla ato vendosen njëra mbi tjetrën"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Mbushja e elementeve",
+        "description": "Mbushja brenda çdo elementi"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Kufijtë e elementeve",
+        "description": "Hapësira mes elementeve"
+      }
+    ]
+  }
+}

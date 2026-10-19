@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ລາຍຊື່ຜູ້ປະກອບສ່ວນ GitHub",
+    "description": "ສະແດງເປັນຕົວລະຄອນ RPG ໂດຍໃຊ້ GitHub API."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ອົງກອນ",
+        "description": "ຊື່ອົງກອນຈາກ github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "ຄັງເກັບ",
+        "description": "ຊື່ຄັງເກັບຈາກ github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "ຈຳກັດ",
+        "description": "ຈຳກັດຈຳນວນຜູ້ປະກອບສ່ວນທີ່ສະແດງ."
+      }
+    ]
+  }
+}

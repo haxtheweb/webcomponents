@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Felsorolásjeles lista",
+    "description": "Felsorolásjeles lista létrehozása."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Felsorolásjel stílusa",
+        "description": "A számozatlan lista felsorolásjeleinek stílusa.",
+        "options": {
+          "": "Alapértelmezett (négyzet)",
+          "list-disc": "Telt kör",
+          "list-circle": "Kör",
+          "list-square": "Négyzet"
+        }
+      }
+    ]
+  }
+}

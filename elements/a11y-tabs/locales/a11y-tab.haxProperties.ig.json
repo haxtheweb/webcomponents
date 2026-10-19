@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Taabụ",
+    "description": "Otu taabụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Akara ngosi taabụ"
+      },
+      {
+        "property": "disabled",
+        "title": "Agbanyụrụ"
+      },
+      {
+        "property": "label",
+        "title": "Aha taabụ"
+      },
+      {
+        "slot": "",
+        "title": "Ọdịnaya taabụ",
+        "description": "Ọdịnaya nke taabụ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Pụrụ Iche"
+      },
+      {
+        "property": "flag",
+        "title": "Ederede ọkọlọtọ nhọrọ"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Akara ngosi ọkọlọtọ nhọrọ"
+      }
+    ]
+  }
+}

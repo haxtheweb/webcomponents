@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ટૅબ",
+    "description": "એક ટૅબ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ટૅબ આઇકન"
+      },
+      {
+        "property": "disabled",
+        "title": "નિષ્ક્રિય"
+      },
+      {
+        "property": "label",
+        "title": "ટૅબ લેબલ"
+      },
+      {
+        "slot": "",
+        "title": "ટૅબ સામગ્રી",
+        "description": "ટૅબની સામગ્રી."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "અનન્ય ID"
+      },
+      {
+        "property": "flag",
+        "title": "વૈકલ્પિક ફ્લેગ ટેક્સ્ટ"
+      },
+      {
+        "property": "flagIcon",
+        "title": "વૈકલ્પિક ફ્લેગ આઇકન"
+      }
+    ]
+  }
+}

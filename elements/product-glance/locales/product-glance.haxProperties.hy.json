@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ապրանքի ակնարկ",
+    "description": "Ապրանքի արագ ակնարկի բլոկ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Պատկերակ",
+        "description": "Հասկացությունը ներկայացնող պատկերակ։"
+      },
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Հիմնական հասկացությունը մեկ հայացքով։"
+      },
+      {
+        "property": "subtitle",
+        "title": "Ենթավերնագիր",
+        "description": "Լրացուցիչ մանրամասն։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Պատկերակի շեշտադրման գույնը։"
+      }
+    ]
+  }
+}

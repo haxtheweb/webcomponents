@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Imagine parallax",
+    "description": "Imagine cu derulare"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Imagine",
+        "description": "imaginea care va fi folosită în fundal"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Zona titlului",
+        "description": "Zona de text a titlului"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR Kodhi",
+    "description": "Kodhi yekuskena nefoni yakangwara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Dhata yeQR",
+        "description": "Kwakabva dhata yeQR kodhi."
+      },
+      {
+        "property": "title",
+        "title": "Mumwe musoro",
+        "description": "Mumwe musoro wakabatanidzwa nekwakabva QR kodhi."
+      },
+      {
+        "property": "modulesize",
+        "title": "Saizi",
+        "description": "Saizi yeQR kodhi."
+      },
+      {
+        "property": "margin",
+        "title": "Muganhu wekunze",
+        "description": "Nzvimbo yakatenderedza kodhi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Fomati yekubuda",
+        "description": "Fomati yekuibudisa nayo.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus-kommentit",
+    "description": "Integraatio Disqus-kommentointipalveluun"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Lyhytnimi",
+        "description": "Sivuston lyhytnimi Disqusissa"
+      }
+    ]
+  }
+}

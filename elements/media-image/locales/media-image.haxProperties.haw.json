@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Kiʻi hoʻonui ʻia",
+    "description": "He ala e hōʻike ai i nā kiʻi me nā hoʻonui like ʻole."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kumu",
+        "description": "Ka URL no ke kiʻi."
+      },
+      {
+        "property": "alt",
+        "title": "Kikokikona ʻokoʻa",
+        "description": "Kikokikona e wehewehe ai i ke kiʻi no ka poʻe ʻike ʻole maka."
+      },
+      {
+        "property": "link",
+        "title": "Loulou",
+        "description": "Loulou i ke kiʻi i kahi URL"
+      },
+      {
+        "property": "card",
+        "title": "Kāleka",
+        "description": "Kau i kahi aka hāʻule e like ai me he kāleka hāpai ʻia."
+      },
+      {
+        "property": "box",
+        "title": "Pahu",
+        "description": "Kau i kahi pahu ʻike ʻia a puni ke kiʻi."
+      },
+      {
+        "property": "offset",
+        "title": "Kaʻawale",
+        "description": "Kau i kahi kaʻawale hema a ʻākau paha i ke kiʻi.",
+        "options": {
+          "none": "ʻaʻohe",
+          "wide": "ākea",
+          "narrow": "haiki"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Kuhikuhina",
+        "description": "Kuhia no ke kiʻi."
+      },
+      {
+        "property": "caption",
+        "title": "Lepili kiʻi",
+        "description": "Kākau kiʻi no ke kiʻi."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Poʻo inoa kiʻi",
+        "description": "Poʻo inoa no ka lepili kiʻi."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Wehewehe kiʻi",
+        "description": "Wehewehe no ka lepili kiʻi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Kiʻi liʻiliʻi",
+        "description": "Kumu kiʻi liʻiliʻi. Hōʻike i ke kiʻi liʻiliʻi akā wehe i ke kumu piha ma ka pukaaniani."
+      },
+      {
+        "property": "round",
+        "title": "Kiʻi poepoe",
+        "description": "ʻOki i ka helehelena kiʻi i ke ʻano pōʻai."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Hoʻopio i ka pukaaniani kiʻi",
+        "description": "Hoʻopio i nā kaomi e wehe ana i ke kiʻi ma ka pukaaniani nānā kiʻi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Hōʻike ma ke ʻano markdown",
+        "description": "Hōʻike i ke kākau kiʻi a me ke kuhia ma ke ʻano markdown."
+      }
+    ]
+  }
+}

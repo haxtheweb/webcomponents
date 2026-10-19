@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris történetkártya",
+    "description": "Polaris történetkártya megjelenítése háttérképpel, pillércímkével és főcímszöveggel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Háttérkép",
+        "description": "A kártya háttereként megjelenő kép URL-je."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Hátterméret",
+        "description": "Hogyan tölti ki a háttérkép a kártyát (CSS background-size).",
+        "options": {
+          "cover": "kitöltés (cover)",
+          "contain": "befoglalás (contain)",
+          "auto": "automatikus (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Háttér rögzítése",
+        "description": "Hogyan viselkedik a háttérkép görgetéskor (CSS background-attachment).",
+        "options": {
+          "scroll": "görgetés (scroll)",
+          "fixed": "rögzített (fixed)",
+          "local": "helyi (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Pillércímke",
+        "description": "A kártya tetején megjelenő rövid, nagybetűs címke. Hagyja üresen az elrejtéshez."
+      },
+      {
+        "property": "label",
+        "title": "Kártya szövege",
+        "description": "Az alsó panelen megjelenő elsődleges szöveg."
+      },
+      {
+        "property": "link",
+        "title": "Hivatkozás",
+        "description": "Opcionális cél-URL, amely a teljes kártyát hivatkozássá teszi."
+      }
+    ]
+  }
+}

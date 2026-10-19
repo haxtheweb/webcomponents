@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Acción do usuario",
+    "description": "Rexistra as accións do usuario e envía os datos a almacéns xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Evento que rexistrar",
+        "description": "Acción do usuario que desencadea este evento.",
+        "options": {
+          "visibility": "Pode ver isto",
+          "keydown": "Preme unha tecla aquí",
+          "click": "Fai clic aquí",
+          "hover": "Pasa o rato por riba disto"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Rexistrar cada vez",
+        "description": "Por defecto, só se rexistra a primeira ocorrencia."
+      }
+    ]
+  }
+}

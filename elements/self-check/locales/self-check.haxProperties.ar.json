@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "تحقق ذاتي",
+    "description": "يمكن للمستخدمين إكمال تحقق ذاتي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "الصورة",
+        "description": "صورة التحقق الذاتي."
+      },
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "عنوان التحقق الذاتي."
+      },
+      {
+        "property": "alt",
+        "title": "النص البديل",
+        "description": "النص البديل للصورة."
+      },
+      {
+        "slot": "question",
+        "title": "السؤال"
+      },
+      {
+        "slot": "",
+        "title": "الإجابة"
+      },
+      {
+        "property": "accentColor",
+        "title": "لون السمة",
+        "description": "اختر لون السمة من نظام التصميم.",
+        "options": {
+          "primary": "أساسي",
+          "accent": "تمييز",
+          "success": "نجاح",
+          "warning": "تحذير",
+          "error": "خطأ",
+          "info": "معلومات"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف التعلّم",
+        "description": "مرجع هدف التعلّم الذي يُصدَر كـ oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "يقيّم",
+        "description": "مرجع النشاط الذي يُصدَر كـ oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "رابط المزيد",
+        "description": "رابط إلى معلومات إضافية."
+      }
+    ]
+  }
+}

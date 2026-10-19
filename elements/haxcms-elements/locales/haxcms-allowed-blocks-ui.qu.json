@@ -1,0 +1,14 @@
+{
+  "title": "Bloquekuna",
+  "enabled": "Atichisqa",
+  "block": "Bloque",
+  "preview": "Ñawpaq qhaway",
+  "filterBlocks": "Bloquekunata suysuy",
+  "requiredTextNote": "Wakin qillqa etiquetakunaqa necesitakunmi, sapa kutillam atichisqa kanku (mana atichisqa hina rikuchisqa).",
+  "selectAll": "Llapanta akllay",
+  "deselectAll": "Llapanta mana akllay",
+  "save": "Waqaychay",
+  "noDescription": "Manam willakuy kanchu.",
+  "details": "Sut'inchaykuna",
+  "loadingInventory": "Llapan bloque inventariota cargachkan…"
+}

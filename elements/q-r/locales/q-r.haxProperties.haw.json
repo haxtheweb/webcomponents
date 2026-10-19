@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR Code",
+    "description": "Pāʻālua e ʻimi ʻia mai kekahi kelepona akamai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "ʻIkepili QR",
+        "description": "Kumu o ka ʻikepili no ka QR code."
+      },
+      {
+        "property": "title",
+        "title": "Poʻo inoa ʻē",
+        "description": "Poʻo inoa ʻē i loulou ʻia i ke kumu QR code."
+      },
+      {
+        "property": "modulesize",
+        "title": "Nui",
+        "description": "Ka nui o ka QR code."
+      },
+      {
+        "property": "margin",
+        "title": "Lihi",
+        "description": "Wahī no ka pāʻālua."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "ʻAno puka",
+        "description": "Ke ʻano e puka ai.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

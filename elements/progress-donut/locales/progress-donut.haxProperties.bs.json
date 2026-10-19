@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Krug napretka",
+    "description": "Krug napredovanja"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov elementa"
+      },
+      {
+        "property": "desc",
+        "title": "Opis",
+        "description": "Pristupačni dugi opis"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Izvor slike",
+        "description": "Izvor slike unutar kruga."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternativni tekst slike",
+        "description": "Alternativni tekst za sliku."
+      },
+      {
+        "property": "animated",
+        "title": "Animirano",
+        "description": "Da li se napredak animira pri prvom učitavanju"
+      },
+      {
+        "property": "complete",
+        "title": "Završeno",
+        "description": "Niz završenih vrijednosti."
+      },
+      {
+        "property": "total",
+        "title": "Ukupno",
+        "description": "Ukupno kada su sve stavke završene."
+      },
+      {
+        "property": "startAngle",
+        "title": "Početni ugao",
+        "description": "Ugao kruga na kojem počinje napredak"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Mba'e jeku'e",
+    "description": "Mba'e jeku'e rysýipegua"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teratee"
+      }
+    ]
+  }
+}

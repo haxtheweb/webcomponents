@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS prikaz",
+    "description": "CMS prikazi prikazani na pozadini"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Ime",
+        "description": "Naziv prikaza iz našeg CMS-a"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Prikaz",
+        "description": "Prikaz unutar tog prikaza iz našeg CMS-a"
+      }
+    ]
+  }
+}

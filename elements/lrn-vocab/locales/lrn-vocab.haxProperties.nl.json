@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Woordenschat",
+    "description": "Woordenschatterm"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Term"
+      },
+      {
+        "slot": "",
+        "title": "Definitie",
+        "description": "De definitie die wordt getoond wanneer op de term wordt geklikt."
+      },
+      {
+        "property": "description",
+        "title": "Beschrijving (OER Schema)",
+        "description": "OER Schema: een korte beschrijving van de woordenschatterm. Wordt automatisch ingevuld met de definitietekst als dit leeg blijft."
+      }
+    ]
+  }
+}

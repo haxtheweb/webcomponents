@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "மேற்கோள் மூலம்",
+    "description": "மூன்று காட்சி முறைகளுடன் கூடிய மேற்கோள் உறுப்பு."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "தலைப்பு",
+        "description": "மேற்கோள் காட்டப்பட்ட படைப்பின் தலைப்பு."
+      },
+      {
+        "property": "source",
+        "title": "மூல இணைப்பு",
+        "description": "மேற்கோள் காட்டப்பட்ட படைப்பின் மூல URL."
+      },
+      {
+        "property": "date",
+        "title": "அணுகிய தேதி",
+        "description": "மூலம் அணுகப்பட்ட தேதி."
+      },
+      {
+        "property": "scope",
+        "title": "வரம்பு",
+        "description": "மேற்கோள் காட்ட வேண்டிய உறுப்பு வரம்பு.",
+        "options": {
+          "sibling": "உடன்பிறப்பு உறுப்பு",
+          "parent": "பெற்றோர் உறுப்பு"
+        }
+      },
+      {
+        "property": "license",
+        "title": "உரிமம்",
+        "description": "மேற்கோள் காட்டப்பட்ட படைப்புக்கான உரிமம்."
+      },
+      {
+        "property": "creator",
+        "title": "படைப்பாளர்",
+        "description": "மேற்கோள் காட்டப்பட்ட படைப்பின் படைப்பாளர் அல்லது உரிமையாளர்."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema வகை",
+        "description": "இந்த மேற்கோளுக்கான OER Schema வகுப்பு. இயல்புநிலை oer:ReferencedMaterial; சரியான OER வகுப்பைக் கொண்டு மட்டுமே மேலெழுதவும் (எ.கா. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

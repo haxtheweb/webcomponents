@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ٽيگ",
+    "description": "صفحي تي ڏيکارڻ لاءِ سادي ٽيگن جي لسٽ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "ٽيگ",
+        "description": "ڪاما سان ڌار ٽيگن جي لسٽ."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "خودڪار نمايان رنگ",
+        "description": "ليبل جي بنياد تي نمايان رنگ خودڪار طور مقرر ڪريو."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ",
+        "description": "ٽيگن لاءِ رنگ."
+      }
+    ]
+  }
+}

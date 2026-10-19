@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Random na Nilalaman ng Pahina",
+    "description": "Magpakita ng random na top-level na element mula sa isang napiling pahina"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Pahina",
+        "description": "Piliin ang pahinang pagkukunan ng random na nilalaman. Random na ipapakita ng element ang isa sa mga top-level na HTML element mula sa pahinang ito."
+      }
+    ]
+  }
+}

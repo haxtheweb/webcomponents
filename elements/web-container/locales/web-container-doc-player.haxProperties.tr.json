@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Web bileşeni belge oynatıcısı"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Pencereyi gizle",
+        "description": "Çıktı penceresini gizle; amaç yalnızca terminal olduğunda yararlıdır"
+      }
+    ]
+  }
+}

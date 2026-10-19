@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Token do CMS",
+    "description": "Token do CMS renderizado no backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Token",
+        "description": "Token do nosso CMS"
+      }
+    ]
+  }
+}

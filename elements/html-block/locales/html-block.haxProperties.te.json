@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html బ్లాక్",
+    "description": "HAXschema అనుసంధానాన్ని అందించే ప్రాథమిక HTML బ్లాక్"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "మీరు కంటెంట్‌లో ప్రదర్శించాలనుకుంటున్న HTML కోడ్"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "მარკირებული სია",
+    "description": "მარკირებული სიის შექმნა."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "მარკერის სტილი",
+        "description": "დაულაგებელი სიის მარკერების სტილი.",
+        "options": {
+          "": "ნაგულისხმევი (კვადრატი)",
+          "list-disc": "დისკი",
+          "list-circle": "წრე",
+          "list-square": "კვადრატი"
+        }
+      }
+    ]
+  }
+}

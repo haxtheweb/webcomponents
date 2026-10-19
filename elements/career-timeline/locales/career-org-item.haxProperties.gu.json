@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "કારકિર્દી આઇટમ",
+    "description": "એક વ્યક્તિગત સંસ્થા અને તેની સંલગ્ન ભૂમિકાઓ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "સંસ્થાનું નામ"
+      },
+      {
+        "property": "location",
+        "title": "સ્થાન"
+      },
+      {
+        "property": "source",
+        "title": "સ્રોત"
+      }
+    ]
+  }
+}

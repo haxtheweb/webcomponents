@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ewekansige bladsy-inhoud",
+    "description": "Vertoon 'n ewekansige topvlak-element van 'n gekose bladsy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Bladsy",
+        "description": "Kies die bladsy waaruit ewekansige inhoud getrek word. Die element sal ewekansig een van die topvlak-HTML-elemente van hierdie bladsy vertoon."
+      }
+    ]
+  }
+}

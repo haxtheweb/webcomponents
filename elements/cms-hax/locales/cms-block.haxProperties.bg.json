@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS блок",
+    "description": "CMS блок, визуализиран на сървъра"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Модул",
+        "description": "Модул за зареждане от нашата CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta на блока за зареждане от нашата CMS"
+      }
+    ]
+  }
+}

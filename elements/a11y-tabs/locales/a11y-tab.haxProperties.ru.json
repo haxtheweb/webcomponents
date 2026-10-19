@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Вкладка",
+    "description": "Одна вкладка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Значок вкладки"
+      },
+      {
+        "property": "disabled",
+        "title": "Отключено"
+      },
+      {
+        "property": "label",
+        "title": "Метка вкладки"
+      },
+      {
+        "slot": "",
+        "title": "Содержимое вкладки",
+        "description": "Содержимое вкладки."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Уникальный ID"
+      },
+      {
+        "property": "flag",
+        "title": "Необязательный текст флажка"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Необязательный значок флажка"
+      }
+    ]
+  }
+}

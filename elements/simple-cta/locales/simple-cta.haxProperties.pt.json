@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Chamada para ação",
+    "description": "Um botão simples com um link para realizar uma ação."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Rótulo",
+        "description": "Rótulo do link"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Digite um link para qualquer recurso"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ocultar ícone",
+        "description": "Ocultar o ícone usado para destacar o texto"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ícone",
+        "description": "Ícone do link de ação"
+      }
+    ]
+  }
+}

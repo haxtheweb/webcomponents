@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Tembiapo Kuatia Ñemboguejy",
+    "description": "Peteĩ votõ ohechaukáva marandurenda ikatúva oñemboguejy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Téra",
+        "description": "Ñemboguejy réra."
+      },
+      {
+        "property": "link",
+        "title": "Joajuha",
+        "description": "Ñemboguejy joajuha."
+      }
+    ]
+  }
+}

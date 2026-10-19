@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "የHAX የቃል ጥበብ",
+    "description": "ለHAX የአርማ አካል፣ በግልጽ HAX የሚደግፈው አካል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "የሚቀመጠው የHAX አርማ መጠን",
+        "options": {
+          "mini": "ሚኒ",
+          "small": "ትንሽ",
+          "normal": "መደበኛ",
+          "large": "ትልቅ"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "አርማውን ወደ አቢይ ሆሄያት መቀየር አለመቀየር"
+      }
+    ]
+  }
+}

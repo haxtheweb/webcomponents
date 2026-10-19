@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Inserción de LinkedIn",
+    "description": "Incrusta unha tarxeta de perfil de LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Nome personalizado",
+        "description": "Segmento do nome de usuario personalizado de LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Configuración rexional",
+        "description": "Valor de metadatos da configuración rexional, como en_US."
+      }
+    ]
+  }
+}

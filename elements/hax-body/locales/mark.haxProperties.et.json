@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Esiletõst",
+    "description": "Tõsta tekstisisene tekst esile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Esiletõstetud tekst."
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kolomindeling",
+    "description": "Materiaal in eenvoudige kolommen indelen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Kolomindeling",
+        "description": "Stijl waarin deze items worden gepresenteerd (kan op kleine schermen veranderen)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Responsief uitschakelen",
+        "description": "Vink aan om kolommen op grotere schermen te behouden en ze alleen op de kleinste schermen te stapelen"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Binnenmarge item",
+        "description": "Binnenmarge in elk item"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Marges tussen items",
+        "description": "Marge tussen items"
+      }
+    ]
+  }
+}

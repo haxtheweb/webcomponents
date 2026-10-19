@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "የCMS ቶከን",
+    "description": "በጀርባ የሚሰራ የCMS ቶከን"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ቶከን",
+        "description": "ከCMSችን የመጣ ቶከን"
+      }
+    ]
+  }
+}

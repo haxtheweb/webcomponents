@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "אַ בלאָק markdown אינהאַלט, גלײַך אָדער געלאָדן פֿון דער ווײַטנס"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "רויער markdown"
+      },
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "מקור־טעקע פֿאַר markdown"
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Media iqtibos",
+    "description": "Iqtibos, manba koʻrsatkichi va ixtiyoriy izohli rasm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Iqtibos",
+        "description": "Iqtibos matni."
+      },
+      {
+        "slot": "author",
+        "title": "Muallif",
+        "description": "Iqtibos muallifi."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Muallif tafsilotlari",
+        "description": "Muallif tafsilotlari."
+      },
+      {
+        "slot": "caption",
+        "title": "Izoh",
+        "description": "Rasm izohi."
+      },
+      {
+        "property": "src",
+        "title": "Rasm manbasi",
+        "description": "Media iqtibos uchun ishlatiladigan rasm fayli."
+      },
+      {
+        "property": "alt",
+        "title": "Muqobil matn",
+        "description": "Rasm uchun muqobil matn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Kartaning urgʻu rangi."
+      }
+    ]
+  }
+}

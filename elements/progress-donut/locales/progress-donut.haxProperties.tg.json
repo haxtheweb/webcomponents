@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Донати пешрафт",
+    "description": "Донати пешрафт"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Сарлавҳа",
+        "description": "Сарлавҳаи элемент"
+      },
+      {
+        "property": "desc",
+        "title": "Тавсиф",
+        "description": "Тавсифи дарози дастрас"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Манбаи тасвир",
+        "description": "Манбаи тасвир дар дохили донат."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Матни alt-и тасвир",
+        "description": "Матни алтернативӣ барои тасвир."
+      },
+      {
+        "property": "animated",
+        "title": "Аниматсионӣ",
+        "description": "Оё пешрафт ҳангоми боркунии аввал аниматсия мешавад"
+      },
+      {
+        "property": "complete",
+        "title": "Анҷом ёфт",
+        "description": "Массиви қиматҳои иҷрошуда."
+      },
+      {
+        "property": "total",
+        "title": "Ҳамагӣ",
+        "description": "Ҳамагӣ ҳангоме ки ҳамаи унсурҳо иҷро шудаанд."
+      },
+      {
+        "property": "startAngle",
+        "title": "Кунҷи оғоз",
+        "description": "Кунҷи донат, ки пешрафт аз он оғоз мешавад"
+      }
+    ]
+  }
+}

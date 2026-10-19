@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "ანიმირებული GIF-ების ხელმისაწვდომად ქცევა."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ანიმირებული GIF",
+        "description": "ანიმირებული GIF-ის URL."
+      },
+      {
+        "property": "alt",
+        "title": "ალტერნატიული ტექსტი",
+        "description": "სურათის ალტერნატიული ტექსტი."
+      },
+      {
+        "property": "longdesc",
+        "title": "ვრცელი აღწერა",
+        "description": "GIF-ის ვრცელი აღწერა ხელმისაწვდომობისთვის."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "უძრავი სურათი",
+        "description": "GIF-ის უძრავი ვერსიის URL."
+      }
+    ]
+  }
+}

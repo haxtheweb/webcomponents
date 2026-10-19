@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "የዓምድ አቀማመጥ",
+    "description": "ቁሳቁስን በቀላል ዓምዶች አቀማምጥ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "የዓምድ አቀማመጥ",
+        "description": "እነዚህን ንጥሎች የማቅረቢያ ቅጥ (ለትናንሽ ማያ ገጾች ሊለወጥ ይችላል)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "ምላሽ ሰጪነትን አሰናክል",
+        "description": "በትናንሾቹ ማያ ገጾች ላይ እየተደራረቡ በትላልቅ ማያ ገጾች ላይ ዓምዶችን ለማቆየት ሳጥኑን ምልክት ያድርጉ"
+      },
+      {
+        "property": "itemPadding",
+        "title": "የንጥል ውስጣዊ ክፍተት",
+        "description": "በእያንዳንዱ ንጥል ውስጥ ያለ ውስጣዊ ክፍተት"
+      },
+      {
+        "property": "itemMargin",
+        "title": "የንጥል ህዳጎች",
+        "description": "በንጥሎች መካከል ያለ ህዳግ"
+      }
+    ]
+  }
+}

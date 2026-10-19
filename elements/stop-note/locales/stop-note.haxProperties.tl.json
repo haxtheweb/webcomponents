@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stop Note",
+    "description": "Mensaheng nag-aalerto sa mga mambabasa sa mga tiyak na direksyon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Ilagay ang pamagat para sa stop-note."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Maglagay ng panlabas na URL."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Ang pagtatakda ng status ay nagbabago sa mga kulay at icon para tumugma",
+        "options": {
+          "stop": "Huminto",
+          "warning": "Babala",
+          "success": "Kumpirmasyon",
+          "info": "Paunawa"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Teksto ng Tala",
+        "description": "Teksto para sa stop-note."
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Popis s grafičkim oznakama",
+    "description": "Stvorite popis s grafičkim oznakama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stil grafičkih oznaka",
+        "description": "Stil koji se koristi za grafičke oznake neuređenog popisa.",
+        "options": {
+          "": "Zadano (kvadrat)",
+          "list-disc": "Disk",
+          "list-circle": "Krug",
+          "list-square": "Kvadrat"
+        }
+      }
+    ]
+  }
+}

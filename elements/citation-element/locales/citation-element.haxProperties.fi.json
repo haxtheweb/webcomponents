@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Lähdeviite",
+    "description": "Lähdeviite-elementti kolmella esitystavalla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Viitatun teoksen otsikko."
+      },
+      {
+        "property": "source",
+        "title": "Lähdelinkki",
+        "description": "Viitatun teoksen lähde-URL."
+      },
+      {
+        "property": "date",
+        "title": "Käyttöpäivä",
+        "description": "Päivä, jolloin lähdettä käytettiin."
+      },
+      {
+        "property": "scope",
+        "title": "Laajuus",
+        "description": "Viitattavan elementin laajuus.",
+        "options": {
+          "sibling": "Sisarelementti",
+          "parent": "Yläelementti"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lisenssi",
+        "description": "Viitatun teoksen lisenssi."
+      },
+      {
+        "property": "creator",
+        "title": "Tekijä",
+        "description": "Viitatun teoksen tekijä tai omistaja."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema -tyyppi",
+        "description": "Tämän lähdeviitteen OER Schema -luokka. Oletuksena oer:ReferencedMaterial; korvaa vain kelvollisella OER-luokalla (esim. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

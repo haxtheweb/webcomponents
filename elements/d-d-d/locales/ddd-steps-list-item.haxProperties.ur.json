@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "مرحلہ آئٹم",
+    "description": "مراحل کی فہرست کا حصہ بننے والا آئٹم"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان"
+      }
+    ]
+  }
+}

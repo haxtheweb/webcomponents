@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Prieinamas informacijos mygtukas",
+    "description": "Prieinamas laipsniškas atskleidimas su detalėmis ir santrauka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Mygtukas",
+        "description": "Paslėpto turinio santrauka, pvz., „info“, „metaduomenys“ ir pan."
+      },
+      {
+        "slot": "details",
+        "title": "Aprašas",
+        "description": "Išsamus aprašas, kurį galima paslėpti arba parodyti"
+      },
+      {
+        "slot": "",
+        "title": "Aprašo mygtukas",
+        "description": "Numatytasis mygtuko, rodančio / slepiančio aprašo tekstą, užrašas, pvz., „info“, „metaduomenys“ ir pan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Neprivalomas santraukos tekstas, kai detalės atidarytos"
+      },
+      {
+        "property": "closeText",
+        "title": "Neprivalomas santraukos tekstas, kai detalės uždarytos"
+      }
+    ]
+  }
+}

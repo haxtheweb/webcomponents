@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ohun Iṣẹ́",
+    "description": "Àjọ kan àti àwọn ipa tó jọmọ́ ọ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Orúkọ Àjọ"
+      },
+      {
+        "property": "location",
+        "title": "Ibùdó"
+      },
+      {
+        "property": "source",
+        "title": "Orísun"
+      }
+    ]
+  }
+}

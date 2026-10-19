@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "तक्ता",
+    "description": "वेबसाठी तक्त्यावर आधारित डेटा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "पंक्ती शीर्षलेख",
+        "description": "पहिली पंक्ती शीर्षलेख म्हणून माना."
+      },
+      {
+        "property": "columnHeader",
+        "title": "स्तंभ शीर्षलेख",
+        "description": "पहिला स्तंभ शीर्षलेख म्हणून माना."
+      },
+      {
+        "property": "footer",
+        "title": "तळटीप",
+        "description": "शेवटची पंक्ती तळटीप म्हणून माना."
+      },
+      {
+        "property": "sort",
+        "title": "क्रमवारी लावता येणारे",
+        "description": "स्तंभ मूल्यांनुसार क्रमवारी लावण्यास अनुमती द्या."
+      },
+      {
+        "property": "filter",
+        "title": "फिल्टरला अनुमती द्या",
+        "description": "स्तंभ मूल्यांनुसार फिल्टर करण्यास अनुमती द्या."
+      },
+      {
+        "property": "numericStyles",
+        "title": "अंकी शैली",
+        "description": "अंकी स्तंभांवर अंकी शैली लागू करा."
+      },
+      {
+        "property": "responsive",
+        "title": "प्रतिसादात्मक",
+        "description": "लहान स्क्रीनवर तक्त्याचा लेआउट समायोजित करा."
+      },
+      {
+        "property": "rubricMode",
+        "title": "रुब्रिक मोड",
+        "description": "Rubric, RubricScale, RubricCriterion आणि RubricLevel मेटाडेटा तयार व्हावा म्हणून हा तक्ता OER Schema Rubric म्हणून समजा."
+      },
+      {
+        "property": "rubricType",
+        "title": "रुब्रिक प्रकार",
+        "description": "oer:rubricType म्हणून तयार होणारी रुब्रिक शैली (फक्त रुब्रिक मोड चालू असतानाच अर्थपूर्ण).",
+        "options": {
+          "": "(काहीही नाही)",
+          "analytic": "विश्लेषणात्मक",
+          "holistic": "समग्र",
+          "single-point": "एकल बिंदू",
+          "checklist": "तपासणी सूची"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "किनारीसह"
+      },
+      {
+        "property": "condensed",
+        "title": "पंक्ती संक्षिप्त करा",
+        "description": "पंक्तीची उंची कमी करा."
+      },
+      {
+        "property": "striped",
+        "title": "पट्टेदार पंक्ती",
+        "description": "प्रत्येक दुसऱ्या पंक्तीला छटा द्या."
+      },
+      {
+        "property": "downloadable",
+        "title": "डाउनलोड बटण",
+        "description": "तक्ता डाउनलोड करण्यासाठी बटण जोडा."
+      },
+      {
+        "property": "copyable",
+        "title": "कॉपी बटण",
+        "description": "तक्त्याचा CSV डेटा कॉपी करण्यासाठी बटण जोडा."
+      },
+      {
+        "property": "printable",
+        "title": "प्रिंट बटण",
+        "description": "फक्त तक्ता प्रिंट करण्यासाठी बटण जोडा."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV डेटा",
+        "description": "अपलोड केलेल्या CSV फाइलमधून तक्ता तयार करा."
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Цуглуулгын зүйл",
+    "description": "Цуглуулгын жагсаалт дотор ашиглах карт хэлбэрийн зүйл; текст, холбоос болон нэмэлт медиатай."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Холбоос",
+        "description": "Энэ картын очих URL."
+      },
+      {
+        "property": "image",
+        "title": "Зураг",
+        "description": "Арын зураг."
+      },
+      {
+        "property": "line1",
+        "title": "Мөр 1",
+        "description": "Текстийн эхний мөр."
+      },
+      {
+        "property": "line2",
+        "title": "Мөр 2",
+        "description": "Текстийн хоёр дахь мөр."
+      },
+      {
+        "property": "line3",
+        "title": "Мөр 3",
+        "description": "Текстийн гурав дахь мөр."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Дүрс тэмдэг",
+        "description": "Картыг илэрхийлэх дүрс тэмдэг."
+      },
+      {
+        "property": "saturate",
+        "title": "Ханалтын эффект",
+        "description": "Хэрэглэгч фокуслах үед зургийн өнгөний ханалтыг өөрчлөх."
+      },
+      {
+        "property": "tags",
+        "title": "Шошгууд",
+        "description": "Таслалаар тусгаарласан шошгын жагсаалт."
+      },
+      {
+        "property": "accentColor",
+        "title": "Өнгө",
+        "description": "Шошгонд ашиглах өнгө."
+      },
+      {
+        "property": "alt",
+        "title": "Орлуулах текст",
+        "description": "Холбоосыг тайлбарласан орлуулах текст."
+      }
+    ]
+  }
+}

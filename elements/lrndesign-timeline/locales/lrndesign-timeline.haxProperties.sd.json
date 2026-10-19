@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ٽائيم لائين",
+    "description": "تصويرن ۽ متن سان واقعن جي ٽائيم لائن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "ٽائيم لائين جو عنوان",
+        "description": "ٽائيم لائن لاءِ عنوان."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "اختياري نمايان رنگ."
+      },
+      {
+        "property": "dark",
+        "title": "ڊارڪ ٿيم",
+        "description": "ڊارڪ ٿيم چالو ڪريو"
+      },
+      {
+        "slot": "",
+        "title": "ٽائيم لائن جي وضاحت",
+        "description": "ٽائيم لائن بيان ڪندڙ اختياري متن."
+      },
+      {
+        "property": "events",
+        "title": "ٽائيم لائن جا واقعا",
+        "description": "ٽائيم لائن ۾ واقعا"
+      }
+    ]
+  }
+}

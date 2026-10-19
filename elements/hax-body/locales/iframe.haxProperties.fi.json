@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Upota ulkoista verkkosisältöä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Lähde",
+        "description": "Tämän resurssin URL."
+      }
+    ]
+  }
+}

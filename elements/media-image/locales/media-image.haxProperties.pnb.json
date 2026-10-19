@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "ودھائی تصویر",
+    "description": "کئی ودھاوے نال تصویراں وکھاؤن دا طریقہ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ذریعہ",
+        "description": "تصویر دا URL۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل ٹیکسٹ",
+        "description": "نابینا صارفاں لئی تصویر بیان کرن والا ٹیکسٹ۔"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "تصویر نوں کسے URL نال جوڑو"
+      },
+      {
+        "property": "card",
+        "title": "کارڈ",
+        "description": "اُبھریا کارڈ لگن لئی پرچھاواں لاؤ۔"
+      },
+      {
+        "property": "box",
+        "title": "بکس",
+        "description": "تصویر دے دوالے بکس لاؤ۔"
+      },
+      {
+        "property": "offset",
+        "title": "ہٹاؤ",
+        "description": "تصویر نوں کھبے یا سجے ہٹاؤ۔",
+        "options": {
+          "none": "کوئی نئیں",
+          "wide": "چوڑا",
+          "narrow": "بھیڑا"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "حوالہ",
+        "description": "تصویر دا حوالہ۔"
+      },
+      {
+        "property": "caption",
+        "title": "کیپشن",
+        "description": "تصویر دا کیپشن۔"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "شکل دا سرناواں",
+        "description": "شکل لیبل لئی سرناواں۔"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "شکل دی تفصیل",
+        "description": "شکل لیبل لئی تفصیل۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "تھمب نیل تصویر",
+        "description": "تھمب نیل تصویر دا سورس۔ تھمب نیل وکھاندا اے پر موڈل وچ پورا سورس کھولدا اے۔"
+      },
+      {
+        "property": "round",
+        "title": "گول تصویر",
+        "description": "تصویر دی دِکھ نوں گول شکل وچ کٹدا اے۔"
+      },
+      {
+        "property": "disableZoom",
+        "title": "تصویر موڈل بند کرو",
+        "description": "کلک کرن تے تصویر انسپکٹر ڈائیلاگ وچ کھلن نوں بند کرو۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown وجوں وکھاؤ",
+        "description": "کیپشن تے حوالہ markdown وجوں وکھاؤ۔"
+      }
+    ]
+  }
+}

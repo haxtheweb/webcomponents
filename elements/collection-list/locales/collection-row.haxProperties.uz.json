@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Toʻplam qatori",
+    "description": "Toʻplam roʻyxati ichida foydalanish uchun matn, havola, belgi, teglar va ixtiyoriy rasmli qator koʻrinishidagi element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Havola",
+        "description": "Ushbu qator uchun manzil URL."
+      },
+      {
+        "property": "image",
+        "title": "Rasm",
+        "description": "Qator uchun rasm."
+      },
+      {
+        "property": "alt",
+        "title": "Muqobil matn",
+        "description": "Rasmni tavsiflovchi muqobil matn."
+      },
+      {
+        "property": "line1",
+        "title": "1-qator",
+        "description": "Matnning birinchi qatori."
+      },
+      {
+        "property": "line2",
+        "title": "2-qator",
+        "description": "Matnning ikkinchi qatori."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Belgi",
+        "description": "Qatorni ifodalovchi belgi."
+      },
+      {
+        "property": "saturate",
+        "title": "Toʻyinganlik effekti",
+        "description": "Foydalanuvchi fokuslanganda rasm toʻyinganligini oʻzgartirish."
+      },
+      {
+        "property": "tags",
+        "title": "Teglar",
+        "description": "Vergul bilan ajratilgan teglar roʻyxati."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rang",
+        "description": "Belgi va teglar uchun ishlatiladigan rang."
+      }
+    ]
+  }
+}

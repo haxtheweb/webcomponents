@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Desain Mata Kuliah",
+    "description": "Wadah untuk materi pendidikan dan elemen desain mata kuliah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Pengenal Mata Kuliah",
+        "description": "OER Schema: pengenal mata kuliah, mis. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Semester Penawaran",
+        "description": "OER Schema: semester saat mata kuliah ditawarkan."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Format Penyampaian",
+        "description": "OER Schema: format yang digunakan untuk menyampaikan mata kuliah (mis. tatap muka, daring, hibrida)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Pengajar Utama",
+        "description": "OER Schema: pengajar utama mata kuliah."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL Silabus",
+        "description": "OER Schema: URL ke silabus mata kuliah."
+      }
+    ]
+  }
+}

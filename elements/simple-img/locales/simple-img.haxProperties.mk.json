@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Едноставна слика",
+    "description": "Обработувајте слики со едноставни параметри."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Извор",
+        "description": "URL на изворот на сликата."
+      },
+      {
+        "property": "height",
+        "title": "Висина",
+        "description": "Изборна висина на сликата."
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Изборна ширина на сликата."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативен текст",
+        "description": "Корисно за читачи на екран и подобро SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Квалитет",
+        "description": "Квалитет на сликата при создавање (само JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Приоритет на преземање",
+        "description": "Совет за перформанси за современи прелистувачи.",
+        "options": {
+          "auto": "Автоматски",
+          "high": "Висок",
+          "low": "Низок"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Метод на декодирање",
+        "description": "Совет за перформанси при прикажување слики во современи прелистувачи.",
+        "options": {
+          "auto": "Автоматски",
+          "async": "Асинхроно"
+        }
+      }
+    ]
+  }
+}

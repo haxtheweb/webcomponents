@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Täiustatud pilt",
+    "description": "Viis piltide esitamiseks mitmesuguste täiustustega."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Allikas",
+        "description": "Pildi URL."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiivtekst",
+        "description": "Tekst, mis kirjeldab pilti nägemispuudega kasutajatele."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Lingi pilt URL-iga"
+      },
+      {
+        "property": "card",
+        "title": "Kaart",
+        "description": "Rakenda varjund, et pilt näeks välja nagu tõstetud kaart."
+      },
+      {
+        "property": "box",
+        "title": "Kast",
+        "description": "Rakenda pildi ümber visuaalne kast."
+      },
+      {
+        "property": "offset",
+        "title": "Nihe",
+        "description": "Rakenda pildile vasak- või parempoolne nihe.",
+        "options": {
+          "none": "puudub",
+          "wide": "lai",
+          "narrow": "kitsas"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Viide",
+        "description": "Pildi viide."
+      },
+      {
+        "property": "caption",
+        "title": "Pildiallkiri",
+        "description": "Pildi pealdis."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Joonise pealkiri",
+        "description": "Joonise sildi pealkiri."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Joonise kirjeldus",
+        "description": "Joonise sildi kirjeldus."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Pisipilt",
+        "description": "Pisipildi allikas. Näitab pisipilti, kuid avab täisallika modaalaknas."
+      },
+      {
+        "property": "round",
+        "title": "Ümar pilt",
+        "description": "Kärbib pildi ringikujuliseks."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Keela pildi modaalaken",
+        "description": "Keela klõpsud, mis avavad pildi pildiinspektori dialoogis."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Renderda Markdownina",
+        "description": "Renderda pealdis ja viide Markdownina."
+      }
+    ]
+  }
+}

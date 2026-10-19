@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "נומערירטע ליסטע",
+    "description": "שאַף אַ נומערירטע ליסטע."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "נומער־סטיל",
+        "description": "סטיל באַניצט פֿאַר נומערירן אַ נומערירטע ליסטע.",
+        "options": {
+          "": "פֿאַרויסגעשטעלט (דעצימאַל)",
+          "list-decimal-leading-zero": "דעצימאַל מיט אַ נול פֿאָרויס (01, 02, 03)",
+          "list-lower-alpha": "קליינע לאַטײַנישע אותיות (a, b, c)",
+          "list-upper-alpha": "גרויסע לאַטײַנישע אותיות (A, B, C)",
+          "list-lower-roman": "קליינע רוימישע ציפֿערן (i, ii, iii)",
+          "list-upper-roman": "גרויסע רוימישע ציפֿערן (I, II, III)"
+        }
+      }
+    ]
+  }
+}

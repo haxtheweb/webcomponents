@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub yanapaqkunapa listan",
+    "description": "GitHub API-wan RPG runakuna hina rikuchisqa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organización",
+        "description": "github.com/ORG/REPO-manta organizaciónpa sutin."
+      },
+      {
+        "property": "repo",
+        "title": "Repositorio",
+        "description": "github.com/ORG/REPO-manta repositoriopa sutin."
+      },
+      {
+        "property": "limit",
+        "title": "Tupu",
+        "description": "Rikukuq yanapaqkunapa yupayninta tupuy."
+      }
+    ]
+  }
+}

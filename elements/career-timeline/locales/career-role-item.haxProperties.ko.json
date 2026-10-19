@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "경력 역할",
+    "description": "조직 내 개별 역할"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "제목"
+      },
+      {
+        "property": "startDate",
+        "title": "시작일"
+      },
+      {
+        "property": "endDate",
+        "title": "종료일 (선택 사항)"
+      },
+      {
+        "property": "skills",
+        "title": "관련 기술",
+        "description": "+ 버튼을 선택하여 기술 추가를 시작하세요"
+      }
+    ]
+  }
+}

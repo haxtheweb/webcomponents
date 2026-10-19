@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Cihgir",
+    "description": "Cihgirek ku dikare bibe cureya medyayê ya hilbijartî"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Cure",
+        "description": "Cureya gizmoyê ku ev ji bo guhertinê qebûl dike.",
+        "options": {
+          "text": "Nivîs / naverok",
+          "document": "Belge / pel",
+          "audio": "Deng",
+          "video": "Vîdyo",
+          "image": "Wêne",
+          "math": "Matematîk"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Nivîs",
+        "description": "Cihgirê xwestî bi hûrgiliyeke zêdetir diyar bike"
+      }
+    ]
+  }
+}

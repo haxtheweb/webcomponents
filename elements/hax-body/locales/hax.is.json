@@ -122,5 +122,21 @@
   "recent": "Nýlegt",
   "popular": "Vinsælt",
   "copiedToClipboard": "Afritað á klippispjald",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Upplýsingar um mynd",
+  "imageActions": "Myndaaðgerðir",
+  "imageRecommendations": "Ráðleggingar um mynd",
+  "compressImage": "Þjappa mynd",
+  "resizeTo": "Breyta stærð í",
+  "created": "Búið til",
+  "size": "Stærð",
+  "dimensions": "Mál",
+  "type": "Tegund",
+  "done": "lokið",
+  "noFileUuid": "Tilvísun í skrá ekki tiltæk; hladdu skránni upp aftur til að virkja aðgerðir.",
+  "fileOpsUnavailable": "Skráaaðgerðir eru ekki tiltækar fyrir þennan vef.",
+  "fileOpFailed": "Skráaaðgerð mistókst.",
+  "fileExtensionNotAllowed": "Þessi reitur tekur aðeins við eftirfarandi skráartegundum:",
+  "fileTypeNotAllowed": "Þessi reitur tekur aðeins við eftirfarandi miðlategundum:",
+  "transformFailed": "Umbreyting eftir upphleðslu mistókst; upprunalegu skránni var haldið."
 }

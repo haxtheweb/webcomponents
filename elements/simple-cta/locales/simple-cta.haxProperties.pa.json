@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ਕਾਰਵਾਈ ਲਈ ਸੱਦਾ",
+    "description": "ਕਾਰਵਾਈ ਕਰਨ ਲਈ ਲਿੰਕ ਵਾਲਾ ਸਧਾਰਨ ਬਟਨ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "ਲੇਬਲ",
+        "description": "ਲਿੰਕ ਲੇਬਲ"
+      },
+      {
+        "property": "link",
+        "title": "ਲਿੰਕ",
+        "description": "ਕਿਸੇ ਵੀ ਸਰੋਤ ਦਾ ਲਿੰਕ ਦਰਜ ਕਰੋ"
+      },
+      {
+        "property": "hideIcon",
+        "title": "ਆਈਕਨ ਲੁਕਾਓ",
+        "description": "ਟੈਕਸਟ ਨੂੰ ਉਭਾਰਨ ਲਈ ਵਰਤਿਆ ਆਈਕਨ ਲੁਕਾਓ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ਆਈਕਨ",
+        "description": "ਕਾਰਵਾਈ ਲਿੰਕ ਆਈਕਨ"
+      }
+    ]
+  }
+}

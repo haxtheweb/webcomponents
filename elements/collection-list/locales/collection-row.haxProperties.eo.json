@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Kolekta vico",
+    "description": "Vic-stila elemento por uzo en kolekta listo, kun teksto, ligilo, piktogramo, etikedoj kaj nedeviga bildo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Ligilo",
+        "description": "Cela URL por ĉi tiu vico."
+      },
+      {
+        "property": "image",
+        "title": "Bildo",
+        "description": "Bildo por la vico."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativa teksto priskribanta la bildon."
+      },
+      {
+        "property": "line1",
+        "title": "Linio 1",
+        "description": "Unua linio de teksto."
+      },
+      {
+        "property": "line2",
+        "title": "Linio 2",
+        "description": "Dua linio de teksto."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Piktogramo",
+        "description": "Piktogramo reprezentanta la vicon."
+      },
+      {
+        "property": "saturate",
+        "title": "Saturiĝa efekto",
+        "description": "Ŝanĝi la saturiĝon de la bildo kiam la uzanto fokusas."
+      },
+      {
+        "property": "tags",
+        "title": "Etikedoj",
+        "description": "Komo-apartigita listo de etikedoj."
+      },
+      {
+        "property": "accentColor",
+        "title": "Koloro",
+        "description": "Koloro uzata por piktogramo kaj etikedoj."
+      }
+    ]
+  }
+}

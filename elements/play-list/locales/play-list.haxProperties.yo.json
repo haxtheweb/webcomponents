@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Àtòjọ ìṣeré",
+    "description": "Fi irúkírú àkóónú hàn nínú àtòjọ ìṣeré."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Orísun",
+        "description": "Àkóónú tí a fi hàn nínú àtòjọ ìṣeré."
+      },
+      {
+        "property": "edit",
+        "title": "Ipò àtúnṣe",
+        "description": "Yí padà láàrín ipò àtúnṣe àti àyẹ̀wò-ṣáájú fún àtòjọ ìṣeré."
+      },
+      {
+        "property": "navigation",
+        "title": "Ìlọ-kiri",
+        "description": "Fi àwọn bọ́tìnnì ìlọ-kiri síwájú àti sẹ́yìn hàn."
+      },
+      {
+        "property": "pagination",
+        "title": "Ìpín-ojú-ìwé",
+        "description": "Fi àwọn kókó ìpín-ojú-ìwé hàn."
+      },
+      {
+        "property": "orientation",
+        "title": "Ìdojúkọ",
+        "description": "Ìdojúkọ àwọn sílàìdì.",
+        "options": {
+          "horizontal": "Ìdábùú",
+          "vertical": "Inaro"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Sílàìdì ìbẹ̀rẹ̀",
+        "description": "Atọ́ka sílàìdì tí a ó kọ́kọ́ fojú sí."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Ìpín Ìwọ̀n",
+        "description": "Ìpín ìwọ̀n àwọn sílàìdì.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

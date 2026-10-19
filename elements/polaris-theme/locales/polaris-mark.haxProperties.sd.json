@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris نشان",
+    "description": "اختياري ڪاليج جي نالي ۽ منزل جي URL سان PSU سڃاڻپ نشان ڏيکاريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "ڪاليج جو نالو",
+        "description": "نشان جي ڀرسان ڏيکاريل نالو."
+      },
+      {
+        "property": "name2",
+        "title": "ڪاليج جو نالو 2",
+        "description": "پهرين ڪاليج جي نالي هيٺان ڏيکاريل ٻيو نالو."
+      },
+      {
+        "property": "name3",
+        "title": "ڪاليج جو نالو 3",
+        "description": "ٻئي ڪاليج جي نالي هيٺان ڏيکاريل ٽيون نالو."
+      },
+      {
+        "property": "url",
+        "title": "لنڪ",
+        "description": "نشان تي ڪلڪ ڪرڻ وقت منزل جو URL."
+      },
+      {
+        "property": "type",
+        "title": "قسم",
+        "description": "بصري نشان جو قسم.",
+        "options": {
+          "default": "ڊفالٽ",
+          "light": "هلڪو",
+          "dark": "ڊارڪ"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "عمودي ترتيب",
+        "description": "ٽيون نالو ٻئي نالي هيٺان افقي ليڪ سان ڏيکاريو."
+      }
+    ]
+  }
+}

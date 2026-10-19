@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Llicència",
+    "description": "Proporciona una llicència per a la teva obra."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Títol de l'obra citada."
+      },
+      {
+        "property": "source",
+        "title": "Enllaç de la font",
+        "description": "URL de la font de l'obra amb llicència."
+      },
+      {
+        "property": "license",
+        "title": "Llicència",
+        "description": "Llicència aplicada a aquesta obra."
+      },
+      {
+        "property": "creator",
+        "title": "Creador",
+        "description": "Creador o propietari d'aquesta obra."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Enllaç de la font",
+        "description": "Enllaç a detalls addicionals de la llicència."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Etiqueta de més informació",
+        "description": "Etiqueta per als detalls addicionals de la llicència."
+      }
+    ]
+  }
+}

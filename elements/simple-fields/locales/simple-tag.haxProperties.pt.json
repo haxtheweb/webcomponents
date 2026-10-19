@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Pílula",
+    "description": "Um rótulo compacto em forma de pílula com cor de destaque, botão de cancelar ou alternância opcionais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Rótulo",
+        "description": "Texto mostrado dentro da pílula."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Nome da cor de destaque SimpleColors para o fundo da pílula.",
+        "options": {
+          "": "-- padrão --",
+          "red": "Vermelho",
+          "pink": "Rosa",
+          "purple": "Roxo",
+          "deep-purple": "Roxo escuro",
+          "indigo": "Índigo",
+          "blue": "Azul",
+          "light-blue": "Azul-claro",
+          "cyan": "Ciano",
+          "teal": "Verde-azulado",
+          "green": "Verde",
+          "light-green": "Verde-claro",
+          "lime": "Lima",
+          "yellow": "Amarelo",
+          "amber": "Âmbar",
+          "orange": "Laranja",
+          "deep-orange": "Laranja escuro",
+          "brown": "Marrom",
+          "blue-grey": "Cinza-azulado",
+          "grey": "Cinza"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Cor de destaque automática",
+        "description": "Derivar a cor de destaque automaticamente do texto do rótulo."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Botão de cancelar",
+        "description": "Mostrar um botão de ícone de remover/cancelar dentro da pílula."
+      },
+      {
+        "property": "readonly",
+        "title": "Somente leitura",
+        "description": "Ocultar o botão de cancelar para que a pílula seja apenas de exibição."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Alternável",
+        "description": "Fazer a pílula ligar/desligar quando o botão for clicado."
+      },
+      {
+        "property": "toggled",
+        "title": "Ativada",
+        "description": "Se a pílula está ativada no momento."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ícone quando ativada",
+        "description": "Ícone a mostrar quando a pílula está ativada."
+      },
+      {
+        "property": "disabled",
+        "title": "Desativado",
+        "description": "Desativar a interação com a pílula."
+      }
+    ]
+  }
+}

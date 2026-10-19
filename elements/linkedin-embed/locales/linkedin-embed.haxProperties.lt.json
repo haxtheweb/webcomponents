@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn įterpinys",
+    "description": "Įterpti LinkedIn profilio kortelę."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Profilio vardas",
+        "description": "LinkedIn profilio naudotojo vardo segmentas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Lokalė",
+        "description": "Lokalės metaduomenų reikšmė, pvz., en_US."
+      }
+    ]
+  }
+}

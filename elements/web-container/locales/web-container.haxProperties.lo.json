@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "ກ່ອງ NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "ເຊື່ອງຕົວແກ້ໄຂ",
+        "description": "ເຊື່ອງສ່ວນຕິດຕໍ່ການແກ້ໄຂໄຟລ໌."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "ເຊື່ອງເທີມິນອນ",
+        "description": "ເຊື່ອງເທີມິນອນສຳລັບໂປຣແກຣມທີ່ແລ່ນອັດຕະໂນມັດ."
+      },
+      {
+        "property": "hideWindow",
+        "title": "ເຊື່ອງໜ້າຕ່າງ",
+        "description": "ເຊື່ອງໜ້າຕ່າງຜົນອອກສຳລັບການໃຊ້ເທີມິນອນຢ່າງດຽວ."
+      },
+      {
+        "slot": "",
+        "title": "ຄຳສັ່ງ",
+        "description": "ຄຳສັ່ງ (ໜຶ່ງຄຳສັ່ງຕໍ່ແຖວ) ທີ່ຈະແລ່ນກ່ອນໂຫຼດ."
+      }
+    ]
+  }
+}

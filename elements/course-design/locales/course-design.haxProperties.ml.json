@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "കോഴ്സ് ഡിസൈൻ",
+    "description": "വിദ്യാഭ്യാസ സാമഗ്രികൾക്കും കോഴ്സ് ഡിസൈൻ എലമെന്റുകൾക്കുമുള്ള കണ്ടെയ്നർ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "കോഴ്സ് ഐഡന്റിഫയർ",
+        "description": "OER Schema: കോഴ്സിന്റെ ഐഡന്റിഫയർ, ഉദാ. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "വാഗ്ദാനം ചെയ്യുന്ന ടേം",
+        "description": "OER Schema: കോഴ്സ് വാഗ്ദാനം ചെയ്യുന്ന ടേം."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "വിതരണ ഫോർമാറ്റ്",
+        "description": "OER Schema: കോഴ്സ് നൽകാൻ ഉപയോഗിക്കുന്ന ഫോർമാറ്റ് (ഉദാ. നേരിട്ട്, ഓൺലൈൻ, ഹൈബ്രിഡ്)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "പ്രാഥമിക അധ്യാപകൻ",
+        "description": "OER Schema: കോഴ്സിന്റെ പ്രാഥമിക അധ്യാപകൻ."
+      },
+      {
+        "property": "syllabus",
+        "title": "സിലബസ് URL",
+        "description": "OER Schema: കോഴ്സ് സിലബസിലേക്കുള്ള URL."
+      }
+    ]
+  }
+}

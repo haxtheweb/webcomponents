@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Nkọwa Disqus",
+    "description": "Njikọ na ọrụ webụ nkọwa Disqus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Aha mkpụmkpụ",
+        "description": "Aha mkpụmkpụ ihe onwunwe na Disqus"
+      }
+    ]
+  }
+}

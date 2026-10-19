@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Teljari",
+    "description": "Hreyfa tölu sem telur upp að markgildi þegar hún birtist við skrun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Lokagildi",
+        "description": "Talan sem talið er upp að."
+      },
+      {
+        "property": "start",
+        "title": "Upphafsgildi",
+        "description": "Talan sem talið er frá."
+      },
+      {
+        "property": "duration",
+        "title": "Tímalengd",
+        "description": "Sekúndur sem talningin á að taka."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Forskeytistexti",
+        "description": "Texti sem birtist á undan tölunni (t.d. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Viðskeytistexti",
+        "description": "Texti sem birtist á eftir tölunni (t.d. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Forskeytisrauf",
+        "description": "Valfrjálst raufarefni á undan tölunni."
+      },
+      {
+        "slot": "suffix",
+        "title": "Viðskeytisrauf",
+        "description": "Valfrjálst raufarefni á eftir tölunni."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Aukastafir",
+        "description": "Fjöldi aukastafa sem birtast."
+      },
+      {
+        "property": "separator",
+        "title": "Þúsundaskil",
+        "description": "Stafur sem aðskilur þúsundaflokka."
+      },
+      {
+        "property": "decimal",
+        "title": "Tugabrotsstafur",
+        "description": "Stafur notaður fyrir tugabrotskommu."
+      },
+      {
+        "property": "noeasing",
+        "title": "Engin mýking",
+        "description": "Slökkva á mýkingu svo talningin sé línuleg."
+      }
+    ]
+  }
+}

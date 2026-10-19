@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity പ്ലെയർ",
+    "description": "Unity WebGL പ്ലെയർ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ലക്ഷ്യം",
+        "description": "ഗെയിം ബിൽഡിലേക്കുള്ള പാത."
+      },
+      {
+        "property": "compression",
+        "title": "കംപ്രഷൻ രീതി",
+        "description": "ഗെയിം അസറ്റുകൾക്കുള്ള കംപ്രഷൻ ഫയൽ എക്സ്റ്റൻഷൻ."
+      },
+      {
+        "property": "streamingurl",
+        "title": "സ്ട്രീമിംഗ് URL",
+        "description": "സ്ട്രീമിംഗ് അസറ്റുകളുടെ URL."
+      },
+      {
+        "property": "companyname",
+        "title": "കമ്പനിയുടെ പേര്",
+        "description": "കമ്പനിയുടെ പേര്."
+      },
+      {
+        "property": "productname",
+        "title": "ഉൽപ്പന്നത്തിന്റെ പേര്",
+        "description": "ഗെയിമിന്റെ ശീർഷകം."
+      },
+      {
+        "property": "productversion",
+        "title": "ഉൽപ്പന്ന പതിപ്പ്",
+        "description": "റിലീസ് പതിപ്പ്."
+      },
+      {
+        "property": "width",
+        "title": "ക്യാൻവാസ് വീതി",
+        "description": "ക്യാൻവാസിന്റെ CSS വീതി (ഉദാഹരണത്തിന് px അല്ലെങ്കിൽ em)."
+      },
+      {
+        "property": "height",
+        "title": "ക്യാൻവാസ് ഉയരം",
+        "description": "ക്യാൻവാസിന്റെ CSS ഉയരം (ഉദാഹരണത്തിന് px അല്ലെങ്കിൽ em)."
+      },
+      {
+        "property": "background",
+        "title": "ക്യാൻവാസ് പശ്ചാത്തലം",
+        "description": "ക്യാൻവാസിന്റെ CSS പശ്ചാത്തലം."
+      }
+    ]
+  }
+}

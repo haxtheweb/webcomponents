@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub oldindan koʻrish",
+    "description": "Uzun tavsifli qulay rasm"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Tashkilot",
+        "description": "GitHub tashkilotining texnik nomi"
+      },
+      {
+        "property": "repo",
+        "title": "Repozitoriy",
+        "description": "Repozitoriyning texnik nomi"
+      },
+      {
+        "property": "extended",
+        "title": "Kengaytirilgan koʻrinish",
+        "description": "Elementga readme ni qoʻshadi"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Punktopstilling",
+    "description": "Opret en punktopstilling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Punkttegnsstil",
+        "description": "Stil, der bruges til punkttegn i uordnede lister.",
+        "options": {
+          "": "Standard (firkant)",
+          "list-disc": "Skive",
+          "list-circle": "Cirkel",
+          "list-square": "Firkant"
+        }
+      }
+    ]
+  }
+}

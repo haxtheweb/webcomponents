@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html بلاک",
+    "description": "ایک بنیادی HTML بلاک جو HAXschema وائرنگ فراہم کرتا ہے"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "وہ HTML کوڈ جو آپ مواد میں پیش کرنا چاہتے ہیں"
+      }
+    ]
+  }
+}

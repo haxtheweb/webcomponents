@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Acreditació d'esdeveniment",
+    "description": "Component d'acreditació d'esdeveniment."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imatge del TV",
+        "description": "Imatge que es mostra al televisor."
+      },
+      {
+        "property": "logo",
+        "title": "Logotip",
+        "description": "Logotip que es mostra a la cantonada de l'acreditació."
+      },
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Títol que es mostra a la part superior de l'acreditació."
+      },
+      {
+        "property": "name",
+        "title": "Nom",
+        "description": "Nom que es mostra a l'acreditació."
+      },
+      {
+        "property": "position",
+        "title": "Càrrec",
+        "description": "Funció o càrrec de la persona."
+      },
+      {
+        "property": "organization",
+        "title": "Organització",
+        "description": "Organització per a la qual treballa la persona."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Color del TV",
+        "description": "Selecciona el color del televisor."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Color principal de fons o de text."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Color dels botons",
+        "description": "Color dels botons del televisor."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sèpia",
+        "description": "Aplica un efecte sèpia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Blanc i negre",
+        "description": "Aplica un efecte en blanc i negre."
+      }
+    ]
+  }
+}

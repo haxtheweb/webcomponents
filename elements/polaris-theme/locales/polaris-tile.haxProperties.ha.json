@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Tayil ɗin Polaris",
+    "description": "Nuna tayil ɗin Polaris tare da take, rubutun tallafi na zaɓi, da mahaɗin zaɓi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Babban rubutu",
+        "description": "Babban rubutun tayil."
+      },
+      {
+        "property": "line2",
+        "title": "Rubutu na biyu",
+        "description": "Rubutun tallafi na zaɓi."
+      },
+      {
+        "property": "type",
+        "title": "Salon tayil",
+        "description": "Salon gani na tayil da aka shirya.",
+        "options": {
+          "1": "Salo 1",
+          "2": "Salo 2",
+          "3": "Salo 3",
+          "4": "Salo 4",
+          "5": "Salo 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Hoton bango",
+        "description": "URL na hoton bango da salon tayil masu ɗaukar hoto ke amfani da shi."
+      },
+      {
+        "property": "link",
+        "title": "Mahaɗi",
+        "description": "URL na zaɓi na inda aikin tayil zai kai."
+      }
+    ]
+  }
+}

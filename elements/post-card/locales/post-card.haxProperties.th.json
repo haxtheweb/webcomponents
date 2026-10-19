@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "โปสการ์ด",
+    "description": "สื่อแสนสนุกที่ออกแบบให้ดูเหมือนโปสการ์ดจริงที่ส่งมาจากที่ไหนสักแห่ง"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "ถึง",
+        "description": "ส่งถึงใคร?"
+      },
+      {
+        "property": "from",
+        "title": "จาก",
+        "description": "คุณคือใคร?"
+      },
+      {
+        "property": "message",
+        "title": "ข้อความ",
+        "description": "คุณต้องการจะพูดอะไร?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "ประทับตราไปรษณีย์จาก",
+        "description": "การ์ดนี้ส่งมาจากที่ไหน?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "แหล่งที่มาของรูปภาพหลัก",
+        "description": "รูปภาพของคุณอยู่ที่ไหน?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "แหล่งที่มาของรูปแสตมป์",
+        "description": "รูปภาพของคุณอยู่ที่ไหน?"
+      }
+    ]
+  }
+}

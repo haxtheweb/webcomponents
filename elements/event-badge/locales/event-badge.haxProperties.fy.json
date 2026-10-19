@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Evenemintebadge",
+    "description": "Komponint foar evenemintebadges."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV-ôfbylding",
+        "description": "Ofbylding op de TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo yn de hoeke fan de badge."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel boppe-oan de badge."
+      },
+      {
+        "property": "name",
+        "title": "Namme",
+        "description": "Namme op de badge."
+      },
+      {
+        "property": "position",
+        "title": "Funksje",
+        "description": "Rol of titel fan de persoan."
+      },
+      {
+        "property": "organization",
+        "title": "Organisaasje",
+        "description": "Organisaasje dêr't de persoan foar wurket."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV-kleur",
+        "description": "Kies de kleur foar de TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Primêre eftergrûn- of tekstkleur."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Knopkleur",
+        "description": "Kleur fan de TV-knoppen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "In sepia-effekt tapasse."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Swart-wyt",
+        "description": "In swart-wyt-effekt tapasse."
+      }
+    ]
+  }
+}

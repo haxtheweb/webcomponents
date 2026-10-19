@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Käyttäjän toiminto",
+    "description": "Seuraa käyttäjän toimintoja ja lähetä tiedot xAPI-tietovarastoihin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Seurattava tapahtuma",
+        "description": "Käyttäjän toiminto, joka laukaisee tämän tapahtuman.",
+        "options": {
+          "visibility": "Näkee tämän",
+          "keydown": "Painaa näppäintä tässä",
+          "click": "Napsauttaa tätä",
+          "hover": "Vie osoittimen tämän päälle"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Seuraa joka kerta",
+        "description": "Oletuksena seurataan vain ensimmäistä kertaa."
+      }
+    ]
+  }
+}

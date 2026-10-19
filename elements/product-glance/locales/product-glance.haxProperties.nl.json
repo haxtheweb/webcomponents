@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Product in één oogopslag",
+    "description": "Blok met een snel productoverzicht."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Pictogram",
+        "description": "Pictogram dat het concept vertegenwoordigt."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Hoofdconcept in één oogopslag."
+      },
+      {
+        "property": "subtitle",
+        "title": "Ondertitel",
+        "description": "Extra details."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Accentkleur voor het pictogram."
+      }
+    ]
+  }
+}

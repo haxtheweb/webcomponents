@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matemàtiques",
+    "description": "Presenta les matemàtiques d'una manera atractiva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matemàtiques",
+        "description": "Introdueix l'equació en LaTeX"
+      }
+    ]
+  }
+}

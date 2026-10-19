@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Tab waħda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikona tat-Tab"
+      },
+      {
+        "property": "disabled",
+        "title": "Diżattivat"
+      },
+      {
+        "property": "label",
+        "title": "Tikketta tat-Tab"
+      },
+      {
+        "slot": "",
+        "title": "Kontenut tat-Tab",
+        "description": "Kontenut tat-tab."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID uniku"
+      },
+      {
+        "property": "flag",
+        "title": "Test tal-Bandiera Opzjonali"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Ikona tal-Bandiera Opzjonali"
+      }
+    ]
+  }
+}

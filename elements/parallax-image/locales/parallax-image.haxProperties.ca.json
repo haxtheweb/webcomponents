@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Imatge amb paral·laxi",
+    "description": "Imatge que es desplaça"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Imatge",
+        "description": "imatge que s'utilitzarà al fons"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Àrea de capçalera",
+        "description": "Àrea de text de la capçalera"
+      }
+    ]
+  }
+}

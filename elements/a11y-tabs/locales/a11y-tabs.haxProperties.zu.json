@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Amathebhu",
+    "description": "Iqoqo lamathebhu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Ilebula (yokufinyeleleka)",
+        "description": "Ilebula efinyelelekayo yeqoqo lamathebhu."
+      },
+      {
+        "property": "disabled",
+        "title": "Kukhutshaziwe",
+        "description": "Khubaza wonke amathebhu."
+      },
+      {
+        "property": "hidden",
+        "title": "Kufihliwe",
+        "description": "Fihla iqoqo lamathebhu."
+      },
+      {
+        "property": "sticky",
+        "title": "Okunamathelayo",
+        "description": "Gcina amathebhu avundlile phezulu ngesikhathi uskrola."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Iphoyinti Lokuphuka Lesakhiwo",
+        "description": "Iphoyinti lokuphuka lamathebhu avundlile; sebenzisa u--1 ukuze kube ngokuqondile kuphela."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Iphoyinti Lokuphuka Lezithonjana",
+        "description": "Iphoyinti lokuphuka lokubonisa umbhalo nezithonjana. Okuzenzakalelayo ngu-0; sebenzisa u--1 kumodi yezithonjana kuphela."
+      },
+      {
+        "slot": "",
+        "title": "Amathebhu",
+        "description": "Uchungechunge lwezinto ze-<a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "I-ID Eyingqayizivele",
+        "description": "I-ID eyingqayizivele yaleli qoqo lamathebhu."
+      }
+    ]
+  }
+}

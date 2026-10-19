@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Isakhiwo samakholomu",
+    "description": "Hlela okuqukethwe ngamakholomu alula"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Isakhiwo Samakholomu",
+        "description": "Isitayela sokwethula lezi zinto (singashintsha kuzikrini ezincane)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Vala ukusabela",
+        "description": "Maka ibhokisi ukuze ugcine amakholomu kuzikrini ezinkulu kuyilapho kusapakelwa kuzikrini ezincane kakhulu"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Isikhala Sangaphakathi Sento",
+        "description": "Isikhala ngaphakathi kwento ngayinye"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Imiphetho yezinto",
+        "description": "Umphetho phakathi kwezinto"
+      }
+    ]
+  }
+}

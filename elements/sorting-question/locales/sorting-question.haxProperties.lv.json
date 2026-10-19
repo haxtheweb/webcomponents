@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Kārtošanas jautājums",
+    "description": "Sakārtojiet elementus pareizā secībā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Jautājums",
+        "description": "Jautājuma virsraksts."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vērtēšanas formāts",
+        "description": "OER Schema: šī vērtējuma formāts (piem., punkti, burts, procenti, izpilde)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mācību mērķis",
+        "description": "OER Schema: ar šo vērtējumu saistītais mācību mērķis."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurss",
+        "description": "OER Schema: kurss, kuram paredzēts šis vērtējums."
+      },
+      {
+        "property": "answers",
+        "title": "Atbildes",
+        "description": "Atbilžu secība nosaka pareizo kārtību."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testa nosaukums",
+        "description": "Testa nosaukums, ko izmanto xAPI identifikācijai analītikas sistēmās."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Caption ng figure",
+    "description": "Caption para sa isang figure."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Caption",
+        "description": "Tekstong ipinapakita sa ibaba ng figure."
+      }
+    ]
+  }
+}

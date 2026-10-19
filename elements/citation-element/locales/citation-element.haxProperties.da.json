@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kildehenvisning",
+    "description": "Kildehenvisningselement med tre visningstilstande."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel på det citerede værk."
+      },
+      {
+        "property": "source",
+        "title": "Kildelink",
+        "description": "Kilde-URL til det citerede værk."
+      },
+      {
+        "property": "date",
+        "title": "Dato for adgang",
+        "description": "Dato, hvor kilden blev tilgået."
+      },
+      {
+        "property": "scope",
+        "title": "Omfang",
+        "description": "Elementomfang, der skal citeres.",
+        "options": {
+          "sibling": "Søskendeelement",
+          "parent": "Overordnet element"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licens",
+        "description": "Licens for det citerede værk."
+      },
+      {
+        "property": "creator",
+        "title": "Ophavsperson",
+        "description": "Ophavsperson eller ejer af det citerede værk."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema-type",
+        "description": "OER Schema-klasse for denne kildehenvisning. Standard er oer:ReferencedMaterial; tilsidesæt kun med en gyldig OER-klasse (f.eks. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

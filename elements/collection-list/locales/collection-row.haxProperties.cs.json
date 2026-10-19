@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Řádek kolekce",
+    "description": "Položka ve stylu řádku pro seznam kolekce s textem, odkazem, ikonou, štítky a volitelným obrázkem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Odkaz",
+        "description": "Cílová URL tohoto řádku."
+      },
+      {
+        "property": "image",
+        "title": "Obrázek",
+        "description": "Obrázek řádku."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativní text popisující obrázek."
+      },
+      {
+        "property": "line1",
+        "title": "Řádek 1",
+        "description": "První řádek textu."
+      },
+      {
+        "property": "line2",
+        "title": "Řádek 2",
+        "description": "Druhý řádek textu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona představující řádek."
+      },
+      {
+        "property": "saturate",
+        "title": "Efekt sytosti",
+        "description": "Změnit sytost obrázku při zaměření."
+      },
+      {
+        "property": "tags",
+        "title": "Štítky",
+        "description": "Seznam štítků oddělených čárkami."
+      },
+      {
+        "property": "accentColor",
+        "title": "Barva",
+        "description": "Barva ikony a štítků."
+      }
+    ]
+  }
+}

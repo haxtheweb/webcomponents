@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Дугаарласан жагсаалт",
+    "description": "Дугаарласан жагсаалт үүсгэх."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Дугаарын хэв маяг",
+        "description": "Эрэмбэтэй жагсаалтын дугаарлалтад ашиглах хэв маяг.",
+        "options": {
+          "": "Анхдагч (аравтын)",
+          "list-decimal-leading-zero": "Урдаа тэгтэй аравтын (01, 02, 03)",
+          "list-lower-alpha": "Жижиг үсэг (a, b, c)",
+          "list-upper-alpha": "Том үсэг (A, B, C)",
+          "list-lower-roman": "Жижиг ром (i, ii, iii)",
+          "list-upper-roman": "Том ром (I, II, III)"
+        }
+      }
+    ]
+  }
+}

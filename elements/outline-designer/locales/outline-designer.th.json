@@ -1,0 +1,21 @@
+{
+  "selectTarget": "เลือกปลายทาง",
+  "importContentUnderThisPage": "นำเข้าเนื้อหาไว้ใต้หน้านี้",
+  "importThisContent": "นำเข้าเนื้อหานี้",
+  "thisPage": "หน้านี้",
+  "newPage": "หน้าใหม่",
+  "copyOf": "สำเนาของ",
+  "pageActions": "การดำเนินการกับหน้า",
+  "editTitle": "แก้ไขชื่อเรื่อง",
+  "lock": "ล็อก",
+  "unlock": "ปลดล็อก",
+  "moveUp": "เลื่อนขึ้น",
+  "moveDown": "เลื่อนลง",
+  "makeChild": "ทำเป็นหน้าย่อย",
+  "moveToParentLevel": "ย้ายไปยังระดับหลัก",
+  "addPage": "เพิ่มหน้า",
+  "duplicate": "ทำสำเนา",
+  "delete": "ลบ",
+  "restore": "กู้คืน",
+  "goToPage": "ไปที่หน้า"
+}

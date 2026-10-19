@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "이미지 섹션",
+    "description": "페이지 섹션을 나누는 전체 너비 이미지입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "배경 이미지입니다."
+      },
+      {
+        "property": "caption",
+        "description": "텍스트 제목입니다."
+      }
+    ]
+  }
+}

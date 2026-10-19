@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Trình phát 3D",
+    "description": "Trình phát tệp 3D / thực tế tăng cường."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Nguồn",
+        "description": "URL của tệp AR này."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Vị trí X của phần tử trong AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Vị trí Y của phần tử trong AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Vị trí Z của phần tử trong AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Màu bầu trời",
+        "description": "Chọn màu bầu trời trong cảnh."
+      }
+    ]
+  }
+}

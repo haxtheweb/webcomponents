@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ಗ್ರಂಥಸೂಚಿ ಐಟಂ",
+    "description": "ಗ್ರಂಥಸೂಚಿಯಲ್ಲಿನ ಒಂದು ಉಲ್ಲೇಖವನ್ನು ಪ್ರತಿನಿಧಿಸುವ ಐಟಂ, ಹಲವು ಸ್ವರೂಪಗಳು ಮತ್ತು ರಫ್ತು ಆಯ್ಕೆಗಳನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "ಪ್ರಕಾರ",
+        "description": "ಉಲ್ಲೇಖದ ಪ್ರಕಾರ",
+        "options": {
+          "web": "ವೆಬ್",
+          "journal": "ನಿಯತಕಾಲಿಕ",
+          "book": "ಪುಸ್ತಕ"
+        }
+      },
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಐಟಂನ ಶೀರ್ಷಿಕೆ"
+      },
+      {
+        "property": "authors",
+        "title": "ಲೇಖಕ(ರು)",
+        "description": "ಟೈಮ್‌ಲೈನ್‌ನಲ್ಲಿನ ಘಟನೆಗಳು"
+      },
+      {
+        "property": "publisher",
+        "title": "ಪ್ರಕಾಶಕರು",
+        "description": "ಮೂಲ ವೆಬ್‌ಸೈಟ್"
+      }
+    ]
+  }
+}

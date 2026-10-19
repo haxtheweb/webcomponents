@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "ഓഡിയോ",
+    "description": "ഉറവിടം ഏതായാലും വളരെ ആക്സസ് ചെയ്യാവുന്ന രീതിയിൽ ഇതിന് വീഡിയോ അവതരിപ്പിക്കാൻ കഴിയും."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ഉറവിടം",
+        "description": "ഈ മീഡിയയുടെ URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ശീർഷകം",
+        "description": "വീഡിയോയ്ക്ക് താഴെയുള്ള ലളിതമായ തലക്കെട്ട്"
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "പ്ലെയറിനുള്ള ആക്സന്റ് നിറം തിരഞ്ഞെടുക്കുക."
+      },
+      {
+        "property": "track",
+        "title": "ക്ലോസ്ഡ് ക്യാപ്ഷനുകൾ",
+        "description": "ക്യാപ്ഷൻ ഫയലിന്റെ URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "തംബ്നെയിൽ ചിത്രം",
+        "description": "ഓപ്ഷണൽ. ഒരു തംബ്നെയിൽ/പോസ്റ്റർ ചിത്രത്തിന്റെ URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "പഠന മോഡ് പ്രവർത്തനക്ഷമമാക്കുക",
+        "description": "ഫാസ്റ്റ് ഫോർവേഡും റിവൈൻഡും പ്രവർത്തനരഹിതമാക്കുന്നു."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube-ൽ തുറക്കുക ബട്ടൺ നീക്കം ചെയ്യുക",
+        "description": "വീഡിയോ YouTube-ൽ തുറക്കാനുള്ള ബട്ടൺ നീക്കം ചെയ്യുന്നു."
+      },
+      {
+        "property": "linkable",
+        "title": "ഒരു പങ്കിടൽ ലിങ്ക് ഉൾപ്പെടുത്തണോ?",
+        "description": "വീഡിയോ പങ്കിടാൻ ഒരു ലിങ്ക് നൽകുന്നു."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS ഉപയോഗിക്കണോ എന്ന് സൂചിപ്പിക്കുന്നു.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "പശ്ചാത്തല പ്ലേബാക്ക് അനുവദിക്കുക",
+        "description": "ടാബിന് ഫോക്കസ് നഷ്ടപ്പെടുമ്പോൾ വീഡിയോകൾ സ്വയമേവ താൽക്കാലികമായി നിർത്തുന്നു / പ്ലേ ചെയ്യുന്നു; ടാബിന് ഫോക്കസ് ഇല്ലാതെയും വീഡിയോ പ്ലേ ചെയ്യാൻ ഇത് അനുവദിക്കുന്നു"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ട്രാൻസ്ക്രിപ്റ്റിനുള്ള ഡാർക്ക് തീം",
+        "description": "ട്രാൻസ്ക്രിപ്റ്റിന് ഡാർക്ക് തീം പ്രവർത്തനക്ഷമമാക്കുക."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ഇന്ററാക്ടീവ് പ്രവർത്തനരഹിതമാക്കുക",
+        "description": "ട്രാൻസ്ക്രിപ്റ്റ് ക്ലിക്ക് ചെയ്യാവുന്നതാക്കുന്ന ഇന്ററാക്ടീവ് മോഡ് പ്രവർത്തനരഹിതമാക്കുക."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ടൈംസ്റ്റാമ്പുകൾ മറയ്ക്കുക",
+        "description": "ട്രാൻസ്ക്രിപ്റ്റിലെ ടൈം സ്റ്റാമ്പുകൾ മറയ്ക്കുക."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ട്രാൻസ്ക്രിപ്റ്റ് മറയ്ക്കുക",
+        "description": "ഡിഫോൾട്ടായി ട്രാൻസ്ക്രിപ്റ്റ് മറയ്ക്കുക."
+      },
+      {
+        "property": "lang",
+        "title": "ഭാഷ",
+        "description": "മീഡിയയുടെ ഭാഷ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "የገጽ ክፍል",
+    "description": "ለገጽ ይዘት እና በማያ ገጽ ላይ ለተመሠረቱ አቀማመጦች የክፍል መያዣ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "የንድፍ አያያዝ",
+        "description": "ተዛማጅ ቅንብሮችን የሚያዘምን ቅድመ-ዝግጅት ቅጥ።"
+      },
+      {
+        "property": "image",
+        "title": "ምስል",
+        "description": "ለክፍሉ የጀርባ ሚዲያ።"
+      },
+      {
+        "property": "bg",
+        "title": "የጀርባ ቀለም",
+        "description": "ምንም ምስል ካልተዘጋጀ የጀርባ ቀለም።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "የማሸብለያ አዝራር",
+        "description": "ወደ ቀጣዩ ክፍል የሚያሸበልል አዝራር አሳይ።"
+      },
+      {
+        "property": "fold",
+        "title": "እጥፋት አሳይ",
+        "description": "በክፍሉ ግርጌ ላይ ምስላዊ እጥፋት አሳይ።"
+      },
+      {
+        "property": "full",
+        "title": "ሙሉ የማያ ገጽ መጠን",
+        "description": "የተመልካቹን የማያ ገጽ ቁመት ሙላ።"
+      },
+      {
+        "property": "filter",
+        "title": "ማጣሪያ ተግብር",
+        "description": "በጀርባ ምስሉ ላይ ምስላዊ ማጣሪያ ተግብር።"
+      },
+      {
+        "slot": "",
+        "title": "ይዘት",
+        "description": "የክፍል ይዘት።"
+      },
+      {
+        "slot": "entice",
+        "title": "መሳቢያ",
+        "description": "አማራጭ የሚስብ ይዘት።"
+      },
+      {
+        "slot": "buttons",
+        "title": "አዝራሮች",
+        "description": "ከጽሑፉ በታች የሚታይ የአዝራሮች ቡድን።"
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "የመልህቅ ጽሑፍ",
+        "description": "በአሰሳ ውስጥ የሚታይ የመልህቅ መለያ።"
+      }
+    ]
+  }
+}

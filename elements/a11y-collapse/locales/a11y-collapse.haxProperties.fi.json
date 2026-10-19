@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tiivistettävä säilö",
+    "description": "Yksittäinen laajennettava ja tiivistettävä säilö."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Otsikko",
+        "description": "Tiivistettävän osion teksti."
+      },
+      {
+        "property": "expanded",
+        "title": "Laajennettu",
+        "description": "Laajenna oletuksena."
+      },
+      {
+        "property": "headingButton",
+        "title": "Otsikkopainike",
+        "description": "Tee koko otsikosta napsautettava pelkän kuvakkeen sijaan."
+      },
+      {
+        "property": "icon",
+        "title": "Kuvake",
+        "description": "Laajenna/tiivistä-painikkeen kuvake."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Kuvake (laajennettuna)",
+        "description": "Valinnainen kuvake laajennetulle tilalle."
+      },
+      {
+        "slot": "",
+        "title": "Sisältö",
+        "description": "Tiivistettävän osion sisältö."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Työkaluvihje",
+        "description": "Laajenna/tiivistä-painikkeen työkaluvihje."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Työkaluvihje (laajennettuna)",
+        "description": "Laajenna/tiivistä-painikkeen työkaluvihje laajennettuna."
+      }
+    ]
+  }
+}

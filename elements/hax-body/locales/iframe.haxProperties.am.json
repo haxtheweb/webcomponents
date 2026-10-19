@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "የውጭ የድር ይዘትን ክተት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ምንጭ",
+        "description": "የዚህ ሀብት URL።"
+      }
+    ]
+  }
+}

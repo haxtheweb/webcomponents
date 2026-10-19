@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Audio in linea",
+    "description": "Riproduci audio in linea per integrare il contenuto della pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origine",
+        "description": "File MP3 o URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Colore di accento",
+        "description": "Colore di accento della carta."
+      },
+      {
+        "property": "shiny",
+        "title": "Brillante",
+        "description": "Usa uno sfondo di accento più chiaro invece del grigio."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Scuro",
+        "description": "Usa la modalità scura."
+      }
+    ]
+  }
+}

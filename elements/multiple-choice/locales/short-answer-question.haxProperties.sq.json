@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pyetje me përgjigje të shkurtër",
+    "description": "Përdoruesi i përgjigjet një pyetjeje bazë"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pyetja",
+        "description": "Pyetja të cilës përdoruesit duhet t'i përgjigjen."
+      },
+      {
+        "property": "answers",
+        "title": "Përgjigjet e mundshme"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Emri i kuizit",
+        "description": "Emri i kuizit që përcillet për përdorim në mjedise të drejtuara nga xAPI për identifikimin e këtij elementi"
+      }
+    ]
+  }
+}

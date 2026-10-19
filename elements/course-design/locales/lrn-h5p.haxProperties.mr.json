@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P घटक",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "मजकूर",
+        "description": "बाजूच्या टिपेचा मजकूर"
+      }
+    ]
+  }
+}

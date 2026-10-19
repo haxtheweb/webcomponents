@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "סאַרקאַזם",
+    "description": "ווײַזן טעקסט אויף אַ שפּעטישן אופֿן"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "טעקסט",
+        "description": "טעקסט צו מאַכן סאַרקאַסטיש"
+      }
+    ]
+  }
+}

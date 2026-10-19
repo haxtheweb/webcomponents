@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Peu de figura",
+    "description": "Llegenda d'una figura."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Peu de foto",
+        "description": "Text que es mostra sota la figura."
+      }
+    ]
+  }
+}

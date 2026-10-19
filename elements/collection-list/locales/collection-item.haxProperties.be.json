@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Элемент калекцыі",
+    "description": "Элемент у выглядзе карткі для спіса калекцыі з тэкстам, спасылкай і неабавязковым медыя."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Спасылка",
+        "description": "URL прызначэння для гэтай карткі."
+      },
+      {
+        "property": "image",
+        "title": "Выява",
+        "description": "Фонавая выява."
+      },
+      {
+        "property": "line1",
+        "title": "Радок 1",
+        "description": "Першы радок тэксту."
+      },
+      {
+        "property": "line2",
+        "title": "Радок 2",
+        "description": "Другі радок тэксту."
+      },
+      {
+        "property": "line3",
+        "title": "Радок 3",
+        "description": "Трэці радок тэксту."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Значок",
+        "description": "Значок, які прадстаўляе картку."
+      },
+      {
+        "property": "saturate",
+        "title": "Эфект насычанасці",
+        "description": "Змяняць насычанасць выявы пры фокусе."
+      },
+      {
+        "property": "tags",
+        "title": "Тэгі",
+        "description": "Спіс тэгаў праз коску."
+      },
+      {
+        "property": "accentColor",
+        "title": "Колер",
+        "description": "Колер для тэгаў."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Альтэрнатыўны тэкст, які апісвае спасылку."
+      }
+    ]
+  }
+}

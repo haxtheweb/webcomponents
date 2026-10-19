@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Karta",
+    "description": "Karta s volitelným zvýrazněním."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Nadpis",
+        "description": "Nadpis karty."
+      },
+      {
+        "slot": "subheading",
+        "title": "Podnadpis",
+        "description": "Volitelný podnadpis karty."
+      },
+      {
+        "slot": "content",
+        "title": "Obsah",
+        "description": "Obsah karty."
+      },
+      {
+        "slot": "footer",
+        "title": "Zápatí",
+        "description": "Volitelné zápatí karty."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Obrázek",
+        "description": "Volitelný obrázek"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alternativní text obrázku",
+        "description": "Alternativní text popisující obrázek pro čtečky obrazovky. Prázdný ponechte, jen pokud je obrázek čistě dekorativní."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Vodorovné zarovnání obrázku",
+        "options": {
+          "left": "vlevo",
+          "center": "na střed",
+          "right": "vpravo"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Svislé zarovnání obrázku",
+        "options": {
+          "top": "nahoře",
+          "center": "na střed",
+          "bottom": "dole"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňující barva",
+        "description": "Volitelná zvýrazňující barva."
+      },
+      {
+        "property": "dark",
+        "title": "Tmavý motiv",
+        "description": "Zapnout tmavý motiv"
+      },
+      {
+        "property": "horizontal",
+        "title": "Vodorovná",
+        "description": "Vodorovná orientace?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Zvýraznění nadpisu",
+        "description": "Použít barvu zvýraznění na nadpis?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Zvýraznění pozadí",
+        "description": "Použít barvu zvýraznění na pozadí karty?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Bez zvýraznění okraje",
+        "description": "Odebrat zvýraznění okraje?"
+      },
+      {
+        "property": "flat",
+        "title": "Plochá",
+        "description": "Odebrat stín?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Roh",
+        "description": "Obsah rohu karty."
+      }
+    ]
+  }
+}

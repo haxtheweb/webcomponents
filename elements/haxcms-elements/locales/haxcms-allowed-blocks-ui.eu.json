@@ -1,0 +1,14 @@
+{
+  "title": "Blokeak",
+  "enabled": "Gaituta",
+  "block": "Blokea",
+  "preview": "Aurrebista",
+  "filterBlocks": "Iragazi blokeak",
+  "requiredTextNote": "Testu-etiketa batzuk derrigorrezkoak dira eta beti daude gaituta (desgaituta erakusten dira).",
+  "selectAll": "Hautatu denak",
+  "deselectAll": "Desautatu denak",
+  "save": "Gorde",
+  "noDescription": "Ez dago deskribapenik.",
+  "details": "Xehetasunak",
+  "loadingInventory": "Bloke-inbentario osoa kargatzen…"
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Zochita za wogwiritsa ntchito",
+    "description": "Tsatirani zochita za ogwiritsa ntchito ndi kutumiza zambiri ku malo osungira a xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Chochitika choti chitsatidwe",
+        "description": "Zochita za wogwiritsa ntchito zomwe zimayambitsa chochitikachi.",
+        "options": {
+          "visibility": "Akutha kuona ichi",
+          "keydown": "Dinani kiyi apa",
+          "click": "Dinani ichi",
+          "hover": "Ikani cholozera pa ichi"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Tsatirani nthawi iliyonse",
+        "description": "Mwachisawawa, chochitika choyamba chokha ndi chomwe chimatsatidwa."
+      }
+    ]
+  }
+}

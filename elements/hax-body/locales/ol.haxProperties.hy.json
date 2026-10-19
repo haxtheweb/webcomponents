@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Համարակալված ցուցակ",
+    "description": "Ստեղծել համարակալված ցանկ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Համարակալման ոճ",
+        "description": "Համարակալված ցանկի համարների ոճը։",
+        "options": {
+          "": "Լռելյայն (տասնորդական)",
+          "list-decimal-leading-zero": "Տասնորդական՝ առաջատար զրոյով (01, 02, 03)",
+          "list-lower-alpha": "Փոքրատառ լատինական (a, b, c)",
+          "list-upper-alpha": "Մեծատառ լատինական (A, B, C)",
+          "list-lower-roman": "Փոքրատառ հռոմեական (i, ii, iii)",
+          "list-upper-roman": "Մեծատառ հռոմեական (I, II, III)"
+        }
+      }
+    ]
+  }
+}

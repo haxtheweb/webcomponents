@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Oppimiskomponentti",
+    "description": "Kortti, jolla opettajat viestivät pedagogiikasta ja opetusstrategioista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tyyppi",
+        "description": "Käytettävän kortin tyyppi."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alaotsikko",
+        "description": "Kortin alaotsikko."
+      },
+      {
+        "property": "url",
+        "title": "Linkki",
+        "description": "Kortin valinnainen linkki (linkki ei ole käytettävissä oppimistavoitteille)."
+      },
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Aseta otsikko; tämä korvaa tyyppiin perustuvan otsikon"
+      },
+      {
+        "property": "icon",
+        "title": "Kuvake",
+        "description": "Aseta kuvake; tämä korvaa tyyppiin perustuvan kuvakkeen"
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Aseta korosteväri; tämä korvaa tyyppiin perustuvan värin"
+      },
+      {
+        "slot": "",
+        "title": "Sisältö"
+      }
+    ]
+  }
+}

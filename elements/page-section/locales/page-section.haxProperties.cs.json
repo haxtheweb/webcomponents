@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Sekce stránky",
+    "description": "Kontejner sekce pro obsah stránky a rozvržení na celou obrazovku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Grafické zpracování",
+        "description": "Přednastavený styl, který aktualizuje související nastavení."
+      },
+      {
+        "property": "image",
+        "title": "Obrázek",
+        "description": "Média na pozadí sekce."
+      },
+      {
+        "property": "bg",
+        "title": "Barva pozadí",
+        "description": "Barva pozadí, pokud není nastaven obrázek."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Tlačítko posunu",
+        "description": "Zobrazit tlačítko, které posune na další sekci."
+      },
+      {
+        "property": "fold",
+        "title": "Zobrazit přehyb",
+        "description": "Zobrazit vizuální přehyb ve spodní části sekce."
+      },
+      {
+        "property": "full",
+        "title": "Na celou obrazovku",
+        "description": "Vyplnit výšku obrazovky čtenáře."
+      },
+      {
+        "property": "filter",
+        "title": "Použít filtr",
+        "description": "Použít vizuální filtr na obrázek pozadí."
+      },
+      {
+        "slot": "",
+        "title": "Obsah",
+        "description": "Obsah sekce."
+      },
+      {
+        "slot": "entice",
+        "title": "Lákadlo",
+        "description": "Volitelný lákavý obsah."
+      },
+      {
+        "slot": "buttons",
+        "title": "Tlačítka",
+        "description": "Skupina tlačítek zobrazená pod textem."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Text kotvy",
+        "description": "Popisek kotvy zobrazený v navigaci."
+      }
+    ]
+  }
+}

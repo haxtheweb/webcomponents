@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "图片分区",
+    "description": "拿页面分区隔开个全宽图片。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "背景图片。"
+      },
+      {
+        "property": "caption",
+        "description": "文字标题。"
+      }
+    ]
+  }
+}

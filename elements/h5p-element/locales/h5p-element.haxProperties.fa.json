@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "پوشش H5P برای بارگذاری و نمایش فایل‌های ‎.h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "کد جاسازی iframe برای H5P"
+      }
+    ]
+  }
+}

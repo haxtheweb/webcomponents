@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "柱状图",
+    "description": "根据 CSV 创建无障碍图表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "强调色",
+        "description": "可选的强调色。"
+      },
+      {
+        "title": "深色主题",
+        "description": "启用深色主题"
+      },
+      {
+        "title": "CSV 文件",
+        "description": "从 CSV 加载数据。"
+      },
+      {
+        "title": "图表标题",
+        "description": "图表的无障碍替代文本。"
+      },
+      {
+        "title": "图表描述",
+        "description": "图表的无障碍描述。"
+      },
+      {
+        "title": "比例名称",
+        "description": "图表的宽高比（$ct-scales 和 $ct-scales-names 参见 https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings）。",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "显示网格背景"
+      },
+      {
+        "title": "水平条形",
+        "description": "反转柱状图的坐标轴以绘制水平条形图。请注意，你还需要反转坐标轴设置，因为 Y 轴现在将显示标签，而 X 轴显示数值。"
+      },
+      {
+        "title": "堆叠条形",
+        "description": "如果设置为 true，此属性将使系列条形堆叠显示。"
+      },
+      {
+        "title": "分配系列",
+        "description": "如果设置为 true，则每个条形代表一个系列，数据数组应为一维的数据值数组，而不是由多个系列组成的数组。"
+      },
+      {
+        "title": "图表内边距（上）"
+      },
+      {
+        "title": "图表内边距（下）"
+      },
+      {
+        "title": "图表内边距（左）"
+      },
+      {
+        "title": "图表内边距（右）"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "反转数据",
+        "description": "反转数据，包括标签、系列顺序以及整个系列数据数组。"
+      },
+      {
+        "title": "HTML 表格",
+        "description": "可选：以 HTML 表格形式加载数据。"
+      },
+      {
+        "title": "图表最小值",
+        "description": "覆盖图表的自然最低值，可以放大或限制图表显示的最低值"
+      },
+      {
+        "title": "图表最大值",
+        "description": "覆盖图表的自然最高值，可以放大或限制图表显示的最高值"
+      },
+      {
+        "title": "X 轴显示网格",
+        "description": "显示 X 轴的网格。"
+      },
+      {
+        "title": "X 轴偏移"
+      },
+      {
+        "title": "X 轴位置",
+        "description": "标签放置的位置。可设置为“start”或“end”，其中“start”相当于垂直轴的左侧或顶部，“end”相当于水平轴的右侧或底部"
+      },
+      {
+        "title": "X 轴显示标签",
+        "description": "显示 X 轴的标签。"
+      },
+      {
+        "title": "X 轴标签（水平偏移）",
+        "description": "X 轴标签的水平位置。"
+      },
+      {
+        "title": "X 轴标签（垂直偏移）",
+        "description": "X 轴标签的垂直位置。"
+      },
+      {
+        "title": "X 轴标题",
+        "description": "X 轴的可选标题。"
+      },
+      {
+        "title": "X 轴标题（水平偏移）",
+        "description": "X 轴标题的水平位置。"
+      },
+      {
+        "title": "X 轴标题（垂直偏移）",
+        "description": "X 轴标题的垂直位置。"
+      },
+      {
+        "title": "X 轴标题锚点",
+        "description": "X 轴标题的可选锚点。",
+        "options": {
+          "middle": "居中",
+          "end": "末端",
+          "start": "起始"
+        }
+      },
+      {
+        "title": "X 轴刻度最小间距",
+        "description": "指定刻度步长的最小高度（像素）。"
+      },
+      {
+        "title": "X 轴刻度（仅整数）",
+        "description": "刻度步长仅使用整数值。"
+      },
+      {
+        "title": "Y 轴：显示网格",
+        "description": "显示 Y 轴的网格。"
+      },
+      {
+        "title": "Y 轴偏移"
+      },
+      {
+        "title": "Y 轴位置",
+        "description": "标签放置的位置。可设置为“start”或“end”，其中“start”相当于垂直轴的左侧或顶部，“end”相当于水平轴的右侧或底部"
+      },
+      {
+        "title": "Y 轴显示标签",
+        "description": "显示 Y 轴的标签。"
+      },
+      {
+        "title": "Y 轴标签（水平偏移）",
+        "description": "Y 轴标签的水平位置。"
+      },
+      {
+        "title": "Y 轴标签（垂直偏移）",
+        "description": "Y 轴标签的垂直位置。"
+      },
+      {
+        "title": "Y 轴刻度最小间距",
+        "description": "指定刻度步长的最小高度（像素）。"
+      },
+      {
+        "title": "Y 轴刻度（仅整数）",
+        "description": "刻度步长仅使用整数值。"
+      },
+      {
+        "title": "Y 轴标题",
+        "description": "Y 轴的可选标题。"
+      },
+      {
+        "title": "Y 轴标题（垂直偏移）",
+        "description": "Y 轴标题的水平位置。"
+      },
+      {
+        "title": "Y 轴标题（水平偏移）",
+        "description": "Y 轴标题的水平位置。"
+      },
+      {
+        "title": "Y 轴标题锚点",
+        "description": "Y 轴标题的可选锚点。",
+        "options": {
+          "middle": "居中",
+          "end": "末端",
+          "start": "起始"
+        }
+      },
+      {
+        "title": "Y 轴标题翻转",
+        "description": "翻转 Y 轴的标题？"
+      },
+      {
+        "title": "参考值",
+        "description": "除非明确设置了最低/最高值，否则柱状图默认以零为中心。"
+      },
+      {
+        "title": "系列条形间距",
+        "description": "指定一组中条形之间的距离（像素）。"
+      },
+      {
+        "title": "堆叠模式",
+        "description": "如果设置为“true”，此属性将为每个系列点计算总和。这也会影响 Y 轴和图表的整体范围。如果设置为“false”，此属性将强制堆叠条形从零线开始绘制。在堆叠模式下，“seriesBarDistance”属性不起作用。"
+      }
+    ]
+  }
+}

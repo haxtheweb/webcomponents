@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Huaʻōlelo",
+    "description": "Huaʻōlelo papa huaʻōlelo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Huaʻōlelo"
+      },
+      {
+        "slot": "",
+        "title": "Wehewehe",
+        "description": "Ka wehewehe e hōʻike ai ke kaomi ʻia ka huaʻōlelo."
+      },
+      {
+        "property": "description",
+        "title": "Wehewehe (OER Schema)",
+        "description": "OER Schema: he wehewehe pōkole o ka huaʻōlelo. Hoʻopiha ʻakomi ʻia mai ke kikokikona wehewehe inā waiho hakahaka ʻia."
+      }
+    ]
+  }
+}

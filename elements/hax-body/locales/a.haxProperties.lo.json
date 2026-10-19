@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ລິ້ງພື້ນຖານ",
+    "description": "ອົງປະກອບລິ້ງພື້ນຖານ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "ລິ້ງ",
+        "description": "URL ປາຍທາງ."
+      },
+      {
+        "attribute": "innerText",
+        "title": "ຂໍ້ຄວາມ",
+        "description": "ຂໍ້ຄວາມລິ້ງທີ່ເບິ່ງເຫັນ."
+      },
+      {
+        "attribute": "target",
+        "title": "ເປົ້າໝາຍ",
+        "description": "ບ່ອນທີ່ຈະເປີດລິ້ງ.",
+        "options": {
+          "": "ໜ້າຕ່າງດຽວກັນ",
+          "_blank": "ໜ້າຕ່າງໃໝ່ - _blank",
+          "_top": "ໜ້າຕ່າງເທິງສຸດ - _top",
+          "_parent": "ໜ້າຕ່າງແມ່ - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "ຂໍ້ຄວາມຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ແນະນຳສຳລັບການເຂົ້າເຖິງ ແລະ SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "ຄວາມສຳພັນກັບປາຍທາງ (ຄວາມປອດໄພ/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

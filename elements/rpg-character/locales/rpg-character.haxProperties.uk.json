@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Персонаж RPG",
+    "description": "Кумедний персонаж від HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Ім'я",
+        "description": "Слово для генерування випадкового персонажа."
+      },
+      {
+        "property": "hat",
+        "title": "Капелюх",
+        "description": "Стиль капелюха.",
+        "options": {
+          "none": "За замовчуванням",
+          "random": "Випадковий",
+          "bunny": "Кролик",
+          "cowboy": "Ковбой",
+          "education": "Освіта",
+          "construction": "Будівельна каска",
+          "warning": "Попередження",
+          "watermelon": "Кавун",
+          "coffee": "Кава",
+          "knight": "Лицар",
+          "ninja": "Ніндзя",
+          "party": "Вечірка",
+          "error": "Помилка",
+          "edit": "Редагування"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Ширина",
+        "description": "Ширина персонажа в пікселях."
+      },
+      {
+        "property": "height",
+        "title": "Висота",
+        "description": "Висота персонажа в пікселях."
+      },
+      {
+        "property": "fire",
+        "title": "Палає?",
+        "description": "Чи палає персонаж."
+      },
+      {
+        "property": "walking",
+        "title": "Іде?",
+        "description": "Анімація ходьби; біжить, коли палає."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ntụnyere onyonyo",
+    "description": "Swaịpụ otu onyonyo n'elu nke ọzọ maka ntụnyere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Onyonyo elu",
+        "description": "Onyonyo elu a ga-swaịpụ n'elu onyonyo ala."
+      },
+      {
+        "property": "topAlt",
+        "title": "Ederede alt onyonyo elu",
+        "description": "Ederede alt achọrọ maka ịdị mfe ịnweta."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Onyonyo ala",
+        "description": "Onyonyo ala a na-egosi n'okpuru onyonyo elu."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Ederede alt onyonyo ala",
+        "description": "Ederede alt achọrọ maka ịdị mfe ịnweta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Omume",
+        "description": "Họrọ ọnọdụ ihicha (ndabara) ma ọ bụ ọnọdụ nghọta onyonyo elu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba Mkpụrụ",
+        "description": "Agba ogwe mmịfe."
+      },
+      {
+        "property": "dark",
+        "title": "Ọchịchịrị",
+        "description": "Tụgharịa agba ogwe mmịfe."
+      },
+      {
+        "property": "position",
+        "title": "Ọnọdụ Mbụ",
+        "description": "Ọnọdụ mmalite site na 0 ruo 100."
+      }
+    ]
+  }
+}

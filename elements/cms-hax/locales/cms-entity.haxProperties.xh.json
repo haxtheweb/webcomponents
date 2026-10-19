@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Into ye-CMS",
+    "description": "Into ye-CMS eboniswa kwi-backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Uhlobo",
+        "description": "uhlobo oluvela kwi-CMS yethu",
+        "options": {
+          "node": "Inodi",
+          "user": "Umsebenzisi",
+          "file": "Ifayile"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "i-id evela kwi-CMS yethu"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Imowudi yokubonisa",
+        "description": "imo yokubonisa evela kwi-CMS yethu"
+      }
+    ]
+  }
+}

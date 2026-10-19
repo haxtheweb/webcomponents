@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ugrađeni zvuk",
+    "description": "Reproducirajte zvuk unutar teksta kao dopunu sadržaju stranice."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Izvor",
+        "description": "MP3 datoteka ili URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "Boja naglaska kartice."
+      },
+      {
+        "property": "shiny",
+        "title": "Sjajno",
+        "description": "Koristi svjetliju pozadinu naglaska umjesto sive."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tamno",
+        "description": "Koristi tamni način."
+      }
+    ]
+  }
+}

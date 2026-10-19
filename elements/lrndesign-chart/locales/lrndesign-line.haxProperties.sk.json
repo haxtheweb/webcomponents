@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Čiarový graf",
+    "description": "Vytvorí prístupný graf na základe CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zvýrazňujúca farba",
+        "description": "Voliteľná zvýrazňujúca farba."
+      },
+      {
+        "title": "Tmavá téma",
+        "description": "Zapnúť tmavú tému"
+      },
+      {
+        "title": "Súbor CSV",
+        "description": "Načítať dáta z CSV."
+      },
+      {
+        "title": "Názov grafu",
+        "description": "Prístupný alternatívny text pre váš graf."
+      },
+      {
+        "title": "Popis grafu",
+        "description": "Prístupný popis vášho grafu."
+      },
+      {
+        "title": "Názov mierky",
+        "description": "Pomer šírka:výška grafu (pozrite https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings pre $ct-scales a $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Zobraziť pozadie mriežky"
+      },
+      {
+        "title": "Zobraziť plochu"
+      },
+      {
+        "title": "Zobraziť čiaru"
+      },
+      {
+        "title": "Zobraziť body"
+      },
+      {
+        "title": "Plná šírka"
+      },
+      {
+        "title": "Zobraziť označenia bodov"
+      },
+      {
+        "title": "Odsadenie grafu (hore)"
+      },
+      {
+        "title": "Odsadenie grafu (dole)"
+      },
+      {
+        "title": "Odsadenie grafu (vľavo)"
+      },
+      {
+        "title": "Odsadenie grafu (vpravo)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Obrátiť dáta",
+        "description": "Obráti dáta vrátane označení, poradia sérií aj celých polí dát sérií."
+      },
+      {
+        "title": "Tabuľka HTML",
+        "description": "Voliteľné: Načítať dáta ako tabuľku HTML."
+      },
+      {
+        "title": "Minimum grafu",
+        "description": "Prepísanie prirodzeného minima grafu umožňuje priblížiť alebo obmedziť najnižšiu zobrazenú hodnotu grafu"
+      },
+      {
+        "title": "Maximum grafu",
+        "description": "Prepísanie prirodzeného maxima grafu umožňuje priblížiť alebo obmedziť najvyššiu zobrazenú hodnotu grafu"
+      },
+      {
+        "title": "Zobraziť označenia bodov",
+        "options": {
+          "middle": "Stred",
+          "start": "Začiatok",
+          "end": "Koniec"
+        }
+      },
+      {
+        "title": "Posun označení bodov X"
+      },
+      {
+        "title": "Posun označení bodov Y"
+      },
+      {
+        "title": "Vyhladenie čiary"
+      },
+      {
+        "title": "Základ plochy",
+        "description": "Základ plošného grafu, ktorý sa použije na uzavretie tvaru plochy (zvyčajne 0)."
+      },
+      {
+        "title": "Os X: zobraziť mriežku",
+        "description": "Zobraziť mriežku osi X."
+      },
+      {
+        "title": "Posun osi X"
+      },
+      {
+        "title": "Poloha osi X",
+        "description": "Poloha, kde sú umiestnené označenia. Môže byť „start“ alebo „end“, kde „start“ zodpovedá ľavej alebo hornej strane na zvislej osi a „end“ pravej alebo dolnej strane na vodorovnej osi"
+      },
+      {
+        "title": "Os X: zobraziť označenie",
+        "description": "Zobraziť označenie osi X."
+      },
+      {
+        "title": "Označenie osi X (vodorovný posun)",
+        "description": "Vodorovná poloha označení osi X."
+      },
+      {
+        "title": "Označenie osi X (zvislý posun)",
+        "description": "Zvislá poloha označení osi X."
+      },
+      {
+        "title": "Názov osi X",
+        "description": "Voliteľný názov osi X."
+      },
+      {
+        "title": "Názov osi X (vodorovný posun)",
+        "description": "Vodorovná poloha názvu osi X."
+      },
+      {
+        "title": "Názov osi X (zvislý posun)",
+        "description": "Zvislá poloha názvu osi X."
+      },
+      {
+        "title": "Ukotvenie názvu osi X",
+        "description": "Voliteľné ukotvenie názvu osi X.",
+        "options": {
+          "middle": "stred",
+          "end": "koniec",
+          "start": "začiatok"
+        }
+      },
+      {
+        "title": "Os Y: zobraziť mriežku",
+        "description": "Zobraziť mriežku osi Y."
+      },
+      {
+        "title": "Posun osi Y"
+      },
+      {
+        "title": "Poloha osi Y",
+        "description": "Poloha, kde sú umiestnené označenia. Môže byť „start“ alebo „end“, kde „start“ zodpovedá ľavej alebo hornej strane na zvislej osi a „end“ pravej alebo dolnej strane na vodorovnej osi"
+      },
+      {
+        "title": "Os Y: zobraziť označenie",
+        "description": "Zobraziť označenie osi Y."
+      },
+      {
+        "title": "Označenie osi Y (vodorovný posun)",
+        "description": "Vodorovná poloha označenia osi Y."
+      },
+      {
+        "title": "Označenie osi Y (zvislý posun)",
+        "description": "Zvislá poloha označenia osi Y."
+      },
+      {
+        "title": "Minimálna medzera mierky osi Y",
+        "description": "Určuje minimálnu výšku krokov mierky v pixeloch."
+      },
+      {
+        "title": "Mierka osi Y (len celé čísla)",
+        "description": "Pre kroky mierky používať len celočíselné hodnoty."
+      },
+      {
+        "title": "Názov osi Y",
+        "description": "Voliteľný názov osi Y."
+      },
+      {
+        "title": "Názov osi Y (zvislý posun)",
+        "description": "Vodorovná poloha názvu osi Y."
+      },
+      {
+        "title": "Názov osi Y (vodorovný posun)",
+        "description": "Vodorovná poloha názvu osi Y."
+      },
+      {
+        "title": "Ukotvenie názvu osi Y",
+        "description": "Voliteľné ukotvenie názvu osi Y.",
+        "options": {
+          "middle": "stred",
+          "end": "koniec",
+          "start": "začiatok"
+        }
+      },
+      {
+        "title": "Otočenie názvu osi Y",
+        "description": "Otočiť názov osi Y?"
+      }
+    ]
+  }
+}

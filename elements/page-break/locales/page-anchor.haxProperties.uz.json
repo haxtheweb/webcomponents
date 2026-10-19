@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sahifa langari",
+    "description": "Sahifadagi mediadagi muayyan nuqtalarga havola."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Sahifa nishoni",
+        "description": "Ushbu langar koʻrsatadigan ID yoki resurs."
+      },
+      {
+        "property": "value",
+        "title": "Chuqur havola qiymati",
+        "description": "Chuqur havola qiymati (masalan, vaqt belgisi yoki slayd ID si)."
+      },
+      {
+        "property": "entityId",
+        "title": "Sayt obyekti",
+        "description": "Tegishli tushuncha taqdimotini boshqarish uchun ixtiyoriy sayt obyekti."
+      }
+    ]
+  }
+}

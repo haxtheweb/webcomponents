@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "ऑडियो",
+    "description": "यह स्रोत चाहे जो हो, वीडियो को अत्यधिक सुलभ तरीके से प्रस्तुत कर सकता है।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "इस मीडिया का URL।"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "शीर्षक",
+        "description": "वीडियो के नीचे सरल शीर्षक"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "प्लेयर के लिए एक्सेंट रंग चुनें।"
+      },
+      {
+        "property": "track",
+        "title": "क्लोज़्ड कैप्शन",
+        "description": "कैप्शन फ़ाइल का URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "थंबनेल छवि",
+        "description": "वैकल्पिक। थंबनेल/पोस्टर छवि का URL।"
+      },
+      {
+        "property": "learningMode",
+        "title": "लर्निंग मोड सक्षम करें",
+        "description": "फ़ास्ट फ़ॉरवर्ड और रिवाइंड अक्षम करता है।"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube पर खोलें बटन हटाएँ",
+        "description": "वीडियो को YouTube पर खोलने वाला बटन हटाता है।"
+      },
+      {
+        "property": "linkable",
+        "title": "साझा लिंक शामिल करें?",
+        "description": "वीडियो साझा करने के लिए लिंक देता है।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "दर्शाता है कि CORS का उपयोग करना है या नहीं।",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "पृष्ठभूमि प्लेबैक की अनुमति दें",
+        "description": "टैब से फ़ोकस हटने पर वीडियो अपने आप रुकते / चलते हैं; यह टैब पर फ़ोकस न होने पर भी वीडियो चलने देता है"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ट्रांसक्रिप्ट के लिए डार्क थीम",
+        "description": "ट्रांसक्रिप्ट के लिए डार्क थीम सक्षम करें।"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "इंटरैक्टिव अक्षम करें",
+        "description": "ट्रांसक्रिप्ट को क्लिक करने योग्य बनाने वाला इंटरैक्टिव मोड अक्षम करें।"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "टाइमस्टैम्प छिपाएँ",
+        "description": "ट्रांसक्रिप्ट पर समय चिह्न छिपाएँ।"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ट्रांसक्रिप्ट छिपाएँ",
+        "description": "डिफ़ॉल्ट रूप से ट्रांसक्रिप्ट छिपाएँ।"
+      },
+      {
+        "property": "lang",
+        "title": "भाषा",
+        "description": "मीडिया की भाषा।"
+      }
+    ]
+  }
+}

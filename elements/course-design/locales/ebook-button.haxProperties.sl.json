@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Gumb e-knjige",
+    "description": "Gumb, ki povezuje na e-knjigo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov gumba."
+      },
+      {
+        "property": "link",
+        "title": "Povezava",
+        "description": "Povezava, na katero se preusmeri ob kliku."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona, ki predstavlja to povezavo"
+      }
+    ]
+  }
+}

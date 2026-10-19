@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub катнашучылары исемлеге",
+    "description": "GitHub API ярдәмендә RPG персонажлары итеп күрсәтелә."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Оешма",
+        "description": "github.com/ORG/REPO адресындагы оешма исеме."
+      },
+      {
+        "property": "repo",
+        "title": "Репозиторий",
+        "description": "github.com/ORG/REPO адресындагы репозиторий исеме."
+      },
+      {
+        "property": "limit",
+        "title": "Чик",
+        "description": "Күрсәтелә торган катнашучылар санын чикләргә."
+      }
+    ]
+  }
+}

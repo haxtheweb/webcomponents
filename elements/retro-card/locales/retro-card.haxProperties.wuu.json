@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "复古卡片",
+    "description": "复古设计个简单卡片。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "卡片主标题。"
+      },
+      {
+        "property": "url",
+        "description": "点卡片辰光打开个 URL。"
+      },
+      {
+        "property": "subtitle",
+        "title": "副标题",
+        "description": "卡片副标题。"
+      },
+      {
+        "property": "tags",
+        "title": "标签",
+        "description": "用逗号隔开个标签。"
+      },
+      {
+        "property": "mediaSource",
+        "title": "媒体来源",
+        "description": "主要媒体来源。"
+      },
+      {
+        "property": "hoverSource",
+        "title": "悬停辰光个来源",
+        "description": "鼠标移到卡片上或者激活卡片辰光显示个媒体来源。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "整张卡片用个强调色。"
+      },
+      {
+        "property": "dark",
+        "title": "深色",
+        "description": "用深色模式基础色。"
+      }
+    ]
+  }
+}

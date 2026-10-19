@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Isidlali se-3D",
+    "description": "Isidlali sefayela le-3D / se-augmented reality."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "I-URL yaleli fayela le-AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Indawo ka-X yento ku-AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Indawo ka-Y yento ku-AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Indawo ka-Z yento ku-AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Umbala wesibhakabhaka",
+        "description": "Khetha umbala wesibhakabhaka esigcawini."
+      }
+    ]
+  }
+}

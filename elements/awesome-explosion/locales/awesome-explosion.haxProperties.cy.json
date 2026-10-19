@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ffrwydrad Anhygoel",
+    "description": "Animeiddiad ffrwydrad rhyngweithiol gydag effeithiau sain dewisol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Maint",
+        "description": "Gosod maint y ffrwydrad.",
+        "options": {
+          "tiny": "Pitw",
+          "small": "Bach",
+          "medium": "Canolig",
+          "large": "Mawr",
+          "epic": "Epig"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Lliw",
+        "description": "Gosod thema lliw y ffrwydrad.",
+        "options": {
+          "": "Rhagosodiad",
+          "red": "Coch",
+          "blue": "Glas",
+          "purple": "Porffor",
+          "orange": "Oren",
+          "yellow": "Melyn"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Effeithiau Sain",
+        "description": "Galluogi effeithiau sain."
+      },
+      {
+        "property": "resetSound",
+        "title": "Ailosod Sain",
+        "description": "Ailgychwyn y sain o'r dechrau bob tro."
+      },
+      {
+        "property": "image",
+        "title": "Delwedd Bersonol",
+        "description": "URL dewisol ar gyfer delwedd ffrwydrad bersonol."
+      },
+      {
+        "property": "sound",
+        "title": "Sain Bersonol",
+        "description": "URL dewisol ar gyfer effaith sain bersonol."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Wedi'i analluogi",
+        "description": "Analluogi pob rhyngweithio."
+      }
+    ]
+  }
+}

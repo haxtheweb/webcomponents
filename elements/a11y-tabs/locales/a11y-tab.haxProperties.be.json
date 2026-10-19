@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Укладка",
+    "description": "Адна ўкладка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Значок укладкі"
+      },
+      {
+        "property": "disabled",
+        "title": "Адключана"
+      },
+      {
+        "property": "label",
+        "title": "Подпіс укладкі"
+      },
+      {
+        "slot": "",
+        "title": "Змесціва ўкладкі",
+        "description": "Змесціва ўкладкі."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Унікальны ID"
+      },
+      {
+        "property": "flag",
+        "title": "Неабавязковы тэкст сцяжка"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Неабавязковы значок сцяжка"
+      }
+    ]
+  }
+}

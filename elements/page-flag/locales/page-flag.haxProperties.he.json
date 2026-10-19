@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "דגל עמוד",
+    "description": "הערת עריכה לכותבי העמוד."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע ההדגשה של דגל העמוד."
+      },
+      {
+        "property": "label",
+        "title": "תווית",
+        "description": "טקסט התווית של דגל העמוד."
+      }
+    ]
+  }
+}

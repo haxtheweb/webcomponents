@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Citação com mídia",
+    "description": "Imagem com citação, fonte e legenda opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citação",
+        "description": "Texto da citação."
+      },
+      {
+        "slot": "author",
+        "title": "Autor",
+        "description": "Autor da citação."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Detalhes do autor",
+        "description": "Detalhes do autor."
+      },
+      {
+        "slot": "caption",
+        "title": "Legenda",
+        "description": "Legenda da imagem."
+      },
+      {
+        "property": "src",
+        "title": "Origem da imagem",
+        "description": "Arquivo de imagem usado na citação com mídia."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto alternativo da imagem."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Cor de destaque do cartão."
+      }
+    ]
+  }
+}

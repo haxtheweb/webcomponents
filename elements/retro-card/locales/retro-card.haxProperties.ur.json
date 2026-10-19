@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ریٹرو کارڈ",
+    "description": "ریٹرو ڈیزائن والا سادہ کارڈ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "کارڈ کا مرکزی عنوان۔"
+      },
+      {
+        "property": "url",
+        "description": "کارڈ پر کلک کرنے پر کھلنے والا URL۔"
+      },
+      {
+        "property": "subtitle",
+        "title": "ذیلی عنوان",
+        "description": "کارڈ کا ذیلی عنوان۔"
+      },
+      {
+        "property": "tags",
+        "title": "ٹیگز",
+        "description": "کوما سے الگ کیے گئے ٹیگز۔"
+      },
+      {
+        "property": "mediaSource",
+        "title": "میڈیا سورس",
+        "description": "بنیادی میڈیا سورس۔"
+      },
+      {
+        "property": "hoverSource",
+        "title": "ہوور پر سورس",
+        "description": "کارڈ پر ہوور یا فعال کرنے پر دکھایا جانے والا میڈیا سورس۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "پورے کارڈ پر لاگو ایکسنٹ رنگ۔"
+      },
+      {
+        "property": "dark",
+        "title": "گہرا",
+        "description": "ڈارک موڈ کے بنیادی رنگ استعمال کریں۔"
+      }
+    ]
+  }
+}

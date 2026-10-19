@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "项目符号列表",
+    "description": "做一只项目符号列表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "项目符号样式",
+        "description": "无序列表项目符号用个样式。",
+        "options": {
+          "": "默认(方块)",
+          "list-disc": "实心圆",
+          "list-circle": "空心圆",
+          "list-square": "方块"
+        }
+      }
+    ]
+  }
+}

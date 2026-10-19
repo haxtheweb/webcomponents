@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Bloc HTML",
+    "description": "Bloc HTML bunúsach a sholáthraíonn nascadh HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Cód HTML is mian leat a chur i láthair san ábhar"
+      }
+    ]
+  }
+}

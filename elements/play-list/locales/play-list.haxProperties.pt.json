@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Lista de reprodução",
+    "description": "Exiba qualquer tipo de conteúdo em uma lista de reprodução."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Origem",
+        "description": "Conteúdo mostrado na lista de reprodução."
+      },
+      {
+        "property": "edit",
+        "title": "Modo de edição",
+        "description": "Alternar entre os modos de edição e de visualização da lista de reprodução."
+      },
+      {
+        "property": "navigation",
+        "title": "Navegação",
+        "description": "Mostrar botões de navegação para avançar e voltar."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginação",
+        "description": "Mostrar pontos de paginação."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientação",
+        "description": "Orientação dos slides.",
+        "options": {
+          "horizontal": "Horizontal",
+          "vertical": "Vertical"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Slide inicial",
+        "description": "Índice do slide em foco inicialmente."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Proporção",
+        "description": "Proporção dos slides.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

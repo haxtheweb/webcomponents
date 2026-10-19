@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Vlerësim me yje",
+    "description": "Mjet për shfaqjen e vlerësimit ose buton për të vlerësuar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Pikët",
+        "description": "Vlera aktuale e pikëve."
+      },
+      {
+        "property": "possible",
+        "title": "Maksimumi",
+        "description": "Pikët maksimale të mundshme."
+      },
+      {
+        "property": "numStars",
+        "title": "Numri i yjeve",
+        "description": "Numri i yjeve që shfaqen."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktiv",
+        "description": "Lejo ndërveprimin e përdoruesit për të vendosur vlerësimin."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Modaliteti i shkallës së rubrikës",
+        "description": "Jep metadatat RubricScale dhe RubricLevel të Skemës OER (levelOrdinal/levelPoints) për çdo yll."
+      }
+    ]
+  }
+}

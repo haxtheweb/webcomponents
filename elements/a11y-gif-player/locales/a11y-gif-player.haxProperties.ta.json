@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "அசையும் GIF-களை அணுகக்கூடியதாக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "அசையும் GIF",
+        "description": "அசையும் GIF-க்கான URL."
+      },
+      {
+        "property": "alt",
+        "title": "மாற்று உரை",
+        "description": "படத்திற்கான மாற்று உரை."
+      },
+      {
+        "property": "longdesc",
+        "title": "நீண்ட விளக்கம்",
+        "description": "அணுகல்தன்மைக்காக GIF-இன் நீண்ட விளக்கம்."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "நிலைப் படம்",
+        "description": "GIF-இன் அசையாத படப் பதிப்புக்கான URL."
+      }
+    ]
+  }
+}

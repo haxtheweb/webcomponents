@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tagg/etikett",
+    "description": "En kompakt pillerformad etikett med valfri accentfärg, avbrytknapp eller växling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etikett",
+        "description": "Text som visas i etiketten."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "SimpleColors-accentnamn för etikettens bakgrund.",
+        "options": {
+          "": "-- standard --",
+          "red": "Röd",
+          "pink": "Rosa",
+          "purple": "Lila",
+          "deep-purple": "Mörklila",
+          "indigo": "Indigo",
+          "blue": "Blå",
+          "light-blue": "Ljusblå",
+          "cyan": "Cyan",
+          "teal": "Blågrön",
+          "green": "Grön",
+          "light-green": "Ljusgrön",
+          "lime": "Limegrön",
+          "yellow": "Gul",
+          "amber": "Bärnsten",
+          "orange": "Orange",
+          "deep-orange": "Mörkorange",
+          "brown": "Brun",
+          "blue-grey": "Blågrå",
+          "grey": "Grå"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatisk accentfärg",
+        "description": "Härled accentfärgen automatiskt från etikettexten."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Avbrytknapp",
+        "description": "Visa en ikonknapp för att ta bort/avbryta i etiketten."
+      },
+      {
+        "property": "readonly",
+        "title": "Skrivskyddad",
+        "description": "Dölj avbrytknappen så att etiketten endast visas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Växlar",
+        "description": "Låt etiketten växla på/av när knappen klickas."
+      },
+      {
+        "property": "toggled",
+        "title": "Påslagen",
+        "description": "Om etiketten för närvarande är påslagen."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikon när påslagen",
+        "description": "Ikon som visas när etiketten är påslagen."
+      },
+      {
+        "property": "disabled",
+        "title": "Inaktiverad",
+        "description": "Inaktivera interaktion med etiketten."
+      }
+    ]
+  }
+}

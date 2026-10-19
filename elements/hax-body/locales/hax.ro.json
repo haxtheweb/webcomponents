@@ -122,5 +122,21 @@
   "recent": "Recente",
   "popular": "Populare",
   "copiedToClipboard": "Copiat în clipboard",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Informații imagine",
+  "imageActions": "Acțiuni imagine",
+  "imageRecommendations": "Recomandări pentru imagine",
+  "compressImage": "Comprimă imaginea",
+  "resizeTo": "Redimensionează la",
+  "created": "Creat",
+  "size": "Dimensiune",
+  "dimensions": "Dimensiuni",
+  "type": "Tip",
+  "done": "gata",
+  "noFileUuid": "Referința fișierului nu este disponibilă; reîncărcați-l pentru a activa acțiunile.",
+  "fileOpsUnavailable": "Operațiunile cu fișiere nu sunt disponibile pentru acest site.",
+  "fileOpFailed": "Operațiunea cu fișierul a eșuat.",
+  "fileExtensionNotAllowed": "Acest câmp acceptă doar următoarele tipuri de fișiere:",
+  "fileTypeNotAllowed": "Acest câmp acceptă doar următoarele tipuri media:",
+  "transformFailed": "Transformarea după încărcare a eșuat; fișierul original a fost păstrat."
 }

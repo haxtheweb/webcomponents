@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Gawing accessible ang mga animated na GIF."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animated na GIF",
+        "description": "URL ng animated na GIF."
+      },
+      {
+        "property": "alt",
+        "title": "Alt Text",
+        "description": "Alternatibong teksto para sa larawan."
+      },
+      {
+        "property": "longdesc",
+        "title": "Mahabang Paglalarawan",
+        "description": "Mahabang paglalarawan ng GIF para sa accessibility."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Still na Larawan",
+        "description": "URL para sa still na bersyon ng GIF."
+      }
+    ]
+  }
+}

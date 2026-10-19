@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "خودسنجی",
+    "description": "کاربران می‌توانند یک خودسنجی را انجام دهند."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "تصویر خودسنجی."
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوان خودسنجی."
+      },
+      {
+        "property": "alt",
+        "title": "متن جایگزین",
+        "description": "متن جایگزین تصویر."
+      },
+      {
+        "slot": "question",
+        "title": "پرسش"
+      },
+      {
+        "slot": "",
+        "title": "پاسخ"
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ پوسته",
+        "description": "یک رنگ پوسته از سامانهٔ طراحی انتخاب کنید.",
+        "options": {
+          "primary": "اصلی",
+          "accent": "تأکیدی",
+          "success": "موفقیت",
+          "warning": "هشدار",
+          "error": "خطا",
+          "info": "اطلاعات"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف یادگیری",
+        "description": "ارجاع هدف یادگیری که به‌صورت oer:hasLearningObjective تولید می‌شود."
+      },
+      {
+        "property": "assessing",
+        "title": "در حال سنجش",
+        "description": "ارجاع فعالیت که به‌صورت oer:assessing تولید می‌شود."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "پیوند بیشتر",
+        "description": "پیوند به اطلاعات بیشتر."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn moinge",
+    "description": "Emoinge LinkedIn kuatia'atã mba'ete."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Téra ojeiporavóva",
+        "description": "LinkedIn puruhára réra ojeiporavóva pehẽ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Ñe'ẽ ha tetã",
+        "description": "Ñe'ẽ ha tetã mba'ekuaarã repykue, techapyrã en_US."
+      }
+    ]
+  }
+}

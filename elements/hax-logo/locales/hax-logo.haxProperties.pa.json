@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX ਸ਼ਬਦ ਕਲਾ",
+    "description": "HAX ਲਈ ਲੋਗੋ ਤੱਤ, ਜ਼ਾਹਰ ਹੈ ਕਿ HAX-ਸਮਰੱਥ ਤੱਤ ਵਜੋਂ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "ਰੱਖੇ ਜਾਣ ਵਾਲੇ HAX ਲੋਗੋ ਦਾ ਆਕਾਰ",
+        "options": {
+          "mini": "ਮਿੰਨੀ",
+          "small": "ਛੋਟਾ",
+          "normal": "ਸਧਾਰਨ",
+          "large": "ਵੱਡਾ"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "ਕੀ ਲੋਗੋ ਨੂੰ ਵੱਡੇ ਅੱਖਰਾਂ ਵਿੱਚ ਬਦਲਣਾ ਹੈ"
+      }
+    ]
+  }
+}

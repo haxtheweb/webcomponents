@@ -122,5 +122,21 @@
   "recent": "Soňky",
   "popular": "Meşhur",
   "copiedToClipboard": "Clipboard-a kopiýalandy",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Surat barada maglumat",
+  "imageActions": "Surat amallary",
+  "imageRecommendations": "Surat boýunça maslahatlar",
+  "compressImage": "Suraty gysmak",
+  "resizeTo": "Ölçegini üýtgetmek",
+  "created": "Döredildi",
+  "size": "Göwrümi",
+  "dimensions": "Ölçegleri",
+  "type": "Görnüşi",
+  "done": "taýýar",
+  "noFileUuid": "Faýl salgylanmasy elýeterli däl; amallary işjeňleşdirmek üçin gaýtadan ýükläň.",
+  "fileOpsUnavailable": "Bu saýt üçin faýl amallary elýeterli däl.",
+  "fileOpFailed": "Faýl amaly şowsuz boldy.",
+  "fileExtensionNotAllowed": "Bu meýdança diňe şu faýl görnüşlerini kabul edýär:",
+  "fileTypeNotAllowed": "Bu meýdança diňe şu media görnüşlerini kabul edýär:",
+  "transformFailed": "Ýüklenenden soňky öwürme şowsuz boldy; asyl faýl saklandy."
 }

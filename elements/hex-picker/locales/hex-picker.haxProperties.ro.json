@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Selector hex",
+    "description": "Selector de culori prin cod hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Valoare",
+        "description": "Valoarea hex implicită"
+      },
+      {
+        "property": "disabled",
+        "title": "Dezactivat",
+        "description": "Dezactivează câmpul de text"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Afișare mare",
+        "description": "Include culoarea într-o afișare mare"
+      }
+    ]
+  }
+}

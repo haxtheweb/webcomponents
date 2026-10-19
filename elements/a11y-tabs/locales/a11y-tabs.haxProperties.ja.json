@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "タブ",
+    "description": "タブのセット。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "ラベル（アクセシビリティ用）",
+        "description": "タブセットのアクセシブルなラベル。"
+      },
+      {
+        "property": "disabled",
+        "title": "無効",
+        "description": "すべてのタブを無効にします。"
+      },
+      {
+        "property": "hidden",
+        "title": "非表示",
+        "description": "タブセットを非表示にします。"
+      },
+      {
+        "property": "sticky",
+        "title": "固定",
+        "description": "スクロール中も横タブを上部に固定します。"
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "レイアウトのブレークポイント",
+        "description": "横タブのブレークポイント。縦のみにするには -1 を使用します。"
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "アイコンのブレークポイント",
+        "description": "アイコンと一緒にテキストを表示するブレークポイント。既定値は 0、アイコンのみのモードには -1 を使用します。"
+      },
+      {
+        "slot": "",
+        "title": "タブ",
+        "description": "<a11y-tab/> 要素の連続。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "一意のID",
+        "description": "このタブセットの一意のID。"
+      }
+    ]
+  }
+}

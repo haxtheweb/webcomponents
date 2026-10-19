@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ការវាយតម្លៃផ្កាយ",
+    "description": "ធាតុក្រាហ្វិកបង្ហាញការវាយតម្លៃ ឬប៊ូតុងដើម្បីវាយតម្លៃ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "ពិន្ទុ",
+        "description": "តម្លៃពិន្ទុបច្ចុប្បន្ន។"
+      },
+      {
+        "property": "possible",
+        "title": "អាចទទួលបាន",
+        "description": "ពិន្ទុអតិបរមាដែលអាចទទួលបាន។"
+      },
+      {
+        "property": "numStars",
+        "title": "ចំនួនផ្កាយ",
+        "description": "ចំនួនផ្កាយដែលត្រូវបង្ហាញ។"
+      },
+      {
+        "property": "interactive",
+        "title": "អន្តរកម្ម",
+        "description": "អនុញ្ញាតឱ្យអ្នកប្រើធ្វើអន្តរកម្មដើម្បីកំណត់ការវាយតម្លៃ។"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "របៀបមាត្រដ្ឋានរូប្រិក",
+        "description": "បញ្ចេញទិន្នន័យមេតា OER Schema RubricScale និង RubricLevel (levelOrdinal/levelPoints) សម្រាប់ផ្កាយនីមួយៗ។"
+      }
+    ]
+  }
+}

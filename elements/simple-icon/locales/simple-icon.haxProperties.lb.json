@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ikon",
+    "description": "Ikon aus der kompletter Ikonebibliothéik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon, deen ugewise gëtt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Akzentfaarf fir d'Ikon."
+      },
+      {
+        "property": "dark",
+        "title": "Däischter",
+        "description": "Däischtere Modus benotzen (invertéiert Faarwen)."
+      }
+    ]
+  }
+}

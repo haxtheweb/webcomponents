@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Tirohanga CMS",
+    "description": "Ngā tirohanga CMS ka whakaaturia ki te tuarongo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Ingoa",
+        "description": "Ingoa o te tirohanga mai i tō mātou CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Whakaatu",
+        "description": "Whakaaturanga i roto i taua tirohanga mai i tō mātou CMS"
+      }
+    ]
+  }
+}

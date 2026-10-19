@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Ñemomarandu pyta",
+    "description": "Marandu omomarandúva moñe'ẽhárape tape oĩporãva rehe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teratee",
+        "description": "Emoinge teratee ñemomarandu pytápe g̃uarã."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Emoinge URL okaguáva."
+      },
+      {
+        "property": "status",
+        "title": "Reko",
+        "description": "Reko ñemoĩ omoambue sa'y ha ta'ãnga'i ojogua hag̃ua",
+        "options": {
+          "stop": "Pyta",
+          "warning": "Ñemomarandu",
+          "success": "Ñemoneĩ",
+          "info": "Ñemomarandu"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Jehai'i moñe'ẽrã",
+        "description": "Moñe'ẽrã ñemomarandu pytápe g̃uarã."
+      }
+    ]
+  }
+}

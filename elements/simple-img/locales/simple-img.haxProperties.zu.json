@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Isithombe Esilula",
+    "description": "Lungisa izithombe ngamapharamitha alula."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Umthombo",
+        "description": "I-URL yomthombo wesithombe."
+      },
+      {
+        "property": "height",
+        "title": "Ubude",
+        "description": "Ubude besithombe ongabukhetha."
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi",
+        "description": "Ububanzi besithombe ongabukhetha."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo ongenye",
+        "description": "Kuyasiza kubafundi besikrini futhi kuthuthukisa i-SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Ikhwalithi",
+        "description": "Ikhwalithi yesithombe lapho sikhiqizwa (i-JPEG kuphela)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Okubalulekile Kokulanda",
+        "description": "Isikhombisi sokusebenza kweziphequluli zesimanje.",
+        "options": {
+          "auto": "Okuzenzakalelayo",
+          "high": "Okuphezulu",
+          "low": "Okuphansi"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Indlela yokuhumusha ikhodi",
+        "description": "Isikhombisi sokusebenza sokuvezwa kwezithombe ezipheqululini zesimanje.",
+        "options": {
+          "auto": "Okuzenzakalelayo",
+          "async": "Okungavumelanisiwe"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity প্লেয়ার",
+    "description": "Unity WebGL প্লেয়ার।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "টার্গেট",
+        "description": "গেম বিল্ডের পাথ।"
+      },
+      {
+        "property": "compression",
+        "title": "কম্প্রেশন পদ্ধতি",
+        "description": "গেমের অ্যাসেটের কম্প্রেশন ফাইল এক্সটেনশন।"
+      },
+      {
+        "property": "streamingurl",
+        "title": "স্ট্রিমিং URL",
+        "description": "স্ট্রিমিং অ্যাসেটের URL।"
+      },
+      {
+        "property": "companyname",
+        "title": "কোম্পানির নাম",
+        "description": "কোম্পানির নাম।"
+      },
+      {
+        "property": "productname",
+        "title": "পণ্যের নাম",
+        "description": "গেমের শিরোনাম।"
+      },
+      {
+        "property": "productversion",
+        "title": "পণ্যের সংস্করণ",
+        "description": "রিলিজ সংস্করণ।"
+      },
+      {
+        "property": "width",
+        "title": "ক্যানভাসের প্রস্থ",
+        "description": "ক্যানভাসের CSS প্রস্থ (যেমন px বা em)।"
+      },
+      {
+        "property": "height",
+        "title": "ক্যানভাসের উচ্চতা",
+        "description": "ক্যানভাসের CSS উচ্চতা (যেমন px বা em)।"
+      },
+      {
+        "property": "background",
+        "title": "ক্যানভাসের পটভূমি",
+        "description": "ক্যানভাসের CSS পটভূমি।"
+      }
+    ]
+  }
+}

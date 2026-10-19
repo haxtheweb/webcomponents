@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ዋቢ",
+    "description": "ሦስት የአቀራረብ ሁነታዎች ያሉት የጥቅስ አካል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "የተጠቀሰው ሥራ ርዕስ።"
+      },
+      {
+        "property": "source",
+        "title": "የምንጭ አገናኝ",
+        "description": "ለተጠቀሰው ሥራ የምንጭ URL።"
+      },
+      {
+        "property": "date",
+        "title": "የተደረሰበት ቀን",
+        "description": "ምንጩ የተደረሰበት ቀን።"
+      },
+      {
+        "property": "scope",
+        "title": "ወሰን",
+        "description": "የሚጠቀስ የአካል ወሰን።",
+        "options": {
+          "sibling": "ተጓዳኝ አካል",
+          "parent": "የወላጅ አካል"
+        }
+      },
+      {
+        "property": "license",
+        "title": "ፈቃድ",
+        "description": "ለተጠቀሰው ሥራ ፈቃድ።"
+      },
+      {
+        "property": "creator",
+        "title": "ፈጣሪ",
+        "description": "የተጠቀሰው ሥራ ፈጣሪ ወይም ባለቤት።"
+      },
+      {
+        "property": "typeof",
+        "title": "የOER Schema ዓይነት",
+        "description": "ለዚህ ጥቅስ የOER Schema ክፍል። ነባሪው oer:ReferencedMaterial ነው፤ በትክክለኛ የOER ክፍል (ለምሳሌ oer:SupportingMaterial) ብቻ ይሻሩ።"
+      }
+    ]
+  }
+}

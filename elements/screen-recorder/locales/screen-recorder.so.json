@@ -5,5 +5,6 @@
   "systemAudio": "Ku dar dhawaaqa nidaamka",
   "microphoneAudio": "Ku dar makarufoonka",
   "recordingStarted": "Duubista bilaabmay",
-  "recordingStopped": "Duubista joojiyay"
+  "recordingStopped": "Duubista joojiyay",
+  "audioOptions": "Doorashooyinka codka"
 }

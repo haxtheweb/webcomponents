@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Stjernevurdering",
+    "description": "Komponent som viser vurdering, eller knapp for å gi vurdering."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Poengsum",
+        "description": "Gjeldende poengsum."
+      },
+      {
+        "property": "possible",
+        "title": "Mulig",
+        "description": "Høyest mulige poengsum."
+      },
+      {
+        "property": "numStars",
+        "title": "Antall stjerner",
+        "description": "Antall stjerner som skal vises."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktiv",
+        "description": "La brukeren angi vurderingen."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Vurderingsskala-modus",
+        "description": "Send ut OER Schema-metadata for RubricScale og RubricLevel (levelOrdinal/levelPoints) for hver stjerne."
+      }
+    ]
+  }
+}

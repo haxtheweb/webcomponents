@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Disqus-reaksjes op in side ynslute."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Koarte namme",
+        "description": "De koarte namme fan de side, dy't de Disqus-skripthost bepaalt."
+      },
+      {
+        "property": "pageURL",
+        "title": "Side-URL",
+        "description": "De URL fan de side dêr't de reaksjetried oan keppele is."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Side-identifikaasje",
+        "description": "De unike identifikaasje foar de reaksjetried fan de side."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Sidetitel",
+        "description": "De titel fan de side dêr't de reaksjetried oan keppele is."
+      },
+      {
+        "property": "loadingText",
+        "title": "Ladingstekst",
+        "description": "Tekst dy't oankundige wurdt wylst de reaksjes laden wurde."
+      },
+      {
+        "property": "lang",
+        "title": "Taal",
+        "description": "Taalkoade foar de Disqus-ynterface, bgl. en."
+      }
+    ]
+  }
+}

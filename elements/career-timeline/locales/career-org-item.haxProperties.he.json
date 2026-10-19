@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "פריט קריירה",
+    "description": "ארגון בודד והתפקידים הקשורים אליו"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "שם הארגון"
+      },
+      {
+        "property": "location",
+        "title": "מיקום"
+      },
+      {
+        "property": "source",
+        "title": "מקור"
+      }
+    ]
+  }
+}

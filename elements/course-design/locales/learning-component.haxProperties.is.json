@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Námsþáttur",
+    "description": "Spjald fyrir kennara til að miðla kennslufræði og kennsluaðferðum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tegund",
+        "description": "Tegund spjalds sem á að nota."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undirtitill",
+        "description": "Undirtitill spjaldsins."
+      },
+      {
+        "property": "url",
+        "title": "Tengill",
+        "description": "Valfrjáls tengill fyrir spjaldið (tengill ekki tiltækur fyrir námsmarkmið)."
+      },
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Stilla titil, þetta kemur í stað titils út frá tegund"
+      },
+      {
+        "property": "icon",
+        "title": "Tákn",
+        "description": "Stilla tákn, þetta kemur í stað tákns út frá tegund"
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Stilla áherslulit, þetta kemur í stað litar út frá tegund"
+      },
+      {
+        "slot": "",
+        "title": "Efni"
+      }
+    ]
+  }
+}

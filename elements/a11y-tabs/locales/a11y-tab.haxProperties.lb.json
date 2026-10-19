@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Een eenzelen Tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Tab-Ikon"
+      },
+      {
+        "property": "disabled",
+        "title": "Desaktivéiert"
+      },
+      {
+        "property": "label",
+        "title": "Tab-Bezeechnung"
+      },
+      {
+        "slot": "",
+        "title": "Tab-Inhalt",
+        "description": "Den Inhalt vum Tab."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Eendeiteg ID"
+      },
+      {
+        "property": "flag",
+        "title": "Optionale Fändeltext"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Optionalen Fändel-Ikon"
+      }
+    ]
+  }
+}

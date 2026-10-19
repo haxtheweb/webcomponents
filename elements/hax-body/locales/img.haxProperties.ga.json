@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Íomhá Bhunúsach",
+    "description": "Eilimint íomhá bhunúsach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Foinse",
+        "description": "URL na híomhá."
+      },
+      {
+        "attribute": "alt",
+        "title": "Téacs malartach",
+        "description": "Téacs malartach le haghaidh inrochtaineachta agus SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Airde",
+        "description": "Airde i bpicteilíní. Fág bán chun an méid nádúrtha a úsáid."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Lódáil íomhá",
+        "description": "Roghnaigh cathain a lódálann an íomhá.",
+        "options": {
+          "lazy": "Lódáil nuair atá sí infheicthe",
+          "auto": "Uathoibríoch"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Foinsí freagrúla (srcset)",
+        "description": "Liostaigh URLanna íomhánna agus tuairisceoirí (m.sh. 480w nó 2x) ionas go roghnaíonn brabhsálaithe an méid is fearr don scáileán. Stóráilte mar an aitreabúid chaighdeánach srcset."
+      }
+    ]
+  }
+}

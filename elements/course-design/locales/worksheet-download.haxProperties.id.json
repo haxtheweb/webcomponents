@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Unduhan Lembar Kerja",
+    "description": "Tombol untuk menampilkan file yang tersedia untuk diunduh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul unduhan."
+      },
+      {
+        "property": "link",
+        "title": "Tautan",
+        "description": "Tautan untuk unduhan."
+      }
+    ]
+  }
+}

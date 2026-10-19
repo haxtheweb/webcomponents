@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "शब्दावली",
+    "description": "शब्दावली शब्द"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "पद"
+      },
+      {
+        "slot": "",
+        "title": "परिभाषा",
+        "description": "शब्दमा क्लिक गर्दा देखाउने परिभाषा।"
+      },
+      {
+        "property": "description",
+        "title": "विवरण (OER Schema)",
+        "description": "OER Schema: शब्दावली शब्दको छोटो विवरण। खाली छोडेमा परिभाषा पाठबाट स्वतः भरिन्छ।"
+      }
+    ]
+  }
+}

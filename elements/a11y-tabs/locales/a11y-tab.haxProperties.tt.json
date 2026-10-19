@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Кыстыргыч",
+    "description": "Бер кыстыргыч."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Кыстыргыч иконкасы"
+      },
+      {
+        "property": "disabled",
+        "title": "Сүндерелгән"
+      },
+      {
+        "property": "label",
+        "title": "Кыстыргыч исеме"
+      },
+      {
+        "slot": "",
+        "title": "Кыстыргыч эчтәлеге",
+        "description": "Кыстыргычның эчтәлеге."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Уникаль ID"
+      },
+      {
+        "property": "flag",
+        "title": "Ихтыяри билге тексты"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Ихтыяри билге иконкасы"
+      }
+    ]
+  }
+}

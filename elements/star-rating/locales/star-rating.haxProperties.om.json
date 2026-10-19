@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Sadarkaa Urjii",
+    "description": "Wiijeetii agarsiisa sadarkaa yookaan qabduu sadarkaa kennuuf."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Qabxii",
+        "description": "Gatii qabxii ammaa."
+      },
+      {
+        "property": "possible",
+        "title": "Danda'amu",
+        "description": "Qabxii ol'aanaa danda'amu."
+      },
+      {
+        "property": "numStars",
+        "title": "Lakkoofsa Urjiiwwanii",
+        "description": "Lakkoofsa urjiiwwan agarsiifamanii."
+      },
+      {
+        "property": "interactive",
+        "title": "Walqunnamtii",
+        "description": "Fayyadamaan sadarkaa akka kaa'uuf walqunnamtii hayyami."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Haalata Safartuu Rubriksii",
+        "description": "Tokkoon tokkoon urjiif metaadaataa OER Schema RubricScale fi RubricLevel (levelOrdinal/levelPoints) baasi."
+      }
+    ]
+  }
+}

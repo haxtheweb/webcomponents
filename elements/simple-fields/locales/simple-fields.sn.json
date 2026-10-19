@@ -5,5 +5,9 @@
   "recordAudio": "Rekodha inzwi",
   "recordScreen": "Rekodha skrini",
   "cancel": "Kanzura",
-  "uploadMedia": "Tumira media"
+  "uploadMedia": "Tumira media",
+  "record": "Rekodha",
+  "pause": "Mbomira kurekodha",
+  "stopSave": "Mira & Chengeta",
+  "clickToTakePhoto": "Dzvanya kuti utore mufananidzo"
 }

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Rétt / rangt spurning",
+    "description": "Rétt eða rangt spurning"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Spurning",
+        "description": "Spurning sem notendur svara."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Rétt svar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Heiti prófs",
+        "description": "Heiti prófs sem sent er inn til notkunar í xAPI-umhverfum til að auðkenna þetta atriði"
+      }
+    ]
+  }
+}

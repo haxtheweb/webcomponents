@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kartīte",
+    "description": "Kartītes komponents, stilizēts ar DDD dizaina sistēmu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Attēls",
+        "description": "Neobligāts attēls."
+      },
+      {
+        "property": "alt",
+        "title": "Attēla alternatīvais teksts",
+        "description": "Attēlu aprakstošs alternatīvais teksts."
+      },
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Kartītes nosaukums."
+      },
+      {
+        "slot": "",
+        "title": "Saturs",
+        "description": "Kartītes satura apgabals."
+      },
+      {
+        "property": "href",
+        "title": "Saite",
+        "description": "Pogas saites URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etiķete",
+        "description": "Pogas etiķete."
+      },
+      {
+        "property": "noArrow",
+        "title": "Bez bultiņas",
+        "description": "Paslēpt pogas bultiņu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Saite: mērķis",
+        "description": "Kur atvērt saiti.",
+        "options": {
+          "": "Tas pats logs",
+          "_blank": "Jauns logs — _blank",
+          "_top": "Augšējais logs — _top",
+          "_parent": "Vecāklogs — _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Saite: rel",
+        "description": "Saistītā resursa un pašreizējā dokumenta attiecības."
+      }
+    ]
+  }
+}

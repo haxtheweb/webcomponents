@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI ದೃಶ್ಯೀಕರಣ",
+    "description": "ದೃಶ್ಯೀಕರಣದೊಂದಿಗೆ ಸಂದರ್ಭದಲ್ಲಿ MIDI ಪ್ಲೇ ಮಾಡಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ಮೂಲ",
+        "description": "ಪ್ಲೇ ಮಾಡಬೇಕಾದ ಫೈಲ್ URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "ದೃಶ್ಯೀಕರಣ",
+        "description": "ಸಂಗೀತ ಫೈಲ್‌ನ ದೃಶ್ಯೀಕರಣ ಶೈಲಿ.",
+        "options": {
+          "staff": "ಸ್ವರಪಟ್ಟಿ",
+          "piano-roll": "ಪಿಯಾನೋ ರೋಲ್",
+          "waterfall": "ಪಿಯಾನೋ + ಜಲಪಾತ"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "ಜಲಪಾತ ಮರೆಮಾಡಿ",
+        "description": "ಪಿಯಾನೋ ದೃಶ್ಯೀಕರಣದಲ್ಲಿ ಜಲಪಾತ ಸ್ವರಗಳನ್ನು ಮರೆಮಾಡಿ."
+      }
+    ]
+  }
+}

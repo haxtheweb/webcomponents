@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galeri Gambar",
+    "description": "Galeri sing nampilake gambar ing tata letak kothak, masonry, utawa slideshow."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Mode tampilan",
+        "description": "Carane nampilake gambar ing galeri.",
+        "options": {
+          "grid": "Kothak",
+          "masonry": "Masonry",
+          "gallery": "Galeri"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Indeks aktif",
+        "description": "Indeks gambar aktif kanggo wiwitan ing mode galeri."
+      }
+    ]
+  }
+}

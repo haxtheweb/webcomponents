@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografie-item",
+    "description": "Item wat 'n enkele aanhaling in 'n bibliografie voorstel, met ondersteuning vir verskeie formate en uitvoeropsies."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tipe",
+        "description": "Aanhalingstipe",
+        "options": {
+          "web": "Web",
+          "journal": "Joernaal",
+          "book": "Boek"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel van die item"
+      },
+      {
+        "property": "authors",
+        "title": "Outeur(s)",
+        "description": "Die gebeure in die tydlyn"
+      },
+      {
+        "property": "publisher",
+        "title": "Uitgewer",
+        "description": "Oorspronklike webwerf"
+      }
+    ]
+  }
+}

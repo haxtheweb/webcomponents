@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Pruduttu in un colpu d'ochju",
+    "description": "Bloccu di prisentazione rapida d'un pruduttu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona chì riprisenta u cuncettu."
+      },
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Cuncettu principale in un colpu d'ochju."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sottutitulu",
+        "description": "Detagliu addiziunale."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Culore d'accentu di l'icona."
+      }
+    ]
+  }
+}

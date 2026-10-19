@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D-mängija",
+    "description": "3D-failide / liitreaalsuse mängija."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Allikas",
+        "description": "Selle AR-faili URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Elemendi X-asukoht AR-is."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Elemendi Y-asukoht AR-is."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Elemendi Z-asukoht AR-is."
+      },
+      {
+        "property": "skyColor",
+        "title": "Taeva värv",
+        "description": "Vali stseeni taeva värv."
+      }
+    ]
+  }
+}

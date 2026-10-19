@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D pleýer",
+    "description": "3D faýl / goşmaça hakykat pleýeri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çeşme",
+        "description": "Bu AR faýlynyň URL-i."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Elementiň AR-daky X ýagdaýy."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Elementiň AR-daky Y ýagdaýy."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Elementiň AR-daky Z ýagdaýy."
+      },
+      {
+        "property": "skyColor",
+        "title": "Asmanyň reňki",
+        "description": "Sahnadaky asmanyň reňkini saýlaň."
+      }
+    ]
+  }
+}

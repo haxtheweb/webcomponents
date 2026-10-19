@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Blọọkụ ọdịnaya markdown ozugbo ma ọ bụ ebudatara site n'ebe dị anya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown nkịtị"
+      },
+      {
+        "property": "source",
+        "title": "Isi mmalite",
+        "description": "Faịlụ isi iyi maka markdown"
+      }
+    ]
+  }
+}

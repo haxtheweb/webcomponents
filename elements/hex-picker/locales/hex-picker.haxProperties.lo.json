@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ຕົວເລືອກ Hex",
+    "description": "ຕົວເລືອກສີລະຫັດ Hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ຄ່າ",
+        "description": "ຄ່າ hex ເລີ່ມຕົ້ນ"
+      },
+      {
+        "property": "disabled",
+        "title": "ປິດໃຊ້ງານ",
+        "description": "ປິດໃຊ້ງານຊ່ອງຂໍ້ຄວາມ"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "ການສະແດງຜົນຂະໜາດໃຫຍ່",
+        "description": "ລວມສີໃນການສະແດງຜົນຂະໜາດໃຫຍ່"
+      }
+    ]
+  }
+}

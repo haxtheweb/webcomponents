@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS 视图",
+    "description": "辣后端渲染个 CMS 视图"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "名字",
+        "description": "阿拉 CMS 里向视图个名字"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "显示",
+        "description": "阿拉 CMS 里向搿只视图个显示"
+      }
+    ]
+  }
+}

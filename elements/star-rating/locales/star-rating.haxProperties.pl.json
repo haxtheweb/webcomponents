@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ocena w gwiazdkach",
+    "description": "Widżet wyświetlający ocenę lub przycisk do oceniania."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Wynik",
+        "description": "Bieżąca wartość wyniku."
+      },
+      {
+        "property": "possible",
+        "title": "Możliwe",
+        "description": "Maksymalny możliwy wynik."
+      },
+      {
+        "property": "numStars",
+        "title": "Liczba gwiazdek",
+        "description": "Liczba wyświetlanych gwiazdek."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktywny",
+        "description": "Zezwól użytkownikowi na ustawienie oceny."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Tryb skali rubryki",
+        "description": "Emituj metadane OER Schema RubricScale i RubricLevel (levelOrdinal/levelPoints) dla każdej gwiazdki."
+      }
+    ]
+  }
+}

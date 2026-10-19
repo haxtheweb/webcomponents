@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS ټوکن",
+    "description": "په بیک اینډ کې ښودل شوی CMS ټوکن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ټوکن",
+        "description": "زموږ له CMS څخه ټوکن"
+      }
+    ]
+  }
+}

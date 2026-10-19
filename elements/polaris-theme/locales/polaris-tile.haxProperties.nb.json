@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-flis",
+    "description": "Vis en Polaris-flis med tittel, valgfri støttetekst og valgfri lenke."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Primærtekst",
+        "description": "Hovedtekst på flisen."
+      },
+      {
+        "property": "line2",
+        "title": "Sekundærtekst",
+        "description": "Valgfri støttetekst."
+      },
+      {
+        "property": "type",
+        "title": "Flisstil",
+        "description": "Forhåndsinnstilt visuell stil for flisen.",
+        "options": {
+          "1": "Stil 1",
+          "2": "Stil 2",
+          "3": "Stil 3",
+          "4": "Stil 4",
+          "5": "Stil 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Bakgrunnsbilde",
+        "description": "URL til bakgrunnsbilde som brukes av flisstiler med bilde."
+      },
+      {
+        "property": "link",
+        "title": "Lenke",
+        "description": "Valgfri mål-URL for handlingen på flisen."
+      }
+    ]
+  }
+}

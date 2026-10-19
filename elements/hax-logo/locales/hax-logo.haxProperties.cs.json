@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Slovní umění HAX",
+    "description": "Prvek loga HAX, samozřejmě jako prvek podporující HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Velikost vkládaného loga HAX",
+        "options": {
+          "mini": "Mini",
+          "small": "Malá",
+          "normal": "Normální",
+          "large": "Velká"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Zda převést logo na velká písmena"
+      }
+    ]
+  }
+}

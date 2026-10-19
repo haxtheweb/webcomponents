@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "پوشش برای جاسازی پخش‌کنندهٔ Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "منبع",
+        "description": "پیوند جاسازی یا اشتراک‌گذاری از Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "پوسته",
+        "description": "پوستهٔ رنگ پس‌زمینهٔ پخش‌کننده.",
+        "options": {
+          "": "پیش‌فرض",
+          "0": "سیاه"
+        }
+      },
+      {
+        "property": "size",
+        "title": "اندازه",
+        "description": "اندازهٔ پخش‌کننده.",
+        "options": {
+          "normal": "پیش‌فرض",
+          "compact": "فشرده"
+        }
+      }
+    ]
+  }
+}

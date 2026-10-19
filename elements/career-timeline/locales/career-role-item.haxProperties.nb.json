@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Karriererolle",
+    "description": "En enkelt rolle i en organisasjon"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tittel"
+      },
+      {
+        "property": "startDate",
+        "title": "Startdato"
+      },
+      {
+        "property": "endDate",
+        "title": "Sluttdato (valgfritt)"
+      },
+      {
+        "property": "skills",
+        "title": "Tilknyttede ferdigheter",
+        "description": "Velg +-knappen for å begynne å legge til ferdigheter"
+      }
+    ]
+  }
+}

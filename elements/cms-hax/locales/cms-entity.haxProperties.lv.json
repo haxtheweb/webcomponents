@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS entītija",
+    "description": "CMS entītija, kas atveidota aizmugursistēmā"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tips",
+        "description": "veids no mūsu CMS",
+        "options": {
+          "node": "Mezgls",
+          "user": "Lietotājs",
+          "file": "Fails"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID no mūsu CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Attēlošanas režīms",
+        "description": "attēlošanas režīms no mūsu CMS"
+      }
+    ]
+  }
+}

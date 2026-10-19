@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Dejanje uporabnika",
+    "description": "Sledenje dejanjem uporabnikov in pošiljanje podatkov v shrambe xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Dogodek za sledenje",
+        "description": "Dejanje uporabnika, ki sproži ta dogodek.",
+        "options": {
+          "visibility": "Vidi to",
+          "keydown": "Tukaj pritisne tipko",
+          "click": "Klikne to",
+          "hover": "Premakne miško nad to"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Sledi vsakič",
+        "description": "Privzeto se sledi le prvemu pojavu."
+      }
+    ]
+  }
+}

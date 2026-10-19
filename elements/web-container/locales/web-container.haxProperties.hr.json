@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS spremnik"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Sakrij uređivač",
+        "description": "Sakrij sučelje za uređivanje datoteka."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Sakrij terminal",
+        "description": "Sakrij terminal za programe koji se automatski pokreću."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Sakrij prozor",
+        "description": "Sakrij izlazni prozor za upotrebu samo terminala."
+      },
+      {
+        "slot": "",
+        "title": "Naredbe",
+        "description": "Naredbe (jedna po retku) koje se pokreću prije učitavanja."
+      }
+    ]
+  }
+}

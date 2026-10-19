@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ilaalcha CMS",
+    "description": "Ilaalchota CMS backend irratti agarsiifaman"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Maqaa",
+        "description": "Maqaa ilaalchaa CMS keenya irraa"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Agarsiisa",
+        "description": "Agarsiisa ilaalcha sana keessaa CMS keenya irraa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "গ্রন্থপঞ্জির আইটেম",
+    "description": "গ্রন্থপঞ্জিতে একটি একক সাইটেশন উপস্থাপনকারী আইটেম, যা একাধিক ফরম্যাট ও এক্সপোর্ট অপশন সমর্থন করে।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "ধরন",
+        "description": "সাইটেশনের ধরন",
+        "options": {
+          "web": "ওয়েব",
+          "journal": "জার্নাল",
+          "book": "বই"
+        }
+      },
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "আইটেমের শিরোনাম"
+      },
+      {
+        "property": "authors",
+        "title": "লেখক",
+        "description": "টাইমলাইনের ঘটনাগুলো"
+      },
+      {
+        "property": "publisher",
+        "title": "প্রকাশক",
+        "description": "মূল ওয়েবসাইট"
+      }
+    ]
+  }
+}

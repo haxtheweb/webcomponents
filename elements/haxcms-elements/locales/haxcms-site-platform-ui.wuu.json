@@ -1,0 +1,18 @@
+{
+  "title": "平台功能",
+  "experienceLevel": "经验等级",
+  "cmsFeatures": "CMS 功能",
+  "editorFeatures": "编辑器功能",
+  "blocks": "区块",
+  "filterBlocks": "筛选区块",
+  "requiredTextNote": "有眼文字标签是必需个，一直启用（显示为禁用）。",
+  "download": "下载骨架",
+  "save": "保存",
+  "generating": "正在生成骨架…",
+  "generated": "骨架下载好了",
+  "enabled": "已启用",
+  "feature": "功能",
+  "details": "详情",
+  "featuresWarning": "禁用搿眼选项可能会拿主要个编写搭管理功能去脱。",
+  "largeSiteWarning": "搿只网站页面老多。生成骨架可能要一歇辰光。"
+}

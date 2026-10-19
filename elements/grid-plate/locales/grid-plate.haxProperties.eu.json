@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Zutabe-diseinua",
+    "description": "Antolatu materiala zutabe sinpleetan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Zutabe-diseinua",
+        "description": "Elementu hauek aurkezteko estiloa (pantaila txikietan alda daiteke)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Desgaitu moldagarritasuna",
+        "description": "Markatu laukia zutabeak pantaila handiagoetan mantentzeko, pantaila txikienetan pilatzen diren bitartean"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Elementuen barne-betegarria",
+        "description": "Elementu bakoitzaren barruko betegarria"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Elementuen marjinak",
+        "description": "Elementuen arteko marjina"
+      }
+    ]
+  }
+}

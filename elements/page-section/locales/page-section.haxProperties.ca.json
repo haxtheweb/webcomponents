@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Secció de pàgina",
+    "description": "Contenidor de secció per al contingut de la pàgina i dissenys a pantalla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Tractament de disseny",
+        "description": "Estil predefinit que actualitza la configuració relacionada."
+      },
+      {
+        "property": "image",
+        "title": "Imatge",
+        "description": "Contingut multimèdia de fons de la secció."
+      },
+      {
+        "property": "bg",
+        "title": "Color de fons",
+        "description": "Color de fons quan no hi ha cap imatge."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Botó de desplaçament",
+        "description": "Mostra un botó que desplaça fins a la secció següent."
+      },
+      {
+        "property": "fold",
+        "title": "Mostra el plec",
+        "description": "Mostra un plec visual a la part inferior de la secció."
+      },
+      {
+        "property": "full",
+        "title": "Mida de pantalla completa",
+        "description": "Omple l'alçada de la pantalla de l'usuari."
+      },
+      {
+        "property": "filter",
+        "title": "Aplica un filtre",
+        "description": "Aplica un filtre visual a la imatge de fons."
+      },
+      {
+        "slot": "",
+        "title": "Contingut",
+        "description": "Contingut de la secció."
+      },
+      {
+        "slot": "entice",
+        "title": "Reclam",
+        "description": "Contingut de reclam opcional."
+      },
+      {
+        "slot": "buttons",
+        "title": "Botons",
+        "description": "Grup de botons que es mostra sota el text."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Text de l'àncora",
+        "description": "Etiqueta de l'àncora que es mostra a la navegació."
+      }
+    ]
+  }
+}

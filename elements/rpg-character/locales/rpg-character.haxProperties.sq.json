@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Personazh RPG",
+    "description": "Personazh argëtues nga HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Emri",
+        "description": "Fjala e përdorur për të gjeneruar një personazh të rastësishëm."
+      },
+      {
+        "property": "hat",
+        "title": "Kapela",
+        "description": "Stili i kapelës.",
+        "options": {
+          "none": "Parazgjedhje",
+          "random": "E rastësishme",
+          "bunny": "Lepurush",
+          "cowboy": "Kauboj",
+          "education": "Arsim",
+          "construction": "Ndërtim",
+          "warning": "Paralajmërim",
+          "watermelon": "Shalqi",
+          "coffee": "Kafe",
+          "knight": "Kalorës",
+          "ninja": "Ninxha",
+          "party": "Festë",
+          "error": "Gabim",
+          "edit": "Redaktim"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Gjerësia",
+        "description": "Gjerësia e personazhit në piksela."
+      },
+      {
+        "property": "height",
+        "title": "Lartësia",
+        "description": "Lartësia e personazhit në piksela."
+      },
+      {
+        "property": "fire",
+        "title": "Në flakë?",
+        "description": "Nëse personazhi është në flakë."
+      },
+      {
+        "property": "walking",
+        "title": "Duke ecur?",
+        "description": "Animacioni i ecjes; vrapon kur është në flakë."
+      }
+    ]
+  }
+}

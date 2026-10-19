@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Llista de pics",
+    "description": "Crea una llista de pics."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Estil de pic",
+        "description": "Estil utilitzat per als pics de les llistes no ordenades.",
+        "options": {
+          "": "Per defecte (quadrat)",
+          "list-disc": "Disc",
+          "list-circle": "Cercle",
+          "list-square": "Quadrat"
+        }
+      }
+    ]
+  }
+}

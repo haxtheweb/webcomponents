@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Ösüş halkasy",
+    "description": "Ösüş halkasy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Elementiň ady"
+      },
+      {
+        "property": "desc",
+        "title": "Düşündiriş",
+        "description": "Elýeterli uzyn düşündiriş"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Suratyň çeşmesi",
+        "description": "Halkanyň içindäki suratyň çeşmesi."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Suratyň alternatiw teksti",
+        "description": "Surat üçin alternatiw tekst."
+      },
+      {
+        "property": "animated",
+        "title": "Animasiýaly",
+        "description": "Ilkinji ýüklenende ösüşiň animasiýaly bolmalydygy"
+      },
+      {
+        "property": "complete",
+        "title": "Tamamlandy",
+        "description": "Tamamlanan bahalaryň massiwi."
+      },
+      {
+        "property": "total",
+        "title": "Jemi",
+        "description": "Ähli elementler tamamlananda jemi."
+      },
+      {
+        "property": "startAngle",
+        "title": "Başlangyç burç",
+        "description": "Ösüşiň başlaýan halka burçy"
+      }
+    ]
+  }
+}

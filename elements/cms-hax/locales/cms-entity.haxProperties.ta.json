@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS நிறுவனம்",
+    "description": "backend இல் காட்சிப்படுத்தப்படும் CMS நிறுவனம்"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "வகை",
+        "description": "எங்கள் CMS இலிருந்து வகை",
+        "options": {
+          "node": "Node",
+          "user": "பயனர்",
+          "file": "கோப்பு"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "எங்கள் CMS இலிருந்து id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "காட்சிப் பயன்முறை",
+        "description": "எங்கள் CMS இலிருந்து காட்சிப் பயன்முறை"
+      }
+    ]
+  }
+}

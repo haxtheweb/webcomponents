@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Basic na Larawan",
+    "description": "Basic na image element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Pinagmulan",
+        "description": "URL ng larawan."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt text",
+        "description": "Alternatibong teksto para sa accessibility at SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Taas",
+        "description": "Taas sa pixel. Iwanang blangko para gamitin ang natural na laki."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Paglo-load ng larawan",
+        "description": "Piliin kung kailan maglo-load ang larawan.",
+        "options": {
+          "lazy": "I-load kapag nakikita",
+          "auto": "Awtomatiko"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Mga responsive na source (srcset)",
+        "description": "Ilista ang mga URL ng larawan at mga descriptor (hal. 480w o 2x) para mapili ng browser ang pinakaangkop na laki para sa screen. Naka-store bilang karaniwang srcset attribute."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "အရောင်ခြယ်",
+    "description": "inline စာသားကို အရောင်ခြယ်ရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "စာသား",
+        "description": "အရောင်ခြယ်ထားသော စာသား။"
+      }
+    ]
+  }
+}

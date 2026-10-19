@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Saskaņošanas jautājums",
+    "description": "Vilkšanas un nomešanas uzdevums, kurā uzvednes jāsasaista ar pareizajām atbildēm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Jautājums",
+        "description": "Jautājums lietotājiem. Atzīmējiet nomešanas mērķus, tad uzskaitiet atbildes līdz nākamajam mērķim."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vērtēšanas formāts",
+        "description": "OER Schema: šī vērtējuma formāts (piem., punkti, burts, procenti, izpilde)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mācību mērķis",
+        "description": "OER Schema: ar šo vērtējumu saistītais mācību mērķis."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurss",
+        "description": "OER Schema: kurss, kuram paredzēts šis vērtējums."
+      },
+      {
+        "property": "answers",
+        "title": "Atbildes"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testa nosaukums",
+        "description": "Testa nosaukums, ko izmanto xAPI identifikācijai analītikas sistēmās."
+      }
+    ]
+  }
+}

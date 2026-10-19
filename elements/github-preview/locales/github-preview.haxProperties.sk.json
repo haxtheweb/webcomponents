@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Náhľad GitHub",
+    "description": "Prístupný obrázok s dlhým popisom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizácia",
+        "description": "Strojový názov organizácie GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Repozitár",
+        "description": "Strojový názov repozitára"
+      },
+      {
+        "property": "extended",
+        "title": "Rozšírené zobrazenie",
+        "description": "Zahrnie readme do prvku"
+      }
+    ]
+  }
+}

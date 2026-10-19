@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "حوالہ",
+    "description": "تین پیشکش موڈز والا حوالہ عنصر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "حوالہ دیے گئے کام کا عنوان۔"
+      },
+      {
+        "property": "source",
+        "title": "سورس لنک",
+        "description": "حوالہ دیے گئے کام کا سورس URL۔"
+      },
+      {
+        "property": "date",
+        "title": "رسائی کی تاریخ",
+        "description": "وہ تاریخ جب سورس تک رسائی کی گئی۔"
+      },
+      {
+        "property": "scope",
+        "title": "دائرہ",
+        "description": "حوالہ دینے کے لیے عنصر کا دائرہ۔",
+        "options": {
+          "sibling": "ہم سطح عنصر",
+          "parent": "بالائی عنصر"
+        }
+      },
+      {
+        "property": "license",
+        "title": "لائسنس",
+        "description": "حوالہ دیے گئے کام کا لائسنس۔"
+      },
+      {
+        "property": "creator",
+        "title": "تخلیق کار",
+        "description": "حوالہ دیے گئے کام کا تخلیق کار یا مالک۔"
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema کی قسم",
+        "description": "اس حوالے کے لیے OER Schema کلاس۔ طے شدہ oer:ReferencedMaterial ہے؛ صرف کسی درست OER کلاس سے بدلیں (مثلاً oer:SupportingMaterial)۔"
+      }
+    ]
+  }
+}

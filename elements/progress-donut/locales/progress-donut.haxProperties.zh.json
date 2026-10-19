@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "进度环形图",
+    "description": "进度环形图"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "元素的标题"
+      },
+      {
+        "property": "desc",
+        "title": "描述",
+        "description": "无障碍长描述"
+      },
+      {
+        "property": "imageSrc",
+        "title": "图像来源",
+        "description": "环形图内图片的来源。"
+      },
+      {
+        "property": "imageAlt",
+        "title": "图片替代文本",
+        "description": "图片的替代文本。"
+      },
+      {
+        "property": "animated",
+        "title": "动画",
+        "description": "首次加载时是否播放进度动画"
+      },
+      {
+        "property": "complete",
+        "title": "已完成",
+        "description": "已完成值的数组。"
+      },
+      {
+        "property": "total",
+        "title": "总计",
+        "description": "所有项目都完成时的总数。"
+      },
+      {
+        "property": "startAngle",
+        "title": "起始角度",
+        "description": "进度在环形图上的起始角度"
+      }
+    ]
+  }
+}

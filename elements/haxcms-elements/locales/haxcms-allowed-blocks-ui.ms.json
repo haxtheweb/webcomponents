@@ -1,0 +1,14 @@
+{
+  "title": "Blok",
+  "enabled": "Didayakan",
+  "block": "Blok",
+  "preview": "Pratonton",
+  "filterBlocks": "Tapis blok",
+  "requiredTextNote": "Sesetengah tag teks diperlukan dan sentiasa didayakan (ditunjukkan sebagai dinyahdayakan).",
+  "selectAll": "Pilih semua",
+  "deselectAll": "Nyahpilih semua",
+  "save": "Simpan",
+  "noDescription": "Tiada penerangan tersedia.",
+  "details": "Butiran",
+  "loadingInventory": "Memuatkan inventori blok penuh…"
+}

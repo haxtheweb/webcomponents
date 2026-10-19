@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Upozornenie",
+    "description": "Správa, ktorá upozorňuje čitateľov na konkrétne pokyny."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Názov",
+        "description": "Zadajte názov upozornenia."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Zadajte externú URL."
+      },
+      {
+        "property": "status",
+        "title": "Stav",
+        "description": "Nastavenie stavu zmení farby a ikony tak, aby zodpovedali",
+        "options": {
+          "stop": "Stop",
+          "warning": "Varovanie",
+          "success": "Potvrdenie",
+          "info": "Oznámenie"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Text poznámky",
+        "description": "Text upozornenia."
+      }
+    ]
+  }
+}

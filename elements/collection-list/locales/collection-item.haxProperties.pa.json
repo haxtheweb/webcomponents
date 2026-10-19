@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "ਸੰਗ੍ਰਹਿ ਆਈਟਮ",
+    "description": "ਸੰਗ੍ਰਹਿ ਸੂਚੀ ਅੰਦਰ ਵਰਤਣ ਲਈ ਕਾਰਡ-ਸ਼ੈਲੀ ਆਈਟਮ, ਲਿਖਤ, ਲਿੰਕ ਅਤੇ ਵਿਕਲਪਿਕ ਮੀਡੀਆ ਨਾਲ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "ਲਿੰਕ",
+        "description": "ਇਸ ਕਾਰਡ ਲਈ ਮੰਜ਼ਿਲ URL।"
+      },
+      {
+        "property": "image",
+        "title": "ਚਿੱਤਰ",
+        "description": "ਪਿਛੋਕੜ ਚਿੱਤਰ।"
+      },
+      {
+        "property": "line1",
+        "title": "ਲਾਈਨ 1",
+        "description": "ਲਿਖਤ ਦੀ ਪਹਿਲੀ ਲਾਈਨ।"
+      },
+      {
+        "property": "line2",
+        "title": "ਲਾਈਨ 2",
+        "description": "ਲਿਖਤ ਦੀ ਦੂਜੀ ਲਾਈਨ।"
+      },
+      {
+        "property": "line3",
+        "title": "ਲਾਈਨ 3",
+        "description": "ਲਿਖਤ ਦੀ ਤੀਜੀ ਲਾਈਨ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ਆਈਕਨ",
+        "description": "ਕਾਰਡ ਨੂੰ ਦਰਸਾਉਣ ਵਾਲਾ ਆਈਕਨ।"
+      },
+      {
+        "property": "saturate",
+        "title": "ਸੰਤ੍ਰਿਪਤਾ ਪ੍ਰਭਾਵ",
+        "description": "ਉਪਭੋਗਤਾ ਦੇ ਫੋਕਸ ਕਰਨ 'ਤੇ ਚਿੱਤਰ ਦੀ ਸੰਤ੍ਰਿਪਤਾ ਬਦਲੋ।"
+      },
+      {
+        "property": "tags",
+        "title": "ਟੈਗ",
+        "description": "ਕਾਮਿਆਂ ਨਾਲ ਵੱਖ ਕੀਤੀ ਟੈਗਾਂ ਦੀ ਸੂਚੀ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਰੰਗ",
+        "description": "ਟੈਗਾਂ ਲਈ ਵਰਤਿਆ ਰੰਗ।"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "ਲਿੰਕ ਦਾ ਵਰਣਨ ਕਰਨ ਵਾਲੀ ਵਿਕਲਪਿਕ ਲਿਖਤ।"
+      }
+    ]
+  }
+}

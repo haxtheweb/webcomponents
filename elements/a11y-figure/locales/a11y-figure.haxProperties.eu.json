@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Irudi deskribatzailea",
+    "description": "Deskribapen luzea duen irudi irisgarria"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Irudia"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Testu alternatiboa"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Irudiaren epigrafea",
+        "description": "Beti ikusgai dagoen irudiaren epigrafe-testua."
+      },
+      {
+        "slot": "details",
+        "title": "Deskribapena",
+        "description": "Ezkutatu edo erakuts daitekeen irudiaren deskribapen xehatua"
+      },
+      {
+        "slot": "summary",
+        "title": "Deskribapen-botoia",
+        "description": "Deskribapen-testua erakusten/ezkutatzen duen botoiaren lehenetsia, adib. \"informazioa\", \"metadatuak\", etab."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Xehetasunak irekita daudeneko aukerako laburpen-testua"
+      },
+      {
+        "property": "closeText",
+        "title": "Xehetasunak itxita daudeneko aukerako laburpen-testua"
+      }
+    ]
+  }
+}

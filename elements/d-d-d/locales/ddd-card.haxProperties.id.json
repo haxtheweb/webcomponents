@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Kartu",
+    "description": "Komponen kartu yang ditata dengan sistem desain DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Gambar",
+        "description": "Gambar opsional."
+      },
+      {
+        "property": "alt",
+        "title": "Alt gambar",
+        "description": "Teks alternatif yang mendeskripsikan gambar."
+      },
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul kartu."
+      },
+      {
+        "slot": "",
+        "title": "Konten",
+        "description": "Area konten kartu."
+      },
+      {
+        "property": "href",
+        "title": "Tautan",
+        "description": "URL tautan tombol."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label tombol."
+      },
+      {
+        "property": "noArrow",
+        "title": "Tanpa Panah",
+        "description": "Sembunyikan panah tombol."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Tautan: target",
+        "description": "Tempat membuka tautan.",
+        "options": {
+          "": "Jendela yang sama",
+          "_blank": "Jendela baru - _blank",
+          "_top": "Jendela teratas - _top",
+          "_parent": "Jendela induk - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Tautan: rel",
+        "description": "Hubungan antara sumber daya tertaut dan dokumen saat ini."
+      }
+    ]
+  }
+}

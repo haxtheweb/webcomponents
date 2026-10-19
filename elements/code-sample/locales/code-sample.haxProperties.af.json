@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kodevoorbeeld",
+    "description": "'n Voorbeeld van kode wat in die bladsy uitgelig word"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kode-uitligting",
+        "description": "Sintaksuitligting om op die kode-area toe te pas",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-data",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Kopieer-na-knipbord-knoppie",
+        "description": "knoppie regs bo wat 'kopieer na knipbord' sê"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Begin van uitligting",
+        "description": "Lynnommer om uitligting te begin"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Einde van uitligting",
+        "description": "Lyn om uitligting op te eindig"
+      }
+    ]
+  }
+}

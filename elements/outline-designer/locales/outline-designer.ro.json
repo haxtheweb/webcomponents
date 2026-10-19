@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Selectați destinația",
+  "importContentUnderThisPage": "Importă conținut sub această pagină",
+  "importThisContent": "Importă acest conținut",
+  "thisPage": "această pagină",
+  "newPage": "Pagină nouă",
+  "copyOf": "Copie a",
+  "pageActions": "Acțiuni pagină",
+  "editTitle": "Editează titlul",
+  "lock": "Blochează",
+  "unlock": "Deblochează",
+  "moveUp": "Mută în sus",
+  "moveDown": "Mută în jos",
+  "makeChild": "Transformă în copil",
+  "moveToParentLevel": "Mută la nivelul părinte",
+  "addPage": "Adaugă pagină",
+  "duplicate": "Duplică",
+  "delete": "Șterge",
+  "restore": "Restaurează",
+  "goToPage": "Mergi la pagină"
+}

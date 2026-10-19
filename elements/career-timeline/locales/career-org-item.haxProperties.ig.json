@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ihe ọrụ",
+    "description": "Otu nzukọ na ọrụ ndị jikọtara ya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Aha nzukọ"
+      },
+      {
+        "property": "location",
+        "title": "Ebe"
+      },
+      {
+        "property": "source",
+        "title": "Isi mmalite"
+      }
+    ]
+  }
+}

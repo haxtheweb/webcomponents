@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Daħħal kummenti ta' Disqus f'paġna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Isem qasir",
+        "description": "L-isem qasir tas-sit, li jiddetermina l-host tal-iskript ta' Disqus."
+      },
+      {
+        "property": "pageURL",
+        "title": "URL tal-paġna",
+        "description": "Il-URL tal-paġna li magħha hija marbuta l-kategorija tal-kummenti."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Identifikatur tal-paġna",
+        "description": "L-identifikatur uniku għall-kategorija tal-kummenti tal-paġna."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Titlu tal-paġna",
+        "description": "It-titlu tal-paġna li magħha hija marbuta l-kategorija tal-kummenti."
+      },
+      {
+        "property": "loadingText",
+        "title": "Test tat-tagħbija",
+        "description": "Test imħabbar waqt li l-kummenti qed jitgħabbew."
+      },
+      {
+        "property": "lang",
+        "title": "Lingwa",
+        "description": "Kodiċi tal-lingwa għall-interfaċċja ta' Disqus, eż. en."
+      }
+    ]
+  }
+}

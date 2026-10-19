@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "છબી ગૅલેરી",
+    "description": "છબીઓને ગ્રિડ, મેસનરી અથવા સ્લાઇડશો લેઆઉટમાં રજૂ કરતી ગૅલેરી."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "પ્રદર્શન મોડ",
+        "description": "ગૅલેરીમાં છબીઓ કેવી રીતે રજૂ કરવી.",
+        "options": {
+          "grid": "ગ્રિડ",
+          "masonry": "મેસનરી",
+          "gallery": "ગૅલેરી"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "સક્રિય ક્રમાંક",
+        "description": "ગૅલેરી મોડમાં શરૂઆત કરવાની સક્રિય છબીનો ક્રમાંક."
+      }
+    ]
+  }
+}

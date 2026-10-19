@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity-Player",
+    "description": "Unity-WebGL-Player."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Zil",
+        "description": "Pfad zum Build vum Spill."
+      },
+      {
+        "property": "compression",
+        "title": "Kompressiounsmethod",
+        "description": "Fichiersextensioun vun der Kompressioun fir d'Spillressourcen."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Streaming-URL",
+        "description": "URL vun de Streaming-Ressourcen."
+      },
+      {
+        "property": "companyname",
+        "title": "Firmennumm",
+        "description": "Firmennumm."
+      },
+      {
+        "property": "productname",
+        "title": "Produitnumm",
+        "description": "Titel vum Spill."
+      },
+      {
+        "property": "productversion",
+        "title": "Produitversioun",
+        "description": "Release-Versioun."
+      },
+      {
+        "property": "width",
+        "title": "Breet vum Canvas",
+        "description": "CSS-Breet vum Canvas (zum Beispill px oder em)."
+      },
+      {
+        "property": "height",
+        "title": "Héicht vum Canvas",
+        "description": "CSS-Héicht vum Canvas (zum Beispill px oder em)."
+      },
+      {
+        "property": "background",
+        "title": "Hannergrond vum Canvas",
+        "description": "CSS-Hannergrond vum Canvas."
+      }
+    ]
+  }
+}

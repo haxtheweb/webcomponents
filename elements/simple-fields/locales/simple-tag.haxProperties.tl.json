@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Pill",
+    "description": "Isang compact na label na hugis-pill na may opsyonal na accent na kulay, button sa pagkansela, o toggle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Label",
+        "description": "Tekstong ipinapakita sa loob ng pill."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na kulay",
+        "description": "Pangalan ng SimpleColors accent para sa background ng pill.",
+        "options": {
+          "": "-- default --",
+          "red": "Pula",
+          "pink": "Rosas",
+          "purple": "Lila",
+          "deep-purple": "Malalim na Lila",
+          "indigo": "Indigo",
+          "blue": "Asul",
+          "light-blue": "Mapusyaw na Asul",
+          "cyan": "Cyan",
+          "teal": "Teal",
+          "green": "Berde",
+          "light-green": "Mapusyaw na Berde",
+          "lime": "Lime",
+          "yellow": "Dilaw",
+          "amber": "Amber",
+          "orange": "Kahel",
+          "deep-orange": "Malalim na Kahel",
+          "brown": "Kayumanggi",
+          "blue-grey": "Asul na Abo",
+          "grey": "Abo"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Awtomatikong accent na kulay",
+        "description": "Awtomatikong kunin ang accent na kulay mula sa teksto ng label."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Button sa pagkansela",
+        "description": "Magpakita ng icon button na pang-alis/pagkansela sa loob ng pill."
+      },
+      {
+        "property": "readonly",
+        "title": "Read only",
+        "description": "Itago ang button sa pagkansela para pang-display lamang ang pill."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Nagto-toggle",
+        "description": "Gawing nagto-toggle on/off ang pill kapag na-click ang button."
+      },
+      {
+        "property": "toggled",
+        "title": "Naka-toggle",
+        "description": "Kung kasalukuyang naka-toggle on ang pill."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Icon kapag naka-toggle",
+        "description": "Icon na ipapakita kapag naka-toggle on ang pill."
+      },
+      {
+        "property": "disabled",
+        "title": "Naka-disable",
+        "description": "I-disable ang interaksyon sa pill."
+      }
+    ]
+  }
+}

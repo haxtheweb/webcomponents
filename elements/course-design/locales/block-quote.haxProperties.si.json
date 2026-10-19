@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "උපුටා දැක්වීම් කොටස",
+    "description": "හැඩගැන්වූ උපුටා දැක්වීම් කොටසක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "මූලාශ්‍ර දැක්වීම",
+        "description": "මූලාශ්‍ර දැක්වීමේ පෙළ."
+      },
+      {
+        "property": "alt",
+        "title": "විකල්ප පෙළ",
+        "description": "රූපය සඳහා විකල්ප පෙළ."
+      },
+      {
+        "property": "image",
+        "title": "රූපය",
+        "description": "උපුටා දැක්වීම සමඟ පෙන්වන රූපය."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS दृश्य",
+    "description": "ब्याकएन्डमा रेन्डर गरिएका CMS दृश्यहरू"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "नाम",
+        "description": "हाम्रो CMS बाट दृश्यको नाम"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "प्रदर्शन",
+        "description": "हाम्रो CMS को त्यस दृश्यभित्रको प्रदर्शन"
+      }
+    ]
+  }
+}

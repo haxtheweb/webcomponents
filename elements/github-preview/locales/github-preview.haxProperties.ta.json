@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github முன்னோட்டம்",
+    "description": "நீண்ட விளக்கத்துடன் அணுகக்கூடிய படம்"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "நிறுவனம்",
+        "description": "Github நிறுவன இயந்திரப் பெயர்"
+      },
+      {
+        "property": "repo",
+        "title": "களஞ்சியம்",
+        "description": "களஞ்சிய இயந்திரப் பெயர்"
+      },
+      {
+        "property": "extended",
+        "title": "விரிவாக்கப்பட்ட காட்சி",
+        "description": "உறுப்பில் readme ஐச் சேர்க்கிறது"
+      }
+    ]
+  }
+}

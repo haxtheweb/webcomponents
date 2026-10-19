@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS ਕੰਟੇਨਰ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "ਸੰਪਾਦਕ ਲੁਕਾਓ",
+        "description": "ਫ਼ਾਈਲ ਸੰਪਾਦਨ ਇੰਟਰਫੇਸ ਲੁਕਾਓ।"
+      },
+      {
+        "property": "hideTerminal",
+        "title": "ਟਰਮੀਨਲ ਲੁਕਾਓ",
+        "description": "ਆਪਣੇ-ਆਪ ਚੱਲਣ ਵਾਲੇ ਪ੍ਰੋਗਰਾਮਾਂ ਲਈ ਟਰਮੀਨਲ ਲੁਕਾਓ।"
+      },
+      {
+        "property": "hideWindow",
+        "title": "ਵਿੰਡੋ ਲੁਕਾਓ",
+        "description": "ਸਿਰਫ਼-ਟਰਮੀਨਲ ਵਰਤੋਂ ਲਈ ਆਉਟਪੁੱਟ ਵਿੰਡੋ ਲੁਕਾਓ।"
+      },
+      {
+        "slot": "",
+        "title": "ਕਮਾਂਡਾਂ",
+        "description": "ਲੋਡ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਚਲਾਉਣ ਲਈ ਕਮਾਂਡਾਂ (ਹਰ ਲਾਈਨ 'ਤੇ ਇੱਕ)।"
+      }
+    ]
+  }
+}

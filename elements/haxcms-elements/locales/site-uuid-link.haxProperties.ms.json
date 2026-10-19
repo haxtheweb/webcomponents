@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Pautan HAX",
+    "description": "Pautan ke sumber tertentu dalam laman yang sedang anda usahakan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item untuk dipaparkan bagi data pautan / tajuk"
+      }
+    ]
+  }
+}

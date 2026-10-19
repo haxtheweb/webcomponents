@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-vido",
+    "description": "CMS-vidoj bildigitaj ĉe la backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Nomo",
+        "description": "Nomo de la vido el nia CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Montrado",
+        "description": "Montrado ene de tiu vido el nia CMS"
+      }
+    ]
+  }
+}

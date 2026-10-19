@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Skammstöfun",
+    "description": "Skammstöfun með verkfæraábendingu sem sýnir fullt heiti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Texti",
+        "description": "Sýnilegur texti skammstöfunar."
+      },
+      {
+        "attribute": "title",
+        "title": "Orð",
+        "description": "Fullt heiti sem birtist við yfirsvif."
+      }
+    ]
+  }
+}

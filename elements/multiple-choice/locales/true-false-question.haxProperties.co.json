@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Dumanda Veru / Falsu",
+    "description": "Dumanda veru o falsu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Dumanda",
+        "description": "Dumanda à a quale l'utilizatori devenu risponde."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Risposta ghjusta"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome di u quiz",
+        "description": "Nome di u quiz trasmessu per identificà st'elementu in l'ambienti basati nant'à xAPI"
+      }
+    ]
+  }
+}

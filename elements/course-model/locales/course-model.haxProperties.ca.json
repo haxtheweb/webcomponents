@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model de curs",
+    "description": "Disseny interactiu per a conceptes del curs amb detalls, animació i comprovacions de coneixements."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "títol"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Àrea d'informació"
+      },
+      {
+        "title": "Àrea de detalls"
+      },
+      {
+        "title": "Àrea d'animació"
+      },
+      {
+        "title": "Àrea de comprovació de coneixements"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Àrea del logotip"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Kaayyoo Misooma Itti Fufiinsa Qabu Mootummoota Gamtoomanii."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Kaayyoo",
+        "description": "Lakkoofsa UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Halluu qofa",
+        "description": "Halluu kaayyichaa qofa agarsiisi."
+      }
+    ]
+  }
+}

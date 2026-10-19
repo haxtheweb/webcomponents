@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-karakter",
+    "description": "Prettige karakter van HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Naam",
+        "description": "Woord gebruik om 'n ewekansige karakter te genereer."
+      },
+      {
+        "property": "hat",
+        "title": "Hoed",
+        "description": "Hoedstyl.",
+        "options": {
+          "none": "Standaard",
+          "random": "Ewekansig",
+          "bunny": "Haas",
+          "cowboy": "Beeswagter",
+          "education": "Onderwys",
+          "construction": "Konstruksie",
+          "warning": "Waarskuwing",
+          "watermelon": "Waatlemoen",
+          "coffee": "Koffie",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Partytjie",
+          "error": "Fout",
+          "edit": "Wysig"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Karakterbreedte in pixels."
+      },
+      {
+        "property": "height",
+        "title": "Hoogte",
+        "description": "Karakterhoogte in pixels."
+      },
+      {
+        "property": "fire",
+        "title": "Aan die brand?",
+        "description": "Of die karakter aan die brand is."
+      },
+      {
+        "property": "walking",
+        "title": "Stap?",
+        "description": "Stapanimasie; loop wanneer aan die brand."
+      }
+    ]
+  }
+}

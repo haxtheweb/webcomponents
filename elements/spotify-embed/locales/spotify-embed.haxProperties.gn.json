@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify mbopu'aha moinge ryru."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ypykue",
+        "description": "Moinge térã ñemoherakuã joajuha Spotify-gui."
+      },
+      {
+        "property": "theme",
+        "title": "Ñemohenda",
+        "description": "Hapykuegua sa'y ñemohenda mbopu'ahápe g̃uarã.",
+        "options": {
+          "": "Ijypykuéva",
+          "0": "Hũ"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Tuichakue",
+        "description": "Mbopu'aha tuichakue.",
+        "options": {
+          "normal": "Ijypykuéva",
+          "compact": "Michĩmbýva"
+        }
+      }
+    ]
+  }
+}

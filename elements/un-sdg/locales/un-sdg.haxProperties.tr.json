@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Birleşmiş Milletler Sürdürülebilir Kalkınma Amacı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Amaç",
+        "description": "UN SDG numarası."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Yalnızca renk",
+        "description": "Yalnızca amacın rengini göster."
+      }
+    ]
+  }
+}

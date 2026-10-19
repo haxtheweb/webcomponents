@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Personatge de RPG",
+    "description": "Personatge divertit d'HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Nom",
+        "description": "Paraula utilitzada per generar un personatge aleatori."
+      },
+      {
+        "property": "hat",
+        "title": "Barret",
+        "description": "Estil del barret.",
+        "options": {
+          "none": "Per defecte",
+          "random": "Aleatori",
+          "bunny": "Conill",
+          "cowboy": "Cowboy",
+          "education": "Educació",
+          "construction": "Obres",
+          "warning": "Advertència",
+          "watermelon": "Síndria",
+          "coffee": "Cafè",
+          "knight": "Cavaller",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "error": "Error",
+          "edit": "Edició"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Amplada",
+        "description": "Amplada del personatge en píxels."
+      },
+      {
+        "property": "height",
+        "title": "Alçada",
+        "description": "Alçada del personatge en píxels."
+      },
+      {
+        "property": "fire",
+        "title": "En flames?",
+        "description": "Si el personatge està en flames."
+      },
+      {
+        "property": "walking",
+        "title": "Caminant?",
+        "description": "Animació de caminar; corre quan està en flames."
+      }
+    ]
+  }
+}

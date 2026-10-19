@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Kisanduku cha NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Ficha kihariri",
+        "description": "Ficha kiolesura cha kuhariri faili."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Ficha terminali",
+        "description": "Ficha terminali kwa programu zinazojiendesha zenyewe."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Ficha dirisha",
+        "description": "Ficha dirisha la matokeo kwa matumizi ya terminali pekee."
+      },
+      {
+        "slot": "",
+        "title": "Amri",
+        "description": "Amri (moja kwa kila mstari) za kuendesha kabla ya kupakia."
+      }
+    ]
+  }
+}

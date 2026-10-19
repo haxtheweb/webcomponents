@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Isiokwu dị",
+    "description": "Gosi isiokwu HAXcms dị na ngbanwe nlele ndụ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Ọnọdụ nlele",
+        "description": "Họrọ otu esi egosi isiokwu",
+        "options": {
+          "gallery": "Ebe ngosi foto",
+          "table": "Tebụl"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Gosi nkọwa",
+        "description": "Gosi nkọwa isiokwu na ozi ndị ọzọ"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Gosi isiokwu ezoro ezo na nke ochie",
+        "description": "Gosi isiokwu ezoro ezo, nke ochie, na nke jọrọ njọ na mgbakwunye na ndabere dashboard"
+      },
+      {
+        "property": "columns",
+        "title": "Kọlụm (Gallery)",
+        "description": "Ọnụọgụ kọlụm na nlele gallery"
+      }
+    ]
+  }
+}

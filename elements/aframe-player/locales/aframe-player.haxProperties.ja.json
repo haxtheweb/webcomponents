@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3Dプレーヤー",
+    "description": "3Dファイル / 拡張現実プレーヤー。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ソース",
+        "description": "このARファイルのURL。"
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR内の要素のX位置。"
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR内の要素のY位置。"
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR内の要素のZ位置。"
+      },
+      {
+        "property": "skyColor",
+        "title": "空の色",
+        "description": "シーン内の空の色を選択します。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Waraabbii Suuraa Qabu",
+    "description": "Waraabbii miidhagfame suuraa filannoo qabu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Suuraa",
+        "description": "Ragaa sanatti suuraa dabali."
+      },
+      {
+        "property": "name",
+        "title": "Maqaa Guutuu",
+        "description": "Maqaa nama ragaa kennu."
+      },
+      {
+        "property": "position",
+        "title": "Gahee ykn Mata-duree Hojii",
+        "description": "Gahee ykn mata-duree hojii namichaa."
+      },
+      {
+        "slot": "",
+        "title": "Waraabbii",
+        "description": "Waraabbii barreessaa ragaa irraa."
+      }
+    ]
+  }
+}

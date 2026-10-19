@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Tilgjengelige temaer",
+    "description": "Vis tilgjengelige HAXcms-temaer med direkte forhåndsvisning ved bytte"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Visningsmodus",
+        "description": "Velg hvordan temaene skal vises",
+        "options": {
+          "gallery": "Galleri",
+          "table": "Tabell"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Vis detaljer",
+        "description": "Vis temabeskrivelser og tilleggsinformasjon"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Vis skjulte og eldre temaer",
+        "description": "Vis skjulte, eldre og forferdelige temaer i tillegg til standardene i oversikten"
+      },
+      {
+        "property": "columns",
+        "title": "Kolonner (galleri)",
+        "description": "Antall kolonner i gallerivisning"
+      }
+    ]
+  }
+}

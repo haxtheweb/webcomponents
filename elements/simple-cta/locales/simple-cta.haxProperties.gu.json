@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "કાર્યવાહી માટે આહ્વાન",
+    "description": "કાર્યવાહી કરવા માટે લિંક સાથેનું સાદું બટન."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "લેબલ",
+        "description": "લિંક લેબલ"
+      },
+      {
+        "property": "link",
+        "title": "લિંક",
+        "description": "કોઈપણ સંસાધનની લિંક દાખલ કરો"
+      },
+      {
+        "property": "hideIcon",
+        "title": "આઇકન છુપાવો",
+        "description": "ટેક્સ્ટને ઉભારવા માટે વપરાતો આઇકન છુપાવો"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "આઇકન",
+        "description": "ક્રિયા લિંક આઇકન"
+      }
+    ]
+  }
+}

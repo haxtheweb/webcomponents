@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV جدول",
+    "description": "یہ CSV فائل سے جدول بنا سکتا ہے، چاہے وہ کہیں بھی موجود ہو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "ماخذ",
+        "description": "اس CSV فائل کا URL۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "بننے والے جدول کا عنوان۔"
+      },
+      {
+        "property": "description",
+        "title": "تفصیل",
+        "description": "جدول کے ڈیٹا تک بہتر رسائی کے لیے مزید تفصیلی وضاحت۔"
+      }
+    ]
+  }
+}

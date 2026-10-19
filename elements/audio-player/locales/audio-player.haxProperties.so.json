@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Cod",
+    "description": "Tani waxay fiidiyow u soo bandhigi kartaa si aad loo heli karo iyadoon loo eegin isha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Isha",
+        "description": "URL-ka warbaahintan."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Cinwaan",
+        "description": "Cinwaan fudud oo fiidiyowga hoostiisa ah"
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka xoojinta",
+        "description": "Dooro midabka xoojinta ee ciyaaraha."
+      },
+      {
+        "property": "track",
+        "title": "Qoraal-hoosaadyo xidhan",
+        "description": "URL-ka faylka qoraal-hoosaadyada."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Sawirka yar",
+        "description": "Ikhtiyaari. URL-ka sawirka yar/boodhka."
+      },
+      {
+        "property": "learningMode",
+        "title": "Daar habka waxbarashada",
+        "description": "Wuxuu damiyaa hor-u-socodsiinta degdegga ah iyo dib-u-celinta."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Ka saar badhanka ka fur YouTube",
+        "description": "Wuxuu ka saaraa badhanka fiidiyowga lagu furo YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Ma ku daraysaa xiriir wadaag?",
+        "description": "Wuxuu bixiyaa xiriir lagu wadaago fiidiyowga."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Wuxuu muujiyaa in la isticmaalayo CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Oggolow ciyaarista gadaasha",
+        "description": "Fiidiyowyadu si toos ah ayay u hakadaan / u ciyaaraan marka tab-ku diiradda lumiyo; tani waxay u oggolaanaysaa fiidiyowga inuu ciyaaro iyadoon tab-ku diiradda lahayn"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Naqshad mugdi ah oo qoraalka",
+        "description": "Daar naqshadda mugdiga ee qoraalka."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Dami Isdhexgalka",
+        "description": "Dami habka isdhexgalka ee ka dhiga qoraalka mid la gujin karo."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Qari shaabadaha waqtiga",
+        "description": "Qari shaabadaha waqtiga ee qoraalka."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Qari Qoraalka",
+        "description": "Qari qoraalka si caadi ah."
+      },
+      {
+        "property": "lang",
+        "title": "Luuqad",
+        "description": "Luqadda warbaahinta."
+      }
+    ]
+  }
+}

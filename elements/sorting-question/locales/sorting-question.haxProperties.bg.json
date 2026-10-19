@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Въпрос за подреждане",
+    "description": "Подредете елементите в правилния ред."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Въпрос",
+        "description": "Заглавие на въпроса."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат на оценяване",
+        "description": "OER Schema: формат на оценяване за това задание (напр. точки, буква, процент, изпълнение)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Учебна цел",
+        "description": "OER Schema: учебна цел, свързана с това задание."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, за който е предназначено това задание."
+      },
+      {
+        "property": "answers",
+        "title": "Отговори",
+        "description": "Редът на отговорите определя правилната последователност."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Име на теста",
+        "description": "Име на теста за идентификация чрез xAPI в системи за анализ."
+      }
+    ]
+  }
+}

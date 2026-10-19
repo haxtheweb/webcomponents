@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "قائمة نقطية",
+    "description": "إنشاء قائمة نقطية."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "نمط النقاط",
+        "description": "النمط المستخدم لنقاط القائمة غير المرتبة.",
+        "options": {
+          "": "افتراضي (مربع)",
+          "list-disc": "قرص",
+          "list-circle": "دائرة",
+          "list-square": "مربع"
+        }
+      }
+    ]
+  }
+}

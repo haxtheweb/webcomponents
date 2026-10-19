@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "มุมมอง CMS",
+    "description": "มุมมอง CMS ที่แสดงผลบนแบ็กเอนด์"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "ชื่อ",
+        "description": "ชื่อของมุมมองจาก CMS ของเรา"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "การแสดงผล",
+        "description": "การแสดงผลภายในมุมมองนั้นจาก CMS ของเรา"
+      }
+    ]
+  }
+}

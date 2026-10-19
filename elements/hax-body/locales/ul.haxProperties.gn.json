@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Tysýi kyta reheve",
+    "description": "Emoheñói tysýi kyta reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Kyta reko",
+        "description": "Reko ojepurúva tysýi ñemohenda'ỹre kytápe g̃uarã.",
+        "options": {
+          "": "Ypyguáva (irundyjoja)",
+          "list-disc": "Apu'a henyhẽva",
+          "list-circle": "Apu'a",
+          "list-square": "Irundyjoja"
+        }
+      }
+    ]
+  }
+}

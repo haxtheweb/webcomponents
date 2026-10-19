@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Визуализатори MIDI",
+    "description": "MIDI-ро дар контекст бо визуализатсия пахш кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Манбаъ",
+        "description": "URL-и файл барои пахш."
+      },
+      {
+        "property": "visualizer",
+        "title": "Визуализатсия",
+        "description": "Услуби визуализатсия барои файли мусиқӣ.",
+        "options": {
+          "staff": "Нотахат",
+          "piano-roll": "Ролики пианино",
+          "waterfall": "Пианино + шаршара"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Пинҳон кардани шаршара",
+        "description": "Нотаҳои шаршараро дар визуализатсияи пианино пинҳон кунед."
+      }
+    ]
+  }
+}

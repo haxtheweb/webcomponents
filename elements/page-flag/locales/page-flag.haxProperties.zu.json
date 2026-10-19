@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ifulegi lekhasi",
+    "description": "Inothi lokuhlela labalobi bekhasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala wokugcizelela wefulegi lekhasi."
+      },
+      {
+        "property": "label",
+        "title": "Ilebula",
+        "description": "Umbhalo welebula wefulegi lekhasi."
+      }
+    ]
+  }
+}

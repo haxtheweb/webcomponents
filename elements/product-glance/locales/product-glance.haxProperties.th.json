@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ภาพรวมผลิตภัณฑ์",
+    "description": "บล็อกภาพรวมผลิตภัณฑ์แบบย่อ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ไอคอน",
+        "description": "ไอคอนที่แสดงถึงแนวคิด"
+      },
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "แนวคิดหลักแบบเห็นได้ทันที"
+      },
+      {
+        "property": "subtitle",
+        "title": "ชื่อรอง",
+        "description": "รายละเอียดเพิ่มเติม"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "สีเน้นสำหรับไอคอน"
+      }
+    ]
+  }
+}

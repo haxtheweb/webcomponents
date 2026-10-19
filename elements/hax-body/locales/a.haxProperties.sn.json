@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Chinongedzo chakareruka",
+    "description": "Chinhu chechinongedzo chakareruka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Chinongedzo",
+        "description": "URL yekwaunoenda."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Mavara",
+        "description": "Mavara echinongedzo anooneka."
+      },
+      {
+        "attribute": "target",
+        "title": "Chinangwa",
+        "description": "Pekuvhurira chinongedzo.",
+        "options": {
+          "": "Hwindo rimwe chete",
+          "_blank": "Hwindo idzva - _blank",
+          "_top": "Hwindo repamusoro - _top",
+          "_parent": "Hwindo remubereki - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Mavara ezita",
+        "description": "Zita rezano rekuwanikwa nevose neSEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Ukama nekwaunoenda (chengetedzo/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

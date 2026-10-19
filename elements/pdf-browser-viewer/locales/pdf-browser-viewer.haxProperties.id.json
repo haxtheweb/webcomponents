@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Penampil PDF Browser",
+    "description": "Sematkan file PDF secara sebaris dengan tata letak kartu dan tombol unduh opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Lokasi file PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Judul",
+        "description": "Teks judul kartu."
+      },
+      {
+        "property": "card",
+        "title": "Tata letak kartu",
+        "description": "Tampilkan PDF dalam kartu dengan tombol unduh."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Label unduh",
+        "description": "Label untuk tombol unduh."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Pesan tidak didukung",
+        "description": "Pesan saat browser tidak dapat menampilkan file PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Pesan tautan tidak didukung",
+        "description": "Teks tautan saat browser tidak dapat menampilkan file PDF."
+      },
+      {
+        "property": "width",
+        "title": "Lebar",
+        "description": "Lebar penampil PDF."
+      },
+      {
+        "property": "height",
+        "title": "Tinggi",
+        "description": "Tinggi penampil PDF."
+      }
+    ]
+  }
+}

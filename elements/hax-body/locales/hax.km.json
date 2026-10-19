@@ -122,5 +122,21 @@
   "recent": "ថ្មីៗ",
   "popular": "ពេញនិយម",
   "copiedToClipboard": "បានចម្លងទៅក្ដារតម្បៀតខ្ទាស់",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "ព័ត៌មានរូបភាព",
+  "imageActions": "សកម្មភាពរូបភាព",
+  "imageRecommendations": "អនុសាសន៍រូបភាព",
+  "compressImage": "បង្រួមរូបភាព",
+  "resizeTo": "ប្ដូរទំហំទៅ",
+  "created": "បានបង្កើត",
+  "size": "ទំហំ",
+  "dimensions": "វិមាត្រ",
+  "type": "ប្រភេទ",
+  "done": "រួចរាល់",
+  "noFileUuid": "មិនមានឯកសារយោង; សូមផ្ទុកឡើងម្ដងទៀតដើម្បីបើកសកម្មភាព។",
+  "fileOpsUnavailable": "ប្រតិបត្តិការឯកសារមិនមានសម្រាប់គេហទំព័រនេះទេ។",
+  "fileOpFailed": "ប្រតិបត្តិការឯកសារបានបរាជ័យ។",
+  "fileExtensionNotAllowed": "វាលនេះទទួលយកតែប្រភេទឯកសារខាងក្រោម៖",
+  "fileTypeNotAllowed": "វាលនេះទទួលយកតែប្រភេទមេឌៀខាងក្រោម៖",
+  "transformFailed": "ការបំប្លែងក្រោយផ្ទុកឡើងបានបរាជ័យ; ឯកសារដើមត្រូវបានរក្សាទុក។"
 }

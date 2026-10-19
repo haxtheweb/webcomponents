@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P-umgjörð til að hlaða og birta .h5p-skrár"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe-ívefjunarkóði"
+      }
+    ]
+  }
+}

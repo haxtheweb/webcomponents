@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Liiska ciyaarista",
+    "description": "Ku muuji nooc kasta oo nuxur ah liis ciyaaris."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Isha",
+        "description": "Nuxurka ka muuqda liiska ciyaarista."
+      },
+      {
+        "property": "edit",
+        "title": "Habka tifaftirka",
+        "description": "U beddel habka tifaftirka iyo habka horudhaca ee liiska ciyaarista."
+      },
+      {
+        "property": "navigation",
+        "title": "Socod",
+        "description": "Muuji badhamada hore iyo gadaal u socodka."
+      },
+      {
+        "property": "pagination",
+        "title": "Bog-bogeyn",
+        "description": "Muuji dhibcaha bog-bogeynta."
+      },
+      {
+        "property": "orientation",
+        "title": "Jihada",
+        "description": "Jihada silaydhyada.",
+        "options": {
+          "horizontal": "Jiif",
+          "vertical": "Taagan"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Silaydhka laga bilaabayo",
+        "description": "Tusaha silaydhka diiradda la saarayo bilowga."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Saamiga Muuqaalka",
+        "description": "Saamiga muuqaalka silaydhyada.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

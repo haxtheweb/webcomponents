@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "სურათის სექცია",
+    "description": "სრული სიგანის სურათი, რომელიც გვერდის სექციას ყოფს."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "ფონის სურათი."
+      },
+      {
+        "property": "caption",
+        "description": "ტექსტური სათაური."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Skaitītājs",
+    "description": "Animēt skaitļa pieaugšanu līdz mērķa vērtībai, kad tas parādās skatā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Beigu vērtība",
+        "description": "Skaitlis, līdz kuram skaitīt."
+      },
+      {
+        "property": "start",
+        "title": "Sākuma vērtība",
+        "description": "Skaitlis, no kura sākt skaitīt."
+      },
+      {
+        "property": "duration",
+        "title": "Ilgums",
+        "description": "Cik sekundes ilgst skaitīšanas animācija."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Prefiksa teksts",
+        "description": "Teksts pirms skaitļa (piem., '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Sufiksa teksts",
+        "description": "Teksts pēc skaitļa (piem., '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefiksa slots",
+        "description": "Neobligāts slota saturs pirms skaitļa."
+      },
+      {
+        "slot": "suffix",
+        "title": "Sufiksa slots",
+        "description": "Neobligāts slota saturs pēc skaitļa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Decimālzīmes",
+        "description": "Rādāmo decimālzīmju skaits."
+      },
+      {
+        "property": "separator",
+        "title": "Tūkstošu atdalītājs",
+        "description": "Rakstzīme, kas atdala tūkstošu grupas."
+      },
+      {
+        "property": "decimal",
+        "title": "Decimālatdalītājs",
+        "description": "Decimālatdalītājam izmantotā rakstzīme."
+      },
+      {
+        "property": "noeasing",
+        "title": "Bez paātrinājuma",
+        "description": "Atspējot paātrinājuma līkni, lai skaitīšana būtu vienmērīga."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Jejapo techaukaha",
+    "description": "Jejapo techaukaha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV ta'ãnga",
+        "description": "Ta'ãnga ojehechaukáva TV-pe."
+      },
+      {
+        "property": "logo",
+        "title": "Logo",
+        "description": "Logo ojehechaukáva techaukaha ykepe."
+      },
+      {
+        "property": "title",
+        "title": "Teratee",
+        "description": "Teratee ojehechaukáva techaukaha yvatépe."
+      },
+      {
+        "property": "name",
+        "title": "Téra",
+        "description": "Téra ojehechaukáva techaukahápe."
+      },
+      {
+        "property": "position",
+        "title": "Tenda'aty",
+        "description": "Tapicha rembiapo térã tenda'aty."
+      },
+      {
+        "property": "organization",
+        "title": "Atyguasu",
+        "description": "Atyguasu tapicha omba'apohápe."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV sa'y",
+        "description": "Eiporavo TV sa'y."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y tenondegua hapykuegua térã moñe'ẽrãme g̃uarã."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Mbojerehára sa'y",
+        "description": "TV mbojerehára sa'y."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Emoĩ sepia jehechapy."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Hũ ha morotĩ",
+        "description": "Emoĩ hũ ha morotĩ jehechapy."
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "ကိုယ်တိုင်စစ်ဆေး",
+    "description": "အသုံးပြုသူများ ကိုယ်တိုင်စစ်ဆေးမှုကို ပြီးမြောက်အောင် လုပ်နိုင်သည်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ပုံ",
+        "description": "ကိုယ်တိုင်စစ်ဆေးမှုအတွက် ပုံ။"
+      },
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "ကိုယ်တိုင်စစ်ဆေးမှု၏ ခေါင်းစဉ်။"
+      },
+      {
+        "property": "alt",
+        "title": "အစားထိုး စာသား",
+        "description": "ပုံအတွက် အစားထိုး စာသား။"
+      },
+      {
+        "slot": "question",
+        "title": "မေးခွန်း"
+      },
+      {
+        "slot": "",
+        "title": "အဖြေ"
+      },
+      {
+        "property": "accentColor",
+        "title": "Theme အရောင်",
+        "description": "ဒီဇိုင်းစနစ်မှ theme အရောင်ကို ရွေးပါ။",
+        "options": {
+          "primary": "အဓိက",
+          "accent": "အထူးပြု",
+          "success": "အောင်မြင်",
+          "warning": "သတိပေးချက်",
+          "error": "အမှား",
+          "info": "အချက်အလက်"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "သင်ယူမှု ရည်မှန်းချက်",
+        "description": "oer:hasLearningObjective အဖြစ် ထုတ်ပေးသော သင်ယူမှု ရည်မှန်းချက် ကိုးကားချက်။"
+      },
+      {
+        "property": "assessing",
+        "title": "အကဲဖြတ်နေသည်",
+        "description": "oer:assessing အဖြစ် ထုတ်ပေးသော လုပ်ဆောင်ချက် ကိုးကားချက်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "ထပ်မံသိရှိရန် လင့်ခ်",
+        "description": "ထပ်ဆောင်း အချက်အလက်သို့ လင့်ခ်။"
+      }
+    ]
+  }
+}

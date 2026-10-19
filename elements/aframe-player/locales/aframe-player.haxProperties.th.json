@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "เครื่องเล่น 3D",
+    "description": "เครื่องเล่นไฟล์ 3D / ความเป็นจริงเสริม"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "แหล่งที่มา",
+        "description": "URL ของไฟล์ AR นี้"
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "ตำแหน่ง X ขององค์ประกอบใน AR"
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "ตำแหน่ง Y ขององค์ประกอบใน AR"
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "ตำแหน่ง Z ขององค์ประกอบใน AR"
+      },
+      {
+        "property": "skyColor",
+        "title": "สีท้องฟ้า",
+        "description": "เลือกสีของท้องฟ้าในฉาก"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Zvirimo zvePeji Zvisina Kurongwa",
+    "description": "Ratidza chinhu chepamusoro chisina kurongwa kubva pane peji rakasarudzwa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Peji",
+        "description": "Sarudza peji rekutora zvirimo zvisina kurongwa. Chinhu ichi chicharatidza chimwe chezvinhu zvepamusoro zveHTML kubva papeji iri zvisina kurongwa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Oġġett tal-kollezzjoni",
+    "description": "Oġġett f'forma ta' karta għall-użu f'lista ta' kollezzjoni, b'test, link u midja fakultattiva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "URL tad-destinazzjoni għal din il-karta."
+      },
+      {
+        "property": "image",
+        "title": "Immaġni",
+        "description": "Immaġni tal-isfond."
+      },
+      {
+        "property": "line1",
+        "title": "Linja 1",
+        "description": "L-ewwel linja ta' test."
+      },
+      {
+        "property": "line2",
+        "title": "Linja 2",
+        "description": "It-tieni linja ta' test."
+      },
+      {
+        "property": "line3",
+        "title": "Linja 3",
+        "description": "It-tielet linja ta' test."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona li tirrappreżenta l-karta."
+      },
+      {
+        "property": "saturate",
+        "title": "Effett tas-saturazzjoni",
+        "description": "Ibdel is-saturazzjoni tal-immaġni meta l-utent jiffoka fuqha."
+      },
+      {
+        "property": "tags",
+        "title": "Tikketti",
+        "description": "Lista ta' tikketti separati b'virgoli."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur",
+        "description": "Kulur użat għat-tikketti."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Test alternattiv li jiddeskrivi l-link."
+      }
+    ]
+  }
+}

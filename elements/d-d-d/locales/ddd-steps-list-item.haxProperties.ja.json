@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "ステップ項目",
+    "description": "ステップリストの一部となる項目"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "タイトル"
+      }
+    ]
+  }
+}

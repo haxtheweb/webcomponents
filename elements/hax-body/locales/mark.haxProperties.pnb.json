@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "نمایاں",
+    "description": "لائن اندر متن نمایاں کرو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "نمایاں کیتا متن۔"
+      }
+    ]
+  }
+}

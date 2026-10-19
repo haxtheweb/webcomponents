@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Externe Webinhalte in einem iframe einbetten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ressourcen-URL",
+        "description": "Ressourcen-URL."
+      },
+      {
+        "property": "height",
+        "title": "Höhe",
+        "description": "Höhe des iframes."
+      },
+      {
+        "property": "width",
+        "title": "Breite",
+        "description": "Breite des iframes."
+      }
+    ]
+  }
+}

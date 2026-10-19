@@ -5,5 +5,9 @@
   "recordAudio": "აუდიოს ჩაწერა",
   "recordScreen": "ეკრანის ჩაწერა",
   "cancel": "გაუქმება",
-  "uploadMedia": "მედიის ატვირთვა"
+  "uploadMedia": "მედიის ატვირთვა",
+  "record": "ჩაწერა",
+  "pause": "ჩაწერის პაუზა",
+  "stopSave": "შეჩერება და შენახვა",
+  "clickToTakePhoto": "დააწკაპუნეთ ფოტოს გადასაღებად"
 }

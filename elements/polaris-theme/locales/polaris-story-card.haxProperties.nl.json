@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris-verhaalkaart",
+    "description": "Toon een Polaris-verhaalkaart met achtergrondafbeelding, pijlerlabel en koptekst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Achtergrondafbeelding",
+        "description": "URL van de afbeelding die als kaartachtergrond wordt getoond."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Achtergrondgrootte",
+        "description": "Hoe de achtergrondafbeelding de kaart vult (CSS background-size).",
+        "options": {
+          "cover": "Bedekken (cover)",
+          "contain": "Inpassen (contain)",
+          "auto": "Automatisch (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Achtergrondbevestiging",
+        "description": "Hoe de achtergrondafbeelding zich gedraagt bij scrollen (CSS background-attachment).",
+        "options": {
+          "scroll": "Meescrollen (scroll)",
+          "fixed": "Vast (fixed)",
+          "local": "Lokaal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Pijlerlabel",
+        "description": "Kort label in hoofdletters bovenaan de kaart. Laat leeg om te verbergen."
+      },
+      {
+        "property": "label",
+        "title": "Kaarttekst",
+        "description": "Primaire tekst in het onderste paneel."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Optionele doel-URL die de hele kaart omvat."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Math",
+    "description": "Ipakita ang math sa magandang paraan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Math",
+        "description": "Ilagay ang equation bilang LaTeX"
+      }
+    ]
+  }
+}

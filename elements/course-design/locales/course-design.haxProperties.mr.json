@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "अभ्यासक्रम डिझाइन",
+    "description": "शैक्षणिक साहित्य आणि अभ्यासक्रम डिझाइन घटकांसाठी कंटेनर."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "अभ्यासक्रम ओळखकर्ता",
+        "description": "OER Schema: अभ्यासक्रमाचा ओळखकर्ता, उदा. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "देऊ केलेले सत्र",
+        "description": "OER Schema: ज्या सत्रात अभ्यासक्रम दिला जातो ते सत्र."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "वितरण स्वरूप",
+        "description": "OER Schema: अभ्यासक्रम देण्यासाठी वापरलेले स्वरूप (उदा. प्रत्यक्ष, ऑनलाइन, संमिश्र)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "प्राथमिक प्रशिक्षक",
+        "description": "OER Schema: अभ्यासक्रमाचे प्राथमिक प्रशिक्षक."
+      },
+      {
+        "property": "syllabus",
+        "title": "अभ्यासक्रम आराखडा URL",
+        "description": "OER Schema: अभ्यासक्रम आराखड्याची URL."
+      }
+    ]
+  }
+}

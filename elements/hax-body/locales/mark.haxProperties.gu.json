@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "હાઇલાઇટ",
+    "description": "ઇનલાઇન ટેક્સ્ટ હાઇલાઇટ કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "લખાણ",
+        "description": "હાઇલાઇટ કરેલું ટેક્સ્ટ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html ब्लॉक",
+    "description": "HAXschema जोडणी पुरवणारा मूलभूत HTML ब्लॉक"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "मजकुरात सादर करायचा HTML कोड"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Rajola Polaris",
+    "description": "Mostra una rajola Polaris amb títol, text complementari opcional i enllaç opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Text principal",
+        "description": "Text principal de la rajola."
+      },
+      {
+        "property": "line2",
+        "title": "Text secundari",
+        "description": "Text complementari opcional."
+      },
+      {
+        "property": "type",
+        "title": "Estil de la rajola",
+        "description": "Estil visual predefinit de la rajola.",
+        "options": {
+          "1": "Estil 1",
+          "2": "Estil 2",
+          "3": "Estil 3",
+          "4": "Estil 4",
+          "5": "Estil 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Imatge de fons",
+        "description": "URL de la imatge de fons utilitzada pels estils de rajola que admeten imatges."
+      },
+      {
+        "property": "link",
+        "title": "Enllaç",
+        "description": "URL de destinació opcional per a l'acció de la rajola."
+      }
+    ]
+  }
+}

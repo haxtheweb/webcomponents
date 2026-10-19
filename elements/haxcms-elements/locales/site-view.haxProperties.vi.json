@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Chế độ xem trang web",
+    "description": "Khối động truy vấn và hiển thị dữ liệu trang web theo tiêu chí"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL chế độ xem",
+        "description": "Tham số truy vấn cho nguồn cấp dữ liệu chế độ xem. Bạn có thể lấy từ bảng điều khiển Views."
+      },
+      {
+        "property": "renderer",
+        "title": "Chế độ hiển thị",
+        "description": "Cách hiển thị kết quả của chế độ xem"
+      },
+      {
+        "property": "entity",
+        "title": "Loại thực thể",
+        "description": "Loại thực thể dùng để phân tích phản hồi",
+        "options": {
+          "": "Mặc định (items)",
+          "item": "Mục",
+          "page": "Trang",
+          "file": "Tệp",
+          "tag": "Thẻ",
+          "block": "Khối",
+          "view": "Chế độ xem",
+          "theme": "Chủ đề",
+          "region": "Vùng",
+          "customElement": "Phần tử tùy chỉnh"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Tách chế độ xem trang web",
+        "description": "Chuyển thành nội dung tĩnh để chỉnh sửa trực tiếp; ngừng tự động cập nhật từ nguồn."
+      }
+    ]
+  }
+}

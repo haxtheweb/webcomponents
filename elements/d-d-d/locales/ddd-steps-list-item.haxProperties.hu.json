@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Lépéselem",
+    "description": "Lépéslista részét képező elem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cím"
+      }
+    ]
+  }
+}

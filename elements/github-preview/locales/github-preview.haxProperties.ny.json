@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Chithunzithunzi cha Github",
+    "description": "Chithunzi chopezeka kwa onse chokhala ndi kufotokozera kwautali"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Bungwe",
+        "description": "Dzina la makina la bungwe la Github"
+      },
+      {
+        "property": "repo",
+        "title": "Malo osungira (repository)",
+        "description": "Dzina la makina la repo"
+      },
+      {
+        "property": "extended",
+        "title": "Mawonedwe Owonjezera",
+        "description": "Imaphatikiza readme mu chinthu"
+      }
+    ]
+  }
+}

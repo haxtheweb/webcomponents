@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Âm thanh",
+    "description": "Khối này có thể trình chiếu video theo cách rất dễ tiếp cận bất kể nguồn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Nguồn",
+        "description": "URL của phương tiện này."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề ngắn hiển thị dưới video"
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Chọn màu nhấn cho trình phát."
+      },
+      {
+        "property": "track",
+        "title": "Phụ đề",
+        "description": "URL của tệp phụ đề."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Ảnh thu nhỏ",
+        "description": "Tùy chọn. URL của ảnh thu nhỏ/ảnh bìa."
+      },
+      {
+        "property": "learningMode",
+        "title": "Bật chế độ học tập",
+        "description": "Tắt tua nhanh và tua lại."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Bỏ nút mở trên YouTube",
+        "description": "Bỏ nút mở video trên YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Bao gồm liên kết chia sẻ?",
+        "description": "Cung cấp liên kết để chia sẻ video."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Cho biết có dùng CORS hay không.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Cho phép phát trong nền",
+        "description": "Video tự động tạm dừng / phát khi thẻ mất tiêu điểm; tùy chọn này cho phép video phát khi thẻ không có tiêu điểm"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Giao diện tối cho bản ghi lời",
+        "description": "Bật giao diện tối cho bản ghi lời."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Tắt tương tác",
+        "description": "Tắt chế độ tương tác cho phép nhấp vào bản ghi lời."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ẩn mốc thời gian",
+        "description": "Ẩn mốc thời gian trên bản ghi lời."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ẩn bản ghi lời",
+        "description": "Ẩn bản ghi lời theo mặc định."
+      },
+      {
+        "property": "lang",
+        "title": "Ngôn ngữ",
+        "description": "Ngôn ngữ của phương tiện."
+      }
+    ]
+  }
+}

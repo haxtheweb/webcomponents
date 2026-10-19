@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Ana hat işlemleri",
+  "editPage": "Sayfayı düzenle",
+  "addPage": "Alt sayfa ekle",
+  "moveUp": "Yukarı taşı",
+  "moveDown": "Aşağı taşı",
+  "indent": "Girinti artır",
+  "outdent": "Girinti azalt",
+  "moveTo": "Şuraya taşı...",
+  "siteOutline": "Site ana hattını aç",
+  "delete": "Sayfayı sil",
+  "unlock": "Kilidi aç",
+  "lock": "Kilitle"
+}

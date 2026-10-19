@@ -1,0 +1,14 @@
+{
+  "title": "Amabhulokhi",
+  "enabled": "Kunikwe amandla",
+  "block": "Ibhulokhi",
+  "preview": "Buka kuqala",
+  "filterBlocks": "Hlunga amabhulokhi",
+  "requiredTextNote": "Amanye amathegi ombhalo ayadingeka futhi ahlala enikwe amandla (aboniswa njengavaliwe).",
+  "selectAll": "Khetha konke",
+  "deselectAll": "Susa ukukhetha konke",
+  "save": "Londoloza",
+  "noDescription": "Ayikho incazelo etholakalayo.",
+  "details": "Imininingwane",
+  "loadingInventory": "Kulayishwa uhlu oluphelele lwamabhulokhi…"
+}

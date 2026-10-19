@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tabel",
+    "description": "Tabelikujulised andmed veebi jaoks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Rea päis",
+        "description": "Käsitle esimest rida päisena."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Veeru päis",
+        "description": "Käsitle esimest veergu päisena."
+      },
+      {
+        "property": "footer",
+        "title": "Jalus",
+        "description": "Käsitle viimast rida jalusena."
+      },
+      {
+        "property": "sort",
+        "title": "Sorditav",
+        "description": "Luba sortimine veergude väärtuste järgi."
+      },
+      {
+        "property": "filter",
+        "title": "Luba filtreerimine",
+        "description": "Luba filtreerimine veergude väärtuste järgi."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numbriline kujundus",
+        "description": "Rakenda numbrilistele veergudele numbrilist kujundust."
+      },
+      {
+        "property": "responsive",
+        "title": "Kohanduv",
+        "description": "Kohanda tabeli paigutust väikestel ekraanidel."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Hindamismaatriksi režiim",
+        "description": "Tõlgenda seda tabelit OER Schema Rubric-ina, et väljastataks Rubric, RubricScale, RubricCriterion ja RubricLevel metaandmed."
+      },
+      {
+        "property": "rubricType",
+        "title": "Hindamismaatriksi tüüp",
+        "description": "Hindamismaatriksi stiil, mis väljastatakse kui oer:rubricType (mõjub ainult siis, kui hindamismaatriksi režiim on sees).",
+        "options": {
+          "": "(puudub)",
+          "analytic": "Analüütiline",
+          "holistic": "Terviklik",
+          "single-point": "Ühe punktiga",
+          "checklist": "Kontroll-loend"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Ääristatud"
+      },
+      {
+        "property": "condensed",
+        "title": "Tihendatud read",
+        "description": "Vähenda ridade kõrgust."
+      },
+      {
+        "property": "striped",
+        "title": "Triibulised read",
+        "description": "Varjuta iga teine rida."
+      },
+      {
+        "property": "downloadable",
+        "title": "Allalaadimisnupp",
+        "description": "Lisa nupp tabeli allalaadimiseks."
+      },
+      {
+        "property": "copyable",
+        "title": "Kopeerimisnupp",
+        "description": "Lisa nupp tabeli CSV-andmete kopeerimiseks."
+      },
+      {
+        "property": "printable",
+        "title": "Printimisnupp",
+        "description": "Lisa nupp ainult tabeli printimiseks."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV-andmed",
+        "description": "Loo tabel üleslaaditud CSV-failist."
+      }
+    ]
+  }
+}

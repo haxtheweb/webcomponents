@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "អាជ្ញាប័ណ្ណ",
+    "description": "ផ្ដល់អាជ្ញាប័ណ្ណសម្រាប់ស្នាដៃរបស់អ្នក។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងនៃស្នាដៃដែលបានដកស្រង់។"
+      },
+      {
+        "property": "source",
+        "title": "តំណប្រភព",
+        "description": "URL ប្រភពសម្រាប់ស្នាដៃដែលមានអាជ្ញាប័ណ្ណ។"
+      },
+      {
+        "property": "license",
+        "title": "អាជ្ញាប័ណ្ណ",
+        "description": "អាជ្ញាប័ណ្ណដែលអនុវត្តចំពោះស្នាដៃនេះ។"
+      },
+      {
+        "property": "creator",
+        "title": "អ្នកបង្កើត",
+        "description": "អ្នកបង្កើត ឬម្ចាស់នៃស្នាដៃនេះ។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "តំណប្រភព",
+        "description": "តំណទៅព័ត៌មានលម្អិតអាជ្ញាប័ណ្ណបន្ថែម។"
+      },
+      {
+        "property": "moreLabel",
+        "title": "ស្លាកបន្ថែម",
+        "description": "ស្លាកសម្រាប់ព័ត៌មានលម្អិតអាជ្ញាប័ណ្ណបន្ថែម។"
+      }
+    ]
+  }
+}

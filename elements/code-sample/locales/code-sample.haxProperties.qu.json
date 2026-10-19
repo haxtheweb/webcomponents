@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Código rikch'anachiy",
+    "description": "P'anqapi k'anchachisqa código rikch'anachiy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Código k'anchachiy",
+        "description": "Código sitioman churanapaq sintaxis k'anchachiy",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON willakuy",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Kikinchanaman kikinchay boton",
+        "description": "hanaq paña ladupi boton, kikinchanaman kikinchay niq"
+      },
+      {
+        "property": "highlightStart",
+        "title": "K'anchachiy qallariy",
+        "description": "K'anchachiyta qallarinapaq siqi yupay"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "K'anchachiy tukukuy",
+        "description": "K'anchachiyta tukunapaq siqi"
+      }
+    ]
+  }
+}

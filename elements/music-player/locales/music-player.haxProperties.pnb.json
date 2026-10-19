@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI وژولائزر",
+    "description": "MIDI نوں بصری شکل نال چلاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "سرچشمہ",
+        "description": "چلاوݨ لئی فائل دا URL۔"
+      },
+      {
+        "property": "visualizer",
+        "title": "بصری شکل",
+        "description": "موسیقی فائل دی بصری شکل دا انداز۔",
+        "options": {
+          "staff": "سٹاف",
+          "piano-roll": "پیانو رول",
+          "waterfall": "پیانو + جھرنا"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "جھرنا لکاؤ",
+        "description": "پیانو بصری شکل وچ جھرنے والے سُر لکاؤ۔"
+      }
+    ]
+  }
+}

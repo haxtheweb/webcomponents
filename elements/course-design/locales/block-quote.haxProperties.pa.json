@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ਬਲੌਕ ਹਵਾਲਾ",
+    "description": "ਸਜਾਇਆ ਹੋਇਆ ਹਵਾਲਾ ਬਲੌਕ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "ਸਰੋਤ ਹਵਾਲਾ",
+        "description": "ਸਰੋਤ ਹਵਾਲੇ ਦੀ ਲਿਖਤ।"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "ਚਿੱਤਰ ਲਈ ਵਿਕਲਪਿਕ ਲਿਖਤ।"
+      },
+      {
+        "property": "image",
+        "title": "ਚਿੱਤਰ",
+        "description": "ਹਵਾਲੇ ਨਾਲ ਦਿਖਾਇਆ ਚਿੱਤਰ।"
+      }
+    ]
+  }
+}

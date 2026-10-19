@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Piltide võrdlus",
+    "description": "Libista üks pilt teise peale, et neid võrrelda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Ülemine pilt",
+        "description": "Ülemine pilt, mida libistatakse alumise pildi peale."
+      },
+      {
+        "property": "topAlt",
+        "title": "Ülemise pildi alternatiivtekst",
+        "description": "Ligipääsetavuse jaoks nõutav alternatiivtekst."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Alumine pilt",
+        "description": "Ülemise pildi all kuvatav alumine pilt."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alumise pildi alternatiivtekst",
+        "description": "Ligipääsetavuse jaoks nõutav alternatiivtekst."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Käitumine",
+        "description": "Vali pühkimisrežiim (vaikimisi) või ülemise pildi läbipaistvuse režiim."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Liuguririba värv."
+      },
+      {
+        "property": "dark",
+        "title": "Tume",
+        "description": "Pööra liuguririba värv ümber."
+      },
+      {
+        "property": "position",
+        "title": "Algasend",
+        "description": "Algasend vahemikus 0 kuni 100."
+      }
+    ]
+  }
+}

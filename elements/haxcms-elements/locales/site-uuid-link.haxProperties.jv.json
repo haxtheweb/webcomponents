@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Link HAX",
+    "description": "Link menyang sumber tartamtu ing situs sing lagi sampeyan garap."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item sing dirender kanggo data link / judhul"
+      }
+    ]
+  }
+}

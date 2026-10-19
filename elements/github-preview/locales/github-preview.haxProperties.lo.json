@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ຕົວຢ່າງ Github",
+    "description": "ຮູບປະກອບທີ່ເຂົ້າເຖິງໄດ້ພ້ອມຄຳອະທິບາຍຍາວ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ອົງກອນ",
+        "description": "ຊື່ເຄື່ອງຂອງອົງກອນ Github"
+      },
+      {
+        "property": "repo",
+        "title": "ຄັງເກັບ",
+        "description": "ຊື່ເຄື່ອງຂອງຄັງ"
+      },
+      {
+        "property": "extended",
+        "title": "ມຸມມອງຂະຫຍາຍ",
+        "description": "ລວມ readme ໃນອົງປະກອບ"
+      }
+    ]
+  }
+}

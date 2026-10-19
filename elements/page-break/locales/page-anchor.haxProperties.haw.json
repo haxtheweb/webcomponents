@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Heleuma ʻAoʻao",
+    "description": "E loulou i nā kiko kikoʻī o ka media ma ka ʻaoʻao."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Pahuhopu ʻaoʻao",
+        "description": "ID a kumuwaiwai paha e kuhikuhi ai kēia heleuma."
+      },
+      {
+        "property": "value",
+        "title": "Waiwai loulou hohonu",
+        "description": "Waiwai loulou hohonu (e laʻa me ka manawa a i ʻole ka ID paheʻe)."
+      },
+      {
+        "property": "entityId",
+        "title": "Mea pūnaewele",
+        "description": "Mea pūnaewele koho no ka hoʻokele ʻana i ka hōʻike o nā manaʻo pili."
+      }
+    ]
+  }
+}

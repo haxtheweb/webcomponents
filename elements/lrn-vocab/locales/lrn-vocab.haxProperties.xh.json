@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Isigama",
+    "description": "Igama lesigama"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Igama"
+      },
+      {
+        "slot": "",
+        "title": "Inkcazo",
+        "description": "Inkcazo eza kuboniswa xa igama licofwa."
+      },
+      {
+        "property": "description",
+        "title": "Inkcazo (Iskimu se-OER)",
+        "description": "Iskimu se-OER: inkcazo emfutshane yegama lesigama. Izaliswa ngokuzenzekelayo kumbhalo wenkcazo ukuba ishiywe ingenanto."
+      }
+    ]
+  }
+}

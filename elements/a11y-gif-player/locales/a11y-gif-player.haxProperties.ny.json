@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Pangani ma GIF oyenda kuti aliyense athe kuwagwiritsa ntchito."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF Yoyenda",
+        "description": "URL ya GIF yoyenda."
+      },
+      {
+        "property": "alt",
+        "title": "Mawu Ofotokoza Chithunzi",
+        "description": "Mawu ena ofotokoza chithunzi."
+      },
+      {
+        "property": "longdesc",
+        "title": "Kufotokoza Kwatali",
+        "description": "Kufotokoza kwatali kwa GIF kuti aliyense athe kuigwiritsa ntchito."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Chithunzi Chosayenda",
+        "description": "URL ya chithunzi chosayenda cha GIF."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Mwito wa kuchukua hatua",
+    "description": "Kitufe rahisi chenye kiungo cha kuchukua hatua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Lebo",
+        "description": "Lebo ya kiungo"
+      },
+      {
+        "property": "link",
+        "title": "Kiungo",
+        "description": "Ingiza kiungo cha rasilimali yoyote"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ficha aikoni",
+        "description": "Ficha aikoni inayotumika kusisitiza maandishi"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni ya kiungo cha kitendo"
+      }
+    ]
+  }
+}

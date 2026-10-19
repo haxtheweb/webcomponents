@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Visa en temaanpassad Polaris-knapp för uppmaning till handling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Knapptext",
+        "description": "Text som visas i knappen för uppmaning till handling."
+      },
+      {
+        "property": "link",
+        "title": "Länk",
+        "description": "Mål-URL för knappen."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Variant av visuell stil.",
+        "options": {
+          "primary": "Primär",
+          "tinted": "Tonad",
+          "light": "Ljus"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Konturstil",
+        "description": "Aktivera konturutförande."
+      },
+      {
+        "property": "filled",
+        "title": "Fylld stil",
+        "description": "Aktivera fyllt utförande."
+      }
+    ]
+  }
+}

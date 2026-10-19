@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR ਕੋਡ",
+    "description": "ਸਮਾਰਟਫ਼ੋਨ ਨਾਲ ਸਕੈਨ ਕਰਨ ਲਈ ਕੋਡ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR ਡਾਟਾ",
+        "description": "QR ਕੋਡ ਲਈ ਡਾਟਾ ਦਾ ਸਰੋਤ।"
+      },
+      {
+        "property": "title",
+        "title": "ਵਿਕਲਪਿਕ ਸਿਰਲੇਖ",
+        "description": "QR ਕੋਡ ਸਰੋਤ ਨਾਲ ਲਿੰਕ ਕੀਤਾ ਵਿਕਲਪਿਕ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "modulesize",
+        "title": "ਆਕਾਰ",
+        "description": "QR ਕੋਡ ਦਾ ਆਕਾਰ।"
+      },
+      {
+        "property": "margin",
+        "title": "ਹਾਸ਼ੀਆ",
+        "description": "ਕੋਡ ਦੇ ਦੁਆਲੇ ਘੇਰਾ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "ਆਉਟਪੁੱਟ ਫਾਰਮੈਟ",
+        "description": "ਆਉਟਪੁੱਟ ਲਈ ਫਾਰਮੈਟ।",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

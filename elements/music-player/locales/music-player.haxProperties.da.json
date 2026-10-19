@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-visualisering",
+    "description": "Afspil MIDI i kontekst med visualisering."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "URL til den fil, der skal afspilles."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualisering",
+        "description": "Visualiseringsstil til musikfilen.",
+        "options": {
+          "staff": "Nodesystem",
+          "piano-roll": "Pianorulle",
+          "waterfall": "Klaver + vandfald"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Skjul vandfald",
+        "description": "Skjul vandfaldsnoder i klavervisualiseringen."
+      }
+    ]
+  }
+}

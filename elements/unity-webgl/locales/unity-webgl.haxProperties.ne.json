@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity प्लेयर",
+    "description": "Unity WebGL प्लेयर।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "लक्ष्य",
+        "description": "गेम बिल्डको पथ।"
+      },
+      {
+        "property": "compression",
+        "title": "कम्प्रेसन विधि",
+        "description": "गेम सामग्रीहरूको कम्प्रेसन फाइल एक्सटेन्सन।"
+      },
+      {
+        "property": "streamingurl",
+        "title": "स्ट्रिमिङ URL",
+        "description": "स्ट्रिमिङ सामग्रीहरूको URL।"
+      },
+      {
+        "property": "companyname",
+        "title": "कम्पनीको नाम",
+        "description": "कम्पनीको नाम।"
+      },
+      {
+        "property": "productname",
+        "title": "उत्पादनको नाम",
+        "description": "गेमको शीर्षक।"
+      },
+      {
+        "property": "productversion",
+        "title": "उत्पादन संस्करण",
+        "description": "रिलिज संस्करण।"
+      },
+      {
+        "property": "width",
+        "title": "क्यानभास चौडाइ",
+        "description": "क्यानभासको CSS चौडाइ (उदाहरणका लागि px वा em)।"
+      },
+      {
+        "property": "height",
+        "title": "क्यानभास उचाइ",
+        "description": "क्यानभासको CSS उचाइ (उदाहरणका लागि px वा em)।"
+      },
+      {
+        "property": "background",
+        "title": "क्यानभास पृष्ठभूमि",
+        "description": "क्यानभासको CSS पृष्ठभूमि।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Vstavljeni zvok",
+    "description": "Predvajajte zvok v besedilu kot dopolnilo vsebini strani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Vir",
+        "description": "Datoteka MP3 ali URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Poudarna barva kartice."
+      },
+      {
+        "property": "shiny",
+        "title": "Sijoče",
+        "description": "Uporabi svetlejše poudarno ozadje namesto sivega."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Temno",
+        "description": "Uporabi temni način."
+      }
+    ]
+  }
+}

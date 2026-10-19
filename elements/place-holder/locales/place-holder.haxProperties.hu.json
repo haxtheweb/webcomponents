@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Helyőrző",
+    "description": "Helyőrző, amely a kiválasztott médiatípussá alakítható"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Típus",
+        "description": "Az elfogadott csereelem típusa.",
+        "options": {
+          "text": "Szöveg / tartalom",
+          "document": "Dokumentum / fájl",
+          "audio": "Hang",
+          "video": "Videó",
+          "image": "Kép",
+          "math": "Matematika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Szöveg",
+        "description": "Add meg részletesebben a kívánt helyőrzőt"
+      }
+    ]
+  }
+}

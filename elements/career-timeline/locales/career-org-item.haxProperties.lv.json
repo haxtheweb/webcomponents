@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Karjeras vienums",
+    "description": "Atsevišķa organizācija un ar to saistītie amati"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Organizācijas nosaukums"
+      },
+      {
+        "property": "location",
+        "title": "Vieta"
+      },
+      {
+        "property": "source",
+        "title": "Avots"
+      }
+    ]
+  }
+}

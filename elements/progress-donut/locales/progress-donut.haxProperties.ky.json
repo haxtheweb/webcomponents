@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Прогресс тегереги",
+    "description": "Прогресс тегереги"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Аталышы",
+        "description": "Элементтин аталышы"
+      },
+      {
+        "property": "desc",
+        "title": "Сүрөттөмө",
+        "description": "Жеткиликтүү узун сыпаттама"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Сүрөт булагы",
+        "description": "Тегерек ичиндеги сүрөттүн булагы."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Сүрөттүн alt тексти",
+        "description": "Сүрөт үчүн alt тексти."
+      },
+      {
+        "property": "animated",
+        "title": "Анимацияланган",
+        "description": "Биринчи жүктөлгөндө прогресс анимацияланабы"
+      },
+      {
+        "property": "complete",
+        "title": "Аяктады",
+        "description": "Аткарылган маанилердин массиви."
+      },
+      {
+        "property": "total",
+        "title": "Жалпы",
+        "description": "Бардык элементтер аткарылгандагы жалпы сан."
+      },
+      {
+        "property": "startAngle",
+        "title": "Баштапкы бурч",
+        "description": "Прогресс башталуучу тегеректин бурчу"
+      }
+    ]
+  }
+}

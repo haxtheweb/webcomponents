@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Bildumako elementua",
+    "description": "Bilduma zerrenda baten barruan erabiltzeko txartel motako elementua, testua, esteka eta aukerako multimedia dituena."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Esteka",
+        "description": "Txartel honen helburuko URLa."
+      },
+      {
+        "property": "image",
+        "title": "Irudia",
+        "description": "Atzeko irudia."
+      },
+      {
+        "property": "line1",
+        "title": "1. lerroa",
+        "description": "Testuaren lehen lerroa."
+      },
+      {
+        "property": "line2",
+        "title": "2. lerroa",
+        "description": "Testuaren bigarren lerroa."
+      },
+      {
+        "property": "line3",
+        "title": "3. lerroa",
+        "description": "Testuaren hirugarren lerroa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikonoa",
+        "description": "Txartela adierazten duen ikonoa."
+      },
+      {
+        "property": "saturate",
+        "title": "Saturazio efektua",
+        "description": "Aldatu irudiaren saturazioa erabiltzaileak fokua jartzean."
+      },
+      {
+        "property": "tags",
+        "title": "Etiketak",
+        "description": "Komaz bereizitako etiketen zerrenda."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolorea",
+        "description": "Etiketetarako erabilitako kolorea."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Esteka deskribatzen duen testu alternatiboa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Shayga Xirfadda",
+    "description": "Urur gaar ah iyo doorarka la xidhiidha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Magaca Ururka"
+      },
+      {
+        "property": "location",
+        "title": "Goob"
+      },
+      {
+        "property": "source",
+        "title": "Isha"
+      }
+    ]
+  }
+}

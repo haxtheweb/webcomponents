@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub алдын ала қарау",
+    "description": "Толық сипаттамасы бар қолжетімді сурет"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Ұйым",
+        "description": "GitHub ұйымының машиналық атауы"
+      },
+      {
+        "property": "repo",
+        "title": "Репозиторий",
+        "description": "Репозиторийдің машиналық атауы"
+      },
+      {
+        "property": "extended",
+        "title": "Кеңейтілген көрініс",
+        "description": "Элементке readme файлын қосады"
+      }
+    ]
+  }
+}

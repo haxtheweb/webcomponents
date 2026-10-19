@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "ካርድ",
+    "description": "በDDD የንድፍ ሥርዓት ቅጥ የተሰጠው የካርድ ክፍል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "ምስል",
+        "description": "አማራጭ ምስል።"
+      },
+      {
+        "property": "alt",
+        "title": "የምስል አማራጭ ጽሑፍ",
+        "description": "ምስሉን የሚገልጽ አማራጭ ጽሑፍ።"
+      },
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "የካርድ ርዕስ።"
+      },
+      {
+        "slot": "",
+        "title": "ይዘት",
+        "description": "የካርድ ይዘት ቦታ።"
+      },
+      {
+        "property": "href",
+        "title": "አገናኝ",
+        "description": "የአዝራር አገናኝ URL።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "መለያ",
+        "description": "የአዝራር መለያ።"
+      },
+      {
+        "property": "noArrow",
+        "title": "ቀስት የለም",
+        "description": "የአዝራሩን ቀስት ደብቅ።"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "አገናኝ፦ ዒላማ",
+        "description": "አገናኙ የሚከፈትበት ቦታ።",
+        "options": {
+          "": "ተመሳሳይ መስኮት",
+          "_blank": "አዲስ መስኮት - _blank",
+          "_top": "የላይኛው መስኮት - _top",
+          "_parent": "ወላጅ መስኮት - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "አገናኝ፦ rel",
+        "description": "በተገናኘው ሀብት እና በአሁኑ ሰነድ መካከል ያለው ግንኙነት።"
+      }
+    ]
+  }
+}

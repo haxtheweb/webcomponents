@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Skirtukas",
+    "description": "Vienas skirtukas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Skirtuko piktograma"
+      },
+      {
+        "property": "disabled",
+        "title": "Išjungta"
+      },
+      {
+        "property": "label",
+        "title": "Skirtuko pavadinimas"
+      },
+      {
+        "slot": "",
+        "title": "Skirtuko turinys",
+        "description": "Skirtuko turinys."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unikalus ID"
+      },
+      {
+        "property": "flag",
+        "title": "Neprivalomas žymos tekstas"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Neprivaloma žymos piktograma"
+      }
+    ]
+  }
+}

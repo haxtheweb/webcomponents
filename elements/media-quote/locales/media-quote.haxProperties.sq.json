@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Citat me media",
+    "description": "Imazh me citat, burim dhe titull opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citati",
+        "description": "Teksti i citatit."
+      },
+      {
+        "slot": "author",
+        "title": "Autori",
+        "description": "Autori i citatit."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Detajet e autorit",
+        "description": "Detajet e autorit."
+      },
+      {
+        "slot": "caption",
+        "title": "Mbishkrimi",
+        "description": "Mbishkrimi i imazhit."
+      },
+      {
+        "property": "src",
+        "title": "Burimi i imazhit",
+        "description": "Skedari i imazhit i përdorur për citatin me media."
+      },
+      {
+        "property": "alt",
+        "title": "Teksti alternativ",
+        "description": "Teksti alternativ për imazhin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra theksuese e kartës."
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "ራስን መፈተሻ",
+    "description": "ተጠቃሚዎች ራስን መፈተሻ ማጠናቀቅ ይችላሉ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ምስል",
+        "description": "ለራስን መፈተሻው ምስል።"
+      },
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "የራስን መፈተሻው ርዕስ።"
+      },
+      {
+        "property": "alt",
+        "title": "አማራጭ ጽሑፍ",
+        "description": "ለምስሉ አማራጭ ጽሑፍ።"
+      },
+      {
+        "slot": "question",
+        "title": "ጥያቄ"
+      },
+      {
+        "slot": "",
+        "title": "መልስ"
+      },
+      {
+        "property": "accentColor",
+        "title": "የገጽታ ቀለም",
+        "description": "ከንድፍ ሥርዓቱ የገጽታ ቀለም ምረጥ።",
+        "options": {
+          "primary": "ዋና",
+          "accent": "አጽንዖት",
+          "success": "ስኬት",
+          "warning": "ማስጠንቀቂያ",
+          "error": "ስህተት",
+          "info": "መረጃ"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "የመማር ዓላማ",
+        "description": "እንደ oer:hasLearningObjective የሚወጣ የመማር ዓላማ ማጣቀሻ።"
+      },
+      {
+        "property": "assessing",
+        "title": "የሚመዝነው",
+        "description": "እንደ oer:assessing የሚወጣ የእንቅስቃሴ ማጣቀሻ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "ተጨማሪ አገናኝ",
+        "description": "ወደ ተጨማሪ መረጃ የሚወስድ አገናኝ።"
+      }
+    ]
+  }
+}

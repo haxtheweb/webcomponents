@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Эш битен йөкләп алу",
+    "description": "Йөкләп алырга мөмкин булган файлларны күрсәтү өчен төймә."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Йөкләп алу исеме."
+      },
+      {
+        "property": "link",
+        "title": "Сылтама",
+        "description": "Йөкләп алу сылтамасы."
+      }
+    ]
+  }
+}

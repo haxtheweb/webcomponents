@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Item Kerjaya",
+    "description": "Organisasi individu dan peranan yang berkaitan dengannya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Nama Organisasi"
+      },
+      {
+        "property": "location",
+        "title": "Lokasi"
+      },
+      {
+        "property": "source",
+        "title": "Sumber"
+      }
+    ]
+  }
+}

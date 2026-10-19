@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Stærðfræði",
+    "description": "Birta stærðfræði á fallegan hátt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Stærðfræði",
+        "description": "Sláðu inn jöfnu sem LaTeX"
+      }
+    ]
+  }
+}

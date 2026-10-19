@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Медијски цитат",
+    "description": "Слика са цитатом, навођењем извора и опционалним натписом."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Цитат",
+        "description": "Текст цитата."
+      },
+      {
+        "slot": "author",
+        "title": "Аутор",
+        "description": "Аутор цитата."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Детаљи о аутору",
+        "description": "Детаљи о аутору."
+      },
+      {
+        "slot": "caption",
+        "title": "Натпис",
+        "description": "Натпис слике."
+      },
+      {
+        "property": "src",
+        "title": "Извор слике",
+        "description": "Датотека слике за медијски цитат."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативни текст",
+        "description": "Алтернативни текст за слику."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Акцентна боја картице."
+      }
+    ]
+  }
+}

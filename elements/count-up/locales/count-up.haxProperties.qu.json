@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Wichaq yupay",
+    "description": "Rikukuqtin huk yupayta munasqa chaninkama wichaspa yupachiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Tukuy chanin",
+        "description": "Maykama yupana yupay."
+      },
+      {
+        "property": "start",
+        "title": "Qallariy chanin",
+        "description": "Maymanta yupana yupay."
+      },
+      {
+        "property": "duration",
+        "title": "Unaynin",
+        "description": "Yupay kuyuchiy hayk'a segundo unananpaq."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Ñawpaq qillqa",
+        "description": "Yupaypa ñawpaqninpi rikukuq qillqa (kayhina '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Qhipa qillqa",
+        "description": "Yupaypa qhipanpi rikukuq qillqa (kayhina '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Ñawpaq slot",
+        "description": "Yupaypa ñawpaqninpi akllanalla slot ukhunpi kaq."
+      },
+      {
+        "slot": "suffix",
+        "title": "Qhipa slot",
+        "description": "Yupaypa qhipanpi akllanalla slot ukhunpi kaq."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Decimal kitikuna",
+        "description": "Hayk'a decimal kitikuna rikuchinapaq."
+      },
+      {
+        "property": "separator",
+        "title": "Waranqa t'aqaq",
+        "description": "Waranqa t'aqakunata t'aqaq sanampa."
+      },
+      {
+        "property": "decimal",
+        "title": "Decimal sanampa",
+        "description": "Decimal chimpupaq sanampa."
+      },
+      {
+        "property": "noeasing",
+        "title": "Mana llamp'uyachiy",
+        "description": "Llamp'uyachiyta hark'ay, yupay chiqanlla kananpaq."
+      }
+    ]
+  }
+}

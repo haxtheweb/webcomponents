@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG־פּערזאָנאַזש",
+    "description": "שפּאַסיקער פּערזאָנאַזש פֿון HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "נאָמען",
+        "description": "וואָרט געניצט צו שאַפֿן אַ צופֿעליקן פּערזאָנאַזש."
+      },
+      {
+        "property": "hat",
+        "title": "הוט",
+        "description": "סטיל פֿון הוט.",
+        "options": {
+          "none": "דעפֿאָלט",
+          "random": "צופֿעליק",
+          "bunny": "קיניגל",
+          "cowboy": "קאַובוי",
+          "education": "בילדונג",
+          "construction": "בויונג",
+          "warning": "וואָרענונג",
+          "watermelon": "קאַווענע",
+          "coffee": "קאַווע",
+          "knight": "ריטער",
+          "ninja": "נינדזשאַ",
+          "party": "שׂימחה",
+          "error": "טעות",
+          "edit": "רעדאַקטירן"
+        }
+      },
+      {
+        "property": "width",
+        "title": "ברייט",
+        "description": "ברייט פֿונעם פּערזאָנאַזש אין פּיקסלען."
+      },
+      {
+        "property": "height",
+        "title": "הייך",
+        "description": "הייך פֿונעם פּערזאָנאַזש אין פּיקסלען."
+      },
+      {
+        "property": "fire",
+        "title": "ברענט?",
+        "description": "צי דער פּערזאָנאַזש ברענט."
+      },
+      {
+        "property": "walking",
+        "title": "גייט?",
+        "description": "גיין־אַנימאַציע; לויפֿט ווען ער ברענט."
+      }
+    ]
+  }
+}

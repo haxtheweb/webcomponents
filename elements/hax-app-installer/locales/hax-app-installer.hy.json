@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub պահոց",
   "anErrorOccurred": "Սխալ տեղի ունեցավ",
-  "retry": "Կրկին փորձել"
+  "retry": "Կրկին փորձել",
+  "permissionRequired": "Պահանջվում է թույլտվություն",
+  "passwordRequirements": "Գաղտնաբառի պահանջներ",
+  "requirementLength": "Առնվազն 8 նիշ",
+  "requirementUppercase": "Մեկ մեծատառ",
+  "requirementLowercase": "Մեկ փոքրատառ",
+  "requirementNumber": "Մեկ թիվ",
+  "requirementSymbol": "Մեկ նշան"
 }

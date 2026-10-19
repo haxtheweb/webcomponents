@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ಇ-ಪುಸ್ತಕ ಬಟನ್",
+    "description": "ಇ-ಪುಸ್ತಕಕ್ಕೆ ಲಿಂಕ್ ಮಾಡುವ ಬಟನ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಬಟನ್‌ನ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "link",
+        "title": "ಲಿಂಕ್",
+        "description": "ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ ಮರುನಿರ್ದೇಶಿಸಬೇಕಾದ ಲಿಂಕ್."
+      },
+      {
+        "property": "icon",
+        "title": "ಐಕಾನ್",
+        "description": "ಈ ಲಿಂಕ್ ಅನ್ನು ಪ್ರತಿನಿಧಿಸುವ ಐಕಾನ್"
+      }
+    ]
+  }
+}

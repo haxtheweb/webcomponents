@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Jeri mai lambobi",
+    "description": "Ƙirƙiri jeri mai lambobi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Salon lamba",
+        "description": "Salon da ake amfani da shi don lambobin jeri mai tsari.",
+        "options": {
+          "": "Tsoho (goma)",
+          "list-decimal-leading-zero": "Goma tare da sifili a gaba (01, 02, 03)",
+          "list-lower-alpha": "Ƙananan haruffa (a, b, c)",
+          "list-upper-alpha": "Manyan haruffa (A, B, C)",
+          "list-lower-roman": "Ƙananan lambobin Romawa (i, ii, iii)",
+          "list-upper-roman": "Manyan lambobin Romawa (I, II, III)"
+        }
+      }
+    ]
+  }
+}

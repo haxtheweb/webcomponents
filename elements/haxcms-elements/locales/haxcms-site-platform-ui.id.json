@@ -1,0 +1,18 @@
+{
+  "title": "Fitur Platform",
+  "experienceLevel": "Tingkat pengalaman",
+  "cmsFeatures": "Fitur CMS",
+  "editorFeatures": "Fitur editor",
+  "blocks": "Blok",
+  "filterBlocks": "Saring blok",
+  "requiredTextNote": "Beberapa tag teks wajib dan selalu aktif (ditampilkan nonaktif).",
+  "download": "Unduh kerangka dasar",
+  "save": "Simpan",
+  "generating": "Membuat kerangka dasar…",
+  "generated": "Kerangka dasar diunduh",
+  "enabled": "Diaktifkan",
+  "feature": "Fitur",
+  "details": "Detail",
+  "featuresWarning": "Menonaktifkan opsi ini dapat menghilangkan kemampuan penulisan dan administrasi utama.",
+  "largeSiteWarning": "Situs ini memiliki banyak halaman. Pembuatan kerangka dasar mungkin memakan waktu."
+}

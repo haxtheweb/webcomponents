@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Marca de página",
+    "description": "Nota editorial para los autores de la página."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Color de acento de la marca de página."
+      },
+      {
+        "property": "label",
+        "title": "Etiqueta",
+        "description": "Texto de la etiqueta de la marca de página."
+      }
+    ]
+  }
+}

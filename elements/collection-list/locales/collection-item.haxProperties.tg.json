@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Унсури коллексия",
+    "description": "Унсури кортшакл барои истифода дар рӯйхати коллексия, бо матн, пайванд ва медиаи ихтиёрӣ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Пайванд",
+        "description": "URL-и таъинот барои ин корт."
+      },
+      {
+        "property": "image",
+        "title": "Тасвир",
+        "description": "Тасвири замина."
+      },
+      {
+        "property": "line1",
+        "title": "Сатри 1",
+        "description": "Сатри якуми матн."
+      },
+      {
+        "property": "line2",
+        "title": "Сатри 2",
+        "description": "Сатри дуюми матн."
+      },
+      {
+        "property": "line3",
+        "title": "Сатри 3",
+        "description": "Сатри сеюми матн."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Нишона",
+        "description": "Нишонае, ки кортро ифода мекунад."
+      },
+      {
+        "property": "saturate",
+        "title": "Эффекти серӣ",
+        "description": "Ҳангоми фокуси корбар серии тасвирро тағйир диҳед."
+      },
+      {
+        "property": "tags",
+        "title": "Тегҳо",
+        "description": "Рӯйхати тегҳо, ки бо вергул ҷудо шудаанд."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранг",
+        "description": "Ранге, ки барои тегҳо истифода мешавад."
+      },
+      {
+        "property": "alt",
+        "title": "Алт",
+        "description": "Матни алтернативие, ки пайвандро тавсиф мекунад."
+      }
+    ]
+  }
+}

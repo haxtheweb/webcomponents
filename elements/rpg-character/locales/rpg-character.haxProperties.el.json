@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Χαρακτήρας RPG",
+    "description": "Διασκεδαστικός χαρακτήρας από το HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Όνομα",
+        "description": "Λέξη που χρησιμοποιείται για τη δημιουργία τυχαίου χαρακτήρα."
+      },
+      {
+        "property": "hat",
+        "title": "Καπέλο",
+        "description": "Στυλ καπέλου.",
+        "options": {
+          "none": "Προεπιλογή",
+          "random": "Τυχαίο",
+          "bunny": "Κουνελάκι",
+          "cowboy": "Καουμπόικο",
+          "education": "Εκπαίδευση",
+          "construction": "Κατασκευή",
+          "warning": "Προειδοποίηση",
+          "watermelon": "Καρπούζι",
+          "coffee": "Καφές",
+          "knight": "Ιππότης",
+          "ninja": "Νίντζα",
+          "party": "Πάρτι",
+          "error": "Σφάλμα",
+          "edit": "Επεξεργασία"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Πλάτος",
+        "description": "Πλάτος χαρακτήρα σε pixel."
+      },
+      {
+        "property": "height",
+        "title": "Ύψος",
+        "description": "Ύψος χαρακτήρα σε pixel."
+      },
+      {
+        "property": "fire",
+        "title": "Φλέγεται;",
+        "description": "Αν ο χαρακτήρας φλέγεται."
+      },
+      {
+        "property": "walking",
+        "title": "Περπατά;",
+        "description": "Κινούμενο περπάτημα· εκτελείται όταν φλέγεται."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Vietturis",
+    "description": "Vietturis, ko var pārvērst atlasītajā multivides veidā"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tips",
+        "description": "Rīka veids, ko tas pieņem aizstāšanai.",
+        "options": {
+          "text": "Teksts / saturs",
+          "document": "Dokuments / fails",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Attēls",
+          "math": "Matemātika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Teksts",
+        "description": "Sīkāk norādiet vēlamo vietturi"
+      }
+    ]
+  }
+}

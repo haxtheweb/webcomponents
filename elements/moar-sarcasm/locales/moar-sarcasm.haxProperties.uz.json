@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kinoya",
+    "description": "Matnni masxaraomuz tarzda taqdim etish"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Matn",
+        "description": "Kinoyali qilinadigan matn"
+      }
+    ]
+  }
+}

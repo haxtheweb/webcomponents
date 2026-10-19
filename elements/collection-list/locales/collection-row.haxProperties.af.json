@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Versamelingsry",
+    "description": "Ry-styl-item vir gebruik binne 'n versamelingslys, met teks, skakel, ikoon, etikette en opsionele prent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Skakel",
+        "description": "Bestemmings-URL vir hierdie ry."
+      },
+      {
+        "property": "image",
+        "title": "Prent",
+        "description": "Prent vir die ry."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternatiewe teks wat die prent beskryf."
+      },
+      {
+        "property": "line1",
+        "title": "Reël 1",
+        "description": "Eerste teksreël."
+      },
+      {
+        "property": "line2",
+        "title": "Reël 2",
+        "description": "Tweede teksreël."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Ikoon wat die ry voorstel."
+      },
+      {
+        "property": "saturate",
+        "title": "Versadigingseffek",
+        "description": "Verander prentversadiging wanneer die gebruiker fokus."
+      },
+      {
+        "property": "tags",
+        "title": "Etikette",
+        "description": "Kommageskeide lys van etikette."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kleur",
+        "description": "Kleur gebruik vir ikoon en etikette."
+      }
+    ]
+  }
+}

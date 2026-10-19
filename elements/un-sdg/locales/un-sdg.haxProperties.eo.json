@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Celo de Daŭripova Evoluo de Unuiĝintaj Nacioj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Celo",
+        "description": "Numero de UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Nur koloro",
+        "description": "Montri nur la koloron de la celo."
+      }
+    ]
+  }
+}

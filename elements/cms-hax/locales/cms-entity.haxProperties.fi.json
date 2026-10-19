@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS-entiteetti",
+    "description": "Taustapalvelussa renderöity CMS-entiteetti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tyyppi",
+        "description": "tyyppi CMS:stämme",
+        "options": {
+          "node": "Solmu",
+          "user": "Käyttäjä",
+          "file": "Tiedosto"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID CMS:stämme"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Näyttötila",
+        "description": "näyttötila CMS:stämme"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Belgili sanaw",
+    "description": "Bellikli sanaw dörediň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Bellik stili",
+        "description": "Tertipsiz sanawyň bellikleri üçin ulanylýan stil.",
+        "options": {
+          "": "Deslapky (inedördül)",
+          "list-disc": "Disk",
+          "list-circle": "Tegelek",
+          "list-square": "Inedördül"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Темалаштырылган Polaris аракетке чакыруу баскычын көрсөтүү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Баскычтын тексти",
+        "description": "Аракетке чакыруу баскычында көрсөтүлгөн текст."
+      },
+      {
+        "property": "link",
+        "title": "Шилтеме",
+        "description": "Баскычтын бара турган URL дареги."
+      },
+      {
+        "property": "type",
+        "title": "Вариант",
+        "description": "Визуалдык стилдин варианты.",
+        "options": {
+          "primary": "Негизги",
+          "tinted": "Боёлгон",
+          "light": "Ачык"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Контурлуу стиль",
+        "description": "Контурлуу көрүнүштү иштетүү."
+      },
+      {
+        "property": "filled",
+        "title": "Толтурулган стиль",
+        "description": "Толтурулган көрүнүштү иштетүү."
+      }
+    ]
+  }
+}

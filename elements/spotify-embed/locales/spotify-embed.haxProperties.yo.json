@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Àpò fún àwọn ẹ̀rọ ìṣeré Spotify tí a fi sínú."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orísun",
+        "description": "Ìjápọ̀ ìfisínú tàbí pínpín láti Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Àkòrí",
+        "description": "Àkòrí àwọ̀ ẹ̀yìn fún ẹ̀rọ ìṣeré.",
+        "options": {
+          "": "Àtilẹ̀wá",
+          "0": "Dúdú"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Ìwọ̀n",
+        "description": "Ìwọ̀n ẹ̀rọ ìṣeré.",
+        "options": {
+          "normal": "Àtilẹ̀wá",
+          "compact": "Kékeré-ṣókí"
+        }
+      }
+    ]
+  }
+}

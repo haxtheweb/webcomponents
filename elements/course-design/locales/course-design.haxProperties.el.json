@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Σχεδιασμός μαθήματος",
+    "description": "Περιέκτης για εκπαιδευτικό υλικό και στοιχεία σχεδιασμού μαθήματος."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Αναγνωριστικό μαθήματος",
+        "description": "OER Schema: το αναγνωριστικό του μαθήματος, π.χ. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Περίοδος διδασκαλίας",
+        "description": "OER Schema: η περίοδος κατά την οποία προσφέρεται το μάθημα."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Μορφή παράδοσης",
+        "description": "OER Schema: η μορφή παράδοσης του μαθήματος (π.χ. δια ζώσης, διαδικτυακά, υβριδικά)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Κύριος διδάσκων",
+        "description": "OER Schema: ο κύριος διδάσκων του μαθήματος."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL διαγράμματος μαθήματος",
+        "description": "OER Schema: URL προς το διάγραμμα του μαθήματος."
+      }
+    ]
+  }
+}

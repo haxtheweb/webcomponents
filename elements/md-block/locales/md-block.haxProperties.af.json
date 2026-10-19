@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "'n Blok Markdown-inhoud, direk of afgeleë gelaai"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Rou Markdown"
+      },
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "Bronlêer vir Markdown"
+      }
+    ]
+  }
+}

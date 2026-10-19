@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "הטמעת תוכן אינטרנט חיצוני ב-iframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL של המשאב",
+        "description": "URL של המשאב."
+      },
+      {
+        "property": "height",
+        "title": "גובה",
+        "description": "גובה ה-iframe."
+      },
+      {
+        "property": "width",
+        "title": "רוחב",
+        "description": "רוחב ה-iframe."
+      }
+    ]
+  }
+}

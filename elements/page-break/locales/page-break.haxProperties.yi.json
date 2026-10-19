@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "פּרטים פֿון זײַט",
+    "description": "באַשטימען אַ וויזועלע צעטיילונג צווישן זײַטן, וואָס CMS־ן קענען ניצן צו שאַפֿן זײַטן."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "טיטל געוויזן אין דער טעמע און ערשטן קעפּל."
+      },
+      {
+        "property": "pageType",
+        "title": "טיפּ",
+        "description": "וויזועלע קאָנטעקסט־באַצייכענונג פֿון דער זײַט.",
+        "options": {
+          "": "-- קיינער --",
+          "content": "אינהאַלט",
+          "assessment": "אָפּשאַצונג",
+          "quiz": "קוויז",
+          "submission": "אײַנגעבונג",
+          "lesson": "לעקציע",
+          "module": "מאָדול",
+          "task": "אויפֿגאַבע",
+          "activity": "טעטיקייט",
+          "project": "פּראָיעקט",
+          "practice": "איבונג",
+          "unit": "איינהייט",
+          "objectives": "לערן־צילן",
+          "connection": "פֿאַרבינדונג",
+          "knowledge": "צי ווייסטו?",
+          "strategy": "לערן־סטראַטעגיע",
+          "discuss": "דיסקוטירן",
+          "listen": "הערן",
+          "make": "מאַכן",
+          "observe": "אָבסערווירן",
+          "present": "פּרעזענטירן",
+          "reading": "לייענען",
+          "reflect": "איבערטראַכטן",
+          "research": "פֿאָרשן",
+          "watch": "קוקן",
+          "write": "שרײַבן"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "טעגן",
+        "description": "רשימה פֿון טעגן, אָפּגעטיילט מיט קאָמעס."
+      },
+      {
+        "property": "linkUrl",
+        "title": "לינק־URL",
+        "description": "ווײַטערפֿיר־URL געוויזן אַנשטאָט דעם אינהאַלט פֿון דער זײַט."
+      },
+      {
+        "property": "linkTarget",
+        "title": "לינק־ציל",
+        "description": "עפֿענען לינקען אינעם זעלבן פֿענצטער אָדער אין אַ נײַעם פֿענצטער.",
+        "options": {
+          "_self": "זעלבער פֿענצטער",
+          "_blank": "נײַער פֿענצטער"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "פֿאַרעפֿנטלעכט",
+        "description": "ניט־פֿאַרעפֿנטלעכטע זײַטן זענען באַהאַלטן פֿון די לייענער."
+      },
+      {
+        "property": "locked",
+        "title": "פֿאַרשליסן זײַט",
+        "description": "פֿאַרשליסן אָדער עפֿענען אַלע עלעמענטן אויף דער זײַט."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "איבערגיין דעם אויטאָמאַטישן slug",
+        "description": "פֿאַרשליסן דעם slug פֿון אויטאָמאַטישע דערהײַנטיקונגען לויטן טיטל אָדער עלטערן."
+      },
+      {
+        "property": "slug",
+        "title": "וועג",
+        "description": "URL־slug פֿאַר דער זײַט."
+      },
+      {
+        "property": "image",
+        "title": "מעדיע",
+        "description": "מעדיע וואָס פֿאַרטרעט די זײַט, געניצט אין געוויסע טעמעס און אָנקוקן."
+      },
+      {
+        "property": "parent",
+        "title": "עלטערן",
+        "description": "וועג פֿון דער עלטערן־זײַט."
+      },
+      {
+        "property": "noderefs",
+        "title": "פֿאַרבונדענער אינהאַלט",
+        "description": "זײַטן פֿאַרבונדן מיט דער זײַט."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "באַשרײַבונג",
+        "description": "באַשרײַבונג געניצט אין זאַמלונגען און פֿאַר SEO."
+      },
+      {
+        "property": "entityType",
+        "title": "ענטיטעט־טיפּ",
+        "description": "לויט דעפֿאָלט זײַט, סײַדן אַנדערש באַשטימט.",
+        "options": {
+          "page": "זײַט (דעפֿאָלט)",
+          "taxonomy": "טאַקסאָנאָמיע",
+          "taxonomyTerm": "טאַקסאָנאָמיע־טערמין",
+          "region": "געגנט"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "איקאָן",
+        "description": "איקאָן פֿאַרבונדן מיט דער זײַט אינעם זײַטל."
+      },
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "קאָליר פֿאַרבונדן מיט דער זײַט אינעם זײַטל."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "באַהאַלטן אין מעניו",
+        "description": "באַהאַלטן די זײַט פֿון מעניוען און האַלטן איר URL."
+      },
+      {
+        "property": "order",
+        "title": "סדר",
+        "description": "סדר לגבי שוועסטער־זײַטן."
+      },
+      {
+        "property": "developerTheme",
+        "title": "זײַט־טעמע",
+        "description": "איבערגיין די טעמע נאָר פֿאַר דער זײַט."
+      },
+      {
+        "property": "author",
+        "title": "מחבר",
+        "description": "באַניצער־נאָמען פֿון דער לעצטער פּערזאָן וואָס האָט געענדערט די זײַט."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "આઇકન",
+    "description": "સંપૂર્ણ આઇકન લાઇબ્રેરીમાંથી આઇકન."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "આઇકન",
+        "description": "બતાવવાનું આઇકન."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "આઇકન માટે ઍક્સેન્ટ રંગ."
+      },
+      {
+        "property": "dark",
+        "title": "ડાર્ક",
+        "description": "ડાર્ક મોડ વાપરો (ઊલટા રંગો)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Дүнгийн дэвтэр",
+    "description": "Рубриктэй, олон backend-ийг дэмждэг толгойгүй дүнгийн дэвтэр."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Эх сурвалж",
+        "description": "Өгөгдлийн эх сурвалжийн төрөл (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON өгөгдлийн блок",
+          "filesystem": "Файлын систем"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Эх өгөгдөл",
+        "description": "Дүнгийн дэвтрийн URL эсвэл JSON өгөгдөл."
+      },
+      {
+        "property": "forCourse",
+        "title": "Хичээлийн лавлагаа",
+        "description": "Үнэлгээний нөөц бүр дээр oer:forCourse болгон гаргах хичээлийн таних код."
+      }
+    ]
+  }
+}

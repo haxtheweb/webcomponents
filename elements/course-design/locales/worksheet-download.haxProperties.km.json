@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ទាញយកសន្លឹកកិច្ចការ",
+    "description": "ប៊ូតុងសម្រាប់បង្ហាញឯកសារដែលអាចទាញយកបាន។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងនៃការទាញយក។"
+      },
+      {
+        "property": "link",
+        "title": "តំណ",
+        "description": "តំណសម្រាប់ការទាញយក។"
+      }
+    ]
+  }
+}

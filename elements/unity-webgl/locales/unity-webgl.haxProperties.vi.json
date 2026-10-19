@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Trình phát Unity",
+    "description": "Trình phát Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Đích",
+        "description": "Đường dẫn đến bản dựng trò chơi."
+      },
+      {
+        "property": "compression",
+        "title": "Phương thức nén",
+        "description": "Phần mở rộng tệp nén cho tài nguyên trò chơi."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL phát trực tuyến",
+        "description": "URL tài nguyên phát trực tuyến."
+      },
+      {
+        "property": "companyname",
+        "title": "Tên công ty",
+        "description": "Tên công ty."
+      },
+      {
+        "property": "productname",
+        "title": "Tên sản phẩm",
+        "description": "Tên trò chơi."
+      },
+      {
+        "property": "productversion",
+        "title": "Phiên bản sản phẩm",
+        "description": "Phiên bản phát hành."
+      },
+      {
+        "property": "width",
+        "title": "Chiều rộng canvas",
+        "description": "Chiều rộng CSS của canvas (ví dụ px hoặc em)."
+      },
+      {
+        "property": "height",
+        "title": "Chiều cao canvas",
+        "description": "Chiều cao CSS của canvas (ví dụ px hoặc em)."
+      },
+      {
+        "property": "background",
+        "title": "Nền canvas",
+        "description": "Nền CSS của canvas."
+      }
+    ]
+  }
+}

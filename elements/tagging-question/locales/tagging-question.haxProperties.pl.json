@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Pytanie z tagami",
+    "description": "Wybierz tagi, aby odpowiedzieć na pytanie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pytanie",
+        "description": "Pytanie, na które użytkownicy mają odpowiedzieć."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format oceniania",
+        "description": "OER Schema: format oceniania tego sprawdzianu (np. punkty, litera, procent, ukończenie)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cel uczenia się",
+        "description": "OER Schema: cel uczenia się powiązany z tym sprawdzianem."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kurs, dla którego przeznaczony jest ten sprawdzian."
+      },
+      {
+        "property": "answers",
+        "title": "Odpowiedzi"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nazwa quizu",
+        "description": "Nazwa quizu używana do identyfikacji xAPI w systemach analitycznych."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Káàdì Ìfìwéránṣẹ́",
+    "description": "Ẹyọ mídíà aláwàdà tí ó jọ káàdì ìfìwéránṣẹ́ gidi láti ibìkan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Sí",
+        "description": "Ta ni èyí ń lọ sọ́dọ̀ rẹ̀?"
+      },
+      {
+        "property": "from",
+        "title": "Láti",
+        "description": "Ta ni ọ́?"
+      },
+      {
+        "property": "message",
+        "title": "Ìfiránṣẹ́",
+        "description": "Kí ni o fẹ́ sọ?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Tí a fi òǹtẹ̀ lù láti",
+        "description": "Ibo ni a ti fi káàdì yìí ránṣẹ́?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Orísun Fọ́tò Àkọ́kọ́",
+        "description": "Ibo ni fọ́tò rẹ wà?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Orísun Fọ́tò Òǹtẹ̀",
+        "description": "Ibo ni fọ́tò rẹ wà?"
+      }
+    ]
+  }
+}

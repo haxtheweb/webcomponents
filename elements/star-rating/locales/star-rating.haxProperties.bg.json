@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Оценка със звезди",
+    "description": "Елемент за показване на оценка или бутон за оценяване."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Резултат",
+        "description": "Текуща стойност на резултата."
+      },
+      {
+        "property": "possible",
+        "title": "Възможен",
+        "description": "Максимален възможен резултат."
+      },
+      {
+        "property": "numStars",
+        "title": "Брой звезди",
+        "description": "Брой звезди за показване."
+      },
+      {
+        "property": "interactive",
+        "title": "Интерактивно",
+        "description": "Разрешаване на потребителя да задава оценката."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Режим на скала на рубрика",
+        "description": "Извеждане на метаданни RubricScale и RubricLevel от OER Schema (levelOrdinal/levelPoints) за всяка звезда."
+      }
+    ]
+  }
+}

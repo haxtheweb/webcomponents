@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris plytelė",
+    "description": "Rodyti Polaris plytelę su pavadinimu, pasirenkamu papildomu tekstu ir pasirenkama nuoroda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Pagrindinis tekstas",
+        "description": "Pagrindinis plytelės tekstas."
+      },
+      {
+        "property": "line2",
+        "title": "Antrinis tekstas",
+        "description": "Pasirenkamas papildomas tekstas."
+      },
+      {
+        "property": "type",
+        "title": "Plytelės stilius",
+        "description": "Iš anksto nustatytas plytelės vizualinis stilius.",
+        "options": {
+          "1": "1 stilius",
+          "2": "2 stilius",
+          "3": "3 stilius",
+          "4": "4 stilius",
+          "5": "5 stilius"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Fono vaizdas",
+        "description": "Fono vaizdo URL, naudojamas vaizdus palaikančiuose plytelių stiliuose."
+      },
+      {
+        "property": "link",
+        "title": "Nuoroda",
+        "description": "Pasirenkamas plytelės veiksmo paskirties URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Verdéngschtbadge",
+    "description": "Visuelle Badge, deen den Erwerb vun enger Kompetenz kommunizéiert."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Badge-Titel",
+        "description": "Titel, deen um Badge ugewise gëtt."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Badge-Bild",
+        "description": "Bild-URL fir de Badge."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Badge-Detailer",
+        "description": "Detailer iwwer de Badge."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlink",
+        "description": "Link, dee mam Badge verbonnen ass."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Badge-Kompetenzen",
+        "description": "Kompetenzen, déi um Badge ugewise ginn."
+      },
+      {
+        "property": "skill",
+        "title": "Kompetenz (OER Schema)",
+        "description": "OER Schema: eng geléiert Kompetenz, déi duerch d'Erreeche vun dësem Léierzil erworwe gëtt."
+      }
+    ]
+  }
+}

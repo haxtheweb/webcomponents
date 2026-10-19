@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Enlinia sono",
+    "description": "Ludi sonon enlinie por kompletigi la paĝan enhavon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonto",
+        "description": "MP3-dosiero aŭ URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Akcenta koloro de la karto."
+      },
+      {
+        "property": "shiny",
+        "title": "Brila",
+        "description": "Uzi pli helan akcentan fonon anstataŭ grizan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Malhela",
+        "description": "Uzi malhelan reĝimon."
+      }
+    ]
+  }
+}

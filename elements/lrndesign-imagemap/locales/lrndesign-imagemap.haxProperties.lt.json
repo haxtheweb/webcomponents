@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Vaizdo žemėlapis",
+    "description": "Prieinamas vaizdo žemėlapis su interaktyviomis aktyviosiomis sritimis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiketė",
+        "description": "Vaizdo žemėlapio etiketė."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Aktyviųjų sričių informacija",
+        "description": "Interaktyvios aktyviosios sritys vaizdo žemėlapyje."
+      }
+    ]
+  }
+}

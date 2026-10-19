@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Jêgirtin",
+    "description": "Hêmana jêgirtinê bi sê modên pêşkêşkirinê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê berhema jêgirtî."
+      },
+      {
+        "property": "source",
+        "title": "Girêdana çavkaniyê",
+        "description": "URLa çavkaniyê ji bo berhema jêgirtî."
+      },
+      {
+        "property": "date",
+        "title": "Dîroka gihîştinê",
+        "description": "Dîroka ku çavkanî lê hat gihîştin."
+      },
+      {
+        "property": "scope",
+        "title": "Qada",
+        "description": "Qada hêmanê ya ku were jêgirtin.",
+        "options": {
+          "sibling": "Hêmana hevrêz",
+          "parent": "Hêmana dêûbav"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lîsans",
+        "description": "Lîsansa berhema jêgirtî."
+      },
+      {
+        "property": "creator",
+        "title": "Afirîner",
+        "description": "Afirîner an xwediyê berhema jêgirtî."
+      },
+      {
+        "property": "typeof",
+        "title": "Cureya OER Schema",
+        "description": "Çîna OER Schema ji bo vê jêgirtinê. Xwerû oer:ReferencedMaterial e; tenê bi çîneke OER a derbasdar biguherîne (mînak oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

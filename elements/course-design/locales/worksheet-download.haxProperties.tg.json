@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Боргирии варақаи корӣ",
+    "description": "Тугма барои намоиши файлҳои барои боргирӣ дастрас."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Сарлавҳа",
+        "description": "Сарлавҳаи боргирӣ."
+      },
+      {
+        "property": "link",
+        "title": "Пайванд",
+        "description": "Пайванди боргирӣ."
+      }
+    ]
+  }
+}

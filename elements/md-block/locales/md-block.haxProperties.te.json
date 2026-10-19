@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "నేరుగా లేదా రిమోట్‌గా లోడ్ చేయబడిన markdown కంటెంట్ బ్లాక్"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "ముడి markdown"
+      },
+      {
+        "property": "source",
+        "title": "మూలం",
+        "description": "markdown కోసం మూల ఫైల్"
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Таблица",
+    "description": "Табличные данные для веба."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Заголовок строки",
+        "description": "Считать первую строку заголовком."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Заголовок столбца",
+        "description": "Считать первый столбец заголовком."
+      },
+      {
+        "property": "footer",
+        "title": "Итоговая строка",
+        "description": "Считать последнюю строку итоговой."
+      },
+      {
+        "property": "sort",
+        "title": "Сортировка",
+        "description": "Разрешить сортировку по значениям столбцов."
+      },
+      {
+        "property": "filter",
+        "title": "Разрешить фильтр",
+        "description": "Разрешить фильтрацию по значениям столбцов."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Числовое оформление",
+        "description": "Применять числовое оформление к числовым столбцам."
+      },
+      {
+        "property": "responsive",
+        "title": "Адаптивность",
+        "description": "Подстраивать макет таблицы под маленькие экраны."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Режим рубрики",
+        "description": "Интерпретировать эту таблицу как Rubric OER Schema, чтобы выводились метаданные Rubric, RubricScale, RubricCriterion и RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Тип рубрики",
+        "description": "Стиль рубрики, выводимый как oer:rubricType (имеет смысл, только когда включён режим рубрики).",
+        "options": {
+          "": "(нет)",
+          "analytic": "Аналитическая",
+          "holistic": "Целостная",
+          "single-point": "Одноуровневая",
+          "checklist": "Контрольный список"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "С границами"
+      },
+      {
+        "property": "condensed",
+        "title": "Сжатые строки",
+        "description": "Уменьшить высоту строк."
+      },
+      {
+        "property": "striped",
+        "title": "Чередующиеся строки",
+        "description": "Затенять каждую вторую строку."
+      },
+      {
+        "property": "downloadable",
+        "title": "Кнопка скачивания",
+        "description": "Добавить кнопку для скачивания таблицы."
+      },
+      {
+        "property": "copyable",
+        "title": "Кнопка копирования",
+        "description": "Добавить кнопку для копирования данных таблицы в CSV."
+      },
+      {
+        "property": "printable",
+        "title": "Кнопка печати",
+        "description": "Добавить кнопку для печати только таблицы."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Данные CSV",
+        "description": "Создать таблицу из загруженного CSV-файла."
+      }
+    ]
+  }
+}

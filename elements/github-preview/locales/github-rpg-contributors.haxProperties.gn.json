@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub pytyvõhára rysýi",
+    "description": "Ojehechauka RPG tapicha ramo GitHub API rupive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Atyguasu",
+        "description": "Atyguasu réra github.com/ORG/REPO-gui."
+      },
+      {
+        "property": "repo",
+        "title": "Ñongatuha",
+        "description": "Ñongatuha réra github.com/ORG/REPO-gui."
+      },
+      {
+        "property": "limit",
+        "title": "Ñemboapyra",
+        "description": "Emboapyra mboy pytyvõhára ojehechaukáta."
+      }
+    ]
+  }
+}

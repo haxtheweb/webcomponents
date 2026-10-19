@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ìwé-àṣẹ",
+    "description": "Pèsè ìwé àṣẹ fún iṣẹ́ rẹ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé iṣẹ́ tí a tọ́ka sí."
+      },
+      {
+        "property": "source",
+        "title": "Ìjápọ̀ orísun",
+        "description": "URL orísun fún iṣẹ́ tó ní ìwé àṣẹ."
+      },
+      {
+        "property": "license",
+        "title": "Ìwé-àṣẹ",
+        "description": "Ìwé àṣẹ tí a lò fún iṣẹ́ yìí."
+      },
+      {
+        "property": "creator",
+        "title": "Olùṣẹ̀dá",
+        "description": "Olùṣẹ̀dá tàbí olóhun iṣẹ́ yìí."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Ìjápọ̀ orísun",
+        "description": "Ìjápọ̀ sí àwọn àlàyé ìwé àṣẹ míràn."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Àkọlé síwájú sí i",
+        "description": "Àkọlé fún àwọn àlàyé ìwé àṣẹ míràn."
+      }
+    ]
+  }
+}

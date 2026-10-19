@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "გარე ვებ-კონტენტის ჩაშენება."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "წყარო",
+        "description": "ამ რესურსის URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Gjør animerte GIF-er tilgjengelige."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Animert GIF",
+        "description": "URL til den animerte GIF-en."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ tekst",
+        "description": "Alternativ tekst for bildet."
+      },
+      {
+        "property": "longdesc",
+        "title": "Lang beskrivelse",
+        "description": "Lang beskrivelse av GIF-en for tilgjengelighet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Stillbilde",
+        "description": "URL til en stillbildeversjon av GIF-en."
+      }
+    ]
+  }
+}

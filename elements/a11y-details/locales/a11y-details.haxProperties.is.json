@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Aðgengilegur upplýsingahnappur",
+    "description": "Aðgengileg stigvaxandi birting með details og summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Hnappur",
+        "description": "Samantekt á efninu ef það er falið, t.d. \"upplýsingar\", \"lýsigögn\" o.s.frv."
+      },
+      {
+        "slot": "details",
+        "title": "Lýsing",
+        "description": "Ítarleg lýsing sem hægt er að fela eða sýna"
+      },
+      {
+        "slot": "",
+        "title": "Lýsingarhnappur",
+        "description": "Sjálfgefið fyrir hnapp sem sýnir/felur lýsingartexta, t.d. \"upplýsingar\", \"lýsigögn\" o.s.frv."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Valfrjáls samantektartexti þegar upplýsingar eru opnar"
+      },
+      {
+        "property": "closeText",
+        "title": "Valfrjáls samantektartexti þegar upplýsingar eru lokaðar"
+      }
+    ]
+  }
+}

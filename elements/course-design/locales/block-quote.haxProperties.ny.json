@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Mawu ogwidwa",
+    "description": "Bokosi la mawu ogwidwa lokongoletsedwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Gwero la mawu",
+        "description": "Mawu a gwero."
+      },
+      {
+        "property": "alt",
+        "title": "Mawu ofotokoza",
+        "description": "Mawu ena ofotokoza chithunzi."
+      },
+      {
+        "property": "image",
+        "title": "Chithunzi",
+        "description": "Chithunzi chowonetsedwa ndi mawu ogwidwawo."
+      }
+    ]
+  }
+}

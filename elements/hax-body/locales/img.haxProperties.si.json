@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "මූලික රූපය",
+    "description": "මූලික රූප මූලද්‍රව්‍යය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "මූලාශ්‍රය",
+        "description": "රූප URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "විකල්ප පෙළ",
+        "description": "ප්‍රවේශ්‍යතාව සහ SEO සඳහා විකල්ප පෙළ."
+      },
+      {
+        "attribute": "height",
+        "title": "උස",
+        "description": "පික්සල්වලින් උස. ස්වාභාවික ප්‍රමාණය භාවිත කිරීමට හිස්ව තබන්න."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "රූප පූරණය",
+        "description": "රූපය පූරණය වන විට තෝරන්න.",
+        "options": {
+          "lazy": "දෘශ්‍යමාන වූ විට පූරණය කරන්න",
+          "auto": "ස්වයංක්‍රීය"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "ප්‍රතිචාරාත්මක මූලාශ්‍ර (srcset)",
+        "description": "බ්‍රවුසරවලට තිරය සඳහා හොඳම ප්‍රමාණය තෝරා ගත හැකි වන පරිදි රූප URL සහ විස්තරක (උදා. 480w හෝ 2x) ලැයිස්තුගත කරන්න. සම්මත srcset ගුණාංගය ලෙස ගබඩා කෙරේ."
+      }
+    ]
+  }
+}

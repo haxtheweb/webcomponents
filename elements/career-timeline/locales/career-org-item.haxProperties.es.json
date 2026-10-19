@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Elemento de trayectoria",
+    "description": "Una organización individual y sus puestos asociados"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Nombre de la organización"
+      },
+      {
+        "property": "location",
+        "title": "Ubicación"
+      },
+      {
+        "property": "source",
+        "title": "Origen"
+      }
+    ]
+  }
+}

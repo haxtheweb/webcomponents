@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "星级评分",
+    "description": "评分显示组件或用于评分的按钮。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "分数",
+        "description": "当前分数值。"
+      },
+      {
+        "property": "possible",
+        "title": "满分",
+        "description": "可能的最高分数。"
+      },
+      {
+        "property": "numStars",
+        "title": "星星数量",
+        "description": "要显示的星星数量。"
+      },
+      {
+        "property": "interactive",
+        "title": "可互动",
+        "description": "允许用户通过互动设置评分。"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "评分量规模式",
+        "description": "为每颗星输出 OER Schema RubricScale 和 RubricLevel 元数据（levelOrdinal/levelPoints）。"
+      }
+    ]
+  }
+}

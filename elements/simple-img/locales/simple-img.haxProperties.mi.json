@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Whakaahua Māmā",
+    "description": "Raweke whakaahua mā ngā tawhā māmā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Pūtake",
+        "description": "URL pūtake o te whakaahua."
+      },
+      {
+        "property": "height",
+        "title": "Teitei",
+        "description": "Teitei kōwhiri o te whakaahua."
+      },
+      {
+        "property": "width",
+        "title": "Whānui",
+        "description": "Whānui kōwhiri o te whakaahua."
+      },
+      {
+        "property": "alt",
+        "title": "Kupu kē",
+        "description": "He whai hua mō ngā kaipānui mata me te SEO pai ake."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kounga",
+        "description": "Kounga whakaahua i te wā e hangaia ana (JPEG anake)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Arotahi Tiki",
+        "description": "He tohu mahinga mō ngā pūtirotiro hou.",
+        "options": {
+          "auto": "Aunoa",
+          "high": "Teitei",
+          "low": "Iti"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Tikanga wetewaehere",
+        "description": "He tohu mahinga mō te whakaatu whakaahua i ngā pūtirotiro hou.",
+        "options": {
+          "auto": "Aunoa",
+          "async": "Tukutahi-kore"
+        }
+      }
+    ]
+  }
+}

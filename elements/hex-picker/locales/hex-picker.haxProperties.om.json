@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Filataa Hex",
+    "description": "Filataa halluu koodii hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Gatii",
+        "description": "Gatii hex durtii"
+      },
+      {
+        "property": "disabled",
+        "title": "Kan dhaabbate",
+        "description": "Dirree barreeffamaa dhorki"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Agarsiisa Guddaa",
+        "description": "Agarsiisa guddaa keessatti halluu dabali"
+      }
+    ]
+  }
+}

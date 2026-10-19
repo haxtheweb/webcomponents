@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ตัวอย่าง GitHub",
+    "description": "รูปภาพที่เข้าถึงได้พร้อมคำอธิบายแบบยาว"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "องค์กร",
+        "description": "ชื่อเครื่องขององค์กร GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "รีโพสิทอรี",
+        "description": "ชื่อเครื่องของ repo"
+      },
+      {
+        "property": "extended",
+        "title": "มุมมองแบบขยาย",
+        "description": "รวม readme ไว้ในองค์ประกอบ"
+      }
+    ]
+  }
+}

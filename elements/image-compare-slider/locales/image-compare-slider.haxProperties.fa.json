@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "مقایسهٔ تصویر",
+    "description": "کشیدن یک تصویر روی تصویر دیگر برای مقایسه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "تصویر بالایی",
+        "description": "تصویر بالایی که روی تصویر پایینی کشیده می‌شود."
+      },
+      {
+        "property": "topAlt",
+        "title": "متن جایگزین تصویر بالایی",
+        "description": "متن جایگزین الزامی برای دسترس‌پذیری."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "تصویر پایینی",
+        "description": "تصویر پایینی که زیر تصویر بالایی نمایش داده می‌شود."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "متن جایگزین تصویر پایینی",
+        "description": "متن جایگزین الزامی برای دسترس‌پذیری."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "رفتار",
+        "description": "حالت پاک‌کردن (پیش‌فرض) یا حالت شفافیت تصویر بالایی را انتخاب کنید."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ نوار لغزنده."
+      },
+      {
+        "property": "dark",
+        "title": "تیره",
+        "description": "وارونه کردن رنگ نوار لغزنده."
+      },
+      {
+        "property": "position",
+        "title": "موقعیت اولیه",
+        "description": "موقعیت آغازین از 0 تا 100."
+      }
+    ]
+  }
+}

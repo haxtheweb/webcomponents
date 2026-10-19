@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Red kolekcije",
+    "description": "Stavka u obliku reda za korištenje unutar liste kolekcije, s tekstom, linkom, ikonom, oznakama i opcionalnom slikom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Odredišni URL za ovaj red."
+      },
+      {
+        "property": "image",
+        "title": "Slika",
+        "description": "Slika za red."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativni tekst koji opisuje sliku."
+      },
+      {
+        "property": "line1",
+        "title": "Red 1",
+        "description": "Prvi red teksta."
+      },
+      {
+        "property": "line2",
+        "title": "Red 2",
+        "description": "Drugi red teksta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona koja predstavlja red."
+      },
+      {
+        "property": "saturate",
+        "title": "Efekat zasićenosti",
+        "description": "Promijeni zasićenost slike kada je korisnik fokusira."
+      },
+      {
+        "property": "tags",
+        "title": "Oznake",
+        "description": "Lista oznaka odvojenih zarezom."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja",
+        "description": "Boja za ikonu i oznake."
+      }
+    ]
+  }
+}

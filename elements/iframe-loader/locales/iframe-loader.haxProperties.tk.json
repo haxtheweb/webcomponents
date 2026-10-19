@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Daşky web mazmunyny iframe-de ýerleşdiriň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çeşmäniň URL-i",
+        "description": "Çeşmäniň URL-i."
+      },
+      {
+        "property": "height",
+        "title": "Beýiklik",
+        "description": "Iframe-iň beýikligi."
+      },
+      {
+        "property": "width",
+        "title": "Giňlik",
+        "description": "Iframe-iň giňligi."
+      }
+    ]
+  }
+}

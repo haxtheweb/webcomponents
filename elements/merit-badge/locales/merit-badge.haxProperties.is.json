@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Merki um afrek",
+    "description": "Sjónrænt merki sem sýnir að færni hefur verið náð."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Titill merkis",
+        "description": "Titill sem birtist á merkinu."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Mynd merkis",
+        "description": "URL myndar fyrir merkið."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Upplýsingar um merki",
+        "description": "Upplýsingar um merkið."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Tengill",
+        "description": "Tengill sem tengist merkinu."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Færni merkis",
+        "description": "Færni sem birtist á merkinu."
+      },
+      {
+        "property": "skill",
+        "title": "Færni (OER Schema)",
+        "description": "OER Schema: færni sem aflað er með því að ljúka þessu námsmarkmiði."
+      }
+    ]
+  }
+}

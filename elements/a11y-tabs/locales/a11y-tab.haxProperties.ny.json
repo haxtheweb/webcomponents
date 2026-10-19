@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tabu",
+    "description": "Tabu imodzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Chizindikiro cha Tabu"
+      },
+      {
+        "property": "disabled",
+        "title": "Zoletsedwa"
+      },
+      {
+        "property": "label",
+        "title": "Dzina la Tabu"
+      },
+      {
+        "slot": "",
+        "title": "Zomwe Zili mu Tabu",
+        "description": "Zomwe zili mu tabu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Yapadera"
+      },
+      {
+        "property": "flag",
+        "title": "Mawu a Mbendera Osankha"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Chizindikiro cha Mbendera Chosankha"
+      }
+    ]
+  }
+}

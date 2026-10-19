@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ajoyib portlash",
+    "description": "Ixtiyoriy tovush effektlari bilan interaktiv portlash animatsiyasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Oʻlcham",
+        "description": "Portlash oʻlchamini belgilash.",
+        "options": {
+          "tiny": "Juda kichik",
+          "small": "Kichik",
+          "medium": "Oʻrta",
+          "large": "Katta",
+          "epic": "Ulkan"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Rang",
+        "description": "Portlash rang mavzusini belgilash.",
+        "options": {
+          "": "Standart",
+          "red": "Qizil",
+          "blue": "Koʻk",
+          "purple": "Binafsha",
+          "orange": "Toʻq sariq",
+          "yellow": "Sariq"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Tovush effektlari",
+        "description": "Tovush effektlarini yoqish."
+      },
+      {
+        "property": "resetSound",
+        "title": "Tovushni qayta boshlash",
+        "description": "Har safar tovushni boshidan boshlash."
+      },
+      {
+        "property": "image",
+        "title": "Maxsus rasm",
+        "description": "Maxsus portlash rasmi uchun ixtiyoriy URL."
+      },
+      {
+        "property": "sound",
+        "title": "Maxsus tovush",
+        "description": "Maxsus tovush effekti uchun ixtiyoriy URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Oʻchirilgan",
+        "description": "Barcha oʻzaro taʼsirlarni oʻchirish."
+      }
+    ]
+  }
+}

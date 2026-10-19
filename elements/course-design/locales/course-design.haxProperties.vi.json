@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Thiết kế khóa học",
+    "description": "Vùng chứa tài liệu giáo dục và các thành phần thiết kế khóa học."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Mã khóa học",
+        "description": "OER Schema: mã định danh của khóa học, ví dụ MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Học kỳ mở lớp",
+        "description": "OER Schema: học kỳ mà khóa học được mở."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Hình thức giảng dạy",
+        "description": "OER Schema: hình thức tổ chức khóa học (ví dụ: trực tiếp, trực tuyến, kết hợp)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Giảng viên chính",
+        "description": "OER Schema: giảng viên chính của khóa học."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL đề cương",
+        "description": "OER Schema: URL đến đề cương khóa học."
+      }
+    ]
+  }
+}

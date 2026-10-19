@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-merkteken",
+    "description": "Toon het PSU-identiteitsmerk met optionele collegenaam en doel-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Collegenaam",
+        "description": "Naam naast het merkteken."
+      },
+      {
+        "property": "name2",
+        "title": "Collegenaam 2",
+        "description": "Tweede naam onder de eerste collegenaam."
+      },
+      {
+        "property": "name3",
+        "title": "Collegenaam 3",
+        "description": "Derde naam onder de tweede collegenaam."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Doel-URL wanneer op het merkteken wordt geklikt."
+      },
+      {
+        "property": "type",
+        "title": "Variant",
+        "description": "Visuele variant van het merkteken.",
+        "options": {
+          "default": "Standaard",
+          "light": "Licht",
+          "dark": "Donker"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Verticale indeling",
+        "description": "Toon de derde naam onder de tweede naam met een horizontale lijn."
+      }
+    ]
+  }
+}

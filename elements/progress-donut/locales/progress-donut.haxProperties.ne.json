@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "प्रगति डोनट",
+    "description": "प्रगति डोनट"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "तत्वको शीर्षक"
+      },
+      {
+        "property": "desc",
+        "title": "विवरण",
+        "description": "पहुँचयोग्य लामो विवरण"
+      },
+      {
+        "property": "imageSrc",
+        "title": "तस्बिरको स्रोत",
+        "description": "डोनटभित्रको छविको स्रोत।"
+      },
+      {
+        "property": "imageAlt",
+        "title": "छवि Alt पाठ",
+        "description": "छविका लागि alt पाठ।"
+      },
+      {
+        "property": "animated",
+        "title": "एनिमेटेड",
+        "description": "पहिलो लोडमा प्रगति एनिमेट हुने कि नहुने"
+      },
+      {
+        "property": "complete",
+        "title": "पूरा",
+        "description": "पूरा भएका मानहरूको एरे।"
+      },
+      {
+        "property": "total",
+        "title": "कुल",
+        "description": "सबै वस्तुहरू पूरा हुँदाको कुल।"
+      },
+      {
+        "property": "startAngle",
+        "title": "सुरु कोण",
+        "description": "प्रगति सुरु हुने डोनट कोण"
+      }
+    ]
+  }
+}

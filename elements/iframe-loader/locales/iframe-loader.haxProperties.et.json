@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Manusta väline veebisisu iframe'i."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ressursi URL",
+        "description": "Ressursi URL."
+      },
+      {
+        "property": "height",
+        "title": "Kõrgus",
+        "description": "Iframe'i kõrgus."
+      },
+      {
+        "property": "width",
+        "title": "Laius",
+        "description": "Iframe'i laius."
+      }
+    ]
+  }
+}

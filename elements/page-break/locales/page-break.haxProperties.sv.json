@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Siddetaljer",
+    "description": "Definiera en visuell uppdelning mellan sidor som CMS kan använda för att skapa sidor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel som visas i temat och som första rubrik."
+      },
+      {
+        "property": "pageType",
+        "title": "Typ",
+        "description": "Visuell etikett för sidans sammanhang.",
+        "options": {
+          "": "-- ingen --",
+          "content": "Innehåll",
+          "assessment": "Bedömning",
+          "quiz": "Quiz",
+          "submission": "Inlämning",
+          "lesson": "Lektion",
+          "module": "Modul",
+          "task": "Uppgift",
+          "activity": "Aktivitet",
+          "project": "Projekt",
+          "practice": "Övning",
+          "unit": "Enhet",
+          "objectives": "Lärandemål",
+          "connection": "Koppling",
+          "knowledge": "Visste du?",
+          "strategy": "Inlärningsstrategi",
+          "discuss": "Diskutera",
+          "listen": "Lyssna",
+          "make": "Skapa",
+          "observe": "Observera",
+          "present": "Presentera",
+          "reading": "Läsning",
+          "reflect": "Reflektera",
+          "research": "Undersök",
+          "watch": "Titta",
+          "write": "Skriv"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Taggar",
+        "description": "Kommaseparerad lista med taggar."
+      },
+      {
+        "property": "linkUrl",
+        "title": "Länk-URL",
+        "description": "Omdirigerings-URL som visas i stället för sidans innehåll."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Länkmål",
+        "description": "Öppna länkar i samma fönster eller i ett nytt fönster.",
+        "options": {
+          "_self": "Samma fönster",
+          "_blank": "Nytt fönster"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Publicerad",
+        "description": "Opublicerade sidor är dolda för slutanvändare."
+      },
+      {
+        "property": "locked",
+        "title": "Lås sidan",
+        "description": "Lås eller lås upp alla element på den här sidan."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Åsidosätt automatisk slug",
+        "description": "Lås slug mot automatiska uppdateringar baserade på titel eller överordnad sida."
+      },
+      {
+        "property": "slug",
+        "title": "Sökväg",
+        "description": "URL-slug för den här sidan."
+      },
+      {
+        "property": "image",
+        "title": "Media",
+        "description": "Media som representerar sidan och används i vissa teman och vyer."
+      },
+      {
+        "property": "parent",
+        "title": "Överordnad",
+        "description": "Sökväg till den överordnade sidan."
+      },
+      {
+        "property": "noderefs",
+        "title": "Relaterat innehåll",
+        "description": "Sidor som är relaterade till den här sidan."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Beskrivning",
+        "description": "Beskrivning som används i samlingar och för sökmotoroptimering."
+      },
+      {
+        "property": "entityType",
+        "title": "Entitetstyp",
+        "description": "Standard är sida om inget annat anges.",
+        "options": {
+          "page": "Sida (standard)",
+          "taxonomy": "Taxonomi",
+          "taxonomyTerm": "Taxonomiterm",
+          "region": "Region"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon som är kopplad till den här sidan på webbplatsen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Färg som är kopplad till den här sidan på webbplatsen."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Dölj i menyn",
+        "description": "Dölj sidan från menyer men behåll dess URL."
+      },
+      {
+        "property": "order",
+        "title": "Ordning",
+        "description": "Ordning i förhållande till syskonsidor."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Sidtema",
+        "description": "Åsidosätt temat endast för den här sidan."
+      },
+      {
+        "property": "author",
+        "title": "Författare",
+        "description": "Användarnamn för den som senast ändrade sidan."
+      }
+    ]
+  }
+}

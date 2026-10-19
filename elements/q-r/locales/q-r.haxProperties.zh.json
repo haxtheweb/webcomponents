@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "二维码",
+    "description": "可用智能手机扫描的码。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR 数据",
+        "description": "QR 码的数据来源。"
+      },
+      {
+        "property": "title",
+        "title": "替代标题",
+        "description": "链接到 QR 码来源的替代标题。"
+      },
+      {
+        "property": "modulesize",
+        "title": "大小",
+        "description": "QR 码的大小。"
+      },
+      {
+        "property": "margin",
+        "title": "边距",
+        "description": "码周围的留白。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "输出格式",
+        "description": "输出所用的格式。",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

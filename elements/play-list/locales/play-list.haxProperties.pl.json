@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Playlista",
+    "description": "Wyświetlaj dowolny rodzaj zawartości w playliście."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Źródło",
+        "description": "Zawartość wyświetlana w playliście."
+      },
+      {
+        "property": "edit",
+        "title": "Tryb edycji",
+        "description": "Przełączaj między trybem edycji a podglądem playlisty."
+      },
+      {
+        "property": "navigation",
+        "title": "Nawigacja",
+        "description": "Pokaż przyciski nawigacji do przodu i do tyłu."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginacja",
+        "description": "Pokaż kropki paginacji."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientacja",
+        "description": "Orientacja slajdów.",
+        "options": {
+          "horizontal": "Pozioma",
+          "vertical": "Pionowa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Slajd początkowy",
+        "description": "Indeks slajdu wyświetlanego na początku."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Proporcje obrazu",
+        "description": "Proporcje slajdów.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

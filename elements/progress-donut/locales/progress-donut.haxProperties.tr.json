@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "İlerleme Halkası",
+    "description": "İlerleme halkası"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Öğenin başlığı"
+      },
+      {
+        "property": "desc",
+        "title": "Açıklama",
+        "description": "Erişilebilir uzun açıklama"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Görsel Kaynağı",
+        "description": "Halkanın içindeki görselin kaynağı."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Görsel Alternatif Metni",
+        "description": "Görsel için alternatif metin."
+      },
+      {
+        "property": "animated",
+        "title": "Animasyonlu",
+        "description": "İlerlemenin ilk yüklemede canlandırılıp canlandırılmayacağı"
+      },
+      {
+        "property": "complete",
+        "title": "Tamamlandı",
+        "description": "Tamamlanan değerlerden oluşan bir dizi."
+      },
+      {
+        "property": "total",
+        "title": "Toplam",
+        "description": "Tüm öğeler tamamlandığındaki toplam."
+      },
+      {
+        "property": "startAngle",
+        "title": "Başlangıç Açısı",
+        "description": "İlerlemenin başladığı halka açısı"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Eylem çağrısı",
+    "description": "Eyleme geçmek için bağlantı içeren basit bir düğme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Bağlantı etiketi"
+      },
+      {
+        "property": "link",
+        "title": "Bağlantı",
+        "description": "Herhangi bir kaynağa bağlantı girin"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Simgeyi gizle",
+        "description": "Metni vurgulamak için kullanılan simgeyi gizle"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Simge",
+        "description": "Eylem bağlantısı simgesi"
+      }
+    ]
+  }
+}

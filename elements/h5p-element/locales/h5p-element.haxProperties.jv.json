@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Pambungkus H5P kanggo ngemot lan nampilake berkas .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Kode sematan iframe H5P"
+      }
+    ]
+  }
+}

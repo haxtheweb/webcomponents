@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "タグ / ピル",
+    "description": "アクセントカラー、キャンセルボタン、トグルを任意で付けられる、コンパクトな錠剤形のラベル。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ラベル",
+        "description": "ピルの中に表示するテキスト。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "ピルの背景に使うSimpleColorsのアクセント名。",
+        "options": {
+          "": "-- 既定 --",
+          "red": "赤",
+          "pink": "ピンク",
+          "purple": "紫",
+          "deep-purple": "ディープパープル",
+          "indigo": "インディゴ",
+          "blue": "青",
+          "light-blue": "ライトブルー",
+          "cyan": "シアン",
+          "teal": "ティール",
+          "green": "緑",
+          "light-green": "ライトグリーン",
+          "lime": "ライム",
+          "yellow": "黄",
+          "amber": "アンバー",
+          "orange": "オレンジ",
+          "deep-orange": "ディープオレンジ",
+          "brown": "茶",
+          "blue-grey": "ブルーグレー",
+          "grey": "グレー"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "自動アクセントカラー",
+        "description": "ラベルのテキストからアクセントカラーを自動的に決定します。"
+      },
+      {
+        "property": "cancelButton",
+        "title": "キャンセルボタン",
+        "description": "ピルの中に削除/キャンセルのアイコンボタンを表示します。"
+      },
+      {
+        "property": "readonly",
+        "title": "読み取り専用",
+        "description": "キャンセルボタンを隠して、ピルを表示専用にします。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "トグル",
+        "description": "ボタンをクリックしたときにピルのオン/オフを切り替えます。"
+      },
+      {
+        "property": "toggled",
+        "title": "オン",
+        "description": "ピルが現在オンになっているかどうか。"
+      },
+      {
+        "property": "toggledIcon",
+        "title": "オン時のアイコン",
+        "description": "ピルがオンのときに表示するアイコン。"
+      },
+      {
+        "property": "disabled",
+        "title": "無効",
+        "description": "ピルの操作を無効にします。"
+      }
+    ]
+  }
+}

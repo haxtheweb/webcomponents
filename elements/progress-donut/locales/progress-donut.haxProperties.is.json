@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Framvinduhringur",
+    "description": "Framvinduhringur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Titill einingarinnar"
+      },
+      {
+        "property": "desc",
+        "title": "Lýsing",
+        "description": "Aðgengileg löng lýsing"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Myndauppruni",
+        "description": "Uppruni myndar inni í hringnum."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-texti myndar",
+        "description": "Alt-texti fyrir mynd."
+      },
+      {
+        "property": "animated",
+        "title": "Hreyfimynd",
+        "description": "Hvort framvinda sé hreyfð við fyrstu hleðslu"
+      },
+      {
+        "property": "complete",
+        "title": "Lokið",
+        "description": "Fylki af loknum gildum."
+      },
+      {
+        "property": "total",
+        "title": "Samtals",
+        "description": "Samtala þegar öllum atriðum er lokið."
+      },
+      {
+        "property": "startAngle",
+        "title": "Upphafshorn",
+        "description": "Horn hringsins þar sem framvinda hefst"
+      }
+    ]
+  }
+}

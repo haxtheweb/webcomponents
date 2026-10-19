@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ohun ìwé ìtọ́kasí",
+    "description": "Ohun tó ṣojú ìtọ́kasí kan ṣoṣo nínú ìwé ìtọ́kasí, tó ń ṣe àtìlẹ́yìn fún oríṣiríṣi ìlànà àti àwọn àṣàyàn gbígbéjáde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Irú",
+        "description": "Irú ìtọ́kasí",
+        "options": {
+          "web": "Wẹ́ẹ̀bù",
+          "journal": "Ìwé ìròyìn ẹ̀kọ́",
+          "book": "Ìwé"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé ohun náà"
+      },
+      {
+        "property": "authors",
+        "title": "Òǹkọ̀wé (àwọn òǹkọ̀wé)",
+        "description": "Àwọn ìṣẹ̀lẹ̀ nínú ìlà àkókò"
+      },
+      {
+        "property": "publisher",
+        "title": "Atẹ̀wéjáde",
+        "description": "Ojú òpó àtilẹ̀wá"
+      }
+    ]
+  }
+}

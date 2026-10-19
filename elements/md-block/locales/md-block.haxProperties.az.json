@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Birbaşa və ya uzaqdan yüklənən markdown məzmun bloku"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Xam markdown"
+      },
+      {
+        "property": "source",
+        "title": "Mənbə",
+        "description": "Markdown üçün mənbə faylı"
+      }
+    ]
+  }
+}

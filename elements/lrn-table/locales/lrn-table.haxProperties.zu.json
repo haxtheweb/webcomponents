@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ithebula le-CSV",
+    "description": "Lokhu kungakha ithebula kusuka efayeleni le-CSV noma ngabe likuphi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Umthombo",
+        "description": "I-URL yaleli fayela le-CSV."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko sethebula elizokhiqizwa."
+      },
+      {
+        "property": "description",
+        "title": "Incazelo",
+        "description": "Incazelo enemininingwane eyengeziwe yokuthuthukisa ukufinyeleleka kwedatha yethebula."
+      }
+    ]
+  }
+}

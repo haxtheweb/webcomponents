@@ -1,0 +1,18 @@
+{
+  "title": "Tính năng nền tảng",
+  "experienceLevel": "Mức độ kinh nghiệm",
+  "cmsFeatures": "Tính năng CMS",
+  "editorFeatures": "Tính năng trình soạn thảo",
+  "blocks": "Khối",
+  "filterBlocks": "Lọc khối",
+  "requiredTextNote": "Một số thẻ văn bản là bắt buộc và luôn được bật (hiển thị ở trạng thái vô hiệu).",
+  "download": "Tải xuống khung mẫu",
+  "save": "Lưu",
+  "generating": "Đang tạo khung mẫu…",
+  "generated": "Đã tải xuống khung mẫu",
+  "enabled": "Đã bật",
+  "feature": "Tính năng",
+  "details": "Chi tiết",
+  "featuresWarning": "Tắt các tùy chọn này có thể loại bỏ những khả năng biên soạn và quản trị quan trọng.",
+  "largeSiteWarning": "Trang web này có nhiều trang. Việc tạo khung mẫu có thể mất một lúc."
+}

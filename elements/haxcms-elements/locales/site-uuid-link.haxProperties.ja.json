@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX リンク",
+    "description": "作業中のサイト内の特定のリソースへのリンク。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "項目",
+        "description": "リンク / タイトルのデータとして表示する項目"
+      }
+    ]
+  }
+}

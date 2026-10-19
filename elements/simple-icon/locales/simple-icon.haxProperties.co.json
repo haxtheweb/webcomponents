@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Icona",
+    "description": "Icona da a biblioteca cumpleta d'icone."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona da affissà."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Culore d'accentu di l'icona."
+      },
+      {
+        "property": "dark",
+        "title": "Scuru",
+        "description": "Aduprà u modu scuru (inseme di culori invertitu)."
+      }
+    ]
+  }
+}

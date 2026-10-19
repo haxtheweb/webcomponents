@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Muat Turun Lembaran Kerja",
+    "description": "Butang untuk memaparkan fail yang tersedia untuk dimuat turun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk muat turun."
+      },
+      {
+        "property": "link",
+        "title": "Pautan",
+        "description": "Pautan untuk muat turun."
+      }
+    ]
+  }
+}

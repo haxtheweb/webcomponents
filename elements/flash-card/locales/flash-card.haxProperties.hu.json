@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tanulókártya",
+    "description": "Fogalmak gyakorlása kétoldalas tanulókártyákkal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "A kártya eleje",
+        "description": "Az elülső oldal szövege vagy kérdése."
+      },
+      {
+        "slot": "back",
+        "title": "A kártya hátoldala",
+        "description": "Várt válasz."
+      },
+      {
+        "property": "imgSource",
+        "title": "Kép forrása",
+        "description": "A kártyához használt képfájl. Felülírja a képkulcsszót."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tevékenység típusa",
+        "description": "OER Schema: a gyakorlat által igényelt tevékenység típusa (pl. olvasás, írás, alkotás, kutatás, hallgatás, nézés, reflektálás, megbeszélés, megfigyelés, bemutatás, értékelés)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tanulási cél",
+        "description": "OER Schema: a gyakorlat által támogatott tanulási cél azonosítója vagy URL-je."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Sötét",
+        "description": "Sötét mód használata."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "A kártya kiemelőszíne."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Képkulcsszó",
+        "description": "Kulcsszó véletlenszerű képhez. A képforrás felülírja."
+      }
+    ]
+  }
+}

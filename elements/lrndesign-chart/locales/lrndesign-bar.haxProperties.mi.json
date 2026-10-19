@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Kauwhata Pae",
+    "description": "Ka waihanga i tētahi kauwhata wātea i runga i tētahi CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tae Arotahi",
+        "description": "He tae arotahi kōwhiri."
+      },
+      {
+        "title": "Kaupapa Pōuri",
+        "description": "Whakahohe Kaupapa Āhua Pōuri"
+      },
+      {
+        "title": "Kōnae CSV",
+        "description": "Uta raraunga mai i tētahi CSV."
+      },
+      {
+        "title": "Taitara Kauwhata",
+        "description": "Kuputuhi alt wātea mō tō kauwhata."
+      },
+      {
+        "title": "Whakaahuatanga Kauwhata",
+        "description": "Whakaahuatanga wātea o tō kauwhata."
+      },
+      {
+        "title": "Ingoa Tauine",
+        "description": "Te ōwehenga whānui:teitei o te kauwhata (Tirohia https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings mō $ct-scales me $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Whakaatu Papamuri Mātiti"
+      },
+      {
+        "title": "Ngā Pae Whakapae",
+        "description": "Ka kōaro i ngā tuaka o te kauwhata pae kia tuhia he kauwhata pae whakapae. Kia mōhio me kōaro hoki ō tautuhinga tuaka nā te mea ka whakaatu te Tuaka Y i ngā tapanga, ā, ko te Tuaka X ngā uara."
+      },
+      {
+        "title": "Tāpae Pae",
+        "description": "Ki te tautuhia ki te pono, ka tāpaetia ngā pae raupapa e tēnei āhuatanga."
+      },
+      {
+        "title": "Tohatoha Raupapa",
+        "description": "Ki te tautuhia ki te pono, ka tohu ia pae i tētahi raupapa, ā, ko te huānga raraunga he huānga ahu-kotahi o ngā uara raraunga, kaua he huānga raupapa o ngā raupapa."
+      },
+      {
+        "title": "Whakakī Kauwhata (runga)"
+      },
+      {
+        "title": "Whakakī Kauwhata (raro)"
+      },
+      {
+        "title": "Whakakī Kauwhata (mauī)"
+      },
+      {
+        "title": "Whakakī Kauwhata (matau)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kōaro Raraunga",
+        "description": "Kōaro i ngā raraunga tae atu ki ngā tapanga, te raupapa raupapa me ngā huānga raraunga raupapa katoa."
+      },
+      {
+        "title": "Ripanga HTML",
+        "description": "Kōwhiringa: Uta raraunga hei ripanga HTML."
+      },
+      {
+        "title": "Iti Rawa o te Kauwhata",
+        "description": "Mā te takahi i te iti māori o te kauwhata ka taea e koe te topa mai, te whakawhāiti rānei i te uara iti rawa e whakaaturia ana e te kauwhata"
+      },
+      {
+        "title": "Nui Rawa o te Kauwhata",
+        "description": "Mā te takahi i te teitei māori o te kauwhata ka taea e koe te topa mai, te whakawhāiti rānei i te uara teitei rawa e whakaaturia ana e te kauwhata"
+      },
+      {
+        "title": "Tuaka-X Whakaatu Mātiti",
+        "description": "Whakaatu i te mātiti o te Tuaka-X."
+      },
+      {
+        "title": "Neke Tuaka-X"
+      },
+      {
+        "title": "Tūranga Tuaka-X",
+        "description": "Te tūranga ka whakatakotoria ai ngā tapanga. Ka taea te tautuhi ki \"start\", ki \"end\" rānei, ko te \"start\" he ōrite ki te mauī, ki runga rānei i te tuaka poutū, ā, ko te \"end\" he ōrite ki te matau, ki raro rānei i te tuaka whakapae"
+      },
+      {
+        "title": "Tuaka-X Whakaatu Tapanga",
+        "description": "Whakaatu i te tapanga o te Tuaka-X."
+      },
+      {
+        "title": "Tapanga Tuaka-X (neke whakapae)",
+        "description": "Tūranga whakapae o ngā tapanga o te Tuaka-X."
+      },
+      {
+        "title": "Tapanga Tuaka-X (neke poutū)",
+        "description": "Tūranga poutū o ngā tapanga o te Tuaka-X."
+      },
+      {
+        "title": "Taitara Tuaka-X",
+        "description": "Taitara kōwhiringa mō te tuaka-X."
+      },
+      {
+        "title": "Taitara Tuaka-X (neke whakapae)",
+        "description": "Tūranga whakapae o te taitara o te Tuaka-X."
+      },
+      {
+        "title": "Taitara Tuaka-X (neke poutū)",
+        "description": "Tūranga poutū o te taitara o te Tuaka-X."
+      },
+      {
+        "title": "Punga Taitara Tuaka-X",
+        "description": "Punga kōwhiringa mō te taitara o te tuaka-X.",
+        "options": {
+          "middle": "waenga",
+          "end": "mutunga",
+          "start": "tīmatanga"
+        }
+      },
+      {
+        "title": "Mokowā Iti Rawa o te Tauine Tuaka-X",
+        "description": "Ka tohu i te teitei iti rawa i ngā pika o ngā hipanga tauine."
+      },
+      {
+        "title": "Tauine Tuaka-X (tau tōpū anake)",
+        "description": "Whakamahia ngā uara tau tōpū anake (tau katoa) mō ngā hipanga tauine."
+      },
+      {
+        "title": "Tuaka-Y: Whakaatu Mātiti",
+        "description": "Whakaatu i te mātiti o te Tuaka-Y."
+      },
+      {
+        "title": "Neke Tuaka-Y"
+      },
+      {
+        "title": "Tūranga Tuaka-Y",
+        "description": "Te tūranga ka whakatakotoria ai ngā tapanga. Ka taea te tautuhi ki \"start\", ki \"end\" rānei, ko te \"start\" he ōrite ki te mauī, ki runga rānei i te tuaka poutū, ā, ko te \"end\" he ōrite ki te matau, ki raro rānei i te tuaka whakapae"
+      },
+      {
+        "title": "Tuaka-Y Whakaatu Tapanga",
+        "description": "Whakaatu i te tapanga o te Tuaka-Y."
+      },
+      {
+        "title": "Tapanga Tuaka-Y (neke whakapae)",
+        "description": "Tūranga whakapae o te tapanga o te Tuaka-Y."
+      },
+      {
+        "title": "Tapanga Tuaka-Y (neke poutū)",
+        "description": "Tūranga poutū o te tapanga o te Tuaka-Y."
+      },
+      {
+        "title": "Mokowā Iti Rawa o te Tauine Tuaka-Y",
+        "description": "Ka tohu i te teitei iti rawa i ngā pika o ngā hipanga tauine."
+      },
+      {
+        "title": "Tauine Tuaka-Y (tau tōpū anake)",
+        "description": "Whakamahia ngā uara tau tōpū anake (tau katoa) mō ngā hipanga tauine."
+      },
+      {
+        "title": "Taitara Tuaka-Y",
+        "description": "Taitara kōwhiringa mō te tuaka-Y."
+      },
+      {
+        "title": "Taitara Tuaka-Y (neke poutū)",
+        "description": "Tūranga whakapae o te taitara o te Tuaka-Y."
+      },
+      {
+        "title": "Taitara Tuaka-Y (neke whakapae)",
+        "description": "Tūranga whakapae o te taitara o te Tuaka-Y."
+      },
+      {
+        "title": "Punga Taitara Tuaka-Y",
+        "description": "Punga kōwhiringa mō te taitara o te tuaka-Y.",
+        "options": {
+          "middle": "waenga",
+          "end": "mutunga",
+          "start": "tīmatanga"
+        }
+      },
+      {
+        "title": "Huri Taitara Tuaka-Y",
+        "description": "Huri i te taitara mō te tuaka-Y?"
+      },
+      {
+        "title": "Uara Tohutoro",
+        "description": "Ki te kore te iti/teitei e tautuhia mārakatia, ka noho te kauwhata pae ki waenganui i te kore mā te taunoa."
+      },
+      {
+        "title": "Tawhiti Pae Raupapa",
+        "description": "Tohua te tawhiti i ngā pika o ngā pae i tētahi rōpū."
+      },
+      {
+        "title": "Aratau Tāpae",
+        "description": "Ki te tautuhia ki \"true\", ka hangaia e tēnei āhuatanga he tapeke mō ia pūwāhi raupapa. Ka pā hoki tēnei ki te tuaka-y me ngā rohe whānui o te kauwhata. Ki te tautuhia ki \"false\", ka akiaki tēnei āhuatanga i ngā pae tāpae kia tuhia mai i te rārangi kore. I te aratau tāpae, kāore he pānga o te āhuatanga \"seriesBarDistance\"."
+      }
+    ]
+  }
+}

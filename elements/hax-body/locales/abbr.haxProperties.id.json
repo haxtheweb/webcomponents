@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Singkatan",
+    "description": "Singkatan dengan tooltip istilah lengkap."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teks",
+        "description": "Teks singkatan yang terlihat."
+      },
+      {
+        "attribute": "title",
+        "title": "Kata",
+        "description": "Istilah lengkap yang ditampilkan saat diarahkan kursor."
+      }
+    ]
+  }
+}

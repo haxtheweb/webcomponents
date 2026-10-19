@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Nuty",
+    "description": "Wyświetla i odtwarza nuty, tabulatury gitarowe i partytury przez alphaTex lub MusicXML."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Notacja AlphaTex",
+        "description": "Wbudowany kod alphaTex z nutami. Edytuj bezpośrednio, aby tworzyć notację; jest przechowywany w szablonie, więc odstępy są zachowane."
+      },
+      {
+        "property": "source",
+        "title": "Plik partytury",
+        "description": "Prześlij lub podlinkuj plik MusicXML (.xml/.musicxml/.mxl) albo Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp). Po ustawieniu zastępuje wbudowany alphaTex."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Odtwarzanie dźwięku",
+        "description": "Domyślnie włączone - słuchaj nut odtwarzanych przez wbudowany syntezator. Wyłącz, aby uzyskać tryb tylko do przeglądania (bez dźwięku)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Pokaż opcje wyświetlania",
+        "description": "Pokaż przyciski powiększenia, rozciągania i układu na pasku odtwarzacza."
+      },
+      {
+        "property": "showExport",
+        "title": "Pokaż przyciski eksportu",
+        "description": "Pokaż przyciski pobierania MIDI oraz drukowania/PDF na pasku odtwarzacza."
+      }
+    ]
+  }
+}

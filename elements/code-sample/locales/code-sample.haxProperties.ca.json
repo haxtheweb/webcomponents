@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Mostra de codi",
+    "description": "Una mostra de codi ressaltada a la pàgina"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Ressaltat de codi",
+        "description": "Ressaltat de sintaxi que s'aplicarà a l'àrea de codi",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Dades JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Botó de copiar al porta-retalls",
+        "description": "botó a la part superior dreta que diu copia al porta-retalls"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Inici del ressaltat",
+        "description": "Número de línia on comença el ressaltat"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Final del ressaltat",
+        "description": "Línia on acaba el ressaltat"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Гайхалтай дэлбэрэлт",
+    "description": "Нэмэлт дуун эффекттэй харилцан үйлдэлт дэлбэрэлтийн хөдөлгөөнт дүрс."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Хэмжээ",
+        "description": "Дэлбэрэлтийн хэмжээг тохируулах.",
+        "options": {
+          "tiny": "Маш жижиг",
+          "small": "Жижиг",
+          "medium": "Дунд",
+          "large": "Том",
+          "epic": "Аварга"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Өнгө",
+        "description": "Дэлбэрэлтийн өнгөний загварыг тохируулах.",
+        "options": {
+          "": "Анхдагч",
+          "red": "Улаан",
+          "blue": "Цэнхэр",
+          "purple": "Нил ягаан",
+          "orange": "Улбар шар",
+          "yellow": "Шар"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Дуун эффект",
+        "description": "Дуун эффектийг идэвхжүүлэх."
+      },
+      {
+        "property": "resetSound",
+        "title": "Дууг дахин эхлүүлэх",
+        "description": "Дууг тухай бүр эхнээс нь дахин тоглуулах."
+      },
+      {
+        "property": "image",
+        "title": "Өөрийн зураг",
+        "description": "Өөрийн дэлбэрэлтийн зургийн нэмэлт URL."
+      },
+      {
+        "property": "sound",
+        "title": "Өөрийн дуу",
+        "description": "Өөрийн дуун эффектийн нэмэлт URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Идэвхгүй",
+        "description": "Бүх харилцан үйлдлийг идэвхгүй болгох."
+      }
+    ]
+  }
+}

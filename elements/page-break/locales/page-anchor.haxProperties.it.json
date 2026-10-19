@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ancora di pagina",
+    "description": "Collegamento a punti specifici dei contenuti multimediali nella pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Destinazione nella pagina",
+        "description": "ID o risorsa a cui punta questa ancora."
+      },
+      {
+        "property": "value",
+        "title": "Valore del deep link",
+        "description": "Valore del deep link (ad esempio un timestamp o l'ID di una diapositiva)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entità del sito",
+        "description": "Entità del sito facoltativa per controllare la presentazione dei concetti correlati."
+      }
+    ]
+  }
+}

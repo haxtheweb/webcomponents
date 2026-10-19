@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Vortaro",
+    "description": "Vortara termino."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termino"
+      },
+      {
+        "property": "information",
+        "title": "Difino",
+        "description": "Difino montrata kiam oni klakas la terminon."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Ŝprucfenestreto",
+        "description": "Montri la difinon en ŝprucfenestreto anstataŭ enlinie."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Ligiloj",
+        "description": "Listo de kompletigaj ligiloj asociitaj kun ĉi tiu termino."
+      }
+    ]
+  }
+}

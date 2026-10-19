@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Papa CSV",
+    "description": "Hiki i kēia ke hana i kekahi papa mai kekahi faila CSV ma nā wahi a pau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Kumu",
+        "description": "URL no kēia faila CSV."
+      },
+      {
+        "property": "title",
+        "title": "Poʻo Inoa",
+        "description": "Poʻo inoa no ka papa e hana ʻia ana."
+      },
+      {
+        "property": "description",
+        "title": "Wehewehe",
+        "description": "He wehewehe kikoʻī hou aʻe no ka hiki ke komo maikaʻi i ka ʻikepili o ka papa."
+      }
+    ]
+  }
+}

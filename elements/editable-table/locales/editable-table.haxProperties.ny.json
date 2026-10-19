@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tebulo",
+    "description": "Zambiri za tebulo za pa intaneti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Mutu wa Mzere",
+        "description": "Gwiritsani mzere woyamba ngati mutu."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Mutu wa Mzati",
+        "description": "Gwiritsani mzati woyamba ngati mutu."
+      },
+      {
+        "property": "footer",
+        "title": "Pansi",
+        "description": "Gwiritsani mzere womaliza ngati pansi pa tebulo."
+      },
+      {
+        "property": "sort",
+        "title": "Zosanjika",
+        "description": "Lolani kusanja potsatira zomwe zili mu mzati."
+      },
+      {
+        "property": "filter",
+        "title": "Lolani Kusefa",
+        "description": "Lolani kusefa potsatira zomwe zili mu mzati."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Kapangidwe ka Manambala",
+        "description": "Ikani kapangidwe ka manambala pa mizati ya manambala."
+      },
+      {
+        "property": "responsive",
+        "title": "Yogwirizana ndi Zenera",
+        "description": "Sinthani kapangidwe ka tebulo pazenera zing'onozing'ono."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Njira ya Rubric",
+        "description": "Tengani tebulo ili ngati Rubric ya OER Schema kuti zambiri za Rubric, RubricScale, RubricCriterion, ndi RubricLevel zitulutsidwe."
+      },
+      {
+        "property": "rubricType",
+        "title": "Mtundu wa Rubric",
+        "description": "Mtundu wa rubric wotulutsidwa ngati oer:rubricType (umagwira ntchito pokhapokha Njira ya Rubric yayatsidwa).",
+        "options": {
+          "": "(palibe)",
+          "analytic": "Wosanthula",
+          "holistic": "Wathunthu",
+          "single-point": "Mfundo Imodzi",
+          "checklist": "Mndandanda Woyang'anira"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Wokhala ndi Malire"
+      },
+      {
+        "property": "condensed",
+        "title": "Chepetsani Mizere",
+        "description": "Chepetsani kutalika kwa mizere."
+      },
+      {
+        "property": "striped",
+        "title": "Mizere ya Mikwingwirima",
+        "description": "Pakani mthunzi pa mzere uliwonse wachiwiri."
+      },
+      {
+        "property": "downloadable",
+        "title": "Batani Lotsitsa",
+        "description": "Onjezani batani lotsitsira tebulo."
+      },
+      {
+        "property": "copyable",
+        "title": "Batani Lokopera",
+        "description": "Onjezani batani lokopera zambiri za CSV za tebulo."
+      },
+      {
+        "property": "printable",
+        "title": "Batani Losindikiza",
+        "description": "Onjezani batani losindikiza tebulo lokha."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "Zambiri za CSV",
+        "description": "Pangani tebulo kuchokera ku fayilo ya CSV yokwezedwa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX لفظي فن",
+    "description": "HAX لاءِ لوگو عنصر، ظاهر آهي HAX جي صلاحيت رکندڙ عنصر طور."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "رکڻ لاءِ HAX لوگو جي سائيز",
+        "options": {
+          "mini": "ننڍو",
+          "small": "ننڍو",
+          "normal": "عام",
+          "large": "وڏو"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "ڇا لوگو کي وڏن اکرن ۾ بدلائڻو آهي"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI визуализаторы",
+    "description": "MIDI-ны визуализация белән контекстта уйнатырга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Чыганак",
+        "description": "Уйнатыла торган файлның URL адресы."
+      },
+      {
+        "property": "visualizer",
+        "title": "Визуализация",
+        "description": "Музыка файлы өчен визуализация стиле.",
+        "options": {
+          "staff": "Нота юллары",
+          "piano-roll": "Пианино тасмасы",
+          "waterfall": "Пианино + шарлавык"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Шарлавыкны яшерергә",
+        "description": "Пианино визуализациясендә шарлавык ноталарын яшерергә."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Kontagailua",
+    "description": "Animatu zenbaki bat helburuko balio bateraino gorantz zenbatzen, ikuspegian sartzen denean."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Amaierako balioa",
+        "description": "Zenbatzen iritsi beharreko zenbakia."
+      },
+      {
+        "property": "start",
+        "title": "Hasierako balioa",
+        "description": "Zenbatzen hasteko zenbakia."
+      },
+      {
+        "property": "duration",
+        "title": "Iraupena",
+        "description": "Zenbaketaren animazioak iraun behar dituen segundoak."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Aurrizkiaren testua",
+        "description": "Zenbakiaren aurretik erakusten den testua (adib. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Atzizkiaren testua",
+        "description": "Zenbakiaren ondoren erakusten den testua (adib. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Aurrizkiaren slot-a",
+        "description": "Zenbakiaren aurreko aukerako slot-edukia."
+      },
+      {
+        "slot": "suffix",
+        "title": "Atzizkiaren slot-a",
+        "description": "Zenbakiaren ondorengo aukerako slot-edukia."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Hamartarrak",
+        "description": "Bistaratu beharreko hamartar kopurua."
+      },
+      {
+        "property": "separator",
+        "title": "Milakoen bereizlea",
+        "description": "Milakoen taldeak bereizten dituen karakterea."
+      },
+      {
+        "property": "decimal",
+        "title": "Hamartarren karakterea",
+        "description": "Koma hamartarrerako erabilitako karakterea."
+      },
+      {
+        "property": "noeasing",
+        "title": "Leuntzerik gabe",
+        "description": "Desgaitu leuntzea, zenbaketa lineala izan dadin."
+      }
+    ]
+  }
+}

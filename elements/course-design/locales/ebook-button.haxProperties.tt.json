@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Электрон китап төймәсе",
+    "description": "Электрон китапка сылтама бирүче төймә."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Төймә исеме."
+      },
+      {
+        "property": "link",
+        "title": "Сылтама",
+        "description": "Басканда юнәлтелә торган сылтама."
+      },
+      {
+        "property": "icon",
+        "title": "Иконка",
+        "description": "Бу сылтаманы күрсәтүче иконка"
+      }
+    ]
+  }
+}

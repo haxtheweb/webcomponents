@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Isi Remote",
+    "description": "Gunakake maneh isi saka siji situs ing situs liyane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Alamat situs",
+        "description": "Tempel alamat kanggo ngrujuk isi yen dudu saka situs saiki"
+      },
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item sing dirender kanggo data link / judhul"
+      },
+      {
+        "property": "breakreference",
+        "title": "Pedhot referensi",
+        "description": "Nyenthang kothak iki nyalin isi remote kanggo disunting sacara lokal nanging mbusak sambungane. Ora bakal nampa nganyaran maneh nalika materi referensi dianyari."
+      },
+      {
+        "property": "showTitle",
+        "title": "Tampilake judhul",
+        "description": "Aktifake kanggo nampilake judhul sumber sing ditampilake"
+      }
+    ]
+  }
+}

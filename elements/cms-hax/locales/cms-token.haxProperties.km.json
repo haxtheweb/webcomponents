@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ថូខឹន CMS",
+    "description": "ថូខឹន CMS ដែលបង្ហាញនៅផ្នែកខាងក្រោយ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ថូខឹន",
+        "description": "ថូខឹនពី CMS របស់យើង"
+      }
+    ]
+  }
+}

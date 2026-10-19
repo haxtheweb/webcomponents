@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Πολλαπλή επιλογή",
+    "description": "Ερώτηση αυτοελέγχου πολλαπλής επιλογής."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Ερώτηση",
+        "description": "Ερώτηση στην οποία θα απαντήσουν οι χρήστες."
+      },
+      {
+        "property": "randomize",
+        "title": "Τυχαία σειρά",
+        "description": "Δυναμική τυχαιοποίηση των απαντήσεων."
+      },
+      {
+        "property": "singleOption",
+        "title": "Μία απάντηση",
+        "description": "Να επιτρέπεται μόνο μία απάντηση."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Μορφή βαθμολόγησης",
+        "description": "OER Schema: μορφή βαθμολόγησης για αυτή την αξιολόγηση (π.χ. μονάδες, γράμμα, ποσοστό, ολοκλήρωση)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Μαθησιακός στόχος",
+        "description": "OER Schema: μαθησιακός στόχος που σχετίζεται με αυτή την αξιολόγηση."
+      },
+      {
+        "property": "forCourse",
+        "title": "Μάθημα",
+        "description": "OER Schema: μάθημα για το οποίο προορίζεται αυτή η αξιολόγηση."
+      },
+      {
+        "property": "answers",
+        "title": "Απαντήσεις"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Όνομα του κουίζ",
+        "description": "Όνομα κουίζ για αναγνώριση xAPI σε συστήματα αναλυτικών στοιχείων."
+      }
+    ]
+  }
+}

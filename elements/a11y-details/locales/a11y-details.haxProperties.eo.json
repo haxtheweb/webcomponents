@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Alirebla detala butono",
+    "description": "Alirebla laŭgrada malkaŝo per details kaj summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Butono",
+        "description": "Resumo de la enhavo, se kaŝita, ekz. \"info\", \"metadatumoj\", ktp."
+      },
+      {
+        "slot": "details",
+        "title": "Priskribo",
+        "description": "Detala priskribo, kiu povas esti kaŝita aŭ montrita"
+      },
+      {
+        "slot": "",
+        "title": "Priskriba butono",
+        "description": "Defaŭlto por butono, kiu montras/kaŝas priskriban tekston, ekz. \"info\", \"metadatumoj\", ktp."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Nedeviga resuma teksto kiam la detaloj estas malfermitaj"
+      },
+      {
+        "property": "closeText",
+        "title": "Nedeviga resuma teksto kiam la detaloj estas fermitaj"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Stopp-Notiz",
+    "description": "E Message, deen d'Lieser op spezifesch Uweisungen opmierksam mécht."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel fir d'Stopp-Notiz aginn."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Eng extern URL aginn."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "De Status ze setzen ännert d'Faarwen an d'Ikonen deementspriechend",
+        "options": {
+          "stop": "Stopp",
+          "warning": "Warnung",
+          "success": "Bestätegung",
+          "info": "Hiweis"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Notiztext",
+        "description": "Text fir d'Stopp-Notiz."
+      }
+    ]
+  }
+}

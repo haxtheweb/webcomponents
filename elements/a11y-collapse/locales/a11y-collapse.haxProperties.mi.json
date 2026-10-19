@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Ipu ka taea te tiango",
+    "description": "He ipu kotahi ka taea te whakaroha, te tiango hoki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Upoko",
+        "description": "Kupu mō te wāhanga tiango."
+      },
+      {
+        "property": "expanded",
+        "title": "Kua whakarohaina",
+        "description": "Whakarohaina hei taunoa."
+      },
+      {
+        "property": "headingButton",
+        "title": "Pātene Upoko",
+        "description": "Kia pāwhiritia te upoko katoa, kaua ko te ata tohu anake."
+      },
+      {
+        "property": "icon",
+        "title": "Ata tohu",
+        "description": "Ata tohu mō te pātene whakaroha/tiango."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ata tohu (ina whakarohaina)",
+        "description": "He ata tohu kōwhiri mō te āhua whakarohaina o te pātene."
+      },
+      {
+        "slot": "",
+        "title": "Ihirangi",
+        "description": "Ihirangi mō te wāhanga tiango."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Kupu āwhina",
+        "description": "Kupu āwhina mō te pātene whakaroha/tiango."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Kupu āwhina (ina whakarohaina)",
+        "description": "Kupu āwhina mō te pātene whakaroha/tiango ina whakarohaina."
+      }
+    ]
+  }
+}

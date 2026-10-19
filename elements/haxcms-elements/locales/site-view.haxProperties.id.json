@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Tampilan Situs",
+    "description": "Blok dinamis yang mengkueri dan menampilkan data situs berdasarkan kriteria"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Tampilan",
+        "description": "Parameter kueri untuk umpan data tampilan. Anda dapat memperolehnya dari dasbor Tampilan."
+      },
+      {
+        "property": "renderer",
+        "title": "Mode tampilan",
+        "description": "Cara hasil tampilan harus dirender"
+      },
+      {
+        "property": "entity",
+        "title": "Jenis entitas",
+        "description": "Jenis entitas yang digunakan untuk mengurai respons",
+        "options": {
+          "": "Default (item)",
+          "item": "Item",
+          "page": "Halaman",
+          "file": "File",
+          "tag": "Tag",
+          "block": "Blok",
+          "view": "Tampilan",
+          "theme": "Tema",
+          "region": "Wilayah",
+          "customElement": "Elemen Kustom"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Putuskan tampilan situs",
+        "description": "Konversi ke konten statis untuk diedit langsung; berhenti memperbarui otomatis dari sumber."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Isithombe se-parallax",
+    "description": "Isithombe esiskrolwa nge-"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Isithombe",
+        "description": "isithombe okufanele sibe ngemuva"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Indawo yesihloko",
+        "description": "Indawo yombhalo wesihloko"
+      }
+    ]
+  }
+}

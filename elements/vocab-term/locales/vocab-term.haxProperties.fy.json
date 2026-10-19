@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Wurdskat",
+    "description": "Wurdskatterm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Term"
+      },
+      {
+        "property": "information",
+        "title": "Definysje",
+        "description": "Definysje dy't toand wurdt as der op de term klikt wurdt."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Pop-over",
+        "description": "Toan de definysje yn in pop-over yn stee fan ynline."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Keppelings",
+        "description": "List fan oanfoljende keppelings by dizze term."
+      }
+    ]
+  }
+}

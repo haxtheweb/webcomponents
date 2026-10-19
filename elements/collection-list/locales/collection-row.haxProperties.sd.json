@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "ڪليڪشن قطار",
+    "description": "ڪليڪشن لسٽ اندر استعمال لاءِ قطار جي انداز واري شيءِ، جنهن ۾ متن، لنڪ، آئڪن، ٽيگ ۽ اختياري تصوير هجي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "لنڪ",
+        "description": "هن قطار لاءِ منزل جو URL."
+      },
+      {
+        "property": "image",
+        "title": "تصوير",
+        "description": "قطار لاءِ تصوير."
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصوير کي بيان ڪندڙ متبادل متن."
+      },
+      {
+        "property": "line1",
+        "title": "سٽ 1",
+        "description": "متن جي پهرين سٽ."
+      },
+      {
+        "property": "line2",
+        "title": "سٽ 2",
+        "description": "متن جي ٻي سٽ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آئڪن",
+        "description": "قطار جي نمائندگي ڪندڙ آئڪن."
+      },
+      {
+        "property": "saturate",
+        "title": "سيچوريشن اثر",
+        "description": "يوزر فوڪس تي تصوير جي سيچوريشن بدلايو."
+      },
+      {
+        "property": "tags",
+        "title": "ٽيگ",
+        "description": "ڪاما سان ڌار ٽيگن جي لسٽ."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ",
+        "description": "آئڪن ۽ ٽيگن لاءِ استعمال ٿيندڙ رنگ."
+      }
+    ]
+  }
+}

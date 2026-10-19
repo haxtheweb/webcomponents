@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Àpẹẹrẹ kóòdù",
+    "description": "Àpẹẹrẹ kóòdù tí a fàmì sí nínú ojú-ìwé"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Ìfàmìsí kóòdù",
+        "description": "Ìfàmìsí síńtáàsì láti lò fún agbègbè kóòdù",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Dátà JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Bọ́tìnnì ṣẹ̀dà sí pátákó-ìdàkọ",
+        "description": "bọ́tìnnì ní òkè ọ̀tún tó sọ pé ṣẹ̀dà sí pátákó-ìdàkọ"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Ìbẹ̀rẹ̀ ìfàmìsí",
+        "description": "Nọ́mbà ìlà láti bẹ̀rẹ̀ ìfàmìsí"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Òpin ìfàmìsí",
+        "description": "Ìlà láti parí ìfàmìsí sí"
+      }
+    ]
+  }
+}

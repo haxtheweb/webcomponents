@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "سرچینه",
+        "description": "د دې سرچینې لپاره URL."
+      }
+    ]
+  }
+}

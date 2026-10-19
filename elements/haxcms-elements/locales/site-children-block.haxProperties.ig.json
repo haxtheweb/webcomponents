@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: blọọkụ nwa",
+    "description": "Blọọkụ na-agbanwe agbanwe iji gosi ụmụ nke ibe dị ugbu a"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Usoro na-agbanwe agbanwe",
+        "description": "Otu esi agbakọ ụmụ ahụ n'ihe metụtara mmewere a",
+        "options": {
+          "active": "Ụmụ na-arụ ọrụ",
+          "parent": "Ụmụ nke nne na nna",
+          "ancestor": "Ụmụ niile site na nna nna kachasị elu"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Ọkwa mbido"
+      },
+      {
+        "property": "end",
+        "title": "Ọkwa njedebe"
+      }
+    ]
+  }
+}

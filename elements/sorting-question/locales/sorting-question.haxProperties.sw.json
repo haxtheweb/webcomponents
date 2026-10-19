@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Swali la Kupanga",
+    "description": "Panga vipengee katika mpangilio sahihi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Swali",
+        "description": "Kichwa cha Swali."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Muundo wa kupanga alama",
+        "description": "OER Schema: muundo wa kupanga alama wa tathmini hii (k.m. pointi, herufi, asilimia, ukamilishaji)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lengo la kujifunza",
+        "description": "OER Schema: lengo la kujifunza linalohusiana na tathmini hii."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kozi",
+        "description": "OER Schema: kozi ambayo tathmini hii imekusudiwa."
+      },
+      {
+        "property": "answers",
+        "title": "Majibu",
+        "description": "Mpangilio wa majibu unabainisha mfuatano sahihi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jina la jaribio",
+        "description": "Jina la jaribio linalotumika kwa utambulisho wa xAPI katika mifumo ya uchanganuzi."
+      }
+    ]
+  }
+}

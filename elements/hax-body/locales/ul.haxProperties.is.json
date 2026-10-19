@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Punktalisti",
+    "description": "Búa til punktalista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stíll punkta",
+        "description": "Stíll sem notaður er fyrir punkta óraðaðs lista.",
+        "options": {
+          "": "Sjálfgefið (ferningur)",
+          "list-disc": "Fylltur hringur",
+          "list-circle": "Hringur",
+          "list-square": "Ferningur"
+        }
+      }
+    ]
+  }
+}

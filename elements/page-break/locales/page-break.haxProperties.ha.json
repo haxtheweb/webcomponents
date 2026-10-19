@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Bayanan shafi",
+    "description": "Ayyana rabuwa ta gani tsakanin shafuka wadda CMS za su iya amfani da ita don ƙirƙirar shafuka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Taken da ake nunawa a jigon da kanun farko."
+      },
+      {
+        "property": "pageType",
+        "title": "Nau'i",
+        "description": "Lakabin mahallin shafi na gani.",
+        "options": {
+          "": "-- babu --",
+          "content": "Abun ciki",
+          "assessment": "Tantancewa",
+          "quiz": "Jarrabawa",
+          "submission": "Miƙawa",
+          "lesson": "Darasi",
+          "module": "Kashi",
+          "task": "Aiki",
+          "activity": "Aikace-aikace",
+          "project": "Aikin bincike",
+          "practice": "Atisaye",
+          "unit": "Babi",
+          "objectives": "Manufofin Koyo",
+          "connection": "Alaƙa",
+          "knowledge": "Ko Ka Sani?",
+          "strategy": "Dabarar Koyo",
+          "discuss": "Tattauna",
+          "listen": "Saurara",
+          "make": "Ƙirƙira",
+          "observe": "Lura",
+          "present": "Gabatar",
+          "reading": "Karatu",
+          "reflect": "Yi tunani",
+          "research": "Bincike",
+          "watch": "Kalla",
+          "write": "Rubuta"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Tag-tag",
+        "description": "Jerin tag-tag da aka raba da waƙafi."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL na Mahaɗi",
+        "description": "URL na turawa da ake nunawa maimakon abun cikin shafi."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Manufar Mahaɗi",
+        "description": "Buɗe mahaɗai a taga ɗaya ko sabuwar taga.",
+        "options": {
+          "_self": "Taga ɗaya",
+          "_blank": "Sabuwar taga"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "An wallafa",
+        "description": "Shafukan da ba a wallafa ba suna ɓoye ga masu amfani."
+      },
+      {
+        "property": "locked",
+        "title": "Kulle shafi",
+        "description": "Kulle ko buɗe dukan abubuwan da ke wannan shafi."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Ƙetare slug na atomatik",
+        "description": "Kulle slug daga sabuntawa ta atomatik bisa take ko uwa."
+      },
+      {
+        "property": "slug",
+        "title": "Hanya",
+        "description": "Slug na URL na wannan shafi."
+      },
+      {
+        "property": "image",
+        "title": "Kafofi",
+        "description": "Kafofin da ke wakiltar shafin, ana amfani da su a wasu jigogi da ra'ayoyi."
+      },
+      {
+        "property": "parent",
+        "title": "Uwa",
+        "description": "Hanyar shafin uwa."
+      },
+      {
+        "property": "noderefs",
+        "title": "Abun ciki mai alaƙa",
+        "description": "Shafukan da ke da alaƙa da wannan shafi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Bayani",
+        "description": "Bayanin da ake amfani da shi a tarin abubuwa da inganta injin bincike (SEO)."
+      },
+      {
+        "property": "entityType",
+        "title": "Nau'in Abu",
+        "description": "Shafi ne a matsayin tsoho sai dai idan an saita wani.",
+        "options": {
+          "page": "Shafi (tsoho)",
+          "taxonomy": "Rarrabuwa",
+          "taxonomyTerm": "Kalmar Rarrabuwa",
+          "region": "Yanki"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Alama",
+        "description": "Alamar da ke da alaƙa da wannan shafi a shafin yanar gizon."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin ƙawa",
+        "description": "Launin da ke da alaƙa da wannan shafi a shafin yanar gizon."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Ɓoye a menu",
+        "description": "Ɓoye wannan shafi daga menu tare da ajiye URL ɗinsa."
+      },
+      {
+        "property": "order",
+        "title": "Tsari",
+        "description": "Tsari dangane da shafukan 'yan'uwa."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Jigon shafi",
+        "description": "Maye gurbin jigo don wannan shafi kawai."
+      },
+      {
+        "property": "author",
+        "title": "Marubuci",
+        "description": "Sunan mai amfani na mutumin ƙarshe da ya gyara wannan shafi."
+      }
+    ]
+  }
+}

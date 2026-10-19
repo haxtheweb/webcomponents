@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Rating Lintang",
+    "description": "Widget tampilan rating utawa tombol kanggo menehi rating."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Biji",
+        "description": "Nilai biji saiki."
+      },
+      {
+        "property": "possible",
+        "title": "Maksimal",
+        "description": "Biji maksimal sing bisa."
+      },
+      {
+        "property": "numStars",
+        "title": "Jumlah Lintang",
+        "description": "Jumlah lintang sing ditampilake."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktif",
+        "description": "Idini interaksi pangguna kanggo nyetel rating."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Mode Skala Rubrik",
+        "description": "Kirim metadata OER Schema RubricScale lan RubricLevel (levelOrdinal/levelPoints) kanggo saben lintang."
+      }
+    ]
+  }
+}

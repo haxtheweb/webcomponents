@@ -1,0 +1,21 @@
+{
+  "selectTarget": "लक्ष्य चुनें",
+  "importContentUnderThisPage": "इस पेज के अंतर्गत सामग्री आयात करें",
+  "importThisContent": "यह सामग्री आयात करें",
+  "thisPage": "यह पेज",
+  "newPage": "नया पेज",
+  "copyOf": "की प्रति",
+  "pageActions": "पेज क्रियाएँ",
+  "editTitle": "शीर्षक संपादित करें",
+  "lock": "लॉक करें",
+  "unlock": "अनलॉक करें",
+  "moveUp": "ऊपर ले जाएँ",
+  "moveDown": "नीचे ले जाएँ",
+  "makeChild": "उप-पेज बनाएँ",
+  "moveToParentLevel": "मूल स्तर पर ले जाएँ",
+  "addPage": "पेज जोड़ें",
+  "duplicate": "डुप्लिकेट करें",
+  "delete": "हटाएँ",
+  "restore": "पुनर्स्थापित करें",
+  "goToPage": "पेज पर जाएँ"
+}

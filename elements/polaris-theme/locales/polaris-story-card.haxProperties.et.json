@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polarise loo kaart",
+    "description": "Kuva Polarise loo kaart taustapildi, sambasildi ja pealkirjatekstiga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Taustapilt",
+        "description": "Kaardi taustana kuvatava pildi URL."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Tausta suurus",
+        "description": "Kuidas taustapilt kaardi täidab (CSS background-size).",
+        "options": {
+          "cover": "cover",
+          "contain": "contain",
+          "auto": "auto",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Tausta kinnitus",
+        "description": "Kuidas taustapilt kerimisel käitub (CSS background-attachment).",
+        "options": {
+          "scroll": "scroll",
+          "fixed": "fixed",
+          "local": "local"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Sambasilt",
+        "description": "Kaardi ülaosas kuvatav lühike suurtähtedega silt. Jäta tühjaks, et peita."
+      },
+      {
+        "property": "label",
+        "title": "Kaardi tekst",
+        "description": "Alumisel paneelil kuvatav põhitekst."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Valikuline siht-URL, mis hõlmab kogu kaarti."
+      }
+    ]
+  }
+}

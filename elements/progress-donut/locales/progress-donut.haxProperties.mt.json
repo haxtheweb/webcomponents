@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Donut tal-Progress",
+    "description": "Donut tal-progressjoni"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "It-titlu tal-element"
+      },
+      {
+        "property": "desc",
+        "title": "Deskrizzjoni",
+        "description": "Deskrizzjoni twila aċċessibbli"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Sors tal-immaġni",
+        "description": "Sors tal-immaġni ġewwa d-donut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Test Alternattiv tal-Immaġni",
+        "description": "Test alternattiv għall-immaġni."
+      },
+      {
+        "property": "animated",
+        "title": "Animat",
+        "description": "Jekk il-progress jiġix animat meta jitgħabba l-ewwel darba"
+      },
+      {
+        "property": "complete",
+        "title": "Lest",
+        "description": "Array ta' valuri lesti."
+      },
+      {
+        "property": "total",
+        "title": "Total",
+        "description": "Total meta l-oġġetti kollha jkunu lesti."
+      },
+      {
+        "property": "startAngle",
+        "title": "Angolu tal-Bidu",
+        "description": "Angolu tad-donut fejn jibda l-progress"
+      }
+    ]
+  }
+}

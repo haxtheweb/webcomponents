@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "កាលបរិច្ឆេទ",
+    "description": "បង្ហាញកាលបរិច្ឆេទប្រតិទិនជាមួយព័ត៌មានលម្អិត។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "ខែ",
+        "description": "ខែដែលបង្ហាញលើកាត។"
+      },
+      {
+        "property": "date",
+        "title": "ថ្ងៃនៃខែ",
+        "description": "ថ្ងៃនៃខែជាលេខ។"
+      },
+      {
+        "property": "day",
+        "title": "ថ្ងៃនៃសប្តាហ៍",
+        "description": "ថ្ងៃនៃសប្តាហ៍ជាអត្ថបទ។"
+      },
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ឈ្មោះព្រឹត្តិការណ៍។"
+      },
+      {
+        "property": "location",
+        "title": "ទីតាំង",
+        "description": "ទីតាំងព្រឹត្តិការណ៍។"
+      },
+      {
+        "property": "startTime",
+        "title": "ចាប់ផ្តើម",
+        "description": "ម៉ោងចាប់ផ្តើម។"
+      },
+      {
+        "property": "endTime",
+        "title": "បញ្ចប់",
+        "description": "ម៉ោងបញ្ចប់។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់ជាជម្រើស។"
+      },
+      {
+        "property": "dark",
+        "title": "រចនាប័ទ្មងងឹត",
+        "description": "បើករចនាប័ទ្មងងឹត។"
+      }
+    ]
+  }
+}

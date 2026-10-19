@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Značka dogodka",
+    "description": "Komponenta značke dogodka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Slika TV",
+        "description": "Slika, prikazana na TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logotip",
+        "description": "Logotip, prikazan v kotu značke."
+      },
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov, prikazan na vrhu značke."
+      },
+      {
+        "property": "name",
+        "title": "Ime",
+        "description": "Ime, prikazano na znački."
+      },
+      {
+        "property": "position",
+        "title": "Položaj",
+        "description": "Vloga ali naziv osebe."
+      },
+      {
+        "property": "organization",
+        "title": "Organizacija",
+        "description": "Organizacija, pri kateri je oseba zaposlena."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Barva TV",
+        "description": "Izberite barvo TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "Glavna barva ozadja ali besedila."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Barva gumbov",
+        "description": "Barva vrtljivih gumbov TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepija",
+        "description": "Uporabi učinek sepije."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Črno-belo",
+        "description": "Uporabi črno-beli učinek."
+      }
+    ]
+  }
+}

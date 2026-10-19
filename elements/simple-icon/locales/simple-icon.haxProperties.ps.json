@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "آیکن",
+    "description": "د آیکنونو له بشپړ کتابتون څخه آیکن."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "آیکن",
+        "description": "د ښودلو آیکن."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د آیکن تاکیدي رنګ."
+      },
+      {
+        "property": "dark",
+        "title": "تیاره",
+        "description": "تیاره حالت وکاروئ (معکوس رنګونه)."
+      }
+    ]
+  }
+}

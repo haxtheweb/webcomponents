@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "מאגר GitHub",
   "anErrorOccurred": "אירעה שגיאה",
-  "retry": "נסו שוב"
+  "retry": "נסו שוב",
+  "permissionRequired": "נדרשת הרשאה",
+  "passwordRequirements": "דרישות סיסמה",
+  "requirementLength": "לפחות 8 תווים",
+  "requirementUppercase": "אות גדולה אחת",
+  "requirementLowercase": "אות קטנה אחת",
+  "requirementNumber": "ספרה אחת",
+  "requirementSymbol": "סימן אחד"
 }

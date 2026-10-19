@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Միջոցառման կրծքանշան",
+    "description": "Միջոցառման կրծքանշանի բաղադրիչ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV պատկեր",
+        "description": "Հեռուստացույցի վրա ցուցադրվող պատկեր։"
+      },
+      {
+        "property": "logo",
+        "title": "Լոգո",
+        "description": "Կրծքանշանի անկյունում ցուցադրվող լոգո։"
+      },
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Կրծքանշանի վերևում ցուցադրվող վերնագիր։"
+      },
+      {
+        "property": "name",
+        "title": "Անուն",
+        "description": "Կրծքանշանի վրա ցուցադրվող անուն։"
+      },
+      {
+        "property": "position",
+        "title": "Պաշտոն",
+        "description": "Անձի դերը կամ պաշտոնը։"
+      },
+      {
+        "property": "organization",
+        "title": "Կազմակերպություն",
+        "description": "Կազմակերպությունը, որտեղ աշխատում է անձը։"
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV գույն",
+        "description": "Ընտրեք հեռուստացույցի գույնը։"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Հիմնական ֆոնի կամ տեքստի գույնը։"
+      },
+      {
+        "property": "knobcolor",
+        "title": "Կոճակի գույն",
+        "description": "Հեռուստացույցի պտտակների գույնը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Սեպիա",
+        "description": "Կիրառել սեպիայի էֆեկտ։"
+      },
+      {
+        "property": "blackwhite",
+        "title": "Սև-սպիտակ",
+        "description": "Կիրառել սև-սպիտակ էֆեկտ։"
+      }
+    ]
+  }
+}

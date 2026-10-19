@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Grundleggjandi mynd",
+    "description": "Grundleggjandi myndaelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kelda",
+        "description": "Myndar-URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alternativur tekstur",
+        "description": "Alternativur tekstur til atkomuleika og SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Hædd",
+        "description": "Hædd í pixlum. Lat vera tómt fyri at nýta náttúrliga stødd."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Innlesing av mynd",
+        "description": "Vel, nær myndin verður innlisin.",
+        "options": {
+          "lazy": "Innles, tá ið sjónlig",
+          "auto": "Sjálvvirkið"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Tillagandi keldur (srcset)",
+        "description": "Skráset myndar-URL-ar og lýsarar (t.d. 480w ella 2x), so at kagar velja bestu støddina til skíggjan. Goymt sum vanligi srcset-eginleikin."
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Rapi t'aqa",
+    "description": "Rapipi kaqkunapaq pantalla layoutkunapaqpas t'aqa wiñay."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Diseño ruray",
+        "description": "Tupaq churanakunata musuqyachiq ñawpaqmanta churasqa laya."
+      },
+      {
+        "property": "image",
+        "title": "Rikch'a",
+        "description": "T'aqapaq qhipa media."
+      },
+      {
+        "property": "bg",
+        "title": "Qhipa llimpi",
+        "description": "Mana rikch'a kaqtin qhipa llimpi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Uraykuy ñit'ina",
+        "description": "Qatiq t'aqaman uraykuq ñit'inata rikuchiy."
+      },
+      {
+        "property": "fold",
+        "title": "K'umuyta rikuchiy",
+        "description": "T'aqapa uraynipi rikukuq k'umuyta rikuchiy."
+      },
+      {
+        "property": "full",
+        "title": "Llapan pantalla",
+        "description": "Qhawaqpa pantallanpa sayayninta hunt'achiy."
+      },
+      {
+        "property": "filter",
+        "title": "Suysuyta churay",
+        "description": "Qhipa rikch'aman rikukuq suysuyta churay."
+      },
+      {
+        "slot": "",
+        "title": "Ukhunpi kaq",
+        "description": "T'aqapa ukhunpi kaq."
+      },
+      {
+        "slot": "entice",
+        "title": "Munachiy",
+        "description": "Akllanalla munachiq kaq."
+      },
+      {
+        "slot": "buttons",
+        "title": "Ñit'inakuna",
+        "description": "Qillqapa urayninpi rikukuq ñit'ina t'aqa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Ancla qillqa",
+        "description": "Puriypi rikukuq ancla sutichay."
+      }
+    ]
+  }
+}

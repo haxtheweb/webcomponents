@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Ratidza bhatani reCTA rePolaris rine dingindira."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Mavara ebhatani",
+        "description": "Mavara anoratidzwa mubhatani reCTA."
+      },
+      {
+        "property": "link",
+        "title": "Chinongedzo",
+        "description": "URL yekuenda yebhatani."
+      },
+      {
+        "property": "type",
+        "title": "Mhando",
+        "description": "Mhando yemaonekero.",
+        "options": {
+          "primary": "Huru",
+          "tinted": "Ine ruvara rwakapfava",
+          "light": "Yakajeka"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Mhando ine muganhu",
+        "description": "Batidza maonekero ane muganhu."
+      },
+      {
+        "property": "filled",
+        "title": "Mhando yakazadzwa",
+        "description": "Batidza maonekero akazadzwa."
+      }
+    ]
+  }
+}

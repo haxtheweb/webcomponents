@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Zviongorore",
+    "description": "Vashandisi vanogona kupedzisa kuzviongorora."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Mufananidzo",
+        "description": "Mufananidzo wekuzviongorora."
+      },
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Musoro wekuzviongorora."
+      },
+      {
+        "property": "alt",
+        "title": "Mavara Anotsiva Mufananidzo",
+        "description": "Mavara anotsiva mufananidzo."
+      },
+      {
+        "slot": "question",
+        "title": "Mubvunzo"
+      },
+      {
+        "slot": "",
+        "title": "Mhinduro"
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rweDingindira",
+        "description": "Sarudza ruvara rwedingindira kubva musisitimu yedhizaini.",
+        "options": {
+          "primary": "Huru",
+          "accent": "Kusimbisa",
+          "success": "Kubudirira",
+          "warning": "Yambiro",
+          "error": "Kukanganisa",
+          "info": "Ruzivo"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Chinangwa cheKudzidza",
+        "description": "Chinongedzo chechinangwa chekudzidza chinobudiswa seoer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Zviri kuongororwa",
+        "description": "Chinongedzo chechiitwa chinobudiswa seoer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Chinongedzo chezvimwe",
+        "description": "Chinongedzo kuruzivo rwekuwedzera."
+      }
+    ]
+  }
+}

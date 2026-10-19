@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Унсури қадамҳо",
+    "description": "Унсуре, ки қисми рӯйхати қадамҳо аст"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Унвон"
+      }
+    ]
+  }
+}

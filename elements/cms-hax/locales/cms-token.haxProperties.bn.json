@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS টোকেন",
+    "description": "ব্যাকএন্ডে রেন্ডার হওয়া CMS টোকেন"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "টোকেন",
+        "description": "আমাদের CMS থেকে টোকেন"
+      }
+    ]
+  }
+}

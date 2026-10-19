@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Delwedd Syml",
+    "description": "Trin delweddau gyda pharamedrau syml."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Ffynhonnell",
+        "description": "URL ffynhonnell y ddelwedd."
+      },
+      {
+        "property": "height",
+        "title": "Uchder",
+        "description": "Uchder dewisol y ddelwedd."
+      },
+      {
+        "property": "width",
+        "title": "Lled",
+        "description": "Lled dewisol y ddelwedd."
+      },
+      {
+        "property": "alt",
+        "title": "Testun amgen",
+        "description": "Defnyddiol ar gyfer darllenwyr sgrin a gwella SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Ansawdd",
+        "description": "Ansawdd y ddelwedd wrth ei chynhyrchu (JPEG yn unig)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Blaenoriaeth Nôl",
+        "description": "Awgrym perfformiad ar gyfer porwyr modern.",
+        "options": {
+          "auto": "Awtomatig",
+          "high": "Uchel",
+          "low": "Isel"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dull datgodio",
+        "description": "Awgrym perfformiad ar gyfer dangos delweddau mewn porwyr modern.",
+        "options": {
+          "auto": "Awtomatig",
+          "async": "Anghydamserol"
+        }
+      }
+    ]
+  }
+}

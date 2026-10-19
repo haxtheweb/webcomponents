@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Spaltenlayout",
+    "description": "Material in einfachen Spalten anordnen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Spaltenlayout",
+        "description": "Stil zur Darstellung dieser Elemente (kann sich auf kleinen Bildschirmen ändern)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Responsivität deaktivieren",
+        "description": "Aktivieren, um Spalten auf größeren Bildschirmen beizubehalten und sie nur auf den kleinsten Bildschirmen zu stapeln"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Innenabstand der Elemente",
+        "description": "Innenabstand in jedem Element"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Außenabstand der Elemente",
+        "description": "Abstand zwischen den Elementen"
+      }
+    ]
+  }
+}

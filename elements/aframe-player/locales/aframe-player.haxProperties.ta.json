@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D பிளேயர்",
+    "description": "3D கோப்பு / மேம்படுத்தப்பட்ட யதார்த்த பிளேயர்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "மூலம்",
+        "description": "இந்த AR கோப்பிற்கான URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR-இல் கூறின் X நிலை."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR-இல் கூறின் Y நிலை."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR-இல் கூறின் Z நிலை."
+      },
+      {
+        "property": "skyColor",
+        "title": "வானத்தின் நிறம்",
+        "description": "காட்சியில் வானத்தின் நிறத்தைத் தேர்ந்தெடுக்கவும்."
+      }
+    ]
+  }
+}

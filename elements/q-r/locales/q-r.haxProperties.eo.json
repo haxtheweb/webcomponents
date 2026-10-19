@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR-kodo",
+    "description": "Kodo skanebla per saĝtelefono."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR-datumoj",
+        "description": "Fonto de la datumoj por la QR-kodo."
+      },
+      {
+        "property": "title",
+        "title": "Alternativa titolo",
+        "description": "Alternativa titolo ligita al la fonto de la QR-kodo."
+      },
+      {
+        "property": "modulesize",
+        "title": "Grandeco",
+        "description": "Grandeco de la QR-kodo."
+      },
+      {
+        "property": "margin",
+        "title": "Marĝeno",
+        "description": "Ĉirkaŭaĵo de la kodo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Eliga formato",
+        "description": "Formato por eligi.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

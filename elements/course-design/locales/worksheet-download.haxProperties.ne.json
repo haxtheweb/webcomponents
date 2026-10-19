@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "कार्यपत्र डाउनलोड",
+    "description": "डाउनलोडका लागि उपलब्ध फाइलहरू देखाउने बटन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "डाउनलोडको शीर्षक।"
+      },
+      {
+        "property": "link",
+        "title": "लिङ्क",
+        "description": "डाउनलोडको लिङ्क।"
+      }
+    ]
+  }
+}

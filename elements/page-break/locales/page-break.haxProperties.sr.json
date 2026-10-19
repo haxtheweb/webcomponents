@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "Детаљи странице",
+    "description": "Дефинишите визуелну поделу између страница коју CMS-ови могу користити за прављење страница."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов приказан у теми и као први наслов."
+      },
+      {
+        "property": "pageType",
+        "title": "Тип",
+        "description": "Визуелна ознака контекста странице.",
+        "options": {
+          "": "-- ништа --",
+          "content": "Садржај",
+          "assessment": "Провера знања",
+          "quiz": "Квиз",
+          "submission": "Предаја рада",
+          "lesson": "Лекција",
+          "module": "Модул",
+          "task": "Задатак",
+          "activity": "Активност",
+          "project": "Пројекат",
+          "practice": "Вежба",
+          "unit": "Целина",
+          "objectives": "Циљеви учења",
+          "connection": "Повезивање",
+          "knowledge": "Да ли сте знали?",
+          "strategy": "Стратегија учења",
+          "discuss": "Дискутујте",
+          "listen": "Слушајте",
+          "make": "Направите",
+          "observe": "Посматрајте",
+          "present": "Представите",
+          "reading": "Читање",
+          "reflect": "Размислите",
+          "research": "Истражите",
+          "watch": "Гледајте",
+          "write": "Пишите"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "Ознаке",
+        "description": "Листа ознака одвојених зарезима."
+      },
+      {
+        "property": "linkUrl",
+        "title": "URL везе",
+        "description": "URL преусмеравања који се приказује уместо садржаја странице."
+      },
+      {
+        "property": "linkTarget",
+        "title": "Циљ везе",
+        "description": "Отварај везе у истом или у новом прозору.",
+        "options": {
+          "_self": "Исти прозор",
+          "_blank": "Нови прозор"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "Објављено",
+        "description": "Необјављене странице су скривене од крајњих корисника."
+      },
+      {
+        "property": "locked",
+        "title": "Закључај страницу",
+        "description": "Закључај или откључај све елементе на овој страници."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "Замени аутоматски slug",
+        "description": "Закључај slug од аутоматских ажурирања на основу наслова или родитеља."
+      },
+      {
+        "property": "slug",
+        "title": "Путања",
+        "description": "URL slug за ову страницу."
+      },
+      {
+        "property": "image",
+        "title": "Медији",
+        "description": "Медији који представљају страницу, користе се у неким темама и приказима."
+      },
+      {
+        "property": "parent",
+        "title": "Родитељ",
+        "description": "Путања родитељске странице."
+      },
+      {
+        "property": "noderefs",
+        "title": "Сродни садржај",
+        "description": "Странице повезане са овом страницом."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "Опис",
+        "description": "Опис који се користи у колекцијама и за оптимизацију за претраживаче."
+      },
+      {
+        "property": "entityType",
+        "title": "Тип ентитета",
+        "description": "Подразумевано је страница, осим ако није другачије подешено.",
+        "options": {
+          "page": "Страница (подразумевано)",
+          "taxonomy": "Таксономија",
+          "taxonomyTerm": "Термин таксономије",
+          "region": "Регион"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона повезана са овом страницом на сајту."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Боја повезана са овом страницом на сајту."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "Сакриј у менију",
+        "description": "Сакриј ову страницу из менија уз задржавање њеног URL-а."
+      },
+      {
+        "property": "order",
+        "title": "Редослед",
+        "description": "Редослед у односу на сродне странице."
+      },
+      {
+        "property": "developerTheme",
+        "title": "Тема странице",
+        "description": "Замени тему само за ову страницу."
+      },
+      {
+        "property": "author",
+        "title": "Аутор",
+        "description": "Корисничко име последње особе која је изменила ову страницу."
+      }
+    ]
+  }
+}

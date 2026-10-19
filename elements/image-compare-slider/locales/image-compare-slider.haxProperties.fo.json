@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Myndasamanbering",
+    "description": "Strúka eina mynd yvir eina aðra at samanbera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Ovara mynd",
+        "description": "Ovara mynd at strúka yvir niðaru myndina."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alternativur tekstur til ovaru mynd",
+        "description": "Kravdur alternativur tekstur fyri atkomuleika."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Niðara mynd",
+        "description": "Niðara mynd, sum verður víst undir ovaru myndini."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alternativur tekstur til niðaru mynd",
+        "description": "Kravdur alternativur tekstur fyri atkomuleika."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Atferð",
+        "description": "Vel strúkistilling (standard) ella gjøgnumskygnisstilling fyri ovaru myndina."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "Litur á skjúgvarastongini."
+      },
+      {
+        "property": "dark",
+        "title": "Myrkt",
+        "description": "Vend litinum á skjúgvarastongini."
+      },
+      {
+        "property": "position",
+        "title": "Byrjanarstøða",
+        "description": "Byrjanarstøða frá 0 til 100."
+      }
+    ]
+  }
+}

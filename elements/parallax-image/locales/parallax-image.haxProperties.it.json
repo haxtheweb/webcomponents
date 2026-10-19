@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Immagine parallasse",
+    "description": "Immagine che scorre"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Immagine",
+        "description": "immagine da usare come sfondo"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Area del titolo",
+        "description": "Area del testo del titolo"
+      }
+    ]
+  }
+}

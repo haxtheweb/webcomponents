@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "កាតបុរាណ",
+    "description": "កាតសាមញ្ញជាមួយការរចនាបុរាណ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងកាតចម្បង។"
+      },
+      {
+        "property": "url",
+        "description": "URL ដែលត្រូវបើកពេលចុចលើកាត។"
+      },
+      {
+        "property": "subtitle",
+        "title": "ចំណងជើងរង",
+        "description": "ចំណងជើងរងកាត។"
+      },
+      {
+        "property": "tags",
+        "title": "ស្លាក",
+        "description": "ស្លាកដែលបំបែកដោយក្បៀស។"
+      },
+      {
+        "property": "mediaSource",
+        "title": "ប្រភពមេឌៀ",
+        "description": "ប្រភពមេឌៀចម្បង។"
+      },
+      {
+        "property": "hoverSource",
+        "title": "ប្រភពពេលដាក់ទ្រនិចពីលើ",
+        "description": "ប្រភពមេឌៀដែលបង្ហាញពេលដាក់ទ្រនិចពីលើ ឬធ្វើឱ្យកាតសកម្ម។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "ពណ៌សង្កត់ដែលអនុវត្តទូទាំងកាត។"
+      },
+      {
+        "property": "dark",
+        "title": "ងងឹត",
+        "description": "ប្រើពណ៌មូលដ្ឋានរបៀបងងឹត។"
+      }
+    ]
+  }
+}

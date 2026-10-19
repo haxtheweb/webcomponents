@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Isidlali se-Unity",
+    "description": "Isidlali se-Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Ekujoliswe kuko",
+        "description": "Indlela eya kulwakhiwo lomdlalo."
+      },
+      {
+        "property": "compression",
+        "title": "Indlela yokucinezela",
+        "description": "Isongezo sefayile yokucinezela yezixhobo zomdlalo."
+      },
+      {
+        "property": "streamingurl",
+        "title": "I-URL yokusasaza",
+        "description": "I-URL yezixhobo zokusasaza."
+      },
+      {
+        "property": "companyname",
+        "title": "Igama leNkampani",
+        "description": "Igama lenkampani."
+      },
+      {
+        "property": "productname",
+        "title": "Igama leMveliso",
+        "description": "Isihloko somdlalo."
+      },
+      {
+        "property": "productversion",
+        "title": "Inguqulelo yeMveliso",
+        "description": "Inguqulelo ekhutshiweyo."
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi beCanvas",
+        "description": "Ububanzi be-CSS be-canvas (umzekelo px okanye em)."
+      },
+      {
+        "property": "height",
+        "title": "Ubude beCanvas",
+        "description": "Ubude be-CSS be-canvas (umzekelo px okanye em)."
+      },
+      {
+        "property": "background",
+        "title": "Umva weCanvas",
+        "description": "Umva we-CSS we-canvas."
+      }
+    ]
+  }
+}

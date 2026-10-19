@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "курс моделе",
+    "description": "Курс төшенчәләре өчен тулырак мәгълүмат, анимация һәм белем тикшерүләре булган интерактив макет."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "title"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Мәгълүмат өлкәсе"
+      },
+      {
+        "title": "Тулырак мәгълүмат өлкәсе"
+      },
+      {
+        "title": "Анимация өлкәсе"
+      },
+      {
+        "title": "Белем тикшерү өлкәсе"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Логотип өлкәсе"
+      }
+    ]
+  }
+}

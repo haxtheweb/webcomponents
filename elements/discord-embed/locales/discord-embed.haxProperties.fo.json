@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Innset Discord-felagsskapir frá einum deilingar-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Tilfeingis-URL",
+        "description": "Tilfeingis-URL."
+      },
+      {
+        "property": "height",
+        "title": "Hædd",
+        "description": "Hædd á innihaldsrammuni."
+      },
+      {
+        "property": "width",
+        "title": "Breidd",
+        "description": "Breidd á innihaldsrammuni."
+      }
+    ]
+  }
+}

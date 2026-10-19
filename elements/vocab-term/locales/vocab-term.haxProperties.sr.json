@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Речник",
+    "description": "Појам из речника."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Појам"
+      },
+      {
+        "property": "information",
+        "title": "Дефиниција",
+        "description": "Дефиниција приказана када се кликне на појам."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Искачући прозор",
+        "description": "Прикажи дефиницију у искачућем прозору уместо у тексту."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Везе",
+        "description": "Листа допунских веза повезаних са овим појмом."
+      }
+    ]
+  }
+}

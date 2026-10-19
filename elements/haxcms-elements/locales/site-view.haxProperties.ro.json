@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Vizualizare site",
+    "description": "Un bloc dinamic care interoghează și afișează datele site-ului pe baza unor criterii"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL-ul vizualizării",
+        "description": "Parametrii de interogare pentru fluxul de date al vizualizării. Îi poți obține din panoul Vizualizări."
+      },
+      {
+        "property": "renderer",
+        "title": "Mod de afișare",
+        "description": "Cum trebuie afișate rezultatele vizualizării"
+      },
+      {
+        "property": "entity",
+        "title": "Tipul entității",
+        "description": "Tipul de entitate folosit pentru interpretarea răspunsului",
+        "options": {
+          "": "Implicit (items)",
+          "item": "Element",
+          "page": "Pagina",
+          "file": "Fișier",
+          "tag": "Etichetă",
+          "block": "Bloc",
+          "view": "Vizualizare",
+          "theme": "Temă",
+          "region": "Regiune",
+          "customElement": "Element personalizat"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Rupe vizualizarea site-ului",
+        "description": "Convertește în conținut static pentru editare directă; oprește actualizarea automată din sursă."
+      }
+    ]
+  }
+}

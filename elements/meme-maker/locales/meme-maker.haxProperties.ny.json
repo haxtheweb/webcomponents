@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Pangani meme kuchokera ku chithunzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Gwero",
+        "description": "URL ya gwero la chithunzi cha meme."
+      },
+      {
+        "property": "topText",
+        "title": "Mawu apamwamba",
+        "description": "Mawu apamwamba a meme."
+      },
+      {
+        "property": "bottomText",
+        "title": "Mawu apansi",
+        "description": "Mawu apansi a meme."
+      },
+      {
+        "property": "alt",
+        "title": "Mawu ena ofotokozera",
+        "description": "Mawu ofotokozera chithunzi kwa ogwiritsa ntchito omwe sapenya."
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Mphaka akubisalira chidole chaching'ono",
+        "topText": "Ndakubweretserani",
+        "bottomText": "imfa"
+      }
+    }
+  ]
+}

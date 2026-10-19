@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Pachika maudhui ya wavuti ya nje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Chanzo",
+        "description": "URL ya rasilimali hii."
+      }
+    ]
+  }
+}

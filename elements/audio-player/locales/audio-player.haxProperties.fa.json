@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "صوت",
+    "description": "این می‌تواند ویدیو را صرف‌نظر از منبع، به شیوه‌ای بسیار دسترس‌پذیر نمایش دهد."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "منبع",
+        "description": "URL این رسانه."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "عنوان",
+        "description": "عنوان ساده برای زیر ویدیو"
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی پخش‌کننده را انتخاب کنید."
+      },
+      {
+        "property": "track",
+        "title": "زیرنویس‌های بسته",
+        "description": "URL فایل زیرنویس."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "تصویر بندانگشتی",
+        "description": "اختیاری. URL تصویر بندانگشتی/پوستر."
+      },
+      {
+        "property": "learningMode",
+        "title": "فعال کردن حالت یادگیری",
+        "description": "جلو و عقب بردن سریع را غیرفعال می‌کند."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "حذف دکمه باز کردن در YouTube",
+        "description": "دکمه باز کردن ویدیو در YouTube را حذف می‌کند."
+      },
+      {
+        "property": "linkable",
+        "title": "پیوند اشتراک‌گذاری اضافه شود؟",
+        "description": "پیوندی برای اشتراک‌گذاری ویدیو فراهم می‌کند."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "مشخص می‌کند که آیا از CORS استفاده شود یا نه.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "اجازه پخش در پس‌زمینه",
+        "description": "ویدیوها وقتی زبانه از کانون خارج می‌شود خودکار متوقف/پخش می‌شوند؛ این گزینه امکان پخش ویدیو بدون کانون زبانه را فراهم می‌کند"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "پوسته تاریک برای رونوشت",
+        "description": "فعال کردن پوسته تاریک برای رونوشت."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "غیرفعال کردن حالت تعاملی",
+        "description": "حالت تعاملی را که رونوشت را قابل کلیک می‌کند غیرفعال کنید."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "پنهان کردن برچسب‌های زمانی",
+        "description": "برچسب‌های زمانی رونوشت را پنهان کنید."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "پنهان کردن رونوشت",
+        "description": "رونوشت به‌طور پیش‌فرض پنهان باشد."
+      },
+      {
+        "property": "lang",
+        "title": "زبان",
+        "description": "زبان رسانه."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML blokea",
+    "description": "HAXschema konexioa eskaintzen duen oinarrizko HTML blokea"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Edukian aurkeztu nahi duzun HTML kodea"
+      }
+    ]
+  }
+}

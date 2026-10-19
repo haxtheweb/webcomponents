@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Täida lüngad",
+    "description": "Hindamistegevus, kus õppijad täidavad väites puuduvad sõnad."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Küsimus",
+        "description": "Küsimus, millele kasutajad vastavad."
+      },
+      {
+        "property": "statement",
+        "title": "Väide",
+        "description": "Väide, millest tehakse sõnade märkimise interaktsioon."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Hindamisvorming",
+        "description": "OER Schema: selle hindamise hindamisvorming (nt punktid, täht, protsent, sooritus)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Õpieesmärk",
+        "description": "OER Schema: selle hindamisega seotud õpieesmärk."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus, millele see hindamine on mõeldud."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testi nimi",
+        "description": "Testi nimi, mida kasutatakse xAPI-põhistes keskkondades selle üksuse tuvastamiseks"
+      }
+    ]
+  }
+}

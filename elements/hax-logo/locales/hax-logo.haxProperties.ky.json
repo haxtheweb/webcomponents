@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX сөз көркөмү",
+    "description": "HAX логотип элементи, албетте HAX менен иштей турган элемент катары."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Коюла турган HAX логотибинин өлчөмү",
+        "options": {
+          "mini": "Мини",
+          "small": "Кичине",
+          "normal": "Кадимки",
+          "large": "Чоң"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Логотипти баш тамгага айландыруу керекпи"
+      }
+    ]
+  }
+}

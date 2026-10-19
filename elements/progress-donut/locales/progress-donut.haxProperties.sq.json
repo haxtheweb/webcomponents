@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Petull progresi",
+    "description": "Petull e përparimit"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli i elementit"
+      },
+      {
+        "property": "desc",
+        "title": "Përshkrimi",
+        "description": "Përshkrim i gjatë i qasshëm"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Burimi i imazhit",
+        "description": "Burimi i imazhit brenda petullës."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Teksti alternativ i imazhit",
+        "description": "Teksti alternativ për imazhin."
+      },
+      {
+        "property": "animated",
+        "title": "I animuar",
+        "description": "Nëse progresi animohet në ngarkimin e parë"
+      },
+      {
+        "property": "complete",
+        "title": "Përfunduar",
+        "description": "Një varg vlerash të përfunduara."
+      },
+      {
+        "property": "total",
+        "title": "Gjithsej",
+        "description": "Totali kur të gjitha elementet janë përfunduar."
+      },
+      {
+        "property": "startAngle",
+        "title": "Këndi i fillimit",
+        "description": "Këndi i petullës ku fillon progresi"
+      }
+    ]
+  }
+}

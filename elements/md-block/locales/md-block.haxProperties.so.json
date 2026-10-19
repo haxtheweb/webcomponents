@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Qayb waxyaabo markdown ah oo toos ah ama meel fog laga soo raray"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown cayriin ah"
+      },
+      {
+        "property": "source",
+        "title": "Isha",
+        "description": "Faylka isha ee markdown"
+      }
+    ]
+  }
+}

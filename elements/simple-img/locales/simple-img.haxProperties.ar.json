@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "صورة بسيطة",
+    "description": "معالجة الصور بمعاملات بسيطة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "المصدر",
+        "description": "URL مصدر الصورة."
+      },
+      {
+        "property": "height",
+        "title": "الارتفاع",
+        "description": "ارتفاع اختياري للصورة."
+      },
+      {
+        "property": "width",
+        "title": "العرض",
+        "description": "عرض اختياري للصورة."
+      },
+      {
+        "property": "alt",
+        "title": "النص البديل",
+        "description": "مفيد لقارئات الشاشة وتحسين SEO."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "الجودة",
+        "description": "جودة الصورة عند إنشائها (JPEG فقط)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "أولوية الجلب",
+        "description": "تلميح أداء للمتصفحات الحديثة.",
+        "options": {
+          "auto": "تلقائي",
+          "high": "عالية",
+          "low": "منخفضة"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "طريقة فك الترميز",
+        "description": "تلميح أداء لعرض الصور في المتصفحات الحديثة.",
+        "options": {
+          "auto": "تلقائي",
+          "async": "غير متزامن"
+        }
+      }
+    ]
+  }
+}

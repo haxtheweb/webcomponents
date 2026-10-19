@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Tarree lakkoofsaa",
+    "description": "Tarree lakkoofsaa uumi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Haala lakkoofsaa",
+        "description": "Haala lakkoofsa tarree tartiiba qabuuf fayyadamu.",
+        "options": {
+          "": "Durtii (desimaala)",
+          "list-decimal-leading-zero": "Desimaala zeeroo duraa qabu (01, 02, 03)",
+          "list-lower-alpha": "Qubee xiqqaa (a, b, c)",
+          "list-upper-alpha": "Qubee guddaa (A, B, C)",
+          "list-lower-roman": "Roomaa xiqqaa (i, ii, iii)",
+          "list-upper-roman": "Roomaa guddaa (I, II, III)"
+        }
+      }
+    ]
+  }
+}

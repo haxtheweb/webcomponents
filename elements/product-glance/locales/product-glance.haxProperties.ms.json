@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Sekilas produk",
+    "description": "Blok gambaran ringkas produk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon yang mewakili konsep."
+      },
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Konsep utama secara sekilas."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtajuk",
+        "description": "Butiran tambahan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "Warna aksen untuk ikon."
+      }
+    ]
+  }
+}

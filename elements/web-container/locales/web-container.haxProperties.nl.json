@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-container"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Editor verbergen",
+        "description": "Verberg de interface voor het bewerken van bestanden."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminal verbergen",
+        "description": "Verberg de terminal voor automatisch uitgevoerde programma's."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Venster verbergen",
+        "description": "Verberg het uitvoervenster voor gebruik met alleen de terminal."
+      },
+      {
+        "slot": "",
+        "title": "Opdrachten",
+        "description": "Opdrachten (één per regel) die vóór het laden worden uitgevoerd."
+      }
+    ]
+  }
+}

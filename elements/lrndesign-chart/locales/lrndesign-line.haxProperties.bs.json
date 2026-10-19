@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Linijski grafikon",
+    "description": "Pravi pristupačan grafikon na osnovu CSV-a."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Boja naglaska",
+        "description": "Opcionalna boja naglaska."
+      },
+      {
+        "title": "Tamna tema",
+        "description": "Omogući tamnu temu"
+      },
+      {
+        "title": "CSV datoteka",
+        "description": "Učitaj podatke iz CSV-a."
+      },
+      {
+        "title": "Naslov grafikona",
+        "description": "Pristupačni alternativni tekst za vaš grafikon."
+      },
+      {
+        "title": "Opis grafikona",
+        "description": "Pristupačni opis vašeg grafikona."
+      },
+      {
+        "title": "Naziv skale",
+        "description": "Omjer širina:visina grafikona (pogledajte https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings za $ct-scales i $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Prikaži pozadinu mreže"
+      },
+      {
+        "title": "Prikaži područje"
+      },
+      {
+        "title": "Prikaži liniju"
+      },
+      {
+        "title": "Prikaži tačku"
+      },
+      {
+        "title": "Puna širina"
+      },
+      {
+        "title": "Prikaži oznake tačaka"
+      },
+      {
+        "title": "Unutrašnja margina grafikona (gore)"
+      },
+      {
+        "title": "Unutrašnja margina grafikona (dolje)"
+      },
+      {
+        "title": "Unutrašnja margina grafikona (lijevo)"
+      },
+      {
+        "title": "Unutrašnja margina grafikona (desno)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Obrni podatke",
+        "description": "Obrni podatke uključujući oznake, redoslijed serija kao i cijele nizove podataka serija."
+      },
+      {
+        "title": "HTML tabela",
+        "description": "Opcionalno: učitaj podatke kao HTML tabelu."
+      },
+      {
+        "title": "Minimum grafikona",
+        "description": "Zamjena prirodnog minimuma grafikona omogućava vam da uvećate ili ograničite najnižu prikazanu vrijednost grafikona"
+      },
+      {
+        "title": "Maksimum grafikona",
+        "description": "Zamjena prirodnog maksimuma grafikona omogućava vam da uvećate ili ograničite najvišu prikazanu vrijednost grafikona"
+      },
+      {
+        "title": "Prikaži oznake tačaka",
+        "options": {
+          "middle": "Sredina",
+          "start": "Početak",
+          "end": "Kraj"
+        }
+      },
+      {
+        "title": "X-pomak oznaka tačaka"
+      },
+      {
+        "title": "Y-pomak oznaka tačaka"
+      },
+      {
+        "title": "Zaglađivanje linije"
+      },
+      {
+        "title": "Osnova područja",
+        "description": "Osnova za površinski grafikon koja će se koristiti za zatvaranje oblika područja (obično je 0)."
+      },
+      {
+        "title": "X-osa: prikaži mrežu",
+        "description": "Prikaži mrežu X-ose."
+      },
+      {
+        "title": "Pomak X-ose"
+      },
+      {
+        "title": "Položaj X-ose",
+        "description": "Položaj na koji se postavljaju oznake. Može se postaviti na \"start\" ili \"end\", gdje \"start\" odgovara lijevo ili gore na okomitoj osi, a \"end\" odgovara desno ili dolje na vodoravnoj osi"
+      },
+      {
+        "title": "X-osa: prikaži oznaku",
+        "description": "Prikaži oznaku X-ose."
+      },
+      {
+        "title": "Oznaka X-ose (vodoravni pomak)",
+        "description": "Vodoravni položaj oznaka X-ose."
+      },
+      {
+        "title": "Oznaka X-ose (okomiti pomak)",
+        "description": "Okomiti položaj oznaka X-ose."
+      },
+      {
+        "title": "Naslov X-ose",
+        "description": "Opcionalni naslov za X-osu."
+      },
+      {
+        "title": "Naslov X-ose (vodoravni pomak)",
+        "description": "Vodoravni položaj naslova X-ose."
+      },
+      {
+        "title": "Naslov X-ose (okomiti pomak)",
+        "description": "Okomiti položaj naslova X-ose."
+      },
+      {
+        "title": "Sidro naslova X-ose",
+        "description": "Opcionalno sidro za naslov X-ose.",
+        "options": {
+          "middle": "sredina",
+          "end": "kraj",
+          "start": "početak"
+        }
+      },
+      {
+        "title": "Y-osa: prikaži mrežu",
+        "description": "Prikaži mrežu Y-ose."
+      },
+      {
+        "title": "Pomak Y-ose"
+      },
+      {
+        "title": "Položaj Y-ose",
+        "description": "Položaj na koji se postavljaju oznake. Može se postaviti na \"start\" ili \"end\", gdje \"start\" odgovara lijevo ili gore na okomitoj osi, a \"end\" odgovara desno ili dolje na vodoravnoj osi"
+      },
+      {
+        "title": "Y-osa: prikaži oznaku",
+        "description": "Prikaži oznaku Y-ose."
+      },
+      {
+        "title": "Oznaka Y-ose (vodoravni pomak)",
+        "description": "Vodoravni položaj oznake Y-ose."
+      },
+      {
+        "title": "Oznaka Y-ose (okomiti pomak)",
+        "description": "Okomiti položaj oznake Y-ose."
+      },
+      {
+        "title": "Minimalni razmak skale Y-ose",
+        "description": "Određuje minimalnu visinu koraka skale u pikselima."
+      },
+      {
+        "title": "Skala Y-ose (samo cijeli brojevi)",
+        "description": "Koristi samo cjelobrojne vrijednosti (cijele brojeve) za korake skale."
+      },
+      {
+        "title": "Naslov Y-ose",
+        "description": "Opcionalni naslov za Y-osu."
+      },
+      {
+        "title": "Naslov Y-ose (okomiti pomak)",
+        "description": "Vodoravni položaj naslova Y-ose."
+      },
+      {
+        "title": "Naslov Y-ose (vodoravni pomak)",
+        "description": "Vodoravni položaj naslova Y-ose."
+      },
+      {
+        "title": "Sidro naslova Y-ose",
+        "description": "Opcionalno sidro za naslov Y-ose.",
+        "options": {
+          "middle": "sredina",
+          "end": "kraj",
+          "start": "početak"
+        }
+      },
+      {
+        "title": "Okreni naslov Y-ose",
+        "description": "Okrenuti naslov za Y-osu?"
+      }
+    ]
+  }
+}

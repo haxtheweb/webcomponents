@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Jadual CSV",
+    "description": "Ini boleh menjana jadual daripada fail CSV tidak kira di mana ia terletak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Sumber",
+        "description": "URL untuk fail CSV ini."
+      },
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk untuk jadual yang akan dijana."
+      },
+      {
+        "property": "description",
+        "title": "Penerangan",
+        "description": "Penerangan yang lebih terperinci untuk meningkatkan kebolehcapaian data jadual."
+      }
+    ]
+  }
+}

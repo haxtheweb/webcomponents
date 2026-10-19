@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tabel CSV",
+    "description": "Poate genera un tabel dintr-un fișier CSV, indiferent unde se află."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Sursă",
+        "description": "URL-ul acestui fișier CSV."
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul tabelului care va fi generat."
+      },
+      {
+        "property": "description",
+        "title": "Descriere",
+        "description": "Descriere mai detaliată pentru o accesibilitate mai bună a datelor din tabel."
+      }
+    ]
+  }
+}

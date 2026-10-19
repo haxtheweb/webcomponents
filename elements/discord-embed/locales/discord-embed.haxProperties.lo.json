@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "ຝັງຊຸມຊົນ Discord ຈາກ URL ແບ່ງປັນ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL ຊັບພະຍາກອນ",
+        "description": "URL ຊັບພະຍາກອນ."
+      },
+      {
+        "property": "height",
+        "title": "ຄວາມສູງ",
+        "description": "ຄວາມສູງຂອງກອບເນື້ອຫາ."
+      },
+      {
+        "property": "width",
+        "title": "ຄວາມກວ້າງ",
+        "description": "ຄວາມກວ້າງຂອງກອບເນື້ອຫາ."
+      }
+    ]
+  }
+}

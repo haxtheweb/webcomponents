@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Ìfisínú Twitter (X)",
+    "description": "Fi tweet láti X sínú àyíká rẹ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL Tweet",
+        "description": "URL tweet tí a ó fi sínú."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Àkòrí",
+        "description": "Àkòrí ìmọ́lẹ̀ tàbí dúdú fún àwọn tweet X.",
+        "options": {
+          "light": "Ìmọ́lẹ̀",
+          "dark": "Dúdú"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Dènà fèrèsé agbéjáde nígbà títẹ̀",
+        "description": "Dènà àwọn olùlò láti ṣí tweet náà lórí x.com."
+      }
+    ]
+  }
+}

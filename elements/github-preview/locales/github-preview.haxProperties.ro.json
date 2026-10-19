@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Previzualizare GitHub",
+    "description": "Figură accesibilă cu descriere lungă"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizație",
+        "description": "Numele de sistem al organizației GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Depozit",
+        "description": "Numele de sistem al depozitului"
+      },
+      {
+        "property": "extended",
+        "title": "Vizualizare extinsă",
+        "description": "Include fișierul readme în element"
+      }
+    ]
+  }
+}

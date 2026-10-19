@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Jeku'e Chipa",
+    "description": "Jeku'e chipa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Téra",
+        "description": "Pehẽ réra"
+      },
+      {
+        "property": "desc",
+        "title": "Myesakã",
+        "description": "Ñemoha'ãnga ipukúva ojeikekuaáva"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Ta'ãnga ypykue",
+        "description": "Ta'ãnga ypykue chipa ryepýpe."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Ta'ãnga Moñe'ẽrã Alt",
+        "description": "Moñe'ẽrã alt ta'ãngape g̃uarã."
+      },
+      {
+        "property": "animated",
+        "title": "Oku'éva",
+        "description": "Jeku'e oku'épa ñemyenyhẽ peteĩháme"
+      },
+      {
+        "property": "complete",
+        "title": "Opáma",
+        "description": "Peteĩ tysýi tepykue oñemohu'ãmava."
+      },
+      {
+        "property": "total",
+        "title": "Opavave",
+        "description": "Opavave opaite mba'e oñemohu'ã jave."
+      },
+      {
+        "property": "startAngle",
+        "title": "Ñepyrũ Ãngulo",
+        "description": "Chipa ãngulo oñepyrũhápe jeku'e"
+      }
+    ]
+  }
+}

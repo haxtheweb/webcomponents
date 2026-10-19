@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Disqus-Kommentaren op enger Säit abannen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Kuerznumm",
+        "description": "De Kuerznumm vum Site, deen den Disqus-Skript-Host bestëmmt."
+      },
+      {
+        "property": "pageURL",
+        "title": "Säiten-URL",
+        "description": "D'URL vun der Säit, un där de Kommentarfuedem hänkt."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Säiten-Identifikator",
+        "description": "Den eendeitegen Identifikator fir de Kommentarfuedem vun der Säit."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Säitentitel",
+        "description": "Den Titel vun der Säit, un där de Kommentarfuedem hänkt."
+      },
+      {
+        "property": "loadingText",
+        "title": "Luedtext",
+        "description": "Text, deen ugekënnegt gëtt, während d'Kommentare lueden."
+      },
+      {
+        "property": "lang",
+        "title": "Sprooch",
+        "description": "Sproochcode fir d'Disqus-Interface, z. B. en."
+      }
+    ]
+  }
+}

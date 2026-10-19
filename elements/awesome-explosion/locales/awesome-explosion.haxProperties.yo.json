@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Ìbúgbàù Àgbàyanu",
+    "description": "Ìgbéérí ìbúgbàù aláṣepọ̀ pẹ̀lú àwọn ìró àṣàyàn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Ìwọ̀n",
+        "description": "Ṣètò ìwọ̀n ìbúgbàù.",
+        "options": {
+          "tiny": "Kékeré jù",
+          "small": "Kékeré",
+          "medium": "Àárín",
+          "large": "Ńlá",
+          "epic": "Àrà ńlá"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Àwọ̀",
+        "description": "Ṣètò àkòrí àwọ̀ ìbúgbàù.",
+        "options": {
+          "": "Àtilẹ̀wá",
+          "red": "Pupa",
+          "blue": "Búlúù",
+          "purple": "Àlùkò",
+          "orange": "Ọsàn",
+          "yellow": "Ìyeyè"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Àwọn ìró",
+        "description": "Mú àwọn ìró ṣiṣẹ́."
+      },
+      {
+        "property": "resetSound",
+        "title": "Tún ìró bẹ̀rẹ̀",
+        "description": "Bẹ̀rẹ̀ ìró láti ìbẹ̀rẹ̀ ní gbogbo ìgbà."
+      },
+      {
+        "property": "image",
+        "title": "Àwòrán àdáni",
+        "description": "URL àṣàyàn fún àwòrán ìbúgbàù àdáni."
+      },
+      {
+        "property": "sound",
+        "title": "Ìró àdáni",
+        "description": "URL àṣàyàn fún ìró àdáni."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Àìṣiṣẹ́",
+        "description": "Mú gbogbo ìbáṣepọ̀ kúrò ní iṣẹ́."
+      }
+    ]
+  }
+}

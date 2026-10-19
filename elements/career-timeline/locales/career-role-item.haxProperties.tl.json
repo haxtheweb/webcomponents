@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Tungkulin sa Karera",
+    "description": "Isang tungkulin sa loob ng isang organisasyon"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pamagat"
+      },
+      {
+        "property": "startDate",
+        "title": "Petsa ng Pagsisimula"
+      },
+      {
+        "property": "endDate",
+        "title": "Petsa ng Pagtatapos (Opsyonal)"
+      },
+      {
+        "property": "skills",
+        "title": "Mga Kaugnay na Kasanayan",
+        "description": "Piliin ang + button para magsimulang magdagdag ng mga kasanayan"
+      }
+    ]
+  }
+}

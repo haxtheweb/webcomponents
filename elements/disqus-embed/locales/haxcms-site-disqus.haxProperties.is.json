@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Disqus-athugasemdir",
+    "description": "Samþætting við Disqus-athugasemdaþjónustuna"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Stutt heiti",
+        "description": "Stutt heiti eignar á Disqus"
+      }
+    ]
+  }
+}

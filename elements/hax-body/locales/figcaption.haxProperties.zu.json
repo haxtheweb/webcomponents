@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Incazelo yomfanekiso",
+    "description": "Incazelo yomfanekiso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Incazelo yesithombe",
+        "description": "Umbhalo oboniswa ngezansi komfanekiso."
+      }
+    ]
+  }
+}

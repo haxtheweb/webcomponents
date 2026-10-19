@@ -1,0 +1,21 @@
+{
+  "selectTarget": "Зорилтот байршил сонгох",
+  "importContentUnderThisPage": "Энэ хуудасны доор агуулга импортлох",
+  "importThisContent": "Энэ агуулгыг импортлох",
+  "thisPage": "энэ хуудас",
+  "newPage": "Шинэ хуудас",
+  "copyOf": "Хуулбар:",
+  "pageActions": "Хуудасны үйлдлүүд",
+  "editTitle": "Гарчиг засах",
+  "lock": "Түгжих",
+  "unlock": "Түгжээ тайлах",
+  "moveUp": "Дээш зөөх",
+  "moveDown": "Доош зөөх",
+  "makeChild": "Дэд хуудас болгох",
+  "moveToParentLevel": "Эцэг түвшин рүү зөөх",
+  "addPage": "Хуудас нэмэх",
+  "duplicate": "Хувилах",
+  "delete": "Устгах",
+  "restore": "Сэргээх",
+  "goToPage": "Хуудас руу очих"
+}

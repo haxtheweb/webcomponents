@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Marka Polaris",
+    "description": "Uri l-marka tal-identità tal-PSU b'isem il-kulleġġ u URL tad-destinazzjoni fakultattivi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Isem il-kulleġġ",
+        "description": "Isem muri ħdejn il-marka."
+      },
+      {
+        "property": "name2",
+        "title": "Isem il-kulleġġ 2",
+        "description": "It-tieni isem muri taħt l-ewwel isem tal-kulleġġ."
+      },
+      {
+        "property": "name3",
+        "title": "Isem il-kulleġġ 3",
+        "description": "It-tielet isem muri taħt it-tieni isem tal-kulleġġ."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "URL tad-destinazzjoni meta tiġi kklikkjata l-marka."
+      },
+      {
+        "property": "type",
+        "title": "Varjant",
+        "description": "Varjant viżiv tal-marka.",
+        "options": {
+          "default": "Awtomatiku",
+          "light": "Ċar",
+          "dark": "Skur"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Tqassim vertikali",
+        "description": "Uri t-tielet isem taħt it-tieni isem b'linja orizzontali."
+      }
+    ]
+  }
+}

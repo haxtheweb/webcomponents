@@ -1,0 +1,14 @@
+{
+  "title": "Block",
+  "enabled": "Aktiverad",
+  "block": "Block",
+  "preview": "Förhandsgranska",
+  "filterBlocks": "Filtrera block",
+  "requiredTextNote": "Vissa texttaggar krävs och är alltid aktiverade (visas inaktiverade).",
+  "selectAll": "Markera alla",
+  "deselectAll": "Avmarkera alla",
+  "save": "Spara",
+  "noDescription": "Ingen beskrivning tillgänglig.",
+  "details": "Detaljer",
+  "loadingInventory": "Laddar fullständig blocklista…"
+}

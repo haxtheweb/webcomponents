@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Chjama à l'azzione",
+    "description": "Un buttone simplice cù un ligame per passà à l'azzione."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etichetta",
+        "description": "Etichetta di u ligame"
+      },
+      {
+        "property": "link",
+        "title": "Ligame",
+        "description": "Scrivite un ligame versu una risorsa qualunque"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Piattà l'icona",
+        "description": "Piattà l'icona aduprata per mette in risaltu u testu"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona di u ligame d'azzione"
+      }
+    ]
+  }
+}

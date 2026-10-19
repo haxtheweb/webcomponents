@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": ".h5p ፋይሎችን ለመጫን እና ለማቅረብ የH5P መጠቅለያ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "የH5P iframe መክተቻ ኮድ"
+      }
+    ]
+  }
+}

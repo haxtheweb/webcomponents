@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pré-visualização do GitHub",
+    "description": "Figura acessível com descrição longa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organização",
+        "description": "Nome de máquina da organização no GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Repositório",
+        "description": "Nome de máquina do repositório"
+      },
+      {
+        "property": "extended",
+        "title": "Visualização estendida",
+        "description": "Inclui o readme no elemento"
+      }
+    ]
+  }
+}

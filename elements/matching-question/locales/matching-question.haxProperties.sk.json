@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Priraďovacia otázka",
+    "description": "Priraďovacia aktivita s presúvaním, ktorá spája zadania so správnymi odpoveďami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Otázka",
+        "description": "Otázka pre používateľov. Označte cieľové miesta a potom uveďte odpovede až po ďalšie cieľové miesto."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formát hodnotenia",
+        "description": "OER Schema: formát hodnotenia tohto testu (napr. body, známka, percentá, splnenie)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Vzdelávací cieľ",
+        "description": "OER Schema: vzdelávací cieľ spojený s týmto testom."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurz",
+        "description": "OER Schema: kurz, pre ktorý je tento test určený."
+      },
+      {
+        "property": "answers",
+        "title": "Odpovede"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Názov kvízu",
+        "description": "Názov kvízu použitý na identifikáciu xAPI v analytických systémoch."
+      }
+    ]
+  }
+}

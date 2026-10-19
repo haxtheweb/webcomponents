@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Whāinga Whanaketanga Toitū a te Kotahitanga o ngā Whenua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Whāinga",
+        "description": "Tau UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Tae anake",
+        "description": "Whakaaturia te tae o te whāinga anake."
+      }
+    ]
+  }
+}

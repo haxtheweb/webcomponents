@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ផ្ទាំង",
+    "description": "សំណុំផ្ទាំង។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "ស្លាក (សម្រាប់ភាពងាយស្រួលចូលប្រើ)",
+        "description": "ស្លាកដែលអាចចូលប្រើបានសម្រាប់សំណុំផ្ទាំង។"
+      },
+      {
+        "property": "disabled",
+        "title": "បានបិទ",
+        "description": "បិទផ្ទាំងទាំងអស់។"
+      },
+      {
+        "property": "hidden",
+        "title": "លាក់",
+        "description": "លាក់សំណុំផ្ទាំង។"
+      },
+      {
+        "property": "sticky",
+        "title": "ខ្ទាស់",
+        "description": "រក្សាផ្ទាំងផ្តេកនៅខាងលើពេលរំកិល។"
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "ចំណុចបំបែកប្លង់",
+        "description": "ចំណុចបំបែកសម្រាប់ផ្ទាំងផ្តេក; ប្រើ -1 សម្រាប់តែបញ្ឈរ។"
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "ចំណុចបំបែករូបតំណាង",
+        "description": "ចំណុចបំបែកសម្រាប់បង្ហាញអត្ថបទជាមួយរូបតំណាង។ លំនាំដើមគឺ 0; ប្រើ -1 សម្រាប់របៀបតែរូបតំណាង។"
+      },
+      {
+        "slot": "",
+        "title": "ផ្ទាំង",
+        "description": "ស៊េរីនៃធាតុ <a11y-tab/>។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID តែមួយគត់",
+        "description": "ID តែមួយគត់សម្រាប់សំណុំផ្ទាំងនេះ។"
+      }
+    ]
+  }
+}

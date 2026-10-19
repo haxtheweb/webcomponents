@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "کلیکشن قطار",
+    "description": "کلیکشن فہرست کے اندر استعمال کے لیے قطار نما آئٹم، جس میں متن، لنک، آئیکن، ٹیگز اور اختیاری تصویر ہو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "لنک",
+        "description": "اس قطار کا منزل URL۔"
+      },
+      {
+        "property": "image",
+        "title": "تصویر",
+        "description": "قطار کی تصویر۔"
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "تصویر کی وضاحت کرنے والا متبادل متن۔"
+      },
+      {
+        "property": "line1",
+        "title": "سطر 1",
+        "description": "متن کی پہلی سطر۔"
+      },
+      {
+        "property": "line2",
+        "title": "سطر 2",
+        "description": "متن کی دوسری سطر۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "قطار کی نمائندگی کرنے والا آئیکن۔"
+      },
+      {
+        "property": "saturate",
+        "title": "سیچوریشن اثر",
+        "description": "صارف کے فوکس پر تصویر کی سیچوریشن بدلیں۔"
+      },
+      {
+        "property": "tags",
+        "title": "ٹیگز",
+        "description": "کوما سے الگ ٹیگز کی فہرست۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ",
+        "description": "آئیکن اور ٹیگز کے لیے استعمال ہونے والا رنگ۔"
+      }
+    ]
+  }
+}

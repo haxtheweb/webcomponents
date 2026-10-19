@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Sideflag",
+    "description": "Redaktionel note til sidens forfattere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "Accentfarve for sideflaget."
+      },
+      {
+        "property": "label",
+        "title": "Etiket",
+        "description": "Etikettekst for sideflaget."
+      }
+    ]
+  }
+}

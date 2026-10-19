@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Káàdì",
+    "description": "Káàdì tí a ṣe lọ́ṣọ̀ọ́ pẹ̀lú ètò àpẹẹrẹ DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Àwòrán",
+        "description": "Àwòrán àṣàyàn."
+      },
+      {
+        "property": "alt",
+        "title": "Alt àwòrán",
+        "description": "Ọ̀rọ̀ àfirọ́pò tí ó ṣàpèjúwe àwòrán náà."
+      },
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé káàdì."
+      },
+      {
+        "slot": "",
+        "title": "Àkóónú",
+        "description": "Agbègbè àkóónú káàdì."
+      },
+      {
+        "property": "href",
+        "title": "Ìjápọ̀",
+        "description": "URL ìjápọ̀ bọ́tìnnì."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Àmì-orúkọ",
+        "description": "Àmì-orúkọ bọ́tìnnì."
+      },
+      {
+        "property": "noArrow",
+        "title": "Láìsí ọfà",
+        "description": "Fi ọfà bọ́tìnnì pamọ́."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Ìjápọ̀: ibi-àfojúsùn",
+        "description": "Ibi tí a ó ti ṣí ìjápọ̀ náà.",
+        "options": {
+          "": "Fèrèsé kan náà",
+          "_blank": "Fèrèsé tuntun - _blank",
+          "_top": "Fèrèsé òkè - _top",
+          "_parent": "Fèrèsé òbí - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Ìjápọ̀: rel",
+        "description": "Ìbáṣepọ̀ láàrín ohun-èlò tí a jápọ̀ àti ìwé lọ́wọ́lọ́wọ́."
+      }
+    ]
+  }
+}

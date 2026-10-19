@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ट्याब",
+    "description": "एउटा ट्याब।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ट्याब आइकन"
+      },
+      {
+        "property": "disabled",
+        "title": "निष्क्रिय"
+      },
+      {
+        "property": "label",
+        "title": "ट्याब लेबल"
+      },
+      {
+        "slot": "",
+        "title": "ट्याब सामग्री",
+        "description": "ट्याबको सामग्री।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "अद्वितीय ID"
+      },
+      {
+        "property": "flag",
+        "title": "वैकल्पिक झण्डा पाठ"
+      },
+      {
+        "property": "flagIcon",
+        "title": "वैकल्पिक झण्डा आइकन"
+      }
+    ]
+  }
+}

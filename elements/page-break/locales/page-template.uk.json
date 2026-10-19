@@ -1,0 +1,6 @@
+{
+  "pageTemplate": "Шаблон сторінки",
+  "templateId": "ID шаблону",
+  "defaultTemplate": "Шаблон за замовчуванням",
+  "namedTemplate": "Іменований шаблон"
+}

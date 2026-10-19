@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galerie de imagini",
+    "description": "O galerie care prezintă imagini în grilă, mozaic sau prezentare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Mod de afișare",
+        "description": "Cum sunt prezentate imaginile în galerie.",
+        "options": {
+          "grid": "Grilă",
+          "masonry": "Mozaic",
+          "gallery": "Galerie"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Index activ",
+        "description": "Indexul imaginii active de la care se pornește în modul galerie."
+      }
+    ]
+  }
+}

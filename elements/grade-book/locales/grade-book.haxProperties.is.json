@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Einkunnabók",
+    "description": "Hauslaus einkunnabók sem styður marga bakenda með matskvörðum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Uppruni",
+        "description": "Tegund gagnagjafa (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-endapunktur (JSON)",
+          "json": "JSON-gagnablob",
+          "filesystem": "Skráakerfi"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Upprunagögn",
+        "description": "URL eða JSON-gögn fyrir einkunnabókina."
+      },
+      {
+        "property": "forCourse",
+        "title": "Tilvísun í námskeið",
+        "description": "Auðkenni námskeiðs sem gefið er út sem oer:forCourse á hverju Assessment-tilfangi."
+      }
+    ]
+  }
+}

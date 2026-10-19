@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Poraka Html",
+    "description": "He poraka HTML taketake e whakarato ana i te hononga HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Waehere HTML e hiahia ana koe ki te whakaatu i ngā ihirangi"
+      }
+    ]
+  }
+}

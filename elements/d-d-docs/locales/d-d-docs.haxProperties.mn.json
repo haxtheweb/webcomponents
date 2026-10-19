@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAX-д зориулсан дизайны системийн хэрэгжүүлэлт"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Харуулах сонголт",
+        "options": {
+          "*": "Бүтэн загварын гарын авлага"
+        }
+      }
+    ]
+  }
+}

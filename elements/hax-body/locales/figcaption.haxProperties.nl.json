@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Figuurbijschrift",
+    "description": "Bijschrift voor een figuur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Bijschrift",
+        "description": "Tekst die onder de figuur wordt getoond."
+      }
+    ]
+  }
+}

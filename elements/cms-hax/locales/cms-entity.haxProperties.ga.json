@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Aonán CMS",
+    "description": "Aonán CMS rindreáilte ar an inneall"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Cineál",
+        "description": "cineál ónár CMS",
+        "options": {
+          "node": "Nód",
+          "user": "Úsáideoir",
+          "file": "Comhad"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id ónár CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Mód taispeána",
+        "description": "mód taispeána ónár CMS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Harakatga chaqiruv",
+    "description": "Harakat qilish uchun havolali oddiy tugma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Yorliq",
+        "description": "Havola yorligʻi"
+      },
+      {
+        "property": "link",
+        "title": "Havola",
+        "description": "Istalgan resursga havolani kiriting"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Belgini yashirish",
+        "description": "Matnni bezash uchun ishlatiladigan belgini yashirish"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Belgi",
+        "description": "Harakat havolasi belgisi"
+      }
+    ]
+  }
+}

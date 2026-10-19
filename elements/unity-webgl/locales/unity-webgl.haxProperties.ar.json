@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "مشغّل Unity",
+    "description": "مشغّل Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "الهدف",
+        "description": "مسار بنية اللعبة."
+      },
+      {
+        "property": "compression",
+        "title": "طريقة الضغط",
+        "description": "امتداد ملف الضغط لأصول اللعبة."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL البث",
+        "description": "URL أصول البث."
+      },
+      {
+        "property": "companyname",
+        "title": "اسم الشركة",
+        "description": "اسم الشركة."
+      },
+      {
+        "property": "productname",
+        "title": "اسم المنتج",
+        "description": "عنوان اللعبة."
+      },
+      {
+        "property": "productversion",
+        "title": "إصدار المنتج",
+        "description": "إصدار النشر."
+      },
+      {
+        "property": "width",
+        "title": "عرض اللوحة",
+        "description": "عرض اللوحة بـ CSS (مثل px أو em)."
+      },
+      {
+        "property": "height",
+        "title": "ارتفاع اللوحة",
+        "description": "ارتفاع اللوحة بـ CSS (مثل px أو em)."
+      },
+      {
+        "property": "background",
+        "title": "خلفية اللوحة",
+        "description": "خلفية اللوحة بـ CSS."
+      }
+    ]
+  }
+}

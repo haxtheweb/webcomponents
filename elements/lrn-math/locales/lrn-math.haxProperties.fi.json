@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematiikka",
+    "description": "Esitä matematiikka siistin näköisesti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematiikka",
+        "description": "Kirjoita yhtälö LaTeX-muodossa"
+      }
+    ]
+  }
+}

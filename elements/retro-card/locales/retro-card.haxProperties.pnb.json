@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "پرانے سٹائل کارڈ",
+    "description": "پرانے ڈیزائن والا سادہ کارڈ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرناواں",
+        "description": "کارڈ دا مُکھ سرناواں۔"
+      },
+      {
+        "property": "url",
+        "description": "کارڈ تے کلک کرن تے کھلن والا URL۔"
+      },
+      {
+        "property": "subtitle",
+        "title": "ذیلی سرناواں",
+        "description": "کارڈ دا ذیلی سرناواں۔"
+      },
+      {
+        "property": "tags",
+        "title": "ٹیگ",
+        "description": "کاماں نال وکھرے ٹیگ۔"
+      },
+      {
+        "property": "mediaSource",
+        "title": "میڈیا سورس",
+        "description": "مُڈھلا میڈیا سورس۔"
+      },
+      {
+        "property": "hoverSource",
+        "title": "ہوور تے سورس",
+        "description": "کارڈ تے ہوور یا چالو کرن تے وکھایا میڈیا سورس۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "پورے کارڈ تے لگیا ایکسنٹ رنگ۔"
+      },
+      {
+        "property": "dark",
+        "title": "گوڑھا",
+        "description": "ڈارک موڈ دے مُڈھلے رنگ ورتو۔"
+      }
+    ]
+  }
+}

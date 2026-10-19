@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Dîrok",
+    "description": "Dîrokeke salnameyê bi hûrguliyan nîşan bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Meh",
+        "description": "Meha li ser kartê tê nîşandan."
+      },
+      {
+        "property": "date",
+        "title": "Roja mehê",
+        "description": "Roja mehê ya bi hejmar."
+      },
+      {
+        "property": "day",
+        "title": "Roja hefteyê",
+        "description": "Roja hefteyê bi nivîs."
+      },
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Navê bûyerê."
+      },
+      {
+        "property": "location",
+        "title": "Cih",
+        "description": "Cihê bûyerê."
+      },
+      {
+        "property": "startTime",
+        "title": "Destpêk",
+        "description": "Dema destpêkê."
+      },
+      {
+        "property": "endTime",
+        "title": "Dawî",
+        "description": "Dema dawiyê."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê Balkêş",
+        "description": "Rengekî balkêş ê vebijarkî."
+      },
+      {
+        "property": "dark",
+        "title": "Mijara Tarî",
+        "description": "Mijara tarî çalak bike."
+      }
+    ]
+  }
+}

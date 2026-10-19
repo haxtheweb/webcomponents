@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ઉત્પાદન ઝલક",
+    "description": "ઉત્પાદનનું ઝડપી વિહંગાવલોકન બ્લૉક."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "આઇકન",
+        "description": "ખ્યાલને દર્શાવતું આઇકન."
+      },
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "એક નજરમાં મુખ્ય ખ્યાલ."
+      },
+      {
+        "property": "subtitle",
+        "title": "ઉપશીર્ષક",
+        "description": "વધારાની વિગત."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "આઇકન માટે ઍક્સેન્ટ રંગ."
+      }
+    ]
+  }
+}

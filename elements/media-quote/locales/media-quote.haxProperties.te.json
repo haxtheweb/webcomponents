@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "మీడియా ఉల్లేఖన",
+    "description": "ఉల్లేఖన, ఆధారం మరియు ఐచ్ఛిక శీర్షికతో చిత్రం."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "ఉల్లేఖన",
+        "description": "ఉల్లేఖన వచనం."
+      },
+      {
+        "slot": "author",
+        "title": "రచయిత",
+        "description": "ఉల్లేఖన రచయిత."
+      },
+      {
+        "slot": "author-detail",
+        "title": "రచయిత వివరాలు",
+        "description": "రచయిత వివరాలు."
+      },
+      {
+        "slot": "caption",
+        "title": "చిత్ర శీర్షిక",
+        "description": "చిత్ర వివరణ."
+      },
+      {
+        "property": "src",
+        "title": "చిత్ర మూలం",
+        "description": "మీడియా ఉల్లేఖన కోసం ఉపయోగించే చిత్ర ఫైల్."
+      },
+      {
+        "property": "alt",
+        "title": "ప్రత్యామ్నాయ వచనం",
+        "description": "చిత్రం కోసం ప్రత్యామ్నాయ వచనం."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "కార్డ్ యాక్సెంట్ రంగు."
+      }
+    ]
+  }
+}

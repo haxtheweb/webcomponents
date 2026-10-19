@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Linia diagramo",
+    "description": "Kreas alireblan diagramon surbaze de CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Akcenta koloro",
+        "description": "Nedeviga akcenta koloro."
+      },
+      {
+        "title": "Malhela temo",
+        "description": "Ŝalti malhelan etoson"
+      },
+      {
+        "title": "CSV-dosiero",
+        "description": "Ŝargi datumojn el CSV."
+      },
+      {
+        "title": "Diagrama titolo",
+        "description": "Alirebla alternativa teksto por via diagramo."
+      },
+      {
+        "title": "Diagrama priskribo",
+        "description": "Alirebla priskribo de via diagramo."
+      },
+      {
+        "title": "Skala nomo",
+        "description": "La proporcio larĝo:alto de la diagramo (vidu https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings por $ct-scales kaj $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Montri kradan fonon"
+      },
+      {
+        "title": "Montri areon"
+      },
+      {
+        "title": "Montri linion"
+      },
+      {
+        "title": "Montri punkton"
+      },
+      {
+        "title": "Plena larĝo"
+      },
+      {
+        "title": "Montri punktajn etikedojn"
+      },
+      {
+        "title": "Diagrama ena marĝeno (supre)"
+      },
+      {
+        "title": "Diagrama ena marĝeno (malsupre)"
+      },
+      {
+        "title": "Diagrama ena marĝeno (maldekstre)"
+      },
+      {
+        "title": "Diagrama ena marĝeno (dekstre)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Inversigi datumojn",
+        "description": "Inversigi datumojn inkluzive de etikedoj, la ordo de serioj kaj la tutaj seriaj datumtabeloj."
+      },
+      {
+        "title": "HTML-tabelo",
+        "description": "Nedeviga: Ŝargi datumojn kiel HTML-tabelon."
+      },
+      {
+        "title": "Diagrama minimumo",
+        "description": "Anstataŭigi la naturan minimumon de la diagramo permesas zomi aŭ limigi la plej malaltan montratan valoron de la diagramo"
+      },
+      {
+        "title": "Diagrama maksimumo",
+        "description": "Anstataŭigi la naturan maksimumon de la diagramo permesas zomi aŭ limigi la plej altan montratan valoron de la diagramo"
+      },
+      {
+        "title": "Montri punktajn etikedojn",
+        "options": {
+          "middle": "Mezo",
+          "start": "Komenco",
+          "end": "Fino"
+        }
+      },
+      {
+        "title": "X-deŝovo de punktaj etikedoj"
+      },
+      {
+        "title": "Y-deŝovo de punktaj etikedoj"
+      },
+      {
+        "title": "Glata linio"
+      },
+      {
+        "title": "Area bazo",
+        "description": "La bazo por la areodiagramo, kiu estos uzata por fermi la arean formon (kutime 0)."
+      },
+      {
+        "title": "X-akso: montri kradon",
+        "description": "Montri la kradon de la X-akso."
+      },
+      {
+        "title": "Deŝovo de X-akso"
+      },
+      {
+        "title": "Pozicio de X-akso",
+        "description": "Pozicio kie etikedoj estas metataj. Povas esti agordita al \"start\" aŭ \"end\", kie \"start\" egalas al maldekstre aŭ supre ĉe vertikala akso kaj \"end\" egalas al dekstre aŭ malsupre ĉe horizontala akso"
+      },
+      {
+        "title": "X-akso: montri etikedon",
+        "description": "Montri la etikedon de la X-akso."
+      },
+      {
+        "title": "Etikedo de X-akso (horizontala deŝovo)",
+        "description": "Horizontala pozicio de la etikedoj de la X-akso."
+      },
+      {
+        "title": "Etikedo de X-akso (vertikala deŝovo)",
+        "description": "Vertikala pozicio de la etikedoj de la X-akso."
+      },
+      {
+        "title": "Titolo de X-akso",
+        "description": "Nedeviga titolo por la X-akso."
+      },
+      {
+        "title": "Titolo de X-akso (horizontala deŝovo)",
+        "description": "Horizontala pozicio de la titolo de la X-akso."
+      },
+      {
+        "title": "Titolo de X-akso (vertikala deŝovo)",
+        "description": "Vertikala pozicio de la titolo de la X-akso."
+      },
+      {
+        "title": "Ankro de titolo de X-akso",
+        "description": "Nedeviga ankro por la titolo de la X-akso.",
+        "options": {
+          "middle": "mezo",
+          "end": "fino",
+          "start": "komenco"
+        }
+      },
+      {
+        "title": "Y-akso: montri kradon",
+        "description": "Montri la kradon de la Y-akso."
+      },
+      {
+        "title": "Deŝovo de Y-akso"
+      },
+      {
+        "title": "Pozicio de Y-akso",
+        "description": "Pozicio kie etikedoj estas metataj. Povas esti agordita al \"start\" aŭ \"end\", kie \"start\" egalas al maldekstre aŭ supre ĉe vertikala akso kaj \"end\" egalas al dekstre aŭ malsupre ĉe horizontala akso"
+      },
+      {
+        "title": "Y-akso: montri etikedon",
+        "description": "Montri la etikedon de la Y-akso."
+      },
+      {
+        "title": "Etikedo de Y-akso (horizontala deŝovo)",
+        "description": "Horizontala pozicio de la etikedo de la Y-akso."
+      },
+      {
+        "title": "Etikedo de Y-akso (vertikala deŝovo)",
+        "description": "Vertikala pozicio de la etikedo de la Y-akso."
+      },
+      {
+        "title": "Minimuma spaco de Y-aksa skalo",
+        "description": "Specifas minimuman alton en rastrumeroj de skalaj paŝoj."
+      },
+      {
+        "title": "Y-aksa skalo (nur entjeroj)",
+        "description": "Uzi nur entjerajn valorojn (tutajn nombrojn) por la skalaj paŝoj."
+      },
+      {
+        "title": "Titolo de Y-akso",
+        "description": "Nedeviga titolo por la Y-akso."
+      },
+      {
+        "title": "Titolo de Y-akso (vertikala deŝovo)",
+        "description": "Horizontala pozicio de la titolo de la Y-akso."
+      },
+      {
+        "title": "Titolo de Y-akso (horizontala deŝovo)",
+        "description": "Horizontala pozicio de la titolo de la Y-akso."
+      },
+      {
+        "title": "Ankro de titolo de Y-akso",
+        "description": "Nedeviga ankro por la titolo de la Y-akso.",
+        "options": {
+          "middle": "mezo",
+          "end": "fino",
+          "start": "komenco"
+        }
+      },
+      {
+        "title": "Renversi titolon de Y-akso",
+        "description": "Ĉu renversi la titolon de la Y-akso?"
+      }
+    ]
+  }
+}

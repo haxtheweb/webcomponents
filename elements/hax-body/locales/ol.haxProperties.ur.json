@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "نمبر وار فہرست",
+    "description": "نمبر وار فہرست بنائیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "نمبر کا انداز",
+        "description": "ترتیب وار فہرست کی نمبرنگ کے لیے استعمال ہونے والا انداز۔",
+        "options": {
+          "": "طے شدہ (اعشاری)",
+          "list-decimal-leading-zero": "شروع میں صفر کے ساتھ اعشاری (01، 02، 03)",
+          "list-lower-alpha": "چھوٹے حروف (a, b, c)",
+          "list-upper-alpha": "بڑے حروف (A, B, C)",
+          "list-lower-roman": "چھوٹے رومن (i, ii, iii)",
+          "list-upper-roman": "بڑے رومن (I, II, III)"
+        }
+      }
+    ]
+  }
+}

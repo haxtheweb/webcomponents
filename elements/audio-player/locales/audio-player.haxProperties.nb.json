@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Lyd",
+    "description": "Dette kan presentere video på en svært tilgjengelig måte, uansett kilde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kilde",
+        "description": "URL-en til dette mediet."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Tittel",
+        "description": "Enkel tittel under videoen"
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "Velg aksentfargen for spilleren."
+      },
+      {
+        "property": "track",
+        "title": "Teksting",
+        "description": "URL-en til tekstingsfilen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Miniatyrbilde",
+        "description": "Valgfritt. URL-en til et miniatyr-/plakatbilde."
+      },
+      {
+        "property": "learningMode",
+        "title": "Aktiver læringsmodus",
+        "description": "Deaktiverer spoling forover og bakover."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Fjern knappen Åpne på YouTube",
+        "description": "Fjerner knappen for å åpne videoen på YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Ta med en delingslenke?",
+        "description": "Gir en lenke for å dele videoen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Angir om CORS skal brukes.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Tillat avspilling i bakgrunnen",
+        "description": "Videoer settes på pause / spilles av automatisk når fanen mister fokus; dette lar videoen spilles av uten at fanen har fokus"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Mørkt tema for transkripsjon",
+        "description": "Aktiver mørkt tema for transkripsjonen."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Deaktiver interaktivitet",
+        "description": "Deaktiver interaktiv modus som gjør transkripsjonen klikkbar."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Skjul tidsstempler",
+        "description": "Skjul tidsstemplene i transkripsjonen."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Skjul transkripsjon",
+        "description": "Skjul transkripsjonen som standard."
+      },
+      {
+        "property": "lang",
+        "title": "Språk",
+        "description": "Språket i mediet."
+      }
+    ]
+  }
+}

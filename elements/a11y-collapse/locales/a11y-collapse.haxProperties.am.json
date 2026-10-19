@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ሊሰበሰብ የሚችል መያዣ",
+    "description": "ሊዘረጋና ሊሰበሰብ የሚችል ነጠላ መያዣ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "ርዕስ",
+        "description": "ለሚሰበሰበው ክፍል ጽሑፍ።"
+      },
+      {
+        "property": "expanded",
+        "title": "የተዘረጋ",
+        "description": "በነባሪ ዘርጋ።"
+      },
+      {
+        "property": "headingButton",
+        "title": "የርዕስ አዝራር",
+        "description": "አዶውን ብቻ ሳይሆን ሙሉውን ርዕስ ጠቅ ሊደረግ የሚችል አድርግ።"
+      },
+      {
+        "property": "icon",
+        "title": "አዶ",
+        "description": "ለዘርጋ/ሰብስብ መቀያየሪያ አዝራር አዶ።"
+      },
+      {
+        "property": "iconExpanded",
+        "title": "አዶ (ሲዘረጋ)",
+        "description": "ለተዘረጋው የመቀያየሪያ ሁኔታ አማራጭ አዶ።"
+      },
+      {
+        "slot": "",
+        "title": "ይዘት",
+        "description": "ለሚሰበሰበው ክፍል ይዘት።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "የመሳሪያ ምክር",
+        "description": "ለዘርጋ/ሰብስብ መቀያየሪያ አዝራር የመሳሪያ ምክር።"
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "የመሳሪያ ምክር (ሲዘረጋ)",
+        "description": "ሲዘረጋ ለዘርጋ/ሰብስብ አዝራር የመሳሪያ ምክር።"
+      }
+    ]
+  }
+}

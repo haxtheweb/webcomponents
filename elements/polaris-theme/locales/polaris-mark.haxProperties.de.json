@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Polaris-Markenzeichen",
+    "description": "Das PSU-Markenzeichen mit optionalem College-Namen und Ziel-URL anzeigen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "College-Name",
+        "description": "Name, der neben dem Markenzeichen angezeigt wird."
+      },
+      {
+        "property": "name2",
+        "title": "College-Name 2",
+        "description": "Zweiter Name, der unter dem ersten College-Namen angezeigt wird."
+      },
+      {
+        "property": "name3",
+        "title": "College-Name 3",
+        "description": "Dritter Name, der unter dem zweiten College-Namen angezeigt wird."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Ziel-URL beim Anklicken des Markenzeichens."
+      },
+      {
+        "property": "type",
+        "title": "Variante",
+        "description": "Visuelle Variante des Markenzeichens.",
+        "options": {
+          "default": "Standard",
+          "light": "Hell",
+          "dark": "Dunkel"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Vertikales Layout",
+        "description": "Den dritten Namen mit einer horizontalen Linie unter dem zweiten Namen anzeigen."
+      }
+    ]
+  }
+}

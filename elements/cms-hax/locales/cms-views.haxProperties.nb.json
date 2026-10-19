@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-visning",
+    "description": "CMS-visninger gjengitt på serveren"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Navn",
+        "description": "Navnet på visningen fra vårt CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Visning",
+        "description": "Visningsvariant innenfor den visningen fra vårt CMS"
+      }
+    ]
+  }
+}

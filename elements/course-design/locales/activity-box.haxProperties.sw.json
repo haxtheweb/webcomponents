@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kisanduku cha Shughuli",
+    "description": "Kizuizi kidogo cha kichwa chenye mtindo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Aikoni inayoonyeshwa kando ya kisanduku cha shughuli."
+      },
+      {
+        "property": "tag",
+        "title": "Lebo ya kisanduku cha shughuli",
+        "description": "Lebo inayoonyeshwa kwenye kisanduku cha shughuli."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Bila Kupaka Rangi",
+        "description": "Zuia rangi zisitumike kwenye aikoni."
+      }
+    ]
+  }
+}

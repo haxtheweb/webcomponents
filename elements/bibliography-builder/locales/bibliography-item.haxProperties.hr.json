@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografska stavka",
+    "description": "Stavka koja predstavlja jedan citat u bibliografiji, s podrškom za više formata i opcija izvoza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Vrsta",
+        "description": "Vrsta citata",
+        "options": {
+          "web": "Web",
+          "journal": "Časopis",
+          "book": "Knjiga"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov stavke"
+      },
+      {
+        "property": "authors",
+        "title": "Autor(i)",
+        "description": "Događaji na vremenskoj crti"
+      },
+      {
+        "property": "publisher",
+        "title": "Izdavač",
+        "description": "Izvorno web-mjesto"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Orriko aingura",
+    "description": "Estekatu orriko multimediaren puntu zehatzetara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Orriko helburua",
+        "description": "Aingura honek seinalatzen duen IDa edo baliabidea."
+      },
+      {
+        "property": "value",
+        "title": "Esteka sakonaren balioa",
+        "description": "Esteka sakonaren balioa (adibidez, denbora-marka edo diapositibaren IDa)."
+      },
+      {
+        "property": "entityId",
+        "title": "Guneko entitatea",
+        "description": "Lotutako kontzeptuen aurkezpena kontrolatzeko aukerako guneko entitatea."
+      }
+    ]
+  }
+}

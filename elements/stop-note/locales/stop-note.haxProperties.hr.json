@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Napomena za zaustavljanje",
+    "description": "Poruka koja čitatelje upozorava na posebne upute."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Unesite naslov napomene."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Unesite vanjski URL."
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Postavljanje statusa mijenja boje i ikone u skladu s njim",
+        "options": {
+          "stop": "Stop",
+          "warning": "Upozorenje",
+          "success": "Potvrda",
+          "info": "Obavijest"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Tekst napomene",
+        "description": "Tekst napomene."
+      }
+    ]
+  }
+}

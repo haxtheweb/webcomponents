@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Doğrudan veya uzaktan yüklenen bir Markdown içerik bloğu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Ham Markdown"
+      },
+      {
+        "property": "source",
+        "title": "Kaynak",
+        "description": "Markdown için kaynak dosya"
+      }
+    ]
+  }
+}

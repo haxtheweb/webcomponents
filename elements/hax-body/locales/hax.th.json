@@ -122,5 +122,21 @@
   "recent": "ล่าสุด",
   "popular": "ยอดนิยม",
   "copiedToClipboard": "คัดลอกไปยังคลิปบอร์ดแล้ว",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "ข้อมูลรูปภาพ",
+  "imageActions": "การดำเนินการกับรูปภาพ",
+  "imageRecommendations": "คำแนะนำสำหรับรูปภาพ",
+  "compressImage": "บีบอัดรูปภาพ",
+  "resizeTo": "ปรับขนาดเป็น",
+  "created": "สร้างเมื่อ",
+  "size": "ขนาด",
+  "dimensions": "มิติ",
+  "type": "ประเภท",
+  "done": "เสร็จสิ้น",
+  "noFileUuid": "ไม่มีการอ้างอิงไฟล์ อัปโหลดใหม่เพื่อเปิดใช้การดำเนินการ",
+  "fileOpsUnavailable": "การดำเนินการกับไฟล์ไม่พร้อมใช้งานสำหรับไซต์นี้",
+  "fileOpFailed": "การดำเนินการกับไฟล์ล้มเหลว",
+  "fileExtensionNotAllowed": "ช่องนี้รับเฉพาะไฟล์ประเภทต่อไปนี้:",
+  "fileTypeNotAllowed": "ช่องนี้รับเฉพาะสื่อประเภทต่อไปนี้:",
+  "transformFailed": "การแปลงหลังอัปโหลดล้มเหลว จึงเก็บไฟล์ต้นฉบับไว้"
 }

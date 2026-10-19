@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html தொகுதி",
+    "description": "HAXschema இணைப்பை வழங்கும் அடிப்படை HTML தொகுதி"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "உள்ளடக்கத்தில் காட்ட விரும்பும் HTML குறியீடு"
+      }
+    ]
+  }
+}

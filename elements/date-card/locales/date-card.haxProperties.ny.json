@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Tsiku",
+    "description": "Onetsani tsiku la kalendala ndi zambiri zake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Mwezi",
+        "description": "Mwezi wowonetsedwa pa khadi."
+      },
+      {
+        "property": "date",
+        "title": "Tsiku la mwezi",
+        "description": "Nambala ya tsiku la mwezi."
+      },
+      {
+        "property": "day",
+        "title": "Tsiku la sabata",
+        "description": "Dzina la tsiku la sabata."
+      },
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Dzina la mwambowo."
+      },
+      {
+        "property": "location",
+        "title": "Malo",
+        "description": "Malo a mwambowo."
+      },
+      {
+        "property": "startTime",
+        "title": "Kuyamba",
+        "description": "Nthawi yoyambira."
+      },
+      {
+        "property": "endTime",
+        "title": "Kutha",
+        "description": "Nthawi yotha."
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wosankha."
+      },
+      {
+        "property": "dark",
+        "title": "Mawonekedwe Akuda",
+        "description": "Yatsani mawonekedwe akuda."
+      }
+    ]
+  }
+}

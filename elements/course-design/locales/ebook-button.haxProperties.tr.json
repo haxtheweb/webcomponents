@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-kitap düğmesi",
+    "description": "Bir e-kitaba bağlantı veren düğme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Düğmenin başlığı."
+      },
+      {
+        "property": "link",
+        "title": "Bağlantı",
+        "description": "Tıklandığında yönlendirilecek bağlantı."
+      },
+      {
+        "property": "icon",
+        "title": "Simge",
+        "description": "Bu bağlantıyı temsil eden simge"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ਰੈਟਰੋ ਕਾਰਡ",
+    "description": "ਰੈਟਰੋ ਡਿਜ਼ਾਈਨ ਵਾਲਾ ਸਧਾਰਨ ਕਾਰਡ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਕਾਰਡ ਦਾ ਮੁੱਖ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "url",
+        "description": "ਕਾਰਡ 'ਤੇ ਕਲਿੱਕ ਕਰਨ 'ਤੇ ਖੋਲ੍ਹਣ ਲਈ URL।"
+      },
+      {
+        "property": "subtitle",
+        "title": "ਉਪ-ਸਿਰਲੇਖ",
+        "description": "ਕਾਰਡ ਉਪ-ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "tags",
+        "title": "ਟੈਗ",
+        "description": "ਕੌਮਿਆਂ ਨਾਲ ਵੱਖ ਕੀਤੇ ਟੈਗ।"
+      },
+      {
+        "property": "mediaSource",
+        "title": "ਮੀਡੀਆ ਸਰੋਤ",
+        "description": "ਮੁੱਖ ਮੀਡੀਆ ਸਰੋਤ।"
+      },
+      {
+        "property": "hoverSource",
+        "title": "ਹੋਵਰ 'ਤੇ ਸਰੋਤ",
+        "description": "ਕਾਰਡ 'ਤੇ ਹੋਵਰ ਜਾਂ ਸਰਗਰਮ ਕਰਨ 'ਤੇ ਦਿਖਾਇਆ ਮੀਡੀਆ ਸਰੋਤ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਪੂਰੇ ਕਾਰਡ 'ਤੇ ਲਾਗੂ ਐਕਸੈਂਟ ਰੰਗ।"
+      },
+      {
+        "property": "dark",
+        "title": "ਗੂੜ੍ਹਾ",
+        "description": "ਡਾਰਕ ਮੋਡ ਮੂਲ ਰੰਗ ਵਰਤੋ।"
+      }
+    ]
+  }
+}

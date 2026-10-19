@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Bathodyn Teilyngdod",
+    "description": "Bathodyn gweledol i gyfleu ennill sgil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Teitl y Bathodyn",
+        "description": "Teitl a ddangosir ar y bathodyn."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Delwedd y Bathodyn",
+        "description": "URL delwedd ar gyfer y bathodyn."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Manylion y Bathodyn",
+        "description": "Manylion am y bathodyn."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperddolen",
+        "description": "Dolen sy'n gysylltiedig â'r bathodyn."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Sgiliau'r Bathodyn",
+        "description": "Sgiliau a ddangosir ar y bathodyn."
+      },
+      {
+        "property": "skill",
+        "title": "Sgil (OER Schema)",
+        "description": "OER Schema: sgil a ddysgwyd drwy gwblhau'r amcan dysgu hwn."
+      }
+    ]
+  }
+}

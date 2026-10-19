@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub ගබඩාව",
   "anErrorOccurred": "දෝෂයක් සිදු විය",
-  "retry": "නැවත උත්සාහ කරන්න"
+  "retry": "නැවත උත්සාහ කරන්න",
+  "permissionRequired": "අවසරය අවශ්‍යයි",
+  "passwordRequirements": "මුරපද අවශ්‍යතා",
+  "requirementLength": "අවම වශයෙන් අක්ෂර 8ක්",
+  "requirementUppercase": "එක් කැපිටල් අකුරක්",
+  "requirementLowercase": "එක් සිම්පල් අකුරක්",
+  "requirementNumber": "එක් අංකයක්",
+  "requirementSymbol": "එක් සංකේතයක්"
 }

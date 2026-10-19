@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "مدل دوره",
+    "description": "طرح‌بندی تعاملی برای مفاهیم دوره با جزئیات، انیمیشن و سنجش دانش."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "عنوان"
+      },
+      {
+        "property": "src",
+        "title": "منبع"
+      },
+      {
+        "property": "alt",
+        "title": "متن جایگزین"
+      },
+      {
+        "title": "ناحیه اطلاعات"
+      },
+      {
+        "title": "ناحیه جزئیات"
+      },
+      {
+        "title": "ناحیه انیمیشن"
+      },
+      {
+        "title": "ناحیه سنجش دانش"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "ناحیه نشان"
+      }
+    ]
+  }
+}

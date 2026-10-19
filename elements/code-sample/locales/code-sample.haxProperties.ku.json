@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Nimûneya kodê",
+    "description": "Nimûneyeke kodê ku di rûpelê de hatiye ronîkirin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Ronîkirina kodê",
+        "description": "Ronîkirina hevoksaziyê ku li qada kodê were sepandin",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Daneyên JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Bişkoka kopîkirina li clipboardê",
+        "description": "bişkoka li jor rastê ku dibêje kopî bike li clipboardê"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Destpêka ronîkirinê",
+        "description": "Hejmara rêzê ku ronîkirin jê dest pê dike"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Dawiya ronîkirinê",
+        "description": "Rêza ku ronîkirin li ser diqede"
+      }
+    ]
+  }
+}

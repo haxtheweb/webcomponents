@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Kudziyesa",
+    "description": "Ogwiritsa ntchito angathe kudziyesa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Chithunzi",
+        "description": "Chithunzi cha kudziyesa."
+      },
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wa kudziyesa."
+      },
+      {
+        "property": "alt",
+        "title": "Mawu Ofotokoza Chithunzi",
+        "description": "Mawu ofotokoza chithunzi."
+      },
+      {
+        "slot": "question",
+        "title": "Funso"
+      },
+      {
+        "slot": "",
+        "title": "Yankho"
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wa Mawonekedwe",
+        "description": "Sankhani mtundu wa mawonekedwe kuchokera ku kapangidwe.",
+        "options": {
+          "primary": "Wamkulu",
+          "accent": "Wowonjezera",
+          "success": "Kupambana",
+          "warning": "Chenjezo",
+          "error": "Cholakwika",
+          "info": "Zambiri"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cholinga cha Maphunziro",
+        "description": "Cholozera cha cholinga cha maphunziro chotulutsidwa ngati oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Zomwe zikuyesedwa",
+        "description": "Cholozera cha ntchito chotulutsidwa ngati oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ulalo wa zambiri",
+        "description": "Ulalo wopita ku zambiri zowonjezera."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "పోస్ట్ కార్డ్",
+    "description": "ఎక్కడి నుండో వచ్చిన నిజమైన పోస్ట్ కార్డ్‌లా కనిపించే సరదా మీడియా భాగం"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "కు",
+        "description": "ఇది ఎవరికి వెళ్తోంది?"
+      },
+      {
+        "property": "from",
+        "title": "నుండి",
+        "description": "మీరు ఎవరు?"
+      },
+      {
+        "property": "message",
+        "title": "సందేశం",
+        "description": "మీరు ఏమి చెప్పాలనుకుంటున్నారు?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "పోస్ట్‌మార్క్ స్థలం",
+        "description": "ఈ కార్డ్ ఎక్కడి నుండి పంపబడింది?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "ప్రధాన ఫోటో మూలం",
+        "description": "మీ ఫోటో ఎక్కడ ఉంది?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "స్టాంప్ ఫోటో మూలం",
+        "description": "మీ ఫోటో ఎక్కడ ఉంది?"
+      }
+    ]
+  }
+}

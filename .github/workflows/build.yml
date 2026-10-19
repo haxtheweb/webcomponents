@@ -2,8 +2,8 @@ name: build
 on:
   push:
     branches: [master]
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
   pull_request:
-    branches: [master]
 permissions:
   contents: read
 jobs:

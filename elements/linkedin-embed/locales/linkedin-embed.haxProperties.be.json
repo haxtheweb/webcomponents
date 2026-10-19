@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Убудаванне LinkedIn",
+    "description": "Убудаваць картку профілю LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Персанальнае імя",
+        "description": "Сегмент персанальнага імя карыстальніка LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Лакаль",
+        "description": "Значэнне метаданых лакалі, напрыклад en_US."
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "番号付きリスト",
+    "description": "番号付きリストを作成します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "番号のスタイル",
+        "description": "番号付きリストの番号に使用するスタイル。",
+        "options": {
+          "": "既定（10進数）",
+          "list-decimal-leading-zero": "先頭ゼロ付き10進数（01, 02, 03）",
+          "list-lower-alpha": "小文字アルファベット（a, b, c）",
+          "list-upper-alpha": "大文字アルファベット（A, B, C）",
+          "list-lower-roman": "小文字ローマ数字（i, ii, iii）",
+          "list-upper-roman": "大文字ローマ数字（I, II, III）"
+        }
+      }
+    ]
+  }
+}

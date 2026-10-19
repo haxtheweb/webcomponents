@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Ansichtkaart",
+    "description": "In boartlik mediastik dat derút sjocht as in echte ansichtkaart fan earne wei"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Oan",
+        "description": "Foar wa is dizze kaart?"
+      },
+      {
+        "property": "from",
+        "title": "Fan",
+        "description": "Wa binne jo?"
+      },
+      {
+        "property": "message",
+        "title": "Berjocht",
+        "description": "Wat wolle jo sizze?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Poststimpel fan",
+        "description": "Wêr wei is dizze kaart ferstjoerd?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Boarne fan de haadfoto",
+        "description": "Wêr stiet jo foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Boarne fan de postsegelfoto",
+        "description": "Wêr stiet jo foto?"
+      }
+    ]
+  }
+}

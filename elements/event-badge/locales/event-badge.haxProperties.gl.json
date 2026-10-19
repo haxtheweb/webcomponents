@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Credencial de evento",
+    "description": "Compoñente de credencial de evento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imaxe da TV",
+        "description": "Imaxe que se mostra na TV."
+      },
+      {
+        "property": "logo",
+        "title": "Logotipo",
+        "description": "Logotipo que se mostra na esquina da credencial."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título que se mostra na parte superior da credencial."
+      },
+      {
+        "property": "name",
+        "title": "Nome",
+        "description": "Nome que se mostra na credencial."
+      },
+      {
+        "property": "position",
+        "title": "Cargo",
+        "description": "Función ou cargo da persoa."
+      },
+      {
+        "property": "organization",
+        "title": "Organización",
+        "description": "Organización para a que traballa a persoa."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Cor da TV",
+        "description": "Selecciona a cor da TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Cor principal do fondo ou do texto."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Cor dos mandos",
+        "description": "Cor dos mandos da TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Aplicar un efecto sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Branco e negro",
+        "description": "Aplicar un efecto en branco e negro."
+      }
+    ]
+  }
+}

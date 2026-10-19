@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": ".h5p ಫೈಲ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಿ ಪ್ರಸ್ತುತಪಡಿಸಲು H5P ವ್ರ್ಯಾಪರ್"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P iframe ಎಂಬೆಡ್ ಕೋಡ್"
+      }
+    ]
+  }
+}

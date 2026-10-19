@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Inkinobho ye-Ebook",
+    "description": "Inkinobho exhumanisa ne-Ebook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko senkinobho."
+      },
+      {
+        "property": "link",
+        "title": "Isixhumanisi",
+        "description": "Isixhumanisi okufanele kudluliselwe kuso lapho kuchofozwa."
+      },
+      {
+        "property": "icon",
+        "title": "Isithonjana",
+        "description": "Isithonjana esimelela lesi sixhumanisi"
+      }
+    ]
+  }
+}

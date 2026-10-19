@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "සාපේක්ෂ ශීර්ෂය",
+    "description": "මාපියගේ ශීර්ෂය මත පදනම්ව නිවැරදි ශීර්ෂ ධුරාවලිය ප්‍රතිදානය කරයි"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "මාපිය ශීර්ෂයේ සම්පත් ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "සබැඳි බොත්තම් විශේෂාංගය අක්‍රිය කරයි."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "සබැඳිය පිටපත් කිරීමේ බොත්තම ශීර්ෂයේ දකුණු කෙළවරට පෙළගස්වයි."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "මාපියා හමු නොවූයේ නම් ශීර්ෂ මට්ටම."
+      },
+      {
+        "property": "copyMessage",
+        "description": "සබැඳිය පිටපත් කිරීමේ දැනුම්දීම් පණිවිඩය සඳහා පෙරනිමි පෙළ අභිබවා යයි."
+      },
+      {
+        "property": "linkLabel",
+        "description": "සබැඳිය පිටපත් කිරීමේ බොත්තමේ පෙරනිමි ලේබලය අභිබවා යයි."
+      },
+      {
+        "property": "linkIcon",
+        "description": "සබැඳිය පිටපත් කිරීමේ බොත්තමේ පෙරනිමි නිරූපකය අභිබවා යයි."
+      },
+      {
+        "property": "closeLabel",
+        "description": "සබැඳිය පිටපත් කිරීමේ දැනුම්දීමේ වසන බොත්තම සඳහා පෙරනිමි ලේබලය අභිබවා යයි."
+      },
+      {
+        "property": "closeIcon",
+        "description": "සබැඳිය පිටපත් කිරීමේ දැනුම්දීමේ වසන බොත්තම සඳහා පෙරනිමි නිරූපකය අභිබවා යයි."
+      }
+    ]
+  }
+}

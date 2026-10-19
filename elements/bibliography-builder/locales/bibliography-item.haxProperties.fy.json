@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografy-item",
+    "description": "Item dat ien sitaasje yn in bibliografy fertsjintwurdiget, mei stipe foar meardere formaten en eksportopsjes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Type",
+        "description": "Sitaasjetype",
+        "options": {
+          "web": "Web",
+          "journal": "Tydskrift",
+          "book": "Boek"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel fan it item"
+      },
+      {
+        "property": "authors",
+        "title": "Auteur(s)",
+        "description": "De barrens yn de tiidline"
+      },
+      {
+        "property": "publisher",
+        "title": "Utjouwer",
+        "description": "Oarspronklike webstee"
+      }
+    ]
+  }
+}

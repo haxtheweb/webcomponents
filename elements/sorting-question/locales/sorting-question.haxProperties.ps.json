@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "د ترتیب پوښتنه",
+    "description": "توکي په سم ترتیب کې وګمارئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "پوښتنه",
+        "description": "د پوښتنې سرلیک."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "د نمرو بڼه",
+        "description": "OER Schema: د دې ارزونې د نمرو بڼه (لکه نمرې، توری، سلنه، بشپړتیا)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "د زده کړې موخه",
+        "description": "OER Schema: د دې ارزونې پورې تړلې د زده کړې موخه."
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: هغه کورس چې دا ارزونه ورته ټاکل شوې."
+      },
+      {
+        "property": "answers",
+        "title": "ځوابونه",
+        "description": "د ځوابونو ترتیب سمه لړۍ ټاکي."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "د ازموینې نوم",
+        "description": "د ازموینې نوم چې د تحلیلي سیسټمونو په xAPI پېژندنه کې کارول کېږي."
+      }
+    ]
+  }
+}

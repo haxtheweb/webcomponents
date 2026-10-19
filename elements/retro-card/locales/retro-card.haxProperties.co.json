@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Carta retrò",
+    "description": "Carta simplice cù un cuncepimentu retrò."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Titulu principale di a carta."
+      },
+      {
+        "property": "url",
+        "description": "URL da apre quandu si clicca nant'à a carta."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sottutitulu",
+        "description": "Sottutitulu di a carta."
+      },
+      {
+        "property": "tags",
+        "title": "Etichette",
+        "description": "Etichette separate da virgule."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Fonte di u media",
+        "description": "Fonte principale di u media."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Fonte à u passaghju",
+        "description": "Fonte di media mustrata quandu a carta hè survulata o attivata."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Culore d'accentu appiecatu à tutta a carta."
+      },
+      {
+        "property": "dark",
+        "title": "Scuru",
+        "description": "Aduprà i culori di basa di u modu bughju."
+      }
+    ]
+  }
+}

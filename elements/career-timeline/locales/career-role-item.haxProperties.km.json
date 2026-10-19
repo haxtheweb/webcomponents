@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "តួនាទីអាជីព",
+    "description": "តួនាទីមួយនៅក្នុងស្ថាប័ន"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ចំណងជើង"
+      },
+      {
+        "property": "startDate",
+        "title": "កាលបរិច្ឆេទចាប់ផ្ដើម"
+      },
+      {
+        "property": "endDate",
+        "title": "កាលបរិច្ឆេទបញ្ចប់ (ស្រេចចិត្ត)"
+      },
+      {
+        "property": "skills",
+        "title": "ជំនាញពាក់ព័ន្ធ",
+        "description": "ជ្រើសរើសប៊ូតុង + ដើម្បីចាប់ផ្ដើមបន្ថែមជំនាញ"
+      }
+    ]
+  }
+}

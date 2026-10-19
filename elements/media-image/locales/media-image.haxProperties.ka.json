@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "გაუმჯობესებული სურათი",
+    "description": "სურათების წარმოდგენის საშუალება სხვადასხვა გაუმჯობესებით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "წყარო",
+        "description": "სურათის URL."
+      },
+      {
+        "property": "alt",
+        "title": "ალტერნატიული ტექსტი",
+        "description": "ტექსტი, რომელიც სურათს აღუწერს უსინათლო მომხმარებლებს."
+      },
+      {
+        "property": "link",
+        "title": "ბმული",
+        "description": "სურათის დაკავშირება URL-თან"
+      },
+      {
+        "property": "card",
+        "title": "ბარათი",
+        "description": "ჩრდილის დამატება, რათა აწეული ბარათის იერი მიიღოს."
+      },
+      {
+        "property": "box",
+        "title": "ჩარჩო",
+        "description": "სურათის გარშემო ვიზუალური ჩარჩოს დამატება."
+      },
+      {
+        "property": "offset",
+        "title": "წანაცვლება",
+        "description": "სურათის მარცხნივ ან მარჯვნივ წანაცვლება.",
+        "options": {
+          "none": "არცერთი",
+          "wide": "ფართო",
+          "narrow": "ვიწრო"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "წყაროს მითითება",
+        "description": "სურათის ციტირება."
+      },
+      {
+        "property": "caption",
+        "title": "წარწერა",
+        "description": "სურათის წარწერა."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ფიგურის სათაური",
+        "description": "ფიგურის ნიშნულის სათაური."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ფიგურის აღწერა",
+        "description": "ფიგურის ნიშნულის აღწერა."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "მინიატურა",
+        "description": "მინიატურის სურათის წყარო. აჩვენებს მინიატურას, მაგრამ სრულ წყაროს მოდალურ ფანჯარაში ხსნის."
+      },
+      {
+        "property": "round",
+        "title": "მრგვალი სურათი",
+        "description": "სურათს წრიულ ფორმაზე ჭრის."
+      },
+      {
+        "property": "disableZoom",
+        "title": "სურათის მოდალური ფანჯრის გამორთვა",
+        "description": "დაწკაპუნებით სურათის დათვალიერების დიალოგში გახსნის გამორთვა."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown-ად გამოტანა",
+        "description": "წარწერისა და ციტირების markdown-ად გამოტანა."
+      }
+    ]
+  }
+}

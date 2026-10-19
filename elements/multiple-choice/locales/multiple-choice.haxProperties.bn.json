@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "বহুনির্বাচনী",
+    "description": "বহুনির্বাচনী আত্মযাচাই প্রশ্ন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "প্রশ্ন",
+        "description": "ব্যবহারকারীদের উত্তর দেওয়ার প্রশ্ন।"
+      },
+      {
+        "property": "randomize",
+        "title": "এলোমেলো করুন",
+        "description": "উত্তরগুলো গতিশীলভাবে এলোমেলো করুন।"
+      },
+      {
+        "property": "singleOption",
+        "title": "একক উত্তর",
+        "description": "শুধু একটি উত্তরের অনুমতি দিন।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "মূল্যায়ন পদ্ধতি",
+        "description": "OER Schema: এই মূল্যায়নের গ্রেডিং পদ্ধতি (যেমন পয়েন্ট, লেটার, শতাংশ, সম্পন্নতা)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "শিখনফল",
+        "description": "OER Schema: এই মূল্যায়নের সাথে সম্পর্কিত শিখনফল।"
+      },
+      {
+        "property": "forCourse",
+        "title": "কোর্স",
+        "description": "OER Schema: যে কোর্সের জন্য এই মূল্যায়ন উদ্দিষ্ট।"
+      },
+      {
+        "property": "answers",
+        "title": "উত্তর"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "কুইজের নাম",
+        "description": "অ্যানালিটিক্স সিস্টেমে xAPI শনাক্তকরণের জন্য ব্যবহৃত কুইজের নাম।"
+      }
+    ]
+  }
+}

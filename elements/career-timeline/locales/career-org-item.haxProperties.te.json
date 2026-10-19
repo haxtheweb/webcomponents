@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "కెరీర్ అంశం",
+    "description": "ఒక వ్యక్తిగత సంస్థ మరియు దాని అనుబంధ పాత్రలు"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "సంస్థ పేరు"
+      },
+      {
+        "property": "location",
+        "title": "స్థానం"
+      },
+      {
+        "property": "source",
+        "title": "మూలం"
+      }
+    ]
+  }
+}

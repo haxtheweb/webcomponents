@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Sammlungszeil",
+    "description": "Zeilen-Element fir an enger Sammlungslëscht, mat Text, Link, Ikon, Tags an optionalem Bild."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Zil-URL fir dës Zeil."
+      },
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "Bild fir d'Zeil."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Alternativen Text, deen d'Bild beschreift."
+      },
+      {
+        "property": "line1",
+        "title": "Zeil 1",
+        "description": "Éischt Textzeil."
+      },
+      {
+        "property": "line2",
+        "title": "Zeil 2",
+        "description": "Zweet Textzeil."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon, deen d'Zeil representéiert."
+      },
+      {
+        "property": "saturate",
+        "title": "Sättigungseffekt",
+        "description": "D'Bildsättegung beim Fokus änneren."
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Mat Komma getrennte Lëscht vun Tags."
+      },
+      {
+        "property": "accentColor",
+        "title": "Faarf",
+        "description": "Faarf fir Ikon an Tags."
+      }
+    ]
+  }
+}

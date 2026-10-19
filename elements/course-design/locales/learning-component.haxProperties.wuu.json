@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "学习组件",
+    "description": "拨教师交流教学法搭教学策略个卡片。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "类型",
+        "description": "要用个卡片类型。"
+      },
+      {
+        "property": "subtitle",
+        "title": "副标题",
+        "description": "卡片个副标题。"
+      },
+      {
+        "property": "url",
+        "title": "链接",
+        "description": "卡片个可选链接(学习目标勿好用链接)。"
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "设置标题,会覆盖按类型来个标题"
+      },
+      {
+        "property": "icon",
+        "title": "图标",
+        "description": "设置图标,会覆盖按类型来个图标"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "设置强调色,会覆盖按类型来个颜色"
+      },
+      {
+        "slot": "",
+        "title": "目录"
+      }
+    ]
+  }
+}

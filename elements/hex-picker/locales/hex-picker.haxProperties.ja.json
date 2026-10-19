@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "16 進カラーピッカー",
+    "description": "16 進カラーコードのカラーピッカー"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "値",
+        "description": "既定の 16 進値"
+      },
+      {
+        "property": "disabled",
+        "title": "無効",
+        "description": "テキストフィールドを無効にする"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "大きな表示",
+        "description": "色を大きく表示します"
+      }
+    ]
+  }
+}

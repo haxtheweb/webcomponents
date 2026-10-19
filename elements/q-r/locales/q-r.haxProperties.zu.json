@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ikhodi ye-QR",
+    "description": "Ikhodi yokuskena ngefoni ehlakaniphile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Idatha ye-QR",
+        "description": "Umthombo wedatha yekhodi ye-QR."
+      },
+      {
+        "property": "title",
+        "title": "Isihloko esingenye",
+        "description": "Isihloko esingenye esixhunywe nomthombo wekhodi ye-QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Usayizi",
+        "description": "Usayizi wekhodi ye-QR."
+      },
+      {
+        "property": "margin",
+        "title": "Umngcele",
+        "description": "Isikhala esizungeze ikhodi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Ifomethi yokukhipha",
+        "description": "Ifomethi yokuyikhipha.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Oʻquv komponenti",
+    "description": "Oʻqituvchilar uchun pedagogika va oʻqitish strategiyalarini yetkazuvchi karta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Turi",
+        "description": "Ishlatiladigan karta turi."
+      },
+      {
+        "property": "subtitle",
+        "title": "Kichik sarlavha",
+        "description": "Kartaning kichik sarlavhasi."
+      },
+      {
+        "property": "url",
+        "title": "Havola",
+        "description": "Karta uchun ixtiyoriy havola (Oʻquv maqsadlari uchun havola mavjud emas)."
+      },
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Sarlavhani belgilash, bu turga asoslangan sarlavhani almashtiradi"
+      },
+      {
+        "property": "icon",
+        "title": "Belgi",
+        "description": "Belgini belgilash, bu turga asoslangan belgini almashtiradi"
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Urgʻu rangini belgilash, bu turga asoslangan rangni almashtiradi"
+      },
+      {
+        "slot": "",
+        "title": "Mundarija"
+      }
+    ]
+  }
+}

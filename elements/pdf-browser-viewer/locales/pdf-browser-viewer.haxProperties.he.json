@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "מציג PDF בדפדפן",
+    "description": "הטמעת קובץ PDF בתוך העמוד עם פריסת כרטיס וכפתור הורדה אופציונליים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL של ה-PDF",
+        "description": "מיקום קובץ ה-PDF."
+      },
+      {
+        "property": "heading",
+        "title": "כותרת",
+        "description": "טקסט כותרת הכרטיס."
+      },
+      {
+        "property": "card",
+        "title": "פריסת כרטיס",
+        "description": "הצגת ה-PDF בכרטיס עם כפתור הורדה."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "תווית הורדה",
+        "description": "התווית של כפתור ההורדה."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "הודעת חוסר תמיכה",
+        "description": "הודעה כאשר הדפדפן אינו יכול להציג קובצי PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "הודעת קישור לחוסר תמיכה",
+        "description": "טקסט הקישור כאשר הדפדפן אינו יכול להציג קובצי PDF."
+      },
+      {
+        "property": "width",
+        "title": "רוחב",
+        "description": "רוחב מציג ה-PDF."
+      },
+      {
+        "property": "height",
+        "title": "גובה",
+        "description": "גובה מציג ה-PDF."
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galleria immagini",
+    "description": "Una galleria che presenta le immagini in layout a griglia, a mosaico o a presentazione."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Modalità di visualizzazione",
+        "description": "Come presentare le immagini nella galleria.",
+        "options": {
+          "grid": "Griglia",
+          "masonry": "Mosaico",
+          "gallery": "Galleria"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Indice attivo",
+        "description": "Indice dell'immagine attiva da cui partire in modalità galleria."
+      }
+    ]
+  }
+}

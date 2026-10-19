@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Tautan dasar",
+    "description": "Elemen tautan dasar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Tautan",
+        "description": "URL tujuan."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Teks",
+        "description": "Teks tautan yang terlihat."
+      },
+      {
+        "attribute": "target",
+        "title": "Target",
+        "description": "Tempat membuka tautan.",
+        "options": {
+          "": "Jendela yang sama",
+          "_blank": "Jendela baru - _blank",
+          "_top": "Jendela teratas - _top",
+          "_parent": "Jendela induk - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Teks judul",
+        "description": "Judul saran untuk aksesibilitas dan SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Hubungan dengan tujuan (keamanan/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

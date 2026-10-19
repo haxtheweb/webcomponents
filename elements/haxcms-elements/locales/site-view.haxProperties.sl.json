@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Pogled spletnega mesta",
+    "description": "Dinamični blok, ki poizveduje in prikazuje podatke spletnega mesta glede na merila"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL pogleda",
+        "description": "Parametri poizvedbe za podatkovni vir pogleda. Pridobite jih lahko na nadzorni plošči Pogledi."
+      },
+      {
+        "property": "renderer",
+        "title": "Način prikaza",
+        "description": "Kako naj bodo rezultati pogleda upodobljeni"
+      },
+      {
+        "property": "entity",
+        "title": "Vrsta entitete",
+        "description": "Vrsta entitete, ki se uporablja za razčlenjevanje odgovora",
+        "options": {
+          "": "Privzeto (elementi)",
+          "item": "Element",
+          "page": "Stran",
+          "file": "Datoteka",
+          "tag": "Oznaka",
+          "block": "Blok",
+          "view": "Pogled",
+          "theme": "Tema",
+          "region": "Regija",
+          "customElement": "Element po meri"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Razbij pogled spletnega mesta",
+        "description": "Pretvori v statično vsebino za neposredno urejanje; samodejno posodabljanje iz vira se ustavi."
+      }
+    ]
+  }
+}

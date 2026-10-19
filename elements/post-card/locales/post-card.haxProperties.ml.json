@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "പോസ്റ്റ് കാർഡ്",
+    "description": "എവിടെനിന്നോ അയച്ച യഥാർത്ഥ പോസ്റ്റ് കാർഡ് പോലെ തോന്നിക്കുന്ന രസകരമായ മീഡിയ ഭാഗം"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "സ്വീകർത്താവ്",
+        "description": "ഇത് ആർക്കാണ്?"
+      },
+      {
+        "property": "from",
+        "title": "അയച്ചയാൾ",
+        "description": "നിങ്ങൾ ആരാണ്?"
+      },
+      {
+        "property": "message",
+        "title": "സന്ദേശം",
+        "description": "നിങ്ങൾക്ക് എന്താണ് പറയാനുള്ളത്?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "തപാൽ മുദ്ര സ്ഥലം",
+        "description": "ഈ കാർഡ് എവിടെ നിന്നാണ് അയച്ചത്?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "പ്രധാന ഫോട്ടോ ഉറവിടം",
+        "description": "നിങ്ങളുടെ ഫോട്ടോ എവിടെയാണ്?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "സ്റ്റാമ്പ് ഫോട്ടോ ഉറവിടം",
+        "description": "നിങ്ങളുടെ ഫോട്ടോ എവിടെയാണ്?"
+      }
+    ]
+  }
+}

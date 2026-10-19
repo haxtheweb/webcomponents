@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tágì / Ìṣù",
+    "description": "Àmì-orúkọ kékeré bí ìṣù pẹ̀lú àwọ̀ ìtẹnumọ́ àṣàyàn, bọ́tìnnì ìfagilé, tàbí ìyípadà."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Àmì-orúkọ",
+        "description": "Ọ̀rọ̀ tí a fi hàn nínú ìṣù."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Orúkọ ìtẹnumọ́ SimpleColors fún ẹ̀yìn ìṣù.",
+        "options": {
+          "": "-- àtilẹ̀wá --",
+          "red": "Pupa",
+          "pink": "Píǹkì",
+          "purple": "Àlùkò",
+          "deep-purple": "Àlùkò Dúdú",
+          "indigo": "Ìndígò",
+          "blue": "Búlúù",
+          "light-blue": "Búlúù Fẹ́ẹ́rẹ́",
+          "cyan": "Sáyánì",
+          "teal": "Búlúù-ewé",
+          "green": "Ewé",
+          "light-green": "Ewé Fẹ́ẹ́rẹ́",
+          "lime": "Láímù",
+          "yellow": "Ìyeyè",
+          "amber": "Àmbà",
+          "orange": "Ọsàn",
+          "deep-orange": "Ọsàn Dúdú",
+          "brown": "Pọ́nràn",
+          "blue-grey": "Eérú Búlúù",
+          "grey": "Eérú"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Àwọ̀ ìtẹnumọ́ aládàáṣe",
+        "description": "Mú àwọ̀ ìtẹnumọ́ jáde láti ọ̀rọ̀ àmì-orúkọ láìfọwọ́yí."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Bọ́tìnnì ìfagilé",
+        "description": "Fi bọ́tìnnì àmì yíyọ/ìfagilé hàn nínú ìṣù."
+      },
+      {
+        "property": "readonly",
+        "title": "Kíkà nìkan",
+        "description": "Fi bọ́tìnnì ìfagilé pamọ́ kí ìṣù jẹ́ fún ìfihàn nìkan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Ṣeé yípadà",
+        "description": "Jẹ́ kí ìṣù tàn/pa nígbà tí a bá tẹ bọ́tìnnì."
+      },
+      {
+        "property": "toggled",
+        "title": "Ti tàn",
+        "description": "Bóyá ìṣù wà ní títàn lọ́wọ́lọ́wọ́."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Àmì títàn",
+        "description": "Àmì tí a ó fi hàn nígbà tí ìṣù bá wà ní títàn."
+      },
+      {
+        "property": "disabled",
+        "title": "Àìṣiṣẹ́",
+        "description": "Mú ìbáṣepọ̀ pẹ̀lú ìṣù kúrò ní iṣẹ́."
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Tag / Pigułka",
+    "description": "Kompaktowa etykieta w kształcie pigułki z opcjonalnym kolorem akcentu, przyciskiem anulowania lub przełącznikiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Etykieta",
+        "description": "Tekst wyświetlany wewnątrz pigułki."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Nazwa akcentu SimpleColors dla tła pigułki.",
+        "options": {
+          "": "-- domyślny --",
+          "red": "Czerwony",
+          "pink": "Różowy",
+          "purple": "Fioletowy",
+          "deep-purple": "Ciemnofioletowy",
+          "indigo": "Indygo",
+          "blue": "Niebieski",
+          "light-blue": "Jasnoniebieski",
+          "cyan": "Cyjan",
+          "teal": "Morski",
+          "green": "Zielony",
+          "light-green": "Jasnozielony",
+          "lime": "Limonkowy",
+          "yellow": "Żółty",
+          "amber": "Bursztynowy",
+          "orange": "Pomarańczowy",
+          "deep-orange": "Ciemnopomarańczowy",
+          "brown": "Brązowy",
+          "blue-grey": "Niebieskoszary",
+          "grey": "Szary"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Automatyczny kolor akcentu",
+        "description": "Automatycznie wyznaczaj kolor akcentu na podstawie tekstu etykiety."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Przycisk anulowania",
+        "description": "Pokaż przycisk ikony usuwania/anulowania wewnątrz pigułki."
+      },
+      {
+        "property": "readonly",
+        "title": "Tylko do odczytu",
+        "description": "Ukryj przycisk anulowania, aby pigułka służyła tylko do wyświetlania."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Przełączanie",
+        "description": "Przełączaj pigułkę między włączoną a wyłączoną po kliknięciu przycisku."
+      },
+      {
+        "property": "toggled",
+        "title": "Włączona",
+        "description": "Czy pigułka jest obecnie włączona."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Ikona po włączeniu",
+        "description": "Ikona wyświetlana, gdy pigułka jest włączona."
+      },
+      {
+        "property": "disabled",
+        "title": "Wyłączone",
+        "description": "Wyłącz interakcję z pigułką."
+      }
+    ]
+  }
+}

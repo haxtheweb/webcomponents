@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Словник",
+    "description": "Словниковий термін."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Термін"
+      },
+      {
+        "property": "information",
+        "title": "Визначення",
+        "description": "Визначення, показане при клацанні на термін."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Спливне вікно",
+        "description": "Показувати визначення у спливному вікні, а не в тексті."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Посилання",
+        "description": "Список додаткових посилань, пов'язаних із цим терміном."
+      }
+    ]
+  }
+}

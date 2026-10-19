@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "ການລະເບີດສຸດຍອດ",
+    "description": "ພາບເຄື່ອນໄຫວການລະເບີດແບບໂຕ້ຕອບ ພ້ອມສຽງປະກອບທາງເລືອກ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "ຂະໜາດ",
+        "description": "ກຳນົດຂະໜາດຂອງການລະເບີດ.",
+        "options": {
+          "tiny": "ນ້ອຍຫຼາຍ",
+          "small": "ນ້ອຍ",
+          "medium": "ກາງ",
+          "large": "ໃຫຍ່",
+          "epic": "ມະຫາສານ"
+        }
+      },
+      {
+        "property": "color",
+        "title": "ສີ",
+        "description": "ກຳນົດຊຸດສີຂອງການລະເບີດ.",
+        "options": {
+          "": "ຄ່າເລີ່ມຕົ້ນ",
+          "red": "ແດງ",
+          "blue": "ຟ້າ",
+          "purple": "ມ່ວງ",
+          "orange": "ສົ້ມ",
+          "yellow": "ເຫຼືອງ"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "ສຽງປະກອບ",
+        "description": "ເປີດໃຊ້ສຽງປະກອບ."
+      },
+      {
+        "property": "resetSound",
+        "title": "ຣີເຊັດສຽງ",
+        "description": "ເລີ່ມສຽງໃໝ່ຈາກຕົ້ນທຸກຄັ້ງ."
+      },
+      {
+        "property": "image",
+        "title": "ຮູບພາບກຳນົດເອງ",
+        "description": "URL ທາງເລືອກສຳລັບຮູບພາບການລະເບີດທີ່ກຳນົດເອງ."
+      },
+      {
+        "property": "sound",
+        "title": "ສຽງກຳນົດເອງ",
+        "description": "URL ທາງເລືອກສຳລັບສຽງປະກອບທີ່ກຳນົດເອງ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "ປິດໃຊ້ງານ",
+        "description": "ປິດໃຊ້ງານການໂຕ້ຕອບທັງໝົດ."
+      }
+    ]
+  }
+}

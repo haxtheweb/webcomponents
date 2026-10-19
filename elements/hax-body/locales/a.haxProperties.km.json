@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "តំណមូលដ្ឋាន",
+    "description": "ធាតុតំណមូលដ្ឋាន។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "តំណ",
+        "description": "URL គោលដៅ។"
+      },
+      {
+        "attribute": "innerText",
+        "title": "អត្ថបទ",
+        "description": "អត្ថបទតំណដែលមើលឃើញ។"
+      },
+      {
+        "attribute": "target",
+        "title": "គោលដៅ",
+        "description": "កន្លែងត្រូវបើកតំណ។",
+        "options": {
+          "": "បង្អួចដដែល",
+          "_blank": "បង្អួចថ្មី - _blank",
+          "_top": "បង្អួចខាងលើ - _top",
+          "_parent": "បង្អួចមេ - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "អត្ថបទចំណងជើង",
+        "description": "ចំណងជើងណែនាំសម្រាប់ភាពងាយស្រួលចូលប្រើ និង SEO។"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "ទំនាក់ទំនងទៅគោលដៅ (សុវត្ថិភាព/SEO)។",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

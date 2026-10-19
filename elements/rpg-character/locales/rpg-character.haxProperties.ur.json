@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG کردار",
+    "description": "HAX کا ایک مزے دار کردار۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "نام",
+        "description": "بے ترتیب کردار بنانے کے لیے استعمال ہونے والا لفظ۔"
+      },
+      {
+        "property": "hat",
+        "title": "ٹوپی",
+        "description": "ٹوپی کا انداز۔",
+        "options": {
+          "none": "طے شدہ",
+          "random": "بے ترتیب",
+          "bunny": "خرگوش",
+          "cowboy": "کاؤ بوائے",
+          "education": "تعلیم",
+          "construction": "تعمیرات",
+          "warning": "انتباہ",
+          "watermelon": "تربوز",
+          "coffee": "کافی",
+          "knight": "نائٹ",
+          "ninja": "ننجا",
+          "party": "پارٹی",
+          "error": "خرابی",
+          "edit": "ترمیم"
+        }
+      },
+      {
+        "property": "width",
+        "title": "چوڑائی",
+        "description": "کردار کی چوڑائی پکسلز میں۔"
+      },
+      {
+        "property": "height",
+        "title": "اونچائی",
+        "description": "کردار کی اونچائی پکسلز میں۔"
+      },
+      {
+        "property": "fire",
+        "title": "آگ لگی ہے؟",
+        "description": "کیا کردار کو آگ لگی ہوئی ہے۔"
+      },
+      {
+        "property": "walking",
+        "title": "چل رہا ہے؟",
+        "description": "چلنے کی اینیمیشن؛ آگ لگی ہو تو دوڑتا ہے۔"
+      }
+    ]
+  }
+}

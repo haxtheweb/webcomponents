@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sidro strani",
+    "description": "Povezava na določena mesta v medijih na strani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cilj na strani",
+        "description": "ID ali vir, na katerega kaže to sidro."
+      },
+      {
+        "property": "value",
+        "title": "Vrednost globoke povezave",
+        "description": "Vrednost globoke povezave (na primer časovni žig ali ID diapozitiva)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entiteta spletnega mesta",
+        "description": "Neobvezna entiteta spletnega mesta za upravljanje predstavitve povezanih pojmov."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Ενότητα εικόνας",
+    "description": "Εικόνα πλήρους πλάτους που χωρίζει μια ενότητα της σελίδας."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Εικόνα φόντου."
+      },
+      {
+        "property": "caption",
+        "description": "Επικεφαλίδα κειμένου."
+      }
+    ]
+  }
+}

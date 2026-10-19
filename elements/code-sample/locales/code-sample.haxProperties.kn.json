@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "ಕೋಡ್ ಮಾದರಿ",
+    "description": "ಪುಟದಲ್ಲಿ ಹೈಲೈಟ್ ಮಾಡಲಾದ ಕೋಡ್‌ನ ಮಾದರಿ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "ಕೋಡ್ ಹೈಲೈಟಿಂಗ್",
+        "description": "ಕೋಡ್ ಪ್ರದೇಶಕ್ಕೆ ಅನ್ವಯಿಸಬೇಕಾದ ಸಿಂಟ್ಯಾಕ್ಸ್ ಹೈಲೈಟಿಂಗ್",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON ಡೇಟಾ",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸುವ ಬಟನ್",
+        "description": "ಮೇಲಿನ ಬಲ ಮೂಲೆಯಲ್ಲಿ ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಿ ಎಂದು ಹೇಳುವ ಬಟನ್"
+      },
+      {
+        "property": "highlightStart",
+        "title": "ಹೈಲೈಟ್ ಪ್ರಾರಂಭ",
+        "description": "ಹೈಲೈಟ್ ಪ್ರಾರಂಭಿಸಬೇಕಾದ ಸಾಲಿನ ಸಂಖ್ಯೆ"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "ಹೈಲೈಟ್ ಅಂತ್ಯ",
+        "description": "ಹೈಲೈಟ್ ಮುಗಿಸಬೇಕಾದ ಸಾಲು"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Implementasi sistem desain kanggo HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Pilihan sing dirender",
+        "options": {
+          "*": "Pandhuan gaya lengkap"
+        }
+      }
+    ]
+  }
+}

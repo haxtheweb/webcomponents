@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Amagama",
+    "description": "Igama lesilulumagama"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Igama"
+      },
+      {
+        "slot": "",
+        "title": "Incazelo",
+        "description": "Incazelo okufanele iboniswe lapho igama lichofozwa."
+      },
+      {
+        "property": "description",
+        "title": "Incazelo (OER Schema)",
+        "description": "I-OER Schema: incazelo emfushane yegama lesilulumagama. Igcwaliswa ngokuzenzakalelayo kusuka embhalweni wencazelo uma ishiywe ingenalutho."
+      }
+    ]
+  }
+}

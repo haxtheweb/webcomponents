@@ -33,5 +33,6 @@
   "volumeLabel": "Volume",
   "youTubeLoadingLabel": "Loading...",
   "youTubeStartLoading": "Press play.",
-  "youTubeTranscriptLabel": "Transcript will load once media plays."
+  "youTubeTranscriptLabel": "Transcript will load once media plays.",
+  "audioDescriptionLabel": "Audio Description"
 }

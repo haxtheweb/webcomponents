@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Joajuha ypy",
+    "description": "Joajuha pehẽ ypy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Joajuha",
+        "description": "URL ohohápe."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Moñe'ẽrã",
+        "description": "Joajuha moñe'ẽrã ojehecháva."
+      },
+      {
+        "attribute": "target",
+        "title": "Ohohápe",
+        "description": "Moõpa ojepe'áta joajuha.",
+        "options": {
+          "": "Ovetã peteĩchagua",
+          "_blank": "Ovetã pyahu - _blank",
+          "_top": "Ovetã yvategua - _top",
+          "_parent": "Ovetã ru - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Téra moñe'ẽrã",
+        "description": "Téra momarandurã jeikekuaa ha SEO-pe g̃uarã."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Joaju ohohápe ndive (tekorosã/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

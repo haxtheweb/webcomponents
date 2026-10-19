@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Onyesha kitufe cha mwito wa kuchukua hatua cha Polaris chenye mandhari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Maandishi ya kitufe",
+        "description": "Maandishi yanayoonyeshwa kwenye kitufe cha mwito wa kuchukua hatua."
+      },
+      {
+        "property": "link",
+        "title": "Kiungo",
+        "description": "URL lengwa ya kitufe."
+      },
+      {
+        "property": "type",
+        "title": "Lahaja",
+        "description": "Lahaja ya mtindo wa kuona.",
+        "options": {
+          "primary": "Kuu",
+          "tinted": "Iliyotiwa rangi hafifu",
+          "light": "Angavu"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Mtindo wa mstari wa nje",
+        "description": "Washa muundo wa mstari wa nje."
+      },
+      {
+        "property": "filled",
+        "title": "Mtindo uliojazwa",
+        "description": "Washa muundo uliojazwa."
+      }
+    ]
+  }
+}

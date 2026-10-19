@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Nhúng nội dung web bên ngoài."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Nguồn",
+        "description": "URL của tài nguyên này."
+      }
+    ]
+  }
+}

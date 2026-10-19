@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ಪುಟ ಧ್ವಜ",
+    "description": "ಪುಟ ಲೇಖಕರಿಗಾಗಿ ಸಂಪಾದಕೀಯ ಟಿಪ್ಪಣಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "ಪುಟ ಧ್ವಜದ ಒತ್ತು ಬಣ್ಣ."
+      },
+      {
+        "property": "label",
+        "title": "ಲೇಬಲ್",
+        "description": "ಪುಟ ಧ್ವಜದ ಲೇಬಲ್ ಪಠ್ಯ."
+      }
+    ]
+  }
+}

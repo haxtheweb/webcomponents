@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Abun CMS",
+    "description": "Abun CMS da aka nuna a baya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Nau'i",
+        "description": "nau'i daga CMS ɗinmu",
+        "options": {
+          "node": "Kulli",
+          "user": "Mai amfani",
+          "file": "Fayil"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id daga CMS ɗinmu"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Yanayin nuni",
+        "description": "yanayin nuni daga CMS ɗinmu"
+      }
+    ]
+  }
+}

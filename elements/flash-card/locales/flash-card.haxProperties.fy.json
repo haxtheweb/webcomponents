@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Flitskaart",
+    "description": "Oefenje begripen mei flitskaarten mei in foar- en efterkant."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Foarkant fan de kaart",
+        "description": "Tekst of fraach op de foarkant."
+      },
+      {
+        "slot": "back",
+        "title": "Efterkant fan de kaart",
+        "description": "Ferwachte antwurd."
+      },
+      {
+        "property": "imgSource",
+        "title": "Ofbyldingsboarne",
+        "description": "Ofbyldingsbestân foar de kaart. Giet foar it ôfbyldingskaaiwurd."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Soarte aksje",
+        "description": "OER Schema: de soarte aksje dy't dizze oefening freget (bgl. lêze, skriuwe, meitsje, ûndersykje, harkje, sjen, reflektearje, beprate, observearje, presintearje, beoardielje)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leardoel",
+        "description": "OER Schema: ID of URL fan it leardoel dat dizze oefening stipet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Tsjuster",
+        "description": "Tsjustere modus brûke."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Aksintkleur fan de kaart."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Ofbyldingskaaiwurd",
+        "description": "Kaaiwurd foar in willekeurige ôfbylding. Wurdt oerskreaun troch de ôfbyldingsboarne."
+      }
+    ]
+  }
+}

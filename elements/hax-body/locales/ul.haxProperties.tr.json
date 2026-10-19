@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Madde işaretli liste",
+    "description": "Madde işaretli bir liste oluşturun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Madde işareti stili",
+        "description": "Sırasız liste madde işaretleri için kullanılan stil.",
+        "options": {
+          "": "Varsayılan (kare)",
+          "list-disc": "Disk",
+          "list-circle": "Daire",
+          "list-square": "Kare"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Insignia de mérito",
+    "description": "Insignia visual para comunicar a obtención dunha habilidade."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Título da insignia",
+        "description": "Título mostrado na insignia."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Imaxe da insignia",
+        "description": "URL da imaxe da insignia."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Detalles da insignia",
+        "description": "Detalles sobre a insignia."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hiperligazón",
+        "description": "Ligazón asociada á insignia."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Habilidades da insignia",
+        "description": "Habilidades mostradas na insignia."
+      },
+      {
+        "property": "skill",
+        "title": "Habilidade (OER Schema)",
+        "description": "OER Schema: unha habilidade aprendida obtida ao completar este obxectivo de aprendizaxe."
+      }
+    ]
+  }
+}

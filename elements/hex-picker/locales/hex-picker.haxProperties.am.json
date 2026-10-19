@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "የHex መራጭ",
+    "description": "የHex ኮድ ቀለም መራጭ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ዋጋ",
+        "description": "ነባሪ የhex እሴት"
+      },
+      {
+        "property": "disabled",
+        "title": "ተሰናክሏል",
+        "description": "የጽሑፍ መስኩን አሰናክል"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "ትልቅ ማሳያ",
+        "description": "ቀለሙን በትልቅ ማሳያ ውስጥ አካትት"
+      }
+    ]
+  }
+}

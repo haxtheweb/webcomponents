@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Бағалау журналы",
+    "description": "Рубрикалармен бірнеше backend-ті қолдайтын интерфейссіз бағалау журналы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Дереккөз",
+        "description": "Деректер көзінің түрі (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON деректер блогы",
+          "filesystem": "Файлдық жүйе"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Бастапқы деректер",
+        "description": "Бағалау журналына арналған URL немесе JSON деректері."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курсқа сілтеме",
+        "description": "Әрбір бағалау ресурсында oer:forCourse ретінде берілетін курс идентификаторы."
+      }
+    ]
+  }
+}

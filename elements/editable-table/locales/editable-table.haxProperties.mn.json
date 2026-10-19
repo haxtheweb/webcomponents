@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Хүснэгт",
+    "description": "Вэбэд зориулсан хүснэгтэн өгөгдөл."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "Мөрийн толгой",
+        "description": "Эхний мөрийг толгой гэж үзэх."
+      },
+      {
+        "property": "columnHeader",
+        "title": "Баганын толгой",
+        "description": "Эхний баганыг толгой гэж үзэх."
+      },
+      {
+        "property": "footer",
+        "title": "Хөл хэсэг",
+        "description": "Сүүлийн мөрийг хөл хэсэг гэж үзэх."
+      },
+      {
+        "property": "sort",
+        "title": "Эрэмбэлэх боломжтой",
+        "description": "Баганын утгаар эрэмбэлэхийг зөвшөөрөх."
+      },
+      {
+        "property": "filter",
+        "title": "Шүүлтүүр зөвшөөрөх",
+        "description": "Баганын утгаар шүүхийг зөвшөөрөх."
+      },
+      {
+        "property": "numericStyles",
+        "title": "Тоон загвар",
+        "description": "Тоон баганад тоон загвар хэрэглэх."
+      },
+      {
+        "property": "responsive",
+        "title": "Дасан зохицох",
+        "description": "Жижиг дэлгэц дээр хүснэгтийн байршлыг тохируулах."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Рубрикийн горим",
+        "description": "Rubric, RubricScale, RubricCriterion, RubricLevel мета өгөгдөл гаргахын тулд энэ хүснэгтийг OER Schema Rubric гэж тайлбарлах."
+      },
+      {
+        "property": "rubricType",
+        "title": "Рубрикийн төрөл",
+        "description": "oer:rubricType болгон гаргах рубрикийн хэв маяг (зөвхөн Рубрикийн горим асаалттай үед утгатай).",
+        "options": {
+          "": "(байхгүй)",
+          "analytic": "Шинжилгээний",
+          "holistic": "Нэгдсэн",
+          "single-point": "Нэг оноот",
+          "checklist": "Шалгах жагсаалт"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Хүрээтэй"
+      },
+      {
+        "property": "condensed",
+        "title": "Мөрийг нягтруулах",
+        "description": "Мөрийн өндрийг багасгах."
+      },
+      {
+        "property": "striped",
+        "title": "Судалтай мөр",
+        "description": "Нэг алгасан мөр бүрийг сүүдэрлэх."
+      },
+      {
+        "property": "downloadable",
+        "title": "Татах товч",
+        "description": "Хүснэгтийг татаж авах товч нэмэх."
+      },
+      {
+        "property": "copyable",
+        "title": "Хуулах товч",
+        "description": "Хүснэгтийн CSV өгөгдлийг хуулах товч нэмэх."
+      },
+      {
+        "property": "printable",
+        "title": "Хэвлэх товч",
+        "description": "Зөвхөн хүснэгтийг хэвлэх товч нэмэх."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV өгөгдөл",
+        "description": "Байршуулсан CSV файлаас хүснэгт үүсгэх."
+      }
+    ]
+  }
+}

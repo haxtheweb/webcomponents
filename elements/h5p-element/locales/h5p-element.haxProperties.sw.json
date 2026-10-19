@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "Kifungashio cha H5P cha kupakia na kuwasilisha faili za .h5p"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "Msimbo wa kupachika iframe ya H5P"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Bädda in Disqus-kommentarer på en sida."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Kortnamn",
+        "description": "Webbplatsens kortnamn, som styr värden för Disqus-skriptet."
+      },
+      {
+        "property": "pageURL",
+        "title": "Sid-URL",
+        "description": "URL till sidan som kommentarstråden hör till."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Sididentifierare",
+        "description": "Unik identifierare för sidans kommentarstråd."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Sidtitel",
+        "description": "Titeln på sidan som kommentarstråden hör till."
+      },
+      {
+        "property": "loadingText",
+        "title": "Laddningstext",
+        "description": "Text som läses upp medan kommentarerna laddas."
+      },
+      {
+        "property": "lang",
+        "title": "Språk",
+        "description": "Språkkod för Disqus-gränssnittet, t.ex. en."
+      }
+    ]
+  }
+}

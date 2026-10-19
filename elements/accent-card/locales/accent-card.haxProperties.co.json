@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Carta",
+    "description": "Una carta cù un stile d'accentu facultativu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Intestatura",
+        "description": "Un'intestatura per a carta."
+      },
+      {
+        "slot": "subheading",
+        "title": "Sottutitulu",
+        "description": "Un sottutitulu facultativu per a carta."
+      },
+      {
+        "slot": "content",
+        "title": "Cuntenutu",
+        "description": "Cuntenutu di a carta."
+      },
+      {
+        "slot": "footer",
+        "title": "Pede",
+        "description": "Un pede facultativu per a carta."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Imagine",
+        "description": "Imagine facultativa"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Testu alternativu di l'imagine",
+        "description": "Testu alternativu chì discrive l'imagine per i lettori di screnu. Lasciate biotu solu s'è l'imagine hè puramente decorativa."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Allineamentu orizontale di l'imagine",
+        "options": {
+          "left": "manca",
+          "center": "centru",
+          "right": "diritta"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Allineamentu verticale di l'imagine",
+        "options": {
+          "top": "sopra",
+          "center": "centru",
+          "bottom": "sottu"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Un culore d'accentu facultativu."
+      },
+      {
+        "property": "dark",
+        "title": "Tema scuru",
+        "description": "Attivà u tema bughju"
+      },
+      {
+        "property": "horizontal",
+        "title": "Orizontale",
+        "description": "Orientazione orizontale?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Accentu nant'à l'intestatura",
+        "description": "Appiecà u culore d'accentu à l'intestatura?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Accentu di fondu",
+        "description": "Appiecà u culore d'accentu à u fondu di a carta?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Senza accentu di bordu",
+        "description": "Caccià l'accentu di bordu?"
+      },
+      {
+        "property": "flat",
+        "title": "Pianu",
+        "description": "Caccià l'ombra di a casella?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Cantone",
+        "description": "Cuntenutu per u cantone di a carta."
+      }
+    ]
+  }
+}

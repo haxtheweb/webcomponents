@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Элемент библиографии",
+    "description": "Элемент, представляющий один источник в библиографии, с поддержкой разных форматов и вариантов экспорта."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Тип",
+        "description": "Тип источника",
+        "options": {
+          "web": "Веб",
+          "journal": "Журнал",
+          "book": "Книга"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Название",
+        "description": "Название элемента"
+      },
+      {
+        "property": "authors",
+        "title": "Автор(ы)",
+        "description": "События на временной шкале"
+      },
+      {
+        "property": "publisher",
+        "title": "Издатель",
+        "description": "Исходный веб-сайт"
+      }
+    ]
+  }
+}

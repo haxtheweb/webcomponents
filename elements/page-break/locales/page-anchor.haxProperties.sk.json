@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kotva stránky",
+    "description": "Odkaz na konkrétne miesta v médiách na stránke."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Cieľ na stránke",
+        "description": "ID alebo zdroj, na ktorý táto kotva odkazuje."
+      },
+      {
+        "property": "value",
+        "title": "Hodnota priameho odkazu",
+        "description": "Hodnota priameho odkazu (napríklad časová značka alebo ID snímky)."
+      },
+      {
+        "property": "entityId",
+        "title": "Entita webu",
+        "description": "Voliteľná entita webu na ovládanie prezentácie súvisiacich pojmov."
+      }
+    ]
+  }
+}

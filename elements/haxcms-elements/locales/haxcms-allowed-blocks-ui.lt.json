@@ -1,0 +1,14 @@
+{
+  "title": "Blokai",
+  "enabled": "Įjungta",
+  "block": "Blokas",
+  "preview": "Peržiūra",
+  "filterBlocks": "Filtruoti blokus",
+  "requiredTextNote": "Kai kurios teksto žymos yra privalomos ir visada įjungtos (rodomos kaip išjungtos).",
+  "selectAll": "Pažymėti viską",
+  "deselectAll": "Atžymėti viską",
+  "save": "Išsaugoti",
+  "noDescription": "Aprašymo nėra.",
+  "details": "Išsami informacija",
+  "loadingInventory": "Įkeliamas visas blokų sąrašas…"
+}

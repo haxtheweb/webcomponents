@@ -1,0 +1,152 @@
+{
+  "gizmo": {
+    "title": "පිටු විස්තර",
+    "description": "CMS මගින් පිටු සෑදීමට භාවිත කළ හැකි, පිටු අතර දෘශ්‍ය බෙදීමක් නිර්වචනය කරන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "තේමාවේ සහ පළමු ශීර්ෂයේ පෙන්වන මාතෘකාව."
+      },
+      {
+        "property": "pageType",
+        "title": "වර්ගය",
+        "description": "දෘශ්‍ය පිටු සන්දර්භ ලේබලය.",
+        "options": {
+          "": "-- කිසිවක් නැත --",
+          "content": "අන්තර්ගතය",
+          "assessment": "තක්සේරුව",
+          "quiz": "ප්‍රශ්නාවලිය",
+          "submission": "ඉදිරිපත් කිරීම",
+          "lesson": "පාඩම",
+          "module": "මොඩියුලය",
+          "task": "කාර්යය",
+          "activity": "ක්‍රියාකාරකම",
+          "project": "ව්‍යාපෘතිය",
+          "practice": "පුහුණුව",
+          "unit": "ඒකකය",
+          "objectives": "ඉගෙනුම් අරමුණු",
+          "connection": "සම්බන්ධතාව",
+          "knowledge": "ඔබ දන්නවාද?",
+          "strategy": "ඉගෙනුම් උපාය",
+          "discuss": "සාකච්ඡා කරන්න",
+          "listen": "සවන් දෙන්න",
+          "make": "සාදන්න",
+          "observe": "නිරීක්ෂණය කරන්න",
+          "present": "ඉදිරිපත් කරන්න",
+          "reading": "කියවීම",
+          "reflect": "ආවර්ජනය කරන්න",
+          "research": "පර්යේෂණය",
+          "watch": "නරඹන්න",
+          "write": "ලියන්න"
+        }
+      },
+      {
+        "property": "tags",
+        "title": "ටැග",
+        "description": "කොමා වලින් වෙන් කළ ටැග ලැයිස්තුව."
+      },
+      {
+        "property": "linkUrl",
+        "title": "සබැඳි URL",
+        "description": "පිටු අන්තර්ගතය වෙනුවට පෙන්වන යළි-යොමු URL."
+      },
+      {
+        "property": "linkTarget",
+        "title": "සබැඳි ඉලක්කය",
+        "description": "සබැඳි එම කවුළුවේ හෝ නව කවුළුවක විවෘත කරන්න.",
+        "options": {
+          "_self": "එම කවුළුවම",
+          "_blank": "නව කවුළුව"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "published",
+        "title": "ප්‍රකාශිත",
+        "description": "ප්‍රකාශනය නොකළ පිටු අවසාන පරිශීලකයින්ගෙන් සඟවා ඇත."
+      },
+      {
+        "property": "locked",
+        "title": "පිටුව අගුළු දමන්න",
+        "description": "මෙම පිටුවේ සියලු මූලද්‍රව්‍ය අගුළු දමන්න හෝ අගුළු හරින්න."
+      },
+      {
+        "property": "overridePathauto",
+        "title": "ස්වයංක්‍රීය slug අභිබවන්න",
+        "description": "මාතෘකාව හෝ මාපිය පිටුව අනුව ස්වයංක්‍රීය යාවත්කාලීන කිරීම්වලින් slug එක අගුළු දමන්න."
+      },
+      {
+        "property": "slug",
+        "title": "මාර්ගය",
+        "description": "මෙම පිටුව සඳහා URL slug."
+      },
+      {
+        "property": "image",
+        "title": "මාධ්‍ය",
+        "description": "පිටුව නියෝජනය කරන මාධ්‍ය, සමහර තේමා සහ දසුන්වල භාවිත වේ."
+      },
+      {
+        "property": "parent",
+        "title": "මාපිය",
+        "description": "මාපිය පිටුවේ මාර්ගය."
+      },
+      {
+        "property": "noderefs",
+        "title": "අදාළ අන්තර්ගතය",
+        "description": "මෙම පිටුවට අදාළ පිටු."
+      }
+    ],
+    "developer": [
+      {
+        "property": "description",
+        "title": "විස්තරය",
+        "description": "එකතුවල සහ සෙවුම් යන්ත්‍ර ප්‍රශස්තකරණයේ (SEO) භාවිත විස්තරය."
+      },
+      {
+        "property": "entityType",
+        "title": "ඒකක වර්ගය",
+        "description": "වෙනත් ලෙස සකසා නොමැති නම් පෙරනිමියෙන් පිටුව වේ.",
+        "options": {
+          "page": "පිටුව (පෙරනිමි)",
+          "taxonomy": "වර්ගීකරණය",
+          "taxonomyTerm": "වර්ගීකරණ පදය",
+          "region": "කලාපය"
+        }
+      },
+      {
+        "property": "icon",
+        "title": "නිරූපකය",
+        "description": "අඩවියේ මෙම පිටුවට සම්බන්ධ නිරූපකය."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "අඩවියේ මෙම පිටුවට සම්බන්ධ වර්ණය."
+      },
+      {
+        "property": "hideInMenu",
+        "title": "මෙනුවේ සඟවන්න",
+        "description": "URL එක තබා ගනිමින් මෙම පිටුව මෙනුවලින් සඟවන්න."
+      },
+      {
+        "property": "order",
+        "title": "අනුපිළිවෙල",
+        "description": "සහෝදර පිටුවලට සාපේක්ෂ අනුපිළිවෙල."
+      },
+      {
+        "property": "developerTheme",
+        "title": "පිටු තේමාව",
+        "description": "මෙම පිටුව සඳහා පමණක් තේමාව අභිබවන්න."
+      },
+      {
+        "property": "author",
+        "title": "කර්තෘ",
+        "description": "මෙම පිටුව අවසන් වරට වෙනස් කළ පුද්ගලයාගේ පරිශීලක නාමය."
+      }
+    ]
+  }
+}

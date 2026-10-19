@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Poʻomanaʻo pili",
+    "description": "hoʻopuka i ke kaʻina poʻomanaʻo pololei ma muli o ke poʻomanaʻo o ka makua"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID kumuwaiwai o ke poʻomanaʻo makua"
+      },
+      {
+        "property": "disableLink",
+        "description": "Hoʻopio i ka hiʻohiʻona pihi loulou."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Hoʻokaulike i ka pihi kope loulou ma ka ʻākau loa o ke poʻomanaʻo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Pae poʻomanaʻo inā ʻaʻole loaʻa ka makua."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Pani i ke kikokikona paʻamau no ka memo o ke kope loulou."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Pani i ka lepili paʻamau o ka pihi kope loulou."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Pani i ka ikona paʻamau o ka pihi kope loulou."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Pani i ka lepili paʻamau no ka pihi pani o ka memo kope loulou."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Pani i ka ikona paʻamau no ka pihi pani o ka memo kope loulou."
+      }
+    ]
+  }
+}

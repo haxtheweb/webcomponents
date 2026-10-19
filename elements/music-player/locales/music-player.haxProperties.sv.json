@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI-visualiserare",
+    "description": "Spela MIDI i sitt sammanhang med visualisering."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Källa",
+        "description": "Fil-URL att spela upp."
+      },
+      {
+        "property": "visualizer",
+        "title": "Visualisering",
+        "description": "Visualiseringsstil för musikfilen.",
+        "options": {
+          "staff": "Notsystem",
+          "piano-roll": "Pianorulle",
+          "waterfall": "Piano + vattenfall"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "Dölj vattenfall",
+        "description": "Dölj vattenfallsnoter i pianovisualiseringen."
+      }
+    ]
+  }
+}

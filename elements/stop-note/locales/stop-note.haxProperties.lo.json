@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "ບັນທຶກຢຸດ",
+    "description": "ຂໍ້ຄວາມເພື່ອແຈ້ງເຕືອນຜູ້ອ່ານກ່ຽວກັບຄຳແນະນຳສະເພາະ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ໃສ່ຫົວຂໍ້ສຳລັບບັນທຶກຢຸດ."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "ໃສ່ URL ພາຍນອກ."
+      },
+      {
+        "property": "status",
+        "title": "ສະຖານະ",
+        "description": "ການຕັ້ງສະຖານະຈະປ່ຽນສີ ແລະ ໄອຄອນໃຫ້ກົງກັນ",
+        "options": {
+          "stop": "ຢຸດ",
+          "warning": "ຄຳເຕືອນ",
+          "success": "ການຢືນຢັນ",
+          "info": "ແຈ້ງການ"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "ຂໍ້ຄວາມບັນທຶກ",
+        "description": "ຂໍ້ຄວາມສຳລັບບັນທຶກຢຸດ."
+      }
+    ]
+  }
+}

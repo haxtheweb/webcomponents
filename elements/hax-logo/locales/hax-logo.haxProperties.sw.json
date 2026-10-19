@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Sanaa ya maneno ya HAX",
+    "description": "Kipengele cha nembo ya HAX, bila shaka kama kipengele kinachoweza kutumika na HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Ukubwa wa nembo ya HAX itakayowekwa",
+        "options": {
+          "mini": "Ndogo sana",
+          "small": "Ndogo",
+          "normal": "Kawaida",
+          "large": "Kubwa"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Ikiwa nembo ibadilishwe kuwa herufi kubwa"
+      }
+    ]
+  }
+}

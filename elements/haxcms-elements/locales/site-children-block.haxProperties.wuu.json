@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms:子块",
+    "description": "显示当前页面子页面个动态块"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "动态方法",
+        "description": "相对搿只元素哪能计算子项",
+        "options": {
+          "active": "当前子项",
+          "parent": "父页面个子项",
+          "ancestor": "从最高祖先开始个全部子项"
+        }
+      },
+      {
+        "property": "start",
+        "title": "开始层级"
+      },
+      {
+        "property": "end",
+        "title": "结束层级"
+      }
+    ]
+  }
+}

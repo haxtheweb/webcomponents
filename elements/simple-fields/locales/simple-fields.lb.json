@@ -5,5 +5,9 @@
   "recordAudio": "Audio ophuelen",
   "recordScreen": "Ecran ophuelen",
   "cancel": "Ofbriechen",
-  "uploadMedia": "Medien eroplueden"
+  "uploadMedia": "Medien eroplueden",
+  "record": "Ophuelen",
+  "pause": "Ophuelen pauséieren",
+  "stopSave": "Stoppen & späicheren",
+  "clickToTakePhoto": "Klickt, fir eng Foto ze maachen"
 }

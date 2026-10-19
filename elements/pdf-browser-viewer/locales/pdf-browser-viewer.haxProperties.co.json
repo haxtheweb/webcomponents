@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Visualizatore PDF di u navigatore",
+    "description": "Incrustà un schedariu PDF cù una dispusizione in carta è un buttone di scaricamentu facultativi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL di u PDF",
+        "description": "Lucalizazione di u schedariu PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Intestatura",
+        "description": "Testu di l'intestatura di a carta."
+      },
+      {
+        "property": "card",
+        "title": "Dispusizione in carta",
+        "description": "Affissà u PDF in una carta cù un buttone di scaricamentu."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Etichetta di scaricamentu",
+        "description": "Etichetta di u buttone di scaricamentu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Messaghju micca suppurtatu",
+        "description": "Messaghju quandu u navigatore ùn pò affissà i schedarii PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Messaghju di ligame micca suppurtatu",
+        "description": "Testu di u ligame quandu u navigatore ùn pò affissà i schedarii PDF."
+      },
+      {
+        "property": "width",
+        "title": "Larghezza",
+        "description": "Larghezza di u visualizatore PDF."
+      },
+      {
+        "property": "height",
+        "title": "Altezza",
+        "description": "Altezza di u visualizatore PDF."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Call-to-action",
+    "description": "Een eenvoudige knop met een link om actie te ondernemen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Linklabel"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Voer een link naar een willekeurige bron in"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Pictogram verbergen",
+        "description": "Het pictogram verbergen dat de tekst accentueert"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Pictogram",
+        "description": "Pictogram van actielink"
+      }
+    ]
+  }
+}

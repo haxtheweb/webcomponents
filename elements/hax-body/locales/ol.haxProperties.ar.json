@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "قائمة مرقّمة",
+    "description": "إنشاء قائمة مرقّمة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "نمط الترقيم",
+        "description": "النمط المستخدم لترقيم القائمة المرتبة.",
+        "options": {
+          "": "افتراضي (عشري)",
+          "list-decimal-leading-zero": "عشري مع صفر بادئ (01، 02، 03)",
+          "list-lower-alpha": "أحرف صغيرة (a، b، c)",
+          "list-upper-alpha": "أحرف كبيرة (A، B، C)",
+          "list-lower-roman": "أرقام رومانية صغيرة (i، ii، iii)",
+          "list-upper-roman": "أرقام رومانية كبيرة (I، II، III)"
+        }
+      }
+    ]
+  }
+}

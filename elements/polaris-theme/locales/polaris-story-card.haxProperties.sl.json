@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Zgodbena kartica Polaris",
+    "description": "Prikaz zgodbene kartice Polaris s sliko ozadja, oznako stebra in besedilom naslova."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Slika ozadja",
+        "description": "URL slike, prikazane kot ozadje kartice."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Velikost ozadja",
+        "description": "Kako slika ozadja zapolni kartico (CSS background-size).",
+        "options": {
+          "cover": "Prekrij (cover)",
+          "contain": "Vsebuj (contain)",
+          "auto": "Samodejno (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Pritrditev ozadja",
+        "description": "Kako se slika ozadja obnaša med pomikanjem (CSS background-attachment).",
+        "options": {
+          "scroll": "Pomikaj (scroll)",
+          "fixed": "Fiksno (fixed)",
+          "local": "Lokalno (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Oznaka stebra",
+        "description": "Kratka oznaka z velikimi črkami, prikazana na vrhu kartice. Za skritje pustite prazno."
+      },
+      {
+        "property": "label",
+        "title": "Besedilo kartice",
+        "description": "Glavno besedilo, prikazano na spodnji plošči."
+      },
+      {
+        "property": "link",
+        "title": "Povezava",
+        "description": "Neobvezen ciljni URL, ki ovije celotno kartico."
+      }
+    ]
+  }
+}

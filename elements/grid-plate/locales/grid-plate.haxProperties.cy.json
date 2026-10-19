@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Cynllun colofnau",
+    "description": "Gosod deunydd mewn colofnau syml"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Cynllun Colofnau",
+        "description": "Arddull i gyflwyno'r eitemau hyn (gall newid ar gyfer sgriniau bach)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Analluogi ymatebolrwydd",
+        "description": "Ticiwch y blwch i gadw colofnau ar sgriniau mwy gan barhau i'w pentyrru ar y sgriniau lleiaf"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Padin Eitem",
+        "description": "Padin y tu mewn i bob eitem"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Ymylon eitemau",
+        "description": "Ymyl rhwng eitemau"
+      }
+    ]
+  }
+}

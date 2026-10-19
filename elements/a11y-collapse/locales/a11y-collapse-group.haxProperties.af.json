@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Uitvou-invougroep",
+    "description": "'n Groep uitvou-invou-elemente."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "radio",
+        "title": "Vou slegs een uit",
+        "description": "Slegs een item kan uitgevou word."
+      },
+      {
+        "slot": "",
+        "title": "Invou-items",
+        "description": "Die invou-items."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ithayile ye-Polaris",
+    "description": "Bonisa ithayile ye-Polaris enesihloko, umbhalo oxhasayo okhethwayo kunye nekhonkco elikhethwayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Umbhalo ophambili",
+        "description": "Umbhalo ophambili wethayile."
+      },
+      {
+        "property": "line2",
+        "title": "Umbhalo wesibini",
+        "description": "Umbhalo oxhasayo okhethwayo."
+      },
+      {
+        "property": "type",
+        "title": "Isitayile sethayile",
+        "description": "Isitayile esibonakalayo sethayile esimiselweyo.",
+        "options": {
+          "1": "Isitayile 1",
+          "2": "Isitayile 2",
+          "3": "Isitayile 3",
+          "4": "Isitayile 4",
+          "5": "Isitayile 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Umfanekiso ongasemva",
+        "description": "I-URL yomfanekiso ongasemva esetyenziswa zizitayile zethayile ezixhasa imifanekiso."
+      },
+      {
+        "property": "link",
+        "title": "Ikhonkco",
+        "description": "I-URL ekhethwayo ekuyiwa kuyo yentshukumo yethayile."
+      }
+    ]
+  }
+}

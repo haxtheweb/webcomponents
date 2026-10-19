@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "រាប់ឡើង",
+    "description": "បង្ហាញចលនាលេខរាប់ឡើងដល់តម្លៃគោលដៅ ពេលរំកិលចូលក្នុងទិដ្ឋភាព។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "តម្លៃបញ្ចប់",
+        "description": "លេខដែលត្រូវរាប់ឡើងដល់។"
+      },
+      {
+        "property": "start",
+        "title": "តម្លៃចាប់ផ្តើម",
+        "description": "លេខដែលចាប់ផ្តើមរាប់។"
+      },
+      {
+        "property": "duration",
+        "title": "រយៈពេល",
+        "description": "ចំនួនវិនាទីដែលចលនារាប់ត្រូវចំណាយ។"
+      },
+      {
+        "property": "prefixtext",
+        "title": "អត្ថបទបុព្វបទ",
+        "description": "អត្ថបទបង្ហាញមុនលេខ (ឧ. '$')។"
+      },
+      {
+        "property": "suffixtext",
+        "title": "អត្ថបទបច្ច័យ",
+        "description": "អត្ថបទបង្ហាញក្រោយលេខ (ឧ. '%')។"
+      },
+      {
+        "slot": "prefix",
+        "title": "រន្ធបុព្វបទ",
+        "description": "ខ្លឹមសាររន្ធជាជម្រើសមុនលេខ។"
+      },
+      {
+        "slot": "suffix",
+        "title": "រន្ធបច្ច័យ",
+        "description": "ខ្លឹមសាររន្ធជាជម្រើសក្រោយលេខ។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "ខ្ទង់ទសភាគ",
+        "description": "ចំនួនខ្ទង់ទសភាគដែលត្រូវបង្ហាញ។"
+      },
+      {
+        "property": "separator",
+        "title": "សញ្ញាបំបែកខ្ទង់ពាន់",
+        "description": "តួអក្សរបំបែកក្រុមខ្ទង់ពាន់។"
+      },
+      {
+        "property": "decimal",
+        "title": "តួអក្សរទសភាគ",
+        "description": "តួអក្សរប្រើសម្រាប់ចំណុចទសភាគ។"
+      },
+      {
+        "property": "noeasing",
+        "title": "គ្មានការបន្ធូរល្បឿន",
+        "description": "បិទការបន្ធូរល្បឿន ដើម្បីឱ្យការរាប់ជាលីនេអ៊ែរ។"
+      }
+    ]
+  }
+}

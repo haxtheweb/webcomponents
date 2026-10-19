@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ebe nchekwa",
+    "description": "Ebe nchekwa enwere ike ịgbanwe ka ọ bụrụ ụdị mgbasa ozi ahọrọ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Ụdị",
+        "description": "Ụdị ngwa ọ na-anabata maka nnọchi.",
+        "options": {
+          "text": "Ederede / ọdịnaya",
+          "document": "Akwụkwọ / faịlụ",
+          "audio": "Ụda",
+          "video": "Vidiyo",
+          "image": "Onyonyo",
+          "math": "Mgbakọ na mwepụ"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Ederede",
+        "description": "Kọwaa ebe nchekwa achọrọ n'ụzọ zuru ezu"
+      }
+    ]
+  }
+}

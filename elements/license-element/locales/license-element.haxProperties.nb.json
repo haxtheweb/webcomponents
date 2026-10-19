@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lisens",
+    "description": "Angi en lisens for arbeidet ditt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Tittelen på verket det henvises til."
+      },
+      {
+        "property": "source",
+        "title": "Kildelenke",
+        "description": "Kilde-URL for det lisensierte verket."
+      },
+      {
+        "property": "license",
+        "title": "Lisens",
+        "description": "Lisens som gjelder for dette verket."
+      },
+      {
+        "property": "creator",
+        "title": "Opphaver",
+        "description": "Opphaver eller eier av dette verket."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Kildelenke",
+        "description": "Lenke til flere lisensdetaljer."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Etikett for mer",
+        "description": "Etikett for flere lisensdetaljer."
+      }
+    ]
+  }
+}

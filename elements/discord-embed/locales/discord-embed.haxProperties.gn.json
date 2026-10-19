@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Emoinge Discord aty URL ñemoherakuãgui."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL mba'erepy",
+        "description": "URL mba'erepy."
+      },
+      {
+        "property": "height",
+        "title": "Yvatekue",
+        "description": "Tetepy rokẽ yvatekue."
+      },
+      {
+        "property": "width",
+        "title": "Pekue",
+        "description": "Tetepy rokẽ pekue."
+      }
+    ]
+  }
+}

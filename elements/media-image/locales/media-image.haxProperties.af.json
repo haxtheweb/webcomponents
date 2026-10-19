@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Verbeterde prent",
+    "description": "'n Manier om prente met verskeie verbeterings aan te bied."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "Die URL vir die prent."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiewe teks",
+        "description": "Teks om die beeld aan siendgestremde gebruikers te beskryf."
+      },
+      {
+        "property": "link",
+        "title": "Skakel",
+        "description": "Skakel die prent na 'n URL"
+      },
+      {
+        "property": "card",
+        "title": "Kaart",
+        "description": "Pas 'n skaduwee toe om die voorkoms van 'n verhewe kaart te gee."
+      },
+      {
+        "property": "box",
+        "title": "Blok",
+        "description": "Pas 'n visuele blok om die prent toe."
+      },
+      {
+        "property": "offset",
+        "title": "Verskuiwing",
+        "description": "Pas 'n linker- of regterverskuiwing op die prent toe.",
+        "options": {
+          "none": "geen",
+          "wide": "breed",
+          "narrow": "smal"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Bronverwysing",
+        "description": "Aanhaling vir die prent."
+      },
+      {
+        "property": "caption",
+        "title": "Onderskrif",
+        "description": "Onderskrif vir die prent."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figuurtitel",
+        "description": "Titel vir die figuuretiket."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figuurbeskrywing",
+        "description": "Beskrywing vir die figuuretiket."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Duimnaelprent",
+        "description": "Duimnael-prentbron. Wys duimnael maar open volle bron in modale venster."
+      },
+      {
+        "property": "round",
+        "title": "Ronde prent",
+        "description": "Sny die prent se voorkoms in 'n sirkelvorm."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Deaktiveer prent-modaal",
+        "description": "Deaktiveer klikke wat die prent in 'n prentinspekteur-dialoog oopmaak."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Vertoon as Markdown",
+        "description": "Vertoon die onderskrif en aanhaling as Markdown."
+      }
+    ]
+  }
+}

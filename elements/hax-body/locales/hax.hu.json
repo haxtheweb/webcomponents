@@ -122,5 +122,21 @@
   "recent": "Legutóbbi",
   "popular": "Népszerű",
   "copiedToClipboard": "Vágólapra másolva",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Képinformáció",
+  "imageActions": "Képműveletek",
+  "imageRecommendations": "Képjavaslatok",
+  "compressImage": "Kép tömörítése",
+  "resizeTo": "Átméretezés erre",
+  "created": "Létrehozva",
+  "size": "Méret",
+  "dimensions": "Méretek",
+  "type": "Típus",
+  "done": "kész",
+  "noFileUuid": "A fájlhivatkozás nem érhető el; a műveletek engedélyezéséhez töltse fel újra.",
+  "fileOpsUnavailable": "Ezen a webhelyen nem érhetők el fájlműveletek.",
+  "fileOpFailed": "A fájlművelet sikertelen.",
+  "fileExtensionNotAllowed": "Ez a mező csak a következő fájltípusokat fogadja el:",
+  "fileTypeNotAllowed": "Ez a mező csak a következő médiatípusokat fogadja el:",
+  "transformFailed": "A feltöltés utáni átalakítás sikertelen; az eredeti fájl megmaradt."
 }

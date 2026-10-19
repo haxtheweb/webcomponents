@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ਪੁਸਤਕ-ਸੂਚੀ ਆਈਟਮ",
+    "description": "ਪੁਸਤਕ-ਸੂਚੀ ਵਿੱਚ ਇੱਕ ਹਵਾਲੇ ਨੂੰ ਦਰਸਾਉਂਦੀ ਆਈਟਮ, ਜੋ ਕਈ ਫ਼ਾਰਮੈਟਾਂ ਅਤੇ ਨਿਰਯਾਤ ਵਿਕਲਪਾਂ ਦਾ ਸਮਰਥਨ ਕਰਦੀ ਹੈ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "ਕਿਸਮ",
+        "description": "ਹਵਾਲਾ ਕਿਸਮ",
+        "options": {
+          "web": "ਵੈੱਬ",
+          "journal": "ਰਸਾਲਾ",
+          "book": "ਕਿਤਾਬ"
+        }
+      },
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਆਈਟਮ ਦਾ ਸਿਰਲੇਖ"
+      },
+      {
+        "property": "authors",
+        "title": "ਲੇਖਕ",
+        "description": "ਟਾਈਮਲਾਈਨ ਵਿਚਲੀਆਂ ਘਟਨਾਵਾਂ"
+      },
+      {
+        "property": "publisher",
+        "title": "ਪ੍ਰਕਾਸ਼ਕ",
+        "description": "ਮੂਲ ਵੈੱਬਸਾਈਟ"
+      }
+    ]
+  }
+}

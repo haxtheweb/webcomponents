@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Дүрс тэмдэг",
+    "description": "Бүрэн дүрс тэмдгийн сангаас авсан дүрс тэмдэг."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Дүрс тэмдэг",
+        "description": "Харуулах дүрс тэмдэг."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "Дүрс тэмдгийн онцлох өнгө."
+      },
+      {
+        "property": "dark",
+        "title": "Бараан",
+        "description": "Бараан горим ашиглах (урвуу өнгөний багц)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF arakatzaile ikustailea",
+    "description": "Txertatu PDF fitxategi bat lerroan, aukerako txartel diseinuarekin eta deskargatzeko botoiarekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDFaren URLa",
+        "description": "PDF fitxategiaren kokapena."
+      },
+      {
+        "property": "heading",
+        "title": "Izenburua",
+        "description": "Txartelaren izenburu testua."
+      },
+      {
+        "property": "card",
+        "title": "Txartel diseinua",
+        "description": "Bistaratu PDFa txartel batean, deskargatzeko botoiarekin."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Deskargaren etiketa",
+        "description": "Deskargatzeko botoiaren etiketa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Onartzen ez denaren mezua",
+        "description": "Arakatzaileak PDF fitxategiak bistaratu ezin dituenean erakusten den mezua."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Onartzen ez denaren esteka mezua",
+        "description": "Arakatzaileak PDF fitxategiak bistaratu ezin dituenean erakusten den estekaren testua."
+      },
+      {
+        "property": "width",
+        "title": "Zabalera",
+        "description": "PDF ikustailearen zabalera."
+      },
+      {
+        "property": "height",
+        "title": "Altuera",
+        "description": "PDF ikustailearen altuera."
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Website-Ansicht",
+    "description": "Ein dynamischer Block, der Website-Daten anhand von Kriterien abfragt und anzeigt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Ansichts-URL",
+        "description": "Abfrageparameter für den Datenfeed der Ansicht. Du erhältst sie im Views-Dashboard."
+      },
+      {
+        "property": "renderer",
+        "title": "Anzeigemodus",
+        "description": "Wie die Ergebnisse der Ansicht dargestellt werden sollen"
+      },
+      {
+        "property": "entity",
+        "title": "Entitätstyp",
+        "description": "Entitätstyp zum Parsen der Antwort",
+        "options": {
+          "": "Standard (Elemente)",
+          "item": "Element",
+          "page": "Seite",
+          "file": "Datei",
+          "tag": "Tag",
+          "block": "Block",
+          "view": "Ansicht",
+          "theme": "Design",
+          "region": "Region",
+          "customElement": "Benutzerdefiniertes Element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Website-Ansicht auflösen",
+        "description": "In statischen Inhalt zur direkten Bearbeitung umwandeln; beendet die automatische Aktualisierung aus der Quelle."
+      }
+    ]
+  }
+}

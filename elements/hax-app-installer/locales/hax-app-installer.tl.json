@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Repository ng GitHub",
   "anErrorOccurred": "May nangyaring error",
-  "retry": "Subukan muli"
+  "retry": "Subukan muli",
+  "permissionRequired": "Kailangan ng pahintulot",
+  "passwordRequirements": "Mga kinakailangan sa password",
+  "requirementLength": "Hindi bababa sa 8 character",
+  "requirementUppercase": "Isang malaking titik",
+  "requirementLowercase": "Isang maliit na titik",
+  "requirementNumber": "Isang numero",
+  "requirementSymbol": "Isang simbolo"
 }

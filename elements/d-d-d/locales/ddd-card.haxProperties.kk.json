@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Карта",
+    "description": "DDD дизайн жүйесімен безендірілген карта компоненті."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Сурет",
+        "description": "Қосымша сурет."
+      },
+      {
+        "property": "alt",
+        "title": "Сурет баламасы",
+        "description": "Суретті сипаттайтын балама мәтін."
+      },
+      {
+        "property": "title",
+        "title": "Атауы",
+        "description": "Карта атауы."
+      },
+      {
+        "slot": "",
+        "title": "Мазмұн",
+        "description": "Картаның мазмұн аймағы."
+      },
+      {
+        "property": "href",
+        "title": "Сілтеме",
+        "description": "Түйме сілтемесінің URL мекенжайы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Белгі",
+        "description": "Түйме белгісі."
+      },
+      {
+        "property": "noArrow",
+        "title": "Көрсеткісіз",
+        "description": "Түйме көрсеткісін жасыру."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Сілтеме: target",
+        "description": "Сілтемені қайда ашу керек.",
+        "options": {
+          "": "Сол терезе",
+          "_blank": "Жаңа терезе - _blank",
+          "_top": "Жоғарғы терезе - _top",
+          "_parent": "Аталық терезе - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Сілтеме: rel",
+        "description": "Сілтенген ресурс пен ағымдағы құжат арасындағы байланыс."
+      }
+    ]
+  }
+}

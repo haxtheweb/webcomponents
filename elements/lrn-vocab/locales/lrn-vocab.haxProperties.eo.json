@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Vortaro",
+    "description": "Vortara termino"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termino"
+      },
+      {
+        "slot": "",
+        "title": "Difino",
+        "description": "La difino montrota kiam la termino estas alklakita."
+      },
+      {
+        "property": "description",
+        "title": "Priskribo (OER Schema)",
+        "description": "OER Schema: mallonga priskribo de la vortara termino. Aŭtomate plenigita el la difina teksto se lasita malplena."
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Basic na link",
+    "description": "Basic na link element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Link",
+        "description": "Destinasyong URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Teksto",
+        "description": "Nakikitang teksto ng link."
+      },
+      {
+        "attribute": "target",
+        "title": "Target",
+        "description": "Kung saan bubuksan ang link.",
+        "options": {
+          "": "Parehong window",
+          "_blank": "Bagong window - _blank",
+          "_top": "Pinakamataas na window - _top",
+          "_parent": "Parent na window - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Teksto ng pamagat",
+        "description": "Payong pamagat para sa accessibility at SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Kaugnayan sa destinasyon (seguridad/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

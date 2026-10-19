@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Wikiō",
+    "description": "Hoʻokani wikiō hiki ke komo ʻia mai nā kumu he nui."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kumu",
+        "description": "URL no kēia media."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Poʻo inoa",
+        "description": "Poʻo inoa i hōʻike ʻia ma lalo o ka wikiō."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Kiʻi pōpeli",
+        "description": "URL kiʻi pōpeli."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Nā mele kikokikona",
+        "description": "Nā lepe huaʻōlelo, nā unuhi lalo, nā wehewehe, a me nā mele kikokikona ʻē aʻe no ka wikiō."
+      },
+      {
+        "property": "startTime",
+        "title": "Manawa hoʻomaka",
+        "description": "Hoʻomaka i ka wikiō ma kekahi manawa kikoʻī (kekona)."
+      },
+      {
+        "property": "endTime",
+        "title": "Manawa pau",
+        "description": "Hoʻopau i ka wikiō ma kekahi manawa kikoʻī (kekona), koi ʻia ka manawa hoʻomaka."
+      },
+      {
+        "property": "learningMode",
+        "title": "Hoʻā i ke ʻano aʻo",
+        "description": "Hoʻopio i ka holo wikiwiki i mua a me ka hoʻihoʻi."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Wehe i ka pihi wehe ma YouTube",
+        "description": "Wehe i ka pihi no ka wehe ʻana i ka wikiō ma YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Hoʻokomo i kahi loulou kaʻana?",
+        "description": "Hāʻawi i kahi loulou e kaʻana ai i ka wikiō."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Hūnā i nā kaha manawa",
+        "description": "Hūnā i nā kaha manawa ma ka palapala ʻōlelo."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Hūnā i ka palapala ʻōlelo",
+        "description": "Hūnā i ka palapala ʻōlelo ma ke ʻano paʻamau."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Mele wehewehe leo",
+        "description": "URL i kahi mele wehewehe leo (faila MP3) e haʻi ana i nā mea ʻike maka."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Hōʻike inā e hoʻohana i ka CORS.",
+        "options": {
+          "anonymous": "inoa ʻole",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "ʻAe i ka hoʻokani ma hope",
+        "description": "Hoʻomau i ka hoʻokani ʻana ke nalowale ka nānā o ka pākaʻa polokalamu mākaʻikaʻi."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Kumuhana pōʻeleʻele no ka palapala ʻōlelo",
+        "description": "Hoʻā i ke kumuhana pōʻeleʻele no ka palapala ʻōlelo."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Hoʻopio i ka launa",
+        "description": "Hoʻopio i ke ʻano launa e hiki ai ke kaomi i ka palapala ʻōlelo."
+      },
+      {
+        "property": "lang",
+        "title": "ʻŌlelo",
+        "description": "ʻŌlelo o ka media."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu kiko",
+        "description": "(kahiko) Koho i ka waihoʻoluʻu kiko no ka mea hoʻokani."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pirtûka Notan",
+    "description": "Pirtûka notan a bê serî ku piştgiriya gelek backendan bi rubrîkan dike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çavkanî",
+        "description": "Cureya çavkaniya daneyan (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Endpointa URL (JSON)",
+          "json": "Bloba daneyên JSON",
+          "filesystem": "Pergala pelan"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Daneyên Çavkaniyê",
+        "description": "URL an daneyên JSON ji bo pirtûka notan."
+      },
+      {
+        "property": "forCourse",
+        "title": "Referansa Kursê",
+        "description": "Nasnameya kursê ku li ser her çavkaniyeke Assessment wekî oer:forCourse tê derxistin."
+      }
+    ]
+  }
+}

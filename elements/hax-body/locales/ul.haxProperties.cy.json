@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Rhestr fwledi",
+    "description": "Creu rhestr fwledi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Arddull bwled",
+        "description": "Arddull a ddefnyddir ar gyfer bwledi rhestr heb drefn.",
+        "options": {
+          "": "Diofyn (sgwâr)",
+          "list-disc": "Disg",
+          "list-circle": "Cylch",
+          "list-square": "Sgwâr"
+        }
+      }
+    ]
+  }
+}

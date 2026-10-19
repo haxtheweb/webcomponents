@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "שמע בשורה",
+    "description": "השמעת שמע בתוך השורה כתוספת לתוכן העמוד."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "קובץ MP3 או URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "צבע ההדגשה של הכרטיס."
+      },
+      {
+        "property": "shiny",
+        "title": "מבריק",
+        "description": "שימוש ברקע הדגשה בהיר יותר במקום אפור."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "כהה",
+        "description": "שימוש במצב כהה."
+      }
+    ]
+  }
+}

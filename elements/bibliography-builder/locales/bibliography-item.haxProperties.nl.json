@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografie-item",
+    "description": "Item dat één bronvermelding in een bibliografie vertegenwoordigt, met ondersteuning voor meerdere formaten en exportopties."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Type",
+        "description": "Type bronvermelding",
+        "options": {
+          "web": "Web",
+          "journal": "Tijdschrift",
+          "book": "Boek"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel van het item"
+      },
+      {
+        "property": "authors",
+        "title": "Auteur(s)",
+        "description": "De gebeurtenissen in de tijdlijn"
+      },
+      {
+        "property": "publisher",
+        "title": "Uitgever",
+        "description": "Oorspronkelijke website"
+      }
+    ]
+  }
+}

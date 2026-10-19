@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "কোড নমুনা",
+    "description": "পেজে হাইলাইট করা কোডের একটি নমুনা"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "কোড হাইলাইটিং",
+        "description": "কোড এলাকায় প্রয়োগ করার সিনট্যাক্স হাইলাইটিং",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON ডেটা",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ক্লিপবোর্ডে কপি বাটন",
+        "description": "উপরের ডান কোণে ক্লিপবোর্ডে কপি লেখা বাটন"
+      },
+      {
+        "property": "highlightStart",
+        "title": "হাইলাইট শুরু",
+        "description": "যে লাইন নম্বর থেকে হাইলাইট শুরু হবে"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "হাইলাইট শেষ",
+        "description": "যে লাইনে হাইলাইট শেষ হবে"
+      }
+    ]
+  }
+}

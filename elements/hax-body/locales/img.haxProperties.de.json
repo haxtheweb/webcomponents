@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Einfaches Bild",
+    "description": "Einfaches Bildelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Quelle",
+        "description": "Bild-URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alternativtext",
+        "description": "Alternativtext für Barrierefreiheit und SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Höhe",
+        "description": "Höhe in Pixeln. Leer lassen für die natürliche Größe."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Ladeverhalten",
+        "description": "Wähle, wann das Bild geladen wird.",
+        "options": {
+          "lazy": "Laden, wenn sichtbar",
+          "auto": "Automatisch"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responsive Quellen (srcset)",
+        "description": "Liste Bild-URLs und Deskriptoren auf (z. B. 480w oder 2x), damit Browser die beste Größe für den Bildschirm wählen. Wird als standardmäßiges srcset-Attribut gespeichert."
+      }
+    ]
+  }
+}

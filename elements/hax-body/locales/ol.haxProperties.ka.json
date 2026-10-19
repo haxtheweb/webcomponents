@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "დანომრილი სია",
+    "description": "დანომრილი სიის შექმნა."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "ნუმერაციის სტილი",
+        "description": "დალაგებული სიის ნუმერაციის სტილი.",
+        "options": {
+          "": "ნაგულისხმევი (ათობითი)",
+          "list-decimal-leading-zero": "ათობითი წინა ნულით (01, 02, 03)",
+          "list-lower-alpha": "პატარა ლათინური ასოები (a, b, c)",
+          "list-upper-alpha": "დიდი ლათინური ასოები (A, B, C)",
+          "list-lower-roman": "პატარა რომაული (i, ii, iii)",
+          "list-upper-roman": "დიდი რომაული (I, II, III)"
+        }
+      }
+    ]
+  }
+}

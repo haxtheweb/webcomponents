@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "imodeli yekhosi",
+    "description": "Ulwandlalo olusebenzisanayo lweengcamango zekhosi ezineenkcukacha, umfanekiso oshukumayo, kunye novavanyo lolwazi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "isihloko"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Indawo yolwazi"
+      },
+      {
+        "title": "Indawo yeenkcukacha"
+      },
+      {
+        "title": "Indawo yomfanekiso oshukumayo"
+      },
+      {
+        "title": "Indawo yoVavanyo loLwazi"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Indawo yelogo"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "কোর্স ডিজাইন",
+    "description": "শিক্ষামূলক উপকরণ ও কোর্স ডিজাইন এলিমেন্টের কন্টেইনার।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "কোর্স শনাক্তকারী",
+        "description": "OER Schema: কোর্সের শনাক্তকারী, যেমন MATH-100।"
+      },
+      {
+        "property": "termOffered",
+        "title": "যে টার্মে অফার করা হয়",
+        "description": "OER Schema: যে টার্মে কোর্সটি অফার করা হয়।"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "পাঠদানের ফরম্যাট",
+        "description": "OER Schema: কোর্স পাঠদানে ব্যবহৃত ফরম্যাট (যেমন সরাসরি, অনলাইন, হাইব্রিড)।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "প্রধান প্রশিক্ষক",
+        "description": "OER Schema: কোর্সের প্রধান প্রশিক্ষক।"
+      },
+      {
+        "property": "syllabus",
+        "title": "সিলেবাস URL",
+        "description": "OER Schema: কোর্স সিলেবাসের URL।"
+      }
+    ]
+  }
+}

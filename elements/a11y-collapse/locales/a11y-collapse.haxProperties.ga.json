@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Coimeádán in-laghdaithe",
+    "description": "Coimeádán aonair is féidir a leathnú agus a laghdú."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Ceannteideal",
+        "description": "Téacs don mhír laghdaithe."
+      },
+      {
+        "property": "expanded",
+        "title": "Leathnaithe",
+        "description": "Leathnaigh de réir réamhshocraithe."
+      },
+      {
+        "property": "headingButton",
+        "title": "Cnaipe Ceannteidil",
+        "description": "Déan an ceannteideal ar fad inchliceáilte seachas an deilbhín amháin."
+      },
+      {
+        "property": "icon",
+        "title": "Deilbhín",
+        "description": "Deilbhín don chnaipe leathnaithe/laghdaithe."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Deilbhín (nuair atá sé leathnaithe)",
+        "description": "Deilbhín roghnach don staid leathnaithe."
+      },
+      {
+        "slot": "",
+        "title": "Ábhar",
+        "description": "Ábhar don mhír laghdaithe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Leid uirlise",
+        "description": "Leid uirlise don chnaipe leathnaithe/laghdaithe."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Leid uirlise (nuair atá sé leathnaithe)",
+        "description": "Leid uirlise don chnaipe leathnaithe/laghdaithe nuair atá sé leathnaithe."
+      }
+    ]
+  }
+}

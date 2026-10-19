@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "پرسش کوتاه‌پاسخ",
+    "description": "کاربر به یک پرسش ساده پاسخ دهد"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "پرسش",
+        "description": "پرسشی که کاربران باید به آن پاسخ دهند."
+      },
+      {
+        "property": "answers",
+        "title": "پاسخ‌های ممکن"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "نام آزمونک",
+        "description": "نام آزمونک که در محیط‌های مبتنی بر xAPI برای شناسایی این مورد ارسال می‌شود"
+      }
+    ]
+  }
+}

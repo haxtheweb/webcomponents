@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Ta'ãnga Omombe'úva",
+    "description": "Ta'ãnga ojeikekuaáva ñemoha'ãnga ipukúva reheve"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Ta'ãnga"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Moñe'ẽrã mokõiha"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Ta'ãnga Teratee",
+        "description": "Ta'ãnga teratee ojehecháva akóinte."
+      },
+      {
+        "slot": "details",
+        "title": "Ñemoha'ãnga",
+        "description": "Ta'ãnga ñemoha'ãnga py'ỹi ikatúva okañy térã ojehechauka"
+      },
+      {
+        "slot": "summary",
+        "title": "Ñemoha'ãnga Votõ",
+        "description": "Ypyguáva votõ ohechauka/omokañývape ñemoha'ãnga, techapyrã \"marandu\", \"mba'ekuaarã\", ha ambue."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Ñemombyky ojeporavokuaáva mba'emimi ojejuruja jave"
+      },
+      {
+        "property": "closeText",
+        "title": "Ñemombyky ojeporavokuaáva mba'emimi oñemboty jave"
+      }
+    ]
+  }
+}

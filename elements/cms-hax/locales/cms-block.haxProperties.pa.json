@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ਬਲਾਕ",
+    "description": "ਬੈਕਐਂਡ 'ਤੇ ਰੈਂਡਰ ਕੀਤਾ CMS ਬਲਾਕ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "ਮੋਡੀਊਲ",
+        "description": "ਸਾਡੇ CMS ਤੋਂ ਲੋਡ ਕਰਨ ਲਈ ਮਾਡਿਊਲ"
+      },
+      {
+        "property": "blockDelta",
+        "title": "ਡੈਲਟਾ",
+        "description": "ਸਾਡੇ CMS ਤੋਂ ਲੋਡ ਕਰਨ ਲਈ ਬਲਾਕ ਦਾ ਡੈਲਟਾ"
+      }
+    ]
+  }
+}

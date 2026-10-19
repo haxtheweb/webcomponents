@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "نېټه",
+    "description": "د جنتري نېټه له جزییاتو سره وښایئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "میاشت",
+        "description": "هغه میاشت چې په کارت کې ښودل کېږي."
+      },
+      {
+        "property": "date",
+        "title": "د میاشتې ورځ",
+        "description": "د میاشتې د ورځې شمېره."
+      },
+      {
+        "property": "day",
+        "title": "د اونۍ ورځ",
+        "description": "د اونۍ د ورځې نوم."
+      },
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د پېښې نوم."
+      },
+      {
+        "property": "location",
+        "title": "ځای",
+        "description": "د پېښې ځای."
+      },
+      {
+        "property": "startTime",
+        "title": "پیل",
+        "description": "د پیل وخت."
+      },
+      {
+        "property": "endTime",
+        "title": "پای",
+        "description": "د پای وخت."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "اختیاري تاکیدي رنګ."
+      },
+      {
+        "property": "dark",
+        "title": "تیاره بڼه",
+        "description": "تیاره بڼه فعاله کړئ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Plejer Unity",
+    "description": "Plejer Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Mira",
+        "description": "Mogħdija għall-build tal-logħba."
+      },
+      {
+        "property": "compression",
+        "title": "Metodu tal-kompressjoni",
+        "description": "Estensjoni tal-fajl tal-kompressjoni għall-assi tal-logħba."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL tal-istreaming",
+        "description": "URL tal-assi tal-istreaming."
+      },
+      {
+        "property": "companyname",
+        "title": "Isem il-kumpanija",
+        "description": "Isem il-kumpanija."
+      },
+      {
+        "property": "productname",
+        "title": "Isem il-prodott",
+        "description": "Titlu tal-logħba."
+      },
+      {
+        "property": "productversion",
+        "title": "Verżjoni tal-prodott",
+        "description": "Verżjoni tar-rilaxx."
+      },
+      {
+        "property": "width",
+        "title": "Wisa' tal-canvas",
+        "description": "Wisa' CSS tal-canvas (pereżempju px jew em)."
+      },
+      {
+        "property": "height",
+        "title": "Għoli tal-canvas",
+        "description": "Għoli CSS tal-canvas (pereżempju px jew em)."
+      },
+      {
+        "property": "background",
+        "title": "Sfond tal-canvas",
+        "description": "Sfond CSS tal-canvas."
+      }
+    ]
+  }
+}

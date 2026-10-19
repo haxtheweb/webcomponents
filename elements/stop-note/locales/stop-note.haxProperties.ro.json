@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Notă de oprire",
+    "description": "Un mesaj care atrage atenția cititorilor asupra unor instrucțiuni specifice."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Introduceți titlul notei de oprire."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Introduceți un URL extern."
+      },
+      {
+        "property": "status",
+        "title": "Stare",
+        "description": "Setarea stării schimbă culorile și pictogramele în mod corespunzător",
+        "options": {
+          "stop": "Oprire",
+          "warning": "Avertisment",
+          "success": "Confirmare",
+          "info": "Aviz"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Textul notei",
+        "description": "Textul notei de oprire."
+      }
+    ]
+  }
+}

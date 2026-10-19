@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "హైలైట్",
+    "description": "ఇన్‌లైన్ వచనాన్ని హైలైట్ చేయండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "వచనం",
+        "description": "హైలైట్ చేయబడిన వచనం."
+      }
+    ]
+  }
+}

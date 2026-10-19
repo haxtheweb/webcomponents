@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ihange Lekhasi",
+    "description": "Xhumanisa ezindaweni ezithile zemidiya ekhasini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Okuhlosiwe kwekhasi",
+        "description": "I-ID noma insiza lelihange elikhomba kuyo."
+      },
+      {
+        "property": "value",
+        "title": "Inani lesixhumanisi esijulile",
+        "description": "Inani lesixhumanisi esijulile (isibonelo isitembu sesikhathi noma i-ID yesilayidi)."
+      },
+      {
+        "property": "entityId",
+        "title": "Inhlangano yesayithi",
+        "description": "Inhlangano yesayithi ongayikhetha yokulawula ukwethulwa kwemiqondo ehlobene."
+      }
+    ]
+  }
+}

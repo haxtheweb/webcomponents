@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "상대 제목",
+    "description": "상위 요소의 제목을 기준으로 올바른 제목 계층 구조를 출력합니다"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "상위 제목의 리소스 ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "링크 버튼 기능을 비활성화합니다."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "링크 복사 버튼을 제목의 맨 오른쪽에 정렬합니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "상위 요소를 찾을 수 없을 때의 제목 수준."
+      },
+      {
+        "property": "copyMessage",
+        "description": "링크 복사 토스트 메시지의 기본 텍스트를 재정의합니다."
+      },
+      {
+        "property": "linkLabel",
+        "description": "링크 복사 버튼의 기본 레이블을 재정의합니다."
+      },
+      {
+        "property": "linkIcon",
+        "description": "링크 복사 버튼의 기본 아이콘을 재정의합니다."
+      },
+      {
+        "property": "closeLabel",
+        "description": "링크 복사 토스트 닫기 버튼의 기본 레이블을 재정의합니다."
+      },
+      {
+        "property": "closeIcon",
+        "description": "링크 복사 토스트 닫기 버튼의 기본 아이콘을 재정의합니다."
+      }
+    ]
+  }
+}

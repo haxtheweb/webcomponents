@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS-kontener"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Bewurker ferbergje",
+        "description": "De ynterface foar it bewurkjen fan bestannen ferbergje."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminal ferbergje",
+        "description": "Ferbergje de terminal foar programma's dy't automatysk rinne."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Finster ferbergje",
+        "description": "Ferbergje it útfierfinster foar gebrûk fan allinnich de terminal."
+      },
+      {
+        "slot": "",
+        "title": "Kommando's",
+        "description": "Kommando's (ien per rigel) om út te fieren foar it laden."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS-token",
+    "description": "Taustapalvelussa renderöity CMS-token"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Token",
+        "description": "Token CMS:stämme"
+      }
+    ]
+  }
+}

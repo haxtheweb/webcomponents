@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Rannán leathanaigh",
+    "description": "Coimeádán rannáin d'ábhar leathanaigh agus do leagain amach bunaithe ar scáileáin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Cóireáil dearaidh",
+        "description": "Stíl réamhshocraithe a nuashonraíonn socruithe gaolmhara."
+      },
+      {
+        "property": "image",
+        "title": "Íomhá",
+        "description": "Meáin chúlra don rannán."
+      },
+      {
+        "property": "bg",
+        "title": "Dath cúlra",
+        "description": "Dath cúlra nuair nach bhfuil íomhá socraithe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Cnaipe scrollaithe",
+        "description": "Taispeáin cnaipe a scrollaíonn go dtí an chéad rannán eile."
+      },
+      {
+        "property": "fold",
+        "title": "Taispeáin filleadh",
+        "description": "Taispeáin filleadh amhairc ag bun an rannáin."
+      },
+      {
+        "property": "full",
+        "title": "Méid lánscáileáin",
+        "description": "Líon airde scáileáin an fhéachtóra."
+      },
+      {
+        "property": "filter",
+        "title": "Cuir Scagaire i bhFeidhm",
+        "description": "Cuir scagaire amhairc i bhfeidhm ar an íomhá chúlra."
+      },
+      {
+        "slot": "",
+        "title": "Ábhar",
+        "description": "Ábhar an rannáin."
+      },
+      {
+        "slot": "entice",
+        "title": "Mealladh",
+        "description": "Ábhar meallta roghnach."
+      },
+      {
+        "slot": "buttons",
+        "title": "Cnaipí",
+        "description": "Grúpa cnaipí a thaispeántar faoin téacs."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Téacs ancaire",
+        "description": "Lipéad ancaire a thaispeántar sa nascleanúint."
+      }
+    ]
+  }
+}

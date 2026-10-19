@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Dizajni i kursit",
+    "description": "Kontejner për materiale mësimore dhe elemente të dizajnit të kursit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identifikuesi i kursit",
+        "description": "Skema OER: identifikuesi i kursit, p.sh. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Semestri i ofrimit",
+        "description": "Skema OER: periudha gjatë së cilës ofrohet kursi."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Formati i zhvillimit",
+        "description": "Skema OER: formati i përdorur për zhvillimin e kursit (p.sh. me prani fizike, në internet, hibrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Instruktori kryesor",
+        "description": "Skema OER: instruktori kryesor i kursit."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL-ja e programit mësimor",
+        "description": "Skema OER: URL te programi mësimor i kursit."
+      }
+    ]
+  }
+}

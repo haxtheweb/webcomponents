@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "प्यारालाक्स छवि",
+    "description": "छवि स्क्रोल"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "तस्बिर",
+        "description": "पृष्ठभूमिमा प्रयोग हुने छवि"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "शीर्षक क्षेत्र",
+        "description": "शीर्षक पाठ क्षेत्र"
+      }
+    ]
+  }
+}

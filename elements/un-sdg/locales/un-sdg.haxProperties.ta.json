@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "ஐக்கிய நாடுகளின் நிலையான வளர்ச்சி இலக்கு."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "இலக்கு",
+        "description": "UN SDG எண்."
+      },
+      {
+        "property": "colorOnly",
+        "title": "நிறம் மட்டும்",
+        "description": "இலக்கின் நிறத்தை மட்டும் காட்டவும்."
+      }
+    ]
+  }
+}

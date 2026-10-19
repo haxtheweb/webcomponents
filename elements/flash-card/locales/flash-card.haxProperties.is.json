@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Leifturspjald",
+    "description": "Æfðu hugtök með tvíhliða leifturspjöldum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Framhlið spjaldsins",
+        "description": "Texti eða spurning á framhlið."
+      },
+      {
+        "slot": "back",
+        "title": "Bakhlið spjaldsins",
+        "description": "Væntanlegt svar."
+      },
+      {
+        "property": "imgSource",
+        "title": "Myndauppruni",
+        "description": "Myndskrá sem notuð er fyrir spjaldið. Hnekkir myndleitarorði."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Tegund athafnar",
+        "description": "OER Schema: tegund athafnar sem þessi æfing felur í sér (t.d. lestur, skrif, smíði, rannsókn, hlustun, áhorf, ígrundun, umræða, athugun, kynning, mat)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Námsmarkmið",
+        "description": "OER Schema: auðkenni (ID) eða URL námsmarkmiðsins sem þessi æfing styður."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dökkt",
+        "description": "Nota dökka stillingu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Áherslulitur spjalds."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Myndleitarorð",
+        "description": "Leitarorð fyrir handahófskennda mynd. Myndauppruni hnekkir því."
+      }
+    ]
+  }
+}

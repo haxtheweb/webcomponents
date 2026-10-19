@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tag-Fro",
+    "description": "Tags auswielen fir d'Fro ze beäntweren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Fro",
+        "description": "Fro, op déi d'Benotzer äntwere sollen."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bewäertungsformat",
+        "description": "OER Schema: Bewäertungsformat fir dës Bewäertung (z. B. Punkten, Buschtaf, Prozent, Ofschloss)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Léierzil",
+        "description": "OER Schema: Léierzil, dat mat dëser Bewäertung verbonnen ass."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "OER Schema: Cours, fir deen dës Bewäertung geduecht ass."
+      },
+      {
+        "property": "answers",
+        "title": "Äntwerten"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numm vum Quiz",
+        "description": "Quiznumm fir d'xAPI-Identifikatioun an Analysesystemer."
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "அட்டவணை",
+    "description": "இணையத்திற்கான அட்டவணை அடிப்படையிலான தரவு."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "வரிசைத் தலைப்பு",
+        "description": "முதல் வரிசையைத் தலைப்பாகக் கருதவும்."
+      },
+      {
+        "property": "columnHeader",
+        "title": "நெடுவரிசைத் தலைப்பு",
+        "description": "முதல் நெடுவரிசையைத் தலைப்பாகக் கருதவும்."
+      },
+      {
+        "property": "footer",
+        "title": "அடிக்குறிப்பு",
+        "description": "கடைசி வரிசையை அடிக்குறிப்பாகக் கருதவும்."
+      },
+      {
+        "property": "sort",
+        "title": "வரிசைப்படுத்தக்கூடியது",
+        "description": "நெடுவரிசை மதிப்புகளின்படி வரிசைப்படுத்த அனுமதிக்கவும்."
+      },
+      {
+        "property": "filter",
+        "title": "வடிகட்ட அனுமதி",
+        "description": "நெடுவரிசை மதிப்புகளின்படி வடிகட்ட அனுமதிக்கவும்."
+      },
+      {
+        "property": "numericStyles",
+        "title": "எண் வடிவமைப்பு",
+        "description": "எண் நெடுவரிசைகளுக்கு எண் வடிவமைப்பைப் பயன்படுத்தவும்."
+      },
+      {
+        "property": "responsive",
+        "title": "பதிலளிக்கும் தளவமைப்பு",
+        "description": "சிறிய திரைகளில் அட்டவணைத் தளவமைப்பைச் சரிசெய்யவும்."
+      },
+      {
+        "property": "rubricMode",
+        "title": "மதிப்பீட்டு அளவுகோல் பயன்முறை",
+        "description": "Rubric, RubricScale, RubricCriterion மற்றும் RubricLevel மெட்டாடேட்டா வெளியிடப்படும்படி இந்த அட்டவணையை OER Schema Rubric ஆகக் கருதவும்."
+      },
+      {
+        "property": "rubricType",
+        "title": "மதிப்பீட்டு அளவுகோல் வகை",
+        "description": "oer:rubricType ஆக வெளியிடப்படும் அளவுகோல் பாணி (மதிப்பீட்டு அளவுகோல் பயன்முறை இயக்கத்தில் இருக்கும்போது மட்டுமே பொருள்படும்).",
+        "options": {
+          "": "(எதுவுமில்லை)",
+          "analytic": "பகுப்பாய்வு",
+          "holistic": "முழுமையான",
+          "single-point": "ஒற்றைப் புள்ளி",
+          "checklist": "சரிபார்ப்புப் பட்டியல்"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "கரையுடன்"
+      },
+      {
+        "property": "condensed",
+        "title": "வரிசைகளைச் சுருக்கு",
+        "description": "வரிசை உயரத்தைக் குறைக்கவும்."
+      },
+      {
+        "property": "striped",
+        "title": "கோடிட்ட வரிசைகள்",
+        "description": "ஒன்றுவிட்ட வரிசைகளுக்கு நிழலிடவும்."
+      },
+      {
+        "property": "downloadable",
+        "title": "பதிவிறக்கப் பொத்தான்",
+        "description": "அட்டவணையைப் பதிவிறக்க ஒரு பொத்தானைச் சேர்க்கவும்."
+      },
+      {
+        "property": "copyable",
+        "title": "நகலெடுக்கும் பொத்தான்",
+        "description": "அட்டவணையின் CSV தரவை நகலெடுக்க ஒரு பொத்தானைச் சேர்க்கவும்."
+      },
+      {
+        "property": "printable",
+        "title": "அச்சுப் பொத்தான்",
+        "description": "அட்டவணையை மட்டும் அச்சிட ஒரு பொத்தானைச் சேர்க்கவும்."
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV தரவு",
+        "description": "பதிவேற்றிய CSV கோப்பிலிருந்து அட்டவணையை உருவாக்கவும்."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bloka CMS",
+    "description": "Bloka CMS ku li backendê tê nîşandan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modûl",
+        "description": "Modula ku ji CMS a me were barkirin"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta ya blokê ku ji CMS a me were barkirin"
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "व्हिडिओ",
+    "description": "अनेक स्रोतांमधून सुलभ व्हिडिओ प्लेबॅक."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "या माध्यमाची URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "शीर्षक",
+        "description": "व्हिडिओखाली दाखवलेले शीर्षक."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "पोस्टर प्रतिमा",
+        "description": "पोस्टर प्रतिमा URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "मजकूर ट्रॅक",
+        "description": "व्हिडिओसाठी क्लोज्ड कॅप्शन्स, उपशीर्षके, वर्णने आणि इतर मजकूर ट्रॅक."
+      },
+      {
+        "property": "startTime",
+        "title": "सुरुवातीची वेळ",
+        "description": "व्हिडिओ विशिष्ट वेळेपासून सुरू करा (सेकंद)."
+      },
+      {
+        "property": "endTime",
+        "title": "शेवटची वेळ",
+        "description": "व्हिडिओ विशिष्ट वेळी संपवा (सेकंद), सुरुवातीची वेळ आवश्यक."
+      },
+      {
+        "property": "learningMode",
+        "title": "अध्ययन मोड सक्षम करा",
+        "description": "पुढे आणि मागे घेणे अक्षम करते."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube वर उघडा बटण काढा",
+        "description": "व्हिडिओ YouTube वर उघडण्याचे बटण काढते."
+      },
+      {
+        "property": "linkable",
+        "title": "शेअर लिंक समाविष्ट करायची?",
+        "description": "व्हिडिओ शेअर करण्यासाठी लिंक देते."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "वेळमुद्रा लपवा",
+        "description": "प्रतिलेखावरील वेळमुद्रा लपवा."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "प्रतिलेख लपवा",
+        "description": "प्रतिलेख डीफॉल्टनुसार लपवा."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "ऑडिओ वर्णन ट्रॅक",
+        "description": "दृश्य घटकांचे निवेदन देणाऱ्या ऑडिओ वर्णन ट्रॅकची (MP3 फाइल) URL."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS वापरायचे की नाही हे दर्शवते.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "पार्श्वभूमीत प्ले करण्यास परवानगी द्या",
+        "description": "ब्राउझर टॅबवरील फोकस गेल्यावरही प्ले सुरू ठेवा."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "प्रतिलेखासाठी डार्क थीम",
+        "description": "प्रतिलेखासाठी डार्क थीम सक्षम करा."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "परस्परसंवाद अक्षम करा",
+        "description": "प्रतिलेख क्लिक करण्यायोग्य करणारा परस्परसंवादी मोड अक्षम करा."
+      },
+      {
+        "property": "lang",
+        "title": "भाषा",
+        "description": "माध्यमाची भाषा."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "(कालबाह्य) प्लेअरसाठी अ‍ॅक्सेंट रंग निवडा."
+      }
+    ]
+  }
+}

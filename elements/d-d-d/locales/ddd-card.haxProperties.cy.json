@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Cerdyn",
+    "description": "Cydran cerdyn wedi'i steilio gyda system ddylunio DDD."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Delwedd",
+        "description": "Delwedd ddewisol."
+      },
+      {
+        "property": "alt",
+        "title": "Alt y ddelwedd",
+        "description": "Testun amgen sy'n disgrifio'r ddelwedd."
+      },
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Teitl y cerdyn."
+      },
+      {
+        "slot": "",
+        "title": "Cynnwys",
+        "description": "Ardal cynnwys y cerdyn."
+      },
+      {
+        "property": "href",
+        "title": "Dolen",
+        "description": "URL dolen y botwm."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label y botwm."
+      },
+      {
+        "property": "noArrow",
+        "title": "Dim Saeth",
+        "description": "Cuddio saeth y botwm."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Dolen: targed",
+        "description": "Ble i agor y ddolen.",
+        "options": {
+          "": "Yr un ffenestr",
+          "_blank": "Ffenestr newydd - _blank",
+          "_top": "Ffenestr uchaf - _top",
+          "_parent": "Ffenestr rhiant - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Dolen: rel",
+        "description": "Y berthynas rhwng yr adnodd cysylltiedig a'r ddogfen gyfredol."
+      }
+    ]
+  }
+}

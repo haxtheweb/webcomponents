@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: চাইল্ড ব্লক",
+    "description": "বর্তমান পেজের চাইল্ড দেখানোর ডায়নামিক ব্লক"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "ডায়নামিক পদ্ধতি",
+        "description": "এই এলিমেন্টের সাপেক্ষে চাইল্ড কীভাবে নির্ণয় করা হবে",
+        "options": {
+          "active": "সক্রিয় পেজের চাইল্ড",
+          "parent": "প্যারেন্টের চাইল্ড",
+          "ancestor": "সর্বোচ্চ পূর্বপুরুষ থেকে সব চাইল্ড"
+        }
+      },
+      {
+        "property": "start",
+        "title": "শুরুর স্তর"
+      },
+      {
+        "property": "end",
+        "title": "শেষের স্তর"
+      }
+    ]
+  }
+}

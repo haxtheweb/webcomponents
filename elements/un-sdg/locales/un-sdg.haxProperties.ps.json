@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "د ملګرو ملتونو د دوامداره پرمختګ موخه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "موخه",
+        "description": "د UN SDG شمېره."
+      },
+      {
+        "property": "colorOnly",
+        "title": "یوازې رنګ",
+        "description": "یوازې د موخې رنګ وښایئ."
+      }
+    ]
+  }
+}

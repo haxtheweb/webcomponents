@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ಬ್ಲಾಕ್",
+    "description": "ಬ್ಯಾಕೆಂಡ್‌ನಲ್ಲಿ ಪ್ರದರ್ಶಿಸಲಾದ CMS ಬ್ಲಾಕ್"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "ಮಾಡ್ಯೂಲ್",
+        "description": "ನಮ್ಮ CMS ನಿಂದ ಲೋಡ್ ಮಾಡಬೇಕಾದ ಮಾಡ್ಯೂಲ್"
+      },
+      {
+        "property": "blockDelta",
+        "title": "ಡೆಲ್ಟಾ",
+        "description": "ನಮ್ಮ CMS ನಿಂದ ಲೋಡ್ ಮಾಡಬೇಕಾದ ಬ್ಲಾಕ್‌ನ ಡೆಲ್ಟಾ"
+      }
+    ]
+  }
+}

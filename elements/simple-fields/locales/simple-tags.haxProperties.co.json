@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Etichette",
+    "description": "Lista d'etichette simplice da affissà in a pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Etichette",
+        "description": "Lista d'etichette spiccate da virgule."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Culore d'accentu autumaticu",
+        "description": "Definisce autumaticamente u culore d'accentu secondu l'etichetta."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore",
+        "description": "Culore di l'etichette."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Gliederungsaktionen",
+  "editPage": "Seite bearbeiten",
+  "addPage": "Unterseite hinzufügen",
+  "moveUp": "Nach oben",
+  "moveDown": "Nach unten",
+  "indent": "Einrücken",
+  "outdent": "Ausrücken",
+  "moveTo": "Verschieben nach...",
+  "siteOutline": "Website-Gliederung öffnen",
+  "delete": "Seite löschen",
+  "unlock": "Entsperren",
+  "lock": "Sperren"
+}

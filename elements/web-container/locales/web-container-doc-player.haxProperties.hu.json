@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Webkomponens-dokumentáció lejátszó"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Ablak elrejtése",
+        "description": "A kimeneti ablak elrejtése; hasznos, ha csak terminálra van szükség"
+      }
+    ]
+  }
+}

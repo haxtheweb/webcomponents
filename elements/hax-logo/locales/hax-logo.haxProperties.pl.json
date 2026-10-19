@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Napis HAX",
+    "description": "Element logo HAX, oczywiście jako element zgodny z HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Rozmiar wstawianego logo HAX",
+        "options": {
+          "mini": "Mini",
+          "small": "Mały",
+          "normal": "Normalny",
+          "large": "Duży"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Czy zamienić logo na wielkie litery"
+      }
+    ]
+  }
+}

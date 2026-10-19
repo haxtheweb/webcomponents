@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Memkontrolo",
+    "description": "Uzantoj povas plenumi memkontrolon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bildo",
+        "description": "Bildo por la memkontrolo."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo de la memkontrolo."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativa teksto",
+        "description": "Alternativa teksto por la bildo."
+      },
+      {
+        "slot": "question",
+        "title": "Demando"
+      },
+      {
+        "slot": "",
+        "title": "Respondo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Tema koloro",
+        "description": "Elektu teman koloron el la dezajnsistemo.",
+        "options": {
+          "primary": "Ĉefa",
+          "accent": "Akcento",
+          "success": "Sukceso",
+          "warning": "Averto",
+          "error": "Eraro",
+          "info": "Informo"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lerncelo",
+        "description": "Referenco al lerncelo eligata kiel oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Taksas",
+        "description": "Referenco al aktivaĵo eligata kiel oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ligilo al pli",
+        "description": "Ligilo al pliaj informoj."
+      }
+    ]
+  }
+}

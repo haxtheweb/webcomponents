@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Isihloko esihlobene",
+    "description": "ikhipha uhlelo lwezihloko olufanele ngokusekelwe esihlokweni somzali"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "I-ID Yensiza Yesihloko Somzali"
+      },
+      {
+        "property": "disableLink",
+        "description": "Kuvala isici senkinobho yesixhumanisi."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Kuqondanisa inkinobho yokukopisha isixhumanisi kwesokudla kakhulu kwesihloko."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Izinga lesihloko uma umzali engatholakali."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Kweqa umbhalo ozenzakalelayo womlayezo we-toast wokukopisha isixhumanisi."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Kweqa ilebula ezenzakalelayo yenkinobho yokukopisha isixhumanisi."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Kweqa isithonjana esizenzakalelayo senkinobho yokukopisha isixhumanisi."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Kweqa ilebula ezenzakalelayo yenkinobho yokuvala ye-toast yokukopisha isixhumanisi."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Kweqa isithonjana esizenzakalelayo senkinobho yokuvala ye-toast yokukopisha isixhumanisi."
+      }
+    ]
+  }
+}

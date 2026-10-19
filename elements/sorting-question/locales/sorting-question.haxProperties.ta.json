@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "வரிசைப்படுத்தும் கேள்வி",
+    "description": "உருப்படிகளைச் சரியான வரிசையில் அமைக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "கேள்வி",
+        "description": "கேள்வித் தலைப்பு."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "மதிப்பெண் வடிவம்",
+        "description": "OER Schema: இந்த மதிப்பீட்டிற்கான மதிப்பெண் வடிவம் (எ.கா. புள்ளிகள், எழுத்துத் தரம், சதவீதம், நிறைவு)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "கற்றல் நோக்கம்",
+        "description": "OER Schema: இந்த மதிப்பீட்டுடன் தொடர்புடைய கற்றல் நோக்கம்."
+      },
+      {
+        "property": "forCourse",
+        "title": "பாடநெறி",
+        "description": "OER Schema: இந்த மதிப்பீடு நோக்கமாகக் கொண்ட பாடநெறி."
+      },
+      {
+        "property": "answers",
+        "title": "பதில்கள்",
+        "description": "பதில்களின் வரிசையே சரியான வரிசையை வரையறுக்கிறது."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "வினாடி வினாவின் பெயர்",
+        "description": "பகுப்பாய்வு அமைப்புகளில் xAPI அடையாளத்திற்குப் பயன்படும் வினாடி வினாப் பெயர்."
+      }
+    ]
+  }
+}

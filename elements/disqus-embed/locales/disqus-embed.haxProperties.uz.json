@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "Sahifaga Disqus izohlarini joylashtirish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "Qisqa nom",
+        "description": "Disqus skript xostini belgilaydigan saytning qisqa nomi."
+      },
+      {
+        "property": "pageURL",
+        "title": "Sahifa URL",
+        "description": "Izohlar oqimi biriktirilgan sahifaning URL manzili."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "Sahifa identifikatori",
+        "description": "Sahifa izohlar oqimi uchun noyob identifikator."
+      },
+      {
+        "property": "pageTitle",
+        "title": "Sahifa sarlavhasi",
+        "description": "Izohlar oqimi biriktirilgan sahifaning sarlavhasi."
+      },
+      {
+        "property": "loadingText",
+        "title": "Yuklanish matni",
+        "description": "Izohlar yuklanayotganda eʼlon qilinadigan matn."
+      },
+      {
+        "property": "lang",
+        "title": "Til",
+        "description": "Disqus interfeysi uchun til kodi, masalan, en."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Calan bogga",
+    "description": "Qoraal tifaftir oo loogu talagalay qorayaasha bogga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Midabka Xoojinta",
+        "description": "Midabka xoojinta calanka bogga."
+      },
+      {
+        "property": "label",
+        "title": "Calaamad",
+        "description": "Qoraalka calaamadda calanka bogga."
+      }
+    ]
+  }
+}

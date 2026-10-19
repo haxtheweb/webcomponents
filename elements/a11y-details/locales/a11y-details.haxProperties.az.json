@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Əlçatan təfərrüatlar düyməsi",
+    "description": "details və summary ilə əlçatan mərhələli açılma"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Düymə",
+        "description": "Gizlədildikdə məzmunun xülasəsi, məs. \"məlumat\", \"metaməlumat\" və s."
+      },
+      {
+        "slot": "details",
+        "title": "Təsvir",
+        "description": "Gizlədilə və ya göstərilə bilən ətraflı təsvir"
+      },
+      {
+        "slot": "",
+        "title": "Təsvir düyməsi",
+        "description": "Təsvir mətnini göstərən/gizlədən düymə üçün standart dəyər, məs. \"məlumat\", \"metaməlumat\" və s."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Təfərrüatlar açıq olduqda istəyə bağlı xülasə mətni"
+      },
+      {
+        "property": "closeText",
+        "title": "Təfərrüatlar bağlı olduqda istəyə bağlı xülasə mətni"
+      }
+    ]
+  }
+}

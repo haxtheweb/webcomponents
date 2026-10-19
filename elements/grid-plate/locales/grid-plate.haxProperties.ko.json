@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "열 레이아웃",
+    "description": "자료를 간단한 열로 배치"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "열 레이아웃",
+        "description": "항목을 표시할 스타일(작은 화면에서는 달라질 수 있음)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "반응형 비활성화",
+        "description": "가장 작은 화면에서는 쌓이되 큰 화면에서는 열을 유지하려면 선택하세요"
+      },
+      {
+        "property": "itemPadding",
+        "title": "항목 안쪽 여백",
+        "description": "각 항목 내부의 안쪽 여백"
+      },
+      {
+        "property": "itemMargin",
+        "title": "항목 바깥 여백",
+        "description": "항목 사이의 여백"
+      }
+    ]
+  }
+}

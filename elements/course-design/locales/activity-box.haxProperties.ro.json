@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Casetă de activitate",
+    "description": "Bloc mic de titlu stilizat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Pictogramă",
+        "description": "Pictograma afișată lângă caseta de activitate."
+      },
+      {
+        "property": "tag",
+        "title": "Etichetă casetă de activitate",
+        "description": "Eticheta afișată în caseta de activitate."
+      },
+      {
+        "property": "nocolourize",
+        "title": "Fără colorare",
+        "description": "Împiedică aplicarea culorilor pe pictogramă."
+      }
+    ]
+  }
+}

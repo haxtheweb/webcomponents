@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ট্যাব",
+    "description": "একটি একক ট্যাব।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ট্যাব আইকন"
+      },
+      {
+        "property": "disabled",
+        "title": "নিষ্ক্রিয়"
+      },
+      {
+        "property": "label",
+        "title": "ট্যাব লেবেল"
+      },
+      {
+        "slot": "",
+        "title": "ট্যাবের কনটেন্ট",
+        "description": "ট্যাবের একটি কনটেন্ট।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "অনন্য ID"
+      },
+      {
+        "property": "flag",
+        "title": "ঐচ্ছিক ফ্ল্যাগ টেক্সট"
+      },
+      {
+        "property": "flagIcon",
+        "title": "ঐচ্ছিক ফ্ল্যাগ আইকন"
+      }
+    ]
+  }
+}

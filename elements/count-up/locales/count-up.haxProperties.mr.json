@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "चढती गणना",
+    "description": "दृश्यात स्क्रोल झाल्यावर संख्या लक्ष्य मूल्यापर्यंत मोजत जाण्याचे अॅनिमेशन."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "अंतिम मूल्य",
+        "description": "ज्या संख्येपर्यंत मोजायचे ती संख्या."
+      },
+      {
+        "property": "start",
+        "title": "प्रारंभ मूल्य",
+        "description": "ज्या संख्येपासून मोजायचे ती संख्या."
+      },
+      {
+        "property": "duration",
+        "title": "कालावधी",
+        "description": "गणना अॅनिमेशनला लागणारे सेकंद."
+      },
+      {
+        "property": "prefixtext",
+        "title": "उपसर्ग मजकूर",
+        "description": "संख्येपूर्वी दाखवलेला मजकूर (उदा. '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "प्रत्यय मजकूर",
+        "description": "संख्येनंतर दाखवलेला मजकूर (उदा. '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "उपसर्ग स्लॉट",
+        "description": "संख्येपूर्वी पर्यायी स्लॉट केलेली सामग्री."
+      },
+      {
+        "slot": "suffix",
+        "title": "प्रत्यय स्लॉट",
+        "description": "संख्येनंतर पर्यायी स्लॉट केलेली सामग्री."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "दशांश स्थाने",
+        "description": "दाखवायची दशांश स्थानांची संख्या."
+      },
+      {
+        "property": "separator",
+        "title": "हजार विभाजक",
+        "description": "हजारांचे गट वेगळे करणारे चिन्ह."
+      },
+      {
+        "property": "decimal",
+        "title": "दशांश चिन्ह",
+        "description": "दशांश बिंदूसाठी वापरलेले चिन्ह."
+      },
+      {
+        "property": "noeasing",
+        "title": "इझिंग नाही",
+        "description": "गणना रेषीय व्हावी म्हणून इझिंग अक्षम करा."
+      }
+    ]
+  }
+}

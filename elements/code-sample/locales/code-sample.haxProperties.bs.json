@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Primjer koda",
+    "description": "Primjer koda istaknut na stranici"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Isticanje koda",
+        "description": "Isticanje sintakse koje se primjenjuje na područje koda",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON podaci",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Dugme za kopiranje u međuspremnik",
+        "description": "dugme gore desno na kojem piše kopiraj u međuspremnik"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Početak isticanja",
+        "description": "Broj reda od kojeg počinje isticanje"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Kraj isticanja",
+        "description": "Red na kojem završava isticanje"
+      }
+    ]
+  }
+}

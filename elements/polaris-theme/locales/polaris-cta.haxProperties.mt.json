@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Uri buttuna ta' sejħa għall-azzjoni Polaris skont it-tema."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Test tal-buttuna",
+        "description": "Test muri fil-buttuna tas-sejħa għall-azzjoni."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "URL tad-destinazzjoni għall-buttuna."
+      },
+      {
+        "property": "type",
+        "title": "Varjant",
+        "description": "Varjant tal-istil viżiv.",
+        "options": {
+          "primary": "Primarju",
+          "tinted": "Ikkulurit",
+          "light": "Ċar"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Stil b'kontorn",
+        "description": "Attiva t-trattament b'kontorn."
+      },
+      {
+        "property": "filled",
+        "title": "Stil mimli",
+        "description": "Attiva t-trattament mimli."
+      }
+    ]
+  }
+}

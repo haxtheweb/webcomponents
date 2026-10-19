@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Крок",
+    "description": "Елемент списку кроків"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Назва"
+      }
+    ]
+  }
+}

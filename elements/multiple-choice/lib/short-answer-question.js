@@ -12,6 +12,11 @@ class ShortAnswerQuestion extends QuestionElement {
   }
   constructor() {
     super();
+    // QuestionElement's shared strings live in each question type's own namespace
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.guessDataValue = "shortanswer";
     this.shortanswer = null;
     // force this to true and use can't set

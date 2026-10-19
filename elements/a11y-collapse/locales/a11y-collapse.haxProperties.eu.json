@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Edukiontzi tolesgarria",
+    "description": "Zabaldu eta tolestu daitekeen edukiontzi bakarra."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Izenburua",
+        "description": "Tolesgarriaren testua."
+      },
+      {
+        "property": "expanded",
+        "title": "Zabalduta",
+        "description": "Zabaldu lehenespenez."
+      },
+      {
+        "property": "headingButton",
+        "title": "Izenburu-botoia",
+        "description": "Egin izenburu osoa klikagarri, ikonoa bakarrik izan beharrean."
+      },
+      {
+        "property": "icon",
+        "title": "Ikonoa",
+        "description": "Zabaldu/tolestu botoiaren ikonoa."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Ikonoa (zabalduta dagoenean)",
+        "description": "Aukerako ikonoa zabaldutako egoerarako."
+      },
+      {
+        "slot": "",
+        "title": "Edukia",
+        "description": "Tolesgarriaren edukia."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Argibidea",
+        "description": "Zabaldu/tolestu botoiaren argibidea."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Argibidea (zabalduta dagoenean)",
+        "description": "Zabaldu/tolestu botoiaren argibidea zabalduta dagoenean."
+      }
+    ]
+  }
+}

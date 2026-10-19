@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "کیریئر کردار",
+    "description": "کسے ادارے وچ اک کردار"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرناواں"
+      },
+      {
+        "property": "startDate",
+        "title": "شروع دی تاریخ"
+      },
+      {
+        "property": "endDate",
+        "title": "مُکن دی تاریخ (اختیاری)"
+      },
+      {
+        "property": "skills",
+        "title": "جڑے ہنر",
+        "description": "ہنر پاؤݨا شروع کرن لئی + بٹن چݨو"
+      }
+    ]
+  }
+}

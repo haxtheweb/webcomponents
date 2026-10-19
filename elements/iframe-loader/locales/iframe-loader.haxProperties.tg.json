@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Мундариҷаи берунаи вебро дар iframe ҷойгир кунед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL-и манбаъ",
+        "description": "URL-и манбаъ."
+      },
+      {
+        "property": "height",
+        "title": "Баландӣ",
+        "description": "Баландии iframe."
+      },
+      {
+        "property": "width",
+        "title": "Паҳноӣ",
+        "description": "Паҳноии iframe."
+      }
+    ]
+  }
+}

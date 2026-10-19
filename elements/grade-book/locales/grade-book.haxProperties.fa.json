@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "دفتر نمرات",
+    "description": "دفتر نمرات بی‌سر که از بک‌اندهای متعدد با روبریک پشتیبانی می‌کند."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "منبع",
+        "description": "نوع منبع داده (googledocs، url، json، filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "نقطه پایانی URL (JSON)",
+          "json": "داده JSON",
+          "filesystem": "سیستم فایل"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "داده منبع",
+        "description": "URL یا داده JSON برای دفتر نمرات."
+      },
+      {
+        "property": "forCourse",
+        "title": "ارجاع دوره",
+        "description": "شناسه دوره که به‌صورت oer:forCourse روی هر منبع Assessment درج می‌شود."
+      }
+    ]
+  }
+}

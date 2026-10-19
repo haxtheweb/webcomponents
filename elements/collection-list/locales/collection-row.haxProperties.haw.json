@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Lālani hōʻiliʻili",
+    "description": "He mea ʻano lālani no ka hoʻohana ʻana i loko o ka papa hōʻiliʻili, me ka kikokikona, ka loulou, ka hōʻailona, nā lepili, a me ke kiʻi koho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Loulou",
+        "description": "URL e hele ai kēia lālani."
+      },
+      {
+        "property": "image",
+        "title": "Kiʻi",
+        "description": "Kiʻi no ka lālani."
+      },
+      {
+        "property": "alt",
+        "title": "Pani",
+        "description": "Kikokikona pani e wehewehe ana i ke kiʻi."
+      },
+      {
+        "property": "line1",
+        "title": "Lālani 1",
+        "description": "Lālani kikokikona mua."
+      },
+      {
+        "property": "line2",
+        "title": "Lālani 2",
+        "description": "Lālani kikokikona ʻelua."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Hōʻailona",
+        "description": "Hōʻailona e hōʻike ana i ka lālani."
+      },
+      {
+        "property": "saturate",
+        "title": "Hopena hoʻopiha waihoʻoluʻu",
+        "description": "E hoʻololi i ka piha waihoʻoluʻu o ke kiʻi ke kālele ka mea hoʻohana."
+      },
+      {
+        "property": "tags",
+        "title": "Nā Lepili",
+        "description": "Papa lepili i hoʻokaʻawale ʻia me ke koma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu",
+        "description": "Waihoʻoluʻu i hoʻohana ʻia no ka hōʻailona a me nā lepili."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "صوت مضمَّن",
+    "description": "تشغيل الصوت ضمن النص لاستكمال محتوى الصفحة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "المصدر",
+        "description": "ملف MP3 أو URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون تمييز البطاقة."
+      },
+      {
+        "property": "shiny",
+        "title": "لامع",
+        "description": "استخدام خلفية تمييز أفتح بدلًا من الرمادي."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "داكن",
+        "description": "استخدام الوضع الداكن."
+      }
+    ]
+  }
+}

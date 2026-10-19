@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galeri imazhesh",
+    "description": "Një galeri që paraqet imazhe në paraqitje rrjete, muratimi ose shfaqjeje me diapozitivë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Modaliteti i shfaqjes",
+        "description": "Si të paraqiten imazhet në galeri.",
+        "options": {
+          "grid": "Rrjetë",
+          "masonry": "Muratim",
+          "gallery": "Galeri"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Indeksi aktiv",
+        "description": "Indeksi i imazhit aktiv nga i cili fillohet në modalitetin e galerisë."
+      }
+    ]
+  }
+}

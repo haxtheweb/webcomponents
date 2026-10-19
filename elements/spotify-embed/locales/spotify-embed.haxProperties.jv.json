@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Pambungkus kanggo sematan pamuter Spotify."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "Pranala sematan utawa enggo bareng saka Spotify."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Tema werna latar mburi kanggo pamuter.",
+        "options": {
+          "": "Gawan",
+          "0": "Ireng"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Ukuran",
+        "description": "Ukuran pamuter.",
+        "options": {
+          "normal": "Gawan",
+          "compact": "Kompak"
+        }
+      }
+    ]
+  }
+}

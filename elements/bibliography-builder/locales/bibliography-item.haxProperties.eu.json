@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografia-elementua",
+    "description": "Bibliografia bateko aipamen bakarra adierazten duen elementua, hainbat formatu eta esportazio-aukera onartzen dituena."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Mota",
+        "description": "Aipamen mota",
+        "options": {
+          "web": "Weba",
+          "journal": "Aldizkaria",
+          "book": "Liburua"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Elementuaren izenburua"
+      },
+      {
+        "property": "authors",
+        "title": "Egilea(k)",
+        "description": "Denbora-lerroko gertaerak"
+      },
+      {
+        "property": "publisher",
+        "title": "Argitaletxea",
+        "description": "Jatorrizko webgunea"
+      }
+    ]
+  }
+}

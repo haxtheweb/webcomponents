@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Àudio",
+    "description": "Pot presentar vídeo de manera molt accessible, sigui quina sigui la font."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Origen",
+        "description": "L'URL d'aquest contingut multimèdia."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Títol",
+        "description": "Títol senzill a sota del vídeo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Selecciona el color d'accent del reproductor."
+      },
+      {
+        "property": "track",
+        "title": "Subtítols",
+        "description": "L'URL del fitxer de subtítols."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Imatge en miniatura",
+        "description": "Opcional. L'URL d'una imatge en miniatura o de pòster."
+      },
+      {
+        "property": "learningMode",
+        "title": "Activa el mode d'aprenentatge",
+        "description": "Desactiva l'avançament i el retrocés ràpids."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Treu el botó d'obrir a YouTube",
+        "description": "Treu el botó per obrir el vídeo a YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Vols incloure un enllaç per compartir?",
+        "description": "Proporciona un enllaç per compartir el vídeo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indica si s'ha d'utilitzar CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Permet la reproducció en segon pla",
+        "description": "Els vídeos es posen en pausa / es reprodueixen automàticament quan la pestanya perd el focus; això permet que el vídeo es reprodueixi sense que la pestanya tingui el focus"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema fosc per a la transcripció",
+        "description": "Activa el tema fosc per a la transcripció."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Desactiva la interactivitat",
+        "description": "Desactiva el mode interactiu que fa que la transcripció sigui clicable."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Amaga les marques de temps",
+        "description": "Amaga les marques de temps de la transcripció."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Amaga la transcripció",
+        "description": "Amaga la transcripció per defecte."
+      },
+      {
+        "property": "lang",
+        "title": "Idioma",
+        "description": "Idioma del contingut multimèdia."
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Karta",
+    "description": "Ixtiyoriy urgʻu uslubli karta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Sarlavha",
+        "description": "Karta sarlavhasi."
+      },
+      {
+        "slot": "subheading",
+        "title": "Kichik sarlavha",
+        "description": "Karta uchun ixtiyoriy kichik sarlavha."
+      },
+      {
+        "slot": "content",
+        "title": "Kontent",
+        "description": "Karta kontenti."
+      },
+      {
+        "slot": "footer",
+        "title": "Pastki qism",
+        "description": "Karta uchun ixtiyoriy pastki qism."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Rasm",
+        "description": "Ixtiyoriy rasm"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Rasm alt matni",
+        "description": "Ekran oʻquvchilar uchun rasmni tavsiflovchi muqobil matn. Faqat rasm sof bezak boʻlsa boʻsh qoldiring."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Rasmning gorizontal tekislanishi",
+        "options": {
+          "left": "chap",
+          "center": "markaz",
+          "right": "oʻng"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Rasmning vertikal tekislanishi",
+        "options": {
+          "top": "yuqori",
+          "center": "markaz",
+          "bottom": "pastki"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Ixtiyoriy urgʻu rangi."
+      },
+      {
+        "property": "dark",
+        "title": "Qorongʻi mavzu",
+        "description": "Qorongʻi mavzuni yoqish"
+      },
+      {
+        "property": "horizontal",
+        "title": "Gorizontal",
+        "description": "Gorizontal yoʻnalishmi?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Sarlavha urgʻusi",
+        "description": "Sarlavhaga urgʻu rangi qoʻllansinmi?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Fon urgʻusi",
+        "description": "Karta foniga urgʻu rangi qoʻllansinmi?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Chegara urgʻusisiz",
+        "description": "Chegara urgʻusi olib tashlansinmi?"
+      },
+      {
+        "property": "flat",
+        "title": "Tekis",
+        "description": "Quti soyasi olib tashlansinmi?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Burchak",
+        "description": "Karta burchagi uchun kontent."
+      }
+    ]
+  }
+}

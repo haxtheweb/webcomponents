@@ -5,5 +5,9 @@
   "recordAudio": "Qopha isandi",
   "recordScreen": "Qopha isikrini",
   "cancel": "Rhoxisa",
-  "uploadMedia": "Layisha imidiya"
+  "uploadMedia": "Layisha imidiya",
+  "record": "Rekhoda",
+  "pause": "Nqumamisa ukurekhoda",
+  "stopSave": "Yima kwaye ugcine",
+  "clickToTakePhoto": "Cofa ukuze uthathe ifoto"
 }

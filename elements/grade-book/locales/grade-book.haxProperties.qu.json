@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Chaninchay Liwru",
+    "description": "Mana umayuq chaninchay liwru, askha backendkunata rubricakunawan yanapan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pukyu",
+        "description": "Willakuy pukyu rikch'ay (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON willakuy blob",
+          "filesystem": "Willañiqi sistema"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Pukyu Willakuy",
+        "description": "Chaninchay liwrupaq URL utaq JSON willakuy."
+      },
+      {
+        "property": "forCourse",
+        "title": "Yachay Riqsichiy",
+        "description": "Sapanka Assessment recursopi oer:forCourse hina lluqsiq yachay riqsichiq."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Txertatu Discord komunitateak partekatzeko URL batetik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Baliabidearen URLa",
+        "description": "Baliabidearen URLa."
+      },
+      {
+        "property": "height",
+        "title": "Altuera",
+        "description": "Eduki markoaren altuera."
+      },
+      {
+        "property": "width",
+        "title": "Zabalera",
+        "description": "Eduki markoaren zabalera."
+      }
+    ]
+  }
+}

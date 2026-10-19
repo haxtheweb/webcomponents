@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Irudi sinplea",
+    "description": "Manipulatu irudiak parametro sinpleekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Iturburua",
+        "description": "Irudiaren iturburuko URLa."
+      },
+      {
+        "property": "height",
+        "title": "Altuera",
+        "description": "Irudiaren aukerako altuera."
+      },
+      {
+        "property": "width",
+        "title": "Zabalera",
+        "description": "Irudiaren aukerako zabalera."
+      },
+      {
+        "property": "alt",
+        "title": "Alt testua",
+        "description": "Erabilgarria pantaila-irakurgailuetarako eta SEO hobetzeko."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Kalitatea",
+        "description": "Irudiaren kalitatea sortzean (JPEG soilik)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Eskuratze lehentasuna",
+        "description": "Errendimendu iradokizuna nabigatzaile modernoentzat.",
+        "options": {
+          "auto": "Automatikoa",
+          "high": "Altua",
+          "low": "Baxua"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Deskodetze metodoa",
+        "description": "Nabigatzaile modernoetan irudiak errendatzeko errendimendu iradokizuna.",
+        "options": {
+          "auto": "Automatikoa",
+          "async": "Asinkronoa"
+        }
+      }
+    ]
+  }
+}

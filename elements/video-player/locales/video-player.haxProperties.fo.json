@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Atkomilig avspæling av sjónbandi úr fleiri keldum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kelda",
+        "description": "URL til henda miðilin."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Heiti",
+        "description": "Heiti víst undir sjónbandinum."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Plakatmynd",
+        "description": "URL til plakatmynd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Tekstspor",
+        "description": "Undirtekstir, týðingar, lýsingar og onnur tekstspor til videoina."
+      },
+      {
+        "property": "startTime",
+        "title": "Byrjanartíð",
+        "description": "Byrja sjónbandið á ávísari tíð (sekund)."
+      },
+      {
+        "property": "endTime",
+        "title": "Endatíð",
+        "description": "Enda sjónbandið á ávísari tíð (sekund), krevur eina byrjanartíð."
+      },
+      {
+        "property": "learningMode",
+        "title": "Tendra lærihátt",
+        "description": "Slókkir skjótt fram og aftur."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Tak knøttin 'opna á YouTube' burtur",
+        "description": "Tekur burtur knøttin til at opna sjónbandið á YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Taka við eitt deilileinki?",
+        "description": "Gevur eitt leinki til at deila sjónbandið."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Fjal tíðarmerki",
+        "description": "Fjal tíðarmerkini í uppskriftini."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Fjal uppskrift",
+        "description": "Fjal uppskrift sum sjálvsett."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Ljóðlýsingarspor",
+        "description": "URL til eitt ljóðlýsingarspor (MP3-fíla), sum greiðir frá sjónligum lutum."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Vísir, um CORS skal nýtast.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Loyv avspæling í bakgrundini",
+        "description": "Halt fram at spæla, tá ið kagateigurin missir fokus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Myrkt tema til uppskrift",
+        "description": "Tendra myrkt tema til uppskriftina."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Slókk samvirkni",
+        "description": "Slókk samvirknan hátt, ið ger uppskriftina klikkiliga."
+      },
+      {
+        "property": "lang",
+        "title": "Mál",
+        "description": "Mál miðilsins."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "(úrelt) Vel dámlitin fyri spælaran."
+      }
+    ]
+  }
+}

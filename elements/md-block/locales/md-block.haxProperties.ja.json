@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "直接入力またはリモートから読み込むMarkdownコンテンツのブロック"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "生のMarkdown"
+      },
+      {
+        "property": "source",
+        "title": "ソース",
+        "description": "Markdownのソースファイル"
+      }
+    ]
+  }
+}

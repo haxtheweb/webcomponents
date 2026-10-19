@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Încorporare Twitter (X)",
+    "description": "Încorporează în context o postare de pe X."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL postare",
+        "description": "URL-ul postării de încorporat."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Temă",
+        "description": "Temă deschisă sau întunecată pentru postările de pe X.",
+        "options": {
+          "light": "Deschis",
+          "dark": "Întunecat"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Împiedică fereastra pop-up la clic",
+        "description": "Împiedică utilizatorii să deschidă postarea pe x.com."
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Видео",
+    "description": "Пахши дастраси видео аз манбаъҳои гуногун."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Манбаъ",
+        "description": "URL барои ин медиа."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Сарлавҳа",
+        "description": "Сарлавҳае, ки дар зери видео нишон дода мешавад."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Тасвири постер",
+        "description": "URL-и тасвири постер."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Роҳчаҳои матнӣ",
+        "description": "Зернависҳо, субтитрҳо, тавсифҳо ва дигар роҳчаҳои матнӣ барои видео."
+      },
+      {
+        "property": "startTime",
+        "title": "Вақти оғоз",
+        "description": "Видеоро аз вақти муайян (сония) оғоз кунед."
+      },
+      {
+        "property": "endTime",
+        "title": "Вақти анҷом",
+        "description": "Видеоро дар вақти муайян (сония) анҷом диҳед; вақти оғоз лозим аст."
+      },
+      {
+        "property": "learningMode",
+        "title": "Фаъол кардани реҷаи омӯзиш",
+        "description": "Пешгардонӣ ва баргардониро ғайрифаъол мекунад."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Хориҷ кардани тугмаи кушодан дар YouTube",
+        "description": "Тугмаи кушодани видеоро дар YouTube хориҷ мекунад."
+      },
+      {
+        "property": "linkable",
+        "title": "Пайванди мубодила илова кунем?",
+        "description": "Пайванд барои мубодилаи видео пешниҳод мекунад."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Пинҳон кардани тамғаҳои вақт",
+        "description": "Пинҳон кардани тамғаҳои вақт дар транскрипт."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Пинҳон кардани транскрипт",
+        "description": "Пинҳон кардани транскрипт ба таври пешфарз."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Роҳчаи тавсифи аудиоӣ",
+        "description": "URL ба роҳчаи тавсифи аудиоӣ (файли MP3), ки унсурҳои визуалиро нақл мекунад."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Нишон медиҳад, ки CORS истифода шавад ё не.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Иҷозати пахш дар замина",
+        "description": "Ҳангоми аз даст додани фокуси ҷадвали браузер пахшро идома диҳед."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Мавзӯи торик барои транскрипт",
+        "description": "Фаъол кардани мавзӯи торик барои транскрипт."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Ғайрифаъол кардани интерактивӣ",
+        "description": "Ғайрифаъол кардани реҷаи интерактивӣ, ки транскриптро клик шаванда мекунад."
+      },
+      {
+        "property": "lang",
+        "title": "Забон",
+        "description": "Забони медиа."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "(кӯҳна) Ранги таъкидии плейерро интихоб кунед."
+      }
+    ]
+  }
+}

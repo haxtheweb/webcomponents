@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematik",
+    "description": "Vis matematik på en pæn måde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematik",
+        "description": "Indtast ligning som LaTeX"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Àkóónú Ojú-ìwé Láìròtẹ́lẹ̀",
+    "description": "Fi ẹ̀yà ìpele òkè kan hàn láìròtẹ́lẹ̀ láti ojú-ìwé tí a yàn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Ojú-ìwé",
+        "description": "Yan ojú-ìwé láti fa àkóónú láìròtẹ́lẹ̀ láti inú rẹ̀. Ẹ̀yà náà yóò fi ọ̀kan nínú àwọn ẹ̀yà HTML ìpele òkè láti ojú-ìwé yìí hàn láìròtẹ́lẹ̀."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kurzustervezés",
+    "description": "Tároló oktatási anyagokhoz és kurzustervezési elemekhez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kurzusazonosító",
+        "description": "OER Schema: a kurzus azonosítója, pl. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Meghirdetési félév",
+        "description": "OER Schema: a félév, amelyben a kurzust meghirdetik."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Megvalósítási forma",
+        "description": "OER Schema: a kurzus megvalósítási formája (pl. személyes, online, hibrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Fő oktató",
+        "description": "OER Schema: a kurzus fő oktatója."
+      },
+      {
+        "property": "syllabus",
+        "title": "Tanterv URL-je",
+        "description": "OER Schema: a kurzus tantervének URL-je."
+      }
+    ]
+  }
+}

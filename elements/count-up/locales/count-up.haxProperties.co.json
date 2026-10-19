@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Contatore",
+    "description": "Anima un numeru chì conta finu à un valore scopu quandu entre in a vista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Valore finale",
+        "description": "U numeru finu à u quale si conta."
+      },
+      {
+        "property": "start",
+        "title": "Valore iniziale",
+        "description": "U numeru da u quale si principia à cuntà."
+      },
+      {
+        "property": "duration",
+        "title": "Durata",
+        "description": "Seconde chì l'animazione di u contu deve durà."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Testu di prefissu",
+        "description": "Testu affissatu nanzu à u numeru (per esempiu '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Testu di suffissu",
+        "description": "Testu affissatu dopu à u numeru (per esempiu '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot di prefissu",
+        "description": "Cuntenutu facultativu inseritu nanzu à u numeru."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot di suffissu",
+        "description": "Cuntenutu facultativu inseritu dopu à u numeru."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Decimali",
+        "description": "Numeru di decimali à affissà."
+      },
+      {
+        "property": "separator",
+        "title": "Spiccatore di e migliaie",
+        "description": "Caratteru chì spicca i gruppi di migliaie."
+      },
+      {
+        "property": "decimal",
+        "title": "Caratteru decimale",
+        "description": "Caratteru adupratu per a virgula decimale."
+      },
+      {
+        "property": "noeasing",
+        "title": "Senza addulcimentu",
+        "description": "Disattivà l'addulcimentu per chì u contu sia lineare."
+      }
+    ]
+  }
+}

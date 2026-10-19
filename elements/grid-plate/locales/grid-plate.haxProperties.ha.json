@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Tsarin ginshiƙai",
+    "description": "Tsara kayan cikin ginshiƙai masu sauƙi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Tsarin Ginshiƙai",
+        "description": "Salon gabatar da waɗannan abubuwa (zai iya canzawa a ƙananan allo)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Kashe daidaitawa",
+        "description": "Danna akwati don riƙe ginshiƙai a manyan allo yayin da ake jera su a mafi ƙanƙantan allo"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Cike na Abu",
+        "description": "Cike a cikin kowane abu"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Gefen abubuwa",
+        "description": "Tazara tsakanin abubuwa"
+      }
+    ]
+  }
+}

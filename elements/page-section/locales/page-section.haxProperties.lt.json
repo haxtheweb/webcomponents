@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Puslapio sekcija",
+    "description": "Sekcijos konteineris puslapio turiniui ir ekrano išdėstymams."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Dizaino sprendimas",
+        "description": "Iš anksto nustatytas stilius, atnaujinantis susijusius nustatymus."
+      },
+      {
+        "property": "image",
+        "title": "Vaizdas",
+        "description": "Sekcijos fono medija."
+      },
+      {
+        "property": "bg",
+        "title": "Fono spalva",
+        "description": "Fono spalva, kai vaizdas nenustatytas."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Slinkimo mygtukas",
+        "description": "Rodyti mygtuką, slenkantį į kitą sekciją."
+      },
+      {
+        "property": "fold",
+        "title": "Rodyti lenkimą",
+        "description": "Rodyti vizualų lenkimą sekcijos apačioje."
+      },
+      {
+        "property": "full",
+        "title": "Viso ekrano dydis",
+        "description": "Užpildyti visą žiūrovo ekrano aukštį."
+      },
+      {
+        "property": "filter",
+        "title": "Taikyti filtrą",
+        "description": "Taikyti vizualų filtrą fono vaizdui."
+      },
+      {
+        "slot": "",
+        "title": "Turinys",
+        "description": "Sekcijos turinys."
+      },
+      {
+        "slot": "entice",
+        "title": "Masinimas",
+        "description": "Pasirenkamas dėmesį patraukiantis turinys."
+      },
+      {
+        "slot": "buttons",
+        "title": "Mygtukai",
+        "description": "Po tekstu rodoma mygtukų grupė."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Inkaro tekstas",
+        "description": "Navigacijoje rodoma inkaro etiketė."
+      }
+    ]
+  }
+}

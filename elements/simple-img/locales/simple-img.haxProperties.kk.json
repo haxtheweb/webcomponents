@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Қарапайым сурет",
+    "description": "Суреттерді қарапайым параметрлермен өңдеу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Дереккөз",
+        "description": "Сурет дереккөзінің URL-і."
+      },
+      {
+        "property": "height",
+        "title": "Биіктігі",
+        "description": "Қосымша сурет биіктігі."
+      },
+      {
+        "property": "width",
+        "title": "Ені",
+        "description": "Қосымша сурет ені."
+      },
+      {
+        "property": "alt",
+        "title": "Балама мәтін",
+        "description": "Экраннан оқу құралдары мен SEO-ны жақсарту үшін пайдалы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Сапа",
+        "description": "Жасау кезіндегі сурет сапасы (тек JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Жүктеу басымдығы",
+        "description": "Заманауи браузерлерге арналған өнімділік кеңесі.",
+        "options": {
+          "auto": "Автоматты",
+          "high": "Жоғары",
+          "low": "Төмен"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Декодтау әдісі",
+        "description": "Заманауи браузерлерде суретті көрсетуге арналған өнімділік кеңесі.",
+        "options": {
+          "auto": "Автоматты",
+          "async": "Асинхронды"
+        }
+      }
+    ]
+  }
+}

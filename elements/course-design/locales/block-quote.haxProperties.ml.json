@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ഉദ്ധരണി ബ്ലോക്ക്",
+    "description": "ശൈലീകൃത ഉദ്ധരണി ബ്ലോക്ക്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "അവലംബം",
+        "description": "അവലംബ വാചകം."
+      },
+      {
+        "property": "alt",
+        "title": "ആൾട്ട്",
+        "description": "ചിത്രത്തിനുള്ള പകരം വാചകം."
+      },
+      {
+        "property": "image",
+        "title": "ചിത്രം",
+        "description": "ഉദ്ധരണിക്കൊപ്പം കാണിക്കുന്ന ചിത്രം."
+      }
+    ]
+  }
+}

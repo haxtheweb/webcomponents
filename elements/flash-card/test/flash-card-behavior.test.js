@@ -8,8 +8,7 @@ import { FlashCardPromptImg } from "../lib/flash-card-prompt-img.js";
 import "../lib/flash-card-set.js";
 import { FlashCardSet } from "../lib/flash-card-set.js";
 
-const DATA_URI =
-  "data:image/gif;base64,R0lGODlhAQABAAAAACw="; // 1x1 gif, no network
+const DATA_URI = "data:image/gif;base64,R0lGODlhAQABAAAAACw="; // 1x1 gif, no network
 
 const cardFixture = () => html`
   <flash-card>
@@ -72,28 +71,28 @@ describe("flash-card answer flow behavior", () => {
   });
 
   it("tracks the user answer as they type and gates the check button", async () => {
-    expect(answerBox.shadowRoot.querySelector("button#check")).to.exist;
+    expect(answerBox.shadowRoot.querySelector("#check")).to.exist;
 
     const input = setInputValue(element, "fi");
     await answerBox.updateComplete;
     expect(answerBox.userAnswer).to.equal("fi");
     // a non-empty answer enables the check button
-    expect(answerBox.shadowRoot.querySelector("button#check").disabled).to.be
-      .false;
+    expect(answerBox.shadowRoot.querySelector("#check").disabled).to.be.false;
 
     input.value = "";
     input.dispatchEvent(new Event("input", { bubbles: true, composed: true }));
     await answerBox.updateComplete;
     expect(answerBox.userAnswer).to.equal("");
-    expect(answerBox.shadowRoot.querySelector("button#check").disabled).to.be
-      .true;
+    expect(answerBox.shadowRoot.querySelector("#check").disabled).to.be.true;
   });
 
   it("marks a matching answer correct end to end", async () => {
     setInputValue(element, "four");
     await answerBox.updateComplete;
 
-    answerBox.shadowRoot.querySelector("button#check").click();
+    answerBox.shadowRoot
+      .querySelector("#check")
+      .dispatchEvent(new MouseEvent("click"));
     await answerBox.updateComplete;
     await element.updateComplete;
 
@@ -105,17 +104,16 @@ describe("flash-card answer flow behavior", () => {
     expect(answerBox.showResult).to.be.false;
     expect(answerBox.correctAnswer).to.equal("four");
     // answer recorded message includes the correct answer
-    expect(answerBox.shadowRoot.querySelector(".answer-message").textContent).to
-      .include("four");
+    expect(
+      answerBox.shadowRoot.querySelector(".answer-message").textContent,
+    ).to.include("four");
 
     // status event propagated to the host flash-card
     expect(element.status).to.equal("correct");
     expect(element.getAttribute("status")).to.equal("correct");
 
     // status message replaces the check button once answered
-    const statusMessage = answerBox.shadowRoot.querySelector(
-      "span#status-message",
-    );
+    const statusMessage = answerBox.shadowRoot.querySelector("#status-message");
     expect(statusMessage).to.exist;
     expect(statusMessage.textContent.trim()).to.equal("Correct!");
 
@@ -128,7 +126,9 @@ describe("flash-card answer flow behavior", () => {
     setInputValue(element, "five");
     await answerBox.updateComplete;
 
-    answerBox.shadowRoot.querySelector("button#check").click();
+    answerBox.shadowRoot
+      .querySelector("#check")
+      .dispatchEvent(new MouseEvent("click"));
     await answerBox.updateComplete;
     await element.updateComplete;
 
@@ -139,19 +139,18 @@ describe("flash-card answer flow behavior", () => {
     expect(answerBox.showResult).to.be.true;
     expect(answerBox.correctAnswer).to.equal("four");
     // the correct answer is revealed on a miss
-    expect(answerBox.shadowRoot.querySelector(".answer-message").textContent).to
-      .include("Correct Answer: four");
+    expect(
+      answerBox.shadowRoot.querySelector(".answer-message").textContent,
+    ).to.include("Correct Answer: four");
 
     expect(element.status).to.equal("incorrect");
-    const statusMessage = answerBox.shadowRoot.querySelector(
-      "span#status-message",
-    );
+    const statusMessage = answerBox.shadowRoot.querySelector("#status-message");
     expect(statusMessage.textContent.trim()).to.equal("Incorrect!");
     // aria-invalid flips on for a wrong answer
     expect(
-      answerBox.shadowRoot.querySelector("input#answer").getAttribute(
-        "aria-invalid",
-      ),
+      answerBox.shadowRoot
+        .querySelector("input#answer")
+        .getAttribute("aria-invalid"),
     ).to.equal("true");
   });
 
@@ -162,7 +161,9 @@ describe("flash-card answer flow behavior", () => {
     setInputValue(element, "What is 2 + 2?");
     await answerBox.updateComplete;
 
-    answerBox.shadowRoot.querySelector("button#check").click();
+    answerBox.shadowRoot
+      .querySelector("#check")
+      .dispatchEvent(new MouseEvent("click"));
     await answerBox.updateComplete;
     await element.updateComplete;
 
@@ -175,7 +176,9 @@ describe("flash-card answer flow behavior", () => {
     setInputValue(element, "FOUR");
     await answerBox.updateComplete;
 
-    answerBox.shadowRoot.querySelector("button#check").click();
+    answerBox.shadowRoot
+      .querySelector("#check")
+      .dispatchEvent(new MouseEvent("click"));
     await answerBox.updateComplete;
 
     expect(answerBox.status).to.equal("correct");
@@ -211,7 +214,9 @@ describe("flash-card answer flow behavior", () => {
       // correct answer feedback
       setInputValue(element, "four");
       await answerBox.updateComplete;
-      answerBox.shadowRoot.querySelector("button#check").click();
+      answerBox.shadowRoot
+        .querySelector("#check")
+        .dispatchEvent(new MouseEvent("click"));
       await element.updateComplete;
       await new Promise((resolve) => setTimeout(resolve, 50));
 
@@ -221,7 +226,6 @@ describe("flash-card answer flow behavior", () => {
 
       // incorrect answer feedback
       setInputValue(element, "five");
-      answerBox.shadowRoot.querySelector("input#answer").disabled = false;
       answerBox.status = "pending";
       await answerBox.updateComplete;
       await element.updateComplete;
@@ -243,15 +247,17 @@ describe("flash-card answer flow behavior", () => {
   it("resets the card for another attempt from the retry button", async () => {
     setInputValue(element, "five");
     await answerBox.updateComplete;
-    answerBox.shadowRoot.querySelector("button#check").click();
+    answerBox.shadowRoot
+      .querySelector("#check")
+      .dispatchEvent(new MouseEvent("click"));
     await answerBox.updateComplete;
     await element.updateComplete;
     expect(answerBox.status).to.equal("incorrect");
 
     // retry control is visible once a status is set
     answerBox.shadowRoot
-      .querySelector(".retry simple-icon-button-lite")
-      .click();
+      .querySelector("#reset")
+      .dispatchEvent(new MouseEvent("click"));
     await answerBox.updateComplete;
     await element.updateComplete;
 
@@ -266,7 +272,7 @@ describe("flash-card answer flow behavior", () => {
     expect(input.disabled).to.be.false;
     expect(input.value).to.equal("");
     // check button is back and disabled until an answer is typed
-    const check = answerBox.shadowRoot.querySelector("button#check");
+    const check = answerBox.shadowRoot.querySelector("#check");
     expect(check).to.exist;
     expect(check.disabled).to.be.true;
   });
@@ -349,7 +355,8 @@ describe("flash-card-image-prompt behavior", () => {
     });
     // the img branch is a nested TemplateResult in the outer template values
     const imgBranch = result.values.find(
-      (value) => value && value.strings && value.strings.join("").includes("src"),
+      (value) =>
+        value && value.strings && value.strings.join("").includes("src"),
     );
     expect(imgBranch).to.exist;
     expect(imgBranch.strings.join("")).to.include("loremflickr.com/320/240/");
@@ -469,16 +476,18 @@ describe("flash-card-set behavior", () => {
     // from HAX) re-read the slot, doubled the questions data, and appended
     // cards for every group of 4 without clearing #content first.
     // renderTags() now clears both before re-reading.
-    const before = element.shadowRoot.querySelectorAll("#content flash-card")
-      .length;
+    const before = element.shadowRoot.querySelectorAll(
+      "#content flash-card",
+    ).length;
     expect(before).to.equal(2);
 
     element.questions = [...element.questions];
     await element.updateComplete;
     await element.updateComplete;
 
-    const after = element.shadowRoot.querySelectorAll("#content flash-card")
-      .length;
+    const after = element.shadowRoot.querySelectorAll(
+      "#content flash-card",
+    ).length;
     // data re-read from the slot stays at 8 entries and the content area is
     // rebuilt with the same 2 cards rather than accumulating duplicates
     expect(element.questions.length).to.equal(8);

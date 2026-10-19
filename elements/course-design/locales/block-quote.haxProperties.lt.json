@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Citatos blokas",
+    "description": "Stilizuotas citatos blokas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "Šaltinio nuoroda",
+        "description": "Šaltinio nuorodos tekstas."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatyvusis tekstas",
+        "description": "Alternatyvusis vaizdo tekstas."
+      },
+      {
+        "property": "image",
+        "title": "Vaizdas",
+        "description": "Vaizdas, rodomas su citata."
+      }
+    ]
+  }
+}

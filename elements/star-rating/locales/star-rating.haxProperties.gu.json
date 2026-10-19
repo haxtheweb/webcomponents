@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "સ્ટાર રેટિંગ",
+    "description": "રેટિંગ પ્રદર્શન વિજેટ અથવા રેટિંગ આપવા માટેનું બટન."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "સ્કોર",
+        "description": "વર્તમાન સ્કોર મૂલ્ય."
+      },
+      {
+        "property": "possible",
+        "title": "સંભવિત",
+        "description": "મહત્તમ સંભવિત સ્કોર."
+      },
+      {
+        "property": "numStars",
+        "title": "તારાઓની સંખ્યા",
+        "description": "પ્રદર્શિત કરવાના તારાઓની સંખ્યા."
+      },
+      {
+        "property": "interactive",
+        "title": "ઇન્ટરેક્ટિવ",
+        "description": "રેટિંગ સેટ કરવા માટે વપરાશકર્તા ક્રિયાપ્રતિક્રિયાની મંજૂરી આપો."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "રૂબ્રિક સ્કેલ મોડ",
+        "description": "દરેક તારા માટે OER Schema RubricScale અને RubricLevel મેટાડેટા (levelOrdinal/levelPoints) ઉત્સર્જિત કરો."
+      }
+    ]
+  }
+}

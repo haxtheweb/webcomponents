@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Merito Insignia",
+    "description": "Huk atiyta hap'isqata willanapaq rikukuq insignia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Insigniap Sutin",
+        "description": "Insigniapi rikuchisqa suti."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Insigniap Siq'in",
+        "description": "Insigniapaq siq'i URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Insigniap Detallenkuna",
+        "description": "Insigniamanta detallekuna."
+      },
+      {
+        "property": "hyperLink",
+        "title": "T'inki",
+        "description": "Insigniawan t'inkisqa t'inki."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Insigniap Atiyninkuna",
+        "description": "Insigniapi rikuchisqa atiykuna."
+      },
+      {
+        "property": "skill",
+        "title": "Atiy (OER Schema)",
+        "description": "OER Schema: kay yachay munasqata tukuspa hap'isqa yachasqa atiy."
+      }
+    ]
+  }
+}

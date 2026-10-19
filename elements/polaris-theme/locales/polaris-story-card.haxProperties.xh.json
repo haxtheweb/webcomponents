@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Ikhadi lebali le-Polaris",
+    "description": "Bonisa ikhadi lebali le-Polaris elinomfanekiso ongasemva, ileyibhile yentsika kunye nombhalo wesihloko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Umfanekiso ongasemva",
+        "description": "I-URL yomfanekiso oboniswa njengomva wekhadi."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Ubungakanani bomva",
+        "description": "Indlela umfanekiso ongasemva ozalisa ngayo ikhadi (CSS background-size).",
+        "options": {
+          "cover": "Gquma (cover)",
+          "contain": "Qulatha (contain)",
+          "auto": "Ngokuzenzekelayo (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Uncamathiselo lomva",
+        "description": "Indlela umfanekiso ongasemva oziphatha ngayo xa uskrola (CSS background-attachment).",
+        "options": {
+          "scroll": "Skrola (scroll)",
+          "fixed": "Imiselweyo (fixed)",
+          "local": "Yasekuhlaleni (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Ileyibhile yentsika",
+        "description": "Ileyibhile emfutshane yoonobumba abakhulu eboniswa phezulu ekhadini. Yishiye ingenanto ukuze uyifihle."
+      },
+      {
+        "property": "label",
+        "title": "Umbhalo wekhadi",
+        "description": "Umbhalo ophambili oboniswa kwiphaneli engezantsi."
+      },
+      {
+        "property": "link",
+        "title": "Ikhonkco",
+        "description": "I-URL ekhethwayo ekuyiwa kuyo esonga lonke ikhadi."
+      }
+    ]
+  }
+}

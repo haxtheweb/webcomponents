@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Fiszka",
+    "description": "Ćwicz pojęcia za pomocą dwustronnych fiszek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "Przód karty",
+        "description": "Tekst lub pytanie na przodzie."
+      },
+      {
+        "slot": "back",
+        "title": "Tył karty",
+        "description": "Oczekiwana odpowiedź."
+      },
+      {
+        "property": "imgSource",
+        "title": "Źródło obrazu",
+        "description": "Plik obrazu używany na karcie. Zastępuje słowo kluczowe obrazu."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "Rodzaj działania",
+        "description": "OER Schema: rodzaj działania, którego dotyczy to ćwiczenie (np. Reading, Writing, Making, Researching, Listening, Watching, Reflecting, Discussing, Observing, Presenting, Assess)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cel uczenia się",
+        "description": "OER Schema: ID lub URL celu uczenia się, który wspiera to ćwiczenie."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Ciemny",
+        "description": "Użyj trybu ciemnego."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Kolor akcentu karty."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "Słowo kluczowe obrazu",
+        "description": "Słowo kluczowe losowego obrazu. Zastępowane przez źródło obrazu."
+      }
+    ]
+  }
+}

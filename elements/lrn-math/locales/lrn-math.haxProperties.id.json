@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematika",
+    "description": "Sajikan matematika dengan tampilan yang rapi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematika",
+        "description": "Masukkan persamaan sebagai LaTeX"
+      }
+    ]
+  }
+}

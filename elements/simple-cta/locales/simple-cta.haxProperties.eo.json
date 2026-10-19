@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Alvoko al ago",
+    "description": "Simpla butono kun ligilo por agi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etikedo",
+        "description": "Ligila etikedo"
+      },
+      {
+        "property": "link",
+        "title": "Ligilo",
+        "description": "Enigu ligilon al ajna rimedo"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Kaŝi piktogramon",
+        "description": "Kaŝi la piktogramon uzatan por akcenti tekston"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Piktogramo",
+        "description": "Piktogramo de aga ligilo"
+      }
+    ]
+  }
+}

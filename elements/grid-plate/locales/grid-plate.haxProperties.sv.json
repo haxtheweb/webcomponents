@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kolumnlayout",
+    "description": "Lägg ut material i enkla kolumner"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Kolumnlayout",
+        "description": "Stil för att presentera objekten (kan ändras på små skärmar)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Inaktivera responsivitet",
+        "description": "Markera rutan för att behålla kolumner på större skärmar men fortfarande stapla dem på de minsta skärmarna"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Objektutfyllnad",
+        "description": "Utfyllnad inuti varje objekt"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Objektmarginaler",
+        "description": "Marginal mellan objekt"
+      }
+    ]
+  }
+}

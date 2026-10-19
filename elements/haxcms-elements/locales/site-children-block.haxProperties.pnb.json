@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ذیلی بلاک",
+    "description": "موجودہ صفحے دے ذیلی وکھاؤن لئی ڈائنامک بلاک"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "ڈائنامک طریقہ",
+        "description": "ایس عنصر دے حساب نال ذیلی کیویں گݨنے نیں",
+        "options": {
+          "active": "چالو ذیلی",
+          "parent": "اُتلے دے ذیلی",
+          "ancestor": "سب توں اُچے وڈکے دے سارے ذیلی"
+        }
+      },
+      {
+        "property": "start",
+        "title": "شروع درجہ"
+      },
+      {
+        "property": "end",
+        "title": "انت درجہ"
+      }
+    ]
+  }
+}

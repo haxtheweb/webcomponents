@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Кільце прогресу",
+    "description": "Кільцева діаграма прогресу"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва елемента"
+      },
+      {
+        "property": "desc",
+        "title": "Опис",
+        "description": "Доступний довгий опис"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Джерело зображення",
+        "description": "Джерело зображення всередині кільця."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Альтернативний текст зображення",
+        "description": "Альтернативний текст зображення."
+      },
+      {
+        "property": "animated",
+        "title": "Анімовано",
+        "description": "Чи анімувати прогрес під час першого завантаження"
+      },
+      {
+        "property": "complete",
+        "title": "Завершено",
+        "description": "Масив виконаних значень."
+      },
+      {
+        "property": "total",
+        "title": "Усього",
+        "description": "Підсумок, коли всі елементи виконано."
+      },
+      {
+        "property": "startAngle",
+        "title": "Початковий кут",
+        "description": "Кут кільця, з якого починається прогрес"
+      }
+    ]
+  }
+}

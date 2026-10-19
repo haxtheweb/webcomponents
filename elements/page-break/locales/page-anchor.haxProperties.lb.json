@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Säitenanker",
+    "description": "Op bestëmmte Punkten a Medien op der Säit verlinken."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Säitenzil",
+        "description": "ID oder Ressource, op déi dësen Anker weist."
+      },
+      {
+        "property": "value",
+        "title": "Deep-Link-Wäert",
+        "description": "Deep-Link-Wäert (zum Beispill Zäitstempel oder Dia-ID)."
+      },
+      {
+        "property": "entityId",
+        "title": "Site-Entitéit",
+        "description": "Optional Site-Entitéit fir d'Presentatioun vu verwandte Konzepter ze steieren."
+      }
+    ]
+  }
+}

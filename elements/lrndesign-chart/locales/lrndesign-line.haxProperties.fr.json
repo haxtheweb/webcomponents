@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Graphique linéaire",
+    "description": "Crée un graphique accessible à partir d'un fichier CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Couleur d'accent",
+        "description": "Une couleur d'accent facultative."
+      },
+      {
+        "title": "Thème sombre",
+        "description": "Activer le thème sombre"
+      },
+      {
+        "title": "Fichier CSV",
+        "description": "Charger des données depuis un fichier CSV."
+      },
+      {
+        "title": "Titre du graphique",
+        "description": "Texte alternatif accessible pour votre graphique."
+      },
+      {
+        "title": "Description du graphique",
+        "description": "Description accessible de votre graphique."
+      },
+      {
+        "title": "Nom de l'échelle",
+        "description": "Le rapport largeur:hauteur du graphique (voir https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings pour $ct-scales et $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Afficher la grille d'arrière-plan"
+      },
+      {
+        "title": "Afficher la zone"
+      },
+      {
+        "title": "Afficher la ligne"
+      },
+      {
+        "title": "Afficher les points"
+      },
+      {
+        "title": "Pleine largeur"
+      },
+      {
+        "title": "Afficher les libellés des points"
+      },
+      {
+        "title": "Marge intérieure du graphique (haut)"
+      },
+      {
+        "title": "Marge intérieure du graphique (bas)"
+      },
+      {
+        "title": "Marge intérieure du graphique (gauche)"
+      },
+      {
+        "title": "Marge intérieure du graphique (droite)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Inverser les données",
+        "description": "Inverser les données, y compris les libellés, l'ordre des séries ainsi que l'ensemble des tableaux de données des séries."
+      },
+      {
+        "title": "Tableau HTML",
+        "description": "Facultatif : charger les données sous forme de tableau HTML."
+      },
+      {
+        "title": "Minimum du graphique",
+        "description": "Remplacer le minimum naturel du graphique permet de zoomer ou de limiter la valeur la plus basse affichée"
+      },
+      {
+        "title": "Maximum du graphique",
+        "description": "Remplacer le maximum naturel du graphique permet de zoomer ou de limiter la valeur la plus haute affichée"
+      },
+      {
+        "title": "Afficher les libellés des points",
+        "options": {
+          "middle": "Milieu",
+          "start": "Début",
+          "end": "Fin"
+        }
+      },
+      {
+        "title": "Décalage X des libellés des points"
+      },
+      {
+        "title": "Décalage Y des libellés des points"
+      },
+      {
+        "title": "Lissage de la ligne"
+      },
+      {
+        "title": "Base de la zone",
+        "description": "La base du graphique en aires utilisée pour fermer la forme de la zone (normalement 0)."
+      },
+      {
+        "title": "Axe X : afficher la grille",
+        "description": "Afficher la grille de l'axe X."
+      },
+      {
+        "title": "Décalage de l'axe X"
+      },
+      {
+        "title": "Position de l'axe X",
+        "description": "Position où sont placés les libellés. Peut être définie sur \"start\" ou \"end\", où \"start\" équivaut à gauche ou en haut sur l'axe vertical et \"end\" à droite ou en bas sur l'axe horizontal"
+      },
+      {
+        "title": "Axe X : afficher le libellé",
+        "description": "Afficher le libellé de l'axe X."
+      },
+      {
+        "title": "Libellé de l'axe X (décalage horizontal)",
+        "description": "Position horizontale des libellés de l'axe X."
+      },
+      {
+        "title": "Libellé de l'axe X (décalage vertical)",
+        "description": "Position verticale des libellés de l'axe X."
+      },
+      {
+        "title": "Titre de l'axe X",
+        "description": "Titre facultatif de l'axe X."
+      },
+      {
+        "title": "Titre de l'axe X (décalage horizontal)",
+        "description": "Position horizontale du titre de l'axe X."
+      },
+      {
+        "title": "Titre de l'axe X (décalage vertical)",
+        "description": "Position verticale du titre de l'axe X."
+      },
+      {
+        "title": "Ancrage du titre de l'axe X",
+        "description": "Ancrage facultatif du titre de l'axe X.",
+        "options": {
+          "middle": "milieu",
+          "end": "fin",
+          "start": "début"
+        }
+      },
+      {
+        "title": "Axe Y : afficher la grille",
+        "description": "Afficher la grille de l'axe Y."
+      },
+      {
+        "title": "Décalage de l'axe Y"
+      },
+      {
+        "title": "Position de l'axe Y",
+        "description": "Position où sont placés les libellés. Peut être définie sur \"start\" ou \"end\", où \"start\" équivaut à gauche ou en haut sur l'axe vertical et \"end\" à droite ou en bas sur l'axe horizontal"
+      },
+      {
+        "title": "Axe Y : afficher le libellé",
+        "description": "Afficher le libellé de l'axe Y."
+      },
+      {
+        "title": "Libellé de l'axe Y (décalage horizontal)",
+        "description": "Position horizontale du libellé de l'axe Y."
+      },
+      {
+        "title": "Libellé de l'axe Y (décalage vertical)",
+        "description": "Position verticale du libellé de l'axe Y."
+      },
+      {
+        "title": "Espace minimal de l'échelle de l'axe Y",
+        "description": "Indique la hauteur minimale en pixels des pas de l'échelle."
+      },
+      {
+        "title": "Échelle de l'axe Y (entiers uniquement)",
+        "description": "Utiliser uniquement des valeurs entières pour les pas de l'échelle."
+      },
+      {
+        "title": "Titre de l'axe Y",
+        "description": "Titre facultatif de l'axe Y."
+      },
+      {
+        "title": "Titre de l'axe Y (décalage vertical)",
+        "description": "Position horizontale du titre de l'axe Y."
+      },
+      {
+        "title": "Titre de l'axe Y (décalage horizontal)",
+        "description": "Position horizontale du titre de l'axe Y."
+      },
+      {
+        "title": "Ancrage du titre de l'axe Y",
+        "description": "Ancrage facultatif du titre de l'axe Y.",
+        "options": {
+          "middle": "milieu",
+          "end": "fin",
+          "start": "début"
+        }
+      },
+      {
+        "title": "Retourner le titre de l'axe Y",
+        "description": "Retourner le titre de l'axe Y ?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Видео",
+    "description": "Достъпно възпроизвеждане на видео от различни източници."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Източник",
+        "description": "URL за тази медия."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Заглавие",
+        "description": "Заглавие, показвано под видеото."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Постер",
+        "description": "URL на постера."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Текстови писти",
+        "description": "Надписи, субтитри, описания и други текстови писти за видеото."
+      },
+      {
+        "property": "startTime",
+        "title": "Начален час",
+        "description": "Стартиране на видеото от определен момент (в секунди)."
+      },
+      {
+        "property": "endTime",
+        "title": "Краен час",
+        "description": "Спиране на видеото в определен момент (в секунди); изисква начален час."
+      },
+      {
+        "property": "learningMode",
+        "title": "Включване на режим на обучение",
+        "description": "Изключва превъртането напред и назад."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Премахване на бутона „Отваряне в YouTube“",
+        "description": "Премахва бутона за отваряне на видеото в YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Включване на връзка за споделяне?",
+        "description": "Предоставя връзка за споделяне на видеото."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Скриване на времевите маркери",
+        "description": "Скриване на времевите маркери в транскрипцията."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Скриване на транскрипцията",
+        "description": "Скриване на транскрипцията по подразбиране."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Писта с аудиоописание",
+        "description": "URL към писта с аудиоописание (MP3 файл), която озвучава визуалните елементи."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Указва дали да се използва CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Разрешаване на възпроизвеждане във фонов режим",
+        "description": "Продължаване на възпроизвеждането, когато разделът на браузъра загуби фокус."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Тъмна тема за транскрипцията",
+        "description": "Включване на тъмна тема за транскрипцията."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Изключване на интерактивността",
+        "description": "Изключване на интерактивния режим, който прави транскрипцията кликаема."
+      },
+      {
+        "property": "lang",
+        "title": "Език",
+        "description": "Език на медията."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "(остаряло) Изберете акцентния цвят на плейъра."
+      }
+    ]
+  }
+}

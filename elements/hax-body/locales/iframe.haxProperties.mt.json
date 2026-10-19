@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Inkorpora kontenut web estern."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Sors",
+        "description": "URL għal dan ir-riżors."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ໂທເຄັນ CMS",
+    "description": "ໂທເຄັນ CMS ທີ່ສະແດງຜົນຢູ່ backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ໂທເຄັນ",
+        "description": "ໂທເຄັນຈາກ CMS ຂອງພວກເຮົາ"
+      }
+    ]
+  }
+}

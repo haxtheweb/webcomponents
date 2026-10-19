@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Mallattoo / Kiniinii",
+    "description": "Maqaa xiqqaa bifa kiniinii qabu, halluu calaqqee, qabduu haquu ykn jijjiirtuu filannoo wajjin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Maqaa",
+        "description": "Barreeffama kiniinii keessatti mul'atu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu calaqqee",
+        "description": "Maqaa halluu calaqqee SimpleColors duuba kiniiniitiif.",
+        "options": {
+          "": "-- durtii --",
+          "red": "Diimaa",
+          "pink": "Pinkii",
+          "purple": "Dhiilgee",
+          "deep-purple": "Dhiilgee Cimaa",
+          "indigo": "Indigoo",
+          "blue": "Cuquliisa",
+          "light-blue": "Cuquliisa Ifaa",
+          "cyan": "Saayan",
+          "teal": "Magariisa Cuquliisaa",
+          "green": "Magariisa",
+          "light-green": "Magariisa Ifaa",
+          "lime": "Laayimii",
+          "yellow": "Keelloo",
+          "amber": "Ambar",
+          "orange": "Burtukaana",
+          "deep-orange": "Burtukaana Cimaa",
+          "brown": "Magaala",
+          "blue-grey": "Daalacha Cuquliisaa",
+          "grey": "Daalacha"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Halluu calaqqee ofumaan",
+        "description": "Halluu calaqqee barreeffama maqaa irraa ofumaan argadhu."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Qabduu haquu",
+        "description": "Kiniinii keessatti qabduu mallattoo haquu/dhiisuu agarsiisi."
+      },
+      {
+        "property": "readonly",
+        "title": "Dubbisuu qofa",
+        "description": "Akka kiniiniin agarsiisaaf qofa ta'uuf qabduu haquu dhoksi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Jijjiirtuu",
+        "description": "Yeroo qabduun tuqamu kiniiniin akka banamu/cufamu godhi."
+      },
+      {
+        "property": "toggled",
+        "title": "Kan banaa",
+        "description": "Kiniiniin amma banaa ta'uu isaa."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Mallattoo yeroo banaa",
+        "description": "Mallattoo yeroo kiniiniin banaa ta'u mul'atu."
+      },
+      {
+        "property": "disabled",
+        "title": "Kan dhaabbate",
+        "description": "Walqunnamtii kiniinii wajjin dhaabi."
+      }
+    ]
+  }
+}

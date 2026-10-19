@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Özüňi barla",
+    "description": "Ulanyjylar özüni barlamagy tamamlap bilerler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Surat",
+        "description": "Özüňi barlamak üçin surat."
+      },
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Özüňi barlamagyň ady."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatiw tekst",
+        "description": "Surat üçin alt tekst."
+      },
+      {
+        "slot": "question",
+        "title": "Sorag"
+      },
+      {
+        "slot": "",
+        "title": "Jogap"
+      },
+      {
+        "property": "accentColor",
+        "title": "Tema reňki",
+        "description": "Dizaýn ulgamyndan tema reňkini saýlaň.",
+        "options": {
+          "primary": "Esasy",
+          "accent": "Aksent",
+          "success": "Üstünlik",
+          "warning": "Duýduryş",
+          "error": "Ýalňyşlyk",
+          "info": "Maglumat"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Okuw maksady",
+        "description": "oer:hasLearningObjective hökmünde çykarylýan okuw maksadyna salgylanma."
+      },
+      {
+        "property": "assessing",
+        "title": "Baha berilýän",
+        "description": "oer:assessing hökmünde çykarylýan işjeňlige salgylanma."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Has köp baglanyşyk",
+        "description": "Goşmaça maglumata baglanyşyk."
+      }
+    ]
+  }
+}

@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "GitHub-depot",
   "anErrorOccurred": "Det oppstod en feil",
-  "retry": "Prøv igjen"
+  "retry": "Prøv igjen",
+  "permissionRequired": "Tillatelse kreves",
+  "passwordRequirements": "Passordkrav",
+  "requirementLength": "Minst 8 tegn",
+  "requirementUppercase": "Én stor bokstav",
+  "requirementLowercase": "Én liten bokstav",
+  "requirementNumber": "Ett tall",
+  "requirementSymbol": "Ett symbol"
 }

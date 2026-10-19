@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Koadefoarbyld",
+    "description": "In foarbyld fan koade, markearre yn de side"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Koademarkearring",
+        "description": "Syntaksmarkearring om ta te passen op it koadegebiet",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-gegevens",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Knop kopiearje nei klamboerd",
+        "description": "knop rjochtsboppe dy't kopiearje nei klamboerd seit"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Begjin markearring",
+        "description": "Rigelnûmer wêr't de markearring begjint"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Ein markearring",
+        "description": "Rigel wêr't de markearring einiget"
+      }
+    ]
+  }
+}

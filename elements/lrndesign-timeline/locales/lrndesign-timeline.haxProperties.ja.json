@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "タイムライン",
+    "description": "画像とテキストによる出来事のタイムライン"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "タイムラインのタイトル",
+        "description": "タイムラインのタイトル。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "任意のアクセントカラー。"
+      },
+      {
+        "property": "dark",
+        "title": "ダークテーマ",
+        "description": "ダークテーマを有効にする"
+      },
+      {
+        "slot": "",
+        "title": "タイムラインの説明",
+        "description": "タイムラインを説明する任意のテキスト。"
+      },
+      {
+        "property": "events",
+        "title": "タイムラインの出来事",
+        "description": "タイムラインのイベント"
+      }
+    ]
+  }
+}

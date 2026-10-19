@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Fjarinnihald",
+    "description": "Endurnýt innihald frá einum vevstaði á einum øðrum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Vevstaðsadressa",
+        "description": "Set inn adressuna at vísa til innihald frá, um tað ikki er núverandi vevstaður"
+      },
+      {
+        "property": "uuid",
+        "title": "Lutur",
+        "description": "Lutur at vísa til leinkið / heitisdátur"
+      },
+      {
+        "property": "breakreference",
+        "title": "Bróta tilvísing",
+        "description": "Krossar tú í hesa boksina, verður fjarinnihaldið avritað til lokala rætting, men sambandið verður tikið burtur. Tað fær ikki longur dagføringar, tá ið tilvísingartilfarið verður dagført."
+      },
+      {
+        "property": "showTitle",
+        "title": "Vís heiti",
+        "description": "Tendra fyri at vísa heitið á tilfeinginum, ið verður víst"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ñembohory",
+    "description": "Moñe'ẽrã jehechauka ñembohoryháicha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Moñe'ẽrã",
+        "description": "Moñe'ẽrã ojapo hag̃ua ñembohory"
+      }
+    ]
+  }
+}

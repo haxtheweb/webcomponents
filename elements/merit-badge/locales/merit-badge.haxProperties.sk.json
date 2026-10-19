@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Odznak za zásluhy",
+    "description": "Vizuálny odznak na komunikáciu získania zručnosti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Názov odznaku",
+        "description": "Názov zobrazený na odznaku."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Obrázok odznaku",
+        "description": "URL obrázka odznaku."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Podrobnosti odznaku",
+        "description": "Podrobnosti o odznaku."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hypertextový odkaz",
+        "description": "Odkaz spojený s odznakom."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Zručnosti odznaku",
+        "description": "Zručnosti zobrazené na odznaku."
+      },
+      {
+        "property": "skill",
+        "title": "Zručnosť (OER Schema)",
+        "description": "OER Schema: naučená zručnosť získaná splnením tohto vzdelávacieho cieľa."
+      }
+    ]
+  }
+}

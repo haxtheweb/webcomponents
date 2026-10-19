@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Satu tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ikon Tab"
+      },
+      {
+        "property": "disabled",
+        "title": "Dilumpuhkan"
+      },
+      {
+        "property": "label",
+        "title": "Label Tab"
+      },
+      {
+        "slot": "",
+        "title": "Kandungan Tab",
+        "description": "Kandungan tab."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Unik"
+      },
+      {
+        "property": "flag",
+        "title": "Teks Bendera Pilihan"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Ikon Bendera Pilihan"
+      }
+    ]
+  }
+}

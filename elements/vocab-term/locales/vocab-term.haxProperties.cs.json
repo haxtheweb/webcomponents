@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Slovíčko",
+    "description": "Slovníkový pojem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Pojem"
+      },
+      {
+        "property": "information",
+        "title": "Definice",
+        "description": "Definice zobrazená po kliknutí na pojem."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Vyskakovací okno",
+        "description": "Zobrazit definici ve vyskakovacím okně místo v textu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Odkazy",
+        "description": "Seznam doplňujících odkazů souvisejících s tímto pojmem."
+      }
+    ]
+  }
+}

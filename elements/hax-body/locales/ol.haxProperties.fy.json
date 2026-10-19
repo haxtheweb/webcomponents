@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Nûmere list",
+    "description": "In nûmere list meitsje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Nûmerstyl",
+        "description": "Styl brûkt foar de nûmering fan oardere listen.",
+        "options": {
+          "": "Standert (desimaal)",
+          "list-decimal-leading-zero": "Desimaal mei foarrinnende nul (01, 02, 03)",
+          "list-lower-alpha": "Lytse letters (a, b, c)",
+          "list-upper-alpha": "Haadletters (A, B, C)",
+          "list-lower-roman": "Lytse Romeinske sifers (i, ii, iii)",
+          "list-upper-roman": "Grutte Romeinske sifers (I, II, III)"
+        }
+      }
+    ]
+  }
+}

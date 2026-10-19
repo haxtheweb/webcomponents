@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Cita amb imatge",
+    "description": "Cita estilitzada amb una imatge opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imatge",
+        "description": "Afegeix una imatge al testimoni."
+      },
+      {
+        "property": "name",
+        "title": "Nom complet",
+        "description": "Nom de la persona que dona el testimoni."
+      },
+      {
+        "property": "position",
+        "title": "Càrrec o lloc de feina",
+        "description": "Càrrec o lloc de feina de la persona."
+      },
+      {
+        "slot": "",
+        "title": "Cita",
+        "description": "Cita de l'autor del testimoni."
+      }
+    ]
+  }
+}

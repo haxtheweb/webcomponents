@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "تصویر پایه",
+    "description": "عنصر تصویر پایه."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "منبع",
+        "description": "URL تصویر."
+      },
+      {
+        "attribute": "alt",
+        "title": "متن جایگزین",
+        "description": "متن جایگزین برای دسترس‌پذیری و SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "ارتفاع",
+        "description": "ارتفاع بر حسب پیکسل. برای استفاده از اندازه طبیعی خالی بگذارید."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "نحوه بارگذاری تصویر",
+        "description": "زمان بارگذاری تصویر را انتخاب کنید.",
+        "options": {
+          "lazy": "بارگذاری هنگام نمایان شدن",
+          "auto": "خودکار"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "منابع واکنش‌گرا (srcset)",
+        "description": "URLهای تصویر و توصیفگرها (مثلاً 480w یا 2x) را فهرست کنید تا مرورگرها بهترین اندازه را برای صفحه انتخاب کنند. به‌صورت ویژگی استاندارد srcset ذخیره می‌شود."
+      }
+    ]
+  }
+}

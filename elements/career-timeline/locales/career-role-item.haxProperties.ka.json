@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "კარიერული როლი",
+    "description": "ცალკეული როლი ორგანიზაციაში"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "სათაური"
+      },
+      {
+        "property": "startDate",
+        "title": "დაწყების თარიღი"
+      },
+      {
+        "property": "endDate",
+        "title": "დასრულების თარიღი (არასავალდებულო)"
+      },
+      {
+        "property": "skills",
+        "title": "დაკავშირებული უნარები",
+        "description": "უნარების დასამატებლად აირჩიეთ + ღილაკი"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "メリットバッジ",
+    "description": "スキルの習得を伝える視覚的なバッジ。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "バッジのタイトル",
+        "description": "バッジに表示されるタイトル。"
+      },
+      {
+        "property": "badgeImage",
+        "title": "バッジの画像",
+        "description": "バッジの画像URL。"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "バッジの詳細",
+        "description": "バッジについての詳細。"
+      },
+      {
+        "property": "hyperLink",
+        "title": "ハイパーリンク",
+        "description": "バッジに関連付けられたリンク。"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "バッジのスキル",
+        "description": "バッジに表示されるスキル。"
+      },
+      {
+        "property": "skill",
+        "title": "スキル（OER Schema）",
+        "description": "OER Schema：この学習目標を達成することで習得したスキル。"
+      }
+    ]
+  }
+}

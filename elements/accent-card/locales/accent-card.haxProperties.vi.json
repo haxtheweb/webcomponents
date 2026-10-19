@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Thẻ",
+    "description": "Thẻ nội dung có kiểu nhấn tùy chọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề cho thẻ."
+      },
+      {
+        "slot": "subheading",
+        "title": "Tiêu đề phụ",
+        "description": "Tiêu đề phụ tùy chọn cho thẻ."
+      },
+      {
+        "slot": "content",
+        "title": "Nội dung",
+        "description": "Nội dung cho thẻ."
+      },
+      {
+        "slot": "footer",
+        "title": "Chân bảng",
+        "description": "Chân thẻ tùy chọn."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Hình ảnh",
+        "description": "Hình ảnh tùy chọn"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Văn bản thay thế cho hình ảnh",
+        "description": "Văn bản thay thế mô tả hình ảnh cho trình đọc màn hình. Chỉ để trống nếu hình ảnh thuần túy để trang trí."
+      },
+      {
+        "property": "imageAlign",
+        "title": "Căn ảnh ngang",
+        "description": "Căn chỉnh ngang của hình ảnh",
+        "options": {
+          "left": "trái",
+          "center": "giữa",
+          "right": "phải"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "Căn ảnh dọc",
+        "description": "Căn chỉnh dọc của hình ảnh",
+        "options": {
+          "top": "trên",
+          "center": "giữa",
+          "bottom": "dưới"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Màu nhấn tùy chọn."
+      },
+      {
+        "property": "dark",
+        "title": "Giao diện tối",
+        "description": "Bật giao diện tối"
+      },
+      {
+        "property": "horizontal",
+        "title": "Ngang",
+        "description": "Hướng ngang?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Nhấn tiêu đề",
+        "description": "Áp dụng màu nhấn cho tiêu đề?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Nhấn nền",
+        "description": "Áp dụng màu nhấn cho nền thẻ?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Không nhấn viền",
+        "description": "Bỏ viền nhấn?"
+      },
+      {
+        "property": "flat",
+        "title": "Phẳng",
+        "description": "Bỏ đổ bóng?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Góc",
+        "description": "Nội dung cho góc thẻ."
+      }
+    ]
+  }
+}

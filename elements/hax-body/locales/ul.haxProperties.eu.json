@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Buleta-zerrenda",
+    "description": "Sortu buleta-zerrenda bat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Buleta-estiloa",
+        "description": "Ordenatu gabeko zerrenden buletetarako erabilitako estiloa.",
+        "options": {
+          "": "Lehenetsia (karratua)",
+          "list-disc": "Diskoa",
+          "list-circle": "Zirkulua",
+          "list-square": "Karratua"
+        }
+      }
+    ]
+  }
+}

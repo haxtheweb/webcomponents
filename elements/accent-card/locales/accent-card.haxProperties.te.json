@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "కార్డ్",
+    "description": "ఐచ్ఛిక యాక్సెంట్ శైలితో కూడిన కార్డ్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "శీర్షిక",
+        "description": "కార్డ్ కోసం ఒక శీర్షిక."
+      },
+      {
+        "slot": "subheading",
+        "title": "ఉపశీర్షిక",
+        "description": "కార్డ్ కోసం ఐచ్ఛిక ఉపశీర్షిక."
+      },
+      {
+        "slot": "content",
+        "title": "కంటెంట్",
+        "description": "కార్డ్ కోసం కంటెంట్."
+      },
+      {
+        "slot": "footer",
+        "title": "ఫుటర్",
+        "description": "కార్డ్ కోసం ఐచ్ఛిక ఫుటర్."
+      },
+      {
+        "property": "imageSrc",
+        "title": "చిత్రం",
+        "description": "ఐచ్ఛిక చిత్రం"
+      },
+      {
+        "property": "imageAlt",
+        "title": "చిత్రం ప్రత్యామ్నాయ వచనం",
+        "description": "స్క్రీన్ రీడర్‌ల కోసం చిత్రాన్ని వివరించే ప్రత్యామ్నాయ వచనం. చిత్రం కేవలం అలంకారమైనదైతే మాత్రమే ఖాళీగా ఉంచండి."
+      },
+      {
+        "property": "imageAlign",
+        "title": "చిత్ర అమరిక",
+        "description": "చిత్ర క్షితిజ సమాంతర అమరిక",
+        "options": {
+          "left": "ఎడమ",
+          "center": "మధ్య",
+          "right": "కుడి"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "చిత్ర నిలువు అమరిక",
+        "description": "చిత్ర నిలువు అమరిక",
+        "options": {
+          "top": "పైన",
+          "center": "మధ్య",
+          "bottom": "కింద"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ఐచ్ఛిక యాక్సెంట్ రంగు."
+      },
+      {
+        "property": "dark",
+        "title": "డార్క్ థీమ్",
+        "description": "డార్క్ థీమ్‌ను ప్రారంభించండి"
+      },
+      {
+        "property": "horizontal",
+        "title": "అడ్డం",
+        "description": "క్షితిజ సమాంతర దిశ?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "శీర్షిక యాక్సెంట్",
+        "description": "శీర్షికకు యాక్సెంట్ రంగును వర్తింపజేయాలా?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "నేపథ్య యాక్సెంట్",
+        "description": "కార్డ్ నేపథ్యానికి యాక్సెంట్ రంగును వర్తింపజేయాలా?"
+      },
+      {
+        "property": "noBorder",
+        "title": "అంచు యాక్సెంట్ లేదు",
+        "description": "అంచు యాక్సెంట్‌ను తొలగించాలా?"
+      },
+      {
+        "property": "flat",
+        "title": "ఫ్లాట్",
+        "description": "బాక్స్ షాడోను తొలగించాలా?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "మూల",
+        "description": "కార్డ్ మూల కోసం కంటెంట్."
+      }
+    ]
+  }
+}

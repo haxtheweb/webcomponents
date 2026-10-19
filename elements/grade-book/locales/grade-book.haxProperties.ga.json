@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Leabhar Grádanna",
+    "description": "Leabhar grádanna gan cheann a thacaíonn le hinnill éagsúla le ruibricí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Foinse",
+        "description": "Cineál foinse sonraí (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Críochphointe URL (JSON)",
+          "json": "Bloba sonraí JSON",
+          "filesystem": "Córas comhad"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Sonraí Foinse",
+        "description": "URL nó sonraí JSON don leabhar grádanna."
+      },
+      {
+        "property": "forCourse",
+        "title": "Tagairt Chúrsa",
+        "description": "Aitheantóir cúrsa a astaítear mar oer:forCourse ar gach acmhainn Measúnaithe."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV表",
+    "description": "場所を問わずCSVファイルから表を生成できます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "ソース",
+        "description": "このCSVファイルのURL。"
+      },
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "生成する表のタイトル。"
+      },
+      {
+        "property": "description",
+        "title": "説明",
+        "description": "表データのアクセシビリティを高めるための詳しい説明。"
+      }
+    ]
+  }
+}

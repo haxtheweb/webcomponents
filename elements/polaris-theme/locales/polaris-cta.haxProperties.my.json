@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "Theme နှင့်ကိုက်ညီသော Polaris လုပ်ဆောင်ရန် ဖိတ်ခေါ်ချက် ခလုတ်ကို ပြသရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "ခလုတ် စာသား",
+        "description": "လုပ်ဆောင်ရန် ဖိတ်ခေါ်ချက် ခလုတ်တွင် ပြသော စာသား။"
+      },
+      {
+        "property": "link",
+        "title": "လင့်ခ်",
+        "description": "ခလုတ်အတွက် ဦးတည်ရာ URL။"
+      },
+      {
+        "property": "type",
+        "title": "မူကွဲ",
+        "description": "အမြင် ပုံစံ မူကွဲ။",
+        "options": {
+          "primary": "အဓိက",
+          "tinted": "အရောင်ဖျော့",
+          "light": "အလင်း"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "အနားသတ်မျဉ်း ပုံစံ",
+        "description": "အနားသတ်မျဉ်း ပုံစံကို ဖွင့်ရန်။"
+      },
+      {
+        "property": "filled",
+        "title": "အရောင်ဖြည့် ပုံစံ",
+        "description": "အရောင်ဖြည့် ပုံစံကို ဖွင့်ရန်။"
+      }
+    ]
+  }
+}

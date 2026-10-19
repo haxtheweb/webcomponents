@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Azione utente",
+    "description": "Traccia le azioni degli utenti e invia i dati agli archivi xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Evento da tracciare",
+        "description": "Azione dell'utente che attiva questo evento.",
+        "options": {
+          "visibility": "Può vedere questo",
+          "keydown": "Premi un tasto qui",
+          "click": "Fai clic qui",
+          "hover": "Passa il mouse qui"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Traccia ogni volta",
+        "description": "Per impostazione predefinita viene tracciata solo la prima occorrenza."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Imej Asas",
+    "description": "Elemen imej asas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Sumber",
+        "description": "URL imej."
+      },
+      {
+        "attribute": "alt",
+        "title": "Teks alt",
+        "description": "Teks alternatif untuk kebolehaksesan dan SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Tinggi",
+        "description": "Ketinggian dalam piksel. Biarkan kosong untuk menggunakan saiz semula jadi."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Pemuatan imej",
+        "description": "Pilih bila imej dimuatkan.",
+        "options": {
+          "lazy": "Muatkan apabila kelihatan",
+          "auto": "Automatik"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Sumber responsif (srcset)",
+        "description": "Senaraikan URL imej dan penerang (cth. 480w atau 2x) supaya pelayar memilih saiz terbaik untuk skrin. Disimpan sebagai atribut srcset standard."
+      }
+    ]
+  }
+}

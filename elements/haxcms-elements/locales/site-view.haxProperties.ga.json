@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Amharc Suímh",
+    "description": "Bloc dinimiciúil a dhéanann iarratas ar shonraí suímh agus a thaispeánann iad bunaithe ar chritéir"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL an Amhairc",
+        "description": "Paraiméadair iarratais d'fhotha sonraí an amhairc. Is féidir leat é seo a fháil ó dheais na nAmharc."
+      },
+      {
+        "property": "renderer",
+        "title": "Mód taispeána",
+        "description": "Conas ba cheart torthaí an amhairc a rindreáil"
+      },
+      {
+        "property": "entity",
+        "title": "Cineál aonáin",
+        "description": "Cineál aonáin a úsáidtear chun an freagra a pharsáil",
+        "options": {
+          "": "Réamhshocrú (míreanna)",
+          "item": "Mír",
+          "page": "Leathanach",
+          "file": "Comhad",
+          "tag": "Clib",
+          "block": "Bloc",
+          "view": "Amharc",
+          "theme": "Téama",
+          "region": "Réigiún",
+          "customElement": "Eilimint Shaincheaptha"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Bris amharc an tsuímh",
+        "description": "Tiontaigh go hábhar statach le haghaidh eagarthóireacht dhíreach; stopann sé uathnuashonrú ón bhfoinse."
+      }
+    ]
+  }
+}

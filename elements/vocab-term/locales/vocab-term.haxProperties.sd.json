@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "لغت",
+    "description": "لغت جو اصطلاح."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "اصطلاح"
+      },
+      {
+        "property": "information",
+        "title": "تعريف",
+        "description": "اصطلاح تي ڪلڪ ڪرڻ وقت ڏيکاريل تعريف."
+      },
+      {
+        "property": "popoverMode",
+        "title": "پاپ اوور",
+        "description": "تعريف ان لائن بدران پاپ اوور ۾ ڏيکاريو."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "لنڪون",
+        "description": "هن اصطلاح سان لاڳاپيل اضافي لنڪن جي لسٽ."
+      }
+    ]
+  }
+}

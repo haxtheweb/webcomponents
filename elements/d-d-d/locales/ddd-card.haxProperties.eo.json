@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "Karto",
+    "description": "Karta komponanto stiligita per la DDD-dezajnsistemo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Bildo",
+        "description": "Nedeviga bildo."
+      },
+      {
+        "property": "alt",
+        "title": "Alt-teksto de bildo",
+        "description": "Alternativa teksto priskribanta la bildon."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo de la karto."
+      },
+      {
+        "slot": "",
+        "title": "Enhavo",
+        "description": "Enhava areo de la karto."
+      },
+      {
+        "property": "href",
+        "title": "Ligilo",
+        "description": "Ligila URL de la butono."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Etikedo",
+        "description": "Etikedo de la butono."
+      },
+      {
+        "property": "noArrow",
+        "title": "Sen sago",
+        "description": "Kaŝi la sagon de la butono."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Ligilo: celo",
+        "description": "Kie malfermi la ligilon.",
+        "options": {
+          "": "Sama fenestro",
+          "_blank": "Nova fenestro - _blank",
+          "_top": "Supra fenestro - _top",
+          "_parent": "Gepatra fenestro - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Ligilo: rel",
+        "description": "Rilato inter la ligita rimedo kaj la nuna dokumento."
+      }
+    ]
+  }
+}

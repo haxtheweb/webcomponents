@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Umlingiswa we-RPG",
+    "description": "Umlingiswa ojabulisayo ovela ku-HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Igama",
+        "description": "Igama elisetshenziselwa ukukhiqiza umlingiswa ongahleliwe."
+      },
+      {
+        "property": "hat",
+        "title": "Isigqoko",
+        "description": "Isitayela sesigqoko.",
+        "options": {
+          "none": "Okuzenzakalelayo",
+          "random": "Okungahleliwe",
+          "bunny": "Unogwaja",
+          "cowboy": "Inkomazi",
+          "education": "Imfundo",
+          "construction": "Ukwakha",
+          "warning": "Isexwayiso",
+          "watermelon": "Ikhabe",
+          "coffee": "Ikhofi",
+          "knight": "Iqhawe",
+          "ninja": "INinja",
+          "party": "Idili",
+          "error": "Iphutha",
+          "edit": "Hlela"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi",
+        "description": "Ububanzi bomlingiswa ngamaphikseli."
+      },
+      {
+        "property": "height",
+        "title": "Ubude",
+        "description": "Ubude bomlingiswa ngamaphikseli."
+      },
+      {
+        "property": "fire",
+        "title": "Uyasha?",
+        "description": "Ukuthi umlingiswa uyasha yini."
+      },
+      {
+        "property": "walking",
+        "title": "Uyahamba?",
+        "description": "Ukunyakaza kokuhamba; kuyasebenza lapho esha."
+      }
+    ]
+  }
+}

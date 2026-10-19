@@ -1,0 +1,18 @@
+{
+  "title": "플랫폼 기능",
+  "experienceLevel": "숙련도",
+  "cmsFeatures": "CMS 기능",
+  "editorFeatures": "편집기 기능",
+  "blocks": "블록",
+  "filterBlocks": "블록 필터",
+  "requiredTextNote": "일부 텍스트 태그는 필수이며 항상 사용됩니다(비활성 상태로 표시됨).",
+  "download": "스켈레톤 다운로드",
+  "save": "저장",
+  "generating": "스켈레톤 생성 중…",
+  "generated": "스켈레톤을 다운로드했습니다",
+  "enabled": "사용",
+  "feature": "기능",
+  "details": "세부 정보",
+  "featuresWarning": "이 옵션을 끄면 주요 작성 및 관리 기능이 제거될 수 있습니다.",
+  "largeSiteWarning": "이 사이트에는 페이지가 많습니다. 스켈레톤 생성에 시간이 걸릴 수 있습니다."
+}

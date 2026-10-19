@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Sifersysteem",
+    "description": "In headless sifersysteem dat meardere backends mei rubriken stipet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Boarne",
+        "description": "Type gegevensboarne (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-einpunt (JSON)",
+          "json": "JSON-gegevensblob",
+          "filesystem": "Triemsysteem"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Boarnegegevens",
+        "description": "URL of JSON-gegevens foar it sifersysteem."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursusferwizing",
+        "description": "Kursus-ID útjûn as oer:forCourse op elke Assessment-boarne."
+      }
+    ]
+  }
+}

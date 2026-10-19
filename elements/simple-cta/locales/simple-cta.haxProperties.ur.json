@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "عمل کی دعوت",
+    "description": "عمل کرنے کے لیے لنک والا ایک سادہ بٹن۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "لیبل",
+        "description": "لنک کا لیبل"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "کسی بھی وسیلے کا لنک درج کریں"
+      },
+      {
+        "property": "hideIcon",
+        "title": "آئیکن چھپائیں",
+        "description": "متن کو نمایاں کرنے کے لیے استعمال ہونے والا آئیکن چھپائیں"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "عمل کے لنک کا آئیکن"
+      }
+    ]
+  }
+}

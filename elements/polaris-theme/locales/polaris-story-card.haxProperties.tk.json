@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris hekaýa kartoçkasy",
+    "description": "Fon suratly, sütün belgili we sözbaşy tekstli Polaris hekaýa kartoçkasyny görkeziň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Fon suraty",
+        "description": "Kartoçkanyň fony hökmünde görkezilýän suratyň URL-i."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Fonuň ölçegi",
+        "description": "Fon suratynyň kartoçkany nähili doldurýandygy (CSS background-size).",
+        "options": {
+          "cover": "Örtmek (cover)",
+          "contain": "Sygdyrmak (contain)",
+          "auto": "Awtomatik (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fonuň berkidilişi",
+        "description": "Aýlananda fon suratynyň özüni nähili alyp barýandygy (CSS background-attachment).",
+        "options": {
+          "scroll": "Aýlanýan (scroll)",
+          "fixed": "Berkidilen (fixed)",
+          "local": "Ýerli (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Sütün belgisi",
+        "description": "Kartoçkanyň ýokarsynda görkezilýän gysga baş harply belgi. Gizlemek üçin boş goýuň."
+      },
+      {
+        "property": "label",
+        "title": "Kartoçkanyň teksti",
+        "description": "Aşaky panelde görkezilýän esasy tekst."
+      },
+      {
+        "property": "link",
+        "title": "Baglanyşyk",
+        "description": "Tutuş kartoçkany öz içine alýan goşmaça barmaly URL."
+      }
+    ]
+  }
+}

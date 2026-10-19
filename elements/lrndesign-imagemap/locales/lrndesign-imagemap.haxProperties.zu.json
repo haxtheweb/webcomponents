@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Imephu yesithombe",
+    "description": "Imephu yesithombe efinyelelekayo enezindawo ezisebenzisanayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Ilebula",
+        "description": "Ilebula yemephu yesithombe."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Imininingwane yezindawo",
+        "description": "Izindawo ezisebenzisanayo emephini yesithombe."
+      }
+    ]
+  }
+}

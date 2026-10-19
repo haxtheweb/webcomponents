@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mee ka o pụta ìhè",
+    "description": "Mee ka ederede n'ahịrị pụta ìhè."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Ederede",
+        "description": "Ederede pụtara ìhè."
+      }
+    ]
+  }
+}

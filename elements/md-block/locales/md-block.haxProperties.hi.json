@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "सीधे या रिमोट से लोड की गई markdown सामग्री का ब्लॉक"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "रॉ markdown"
+      },
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "markdown के लिए स्रोत फ़ाइल"
+      }
+    ]
+  }
+}

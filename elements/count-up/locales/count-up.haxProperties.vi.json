@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Đếm tăng",
+    "description": "Tạo hoạt ảnh số đếm tăng đến giá trị đích khi cuộn vào khung nhìn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Giá trị kết thúc",
+        "description": "Số cần đếm đến."
+      },
+      {
+        "property": "start",
+        "title": "Giá trị bắt đầu",
+        "description": "Số bắt đầu đếm."
+      },
+      {
+        "property": "duration",
+        "title": "Thời lượng",
+        "description": "Số giây hoạt ảnh đếm diễn ra."
+      },
+      {
+        "property": "prefixtext",
+        "title": "Văn bản tiền tố",
+        "description": "Văn bản hiển thị trước số (ví dụ: '$')."
+      },
+      {
+        "property": "suffixtext",
+        "title": "Văn bản hậu tố",
+        "description": "Văn bản hiển thị sau số (ví dụ: '%')."
+      },
+      {
+        "slot": "prefix",
+        "title": "Khe tiền tố",
+        "description": "Nội dung khe tùy chọn trước số."
+      },
+      {
+        "slot": "suffix",
+        "title": "Khe hậu tố",
+        "description": "Nội dung khe tùy chọn sau số."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "Số chữ số thập phân",
+        "description": "Số chữ số thập phân cần hiển thị."
+      },
+      {
+        "property": "separator",
+        "title": "Dấu phân cách hàng nghìn",
+        "description": "Ký tự phân cách các nhóm hàng nghìn."
+      },
+      {
+        "property": "decimal",
+        "title": "Ký tự thập phân",
+        "description": "Ký tự dùng làm dấu thập phân."
+      },
+      {
+        "property": "noeasing",
+        "title": "Không giảm tốc",
+        "description": "Tắt hiệu ứng giảm tốc để số đếm tăng tuyến tính."
+      }
+    ]
+  }
+}

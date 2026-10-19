@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "لائن چارٹ",
+    "description": "CSV توں پہنچ جوگا چارٹ بݨاؤندا اے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "نمایاں رنگ",
+        "description": "اختیاری نمایاں رنگ۔"
+      },
+      {
+        "title": "گوڑھا تھیم",
+        "description": "ڈارک تھیم چالو کرو"
+      },
+      {
+        "title": "CSV فائل",
+        "description": "CSV توں ڈیٹا لوڈ کرو۔"
+      },
+      {
+        "title": "چارٹ دا سرناواں",
+        "description": "تہاڈے چارٹ لئی پہنچ جوگا alt متن۔"
+      },
+      {
+        "title": "چارٹ دی تفصیل",
+        "description": "تہاڈے چارٹ دی پہنچ جوگی تفصیل۔"
+      },
+      {
+        "title": "پیمانے دا ناں",
+        "description": "چارٹ دی چوڑائی:اُچائی دی نسبت ($ct-scales تے $ct-scales-names لئی https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings ویکھو)۔",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "گرڈ پچھوکڑ وکھاؤ"
+      },
+      {
+        "title": "رقبہ وکھاؤ"
+      },
+      {
+        "title": "لکیر وکھاؤ"
+      },
+      {
+        "title": "نقطہ وکھاؤ"
+      },
+      {
+        "title": "پوری چوڑائی"
+      },
+      {
+        "title": "نقطیاں دے لیبل وکھاؤ"
+      },
+      {
+        "title": "چارٹ پیڈنگ (اُتے)"
+      },
+      {
+        "title": "چارٹ پیڈنگ (تھلے)"
+      },
+      {
+        "title": "چارٹ پیڈنگ (کھبے)"
+      },
+      {
+        "title": "چارٹ پیڈنگ (سجے)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ڈیٹا اُلٹاؤ",
+        "description": "لیبلاں سمیت ڈیٹا، سیریز دی ترتیب تے پوری سیریز ڈیٹا ایریز اُلٹاؤ۔"
+      },
+      {
+        "title": "HTML ٹیبل",
+        "description": "اختیاری: ڈیٹا HTML ٹیبل وجوں لوڈ کرو۔"
+      },
+      {
+        "title": "چارٹ گھٹو گھٹ",
+        "description": "چارٹ دی قدرتی نیویں قدر بدلن نال تسیں زوم کر سکدے او یا چارٹ دی سب توں نیویں وکھائی قدر محدود کر سکدے او"
+      },
+      {
+        "title": "چارٹ ودھ توں ودھ",
+        "description": "چارٹ دی قدرتی اُچی قدر بدلن نال تسیں زوم کر سکدے او یا چارٹ دی سب توں اُچی وکھائی قدر محدود کر سکدے او"
+      },
+      {
+        "title": "نقطیاں دے لیبل وکھاؤ",
+        "options": {
+          "middle": "وچکار",
+          "start": "شروع",
+          "end": "اخیر"
+        }
+      },
+      {
+        "title": "نقطہ لیبل X-وِتھ"
+      },
+      {
+        "title": "نقطہ لیبل Y-وِتھ"
+      },
+      {
+        "title": "ملائم لکیر"
+      },
+      {
+        "title": "رقبے دی بنیاد",
+        "description": "رقبہ چارٹ دی بنیاد جیہڑی رقبے دی شکل بند کرن لئی ورتی جاوے گی (عام طور تے 0)۔"
+      },
+      {
+        "title": "X-محور گرڈ وکھاؤ",
+        "description": "X-محور دا گرڈ وکھاؤ۔"
+      },
+      {
+        "title": "X-محور وِتھ"
+      },
+      {
+        "title": "X-محور دی تھاں",
+        "description": "لیبل رکھن دی تھاں۔ \"start\" یا \"end\" سیٹ ہو سکدا اے جتھے \"start\" کھلوتے محور تے کھبے یا اُتے برابر اے تے \"end\" لیٹویں محور تے سجے یا تھلے برابر اے"
+      },
+      {
+        "title": "X-محور لیبل وکھاؤ",
+        "description": "X-محور دا لیبل وکھاؤ۔"
+      },
+      {
+        "title": "X-محور لیبل (لیٹویں وِتھ)",
+        "description": "X-محور دے لیبلاں دی لیٹویں تھاں۔"
+      },
+      {
+        "title": "X-محور لیبل (کھلوتی وِتھ)",
+        "description": "X-محور دے لیبلاں دی کھلوتی تھاں۔"
+      },
+      {
+        "title": "X-محور دا سرناواں",
+        "description": "X-محور لئی اختیاری سرناواں۔"
+      },
+      {
+        "title": "X-محور سرناواں (لیٹویں وِتھ)",
+        "description": "X-محور دے سرناویں دی لیٹویں تھاں۔"
+      },
+      {
+        "title": "X-محور سرناواں (کھلوتی وِتھ)",
+        "description": "X-محور دے سرناویں دی کھلوتی تھاں۔"
+      },
+      {
+        "title": "X-محور سرناواں اینکر",
+        "description": "X-محور دے سرناویں لئی اختیاری اینکر۔",
+        "options": {
+          "middle": "وچکار",
+          "end": "انت",
+          "start": "شروع"
+        }
+      },
+      {
+        "title": "Y-محور: گرڈ وکھاؤ",
+        "description": "Y-محور دا گرڈ وکھاؤ۔"
+      },
+      {
+        "title": "Y-محور وِتھ"
+      },
+      {
+        "title": "Y-محور دی تھاں",
+        "description": "لیبل رکھن دی تھاں۔ \"start\" یا \"end\" سیٹ ہو سکدا اے جتھے \"start\" کھلوتے محور تے کھبے یا اُتے برابر اے تے \"end\" لیٹویں محور تے سجے یا تھلے برابر اے"
+      },
+      {
+        "title": "Y-محور لیبل وکھاؤ",
+        "description": "Y-محور دا لیبل وکھاؤ۔"
+      },
+      {
+        "title": "Y-محور لیبل (لیٹویں وِتھ)",
+        "description": "Y-محور دے لیبل دی لیٹویں تھاں۔"
+      },
+      {
+        "title": "Y-محور لیبل (کھلوتی وِتھ)",
+        "description": "Y-محور دے لیبل دی کھلوتی تھاں۔"
+      },
+      {
+        "title": "Y-محور پیمانہ گھٹو گھٹ تھاں",
+        "description": "پیمانے دے قدماں دی گھٹو گھٹ اُچائی پکسلاں وچ دسدا اے۔"
+      },
+      {
+        "title": "Y-محور پیمانہ (صرف پورے ہندسے)",
+        "description": "پیمانے دے قدماں لئی صرف پورے ہندسے ورتو۔"
+      },
+      {
+        "title": "Y-محور دا سرناواں",
+        "description": "Y-محور لئی اختیاری سرناواں۔"
+      },
+      {
+        "title": "Y-محور سرناواں (کھلوتی وِتھ)",
+        "description": "Y-محور دے سرناویں دی لیٹویں تھاں۔"
+      },
+      {
+        "title": "Y-محور سرناواں (لیٹویں وِتھ)",
+        "description": "Y-محور دے سرناویں دی لیٹویں تھاں۔"
+      },
+      {
+        "title": "Y-محور سرناواں اینکر",
+        "description": "Y-محور دے سرناویں لئی اختیاری اینکر۔",
+        "options": {
+          "middle": "وچکار",
+          "end": "انت",
+          "start": "شروع"
+        }
+      },
+      {
+        "title": "Y-محور سرناواں پلٹو",
+        "description": "Y-محور لئی سرناواں پلٹݨا اے؟"
+      }
+    ]
+  }
+}

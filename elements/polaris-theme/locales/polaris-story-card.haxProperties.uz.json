@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris hikoya kartasi",
+    "description": "Fon rasmi, ustun yorligʻi va sarlavha matniga ega Polaris hikoya kartasini koʻrsatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Fon rasmi",
+        "description": "Karta foni sifatida koʻrsatiladigan rasm URL manzili."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Fon oʻlchami",
+        "description": "Fon rasmi kartani qanday toʻldiradi (CSS background-size).",
+        "options": {
+          "cover": "Qoplash (cover)",
+          "contain": "Sigʻdirish (contain)",
+          "auto": "Avtomatik (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Fon biriktirilishi",
+        "description": "Aylantirishda fon rasmi qanday harakat qiladi (CSS background-attachment).",
+        "options": {
+          "scroll": "Aylanadigan (scroll)",
+          "fixed": "Qatʼiy (fixed)",
+          "local": "Mahalliy (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Ustun yorligʻi",
+        "description": "Karta yuqorisida koʻrsatiladigan qisqa bosh harfli yorliq. Yashirish uchun boʻsh qoldiring."
+      },
+      {
+        "property": "label",
+        "title": "Karta matni",
+        "description": "Pastki panelda koʻrsatiladigan asosiy matn."
+      },
+      {
+        "property": "link",
+        "title": "Havola",
+        "description": "Butun kartani qamrab oluvchi ixtiyoriy manzil URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "ఆడియో",
+    "description": "ఇది మూలంతో సంబంధం లేకుండా వీడియోను అత్యంత యాక్సెసిబుల్ పద్ధతిలో ప్రదర్శించగలదు."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "మూలం",
+        "description": "ఈ మీడియా కోసం URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "శీర్షిక",
+        "description": "వీడియో కింద సాధారణ శీర్షిక"
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "ప్లేయర్ కోసం యాక్సెంట్ రంగును ఎంచుకోండి."
+      },
+      {
+        "property": "track",
+        "title": "క్లోజ్డ్ క్యాప్షన్‌లు",
+        "description": "క్యాప్షన్‌ల ఫైల్ కోసం URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "థంబ్‌నెయిల్ చిత్రం",
+        "description": "ఐచ్ఛికం. థంబ్‌నెయిల్/పోస్టర్ చిత్రం కోసం URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "లెర్నింగ్ మోడ్‌ను ప్రారంభించండి",
+        "description": "ఫాస్ట్ ఫార్వర్డ్ మరియు రివైండ్‌ను నిలిపివేస్తుంది."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTubeలో తెరవండి బటన్‌ను తొలగించండి",
+        "description": "వీడియోను YouTubeలో తెరవడానికి బటన్‌ను తొలగిస్తుంది."
+      },
+      {
+        "property": "linkable",
+        "title": "షేర్ లింక్‌ను చేర్చాలా?",
+        "description": "వీడియోను షేర్ చేయడానికి లింక్‌ను అందిస్తుంది."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS ఉపయోగించాలో లేదో సూచిస్తుంది.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "నేపథ్య ప్లేబ్యాక్‌ను అనుమతించండి",
+        "description": "ట్యాబ్ ఫోకస్ కోల్పోయినప్పుడు వీడియోలు స్వయంచాలకంగా పాజ్ / ప్లే అవుతాయి; ఇది ట్యాబ్‌కు ఫోకస్ లేకుండానే వీడియో ప్లే అయ్యేలా చేస్తుంది"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ట్రాన్స్‌క్రిప్ట్ కోసం డార్క్ థీమ్",
+        "description": "ట్రాన్స్‌క్రిప్ట్ కోసం డార్క్ థీమ్‌ను ప్రారంభించండి."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ఇంటరాక్టివ్‌ను నిలిపివేయండి",
+        "description": "ట్రాన్స్‌క్రిప్ట్‌ను క్లిక్ చేయగలిగేలా చేసే ఇంటరాక్టివ్ మోడ్‌ను నిలిపివేయండి."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "టైమ్‌స్టాంప్‌లను దాచండి",
+        "description": "ట్రాన్స్‌క్రిప్ట్‌పై టైమ్ స్టాంప్‌లను దాచండి."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ట్రాన్స్‌క్రిప్ట్‌ను దాచండి",
+        "description": "డిఫాల్ట్‌గా ట్రాన్స్‌క్రిప్ట్‌ను దాచండి."
+      },
+      {
+        "property": "lang",
+        "title": "భాష",
+        "description": "మీడియా యొక్క భాష."
+      }
+    ]
+  }
+}

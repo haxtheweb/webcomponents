@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D тоглуулагч",
+    "description": "3D файл / нэмэгдсэн бодит байдлын тоглуулагч."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Эх сурвалж",
+        "description": "Энэ AR файлын URL."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR дахь элементийн X байрлал."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR дахь элементийн Y байрлал."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR дахь элементийн Z байрлал."
+      },
+      {
+        "property": "skyColor",
+        "title": "Тэнгэрийн өнгө",
+        "description": "Үзэгдэл дэх тэнгэрийн өнгийг сонгоно уу."
+      }
+    ]
+  }
+}

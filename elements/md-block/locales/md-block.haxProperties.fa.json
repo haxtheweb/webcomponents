@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "بلوکی از محتوای markdown، مستقیم یا بارگذاری‌شده از راه دور"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "markdown خام"
+      },
+      {
+        "property": "source",
+        "title": "منبع",
+        "description": "فایل منبع markdown"
+      }
+    ]
+  }
+}

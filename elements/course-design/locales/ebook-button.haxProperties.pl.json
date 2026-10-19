@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Przycisk e-booka",
+    "description": "Przycisk z linkiem do e-booka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Tytuł przycisku."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Link, do którego nastąpi przekierowanie po kliknięciu."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona reprezentująca ten link"
+      }
+    ]
+  }
+}

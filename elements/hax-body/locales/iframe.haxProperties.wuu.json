@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "嵌入外部网页内容。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "来源",
+        "description": "搿只资源个 URL。"
+      }
+    ]
+  }
+}

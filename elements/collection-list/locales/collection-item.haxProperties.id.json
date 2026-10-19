@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Item koleksi",
+    "description": "Item bergaya kartu untuk digunakan di dalam daftar koleksi, dengan teks, tautan, dan media opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Tautan",
+        "description": "URL tujuan untuk kartu ini."
+      },
+      {
+        "property": "image",
+        "title": "Gambar",
+        "description": "Gambar latar belakang."
+      },
+      {
+        "property": "line1",
+        "title": "Baris 1",
+        "description": "Baris teks pertama."
+      },
+      {
+        "property": "line2",
+        "title": "Baris 2",
+        "description": "Baris teks kedua."
+      },
+      {
+        "property": "line3",
+        "title": "Baris 3",
+        "description": "Baris teks ketiga."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon yang mewakili kartu."
+      },
+      {
+        "property": "saturate",
+        "title": "Efek saturasi",
+        "description": "Ubah saturasi gambar saat pengguna memfokuskan."
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Daftar tag yang dipisahkan koma."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna",
+        "description": "Warna yang digunakan untuk tag."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Teks alternatif yang mendeskripsikan tautan."
+      }
+    ]
+  }
+}

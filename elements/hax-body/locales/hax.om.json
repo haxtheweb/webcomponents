@@ -122,5 +122,21 @@
   "recent": "Dhiyoo",
   "popular": "Beekamaa",
   "copiedToClipboard": "Clipboorditti garagalfame",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Odeeffannoo suuraa",
+  "imageActions": "Gochaalee suuraa",
+  "imageRecommendations": "Gorsa suuraa",
+  "compressImage": "Suuraa xiqqeessi",
+  "resizeTo": "Hamma jijjiiri gara",
+  "created": "Uumame",
+  "size": "Hamma",
+  "dimensions": "Safartuuwwan",
+  "type": "Gosa",
+  "done": "xumurameera",
+  "noFileUuid": "Wabiin faayilii hin argamu; gochaalee dandeessisuuf irra deebi'ii olkaa'i.",
+  "fileOpsUnavailable": "Hojiiwwan faayilii marsariitii kanaaf hin jiran.",
+  "fileOpFailed": "Hojiin faayilii hin milkoofne.",
+  "fileExtensionNotAllowed": "Iddoon kun gosoota faayilii armaan gadii qofa fudhata:",
+  "fileTypeNotAllowed": "Iddoon kun gosoota miidiyaa armaan gadii qofa fudhata:",
+  "transformFailed": "Jijjiiramni erga olkaa'amee booda hin milkoofne; faayiliin jalqabaa eegameera."
 }

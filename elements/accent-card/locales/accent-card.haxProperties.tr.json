@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kart",
+    "description": "İsteğe bağlı vurgu stiline sahip bir kart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Başlık",
+        "description": "Kart için bir başlık."
+      },
+      {
+        "slot": "subheading",
+        "title": "Alt başlık",
+        "description": "Kart için isteğe bağlı bir alt başlık."
+      },
+      {
+        "slot": "content",
+        "title": "İçerik",
+        "description": "Kart içeriği."
+      },
+      {
+        "slot": "footer",
+        "title": "Alt Bilgi",
+        "description": "Kart için isteğe bağlı bir alt bilgi."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Görsel",
+        "description": "İsteğe bağlı görsel"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Görsel Alternatif Metni",
+        "description": "Ekran okuyucular için görseli açıklayan alternatif metin. Yalnızca görsel tamamen dekoratifse boş bırakın."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Görsel Yatay Hizalaması",
+        "options": {
+          "left": "sol",
+          "center": "orta",
+          "right": "sağ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Görsel Dikey Hizalaması",
+        "options": {
+          "top": "üst",
+          "center": "orta",
+          "bottom": "alt"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "İsteğe bağlı vurgu rengi."
+      },
+      {
+        "property": "dark",
+        "title": "Koyu Tema",
+        "description": "Karanlık Temayı Etkinleştir"
+      },
+      {
+        "property": "horizontal",
+        "title": "Yatay",
+        "description": "Yatay yönlendirme?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Başlık Vurgusu",
+        "description": "Başlığa vurgu rengi uygulansın mı?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Arka Plan Vurgusu",
+        "description": "Kart arka planına vurgu rengi uygulansın mı?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Kenarlık Vurgusu Yok",
+        "description": "Kenarlık vurgusu kaldırılsın mı?"
+      },
+      {
+        "property": "flat",
+        "title": "Düz",
+        "description": "Kutu gölgesi kaldırılsın mı?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Köşe",
+        "description": "Kart köşesi için içerik."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Корти ҳикояи Polaris",
+    "description": "Корти ҳикояи Polaris-ро бо тасвири замина, нишонгаи сутун ва матни сарлавҳа нишон диҳед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Тасвири замина",
+        "description": "URL-и тасвир, ки ҳамчун заминаи корт нишон дода мешавад."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Андозаи замина",
+        "description": "Чӣ тавр тасвири замина кортро пур мекунад (CSS background-size).",
+        "options": {
+          "cover": "Пӯшонидан (cover)",
+          "contain": "Ҷой додан (contain)",
+          "auto": "Худкор (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Пайвасти замина",
+        "description": "Тасвири замина ҳангоми варақзанӣ чӣ гуна рафтор мекунад (CSS background-attachment).",
+        "options": {
+          "scroll": "Варақзанӣ (scroll)",
+          "fixed": "Собит (fixed)",
+          "local": "Маҳаллӣ (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Нишонгаи сутун",
+        "description": "Нишонгаи кӯтоҳ бо ҳарфҳои калон, ки дар болои корт нишон дода мешавад. Барои пинҳон кардан холӣ гузоред."
+      },
+      {
+        "property": "label",
+        "title": "Матни корт",
+        "description": "Матни асосӣ, ки дар панели поёнӣ нишон дода мешавад."
+      },
+      {
+        "property": "link",
+        "title": "Пайванд",
+        "description": "URL-и ихтиёрии таъинот, ки тамоми кортро дар бар мегирад."
+      }
+    ]
+  }
+}

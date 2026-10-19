@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ធាតុគន្ថនិទ្ទេស",
+    "description": "ធាតុតំណាងឱ្យការដកស្រង់តែមួយនៅក្នុងគន្ថនិទ្ទេស ដោយគាំទ្រទម្រង់ និងជម្រើសនាំចេញច្រើន។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "ប្រភេទ",
+        "description": "ប្រភេទការដកស្រង់",
+        "options": {
+          "web": "បណ្ដាញ",
+          "journal": "ទស្សនាវដ្ដី",
+          "book": "សៀវភៅ"
+        }
+      },
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងនៃធាតុ"
+      },
+      {
+        "property": "authors",
+        "title": "អ្នកនិពន្ធ",
+        "description": "ព្រឹត្តិការណ៍នៅក្នុងបន្ទាត់ពេលវេលា"
+      },
+      {
+        "property": "publisher",
+        "title": "អ្នកបោះពុម្ពផ្សាយ",
+        "description": "គេហទំព័រដើម"
+      }
+    ]
+  }
+}

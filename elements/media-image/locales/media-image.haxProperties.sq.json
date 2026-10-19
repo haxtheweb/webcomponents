@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Imazh i përmirësuar",
+    "description": "Një mënyrë për të paraqitur imazhe me përmirësime të ndryshme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Burimi",
+        "description": "URL-ja e imazhit."
+      },
+      {
+        "property": "alt",
+        "title": "Teksti alternativ",
+        "description": "Tekst që përshkruan imazhin për përdoruesit që nuk shohin."
+      },
+      {
+        "property": "link",
+        "title": "Lidhja",
+        "description": "Lidhe imazhin me një URL"
+      },
+      {
+        "property": "card",
+        "title": "Kartë",
+        "description": "Zbato një hije për t'i dhënë pamjen e një karte të ngritur."
+      },
+      {
+        "property": "box",
+        "title": "Kuti",
+        "description": "Zbato një kuti vizuale rreth imazhit."
+      },
+      {
+        "property": "offset",
+        "title": "Zhvendosja",
+        "description": "Zbato një zhvendosje majtas ose djathtas te imazhi.",
+        "options": {
+          "none": "asnjë",
+          "wide": "e gjerë",
+          "narrow": "e ngushtë"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Burimi i citatit",
+        "description": "Citimi për imazhin."
+      },
+      {
+        "property": "caption",
+        "title": "Mbishkrimi",
+        "description": "Legjenda për imazhin."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titulli i figurës",
+        "description": "Titulli për etiketën e figurës."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Përshkrimi i figurës",
+        "description": "Përshkrimi për etiketën e figurës."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Imazhi miniaturë",
+        "description": "Burimi i imazhit miniaturë. Shfaq miniaturën, por hap burimin e plotë në dritare."
+      },
+      {
+        "property": "round",
+        "title": "Imazh i rrumbullakët",
+        "description": "E pret pamjen e imazhit në formë rrethi."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Çaktivizo dritaren e imazhit",
+        "description": "Çaktivizo hapjen e imazhit me klikim në dialogun e inspektuesit të imazheve."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Shfaq si markdown",
+        "description": "Shfaq legjendën dhe citimin si markdown."
+      }
+    ]
+  }
+}

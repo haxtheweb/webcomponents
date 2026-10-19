@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "כותרת יחסית",
+    "description": "מפיקה את היררכיית הכותרות הנכונה בהתבסס על כותרת ההורה"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "מזהה המשאב של כותרת ההורה"
+      },
+      {
+        "property": "disableLink",
+        "description": "משבית את תכונת כפתור הקישור."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "מיישר את כפתור העתקת הקישור לקצה הימני של הכותרת."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "רמת הכותרת אם ההורה לא נמצא."
+      },
+      {
+        "property": "copyMessage",
+        "description": "דורס את טקסט ברירת המחדל של הודעת העתקת הקישור."
+      },
+      {
+        "property": "linkLabel",
+        "description": "דורס את תווית ברירת המחדל של כפתור העתקת הקישור."
+      },
+      {
+        "property": "linkIcon",
+        "description": "דורס את סמל ברירת המחדל של כפתור העתקת הקישור."
+      },
+      {
+        "property": "closeLabel",
+        "description": "דורס את תווית ברירת המחדל של כפתור הסגירה בהודעת העתקת הקישור."
+      },
+      {
+        "property": "closeIcon",
+        "description": "דורס את סמל ברירת המחדל של כפתור הסגירה בהודעת העתקת הקישור."
+      }
+    ]
+  }
+}

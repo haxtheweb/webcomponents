@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Elemento de colección",
+    "description": "Elemento en forma de tarxeta para usar dentro dunha lista de colección, con texto, ligazón e multimedia opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Ligazón",
+        "description": "URL de destino para esta tarxeta."
+      },
+      {
+        "property": "image",
+        "title": "Imaxe",
+        "description": "Imaxe de fondo."
+      },
+      {
+        "property": "line1",
+        "title": "Liña 1",
+        "description": "Primeira liña de texto."
+      },
+      {
+        "property": "line2",
+        "title": "Liña 2",
+        "description": "Segunda liña de texto."
+      },
+      {
+        "property": "line3",
+        "title": "Liña 3",
+        "description": "Terceira liña de texto."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona que representa a tarxeta."
+      },
+      {
+        "property": "saturate",
+        "title": "Efecto de saturación",
+        "description": "Cambiar a saturación da imaxe cando o usuario pon o foco nela."
+      },
+      {
+        "property": "tags",
+        "title": "Etiquetas",
+        "description": "Lista de etiquetas separadas por comas."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor",
+        "description": "Cor usada para as etiquetas."
+      },
+      {
+        "property": "alt",
+        "title": "Texto alternativo",
+        "description": "Texto alternativo que describe a ligazón."
+      }
+    ]
+  }
+}

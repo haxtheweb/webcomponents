@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR कोड",
+    "description": "स्मार्टफोनबाट स्क्यान गर्ने कोड।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR डेटा",
+        "description": "QR कोडको डेटाको स्रोत।"
+      },
+      {
+        "property": "title",
+        "title": "वैकल्पिक शीर्षक",
+        "description": "QR कोडको स्रोतसँग लिङ्क गरिएको वैकल्पिक शीर्षक।"
+      },
+      {
+        "property": "modulesize",
+        "title": "आकार",
+        "description": "QR कोडको आकार।"
+      },
+      {
+        "property": "margin",
+        "title": "मार्जिन",
+        "description": "कोड वरिपरिको खाली ठाउँ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "आउटपुट ढाँचा",
+        "description": "निकाल्ने ढाँचा।",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

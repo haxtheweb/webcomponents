@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Carta d'imagine",
+    "description": "Una carta d'imagine accessibile cù punti interattivi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etichetta",
+        "description": "Etichetta di a carta d'imagine."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Detagli di i punti interattivi",
+        "description": "I punti interattivi di a carta d'imagine."
+      }
+    ]
+  }
+}

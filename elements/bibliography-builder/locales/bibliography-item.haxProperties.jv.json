@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Item bibliografi",
+    "description": "Item sing makili siji kutipan ing bibliografi, ndhukung macem-macem format lan pilihan ekspor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Jinis",
+        "description": "Jinis kutipan",
+        "options": {
+          "web": "Web",
+          "journal": "Jurnal",
+          "book": "Buku"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Irah-irahan",
+        "description": "Judhul item"
+      },
+      {
+        "property": "authors",
+        "title": "Penulis",
+        "description": "Prastawa ing linimasa"
+      },
+      {
+        "property": "publisher",
+        "title": "Penerbit",
+        "description": "Situs web asli"
+      }
+    ]
+  }
+}

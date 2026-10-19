@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Pemapar PDF Pelayar",
+    "description": "Benamkan fail PDF sebaris dengan susun atur kad dan butang muat turun pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "URL PDF",
+        "description": "Lokasi fail PDF."
+      },
+      {
+        "property": "heading",
+        "title": "Tajuk",
+        "description": "Teks tajuk kad."
+      },
+      {
+        "property": "card",
+        "title": "Susun atur kad",
+        "description": "Paparkan PDF dalam kad dengan butang muat turun."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Label muat turun",
+        "description": "Label untuk butang muat turun."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mesej tidak disokong",
+        "description": "Mesej apabila pelayar tidak dapat memaparkan fail PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mesej pautan tidak disokong",
+        "description": "Teks pautan apabila pelayar tidak dapat memaparkan fail PDF."
+      },
+      {
+        "property": "width",
+        "title": "Lebar",
+        "description": "Lebar pemapar PDF."
+      },
+      {
+        "property": "height",
+        "title": "Ketinggian",
+        "description": "Ketinggian pemapar PDF."
+      }
+    ]
+  }
+}

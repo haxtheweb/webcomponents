@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Вазифаи касбӣ",
+    "description": "Вазифаи алоҳида дар дохили ташкилот"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Сарлавҳа"
+      },
+      {
+        "property": "startDate",
+        "title": "Санаи оғоз"
+      },
+      {
+        "property": "endDate",
+        "title": "Санаи анҷом (ихтиёрӣ)"
+      },
+      {
+        "property": "skills",
+        "title": "Малакаҳои марбут",
+        "description": "Барои оғози илова кардани малакаҳо тугмаи +-ро интихоб кунед"
+      }
+    ]
+  }
+}

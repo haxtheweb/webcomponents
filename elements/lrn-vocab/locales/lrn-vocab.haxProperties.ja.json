@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "用語",
+    "description": "用語"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "用語"
+      },
+      {
+        "slot": "",
+        "title": "定義",
+        "description": "用語をクリックしたときに表示する定義。"
+      },
+      {
+        "property": "description",
+        "title": "説明 (OER Schema)",
+        "description": "OER Schema: 用語の短い説明。空欄の場合は定義のテキストから自動入力されます。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Liste de lecture",
+    "description": "Afficher tout type de contenu dans une liste de lecture."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Source",
+        "description": "Contenu affiché dans la liste de lecture."
+      },
+      {
+        "property": "edit",
+        "title": "Mode édition",
+        "description": "Basculer entre le mode édition et le mode aperçu de la liste de lecture."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigation",
+        "description": "Afficher les boutons de navigation avant et arrière."
+      },
+      {
+        "property": "pagination",
+        "title": "Pagination",
+        "description": "Afficher les points de pagination."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientation",
+        "description": "Orientation des diapositives.",
+        "options": {
+          "horizontal": "Horizontale",
+          "vertical": "Verticale"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Diapositive de départ",
+        "description": "Index de la diapositive affichée au départ."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Format d'image",
+        "description": "Format d'image des diapositives.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Флажок страницы",
+    "description": "Редакторская заметка для авторов страницы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "Акцентный цвет флажка страницы."
+      },
+      {
+        "property": "label",
+        "title": "Метка",
+        "description": "Текст метки флажка страницы."
+      }
+    ]
+  }
+}

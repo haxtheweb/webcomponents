@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Карьерын үүрэг",
+    "description": "Байгууллага дахь нэг үүрэг"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Гарчиг"
+      },
+      {
+        "property": "startDate",
+        "title": "Эхэлсэн огноо"
+      },
+      {
+        "property": "endDate",
+        "title": "Дууссан огноо (заавал биш)"
+      },
+      {
+        "property": "skills",
+        "title": "Холбогдох ур чадварууд",
+        "description": "Ур чадвар нэмж эхлэхийн тулд + товчийг сонгоно уу"
+      }
+    ]
+  }
+}

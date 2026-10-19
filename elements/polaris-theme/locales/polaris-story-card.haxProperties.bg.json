@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Карта с история Polaris",
+    "description": "Показване на карта с история Polaris с фоново изображение, етикет на рубриката и текст на заглавието."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Фоново изображение",
+        "description": "URL на изображение, показано като фон на картата."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Размер на фона",
+        "description": "Как фоновото изображение запълва картата (CSS background-size).",
+        "options": {
+          "cover": "cover (покриване) (cover)",
+          "contain": "contain (побиране) (contain)",
+          "auto": "auto (автоматично) (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Закрепване на фона",
+        "description": "Как се държи фоновото изображение при превъртане (CSS background-attachment).",
+        "options": {
+          "scroll": "scroll (превърта се) (scroll)",
+          "fixed": "fixed (фиксирано) (fixed)",
+          "local": "local (локално) (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Етикет на рубриката",
+        "description": "Кратък етикет с главни букви, показан в горната част на картата. Оставете празно, за да го скриете."
+      },
+      {
+        "property": "label",
+        "title": "Текст на картата",
+        "description": "Основен текст, показан в долния панел."
+      },
+      {
+        "property": "link",
+        "title": "Връзка",
+        "description": "Незадължителен целеви URL, който обхваща цялата карта."
+      }
+    ]
+  }
+}

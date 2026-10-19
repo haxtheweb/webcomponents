@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P элементі",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Мәтін",
+        "description": "Шеткі ескертпенің мазмұны"
+      }
+    ]
+  }
+}

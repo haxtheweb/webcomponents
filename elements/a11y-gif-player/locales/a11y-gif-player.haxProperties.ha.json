@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Sa GIF masu motsi su zama masu sauƙin isa ga kowa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "GIF mai motsi",
+        "description": "URL na GIF mai motsi."
+      },
+      {
+        "property": "alt",
+        "title": "Rubutun Madadi",
+        "description": "Rubutun madadi na hoton."
+      },
+      {
+        "property": "longdesc",
+        "title": "Dogon Bayani",
+        "description": "Dogon bayanin GIF ɗin don sauƙin isa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Hoto Mara Motsi",
+        "description": "URL na sigar GIF ɗin mara motsi."
+      }
+    ]
+  }
+}

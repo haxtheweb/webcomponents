@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Baha kitaby",
+    "description": "Rubrikalar bilen birnäçe backend-i goldaýan interfeýssiz baha kitaby."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çeşme",
+        "description": "Maglumat çeşmesiniň görnüşi (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON maglumat bloky",
+          "filesystem": "Faýl ulgamy"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Çeşme maglumatlary",
+        "description": "Baha kitaby üçin URL ýa-da JSON maglumatlary."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs salgylanmasy",
+        "description": "Her Assessment serişdesinde oer:forCourse hökmünde çykarylýan kurs kody."
+      }
+    ]
+  }
+}

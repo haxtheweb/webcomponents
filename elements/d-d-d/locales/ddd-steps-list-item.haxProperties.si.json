@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "පියවර අයිතමය",
+    "description": "පියවර ලැයිස්තුවක කොටසක් වන අයිතමය"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "මාතෘකාව"
+      }
+    ]
+  }
+}

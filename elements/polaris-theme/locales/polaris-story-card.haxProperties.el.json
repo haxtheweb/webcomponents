@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Κάρτα ιστορίας Polaris",
+    "description": "Εμφάνιση κάρτας ιστορίας Polaris με εικόνα φόντου, ετικέτα πυλώνα και κείμενο τίτλου."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Εικόνα φόντου",
+        "description": "URL εικόνας που εμφανίζεται ως φόντο της κάρτας."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Μέγεθος φόντου",
+        "description": "Πώς η εικόνα φόντου γεμίζει την κάρτα (CSS background-size).",
+        "options": {
+          "cover": "Κάλυψη (cover)",
+          "contain": "Περιορισμός (contain)",
+          "auto": "Αυτόματο (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Προσάρτηση φόντου",
+        "description": "Πώς συμπεριφέρεται η εικόνα φόντου κατά την κύλιση (CSS background-attachment).",
+        "options": {
+          "scroll": "Κύλιση (scroll)",
+          "fixed": "Σταθερό (fixed)",
+          "local": "Τοπικό (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Ετικέτα πυλώνα",
+        "description": "Σύντομη ετικέτα με κεφαλαία στην κορυφή της κάρτας. Αφήστε κενό για απόκρυψη."
+      },
+      {
+        "property": "label",
+        "title": "Κείμενο κάρτας",
+        "description": "Κύριο κείμενο που εμφανίζεται στο κάτω πλαίσιο."
+      },
+      {
+        "property": "link",
+        "title": "Σύνδεσμος",
+        "description": "Προαιρετικό URL προορισμού που περικλείει ολόκληρη την κάρτα."
+      }
+    ]
+  }
+}

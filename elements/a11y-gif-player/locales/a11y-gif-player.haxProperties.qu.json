@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Kuyuq GIF rikch'akunata llapanpaq aypanalla ruway."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Kuyuq GIF",
+        "description": "Kuyuq GIFpa URL-nin."
+      },
+      {
+        "property": "alt",
+        "title": "Hukniray qillqa",
+        "description": "Rikch'apaq hukniray qillqa."
+      },
+      {
+        "property": "longdesc",
+        "title": "Suni willakuy",
+        "description": "GIFmanta suni willakuy, llapanpaq aypanalla kananpaq."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Mana kuyuq rikch'a",
+        "description": "GIFpa mana kuyuq rikch'anpa URL-nin."
+      }
+    ]
+  }
+}

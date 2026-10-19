@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX link",
+    "description": "Link na određeni resurs na sajtu na kojem radite."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Stavka",
+        "description": "Stavka koja se prikazuje za link / podatke naslova"
+      }
+    ]
+  }
+}

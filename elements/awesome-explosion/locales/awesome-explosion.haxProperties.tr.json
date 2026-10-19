@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Muhteşem Patlama",
+    "description": "İsteğe bağlı ses efektli etkileşimli patlama animasyonu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Boyut",
+        "description": "Patlama boyutunu ayarlayın.",
+        "options": {
+          "tiny": "Minik",
+          "small": "Küçük",
+          "medium": "Orta",
+          "large": "Büyük",
+          "epic": "Destansı"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Renk",
+        "description": "Patlamanın renk temasını ayarlayın.",
+        "options": {
+          "": "Varsayılan",
+          "red": "Kırmızı",
+          "blue": "Mavi",
+          "purple": "Mor",
+          "orange": "Turuncu",
+          "yellow": "Sarı"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Ses Efektleri",
+        "description": "Ses efektlerini etkinleştir."
+      },
+      {
+        "property": "resetSound",
+        "title": "Sesi Sıfırla",
+        "description": "Sesi her seferinde baştan başlat."
+      },
+      {
+        "property": "image",
+        "title": "Özel Görsel",
+        "description": "Özel patlama görseli için isteğe bağlı URL."
+      },
+      {
+        "property": "sound",
+        "title": "Özel Ses",
+        "description": "Özel ses efekti için isteğe bağlı URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Devre dışı",
+        "description": "Tüm etkileşimleri devre dışı bırak."
+      }
+    ]
+  }
+}

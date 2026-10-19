@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Сүрөт бөлүмү",
+    "description": "Беттин бөлүмүн бөлгөн толук туурадагы сүрөт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Фон сүрөтү."
+      },
+      {
+        "property": "caption",
+        "description": "Тексттин аталышы."
+      }
+    ]
+  }
+}

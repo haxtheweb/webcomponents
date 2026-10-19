@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Ebe nchekwa GitHub",
   "anErrorOccurred": "Ọ nwere njehie",
-  "retry": "Nwaa ọzọ"
+  "retry": "Nwaa ọzọ",
+  "permissionRequired": "Achọrọ ikike",
+  "passwordRequirements": "Ihe achọrọ maka okwuntughe",
+  "requirementLength": "Opekata mpe mkpụrụedemede 8",
+  "requirementUppercase": "Otu mkpụrụedemede ukwu",
+  "requirementLowercase": "Otu mkpụrụedemede nta",
+  "requirementNumber": "Otu nọmba",
+  "requirementSymbol": "Otu akara"
 }

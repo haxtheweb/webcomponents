@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "कॉल टू एक्शन",
+    "description": "कार्रवाई करने के लिए लिंक वाला सरल बटन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "लेबल",
+        "description": "लिंक लेबल"
+      },
+      {
+        "property": "link",
+        "title": "लिंक",
+        "description": "किसी भी संसाधन का लिंक दर्ज करें"
+      },
+      {
+        "property": "hideIcon",
+        "title": "आइकन छिपाएँ",
+        "description": "टेक्स्ट को उभारने वाला आइकन छिपाएँ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "आइकन",
+        "description": "एक्शन लिंक आइकन"
+      }
+    ]
+  }
+}

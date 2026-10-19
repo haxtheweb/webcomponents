@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Lista de reprodución",
+    "description": "Mostra calquera tipo de contido nunha lista de reprodución."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Orixe",
+        "description": "Contido que se mostra na lista de reprodución."
+      },
+      {
+        "property": "edit",
+        "title": "Modo de edición",
+        "description": "Alternar entre o modo de edición e o de vista previa da lista de reprodución."
+      },
+      {
+        "property": "navigation",
+        "title": "Navegación",
+        "description": "Mostrar botóns de navegación cara a adiante e cara a atrás."
+      },
+      {
+        "property": "pagination",
+        "title": "Paxinación",
+        "description": "Mostrar puntos de paxinación."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientación",
+        "description": "Orientación das diapositivas.",
+        "options": {
+          "horizontal": "Horizontal",
+          "vertical": "Vertical"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Diapositiva inicial",
+        "description": "Índice da diapositiva na que se pon o foco inicialmente."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Relación de aspecto",
+        "description": "Relación de aspecto das diapositivas.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

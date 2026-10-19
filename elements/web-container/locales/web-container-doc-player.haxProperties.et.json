@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Veebikomponendi dokumentatsiooni mängija"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Peida aken",
+        "description": "Peida väljundaken, kasulik ainult terminali kasutamisel"
+      }
+    ]
+  }
+}

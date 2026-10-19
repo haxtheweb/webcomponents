@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Incrustazione LinkedIn",
+    "description": "Incrustà una carta di prufilu LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Nome persunalizatu",
+        "description": "Segmentu di u nome d'utilizatore persunalizatu LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Paràmetri lucali",
+        "description": "Valore di metadate lucale cum'è en_US."
+      }
+    ]
+  }
+}

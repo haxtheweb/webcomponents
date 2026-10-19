@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bildmapo",
+    "description": "Alirebla bildmapo kun interagaj aktivaj punktoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etikedo",
+        "description": "Etikedo por la bildmapo."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Detaloj de aktivaj punktoj",
+        "description": "La interagaj aktivaj punktoj sur la bildmapo."
+      }
+    ]
+  }
+}

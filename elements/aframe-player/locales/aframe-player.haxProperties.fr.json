@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Lecteur 3D",
+    "description": "Un lecteur de fichiers 3D / de réalité augmentée."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "L'URL de ce fichier AR."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Position X de l'élément en AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Position Y de l'élément en AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Position Z de l'élément en AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Couleur du ciel",
+        "description": "Choisissez la couleur du ciel dans la scène."
+      }
+    ]
+  }
+}

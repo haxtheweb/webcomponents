@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ਸਮਾਗਮ ਬੈਜ",
+    "description": "ਸਮਾਗਮ ਬੈਜ ਕੰਪੋਨੈਂਟ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV ਚਿੱਤਰ",
+        "description": "TV 'ਤੇ ਦਿਖਾਇਆ ਚਿੱਤਰ।"
+      },
+      {
+        "property": "logo",
+        "title": "ਲੋਗੋ",
+        "description": "ਬੈਜ ਦੇ ਕੋਨੇ ਵਿੱਚ ਦਿਖਾਇਆ ਲੋਗੋ।"
+      },
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਬੈਜ ਦੇ ਸਿਖਰ 'ਤੇ ਦਿਖਾਇਆ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "name",
+        "title": "ਨਾਮ",
+        "description": "ਬੈਜ 'ਤੇ ਦਿਖਾਇਆ ਨਾਮ।"
+      },
+      {
+        "property": "position",
+        "title": "ਅਹੁਦਾ",
+        "description": "ਵਿਅਕਤੀ ਦੀ ਭੂਮਿਕਾ ਜਾਂ ਅਹੁਦਾ।"
+      },
+      {
+        "property": "organization",
+        "title": "ਸੰਸਥਾ",
+        "description": "ਉਹ ਸੰਸਥਾ ਜਿਸ ਲਈ ਵਿਅਕਤੀ ਕੰਮ ਕਰਦਾ ਹੈ।"
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV ਰੰਗ",
+        "description": "TV ਲਈ ਰੰਗ ਚੁਣੋ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਮੁੱਖ ਪਿਛੋਕੜ ਜਾਂ ਲਿਖਤ ਰੰਗ।"
+      },
+      {
+        "property": "knobcolor",
+        "title": "ਨੌਬ ਰੰਗ",
+        "description": "TV ਦੇ ਨੌਬਾਂ ਦਾ ਰੰਗ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "ਸੀਪੀਆ",
+        "description": "ਸੀਪੀਆ ਪ੍ਰਭਾਵ ਲਾਗੂ ਕਰੋ।"
+      },
+      {
+        "property": "blackwhite",
+        "title": "ਕਾਲਾ ਅਤੇ ਚਿੱਟਾ",
+        "description": "ਕਾਲਾ-ਚਿੱਟਾ ਪ੍ਰਭਾਵ ਲਾਗੂ ਕਰੋ।"
+      }
+    ]
+  }
+}

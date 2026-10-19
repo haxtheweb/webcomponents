@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Media quote",
+    "description": "Larawang may sipi, pinagmulan, at opsyonal na caption."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Sipi",
+        "description": "Teksto ng sipi."
+      },
+      {
+        "slot": "author",
+        "title": "May-akda",
+        "description": "May-akda ng sipi."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Mga detalye ng may-akda",
+        "description": "Mga detalye ng may-akda."
+      },
+      {
+        "slot": "caption",
+        "title": "Caption",
+        "description": "Caption ng larawan."
+      },
+      {
+        "property": "src",
+        "title": "Pinagmulan ng Larawan",
+        "description": "Image file na ginagamit para sa media quote."
+      },
+      {
+        "property": "alt",
+        "title": "Alt Text",
+        "description": "Alternatibong teksto para sa larawan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Accent na kulay ng card."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "کیریئر آئٹم",
+    "description": "اک ادارہ تے اوہدے نال جڑے کردار"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "ادارے دا ناں"
+      },
+      {
+        "property": "location",
+        "title": "تھاں"
+      },
+      {
+        "property": "source",
+        "title": "ذریعہ"
+      }
+    ]
+  }
+}

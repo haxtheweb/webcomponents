@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: blok podřízených",
+    "description": "Dynamický blok zobrazující podřízené stránky aktuální stránky"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dynamická metoda",
+        "description": "Jak vypočítat podřízené stránky vzhledem k tomuto prvku",
+        "options": {
+          "active": "Aktivní podřízené",
+          "parent": "Podřízené nadřazené stránky",
+          "ancestor": "Všechny podřízené od nejvyššího předka"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Počáteční úroveň"
+      },
+      {
+        "property": "end",
+        "title": "Koncová úroveň"
+      }
+    ]
+  }
+}

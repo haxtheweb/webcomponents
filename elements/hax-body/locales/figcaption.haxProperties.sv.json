@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Figurtext",
+    "description": "Bildtext för en figur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Bildtext",
+        "description": "Text som visas under figuren."
+      }
+    ]
+  }
+}

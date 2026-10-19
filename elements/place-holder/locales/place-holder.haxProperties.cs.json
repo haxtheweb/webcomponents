@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Zástupný prvek",
+    "description": "Zástupný prvek, který lze převést na vybraný typ média"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Typ",
+        "description": "Typ prvku, který tento prvek přijímá jako náhradu.",
+        "options": {
+          "text": "Text / obsah",
+          "document": "Dokument / soubor",
+          "audio": "Zvuk",
+          "video": "Video",
+          "image": "Obrázek",
+          "math": "Matematika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Text",
+        "description": "Podrobněji určete požadovaný zástupný prvek"
+      }
+    ]
+  }
+}

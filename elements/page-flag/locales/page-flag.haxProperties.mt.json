@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bandiera tal-paġna",
+    "description": "Nota editorjali għall-awturi tal-paġna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Kulur tal-enfasi għall-bandiera tal-paġna."
+      },
+      {
+        "property": "label",
+        "title": "Tikketta",
+        "description": "Test tat-tikketta għall-bandiera tal-paġna."
+      }
+    ]
+  }
+}

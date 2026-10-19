@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ìwò CMS",
+    "description": "Àwọn ìwò CMS tí a ṣe àfihàn wọn ní backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Orúkọ",
+        "description": "Orúkọ ìwò láti CMS wa"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Ìfihàn",
+        "description": "Ìfihàn nínú ìwò yẹn láti CMS wa"
+      }
+    ]
+  }
+}

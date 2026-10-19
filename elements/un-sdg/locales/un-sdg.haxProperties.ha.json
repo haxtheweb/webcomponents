@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Manufar Ci Gaba Mai Ɗorewa ta Majalisar Ɗinkin Duniya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Manufa",
+        "description": "Lambar UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Launi kawai",
+        "description": "Nuna launin manufar kawai."
+      }
+    ]
+  }
+}

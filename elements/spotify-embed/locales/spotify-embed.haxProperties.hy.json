@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Փաթաթիչ Spotify նվագարկիչի ներկառուցումների համար։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Աղբյուր",
+        "description": "Spotify-ի ներկառուցման կամ կիսման հղում։"
+      },
+      {
+        "property": "theme",
+        "title": "Թեմա",
+        "description": "Նվագարկիչի ֆոնի գունային թեման։",
+        "options": {
+          "": "Լռելյայն",
+          "0": "Սև"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Չափ",
+        "description": "Նվագարկիչի չափը։",
+        "options": {
+          "normal": "Լռելյայն",
+          "compact": "Կոմպակտ"
+        }
+      }
+    ]
+  }
+}

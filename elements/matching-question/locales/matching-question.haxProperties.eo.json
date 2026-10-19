@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Kongruiga demando",
+    "description": "Ŝovu-kaj-demetu kongruigan aktivaĵon, kiu parigas instigojn kun iliaj ĝustaj respondoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Demando",
+        "description": "Demando por uzantoj. Marku demetcelojn, poste listigu respondojn ĝis la sekva celo."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Taksa formato",
+        "description": "OER Schema: taksa formato por ĉi tiu takso (ekz. poentoj, litero, procento, kompletigo)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lerncelo",
+        "description": "OER Schema: lerncelo asociita kun ĉi tiu takso."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "OER Schema: kurso, por kiu ĉi tiu takso estas celita."
+      },
+      {
+        "property": "answers",
+        "title": "Respondoj"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nomo de la kvizo",
+        "description": "Nomo de kvizo uzata por xAPI-identigo en analizaj sistemoj."
+      }
+    ]
+  }
+}

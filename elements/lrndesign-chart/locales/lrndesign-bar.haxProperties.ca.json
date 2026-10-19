@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Gràfic de barres",
+    "description": "Crea un gràfic accessible a partir d'un CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Color d'accent",
+        "description": "Un color d'accent opcional."
+      },
+      {
+        "title": "Tema fosc",
+        "description": "Activa el tema fosc"
+      },
+      {
+        "title": "Fitxer CSV",
+        "description": "Carrega dades d'un CSV."
+      },
+      {
+        "title": "Títol del gràfic",
+        "description": "Text alternatiu accessible per al gràfic."
+      },
+      {
+        "title": "Descripció del gràfic",
+        "description": "Descripció accessible del gràfic."
+      },
+      {
+        "title": "Nom de l'escala",
+        "description": "La proporció amplada:alçada del gràfic (consulta https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings per a $ct-scales i $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Mostra el fons de quadrícula"
+      },
+      {
+        "title": "Barres horitzontals",
+        "description": "Inverteix els eixos del gràfic de barres per dibuixar un gràfic de barres horitzontal. Tingues en compte que també has d'invertir la configuració dels eixos, ja que l'eix Y mostrarà les etiquetes i l'eix X, els valors."
+      },
+      {
+        "title": "Apila les barres",
+        "description": "Si s'estableix a true, aquesta propietat farà que les barres de les sèries s'apilin."
+      },
+      {
+        "title": "Distribueix les sèries",
+        "description": "Si s'estableix a true, cada barra representarà una sèrie i s'espera que la matriu de dades sigui una matriu unidimensional de valors en lloc d'una matriu de sèries."
+      },
+      {
+        "title": "Farciment del gràfic (superior)"
+      },
+      {
+        "title": "Farciment del gràfic (inferior)"
+      },
+      {
+        "title": "Farciment del gràfic (esquerre)"
+      },
+      {
+        "title": "Farciment del gràfic (dret)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Inverteix les dades",
+        "description": "Inverteix les dades, incloses les etiquetes, l'ordre de les sèries i les matrius de dades de totes les sèries."
+      },
+      {
+        "title": "Taula HTML",
+        "description": "Opcional: carrega les dades com a taula HTML."
+      },
+      {
+        "title": "Mínim del gràfic",
+        "description": "Substituir el mínim natural del gràfic et permet apropar-te o limitar el valor més baix que es mostra al gràfic"
+      },
+      {
+        "title": "Màxim del gràfic",
+        "description": "Substituir el màxim natural del gràfic et permet apropar-te o limitar el valor més alt que es mostra al gràfic"
+      },
+      {
+        "title": "Eix X: mostra la quadrícula",
+        "description": "Mostra la quadrícula de l'eix X."
+      },
+      {
+        "title": "Desplaçament de l'eix X"
+      },
+      {
+        "title": "Posició de l'eix X",
+        "description": "Posició on es col·loquen les etiquetes. Es pot establir a \"start\" o \"end\", on \"start\" equival a esquerra o dalt a l'eix vertical i \"end\" equival a dreta o baix a l'eix horitzontal"
+      },
+      {
+        "title": "Eix X: mostra l'etiqueta",
+        "description": "Mostra l'etiqueta de l'eix X."
+      },
+      {
+        "title": "Etiqueta de l'eix X (desplaçament horitzontal)",
+        "description": "Posició horitzontal de les etiquetes de l'eix X."
+      },
+      {
+        "title": "Etiqueta de l'eix X (desplaçament vertical)",
+        "description": "Posició vertical de les etiquetes de l'eix X."
+      },
+      {
+        "title": "Títol de l'eix X",
+        "description": "Títol opcional per a l'eix X."
+      },
+      {
+        "title": "Títol de l'eix X (desplaçament horitzontal)",
+        "description": "Posició horitzontal del títol de l'eix X."
+      },
+      {
+        "title": "Títol de l'eix X (desplaçament vertical)",
+        "description": "Posició vertical del títol de l'eix X."
+      },
+      {
+        "title": "Ancoratge del títol de l'eix X",
+        "description": "Ancoratge opcional per al títol de l'eix X.",
+        "options": {
+          "middle": "mig",
+          "end": "final",
+          "start": "inici"
+        }
+      },
+      {
+        "title": "Espai mínim de l'escala de l'eix X",
+        "description": "Especifica l'alçada mínima en píxels dels passos de l'escala."
+      },
+      {
+        "title": "Escala de l'eix X (només enters)",
+        "description": "Utilitza només valors enters (nombres sencers) per als passos de l'escala."
+      },
+      {
+        "title": "Eix Y: mostra la quadrícula",
+        "description": "Mostra la quadrícula de l'eix Y."
+      },
+      {
+        "title": "Desplaçament de l'eix Y"
+      },
+      {
+        "title": "Posició de l'eix Y",
+        "description": "Posició on es col·loquen les etiquetes. Es pot establir a \"start\" o \"end\", on \"start\" equival a esquerra o dalt a l'eix vertical i \"end\" equival a dreta o baix a l'eix horitzontal"
+      },
+      {
+        "title": "Eix Y: mostra l'etiqueta",
+        "description": "Mostra l'etiqueta de l'eix Y."
+      },
+      {
+        "title": "Etiqueta de l'eix Y (desplaçament horitzontal)",
+        "description": "Posició horitzontal de l'etiqueta de l'eix Y."
+      },
+      {
+        "title": "Etiqueta de l'eix Y (desplaçament vertical)",
+        "description": "Posició vertical de l'etiqueta de l'eix Y."
+      },
+      {
+        "title": "Espai mínim de l'escala de l'eix Y",
+        "description": "Especifica l'alçada mínima en píxels dels passos de l'escala."
+      },
+      {
+        "title": "Escala de l'eix Y (només enters)",
+        "description": "Utilitza només valors enters (nombres sencers) per als passos de l'escala."
+      },
+      {
+        "title": "Títol de l'eix Y",
+        "description": "Títol opcional per a l'eix Y."
+      },
+      {
+        "title": "Títol de l'eix Y (desplaçament vertical)",
+        "description": "Posició horitzontal del títol de l'eix Y."
+      },
+      {
+        "title": "Títol de l'eix Y (desplaçament horitzontal)",
+        "description": "Posició horitzontal del títol de l'eix Y."
+      },
+      {
+        "title": "Ancoratge del títol de l'eix Y",
+        "description": "Ancoratge opcional per al títol de l'eix Y.",
+        "options": {
+          "middle": "mig",
+          "end": "final",
+          "start": "inici"
+        }
+      },
+      {
+        "title": "Gira el títol de l'eix Y",
+        "description": "Vols girar el títol de l'eix Y?"
+      },
+      {
+        "title": "Valor de referència",
+        "description": "Tret que s'estableixin explícitament el mínim i el màxim, el gràfic de barres es centrarà en zero per defecte."
+      },
+      {
+        "title": "Distància entre barres de les sèries",
+        "description": "Especifica la distància en píxels entre les barres d'un grup."
+      },
+      {
+        "title": "Mode d'apilament",
+        "description": "Si s'estableix a \"true\", aquesta propietat formarà un total per a cada punt de la sèrie. Això també influirà en l'eix Y i en els límits generals del gràfic. Si s'estableix a \"false\", aquesta propietat obligarà les barres apilades a dibuixar-se des de la línia de zero. En mode apilat, la propietat \"seriesBarDistance\" no tindrà cap efecte."
+      }
+    ]
+  }
+}

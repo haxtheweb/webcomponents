@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Bildvergleich",
+    "description": "Ein Bild zum Vergleich über ein anderes wischen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Oberes Bild",
+        "description": "Oberes Bild, das über das untere Bild gewischt wird."
+      },
+      {
+        "property": "topAlt",
+        "title": "Alternativtext des oberen Bildes",
+        "description": "Erforderlicher Alternativtext für die Barrierefreiheit."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Unteres Bild",
+        "description": "Unteres Bild, das unter dem oberen Bild angezeigt wird."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Alternativtext des unteren Bildes",
+        "description": "Erforderlicher Alternativtext für die Barrierefreiheit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Verhalten",
+        "description": "Wischmodus (Standard) oder Deckkraftmodus für das obere Bild wählen."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Farbe des Schiebereglers."
+      },
+      {
+        "property": "dark",
+        "title": "Dunkel",
+        "description": "Farbe des Schiebereglers umkehren."
+      },
+      {
+        "property": "position",
+        "title": "Anfangsposition",
+        "description": "Startposition von 0 bis 100."
+      }
+    ]
+  }
+}

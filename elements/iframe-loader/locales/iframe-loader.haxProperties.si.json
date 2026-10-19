@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "බාහිර වෙබ් අන්තර්ගතය iframe එකක කාවද්දන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "සම්පත් URL",
+        "description": "සම්පත් URL."
+      },
+      {
+        "property": "height",
+        "title": "උස",
+        "description": "Iframe උස."
+      },
+      {
+        "property": "width",
+        "title": "පළල",
+        "description": "Iframe පළල."
+      }
+    ]
+  }
+}

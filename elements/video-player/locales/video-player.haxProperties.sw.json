@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Uchezaji wa video unaofikika kutoka vyanzo mbalimbali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Chanzo",
+        "description": "URL ya midia hii."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Kichwa",
+        "description": "Kichwa kinachoonyeshwa chini ya video."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Picha ya bango",
+        "description": "URL ya picha ya bango."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Nyimbo za maandishi",
+        "description": "Manukuu, tafsiri za maandishi, maelezo na nyimbo nyingine za maandishi za video."
+      },
+      {
+        "property": "startTime",
+        "title": "Muda wa kuanza",
+        "description": "Anza video kwa muda maalum (sekunde)."
+      },
+      {
+        "property": "endTime",
+        "title": "Muda wa kumaliza",
+        "description": "Maliza video kwa muda maalum (sekunde), inahitaji muda wa kuanza."
+      },
+      {
+        "property": "learningMode",
+        "title": "Washa hali ya kujifunza",
+        "description": "Huzima kusogeza mbele haraka na kurudisha nyuma."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Ondoa kitufe cha kufungua kwenye YouTube",
+        "description": "Huondoa kitufe cha kufungua video kwenye YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Jumuisha kiungo cha kushiriki?",
+        "description": "Hutoa kiungo cha kushiriki video."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ficha mihuri ya muda",
+        "description": "Ficha mihuri ya muda kwenye nakala ya maandishi."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ficha Nakala ya Maandishi",
+        "description": "Ficha nakala ya maandishi kwa chaguomsingi."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Wimbo wa maelezo ya sauti",
+        "description": "URL ya wimbo wa maelezo ya sauti (faili ya MP3) unaosimulia vipengele vinavyoonekana."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Huonyesha kama kutumia CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Ruhusu kucheza chinichini",
+        "description": "Endelea kucheza kichupo cha kivinjari kinapopoteza fokasi."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Mandhari ya giza kwa nakala ya maandishi",
+        "description": "Washa mandhari ya giza kwa nakala ya maandishi."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Zima Mwingiliano",
+        "description": "Zima hali shirikishi inayofanya nakala ya maandishi ibofyeke."
+      },
+      {
+        "property": "lang",
+        "title": "Lugha",
+        "description": "Lugha ya midia."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya msisitizo",
+        "description": "(imepitwa na wakati) Chagua rangi ya msisitizo ya kicheza."
+      }
+    ]
+  }
+}

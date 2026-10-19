@@ -1,0 +1,11 @@
+{
+  "userAccess": "Qasja e përdoruesit",
+  "enterUsername": "Fut emrin e përdoruesit për t'i dhënë qasje",
+  "usernamePlaceholder": "Emri i përdoruesit",
+  "addUser": "Shto përdorues",
+  "cancel": "Anulo",
+  "userAccessGranted": "Qasja e përdoruesit u dha me sukses!",
+  "userNotFound": "Përdoruesi nuk u gjet ose është i paautorizuar",
+  "loadingAddingUser": "Po shtohet përdoruesi...",
+  "grantAccessTo": "Jep qasje për:"
+}

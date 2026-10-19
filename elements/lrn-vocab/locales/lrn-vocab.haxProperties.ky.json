@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Сөздүк",
+    "description": "Сөздүк термин"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Термин"
+      },
+      {
+        "slot": "",
+        "title": "Аныктама",
+        "description": "Терминди басканда көрсөтүлүүчү аныктама."
+      },
+      {
+        "property": "description",
+        "title": "Сыпаттама (OER Schema)",
+        "description": "OER Schema: сөздүк терминдин кыскача сыпаттамасы. Бош калтырылса, аныктама текстинен автоматтык түрдө толтурулат."
+      }
+    ]
+  }
+}

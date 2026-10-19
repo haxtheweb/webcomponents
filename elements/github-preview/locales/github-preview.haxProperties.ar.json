@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "معاينة GitHub",
+    "description": "شكل يسهل الوصول إليه مع وصف مطوّل"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "المؤسسة",
+        "description": "الاسم الآلي لمؤسسة GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "المستودع",
+        "description": "الاسم الآلي للمستودع"
+      },
+      {
+        "property": "extended",
+        "title": "العرض الموسّع",
+        "description": "يتضمن ملف readme في العنصر"
+      }
+    ]
+  }
+}

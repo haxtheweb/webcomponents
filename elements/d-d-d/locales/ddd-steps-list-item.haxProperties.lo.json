@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "ລາຍການຂັ້ນຕອນ",
+    "description": "ລາຍການທີ່ເປັນສ່ວນໜຶ່ງຂອງລາຍການຂັ້ນຕອນ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້"
+      }
+    ]
+  }
+}

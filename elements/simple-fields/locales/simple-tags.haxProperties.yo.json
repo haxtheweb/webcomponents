@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tágì",
+    "description": "Àtòjọ tágì rírọrùn fún ìfihàn lórí ojú-ìwé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Tágì",
+        "description": "Àtòjọ tágì tí a fi kọ́mà yà sọ́tọ̀."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Àwọ̀ Ìtẹnumọ́ Aládàáṣe",
+        "description": "Ṣètò àwọ̀ ìtẹnumọ́ láìfọwọ́yí ní ìbámu pẹ̀lú àmì-orúkọ."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀",
+        "description": "Àwọ̀ fún tágì."
+      }
+    ]
+  }
+}

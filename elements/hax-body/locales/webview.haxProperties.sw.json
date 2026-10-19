@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Chanzo",
+        "description": "URL ya rasilimali hii."
+      }
+    ]
+  }
+}

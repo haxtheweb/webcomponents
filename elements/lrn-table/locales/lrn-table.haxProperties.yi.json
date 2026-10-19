@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV־טאַבעלע",
+    "description": "דאָס קען שאַפֿן אַ טאַבעלע פֿון אַ CSV־טעקע, ניט וויכטיק וווּ זי געפֿינט זיך."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "מקור",
+        "description": "URL פֿון דער CSV־טעקע."
+      },
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "טיטל פֿאַר דער טאַבעלע וואָס ווערט געשאַפֿן."
+      },
+      {
+        "property": "description",
+        "title": "באַשרײַבונג",
+        "description": "מער פּרטימדיקע באַשרײַבונג פֿאַר בעסערער צוטריטלעכקייט פֿון די טאַבעלע־דאַטן."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-personaazje",
+    "description": "Leuk personaazje fan HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Namme",
+        "description": "Wurd dat brûkt wurdt om in willekeurich personaazje te meitsjen."
+      },
+      {
+        "property": "hat",
+        "title": "Hoed",
+        "description": "Hoedestyl.",
+        "options": {
+          "none": "Standert",
+          "random": "Willekeurich",
+          "bunny": "Knyn",
+          "cowboy": "Cowboy",
+          "education": "Underwiis",
+          "construction": "Bou",
+          "warning": "Warskôging",
+          "watermelon": "Wettermeloen",
+          "coffee": "Kofje",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Feest",
+          "error": "Flater",
+          "edit": "Bewurkje"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Breedte fan it personaazje yn piksels."
+      },
+      {
+        "property": "height",
+        "title": "Hichte",
+        "description": "Hichte fan it personaazje yn piksels."
+      },
+      {
+        "property": "fire",
+        "title": "Yn 'e brân?",
+        "description": "Oft it personaazje yn 'e brân stiet."
+      },
+      {
+        "property": "walking",
+        "title": "Rint it?",
+        "description": "Rinanimaasje; draaft as it yn 'e brân stiet."
+      }
+    ]
+  }
+}

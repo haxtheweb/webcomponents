@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ikhadi le-Retro",
+    "description": "Ikhadi elilula eliyilo lwe-retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko esiphambili sekhadi."
+      },
+      {
+        "property": "url",
+        "description": "I-URL eza kuvulwa xa ikhadi licofwa."
+      },
+      {
+        "property": "subtitle",
+        "title": "Isihloko esingaphantsi",
+        "description": "Isihloko esingaphantsi sekhadi."
+      },
+      {
+        "property": "tags",
+        "title": "Iithegi",
+        "description": "Iithegi ezahlulwe ngeekoma."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Umthombo wemidiya",
+        "description": "Umthombo wemidiya ophambili."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Umthombo xa uhambisa ngaphezulu",
+        "description": "Umthombo wemidiya oboniswa xa ikhadi lihanjiswa ngaphezulu okanye livulwa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala Ogqamisayo",
+        "description": "Umbala wogxininiso osetyenziswa kwikhadi lonke."
+      },
+      {
+        "property": "dark",
+        "title": "Mnyama",
+        "description": "Sebenzisa imibala esisiseko yemo emnyama."
+      }
+    ]
+  }
+}

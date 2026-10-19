@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Nota d'atenció",
+    "description": "Un missatge per alertar els lectors sobre indicacions concretes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Introdueix el títol de la nota d'atenció."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Introdueix un URL extern."
+      },
+      {
+        "property": "status",
+        "title": "Estat",
+        "description": "En definir l'estat, els colors i les icones canvien d'acord amb ell",
+        "options": {
+          "stop": "Atura't",
+          "warning": "Advertència",
+          "success": "Confirmació",
+          "info": "Avís"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Text de la nota",
+        "description": "Text de la nota d'atenció."
+      }
+    ]
+  }
+}

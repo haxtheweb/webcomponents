@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Սարկազմ",
+    "description": "Տեքստի ներկայացում ծաղրական ոճով"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Տեքստ",
+        "description": "Տեքստ, որը պետք է դարձնել սարկաստիկ"
+      }
+    ]
+  }
+}

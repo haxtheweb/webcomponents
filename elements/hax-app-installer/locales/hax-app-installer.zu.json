@@ -47,5 +47,12 @@
   "discord": "Discord",
   "githubRepository": "Isilondolozi se-GitHub",
   "anErrorOccurred": "Kwenzeke iphutha",
-  "retry": "Zama futhi"
+  "retry": "Zama futhi",
+  "permissionRequired": "Imvume iyadingeka",
+  "passwordRequirements": "Izidingo zephasiwedi",
+  "requirementLength": "Okungenani izinhlamvu ezi-8",
+  "requirementUppercase": "Uhlamvu olulodwa olukhulu",
+  "requirementLowercase": "Uhlamvu olulodwa oluncane",
+  "requirementNumber": "Inombolo eyodwa",
+  "requirementSymbol": "Uphawu olulodwa"
 }

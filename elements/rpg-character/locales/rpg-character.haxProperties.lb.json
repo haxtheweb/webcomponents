@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG-Personnage",
+    "description": "Lëschtege Personnage vun HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Numm",
+        "description": "Wuert, dat benotzt gëtt fir en zoufällege Personnage ze generéieren."
+      },
+      {
+        "property": "hat",
+        "title": "Hutt",
+        "description": "Hutt-Stil.",
+        "options": {
+          "none": "Standard",
+          "random": "Zoufälleg",
+          "bunny": "Hues",
+          "cowboy": "Cowboy",
+          "education": "Educatioun",
+          "construction": "Bau",
+          "warning": "Warnung",
+          "watermelon": "Waassermeloun",
+          "coffee": "Kaffi",
+          "knight": "Ritter",
+          "ninja": "Ninja",
+          "party": "Party",
+          "error": "Feeler",
+          "edit": "Beaarbechten"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Breet",
+        "description": "Breet vum Personnage a Pixel."
+      },
+      {
+        "property": "height",
+        "title": "Héicht",
+        "description": "Héicht vum Personnage a Pixel."
+      },
+      {
+        "property": "fire",
+        "title": "Brennt?",
+        "description": "Ob de Personnage brennt."
+      },
+      {
+        "property": "walking",
+        "title": "Leeft?",
+        "description": "Laf-Animatioun; leeft, wann e brennt."
+      }
+    ]
+  }
+}

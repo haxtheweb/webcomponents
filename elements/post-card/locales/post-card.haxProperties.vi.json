@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Bưu thiếp",
+    "description": "Một phương tiện vui nhộn trông như bưu thiếp thật được gửi từ đâu đó"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Đến",
+        "description": "Gửi cho ai?"
+      },
+      {
+        "property": "from",
+        "title": "Từ",
+        "description": "Bạn là ai?"
+      },
+      {
+        "property": "message",
+        "title": "Lời nhắn",
+        "description": "Bạn muốn nói gì?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Đóng dấu bưu điện tại",
+        "description": "Bưu thiếp này được gửi từ đâu?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Nguồn ảnh chính",
+        "description": "Ảnh của bạn nằm ở đâu?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Nguồn ảnh tem",
+        "description": "Ảnh của bạn nằm ở đâu?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kutsitsa Pepala la Ntchito",
+    "description": "Batani loonetsa mafayilo omwe angatsitsidwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wa chotsitsa."
+      },
+      {
+        "property": "link",
+        "title": "Ulalo",
+        "description": "Ulalo wa chotsitsa."
+      }
+    ]
+  }
+}

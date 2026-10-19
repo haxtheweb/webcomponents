@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Кольцевой индикатор прогресса",
+    "description": "Кольцевая диаграмма прогресса"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Название",
+        "description": "Название элемента"
+      },
+      {
+        "property": "desc",
+        "title": "Описание",
+        "description": "Доступное подробное описание"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Источник изображения",
+        "description": "Источник изображения внутри кольца."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Альтернативный текст изображения",
+        "description": "Альтернативный текст изображения."
+      },
+      {
+        "property": "animated",
+        "title": "Анимация",
+        "description": "Анимировать ли прогресс при первой загрузке"
+      },
+      {
+        "property": "complete",
+        "title": "Завершено",
+        "description": "Массив выполненных значений."
+      },
+      {
+        "property": "total",
+        "title": "Всего",
+        "description": "Общее значение, когда все элементы выполнены."
+      },
+      {
+        "property": "startAngle",
+        "title": "Начальный угол",
+        "description": "Угол кольца, с которого начинается прогресс"
+      }
+    ]
+  }
+}

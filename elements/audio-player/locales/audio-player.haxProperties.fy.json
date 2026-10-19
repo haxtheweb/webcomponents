@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Lûd",
+    "description": "Dit kin fideo op in tige tagonklike wize presintearje, ûnôfhinklik fan de boarne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Boarne",
+        "description": "De URL foar dizze media."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titel",
+        "description": "Ienfâldige titel ûnder de fideo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Selektearje de aksintkleur foar de spiler."
+      },
+      {
+        "property": "track",
+        "title": "Undertitels",
+        "description": "De URL foar de ûndertiteltriem."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Miniatuerôfbylding",
+        "description": "Opsjoneel. De URL foar in miniatuer-/posterôfbylding."
+      },
+      {
+        "property": "learningMode",
+        "title": "Learmodus ynskeakelje",
+        "description": "Skeakelet foarút- en weromspielen út."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Knop 'Iepenje op YouTube' fuortsmite",
+        "description": "Smyt de knop fuort om de fideo op YouTube te iepenjen."
+      },
+      {
+        "property": "linkable",
+        "title": "In dielkeppeling opnimme?",
+        "description": "Jout in keppeling om de fideo te dielen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Jout oan oft CORS brûkt wurde moat.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Ofspyljen op de eftergrûn tastean",
+        "description": "Fideo's pauzearje / spylje automatysk as de ljepper de fokus ferliest; hjirmei kin de fideo spylje sûnder dat de ljepper fokus hat"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tsjuster tema foar transkripsje",
+        "description": "Tsjuster tema ynskeakelje foar de transkripsje."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Ynteraktyf útskeakelje",
+        "description": "Ynteraktive modus útskeakelje dy't de transkripsje klikber makket."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Tiidstempels ferbergje",
+        "description": "De tiidstempels yn de transkripsje ferbergje."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkripsje ferbergje",
+        "description": "Transkripsje standert ferbergje."
+      },
+      {
+        "property": "lang",
+        "title": "Taal",
+        "description": "Taal fan de media."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kertu crita Polaris",
+    "description": "Tampilake kertu crita Polaris kanthi gambar latar mburi, label pilar, lan teks judhul."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Gambar latar mburi",
+        "description": "URL gambar sing katon minangka latar mburi kertu."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Ukuran latar mburi",
+        "description": "Carane gambar latar mburi ngebaki kertu (CSS background-size).",
+        "options": {
+          "cover": "Nutupi (cover)",
+          "contain": "Ngemot (contain)",
+          "auto": "Otomatis (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Lampiran latar mburi",
+        "description": "Prilaku gambar latar mburi nalika nggulung (CSS background-attachment).",
+        "options": {
+          "scroll": "Gulung (scroll)",
+          "fixed": "Tetep (fixed)",
+          "local": "Lokal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Label pilar",
+        "description": "Label cekak huruf gedhe sing katon ing ndhuwur kertu. Kosongake kanggo ndhelikake."
+      },
+      {
+        "property": "label",
+        "title": "Teks kertu",
+        "description": "Teks utama sing katon ing panel ngisor."
+      },
+      {
+        "property": "link",
+        "title": "Pranala",
+        "description": "URL tujuan opsional sing mbungkus kabeh kertu."
+      }
+    ]
+  }
+}

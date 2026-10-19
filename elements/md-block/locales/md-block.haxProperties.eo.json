@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Bloko de Markdown-enhavo, rekta aŭ fore ŝargita"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Kruda Markdown"
+      },
+      {
+        "property": "source",
+        "title": "Fonto",
+        "description": "Fontodosiero por Markdown"
+      }
+    ]
+  }
+}

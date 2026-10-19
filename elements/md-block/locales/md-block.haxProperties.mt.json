@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Blokk ta' kontenut markdown direttament jew mgħobbi minn remot"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown mhux ipproċessat"
+      },
+      {
+        "property": "source",
+        "title": "Sors",
+        "description": "Fajl sors għall-markdown"
+      }
+    ]
+  }
+}

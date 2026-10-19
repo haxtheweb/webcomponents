@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kertu",
+    "description": "Kertu kanthi gaya aksen opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Sesirah",
+        "description": "Judhul kanggo kertu."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subjudhul",
+        "description": "Subjudhul opsional kanggo kertu."
+      },
+      {
+        "slot": "content",
+        "title": "Isi",
+        "description": "Isi kanggo kertu."
+      },
+      {
+        "slot": "footer",
+        "title": "Footer",
+        "description": "Footer opsional kanggo kertu."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Gambar",
+        "description": "Gambar opsional"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Teks Alt Gambar",
+        "description": "Teks alternatif sing nggambarake gambar kanggo pamaca layar. Kosongake mung yen gambar kasebut murni hiasan."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Perataan Horisontal Gambar",
+        "options": {
+          "left": "kiwa",
+          "center": "tengah",
+          "right": "tengen"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Perataan Vertikal Gambar",
+        "options": {
+          "top": "ndhuwur",
+          "center": "tengah",
+          "bottom": "ngisor"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna Aksen",
+        "description": "Werna aksen opsional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema Peteng",
+        "description": "Aktifake Tema Peteng"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horisontal",
+        "description": "Orientasi horisontal?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Aksen Judhul",
+        "description": "Trapake warna aksen ing judhul?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Aksen Latar",
+        "description": "Trapake warna aksen ing latar kertu?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Tanpa Aksen Wates",
+        "description": "Busak aksen wates?"
+      },
+      {
+        "property": "flat",
+        "title": "Rata",
+        "description": "Busak bayangan kothak?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Pojok",
+        "description": "Isi kanggo pojok kertu."
+      }
+    ]
+  }
+}

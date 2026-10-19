@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Tulpdiagramm",
+    "description": "Loob CSV-l põhineva ligipääsetava diagrammi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rõhuvärv",
+        "description": "Valikuline rõhuvärv."
+      },
+      {
+        "title": "Tume teema",
+        "description": "Luba tume teema"
+      },
+      {
+        "title": "CSV-fail",
+        "description": "Laadi andmed CSV-st."
+      },
+      {
+        "title": "Diagrammi pealkiri",
+        "description": "Sinu diagrammi ligipääsetav alt-tekst."
+      },
+      {
+        "title": "Diagrammi kirjeldus",
+        "description": "Sinu diagrammi ligipääsetav kirjeldus."
+      },
+      {
+        "title": "Skaala nimi",
+        "description": "Diagrammi laiuse ja kõrguse suhe (vt $ct-scales ja $ct-scales-names kohta https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Näita ruudustiku tausta"
+      },
+      {
+        "title": "Horisontaalsed tulbad",
+        "description": "Pöörab tulpdiagrammi teljed ümber, et joonistada horisontaalne tulpdiagramm. Pea meeles, et pead ümber pöörama ka teljeseaded, sest nüüd kuvab Y-telg silte ja X-telg väärtusi."
+      },
+      {
+        "title": "Virnasta tulbad",
+        "description": "Kui see on seatud väärtusele true, virnastatakse seeriate tulbad."
+      },
+      {
+        "title": "Jaota seeriad",
+        "description": "Kui see on seatud väärtusele true, esindab iga tulp üht seeriat ja andmemassiiv peab olema ühemõõtmeline andmeväärtuste massiiv, mitte seeriate massiiv."
+      },
+      {
+        "title": "Diagrammi sisevahe (üleval)"
+      },
+      {
+        "title": "Diagrammi sisevahe (all)"
+      },
+      {
+        "title": "Diagrammi sisevahe (vasakul)"
+      },
+      {
+        "title": "Diagrammi sisevahe (paremal)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pööra andmed ümber",
+        "description": "Pööra andmed ümber, sealhulgas sildid, seeriate järjekord ja kogu seeriate andmemassiivid."
+      },
+      {
+        "title": "HTML-tabel",
+        "description": "Valikuline: laadi andmed HTML-tabelina."
+      },
+      {
+        "title": "Diagrammi miinimum",
+        "description": "Diagrammi loomuliku miinimumi asendamine võimaldab suumida või piirata diagrammi väikseimat kuvatavat väärtust"
+      },
+      {
+        "title": "Diagrammi maksimum",
+        "description": "Diagrammi loomuliku maksimumi asendamine võimaldab suumida või piirata diagrammi suurimat kuvatavat väärtust"
+      },
+      {
+        "title": "X-telje ruudustik",
+        "description": "Näita X-telje ruudustikku."
+      },
+      {
+        "title": "X-telje nihe"
+      },
+      {
+        "title": "X-telje asukoht",
+        "description": "Siltide paigutuse asukoht. Võib olla \"start\" või \"end\", kus \"start\" vastab vertikaalteljel vasakule või ülemisele ja \"end\" horisontaalteljel paremale või alumisele asendile"
+      },
+      {
+        "title": "X-telje silt",
+        "description": "Näita X-telje silti."
+      },
+      {
+        "title": "X-telje silt (horisontaalne nihe)",
+        "description": "X-telje siltide horisontaalne asukoht."
+      },
+      {
+        "title": "X-telje silt (vertikaalne nihe)",
+        "description": "X-telje siltide vertikaalne asukoht."
+      },
+      {
+        "title": "X-telje pealkiri",
+        "description": "X-telje valikuline pealkiri."
+      },
+      {
+        "title": "X-telje pealkiri (horisontaalne nihe)",
+        "description": "X-telje pealkirja horisontaalne asukoht."
+      },
+      {
+        "title": "X-telje pealkiri (vertikaalne nihe)",
+        "description": "X-telje pealkirja vertikaalne asukoht."
+      },
+      {
+        "title": "X-telje pealkirja ankur",
+        "description": "X-telje pealkirja valikuline ankur.",
+        "options": {
+          "middle": "keskel",
+          "end": "lõpp",
+          "start": "algus"
+        }
+      },
+      {
+        "title": "X-telje skaala minimaalne vahe",
+        "description": "Määrab skaala sammude minimaalse kõrguse pikslites."
+      },
+      {
+        "title": "X-telje skaala (ainult täisarvud)",
+        "description": "Kasuta skaala sammudeks ainult täisarve."
+      },
+      {
+        "title": "Y-telg: näita ruudustikku",
+        "description": "Näita Y-telje ruudustikku."
+      },
+      {
+        "title": "Y-telje nihe"
+      },
+      {
+        "title": "Y-telje asukoht",
+        "description": "Siltide paigutuse asukoht. Võib olla \"start\" või \"end\", kus \"start\" vastab vertikaalteljel vasakule või ülemisele ja \"end\" horisontaalteljel paremale või alumisele asendile"
+      },
+      {
+        "title": "Y-telje silt",
+        "description": "Näita Y-telje silti."
+      },
+      {
+        "title": "Y-telje silt (horisontaalne nihe)",
+        "description": "Y-telje sildi horisontaalne asukoht."
+      },
+      {
+        "title": "Y-telje silt (vertikaalne nihe)",
+        "description": "Y-telje sildi vertikaalne asukoht."
+      },
+      {
+        "title": "Y-telje skaala minimaalne vahe",
+        "description": "Määrab skaala sammude minimaalse kõrguse pikslites."
+      },
+      {
+        "title": "Y-telje skaala (ainult täisarvud)",
+        "description": "Kasuta skaala sammudeks ainult täisarve."
+      },
+      {
+        "title": "Y-telje pealkiri",
+        "description": "Y-telje valikuline pealkiri."
+      },
+      {
+        "title": "Y-telje pealkiri (vertikaalne nihe)",
+        "description": "Y-telje pealkirja horisontaalne asukoht."
+      },
+      {
+        "title": "Y-telje pealkiri (horisontaalne nihe)",
+        "description": "Y-telje pealkirja horisontaalne asukoht."
+      },
+      {
+        "title": "Y-telje pealkirja ankur",
+        "description": "Y-telje pealkirja valikuline ankur.",
+        "options": {
+          "middle": "keskel",
+          "end": "lõpp",
+          "start": "algus"
+        }
+      },
+      {
+        "title": "Y-telje pealkirja pööramine",
+        "description": "Kas pöörata Y-telje pealkiri ümber?"
+      },
+      {
+        "title": "Võrdlusväärtus",
+        "description": "Kui miinimumi/maksimumi pole selgesõnaliselt määratud, tsentreeritakse tulpdiagramm vaikimisi nulli ümber."
+      },
+      {
+        "title": "Seeria tulpade vahe",
+        "description": "Määra rühma tulpade vahe pikslites."
+      },
+      {
+        "title": "Virnastamisrežiim",
+        "description": "Kui see on seatud väärtusele \"true\", moodustatakse iga seeriapunkti jaoks kogusumma. See mõjutab ka y-telge ja diagrammi üldisi piire. Kui see on seatud väärtusele \"false\", joonistatakse virnastatud tulbad nulljoonest. Virnastatud režiimis pole omadusel \"seriesBarDistance\" mõju."
+      }
+    ]
+  }
+}

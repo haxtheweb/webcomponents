@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "कोड नमुना",
+    "description": "पानात हायलाइट केलेला कोडचा नमुना"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "कोड हायलाइटिंग",
+        "description": "कोड क्षेत्राला लागू करायचे सिंटॅक्स हायलाइटिंग",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON डेटा",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "क्लिपबोर्डवर कॉपी करा बटण",
+        "description": "वर उजवीकडे क्लिपबोर्डवर कॉपी करा असे लिहिलेले बटण"
+      },
+      {
+        "property": "highlightStart",
+        "title": "हायलाइट सुरुवात",
+        "description": "हायलाइटिंग सुरू करायचा ओळ क्रमांक"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "हायलाइट शेवट",
+        "description": "हायलाइटिंग संपवायची ओळ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "CTA Polaris",
+    "description": "Mostra un botón de chamada á acción de Polaris con tema."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Texto do botón",
+        "description": "Texto que se mostra no botón de chamada á acción."
+      },
+      {
+        "property": "link",
+        "title": "Ligazón",
+        "description": "URL de destino do botón."
+      },
+      {
+        "property": "type",
+        "title": "Variante",
+        "description": "Variante de estilo visual.",
+        "options": {
+          "primary": "Principal",
+          "tinted": "Tinguido",
+          "light": "Clara"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "Estilo contorneado",
+        "description": "Activar o tratamento contorneado."
+      },
+      {
+        "property": "filled",
+        "title": "Estilo recheo",
+        "description": "Activar o tratamento con recheo."
+      }
+    ]
+  }
+}

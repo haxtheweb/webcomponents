@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Papapykuaa",
+    "description": "Ehechauka papapykuaa iporã háicha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Papapykuaa",
+        "description": "Ehai ñembojojaha LaTeX ramo"
+      }
+    ]
+  }
+}

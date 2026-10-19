@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Resaltado",
+    "description": "Resaltar texto en liña."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Texto",
+        "description": "Texto resaltado."
+      }
+    ]
+  }
+}

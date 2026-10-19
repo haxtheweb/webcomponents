@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Galeria de imagens",
+    "description": "Uma galeria que apresenta imagens em grade, mosaico ou apresentação de slides."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Modo de exibição",
+        "description": "Como apresentar as imagens na galeria.",
+        "options": {
+          "grid": "Grade",
+          "masonry": "Mosaico",
+          "gallery": "Galeria"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Índice ativo",
+        "description": "Índice da imagem ativa inicial no modo galeria."
+      }
+    ]
+  }
+}

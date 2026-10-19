@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Подання CMS",
+    "description": "Подання CMS, що обробляються на сервері"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Ім'я",
+        "description": "Назва подання з нашої CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Відображення",
+        "description": "Відображення в межах цього подання з нашої CMS"
+      }
+    ]
+  }
+}

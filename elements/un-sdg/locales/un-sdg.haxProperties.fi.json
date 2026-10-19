@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "YK:n kestävän kehityksen tavoite."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Tavoite",
+        "description": "UN SDG -tavoitteen numero."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Vain väri",
+        "description": "Näytä vain tavoitteen väri."
+      }
+    ]
+  }
+}

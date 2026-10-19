@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: चाइल्ड ब्लॉक",
+    "description": "वर्तमान पेज के चाइल्ड दिखाने वाला डायनामिक ब्लॉक"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "डायनामिक विधि",
+        "description": "इस एलिमेंट के सापेक्ष चाइल्ड की गणना कैसे करें",
+        "options": {
+          "active": "सक्रिय चाइल्ड",
+          "parent": "पैरेंट के चाइल्ड",
+          "ancestor": "सबसे ऊपरी पूर्वज से सभी चाइल्ड"
+        }
+      },
+      {
+        "property": "start",
+        "title": "आरंभ स्तर"
+      },
+      {
+        "property": "end",
+        "title": "अंतिम स्तर"
+      }
+    ]
+  }
+}

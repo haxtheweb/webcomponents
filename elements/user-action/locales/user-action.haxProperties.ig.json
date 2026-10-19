@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Omume onye ọrụ",
+    "description": "Soro omume ndị ọrụ ma zipụ data na ebe nchekwa xAPI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Ihe omume a ga-eso",
+        "description": "Omume onye ọrụ na-akpalite ihe omume a.",
+        "options": {
+          "visibility": "Nwere ike ịhụ nke a",
+          "keydown": "Pịa igodo ebe a",
+          "click": "Pịa nke a",
+          "hover": "Kwụgharịa n'elu nke a"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Soro oge ọ bụla",
+        "description": "Na ndabara, ọ bụ naanị ihe mbụ mere ka a na-eso."
+      }
+    ]
+  }
+}

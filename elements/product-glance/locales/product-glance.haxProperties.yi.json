@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "פּראָדוקט אין איין בליק",
+    "description": "בלאָק מיט אַ שנעלער איבערזיכט פֿון אַ פּראָדוקט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "איקאָן",
+        "description": "איקאָן וואָס פֿאַרטרעט דעם באַגריף."
+      },
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "הויפּט־באַגריף אין איין בליק."
+      },
+      {
+        "property": "subtitle",
+        "title": "אונטערטיטל",
+        "description": "נאָך פּרטים."
+      },
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "אַקצענט־קאָליר פֿאַרן איקאָן."
+      }
+    ]
+  }
+}

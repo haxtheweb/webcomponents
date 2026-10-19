@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "ગ્રેડ બુક",
+    "description": "રૂબ્રિક્સ સાથે અનેક બેકએન્ડને સમર્થન આપતી હેડલેસ ગ્રેડબુક."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "સ્રોત",
+        "description": "ડેટા સ્રોત પ્રકાર (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google ડૉક્સ",
+          "url": "URL એન્ડપોઇન્ટ (JSON)",
+          "json": "JSON ડેટા બ્લોબ",
+          "filesystem": "ફાઇલ સિસ્ટમ"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "સ્રોત ડેટા",
+        "description": "ગ્રેડબુક માટે URL અથવા JSON ડેટા."
+      },
+      {
+        "property": "forCourse",
+        "title": "અભ્યાસક્રમ સંદર્ભ",
+        "description": "દરેક મૂલ્યાંકન સંસાધન પર oer:forCourse તરીકે આપવામાં આવતો અભ્યાસક્રમ ઓળખકર્તા."
+      }
+    ]
+  }
+}

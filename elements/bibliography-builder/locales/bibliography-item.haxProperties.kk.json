@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Библиография элементі",
+    "description": "Бірнеше пішім мен экспорттау опцияларын қолдайтын, библиографиядағы бір дәйексөзді білдіретін элемент."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Түрі",
+        "description": "Дәйексөз түрі",
+        "options": {
+          "web": "Веб",
+          "journal": "Журнал",
+          "book": "Кітап"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Тақырып",
+        "description": "Элементтің атауы"
+      },
+      {
+        "property": "authors",
+        "title": "Автор(лар)",
+        "description": "Уақыт сызығындағы оқиғалар"
+      },
+      {
+        "property": "publisher",
+        "title": "Баспагер",
+        "description": "Түпнұсқа веб-сайт"
+      }
+    ]
+  }
+}

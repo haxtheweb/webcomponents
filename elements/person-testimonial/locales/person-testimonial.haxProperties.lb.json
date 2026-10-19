@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Bildzitat",
+    "description": "Gestaltent Zitat mat optionalem Bild."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Bild",
+        "description": "E Bild zum Testimonial derbäisetzen."
+      },
+      {
+        "property": "name",
+        "title": "Vollen Numm",
+        "description": "Numm vun der Persoun, déi d'Testimonial gëtt."
+      },
+      {
+        "property": "position",
+        "title": "Positioun oder Beruffstitel",
+        "description": "Positioun oder Beruffstitel vun der Persoun."
+      },
+      {
+        "slot": "",
+        "title": "Zitat",
+        "description": "Zitat vum Auteur vum Testimonial."
+      }
+    ]
+  }
+}

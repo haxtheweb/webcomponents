@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-bookknop",
+    "description": "Een knop die naar een e-book linkt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "De titel van de knop."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "De link waarnaar bij klikken wordt doorgestuurd."
+      },
+      {
+        "property": "icon",
+        "title": "Pictogram",
+        "description": "Pictogram dat deze link vertegenwoordigt"
+      }
+    ]
+  }
+}

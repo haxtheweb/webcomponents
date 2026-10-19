@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkasme",
+    "description": "Bied teks op 'n terggerige manier aan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Teks",
+        "description": "Teks om sarkasties te maak"
+      }
+    ]
+  }
+}

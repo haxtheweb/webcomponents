@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematika",
+    "description": "Ippreżenta l-matematika b'mod sabiħ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematika",
+        "description": "Daħħal l-ekwazzjoni bħala LaTeX"
+      }
+    ]
+  }
+}

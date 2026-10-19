@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bendera halaman",
+    "description": "Nota editorial untuk pengarang halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen untuk bendera halaman."
+      },
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Teks label untuk bendera halaman."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Қойынды",
+    "description": "Жалғыз қойынды."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Қойынды белгішесі"
+      },
+      {
+        "property": "disabled",
+        "title": "Өшірулі"
+      },
+      {
+        "property": "label",
+        "title": "Қойынды белгісі"
+      },
+      {
+        "slot": "",
+        "title": "Қойынды мазмұны",
+        "description": "Қойындының мазмұны."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Бірегей ID"
+      },
+      {
+        "property": "flag",
+        "title": "Қосымша жалауша мәтіні"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Қосымша жалауша белгішесі"
+      }
+    ]
+  }
+}

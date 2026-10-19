@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Etikette",
+    "description": "Eenvoudige etiketlys om op die bladsy te vertoon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Etikette",
+        "description": "Kommageskeide lys van etikette."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Outomatiese aksentkleur",
+        "description": "Stel die aksentkleur outomaties gebaseer op die etiket."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kleur",
+        "description": "Kleur vir etikette."
+      }
+    ]
+  }
+}

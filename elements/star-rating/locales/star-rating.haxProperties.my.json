@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ကြယ် အဆင့်သတ်မှတ်ချက်",
+    "description": "အဆင့်သတ်မှတ်ချက် ပြသမှု ဝစ်ဂျက် သို့မဟုတ် အဆင့်သတ်မှတ်ရန် ခလုတ်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "ရမှတ်",
+        "description": "လက်ရှိ ရမှတ် တန်ဖိုး။"
+      },
+      {
+        "property": "possible",
+        "title": "ဖြစ်နိုင်ချေ",
+        "description": "ရနိုင်သော အများဆုံး ရမှတ်။"
+      },
+      {
+        "property": "numStars",
+        "title": "ကြယ် အရေအတွက်",
+        "description": "ပြသမည့် ကြယ် အရေအတွက်။"
+      },
+      {
+        "property": "interactive",
+        "title": "အပြန်အလှန်",
+        "description": "အဆင့်သတ်မှတ်ရန် အသုံးပြုသူ အပြန်အလှန် ခွင့်ပြုရန်။"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubric စကေး မုဒ်",
+        "description": "ကြယ်တိုင်းအတွက် OER Schema RubricScale နှင့် RubricLevel metadata (levelOrdinal/levelPoints) ကို ထုတ်ပေးရန်။"
+      }
+    ]
+  }
+}

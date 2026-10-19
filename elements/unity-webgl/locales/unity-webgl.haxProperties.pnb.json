@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity پلیئر",
+    "description": "Unity WebGL پلیئر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "ٹارگٹ",
+        "description": "گیم بلڈ دا راہ۔"
+      },
+      {
+        "property": "compression",
+        "title": "کمپریشن طریقہ",
+        "description": "گیم اثاثیاں لئی کمپریشن فائل ایکسٹینشن۔"
+      },
+      {
+        "property": "streamingurl",
+        "title": "سٹریمنگ URL",
+        "description": "سٹریمنگ اثاثیاں دا URL۔"
+      },
+      {
+        "property": "companyname",
+        "title": "کمپنی دا ناں",
+        "description": "کمپنی دا ناں۔"
+      },
+      {
+        "property": "productname",
+        "title": "پراڈکٹ دا ناں",
+        "description": "گیم دا عنوان۔"
+      },
+      {
+        "property": "productversion",
+        "title": "پراڈکٹ ورژن",
+        "description": "ریلیز ورژن۔"
+      },
+      {
+        "property": "width",
+        "title": "کینوس دی چوڑائی",
+        "description": "کینوس دی CSS چوڑائی (جیویں px یا em)۔"
+      },
+      {
+        "property": "height",
+        "title": "کینوس دی اُچائی",
+        "description": "کینوس دی CSS اُچائی (جیویں px یا em)۔"
+      },
+      {
+        "property": "background",
+        "title": "کینوس دا پچھوکڑ",
+        "description": "کینوس دا CSS پچھوکڑ۔"
+      }
+    ]
+  }
+}

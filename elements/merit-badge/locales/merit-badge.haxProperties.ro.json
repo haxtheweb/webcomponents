@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Insignă de merit",
+    "description": "Insignă vizuală care comunică dobândirea unei competențe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Titlul insignei",
+        "description": "Titlul afișat pe insignă."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Imaginea insignei",
+        "description": "URL-ul imaginii pentru insignă."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Detaliile insignei",
+        "description": "Detalii despre insignă."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlink",
+        "description": "Link asociat insignei."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Competențele insignei",
+        "description": "Competențele afișate pe insignă."
+      },
+      {
+        "property": "skill",
+        "title": "Competență (OER Schema)",
+        "description": "OER Schema: o competență dobândită prin îndeplinirea acestui obiectiv de învățare."
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Бейдж події",
+    "description": "Компонент бейджа події."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Зображення TV",
+        "description": "Зображення, показане на екрані TV."
+      },
+      {
+        "property": "logo",
+        "title": "Логотип",
+        "description": "Логотип у куті бейджа."
+      },
+      {
+        "property": "title",
+        "title": "Назва",
+        "description": "Назва, показана вгорі бейджа."
+      },
+      {
+        "property": "name",
+        "title": "Ім'я",
+        "description": "Ім'я, показане на бейджі."
+      },
+      {
+        "property": "position",
+        "title": "Посада",
+        "description": "Роль або посада особи."
+      },
+      {
+        "property": "organization",
+        "title": "Організація",
+        "description": "Організація, в якій працює особа."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Колір TV",
+        "description": "Виберіть колір TV."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Основний колір фону або тексту."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Колір ручок",
+        "description": "Колір ручок TV."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Сепія",
+        "description": "Застосувати ефект сепії."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Чорно-біле",
+        "description": "Застосувати чорно-білий ефект."
+      }
+    ]
+  }
+}

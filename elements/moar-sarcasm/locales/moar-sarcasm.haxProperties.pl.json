@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Sarkazm",
+    "description": "Prezentowanie tekstu w prześmiewczy sposób"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "Tekst",
+        "description": "Tekst do przerobienia na sarkastyczny"
+      }
+    ]
+  }
+}

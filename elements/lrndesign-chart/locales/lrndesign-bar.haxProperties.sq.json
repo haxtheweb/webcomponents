@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Grafik me shtylla",
+    "description": "Krijon një grafik të qasshëm bazuar në një CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ngjyra theksuese",
+        "description": "Një ngjyrë theksuese opsionale."
+      },
+      {
+        "title": "Tema e errët",
+        "description": "Aktivizo temën e errët"
+      },
+      {
+        "title": "Skedari CSV",
+        "description": "Ngarko të dhëna nga një CSV."
+      },
+      {
+        "title": "Titulli i grafikut",
+        "description": "Tekst alternativ i qasshëm për grafikun tënd."
+      },
+      {
+        "title": "Përshkrimi i grafikut",
+        "description": "Përshkrim i qasshëm i grafikut tënd."
+      },
+      {
+        "title": "Emri i shkallës",
+        "description": "Raporti gjerësi:lartësi i grafikut (Shiko https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings për $ct-scales dhe $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Shfaq sfondin me rrjetë"
+      },
+      {
+        "title": "Shtylla horizontale",
+        "description": "I përmbys boshtet e grafikut me shtylla për të vizatuar një grafik me shtylla horizontale. Ki parasysh se duhet të përmbysësh edhe cilësimet e boshteve, pasi boshti Y tani do të shfaqë etiketat dhe boshti X vlerat."
+      },
+      {
+        "title": "Shtylla të mbivendosura",
+        "description": "Nëse vendoset në true, kjo veti bën që shtyllat e serive të mbivendosen."
+      },
+      {
+        "title": "Shpërndaj seritë",
+        "description": "Nëse vendoset në true, atëherë çdo shtyllë do të përfaqësojë një seri dhe vargu i të dhënave pritet të jetë një varg njëdimensional vlerash, jo një varg serish."
+      },
+      {
+        "title": "Mbushja e grafikut (lart)"
+      },
+      {
+        "title": "Mbushja e grafikut (poshtë)"
+      },
+      {
+        "title": "Mbushja e grafikut (majtas)"
+      },
+      {
+        "title": "Mbushja e grafikut (djathtas)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Përmbys të dhënat",
+        "description": "Përmbys të dhënat duke përfshirë etiketat, rendin e serive si dhe të gjitha vargjet e të dhënave të serive."
+      },
+      {
+        "title": "Tabelë HTML",
+        "description": "Opsionale: Ngarko të dhënat si tabelë HTML."
+      },
+      {
+        "title": "Minimumi i grafikut",
+        "description": "Mbishkrimi i vlerës së ulët natyrore të grafikut të lejon të zmadhosh ose të kufizosh vlerën më të ulët të shfaqur të grafikut"
+      },
+      {
+        "title": "Maksimumi i grafikut",
+        "description": "Mbishkrimi i vlerës së lartë natyrore të grafikut të lejon të zmadhosh ose të kufizosh vlerën më të lartë të shfaqur të grafikut"
+      },
+      {
+        "title": "Boshti X: shfaq rrjetën",
+        "description": "Shfaq rrjetën e boshtit X."
+      },
+      {
+        "title": "Zhvendosja e boshtit X"
+      },
+      {
+        "title": "Pozicioni i boshtit X",
+        "description": "Pozicioni ku vendosen etiketat. Mund të vendoset në \"start\" ose \"end\", ku \"start\" i përgjigjet majtas ose lart në boshtin vertikal dhe \"end\" i përgjigjet djathtas ose poshtë në boshtin horizontal"
+      },
+      {
+        "title": "Boshti X: shfaq etiketën",
+        "description": "Shfaq etiketën e boshtit X."
+      },
+      {
+        "title": "Etiketa e boshtit X (zhvendosje horizontale)",
+        "description": "Pozicioni horizontal i etiketave të boshtit X."
+      },
+      {
+        "title": "Etiketa e boshtit X (zhvendosje vertikale)",
+        "description": "Pozicioni vertikal i etiketave të boshtit X."
+      },
+      {
+        "title": "Titulli i boshtit X",
+        "description": "Titull opsional për boshtin X."
+      },
+      {
+        "title": "Titulli i boshtit X (zhvendosje horizontale)",
+        "description": "Pozicioni horizontal i titullit të boshtit X."
+      },
+      {
+        "title": "Titulli i boshtit X (zhvendosje vertikale)",
+        "description": "Pozicioni vertikal i titullit të boshtit X."
+      },
+      {
+        "title": "Ankorimi i titullit të boshtit X",
+        "description": "Ankorim opsional për titullin e boshtit X.",
+        "options": {
+          "middle": "mes",
+          "end": "fund",
+          "start": "fillim"
+        }
+      },
+      {
+        "title": "Hapësira minimale e shkallës së boshtit X",
+        "description": "Përcakton lartësinë minimale në piksel të hapave të shkallës."
+      },
+      {
+        "title": "Shkalla e boshtit X (vetëm numra të plotë)",
+        "description": "Përdor vetëm vlera të plota (numra të plotë) për hapat e shkallës."
+      },
+      {
+        "title": "Boshti Y: shfaq rrjetën",
+        "description": "Shfaq rrjetën e boshtit Y."
+      },
+      {
+        "title": "Zhvendosja e boshtit Y"
+      },
+      {
+        "title": "Pozicioni i boshtit Y",
+        "description": "Pozicioni ku vendosen etiketat. Mund të vendoset në \"start\" ose \"end\", ku \"start\" i përgjigjet majtas ose lart në boshtin vertikal dhe \"end\" i përgjigjet djathtas ose poshtë në boshtin horizontal"
+      },
+      {
+        "title": "Boshti Y: shfaq etiketën",
+        "description": "Shfaq etiketën e boshtit Y."
+      },
+      {
+        "title": "Etiketa e boshtit Y (zhvendosje horizontale)",
+        "description": "Pozicioni horizontal i etiketës së boshtit Y."
+      },
+      {
+        "title": "Etiketa e boshtit Y (zhvendosje vertikale)",
+        "description": "Pozicioni vertikal i etiketës së boshtit Y."
+      },
+      {
+        "title": "Hapësira minimale e shkallës së boshtit Y",
+        "description": "Përcakton lartësinë minimale në piksel të hapave të shkallës."
+      },
+      {
+        "title": "Shkalla e boshtit Y (vetëm numra të plotë)",
+        "description": "Përdor vetëm vlera të plota (numra të plotë) për hapat e shkallës."
+      },
+      {
+        "title": "Titulli i boshtit Y",
+        "description": "Titull opsional për boshtin Y."
+      },
+      {
+        "title": "Titulli i boshtit Y (zhvendosje vertikale)",
+        "description": "Pozicioni horizontal i titullit të boshtit Y."
+      },
+      {
+        "title": "Titulli i boshtit Y (zhvendosje horizontale)",
+        "description": "Pozicioni horizontal i titullit të boshtit Y."
+      },
+      {
+        "title": "Ankorimi i titullit të boshtit Y",
+        "description": "Ankorim opsional për titullin e boshtit Y.",
+        "options": {
+          "middle": "mes",
+          "end": "fund",
+          "start": "fillim"
+        }
+      },
+      {
+        "title": "Rrotullimi i titullit të boshtit Y",
+        "description": "Të rrotullohet titulli i boshtit Y?"
+      },
+      {
+        "title": "Vlera referuese",
+        "description": "Nëse low/high nuk vendosen shprehimisht, grafiku me shtylla do të përqendrohet si parazgjedhje te zero."
+      },
+      {
+        "title": "Distanca mes shtyllave të serive",
+        "description": "Përcakto distancën në piksel të shtyllave në një grup."
+      },
+      {
+        "title": "Modaliteti i mbivendosjes",
+        "description": "Nëse vendoset në \"true\", kjo veti do të formojë një total për çdo pikë të serisë. Kjo do të ndikojë edhe në boshtin y dhe në kufijtë e përgjithshëm të grafikut. Nëse vendoset në \"false\", kjo veti do t'i detyrojë shtyllat e mbivendosura të vizatohen nga vija zero. Në modalitetin e mbivendosur vetia \"seriesBarDistance\" nuk do të ketë efekt."
+      }
+    ]
+  }
+}

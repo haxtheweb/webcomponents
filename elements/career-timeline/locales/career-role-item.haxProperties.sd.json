@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "ڪيريئر ڪردار",
+    "description": "تنظيم اندر هڪ ڪردار"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان"
+      },
+      {
+        "property": "startDate",
+        "title": "شروعاتي تاريخ"
+      },
+      {
+        "property": "endDate",
+        "title": "آخري تاريخ (اختياري)"
+      },
+      {
+        "property": "skills",
+        "title": "لاڳاپيل مهارتون",
+        "description": "مهارتون شامل ڪرڻ شروع ڪرڻ لاءِ + بٽڻ چونڊيو"
+      }
+    ]
+  }
+}

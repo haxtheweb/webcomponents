@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Cód QR",
+    "description": "Cód le scanadh le fón cliste."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Sonraí QR",
+        "description": "Foinse na sonraí don chód QR."
+      },
+      {
+        "property": "title",
+        "title": "Teideal malartach",
+        "description": "Teideal malartach nasctha le foinse an chóid QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Méid",
+        "description": "Méid an chóid QR."
+      },
+      {
+        "property": "margin",
+        "title": "Imeall",
+        "description": "Fillteán timpeall an chóid."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Formáid aschuir",
+        "description": "An fhormáid ina n-aschuirfear é.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

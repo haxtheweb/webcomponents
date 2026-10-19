@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Параллакс сурет",
+    "description": "Айналдырғанда жылжитын сурет"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Сурет",
+        "description": "фонда пайдаланылатын сурет"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Тақырып аймағы",
+        "description": "Тақырып мәтінінің аймағы"
+      }
+    ]
+  }
+}

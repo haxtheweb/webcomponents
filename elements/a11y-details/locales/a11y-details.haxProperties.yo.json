@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bọ́tìnnì Àlàyé Tó Ṣeé Wọlé Sí",
+    "description": "Ìṣípayá díẹ̀díẹ̀ tó ṣeé wọlé sí pẹ̀lú details àti summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Bọ́tìnnì",
+        "description": "Àkópọ̀ àkóónú tí a bá fi pamọ́, fún àpẹẹrẹ \"àlàyé\", \"dátà àpèjúwe\", abbl."
+      },
+      {
+        "slot": "details",
+        "title": "Àpèjúwe",
+        "description": "Àpèjúwe kíkún tí a lè fi pamọ́ tàbí fi hàn"
+      },
+      {
+        "slot": "",
+        "title": "Bọ́tìnnì Àpèjúwe",
+        "description": "Àkọ́kọ́ fún bọ́tìnnì tó ń fi ọ̀rọ̀ àpèjúwe hàn/pamọ́, fún àpẹẹrẹ \"àlàyé\", \"dátà àpèjúwe\", abbl."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Ọ̀rọ̀ àkópọ̀ (àṣàyàn) nígbà tí àwọn àlàyé bá ṣí"
+      },
+      {
+        "property": "closeText",
+        "title": "Ọ̀rọ̀ àkópọ̀ (àṣàyàn) nígbà tí àwọn àlàyé bá tì"
+      }
+    ]
+  }
+}

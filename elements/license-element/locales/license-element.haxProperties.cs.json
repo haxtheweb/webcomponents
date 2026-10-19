@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licence",
+    "description": "Uveďte licenci svého díla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Název citovaného díla."
+      },
+      {
+        "property": "source",
+        "title": "Odkaz na zdroj",
+        "description": "URL zdroje licencovaného díla."
+      },
+      {
+        "property": "license",
+        "title": "Licence",
+        "description": "Licence použitá na toto dílo."
+      },
+      {
+        "property": "creator",
+        "title": "Tvůrce",
+        "description": "Tvůrce nebo vlastník tohoto díla."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Odkaz na zdroj",
+        "description": "Odkaz na další podrobnosti o licenci."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Popisek „více“",
+        "description": "Popisek pro další podrobnosti o licenci."
+      }
+    ]
+  }
+}

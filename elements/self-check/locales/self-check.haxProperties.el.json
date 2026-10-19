@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Αυτοέλεγχος",
+    "description": "Οι χρήστες μπορούν να ολοκληρώσουν έναν αυτοέλεγχο."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Εικόνα",
+        "description": "Εικόνα για τον αυτοέλεγχο."
+      },
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Τίτλος του αυτοελέγχου."
+      },
+      {
+        "property": "alt",
+        "title": "Εναλλακτικό κείμενο",
+        "description": "Εναλλακτικό κείμενο για την εικόνα."
+      },
+      {
+        "slot": "question",
+        "title": "Ερώτηση"
+      },
+      {
+        "slot": "",
+        "title": "Απάντηση"
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα θέματος",
+        "description": "Επιλέξτε ένα χρώμα θέματος από το σύστημα σχεδίασης.",
+        "options": {
+          "primary": "Κύριο",
+          "accent": "Έμφαση",
+          "success": "Επιτυχία",
+          "warning": "Προειδοποίηση",
+          "error": "Σφάλμα",
+          "info": "Πληροφορία"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Μαθησιακός στόχος",
+        "description": "Αναφορά μαθησιακού στόχου που παράγεται ως oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Αξιολογεί",
+        "description": "Αναφορά δραστηριότητας που παράγεται ως oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Σύνδεσμος για περισσότερα",
+        "description": "Σύνδεσμος σε πρόσθετες πληροφορίες."
+      }
+    ]
+  }
+}

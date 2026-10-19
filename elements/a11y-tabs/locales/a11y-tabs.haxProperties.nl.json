@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Tabbladen",
+    "description": "Set tabbladen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Label (voor toegankelijkheid)",
+        "description": "Toegankelijk label voor de set tabbladen."
+      },
+      {
+        "property": "disabled",
+        "title": "Uitgeschakeld",
+        "description": "Alle tabbladen uitschakelen."
+      },
+      {
+        "property": "hidden",
+        "title": "Verborgen",
+        "description": "De set tabbladen verbergen."
+      },
+      {
+        "property": "sticky",
+        "title": "Vastzetten",
+        "description": "Houd horizontale tabbladen bovenaan tijdens het scrollen."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Breekpunt voor indeling",
+        "description": "Breekpunt voor horizontale tabbladen; gebruik -1 voor alleen verticaal."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Breekpunt voor pictogrammen",
+        "description": "Breekpunt voor het tonen van tekst bij pictogrammen. Standaard is 0; gebruik -1 voor alleen pictogrammen."
+      },
+      {
+        "slot": "",
+        "title": "Tabbladen",
+        "description": "Reeks <a11y-tab/>-elementen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unieke ID",
+        "description": "Unieke ID voor deze set tabbladen."
+      }
+    ]
+  }
+}

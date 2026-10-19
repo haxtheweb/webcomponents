@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "GIF",
+    "description": "Yenza ama-GIF anyakazayo afinyeleleke."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "I-GIF Enyakazayo",
+        "description": "I-URL ye-GIF enyakazayo."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo Ongenye",
+        "description": "Umbhalo ongenye wesithombe."
+      },
+      {
+        "property": "longdesc",
+        "title": "Incazelo Ende",
+        "description": "Incazelo ende ye-GIF yokufinyeleleka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "srcWithoutAnimation",
+        "title": "Isithombe Esimile",
+        "description": "I-URL yenguqulo yesithombe esimile se-GIF."
+      }
+    ]
+  }
+}

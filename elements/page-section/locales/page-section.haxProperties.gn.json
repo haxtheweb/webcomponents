@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "Kuatiarogue pehẽ",
+    "description": "Pehẽ ryru kuatiarogue tetepy ha mba'erechaha ñemohendápe g̃uarã."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "Ñemoporã reko",
+        "description": "Reko oñembosako'íva ombopyahúva ñemboheko ojoajúva."
+      },
+      {
+        "property": "image",
+        "title": "Ta'ãnga",
+        "description": "Mba'erechapyrã hapykuegua pehẽme g̃uarã."
+      },
+      {
+        "property": "bg",
+        "title": "Hapykuegua sa'y",
+        "description": "Hapykuegua sa'y ndaipóriramo ta'ãnga."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "Votõ jeguerova",
+        "description": "Ehechauka votõ oguerováva pehẽ oúvape."
+      },
+      {
+        "property": "fold",
+        "title": "Ehechauka ñemopĩ",
+        "description": "Ehechauka ñemopĩ ojehecháva pehẽ yvýpe."
+      },
+      {
+        "property": "full",
+        "title": "Mba'erechaha tuichakue pukukue",
+        "description": "Emyenyhẽ ohecháva mba'erechaha yvatekue."
+      },
+      {
+        "property": "filter",
+        "title": "Emoĩ mbogua'ã",
+        "description": "Emoĩ mbogua'ã ojehecháva hapykuegua ta'ãngape."
+      },
+      {
+        "slot": "",
+        "title": "Tetepy",
+        "description": "Pehẽ tetepy."
+      },
+      {
+        "slot": "entice",
+        "title": "Mbopy'ako'õ",
+        "description": "Tetepy mbopy'ako'õrã ikatúramo."
+      },
+      {
+        "slot": "buttons",
+        "title": "Votõ",
+        "description": "Votõ aty ojehechaukáva moñe'ẽrã guýpe."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "Jokoha moñe'ẽrã",
+        "description": "Jokoha teramoĩ ojehechaukáva jeguatápe."
+      }
+    ]
+  }
+}

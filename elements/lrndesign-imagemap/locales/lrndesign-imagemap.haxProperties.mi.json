@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mahere whakaahua",
+    "description": "He mahere whakaahua wātea ki te katoa me ōna wāhi wera tauwhitiwhiti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Tapanga",
+        "description": "Tapanga mō te mahere whakaahua."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "Taipitopito wāhi wera",
+        "description": "Ngā wāhi wera tauwhitiwhiti i te mahere whakaahua."
+      }
+    ]
+  }
+}

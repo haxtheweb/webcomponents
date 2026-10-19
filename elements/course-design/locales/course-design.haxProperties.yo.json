@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Ìṣètò Ẹ̀kọ́",
+    "description": "Àpótí fún àwọn ohun èlò ẹ̀kọ́ àti àwọn ẹ̀yà ìṣètò ẹ̀kọ́."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Ìdánimọ̀ Ẹ̀kọ́",
+        "description": "OER Schema: ìdánimọ̀ ẹ̀kọ́ náà, fún àpẹẹrẹ MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Sáà Tí A Ń Kọ́ Ọ",
+        "description": "OER Schema: sáà tí a ń kọ́ ẹ̀kọ́ náà."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Ọ̀nà Ìfijíṣẹ́",
+        "description": "OER Schema: ọ̀nà tí a ń lò láti fi ẹ̀kọ́ náà jíṣẹ́ (fún àpẹẹrẹ ní ojúkojú, lórí ayélujára, àdàpọ̀)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Olùkọ́ Àgbà",
+        "description": "OER Schema: olùkọ́ àgbà fún ẹ̀kọ́ náà."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL Ìlapa Ẹ̀kọ́",
+        "description": "OER Schema: URL sí ìlapa ẹ̀kọ́ náà."
+      }
+    ]
+  }
+}

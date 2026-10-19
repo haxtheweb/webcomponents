@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Xem trước GitHub",
+    "description": "Hình dễ tiếp cận kèm mô tả chi tiết"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Tổ chức",
+        "description": "Tên máy của tổ chức GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Kho mã",
+        "description": "Tên máy của kho mã"
+      },
+      {
+        "property": "extended",
+        "title": "Chế độ xem mở rộng",
+        "description": "Bao gồm readme trong phần tử"
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "வீடியோ",
+    "description": "பல மூலங்களில் அணுகக்கூடிய வீடியோ இயக்கம்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "மூலம்",
+        "description": "இந்த ஊடகத்திற்கான URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "தலைப்பு",
+        "description": "வீடியோவின் கீழே காட்டப்படும் தலைப்பு."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "முன்னோட்டப் படம்",
+        "description": "முன்னோட்டப் பட URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "உரைத் தடங்கள்",
+        "description": "வீடியோவுக்கான மூடிய தலைப்புகள், வசனங்கள், விவரிப்புகள் மற்றும் பிற உரைத் தடங்கள்."
+      },
+      {
+        "property": "startTime",
+        "title": "தொடக்க நேரம்",
+        "description": "குறிப்பிட்ட நேரத்தில் (வினாடிகள்) வீடியோவைத் தொடங்கவும்."
+      },
+      {
+        "property": "endTime",
+        "title": "முடிவு நேரம்",
+        "description": "குறிப்பிட்ட நேரத்தில் (வினாடிகள்) வீடியோவை முடிக்கவும்; தொடக்க நேரம் தேவை."
+      },
+      {
+        "property": "learningMode",
+        "title": "கற்றல் பயன்முறையை இயக்கு",
+        "description": "வேகமாக முன்னோக்கி மற்றும் பின்னோக்கிச் செல்வதை முடக்குகிறது."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube இல் திற பொத்தானை அகற்று",
+        "description": "YouTube இல் வீடியோவைத் திறக்கும் பொத்தானை அகற்றுகிறது."
+      },
+      {
+        "property": "linkable",
+        "title": "பகிர்வு இணைப்பைச் சேர்க்கவா?",
+        "description": "வீடியோவைப் பகிர இணைப்பை வழங்குகிறது."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "நேர முத்திரைகளை மறை",
+        "description": "எழுத்துப்படியில் உள்ள நேர முத்திரைகளை மறை."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "எழுத்துப்படியை மறை",
+        "description": "இயல்பாக எழுத்துப்படியை மறை."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "ஒலி விவரிப்புத் தடம்",
+        "description": "காட்சிக் கூறுகளை விவரிக்கும் ஒலி விவரிப்புத் தடத்தின் (MP3 கோப்பு) URL."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS பயன்படுத்த வேண்டுமா என்பதைக் குறிக்கிறது.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "பின்னணி இயக்கத்தை அனுமதி",
+        "description": "உலாவித் தாவல் கவனத்தை இழக்கும்போதும் தொடர்ந்து இயக்கவும்."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "எழுத்துப்படிக்கான இருண்ட தீம்",
+        "description": "எழுத்துப்படிக்கு இருண்ட தீமை இயக்கு."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ஊடாடலை முடக்கு",
+        "description": "எழுத்துப்படியைச் சொடுக்கக்கூடியதாக்கும் ஊடாடும் பயன்முறையை முடக்கு."
+      },
+      {
+        "property": "lang",
+        "title": "மொழி",
+        "description": "ஊடகத்தின் மொழி."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "(காலாவதியானது) இயக்கிக்கான உச்சரிப்பு நிறத்தைத் தேர்ந்தெடுக்கவும்."
+      }
+    ]
+  }
+}

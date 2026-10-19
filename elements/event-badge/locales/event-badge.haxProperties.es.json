@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Credencial de evento",
+    "description": "Componente de credencial de evento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Imagen del TV",
+        "description": "Imagen que se muestra en el televisor."
+      },
+      {
+        "property": "logo",
+        "title": "Logotipo",
+        "description": "Logotipo que se muestra en la esquina de la credencial."
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título que se muestra en la parte superior de la credencial."
+      },
+      {
+        "property": "name",
+        "title": "Nombre",
+        "description": "Nombre que se muestra en la credencial."
+      },
+      {
+        "property": "position",
+        "title": "Cargo",
+        "description": "Función o cargo de la persona."
+      },
+      {
+        "property": "organization",
+        "title": "Organización",
+        "description": "Organización para la que trabaja la persona."
+      },
+      {
+        "property": "tvcolor",
+        "title": "Color del TV",
+        "description": "Selecciona el color del televisor."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Color principal del fondo o del texto."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Color de las perillas",
+        "description": "Color de las perillas del televisor."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepia",
+        "description": "Aplicar un efecto sepia."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Blanco y negro",
+        "description": "Aplicar un efecto en blanco y negro."
+      }
+    ]
+  }
+}

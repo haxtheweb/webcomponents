@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Wanta wabii",
+    "description": "Wanta wabii tokko tarree wabii keessatti bakka bu'u, foormaatii hedduu fi filannoowwan al erguu deeggaru."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Gosa",
+        "description": "Gosa wabii",
+        "options": {
+          "web": "Weebii",
+          "journal": "Joornaalii",
+          "book": "Kitaaba"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Mata duree",
+        "description": "Mata duree wantichaa"
+      },
+      {
+        "property": "authors",
+        "title": "Barreessaa(wwan)",
+        "description": "Taateewwan yeroo-tarreeffama keessaa"
+      },
+      {
+        "property": "publisher",
+        "title": "Maxxansaa",
+        "description": "Marsariitii jalqabaa"
+      }
+    ]
+  }
+}

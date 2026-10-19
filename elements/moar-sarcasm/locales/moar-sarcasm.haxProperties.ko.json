@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "비꼬기",
+    "description": "텍스트를 장난스럽게 비꼬아 표시합니다"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "텍스트",
+        "description": "비꼬는 말투로 바꿀 텍스트"
+      }
+    ]
+  }
+}

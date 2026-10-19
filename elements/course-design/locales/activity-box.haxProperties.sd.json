@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "سرگرمي باڪس",
+    "description": "ننڍو سينگاريل سرخي بلاڪ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "آئڪن",
+        "description": "سرگرمي باڪس سان گڏ ڏيکاريل آئڪن."
+      },
+      {
+        "property": "tag",
+        "title": "سرگرمي باڪس ٽيگ",
+        "description": "سرگرمي باڪس ۾ ڏيکاريل ٽيگ."
+      },
+      {
+        "property": "nocolourize",
+        "title": "رنگ نه ڏيو",
+        "description": "آئڪن تي رنگ لاڳو ٿيڻ کان روڪيو."
+      }
+    ]
+  }
+}

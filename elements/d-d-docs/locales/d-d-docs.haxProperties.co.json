@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Implementazione di u sistema di cuncepimentu per HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Opzione da affissà",
+        "options": {
+          "*": "Guida di stile cumpleta"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Карточка",
+    "description": "Карточка с необязательным акцентным оформлением."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Заголовок",
+        "description": "Заголовок карточки."
+      },
+      {
+        "slot": "subheading",
+        "title": "Подзаголовок",
+        "description": "Необязательный подзаголовок карточки."
+      },
+      {
+        "slot": "content",
+        "title": "Содержимое",
+        "description": "Содержимое карточки."
+      },
+      {
+        "slot": "footer",
+        "title": "Итоговая строка",
+        "description": "Необязательный нижний колонтитул карточки."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Изображение",
+        "description": "Необязательное изображение"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Альтернативный текст изображения",
+        "description": "Альтернативный текст, описывающий изображение для программ чтения с экрана. Оставляйте пустым, только если изображение чисто декоративное."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Выравнивание изображения по горизонтали",
+        "options": {
+          "left": "слева",
+          "center": "по центру",
+          "right": "справа"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Выравнивание изображения по вертикали",
+        "options": {
+          "top": "сверху",
+          "center": "по центру",
+          "bottom": "снизу"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "Необязательный акцентный цвет."
+      },
+      {
+        "property": "dark",
+        "title": "Тёмная тема",
+        "description": "Включить тёмную тему"
+      },
+      {
+        "property": "horizontal",
+        "title": "Горизонтальная",
+        "description": "Горизонтальная ориентация?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Акцент заголовка",
+        "description": "Применить акцентный цвет к заголовку?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Акцент фона",
+        "description": "Применить акцентный цвет к фону карточки?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Без акцента границы",
+        "description": "Убрать акцент границы?"
+      },
+      {
+        "property": "flat",
+        "title": "Плоская",
+        "description": "Убрать тень?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Угол",
+        "description": "Содержимое для угла карточки."
+      }
+    ]
+  }
+}

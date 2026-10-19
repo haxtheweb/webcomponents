@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "ຮູບພາບຂັ້ນສູງ",
+    "description": "ວິທີນຳສະເໜີຮູບພາບດ້ວຍການປັບປຸງຕ່າງໆ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "URL ສຳລັບຮູບພາບ."
+      },
+      {
+        "property": "alt",
+        "title": "ຂໍ້ຄວາມທາງເລືອກ",
+        "description": "ຂໍ້ຄວາມອະທິບາຍຮູບພາບສຳລັບຜູ້ໃຊ້ທີ່ບໍ່ສາມາດເບິ່ງເຫັນ."
+      },
+      {
+        "property": "link",
+        "title": "ລິ້ງ",
+        "description": "ລິ້ງຮູບພາບໄປຫາ URL"
+      },
+      {
+        "property": "card",
+        "title": "ບັດ",
+        "description": "ໃສ່ເງົາເພື່ອໃຫ້ເບິ່ງຄືບັດທີ່ຍົກຂຶ້ນ."
+      },
+      {
+        "property": "box",
+        "title": "ກ່ອງ",
+        "description": "ໃສ່ກ່ອງອ້ອມຮູບພາບ."
+      },
+      {
+        "property": "offset",
+        "title": "ການເລື່ອນ",
+        "description": "ເລື່ອນຮູບພາບໄປທາງຊ້າຍ ຫຼື ຂວາ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "wide": "ກວ້າງ",
+          "narrow": "ແຄບ"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "ການອ້າງອີງ",
+        "description": "ການອ້າງອີງສຳລັບຮູບພາບ."
+      },
+      {
+        "property": "caption",
+        "title": "ຄຳບັນຍາຍ",
+        "description": "ຄຳບັນຍາຍສຳລັບຮູບພາບ."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ຫົວຂໍ້ຮູບ",
+        "description": "ຫົວຂໍ້ສຳລັບປ້າຍຮູບ."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ຄຳອະທິບາຍຮູບ",
+        "description": "ຄຳອະທິບາຍສຳລັບປ້າຍຮູບ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "ຮູບຕົວຢ່າງ",
+        "description": "ແຫຼ່ງຮູບຕົວຢ່າງ. ສະແດງຮູບຕົວຢ່າງ ແຕ່ເປີດແຫຼ່ງເຕັມໃນກ່ອງໂຕ້ຕອບ."
+      },
+      {
+        "property": "round",
+        "title": "ຮູບພາບມົນ",
+        "description": "ຕັດຮູບພາບໃຫ້ເປັນຮູບວົງມົນ."
+      },
+      {
+        "property": "disableZoom",
+        "title": "ປິດກ່ອງໂຕ້ຕອບຮູບພາບ",
+        "description": "ປິດການຄລິກທີ່ເປີດຮູບພາບໃນກ່ອງໂຕ້ຕອບກວດກາຮູບພາບ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "ສະແດງເປັນ markdown",
+        "description": "ສະແດງຄຳບັນຍາຍ ແລະ ການອ້າງອີງເປັນ markdown."
+      }
+    ]
+  }
+}

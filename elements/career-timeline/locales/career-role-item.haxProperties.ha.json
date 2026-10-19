@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Matsayin Sana'a",
+    "description": "Matsayi ɗaya a cikin ƙungiya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Take"
+      },
+      {
+        "property": "startDate",
+        "title": "Ranar Farawa"
+      },
+      {
+        "property": "endDate",
+        "title": "Ranar Ƙarewa (Na Zaɓi)"
+      },
+      {
+        "property": "skills",
+        "title": "Ƙwarewa Masu Alaƙa",
+        "description": "Zaɓi maɓallin + don fara ƙara ƙwarewa"
+      }
+    ]
+  }
+}

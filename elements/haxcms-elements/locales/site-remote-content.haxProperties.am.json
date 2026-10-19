@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "የርቀት ይዘት",
+    "description": "ከአንድ ድረ-ገጽ ይዘትን በሌላ ውስጥ እንደገና ይጠቀሙ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "የድረ-ገጽ አድራሻ",
+        "description": "የአሁኑ ድረ-ገጽ ካልሆነ ይዘትን ለማጣቀስ አድራሻ ይለጥፉ"
+      },
+      {
+        "property": "uuid",
+        "title": "ንጥል",
+        "description": "ለአገናኙ / ለርዕስ ውሂቡ የሚታይ ንጥል"
+      },
+      {
+        "property": "breakreference",
+        "title": "ማጣቀሻን አቋርጥ",
+        "description": "ይህን ሳጥን ምልክት ማድረግ የርቀት ይዘቱን በአካባቢው ለማርትዕ ይቀዳል ነገር ግን ግንኙነቱን ያስወግዳል። የማጣቀሻ ቁሱ ሲዘምን ከአሁን በኋላ ዝማኔዎችን አያገኝም።"
+      },
+      {
+        "property": "showTitle",
+        "title": "ርዕስ አሳይ",
+        "description": "የሚታየውን ሀብት ርዕስ ለማሳየት ያብሩ"
+      }
+    ]
+  }
+}

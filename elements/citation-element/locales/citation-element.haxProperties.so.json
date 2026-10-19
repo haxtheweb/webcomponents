@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Tixraac",
+    "description": "Curiyaha tixraaca oo leh saddex hab oo soo bandhig."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka shaqada la tixraacay."
+      },
+      {
+        "property": "source",
+        "title": "Xiriirka isha",
+        "description": "URL-ka isha ee shaqada la tixraacay."
+      },
+      {
+        "property": "date",
+        "title": "Taariikhda la galay",
+        "description": "Taariikhda isha la galay."
+      },
+      {
+        "property": "scope",
+        "title": "Baaxad",
+        "description": "Baaxadda curiyaha la tixraacayo.",
+        "options": {
+          "sibling": "Curiyaha walaalka",
+          "parent": "Curiyaha waalidka"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Shati",
+        "description": "Shatiga shaqada la tixraacay."
+      },
+      {
+        "property": "creator",
+        "title": "Abuure",
+        "description": "Abuuraha ama milkiilaha shaqada la tixraacay."
+      },
+      {
+        "property": "typeof",
+        "title": "Nooca OER Schema",
+        "description": "Fasalka OER Schema ee tixraacan. Caadi ahaan waa oer:ReferencedMaterial; ku beddel oo keliya fasal OER sax ah (tusaale oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

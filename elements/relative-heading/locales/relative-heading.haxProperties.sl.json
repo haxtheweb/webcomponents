@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relativni naslov",
+    "description": "izpiše pravilno hierarhijo naslovov glede na nadrejeni naslov"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID vira nadrejenega naslova"
+      },
+      {
+        "property": "disableLink",
+        "description": "Onemogoči funkcijo gumba za povezavo."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Poravna gumb za kopiranje povezave skrajno desno ob naslovu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Raven naslova, če nadrejeni ni najden."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Preglasi privzeto besedilo obvestila ob kopiranju povezave."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Preglasi privzeto oznako gumba za kopiranje povezave."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Preglasi privzeto ikono gumba za kopiranje povezave."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Preglasi privzeto oznako gumba za zapiranje obvestila ob kopiranju povezave."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Preglasi privzeto ikono gumba za zapiranje obvestila ob kopiranju povezave."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Hormat nyşany",
+    "description": "Başarnyk gazanylandygyny habar bermek üçin wizual nyşan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Nyşanyň ady",
+        "description": "Nyşanda görkezilýän at."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Nyşanyň suraty",
+        "description": "Nyşan üçin suratyň URL-i."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Nyşanyň jikme-jiklikleri",
+        "description": "Nyşan barada jikme-jiklikler."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Gipersalgy",
+        "description": "Nyşan bilen baglanyşykly salgy."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Nyşanyň başarnyklary",
+        "description": "Nyşanda görkezilýän başarnyklar."
+      },
+      {
+        "property": "skill",
+        "title": "Başarnyk (OER Schema)",
+        "description": "OER Schema: bu okuw maksadyny tamamlamak bilen gazanylan başarnyk."
+      }
+    ]
+  }
+}

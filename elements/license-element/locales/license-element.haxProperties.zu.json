@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ilayisensi",
+    "description": "Nikeza ilayisensi yomsebenzi wakho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko somsebenzi ocashunwayo."
+      },
+      {
+        "property": "source",
+        "title": "Isixhumanisi somthombo",
+        "description": "I-URL yomthombo womsebenzi onelayisensi."
+      },
+      {
+        "property": "license",
+        "title": "Ilayisensi",
+        "description": "Ilayisensi esetshenziswe kulo msebenzi."
+      },
+      {
+        "property": "creator",
+        "title": "Umdali",
+        "description": "Umdali noma umnikazi walo msebenzi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Isixhumanisi somthombo",
+        "description": "Isixhumanisi semininingwane eyengeziwe yelayisensi."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Ilebula elengeziwe",
+        "description": "Ilebula lemininingwane eyengeziwe yelayisensi."
+      }
+    ]
+  }
+}

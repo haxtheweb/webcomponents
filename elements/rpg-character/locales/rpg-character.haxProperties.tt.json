@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "RPG персонажы",
+    "description": "HAX-тан күңелле персонаж."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Исем",
+        "description": "Очраклы персонаж ясау өчен кулланыла торган сүз."
+      },
+      {
+        "property": "hat",
+        "title": "Эшләпә",
+        "description": "Эшләпә стиле.",
+        "options": {
+          "none": "Килешү буенча",
+          "random": "Очраклы",
+          "bunny": "Куян",
+          "cowboy": "Ковбой",
+          "education": "Мәгариф",
+          "construction": "Төзелеш",
+          "warning": "Кисәтү",
+          "watermelon": "Карбыз",
+          "coffee": "Кофе",
+          "knight": "Рыцарь",
+          "ninja": "Ниндзя",
+          "party": "Бәйрәм",
+          "error": "Хата",
+          "edit": "Төзәтү"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Киңлек",
+        "description": "Персонажның пиксельләрдәге киңлеге."
+      },
+      {
+        "property": "height",
+        "title": "Биеклек",
+        "description": "Персонажның пиксельләрдәге биеклеге."
+      },
+      {
+        "property": "fire",
+        "title": "Яныймы?",
+        "description": "Персонаж яна микән."
+      },
+      {
+        "property": "walking",
+        "title": "Атлыймы?",
+        "description": "Атлау анимациясе; янганда эшли."
+      }
+    ]
+  }
+}

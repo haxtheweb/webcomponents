@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Təkmilləşdirilmiş şəkil",
+    "description": "Şəkilləri müxtəlif təkmilləşdirmələrlə təqdim etmə üsulu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Mənbə",
+        "description": "Şəklin URL-i."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ mətn",
+        "description": "Görmə qabiliyyəti olmayan istifadəçilər üçün şəkli təsvir edən mətn."
+      },
+      {
+        "property": "link",
+        "title": "Keçid",
+        "description": "Şəkli URL-ə keçid et"
+      },
+      {
+        "property": "card",
+        "title": "Kart",
+        "description": "Qaldırılmış kart görünüşü vermək üçün kölgə tətbiq edin."
+      },
+      {
+        "property": "box",
+        "title": "Qutu",
+        "description": "Şəklin ətrafına vizual qutu tətbiq edin."
+      },
+      {
+        "property": "offset",
+        "title": "Sürüşmə",
+        "description": "Şəklə sola və ya sağa sürüşmə tətbiq edin.",
+        "options": {
+          "none": "yoxdur",
+          "wide": "geniş",
+          "narrow": "dar"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "İstinad",
+        "description": "Şəkil üçün istinad."
+      },
+      {
+        "property": "caption",
+        "title": "Başlıq yazısı",
+        "description": "Şəkil üçün başlıq."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Fiqurun başlığı",
+        "description": "Fiqur etiketi üçün başlıq."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Fiqurun təsviri",
+        "description": "Fiqur etiketi üçün təsvir."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Miniatür şəkli",
+        "description": "Miniatür şəklin mənbəyi. Miniatürü göstərir, lakin tam mənbəyi modal pəncərədə açır."
+      },
+      {
+        "property": "round",
+        "title": "Dairəvi şəkil",
+        "description": "Şəklin görünüşünü dairə formasında kəsir."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Şəkil modalını deaktiv et",
+        "description": "Kliklərin şəkli şəkil müfəttişi dialoqunda açmasını deaktiv edin."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Markdown kimi göstər",
+        "description": "Başlığı və istinadı markdown kimi göstərin."
+      }
+    ]
+  }
+}

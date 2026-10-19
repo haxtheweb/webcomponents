@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ມຸມມອງ CMS",
+    "description": "ມຸມມອງ CMS ທີ່ສະແດງຜົນຢູ່ backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "ຊື່",
+        "description": "ຊື່ຂອງມຸມມອງຈາກ CMS ຂອງພວກເຮົາ"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "ການສະແດງຜົນ",
+        "description": "ການສະແດງຜົນພາຍໃນມຸມມອງນັ້ນຈາກ CMS ຂອງພວກເຮົາ"
+      }
+    ]
+  }
+}

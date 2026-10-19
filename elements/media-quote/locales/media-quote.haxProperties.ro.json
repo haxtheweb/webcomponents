@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Citat media",
+    "description": "Imagine cu un citat, o citare și o legendă opțională."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Citat",
+        "description": "Textul citatului."
+      },
+      {
+        "slot": "author",
+        "title": "Autor",
+        "description": "Autorul citatului."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Detalii despre autor",
+        "description": "Detalii despre autor."
+      },
+      {
+        "slot": "caption",
+        "title": "Legendă",
+        "description": "Legenda imaginii."
+      },
+      {
+        "property": "src",
+        "title": "Sursa imaginii",
+        "description": "Fișierul imagine folosit pentru citatul media."
+      },
+      {
+        "property": "alt",
+        "title": "Text alternativ",
+        "description": "Text alternativ pentru imagine."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Culoarea de accent a fișei."
+      }
+    ]
+  }
+}

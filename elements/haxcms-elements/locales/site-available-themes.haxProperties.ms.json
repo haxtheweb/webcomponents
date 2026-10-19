@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Tema Tersedia",
+    "description": "Paparkan tema HAXcms yang tersedia dengan pertukaran pratonton langsung"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Mod Paparan",
+        "description": "Pilih cara untuk memaparkan tema",
+        "options": {
+          "gallery": "Galeri",
+          "table": "Jadual"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Tunjukkan Butiran",
+        "description": "Tunjukkan perihalan tema dan maklumat tambahan"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Tunjukkan Tema Tersembunyi dan Lama",
+        "description": "Tunjukkan tema tersembunyi, lama dan teruk sebagai tambahan kepada lalai papan pemuka"
+      },
+      {
+        "property": "columns",
+        "title": "Lajur (Galeri)",
+        "description": "Bilangan lajur dalam paparan galeri"
+      }
+    ]
+  }
+}

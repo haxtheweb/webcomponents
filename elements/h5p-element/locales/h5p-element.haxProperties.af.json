@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "H5P",
+    "description": "H5P-omhulsel om .h5p-lêers te laai en aan te bied"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "description": "H5P-iframe-inbedkode"
+      }
+    ]
+  }
+}

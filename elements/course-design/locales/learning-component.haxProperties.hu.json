@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Tanulási komponens",
+    "description": "Kártya, amellyel az oktatók a pedagógiai és oktatási stratégiákat kommunikálhatják."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Típus",
+        "description": "A használandó kártya típusa."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alcím",
+        "description": "A kártya alcíme."
+      },
+      {
+        "property": "url",
+        "title": "Hivatkozás",
+        "description": "A kártya opcionális hivatkozása (tanulási céloknál nem érhető el)."
+      },
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "Cím megadása; felülírja a típus szerinti címet"
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon megadása; felülírja a típus szerinti ikont"
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Kiemelőszín megadása; felülírja a típus szerinti színt"
+      },
+      {
+        "slot": "",
+        "title": "Tartalom"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "ንድፍ፣ አልማ፣ አጥፋ",
+    "description": "ለHAX የንድፍ ሥርዓት ትግበራ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "የሚታይ አማራጭ",
+        "options": {
+          "*": "ሙሉ የቅጥ መመሪያ"
+        }
+      }
+    ]
+  }
+}

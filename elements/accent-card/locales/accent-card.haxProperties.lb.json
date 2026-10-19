@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kaart",
+    "description": "Eng Kaart mat optionalem Akzent-Styling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Iwwerschrëft",
+        "description": "Eng Iwwerschrëft fir d'Kaart."
+      },
+      {
+        "slot": "subheading",
+        "title": "Ënneriwwerschrëft",
+        "description": "Eng optional Ënneriwwerschrëft fir d'Kaart."
+      },
+      {
+        "slot": "content",
+        "title": "Inhalt",
+        "description": "Inhalt fir d'Kaart."
+      },
+      {
+        "slot": "footer",
+        "title": "Fouss",
+        "description": "E optionale Fousszeil fir d'Kaart."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Bild",
+        "description": "Optionaalt Bild"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-Text vum Bild",
+        "description": "Alternativtext, deen d'Bild fir Screenreader beschreift. Loosst en nëmmen eidel, wann d'Bild reng dekorativ ass."
+      },
+      {
+        "property": "imageAlign",
+        "title": "Bildausriichtung",
+        "description": "Horizontal Ausriichtung vum Bild",
+        "options": {
+          "left": "lénks",
+          "center": "zentréiert",
+          "right": "riets"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "Vertikal Bildausriichtung",
+        "description": "Vertikal Ausriichtung vum Bild",
+        "options": {
+          "top": "uewen",
+          "center": "zentréiert",
+          "bottom": "ënnen"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Eng optional Akzentfaarf."
+      },
+      {
+        "property": "dark",
+        "title": "Däischtert Thema",
+        "description": "Däischtert Theme aktivéieren"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Horizontal Orientéierung?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Iwwerschrëft-Akzent",
+        "description": "Akzentfaarf op d'Iwwerschrëft applizéieren?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Hannergrond-Akzent",
+        "description": "Akzentfaarf op den Hannergrond vun der Kaart applizéieren?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Kee Rand-Akzent",
+        "description": "Rand-Akzent ewechhuelen?"
+      },
+      {
+        "property": "flat",
+        "title": "Flaach",
+        "description": "Schiet vun der Këscht ewechhuelen?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Eck",
+        "description": "Inhalt fir den Eck vun der Kaart."
+      }
+    ]
+  }
+}

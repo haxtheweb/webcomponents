@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "বুলেটযুক্ত তালিকা",
+    "description": "একটি বুলেটযুক্ত তালিকা তৈরি করুন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "বুলেটের স্টাইল",
+        "description": "ক্রমহীন তালিকার বুলেটের জন্য ব্যবহৃত স্টাইল।",
+        "options": {
+          "": "ডিফল্ট (বর্গ)",
+          "list-disc": "চাকতি",
+          "list-circle": "বৃত্ত",
+          "list-square": "বর্গ"
+        }
+      }
+    ]
+  }
+}

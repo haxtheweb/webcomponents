@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Faldebla ujo",
+    "description": "Unuopa malfaldebla kaj faldebla ujo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Titolo",
+        "description": "Teksto por la faldebla elemento."
+      },
+      {
+        "property": "expanded",
+        "title": "Malfaldita",
+        "description": "Malfaldi defaŭlte."
+      },
+      {
+        "property": "headingButton",
+        "title": "Titola butono",
+        "description": "Igi la tutan titolon klakebla anstataŭ nur la piktogramon."
+      },
+      {
+        "property": "icon",
+        "title": "Piktogramo",
+        "description": "Piktogramo por la butono de malfaldo/faldo."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Piktogramo (kiam malfaldita)",
+        "description": "Nedeviga piktogramo por la malfaldita stato."
+      },
+      {
+        "slot": "",
+        "title": "Enhavo",
+        "description": "Enhavo por la faldebla elemento."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Ŝpruchelpilo",
+        "description": "Ŝpruchelpilo por la butono de malfaldo/faldo."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Ŝpruchelpilo (kiam malfaldita)",
+        "description": "Ŝpruchelpilo por la butono de malfaldo/faldo kiam malfaldita."
+      }
+    ]
+  }
+}

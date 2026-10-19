@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relativ rubrik",
+    "description": "ger rätt rubrikhierarki baserat på den överordnade rubriken"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Den överordnade rubrikens resurs-ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "Inaktiverar funktionen med länkknapp."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Justerar knappen Kopiera länk längst till höger om rubriken."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Rubriknivå om överordnad inte hittas."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Åsidosätter standardtexten i aviseringen för Kopiera länk."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Åsidosätter standardetiketten för knappen Kopiera länk."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Åsidosätter standardikonen för knappen Kopiera länk."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Åsidosätter standardetiketten för stängknappen i aviseringen för Kopiera länk."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Åsidosätter standardikonen för stängknappen i aviseringen för Kopiera länk."
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Osadzenie LinkedIn",
+    "description": "Osadź kartę profilu LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Nazwa niestandardowa",
+        "description": "Niestandardowy segment nazwy użytkownika LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Ustawienia regionalne",
+        "description": "Wartość metadanych ustawień regionalnych, np. en_US."
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Toʻplam elementi",
+    "description": "Toʻplam roʻyxati ichida foydalanish uchun matn, havola va ixtiyoriy mediali karta koʻrinishidagi element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Havola",
+        "description": "Ushbu karta uchun manzil URL."
+      },
+      {
+        "property": "image",
+        "title": "Rasm",
+        "description": "Fon rasmi."
+      },
+      {
+        "property": "line1",
+        "title": "1-qator",
+        "description": "Matnning birinchi qatori."
+      },
+      {
+        "property": "line2",
+        "title": "2-qator",
+        "description": "Matnning ikkinchi qatori."
+      },
+      {
+        "property": "line3",
+        "title": "3-qator",
+        "description": "Matnning uchinchi qatori."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Belgi",
+        "description": "Kartani ifodalovchi belgi."
+      },
+      {
+        "property": "saturate",
+        "title": "Toʻyinganlik effekti",
+        "description": "Foydalanuvchi fokuslanganda rasm toʻyinganligini oʻzgartirish."
+      },
+      {
+        "property": "tags",
+        "title": "Teglar",
+        "description": "Vergul bilan ajratilgan teglar roʻyxati."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rang",
+        "description": "Teglar uchun ishlatiladigan rang."
+      },
+      {
+        "property": "alt",
+        "title": "Muqobil matn",
+        "description": "Havolani tavsiflovchi muqobil matn."
+      }
+    ]
+  }
+}

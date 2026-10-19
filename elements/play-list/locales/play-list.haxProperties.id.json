@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Daftar putar",
+    "description": "Tampilkan konten apa pun dalam daftar putar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Sumber",
+        "description": "Konten yang ditampilkan dalam daftar putar."
+      },
+      {
+        "property": "edit",
+        "title": "Mode edit",
+        "description": "Beralih antara mode edit dan pratinjau untuk daftar putar."
+      },
+      {
+        "property": "navigation",
+        "title": "Navigasi",
+        "description": "Tampilkan tombol navigasi maju dan mundur."
+      },
+      {
+        "property": "pagination",
+        "title": "Paginasi",
+        "description": "Tampilkan titik paginasi."
+      },
+      {
+        "property": "orientation",
+        "title": "Orientasi",
+        "description": "Orientasi slide.",
+        "options": {
+          "horizontal": "Horizontal",
+          "vertical": "Vertikal"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Slide awal",
+        "description": "Indeks slide yang difokuskan di awal."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Rasio Aspek",
+        "description": "Rasio aspek slide.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

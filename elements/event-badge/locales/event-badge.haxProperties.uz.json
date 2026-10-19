@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "Tadbir nishoni",
+    "description": "Tadbir nishoni komponenti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV rasmi",
+        "description": "TV da koʻrsatiladigan rasm."
+      },
+      {
+        "property": "logo",
+        "title": "Logotip",
+        "description": "Nishon burchagida koʻrsatiladigan logotip."
+      },
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Nishon yuqorisida koʻrsatiladigan sarlavha."
+      },
+      {
+        "property": "name",
+        "title": "Ism",
+        "description": "Nishonda koʻrsatiladigan ism."
+      },
+      {
+        "property": "position",
+        "title": "Lavozim",
+        "description": "Shaxsning roli yoki lavozimi."
+      },
+      {
+        "property": "organization",
+        "title": "Tashkilot",
+        "description": "Shaxs ishlaydigan tashkilot."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV rangi",
+        "description": "TV uchun rangni tanlang."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "Asosiy fon yoki matn rangi."
+      },
+      {
+        "property": "knobcolor",
+        "title": "Tugmacha rangi",
+        "description": "TV tugmachalarining rangi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "Sepiya",
+        "description": "Sepiya effektini qoʻllash."
+      },
+      {
+        "property": "blackwhite",
+        "title": "Oq-qora",
+        "description": "Oq-qora effektni qoʻllash."
+      }
+    ]
+  }
+}

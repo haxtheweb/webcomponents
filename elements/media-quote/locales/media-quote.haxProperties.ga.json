@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Athfhriotal meán",
+    "description": "Íomhá le hathfhriotal, lua agus fotheideal roghnach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Athfhriotal",
+        "description": "Téacs an athfhriotail."
+      },
+      {
+        "slot": "author",
+        "title": "Údar",
+        "description": "Údar an athfhriotail."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Sonraí an údair",
+        "description": "Sonraí an údair."
+      },
+      {
+        "slot": "caption",
+        "title": "Fotheideal",
+        "description": "Fotheideal na híomhá."
+      },
+      {
+        "property": "src",
+        "title": "Foinse na hÍomhá",
+        "description": "Comhad íomhá a úsáidtear don athfhriotal meán."
+      },
+      {
+        "property": "alt",
+        "title": "Téacs Malartach",
+        "description": "Téacs malartach don íomhá."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Dath Aibhsithe",
+        "description": "Dath aibhsithe an chárta."
+      }
+    ]
+  }
+}

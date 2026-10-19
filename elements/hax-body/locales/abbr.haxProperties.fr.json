@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Abréviation",
+    "description": "Abréviation avec infobulle du terme complet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Texte",
+        "description": "Texte visible de l'abréviation."
+      },
+      {
+        "attribute": "title",
+        "title": "Mot",
+        "description": "Terme complet affiché au survol."
+      }
+    ]
+  }
+}

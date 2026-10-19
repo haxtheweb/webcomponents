@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "ビデオ",
+    "description": "複数のソースに対応したアクセシブルな動画再生。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ソース",
+        "description": "このメディアのURL。"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "タイトル",
+        "description": "動画の下に表示されるタイトル。"
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "ポスター画像",
+        "description": "ポスター画像のURL。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "テキストトラック",
+        "description": "動画のクローズドキャプション、字幕、解説などのテキストトラック。"
+      },
+      {
+        "property": "startTime",
+        "title": "開始時間",
+        "description": "指定した時間（秒）から動画を開始します。"
+      },
+      {
+        "property": "endTime",
+        "title": "終了時間",
+        "description": "指定した時間（秒）で動画を終了します。開始時間が必要です。"
+      },
+      {
+        "property": "learningMode",
+        "title": "学習モードを有効にする",
+        "description": "早送りと巻き戻しを無効にします。"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "「YouTube で開く」ボタンを削除",
+        "description": "動画を YouTube で開くボタンを削除します。"
+      },
+      {
+        "property": "linkable",
+        "title": "共有リンクを含めますか?",
+        "description": "動画を共有するためのリンクを表示します。"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "タイムスタンプを非表示",
+        "description": "トランスクリプトのタイムスタンプを非表示にします。"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "トランスクリプトを非表示",
+        "description": "既定でトランスクリプトを非表示にします。"
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "音声解説トラック",
+        "description": "映像の視覚的要素をナレーションで伝える音声解説トラック（MP3 ファイル）の URL。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS を使用するかどうかを指定します。",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "バックグラウンド再生を許可",
+        "description": "ブラウザーのタブがフォーカスを失っても再生を続けます。"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "トランスクリプトのダークテーマ",
+        "description": "トランスクリプトのダークテーマを有効にします。"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "インタラクティブを無効にする",
+        "description": "トランスクリプトをクリック可能にするインタラクティブモードを無効にします。"
+      },
+      {
+        "property": "lang",
+        "title": "言語",
+        "description": "メディアの言語。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "（非推奨）プレーヤーのアクセントカラーを選択します。"
+      }
+    ]
+  }
+}

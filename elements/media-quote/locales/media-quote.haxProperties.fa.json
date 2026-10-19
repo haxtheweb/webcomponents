@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "نقل‌قول رسانه‌ای",
+    "description": "تصویر همراه با نقل‌قول، ارجاع و زیرنویس اختیاری."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "نقل‌قول",
+        "description": "متن نقل‌قول."
+      },
+      {
+        "slot": "author",
+        "title": "نویسنده",
+        "description": "گویندهٔ نقل‌قول."
+      },
+      {
+        "slot": "author-detail",
+        "title": "جزئیات نویسنده",
+        "description": "جزئیات نویسنده."
+      },
+      {
+        "slot": "caption",
+        "title": "زیرنویس",
+        "description": "زیرنویس تصویر."
+      },
+      {
+        "property": "src",
+        "title": "منبع تصویر",
+        "description": "فایل تصویری که برای نقل‌قول رسانه‌ای استفاده می‌شود."
+      },
+      {
+        "property": "alt",
+        "title": "متن جایگزین",
+        "description": "متن جایگزین تصویر."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی کارت."
+      }
+    ]
+  }
+}

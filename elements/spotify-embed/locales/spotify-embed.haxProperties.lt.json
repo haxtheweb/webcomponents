@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify grotuvo įterpinių apvalkalas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Šaltinis",
+        "description": "Spotify įterpimo arba bendrinimo nuoroda."
+      },
+      {
+        "property": "theme",
+        "title": "Tema",
+        "description": "Grotuvo fono spalvų tema.",
+        "options": {
+          "": "Numatytoji",
+          "0": "Juoda"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Dydis",
+        "description": "Grotuvo dydis.",
+        "options": {
+          "normal": "Numatytoji",
+          "compact": "Kompaktiškas"
+        }
+      }
+    ]
+  }
+}

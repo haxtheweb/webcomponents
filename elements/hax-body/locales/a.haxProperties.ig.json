@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Njikọ nkịtị",
+    "description": "Mmewere njikọ nkịtị."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Njikọ",
+        "description": "URL ebe a na-aga."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Ederede",
+        "description": "Ederede njikọ a na-ahụ anya."
+      },
+      {
+        "attribute": "target",
+        "title": "Ebumnuche",
+        "description": "Ebe a ga-emepe njikọ ahụ.",
+        "options": {
+          "": "Otu windo ahụ",
+          "_blank": "Windo ọhụrụ - _blank",
+          "_top": "Windo kachasị elu - _top",
+          "_parent": "Windo nne - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Ederede aha",
+        "description": "Aha ndụmọdụ maka nnweta na SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Mmekọrịta na ebe a na-aga (nchekwa/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

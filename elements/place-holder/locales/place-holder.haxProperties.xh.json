@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Isibambi-ndawo",
+    "description": "Isibambi-ndawo esinokuguqulwa sibe luhlobo lwemidiya olukhethiweyo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Uhlobo",
+        "description": "Uhlobo lwe-gizmo olwamkelwa sesi ukutshintsha.",
+        "options": {
+          "text": "Umbhalo / umxholo",
+          "document": "Uxwebhu / ifayile",
+          "audio": "Isandi",
+          "video": "Ividiyo",
+          "image": "Umfanekiso",
+          "math": "Izibalo"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Umbhalo",
+        "description": "Chaza isibambi-ndawo esifunwayo ngeenkcukacha ezingakumbi"
+      }
+    ]
+  }
+}

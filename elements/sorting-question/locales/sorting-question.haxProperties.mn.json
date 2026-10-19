@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Эрэмбэлэх асуулт",
+    "description": "Зүйлсийг зөв дарааллаар эрэмбэлэх."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Асуулт",
+        "description": "Асуултын гарчиг."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Дүгнэх хэлбэр",
+        "description": "OER Schema: энэ үнэлгээний дүгнэх хэлбэр (жишээ нь оноо, үсэг, хувь, гүйцэтгэл)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Сургалтын зорилт",
+        "description": "OER Schema: энэ үнэлгээтэй холбоотой сургалтын зорилт."
+      },
+      {
+        "property": "forCourse",
+        "title": "Хичээл",
+        "description": "OER Schema: энэ үнэлгээг зориулсан хичээл."
+      },
+      {
+        "property": "answers",
+        "title": "Хариултууд",
+        "description": "Хариултын дараалал нь зөв дарааллыг тодорхойлно."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Шалгалтын нэр",
+        "description": "Аналитикийн системд xAPI таних зорилгоор ашиглах шалгалтын нэр."
+      }
+    ]
+  }
+}

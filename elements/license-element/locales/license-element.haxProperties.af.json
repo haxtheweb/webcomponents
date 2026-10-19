@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lisensie",
+    "description": "Verskaf 'n lisensie vir jou werk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel van die aangehaalde werk."
+      },
+      {
+        "property": "source",
+        "title": "Bronskakel",
+        "description": "Bron-URL vir die gelisensieerde werk."
+      },
+      {
+        "property": "license",
+        "title": "Lisensie",
+        "description": "Lisensie wat op hierdie werk toegepas word."
+      },
+      {
+        "property": "creator",
+        "title": "Skepper",
+        "description": "Skepper of eienaar van hierdie werk."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Bronskakel",
+        "description": "Skakel na bykomende lisensiebesonderhede."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Meer-etiket",
+        "description": "Etiket vir bykomende lisensiebesonderhede."
+      }
+    ]
+  }
+}

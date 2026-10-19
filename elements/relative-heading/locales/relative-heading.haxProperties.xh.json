@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Intloko enxulumeneyo",
+    "description": "ikhupha ulandelelwano oluchanekileyo lweentloko ngokusekelwe kwintloko yomzali"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "I-ID yeSixhobo seNtloko yoMzali"
+      },
+      {
+        "property": "disableLink",
+        "description": "Ivala uphawu lweqhosha lekhonkco."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Ilungelelanisa iqhosha lokukopa ikhonkco ekunene kakhulu kwintloko."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Inqanaba lentloko ukuba umzali akafumanekanga."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Ingqongqa umbhalo ongagqibekanga womyalezo wokukopa ikhonkco."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Ingqongqa ileyibhile engagqibekanga yeqhosha lokukopa ikhonkco."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Ingqongqa i-icon engagqibekanga yeqhosha lokukopa ikhonkco."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Ingqongqa ileyibhile engagqibekanga yeqhosha lokuvala umyalezo wokukopa ikhonkco."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Ingqongqa i-icon engagqibekanga yeqhosha lokuvala umyalezo wokukopa ikhonkco."
+      }
+    ]
+  }
+}

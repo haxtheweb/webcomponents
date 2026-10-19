@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Sekmeler",
+    "description": "Sekme kümesi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etiket (erişilebilirlik için)",
+        "description": "Sekme kümesinin erişilebilir etiketi."
+      },
+      {
+        "property": "disabled",
+        "title": "Devre dışı",
+        "description": "Tüm sekmeleri devre dışı bırak."
+      },
+      {
+        "property": "hidden",
+        "title": "Gizli",
+        "description": "Sekme kümesini gizle."
+      },
+      {
+        "property": "sticky",
+        "title": "Yapışkan",
+        "description": "Kaydırırken yatay sekmeleri üstte tut."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Düzen Kesme Noktası",
+        "description": "Yatay sekmeler için kesme noktası; yalnızca dikey için -1 kullanın."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Simge Kesme Noktası",
+        "description": "Simgelerle birlikte metin gösterme kesme noktası. Varsayılan 0'dır; yalnızca simge modu için -1 kullanın."
+      },
+      {
+        "slot": "",
+        "title": "Sekmeler",
+        "description": "<a11y-tab/> öğelerinden oluşan dizi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Benzersiz ID",
+        "description": "Bu sekme kümesi için benzersiz ID."
+      }
+    ]
+  }
+}

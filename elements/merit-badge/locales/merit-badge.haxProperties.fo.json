@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Heiðursmerki",
+    "description": "Sjónligt merki til at boða frá, at ein førleiki er fingin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Heiti á merki",
+        "description": "Heiti víst á merkinum."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Mynd á merki",
+        "description": "Myndar-URL til merkið."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Smálutir um merkið",
+        "description": "Smálutir um merkið."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Leinki",
+        "description": "Leinki knýtt at merkinum."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Førleikar á merki",
+        "description": "Førleikar vístir á merkinum."
+      },
+      {
+        "property": "skill",
+        "title": "Førleiki (OER Schema)",
+        "description": "OER Schema: ein lærdur førleiki, fingin við at fullføra hetta lærumálið."
+      }
+    ]
+  }
+}

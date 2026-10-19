@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "LinkedIn කාවැද්දීම",
+    "description": "LinkedIn පැතිකඩ කාඩ්පතක් කාවද්දන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "අභිරුචි නම",
+        "description": "LinkedIn අභිරුචි පරිශීලක නාම කොටස."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "ස්ථානීය සැකසුම",
+        "description": "en_US වැනි ස්ථානීය පාරදත්ත අගය."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Nejaušs lapas saturs",
+    "description": "Rādīt nejaušu augšējā līmeņa elementu no atlasītās lapas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Lapa",
+        "description": "Izvēlieties lapu, no kuras ņemt nejaušu saturu. Elements nejauši parādīs vienu no šīs lapas augšējā līmeņa HTML elementiem."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS View",
+    "description": "backend တွင် ပြသသော CMS view များ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "အမည်",
+        "description": "ကျွန်ုပ်တို့၏ CMS မှ view ၏ အမည်"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "ပြသမှု",
+        "description": "ကျွန်ုပ်တို့၏ CMS မှ ထို view အတွင်းရှိ display"
+      }
+    ]
+  }
+}

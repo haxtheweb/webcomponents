@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rezervisano mjesto",
+    "description": "Rezervisano mjesto koje se može pretvoriti u odabranu vrstu medija"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Vrsta",
+        "description": "Vrsta dodatka koju ovo prihvata za zamjenu.",
+        "options": {
+          "text": "Tekst / sadržaj",
+          "document": "Dokument / datoteka",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Slika",
+          "math": "Matematika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Tekst",
+        "description": "Detaljnije odredite željeno rezervisano mjesto"
+      }
+    ]
+  }
+}

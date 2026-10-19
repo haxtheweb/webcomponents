@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "音频",
+    "description": "无论来源如何，都能以高度无障碍的方式呈现视频。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "来源",
+        "description": "此媒体的 URL。"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "标题",
+        "description": "显示在视频下方的简短标题"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "选择播放器的强调色。"
+      },
+      {
+        "property": "track",
+        "title": "隐藏式字幕",
+        "description": "字幕文件的 URL。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "缩略图",
+        "description": "可选。缩略图/封面图片的 URL。"
+      },
+      {
+        "property": "learningMode",
+        "title": "启用学习模式",
+        "description": "禁用快进和快退。"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "移除“在 YouTube 上打开”按钮",
+        "description": "移除用于在 YouTube 上打开视频的按钮。"
+      },
+      {
+        "property": "linkable",
+        "title": "包含分享链接？",
+        "description": "提供用于分享视频的链接。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "跨域（Crossorigin）",
+        "description": "指示是否使用 CORS。",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "允许后台播放",
+        "description": "当标签页失去焦点时，视频会自动暂停/播放；启用此项后，视频可在标签页没有焦点时继续播放"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "文字稿深色主题",
+        "description": "为文字稿启用深色主题。"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "禁用互动",
+        "description": "禁用使文字稿可点击的互动模式。"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "隐藏时间戳",
+        "description": "隐藏文字稿上的时间戳。"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "隐藏文字稿",
+        "description": "默认隐藏文字稿。"
+      },
+      {
+        "property": "lang",
+        "title": "语言",
+        "description": "媒体的语言。"
+      }
+    ]
+  }
+}

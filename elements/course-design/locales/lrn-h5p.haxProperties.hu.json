@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P elem",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Szöveg",
+        "description": "A széljegyzet tartalma"
+      }
+    ]
+  }
+}

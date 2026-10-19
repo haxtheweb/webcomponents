@@ -1,0 +1,9 @@
+{
+  "title": "Mga Setting ng Editor",
+  "experienceLevel": "Antas ng Karanasan",
+  "experienceLevelDescription": "Piliin ang karanasan sa editor at i-preview ang layout ng toolbar.",
+  "buttons": "Mga Button",
+  "futureButtonConfiguration": "Malapit nang dumating ang custom na configuration ng button ng editor.",
+  "save": "I-save",
+  "saving": "Sine-save…"
+}

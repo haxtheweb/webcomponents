@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "מערפֿאַכיקע ברירה",
+    "description": "זעלבסט־קאָנטראָל־פֿראַגע מיט מערפֿאַכיקער ברירה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "פֿראַגע",
+        "description": "פֿראַגע אויף וועלכער די באַניצער זאָלן ענטפֿערן."
+      },
+      {
+        "property": "randomize",
+        "title": "צופֿעליק סדר",
+        "description": "צעמישן די ענטפֿערס דינאַמיש."
+      },
+      {
+        "property": "singleOption",
+        "title": "איין ענטפֿער",
+        "description": "דערלויבן נאָר איין ענטפֿער."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "צייכענונג־פֿאָרמאַט",
+        "description": "OER Schema: צייכענונג־פֿאָרמאַט פֿאַר דער אָפּשאַצונג (למשל פּונקטן, אות, פּראָצענט, דורכפֿירונג)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "לערן־ציל",
+        "description": "OER Schema: לערן־ציל פֿאַרבונדן מיט דער אָפּשאַצונג."
+      },
+      {
+        "property": "forCourse",
+        "title": "קורס",
+        "description": "OER Schema: קורס פֿאַר וועלכן די אָפּשאַצונג איז באַשטימט."
+      },
+      {
+        "property": "answers",
+        "title": "ענטפֿערס"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "נאָמען פֿון דעם קוויז",
+        "description": "קוויז־נאָמען פֿאַר xAPI־אידענטיפֿיקאַציע אין אַנאַליטיק־סיסטעמען."
+      }
+    ]
+  }
+}

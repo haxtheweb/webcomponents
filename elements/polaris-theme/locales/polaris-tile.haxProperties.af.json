@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris-teël",
+    "description": "Vertoon 'n Polaris-teël met titel, opsionele ondersteunende teks en opsionele skakel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Primêre teks",
+        "description": "Hoofteks van die teël."
+      },
+      {
+        "property": "line2",
+        "title": "Sekondêre teks",
+        "description": "Opsionele ondersteunende teks."
+      },
+      {
+        "property": "type",
+        "title": "Teëlstyl",
+        "description": "Voorafbepaalde visuele teëlstyl.",
+        "options": {
+          "1": "Styl 1",
+          "2": "Styl 2",
+          "3": "Styl 3",
+          "4": "Styl 4",
+          "5": "Styl 5"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Agtergrondprent",
+        "description": "Agtergrondprent-URL gebruik deur teëlstyle wat prente ondersteun."
+      },
+      {
+        "property": "link",
+        "title": "Skakel",
+        "description": "Opsionele bestemmings-URL vir die teël se aksie."
+      }
+    ]
+  }
+}

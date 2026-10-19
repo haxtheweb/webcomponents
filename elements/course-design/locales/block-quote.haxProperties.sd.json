@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "اقتباس بلاڪ",
+    "description": "سينگاريل اقتباس بلاڪ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citation",
+        "title": "حوالو",
+        "description": "حوالي جو متن."
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "تصوير لاءِ متبادل متن."
+      },
+      {
+        "property": "image",
+        "title": "تصوير",
+        "description": "اقتباس سان گڏ ڏيکاريل تصوير."
+      }
+    ]
+  }
+}

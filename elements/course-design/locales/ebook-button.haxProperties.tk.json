@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Elektron kitap düwmesi",
+    "description": "Elektron kitaba salgylanýan düwme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Düwmäniň ady."
+      },
+      {
+        "property": "link",
+        "title": "Baglanyşyk",
+        "description": "Basylanda geçiljek salgy."
+      },
+      {
+        "property": "icon",
+        "title": "Nyşan",
+        "description": "Bu salgyny aňladýan nyşan"
+      }
+    ]
+  }
+}

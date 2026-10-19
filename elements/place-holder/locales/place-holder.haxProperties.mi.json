@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kaipupuri wāhi",
+    "description": "He kaipupuri wāhi ka taea te huri hei momo pāpāho kua tīpakohia"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Momo",
+        "description": "Momo taputapu ka whakaaetia e tēnei hei whakakapi.",
+        "options": {
+          "text": "Kuputuhi / ihirangi",
+          "document": "Tuhinga / kōnae",
+          "audio": "Oro",
+          "video": "Ataata",
+          "image": "Whakaahua",
+          "math": "Pāngarau"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Kupu",
+        "description": "Tautuhia te kaipupuri wāhi e hiahiatia ana me te taipitopito nui ake"
+      }
+    ]
+  }
+}

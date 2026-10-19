@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "थिमअनुसारको Polaris कार्य-आह्वान (CTA) बटन देखाउनुहोस्।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "बटनको पाठ",
+        "description": "कार्य-आह्वान बटनमा देखाइने पाठ।"
+      },
+      {
+        "property": "link",
+        "title": "लिङ्क",
+        "description": "बटनको गन्तव्य URL।"
+      },
+      {
+        "property": "type",
+        "title": "भेरियन्ट",
+        "description": "दृश्य शैलीको भेरियन्ट।",
+        "options": {
+          "primary": "मुख्य",
+          "tinted": "हल्का रङ्गिएको",
+          "light": "हल्का"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "रूपरेखा शैली",
+        "description": "रूपरेखा प्रस्तुति सक्षम गर्नुहोस्।"
+      },
+      {
+        "property": "filled",
+        "title": "भरिएको शैली",
+        "description": "भरिएको प्रस्तुति सक्षम गर्नुहोस्।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "MIDI విజువలైజర్",
+    "description": "విజువలైజేషన్‌తో సందర్భంలో MIDI ప్లే చేయండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "మూలం",
+        "description": "ప్లే చేయాల్సిన ఫైల్ URL."
+      },
+      {
+        "property": "visualizer",
+        "title": "విజువలైజేషన్",
+        "description": "సంగీత ఫైల్ కోసం విజువలైజేషన్ శైలి.",
+        "options": {
+          "staff": "స్టాఫ్",
+          "piano-roll": "పియానో రోల్",
+          "waterfall": "పియానో + జలపాతం"
+        }
+      },
+      {
+        "property": "noWaterfall",
+        "title": "జలపాతాన్ని దాచు",
+        "description": "పియానో విజువలైజేషన్‌లో జలపాత స్వరాలను దాచండి."
+      }
+    ]
+  }
+}

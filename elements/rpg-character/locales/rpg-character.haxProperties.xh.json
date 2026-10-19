@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Umlinganiswa we-RPG",
+    "description": "Umlinganiswa omnandi ovela kwi-HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "seed",
+        "title": "Igama",
+        "description": "Igama elisetyenziselwa ukwenza umlinganiswa ongacwangciswanga."
+      },
+      {
+        "property": "hat",
+        "title": "Umnqwazi",
+        "description": "Isitayile somnqwazi.",
+        "options": {
+          "none": "Okungagqibekanga",
+          "random": "Ngokungacwangciswanga",
+          "bunny": "Umvundla",
+          "cowboy": "Umalusi weenkomo",
+          "education": "Imfundo",
+          "construction": "Ulwakhiwo",
+          "warning": "Isilumkiso",
+          "watermelon": "Ivatala",
+          "coffee": "Ikofu",
+          "knight": "Iqhawe",
+          "ninja": "Ininja",
+          "party": "Itheko",
+          "error": "Impazamo",
+          "edit": "Hlela"
+        }
+      },
+      {
+        "property": "width",
+        "title": "Ububanzi",
+        "description": "Ububanzi bomlinganiswa ngeepikseli."
+      },
+      {
+        "property": "height",
+        "title": "Ubude",
+        "description": "Ubude bomlinganiswa ngeepikseli."
+      },
+      {
+        "property": "fire",
+        "title": "Uyatsha?",
+        "description": "Ukuba umlinganiswa uyatsha na."
+      },
+      {
+        "property": "walking",
+        "title": "Uyahamba?",
+        "description": "Oopopayi bokuhamba; bayasebenza xa etsha."
+      }
+    ]
+  }
+}

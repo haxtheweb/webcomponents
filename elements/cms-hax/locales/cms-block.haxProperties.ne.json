@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ब्लक",
+    "description": "ब्याकएन्डमा रेन्डर गरिएको CMS ब्लक"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "मोड्युल",
+        "description": "हाम्रो CMS बाट लोड गर्ने मोड्युल"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "हाम्रो CMS बाट लोड गर्ने ब्लकको Delta"
+      }
+    ]
+  }
+}

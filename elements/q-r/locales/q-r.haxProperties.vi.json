@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Mã QR",
+    "description": "Mã để quét bằng điện thoại thông minh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Dữ liệu QR",
+        "description": "Nguồn dữ liệu cho mã QR."
+      },
+      {
+        "property": "title",
+        "title": "Tiêu đề thay thế",
+        "description": "Tiêu đề thay thế liên kết với nguồn mã QR."
+      },
+      {
+        "property": "modulesize",
+        "title": "Kích thước",
+        "description": "Kích thước mã QR."
+      },
+      {
+        "property": "margin",
+        "title": "Lề",
+        "description": "Khung bao quanh mã."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Định dạng đầu ra",
+        "description": "Định dạng để xuất ra.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -19,6 +19,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * @title Journey
@@ -62,6 +63,11 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       readMore: "Read more",
       home: "Home",
     };
+    // no I18NMixin in this class chain, so register with the store directly
+    I18NManagerStore.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     try {
       this.basePath = globalThis.document.querySelector("base").href;
     } catch (e) {

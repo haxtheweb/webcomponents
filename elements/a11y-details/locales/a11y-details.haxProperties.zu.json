@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Inkinobho Yemininingwane Efinyelelekayo",
+    "description": "Ukuvezwa kancane kancane okufinyelelekayo ngemininingwane nesifinyezo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Inkinobho",
+        "description": "Isifinyezo sokuqukethwe uma kufihliwe, isb. \"ulwazi\", \"imethadatha\", njll."
+      },
+      {
+        "slot": "details",
+        "title": "Incazelo",
+        "description": "Incazelo enemininingwane engafihlwa noma iboniswe"
+      },
+      {
+        "slot": "",
+        "title": "Inkinobho Yencazelo",
+        "description": "Okuzenzakalelayo kwenkinobho ebonisa/efihla umbhalo wencazelo, isb. \"ulwazi\", \"imethadatha\", njll."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Umbhalo wesifinyezo ongaphoqelekile uma imininingwane ivuliwe"
+      },
+      {
+        "property": "closeText",
+        "title": "Umbhalo wesifinyezo ongaphoqelekile uma imininingwane ivaliwe"
+      }
+    ]
+  }
+}

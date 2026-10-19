@@ -44,6 +44,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
       microphoneAudio: "Include Microphone",
       recordingStarted: "Recording started",
       recordingStopped: "Recording stopped",
+      audioOptions: "Audio options",
     };
     this.registerLocalization({
       context: this,
@@ -186,7 +187,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
         </div>
         
         <div class="audio-options ${this.recording ? 'hidden' : ''}">
-          <h2>Audio Options</h2>
+          <h2>${this.t.audioOptions}</h2>
           <div class="checkbox-container">
             <label>
               <input 
@@ -398,6 +399,27 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
     if (this.audioStream) {
       this.audioStream.getTracks().forEach(track => track.stop());
     }
+  }
+
+  /**
+   * @see haxHooks: gizmoRegistration
+   * Register haxProperties locales so the HAX editor UI can be translated
+   */
+  haxHooks() {
+    return {
+      gizmoRegistration: "haxgizmoRegistration",
+    };
+  }
+
+  haxgizmoRegistration(store) {
+    globalThis.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: `screen-recorder.haxProperties`,
+          localesPath: new URL(`./locales`, import.meta.url).href,
+        },
+      }),
+    );
   }
 
   /**

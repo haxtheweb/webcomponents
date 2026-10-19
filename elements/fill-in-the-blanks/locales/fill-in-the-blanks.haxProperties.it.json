@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Riempi gli spazi",
+    "description": "Attività di valutazione in cui gli studenti completano le parole mancanti in una frase."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Domanda",
+        "description": "Domanda a cui gli utenti devono rispondere."
+      },
+      {
+        "property": "statement",
+        "title": "Frase",
+        "description": "Frase che verrà convertita nell'interazione \"segna le parole\"."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato di valutazione",
+        "description": "OER Schema: formato di valutazione per questa verifica (es. punti, lettera, percentuale, completamento)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiettivo di apprendimento",
+        "description": "OER Schema: obiettivo di apprendimento associato a questa verifica."
+      },
+      {
+        "property": "forCourse",
+        "title": "Corso",
+        "description": "OER Schema: corso a cui è destinata questa verifica."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome del quiz",
+        "description": "Nome del quiz passato per l'identificazione di questo elemento negli ambienti basati su xAPI"
+      }
+    ]
+  }
+}

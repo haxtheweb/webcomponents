@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Producte d'un cop d'ull",
+    "description": "Bloc de resum ràpid d'un producte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona que representa el concepte."
+      },
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Concepte principal d'un cop d'ull."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtítol",
+        "description": "Detall addicional."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Color d'accent de la icona."
+      }
+    ]
+  }
+}

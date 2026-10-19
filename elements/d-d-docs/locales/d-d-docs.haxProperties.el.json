@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Υλοποίηση συστήματος σχεδίασης για το HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Επιλογή προς απόδοση",
+        "options": {
+          "*": "Πλήρης οδηγός στυλ"
+        }
+      }
+    ]
+  }
+}

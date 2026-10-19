@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relative kop",
+    "description": "jout de krekte kophiërargy út op basis fan de kop fan it boppelizzende elemint"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Boarne-ID fan boppelizzende kop"
+      },
+      {
+        "property": "disableLink",
+        "description": "Skeakelet de funksje fan de keppelingsknop út."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Lynt de knop foar keppeling kopiearje hielendal rjochts fan de kop út."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Kopnivo as it boppelizzende elemint net fûn wurdt."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Oerskriuwt de standerttekst foar it toastberjocht fan keppeling kopiearje."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Oerskriuwt it standertlabel fan de knop foar keppeling kopiearje."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Oerskriuwt it standertikoan fan de knop foar keppeling kopiearje."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Oerskriuwt it standertlabel foar de slutknop fan de toast fan keppeling kopiearje."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Oerskriuwt it standertikoan foar de slutknop fan de toast fan keppeling kopiearje."
+      }
+    ]
+  }
+}

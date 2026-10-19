@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex tanlagich",
+    "description": "Hex kodli rang tanlagich"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Qiymat",
+        "description": "Standart hex qiymati"
+      },
+      {
+        "property": "disabled",
+        "title": "Oʻchirilgan",
+        "description": "Matn maydonini oʻchirish"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Katta displey",
+        "description": "Rangni katta displeyda koʻrsatish"
+      }
+    ]
+  }
+}

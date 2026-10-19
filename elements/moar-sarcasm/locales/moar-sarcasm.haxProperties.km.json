@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ការចំអក",
+    "description": "បង្ហាញអត្ថបទតាមរបៀបលេងសើច"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "say",
+        "title": "អត្ថបទ",
+        "description": "អត្ថបទដែលត្រូវធ្វើឱ្យចំអក"
+      }
+    ]
+  }
+}

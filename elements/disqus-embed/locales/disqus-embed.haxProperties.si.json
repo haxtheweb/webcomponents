@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Disqus",
+    "description": "පිටුවක Disqus අදහස් කාවද්දන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "shortName",
+        "title": "කෙටි නම",
+        "description": "Disqus ස්ක්‍රිප්ට් ධාරකය තීරණය කරන අඩවියේ කෙටි නම."
+      },
+      {
+        "property": "pageURL",
+        "title": "පිටු URL",
+        "description": "අදහස් නූල සම්බන්ධ කර ඇති පිටුවේ URL."
+      },
+      {
+        "property": "pageIdentifier",
+        "title": "පිටු හඳුනාගැනීම",
+        "description": "පිටුවේ අදහස් නූල සඳහා අනන්‍ය හඳුනාගැනීම."
+      },
+      {
+        "property": "pageTitle",
+        "title": "පිටු මාතෘකාව",
+        "description": "අදහස් නූල සම්බන්ධ කර ඇති පිටුවේ මාතෘකාව."
+      },
+      {
+        "property": "loadingText",
+        "title": "පූරණ පෙළ",
+        "description": "අදහස් පූරණය වන අතරතුර නිවේදනය කරන පෙළ."
+      },
+      {
+        "property": "lang",
+        "title": "භාෂාව",
+        "description": "Disqus අතුරුමුහුණත සඳහා භාෂා කේතය, උදා. en."
+      }
+    ]
+  }
+}

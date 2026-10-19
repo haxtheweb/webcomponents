@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "ਫਲੈਸ਼ ਕਾਰਡ",
+    "description": "ਅੱਗੇ-ਪਿੱਛੇ ਵਾਲੇ ਫਲੈਸ਼ ਕਾਰਡਾਂ ਨਾਲ ਸੰਕਲਪਾਂ ਦਾ ਅਭਿਆਸ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "ਕਾਰਡ ਦਾ ਅਗਲਾ ਪਾਸਾ",
+        "description": "ਅਗਲੇ ਪਾਸੇ ਦੀ ਲਿਖਤ ਜਾਂ ਸਵਾਲ।"
+      },
+      {
+        "slot": "back",
+        "title": "ਕਾਰਡ ਦਾ ਪਿਛਲਾ ਪਾਸਾ",
+        "description": "ਸੰਭਾਵਿਤ ਜਵਾਬ।"
+      },
+      {
+        "property": "imgSource",
+        "title": "ਚਿੱਤਰ ਸਰੋਤ",
+        "description": "ਕਾਰਡ ਲਈ ਵਰਤੀ ਚਿੱਤਰ ਫ਼ਾਈਲ। ਚਿੱਤਰ ਕੀਵਰਡ ਨੂੰ ਓਵਰਰਾਈਡ ਕਰਦੀ ਹੈ।"
+      },
+      {
+        "property": "typeOfAction",
+        "title": "ਕਾਰਵਾਈ ਦੀ ਕਿਸਮ",
+        "description": "OER Schema: ਇਸ ਅਭਿਆਸ ਵਿੱਚ ਸ਼ਾਮਲ ਕਾਰਵਾਈ ਦੀ ਕਿਸਮ (ਜਿਵੇਂ Reading, Writing, Making, Researching, Listening, Watching, Reflecting, Discussing, Observing, Presenting, Assess)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼",
+        "description": "OER Schema: ਉਸ ਸਿੱਖਣ ਦੇ ਉਦੇਸ਼ ਦਾ ID ਜਾਂ URL ਜਿਸਦਾ ਇਹ ਅਭਿਆਸ ਸਮਰਥਨ ਕਰਦਾ ਹੈ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "ਗੂੜ੍ਹਾ",
+        "description": "ਗੂੜ੍ਹਾ ਮੋਡ ਵਰਤੋ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "ਕਾਰਡ ਦਾ ਐਕਸੈਂਟ ਰੰਗ।"
+      },
+      {
+        "property": "imgKeyword",
+        "title": "ਚਿੱਤਰ ਕੀਵਰਡ",
+        "description": "ਬੇਤਰਤੀਬ ਚਿੱਤਰ ਕੀਵਰਡ। ਚਿੱਤਰ ਸਰੋਤ ਦੁਆਰਾ ਓਵਰਰਾਈਡ ਹੁੰਦਾ ਹੈ।"
+      }
+    ]
+  }
+}

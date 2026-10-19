@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "නැවතුම් සටහන",
+    "description": "නිශ්චිත උපදෙස් පිළිබඳව පාඨකයින් දැනුවත් කිරීමට පණිවිඩයක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "නැවතුම් සටහන සඳහා මාතෘකාව ඇතුළත් කරන්න."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "බාහිර URL එකක් ඇතුළත් කරන්න."
+      },
+      {
+        "property": "status",
+        "title": "තත්ත්වය",
+        "description": "තත්ත්වය සැකසීමෙන් ගැළපෙන පරිදි වර්ණ සහ නිරූපක වෙනස් වේ",
+        "options": {
+          "stop": "නවත්වන්න",
+          "warning": "අවවාදය",
+          "success": "තහවුරු කිරීම",
+          "info": "දැන්වීම"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "සටහන් පෙළ",
+        "description": "නැවතුම් සටහන සඳහා පෙළ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "પૃષ્ઠ વિભાગ",
+    "description": "પૃષ્ઠ સામગ્રી અને સ્ક્રીન-આધારિત લેઆઉટ માટે વિભાગ કન્ટેનર."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "ડિઝાઇન શૈલી",
+        "description": "પૂર્વનિર્ધારિત શૈલી જે સંબંધિત સેટિંગ્સ અપડેટ કરે છે."
+      },
+      {
+        "property": "image",
+        "title": "છબી",
+        "description": "વિભાગ માટે પૃષ્ઠભૂમિ મીડિયા."
+      },
+      {
+        "property": "bg",
+        "title": "પૃષ્ઠભૂમિ રંગ",
+        "description": "કોઈ છબી સેટ ન હોય ત્યારે પૃષ્ઠભૂમિ રંગ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "સ્ક્રોલ બટન",
+        "description": "આગલા વિભાગ સુધી સ્ક્રોલ કરતું બટન બતાવો."
+      },
+      {
+        "property": "fold",
+        "title": "ફોલ્ડ બતાવો",
+        "description": "વિભાગના તળિયે દૃશ્ય ફોલ્ડ બતાવો."
+      },
+      {
+        "property": "full",
+        "title": "પૂર્ણ સ્ક્રીન કદ",
+        "description": "દર્શકની સ્ક્રીનની ઊંચાઈ ભરો."
+      },
+      {
+        "property": "filter",
+        "title": "ફિલ્ટર લાગુ કરો",
+        "description": "પૃષ્ઠભૂમિ છબી પર દૃશ્ય ફિલ્ટર લાગુ કરો."
+      },
+      {
+        "slot": "",
+        "title": "સામગ્રી",
+        "description": "વિભાગની સામગ્રી."
+      },
+      {
+        "slot": "entice",
+        "title": "આકર્ષણ",
+        "description": "વૈકલ્પિક આકર્ષક સામગ્રી."
+      },
+      {
+        "slot": "buttons",
+        "title": "બટનો",
+        "description": "લખાણની નીચે બતાવાતું બટન જૂથ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "એન્કર લખાણ",
+        "description": "નેવિગેશનમાં બતાવાતું એન્કર લેબલ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P elements",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Teksts",
+        "description": "Sānu piezīmes saturs"
+      }
+    ]
+  }
+}

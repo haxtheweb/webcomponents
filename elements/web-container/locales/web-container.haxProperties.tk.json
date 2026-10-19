@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "NodeJS konteýneri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Redaktory gizle",
+        "description": "Faýl redaktirleme interfeýsini gizle."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Terminaly gizle",
+        "description": "Awtomatik işleýän programmalar üçin terminaly gizle."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Penjiräni gizle",
+        "description": "Diňe terminal ulanylanda çykyş penjiresini gizle."
+      },
+      {
+        "slot": "",
+        "title": "Buýruklar",
+        "description": "Ýüklemezden öň işlediljek buýruklar (her setirde bir)."
+      }
+    ]
+  }
+}

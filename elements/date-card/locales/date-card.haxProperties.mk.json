@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Датум",
+    "description": "Прикажи календарски датум со детали."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "month",
+        "title": "Месец",
+        "description": "Месец прикажан на картичката."
+      },
+      {
+        "property": "date",
+        "title": "Ден во месецот",
+        "description": "Ден во месецот како број."
+      },
+      {
+        "property": "day",
+        "title": "Ден во неделата",
+        "description": "Ден во неделата како текст."
+      },
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Име на настанот."
+      },
+      {
+        "property": "location",
+        "title": "Локација",
+        "description": "Локација на настанот."
+      },
+      {
+        "property": "startTime",
+        "title": "Почеток",
+        "description": "Време на почеток."
+      },
+      {
+        "property": "endTime",
+        "title": "Крај",
+        "description": "Време на крај."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "Изборна акцентна боја."
+      },
+      {
+        "property": "dark",
+        "title": "Темна тема",
+        "description": "Овозможи темна тема."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "ቃላት",
+    "description": "የቃላት ፍቺ ቃል"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "ቃል"
+      },
+      {
+        "slot": "",
+        "title": "ትርጉም",
+        "description": "ቃሉ ጠቅ ሲደረግ የሚታየው ፍቺ።"
+      },
+      {
+        "property": "description",
+        "title": "መግለጫ (OER Schema)",
+        "description": "OER Schema: የቃሉ አጭር መግለጫ። ባዶ ከተተወ ከፍቺው ጽሑፍ በራስ-ሰር ይሞላል።"
+      }
+    ]
+  }
+}

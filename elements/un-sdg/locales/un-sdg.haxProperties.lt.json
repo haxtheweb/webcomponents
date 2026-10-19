@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "Jungtinių Tautų darnaus vystymosi tikslas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "Tikslas",
+        "description": "UN SDG numeris."
+      },
+      {
+        "property": "colorOnly",
+        "title": "Tik spalva",
+        "description": "Rodyti tik tikslo spalvą."
+      }
+    ]
+  }
+}

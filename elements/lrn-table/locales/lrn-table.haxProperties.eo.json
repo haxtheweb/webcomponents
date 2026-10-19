@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV-tabelo",
+    "description": "Ĉi tio povas generi tabelon el CSV-dosiero, kie ajn ĝi troviĝas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "Fonto",
+        "description": "URL de ĉi tiu CSV-dosiero."
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo de la generota tabelo."
+      },
+      {
+        "property": "description",
+        "title": "Priskribo",
+        "description": "Pli detala priskribo por plibonigi la alireblecon de la tabelaj datumoj."
+      }
+    ]
+  }
+}

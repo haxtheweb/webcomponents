@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Vîdyo",
+    "description": "Lêdana vîdyoyê ya gihîştbar ji gelek çavkaniyan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çavkanî",
+        "description": "URL ji bo vê medyayê."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Sernav",
+        "description": "Sernavê ku li binê vîdyoyê tê nîşandan."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Wêneyê posterê",
+        "description": "URLa wêneyê posterê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Rêçên nivîsê",
+        "description": "Binnivîsên girtî, binnivîs, danasîn û rêçên din ên nivîsê ji bo vîdyoyê."
+      },
+      {
+        "property": "startTime",
+        "title": "Dema destpêkê",
+        "description": "Vîdyoyê di demeke taybet de dest pê bike (çirke)."
+      },
+      {
+        "property": "endTime",
+        "title": "Dema dawiyê",
+        "description": "Vîdyoyê di demeke taybet de biqedîne (çirke), dema destpêkê pêwîst e."
+      },
+      {
+        "property": "learningMode",
+        "title": "Moda fêrbûnê çalak bike",
+        "description": "Pêşveçûna bilez û paşvegerandinê neçalak dike."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Bişkoka vekirina li YouTube rake",
+        "description": "Bişkoka vekirina vîdyoyê li YouTube radike."
+      },
+      {
+        "property": "linkable",
+        "title": "Girêdaneke parvekirinê tê de be?",
+        "description": "Girêdanekê ji bo parvekirina vîdyoyê peyda dike."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Mohrên demê veşêre",
+        "description": "Mohrên demê yên li ser transkrîptê veşêre."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkrîptê Veşêre",
+        "description": "Transkrîptê bi xwerû veşêre."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Rêça danasîna dengî",
+        "description": "URL ji bo rêça danasîna dengî (pelê MP3) ku hêmanên dîtbarî vedibêje."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Nîşan dide ka CORS were bikaranîn an na.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Destûrê bide lêdana li paşxaneyê",
+        "description": "Dema tabloya gerokê fokûsê winda dike lêdanê bidomîne."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Temaya tarî ji bo transkrîptê",
+        "description": "Temaya tarî ji bo transkrîptê çalak bike."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Înteraktîfê Neçalak Bike",
+        "description": "Moda înteraktîf a ku transkrîptê tikandbar dike neçalak bike."
+      },
+      {
+        "property": "lang",
+        "title": "Ziman",
+        "description": "Zimanê medyayê."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê balkêş",
+        "description": "(kevnbûyî) Rengê aksentê ji bo lêdêrê hilbijêre."
+      }
+    ]
+  }
+}

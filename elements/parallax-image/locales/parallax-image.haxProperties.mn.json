@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Параллакс зураг",
+    "description": "Гүйлгэхэд хөдлөх зураг"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Зураг",
+        "description": "дэвсгэрт ашиглах зураг"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Гарчгийн хэсэг",
+        "description": "Гарчгийн текстийн хэсэг"
+      }
+    ]
+  }
+}

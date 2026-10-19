@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "မှန် / မှား မေးခွန်း",
+    "description": "မှန်မှား မေးခွန်း"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "မေးခွန်း",
+        "description": "အသုံးပြုသူများ ဖြေဆိုရန် မေးခွန်း။"
+      },
+      {
+        "property": "_tfanswer",
+        "title": "မှန်ကန်သော အဖြေ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "စာမေးပွဲငယ် အမည်",
+        "description": "xAPI အခြေပြု ပတ်ဝန်းကျင်များတွင် ဤအရာကို ခွဲခြားသိရှိရန် ပေးပို့သော စာမေးပွဲငယ် အမည်"
+      }
+    ]
+  }
+}

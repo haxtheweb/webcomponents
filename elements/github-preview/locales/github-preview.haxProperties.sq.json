@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pamje paraprake GitHub",
+    "description": "Figurë e qasshme me përshkrim të gjatë"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizata",
+        "description": "Emri i makinës i organizatës në GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Depoja",
+        "description": "Emri i makinës i depos"
+      },
+      {
+        "property": "extended",
+        "title": "Pamje e zgjeruar",
+        "description": "Përfshin readme-në në element"
+      }
+    ]
+  }
+}

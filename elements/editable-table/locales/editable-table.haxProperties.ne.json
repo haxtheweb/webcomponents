@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "तालिका",
+    "description": "वेबका लागि तालिकामा आधारित डेटा।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "rowHeader",
+        "title": "पङ्क्ति हेडर",
+        "description": "पहिलो पङ्क्तिलाई हेडर मान्नुहोस्।"
+      },
+      {
+        "property": "columnHeader",
+        "title": "स्तम्भ हेडर",
+        "description": "पहिलो स्तम्भलाई हेडर मान्नुहोस्।"
+      },
+      {
+        "property": "footer",
+        "title": "फुटर",
+        "description": "अन्तिम पङ्क्तिलाई फुटर मान्नुहोस्।"
+      },
+      {
+        "property": "sort",
+        "title": "क्रमबद्ध गर्न मिल्ने",
+        "description": "स्तम्भका मानअनुसार क्रमबद्ध गर्न दिनुहोस्।"
+      },
+      {
+        "property": "filter",
+        "title": "फिल्टर गर्न दिनुहोस्",
+        "description": "स्तम्भका मानअनुसार फिल्टर गर्न दिनुहोस्।"
+      },
+      {
+        "property": "numericStyles",
+        "title": "सङ्ख्यात्मक शैली",
+        "description": "सङ्ख्यात्मक स्तम्भहरूमा सङ्ख्यात्मक शैली लागू गर्नुहोस्।"
+      },
+      {
+        "property": "responsive",
+        "title": "प्रतिक्रियाशील",
+        "description": "साना स्क्रिनमा तालिकाको लेआउट मिलाउनुहोस्।"
+      },
+      {
+        "property": "rubricMode",
+        "title": "रुब्रिक मोड",
+        "description": "यस तालिकालाई OER Schema Rubric का रूपमा बुझ्नुहोस् ताकि Rubric, RubricScale, RubricCriterion र RubricLevel मेटाडेटा उत्पन्न होस्।"
+      },
+      {
+        "property": "rubricType",
+        "title": "रुब्रिकको प्रकार",
+        "description": "oer:rubricType का रूपमा उत्पन्न हुने रुब्रिक शैली (रुब्रिक मोड सक्रिय हुँदा मात्र अर्थपूर्ण)।",
+        "options": {
+          "": "(कुनै पनि छैन)",
+          "analytic": "विश्लेषणात्मक",
+          "holistic": "समग्र",
+          "single-point": "एकल बिन्दु",
+          "checklist": "जाँचसूची"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "किनारासहित"
+      },
+      {
+        "property": "condensed",
+        "title": "पङ्क्तिहरू खुम्च्याउनुहोस्",
+        "description": "पङ्क्तिको उचाइ घटाउनुहोस्।"
+      },
+      {
+        "property": "striped",
+        "title": "धर्सेदार पङ्क्तिहरू",
+        "description": "एकपछि अर्को पङ्क्तिमा छाया दिनुहोस्।"
+      },
+      {
+        "property": "downloadable",
+        "title": "डाउनलोड बटन",
+        "description": "तालिका डाउनलोड गर्ने बटन थप्नुहोस्।"
+      },
+      {
+        "property": "copyable",
+        "title": "प्रतिलिपि बटन",
+        "description": "तालिकाको CSV डेटा प्रतिलिपि गर्ने बटन थप्नुहोस्।"
+      },
+      {
+        "property": "printable",
+        "title": "प्रिन्ट बटन",
+        "description": "तालिका मात्र प्रिन्ट गर्ने बटन थप्नुहोस्।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV डेटा",
+        "description": "अपलोड गरिएको CSV फाइलबाट तालिका बनाउनुहोस्।"
+      }
+    ]
+  }
+}

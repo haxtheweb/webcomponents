@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Nabarmendu",
+    "description": "Nabarmendu lerroko testua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Testua",
+        "description": "Nabarmendutako testua."
+      }
+    ]
+  }
+}

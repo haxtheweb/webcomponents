@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ਗਿਣਤੀ ਵਧਾਓ",
+    "description": "ਦ੍ਰਿਸ਼ ਵਿੱਚ ਆਉਣ 'ਤੇ ਕਿਸੇ ਸੰਖਿਆ ਨੂੰ ਟੀਚਾ ਮੁੱਲ ਤੱਕ ਗਿਣਦੇ ਹੋਏ ਐਨੀਮੇਟ ਕਰੋ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "ਅੰਤਿਮ ਮੁੱਲ",
+        "description": "ਜਿਸ ਸੰਖਿਆ ਤੱਕ ਗਿਣਨਾ ਹੈ।"
+      },
+      {
+        "property": "start",
+        "title": "ਸ਼ੁਰੂਆਤੀ ਮੁੱਲ",
+        "description": "ਜਿਸ ਸੰਖਿਆ ਤੋਂ ਗਿਣਨਾ ਸ਼ੁਰੂ ਕਰਨਾ ਹੈ।"
+      },
+      {
+        "property": "duration",
+        "title": "ਮਿਆਦ",
+        "description": "ਗਿਣਤੀ ਐਨੀਮੇਸ਼ਨ ਨੂੰ ਲੱਗਣ ਵਾਲੇ ਸਕਿੰਟ।"
+      },
+      {
+        "property": "prefixtext",
+        "title": "ਅਗੇਤਰ ਲਿਖਤ",
+        "description": "ਸੰਖਿਆ ਤੋਂ ਪਹਿਲਾਂ ਦਿਖਾਈ ਜਾਣ ਵਾਲੀ ਲਿਖਤ (ਜਿਵੇਂ '$')।"
+      },
+      {
+        "property": "suffixtext",
+        "title": "ਪਿਛੇਤਰ ਲਿਖਤ",
+        "description": "ਸੰਖਿਆ ਤੋਂ ਬਾਅਦ ਦਿਖਾਈ ਜਾਣ ਵਾਲੀ ਲਿਖਤ (ਜਿਵੇਂ '%')।"
+      },
+      {
+        "slot": "prefix",
+        "title": "ਅਗੇਤਰ ਸਲਾਟ",
+        "description": "ਸੰਖਿਆ ਤੋਂ ਪਹਿਲਾਂ ਵਿਕਲਪਿਕ ਸਲਾਟ ਸਮੱਗਰੀ।"
+      },
+      {
+        "slot": "suffix",
+        "title": "ਪਿਛੇਤਰ ਸਲਾਟ",
+        "description": "ਸੰਖਿਆ ਤੋਂ ਬਾਅਦ ਵਿਕਲਪਿਕ ਸਲਾਟ ਸਮੱਗਰੀ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "decimalplaces",
+        "title": "ਦਸ਼ਮਲਵ ਸਥਾਨ",
+        "description": "ਦਿਖਾਉਣ ਲਈ ਦਸ਼ਮਲਵ ਸਥਾਨਾਂ ਦੀ ਗਿਣਤੀ।"
+      },
+      {
+        "property": "separator",
+        "title": "ਹਜ਼ਾਰ ਵੱਖਰੇਵਾਂ",
+        "description": "ਹਜ਼ਾਰਾਂ ਦੇ ਸਮੂਹਾਂ ਨੂੰ ਵੱਖ ਕਰਨ ਵਾਲਾ ਅੱਖਰ।"
+      },
+      {
+        "property": "decimal",
+        "title": "ਦਸ਼ਮਲਵ ਅੱਖਰ",
+        "description": "ਦਸ਼ਮਲਵ ਬਿੰਦੂ ਲਈ ਵਰਤਿਆ ਅੱਖਰ।"
+      },
+      {
+        "property": "noeasing",
+        "title": "ਕੋਈ ਈਜ਼ਿੰਗ ਨਹੀਂ",
+        "description": "ਈਜ਼ਿੰਗ ਅਯੋਗ ਕਰੋ ਤਾਂ ਜੋ ਗਿਣਤੀ ਇਕਸਾਰ ਹੋਵੇ।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "ღონისძიების ბეჯი",
+    "description": "ღონისძიების ბეჯის კომპონენტი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV სურათი",
+        "description": "ტელევიზორზე ნაჩვენები სურათი."
+      },
+      {
+        "property": "logo",
+        "title": "ლოგო",
+        "description": "ბეჯის კუთხეში ნაჩვენები ლოგო."
+      },
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "ბეჯის ზედა ნაწილში ნაჩვენები სათაური."
+      },
+      {
+        "property": "name",
+        "title": "სახელი",
+        "description": "ბეჯზე ნაჩვენები სახელი."
+      },
+      {
+        "property": "position",
+        "title": "თანამდებობა",
+        "description": "პიროვნების როლი ან თანამდებობა."
+      },
+      {
+        "property": "organization",
+        "title": "ორგანიზაცია",
+        "description": "ორგანიზაცია, სადაც პიროვნება მუშაობს."
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV ფერი",
+        "description": "აირჩიეთ ტელევიზორის ფერი."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "ფონის ან ტექსტის ძირითადი ფერი."
+      },
+      {
+        "property": "knobcolor",
+        "title": "სახელურის ფერი",
+        "description": "ტელევიზორის სახელურების ფერი."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "სეპია",
+        "description": "სეპიის ეფექტის გამოყენება."
+      },
+      {
+        "property": "blackwhite",
+        "title": "შავ-თეთრი",
+        "description": "შავ-თეთრი ეფექტის გამოყენება."
+      }
+    ]
+  }
+}

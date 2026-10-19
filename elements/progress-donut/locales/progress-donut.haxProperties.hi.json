@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "प्रगति डोनट",
+    "description": "प्रगति डोनट"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "एलिमेंट का शीर्षक"
+      },
+      {
+        "property": "desc",
+        "title": "विवरण",
+        "description": "सुलभ लंबा विवरण"
+      },
+      {
+        "property": "imageSrc",
+        "title": "छवि स्रोत",
+        "description": "डोनट के अंदर छवि का स्रोत।"
+      },
+      {
+        "property": "imageAlt",
+        "title": "छवि Alt टेक्स्ट",
+        "description": "छवि के लिए alt टेक्स्ट।"
+      },
+      {
+        "property": "animated",
+        "title": "एनिमेटेड",
+        "description": "क्या पहली बार लोड होने पर प्रगति एनिमेट होती है"
+      },
+      {
+        "property": "complete",
+        "title": "पूर्ण",
+        "description": "पूर्ण मानों का एक ऐरे।"
+      },
+      {
+        "property": "total",
+        "title": "कुल",
+        "description": "सभी आइटम पूर्ण होने पर कुल।"
+      },
+      {
+        "property": "startAngle",
+        "title": "आरंभ कोण",
+        "description": "डोनट का कोण जहाँ से प्रगति शुरू होती है"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex Poravoha",
+    "description": "Hexcode sa'y poravoha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Tepykue",
+        "description": "Hex tepykue ypyguáva"
+      },
+      {
+        "property": "disabled",
+        "title": "Ojepe'apyre",
+        "description": "Embogue moñe'ẽrã kora"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Jehechauka Tuicha",
+        "description": "Emoinge sa'y jehechauka tuichápe"
+      }
+    ]
+  }
+}

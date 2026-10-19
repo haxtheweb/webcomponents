@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Onyonyo parallax",
+    "description": "Onyonyo na-akpụgharị"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Onyonyo",
+        "description": "onyonyo a ga-etinye n'azụ"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Mpaghara isiokwu",
+        "description": "Mpaghara ederede isiokwu"
+      }
+    ]
+  }
+}

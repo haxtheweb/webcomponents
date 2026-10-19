@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "صفحي جو حصو",
+    "description": "صفحي جي مواد ۽ اسڪرين تي ٻڌل ترتيبن لاءِ حصي جو ڪنٽينر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "ڊيزائن جو انداز",
+        "description": "اڳواٽ مقرر انداز جيڪو لاڳاپيل سيٽنگون تازه ڪري ٿو."
+      },
+      {
+        "property": "image",
+        "title": "تصوير",
+        "description": "حصي لاءِ پس منظر ميڊيا."
+      },
+      {
+        "property": "bg",
+        "title": "پس منظر جو رنگ",
+        "description": "جڏهن ڪا تصوير مقرر نه هجي ته پس منظر جو رنگ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "اسڪرول بٽڻ",
+        "description": "اهو بٽڻ ڏيکاريو جيڪو ايندڙ حصي ڏانهن اسڪرول ڪري."
+      },
+      {
+        "property": "fold",
+        "title": "ورق ڏيکاريو",
+        "description": "حصي جي هيٺان بصري ورق ڏيکاريو."
+      },
+      {
+        "property": "full",
+        "title": "مڪمل اسڪرين سائيز",
+        "description": "ڏسندڙ جي اسڪرين جي اوچائي ڀريو."
+      },
+      {
+        "property": "filter",
+        "title": "فلٽر لاڳو ڪريو",
+        "description": "پس منظر جي تصوير تي بصري فلٽر لاڳو ڪريو."
+      },
+      {
+        "slot": "",
+        "title": "مواد",
+        "description": "حصي جو مواد."
+      },
+      {
+        "slot": "entice",
+        "title": "ڪشش",
+        "description": "اختياري ڪشش وارو مواد."
+      },
+      {
+        "slot": "buttons",
+        "title": "بٽڻ",
+        "description": "متن هيٺان ڏيکاريل بٽڻن جو گروپ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "اينڪر متن",
+        "description": "نيويگيشن ۾ ڏيکاريل اينڪر ليبل."
+      }
+    ]
+  }
+}

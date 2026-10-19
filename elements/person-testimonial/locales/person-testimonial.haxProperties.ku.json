@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Gotina bi Wêne",
+    "description": "Gotina bi şêwe bi wêneyê vebijarkî."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Wêne",
+        "description": "Wêneyekî li şahidiyê zêde bike."
+      },
+      {
+        "property": "name",
+        "title": "Navê Tevahî",
+        "description": "Navê kesê ku şahidiyê dide."
+      },
+      {
+        "property": "position",
+        "title": "Pozîsyon an Sernavê Karî",
+        "description": "Pozîsyon an sernavê karî yê kesê."
+      },
+      {
+        "slot": "",
+        "title": "Gotin",
+        "description": "Gotina nivîskarê şahidiyê."
+      }
+    ]
+  }
+}

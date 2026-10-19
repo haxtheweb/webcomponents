@@ -5,5 +5,6 @@
   "systemAudio": "Isama ang Audio ng System",
   "microphoneAudio": "Isama ang Mikropono",
   "recordingStarted": "Nagsimula ang pag-record",
-  "recordingStopped": "Nahinto ang pag-record"
+  "recordingStopped": "Nahinto ang pag-record",
+  "audioOptions": "Mga opsyon sa audio"
 }

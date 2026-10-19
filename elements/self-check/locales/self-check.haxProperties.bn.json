@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "আত্মযাচাই",
+    "description": "ব্যবহারকারীরা আত্মযাচাই সম্পন্ন করতে পারেন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "ছবি",
+        "description": "আত্মযাচাইয়ের ছবি।"
+      },
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "আত্মযাচাইয়ের শিরোনাম।"
+      },
+      {
+        "property": "alt",
+        "title": "বিকল্প টেক্সট",
+        "description": "ছবির বিকল্প টেক্সট।"
+      },
+      {
+        "slot": "question",
+        "title": "প্রশ্ন"
+      },
+      {
+        "slot": "",
+        "title": "উত্তর"
+      },
+      {
+        "property": "accentColor",
+        "title": "থিমের রং",
+        "description": "ডিজাইন সিস্টেম থেকে একটি থিমের রং বেছে নিন।",
+        "options": {
+          "primary": "প্রাথমিক",
+          "accent": "অ্যাকসেন্ট",
+          "success": "সফলতা",
+          "warning": "সতর্কতা",
+          "error": "ত্রুটি",
+          "info": "তথ্য"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "শিখনফল",
+        "description": "oer:hasLearningObjective হিসেবে প্রকাশিত শিখনফলের রেফারেন্স।"
+      },
+      {
+        "property": "assessing",
+        "title": "যা মূল্যায়ন করা হচ্ছে",
+        "description": "oer:assessing হিসেবে প্রকাশিত কার্যক্রমের রেফারেন্স।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "আরও জানার লিংক",
+        "description": "অতিরিক্ত তথ্যের লিংক।"
+      }
+    ]
+  }
+}

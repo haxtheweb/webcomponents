@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Konteynera NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Edîtorê veşêre",
+        "description": "Navrûya sererastkirina pelan veşêre."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Termînalê veşêre",
+        "description": "Termînalê ji bo bernameyên ku bi xwe dixebitin veşêre."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Pencereyê veşêre",
+        "description": "Pencereya derketinê ji bo bikaranîna tenê termînalê veşêre."
+      },
+      {
+        "slot": "",
+        "title": "Ferman",
+        "description": "Fermanên (her rêzê yek) ku berî barkirinê werin xebitandin."
+      }
+    ]
+  }
+}

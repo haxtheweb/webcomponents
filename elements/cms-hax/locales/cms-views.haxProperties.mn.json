@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS харагдац",
+    "description": "Backend дээр харуулагдах CMS харагдацууд"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Нэр",
+        "description": "Манай CMS-ийн харагдацын нэр"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Харагдац",
+        "description": "Манай CMS-ийн тэр харагдац доторх үзүүлэлт"
+      }
+    ]
+  }
+}

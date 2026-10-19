@@ -168,6 +168,11 @@ class MatchingQuestion extends QuestionElement {
       ...this.t,
       matchRegion: "Matching interface",
     };
+    // QuestionElement's shared strings live in each question type's own namespace
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
   }
 
   processInput(index, inputs, priorData) {

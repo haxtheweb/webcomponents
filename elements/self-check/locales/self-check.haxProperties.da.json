@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Selvtjek",
+    "description": "Brugere kan gennemføre et selvtjek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Billede",
+        "description": "Billede til selvtjekket."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Selvtjekkets titel."
+      },
+      {
+        "property": "alt",
+        "title": "Alternativ tekst",
+        "description": "Alt-tekst til billedet."
+      },
+      {
+        "slot": "question",
+        "title": "Spørgsmål"
+      },
+      {
+        "slot": "",
+        "title": "Svar"
+      },
+      {
+        "property": "accentColor",
+        "title": "Temafarve",
+        "description": "Vælg en temafarve fra designsystemet.",
+        "options": {
+          "primary": "Primær",
+          "accent": "Accent",
+          "success": "Succes",
+          "warning": "Advarsel",
+          "error": "Fejl",
+          "info": "Info"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "Reference til læringsmål udsendt som oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Vurderer",
+        "description": "Aktivitetsreference udsendt som oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Link til mere",
+        "description": "Link til yderligere oplysninger."
+      }
+    ]
+  }
+}

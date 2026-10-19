@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "ഐക്യരാഷ്ട്രസഭയുടെ സുസ്ഥിര വികസന ലക്ഷ്യം."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "ലക്ഷ്യം",
+        "description": "UN SDG നമ്പർ."
+      },
+      {
+        "property": "colorOnly",
+        "title": "നിറം മാത്രം",
+        "description": "ലക്ഷ്യത്തിന്റെ നിറം മാത്രം കാണിക്കുക."
+      }
+    ]
+  }
+}

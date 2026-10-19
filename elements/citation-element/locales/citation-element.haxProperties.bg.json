@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Източник на цитата",
+    "description": "Елемент за цитиране с три режима на представяне."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Заглавие",
+        "description": "Заглавие на цитираната творба."
+      },
+      {
+        "property": "source",
+        "title": "Връзка към източника",
+        "description": "URL на източника на цитираната творба."
+      },
+      {
+        "property": "date",
+        "title": "Дата на достъп",
+        "description": "Дата, на която е достъпен източникът."
+      },
+      {
+        "property": "scope",
+        "title": "Обхват",
+        "description": "Обхват на елемента за цитиране.",
+        "options": {
+          "sibling": "Съседен елемент",
+          "parent": "Родителски елемент"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Лиценз",
+        "description": "Лиценз на цитираната творба."
+      },
+      {
+        "property": "creator",
+        "title": "Създател",
+        "description": "Създател или собственик на цитираната творба."
+      },
+      {
+        "property": "typeof",
+        "title": "Тип в OER Schema",
+        "description": "Клас в OER Schema за този цитат. По подразбиране е oer:ReferencedMaterial; заменяйте само с валиден OER клас (напр. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

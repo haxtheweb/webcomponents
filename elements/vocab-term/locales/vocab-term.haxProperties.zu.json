@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Amagama",
+    "description": "Igama lesilulumagama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Igama"
+      },
+      {
+        "property": "information",
+        "title": "Incazelo",
+        "description": "Incazelo eboniswa lapho igama lichofozwa."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Iwindi elivelayo",
+        "description": "Bonisa incazelo ewindini elivelayo esikhundleni sokuba phakathi nombhalo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Izixhumanisi",
+        "description": "Uhlu lwezixhumanisi ezengeziwe ezihlobene naleli gama."
+      }
+    ]
+  }
+}

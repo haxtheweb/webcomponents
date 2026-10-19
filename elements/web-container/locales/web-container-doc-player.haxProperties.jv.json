@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Pamuter dokumentasi komponen web"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Dhelikake jendhela",
+        "description": "Dhelikake jendhela asil, migunani yen tujuane mung terminal"
+      }
+    ]
+  }
+}

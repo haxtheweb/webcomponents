@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "الأيقونة",
+    "description": "أيقونة من مكتبة الأيقونات الكاملة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "الأيقونة",
+        "description": "الأيقونة المراد عرضها."
+      },
+      {
+        "property": "accentColor",
+        "title": "لون التمييز",
+        "description": "لون تمييز الأيقونة."
+      },
+      {
+        "property": "dark",
+        "title": "داكن",
+        "description": "استخدام الوضع الداكن (مجموعة ألوان معكوسة)."
+      }
+    ]
+  }
+}

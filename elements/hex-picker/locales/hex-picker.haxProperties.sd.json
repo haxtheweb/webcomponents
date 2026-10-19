@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex چونڊيندڙ",
+    "description": "Hexcode رنگ چونڊيندڙ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "قدر",
+        "description": "ڊفالٽ hex قدر"
+      },
+      {
+        "property": "disabled",
+        "title": "غير فعال",
+        "description": "متن فيلڊ بند ڪريو"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "وڏو ڏيک",
+        "description": "وڏي ڏيک ۾ رنگ شامل ڪريو"
+      }
+    ]
+  }
+}

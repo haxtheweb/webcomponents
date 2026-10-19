@@ -5,5 +5,6 @@
   "systemAudio": "រួមបញ្ចូលសំឡេងប្រព័ន្ធ",
   "microphoneAudio": "រួមបញ្ចូលមីក្រូហ្វូន",
   "recordingStarted": "បានចាប់ផ្ដើមការថត",
-  "recordingStopped": "បានបញ្ឈប់ការថត"
+  "recordingStopped": "បានបញ្ឈប់ការថត",
+  "audioOptions": "ជម្រើសសំឡេង"
 }

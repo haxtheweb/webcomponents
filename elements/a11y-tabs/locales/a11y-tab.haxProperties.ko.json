@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "탭",
+    "description": "단일 탭."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "탭 아이콘"
+      },
+      {
+        "property": "disabled",
+        "title": "비활성화"
+      },
+      {
+        "property": "label",
+        "title": "탭 레이블"
+      },
+      {
+        "slot": "",
+        "title": "탭 콘텐츠",
+        "description": "탭의 콘텐츠."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "고유 ID"
+      },
+      {
+        "property": "flag",
+        "title": "선택적 플래그 텍스트"
+      },
+      {
+        "property": "flagIcon",
+        "title": "선택적 플래그 아이콘"
+      }
+    ]
+  }
+}

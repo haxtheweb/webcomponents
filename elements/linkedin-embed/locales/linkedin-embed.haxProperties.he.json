@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "הטמעת LinkedIn",
+    "description": "הטמעת כרטיס פרופיל של LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "שם מותאם",
+        "description": "מקטע שם המשתמש המותאם ב-LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "אזור שפה",
+        "description": "ערך מטא־נתונים של אזור השפה, כגון en_US."
+      }
+    ]
+  }
+}

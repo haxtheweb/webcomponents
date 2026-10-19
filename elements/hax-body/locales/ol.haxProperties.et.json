@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Nummerdatud loend",
+    "description": "Loo nummerdatud loend."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Numbristiil",
+        "description": "Järjestatud loendi nummerdamise stiil.",
+        "options": {
+          "": "Vaikimisi (kümnendarvud)",
+          "list-decimal-leading-zero": "Kümnendarvud eesnulliga (01, 02, 03)",
+          "list-lower-alpha": "Väiketähed (a, b, c)",
+          "list-upper-alpha": "Suurtähed (A, B, C)",
+          "list-lower-roman": "Väikesed rooma numbrid (i, ii, iii)",
+          "list-upper-roman": "Suured rooma numbrid (I, II, III)"
+        }
+      }
+    ]
+  }
+}

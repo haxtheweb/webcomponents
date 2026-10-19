@@ -122,5 +122,21 @@
   "recent": "अलीकडील",
   "popular": "लोकप्रिय",
   "copiedToClipboard": "क्लिपबोर्डवर कॉपी केले",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "प्रतिमा माहिती",
+  "imageActions": "प्रतिमा क्रिया",
+  "imageRecommendations": "प्रतिमा शिफारसी",
+  "compressImage": "प्रतिमा संकुचित करा",
+  "resizeTo": "आकार बदला",
+  "created": "तयार केले",
+  "size": "आकार",
+  "dimensions": "परिमाणे",
+  "type": "प्रकार",
+  "done": "पूर्ण",
+  "noFileUuid": "फाइल संदर्भ उपलब्ध नाही; क्रिया सक्षम करण्यासाठी पुन्हा अपलोड करा.",
+  "fileOpsUnavailable": "या साइटसाठी फाइल क्रिया उपलब्ध नाहीत.",
+  "fileOpFailed": "फाइल क्रिया अयशस्वी झाली.",
+  "fileExtensionNotAllowed": "हे फील्ड फक्त खालील फाइल प्रकार स्वीकारते:",
+  "fileTypeNotAllowed": "हे फील्ड फक्त खालील मीडिया प्रकार स्वीकारते:",
+  "transformFailed": "अपलोडनंतरचे रूपांतरण अयशस्वी झाले; मूळ फाइल ठेवली आहे."
 }

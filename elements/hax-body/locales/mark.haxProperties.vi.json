@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tô sáng",
+    "description": "Tô sáng văn bản trong dòng."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Văn bản",
+        "description": "Văn bản được tô sáng."
+      }
+    ]
+  }
+}

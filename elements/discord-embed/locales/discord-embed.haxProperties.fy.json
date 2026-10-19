@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Discord",
+    "description": "Discord-mienskippen ynslute fan in diel-URL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Boarne-URL",
+        "description": "Boarne-URL."
+      },
+      {
+        "property": "height",
+        "title": "Hichte",
+        "description": "Hichte fan it ynhâldsframe."
+      },
+      {
+        "property": "width",
+        "title": "Breedte",
+        "description": "Breedte fan it ynhâldsframe."
+      }
+    ]
+  }
+}

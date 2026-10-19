@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Πρόγραμμα αναπαραγωγής Unity",
+    "description": "Πρόγραμμα αναπαραγωγής Unity WebGL."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Στόχος",
+        "description": "Διαδρομή προς το build του παιχνιδιού."
+      },
+      {
+        "property": "compression",
+        "title": "Μέθοδος συμπίεσης",
+        "description": "Επέκταση αρχείου συμπίεσης για τους πόρους του παιχνιδιού."
+      },
+      {
+        "property": "streamingurl",
+        "title": "URL ροής",
+        "description": "URL πόρων ροής."
+      },
+      {
+        "property": "companyname",
+        "title": "Όνομα εταιρείας",
+        "description": "Όνομα εταιρείας."
+      },
+      {
+        "property": "productname",
+        "title": "Όνομα προϊόντος",
+        "description": "Τίτλος παιχνιδιού."
+      },
+      {
+        "property": "productversion",
+        "title": "Έκδοση προϊόντος",
+        "description": "Έκδοση κυκλοφορίας."
+      },
+      {
+        "property": "width",
+        "title": "Πλάτος καμβά",
+        "description": "Πλάτος CSS του καμβά (για παράδειγμα px ή em)."
+      },
+      {
+        "property": "height",
+        "title": "Ύψος καμβά",
+        "description": "Ύψος CSS του καμβά (για παράδειγμα px ή em)."
+      },
+      {
+        "property": "background",
+        "title": "Φόντο καμβά",
+        "description": "Φόντο CSS του καμβά."
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Fuortgongsdonut",
+    "description": "Fuortgongsdonut"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "De titel fan it elemint"
+      },
+      {
+        "property": "desc",
+        "title": "Beskriuwing",
+        "description": "Tagonklike lange beskriuwing"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Ofbyldingsboarne",
+        "description": "Boarne fan de ôfbylding yn de donut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-tekst ôfbylding",
+        "description": "Alt-tekst foar ôfbylding."
+      },
+      {
+        "property": "animated",
+        "title": "Animearre",
+        "description": "Oft de fuortgong animearre wurdt by it earste laden"
+      },
+      {
+        "property": "complete",
+        "title": "Foltôge",
+        "description": "In array fan foltôge wearden."
+      },
+      {
+        "property": "total",
+        "title": "Totaal",
+        "description": "Totaal as alle items foltôge binne."
+      },
+      {
+        "property": "startAngle",
+        "title": "Begjinhoeke",
+        "description": "Donuthoeke wêr't de fuortgong begjint"
+      }
+    ]
+  }
+}

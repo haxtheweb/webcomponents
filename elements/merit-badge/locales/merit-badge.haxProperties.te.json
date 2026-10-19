@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "మెరిట్ బ్యాడ్జ్",
+    "description": "నైపుణ్యాన్ని సాధించినట్లు తెలియజేసే దృశ్యమాన బ్యాడ్జ్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "బ్యాడ్జ్ శీర్షిక",
+        "description": "బ్యాడ్జ్‌పై ప్రదర్శించబడే శీర్షిక."
+      },
+      {
+        "property": "badgeImage",
+        "title": "బ్యాడ్జ్ చిత్రం",
+        "description": "బ్యాడ్జ్ కోసం చిత్ర URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "బ్యాడ్జ్ వివరాలు",
+        "description": "బ్యాడ్జ్ గురించి వివరాలు."
+      },
+      {
+        "property": "hyperLink",
+        "title": "హైపర్‌లింక్",
+        "description": "బ్యాడ్జ్‌తో అనుబంధించబడిన లింక్."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "బ్యాడ్జ్ నైపుణ్యాలు",
+        "description": "బ్యాడ్జ్‌పై ప్రదర్శించబడే నైపుణ్యాలు."
+      },
+      {
+        "property": "skill",
+        "title": "నైపుణ్యం (OER Schema)",
+        "description": "OER Schema: ఈ అభ్యాస లక్ష్యాన్ని పూర్తి చేయడం ద్వారా పొందిన నేర్చుకున్న నైపుణ్యం."
+      }
+    ]
+  }
+}

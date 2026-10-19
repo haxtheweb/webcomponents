@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "Медиа цитата",
+    "description": "Цитата, булак жана кошумча жазуусу бар сүрөт."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "Цитата",
+        "description": "Цитатанын тексти."
+      },
+      {
+        "slot": "author",
+        "title": "Автор",
+        "description": "Цитатанын автору."
+      },
+      {
+        "slot": "author-detail",
+        "title": "Автор жөнүндө маалымат",
+        "description": "Автор жөнүндө маалымат."
+      },
+      {
+        "slot": "caption",
+        "title": "Жазуу",
+        "description": "Сүрөттүн жазуусу."
+      },
+      {
+        "property": "src",
+        "title": "Сүрөт булагы",
+        "description": "Медиа цитата үчүн колдонулган сүрөт файлы."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернативдик текст",
+        "description": "Сүрөт үчүн альтернативдик текст."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Картанын акцент түсү."
+      }
+    ]
+  }
+}

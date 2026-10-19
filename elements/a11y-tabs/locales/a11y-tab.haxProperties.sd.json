@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ٽيب",
+    "description": "هڪ ٽيب."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ٽيب آئڪن"
+      },
+      {
+        "property": "disabled",
+        "title": "غير فعال"
+      },
+      {
+        "property": "label",
+        "title": "ٽيب ليبل"
+      },
+      {
+        "slot": "",
+        "title": "ٽيب جو مواد",
+        "description": "ٽيب جو مواد."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "منفرد ID"
+      },
+      {
+        "property": "flag",
+        "title": "اختياري جهنڊي جو متن"
+      },
+      {
+        "property": "flagIcon",
+        "title": "اختياري جهنڊي جو آئڪن"
+      }
+    ]
+  }
+}

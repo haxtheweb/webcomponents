@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Titolo relativo",
+    "description": "genera la gerarchia corretta dei titoli in base al titolo padre"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID risorsa del titolo padre"
+      },
+      {
+        "property": "disableLink",
+        "description": "Disattiva la funzione del pulsante link."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Allinea il pulsante per copiare il link all'estrema destra del titolo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Livello del titolo se il padre non viene trovato."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Sostituisce il testo predefinito del messaggio di notifica per la copia del link."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Sostituisce l'etichetta predefinita del pulsante per copiare il link."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Sostituisce l'icona predefinita del pulsante per copiare il link."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Sostituisce l'etichetta predefinita del pulsante di chiusura della notifica di copia del link."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Sostituisce l'icona predefinita del pulsante di chiusura della notifica di copia del link."
+      }
+    ]
+  }
+}

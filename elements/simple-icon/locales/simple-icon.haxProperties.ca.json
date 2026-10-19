@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Icona",
+    "description": "Icona de la biblioteca completa d'icones."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona",
+        "description": "Icona que es mostra."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Color d'accent de la icona."
+      },
+      {
+        "property": "dark",
+        "title": "Fosc",
+        "description": "Utilitza el mode fosc (joc de colors invertit)."
+      }
+    ]
+  }
+}

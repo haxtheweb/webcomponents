@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS טאָקען",
+    "description": "CMS טאָקען געשילדערט אויפֿן באַקענד"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "טאָקען",
+        "description": "טאָקען פֿון אונדזער CMS"
+      }
+    ]
+  }
+}

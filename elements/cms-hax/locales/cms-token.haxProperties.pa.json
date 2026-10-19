@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS ਟੋਕਨ",
+    "description": "ਬੈਕਐਂਡ 'ਤੇ ਰੈਂਡਰ ਕੀਤਾ CMS ਟੋਕਨ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ਟੋਕਨ",
+        "description": "ਸਾਡੇ CMS ਤੋਂ ਟੋਕਨ"
+      }
+    ]
+  }
+}

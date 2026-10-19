@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tūemi rārangi pukapuka",
+    "description": "He tūemi e tohu ana i tētahi tohutoro kotahi i tētahi rārangi pukapuka, e tautoko ana i ngā hōputu maha me ngā kōwhiringa kaweake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Momo",
+        "description": "Momo tohutoro",
+        "options": {
+          "web": "Tukutuku",
+          "journal": "Hautaka",
+          "book": "Pukapuka"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Taitara o te tūemi"
+      },
+      {
+        "property": "authors",
+        "title": "Kaituhi",
+        "description": "Ngā takahanga i te rārangi wā"
+      },
+      {
+        "property": "publisher",
+        "title": "Kaiwhakaputa",
+        "description": "Paetukutuku taketake"
+      }
+    ]
+  }
+}

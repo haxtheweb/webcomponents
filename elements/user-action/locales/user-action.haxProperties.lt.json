@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Naudotojo veiksmas",
+    "description": "Sekti naudotojų veiksmus ir siųsti duomenis į xAPI saugyklas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Sekamas įvykis",
+        "description": "Naudotojo veiksmas, sukeliantis šį įvykį.",
+        "options": {
+          "visibility": "Mato tai",
+          "keydown": "Paspaudžia klavišą čia",
+          "click": "Spusteli tai",
+          "hover": "Užveda žymeklį"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "Sekti kiekvieną kartą",
+        "description": "Pagal numatytuosius nustatymus sekamas tik pirmasis atvejis."
+      }
+    ]
+  }
+}

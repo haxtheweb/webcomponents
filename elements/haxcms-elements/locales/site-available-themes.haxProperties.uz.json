@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Mavjud mavzular",
+    "description": "Mavjud HAXcms mavzularini jonli oldindan koʻrish almashinuvi bilan koʻrsatish"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Koʻrinish rejimi",
+        "description": "Mavzularni qanday koʻrsatishni tanlang",
+        "options": {
+          "gallery": "Galereya",
+          "table": "Jadval"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Tafsilotlarni koʻrsatish",
+        "description": "Mavzu tavsiflari va qoʻshimcha maʼlumotlarni koʻrsatish"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Yashirin va eskirgan mavzularni koʻrsatish",
+        "description": "Boshqaruv paneli standartlariga qoʻshimcha ravishda yashirin, eskirgan va juda yomon mavzularni koʻrsatish"
+      },
+      {
+        "property": "columns",
+        "title": "Ustunlar (galereya)",
+        "description": "Galereya koʻrinishidagi ustunlar soni"
+      }
+    ]
+  }
+}

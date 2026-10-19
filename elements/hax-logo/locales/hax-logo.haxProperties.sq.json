@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Art fjalësh HAX",
+    "description": "Element logoje për HAX, natyrisht si element i aftë për HAX."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Madhësia e logos HAX që vendoset",
+        "options": {
+          "mini": "Mini",
+          "small": "I vogël",
+          "normal": "Normale",
+          "large": "I madh"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Nëse logoja të shndërrohet në shkronja të mëdha"
+      }
+    ]
+  }
+}

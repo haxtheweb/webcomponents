@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "کورس ڈیزائن",
+    "description": "تعلیمی مواد اور کورس ڈیزائن کے عناصر کے لیے کنٹینر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "کورس شناخت کنندہ",
+        "description": "OER Schema: کورس کا شناخت کنندہ، مثلاً MATH-100۔"
+      },
+      {
+        "property": "termOffered",
+        "title": "پیشکش کی مدت",
+        "description": "OER Schema: وہ مدت جس کے دوران کورس پیش کیا جاتا ہے۔"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "ترسیل کا طریقہ",
+        "description": "OER Schema: کورس کی ترسیل کا طریقہ (مثلاً بالمشافہ، آن لائن، مخلوط)۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "بنیادی استاد",
+        "description": "OER Schema: کورس کا بنیادی استاد۔"
+      },
+      {
+        "property": "syllabus",
+        "title": "نصاب کا URL",
+        "description": "OER Schema: کورس کے نصاب کا URL۔"
+      }
+    ]
+  }
+}

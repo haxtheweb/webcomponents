@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Postkarte",
+    "description": "Ein verspieltes Medienelement, das wie eine echte Postkarte von irgendwoher aussieht"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "An",
+        "description": "An wen geht sie?"
+      },
+      {
+        "property": "from",
+        "title": "Von",
+        "description": "Wer bist du?"
+      },
+      {
+        "property": "message",
+        "title": "Nachricht",
+        "description": "Was möchtest du sagen?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Abgestempelt in",
+        "description": "Von wo wurde diese Karte verschickt?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Quelle des Hauptfotos",
+        "description": "Wo befindet sich dein Foto?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Quelle des Briefmarkenfotos",
+        "description": "Wo befindet sich dein Foto?"
+      }
+    ]
+  }
+}

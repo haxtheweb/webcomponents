@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "එක්සත් ජාතීන්ගේ තිරසාර සංවර්ධන ඉලක්කය."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "ඉලක්කය",
+        "description": "UN SDG අංකය."
+      },
+      {
+        "property": "colorOnly",
+        "title": "වර්ණය පමණි",
+        "description": "ඉලක්කයේ වර්ණය පමණක් පෙන්වන්න."
+      }
+    ]
+  }
+}

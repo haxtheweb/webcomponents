@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Výber HEX",
+    "description": "Výber farby podľa hex kódu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Hodnota",
+        "description": "Predvolená hex hodnota"
+      },
+      {
+        "property": "disabled",
+        "title": "Zakázané",
+        "description": "Vypnúť textové pole"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Veľké zobrazenie",
+        "description": "Zahrnúť farbu vo veľkom zobrazení"
+      }
+    ]
+  }
+}

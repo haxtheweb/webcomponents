@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "د markdown منځپانګې بلاک چې مستقیم یا له لرې ځای څخه پورته کېږي"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "خام markdown"
+      },
+      {
+        "property": "source",
+        "title": "سرچینه",
+        "description": "د markdown لپاره سرچینه فایل"
+      }
+    ]
+  }
+}

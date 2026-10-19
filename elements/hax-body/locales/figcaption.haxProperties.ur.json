@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "شکل کا کیپشن",
+    "description": "شکل کے لیے کیپشن۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "کیپشن",
+        "description": "شکل کے نیچے دکھایا جانے والا متن۔"
+      }
+    ]
+  }
+}

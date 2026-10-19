@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Kuusaa Suuraalee",
+    "description": "Kuusaa suuraalee akkaataa giriidii, dhagaa ykn agarsiisa saliidiitiin dhiyeessu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "Haala agarsiisaa",
+        "description": "Akkaataa suuraaleen kuusaa keessatti dhiyaatan.",
+        "options": {
+          "grid": "Giriidii",
+          "masonry": "Dhagaa",
+          "gallery": "Kuusaa suuraalee"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "Lakkoofsa hojii irra jiru",
+        "description": "Lakkoofsa suuraa haala kuusaa suuraalee keessatti ittiin jalqabamu."
+      }
+    ]
+  }
+}

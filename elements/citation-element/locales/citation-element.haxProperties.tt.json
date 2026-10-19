@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Чыганак",
+    "description": "Өч күрсәтү режимлы цитата элементы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Цитаталанган әсәрнең исеме."
+      },
+      {
+        "property": "source",
+        "title": "Чыганак сылтамасы",
+        "description": "Цитаталанган әсәрнең чыганак URL'ы."
+      },
+      {
+        "property": "date",
+        "title": "Мөрәҗәгать итү датасы",
+        "description": "Чыганакка мөрәҗәгать иткән дата."
+      },
+      {
+        "property": "scope",
+        "title": "Колач",
+        "description": "Цитаталана торган элемент колачы.",
+        "options": {
+          "sibling": "Күрше элемент",
+          "parent": "Ата-ана элемент"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Лицензия",
+        "description": "Цитаталанган әсәрнең лицензиясе."
+      },
+      {
+        "property": "creator",
+        "title": "Автор",
+        "description": "Цитаталанган әсәрнең авторы яки хуҗасы."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema төре",
+        "description": "Бу цитата өчен OER Schema классы. Килешү буенча oer:ReferencedMaterial; бары тик дөрес OER классы белән генә алыштырыгыз (мәс. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

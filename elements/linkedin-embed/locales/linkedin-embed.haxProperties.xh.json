@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ukufaka i-LinkedIn",
+    "description": "Faka ikhadi leprofayile ye-LinkedIn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Igama lobuqu",
+        "description": "Icandelo legama lomsebenzisi lobuqu le-LinkedIn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Ingingqi",
+        "description": "Ixabiso lemetadata yengingqi efana ne-en_US."
+      }
+    ]
+  }
+}

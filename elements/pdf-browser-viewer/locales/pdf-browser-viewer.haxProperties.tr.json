@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF Tarayıcı Görüntüleyici",
+    "description": "İsteğe bağlı kart düzeni ve indirme düğmesiyle bir PDF dosyasını satır içinde yerleştirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF URL'si",
+        "description": "PDF dosyasının konumu."
+      },
+      {
+        "property": "heading",
+        "title": "Başlık",
+        "description": "Kart başlığı metni."
+      },
+      {
+        "property": "card",
+        "title": "Kart düzeni",
+        "description": "PDF'yi indirme düğmesi olan bir kartta göster."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "İndirme etiketi",
+        "description": "İndirme düğmesinin etiketi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Desteklenmiyor mesajı",
+        "description": "Tarayıcı PDF dosyalarını gösteremediğinde görünen mesaj."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Desteklenmiyor bağlantı mesajı",
+        "description": "Tarayıcı PDF dosyalarını gösteremediğinde görünen bağlantı metni."
+      },
+      {
+        "property": "width",
+        "title": "Genişlik",
+        "description": "PDF görüntüleyicinin genişliği."
+      },
+      {
+        "property": "height",
+        "title": "Yükseklik",
+        "description": "PDF görüntüleyicinin yüksekliği."
+      }
+    ]
+  }
+}

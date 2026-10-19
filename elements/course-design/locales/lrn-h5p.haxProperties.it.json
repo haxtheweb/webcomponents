@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Elemento H5P",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Testo",
+        "description": "Contenuto della nota a margine"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Qarax Cajiib ah",
+    "description": "Dhaqdhaqaaq qarax oo is-dhexgal leh oo leh dhawaaq ikhtiyaari ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Cabbir",
+        "description": "Deji cabbirka qaraxa.",
+        "options": {
+          "tiny": "Aad u yar",
+          "small": "Yar",
+          "medium": "Dhexdhexaad",
+          "large": "Weyn",
+          "epic": "Aad u weyn"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Midab",
+        "description": "Deji mawduuca midabka qaraxa.",
+        "options": {
+          "": "Caadi",
+          "red": "Cas",
+          "blue": "Buluug",
+          "purple": "Basali",
+          "orange": "Oranji",
+          "yellow": "Jaalle"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Dhawaaqyada",
+        "description": "Daar dhawaaqyada."
+      },
+      {
+        "property": "resetSound",
+        "title": "Dib u Bilow Dhawaaqa",
+        "description": "Dhawaaqa ka bilow bilowga mar kasta."
+      },
+      {
+        "property": "image",
+        "title": "Sawir Gaar ah",
+        "description": "URL ikhtiyaari ah oo sawir qarax gaar ah."
+      },
+      {
+        "property": "sound",
+        "title": "Dhawaaq Gaar ah",
+        "description": "URL ikhtiyaari ah oo dhawaaq gaar ah."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "La damiyay",
+        "description": "Dami dhammaan is-dhexgalka."
+      }
+    ]
+  }
+}

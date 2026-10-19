@@ -1,0 +1,14 @@
+{
+  "outlineActions": "Acciones del esquema",
+  "editPage": "Editar página",
+  "addPage": "Añadir página secundaria",
+  "moveUp": "Subir",
+  "moveDown": "Bajar",
+  "indent": "Aumentar sangría",
+  "outdent": "Reducir sangría",
+  "moveTo": "Mover a...",
+  "siteOutline": "Abrir esquema del sitio",
+  "delete": "Eliminar página",
+  "unlock": "Desbloquear",
+  "lock": "Bloquear"
+}

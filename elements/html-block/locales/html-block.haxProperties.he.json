@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "בלוק Html",
+    "description": "בלוק HTML בסיסי המספק חיבור HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "קוד HTML שברצונכם להציג בתוכן"
+      }
+    ]
+  }
+}

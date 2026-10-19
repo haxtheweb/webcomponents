@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "የH5P አካል",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ጽሑፍ",
+        "description": "የጎን ማስታወሻው ይዘት"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Kielelezo cha Kufafanua",
+    "description": "Kielelezo kinachofikika chenye maelezo marefu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Picha"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Maandishi Mbadala"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Maelezo Mafupi ya Kielelezo",
+        "description": "Maandishi ya maelezo mafupi ya kielelezo yanayoonekana kila wakati."
+      },
+      {
+        "slot": "details",
+        "title": "Maelezo",
+        "description": "Maelezo ya kina ya picha yanayoweza kufichwa au kuonyeshwa"
+      },
+      {
+        "slot": "summary",
+        "title": "Kitufe cha Maelezo",
+        "description": "Chaguomsingi kwa kitufe kinachoonyesha/kuficha maandishi ya maelezo, mf. \"maelezo\", \"metadata\", n.k."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Maandishi ya hiari ya muhtasari maelezo yakiwa wazi"
+      },
+      {
+        "property": "closeText",
+        "title": "Maandishi ya hiari ya muhtasari maelezo yakiwa yamefungwa"
+      }
+    ]
+  }
+}

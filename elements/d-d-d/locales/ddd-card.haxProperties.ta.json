@@ -1,0 +1,65 @@
+{
+  "gizmo": {
+    "title": "அட்டை",
+    "description": "DDD வடிவமைப்பு அமைப்பில் வடிவமைக்கப்பட்ட அட்டைக் கூறு."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "படம்",
+        "description": "விருப்பப் படம்."
+      },
+      {
+        "property": "alt",
+        "title": "பட மாற்று உரை",
+        "description": "படத்தை விவரிக்கும் மாற்று உரை."
+      },
+      {
+        "property": "title",
+        "title": "தலைப்பு",
+        "description": "அட்டைத் தலைப்பு."
+      },
+      {
+        "slot": "",
+        "title": "உள்ளடக்கம்",
+        "description": "அட்டை உள்ளடக்கப் பகுதி."
+      },
+      {
+        "property": "href",
+        "title": "இணைப்பு",
+        "description": "பொத்தான் இணைப்பு URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "லேபிள்",
+        "description": "பொத்தான் லேபிள்."
+      },
+      {
+        "property": "noArrow",
+        "title": "அம்புக்குறி இல்லை",
+        "description": "பொத்தான் அம்புக்குறியை மறைக்கவும்."
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "இணைப்பு: இலக்கு",
+        "description": "இணைப்பை எங்கே திறக்க வேண்டும்.",
+        "options": {
+          "": "அதே சாளரம்",
+          "_blank": "புதிய சாளரம் - _blank",
+          "_top": "மேல் சாளரம் - _top",
+          "_parent": "பெற்றோர் சாளரம் - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "இணைப்பு: rel",
+        "description": "இணைக்கப்பட்ட வளத்திற்கும் தற்போதைய ஆவணத்திற்கும் இடையிலான உறவு."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Elýeterli jikme-jiklik düwmesi",
+    "description": "Jikme-jiklik we gysgaça mazmun bilen elýeterli tapgyrlaýyn açylma"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Düwme",
+        "description": "Gizlenen bolsa mazmunyň gysgaça beýany, meselem, \"maglumat\", \"metamaglumat\" we ş.m."
+      },
+      {
+        "slot": "details",
+        "title": "Düşündiriş",
+        "description": "Gizlenip ýa-da görkezilip bilinýän jikme-jik düşündiriş"
+      },
+      {
+        "slot": "",
+        "title": "Düşündiriş düwmesi",
+        "description": "Düşündiriş tekstini görkezýän/gizleýän düwme üçin deslapky, meselem, \"maglumat\", \"metamaglumat\" we ş.m."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Jikme-jiklikler açyk wagty goşmaça gysgaça tekst"
+      },
+      {
+        "property": "closeText",
+        "title": "Jikme-jiklikler ýapyk wagty goşmaça gysgaça tekst"
+      }
+    ]
+  }
+}

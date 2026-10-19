@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Preview ta' Github",
+    "description": "Figura aċċessibbli b'deskrizzjoni twila"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizzazzjoni",
+        "description": "Isem tal-magna tal-organizzazzjoni Github"
+      },
+      {
+        "property": "repo",
+        "title": "Repożitorju",
+        "description": "Isem tal-magna tar-repo"
+      },
+      {
+        "property": "extended",
+        "title": "Veduta Estiża",
+        "description": "Jinkludi r-readme fl-element"
+      }
+    ]
+  }
+}

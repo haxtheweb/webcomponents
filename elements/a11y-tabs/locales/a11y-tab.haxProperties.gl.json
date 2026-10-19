@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Lapela",
+    "description": "Unha única lapela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icona da lapela"
+      },
+      {
+        "property": "disabled",
+        "title": "Desactivado"
+      },
+      {
+        "property": "label",
+        "title": "Etiqueta da lapela"
+      },
+      {
+        "slot": "",
+        "title": "Contido da lapela",
+        "description": "O contido da lapela."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID único"
+      },
+      {
+        "property": "flag",
+        "title": "Texto de marca opcional"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Icona de marca opcional"
+      }
+    ]
+  }
+}

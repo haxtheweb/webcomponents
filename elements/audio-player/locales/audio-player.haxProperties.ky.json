@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Аудио",
+    "description": "Бул булагына карабастан видеону абдан жеткиликтүү түрдө көрсөтө алат."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Булак",
+        "description": "Бул медианын URL дареги."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Аталышы",
+        "description": "Видеонун астындагы жөнөкөй аталыш"
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Ойноткуч үчүн акцент түсүн тандаңыз."
+      },
+      {
+        "property": "track",
+        "title": "Субтитрлер",
+        "description": "Субтитр файлынын URL дареги."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Миниатюра сүрөтү",
+        "description": "Милдеттүү эмес. Миниатюра/постер сүрөтүнүн URL дареги."
+      },
+      {
+        "property": "learningMode",
+        "title": "Окуу режимин иштетүү",
+        "description": "Алдыга жана артка тез жылдырууну өчүрөт."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "\"YouTube'да ачуу\" баскычын алып салуу",
+        "description": "Видеону YouTube'да ачуу баскычын алып салат."
+      },
+      {
+        "property": "linkable",
+        "title": "Бөлүшүү шилтемесин кошосузбу?",
+        "description": "Видеону бөлүшүү үчүн шилтеме берет."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS колдонулаарын көрсөтөт.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Фондо ойнотууга уруксат берүү",
+        "description": "Өтмөк фокусун жоготкондо видеолор автоматтык түрдө токтойт / ойнойт; бул өтмөк фокуста болбосо да видеону ойнотууга мүмкүндүк берет"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Транскрипт үчүн караңгы тема",
+        "description": "Транскрипт үчүн караңгы теманы иштетүү."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Интерактивдүүлүктү өчүрүү",
+        "description": "Транскриптти басылуучу кылган интерактивдүү режимди өчүрүү."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Убакыт белгилерин жашыруу",
+        "description": "Транскрипттеги убакыт белгилерин жашыруу."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Транскриптти жашыруу",
+        "description": "Транскриптти демейки боюнча жашыруу."
+      },
+      {
+        "property": "lang",
+        "title": "Тил",
+        "description": "Медианын тили."
+      }
+    ]
+  }
+}

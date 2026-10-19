@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Isampulu yekhowudi",
+    "description": "Isampulu yekhowudi eqaqambisiweyo ephepheni"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Ukuqaqambisa ikhowudi",
+        "description": "Ukuqaqambisa isintaksi okuza kusetyenziswa kwindawo yekhowudi",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Idatha ye-JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Iqhosha lokukopa kwibhodi yokukopa",
+        "description": "iqhosha elingasekunene phezulu elithi kopa kwibhodi yokukopa"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Isiqalo sokuqaqambisa",
+        "description": "Inombolo yomgca wokuqala ukuqaqambisa"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Isiphelo sokuqaqambisa",
+        "description": "Umgca wokugqiba ukuqaqambisa"
+      }
+    ]
+  }
+}

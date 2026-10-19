@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex ამრჩევი",
+    "description": "Hex კოდის ფერის ამრჩევი"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "მნიშვნელობა",
+        "description": "ნაგულისხმევი hex მნიშვნელობა"
+      },
+      {
+        "property": "disabled",
+        "title": "გამორთული",
+        "description": "ტექსტური ველის გამორთვა"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "დიდი ჩვენება",
+        "description": "ფერის დიდ ჩვენებაში ჩართვა"
+      }
+    ]
+  }
+}

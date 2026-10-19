@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "အခြေခံ ပုံ",
+    "description": "အခြေခံ ပုံ အစိတ်အပိုင်း။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ရင်းမြစ်",
+        "description": "ပုံ URL။"
+      },
+      {
+        "attribute": "alt",
+        "title": "အစားထိုး စာသား",
+        "description": "လက်လှမ်းမီမှုနှင့် SEO အတွက် အစားထိုး စာသား။"
+      },
+      {
+        "attribute": "height",
+        "title": "အမြင့်",
+        "description": "pixel ဖြင့် အမြင့်။ သဘာဝ အရွယ်အစား သုံးရန် အလွတ်ထားပါ။"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "ပုံ ဖွင့်တင်ခြင်း",
+        "description": "ပုံကို မည်သည့်အချိန် ဖွင့်မည် ရွေးပါ။",
+        "options": {
+          "lazy": "မြင်ရသောအခါ ဖွင့်ရန်",
+          "auto": "အလိုအလျောက်"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responsive ရင်းမြစ်များ (srcset)",
+        "description": "ဖန်သားပြင်အတွက် အကောင်းဆုံး အရွယ်အစားကို ဘရောက်ဆာများ ရွေးနိုင်စေရန် ပုံ URL များနှင့် ဖော်ပြချက်များ (ဥပမာ 480w သို့မဟုတ် 2x) ကို စာရင်းပြုပါ။ စံ srcset attribute အဖြစ် သိမ်းသည်။"
+      }
+    ]
+  }
+}

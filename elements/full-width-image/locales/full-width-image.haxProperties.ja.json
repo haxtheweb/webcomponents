@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "画像セクション",
+    "description": "ページのセクションを区切る全幅の画像。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "背景画像。"
+      },
+      {
+        "property": "caption",
+        "description": "テキストの見出し。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-Contributeurslëscht",
+    "description": "Als RPG-Personnagë mat der GitHub API duergestallt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisatioun",
+        "description": "Organisatiounsnumm aus github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repository",
+        "description": "Repository-Numm aus github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Limit",
+        "description": "D'Zuel vun de gewisene Contributeure begrenzen."
+      }
+    ]
+  }
+}

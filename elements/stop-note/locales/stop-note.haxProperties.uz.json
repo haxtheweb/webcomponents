@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Toʻxtash eslatmasi",
+    "description": "Oʻquvchilarni muayyan koʻrsatmalar haqida ogohlantiruvchi xabar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Toʻxtash eslatmasi uchun sarlavha kiriting."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "Tashqi URL kiriting."
+      },
+      {
+        "property": "status",
+        "title": "Holat",
+        "description": "Holatni belgilash ranglar va belgilarni unga moslab oʻzgartiradi",
+        "options": {
+          "stop": "Toʻxtash",
+          "warning": "Ogohlantirish",
+          "success": "Tasdiqlash",
+          "info": "Bildirishnoma"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "Eslatma matni",
+        "description": "Toʻxtash eslatmasi uchun matn."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: blocco figli",
+    "description": "Blocco dinamico per mostrare i figli della pagina corrente"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Metodo dinamico",
+        "description": "Come calcolare i figli rispetto a questo elemento",
+        "options": {
+          "active": "Figli attivi",
+          "parent": "Figli del genitore",
+          "ancestor": "Tutti i figli dall'antenato più alto"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Livello iniziale"
+      },
+      {
+        "property": "end",
+        "title": "Livello finale"
+      }
+    ]
+  }
+}

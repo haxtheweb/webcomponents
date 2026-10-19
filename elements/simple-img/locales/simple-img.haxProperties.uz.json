@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Oddiy rasm",
+    "description": "Rasmlarni oddiy parametrlar bilan boshqarish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Manba",
+        "description": "Rasm manbasi URL."
+      },
+      {
+        "property": "height",
+        "title": "Balandlik",
+        "description": "Ixtiyoriy rasm balandligi."
+      },
+      {
+        "property": "width",
+        "title": "Kenglik",
+        "description": "Ixtiyoriy rasm kengligi."
+      },
+      {
+        "property": "alt",
+        "title": "Muqobil matn",
+        "description": "Ekran oʻqish dasturlari uchun foydali va SEO ni yaxshilaydi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "quality",
+        "title": "Sifat",
+        "description": "Yaratishdagi rasm sifati (faqat JPEG)."
+      },
+      {
+        "property": "fetchpriority",
+        "title": "Yuklash ustuvorligi",
+        "description": "Zamonaviy brauzerlar uchun unumdorlik maslahati.",
+        "options": {
+          "auto": "Avtomatik",
+          "high": "Yuqori",
+          "low": "Past"
+        }
+      },
+      {
+        "property": "decoding",
+        "title": "Dekodlash usuli",
+        "description": "Zamonaviy brauzerlarda rasmni koʻrsatish uchun unumdorlik maslahati.",
+        "options": {
+          "auto": "Avtomatik",
+          "async": "Asinxron"
+        }
+      }
+    ]
+  }
+}

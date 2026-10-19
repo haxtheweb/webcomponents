@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Tchati cha Mizere",
+    "description": "Imapanga tchati chopezeka kwa onse chochokera ku CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wosankha."
+      },
+      {
+        "title": "Mawonekedwe Akuda",
+        "description": "Yatsani Mawonekedwe Amdima"
+      },
+      {
+        "title": "Fayilo ya CSV",
+        "description": "Tsegulani deta kuchokera ku CSV."
+      },
+      {
+        "title": "Mutu wa Tchati",
+        "description": "Mawu ena opezeka kwa onse a tchati chanu."
+      },
+      {
+        "title": "Kufotokozera kwa Tchati",
+        "description": "Kufotokozera kopezeka kwa onse kwa tchati chanu."
+      },
+      {
+        "title": "Dzina la Muyeso",
+        "description": "Chiyerekezo cha m'lifupi:kutalika kwa tchati (Onani https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings kuti mupeze $ct-scales ndi $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Onetsani Gridi Kumbuyo"
+      },
+      {
+        "title": "Onetsani Dera"
+      },
+      {
+        "title": "Onetsani Mzere"
+      },
+      {
+        "title": "Onetsani Mfundo"
+      },
+      {
+        "title": "M'lifupi Monse"
+      },
+      {
+        "title": "Onetsani Zizindikiro za Mfundo"
+      },
+      {
+        "title": "Mpata wa Tchati (pamwamba)"
+      },
+      {
+        "title": "Mpata wa Tchati (pansi)"
+      },
+      {
+        "title": "Mpata wa Tchati (kumanzere)"
+      },
+      {
+        "title": "Mpata wa Tchati (kumanja)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tembenuzani Deta",
+        "description": "Tembenuzani deta kuphatikizapo zizindikiro, kutsatana kwa magulu komanso magulu onse a deta."
+      },
+      {
+        "title": "Tebulo la HTML",
+        "description": "Chosankha: Tsegulani deta ngati tebulo la HTML."
+      },
+      {
+        "title": "Chocheperapo cha Tchati",
+        "description": "Kusintha mtengo wotsika wachilengedwe wa tchati kumakulolani kukulitsa kapena kuchepetsa mtengo wotsika kwambiri woonetsedwa pa tchati"
+      },
+      {
+        "title": "Chapamwamba cha Tchati",
+        "description": "Kusintha mtengo wapamwamba wachilengedwe wa tchati kumakulolani kukulitsa kapena kuchepetsa mtengo wapamwamba kwambiri woonetsedwa pa tchati"
+      },
+      {
+        "title": "Onetsani Zizindikiro za Mfundo",
+        "options": {
+          "middle": "Pakati",
+          "start": "Kuyamba",
+          "end": "Kutha"
+        }
+      },
+      {
+        "title": "Kusuntha kwa X kwa Zizindikiro za Mfundo"
+      },
+      {
+        "title": "Kusuntha kwa Y kwa Zizindikiro za Mfundo"
+      },
+      {
+        "title": "Mzere Wosalala"
+      },
+      {
+        "title": "Maziko a Dera",
+        "description": "Maziko a tchati cha dera omwe adzagwiritsidwa ntchito kutseka mawonekedwe a dera (nthawi zambiri ndi 0)."
+      },
+      {
+        "title": "X-Axis Onetsani Gridi",
+        "description": "Onetsani gridi ya X-Axis."
+      },
+      {
+        "title": "Kusuntha kwa X-Axis"
+      },
+      {
+        "title": "Malo a X-Axis",
+        "description": "Malo omwe zizindikiro zimaikidwa. Zitha kuikidwa \"start\" kapena \"end\" pomwe \"start\" ndi chimodzimodzi ndi kumanzere kapena pamwamba pa axis yoima ndipo \"end\" ndi chimodzimodzi ndi kumanja kapena pansi pa axis yopingasa"
+      },
+      {
+        "title": "X-Axis Onetsani Chizindikiro",
+        "description": "Onetsani chizindikiro cha X-Axis."
+      },
+      {
+        "title": "Chizindikiro cha X-Axis (kusuntha kopingasa)",
+        "description": "Malo opingasa a zizindikiro za X-Axis."
+      },
+      {
+        "title": "Chizindikiro cha X-Axis (kusuntha koima)",
+        "description": "Malo oima a zizindikiro za X-Axis."
+      },
+      {
+        "title": "Mutu wa X-Axis",
+        "description": "Mutu wosankha wa X-axis."
+      },
+      {
+        "title": "Mutu wa X-Axis (kusuntha kopingasa)",
+        "description": "Malo opingasa a mutu wa X-Axis."
+      },
+      {
+        "title": "Mutu wa X-Axis (kusuntha koima)",
+        "description": "Malo oima a mutu wa X-Axis."
+      },
+      {
+        "title": "Nangula wa Mutu wa X-Axis",
+        "description": "Nangula wosankha wa mutu wa X-axis.",
+        "options": {
+          "middle": "pakati",
+          "end": "kumapeto",
+          "start": "poyambira"
+        }
+      },
+      {
+        "title": "Y-Axis: Onetsani Gridi",
+        "description": "Onetsani gridi ya Y-Axis."
+      },
+      {
+        "title": "Kusuntha kwa Y-Axis"
+      },
+      {
+        "title": "Malo a Y-Axis",
+        "description": "Malo omwe zizindikiro zimaikidwa. Zitha kuikidwa \"start\" kapena \"end\" pomwe \"start\" ndi chimodzimodzi ndi kumanzere kapena pamwamba pa axis yoima ndipo \"end\" ndi chimodzimodzi ndi kumanja kapena pansi pa axis yopingasa"
+      },
+      {
+        "title": "Y-Axis Onetsani Chizindikiro",
+        "description": "Onetsani chizindikiro cha Y-Axis."
+      },
+      {
+        "title": "Chizindikiro cha Y-Axis (kusuntha kopingasa)",
+        "description": "Malo opingasa a chizindikiro cha Y-Axis."
+      },
+      {
+        "title": "Chizindikiro cha Y-Axis (kusuntha koima)",
+        "description": "Malo oima a chizindikiro cha Y-Axis."
+      },
+      {
+        "title": "Mpata Wochepa wa Muyeso wa Y-Axis",
+        "description": "Imatchula kutalika kochepa mu pixel kwa masitepe a muyeso."
+      },
+      {
+        "title": "Muyeso wa Y-Axis (manambala athunthu okha)",
+        "description": "Gwiritsani ntchito manambala athunthu okha pa masitepe a muyeso."
+      },
+      {
+        "title": "Mutu wa Y-Axis",
+        "description": "Mutu wosankha wa Y-axis."
+      },
+      {
+        "title": "Mutu wa Y-Axis (kusuntha koima)",
+        "description": "Malo opingasa a mutu wa Y-Axis."
+      },
+      {
+        "title": "Mutu wa Y-Axis (kusuntha kopingasa)",
+        "description": "Malo opingasa a mutu wa Y-Axis."
+      },
+      {
+        "title": "Nangula wa Mutu wa Y-Axis",
+        "description": "Nangula wosankha wa mutu wa Y-axis.",
+        "options": {
+          "middle": "pakati",
+          "end": "kumapeto",
+          "start": "poyambira"
+        }
+      },
+      {
+        "title": "Tembenuzani Mutu wa Y-Axis",
+        "description": "Tembenuzani mutu wa Y-axis?"
+      }
+    ]
+  }
+}

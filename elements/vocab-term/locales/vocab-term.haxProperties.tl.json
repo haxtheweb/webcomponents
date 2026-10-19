@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Bokabularyo",
+    "description": "Termino sa bokabularyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termino"
+      },
+      {
+        "property": "information",
+        "title": "Kahulugan",
+        "description": "Kahulugang ipinapakita kapag na-click ang termino."
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Ipakita ang kahulugan sa popover sa halip na inline."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "links",
+        "title": "Mga Link",
+        "description": "Listahan ng mga karagdagang link na kaugnay ng terminong ito."
+      }
+    ]
+  }
+}

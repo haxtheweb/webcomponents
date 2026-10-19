@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "બુલેટ સૂચિ",
+    "description": "બુલેટ સૂચિ બનાવો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "બુલેટ શૈલી",
+        "description": "અક્રમિત સૂચિના બુલેટ્સ માટે વપરાતી શૈલી.",
+        "options": {
+          "": "ડિફૉલ્ટ (ચોરસ)",
+          "list-disc": "ડિસ્ક",
+          "list-circle": "વર્તુળ",
+          "list-square": "ચોરસ"
+        }
+      }
+    ]
+  }
+}

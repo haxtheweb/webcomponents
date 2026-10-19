@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Gawo la masitepe",
+    "description": "Chinthu chomwe chili gawo la mndandanda wa masitepe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mutu"
+      }
+    ]
+  }
+}

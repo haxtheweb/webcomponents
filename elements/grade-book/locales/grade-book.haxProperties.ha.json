@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Littafin Maki",
+    "description": "Littafin maki mara fuska wanda ke goyon bayan baya da yawa tare da rubric."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Tushe",
+        "description": "Nau'in tushen bayanai (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Wurin URL (JSON)",
+          "json": "Tarin bayanan JSON",
+          "filesystem": "Tsarin fayil"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Bayanan Tushe",
+        "description": "URL ko bayanan JSON don littafin maki."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ishara ga Kwas",
+        "description": "Mai gano kwas da ake fitarwa a matsayin oer:forCourse a kowace albarkar Assessment."
+      }
+    ]
+  }
+}

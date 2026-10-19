@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ອົງປະກອບ H5P",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ຂໍ້ຄວາມ",
+        "description": "ເນື້ອຫາຂອງໝາຍເຫດຂ້າງ"
+      }
+    ]
+  }
+}

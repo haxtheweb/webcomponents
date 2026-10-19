@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Puoro tuhi",
+    "description": "Ka whakaatu, ka pāho i te puoro tuhi, i ngā tab kitā, me te tohu kōrero puoro mā te alphaTex, te MusicXML rānei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Tohu AlphaTex",
+        "description": "Tohu alphaTex i roto mō te puoro tuhi. Whakatikaina tōtika hei tuhi tohu; ka penapenahia ki tētahi tauira kia mau tonu ai te mokowā."
+      },
+      {
+        "property": "source",
+        "title": "Kōnae puoro",
+        "description": "Tukuake, honoa rānei tētahi kōnae MusicXML (.xml/.musicxml/.mxl), Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) rānei. Ka whakakapi i te alphaTex i roto ina tautuhia."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Purei oro",
+        "description": "Ka hohe hei taunoa - whakarongo ki te puoro tuhi e pāhotia ana e te hanganoro kua whakaurua. Whakawetohia mō te aratau tiro anake (kāore he oro)."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Whakaaturia ngā kōwhiringa whakaatu",
+        "description": "Whakaaturia ngā pātene topa, toro, me te tahora ki te pae kaipurei."
+      },
+      {
+        "property": "showExport",
+        "title": "Whakaaturia ngā pātene kaweake",
+        "description": "Whakaaturia ngā pātene tikiake MIDI me te tā/PDF ki te pae kaipurei."
+      }
+    ]
+  }
+}

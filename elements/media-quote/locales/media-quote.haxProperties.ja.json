@@ -1,0 +1,47 @@
+{
+  "gizmo": {
+    "title": "メディア引用",
+    "description": "引用、出典、任意のキャプション付きの画像。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "quote",
+        "title": "引用",
+        "description": "引用文。"
+      },
+      {
+        "slot": "author",
+        "title": "著者",
+        "description": "引用の著者。"
+      },
+      {
+        "slot": "author-detail",
+        "title": "著者の詳細",
+        "description": "著者の詳細。"
+      },
+      {
+        "slot": "caption",
+        "title": "キャプション",
+        "description": "画像のキャプション。"
+      },
+      {
+        "property": "src",
+        "title": "画像ソース",
+        "description": "メディア引用に使う画像ファイル。"
+      },
+      {
+        "property": "alt",
+        "title": "代替テキスト",
+        "description": "画像の代替テキスト。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "カードのアクセントカラー。"
+      }
+    ]
+  }
+}

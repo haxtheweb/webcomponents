@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Kartice",
+    "description": "Skup kartica."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Oznaka (za pristupačnost)",
+        "description": "Pristupačna oznaka za skup kartica."
+      },
+      {
+        "property": "disabled",
+        "title": "Onemogućeno",
+        "description": "Onemogući sve kartice."
+      },
+      {
+        "property": "hidden",
+        "title": "Skriveno",
+        "description": "Sakrij skup kartica."
+      },
+      {
+        "property": "sticky",
+        "title": "Fiksirano",
+        "description": "Zadrži vodoravne kartice na vrhu tijekom pomicanja."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Prijelomna točka rasporeda",
+        "description": "Prijelomna točka za vodoravne kartice; upotrijebite -1 za samo okomite."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Prijelomna točka ikona",
+        "description": "Prijelomna točka za prikaz teksta uz ikone. Zadano je 0; upotrijebite -1 za način samo s ikonama."
+      },
+      {
+        "slot": "",
+        "title": "Kartice",
+        "description": "Niz elemenata <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Jedinstveni ID",
+        "description": "Jedinstveni ID za ovaj skup kartica."
+      }
+    ]
+  }
+}

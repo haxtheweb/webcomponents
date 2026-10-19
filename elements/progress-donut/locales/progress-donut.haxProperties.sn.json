@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Donut yeKufambira mberi",
+    "description": "Donut yekufambira mberi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Zita rechinhu"
+      },
+      {
+        "property": "desc",
+        "title": "Tsananguro",
+        "description": "Tsananguro refu inowanikwa nevose"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Kwakabva Mufananidzo",
+        "description": "Sosi yemufananidzo uri mukati medonut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Mavara eAlt eMufananidzo",
+        "description": "Mavara ealt emufananidzo."
+      },
+      {
+        "property": "animated",
+        "title": "Ine animation",
+        "description": "Kana kufambira mberi kuchiita animation pakurodha kwekutanga"
+      },
+      {
+        "property": "complete",
+        "title": "Zvapera",
+        "description": "Array yezvikosho zvapedzwa."
+      },
+      {
+        "property": "total",
+        "title": "Huwandu hwose",
+        "description": "Huwandu hwose kana zvinhu zvose zvapera."
+      },
+      {
+        "property": "startAngle",
+        "title": "Kona yeKutanga",
+        "description": "Kona yedonut panotangira kufambira mberi"
+      }
+    ]
+  }
+}

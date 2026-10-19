@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Koʻp tanlovli",
+    "description": "Koʻp tanlovli oʻz-oʻzini tekshirish savoli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Savol",
+        "description": "Foydalanuvchilar javob beradigan savol."
+      },
+      {
+        "property": "randomize",
+        "title": "Aralashtirish",
+        "description": "Javoblarni dinamik ravishda aralashtirish."
+      },
+      {
+        "property": "singleOption",
+        "title": "Yagona javob",
+        "description": "Faqat bitta javobga ruxsat berish."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Baholash formati",
+        "description": "OER Schema: ushbu baholash uchun baholash formati (masalan, ball, harf, foiz, bajarilganlik)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oʻquv maqsadi",
+        "description": "OER Schema: ushbu baholash bilan bogʻliq oʻquv maqsadi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: ushbu baholash moʻljallangan kurs."
+      },
+      {
+        "property": "answers",
+        "title": "Javoblar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Test nomi",
+        "description": "Analitika tizimlarida xAPI identifikatsiyasi uchun ishlatiladigan test nomi."
+      }
+    ]
+  }
+}

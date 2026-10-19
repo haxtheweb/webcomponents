@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Επιλογέας Hex",
+    "description": "Επιλογέας χρώματος κωδικού hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Τιμή",
+        "description": "Προεπιλεγμένη τιμή hex"
+      },
+      {
+        "property": "disabled",
+        "title": "Απενεργοποιημένο",
+        "description": "Απενεργοποίηση του πεδίου κειμένου"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Μεγάλη προβολή",
+        "description": "Συμπερίληψη χρώματος σε μεγάλη προβολή"
+      }
+    ]
+  }
+}

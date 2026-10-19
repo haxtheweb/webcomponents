@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Tampilan CMS",
+    "description": "Tampilan CMS sing dirender ing backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Jeneng",
+        "description": "Jeneng tampilan saka CMS kita"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Tampilan",
+        "description": "Display ing tampilan kasebut saka CMS kita"
+      }
+    ]
+  }
+}

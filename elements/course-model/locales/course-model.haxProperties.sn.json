@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "modheru yekosi",
+    "description": "Marongerwo anopindurana epfungwa dzekosi ane ruzivo, animation, nekuongorora ruzivo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "zita"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Nzvimbo yeruzivo"
+      },
+      {
+        "title": "Nzvimbo yezvakadzama"
+      },
+      {
+        "title": "Nzvimbo yeanimation"
+      },
+      {
+        "title": "Nzvimbo yeKuongorora Ruzivo"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Nzvimbo yelogo"
+      }
+    ]
+  }
+}

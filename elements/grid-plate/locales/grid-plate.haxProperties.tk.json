@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Sütün ýerleşişi",
+    "description": "Materialy ýönekeý sütünlerde ýerleşdir"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Sütün ýerleşişi",
+        "description": "Bu elementleri görkezmegiň stili (kiçi ekranlar üçin üýtgäp biler)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Uýgunlaşmany öçür",
+        "description": "Iň kiçi ekranlarda üst-üste goýmak bilen, uly ekranlarda sütünleri saklamak üçin gutyny belläň"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Elementiň içki boşlugy",
+        "description": "Her elementiň içindäki boşluk"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Elementiň daşky boşluklary",
+        "description": "Elementleriň arasyndaky boşluk"
+      }
+    ]
+  }
+}

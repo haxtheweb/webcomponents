@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Самопроверка",
+    "description": "Корисниците можат да направат самопроверка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Слика",
+        "description": "Слика за самопроверката."
+      },
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов на самопроверката."
+      },
+      {
+        "property": "alt",
+        "title": "Алтернативен текст",
+        "description": "Алтернативен текст за сликата."
+      },
+      {
+        "slot": "question",
+        "title": "Прашање"
+      },
+      {
+        "slot": "",
+        "title": "Одговор"
+      },
+      {
+        "property": "accentColor",
+        "title": "Боја на темата",
+        "description": "Изберете боја на темата од дизајн-системот.",
+        "options": {
+          "primary": "Основно",
+          "accent": "Акцент",
+          "success": "Успех",
+          "warning": "Предупредување",
+          "error": "Грешка",
+          "info": "Информации"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Цел на учење",
+        "description": "Референца за целта на учење емитувана како oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Оценува",
+        "description": "Референца за активноста емитувана како oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Врска за повеќе",
+        "description": "Врска до дополнителни информации."
+      }
+    ]
+  }
+}

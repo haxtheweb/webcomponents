@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Immaġni Mtejba",
+    "description": "Mod kif tippreżenta immaġnijiet b'diversi titjib."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sors",
+        "description": "L-URL għall-immaġni."
+      },
+      {
+        "property": "alt",
+        "title": "Test alternattiv",
+        "description": "Test li jiddeskrivi l-immaġni lil utenti li ma jarawx."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Orbot l-immaġni ma' URL"
+      },
+      {
+        "property": "card",
+        "title": "Karta",
+        "description": "Applika dell biex tidher qisha karta mgħollija."
+      },
+      {
+        "property": "box",
+        "title": "Kaxxa",
+        "description": "Applika kaxxa viżiva madwar l-immaġni."
+      },
+      {
+        "property": "offset",
+        "title": "Spostament",
+        "description": "Applika spostament lejn ix-xellug jew il-lemin għall-immaġni.",
+        "options": {
+          "none": "xejn",
+          "wide": "wiesa'",
+          "narrow": "dejjaq"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Ċitazzjoni",
+        "description": "Ċitazzjoni għall-immaġni."
+      },
+      {
+        "property": "caption",
+        "title": "Didaskalija",
+        "description": "Caption għall-immaġni."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titlu tal-Figura",
+        "description": "Titlu għat-tikketta tal-figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Deskrizzjoni tal-Figura",
+        "description": "Deskrizzjoni għat-tikketta tal-figura."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Immaġni thumbnail",
+        "description": "Sors tal-immaġni thumbnail. Turi t-thumbnail iżda tiftaħ is-sors sħiħ f'modal."
+      },
+      {
+        "property": "round",
+        "title": "Immaġni tonda",
+        "description": "Taqta' d-dehra tal-immaġni f'forma ta' ċirku."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Iddiżattiva l-modal tal-immaġni",
+        "description": "Iddiżattiva l-klikks li jiftħu l-immaġni f'djalogu tal-ispettur tal-immaġnijiet."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Irrenderja bħala markdown",
+        "description": "Irrenderja l-caption u ċ-ċitazzjoni bħala markdown."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX сөз өнері",
+    "description": "HAX логотипі элементі, әрине HAX-пен үйлесімді элемент ретінде."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Орналастырылатын HAX логотипінің өлшемі",
+        "options": {
+          "mini": "Шағын",
+          "small": "Кішкентай",
+          "normal": "Қалыпты",
+          "large": "Үлкен"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Логотипті бас әріптерге түрлендіру керек пе"
+      }
+    ]
+  }
+}

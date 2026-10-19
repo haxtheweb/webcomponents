@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Container NodeJS"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideEditor",
+        "title": "Ẩn trình soạn thảo",
+        "description": "Ẩn giao diện chỉnh sửa tệp."
+      },
+      {
+        "property": "hideTerminal",
+        "title": "Ẩn terminal",
+        "description": "Ẩn terminal cho các chương trình tự chạy."
+      },
+      {
+        "property": "hideWindow",
+        "title": "Ẩn cửa sổ",
+        "description": "Ẩn cửa sổ đầu ra khi chỉ dùng terminal."
+      },
+      {
+        "slot": "",
+        "title": "Lệnh",
+        "description": "Các lệnh (mỗi dòng một lệnh) cần chạy trước khi tải."
+      }
+    ]
+  }
+}

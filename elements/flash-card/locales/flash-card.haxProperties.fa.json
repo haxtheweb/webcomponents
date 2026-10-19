@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "فلش‌کارت",
+    "description": "تمرین مفاهیم با فلش‌کارت‌های دورو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "front",
+        "title": "روی کارت",
+        "description": "متن یا پرسش روی کارت."
+      },
+      {
+        "slot": "back",
+        "title": "پشت کارت",
+        "description": "پاسخ مورد انتظار."
+      },
+      {
+        "property": "imgSource",
+        "title": "منبع تصویر",
+        "description": "فایل تصویری که برای کارت استفاده می‌شود. بر کلیدواژهٔ تصویر اولویت دارد."
+      },
+      {
+        "property": "typeOfAction",
+        "title": "نوع کنش",
+        "description": "OER Schema: نوع کنشی که این تمرین در بر دارد (مثلاً خواندن، نوشتن، ساختن، پژوهش، شنیدن، تماشا، تأمل، گفت‌وگو، مشاهده، ارائه، ارزشیابی)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف یادگیری",
+        "description": "OER Schema: شناسه یا URL هدف یادگیری‌ای که این تمرین از آن پشتیبانی می‌کند."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "تیره",
+        "description": "استفاده از حالت تیره."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "رنگ تأکیدی کارت."
+      },
+      {
+        "property": "imgKeyword",
+        "title": "کلیدواژهٔ تصویر",
+        "description": "کلیدواژهٔ تصویر تصادفی. منبع تصویر بر آن اولویت دارد."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "รายชื่อผู้มีส่วนร่วมใน GitHub",
+    "description": "แสดงเป็นตัวละคร RPG โดยใช้ GitHub API"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "องค์กร",
+        "description": "ชื่อองค์กรจาก github.com/ORG/REPO"
+      },
+      {
+        "property": "repo",
+        "title": "รีโพสิทอรี",
+        "description": "ชื่อรีโพสิทอรีจาก github.com/ORG/REPO"
+      },
+      {
+        "property": "limit",
+        "title": "จำกัด",
+        "description": "จำกัดจำนวนผู้มีส่วนร่วมที่แสดง"
+      }
+    ]
+  }
+}

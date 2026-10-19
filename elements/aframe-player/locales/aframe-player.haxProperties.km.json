@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "កម្មវិធីចាក់ 3D",
+    "description": "កម្មវិធីចាក់ឯកសារ 3D / ការពិតបន្ថែម។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ប្រភព",
+        "description": "URL សម្រាប់ឯកសារ AR នេះ។"
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "ទីតាំង X របស់ធាតុក្នុង AR។"
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "ទីតាំង Y របស់ធាតុក្នុង AR។"
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "ទីតាំង Z របស់ធាតុក្នុង AR។"
+      },
+      {
+        "property": "skyColor",
+        "title": "ពណ៌មេឃ",
+        "description": "ជ្រើសរើសពណ៌មេឃក្នុងឈុតឆាក។"
+      }
+    ]
+  }
+}

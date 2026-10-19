@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Odrážkový seznam",
+    "description": "Vytvořit odrážkový seznam."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Styl odrážek",
+        "description": "Styl použitý pro odrážky neuspořádaného seznamu.",
+        "options": {
+          "": "Výchozí (čtverec)",
+          "list-disc": "Plný kruh",
+          "list-circle": "Kruh",
+          "list-square": "Čtverec"
+        }
+      }
+    ]
+  }
+}

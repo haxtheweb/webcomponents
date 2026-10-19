@@ -1,0 +1,67 @@
+{
+  "gizmo": {
+    "title": "تقریب بیج",
+    "description": "تقریب بیج دا حصہ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "TV تصویر",
+        "description": "TV اُتے وکھائی جاوݨ والی تصویر۔"
+      },
+      {
+        "property": "logo",
+        "title": "لوگو",
+        "description": "بیج دی نکر وچ وکھایا جاوݨ والا لوگو۔"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "بیج دے اُتے وکھایا جاوݨ والا عنوان۔"
+      },
+      {
+        "property": "name",
+        "title": "ناں",
+        "description": "بیج اُتے وکھایا جاوݨ والا ناں۔"
+      },
+      {
+        "property": "position",
+        "title": "عہدہ",
+        "description": "بندے دا کردار یا عہدہ۔"
+      },
+      {
+        "property": "organization",
+        "title": "ادارہ",
+        "description": "اوہ ادارہ جیہدے لئی بندہ کم کردا اے۔"
+      },
+      {
+        "property": "tvcolor",
+        "title": "TV دا رنگ",
+        "description": "TV لئی رنگ چݨو۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "پچھوکڑ یا متن دا مڈھلا رنگ۔"
+      },
+      {
+        "property": "knobcolor",
+        "title": "گھنڈیاں دا رنگ",
+        "description": "TV دیاں گھنڈیاں دا رنگ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "sepia",
+        "title": "سیپیا",
+        "description": "سیپیا اثر لاؤ۔"
+      },
+      {
+        "property": "blackwhite",
+        "title": "کالا تے چٹا",
+        "description": "کالا تے چٹا اثر لاؤ۔"
+      }
+    ]
+  }
+}

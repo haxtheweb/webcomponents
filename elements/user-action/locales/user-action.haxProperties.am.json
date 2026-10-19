@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "የተጠቃሚ ድርጊት",
+    "description": "የተጠቃሚ ድርጊቶችን ተከታተል እና ውሂብን ወደ xAPI ማከማቻዎች ላክ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "የሚከታተለው ክስተት",
+        "description": "ይህን ክስተት የሚያስነሳ የተጠቃሚ ድርጊት።",
+        "options": {
+          "visibility": "ይህን ማየት ይችላል",
+          "keydown": "እዚህ ቁልፍ ተጫን",
+          "click": "ይህን ጠቅ አድርግ",
+          "hover": "በዚህ ላይ አንዣብብ"
+        }
+      },
+      {
+        "attribute": "every",
+        "title": "በእያንዳንዱ ጊዜ ተከታተል",
+        "description": "በነባሪ የመጀመሪያው ክስተት ብቻ ይከታተላል።"
+      }
+    ]
+  }
+}

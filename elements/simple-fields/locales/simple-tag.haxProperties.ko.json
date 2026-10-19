@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "태그 / 필",
+    "description": "선택적 강조 색상, 취소 버튼 또는 토글이 있는 작은 알약 모양 레이블입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "레이블",
+        "description": "필 안에 표시되는 텍스트입니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "필 배경에 사용할 SimpleColors 강조 색상 이름입니다.",
+        "options": {
+          "": "-- 기본값 --",
+          "red": "빨강",
+          "pink": "분홍",
+          "purple": "보라",
+          "deep-purple": "진한 보라",
+          "indigo": "남색",
+          "blue": "파랑",
+          "light-blue": "하늘색",
+          "cyan": "청록",
+          "teal": "틸",
+          "green": "초록",
+          "light-green": "연두",
+          "lime": "라임",
+          "yellow": "노랑",
+          "amber": "호박색",
+          "orange": "주황",
+          "deep-orange": "진한 주황",
+          "brown": "갈색",
+          "blue-grey": "청회색",
+          "grey": "회색"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "자동 강조 색상",
+        "description": "레이블 텍스트에서 강조 색상을 자동으로 도출합니다."
+      },
+      {
+        "property": "cancelButton",
+        "title": "취소 버튼",
+        "description": "필 안에 제거/취소 아이콘 버튼을 표시합니다."
+      },
+      {
+        "property": "readonly",
+        "title": "읽기 전용",
+        "description": "취소 버튼을 숨겨 필을 표시 전용으로 만듭니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "토글",
+        "description": "버튼을 클릭하면 필이 켜짐/꺼짐으로 전환되게 합니다."
+      },
+      {
+        "property": "toggled",
+        "title": "토글됨",
+        "description": "필이 현재 켜져 있는지 여부입니다."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "토글 아이콘",
+        "description": "필이 켜져 있을 때 표시할 아이콘입니다."
+      },
+      {
+        "property": "disabled",
+        "title": "비활성화",
+        "description": "필과의 상호작용을 비활성화합니다."
+      }
+    ]
+  }
+}

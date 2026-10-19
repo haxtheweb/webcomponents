@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kitaaba Qabxii",
+    "description": "Kitaaba qabxii mataa hin qabne kan backend hedduu rubriksii wajjin deeggaru."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Madda",
+        "description": "Gosa madda daataa (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Qabduu URL (JSON)",
+          "json": "Blob daataa JSON",
+          "filesystem": "Sirna faayilii"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Daataa Maddaa",
+        "description": "URL yookaan daataa JSON kitaaba qabxiitiif."
+      },
+      {
+        "property": "forCourse",
+        "title": "Wabii Koorsii",
+        "description": "Eenyummeessaa koorsii qabeenya Madaallii tokkoon tokkoon irratti akka oer:forCourse tti ba'u."
+      }
+    ]
+  }
+}

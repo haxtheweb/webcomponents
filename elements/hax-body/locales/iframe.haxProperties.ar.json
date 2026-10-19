@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "تضمين محتوى ويب خارجي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "المصدر",
+        "description": "URL هذا المورد."
+      }
+    ]
+  }
+}

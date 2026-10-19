@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "CSV ცხრილი",
+    "description": "შეუძლია ცხრილის შექმნა CSV ფაილიდან, სადაც არ უნდა იყოს ის განთავსებული."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "csvFile",
+        "title": "წყარო",
+        "description": "ამ CSV ფაილის URL."
+      },
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "შესაქმნელი ცხრილის სათაური."
+      },
+      {
+        "property": "description",
+        "title": "აღწერა",
+        "description": "უფრო დეტალური აღწერა ცხრილის მონაცემების უკეთესი ხელმისაწვდომობისთვის."
+      }
+    ]
+  }
+}

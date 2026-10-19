@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Toi kupu HAX",
+    "description": "He huānga moko mō HAX, he huānga e taea ana e HAX, ko te tikanga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "Te rahi o te moko HAX hei whakanoho",
+        "options": {
+          "mini": "Paku",
+          "small": "Iti",
+          "normal": "Noa",
+          "large": "Nui"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "Me huri rānei te moko ki ngā pū matua"
+      }
+    ]
+  }
+}

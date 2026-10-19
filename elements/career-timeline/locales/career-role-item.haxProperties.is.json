@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Starfshlutverk",
+    "description": "Einstakt hlutverk innan stofnunar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titill"
+      },
+      {
+        "property": "startDate",
+        "title": "Upphafsdagur"
+      },
+      {
+        "property": "endDate",
+        "title": "Lokadagur (valfrjálst)"
+      },
+      {
+        "property": "skills",
+        "title": "Tengd færni",
+        "description": "Veldu + hnappinn til að byrja að bæta við færni"
+      }
+    ]
+  }
+}

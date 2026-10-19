@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "কার্যক্রম বক্স",
+    "description": "ছোট স্টাইল করা শিরোনাম ব্লক।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "আইকন",
+        "description": "কার্যক্রম বক্সের পাশে প্রদর্শিত আইকন।"
+      },
+      {
+        "property": "tag",
+        "title": "কার্যক্রম বক্স ট্যাগ",
+        "description": "কার্যক্রম বক্সে দেখানো ট্যাগ।"
+      },
+      {
+        "property": "nocolourize",
+        "title": "রং প্রয়োগ নয়",
+        "description": "আইকনে রং প্রয়োগ হওয়া আটকান।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "원격 콘텐츠",
+    "description": "한 사이트의 콘텐츠를 다른 사이트에서 재사용합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "사이트 주소",
+        "description": "현재 사이트가 아닌 경우 콘텐츠를 참조할 주소를 붙여 넣으세요"
+      },
+      {
+        "property": "uuid",
+        "title": "항목",
+        "description": "링크 / 제목 데이터로 렌더링할 항목"
+      },
+      {
+        "property": "breakreference",
+        "title": "참조 끊기",
+        "description": "이 상자를 선택하면 원격 콘텐츠를 로컬에서 편집할 수 있도록 복사하지만 연결은 제거됩니다. 참조 자료가 업데이트되어도 더 이상 반영되지 않습니다."
+      },
+      {
+        "property": "showTitle",
+        "title": "제목 표시",
+        "description": "표시되는 리소스의 제목을 렌더링하려면 켜세요"
+      }
+    ]
+  }
+}

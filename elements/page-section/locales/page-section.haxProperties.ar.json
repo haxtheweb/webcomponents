@@ -1,0 +1,69 @@
+{
+  "gizmo": {
+    "title": "قسم الصفحة",
+    "description": "حاوية قسم لمحتوى الصفحة والتخطيطات المعتمدة على الشاشة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "preset",
+        "title": "المعالجة التصميمية",
+        "description": "نمط مُعدّ مسبقًا يحدِّث الإعدادات المرتبطة."
+      },
+      {
+        "property": "image",
+        "title": "الصورة",
+        "description": "وسائط الخلفية للقسم."
+      },
+      {
+        "property": "bg",
+        "title": "لون الخلفية",
+        "description": "لون الخلفية عند عدم تعيين صورة."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scroller",
+        "title": "زر التمرير",
+        "description": "إظهار زر ينتقل إلى القسم التالي."
+      },
+      {
+        "property": "fold",
+        "title": "إظهار الطيّة",
+        "description": "إظهار طيّة مرئية أسفل القسم."
+      },
+      {
+        "property": "full",
+        "title": "حجم ملء الشاشة",
+        "description": "ملء ارتفاع شاشة المشاهد."
+      },
+      {
+        "property": "filter",
+        "title": "تطبيق مرشِّح",
+        "description": "تطبيق مرشِّح مرئي على صورة الخلفية."
+      },
+      {
+        "slot": "",
+        "title": "المحتوى",
+        "description": "محتوى القسم."
+      },
+      {
+        "slot": "entice",
+        "title": "جذب الانتباه",
+        "description": "محتوى اختياري لجذب الانتباه."
+      },
+      {
+        "slot": "buttons",
+        "title": "الأزرار",
+        "description": "مجموعة أزرار تُعرض أسفل النص."
+      }
+    ],
+    "developer": [
+      {
+        "property": "anchor",
+        "title": "نص المرساة",
+        "description": "تسمية المرساة المعروضة في التنقل."
+      }
+    ]
+  }
+}

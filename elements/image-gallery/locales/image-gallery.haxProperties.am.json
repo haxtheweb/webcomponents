@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "የምስል ማዕከል",
+    "description": "ምስሎችን በፍርግርግ፣ በግንብ ወይም በተንሸራታች ትዕይንት አቀማመጦች የሚያቀርብ ማዕከል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mode",
+        "title": "የማሳያ ሁነታ",
+        "description": "ምስሎቹን በማዕከሉ ውስጥ እንዴት ማቅረብ እንደሚቻል።",
+        "options": {
+          "grid": "ፍርግርግ",
+          "masonry": "ግንብ",
+          "gallery": "ማዕከል"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "activeIndex",
+        "title": "ንቁ መረጃ ጠቋሚ",
+        "description": "በማዕከል ሁነታ የሚጀመርበት ንቁ ምስል መረጃ ጠቋሚ።"
+      }
+    ]
+  }
+}

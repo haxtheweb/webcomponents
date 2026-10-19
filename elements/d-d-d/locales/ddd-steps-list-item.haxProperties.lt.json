@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Žingsnio elementas",
+    "description": "Žingsnių sąrašo elementas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pavadinimas"
+      }
+    ]
+  }
+}

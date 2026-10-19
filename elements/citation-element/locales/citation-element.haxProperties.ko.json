@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "출처",
+    "description": "세 가지 표시 모드를 지원하는 출처 요소."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "인용한 저작물의 제목."
+      },
+      {
+        "property": "source",
+        "title": "출처 링크",
+        "description": "인용한 저작물의 출처 URL."
+      },
+      {
+        "property": "date",
+        "title": "접근 날짜",
+        "description": "출처에 접근한 날짜."
+      },
+      {
+        "property": "scope",
+        "title": "범위",
+        "description": "인용할 요소의 범위.",
+        "options": {
+          "sibling": "형제 요소",
+          "parent": "상위 요소"
+        }
+      },
+      {
+        "property": "license",
+        "title": "라이선스",
+        "description": "인용한 저작물의 라이선스."
+      },
+      {
+        "property": "creator",
+        "title": "저작자",
+        "description": "인용한 저작물의 저작자 또는 소유자."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema 유형",
+        "description": "이 출처의 OER Schema 클래스입니다. 기본값은 oer:ReferencedMaterial이며, 유효한 OER 클래스(예: oer:SupportingMaterial)로만 재정의하세요."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ຕົວຫຍໍ້",
+    "description": "ຕົວຫຍໍ້ພ້ອມຄຳແນະນຳຄຳເຕັມ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ຂໍ້ຄວາມ",
+        "description": "ຂໍ້ຄວາມຕົວຫຍໍ້ທີ່ເບິ່ງເຫັນ."
+      },
+      {
+        "attribute": "title",
+        "title": "ຄຳ",
+        "description": "ຄຳເຕັມທີ່ສະແດງເມື່ອວາງເມົາສ໌."
+      }
+    ]
+  }
+}

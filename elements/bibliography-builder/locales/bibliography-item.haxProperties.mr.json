@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "संदर्भसूची आयटम",
+    "description": "संदर्भसूचीतील एकाच संदर्भाचे प्रतिनिधित्व करणारा आयटम, अनेक स्वरूपे आणि निर्यात पर्यायांना समर्थन देतो."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "प्रकार",
+        "description": "संदर्भ प्रकार",
+        "options": {
+          "web": "वेब",
+          "journal": "नियतकालिक",
+          "book": "पुस्तक"
+        }
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "आयटमचे शीर्षक"
+      },
+      {
+        "property": "authors",
+        "title": "लेखक",
+        "description": "टाइमलाइनमधील घटना"
+      },
+      {
+        "property": "publisher",
+        "title": "प्रकाशक",
+        "description": "मूळ वेबसाइट"
+      }
+    ]
+  }
+}

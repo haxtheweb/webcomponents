@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QRコード",
+    "description": "スマートフォンで読み取るコード。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QRデータ",
+        "description": "QRコードのデータのソース。"
+      },
+      {
+        "property": "title",
+        "title": "代替タイトル",
+        "description": "QRコードのソースにリンクされた代替タイトル。"
+      },
+      {
+        "property": "modulesize",
+        "title": "サイズ",
+        "description": "QRコードのサイズ。"
+      },
+      {
+        "property": "margin",
+        "title": "余白",
+        "description": "コードの周囲の余白。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "出力形式",
+        "description": "出力する形式。",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

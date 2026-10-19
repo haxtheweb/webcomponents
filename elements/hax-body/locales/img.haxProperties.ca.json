@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Imatge bàsica",
+    "description": "Element d'imatge bàsic."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Origen",
+        "description": "URL de la imatge."
+      },
+      {
+        "attribute": "alt",
+        "title": "Text alternatiu",
+        "description": "Text alternatiu per a l'accessibilitat i el SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Alçada",
+        "description": "Alçada en píxels. Deixa-ho en blanc per utilitzar la mida natural."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Càrrega de la imatge",
+        "description": "Tria quan es carrega la imatge.",
+        "options": {
+          "lazy": "Carrega quan sigui visible",
+          "auto": "Automàtica"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Fonts adaptatives (srcset)",
+        "description": "Llista els URL de les imatges i els descriptors (p. ex. 480w o 2x) perquè els navegadors triïn la millor mida per a la pantalla. Es desa com l'atribut estàndard srcset."
+      }
+    ]
+  }
+}

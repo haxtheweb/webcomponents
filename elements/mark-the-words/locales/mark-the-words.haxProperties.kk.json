@@ -1,0 +1,46 @@
+{
+  "gizmo": {
+    "title": "Сөздерді белгілеу",
+    "description": "Мәтін ішіндегі сөздерді басу арқылы ұғымдарды анықтау."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Сұрақ",
+        "description": "Пайдаланушылар жауап беретін сұрақ."
+      },
+      {
+        "property": "statement",
+        "title": "Тұжырым",
+        "description": "Сөздерді белгілеу әрекетіне айналдырылатын тұжырым."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Бағалау пішімі",
+        "description": "OER Schema: осы бағалаудың бағалау пішімі (мысалы, ұпай, әріп, пайыз, орындалу)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Оқу мақсаты",
+        "description": "OER Schema: осы бағалаумен байланысты оқу мақсаты."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: осы бағалау арналған курс."
+      },
+      {
+        "property": "answers",
+        "title": "Жауаптар"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тест атауы",
+        "description": "Осы элементті сәйкестендіру үшін xAPI негізіндегі орталарда қолданылатын тест атауы"
+      }
+    ]
+  }
+}

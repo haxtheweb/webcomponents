@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "థీమ్ చేసిన Polaris కాల్-టు-యాక్షన్ బటన్‌ను ప్రదర్శించండి."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "బటన్ వచనం",
+        "description": "కాల్-టు-యాక్షన్ బటన్‌లో చూపబడే వచనం."
+      },
+      {
+        "property": "link",
+        "title": "లింక్",
+        "description": "బటన్ కోసం గమ్యస్థాన URL."
+      },
+      {
+        "property": "type",
+        "title": "వేరియంట్",
+        "description": "దృశ్య శైలి వేరియంట్.",
+        "options": {
+          "primary": "ప్రాథమిక",
+          "tinted": "లేతరంగు",
+          "light": "లేత"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "అవుట్‌లైన్ శైలి",
+        "description": "అవుట్‌లైన్ రూపాన్ని ప్రారంభించండి."
+      },
+      {
+        "property": "filled",
+        "title": "నిండిన శైలి",
+        "description": "నిండిన రూపాన్ని ప్రారంభించండి."
+      }
+    ]
+  }
+}

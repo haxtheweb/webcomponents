@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ετικέτες",
+    "description": "Απλή λίστα ετικετών για εμφάνιση στη σελίδα."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tags",
+        "title": "Ετικέτες",
+        "description": "Λίστα ετικετών διαχωρισμένων με κόμμα."
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Αυτόματο χρώμα έμφασης",
+        "description": "Αυτόματος ορισμός χρώματος έμφασης βάσει της ετικέτας."
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα",
+        "description": "Χρώμα για τις ετικέτες."
+      }
+    ]
+  }
+}

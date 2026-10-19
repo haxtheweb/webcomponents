@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR kód",
+    "description": "Kód k naskenování chytrým telefonem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "Data QR",
+        "description": "Zdroj dat pro QR kód."
+      },
+      {
+        "property": "title",
+        "title": "Alternativní název",
+        "description": "Alternativní název propojený se zdrojem QR kódu."
+      },
+      {
+        "property": "modulesize",
+        "title": "Velikost",
+        "description": "Velikost QR kódu."
+      },
+      {
+        "property": "margin",
+        "title": "Okraj",
+        "description": "Okraj kolem kódu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Výstupní formát",
+        "description": "Formát výstupu.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "רשימת תבליטים",
+    "description": "יצירת רשימת תבליטים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "סגנון תבליט",
+        "description": "הסגנון המשמש לתבליטים ברשימה לא ממוספרת.",
+        "options": {
+          "": "ברירת מחדל (ריבוע)",
+          "list-disc": "דיסק",
+          "list-circle": "עיגול",
+          "list-square": "ריבוע"
+        }
+      }
+    ]
+  }
+}

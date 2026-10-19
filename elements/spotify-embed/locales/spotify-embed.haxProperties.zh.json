@@ -1,0 +1,33 @@
+{
+  "gizmo": {
+    "title": "Spotify",
+    "description": "Spotify 播放器嵌入的封装。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "来源",
+        "description": "来自 Spotify 的嵌入或分享链接。"
+      },
+      {
+        "property": "theme",
+        "title": "主题",
+        "description": "播放器的背景颜色主题。",
+        "options": {
+          "": "默认",
+          "0": "黑色"
+        }
+      },
+      {
+        "property": "size",
+        "title": "大小",
+        "description": "播放器大小。",
+        "options": {
+          "normal": "默认",
+          "compact": "紧凑"
+        }
+      }
+    ]
+  }
+}

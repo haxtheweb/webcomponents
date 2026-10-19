@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relatiewe opskrif",
+    "description": "gee die korrekte opskrifhiërargie uit gebaseer op die ouer se opskrif"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Ouer-opskrif se hulpbron-ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "Deaktiveer skakelknoppie-funksie."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Belyn kopieer-skakel-knoppie heel regs van opskrif."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Opskrifvlak as ouer nie gevind word nie."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Oorskryf versteksteks vir kopieer-skakel se kennisgewingboodskap."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Oorskryf verstek-etiket van kopieer-skakel-knoppie."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Oorskryf verstek-ikoon van kopieer-skakel-knoppie."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Oorskryf verstek-etiket vir die toemaakknoppie van kopieer-skakel se kennisgewing."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Oorskryf verstek-ikoon vir die toemaakknoppie van kopieer-skakel se kennisgewing."
+      }
+    ]
+  }
+}

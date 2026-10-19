@@ -122,5 +122,21 @@
   "recent": "Recent",
   "popular": "Populair",
   "copiedToClipboard": "Gekopieerd naar klembord",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Afbeeldingsinfo",
+  "imageActions": "Afbeeldingsacties",
+  "imageRecommendations": "Aanbevelingen voor afbeelding",
+  "compressImage": "Afbeelding comprimeren",
+  "resizeTo": "Formaat wijzigen naar",
+  "created": "Aangemaakt",
+  "size": "Grootte",
+  "dimensions": "Afmetingen",
+  "type": "Type",
+  "done": "klaar",
+  "noFileUuid": "Bestandsverwijzing niet beschikbaar; upload opnieuw om acties in te schakelen.",
+  "fileOpsUnavailable": "Bestandsbewerkingen zijn niet beschikbaar voor deze site.",
+  "fileOpFailed": "Bestandsbewerking mislukt.",
+  "fileExtensionNotAllowed": "Dit veld accepteert alleen de volgende bestandstypen:",
+  "fileTypeNotAllowed": "Dit veld accepteert alleen de volgende mediatypen:",
+  "transformFailed": "Bewerking na uploaden mislukt; het originele bestand is behouden."
 }

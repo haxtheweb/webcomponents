@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "描述性图",
+    "description": "带长描述个无障碍图"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "图片"
+      },
+      {
+        "property": "imgAlt",
+        "title": "替代文字"
+      },
+      {
+        "slot": "figcaption",
+        "title": "图注",
+        "description": "一直看得见个图注文字。"
+      },
+      {
+        "slot": "details",
+        "title": "描述",
+        "description": "可以隐藏或者显示个详细图片描述"
+      },
+      {
+        "slot": "summary",
+        "title": "描述按钮",
+        "description": "显示/隐藏描述文字个按钮默认值,比方「信息」、「元数据」等等。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "详情打开辰光个可选摘要文字"
+      },
+      {
+        "property": "closeText",
+        "title": "详情关牢辰光个可选摘要文字"
+      }
+    ]
+  }
+}

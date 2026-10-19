@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Tanong na Pagsusunod-sunod",
+    "description": "Ayusin ang mga item sa tamang pagkakasunod-sunod."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Tanong",
+        "description": "Header ng Tanong."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format ng pagmamarka",
+        "description": "OER Schema: format ng pagmamarka para sa pagtatasang ito (hal. puntos, letra, porsyento, pagkumpleto)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Layunin sa pagkatuto",
+        "description": "OER Schema: layunin sa pagkatuto na kaugnay ng pagtatasang ito."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "OER Schema: kursong pinaglalaanan ng pagtatasang ito."
+      },
+      {
+        "property": "answers",
+        "title": "Mga Sagot",
+        "description": "Ang pagkakasunod ng mga sagot ang nagtatakda ng tamang pagkakasunod-sunod."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Pangalan ng quiz",
+        "description": "Pangalan ng quiz na ginagamit para sa pagkakakilanlan sa xAPI sa mga analytics system."
+      }
+    ]
+  }
+}

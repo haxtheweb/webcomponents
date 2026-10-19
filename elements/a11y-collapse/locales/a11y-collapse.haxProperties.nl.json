@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Uitklapbare container",
+    "description": "Eén container die kan worden uit- en ingeklapt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Kop",
+        "description": "Tekst voor het uitklapelement."
+      },
+      {
+        "property": "expanded",
+        "title": "Uitgeklapt",
+        "description": "Standaard uitklappen."
+      },
+      {
+        "property": "headingButton",
+        "title": "Kopknop",
+        "description": "Maak de hele kop klikbaar in plaats van alleen het pictogram."
+      },
+      {
+        "property": "icon",
+        "title": "Pictogram",
+        "description": "Pictogram voor de knop om uit/in te klappen."
+      },
+      {
+        "property": "iconExpanded",
+        "title": "Pictogram (indien uitgeklapt)",
+        "description": "Optioneel pictogram voor de uitgeklapte status."
+      },
+      {
+        "slot": "",
+        "title": "Inhoud",
+        "description": "Inhoud van het uitklapelement."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tooltip",
+        "title": "Tooltip",
+        "description": "Tooltip voor de knop om uit/in te klappen."
+      },
+      {
+        "property": "tooltipExpanded",
+        "title": "Tooltip (indien uitgeklapt)",
+        "description": "Tooltip voor de uit/in-klapknop in uitgeklapte status."
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "Úžasný výbuch",
+    "description": "Interaktívna animácia výbuchu s voliteľnými zvukovými efektmi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Veľkosť",
+        "description": "Nastavte veľkosť výbuchu.",
+        "options": {
+          "tiny": "Drobná",
+          "small": "Malá",
+          "medium": "Stredná",
+          "large": "Veľká",
+          "epic": "Epická"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Farba",
+        "description": "Nastavte farebnú tému výbuchu.",
+        "options": {
+          "": "Predvolená",
+          "red": "Červená",
+          "blue": "Modrá",
+          "purple": "Fialová",
+          "orange": "Oranžová",
+          "yellow": "Žltá"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Zvukové efekty",
+        "description": "Zapnúť zvukové efekty."
+      },
+      {
+        "property": "resetSound",
+        "title": "Reštartovať zvuk",
+        "description": "Zakaždým prehrať zvuk od začiatku."
+      },
+      {
+        "property": "image",
+        "title": "Vlastný obrázok",
+        "description": "Voliteľná URL vlastného obrázka výbuchu."
+      },
+      {
+        "property": "sound",
+        "title": "Vlastný zvuk",
+        "description": "Voliteľná URL vlastného zvukového efektu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Zakázané",
+        "description": "Zakázať všetky interakcie."
+      }
+    ]
+  }
+}

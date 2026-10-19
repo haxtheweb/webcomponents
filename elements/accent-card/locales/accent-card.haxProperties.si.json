@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "කාඩ්පත",
+    "description": "විකල්ප උච්චාරණ හැඩගැන්වීමක් සහිත කාඩ්පතක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "ශීර්ෂය",
+        "description": "කාඩ්පත සඳහා ශීර්ෂයක්."
+      },
+      {
+        "slot": "subheading",
+        "title": "උපශීර්ෂය",
+        "description": "කාඩ්පත සඳහා විකල්ප උපශීර්ෂයක්."
+      },
+      {
+        "slot": "content",
+        "title": "අන්තර්ගතය",
+        "description": "කාඩ්පත සඳහා අන්තර්ගතය."
+      },
+      {
+        "slot": "footer",
+        "title": "පාදකය",
+        "description": "කාඩ්පත සඳහා විකල්ප පාදකයක්."
+      },
+      {
+        "property": "imageSrc",
+        "title": "රූපය",
+        "description": "විකල්ප රූපය"
+      },
+      {
+        "property": "imageAlt",
+        "title": "රූපයේ Alt පෙළ",
+        "description": "තිර කියවන සඳහා රූපය විස්තර කරන විකල්ප පෙළ. රූපය සම්පූර්ණයෙන්ම අලංකාරාත්මක නම් පමණක් හිස්ව තබන්න."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "රූපයේ තිරස් පෙළගැස්ම",
+        "options": {
+          "left": "වම",
+          "center": "මැද",
+          "right": "දකුණ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "රූපයේ සිරස් පෙළගැස්ම",
+        "options": {
+          "top": "ඉහළ",
+          "center": "මැද",
+          "bottom": "පහළ"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "විකල්ප උච්චාරණ වර්ණයක්."
+      },
+      {
+        "property": "dark",
+        "title": "අඳුරු තේමාව",
+        "description": "අඳුරු තේමාව සක්‍රිය කරන්න"
+      },
+      {
+        "property": "horizontal",
+        "title": "තිරස්",
+        "description": "තිරස් දිශානතියද?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "ශීර්ෂ උච්චාරණය",
+        "description": "ශීර්ෂයට උච්චාරණ වර්ණය යොදන්නද?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "පසුබිම් උච්චාරණය",
+        "description": "කාඩ්පත් පසුබිමට උච්චාරණ වර්ණය යොදන්නද?"
+      },
+      {
+        "property": "noBorder",
+        "title": "මායිම් උච්චාරණය නැත",
+        "description": "මායිම් උච්චාරණය ඉවත් කරන්නද?"
+      },
+      {
+        "property": "flat",
+        "title": "පැතලි",
+        "description": "කොටු සෙවණැල්ල ඉවත් කරන්නද?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "කොණ",
+        "description": "කාඩ්පත් කොණ සඳහා අන්තර්ගතය."
+      }
+    ]
+  }
+}

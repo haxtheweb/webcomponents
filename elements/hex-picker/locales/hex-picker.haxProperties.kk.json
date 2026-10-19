@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex таңдағыш",
+    "description": "Hex кодты түс таңдағыш"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Мән",
+        "description": "Әдепкі hex мәні"
+      },
+      {
+        "property": "disabled",
+        "title": "Өшірулі",
+        "description": "Мәтін өрісін өшіру"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Үлкен дисплей",
+        "description": "Түсті үлкен дисплейде көрсету"
+      }
+    ]
+  }
+}

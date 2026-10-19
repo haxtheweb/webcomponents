@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "3D پلیئر",
+    "description": "3D فائل / ودھائی گئی حقیقت والا پلیئر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "سرچشمہ",
+        "description": "ایس AR فائل دا URL۔"
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "AR وچ عنصر دی X پوزیشن۔"
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "AR وچ عنصر دی Y پوزیشن۔"
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "AR وچ عنصر دی Z پوزیشن۔"
+      },
+      {
+        "property": "skyColor",
+        "title": "اسمان دا رنگ",
+        "description": "منظر وچ اسمان دا رنگ چݨو۔"
+      }
+    ]
+  }
+}

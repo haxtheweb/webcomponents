@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "स्व-जाँच",
+    "description": "उपयोगकर्ता स्व-जाँच पूरी कर सकते हैं।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "छवि",
+        "description": "स्व-जाँच के लिए छवि।"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "स्व-जाँच का शीर्षक।"
+      },
+      {
+        "property": "alt",
+        "title": "वैकल्पिक टेक्स्ट",
+        "description": "छवि के लिए वैकल्पिक टेक्स्ट।"
+      },
+      {
+        "slot": "question",
+        "title": "प्रश्न"
+      },
+      {
+        "slot": "",
+        "title": "उत्तर"
+      },
+      {
+        "property": "accentColor",
+        "title": "थीम रंग",
+        "description": "डिज़ाइन सिस्टम से थीम रंग चुनें।",
+        "options": {
+          "primary": "प्राथमिक",
+          "accent": "एक्सेंट",
+          "success": "सफलता",
+          "warning": "चेतावनी",
+          "error": "त्रुटि",
+          "info": "जानकारी"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "अधिगम उद्देश्य",
+        "description": "oer:hasLearningObjective के रूप में उत्पन्न अधिगम उद्देश्य संदर्भ।"
+      },
+      {
+        "property": "assessing",
+        "title": "मूल्यांकन किया जा रहा",
+        "description": "oer:assessing के रूप में उत्पन्न गतिविधि संदर्भ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "अधिक जानकारी लिंक",
+        "description": "अतिरिक्त जानकारी का लिंक।"
+      }
+    ]
+  }
+}

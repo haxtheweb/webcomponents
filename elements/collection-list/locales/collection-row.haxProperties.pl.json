@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Wiersz kolekcji",
+    "description": "Element w formie wiersza do użycia na liście kolekcji, z tekstem, linkiem, ikoną, tagami i opcjonalnym obrazem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Docelowy URL tego wiersza."
+      },
+      {
+        "property": "image",
+        "title": "Obraz",
+        "description": "Obraz wiersza."
+      },
+      {
+        "property": "alt",
+        "title": "Alt",
+        "description": "Tekst alternatywny opisujący obraz."
+      },
+      {
+        "property": "line1",
+        "title": "Wiersz 1",
+        "description": "Pierwszy wiersz tekstu."
+      },
+      {
+        "property": "line2",
+        "title": "Wiersz 2",
+        "description": "Drugi wiersz tekstu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona reprezentująca wiersz."
+      },
+      {
+        "property": "saturate",
+        "title": "Efekt nasycenia",
+        "description": "Zmieniaj nasycenie obrazu, gdy użytkownik na nim się skupi."
+      },
+      {
+        "property": "tags",
+        "title": "Tagi",
+        "description": "Lista tagów oddzielonych przecinkami."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor",
+        "description": "Kolor używany dla ikony i tagów."
+      }
+    ]
+  }
+}

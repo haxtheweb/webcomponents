@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ʻIke mamao",
+    "description": "Hoʻohana hou i ka ʻike mai kekahi pūnaewele ma kekahi pūnaewele ʻē aʻe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Helu wahi pūnaewele",
+        "description": "Hoʻopili i ka helu wahi e kuhikuhi ai i ka ʻike inā ʻaʻole ʻo ka pūnaewele o kēia manawa"
+      },
+      {
+        "property": "uuid",
+        "title": "Mea",
+        "description": "Mea e hōʻike ai no ka ʻikepili loulou / poʻo inoa"
+      },
+      {
+        "property": "breakreference",
+        "title": "Hoʻokaʻawale i ke kuhikuhi",
+        "description": "Ke kaha ʻia kēia pahu, kope ʻia ka ʻike mamao no ka hoʻoponopono kūloko akā wehe ʻia ka pilina. ʻAʻole ia e loaʻa hou nā hoʻohou ke hoʻohou ʻia ka mea kuhikuhi."
+      },
+      {
+        "property": "showTitle",
+        "title": "Hōʻike i ke poʻo inoa",
+        "description": "Hoʻā e hōʻike ai i ke poʻo inoa o ke kumuwaiwai e hōʻike ʻia nei"
+      }
+    ]
+  }
+}

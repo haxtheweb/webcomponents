@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Дел со слика",
+    "description": "Слика преку целата ширина што дели дел од страницата."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "description": "Позадинска слика."
+      },
+      {
+        "property": "caption",
+        "description": "Текст на насловот."
+      }
+    ]
+  }
+}

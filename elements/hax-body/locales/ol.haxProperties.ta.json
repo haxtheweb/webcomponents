@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "எண்ணிட்ட பட்டியல்",
+    "description": "எண்ணிட்ட பட்டியலை உருவாக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "எண் பாணி",
+        "description": "வரிசைப் பட்டியல் எண்ணிடலுக்குப் பயன்படும் பாணி.",
+        "options": {
+          "": "இயல்புநிலை (தசம எண்)",
+          "list-decimal-leading-zero": "முன்னிலைப் பூஜ்ஜியத்துடன் தசம எண் (01, 02, 03)",
+          "list-lower-alpha": "சிற்றெழுத்து (a, b, c)",
+          "list-upper-alpha": "பேரெழுத்து (A, B, C)",
+          "list-lower-roman": "சிற்றெழுத்து ரோமன் (i, ii, iii)",
+          "list-upper-roman": "பேரெழுத்து ரோமன் (I, II, III)"
+        }
+      }
+    ]
+  }
+}

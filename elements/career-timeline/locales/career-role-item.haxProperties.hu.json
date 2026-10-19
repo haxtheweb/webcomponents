@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Pályafutási szerepkör",
+    "description": "Egy szerepkör egy szervezeten belül"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cím"
+      },
+      {
+        "property": "startDate",
+        "title": "Kezdő dátum"
+      },
+      {
+        "property": "endDate",
+        "title": "Záró dátum (opcionális)"
+      },
+      {
+        "property": "skills",
+        "title": "Kapcsolódó készségek",
+        "description": "A készségek hozzáadásához kattints a + gombra"
+      }
+    ]
+  }
+}

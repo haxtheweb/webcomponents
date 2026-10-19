@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Segnaposti",
+    "description": "Un segnaposti chì pò esse cunvertitu in u tipu di media selezziunatu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipu",
+        "description": "Tipu di gizmo chì questu accetta per u rimpiazzamentu.",
+        "options": {
+          "text": "Testu / cuntenutu",
+          "document": "Ducumentu / schedariu",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Imagine",
+          "math": "Matematica"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Testu",
+        "description": "Identificà più in dettagliu u segnaposti vulsutu"
+      }
+    ]
+  }
+}

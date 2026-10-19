@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "زبانه",
+    "description": "یک زبانه تکی."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "نماد زبانه"
+      },
+      {
+        "property": "disabled",
+        "title": "غیرفعال"
+      },
+      {
+        "property": "label",
+        "title": "برچسب زبانه"
+      },
+      {
+        "slot": "",
+        "title": "محتوای زبانه",
+        "description": "محتوای زبانه."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "شناسهٔ یکتا"
+      },
+      {
+        "property": "flag",
+        "title": "متن پرچم اختیاری"
+      },
+      {
+        "property": "flagIcon",
+        "title": "نماد پرچم اختیاری"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Entitat del CMS",
+    "description": "Entitat del CMS renderitzada al backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tipus",
+        "description": "tipus del nostre CMS",
+        "options": {
+          "node": "Node",
+          "user": "Usuari",
+          "file": "Fitxer"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id del nostre CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Mode de visualització",
+        "description": "mode de visualització del nostre CMS"
+      }
+    ]
+  }
+}

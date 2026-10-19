@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "نمایاں کریں",
+    "description": "ان لائن متن کو نمایاں کریں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "نمایاں متن۔"
+      }
+    ]
+  }
+}

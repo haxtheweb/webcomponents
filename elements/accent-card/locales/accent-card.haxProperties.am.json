@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "ካርድ",
+    "description": "አማራጭ የአጽንዖት ቅጥ ያለው ካርድ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "አርዕስት",
+        "description": "ለካርዱ ርዕስ።"
+      },
+      {
+        "slot": "subheading",
+        "title": "ንዑስ ርዕስ",
+        "description": "ለካርዱ አማራጭ ንዑስ ርዕስ።"
+      },
+      {
+        "slot": "content",
+        "title": "ይዘት",
+        "description": "ለካርዱ ይዘት።"
+      },
+      {
+        "slot": "footer",
+        "title": "ግርጌ",
+        "description": "ለካርዱ አማራጭ ግርጌ።"
+      },
+      {
+        "property": "imageSrc",
+        "title": "ምስል",
+        "description": "አማራጭ ምስል"
+      },
+      {
+        "property": "imageAlt",
+        "title": "የምስል አማራጭ ጽሑፍ",
+        "description": "ለስክሪን አንባቢዎች ምስሉን የሚገልጽ አማራጭ ጽሑፍ። ምስሉ ለጌጥ ብቻ ከሆነ ብቻ ባዶ ይተዉት።"
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "የምስል አግድም አሰላለፍ",
+        "options": {
+          "left": "ግራ",
+          "center": "መሃል",
+          "right": "ቀኝ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "የምስል ቁመታዊ አሰላለፍ",
+        "options": {
+          "top": "ላይ",
+          "center": "መሃል",
+          "bottom": "ታች"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "አማራጭ የአጽንዖት ቀለም።"
+      },
+      {
+        "property": "dark",
+        "title": "ጨለማ ገጽታ",
+        "description": "የጨለማ ገጽታን አንቃ"
+      },
+      {
+        "property": "horizontal",
+        "title": "አግድም",
+        "description": "አግድም አቀማመጥ?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "የርዕስ አጽንዖት",
+        "description": "የአጽንዖት ቀለምን በርዕሱ ላይ ይተገበር?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "የዳራ አጽንዖት",
+        "description": "የአጽንዖት ቀለምን በካርዱ ዳራ ላይ ይተገበር?"
+      },
+      {
+        "property": "noBorder",
+        "title": "የድንበር አጽንዖት የለም",
+        "description": "የድንበር አጽንዖት ይወገድ?"
+      },
+      {
+        "property": "flat",
+        "title": "ጠፍጣፋ",
+        "description": "የሳጥን ጥላ ይወገድ?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "ጥግ",
+        "description": "ለካርዱ ጥግ ይዘት።"
+      }
+    ]
+  }
+}

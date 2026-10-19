@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Paragone d'imagine",
+    "description": "Fà sculiscià una imagine sopra à un'altra per paragunalle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "topSrc",
+        "title": "Imagine di sopra",
+        "description": "Imagine di sopra chì sculiscia nant'à l'imagine di sottu."
+      },
+      {
+        "property": "topAlt",
+        "title": "Testu alternativu di l'imagine di sopra",
+        "description": "Testu alternativu ubligatoriu per l'accessibilità."
+      },
+      {
+        "property": "bottomSrc",
+        "title": "Imagine di sottu",
+        "description": "Imagine di sottu affissata sottu à l'imagine di sopra."
+      },
+      {
+        "property": "bottomAlt",
+        "title": "Testu alternativu di l'imagine di sottu",
+        "description": "Testu alternativu ubligatoriu per l'accessibilità."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "opacity",
+        "title": "Cumpurtamentu",
+        "description": "Sceglie u modu tendina (predefinitu) o u modu d'opacità di l'imagine di sopra."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culore d'accentu",
+        "description": "Culore di a barra sculiscevule."
+      },
+      {
+        "property": "dark",
+        "title": "Scuru",
+        "description": "Invertisce u culore di a barra sculiscevule."
+      },
+      {
+        "property": "position",
+        "title": "Pusizione iniziale",
+        "description": "Pusizione di partenza da 0 à 100."
+      }
+    ]
+  }
+}

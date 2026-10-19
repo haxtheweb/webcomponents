@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "टाइमलाइन",
+    "description": "छवियों और टेक्स्ट के साथ घटनाओं की टाइमलाइन"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "टाइमलाइन शीर्षक",
+        "description": "टाइमलाइन के लिए शीर्षक।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेंट रंग",
+        "description": "एक वैकल्पिक एक्सेंट रंग।"
+      },
+      {
+        "property": "dark",
+        "title": "डार्क थीम",
+        "description": "डार्क थीम सक्षम करें"
+      },
+      {
+        "slot": "",
+        "title": "टाइमलाइन विवरण",
+        "description": "टाइमलाइन का वर्णन करने वाला वैकल्पिक टेक्स्ट।"
+      },
+      {
+        "property": "events",
+        "title": "टाइमलाइन घटनाएँ",
+        "description": "टाइमलाइन की घटनाएँ"
+      }
+    ]
+  }
+}

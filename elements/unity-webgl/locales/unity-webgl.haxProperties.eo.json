@@ -1,0 +1,55 @@
+{
+  "gizmo": {
+    "title": "Unity-ludilo",
+    "description": "Unity WebGL-ludilo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "target",
+        "title": "Celo",
+        "description": "Vojo al la konstruaĵo de la ludo."
+      },
+      {
+        "property": "compression",
+        "title": "Densiga metodo",
+        "description": "Dosiersufikso de densigo por la ludaj rimedoj."
+      },
+      {
+        "property": "streamingurl",
+        "title": "Flua URL",
+        "description": "URL de fluaj rimedoj."
+      },
+      {
+        "property": "companyname",
+        "title": "Firmaa nomo",
+        "description": "Nomo de la firmao."
+      },
+      {
+        "property": "productname",
+        "title": "Produkta nomo",
+        "description": "Titolo de la ludo."
+      },
+      {
+        "property": "productversion",
+        "title": "Produkta versio",
+        "description": "Eldona versio."
+      },
+      {
+        "property": "width",
+        "title": "Kanvasa larĝo",
+        "description": "CSS-larĝo de la kanvaso (ekzemple px aŭ em)."
+      },
+      {
+        "property": "height",
+        "title": "Kanvasa alteco",
+        "description": "CSS-alteco de la kanvaso (ekzemple px aŭ em)."
+      },
+      {
+        "property": "background",
+        "title": "Kanvasa fono",
+        "description": "CSS-fono de la kanvaso."
+      }
+    ]
+  }
+}

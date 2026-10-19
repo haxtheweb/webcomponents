@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Iframe",
+    "description": "Isa zvirimo zvewebhu zvekunze muiframe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "URL yeZviwanikwa",
+        "description": "URL yeZviwanikwa."
+      },
+      {
+        "property": "height",
+        "title": "Kureba",
+        "description": "Kureba kweiframe."
+      },
+      {
+        "property": "width",
+        "title": "Upamhi",
+        "description": "Upamhi hweiframe."
+      }
+    ]
+  }
+}

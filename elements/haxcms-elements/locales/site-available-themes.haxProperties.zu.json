@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Amathimu Atholakalayo",
+    "description": "Bonisa amathimu e-HAXcms atholakalayo ngokushintsha kokubuka kuqala okubukhoma"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Imodi Yokubuka",
+        "description": "Khetha ukuthi amathimu aboniswa kanjani",
+        "options": {
+          "gallery": "Igalari",
+          "table": "Ithebula"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Bonisa Imininingwane",
+        "description": "Bonisa izincazelo zamathimu nolwazi olwengeziwe"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Bonisa Amathimu Afihliwe Namadala",
+        "description": "Bonisa amathimu afihliwe, amadala, namabi kakhulu ngaphezu kokuzenzakalelayo kwedeshibhodi"
+      },
+      {
+        "property": "columns",
+        "title": "Amakholomu (Igalari)",
+        "description": "Inani lamakholomu ekubukeni kwegalari"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Stažení pracovního listu",
+    "description": "Tlačítko pro zobrazení souborů ke stažení."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Název stahovaného souboru."
+      },
+      {
+        "property": "link",
+        "title": "Odkaz",
+        "description": "Odkaz ke stažení."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Peteĩ markdown retepy pehẽ hi'aguĩgui térã mombyrýgui oñemyenyhẽva"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown ipotĩ'ỹva"
+      },
+      {
+        "property": "source",
+        "title": "Reñoiha",
+        "description": "Markdown marandurenda ypykue"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Chizindikiro cha Polaris",
+    "description": "Onetsani chizindikiro cha PSU ndi dzina la koleji losankha ndi URL yopitako."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Dzina la koleji",
+        "description": "Dzina lowonetsedwa pambali pa chizindikiro."
+      },
+      {
+        "property": "name2",
+        "title": "Dzina la koleji 2",
+        "description": "Dzina lachiwiri lowonetsedwa pansi pa dzina loyamba la koleji."
+      },
+      {
+        "property": "name3",
+        "title": "Dzina la koleji 3",
+        "description": "Dzina lachitatu lowonetsedwa pansi pa dzina lachiwiri la koleji."
+      },
+      {
+        "property": "url",
+        "title": "Ulalo",
+        "description": "URL yopitako chizindikiro chikadindidwa."
+      },
+      {
+        "property": "type",
+        "title": "Mtundu",
+        "description": "Mtundu wowoneka wa chizindikiro.",
+        "options": {
+          "default": "Mwachisawawa",
+          "light": "Chowala",
+          "dark": "Mdima"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Kapangidwe koima",
+        "description": "Onetsani dzina lachitatu pansi pa dzina lachiwiri ndi mzere wopingasa."
+      }
+    ]
+  }
+}

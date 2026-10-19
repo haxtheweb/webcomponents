@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Polaris CTA",
+    "description": "د Polaris تیم لرونکې د عمل بلنې (CTA) تڼۍ وښایئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "د تڼۍ متن",
+        "description": "هغه متن چې د عمل بلنې په تڼۍ کې ښودل کېږي."
+      },
+      {
+        "property": "link",
+        "title": "لینک",
+        "description": "د تڼۍ لپاره د منزل URL."
+      },
+      {
+        "property": "type",
+        "title": "ډول",
+        "description": "د لیدنیزې بڼې ډول.",
+        "options": {
+          "primary": "لومړنی",
+          "tinted": "رنګ شوی",
+          "light": "روښانه"
+        }
+      },
+      {
+        "property": "outlined",
+        "title": "د کرښې بڼه",
+        "description": "د کرښې بڼه فعاله کړئ."
+      },
+      {
+        "property": "filled",
+        "title": "ډکه بڼه",
+        "description": "ډکه بڼه فعاله کړئ."
+      }
+    ]
+  }
+}

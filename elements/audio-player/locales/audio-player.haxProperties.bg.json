@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Аудио",
+    "description": "Това може да представи видео по много достъпен начин, независимо от източника."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Източник",
+        "description": "URL адресът на тази медия."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Заглавие",
+        "description": "Кратко заглавие под видеото"
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Изберете акцентния цвят на плейъра."
+      },
+      {
+        "property": "track",
+        "title": "Затворени субтитри",
+        "description": "URL адресът на файла със субтитри."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Миниатюра",
+        "description": "Незадължително. URL адресът на миниатюра/постер."
+      },
+      {
+        "property": "learningMode",
+        "title": "Включване на режим на обучение",
+        "description": "Изключва превъртането напред и назад."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Премахване на бутона „Отваряне в YouTube“",
+        "description": "Премахва бутона за отваряне на видеото в YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Включване на връзка за споделяне?",
+        "description": "Предоставя връзка за споделяне на видеото."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Указва дали да се използва CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Разрешаване на възпроизвеждане във фонов режим",
+        "description": "Видеата се спират / пускат автоматично, когато разделът загуби фокус; това позволява видеото да се възпроизвежда, без разделът да е на фокус"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Тъмна тема за транскрипцията",
+        "description": "Включване на тъмна тема за транскрипцията."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Изключване на интерактивността",
+        "description": "Изключване на интерактивния режим, който прави транскрипцията кликаема."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Скриване на времевите маркери",
+        "description": "Скриване на времевите маркери в транскрипцията."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Скриване на транскрипцията",
+        "description": "Скриване на транскрипцията по подразбиране."
+      },
+      {
+        "property": "lang",
+        "title": "Език",
+        "description": "Език на медията."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "مختصر جواب والا سوال",
+    "description": "صارف کولوں اک سادہ سوال دا جواب لوو"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "سوال",
+        "description": "صارفاں دے جواب دین لئی سوال۔"
+      },
+      {
+        "property": "answers",
+        "title": "ممکنہ جواب"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "کوئز دا ناں",
+        "description": "xAPI والے ماحول وچ ایس آئٹم دی شناخت لئی بھیجیا جاوݨ والا کوئز دا ناں"
+      }
+    ]
+  }
+}

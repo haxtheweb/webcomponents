@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Addım elementi",
+    "description": "Addımlar siyahısının bir hissəsi olan element"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlıq"
+      }
+    ]
+  }
+}

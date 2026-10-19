@@ -1,0 +1,62 @@
+{
+  "gizmo": {
+    "title": "ការផ្ទុះដ៏អស្ចារ្យ",
+    "description": "ចលនាការផ្ទុះអន្តរកម្ម ជាមួយបែបផែនសំឡេងជាជម្រើស។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "ទំហំ",
+        "description": "កំណត់ទំហំការផ្ទុះ។",
+        "options": {
+          "tiny": "តូចបំផុត",
+          "small": "តូច",
+          "medium": "មធ្យម",
+          "large": "ធំ",
+          "epic": "ធំសម្បើម"
+        }
+      },
+      {
+        "property": "color",
+        "title": "ពណ៌",
+        "description": "កំណត់រចនាប័ទ្មពណ៌នៃការផ្ទុះ។",
+        "options": {
+          "": "លំនាំដើម",
+          "red": "ក្រហម",
+          "blue": "ខៀវ",
+          "purple": "ស្វាយ",
+          "orange": "ទឹកក្រូច",
+          "yellow": "លឿង"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "បែបផែនសំឡេង",
+        "description": "បើកបែបផែនសំឡេង។"
+      },
+      {
+        "property": "resetSound",
+        "title": "កំណត់សំឡេងឡើងវិញ",
+        "description": "ចាប់ផ្តើមសំឡេងពីដើមរាល់ពេល។"
+      },
+      {
+        "property": "image",
+        "title": "រូបភាពផ្ទាល់ខ្លួន",
+        "description": "URL ជាជម្រើសសម្រាប់រូបភាពការផ្ទុះផ្ទាល់ខ្លួន។"
+      },
+      {
+        "property": "sound",
+        "title": "សំឡេងផ្ទាល់ខ្លួន",
+        "description": "URL ជាជម្រើសសម្រាប់បែបផែនសំឡេងផ្ទាល់ខ្លួន។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "បានបិទ",
+        "description": "បិទអន្តរកម្មទាំងអស់។"
+      }
+    ]
+  }
+}

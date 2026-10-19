@@ -1,0 +1,79 @@
+{
+  "gizmo": {
+    "title": "Lepili / Huaale",
+    "description": "He lepili paʻa ʻano huaale me ka waihoʻoluʻu kiko koho, ke pihi hoʻopau, a i ʻole ke kuapo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Lepili",
+        "description": "Kikokikona i hōʻike ʻia i loko o ka huaale."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu kiko",
+        "description": "Inoa kiko SimpleColors no ke kāʻei hope o ka huaale.",
+        "options": {
+          "": "-- paʻamau --",
+          "red": "ʻUlaʻula",
+          "pink": "ʻĀkala",
+          "purple": "Poni",
+          "deep-purple": "Poni Hohonu",
+          "indigo": "Uliuli ʻInikiko",
+          "blue": "Uliuli",
+          "light-blue": "Uliuli Māmā",
+          "cyan": "Uliuli lani",
+          "teal": "ʻŌmaʻomaʻo uliuli",
+          "green": "ʻŌmaʻomaʻo",
+          "light-green": "ʻŌmaʻomaʻo Māmā",
+          "lime": "ʻŌmaʻomaʻo lemi",
+          "yellow": "Melemele",
+          "amber": "Melemele ʻamepela",
+          "orange": "ʻAlani",
+          "deep-orange": "ʻAlani Hohonu",
+          "brown": "Palaunu",
+          "blue-grey": "Hina Uliuli",
+          "grey": "Hina"
+        }
+      },
+      {
+        "property": "autoAccentColor",
+        "title": "Waihoʻoluʻu kiko ʻakomi",
+        "description": "E kiʻi ʻakomi i ka waihoʻoluʻu kiko mai ke kikokikona lepili."
+      },
+      {
+        "property": "cancelButton",
+        "title": "Pihi hoʻopau",
+        "description": "E hōʻike i kekahi pihi hōʻailona wehe/hoʻopau i loko o ka huaale."
+      },
+      {
+        "property": "readonly",
+        "title": "Heluhelu wale nō",
+        "description": "E hūnā i ke pihi hoʻopau i mea hōʻike wale nō ka huaale."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "toggles",
+        "title": "Kuapo",
+        "description": "E hoʻolilo i ka huaale e kuapo hoʻā/hoʻopio ke kōmi ʻia ke pihi."
+      },
+      {
+        "property": "toggled",
+        "title": "Kuapo ʻia",
+        "description": "Inā ua hoʻā ʻia ka huaale i kēia manawa."
+      },
+      {
+        "property": "toggledIcon",
+        "title": "Hōʻailona kuapo",
+        "description": "Hōʻailona e hōʻike ai ke hoʻā ʻia ka huaale."
+      },
+      {
+        "property": "disabled",
+        "title": "Hoʻopio ʻia",
+        "description": "E hoʻopio i ka launa me ka huaale."
+      }
+    ]
+  }
+}

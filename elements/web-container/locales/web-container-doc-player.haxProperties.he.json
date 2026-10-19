@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "נגן תיעוד של רכיב אינטרנט"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "הסתרת החלון",
+        "description": "הסתרת חלון הפלט, שימושי כאשר המטרה היא מסוף בלבד"
+      }
+    ]
+  }
+}

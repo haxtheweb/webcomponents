@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Pangani, Konzani, Wonongani",
+    "description": "Kukhazikitsa dongosolo la kapangidwe la HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Njira yoti ionetsedwe",
+        "options": {
+          "*": "Kalozera wa kalembedwe wathunthu"
+        }
+      }
+    ]
+  }
+}

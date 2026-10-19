@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "ملاحظة توقف",
+    "description": "رسالة لتنبيه القرّاء إلى تعليمات محددة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "أدخل عنوان ملاحظة التوقف."
+      },
+      {
+        "property": "url",
+        "title": "URL",
+        "description": "أدخل URL خارجيًا."
+      },
+      {
+        "property": "status",
+        "title": "الحالة",
+        "description": "يؤدي تعيين الحالة إلى تغيير الألوان والأيقونات بما يتناسب معها",
+        "options": {
+          "stop": "توقف",
+          "warning": "تحذير",
+          "success": "تأكيد",
+          "info": "إشعار"
+        }
+      },
+      {
+        "slot": "message",
+        "title": "نص الملاحظة",
+        "description": "نص ملاحظة التوقف."
+      }
+    ]
+  }
+}

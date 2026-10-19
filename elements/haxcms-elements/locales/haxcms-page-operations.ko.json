@@ -1,0 +1,14 @@
+{
+  "outlineActions": "개요 작업",
+  "editPage": "페이지 편집",
+  "addPage": "하위 페이지 추가",
+  "moveUp": "위로 이동",
+  "moveDown": "아래로 이동",
+  "indent": "들여쓰기",
+  "outdent": "내어쓰기",
+  "moveTo": "이동...",
+  "siteOutline": "사이트 개요 열기",
+  "delete": "페이지 삭제",
+  "unlock": "잠금 해제",
+  "lock": "잠금"
+}

@@ -1,0 +1,11 @@
+{
+  "userAccess": "Mynediad defnyddwyr",
+  "enterUsername": "Rhowch enw defnyddiwr i roi mynediad",
+  "usernamePlaceholder": "Enw defnyddiwr",
+  "addUser": "Ychwanegu defnyddiwr",
+  "cancel": "Canslo",
+  "userAccessGranted": "Rhoddwyd mynediad i'r defnyddiwr yn llwyddiannus!",
+  "userNotFound": "Defnyddiwr heb ei ganfod neu heb awdurdod",
+  "loadingAddingUser": "Yn ychwanegu defnyddiwr...",
+  "grantAccessTo": "Rhoi mynediad i:"
+}

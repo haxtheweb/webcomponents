@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "د فعالیت بکس",
+    "description": "کوچنی ښکلی شوی د سرلیک بلاک."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "آیکن",
+        "description": "هغه آیکن چې د فعالیت د بکس تر څنګ ښودل کېږي."
+      },
+      {
+        "property": "tag",
+        "title": "د فعالیت د بکس ټګ",
+        "description": "هغه ټګ چې د فعالیت په بکس کې ښودل کېږي."
+      },
+      {
+        "property": "nocolourize",
+        "title": "بې رنګه",
+        "description": "آیکن ته د رنګونو د ورکولو مخه ونیسئ."
+      }
+    ]
+  }
+}

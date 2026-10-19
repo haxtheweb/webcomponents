@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX 워드 아트",
+    "description": "HAX 로고 요소로, 당연히 HAX를 지원하는 요소입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "배치할 HAX 로고의 크기",
+        "options": {
+          "mini": "미니",
+          "small": "작게",
+          "normal": "보통",
+          "large": "크게"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "로고를 대문자로 변환할지 여부"
+      }
+    ]
+  }
+}

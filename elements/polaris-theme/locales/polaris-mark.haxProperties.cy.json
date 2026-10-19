@@ -1,0 +1,45 @@
+{
+  "gizmo": {
+    "title": "Nod Polaris",
+    "description": "Dangos nod hunaniaeth PSU gydag enw coleg a URL cyrchfan dewisol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Enw'r coleg",
+        "description": "Enw a ddangosir wrth ymyl y nod."
+      },
+      {
+        "property": "name2",
+        "title": "Enw'r coleg 2",
+        "description": "Ail enw a ddangosir o dan enw cyntaf y coleg."
+      },
+      {
+        "property": "name3",
+        "title": "Enw'r coleg 3",
+        "description": "Trydydd enw a ddangosir o dan ail enw'r coleg."
+      },
+      {
+        "property": "url",
+        "title": "Dolen",
+        "description": "URL cyrchfan pan gaiff y nod ei glicio."
+      },
+      {
+        "property": "type",
+        "title": "Amrywiad",
+        "description": "Amrywiad gweledol y nod.",
+        "options": {
+          "default": "Rhagosodiad",
+          "light": "Golau",
+          "dark": "Tywyll"
+        }
+      },
+      {
+        "property": "vert",
+        "title": "Cynllun fertigol",
+        "description": "Dangos y trydydd enw o dan yr ail enw gyda llinell lorweddol."
+      }
+    ]
+  }
+}

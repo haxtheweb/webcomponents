@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Staðgengill",
+    "description": "Staðgengill sem hægt er að breyta í þá miðlategund sem hefur verið valin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tegund",
+        "description": "Tegund einingar sem þetta tekur við í staðinn.",
+        "options": {
+          "text": "Texti / efni",
+          "document": "Skjal / skrá",
+          "audio": "Hljóð",
+          "video": "Myndskeið",
+          "image": "Mynd",
+          "math": "Stærðfræði"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Texti",
+        "description": "Tilgreindu nánar hvaða staðgengil þú vilt"
+      }
+    ]
+  }
+}

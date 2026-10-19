@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Elemen H5P",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Teks",
+        "description": "Kandungan nota sisi"
+      }
+    ]
+  }
+}

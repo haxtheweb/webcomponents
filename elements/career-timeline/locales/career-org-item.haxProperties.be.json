@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Пункт кар'еры",
+    "description": "Асобная арганізацыя і звязаныя з ёй ролі"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Назва арганізацыі"
+      },
+      {
+        "property": "location",
+        "title": "Месца"
+      },
+      {
+        "property": "source",
+        "title": "Крыніца"
+      }
+    ]
+  }
+}

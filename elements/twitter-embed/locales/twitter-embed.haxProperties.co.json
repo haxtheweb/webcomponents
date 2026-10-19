@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Incrustazione Twitter (X)",
+    "description": "Incrustà un tweet di X in cuntestu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL di u tweet",
+        "description": "URL di u tweet da incrustà."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Tema",
+        "description": "Tema chjaru o scuru per i tweet di X.",
+        "options": {
+          "light": "Chjara",
+          "dark": "Scuru"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Impedisce a finestra pop-up à u clic",
+        "description": "Impedisce à l'utilizatori d'apre u tweet nant'à x.com."
+      }
+    ]
+  }
+}

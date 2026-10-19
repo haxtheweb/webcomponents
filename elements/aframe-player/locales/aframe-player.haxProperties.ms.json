@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Pemain 3D",
+    "description": "Pemain fail 3D / realiti terimbuh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL untuk fail AR ini."
+      },
+      {
+        "property": "x",
+        "title": "X",
+        "description": "Kedudukan X elemen dalam AR."
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Kedudukan Y elemen dalam AR."
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Kedudukan Z elemen dalam AR."
+      },
+      {
+        "property": "skyColor",
+        "title": "Warna langit",
+        "description": "Pilih warna langit dalam adegan."
+      }
+    ]
+  }
+}

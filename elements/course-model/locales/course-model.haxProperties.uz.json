@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kurs modeli",
+    "description": "Tafsilotlar, animatsiya va bilim tekshiruvlari bilan kurs tushunchalari uchun interaktiv maket."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "sarlavha"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Maʼlumot maydoni"
+      },
+      {
+        "title": "Tafsilotlar maydoni"
+      },
+      {
+        "title": "Animatsiya maydoni"
+      },
+      {
+        "title": "Bilimni tekshirish maydoni"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logotip maydoni"
+      }
+    ]
+  }
+}

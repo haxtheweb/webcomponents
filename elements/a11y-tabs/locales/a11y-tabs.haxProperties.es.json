@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "Pestañas",
+    "description": "Conjunto de pestañas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Etiqueta (para accesibilidad)",
+        "description": "Etiqueta accesible del conjunto de pestañas."
+      },
+      {
+        "property": "disabled",
+        "title": "Desactivado",
+        "description": "Desactivar todas las pestañas."
+      },
+      {
+        "property": "hidden",
+        "title": "Oculto",
+        "description": "Ocultar el conjunto de pestañas."
+      },
+      {
+        "property": "sticky",
+        "title": "Fijo",
+        "description": "Mantener las pestañas horizontales arriba al desplazarse."
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Punto de corte del diseño",
+        "description": "Punto de corte para las pestañas horizontales; usa -1 para solo vertical."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Punto de corte de los iconos",
+        "description": "Punto de corte para mostrar texto con los iconos. El valor predeterminado es 0; usa -1 para el modo de solo iconos."
+      },
+      {
+        "slot": "",
+        "title": "Pestañas",
+        "description": "Serie de elementos <a11y-tab/>."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID único",
+        "description": "ID único de este conjunto de pestañas."
+      }
+    ]
+  }
+}

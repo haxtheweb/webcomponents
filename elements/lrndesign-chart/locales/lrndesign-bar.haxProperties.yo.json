@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Àtẹ Ọ̀pá",
+    "description": "Ó ń ṣẹ̀dá àtẹ tó ṣeé wọlé sí tó dá lórí CSV kan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ ìtẹnumọ́ àṣàyàn."
+      },
+      {
+        "title": "Àkòrí Dúdú",
+        "description": "Tan Àkòrí Dúdú"
+      },
+      {
+        "title": "Fáìlì CSV",
+        "description": "Gbé dátà wọlé láti CSV kan."
+      },
+      {
+        "title": "Àkọlé Àtẹ",
+        "description": "Ọ̀rọ̀ àfirọ́pò tó ṣeé wọlé sí fún àtẹ rẹ."
+      },
+      {
+        "title": "Àpèjúwe Àtẹ",
+        "description": "Àpèjúwe tó ṣeé wọlé sí fún àtẹ rẹ."
+      },
+      {
+        "title": "Orúkọ Ìwọ̀n",
+        "description": "Ìpín fífẹ̀:gíga àtẹ náà (Wo https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings fún $ct-scales àti $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Fi Ẹ̀yìn Àwọ̀n Hàn"
+      },
+      {
+        "title": "Àwọn Ọ̀pá Ìbú",
+        "description": "Ó ń yí àwọn ìlà ipò àtẹ ọ̀pá padà láti ya àtẹ ọ̀pá ìbú. Mọ̀ pé o tún nílò láti yí àwọn ètò ìlà ipò rẹ padà nítorí Ìlà Y yóò fi àwọn àkọlé hàn báyìí, Ìlà X yóò sì fi àwọn iye hàn."
+      },
+      {
+        "title": "To Àwọn Ọ̀pá Lé Ara Wọn",
+        "description": "Tí a bá ṣètò rẹ̀ sí true, àbùdá yìí yóò mú kí àwọn ọ̀pá ìtẹ̀léra tò lé ara wọn."
+      },
+      {
+        "title": "Pín Àwọn Ìtẹ̀léra",
+        "description": "Tí a bá ṣètò rẹ̀ sí true, ọ̀pá kọ̀ọ̀kan yóò ṣojú ìtẹ̀léra kan, a sì retí pé àkójọ dátà yóò jẹ́ àkójọ onípele kan ti àwọn iye dátà dípò àkójọ ìtẹ̀léra."
+      },
+      {
+        "title": "Àlàfo Inú Àtẹ (òkè)"
+      },
+      {
+        "title": "Àlàfo Inú Àtẹ (ìsàlẹ̀)"
+      },
+      {
+        "title": "Àlàfo Inú Àtẹ (òsì)"
+      },
+      {
+        "title": "Àlàfo Inú Àtẹ (ọ̀tún)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Yí Dátà Padà",
+        "description": "Yí dátà padà pẹ̀lú àwọn àkọlé, ètò àwọn ìtẹ̀léra àti gbogbo àkójọ dátà ìtẹ̀léra."
+      },
+      {
+        "title": "Tábìlì HTML",
+        "description": "Àṣàyàn: Gbé dátà wọlé bí tábìlì HTML."
+      },
+      {
+        "title": "Ìwọ̀n Tó Kéré Jùlọ Àtẹ",
+        "description": "Rírọ́pò ìwọ̀n kékeré àdáyébá àtẹ ń jẹ́ kí o sún wọlé tàbí dín iye tó kéré jùlọ tí àtẹ ń fi hàn kù"
+      },
+      {
+        "title": "Ìwọ̀n Tó Ga Jùlọ Àtẹ",
+        "description": "Rírọ́pò ìwọ̀n gíga àdáyébá àtẹ ń jẹ́ kí o sún wọlé tàbí dín iye tó ga jùlọ tí àtẹ ń fi hàn kù"
+      },
+      {
+        "title": "Ìlà X Fi Àwọ̀n Hàn",
+        "description": "Fi àwọ̀n Ìlà X hàn."
+      },
+      {
+        "title": "Ìyàsípò Ìlà X"
+      },
+      {
+        "title": "Ipò Ìlà X",
+        "description": "Ipò tí a gbé àwọn àkọlé sí. A lè ṣètò rẹ̀ sí \"start\" tàbí \"end\" níbi tí \"start\" bá òsì tàbí òkè mu lórí ìlà ìdúró, tí \"end\" sì bá ọ̀tún tàbí ìsàlẹ̀ mu lórí ìlà ìbú"
+      },
+      {
+        "title": "Ìlà X Fi Àkọlé Hàn",
+        "description": "Fi àkọlé Ìlà X hàn."
+      },
+      {
+        "title": "Àkọlé Ìlà X (ìyàsípò ìbú)",
+        "description": "Ipò ìbú àwọn àkọlé Ìlà X."
+      },
+      {
+        "title": "Àkọlé Ìlà X (ìyàsípò ìdúró)",
+        "description": "Ipò ìdúró àwọn àkọlé Ìlà X."
+      },
+      {
+        "title": "Àkọlé Orí Ìlà X",
+        "description": "Àkọlé orí (àṣàyàn) fún Ìlà X."
+      },
+      {
+        "title": "Àkọlé Orí Ìlà X (ìyàsípò ìbú)",
+        "description": "Ipò ìbú àkọlé orí Ìlà X."
+      },
+      {
+        "title": "Àkọlé Orí Ìlà X (ìyàsípò ìdúró)",
+        "description": "Ipò ìdúró àkọlé orí Ìlà X."
+      },
+      {
+        "title": "Ìdákọ̀ró Àkọlé Orí Ìlà X",
+        "description": "Ìdákọ̀ró (àṣàyàn) fún àkọlé orí Ìlà X.",
+        "options": {
+          "middle": "àárín",
+          "end": "òpin",
+          "start": "ìbẹ̀rẹ̀"
+        }
+      },
+      {
+        "title": "Àlàfo Tó Kéré Jùlọ Ìwọ̀n Ìlà X",
+        "description": "Ó ń sọ gíga tó kéré jùlọ ní píksẹ́lì àwọn ìgbésẹ̀ ìwọ̀n."
+      },
+      {
+        "title": "Ìwọ̀n Ìlà X (nọ́mbà odidi nìkan)",
+        "description": "Lo àwọn iye nọ́mbà odidi nìkan fún àwọn ìgbésẹ̀ ìwọ̀n."
+      },
+      {
+        "title": "Ìlà Y: Fi Àwọ̀n Hàn",
+        "description": "Fi àwọ̀n Ìlà Y hàn."
+      },
+      {
+        "title": "Ìyàsípò Ìlà Y"
+      },
+      {
+        "title": "Ipò Ìlà Y",
+        "description": "Ipò tí a gbé àwọn àkọlé sí. A lè ṣètò rẹ̀ sí \"start\" tàbí \"end\" níbi tí \"start\" bá òsì tàbí òkè mu lórí ìlà ìdúró, tí \"end\" sì bá ọ̀tún tàbí ìsàlẹ̀ mu lórí ìlà ìbú"
+      },
+      {
+        "title": "Ìlà Y Fi Àkọlé Hàn",
+        "description": "Fi àkọlé Ìlà Y hàn."
+      },
+      {
+        "title": "Àkọlé Ìlà Y (ìyàsípò ìbú)",
+        "description": "Ipò ìbú àkọlé Ìlà Y."
+      },
+      {
+        "title": "Àkọlé Ìlà Y (ìyàsípò ìdúró)",
+        "description": "Ipò ìdúró àkọlé Ìlà Y."
+      },
+      {
+        "title": "Àlàfo Tó Kéré Jùlọ Ìwọ̀n Ìlà Y",
+        "description": "Ó ń sọ gíga tó kéré jùlọ ní píksẹ́lì àwọn ìgbésẹ̀ ìwọ̀n."
+      },
+      {
+        "title": "Ìwọ̀n Ìlà Y (nọ́mbà odidi nìkan)",
+        "description": "Lo àwọn iye nọ́mbà odidi nìkan fún àwọn ìgbésẹ̀ ìwọ̀n."
+      },
+      {
+        "title": "Àkọlé Orí Ìlà Y",
+        "description": "Àkọlé orí (àṣàyàn) fún Ìlà Y."
+      },
+      {
+        "title": "Àkọlé Orí Ìlà Y (ìyàsípò ìdúró)",
+        "description": "Ipò ìbú àkọlé orí Ìlà Y."
+      },
+      {
+        "title": "Àkọlé Orí Ìlà Y (ìyàsípò ìbú)",
+        "description": "Ipò ìbú àkọlé orí Ìlà Y."
+      },
+      {
+        "title": "Ìdákọ̀ró Àkọlé Orí Ìlà Y",
+        "description": "Ìdákọ̀ró (àṣàyàn) fún àkọlé orí Ìlà Y.",
+        "options": {
+          "middle": "àárín",
+          "end": "òpin",
+          "start": "ìbẹ̀rẹ̀"
+        }
+      },
+      {
+        "title": "Yí Àkọlé Orí Ìlà Y Padà",
+        "description": "Yí àkọlé orí Ìlà Y padà?"
+      },
+      {
+        "title": "Iye Ìtọ́kasí",
+        "description": "Àyàfi tí a bá ṣètò low/high ní pàtó, àtẹ ọ̀pá yóò wà ní àárín òdo ní àkọ́kọ́."
+      },
+      {
+        "title": "Ìjìnnà Ọ̀pá Ìtẹ̀léra",
+        "description": "Sọ ìjìnnà ní píksẹ́lì àwọn ọ̀pá nínú ẹgbẹ́ kan."
+      },
+      {
+        "title": "Ipò Títò Lé Ara Wọn",
+        "description": "Tí a bá ṣètò rẹ̀ sí \"true\", àbùdá yìí yóò ṣẹ̀dá àpapọ̀ fún kókó ìtẹ̀léra kọ̀ọ̀kan. Èyí yóò tún nípa lórí ìlà y àti gbogbo ààlà àtẹ náà. Tí a bá ṣètò rẹ̀ sí \"false\", àbùdá yìí yóò fi ipá mú àwọn ọ̀pá tí a tò lé ara wọn láti bẹ̀rẹ̀ láti ìlà òdo. Ní ipò títò lé ara wọn, àbùdá \"seriesBarDistance\" kò ní ní ipa kankan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Kartu Pos",
+    "description": "Media jenaka yang dibuat menyerupai kartu pos fisik dari suatu tempat"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "to",
+        "title": "Kepada",
+        "description": "Untuk siapa kartu ini?"
+      },
+      {
+        "property": "from",
+        "title": "Dari",
+        "description": "Siapa Anda?"
+      },
+      {
+        "property": "message",
+        "title": "Pesan",
+        "description": "Apa yang ingin Anda sampaikan?"
+      },
+      {
+        "property": "postMarkLocations",
+        "title": "Cap Pos Dari",
+        "description": "Dari mana kartu ini dikirim?"
+      },
+      {
+        "property": "photoSrc",
+        "title": "Sumber Foto Utama",
+        "description": "Di mana lokasi foto Anda?"
+      },
+      {
+        "property": "stampSrc",
+        "title": "Sumber Foto Perangko",
+        "description": "Di mana lokasi foto Anda?"
+      }
+    ]
+  }
+}

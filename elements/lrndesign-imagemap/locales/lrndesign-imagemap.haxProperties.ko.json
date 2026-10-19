@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "이미지 맵",
+    "description": "인터랙티브 핫스팟이 있는 접근 가능한 이미지 맵입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "레이블",
+        "description": "이미지 맵의 레이블입니다."
+      },
+      {
+        "property": "hotspotDetails",
+        "title": "핫스팟 세부 정보",
+        "description": "이미지 맵의 인터랙티브 핫스팟입니다."
+      }
+    ]
+  }
+}

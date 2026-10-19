@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "HAX શબ્દ કલા",
+    "description": "HAX માટેનો લોગો ઘટક, સ્વાભાવિક રીતે HAX-સક્ષમ ઘટક તરીકે."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "size",
+        "description": "મૂકવાના HAX લોગોનું કદ",
+        "options": {
+          "mini": "મિની",
+          "small": "નાનું",
+          "normal": "સામાન્ય",
+          "large": "મોટું"
+        }
+      },
+      {
+        "attribute": "toupper",
+        "description": "લોગોને મોટા અક્ષરોમાં બદલવો કે નહીં"
+      }
+    ]
+  }
+}

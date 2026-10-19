@@ -42,6 +42,10 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
       loadingAddingUser: "Adding user...",
       grantAccessTo: "Grant access to:",
     };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
   }
 
   static get properties() {

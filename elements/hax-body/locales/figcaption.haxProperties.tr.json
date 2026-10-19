@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Şekil alt yazısı",
+    "description": "Bir şekil için alt yazı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Görsel açıklaması",
+        "description": "Şeklin altında gösterilen metin."
+      }
+    ]
+  }
+}

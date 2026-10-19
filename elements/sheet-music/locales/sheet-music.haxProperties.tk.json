@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Notalar",
+    "description": "alphaTex ýa-da MusicXML arkaly notalary, gitara tablaturalaryny we partitura belgilenişini görkezýär we oýnadýar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "AlphaTex belgilenişi",
+        "description": "Notalar üçin içerki alphaTex belgilenişi. Belgilenişi ýazmak üçin göni redaktirläň; ol şablonda saklanýar, şonuň üçin boşluklar saklanýar."
+      },
+      {
+        "property": "source",
+        "title": "Partitura faýly",
+        "description": "MusicXML (.xml/.musicxml/.mxl) ýa-da Guitar Pro (.gp3/.gp4/.gp5/.gpx/.gp) faýlyny ýükläň ýa-da oňa baglanyşyk beriň. Bellenende içerki alphaTex-iň ýerine geçýär."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "audio",
+        "title": "Audio oýnatmak",
+        "description": "Deslapky ýagdaýda açyk - notalary içine gurlan sintezator arkaly diňläň. Diňe görmek (sessiz) tertibi üçin öçüriň."
+      },
+      {
+        "property": "showDisplayOptions",
+        "title": "Görkeziş opsiýalaryny görkez",
+        "description": "Pleýer zolagynda ulaltmak, uzaltmak we ýerleşiş düwmelerini görkez."
+      },
+      {
+        "property": "showExport",
+        "title": "Eksport düwmelerini görkez",
+        "description": "Pleýer zolagynda MIDI ýükläp almak we çap etmek/PDF düwmelerini görkez."
+      }
+    ]
+  }
+}

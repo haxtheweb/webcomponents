@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Liên kết cơ bản",
+    "description": "Phần tử liên kết cơ bản."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Liên kết",
+        "description": "URL đích."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Văn bản",
+        "description": "Văn bản liên kết hiển thị."
+      },
+      {
+        "attribute": "target",
+        "title": "Đích",
+        "description": "Nơi mở liên kết.",
+        "options": {
+          "": "Cùng cửa sổ",
+          "_blank": "Cửa sổ mới - _blank",
+          "_top": "Cửa sổ trên cùng - _top",
+          "_parent": "Cửa sổ cha - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Văn bản tiêu đề",
+        "description": "Tiêu đề gợi ý phục vụ khả năng tiếp cận và SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Mối quan hệ với trang đích (bảo mật/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

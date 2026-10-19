@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Polaris ဇာတ်လမ်း ကတ်",
+    "description": "နောက်ခံပုံ၊ ကဏ္ဍ အညွှန်းနှင့် ခေါင်းစီး စာသားပါသည့် Polaris ဇာတ်လမ်း ကတ်ကို ပြသရန်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "နောက်ခံ ပုံ",
+        "description": "ကတ်၏ နောက်ခံအဖြစ် ပြသော ပုံ URL။"
+      },
+      {
+        "property": "backgroundSize",
+        "title": "နောက်ခံ အရွယ်အစား",
+        "description": "နောက်ခံပုံက ကတ်ကို ဖြည့်ပုံ (CSS background-size)။",
+        "options": {
+          "cover": "ဖုံးအုပ် (cover)",
+          "contain": "အတွင်းဝင်ဆံ့ (contain)",
+          "auto": "အလိုအလျောက် (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "နောက်ခံ တွဲချိတ်မှု",
+        "description": "လှိမ့်နေစဉ် နောက်ခံပုံ၏ အပြုအမူ (CSS background-attachment)။",
+        "options": {
+          "scroll": "လှိမ့် (scroll)",
+          "fixed": "ပုံသေ (fixed)",
+          "local": "ဒေသတွင်း (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "ကဏ္ဍ အညွှန်း",
+        "description": "ကတ်၏ အပေါ်ဆုံးတွင် ပြသော စာလုံးကြီး အညွှန်းတို။ ဝှက်ရန် ဗလာထားပါ။"
+      },
+      {
+        "property": "label",
+        "title": "ကတ် စာသား",
+        "description": "အောက်ပိုင်း panel တွင် ပြသော အဓိက စာသား။"
+      },
+      {
+        "property": "link",
+        "title": "လင့်ခ်",
+        "description": "ကတ်တစ်ခုလုံးကို ဖုံးအုပ်သော ရွေးချယ်နိုင်သည့် ဦးတည်ရာ URL။"
+      }
+    ]
+  }
+}

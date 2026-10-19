@@ -1,0 +1,56 @@
+{
+  "gizmo": {
+    "title": "Danh sách phát",
+    "description": "Hiển thị mọi loại nội dung trong danh sách phát."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Nguồn",
+        "description": "Nội dung hiển thị trong danh sách phát."
+      },
+      {
+        "property": "edit",
+        "title": "Chế độ chỉnh sửa",
+        "description": "Chuyển đổi giữa chế độ chỉnh sửa và xem trước cho danh sách phát."
+      },
+      {
+        "property": "navigation",
+        "title": "Điều hướng",
+        "description": "Hiển thị nút điều hướng tiến và lùi."
+      },
+      {
+        "property": "pagination",
+        "title": "Phân trang",
+        "description": "Hiển thị các chấm phân trang."
+      },
+      {
+        "property": "orientation",
+        "title": "Hướng",
+        "description": "Hướng của các trang chiếu.",
+        "options": {
+          "horizontal": "Ngang",
+          "vertical": "Dọc"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "slide",
+        "title": "Trang chiếu bắt đầu",
+        "description": "Chỉ mục trang chiếu được chọn ban đầu."
+      },
+      {
+        "property": "aspectRatio",
+        "title": "Tỷ lệ khung hình",
+        "description": "Tỷ lệ khung hình của các trang chiếu.",
+        "options": {
+          "16:9": "16:9",
+          "3:2": "3:2",
+          "1:1": "1:1"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Blokke",
+  "enabled": "Aktiveret",
+  "block": "Blok",
+  "preview": "Forhåndsvisning",
+  "filterBlocks": "Filtrér blokke",
+  "requiredTextNote": "Nogle tekst-tags er påkrævede og altid aktiveret (vist som deaktiverede).",
+  "selectAll": "Vælg alle",
+  "deselectAll": "Fravælg alle",
+  "save": "Gem",
+  "noDescription": "Ingen beskrivelse tilgængelig.",
+  "details": "Detaljer",
+  "loadingInventory": "Indlæser fuld oversigt over blokke…"
+}

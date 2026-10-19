@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Polaris plitkasi",
+    "description": "Sarlavha, ixtiyoriy qoʻshimcha matn va ixtiyoriy havolali Polaris plitkasini koʻrsatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "line1",
+        "title": "Asosiy matn",
+        "description": "Plitkaning asosiy matni."
+      },
+      {
+        "property": "line2",
+        "title": "Ikkilamchi matn",
+        "description": "Ixtiyoriy qoʻshimcha matn."
+      },
+      {
+        "property": "type",
+        "title": "Plitka uslubi",
+        "description": "Oldindan belgilangan plitka vizual uslubi.",
+        "options": {
+          "1": "1-uslub",
+          "2": "2-uslub",
+          "3": "3-uslub",
+          "4": "4-uslub",
+          "5": "5-uslub"
+        }
+      },
+      {
+        "property": "image",
+        "title": "Fon rasmi",
+        "description": "Rasmni qoʻllab-quvvatlaydigan plitka uslublarida ishlatiladigan fon rasmi URL manzili."
+      },
+      {
+        "property": "link",
+        "title": "Havola",
+        "description": "Plitka harakati uchun ixtiyoriy manzil URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "emnemodell",
+    "description": "Interaktivt oppsett for emnebegreper med detaljer, animasjon og kunnskapssjekker."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "tittel"
+      },
+      {
+        "property": "src",
+        "title": "kilde"
+      },
+      {
+        "property": "alt",
+        "title": "alt-tekst"
+      },
+      {
+        "title": "Informasjonsområde"
+      },
+      {
+        "title": "Detaljområde"
+      },
+      {
+        "title": "Animasjonsområde"
+      },
+      {
+        "title": "Område for kunnskapssjekk"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logoområde"
+      }
+    ]
+  }
+}

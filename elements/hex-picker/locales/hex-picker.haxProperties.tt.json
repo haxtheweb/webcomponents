@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex сайлагыч",
+    "description": "Hex-код буенча төс сайлагыч"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Кыйммәт",
+        "description": "Килешү буенча hex кыйммәте"
+      },
+      {
+        "property": "disabled",
+        "title": "Сүндерелгән",
+        "description": "Текст кырын сүндерү"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Зур күрсәтү",
+        "description": "Төсне зур итеп күрсәтү"
+      }
+    ]
+  }
+}

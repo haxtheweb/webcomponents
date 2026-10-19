@@ -1,0 +1,52 @@
+{
+  "gizmo": {
+    "title": "PDF-vísari í kaganum",
+    "description": "Innset eina PDF-fílu á síðuna við valfríum kortsniði og niðurtøkuknøtti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "file",
+        "title": "PDF-URL",
+        "description": "Staðseting á PDF-fíluni."
+      },
+      {
+        "property": "heading",
+        "title": "Yvirskrift",
+        "description": "Yvirskriftartekstur á kortinum."
+      },
+      {
+        "property": "card",
+        "title": "Kortsnið",
+        "description": "Vís PDF-fíluna í einum korti við niðurtøkuknøtti."
+      },
+      {
+        "property": "downloadLabel",
+        "title": "Niðurtøkuheiti",
+        "description": "Heiti á niðurtøkuknøttinum."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Boð um, at tað ikki er stuðlað",
+        "description": "Boð, tá kagin ikki kann vísa PDF-fílur."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Leinkjuboð um, at tað ikki er stuðlað",
+        "description": "Leinkjutekstur, tá kagin ikki kann vísa PDF-fílur."
+      },
+      {
+        "property": "width",
+        "title": "Breidd",
+        "description": "Breidd á PDF-vísaranum."
+      },
+      {
+        "property": "height",
+        "title": "Hædd",
+        "description": "Hædd á PDF-vísaranum."
+      }
+    ]
+  }
+}

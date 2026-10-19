@@ -122,5 +122,21 @@
   "recent": "Recente",
   "popular": "Popular",
   "copiedToClipboard": "Copiado ao portapapeis",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Información da imaxe",
+  "imageActions": "Accións da imaxe",
+  "imageRecommendations": "Recomendacións da imaxe",
+  "compressImage": "Comprimir imaxe",
+  "resizeTo": "Redimensionar a",
+  "created": "Creado",
+  "size": "Tamaño",
+  "dimensions": "Dimensións",
+  "type": "Tipo",
+  "done": "feito",
+  "noFileUuid": "Referencia do ficheiro non dispoñible; volve subilo para activar as accións.",
+  "fileOpsUnavailable": "As operacións con ficheiros non están dispoñibles para este sitio.",
+  "fileOpFailed": "Fallou a operación co ficheiro.",
+  "fileExtensionNotAllowed": "Este campo só acepta os seguintes tipos de ficheiro:",
+  "fileTypeNotAllowed": "Este campo só acepta os seguintes tipos de multimedia:",
+  "transformFailed": "Fallou a transformación posterior á subida; conservouse o ficheiro orixinal."
 }

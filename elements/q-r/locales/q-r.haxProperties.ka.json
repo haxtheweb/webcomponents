@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "QR კოდი",
+    "description": "სმარტფონით დასასკანერებელი კოდი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "data",
+        "title": "QR მონაცემები",
+        "description": "QR კოდის მონაცემების წყარო."
+      },
+      {
+        "property": "title",
+        "title": "ალტერნატიული სათაური",
+        "description": "QR კოდის წყაროსთან დაკავშირებული ალტერნატიული სათაური."
+      },
+      {
+        "property": "modulesize",
+        "title": "ზომა",
+        "description": "QR კოდის ზომა."
+      },
+      {
+        "property": "margin",
+        "title": "მინდორი",
+        "description": "კოდის გარსი."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "გამოტანის ფორმატი",
+        "description": "ფორმატი, რომლითაც გამოიტანება.",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        }
+      }
+    ]
+  }
+}

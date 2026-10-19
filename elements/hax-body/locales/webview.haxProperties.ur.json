@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ماخذ",
+        "description": "اس وسیلے کا URL۔"
+      }
+    ]
+  }
+}

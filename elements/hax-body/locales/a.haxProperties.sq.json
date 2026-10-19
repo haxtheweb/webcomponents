@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Lidhje bazë",
+    "description": "Element bazë lidhjeje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Lidhja",
+        "description": "URL-ja e destinacionit."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Teksti",
+        "description": "Teksti i dukshëm i lidhjes."
+      },
+      {
+        "attribute": "target",
+        "title": "Objektivi",
+        "description": "Ku të hapet lidhja.",
+        "options": {
+          "": "E njëjta dritare",
+          "_blank": "Dritare e re - _blank",
+          "_top": "Dritarja e sipërme - _top",
+          "_parent": "Dritarja prind - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Teksti i titullit",
+        "description": "Titull këshillues për qasshmërinë dhe SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Marrëdhënia me destinacionin (siguria/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

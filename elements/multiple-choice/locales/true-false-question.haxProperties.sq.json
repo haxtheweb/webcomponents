@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pyetje e vërtetë / e gabuar",
+    "description": "Pyetje e vërtetë ose e gabuar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Pyetja",
+        "description": "Pyetja të cilës përdoruesit duhet t'i përgjigjen."
+      },
+      {
+        "property": "_tfanswer",
+        "title": "Përgjigjja e saktë"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Emri i kuizit",
+        "description": "Emri i kuizit që përcillet për përdorim në mjedise të drejtuara nga xAPI për identifikimin e këtij elementi"
+      }
+    ]
+  }
+}

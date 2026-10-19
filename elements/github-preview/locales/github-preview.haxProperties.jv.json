@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pratinjau GitHub",
+    "description": "Gambar sing bisa diakses kanthi katrangan dawa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisasi",
+        "description": "Jeneng mesin organisasi GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Repositori",
+        "description": "Jeneng mesin repo"
+      },
+      {
+        "property": "extended",
+        "title": "Tampilan Lengkap",
+        "description": "Nglebokake readme ing elemen"
+      }
+    ]
+  }
+}

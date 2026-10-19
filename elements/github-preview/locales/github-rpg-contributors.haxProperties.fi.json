@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-osallistujaluettelo",
+    "description": "Näytetään RPG-hahmoina GitHub API:n avulla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisaatio",
+        "description": "Organisaation nimi osoitteesta github.com/ORG/REPO."
+      },
+      {
+        "property": "repo",
+        "title": "Repositorio",
+        "description": "Repositorion nimi osoitteesta github.com/ORG/REPO."
+      },
+      {
+        "property": "limit",
+        "title": "Raja",
+        "description": "Rajoita näytettävien osallistujien määrää."
+      }
+    ]
+  }
+}

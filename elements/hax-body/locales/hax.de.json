@@ -122,5 +122,21 @@
   "recent": "Aktuell",
   "popular": "Beliebt",
   "copiedToClipboard": "In die Zwischenablage kopiert",
-  "pages": "Pages"
+  "pages": "Pages",
+  "imageInfo": "Bildinformationen",
+  "imageActions": "Bildaktionen",
+  "imageRecommendations": "Bildempfehlungen",
+  "compressImage": "Bild komprimieren",
+  "resizeTo": "Größe ändern auf",
+  "created": "Erstellt",
+  "size": "Größe",
+  "dimensions": "Abmessungen",
+  "type": "Typ",
+  "done": "fertig",
+  "noFileUuid": "Dateiverweis nicht verfügbar; zum Aktivieren der Aktionen erneut hochladen.",
+  "fileOpsUnavailable": "Dateioperationen sind für diese Website nicht verfügbar.",
+  "fileOpFailed": "Dateioperation fehlgeschlagen.",
+  "fileExtensionNotAllowed": "Dieses Feld akzeptiert nur die folgenden Dateitypen:",
+  "fileTypeNotAllowed": "Dieses Feld akzeptiert nur die folgenden Medientypen:",
+  "transformFailed": "Verarbeitung nach dem Hochladen fehlgeschlagen; die Originaldatei wurde beibehalten."
 }

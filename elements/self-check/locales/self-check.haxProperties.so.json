@@ -1,0 +1,63 @@
+{
+  "gizmo": {
+    "title": "Is-hubin",
+    "description": "Isticmaalayaashu waxay dhammaystiri karaan is-hubin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Sawir",
+        "description": "Sawirka is-hubinta."
+      },
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka is-hubinta."
+      },
+      {
+        "property": "alt",
+        "title": "Qoraalka Beddelka",
+        "description": "Qoraalka beddelka sawirka."
+      },
+      {
+        "slot": "question",
+        "title": "Su'aal"
+      },
+      {
+        "slot": "",
+        "title": "Jawaab"
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka Mawduuca",
+        "description": "Ka dooro midab mawduuc nidaamka naqshadda.",
+        "options": {
+          "primary": "Koowaad",
+          "accent": "Xoojin",
+          "success": "Guul",
+          "warning": "Digniin",
+          "error": "Khalad",
+          "info": "Macluumaad"
+        }
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ujeeddada Waxbarasho",
+        "description": "Tixraaca ujeeddada waxbarasho oo loo soo saaro oer:hasLearningObjective."
+      },
+      {
+        "property": "assessing",
+        "title": "Qiimaynaya",
+        "description": "Tixraaca hawsha oo loo soo saaro oer:assessing."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Xiriiriye dheeraad ah",
+        "description": "Xiriiriye macluumaad dheeraad ah."
+      }
+    ]
+  }
+}

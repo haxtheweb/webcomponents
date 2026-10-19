@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kurs modeli",
+    "description": "Təfərrüatlar, animasiya və bilik yoxlamaları ilə kurs anlayışları üçün interaktiv maket."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "başlıq"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Məlumat sahəsi"
+      },
+      {
+        "title": "Təfərrüatlar sahəsi"
+      },
+      {
+        "title": "Animasiya sahəsi"
+      },
+      {
+        "title": "Bilik yoxlaması sahəsi"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Loqo sahəsi"
+      }
+    ]
+  }
+}

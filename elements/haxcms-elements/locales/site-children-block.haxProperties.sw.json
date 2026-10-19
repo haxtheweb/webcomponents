@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: kizuizi cha vipengee vidogo",
+    "description": "Kizuizi kinachobadilika cha kuonyesha vipengee vidogo vya ukurasa wa sasa"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Mbinu inayobadilika",
+        "description": "Jinsi ya kukokotoa vipengee vidogo kulingana na kipengele hiki",
+        "options": {
+          "active": "Vipengee vidogo amilifu",
+          "parent": "Vipengee vidogo vya mzazi",
+          "ancestor": "Vipengee vidogo vyote kutoka kwa babu wa juu zaidi"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Kiwango cha kuanza"
+      },
+      {
+        "property": "end",
+        "title": "Kiwango cha mwisho"
+      }
+    ]
+  }
+}

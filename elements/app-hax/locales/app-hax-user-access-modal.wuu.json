@@ -1,0 +1,11 @@
+{
+  "userAccess": "用户权限",
+  "enterUsername": "输入用户名来授予权限",
+  "usernamePlaceholder": "用户名",
+  "addUser": "添加用户",
+  "cancel": "取消",
+  "userAccessGranted": "用户权限授予成功！",
+  "userNotFound": "寻勿着用户或者呒没授权",
+  "loadingAddingUser": "正在添加用户...",
+  "grantAccessTo": "授予权限拨："
+}

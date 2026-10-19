@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ikhonkco le-HAX",
+    "description": "Ikhonkco eliya kwisixhobo esithile kwisayithi osebenza kuyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Into",
+        "description": "Into eza kuboniswa kwikhonkco / kwidatha yesihloko"
+      }
+    ]
+  }
+}

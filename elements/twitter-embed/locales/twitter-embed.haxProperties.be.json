@@ -1,0 +1,29 @@
+{
+  "gizmo": {
+    "title": "Убудаванне Twitter (X)",
+    "description": "Убудаваць твіт з X у кантэксце."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "tweet",
+        "title": "URL твіта",
+        "description": "URL твіта для ўбудавання."
+      },
+      {
+        "attribute": "data-theme",
+        "title": "Тэма",
+        "description": "Светлая або цёмная тэма для твітаў X.",
+        "options": {
+          "light": "Светлы",
+          "dark": "Цёмная"
+        }
+      },
+      {
+        "attribute": "no-popups",
+        "title": "Забараніць усплывальнае акно пры націсканні",
+        "description": "Не дазваляць карыстальнікам адкрываць твіт на x.com."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "UN SDG",
+    "description": "هدف توسعهٔ پایدار سازمان ملل متحد."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "goal",
+        "title": "هدف",
+        "description": "شمارهٔ UN SDG."
+      },
+      {
+        "property": "colorOnly",
+        "title": "فقط رنگ",
+        "description": "فقط رنگ هدف نمایش داده شود."
+      }
+    ]
+  }
+}

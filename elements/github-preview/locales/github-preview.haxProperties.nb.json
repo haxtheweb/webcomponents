@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub-forhåndsvisning",
+    "description": "Tilgjengelig figur med lang beskrivelse"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisasjon",
+        "description": "Maskinnavn for GitHub-organisasjonen"
+      },
+      {
+        "property": "repo",
+        "title": "Kodelager",
+        "description": "Maskinnavn for repoet"
+      },
+      {
+        "property": "extended",
+        "title": "Utvidet visning",
+        "description": "Tar med README i elementet"
+      }
+    ]
+  }
+}

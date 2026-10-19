@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "የሬትሮ ካርድ",
+    "description": "የሬትሮ ንድፍ ያለው ቀላል ካርድ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "ዋና የካርድ ርዕስ።"
+      },
+      {
+        "property": "url",
+        "description": "ካርዱ ጠቅ ሲደረግ የሚከፈት URL።"
+      },
+      {
+        "property": "subtitle",
+        "title": "ንዑስ ርዕስ",
+        "description": "የካርድ ንዑስ ርዕስ።"
+      },
+      {
+        "property": "tags",
+        "title": "መለያዎች",
+        "description": "በኮማ የተለዩ መለያዎች።"
+      },
+      {
+        "property": "mediaSource",
+        "title": "የሚዲያ ምንጭ",
+        "description": "ዋና የሚዲያ ምንጭ።"
+      },
+      {
+        "property": "hoverSource",
+        "title": "በማንዣበብ ጊዜ ምንጭ",
+        "description": "ካርዱ ሲያንዣብብበት ወይም ሲነቃ የሚታይ የሚዲያ ምንጭ።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "በካርዱ ላይ የሚተገበር የአጽንዖት ቀለም።"
+      },
+      {
+        "property": "dark",
+        "title": "ጨለማ",
+        "description": "የጨለማ ሁነታ መሠረታዊ ቀለሞችን ተጠቀም።"
+      }
+    ]
+  }
+}

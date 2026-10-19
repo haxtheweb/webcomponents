@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kartu cerita Polaris",
+    "description": "Tampilkan kartu cerita Polaris dengan gambar latar belakang, label pilar, dan teks judul utama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "image",
+        "title": "Gambar latar belakang",
+        "description": "URL gambar yang ditampilkan sebagai latar belakang kartu."
+      },
+      {
+        "property": "backgroundSize",
+        "title": "Ukuran latar belakang",
+        "description": "Cara gambar latar belakang mengisi kartu (CSS background-size).",
+        "options": {
+          "cover": "Tutupi (cover)",
+          "contain": "Muat (contain)",
+          "auto": "Otomatis (auto)",
+          "100% 100%": "100% 100%"
+        }
+      },
+      {
+        "property": "backgroundAttachment",
+        "title": "Lampiran latar belakang",
+        "description": "Perilaku gambar latar belakang saat menggulir (CSS background-attachment).",
+        "options": {
+          "scroll": "Gulir (scroll)",
+          "fixed": "Tetap (fixed)",
+          "local": "Lokal (local)"
+        }
+      },
+      {
+        "property": "pillar",
+        "title": "Label pilar",
+        "description": "Label huruf kapital pendek yang ditampilkan di bagian atas kartu. Biarkan kosong untuk menyembunyikan."
+      },
+      {
+        "property": "label",
+        "title": "Teks kartu",
+        "description": "Teks utama yang ditampilkan di panel bawah."
+      },
+      {
+        "property": "link",
+        "title": "Tautan",
+        "description": "URL tujuan opsional yang membungkus seluruh kartu."
+      }
+    ]
+  }
+}

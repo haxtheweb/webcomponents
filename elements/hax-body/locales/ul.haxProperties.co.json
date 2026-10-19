@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Lista à puntini",
+    "description": "Creà una lista à puntini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stile di puntini",
+        "description": "Stile adupratu per i puntini di e liste micca urdinate.",
+        "options": {
+          "": "Predefinitu (quadratu)",
+          "list-disc": "Discu",
+          "list-circle": "Cerchju",
+          "list-square": "Quadratu"
+        }
+      }
+    ]
+  }
+}

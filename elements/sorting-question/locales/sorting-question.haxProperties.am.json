@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "የመደርደር ጥያቄ",
+    "description": "ንጥሎችን በትክክለኛው ቅደም ተከተል ደርድር።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "ጥያቄ",
+        "description": "የጥያቄ ራስጌ።"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "የውጤት አሰጣጥ ቅርጸት",
+        "description": "OER Schema፦ ለዚህ ምዘና የውጤት አሰጣጥ ቅርጸት (ለምሳሌ ነጥቦች፣ ፊደል፣ መቶኛ፣ ማጠናቀቅ)።"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "የመማር ዓላማ",
+        "description": "OER Schema፦ ከዚህ ምዘና ጋር የተያያዘ የመማር ዓላማ።"
+      },
+      {
+        "property": "forCourse",
+        "title": "ኮርስ",
+        "description": "OER Schema፦ ይህ ምዘና የታሰበለት ኮርስ።"
+      },
+      {
+        "property": "answers",
+        "title": "መልሶች",
+        "description": "የመልሶቹ ቅደም ተከተል ትክክለኛውን ተከታታይነት ይወስናል።"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "የፈተናው ስም",
+        "description": "በትንታኔ ሥርዓቶች ውስጥ ለxAPI መለያ የሚውል የፈተና ስም።"
+      }
+    ]
+  }
+}

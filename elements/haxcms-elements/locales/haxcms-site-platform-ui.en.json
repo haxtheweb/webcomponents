@@ -1,0 +1,18 @@
+{
+  "title": "Platform Features",
+  "experienceLevel": "Experience level",
+  "cmsFeatures": "CMS features",
+  "editorFeatures": "Editor features",
+  "blocks": "Blocks",
+  "filterBlocks": "Filter blocks",
+  "requiredTextNote": "Some text tags are required and always enabled (shown disabled).",
+  "download": "Download skeleton",
+  "save": "Save",
+  "generating": "Generating skeleton…",
+  "generated": "Skeleton downloaded",
+  "enabled": "Enabled",
+  "feature": "Feature",
+  "details": "Details",
+  "featuresWarning": "Disabling these options can remove major authoring and administration capabilities.",
+  "largeSiteWarning": "This site has many pages. Skeleton generation may take a while."
+}

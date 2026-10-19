@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Cluaisín",
+    "description": "Cluaisín aonair."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Deilbhín an Chluaisín"
+      },
+      {
+        "property": "disabled",
+        "title": "Díchumasaithe"
+      },
+      {
+        "property": "label",
+        "title": "Lipéad an Chluaisín"
+      },
+      {
+        "slot": "",
+        "title": "Ábhar an Chluaisín",
+        "description": "Ábhar an chluaisín."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Uathúil"
+      },
+      {
+        "property": "flag",
+        "title": "Téacs Bratóige Roghnach"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Deilbhín Bratóige Roghnach"
+      }
+    ]
+  }
+}

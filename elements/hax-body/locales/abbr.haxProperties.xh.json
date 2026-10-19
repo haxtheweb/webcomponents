@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Isifinyezo",
+    "description": "Isifinyezo esinengcebiso yegama elipheleleyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Umbhalo",
+        "description": "Umbhalo wesifinyezo obonakalayo."
+      },
+      {
+        "attribute": "title",
+        "title": "Igama",
+        "description": "Igama elipheleleyo eliboniswa xa uhambisa ngaphezulu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stap-item",
+    "description": "Item wat deel is van 'n stappelys"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel"
+      }
+    ]
+  }
+}

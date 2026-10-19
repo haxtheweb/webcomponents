@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Lecteur de documentation de composants web"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "hideWindow",
+        "title": "Masquer la fenêtre",
+        "description": "Masquer la fenêtre de sortie, utile lorsque seul le terminal est utilisé"
+      }
+    ]
+  }
+}
