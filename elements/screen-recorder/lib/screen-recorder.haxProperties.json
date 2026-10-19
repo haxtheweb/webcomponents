@@ -1,51 +1,45 @@
 {
-    "api": "1",
-    "canScale": true,
-    "canEditSource": true,
-    "type": "element",
-    "designSystem": {
-        "accent": true,
-        "primary": true,
-        "card": true,
-        "text": true,
-        "designTreatment": false
-    },
-    "gizmo": {
-        "title": "screen-recorder",
-        "description": "",
-        "icon": "icons:android",
-        "color": "purple",
-        "tags": [
-            "Other"
-        ],
-        "handles": [],
-        "meta": {
-            "author": "haxtheweb"
-        }
-    },
-    "settings": {
-        "configure": [
-            {
-                "property": "title",
-                "title": "Title",
-                "description": "",
-                "inputMethod": "textfield",
-                "icon": "editor:title",
-                "required": true
-            }
-        ]
-    },
-    "saveOptions": {
-        "wipeSlot": false,
-        "unsetAttributes": []
-    },
-    "demoSchema": [
-        {
-            "tag": "screen-recorder",
-            "properties": {
-              "title": "Sample property title"
-            },
-            "content": ""
-        }
-    ]
+  "api": "1",
+  "canScale": false,
+  "canEditSource": true,
+  "type": "element",
+  "designSystem": {
+    "accent": true,
+    "primary": true,
+    "card": true,
+    "text": true,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "Screen recorder",
+    "description": "Record your screen, with optional system and microphone audio, and download the video.",
+    "icon": "av:fiber-smart-record",
+    "color": "red",
+    "tags": [
+      "Media",
+      "screen",
+      "recording",
+      "video",
+      "capture"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "haxtheweb"
+    }
+  },
+  "settings": {
+    "configure": [],
+    "advanced": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": []
+  },
+  "demoSchema": [
+    {
+      "tag": "screen-recorder",
+      "properties": {},
+      "content": ""
+    }
+  ]
 }

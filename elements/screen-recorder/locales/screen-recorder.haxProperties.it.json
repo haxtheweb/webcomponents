@@ -1,0 +1,6 @@
+{
+  "gizmo": {
+    "title": "Registratore schermo",
+    "description": "Registra lo schermo, con audio di sistema e del microfono opzionale, e scarica il video."
+  }
+}

@@ -5,5 +5,6 @@
   "systemAudio": "Inkludera systemljud",
   "microphoneAudio": "Inkludera mikrofon",
   "recordingStarted": "Inspelning startad",
-  "recordingStopped": "Inspelning stoppad"
+  "recordingStopped": "Inspelning stoppad",
+  "audioOptions": "Ljudalternativ"
 }
