@@ -89,14 +89,16 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
     /**
      * init the utility & register element
      */
-    firstUpdated(changedProperties) {
-      super.firstUpdated(changedProperties);
-      if (!this.disableResponsive) {
-        // Register with the responsive utility immediately so its handler
-        // sets the responsive-size / responsive-width attributes
-        // synchronously. Deferring the registration left the attributes
-        // unset across the whole update cycle, which starved audits and
-        // tests of the responsive state and piled up microtasks under load.
+    connectedCallback() {
+      super.connectedCallback();
+      // Register on first connect (not firstUpdated). The utility's handler
+      // sets responsive-size / responsive-width synchronously; doing that
+      // before the first update batches those reactive props into it.
+      // Registering from firstUpdated set them post-render and scheduled a
+      // redundant second update (Lit change-in-update warning). Guarded so
+      // a DOM move (reconnect) does not register a duplicate observer.
+      if (!this.disableResponsive && !this.__responsiveRegistered) {
+        this.__responsiveRegistered = true;
         globalThis.ResponsiveUtility.requestAvailability();
         this.dispatchEvent(
           new CustomEvent("responsive-element", {

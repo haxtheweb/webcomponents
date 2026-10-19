@@ -137,21 +137,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return super.toolbarTemplate;
   }
 
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      __updated: {
-        type: Boolean,
-      },
-      __inList: {
-        type: Boolean,
-      },
-      __hasSelection: {
-        type: Boolean,
-      },
-    };
-  }
-
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -754,17 +739,25 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
           this.setTarget(this.activeNode);
           this._updateContextualVisibility();
         }
-        if (propName === "t" && this.t !== oldValue)
-          this.updateToolbarElements();
         if (propName === "range") {
           this._updateContextualVisibility();
         }
       });
     }
   }
+  willUpdate(changedProperties) {
+    // Build config here (before super) so the base toolbar's willUpdate sees
+    // the config change and rebuilds the buttons once, inside this update.
+    // Assigning config in firstUpdated / updated scheduled a full second
+    // rebuild (Lit change-in-update warning).
+    if (!this.hasUpdated) {
+      const config = this.updateToolbarElements();
+      if (config) this.config = config;
+    }
+    if (super.willUpdate) super.willUpdate(changedProperties);
+  }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    this.config = this.updateToolbarElements();
     this.__prompt.haxUIElement = true;
     this.__prompt.classList.add("ignore-activation");
     this.addEventListener("keydown", this.trapKeys.bind(this));
@@ -888,7 +881,12 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         type: "hax-text-editor-button",
       };
       this.__updated = false;
-      setTimeout((e) => (this.config = this.updateToolbarElements()), 500);
+      setTimeout((e) => {
+        // several inline gizmos can register in one tick; only the first
+        // timeout gets a config back (the rest return undefined)
+        const config = this.updateToolbarElements();
+        if (config) this.config = config;
+      }, 500);
     }
   }
   /**

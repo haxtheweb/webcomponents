@@ -147,6 +147,39 @@ describe('HaxRouter route matching', () => {
       expect(match.route.name).to.equal('404')
     })
   })
+
+  // app-hax registers dashboard site cards as `_sites/<name>/` (trailing
+  // slash, from the site slug) with a `slug`; a click on the card must match
+  // that route (full navigation), not fall through to the 404 route
+  describe('route paths registered with a trailing slash', () => {
+    beforeEach(() => {
+      router.routes = [
+        { path: 'index.html', component: 'h', name: 'index-html' },
+        {
+          path: '_sites/mysite/',
+          slug: '/_sites/mysite/',
+          component: 's',
+          name: 'site-card',
+        },
+        { path: '/', component: 'h', name: 'home' },
+        { path: '/(.*)', component: 'nf', name: '404' },
+      ]
+    })
+
+    it('matches the site route for the card href (with trailing slash)', () => {
+      const match = router._matchRoute('/_sites/mysite/')
+      expect(match.route.name).to.equal('site-card')
+      expect(match.route.slug).to.equal('/_sites/mysite/')
+    })
+
+    it('matches the site route without the trailing slash', () => {
+      expect(router._matchRoute('/_sites/mysite').route.name).to.equal('site-card')
+    })
+
+    it('keeps the root route for / (index.html route does not take over)', () => {
+      expect(router._matchRoute('/').route.name).to.equal('home')
+    })
+  })
 })
 
 describe('HaxRouter baseUrl cleaning', () => {

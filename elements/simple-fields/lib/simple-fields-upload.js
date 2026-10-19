@@ -755,10 +755,13 @@ class SimpleFieldsUpload extends I18NMixin(
       this.option = this.value ? "url" : "fileupload";
     }
   }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
+  connectedCallback() {
+    super.connectedCallback();
+    // Register on first connect (not firstUpdated) so the synchronous
+    // responsive-size / responsive-width writes batch into the first update
+    // instead of scheduling a redundant second one (Lit change-in-update).
+    if (this.__responsiveRegistered) return;
+    this.__responsiveRegistered = true;
     globalThis.ResponsiveUtility.requestAvailability();
 
     /**

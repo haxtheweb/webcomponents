@@ -190,8 +190,18 @@ export class HaxRouter {
         ? routePath
         : "/" + routePath;
 
-      // Exact match
-      if (normalizedRoutePath === pathname) {
+      // Exact match. The pathname has had its trailing slash stripped above,
+      // so compare against the route path with trailing slashes trimmed too:
+      // app-hax registers site-card routes as `_sites/<name>/` (from the site
+      // slug) and they must keep matching, otherwise the click falls through
+      // to the 404 route and the dashboard pushState()s instead of navigating
+      // to the site. Only the slash is trimmed (not index.html) so the
+      // index.html / index.php routes keep their existing precedence.
+      const exactRoutePath =
+        normalizedRoutePath.length > 1
+          ? normalizedRoutePath.replace(/\/+$/, "")
+          : normalizedRoutePath;
+      if (exactRoutePath === pathname) {
         return { route, params: [] };
       }
 

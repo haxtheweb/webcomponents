@@ -252,10 +252,21 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
        * new container) on every change, which is the whole point.
        *
        * The one-time firstUpdated assignment below does trip Lit's
-       * change-in-update warning (it sets a reactive prop post-render), but
-       * that warning is a justified false positive here: the lookup needs the
-       * stamped shadow DOM so it can't move to willUpdate, and the second
-       * update it schedules IS the desired side effect (the connect wiring).
+       * change-in-update warning (it sets a reactive prop post-render).
+       * This is INTENTIONAL and the extra update cycle is worth it:
+       * - the lookup needs the stamped shadow DOM, so it cannot move to
+       *   willUpdate / the constructor;
+       * - the follow-up update is what runs _contentContainerChanged, which
+       *   connects the HAX editor wiring to the real container so HAX is
+       *   applied to the correct region;
+       * - deferring that wiring to the update after first paint keeps the
+       *   initial render (first paint) of the theme unblocked.
+       *
+       * DO NOT convert this to a plain getter/setter or a non-reactive
+       * field to silence the warning. That has caused editor wiring / first
+       * paint regressions before. Treat the training-theme / theme
+       * "scheduled an update after an update completed" warning that comes
+       * from this assignment as expected.
        */
       contentContainer: {
         type: Object,
@@ -408,6 +419,8 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       super.firstUpdated(changedProperties);
     }
 
+    // intentional post-render reactive set; see the contentContainer
+    // property docs before changing (expected change-in-update warning)
     if (this.contentContainer == null) {
       this.contentContainer =
         this.shadowRoot.querySelector("#contentcontainer");
