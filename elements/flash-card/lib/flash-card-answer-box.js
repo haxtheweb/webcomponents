@@ -2,7 +2,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 export class FlashCardAnswerBox extends I18NMixin(DDD) {
@@ -79,6 +79,11 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
   }
 
   checkUserAnswer() {
+    // guard: simple-toolbar-button still emits click while disabled and
+    // Enter can fire on an empty / already answered field
+    if (this.status !== "pending" || !this.userAnswer) {
+      return;
+    }
     const side = this.back ? "front" : "back";
     const comparison = this.shadowRoot
       .querySelector(`[name="${side}"]`)
@@ -86,26 +91,12 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
       .querySelector(`[name="${side}"]`)
       .assignedNodes({ flatten: true })[0].innerText;
     this.correct = this.equalsIgnoringCase(comparison);
-    this.status = this.equalsIgnoringCase(comparison) ? "correct" : "incorrect";
-    this.icon = this.equalsIgnoringCase(comparison) ? "check" : "cancel";
-    this.message = this.equalsIgnoringCase(comparison)
-      ? "Correct!"
-      : "Incorrect!";
-    this.showResult = !this.equalsIgnoringCase(comparison);
-    // reverse so that it swaps which slot is shown
-    this.correctAnswer = !this.back
-      ? this.shadowRoot
-          .querySelector(`[name="back"]`)
-          .assignedNodes({ flatten: true })[0]
-          .querySelector(`[name="back"]`)
-          .assignedNodes({ flatten: true })[0].innerText
-      : this.shadowRoot
-          .querySelector(`[name="front"]`)
-          .assignedNodes({ flatten: true })[0]
-          .querySelector(`[name="front"]`)
-          .assignedNodes({ flatten: true })[0].innerText;
-    this.shadowRoot.querySelector("#check").disabled = true;
-    this.shadowRoot.querySelector("input").disabled = true;
+    this.status = this.correct ? "correct" : "incorrect";
+    this.icon = this.correct ? "check" : "cancel";
+    this.message = this.correct ? "Correct!" : "Incorrect!";
+    this.showResult = !this.correct;
+    // the answer is whichever side the user is guessing
+    this.correctAnswer = comparison;
   }
 
   // as the user types input, grab the value
@@ -116,166 +107,44 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
 
   // reset the interaction to the defaults
   resetCard() {
+    if (this.status === "pending") {
+      return;
+    }
     this.showResult = false;
     this.correct = false;
     this.userAnswer = "";
     this.status = "pending";
     this.sideToShow = this.back ? "back" : "front";
     this.correctAnswer = "";
-    this.shadowRoot.querySelector("input").disabled = false;
-    this.shadowRoot.querySelector("input").value = "";
+    this.updateComplete.then(() => {
+      const input = this.shadowRoot.querySelector("input");
+      input.value = "";
+      input.focus();
+    });
   }
 
   // CSS - specific to Lit
+  // mirrors the input + button treatment in multiple-choice/QuestionElement
+  // so flash-card reads as part of the same question family
   static get styles() {
     return css`
       :host {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: block;
+        width: 100%;
       }
-      .answer-section {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        width: 300px;
-        height: 45px;
-        border-radius: var(--ddd-radius-md);
-        border: var(--ddd-border-sm);
-        /* SimpleColors accent vars never resolved in this scope; defined
-           DDD token pairs keep the border and focus glow scheme-safe */
-        border-color: light-dark(
-          var(--ddd-theme-default-slateLight),
-          var(--ddd-theme-default-slateGray)
-        );
-        background-color: light-dark(
-          var(--ddd-theme-default-white),
-          var(--ddd-theme-default-coalyGray)
-        );
-        padding: 0;
-        margin: var(--ddd-spacing-4) auto;
-      }
-      .answer-section:focus-within {
-        border-color: light-dark(
-          var(--ddd-theme-default-skyBlue),
-          var(--ddd-theme-default-linkLight)
-        );
-        box-shadow: 0 0 10px
-          light-dark(
-            var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-linkLight)
-          );
-      }
-      input {
-        border: none;
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-        font-size: var(--ddd-font-size-s);
+      #question {
         font-family: var(--ddd-font-navigation);
-        height: 25px;
-        border-radius: var(--ddd-radius-md) 0 0 var(--ddd-radius-md);
-        margin: 0;
-        width: 11em;
-        background-color: light-dark(
-          var(--ddd-theme-default-white),
-          var(--ddd-theme-default-coalyGray)
-        );
-        color: light-dark(
-          var(--ddd-theme-default-coalyGray),
-          var(--ddd-theme-default-white)
-        );
-      }
-      input:focus {
-        outline: none;
-      }
-      button#check {
-        background-color: var(
-          --ddd-theme-primary,
-          var(--ddd-theme-default-link)
-        );
-        color: var(--lowContrast-override, var(--ddd-theme-bgContrast, white));
-        font-size: var(--ddd-font-size-s);
-        font-family: var(--ddd-font-navigation);
-        margin: none;
-        padding: var(--ddd-spacing-2);
-        border-radius: 0 var(--ddd-radius-md) var(--ddd-radius-md) 0;
-        border: var(--ddd-border-sm);
-        overflow: hidden;
-        width: 50em;
-        height: 45px;
-        transition: all 0.3s ease-in-out;
-      }
-
-      /* Status-based button background colors */
-      :host([status="correct"]) button#check {
-        background-color: var(--ddd-theme-default-opportunityGreen);
-        color: var(--ddd-theme-default-white);
-      }
-
-      :host([status="incorrect"]) button#check {
-        background-color: var(--ddd-theme-default-wonderPurple);
-        color: var(--ddd-theme-default-white);
-      }
-
-      button#check:hover,
-      button#check:focus,
-      button#check:focus-within,
-      button#check:active {
-        cursor: pointer;
-        box-shadow: var(--ddd-boxShadow-sm);
-        border-color: light-dark(
-          var(--ddd-theme-default-coalyGray),
-          var(--ddd-theme-default-white)
-        );
-        opacity: 0.9;
-      }
-      .retry simple-icon-button-lite {
-        color: light-dark(
-          var(--ddd-theme-default-wonderPurple),
-          var(--ddd-theme-default-linkLight)
-        );
-        background-color: light-dark(
-          var(--ddd-theme-default-white),
-          var(--ddd-theme-default-coalyGray)
-        );
-        border: var(--ddd-border-sm);
-        --simple-icon-button-border-radius: var(--ddd-radius-xs);
-        --simple-icon-button-padding: var(--ddd-spacing-2);
-        font-size: var(--ddd-font-size-xs);
-        font-family: var(--ddd-font-navigation);
-        transition: all 0.3s ease-in-out;
-      }
-      .retry simple-icon-button-lite:hover,
-      .retry simple-icon-button-lite:focus {
-        box-shadow: var(--ddd-boxShadow-sm);
-        border-color: light-dark(
-          var(--ddd-theme-default-wonderPurple),
-          var(--ddd-theme-default-linkLight)
-        );
-        /* accent1/accent8 were undefined token names; the defined accent
-           palette tokens preserve the intended subtle hover tint */
-        background-color: light-dark(
-          var(--ddd-accent-1),
-          var(--ddd-accent-8)
-        );
-      }
-      button:hover {
-        opacity: 0.8;
-      }
-      button:disabled {
-        opacity: 0.7;
-        background-color: light-dark(
-          var(--ddd-theme-default-limestoneLight),
-          var(--ddd-theme-default-slateGray)
-        );
-        color: light-dark(black, white);
-      }
-      p {
-        font-family: var(--ddd-font-navigation);
-        color: var(--ddd-theme-primary);
         font-weight: normal;
         font-size: var(--ddd-font-size-ms);
         text-align: center;
+        margin: 0 0 var(--ddd-spacing-4) 0;
+        color: light-dark(
+          var(
+            --lowContrast-override,
+            var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
+          ),
+          var(--ddd-theme-default-linkLight)
+        );
       }
       :host([side-to-show="front"]) slot[name="back"] {
         display: none;
@@ -283,84 +152,140 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
       :host([side-to-show="back"]) slot[name="front"] {
         display: none;
       }
-      :host([status="correct"]) .retry,
-      :host([status="incorrect"]) .retry {
-        display: flex;
-      }
-
-      :host([status="correct"]) #status-message {
-        background-color: var(--ddd-theme-default-opportunityGreen);
-        color: var(--ddd-theme-default-white);
+      input {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        min-height: var(--ddd-spacing-12);
+        margin: var(--ddd-spacing-2) 0;
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+        font-family: var(--ddd-font-navigation);
+        font-size: var(--ddd-font-size-xs);
+        border: var(--ddd-border-sm);
+        border-color: light-dark(
+          var(--ddd-theme-default-limestoneGray),
+          var(--ddd-primary-5)
+        );
         border-radius: var(--ddd-radius-xs);
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-      }
-
-      :host([status="correct"]) #status-icon {
-        color: var(--ddd-theme-default-white);
-      }
-
-      :host([status="incorrect"]) #status-message {
-        background-color: var(--ddd-theme-default-wonderPurple);
-        color: var(--ddd-theme-default-white);
-        border-radius: var(--ddd-radius-xs);
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-      }
-
-      :host([status="incorrect"]) #status-icon {
-        color: var(--ddd-theme-default-white);
-      }
-
-      simple-icon-lite {
-        --simple-icon-width: 35px;
-        --simple-icon-height: 35px;
+        background-color: light-dark(
+          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-coalyGray)
+        );
         color: light-dark(
           var(--ddd-theme-default-coalyGray),
           var(--ddd-theme-default-white)
         );
+        transition: all 0.3s ease-in-out;
       }
-
-      .sr-only {
-        position: absolute;
-        left: -10000px;
-        top: auto;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
+      input:focus-visible {
+        outline: var(--ddd-border-md);
+        outline-color: light-dark(
+          var(--ddd-theme-primary, var(--ddd-theme-default-link)),
+          var(--ddd-theme-default-linkLight)
+        );
+        outline-offset: 0;
       }
-
-      .retry {
-        display: none;
-        width: 100%;
-        justify-content: center;
-        padding-top: var(--ddd-spacing-4);
-        margin: var(--ddd-spacing-2) 0;
+      input:disabled:not(.correct):not(.incorrect) {
+        opacity: 0.7;
       }
-
-      #status-message {
-        font-size: 16px;
+      input.correct {
+        outline: 3px solid var(--ddd-theme-default-opportunityGreen);
+        outline-offset: -3px;
+      }
+      input.incorrect {
+        outline: 3px dotted
+          light-dark(
+            var(--ddd-theme-default-wonderPurple),
+            var(--ddd-theme-default-athertonViolet)
+          );
+        outline-offset: -3px;
+      }
+      .feedback {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        font-family: var(--ddd-font-navigation);
-        color: light-dark(
-          var(--ddd-theme-default-coalyGray),
-          var(--ddd-theme-default-white)
-        );
         gap: var(--ddd-spacing-2);
+        margin: var(--ddd-spacing-2) 0;
+        font-family: var(--ddd-font-navigation);
+        font-size: var(--ddd-font-size-3xs);
+        font-weight: bold;
+        text-align: center;
       }
-
       #status-icon {
-        --simple-icon-height: 25px;
-        --simple-icon-width: 25px;
+        --simple-icon-height: var(--ddd-icon-xs);
+        --simple-icon-width: var(--ddd-icon-xs);
       }
-
-      .answer-message {
-        font-size: 10pt;
+      :host([status="correct"]) #status-icon {
+        color: var(--ddd-theme-default-opportunityGreen);
+      }
+      :host([status="incorrect"]) #status-icon {
         color: light-dark(
-          var(--ddd-theme-default-coalyGray),
-          var(--ddd-theme-default-white)
+          var(--ddd-theme-default-wonderPurple),
+          var(--ddd-theme-default-athertonViolet)
         );
+      }
+      .answer-message {
+        margin: 0;
+        font-family: var(--ddd-font-navigation);
+        font-size: var(--ddd-font-size-3xs);
+        text-align: center;
+      }
+      #buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: var(--ddd-spacing-4);
+        margin: var(--ddd-spacing-4) 0 0 0;
+      }
+      simple-toolbar-button {
+        font-size: var(--ddd-font-size-xs);
+        font-family: var(--ddd-font-navigation);
+        transition: all 0.3s ease-in-out;
+        border: none;
+        border-radius: var(--ddd-radius-xs);
+        background-color: var(
+          --ddd-theme-primary,
+          var(--ddd-theme-default-link)
+        );
+        color: var(--lowContrast-override, var(--ddd-theme-bgContrast, white));
+      }
+      simple-toolbar-button[disabled] {
+        background-color: light-dark(
+          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-slateGray)
+        );
+        color: light-dark(black, white);
+        opacity: 0.7;
+      }
+      simple-toolbar-button:hover::part(button),
+      simple-toolbar-button:focus::part(button),
+      simple-toolbar-button:focus-within::part(button),
+      simple-toolbar-button:active::part(button) {
+        cursor: pointer;
+        box-shadow: var(--ddd-boxShadow-sm);
+        border-color: black;
+      }
+      simple-toolbar-button::part(button) {
+        border: var(--ddd-border-sm);
+        border-radius: var(--ddd-radius-xs);
+        padding: var(--ddd-spacing-2);
+      }
+      simple-toolbar-button::part(label) {
+        font-size: var(--ddd-font-size-s);
+        font-family: var(--ddd-font-navigation);
+        padding: 0;
+        margin: 0;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
       }
     `;
   }
@@ -368,55 +293,51 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
   // HTML - specific to Lit
   render() {
     return html`
-      <div>
-        <p id="question">
-          <slot name="front" id="front"></slot>
-          <slot name="back" id="back"></slot>
-        </p>
-        ${this.showResult || this.correct
-          ? html`<p class="answer-message">
-              Correct Answer: ${this.correctAnswer}
-            </p>`
-          : ``}
-      </div>
+      <p id="question">
+        <slot name="front" id="front"></slot>
+        <slot name="back" id="back"></slot>
+      </p>
       <!-- ARIA live region for status announcements -->
       <div aria-live="polite" aria-atomic="true" class="sr-only">
         ${this.status !== "pending" ? this.message : ""}
       </div>
-      <div class="answer-section">
-        <label for="answer" class="sr-only">${this.t.yourAnswer}</label>
-        <input
-          id="answer"
-          type="text"
-          .placeholder="${this.t.yourAnswer}"
-          aria-describedby="status-message"
-          aria-invalid="${this.status === "incorrect"}"
-          @input="${this.inputChanged}"
-          @keydown="${(e) =>
-            e.key === "Enter" ? this.checkUserAnswer() : ""}"
-          .value="${this.userAnswer}"
-        />
-        ${this.status === "pending"
-          ? html`<button
-              id="check"
-              ?disabled="${this.userAnswer === ""}"
-              @click="${this.checkUserAnswer}"
-            >
-              ${this.t.checkAnswer}
-            </button>`
-          : html`<span id="status-message"
-              ><simple-icon-lite
+      <label for="answer" class="sr-only">${this.t.yourAnswer}</label>
+      <input
+        id="answer"
+        type="text"
+        class="${this.status !== "pending" ? this.status : ""}"
+        .placeholder="${this.t.yourAnswer}"
+        aria-describedby="status-message"
+        aria-invalid="${this.status === "incorrect"}"
+        ?disabled="${this.status !== "pending"}"
+        @input="${this.inputChanged}"
+        @keydown="${(e) => (e.key === "Enter" ? this.checkUserAnswer() : "")}"
+        .value="${this.userAnswer}"
+      />
+      ${this.status !== "pending"
+        ? html`<p id="status-message" class="feedback">
+              <simple-icon-lite
                 id="status-icon"
                 icon="${this.icon}"
                 aria-hidden="true"
               ></simple-icon-lite
-              >${this.message}</span
-            >`}
-      </div>
-      <div class="retry">
-        <simple-icon-button-lite icon="refresh" @click="${this.resetCard}"
-          >${this.t.retry}</simple-icon-button-lite
-        >
+              >${this.message}
+            </p>
+            <p class="answer-message">Correct Answer: ${this.correctAnswer}</p>`
+        : ``}
+      <div id="buttons">
+        <simple-toolbar-button
+          id="check"
+          ?disabled="${this.status !== "pending" || this.userAnswer === ""}"
+          @click="${this.checkUserAnswer}"
+          label="${this.t.checkAnswer}"
+        ></simple-toolbar-button>
+        <simple-toolbar-button
+          id="reset"
+          ?disabled="${this.status === "pending"}"
+          @click="${this.resetCard}"
+          label="${this.t.retry}"
+        ></simple-toolbar-button>
       </div>
     `;
   }

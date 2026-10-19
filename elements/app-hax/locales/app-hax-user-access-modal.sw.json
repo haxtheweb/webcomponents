@@ -1,0 +1,11 @@
+{
+  "userAccess": "Ufikiaji wa mtumiaji",
+  "enterUsername": "Weka jina la mtumiaji ili kutoa ufikiaji",
+  "usernamePlaceholder": "Jina la mtumiaji",
+  "addUser": "Ongeza mtumiaji",
+  "cancel": "Ghairi",
+  "userAccessGranted": "Ufikiaji wa mtumiaji umetolewa kwa mafanikio!",
+  "userNotFound": "Mtumiaji hakupatikana au hana idhini",
+  "loadingAddingUser": "Inaongeza mtumiaji...",
+  "grantAccessTo": "Toa ufikiaji kwa:"
+}

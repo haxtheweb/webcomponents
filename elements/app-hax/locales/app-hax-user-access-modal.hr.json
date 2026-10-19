@@ -1,0 +1,11 @@
+{
+  "userAccess": "Pristup korisnika",
+  "enterUsername": "Unesite korisničko ime za dodjelu pristupa",
+  "usernamePlaceholder": "Korisničko ime",
+  "addUser": "Dodaj korisnika",
+  "cancel": "Odustani",
+  "userAccessGranted": "Pristup korisniku uspješno je dodijeljen!",
+  "userNotFound": "Korisnik nije pronađen ili nema ovlasti",
+  "loadingAddingUser": "Dodavanje korisnika...",
+  "grantAccessTo": "Dodijeli pristup:"
+}

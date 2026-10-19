@@ -1,0 +1,11 @@
+{
+  "userAccess": "Brugeradgang",
+  "enterUsername": "Indtast brugernavn for at give adgang",
+  "usernamePlaceholder": "Brugernavn",
+  "addUser": "Tilføj bruger",
+  "cancel": "Annuller",
+  "userAccessGranted": "Brugeradgang er givet!",
+  "userNotFound": "Brugeren blev ikke fundet eller er ikke autoriseret",
+  "loadingAddingUser": "Tilføjer bruger...",
+  "grantAccessTo": "Giv adgang til:"
+}

@@ -1,0 +1,11 @@
+{
+  "userAccess": "Käyttäjän käyttöoikeus",
+  "enterUsername": "Anna käyttäjänimi, jolle myönnetään käyttöoikeus",
+  "usernamePlaceholder": "Käyttäjänimi",
+  "addUser": "Lisää käyttäjä",
+  "cancel": "Peruuta",
+  "userAccessGranted": "Käyttöoikeus myönnetty onnistuneesti!",
+  "userNotFound": "Käyttäjää ei löytynyt tai oikeudet puuttuvat",
+  "loadingAddingUser": "Lisätään käyttäjää...",
+  "grantAccessTo": "Myönnä käyttöoikeus:"
+}

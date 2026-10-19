@@ -1,0 +1,11 @@
+{
+  "userAccess": "Benotzerzougang",
+  "enterUsername": "Benotzernumm aginn, fir Zougang ze ginn",
+  "usernamePlaceholder": "Benotzernumm",
+  "addUser": "Benotzer derbäisetzen",
+  "cancel": "Ofbriechen",
+  "userAccessGranted": "Benotzerzougang erfollegräich ginn!",
+  "userNotFound": "Benotzer net fonnt oder net autoriséiert",
+  "loadingAddingUser": "Benotzer gëtt derbäigesat...",
+  "grantAccessTo": "Zougang ginn un:"
+}

@@ -1,0 +1,11 @@
+{
+  "userAccess": "Accessu di l'utilizatori",
+  "enterUsername": "Scrivite u nome d'utilizatore per dà l'accessu",
+  "usernamePlaceholder": "Nome d'utilizatore",
+  "addUser": "Aghjunghje un utilizatore",
+  "cancel": "Abbandunà",
+  "userAccessGranted": "Accessu datu à l'utilizatore cù successu!",
+  "userNotFound": "Utilizatore micca trovu o micca auturizatu",
+  "loadingAddingUser": "Aghjunta di l'utilizatore...",
+  "grantAccessTo": "Dà l'accessu à:"
+}
