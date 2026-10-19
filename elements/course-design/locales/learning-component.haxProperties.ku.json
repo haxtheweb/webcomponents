@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Pêkhateya Fêrbûnê",
+    "description": "Kartek ji bo mamosteyan da ku pedagojî û stratejiyên hînkirinê ragihînin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Cure",
+        "description": "Cureya kartê ya ku were bikaranîn."
+      },
+      {
+        "property": "subtitle",
+        "title": "Binsernav",
+        "description": "Binsernavê kartê."
+      },
+      {
+        "property": "url",
+        "title": "Girêdan",
+        "description": "Girêdaneke vebijarkî ji bo kartê (Girêdan ji bo Armancên Fêrbûnê berdest nîne)."
+      },
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernav diyar bike, ev sernavê li gorî cureyê diguherîne"
+      },
+      {
+        "property": "icon",
+        "title": "Îkon",
+        "description": "Îkon diyar bike, ev îkona li gorî cureyê diguherîne"
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê balkêş",
+        "description": "Rengê aksentê diyar bike, ev rengê li gorî cureyê diguherîne"
+      },
+      {
+        "slot": "",
+        "title": "Naverok"
+      }
+    ]
+  }
+}

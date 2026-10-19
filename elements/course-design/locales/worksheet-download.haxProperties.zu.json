@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ukulanda Ishidi Lokusebenza",
+    "description": "Inkinobho yokubonisa amafayela atholakalayo ukuze alandwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko sokulandwayo."
+      },
+      {
+        "property": "link",
+        "title": "Isixhumanisi",
+        "description": "Isixhumanisi sokulandwayo."
+      }
+    ]
+  }
+}

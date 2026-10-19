@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ಟ್ಯಾಬ್",
+    "description": "ಒಂದು ಟ್ಯಾಬ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ಟ್ಯಾಬ್ ಐಕಾನ್"
+      },
+      {
+        "property": "disabled",
+        "title": "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"
+      },
+      {
+        "property": "label",
+        "title": "ಟ್ಯಾಬ್ ಲೇಬಲ್"
+      },
+      {
+        "slot": "",
+        "title": "ಟ್ಯಾಬ್ ವಿಷಯ",
+        "description": "ಟ್ಯಾಬ್‌ನ ವಿಷಯ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ಅನನ್ಯ ID"
+      },
+      {
+        "property": "flag",
+        "title": "ಐಚ್ಛಿಕ ಫ್ಲ್ಯಾಗ್ ಪಠ್ಯ"
+      },
+      {
+        "property": "flagIcon",
+        "title": "ಐಚ್ಛಿಕ ಫ್ಲ್ಯಾಗ್ ಐಕಾನ್"
+      }
+    ]
+  }
+}

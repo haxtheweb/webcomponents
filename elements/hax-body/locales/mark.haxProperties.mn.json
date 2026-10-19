@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Тодруулга",
+    "description": "Мөр доторх текстийг тодруулах."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Тодруулсан текст."
+      }
+    ]
+  }
+}

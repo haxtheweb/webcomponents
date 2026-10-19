@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Àwòtẹ́lẹ̀ GitHub",
+    "description": "Àwòrán tó ṣeé wọlé sí pẹ̀lú àpèjúwe gígùn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Àjọ",
+        "description": "Orúkọ ẹ̀rọ àjọ GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Ibi-ìpamọ́",
+        "description": "Orúkọ ẹ̀rọ ibi ìpamọ́"
+      },
+      {
+        "property": "extended",
+        "title": "Ìwò Gbígbòòrò",
+        "description": "Ó fi readme sínú ẹ̀yà náà"
+      }
+    ]
+  }
+}

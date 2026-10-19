@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Imagine îmbunătățită",
+    "description": "O modalitate de a prezenta imagini cu diverse îmbunătățiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sursă",
+        "description": "URL-ul imaginii."
+      },
+      {
+        "property": "alt",
+        "title": "Text alternativ",
+        "description": "Text care descrie imaginea pentru utilizatorii nevăzători."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Leagă imaginea de un URL"
+      },
+      {
+        "property": "card",
+        "title": "Card",
+        "description": "Aplică o umbră pentru a da aspectul unui card ridicat."
+      },
+      {
+        "property": "box",
+        "title": "Casetă",
+        "description": "Aplică o casetă vizuală în jurul imaginii."
+      },
+      {
+        "property": "offset",
+        "title": "Decalaj",
+        "description": "Aplică un decalaj la stânga sau la dreapta imaginii.",
+        "options": {
+          "none": "niciunul",
+          "wide": "lat",
+          "narrow": "îngust"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Citare",
+        "description": "Citarea pentru imagine."
+      },
+      {
+        "property": "caption",
+        "title": "Legendă",
+        "description": "Legenda imaginii."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titlul figurii",
+        "description": "Titlul pentru eticheta figurii."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descrierea figurii",
+        "description": "Descrierea pentru eticheta figurii."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Imagine miniatură",
+        "description": "Sursa imaginii miniatură. Afișează miniatura, dar deschide sursa completă într-o fereastră modală."
+      },
+      {
+        "property": "round",
+        "title": "Imagine rotundă",
+        "description": "Decupează aspectul imaginii în formă de cerc."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Dezactivează fereastra imaginii",
+        "description": "Dezactivează deschiderea imaginii la clic într-un dialog de inspectare a imaginii."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Afișează ca markdown",
+        "description": "Afișează legenda și citarea ca markdown."
+      }
+    ]
+  }
+}

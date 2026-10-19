@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Aizzīmju saraksts",
+    "description": "Izveidot aizzīmju sarakstu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Aizzīmju stils",
+        "description": "Nenumurēta saraksta aizzīmju stils.",
+        "options": {
+          "": "Noklusējums (kvadrāts)",
+          "list-disc": "Disks",
+          "list-circle": "Aplis",
+          "list-square": "Kvadrāts"
+        }
+      }
+    ]
+  }
+}

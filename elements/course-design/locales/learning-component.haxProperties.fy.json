@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Learkomponint",
+    "description": "In kaart foar dosinten om pedagogyk en ynstruksjestrategyen oer te bringen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Type",
+        "description": "It type kaart dat brûkt wurde moat."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undertitel",
+        "description": "De ûndertitel fan de kaart."
+      },
+      {
+        "property": "url",
+        "title": "Keppeling",
+        "description": "In opsjonele keppeling foar de kaart (keppeling net beskikber foar leardoelen)."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel ynstelle; dit oerskriuwt de titel op basis fan type"
+      },
+      {
+        "property": "icon",
+        "title": "Ikoan",
+        "description": "Ikoan ynstelle; dit oerskriuwt it ikoan op basis fan type"
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Aksintkleur ynstelle; dit oerskriuwt de kleur op basis fan type"
+      },
+      {
+        "slot": "",
+        "title": "Ynhâld"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Girêdana bingehîn",
+    "description": "Hêmana girêdanê ya bingehîn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Girêdan",
+        "description": "URLa armancê."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Nivîs",
+        "description": "Nivîsa girêdanê ya xuya."
+      },
+      {
+        "attribute": "target",
+        "title": "Armanc",
+        "description": "Girêdan li ku were vekirin.",
+        "options": {
+          "": "Heman pencere",
+          "_blank": "Pencereya nû - _blank",
+          "_top": "Pencereya jorîn - _top",
+          "_parent": "Pencereya dêûbav - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Nivîsa sernavê",
+        "description": "Sernavê şîretkar ji bo gihîştbarî û SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Têkiliya bi armancê re (ewlehî/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

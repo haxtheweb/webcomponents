@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Ohùn",
+    "description": "Èyí lè ṣàfihàn fídíò lọ́nà tó ṣeé wọlé sí gidigidi láìka orísun sí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Orísun",
+        "description": "URL fún mídíà yìí."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Àkọlé",
+        "description": "Àkọlé rírọrùn fún abẹ́ fídíò"
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Yan àwọ̀ àfikún fún ẹ̀rọ ìṣeré."
+      },
+      {
+        "property": "track",
+        "title": "Àkọlé ìsàlẹ̀",
+        "description": "URL fún fáìlì àkọlé ìsàlẹ̀."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Àwòrán kékeré",
+        "description": "Àṣàyàn. URL fún àwòrán kékeré/pósítà."
+      },
+      {
+        "property": "learningMode",
+        "title": "Tan ipò ẹ̀kọ́",
+        "description": "Ó ń pa sísáré síwájú àti yíyí padà sẹ́yìn."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Yọ bọ́tìnnì ṣíṣí lórí YouTube kúrò",
+        "description": "Ó ń yọ bọ́tìnnì fún ṣíṣí fídíò lórí YouTube kúrò."
+      },
+      {
+        "property": "linkable",
+        "title": "Fi ìjápọ̀ ìpín kún un?",
+        "description": "Ó ń pèsè ìjápọ̀ láti pín fídíò náà."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Ó ń fi hàn bóyá kí a lo CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Gbà láàyè ìṣeré lábẹ́lẹ̀",
+        "description": "Àwọn fídíò máa ń dánu dúró / ṣeré láìfọwọ́yí nígbà tí táàbù bá pàdánù ìfojúsí; èyí ń jẹ́ kí fídíò ṣeré láìsí pé táàbù wà ní ìfojúsí"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Àkòrí dúdú fún àkọsílẹ̀ ọ̀rọ̀",
+        "description": "Tan àkòrí dúdú fún àkọsílẹ̀ ọ̀rọ̀."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Pa Ìbáṣepọ̀",
+        "description": "Pa ipò ìbáṣepọ̀ tó ń jẹ́ kí àkọsílẹ̀ ọ̀rọ̀ ṣeé tẹ̀."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Fi àwọn àmì àkókò pamọ́",
+        "description": "Fi àwọn àmì àkókò pamọ́ lórí àkọsílẹ̀ ọ̀rọ̀."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Fi Àkọsílẹ̀ Ọ̀rọ̀ Pamọ́",
+        "description": "Fi àkọsílẹ̀ ọ̀rọ̀ pamọ́ ní àkọ́kọ́."
+      },
+      {
+        "property": "lang",
+        "title": "Èdè",
+        "description": "Èdè mídíà náà."
+      }
+    ]
+  }
+}

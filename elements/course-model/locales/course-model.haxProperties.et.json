@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kursuse mudel",
+    "description": "Interaktiivne paigutus kursuse mõistete jaoks koos üksikasjade, animatsiooni ja teadmiste kontrollidega."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "pealkiri"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Teabeala"
+      },
+      {
+        "title": "Üksikasjade ala"
+      },
+      {
+        "title": "Animatsiooni ala"
+      },
+      {
+        "title": "Teadmiste kontrolli ala"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logo ala"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-vísing",
+    "description": "CMS-vísingar útgreiddar á bakendanum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Navn",
+        "description": "Navn á vísingini úr CMS okkara"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Vísing",
+        "description": "Framseting innan ta vísingina úr CMS okkara"
+      }
+    ]
+  }
+}

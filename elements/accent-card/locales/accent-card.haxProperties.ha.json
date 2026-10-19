@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kati",
+    "description": "Kati mai salon accent na zaɓi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Kanun labari",
+        "description": "Kanu don kati."
+      },
+      {
+        "slot": "subheading",
+        "title": "Ƙaramin kanu",
+        "description": "Ƙaramin kanu na zaɓi don kati."
+      },
+      {
+        "slot": "content",
+        "title": "Abun ciki",
+        "description": "Abun ciki don kati."
+      },
+      {
+        "slot": "footer",
+        "title": "Ƙafa",
+        "description": "Ƙafa na zaɓi don kati."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Hoto",
+        "description": "Hoto na zaɓi"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Madadin Rubutun Hoto",
+        "description": "Madadin rubutu da ke bayyana hoton ga masu karanta allo. Bar shi babu komai kawai idan hoton na ado ne zalla."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Daidaita Hoto a Kwance",
+        "options": {
+          "left": "hagu",
+          "center": "tsakiya",
+          "right": "dama"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Daidaita Hoto a Tsaye",
+        "options": {
+          "top": "sama",
+          "center": "tsakiya",
+          "bottom": "ƙasa"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin Ƙawa",
+        "description": "Launin ƙawa na zaɓi."
+      },
+      {
+        "property": "dark",
+        "title": "Jigo Mai Duhu",
+        "description": "Kunna Jigon Duhu"
+      },
+      {
+        "property": "horizontal",
+        "title": "A kwance",
+        "description": "A kwance?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Accent na Kanu",
+        "description": "A yi amfani da launin accent a kanu?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Accent na Bango",
+        "description": "A yi amfani da launin accent a bangon kati?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Babu Accent na Iyaka",
+        "description": "A cire accent na iyaka?"
+      },
+      {
+        "property": "flat",
+        "title": "Lebur",
+        "description": "A cire inuwar akwati?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Kusurwa",
+        "description": "Abun ciki don kusurwar kati."
+      }
+    ]
+  }
+}

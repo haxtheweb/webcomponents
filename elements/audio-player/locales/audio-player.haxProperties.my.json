@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "အသံ",
+    "description": "ရင်းမြစ် မည်သို့ပင်ဖြစ်စေ ဗီဒီယိုကို အလွန် လက်လှမ်းမီသော နည်းဖြင့် တင်ပြနိုင်သည်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ရင်းမြစ်",
+        "description": "ဤမီဒီယာအတွက် URL။"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ခေါင်းစဉ်",
+        "description": "ဗီဒီယိုအောက်ရှိ ရိုးရှင်းသော ခေါင်းစဉ်"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "ဖွင့်စက်အတွက် accent အရောင်ကို ရွေးပါ။"
+      },
+      {
+        "property": "track",
+        "title": "စာတန်းထိုး",
+        "description": "စာတန်းထိုး ဖိုင်အတွက် URL။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Thumbnail ပုံ",
+        "description": "ရွေးချယ်နိုင်သည်။ thumbnail/poster ပုံအတွက် URL။"
+      },
+      {
+        "property": "learningMode",
+        "title": "သင်ယူမှုမုဒ် ဖွင့်ရန်",
+        "description": "ရှေ့သို့ အမြန်ရစ်ခြင်းနှင့် နောက်သို့ ပြန်ရစ်ခြင်းကို ပိတ်သည်။"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube တွင် ဖွင့်ရန် ခလုတ်ကို ဖယ်ရှားရန်",
+        "description": "ဗီဒီယိုကို YouTube တွင် ဖွင့်ရန် ခလုတ်ကို ဖယ်ရှားသည်။"
+      },
+      {
+        "property": "linkable",
+        "title": "မျှဝေရန် လင့်ခ် ထည့်မလား?",
+        "description": "ဗီဒီယို မျှဝေရန် လင့်ခ်ကို ပေးသည်။"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS သုံးမသုံး ညွှန်ပြသည်။",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "နောက်ခံ ဖွင့်ခြင်း ခွင့်ပြုရန်",
+        "description": "တက်ဘ် focus ပျောက်သောအခါ ဗီဒီယိုများ အလိုအလျောက် ရပ်/ဖွင့်သည်; ၎င်းသည် တက်ဘ် focus မရှိဘဲ ဗီဒီယို ဖွင့်နိုင်စေသည်"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "စာသားမှတ်တမ်းအတွက် အမှောင် အပြင်အဆင်",
+        "description": "စာသားမှတ်တမ်းအတွက် အမှောင် အပြင်အဆင် ဖွင့်ရန်။"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "အပြန်အလှန် ပိတ်ရန်",
+        "description": "စာသားမှတ်တမ်းကို နှိပ်နိုင်စေသော အပြန်အလှန်မုဒ်ကို ပိတ်ရန်။"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "အချိန်တံဆိပ်များ ဝှက်ရန်",
+        "description": "စာသားမှတ်တမ်းရှိ အချိန်တံဆိပ်များကို ဝှက်ရန်။"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "စာသားမှတ်တမ်း ဝှက်ရန်",
+        "description": "စာသားမှတ်တမ်းကို မူလအားဖြင့် ဝှက်ရန်။"
+      },
+      {
+        "property": "lang",
+        "title": "ဘာသာစကား",
+        "description": "မီဒီယာ၏ ဘာသာစကား။"
+      }
+    ]
+  }
+}

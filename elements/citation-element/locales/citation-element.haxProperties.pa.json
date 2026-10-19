@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ਸਰੋਤ ਹਵਾਲਾ",
+    "description": "ਤਿੰਨ ਪੇਸ਼ਕਾਰੀ ਮੋਡਾਂ ਵਾਲਾ ਹਵਾਲਾ ਐਲੀਮੈਂਟ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਹਵਾਲਾ ਦਿੱਤੀ ਰਚਨਾ ਦਾ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ ਲਿੰਕ",
+        "description": "ਹਵਾਲਾ ਦਿੱਤੀ ਰਚਨਾ ਦਾ ਸਰੋਤ URL।"
+      },
+      {
+        "property": "date",
+        "title": "ਪਹੁੰਚ ਦੀ ਮਿਤੀ",
+        "description": "ਸਰੋਤ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਮਿਤੀ।"
+      },
+      {
+        "property": "scope",
+        "title": "ਦਾਇਰਾ",
+        "description": "ਹਵਾਲਾ ਦੇਣ ਲਈ ਐਲੀਮੈਂਟ ਦਾਇਰਾ।",
+        "options": {
+          "sibling": "ਸਹਿ ਐਲੀਮੈਂਟ",
+          "parent": "ਮੂਲ ਐਲੀਮੈਂਟ"
+        }
+      },
+      {
+        "property": "license",
+        "title": "ਲਾਇਸੈਂਸ",
+        "description": "ਹਵਾਲਾ ਦਿੱਤੀ ਰਚਨਾ ਦਾ ਲਾਇਸੈਂਸ।"
+      },
+      {
+        "property": "creator",
+        "title": "ਸਿਰਜਣਹਾਰ",
+        "description": "ਹਵਾਲਾ ਦਿੱਤੀ ਰਚਨਾ ਦਾ ਸਿਰਜਣਹਾਰ ਜਾਂ ਮਾਲਕ।"
+      },
+      {
+        "property": "typeof",
+        "title": "OER ਸਕੀਮਾ ਕਿਸਮ",
+        "description": "ਇਸ ਹਵਾਲੇ ਲਈ OER ਸਕੀਮਾ ਕਲਾਸ। ਪੂਰਵ-ਨਿਰਧਾਰਤ oer:ReferencedMaterial ਹੈ; ਸਿਰਫ਼ ਵੈਧ OER ਕਲਾਸ ਨਾਲ ਬਦਲੋ (ਜਿਵੇਂ oer:SupportingMaterial)।"
+      }
+    ]
+  }
+}

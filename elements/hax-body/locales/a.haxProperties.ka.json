@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "საბაზისო ბმული",
+    "description": "საბაზისო ბმულის ელემენტი."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "ბმული",
+        "description": "დანიშნულების URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "ტექსტი",
+        "description": "ბმულის ხილული ტექსტი."
+      },
+      {
+        "attribute": "target",
+        "title": "სამიზნე",
+        "description": "სად გაიხსნას ბმული.",
+        "options": {
+          "": "იმავე ფანჯარაში",
+          "_blank": "ახალი ფანჯარა - _blank",
+          "_top": "ზედა ფანჯარა - _top",
+          "_parent": "მშობელი ფანჯარა - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "სათაურის ტექსტი",
+        "description": "სარეკომენდაციო სათაური ხელმისაწვდომობისა და SEO-სთვის."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "კავშირი დანიშნულების ადგილთან (უსაფრთხოება/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

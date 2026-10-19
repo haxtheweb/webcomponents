@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "સાપેક્ષ હેડિંગ",
+    "description": "પેરેન્ટના હેડિંગના આધારે સાચો હેડિંગ વંશવેલો આપે છે"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "પેરેન્ટ હેડિંગનું સંસાધન ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "લિંક બટન સુવિધા અક્ષમ કરે છે."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "કૉપિ લિંક બટનને હેડિંગની એકદમ જમણી બાજુએ ગોઠવે છે."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "પેરેન્ટ ન મળે તો હેડિંગ સ્તર."
+      },
+      {
+        "property": "copyMessage",
+        "description": "કૉપિ લિંકના ટોસ્ટ સંદેશ માટેના ડિફૉલ્ટ ટેક્સ્ટને બદલે છે."
+      },
+      {
+        "property": "linkLabel",
+        "description": "કૉપિ લિંક બટનના ડિફૉલ્ટ લેબલને બદલે છે."
+      },
+      {
+        "property": "linkIcon",
+        "description": "કૉપિ લિંક બટનના ડિફૉલ્ટ આઇકનને બદલે છે."
+      },
+      {
+        "property": "closeLabel",
+        "description": "કૉપિ લિંકના ટોસ્ટના બંધ કરો બટન માટેના ડિફૉલ્ટ લેબલને બદલે છે."
+      },
+      {
+        "property": "closeIcon",
+        "description": "કૉપિ લિંકના ટોસ્ટના બંધ કરો બટન માટેના ડિફૉલ્ટ આઇકનને બદલે છે."
+      }
+    ]
+  }
+}

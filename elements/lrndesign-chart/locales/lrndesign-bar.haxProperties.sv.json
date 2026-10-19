@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Stapeldiagram",
+    "description": "Skapar ett tillgängligt diagram baserat på en CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Accentfärg",
+        "description": "En valfri accentfärg."
+      },
+      {
+        "title": "Mörkt tema",
+        "description": "Aktivera mörkt tema"
+      },
+      {
+        "title": "CSV-fil",
+        "description": "Läs in data från en CSV."
+      },
+      {
+        "title": "Diagramtitel",
+        "description": "Tillgänglig alternativtext för diagrammet."
+      },
+      {
+        "title": "Diagrambeskrivning",
+        "description": "Tillgänglig beskrivning av diagrammet."
+      },
+      {
+        "title": "Skalnamn",
+        "description": "Förhållandet bredd:höjd för diagrammet (se https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings för $ct-scales och $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Visa rutnätsbakgrund"
+      },
+      {
+        "title": "Horisontella staplar",
+        "description": "Inverterar stapeldiagrammets axlar för att rita ett horisontellt stapeldiagram. Observera att du också måste invertera axelinställningarna eftersom Y-axeln nu visar etiketterna och X-axeln värdena."
+      },
+      {
+        "title": "Stapla staplar",
+        "description": "Om värdet är true staplas seriernas staplar."
+      },
+      {
+        "title": "Fördela serier",
+        "description": "Om värdet är true representerar varje stapel en serie och datamatrisen förväntas vara en endimensionell matris med datavärden i stället för en matris med serier."
+      },
+      {
+        "title": "Diagramutfyllnad (topp)"
+      },
+      {
+        "title": "Diagramutfyllnad (botten)"
+      },
+      {
+        "title": "Diagramutfyllnad (vänster)"
+      },
+      {
+        "title": "Diagramutfyllnad (höger)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vänd data",
+        "description": "Vänd ordningen på data inklusive etiketter, seriernas ordning samt hela seriernas datamatriser."
+      },
+      {
+        "title": "HTML-tabell",
+        "description": "Valfritt: Läs in data som en HTML-tabell."
+      },
+      {
+        "title": "Diagrammets minimum",
+        "description": "Genom att åsidosätta diagrammets naturliga lägsta värde kan du zooma in eller begränsa diagrammets lägsta visade värde"
+      },
+      {
+        "title": "Diagrammets maximum",
+        "description": "Genom att åsidosätta diagrammets naturliga högsta värde kan du zooma in eller begränsa diagrammets högsta visade värde"
+      },
+      {
+        "title": "X-axel: visa rutnät",
+        "description": "Visa X-axelns rutnät."
+      },
+      {
+        "title": "X-axelns förskjutning"
+      },
+      {
+        "title": "X-axelns position",
+        "description": "Position där etiketterna placeras. Kan sättas till \"start\" eller \"end\", där \"start\" motsvarar vänster eller topp på vertikal axel och \"end\" motsvarar höger eller botten på horisontell axel"
+      },
+      {
+        "title": "X-axel: visa etikett",
+        "description": "Visa X-axelns etikett."
+      },
+      {
+        "title": "X-axelns etikett (horisontell förskjutning)",
+        "description": "Horisontell position för X-axelns etiketter."
+      },
+      {
+        "title": "X-axelns etikett (vertikal förskjutning)",
+        "description": "Vertikal position för X-axelns etiketter."
+      },
+      {
+        "title": "X-axelns titel",
+        "description": "Valfri titel för X-axeln."
+      },
+      {
+        "title": "X-axelns titel (horisontell förskjutning)",
+        "description": "Horisontell position för X-axelns titel."
+      },
+      {
+        "title": "X-axelns titel (vertikal förskjutning)",
+        "description": "Vertikal position för X-axelns titel."
+      },
+      {
+        "title": "X-axelns titelankare",
+        "description": "Valfritt ankare för X-axelns titel.",
+        "options": {
+          "middle": "mitten",
+          "end": "slut",
+          "start": "start"
+        }
+      },
+      {
+        "title": "X-axelns minsta skalavstånd",
+        "description": "Anger minsta höjd i pixlar för skalstegen."
+      },
+      {
+        "title": "X-axelns skala (endast heltal)",
+        "description": "Använd endast heltalsvärden för skalstegen."
+      },
+      {
+        "title": "Y-axel: visa rutnät",
+        "description": "Visa Y-axelns rutnät."
+      },
+      {
+        "title": "Y-axelns förskjutning"
+      },
+      {
+        "title": "Y-axelns position",
+        "description": "Position där etiketterna placeras. Kan sättas till \"start\" eller \"end\", där \"start\" motsvarar vänster eller topp på vertikal axel och \"end\" motsvarar höger eller botten på horisontell axel"
+      },
+      {
+        "title": "Y-axel: visa etikett",
+        "description": "Visa Y-axelns etikett."
+      },
+      {
+        "title": "Y-axelns etikett (horisontell förskjutning)",
+        "description": "Horisontell position för Y-axelns etikett."
+      },
+      {
+        "title": "Y-axelns etikett (vertikal förskjutning)",
+        "description": "Vertikal position för Y-axelns etikett."
+      },
+      {
+        "title": "Y-axelns minsta skalavstånd",
+        "description": "Anger minsta höjd i pixlar för skalstegen."
+      },
+      {
+        "title": "Y-axelns skala (endast heltal)",
+        "description": "Använd endast heltalsvärden för skalstegen."
+      },
+      {
+        "title": "Y-axelns titel",
+        "description": "Valfri titel för Y-axeln."
+      },
+      {
+        "title": "Y-axelns titel (vertikal förskjutning)",
+        "description": "Horisontell position för Y-axelns titel."
+      },
+      {
+        "title": "Y-axelns titel (horisontell förskjutning)",
+        "description": "Horisontell position för Y-axelns titel."
+      },
+      {
+        "title": "Y-axelns titelankare",
+        "description": "Valfritt ankare för Y-axelns titel.",
+        "options": {
+          "middle": "mitten",
+          "end": "slut",
+          "start": "start"
+        }
+      },
+      {
+        "title": "Vänd Y-axelns titel",
+        "description": "Vända titeln för Y-axeln?"
+      },
+      {
+        "title": "Referensvärde",
+        "description": "Om inte lägsta/högsta värde anges uttryckligen centreras stapeldiagrammet kring noll som standard."
+      },
+      {
+        "title": "Avstånd mellan seriestaplar",
+        "description": "Ange avståndet i pixlar mellan staplar i en grupp."
+      },
+      {
+        "title": "Staplingsläge",
+        "description": "Om värdet är \"true\" bildar egenskapen en summa för varje seriepunkt. Detta påverkar även y-axeln och diagrammets totala gränser. Om värdet är \"false\" tvingar egenskapen de staplade staplarna att ritas från nollinjen. I staplat läge har egenskapen \"seriesBarDistance\" ingen effekt."
+      }
+    ]
+  }
+}

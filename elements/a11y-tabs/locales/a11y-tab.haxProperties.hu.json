@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Lap",
+    "description": "Egyetlen lap."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Lap ikonja"
+      },
+      {
+        "property": "disabled",
+        "title": "Letiltva"
+      },
+      {
+        "property": "label",
+        "title": "Lap címkéje"
+      },
+      {
+        "slot": "",
+        "title": "Lap tartalma",
+        "description": "A lap tartalma."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Egyedi azonosító"
+      },
+      {
+        "property": "flag",
+        "title": "Opcionális jelzőszöveg"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Opcionális jelzőikon"
+      }
+    ]
+  }
+}

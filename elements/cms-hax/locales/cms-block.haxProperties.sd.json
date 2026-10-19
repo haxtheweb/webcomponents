@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS بلاڪ",
+    "description": "بيڪ اينڊ تي ڏيکاريل CMS بلاڪ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "ماڊيول",
+        "description": "اسان جي CMS مان لوڊ ڪرڻ لاءِ ماڊيول"
+      },
+      {
+        "property": "blockDelta",
+        "title": "ڊيلٽا",
+        "description": "اسان جي CMS مان لوڊ ڪرڻ لاءِ بلاڪ جو ڊيلٽا"
+      }
+    ]
+  }
+}

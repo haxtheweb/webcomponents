@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ретро карточка",
+    "description": "Ретро дизайндагы жөнөкөй карточка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Аталышы",
+        "description": "Карточканын негизги аталышы."
+      },
+      {
+        "property": "url",
+        "description": "Карточканы басканда ачылуучу URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "Кошумча аталыш",
+        "description": "Карточканын кошумча аталышы."
+      },
+      {
+        "property": "tags",
+        "title": "Тегдер",
+        "description": "Үтүр менен бөлүнгөн тегдер."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Медиа булагы",
+        "description": "Негизги медиа булагы."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Курсор келгендеги булак",
+        "description": "Карточкага курсор келгенде же ал активдешкенде көрсөтүлүүчү медиа булагы."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Бүт карточкага колдонулуучу акцент түсү."
+      },
+      {
+        "property": "dark",
+        "title": "Караңгы",
+        "description": "Караңгы режимдин негизги түстөрүн колдонуу."
+      }
+    ]
+  }
+}

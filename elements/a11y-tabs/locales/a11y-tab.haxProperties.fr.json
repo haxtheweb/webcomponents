@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Onglet",
+    "description": "Un onglet unique."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icône de l'onglet"
+      },
+      {
+        "property": "disabled",
+        "title": "Désactivé"
+      },
+      {
+        "property": "label",
+        "title": "Libellé de l'onglet"
+      },
+      {
+        "slot": "",
+        "title": "Contenu de l'onglet",
+        "description": "Le contenu de l'onglet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID unique"
+      },
+      {
+        "property": "flag",
+        "title": "Texte d'indicateur facultatif"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Icône d'indicateur facultative"
+      }
+    ]
+  }
+}

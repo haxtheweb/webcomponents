@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "增强图片",
+    "description": "以多种增强效果呈现图片的方式。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "来源",
+        "description": "图片的 URL。"
+      },
+      {
+        "property": "alt",
+        "title": "替代文本",
+        "description": "向视障用户描述图片的文字。"
+      },
+      {
+        "property": "link",
+        "title": "链接",
+        "description": "将图片链接到某个 URL"
+      },
+      {
+        "property": "card",
+        "title": "卡片",
+        "description": "添加投影，使其看起来像凸起的卡片。"
+      },
+      {
+        "property": "box",
+        "title": "边框盒",
+        "description": "在图片周围添加可见的边框盒。"
+      },
+      {
+        "property": "offset",
+        "title": "偏移",
+        "description": "为图片设置向左或向右的偏移。",
+        "options": {
+          "none": "无",
+          "wide": "宽",
+          "narrow": "窄"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "引文出处",
+        "description": "图片的引用来源。"
+      },
+      {
+        "property": "caption",
+        "title": "说明文字",
+        "description": "图片的说明文字。"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "图片标题",
+        "description": "图片标签的标题。"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "图片描述",
+        "description": "图片标签的描述。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "缩略图",
+        "description": "缩略图来源。显示缩略图，但在对话框中打开完整图片。"
+      },
+      {
+        "property": "round",
+        "title": "圆形图片",
+        "description": "将图片裁剪为圆形外观。"
+      },
+      {
+        "property": "disableZoom",
+        "title": "禁用图片对话框",
+        "description": "禁止点击后在图片查看器对话框中打开图片。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "以 Markdown 渲染",
+        "description": "将说明文字和引用来源以 Markdown 渲染。"
+      }
+    ]
+  }
+}

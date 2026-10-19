@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex-Farbwähler",
+    "description": "Farbwähler für Hexcodes"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Wert",
+        "description": "Standard-Hexwert"
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiviert",
+        "description": "Das Textfeld deaktivieren"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Große Anzeige",
+        "description": "Farbe in großer Anzeige einbeziehen"
+      }
+    ]
+  }
+}

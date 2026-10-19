@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "cursusmodel",
+    "description": "Interactieve indeling voor cursusconcepten met details, animatie en kennischecks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titel"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Informatiegebied"
+      },
+      {
+        "title": "Detailgebied"
+      },
+      {
+        "title": "Animatiegebied"
+      },
+      {
+        "title": "Gebied voor kennischeck"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logogebied"
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ceannteideal coibhneasta",
+    "description": "aschuireann sé an t-ordlathas ceart ceannteideal bunaithe ar cheannteideal an tuismitheora"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID Acmhainne Cheannteideal an Tuismitheora"
+      },
+      {
+        "property": "disableLink",
+        "description": "Díchumasaíonn sé gné an chnaipe naisc."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Ailíníonn sé an cnaipe cóipeála naisc ar an taobh deas ar fad den cheannteideal."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Leibhéal ceannteidil mura n-aimsítear an tuismitheoir."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Sáraíonn sé an téacs réamhshocraithe do theachtaireacht thósta an naisc chóipeála."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Sáraíonn sé lipéad réamhshocraithe an chnaipe cóipeála naisc."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Sáraíonn sé deilbhín réamhshocraithe an chnaipe cóipeála naisc."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Sáraíonn sé an lipéad réamhshocraithe do chnaipe dúnta thósta an naisc chóipeála."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Sáraíonn sé an deilbhín réamhshocraithe do chnaipe dúnta thósta an naisc chóipeála."
+      }
+    ]
+  }
+}

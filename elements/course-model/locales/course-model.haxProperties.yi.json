@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "קורס־מאָדעל",
+    "description": "אינטעראַקטיווער אויסלייג פֿאַר קורס־קאָנצעפּטן מיט פּרטים, אַנימאַציע און וויסן־קאָנטראָלן."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "טיטל"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "אינפֿאָרמאַציע־שטח"
+      },
+      {
+        "title": "פּרטים־שטח"
+      },
+      {
+        "title": "אַנימאַציע־שטח"
+      },
+      {
+        "title": "וויסן־קאָנטראָל־שטח"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "לאָגאָ־שטח"
+      }
+    ]
+  }
+}

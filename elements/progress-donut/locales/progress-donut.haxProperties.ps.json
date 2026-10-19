@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "د پرمختګ ډونټ",
+    "description": "د پرمختګ ډونټ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د عنصر سرلیک"
+      },
+      {
+        "property": "desc",
+        "title": "تشریح",
+        "description": "د لاسرسي وړ اوږده تشریح"
+      },
+      {
+        "property": "imageSrc",
+        "title": "د انځور سرچینه",
+        "description": "د ډونټ دننه د انځور سرچینه."
+      },
+      {
+        "property": "imageAlt",
+        "title": "د انځور بدیل متن",
+        "description": "د انځور لپاره بدیل متن."
+      },
+      {
+        "property": "animated",
+        "title": "متحرک",
+        "description": "ایا پرمختګ په لومړي پورته کېدو کې متحرک شي"
+      },
+      {
+        "property": "complete",
+        "title": "بشپړ",
+        "description": "د بشپړ شوو ارزښتونو یو ارې."
+      },
+      {
+        "property": "total",
+        "title": "ټول",
+        "description": "ټول کله چې ټول توکي بشپړ وي."
+      },
+      {
+        "property": "startAngle",
+        "title": "د پیل زاویه",
+        "description": "د ډونټ هغه زاویه چې پرمختګ ترې پیلېږي"
+      }
+    ]
+  }
+}

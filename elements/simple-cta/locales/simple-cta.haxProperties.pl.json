@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Wezwanie do działania",
+    "description": "Prosty przycisk z linkiem do podjęcia działania."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etykieta",
+        "description": "Etykieta linku"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Wpisz link do dowolnego zasobu"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ukryj ikonę",
+        "description": "Ukryj ikonę akcentującą tekst"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona linku akcji"
+      }
+    ]
+  }
+}

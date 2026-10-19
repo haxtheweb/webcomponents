@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Bhuroko reHtml",
+    "description": "Bhuroko reHTML rakareruka rinopa kubatanidza kweHAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Kodhi yeHTML yaunoda kuratidza muzvirimo"
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relativni naslov",
+    "description": "daje ispravnu hijerarhiju naslova na temelju nadređenog naslova"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID resursa nadređenog naslova"
+      },
+      {
+        "property": "disableLink",
+        "description": "Onemogućuje značajku gumba poveznice."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Poravnava gumb za kopiranje poveznice na krajnju desnu stranu naslova."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Razina naslova ako nadređeni nije pronađen."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Nadjačava zadani tekst skočne poruke kopiranja poveznice."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Nadjačava zadanu oznaku gumba za kopiranje poveznice."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Nadjačava zadanu ikonu gumba za kopiranje poveznice."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Nadjačava zadanu oznaku gumba za zatvaranje skočne poruke kopiranja poveznice."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Nadjačava zadanu ikonu gumba za zatvaranje skočne poruke kopiranja poveznice."
+      }
+    ]
+  }
+}

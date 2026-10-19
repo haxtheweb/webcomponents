@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Паралакс слика",
+    "description": "Слика која се помера при скроловању"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Слика",
+        "description": "слика која ће бити укључена у позадину"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Област наслова",
+        "description": "Област текста наслова"
+      }
+    ]
+  }
+}

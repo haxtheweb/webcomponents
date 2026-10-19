@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Vista di situ",
+    "description": "Un bloccu dinamicu chì interroga è affissa dati di u situ secondu criterii"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL di a vista",
+        "description": "Parametri di dumanda per u flussu di dati di a vista. I pudete ottene da u pannellu di e viste."
+      },
+      {
+        "property": "renderer",
+        "title": "Modu d'affissera",
+        "description": "Cumu i risultati di a vista devenu esse affissati"
+      },
+      {
+        "property": "entity",
+        "title": "Tipu d'entità",
+        "description": "Tipu d'entità adupratu per analizà a risposta",
+        "options": {
+          "": "Predefinitu (elementi)",
+          "item": "Elementu",
+          "page": "Pagina",
+          "file": "Schedariu",
+          "tag": "Etichetta",
+          "block": "Bloccu",
+          "view": "Vista",
+          "theme": "Tema",
+          "region": "Regione",
+          "customElement": "Elementu persunalizatu"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Rompe a vista di situ",
+        "description": "Cunvertisce in cuntenutu staticu per a mudifica diretta; ferma l'aghjurnamentu autumaticu da a fonte."
+      }
+    ]
+  }
+}

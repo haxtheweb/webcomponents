@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kod namunasi",
+    "description": "Sahifada ajratib koʻrsatilgan kod namunasi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kodni ajratib koʻrsatish",
+        "description": "Kod maydoniga qoʻllanadigan sintaksisni ajratib koʻrsatish",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON maʼlumotlari",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Buferga nusxalash tugmasi",
+        "description": "yuqori oʻng burchakdagi buferga nusxalash tugmasi"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Ajratish boshi",
+        "description": "Ajratish boshlanadigan qator raqami"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Ajratish oxiri",
+        "description": "Ajratish tugaydigan qator"
+      }
+    ]
+  }
+}

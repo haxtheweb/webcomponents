@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html ბლოკი",
+    "description": "საბაზისო HTML ბლოკი HAXschema-ს მიერთებით"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML კოდი, რომლის კონტენტში წარმოდგენაც გსურთ"
+      }
+    ]
+  }
+}

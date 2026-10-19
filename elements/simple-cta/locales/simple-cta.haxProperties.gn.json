@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Tembiapo rehenói",
+    "description": "Peteĩ votõ mbykymi joajuha reheve rejapo hag̃ua tembiapo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Teramoĩ",
+        "description": "Joajuha réra"
+      },
+      {
+        "property": "link",
+        "title": "Joajuha",
+        "description": "Ehai peteĩ joajuha oimeraẽ mba'erepýpe"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Emokañy ta'ãnga'i",
+        "description": "Emokañy ta'ãnga'i ojepurúva moñe'ẽrã jehechaukave hag̃ua"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ta'ãnga'i",
+        "description": "Tembiapo joajuha ta'ãnga'i"
+      }
+    ]
+  }
+}

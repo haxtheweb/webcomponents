@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "புள்ளிப் பட்டியல்",
+    "description": "புள்ளியிட்ட பட்டியலை உருவாக்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "புள்ளி பாணி",
+        "description": "வரிசையற்ற பட்டியல் புள்ளிகளுக்குப் பயன்படும் பாணி.",
+        "options": {
+          "": "இயல்புநிலை (சதுரம்)",
+          "list-disc": "வட்டத் தட்டு",
+          "list-circle": "வட்டம்",
+          "list-square": "சதுரம்"
+        }
+      }
+    ]
+  }
+}

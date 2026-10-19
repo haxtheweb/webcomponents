@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Từ vựng",
+    "description": "Thuật ngữ từ vựng"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Thuật ngữ"
+      },
+      {
+        "slot": "",
+        "title": "Định nghĩa",
+        "description": "Định nghĩa hiển thị khi nhấp vào thuật ngữ."
+      },
+      {
+        "property": "description",
+        "title": "Mô tả (OER Schema)",
+        "description": "OER Schema: mô tả ngắn về thuật ngữ từ vựng. Tự động lấy từ văn bản định nghĩa nếu để trống."
+      }
+    ]
+  }
+}

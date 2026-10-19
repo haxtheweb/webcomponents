@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ريٽرو ڪارڊ",
+    "description": "ريٽرو ڊيزائن سان سادو ڪارڊ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "ڪارڊ جو مکيه عنوان."
+      },
+      {
+        "property": "url",
+        "description": "ڪارڊ تي ڪلڪ ڪرڻ تي کلندڙ URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "ذيلي عنوان",
+        "description": "ڪارڊ جو ذيلي عنوان."
+      },
+      {
+        "property": "tags",
+        "title": "ٽيگ",
+        "description": "ڪاما سان الڳ ڪيل ٽيگ."
+      },
+      {
+        "property": "mediaSource",
+        "title": "ميڊيا جو ذريعو",
+        "description": "مکيه ميڊيا جو ذريعو."
+      },
+      {
+        "property": "hoverSource",
+        "title": "هوور تي ذريعو",
+        "description": "ڪارڊ تي هوور يا چالو ڪرڻ وقت ڏيکاريل ميڊيا ذريعو."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "سڄي ڪارڊ تي لاڳو ٿيل ايڪسينٽ رنگ."
+      },
+      {
+        "property": "dark",
+        "title": "ڊارڪ",
+        "description": "ڊارڪ موڊ جا بنيادي رنگ استعمال ڪريو."
+      }
+    ]
+  }
+}

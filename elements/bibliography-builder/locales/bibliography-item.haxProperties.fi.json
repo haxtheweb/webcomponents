@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Lähdeluettelon kohde",
+    "description": "Kohde, joka edustaa yksittäistä lähdeviitettä lähdeluettelossa ja tukee useita muotoja ja vientivaihtoehtoja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tyyppi",
+        "description": "Lähdeviitteen tyyppi",
+        "options": {
+          "web": "Verkko",
+          "journal": "Aikakauslehti",
+          "book": "Kirja"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Kohteen otsikko"
+      },
+      {
+        "property": "authors",
+        "title": "Tekijä(t)",
+        "description": "Aikajanan tapahtumat"
+      },
+      {
+        "property": "publisher",
+        "title": "Julkaisija",
+        "description": "Alkuperäinen verkkosivusto"
+      }
+    ]
+  }
+}

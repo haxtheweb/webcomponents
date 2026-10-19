@@ -57,7 +57,7 @@ class FullWidthImage extends I18NMixin(LitElement) {
           background-color: rgba(0, 0, 0, 0.6);
           padding: var(--ddd-spacing-25, 100px);
           height: var(--ddd-spacing-25, 100px);
-          transition: 0.3s all ease-in-out;
+          transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
         }
 
         @media (prefers-reduced-motion: reduce) {

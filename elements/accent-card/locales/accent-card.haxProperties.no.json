@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kort",
+    "description": "Et kort med valgfri aksentstil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Overskrift",
+        "description": "En overskrift for kortet."
+      },
+      {
+        "slot": "subheading",
+        "title": "Undertittel",
+        "description": "En valgfri undertittel for kortet."
+      },
+      {
+        "slot": "content",
+        "title": "Innhold",
+        "description": "Innhold for kortet."
+      },
+      {
+        "slot": "footer",
+        "title": "Bunntekst",
+        "description": "En valgfri bunntekst for kortet."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Bilde",
+        "description": "Valgfritt bilde"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-tekst for bilde",
+        "description": "Alternativ tekst som beskriver bildet for skjermlesere. La stå tom bare hvis bildet er rent dekorativt."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Horisontal bildejustering",
+        "options": {
+          "left": "venstre",
+          "center": "midtstilt",
+          "right": "høyre"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Vertikal bildejustering",
+        "options": {
+          "top": "topp",
+          "center": "midtstilt",
+          "bottom": "bunn"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentfarge",
+        "description": "En valgfri aksentfarge."
+      },
+      {
+        "property": "dark",
+        "title": "Mørkt tema",
+        "description": "Aktiver mørkt tema"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horisontal",
+        "description": "Horisontal retning?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Aksent på overskrift",
+        "description": "Bruke aksentfarge på overskriften?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Aksent på bakgrunn",
+        "description": "Bruke aksentfarge på kortets bakgrunn?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Ingen kantaksent",
+        "description": "Fjerne kantaksent?"
+      },
+      {
+        "property": "flat",
+        "title": "Flat",
+        "description": "Fjerne skygge?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Hjørne",
+        "description": "Innhold for kortets hjørne."
+      }
+    ]
+  }
+}

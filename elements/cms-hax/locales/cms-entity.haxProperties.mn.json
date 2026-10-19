@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS нэгж",
+    "description": "Backend дээр харуулагдах CMS нэгж"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Төрөл",
+        "description": "манай CMS-ийн төрөл",
+        "options": {
+          "node": "Зангилаа",
+          "user": "Хэрэглэгч",
+          "file": "Файл"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "манай CMS-ийн id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Харуулах горим",
+        "description": "манай CMS-ийн харуулах горим"
+      }
+    ]
+  }
+}

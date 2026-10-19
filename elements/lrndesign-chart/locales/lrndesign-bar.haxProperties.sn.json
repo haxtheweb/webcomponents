@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Chati yeMabhawa",
+    "description": "Inogadzira chati inowanikwa nevose zvichibva paCSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ruvara Rwekusimbisa",
+        "description": "Ruvara rwekusimbisa rusingamanikidzwi."
+      },
+      {
+        "title": "Dingindira Rerima",
+        "description": "Batidza Dingindira reRima"
+      },
+      {
+        "title": "Faira reCSV",
+        "description": "Rodha data kubva paCSV."
+      },
+      {
+        "title": "Zita reChati",
+        "description": "Mavara ealt anowanikwa nevose echati yako."
+      },
+      {
+        "title": "Tsananguro yeChati",
+        "description": "Tsananguro inowanikwa nevose yechati yako."
+      },
+      {
+        "title": "Zita reChiyero",
+        "description": "Chiyero chehupamhi:hurefu hwechati (Ona https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings kuti uwane $ct-scales ne$ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Ratidza Grid Kumashure"
+      },
+      {
+        "title": "Mabhawa Akatwasuka",
+        "description": "Inopindura maakisi echati yemabhawa kuti idhirowe chati yemabhawa akatwasuka. Ziva kuti unofanirawo kupindura marongerwo emaakisi ako sezvo Y Axis ichizoratidza mazita uye X Axis zvikosho."
+      },
+      {
+        "title": "Unganidza Mabhawa",
+        "description": "Kana yaiswa ku true chinhu ichi chinoita kuti mabhawa eseries aunganidzwe pamusoro peumwe."
+      },
+      {
+        "title": "Patsanura Series",
+        "description": "Kana yaiswa ku true bhawa rimwe nerimwe richamiririra series uye array yedata inotarisirwa kuva array yedivi rimwe yezvikosho zvedata kwete array yeseries."
+      },
+      {
+        "title": "Padding yeChati (pamusoro)"
+      },
+      {
+        "title": "Padding yeChati (pazasi)"
+      },
+      {
+        "title": "Padding yeChati (kuruboshwe)"
+      },
+      {
+        "title": "Padding yeChati (kurudyi)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pindura Data",
+        "description": "Pindura data kusanganisira mazita, nhevedzano yeseries pamwe chete nemaarray ose edata reseries."
+      },
+      {
+        "title": "Tafura yeHTML",
+        "description": "Hazvimanikidzwe: Rodha data setafura yeHTML."
+      },
+      {
+        "title": "Pasi peChati",
+        "description": "Kutsiva pasi chaipo pechati kunokubvumira kukurisa kana kudzikamisa kukosha kwepasi kunoratidzwa nechati"
+      },
+      {
+        "title": "Pamusoro peChati",
+        "description": "Kutsiva pamusoro chaipo pechati kunokubvumira kukurisa kana kudzikamisa kukosha kwepamusoro kunoratidzwa nechati"
+      },
+      {
+        "title": "X-Axis Ratidza Grid",
+        "description": "Ratidza grid yeX-Axis."
+      },
+      {
+        "title": "Kutsauka kweX-Axis"
+      },
+      {
+        "title": "Nzvimbo yeX-Axis",
+        "description": "Nzvimbo panoiswa mazita. Inogona kuiswa ku \"start\" kana \"end\" apo \"start\" yakaenzana nekuruboshwe kana pamusoro paaxis yakamira uye \"end\" yakaenzana nekurudyi kana pazasi paaxis yakatwasuka"
+      },
+      {
+        "title": "X-Axis Ratidza Zita",
+        "description": "Ratidza zita reX-Axis."
+      },
+      {
+        "title": "Zita reX-Axis (kutsauka kwakatwasuka)",
+        "description": "Nzvimbo yakatwasuka yemazita eX-Axis."
+      },
+      {
+        "title": "Zita reX-Axis (kutsauka kwakamira)",
+        "description": "Nzvimbo yakamira yemazita eX-Axis."
+      },
+      {
+        "title": "Musoro weX-Axis",
+        "description": "Musoro usingamanikidzwe weX-axis."
+      },
+      {
+        "title": "Musoro weX-Axis (kutsauka kwakatwasuka)",
+        "description": "Nzvimbo yakatwasuka yemusoro weX-Axis."
+      },
+      {
+        "title": "Musoro weX-Axis (kutsauka kwakamira)",
+        "description": "Nzvimbo yakamira yemusoro weX-Axis."
+      },
+      {
+        "title": "Anchor yeMusoro weX-Axis",
+        "description": "Anchor isingamanikidzwe yemusoro weX-axis.",
+        "options": {
+          "middle": "pakati",
+          "end": "kumagumo",
+          "start": "kutanga"
+        }
+      },
+      {
+        "title": "Nzvimbo Diki yeChiyero cheX-Axis",
+        "description": "Inotaura hurefu hushoma mumapikseli hwematanho echiyero."
+      },
+      {
+        "title": "Chiyero cheX-Axis (nhamba dzakazara chete)",
+        "description": "Shandisa nhamba dzakazara chete pamatanho echiyero."
+      },
+      {
+        "title": "Y-Axis: Ratidza Grid",
+        "description": "Ratidza grid yeY-Axis."
+      },
+      {
+        "title": "Kutsauka kweY-Axis"
+      },
+      {
+        "title": "Nzvimbo yeY-Axis",
+        "description": "Nzvimbo panoiswa mazita. Inogona kuiswa ku \"start\" kana \"end\" apo \"start\" yakaenzana nekuruboshwe kana pamusoro paaxis yakamira uye \"end\" yakaenzana nekurudyi kana pazasi paaxis yakatwasuka"
+      },
+      {
+        "title": "Y-Axis Ratidza Zita",
+        "description": "Ratidza zita reY-Axis."
+      },
+      {
+        "title": "Zita reY-Axis (kutsauka kwakatwasuka)",
+        "description": "Nzvimbo yakatwasuka yezita reY-Axis."
+      },
+      {
+        "title": "Zita reY-Axis (kutsauka kwakamira)",
+        "description": "Nzvimbo yakamira yezita reY-Axis."
+      },
+      {
+        "title": "Nzvimbo Diki yeChiyero cheY-Axis",
+        "description": "Inotaura hurefu hushoma mumapikseli hwematanho echiyero."
+      },
+      {
+        "title": "Chiyero cheY-Axis (nhamba dzakazara chete)",
+        "description": "Shandisa nhamba dzakazara chete pamatanho echiyero."
+      },
+      {
+        "title": "Musoro weY-Axis",
+        "description": "Musoro usingamanikidzwe weY-axis."
+      },
+      {
+        "title": "Musoro weY-Axis (kutsauka kwakamira)",
+        "description": "Nzvimbo yakatwasuka yemusoro weY-Axis."
+      },
+      {
+        "title": "Musoro weY-Axis (kutsauka kwakatwasuka)",
+        "description": "Nzvimbo yakatwasuka yemusoro weY-Axis."
+      },
+      {
+        "title": "Anchor yeMusoro weY-Axis",
+        "description": "Anchor isingamanikidzwe yemusoro weY-axis.",
+        "options": {
+          "middle": "pakati",
+          "end": "kumagumo",
+          "start": "kutanga"
+        }
+      },
+      {
+        "title": "Pindura Musoro weY-Axis",
+        "description": "Pindura musoro weY-axis?"
+      },
+      {
+        "title": "Kukosha kweReferensi",
+        "description": "Kunze kwekunge pasi/pamusoro zvaiswa zvakajeka, chati yemabhawa ichaiswa pakati pazero sezvakagara."
+      },
+      {
+        "title": "Chinhambwe cheMabhawa eSeries",
+        "description": "Taura chinhambwe mumapikseli chemabhawa muboka."
+      },
+      {
+        "title": "Modhi yeKuunganidza",
+        "description": "Kana yaiswa ku \"true\" chinhu ichi chichagadzira huwandu hwose papoinzi imwe neimwe yeseries. Izvi zvichakanganisawo y-axis nemiganhu yose yechati. Kana yaiswa ku \"false\" chinhu ichi chichamanikidza mabhawa akaunganidzwa kudhirowewa kubva pamutsetse wezero. Mumodhi yekuunganidza chinhu che \"seriesBarDistance\" hachizoshandi."
+      }
+    ]
+  }
+}

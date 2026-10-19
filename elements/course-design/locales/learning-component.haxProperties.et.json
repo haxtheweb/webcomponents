@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Õppekomponent",
+    "description": "Kaart, mille abil õpetajad saavad edastada pedagoogikat ja õpetamisstrateegiaid."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tüüp",
+        "description": "Kasutatava kaardi tüüp."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alapealkiri",
+        "description": "Kaardi alapealkiri."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Kaardi valikuline link (õpieesmärkide puhul link pole saadaval)."
+      },
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Määra pealkiri; see asendab tüübipõhise pealkirja"
+      },
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Määra ikoon; see asendab tüübipõhise ikooni"
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "Määra rõhuvärv; see asendab tüübipõhise värvi"
+      },
+      {
+        "slot": "",
+        "title": "Sisukord"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAX-നുള്ള ഡിസൈൻ സിസ്റ്റം നടപ്പാക്കൽ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "റെൻഡർ ചെയ്യേണ്ട ഓപ്ഷൻ",
+        "options": {
+          "*": "പൂർണ്ണ സ്റ്റൈൽ ഗൈഡ്"
+        }
+      }
+    ]
+  }
+}

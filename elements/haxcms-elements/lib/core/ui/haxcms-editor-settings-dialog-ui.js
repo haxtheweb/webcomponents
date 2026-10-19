@@ -93,7 +93,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
 
         :host([busy]) {
           pointer-events: none;
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
         }
 
         .panel-shell {

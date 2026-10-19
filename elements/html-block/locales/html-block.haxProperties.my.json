@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html ဘလော့ခ်",
+    "description": "HAXschema ချိတ်ဆက်မှု ပေးသော အခြေခံ HTML ဘလော့ခ်"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "အကြောင်းအရာတွင် တင်ပြလိုသော HTML ကုဒ်"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Nummerert liste",
+    "description": "Lag en nummerert liste."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Nummerstil",
+        "description": "Stil som brukes for nummereringen i nummererte lister.",
+        "options": {
+          "": "Standard (desimal)",
+          "list-decimal-leading-zero": "Desimal med innledende null (01, 02, 03)",
+          "list-lower-alpha": "Små bokstaver (a, b, c)",
+          "list-upper-alpha": "Store bokstaver (A, B, C)",
+          "list-lower-roman": "Små romertall (i, ii, iii)",
+          "list-upper-roman": "Store romertall (I, II, III)"
+        }
+      }
+    ]
+  }
+}

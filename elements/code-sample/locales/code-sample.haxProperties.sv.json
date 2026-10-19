@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kodexempel",
+    "description": "Ett kodexempel med syntaxmarkering på sidan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kodmarkering",
+        "description": "Syntaxmarkering att tillämpa på kodområdet",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-data",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Knapp för att kopiera till urklipp",
+        "description": "knapp uppe till höger med texten kopiera till urklipp"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Markering start",
+        "description": "Radnummer där markeringen börjar"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Markering slut",
+        "description": "Rad där markeringen slutar"
+      }
+    ]
+  }
+}

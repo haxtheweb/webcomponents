@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Bọ́tìnnì Ìwé-e",
+    "description": "Bọ́tìnnì tó so mọ́ Ìwé-e kan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé bọ́tìnnì."
+      },
+      {
+        "property": "link",
+        "title": "Ìjápọ̀",
+        "description": "Ìjápọ̀ láti darí sí nígbà títẹ̀."
+      },
+      {
+        "property": "icon",
+        "title": "Àmì",
+        "description": "Àmì láti ṣojú ìjápọ̀ yìí"
+      }
+    ]
+  }
+}

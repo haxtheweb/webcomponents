@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex saýlaýjy",
+    "description": "Hex kod reňk saýlaýjy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Baha",
+        "description": "Deslapky hex bahasy"
+      },
+      {
+        "property": "disabled",
+        "title": "Öçürilen",
+        "description": "Tekst meýdanyny öçür"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Uly görkeziş",
+        "description": "Reňki uly görkezişe goş"
+      }
+    ]
+  }
+}

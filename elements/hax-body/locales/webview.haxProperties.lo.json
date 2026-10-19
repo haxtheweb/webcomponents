@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "URL ສຳລັບຊັບພະຍາກອນນີ້."
+      }
+    ]
+  }
+}

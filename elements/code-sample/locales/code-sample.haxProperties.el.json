@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Δείγμα κώδικα",
+    "description": "Ένα δείγμα κώδικα με επισήμανση στη σελίδα"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Επισήμανση κώδικα",
+        "description": "Επισήμανση σύνταξης που εφαρμόζεται στην περιοχή κώδικα",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Δεδομένα JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Κουμπί αντιγραφής στο πρόχειρο",
+        "description": "κουμπί πάνω δεξιά που γράφει αντιγραφή στο πρόχειρο"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Αρχή επισήμανσης",
+        "description": "Αριθμός γραμμής για έναρξη της επισήμανσης"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Τέλος επισήμανσης",
+        "description": "Γραμμή στην οποία τελειώνει η επισήμανση"
+      }
+    ]
+  }
+}

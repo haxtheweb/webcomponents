@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Поничка на напредъка",
+    "description": "Поничка за напредък"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Заглавие",
+        "description": "Заглавието на елемента"
+      },
+      {
+        "property": "desc",
+        "title": "Описание",
+        "description": "Достъпно дълго описание"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Източник на изображението",
+        "description": "Източник на изображението в поничката."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Алтернативен текст на изображението",
+        "description": "Алтернативен текст за изображението."
+      },
+      {
+        "property": "animated",
+        "title": "Анимирано",
+        "description": "Дали напредъкът да се анимира при първото зареждане"
+      },
+      {
+        "property": "complete",
+        "title": "Завършено",
+        "description": "Масив от завършени стойности."
+      },
+      {
+        "property": "total",
+        "title": "Общо",
+        "description": "Общо, когато всички елементи са завършени."
+      },
+      {
+        "property": "startAngle",
+        "title": "Начален ъгъл",
+        "description": "Ъгъл на поничката, от който започва напредъкът"
+      }
+    ]
+  }
+}

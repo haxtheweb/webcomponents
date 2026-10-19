@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Maudhui ya Ukurasa ya Nasibu",
+    "description": "Onyesha kipengele cha nasibu cha kiwango cha juu kutoka ukurasa uliochaguliwa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Ukurasa",
+        "description": "Chagua ukurasa wa kuchukua maudhui ya nasibu. Kipengele kitaonyesha kwa nasibu mojawapo ya vipengele vya HTML vya kiwango cha juu kutoka ukurasa huu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Shkarkim i fletës së punës",
+    "description": "Një buton për shfaqjen e skedarëve të disponueshëm për shkarkim."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli i shkarkimit."
+      },
+      {
+        "property": "link",
+        "title": "Lidhja",
+        "description": "Lidhja për shkarkimin."
+      }
+    ]
+  }
+}

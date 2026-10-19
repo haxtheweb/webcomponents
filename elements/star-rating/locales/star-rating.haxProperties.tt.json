@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Йолдыз рейтингы",
+    "description": "Рейтингны күрсәтү виджеты яки бәяләү төймәсе."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Балл",
+        "description": "Хәзерге балл кыйммәте."
+      },
+      {
+        "property": "possible",
+        "title": "Мөмкин булган",
+        "description": "Мөмкин булган иң югары балл."
+      },
+      {
+        "property": "numStars",
+        "title": "Йолдызлар саны",
+        "description": "Күрсәтелә торган йолдызлар саны."
+      },
+      {
+        "property": "interactive",
+        "title": "Интерактив",
+        "description": "Кулланучыга рейтинг куярга рөхсәт итү."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Рубрика шкаласы режимы",
+        "description": "Һәр йолдыз өчен OER Schema RubricScale һәм RubricLevel метамәгълүматларын (levelOrdinal/levelPoints) чыгару."
+      }
+    ]
+  }
+}

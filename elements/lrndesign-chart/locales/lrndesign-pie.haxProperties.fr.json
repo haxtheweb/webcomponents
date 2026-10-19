@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Graphique circulaire",
+    "description": "Crée un graphique accessible à partir d'un fichier CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Couleur d'accent",
+        "description": "Une couleur d'accent facultative."
+      },
+      {
+        "title": "Thème sombre",
+        "description": "Activer le thème sombre"
+      },
+      {
+        "title": "Fichier CSV",
+        "description": "Charger des données depuis un fichier CSV."
+      },
+      {
+        "title": "Titre du graphique",
+        "description": "Texte alternatif accessible pour votre graphique."
+      },
+      {
+        "title": "Description du graphique",
+        "description": "Description accessible de votre graphique."
+      },
+      {
+        "title": "Nom de l'échelle",
+        "description": "Le rapport largeur:hauteur du graphique (voir https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings pour $ct-scales et $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Anneau"
+      },
+      {
+        "title": "Afficher le libellé"
+      },
+      {
+        "title": "Angle de départ"
+      },
+      {
+        "title": "Marge intérieure"
+      },
+      {
+        "title": "Total",
+        "description": "Total facultatif que vous pouvez indiquer. En indiquant une valeur totale, la somme des valeurs de la série doit atteindre ce total pour tracer un cercle complet. Vous pouvez utiliser ce paramètre pour ne tracer qu'une partie d'un graphique circulaire ou d'une jauge."
+      },
+      {
+        "title": "Ignorer les valeurs vides",
+        "description": "Les valeurs vides seront ignorées pour éviter de tracer des secteurs et des libellés inutiles."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Inverser les données",
+        "description": "Inverser les données, y compris les libellés, l'ordre des séries ainsi que l'ensemble des tableaux de données des séries."
+      },
+      {
+        "title": "Tableau HTML",
+        "description": "Facultatif : charger les données sous forme de tableau HTML."
+      },
+      {
+        "title": "Épaisseur du trait de l'anneau"
+      },
+      {
+        "title": "Anneau plein",
+        "description": "Tracer les segments de l'anneau sous forme de formes plutôt que de traits."
+      },
+      {
+        "title": "Direction des libellés",
+        "description": "Tracer les segments de l'anneau sous forme de formes plutôt que de traits.",
+        "options": {
+          "neutral": "neutre",
+          "explode": "vers l'extérieur",
+          "implode": "vers l'intérieur"
+        }
+      },
+      {
+        "title": "Décalage des libellés",
+        "description": "Décalage de la position du libellé par rapport à la position standard, située à mi-distance du rayon. Cette valeur peut être positive ou négative. Les valeurs positives éloignent le libellé du centre."
+      },
+      {
+        "title": "Position des libellés",
+        "options": {
+          "inside": "intérieur",
+          "outside": "extérieur",
+          "center": "centre"
+        }
+      }
+    ]
+  }
+}

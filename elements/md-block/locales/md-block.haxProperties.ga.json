@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Bloc d'ábhar markdown go díreach nó lódáilte go cianda"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown amh"
+      },
+      {
+        "property": "source",
+        "title": "Foinse",
+        "description": "Comhad foinse don markdown"
+      }
+    ]
+  }
+}

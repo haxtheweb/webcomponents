@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "პარალაქს-სურათი",
+    "description": "სურათის გადახვევით მოძრაობა"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "სურათი",
+        "description": "ფონზე გამოსაყენებელი სურათი"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "სათაურის არე",
+        "description": "სათაურის ტექსტის არე"
+      }
+    ]
+  }
+}

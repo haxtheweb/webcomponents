@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kurs dizayni",
+    "description": "Oʻquv materiallari va kurs dizayni elementlari uchun konteyner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kurs identifikatori",
+        "description": "OER Schema: kurs identifikatori, masalan, MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Oʻtiladigan semestr",
+        "description": "OER Schema: kurs oʻtiladigan semestr."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Taʼlim shakli",
+        "description": "OER Schema: kursni oʻtkazish shakli (masalan, yuzma-yuz, onlayn, aralash)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Asosiy oʻqituvchi",
+        "description": "OER Schema: kursning asosiy oʻqituvchisi."
+      },
+      {
+        "property": "syllabus",
+        "title": "Oʻquv dasturi URL manzili",
+        "description": "OER Schema: kurs oʻquv dasturining URL manzili."
+      }
+    ]
+  }
+}

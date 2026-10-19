@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-raamatu nupp",
+    "description": "Nupp, mis lingib e-raamatule."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Nupu pealkiri."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Link, millele klõpsamisel suunatakse."
+      },
+      {
+        "property": "icon",
+        "title": "Ikoon",
+        "description": "Seda linki esindav ikoon"
+      }
+    ]
+  }
+}

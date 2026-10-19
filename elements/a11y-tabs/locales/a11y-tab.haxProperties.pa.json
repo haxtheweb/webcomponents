@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ਟੈਬ",
+    "description": "ਇੱਕ ਸਿੰਗਲ ਟੈਬ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ਟੈਬ ਆਈਕਨ"
+      },
+      {
+        "property": "disabled",
+        "title": "ਅਯੋਗ"
+      },
+      {
+        "property": "label",
+        "title": "ਟੈਬ ਲੇਬਲ"
+      },
+      {
+        "slot": "",
+        "title": "ਟੈਬ ਸਮੱਗਰੀ",
+        "description": "ਟੈਬ ਦੀ ਸਮੱਗਰੀ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ਵਿਲੱਖਣ ID"
+      },
+      {
+        "property": "flag",
+        "title": "ਵਿਕਲਪਿਕ ਝੰਡਾ ਟੈਕਸਟ"
+      },
+      {
+        "property": "flagIcon",
+        "title": "ਵਿਕਲਪਿਕ ਝੰਡਾ ਆਈਕਨ"
+      }
+    ]
+  }
+}

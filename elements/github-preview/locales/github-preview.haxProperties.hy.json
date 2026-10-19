@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub նախադիտում",
+    "description": "Մատչելի պատկեր երկար նկարագրությամբ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Կազմակերպություն",
+        "description": "GitHub կազմակերպության մեքենայական անունը"
+      },
+      {
+        "property": "repo",
+        "title": "Պահոց",
+        "description": "Պահոցի մեքենայական անունը"
+      },
+      {
+        "property": "extended",
+        "title": "Ընդլայնված տեսք",
+        "description": "Ներառում է readme-ն տարրում"
+      }
+    ]
+  }
+}

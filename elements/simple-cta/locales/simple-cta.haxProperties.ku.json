@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Banga çalakiyê",
+    "description": "Bişkokeke sade bi girêdanekê ji bo çalakiyê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etîket",
+        "description": "Etîketa girêdanê"
+      },
+      {
+        "property": "link",
+        "title": "Girêdan",
+        "description": "Girêdanekê ji bo her çavkaniyekê binivîse"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Îkonê veşêre",
+        "description": "Îkona ku ji bo aksenta nivîsê tê bikaranîn veşêre"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Îkon",
+        "description": "Îkona girêdana çalakiyê"
+      }
+    ]
+  }
+}

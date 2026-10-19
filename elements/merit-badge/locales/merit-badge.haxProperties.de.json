@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Verdienstabzeichen",
+    "description": "Visuelles Abzeichen, das den Erwerb einer Fähigkeit kommuniziert."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Abzeichentitel",
+        "description": "Auf dem Abzeichen angezeigter Titel."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Abzeichenbild",
+        "description": "Bild-URL für das Abzeichen."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Abzeichendetails",
+        "description": "Details zum Abzeichen."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlink",
+        "description": "Mit dem Abzeichen verknüpfter Link."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Abzeichen-Fähigkeiten",
+        "description": "Auf dem Abzeichen angezeigte Fähigkeiten."
+      },
+      {
+        "property": "skill",
+        "title": "Fähigkeit (OER Schema)",
+        "description": "OER Schema: eine erlernte Fähigkeit, die durch Erreichen dieses Lernziels erworben wird."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Intestatura relativa",
+    "description": "produce a gerarchia d'intestature curretta secondu l'intestatura di u parente"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID di risorsa di l'intestatura parente"
+      },
+      {
+        "property": "disableLink",
+        "description": "Disattiva a funzione di buttone di ligame."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Allinea u buttone di copia di ligame à l'estremu dirittu di l'intestatura."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Livellu d'intestatura s'è u parente ùn hè micca trovu."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Rimpiazza u testu predefinitu di u messaghju di notificazione di copia di ligame."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Rimpiazza l'etichetta predefinita di u buttone di copia di ligame."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Rimpiazza l'icona predefinita di u buttone di copia di ligame."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Rimpiazza l'etichetta predefinita di u buttone di chjusura di a notificazione di copia di ligame."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Rimpiazza l'icona predefinita di u buttone di chjusura di a notificazione di copia di ligame."
+      }
+    ]
+  }
+}

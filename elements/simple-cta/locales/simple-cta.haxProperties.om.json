@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Waamicha gochaa",
+    "description": "Qabduu salphaa gocha fudhachuuf liinkii qabu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Moggaasa",
+        "description": "Maqaa liinkii"
+      },
+      {
+        "property": "link",
+        "title": "Hidhoo",
+        "description": "Liinkii qabeenya kamiyyuu galchi"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Aayikoonii dhoksi",
+        "description": "Aayikoonii barreeffama cimsuuf fayyadu dhoksi"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Mallattoo",
+        "description": "Aayikoonii liinkii gochaa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "کارت",
+    "description": "د اختیاري ټینګار سټایل سره یو کارت."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "سرلیک",
+        "description": "د کارت لپاره سرلیک."
+      },
+      {
+        "slot": "subheading",
+        "title": "فرعي سرلیک",
+        "description": "د کارت لپاره اختیاري فرعي سرلیک."
+      },
+      {
+        "slot": "content",
+        "title": "منځپانګه",
+        "description": "د کارت لپاره منځپانګه."
+      },
+      {
+        "slot": "footer",
+        "title": "لاندینۍ برخه",
+        "description": "د کارت لپاره اختیاري پښه."
+      },
+      {
+        "property": "imageSrc",
+        "title": "انځور",
+        "description": "اختیاري انځور"
+      },
+      {
+        "property": "imageAlt",
+        "title": "د انځور بدیل متن",
+        "description": "د سکرین لوستونکو لپاره د انځور تشریح کوونکی بدیل متن. یوازې هغه وخت یې تش پرېږدئ چې انځور یوازې ښایسته کوونکی وي."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "د انځور افقي برابرول",
+        "options": {
+          "left": "چپ",
+          "center": "منځ",
+          "right": "ښي"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "د انځور عمودي برابرول",
+        "options": {
+          "top": "پورته",
+          "center": "منځ",
+          "bottom": "ښکته"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "اختیاري تاکیدي رنګ."
+      },
+      {
+        "property": "dark",
+        "title": "تیاره بڼه",
+        "description": "تیاره بڼه فعاله کړئ"
+      },
+      {
+        "property": "horizontal",
+        "title": "افقي",
+        "description": "افقي جهت؟"
+      },
+      {
+        "property": "accentHeading",
+        "title": "د سرلیک ټینګار",
+        "description": "سرلیک ته د ټینګار رنګ پلي کړئ؟"
+      },
+      {
+        "property": "accentBackground",
+        "title": "د شالید ټینګار",
+        "description": "د کارت شالید ته د ټینګار رنګ پلي کړئ؟"
+      },
+      {
+        "property": "noBorder",
+        "title": "د پولې ټینګار نشته",
+        "description": "د پولې ټینګار لرې کړئ؟"
+      },
+      {
+        "property": "flat",
+        "title": "هوار",
+        "description": "د بکس سیوری لرې کړئ؟"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "کونج",
+        "description": "د کارت د کونج لپاره منځپانګه."
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "વિડિયો",
+    "description": "અનેક સ્રોતોમાં સુલભ વિડિયો પ્લેબેક."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "સ્રોત",
+        "description": "આ મીડિયા માટે URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "શીર્ષક",
+        "description": "વિડિયો નીચે બતાવાતું શીર્ષક."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "પોસ્ટર છબી",
+        "description": "પોસ્ટર છબી URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "ટેક્સ્ટ ટ્રૅક્સ",
+        "description": "વિડિયો માટે ક્લોઝ્ડ કૅપ્શન્સ, સબટાઇટલ્સ, વર્ણનો અને અન્ય ટેક્સ્ટ ટ્રૅક્સ."
+      },
+      {
+        "property": "startTime",
+        "title": "શરૂઆતનો સમય",
+        "description": "વિડિયોને ચોક્કસ સમયથી શરૂ કરો (સેકન્ડ)."
+      },
+      {
+        "property": "endTime",
+        "title": "અંતિમ સમય",
+        "description": "વિડિયોને ચોક્કસ સમયે સમાપ્ત કરો (સેકન્ડ), શરૂઆતનો સમય આવશ્યક છે."
+      },
+      {
+        "property": "learningMode",
+        "title": "શીખવાનો મોડ સક્ષમ કરો",
+        "description": "ઝડપી આગળ અને પાછળ જવાનું અક્ષમ કરે છે."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube પર ખોલો બટન દૂર કરો",
+        "description": "YouTube પર વિડિયો ખોલવા માટેનું બટન દૂર કરે છે."
+      },
+      {
+        "property": "linkable",
+        "title": "શેર લિંક શામેલ કરવી છે?",
+        "description": "વિડિયો શેર કરવા માટે લિંક આપે છે."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ટાઇમસ્ટેમ્પ છુપાવો",
+        "description": "ટ્રાન્સક્રિપ્ટ પરના ટાઇમસ્ટેમ્પ છુપાવો."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ટ્રાન્સક્રિપ્ટ છુપાવો",
+        "description": "ડિફૉલ્ટ રૂપે ટ્રાન્સક્રિપ્ટ છુપાવો."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "ઑડિયો વર્ણન ટ્રૅક",
+        "description": "ઑડિયો વર્ણન ટ્રૅક (MP3 ફાઇલ)નું URL, જે દૃશ્ય તત્વોનું વર્ણન સંભળાવે છે."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS વાપરવું કે નહીં તે દર્શાવે છે.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "પૃષ્ઠભૂમિમાં પ્લેબેકની મંજૂરી આપો",
+        "description": "બ્રાઉઝર ટૅબ ફોકસ ગુમાવે ત્યારે પણ ચલાવતા રહો."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ટ્રાન્સક્રિપ્ટ માટે ડાર્ક થીમ",
+        "description": "ટ્રાન્સક્રિપ્ટ માટે ડાર્ક થીમ સક્ષમ કરો."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ઇન્ટરેક્ટિવ અક્ષમ કરો",
+        "description": "ટ્રાન્સક્રિપ્ટને ક્લિક કરી શકાય તેવું બનાવતો ઇન્ટરેક્ટિવ મોડ અક્ષમ કરો."
+      },
+      {
+        "property": "lang",
+        "title": "ભાષા",
+        "description": "મીડિયાની ભાષા."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "(નાપસંદ) પ્લેયર માટે એક્સેન્ટ રંગ પસંદ કરો."
+      }
+    ]
+  }
+}

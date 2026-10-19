@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS-ento",
+    "description": "CMS-ento bildigita ĉe la backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tipo",
+        "description": "tipo el nia CMS",
+        "options": {
+          "node": "Nodo",
+          "user": "Uzanto",
+          "file": "Dosiero"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id el nia CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Montra reĝimo",
+        "description": "montra reĝimo el nia CMS"
+      }
+    ]
+  }
+}

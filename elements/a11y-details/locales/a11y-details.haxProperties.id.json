@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tombol Detail Aksesibel",
+    "description": "Pengungkapan progresif yang aksesibel dengan detail dan ringkasan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Tombol",
+        "description": "Ringkasan konten yang disembunyikan, mis. \"info\", \"metadata\", dll."
+      },
+      {
+        "slot": "details",
+        "title": "Deskripsi",
+        "description": "Deskripsi terperinci yang dapat disembunyikan atau ditampilkan"
+      },
+      {
+        "slot": "",
+        "title": "Tombol Deskripsi",
+        "description": "Default untuk tombol yang menampilkan/menyembunyikan teks deskripsi, mis. \"info\", \"metadata\", dll."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Teks ringkasan opsional saat detail terbuka"
+      },
+      {
+        "property": "closeText",
+        "title": "Teks ringkasan opsional saat detail tertutup"
+      }
+    ]
+  }
+}

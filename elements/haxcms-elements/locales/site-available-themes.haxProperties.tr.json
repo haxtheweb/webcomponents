@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Kullanılabilir Temalar",
+    "description": "Kullanılabilir HAXcms temalarını canlı önizleme geçişiyle göster"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Görünüm Modu",
+        "description": "Temaların nasıl görüntüleneceğini seçin",
+        "options": {
+          "gallery": "Galeri",
+          "table": "Tablo"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Ayrıntıları Göster",
+        "description": "Tema açıklamalarını ve ek bilgileri göster"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Gizli ve Eski Temaları Göster",
+        "description": "Panel varsayılanlarına ek olarak gizli, eski ve berbat temaları göster"
+      },
+      {
+        "property": "columns",
+        "title": "Sütunlar (Galeri)",
+        "description": "Galeri görünümündeki sütun sayısı"
+      }
+    ]
+  }
+}

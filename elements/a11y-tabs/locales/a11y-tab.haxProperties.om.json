@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Taabii",
+    "description": "Taabii tokko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Aayikoonii Taabii"
+      },
+      {
+        "property": "disabled",
+        "title": "Kan dhaabbate"
+      },
+      {
+        "property": "label",
+        "title": "Maqaa Taabii"
+      },
+      {
+        "slot": "",
+        "title": "Qabiyyee Taabii",
+        "description": "Qabiyyee taabii."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID Addaa"
+      },
+      {
+        "property": "flag",
+        "title": "Barreeffama Alaabaa Dirqama Hin Taane"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Aayikoonii Alaabaa Dirqama Hin Taane"
+      }
+    ]
+  }
+}

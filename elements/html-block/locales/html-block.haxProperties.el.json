@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Μπλοκ HTML",
+    "description": "Ένα βασικό μπλοκ HTML που παρέχει σύνδεση HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Κώδικας HTML που θέλετε να παρουσιάσετε στο περιεχόμενο"
+      }
+    ]
+  }
+}

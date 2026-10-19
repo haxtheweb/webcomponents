@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "പാരലാക്സ് ചിത്രം",
+    "description": "ചിത്രം സ്ക്രോൾ ചെയ്യുന്നു"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "ചിത്രം",
+        "description": "പശ്ചാത്തലത്തിൽ ഉൾപ്പെടുത്തേണ്ട ചിത്രം"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "തലക്കെട്ട് ഭാഗം",
+        "description": "തലക്കെട്ട് ടെക്സ്റ്റ് ഭാഗം"
+      }
+    ]
+  }
+}

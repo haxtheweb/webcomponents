@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Wāhanga Ako",
+    "description": "He kāri mā ngā kaiako hei whakawhitiwhiti i te ako me ngā rautaki whakaako."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Momo",
+        "description": "Te momo kāri hei whakamahi."
+      },
+      {
+        "property": "subtitle",
+        "title": "Taitara-iti",
+        "description": "Te taitara-iti o te kāri."
+      },
+      {
+        "property": "url",
+        "title": "Hono",
+        "description": "He hono kōwhiringa mō te kāri (Kāore te hono e wātea mō ngā Whāinga Ako)."
+      },
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Tautuhi Taitara, ka takahi tēnei i te taitara e hāngai ana ki te momo"
+      },
+      {
+        "property": "icon",
+        "title": "Ata tohu",
+        "description": "Tautuhi ata, ka takahi tēnei i te ata e hāngai ana ki te momo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae arotahi",
+        "description": "Tautuhi tae arotahi, ka takahi tēnei i te tae e hāngai ana ki te momo"
+      },
+      {
+        "slot": "",
+        "title": "Ihirangi"
+      }
+    ]
+  }
+}

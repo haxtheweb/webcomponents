@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Οντότητα CMS",
+    "description": "Οντότητα CMS που αποδίδεται στο backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Τύπος",
+        "description": "τύπος από το CMS μας",
+        "options": {
+          "node": "Κόμβος",
+          "user": "Χρήστης",
+          "file": "Αρχείο"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id από το CMS μας"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Λειτουργία εμφάνισης",
+        "description": "λειτουργία εμφάνισης από το CMS μας"
+      }
+    ]
+  }
+}

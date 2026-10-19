@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kurssisuunnittelu",
+    "description": "Säiliö oppimateriaaleille ja kurssisuunnittelun elementeille."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kurssin tunniste",
+        "description": "OER Schema: kurssin tunniste, esim. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Tarjontajakso",
+        "description": "OER Schema: lukukausi tai jakso, jonka aikana kurssi järjestetään."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Toteutusmuoto",
+        "description": "OER Schema: kurssin toteutusmuoto (esim. lähiopetus, verkko, hybridi)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Päävastuullinen opettaja",
+        "description": "OER Schema: kurssin päävastuullinen opettaja."
+      },
+      {
+        "property": "syllabus",
+        "title": "Opetussuunnitelman URL",
+        "description": "OER Schema: kurssin opetussuunnitelman URL."
+      }
+    ]
+  }
+}

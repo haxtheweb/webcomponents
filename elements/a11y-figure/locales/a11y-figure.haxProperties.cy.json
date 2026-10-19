@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Ffigur Disgrifiadol",
+    "description": "Ffigur hygyrch gyda disgrifiad hir"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Delwedd"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Testun Amgen"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Capsiwn y Ffigur",
+        "description": "Testun capsiwn y ffigur sydd bob amser yn weladwy."
+      },
+      {
+        "slot": "details",
+        "title": "Disgrifiad",
+        "description": "Disgrifiad manwl o'r ddelwedd y gellir ei guddio neu ei ddangos"
+      },
+      {
+        "slot": "summary",
+        "title": "Botwm Disgrifiad",
+        "description": "Rhagosodiad ar gyfer y botwm sy'n dangos/cuddio testun y disgrifiad, e.e. \"gwybodaeth\", \"metadata\", ac ati."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Testun crynodeb dewisol pan fo'r manylion ar agor"
+      },
+      {
+        "property": "closeText",
+        "title": "Testun crynodeb dewisol pan fo'r manylion ar gau"
+      }
+    ]
+  }
+}

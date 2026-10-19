@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Κάρτα",
+    "description": "Κάρτα με προαιρετικό στυλ έμφασης."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Επικεφαλίδα",
+        "description": "Επικεφαλίδα για την κάρτα."
+      },
+      {
+        "slot": "subheading",
+        "title": "Υπότιτλος",
+        "description": "Προαιρετικός υπότιτλος για την κάρτα."
+      },
+      {
+        "slot": "content",
+        "title": "Περιεχόμενο",
+        "description": "Περιεχόμενο για την κάρτα."
+      },
+      {
+        "slot": "footer",
+        "title": "Υποσέλιδο",
+        "description": "Προαιρετικό υποσέλιδο για την κάρτα."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Εικόνα",
+        "description": "Προαιρετική εικόνα"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Εναλλακτικό κείμενο εικόνας",
+        "description": "Εναλλακτικό κείμενο που περιγράφει την εικόνα για αναγνώστες οθόνης. Αφήστε το κενό μόνο αν η εικόνα είναι καθαρά διακοσμητική."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Οριζόντια στοίχιση εικόνας",
+        "options": {
+          "left": "αριστερά",
+          "center": "κέντρο",
+          "right": "δεξιά"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Κάθετη στοίχιση εικόνας",
+        "options": {
+          "top": "πάνω",
+          "center": "κέντρο",
+          "bottom": "κάτω"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "Ένα προαιρετικό χρώμα έμφασης."
+      },
+      {
+        "property": "dark",
+        "title": "Σκούρο θέμα",
+        "description": "Ενεργοποίηση σκοτεινού θέματος"
+      },
+      {
+        "property": "horizontal",
+        "title": "Οριζόντιος",
+        "description": "Οριζόντιος προσανατολισμός;"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Έμφαση επικεφαλίδας",
+        "description": "Εφαρμογή χρώματος έμφασης στην επικεφαλίδα;"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Έμφαση φόντου",
+        "description": "Εφαρμογή χρώματος έμφασης στο φόντο της κάρτας;"
+      },
+      {
+        "property": "noBorder",
+        "title": "Χωρίς έμφαση περιγράμματος",
+        "description": "Αφαίρεση έμφασης περιγράμματος;"
+      },
+      {
+        "property": "flat",
+        "title": "Επίπεδο",
+        "description": "Αφαίρεση σκιάς πλαισίου;"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Γωνία",
+        "description": "Περιεχόμενο για τη γωνία της κάρτας."
+      }
+    ]
+  }
+}

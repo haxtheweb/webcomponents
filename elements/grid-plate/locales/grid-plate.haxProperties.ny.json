@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Makonzedwe a mizati",
+    "description": "Konzani zinthu m'mizati yosavuta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Makonzedwe a Mizati",
+        "description": "Kalembedwe koonetsera zinthu izi (kangasinthe pa skrini zazing'ono)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Zimitsani kusintha molingana ndi skrini",
+        "description": "Chongani bokosi kuti musunge mizati pa skrini zazikulu pamene zikuunjikabe pa skrini zazing'ono kwambiri"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Mpata wa Mkati mwa Chinthu",
+        "description": "Mpata mkati mwa chinthu chilichonse"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Mipata ya kunja kwa zinthu",
+        "description": "Mpata pakati pa zinthu"
+      }
+    ]
+  }
+}

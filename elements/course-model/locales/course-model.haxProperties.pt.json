@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "modelo de curso",
+    "description": "Layout interativo para conceitos do curso com detalhes, animação e verificações de conhecimento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "título"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Área de informações"
+      },
+      {
+        "title": "Área de detalhes"
+      },
+      {
+        "title": "Área de animação"
+      },
+      {
+        "title": "Área de verificação de conhecimento"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Área do logotipo"
+      }
+    ]
+  }
+}

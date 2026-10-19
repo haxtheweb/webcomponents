@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Buttuna tad-Dettalji Aċċessibbli",
+    "description": "Żvelar progressiv aċċessibbli b'details u summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Buttuna",
+        "description": "Sommarju tal-kontenut li jekk moħbi, eż. \"info\", \"metadata\", eċċ."
+      },
+      {
+        "slot": "details",
+        "title": "Deskrizzjoni",
+        "description": "Deskrizzjoni dettaljata li tista' tinħeba jew tintwera"
+      },
+      {
+        "slot": "",
+        "title": "Buttuna tad-Deskrizzjoni",
+        "description": "Default għall-buttuna li turi/taħbi t-test tad-deskrizzjoni, eż. \"info\", \"metadata\", eċċ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Test tas-sommarju opzjonali meta d-dettalji jkunu miftuħa"
+      },
+      {
+        "property": "closeText",
+        "title": "Test tas-sommarju opzjonali meta d-dettalji jkunu magħluqa"
+      }
+    ]
+  }
+}

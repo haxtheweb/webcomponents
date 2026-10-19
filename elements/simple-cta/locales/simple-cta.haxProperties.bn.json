@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "কল টু অ্যাকশন",
+    "description": "পদক্ষেপ নেওয়ার জন্য লিংকসহ একটি সাধারণ বাটন।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "লেবেল",
+        "description": "লিংকের লেবেল"
+      },
+      {
+        "property": "link",
+        "title": "লিংক",
+        "description": "যেকোনো রিসোর্সের লিংক লিখুন"
+      },
+      {
+        "property": "hideIcon",
+        "title": "আইকন লুকান",
+        "description": "টেক্সট সাজাতে ব্যবহৃত আইকন লুকান"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "আইকন",
+        "description": "অ্যাকশন লিংকের আইকন"
+      }
+    ]
+  }
+}

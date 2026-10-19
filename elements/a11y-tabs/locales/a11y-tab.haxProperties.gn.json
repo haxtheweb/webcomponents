@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tendayke",
+    "description": "Peteĩ tendayke."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Tendayke Ta'ãnga'i"
+      },
+      {
+        "property": "disabled",
+        "title": "Ojepe'apyre"
+      },
+      {
+        "property": "label",
+        "title": "Tendayke Réra"
+      },
+      {
+        "slot": "",
+        "title": "Tendayke Retepy",
+        "description": "Tendayke retepy."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID peteĩchagua"
+      },
+      {
+        "property": "flag",
+        "title": "Techaukaha Moñe'ẽrã Ojeporavokuaáva"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Techaukaha Ta'ãnga'i Ojeporavokuaáva"
+      }
+    ]
+  }
+}

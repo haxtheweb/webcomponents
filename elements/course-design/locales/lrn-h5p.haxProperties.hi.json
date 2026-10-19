@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P एलिमेंट",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "टेक्स्ट",
+        "description": "साइडनोट की सामग्री"
+      }
+    ]
+  }
+}

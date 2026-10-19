@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "වැඩිදියුණු කළ රූපය",
+    "description": "විවිධ වැඩිදියුණු කිරීම් සමඟ රූප ඉදිරිපත් කිරීමේ ක්‍රමයක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "මූලාශ්‍රය",
+        "description": "රූපය සඳහා URL."
+      },
+      {
+        "property": "alt",
+        "title": "විකල්ප පෙළ",
+        "description": "පෙනීම නොමැති පරිශීලකයින්ට රූපය විස්තර කිරීමට පෙළ."
+      },
+      {
+        "property": "link",
+        "title": "සබැඳිය",
+        "description": "රූපය URL එකකට සබැඳි කරන්න"
+      },
+      {
+        "property": "card",
+        "title": "කාඩ්පත",
+        "description": "ඉහළට එසවූ කාඩ්පතක පෙනුම ලබා දීමට පහත සෙවණැල්ලක් යොදන්න."
+      },
+      {
+        "property": "box",
+        "title": "කොටුව",
+        "description": "රූපය වටා දෘශ්‍ය කොටුවක් යොදන්න."
+      },
+      {
+        "property": "offset",
+        "title": "ඕෆ්සෙට්",
+        "description": "රූපයට වම් හෝ දකුණු ඕෆ්සෙට් එකක් යොදන්න.",
+        "options": {
+          "none": "කිසිවක් නැත",
+          "wide": "පළල්",
+          "narrow": "පටු"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "මූලාශ්‍ර දැක්වීම",
+        "description": "රූපය සඳහා උපුටා දැක්වීම."
+      },
+      {
+        "property": "caption",
+        "title": "ශීර්ෂ පාඨය",
+        "description": "රූපය සඳහා සිරස්තලය."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "රූප සටහන් මාතෘකාව",
+        "description": "රූප සටහන් ලේබලය සඳහා මාතෘකාව."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "රූප සටහන් විස්තරය",
+        "description": "රූප සටහන් ලේබලය සඳහා විස්තරය."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "සිඟිති රූපය",
+        "description": "සිඟිති රූප මූලාශ්‍රය. සිඟිති රූපය පෙන්වන නමුත් සම්පූර්ණ මූලාශ්‍රය මාදිලියක විවෘත කරයි."
+      },
+      {
+        "property": "round",
+        "title": "රවුම් රූපය",
+        "description": "රූපයේ පෙනුම රවුම් හැඩයට කපයි."
+      },
+      {
+        "property": "disableZoom",
+        "title": "රූප මාදිලිය අක්‍රිය කරන්න",
+        "description": "ක්ලික් කිරීමෙන් රූපය රූප පරීක්ෂක සංවාදයක විවෘත වීම අක්‍රිය කරන්න."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown ලෙස විදැහන්න",
+        "description": "සිරස්තලය සහ උපුටා දැක්වීම markdown ලෙස විදැහන්න."
+      }
+    ]
+  }
+}

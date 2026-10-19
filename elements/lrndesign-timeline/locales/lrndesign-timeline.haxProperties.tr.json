@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Zaman çizelgesi",
+    "description": "Görseller ve metin içeren bir olaylar zaman çizelgesi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Zaman çizelgesi başlığı",
+        "description": "Zaman çizelgesi için bir başlık."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu Rengi",
+        "description": "İsteğe bağlı vurgu rengi."
+      },
+      {
+        "property": "dark",
+        "title": "Koyu Tema",
+        "description": "Karanlık Temayı Etkinleştir"
+      },
+      {
+        "slot": "",
+        "title": "Zaman Çizelgesi Açıklaması",
+        "description": "Zaman çizelgesini açıklayan isteğe bağlı metin."
+      },
+      {
+        "property": "events",
+        "title": "Zaman Çizelgesi Olayları",
+        "description": "Zaman çizelgesindeki olaylar"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Lëscht mat Punkten",
+    "description": "Eng Lëscht mat Punkten erstellen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Punktstil",
+        "description": "Stil fir d'Punkte vun der onsortéierter Lëscht.",
+        "options": {
+          "": "Standard (Quadrat)",
+          "list-disc": "Scheif",
+          "list-circle": "Krees",
+          "list-square": "Quadrat"
+        }
+      }
+    ]
+  }
+}

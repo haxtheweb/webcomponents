@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Voce di carriera",
+    "description": "Una singola organizzazione e i ruoli associati"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Nome dell'organizzazione"
+      },
+      {
+        "property": "location",
+        "title": "Luogo"
+      },
+      {
+        "property": "source",
+        "title": "Origine"
+      }
+    ]
+  }
+}

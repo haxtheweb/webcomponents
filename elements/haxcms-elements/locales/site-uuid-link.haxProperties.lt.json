@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX nuoroda",
+    "description": "Nuoroda į konkretų išteklių svetainėje, kurią kuriate."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Elementas",
+        "description": "Elementas, kurio duomenys naudojami nuorodai / pavadinimui"
+      }
+    ]
+  }
+}

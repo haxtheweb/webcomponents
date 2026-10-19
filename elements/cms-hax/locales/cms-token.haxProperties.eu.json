@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS tokena",
+    "description": "Backend-ean errendatutako CMS tokena"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Tokena",
+        "description": "Gure CMSko tokena"
+      }
+    ]
+  }
+}

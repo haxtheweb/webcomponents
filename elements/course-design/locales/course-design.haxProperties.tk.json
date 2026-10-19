@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kurs dizaýny",
+    "description": "Bilim materiallary we kurs dizaýny elementleri üçin konteýner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kursuň kody",
+        "description": "OER Schema: kursuň kody, meselem, MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Hödürlenýän möwsüm",
+        "description": "OER Schema: kursuň hödürlenýän möwsümi."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Okatmak formaty",
+        "description": "OER Schema: kursy okatmak üçin ulanylýan format (meselem, ýüzbe-ýüz, onlaýn, garyşyk)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Esasy mugallym",
+        "description": "OER Schema: kursuň esasy mugallymy."
+      },
+      {
+        "property": "syllabus",
+        "title": "Okuw maksatnamasynyň URL-i",
+        "description": "OER Schema: kursuň okuw maksatnamasynyň URL-i."
+      }
+    ]
+  }
+}

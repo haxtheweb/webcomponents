@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Аббревиатура",
+    "description": "Аббревиатура с подсказкой полного термина."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Видимый текст аббревиатуры."
+      },
+      {
+        "attribute": "title",
+        "title": "Слово",
+        "description": "Полный термин, показываемый при наведении."
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Təsviri fiqur",
+    "description": "Uzun təsvirli əlçatan fiqur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Şəkil"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternativ mətn"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Fiqur başlığı",
+        "description": "Həmişə görünən fiqur başlığı mətni."
+      },
+      {
+        "slot": "details",
+        "title": "Təsvir",
+        "description": "Gizlədilə və ya göstərilə bilən ətraflı şəkil təsviri"
+      },
+      {
+        "slot": "summary",
+        "title": "Təsvir düyməsi",
+        "description": "Təsvir mətnini göstərən/gizlədən düymə üçün standart dəyər, məs. \"məlumat\", \"metaməlumat\" və s."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Təfərrüatlar açıq olduqda istəyə bağlı xülasə mətni"
+      },
+      {
+        "property": "closeText",
+        "title": "Təfərrüatlar bağlı olduqda istəyə bağlı xülasə mətni"
+      }
+    ]
+  }
+}

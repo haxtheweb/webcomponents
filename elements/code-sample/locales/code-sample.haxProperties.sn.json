@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Muenzaniso wekodhi",
+    "description": "Muenzaniso wekodhi wakasimbiswa mupeji"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kusimbisa kodhi",
+        "description": "Kusimbisa syntax kunoshandiswa panzvimbo yekodhi",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Data reJSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Bhatani rekukopa kuclipboard",
+        "description": "bhatani riri kumusoro kurudyi rinoti kopa kuclipboard"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Kutanga kusimbisa",
+        "description": "Nhamba yemutsara wekutangira kusimbisa"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Kupera kusimbisa",
+        "description": "Mutsara wekupedzisira kusimbisa"
+      }
+    ]
+  }
+}

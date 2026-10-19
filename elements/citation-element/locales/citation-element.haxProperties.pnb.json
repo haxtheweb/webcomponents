@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "حوالہ",
+    "description": "تِن وکھالا موڈاں والا حوالہ عنصر۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرناواں",
+        "description": "حوالہ دتے کم دا سرناواں۔"
+      },
+      {
+        "property": "source",
+        "title": "سورس لنک",
+        "description": "حوالہ دتے کم دا سورس URL۔"
+      },
+      {
+        "property": "date",
+        "title": "رسائی دی تاریخ",
+        "description": "سورس تک رسائی دی تاریخ۔"
+      },
+      {
+        "property": "scope",
+        "title": "دائرہ",
+        "description": "حوالہ دین لئی عنصر دا دائرہ۔",
+        "options": {
+          "sibling": "برابر دا عنصر",
+          "parent": "اُتلا عنصر"
+        }
+      },
+      {
+        "property": "license",
+        "title": "لائسنس",
+        "description": "حوالہ دتے کم دا لائسنس۔"
+      },
+      {
+        "property": "creator",
+        "title": "بݨاؤن والا",
+        "description": "حوالہ دتے کم دا بݨاؤن والا یا مالک۔"
+      },
+      {
+        "property": "typeof",
+        "title": "OER سکیما قسم",
+        "description": "ایس حوالے لئی OER سکیما کلاس۔ ڈیفالٹ oer:ReferencedMaterial اے؛ صرف کسے درست OER کلاس نال بدلو (مثلاً oer:SupportingMaterial)۔"
+      }
+    ]
+  }
+}

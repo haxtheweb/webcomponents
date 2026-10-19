@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Gambar Dhasar",
+    "description": "Elemen gambar dhasar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Sumber",
+        "description": "URL gambar."
+      },
+      {
+        "attribute": "alt",
+        "title": "Teks alt",
+        "description": "Teks alternatif kanggo aksesibilitas lan SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Dhuwur",
+        "description": "Dhuwur ing piksel. Kosongake kanggo nggunakake ukuran alami."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Ngemot gambar",
+        "description": "Pilih kapan gambar diemot.",
+        "options": {
+          "lazy": "Emot nalika katon",
+          "auto": "Otomatis"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Sumber responsif (srcset)",
+        "description": "Dhaptar URL gambar lan deskriptor (conto: 480w utawa 2x) supaya browser milih ukuran paling apik kanggo layar. Disimpen minangka atribut srcset standar."
+      }
+    ]
+  }
+}

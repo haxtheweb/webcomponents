@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Batani la Zambiri Lopezeka kwa Onse",
+    "description": "Kuulula pang'onopang'ono kopezeka kwa onse ndi zambiri ndi chidule"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Batani",
+        "description": "Chidule cha zomwe zili mkati ngati zabisika, mwachitsanzo \"zambiri\", \"metadata\", ndi zina."
+      },
+      {
+        "slot": "details",
+        "title": "Kufotokozera",
+        "description": "Kufotokozera kwatsatanetsatane komwe kungabisidwe kapena kuonetsedwa"
+      },
+      {
+        "slot": "",
+        "title": "Batani la Kufotokozera",
+        "description": "Zokhazikika za batani lomwe limaonetsa/kubisa mawu ofotokozera, mwachitsanzo \"zambiri\", \"metadata\", ndi zina."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Mawu achidule osankha zambiri zikatsegulidwa"
+      },
+      {
+        "property": "closeText",
+        "title": "Mawu achidule osankha zambiri zikatsekedwa"
+      }
+    ]
+  }
+}

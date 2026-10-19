@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Projekt kursu",
+    "description": "Kontener na materiały edukacyjne i elementy projektu kursu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identyfikator kursu",
+        "description": "OER Schema: identyfikator kursu, np. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Semestr",
+        "description": "OER Schema: semestr, w którym kurs jest prowadzony."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Forma prowadzenia",
+        "description": "OER Schema: forma prowadzenia kursu (np. stacjonarnie, online, hybrydowo)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Główny prowadzący",
+        "description": "OER Schema: główny prowadzący kurs."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL sylabusa",
+        "description": "OER Schema: URL do sylabusa kursu."
+      }
+    ]
+  }
+}

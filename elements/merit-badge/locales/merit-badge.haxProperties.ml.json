@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "മെറിറ്റ് ബാഡ്ജ്",
+    "description": "ഒരു കഴിവ് നേടിയത് അറിയിക്കാനുള്ള ദൃശ്യ ബാഡ്ജ്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "ബാഡ്ജ് തലക്കെട്ട്",
+        "description": "ബാഡ്ജിൽ പ്രദർശിപ്പിക്കുന്ന തലക്കെട്ട്."
+      },
+      {
+        "property": "badgeImage",
+        "title": "ബാഡ്ജ് ചിത്രം",
+        "description": "ബാഡ്ജിനുള്ള ചിത്ര URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "ബാഡ്ജ് വിശദാംശങ്ങൾ",
+        "description": "ബാഡ്ജിനെക്കുറിച്ചുള്ള വിശദാംശങ്ങൾ."
+      },
+      {
+        "property": "hyperLink",
+        "title": "ഹൈപ്പർലിങ്ക്",
+        "description": "ബാഡ്ജുമായി ബന്ധപ്പെട്ട ലിങ്ക്."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "ബാഡ്ജ് കഴിവുകൾ",
+        "description": "ബാഡ്ജിൽ പ്രദർശിപ്പിക്കുന്ന കഴിവുകൾ."
+      },
+      {
+        "property": "skill",
+        "title": "കഴിവ് (OER Schema)",
+        "description": "OER Schema: ഈ പഠന ലക്ഷ്യം പൂർത്തിയാക്കുന്നതിലൂടെ നേടിയ ഒരു കഴിവ്."
+      }
+    ]
+  }
+}

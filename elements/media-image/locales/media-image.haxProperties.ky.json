@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Жакшыртылган сүрөт",
+    "description": "Сүрөттөрдү ар түрдүү жакшыртуулар менен көрсөтүү ыкмасы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Булак",
+        "description": "Сүрөттүн URL дареги."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернативдүү текст",
+        "description": "Көрө албаган колдонуучуларга сүрөттү сүрөттөгөн текст."
+      },
+      {
+        "property": "link",
+        "title": "Шилтеме",
+        "description": "Сүрөттү URL'ге шилтеме кылуу"
+      },
+      {
+        "property": "card",
+        "title": "Карта",
+        "description": "Көтөрүлгөн карточкадай көрүнүшү үчүн көлөкө колдонуу."
+      },
+      {
+        "property": "box",
+        "title": "Кутуча",
+        "description": "Сүрөттүн айланасына көрүнүүчү кутуча колдонуу."
+      },
+      {
+        "property": "offset",
+        "title": "Жылыш",
+        "description": "Сүрөткө солго же оңго жылыш колдонуу.",
+        "options": {
+          "none": "жок",
+          "wide": "кенен",
+          "narrow": "кууш"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Шилтеме булагы",
+        "description": "Сүрөттүн цитатасы."
+      },
+      {
+        "property": "caption",
+        "title": "Жазуу",
+        "description": "Сүрөттүн жазуусу."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Сүрөттүн аталышы",
+        "description": "Сүрөт белгисинин аталышы."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Сүрөттүн сыпаттамасы",
+        "description": "Сүрөт белгисинин сыпаттамасы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Миниатюра сүрөтү",
+        "description": "Миниатюра сүрөтүнүн булагы. Миниатюраны көрсөтөт, бирок толук булакты модалдык терезеде ачат."
+      },
+      {
+        "property": "round",
+        "title": "Тегерек сүрөт",
+        "description": "Сүрөттүн көрүнүшүн тегерек формада кесет."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Сүрөттүн модалдык терезесин өчүрүү",
+        "description": "Басканда сүрөттүн сүрөт карагыч диалогунда ачылышын өчүрүү."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Markdown катары көрсөтүү",
+        "description": "Жазууну жана цитатаны markdown катары көрсөтүү."
+      }
+    ]
+  }
+}

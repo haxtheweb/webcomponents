@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS 视图",
+    "description": "在后端渲染的 CMS 视图"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "姓名",
+        "description": "我们 CMS 中视图的名称"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "显示",
+        "description": "我们 CMS 中该视图下的显示"
+      }
+    ]
+  }
+}

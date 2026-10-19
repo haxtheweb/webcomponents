@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Skrót",
+    "description": "Skrót z podpowiedzią zawierającą pełny termin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Widoczny tekst skrótu."
+      },
+      {
+        "attribute": "title",
+        "title": "Słowo",
+        "description": "Pełny termin wyświetlany po najechaniu."
+      }
+    ]
+  }
+}

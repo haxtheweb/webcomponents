@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "רשימה ממוספרת",
+    "description": "יצירת רשימה ממוספרת."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "סגנון מספור",
+        "description": "הסגנון המשמש למספור רשימה ממוספרת.",
+        "options": {
+          "": "ברירת מחדל (עשרוני)",
+          "list-decimal-leading-zero": "עשרוני עם אפס מוביל (01, 02, 03)",
+          "list-lower-alpha": "אותיות לטיניות קטנות (a, b, c)",
+          "list-upper-alpha": "אותיות לטיניות גדולות (A, B, C)",
+          "list-lower-roman": "ספרות רומיות קטנות (i, ii, iii)",
+          "list-upper-roman": "ספרות רומיות גדולות (I, II, III)"
+        }
+      }
+    ]
+  }
+}

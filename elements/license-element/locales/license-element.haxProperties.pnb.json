@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "لائسنس",
+    "description": "اپݨے کم لئی لائسنس دیو۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرناواں",
+        "description": "حوالہ دتے کم دا سرناواں۔"
+      },
+      {
+        "property": "source",
+        "title": "سورس لنک",
+        "description": "لائسنس شدہ کم دا سورس URL۔"
+      },
+      {
+        "property": "license",
+        "title": "لائسنس",
+        "description": "ایس کم تے لگیا لائسنس۔"
+      },
+      {
+        "property": "creator",
+        "title": "بݨاؤن والا",
+        "description": "ایس کم دا بݨاؤن والا یا مالک۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "سورس لنک",
+        "description": "لائسنس دیاں ہور تفصیلاں دا لنک۔"
+      },
+      {
+        "property": "moreLabel",
+        "title": "ہور لیبل",
+        "description": "لائسنس دیاں ہور تفصیلاں لئی لیبل۔"
+      }
+    ]
+  }
+}

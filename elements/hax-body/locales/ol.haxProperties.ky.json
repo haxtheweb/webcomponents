@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Номерленген тизме",
+    "description": "Номерленген тизме түзүү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Номер стили",
+        "description": "Иреттелген тизмени номерлөө үчүн колдонулган стиль.",
+        "options": {
+          "": "Демейки (ондук)",
+          "list-decimal-leading-zero": "Алдында нөлү бар ондук (01, 02, 03)",
+          "list-lower-alpha": "Кичине тамгалар (a, b, c)",
+          "list-upper-alpha": "Баш тамгалар (A, B, C)",
+          "list-lower-roman": "Кичине рим цифралары (i, ii, iii)",
+          "list-upper-roman": "Чоң рим цифралары (I, II, III)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ಮೂಲ ಚಿತ್ರ",
+    "description": "ಮೂಲ ಚಿತ್ರ ಘಟಕ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ಮೂಲ",
+        "description": "ಚಿತ್ರದ URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "ಪರ್ಯಾಯ ಪಠ್ಯ",
+        "description": "ಪ್ರವೇಶಸಾಧ್ಯತೆ ಮತ್ತು SEO ಗಾಗಿ ಪರ್ಯಾಯ ಪಠ್ಯ."
+      },
+      {
+        "attribute": "height",
+        "title": "ಎತ್ತರ",
+        "description": "ಪಿಕ್ಸೆಲ್‌ಗಳಲ್ಲಿ ಎತ್ತರ. ಸಹಜ ಗಾತ್ರ ಬಳಸಲು ಖಾಲಿ ಬಿಡಿ."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "ಚಿತ್ರ ಲೋಡಿಂಗ್",
+        "description": "ಚಿತ್ರ ಯಾವಾಗ ಲೋಡ್ ಆಗಬೇಕೆಂದು ಆರಿಸಿ.",
+        "options": {
+          "lazy": "ಗೋಚರಿಸಿದಾಗ ಲೋಡ್ ಮಾಡಿ",
+          "auto": "ಸ್ವಯಂಚಾಲಿತ"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "ರೆಸ್ಪಾನ್ಸಿವ್ ಮೂಲಗಳು (srcset)",
+        "description": "ಬ್ರೌಸರ್‌ಗಳು ಪರದೆಗೆ ಉತ್ತಮ ಗಾತ್ರವನ್ನು ಆರಿಸುವಂತೆ ಚಿತ್ರದ URL ಗಳು ಮತ್ತು ವಿವರಕಗಳನ್ನು (ಉದಾ. 480w ಅಥವಾ 2x) ಪಟ್ಟಿ ಮಾಡಿ. ಪ್ರಮಾಣಿತ srcset ಗುಣಲಕ್ಷಣವಾಗಿ ಸಂಗ್ರಹಿಸಲಾಗುತ್ತದೆ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "منتقي Hex",
+    "description": "منتقي ألوان بالرمز السداسي"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "القيمة",
+        "description": "قيمة hex الافتراضية"
+      },
+      {
+        "property": "disabled",
+        "title": "معطَّل",
+        "description": "تعطيل حقل النص"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "عرض كبير",
+        "description": "تضمين اللون في عرض كبير"
+      }
+    ]
+  }
+}

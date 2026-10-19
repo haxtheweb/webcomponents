@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "መሠረታዊ አገናኝ",
+    "description": "መሠረታዊ የአገናኝ አካል።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "አገናኝ",
+        "description": "የመድረሻ URL።"
+      },
+      {
+        "attribute": "innerText",
+        "title": "ጽሑፍ",
+        "description": "የሚታይ የአገናኝ ጽሑፍ።"
+      },
+      {
+        "attribute": "target",
+        "title": "ዒላማ",
+        "description": "አገናኙ የሚከፈትበት ቦታ።",
+        "options": {
+          "": "ተመሳሳይ መስኮት",
+          "_blank": "አዲስ መስኮት - _blank",
+          "_top": "የላይኛው መስኮት - _top",
+          "_parent": "ወላጅ መስኮት - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "የርዕስ ጽሑፍ",
+        "description": "ለተደራሽነት እና ለSEO የምክር ርዕስ።"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "ከመድረሻው ጋር ያለ ግንኙነት (ደህንነት/SEO)።",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

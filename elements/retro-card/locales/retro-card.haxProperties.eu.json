@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Txartel retroa",
+    "description": "Diseinu retroa duen txartel sinplea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Txartelaren izenburu nagusia."
+      },
+      {
+        "property": "url",
+        "description": "Txartelean klik egitean ireki beharreko URLa."
+      },
+      {
+        "property": "subtitle",
+        "title": "Azpititulua",
+        "description": "Txartelaren azpititulua."
+      },
+      {
+        "property": "tags",
+        "title": "Etiketak",
+        "description": "Komaz bereizitako etiketak."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Multimedia-iturria",
+        "description": "Multimedia-iturri nagusia."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Gainetik pasatzean iturria",
+        "description": "Txartelaren gainetik pasatzean edo aktibatzean erakusten den multimedia-iturria."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Txartel osoan aplikatutako azentu-kolorea."
+      },
+      {
+        "property": "dark",
+        "title": "Iluna",
+        "description": "Erabili modu ilunaren oinarrizko koloreak."
+      }
+    ]
+  }
+}

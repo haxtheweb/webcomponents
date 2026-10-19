@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Ibilbide-elementua",
+    "description": "Erakunde bat eta harekin lotutako rolak"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Erakundearen izena"
+      },
+      {
+        "property": "location",
+        "title": "Kokapena"
+      },
+      {
+        "property": "source",
+        "title": "Iturria"
+      }
+    ]
+  }
+}

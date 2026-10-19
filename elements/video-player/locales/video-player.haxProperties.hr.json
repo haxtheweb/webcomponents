@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Videozapis",
+    "description": "Pristupačna reprodukcija videozapisa iz više izvora."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Izvor",
+        "description": "URL ovog medija."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Naslov",
+        "description": "Naslov prikazan ispod videozapisa."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Naslovna slika",
+        "description": "URL naslovne slike."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Tekstni zapisi",
+        "description": "Titlovi za gluhe, podnapisi, opisi i drugi tekstni zapisi za video."
+      },
+      {
+        "property": "startTime",
+        "title": "Vrijeme početka",
+        "description": "Pokreni videozapis u određenom trenutku (sekunde)."
+      },
+      {
+        "property": "endTime",
+        "title": "Vrijeme završetka",
+        "description": "Završi videozapis u određenom trenutku (sekunde), zahtijeva vrijeme početka."
+      },
+      {
+        "property": "learningMode",
+        "title": "Omogući način učenja",
+        "description": "Onemogućuje premotavanje naprijed i natrag."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Ukloni gumb za otvaranje na YouTubeu",
+        "description": "Uklanja gumb za otvaranje videozapisa na YouTubeu."
+      },
+      {
+        "property": "linkable",
+        "title": "Uključiti poveznicu za dijeljenje?",
+        "description": "Pruža poveznicu za dijeljenje videozapisa."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Sakrij vremenske oznake",
+        "description": "Sakrij vremenske oznake u transkriptu."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Sakrij transkript",
+        "description": "Sakrij transkript prema zadanim postavkama."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Zapis zvučnog opisa",
+        "description": "URL zapisa zvučnog opisa (MP3 datoteka) koji pripovijeda vizualne elemente."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Označava treba li koristiti CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Dopusti reprodukciju u pozadini",
+        "description": "Nastavi reprodukciju kada kartica preglednika izgubi fokus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tamna tema za transkript",
+        "description": "Omogući tamnu temu za transkript."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Onemogući interaktivnost",
+        "description": "Onemogući interaktivni način koji transkript čini klikabilnim."
+      },
+      {
+        "property": "lang",
+        "title": "Jezik",
+        "description": "Jezik medija."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "(zastarjelo) Odaberite naglasnu boju playera."
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Leercomponent",
+    "description": "Een kaart waarmee docenten pedagogiek en didactische strategieën kunnen overbrengen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Type",
+        "description": "Het type kaart dat wordt gebruikt."
+      },
+      {
+        "property": "subtitle",
+        "title": "Ondertitel",
+        "description": "De ondertitel van de kaart."
+      },
+      {
+        "property": "url",
+        "title": "Link",
+        "description": "Een optionele link voor de kaart (link niet beschikbaar voor leerdoelen)."
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel instellen; dit overschrijft de titel op basis van het type"
+      },
+      {
+        "property": "icon",
+        "title": "Pictogram",
+        "description": "Pictogram instellen; dit overschrijft het pictogram op basis van het type"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "Accentkleur instellen; dit overschrijft de kleur op basis van het type"
+      },
+      {
+        "slot": "",
+        "title": "Inhoud"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ផ្លាកសញ្ញាគុណសម្បត្តិ",
+    "description": "ផ្លាកសញ្ញាមើលឃើញដើម្បីបង្ហាញការទទួលបានជំនាញ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "ចំណងជើងផ្លាកសញ្ញា",
+        "description": "ចំណងជើងដែលបង្ហាញនៅលើផ្លាកសញ្ញា។"
+      },
+      {
+        "property": "badgeImage",
+        "title": "រូបភាពផ្លាកសញ្ញា",
+        "description": "URL រូបភាពសម្រាប់ផ្លាកសញ្ញា។"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "ព័ត៌មានលម្អិតផ្លាកសញ្ញា",
+        "description": "ព័ត៌មានលម្អិតអំពីផ្លាកសញ្ញា។"
+      },
+      {
+        "property": "hyperLink",
+        "title": "តំណខ្ពស់",
+        "description": "តំណដែលភ្ជាប់ជាមួយផ្លាកសញ្ញា។"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "ជំនាញផ្លាកសញ្ញា",
+        "description": "ជំនាញដែលបង្ហាញនៅលើផ្លាកសញ្ញា។"
+      },
+      {
+        "property": "skill",
+        "title": "ជំនាញ (OER Schema)",
+        "description": "OER Schema៖ ជំនាញដែលបានរៀនដែលទទួលបានដោយការបញ្ចប់គោលបំណងសិក្សានេះ។"
+      }
+    ]
+  }
+}

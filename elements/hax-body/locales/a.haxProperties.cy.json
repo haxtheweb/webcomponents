@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Dolen sylfaenol",
+    "description": "Elfen dolen sylfaenol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Dolen",
+        "description": "URL y gyrchfan."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Testun",
+        "description": "Testun gweladwy'r ddolen."
+      },
+      {
+        "attribute": "target",
+        "title": "Targed",
+        "description": "Ble i agor y ddolen.",
+        "options": {
+          "": "Yr un ffenestr",
+          "_blank": "Ffenestr newydd - _blank",
+          "_top": "Ffenestr uchaf - _top",
+          "_parent": "Ffenestr rhiant - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Testun teitl",
+        "description": "Teitl cynghorol ar gyfer hygyrchedd a SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Perthynas â'r gyrchfan (diogelwch/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

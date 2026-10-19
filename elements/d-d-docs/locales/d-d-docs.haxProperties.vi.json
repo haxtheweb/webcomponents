@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Thiết kế, Phát triển, Phá bỏ",
+    "description": "Triển khai hệ thống thiết kế cho HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Tùy chọn hiển thị",
+        "options": {
+          "*": "Hướng dẫn phong cách đầy đủ"
+        }
+      }
+    ]
+  }
+}

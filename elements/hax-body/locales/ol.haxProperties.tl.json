@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "May numerong listahan",
+    "description": "Gumawa ng listahang may numero."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Estilo ng numero",
+        "description": "Estilong ginagamit sa pagnunumero ng ordered list.",
+        "options": {
+          "": "Default (decimal)",
+          "list-decimal-leading-zero": "Decimal na may nangungunang zero (01, 02, 03)",
+          "list-lower-alpha": "Maliit na titik (a, b, c)",
+          "list-upper-alpha": "Malaking titik (A, B, C)",
+          "list-lower-roman": "Maliit na roman (i, ii, iii)",
+          "list-upper-roman": "Malaking roman (I, II, III)"
+        }
+      }
+    ]
+  }
+}

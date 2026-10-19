@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "ប្លុកមាតិកា markdown ដោយផ្ទាល់ ឬផ្ទុកពីចម្ងាយ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "markdown ដើម"
+      },
+      {
+        "property": "source",
+        "title": "ប្រភព",
+        "description": "ឯកសារប្រភពសម្រាប់ markdown"
+      }
+    ]
+  }
+}

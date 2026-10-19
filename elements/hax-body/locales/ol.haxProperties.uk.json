@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Нумерований список",
+    "description": "Створити нумерований список."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Стиль нумерації",
+        "description": "Стиль нумерації впорядкованого списку.",
+        "options": {
+          "": "За замовчуванням (десяткові)",
+          "list-decimal-leading-zero": "Десяткові з нулем попереду (01, 02, 03)",
+          "list-lower-alpha": "Малі латинські літери (a, b, c)",
+          "list-upper-alpha": "Великі латинські літери (A, B, C)",
+          "list-lower-roman": "Малі римські цифри (i, ii, iii)",
+          "list-upper-roman": "Великі римські цифри (I, II, III)"
+        }
+      }
+    ]
+  }
+}

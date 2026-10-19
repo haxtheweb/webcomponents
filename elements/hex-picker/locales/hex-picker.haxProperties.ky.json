@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex тандагыч",
+    "description": "Hex коду боюнча түс тандагыч"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Мааниси",
+        "description": "Демейки hex мааниси"
+      },
+      {
+        "property": "disabled",
+        "title": "Өчүрүлгөн",
+        "description": "Текст талаасын өчүрүү"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Чоң дисплей",
+        "description": "Түстү чоң дисплейде көрсөтүү"
+      }
+    ]
+  }
+}

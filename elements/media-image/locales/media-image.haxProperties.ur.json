@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "بہتر تصویر",
+    "description": "مختلف بہتریوں کے ساتھ تصاویر پیش کرنے کا ایک طریقہ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ماخذ",
+        "description": "تصویر کا URL۔"
+      },
+      {
+        "property": "alt",
+        "title": "متبادل متن",
+        "description": "نابینا صارفین کے لیے تصویر کی وضاحت کرنے والا متن۔"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "تصویر کو کسی URL سے لنک کریں"
+      },
+      {
+        "property": "card",
+        "title": "کارڈ",
+        "description": "ابھرے ہوئے کارڈ کی شکل دینے کے لیے سایہ لگائیں۔"
+      },
+      {
+        "property": "box",
+        "title": "باکس",
+        "description": "تصویر کے گرد بصری باکس لگائیں۔"
+      },
+      {
+        "property": "offset",
+        "title": "آفسیٹ",
+        "description": "تصویر پر بائیں یا دائیں آفسیٹ لگائیں۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "wide": "چوڑا",
+          "narrow": "تنگ"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "حوالہ",
+        "description": "تصویر کا حوالہ۔"
+      },
+      {
+        "property": "caption",
+        "title": "کیپشن",
+        "description": "تصویر کا کیپشن۔"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "شکل کا عنوان",
+        "description": "شکل کے لیبل کا عنوان۔"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "شکل کی وضاحت",
+        "description": "شکل کے لیبل کی وضاحت۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "تھمب نیل تصویر",
+        "description": "تھمب نیل تصویر کا سورس۔ تھمب نیل دکھاتا ہے لیکن مکمل سورس موڈل میں کھولتا ہے۔"
+      },
+      {
+        "property": "round",
+        "title": "گول تصویر",
+        "description": "تصویر کی شکل کو دائرے کی صورت میں کاٹ دیتا ہے۔"
+      },
+      {
+        "property": "disableZoom",
+        "title": "تصویری موڈل غیر فعال کریں",
+        "description": "کلک کرنے پر تصویر کو تصویری معائنہ ڈائیلاگ میں کھلنے سے روکیں۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown کے طور پر رینڈر کریں",
+        "description": "کیپشن اور حوالے کو markdown کے طور پر رینڈر کریں۔"
+      }
+    ]
+  }
+}

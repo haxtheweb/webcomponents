@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "လိုင်စင်",
+    "description": "သင့်လက်ရာအတွက် လိုင်စင် ပေးပါ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "ကိုးကားထားသော လက်ရာ၏ ခေါင်းစဉ်။"
+      },
+      {
+        "property": "source",
+        "title": "ရင်းမြစ် လင့်ခ်",
+        "description": "လိုင်စင်ရ လက်ရာအတွက် ရင်းမြစ် URL။"
+      },
+      {
+        "property": "license",
+        "title": "လိုင်စင်",
+        "description": "ဤလက်ရာတွင် အသုံးချသော လိုင်စင်။"
+      },
+      {
+        "property": "creator",
+        "title": "ဖန်တီးသူ",
+        "description": "ဤလက်ရာ၏ ဖန်တီးသူ သို့မဟုတ် ပိုင်ရှင်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "ရင်းမြစ် လင့်ခ်",
+        "description": "နောက်ထပ် လိုင်စင် အသေးစိတ်သို့ လင့်ခ်။"
+      },
+      {
+        "property": "moreLabel",
+        "title": "နောက်ထပ် တံဆိပ်",
+        "description": "နောက်ထပ် လိုင်စင် အသေးစိတ်အတွက် တံဆိပ်။"
+      }
+    ]
+  }
+}

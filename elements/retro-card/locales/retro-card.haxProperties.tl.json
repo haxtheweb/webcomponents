@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro card",
+    "description": "Simpleng card na may retro na disenyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Pangunahing pamagat ng card."
+      },
+      {
+        "property": "url",
+        "description": "URL na bubuksan kapag na-click ang card."
+      },
+      {
+        "property": "subtitle",
+        "title": "Sub-title",
+        "description": "Subtitle ng card."
+      },
+      {
+        "property": "tags",
+        "title": "Mga Tag",
+        "description": "Mga tag na pinaghihiwalay ng kuwit."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Media source",
+        "description": "Pangunahing media source."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Source kapag naka-hover",
+        "description": "Media source na ipinapakita kapag naka-hover o na-activate ang card."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na Kulay",
+        "description": "Accent na kulay na inilalapat sa buong card."
+      },
+      {
+        "property": "dark",
+        "title": "Madilim",
+        "description": "Gamitin ang mga batayang kulay ng dark mode."
+      }
+    ]
+  }
+}

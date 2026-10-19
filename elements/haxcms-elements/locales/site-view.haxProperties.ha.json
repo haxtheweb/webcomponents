@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Kallon Gidan Yanar Gizo",
+    "description": "Toshe mai motsi da ke tambaya da nuna bayanan gidan yanar gizo bisa sharuɗɗa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL na Kallo",
+        "description": "Sigogin tambaya don ciyarwar bayanan kallo. Kana iya samun wannan daga dashboard na Views."
+      },
+      {
+        "property": "renderer",
+        "title": "Yanayin nuni",
+        "description": "Yadda ya kamata a nuna sakamakon kallo"
+      },
+      {
+        "property": "entity",
+        "title": "Nau'in abu",
+        "description": "Nau'in abun da ake amfani da shi don fassara amsar",
+        "options": {
+          "": "Tsoho (abubuwa)",
+          "item": "Abu",
+          "page": "Shafi",
+          "file": "Fayil",
+          "tag": "Alama",
+          "block": "Tubali",
+          "view": "Kallo",
+          "theme": "Jigo",
+          "region": "Yanki",
+          "customElement": "Abu na Musamman"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Karya kallon gidan yanar gizo",
+        "description": "Mayar zuwa abun ciki tsayayye don gyarawa kai tsaye; yana dakatar da sabuntawa kai tsaye daga tushe."
+      }
+    ]
+  }
+}

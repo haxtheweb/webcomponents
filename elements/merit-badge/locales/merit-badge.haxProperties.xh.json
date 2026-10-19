@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Ibeji yokuFaneleka",
+    "description": "Ibeji ebonakalayo yokunxibelelana ngokufumana isakhono."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Isihloko seBeji",
+        "description": "Isihloko esiboniswa kwibeji."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Umfanekiso weBeji",
+        "description": "I-URL yomfanekiso webeji."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Iinkcukacha zeBeji",
+        "description": "Iinkcukacha malunga nebeji."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Ikhonkco",
+        "description": "Ikhonkco elinxulumene nebeji."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Izakhono zeBeji",
+        "description": "Izakhono eziboniswa kwibeji."
+      },
+      {
+        "property": "skill",
+        "title": "Isakhono (Iskimu se-OER)",
+        "description": "Iskimu se-OER: isakhono esifundiweyo esifunyenwe ngokugqiba le njongo yokufunda."
+      }
+    ]
+  }
+}

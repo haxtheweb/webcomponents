@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ਦ੍ਰਿਸ਼",
+    "description": "ਬੈਕਐਂਡ 'ਤੇ ਰੈਂਡਰ ਕੀਤੇ CMS ਦ੍ਰਿਸ਼"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "ਨਾਮ",
+        "description": "ਸਾਡੇ CMS ਤੋਂ ਦ੍ਰਿਸ਼ ਦਾ ਨਾਮ"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "ਡਿਸਪਲੇ",
+        "description": "ਸਾਡੇ CMS ਦੇ ਉਸ ਦ੍ਰਿਸ਼ ਅੰਦਰ ਡਿਸਪਲੇ"
+      }
+    ]
+  }
+}

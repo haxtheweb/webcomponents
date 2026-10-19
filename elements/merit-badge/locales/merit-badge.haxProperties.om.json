@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Baajii Gahumsaa",
+    "description": "Baajii mul'ataa dandeettii argachuu beeksisu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Mata Duree Baajii",
+        "description": "Mata duree baajii irratti agarsiifamu."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Suuraa Baajii",
+        "description": "URL suuraa baajiif."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Bal'ina Baajii",
+        "description": "Bal'ina waa'ee baajii."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Haayipaarliinkii",
+        "description": "Liinkii baajii wajjin walqabatu."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Dandeettiiwwan Baajii",
+        "description": "Dandeettiiwwan baajii irratti agarsiifaman."
+      },
+      {
+        "property": "skill",
+        "title": "Dandeettii (OER Schema)",
+        "description": "OER Schema: dandeettii barame kaayyoo barumsaa kana xumuruun argame."
+      }
+    ]
+  }
+}

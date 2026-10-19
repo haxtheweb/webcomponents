@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Career Item",
+    "description": "Isang organisasyon at ang mga kaugnay nitong tungkulin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Pangalan ng Organisasyon"
+      },
+      {
+        "property": "location",
+        "title": "Lokasyon"
+      },
+      {
+        "property": "source",
+        "title": "Pinagmulan"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro-Kaart",
+    "description": "Einfach Kaart mat engem Retro-Design."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Haapttitel vun der Kaart."
+      },
+      {
+        "property": "url",
+        "description": "URL, déi opgemaach gëtt, wann op d'Kaart geklickt gëtt."
+      },
+      {
+        "property": "subtitle",
+        "title": "Ënnertitel",
+        "description": "Ënnertitel vun der Kaart."
+      },
+      {
+        "property": "tags",
+        "title": "Tags",
+        "description": "Tags, mat Komma getrennt."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Medienquell",
+        "description": "Primär Medienquell."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Quell beim Iwwerfueren",
+        "description": "Medienquell, déi ugewise gëtt, wann iwwer d'Kaart gefuer gëtt oder se aktivéiert gëtt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Akzentfaarf, déi op déi ganz Kaart applizéiert gëtt."
+      },
+      {
+        "property": "dark",
+        "title": "Däischter",
+        "description": "Basisfaarwe vum däischtere Modus benotzen."
+      }
+    ]
+  }
+}

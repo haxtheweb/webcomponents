@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: alasivulohko",
+    "description": "Dynaaminen lohko nykyisen sivun alasivujen näyttämiseen"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dynaaminen menetelmä",
+        "description": "Miten alasivut lasketaan suhteessa tähän elementtiin",
+        "options": {
+          "active": "Aktiivisen sivun alasivut",
+          "parent": "Yläsivun alasivut",
+          "ancestor": "Kaikki alasivut ylimmästä esivanhemmasta alkaen"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Aloitustaso"
+      },
+      {
+        "property": "end",
+        "title": "Lopetustaso"
+      }
+    ]
+  }
+}

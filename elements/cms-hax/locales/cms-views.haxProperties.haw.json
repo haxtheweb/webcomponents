@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Hiʻohiʻona CMS",
+    "description": "Nā hiʻohiʻona CMS i hōʻike ʻia ma ka hope"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Inoa",
+        "description": "Inoa o ka hiʻohiʻona mai kā mākou CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Hōʻike",
+        "description": "Hōʻike i loko o kēlā hiʻohiʻona mai kā mākou CMS"
+      }
+    ]
+  }
+}

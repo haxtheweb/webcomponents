@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex-valitsin",
+    "description": "Hex-koodin värivalitsin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Arvo",
+        "description": "Hex-oletusarvo"
+      },
+      {
+        "property": "disabled",
+        "title": "Pois käytöstä",
+        "description": "Poista tekstikenttä käytöstä"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Suuri näyttö",
+        "description": "Näytä väri suurena"
+      }
+    ]
+  }
+}

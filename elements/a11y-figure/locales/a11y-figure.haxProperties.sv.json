@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Beskrivande figur",
+    "description": "Tillgänglig figur med lång beskrivning"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Bild"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternativtext"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Figurtext",
+        "description": "Figurtext som alltid är synlig."
+      },
+      {
+        "slot": "details",
+        "title": "Beskrivning",
+        "description": "Detaljerad bildbeskrivning som kan döljas eller visas"
+      },
+      {
+        "slot": "summary",
+        "title": "Beskrivningsknapp",
+        "description": "Standard för knappen som visar/döljer beskrivningstexten, t.ex. \"info\", \"metadata\" osv."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Valfri sammanfattningstext när detaljerna är öppna"
+      },
+      {
+        "property": "closeText",
+        "title": "Valfri sammanfattningstext när detaljerna är stängda"
+      }
+    ]
+  }
+}

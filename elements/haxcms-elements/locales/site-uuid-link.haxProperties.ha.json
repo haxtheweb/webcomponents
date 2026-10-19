@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Hanyar haɗin HAX",
+    "description": "Hanyar haɗi zuwa takamaiman albarka a gidan yanar gizon da kake aiki a kai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Abu",
+        "description": "Abun da za a nuna don hanyar haɗi / bayanan take"
+      }
+    ]
+  }
+}

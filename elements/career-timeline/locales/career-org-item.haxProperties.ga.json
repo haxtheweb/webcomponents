@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Mír Ghairme",
+    "description": "Eagraíocht aonair agus na róil a bhaineann léi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Ainm na hEagraíochta"
+      },
+      {
+        "property": "location",
+        "title": "Láthair"
+      },
+      {
+        "property": "source",
+        "title": "Foinse"
+      }
+    ]
+  }
+}

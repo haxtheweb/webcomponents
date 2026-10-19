@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS Token",
+    "description": "CMS token na nire-render sa backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Token",
+        "description": "Token mula sa aming CMS"
+      }
+    ]
+  }
+}

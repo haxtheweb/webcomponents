@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Приклад коду",
+    "description": "Приклад коду з підсвічуванням на сторінці"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Підсвічування коду",
+        "description": "Підсвічування синтаксису для області коду",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Дані JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Кнопка копіювання в буфер обміну",
+        "description": "кнопка у верхньому правому куті з написом «копіювати в буфер обміну»"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Початок підсвічування",
+        "description": "Номер рядка, з якого почати підсвічування"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Кінець підсвічування",
+        "description": "Рядок, на якому завершити підсвічування"
+      }
+    ]
+  }
+}

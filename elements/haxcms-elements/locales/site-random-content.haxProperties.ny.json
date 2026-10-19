@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Zomwe Zili m'Tsamba Mwachisawawa",
+    "description": "Onetsani chinthu chimodzi cha pamwamba mwachisawawa kuchokera ku tsamba losankhidwa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Tsamba",
+        "description": "Sankhani tsamba loti mutengeko zomwe zili mkati mwachisawawa. Chinthucho chidzaonetsa mwachisawawa chimodzi mwa zinthu za HTML za pamwamba kuchokera ku tsamba ili."
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Liinkii bu'uuraa",
+    "description": "Elementii liinkii bu'uuraa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Hidhoo",
+        "description": "URL bakka gahiinsaa."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Barreeffama",
+        "description": "Barreeffama liinkii mul'atu."
+      },
+      {
+        "attribute": "target",
+        "title": "Kaayyoo",
+        "description": "Bakka hidhoon itti banamu.",
+        "options": {
+          "": "Foddaa wal fakkaataa",
+          "_blank": "Foddaa haaraa - _blank",
+          "_top": "Foddaa olii - _top",
+          "_parent": "Foddaa maatii - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Barreeffama mata duree",
+        "description": "Mata duree gorsaa dhaqqabamummaa fi SEO f."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Hariiroo bakka gahiinsaa wajjin (nageenya/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

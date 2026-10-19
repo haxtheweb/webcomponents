@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Nlele Github",
+    "description": "Ọgụgụ enweghị ihe mgbochi nwere nkọwa ogologo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Nzukọ",
+        "description": "Aha igwe nzukọ Github"
+      },
+      {
+        "property": "repo",
+        "title": "Ebe nchekwa",
+        "description": "Aha igwe repo"
+      },
+      {
+        "property": "extended",
+        "title": "Nlele agbatịrị",
+        "description": "Na-etinye readme n'ime mmewere"
+      }
+    ]
+  }
+}

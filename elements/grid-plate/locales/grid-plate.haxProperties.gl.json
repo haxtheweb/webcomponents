@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Deseño en columnas",
+    "description": "Dispoñer o material en columnas simples"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Deseño en columnas",
+        "description": "Estilo para presentar estes elementos (pode cambiar en pantallas pequenas)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Desactivar o deseño adaptable",
+        "description": "Marca a caixa para manter as columnas en pantallas grandes e seguir apilándoas nas pantallas máis pequenas"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Recheo dos elementos",
+        "description": "Recheo dentro de cada elemento"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Marxes dos elementos",
+        "description": "Marxe entre elementos"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Llista numerada",
+    "description": "Crea una llista numerada."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Estil de numeració",
+        "description": "Estil utilitzat per a la numeració de les llistes ordenades.",
+        "options": {
+          "": "Per defecte (decimal)",
+          "list-decimal-leading-zero": "Decimal amb zero inicial (01, 02, 03)",
+          "list-lower-alpha": "Lletres minúscules (a, b, c)",
+          "list-upper-alpha": "Lletres majúscules (A, B, C)",
+          "list-lower-roman": "Romans en minúscula (i, ii, iii)",
+          "list-upper-roman": "Romans en majúscula (I, II, III)"
+        }
+      }
+    ]
+  }
+}

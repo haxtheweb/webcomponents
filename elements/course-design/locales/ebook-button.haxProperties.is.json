@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rafbókarhnappur",
+    "description": "Hnappur sem tengir í rafbók."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Titill hnappsins."
+      },
+      {
+        "property": "link",
+        "title": "Tengill",
+        "description": "Tengillinn sem vísað er á við smell."
+      },
+      {
+        "property": "icon",
+        "title": "Tákn",
+        "description": "Tákn sem stendur fyrir þennan tengil"
+      }
+    ]
+  }
+}

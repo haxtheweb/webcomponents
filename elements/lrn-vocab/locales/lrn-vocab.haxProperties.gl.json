@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Vocabulario",
+    "description": "Termo de vocabulario"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termo"
+      },
+      {
+        "slot": "",
+        "title": "Definición",
+        "description": "A definición que se mostrará ao facer clic no termo."
+      },
+      {
+        "property": "description",
+        "title": "Descrición (OER Schema)",
+        "description": "OER Schema: unha breve descrición do termo de vocabulario. Complétase automaticamente a partir do texto da definición se se deixa baleiro."
+      }
+    ]
+  }
+}

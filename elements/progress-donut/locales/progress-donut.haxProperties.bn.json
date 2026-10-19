@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "প্রগ্রেস ডোনাট",
+    "description": "অগ্রগতির ডোনাট"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "এলিমেন্টের শিরোনাম"
+      },
+      {
+        "property": "desc",
+        "title": "বিবরণ",
+        "description": "অ্যাক্সেসযোগ্য দীর্ঘ বিবরণ"
+      },
+      {
+        "property": "imageSrc",
+        "title": "ছবির উৎস",
+        "description": "ডোনাটের ভেতরের ছবির সোর্স।"
+      },
+      {
+        "property": "imageAlt",
+        "title": "ছবির বিকল্প টেক্সট",
+        "description": "ছবির বিকল্প টেক্সট।"
+      },
+      {
+        "property": "animated",
+        "title": "অ্যানিমেটেড",
+        "description": "প্রথম লোডে অগ্রগতি অ্যানিমেট হবে কিনা"
+      },
+      {
+        "property": "complete",
+        "title": "সম্পন্ন",
+        "description": "সম্পন্ন মানগুলোর একটি অ্যারে।"
+      },
+      {
+        "property": "total",
+        "title": "মোট",
+        "description": "সব আইটেম সম্পন্ন হলে মোট।"
+      },
+      {
+        "property": "startAngle",
+        "title": "শুরুর কোণ",
+        "description": "ডোনাটের যে কোণ থেকে অগ্রগতি শুরু হয়"
+      }
+    ]
+  }
+}

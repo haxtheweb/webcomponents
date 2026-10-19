@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "基础链接",
+    "description": "基础链接元素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "链接",
+        "description": "目标 URL。"
+      },
+      {
+        "attribute": "innerText",
+        "title": "文本",
+        "description": "可见的链接文本。"
+      },
+      {
+        "attribute": "target",
+        "title": "目标",
+        "description": "在何处打开链接。",
+        "options": {
+          "": "同一窗口",
+          "_blank": "新窗口 - _blank",
+          "_top": "顶层窗口 - _top",
+          "_parent": "父窗口 - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "标题文本",
+        "description": "用于无障碍和 SEO 的提示性标题。"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "与目标的关系（安全/SEO）。",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

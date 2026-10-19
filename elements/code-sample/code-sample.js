@@ -87,7 +87,7 @@ class CodeSample extends I18NMixin(LitElement) {
           user-select: none;
         }
         tr {
-          transition: background-color 0.3s ease-in-out;
+          transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
         @media (prefers-reduced-motion: reduce) {
           tr {

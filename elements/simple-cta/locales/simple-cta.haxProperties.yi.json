@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "רוף צו אַקציע",
+    "description": "אַ פּשוט קנעפּל מיט אַ לינק צו טאָן אַ שריט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "עטיקעט",
+        "description": "לינק־עטיקעט"
+      },
+      {
+        "property": "link",
+        "title": "לינק",
+        "description": "שרײַב אַרײַן אַ לינק צו סײַ וועלכן רעסורס"
+      },
+      {
+        "property": "hideIcon",
+        "title": "באַהאַלט דעם איקאָן",
+        "description": "באַהאַלט דעם איקאָן וואָס באַטאָנט דעם טעקסט"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "איקאָן",
+        "description": "איקאָן פֿונעם אַקציע־לינק"
+      }
+    ]
+  }
+}

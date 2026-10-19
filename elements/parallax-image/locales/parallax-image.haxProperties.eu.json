@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Paralaxe-irudia",
+    "description": "Irudia korritzean mugitzen da"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Irudia",
+        "description": "atzeko planoan erabiliko den irudia"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Goiburu-eremua",
+        "description": "Goiburuko testu-eremua"
+      }
+    ]
+  }
+}

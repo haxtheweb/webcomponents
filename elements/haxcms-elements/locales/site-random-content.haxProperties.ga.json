@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ábhar Randamach Leathanaigh",
+    "description": "Taispeáin eilimint randamach barrleibhéil ó leathanach roghnaithe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Leathanach",
+        "description": "Roghnaigh an leathanach as a dtarraingeofar ábhar randamach. Taispeánfaidh an eilimint ceann de na heilimintí HTML barrleibhéil ón leathanach seo go randamach."
+      }
+    ]
+  }
+}

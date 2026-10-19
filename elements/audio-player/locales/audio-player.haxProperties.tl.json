@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Kaya nitong ipakita ang video sa lubos na accessible na paraan anuman ang pinagmulan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pinagmulan",
+        "description": "Ang URL para sa media na ito."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Pamagat",
+        "description": "Simpleng pamagat sa ilalim ng video"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na kulay",
+        "description": "Piliin ang accent color para sa player."
+      },
+      {
+        "property": "track",
+        "title": "Mga closed caption",
+        "description": "Ang URL ng captions file."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Thumbnail na larawan",
+        "description": "Opsyonal. Ang URL ng isang thumbnail/poster na larawan."
+      },
+      {
+        "property": "learningMode",
+        "title": "Paganahin ang learning mode",
+        "description": "Dini-disable ang fast forward at rewind."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Alisin ang button na buksan sa YouTube",
+        "description": "Inaalis ang button para buksan ang video sa YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Isama ang share link?",
+        "description": "Nagbibigay ng link para ibahagi ang video."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Ipinapahiwatig kung gagamit ng CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Payagan ang pag-play sa background",
+        "description": "Awtomatikong nagpa-pause / nagpe-play ang mga video kapag nawalan ng focus ang tab; pinapayagan nitong mag-play ang video kahit walang focus ang tab"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Madilim na tema para sa transcript",
+        "description": "Paganahin ang madilim na tema para sa transcript."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "I-disable ang Interactive",
+        "description": "I-disable ang interactive mode na ginagawang maki-click ang transcript."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Itago ang mga timestamp",
+        "description": "Itago ang mga timestamp sa transcript."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Itago ang Transcript",
+        "description": "Itago ang transcript bilang default."
+      },
+      {
+        "property": "lang",
+        "title": "Wika",
+        "description": "Wika ng media."
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Vidjo",
+    "description": "Riproduzzjoni aċċessibbli tal-vidjo minn diversi sorsi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sors",
+        "description": "URL għal din il-midja."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titlu",
+        "description": "Titlu muri taħt il-vidjo."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Immaġni tal-poster",
+        "description": "URL tal-immaġni tal-poster."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Binarji tat-test",
+        "description": "Kapsjonijiet, sottotitoli, deskrizzjonijiet u binarji oħra tat-test għall-vidjo."
+      },
+      {
+        "property": "startTime",
+        "title": "Ħin tal-bidu",
+        "description": "Ibda l-vidjo f'ħin speċifiku (sekondi)."
+      },
+      {
+        "property": "endTime",
+        "title": "Ħin tat-tmiem",
+        "description": "Temm il-vidjo f'ħin speċifiku (sekondi), jeħtieġ ħin tal-bidu."
+      },
+      {
+        "property": "learningMode",
+        "title": "Attiva l-mod tat-tagħlim",
+        "description": "Jiddiżattiva l-fast forward u r-rewind."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Neħħi l-buttuna Iftaħ fuq YouTube",
+        "description": "Ineħħi l-buttuna biex tiftaħ il-vidjo fuq YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Tinkludi link biex taqsam?",
+        "description": "Jipprovdi link biex taqsam il-vidjo."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Aħbi l-ħinijiet",
+        "description": "Aħbi l-ħinijiet fuq it-traskrizzjoni."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Aħbi t-Traskrizzjoni",
+        "description": "Aħbi t-traskrizzjoni b'mod default."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Binarju ta' Deskrizzjoni bl-Awdjo",
+        "description": "URL għal binarju ta' deskrizzjoni bl-awdjo (fajl MP3) li jipprovdi narrazzjoni tal-elementi viżivi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Jindika jekk għandux jintuża CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Ippermetti r-riproduzzjoni fl-isfond",
+        "description": "Ibqa' ilgħab meta t-tab tal-browser titlef il-fokus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema skura għat-traskrizzjoni",
+        "description": "Attiva t-tema skura għat-traskrizzjoni."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Iddiżattiva l-Interattività",
+        "description": "Iddiżattiva l-mod interattiv li jagħmel it-traskrizzjoni klikkabbli."
+      },
+      {
+        "property": "lang",
+        "title": "Lingwa",
+        "description": "Lingwa tal-midja."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "(deprekat) Agħżel il-kulur tal-aċċent għall-player."
+      }
+    ]
+  }
+}

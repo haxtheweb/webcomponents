@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Poloka Html",
+    "description": "He poloka HTML kumu e hāʻawi ana i ka hoʻopili HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Code HTML āu e makemake ai e hōʻike ma ka ʻike"
+      }
+    ]
+  }
+}

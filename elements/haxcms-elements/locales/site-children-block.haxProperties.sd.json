@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ذيلي بلاڪ",
+    "description": "موجوده صفحي جا ذيلي صفحا ڏيکارڻ لاءِ متحرڪ بلاڪ"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "متحرڪ طريقو",
+        "description": "هن عنصر جي نسبت ذيلي صفحا ڪيئن ڳڻجن",
+        "options": {
+          "active": "سرگرم ذيلي صفحا",
+          "parent": "مٿئين صفحي جا ذيلي صفحا",
+          "ancestor": "سڀ کان مٿئين اباڻي صفحي جا سڀ ذيلي صفحا"
+        }
+      },
+      {
+        "property": "start",
+        "title": "شروعاتي سطح"
+      },
+      {
+        "property": "end",
+        "title": "آخري سطح"
+      }
+    ]
+  }
+}

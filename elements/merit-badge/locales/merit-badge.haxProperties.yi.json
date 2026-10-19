@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "פֿאַרדינסט־אָפּצייכן",
+    "description": "וויזועלער אָפּצייכן צו מעלדן אַז מע האָט באַקומען אַ פֿעיִקייט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "אָפּצייכן־טיטל",
+        "description": "טיטל געוויזן אויפֿן אָפּצייכן."
+      },
+      {
+        "property": "badgeImage",
+        "title": "אָפּצייכן־בילד",
+        "description": "בילד־URL פֿאַרן אָפּצייכן."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "אָפּצייכן־פּרטים",
+        "description": "פּרטים וועגן דעם אָפּצייכן."
+      },
+      {
+        "property": "hyperLink",
+        "title": "היפּערלינק",
+        "description": "לינק פֿאַרבונדן מיטן אָפּצייכן."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "אָפּצייכן־פֿעיִקייטן",
+        "description": "פֿעיִקייטן געוויזן אויפֿן אָפּצייכן."
+      },
+      {
+        "property": "skill",
+        "title": "פֿעיִקייט (OER Schema)",
+        "description": "OER Schema: אַ געלערנטע פֿעיִקייט באַקומען דורך דערפֿילן דעם לערן־ציל."
+      }
+    ]
+  }
+}

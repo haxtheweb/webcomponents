@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-könyv gomb",
+    "description": "E-könyvre mutató gomb."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "A gomb címe."
+      },
+      {
+        "property": "link",
+        "title": "Hivatkozás",
+        "description": "A kattintáskor megnyitandó hivatkozás."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "A hivatkozást jelképező ikon"
+      }
+    ]
+  }
+}

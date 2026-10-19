@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Figură descriptivă",
+    "description": "Figură accesibilă cu descriere lungă"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Imagine"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Text alternativ"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Legenda figurii",
+        "description": "Textul legendei figurii, care este întotdeauna vizibil."
+      },
+      {
+        "slot": "details",
+        "title": "Descriere",
+        "description": "Descriere detaliată a imaginii care poate fi ascunsă sau afișată"
+      },
+      {
+        "slot": "summary",
+        "title": "Butonul descrierii",
+        "description": "Valoarea implicită pentru butonul care afișează/ascunde textul descrierii, de ex. „info”, „metadate” etc."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Text de rezumat opțional când detaliile sunt deschise"
+      },
+      {
+        "property": "closeText",
+        "title": "Text de rezumat opțional când detaliile sunt închise"
+      }
+    ]
+  }
+}

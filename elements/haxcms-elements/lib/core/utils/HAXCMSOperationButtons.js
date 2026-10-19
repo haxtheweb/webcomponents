@@ -49,7 +49,7 @@ export const HAXCMSOperationButtons = function (SuperClass) {
           }
           .operation-buttons-wrapper .btn {
             margin: 0 16px 0 0;
-            transition: all 0.3s ease-in-out;
+            transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           }
           .operation-buttons-wrapper .btn:active {
             opacity: 1;

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Okuqukethwe Okukude",
+    "description": "Phinda usebenzise okuqukethwe kusuka kusayithi elilodwa kwelinye."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Ikheli lesayithi",
+        "description": "Namathisela ikheli okufanele kubhekiswe kulo okuqukethwe uma kungelona isayithi lamanje"
+      },
+      {
+        "property": "uuid",
+        "title": "Into",
+        "description": "Into okufanele iboniswe yedatha yesixhumanisi / yesihloko"
+      },
+      {
+        "property": "breakreference",
+        "title": "Nqamula ireferensi",
+        "description": "Ukumaka leli bhokisi kukopisha okuqukethwe okukude ukuze kuhlelwe endaweni kodwa kususa ukuhlobana. Ngeke kusathola izibuyekezo lapho okubhekiselwe kukho kubuyekezwa."
+      },
+      {
+        "property": "showTitle",
+        "title": "Bonisa isihloko",
+        "description": "Vula ukuze kuboniswe isihloko sensiza eboniswayo"
+      }
+    ]
+  }
+}

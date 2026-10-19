@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Viidiyoo",
+    "description": "Taphachiisa viidiyoo dhaqqabamaa madda hedduu irraa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Madda",
+        "description": "URL miidiyaa kanaa."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Mata duree",
+        "description": "Mata duree viidiyoo jalatti agarsiifamu."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Suuraa poostarii",
+        "description": "URL suuraa poostarii."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Sararoota barreeffamaa",
+        "description": "Mata-duree cufaa, hiika jalaa, ibsaa fi sararoota barreeffamaa biroo viidiyoof."
+      },
+      {
+        "property": "startTime",
+        "title": "Yeroo jalqabaa",
+        "description": "Viidiyoo yeroo murtaa'e (sekondii) irratti jalqabi."
+      },
+      {
+        "property": "endTime",
+        "title": "Yeroo xumuraa",
+        "description": "Viidiyoo yeroo murtaa'e (sekondii) irratti xumuri, yeroo jalqabaa barbaada."
+      },
+      {
+        "property": "learningMode",
+        "title": "Haalata barumsaa dandeessisi",
+        "description": "Dafanii fuuldura deemuu fi duubatti deebi'uu dhorka."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Qabduu YouTube irratti banuu balleessi",
+        "description": "Qabduu viidiyoo YouTube irratti banuu balleessa."
+      },
+      {
+        "property": "linkable",
+        "title": "Liinkii qoodii dabaluu?",
+        "description": "Viidiyoo qooduuf liinkii kenna."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Mallattoo yeroo dhoksi",
+        "description": "Barreeffama dubbii irratti mallattoo yeroo dhoksi."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Barreeffama Dubbii Dhoksi",
+        "description": "Durtiidhaan barreeffama dubbii dhoksi."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Sarara ibsa sagaleen",
+        "description": "URL sarara ibsa sagaleen (faayilii MP3) kan wantoota mul'atan ibsu."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS fayyadamuu fi dhiisuu agarsiisa.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Taphachiisa duubaa hayyami",
+        "description": "Yeroo taabiin biraawuzaraa xiyyeeffannaa dhabu taphachuu itti fufi."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Teemii dukkanaa barreeffama dubbii",
+        "description": "Barreeffama dubbiitiif teemii dukkanaa dandeessisi."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Walqunnamtii Dhorki",
+        "description": "Haalata walqunnamtii barreeffama dubbii cuqaasamaa taasisu dhorki."
+      },
+      {
+        "property": "lang",
+        "title": "Afaan",
+        "description": "Afaan miidiyaa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu calaqqee",
+        "description": "(dulloomeera) Halluu cimsaa taphataaf fili."
+      }
+    ]
+  }
+}

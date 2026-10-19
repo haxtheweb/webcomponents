@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ʻIke ʻaoʻao kaulele",
+    "description": "Hōʻike i kahi mea pae luna kaulele mai kahi ʻaoʻao i koho ʻia"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "ʻAoʻao",
+        "description": "Koho i ka ʻaoʻao e kiʻi ai i ka ʻike kaulele. E hōʻike kaulele ka mea i kekahi o nā mea HTML pae luna mai kēia ʻaoʻao."
+      }
+    ]
+  }
+}

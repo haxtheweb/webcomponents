@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ñe'ẽ mbykypyre",
+    "description": "Ñe'ẽ mbykypyre ñe'ẽ tuichakue marandu'i reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Moñe'ẽrã",
+        "description": "Ñe'ẽ mbykypyre moñe'ẽrã ojehecháva."
+      },
+      {
+        "attribute": "title",
+        "title": "Ñe'ẽ",
+        "description": "Ñe'ẽ tuichakue ojehechaukáva mouse oĩ jave ári."
+      }
+    ]
+  }
+}

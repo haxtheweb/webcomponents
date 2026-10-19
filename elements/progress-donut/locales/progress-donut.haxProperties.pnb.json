@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "ترقی ڈونٹ",
+    "description": "ترقی والا ڈونٹ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرناواں",
+        "description": "عنصر دا سرناواں"
+      },
+      {
+        "property": "desc",
+        "title": "تفصیل",
+        "description": "پہنچ جوگی لمی تفصیل"
+      },
+      {
+        "property": "imageSrc",
+        "title": "تصویر دا سرچشمہ",
+        "description": "ڈونٹ اندر تصویر دا سورس۔"
+      },
+      {
+        "property": "imageAlt",
+        "title": "تصویر دا متبادل متن",
+        "description": "تصویر لئی alt متن۔"
+      },
+      {
+        "property": "animated",
+        "title": "اینیمیٹڈ",
+        "description": "کی ترقی پہلی واری لوڈ ہوݨ تے اینیمیٹ ہووے"
+      },
+      {
+        "property": "complete",
+        "title": "پورا",
+        "description": "پورے ہوئے قدراں دی ایرے۔"
+      },
+      {
+        "property": "total",
+        "title": "کُل",
+        "description": "ساریاں آئٹماں پوریاں ہوݨ تے کُل۔"
+      },
+      {
+        "property": "startAngle",
+        "title": "شروع دا زاویہ",
+        "description": "ڈونٹ دا زاویہ جتھوں ترقی شروع ہوندی اے"
+      }
+    ]
+  }
+}

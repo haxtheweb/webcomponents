@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kaart",
+    "description": "In kaart mei opsjonele aksintstyl."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Kop",
+        "description": "In kop foar de kaart."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subkop",
+        "description": "In opsjonele subkop foar de kaart."
+      },
+      {
+        "slot": "content",
+        "title": "Ynhâld",
+        "description": "Ynhâld foar de kaart."
+      },
+      {
+        "slot": "footer",
+        "title": "Foettekst",
+        "description": "In opsjonele fuottekst foar de kaart."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Ofbylding",
+        "description": "Opsjonele ôfbylding"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Alt-tekst ôfbylding",
+        "description": "Alternative tekst dy't de ôfbylding beskriuwt foar skermlêzers. Lit allinnich leech as de ôfbylding suver dekoratyf is."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Horizontale útlining fan ôfbylding",
+        "options": {
+          "left": "lofts",
+          "center": "sintraal",
+          "right": "rjochts"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Fertikale útlining fan ôfbylding",
+        "options": {
+          "top": "boppe",
+          "center": "sintraal",
+          "bottom": "ûnder"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "In opsjonele aksintkleur."
+      },
+      {
+        "property": "dark",
+        "title": "Tsjuster tema",
+        "description": "Tsjuster tema ynskeakelje"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontaal",
+        "description": "Horizontale oriïntaasje?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Kopaksint",
+        "description": "Aksintkleur tapasse op kop?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Eftergrûnaksint",
+        "description": "Aksintkleur tapasse op kaarteftergrûn?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Gjin rânaksint",
+        "description": "Rânaksint fuortsmite?"
+      },
+      {
+        "property": "flat",
+        "title": "Plat",
+        "description": "Fakskaad fuortsmite?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Hoeke",
+        "description": "Ynhâld foar kaarthoeke."
+      }
+    ]
+  }
+}

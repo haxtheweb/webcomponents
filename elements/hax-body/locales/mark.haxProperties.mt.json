@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Enfasi",
+    "description": "Enfasizza test inline."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Test",
+        "description": "Test enfasizzat."
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Puter video sing gampang diakses saka macem-macem sumber."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL kanggo media iki."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Irah-irahan",
+        "description": "Judhul sing ditampilake ing ngisor video."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Gambar poster",
+        "description": "URL gambar poster."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Trek teks",
+        "description": "Teks katutup, subjudhul, deskripsi, lan trek teks liyané kanggo video."
+      },
+      {
+        "property": "startTime",
+        "title": "Wektu wiwitan",
+        "description": "Wiwiti video ing wektu tartamtu (detik)."
+      },
+      {
+        "property": "endTime",
+        "title": "Wektu pungkasan",
+        "description": "Mungkasi video ing wektu tartamtu (detik), mbutuhake wektu wiwitan."
+      },
+      {
+        "property": "learningMode",
+        "title": "Aktifake mode sinau",
+        "description": "Mateni maju cepet lan mundur."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Busak tombol bukak ing YouTube",
+        "description": "Mbusak tombol kanggo mbukak video ing YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Lebokake link kanggo mbagekake?",
+        "description": "Nyedhiyakake link kanggo mbagekake video."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Dhelikake cap wektu",
+        "description": "Dhelikake cap wektu ing transkrip."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Dhelikake Transkrip",
+        "description": "Dhelikake transkrip kanthi gawan."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Trek Deskripsi Audio",
+        "description": "URL menyang trek deskripsi audio (berkas MP3) sing nyritakake unsur visual."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Nuduhake apa nggunakake CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Idini puter ing latar mburi",
+        "description": "Terus muter nalika tab browser ilang fokus."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema peteng kanggo transkrip",
+        "description": "Aktifake tema peteng kanggo transkrip."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Pateni Interaktif",
+        "description": "Pateni mode interaktif sing nggawe transkrip bisa diklik."
+      },
+      {
+        "property": "lang",
+        "title": "Basa",
+        "description": "Basa saka media."
+      },
+      {
+        "property": "accentColor",
+        "title": "Werna aksen",
+        "description": "(ora dianjurake) Pilih warna aksen kanggo pamuter."
+      }
+    ]
+  }
+}

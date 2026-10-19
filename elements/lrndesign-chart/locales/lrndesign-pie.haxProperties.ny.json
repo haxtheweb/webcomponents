@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Tchati cha Pai",
+    "description": "Imapanga tchati chopezeka kwa onse chochokera ku CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wosankha."
+      },
+      {
+        "title": "Mawonekedwe Akuda",
+        "description": "Yatsani Mawonekedwe Amdima"
+      },
+      {
+        "title": "Fayilo ya CSV",
+        "description": "Tsegulani deta kuchokera ku CSV."
+      },
+      {
+        "title": "Mutu wa Tchati",
+        "description": "Mawu ena opezeka kwa onse a tchati chanu."
+      },
+      {
+        "title": "Kufotokozera kwa Tchati",
+        "description": "Kufotokozera kopezeka kwa onse kwa tchati chanu."
+      },
+      {
+        "title": "Dzina la Muyeso",
+        "description": "Chiyerekezo cha m'lifupi:kutalika kwa tchati (Onani https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings kuti mupeze $ct-scales ndi $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Donati"
+      },
+      {
+        "title": "Onetsani Chizindikiro"
+      },
+      {
+        "title": "Ngodya Yoyambira"
+      },
+      {
+        "title": "Mpata"
+      },
+      {
+        "title": "Zonse",
+        "description": "Chiwerengero chonse chosankha chomwe mungatchule. Mukatchula chiwerengero chonse, kuphatikiza kwa mitengo ya gulu kuyenera kukhala chiwerengero ichi kuti pai yathunthu ijambulidwe. Mutha kugwiritsa ntchito izi kujambula mbali zina zokha za pai kapena ma tchati a geji."
+      },
+      {
+        "title": "Musanyalanyaze Mitengo Yopanda Kanthu",
+        "description": "Mitengo yopanda kanthu idzanyalanyazidwa kuti mupewe kujambula magawo ndi zizindikiro zosafunikira."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tembenuzani Deta",
+        "description": "Tembenuzani deta kuphatikizapo zizindikiro, kutsatana kwa magulu komanso magulu onse a deta."
+      },
+      {
+        "title": "Tebulo la HTML",
+        "description": "Chosankha: Tsegulani deta ngati tebulo la HTML."
+      },
+      {
+        "title": "M'lifupi mwa Mzere wa Donati"
+      },
+      {
+        "title": "Donati Yodzaza",
+        "description": "Jambulani magawo a donati ngati mawonekedwe m'malo mwa mizere."
+      },
+      {
+        "title": "Kolowera Chizindikiro",
+        "description": "Jambulani magawo a donati ngati mawonekedwe m'malo mwa mizere.",
+        "options": {
+          "neutral": "pakatikati",
+          "explode": "kunja",
+          "implode": "mkati"
+        }
+      },
+      {
+        "title": "Kusuntha kwa Chizindikiro",
+        "description": "Kusuntha kwa malo a chizindikiro kuchokera pa malo okhazikika omwe ndi theka la radius. Mtengo uwu ukhoza kukhala wabwino kapena woipa. Mitengo yabwino idzaika chizindikiro kutali ndi pakati."
+      },
+      {
+        "title": "Malo a Chizindikiro",
+        "options": {
+          "inside": "mkati",
+          "outside": "kunja",
+          "center": "pakati"
+        }
+      }
+    ]
+  }
+}

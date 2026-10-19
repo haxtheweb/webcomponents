@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Yer tutucu",
+    "description": "Seçilmiş media növünə çevrilə bilən yer tutucu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Növ",
+        "description": "Bunun əvəzləmə üçün qəbul etdiyi qacet növü.",
+        "options": {
+          "text": "Mətn / məzmun",
+          "document": "Sənəd / fayl",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Şəkil",
+          "math": "Riyaziyyat"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Mətn",
+        "description": "İstənilən yer tutucunu daha ətraflı müəyyən edin"
+      }
+    ]
+  }
+}

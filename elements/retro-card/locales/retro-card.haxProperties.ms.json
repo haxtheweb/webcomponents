@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kad retro",
+    "description": "Kad ringkas dengan reka bentuk retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk utama kad."
+      },
+      {
+        "property": "url",
+        "description": "URL untuk dibuka apabila kad diklik."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtajuk",
+        "description": "Subtajuk kad."
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Tag dipisahkan koma."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Sumber media",
+        "description": "Sumber media utama."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Sumber semasa dilayang",
+        "description": "Sumber media yang ditunjukkan apabila kad dilayang atau diaktifkan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen yang digunakan pada seluruh kad."
+      },
+      {
+        "property": "dark",
+        "title": "Gelap",
+        "description": "Gunakan warna asas mod gelap."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Santykinė antraštė",
+    "description": "pateikia teisingą antraščių hierarchiją pagal tėvinę antraštę"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Tėvinės antraštės ištekliaus ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "Išjungia nuorodos mygtuko funkciją."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Lygiuoja nuorodos kopijavimo mygtuką antraštės dešiniajame krašte."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Antraštės lygis, jei tėvinė antraštė nerasta."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Pakeičia numatytąjį nuorodos kopijavimo pranešimo tekstą."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Pakeičia numatytąjį nuorodos kopijavimo mygtuko užrašą."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Pakeičia numatytąją nuorodos kopijavimo mygtuko piktogramą."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Pakeičia numatytąjį nuorodos kopijavimo pranešimo uždarymo mygtuko užrašą."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Pakeičia numatytąją nuorodos kopijavimo pranešimo uždarymo mygtuko piktogramą."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "视差图片",
+    "description": "图片跟牢滚动"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "图片",
+        "description": "用辣背景里个图片"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "标题区域",
+        "description": "标题文字区域"
+      }
+    ]
+  }
+}

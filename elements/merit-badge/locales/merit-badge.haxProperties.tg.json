@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Нишони шоистагӣ",
+    "description": "Нишони визуалӣ барои ифодаи азхуд кардани маҳорат."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Сарлавҳаи нишон",
+        "description": "Сарлавҳае, ки дар нишон нишон дода мешавад."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Тасвири нишон",
+        "description": "URL-и тасвир барои нишон."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Тафсилоти нишон",
+        "description": "Тафсилот дар бораи нишон."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Гиперпайванд",
+        "description": "Пайванди марбут ба нишон."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Маҳоратҳои нишон",
+        "description": "Маҳоратҳое, ки дар нишон нишон дода мешаванд."
+      },
+      {
+        "property": "skill",
+        "title": "Маҳорат (OER Schema)",
+        "description": "OER Schema: маҳорати омӯхташуда, ки бо иҷрои ин ҳадафи омӯзишӣ ба даст оварда мешавад."
+      }
+    ]
+  }
+}

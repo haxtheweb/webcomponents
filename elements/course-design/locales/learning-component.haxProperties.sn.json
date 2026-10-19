@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Chikamu cheKudzidza",
+    "description": "Kadhi revadzidzisi kuti vataure nzira dzekudzidzisa nemaitiro ekudzidzisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Rudzi",
+        "description": "Mhando yekadhi rinoshandiswa."
+      },
+      {
+        "property": "subtitle",
+        "title": "Zita Diki",
+        "description": "Zita diki rekadhi."
+      },
+      {
+        "property": "url",
+        "title": "Chinongedzo",
+        "description": "Chinongedzo chekadhi chisingamanikidzwe (Chinongedzo hachiwanikwi paZvinangwa zveKudzidza)."
+      },
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Isa Zita, izvi zvinotsiva zita rinobva pamhando"
+      },
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Isa aikoni, izvi zvinotsiva aikoni inobva pamhando"
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rwekusimbisa",
+        "description": "Isa ruvara rweaccent, izvi zvinotsiva ruvara runobva pamhando"
+      },
+      {
+        "slot": "",
+        "title": "Zviri mukati"
+      }
+    ]
+  }
+}

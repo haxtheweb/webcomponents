@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Imej paralaks",
+    "description": "Imej menatal melepasi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Imej",
+        "description": "imej yang akan terlibat di latar belakang"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Kawasan tajuk",
+        "description": "Kawasan teks tajuk"
+      }
+    ]
+  }
+}

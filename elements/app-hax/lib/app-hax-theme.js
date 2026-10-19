@@ -119,7 +119,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           color: light-dark(#364149, var(--ddd-accent-6, #f5f5f5));
           background-color: light-dark(#ffffffee, #000000aa);
           border-right: 1px solid rgba(0, 0, 0, 0.07);
-          transition: left 0.3s ease;
+          transition: left var(--ddd-duration-normal, 0.3s) ease;
         }
         /* content */
         .main-section h1 {
@@ -179,7 +179,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           bottom: 0;
           min-width: 400px;
           overflow-y: auto;
-          transition: left 0.3s ease;
+          transition: left var(--ddd-duration-normal, 0.3s) ease;
         }
         :host([responsive-size="xs"]) .site-body,
         :host([responsive-size="sm"]) .site-body {

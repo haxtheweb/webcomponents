@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "学习组件",
+    "description": "供教师传达教学法和教学策略的卡片。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "类型",
+        "description": "要使用的卡片类型。"
+      },
+      {
+        "property": "subtitle",
+        "title": "副标题",
+        "description": "卡片的副标题。"
+      },
+      {
+        "property": "url",
+        "title": "链接",
+        "description": "卡片的可选链接（学习目标不支持链接）。"
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "设置标题，这将覆盖基于类型的标题"
+      },
+      {
+        "property": "icon",
+        "title": "图标",
+        "description": "设置图标，这将覆盖基于类型的图标"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "设置强调色，这将覆盖基于类型的颜色"
+      },
+      {
+        "slot": "",
+        "title": "目录"
+      }
+    ]
+  }
+}

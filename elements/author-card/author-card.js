@@ -168,7 +168,7 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
         font-size: var(--ddd-font-size-3xs);
         text-decoration: none;
         color: var(--author-card-link-color);
-        transition: color 0.3s ease-in-out;
+        transition: color var(--ddd-duration-normal, 0.3s) ease-in-out;
         background-color: transparent;
       }
 

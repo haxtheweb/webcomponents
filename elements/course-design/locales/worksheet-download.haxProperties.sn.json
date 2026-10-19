@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Kudhaunirodha Worksheet",
+    "description": "Bhatani rekuratidza mafaira aripo kuti adhaunirodhwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Zita rezvinodhaunirodhwa."
+      },
+      {
+        "property": "link",
+        "title": "Chinongedzo",
+        "description": "Chinongedzo chezvinodhaunirodhwa."
+      }
+    ]
+  }
+}

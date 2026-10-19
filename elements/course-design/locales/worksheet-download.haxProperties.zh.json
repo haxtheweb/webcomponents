@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "练习单下载",
+    "description": "用于显示可下载文件的按钮。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "下载项的标题。"
+      },
+      {
+        "property": "link",
+        "title": "链接",
+        "description": "下载项的链接。"
+      }
+    ]
+  }
+}

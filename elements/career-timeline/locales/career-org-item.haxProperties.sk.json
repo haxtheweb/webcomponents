@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Položka kariéry",
+    "description": "Jednotlivá organizácia a jej pridružené roly"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Názov organizácie"
+      },
+      {
+        "property": "location",
+        "title": "Miesto"
+      },
+      {
+        "property": "source",
+        "title": "Zdroj"
+      }
+    ]
+  }
+}

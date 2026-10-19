@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "مهال‌وېش",
+    "description": "د انځورونو او متن سره د پېښو مهالوېش"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "د مهال‌وېش سرلیک",
+        "description": "د مهالوېش لپاره سرلیک."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "اختیاري تاکیدي رنګ."
+      },
+      {
+        "property": "dark",
+        "title": "تیاره بڼه",
+        "description": "تیاره بڼه فعاله کړئ"
+      },
+      {
+        "slot": "",
+        "title": "د مهالوېش تشریح",
+        "description": "د مهالوېش تشریح کوونکی اختیاري متن."
+      },
+      {
+        "property": "events",
+        "title": "د مهالوېش پېښې",
+        "description": "په مهالوېش کې پېښې"
+      }
+    ]
+  }
+}

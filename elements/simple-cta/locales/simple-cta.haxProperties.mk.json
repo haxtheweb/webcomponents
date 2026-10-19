@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Повик за дејство",
+    "description": "Едноставно копче со врска за преземање дејство."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Етикета",
+        "description": "Ознака на врската"
+      },
+      {
+        "property": "link",
+        "title": "Врска",
+        "description": "Внесете врска до кој било ресурс"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Скриј икона",
+        "description": "Скриј ја иконата што се користи за акцент на текстот"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона на врската за дејство"
+      }
+    ]
+  }
+}

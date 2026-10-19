@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "สมุดคะแนน",
+    "description": "สมุดคะแนนแบบ headless ที่รองรับแบ็กเอนด์หลายแบบพร้อมรูบริก"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "แหล่งที่มา",
+        "description": "ประเภทแหล่งข้อมูล (googledocs, url, json, filesystem)",
+        "options": {
+          "googledocs": "Google เอกสาร",
+          "url": "URL endpoint (JSON)",
+          "json": "ก้อนข้อมูล JSON",
+          "filesystem": "ระบบไฟล์"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ข้อมูลต้นทาง",
+        "description": "URL หรือข้อมูล JSON สำหรับสมุดคะแนน"
+      },
+      {
+        "property": "forCourse",
+        "title": "การอ้างอิงรายวิชา",
+        "description": "รหัสรายวิชาที่ส่งออกเป็น oer:forCourse ในแหล่งข้อมูล Assessment แต่ละรายการ"
+      }
+    ]
+  }
+}

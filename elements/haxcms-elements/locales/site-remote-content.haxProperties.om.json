@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Qabiyyee Fagoo",
+    "description": "Qabiyyee marsariitii tokkoo marsariitii biraa keessatti irra deebi'ii fayyadami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Teessoo marsariitii",
+        "description": "Yoo marsariitii ammaa hin taane teessoo qabiyyee irraa wabeeffamu maxxansi"
+      },
+      {
+        "property": "uuid",
+        "title": "Wanta",
+        "description": "Wanta liinkii / daataa mata dureetiif agarsiifamu"
+      },
+      {
+        "property": "breakreference",
+        "title": "Wabii citi",
+        "description": "Saanduqa kana mallatteessuun qabiyyee fagoo naannoo keessatti gulaaluuf garagalcha garuu walitti hidhamiinsa balleessa. Yeroo meeshaan wabii haaromu haaromsa hin argatu."
+      },
+      {
+        "property": "showTitle",
+        "title": "Mata duree agarsiisi",
+        "description": "Mata duree qabeenya agarsiifamuu agarsiisuuf bani"
+      }
+    ]
+  }
+}

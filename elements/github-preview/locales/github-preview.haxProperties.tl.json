@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github Preview",
+    "description": "Accessible na figure na may mahabang paglalarawan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organisasyon",
+        "description": "Machine name ng Github organization"
+      },
+      {
+        "property": "repo",
+        "title": "Repository",
+        "description": "Machine name ng repo"
+      },
+      {
+        "property": "extended",
+        "title": "Pinalawak na View",
+        "description": "Isinasama ang readme sa element"
+      }
+    ]
+  }
+}

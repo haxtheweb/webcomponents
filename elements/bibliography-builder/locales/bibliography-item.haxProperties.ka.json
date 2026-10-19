@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ბიბლიოგრაფიის ელემენტი",
+    "description": "ელემენტი, რომელიც ბიბლიოგრაფიაში ერთ ციტირებას წარმოადგენს, მრავალი ფორმატისა და ექსპორტის ვარიანტების მხარდაჭერით."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "ტიპი",
+        "description": "ციტირების ტიპი",
+        "options": {
+          "web": "ვები",
+          "journal": "ჟურნალი",
+          "book": "წიგნი"
+        }
+      },
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "ელემენტის სათაური"
+      },
+      {
+        "property": "authors",
+        "title": "ავტორ(ებ)ი",
+        "description": "მოვლენები ქრონოლოგიაში"
+      },
+      {
+        "property": "publisher",
+        "title": "გამომცემელი",
+        "description": "ორიგინალი ვებსაიტი"
+      }
+    ]
+  }
+}

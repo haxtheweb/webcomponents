@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "行动号召",
+    "description": "带链接、让人采取行动个简单按钮。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "标签",
+        "description": "链接文字"
+      },
+      {
+        "property": "link",
+        "title": "链接",
+        "description": "输入任意资源个链接"
+      },
+      {
+        "property": "hideIcon",
+        "title": "隐藏图标",
+        "description": "隐藏用来强调文字个图标"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "图标",
+        "description": "操作链接图标"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Kalmomi",
+    "description": "Kalmar ƙamus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Kalma"
+      },
+      {
+        "slot": "",
+        "title": "Ma'ana",
+        "description": "Ma'anar da za a nuna idan aka danna kalmar."
+      },
+      {
+        "property": "description",
+        "title": "Bayani (OER Schema)",
+        "description": "OER Schema: taƙaitaccen bayanin kalmar ƙamus. Ana cike shi kai tsaye daga rubutun ma'ana idan an bar shi babu komai."
+      }
+    ]
+  }
+}

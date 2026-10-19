@@ -18,9 +18,9 @@ export const HaxLayoutBehaviors = function (SuperClass) {
           :host([ready]) [data-layout-slotname] {
             transition: var(
               --hax-layout-container-transition,
-              0.6s width ease-in-out,
-              0.6s padding ease-in-out,
-              0.6s margin ease-in-out
+              var(--ddd-duration-slow, 0.6s) width ease-in-out,
+              var(--ddd-duration-slow, 0.6s) padding ease-in-out,
+              var(--ddd-duration-slow, 0.6s) margin ease-in-out
             );
           }
           /** this implies hax editing state is available **/
@@ -38,8 +38,8 @@ export const HaxLayoutBehaviors = function (SuperClass) {
             content: attr(data-hax-ray);
             /* raised from 0.2: the near-invisible placeholder text was a
                contrast risk (issue #3083 follow-up) */
-            opacity: 0.6;
-            transition: 0.3s all ease-in-out;
+            opacity: var(--ddd-opacity-60, 0.6);
+            transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
           }
           :host([data-hax-ray]) ::slotted(*:hover) {
             outline: var(--hax-layout-slotted-hover-outline-width, 0px)

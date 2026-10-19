@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-i vaade",
+    "description": "Taustsüsteemis renderdatud CMS-i vaated"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Nimi",
+        "description": "Meie CMS-i vaate nimi"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Kuva",
+        "description": "Kuva meie CMS-i selle vaate sees"
+      }
+    ]
+  }
+}

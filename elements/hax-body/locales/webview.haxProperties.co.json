@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Fonte",
+        "description": "URL di sta risorsa."
+      }
+    ]
+  }
+}

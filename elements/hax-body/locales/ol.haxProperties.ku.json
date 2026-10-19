@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Lîsteya bi hejmar",
+    "description": "Lîsteyeke bi hejmar biafirîne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Şêwaza hejmaran",
+        "description": "Şêwaza ku ji bo hejmarkirina lîsteya rêzkirî tê bikaranîn.",
+        "options": {
+          "": "Xwerû (dehî)",
+          "list-decimal-leading-zero": "Dehî bi sifira pêşîn (01, 02, 03)",
+          "list-lower-alpha": "Tîpên biçûk (a, b, c)",
+          "list-upper-alpha": "Tîpên mezin (A, B, C)",
+          "list-lower-roman": "Romaniya biçûk (i, ii, iii)",
+          "list-upper-roman": "Romaniya mezin (I, II, III)"
+        }
+      }
+    ]
+  }
+}

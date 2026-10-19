@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Lista com marcadores",
+    "description": "Criar uma lista com marcadores."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Estilo do marcador",
+        "description": "Estilo usado nos marcadores da lista não ordenada.",
+        "options": {
+          "": "Padrão (quadrado)",
+          "list-disc": "Disco",
+          "list-circle": "Círculo",
+          "list-square": "Quadrado"
+        }
+      }
+    ]
+  }
+}

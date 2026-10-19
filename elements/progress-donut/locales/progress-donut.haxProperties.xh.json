@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "I-Donut yeNkqubela",
+    "description": "I-donut yenkqubela"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko sento"
+      },
+      {
+        "property": "desc",
+        "title": "Inkcazo",
+        "description": "Inkcazo ende efikelelekayo"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Umthombo woMfanekiso",
+        "description": "Umthombo womfanekiso ongaphakathi kwe-donut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Umbhalo Ongenye woMfanekiso",
+        "description": "Umbhalo ongenye womfanekiso."
+      },
+      {
+        "property": "animated",
+        "title": "Oshukumayo",
+        "description": "Nokuba inkqubela iyashukuma na xa kulayishwa okokuqala"
+      },
+      {
+        "property": "complete",
+        "title": "Igqityiwe",
+        "description": "Uluhlu lwamaxabiso agqityiweyo."
+      },
+      {
+        "property": "total",
+        "title": "Iyonke",
+        "description": "Iyonke xa zonke izinto zigqityiwe."
+      },
+      {
+        "property": "startAngle",
+        "title": "I-engile yokuQala",
+        "description": "I-engile ye-donut apho inkqubela iqala khona"
+      }
+    ]
+  }
+}

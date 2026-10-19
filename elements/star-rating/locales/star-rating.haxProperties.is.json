@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Stjörnugjöf",
+    "description": "Græja til að sýna einkunn eða hnappur til að gefa einkunn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Einkunn",
+        "description": "Núverandi einkunnargildi."
+      },
+      {
+        "property": "possible",
+        "title": "Mögulegt",
+        "description": "Hæsta mögulega einkunn."
+      },
+      {
+        "property": "numStars",
+        "title": "Fjöldi stjarna",
+        "description": "Fjöldi stjarna sem á að birta."
+      },
+      {
+        "property": "interactive",
+        "title": "Gagnvirkt",
+        "description": "Leyfa notanda að gefa einkunn."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Matskvarðahamur",
+        "description": "Gefa út OER Schema RubricScale og RubricLevel lýsigögn (levelOrdinal/levelPoints) fyrir hverja stjörnu."
+      }
+    ]
+  }
+}

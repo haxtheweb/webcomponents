@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "တိုးတက်မှု ဒိုးနပ်",
+    "description": "တိုးတက်မှု ဒိုးနပ်"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "အစိတ်အပိုင်း၏ ခေါင်းစဉ်"
+      },
+      {
+        "property": "desc",
+        "title": "ဖော်ပြချက်",
+        "description": "လက်လှမ်းမီသော ရှည်လျားသည့် ဖော်ပြချက်"
+      },
+      {
+        "property": "imageSrc",
+        "title": "ပုံ ရင်းမြစ်",
+        "description": "ဒိုးနပ်အတွင်းရှိ ပုံ၏ ရင်းမြစ်။"
+      },
+      {
+        "property": "imageAlt",
+        "title": "ပုံ Alt စာသား",
+        "description": "ပုံအတွက် alt စာသား။"
+      },
+      {
+        "property": "animated",
+        "title": "လှုပ်ရှားမှုပါ",
+        "description": "ပထမဆုံး ဖွင့်သောအခါ တိုးတက်မှု လှုပ်ရှားမလား"
+      },
+      {
+        "property": "complete",
+        "title": "ပြီးစီး",
+        "description": "ပြီးစီးသော တန်ဖိုးများ၏ array။"
+      },
+      {
+        "property": "total",
+        "title": "စုစုပေါင်း",
+        "description": "အရာအားလုံး ပြီးစီးသောအခါ စုစုပေါင်း။"
+      },
+      {
+        "property": "startAngle",
+        "title": "စတင်ထောင့်",
+        "description": "တိုးတက်မှု စတင်သော ဒိုးနပ် ထောင့်"
+      }
+    ]
+  }
+}

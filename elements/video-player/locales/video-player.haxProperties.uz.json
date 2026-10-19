@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Bir nechta manbalar boʻylab qulay video ijrosi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Manba",
+        "description": "Ushbu media URL manzili."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Sarlavha",
+        "description": "Video ostida koʻrsatiladigan sarlavha."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Poster rasmi",
+        "description": "Poster rasmi URL manzili."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Matn treklari",
+        "description": "Video uchun yopiq subtitrlar, subtitrlar, tavsiflar va boshqa matn treklari."
+      },
+      {
+        "property": "startTime",
+        "title": "Boshlanish vaqti",
+        "description": "Videoni muayyan vaqtdan boshlash (soniyalarda)."
+      },
+      {
+        "property": "endTime",
+        "title": "Tugash vaqti",
+        "description": "Videoni muayyan vaqtda tugatish (soniyalarda), boshlanish vaqti talab qilinadi."
+      },
+      {
+        "property": "learningMode",
+        "title": "Oʻquv rejimini yoqish",
+        "description": "Oldinga va orqaga oʻtkazishni oʻchiradi."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube’da ochish tugmasini olib tashlash",
+        "description": "Videoni YouTube’da ochish tugmasini olib tashlaydi."
+      },
+      {
+        "property": "linkable",
+        "title": "Ulashish havolasi qoʻshilsinmi?",
+        "description": "Videoni ulashish uchun havola beradi."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Vaqt belgilarini yashirish",
+        "description": "Transkriptdagi vaqt belgilarini yashirish."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkriptni yashirish",
+        "description": "Transkriptni standart holatda yashirish."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Audio tavsif treki",
+        "description": "Vizual elementlarni ovozli izohlab beruvchi audio tavsif trekining (MP3 fayl) URL manzili."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS dan foydalanish kerakligini bildiradi.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Fonda ijro etishga ruxsat berish",
+        "description": "Brauzer tabi fokusni yoʻqotganda ijroni davom ettirish."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Transkript uchun qorongʻi mavzu",
+        "description": "Transkript uchun qorongʻi mavzuni yoqish."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Interaktivlikni oʻchirish",
+        "description": "Transkriptni bosiladigan qiladigan interaktiv rejimni oʻchirish."
+      },
+      {
+        "property": "lang",
+        "title": "Til",
+        "description": "Media tili."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "(eskirgan) Pleyer uchun urgʻu rangini tanlang."
+      }
+    ]
+  }
+}

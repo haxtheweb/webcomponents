@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "बुलेट सूची",
+    "description": "बुलेट सूची तयार करा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "बुलेट शैली",
+        "description": "अक्रमित सूचीच्या बुलेटसाठी वापरलेली शैली.",
+        "options": {
+          "": "डीफॉल्ट (चौरस)",
+          "list-disc": "भरीव वर्तुळ",
+          "list-circle": "वर्तुळ",
+          "list-square": "चौरस"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lisenssi",
+    "description": "Anna teoksellesi lisenssi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Viitatun teoksen otsikko."
+      },
+      {
+        "property": "source",
+        "title": "Lähdelinkki",
+        "description": "Lisensoidun teoksen lähde-URL."
+      },
+      {
+        "property": "license",
+        "title": "Lisenssi",
+        "description": "Tähän teokseen sovellettava lisenssi."
+      },
+      {
+        "property": "creator",
+        "title": "Tekijä",
+        "description": "Tämän teoksen tekijä tai omistaja."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Lähdelinkki",
+        "description": "Linkki lisenssin lisätietoihin."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Lisätietojen nimi",
+        "description": "Lisenssin lisätietojen nimi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "He poraka ihirangi markdown, hāngai tonu, i utaina mamao rānei"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown mata"
+      },
+      {
+        "property": "source",
+        "title": "Pūtake",
+        "description": "Kōnae pūtake mō te markdown"
+      }
+    ]
+  }
+}

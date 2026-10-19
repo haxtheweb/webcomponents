@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kandungan Jauh",
+    "description": "Guna semula kandungan daripada satu laman di laman lain."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Alamat laman",
+        "description": "Tampal alamat untuk merujuk kandungan jika bukan laman semasa"
+      },
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item untuk dipaparkan bagi data pautan / tajuk"
+      },
+      {
+        "property": "breakreference",
+        "title": "Putuskan rujukan",
+        "description": "Menanda kotak ini menyalin kandungan jauh untuk diedit secara setempat tetapi mengalih keluar perkaitannya. Ia tidak lagi akan menerima kemas kini apabila bahan rujukan dikemas kini."
+      },
+      {
+        "property": "showTitle",
+        "title": "Tunjukkan tajuk",
+        "description": "Hidupkan untuk memaparkan tajuk sumber yang dipaparkan"
+      }
+    ]
+  }
+}

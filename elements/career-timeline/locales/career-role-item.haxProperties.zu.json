@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Indima Yomsebenzi",
+    "description": "Indima ngayinye ngaphakathi kwenhlangano"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko"
+      },
+      {
+        "property": "startDate",
+        "title": "Usuku Lokuqala"
+      },
+      {
+        "property": "endDate",
+        "title": "Usuku Lokuphela (Akuphoqelekile)"
+      },
+      {
+        "property": "skills",
+        "title": "Amakhono Ahlobene",
+        "description": "Khetha inkinobho ethi + ukuze uqale ukwengeza amakhono"
+      }
+    ]
+  }
+}

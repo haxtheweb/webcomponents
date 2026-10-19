@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Verbeterde afbeelding",
+    "description": "Een manier om afbeeldingen met diverse verbeteringen te presenteren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "De URL van de afbeelding."
+      },
+      {
+        "property": "alt",
+        "title": "Alternatieve tekst",
+        "description": "Tekst die de afbeelding beschrijft voor blinde en slechtziende gebruikers."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "De afbeelding naar een URL laten linken"
+      },
+      {
+        "property": "card",
+        "title": "Kaart",
+        "description": "Een slagschaduw toepassen zodat het lijkt op een verhoogde kaart."
+      },
+      {
+        "property": "box",
+        "title": "Kader",
+        "description": "Een zichtbaar kader rond de afbeelding plaatsen."
+      },
+      {
+        "property": "offset",
+        "title": "Verschuiving",
+        "description": "De afbeelding naar links of rechts verschuiven.",
+        "options": {
+          "none": "geen",
+          "wide": "breed",
+          "narrow": "smal"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Bronvermelding",
+        "description": "Bronvermelding voor de afbeelding."
+      },
+      {
+        "property": "caption",
+        "title": "Bijschrift",
+        "description": "Bijschrift voor de afbeelding."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figuurtitel",
+        "description": "Titel voor het figuurlabel."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figuurbeschrijving",
+        "description": "Beschrijving voor het figuurlabel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Miniatuurafbeelding",
+        "description": "Bron van de miniatuurafbeelding. Toont de miniatuur, maar opent de volledige bron in een venster."
+      },
+      {
+        "property": "round",
+        "title": "Ronde afbeelding",
+        "description": "Snijdt de afbeelding bij tot een cirkelvorm."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Afbeeldingsvenster uitschakelen",
+        "description": "Voorkomen dat klikken de afbeelding openen in een dialoogvenster voor afbeeldingsinspectie."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Weergeven als markdown",
+        "description": "Het bijschrift en de bronvermelding als markdown weergeven."
+      }
+    ]
+  }
+}

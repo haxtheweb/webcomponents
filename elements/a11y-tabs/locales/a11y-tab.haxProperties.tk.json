@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Goýmaç",
+    "description": "Ýeke goýmaç."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Goýmaç nyşany"
+      },
+      {
+        "property": "disabled",
+        "title": "Öçürilen"
+      },
+      {
+        "property": "label",
+        "title": "Goýmaç belligi"
+      },
+      {
+        "slot": "",
+        "title": "Goýmaç mazmuny",
+        "description": "Goýmajyň mazmuny."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Özboluşly ID"
+      },
+      {
+        "property": "flag",
+        "title": "Goşmaça baýdak teksti"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Goşmaça baýdak nyşany"
+      }
+    ]
+  }
+}

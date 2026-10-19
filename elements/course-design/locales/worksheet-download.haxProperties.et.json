@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Töölehe allalaadimine",
+    "description": "Nupp allalaaditavate failide kuvamiseks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Allalaaditava faili pealkiri."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Allalaadimise link."
+      }
+    ]
+  }
+}

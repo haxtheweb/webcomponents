@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Idővonal",
+    "description": "Események idővonala képekkel és szöveggel"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Idővonal címe",
+        "description": "Az idővonal címe."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Opcionális kiemelőszín."
+      },
+      {
+        "property": "dark",
+        "title": "Sötét téma",
+        "description": "Sötét téma engedélyezése"
+      },
+      {
+        "slot": "",
+        "title": "Idővonal leírása",
+        "description": "Az idővonalat leíró opcionális szöveg."
+      },
+      {
+        "property": "events",
+        "title": "Idővonal eseményei",
+        "description": "Az idővonal eseményei"
+      }
+    ]
+  }
+}

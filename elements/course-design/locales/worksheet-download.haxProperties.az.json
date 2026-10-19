@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "İş vərəqinin endirilməsi",
+    "description": "Endirilə bilən faylları göstərmək üçün düymə."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Endirmənin başlığı."
+      },
+      {
+        "property": "link",
+        "title": "Keçid",
+        "description": "Endirmə keçidi."
+      }
+    ]
+  }
+}

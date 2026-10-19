@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Leo",
+    "description": "Hiki i kēia ke hōʻike i ka wikiō ma ke ala hiki loa ke komo ʻia me ka nānā ʻole i ke kumu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kumu",
+        "description": "Ka URL no kēia media."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Poʻo inoa",
+        "description": "Poʻo inoa maʻalahi ma lalo o ka wikiō"
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu kiko",
+        "description": "Koho i ka waihoʻoluʻu kiko no ka mea hoʻokani."
+      },
+      {
+        "property": "track",
+        "title": "Nā kākau pani ʻia",
+        "description": "Ka URL no ka faila kākau."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Kiʻi liʻiliʻi",
+        "description": "Koho. Ka URL no kahi kiʻi liʻiliʻi/pōpeli."
+      },
+      {
+        "property": "learningMode",
+        "title": "Hoʻā i ke ʻano aʻo",
+        "description": "Hoʻopio i ka holo wikiwiki i mua a me ka hoʻihoʻi."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Wehe i ka pihi wehe ma YouTube",
+        "description": "Wehe i ka pihi no ka wehe ʻana i ka wikiō ma YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Hoʻokomo i kahi loulou kaʻana?",
+        "description": "Hāʻawi i kahi loulou e kaʻana ai i ka wikiō."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Hōʻike inā e hoʻohana i ka CORS.",
+        "options": {
+          "anonymous": "inoa ʻole",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "ʻAe i ka hoʻokani ma hope",
+        "description": "Hoʻomaha / hoʻokani ʻakomi nā wikiō ke nalowale ka nānā o ka pākaʻa; hiki i kēia ke hoʻokani i ka wikiō me ka nānā ʻole o ka pākaʻa"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Kumuhana pōʻeleʻele no ka palapala ʻōlelo",
+        "description": "Hoʻā i ke kumuhana pōʻeleʻele no ka palapala ʻōlelo."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Hoʻopio i ka launa",
+        "description": "Hoʻopio i ke ʻano launa e hiki ai ke kaomi i ka palapala ʻōlelo."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Hūnā i nā kaha manawa",
+        "description": "Hūnā i nā kaha manawa ma ka palapala ʻōlelo."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Hūnā i ka palapala ʻōlelo",
+        "description": "Hūnā i ka palapala ʻōlelo ma ke ʻano paʻamau."
+      },
+      {
+        "property": "lang",
+        "title": "ʻŌlelo",
+        "description": "ʻŌlelo o ka media."
+      }
+    ]
+  }
+}

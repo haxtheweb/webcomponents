@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Sitasi",
+    "description": "Elemen kutipan dengan tiga mode penyajian."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul karya yang dikutip."
+      },
+      {
+        "property": "source",
+        "title": "Tautan sumber",
+        "description": "URL sumber untuk karya yang dikutip."
+      },
+      {
+        "property": "date",
+        "title": "Tanggal diakses",
+        "description": "Tanggal sumber diakses."
+      },
+      {
+        "property": "scope",
+        "title": "Cakupan",
+        "description": "Cakupan elemen yang dikutip.",
+        "options": {
+          "sibling": "Elemen saudara",
+          "parent": "Elemen induk"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lisensi",
+        "description": "Lisensi untuk karya yang dikutip."
+      },
+      {
+        "property": "creator",
+        "title": "Pembuat",
+        "description": "Pembuat atau pemilik karya yang dikutip."
+      },
+      {
+        "property": "typeof",
+        "title": "Jenis OER Schema",
+        "description": "Kelas OER Schema untuk kutipan ini. Default-nya oer:ReferencedMaterial; ganti hanya dengan kelas OER yang valid (mis. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

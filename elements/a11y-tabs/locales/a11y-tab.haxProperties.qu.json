@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Pestaña",
+    "description": "Huk pestañalla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Pestañap Iconon"
+      },
+      {
+        "property": "disabled",
+        "title": "Hark'asqa"
+      },
+      {
+        "property": "label",
+        "title": "Pestañap Sutin"
+      },
+      {
+        "slot": "",
+        "title": "Pestañap Ukhun",
+        "description": "Pestañap ukhun."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Sapalla ID"
+      },
+      {
+        "property": "flag",
+        "title": "Munaspalla Unancha Qillqa"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Munaspalla Unancha Icono"
+      }
+    ]
+  }
+}

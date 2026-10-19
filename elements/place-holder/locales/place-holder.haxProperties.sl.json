@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ograda",
+    "description": "Ograda, ki jo je mogoče pretvoriti v izbrano vrsto medija"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Vrsta",
+        "description": "Vrsta gradnika, ki ga ta sprejme za zamenjavo.",
+        "options": {
+          "text": "Besedilo / vsebina",
+          "document": "Dokument / datoteka",
+          "audio": "Zvok",
+          "video": "Video",
+          "image": "Slika",
+          "math": "Matematika"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Besedilo",
+        "description": "Podrobneje opredelite želeno ogrado"
+      }
+    ]
+  }
+}

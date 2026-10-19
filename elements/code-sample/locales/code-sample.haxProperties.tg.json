@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Намунаи код",
+    "description": "Намунаи коди дар саҳифа равшаншуда"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Равшансозии код",
+        "description": "Равшансозии синтаксис барои татбиқ ба майдони код",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Маълумоти JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Тугмаи нусхабардорӣ ба буфер",
+        "description": "тугма дар кунҷи рости боло, ки «нусхабардорӣ ба буфер» мегӯяд"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Оғози равшансозӣ",
+        "description": "Рақами сатр барои оғози равшансозӣ"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Анҷоми равшансозӣ",
+        "description": "Сатр барои анҷоми равшансозӣ"
+      }
+    ]
+  }
+}

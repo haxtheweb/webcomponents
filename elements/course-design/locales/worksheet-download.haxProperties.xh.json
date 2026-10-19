@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ukukhuphela iPhepha lokuSebenza",
+    "description": "Iqhosha lokubonisa iifayile ezikhoyo zokukhuphela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko sokukhuphela."
+      },
+      {
+        "property": "link",
+        "title": "Ikhonkco",
+        "description": "Ikhonkco lokukhuphela."
+      }
+    ]
+  }
+}

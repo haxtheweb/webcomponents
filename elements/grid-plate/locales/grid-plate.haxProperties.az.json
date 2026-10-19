@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Sütunlu maket",
+    "description": "Materialı sadə sütunlarda yerləşdirin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Sütunlu maket",
+        "description": "Bu elementlərin təqdimat üslubu (kiçik ekranlarda dəyişə bilər)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Adaptivliyi deaktiv et",
+        "description": "Ən kiçik ekranlarda üst-üstə düzülməklə yanaşı, böyük ekranlarda sütunları saxlamaq üçün qutunu işarələyin"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Element daxili boşluğu",
+        "description": "Hər elementin daxilindəki boşluq"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Element kənar boşluqları",
+        "description": "Elementlər arasındakı boşluq"
+      }
+    ]
+  }
+}

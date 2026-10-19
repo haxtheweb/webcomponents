@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Liosta uimhrithe",
+    "description": "Cruthaigh liosta uimhrithe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stíl uimhreacha",
+        "description": "Stíl a úsáidtear d'uimhriú liosta ordaithe.",
+        "options": {
+          "": "Réamhshocrú (deachúil)",
+          "list-decimal-leading-zero": "Deachúil le nialas tosaigh (01, 02, 03)",
+          "list-lower-alpha": "Litreacha beaga (a, b, c)",
+          "list-upper-alpha": "Ceannlitreacha (A, B, C)",
+          "list-lower-roman": "Uimhreacha Rómhánacha beaga (i, ii, iii)",
+          "list-upper-roman": "Uimhreacha Rómhánacha móra (I, II, III)"
+        }
+      }
+    ]
+  }
+}

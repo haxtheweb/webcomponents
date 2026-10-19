@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tagonklike detailknop",
+    "description": "Tagonklike stapsgewize iepenbiering mei details en gearfetting"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Knop",
+        "description": "Gearfetting fan de ynhâld as dy ferburgen is, bgl. \"ynfo\", \"metadata\", ensfh."
+      },
+      {
+        "slot": "details",
+        "title": "Beskriuwing",
+        "description": "Detaillearre beskriuwing dy't ferburgen of toand wurde kin"
+      },
+      {
+        "slot": "",
+        "title": "Beskriuwingsknop",
+        "description": "Standert foar knop dy't beskriuwingstekst toant/ferberget, bgl. \"ynfo\", \"metadata\", ensfh."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Opsjonele gearfettingstekst as de details iepen binne"
+      },
+      {
+        "property": "closeText",
+        "title": "Opsjonele gearfettingstekst as de details ticht binne"
+      }
+    ]
+  }
+}

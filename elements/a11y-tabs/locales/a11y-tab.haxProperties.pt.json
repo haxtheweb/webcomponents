@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Aba",
+    "description": "Uma única aba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Ícone da aba"
+      },
+      {
+        "property": "disabled",
+        "title": "Desativado"
+      },
+      {
+        "property": "label",
+        "title": "Rótulo da aba"
+      },
+      {
+        "slot": "",
+        "title": "Conteúdo da aba",
+        "description": "O conteúdo da aba."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID único"
+      },
+      {
+        "property": "flag",
+        "title": "Texto de sinalização opcional"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Ícone de sinalização opcional"
+      }
+    ]
+  }
+}

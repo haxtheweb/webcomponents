@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Shayga tixraacyada",
+    "description": "Shay matalaya hal tixraac oo ku jira liiska tixraacyada, oo taageera qaabab badan iyo ikhtiyaarro dhoofin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Nooc",
+        "description": "Nooca tixraaca",
+        "options": {
+          "web": "Websaydh",
+          "journal": "Joornaal",
+          "book": "Buug"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka shayga"
+      },
+      {
+        "property": "authors",
+        "title": "Qoraa(yaal)",
+        "description": "Dhacdooyinka jadwalka waqtiga"
+      },
+      {
+        "property": "publisher",
+        "title": "Daabace",
+        "description": "Goobta internetka ee asalka ah"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "สัญญาอนุญาต",
+    "description": "ระบุสัญญาอนุญาตสำหรับผลงานของคุณ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อของผลงานที่อ้างอิง"
+      },
+      {
+        "property": "source",
+        "title": "ลิงก์แหล่งที่มา",
+        "description": "URL แหล่งที่มาของผลงานที่มีสัญญาอนุญาต"
+      },
+      {
+        "property": "license",
+        "title": "สัญญาอนุญาต",
+        "description": "สัญญาอนุญาตที่ใช้กับผลงานนี้"
+      },
+      {
+        "property": "creator",
+        "title": "ผู้สร้าง",
+        "description": "ผู้สร้างหรือเจ้าของผลงานนี้"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "ลิงก์แหล่งที่มา",
+        "description": "ลิงก์ไปยังรายละเอียดสัญญาอนุญาตเพิ่มเติม"
+      },
+      {
+        "property": "moreLabel",
+        "title": "ป้ายกำกับเพิ่มเติม",
+        "description": "ป้ายกำกับสำหรับรายละเอียดสัญญาอนุญาตเพิ่มเติม"
+      }
+    ]
+  }
+}

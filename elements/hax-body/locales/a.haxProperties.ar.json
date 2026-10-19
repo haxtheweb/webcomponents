@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "رابط أساسي",
+    "description": "عنصر رابط أساسي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "الرابط",
+        "description": "URL الوجهة."
+      },
+      {
+        "attribute": "innerText",
+        "title": "النص",
+        "description": "نص الرابط الظاهر."
+      },
+      {
+        "attribute": "target",
+        "title": "الهدف",
+        "description": "مكان فتح الرابط.",
+        "options": {
+          "": "النافذة نفسها",
+          "_blank": "نافذة جديدة - _blank",
+          "_top": "النافذة العليا - _top",
+          "_parent": "النافذة الأم - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "نص العنوان",
+        "description": "عنوان استرشادي لسهولة الوصول وSEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "العلاقة بالوجهة (الأمان/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

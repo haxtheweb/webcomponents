@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Chaatị achịcha",
+    "description": "Na-emepụta chaatị dị mfe iru dabere na CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Agba Mkpụrụ",
+        "description": "Agba mkpụrụ nhọrọ."
+      },
+      {
+        "title": "Isiokwu Gbara Ọchịchịrị",
+        "description": "Gbanye isiokwu ọchịchịrị"
+      },
+      {
+        "title": "Faịlụ CSV",
+        "description": "Budata data site na CSV."
+      },
+      {
+        "title": "Aha chaatị",
+        "description": "Ederede alt dị mfe iru maka chaatị gị."
+      },
+      {
+        "title": "Nkọwa chaatị",
+        "description": "Nkọwa dị mfe iru nke chaatị gị."
+      },
+      {
+        "title": "Aha ọ̀tụ̀tụ̀",
+        "description": "Oke obosara:ogologo nke chaatị (Lee https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings maka $ct-scales na $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Donut"
+      },
+      {
+        "title": "Gosi akara"
+      },
+      {
+        "title": "Akụkụ mbido"
+      },
+      {
+        "title": "Oghere"
+      },
+      {
+        "title": "Mkpokọta",
+        "description": "Mkpokọta nhọrọ ị nwere ike ịkọwapụta. Site n'ịkọwapụta uru mkpokọta, nchikota uru dị na series ga-abụrịrị mkpokọta a iji see achịcha zuru ezu. Ị nwere ike iji paramita a see naanị akụkụ nke achịcha ma ọ bụ chaatị gauge."
+      },
+      {
+        "title": "Leghara uru efu anya",
+        "description": "A ga-eleghara uru efu anya iji zere ịse mpekere na akara na-adịghị mkpa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tụgharịa data",
+        "description": "Tụgharịa data gụnyere akara, usoro series yana ndepụta data series niile."
+      },
+      {
+        "title": "Tebụl HTML",
+        "description": "Nhọrọ: Budata data dị ka tebụl HTML."
+      },
+      {
+        "title": "Obosara ahịrị donut"
+      },
+      {
+        "title": "Donut siri ike",
+        "description": "See akụkụ donut dị ka ọdịdị kama ahịrị."
+      },
+      {
+        "title": "Ụzọ akara",
+        "description": "See akụkụ donut dị ka ọdịdị kama ahịrị.",
+        "options": {
+          "neutral": "nnọpụiche",
+          "explode": "gbawaa",
+          "implode": "daba n'ime"
+        }
+      },
+      {
+        "title": "Ndọpụ akara",
+        "description": "Ndọpụ ọnọdụ akara site n'ọnọdụ ọkọlọtọ nke bụ ọkara anya nke radius. Uru a nwere ike ịbụ nke dị mma ma ọ bụ nke na-adịghị mma. Uru dị mma ga-etinye akara ahụ n'ebe dị anya site n'etiti."
+      },
+      {
+        "title": "Ọnọdụ akara",
+        "options": {
+          "inside": "n'ime",
+          "outside": "n'èzí",
+          "center": "etiti"
+        }
+      }
+    ]
+  }
+}

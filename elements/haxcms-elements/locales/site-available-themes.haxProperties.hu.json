@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Elérhető témák",
+    "description": "Elérhető HAXcms témák megjelenítése élő előnézeti váltással"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Nézetmód",
+        "description": "Válaszd ki, hogyan jelenjenek meg a témák",
+        "options": {
+          "gallery": "Galéria",
+          "table": "Táblázat"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Részletek megjelenítése",
+        "description": "Témaleírások és további információk megjelenítése"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Rejtett és régi témák megjelenítése",
+        "description": "Rejtett, régi és borzalmas témák megjelenítése az irányítópult alapértelmezései mellett"
+      },
+      {
+        "property": "columns",
+        "title": "Oszlopok (galéria)",
+        "description": "Oszlopok száma galérianézetben"
+      }
+    ]
+  }
+}

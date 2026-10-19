@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Izbirnik HEX",
+    "description": "Izbirnik barv s kodo HEX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Vrednost",
+        "description": "Privzeta vrednost HEX"
+      },
+      {
+        "property": "disabled",
+        "title": "Onemogočeno",
+        "description": "Onemogoči besedilno polje"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Velik prikaz",
+        "description": "Vključi barvo v velikem prikazu"
+      }
+    ]
+  }
+}

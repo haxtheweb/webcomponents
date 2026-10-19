@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Cairt Naisc",
+    "description": "Cruthaíonn sé cairt inrochtana bunaithe ar CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dath Aibhsithe",
+        "description": "Dath aibhsithe roghnach."
+      },
+      {
+        "title": "Téama Dorcha",
+        "description": "Cumasaigh an Téama Dorcha"
+      },
+      {
+        "title": "Comhad CSV",
+        "description": "Lódáil sonraí ó CSV."
+      },
+      {
+        "title": "Teideal na Cairte",
+        "description": "Téacs alt inrochtana do do chairt."
+      },
+      {
+        "title": "Cur Síos na Cairte",
+        "description": "Cur síos inrochtana ar do chairt."
+      },
+      {
+        "title": "Ainm an Scála",
+        "description": "Cóimheas leithead:airde na cairte (Féach https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings le haghaidh $ct-scales agus $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Taispeáin Cúlra Greille"
+      },
+      {
+        "title": "Taispeáin Achar"
+      },
+      {
+        "title": "Taispeáin Nasc"
+      },
+      {
+        "title": "Taispeáin Pointe"
+      },
+      {
+        "title": "Leithead Iomlán"
+      },
+      {
+        "title": "Taispeáin Lipéid Pointí"
+      },
+      {
+        "title": "Stuáil na Cairte (barr)"
+      },
+      {
+        "title": "Stuáil na Cairte (bun)"
+      },
+      {
+        "title": "Stuáil na Cairte (clé)"
+      },
+      {
+        "title": "Stuáil na Cairte (deas)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aisiompaigh na Sonraí",
+        "description": "Aisiompaigh na sonraí lena n-áirítear lipéid, ord na sraitheanna chomh maith le heagair iomlána sonraí na sraitheanna."
+      },
+      {
+        "title": "Tábla HTML",
+        "description": "Roghnach: Lódáil sonraí mar thábla HTML."
+      },
+      {
+        "title": "Íosluach na Cairte",
+        "description": "Má sháraítear íosluach nádúrtha na cairte, is féidir leat zúmáil isteach nó an luach is ísle a thaispeántar sa chairt a theorannú"
+      },
+      {
+        "title": "Uasluach na Cairte",
+        "description": "Má sháraítear uasluach nádúrtha na cairte, is féidir leat zúmáil isteach nó an luach is airde a thaispeántar sa chairt a theorannú"
+      },
+      {
+        "title": "Taispeáin Lipéid Pointí",
+        "options": {
+          "middle": "Lár",
+          "start": "Tús",
+          "end": "Deireadh"
+        }
+      },
+      {
+        "title": "Fritháireamh X Lipéid Pointí"
+      },
+      {
+        "title": "Fritháireamh Y Lipéid Pointí"
+      },
+      {
+        "title": "Líne Réidh"
+      },
+      {
+        "title": "Bun an Achair",
+        "description": "An bonn don chairt achair a úsáidfear chun cruth an achair a dhúnadh (0 de ghnáth)."
+      },
+      {
+        "title": "Ais X: Taispeáin Greille",
+        "description": "Taispeáin greille na hAise X."
+      },
+      {
+        "title": "Fritháireamh na hAise X"
+      },
+      {
+        "title": "Suíomh na hAise X",
+        "description": "An suíomh ina gcuirtear na lipéid. Is féidir é a shocrú go \"start\" nó \"end\", áit a bhfuil \"start\" comhionann le clé nó barr ar ais ingearach agus \"end\" comhionann le deas nó bun ar ais chothrománach"
+      },
+      {
+        "title": "Ais X: Taispeáin Lipéad",
+        "description": "Taispeáin lipéad na hAise X."
+      },
+      {
+        "title": "Lipéad na hAise X (fritháireamh cothrománach)",
+        "description": "Suíomh cothrománach lipéid na hAise X."
+      },
+      {
+        "title": "Lipéad na hAise X (fritháireamh ingearach)",
+        "description": "Suíomh ingearach lipéid na hAise X."
+      },
+      {
+        "title": "Teideal na hAise X",
+        "description": "Teideal roghnach don Ais X."
+      },
+      {
+        "title": "Teideal na hAise X (fritháireamh cothrománach)",
+        "description": "Suíomh cothrománach theideal na hAise X."
+      },
+      {
+        "title": "Teideal na hAise X (fritháireamh ingearach)",
+        "description": "Suíomh ingearach theideal na hAise X."
+      },
+      {
+        "title": "Ancaire Theideal na hAise X",
+        "description": "Ancaire roghnach do theideal na hAise X.",
+        "options": {
+          "middle": "lár",
+          "end": "deireadh",
+          "start": "tús"
+        }
+      },
+      {
+        "title": "Ais Y: Taispeáin Greille",
+        "description": "Taispeáin greille na hAise Y."
+      },
+      {
+        "title": "Fritháireamh na hAise Y"
+      },
+      {
+        "title": "Suíomh na hAise Y",
+        "description": "An suíomh ina gcuirtear na lipéid. Is féidir é a shocrú go \"start\" nó \"end\", áit a bhfuil \"start\" comhionann le clé nó barr ar ais ingearach agus \"end\" comhionann le deas nó bun ar ais chothrománach"
+      },
+      {
+        "title": "Ais Y: Taispeáin Lipéad",
+        "description": "Taispeáin lipéad na hAise Y."
+      },
+      {
+        "title": "Lipéad na hAise Y (fritháireamh cothrománach)",
+        "description": "Suíomh cothrománach lipéad na hAise Y."
+      },
+      {
+        "title": "Lipéad na hAise Y (fritháireamh ingearach)",
+        "description": "Suíomh ingearach lipéad na hAise Y."
+      },
+      {
+        "title": "Íosspás Scála na hAise Y",
+        "description": "Sonraíonn sé íosairde chéimeanna an scála i bpicteilíní."
+      },
+      {
+        "title": "Scála na hAise Y (slánuimhreacha amháin)",
+        "description": "Úsáid luachanna slánuimhreacha amháin (uimhreacha slána) do chéimeanna an scála."
+      },
+      {
+        "title": "Teideal na hAise Y",
+        "description": "Teideal roghnach don Ais Y."
+      },
+      {
+        "title": "Teideal na hAise Y (fritháireamh ingearach)",
+        "description": "Suíomh cothrománach theideal na hAise Y."
+      },
+      {
+        "title": "Teideal na hAise Y (fritháireamh cothrománach)",
+        "description": "Suíomh cothrománach theideal na hAise Y."
+      },
+      {
+        "title": "Ancaire Theideal na hAise Y",
+        "description": "Ancaire roghnach do theideal na hAise Y.",
+        "options": {
+          "middle": "lár",
+          "end": "deireadh",
+          "start": "tús"
+        }
+      },
+      {
+        "title": "Smeach Theideal na hAise Y",
+        "description": "Smeach an teideal don Ais Y?"
+      }
+    ]
+  }
+}

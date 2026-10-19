@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "የኮከብ ደረጃ",
+    "description": "የደረጃ ማሳያ መግብር ወይም ደረጃ ለመስጠት አዝራር።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "ውጤት",
+        "description": "የአሁኑ የውጤት እሴት።"
+      },
+      {
+        "property": "possible",
+        "title": "የሚቻል",
+        "description": "ከፍተኛው የሚቻል ውጤት።"
+      },
+      {
+        "property": "numStars",
+        "title": "የኮከቦች ብዛት",
+        "description": "የሚታዩ የኮከቦች ብዛት።"
+      },
+      {
+        "property": "interactive",
+        "title": "በይነተገናኝ",
+        "description": "ደረጃውን ለማዘጋጀት የተጠቃሚ መስተጋብርን ፍቀድ።"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "የመመዘኛ ልኬት ሁነታ",
+        "description": "ለእያንዳንዱ ኮከብ የOER Schema RubricScale እና RubricLevel ሜታዳታ (levelOrdinal/levelPoints) አውጣ።"
+      }
+    ]
+  }
+}

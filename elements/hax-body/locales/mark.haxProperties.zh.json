@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "高亮",
+    "description": "高亮行内文本。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "文本",
+        "description": "高亮的文本。"
+      }
+    ]
+  }
+}

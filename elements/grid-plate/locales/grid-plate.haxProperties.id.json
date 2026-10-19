@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Tata letak kolom",
+    "description": "Tata letak materi dalam kolom sederhana"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Tata Letak Kolom",
+        "description": "Gaya untuk menyajikan item ini (dapat berubah pada layar kecil)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Nonaktifkan responsif",
+        "description": "Centang kotak untuk mempertahankan kolom di layar besar sambil tetap menumpuk di layar terkecil"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Padding Item",
+        "description": "Padding di dalam setiap item"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Margin item",
+        "description": "Margin antar-item"
+      }
+    ]
+  }
+}

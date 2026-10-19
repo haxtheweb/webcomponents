@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Meriete-kenteken",
+    "description": "Visuele kenteken om die verwerwing van 'n vaardigheid te kommunikeer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Kentekentitel",
+        "description": "Titel wat op die kenteken vertoon word."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Kentekenprent",
+        "description": "Prent-URL vir die kenteken."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Kentekenbesonderhede",
+        "description": "Besonderhede oor die kenteken."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hiperskakel",
+        "description": "Skakel wat met die kenteken geassosieer word."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Kentekenvaardighede",
+        "description": "Vaardighede wat op die kenteken vertoon word."
+      },
+      {
+        "property": "skill",
+        "title": "Vaardigheid (OER Schema)",
+        "description": "OER Schema: 'n aangeleerde vaardigheid wat verkry word deur hierdie leerdoelwit te voltooi."
+      }
+    ]
+  }
+}

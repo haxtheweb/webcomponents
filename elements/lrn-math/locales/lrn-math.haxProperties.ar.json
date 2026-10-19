@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "الرياضيات",
+    "description": "عرض الرياضيات بطريقة جميلة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "الرياضيات",
+        "description": "أدخل المعادلة بصيغة LaTeX"
+      }
+    ]
+  }
+}

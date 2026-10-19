@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Wabii",
+    "description": "Elementii wabii haalata dhiyeessaa sadii qabu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mata duree",
+        "description": "Mata duree hojii wabeeffamee."
+      },
+      {
+        "property": "source",
+        "title": "Liinkii maddaa",
+        "description": "URL madda hojii wabeeffamee."
+      },
+      {
+        "property": "date",
+        "title": "Guyyaa argame",
+        "description": "Guyyaa maddi itti argame."
+      },
+      {
+        "property": "scope",
+        "title": "Daangaa",
+        "description": "Daangaa elementii wabeeffamu.",
+        "options": {
+          "sibling": "Elementii cinaa",
+          "parent": "Elementii maatii"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Hayyama",
+        "description": "Hayyama hojii wabeeffamee."
+      },
+      {
+        "property": "creator",
+        "title": "Uumaa",
+        "description": "Uumaa yookaan abbaa hojii wabeeffamee."
+      },
+      {
+        "property": "typeof",
+        "title": "Gosa OER Schema",
+        "description": "Kilaasii OER Schema wabii kanaaf. Durtiin oer:ReferencedMaterial dha; kilaasii OER sirrii qofaan bakka buusi (fkn. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

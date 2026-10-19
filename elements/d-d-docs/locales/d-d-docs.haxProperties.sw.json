@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Utekelezaji wa mfumo wa muundo kwa HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Chaguo la kuonyesha",
+        "options": {
+          "*": "Mwongozo kamili wa mtindo"
+        }
+      }
+    ]
+  }
+}

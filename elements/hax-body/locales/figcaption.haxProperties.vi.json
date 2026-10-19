@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Chú thích hình",
+    "description": "Chú thích cho hình."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Chú thích",
+        "description": "Văn bản hiển thị bên dưới hình."
+      }
+    ]
+  }
+}

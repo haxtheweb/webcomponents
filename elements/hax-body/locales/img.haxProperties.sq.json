@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Imazh bazë",
+    "description": "Element bazë imazhi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Burimi",
+        "description": "URL-ja e imazhit."
+      },
+      {
+        "attribute": "alt",
+        "title": "Teksti alt",
+        "description": "Tekst alternativ për qasshmërinë dhe SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Lartësia",
+        "description": "Lartësia në piksel. Lëre bosh për të përdorur madhësinë natyrore."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Ngarkimi i imazhit",
+        "description": "Zgjidh kur ngarkohet imazhi.",
+        "options": {
+          "lazy": "Ngarko kur është i dukshëm",
+          "auto": "Automatike"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Burimet responsive (srcset)",
+        "description": "Listo URL-të e imazheve dhe përshkruesit (p.sh. 480w ose 2x) që shfletuesit të zgjedhin madhësinë më të mirë për ekranin. Ruhet si atributi standard srcset."
+      }
+    ]
+  }
+}

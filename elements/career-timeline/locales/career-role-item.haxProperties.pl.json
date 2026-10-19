@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Rola zawodowa",
+    "description": "Pojedyncza rola w organizacji"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tytuł"
+      },
+      {
+        "property": "startDate",
+        "title": "Data rozpoczęcia"
+      },
+      {
+        "property": "endDate",
+        "title": "Data zakończenia (opcjonalnie)"
+      },
+      {
+        "property": "skills",
+        "title": "Powiązane umiejętności",
+        "description": "Wybierz przycisk +, aby zacząć dodawać umiejętności"
+      }
+    ]
+  }
+}

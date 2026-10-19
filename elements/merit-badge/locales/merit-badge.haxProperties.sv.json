@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Förtjänstmärke",
+    "description": "Visuellt märke som visar att en färdighet har uppnåtts."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Märkets titel",
+        "description": "Titel som visas på märket."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Märkets bild",
+        "description": "Bild-URL för märket."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Märkets detaljer",
+        "description": "Detaljer om märket."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlänk",
+        "description": "Länk som hör till märket."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Märkets färdigheter",
+        "description": "Färdigheter som visas på märket."
+      },
+      {
+        "property": "skill",
+        "title": "Färdighet (OER Schema)",
+        "description": "OER Schema: en inlärd färdighet som uppnås när detta lärandemål har slutförts."
+      }
+    ]
+  }
+}

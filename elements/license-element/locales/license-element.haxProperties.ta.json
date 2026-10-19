@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "உரிமம்",
+    "description": "உங்கள் படைப்புக்கு உரிமம் வழங்கவும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "தலைப்பு",
+        "description": "மேற்கோள் காட்டப்பட்ட படைப்பின் தலைப்பு."
+      },
+      {
+        "property": "source",
+        "title": "மூல இணைப்பு",
+        "description": "உரிமம் பெற்ற படைப்பின் மூல URL."
+      },
+      {
+        "property": "license",
+        "title": "உரிமம்",
+        "description": "இந்தப் படைப்புக்குப் பயன்படுத்தப்பட்ட உரிமம்."
+      },
+      {
+        "property": "creator",
+        "title": "படைப்பாளர்",
+        "description": "இந்தப் படைப்பின் படைப்பாளர் அல்லது உரிமையாளர்."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "மூல இணைப்பு",
+        "description": "கூடுதல் உரிம விவரங்களுக்கான இணைப்பு."
+      },
+      {
+        "property": "moreLabel",
+        "title": "மேலும் லேபிள்",
+        "description": "கூடுதல் உரிம விவரங்களுக்கான லேபிள்."
+      }
+    ]
+  }
+}

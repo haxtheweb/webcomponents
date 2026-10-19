@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Stergradering",
+    "description": "Graderingsvertoonlegstuk of knoppie om te gradeer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Telling",
+        "description": "Huidige tellingwaarde."
+      },
+      {
+        "property": "possible",
+        "title": "Moontlik",
+        "description": "Maksimum moontlike telling."
+      },
+      {
+        "property": "numStars",
+        "title": "Aantal sterre",
+        "description": "Aantal sterre om te vertoon."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktief",
+        "description": "Laat gebruikersinteraksie toe om die gradering te stel."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubriekskaalmodus",
+        "description": "Gee OER Schema RubricScale- en RubricLevel-metadata (levelOrdinal/levelPoints) vir elke ster uit."
+      }
+    ]
+  }
+}

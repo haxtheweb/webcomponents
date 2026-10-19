@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kursa modelis",
+    "description": "Interaktīvs izkārtojums kursa jēdzieniem ar detaļām, animāciju un zināšanu pārbaudēm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "nosaukums"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Informācijas apgabals"
+      },
+      {
+        "title": "Detaļu apgabals"
+      },
+      {
+        "title": "Animācijas apgabals"
+      },
+      {
+        "title": "Zināšanu pārbaudes apgabals"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logotipa apgabals"
+      }
+    ]
+  }
+}

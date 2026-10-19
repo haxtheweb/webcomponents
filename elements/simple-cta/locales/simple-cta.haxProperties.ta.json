@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "செயலுக்கான அழைப்பு",
+    "description": "செயல்பட இணைப்புடன் கூடிய எளிய பொத்தான்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "லேபிள்",
+        "description": "இணைப்பு லேபிள்"
+      },
+      {
+        "property": "link",
+        "title": "இணைப்பு",
+        "description": "எந்த வளத்திற்கும் இணைப்பை உள்ளிடவும்"
+      },
+      {
+        "property": "hideIcon",
+        "title": "ஐகானை மறை",
+        "description": "உரையை அழகுபடுத்தப் பயன்படும் ஐகானை மறைக்கவும்"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "ஐகான்",
+        "description": "செயல் இணைப்பு ஐகான்"
+      }
+    ]
+  }
+}

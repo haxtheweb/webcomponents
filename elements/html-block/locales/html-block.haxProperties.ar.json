@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "كتلة HTML",
+    "description": "كتلة HTML أساسية توفر ربط HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "شيفرة HTML التي تريد عرضها في المحتوى"
+      }
+    ]
+  }
+}

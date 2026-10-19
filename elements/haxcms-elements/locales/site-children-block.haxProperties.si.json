@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: උප කොටස",
+    "description": "වත්මන් පිටුවේ උප අයිතම පෙන්වීමට ගතික කොටස"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "ගතික ක්‍රමය",
+        "description": "මෙම මූලද්‍රව්‍යයට සාපේක්ෂව උප අයිතම ගණනය කරන ආකාරය",
+        "options": {
+          "active": "සක්‍රිය උප අයිතම",
+          "parent": "මාපියගේ උප අයිතම",
+          "ancestor": "ඉහළම මුතුන්මිත්තාගෙන් සියලු උප අයිතම"
+        }
+      },
+      {
+        "property": "start",
+        "title": "ආරම්භක මට්ටම"
+      },
+      {
+        "property": "end",
+        "title": "අවසාන මට්ටම"
+      }
+    ]
+  }
+}

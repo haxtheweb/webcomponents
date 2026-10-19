@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Tarxeta retro",
+    "description": "Tarxeta simple cun deseño retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Título principal da tarxeta."
+      },
+      {
+        "property": "url",
+        "description": "URL que se abrirá ao facer clic na tarxeta."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtítulo",
+        "description": "Subtítulo da tarxeta."
+      },
+      {
+        "property": "tags",
+        "title": "Etiquetas",
+        "description": "Etiquetas separadas por comas."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Fonte multimedia",
+        "description": "Fonte multimedia principal."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Fonte ao pasar o rato",
+        "description": "Fonte multimedia mostrada ao pasar o rato pola tarxeta ou ao activala."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "Cor de acento aplicada en toda a tarxeta."
+      },
+      {
+        "property": "dark",
+        "title": "Escuro",
+        "description": "Usar as cores base do modo escuro."
+      }
+    ]
+  }
+}

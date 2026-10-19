@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "गुणपुस्तिका",
+    "description": "रुब्रिकसह अनेक बॅकएंडला समर्थन देणारी हेडलेस गुणपुस्तिका."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "डेटा स्रोत प्रकार (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL एंडपॉइंट (JSON)",
+          "json": "JSON डेटा ब्लॉब",
+          "filesystem": "फाइल सिस्टम"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "स्रोत डेटा",
+        "description": "गुणपुस्तिकेसाठी URL किंवा JSON डेटा."
+      },
+      {
+        "property": "forCourse",
+        "title": "अभ्यासक्रम संदर्भ",
+        "description": "प्रत्येक Assessment संसाधनावर oer:forCourse म्हणून दिला जाणारा अभ्यासक्रम ओळखकर्ता."
+      }
+    ]
+  }
+}

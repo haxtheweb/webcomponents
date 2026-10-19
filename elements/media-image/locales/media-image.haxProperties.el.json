@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Βελτιωμένη εικόνα",
+    "description": "Ένας τρόπος παρουσίασης εικόνων με διάφορες βελτιώσεις."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Πηγή",
+        "description": "Το URL για την εικόνα."
+      },
+      {
+        "property": "alt",
+        "title": "Εναλλακτικό κείμενο",
+        "description": "Κείμενο που περιγράφει την εικόνα σε χρήστες με προβλήματα όρασης."
+      },
+      {
+        "property": "link",
+        "title": "Σύνδεσμος",
+        "description": "Σύνδεση της εικόνας με ένα URL"
+      },
+      {
+        "property": "card",
+        "title": "Κάρτα",
+        "description": "Εφαρμογή σκιάς ώστε να φαίνεται σαν ανυψωμένη κάρτα."
+      },
+      {
+        "property": "box",
+        "title": "Πλαίσιο",
+        "description": "Εφαρμογή οπτικού πλαισίου γύρω από την εικόνα."
+      },
+      {
+        "property": "offset",
+        "title": "Μετατόπιση",
+        "description": "Εφαρμογή μετατόπισης αριστερά ή δεξιά στην εικόνα.",
+        "options": {
+          "none": "καμία",
+          "wide": "ευρεία",
+          "narrow": "στενή"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Παραπομπή",
+        "description": "Παραπομπή για την εικόνα."
+      },
+      {
+        "property": "caption",
+        "title": "Λεζάντα",
+        "description": "Λεζάντα για την εικόνα."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Τίτλος εικόνας",
+        "description": "Τίτλος για την ετικέτα εικόνας."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Περιγραφή εικόνας",
+        "description": "Περιγραφή για την ετικέτα εικόνας."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Μικρογραφία",
+        "description": "Πηγή μικρογραφίας. Εμφανίζει τη μικρογραφία αλλά ανοίγει την πλήρη πηγή σε αναδυόμενο παράθυρο."
+      },
+      {
+        "property": "round",
+        "title": "Στρογγυλή εικόνα",
+        "description": "Περικόπτει την εμφάνιση της εικόνας σε κυκλικό σχήμα."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Απενεργοποίηση παραθύρου εικόνας",
+        "description": "Απενεργοποίηση του ανοίγματος της εικόνας σε παράθυρο επιθεώρησης εικόνας με κλικ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Απόδοση ως markdown",
+        "description": "Απόδοση της λεζάντας και της παραπομπής ως markdown."
+      }
+    ]
+  }
+}

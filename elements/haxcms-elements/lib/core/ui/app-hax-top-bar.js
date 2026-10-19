@@ -68,7 +68,7 @@ export class AppHaxTopBar extends I18NMixin(LitElement) {
         border-bottom: 2px solid var(--app-hax-accent-color);
         display: grid;
         grid-template-columns: 32.5% 35% 32.5%;
-        transition: border-bottom 0.6s ease-in-out;
+        transition: border-bottom var(--ddd-duration-slow, 0.6s) ease-in-out;
       }
 
       /* .topBar > div {

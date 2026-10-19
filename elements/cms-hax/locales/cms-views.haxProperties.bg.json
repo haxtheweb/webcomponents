@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS изглед",
+    "description": "CMS изгледи, визуализирани на сървъра"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Име",
+        "description": "Име на изгледа от нашата CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Показване",
+        "description": "Показване в рамките на този изглед от нашата CMS"
+      }
+    ]
+  }
+}

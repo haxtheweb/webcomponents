@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Odznaka zasługi",
+    "description": "Wizualna odznaka informująca o zdobyciu umiejętności."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Tytuł odznaki",
+        "description": "Tytuł wyświetlany na odznace."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Obraz odznaki",
+        "description": "URL obrazu odznaki."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Szczegóły odznaki",
+        "description": "Szczegóły dotyczące odznaki."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hiperłącze",
+        "description": "Link powiązany z odznaką."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Umiejętności odznaki",
+        "description": "Umiejętności wyświetlane na odznace."
+      },
+      {
+        "property": "skill",
+        "title": "Umiejętność (OER Schema)",
+        "description": "OER Schema: umiejętność zdobyta przez osiągnięcie tego celu nauczania."
+      }
+    ]
+  }
+}

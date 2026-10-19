@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Santrumpa",
+    "description": "Santrumpa su viso termino patarimu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekstas",
+        "description": "Matomas santrumpos tekstas."
+      },
+      {
+        "attribute": "title",
+        "title": "Žodis",
+        "description": "Visas terminas, rodomas užvedus pelę."
+      }
+    ]
+  }
+}

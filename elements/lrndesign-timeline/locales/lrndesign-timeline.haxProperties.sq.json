@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Kronologji",
+    "description": "Një vijë kohore ngjarjesh me imazhe dhe tekst"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Titulli i kronologjisë",
+        "description": "Një titull për vijën kohore."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "Një ngjyrë theksuese opsionale."
+      },
+      {
+        "property": "dark",
+        "title": "Tema e errët",
+        "description": "Aktivizo temën e errët"
+      },
+      {
+        "slot": "",
+        "title": "Përshkrimi i vijës kohore",
+        "description": "Tekst opsional që përshkruan vijën kohore."
+      },
+      {
+        "property": "events",
+        "title": "Ngjarjet e vijës kohore",
+        "description": "Ngjarjet në vijën kohore"
+      }
+    ]
+  }
+}

@@ -324,7 +324,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
 
         :host([busy]) {
           pointer-events: none;
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
         }
 
         h2 {
@@ -465,8 +465,8 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         }
         .feature-row {
           transition:
-            opacity 0.3s ease-in-out,
-            background-color 0.3s ease-in-out;
+            opacity var(--ddd-duration-normal, 0.3s) ease-in-out,
+            background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         .feature-row.enabled {

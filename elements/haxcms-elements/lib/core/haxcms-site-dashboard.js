@@ -84,7 +84,7 @@ class HAXCMSSiteDashboard extends I18NMixin(SimpleColors) {
           border-radius: var(--ddd-radius-sm);
           font-family: var(--ddd-font-navigation);
           cursor: pointer;
-          transition: background-color 0.3s ease;
+          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
         }
         button.hax-modal-btn.cancel {
           background-color: var(--ddd-theme-default-original87Pink);

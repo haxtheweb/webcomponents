@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "无障碍详情按钮",
+    "description": "使用 details 和 summary 实现的无障碍渐进式展开"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "按钮",
+        "description": "内容被隐藏时的摘要，例如“信息”、“元数据”等。"
+      },
+      {
+        "slot": "details",
+        "title": "描述",
+        "description": "可隐藏或显示的详细描述"
+      },
+      {
+        "slot": "",
+        "title": "描述按钮",
+        "description": "显示/隐藏描述文本的按钮的默认文字，例如“信息”、“元数据”等。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "详情展开时的可选摘要文本"
+      },
+      {
+        "property": "closeText",
+        "title": "详情收起时的可选摘要文本"
+      }
+    ]
+  }
+}

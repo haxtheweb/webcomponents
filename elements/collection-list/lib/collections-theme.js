@@ -302,7 +302,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
           border: 2px solid #ffffff;
           border-radius: 50%;
           padding: 8px;
-          opacity: 0.4;
+          opacity: var(--ddd-opacity-40, 0.4);
         }
         .mark {
           margin: 24px 0px 16px;

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS нысаны",
+    "description": "Серверде көрсетілетін CMS нысаны"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Түрі",
+        "description": "біздің CMS-тегі түрі",
+        "options": {
+          "node": "Түйін",
+          "user": "Пайдаланушы",
+          "file": "Файл"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "біздің CMS-тегі id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Көрсету режимі",
+        "description": "біздің CMS-тегі көрсету режимі"
+      }
+    ]
+  }
+}

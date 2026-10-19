@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Blokk HTML",
+    "description": "Blokk HTML bażiku li jipprovdi l-konnessjoni HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Kodiċi HTML li trid tippreżenta fil-kontenut"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub aurrebista",
+    "description": "Deskribapen luzea duen irudi irisgarria"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Erakundea",
+        "description": "GitHub erakundearen makina-izena"
+      },
+      {
+        "property": "repo",
+        "title": "Biltegia",
+        "description": "Biltegiaren makina-izena"
+      },
+      {
+        "property": "extended",
+        "title": "Ikuspegi hedatua",
+        "description": "Readme-a elementuan sartzen du"
+      }
+    ]
+  }
+}

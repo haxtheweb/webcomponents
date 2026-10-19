@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: бала блок",
+    "description": "Хәзерге битнең балаларын күрсәтүче динамик блок"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Динамик ысул",
+        "description": "Бу элементка карата балаларны ничек исәпләргә",
+        "options": {
+          "active": "Актив балалар",
+          "parent": "Ата-ананың балалары",
+          "ancestor": "Иң югары бабадан барлык балалар"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Башлангыч дәрәҗә"
+      },
+      {
+        "property": "end",
+        "title": "Соңгы дәрәҗә"
+      }
+    ]
+  }
+}

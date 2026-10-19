@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Senarai bernombor",
+    "description": "Cipta senarai bernombor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Gaya nombor",
+        "description": "Gaya yang digunakan untuk penomboran senarai bertertib.",
+        "options": {
+          "": "Lalai (perpuluhan)",
+          "list-decimal-leading-zero": "Perpuluhan dengan sifar di hadapan (01, 02, 03)",
+          "list-lower-alpha": "Abjad kecil (a, b, c)",
+          "list-upper-alpha": "Abjad besar (A, B, C)",
+          "list-lower-roman": "Roman kecil (i, ii, iii)",
+          "list-upper-roman": "Roman besar (I, II, III)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Umfanekiso oPhuculiweyo",
+    "description": "Indlela yokubonisa imifanekiso ngophuculo olwahlukeneyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "I-URL yomfanekiso."
+      },
+      {
+        "property": "alt",
+        "title": "Umbhalo ongenye indlela",
+        "description": "Umbhalo ochaza umfanekiso kubasebenzisi abangaboniyo."
+      },
+      {
+        "property": "link",
+        "title": "Ikhonkco",
+        "description": "Dibanisa umfanekiso ne-URL"
+      },
+      {
+        "property": "card",
+        "title": "Ikhadi",
+        "description": "Faka isithunzi ukuze ubonakale njengekhadi eliphakanyisiweyo."
+      },
+      {
+        "property": "box",
+        "title": "Ibhokisi",
+        "description": "Faka ibhokisi ebonakalayo ejikeleze umfanekiso."
+      },
+      {
+        "property": "offset",
+        "title": "Ukushenxisa",
+        "description": "Shenxisa umfanekiso ngasekhohlo okanye ngasekunene.",
+        "options": {
+          "none": "akukho",
+          "wide": "banzi",
+          "narrow": "mxinwa"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Umthombo wesicatshulwa",
+        "description": "Intetho ecatshulweyo yomfanekiso."
+      },
+      {
+        "property": "caption",
+        "title": "Umbhalo ochazayo",
+        "description": "Inkcazelo yomfanekiso."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Isihloko soMzobo",
+        "description": "Isihloko seleyibhile yomzobo."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Inkcazo yoMzobo",
+        "description": "Inkcazo yeleyibhile yomzobo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Umfanekiso omncinci",
+        "description": "Umthombo womfanekiso omncinci. Ubonisa umfanekiso omncinci kodwa uvula umthombo opheleleyo kwifestile."
+      },
+      {
+        "property": "round",
+        "title": "Umfanekiso ongqukuva",
+        "description": "Inqumla inkangeleko yomfanekiso ibe ngqukuva."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Vala ifestile yomfanekiso",
+        "description": "Vala ukucofa okuvula umfanekiso kwingxoxo yomhloli wemifanekiso."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Bonisa njenge-markdown",
+        "description": "Bonisa inkcazelo nentetho ecatshulweyo njenge-markdown."
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Leíró ábra",
+    "description": "Akadálymentes ábra hosszú leírással"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Kép"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Helyettesítő szöveg"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Ábrafelirat",
+        "description": "Mindig látható ábrafelirat."
+      },
+      {
+        "slot": "details",
+        "title": "Leírás",
+        "description": "Elrejthető vagy megjeleníthető részletes képleírás"
+      },
+      {
+        "slot": "summary",
+        "title": "Leírás gomb",
+        "description": "Alapértelmezés a leírás szövegét megjelenítő/elrejtő gombhoz, pl. „info”, „metaadatok” stb."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Opcionális összefoglaló szöveg, amikor a részletek nyitva vannak"
+      },
+      {
+        "property": "closeText",
+        "title": "Opcionális összefoglaló szöveg, amikor a részletek zárva vannak"
+      }
+    ]
+  }
+}

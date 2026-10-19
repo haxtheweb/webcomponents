@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Гавьяаны тэмдэг",
+    "description": "Ур чадвар эзэмшсэнийг илэрхийлэх дүрслэл бүхий тэмдэг."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Тэмдгийн гарчиг",
+        "description": "Тэмдэг дээр харагдах гарчиг."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Тэмдгийн зураг",
+        "description": "Тэмдгийн зургийн URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Тэмдгийн дэлгэрэнгүй",
+        "description": "Тэмдгийн тухай дэлгэрэнгүй."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Холбоос",
+        "description": "Тэмдэгтэй холбоотой холбоос."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Тэмдгийн ур чадварууд",
+        "description": "Тэмдэг дээр харагдах ур чадварууд."
+      },
+      {
+        "property": "skill",
+        "title": "Ур чадвар (OER Schema)",
+        "description": "OER Schema: энэ суралцахуйн зорилтыг биелүүлснээр эзэмшсэн ур чадвар."
+      }
+    ]
+  }
+}

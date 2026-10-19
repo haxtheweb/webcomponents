@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Jeton CMS",
+    "description": "Jeton CMS rendu côté serveur"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Jeton",
+        "description": "Jeton de notre CMS"
+      }
+    ]
+  }
+}

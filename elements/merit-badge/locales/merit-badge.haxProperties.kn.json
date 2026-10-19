@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ಅರ್ಹತಾ ಬ್ಯಾಡ್ಜ್",
+    "description": "ಕೌಶಲ್ಯ ಪಡೆದಿರುವುದನ್ನು ತಿಳಿಸುವ ದೃಶ್ಯ ಬ್ಯಾಡ್ಜ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "ಬ್ಯಾಡ್ಜ್ ಶೀರ್ಷಿಕೆ",
+        "description": "ಬ್ಯಾಡ್ಜ್‌ನಲ್ಲಿ ಪ್ರದರ್ಶಿಸುವ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "badgeImage",
+        "title": "ಬ್ಯಾಡ್ಜ್ ಚಿತ್ರ",
+        "description": "ಬ್ಯಾಡ್ಜ್‌ಗಾಗಿ ಚಿತ್ರದ URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "ಬ್ಯಾಡ್ಜ್ ವಿವರಗಳು",
+        "description": "ಬ್ಯಾಡ್ಜ್ ಕುರಿತ ವಿವರಗಳು."
+      },
+      {
+        "property": "hyperLink",
+        "title": "ಹೈಪರ್‌ಲಿಂಕ್",
+        "description": "ಬ್ಯಾಡ್ಜ್‌ಗೆ ಸಂಬಂಧಿಸಿದ ಲಿಂಕ್."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "ಬ್ಯಾಡ್ಜ್ ಕೌಶಲ್ಯಗಳು",
+        "description": "ಬ್ಯಾಡ್ಜ್‌ನಲ್ಲಿ ಪ್ರದರ್ಶಿಸುವ ಕೌಶಲ್ಯಗಳು."
+      },
+      {
+        "property": "skill",
+        "title": "ಕೌಶಲ್ಯ (OER Schema)",
+        "description": "OER Schema: ಈ ಕಲಿಕೆಯ ಉದ್ದೇಶವನ್ನು ಪೂರ್ಣಗೊಳಿಸುವ ಮೂಲಕ ಪಡೆದ ಕಲಿತ ಕೌಶಲ್ಯ."
+      }
+    ]
+  }
+}

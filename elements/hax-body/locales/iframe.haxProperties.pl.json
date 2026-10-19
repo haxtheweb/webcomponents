@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Osadź zewnętrzną treść internetową."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Źródło",
+        "description": "URL tego zasobu."
+      }
+    ]
+  }
+}

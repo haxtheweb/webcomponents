@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "نمبراں والی لسٹ",
+    "description": "نمبراں والی لسٹ بݨاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "نمبر سٹائل",
+        "description": "ترتیب وار لسٹ دے نمبراں لئی ورتیا سٹائل۔",
+        "options": {
+          "": "ڈیفالٹ (اعشاری)",
+          "list-decimal-leading-zero": "اگے صفر والا اعشاری (01, 02, 03)",
+          "list-lower-alpha": "چھوٹے اکھر (a, b, c)",
+          "list-upper-alpha": "وڈے اکھر (A, B, C)",
+          "list-lower-roman": "چھوٹے رومن (i, ii, iii)",
+          "list-upper-roman": "وڈے رومن (I, II, III)"
+        }
+      }
+    ]
+  }
+}

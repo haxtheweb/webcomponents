@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Imagine di basa",
+    "description": "Elementu d'imagine di basa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Fonte",
+        "description": "URL di l'imagine."
+      },
+      {
+        "attribute": "alt",
+        "title": "Testu alternativu",
+        "description": "Testu alternativu per l'accessibilità è u SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Altezza",
+        "description": "Altezza in pixel. Lasciate biotu per aduprà a dimensione naturale."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Caricamentu di l'imagine",
+        "description": "Sceglite quandu l'imagine si carica.",
+        "options": {
+          "lazy": "Caricà quandu hè visibile",
+          "auto": "Autumatica"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Fonti adattative (srcset)",
+        "description": "Elencate l'URL di l'imagine è i descrittori (p. es. 480w o 2x) per chì i navigatori sceglinu a megliu dimensione per u screnu. Guardatu cum'è attributu srcset standard."
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Orodha ya vitone",
+    "description": "Unda orodha ya vitone."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Mtindo wa vitone",
+        "description": "Mtindo unaotumika kwa vitone vya orodha isiyo na mpangilio.",
+        "options": {
+          "": "Chaguomsingi (mraba)",
+          "list-disc": "Diski",
+          "list-circle": "Duara",
+          "list-square": "Mraba"
+        }
+      }
+    ]
+  }
+}

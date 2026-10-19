@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX salgysy",
+    "description": "Işleýän saýtyňyzdaky belli bir serişdä salgy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Salgy / at maglumatlary üçin görkeziljek element"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Figura descriptiva",
+    "description": "Figura accessible amb descripció llarga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Imatge"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Text alternatiu"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Peu de figura",
+        "description": "Text del peu de figura, sempre visible."
+      },
+      {
+        "slot": "details",
+        "title": "Descripció",
+        "description": "Descripció detallada de la imatge que es pot amagar o mostrar"
+      },
+      {
+        "slot": "summary",
+        "title": "Botó de descripció",
+        "description": "Valor per defecte del botó que mostra/amaga el text de descripció, p. ex. \"informació\", \"metadades\", etc."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Text de resum opcional quan els detalls estan oberts"
+      },
+      {
+        "property": "closeText",
+        "title": "Text de resum opcional quan els detalls estan tancats"
+      }
+    ]
+  }
+}

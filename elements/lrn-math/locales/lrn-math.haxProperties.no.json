@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Matematikk",
+    "description": "Vis matematikk på en pen måte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Matematikk",
+        "description": "Skriv inn likningen som LaTeX"
+      }
+    ]
+  }
+}

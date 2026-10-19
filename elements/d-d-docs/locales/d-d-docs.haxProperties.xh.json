@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Yila, Phuhlisa, Tshabalalisa",
+    "description": "Ukuphunyezwa kwenkqubo yoyilo ye-HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Ukhetho oluza kuboniswa",
+        "options": {
+          "*": "Isikhokelo sesitayile esipheleleyo"
+        }
+      }
+    ]
+  }
+}

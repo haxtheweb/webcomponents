@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Hanyar haɗi ta asali",
+    "description": "Abun hanyar haɗi na asali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Mahaɗi",
+        "description": "URL na inda za a je."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Rubutu",
+        "description": "Rubutun hanyar haɗi da ake gani."
+      },
+      {
+        "attribute": "target",
+        "title": "Manufa",
+        "description": "Inda za a buɗe mahaɗin.",
+        "options": {
+          "": "Taga ɗaya",
+          "_blank": "Sabuwar taga - _blank",
+          "_top": "Taga ta sama - _top",
+          "_parent": "Taga uwa - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Rubutun take",
+        "description": "Take na shawara don sauƙin isa da SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Dangantaka da inda za a je (tsaro/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

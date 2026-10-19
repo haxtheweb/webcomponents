@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS ടോക്കൺ",
+    "description": "ബാക്കെൻഡിൽ റെൻഡർ ചെയ്യുന്ന CMS ടോക്കൺ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "ടോക്കൺ",
+        "description": "ഞങ്ങളുടെ CMS-ൽ നിന്നുള്ള ടോക്കൺ"
+      }
+    ]
+  }
+}

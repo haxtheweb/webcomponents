@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "ਬੁਲੇਟ ਸੂਚੀ",
+    "description": "ਬੁਲੇਟ ਸੂਚੀ ਬਣਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "ਬੁਲੇਟ ਸ਼ੈਲੀ",
+        "description": "ਬਿਨਾਂ ਕ੍ਰਮ ਸੂਚੀ ਦੇ ਬੁਲੇਟਾਂ ਲਈ ਵਰਤੀ ਸ਼ੈਲੀ।",
+        "options": {
+          "": "ਪੂਰਵ-ਨਿਰਧਾਰਤ (ਵਰਗ)",
+          "list-disc": "ਭਰਿਆ ਚੱਕਰ",
+          "list-circle": "ਚੱਕਰ",
+          "list-square": "ਵਰਗ"
+        }
+      }
+    ]
+  }
+}

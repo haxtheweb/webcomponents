@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Մատենագիտական տարր",
+    "description": "Տարր, որը ներկայացնում է մատենագիտության մեկ հղում՝ բազմաթիվ ձևաչափերի և արտահանման տարբերակների աջակցությամբ։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Տեսակ",
+        "description": "Հղման տեսակ",
+        "options": {
+          "web": "Վեբ",
+          "journal": "Ամսագիր",
+          "book": "Գիրք"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Տարրի վերնագիրը"
+      },
+      {
+        "property": "authors",
+        "title": "Հեղինակ(ներ)",
+        "description": "Ժամանակագծի իրադարձությունները"
+      },
+      {
+        "property": "publisher",
+        "title": "Հրատարակիչ",
+        "description": "Սկզբնական կայք"
+      }
+    ]
+  }
+}

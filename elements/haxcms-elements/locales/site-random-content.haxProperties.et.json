@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Juhuslik lehe sisu",
+    "description": "Kuva valitud lehelt juhuslik ülataseme element"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Leht",
+        "description": "Vali leht, millelt juhuslikku sisu võtta. Element kuvab juhuslikult ühe selle lehe ülataseme HTML-elementidest."
+      }
+    ]
+  }
+}

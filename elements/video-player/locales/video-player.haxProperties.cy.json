@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Fideo",
+    "description": "Chwarae fideo hygyrch ar draws sawl ffynhonnell."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Ffynhonnell",
+        "description": "URL y cyfryngau hyn."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Teitl",
+        "description": "Teitl a ddangosir o dan y fideo."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Delwedd poster",
+        "description": "URL delwedd y poster."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Traciau testun",
+        "description": "Capsiynau caeedig, isdeitlau, disgrifiadau a thraciau testun eraill ar gyfer y fideo."
+      },
+      {
+        "property": "startTime",
+        "title": "Amser dechrau",
+        "description": "Dechrau'r fideo ar amser penodol (eiliadau)."
+      },
+      {
+        "property": "endTime",
+        "title": "Amser gorffen",
+        "description": "Gorffen y fideo ar amser penodol (eiliadau), mae angen amser dechrau."
+      },
+      {
+        "property": "learningMode",
+        "title": "Galluogi'r modd dysgu",
+        "description": "Yn analluogi symud ymlaen yn gyflym ac ailddirwyn."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Tynnu'r botwm agor ar YouTube",
+        "description": "Yn tynnu'r botwm ar gyfer agor y fideo ar YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Cynnwys dolen rannu?",
+        "description": "Yn darparu dolen i rannu'r fideo."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Cuddio stampiau amser",
+        "description": "Cuddio'r stampiau amser ar y trawsgrifiad."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Cuddio'r Trawsgrifiad",
+        "description": "Cuddio'r trawsgrifiad yn ddiofyn."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Trac disgrifiad sain",
+        "description": "URL i drac disgrifiad sain (ffeil MP3) sy'n darparu naratif o elfennau gweledol."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Yn nodi a ddylid defnyddio CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Caniatáu chwarae yn y cefndir",
+        "description": "Parhau i chwarae pan fydd tab y porwr yn colli ffocws."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Thema dywyll ar gyfer y trawsgrifiad",
+        "description": "Galluogi thema dywyll ar gyfer y trawsgrifiad."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Analluogi Rhyngweithiol",
+        "description": "Analluogi'r modd rhyngweithiol sy'n gwneud y trawsgrifiad yn gliciadwy."
+      },
+      {
+        "property": "lang",
+        "title": "Iaith",
+        "description": "Iaith y cyfryngau."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw acen",
+        "description": "(anghymeradwy) Dewiswch liw acen y chwaraewr."
+      }
+    ]
+  }
+}

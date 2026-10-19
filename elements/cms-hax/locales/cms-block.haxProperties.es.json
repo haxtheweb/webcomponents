@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bloque de CMS",
+    "description": "Bloque de CMS renderizado en el backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Módulo",
+        "description": "Módulo que cargar desde nuestro CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta del bloque que cargar desde nuestro CMS"
+      }
+    ]
+  }
+}

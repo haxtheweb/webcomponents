@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ihe nlereanya ọmụmụ",
+    "description": "Nhazi mmekọrịta maka echiche ọmụmụ nwere nkọwa, animation, na nyocha ihe ọmụma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "aha"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Mpaghara ozi"
+      },
+      {
+        "title": "Mpaghara nkọwa"
+      },
+      {
+        "title": "Mpaghara animation"
+      },
+      {
+        "title": "Mpaghara nyocha ihe ọmụma"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Mpaghara logo"
+      }
+    ]
+  }
+}

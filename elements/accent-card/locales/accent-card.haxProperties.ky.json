@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Карта",
+    "description": "Кошумча акцент стили бар карточка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Башкы сап",
+        "description": "Карточканын аталышы."
+      },
+      {
+        "slot": "subheading",
+        "title": "Кошумча аталыш",
+        "description": "Карточканын кошумча аталышы."
+      },
+      {
+        "slot": "content",
+        "title": "Мазмун",
+        "description": "Карточканын мазмуну."
+      },
+      {
+        "slot": "footer",
+        "title": "Төмөнкү колонтитул",
+        "description": "Карточканын кошумча төмөнкү бөлүгү."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Сүрөт",
+        "description": "Кошумча сүрөт"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Сүрөттүн alt тексти",
+        "description": "Экран окугучтар үчүн сүрөттү сыпаттаган альтернативдүү текст. Сүрөт таза жасалгалык болсо гана бош калтырыңыз."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Сүрөттүн горизонталдык тегиздөөсү",
+        "options": {
+          "left": "сол",
+          "center": "борбор",
+          "right": "оң"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Сүрөттүн вертикалдык тегиздөөсү",
+        "options": {
+          "top": "үстү",
+          "center": "борбор",
+          "bottom": "асты"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "Кошумча акцент түсү."
+      },
+      {
+        "property": "dark",
+        "title": "Караңгы тема",
+        "description": "Караңгы теманы иштетүү"
+      },
+      {
+        "property": "horizontal",
+        "title": "Горизонталдык",
+        "description": "Горизонталдык багытпы?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Аталыш акценти",
+        "description": "Аталышка акцент түсүн колдоносузбу?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Фон акценти",
+        "description": "Карточканын фонуна акцент түсүн колдоносузбу?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Чек акцентисиз",
+        "description": "Чек акцентин алып саласызбы?"
+      },
+      {
+        "property": "flat",
+        "title": "Жалпак",
+        "description": "Көлөкөнү алып саласызбы?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Бурч",
+        "description": "Карточканын бурчу үчүн мазмун."
+      }
+    ]
+  }
+}

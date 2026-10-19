@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Эш татлага",
+    "description": "Гурван харагдацын горимтой ишлэлийн элемент."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Иш татсан бүтээлийн гарчиг."
+      },
+      {
+        "property": "source",
+        "title": "Эх сурвалжийн холбоос",
+        "description": "Иш татсан бүтээлийн эх URL."
+      },
+      {
+        "property": "date",
+        "title": "Хандсан огноо",
+        "description": "Эх сурвалжид хандсан огноо."
+      },
+      {
+        "property": "scope",
+        "title": "Хамрах хүрээ",
+        "description": "Иш татах элементийн хамрах хүрээ.",
+        "options": {
+          "sibling": "Хөрш элемент",
+          "parent": "Эцэг элемент"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Лиценз",
+        "description": "Иш татсан бүтээлийн лиценз."
+      },
+      {
+        "property": "creator",
+        "title": "Бүтээгч",
+        "description": "Иш татсан бүтээлийн бүтээгч эсвэл эзэмшигч."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema төрөл",
+        "description": "Энэ ишлэлийн OER Schema класс. Анхдагч нь oer:ReferencedMaterial; зөвхөн хүчинтэй OER классаар (жишээ нь oer:SupportingMaterial) дарж бичнэ үү."
+      }
+    ]
+  }
+}

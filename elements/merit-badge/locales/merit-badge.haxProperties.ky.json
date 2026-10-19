@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Сыйлык төш белгиси",
+    "description": "Көндүмгө ээ болгонун билдирүүчү визуалдык төш белги."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Төш белгинин аталышы",
+        "description": "Төш белгиде көрсөтүлүүчү аталыш."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Төш белгинин сүрөтү",
+        "description": "Төш белгинин сүрөтүнүн URL дареги."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Төш белгинин чоо-жайы",
+        "description": "Төш белги жөнүндө маалымат."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Гипершилтеме",
+        "description": "Төш белгиге байланыштуу шилтеме."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Төш белгинин көндүмдөрү",
+        "description": "Төш белгиде көрсөтүлүүчү көндүмдөр."
+      },
+      {
+        "property": "skill",
+        "title": "Көндүм (OER Schema)",
+        "description": "OER Schema: ушул окуу максатын аткаруу менен алынган көндүм."
+      }
+    ]
+  }
+}

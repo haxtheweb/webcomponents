@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ఆధారం",
+    "description": "మూడు ప్రదర్శన మోడ్‌లతో ఉల్లేఖన ఎలిమెంట్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "ఉల్లేఖించిన రచన యొక్క శీర్షిక."
+      },
+      {
+        "property": "source",
+        "title": "మూల లింక్",
+        "description": "ఉల్లేఖించిన రచన కోసం మూల URL."
+      },
+      {
+        "property": "date",
+        "title": "యాక్సెస్ చేసిన తేదీ",
+        "description": "మూలాన్ని యాక్సెస్ చేసిన తేదీ."
+      },
+      {
+        "property": "scope",
+        "title": "పరిధి",
+        "description": "ఉల్లేఖించాల్సిన ఎలిమెంట్ పరిధి.",
+        "options": {
+          "sibling": "సోదర ఎలిమెంట్",
+          "parent": "పేరెంట్ ఎలిమెంట్"
+        }
+      },
+      {
+        "property": "license",
+        "title": "లైసెన్స్",
+        "description": "ఉల్లేఖించిన రచన కోసం లైసెన్స్."
+      },
+      {
+        "property": "creator",
+        "title": "సృష్టికర్త",
+        "description": "ఉల్లేఖించిన రచన యొక్క సృష్టికర్త లేదా యజమాని."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema రకం",
+        "description": "ఈ ఉల్లేఖనం కోసం OER Schema క్లాస్. డిఫాల్ట్ oer:ReferencedMaterial; చెల్లుబాటు అయ్యే OER క్లాస్‌తో మాత్రమే భర్తీ చేయండి (ఉదా. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

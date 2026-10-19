@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "पाठ्यक्रम मोडेल",
+    "description": "विवरण, एनिमेसन र ज्ञान जाँचसहित पाठ्यक्रम अवधारणाहरूका लागि अन्तरक्रियात्मक लेआउट।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "शीर्षक"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "जानकारी क्षेत्र"
+      },
+      {
+        "title": "विवरण क्षेत्र"
+      },
+      {
+        "title": "एनिमेसन क्षेत्र"
+      },
+      {
+        "title": "ज्ञान जाँच क्षेत्र"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "लोगो क्षेत्र"
+      }
+    ]
+  }
+}

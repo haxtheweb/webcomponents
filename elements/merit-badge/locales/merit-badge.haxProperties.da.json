@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Fortjenstmærke",
+    "description": "Visuelt badge, der viser, at en færdighed er opnået."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Badgetitel",
+        "description": "Titel, der vises på badget."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Badgebillede",
+        "description": "Billed-URL til badget."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Badgedetaljer",
+        "description": "Detaljer om badget."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlink",
+        "description": "Link tilknyttet badget."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Badgefærdigheder",
+        "description": "Færdigheder, der vises på badget."
+      },
+      {
+        "property": "skill",
+        "title": "Færdighed (OER Schema)",
+        "description": "OER Schema: en tillært færdighed opnået ved at fuldføre dette læringsmål."
+      }
+    ]
+  }
+}

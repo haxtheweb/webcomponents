@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "کیریئر آئٹم",
+    "description": "ایک انفرادی تنظیم اور اس سے وابستہ کردار"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "تنظیم کا نام"
+      },
+      {
+        "property": "location",
+        "title": "مقام"
+      },
+      {
+        "property": "source",
+        "title": "ماخذ"
+      }
+    ]
+  }
+}

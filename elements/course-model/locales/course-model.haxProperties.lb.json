@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Coursmodell",
+    "description": "Interaktiivt Layout fir Coursconcepter mat Detailer, Animatioun a Wëssenskontrollen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "Titel"
+      },
+      {
+        "property": "src",
+        "title": "Quell"
+      },
+      {
+        "property": "alt",
+        "title": "Alt-Text"
+      },
+      {
+        "title": "Informatiounsberäich"
+      },
+      {
+        "title": "Detailberäich"
+      },
+      {
+        "title": "Animatiounsberäich"
+      },
+      {
+        "title": "Beräich fir Wëssenskontroll"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logoberäich"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Papaha Kuatia",
+    "description": "Peteĩ papaha kuatia akã'ỹva oiporúva heta backend rúbrica reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Reñoiha",
+        "description": "Mba'ekuaarã ypykue reko (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL rape (JSON)",
+          "json": "JSON mba'ekuaarã ñembyaty",
+          "filesystem": "Marandurenda apopyvusu"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Mba'ekuaarã Ypykue",
+        "description": "URL térã JSON mba'ekuaarã papaha kuatiápe g̃uarã."
+      },
+      {
+        "property": "forCourse",
+        "title": "Mbo'esyry Jehechauka",
+        "description": "Mbo'esyry techaukaha oñemosẽva oer:forCourse ramo opaite Assessment mba'erepýpe."
+      }
+    ]
+  }
+}

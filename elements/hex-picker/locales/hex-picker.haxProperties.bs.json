@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Birač heksa boja",
+    "description": "Birač boja s heksa kodom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Vrijednost",
+        "description": "Zadana heksa vrijednost"
+      },
+      {
+        "property": "disabled",
+        "title": "Onemogućeno",
+        "description": "Onemogući tekstualno polje"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Veliki prikaz",
+        "description": "Uključi boju u velikom prikazu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kart",
+    "description": "İstəyə bağlı vurğu üslubu olan kart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Başlıq",
+        "description": "Kart üçün başlıq."
+      },
+      {
+        "slot": "subheading",
+        "title": "Alt başlıq",
+        "description": "Kart üçün istəyə bağlı alt başlıq."
+      },
+      {
+        "slot": "content",
+        "title": "Məzmun",
+        "description": "Kartın məzmunu."
+      },
+      {
+        "slot": "footer",
+        "title": "Altlıq",
+        "description": "Kart üçün istəyə bağlı altbilgi."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Şəkil",
+        "description": "İstəyə bağlı şəkil"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Şəklin alternativ mətni",
+        "description": "Ekran oxuyucuları üçün şəkli təsvir edən alternativ mətn. Yalnız şəkil sırf dekorativdirsə boş buraxın."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Şəklin üfüqi düzləndirilməsi",
+        "options": {
+          "left": "sol",
+          "center": "mərkəz",
+          "right": "sağ"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Şəklin şaquli düzləndirilməsi",
+        "options": {
+          "top": "yuxarı",
+          "center": "mərkəz",
+          "bottom": "aşağı"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "İxtiyari vurğu rəngi."
+      },
+      {
+        "property": "dark",
+        "title": "Tünd tema",
+        "description": "Qaranlıq mövzunu aktivləşdir"
+      },
+      {
+        "property": "horizontal",
+        "title": "Üfüqi",
+        "description": "Üfüqi istiqamət?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Başlıq vurğusu",
+        "description": "Vurğu rəngi başlığa tətbiq edilsin?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Fon vurğusu",
+        "description": "Vurğu rəngi kartın fonuna tətbiq edilsin?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Haşiyə vurğusu olmadan",
+        "description": "Haşiyə vurğusu silinsin?"
+      },
+      {
+        "property": "flat",
+        "title": "Yastı",
+        "description": "Qutu kölgəsi silinsin?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Künc",
+        "description": "Kart küncü üçün məzmun."
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Lîsteya bi xal",
+    "description": "Lîsteyeke bi xal biafirîne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Şêwaza xalan",
+        "description": "Şêwaza ku ji bo xalên lîsteya nerêzkirî tê bikaranîn.",
+        "options": {
+          "": "Xwerû (çargoşe)",
+          "list-disc": "Dîsk",
+          "list-circle": "Xelek",
+          "list-square": "Çargoşe"
+        }
+      }
+    ]
+  }
+}

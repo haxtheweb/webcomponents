@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallax-Bild",
+    "description": "Bild scrollt mat"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Bild",
+        "description": "Bild, dat am Hannergrond benotzt gëtt"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Iwwerschrëftberäich",
+        "description": "Textberäich fir d'Iwwerschrëft"
+      }
+    ]
+  }
+}

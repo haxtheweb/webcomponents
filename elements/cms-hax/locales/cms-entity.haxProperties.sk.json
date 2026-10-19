@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Entita CMS",
+    "description": "Entita CMS vykreslená na backende"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Typ",
+        "description": "typ z nášho CMS",
+        "options": {
+          "node": "Uzol",
+          "user": "Používateľ",
+          "file": "Súbor"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id z nášho CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Režim zobrazenia",
+        "description": "režim zobrazenia z nášho CMS"
+      }
+    ]
+  }
+}

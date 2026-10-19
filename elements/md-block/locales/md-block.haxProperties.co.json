@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Un bloccu di cuntenutu markdown direttu o caricatu da luntanu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown grezzu"
+      },
+      {
+        "property": "source",
+        "title": "Fonte",
+        "description": "Schedariu fonte per u markdown"
+      }
+    ]
+  }
+}

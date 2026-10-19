@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "كتلة CMS",
+    "description": "كتلة CMS تُعرض في الواجهة الخلفية"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "وحدة نمطية",
+        "description": "الوحدة المراد تحميلها من نظام CMS الخاص بنا"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "قيمة Delta للكتلة المراد تحميلها من نظام CMS الخاص بنا"
+      }
+    ]
+  }
+}

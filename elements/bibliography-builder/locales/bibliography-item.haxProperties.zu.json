@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Into yohlu lwemithombo",
+    "description": "Into emelela ingcaphuno eyodwa ohlwini lwemithombo, isekela amafomethi amaningi nezinketho zokuthumela ngaphandle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Uhlobo",
+        "description": "Uhlobo lwengcaphuno",
+        "options": {
+          "web": "Iwebhu",
+          "journal": "Ijenali",
+          "book": "Incwadi"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko sento"
+      },
+      {
+        "property": "authors",
+        "title": "Umbhali/Ababhali",
+        "description": "Imicimbi esemugqeni wesikhathi"
+      },
+      {
+        "property": "publisher",
+        "title": "Umshicileli",
+        "description": "Iwebhusayithi yasekuqaleni"
+      }
+    ]
+  }
+}

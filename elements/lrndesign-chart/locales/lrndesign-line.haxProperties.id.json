@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Diagram Garis",
+    "description": "Membuat diagram yang aksesibel berdasarkan CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Warna Aksen",
+        "description": "Warna aksen opsional."
+      },
+      {
+        "title": "Tema Gelap",
+        "description": "Aktifkan Tema Gelap"
+      },
+      {
+        "title": "File CSV",
+        "description": "Muat data dari CSV."
+      },
+      {
+        "title": "Judul Diagram",
+        "description": "Teks alt yang aksesibel untuk diagram Anda."
+      },
+      {
+        "title": "Deskripsi Diagram",
+        "description": "Deskripsi yang aksesibel untuk diagram Anda."
+      },
+      {
+        "title": "Nama Skala",
+        "description": "Rasio lebar:tinggi diagram (Lihat https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings untuk $ct-scales dan $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Tampilkan Latar Belakang Kisi"
+      },
+      {
+        "title": "Tampilkan Area"
+      },
+      {
+        "title": "Tampilkan Garis"
+      },
+      {
+        "title": "Tampilkan Titik"
+      },
+      {
+        "title": "Lebar Penuh"
+      },
+      {
+        "title": "Tampilkan Label Titik"
+      },
+      {
+        "title": "Padding Diagram (atas)"
+      },
+      {
+        "title": "Padding Diagram (bawah)"
+      },
+      {
+        "title": "Padding Diagram (kiri)"
+      },
+      {
+        "title": "Padding Diagram (kanan)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Balik Data",
+        "description": "Balik data termasuk label, urutan seri, serta seluruh larik data seri."
+      },
+      {
+        "title": "Tabel HTML",
+        "description": "Opsional: Muat data sebagai tabel HTML."
+      },
+      {
+        "title": "Minimum Diagram",
+        "description": "Menggantikan nilai terendah alami diagram memungkinkan Anda memperbesar atau membatasi nilai terendah yang ditampilkan diagram"
+      },
+      {
+        "title": "Maksimum Diagram",
+        "description": "Menggantikan nilai tertinggi alami diagram memungkinkan Anda memperbesar atau membatasi nilai tertinggi yang ditampilkan diagram"
+      },
+      {
+        "title": "Tampilkan Label Titik",
+        "options": {
+          "middle": "Tengah",
+          "start": "Mulai",
+          "end": "Selesai"
+        }
+      },
+      {
+        "title": "Offset X Label Titik"
+      },
+      {
+        "title": "Offset Y Label Titik"
+      },
+      {
+        "title": "Garis Halus"
+      },
+      {
+        "title": "Dasar Area",
+        "description": "Dasar untuk diagram area yang digunakan untuk menutup bentuk area (biasanya 0)."
+      },
+      {
+        "title": "Sumbu X Tampilkan Kisi",
+        "description": "Tampilkan kisi Sumbu X."
+      },
+      {
+        "title": "Offset Sumbu X"
+      },
+      {
+        "title": "Posisi Sumbu X",
+        "description": "Posisi penempatan label. Dapat diatur ke \"start\" atau \"end\", dengan \"start\" setara dengan kiri atau atas pada sumbu vertikal dan \"end\" setara dengan kanan atau bawah pada sumbu horizontal"
+      },
+      {
+        "title": "Sumbu X Tampilkan Label",
+        "description": "Tampilkan label Sumbu X."
+      },
+      {
+        "title": "Label Sumbu X (offset horizontal)",
+        "description": "Posisi horizontal label Sumbu X."
+      },
+      {
+        "title": "Label Sumbu X (offset vertikal)",
+        "description": "Posisi vertikal label Sumbu X."
+      },
+      {
+        "title": "Judul Sumbu X",
+        "description": "Judul opsional untuk sumbu X."
+      },
+      {
+        "title": "Judul Sumbu X (offset horizontal)",
+        "description": "Posisi horizontal judul Sumbu X."
+      },
+      {
+        "title": "Judul Sumbu X (offset vertikal)",
+        "description": "Posisi vertikal judul Sumbu X."
+      },
+      {
+        "title": "Jangkar Judul Sumbu X",
+        "description": "Jangkar opsional untuk judul sumbu X.",
+        "options": {
+          "middle": "tengah",
+          "end": "akhir",
+          "start": "awal"
+        }
+      },
+      {
+        "title": "Sumbu Y: Tampilkan Kisi",
+        "description": "Tampilkan kisi Sumbu Y."
+      },
+      {
+        "title": "Offset Sumbu Y"
+      },
+      {
+        "title": "Posisi Sumbu Y",
+        "description": "Posisi penempatan label. Dapat diatur ke \"start\" atau \"end\", dengan \"start\" setara dengan kiri atau atas pada sumbu vertikal dan \"end\" setara dengan kanan atau bawah pada sumbu horizontal"
+      },
+      {
+        "title": "Sumbu Y Tampilkan Label",
+        "description": "Tampilkan label Sumbu Y."
+      },
+      {
+        "title": "Label Sumbu Y (offset horizontal)",
+        "description": "Posisi horizontal label Sumbu Y."
+      },
+      {
+        "title": "Label Sumbu Y (offset vertikal)",
+        "description": "Posisi vertikal label Sumbu Y."
+      },
+      {
+        "title": "Ruang Minimum Skala Sumbu Y",
+        "description": "Menentukan tinggi minimum langkah skala dalam piksel."
+      },
+      {
+        "title": "Skala Sumbu Y (hanya bilangan bulat)",
+        "description": "Gunakan hanya nilai bilangan bulat untuk langkah skala."
+      },
+      {
+        "title": "Judul Sumbu Y",
+        "description": "Judul opsional untuk sumbu Y."
+      },
+      {
+        "title": "Judul Sumbu Y (offset vertikal)",
+        "description": "Posisi horizontal judul Sumbu Y."
+      },
+      {
+        "title": "Judul Sumbu Y (offset horizontal)",
+        "description": "Posisi horizontal judul Sumbu Y."
+      },
+      {
+        "title": "Jangkar Judul Sumbu Y",
+        "description": "Jangkar opsional untuk judul sumbu Y.",
+        "options": {
+          "middle": "tengah",
+          "end": "akhir",
+          "start": "awal"
+        }
+      },
+      {
+        "title": "Balik Judul Sumbu Y",
+        "description": "Balik judul untuk sumbu Y?"
+      }
+    ]
+  }
+}

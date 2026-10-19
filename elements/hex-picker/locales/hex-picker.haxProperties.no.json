@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex-velger",
+    "description": "Fargevelger for hex-koder"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Verdi",
+        "description": "Standard hex-verdi"
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktivert",
+        "description": "Deaktiver tekstfeltet"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Stor visning",
+        "description": "Vis fargen i stor visning"
+      }
+    ]
+  }
+}

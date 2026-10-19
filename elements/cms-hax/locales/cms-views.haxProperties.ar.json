@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "عرض CMS",
+    "description": "عروض CMS تُعرض في الواجهة الخلفية"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "الاسم",
+        "description": "اسم العرض من نظام CMS الخاص بنا"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "العرض",
+        "description": "طريقة العرض داخل ذلك العرض من نظام CMS الخاص بنا"
+      }
+    ]
+  }
+}

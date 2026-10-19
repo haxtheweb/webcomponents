@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "اختصار",
+    "description": "اختصار با راهنمای ابزار اصطلاح کامل."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "متن",
+        "description": "متن نمایان اختصار."
+      },
+      {
+        "attribute": "title",
+        "title": "واژه",
+        "description": "اصطلاح کامل که هنگام قرار گرفتن نشانگر نمایش داده می‌شود."
+      }
+    ]
+  }
+}

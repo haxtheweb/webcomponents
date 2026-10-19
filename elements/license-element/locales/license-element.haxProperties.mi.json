@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Raihana",
+    "description": "Whakaratoa he raihana mō tō mahi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Taitara o te mahi kua tohutorotia."
+      },
+      {
+        "property": "source",
+        "title": "Hono pūtake",
+        "description": "URL pūtake mō te mahi kua raihanatia."
+      },
+      {
+        "property": "license",
+        "title": "Raihana",
+        "description": "Raihana ka hāngaitia ki tēnei mahi."
+      },
+      {
+        "property": "creator",
+        "title": "Kaihanga",
+        "description": "Kaihanga, rangatira rānei o tēnei mahi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Hono pūtake",
+        "description": "Hono ki ētahi atu taipitopito raihana."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Tapanga atu",
+        "description": "Tapanga mō ētahi atu taipitopito raihana."
+      }
+    ]
+  }
+}

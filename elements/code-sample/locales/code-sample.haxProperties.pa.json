@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "ਕੋਡ ਨਮੂਨਾ",
+    "description": "ਪੰਨੇ ਵਿੱਚ ਉਭਾਰਿਆ ਕੋਡ ਦਾ ਨਮੂਨਾ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "ਕੋਡ ਉਭਾਰ",
+        "description": "ਕੋਡ ਖੇਤਰ 'ਤੇ ਲਾਗੂ ਕਰਨ ਲਈ ਸਿੰਟੈਕਸ ਉਭਾਰ",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON ਡਾਟਾ",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ਕਲਿੱਪਬੋਰਡ 'ਤੇ ਕਾਪੀ ਬਟਨ",
+        "description": "ਉੱਪਰ ਸੱਜੇ ਪਾਸੇ ਬਟਨ ਜਿਸ 'ਤੇ ਕਲਿੱਪਬੋਰਡ 'ਤੇ ਕਾਪੀ ਕਰੋ ਲਿਖਿਆ ਹੈ"
+      },
+      {
+        "property": "highlightStart",
+        "title": "ਉਭਾਰ ਸ਼ੁਰੂ",
+        "description": "ਉਭਾਰ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਲਾਈਨ ਨੰਬਰ"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "ਉਭਾਰ ਅੰਤ",
+        "description": "ਉਭਾਰ ਖ਼ਤਮ ਕਰਨ ਵਾਲੀ ਲਾਈਨ"
+      }
+    ]
+  }
+}

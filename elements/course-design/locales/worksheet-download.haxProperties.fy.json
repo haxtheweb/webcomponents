@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Wurkblêd-download",
+    "description": "In knop foar it toanen fan triemmen dy't te downloaden binne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "De titel fan de download."
+      },
+      {
+        "property": "link",
+        "title": "Keppeling",
+        "description": "De keppeling foar de download."
+      }
+    ]
+  }
+}

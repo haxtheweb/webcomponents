@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Tikiake Puka Mahi",
+    "description": "He pātene hei whakaatu i ngā kōnae e wātea ana hei tikiake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Te taitara o te tikiake."
+      },
+      {
+        "property": "link",
+        "title": "Hono",
+        "description": "Te hono mō te tikiake."
+      }
+    ]
+  }
+}

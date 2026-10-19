@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kursusmodel",
+    "description": "Interaktivt layout til kursusbegreber med detaljer, animation og videnstjek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titel"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Informationsområde"
+      },
+      {
+        "title": "Detaljeområde"
+      },
+      {
+        "title": "Animationsområde"
+      },
+      {
+        "title": "Område til videnstjek"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logoområde"
+      }
+    ]
+  }
+}

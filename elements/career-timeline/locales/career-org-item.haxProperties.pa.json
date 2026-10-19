@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "ਕਰੀਅਰ ਆਈਟਮ",
+    "description": "ਇੱਕ ਵਿਅਕਤੀਗਤ ਸੰਗਠਨ ਅਤੇ ਇਸ ਨਾਲ ਜੁੜੀਆਂ ਭੂਮਿਕਾਵਾਂ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "ਸੰਗਠਨ ਦਾ ਨਾਮ"
+      },
+      {
+        "property": "location",
+        "title": "ਸਥਾਨ"
+      },
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Uyilo lweKhosi",
+    "description": "Isikhongozeli sezixhobo zemfundo kunye nezinto zoyilo lwekhosi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Isichongi seKhosi",
+        "description": "Iskimu se-OER: isichongi sekhosi, umz. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Ikota Enikezelwayo",
+        "description": "Iskimu se-OER: ikota apho ikhosi inikezelwa khona."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Ifomathi yokuHambisa",
+        "description": "Iskimu se-OER: ifomathi esetyenziswa ukuhambisa ikhosi (umz. ebusweni, kwi-intanethi, exubeneyo)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "UMhlohli oyiNtloko",
+        "description": "Iskimu se-OER: umhlohli oyintloko wekhosi."
+      },
+      {
+        "property": "syllabus",
+        "title": "I-URL yeSilabhasi",
+        "description": "Iskimu se-OER: i-URL eya kwisilabhasi yekhosi."
+      }
+    ]
+  }
+}

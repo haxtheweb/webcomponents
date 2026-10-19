@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: بلوک فرزند",
+    "description": "بلوک پویا برای نمایش فرزندان صفحه فعلی"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "روش پویا",
+        "description": "نحوه محاسبه فرزندان نسبت به این عنصر",
+        "options": {
+          "active": "فرزندان فعال",
+          "parent": "فرزندان والد",
+          "ancestor": "همه فرزندان از بالاترین نیا"
+        }
+      },
+      {
+        "property": "start",
+        "title": "سطح شروع"
+      },
+      {
+        "property": "end",
+        "title": "سطح پایان"
+      }
+    ]
+  }
+}

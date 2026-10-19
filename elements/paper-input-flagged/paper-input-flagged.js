@@ -27,7 +27,7 @@ class PaperInputFlagged extends LitElement {
           display: block;
         }
         simple-icon {
-          transition: 0.6s all ease-in;
+          transition: var(--ddd-duration-slow, 0.6s) all ease-in;
           width: 24px;
           height: 24px;
           margin-right: 4px;

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Chithunzi Choyambira",
+    "description": "Chinthu choyambira cha chithunzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Gwero",
+        "description": "URL ya chithunzi."
+      },
+      {
+        "attribute": "alt",
+        "title": "Mawu ofotokoza chithunzi",
+        "description": "Mawu ena opezeka kwa onse ndi a SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Kutalika",
+        "description": "Kutalika mu ma pixel. Siyani kopanda kanthu kuti mugwiritse ntchito kukula kwachilengedwe."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Kukweza chithunzi",
+        "description": "Sankhani nthawi yomwe chithunzi chimatseguka.",
+        "options": {
+          "lazy": "Tsegulani chikaoneka",
+          "auto": "Zokha"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Magwero osinthika (srcset)",
+        "description": "Lembani ma URL a zithunzi ndi zofotokozera (mwachitsanzo 480w kapena 2x) kuti asakatuli asankhe kukula koyenera kwa skrini. Zimasungidwa ngati srcset attribute yokhazikika."
+      }
+    ]
+  }
+}

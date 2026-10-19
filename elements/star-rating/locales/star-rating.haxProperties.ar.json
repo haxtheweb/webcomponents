@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "التقييم بالنجوم",
+    "description": "أداة لعرض التقييم أو زر لإجراء التقييم."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "الدرجة",
+        "description": "قيمة الدرجة الحالية."
+      },
+      {
+        "property": "possible",
+        "title": "الممكن",
+        "description": "أقصى درجة ممكنة."
+      },
+      {
+        "property": "numStars",
+        "title": "عدد النجوم",
+        "description": "عدد النجوم المراد عرضها."
+      },
+      {
+        "property": "interactive",
+        "title": "تفاعلي",
+        "description": "السماح للمستخدم بالتفاعل لتعيين التقييم."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "وضع مقياس معايير التقييم",
+        "description": "إصدار بيانات OER Schema الوصفية RubricScale وRubricLevel (levelOrdinal/levelPoints) لكل نجمة."
+      }
+    ]
+  }
+}

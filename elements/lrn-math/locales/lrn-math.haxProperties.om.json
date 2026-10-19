@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Herrega",
+    "description": "Herrega haala bareedaan dhiyeessi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Herrega",
+        "description": "Walqixxaattoo akka LaTeX tti galchi"
+      }
+    ]
+  }
+}

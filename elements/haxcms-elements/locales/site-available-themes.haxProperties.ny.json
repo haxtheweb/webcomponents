@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Mawonekedwe Omwe Alipo",
+    "description": "Onetsani mawonekedwe a HAXcms omwe alipo ndi kusintha chithunzithunzi nthawi yomweyo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Njira Yowonera",
+        "description": "Sankhani momwe mungaonetsere mawonekedwe",
+        "options": {
+          "gallery": "Malo a zithunzi",
+          "table": "Tebulo"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Onetsani Zambiri",
+        "description": "Onetsani mafotokozedwe a mawonekedwe ndi zambiri zowonjezera"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Onetsani Mawonekedwe Obisika ndi Akale",
+        "description": "Onetsani mawonekedwe obisika, akale, ndi oipa kuwonjezera pa zokhazikika za dashibodi"
+      },
+      {
+        "property": "columns",
+        "title": "Mizati (Gulu la zithunzi)",
+        "description": "Chiwerengero cha mizati m'mawonekedwe a gulu la zithunzi"
+      }
+    ]
+  }
+}

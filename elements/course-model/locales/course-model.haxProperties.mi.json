@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "tauira akoranga",
+    "description": "Tahora pāhekoheko mō ngā ariā akoranga me ngā taipitopito, te hākoritanga, me ngā arowhai mōhiotanga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "taitara"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Wāhi mōhiohio"
+      },
+      {
+        "title": "Wāhi taipitopito"
+      },
+      {
+        "title": "Wāhi hākoritanga"
+      },
+      {
+        "title": "Wāhi Arowhai Mōhiotanga"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Wāhi moko"
+      }
+    ]
+  }
+}

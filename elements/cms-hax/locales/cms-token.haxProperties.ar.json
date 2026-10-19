@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "رمز CMS",
+    "description": "رمز CMS يُعرض في الواجهة الخلفية"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "الرمز",
+        "description": "رمز من نظام CMS الخاص بنا"
+      }
+    ]
+  }
+}

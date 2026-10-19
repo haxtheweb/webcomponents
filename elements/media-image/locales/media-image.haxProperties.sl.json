@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Izboljšana slika",
+    "description": "Način predstavitve slik z različnimi izboljšavami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Vir",
+        "description": "URL slike."
+      },
+      {
+        "property": "alt",
+        "title": "Nadomestno besedilo",
+        "description": "Besedilo, ki opiše sliko slepim in slabovidnim uporabnikom."
+      },
+      {
+        "property": "link",
+        "title": "Povezava",
+        "description": "Poveži sliko z URL-jem"
+      },
+      {
+        "property": "card",
+        "title": "Kartica",
+        "description": "Dodaj senco, da je videti kot dvignjena kartica."
+      },
+      {
+        "property": "box",
+        "title": "Okvir",
+        "description": "Dodaj vidni okvir okoli slike."
+      },
+      {
+        "property": "offset",
+        "title": "Zamik",
+        "description": "Dodaj levi ali desni zamik slike.",
+        "options": {
+          "none": "brez",
+          "wide": "širok",
+          "narrow": "ozek"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Navedba vira",
+        "description": "Citat za sliko."
+      },
+      {
+        "property": "caption",
+        "title": "Napis",
+        "description": "Napis slike."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Naslov slike",
+        "description": "Naslov oznake slike."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Opis slike",
+        "description": "Opis oznake slike."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Sličica",
+        "description": "Vir sličice. Prikaže sličico, v modalnem oknu pa odpre polni vir."
+      },
+      {
+        "property": "round",
+        "title": "Okrogla slika",
+        "description": "Obreže videz slike v obliko kroga."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Onemogoči modalno okno slike",
+        "description": "Onemogoči, da klik odpre sliko v pogovornem oknu pregledovalnika slik."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Upodobi kot markdown",
+        "description": "Upodobi napis in citat kot markdown."
+      }
+    ]
+  }
+}

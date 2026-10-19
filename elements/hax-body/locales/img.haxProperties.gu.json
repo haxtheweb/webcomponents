@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "મૂળભૂત છબી",
+    "description": "મૂળભૂત છબી એલિમેન્ટ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "સ્રોત",
+        "description": "છબી URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "વૈકલ્પિક લખાણ",
+        "description": "સુલભતા અને SEO માટે વૈકલ્પિક ટેક્સ્ટ."
+      },
+      {
+        "attribute": "height",
+        "title": "ઊંચાઈ",
+        "description": "પિક્સેલમાં ઊંચાઈ. કુદરતી કદ વાપરવા માટે ખાલી છોડો."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "છબી લોડિંગ",
+        "description": "છબી ક્યારે લોડ થાય તે પસંદ કરો.",
+        "options": {
+          "lazy": "દેખાય ત્યારે લોડ કરો",
+          "auto": "સ્વચાલિત"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "રિસ્પોન્સિવ સ્રોતો (srcset)",
+        "description": "છબી URL અને વર્ણનકર્તાઓ (દા.ત. 480w અથવા 2x) સૂચિબદ્ધ કરો જેથી બ્રાઉઝર્સ સ્ક્રીન માટે શ્રેષ્ઠ કદ પસંદ કરે. પ્રમાણભૂત srcset એટ્રિબ્યુટ તરીકે સંગ્રહિત થાય છે."
+      }
+    ]
+  }
+}

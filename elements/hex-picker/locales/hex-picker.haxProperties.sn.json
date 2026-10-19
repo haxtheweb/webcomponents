@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Musarudzi weHex",
+    "description": "Musarudzi wemavara ehexcode"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Kukosha",
+        "description": "Kukosha kwehex kwakagara kuripo"
+      },
+      {
+        "property": "disabled",
+        "title": "Zvakadzimwa",
+        "description": "Dzima munda wemavara"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Kuratidza Kukuru",
+        "description": "Isa ruvara mukuratidza kukuru"
+      }
+    ]
+  }
+}

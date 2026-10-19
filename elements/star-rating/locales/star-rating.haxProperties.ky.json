@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Жылдыз рейтинги",
+    "description": "Рейтингди көрсөтүүчү виджет же баалоо баскычы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Упай",
+        "description": "Учурдагы упайдын мааниси."
+      },
+      {
+        "property": "possible",
+        "title": "Мүмкүн болгон",
+        "description": "Мүмкүн болгон максималдуу упай."
+      },
+      {
+        "property": "numStars",
+        "title": "Жылдыздардын саны",
+        "description": "Көрсөтүлүүчү жылдыздардын саны."
+      },
+      {
+        "property": "interactive",
+        "title": "Интерактивдүү",
+        "description": "Колдонуучуга рейтинг коюуга уруксат берүү."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Рубрика шкаласы режими",
+        "description": "Ар бир жылдыз үчүн OER Schema RubricScale жана RubricLevel метаберилиштерин (levelOrdinal/levelPoints) чыгаруу."
+      }
+    ]
+  }
+}

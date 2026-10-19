@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX saite",
+    "description": "Saite uz konkrētu resursu vietnē, pie kuras strādājat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Vienums",
+        "description": "Vienums, ko attēlot saites / nosaukuma datiem"
+      }
+    ]
+  }
+}

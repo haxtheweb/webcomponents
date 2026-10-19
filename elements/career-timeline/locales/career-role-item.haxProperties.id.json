@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Peran Karier",
+    "description": "Satu peran dalam sebuah organisasi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judul"
+      },
+      {
+        "property": "startDate",
+        "title": "Tanggal Mulai"
+      },
+      {
+        "property": "endDate",
+        "title": "Tanggal Selesai (Opsional)"
+      },
+      {
+        "property": "skills",
+        "title": "Keterampilan Terkait",
+        "description": "Pilih tombol + untuk mulai menambahkan keterampilan"
+      }
+    ]
+  }
+}

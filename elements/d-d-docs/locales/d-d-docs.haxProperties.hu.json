@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Dizájnrendszer-megvalósítás a HAX-hoz"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Megjelenítendő lehetőség",
+        "options": {
+          "*": "Teljes stílusútmutató"
+        }
+      }
+    ]
+  }
+}

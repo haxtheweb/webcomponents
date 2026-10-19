@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Áherslulitun",
+    "description": "Áherslulita texta í línu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Texti",
+        "description": "Áherslulitaður texti."
+      }
+    ]
+  }
+}

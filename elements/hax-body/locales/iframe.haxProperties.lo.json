@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "ຝັງເນື້ອຫາເວັບພາຍນອກ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ແຫຼ່ງທີ່ມາ",
+        "description": "URL ສຳລັບຊັບພະຍາກອນນີ້."
+      }
+    ]
+  }
+}

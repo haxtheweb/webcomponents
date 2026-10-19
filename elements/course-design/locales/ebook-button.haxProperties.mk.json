@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Копче за е-книга",
+    "description": "Копче што води до е-книга."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов на копчето."
+      },
+      {
+        "property": "link",
+        "title": "Врска",
+        "description": "Врска за пренасочување при клик."
+      },
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона што ја претставува оваа врска"
+      }
+    ]
+  }
+}

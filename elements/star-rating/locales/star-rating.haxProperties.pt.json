@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Avaliação por estrelas",
+    "description": "Widget de exibição de avaliação ou botão para avaliar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Pontuação",
+        "description": "Valor atual da pontuação."
+      },
+      {
+        "property": "possible",
+        "title": "Possível",
+        "description": "Pontuação máxima possível."
+      },
+      {
+        "property": "numStars",
+        "title": "Número de estrelas",
+        "description": "Número de estrelas a exibir."
+      },
+      {
+        "property": "interactive",
+        "title": "Interativo",
+        "description": "Permitir que o usuário interaja para definir a avaliação."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Modo de escala de rubrica",
+        "description": "Emitir metadados RubricScale e RubricLevel do OER Schema (levelOrdinal/levelPoints) para cada estrela."
+      }
+    ]
+  }
+}

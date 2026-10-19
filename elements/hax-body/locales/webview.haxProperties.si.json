@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "මූලාශ්‍රය",
+        "description": "මෙම සම්පත සඳහා URL."
+      }
+    ]
+  }
+}

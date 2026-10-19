@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex තෝරකය",
+    "description": "Hex කේත වර්ණ තෝරකය"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "අගය",
+        "description": "පෙරනිමි hex අගය"
+      },
+      {
+        "property": "disabled",
+        "title": "අබල කර ඇත",
+        "description": "පෙළ ක්ෂේත්‍රය අක්‍රිය කරන්න"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "විශාල සංදර්ශනය",
+        "description": "විශාල සංදර්ශනයේ වර්ණය ඇතුළත් කරන්න"
+      }
+    ]
+  }
+}

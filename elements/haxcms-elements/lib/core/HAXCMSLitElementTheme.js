@@ -316,7 +316,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           overflow: visible;
           clip: auto;
           white-space: normal;
-          z-index: 10000;
+          z-index: var(--ddd-z-modal, 10000);
           background: var(--ddd-theme-default-white, #fff);
           color: var(--ddd-theme-default-coalyGray, #000);
           border: 2px solid currentColor;
@@ -354,7 +354,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         :host {
           opacity: 0;
           visibility: hidden;
-          transition: opacity 0.6s ease-in-out;
+          transition: opacity var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         :host([theme-ready]) {
           opacity: 1;

@@ -162,7 +162,7 @@ class GridPlate extends LitElement {
           .column
           ::slotted([contenteditable][data-hax-ray]:empty)::before {
           content: attr(data-hax-ray);
-          opacity: 0.2;
+          opacity: var(--ddd-opacity-20, 0.2);
           transition: opacity var(--ddd-duration-normal, 0.3s) ease-in-out;
           margin: 0;
         }

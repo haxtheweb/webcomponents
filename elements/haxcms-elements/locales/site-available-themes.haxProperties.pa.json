@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "ਉਪਲਬਧ ਥੀਮਾਂ",
+    "description": "ਲਾਈਵ ਪ੍ਰੀਵਿਊ ਬਦਲਾਅ ਨਾਲ ਉਪਲਬਧ HAXcms ਥੀਮਾਂ ਦਿਖਾਓ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "ਦ੍ਰਿਸ਼ ਮੋਡ",
+        "description": "ਚੁਣੋ ਕਿ ਥੀਮਾਂ ਕਿਵੇਂ ਦਿਖਾਉਣੀਆਂ ਹਨ",
+        "options": {
+          "gallery": "ਗੈਲਰੀ",
+          "table": "ਸਾਰਣੀ"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "ਵੇਰਵੇ ਦਿਖਾਓ",
+        "description": "ਥੀਮ ਵਰਣਨ ਅਤੇ ਵਾਧੂ ਜਾਣਕਾਰੀ ਦਿਖਾਓ"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "ਲੁਕੀਆਂ ਅਤੇ ਪੁਰਾਣੀਆਂ ਥੀਮਾਂ ਦਿਖਾਓ",
+        "description": "ਡੈਸ਼ਬੋਰਡ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਤੋਂ ਇਲਾਵਾ ਲੁਕੀਆਂ, ਪੁਰਾਣੀਆਂ ਅਤੇ ਭਿਆਨਕ ਥੀਮਾਂ ਦਿਖਾਓ"
+      },
+      {
+        "property": "columns",
+        "title": "ਕਾਲਮ (ਗੈਲਰੀ)",
+        "description": "ਗੈਲਰੀ ਦ੍ਰਿਸ਼ ਵਿੱਚ ਕਾਲਮਾਂ ਦੀ ਗਿਣਤੀ"
+      }
+    ]
+  }
+}

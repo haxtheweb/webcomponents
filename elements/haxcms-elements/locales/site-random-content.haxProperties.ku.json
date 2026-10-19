@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Naveroka Rûpelê ya Rasthatî",
+    "description": "Hêmaneke asta jorîn a rasthatî ji rûpeleke hilbijartî nîşan bide"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Rûpel",
+        "description": "Rûpela ku naveroka rasthatî jê were kişandin hilbijêre. Hêman dê bi rasthatî yek ji hêmanên HTML ên asta jorîn ên vê rûpelê nîşan bide."
+      }
+    ]
+  }
+}

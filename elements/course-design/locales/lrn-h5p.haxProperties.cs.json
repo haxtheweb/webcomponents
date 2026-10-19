@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Prvek H5P",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Text",
+        "description": "Obsah poznámky na okraji"
+      }
+    ]
+  }
+}

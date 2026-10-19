@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Hoahoa Akoranga",
+    "description": "Ipu mō ngā rauemi mātauranga me ngā huānga hoahoa akoranga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Tautuhi Akoranga",
+        "description": "OER Schema: te tautuhi o te akoranga, hei tauira MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Wahanga e Tukuna Ana",
+        "description": "OER Schema: te wahanga ka tukuna ai te akoranga."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Hōputu Tuku",
+        "description": "OER Schema: te hōputu e whakamahia ana hei tuku i te akoranga (hei tauira, kanohi ki te kanohi, ā-ipurangi, ranu)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Kaiako Matua",
+        "description": "OER Schema: te kaiako matua mō te akoranga."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL Marautanga",
+        "description": "OER Schema: URL ki te marautanga akoranga."
+      }
+    ]
+  }
+}

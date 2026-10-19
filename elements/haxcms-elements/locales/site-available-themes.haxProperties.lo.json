@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "ທີມທີ່ມີໃຫ້",
+    "description": "ສະແດງທີມ HAXcms ທີ່ມີໃຫ້ ພ້ອມການສະຫຼັບຕົວຢ່າງແບບສົດ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "ໂໝດເບິ່ງ",
+        "description": "ເລືອກວິທີສະແດງທີມ",
+        "options": {
+          "gallery": "ຄັງຮູບ",
+          "table": "ຕາຕະລາງ"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "ສະແດງລາຍລະອຽດ",
+        "description": "ສະແດງຄຳອະທິບາຍທີມ ແລະ ຂໍ້ມູນເພີ່ມເຕີມ"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "ສະແດງທີມທີ່ເຊື່ອງໄວ້ ແລະ ທີມເກົ່າ",
+        "description": "ສະແດງທີມທີ່ເຊື່ອງໄວ້, ທີມເກົ່າ ແລະ ທີມທີ່ບໍ່ດີ ນອກເໜືອຈາກຄ່າເລີ່ມຕົ້ນຂອງແດຊບອດ"
+      },
+      {
+        "property": "columns",
+        "title": "ຖັນ (ຄັງຮູບ)",
+        "description": "ຈຳນວນຖັນໃນມຸມມອງຄັງຮູບ"
+      }
+    ]
+  }
+}

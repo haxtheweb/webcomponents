@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Site View",
+    "description": "Isang dynamic na block na nagku-query at nagpapakita ng data ng site batay sa pamantayan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL ng View",
+        "description": "Mga query parameter para sa data feed ng view. Makukuha mo ito mula sa Views dashboard."
+      },
+      {
+        "property": "renderer",
+        "title": "Display mode",
+        "description": "Paano dapat i-render ang mga resulta ng view"
+      },
+      {
+        "property": "entity",
+        "title": "Uri ng entity",
+        "description": "Uri ng entity na ginagamit sa pag-parse ng tugon",
+        "options": {
+          "": "Default (mga item)",
+          "item": "Item",
+          "page": "Pahina",
+          "file": "File",
+          "tag": "Tag",
+          "block": "Block",
+          "view": "View",
+          "theme": "Tema",
+          "region": "Rehiyon",
+          "customElement": "Custom Element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Putulin ang site view",
+        "description": "I-convert sa static na nilalaman para direktang ma-edit; ititigil ang awtomatikong pag-update mula sa source."
+      }
+    ]
+  }
+}

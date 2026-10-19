@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Nlele saịtị",
+    "description": "Blọọkụ na-agbanwe agbanwe na-ajụ ajụjụ ma na-egosi data saịtị dabere na njirisi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL nlele",
+        "description": "Paramita ajụjụ maka nri data nlele. Ị nwere ike inweta nke a site na dashboard Nlele."
+      },
+      {
+        "property": "renderer",
+        "title": "Ọnọdụ ngosi",
+        "description": "Otu esi egosi nsonaazụ nlele"
+      },
+      {
+        "property": "entity",
+        "title": "Ụdị ihe",
+        "description": "Ụdị ihe e ji atụgharị nzaghachi",
+        "options": {
+          "": "Ndabere (ihe)",
+          "item": "Ihe",
+          "page": "Ibe",
+          "file": "Faịlụ",
+          "tag": "Mkpado",
+          "block": "Blọọkụ",
+          "view": "Nlele",
+          "theme": "Isiokwu",
+          "region": "Mpaghara",
+          "customElement": "Mmewere omenala"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Gbajie nlele saịtị",
+        "description": "Gbanwee ka ọ bụrụ ọdịnaya kwụ ọtọ maka idezi ozugbo; ọ na-akwụsị mmelite akpaghị aka site na isi iyi."
+      }
+    ]
+  }
+}

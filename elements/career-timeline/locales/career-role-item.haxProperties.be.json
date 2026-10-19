@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Роля ў кар'еры",
+    "description": "Асобная роля ў арганізацыі"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Загаловак"
+      },
+      {
+        "property": "startDate",
+        "title": "Дата пачатку"
+      },
+      {
+        "property": "endDate",
+        "title": "Дата заканчэння (неабавязкова)"
+      },
+      {
+        "property": "skills",
+        "title": "Звязаныя навыкі",
+        "description": "Націсніце кнопку +, каб пачаць дадаваць навыкі"
+      }
+    ]
+  }
+}

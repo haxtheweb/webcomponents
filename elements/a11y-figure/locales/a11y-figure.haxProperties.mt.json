@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Figura Deskrittiva",
+    "description": "Figura aċċessibbli b'deskrizzjoni twila"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Immaġni"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Test alternattiv"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Caption tal-Figura",
+        "description": "Test tal-caption tal-figura li huwa dejjem viżibbli."
+      },
+      {
+        "slot": "details",
+        "title": "Deskrizzjoni",
+        "description": "Deskrizzjoni dettaljata tal-immaġni li tista' tinħeba jew tintwera"
+      },
+      {
+        "slot": "summary",
+        "title": "Buttuna tad-Deskrizzjoni",
+        "description": "Default għall-buttuna li turi/taħbi t-test tad-deskrizzjoni, eż. \"info\", \"metadata\", eċċ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Test tas-sommarju opzjonali meta d-dettalji jkunu miftuħa"
+      },
+      {
+        "property": "closeText",
+        "title": "Test tas-sommarju opzjonali meta d-dettalji jkunu magħluqa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Esempiu di codice",
+    "description": "Un esempiu di codice evidenziatu in a pagina"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Evidenziamentu di u codice",
+        "description": "Evidenziamentu di sintassi da appiecà à a zona di codice",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Dati JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Buttone di copia in u preme-papere",
+        "description": "buttone in cima à diritta chì dice cupià in u preme-papere"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Iniziu di l'evidenziamentu",
+        "description": "Numeru di linea induve principia l'evidenziamentu"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Fine di l'evidenziamentu",
+        "description": "Linea induve finisce l'evidenziamentu"
+      }
+    ]
+  }
+}

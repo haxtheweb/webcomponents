@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Voce bibliografica",
+    "description": "Elemento che rappresenta una singola citazione in una bibliografia, con supporto per più formati e opzioni di esportazione."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tipo",
+        "description": "Tipo di citazione",
+        "options": {
+          "web": "Web",
+          "journal": "Rivista",
+          "book": "Libro"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo dell'elemento"
+      },
+      {
+        "property": "authors",
+        "title": "Autore/i",
+        "description": "Gli eventi nella cronologia"
+      },
+      {
+        "property": "publisher",
+        "title": "Editore",
+        "description": "Sito web originale"
+      }
+    ]
+  }
+}

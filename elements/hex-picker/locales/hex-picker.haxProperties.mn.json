@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex сонгогч",
+    "description": "Hex кодын өнгө сонгогч"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Утга",
+        "description": "Анхдагч hex утга"
+      },
+      {
+        "property": "disabled",
+        "title": "Идэвхгүй",
+        "description": "Текст талбарыг идэвхгүй болгох"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Том харагдац",
+        "description": "Өнгийг том харагдацад оруулах"
+      }
+    ]
+  }
+}

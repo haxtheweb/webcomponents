@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-aansig",
+    "description": "CMS-aansigte wat op die agterkant weergegee word"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Naam",
+        "description": "Naam van die aansig uit ons CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Vertoning",
+        "description": "Vertoning binne daardie aansig uit ons CMS"
+      }
+    ]
+  }
+}

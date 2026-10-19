@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Linediagram",
+    "description": "Makket in tagonklik diagram op basis fan in CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aksintkleur",
+        "description": "In opsjonele aksintkleur."
+      },
+      {
+        "title": "Tsjuster tema",
+        "description": "Tsjuster tema ynskeakelje"
+      },
+      {
+        "title": "CSV-triem",
+        "description": "Gegevens lade út in CSV."
+      },
+      {
+        "title": "Diagramtitel",
+        "description": "Tagonklike alt-tekst foar jo diagram."
+      },
+      {
+        "title": "Diagrambeskriuwing",
+        "description": "Tagonklike beskriuwing fan jo diagram."
+      },
+      {
+        "title": "Skaalnamme",
+        "description": "De ferhâlding breedte:hichte fan it diagram (sjoch https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings foar $ct-scales en $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Rastereftergrûn toane"
+      },
+      {
+        "title": "Gebiet toane"
+      },
+      {
+        "title": "Line toane"
+      },
+      {
+        "title": "Punt toane"
+      },
+      {
+        "title": "Folsleine breedte"
+      },
+      {
+        "title": "Puntlabels toane"
+      },
+      {
+        "title": "Diagram-opfolling (boppe)"
+      },
+      {
+        "title": "Diagram-opfolling (ûnder)"
+      },
+      {
+        "title": "Diagram-opfolling (lofts)"
+      },
+      {
+        "title": "Diagram-opfolling (rjochts)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gegevens omkeare",
+        "description": "Gegevens omkeare, ynklusyf labels, de folchoarder fan de searjes en de folsleine searjegegevens."
+      },
+      {
+        "title": "HTML-tabel",
+        "description": "Opsjoneel: gegevens lade as in HTML-tabel."
+      },
+      {
+        "title": "Diagramminimum",
+        "description": "Troch it natuerlike minimum fan it diagram te oerskriuwen kinne jo ynzoome of de leechste toande wearde fan it diagram beheine"
+      },
+      {
+        "title": "Diagrammaksimum",
+        "description": "Troch it natuerlike maksimum fan it diagram te oerskriuwen kinne jo ynzoome of de heechste toande wearde fan it diagram beheine"
+      },
+      {
+        "title": "Puntlabels toane",
+        "options": {
+          "middle": "Midden",
+          "start": "Begjin",
+          "end": "Ein"
+        }
+      },
+      {
+        "title": "X-ferskowing fan puntlabels"
+      },
+      {
+        "title": "Y-ferskowing fan puntlabels"
+      },
+      {
+        "title": "Glêde line"
+      },
+      {
+        "title": "Gebietsbasis",
+        "description": "De basis foar it gebietsdiagram dy't brûkt wurdt om de gebietsfoarm te sluten (is normaal 0)."
+      },
+      {
+        "title": "X-as raster toane",
+        "description": "It raster fan de X-as toane."
+      },
+      {
+        "title": "X-as ferskowing"
+      },
+      {
+        "title": "X-as posysje",
+        "description": "Posysje wêr't labels pleatst wurde. Kin ynsteld wurde op \"start\" of \"end\", wêrby \"start\" oerienkomt mei lofts of boppe op de fertikale as en \"end\" mei rjochts of ûnder op de horizontale as"
+      },
+      {
+        "title": "X-as label toane",
+        "description": "It label fan de X-as toane."
+      },
+      {
+        "title": "X-as label (horizontale ferskowing)",
+        "description": "Horizontale posysje fan de labels fan de X-as."
+      },
+      {
+        "title": "X-as label (fertikale ferskowing)",
+        "description": "Fertikale posysje fan de labels fan de X-as."
+      },
+      {
+        "title": "X-as titel",
+        "description": "Opsjonele titel foar X-as."
+      },
+      {
+        "title": "X-as titel (horizontale ferskowing)",
+        "description": "Horizontale posysje fan de titel fan de X-as."
+      },
+      {
+        "title": "X-as titel (fertikale ferskowing)",
+        "description": "Fertikale posysje fan de titel fan de X-as."
+      },
+      {
+        "title": "X-as titelanker",
+        "description": "Opsjoneel anker foar de titel fan de X-as.",
+        "options": {
+          "middle": "midden",
+          "end": "ein",
+          "start": "begjin"
+        }
+      },
+      {
+        "title": "Y-as: raster toane",
+        "description": "It raster fan de Y-as toane."
+      },
+      {
+        "title": "Y-as ferskowing"
+      },
+      {
+        "title": "Y-as posysje",
+        "description": "Posysje wêr't labels pleatst wurde. Kin ynsteld wurde op \"start\" of \"end\", wêrby \"start\" oerienkomt mei lofts of boppe op de fertikale as en \"end\" mei rjochts of ûnder op de horizontale as"
+      },
+      {
+        "title": "Y-as label toane",
+        "description": "It label fan de Y-as toane."
+      },
+      {
+        "title": "Y-as label (horizontale ferskowing)",
+        "description": "Horizontale posysje fan it label fan de Y-as."
+      },
+      {
+        "title": "Y-as label (fertikale ferskowing)",
+        "description": "Fertikale posysje fan it label fan de Y-as."
+      },
+      {
+        "title": "Y-as minimale skaalromte",
+        "description": "Jout de minimale hichte yn piksels fan skaalstappen oan."
+      },
+      {
+        "title": "Y-as skaal (allinnich hiele getallen)",
+        "description": "Allinnich hiele getallen brûke foar de skaalstappen."
+      },
+      {
+        "title": "Y-as titel",
+        "description": "Opsjonele titel foar Y-as."
+      },
+      {
+        "title": "Y-as titel (fertikale ferskowing)",
+        "description": "Horizontale posysje fan de titel fan de Y-as."
+      },
+      {
+        "title": "Y-as titel (horizontale ferskowing)",
+        "description": "Horizontale posysje fan de titel fan de Y-as."
+      },
+      {
+        "title": "Y-as titelanker",
+        "description": "Opsjoneel anker foar de titel fan de Y-as.",
+        "options": {
+          "middle": "midden",
+          "end": "ein",
+          "start": "begjin"
+        }
+      },
+      {
+        "title": "Y-as titel omdraaie",
+        "description": "De titel foar Y-as omdraaie?"
+      }
+    ]
+  }
+}

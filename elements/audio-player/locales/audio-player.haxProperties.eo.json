@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Sono",
+    "description": "Ĉi tio povas prezenti videon en tre alirebla maniero sendepende de la fonto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Fonto",
+        "description": "La URL por ĉi tiu aŭdvidaĵo."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titolo",
+        "description": "Simpla titolo sub la video"
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Elektu la akcentan koloron por la ludilo."
+      },
+      {
+        "property": "track",
+        "title": "Subtekstoj",
+        "description": "La URL por la subteksta dosiero."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Miniatura bildo",
+        "description": "Nedeviga. La URL por miniatura/afiŝa bildo."
+      },
+      {
+        "property": "learningMode",
+        "title": "Ŝalti lernan reĝimon",
+        "description": "Malŝaltas rapidan antaŭenigon kaj reenigon."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Forigi la butonon Malfermi ĉe YouTube",
+        "description": "Forigas la butonon por malfermi la videon ĉe YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Ĉu inkluzivi kunhavigan ligilon?",
+        "description": "Provizas ligilon por kunhavigi la videon."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indikas ĉu uzi CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Permesi fonan ludadon",
+        "description": "Videoj paŭzas / ludas aŭtomate kiam la langeto perdas fokuson; ĉi tio ebligas al la video ludi sen ke la langeto havu fokuson"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Malhela etoso por transskribo",
+        "description": "Ŝalti malhelan etoson por la transskribo."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Malŝalti interagecon",
+        "description": "Malŝalti interagan reĝimon, kiu igas la transskribon alklakebla."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Kaŝi tempomarkojn",
+        "description": "Kaŝi la tempomarkojn en la transskribo."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Kaŝi transskribon",
+        "description": "Kaŝi la transskribon defaŭlte."
+      },
+      {
+        "property": "lang",
+        "title": "Lingvo",
+        "description": "Lingvo de la aŭdvidaĵo."
+      }
+    ]
+  }
+}

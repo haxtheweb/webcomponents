@@ -61,7 +61,7 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
           background: transparent;
           cursor: pointer;
           font-family: var(--ddd-font-primary, sans-serif);
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           min-height: var(--ddd-spacing-8, 32px);
           box-sizing: border-box;
         }

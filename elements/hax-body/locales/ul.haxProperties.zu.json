@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Uhlu olunamachashazi",
+    "description": "Dala uhlu olunamachashazi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Isitayela samachashazi",
+        "description": "Isitayela esisetshenziselwa amachashazi ohlu olungahleliwe.",
+        "options": {
+          "": "Okuzenzakalelayo (isikwele)",
+          "list-disc": "Idiski",
+          "list-circle": "Indilinga",
+          "list-square": "Isikwele"
+        }
+      }
+    ]
+  }
+}

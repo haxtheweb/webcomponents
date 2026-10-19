@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Físeán",
+    "description": "Athsheinm físeán inrochtana thar fhoinsí éagsúla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Foinse",
+        "description": "URL na meán seo."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Teideal",
+        "description": "Teideal a thaispeántar faoin bhfíseán."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Íomhá phóstaeir",
+        "description": "URL na híomhá póstaeir."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Rianta téacs",
+        "description": "Fotheidil dúnta, fotheidil, cur síos agus rianta téacs eile don fhíseán."
+      },
+      {
+        "property": "startTime",
+        "title": "Am tosaigh",
+        "description": "Tosaigh an físeán ag am ar leith (soicindí)."
+      },
+      {
+        "property": "endTime",
+        "title": "Am deiridh",
+        "description": "Críochnaigh an físeán ag am ar leith (soicindí), teastaíonn am tosaigh."
+      },
+      {
+        "property": "learningMode",
+        "title": "Cumasaigh an mód foghlama",
+        "description": "Díchumasaíonn sé luasbhrostú agus atochras."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Bain an cnaipe oscail ar YouTube",
+        "description": "Baineann sé an cnaipe chun an físeán a oscailt ar YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Cuir nasc comhroinnte san áireamh?",
+        "description": "Soláthraíonn sé nasc chun an físeán a chomhroinnt."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Folaigh stampaí ama",
+        "description": "Folaigh na stampaí ama ar an tras-scríbhinn."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Folaigh an Tras-scríbhinn",
+        "description": "Folaigh an tras-scríbhinn de réir réamhshocraithe."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Rian closcuir",
+        "description": "URL chuig rian closcuir (comhad MP3) a thugann insint ar na gnéithe amhairc."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Léiríonn sé cé acu ar cheart CORS a úsáid.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Ceadaigh seinm sa chúlra",
+        "description": "Lean ar aghaidh ag seinm nuair a chailleann cluaisín an bhrabhsálaí fócas."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Téama dorcha don tras-scríbhinn",
+        "description": "Cumasaigh an téama dorcha don tras-scríbhinn."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Díchumasaigh an Mód Idirghníomhach",
+        "description": "Díchumasaigh an mód idirghníomhach a fhágann gur féidir cliceáil ar an tras-scríbhinn."
+      },
+      {
+        "property": "lang",
+        "title": "Teanga",
+        "description": "Teanga na meán."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "(dímholta) Roghnaigh an dath aiceanta don seinnteoir."
+      }
+    ]
+  }
+}

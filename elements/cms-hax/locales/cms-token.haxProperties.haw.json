@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Hōʻailona CMS",
+    "description": "Hōʻailona CMS i hōʻike ʻia ma ka hope"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Hōʻailona",
+        "description": "Hōʻailona mai kā mākou CMS"
+      }
+    ]
+  }
+}

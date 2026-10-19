@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Tarjeta",
+    "description": "Una tarjeta con estilo de acento opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Encabezado",
+        "description": "Un encabezado para la tarjeta."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subencabezado",
+        "description": "Un subencabezado opcional para la tarjeta."
+      },
+      {
+        "slot": "content",
+        "title": "Contenido",
+        "description": "Contenido de la tarjeta."
+      },
+      {
+        "slot": "footer",
+        "title": "Pie",
+        "description": "Un pie opcional para la tarjeta."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Imagen",
+        "description": "Imagen opcional"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Texto alternativo de la imagen",
+        "description": "Texto alternativo que describe la imagen para lectores de pantalla. Déjalo vacío solo si la imagen es puramente decorativa."
+      },
+      {
+        "property": "imageAlign",
+        "title": "Alineación de la imagen",
+        "description": "Alineación horizontal de la imagen",
+        "options": {
+          "left": "izquierda",
+          "center": "centro",
+          "right": "derecha"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "Alineación vertical de la imagen",
+        "description": "Alineación vertical de la imagen",
+        "options": {
+          "top": "arriba",
+          "center": "centro",
+          "bottom": "abajo"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "Un color de acento opcional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema oscuro",
+        "description": "Activar tema oscuro"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "¿Orientación horizontal?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Acento en el encabezado",
+        "description": "¿Aplicar el color de acento al encabezado?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Acento en el fondo",
+        "description": "¿Aplicar el color de acento al fondo de la tarjeta?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Sin borde de acento",
+        "description": "¿Quitar el borde de acento?"
+      },
+      {
+        "property": "flat",
+        "title": "Plana",
+        "description": "¿Quitar la sombra?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Esquina",
+        "description": "Contenido para la esquina de la tarjeta."
+      }
+    ]
+  }
+}

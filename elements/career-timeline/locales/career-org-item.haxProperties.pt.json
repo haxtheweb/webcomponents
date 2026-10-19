@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Item de carreira",
+    "description": "Uma organização individual e seus cargos associados"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Nome da organização"
+      },
+      {
+        "property": "location",
+        "title": "Local"
+      },
+      {
+        "property": "source",
+        "title": "Fonte"
+      }
+    ]
+  }
+}

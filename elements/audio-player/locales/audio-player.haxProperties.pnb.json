@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "آڈیو",
+    "description": "ایہہ ذریعہ کوئی وی ہووے، ویڈیو نوں بہت پہنچ جوگے طریقے نال وکھا سکدا اے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ذریعہ",
+        "description": "ایس میڈیا دا URL۔"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "سرناواں",
+        "description": "ویڈیو تھلے سادہ سرناواں"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "پلیئر لئی ایکسنٹ رنگ چݨو۔"
+      },
+      {
+        "property": "track",
+        "title": "بند کیپشن",
+        "description": "کیپشن فائل دا URL۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "تھمب نیل تصویر",
+        "description": "اختیاری۔ تھمب نیل/پوسٹر تصویر دا URL۔"
+      },
+      {
+        "property": "learningMode",
+        "title": "سکھن والا موڈ چالو کرو",
+        "description": "اگے تے پچھے چلاؤݨا بند کردا اے۔"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube تے کھولو بٹن ہٹاؤ",
+        "description": "ویڈیو YouTube تے کھولن والا بٹن ہٹاؤندا اے۔"
+      },
+      {
+        "property": "linkable",
+        "title": "شیئر لنک شامل کرنا اے؟",
+        "description": "ویڈیو شیئر کرن لئی لنک دیندا اے۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "دسدا اے کہ CORS ورتݨا اے یا نئیں۔",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "پچھوکڑ وچ چلاؤن دی اجازت دیو",
+        "description": "ٹیب توں فوکس ہٹن تے ویڈیوز آپے رُکدیاں / چلدیاں نیں؛ ایہہ ٹیب تے فوکس توں بغیر ویڈیو چلن دیندا اے"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ٹرانسکرپٹ لئی ڈارک تھیم",
+        "description": "ٹرانسکرپٹ لئی ڈارک تھیم چالو کرو۔"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "انٹرایکٹو بند کرو",
+        "description": "ٹرانسکرپٹ نوں کلک جوگا بݨاؤن والا انٹرایکٹو موڈ بند کرو۔"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ویلے دے نشان لُکاؤ",
+        "description": "ٹرانسکرپٹ اُتے ویلے دے نشان لُکاؤ۔"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ٹرانسکرپٹ لُکاؤ",
+        "description": "ڈیفالٹ طور تے ٹرانسکرپٹ لُکاؤ۔"
+      },
+      {
+        "property": "lang",
+        "title": "بولی",
+        "description": "میڈیا دی بولی۔"
+      }
+    ]
+  }
+}

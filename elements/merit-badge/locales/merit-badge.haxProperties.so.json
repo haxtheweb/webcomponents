@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Calaamadda Mudnaanta",
+    "description": "Calaamad muuqaal ah oo lagu gudbiyo helitaanka xirfad."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Cinwaanka Calaamadda",
+        "description": "Cinwaanka lagu muujiyo calaamadda."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Sawirka Calaamadda",
+        "description": "URL-ka sawirka calaamadda."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Faahfaahinta Calaamadda",
+        "description": "Faahfaahin ku saabsan calaamadda."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Xiriir",
+        "description": "Xiriirka la xidhiidha calaamadda."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Xirfadaha Calaamadda",
+        "description": "Xirfadaha lagu muujiyo calaamadda."
+      },
+      {
+        "property": "skill",
+        "title": "Xirfad (OER Schema)",
+        "description": "OER Schema: xirfad la bartay oo lagu helay dhammaystirka ujeeddadan waxbarasho."
+      }
+    ]
+  }
+}

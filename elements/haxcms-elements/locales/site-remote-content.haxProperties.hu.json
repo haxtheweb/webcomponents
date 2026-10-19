@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Távoli tartalom",
+    "description": "Tartalom újrahasználata egyik webhelyről a másikban."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Webhely címe",
+        "description": "Illeszd be annak a webhelynek a címét, ahonnan a tartalmat hivatkozod, ha nem az aktuális webhely"
+      },
+      {
+        "property": "uuid",
+        "title": "Elem",
+        "description": "A hivatkozáshoz / címadatokhoz megjelenítendő elem"
+      },
+      {
+        "property": "breakreference",
+        "title": "Hivatkozás megszüntetése",
+        "description": "A jelölőnégyzet bejelölésével a távoli tartalom helyi szerkesztésre átmásolódik, de a kapcsolat megszűnik. A forrásanyag frissítései többé nem érkeznek meg."
+      },
+      {
+        "property": "showTitle",
+        "title": "Cím megjelenítése",
+        "description": "Kapcsold be a megjelenített erőforrás címének megjelenítéséhez"
+      }
+    ]
+  }
+}

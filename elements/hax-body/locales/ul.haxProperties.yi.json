@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "פּונקטן־ליסטע",
+    "description": "שאַף אַ פּונקטן־ליסטע."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "פּונקט־סטיל",
+        "description": "סטיל באַניצט פֿאַר די פּונקטן פֿון אַן אומנומערירטער ליסטע.",
+        "options": {
+          "": "פֿאַרויסגעשטעלט (קוואַדראַט)",
+          "list-disc": "דיסק",
+          "list-circle": "קרײַז",
+          "list-square": "קוואַדראַט"
+        }
+      }
+    ]
+  }
+}

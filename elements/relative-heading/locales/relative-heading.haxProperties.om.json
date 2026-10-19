@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Mata duree firoomaa",
+    "description": "mata duree maatii irratti hundaa'uun sadarkaa mata duree sirrii baasa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID Qabeenya Mata Duree Maatii"
+      },
+      {
+        "property": "disableLink",
+        "description": "Amala qabduu liinkii dhorka."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Qabduu liinkii garagalchuu gara mirga fagoo mata dureetti sirreessa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Sadarkaa mata duree yoo maatiin hin argamne."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Barreeffama durtii ergaa toostii liinkii garagalchuu bakka buusa."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Maqaa durtii qabduu liinkii garagalchuu bakka buusa."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Aayikoonii durtii qabduu liinkii garagalchuu bakka buusa."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Maqaa durtii qabduu cufaa toostii liinkii garagalchuu bakka buusa."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Aayikoonii durtii qabduu cufaa toostii liinkii garagalchuu bakka buusa."
+      }
+    ]
+  }
+}

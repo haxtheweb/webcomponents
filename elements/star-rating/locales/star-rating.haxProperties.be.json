@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Рэйтынг зоркамі",
+    "description": "Віджэт адлюстравання рэйтынгу або кнопка для ацэнкі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Бал",
+        "description": "Бягучае значэнне бала."
+      },
+      {
+        "property": "possible",
+        "title": "Магчыма",
+        "description": "Максімальна магчымы бал."
+      },
+      {
+        "property": "numStars",
+        "title": "Колькасць зорак",
+        "description": "Колькасць зорак для адлюстравання."
+      },
+      {
+        "property": "interactive",
+        "title": "Інтэрактыўны",
+        "description": "Дазволіць карыстальніку ставіць ацэнку."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Рэжым шкалы рубрыкі",
+        "description": "Выводзіць метаданыя OER Schema RubricScale і RubricLevel (levelOrdinal/levelPoints) для кожнай зоркі."
+      }
+    ]
+  }
+}

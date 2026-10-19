@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Ibhulokhi yokuqukethwe kwe-markdown ngqo noma elayishwe kude"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "I-markdown eluhlaza"
+      },
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "Ifayela lomthombo le-markdown"
+      }
+    ]
+  }
+}

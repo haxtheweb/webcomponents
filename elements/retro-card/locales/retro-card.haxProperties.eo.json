@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retroa karto",
+    "description": "Simpla karto kun retroa dezajno."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Ĉefa karta titolo."
+      },
+      {
+        "property": "url",
+        "description": "URL malfermota kiam la karto estas alklakita."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtitolo",
+        "description": "Karta subtitolo."
+      },
+      {
+        "property": "tags",
+        "title": "Etikedoj",
+        "description": "Komo-apartigitaj etikedoj."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Aŭdvidaĵa fonto",
+        "description": "Ĉefa aŭdvidaĵa fonto."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Fonto ĉe ŝvebado",
+        "description": "Aŭdvidaĵa fonto montrata kiam oni ŝvebas super la karto aŭ aktivigas ĝin."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta koloro",
+        "description": "Akcenta koloro aplikata tra la karto."
+      },
+      {
+        "property": "dark",
+        "title": "Malhela",
+        "description": "Uzi malhelreĝimajn bazajn kolorojn."
+      }
+    ]
+  }
+}

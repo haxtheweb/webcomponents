@@ -6525,15 +6525,27 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (typeof importPath !== "string") {
       return null;
     }
-    const match = importPath.match(/^(.*?@haxtheweb\/[^/]+)\//);
-    if (!match) {
-      return null;
-    }
+    // resolve first: unset base paths look like
+    // .../@haxtheweb/hax-body/lib/hax-store.js/../../../../@haxtheweb/<pkg>/...
+    // so the `..` segments must collapse before we look for the package
+    let resolved;
     try {
-      return new URL(`${match[1]}/locales`, globalThis.document.baseURI).href;
+      const url = new URL(importPath, globalThis.document.baseURI);
+      // ignore any query / hash so only the path decides the package
+      resolved = url.href.split(/[?#]/)[0];
     } catch (e) {
       return null;
     }
+    // the element's own package is the last @haxtheweb/<pkg> in the path
+    const at = resolved.lastIndexOf("@haxtheweb/");
+    if (at === -1) {
+      return null;
+    }
+    const pkgEnd = resolved.indexOf("/", at + "@haxtheweb/".length);
+    if (pkgEnd === -1) {
+      return null;
+    }
+    return `${resolved.substring(0, pkgEnd)}/locales`;
   }
   /**
    * Register `<tag>.haxProperties` with the i18n manager so a block's editor

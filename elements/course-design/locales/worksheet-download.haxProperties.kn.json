@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "ವರ್ಕ್‌ಶೀಟ್ ಡೌನ್‌ಲೋಡ್",
+    "description": "ಡೌನ್‌ಲೋಡ್‌ಗೆ ಲಭ್ಯವಿರುವ ಫೈಲ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸುವ ಬಟನ್."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಡೌನ್‌ಲೋಡ್‌ನ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "link",
+        "title": "ಲಿಂಕ್",
+        "description": "ಡೌನ್‌ಲೋಡ್‌ನ ಲಿಂಕ್."
+      }
+    ]
+  }
+}

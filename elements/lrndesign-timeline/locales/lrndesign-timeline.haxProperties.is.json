@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Tímalína",
+    "description": "Tímalína atburða með myndum og texta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Titill tímalínu",
+        "description": "Titill tímalínunnar."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "Valfrjáls áherslulitur."
+      },
+      {
+        "property": "dark",
+        "title": "Dökkt þema",
+        "description": "Virkja dökkt þema"
+      },
+      {
+        "slot": "",
+        "title": "Lýsing tímalínu",
+        "description": "Valfrjáls texti sem lýsir tímalínunni."
+      },
+      {
+        "property": "events",
+        "title": "Atburðir tímalínu",
+        "description": "Atburðirnir á tímalínunni"
+      }
+    ]
+  }
+}

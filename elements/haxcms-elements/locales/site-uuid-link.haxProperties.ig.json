@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Njikọ HAX",
+    "description": "Njikọ gaa n'akụrụngwa akọwapụtara na saịtị ị na-arụ ọrụ na ya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Ihe",
+        "description": "Ihe a ga-egosi maka data njikọ / aha"
+      }
+    ]
+  }
+}

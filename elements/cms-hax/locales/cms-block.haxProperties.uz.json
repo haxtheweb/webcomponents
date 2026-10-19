@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS bloki",
+    "description": "Backendda koʻrsatiladigan CMS bloki"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modul",
+        "description": "CMS imizdan yuklanadigan modul"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "CMS imizdan yuklanadigan blokning deltasi"
+      }
+    ]
+  }
+}

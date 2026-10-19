@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Ishadi Lamabha",
+    "description": "Kudala ishadi elifinyelelekayo elisekelwe ku-CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Umbala Wokugcizelela",
+        "description": "Umbala wokugcizelela ongawukhetha."
+      },
+      {
+        "title": "Itimu Emnyama",
+        "description": "Vula Ithimu Emnyama"
+      },
+      {
+        "title": "Ifayela le-CSV",
+        "description": "Layisha idatha kusuka ku-CSV."
+      },
+      {
+        "title": "Isihloko Seshadi",
+        "description": "Umbhalo ongenye ofinyelelekayo weshadi lakho."
+      },
+      {
+        "title": "Incazelo Yeshadi",
+        "description": "Incazelo efinyelelekayo yeshadi lakho."
+      },
+      {
+        "title": "Igama Lesikali",
+        "description": "Isilinganiso sobubanzi:ukuphakama beshadi (Bheka https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings ukuthola u-$ct-scales no-$ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Bonisa Ingemuva Legridi"
+      },
+      {
+        "title": "Amabha Avundlile",
+        "description": "Kuguqula ama-eksisi eshadi lamabha ukuze kudwetshwe ishadi lamabha avundlile. Qaphela ukuthi nawe kudingeka uguqule izilungiselelo zakho ze-eksisi njengoba i-Y Axis manje izobonisa amalebula kanti i-X Axis izobonisa amanani."
+      },
+      {
+        "title": "Pakisha Amabha",
+        "description": "Uma kusethwe ku-true lesi sici sizobangela ukuthi amabha ochungechunge apakishwe."
+      },
+      {
+        "title": "Sabalalisa Uchungechunge",
+        "description": "Uma kusethwe ku-true bha ngayinye izomelela uchungechunge futhi i-array yedatha ilindeleke ukuba yi-array yohlangothi olulodwa yamanani edatha kunokuba ibe yi-array yochungechunge."
+      },
+      {
+        "title": "Isikhala Seshadi (phezulu)"
+      },
+      {
+        "title": "Isikhala Seshadi (phansi)"
+      },
+      {
+        "title": "Isikhala Seshadi (kwesobunxele)"
+      },
+      {
+        "title": "Isikhala Seshadi (kwesokudla)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Hlehlisa Idatha",
+        "description": "Hlehlisa idatha kuhlanganise amalebula, ukulandelana kochungechunge kanye nawo wonke ama-array edatha yochungechunge."
+      },
+      {
+        "title": "Ithebula le-HTML",
+        "description": "Akuphoqelekile: Layisha idatha njengethebula le-HTML."
+      },
+      {
+        "title": "Ubuncane Beshadi",
+        "description": "Ukweqa okuphansi kwemvelo kweshadi kukuvumela ukuthi usondeze noma ukhawulele inani eliphansi kakhulu eliboniswa eshadini"
+      },
+      {
+        "title": "Ubukhulu Beshadi",
+        "description": "Ukweqa okuphezulu kwemvelo kweshadi kukuvumela ukuthi usondeze noma ukhawulele inani eliphezulu kakhulu eliboniswa eshadini"
+      },
+      {
+        "title": "X-Axis Bonisa Igridi",
+        "description": "Bonisa igridi ye-X-Axis."
+      },
+      {
+        "title": "Ukususwa Kwe-X-Axis"
+      },
+      {
+        "title": "Indawo Ye-X-Axis",
+        "description": "Indawo lapho amalebula abekwa khona. Ingasethwa ku-\"start\" noma ku-\"end\" lapho u-\"start\" elingana nesobunxele noma phezulu ku-eksisi eqondile futhi u-\"end\" elingana nesokudla noma phansi ku-eksisi evundlile"
+      },
+      {
+        "title": "X-Axis Bonisa Ilebula",
+        "description": "Bonisa ilebula le-X-Axis."
+      },
+      {
+        "title": "Ilebula Le-X-Axis (ukususwa okuvundlile)",
+        "description": "Indawo evundlile yamalebula e-X-Axis."
+      },
+      {
+        "title": "Ilebula Le-X-Axis (ukususwa okuqondile)",
+        "description": "Indawo eqondile yamalebula e-X-Axis."
+      },
+      {
+        "title": "Isihloko Se-X-Axis",
+        "description": "Isihloko esingaphoqelekile se-X-axis."
+      },
+      {
+        "title": "Isihloko Se-X-Axis (ukususwa okuvundlile)",
+        "description": "Indawo evundlile yesihloko se-X-Axis."
+      },
+      {
+        "title": "Isihloko Se-X-Axis (ukususwa okuqondile)",
+        "description": "Indawo eqondile yesihloko se-X-Axis."
+      },
+      {
+        "title": "Ihange Lesihloko Se-X-Axis",
+        "description": "Ihange elingaphoqelekile lesihloko se-X-axis.",
+        "options": {
+          "middle": "maphakathi",
+          "end": "ekugcineni",
+          "start": "ekuqaleni"
+        }
+      },
+      {
+        "title": "Isikhala Esincane Sesikali Se-X-Axis",
+        "description": "Kucacisa ukuphakama okuncane kuma-pixel kwezinyathelo zesikali."
+      },
+      {
+        "title": "Isikali Se-X-Axis (izinombolo eziphelele kuphela)",
+        "description": "Sebenzisa kuphela amanani ezinombolo eziphelele ezinyathelweni zesikali."
+      },
+      {
+        "title": "Y-Axis: Bonisa Igridi",
+        "description": "Bonisa igridi ye-Y-Axis."
+      },
+      {
+        "title": "Ukususwa Kwe-Y-Axis"
+      },
+      {
+        "title": "Indawo Ye-Y-Axis",
+        "description": "Indawo lapho amalebula abekwa khona. Ingasethwa ku-\"start\" noma ku-\"end\" lapho u-\"start\" elingana nesobunxele noma phezulu ku-eksisi eqondile futhi u-\"end\" elingana nesokudla noma phansi ku-eksisi evundlile"
+      },
+      {
+        "title": "Y-Axis Bonisa Ilebula",
+        "description": "Bonisa ilebula le-Y-Axis."
+      },
+      {
+        "title": "Ilebula Le-Y-Axis (ukususwa okuvundlile)",
+        "description": "Indawo evundlile yelebula le-Y-Axis."
+      },
+      {
+        "title": "Ilebula Le-Y-Axis (ukususwa okuqondile)",
+        "description": "Indawo eqondile yelebula le-Y-Axis."
+      },
+      {
+        "title": "Isikhala Esincane Sesikali Se-Y-Axis",
+        "description": "Kucacisa ukuphakama okuncane kuma-pixel kwezinyathelo zesikali."
+      },
+      {
+        "title": "Isikali Se-Y-Axis (izinombolo eziphelele kuphela)",
+        "description": "Sebenzisa kuphela amanani ezinombolo eziphelele ezinyathelweni zesikali."
+      },
+      {
+        "title": "Isihloko Se-Y-Axis",
+        "description": "Isihloko esingaphoqelekile se-Y-axis."
+      },
+      {
+        "title": "Isihloko Se-Y-Axis (ukususwa okuqondile)",
+        "description": "Indawo evundlile yesihloko se-Y-Axis."
+      },
+      {
+        "title": "Isihloko Se-Y-Axis (ukususwa okuvundlile)",
+        "description": "Indawo evundlile yesihloko se-Y-Axis."
+      },
+      {
+        "title": "Ihange Lesihloko Se-Y-Axis",
+        "description": "Ihange elingaphoqelekile lesihloko se-Y-axis.",
+        "options": {
+          "middle": "maphakathi",
+          "end": "ekugcineni",
+          "start": "ekuqaleni"
+        }
+      },
+      {
+        "title": "Phendula Isihloko Se-Y-Axis",
+        "description": "Phendula isihloko se-Y-axis?"
+      },
+      {
+        "title": "Inani Lereferensi",
+        "description": "Ngaphandle uma okuphansi/okuphezulu kusethwe ngokucacile, ishadi lamabha lizoba maphakathi ku-zero ngokuzenzakalelayo."
+      },
+      {
+        "title": "Ibanga Lamabha Ochungechunge",
+        "description": "Cacisa ibanga kuma-pixel lamabha eqenjini."
+      },
+      {
+        "title": "Imodi Yokupakisha",
+        "description": "Uma kusethwe ku-\"true\" lesi sici sizokwakha isamba sephoyinti ngalinye lochungechunge. Lokhu kuzophinde kuthinte i-y-axis nemingcele iyonke yeshadi. Uma kusethwe ku-\"false\" lesi sici sizophoqa amabha apakishiwe ukuthi adwetshwe kusuka kumugqa we-zero. Kumodi yokupakisha isici esithi \"seriesBarDistance\" ngeke sibe nomthelela."
+      }
+    ]
+  }
+}

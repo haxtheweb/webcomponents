@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "ቁጥር ያለው ዝርዝር",
+    "description": "ቁጥር ያለው ዝርዝር ፍጠር።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "የቁጥር ቅጥ",
+        "description": "ለተደረደረ ዝርዝር ቁጥር አሰጣጥ የሚያገለግል ቅጥ።",
+        "options": {
+          "": "ነባሪ (አስርዮሽ)",
+          "list-decimal-leading-zero": "በዜሮ የሚጀምር አስርዮሽ (01, 02, 03)",
+          "list-lower-alpha": "ትንሽ ፊደል (a, b, c)",
+          "list-upper-alpha": "ትልቅ ፊደል (A, B, C)",
+          "list-lower-roman": "ትንሽ ሮማዊ (i, ii, iii)",
+          "list-upper-roman": "ትልቅ ሮማዊ (I, II, III)"
+        }
+      }
+    ]
+  }
+}

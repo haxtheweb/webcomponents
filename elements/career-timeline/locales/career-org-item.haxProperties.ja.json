@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "経歴項目",
+    "description": "個々の組織とそれに関連する役割"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "組織名"
+      },
+      {
+        "property": "location",
+        "title": "場所"
+      },
+      {
+        "property": "source",
+        "title": "ソース"
+      }
+    ]
+  }
+}

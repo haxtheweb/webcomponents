@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Просте посилання",
+    "description": "Базовий елемент посилання."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Посилання",
+        "description": "URL призначення."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Видимий текст посилання."
+      },
+      {
+        "attribute": "target",
+        "title": "Ціль",
+        "description": "Де відкривати посилання.",
+        "options": {
+          "": "Те саме вікно",
+          "_blank": "Нове вікно - _blank",
+          "_top": "Верхнє вікно - _top",
+          "_parent": "Батьківське вікно - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Текст підказки",
+        "description": "Допоміжна назва для доступності та SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Зв'язок із місцем призначення (безпека/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Kichwa husianishi",
+    "description": "hutoa daraja sahihi la vichwa kulingana na kichwa cha mzazi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Kitambulisho cha Rasilimali cha Kichwa cha Mzazi"
+      },
+      {
+        "property": "disableLink",
+        "description": "Huzima kipengele cha kitufe cha kiungo."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Hupanga kitufe cha kunakili kiungo upande wa kulia kabisa wa kichwa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Kiwango cha kichwa ikiwa mzazi hajapatikana."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Hubatilisha maandishi chaguomsingi ya ujumbe wa arifa wa kunakili kiungo."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Hubatilisha lebo chaguomsingi ya kitufe cha kunakili kiungo."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Hubatilisha aikoni chaguomsingi ya kitufe cha kunakili kiungo."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Hubatilisha lebo chaguomsingi ya kitufe cha kufunga arifa ya kunakili kiungo."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Hubatilisha aikoni chaguomsingi ya kitufe cha kufunga arifa ya kunakili kiungo."
+      }
+    ]
+  }
+}

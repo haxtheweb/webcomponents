@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Mənbə",
+        "description": "Bu resursun URL-i."
+      }
+    ]
+  }
+}

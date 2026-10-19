@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "ബാഹ്യ വെബ് ഉള്ളടക്കം എംബെഡ് ചെയ്യുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ഉറവിടം",
+        "description": "ഈ റിസോഴ്സിന്റെ URL."
+      }
+    ]
+  }
+}

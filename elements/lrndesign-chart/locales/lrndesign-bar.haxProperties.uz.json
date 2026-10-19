@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Ustunli diagramma",
+    "description": "CSV asosida qulay diagramma yaratadi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Urgʻu rangi",
+        "description": "Ixtiyoriy urgʻu rangi."
+      },
+      {
+        "title": "Qorongʻi mavzu",
+        "description": "Qorongʻi mavzuni yoqish"
+      },
+      {
+        "title": "CSV fayli",
+        "description": "Maʼlumotlarni CSV dan yuklash."
+      },
+      {
+        "title": "Diagramma sarlavhasi",
+        "description": "Diagrammangiz uchun qulay alt matn."
+      },
+      {
+        "title": "Diagramma tavsifi",
+        "description": "Diagrammangizning qulay tavsifi."
+      },
+      {
+        "title": "Shkala nomi",
+        "description": "Diagrammaning kenglik:balandlik nisbati ($ct-scales va $ct-scales-names uchun https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings ga qarang).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Toʻr fonini koʻrsatish"
+      },
+      {
+        "title": "Gorizontal ustunlar",
+        "description": "Gorizontal ustunli diagramma chizish uchun diagramma oʻqlarini almashtiradi. Eʼtibor bering, oʻq sozlamalarini ham almashtirishingiz kerak, chunki endi Y oʻqi yorliqlarni, X oʻqi esa qiymatlarni koʻrsatadi."
+      },
+      {
+        "title": "Ustunlarni ustma-ust joylash",
+        "description": "Agar true qilib belgilansa, bu xususiyat seriya ustunlarini ustma-ust joylashtiradi."
+      },
+      {
+        "title": "Seriyalarni taqsimlash",
+        "description": "Agar true qilib belgilansa, har bir ustun bitta seriyani ifodalaydi va maʼlumotlar massivi seriyalar massivi emas, balki bir oʻlchamli qiymatlar massivi boʻlishi kutiladi."
+      },
+      {
+        "title": "Diagramma chekinishi (yuqori)"
+      },
+      {
+        "title": "Diagramma chekinishi (pastki)"
+      },
+      {
+        "title": "Diagramma chekinishi (chap)"
+      },
+      {
+        "title": "Diagramma chekinishi (oʻng)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Maʼlumotlarni teskari aylantirish",
+        "description": "Maʼlumotlarni, jumladan yorliqlarni, seriyalar tartibini va butun seriya maʼlumotlar massivlarini teskari aylantirish."
+      },
+      {
+        "title": "HTML jadval",
+        "description": "Ixtiyoriy: maʼlumotlarni HTML jadval sifatida yuklash."
+      },
+      {
+        "title": "Diagramma minimumi",
+        "description": "Diagrammaning tabiiy pastki qiymatini almashtirish orqali kattalashtirish yoki diagrammada koʻrsatiladigan eng past qiymatni cheklash mumkin"
+      },
+      {
+        "title": "Diagramma maksimumi",
+        "description": "Diagrammaning tabiiy yuqori qiymatini almashtirish orqali kattalashtirish yoki diagrammada koʻrsatiladigan eng yuqori qiymatni cheklash mumkin"
+      },
+      {
+        "title": "X oʻqi: toʻrni koʻrsatish",
+        "description": "X oʻqi toʻrini koʻrsatish."
+      },
+      {
+        "title": "X oʻqi siljishi"
+      },
+      {
+        "title": "X oʻqi joylashuvi",
+        "description": "Yorliqlar joylashadigan oʻrin. \"start\" yoki \"end\" qilib belgilanishi mumkin: \"start\" vertikal oʻqda chap yoki yuqoriga, \"end\" esa gorizontal oʻqda oʻng yoki pastga teng"
+      },
+      {
+        "title": "X oʻqi: yorliqni koʻrsatish",
+        "description": "X oʻqi yorligʻini koʻrsatish."
+      },
+      {
+        "title": "X oʻqi yorligʻi (gorizontal siljish)",
+        "description": "X oʻqi yorliqlarining gorizontal joylashuvi."
+      },
+      {
+        "title": "X oʻqi yorligʻi (vertikal siljish)",
+        "description": "X oʻqi yorliqlarining vertikal joylashuvi."
+      },
+      {
+        "title": "X oʻqi sarlavhasi",
+        "description": "X oʻqi uchun ixtiyoriy sarlavha."
+      },
+      {
+        "title": "X oʻqi sarlavhasi (gorizontal siljish)",
+        "description": "X oʻqi sarlavhasining gorizontal joylashuvi."
+      },
+      {
+        "title": "X oʻqi sarlavhasi (vertikal siljish)",
+        "description": "X oʻqi sarlavhasining vertikal joylashuvi."
+      },
+      {
+        "title": "X oʻqi sarlavhasi langari",
+        "description": "X oʻqi sarlavhasi uchun ixtiyoriy langar.",
+        "options": {
+          "middle": "oʻrta",
+          "end": "oxiri",
+          "start": "boshi"
+        }
+      },
+      {
+        "title": "X oʻqi shkalasining minimal oraligʻi",
+        "description": "Shkala qadamlarining piksellardagi minimal balandligini belgilaydi."
+      },
+      {
+        "title": "X oʻqi shkalasi (faqat butun sonlar)",
+        "description": "Shkala qadamlari uchun faqat butun son qiymatlaridan foydalanish."
+      },
+      {
+        "title": "Y oʻqi: toʻrni koʻrsatish",
+        "description": "Y oʻqi toʻrini koʻrsatish."
+      },
+      {
+        "title": "Y oʻqi siljishi"
+      },
+      {
+        "title": "Y oʻqi joylashuvi",
+        "description": "Yorliqlar joylashadigan oʻrin. \"start\" yoki \"end\" qilib belgilanishi mumkin: \"start\" vertikal oʻqda chap yoki yuqoriga, \"end\" esa gorizontal oʻqda oʻng yoki pastga teng"
+      },
+      {
+        "title": "Y oʻqi: yorliqni koʻrsatish",
+        "description": "Y oʻqi yorligʻini koʻrsatish."
+      },
+      {
+        "title": "Y oʻqi yorligʻi (gorizontal siljish)",
+        "description": "Y oʻqi yorligʻining gorizontal joylashuvi."
+      },
+      {
+        "title": "Y oʻqi yorligʻi (vertikal siljish)",
+        "description": "Y oʻqi yorligʻining vertikal joylashuvi."
+      },
+      {
+        "title": "Y oʻqi shkalasining minimal oraligʻi",
+        "description": "Shkala qadamlarining piksellardagi minimal balandligini belgilaydi."
+      },
+      {
+        "title": "Y oʻqi shkalasi (faqat butun sonlar)",
+        "description": "Shkala qadamlari uchun faqat butun son qiymatlaridan foydalanish."
+      },
+      {
+        "title": "Y oʻqi sarlavhasi",
+        "description": "Y oʻqi uchun ixtiyoriy sarlavha."
+      },
+      {
+        "title": "Y oʻqi sarlavhasi (vertikal siljish)",
+        "description": "Y oʻqi sarlavhasining gorizontal joylashuvi."
+      },
+      {
+        "title": "Y oʻqi sarlavhasi (gorizontal siljish)",
+        "description": "Y oʻqi sarlavhasining gorizontal joylashuvi."
+      },
+      {
+        "title": "Y oʻqi sarlavhasi langari",
+        "description": "Y oʻqi sarlavhasi uchun ixtiyoriy langar.",
+        "options": {
+          "middle": "oʻrta",
+          "end": "oxiri",
+          "start": "boshi"
+        }
+      },
+      {
+        "title": "Y oʻqi sarlavhasini aylantirish",
+        "description": "Y oʻqi sarlavhasi aylantirilsinmi?"
+      },
+      {
+        "title": "Mos yozuvlar qiymati",
+        "description": "Agar low/high aniq belgilanmagan boʻlsa, ustunli diagramma standart holatda noldan markazlashtiriladi."
+      },
+      {
+        "title": "Seriya ustunlari oraligʻi",
+        "description": "Guruhdagi ustunlar orasidagi masofani piksellarda belgilang."
+      },
+      {
+        "title": "Ustma-ust joylash rejimi",
+        "description": "Agar \"true\" qilib belgilansa, bu xususiyat har bir seriya nuqtasi uchun jami hosil qiladi. Bu y oʻqi va diagrammaning umumiy chegaralariga ham taʼsir qiladi. Agar \"false\" qilib belgilansa, bu xususiyat ustma-ust ustunlarni nol chiziqdan chizishga majbur qiladi. Ustma-ust rejimda \"seriesBarDistance\" xususiyati taʼsir qilmaydi."
+      }
+    ]
+  }
+}

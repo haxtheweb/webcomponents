@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "בורר Hex",
+    "description": "בורר צבעים בקוד Hex"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ערך",
+        "description": "ערך hex ברירת מחדל"
+      },
+      {
+        "property": "disabled",
+        "title": "מושבת",
+        "description": "השבתת שדה הטקסט"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "תצוגה גדולה",
+        "description": "הכללת הצבע בתצוגה גדולה"
+      }
+    ]
+  }
+}

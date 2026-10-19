@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Allinchasqa Siq'i",
+    "description": "Siq'ikunata imaymana allinchaykunawan rikuchina ñan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Pukyu",
+        "description": "Siq'ip URL-nin."
+      },
+      {
+        "property": "alt",
+        "title": "Huk qillqa",
+        "description": "Mana rikuq ruraqkunapaq rikchayta willakuq qillqa."
+      },
+      {
+        "property": "link",
+        "title": "T'inki",
+        "description": "Siq'ita huk URL-man t'inkiy"
+      },
+      {
+        "property": "card",
+        "title": "Tarjeta",
+        "description": "Llantuta churay huk hatarisqa tarjeta hina rikukunanpaq."
+      },
+      {
+        "property": "box",
+        "title": "Caja",
+        "description": "Siq'ip muyuyninpi rikukuq cajata churay."
+      },
+      {
+        "property": "offset",
+        "title": "Karunchay",
+        "description": "Siq'iman lluq'i utaq paña karunchayta churay.",
+        "options": {
+          "none": "mana imapas",
+          "wide": "kinray",
+          "narrow": "k'ullku"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Pukyu willay",
+        "description": "Siq'ipaq cita."
+      },
+      {
+        "property": "caption",
+        "title": "Rikch'a willay",
+        "description": "Siq'ipaq willakuy qillqa."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Siq'ip Sutin",
+        "description": "Siq'i unanchapaq suti."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Siq'ip Willakuynin",
+        "description": "Siq'i unanchapaq willakuy."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Huch'uy siq'i",
+        "description": "Huch'uy siq'ip pukyun. Huch'uy siq'ita rikuchin, ichaqa hunt'asqa pukyuta modalpi kichan."
+      },
+      {
+        "property": "round",
+        "title": "Muyu siq'i",
+        "description": "Siq'ip rikch'ayninta muyu hinata kuchun."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Siq'i modalta wañuchiy",
+        "description": "Ñit'iykunata wañuchiy siq'ita siq'i qhawaq willanakuypi mana kichananpaq."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Markdown hina rikuchiy",
+        "description": "Willakuy qillqata citatawan markdown hina rikuchiy."
+      }
+    ]
+  }
+}

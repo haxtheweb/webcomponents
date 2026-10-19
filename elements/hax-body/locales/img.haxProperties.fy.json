@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Basisôfbylding",
+    "description": "Basis-ôfbyldingselemint."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Boarne",
+        "description": "Ofbyldings-URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt-tekst",
+        "description": "Alternative tekst foar tagonklikens en SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Hichte",
+        "description": "Hichte yn piksels. Lit leech om de natuerlike grutte te brûken."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Ôfbylding lade",
+        "description": "Kies wannear't de ôfbylding laden wurdt.",
+        "options": {
+          "lazy": "Lade as sichtber",
+          "auto": "Automatysk"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responsive boarnen (srcset)",
+        "description": "Jou ôfbyldings-URL's en beskriuwers (bgl. 480w of 2x) op, sadat blêders de bêste grutte foar it skerm kieze. Bewarre as it standert srcset-attribút."
+      }
+    ]
+  }
+}

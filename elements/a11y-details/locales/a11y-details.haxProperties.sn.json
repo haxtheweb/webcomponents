@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bhatani reRuzivo Rinowanikwa neVose",
+    "description": "Kuratidza zvishoma nezvishoma kunowanikwa nevose nedetail nesummary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Bhatani",
+        "description": "Pfupiso yezvirimo zvinenge zvakavanzwa, semuenzaniso \"ruzivo\", \"metadata\", zvichingodaro."
+      },
+      {
+        "slot": "details",
+        "title": "Tsananguro",
+        "description": "Tsananguro yakadzama inogona kuvanzwa kana kuratidzwa"
+      },
+      {
+        "slot": "",
+        "title": "Bhatani reTsananguro",
+        "description": "Zvakagara zviripo zvebhatani rinoratidza/kuvanza mavara etsananguro, semuenzaniso \"ruzivo\", \"metadata\", zvichingodaro."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Mavara epfupiso asingamanikidzwe kana ruzivo rwakavhurwa"
+      },
+      {
+        "property": "closeText",
+        "title": "Mavara epfupiso asingamanikidzwe kana ruzivo rwakavharwa"
+      }
+    ]
+  }
+}

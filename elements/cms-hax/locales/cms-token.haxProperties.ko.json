@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS 토큰",
+    "description": "백엔드에서 렌더링되는 CMS 토큰"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "토큰",
+        "description": "CMS의 토큰"
+      }
+    ]
+  }
+}

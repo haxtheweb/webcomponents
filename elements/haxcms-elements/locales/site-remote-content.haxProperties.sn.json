@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Zvirimo Zvekure",
+    "description": "Shandisa zvakare zvirimo kubva kune imwe saiti mune imwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Kero yesaiti",
+        "description": "Namatidza kero yekutora zvirimo kana isiri saiti iripo"
+      },
+      {
+        "property": "uuid",
+        "title": "Chinhu",
+        "description": "Chinhu chekuratidza chechinongedzo / data rezita"
+      },
+      {
+        "property": "breakreference",
+        "title": "Gura kubatana",
+        "description": "Kutara bhokisi iri kunokopa zvirimo zvekure kuti zvigadziriswe pano asi kunobvisa kubatana. Hazvichazowana zvigadziriso kana zvinyorwa zvekutanga zvagadziridzwa."
+      },
+      {
+        "property": "showTitle",
+        "title": "Ratidza zita",
+        "description": "Batidza kuti uratidze zita rechiwanikwa chiri kuratidzwa"
+      }
+    ]
+  }
+}

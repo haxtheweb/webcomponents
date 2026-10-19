@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Káàdì",
+    "description": "Káàdì pẹ̀lú ìṣọ̀ṣọ́ àfikún (àṣàyàn)."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Àkọlé",
+        "description": "Àkọlé fún káàdì."
+      },
+      {
+        "slot": "subheading",
+        "title": "Àkọlé-kékeré",
+        "description": "Àkọlé-kékeré (àṣàyàn) fún káàdì."
+      },
+      {
+        "slot": "content",
+        "title": "Àkóónú",
+        "description": "Àkóónú fún káàdì."
+      },
+      {
+        "slot": "footer",
+        "title": "Ìsàlẹ̀",
+        "description": "Ẹsẹ̀-ìwé (àṣàyàn) fún káàdì."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Àwòrán",
+        "description": "Àwòrán (àṣàyàn)"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Ọ̀rọ̀ Àfirọ́pò Àwòrán",
+        "description": "Ọ̀rọ̀ àfirọ́pò tó ṣàpèjúwe àwòrán fún àwọn olùka ojú-iboju. Fi sílẹ̀ ní òfìfo nìkan tí àwòrán bá jẹ́ fún ọ̀ṣọ́ nìkan."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Ìtò Àwòrán ní Ìbú",
+        "options": {
+          "left": "òsì",
+          "center": "àárín",
+          "right": "ọ̀tún"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Ìtò Àwòrán ní Ìdúró",
+        "options": {
+          "top": "òkè",
+          "center": "àárín",
+          "bottom": "ìsàlẹ̀"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ Ìtẹnumọ́",
+        "description": "Àwọ̀ ìtẹnumọ́ àṣàyàn."
+      },
+      {
+        "property": "dark",
+        "title": "Àkòrí Dúdú",
+        "description": "Tan Àkòrí Dúdú"
+      },
+      {
+        "property": "horizontal",
+        "title": "Ìdábùú",
+        "description": "Ìdojúkọ ìbú?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Àfikún Àkọlé",
+        "description": "Lo àwọ̀ àfikún fún àkọlé?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Àfikún Ẹ̀yìn",
+        "description": "Lo àwọ̀ àfikún fún ẹ̀yìn káàdì?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Kò Sí Àfikún Ààlà",
+        "description": "Yọ àfikún ààlà kúrò?"
+      },
+      {
+        "property": "flat",
+        "title": "Pẹrẹsẹ",
+        "description": "Yọ òjìji àpótí kúrò?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Igun",
+        "description": "Àkóónú fún igun káàdì."
+      }
+    ]
+  }
+}

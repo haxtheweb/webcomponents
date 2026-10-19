@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Beji ya Sifa",
+    "description": "Beji inayoonekana kuwasilisha kupata ujuzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Kichwa cha Beji",
+        "description": "Kichwa kinachoonyeshwa kwenye beji."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Picha ya Beji",
+        "description": "URL ya picha ya beji."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Maelezo ya Beji",
+        "description": "Maelezo kuhusu beji."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Kiungo",
+        "description": "Kiungo kinachohusiana na beji."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Ujuzi wa Beji",
+        "description": "Ujuzi unaoonyeshwa kwenye beji."
+      },
+      {
+        "property": "skill",
+        "title": "Ujuzi (OER Schema)",
+        "description": "OER Schema: ujuzi uliojifunzwa unaopatikana kwa kukamilisha lengo hili la kujifunza."
+      }
+    ]
+  }
+}

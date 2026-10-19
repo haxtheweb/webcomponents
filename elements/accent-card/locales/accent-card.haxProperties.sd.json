@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "ڪارڊ",
+    "description": "اختياري ايڪسينٽ انداز وارو ڪارڊ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "سرخي",
+        "description": "ڪارڊ لاءِ هيڊنگ."
+      },
+      {
+        "slot": "subheading",
+        "title": "ذيلي هيڊنگ",
+        "description": "ڪارڊ لاءِ اختياري ذيلي هيڊنگ."
+      },
+      {
+        "slot": "content",
+        "title": "مواد",
+        "description": "ڪارڊ لاءِ مواد."
+      },
+      {
+        "slot": "footer",
+        "title": "فوٽر",
+        "description": "ڪارڊ لاءِ اختياري فوٽر."
+      },
+      {
+        "property": "imageSrc",
+        "title": "تصوير",
+        "description": "اختياري تصوير"
+      },
+      {
+        "property": "imageAlt",
+        "title": "تصوير جو متبادل متن",
+        "description": "اسڪرين ريڊرز لاءِ تصوير بيان ڪندڙ متبادل متن. صرف تڏهن خالي ڇڏيو جڏهن تصوير خالص سينگار لاءِ هجي."
+      },
+      {
+        "property": "imageAlign",
+        "title": "تصوير جي ترتيب",
+        "description": "تصوير جي افقي ترتيب",
+        "options": {
+          "left": "کاٻي",
+          "center": "وچ",
+          "right": "ساڄي"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "تصوير جي عمودي ترتيب",
+        "description": "تصوير جي عمودي ترتيب",
+        "options": {
+          "top": "مٿي",
+          "center": "وچ",
+          "bottom": "هيٺ"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "اختياري نمايان رنگ."
+      },
+      {
+        "property": "dark",
+        "title": "ڊارڪ ٿيم",
+        "description": "ڊارڪ ٿيم چالو ڪريو"
+      },
+      {
+        "property": "horizontal",
+        "title": "افقي",
+        "description": "افقي رخ؟"
+      },
+      {
+        "property": "accentHeading",
+        "title": "هيڊنگ ايڪسينٽ",
+        "description": "هيڊنگ تي ايڪسينٽ رنگ لاڳو ڪريو؟"
+      },
+      {
+        "property": "accentBackground",
+        "title": "پس منظر ايڪسينٽ",
+        "description": "ڪارڊ جي پس منظر تي ايڪسينٽ رنگ لاڳو ڪريو؟"
+      },
+      {
+        "property": "noBorder",
+        "title": "سرحد ايڪسينٽ ناهي",
+        "description": "سرحد ايڪسينٽ هٽايو؟"
+      },
+      {
+        "property": "flat",
+        "title": "سپاٽ",
+        "description": "خاني جو پاڇو هٽايو؟"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "ڪنڊ",
+        "description": "ڪارڊ جي ڪنڊ لاءِ مواد."
+      }
+    ]
+  }
+}

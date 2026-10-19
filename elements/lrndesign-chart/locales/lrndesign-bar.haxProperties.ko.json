@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "막대 차트",
+    "description": "CSV를 기반으로 접근성 높은 차트를 만듭니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "강조 색상",
+        "description": "선택적 강조 색상입니다."
+      },
+      {
+        "title": "어두운 테마",
+        "description": "다크 테마 사용"
+      },
+      {
+        "title": "CSV 파일",
+        "description": "CSV에서 데이터를 불러옵니다."
+      },
+      {
+        "title": "차트 제목",
+        "description": "차트의 접근성 대체 텍스트."
+      },
+      {
+        "title": "차트 설명",
+        "description": "차트의 접근성 설명."
+      },
+      {
+        "title": "비율 이름",
+        "description": "차트의 너비:높이 비율입니다($ct-scales 및 $ct-scales-names는 https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings 참조).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "격자 배경 표시"
+      },
+      {
+        "title": "가로 막대",
+        "description": "막대 차트의 축을 바꿔 가로 막대 차트를 그립니다. 이제 Y축에 레이블이, X축에 값이 표시되므로 축 설정도 반대로 바꿔야 합니다."
+      },
+      {
+        "title": "막대 쌓기",
+        "description": "true로 설정하면 계열 막대가 쌓여서 표시됩니다."
+      },
+      {
+        "title": "계열 분배",
+        "description": "true로 설정하면 각 막대가 하나의 계열을 나타내며, 데이터 배열은 계열의 배열이 아닌 1차원 데이터 값 배열이어야 합니다."
+      },
+      {
+        "title": "차트 안쪽 여백 (위)"
+      },
+      {
+        "title": "차트 안쪽 여백 (아래)"
+      },
+      {
+        "title": "차트 안쪽 여백 (왼쪽)"
+      },
+      {
+        "title": "차트 안쪽 여백 (오른쪽)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "데이터 반전",
+        "description": "레이블, 계열 순서 및 전체 계열 데이터 배열을 포함하여 데이터를 반전합니다."
+      },
+      {
+        "title": "HTML 표",
+        "description": "선택 사항: HTML 표로 데이터를 불러옵니다."
+      },
+      {
+        "title": "차트 최솟값",
+        "description": "차트의 기본 최솟값을 재정의하면 확대하거나 차트에 표시되는 가장 낮은 값을 제한할 수 있습니다"
+      },
+      {
+        "title": "차트 최댓값",
+        "description": "차트의 기본 최댓값을 재정의하면 확대하거나 차트에 표시되는 가장 높은 값을 제한할 수 있습니다"
+      },
+      {
+        "title": "X축 격자 표시",
+        "description": "X축의 격자를 표시합니다."
+      },
+      {
+        "title": "X축 오프셋"
+      },
+      {
+        "title": "X축 위치",
+        "description": "레이블이 배치되는 위치입니다. \"start\" 또는 \"end\"로 설정할 수 있으며, \"start\"는 세로축의 왼쪽 또는 위쪽, \"end\"는 가로축의 오른쪽 또는 아래쪽에 해당합니다"
+      },
+      {
+        "title": "X축 레이블 표시",
+        "description": "X축의 레이블을 표시합니다."
+      },
+      {
+        "title": "X축 레이블 (가로 오프셋)",
+        "description": "X축 레이블의 가로 위치."
+      },
+      {
+        "title": "X축 레이블 (세로 오프셋)",
+        "description": "X축 레이블의 세로 위치."
+      },
+      {
+        "title": "X축 제목",
+        "description": "X축의 선택적 제목."
+      },
+      {
+        "title": "X축 제목 (가로 오프셋)",
+        "description": "X축 제목의 가로 위치."
+      },
+      {
+        "title": "X축 제목 (세로 오프셋)",
+        "description": "X축 제목의 세로 위치."
+      },
+      {
+        "title": "X축 제목 기준점",
+        "description": "X축 제목의 선택적 기준점.",
+        "options": {
+          "middle": "가운데",
+          "end": "끝",
+          "start": "시작"
+        }
+      },
+      {
+        "title": "X축 눈금 최소 간격",
+        "description": "눈금 단계의 최소 높이(픽셀)를 지정합니다."
+      },
+      {
+        "title": "X축 눈금 (정수만)",
+        "description": "눈금 단계에 정수 값만 사용합니다."
+      },
+      {
+        "title": "Y축: 격자 표시",
+        "description": "Y축의 격자를 표시합니다."
+      },
+      {
+        "title": "Y축 오프셋"
+      },
+      {
+        "title": "Y축 위치",
+        "description": "레이블이 배치되는 위치입니다. \"start\" 또는 \"end\"로 설정할 수 있으며, \"start\"는 세로축의 왼쪽 또는 위쪽, \"end\"는 가로축의 오른쪽 또는 아래쪽에 해당합니다"
+      },
+      {
+        "title": "Y축 레이블 표시",
+        "description": "Y축의 레이블을 표시합니다."
+      },
+      {
+        "title": "Y축 레이블 (가로 오프셋)",
+        "description": "Y축 레이블의 가로 위치."
+      },
+      {
+        "title": "Y축 레이블 (세로 오프셋)",
+        "description": "Y축 레이블의 세로 위치."
+      },
+      {
+        "title": "Y축 눈금 최소 간격",
+        "description": "눈금 단계의 최소 높이(픽셀)를 지정합니다."
+      },
+      {
+        "title": "Y축 눈금 (정수만)",
+        "description": "눈금 단계에 정수 값만 사용합니다."
+      },
+      {
+        "title": "Y축 제목",
+        "description": "Y축의 선택적 제목."
+      },
+      {
+        "title": "Y축 제목 (세로 오프셋)",
+        "description": "Y축 제목의 가로 위치."
+      },
+      {
+        "title": "Y축 제목 (가로 오프셋)",
+        "description": "Y축 제목의 가로 위치."
+      },
+      {
+        "title": "Y축 제목 기준점",
+        "description": "Y축 제목의 선택적 기준점.",
+        "options": {
+          "middle": "가운데",
+          "end": "끝",
+          "start": "시작"
+        }
+      },
+      {
+        "title": "Y축 제목 뒤집기",
+        "description": "Y축 제목을 뒤집을까요?"
+      },
+      {
+        "title": "기준값",
+        "description": "최솟값/최댓값을 명시적으로 설정하지 않으면 막대 차트는 기본적으로 0을 중심으로 표시됩니다."
+      },
+      {
+        "title": "계열 막대 간격",
+        "description": "그룹 내 막대 간의 간격(픽셀)을 지정합니다."
+      },
+      {
+        "title": "쌓기 모드",
+        "description": "\"true\"로 설정하면 각 계열 지점의 합계를 형성합니다. 이는 y축과 차트의 전체 범위에도 영향을 줍니다. \"false\"로 설정하면 쌓인 막대가 0 기준선부터 그려집니다. 쌓기 모드에서는 \"seriesBarDistance\" 속성이 적용되지 않습니다."
+      }
+    ]
+  }
+}

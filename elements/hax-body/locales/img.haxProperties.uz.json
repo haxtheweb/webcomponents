@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Oddiy rasm",
+    "description": "Oddiy rasm elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Manba",
+        "description": "Rasm URL manzili."
+      },
+      {
+        "attribute": "alt",
+        "title": "Muqobil matn",
+        "description": "Qulaylik va SEO uchun muqobil matn."
+      },
+      {
+        "attribute": "height",
+        "title": "Balandlik",
+        "description": "Balandlik piksellarda. Tabiiy oʻlchamdan foydalanish uchun boʻsh qoldiring."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Rasmni yuklash",
+        "description": "Rasm qachon yuklanishini tanlang.",
+        "options": {
+          "lazy": "Koʻringanda yuklash",
+          "auto": "Avtomatik"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Moslashuvchan manbalar (srcset)",
+        "description": "Brauzerlar ekran uchun eng mos oʻlchamni tanlashi uchun rasm URL manzillari va deskriptorlarini (masalan, 480w yoki 2x) sanab oʻting. Standart srcset atributi sifatida saqlanadi."
+      }
+    ]
+  }
+}

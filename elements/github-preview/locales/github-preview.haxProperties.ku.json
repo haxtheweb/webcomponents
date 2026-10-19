@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pêşdîtina GitHub",
+    "description": "Wêneya gihîştbar bi danasîna dirêj"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Rêxistin",
+        "description": "Navê makîneyê yê rêxistina GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Depo",
+        "description": "Navê makîneyê yê repoyê"
+      },
+      {
+        "property": "extended",
+        "title": "Dîtina Berfireh",
+        "description": "Readme di nav hêmanê de dihewîne"
+      }
+    ]
+  }
+}

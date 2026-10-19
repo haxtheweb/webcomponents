@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github Qhawarichiy",
+    "description": "Suni willakuyniyuq llapanpaq haykunalla siq'i"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Huñunakuy",
+        "description": "Github organizacionpa makina sutin"
+      },
+      {
+        "property": "repo",
+        "title": "Repositorio",
+        "description": "Repop makina sutin"
+      },
+      {
+        "property": "extended",
+        "title": "Mast'asqa Qhaway",
+        "description": "Elementopi readme-ta apan"
+      }
+    ]
+  }
+}

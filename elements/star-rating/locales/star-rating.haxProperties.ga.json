@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Rátáil Réaltaí",
+    "description": "Giuirléid taispeána rátála nó cnaipe chun rátáil a dhéanamh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Scór",
+        "description": "Luach reatha an scóir."
+      },
+      {
+        "property": "possible",
+        "title": "Féideartha",
+        "description": "Uasscór féideartha."
+      },
+      {
+        "property": "numStars",
+        "title": "Líon na Réaltaí",
+        "description": "Líon na réaltaí le taispeáint."
+      },
+      {
+        "property": "interactive",
+        "title": "Idirghníomhach",
+        "description": "Ceadaigh idirghníomhú úsáideora chun an rátáil a shocrú."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Mód Scála Ruibrice",
+        "description": "Astaigh meiteashonraí RubricScale agus RubricLevel de Scéimre OER (levelOrdinal/levelPoints) do gach réalta."
+      }
+    ]
+  }
+}

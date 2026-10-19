@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Laʻana code",
+    "description": "He laʻana code i hoʻomālamalama ʻia ma ka ʻaoʻao"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Hoʻomālamalama code",
+        "description": "Hoʻomālamalama syntax e kau ai ma ka wahi code",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "ʻIkepili JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Pihi kope i ka papa kope",
+        "description": "pihi ma ke kihi ʻākau luna e ʻōlelo ana kope i ka papa kope"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Hoʻomaka hoʻomālamalama",
+        "description": "Helu laina e hoʻomaka ai ka hoʻomālamalama"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Pau hoʻomālamalama",
+        "description": "Laina e hoʻopau ai i ka hoʻomālamalama"
+      }
+    ]
+  }
+}

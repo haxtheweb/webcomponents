@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Selo de mérito",
+    "description": "Selo visual para comunicar a obtenção de uma habilidade."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Título do selo",
+        "description": "Título exibido no selo."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Imagem do selo",
+        "description": "URL da imagem do selo."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Detalhes do selo",
+        "description": "Detalhes sobre o selo."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hiperlink",
+        "description": "Link associado ao selo."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Habilidades do selo",
+        "description": "Habilidades exibidas no selo."
+      },
+      {
+        "property": "skill",
+        "title": "Habilidade (OER Schema)",
+        "description": "OER Schema: uma habilidade aprendida obtida ao concluir este objetivo de aprendizagem."
+      }
+    ]
+  }
+}

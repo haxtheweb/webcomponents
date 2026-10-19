@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "အမှတ်စာအုပ်",
+    "description": "rubric များဖြင့် backend များစွာကို ပံ့ပိုးသော headless အမှတ်စာအုပ်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ရင်းမြစ်",
+        "description": "ဒေတာ ရင်းမြစ် အမျိုးအစား (googledocs, url, json, filesystem)။",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL endpoint (JSON)",
+          "json": "JSON ဒေတာ blob",
+          "filesystem": "ဖိုင်စနစ်"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ရင်းမြစ် ဒေတာ",
+        "description": "အမှတ်စာအုပ်အတွက် URL သို့မဟုတ် JSON ဒေတာ။"
+      },
+      {
+        "property": "forCourse",
+        "title": "သင်ရိုး ကိုးကားချက်",
+        "description": "Assessment အရင်းအမြစ်တိုင်းတွင် oer:forCourse အဖြစ် ထုတ်ပေးသော သင်ရိုး identifier။"
+      }
+    ]
+  }
+}

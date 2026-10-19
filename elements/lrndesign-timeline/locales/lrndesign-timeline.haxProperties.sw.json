@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Rekodi ya matukio",
+    "description": "Ratiba ya matukio yenye picha na maandishi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Kichwa cha rekodi ya matukio",
+        "description": "Kichwa cha ratiba ya matukio."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya Msisitizo",
+        "description": "Rangi ya msisitizo ya hiari."
+      },
+      {
+        "property": "dark",
+        "title": "Mandhari Meusi",
+        "description": "Washa Mandhari ya Giza"
+      },
+      {
+        "slot": "",
+        "title": "Maelezo ya Ratiba ya Matukio",
+        "description": "Maandishi ya hiari yanayoeleza ratiba ya matukio."
+      },
+      {
+        "property": "events",
+        "title": "Matukio ya Ratiba",
+        "description": "Matukio katika ratiba ya matukio"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "מתמטיקה",
+    "description": "הצגת מתמטיקה בצורה יפה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "מתמטיקה",
+        "description": "הזינו משוואה כ-LaTeX"
+      }
+    ]
+  }
+}

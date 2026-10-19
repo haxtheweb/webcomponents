@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Сыртқы веб-мазмұнды ендіру."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Дереккөз",
+        "description": "Осы ресурстың URL мекенжайы."
+      }
+    ]
+  }
+}

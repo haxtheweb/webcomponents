@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "హెక్స్ పికర్",
+    "description": "హెక్స్‌కోడ్ రంగు పికర్"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "విలువ",
+        "description": "డిఫాల్ట్ హెక్స్ విలువ"
+      },
+      {
+        "property": "disabled",
+        "title": "నిలిపివేయబడింది",
+        "description": "వచన ఫీల్డ్‌ను నిలిపివేయండి"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "పెద్ద ప్రదర్శన",
+        "description": "రంగును పెద్ద ప్రదర్శనలో చేర్చండి"
+      }
+    ]
+  }
+}

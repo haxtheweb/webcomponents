@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Ƙirar Kwas",
+    "description": "Akwati don kayan ilimi da abubuwan ƙirar kwas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Mai Gano Kwas",
+        "description": "OER Schema: mai gano kwas, misali MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Zangon da Ake Bayarwa",
+        "description": "OER Schema: zangon da ake bayar da kwas a cikinsa."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Tsarin Isarwa",
+        "description": "OER Schema: tsarin da ake amfani da shi don isar da kwas (misali ido da ido, kan layi, haɗaka)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Babban Malami",
+        "description": "OER Schema: babban malamin kwas."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL na Manhajar Karatu",
+        "description": "OER Schema: URL zuwa manhajar karatun kwas."
+      }
+    ]
+  }
+}

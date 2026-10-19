@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kaar",
+    "description": "Kaar leh qaabayn xoojin ikhtiyaari ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Ciwaan",
+        "description": "Madax kaarka."
+      },
+      {
+        "slot": "subheading",
+        "title": "Madax-hoosaad",
+        "description": "Madax-hoosaad ikhtiyaari ah oo kaarka."
+      },
+      {
+        "slot": "content",
+        "title": "Nuxur",
+        "description": "Waxyaabaha kaarka."
+      },
+      {
+        "slot": "footer",
+        "title": "Cagta",
+        "description": "Cag ikhtiyaari ah oo kaarka."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Sawir",
+        "description": "Sawir ikhtiyaari ah"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Qoraalka Beddelka Sawirka",
+        "description": "Qoraal beddel ah oo sharraxaya sawirka akhristayaasha shaashadda. Bannaan u daa oo keliya haddii sawirku yahay qurxin keliya."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Toosinta Jiifka ah ee Sawirka",
+        "options": {
+          "left": "bidix",
+          "center": "dhexda",
+          "right": "midig"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Toosinta Taagan ee Sawirka",
+        "options": {
+          "top": "kor",
+          "center": "dhexda",
+          "bottom": "hoos"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka Xoojinta",
+        "description": "Midab xoojin oo ikhtiyaari ah."
+      },
+      {
+        "property": "dark",
+        "title": "Mawduuc Madow",
+        "description": "Daar Naqshadda Mugdiga"
+      },
+      {
+        "property": "horizontal",
+        "title": "Jiif",
+        "description": "Jihaynta jiifka ah?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Xoojinta Madaxa",
+        "description": "Ma ku dabaqaysaa midabka xoojinta madaxa?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Xoojinta Asalka",
+        "description": "Ma ku dabaqaysaa midabka xoojinta asalka kaarka?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Xoojin Xuduud Ma Leh",
+        "description": "Ma ka saaraysaa xoojinta xuduudda?"
+      },
+      {
+        "property": "flat",
+        "title": "Siman",
+        "description": "Ma ka saaraysaa hadhka sanduuqa?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Gees",
+        "description": "Waxyaabaha geeska kaarka."
+      }
+    ]
+  }
+}

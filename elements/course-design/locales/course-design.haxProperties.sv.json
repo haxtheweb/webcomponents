@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kursdesign",
+    "description": "Behållare för utbildningsmaterial och kursdesignelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kursidentifierare",
+        "description": "OER Schema: kursens identifierare, t.ex. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Termin",
+        "description": "OER Schema: den termin då kursen ges."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Undervisningsform",
+        "description": "OER Schema: formen för hur kursen ges (t.ex. på plats, online, hybrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Huvudlärare",
+        "description": "OER Schema: kursens huvudlärare."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL till kursplan",
+        "description": "OER Schema: URL till kursplanen."
+      }
+    ]
+  }
+}

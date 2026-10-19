@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "نموذج المقرر",
+    "description": "تخطيط تفاعلي لمفاهيم المقرر مع التفاصيل والرسوم المتحركة واختبارات المعرفة."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "العنوان"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "منطقة المعلومات"
+      },
+      {
+        "title": "منطقة التفاصيل"
+      },
+      {
+        "title": "منطقة الرسوم المتحركة"
+      },
+      {
+        "title": "منطقة اختبار المعرفة"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "منطقة الشعار"
+      }
+    ]
+  }
+}

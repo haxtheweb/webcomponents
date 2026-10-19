@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Umboniso we-CMS",
+    "description": "Imiboniso ye-CMS eboniswa kwi-backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Igama",
+        "description": "Igama lomboniso ovela kwi-CMS yethu"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Ukubonisa",
+        "description": "Ukubonisa ngaphakathi kwaloo mboniso ovela kwi-CMS yethu"
+      }
+    ]
+  }
+}

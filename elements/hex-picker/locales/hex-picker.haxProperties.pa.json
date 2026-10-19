@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex ਚੋਣਕਾਰ",
+    "description": "Hexcode ਰੰਗ ਚੋਣਕਾਰ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "ਮੁੱਲ",
+        "description": "ਪੂਰਵ-ਨਿਰਧਾਰਤ hex ਮੁੱਲ"
+      },
+      {
+        "property": "disabled",
+        "title": "ਅਯੋਗ",
+        "description": "ਟੈਕਸਟ ਖੇਤਰ ਬੰਦ ਕਰੋ"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "ਵੱਡਾ ਡਿਸਪਲੇ",
+        "description": "ਵੱਡੇ ਡਿਸਪਲੇ ਵਿੱਚ ਰੰਗ ਸ਼ਾਮਲ ਕਰੋ"
+      }
+    ]
+  }
+}

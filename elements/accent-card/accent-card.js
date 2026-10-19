@@ -289,9 +289,9 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
         :host([ready]) [data-layout-slotname] {
           transition: var(
             --hax-layout-container-transition,
-            0.6s width ease-in-out,
-            0.6s padding ease-in-out,
-            0.6s margin ease-in-out
+            var(--ddd-duration-slow, 0.6s) width ease-in-out,
+            var(--ddd-duration-slow, 0.6s) padding ease-in-out,
+            var(--ddd-duration-slow, 0.6s) margin ease-in-out
           );
         }
 
@@ -313,7 +313,7 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
 
         a:hover {
           text-decoration: none;
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
         }
       `,
     ];

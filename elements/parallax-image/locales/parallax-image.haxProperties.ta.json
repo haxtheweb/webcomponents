@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallax படம்",
+    "description": "உருட்டும்போது நகரும் படம்"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "படம்",
+        "description": "பின்னணியில் பயன்படுத்த வேண்டிய படம்"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "தலைப்புப் பகுதி",
+        "description": "தலைப்பு உரைப் பகுதி"
+      }
+    ]
+  }
+}

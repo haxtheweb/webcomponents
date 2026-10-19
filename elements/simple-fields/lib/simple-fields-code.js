@@ -30,7 +30,7 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
         }
         code-editor {
           margin: 0;
-          transition: height 0.6s ease-in-out;
+          transition: height var(--ddd-duration-slow, 0.6s) ease-in-out;
           box-sizing: border-box;
           vertical-align: bottom;
         }

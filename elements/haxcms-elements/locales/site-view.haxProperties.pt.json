@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Visualização do site",
+    "description": "Um bloco dinâmico que consulta e exibe dados do site com base em critérios"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL da visualização",
+        "description": "Parâmetros de consulta do feed de dados da visualização. Você pode obtê-los no painel de Views."
+      },
+      {
+        "property": "renderer",
+        "title": "Modo de exibição",
+        "description": "Como os resultados da visualização devem ser exibidos"
+      },
+      {
+        "property": "entity",
+        "title": "Tipo de entidade",
+        "description": "Tipo de entidade usado para interpretar a resposta",
+        "options": {
+          "": "Padrão (itens)",
+          "item": "Item",
+          "page": "Página",
+          "file": "Arquivo",
+          "tag": "Tag",
+          "block": "Bloco",
+          "view": "View",
+          "theme": "Tema",
+          "region": "Região",
+          "customElement": "Elemento personalizado"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Quebrar visualização do site",
+        "description": "Converte em conteúdo estático para edição direta; deixa de atualizar automaticamente a partir da fonte."
+      }
+    ]
+  }
+}

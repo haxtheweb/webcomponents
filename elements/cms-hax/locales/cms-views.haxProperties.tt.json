@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS күренеше",
+    "description": "Серверда күрсәтелә торган CMS күренешләре"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Исем",
+        "description": "Безнең CMS'тагы күренеш исеме"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Күрсәтү",
+        "description": "Безнең CMS'тагы шул күренеш эчендәге чагылыш"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS Token",
+    "description": "backend တွင် ပြသသော CMS token"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Token",
+        "description": "ကျွန်ုပ်တို့၏ CMS မှ token"
+      }
+    ]
+  }
+}

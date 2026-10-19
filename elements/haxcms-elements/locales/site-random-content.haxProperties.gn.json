@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Kuatiarogue Retepy Oimeraẽva",
+    "description": "Ehechauka peteĩ pehẽ yvategua oimeraẽva peteĩ kuatiarogue poravopyrégui"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Kuatiarogue",
+        "description": "Eiporavo kuatiarogue rejagarra hag̃ua tetepy oimeraẽva. Pehẽ ohechaukáta oimeraẽva peteĩ HTML pehẽ yvategua ko kuatiaroguégui."
+      }
+    ]
+  }
+}

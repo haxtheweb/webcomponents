@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Rondedzero ine nhamba",
+    "description": "Gadzira rondedzero ine nhamba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Maitiro enhamba",
+        "description": "Maitiro anoshandiswa kuverenga rondedzero yakarongwa.",
+        "options": {
+          "": "Zvakagara zviripo (desimali)",
+          "list-decimal-leading-zero": "Desimali ine zero pamberi (01, 02, 03)",
+          "list-lower-alpha": "Mavara madiki (a, b, c)",
+          "list-upper-alpha": "Mavara makuru (A, B, C)",
+          "list-lower-roman": "Roman diki (i, ii, iii)",
+          "list-upper-roman": "Roman huru (I, II, III)"
+        }
+      }
+    ]
+  }
+}

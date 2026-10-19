@@ -27,13 +27,13 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
           position: relative;
           overflow: hidden;
           opacity: 1;
-          transition: 0.3s opacity linear;
+          transition: var(--ddd-duration-normal, 0.3s) opacity linear;
           font-family: inherit;
           color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
         }
         :host([edit-mode]) {
           pointer-events: none;
-          opacity: 0.2;
+          opacity: var(--ddd-opacity-20, 0.2);
         }
         :host *[hidden] {
           display: none;
@@ -48,8 +48,8 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
-          opacity: 0.4;
-          transition: all 0.6s ease-in-out;
+          opacity: var(--ddd-opacity-40, 0.4);
+          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         .background-closer-image-wrap {
           position: absolute;
@@ -59,11 +59,11 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
           right: 0;
           bottom: 0;
           text-indent: -9999px;
-          transition: all 0.6s ease-in-out;
+          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
           opacity: 1;
         }
         :host([active]) .background-closer-image {
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
         }
         :host([active]) .background-closer-image-wrap {
           background-color: rgba(0, 0, 0, 0.2);

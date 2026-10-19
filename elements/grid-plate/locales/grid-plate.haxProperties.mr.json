@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "स्तंभ लेआउट",
+    "description": "साहित्य साध्या स्तंभांत मांडा"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "स्तंभ लेआउट",
+        "description": "हे आयटम सादर करण्याची शैली (लहान स्क्रीनवर बदलू शकते)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "प्रतिसादात्मकता अक्षम करा",
+        "description": "मोठ्या स्क्रीनवर स्तंभ कायम ठेवण्यासाठी आणि सर्वात लहान स्क्रीनवर तरीही एकाखाली एक लावण्यासाठी बॉक्स तपासा"
+      },
+      {
+        "property": "itemPadding",
+        "title": "आयटम पॅडिंग",
+        "description": "प्रत्येक आयटममधील पॅडिंग"
+      },
+      {
+        "property": "itemMargin",
+        "title": "आयटम समास",
+        "description": "आयटममधील समास"
+      }
+    ]
+  }
+}

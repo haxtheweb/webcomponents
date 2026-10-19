@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "اي بڪ بٽڻ",
+    "description": "هڪ بٽڻ جيڪو اي بڪ سان ڳنڍي ٿو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "بٽڻ جو عنوان."
+      },
+      {
+        "property": "link",
+        "title": "لنڪ",
+        "description": "ڪلڪ ڪرڻ تي ريڊائريڪٽ ٿيڻ واري لنڪ."
+      },
+      {
+        "property": "icon",
+        "title": "آئڪن",
+        "description": "هن لنڪ جي نمائندگي لاءِ آئڪن"
+      }
+    ]
+  }
+}

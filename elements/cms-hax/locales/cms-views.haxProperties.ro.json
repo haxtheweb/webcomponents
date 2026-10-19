@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Vizualizare CMS",
+    "description": "Vizualizări CMS randate în backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Nume",
+        "description": "Numele vizualizării din CMS-ul nostru"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Afișare",
+        "description": "Afișarea din cadrul acelei vizualizări din CMS-ul nostru"
+      }
+    ]
+  }
+}

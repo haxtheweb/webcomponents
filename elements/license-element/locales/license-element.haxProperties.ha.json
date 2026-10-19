@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lasisi",
+    "description": "Samar da lasisi don aikinka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Taken aikin da aka ambata."
+      },
+      {
+        "property": "source",
+        "title": "Hanyar haɗin tushe",
+        "description": "URL na tushen aikin mai lasisi."
+      },
+      {
+        "property": "license",
+        "title": "Lasisi",
+        "description": "Lasisin da ake amfani da shi ga wannan aiki."
+      },
+      {
+        "property": "creator",
+        "title": "Mahalicci",
+        "description": "Mahalicci ko mai wannan aiki."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Hanyar haɗin tushe",
+        "description": "Hanyar haɗi zuwa ƙarin cikakkun bayanan lasisi."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Lakabin ƙari",
+        "description": "Lakabi don ƙarin cikakkun bayanan lasisi."
+      }
+    ]
+  }
+}

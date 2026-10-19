@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Link HAX",
+    "description": "Link do konkretnego zasobu w witrynie, nad którą pracujesz."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Element do wyświetlenia dla danych linku / tytułu"
+      }
+    ]
+  }
+}

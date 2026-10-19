@@ -54,9 +54,9 @@ class ElmslnLoading extends I18NMixin(SimpleColors) {
         :host([size="tiny"]) simple-icon {
           --simple-icon-width: 16px;
           --simple-icon-height: 16px;
-          -webkit-animation: spin 0.6s ease-out infinite;
+          -webkit-animation: spin var(--ddd-duration-slow, 0.6s) ease-out infinite;
           -moz-animation: spin 0.6s ease-out infinite;
-          animation: spin 0.6s ease-out infinite;
+          animation: spin var(--ddd-duration-slow, 0.6s) ease-out infinite;
         }
         :host([size="small"]) simple-icon {
           --simple-icon-width: 32px;

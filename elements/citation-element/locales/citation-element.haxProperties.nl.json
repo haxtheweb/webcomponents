@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Bronvermelding",
+    "description": "Bronvermeldingselement met drie presentatiemodi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel van het geciteerde werk."
+      },
+      {
+        "property": "source",
+        "title": "Bronlink",
+        "description": "Bron-URL van het geciteerde werk."
+      },
+      {
+        "property": "date",
+        "title": "Datum geraadpleegd",
+        "description": "Datum waarop de bron is geraadpleegd."
+      },
+      {
+        "property": "scope",
+        "title": "Bereik",
+        "description": "Bereik van het element dat wordt geciteerd.",
+        "options": {
+          "sibling": "Element op hetzelfde niveau",
+          "parent": "Bovenliggend element"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licentie",
+        "description": "Licentie van het geciteerde werk."
+      },
+      {
+        "property": "creator",
+        "title": "Maker",
+        "description": "Maker of eigenaar van het geciteerde werk."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema-type",
+        "description": "OER Schema-klasse voor deze bronvermelding. Standaard oer:ReferencedMaterial; overschrijf alleen met een geldige OER-klasse (bijv. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

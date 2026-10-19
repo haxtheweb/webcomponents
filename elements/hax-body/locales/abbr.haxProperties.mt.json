@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Abbrevjazzjoni",
+    "description": "Abbrevjazzjoni b'tooltip bit-terminu sħiħ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Test",
+        "description": "Test viżibbli tal-abbrevjazzjoni."
+      },
+      {
+        "attribute": "title",
+        "title": "Kelma",
+        "description": "Terminu sħiħ muri meta tgħaddi l-maws."
+      }
+    ]
+  }
+}

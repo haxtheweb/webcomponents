@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Capsiwn ffigur",
+    "description": "Capsiwn ar gyfer ffigur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Capsiwn",
+        "description": "Testun a ddangosir o dan y ffigur."
+      }
+    ]
+  }
+}

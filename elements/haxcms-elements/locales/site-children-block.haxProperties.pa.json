@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ਉਪ ਬਲਾਕ",
+    "description": "ਮੌਜੂਦਾ ਪੰਨੇ ਦੇ ਉਪ-ਪੰਨੇ ਦਿਖਾਉਣ ਲਈ ਗਤੀਸ਼ੀਲ ਬਲਾਕ"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "ਗਤੀਸ਼ੀਲ ਵਿਧੀ",
+        "description": "ਇਸ ਐਲੀਮੈਂਟ ਦੇ ਸਾਪੇਖ ਉਪ-ਆਈਟਮਾਂ ਦੀ ਗਣਨਾ ਕਿਵੇਂ ਕਰਨੀ ਹੈ",
+        "options": {
+          "active": "ਸਰਗਰਮ ਦੇ ਉਪ-ਪੰਨੇ",
+          "parent": "ਮੂਲ ਦੇ ਉਪ-ਪੰਨੇ",
+          "ancestor": "ਸਭ ਤੋਂ ਉੱਚੇ ਪੂਰਵਜ ਤੋਂ ਸਾਰੇ ਉਪ-ਪੰਨੇ"
+        }
+      },
+      {
+        "property": "start",
+        "title": "ਸ਼ੁਰੂਆਤੀ ਪੱਧਰ"
+      },
+      {
+        "property": "end",
+        "title": "ਅੰਤਮ ਪੱਧਰ"
+      }
+    ]
+  }
+}

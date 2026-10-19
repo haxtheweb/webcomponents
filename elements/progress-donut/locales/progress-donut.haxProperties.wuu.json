@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "进度环",
+    "description": "进度环形图"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "元素个标题"
+      },
+      {
+        "property": "desc",
+        "title": "描述",
+        "description": "无障碍长描述"
+      },
+      {
+        "property": "imageSrc",
+        "title": "图片来源",
+        "description": "环里向图片个来源。"
+      },
+      {
+        "property": "imageAlt",
+        "title": "图片替代文字",
+        "description": "图片个替代文字。"
+      },
+      {
+        "property": "animated",
+        "title": "动画",
+        "description": "第一趟载入辰光进度有勿有动画"
+      },
+      {
+        "property": "complete",
+        "title": "完成",
+        "description": "已完成数值个数组。"
+      },
+      {
+        "property": "total",
+        "title": "总数",
+        "description": "所有项目全部完成辰光个总数。"
+      },
+      {
+        "property": "startAngle",
+        "title": "起始角度",
+        "description": "进度开始个环形角度"
+      }
+    ]
+  }
+}

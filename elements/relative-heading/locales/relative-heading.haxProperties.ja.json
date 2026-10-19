@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "相対見出し",
+    "description": "親の見出しに基づいて正しい見出し階層を出力します"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "親見出しのリソースID"
+      },
+      {
+        "property": "disableLink",
+        "description": "リンクボタン機能を無効にします。"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "リンクコピーボタンを見出しの右端に配置します。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "親が見つからない場合の見出しレベル。"
+      },
+      {
+        "property": "copyMessage",
+        "description": "リンクコピー時のトーストメッセージの既定テキストを上書きします。"
+      },
+      {
+        "property": "linkLabel",
+        "description": "リンクコピーボタンの既定ラベルを上書きします。"
+      },
+      {
+        "property": "linkIcon",
+        "description": "リンクコピーボタンの既定アイコンを上書きします。"
+      },
+      {
+        "property": "closeLabel",
+        "description": "リンクコピー時のトーストの閉じるボタンの既定ラベルを上書きします。"
+      },
+      {
+        "property": "closeIcon",
+        "description": "リンクコピー時のトーストの閉じるボタンの既定アイコンを上書きします。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Markering",
+    "description": "Markera text i löpande text."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Markerad text."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Symbol zastępczy",
+    "description": "Symbol zastępczy, który można przekształcić w wybrany typ multimediów"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Typ",
+        "description": "Typ gadżetu, który ten element przyjmuje jako zamiennik.",
+        "options": {
+          "text": "Tekst / treść",
+          "document": "Dokument / plik",
+          "audio": "Dźwięk",
+          "video": "Wideo",
+          "image": "Obraz",
+          "math": "Matematyka"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Tekst",
+        "description": "Określ dokładniej oczekiwany symbol zastępczy"
+      }
+    ]
+  }
+}

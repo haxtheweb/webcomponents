@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Papa helu i helu ʻia",
+    "description": "Hana i papa helu i helu ʻia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Kaila helu",
+        "description": "Kaila i hoʻohana ʻia no ka helu ʻana i ka papa helu kaʻina.",
+        "options": {
+          "": "Paʻamau (helu ʻumi)",
+          "list-decimal-leading-zero": "Helu ʻumi me ka ʻole mua (01, 02, 03)",
+          "list-lower-alpha": "Hua liʻiliʻi (a, b, c)",
+          "list-upper-alpha": "Hua nui (A, B, C)",
+          "list-lower-roman": "Loma liʻiliʻi (i, ii, iii)",
+          "list-upper-roman": "Loma nui (I, II, III)"
+        }
+      }
+    ]
+  }
+}

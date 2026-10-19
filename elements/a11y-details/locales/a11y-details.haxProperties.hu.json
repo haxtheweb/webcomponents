@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Akadálymentes részletek gomb",
+    "description": "Akadálymentes fokozatos felfedés details és summary elemekkel"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Gomb",
+        "description": "Az elrejtett tartalom összefoglalója, pl. „info”, „metaadatok” stb."
+      },
+      {
+        "slot": "details",
+        "title": "Leírás",
+        "description": "Elrejthető vagy megjeleníthető részletes leírás"
+      },
+      {
+        "slot": "",
+        "title": "Leírás gomb",
+        "description": "Alapértelmezés a leírás szövegét megjelenítő/elrejtő gombhoz, pl. „info”, „metaadatok” stb."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Opcionális összefoglaló szöveg, amikor a részletek nyitva vannak"
+      },
+      {
+        "property": "closeText",
+        "title": "Opcionális összefoglaló szöveg, amikor a részletek zárva vannak"
+      }
+    ]
+  }
+}

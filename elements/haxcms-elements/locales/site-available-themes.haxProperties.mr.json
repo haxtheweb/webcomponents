@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "उपलब्ध थीम",
+    "description": "थेट पूर्वावलोकन बदलासह उपलब्ध HAXcms थीम दाखवा"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "दृश्य मोड",
+        "description": "थीम कशा दाखवायच्या ते निवडा",
+        "options": {
+          "gallery": "गॅलरी",
+          "table": "तक्ता"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "तपशील दाखवा",
+        "description": "थीम वर्णने आणि अतिरिक्त माहिती दाखवा"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "लपवलेल्या आणि जुन्या थीम दाखवा",
+        "description": "डॅशबोर्ड डीफॉल्टसोबत लपवलेल्या, जुन्या आणि भयानक थीमही दाखवा"
+      },
+      {
+        "property": "columns",
+        "title": "स्तंभ (गॅलरी)",
+        "description": "गॅलरी दृश्यातील स्तंभांची संख्या"
+      }
+    ]
+  }
+}

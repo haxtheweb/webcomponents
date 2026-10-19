@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Чагыштырма башлам",
+    "description": "ата-ана башламы нигезендә дөрес башламнар иерархиясен чыгара"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Ата-ана башламның ресурс ID'ы"
+      },
+      {
+        "property": "disableLink",
+        "description": "Сылтама төймәсе функциясен сүндерә."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Сылтаманы күчерү төймәсен башламның иң уң ягына тигезли."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Ата-ана табылмаса, башлам дәрәҗәсе."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Сылтаманы күчерү хәбәренең килешү буенча текстын алыштыра."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Сылтаманы күчерү төймәсенең килешү буенча исемен алыштыра."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Сылтаманы күчерү төймәсенең килешү буенча иконкасын алыштыра."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Сылтаманы күчерү хәбәрен ябу төймәсенең килешү буенча исемен алыштыра."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Сылтаманы күчерү хәбәрен ябу төймәсенең килешү буенча иконкасын алыштыра."
+      }
+    ]
+  }
+}

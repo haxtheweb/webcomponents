@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Leyfi",
+    "description": "Tilgreindu leyfi fyrir verkið þitt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Titill verksins sem vitnað er í."
+      },
+      {
+        "property": "source",
+        "title": "Tengill á heimild",
+        "description": "URL uppruna leyfisbundna verksins."
+      },
+      {
+        "property": "license",
+        "title": "Leyfi",
+        "description": "Leyfi sem gildir um þetta verk."
+      },
+      {
+        "property": "creator",
+        "title": "Höfundur",
+        "description": "Höfundur eða eigandi þessa verks."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Tengill á heimild",
+        "description": "Tengill á frekari upplýsingar um leyfi."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Merki fyrir meira",
+        "description": "Merki fyrir frekari upplýsingar um leyfi."
+      }
+    ]
+  }
+}

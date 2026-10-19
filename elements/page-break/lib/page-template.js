@@ -51,7 +51,7 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           z-index: 2;
           height: 12px;
           border: none !important;
-          transition: 0.3s all ease-in-out;
+          transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
           background-color: var(--hax-body-target-background-color) !important;
         }
 

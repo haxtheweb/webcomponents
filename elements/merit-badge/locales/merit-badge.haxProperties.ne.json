@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "योग्यता ब्याज",
+    "description": "सीप प्राप्ति जनाउने दृश्य ब्याज।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "ब्याजको शीर्षक",
+        "description": "ब्याजमा देखाइने शीर्षक।"
+      },
+      {
+        "property": "badgeImage",
+        "title": "ब्याज छवि",
+        "description": "ब्याजको छवि URL।"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "ब्याज विवरण",
+        "description": "ब्याजबारे विवरण।"
+      },
+      {
+        "property": "hyperLink",
+        "title": "हाइपरलिङ्क",
+        "description": "ब्याजसँग सम्बद्ध लिङ्क।"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "ब्याज सीपहरू",
+        "description": "ब्याजमा देखाइने सीपहरू।"
+      },
+      {
+        "property": "skill",
+        "title": "सीप (OER Schema)",
+        "description": "OER Schema: यो सिकाइ उद्देश्य पूरा गरेर प्राप्त गरिएको सीप।"
+      }
+    ]
+  }
+}

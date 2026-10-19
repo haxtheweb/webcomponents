@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Disseny del curs",
+    "description": "Contenidor per a materials educatius i elements de disseny del curs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Identificador del curs",
+        "description": "OER Schema: l'identificador del curs, p. ex. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Període en què s'ofereix",
+        "description": "OER Schema: el període durant el qual s'ofereix el curs."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Format d'impartició",
+        "description": "OER Schema: el format utilitzat per impartir el curs (p. ex. presencial, en línia, híbrid)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Docent principal",
+        "description": "OER Schema: el docent principal del curs."
+      },
+      {
+        "property": "syllabus",
+        "title": "URL del pla docent",
+        "description": "OER Schema: URL del pla docent del curs."
+      }
+    ]
+  }
+}

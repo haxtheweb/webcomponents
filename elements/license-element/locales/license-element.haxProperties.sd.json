@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "لائسنس",
+    "description": "پنهنجي ڪم لاءِ لائسنس ڏيو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "حوالي ڏنل ڪم جو عنوان."
+      },
+      {
+        "property": "source",
+        "title": "ذريعي جي لنڪ",
+        "description": "لائسنس ٿيل ڪم جو ذريعي URL."
+      },
+      {
+        "property": "license",
+        "title": "لائسنس",
+        "description": "هن ڪم تي لاڳو ٿيل لائسنس."
+      },
+      {
+        "property": "creator",
+        "title": "تخليق ڪار",
+        "description": "هن ڪم جو تخليق ڪار يا مالڪ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "ذريعي جي لنڪ",
+        "description": "لائسنس جي اضافي تفصيلن جي لنڪ."
+      },
+      {
+        "property": "moreLabel",
+        "title": "وڌيڪ ليبل",
+        "description": "لائسنس جي اضافي تفصيلن لاءِ ليبل."
+      }
+    ]
+  }
+}

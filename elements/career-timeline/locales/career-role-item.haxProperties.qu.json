@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Llamk'ay Rurana",
+    "description": "Organizacion ukhupi huk rurana"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Suti"
+      },
+      {
+        "property": "startDate",
+        "title": "Qallariy P'unchaw"
+      },
+      {
+        "property": "endDate",
+        "title": "Tukukuy P'unchaw (Munaspalla)"
+      },
+      {
+        "property": "skills",
+        "title": "Tupaq Atiykuna",
+        "description": "+ botonta akllay atiykunata yapayta qallarinapaq"
+      }
+    ]
+  }
+}

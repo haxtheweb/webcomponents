@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "মেরিট ব্যাজ",
+    "description": "দক্ষতা অর্জন জানানোর দৃশ্যমান ব্যাজ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "ব্যাজের শিরোনাম",
+        "description": "ব্যাজে দেখানো শিরোনাম।"
+      },
+      {
+        "property": "badgeImage",
+        "title": "ব্যাজের ছবি",
+        "description": "ব্যাজের ছবির URL।"
+      },
+      {
+        "property": "badgeDetails",
+        "title": "ব্যাজের বিবরণ",
+        "description": "ব্যাজ সম্পর্কে বিস্তারিত।"
+      },
+      {
+        "property": "hyperLink",
+        "title": "হাইপারলিংক",
+        "description": "ব্যাজের সাথে যুক্ত লিংক।"
+      },
+      {
+        "property": "badgeSkills",
+        "title": "ব্যাজের দক্ষতা",
+        "description": "ব্যাজে দেখানো দক্ষতা।"
+      },
+      {
+        "property": "skill",
+        "title": "দক্ষতা (OER Schema)",
+        "description": "OER Schema: এই শিখন উদ্দেশ্য সম্পন্ন করে অর্জিত একটি দক্ষতা।"
+      }
+    ]
+  }
+}

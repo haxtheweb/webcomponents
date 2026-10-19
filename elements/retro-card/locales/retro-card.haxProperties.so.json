@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kaar retro ah",
+    "description": "Kaar fudud oo leh naqshad retro ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka waaweyn ee kaarka."
+      },
+      {
+        "property": "url",
+        "description": "URL-ka la furayo marka kaarka la gujiyo."
+      },
+      {
+        "property": "subtitle",
+        "title": "Cinwaan-hoosaad",
+        "description": "Cinwaan-hoosaadka kaarka."
+      },
+      {
+        "property": "tags",
+        "title": "Summado",
+        "description": "Calaamado lagu kala saaray hakad."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Isha warbaahinta",
+        "description": "Isha warbaahinta koowaad."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Isha marka la dul istaago",
+        "description": "Isha warbaahinta la muujiyo marka kaarka la dul istaago ama la daaro."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka Xoojinta",
+        "description": "Midabka xoojinta ee lagu dabaqo kaarka oo dhan."
+      },
+      {
+        "property": "dark",
+        "title": "Madow",
+        "description": "Isticmaal midabada saldhigga ah ee habka mugdiga."
+      }
+    ]
+  }
+}

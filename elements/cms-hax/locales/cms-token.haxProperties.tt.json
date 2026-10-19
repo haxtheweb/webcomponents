@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS токены",
+    "description": "Серверда күрсәтелә торган CMS токены"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Токен",
+        "description": "Безнең CMS'тан токен"
+      }
+    ]
+  }
+}

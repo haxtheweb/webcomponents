@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML բլոկ",
+    "description": "Հիմնական HTML բլոկ, որն ապահովում է HAXschema կապակցում"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML կոդ, որը ցանկանում եք ներկայացնել բովանդակության մեջ"
+      }
+    ]
+  }
+}

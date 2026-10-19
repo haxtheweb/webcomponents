@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro kortelė",
+    "description": "Paprasta retro dizaino kortelė."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Pagrindinis kortelės pavadinimas."
+      },
+      {
+        "property": "url",
+        "description": "URL, atidaromas spustelėjus kortelę."
+      },
+      {
+        "property": "subtitle",
+        "title": "Paantraštė",
+        "description": "Kortelės paantraštė."
+      },
+      {
+        "property": "tags",
+        "title": "Žymės",
+        "description": "Kableliais atskirtos žymos."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Medijos šaltinis",
+        "description": "Pagrindinis medijos šaltinis."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Šaltinis užvedus pelę",
+        "description": "Medijos šaltinis, rodomas užvedus pelę ant kortelės arba ją aktyvavus."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "Visai kortelei taikoma akcento spalva."
+      },
+      {
+        "property": "dark",
+        "title": "Tamsus",
+        "description": "Naudoti tamsiojo režimo pagrindines spalvas."
+      }
+    ]
+  }
+}

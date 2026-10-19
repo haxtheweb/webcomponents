@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Çalışma Kâğıdı İndirme",
+    "description": "İndirilebilir dosyaları gösteren bir düğme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "İndirmenin başlığı."
+      },
+      {
+        "property": "link",
+        "title": "Bağlantı",
+        "description": "İndirme bağlantısı."
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Progresa virtulis",
+    "description": "Progresa virtuļa diagramma"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Elementa nosaukums"
+      },
+      {
+        "property": "desc",
+        "title": "Apraksts",
+        "description": "Pieejams garais apraksts"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Attēla avots",
+        "description": "Virtuļa iekšpusē esošā attēla avots."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Attēla alternatīvais teksts",
+        "description": "Attēla alternatīvais teksts."
+      },
+      {
+        "property": "animated",
+        "title": "Animēts",
+        "description": "Vai progress tiek animēts pirmajā ielādē"
+      },
+      {
+        "property": "complete",
+        "title": "Pabeigts",
+        "description": "Pabeigto vērtību masīvs."
+      },
+      {
+        "property": "total",
+        "title": "Kopā",
+        "description": "Kopsumma, kad visi vienumi ir pabeigti."
+      },
+      {
+        "property": "startAngle",
+        "title": "Sākuma leņķis",
+        "description": "Virtuļa leņķis, no kura sākas progress"
+      }
+    ]
+  }
+}

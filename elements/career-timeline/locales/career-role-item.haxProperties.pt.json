@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Cargo na carreira",
+    "description": "Um cargo individual dentro de uma organização"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título"
+      },
+      {
+        "property": "startDate",
+        "title": "Data de início"
+      },
+      {
+        "property": "endDate",
+        "title": "Data de término (opcional)"
+      },
+      {
+        "property": "skills",
+        "title": "Habilidades associadas",
+        "description": "Selecione o botão + para começar a adicionar habilidades"
+      }
+    ]
+  }
+}

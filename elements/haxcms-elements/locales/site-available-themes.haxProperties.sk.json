@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Dostupné témy",
+    "description": "Zobrazenie dostupných tém HAXcms s prepínaním živého náhľadu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Režim zobrazenia",
+        "description": "Vyberte, ako zobraziť témy",
+        "options": {
+          "gallery": "Galéria",
+          "table": "Tabuľka"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Zobraziť podrobnosti",
+        "description": "Zobraziť popisy tém a ďalšie informácie"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Zobraziť skryté a staré témy",
+        "description": "Okrem predvolených tém nástenky zobraziť aj skryté, staré a príšerné témy"
+      },
+      {
+        "property": "columns",
+        "title": "Stĺpce (galéria)",
+        "description": "Počet stĺpcov v zobrazení galérie"
+      }
+    ]
+  }
+}

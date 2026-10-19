@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ویو",
+    "description": "بیک اینڈ تے بݨے CMS ویوز"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "ناں",
+        "description": "ساڈے CMS توں ویو دا ناں"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "وکھالا",
+        "description": "ساڈے CMS دے اوس ویو اندر وکھالا"
+      }
+    ]
+  }
+}

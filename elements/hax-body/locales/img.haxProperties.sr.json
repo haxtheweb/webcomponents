@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Основна слика",
+    "description": "Основни елемент слике."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Извор",
+        "description": "URL слике."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt текст",
+        "description": "Алтернативни текст за приступачност и SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Висина",
+        "description": "Висина у пикселима. Оставите празно за природну величину."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Учитавање слике",
+        "description": "Изаберите када се слика учитава.",
+        "options": {
+          "lazy": "Учитај када је видљива",
+          "auto": "Аутоматски"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Прилагодљиви извори (srcset)",
+        "description": "Наведите URL-ове слика и дескрипторе (нпр. 480w или 2x) како би прегледачи изабрали најбољу величину за екран. Чува се као стандардни атрибут srcset."
+      }
+    ]
+  }
+}

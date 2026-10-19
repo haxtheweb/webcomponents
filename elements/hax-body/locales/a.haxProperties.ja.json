@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "基本リンク",
+    "description": "基本的なリンク要素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "リンク",
+        "description": "リンク先のURL。"
+      },
+      {
+        "attribute": "innerText",
+        "title": "テキスト",
+        "description": "表示されるリンクテキスト。"
+      },
+      {
+        "attribute": "target",
+        "title": "ターゲット",
+        "description": "リンクを開く場所。",
+        "options": {
+          "": "同じウィンドウ",
+          "_blank": "新しいウィンドウ - _blank",
+          "_top": "最上位ウィンドウ - _top",
+          "_parent": "親ウィンドウ - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "タイトルテキスト",
+        "description": "アクセシビリティとSEOのための補足タイトル。"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "リンク先との関係（セキュリティ/SEO）。",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

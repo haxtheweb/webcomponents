@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Accessibel Videowiddergab iwwer verschidde Quellen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quell",
+        "description": "URL fir dëst Medium."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titel",
+        "description": "Titel, deen ënner dem Video ugewise gëtt."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Posterbild",
+        "description": "URL vum Posterbild."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Textspueren",
+        "description": "Ënnertitelen, Beschreiwungen an aner Textspuere fir de Video."
+      },
+      {
+        "property": "startTime",
+        "title": "Startzäit",
+        "description": "Video zu enger bestëmmter Zäit starten (Sekonnen)."
+      },
+      {
+        "property": "endTime",
+        "title": "Ennzäit",
+        "description": "Video zu enger bestëmmter Zäit stoppen (Sekonnen), erfuerdert eng Startzäit."
+      },
+      {
+        "property": "learningMode",
+        "title": "Léiermodus aktivéieren",
+        "description": "Desaktivéiert Fir- a Réckspullen."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Knäppchen „Op YouTube opmaachen“ ewechhuelen",
+        "description": "Hëlt de Knäppchen ewech, fir de Video op YouTube opzemaachen."
+      },
+      {
+        "property": "linkable",
+        "title": "E Link zum Deelen abannen?",
+        "description": "Stellt e Link zur Verfügung, fir de Video ze deelen."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Zäitstempelen verstoppen",
+        "description": "D'Zäitstempelen an der Transkriptioun verstoppen."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkriptioun verstoppen",
+        "description": "Transkriptioun standardméisseg verstoppen."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Audiobeschreiwungsspuer",
+        "description": "URL vun enger Audiobeschreiwungsspuer (MP3-Datei), déi visuell Elementer beschreift."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Gëtt un, ob CORS benotzt gëtt.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Ofspillen am Hannergrond erlaben",
+        "description": "Weider ofspillen, wann de Browser-Tab de Fokus verléiert."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Däischtert Theme fir d'Transkriptioun",
+        "description": "Däischtert Theme fir d'Transkriptioun aktivéieren."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Interaktivitéit desaktivéieren",
+        "description": "Interaktive Modus desaktivéieren, deen d'Transkriptioun klickbar mécht."
+      },
+      {
+        "property": "lang",
+        "title": "Sprooch",
+        "description": "Sprooch vum Medium."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "(veraalt) Wielt d'Akzentfaarf fir de Player."
+      }
+    ]
+  }
+}

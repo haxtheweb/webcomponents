@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Մեջբերման աղբյուր",
+    "description": "Աղբյուրի հղման տարր՝ ներկայացման երեք ռեժիմով։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Հղվող աշխատանքի վերնագիրը։"
+      },
+      {
+        "property": "source",
+        "title": "Աղբյուրի հղում",
+        "description": "Հղվող աշխատանքի աղբյուրի URL-ը։"
+      },
+      {
+        "property": "date",
+        "title": "Դիտման ամսաթիվ",
+        "description": "Աղբյուրը դիտելու ամսաթիվը։"
+      },
+      {
+        "property": "scope",
+        "title": "Շրջանակ",
+        "description": "Հղվող տարրի շրջանակը։",
+        "options": {
+          "sibling": "Հարևան տարր",
+          "parent": "Ծնող տարր"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Լիցենզիա",
+        "description": "Հղվող աշխատանքի լիցենզիան։"
+      },
+      {
+        "property": "creator",
+        "title": "Ստեղծող",
+        "description": "Հղվող աշխատանքի ստեղծողը կամ սեփականատերը։"
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema տեսակ",
+        "description": "Այս հղման OER Schema դասը։ Լռելյայն՝ oer:ReferencedMaterial. փոխեք միայն վավեր OER դասով (օր.՝ oer:SupportingMaterial)։"
+      }
+    ]
+  }
+}

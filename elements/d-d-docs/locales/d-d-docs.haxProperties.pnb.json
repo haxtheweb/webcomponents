@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "ڈیزائن، بݨاؤ، ڈھاؤ",
+    "description": "HAX لئی ڈیزائن سسٹم نفاذ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "وکھاؤن والا آپشن",
+        "options": {
+          "*": "پوری سٹائل گائیڈ"
+        }
+      }
+    ]
+  }
+}

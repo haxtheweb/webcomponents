@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Gajarta",
+    "description": "Gajarta tare da cikakkiyar kalma a bayanin shawagi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Rubutu",
+        "description": "Rubutun gajarta da ake gani."
+      },
+      {
+        "attribute": "title",
+        "title": "Kalma",
+        "description": "Cikakkiyar kalmar da ake nunawa yayin shawagi."
+      }
+    ]
+  }
+}

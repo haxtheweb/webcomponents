@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Video",
+    "description": "Ligipääsetav video esitamine mitmest allikast."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Allikas",
+        "description": "Selle meedia URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Pealkiri",
+        "description": "Video all kuvatav pealkiri."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Plakatipilt",
+        "description": "Plakatipildi URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Tekstirajad",
+        "description": "Video subtiitrid, tõlkesubtiitrid, kirjeldused ja muud tekstirajad."
+      },
+      {
+        "property": "startTime",
+        "title": "Algusaeg",
+        "description": "Alusta videot kindlast ajast (sekundites)."
+      },
+      {
+        "property": "endTime",
+        "title": "Lõpuaeg",
+        "description": "Lõpeta video kindlal ajal (sekundites), nõuab algusaega."
+      },
+      {
+        "property": "learningMode",
+        "title": "Luba õpirežiim",
+        "description": "Keelab edasi- ja tagasikerimise."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Eemalda YouTube'is avamise nupp",
+        "description": "Eemaldab nupu video avamiseks YouTube'is."
+      },
+      {
+        "property": "linkable",
+        "title": "Kas lisada jagamislink?",
+        "description": "Pakub linki video jagamiseks."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Peida ajatemplid",
+        "description": "Peida transkriptsiooni ajatemplid."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Peida transkriptsioon",
+        "description": "Peida transkriptsioon vaikimisi."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Kirjeldustõlke rada",
+        "description": "Kirjeldustõlke raja URL (MP3-fail), mis jutustab visuaalsetest elementidest."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Näitab, kas kasutada CORS-i.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Luba taustal esitamine",
+        "description": "Jätka esitamist, kui brauseri vahekaart kaotab fookuse."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Transkriptsiooni tume teema",
+        "description": "Luba transkriptsioonile tume teema."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Keela interaktiivsus",
+        "description": "Keela interaktiivne režiim, mis muudab transkriptsiooni klõpsatavaks."
+      },
+      {
+        "property": "lang",
+        "title": "Keel",
+        "description": "Meedia keel."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "(aegunud) Vali mängija rõhuvärv."
+      }
+    ]
+  }
+}

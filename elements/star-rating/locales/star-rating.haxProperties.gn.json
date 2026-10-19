@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Mbyja Papaha",
+    "description": "Papaha jehechaukaha térã votõ ojejapo hag̃ua papaha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Papaha",
+        "description": "Papaha ko'ag̃agua."
+      },
+      {
+        "property": "possible",
+        "title": "Ikatúva",
+        "description": "Papaha yvatevéva ikatúva."
+      },
+      {
+        "property": "numStars",
+        "title": "Mbyja Papapy",
+        "description": "Mbyja papapy ojehechaukátava."
+      },
+      {
+        "property": "interactive",
+        "title": "Ojoapykuéva",
+        "description": "Emoneĩ puruhára omoĩ hag̃ua papaha."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rúbrica Tuichakue Reko",
+        "description": "Emosẽ OER Schema RubricScale ha RubricLevel mba'ekuaarã (levelOrdinal/levelPoints) opaite mbyjápe g̃uarã."
+      }
+    ]
+  }
+}

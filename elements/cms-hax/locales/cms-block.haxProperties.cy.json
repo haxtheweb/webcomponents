@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bloc CMS",
+    "description": "Bloc CMS wedi'i rendro ar yr ôl-wyneb"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modiwl",
+        "description": "Modiwl i'w lwytho o'n CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta'r bloc i'w lwytho o'n CMS"
+      }
+    ]
+  }
+}

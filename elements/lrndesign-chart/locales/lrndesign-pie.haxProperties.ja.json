@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "円グラフ",
+    "description": "CSV を基にアクセシブルなグラフを作成します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "アクセントカラー",
+        "description": "任意のアクセントカラー。"
+      },
+      {
+        "title": "ダークテーマ",
+        "description": "ダークテーマを有効にする"
+      },
+      {
+        "title": "CSVファイル",
+        "description": "CSVからデータを読み込みます。"
+      },
+      {
+        "title": "グラフのタイトル",
+        "description": "グラフのアクセシブルな代替テキスト。"
+      },
+      {
+        "title": "グラフの説明",
+        "description": "グラフのアクセシブルな説明。"
+      },
+      {
+        "title": "スケール名",
+        "description": "グラフの幅:高さの比率（$ct-scales と $ct-scales-names については https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings を参照）。",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "ドーナツ"
+      },
+      {
+        "title": "ラベルを表示"
+      },
+      {
+        "title": "開始角度"
+      },
+      {
+        "title": "パディング"
+      },
+      {
+        "title": "合計",
+        "description": "任意で指定できる合計値。合計値を指定すると、完全な円を描くには系列の値の合計がこの値と一致する必要があります。このパラメーターを使うと、円の一部だけを描いたり、ゲージグラフを描いたりできます。"
+      },
+      {
+        "title": "空の値を無視",
+        "description": "不要なスライスやラベルを描画しないよう、空の値を無視します。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "データを反転",
+        "description": "ラベル、系列の順序、各系列のデータ配列全体を含めてデータを反転します。"
+      },
+      {
+        "title": "HTMLテーブル",
+        "description": "任意：HTMLテーブルとしてデータを読み込みます。"
+      },
+      {
+        "title": "ドーナツの線の幅"
+      },
+      {
+        "title": "塗りつぶしドーナツ",
+        "description": "ドーナツのセグメントを線ではなく図形として描画します。"
+      },
+      {
+        "title": "ラベルの方向",
+        "description": "ドーナツのセグメントを線ではなく図形として描画します。",
+        "options": {
+          "neutral": "中立",
+          "explode": "外向き",
+          "implode": "内向き"
+        }
+      },
+      {
+        "title": "ラベルのオフセット",
+        "description": "半径の半分の距離である標準位置からのラベル位置のオフセット。正または負の値を指定できます。正の値を指定すると、ラベルは中心から離れた位置に配置されます。"
+      },
+      {
+        "title": "ラベルの位置",
+        "options": {
+          "inside": "内側",
+          "outside": "外側",
+          "center": "中央"
+        }
+      }
+    ]
+  }
+}

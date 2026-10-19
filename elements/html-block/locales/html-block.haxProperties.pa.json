@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html ਬਲਾਕ",
+    "description": "HAXschema ਜੋੜ ਪ੍ਰਦਾਨ ਕਰਨ ਵਾਲਾ ਇੱਕ ਮੁੱਢਲਾ HTML ਬਲਾਕ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML ਕੋਡ ਜੋ ਤੁਸੀਂ ਸਮੱਗਰੀ ਵਿੱਚ ਪੇਸ਼ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ"
+      }
+    ]
+  }
+}

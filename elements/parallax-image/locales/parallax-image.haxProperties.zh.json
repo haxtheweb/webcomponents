@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "视差图片",
+    "description": "随滚动移动的图片"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "图像",
+        "description": "用作背景的图片"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "标题区域",
+        "description": "标题文本区域"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Kelda",
+        "description": "URL til hetta tilfeingið."
+      }
+    ]
+  }
+}

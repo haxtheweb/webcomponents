@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Cselekvésre ösztönzés",
+    "description": "Egyszerű gomb egy cselekvésre ösztönző hivatkozással."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Címke",
+        "description": "Hivatkozás címkéje"
+      },
+      {
+        "property": "link",
+        "title": "Hivatkozás",
+        "description": "Adj meg egy hivatkozást bármilyen erőforrásra"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ikon elrejtése",
+        "description": "A szöveget kiemelő ikon elrejtése"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Műveleti hivatkozás ikonja"
+      }
+    ]
+  }
+}

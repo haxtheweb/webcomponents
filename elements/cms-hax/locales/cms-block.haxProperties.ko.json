@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS 블록",
+    "description": "백엔드에서 렌더링되는 CMS 블록"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "모듈",
+        "description": "CMS에서 불러올 모듈"
+      },
+      {
+        "property": "blockDelta",
+        "title": "델타",
+        "description": "CMS에서 불러올 블록의 델타"
+      }
+    ]
+  }
+}

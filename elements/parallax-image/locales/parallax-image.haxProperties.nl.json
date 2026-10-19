@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallax-afbeelding",
+    "description": "Afbeelding scrolt mee"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Afbeelding",
+        "description": "afbeelding die op de achtergrond wordt gebruikt"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Kopgebied",
+        "description": "Tekstgebied voor de kop"
+      }
+    ]
+  }
+}

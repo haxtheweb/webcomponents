@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lizentzia",
+    "description": "Eman lizentzia bat zure lanari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Aipatutako lanaren izenburua."
+      },
+      {
+        "property": "source",
+        "title": "Iturriaren esteka",
+        "description": "Lizentziadun lanaren iturriaren URLa."
+      },
+      {
+        "property": "license",
+        "title": "Lizentzia",
+        "description": "Lan honi aplikatutako lizentzia."
+      },
+      {
+        "property": "creator",
+        "title": "Sortzailea",
+        "description": "Lan honen sortzailea edo jabea."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Iturriaren esteka",
+        "description": "Lizentziaren xehetasun gehigarrietarako esteka."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Gehiago etiketa",
+        "description": "Lizentziaren xehetasun gehigarrien etiketa."
+      }
+    ]
+  }
+}

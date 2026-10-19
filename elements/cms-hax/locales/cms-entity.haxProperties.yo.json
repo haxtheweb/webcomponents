@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ẹ̀dá CMS",
+    "description": "Ẹ̀dá CMS tí a ṣe àfihàn rẹ̀ ní backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Irú",
+        "description": "irú láti CMS wa",
+        "options": {
+          "node": "Kókó",
+          "user": "Olùlò",
+          "file": "Fáìlì"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id láti CMS wa"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Ipò ìfihàn",
+        "description": "ipò ìfihàn láti CMS wa"
+      }
+    ]
+  }
+}

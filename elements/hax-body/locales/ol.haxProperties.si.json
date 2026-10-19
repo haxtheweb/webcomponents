@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "අංකිත ලැයිස්තුව",
+    "description": "අංකිත ලැයිස්තුවක් සාදන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "අංක විලාසය",
+        "description": "අනුපිළිවෙළ කළ ලැයිස්තු අංකනය සඳහා භාවිත කරන විලාසය.",
+        "options": {
+          "": "පෙරනිමි (දශම)",
+          "list-decimal-leading-zero": "මුලින් ශුන්‍යය සහිත දශම (01, 02, 03)",
+          "list-lower-alpha": "කුඩා අකුරු (a, b, c)",
+          "list-upper-alpha": "ලොකු අකුරු (A, B, C)",
+          "list-lower-roman": "කුඩා රෝම (i, ii, iii)",
+          "list-upper-roman": "ලොකු රෝම (I, II, III)"
+        }
+      }
+    ]
+  }
+}

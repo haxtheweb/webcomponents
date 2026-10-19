@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Корт",
+    "description": "Корт бо услуби ихтиёрии аксент."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Сарлавҳа",
+        "description": "Сарлавҳа барои корт."
+      },
+      {
+        "slot": "subheading",
+        "title": "Зерсарлавҳа",
+        "description": "Зерсарлавҳаи ихтиёрӣ барои корт."
+      },
+      {
+        "slot": "content",
+        "title": "Мундариҷа",
+        "description": "Мундариҷа барои корт."
+      },
+      {
+        "slot": "footer",
+        "title": "Поёнхат",
+        "description": "Поёнхати ихтиёрӣ барои корт."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Тасвир",
+        "description": "Тасвири ихтиёрӣ"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Матни alt-и тасвир",
+        "description": "Матни алтернативӣ, ки тасвирро барои хонандагони экран тавсиф мекунад. Танҳо агар тасвир сирф ороишӣ бошад, холӣ гузоред."
+      },
+      {
+        "property": "imageAlign",
+        "title": "Ҳамворкунии тасвир",
+        "description": "Ҳамворкунии уфуқии тасвир",
+        "options": {
+          "left": "чап",
+          "center": "марказ",
+          "right": "рост"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "Ҳамворкунии амудии тасвир",
+        "description": "Ҳамворкунии амудии тасвир",
+        "options": {
+          "top": "боло",
+          "center": "марказ",
+          "bottom": "поён"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидии ихтиёрӣ."
+      },
+      {
+        "property": "dark",
+        "title": "Мавзӯи торик",
+        "description": "Фаъол кардани мавзӯи торик"
+      },
+      {
+        "property": "horizontal",
+        "title": "Уфуқӣ",
+        "description": "Самти уфуқӣ?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Аксенти сарлавҳа",
+        "description": "Ранги аксентро ба сарлавҳа татбиқ кунем?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Аксенти замина",
+        "description": "Ранги аксентро ба заминаи корт татбиқ кунем?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Бе аксенти ҳошия",
+        "description": "Аксенти ҳошияро хориҷ кунем?"
+      },
+      {
+        "property": "flat",
+        "title": "Ҳамвор",
+        "description": "Сояи қуттиро хориҷ кунем?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Кунҷ",
+        "description": "Мундариҷа барои кунҷи корт."
+      }
+    ]
+  }
+}

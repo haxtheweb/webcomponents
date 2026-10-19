@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Elementu di bibliugrafia",
+    "description": "Elementu chì riprisenta una sola citazione in una bibliugrafia, cù parechji furmati è opzioni d'espurtazione."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tipu",
+        "description": "Tipu di citazione",
+        "options": {
+          "web": "Web",
+          "journal": "Rivista",
+          "book": "Libru"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Titulu di l'elementu"
+      },
+      {
+        "property": "authors",
+        "title": "Autore(i)",
+        "description": "L'eventi di a cronolugia"
+      },
+      {
+        "property": "publisher",
+        "title": "Editore",
+        "description": "Situ web originale"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Źródło cytatu",
+    "description": "Element cytowania z trzema trybami prezentacji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Tytuł cytowanego dzieła."
+      },
+      {
+        "property": "source",
+        "title": "Link do źródła",
+        "description": "URL źródła cytowanego dzieła."
+      },
+      {
+        "property": "date",
+        "title": "Data dostępu",
+        "description": "Data, w której uzyskano dostęp do źródła."
+      },
+      {
+        "property": "scope",
+        "title": "Zakres",
+        "description": "Zakres elementu do cytowania.",
+        "options": {
+          "sibling": "Element równorzędny",
+          "parent": "Element nadrzędny"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Licencja",
+        "description": "Licencja cytowanego dzieła."
+      },
+      {
+        "property": "creator",
+        "title": "Twórca",
+        "description": "Twórca lub właściciel cytowanego dzieła."
+      },
+      {
+        "property": "typeof",
+        "title": "Typ OER Schema",
+        "description": "Klasa OER Schema dla tego cytowania. Domyślnie oer:ReferencedMaterial; zmieniaj tylko na prawidłową klasę OER (np. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

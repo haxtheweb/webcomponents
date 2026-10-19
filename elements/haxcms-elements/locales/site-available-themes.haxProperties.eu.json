@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Gai erabilgarriak",
+    "description": "Bistaratu HAXcms gai erabilgarriak zuzeneko aurrebista-aldaketarekin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Ikuspegi modua",
+        "description": "Aukeratu gaiak nola bistaratu",
+        "options": {
+          "gallery": "Galeria",
+          "table": "Taula"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Erakutsi xehetasunak",
+        "description": "Erakutsi gaien deskribapenak eta informazio gehigarria"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Erakutsi ezkutuko eta gai zaharrak",
+        "description": "Erakutsi ezkutuko, zahar eta izugarriak diren gaiak panelaren lehenespenez gain"
+      },
+      {
+        "property": "columns",
+        "title": "Zutabeak (galeria)",
+        "description": "Galeria-ikuspegiko zutabe kopurua"
+      }
+    ]
+  }
+}

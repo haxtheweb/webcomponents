@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "E-Book-Knäppchen",
+    "description": "E Knäppchen, deen op en E-Book verlinkt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Den Titel vum Knäppchen."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "De Link, op deen beim Klick weidergeleet gëtt."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon fir dëse Link ze representéieren"
+      }
+    ]
+  }
+}

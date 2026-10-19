@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Merezimendu-txapa",
+    "description": "Trebetasun bat lortu dela adierazteko txapa bisuala."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Txaparen izenburua",
+        "description": "Txapan bistaratutako izenburua."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Txaparen irudia",
+        "description": "Txaparen irudiaren URLa."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Txaparen xehetasunak",
+        "description": "Txapari buruzko xehetasunak."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hiperesteka",
+        "description": "Txaparekin lotutako esteka."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Txaparen trebetasunak",
+        "description": "Txapan bistaratutako trebetasunak."
+      },
+      {
+        "property": "skill",
+        "title": "Trebetasuna (OER Schema)",
+        "description": "OER Schema: ikaskuntza-helburu hau osatuz lortutako trebetasuna."
+      }
+    ]
+  }
+}

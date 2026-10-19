@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Tauira waehere",
+    "description": "He tauira waehere kua miramiratia i te whārangi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Miramira waehere",
+        "description": "Miramira wetereo hei hāngai ki te wāhi waehere",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Raraunga JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Pātene tārua ki te papatopenga",
+        "description": "pātene i te taha matau o runga e kī ana tārua ki te papatopenga"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Tīmatanga miramira",
+        "description": "Tau rārangi hei tīmata i te miramira"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Mutunga miramira",
+        "description": "Rārangi hei whakamutu i te miramira"
+      }
+    ]
+  }
+}

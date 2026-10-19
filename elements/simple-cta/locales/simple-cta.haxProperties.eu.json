@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ekintzarako deia",
+    "description": "Ekintza egiteko esteka duen botoi sinplea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiketa",
+        "description": "Estekaren etiketa"
+      },
+      {
+        "property": "link",
+        "title": "Esteka",
+        "description": "Idatzi edozein baliabidetarako esteka"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Ezkutatu ikonoa",
+        "description": "Ezkutatu testua nabarmentzeko erabilitako ikonoa"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikonoa",
+        "description": "Ekintza-estekaren ikonoa"
+      }
+    ]
+  }
+}

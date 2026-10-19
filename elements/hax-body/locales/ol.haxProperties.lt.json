@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Numeruotas sąrašas",
+    "description": "Sukurti numeruotą sąrašą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Numeravimo stilius",
+        "description": "Sunumeruoto sąrašo numeravimo stilius.",
+        "options": {
+          "": "Numatytasis (dešimtainis)",
+          "list-decimal-leading-zero": "Dešimtainis su nuliu priekyje (01, 02, 03)",
+          "list-lower-alpha": "Mažosios raidės (a, b, c)",
+          "list-upper-alpha": "Didžiosios raidės (A, B, C)",
+          "list-lower-roman": "Mažieji romėniški (i, ii, iii)",
+          "list-upper-roman": "Didieji romėniški (I, II, III)"
+        }
+      }
+    ]
+  }
+}

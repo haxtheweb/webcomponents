@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Peyvnasî",
+    "description": "Têgîna ferhengê"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Têgeh"
+      },
+      {
+        "slot": "",
+        "title": "Pênase",
+        "description": "Pênaseya ku dema têgîn tê tikandin were nîşandan."
+      },
+      {
+        "property": "description",
+        "title": "Danasîn (OER Schema)",
+        "description": "OER Schema: danasîneke kurt a têgîna ferhengê. Heke vala were hiştin, ji nivîsa pênaseyê bixweber tê dagirtin."
+      }
+    ]
+  }
+}

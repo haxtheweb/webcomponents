@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P Pehẽ",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Moñe'ẽrã",
+        "description": "Jehaipy yke retepy"
+      }
+    ]
+  }
+}

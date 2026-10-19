@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "model kursu",
+    "description": "Interaktywny układ pojęć kursu ze szczegółami, animacją i sprawdzeniami wiedzy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "tytuł"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Obszar informacji"
+      },
+      {
+        "title": "Obszar szczegółów"
+      },
+      {
+        "title": "Obszar animacji"
+      },
+      {
+        "title": "Obszar sprawdzenia wiedzy"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Obszar logo"
+      }
+    ]
+  }
+}

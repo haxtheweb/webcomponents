@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ƙimar Taurari",
+    "description": "Widget na nuna ƙima ko maɓalli don ba da ƙima."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Maki",
+        "description": "Ƙimar maki na yanzu."
+      },
+      {
+        "property": "possible",
+        "title": "Mai yiwuwa",
+        "description": "Matsakaicin maki mai yiwuwa."
+      },
+      {
+        "property": "numStars",
+        "title": "Adadin Taurari",
+        "description": "Adadin taurarin da za a nuna."
+      },
+      {
+        "property": "interactive",
+        "title": "Mai mu'amala",
+        "description": "Ba da izinin mu'amalar mai amfani don saita ƙima."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Yanayin Sikelin Rubric",
+        "description": "Fitar da bayanan meta na OER Schema RubricScale da RubricLevel (levelOrdinal/levelPoints) ga kowane tauraro."
+      }
+    ]
+  }
+}

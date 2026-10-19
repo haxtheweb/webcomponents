@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS ਇਕਾਈ",
+    "description": "ਬੈਕਐਂਡ 'ਤੇ ਰੈਂਡਰ ਕੀਤੀ CMS ਇਕਾਈ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "ਕਿਸਮ",
+        "description": "ਸਾਡੇ CMS ਤੋਂ ਕਿਸਮ",
+        "options": {
+          "node": "ਨੋਡ",
+          "user": "ਵਰਤੋਂਕਾਰ",
+          "file": "ਫ਼ਾਈਲ"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ਸਾਡੇ CMS ਤੋਂ id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "ਡਿਸਪਲੇ ਮੋਡ",
+        "description": "ਸਾਡੇ CMS ਤੋਂ ਡਿਸਪਲੇ ਮੋਡ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "레트로 카드",
+    "description": "레트로 디자인의 간단한 카드."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "카드의 주 제목."
+      },
+      {
+        "property": "url",
+        "description": "카드를 클릭하면 열 URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "부제목",
+        "description": "카드 부제목."
+      },
+      {
+        "property": "tags",
+        "title": "태그",
+        "description": "쉼표로 구분된 태그."
+      },
+      {
+        "property": "mediaSource",
+        "title": "미디어 소스",
+        "description": "기본 미디어 소스."
+      },
+      {
+        "property": "hoverSource",
+        "title": "마우스를 올렸을 때 소스",
+        "description": "카드에 마우스를 올리거나 활성화했을 때 표시되는 미디어 소스."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "카드 전체에 적용되는 강조 색상."
+      },
+      {
+        "property": "dark",
+        "title": "어둡게",
+        "description": "다크 모드 기본 색상을 사용합니다."
+      }
+    ]
+  }
+}

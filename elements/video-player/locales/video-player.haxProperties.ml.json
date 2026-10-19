@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "വീഡിയോ",
+    "description": "ഒന്നിലധികം ഉറവിടങ്ങളിലുടനീളം ആക്സസ് ചെയ്യാവുന്ന വീഡിയോ പ്ലേബാക്ക്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ഉറവിടം",
+        "description": "ഈ മീഡിയയുടെ URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ശീർഷകം",
+        "description": "വീഡിയോയ്ക്ക് താഴെ കാണിക്കുന്ന തലക്കെട്ട്."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "പോസ്റ്റർ ചിത്രം",
+        "description": "പോസ്റ്റർ ചിത്ര URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "ടെക്സ്റ്റ് ട്രാക്കുകൾ",
+        "description": "വീഡിയോയ്ക്കുള്ള ക്ലോസ്ഡ് ക്യാപ്ഷനുകൾ, സബ്ടൈറ്റിലുകൾ, വിവരണങ്ങൾ, മറ്റ് ടെക്സ്റ്റ് ട്രാക്കുകൾ."
+      },
+      {
+        "property": "startTime",
+        "title": "ആരംഭ സമയം",
+        "description": "ഒരു നിർദ്ദിഷ്ട സമയത്ത് (സെക്കൻഡ്) വീഡിയോ ആരംഭിക്കുക."
+      },
+      {
+        "property": "endTime",
+        "title": "അവസാന സമയം",
+        "description": "ഒരു നിർദ്ദിഷ്ട സമയത്ത് (സെക്കൻഡ്) വീഡിയോ അവസാനിപ്പിക്കുക, ആരംഭ സമയം ആവശ്യമാണ്."
+      },
+      {
+        "property": "learningMode",
+        "title": "പഠന മോഡ് പ്രവർത്തനക്ഷമമാക്കുക",
+        "description": "ഫാസ്റ്റ് ഫോർവേഡും റിവൈൻഡും പ്രവർത്തനരഹിതമാക്കുന്നു."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube-ൽ തുറക്കുക ബട്ടൺ നീക്കം ചെയ്യുക",
+        "description": "വീഡിയോ YouTube-ൽ തുറക്കാനുള്ള ബട്ടൺ നീക്കം ചെയ്യുന്നു."
+      },
+      {
+        "property": "linkable",
+        "title": "ഒരു പങ്കിടൽ ലിങ്ക് ഉൾപ്പെടുത്തണോ?",
+        "description": "വീഡിയോ പങ്കിടാൻ ഒരു ലിങ്ക് നൽകുന്നു."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ടൈംസ്റ്റാമ്പുകൾ മറയ്ക്കുക",
+        "description": "ട്രാൻസ്ക്രിപ്റ്റിലെ ടൈം സ്റ്റാമ്പുകൾ മറയ്ക്കുക."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ട്രാൻസ്ക്രിപ്റ്റ് മറയ്ക്കുക",
+        "description": "ഡിഫോൾട്ടായി ട്രാൻസ്ക്രിപ്റ്റ് മറയ്ക്കുക."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "ഓഡിയോ വിവരണ ട്രാക്ക്",
+        "description": "ദൃശ്യ ഘടകങ്ങളുടെ വിവരണം നൽകുന്ന ഓഡിയോ വിവരണ ട്രാക്കിലേക്കുള്ള URL (MP3 ഫയൽ)."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS ഉപയോഗിക്കണോ എന്ന് സൂചിപ്പിക്കുന്നു.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "പശ്ചാത്തല പ്ലേബാക്ക് അനുവദിക്കുക",
+        "description": "ബ്രൗസർ ടാബിന് ഫോക്കസ് നഷ്ടപ്പെടുമ്പോഴും പ്ലേ ചെയ്യുന്നത് തുടരുക."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ട്രാൻസ്ക്രിപ്റ്റിനുള്ള ഡാർക്ക് തീം",
+        "description": "ട്രാൻസ്ക്രിപ്റ്റിന് ഡാർക്ക് തീം പ്രവർത്തനക്ഷമമാക്കുക."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ഇന്ററാക്ടീവ് പ്രവർത്തനരഹിതമാക്കുക",
+        "description": "ട്രാൻസ്ക്രിപ്റ്റ് ക്ലിക്ക് ചെയ്യാവുന്നതാക്കുന്ന ഇന്ററാക്ടീവ് മോഡ് പ്രവർത്തനരഹിതമാക്കുക."
+      },
+      {
+        "property": "lang",
+        "title": "ഭാഷ",
+        "description": "മീഡിയയുടെ ഭാഷ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "(ഒഴിവാക്കിയത്) പ്ലെയറിനുള്ള ആക്സന്റ് നിറം തിരഞ്ഞെടുക്കുക."
+      }
+    ]
+  }
+}

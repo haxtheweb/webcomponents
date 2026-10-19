@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Rezinesi",
+    "description": "Ipa rezinesi rebasa rako."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Zita rebasa riri kududzwa."
+      },
+      {
+        "property": "source",
+        "title": "Chinongedzo chesosi",
+        "description": "URL yesosi yebasa rine rezinesi."
+      },
+      {
+        "property": "license",
+        "title": "Rezinesi",
+        "description": "Rezinesi rinoshandiswa pabasa iri."
+      },
+      {
+        "property": "creator",
+        "title": "Mugadziri",
+        "description": "Mugadziri kana muridzi webasa iri."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Chinongedzo chesosi",
+        "description": "Chinongedzo kune rumwe ruzivo rwerezinesi."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Zita reZvimwe",
+        "description": "Zita rerumwe ruzivo rwerezinesi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "ចំណងជើងទាក់ទង",
+    "description": "បញ្ចេញឋានានុក្រមចំណងជើងត្រឹមត្រូវដោយផ្អែកលើចំណងជើងមេ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID ធនធាននៃចំណងជើងមេ"
+      },
+      {
+        "property": "disableLink",
+        "description": "បិទមុខងារប៊ូតុងតំណ។"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "តម្រឹមប៊ូតុងចម្លងតំណទៅខាងស្ដាំបំផុតនៃចំណងជើង។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "កម្រិតចំណងជើង ប្រសិនបើរកមិនឃើញមេ។"
+      },
+      {
+        "property": "copyMessage",
+        "description": "ជំនួសអត្ថបទលំនាំដើមសម្រាប់សារជូនដំណឹងនៃការចម្លងតំណ។"
+      },
+      {
+        "property": "linkLabel",
+        "description": "ជំនួសស្លាកលំនាំដើមនៃប៊ូតុងចម្លងតំណ។"
+      },
+      {
+        "property": "linkIcon",
+        "description": "ជំនួសរូបតំណាងលំនាំដើមនៃប៊ូតុងចម្លងតំណ។"
+      },
+      {
+        "property": "closeLabel",
+        "description": "ជំនួសស្លាកលំនាំដើមសម្រាប់ប៊ូតុងបិទនៃសារជូនដំណឹងចម្លងតំណ។"
+      },
+      {
+        "property": "closeIcon",
+        "description": "ជំនួសរូបតំណាងលំនាំដើមសម្រាប់ប៊ូតុងបិទនៃសារជូនដំណឹងចម្លងតំណ។"
+      }
+    ]
+  }
+}

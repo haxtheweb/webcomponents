@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "アクセシブルな詳細ボタン",
+    "description": "details と summary を使ったアクセシブルな段階的開示"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "ボタン",
+        "description": "隠されるコンテンツの概要 (例: 「情報」、「メタデータ」など)。"
+      },
+      {
+        "slot": "details",
+        "title": "説明",
+        "description": "表示・非表示を切り替えられる詳細な説明"
+      },
+      {
+        "slot": "",
+        "title": "説明ボタン",
+        "description": "説明テキストの表示・非表示を切り替えるボタンの既定値 (例: 「情報」、「メタデータ」など)。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "詳細を開いているときの概要テキスト (任意)"
+      },
+      {
+        "property": "closeText",
+        "title": "詳細を閉じているときの概要テキスト (任意)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "ਲਾਇਸੈਂਸ",
+    "description": "ਆਪਣੀ ਰਚਨਾ ਲਈ ਲਾਇਸੈਂਸ ਦਿਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਹਵਾਲਾ ਦਿੱਤੀ ਰਚਨਾ ਦਾ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ ਲਿੰਕ",
+        "description": "ਲਾਇਸੈਂਸਸ਼ੁਦਾ ਰਚਨਾ ਦਾ ਸਰੋਤ URL।"
+      },
+      {
+        "property": "license",
+        "title": "ਲਾਇਸੈਂਸ",
+        "description": "ਇਸ ਰਚਨਾ 'ਤੇ ਲਾਗੂ ਲਾਇਸੈਂਸ।"
+      },
+      {
+        "property": "creator",
+        "title": "ਸਿਰਜਣਹਾਰ",
+        "description": "ਇਸ ਰਚਨਾ ਦਾ ਸਿਰਜਣਹਾਰ ਜਾਂ ਮਾਲਕ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "ਸਰੋਤ ਲਿੰਕ",
+        "description": "ਵਾਧੂ ਲਾਇਸੈਂਸ ਵੇਰਵਿਆਂ ਦਾ ਲਿੰਕ।"
+      },
+      {
+        "property": "moreLabel",
+        "title": "ਹੋਰ ਲੇਬਲ",
+        "description": "ਵਾਧੂ ਲਾਇਸੈਂਸ ਵੇਰਵਿਆਂ ਲਈ ਲੇਬਲ।"
+      }
+    ]
+  }
+}

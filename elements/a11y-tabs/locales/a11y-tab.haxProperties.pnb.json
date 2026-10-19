@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ٹیب",
+    "description": "اک ٹیب۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "ٹیب آئیکن"
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال"
+      },
+      {
+        "property": "label",
+        "title": "ٹیب لیبل"
+      },
+      {
+        "slot": "",
+        "title": "ٹیب مواد",
+        "description": "ٹیب دا مواد۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "منفرد ID"
+      },
+      {
+        "property": "flag",
+        "title": "اختیاری جھنڈا متن"
+      },
+      {
+        "property": "flagIcon",
+        "title": "اختیاری جھنڈا آئیکن"
+      }
+    ]
+  }
+}

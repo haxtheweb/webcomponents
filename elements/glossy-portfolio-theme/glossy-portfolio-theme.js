@@ -154,7 +154,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
             0 0 0
               calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
           );
-          transition: margin 0.6s ease-in-out;
+          transition: margin var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
 
         :host([edit-mode][tray-status="collapsed"]) {

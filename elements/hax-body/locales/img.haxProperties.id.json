@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Gambar Dasar",
+    "description": "Elemen gambar dasar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Sumber",
+        "description": "URL gambar."
+      },
+      {
+        "attribute": "alt",
+        "title": "Teks alt",
+        "description": "Teks alternatif untuk aksesibilitas dan SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Tinggi",
+        "description": "Tinggi dalam piksel. Biarkan kosong untuk menggunakan ukuran asli."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Pemuatan gambar",
+        "description": "Pilih kapan gambar dimuat.",
+        "options": {
+          "lazy": "Muat saat terlihat",
+          "auto": "Otomatis"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Sumber responsif (srcset)",
+        "description": "Cantumkan URL gambar dan deskriptor (mis. 480w atau 2x) agar peramban memilih ukuran terbaik untuk layar. Disimpan sebagai atribut srcset standar."
+      }
+    ]
+  }
+}

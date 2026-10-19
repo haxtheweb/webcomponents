@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Paprastas paveikslėlis",
+    "description": "Paprastas paveikslėlio elementas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Šaltinis",
+        "description": "Paveikslėlio URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alternatyvusis tekstas",
+        "description": "Alternatyvusis tekstas prieinamumui ir SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Aukštis",
+        "description": "Aukštis pikseliais. Palikite tuščią, kad būtų naudojamas natūralus dydis."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Vaizdo įkėlimas",
+        "description": "Pasirinkite, kada įkeliamas paveikslėlis.",
+        "options": {
+          "lazy": "Įkelti, kai matomas",
+          "auto": "Automatinis"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Prisitaikantys šaltiniai (srcset)",
+        "description": "Nurodykite paveikslėlių URL ir aprašus (pvz., 480w arba 2x), kad naršyklės parinktų geriausią dydį ekranui. Saugoma kaip standartinis srcset atributas."
+      }
+    ]
+  }
+}

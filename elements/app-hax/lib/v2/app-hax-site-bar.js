@@ -583,9 +583,9 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
             2px 2px 12px rgba(0, 0, 0, 0.3)
           );
           transition:
-            transform 0.3s ease-in-out,
-            box-shadow 0.3s ease-in-out,
-            border 0.3s ease-in-out;
+            transform var(--ddd-duration-normal, 0.3s) ease-in-out,
+            box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out,
+            border var(--ddd-duration-normal, 0.3s) ease-in-out;
           overflow: visible;
         }
 

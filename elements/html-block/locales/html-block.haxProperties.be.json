@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HTML-блок",
+    "description": "Базавы HTML-блок з падключэннем HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML-код, які вы хочаце паказаць у змесціве"
+      }
+    ]
+  }
+}

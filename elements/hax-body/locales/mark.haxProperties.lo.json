@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ໄຮໄລ",
+    "description": "ໄຮໄລຂໍ້ຄວາມໃນແຖວ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ຂໍ້ຄວາມ",
+        "description": "ຂໍ້ຄວາມທີ່ໄຮໄລ."
+      }
+    ]
+  }
+}

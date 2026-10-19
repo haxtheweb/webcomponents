@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Sematake isi web njaba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Sumber",
+        "description": "URL kanggo sumber iki."
+      }
+    ]
+  }
+}

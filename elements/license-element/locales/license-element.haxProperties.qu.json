@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Licencia",
+    "description": "Llamk'ayniykipaq licenciata quy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Suti",
+        "description": "Citasqa llamk'aypa sutin."
+      },
+      {
+        "property": "source",
+        "title": "Pukyu t'inki",
+        "description": "Licenciayuq llamk'aypa pukyu URL-nin."
+      },
+      {
+        "property": "license",
+        "title": "Licencia",
+        "description": "Kay llamk'ayman churasqa licencia."
+      },
+      {
+        "property": "creator",
+        "title": "Ruraq",
+        "description": "Kay llamk'aypa ruraqnin utaq dueñon."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Pukyu t'inki",
+        "description": "Yapasqa licencia detallekunaman t'inki."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Aswan sutin",
+        "description": "Yapasqa licencia detallekunapaq suti."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "સમયરેખા",
+    "description": "છબીઓ અને ટેક્સ્ટ સાથે ઘટનાઓની ટાઇમલાઇન"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "સમયરેખાનું શીર્ષક",
+        "description": "ટાઇમલાઇન માટે શીર્ષક."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "વૈકલ્પિક ઍક્સેન્ટ રંગ."
+      },
+      {
+        "property": "dark",
+        "title": "ડાર્ક થીમ",
+        "description": "ડાર્ક થીમ સક્ષમ કરો"
+      },
+      {
+        "slot": "",
+        "title": "ટાઇમલાઇન વર્ણન",
+        "description": "ટાઇમલાઇનનું વર્ણન કરતું વૈકલ્પિક ટેક્સ્ટ."
+      },
+      {
+        "property": "events",
+        "title": "ટાઇમલાઇન ઘટનાઓ",
+        "description": "ટાઇમલાઇનમાંની ઘટનાઓ"
+      }
+    ]
+  }
+}

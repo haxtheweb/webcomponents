@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Аудіо",
+    "description": "Дає змогу показувати відео в максимально доступному вигляді незалежно від джерела."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Джерело",
+        "description": "URL цього медіафайлу."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Назва",
+        "description": "Короткий заголовок під відео"
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "Виберіть акцентний колір для програвача."
+      },
+      {
+        "property": "track",
+        "title": "Субтитри",
+        "description": "URL файлу субтитрів."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Мініатюра",
+        "description": "Необов'язково. URL мініатюри/постера."
+      },
+      {
+        "property": "learningMode",
+        "title": "Увімкнути навчальний режим",
+        "description": "Вимикає перемотування вперед і назад."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Прибрати кнопку «Відкрити на YouTube»",
+        "description": "Прибирає кнопку відкриття відео на YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Додати посилання для поширення?",
+        "description": "Надає посилання, щоб поділитися відео."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Визначає, чи використовувати CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Дозволити фонове відтворення",
+        "description": "Відео автоматично призупиняється / відтворюється, коли вкладка втрачає фокус; це дає змогу відтворювати відео без фокуса на вкладці"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Темна тема для транскрипту",
+        "description": "Увімкнути темну тему для транскрипту."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Вимкнути інтерактивність",
+        "description": "Вимкнути інтерактивний режим, у якому транскрипт клікабельний."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Приховати позначки часу",
+        "description": "Приховати позначки часу в транскрипті."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Приховати транскрипт",
+        "description": "Приховувати транскрипт за замовчуванням."
+      },
+      {
+        "property": "lang",
+        "title": "Мова",
+        "description": "Мова медіафайлу."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Hazarda paĝa enhavo",
+    "description": "Montri hazardan suprnivelan elementon el elektita paĝo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Paĝo",
+        "description": "Elektu la paĝon el kiu preni hazardan enhavon. La elemento hazarde montros unu el la suprnivelaj HTML-elementoj de ĉi tiu paĝo."
+      }
+    ]
+  }
+}

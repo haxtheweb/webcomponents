@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "แผนภูมิวงกลม",
+    "description": "สร้างแผนภูมิที่เข้าถึงได้จาก CSV"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "สีเน้น",
+        "description": "สีเน้นเสริม"
+      },
+      {
+        "title": "ธีมมืด",
+        "description": "เปิดใช้ธีมมืด"
+      },
+      {
+        "title": "ไฟล์ CSV",
+        "description": "โหลดข้อมูลจาก CSV"
+      },
+      {
+        "title": "ชื่อแผนภูมิ",
+        "description": "ข้อความแสดงแทนที่เข้าถึงได้สำหรับแผนภูมิของคุณ"
+      },
+      {
+        "title": "คำอธิบายแผนภูมิ",
+        "description": "คำอธิบายที่เข้าถึงได้ของแผนภูมิของคุณ"
+      },
+      {
+        "title": "ชื่อสเกล",
+        "description": "อัตราส่วนความกว้าง:ความสูงของแผนภูมิ (ดู https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings สำหรับ $ct-scales และ $ct-scales-names)",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "โดนัท"
+      },
+      {
+        "title": "แสดงป้ายกำกับ"
+      },
+      {
+        "title": "มุมเริ่มต้น"
+      },
+      {
+        "title": "ระยะห่างภายใน"
+      },
+      {
+        "title": "ทั้งหมด",
+        "description": "ค่ารวมที่คุณสามารถระบุได้ (ไม่บังคับ) เมื่อระบุค่ารวม ผลรวมของค่าในชุดข้อมูลต้องเท่ากับค่ารวมนี้จึงจะวาดวงกลมเต็มวงได้ คุณสามารถใช้พารามิเตอร์นี้เพื่อวาดเพียงบางส่วนของแผนภูมิวงกลมหรือแผนภูมิเกจ"
+      },
+      {
+        "title": "ละเว้นค่าว่าง",
+        "description": "ค่าว่างจะถูกละเว้นเพื่อหลีกเลี่ยงการวาดส่วนและป้ายกำกับที่ไม่จำเป็น"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "กลับลำดับข้อมูล",
+        "description": "กลับลำดับข้อมูลรวมถึงป้ายกำกับ ลำดับชุดข้อมูล และอาร์เรย์ข้อมูลของชุดข้อมูลทั้งหมด"
+      },
+      {
+        "title": "ตาราง HTML",
+        "description": "ไม่บังคับ: โหลดข้อมูลเป็นตาราง HTML"
+      },
+      {
+        "title": "ความกว้างเส้นโดนัท"
+      },
+      {
+        "title": "โดนัทแบบทึบ",
+        "description": "วาดส่วนของโดนัทเป็นรูปทรงแทนเส้น"
+      },
+      {
+        "title": "ทิศทางป้ายกำกับ",
+        "description": "วาดส่วนของโดนัทเป็นรูปทรงแทนเส้น",
+        "options": {
+          "neutral": "เป็นกลาง",
+          "explode": "กระจายออก",
+          "implode": "หดเข้า"
+        }
+      },
+      {
+        "title": "ระยะเยื้องป้ายกำกับ",
+        "description": "ระยะเยื้องตำแหน่งป้ายกำกับจากตำแหน่งมาตรฐานซึ่งอยู่ที่ครึ่งหนึ่งของรัศมี ค่านี้เป็นได้ทั้งบวกและลบ ค่าบวกจะวางป้ายกำกับห่างออกจากจุดศูนย์กลาง"
+      },
+      {
+        "title": "ตำแหน่งป้ายกำกับ",
+        "options": {
+          "inside": "ด้านใน",
+          "outside": "ด้านนอก",
+          "center": "กึ่งกลาง"
+        }
+      }
+    ]
+  }
+}

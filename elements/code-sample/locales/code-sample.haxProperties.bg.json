@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Примерен код",
+    "description": "Примерен код, оцветен в страницата"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Оцветяване на кода",
+        "description": "Синтактично оцветяване, прилагано към областта с код",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON данни",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Бутон за копиране в клипборда",
+        "description": "бутон горе вдясно с надпис „копиране в клипборда“"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Начало на открояването",
+        "description": "Номер на реда, от който да започне открояването"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Край на открояването",
+        "description": "Ред, на който да завърши открояването"
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Musoro unoenderana",
+    "description": "inoburitsa nhevedzano yakarurama yemisoro zvichienderana nemusoro wemubereki"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Resource ID yeMusoro weMubereki"
+      },
+      {
+        "property": "disableLink",
+        "description": "Inodzima chinhu chebhatani rechinongedzo."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Inoisa bhatani rekukopa chinongedzo kurudyi chaiko kwemusoro."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Danho remusoro kana mubereki asina kuwanikwa."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Inotsiva mavara akagara aripo eshoko rekukopa chinongedzo."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Inotsiva zita rakagara riripo rebhatani rekukopa chinongedzo."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Inotsiva aikoni yakagara iripo yebhatani rekukopa chinongedzo."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Inotsiva zita rakagara riripo rebhatani rekuvhara shoko rekukopa chinongedzo."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Inotsiva aikoni yakagara iripo yebhatani rekuvhara shoko rekukopa chinongedzo."
+      }
+    ]
+  }
+}

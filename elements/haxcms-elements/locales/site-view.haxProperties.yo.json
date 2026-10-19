@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Ìwò Ojú Òpó",
+    "description": "Búlọ́ọ̀kù alágbèéká tó ń béèrè àti fi dátà ojú òpó hàn gẹ́gẹ́ bí àwọn òṣùwọ̀n"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL Ìwò",
+        "description": "Àwọn pàrámítà ìbéèrè fún ìṣàn dátà ìwò. O lè gbà á láti pátákó ìdarí Views."
+      },
+      {
+        "property": "renderer",
+        "title": "Ipò ìfihàn",
+        "description": "Bí a ṣe yẹ kí a fi àwọn èsì ìwò hàn"
+      },
+      {
+        "property": "entity",
+        "title": "Irú ẹ̀dá",
+        "description": "Irú ẹ̀dá tí a ń lò fún títúpalẹ̀ ìdáhùn",
+        "options": {
+          "": "Àkọ́kọ́ (àwọn ohun)",
+          "item": "Ohun kan",
+          "page": "Ojú-ìwé",
+          "file": "Fáìlì",
+          "tag": "Àmì-ọ̀rọ̀",
+          "block": "Búlọ́ọ̀kù",
+          "view": "Ìwò",
+          "theme": "Àkòrí",
+          "region": "Agbègbè",
+          "customElement": "Ẹ̀yà Àdáni"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Já ìwò ojú òpó",
+        "description": "Yí i padà sí àkóónú àìyípadà fún àtúnṣe tààrà; ó dá ìmúdójúìwọ̀n láìfọwọ́yí láti orísun dúró."
+      }
+    ]
+  }
+}

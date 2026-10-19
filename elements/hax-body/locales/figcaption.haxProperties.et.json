@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Joonise pealdis",
+    "description": "Joonise pealdis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Pildiallkiri",
+        "description": "Joonise all kuvatav tekst."
+      }
+    ]
+  }
+}

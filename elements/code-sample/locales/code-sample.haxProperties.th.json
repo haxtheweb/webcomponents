@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "ตัวอย่างโค้ด",
+    "description": "ตัวอย่างโค้ดที่เน้นไวยากรณ์ในหน้า"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "การเน้นโค้ด",
+        "description": "การเน้นไวยากรณ์ที่จะใช้กับพื้นที่โค้ด",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "ข้อมูล JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "ปุ่มคัดลอกไปยังคลิปบอร์ด",
+        "description": "ปุ่มที่มุมขวาบนที่เขียนว่าคัดลอกไปยังคลิปบอร์ด"
+      },
+      {
+        "property": "highlightStart",
+        "title": "จุดเริ่มต้นการเน้น",
+        "description": "หมายเลขบรรทัดที่จะเริ่มเน้น"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "จุดสิ้นสุดการเน้น",
+        "description": "บรรทัดที่จะสิ้นสุดการเน้น"
+      }
+    ]
+  }
+}

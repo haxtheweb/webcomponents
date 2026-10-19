@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Immaġni Bażika",
+    "description": "Element bażiku tal-immaġni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Sors",
+        "description": "URL tal-immaġni."
+      },
+      {
+        "attribute": "alt",
+        "title": "Test alternattiv",
+        "description": "Test alternattiv għall-aċċessibbiltà u l-SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Għoli",
+        "description": "Għoli f'pixels. Ħallih vojt biex tuża d-daqs naturali."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Tagħbija tal-istampa",
+        "description": "Agħżel meta titgħabba l-immaġni.",
+        "options": {
+          "lazy": "Għabbi meta tkun viżibbli",
+          "auto": "Awtomatiku"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Sorsi responsivi (srcset)",
+        "description": "Elenka l-URLs tal-immaġnijiet u d-deskritturi (eż. 480w jew 2x) sabiex il-browsers jagħżlu l-aħjar daqs għall-iskrin. Maħżun bħala l-attribut standard srcset."
+      }
+    ]
+  }
+}

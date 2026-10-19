@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Réamhamharc GitHub",
+    "description": "Figiúr inrochtana le cur síos fada"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Eagraíocht",
+        "description": "Ainm meaisín na heagraíochta GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Stór",
+        "description": "Ainm meaisín an stóir"
+      },
+      {
+        "property": "extended",
+        "title": "Amharc Leathnaithe",
+        "description": "Cuireann sé readme san áireamh san eilimint"
+      }
+    ]
+  }
+}

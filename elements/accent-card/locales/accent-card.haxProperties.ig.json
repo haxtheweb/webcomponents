@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kaadị",
+    "description": "Kaadị nwere ịchọ mma accent nhọrọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Isiokwu",
+        "description": "Isiokwu maka kaadị."
+      },
+      {
+        "slot": "subheading",
+        "title": "Isiokwu nta",
+        "description": "Isiokwu nta nhọrọ maka kaadị."
+      },
+      {
+        "slot": "content",
+        "title": "Ọdịnaya",
+        "description": "Ọdịnaya maka kaadị."
+      },
+      {
+        "slot": "footer",
+        "title": "Ala peeji",
+        "description": "Ala ibe nhọrọ maka kaadị."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Onyonyo",
+        "description": "Onyonyo nhọrọ"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Ederede alt onyonyo",
+        "description": "Ederede ọzọ na-akọwa onyonyo maka ndị na-agụ ihuenyo. Hapụ ya efu naanị ma ọ bụrụ na onyonyo ahụ bụ naanị maka ịchọ mma."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Nhazi onyonyo n'ahịrị ụkwụ",
+        "options": {
+          "left": "aka ekpe",
+          "center": "etiti",
+          "right": "aka nri"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Nhazi onyonyo n'ogologo",
+        "options": {
+          "top": "elu",
+          "center": "etiti",
+          "bottom": "ala"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba Mkpụrụ",
+        "description": "Agba mkpụrụ nhọrọ."
+      },
+      {
+        "property": "dark",
+        "title": "Isiokwu Gbara Ọchịchịrị",
+        "description": "Gbanye isiokwu ọchịchịrị"
+      },
+      {
+        "property": "horizontal",
+        "title": "Kwụ ọnọdụ",
+        "description": "Nhazi n'ahịrị ụkwụ?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Accent isiokwu",
+        "description": "Tinye agba accent na isiokwu?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Accent ndabere",
+        "description": "Tinye agba accent na ndabere kaadị?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Enweghị accent oke",
+        "description": "Wepụ accent oke?"
+      },
+      {
+        "property": "flat",
+        "title": "Ewepụghị elu",
+        "description": "Wepụ onyinyo igbe?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Nkuku",
+        "description": "Ọdịnaya maka nkuku kaadị."
+      }
+    ]
+  }
+}

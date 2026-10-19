@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Jeikuaa Pehẽ",
+    "description": "Peteĩ kora mbo'eharakuérape g̃uarã omomarandu hag̃ua pedagogía ha mbo'e rape."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Peteĩchagua",
+        "description": "Kora reko ojepurútava."
+      },
+      {
+        "property": "subtitle",
+        "title": "Téra'i",
+        "description": "Kora téra'i."
+      },
+      {
+        "property": "url",
+        "title": "Joajuha",
+        "description": "Peteĩ joajuha ojeporavokuaáva korápe g̃uarã (Joajuha ndaipóri Jeikuaa Rehupytyrãme g̃uarã)."
+      },
+      {
+        "property": "title",
+        "title": "Téra",
+        "description": "Emoĩ Téra, kóva omyengovia téra reko rehegua"
+      },
+      {
+        "property": "icon",
+        "title": "Ta'ãnga'i",
+        "description": "Emoĩ ta'ãnga'i, kóva omyengovia ta'ãnga'i reko rehegua"
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Emoĩ sa'y jehechaukaha, kóva omyengovia sa'y reko rehegua"
+      },
+      {
+        "slot": "",
+        "title": "Tetepy"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Dostępne motywy",
+    "description": "Wyświetla dostępne motywy HAXcms z przełączaniem podglądu na żywo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Tryb widoku",
+        "description": "Wybierz sposób wyświetlania motywów",
+        "options": {
+          "gallery": "Galeria",
+          "table": "Tabela"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Pokaż szczegóły",
+        "description": "Pokaż opisy motywów i dodatkowe informacje"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Pokaż ukryte i przestarzałe motywy",
+        "description": "Pokaż ukryte, przestarzałe i okropne motywy oprócz domyślnych motywów panelu"
+      },
+      {
+        "property": "columns",
+        "title": "Kolumny (galeria)",
+        "description": "Liczba kolumn w widoku galerii"
+      }
+    ]
+  }
+}

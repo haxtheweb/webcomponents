@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Zvuk",
+    "description": "Dokáže prezentovať video vysoko prístupným spôsobom bez ohľadu na zdroj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Zdroj",
+        "description": "URL tohto média."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Názov",
+        "description": "Jednoduchý názov pod videom"
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňujúca farba",
+        "description": "Vyberte farbu zvýraznenia prehrávača."
+      },
+      {
+        "property": "track",
+        "title": "Skryté titulky",
+        "description": "URL súboru s titulkami."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Náhľadový obrázok",
+        "description": "Voliteľné. URL náhľadového obrázka/plagátu."
+      },
+      {
+        "property": "learningMode",
+        "title": "Zapnúť režim učenia",
+        "description": "Vypne pretáčanie dopredu a dozadu."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Odstrániť tlačidlo otvorenia na YouTube",
+        "description": "Odstráni tlačidlo na otvorenie videa na YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Zahrnúť odkaz na zdieľanie?",
+        "description": "Poskytne odkaz na zdieľanie videa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Určuje, či sa má použiť CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Povoliť prehrávanie na pozadí",
+        "description": "Videá sa automaticky pozastavia / spustia, keď karta stratí fokus; toto umožní prehrávanie videa aj bez fokusu karty"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tmavá téma pre prepis",
+        "description": "Zapnúť tmavú tému pre prepis."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Vypnúť interaktivitu",
+        "description": "Vypnúť interaktívny režim, v ktorom je prepis klikateľný."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Skryť časové značky",
+        "description": "Skryť časové značky v prepise."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Skryť prepis",
+        "description": "Predvolene skryť prepis."
+      },
+      {
+        "property": "lang",
+        "title": "Jazyk",
+        "description": "Jazyk média."
+      }
+    ]
+  }
+}

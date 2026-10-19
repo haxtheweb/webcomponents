@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Napis slike",
+    "description": "Napis za sliko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Napis",
+        "description": "Besedilo, prikazano pod sliko."
+      }
+    ]
+  }
+}

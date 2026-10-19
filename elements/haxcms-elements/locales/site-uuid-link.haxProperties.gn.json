@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX joajuha",
+    "description": "Peteĩ joajuha mba'erepy tenda rembiapohápe g̃uarã."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Mba'e",
+        "description": "Mba'e ojehechaukátava joajuha / téra mba'ekuaarãme g̃uarã"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Saīsinājums",
+    "description": "Saīsinājums ar pilnā termina rīka padomu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teksts",
+        "description": "Redzamais saīsinājuma teksts."
+      },
+      {
+        "attribute": "title",
+        "title": "Vārds",
+        "description": "Pilnais termins, kas parādās, novietojot kursoru."
+      }
+    ]
+  }
+}

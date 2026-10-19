@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Gráfico de líneas",
+    "description": "Crea un gráfico accesible a partir de un CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Color de acento",
+        "description": "Un color de acento opcional."
+      },
+      {
+        "title": "Tema oscuro",
+        "description": "Activar tema oscuro"
+      },
+      {
+        "title": "Archivo CSV",
+        "description": "Cargar datos desde un CSV."
+      },
+      {
+        "title": "Título del gráfico",
+        "description": "Texto alternativo accesible para tu gráfico."
+      },
+      {
+        "title": "Descripción del gráfico",
+        "description": "Descripción accesible de tu gráfico."
+      },
+      {
+        "title": "Nombre de la escala",
+        "description": "La proporción ancho:alto del gráfico (consulta https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings para $ct-scales y $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Mostrar fondo de cuadrícula"
+      },
+      {
+        "title": "Mostrar área"
+      },
+      {
+        "title": "Mostrar línea"
+      },
+      {
+        "title": "Mostrar puntos"
+      },
+      {
+        "title": "Ancho completo"
+      },
+      {
+        "title": "Mostrar etiquetas de puntos"
+      },
+      {
+        "title": "Relleno del gráfico (superior)"
+      },
+      {
+        "title": "Relleno del gráfico (inferior)"
+      },
+      {
+        "title": "Relleno del gráfico (izquierdo)"
+      },
+      {
+        "title": "Relleno del gráfico (derecho)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Invertir datos",
+        "description": "Invierte los datos, incluidas las etiquetas, el orden de las series y las matrices de datos de las series completas."
+      },
+      {
+        "title": "Tabla HTML",
+        "description": "Opcional: cargar los datos como una tabla HTML."
+      },
+      {
+        "title": "Mínimo del gráfico",
+        "description": "Reemplazar el mínimo natural del gráfico te permite acercarte o limitar el valor más bajo mostrado"
+      },
+      {
+        "title": "Máximo del gráfico",
+        "description": "Reemplazar el máximo natural del gráfico te permite acercarte o limitar el valor más alto mostrado"
+      },
+      {
+        "title": "Mostrar etiquetas de puntos",
+        "options": {
+          "middle": "Centro",
+          "start": "Inicio",
+          "end": "Fin"
+        }
+      },
+      {
+        "title": "Desplazamiento X de las etiquetas de puntos"
+      },
+      {
+        "title": "Desplazamiento Y de las etiquetas de puntos"
+      },
+      {
+        "title": "Suavizado de línea"
+      },
+      {
+        "title": "Base del área",
+        "description": "La base del gráfico de áreas que se usará para cerrar la forma del área (normalmente es 0)."
+      },
+      {
+        "title": "Eje X: mostrar cuadrícula",
+        "description": "Muestra la cuadrícula del eje X."
+      },
+      {
+        "title": "Desplazamiento del eje X"
+      },
+      {
+        "title": "Posición del eje X",
+        "description": "Posición donde se colocan las etiquetas. Puede ser \"start\" o \"end\", donde \"start\" equivale a izquierda o arriba en el eje vertical y \"end\" equivale a derecha o abajo en el eje horizontal"
+      },
+      {
+        "title": "Eje X: mostrar etiqueta",
+        "description": "Muestra la etiqueta del eje X."
+      },
+      {
+        "title": "Etiqueta del eje X (desplazamiento horizontal)",
+        "description": "Posición horizontal de las etiquetas del eje X."
+      },
+      {
+        "title": "Etiqueta del eje X (desplazamiento vertical)",
+        "description": "Posición vertical de las etiquetas del eje X."
+      },
+      {
+        "title": "Título del eje X",
+        "description": "Título opcional del eje X."
+      },
+      {
+        "title": "Título del eje X (desplazamiento horizontal)",
+        "description": "Posición horizontal del título del eje X."
+      },
+      {
+        "title": "Título del eje X (desplazamiento vertical)",
+        "description": "Posición vertical del título del eje X."
+      },
+      {
+        "title": "Anclaje del título del eje X",
+        "description": "Anclaje opcional del título del eje X.",
+        "options": {
+          "middle": "centro",
+          "end": "final",
+          "start": "inicio"
+        }
+      },
+      {
+        "title": "Eje Y: mostrar cuadrícula",
+        "description": "Muestra la cuadrícula del eje Y."
+      },
+      {
+        "title": "Desplazamiento del eje Y"
+      },
+      {
+        "title": "Posición del eje Y",
+        "description": "Posición donde se colocan las etiquetas. Puede ser \"start\" o \"end\", donde \"start\" equivale a izquierda o arriba en el eje vertical y \"end\" equivale a derecha o abajo en el eje horizontal"
+      },
+      {
+        "title": "Eje Y: mostrar etiqueta",
+        "description": "Muestra la etiqueta del eje Y."
+      },
+      {
+        "title": "Etiqueta del eje Y (desplazamiento horizontal)",
+        "description": "Posición horizontal de la etiqueta del eje Y."
+      },
+      {
+        "title": "Etiqueta del eje Y (desplazamiento vertical)",
+        "description": "Posición vertical de la etiqueta del eje Y."
+      },
+      {
+        "title": "Espacio mínimo de la escala del eje Y",
+        "description": "Especifica la altura mínima en píxeles de los pasos de la escala."
+      },
+      {
+        "title": "Escala del eje Y (solo enteros)",
+        "description": "Usa solo valores enteros (números enteros) para los pasos de la escala."
+      },
+      {
+        "title": "Título del eje Y",
+        "description": "Título opcional del eje Y."
+      },
+      {
+        "title": "Título del eje Y (desplazamiento vertical)",
+        "description": "Posición horizontal del título del eje Y."
+      },
+      {
+        "title": "Título del eje Y (desplazamiento horizontal)",
+        "description": "Posición horizontal del título del eje Y."
+      },
+      {
+        "title": "Anclaje del título del eje Y",
+        "description": "Anclaje opcional del título del eje Y.",
+        "options": {
+          "middle": "centro",
+          "end": "final",
+          "start": "inicio"
+        }
+      },
+      {
+        "title": "Voltear título del eje Y",
+        "description": "¿Voltear el título del eje Y?"
+      }
+    ]
+  }
+}

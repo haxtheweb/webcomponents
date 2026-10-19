@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "သင်ရိုး မော်ဒယ်",
+    "description": "အသေးစိတ်၊ ကာတွန်းနှင့် အသိပညာ စစ်ဆေးမှုများပါ သင်ရိုး သဘောတရားများအတွက် အပြန်အလှန် အပြင်အဆင်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "ခေါင်းစဉ်"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "အချက်အလက် နေရာ"
+      },
+      {
+        "title": "အသေးစိတ် နေရာ"
+      },
+      {
+        "title": "ကာတွန်း နေရာ"
+      },
+      {
+        "title": "အသိပညာ စစ်ဆေးမှု နေရာ"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "လိုဂို နေရာ"
+      }
+    ]
+  }
+}

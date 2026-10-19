@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Permesilo",
+    "description": "Provizu permesilon por via verko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo de la citita verko."
+      },
+      {
+        "property": "source",
+        "title": "Fonta ligilo",
+        "description": "Fonta URL de la permesita verko."
+      },
+      {
+        "property": "license",
+        "title": "Permesilo",
+        "description": "Permesilo aplikata al ĉi tiu verko."
+      },
+      {
+        "property": "creator",
+        "title": "Kreinto",
+        "description": "Kreinto aŭ posedanto de ĉi tiu verko."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Fonta ligilo",
+        "description": "Ligilo al pliaj permesilaj detaloj."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Etikedo por pli",
+        "description": "Etikedo por pliaj permesilaj detaloj."
+      }
+    ]
+  }
+}

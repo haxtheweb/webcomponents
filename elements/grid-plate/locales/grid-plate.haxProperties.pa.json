@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ਕਾਲਮ ਲੇਆਉਟ",
+    "description": "ਸਮੱਗਰੀ ਨੂੰ ਸਧਾਰਨ ਕਾਲਮਾਂ ਵਿੱਚ ਵਿਵਸਥਿਤ ਕਰੋ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "ਕਾਲਮ ਲੇਆਉਟ",
+        "description": "ਇਹ ਆਈਟਮਾਂ ਪੇਸ਼ ਕਰਨ ਦੀ ਸ਼ੈਲੀ (ਛੋਟੀਆਂ ਸਕ੍ਰੀਨਾਂ ਲਈ ਬਦਲ ਸਕਦੀ ਹੈ)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "ਰਿਸਪੌਂਸਿਵ ਬੰਦ ਕਰੋ",
+        "description": "ਵੱਡੀਆਂ ਸਕ੍ਰੀਨਾਂ 'ਤੇ ਕਾਲਮ ਰੱਖਣ ਅਤੇ ਸਭ ਤੋਂ ਛੋਟੀਆਂ ਸਕ੍ਰੀਨਾਂ 'ਤੇ ਫਿਰ ਵੀ ਤਹਿ ਕਰਨ ਲਈ ਬਾਕਸ 'ਤੇ ਨਿਸ਼ਾਨ ਲਾਓ"
+      },
+      {
+        "property": "itemPadding",
+        "title": "ਆਈਟਮ ਪੈਡਿੰਗ",
+        "description": "ਹਰ ਆਈਟਮ ਅੰਦਰ ਪੈਡਿੰਗ"
+      },
+      {
+        "property": "itemMargin",
+        "title": "ਆਈਟਮ ਹਾਸ਼ੀਏ",
+        "description": "ਆਈਟਮਾਂ ਵਿਚਕਾਰ ਹਾਸ਼ੀਆ"
+      }
+    ]
+  }
+}

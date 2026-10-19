@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "संदर्भ",
+    "description": "तीन सादरीकरण मोडसह संदर्भ घटक."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "संदर्भित कार्याचे शीर्षक."
+      },
+      {
+        "property": "source",
+        "title": "स्रोत लिंक",
+        "description": "संदर्भित कार्याची स्रोत URL."
+      },
+      {
+        "property": "date",
+        "title": "पाहिल्याची तारीख",
+        "description": "स्रोत पाहिल्याची तारीख."
+      },
+      {
+        "property": "scope",
+        "title": "व्याप्ती",
+        "description": "संदर्भ द्यायच्या घटकाची व्याप्ती.",
+        "options": {
+          "sibling": "समस्तरीय घटक",
+          "parent": "पालक घटक"
+        }
+      },
+      {
+        "property": "license",
+        "title": "परवाना",
+        "description": "संदर्भित कार्याचा परवाना."
+      },
+      {
+        "property": "creator",
+        "title": "निर्माता",
+        "description": "संदर्भित कार्याचा निर्माता किंवा मालक."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema प्रकार",
+        "description": "या संदर्भासाठी OER Schema क्लास. डीफॉल्ट oer:ReferencedMaterial आहे; फक्त वैध OER क्लासनेच बदला (उदा. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

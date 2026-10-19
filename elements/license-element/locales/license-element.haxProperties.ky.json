@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Лицензия",
+    "description": "Ишиңиз үчүн лицензия бериңиз."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Аталышы",
+        "description": "Цитаталанган чыгарманын аталышы."
+      },
+      {
+        "property": "source",
+        "title": "Булак шилтемеси",
+        "description": "Лицензияланган чыгарманын булак URL дареги."
+      },
+      {
+        "property": "license",
+        "title": "Лицензия",
+        "description": "Бул чыгармага колдонулган лицензия."
+      },
+      {
+        "property": "creator",
+        "title": "Автор",
+        "description": "Бул чыгарманын автору же ээси."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Булак шилтемеси",
+        "description": "Лицензия боюнча кошумча маалыматка шилтеме."
+      },
+      {
+        "property": "moreLabel",
+        "title": "\"Көбүрөөк\" белгиси",
+        "description": "Лицензия боюнча кошумча маалыматтын белгиси."
+      }
+    ]
+  }
+}

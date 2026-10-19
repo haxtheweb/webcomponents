@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Vērtējumu žurnāls",
+    "description": "Bezgalvas vērtējumu žurnāls, kas atbalsta vairākas aizmugursistēmas ar vērtēšanas kritērijiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Avots",
+        "description": "Datu avota veids (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL galapunkts (JSON)",
+          "json": "JSON datu bloks",
+          "filesystem": "Failu sistēma"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Avota dati",
+        "description": "URL vai JSON dati vērtējumu žurnālam."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursa atsauce",
+        "description": "Kursa identifikators, kas tiek izvadīts kā oer:forCourse katram novērtējuma resursam."
+      }
+    ]
+  }
+}

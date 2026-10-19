@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Jechoota",
+    "description": "Jecha jechootaa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Jecha"
+      },
+      {
+        "slot": "",
+        "title": "Hiika",
+        "description": "Hiika yeroo jechi cuqaasamu agarsiifamu."
+      },
+      {
+        "property": "description",
+        "title": "Ibsa (OER Schema)",
+        "description": "OER Schema: ibsa gabaabaa jecha jechootaa. Yoo duwwaa hafe barreeffama hiikaa irraa ofumaan guutama."
+      }
+    ]
+  }
+}

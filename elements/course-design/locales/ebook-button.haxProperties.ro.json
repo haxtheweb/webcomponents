@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Buton eBook",
+    "description": "Un buton care trimite către un eBook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul butonului."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Linkul către care se redirecționează la clic."
+      },
+      {
+        "property": "icon",
+        "title": "Pictogramă",
+        "description": "Pictogramă care reprezintă acest link"
+      }
+    ]
+  }
+}

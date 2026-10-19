@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Мансап элементі",
+    "description": "Жеке ұйым және оған қатысты рөлдер"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Ұйым атауы"
+      },
+      {
+        "property": "location",
+        "title": "Орны"
+      },
+      {
+        "property": "source",
+        "title": "Дереккөз"
+      }
+    ]
+  }
+}

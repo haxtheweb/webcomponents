@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Pamata attēls",
+    "description": "Pamata attēla elements."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Avots",
+        "description": "Attēla URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alternatīvais teksts",
+        "description": "Alternatīvais teksts pieejamībai un SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Augstums",
+        "description": "Augstums pikseļos. Atstājiet tukšu, lai izmantotu dabisko izmēru."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Attēla ielāde",
+        "description": "Izvēlieties, kad attēls tiek ielādēts.",
+        "options": {
+          "lazy": "Ielādēt, kad redzams",
+          "auto": "Automātiski"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Adaptīvie avoti (srcset)",
+        "description": "Norādiet attēlu URL un deskriptorus (piem., 480w vai 2x), lai pārlūki izvēlētos ekrānam piemērotāko izmēru. Tiek saglabāts kā standarta atribūts srcset."
+      }
+    ]
+  }
+}

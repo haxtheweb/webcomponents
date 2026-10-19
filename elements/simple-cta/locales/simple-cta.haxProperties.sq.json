@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Thirrje për veprim",
+    "description": "Një buton i thjeshtë me lidhje për të ndërmarrë veprim."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Etiketa",
+        "description": "Etiketa e lidhjes"
+      },
+      {
+        "property": "link",
+        "title": "Lidhja",
+        "description": "Fut një lidhje te çdo burim"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Fshih ikonën",
+        "description": "Fshih ikonën që përdoret për të theksuar tekstin"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona e lidhjes së veprimit"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Donut-ka Horumarka",
+    "description": "Donut horumar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka curiyaha"
+      },
+      {
+        "property": "desc",
+        "title": "Sharaxaad",
+        "description": "Sharraxaad dheer oo la heli karo"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Isha Sawirka",
+        "description": "Isha sawirka ku jira donut-ka."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Qoraalka Beddelka Sawirka",
+        "description": "Qoraal beddel ah oo sawirka ah."
+      },
+      {
+        "property": "animated",
+        "title": "Dhaqdhaqaaq leh",
+        "description": "In horumarku dhaqdhaqaaqo marka ugu horraysa ee la soo raro"
+      },
+      {
+        "property": "complete",
+        "title": "Dhammaaday",
+        "description": "Saf qiimayaal dhammaystiran."
+      },
+      {
+        "property": "total",
+        "title": "Wadarta",
+        "description": "Wadarta marka dhammaan shayadu dhammaystiran yihiin."
+      },
+      {
+        "property": "startAngle",
+        "title": "Xagalka Bilowga",
+        "description": "Xagalka donut-ka ee horumarku ka bilaabmo"
+      }
+    ]
+  }
+}

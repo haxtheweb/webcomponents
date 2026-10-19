@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "学習コンポーネント",
+    "description": "教員が教授法や指導戦略を伝えるためのカード。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "種類",
+        "description": "使用するカードの種類。"
+      },
+      {
+        "property": "subtitle",
+        "title": "サブタイトル",
+        "description": "カードのサブタイトル。"
+      },
+      {
+        "property": "url",
+        "title": "リンク",
+        "description": "カードの任意のリンク（学習目標ではリンクを使用できません）。"
+      },
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "タイトルを設定します。種類に基づくタイトルを上書きします"
+      },
+      {
+        "property": "icon",
+        "title": "アイコン",
+        "description": "アイコンを設定します。種類に基づくアイコンを上書きします"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "アクセントカラーを設定します。種類に基づく色を上書きします"
+      },
+      {
+        "slot": "",
+        "title": "目次"
+      }
+    ]
+  }
+}

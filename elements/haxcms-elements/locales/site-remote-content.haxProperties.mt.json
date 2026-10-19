@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kontenut Remot",
+    "description": "Erġa' uża kontenut minn sit wieħed f'ieħor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Indirizz tas-sit",
+        "description": "Waħħal l-indirizz minn fejn tirreferi l-kontenut jekk mhux is-sit attwali"
+      },
+      {
+        "property": "uuid",
+        "title": "Oġġett",
+        "description": "Oġġett li jrid jintwera għad-data tal-link / titlu"
+      },
+      {
+        "property": "breakreference",
+        "title": "Ikser ir-referenza",
+        "description": "L-immarkar ta' din il-kaxxa jikkopja l-kontenut remot għall-editjar lokali iżda jneħħi l-assoċjazzjoni. Mhux se jibqa' jirċievi aġġornamenti meta jiġi aġġornat il-materjal ta' referenza."
+      },
+      {
+        "property": "showTitle",
+        "title": "Uri t-titlu",
+        "description": "Ixgħel biex jintwera t-titlu tar-riżors li qed jintwera"
+      }
+    ]
+  }
+}

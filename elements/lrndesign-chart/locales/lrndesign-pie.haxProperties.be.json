@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Кругавая дыяграма",
+    "description": "Стварае даступную дыяграму на аснове CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Акцэнтны колер",
+        "description": "Неабавязковы акцэнтны колер."
+      },
+      {
+        "title": "Цёмная тэма",
+        "description": "Уключыць цёмную тэму"
+      },
+      {
+        "title": "Файл CSV",
+        "description": "Загрузіць даныя з CSV."
+      },
+      {
+        "title": "Назва дыяграмы",
+        "description": "Даступны альтэрнатыўны тэкст для вашай дыяграмы."
+      },
+      {
+        "title": "Апісанне дыяграмы",
+        "description": "Даступнае апісанне вашай дыяграмы."
+      },
+      {
+        "title": "Назва маштабу",
+        "description": "Суадносіны шырыня:вышыня дыяграмы (гл. https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings для $ct-scales і $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Кальцо"
+      },
+      {
+        "title": "Паказваць подпіс"
+      },
+      {
+        "title": "Пачатковы вугал"
+      },
+      {
+        "title": "Адступ"
+      },
+      {
+        "title": "Усяго",
+        "description": "Неабавязковая агульная сума. Калі яе задаць, сума значэнняў серыі павінна быць роўная ёй, каб намаляваць поўны круг. Гэты параметр можна выкарыстоўваць, каб маляваць толькі часткі кругавых дыяграм або шкал."
+      },
+      {
+        "title": "Ігнараваць пустыя значэнні",
+        "description": "Пустыя значэнні будуць ігнаравацца, каб не маляваць непатрэбныя сектары і подпісы."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Адваротны парадак даных",
+        "description": "Адвярнуць парадак даных, уключаючы подпісы, парадак серый і ўсе масівы даных серый."
+      },
+      {
+        "title": "HTML-табліца",
+        "description": "Неабавязкова: загрузіць даныя як HTML-табліцу."
+      },
+      {
+        "title": "Таўшчыня кальца"
+      },
+      {
+        "title": "Суцэльнае кальцо",
+        "description": "Маляваць сегменты кальца як фігуры, а не контуры."
+      },
+      {
+        "title": "Кірунак подпісаў",
+        "description": "Маляваць сегменты кальца як фігуры, а не контуры.",
+        "options": {
+          "neutral": "нейтральны",
+          "explode": "вонкі",
+          "implode": "унутр"
+        }
+      },
+      {
+        "title": "Зрух подпісаў",
+        "description": "Зрух подпісу ад стандартнай пазіцыі, якая роўная палове радыуса. Значэнне можа быць дадатным або адмоўным. Пры дадатных значэннях подпіс аддаляецца ад цэнтра."
+      },
+      {
+        "title": "Пазіцыя подпісаў",
+        "options": {
+          "inside": "унутры",
+          "outside": "звонку",
+          "center": "па цэнтры"
+        }
+      }
+    ]
+  }
+}

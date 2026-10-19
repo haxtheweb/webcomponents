@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Gahee Hojii",
+    "description": "Gahee dhaabbata tokko keessaa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Mata duree"
+      },
+      {
+        "property": "startDate",
+        "title": "Guyyaa Jalqabaa"
+      },
+      {
+        "property": "endDate",
+        "title": "Guyyaa Xumuraa (Dirqama Miti)"
+      },
+      {
+        "property": "skills",
+        "title": "Dandeettiiwwan Walqabatan",
+        "description": "Dandeettiiwwan dabaluu jalqabuuf qabduu + fili"
+      }
+    ]
+  }
+}

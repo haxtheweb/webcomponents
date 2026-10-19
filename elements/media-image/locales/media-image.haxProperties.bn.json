@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "উন্নত ছবি",
+    "description": "বিভিন্ন উন্নত সুবিধাসহ ছবি উপস্থাপনের একটি উপায়।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "উৎস",
+        "description": "ছবির URL।"
+      },
+      {
+        "property": "alt",
+        "title": "বিকল্প লেখা",
+        "description": "দৃষ্টিহীন ব্যবহারকারীদের জন্য ছবিটি বর্ণনা করার লেখা।"
+      },
+      {
+        "property": "link",
+        "title": "লিংক",
+        "description": "ছবিটিকে একটি URL-এ লিংক করুন"
+      },
+      {
+        "property": "card",
+        "title": "কার্ড",
+        "description": "উঁচু কার্ডের মতো দেখাতে ড্রপ শ্যাডো প্রয়োগ করুন।"
+      },
+      {
+        "property": "box",
+        "title": "বক্স",
+        "description": "ছবির চারপাশে একটি দৃশ্যমান বক্স প্রয়োগ করুন।"
+      },
+      {
+        "property": "offset",
+        "title": "অফসেট",
+        "description": "ছবিতে বাম বা ডান অফসেট প্রয়োগ করুন।",
+        "options": {
+          "none": "কোনোটিই নয়",
+          "wide": "চওড়া",
+          "narrow": "সরু"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "উৎসনির্দেশ",
+        "description": "ছবির সাইটেশন।"
+      },
+      {
+        "property": "caption",
+        "title": "ক্যাপশন",
+        "description": "ছবির ক্যাপশন।"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "চিত্রের শিরোনাম",
+        "description": "চিত্র লেবেলের শিরোনাম।"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "চিত্রের বিবরণ",
+        "description": "চিত্র লেবেলের বিবরণ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "থাম্বনেইল ছবি",
+        "description": "থাম্বনেইল ছবির সোর্স। থাম্বনেইল দেখায় কিন্তু মোডালে পূর্ণ সোর্স খোলে।"
+      },
+      {
+        "property": "round",
+        "title": "গোল ছবি",
+        "description": "ছবিটি বৃত্তাকারে ক্রপ করে দেখায়।"
+      },
+      {
+        "property": "disableZoom",
+        "title": "ছবির মোডাল বন্ধ করুন",
+        "description": "ক্লিক করলে ছবি ইমেজ ইন্সপেক্টর ডায়ালগে খোলা বন্ধ করুন।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown হিসেবে রেন্ডার করুন",
+        "description": "ক্যাপশন ও সাইটেশন markdown হিসেবে রেন্ডার করুন।"
+      }
+    ]
+  }
+}

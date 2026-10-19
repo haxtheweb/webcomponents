@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relativa titolo",
+    "description": "eligas la ĝustan titolan hierarkion surbaze de la titolo de la gepatro"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Rimeda ID de la gepatra titolo"
+      },
+      {
+        "property": "disableLink",
+        "description": "Malŝaltas la funkcion de ligila butono."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Ĝisrandigas la butonon por kopii ligilon al la plej dekstra flanko de la titolo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Titola nivelo se la gepatro ne troviĝas."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Anstataŭigas la defaŭltan tekston de la sciiga mesaĝo por kopii ligilon."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Anstataŭigas la defaŭltan etikedon de la butono por kopii ligilon."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Anstataŭigas la defaŭltan piktogramon de la butono por kopii ligilon."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Anstataŭigas la defaŭltan etikedon de la ferma butono de la sciigo por kopii ligilon."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Anstataŭigas la defaŭltan piktogramon de la ferma butono de la sciigo por kopii ligilon."
+      }
+    ]
+  }
+}

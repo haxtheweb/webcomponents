@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Element bibliografie",
+    "description": "Element që përfaqëson një citim të vetëm në një bibliografi, me mbështetje për formate dhe opsione eksporti të shumta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Lloji",
+        "description": "Lloji i citimit",
+        "options": {
+          "web": "Ueb",
+          "journal": "Revistë shkencore",
+          "book": "Libër"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli i elementit"
+      },
+      {
+        "property": "authors",
+        "title": "Autori(ët)",
+        "description": "Ngjarjet në vijën kohore"
+      },
+      {
+        "property": "publisher",
+        "title": "Botuesi",
+        "description": "Uebsajti origjinal"
+      }
+    ]
+  }
+}

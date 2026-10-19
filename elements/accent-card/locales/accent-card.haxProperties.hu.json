@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kártya",
+    "description": "Kártya opcionális kiemelő stílussal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Címsor",
+        "description": "A kártya címsora."
+      },
+      {
+        "slot": "subheading",
+        "title": "Alcím",
+        "description": "A kártya opcionális alcíme."
+      },
+      {
+        "slot": "content",
+        "title": "Tartalom",
+        "description": "A kártya tartalma."
+      },
+      {
+        "slot": "footer",
+        "title": "Lábléc",
+        "description": "A kártya opcionális lábléce."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Kép",
+        "description": "Opcionális kép"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Kép alternatív szövege",
+        "description": "A képet képernyőolvasók számára leíró alternatív szöveg. Csak akkor hagyd üresen, ha a kép pusztán dekoratív."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Kép vízszintes igazítása",
+        "options": {
+          "left": "balra",
+          "center": "középre",
+          "right": "jobbra"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Kép függőleges igazítása",
+        "options": {
+          "top": "fent",
+          "center": "középre",
+          "bottom": "lent"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "Opcionális kiemelőszín."
+      },
+      {
+        "property": "dark",
+        "title": "Sötét téma",
+        "description": "Sötét téma engedélyezése"
+      },
+      {
+        "property": "horizontal",
+        "title": "Vízszintes",
+        "description": "Vízszintes tájolás?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Címsor kiemelése",
+        "description": "Alkalmazod a kiemelőszínt a címsorra?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Háttér kiemelése",
+        "description": "Alkalmazod a kiemelőszínt a kártya hátterére?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Szegélykiemelés nélkül",
+        "description": "Eltávolítod a szegélykiemelést?"
+      },
+      {
+        "property": "flat",
+        "title": "Lapos",
+        "description": "Eltávolítod a dobozárnyékot?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Sarok",
+        "description": "A kártya sarkának tartalma."
+      }
+    ]
+  }
+}

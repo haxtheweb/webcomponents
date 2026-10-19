@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Grundleggjandi leinki",
+    "description": "Grundleggjandi leinkjaelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Leinki",
+        "description": "Mál-URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Tekstur",
+        "description": "Sjónligur leinkjatekstur."
+      },
+      {
+        "attribute": "target",
+        "title": "Mál",
+        "description": "Hvar leinkið skal latast upp.",
+        "options": {
+          "": "Sama vindeyga",
+          "_blank": "Nýtt vindeyga - _blank",
+          "_top": "Ovasta vindeyga - _top",
+          "_parent": "Yvirskipað vindeyga - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Heitistekstur",
+        "description": "Ráðgevandi heiti til atkomuleika og SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Samband við málið (trygd/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "Teme disponibile",
+    "description": "Afișează temele HAXcms disponibile cu comutare prin previzualizare live"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "Mod de vizualizare",
+        "description": "Alege cum să fie afișate temele",
+        "options": {
+          "gallery": "Galerie",
+          "table": "Tabel"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "Arată detaliile",
+        "description": "Arată descrierile temelor și informații suplimentare"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "Arată temele ascunse și vechi",
+        "description": "Arată temele ascunse, vechi și groaznice pe lângă cele implicite din panoul de control"
+      },
+      {
+        "property": "columns",
+        "title": "Coloane (galerie)",
+        "description": "Numărul de coloane în vizualizarea galerie"
+      }
+    ]
+  }
+}

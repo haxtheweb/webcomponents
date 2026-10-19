@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "פריסת עמודות",
+    "description": "פריסת חומר בעמודות פשוטות"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "פריסת עמודות",
+        "description": "הסגנון להצגת פריטים אלה (עשוי להשתנות במסכים קטנים)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "השבתת רספונסיביות",
+        "description": "סמנו את התיבה כדי לשמור על העמודות במסכים גדולים יותר ועדיין לערום אותן במסכים הקטנים ביותר"
+      },
+      {
+        "property": "itemPadding",
+        "title": "ריפוד פריטים",
+        "description": "ריפוד בתוך כל פריט"
+      },
+      {
+        "property": "itemMargin",
+        "title": "שולי פריטים",
+        "description": "שוליים בין הפריטים"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Sõnavara",
+    "description": "Sõnavara termin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Termin"
+      },
+      {
+        "slot": "",
+        "title": "Definitsioon",
+        "description": "Definitsioon, mida kuvatakse terminil klõpsamisel."
+      },
+      {
+        "property": "description",
+        "title": "Kirjeldus (OER Schema)",
+        "description": "OER Schema: sõnavara termini lühikirjeldus. Tühjaks jätmisel täidetakse automaatselt definitsiooni tekstist."
+      }
+    ]
+  }
+}

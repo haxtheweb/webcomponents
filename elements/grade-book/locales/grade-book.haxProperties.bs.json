@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Knjiga ocjena",
+    "description": "Knjiga ocjena bez korisničkog interfejsa koja podržava više pozadinskih sistema s rubrikama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Izvor",
+        "description": "Vrsta izvora podataka (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL krajnja tačka (JSON)",
+          "json": "JSON blok podataka",
+          "filesystem": "Sistem datoteka"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Izvorni podaci",
+        "description": "URL ili JSON podaci za knjigu ocjena."
+      },
+      {
+        "property": "forCourse",
+        "title": "Referenca kursa",
+        "description": "Identifikator kursa koji se emituje kao oer:forCourse na svakom resursu procjene."
+      }
+    ]
+  }
+}

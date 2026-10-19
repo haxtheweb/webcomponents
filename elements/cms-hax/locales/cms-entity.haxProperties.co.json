@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Entità CMS",
+    "description": "Entità CMS affissata da u backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tipu",
+        "description": "tipu di u nostru CMS",
+        "options": {
+          "node": "Nodu",
+          "user": "Utilizatore",
+          "file": "Schedariu"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id di u nostru CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Modu d'affissera",
+        "description": "modu d'affissera di u nostru CMS"
+      }
+    ]
+  }
+}

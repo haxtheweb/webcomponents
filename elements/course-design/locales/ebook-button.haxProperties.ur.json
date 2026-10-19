@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ای بک بٹن",
+    "description": "ایک بٹن جو ای بک سے لنک کرتا ہے۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "بٹن کا عنوان۔"
+      },
+      {
+        "property": "link",
+        "title": "لنک",
+        "description": "کلک پر جس لنک پر بھیجنا ہے۔"
+      },
+      {
+        "property": "icon",
+        "title": "آئیکن",
+        "description": "اس لنک کی نمائندگی کرنے والا آئیکن"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS டோக்கன்",
+    "description": "backend இல் காட்சிப்படுத்தப்படும் CMS டோக்கன்"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "டோக்கன்",
+        "description": "எங்கள் CMS இலிருந்து டோக்கன்"
+      }
+    ]
+  }
+}

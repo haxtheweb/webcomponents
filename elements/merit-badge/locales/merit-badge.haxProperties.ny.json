@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Baji ya Ulemu",
+    "description": "Baji yooneka yosonyeza kupeza luso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Mutu wa Baji",
+        "description": "Mutu woonetsedwa pa baji."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Chithunzi cha Baji",
+        "description": "URL ya chithunzi cha baji."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Zambiri za Baji",
+        "description": "Zambiri za baji."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Ulalo",
+        "description": "Ulalo wogwirizana ndi baji."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Maluso a Baji",
+        "description": "Maluso oonetsedwa pa baji."
+      },
+      {
+        "property": "skill",
+        "title": "Luso (OER Schema)",
+        "description": "OER Schema: luso lophunzira lopezeka pomaliza cholinga cha maphunziro ichi."
+      }
+    ]
+  }
+}

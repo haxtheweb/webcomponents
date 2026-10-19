@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Poziv k dejanju",
+    "description": "Preprost gumb s povezavo za ukrepanje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Oznaka",
+        "description": "Oznaka povezave"
+      },
+      {
+        "property": "link",
+        "title": "Povezava",
+        "description": "Vnesite povezavo do poljubnega vira"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Skrij ikono",
+        "description": "Skrij ikono, ki poudarja besedilo"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona povezave dejanja"
+      }
+    ]
+  }
+}

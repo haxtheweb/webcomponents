@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Gambar yang Ditingkatkan",
+    "description": "Cara menyajikan gambar dengan berbagai peningkatan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL untuk gambar."
+      },
+      {
+        "property": "alt",
+        "title": "Teks alternatif",
+        "description": "Teks untuk mendeskripsikan gambar bagi pengguna tunanetra."
+      },
+      {
+        "property": "link",
+        "title": "Tautan",
+        "description": "Tautkan gambar ke URL"
+      },
+      {
+        "property": "card",
+        "title": "Kartu",
+        "description": "Terapkan bayangan jatuh agar tampak seperti kartu yang terangkat."
+      },
+      {
+        "property": "box",
+        "title": "Kotak",
+        "description": "Terapkan kotak visual di sekitar gambar."
+      },
+      {
+        "property": "offset",
+        "title": "Offset",
+        "description": "Terapkan offset kiri atau kanan pada gambar.",
+        "options": {
+          "none": "tidak ada",
+          "wide": "lebar",
+          "narrow": "sempit"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Sitasi",
+        "description": "Kutipan untuk gambar."
+      },
+      {
+        "property": "caption",
+        "title": "Keterangan",
+        "description": "Keterangan untuk gambar."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Judul Gambar",
+        "description": "Judul untuk label gambar."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Deskripsi Gambar",
+        "description": "Deskripsi untuk label gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Gambar thumbnail",
+        "description": "Sumber gambar thumbnail. Menampilkan thumbnail tetapi membuka sumber lengkap di modal."
+      },
+      {
+        "property": "round",
+        "title": "Gambar bulat",
+        "description": "Memotong tampilan gambar menjadi berbentuk lingkaran."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Nonaktifkan modal gambar",
+        "description": "Nonaktifkan klik yang membuka gambar di dialog pemeriksa gambar."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Render sebagai markdown",
+        "description": "Render keterangan dan kutipan sebagai markdown."
+      }
+    ]
+  }
+}

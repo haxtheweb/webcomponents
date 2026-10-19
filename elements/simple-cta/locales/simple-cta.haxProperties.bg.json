@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Призив за действие",
+    "description": "Прост бутон с връзка за предприемане на действие."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Етикет",
+        "description": "Етикет на връзката"
+      },
+      {
+        "property": "link",
+        "title": "Връзка",
+        "description": "Въведете връзка към произволен ресурс"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Скриване на иконата",
+        "description": "Скриване на иконата, използвана за акцентиране на текста"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Икона",
+        "description": "Икона на връзката за действие"
+      }
+    ]
+  }
+}

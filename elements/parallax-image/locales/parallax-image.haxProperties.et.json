@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallakspilt",
+    "description": "Kerimisel liikuv pilt"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Pilt",
+        "description": "taustal kasutatav pilt"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Pealkirja ala",
+        "description": "Pealkirja tekstiala"
+      }
+    ]
+  }
+}

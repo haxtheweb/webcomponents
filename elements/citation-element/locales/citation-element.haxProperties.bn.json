@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "উৎসনির্দেশ",
+    "description": "তিনটি উপস্থাপন মোডসহ সাইটেশন এলিমেন্ট।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "উদ্ধৃত কাজের শিরোনাম।"
+      },
+      {
+        "property": "source",
+        "title": "সোর্স লিংক",
+        "description": "উদ্ধৃত কাজের সোর্স URL।"
+      },
+      {
+        "property": "date",
+        "title": "দেখার তারিখ",
+        "description": "যে তারিখে সোর্সটি দেখা হয়েছে।"
+      },
+      {
+        "property": "scope",
+        "title": "পরিধি",
+        "description": "যে এলিমেন্ট পরিধি উদ্ধৃত করা হবে।",
+        "options": {
+          "sibling": "সিবলিং এলিমেন্ট",
+          "parent": "প্যারেন্ট এলিমেন্ট"
+        }
+      },
+      {
+        "property": "license",
+        "title": "লাইসেন্স",
+        "description": "উদ্ধৃত কাজের লাইসেন্স।"
+      },
+      {
+        "property": "creator",
+        "title": "স্রষ্টা",
+        "description": "উদ্ধৃত কাজের স্রষ্টা বা মালিক।"
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema ধরন",
+        "description": "এই সাইটেশনের OER Schema ক্লাস। ডিফল্ট oer:ReferencedMaterial; শুধু একটি বৈধ OER ক্লাস দিয়ে প্রতিস্থাপন করুন (যেমন oer:SupportingMaterial)।"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Vevstaðsvísing",
+    "description": "Ein dynamiskur blokkur, ið spyr eftir og vísir vevstaðsdátur grundað á treytir"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Vísingar-URL",
+        "description": "Fyrispurningsstikar til dátukelduna hjá vísingini. Tú kanst fáa hetta frá Views-stýriborðinum."
+      },
+      {
+        "property": "renderer",
+        "title": "Vísingarháttur",
+        "description": "Hvussu úrslitini av vísingini skulu vísast"
+      },
+      {
+        "property": "entity",
+        "title": "Eindarslag",
+        "description": "Eindarslag nýtt til at tulka svarið",
+        "options": {
+          "": "Sjálvsett (lutir)",
+          "item": "Lutur",
+          "page": "Síða",
+          "file": "Fíla",
+          "tag": "Frámerki",
+          "block": "Blokkur",
+          "view": "Vísing",
+          "theme": "Evni",
+          "region": "Øki",
+          "customElement": "Sergjørt element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Bróta vevstaðsvísing",
+        "description": "Umskapa til støðugt innihald til beinleiðis rætting; heldur uppat at dagføra sjálvvirkandi úr keldu."
+      }
+    ]
+  }
+}

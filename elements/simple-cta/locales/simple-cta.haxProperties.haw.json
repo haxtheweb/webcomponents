@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Kāhea hana",
+    "description": "He pihi maʻalahi me kahi loulou e hana ai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Lepili",
+        "description": "Lepili loulou"
+      },
+      {
+        "property": "link",
+        "title": "Loulou",
+        "description": "Hoʻokomo i kahi loulou i kekahi kumuwaiwai"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Hūnā i ka ikona",
+        "description": "Hūnā i ka ikona i hoʻohana ʻia e hoʻonani ai i ke kikokikona"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Hōʻailona",
+        "description": "Ikona loulou hana"
+      }
+    ]
+  }
+}

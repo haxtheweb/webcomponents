@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Eenvoudige afbeelding",
+    "description": "Eenvoudig afbeeldingselement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Bron",
+        "description": "Afbeeldings-URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt-tekst",
+        "description": "Alternatieve tekst voor toegankelijkheid en SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Hoogte",
+        "description": "Hoogte in pixels. Laat leeg om de natuurlijke grootte te gebruiken."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Laadgedrag",
+        "description": "Kies wanneer de afbeelding wordt geladen.",
+        "options": {
+          "lazy": "Laden wanneer zichtbaar",
+          "auto": "Automatisch"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responsieve bronnen (srcset)",
+        "description": "Geef afbeeldings-URL's en descriptors op (bijv. 480w of 2x) zodat browsers de beste grootte voor het scherm kiezen. Opgeslagen als het standaard srcset-attribuut."
+      }
+    ]
+  }
+}

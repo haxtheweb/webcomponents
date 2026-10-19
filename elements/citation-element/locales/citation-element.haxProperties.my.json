@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ကိုးကားမှု",
+    "description": "တင်ပြမှုမုဒ် သုံးမျိုးပါ ကိုးကားချက် အစိတ်အပိုင်း။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "ကိုးကားထားသော လက်ရာ၏ ခေါင်းစဉ်။"
+      },
+      {
+        "property": "source",
+        "title": "ရင်းမြစ် လင့်ခ်",
+        "description": "ကိုးကားထားသော လက်ရာအတွက် ရင်းမြစ် URL။"
+      },
+      {
+        "property": "date",
+        "title": "ဝင်ရောက်ကြည့်ရှုသည့်နေ့",
+        "description": "ရင်းမြစ်ကို ဝင်ရောက်ကြည့်ရှုခဲ့သည့် ရက်စွဲ။"
+      },
+      {
+        "property": "scope",
+        "title": "နယ်ပယ်",
+        "description": "ကိုးကားမည့် အစိတ်အပိုင်း နယ်ပယ်။",
+        "options": {
+          "sibling": "ညီအစ်ကို အစိတ်အပိုင်း",
+          "parent": "မိခင် အစိတ်အပိုင်း"
+        }
+      },
+      {
+        "property": "license",
+        "title": "လိုင်စင်",
+        "description": "ကိုးကားထားသော လက်ရာအတွက် လိုင်စင်။"
+      },
+      {
+        "property": "creator",
+        "title": "ဖန်တီးသူ",
+        "description": "ကိုးကားထားသော လက်ရာ၏ ဖန်တီးသူ သို့မဟုတ် ပိုင်ရှင်။"
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema အမျိုးအစား",
+        "description": "ဤကိုးကားချက်အတွက် OER Schema class။ မူလမှာ oer:ReferencedMaterial ဖြစ်သည်; မှန်ကန်သော OER class ဖြင့်သာ အစားထိုးပါ (ဥပမာ oer:SupportingMaterial)။"
+      }
+    ]
+  }
+}

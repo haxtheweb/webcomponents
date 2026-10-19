@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Bibliografielement",
+    "description": "Element som representerer én kildehenvisning i en bibliografi, med støtte for flere formater og eksportalternativer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Type",
+        "description": "Type kildehenvisning",
+        "options": {
+          "web": "Nett",
+          "journal": "Tidsskrift",
+          "book": "Bok"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Tittel",
+        "description": "Tittel på elementet"
+      },
+      {
+        "property": "authors",
+        "title": "Forfatter(e)",
+        "description": "Hendelsene i tidslinjen"
+      },
+      {
+        "property": "publisher",
+        "title": "Utgiver",
+        "description": "Opprinnelig nettsted"
+      }
+    ]
+  }
+}

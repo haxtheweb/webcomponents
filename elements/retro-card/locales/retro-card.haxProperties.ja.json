@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "レトロカード",
+    "description": "レトロなデザインのシンプルなカード。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "カードのメインタイトル。"
+      },
+      {
+        "property": "url",
+        "description": "カードをクリックしたときに開くURL。"
+      },
+      {
+        "property": "subtitle",
+        "title": "サブタイトル",
+        "description": "カードのサブタイトル。"
+      },
+      {
+        "property": "tags",
+        "title": "タグ",
+        "description": "カンマ区切りのタグ。"
+      },
+      {
+        "property": "mediaSource",
+        "title": "メディアソース",
+        "description": "メインのメディアソース。"
+      },
+      {
+        "property": "hoverSource",
+        "title": "ホバー時のソース",
+        "description": "カードにホバーまたはアクティブにしたときに表示されるメディアソース。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "カード全体に適用されるアクセントカラー。"
+      },
+      {
+        "property": "dark",
+        "title": "ダーク",
+        "description": "ダークモードの基本色を使用します。"
+      }
+    ]
+  }
+}

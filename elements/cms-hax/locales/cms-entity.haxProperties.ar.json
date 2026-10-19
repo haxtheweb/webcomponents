@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "كيان CMS",
+    "description": "كيان CMS يُعرض في الواجهة الخلفية"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "النوع",
+        "description": "النوع من نظام CMS الخاص بنا",
+        "options": {
+          "node": "عقدة",
+          "user": "المستخدم",
+          "file": "الملف"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "المعرّف من نظام CMS الخاص بنا"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "وضع العرض",
+        "description": "وضع العرض من نظام CMS الخاص بنا"
+      }
+    ]
+  }
+}

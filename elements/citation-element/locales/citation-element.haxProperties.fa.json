@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ارجاع",
+    "description": "عنصر استناد با سه حالت نمایش."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "عنوان اثر مورد استناد."
+      },
+      {
+        "property": "source",
+        "title": "پیوند منبع",
+        "description": "URL منبع اثر مورد استناد."
+      },
+      {
+        "property": "date",
+        "title": "تاریخ دسترسی",
+        "description": "تاریخی که به منبع دسترسی پیدا شد."
+      },
+      {
+        "property": "scope",
+        "title": "دامنه",
+        "description": "دامنه عنصری که باید به آن استناد شود.",
+        "options": {
+          "sibling": "عنصر هم‌سطح",
+          "parent": "عنصر والد"
+        }
+      },
+      {
+        "property": "license",
+        "title": "مجوز",
+        "description": "مجوز اثر مورد استناد."
+      },
+      {
+        "property": "creator",
+        "title": "پدیدآورنده",
+        "description": "پدیدآورنده یا مالک اثر مورد استناد."
+      },
+      {
+        "property": "typeof",
+        "title": "نوع OER Schema",
+        "description": "کلاس OER Schema برای این استناد. پیش‌فرض oer:ReferencedMaterial است؛ فقط با یک کلاس OER معتبر بازنویسی کنید (مثلاً oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

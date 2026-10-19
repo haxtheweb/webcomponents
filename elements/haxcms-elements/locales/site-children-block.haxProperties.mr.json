@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: उप-ब्लॉक",
+    "description": "सध्याच्या पानाची उप-पाने दाखवणारा डायनॅमिक ब्लॉक"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "डायनॅमिक पद्धत",
+        "description": "या घटकाच्या सापेक्ष उप-पाने कशी मोजायची",
+        "options": {
+          "active": "सक्रिय उप-पाने",
+          "parent": "पालकाची उप-पाने",
+          "ancestor": "सर्वोच्च पूर्वजापासूनची सर्व उप-पाने"
+        }
+      },
+      {
+        "property": "start",
+        "title": "सुरुवातीचा स्तर"
+      },
+      {
+        "property": "end",
+        "title": "शेवटचा स्तर"
+      }
+    ]
+  }
+}

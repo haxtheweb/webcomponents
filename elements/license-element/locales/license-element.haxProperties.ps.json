@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "جواز",
+    "description": "د خپل کار لپاره جواز ورکړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د حواله شوي کار سرلیک."
+      },
+      {
+        "property": "source",
+        "title": "د سرچینې لینک",
+        "description": "د جواز لرونکي کار سرچینه URL."
+      },
+      {
+        "property": "license",
+        "title": "جواز",
+        "description": "په دې کار پلي شوی جواز."
+      },
+      {
+        "property": "creator",
+        "title": "جوړوونکی",
+        "description": "د دې کار جوړوونکی یا مالک."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "د سرچینې لینک",
+        "description": "د جواز اضافي جزیاتو ته لینک."
+      },
+      {
+        "property": "moreLabel",
+        "title": "د نورو لېبل",
+        "description": "د جواز اضافي جزیاتو لپاره لېبل."
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Koodinäide",
+    "description": "Lehel esiletõstetud koodinäide"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Koodi esiletõstmine",
+        "description": "Koodialale rakendatav süntaksi esiletõstmine",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-andmed",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Lõikelauale kopeerimise nupp",
+        "description": "nupp üleval paremal nurgas tekstiga „kopeeri lõikelauale”"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Esiletõstmise algus",
+        "description": "Rea number, millest esiletõstmine algab"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Esiletõstmise lõpp",
+        "description": "Rida, millel esiletõstmine lõpeb"
+      }
+    ]
+  }
+}

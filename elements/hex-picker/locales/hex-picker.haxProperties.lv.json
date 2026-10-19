@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex atlasītājs",
+    "description": "Hex koda krāsu atlasītājs"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Vērtība",
+        "description": "Noklusējuma hex vērtība"
+      },
+      {
+        "property": "disabled",
+        "title": "Atspējots",
+        "description": "Atspējot teksta lauku"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Liels attēlojums",
+        "description": "Iekļaut krāsu lielā attēlojumā"
+      }
+    ]
+  }
+}

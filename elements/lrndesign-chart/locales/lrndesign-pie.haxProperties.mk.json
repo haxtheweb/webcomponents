@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Кружен графикон",
+    "description": "Создава достапен графикон врз основа на CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Акцентна боја",
+        "description": "Изборна акцентна боја."
+      },
+      {
+        "title": "Темна тема",
+        "description": "Овозможи темна тема"
+      },
+      {
+        "title": "CSV-датотека",
+        "description": "Вчитај податоци од CSV."
+      },
+      {
+        "title": "Наслов на графиконот",
+        "description": "Достапен алтернативен текст за вашиот графикон."
+      },
+      {
+        "title": "Опис на графиконот",
+        "description": "Достапен опис на вашиот графикон."
+      },
+      {
+        "title": "Име на размерот",
+        "description": "Односот ширина:висина на графиконот (видете https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings за $ct-scales и $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Крофна"
+      },
+      {
+        "title": "Прикажи ознака"
+      },
+      {
+        "title": "Почетен агол"
+      },
+      {
+        "title": "Внатрешна маргина"
+      },
+      {
+        "title": "Вкупно",
+        "description": "Изборен збир што можете да го наведете. Со наведување вкупна вредност, збирот на вредностите во серијата мора да биде овој збир за да се нацрта цел круг. Можете да го користите овој параметар за цртање само делови од кружен графикон или графикони-мерачи."
+      },
+      {
+        "title": "Игнорирај празни вредности",
+        "description": "Празните вредности ќе се игнорираат за да се избегне цртање непотребни парчиња и ознаки."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Обратни ги податоците",
+        "description": "Обратни ги податоците вклучувајќи ги ознаките, редоследот на сериите, како и целите низи со податоци на сериите."
+      },
+      {
+        "title": "HTML-табела",
+        "description": "Изборно: вчитај ги податоците како HTML-табела."
+      },
+      {
+        "title": "Ширина на потегот на крофната"
+      },
+      {
+        "title": "Полна крофна",
+        "description": "Цртај ги сегментите на крофната како форми наместо потези."
+      },
+      {
+        "title": "Насока на ознаките",
+        "description": "Цртај ги сегментите на крофната како форми наместо потези.",
+        "options": {
+          "neutral": "неутрално",
+          "explode": "нанадвор",
+          "implode": "навнатре"
+        }
+      },
+      {
+        "title": "Поместување на ознаката",
+        "description": "Поместување на позицијата на ознаката од стандардната позиција, која е на половина од радиусот. Оваа вредност може да биде позитивна или негативна. Позитивните вредности ќе ја поставуваат ознаката подалеку од центарот."
+      },
+      {
+        "title": "Позиција на ознаката",
+        "options": {
+          "inside": "внатре",
+          "outside": "надвор",
+          "center": "центар"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Chinthu cha H5P",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Mawu",
+        "description": "Zomwe zili m'mawu am'mbali"
+      }
+    ]
+  }
+}

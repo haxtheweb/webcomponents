@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Cijferlijst",
+    "description": "Een headless cijferlijst die meerdere backends met rubrics ondersteunt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Bron",
+        "description": "Type gegevensbron (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-eindpunt (JSON)",
+          "json": "JSON-gegevensblob",
+          "filesystem": "Bestandssysteem"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Brongegevens",
+        "description": "URL of JSON-gegevens voor de cijferlijst."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cursusverwijzing",
+        "description": "Cursuscode die als oer:forCourse wordt meegegeven bij elke Assessment-bron."
+      }
+    ]
+  }
+}

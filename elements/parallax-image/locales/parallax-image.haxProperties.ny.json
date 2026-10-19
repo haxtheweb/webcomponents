@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Chithunzi cha parallax",
+    "description": "Chithunzi chimadutsa mukamasuntha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Chithunzi",
+        "description": "chithunzi choti chikhale kumbuyo"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Malo a mutu",
+        "description": "Malo a mawu a mutu"
+      }
+    ]
+  }
+}

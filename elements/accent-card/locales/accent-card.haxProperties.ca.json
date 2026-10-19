@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Targeta",
+    "description": "Una targeta amb estil d'accent opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Encapçalament",
+        "description": "Una capçalera per a la targeta."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subtítol",
+        "description": "Un subtítol opcional per a la targeta."
+      },
+      {
+        "slot": "content",
+        "title": "Contingut",
+        "description": "Contingut de la targeta."
+      },
+      {
+        "slot": "footer",
+        "title": "Peu",
+        "description": "Un peu opcional per a la targeta."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Imatge",
+        "description": "Imatge opcional"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Text alternatiu de la imatge",
+        "description": "Text alternatiu que descriu la imatge per als lectors de pantalla. Deixa-ho buit només si la imatge és purament decorativa."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Alineació horitzontal de la imatge",
+        "options": {
+          "left": "esquerra",
+          "center": "centre",
+          "right": "dreta"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Alineació vertical de la imatge",
+        "options": {
+          "top": "dalt",
+          "center": "centre",
+          "bottom": "baix"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Un color d'accent opcional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema fosc",
+        "description": "Activa el tema fosc"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horitzontal",
+        "description": "Orientació horitzontal?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Accent a la capçalera",
+        "description": "Vols aplicar el color d'accent a la capçalera?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Accent al fons",
+        "description": "Vols aplicar el color d'accent al fons de la targeta?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Sense accent a la vora",
+        "description": "Vols treure l'accent de la vora?"
+      },
+      {
+        "property": "flat",
+        "title": "Pla",
+        "description": "Vols treure l'ombra del quadre?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Cantonada",
+        "description": "Contingut de la cantonada de la targeta."
+      }
+    ]
+  }
+}

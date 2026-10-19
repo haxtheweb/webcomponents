@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Download af arbejdsark",
+    "description": "En knap til visning af filer, der kan downloades."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titlen på downloaden."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Linket til downloaden."
+      }
+    ]
+  }
+}

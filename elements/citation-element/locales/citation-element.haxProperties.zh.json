@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "引文出处",
+    "description": "具有三种呈现模式的引用元素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "被引用作品的标题。"
+      },
+      {
+        "property": "source",
+        "title": "来源链接",
+        "description": "被引用作品的来源 URL。"
+      },
+      {
+        "property": "date",
+        "title": "访问日期",
+        "description": "访问该来源的日期。"
+      },
+      {
+        "property": "scope",
+        "title": "范围",
+        "description": "要引用的元素范围。",
+        "options": {
+          "sibling": "同级元素",
+          "parent": "父元素"
+        }
+      },
+      {
+        "property": "license",
+        "title": "许可",
+        "description": "被引用作品的许可。"
+      },
+      {
+        "property": "creator",
+        "title": "创作者",
+        "description": "被引用作品的创作者或所有者。"
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema 类型",
+        "description": "此引用的 OER Schema 类。默认为 oer:ReferencedMaterial；仅可使用有效的 OER 类进行覆盖（例如 oer:SupportingMaterial）。"
+      }
+    ]
+  }
+}

@@ -75,7 +75,7 @@ export class AppHaxSimpleHatProgress extends I18NMixin(DDDSuper(LitElement)) {
             var(--ddd-theme-default-futureLime, #99cc33) 100%
           );
           border-radius: var(--ddd-radius-sm, 4px);
-          transition: width 0.6s ease;
+          transition: width var(--ddd-duration-slow, 0.6s) ease;
           width: 0%;
         }
 

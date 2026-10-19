@@ -120,7 +120,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         padding: var(--desktop-header-padding);
         max-height: var(--nav-bar-height);
         font-family: var(--main-font);  
-        transition: all 0.3s ease-in-out;
+        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
       }
 
 

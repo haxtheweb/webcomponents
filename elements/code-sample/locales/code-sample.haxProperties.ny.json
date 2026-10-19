@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Chitsanzo cha code",
+    "description": "Chitsanzo cha code chowunikiridwa m'tsamba"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kuwunikira code",
+        "description": "Kuwunikira kalembedwe koikidwa pa malo a code",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Deta ya JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Batani lokopera ku bolodi lokopera",
+        "description": "batani la pamwamba kumanja lomwe limati koperani ku bolodi lokopera"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Poyambira kuwunikira",
+        "description": "Nambala ya mzere woyambira kuwunikira"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Pomalizira kuwunikira",
+        "description": "Mzere womalizira kuwunikira"
+      }
+    ]
+  }
+}

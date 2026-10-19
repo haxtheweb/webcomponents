@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Abun jerin littattafai",
+    "description": "Abu da ke wakiltar ambato guda a jerin littattafai, mai goyon bayan tsare-tsare da yawa da zaɓuɓɓukan fitarwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Nau'i",
+        "description": "Nau'in ambato",
+        "options": {
+          "web": "Yanar gizo",
+          "journal": "Mujalla",
+          "book": "Littafi"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Taken abun"
+      },
+      {
+        "property": "authors",
+        "title": "Marubuci(ya)",
+        "description": "Abubuwan da suka faru a jadawalin lokaci"
+      },
+      {
+        "property": "publisher",
+        "title": "Mai wallafa",
+        "description": "Gidan yanar gizo na asali"
+      }
+    ]
+  }
+}

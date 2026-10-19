@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Bloccu CMS",
+    "description": "Bloccu CMS affissatu da u backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modulu",
+        "description": "Modulu da caricà da u nostru CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta di u bloccu da caricà da u nostru CMS"
+      }
+    ]
+  }
+}

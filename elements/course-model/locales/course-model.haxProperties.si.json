@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "පාඨමාලා ආකෘතිය",
+    "description": "විස්තර, සජීවිකරණ සහ දැනුම් පරීක්ෂණ සහිත පාඨමාලා සංකල්ප සඳහා අන්තර්ක්‍රියාකාරී පිරිසැලසුම."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "මාතෘකාව"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "තොරතුරු ප්‍රදේශය"
+      },
+      {
+        "title": "විස්තර ප්‍රදේශය"
+      },
+      {
+        "title": "සජීවිකරණ ප්‍රදේශය"
+      },
+      {
+        "title": "දැනුම් පරීක්ෂණ ප්‍රදේශය"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "ලාංඡන ප්‍රදේශය"
+      }
+    ]
+  }
+}

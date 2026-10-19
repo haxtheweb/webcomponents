@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ñe'ẽryru",
+    "description": "Ñe'ẽ ñe'ẽryru"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Ñe'ẽ"
+      },
+      {
+        "slot": "",
+        "title": "Ñemyesakã",
+        "description": "Ñe'ẽ he'iséva ojehechaukátava ñe'ẽ ojejopy jave."
+      },
+      {
+        "property": "description",
+        "title": "Ñemoha'ãnga (OER Schema)",
+        "description": "OER Schema: ñe'ẽ ñemoha'ãnga mbykymi. Oñemyenyhẽ ijeheguíkuri ñe'ẽ he'iségui oñeheja nandíramo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Site-Usiicht",
+    "description": "En dynamesche Block, deen Site-Donnéeën no Critèren ofreift an uweist"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Usiichts-URL",
+        "description": "Ufroparameter fir de Datefeed vun der Usiicht. Dir kritt se vum Views-Dashboard."
+      },
+      {
+        "property": "renderer",
+        "title": "Uweisungsmodus",
+        "description": "Wéi d'Resultater vun der Usiicht gerendert ginn"
+      },
+      {
+        "property": "entity",
+        "title": "Entitéitstyp",
+        "description": "Entitéitstyp, dee fir d'Analyséiere vun der Äntwert benotzt gëtt",
+        "options": {
+          "": "Standard (Elementer)",
+          "item": "Element",
+          "page": "Säit",
+          "file": "Fichier",
+          "tag": "Tag",
+          "block": "Block",
+          "view": "Usiicht",
+          "theme": "Thema",
+          "region": "Regioun",
+          "customElement": "Personaliséiert Element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Site-Usiicht opléisen",
+        "description": "An statesche Inhalt fir direkt Beaarbechtung ëmwandelen; aktualiséiert sech net méi automatesch vun der Quell."
+      }
+    ]
+  }
+}

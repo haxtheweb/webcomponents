@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Urakohde",
+    "description": "Yksittäinen organisaatio ja siihen liittyvät roolit"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Organisaation nimi"
+      },
+      {
+        "property": "location",
+        "title": "Sijainti"
+      },
+      {
+        "property": "source",
+        "title": "Lähde"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Puke māka",
+    "description": "He puke māka poʻo ʻole e kākoʻo ana i nā hope he nui me nā rubric."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kumu",
+        "description": "ʻAno kumu ʻikepili (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Wēlau URL (JSON)",
+          "json": "Puʻu ʻikepili JSON",
+          "filesystem": "ʻŌnaehana faila"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ʻIkepili kumu",
+        "description": "URL a i ʻole ʻikepili JSON no ka puke māka."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kuhikuhi papa",
+        "description": "Mea hōʻike papa i hoʻopuka ʻia ma ke ʻano oer:forCourse ma kēlā me kēia kumuwaiwai Loiloi."
+      }
+    ]
+  }
+}

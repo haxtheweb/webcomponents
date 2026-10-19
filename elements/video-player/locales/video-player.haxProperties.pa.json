@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "ਵੀਡੀਓ",
+    "description": "ਕਈ ਸਰੋਤਾਂ ਵਿੱਚ ਪਹੁੰਚਯੋਗ ਵੀਡੀਓ ਪਲੇਬੈਕ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ",
+        "description": "ਇਸ ਮੀਡੀਆ ਲਈ URL।"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਵੀਡੀਓ ਹੇਠਾਂ ਦਿਖਾਇਆ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "ਪੋਸਟਰ ਚਿੱਤਰ",
+        "description": "ਪੋਸਟਰ ਚਿੱਤਰ URL।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "ਟੈਕਸਟ ਟ੍ਰੈਕ",
+        "description": "ਵੀਡੀਓ ਲਈ ਕੈਪਸ਼ਨ, ਉਪਸਿਰਲੇਖ, ਵੇਰਵੇ ਅਤੇ ਹੋਰ ਟੈਕਸਟ ਟ੍ਰੈਕ।"
+      },
+      {
+        "property": "startTime",
+        "title": "ਸ਼ੁਰੂਆਤੀ ਸਮਾਂ",
+        "description": "ਵੀਡੀਓ ਨੂੰ ਕਿਸੇ ਖ਼ਾਸ ਸਮੇਂ (ਸਕਿੰਟ) ਤੋਂ ਸ਼ੁਰੂ ਕਰੋ।"
+      },
+      {
+        "property": "endTime",
+        "title": "ਅੰਤਮ ਸਮਾਂ",
+        "description": "ਵੀਡੀਓ ਨੂੰ ਕਿਸੇ ਖ਼ਾਸ ਸਮੇਂ (ਸਕਿੰਟ) 'ਤੇ ਖ਼ਤਮ ਕਰੋ, ਸ਼ੁਰੂਆਤੀ ਸਮਾਂ ਲੋੜੀਂਦਾ ਹੈ।"
+      },
+      {
+        "property": "learningMode",
+        "title": "ਸਿੱਖਣ ਮੋਡ ਚਾਲੂ ਕਰੋ",
+        "description": "ਅੱਗੇ ਅਤੇ ਪਿੱਛੇ ਕਰਨਾ ਬੰਦ ਕਰਦਾ ਹੈ।"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube 'ਤੇ ਖੋਲ੍ਹੋ ਬਟਨ ਹਟਾਓ",
+        "description": "ਵੀਡੀਓ ਨੂੰ YouTube 'ਤੇ ਖੋਲ੍ਹਣ ਵਾਲਾ ਬਟਨ ਹਟਾਉਂਦਾ ਹੈ।"
+      },
+      {
+        "property": "linkable",
+        "title": "ਸਾਂਝਾ ਲਿੰਕ ਸ਼ਾਮਲ ਕਰਨਾ ਹੈ?",
+        "description": "ਵੀਡੀਓ ਸਾਂਝੀ ਕਰਨ ਲਈ ਲਿੰਕ ਦਿੰਦਾ ਹੈ।"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ਸਮਾਂ-ਮੋਹਰਾਂ ਲੁਕਾਓ",
+        "description": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ 'ਤੇ ਸਮਾਂ-ਮੋਹਰਾਂ ਲੁਕਾਓ।"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲੁਕਾਓ",
+        "description": "ਪੂਰਵ-ਨਿਰਧਾਰਤ ਤੌਰ 'ਤੇ ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲੁਕਾਓ।"
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "ਆਡੀਓ ਵੇਰਵਾ ਟ੍ਰੈਕ",
+        "description": "ਆਡੀਓ ਵੇਰਵਾ ਟ੍ਰੈਕ (MP3 ਫਾਈਲ) ਦਾ URL ਜੋ ਦ੍ਰਿਸ਼ਟੀ ਤੱਤਾਂ ਦਾ ਬਿਰਤਾਂਤ ਦਿੰਦਾ ਹੈ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "ਦਰਸਾਉਂਦਾ ਹੈ ਕਿ CORS ਵਰਤਣਾ ਹੈ ਜਾਂ ਨਹੀਂ।",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "ਪਿਛੋਕੜ ਵਿੱਚ ਚਲਾਉਣ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ",
+        "description": "ਬ੍ਰਾਊਜ਼ਰ ਟੈਬ ਤੋਂ ਫੋਕਸ ਹਟਣ 'ਤੇ ਵੀ ਚਲਾਉਂਦੇ ਰਹੋ।"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲਈ ਡਾਰਕ ਥੀਮ",
+        "description": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲਈ ਡਾਰਕ ਥੀਮ ਚਾਲੂ ਕਰੋ।"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ਇੰਟਰਐਕਟਿਵ ਬੰਦ ਕਰੋ",
+        "description": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਨੂੰ ਕਲਿੱਕ ਕਰਨਯੋਗ ਬਣਾਉਣ ਵਾਲਾ ਇੰਟਰਐਕਟਿਵ ਮੋਡ ਬੰਦ ਕਰੋ।"
+      },
+      {
+        "property": "lang",
+        "title": "ਭਾਸ਼ਾ",
+        "description": "ਮੀਡੀਆ ਦੀ ਭਾਸ਼ਾ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "(ਪੁਰਾਣਾ) ਪਲੇਅਰ ਲਈ ਐਕਸੈਂਟ ਰੰਗ ਚੁਣੋ।"
+      }
+    ]
+  }
+}

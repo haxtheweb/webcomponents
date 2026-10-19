@@ -152,7 +152,7 @@ class PageSection extends DDD {
         .scroller:focus-within::part(icon),
         .scroller:focus::part(icon),
         .scroller:hover::part(icon) {
-          transition: 0.3s all ease-in-out;
+          transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
           --simple-icon-width: var(--ddd-icon-xl);
           --simple-icon-height: var(--ddd-icon-xl);
         }

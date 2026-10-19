@@ -64,11 +64,11 @@ class LessonHighlight extends I18NMixin(SimpleColors) {
           display: none;
         }
         :host([disabled]) {
-          opacity: 0.6;
+          opacity: var(--ddd-opacity-60, 0.6);
           cursor: not-allowed;
         }
         :host([loading]) {
-          opacity: 0.6;
+          opacity: var(--ddd-opacity-60, 0.6);
           cursor: wait;
         }
         :host .wrapper:hover {

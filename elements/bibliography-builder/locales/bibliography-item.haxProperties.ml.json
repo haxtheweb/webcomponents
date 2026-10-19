@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ഗ്രന്ഥസൂചി ഇനം",
+    "description": "ഒന്നിലധികം ഫോർമാറ്റുകളും എക്സ്പോർട്ട് ഓപ്ഷനുകളും പിന്തുണയ്ക്കുന്ന, ഗ്രന്ഥസൂചിയിലെ ഒരൊറ്റ സൈറ്റേഷനെ പ്രതിനിധീകരിക്കുന്ന ഇനം."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "തരം",
+        "description": "സൈറ്റേഷൻ തരം",
+        "options": {
+          "web": "വെബ്",
+          "journal": "ജേണൽ",
+          "book": "പുസ്തകം"
+        }
+      },
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "ഇനത്തിന്റെ തലക്കെട്ട്"
+      },
+      {
+        "property": "authors",
+        "title": "രചയിതാവ്(ക്കൾ)",
+        "description": "ടൈംലൈനിലെ സംഭവങ്ങൾ"
+      },
+      {
+        "property": "publisher",
+        "title": "പ്രസാധകൻ",
+        "description": "യഥാർത്ഥ വെബ്സൈറ്റ്"
+      }
+    ]
+  }
+}

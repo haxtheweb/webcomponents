@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Afkorting",
+    "description": "Afkorting met tooltip voor de volledige term."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Zichtbare afkortingstekst."
+      },
+      {
+        "attribute": "title",
+        "title": "Woord",
+        "description": "Volledige term die bij aanwijzen wordt getoond."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Электрондық кітап түймесі",
+    "description": "Электрондық кітапқа сілтейтін түйме."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Тақырып",
+        "description": "Түйменің атауы."
+      },
+      {
+        "property": "link",
+        "title": "Сілтеме",
+        "description": "Басқанда бағытталатын сілтеме."
+      },
+      {
+        "property": "icon",
+        "title": "Белгіше",
+        "description": "Осы сілтемені білдіретін белгіше"
+      }
+    ]
+  }
+}

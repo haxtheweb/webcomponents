@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Навод извора",
+    "description": "Елемент цитата са три режима приказа."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов цитираног дела."
+      },
+      {
+        "property": "source",
+        "title": "Веза ка извору",
+        "description": "URL извора цитираног дела."
+      },
+      {
+        "property": "date",
+        "title": "Датум приступа",
+        "description": "Датум када је извору приступљено."
+      },
+      {
+        "property": "scope",
+        "title": "Обим",
+        "description": "Обим елемента који се цитира.",
+        "options": {
+          "sibling": "Суседни елемент",
+          "parent": "Надређени елемент"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Лиценца",
+        "description": "Лиценца цитираног дела."
+      },
+      {
+        "property": "creator",
+        "title": "Аутор",
+        "description": "Аутор или власник цитираног дела."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema тип",
+        "description": "OER Schema класа за овај цитат. Подразумевано је oer:ReferencedMaterial; замените само важећом OER класом (нпр. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

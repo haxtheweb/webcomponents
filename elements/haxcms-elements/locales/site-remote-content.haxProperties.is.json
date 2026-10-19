@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Fjarefni",
+    "description": "Endurnýta efni frá einum vef á öðrum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Vefslóð",
+        "description": "Límdu inn slóð til að vísa í efni ef það er ekki núverandi vefur"
+      },
+      {
+        "property": "uuid",
+        "title": "Atriði",
+        "description": "Atriði sem birta á fyrir tengilinn / titilgögnin"
+      },
+      {
+        "property": "breakreference",
+        "title": "Rjúfa tilvísun",
+        "description": "Ef hakað er í þennan reit er fjarefnið afritað til breytinga hér en tengingin fjarlægð. Það fær ekki lengur uppfærslur þegar upprunaefnið uppfærist."
+      },
+      {
+        "property": "showTitle",
+        "title": "Sýna titil",
+        "description": "Kveiktu á til að birta titil tilfangsins sem er sýnt"
+      }
+    ]
+  }
+}

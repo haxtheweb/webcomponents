@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kodeeksempel",
+    "description": "Et eksempel på kode fremhævet på siden"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kodefremhævning",
+        "description": "Syntaksfremhævning, der skal anvendes på kodeområdet",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON-data",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Knap til kopiering til udklipsholderen",
+        "description": "knap øverst til højre, der siger kopiér til udklipsholderen"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Fremhævning start",
+        "description": "Linjenummer, hvor fremhævningen starter"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Fremhævning slut",
+        "description": "Linje, hvor fremhævningen slutter"
+      }
+    ]
+  }
+}

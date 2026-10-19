@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Encabezado relativo",
+    "description": "genera la jerarquía de encabezados correcta según el encabezado del padre"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID del recurso del encabezado padre"
+      },
+      {
+        "property": "disableLink",
+        "description": "Desactiva la función del botón de enlace."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Alinea el botón de copiar enlace al extremo derecho del encabezado."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Nivel de encabezado si no se encuentra el padre."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Reemplaza el texto predeterminado del mensaje emergente de copiar enlace."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Reemplaza la etiqueta predeterminada del botón de copiar enlace."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Reemplaza el icono predeterminado del botón de copiar enlace."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Reemplaza la etiqueta predeterminada del botón de cerrar del mensaje emergente de copiar enlace."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Reemplaza el icono predeterminado del botón de cerrar del mensaje emergente de copiar enlace."
+      }
+    ]
+  }
+}

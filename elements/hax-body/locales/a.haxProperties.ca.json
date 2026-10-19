@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Enllaç bàsic",
+    "description": "Element d'enllaç bàsic."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Enllaç",
+        "description": "URL de destinació."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Text visible de l'enllaç."
+      },
+      {
+        "attribute": "target",
+        "title": "Destinació",
+        "description": "On s'obre l'enllaç.",
+        "options": {
+          "": "Mateixa finestra",
+          "_blank": "Finestra nova - _blank",
+          "_top": "Finestra superior - _top",
+          "_parent": "Finestra pare - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Text del títol",
+        "description": "Títol informatiu per a l'accessibilitat i el SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Relació amb la destinació (seguretat/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

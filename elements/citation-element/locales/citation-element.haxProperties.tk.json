@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Salgylanma",
+    "description": "Üç görkeziş tertipli salgylanma elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Salgylanýan işiň ady."
+      },
+      {
+        "property": "source",
+        "title": "Çeşme salgysy",
+        "description": "Salgylanýan işiň çeşme URL-i."
+      },
+      {
+        "property": "date",
+        "title": "Giriş senesi",
+        "description": "Çeşmä girilen sene."
+      },
+      {
+        "property": "scope",
+        "title": "Gerim",
+        "description": "Salgylanjak elementiň gerimi.",
+        "options": {
+          "sibling": "Gonşy element",
+          "parent": "Ene element"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Ygtyýarnama",
+        "description": "Salgylanýan işiň ygtyýarnamasy."
+      },
+      {
+        "property": "creator",
+        "title": "Döredijisi",
+        "description": "Salgylanýan işiň döredijisi ýa-da eýesi."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema görnüşi",
+        "description": "Bu salgylanma üçin OER Schema synpy. Deslapky oer:ReferencedMaterial; diňe dogry OER synpy bilen çalyşyň (meselem, oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

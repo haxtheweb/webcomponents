@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Tas var attēlot video ļoti pieejamā veidā neatkarīgi no avota."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Avots",
+        "description": "Šīs multivides URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Nosaukums",
+        "description": "Vienkāršs nosaukums zem video"
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Izvēlieties atskaņotāja akcenta krāsu."
+      },
+      {
+        "property": "track",
+        "title": "Slēptie subtitri",
+        "description": "Subtitru faila URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Sīktēls",
+        "description": "Neobligāts. Sīktēla/plakāta attēla URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "Iespējot mācību režīmu",
+        "description": "Atspējo ātro patīšanu uz priekšu un atpakaļ."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Noņemt pogu Atvērt YouTube",
+        "description": "Noņem pogu video atvēršanai YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Iekļaut kopīgošanas saiti?",
+        "description": "Nodrošina saiti video kopīgošanai."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Norāda, vai izmantot CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Atļaut atskaņošanu fonā",
+        "description": "Video tiek automātiski pauzēti / atskaņoti, kad cilne zaudē fokusu; šī opcija ļauj atskaņot video, cilnei neesot fokusā"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tumšais motīvs transkripcijai",
+        "description": "Iespējot tumšo motīvu transkripcijai."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Atspējot interaktivitāti",
+        "description": "Atspējot interaktīvo režīmu, kas padara transkripciju noklikšķināmu."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Paslēpt laikspiedolus",
+        "description": "Paslēpt laikspiedolus transkripcijā."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Paslēpt transkripciju",
+        "description": "Pēc noklusējuma paslēpt transkripciju."
+      },
+      {
+        "property": "lang",
+        "title": "Valoda",
+        "description": "Multivides valoda."
+      }
+    ]
+  }
+}

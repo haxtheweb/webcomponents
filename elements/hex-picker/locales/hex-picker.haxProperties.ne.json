@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex पिकर",
+    "description": "Hexcode रङ पिकर"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "मान",
+        "description": "पूर्वनिर्धारित hex मान"
+      },
+      {
+        "property": "disabled",
+        "title": "निष्क्रिय",
+        "description": "पाठ फिल्ड असक्षम गर्नुहोस्"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "ठूलो प्रदर्शन",
+        "description": "ठूलो प्रदर्शनमा रङ समावेश गर्नुहोस्"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Botón de detalles accesible",
+    "description": "Divulgación progresiva accesible con detalle y resumen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Botón",
+        "description": "Resumen del contenido que, si está oculto, p. ej., \"info\", \"metadatos\", etc."
+      },
+      {
+        "slot": "details",
+        "title": "Descripción",
+        "description": "Descripción detallada que se puede ocultar o mostrar"
+      },
+      {
+        "slot": "",
+        "title": "Botón de descripción",
+        "description": "Valor predeterminado del botón que muestra/oculta el texto de descripción, p. ej., \"info\", \"metadatos\", etc."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Texto de resumen opcional cuando los detalles están abiertos"
+      },
+      {
+        "property": "closeText",
+        "title": "Texto de resumen opcional cuando los detalles están cerrados"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Преглед на GitHub",
+    "description": "Достъпна фигура с дълго описание"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Организация",
+        "description": "Машинно име на организацията в GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Хранилище",
+        "description": "Машинно име на хранилището"
+      },
+      {
+        "property": "extended",
+        "title": "Разширен изглед",
+        "description": "Включва readme в елемента"
+      }
+    ]
+  }
+}

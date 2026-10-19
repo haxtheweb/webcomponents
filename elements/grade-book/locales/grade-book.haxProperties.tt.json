@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Билгеләр журналы",
+    "description": "Рубрикалар белән берничә серверны хуплаучы интерфейссыз билгеләр журналы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Чыганак",
+        "description": "Мәгълүмат чыганагы төре (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL ноктасы (JSON)",
+          "json": "JSON мәгълүмат блогы",
+          "filesystem": "Файл системасы"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Чыганак мәгълүматлары",
+        "description": "Билгеләр журналы өчен URL яки JSON мәгълүматлары."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курска сылтама",
+        "description": "Һәр Assessment ресурсында oer:forCourse итеп чыгарыла торган курс идентификаторы."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Közvetlenül megadott vagy távolról betöltött Markdown-tartalomblokk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Nyers Markdown"
+      },
+      {
+        "property": "source",
+        "title": "Forrás",
+        "description": "A Markdown forrásfájlja"
+      }
+    ]
+  }
+}

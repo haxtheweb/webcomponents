@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ምንጭ",
+        "description": "የዚህ ሀብት URL።"
+      }
+    ]
+  }
+}

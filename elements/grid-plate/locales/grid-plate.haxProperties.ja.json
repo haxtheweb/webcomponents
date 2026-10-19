@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "カラムレイアウト",
+    "description": "コンテンツをシンプルなカラムに配置します"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "カラムレイアウト",
+        "description": "項目の表示スタイル（小さい画面では変わる場合があります）"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "レスポンシブを無効化",
+        "description": "チェックすると、大きな画面ではカラムを維持し、最も小さい画面でのみ縦に並べます"
+      },
+      {
+        "property": "itemPadding",
+        "title": "項目のパディング",
+        "description": "各項目内のパディング"
+      },
+      {
+        "property": "itemMargin",
+        "title": "項目のマージン",
+        "description": "項目間のマージン"
+      }
+    ]
+  }
+}

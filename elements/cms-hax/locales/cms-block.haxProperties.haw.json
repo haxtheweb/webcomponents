@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Poloka CMS",
+    "description": "Poloka CMS i hōʻike ʻia ma ka hope"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Mōkuna",
+        "description": "Module e hoʻouka ai mai kā mākou CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta o ka poloka e hoʻouka ai mai kā mākou CMS"
+      }
+    ]
+  }
+}

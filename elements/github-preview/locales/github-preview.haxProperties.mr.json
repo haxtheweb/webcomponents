@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github पूर्वावलोकन",
+    "description": "दीर्घ वर्णनासह सुलभ आकृती"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "संस्था",
+        "description": "Github संस्थेचे मशीन नाव"
+      },
+      {
+        "property": "repo",
+        "title": "रिपॉझिटरी",
+        "description": "रेपोचे मशीन नाव"
+      },
+      {
+        "property": "extended",
+        "title": "विस्तारित दृश्य",
+        "description": "घटकात readme समाविष्ट करते"
+      }
+    ]
+  }
+}

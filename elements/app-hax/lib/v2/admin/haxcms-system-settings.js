@@ -422,9 +422,9 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           text-align: center;
           padding: var(--ddd-spacing-3);
           transition:
-            transform 0.3s ease-in-out,
-            border-color 0.3s ease-in-out,
-            box-shadow 0.3s ease-in-out;
+            transform var(--ddd-duration-normal, 0.3s) ease-in-out,
+            border-color var(--ddd-duration-normal, 0.3s) ease-in-out,
+            box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
         .launcher:hover,
         .launcher:focus-visible {
@@ -914,8 +914,8 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         }
         .settings-option-row {
           transition:
-            opacity 0.3s ease-in-out,
-            background-color 0.3s ease-in-out;
+            opacity var(--ddd-duration-normal, 0.3s) ease-in-out,
+            background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
         .settings-option-row.enabled {
           opacity: 1;
@@ -1061,9 +1061,9 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           cursor: pointer;
           transition:
-            transform 0.3s ease-in-out,
-            box-shadow 0.3s ease-in-out,
-            border-color 0.3s ease-in-out;
+            transform var(--ddd-duration-normal, 0.3s) ease-in-out,
+            box-shadow var(--ddd-duration-normal, 0.3s) ease-in-out,
+            border-color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
         button.action:hover,
         button.action:focus-visible {

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: ચાઇલ્ડ બ્લોક",
+    "description": "વર્તમાન પેજના ચાઇલ્ડ બતાવવા માટે ડાયનેમિક બ્લોક"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "ડાયનેમિક પદ્ધતિ",
+        "description": "આ એલિમેન્ટના સંબંધમાં ચાઇલ્ડની ગણતરી કેવી રીતે કરવી",
+        "options": {
+          "active": "સક્રિય ચાઇલ્ડ",
+          "parent": "પેરેન્ટના ચાઇલ્ડ",
+          "ancestor": "સૌથી ઊંચા પૂર્વજથી બધા ચાઇલ્ડ"
+        }
+      },
+      {
+        "property": "start",
+        "title": "શરૂઆતનું સ્તર"
+      },
+      {
+        "property": "end",
+        "title": "અંતિમ સ્તર"
+      }
+    ]
+  }
+}

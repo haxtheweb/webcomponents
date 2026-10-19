@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "تنزيل ورقة العمل",
+    "description": "زر لعرض الملفات المتاحة للتنزيل."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "عنوان التنزيل."
+      },
+      {
+        "property": "link",
+        "title": "الرابط",
+        "description": "رابط التنزيل."
+      }
+    ]
+  }
+}

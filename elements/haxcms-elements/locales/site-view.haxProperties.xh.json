@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Umboniso weSayithi",
+    "description": "Ibhloko etshintshayo ebuza kwaye ibonise idatha yesayithi ngokusekelwe kwiinqobo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "I-URL yoMboniso",
+        "description": "Iiparamitha zombuzo zokutya kwedatha yomboniso. Ungazifumana kwideshibhodi yeMiboniso."
+      },
+      {
+        "property": "renderer",
+        "title": "Imowudi yokubonisa",
+        "description": "Indlela iziphumo zomboniso ezifanele ziboniswe ngayo"
+      },
+      {
+        "property": "entity",
+        "title": "Uhlobo lwento",
+        "description": "Uhlobo lwento olusetyenziswa ukuhlalutya impendulo",
+        "options": {
+          "": "Okungagqibekanga (izinto)",
+          "item": "Into",
+          "page": "Iphepha",
+          "file": "Ifayile",
+          "tag": "Ithegi",
+          "block": "Ibhloko",
+          "view": "Umboniso",
+          "theme": "Umxholo",
+          "region": "Ummandla",
+          "customElement": "Into yeSiko"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Qhawula umboniso wesayithi",
+        "description": "Guqulela kumxholo ongatshintshiyo ukuze uhlelwe ngqo; kuyeka ukuhlaziywa ngokuzenzekelayo kumthombo."
+      }
+    ]
+  }
+}

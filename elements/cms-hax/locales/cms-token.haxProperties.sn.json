@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tokeni yeCMS",
+    "description": "Tokeni yeCMS inoratidzwa pabackend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Tokeni",
+        "description": "Tokeni kubva kuCMS yedu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Yulduzcha reyting",
+    "description": "Reytingni koʻrsatish vidjeti yoki baho berish tugmasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Ball",
+        "description": "Joriy ball qiymati."
+      },
+      {
+        "property": "possible",
+        "title": "Mumkin boʻlgan",
+        "description": "Mumkin boʻlgan maksimal ball."
+      },
+      {
+        "property": "numStars",
+        "title": "Yulduzlar soni",
+        "description": "Koʻrsatiladigan yulduzlar soni."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktiv",
+        "description": "Foydalanuvchiga reytingni belgilashga ruxsat berish."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Rubrika shkalasi rejimi",
+        "description": "Har bir yulduz uchun OER Schema RubricScale va RubricLevel metamaʼlumotlarini (levelOrdinal/levelPoints) chiqarish."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P ਐਲੀਮੈਂਟ",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ਲਿਖਤ",
+        "description": "ਸਾਈਡਨੋਟ ਦੀ ਸਮੱਗਰੀ"
+      }
+    ]
+  }
+}

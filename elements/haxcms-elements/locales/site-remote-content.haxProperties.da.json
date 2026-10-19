@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Eksternt indhold",
+    "description": "Genbrug indhold fra ét websted på et andet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Webstedsadresse",
+        "description": "Indsæt adressen, der skal refereres indhold fra, hvis det ikke er det aktuelle websted"
+      },
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Element, der skal vises for linket / titeldata"
+      },
+      {
+        "property": "breakreference",
+        "title": "Bryd reference",
+        "description": "Hvis du markerer dette felt, kopieres det eksterne indhold til lokal redigering, men tilknytningen fjernes. Det modtager ikke længere opdateringer, når referencematerialet opdateres."
+      },
+      {
+        "property": "showTitle",
+        "title": "Vis titel",
+        "description": "Slå til for at vise titlen på den ressource, der vises"
+      }
+    ]
+  }
+}

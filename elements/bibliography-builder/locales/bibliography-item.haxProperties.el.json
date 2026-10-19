@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Στοιχείο βιβλιογραφίας",
+    "description": "Στοιχείο που αντιπροσωπεύει μία παραπομπή σε βιβλιογραφία, με υποστήριξη πολλαπλών μορφών και επιλογών εξαγωγής."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Τύπος",
+        "description": "Τύπος παραπομπής",
+        "options": {
+          "web": "Ιστός",
+          "journal": "Περιοδικό",
+          "book": "Βιβλίο"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Τίτλος του στοιχείου"
+      },
+      {
+        "property": "authors",
+        "title": "Συγγραφέας(-είς)",
+        "description": "Τα γεγονότα στο χρονολόγιο"
+      },
+      {
+        "property": "publisher",
+        "title": "Εκδότης",
+        "description": "Αρχικός ιστότοπος"
+      }
+    ]
+  }
+}

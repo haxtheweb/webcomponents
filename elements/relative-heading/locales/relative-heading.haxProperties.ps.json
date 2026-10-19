@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "نسبي سرلیک",
+    "description": "د اصلي سرلیک پر بنسټ سم د سرلیک درجه بندي برابروي"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "د اصلي سرلیک د سرچینې ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "د لینک تڼۍ ځانګړنه غیر فعالوي."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "د لینک کاپي تڼۍ د سرلیک ښي اړخ ته برابروي."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "که اصلي ونه موندل شي د سرلیک کچه."
+      },
+      {
+        "property": "copyMessage",
+        "description": "د لینک کاپي د خبرتیا پیغام تلواله متن بدلوي."
+      },
+      {
+        "property": "linkLabel",
+        "description": "د لینک کاپي تڼۍ تلواله لېبل بدلوي."
+      },
+      {
+        "property": "linkIcon",
+        "description": "د لینک کاپي تڼۍ تلواله آیکون بدلوي."
+      },
+      {
+        "property": "closeLabel",
+        "description": "د لینک کاپي خبرتیا د تړلو تڼۍ تلواله لېبل بدلوي."
+      },
+      {
+        "property": "closeIcon",
+        "description": "د لینک کاپي خبرتیا د تړلو تڼۍ تلواله آیکون بدلوي."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Onyonyo nkịtị",
+    "description": "Mmewere onyonyo nkịtị."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Isi mmalite",
+        "description": "URL onyonyo."
+      },
+      {
+        "attribute": "alt",
+        "title": "Ederede alt",
+        "description": "Ederede ọzọ maka nnweta na SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Ịdị elu",
+        "description": "Ogologo na pixel. Hapụ ya efu iji jiri nha eke."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Mbudata onyonyo",
+        "description": "Họrọ mgbe onyonyo ga-ebudata.",
+        "options": {
+          "lazy": "Budata mgbe a na-ahụ ya",
+          "auto": "Akpaaka"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Isi iyi na-azaghachi (srcset)",
+        "description": "Depụta URL onyonyo na nkọwa (dịka 480w ma ọ bụ 2x) ka ihe nchọgharị wee họrọ nha kacha mma maka ihuenyo. Echekwara ya dị ka njirimara srcset ọkọlọtọ."
+      }
+    ]
+  }
+}

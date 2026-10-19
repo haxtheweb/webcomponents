@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Lista con viñetas",
+    "description": "Crea una lista con viñetas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Estilo de viñeta",
+        "description": "Estilo usado para las viñetas de la lista no ordenada.",
+        "options": {
+          "": "Predeterminado (cuadrado)",
+          "list-disc": "Disco",
+          "list-circle": "Círculo",
+          "list-square": "Cuadrado"
+        }
+      }
+    ]
+  }
+}

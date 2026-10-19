@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Pamje sajti",
+    "description": "Një bllok dinamik që kërkon dhe shfaq të dhëna të sajtit sipas kritereve"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URL-ja e pamjes",
+        "description": "Parametrat e pyetësorit për burimin e të dhënave të pamjes. Mund t'i marrësh nga paneli i pamjeve."
+      },
+      {
+        "property": "renderer",
+        "title": "Modaliteti i shfaqjes",
+        "description": "Si duhet të shfaqen rezultatet e pamjes"
+      },
+      {
+        "property": "entity",
+        "title": "Lloji i entitetit",
+        "description": "Lloji i entitetit që përdoret për analizimin e përgjigjes",
+        "options": {
+          "": "Parazgjedhur (elemente)",
+          "item": "Elementi",
+          "page": "Faqja",
+          "file": "Skedari",
+          "tag": "Etiketa",
+          "block": "Blloku",
+          "view": "Pamje",
+          "theme": "Tema",
+          "region": "Rajon",
+          "customElement": "Element i personalizuar"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Prish pamjen e sajtit",
+        "description": "Shndërroje në përmbajtje statike për redaktim të drejtpërdrejtë; ndalon përditësimin automatik nga burimi."
+      }
+    ]
+  }
+}

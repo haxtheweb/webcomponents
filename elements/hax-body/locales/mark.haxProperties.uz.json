@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ajratish",
+    "description": "Satr ichidagi matnni ajratib koʻrsatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Matn",
+        "description": "Ajratilgan matn."
+      }
+    ]
+  }
+}

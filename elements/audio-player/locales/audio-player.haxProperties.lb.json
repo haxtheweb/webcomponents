@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Audio",
+    "description": "Dëst kann Video onofhängeg vun der Quell op eng ganz accessibel Manéier presentéieren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Quell",
+        "description": "D'URL fir dëst Medium."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titel",
+        "description": "Einfachen Titel ënner dem Video"
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "Wielt d'Akzentfaarf fir de Player."
+      },
+      {
+        "property": "track",
+        "title": "Ënnertitelen",
+        "description": "D'URL fir de Fichier mat den Ënnertitelen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Virschaubild",
+        "description": "Optional. D'URL fir e Virschau-/Posterbild."
+      },
+      {
+        "property": "learningMode",
+        "title": "Léiermodus aktivéieren",
+        "description": "Desaktivéiert Fir- a Réckspullen."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Knäppchen „Op YouTube opmaachen“ ewechhuelen",
+        "description": "Hëlt de Knäppchen ewech, fir de Video op YouTube opzemaachen."
+      },
+      {
+        "property": "linkable",
+        "title": "E Link zum Deelen abannen?",
+        "description": "Stellt e Link zur Verfügung, fir de Video ze deelen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Gëtt un, ob CORS benotzt gëtt.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Ofspillen am Hannergrond erlaben",
+        "description": "Videoe ginn automatesch pauséiert / ofgespillt, wann den Tab de Fokus verléiert; dëst erlaabt, datt de Video ouni Fokus um Tab ofgespillt gëtt"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Däischtert Theme fir d'Transkriptioun",
+        "description": "Däischtert Theme fir d'Transkriptioun aktivéieren."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Interaktivitéit desaktivéieren",
+        "description": "Interaktive Modus desaktivéieren, deen d'Transkriptioun klickbar mécht."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Zäitstempelen verstoppen",
+        "description": "D'Zäitstempelen an der Transkriptioun verstoppen."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkriptioun verstoppen",
+        "description": "Transkriptioun standardméisseg verstoppen."
+      },
+      {
+        "property": "lang",
+        "title": "Sprooch",
+        "description": "Sprooch vum Medium."
+      }
+    ]
+  }
+}

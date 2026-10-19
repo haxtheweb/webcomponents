@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lisènsi",
+    "description": "Wenehi lisensi kanggo karyamu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Irah-irahan",
+        "description": "Judhul karya sing dikutip."
+      },
+      {
+        "property": "source",
+        "title": "Link sumber",
+        "description": "URL sumber kanggo karya sing dilisensi."
+      },
+      {
+        "property": "license",
+        "title": "Lisènsi",
+        "description": "Lisensi sing ditrapake ing karya iki."
+      },
+      {
+        "property": "creator",
+        "title": "Pangripta",
+        "description": "Pangripta utawa pemilik karya iki."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Link sumber",
+        "description": "Link menyang rincian lisensi tambahan."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Label liyane",
+        "description": "Label kanggo rincian lisensi tambahan."
+      }
+    ]
+  }
+}

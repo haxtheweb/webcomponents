@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Лицензия",
+    "description": "Эшегез өчен лицензия күрсәтегез."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Цитаталанган әсәрнең исеме."
+      },
+      {
+        "property": "source",
+        "title": "Чыганак сылтамасы",
+        "description": "Лицензияле әсәрнең чыганак URL'ы."
+      },
+      {
+        "property": "license",
+        "title": "Лицензия",
+        "description": "Бу әсәргә кулланылган лицензия."
+      },
+      {
+        "property": "creator",
+        "title": "Автор",
+        "description": "Бу әсәрнең авторы яки хуҗасы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Чыганак сылтамасы",
+        "description": "Лицензия турында өстәмә мәгълүматка сылтама."
+      },
+      {
+        "property": "moreLabel",
+        "title": "«Күбрәк» исеме",
+        "description": "Лицензия турында өстәмә мәгълүмат өчен исем."
+      }
+    ]
+  }
+}

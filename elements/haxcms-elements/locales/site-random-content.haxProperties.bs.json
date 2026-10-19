@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Nasumični sadržaj stranice",
+    "description": "Prikaz nasumičnog elementa najvišeg nivoa s odabrane stranice"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Stranica",
+        "description": "Odaberite stranicu iz koje se uzima nasumični sadržaj. Element će nasumično prikazati jedan od HTML elemenata najvišeg nivoa s ove stranice."
+      }
+    ]
+  }
+}

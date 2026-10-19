@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Gawo la Maphunziro",
+    "description": "Khadi la aphunzitsi lofotokozera njira zophunzitsira."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Mtundu",
+        "description": "Mtundu wa khadi loti ligwiritsidwe ntchito."
+      },
+      {
+        "property": "subtitle",
+        "title": "Mutu Waung'ono",
+        "description": "Mutu waung'ono wa khadi."
+      },
+      {
+        "property": "url",
+        "title": "Ulalo",
+        "description": "Ulalo wosankha wa khadi (Ulalo supezeka pa Zolinga za Maphunziro)."
+      },
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Ikani Mutu, izi zimasintha mutu wochokera ku mtundu"
+      },
+      {
+        "property": "icon",
+        "title": "Chizindikiro",
+        "description": "Ikani chizindikiro, izi zimasintha chizindikiro chochokera ku mtundu"
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu wowonjezera",
+        "description": "Ikani mtundu wowonjezera, izi zimasintha mtundu wochokera ku mtundu wa khadi"
+      },
+      {
+        "slot": "",
+        "title": "Zamkati"
+      }
+    ]
+  }
+}

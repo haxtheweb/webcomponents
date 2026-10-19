@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Nội dung trang ngẫu nhiên",
+    "description": "Hiển thị một phần tử cấp cao nhất ngẫu nhiên từ trang đã chọn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Trang",
+        "description": "Chọn trang để lấy nội dung ngẫu nhiên. Phần tử sẽ hiển thị ngẫu nhiên một trong các phần tử HTML cấp cao nhất của trang này."
+      }
+    ]
+  }
+}

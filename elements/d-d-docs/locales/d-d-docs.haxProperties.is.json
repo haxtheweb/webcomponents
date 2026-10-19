@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "Útfærsla hönnunarkerfis fyrir HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Valkostur til að birta",
+        "options": {
+          "*": "Fullar stílleiðbeiningar"
+        }
+      }
+    ]
+  }
+}

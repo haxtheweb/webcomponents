@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Thành phần học tập",
+    "description": "Thẻ giúp giảng viên truyền đạt phương pháp sư phạm và chiến lược giảng dạy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Loại",
+        "description": "Loại thẻ được sử dụng."
+      },
+      {
+        "property": "subtitle",
+        "title": "Tiêu đề phụ",
+        "description": "Tiêu đề phụ của thẻ."
+      },
+      {
+        "property": "url",
+        "title": "Liên kết",
+        "description": "Liên kết tùy chọn cho thẻ (không có liên kết cho Mục tiêu học tập)."
+      },
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Đặt tiêu đề, ghi đè tiêu đề theo loại"
+      },
+      {
+        "property": "icon",
+        "title": "Biểu tượng",
+        "description": "Đặt biểu tượng, ghi đè biểu tượng theo loại"
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "Đặt màu nhấn, ghi đè màu theo loại"
+      },
+      {
+        "slot": "",
+        "title": "Mục lục"
+      }
+    ]
+  }
+}

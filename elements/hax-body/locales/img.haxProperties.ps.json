@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "بنسټیز انځور",
+    "description": "بنسټیز انځور عنصر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "سرچینه",
+        "description": "د انځور URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "بدیل متن",
+        "description": "د لاسرسي او SEO لپاره بدیل متن."
+      },
+      {
+        "attribute": "height",
+        "title": "لوړوالی",
+        "description": "لوړوالی په پکسل کې. د طبیعي اندازې د کارولو لپاره یې تش پرېږدئ."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "د انځور پورته کول",
+        "description": "وټاکئ چې انځور کله پورته شي.",
+        "options": {
+          "lazy": "کله چې ښکاره شي پورته شي",
+          "auto": "اتومات"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "ځواب ورکوونکې سرچینې (srcset)",
+        "description": "د انځور URLs او تشریح کوونکي (لکه 480w یا 2x) لېست کړئ ترڅو براوزرونه د سکرین لپاره غوره اندازه وټاکي. د srcset د معیاري ځانګړتیا په توګه ساتل کېږي."
+      }
+    ]
+  }
+}

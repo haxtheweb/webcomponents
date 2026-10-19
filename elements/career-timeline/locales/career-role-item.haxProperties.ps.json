@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "مسلکي دنده",
+    "description": "د یو سازمان دننه یوه انفرادي دنده"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "سرلیک"
+      },
+      {
+        "property": "startDate",
+        "title": "د پیل نېټه"
+      },
+      {
+        "property": "endDate",
+        "title": "د پای نېټه (اختیاري)"
+      },
+      {
+        "property": "skills",
+        "title": "اړوند مهارتونه",
+        "description": "د مهارتونو د ورزیاتولو د پیل لپاره + تڼۍ وټاکئ"
+      }
+    ]
+  }
+}

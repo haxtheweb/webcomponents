@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "उन्नत छवि",
+    "description": "विभिन्न सुधारों के साथ छवियाँ प्रस्तुत करने का तरीका।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "छवि का URL।"
+      },
+      {
+        "property": "alt",
+        "title": "वैकल्पिक टेक्स्ट",
+        "description": "दृष्टिहीन उपयोगकर्ताओं के लिए छवि का वर्णन करने वाला टेक्स्ट।"
+      },
+      {
+        "property": "link",
+        "title": "लिंक",
+        "description": "छवि को किसी URL से लिंक करें"
+      },
+      {
+        "property": "card",
+        "title": "कार्ड",
+        "description": "उभरे हुए कार्ड जैसा दिखाने के लिए ड्रॉप शैडो लागू करें।"
+      },
+      {
+        "property": "box",
+        "title": "बॉक्स",
+        "description": "छवि के चारों ओर दृश्य बॉक्स लागू करें।"
+      },
+      {
+        "property": "offset",
+        "title": "ऑफ़सेट",
+        "description": "छवि पर बाएँ या दाएँ ऑफ़सेट लागू करें।",
+        "options": {
+          "none": "कोई नहीं",
+          "wide": "चौड़ा",
+          "narrow": "संकरा"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "संदर्भ",
+        "description": "छवि के लिए उद्धरण।"
+      },
+      {
+        "property": "caption",
+        "title": "कैप्शन",
+        "description": "छवि के लिए कैप्शन।"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "चित्र शीर्षक",
+        "description": "चित्र लेबल के लिए शीर्षक।"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "चित्र विवरण",
+        "description": "चित्र लेबल के लिए विवरण।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "थंबनेल छवि",
+        "description": "थंबनेल छवि स्रोत। थंबनेल दिखाता है, लेकिन मोडल में पूरा स्रोत खोलता है।"
+      },
+      {
+        "property": "round",
+        "title": "गोल छवि",
+        "description": "छवि को गोलाकार आकार में क्रॉप करता है।"
+      },
+      {
+        "property": "disableZoom",
+        "title": "छवि मोडल अक्षम करें",
+        "description": "क्लिक करने पर छवि को इमेज इंस्पेक्टर डायलॉग में खुलने से रोकें।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown के रूप में रेंडर करें",
+        "description": "कैप्शन और उद्धरण को markdown के रूप में रेंडर करें।"
+      }
+    ]
+  }
+}

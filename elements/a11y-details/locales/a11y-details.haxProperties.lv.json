@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Pieejama detaļu poga",
+    "description": "Pieejama pakāpeniska atklāšana ar detaļām un kopsavilkumu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Poga",
+        "description": "Satura kopsavilkums, ja tas ir paslēpts, piem., \"info\", \"metadati\" u.c."
+      },
+      {
+        "slot": "details",
+        "title": "Apraksts",
+        "description": "Detalizēts apraksts, ko var paslēpt vai parādīt"
+      },
+      {
+        "slot": "",
+        "title": "Apraksta poga",
+        "description": "Noklusējums pogai, kas rāda/paslēpj apraksta tekstu, piem., \"info\", \"metadati\" u.c."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Neobligāts kopsavilkuma teksts, kad detaļas ir atvērtas"
+      },
+      {
+        "property": "closeText",
+        "title": "Neobligāts kopsavilkuma teksts, kad detaļas ir aizvērtas"
+      }
+    ]
+  }
+}

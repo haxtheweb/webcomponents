@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Выбор HEX-цвета",
+    "description": "Палитра выбора цвета в HEX-коде"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Значение",
+        "description": "HEX-значение по умолчанию"
+      },
+      {
+        "property": "disabled",
+        "title": "Отключено",
+        "description": "Отключить текстовое поле"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Крупное отображение",
+        "description": "Показывать цвет в крупном отображении"
+      }
+    ]
+  }
+}

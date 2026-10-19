@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "टॅब",
+    "description": "एकच टॅब."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "टॅब आयकॉन"
+      },
+      {
+        "property": "disabled",
+        "title": "अक्षम"
+      },
+      {
+        "property": "label",
+        "title": "टॅब लेबल"
+      },
+      {
+        "slot": "",
+        "title": "टॅब मजकूर",
+        "description": "टॅबचा मजकूर."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "अद्वितीय ID"
+      },
+      {
+        "property": "flag",
+        "title": "पर्यायी ध्वज मजकूर"
+      },
+      {
+        "property": "flagIcon",
+        "title": "पर्यायी ध्वज आयकॉन"
+      }
+    ]
+  }
+}

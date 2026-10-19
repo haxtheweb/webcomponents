@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallaksôfbylding",
+    "description": "Ofbylding dy't meiskoot"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Ofbylding",
+        "description": "ôfbylding dy't op de eftergrûn brûkt wurdt"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Kopgebiet",
+        "description": "Gebiet foar koptekst"
+      }
+    ]
+  }
+}

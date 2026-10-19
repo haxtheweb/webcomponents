@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Handahófskennt síðuefni",
+    "description": "Birta handahófskennda efstu einingu frá valinni síðu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Síða",
+        "description": "Veldu síðuna sem handahófskennt efni er sótt af. Einingin birtir af handahófi eina af efstu HTML-einingum þessarar síðu."
+      }
+    ]
+  }
+}

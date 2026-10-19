@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS Token",
+    "description": "Backend-pi rikuchisqa CMS token"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Token",
+        "description": "CMS-nchikmanta token"
+      }
+    ]
+  }
+}

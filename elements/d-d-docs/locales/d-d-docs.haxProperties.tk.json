@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "HAX üçin dizaýn ulgamynyň amala aşyrylyşy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Görkeziljek wariant",
+        "options": {
+          "*": "Doly stil gollanmasy"
+        }
+      }
+    ]
+  }
+}

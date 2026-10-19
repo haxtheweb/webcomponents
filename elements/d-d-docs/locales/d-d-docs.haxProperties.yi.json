@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "דיזיין־סיסטעם־אימפּלעמענטאַציע פֿאַר HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "אָפּציע צו ווײַזן",
+        "options": {
+          "*": "גאַנצער סטיל־וועגווײַזער"
+        }
+      }
+    ]
+  }
+}

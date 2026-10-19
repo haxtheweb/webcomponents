@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "حوالو",
+    "description": "ٽن پيشڪش موڊن سان حوالي جو عنصر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "حوالي ڏنل ڪم جو عنوان."
+      },
+      {
+        "property": "source",
+        "title": "ذريعي جي لنڪ",
+        "description": "حوالي ڏنل ڪم جو ذريعي URL."
+      },
+      {
+        "property": "date",
+        "title": "رسائي جي تاريخ",
+        "description": "تاريخ جڏهن ذريعي تائين رسائي ڪئي وئي."
+      },
+      {
+        "property": "scope",
+        "title": "دائرو",
+        "description": "حوالي لاءِ عنصر جو دائرو.",
+        "options": {
+          "sibling": "ڀائر عنصر",
+          "parent": "مٿيون عنصر"
+        }
+      },
+      {
+        "property": "license",
+        "title": "لائسنس",
+        "description": "حوالي ڏنل ڪم جو لائسنس."
+      },
+      {
+        "property": "creator",
+        "title": "تخليق ڪار",
+        "description": "حوالي ڏنل ڪم جو تخليق ڪار يا مالڪ."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema قسم",
+        "description": "هن حوالي لاءِ OER Schema ڪلاس. ڊفالٽ oer:ReferencedMaterial آهي؛ صرف صحيح OER ڪلاس سان مٽايو (مثال طور oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

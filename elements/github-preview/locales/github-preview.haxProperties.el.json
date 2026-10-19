@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Προεπισκόπηση GitHub",
+    "description": "Προσβάσιμη εικόνα με εκτενή περιγραφή"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Οργανισμός",
+        "description": "Όνομα συστήματος οργανισμού GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Αποθετήριο",
+        "description": "Όνομα συστήματος αποθετηρίου"
+      },
+      {
+        "property": "extended",
+        "title": "Εκτεταμένη προβολή",
+        "description": "Περιλαμβάνει το readme στο στοιχείο"
+      }
+    ]
+  }
+}

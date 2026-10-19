@@ -74,7 +74,7 @@ export class AppHaxConfirmationModal extends I18NMixin(DDDSuper(LitElement)) {
       super.styles,
       css`
         :host {
-          --simple-modal-z-index: 10000;
+          --simple-modal-z-index: var(--ddd-z-modal, 10000);
           --simple-modal-width: 480px;
           --simple-modal-max-width: 80vw;
           --simple-modal-max-height: 80vh;
@@ -164,7 +164,7 @@ export class AppHaxConfirmationModal extends I18NMixin(DDDSuper(LitElement)) {
           font-weight: var(--ddd-font-weight-medium, 500);
           font-family: var(--ddd-font-primary, sans-serif);
           cursor: pointer;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           border: none;
           display: flex;
           align-items: center;

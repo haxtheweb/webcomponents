@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Disseny en columnes",
+    "description": "Distribueix el material en columnes simples"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Disseny en columnes",
+        "description": "Estil per presentar aquests elements (pot canviar en pantalles petites)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Desactiva l'adaptabilitat",
+        "description": "Marca la casella per mantenir les columnes en pantalles grans i apilar-les igualment en les pantalles més petites"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Farciment dels elements",
+        "description": "Farciment dins de cada element"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Marges dels elements",
+        "description": "Marge entre elements"
+      }
+    ]
+  }
+}

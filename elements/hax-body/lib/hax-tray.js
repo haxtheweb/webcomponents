@@ -280,10 +280,10 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           max-height: calc(100vh - 64px);
           z-index: var(--hax-ui-focus-z-index);
           transition:
-            height 0.6s ease-in-out,
-            width 0.6s ease-in-out,
-            opacity 0.6s ease-in-out,
-            visibility 0.6s ease-in-out;
+            height var(--ddd-duration-slow, 0.6s) ease-in-out,
+            width var(--ddd-duration-slow, 0.6s) ease-in-out,
+            opacity var(--ddd-duration-slow, 0.6s) ease-in-out,
+            visibility var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         :host([collapsed]) #resize {
           display: none;
@@ -321,12 +321,12 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         :host([element-align="left"]) .wrapper {
           left: -1000px;
           flex-direction: row;
-          transition: left 0.6s ease-in-out;
+          transition: left var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         :host([element-align="right"]) .wrapper {
           right: -1000px;
           flex-direction: row;
-          transition: right 0.6s ease-in-out;
+          transition: right var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         :host([tray-detail="view-source"]) .detail {
           width: 50vw;
@@ -441,7 +441,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         #tray-detail {
           width: auto;
           padding: 0;
-          transition: opacity 0.3s ease-in-out;
+          transition: opacity var(--ddd-duration-normal, 0.3s) ease-in-out;
           opacity: 1;
           overflow: hidden;
         }

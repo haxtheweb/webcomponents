@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P 요소",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "텍스트",
+        "description": "사이드노트의 콘텐츠"
+      }
+    ]
+  }
+}

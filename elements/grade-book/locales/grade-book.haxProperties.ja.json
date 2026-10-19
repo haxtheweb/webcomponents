@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "成績表",
+    "description": "ルーブリックを使い、複数のバックエンドに対応するヘッドレス成績表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ソース",
+        "description": "データソースの種類 (googledocs、url、json、filesystem)。",
+        "options": {
+          "googledocs": "Google ドキュメント",
+          "url": "URL エンドポイント (JSON)",
+          "json": "JSON データ",
+          "filesystem": "ファイルシステム"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "ソースデータ",
+        "description": "成績表の URL または JSON データ。"
+      },
+      {
+        "property": "forCourse",
+        "title": "コース参照",
+        "description": "各 Assessment リソースに oer:forCourse として出力されるコース識別子。"
+      }
+    ]
+  }
+}

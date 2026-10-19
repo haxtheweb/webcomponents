@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Abbildungsunterschrift",
+    "description": "Beschriftung für eine Abbildung."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Bildunterschrift",
+        "description": "Unter der Abbildung angezeigter Text."
+      }
+    ]
+  }
+}

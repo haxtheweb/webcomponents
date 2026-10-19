@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Blok vsebine markdown, vnesene neposredno ali naložene od drugod"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Surovi markdown"
+      },
+      {
+        "property": "source",
+        "title": "Vir",
+        "description": "Izvorna datoteka za markdown"
+      }
+    ]
+  }
+}

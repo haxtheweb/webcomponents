@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Khadi",
+    "description": "Khadi lokhala ndi kakongoletsedwe kowonjezera kosankha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Mutu",
+        "description": "Mutu wa khadi."
+      },
+      {
+        "slot": "subheading",
+        "title": "Mutu waung'ono",
+        "description": "Mutu waung'ono wosankha wa khadi."
+      },
+      {
+        "slot": "content",
+        "title": "Zomwe zili mkati",
+        "description": "Zomwe zili mu khadi."
+      },
+      {
+        "slot": "footer",
+        "title": "Pansi",
+        "description": "Gawo la pansi losankha la khadi."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Chithunzi",
+        "description": "Chithunzi chosankha"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Mawu Ena a Chithunzi",
+        "description": "Mawu ena ofotokozera chithunzi kwa owerenga skrini. Siyani opanda kanthu pokhapokha ngati chithunzicho ndi chokongoletsera chabe."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Kayikidwe Kopingasa ka Chithunzi",
+        "options": {
+          "left": "kumanzere",
+          "center": "pakati",
+          "right": "kumanja"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Kayikidwe Koima ka Chithunzi",
+        "options": {
+          "top": "pamwamba",
+          "center": "pakati",
+          "bottom": "pansi"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Mtundu Wowonjezera",
+        "description": "Mtundu wowonjezera wosankha."
+      },
+      {
+        "property": "dark",
+        "title": "Mawonekedwe Akuda",
+        "description": "Yatsani Mawonekedwe Amdima"
+      },
+      {
+        "property": "horizontal",
+        "title": "Kopingasa",
+        "description": "Moyang'ana mopingasa?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Mtundu Wowonjezera wa Mutu",
+        "description": "Ikani mtundu wowonjezera pa mutu?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Mtundu Wowonjezera wa Kumbuyo",
+        "description": "Ikani mtundu wowonjezera kumbuyo kwa khadi?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Palibe Mtundu Wowonjezera wa Malire",
+        "description": "Chotsani mtundu wowonjezera wa malire?"
+      },
+      {
+        "property": "flat",
+        "title": "Lathyathyathya",
+        "description": "Chotsani mthunzi wa bokosi?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Ngodya",
+        "description": "Zomwe zili pa ngodya ya khadi."
+      }
+    ]
+  }
+}

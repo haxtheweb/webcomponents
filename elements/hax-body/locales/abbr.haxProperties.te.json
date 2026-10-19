@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "సంక్షిప్త రూపం",
+    "description": "పూర్తి పదం టూల్‌టిప్‌తో సంక్షిప్త రూపం."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "వచనం",
+        "description": "కనిపించే సంక్షిప్త రూప వచనం."
+      },
+      {
+        "attribute": "title",
+        "title": "పదం",
+        "description": "హోవర్ చేసినప్పుడు చూపబడే పూర్తి పదం."
+      }
+    ]
+  }
+}

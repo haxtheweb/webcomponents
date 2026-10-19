@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Місце роботи",
+    "description": "Окрема організація та пов'язані з нею посади"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Назва організації"
+      },
+      {
+        "property": "location",
+        "title": "Місце"
+      },
+      {
+        "property": "source",
+        "title": "Джерело"
+      }
+    ]
+  }
+}

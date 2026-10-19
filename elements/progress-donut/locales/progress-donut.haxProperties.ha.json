@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Donut na Ci Gaba",
+    "description": "Donut na ci gaba"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Taken abun"
+      },
+      {
+        "property": "desc",
+        "title": "Bayani",
+        "description": "Dogon bayani mai sauƙin isa"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Tushen Hoto",
+        "description": "Tushen hoton cikin donut."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Madadin Rubutun Hoto",
+        "description": "Madadin rubutu don hoto."
+      },
+      {
+        "property": "animated",
+        "title": "Mai motsi",
+        "description": "Ko ci gaba zai yi motsi a lodawa ta farko"
+      },
+      {
+        "property": "complete",
+        "title": "An kammala",
+        "description": "Tarin ƙimomin da aka kammala."
+      },
+      {
+        "property": "total",
+        "title": "Jimilla",
+        "description": "Jimilla idan dukkan abubuwa sun kammala."
+      },
+      {
+        "property": "startAngle",
+        "title": "Kusurwar Farawa",
+        "description": "Kusurwar donut inda ci gaba ke farawa"
+      }
+    ]
+  }
+}

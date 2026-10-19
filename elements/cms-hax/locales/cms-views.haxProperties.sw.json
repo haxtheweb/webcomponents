@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Mwonekano wa CMS",
+    "description": "Mionekano ya CMS inayoonyeshwa upande wa backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Jina",
+        "description": "Jina la mwonekano kutoka CMS yetu"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Onyesho",
+        "description": "Onyesho ndani ya mwonekano huo kutoka CMS yetu"
+      }
+    ]
+  }
+}

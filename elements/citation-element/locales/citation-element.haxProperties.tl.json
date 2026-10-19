@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Sipi",
+    "description": "Citation element na may tatlong mode ng pagpapakita."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Pamagat ng siniping akda."
+      },
+      {
+        "property": "source",
+        "title": "Link ng source",
+        "description": "Source URL para sa siniping akda."
+      },
+      {
+        "property": "date",
+        "title": "Petsa ng pag-access",
+        "description": "Petsa kung kailan na-access ang source."
+      },
+      {
+        "property": "scope",
+        "title": "Saklaw",
+        "description": "Saklaw ng element na sisipiin.",
+        "options": {
+          "sibling": "Kapatid na element",
+          "parent": "Parent na element"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lisensya",
+        "description": "Lisensya para sa siniping akda."
+      },
+      {
+        "property": "creator",
+        "title": "Lumikha",
+        "description": "Lumikha o may-ari ng siniping akda."
+      },
+      {
+        "property": "typeof",
+        "title": "Uri ng OER Schema",
+        "description": "OER Schema class para sa siping ito. Default ay oer:ReferencedMaterial; palitan lamang ng valid na OER class (hal. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

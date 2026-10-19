@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Butang Butiran Boleh Akses",
+    "description": "Pendedahan progresif boleh akses dengan butiran dan ringkasan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Butang",
+        "description": "Ringkasan kandungan yang jika disembunyikan, cth. \"info\", \"metadata\", dsb."
+      },
+      {
+        "slot": "details",
+        "title": "Perihalan",
+        "description": "Perihalan terperinci yang boleh disembunyikan atau ditunjukkan"
+      },
+      {
+        "slot": "",
+        "title": "Butang Perihalan",
+        "description": "Lalai untuk butang yang menunjukkan/menyembunyikan teks perihalan, cth. \"info\", \"metadata\", dsb."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Teks ringkasan pilihan apabila butiran dibuka"
+      },
+      {
+        "property": "closeText",
+        "title": "Teks ringkasan pilihan apabila butiran ditutup"
+      }
+    ]
+  }
+}

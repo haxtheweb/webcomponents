@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "참고 문헌 항목",
+    "description": "참고 문헌의 단일 인용을 나타내는 항목으로, 여러 형식과 내보내기 옵션을 지원합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "유형",
+        "description": "인용 유형",
+        "options": {
+          "web": "웹",
+          "journal": "학술지",
+          "book": "도서"
+        }
+      },
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "항목의 제목"
+      },
+      {
+        "property": "authors",
+        "title": "저자",
+        "description": "타임라인의 이벤트"
+      },
+      {
+        "property": "publisher",
+        "title": "출판사",
+        "description": "원본 웹사이트"
+      }
+    ]
+  }
+}

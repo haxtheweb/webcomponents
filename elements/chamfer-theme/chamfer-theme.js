@@ -129,7 +129,7 @@ class ChamferTheme extends HAXCMSThemeParts(
             0 0 0
               calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
           );
-          transition: margin 0.6s ease-in-out;
+          transition: margin var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         :host([edit-mode][tray-status="collapsed"]) {
           margin: var(--ddd-spacing-0);
@@ -264,7 +264,7 @@ class ChamferTheme extends HAXCMSThemeParts(
             left: var(--ddd-spacing-0);
             bottom: var(--ddd-spacing-0);
             z-index: 20;
-            transition: transform 0.3s ease-in-out;
+            transition: transform var(--ddd-duration-normal, 0.3s) ease-in-out;
             overflow-y: auto;
           }
           :host(:not([menu-open])) .site-menu-col {

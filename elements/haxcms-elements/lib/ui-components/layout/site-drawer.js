@@ -44,7 +44,7 @@ class SiteDrawer extends LitElement {
             var(--ddd-theme-default-limestoneLight)
           );
           z-index: 1000000;
-          transition: transform 0.3s ease;
+          transition: transform var(--ddd-duration-normal, 0.3s) ease;
           box-shadow: var(--ddd-boxShadow-sm);
         }
         .drawer.left {
@@ -66,7 +66,7 @@ class SiteDrawer extends LitElement {
           z-index: 999999;
           opacity: 0;
           pointer-events: none;
-          transition: opacity 0.3s ease;
+          transition: opacity var(--ddd-duration-normal, 0.3s) ease;
         }
         .scrim.opened {
           opacity: 1;

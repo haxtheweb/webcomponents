@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Badge de mérite",
+    "description": "Badge visuel attestant l'acquisition d'une compétence."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Titre du badge",
+        "description": "Titre affiché sur le badge."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Image du badge",
+        "description": "URL de l'image du badge."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Détails du badge",
+        "description": "Détails sur le badge."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hyperlien",
+        "description": "Lien associé au badge."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Compétences du badge",
+        "description": "Compétences affichées sur le badge."
+      },
+      {
+        "property": "skill",
+        "title": "Compétence (OER Schema)",
+        "description": "OER Schema : une compétence acquise en atteignant cet objectif d'apprentissage."
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lisenziya",
+    "description": "İşiniz üçün lisenziya təqdim edin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "İstinad edilən əsərin başlığı."
+      },
+      {
+        "property": "source",
+        "title": "Mənbə keçidi",
+        "description": "Lisenziyalı əsərin mənbə URL-i."
+      },
+      {
+        "property": "license",
+        "title": "Lisenziya",
+        "description": "Bu əsərə tətbiq edilən lisenziya."
+      },
+      {
+        "property": "creator",
+        "title": "Yaradıcı",
+        "description": "Bu əsərin yaradıcısı və ya sahibi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Mənbə keçidi",
+        "description": "Əlavə lisenziya təfərrüatlarına keçid."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Əlavə etiket",
+        "description": "Əlavə lisenziya təfərrüatları üçün etiket."
+      }
+    ]
+  }
+}

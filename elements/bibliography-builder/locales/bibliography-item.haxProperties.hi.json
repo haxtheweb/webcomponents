@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ग्रंथसूची आइटम",
+    "description": "ग्रंथसूची में एक उद्धरण को दर्शाने वाला आइटम, जो कई फ़ॉर्मेट और निर्यात विकल्पों का समर्थन करता है।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "प्रकार",
+        "description": "उद्धरण प्रकार",
+        "options": {
+          "web": "वेब",
+          "journal": "जर्नल",
+          "book": "पुस्तक"
+        }
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "आइटम का शीर्षक"
+      },
+      {
+        "property": "authors",
+        "title": "लेखक",
+        "description": "टाइमलाइन की घटनाएँ"
+      },
+      {
+        "property": "publisher",
+        "title": "प्रकाशक",
+        "description": "मूल वेबसाइट"
+      }
+    ]
+  }
+}

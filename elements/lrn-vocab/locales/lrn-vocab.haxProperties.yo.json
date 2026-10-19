@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Fokabú",
+    "description": "Ọ̀rọ̀ fokabulárì"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Ọ̀rọ̀"
+      },
+      {
+        "slot": "",
+        "title": "Ìtumọ̀",
+        "description": "Ìtumọ̀ láti fi hàn nígbà tí a bá tẹ ọ̀rọ̀ náà."
+      },
+      {
+        "property": "description",
+        "title": "Àpèjúwe (OER Schema)",
+        "description": "OER Schema: àpèjúwe kúkúrú ti ọ̀rọ̀ fokabulárì náà. A ó kún un láìfọwọ́yí láti ọ̀rọ̀ ìtumọ̀ tí a bá fi sílẹ̀ ní òfìfo."
+      }
+    ]
+  }
+}

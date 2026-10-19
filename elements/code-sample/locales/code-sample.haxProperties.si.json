@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "කේත නියැදිය",
+    "description": "පිටුවේ ඉස්මතු කළ කේත නියැදියක්"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "කේත ඉස්මතු කිරීම",
+        "description": "කේත ප්‍රදේශයට යෙදිය යුතු වාක්‍ය ඛණ්ඩ ඉස්මතු කිරීම",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON දත්ත",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "පසුරු පුවරුවට පිටපත් කිරීමේ බොත්තම",
+        "description": "පසුරු පුවරුවට පිටපත් කරන්න යැයි පවසන ඉහළ දකුණේ බොත්තම"
+      },
+      {
+        "property": "highlightStart",
+        "title": "ඉස්මතු කිරීමේ ආරම්භය",
+        "description": "ඉස්මතු කිරීම ආරම්භ කළ යුතු පේළි අංකය"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "ඉස්මතු කිරීමේ අවසානය",
+        "description": "ඉස්මතු කිරීම අවසන් කළ යුතු පේළිය"
+      }
+    ]
+  }
+}

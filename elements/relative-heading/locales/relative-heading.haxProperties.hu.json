@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relatív címsor",
+    "description": "a szülő címsora alapján a helyes címsor-hierarchiát adja ki"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "A szülőcímsor erőforrás-azonosítója"
+      },
+      {
+        "property": "disableLink",
+        "description": "Letiltja a hivatkozásgomb funkciót."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "A hivatkozásmásoló gombot a címsor jobb szélére igazítja."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Címsorszint, ha a szülő nem található."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Felülírja a hivatkozásmásolás értesítésének alapértelmezett szövegét."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Felülírja a hivatkozásmásoló gomb alapértelmezett címkéjét."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Felülírja a hivatkozásmásoló gomb alapértelmezett ikonját."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Felülírja a hivatkozásmásolás értesítése bezárógombjának alapértelmezett címkéjét."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Felülírja a hivatkozásmásolás értesítése bezárógombjának alapértelmezett ikonját."
+      }
+    ]
+  }
+}

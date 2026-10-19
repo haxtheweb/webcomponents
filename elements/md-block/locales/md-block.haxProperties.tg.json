@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Блоки мундариҷаи markdown, ки мустақиман ё аз дур бор карда мешавад"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown-и хом"
+      },
+      {
+        "property": "source",
+        "title": "Манбаъ",
+        "description": "Файли манбаъ барои markdown"
+      }
+    ]
+  }
+}

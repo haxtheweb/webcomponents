@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ntụaka",
+    "description": "Mmewere ntụaka nwere ọnọdụ ngosi atọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha ọrụ a tụrụ aka na ya."
+      },
+      {
+        "property": "source",
+        "title": "Njikọ isi iyi",
+        "description": "URL isi iyi maka ọrụ a tụrụ aka na ya."
+      },
+      {
+        "property": "date",
+        "title": "Ụbọchị enwetara",
+        "description": "Ụbọchị e nwetara isi iyi ahụ."
+      },
+      {
+        "property": "scope",
+        "title": "Oke",
+        "description": "Oke mmewere a ga-atụ aka na ya.",
+        "options": {
+          "sibling": "Mmewere nwanne",
+          "parent": "Mmewere nne na nna"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Ikikere",
+        "description": "Ikikere maka ọrụ a tụrụ aka na ya."
+      },
+      {
+        "property": "creator",
+        "title": "Onye okike",
+        "description": "Onye okike ma ọ bụ onye nwe ọrụ a tụrụ aka na ya."
+      },
+      {
+        "property": "typeof",
+        "title": "Ụdị OER Schema",
+        "description": "Klas OER Schema maka ntụaka a. Ndabere bụ oer:ReferencedMaterial; nọchie ya naanị na klas OER ziri ezi (dịka oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

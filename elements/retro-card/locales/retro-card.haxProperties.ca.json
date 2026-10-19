@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Targeta retro",
+    "description": "Targeta senzilla amb un disseny retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Títol principal de la targeta."
+      },
+      {
+        "property": "url",
+        "description": "URL que s'obrirà en fer clic a la targeta."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtítol",
+        "description": "Subtítol de la targeta."
+      },
+      {
+        "property": "tags",
+        "title": "Etiquetes",
+        "description": "Etiquetes separades per comes."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Font multimèdia",
+        "description": "Font multimèdia principal."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Font en passar-hi per sobre",
+        "description": "Font multimèdia que es mostra quan es passa per sobre de la targeta o s'activa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "Color d'accent aplicat a tota la targeta."
+      },
+      {
+        "property": "dark",
+        "title": "Fosc",
+        "description": "Utilitza els colors base del mode fosc."
+      }
+    ]
+  }
+}

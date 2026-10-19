@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Tab",
+    "description": "Ein einzelner Tab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Tab-Symbol"
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiviert"
+      },
+      {
+        "property": "label",
+        "title": "Tab-Beschriftung"
+      },
+      {
+        "slot": "",
+        "title": "Tab-Inhalt",
+        "description": "Ein Inhalt des Tabs."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Eindeutige ID"
+      },
+      {
+        "property": "flag",
+        "title": "Optionaler Markierungstext"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Optionales Markierungssymbol"
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Pie Chart",
+    "description": "Gumagawa ng accessible na chart batay sa isang CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Accent na Kulay",
+        "description": "Opsyonal na accent na kulay."
+      },
+      {
+        "title": "Madilim na Tema",
+        "description": "I-enable ang Madilim na Tema"
+      },
+      {
+        "title": "CSV File",
+        "description": "Mag-load ng data mula sa isang CSV."
+      },
+      {
+        "title": "Pamagat ng Chart",
+        "description": "Accessible na alt text para sa iyong chart."
+      },
+      {
+        "title": "Paglalarawan ng Chart",
+        "description": "Accessible na paglalarawan ng iyong chart."
+      },
+      {
+        "title": "Pangalan ng Scale",
+        "description": "Ang ratio ng lapad:taas ng chart (Tingnan ang https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings para sa $ct-scales at $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Donut"
+      },
+      {
+        "title": "Ipakita ang Label"
+      },
+      {
+        "title": "Simulang Anggulo"
+      },
+      {
+        "title": "Padding"
+      },
+      {
+        "title": "Kabuuan",
+        "description": "Opsyonal na kabuuan na maaari mong tukuyin. Sa pagtukoy ng kabuuang value, ang suma ng mga value sa serye ay dapat katumbas ng kabuuang ito para makaguhit ng buong pie. Magagamit mo ang parameter na ito para gumuhit lamang ng mga bahagi ng pie o gauge chart."
+      },
+      {
+        "title": "Huwag Pansinin ang mga Walang Laman na Value",
+        "description": "Hindi papansinin ang mga walang laman na value para maiwasan ang pagguhit ng mga hindi kailangang hiwa at label."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Baligtarin ang Data",
+        "description": "Baligtarin ang data kasama ang mga label, ang pagkakasunod-sunod ng serye pati na rin ang buong array ng data ng serye."
+      },
+      {
+        "title": "HTML Table",
+        "description": "Opsyonal: I-load ang data bilang isang HTML table."
+      },
+      {
+        "title": "Lapad ng Stroke ng Donut"
+      },
+      {
+        "title": "Solidong Donut",
+        "description": "Iguhit ang mga bahagi ng donut bilang mga hugis sa halip na mga stroke."
+      },
+      {
+        "title": "Direksyon ng Label",
+        "description": "Iguhit ang mga bahagi ng donut bilang mga hugis sa halip na mga stroke.",
+        "options": {
+          "neutral": "neutral",
+          "explode": "palabas",
+          "implode": "papasok"
+        }
+      },
+      {
+        "title": "Offset ng Label",
+        "description": "Offset ng posisyon ng label mula sa karaniwang posisyon na kalahati ng distansya ng radius. Maaaring positibo o negatibo ang value na ito. Ang mga positibong value ay maglalagay sa label palayo sa gitna."
+      },
+      {
+        "title": "Posisyon ng Label",
+        "options": {
+          "inside": "sa loob",
+          "outside": "sa labas",
+          "center": "gitna"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ajakan bertindak",
+    "description": "Tombol sederhana dengan tautan untuk mengambil tindakan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label tautan"
+      },
+      {
+        "property": "link",
+        "title": "Tautan",
+        "description": "Masukkan tautan ke sumber daya apa pun"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Sembunyikan ikon",
+        "description": "Sembunyikan ikon yang digunakan untuk menonjolkan teks"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon tautan tindakan"
+      }
+    ]
+  }
+}

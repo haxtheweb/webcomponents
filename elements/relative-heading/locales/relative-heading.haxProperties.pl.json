@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Nagłówek względny",
+    "description": "generuje poprawną hierarchię nagłówków na podstawie nagłówka nadrzędnego"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID zasobu nagłówka nadrzędnego"
+      },
+      {
+        "property": "disableLink",
+        "description": "Wyłącza funkcję przycisku linku."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Wyrównuje przycisk kopiowania linku do prawej krawędzi nagłówka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Poziom nagłówka, jeśli nie znaleziono nadrzędnego."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Zastępuje domyślny tekst komunikatu po skopiowaniu linku."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Zastępuje domyślną etykietę przycisku kopiowania linku."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Zastępuje domyślną ikonę przycisku kopiowania linku."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Zastępuje domyślną etykietę przycisku zamykania komunikatu po skopiowaniu linku."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Zastępuje domyślną ikonę przycisku zamykania komunikatu po skopiowaniu linku."
+      }
+    ]
+  }
+}

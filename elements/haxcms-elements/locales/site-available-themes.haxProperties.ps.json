@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "شته بڼې",
+    "description": "شته HAXcms بڼې د ژوندۍ مخکتنې بدلون سره وښایاست"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "د لید حالت",
+        "description": "وټاکئ چې بڼې څنګه وښودل شي",
+        "options": {
+          "gallery": "ګالري",
+          "table": "جدول"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "جزیات وښایاست",
+        "description": "د بڼو تشریحات او اضافي معلومات وښایاست"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "پټې او زړې بڼې وښایاست",
+        "description": "د ډشبورډ له تلوالو سربېره پټې، زړې او بدې بڼې هم وښایاست"
+      },
+      {
+        "property": "columns",
+        "title": "ستونونه (ګالري)",
+        "description": "په ګالرۍ لید کې د ستونونو شمېر"
+      }
+    ]
+  }
+}

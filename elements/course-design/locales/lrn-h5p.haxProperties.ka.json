@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P ელემენტი",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "ტექსტი",
+        "description": "გვერდითი შენიშვნის კონტენტი"
+      }
+    ]
+  }
+}

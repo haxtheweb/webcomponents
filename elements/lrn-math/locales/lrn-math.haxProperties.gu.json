@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ગણિત",
+    "description": "ગણિતને સુંદર રીતે પ્રસ્તુત કરો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "ગણિત",
+        "description": "સમીકરણ LaTeX તરીકે દાખલ કરો"
+      }
+    ]
+  }
+}

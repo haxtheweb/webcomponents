@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Izcēlums",
+    "description": "Izcelt teksta fragmentu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teksts",
+        "description": "Izceltais teksts."
+      }
+    ]
+  }
+}

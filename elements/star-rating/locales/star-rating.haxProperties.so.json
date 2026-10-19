@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Qiimaynta Xiddigaha",
+    "description": "Qalab muujinta qiimaynta ama badhan lagu qiimeeyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Dhibcaha",
+        "description": "Qiimaha dhibcaha hadda."
+      },
+      {
+        "property": "possible",
+        "title": "Suurtagal",
+        "description": "Dhibcaha ugu badan ee suurtagalka ah."
+      },
+      {
+        "property": "numStars",
+        "title": "Tirada Xiddigaha",
+        "description": "Tirada xiddigaha la muujinayo."
+      },
+      {
+        "property": "interactive",
+        "title": "Isdhexgal",
+        "description": "U oggolow isticmaalaha inuu dejiyo qiimaynta."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Habka Miisaanka Rubric",
+        "description": "Soo saar xogta-sharaxa OER Schema RubricScale iyo RubricLevel (levelOrdinal/levelPoints) xiddig kasta."
+      }
+    ]
+  }
+}

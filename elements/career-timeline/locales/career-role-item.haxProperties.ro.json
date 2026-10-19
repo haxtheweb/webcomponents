@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Rol în carieră",
+    "description": "Un rol individual în cadrul unei organizații"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu"
+      },
+      {
+        "property": "startDate",
+        "title": "Data de început"
+      },
+      {
+        "property": "endDate",
+        "title": "Data de sfârșit (opțional)"
+      },
+      {
+        "property": "skills",
+        "title": "Competențe asociate",
+        "description": "Selectează butonul + pentru a începe să adaugi competențe"
+      }
+    ]
+  }
+}

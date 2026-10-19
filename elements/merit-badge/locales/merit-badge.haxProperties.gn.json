@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Techaukaha Mérito",
+    "description": "Techaukaha ohechaukáva peteĩ katupyry jehupyty."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Techaukaha Réra",
+        "description": "Téra ojehechaukáva techaukahápe."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Techaukaha Ta'ãnga",
+        "description": "Ta'ãnga URL techaukahápe g̃uarã."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Techaukaha Mba'emimi",
+        "description": "Mba'emimi techaukaha rehegua."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Joajuha",
+        "description": "Joajuha ojoajúva techaukaha rehe."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Techaukaha Katupyry",
+        "description": "Katupyry ojehechaukáva techaukahápe."
+      },
+      {
+        "property": "skill",
+        "title": "Katupyry (OER Schema)",
+        "description": "OER Schema: peteĩ katupyry ojeikuaáva ojehupytýva ko jeikuaa rehupytyrã oñemohu'ã rire."
+      }
+    ]
+  }
+}

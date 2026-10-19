@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ഹൈലൈറ്റ്",
+    "description": "ഇൻലൈൻ ടെക്സ്റ്റ് ഹൈലൈറ്റ് ചെയ്യുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "വാചകം",
+        "description": "ഹൈലൈറ്റ് ചെയ്ത ടെക്സ്റ്റ്."
+      }
+    ]
+  }
+}

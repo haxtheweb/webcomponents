@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Barrierefreier Details-Button",
+    "description": "Barrierefreie schrittweise Offenlegung mit details und summary"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Button",
+        "description": "Zusammenfassung des Inhalts, der verborgen ist, z. B. „Info“, „Metadaten“ usw."
+      },
+      {
+        "slot": "details",
+        "title": "Beschreibung",
+        "description": "Ausführliche Beschreibung, die aus- oder eingeblendet werden kann"
+      },
+      {
+        "slot": "",
+        "title": "Beschreibungs-Button",
+        "description": "Standardtext für den Button, der den Beschreibungstext ein-/ausblendet, z. B. „Info“, „Metadaten“ usw."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Optionaler Zusammenfassungstext bei geöffneten Details"
+      },
+      {
+        "property": "closeText",
+        "title": "Optionaler Zusammenfassungstext bei geschlossenen Details"
+      }
+    ]
+  }
+}

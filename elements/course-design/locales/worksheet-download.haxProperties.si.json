@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "වැඩ පත්‍රිකා බාගැනීම",
+    "description": "බාගැනීම සඳහා ඇති ගොනු පෙන්වීම සඳහා බොත්තමක්."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "බාගැනීමේ මාතෘකාව."
+      },
+      {
+        "property": "link",
+        "title": "සබැඳිය",
+        "description": "බාගැනීම සඳහා සබැඳිය."
+      }
+    ]
+  }
+}

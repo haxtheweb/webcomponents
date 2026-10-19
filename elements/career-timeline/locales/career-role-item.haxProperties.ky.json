@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Карьерадагы роль",
+    "description": "Уюмдагы жеке роль"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Аталышы"
+      },
+      {
+        "property": "startDate",
+        "title": "Башталган күн"
+      },
+      {
+        "property": "endDate",
+        "title": "Аяктаган күн (милдеттүү эмес)"
+      },
+      {
+        "property": "skills",
+        "title": "Байланыштуу көндүмдөр",
+        "description": "Көндүмдөрдү кошуп баштоо үчүн + баскычын тандаңыз"
+      }
+    ]
+  }
+}

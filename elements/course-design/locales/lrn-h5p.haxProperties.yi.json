@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P עלעמענט",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "טעקסט",
+        "description": "אינהאַלט פֿון דער זײַט־הערה"
+      }
+    ]
+  }
+}

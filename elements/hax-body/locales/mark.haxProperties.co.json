@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Evidenziamentu",
+    "description": "Evidenzià u testu in linea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Testu",
+        "description": "Testu evidenziatu."
+      }
+    ]
+  }
+}

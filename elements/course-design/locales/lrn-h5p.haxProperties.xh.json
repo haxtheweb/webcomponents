@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Into ye-H5P",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Umbhalo",
+        "description": "Umxholo wenqaku elisecaleni"
+      }
+    ]
+  }
+}

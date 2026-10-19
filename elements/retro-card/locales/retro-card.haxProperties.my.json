@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ရီထရို ကတ်",
+    "description": "ရီထရို ဒီဇိုင်းပါ ရိုးရှင်းသော ကတ်။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "ကတ်၏ အဓိက ခေါင်းစဉ်။"
+      },
+      {
+        "property": "url",
+        "description": "ကတ်ကို နှိပ်သောအခါ ဖွင့်မည့် URL။"
+      },
+      {
+        "property": "subtitle",
+        "title": "ခေါင်းစဉ်ခွဲ",
+        "description": "ကတ် ခေါင်းစဉ်ခွဲ။"
+      },
+      {
+        "property": "tags",
+        "title": "တဂ်များ",
+        "description": "ကော်မာဖြင့် ခွဲထားသော တဂ်များ။"
+      },
+      {
+        "property": "mediaSource",
+        "title": "မီဒီယာ ရင်းမြစ်",
+        "description": "အဓိက မီဒီယာ ရင်းမြစ်။"
+      },
+      {
+        "property": "hoverSource",
+        "title": "hover လုပ်သောအခါ ရင်းမြစ်",
+        "description": "ကတ်ကို hover လုပ် သို့မဟုတ် အသက်ဝင်စေသောအခါ ပြသော မီဒီယာ ရင်းမြစ်။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "ကတ်တစ်ခုလုံးတွင် အသုံးချသော accent အရောင်။"
+      },
+      {
+        "property": "dark",
+        "title": "အမှောင်",
+        "description": "အမှောင်မုဒ် အခြေခံ အရောင်များကို သုံးရန်။"
+      }
+    ]
+  }
+}

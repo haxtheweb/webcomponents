@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro kart",
+    "description": "Retro dizaýnly ýönekeý kart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Kartyň esasy ady."
+      },
+      {
+        "property": "url",
+        "description": "Kart basylanda açyljak URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "Kiçi at",
+        "description": "Kartyň kiçi ady."
+      },
+      {
+        "property": "tags",
+        "title": "Bellikler",
+        "description": "Otur bilen bölünen tegler."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Media çeşmesi",
+        "description": "Esasy media çeşmesi."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Kursor getirilende çeşme",
+        "description": "Karta kursor getirilende ýa-da işjeňleşdirilende görkezilýän media çeşmesi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "Kartyň hemme ýerinde ulanylýan aksent reňki."
+      },
+      {
+        "property": "dark",
+        "title": "Garaňky",
+        "description": "Garaňky tertibiň esasy reňklerini ulan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Foinse",
+        "description": "URL na hacmhainne seo."
+      }
+    ]
+  }
+}

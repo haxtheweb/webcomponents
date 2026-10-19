@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "پوسته‌های موجود",
+    "description": "نمایش پوسته‌های موجود HAXcms با جابه‌جایی پیش‌نمایش زنده"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "حالت نمایش",
+        "description": "نحوه نمایش پوسته‌ها را انتخاب کنید",
+        "options": {
+          "gallery": "گالری",
+          "table": "جدول"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "نمایش جزئیات",
+        "description": "نمایش توضیحات پوسته و اطلاعات بیشتر"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "نمایش پوسته‌های پنهان و قدیمی",
+        "description": "نمایش پوسته‌های پنهان، قدیمی و افتضاح علاوه بر پیش‌فرض‌های داشبورد"
+      },
+      {
+        "property": "columns",
+        "title": "ستون‌ها (گالری)",
+        "description": "تعداد ستون‌ها در نمای گالری"
+      }
+    ]
+  }
+}

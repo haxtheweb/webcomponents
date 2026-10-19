@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Urruneko edukia",
+    "description": "Berrerabili gune bateko edukia beste batean."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Gunearen helbidea",
+        "description": "Itsatsi edukia erreferentziatzeko helbidea, uneko gunea ez bada"
+      },
+      {
+        "property": "uuid",
+        "title": "Elementua",
+        "description": "Estekarako / izenburu-datuetarako errendatu beharreko elementua"
+      },
+      {
+        "property": "breakreference",
+        "title": "Hautsi erreferentzia",
+        "description": "Lauki hau markatzean urruneko edukia kopiatzen da lokalean editatzeko, baina lotura kentzen da. Ez du eguneratzerik jasoko erreferentziako materiala eguneratzean."
+      },
+      {
+        "property": "showTitle",
+        "title": "Erakutsi izenburua",
+        "description": "Aktibatu bistaratzen ari den baliabidearen izenburua errendatzeko"
+      }
+    ]
+  }
+}

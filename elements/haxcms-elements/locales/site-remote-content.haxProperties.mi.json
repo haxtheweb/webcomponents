@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ihirangi Mamao",
+    "description": "Whakamahi anō i ngā ihirangi o tētahi pae ki tētahi atu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Wāhitau pae",
+        "description": "Whakapiri i te wāhitau hei tohutoro i ngā ihirangi mēnā ehara i te pae o nāianei"
+      },
+      {
+        "property": "uuid",
+        "title": "Tūemi",
+        "description": "Tūemi hei whakaatu mō ngā raraunga hono / taitara"
+      },
+      {
+        "property": "breakreference",
+        "title": "Wāwāhi tohutoro",
+        "description": "Mā te tohu i tēnei pouaka ka tāruatia ngā ihirangi mamao hei whakatika ā-rohe, engari ka tangohia te hononga. Kāore e whiwhi whakahou anō ina whakahoutia ngā rauemi tohutoro."
+      },
+      {
+        "property": "showTitle",
+        "title": "Whakaatu taitara",
+        "description": "Whakakāngia hei whakaatu i te taitara o te rauemi e whakaaturia ana"
+      }
+    ]
+  }
+}

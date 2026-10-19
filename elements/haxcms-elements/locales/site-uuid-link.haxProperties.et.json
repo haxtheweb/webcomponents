@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX-i link",
+    "description": "Link konkreetsele ressursile saidil, millega töötad."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Üksus",
+        "description": "Lingi / pealkirja andmete jaoks kuvatav üksus"
+      }
+    ]
+  }
+}

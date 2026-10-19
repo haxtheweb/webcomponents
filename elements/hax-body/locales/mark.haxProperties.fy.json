@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Markearring",
+    "description": "Ynline tekst markearje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Tekst",
+        "description": "Markearre tekst."
+      }
+    ]
+  }
+}

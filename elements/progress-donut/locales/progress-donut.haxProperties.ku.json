@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Donata Pêşveçûnê",
+    "description": "Donata pêşveçûnê"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê hêmanê"
+      },
+      {
+        "property": "desc",
+        "title": "Danasîn",
+        "description": "Danasîna dirêj a gihîştbar"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Çavkaniya Wêneyê",
+        "description": "Çavkaniya wêneyê di nav donatê de."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Nivîsa Alt a Wêneyê",
+        "description": "Nivîsa alt ji bo wêneyê."
+      },
+      {
+        "property": "animated",
+        "title": "Anîmasyonkirî",
+        "description": "Gelo pêşveçûn di barkirina yekem de anîmasyon dibe an na"
+      },
+      {
+        "property": "complete",
+        "title": "Temam",
+        "description": "Rêzikek ji nirxên qediyayî."
+      },
+      {
+        "property": "total",
+        "title": "Giştî",
+        "description": "Giştî dema hemû tişt qediyane."
+      },
+      {
+        "property": "startAngle",
+        "title": "Goşeya Destpêkê",
+        "description": "Goşeya donatê ya ku pêşveçûn jê dest pê dike"
+      }
+    ]
+  }
+}

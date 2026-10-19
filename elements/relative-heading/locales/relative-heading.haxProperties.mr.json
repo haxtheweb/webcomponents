@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "सापेक्ष शीर्षक",
+    "description": "पालक शीर्षकावर आधारित योग्य शीर्षक श्रेणी देते"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "पालक शीर्षकाचा संसाधन ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "लिंक बटण वैशिष्ट्य अक्षम करते."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "लिंक कॉपी बटण शीर्षकाच्या अगदी उजवीकडे संरेखित करते."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "पालक आढळला नाही तर शीर्षक स्तर."
+      },
+      {
+        "property": "copyMessage",
+        "description": "लिंक कॉपीच्या टोस्ट संदेशाचा डीफॉल्ट मजकूर बदलते."
+      },
+      {
+        "property": "linkLabel",
+        "description": "लिंक कॉपी बटणाचे डीफॉल्ट लेबल बदलते."
+      },
+      {
+        "property": "linkIcon",
+        "description": "लिंक कॉपी बटणाचा डीफॉल्ट आयकॉन बदलते."
+      },
+      {
+        "property": "closeLabel",
+        "description": "लिंक कॉपी टोस्टच्या बंद बटणाचे डीफॉल्ट लेबल बदलते."
+      },
+      {
+        "property": "closeIcon",
+        "description": "लिंक कॉपी टोस्टच्या बंद बटणाचा डीफॉल्ट आयकॉन बदलते."
+      }
+    ]
+  }
+}

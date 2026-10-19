@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retrokaart",
+    "description": "Ienfâldige kaart mei in retro-ûntwerp."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Haadtitel fan de kaart."
+      },
+      {
+        "property": "url",
+        "description": "URL om te iepenjen as op de kaart klikt wurdt."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undertitel",
+        "description": "Undertitel fan de kaart."
+      },
+      {
+        "property": "tags",
+        "title": "Labels",
+        "description": "Tags skieden troch komma's."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Mediaboarne",
+        "description": "Primêre mediaboarne."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Boarne by hoverjen",
+        "description": "Mediaboarne dy't toand wurdt as der oer de kaart hovere wurdt of as dy aktivearre wurdt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "Aksintkleur tapast op de hiele kaart."
+      },
+      {
+        "property": "dark",
+        "title": "Tsjuster",
+        "description": "Basiskleuren fan tsjustere modus brûke."
+      }
+    ]
+  }
+}

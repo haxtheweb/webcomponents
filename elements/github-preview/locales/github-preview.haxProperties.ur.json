@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub پیش منظر",
+    "description": "طویل وضاحت کے ساتھ قابل رسائی شکل"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ادارہ",
+        "description": "GitHub تنظیم کا مشینی نام"
+      },
+      {
+        "property": "repo",
+        "title": "ریپوزیٹری",
+        "description": "ریپو کا مشینی نام"
+      },
+      {
+        "property": "extended",
+        "title": "توسیعی ویو",
+        "description": "عنصر میں readme شامل کرتا ہے"
+      }
+    ]
+  }
+}

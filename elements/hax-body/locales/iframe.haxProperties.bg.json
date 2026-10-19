@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "Вграждане на външно уеб съдържание."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Източник",
+        "description": "URL за този ресурс."
+      }
+    ]
+  }
+}

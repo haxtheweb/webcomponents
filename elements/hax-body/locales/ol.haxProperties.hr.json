@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Numerirani popis",
+    "description": "Stvorite numerirani popis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Stil numeriranja",
+        "description": "Stil koji se koristi za numeriranje uređenog popisa.",
+        "options": {
+          "": "Zadano (decimalno)",
+          "list-decimal-leading-zero": "Decimalno s vodećom nulom (01, 02, 03)",
+          "list-lower-alpha": "Mala slova (a, b, c)",
+          "list-upper-alpha": "Velika slova (A, B, C)",
+          "list-lower-roman": "Mali rimski brojevi (i, ii, iii)",
+          "list-upper-roman": "Veliki rimski brojevi (I, II, III)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Tilfeldig sideinnhold",
+    "description": "Vis et tilfeldig toppnivåelement fra en valgt side"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Side",
+        "description": "Velg siden tilfeldig innhold skal hentes fra. Elementet viser tilfeldig ett av toppnivå-HTML-elementene fra denne siden."
+      }
+    ]
+  }
+}

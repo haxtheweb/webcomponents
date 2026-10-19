@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Pobieranie karty pracy",
+    "description": "Przycisk wyświetlający pliki dostępne do pobrania."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Tytuł pobieranego pliku."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Link do pobrania."
+      }
+    ]
+  }
+}

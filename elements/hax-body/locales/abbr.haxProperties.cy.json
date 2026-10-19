@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Talfyriad",
+    "description": "Talfyriad gyda chyngor offer yn dangos y term llawn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Testun",
+        "description": "Testun gweladwy'r talfyriad."
+      },
+      {
+        "attribute": "title",
+        "title": "Gair",
+        "description": "Term llawn a ddangosir wrth hofran."
+      }
+    ]
+  }
+}

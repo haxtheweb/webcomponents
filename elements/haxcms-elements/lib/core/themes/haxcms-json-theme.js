@@ -591,7 +591,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           overflow: visible;
           clip: auto;
           white-space: normal;
-          z-index: 10000;
+          z-index: var(--ddd-z-modal, 10000);
           background: var(--ddd-theme-default-white, #fff);
           color: var(--ddd-theme-default-coalyGray, #000);
           border: 2px solid currentColor;
@@ -672,9 +672,9 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           border-radius: var(--ddd-radius-xs, 4px);
           background: var(--bg-color);
           transition:
-            background-color 0.3s ease-in-out,
-            border-color 0.3s ease-in-out,
-            color 0.3s ease-in-out;
+            background-color var(--ddd-duration-normal, 0.3s) ease-in-out,
+            border-color var(--ddd-duration-normal, 0.3s) ease-in-out,
+            color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         #copybtn:hover,

@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "स्रोत",
+        "description": "इस संसाधन का URL।"
+      }
+    ]
+  }
+}

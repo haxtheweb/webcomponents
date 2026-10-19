@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Call to action",
+    "description": "Isang simpleng button na may link para kumilos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Label ng link"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Maglagay ng link sa anumang resource"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Itago ang icon",
+        "description": "Itago ang icon na ginagamit para i-accent ang teksto"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Icon ng action link"
+      }
+    ]
+  }
+}

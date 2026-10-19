@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Afstæð fyrirsögn",
+    "description": "birtir rétta fyrirsagnastigveldi út frá fyrirsögn yfireiningar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Tilfangsauðkenni yfirfyrirsagnar"
+      },
+      {
+        "property": "disableLink",
+        "description": "Gerir tengilhnappinn óvirkan."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Jafnar hnappinn til að afrita tengil lengst til hægri við fyrirsögnina."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Fyrirsagnarstig ef yfireining finnst ekki."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Kemur í stað sjálfgefins texta í tilkynningu við afritun tengils."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Kemur í stað sjálfgefins merkis á hnappi til að afrita tengil."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Kemur í stað sjálfgefins tákns á hnappi til að afrita tengil."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Kemur í stað sjálfgefins merkis á lokahnappi tilkynningar við afritun tengils."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Kemur í stað sjálfgefins tákns á lokahnappi tilkynningar við afritun tengils."
+      }
+    ]
+  }
+}

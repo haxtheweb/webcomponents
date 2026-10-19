@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mmewere H5P",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Ederede",
+        "description": "Ọdịnaya nke ndetu n'akụkụ"
+      }
+    ]
+  }
+}

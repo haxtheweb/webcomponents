@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github Jehecha Ypy",
+    "description": "Ta'ãnga ojeikekuaáva ñemoha'ãnga ipukúva reheve"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Atyguasu",
+        "description": "Github atyguasu réra máquinape g̃uarã"
+      },
+      {
+        "property": "repo",
+        "title": "Ñongatuha",
+        "description": "Ñongatuha réra máquinape g̃uarã"
+      },
+      {
+        "property": "extended",
+        "title": "Jehecha Tuichavéva",
+        "description": "Omoinge readme pehẽme"
+      }
+    ]
+  }
+}

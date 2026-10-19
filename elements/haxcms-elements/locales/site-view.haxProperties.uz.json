@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Sayt koʻrinishi",
+    "description": "Mezonlar asosida sayt maʼlumotlarini soʻrab, koʻrsatadigan dinamik blok"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Koʻrinish URL manzili",
+        "description": "Koʻrinish maʼlumotlar oqimi uchun soʻrov parametrlari. Buni Koʻrinishlar boshqaruv panelidan olishingiz mumkin."
+      },
+      {
+        "property": "renderer",
+        "title": "Koʻrsatish rejimi",
+        "description": "Koʻrinish natijalari qanday koʻrsatilishi kerak"
+      },
+      {
+        "property": "entity",
+        "title": "Obyekt turi",
+        "description": "Javobni tahlil qilish uchun ishlatiladigan obyekt turi",
+        "options": {
+          "": "Standart (elementlar)",
+          "item": "Element",
+          "page": "Sahifa",
+          "file": "Fayl",
+          "tag": "Teg",
+          "block": "Blok",
+          "view": "Koʻrinish",
+          "theme": "Mavzu",
+          "region": "Hudud",
+          "customElement": "Maxsus element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Sayt koʻrinishini uzish",
+        "description": "Bevosita tahrirlash uchun statik kontentga aylantirish; manbadan avtomatik yangilanish toʻxtaydi."
+      }
+    ]
+  }
+}

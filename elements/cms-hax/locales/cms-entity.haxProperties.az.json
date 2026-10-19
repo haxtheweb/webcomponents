@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS obyekti",
+    "description": "Backend-də göstərilən CMS obyekti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Növ",
+        "description": "CMS-imizdən növ",
+        "options": {
+          "node": "Düyün",
+          "user": "İstifadəçi",
+          "file": "Fayl"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "CMS-imizdən id"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Göstərmə rejimi",
+        "description": "CMS-imizdən göstərmə rejimi"
+      }
+    ]
+  }
+}

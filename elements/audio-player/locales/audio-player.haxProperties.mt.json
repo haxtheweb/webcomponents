@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Awdjo",
+    "description": "Dan jista' jippreżenta vidjo b'mod aċċessibbli ħafna irrispettivament mis-sors."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sors",
+        "description": "L-URL għal din il-midja."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Titlu",
+        "description": "Titlu sempliċi taħt il-vidjo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "Agħżel il-kulur tal-aċċent għall-player."
+      },
+      {
+        "property": "track",
+        "title": "Sottotitli",
+        "description": "L-URL għall-fajl tas-sottotitli."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Immaġni thumbnail",
+        "description": "Opzjonali. L-URL għal immaġni thumbnail/poster."
+      },
+      {
+        "property": "learningMode",
+        "title": "Attiva l-mod tat-tagħlim",
+        "description": "Jiddiżattiva l-fast forward u r-rewind."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Neħħi l-buttuna Iftaħ fuq YouTube",
+        "description": "Ineħħi l-buttuna biex tiftaħ il-vidjo fuq YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Tinkludi link biex taqsam?",
+        "description": "Jipprovdi link biex taqsam il-vidjo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Jindika jekk għandux jintuża CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Ippermetti r-riproduzzjoni fl-isfond",
+        "description": "Il-vidjows jieqfu / jilagħbu awtomatikament meta t-tab titlef il-fokus; dan jippermetti lill-vidjo jilgħab mingħajr ma t-tab ikollha l-fokus"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Tema skura għat-traskrizzjoni",
+        "description": "Attiva t-tema skura għat-traskrizzjoni."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Iddiżattiva l-Interattività",
+        "description": "Iddiżattiva l-mod interattiv li jagħmel it-traskrizzjoni klikkabbli."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Aħbi l-ħinijiet",
+        "description": "Aħbi l-ħinijiet fuq it-traskrizzjoni."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Aħbi t-Traskrizzjoni",
+        "description": "Aħbi t-traskrizzjoni b'mod default."
+      },
+      {
+        "property": "lang",
+        "title": "Lingwa",
+        "description": "Lingwa tal-midja."
+      }
+    ]
+  }
+}

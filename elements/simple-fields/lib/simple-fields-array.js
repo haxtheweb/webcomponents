@@ -31,7 +31,7 @@ class SimpleFieldsArray extends I18NMixin(
       css`
         :host([expanded]) #expand::part(icon) {
           transform: rotate(90deg);
-          transition: all 0.6s ease-in-out;
+          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         #item-fields {
           margin: var(--simple-fields-margin-small, 8px) 0;

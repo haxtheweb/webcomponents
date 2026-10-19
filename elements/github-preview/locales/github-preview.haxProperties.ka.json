@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github-ის გადახედვა",
+    "description": "ხელმისაწვდომი ფიგურა ვრცელი აღწერით"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "ორგანიზაცია",
+        "description": "Github ორგანიზაციის სისტემური სახელი"
+      },
+      {
+        "property": "repo",
+        "title": "რეპოზიტორია",
+        "description": "რეპოზიტორიის სისტემური სახელი"
+      },
+      {
+        "property": "extended",
+        "title": "გაფართოებული ხედი",
+        "description": "ელემენტში readme-ს ჩართვა"
+      }
+    ]
+  }
+}

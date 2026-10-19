@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Ṣe Ìṣètò, Gbé E Kalẹ̀, Pa Á Run",
+    "description": "Ìmúṣẹ ètò ìṣètò fún HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Àṣàyàn láti fi hàn",
+        "options": {
+          "*": "Ìtọ́sọ́nà ara kíkún"
+        }
+      }
+    ]
+  }
+}

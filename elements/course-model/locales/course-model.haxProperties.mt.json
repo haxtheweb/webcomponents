@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "mudell tal-kors",
+    "description": "Tqassim interattiv għall-kunċetti tal-kors b'dettalji, animazzjoni, u verifiki tal-għarfien."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titlu"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Żona tal-informazzjoni"
+      },
+      {
+        "title": "Żona tad-dettalji"
+      },
+      {
+        "title": "Żona tal-animazzjoni"
+      },
+      {
+        "title": "Żona tal-Verifika tal-Għarfien"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Żona tal-logo"
+      }
+    ]
+  }
+}

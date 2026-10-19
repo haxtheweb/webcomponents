@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "Kursusûntwerp",
+    "description": "Kontener foar ûnderwiismateriaal en eleminten fan kursusûntwerp."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "Kursus-ID",
+        "description": "OER-skema: de identifikaasje fan de kursus, bgl. MATH-100."
+      },
+      {
+        "property": "termOffered",
+        "title": "Oanbean yn perioade",
+        "description": "OER-skema: de perioade wêryn de kursus oanbean wurdt."
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "Leveringsfoarm",
+        "description": "OER-skema: de foarm wêryn de kursus jûn wurdt (bgl. fysyk, online, hybride)."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "Haaddosint",
+        "description": "OER-skema: de haaddosint fan de kursus."
+      },
+      {
+        "property": "syllabus",
+        "title": "Syllabus-URL",
+        "description": "OER-skema: URL nei de syllabus fan de kursus."
+      }
+    ]
+  }
+}

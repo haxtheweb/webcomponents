@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Beskriuwende figuer",
+    "description": "Tagonklike figuer mei lange beskriuwing"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Ofbylding"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternative tekst"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Figuerbyskrift",
+        "description": "Figuerbyskrifttekst dy't altyd sichtber is."
+      },
+      {
+        "slot": "details",
+        "title": "Beskriuwing",
+        "description": "Detaillearre ôfbyldingsbeskriuwing dy't ferburgen of toand wurde kin"
+      },
+      {
+        "slot": "summary",
+        "title": "Beskriuwingsknop",
+        "description": "Standert foar knop dy't beskriuwingstekst toant/ferberget, bgl. \"ynfo\", \"metadata\", ensfh."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Opsjonele gearfettingstekst as de details iepen binne"
+      },
+      {
+        "property": "closeText",
+        "title": "Opsjonele gearfettingstekst as de details ticht binne"
+      }
+    ]
+  }
+}

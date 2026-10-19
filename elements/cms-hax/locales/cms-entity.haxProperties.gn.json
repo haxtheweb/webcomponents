@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS Mba'e",
+    "description": "CMS mba'e ojehechaukáva backend-pe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Peteĩchagua",
+        "description": "reko ore CMS-gui",
+        "options": {
+          "node": "Joajuha",
+          "user": "Puruhára",
+          "file": "Marandurenda"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id ore CMS-gui"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Jehechauka reko",
+        "description": "jehechauka reko ore CMS-gui"
+      }
+    ]
+  }
+}

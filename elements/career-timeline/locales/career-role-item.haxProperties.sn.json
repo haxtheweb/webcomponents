@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Basa paBasa",
+    "description": "Basa rimwe mukati mesangano"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Musoro"
+      },
+      {
+        "property": "startDate",
+        "title": "Zuva Rekutanga"
+      },
+      {
+        "property": "endDate",
+        "title": "Zuva Rekupedzisira (Hazvimanikidzwe)"
+      },
+      {
+        "property": "skills",
+        "title": "Unyanzvi Hwakabatana",
+        "description": "Sarudza bhatani + kuti utange kuwedzera unyanzvi"
+      }
+    ]
+  }
+}

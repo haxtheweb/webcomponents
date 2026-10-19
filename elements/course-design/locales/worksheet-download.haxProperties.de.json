@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Arbeitsblatt-Download",
+    "description": "Ein Button zur Anzeige von Dateien, die zum Download verfügbar sind."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Der Titel des Downloads."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Der Link für den Download."
+      }
+    ]
+  }
+}

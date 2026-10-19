@@ -347,7 +347,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
         span[disabled].label {
           pointer-events: none;
-          opacity: 0.6;
+          opacity: var(--ddd-opacity-60, 0.6);
         }
         .shown {
           display: inline-block;
@@ -362,13 +362,13 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           );
         }
         .make-child-btn {
-          transition: 0.3s all ease-in-out;
+          transition: var(--ddd-duration-normal, 0.3s) all ease-in-out;
           visibility: hidden;
           opacity: 0;
         }
         .outline-designer-hovered .make-child-btn {
           visibility: visible;
-          opacity: 0.6;
+          opacity: var(--ddd-opacity-60, 0.6);
         }
         .outline-designer-hovered .make-child-btn:hover {
           opacity: 1;
@@ -404,9 +404,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           visibility: visible;
           height: 42px;
           transition:
-            0.3s padding ease-in-out,
-            0.3s border ease-in-out,
-            0.3s margin ease-in-out;
+            var(--ddd-duration-normal, 0.3s) padding ease-in-out,
+            var(--ddd-duration-normal, 0.3s) border ease-in-out,
+            var(--ddd-duration-normal, 0.3s) margin ease-in-out;
           overflow: hidden;
           align-items: center;
           justify-content: left;
@@ -423,7 +423,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             var(--ddd-theme-default-errorLight),
             var(--ddd-primary-22)
           );
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
           border-color: light-dark(
             var(--ddd-primary-22),
             var(--ddd-primary-12)
@@ -470,13 +470,13 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
         .item[data-dragging="true"] {
           box-shadow: var(--ddd-boxShadow-lg);
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
           transform: scale(1.02);
           z-index: 1000;
         }
         .item[data-dragging="true"] {
           box-shadow: var(--ddd-boxShadow-lg);
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
           transform: scale(1.02);
           z-index: 1000;
         }
@@ -805,7 +805,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           opacity: 0;
           transform: scaleY(0);
           transform-origin: top;
-          transition: all 0.3s ease-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-out;
         }
         .drop-indicator.show {
           opacity: 1;
@@ -834,7 +834,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           margin: 0 !important;
           transform: none !important;
           pointer-events: none;
-          z-index: 10000;
+          z-index: var(--ddd-z-modal, 10000);
           box-shadow: var(--ddd-boxShadow-lg);
         }
         .drag-preview .item-leading-operations {
@@ -866,7 +866,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
         .drag-preview.has-children::after {
           top: -6px;
-          opacity: 0.4;
+          opacity: var(--ddd-opacity-40, 0.4);
         }
         .drag-preview-children {
           opacity: 0.7;

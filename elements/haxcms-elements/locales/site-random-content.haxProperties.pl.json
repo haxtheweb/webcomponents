@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Losowa treść strony",
+    "description": "Wyświetla losowy element najwyższego poziomu z wybranej strony"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Strona",
+        "description": "Wybierz stronę, z której będzie losowana treść. Element losowo wyświetli jeden z elementów HTML najwyższego poziomu z tej strony."
+      }
+    ]
+  }
+}

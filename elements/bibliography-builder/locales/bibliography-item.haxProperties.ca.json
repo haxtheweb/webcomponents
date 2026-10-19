@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Element de bibliografia",
+    "description": "Element que representa una única cita en una bibliografia, compatible amb diversos formats i opcions d'exportació."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Tipus",
+        "description": "Tipus de cita",
+        "options": {
+          "web": "Web",
+          "journal": "Revista",
+          "book": "Llibre"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Títol de l'element"
+      },
+      {
+        "property": "authors",
+        "title": "Autor(s)",
+        "description": "Els esdeveniments de la cronologia"
+      },
+      {
+        "property": "publisher",
+        "title": "Editorial",
+        "description": "Lloc web original"
+      }
+    ]
+  }
+}

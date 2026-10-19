@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Wideo",
+    "description": "Birnäçe çeşmeden elýeterli wideo oýnatmak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çeşme",
+        "description": "Bu media üçin URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Ady",
+        "description": "Wideonyň aşagynda görkezilýän at."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Poster suraty",
+        "description": "Poster suratynyň URL-i."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Tekst ýollary",
+        "description": "Wideo üçin ýapyk ýazgylar, subtitrler, düşündirişler we beýleki tekst ýollary."
+      },
+      {
+        "property": "startTime",
+        "title": "Başlangyç wagty",
+        "description": "Wideony belli bir wagtdan başla (sekunt)."
+      },
+      {
+        "property": "endTime",
+        "title": "Gutaryş wagty",
+        "description": "Wideony belli bir wagtda gutar (sekunt), başlangyç wagty talap edilýär."
+      },
+      {
+        "property": "learningMode",
+        "title": "Okuw tertibini işjeňleşdir",
+        "description": "Çalt öňe we yza aýlamagy öçürýär."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube-da aç düwmesini aýyr",
+        "description": "Wideony YouTube-da açmak düwmesini aýyrýar."
+      },
+      {
+        "property": "linkable",
+        "title": "Paýlaşmak salgysy goşulsynmy?",
+        "description": "Wideony paýlaşmak üçin salgy berýär."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Wagt belliklerini gizle",
+        "description": "Transkriptdäki wagt belliklerini gizle."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkripti gizle",
+        "description": "Transkripti deslapky ýagdaýda gizle."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Sesli düşündiriş ýoly",
+        "description": "Wizual elementleri beýan edýän sesli düşündiriş ýolunyň (MP3 faýly) URL salgysy."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS ulanylmalydygyny görkezýär.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Fonda oýnatmaga rugsat ber",
+        "description": "Brauzer goýmajy fokusy ýitirende oýnamagy dowam et."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Transkript üçin garaňky tema",
+        "description": "Transkript üçin garaňky temany işjeňleşdir."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Interaktiwligi öçür",
+        "description": "Transkripti basylýan edýän interaktiw tertibi öçür."
+      },
+      {
+        "property": "lang",
+        "title": "Dil",
+        "description": "Medianyň dili."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "(könelişen) Pleýer üçin aksent reňkini saýlaň."
+      }
+    ]
+  }
+}

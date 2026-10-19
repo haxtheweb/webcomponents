@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS объекты",
+    "description": "Серверда күрсәтелә торган CMS объекты"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Төр",
+        "description": "безнең CMS'тан төр",
+        "options": {
+          "node": "Төен",
+          "user": "Кулланучы",
+          "file": "Файл"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "безнең CMS'тан ID"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Күрсәтү режимы",
+        "description": "безнең CMS'тан күрсәтү режимы"
+      }
+    ]
+  }
+}

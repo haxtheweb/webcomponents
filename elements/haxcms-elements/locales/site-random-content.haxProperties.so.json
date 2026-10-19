@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Waxyaabaha Bogga Aan Kala Sooc Lahayn",
+    "description": "Muuji curiye heerka sare ah oo aan kala sooc lahayn oo ka yimid bog la doortay"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Bogga",
+        "description": "Dooro bogga laga soo qaadanayo waxyaabaha aan kala sooca lahayn. Curiyuhu si aan kala sooc lahayn ayuu u muujin doonaa mid ka mid ah curiyeyaasha HTML ee heerka sare ah ee boggan."
+      }
+    ]
+  }
+}

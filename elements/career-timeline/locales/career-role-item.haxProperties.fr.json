@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Poste",
+    "description": "Un poste au sein d'une organisation"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titre"
+      },
+      {
+        "property": "startDate",
+        "title": "Date de début"
+      },
+      {
+        "property": "endDate",
+        "title": "Date de fin (facultatif)"
+      },
+      {
+        "property": "skills",
+        "title": "Compétences associées",
+        "description": "Sélectionnez le bouton + pour commencer à ajouter des compétences"
+      }
+    ]
+  }
+}

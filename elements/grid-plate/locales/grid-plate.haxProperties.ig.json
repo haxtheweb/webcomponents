@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Nhazi kọlụm",
+    "description": "Hazie ihe n'ime kọlụm dị mfe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Nhazi kọlụm",
+        "description": "Ụdị a ga-eji gosi ihe ndị a (nwere ike ịgbanwe maka obere ihuenyo)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Gbanyụọ nzaghachi",
+        "description": "Kpaa igbe iji debe kọlụm na ihuenyo buru ibu ma na-akpakọba ha na ihuenyo kachasị nta"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Oghere n'ime ihe",
+        "description": "Oghere dị n'ime ihe ọ bụla"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Oke ihe",
+        "description": "Oghere dị n'etiti ihe"
+      }
+    ]
+  }
+}

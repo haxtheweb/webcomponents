@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro kartīte",
+    "description": "Vienkārša kartīte retro dizainā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Nosaukums",
+        "description": "Kartītes galvenais nosaukums."
+      },
+      {
+        "property": "url",
+        "description": "URL, ko atvērt, noklikšķinot uz kartītes."
+      },
+      {
+        "property": "subtitle",
+        "title": "Apakšvirsraksts",
+        "description": "Kartītes apakšvirsraksts."
+      },
+      {
+        "property": "tags",
+        "title": "Birkas",
+        "description": "Ar komatiem atdalītas birkas."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Multivides avots",
+        "description": "Primārais multivides avots."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Avots, novietojot kursoru",
+        "description": "Multivides avots, kas tiek rādīts, kad kartītei novieto kursoru vai to aktivizē."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "Akcenta krāsa, kas piemērota visai kartītei."
+      },
+      {
+        "property": "dark",
+        "title": "Tumšs",
+        "description": "Izmantot tumšā režīma pamatkrāsas."
+      }
+    ]
+  }
+}

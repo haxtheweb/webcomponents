@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Esasy surat",
+    "description": "Esasy surat elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Çeşme",
+        "description": "Suratyň URL-i."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt tekst",
+        "description": "Elýeterlilik we SEO üçin alternatiw tekst."
+      },
+      {
+        "attribute": "height",
+        "title": "Beýiklik",
+        "description": "Piksel boýunça beýiklik. Tebigy ölçegi ulanmak üçin boş goýuň."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Suraty ýüklemek",
+        "description": "Suratyň haçan ýüklenjekdigini saýlaň.",
+        "options": {
+          "lazy": "Görnende ýükle",
+          "auto": "Awtomatik"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Uýgunlaşýan çeşmeler (srcset)",
+        "description": "Brauzerleriň ekran üçin iň gowy ölçegi saýlamagy üçin surat URL-lerini we deskriptorlaryny (meselem, 480w ýa-da 2x) sanaň. Standart srcset atributy hökmünde saklanýar."
+      }
+    ]
+  }
+}

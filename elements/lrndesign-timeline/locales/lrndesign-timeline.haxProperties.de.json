@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Zeitleiste",
+    "description": "Eine Zeitleiste von Ereignissen mit Bildern und Text"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Titel der Zeitleiste",
+        "description": "Ein Titel für die Zeitleiste."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Eine optionale Akzentfarbe."
+      },
+      {
+        "property": "dark",
+        "title": "Dunkles Design",
+        "description": "Dunkles Theme aktivieren"
+      },
+      {
+        "slot": "",
+        "title": "Beschreibung der Zeitleiste",
+        "description": "Optionaler Text, der die Zeitleiste beschreibt."
+      },
+      {
+        "property": "events",
+        "title": "Ereignisse der Zeitleiste",
+        "description": "Die Ereignisse in der Zeitleiste"
+      }
+    ]
+  }
+}

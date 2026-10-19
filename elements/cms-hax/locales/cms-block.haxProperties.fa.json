@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "بلوک CMS",
+    "description": "بلوک CMS که در بک‌اند نمایش داده می‌شود"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "پودمان",
+        "description": "ماژولی که از CMS ما بارگذاری می‌شود"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta بلوکی که از CMS ما بارگذاری می‌شود"
+      }
+    ]
+  }
+}

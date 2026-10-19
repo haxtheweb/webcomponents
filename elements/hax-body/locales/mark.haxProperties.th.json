@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ไฮไลต์",
+    "description": "ไฮไลต์ข้อความในบรรทัด"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "ข้อความ",
+        "description": "ข้อความที่ไฮไลต์"
+      }
+    ]
+  }
+}

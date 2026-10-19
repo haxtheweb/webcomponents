@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "การอ้างอิง",
+    "description": "องค์ประกอบการอ้างอิงที่มีโหมดการนำเสนอสามแบบ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "ชื่อของผลงานที่อ้างอิง"
+      },
+      {
+        "property": "source",
+        "title": "ลิงก์แหล่งที่มา",
+        "description": "URL แหล่งที่มาของผลงานที่อ้างอิง"
+      },
+      {
+        "property": "date",
+        "title": "วันที่เข้าถึง",
+        "description": "วันที่เข้าถึงแหล่งที่มา"
+      },
+      {
+        "property": "scope",
+        "title": "ขอบเขต",
+        "description": "ขอบเขตองค์ประกอบที่จะอ้างอิง",
+        "options": {
+          "sibling": "องค์ประกอบพี่น้อง",
+          "parent": "องค์ประกอบแม่"
+        }
+      },
+      {
+        "property": "license",
+        "title": "สัญญาอนุญาต",
+        "description": "สัญญาอนุญาตของผลงานที่อ้างอิง"
+      },
+      {
+        "property": "creator",
+        "title": "ผู้สร้าง",
+        "description": "ผู้สร้างหรือเจ้าของผลงานที่อ้างอิง"
+      },
+      {
+        "property": "typeof",
+        "title": "ประเภท OER Schema",
+        "description": "คลาส OER Schema สำหรับการอ้างอิงนี้ ค่าเริ่มต้นคือ oer:ReferencedMaterial แทนที่ด้วยคลาส OER ที่ถูกต้องเท่านั้น (เช่น oer:SupportingMaterial)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Dearadh, Forbair, Scrios",
+    "description": "Cur i bhfeidhm córais dearaidh do HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Rogha le taispeáint",
+        "options": {
+          "*": "Treoir stíle iomlán"
+        }
+      }
+    ]
+  }
+}

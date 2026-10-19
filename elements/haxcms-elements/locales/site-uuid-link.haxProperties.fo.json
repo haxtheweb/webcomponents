@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX-leinki",
+    "description": "Eitt leinki til eitt ávíst tilfeingi á vevstaðnum, tú arbeiðir við."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Lutur",
+        "description": "Lutur at vísa til leinkið / heitisdátur"
+      }
+    ]
+  }
+}

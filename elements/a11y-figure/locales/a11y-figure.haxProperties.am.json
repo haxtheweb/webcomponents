@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "ገላጭ ምስል",
+    "description": "ረጅም መግለጫ ያለው ተደራሽ ምስል"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "ምስል"
+      },
+      {
+        "property": "imgAlt",
+        "title": "አማራጭ ጽሑፍ"
+      },
+      {
+        "slot": "figcaption",
+        "title": "የምስል መግለጫ ጽሑፍ",
+        "description": "ሁልጊዜ የሚታይ የምስል መግለጫ ጽሑፍ።"
+      },
+      {
+        "slot": "details",
+        "title": "መግለጫ",
+        "description": "ሊደበቅ ወይም ሊታይ የሚችል ዝርዝር የምስል መግለጫ"
+      },
+      {
+        "slot": "summary",
+        "title": "የመግለጫ አዝራር",
+        "description": "የመግለጫ ጽሑፍን ለሚያሳይ/ለሚደብቅ አዝራር ነባሪ፣ ለምሳሌ \"መረጃ\"፣ \"ሜታዳታ\" ወዘተ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "ዝርዝሮች ሲከፈቱ አማራጭ የማጠቃለያ ጽሑፍ"
+      },
+      {
+        "property": "closeText",
+        "title": "ዝርዝሮች ሲዘጉ አማራጭ የማጠቃለያ ጽሑፍ"
+      }
+    ]
+  }
+}

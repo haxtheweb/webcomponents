@@ -1,0 +1,34 @@
+{
+  "gizmo": {
+    "title": "موجود ٿيمز",
+    "description": "موجود HAXcms ٿيمز لائيو پيش منظر جي تبديليءَ سان ڏيکاريو"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewMode",
+        "title": "ڏيک جو موڊ",
+        "description": "چونڊيو ته ٿيمز ڪيئن ڏيکارجن",
+        "options": {
+          "gallery": "گيلري",
+          "table": "ٽيبل"
+        }
+      },
+      {
+        "property": "showDetails",
+        "title": "تفصيل ڏيکاريو",
+        "description": "ٿيم جون وضاحتون ۽ اضافي معلومات ڏيکاريو"
+      },
+      {
+        "property": "showAllThemes",
+        "title": "لڪيل ۽ پراڻيون ٿيمز ڏيکاريو",
+        "description": "ڊيش بورڊ ڊفالٽن سان گڏ لڪيل، پراڻيون ۽ خراب ٿيمز به ڏيکاريو"
+      },
+      {
+        "property": "columns",
+        "title": "ڪالم (گيلري)",
+        "description": "گيلري ڏيک ۾ ڪالمن جو تعداد"
+      }
+    ]
+  }
+}

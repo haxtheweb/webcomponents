@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Kaugsisu",
+    "description": "Taaskasuta ühe saidi sisu teisel saidil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Saidi aadress",
+        "description": "Kleebi aadress, kust sisule viidata, kui see pole praegune sait"
+      },
+      {
+        "property": "uuid",
+        "title": "Üksus",
+        "description": "Lingi / pealkirja andmete jaoks kuvatav üksus"
+      },
+      {
+        "property": "breakreference",
+        "title": "Katkesta viide",
+        "description": "Selle ruudu märkimine kopeerib kaugsisu kohalikuks muutmiseks, kuid eemaldab seose. Viitematerjali uuendused ei jõua enam siia."
+      },
+      {
+        "property": "showTitle",
+        "title": "Näita pealkirja",
+        "description": "Lülita sisse, et kuvada kuvatava ressursi pealkiri"
+      }
+    ]
+  }
+}

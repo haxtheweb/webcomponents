@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Paralaksa bildo",
+    "description": "Bildo rulumanta preter"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Bildo",
+        "description": "bildo uzota en la fono"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Titola areo",
+        "description": "Titola tekstoareo"
+      }
+    ]
+  }
+}

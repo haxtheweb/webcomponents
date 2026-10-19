@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Daftar bernomor",
+    "description": "Buat daftar bernomor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Gaya nomor",
+        "description": "Gaya yang digunakan untuk penomoran daftar berurutan.",
+        "options": {
+          "": "Default (desimal)",
+          "list-decimal-leading-zero": "Desimal dengan nol di depan (01, 02, 03)",
+          "list-lower-alpha": "Huruf kecil (a, b, c)",
+          "list-upper-alpha": "Huruf besar (A, B, C)",
+          "list-lower-roman": "Romawi kecil (i, ii, iii)",
+          "list-upper-roman": "Romawi besar (I, II, III)"
+        }
+      }
+    ]
+  }
+}

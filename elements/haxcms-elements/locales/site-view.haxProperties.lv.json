@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Vietnes skats",
+    "description": "Dinamisks bloks, kas vaicā un attēlo vietnes datus pēc kritērijiem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Skata URL",
+        "description": "Vaicājuma parametri skata datu plūsmai. Tos varat iegūt skatu informācijas panelī."
+      },
+      {
+        "property": "renderer",
+        "title": "Attēlošanas režīms",
+        "description": "Kā jāattēlo skata rezultāti"
+      },
+      {
+        "property": "entity",
+        "title": "Entītijas veids",
+        "description": "Entītijas veids, ko izmanto atbildes parsēšanai",
+        "options": {
+          "": "Noklusējums (vienumi)",
+          "item": "Vienums",
+          "page": "Lapa",
+          "file": "Fails",
+          "tag": "Birka",
+          "block": "Bloks",
+          "view": "Skats",
+          "theme": "Motīvs",
+          "region": "Reģions",
+          "customElement": "Pielāgots elements"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Pārtraukt vietnes skatu",
+        "description": "Pārvērst statiskā saturā tiešai rediģēšanai; pārtrauc automātisko atjaunināšanu no avota."
+      }
+    ]
+  }
+}

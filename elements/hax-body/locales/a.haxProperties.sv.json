@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Grundläggande länk",
+    "description": "Grundläggande länkelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Länk",
+        "description": "Mål-URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Text",
+        "description": "Synlig länktext."
+      },
+      {
+        "attribute": "target",
+        "title": "Mål",
+        "description": "Var länken ska öppnas.",
+        "options": {
+          "": "Samma fönster",
+          "_blank": "Nytt fönster - _blank",
+          "_top": "Översta fönstret - _top",
+          "_parent": "Överordnat fönster - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Titeltext",
+        "description": "Rådgivande titel för tillgänglighet och SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Relation till målet (säkerhet/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

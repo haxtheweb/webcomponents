@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Tahora tīwae",
+    "description": "Whakatakoto rauemi ki ngā tīwae māmā"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Tahora Tīwae",
+        "description": "Kāhua hei whakaatu i ēnei tūemi (ka rerekē pea mō ngā mata iti)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Whakakore urutau",
+        "description": "Tohua te pouaka kia mau tonu ngā tīwae ki ngā mata nui ake, engari ka tāpae tonu ki ngā mata iti rawa"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Whakakī Tūemi",
+        "description": "Whakakī i roto i ia tūemi"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Ngā tawhē tūemi",
+        "description": "Tawhē i waenga i ngā tūemi"
+      }
+    ]
+  }
+}

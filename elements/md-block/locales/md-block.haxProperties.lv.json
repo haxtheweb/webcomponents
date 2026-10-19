@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Markdown satura bloks, ievadīts tieši vai ielādēts attālināti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Neapstrādāts markdown"
+      },
+      {
+        "property": "source",
+        "title": "Avots",
+        "description": "Markdown avota fails"
+      }
+    ]
+  }
+}

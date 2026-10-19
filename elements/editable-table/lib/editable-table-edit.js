@@ -45,7 +45,7 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
         .filter-icon,
         .sortable-icon {
           display: none;
-          opacity: 0.4;
+          opacity: var(--ddd-opacity-40, 0.4);
           width: var(--ddd-icon-xxs);
           height: var(--ddd-icon-xxs);
         }

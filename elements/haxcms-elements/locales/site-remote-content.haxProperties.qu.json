@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Karu Ukhun",
+    "description": "Huk tiyanamanta ukhunta huk tiyanapi hukmanta llamk'achiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Tiyanap tiyanan",
+        "description": "Ukhunta riqsichinapaq tiyananta k'askachiy mana kunan tiyana kaptinqa"
+      },
+      {
+        "property": "uuid",
+        "title": "Imakuna",
+        "description": "T'inkipaq / suti willakuypaq rikuchinapaq kaq"
+      },
+      {
+        "property": "breakreference",
+        "title": "Riqsichiyta p'akiy",
+        "description": "Kay cajata unanchaspaqa karu ukhunta kaypi allichanapaq kikinchan, ichaqa t'inkinakuyta hurqun. Manañam musuqchaykunata chaskinqachu riqsichisqa kaq musuqchakuptinpas."
+      },
+      {
+        "property": "showTitle",
+        "title": "Sutita rikuchiy",
+        "description": "Hap'ichiy rikuchisqa recursop sutinta rikuchinapaq"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Ретро карточка",
+    "description": "Ретро дизайнлы гади карточка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Карточканың төп исеме."
+      },
+      {
+        "property": "url",
+        "description": "Карточкага басканда ачыла торган URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "Ярдәмче исем",
+        "description": "Карточканың ярдәмче исеме."
+      },
+      {
+        "property": "tags",
+        "title": "Теглар",
+        "description": "Өтерләр белән аерылган теглар."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Медиа чыганагы",
+        "description": "Төп медиа чыганагы."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Курсор китергәндәге чыганак",
+        "description": "Карточкага курсор китергәндә яки ул активлашканда күрсәтелә торган медиа чыганагы."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Бөтен карточкага кулланыла торган акцент төсе."
+      },
+      {
+        "property": "dark",
+        "title": "Караңгы",
+        "description": "Караңгы режимның нигез төсләрен куллану."
+      }
+    ]
+  }
+}

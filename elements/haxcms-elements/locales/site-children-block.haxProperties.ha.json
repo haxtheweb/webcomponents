@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: toshen ƙananan abubuwa",
+    "description": "Toshe mai motsi don nuna ƙananan shafukan shafin yanzu"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Hanya mai motsi",
+        "description": "Yadda za a lissafa ƙananan abubuwa dangane da wannan abu",
+        "options": {
+          "active": "Ƙananan abubuwa masu aiki",
+          "parent": "Ƙananan abubuwan mahaifi",
+          "ancestor": "Dukkan ƙananan abubuwa daga kakan sama"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Matakin farawa"
+      },
+      {
+        "property": "end",
+        "title": "Matakin ƙarewa"
+      }
+    ]
+  }
+}

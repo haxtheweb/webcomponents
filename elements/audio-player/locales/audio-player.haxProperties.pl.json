@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Dźwięk",
+    "description": "Prezentuje wideo w wysoce dostępny sposób niezależnie od źródła."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Źródło",
+        "description": "URL tych multimediów."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Tytuł",
+        "description": "Prosty tytuł pod wideo"
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "Wybierz kolor akcentu odtwarzacza."
+      },
+      {
+        "property": "track",
+        "title": "Napisy",
+        "description": "URL pliku z napisami."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Miniatura",
+        "description": "Opcjonalnie. URL obrazu miniatury/plakatu."
+      },
+      {
+        "property": "learningMode",
+        "title": "Włącz tryb nauki",
+        "description": "Wyłącza przewijanie do przodu i do tyłu."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Usuń przycisk otwierania w YouTube",
+        "description": "Usuwa przycisk otwierania wideo w YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Dołączyć link do udostępniania?",
+        "description": "Udostępnia link do wideo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Określa, czy używać CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Zezwól na odtwarzanie w tle",
+        "description": "Filmy automatycznie wstrzymują się / wznawiają, gdy karta traci fokus; ta opcja pozwala odtwarzać wideo bez fokusu na karcie"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Ciemny motyw transkrypcji",
+        "description": "Włącz ciemny motyw transkrypcji."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Wyłącz interaktywność",
+        "description": "Wyłącz tryb interaktywny, w którym transkrypcję można klikać."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ukryj znaczniki czasu",
+        "description": "Ukryj znaczniki czasu w transkrypcji."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ukryj transkrypcję",
+        "description": "Domyślnie ukryj transkrypcję."
+      },
+      {
+        "property": "lang",
+        "title": "Język",
+        "description": "Język multimediów."
+      }
+    ]
+  }
+}

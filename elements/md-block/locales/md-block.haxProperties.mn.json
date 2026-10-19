@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Шууд эсвэл алсаас ачаалсан markdown агуулгын блок"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Түүхий markdown"
+      },
+      {
+        "property": "source",
+        "title": "Эх сурвалж",
+        "description": "Markdown-ийн эх файл"
+      }
+    ]
+  }
+}

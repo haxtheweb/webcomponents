@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Žeton CMS",
+    "description": "Žeton CMS, upodobljen v zaledju"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Žeton",
+        "description": "Žeton iz našega CMS"
+      }
+    ]
+  }
+}

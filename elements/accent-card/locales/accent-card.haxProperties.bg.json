@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Карта",
+    "description": "Карта с незадължителен акцентен стил."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Заглавие",
+        "description": "Заглавие за картата."
+      },
+      {
+        "slot": "subheading",
+        "title": "Подзаглавие",
+        "description": "Незадължително подзаглавие за картата."
+      },
+      {
+        "slot": "content",
+        "title": "Съдържание",
+        "description": "Съдържание за картата."
+      },
+      {
+        "slot": "footer",
+        "title": "Долен колонтитул",
+        "description": "Незадължителен долен колонтитул за картата."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Изображение",
+        "description": "Незадължително изображение"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Алтернативен текст на изображението",
+        "description": "Алтернативен текст, описващ изображението за екранни четци. Оставете празно само ако изображението е чисто декоративно."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Хоризонтално подравняване на изображението",
+        "options": {
+          "left": "ляво",
+          "center": "центрирано",
+          "right": "дясно"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Вертикално подравняване на изображението",
+        "options": {
+          "top": "горе",
+          "center": "центрирано",
+          "bottom": "долу"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентен цвят",
+        "description": "Незадължителен акцентен цвят."
+      },
+      {
+        "property": "dark",
+        "title": "Тъмна тема",
+        "description": "Включване на тъмна тема"
+      },
+      {
+        "property": "horizontal",
+        "title": "Хоризонтална",
+        "description": "Хоризонтална ориентация?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Акцент на заглавието",
+        "description": "Прилагане на акцентния цвят към заглавието?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Акцент на фона",
+        "description": "Прилагане на акцентния цвят към фона на картата?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Без акцентна рамка",
+        "description": "Премахване на акцентната рамка?"
+      },
+      {
+        "property": "flat",
+        "title": "Плоска",
+        "description": "Премахване на сянката?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Ъгъл",
+        "description": "Съдържание за ъгъла на картата."
+      }
+    ]
+  }
+}

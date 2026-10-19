@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Abun Sana'a",
+    "description": "Ƙungiya ɗaya da matsayinta masu alaƙa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Sunan Ƙungiya"
+      },
+      {
+        "property": "location",
+        "title": "Wuri"
+      },
+      {
+        "property": "source",
+        "title": "Tushe"
+      }
+    ]
+  }
+}

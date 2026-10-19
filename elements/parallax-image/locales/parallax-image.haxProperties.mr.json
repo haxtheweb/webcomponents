@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "पॅरलॅक्स प्रतिमा",
+    "description": "प्रतिमा स्क्रोल"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "प्रतिमा",
+        "description": "पार्श्वभूमीत वापरायची प्रतिमा"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "शीर्षक क्षेत्र",
+        "description": "शीर्षक मजकूर क्षेत्र"
+      }
+    ]
+  }
+}

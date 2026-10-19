@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Кнопка электронной книги",
+    "description": "Кнопка со ссылкой на электронную книгу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Название",
+        "description": "Название кнопки."
+      },
+      {
+        "property": "link",
+        "title": "Ссылка",
+        "description": "Ссылка для перехода по нажатию."
+      },
+      {
+        "property": "icon",
+        "title": "Значок",
+        "description": "Значок, представляющий эту ссылку"
+      }
+    ]
+  }
+}

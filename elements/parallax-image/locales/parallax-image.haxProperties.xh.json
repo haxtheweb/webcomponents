@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Umfanekiso we-parallax",
+    "description": "Umfanekiso uskrola ngo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Umfanekiso",
+        "description": "umfanekiso oza kubandakanywa ngasemva"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Indawo yentloko",
+        "description": "Indawo yombhalo wentloko"
+      }
+    ]
+  }
+}

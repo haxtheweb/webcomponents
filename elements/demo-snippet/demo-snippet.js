@@ -66,7 +66,7 @@ class DemoSnippet extends DDDSuper(LitElement) {
           overflow: hidden;
           box-shadow: var(--ddd-boxShadow-sm);
           margin: var(--ddd-spacing-10) auto;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         :host(:hover),

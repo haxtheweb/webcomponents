@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "iFrame",
+    "description": "外部のウェブコンテンツを埋め込みます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "ソース",
+        "description": "このリソースのURL。"
+      }
+    ]
+  }
+}

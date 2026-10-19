@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "כרטיסייה",
+    "description": "כרטיסייה בודדת."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "סמל הכרטיסייה"
+      },
+      {
+        "property": "disabled",
+        "title": "מושבת"
+      },
+      {
+        "property": "label",
+        "title": "תווית הכרטיסייה"
+      },
+      {
+        "slot": "",
+        "title": "תוכן הכרטיסייה",
+        "description": "תוכן של הכרטיסייה."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "מזהה ייחודי"
+      },
+      {
+        "property": "flag",
+        "title": "טקסט סימון אופציונלי"
+      },
+      {
+        "property": "flagIcon",
+        "title": "סמל סימון אופציונלי"
+      }
+    ]
+  }
+}

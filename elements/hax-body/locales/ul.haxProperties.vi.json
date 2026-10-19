@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Danh sách dấu đầu dòng",
+    "description": "Tạo danh sách dấu đầu dòng."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Kiểu dấu đầu dòng",
+        "description": "Kiểu dùng cho dấu đầu dòng của danh sách không thứ tự.",
+        "options": {
+          "": "Mặc định (hình vuông)",
+          "list-disc": "Chấm tròn đặc",
+          "list-circle": "Hình tròn",
+          "list-square": "Hình vuông"
+        }
+      }
+    ]
+  }
+}

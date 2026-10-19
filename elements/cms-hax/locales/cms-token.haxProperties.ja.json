@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "CMS トークン",
+    "description": "バックエンドでレンダリングされる CMS トークン"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "トークン",
+        "description": "CMS からのトークン"
+      }
+    ]
+  }
+}

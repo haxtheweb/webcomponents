@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS blokas",
+    "description": "CMS blokas, atvaizduojamas serveryje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modulis",
+        "description": "Modulis, įkeliamas iš mūsų CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Bloko, įkeliamo iš mūsų CMS, delta"
+      }
+    ]
+  }
+}

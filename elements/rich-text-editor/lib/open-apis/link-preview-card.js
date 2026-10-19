@@ -63,7 +63,7 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
           border: var(--ddd-border-md);
           padding: var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-xs);
-          transition: border-color 0.3s ease-in-out;
+          transition: border-color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
         :host(:focus-within) .card,
         :host(:hover) .card {

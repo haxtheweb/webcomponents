@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Parallax ပုံ",
+    "description": "ပုံ လှိမ့်ဖြတ်ခြင်း"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "ပုံ",
+        "description": "နောက်ခံတွင် ပါဝင်မည့် ပုံ"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "ခေါင်းစီး နေရာ",
+        "description": "ခေါင်းစီး စာသား နေရာ"
+      }
+    ]
+  }
+}

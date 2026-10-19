@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "د کتابتون توکی",
+    "description": "هغه توکی چې په کتابتون کې یوه واحده حواله استازیتوب کوي، د ډېرو بڼو او د صادرولو انتخابونو ملاتړ کوي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "ډول",
+        "description": "د حوالې ډول",
+        "options": {
+          "web": "ویب",
+          "journal": "ژورنال",
+          "book": "کتاب"
+        }
+      },
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "د توکي سرلیک"
+      },
+      {
+        "property": "authors",
+        "title": "لیکوال(ان)",
+        "description": "په مهالوېش کې پېښې"
+      },
+      {
+        "property": "publisher",
+        "title": "خپروونکی",
+        "description": "اصلي ویبسایټ"
+      }
+    ]
+  }
+}

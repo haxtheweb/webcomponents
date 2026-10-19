@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Ish varagʻini yuklab olish",
+    "description": "Yuklab olish mumkin boʻlgan fayllarni koʻrsatish uchun tugma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Yuklab olinadigan faylning sarlavhasi."
+      },
+      {
+        "property": "link",
+        "title": "Havola",
+        "description": "Yuklab olish havolasi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "עלעקטראָנישער־בוך קנעפּל",
+    "description": "אַ קנעפּל וואָס לינקט צו אַן עלעקטראָנישן בוך."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "דער טיטל פֿונעם קנעפּל."
+      },
+      {
+        "property": "link",
+        "title": "לינק",
+        "description": "דער לינק וווּהין צו פֿירן בײַם קליקן."
+      },
+      {
+        "property": "icon",
+        "title": "איקאָן",
+        "description": "איקאָן וואָס רעפּרעזענטירט דעם לינק"
+      }
+    ]
+  }
+}

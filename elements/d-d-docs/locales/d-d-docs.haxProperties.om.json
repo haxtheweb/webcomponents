@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Dizaayinii, Misooma, Balleessuu",
+    "description": "Hojii irra oolmaa sirna dizaayinii HAX f"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "Filannoo agarsiifamu",
+        "options": {
+          "*": "Qajeelfama haala guutuu"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "אוצר מילים",
+    "description": "מונח אוצר מילים"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "מונח"
+      },
+      {
+        "slot": "",
+        "title": "הגדרה",
+        "description": "ההגדרה שתוצג בלחיצה על המונח."
+      },
+      {
+        "property": "description",
+        "title": "תיאור (OER Schema)",
+        "description": "OER Schema: תיאור קצר של מונח אוצר המילים. ימולא אוטומטית מטקסט ההגדרה אם יישאר ריק."
+      }
+    ]
+  }
+}

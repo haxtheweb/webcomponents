@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Placeholder",
+    "description": "Een placeholder die kan worden omgezet in het geselecteerde mediatype"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Type",
+        "description": "Type gizmo dat dit als vervanging accepteert.",
+        "options": {
+          "text": "Tekst / inhoud",
+          "document": "Document / bestand",
+          "audio": "Audio",
+          "video": "Video",
+          "image": "Afbeelding",
+          "math": "Wiskunde"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Tekst",
+        "description": "Beschrijf de gewenste placeholder nauwkeuriger"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tombol Ebook",
+    "description": "Tombol sing nyambung menyang Ebook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Irah-irahan",
+        "description": "Judhul tombol."
+      },
+      {
+        "property": "link",
+        "title": "Pranala",
+        "description": "Link sing dituju nalika diklik."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Lambang kanggo makili link iki"
+      }
+    ]
+  }
+}

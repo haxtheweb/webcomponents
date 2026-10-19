@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Tysýi papapy reheve",
+    "description": "Emoheñói tysýi papapy reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Papapy reko",
+        "description": "Reko ojepurúva tysýi ñemohendapyre papapýpe g̃uarã.",
+        "options": {
+          "": "Ypyguáva (decimal)",
+          "list-decimal-leading-zero": "Decimal zero tenondépe (01, 02, 03)",
+          "list-lower-alpha": "Tai michĩ (a, b, c)",
+          "list-upper-alpha": "Tai tuicha (A, B, C)",
+          "list-lower-roman": "Romano michĩ (i, ii, iii)",
+          "list-upper-roman": "Romano tuicha (I, II, III)"
+        }
+      }
+    ]
+  }
+}

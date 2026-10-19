@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "数学",
+    "description": "拿数学式子展示得好看。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "数学",
+        "description": "用 LaTeX 输入公式"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "タブ",
+    "description": "単一のタブ。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "タブのアイコン"
+      },
+      {
+        "property": "disabled",
+        "title": "無効"
+      },
+      {
+        "property": "label",
+        "title": "タブのラベル"
+      },
+      {
+        "slot": "",
+        "title": "タブのコンテンツ",
+        "description": "タブの内容。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "一意のID"
+      },
+      {
+        "property": "flag",
+        "title": "フラグのテキスト (任意)"
+      },
+      {
+        "property": "flagIcon",
+        "title": "フラグのアイコン (任意)"
+      }
+    ]
+  }
+}

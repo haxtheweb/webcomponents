@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lizenz",
+    "description": "Gib eine Lizenz für dein Werk an."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel des zitierten Werks."
+      },
+      {
+        "property": "source",
+        "title": "Quelllink",
+        "description": "Quell-URL des lizenzierten Werks."
+      },
+      {
+        "property": "license",
+        "title": "Lizenz",
+        "description": "Auf dieses Werk angewendete Lizenz."
+      },
+      {
+        "property": "creator",
+        "title": "Urheber",
+        "description": "Urheber oder Eigentümer dieses Werks."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Quelllink",
+        "description": "Link zu weiteren Lizenzdetails."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Beschriftung „Mehr“",
+        "description": "Beschriftung für weitere Lizenzdetails."
+      }
+    ]
+  }
+}

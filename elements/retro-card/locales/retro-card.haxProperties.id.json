@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Kartu retro",
+    "description": "Kartu sederhana dengan desain retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul utama kartu."
+      },
+      {
+        "property": "url",
+        "description": "URL yang dibuka saat kartu diklik."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subjudul",
+        "description": "Subjudul kartu."
+      },
+      {
+        "property": "tags",
+        "title": "Tag",
+        "description": "Tag yang dipisahkan koma."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Sumber media",
+        "description": "Sumber media utama."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Sumber saat diarahkan",
+        "description": "Sumber media yang ditampilkan saat kartu diarahkan kursor atau diaktifkan."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna Aksen",
+        "description": "Warna aksen yang diterapkan di seluruh kartu."
+      },
+      {
+        "property": "dark",
+        "title": "Gelap",
+        "description": "Gunakan warna dasar mode gelap."
+      }
+    ]
+  }
+}

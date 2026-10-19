@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS Pehẽ",
+    "description": "CMS pehẽ ojehechaukáva backend-pe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Mbo'esyry pehẽ",
+        "description": "Módulo oñemyenyhẽtava ore CMS-gui"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Pehẽ delta oñemyenyhẽtava ore CMS-gui"
+      }
+    ]
+  }
+}

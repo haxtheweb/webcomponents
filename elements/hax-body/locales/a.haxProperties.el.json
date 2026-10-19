@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Βασικός σύνδεσμος",
+    "description": "Βασικό στοιχείο συνδέσμου."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Σύνδεσμος",
+        "description": "URL προορισμού."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Κείμενο",
+        "description": "Ορατό κείμενο συνδέσμου."
+      },
+      {
+        "attribute": "target",
+        "title": "Στόχος",
+        "description": "Πού θα ανοίξει ο σύνδεσμος.",
+        "options": {
+          "": "Ίδιο παράθυρο",
+          "_blank": "Νέο παράθυρο - _blank",
+          "_top": "Ανώτατο παράθυρο - _top",
+          "_parent": "Γονικό παράθυρο - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Κείμενο τίτλου",
+        "description": "Συμβουλευτικός τίτλος για προσβασιμότητα και SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Σχέση με τον προορισμό (ασφάλεια/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

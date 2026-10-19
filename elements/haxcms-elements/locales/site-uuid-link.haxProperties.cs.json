@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Odkaz HAX",
+    "description": "Odkaz na konkrétní zdroj na webu, na kterém pracujete."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Položka",
+        "description": "Položka k vykreslení pro odkaz / data názvu"
+      }
+    ]
+  }
+}

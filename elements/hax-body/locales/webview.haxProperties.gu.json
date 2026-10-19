@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "સ્રોત",
+        "description": "આ સંસાધન માટે URL."
+      }
+    ]
+  }
+}

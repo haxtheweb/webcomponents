@@ -1,0 +1,222 @@
+{
+  "gizmo": {
+    "title": "Linijinė diagrama",
+    "description": "Sukuria prieinamą diagramą pagal CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Akcento spalva",
+        "description": "Pasirenkama akcento spalva."
+      },
+      {
+        "title": "Tamsi tema",
+        "description": "Įjungti tamsiąją temą"
+      },
+      {
+        "title": "CSV failas",
+        "description": "Įkelti duomenis iš CSV."
+      },
+      {
+        "title": "Diagramos pavadinimas",
+        "description": "Prieinamas alternatyvusis diagramos tekstas."
+      },
+      {
+        "title": "Diagramos aprašas",
+        "description": "Prieinamas diagramos aprašas."
+      },
+      {
+        "title": "Mastelio pavadinimas",
+        "description": "Diagramos pločio ir aukščio santykis (žr. https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings dėl $ct-scales ir $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Rodyti tinklelio foną"
+      },
+      {
+        "title": "Rodyti plotą"
+      },
+      {
+        "title": "Rodyti liniją"
+      },
+      {
+        "title": "Rodyti taškus"
+      },
+      {
+        "title": "Visas plotis"
+      },
+      {
+        "title": "Rodyti taškų žymas"
+      },
+      {
+        "title": "Diagramos vidinė paraštė (viršuje)"
+      },
+      {
+        "title": "Diagramos vidinė paraštė (apačioje)"
+      },
+      {
+        "title": "Diagramos vidinė paraštė (kairėje)"
+      },
+      {
+        "title": "Diagramos vidinė paraštė (dešinėje)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Apversti duomenis",
+        "description": "Apversti duomenis, įskaitant žymas, sekų tvarką ir visus sekų duomenų masyvus."
+      },
+      {
+        "title": "HTML lentelė",
+        "description": "Neprivaloma: įkelti duomenis kaip HTML lentelę."
+      },
+      {
+        "title": "Diagramos minimumas",
+        "description": "Pakeitus natūralų diagramos minimumą galima priartinti arba apriboti mažiausią rodomą diagramos reikšmę"
+      },
+      {
+        "title": "Diagramos maksimumas",
+        "description": "Pakeitus natūralų diagramos maksimumą galima priartinti arba apriboti didžiausią rodomą diagramos reikšmę"
+      },
+      {
+        "title": "Rodyti taškų žymas",
+        "options": {
+          "middle": "Viduryje",
+          "start": "Pradžia",
+          "end": "Pabaiga"
+        }
+      },
+      {
+        "title": "Taškų žymų X poslinkis"
+      },
+      {
+        "title": "Taškų žymų Y poslinkis"
+      },
+      {
+        "title": "Linijos glotninimas"
+      },
+      {
+        "title": "Ploto pagrindas",
+        "description": "Plotinės diagramos pagrindas, naudojamas ploto formai uždaryti (paprastai 0)."
+      },
+      {
+        "title": "X ašis: rodyti tinklelį",
+        "description": "Rodyti X ašies tinklelį."
+      },
+      {
+        "title": "X ašies poslinkis"
+      },
+      {
+        "title": "X ašies padėtis",
+        "description": "Žymų išdėstymo padėtis. Galima nustatyti „start“ arba „end“: „start“ atitinka kairę arba viršų vertikalioje ašyje, o „end“ – dešinę arba apačią horizontalioje ašyje"
+      },
+      {
+        "title": "X ašis: rodyti žymas",
+        "description": "Rodyti X ašies žymas."
+      },
+      {
+        "title": "X ašies žymos (horizontalus poslinkis)",
+        "description": "Horizontali X ašies žymų padėtis."
+      },
+      {
+        "title": "X ašies žymos (vertikalus poslinkis)",
+        "description": "Vertikali X ašies žymų padėtis."
+      },
+      {
+        "title": "X ašies pavadinimas",
+        "description": "Neprivalomas X ašies pavadinimas."
+      },
+      {
+        "title": "X ašies pavadinimas (horizontalus poslinkis)",
+        "description": "Horizontali X ašies pavadinimo padėtis."
+      },
+      {
+        "title": "X ašies pavadinimas (vertikalus poslinkis)",
+        "description": "Vertikali X ašies pavadinimo padėtis."
+      },
+      {
+        "title": "X ašies pavadinimo inkaras",
+        "description": "Neprivalomas X ašies pavadinimo inkaras.",
+        "options": {
+          "middle": "viduryje",
+          "end": "pabaigoje",
+          "start": "pradžioje"
+        }
+      },
+      {
+        "title": "Y ašis: rodyti tinklelį",
+        "description": "Rodyti Y ašies tinklelį."
+      },
+      {
+        "title": "Y ašies poslinkis"
+      },
+      {
+        "title": "Y ašies padėtis",
+        "description": "Žymų išdėstymo padėtis. Galima nustatyti „start“ arba „end“: „start“ atitinka kairę arba viršų vertikalioje ašyje, o „end“ – dešinę arba apačią horizontalioje ašyje"
+      },
+      {
+        "title": "Y ašis: rodyti žymas",
+        "description": "Rodyti Y ašies žymas."
+      },
+      {
+        "title": "Y ašies žymos (horizontalus poslinkis)",
+        "description": "Horizontali Y ašies žymų padėtis."
+      },
+      {
+        "title": "Y ašies žymos (vertikalus poslinkis)",
+        "description": "Vertikali Y ašies žymų padėtis."
+      },
+      {
+        "title": "Y ašies skalės mažiausias tarpas",
+        "description": "Nurodo mažiausią skalės žingsnių aukštį pikseliais."
+      },
+      {
+        "title": "Y ašies skalė (tik sveikieji skaičiai)",
+        "description": "Skalės žingsniams naudoti tik sveikųjų skaičių reikšmes."
+      },
+      {
+        "title": "Y ašies pavadinimas",
+        "description": "Neprivalomas Y ašies pavadinimas."
+      },
+      {
+        "title": "Y ašies pavadinimas (vertikalus poslinkis)",
+        "description": "Horizontali Y ašies pavadinimo padėtis."
+      },
+      {
+        "title": "Y ašies pavadinimas (horizontalus poslinkis)",
+        "description": "Horizontali Y ašies pavadinimo padėtis."
+      },
+      {
+        "title": "Y ašies pavadinimo inkaras",
+        "description": "Neprivalomas Y ašies pavadinimo inkaras.",
+        "options": {
+          "middle": "viduryje",
+          "end": "pabaigoje",
+          "start": "pradžioje"
+        }
+      },
+      {
+        "title": "Apversti Y ašies pavadinimą",
+        "description": "Apversti Y ašies pavadinimą?"
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "सुधारित प्रतिमा",
+    "description": "विविध सुधारणांसह प्रतिमा सादर करण्याची पद्धत."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "स्रोत",
+        "description": "प्रतिमेची URL."
+      },
+      {
+        "property": "alt",
+        "title": "पर्यायी मजकूर",
+        "description": "दृष्टिहीन वापरकर्त्यांसाठी प्रतिमेचे वर्णन करणारा मजकूर."
+      },
+      {
+        "property": "link",
+        "title": "लिंक",
+        "description": "प्रतिमा URL शी लिंक करा"
+      },
+      {
+        "property": "card",
+        "title": "कार्ड",
+        "description": "उंचावलेल्या कार्डसारखे दिसण्यासाठी ड्रॉप शॅडो लागू करा."
+      },
+      {
+        "property": "box",
+        "title": "बॉक्स",
+        "description": "प्रतिमेभोवती दृश्य बॉक्स लागू करा."
+      },
+      {
+        "property": "offset",
+        "title": "ऑफसेट",
+        "description": "प्रतिमेला डावा किंवा उजवा ऑफसेट लागू करा.",
+        "options": {
+          "none": "काहीही नाही",
+          "wide": "रुंद",
+          "narrow": "अरुंद"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "संदर्भ",
+        "description": "प्रतिमेसाठी संदर्भ."
+      },
+      {
+        "property": "caption",
+        "title": "मथळा",
+        "description": "प्रतिमेसाठी मथळा."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "आकृती शीर्षक",
+        "description": "आकृती लेबलसाठी शीर्षक."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "आकृती वर्णन",
+        "description": "आकृती लेबलसाठी वर्णन."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "लघुप्रतिमा",
+        "description": "लघुप्रतिमा स्रोत. लघुप्रतिमा दाखवते पण पूर्ण स्रोत मोडलमध्ये उघडते."
+      },
+      {
+        "property": "round",
+        "title": "गोल प्रतिमा",
+        "description": "प्रतिमेचे स्वरूप वर्तुळाकार कापते."
+      },
+      {
+        "property": "disableZoom",
+        "title": "प्रतिमा मोडल अक्षम करा",
+        "description": "क्लिक केल्यावर प्रतिमा निरीक्षक संवादात उघडणे अक्षम करा."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "markdown म्हणून प्रदर्शित करा",
+        "description": "मथळा आणि संदर्भ markdown म्हणून प्रदर्शित करा."
+      }
+    ]
+  }
+}

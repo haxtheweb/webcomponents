@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "عنصر مهني",
+    "description": "مؤسسة فردية والأدوار المرتبطة بها"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "اسم المؤسسة"
+      },
+      {
+        "property": "location",
+        "title": "المكان"
+      },
+      {
+        "property": "source",
+        "title": "المصدر"
+      }
+    ]
+  }
+}

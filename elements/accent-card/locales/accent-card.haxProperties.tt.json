@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Карточка",
+    "description": "Ихтыяри акцент стиле булган карточка."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Башисем",
+        "description": "Карточка башламы."
+      },
+      {
+        "slot": "subheading",
+        "title": "Ярдәмче башлам",
+        "description": "Карточка өчен ихтыяри ярдәмче башлам."
+      },
+      {
+        "slot": "content",
+        "title": "Эчтәлек",
+        "description": "Карточка эчтәлеге."
+      },
+      {
+        "slot": "footer",
+        "title": "Аскы өлеш",
+        "description": "Карточка өчен ихтыяри аскы өлеш."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Рәсем",
+        "description": "Ихтыяри рәсем"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Рәсемнең альтернатив тексты",
+        "description": "Экран укучылары өчен рәсемне тасвирлаучы альтернатив текст. Рәсем бары тик бизәк өчен генә булса гына буш калдырыгыз."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Рәсемне горизонталь тигезләү",
+        "options": {
+          "left": "сулга",
+          "center": "үзәккә",
+          "right": "уңга"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Рәсемне вертикаль тигезләү",
+        "options": {
+          "top": "өскә",
+          "center": "үзәккә",
+          "bottom": "аска"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "Өстәмә ассызык төсе."
+      },
+      {
+        "property": "dark",
+        "title": "Караңгы тема",
+        "description": "Караңгы теманы кабызу"
+      },
+      {
+        "property": "horizontal",
+        "title": "Горизонталь",
+        "description": "Горизонталь юнәлешме?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Башлам акценты",
+        "description": "Башламга акцент төсен кулланыргамы?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Фон акценты",
+        "description": "Карточка фонына акцент төсен кулланыргамы?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Чик акцентыннан башка",
+        "description": "Чик акцентын бетерергәме?"
+      },
+      {
+        "property": "flat",
+        "title": "Яссы",
+        "description": "Күләгәне бетерергәме?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Почмак",
+        "description": "Карточка почмагы өчен эчтәлек."
+      }
+    ]
+  }
+}

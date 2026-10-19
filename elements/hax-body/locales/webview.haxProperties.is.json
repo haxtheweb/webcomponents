@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Uppruni",
+        "description": "URL þessa tilfangs."
+      }
+    ]
+  }
+}

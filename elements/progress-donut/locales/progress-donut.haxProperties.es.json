@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Dona de progreso",
+    "description": "Dona de progresión"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "El título del elemento"
+      },
+      {
+        "property": "desc",
+        "title": "Descripción",
+        "description": "Descripción larga accesible"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Origen de la imagen",
+        "description": "Origen de la imagen dentro de la dona."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Texto alternativo de la imagen",
+        "description": "Texto alternativo de la imagen."
+      },
+      {
+        "property": "animated",
+        "title": "Animado",
+        "description": "Si el progreso se anima en la primera carga"
+      },
+      {
+        "property": "complete",
+        "title": "Completado",
+        "description": "Una matriz de valores completados."
+      },
+      {
+        "property": "total",
+        "title": "Total",
+        "description": "Total cuando todos los elementos están completados."
+      },
+      {
+        "property": "startAngle",
+        "title": "Ángulo inicial",
+        "description": "Ángulo de la dona donde empieza el progreso"
+      }
+    ]
+  }
+}

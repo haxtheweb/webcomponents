@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "લાઇસન્સ",
+    "description": "તમારી કૃતિ માટે લાઇસન્સ આપો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "સંદર્ભિત કૃતિનું શીર્ષક."
+      },
+      {
+        "property": "source",
+        "title": "સ્રોત લિંક",
+        "description": "લાઇસન્સ પ્રાપ્ત કૃતિ માટે સ્રોત URL."
+      },
+      {
+        "property": "license",
+        "title": "લાઇસન્સ",
+        "description": "આ કૃતિ પર લાગુ થયેલું લાઇસન્સ."
+      },
+      {
+        "property": "creator",
+        "title": "સર્જક",
+        "description": "આ કૃતિના સર્જક અથવા માલિક."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "સ્રોત લિંક",
+        "description": "વધારાની લાઇસન્સિંગ વિગતોની લિંક."
+      },
+      {
+        "property": "moreLabel",
+        "title": "વધુ લેબલ",
+        "description": "વધારાની લાઇસન્સિંગ વિગતો માટે લેબલ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "ລຳດັບເວລາ",
+    "description": "ເສັ້ນເວລາຂອງເຫດການພ້ອມຮູບພາບ ແລະ ຂໍ້ຄວາມ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "ຫົວຂໍ້ລຳດັບເວລາ",
+        "description": "ຫົວຂໍ້ສຳລັບເສັ້ນເວລາ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "ສີເນັ້ນທາງເລືອກ."
+      },
+      {
+        "property": "dark",
+        "title": "ຊຸດຮູບແບບມືດ",
+        "description": "ເປີດໃຊ້ທີມມືດ"
+      },
+      {
+        "slot": "",
+        "title": "ຄຳອະທິບາຍເສັ້ນເວລາ",
+        "description": "ຂໍ້ຄວາມອະທິບາຍເສັ້ນເວລາ (ບໍ່ບັງຄັບ)."
+      },
+      {
+        "property": "events",
+        "title": "ເຫດການໃນເສັ້ນເວລາ",
+        "description": "ເຫດການໃນເສັ້ນເວລາ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Հիմնական հղում",
+    "description": "Հիմնական հղման տարր։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Հղում",
+        "description": "Նպատակակետի URL։"
+      },
+      {
+        "attribute": "innerText",
+        "title": "Տեքստ",
+        "description": "Հղման տեսանելի տեքստ։"
+      },
+      {
+        "attribute": "target",
+        "title": "Թիրախ",
+        "description": "Որտեղ բացել հղումը։",
+        "options": {
+          "": "Նույն պատուհանում",
+          "_blank": "Նոր պատուհան - _blank",
+          "_top": "Վերին պատուհան - _top",
+          "_parent": "Ծնող պատուհան - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Վերնագրի տեքստ",
+        "description": "Խորհրդատվական վերնագիր մատչելիության և SEO-ի համար։"
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Կապը նպատակակետի հետ (անվտանգություն/SEO)։",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Webstedsvisning",
+    "description": "En dynamisk blok, der forespørger og viser webstedsdata ud fra kriterier"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Visnings-URL",
+        "description": "Forespørgselsparametre for visningens datafeed. Du kan hente dem fra oversigten Visninger."
+      },
+      {
+        "property": "renderer",
+        "title": "Visningstilstand",
+        "description": "Hvordan visningens resultater skal gengives"
+      },
+      {
+        "property": "entity",
+        "title": "Enhedstype",
+        "description": "Enhedstype, der bruges til at fortolke svaret",
+        "options": {
+          "": "Standard (elementer)",
+          "item": "Element",
+          "page": "Side",
+          "file": "Fil",
+          "tag": "Tag",
+          "block": "Blok",
+          "view": "Visning",
+          "theme": "Tema",
+          "region": "Område",
+          "customElement": "Brugerdefineret element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Bryd webstedsvisning",
+        "description": "Konvertér til statisk indhold til direkte redigering; stopper automatisk opdatering fra kilden."
+      }
+    ]
+  }
+}

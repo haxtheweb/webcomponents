@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub алдан карау",
+    "description": "Озын тасвирламалы үтемле иллюстрация"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Оешма",
+        "description": "GitHub оешмасының машина исеме"
+      },
+      {
+        "property": "repo",
+        "title": "Репозиторий",
+        "description": "Репозиторийның машина исеме"
+      },
+      {
+        "property": "extended",
+        "title": "Киңәйтелгән күренеш",
+        "description": "Элементка readme кертә"
+      }
+    ]
+  }
+}

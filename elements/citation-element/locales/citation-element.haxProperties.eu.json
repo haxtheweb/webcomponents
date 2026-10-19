@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Aipamena",
+    "description": "Hiru aurkezpen modu dituen aipamen-elementua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Aipatutako lanaren izenburua."
+      },
+      {
+        "property": "source",
+        "title": "Iturriaren esteka",
+        "description": "Aipatutako lanaren iturriaren URLa."
+      },
+      {
+        "property": "date",
+        "title": "Kontsulta-data",
+        "description": "Iturria kontsultatu zen data."
+      },
+      {
+        "property": "scope",
+        "title": "Esparrua",
+        "description": "Aipatu beharreko elementuaren esparrua.",
+        "options": {
+          "sibling": "Elementu anaia",
+          "parent": "Elementu gurasoa"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lizentzia",
+        "description": "Aipatutako lanaren lizentzia."
+      },
+      {
+        "property": "creator",
+        "title": "Sortzailea",
+        "description": "Aipatutako lanaren sortzailea edo jabea."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema mota",
+        "description": "Aipamen honen OER Schema klasea. Lehenetsia oer:ReferencedMaterial da; gainidatzi soilik baliozko OER klase batekin (adib. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

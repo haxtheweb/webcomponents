@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Pūtake",
+        "description": "URL mō tēnei rauemi."
+      }
+    ]
+  }
+}

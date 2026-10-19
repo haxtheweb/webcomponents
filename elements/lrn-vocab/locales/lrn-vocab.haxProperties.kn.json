@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "ಪದಕೋಶ",
+    "description": "ಶಬ್ದಕೋಶ ಪದ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "ಪದ"
+      },
+      {
+        "slot": "",
+        "title": "ವ್ಯಾಖ್ಯಾನ",
+        "description": "ಪದವನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ ಪ್ರದರ್ಶಿಸಬೇಕಾದ ವ್ಯಾಖ್ಯಾನ."
+      },
+      {
+        "property": "description",
+        "title": "ವಿವರಣೆ (OER Schema)",
+        "description": "OER Schema: ಶಬ್ದಕೋಶ ಪದದ ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆ. ಖಾಲಿ ಬಿಟ್ಟರೆ ವ್ಯಾಖ್ಯಾನ ಪಠ್ಯದಿಂದ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ತುಂಬಲಾಗುತ್ತದೆ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Flipi",
+    "description": "Stakur flipi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Tákn flipa"
+      },
+      {
+        "property": "disabled",
+        "title": "Óvirkt"
+      },
+      {
+        "property": "label",
+        "title": "Merki flipa"
+      },
+      {
+        "slot": "",
+        "title": "Efni flipa",
+        "description": "Efni flipans."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Einkvæmt auðkenni (ID)"
+      },
+      {
+        "property": "flag",
+        "title": "Valfrjáls fánatexti"
+      },
+      {
+        "property": "flagIcon",
+        "title": "Valfrjálst fánatákn"
+      }
+    ]
+  }
+}

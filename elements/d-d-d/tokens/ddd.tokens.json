@@ -1109,6 +1109,24 @@
               "cssVar": "--ddd-font-navigation"
             }
           }
+        },
+        "mono": {
+          "$type": "fontFamily",
+          "$value": [
+            "ui-monospace",
+            "SFMono-Regular",
+            "Menlo",
+            "Consolas",
+            "Liberation Mono",
+            "Courier New",
+            "monospace"
+          ],
+          "$description": "code, keyboard input, tabular data",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-font-mono"
+            }
+          }
         }
       },
       "weight": {
@@ -2398,6 +2416,15 @@
               "cssVar": "--ddd-content-width-lg"
             }
           }
+        },
+        "theme": {
+          "$type": "dimension",
+          "$value": "{ddd.layout.contentWidth.md}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-theme-content-width"
+            }
+          }
         }
       },
       "sidebarWidth": {
@@ -2438,6 +2465,15 @@
               "cssVar": "--ddd-sidebar-width-lg"
             }
           }
+        },
+        "theme": {
+          "$type": "dimension",
+          "$value": "{ddd.layout.sidebarWidth.md}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-theme-sidebar-width"
+            }
+          }
         }
       },
       "containerWidth": {
@@ -2456,6 +2492,79 @@
           "$extensions": {
             "org.haxtheweb.ddd": {
               "cssVar": "--ddd-container-width-lg"
+            }
+          }
+        },
+        "theme": {
+          "$type": "dimension",
+          "$value": "{ddd.layout.containerWidth.md}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-theme-container-width"
+            }
+          }
+        }
+      },
+      "gutter": {
+        "$type": "dimension",
+        "$value": "{ddd.spacing.6}",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-theme-layout-gutter"
+          }
+        }
+      },
+      "grid": {
+        "gap": {
+          "$type": "dimension",
+          "$value": "{ddd.spacing.4}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-grid-gap"
+            }
+          }
+        },
+        "item-spacing": {
+          "$type": "dimension",
+          "$value": "{ddd.spacing.4}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-grid-item-spacing"
+            }
+          }
+        }
+      },
+      "measure": {
+        "sm": {
+          "$value": "45ch",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-measure-sm"
+            }
+          }
+        },
+        "md": {
+          "$value": "65ch",
+          "$description": "default for body copy",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-measure-md"
+            }
+          }
+        },
+        "lg": {
+          "$value": "80ch",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-measure-lg"
+            }
+          }
+        },
+        "theme": {
+          "$value": "{ddd.layout.measure.md}",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-theme-measure"
             }
           }
         }
@@ -2707,8 +2816,8 @@
       },
       "tooltip": {
         "$type": "number",
-        "$value": 500,
-        "$description": "Tooltips and popovers",
+        "$value": 10100,
+        "$description": "Tooltips and popovers, above modals",
         "$extensions": {
           "org.haxtheweb.ddd": {
             "cssVar": "--ddd-z-tooltip"
@@ -2808,6 +2917,15 @@
             "cssVar": "--ddd-duration-slow"
           }
         }
+      },
+      "reduced": {
+        "$type": "duration",
+        "$value": "0.01ms",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-duration-reduced"
+          }
+        }
       }
     },
     "easing": {
@@ -2823,6 +2941,60 @@
         "$extensions": {
           "org.haxtheweb.ddd": {
             "cssVar": "--ddd-timing-ease"
+          }
+        }
+      },
+      "enter": {
+        "$type": "cubicBezier",
+        "$value": [
+          0,
+          0,
+          0.2,
+          1
+        ],
+        "$description": "decelerate, elements entering",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-timing-enter"
+          }
+        }
+      },
+      "exit": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.4,
+          0,
+          1,
+          1
+        ],
+        "$description": "accelerate, elements leaving",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-timing-exit"
+          }
+        }
+      },
+      "emphasized": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.2,
+          0,
+          0,
+          1
+        ],
+        "$description": "large or deliberate moves",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-timing-emphasized"
+          }
+        }
+      },
+      "linear": {
+        "$value": "linear",
+        "$description": "progress, spinners, continuous loops",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-timing-linear"
           }
         }
       }
@@ -2881,6 +3053,143 @@
         "$extensions": {
           "org.haxtheweb.ddd": {
             "cssVar": "--ddd-textfield-height-lg"
+          }
+        }
+      }
+    },
+    "controlHeight": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$description": "dense toolbars only",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-control-height-xs"
+          }
+        }
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "40px",
+        "$description": "matches --ddd-textfield-height-sm",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-control-height-sm"
+          }
+        }
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "48px",
+        "$description": "default, matches --ddd-textfield-height-md",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-control-height-md"
+          }
+        }
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "56px",
+        "$description": "matches --ddd-textfield-height-lg",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-control-height-lg"
+          }
+        }
+      }
+    },
+    "targetSize": {
+      "min": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$description": "WCAG 2.5.8 AA minimum target size",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-target-min"
+          }
+        }
+      },
+      "comfortable": {
+        "$type": "dimension",
+        "$value": "44px",
+        "$description": "WCAG 2.5.5 AAA, preferred for touch",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-target-comfortable"
+          }
+        }
+      }
+    },
+    "state": {
+      "hover": {
+        "$type": "number",
+        "$value": 0.08,
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-state-hover-opacity"
+          }
+        }
+      },
+      "focus": {
+        "$type": "number",
+        "$value": 0.12,
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-state-focus-opacity"
+          }
+        }
+      },
+      "pressed": {
+        "$type": "number",
+        "$value": 0.12,
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-state-pressed-opacity"
+          }
+        }
+      },
+      "selected": {
+        "$type": "number",
+        "$value": 0.16,
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-state-selected-opacity"
+          }
+        }
+      },
+      "disabled": {
+        "$type": "number",
+        "$value": 0.5,
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-state-disabled-opacity"
+          }
+        }
+      }
+    },
+    "aspectRatio": {
+      "video": {
+        "$value": "16 / 9",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-aspect-video"
+          }
+        }
+      },
+      "standard": {
+        "$value": "4 / 3",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-aspect-standard"
+          }
+        }
+      },
+      "square": {
+        "$value": "1 / 1",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-aspect-square"
           }
         }
       }

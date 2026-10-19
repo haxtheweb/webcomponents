@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "ຫົວເລື່ອງແບບສຳພັດ",
+    "description": "ສ້າງລຳດັບຊັ້ນຫົວເລື່ອງທີ່ຖືກຕ້ອງໂດຍອີງຕາມຫົວເລື່ອງຂອງແມ່"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID ຊັບພະຍາກອນຂອງຫົວເລື່ອງແມ່"
+      },
+      {
+        "property": "disableLink",
+        "description": "ປິດຄຸນສົມບັດປຸ່ມລິ້ງ."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "ຈັດປຸ່ມສຳເນົາລິ້ງໄວ້ຂວາສຸດຂອງຫົວເລື່ອງ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "ລະດັບຫົວເລື່ອງຖ້າບໍ່ພົບແມ່."
+      },
+      {
+        "property": "copyMessage",
+        "description": "ແທນທີ່ຂໍ້ຄວາມເລີ່ມຕົ້ນຂອງການແຈ້ງເຕືອນສຳເນົາລິ້ງ."
+      },
+      {
+        "property": "linkLabel",
+        "description": "ແທນທີ່ປ້າຍເລີ່ມຕົ້ນຂອງປຸ່ມສຳເນົາລິ້ງ."
+      },
+      {
+        "property": "linkIcon",
+        "description": "ແທນທີ່ໄອຄອນເລີ່ມຕົ້ນຂອງປຸ່ມສຳເນົາລິ້ງ."
+      },
+      {
+        "property": "closeLabel",
+        "description": "ແທນທີ່ປ້າຍເລີ່ມຕົ້ນຂອງປຸ່ມປິດການແຈ້ງເຕືອນສຳເນົາລິ້ງ."
+      },
+      {
+        "property": "closeIcon",
+        "description": "ແທນທີ່ໄອຄອນເລີ່ມຕົ້ນຂອງປຸ່ມປິດການແຈ້ງເຕືອນສຳເນົາລິ້ງ."
+      }
+    ]
+  }
+}

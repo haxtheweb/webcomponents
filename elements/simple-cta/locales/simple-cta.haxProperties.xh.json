@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Isimemo sokuthatha inyathelo",
+    "description": "Iqhosha elilula elinekhonkco lokuthatha inyathelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Ileyibhile",
+        "description": "Ileyibhile yekhonkco"
+      },
+      {
+        "property": "link",
+        "title": "Ikhonkco",
+        "description": "Faka ikhonkco eliya kuso nasiphi na isixhobo"
+      },
+      {
+        "property": "hideIcon",
+        "title": "Fihla i-icon",
+        "description": "Fihla i-icon esetyenziswa ukugxininisa umbhalo"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "icon",
+        "title": "I-icon",
+        "description": "I-icon yekhonkco lesenzo"
+      }
+    ]
+  }
+}

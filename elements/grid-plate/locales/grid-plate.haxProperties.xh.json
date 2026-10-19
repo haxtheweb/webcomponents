@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Ulwandlalo lweekholamu",
+    "description": "Bekela izinto kwiikholamu ezilula"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Ulwandlalo lweeKholamu",
+        "description": "Isitayile sokubonisa ezi zinto (sinokutshintsha kwizikrini ezincinci)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Vala ukuphendula",
+        "description": "Phawula ibhokisi ukugcina iikholamu kwizikrini ezinkulu ngelixa zisapakishwa kwizikrini ezincinci kakhulu"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Isithuba sangaphakathi seNto",
+        "description": "Isithuba esingaphakathi kwento nganye"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Imida yezinto",
+        "description": "Isithuba phakathi kwezinto"
+      }
+    ]
+  }
+}

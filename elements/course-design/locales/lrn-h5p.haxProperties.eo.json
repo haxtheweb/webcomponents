@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P-elemento",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Teksto",
+        "description": "Enhavo de la flanknoto"
+      }
+    ]
+  }
+}

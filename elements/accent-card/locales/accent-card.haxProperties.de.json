@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Karte",
+    "description": "Eine Karte mit optionalem Akzent-Styling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Überschrift",
+        "description": "Eine Überschrift für die Karte."
+      },
+      {
+        "slot": "subheading",
+        "title": "Unterüberschrift",
+        "description": "Eine optionale Unterüberschrift für die Karte."
+      },
+      {
+        "slot": "content",
+        "title": "Inhalt",
+        "description": "Inhalt der Karte."
+      },
+      {
+        "slot": "footer",
+        "title": "Fußzeile",
+        "description": "Eine optionale Fußzeile für die Karte."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Bild",
+        "description": "Optionales Bild"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Bild-Alternativtext",
+        "description": "Alternativtext, der das Bild für Screenreader beschreibt. Nur leer lassen, wenn das Bild rein dekorativ ist."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Horizontale Bildausrichtung",
+        "options": {
+          "left": "links",
+          "center": "zentriert",
+          "right": "rechts"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Vertikale Bildausrichtung",
+        "options": {
+          "top": "oben",
+          "center": "zentriert",
+          "bottom": "unten"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfarbe",
+        "description": "Eine optionale Akzentfarbe."
+      },
+      {
+        "property": "dark",
+        "title": "Dunkles Design",
+        "description": "Dunkles Theme aktivieren"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Horizontale Ausrichtung?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Überschriften-Akzent",
+        "description": "Akzentfarbe auf die Überschrift anwenden?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Hintergrund-Akzent",
+        "description": "Akzentfarbe auf den Kartenhintergrund anwenden?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Kein Rahmen-Akzent",
+        "description": "Rahmen-Akzent entfernen?"
+      },
+      {
+        "property": "flat",
+        "title": "Flach",
+        "description": "Schatten entfernen?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Ecke",
+        "description": "Inhalt für die Kartenecke."
+      }
+    ]
+  }
+}

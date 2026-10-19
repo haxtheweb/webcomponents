@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Imej Dipertingkat",
+    "description": "Cara mempersembahkan imej dengan pelbagai peningkatan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "URL untuk imej."
+      },
+      {
+        "property": "alt",
+        "title": "Teks alternatif",
+        "description": "Teks untuk menerangkan imej kepada pengguna yang tidak dapat melihat."
+      },
+      {
+        "property": "link",
+        "title": "Pautan",
+        "description": "Pautkan imej ke URL"
+      },
+      {
+        "property": "card",
+        "title": "Kad",
+        "description": "Gunakan bayang jatuh untuk memberikan rupa kad yang terangkat."
+      },
+      {
+        "property": "box",
+        "title": "Kotak",
+        "description": "Gunakan kotak visual di sekeliling imej."
+      },
+      {
+        "property": "offset",
+        "title": "Ofset",
+        "description": "Gunakan ofset kiri atau kanan pada imej.",
+        "options": {
+          "none": "tiada",
+          "wide": "lebar",
+          "narrow": "sempit"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Petikan sumber",
+        "description": "Petikan untuk imej."
+      },
+      {
+        "property": "caption",
+        "title": "Kapsyen",
+        "description": "Kapsyen untuk imej."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Tajuk Rajah",
+        "description": "Tajuk untuk label rajah."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Perihalan Rajah",
+        "description": "Perihalan untuk label rajah."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Imej lakaran kecil",
+        "description": "Sumber imej lakaran kecil. Menunjukkan lakaran kecil tetapi membuka sumber penuh dalam modal."
+      },
+      {
+        "property": "round",
+        "title": "Imej bulat",
+        "description": "Memangkas rupa imej menjadi berbentuk bulatan."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Lumpuhkan modal imej",
+        "description": "Lumpuhkan klik yang membuka imej dalam dialog pemeriksa imej."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Paparkan sebagai markdown",
+        "description": "Paparkan kapsyen dan petikan sebagai markdown."
+      }
+    ]
+  }
+}

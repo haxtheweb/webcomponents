@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "عينة شيفرة",
+    "description": "عينة من الشيفرة مُبرزة في الصفحة"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "تمييز الشيفرة",
+        "description": "تمييز الصياغة المراد تطبيقه على منطقة الشيفرة",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "بيانات JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "زر النسخ إلى الحافظة",
+        "description": "زر في الأعلى يمين يقول نسخ إلى الحافظة"
+      },
+      {
+        "property": "highlightStart",
+        "title": "بداية التمييز",
+        "description": "رقم السطر لبدء التمييز"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "نهاية التمييز",
+        "description": "السطر الذي ينتهي عنده التمييز"
+      }
+    ]
+  }
+}

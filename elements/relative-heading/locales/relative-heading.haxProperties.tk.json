@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Otnositel sözbaşy",
+    "description": "ene sözbaşa görä dogry sözbaşy iýerarhiýasyny çykarýar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Ene sözbaşynyň serişde ID-si"
+      },
+      {
+        "property": "disableLink",
+        "description": "Salgy düwmesi funksiýasyny öçürýär."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Salgyny göçürmek düwmesini sözbaşynyň iň sag tarapyna deňleşdirýär."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Ene tapylmasa sözbaşy derejesi."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Salgyny göçürmegiň bildiriş habarynyň deslapky tekstini çalyşýar."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Salgyny göçürmek düwmesiniň deslapky belligini çalyşýar."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Salgyny göçürmek düwmesiniň deslapky nyşanyny çalyşýar."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Salgyny göçürmegiň bildirişiniň ýapmak düwmesi üçin deslapky belligi çalyşýar."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Salgyny göçürmegiň bildirişiniň ýapmak düwmesi üçin deslapky nyşany çalyşýar."
+      }
+    ]
+  }
+}

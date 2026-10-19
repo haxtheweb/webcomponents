@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Paralakses attēls",
+    "description": "Attēls, kas ritinās"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Attēls",
+        "description": "fonā izmantojamais attēls"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Virsraksta apgabals",
+        "description": "Virsraksta teksta apgabals"
+      }
+    ]
+  }
+}

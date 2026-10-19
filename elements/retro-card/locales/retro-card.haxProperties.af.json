@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retro-kaart",
+    "description": "Eenvoudige kaart met 'n retro-ontwerp."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Hoofkaarttitel."
+      },
+      {
+        "property": "url",
+        "description": "URL om oop te maak wanneer op die kaart geklik word."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtitel",
+        "description": "Kaartsubtitel."
+      },
+      {
+        "property": "tags",
+        "title": "Etikette",
+        "description": "Kommageskeide etikette."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Mediabron",
+        "description": "Primêre mediabron."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Bron by sweef",
+        "description": "Mediabron wat gewys word wanneer oor die kaart gesweef of dit geaktiveer word."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "Aksentkleur wat oor die hele kaart toegepas word."
+      },
+      {
+        "property": "dark",
+        "title": "Donker",
+        "description": "Gebruik donkermodus-basiskleure."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "የኮርስ ንድፍ",
+    "description": "ለትምህርታዊ ቁሳቁሶች እና ለኮርስ ንድፍ አካላት መያዣ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "የኮርስ መለያ",
+        "description": "OER Schema: የኮርሱ መለያ፣ ለምሳሌ MATH-100።"
+      },
+      {
+        "property": "termOffered",
+        "title": "የሚሰጥበት ሴሚስተር",
+        "description": "OER Schema: ኮርሱ የሚሰጥበት ሴሚስተር።"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "የአሰጣጥ ቅርጸት",
+        "description": "OER Schema: ኮርሱን ለማድረስ የሚያገለግል ቅርጸት (ለምሳሌ በአካል፣ በመስመር ላይ፣ ድብልቅ)።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "ዋና አስተማሪ",
+        "description": "OER Schema: የኮርሱ ዋና አስተማሪ።"
+      },
+      {
+        "property": "syllabus",
+        "title": "የሥርዓተ ትምህርት URL",
+        "description": "OER Schema: ወደ ኮርሱ ሥርዓተ ትምህርት የሚወስድ URL።"
+      }
+    ]
+  }
+}

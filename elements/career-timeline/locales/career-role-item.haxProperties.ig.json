@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Ọrụ n'ọrụ",
+    "description": "Otu ọrụ n'ime nzukọ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Aha"
+      },
+      {
+        "property": "startDate",
+        "title": "Ụbọchị mbido"
+      },
+      {
+        "property": "endDate",
+        "title": "Ụbọchị njedebe (nhọrọ)"
+      },
+      {
+        "property": "skills",
+        "title": "Nka ndị jikọtara ya",
+        "description": "Họrọ bọtịnụ + iji malite ịgbakwunye nka"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Chipika cha Html",
+    "description": "Chipika choyambira cha HTML chomwe chimapereka kulumikizana kwa HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "Code ya HTML yomwe mukufuna kuonetsa m'zomwe zili mkati"
+      }
+    ]
+  }
+}

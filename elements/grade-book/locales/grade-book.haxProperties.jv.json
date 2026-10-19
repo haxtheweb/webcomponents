@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Buku Biji",
+    "description": "Buku biji tanpa antarmuka sing ndhukung macem-macem backend kanthi rubrik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "Jinis sumber data (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Endpoint URL (JSON)",
+          "json": "Blob data JSON",
+          "filesystem": "Sistem berkas"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Data Sumber",
+        "description": "URL utawa data JSON kanggo buku biji."
+      },
+      {
+        "property": "forCourse",
+        "title": "Referensi Kursus",
+        "description": "Pengenal kursus sing dikirim minangka oer:forCourse ing saben sumber Assessment."
+      }
+    ]
+  }
+}

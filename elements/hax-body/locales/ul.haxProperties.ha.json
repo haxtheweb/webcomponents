@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Jeri mai digo",
+    "description": "Ƙirƙiri jeri mai digo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Salon digo",
+        "description": "Salon da ake amfani da shi don digon jeri mara tsari.",
+        "options": {
+          "": "Tsoho (murabba'i)",
+          "list-disc": "Faifai",
+          "list-circle": "Da'ira",
+          "list-square": "Murabba'i"
+        }
+      }
+    ]
+  }
+}

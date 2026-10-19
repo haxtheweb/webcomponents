@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Item bibliografi",
+    "description": "Item yang mewakili satu kutipan dalam bibliografi, mendukung berbagai format dan opsi ekspor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Jenis",
+        "description": "Jenis kutipan",
+        "options": {
+          "web": "Web",
+          "journal": "Jurnal",
+          "book": "Buku"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul item"
+      },
+      {
+        "property": "authors",
+        "title": "Penulis",
+        "description": "Peristiwa dalam linimasa"
+      },
+      {
+        "property": "publisher",
+        "title": "Penerbit",
+        "description": "Situs web asli"
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "Gráfico circular",
+    "description": "Crea un gráfico accesible a partir dun CSV."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cor de realce",
+        "description": "Unha cor de realce opcional."
+      },
+      {
+        "title": "Tema escuro",
+        "description": "Activar o tema escuro"
+      },
+      {
+        "title": "Ficheiro CSV",
+        "description": "Cargar datos desde un CSV."
+      },
+      {
+        "title": "Título do gráfico",
+        "description": "Texto alternativo accesible para o teu gráfico."
+      },
+      {
+        "title": "Descrición do gráfico",
+        "description": "Descrición accesible do teu gráfico."
+      },
+      {
+        "title": "Nome da escala",
+        "description": "A proporción largura:altura do gráfico (consulta https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings para $ct-scales e $ct-scales-names).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Rosca"
+      },
+      {
+        "title": "Mostrar etiqueta"
+      },
+      {
+        "title": "Ángulo inicial"
+      },
+      {
+        "title": "Recheo"
+      },
+      {
+        "title": "Total",
+        "description": "Total opcional que podes especificar. Ao especificar un valor total, a suma dos valores da serie debe ser este total para debuxar un círculo completo. Podes usar este parámetro para debuxar só partes dun gráfico circular ou de indicador."
+      },
+      {
+        "title": "Ignorar os valores baleiros",
+        "description": "Os valores baleiros ignoraranse para evitar debuxar porcións e etiquetas innecesarias."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Inverter os datos",
+        "description": "Inverte os datos, incluídas as etiquetas, a orde das series e as matrices completas de datos das series."
+      },
+      {
+        "title": "Táboa HTML",
+        "description": "Opcional: cargar os datos como táboa HTML."
+      },
+      {
+        "title": "Grosor do trazo da rosca"
+      },
+      {
+        "title": "Rosca sólida",
+        "description": "Debuxar os segmentos da rosca como formas en lugar de trazos."
+      },
+      {
+        "title": "Dirección das etiquetas",
+        "description": "Debuxar os segmentos da rosca como formas en lugar de trazos.",
+        "options": {
+          "neutral": "neutra",
+          "explode": "cara a fóra",
+          "implode": "cara a dentro"
+        }
+      },
+      {
+        "title": "Desprazamento das etiquetas",
+        "description": "Desprazamento da posición da etiqueta respecto da posición estándar, que é a metade da distancia do raio. Este valor pode ser positivo ou negativo. Os valores positivos afastan a etiqueta do centro."
+      },
+      {
+        "title": "Posición das etiquetas",
+        "options": {
+          "inside": "dentro",
+          "outside": "fóra",
+          "center": "centro"
+        }
+      }
+    ]
+  }
+}

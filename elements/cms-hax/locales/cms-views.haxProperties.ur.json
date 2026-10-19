@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS ویو",
+    "description": "بیک اینڈ پر رینڈر ہونے والے CMS ویوز"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "نام",
+        "description": "ہمارے CMS سے ویو کا نام"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "ڈسپلے",
+        "description": "ہمارے CMS کے اس ویو کے اندر ڈسپلے"
+      }
+    ]
+  }
+}

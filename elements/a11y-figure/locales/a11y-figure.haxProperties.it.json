@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Figura descrittiva",
+    "description": "Figura accessibile con descrizione estesa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Immagine"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Testo alternativo"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Didascalia della figura",
+        "description": "Testo della didascalia sempre visibile."
+      },
+      {
+        "slot": "details",
+        "title": "Descrizione",
+        "description": "Descrizione dettagliata dell'immagine che può essere nascosta o mostrata"
+      },
+      {
+        "slot": "summary",
+        "title": "Pulsante descrizione",
+        "description": "Valore predefinito per il pulsante che mostra/nasconde il testo della descrizione, ad es. \"info\", \"metadati\", ecc."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Testo di riepilogo facoltativo quando i dettagli sono aperti"
+      },
+      {
+        "property": "closeText",
+        "title": "Testo di riepilogo facoltativo quando i dettagli sono chiusi"
+      }
+    ]
+  }
+}

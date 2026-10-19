@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "Աուդիո",
+    "description": "Սա կարող է ներկայացնել տեսանյութը բարձր մատչելիությամբ՝ անկախ աղբյուրից։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Աղբյուր",
+        "description": "Այս մեդիայի URL-ը։"
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Վերնագիր",
+        "description": "Պարզ վերնագիր տեսանյութի տակ"
+      },
+      {
+        "property": "accentColor",
+        "title": "Շեշտադրման գույն",
+        "description": "Ընտրեք նվագարկչի շեշտադրող գույնը։"
+      },
+      {
+        "property": "track",
+        "title": "Ենթագրեր",
+        "description": "Ենթագրերի ֆայլի URL-ը։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "Մանրապատկեր",
+        "description": "Ընտրովի։ Մանրապատկերի/պաստառի URL-ը։"
+      },
+      {
+        "property": "learningMode",
+        "title": "Միացնել ուսուցման ռեժիմը",
+        "description": "Անջատում է արագ առաջ և հետ փաթաթումը։"
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Հեռացնել «Բացել YouTube-ում» կոճակը",
+        "description": "Հեռացնում է տեսանյութը YouTube-ում բացելու կոճակը։"
+      },
+      {
+        "property": "linkable",
+        "title": "Ներառե՞լ կիսվելու հղում",
+        "description": "Տրամադրում է տեսանյութով կիսվելու հղում։"
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Ցույց է տալիս՝ արդյոք օգտագործել CORS։",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Թույլատրել ֆոնային նվագարկումը",
+        "description": "Տեսանյութերը ավտոմատ դադարում / նվագարկվում են, երբ ներդիրը կորցնում է ֆոկուսը. սա թույլ է տալիս տեսանյութին նվագարկվել առանց ներդիրի ֆոկուսի"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Մութ թեմա սղագրության համար",
+        "description": "Միացնել մութ թեման սղագրության համար։"
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Անջատել ինտերակտիվությունը",
+        "description": "Անջատել ինտերակտիվ ռեժիմը, որը սղագրությունը դարձնում է սեղմելի։"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Թաքցնել ժամանակային նշումները",
+        "description": "Թաքցնել սղագրության ժամանակային նշումները։"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Թաքցնել սղագրությունը",
+        "description": "Լռելյայն թաքցնել սղագրությունը։"
+      },
+      {
+        "property": "lang",
+        "title": "Լեզու",
+        "description": "Մեդիայի լեզուն։"
+      }
+    ]
+  }
+}

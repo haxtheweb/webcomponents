@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Kipengee cha Taaluma",
+    "description": "Shirika moja na nyadhifa zake zinazohusiana"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Jina la Shirika"
+      },
+      {
+        "property": "location",
+        "title": "Mahali"
+      },
+      {
+        "property": "source",
+        "title": "Chanzo"
+      }
+    ]
+  }
+}

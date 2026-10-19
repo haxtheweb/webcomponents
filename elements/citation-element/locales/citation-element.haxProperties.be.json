@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Крыніца цытаты",
+    "description": "Элемент цытавання з трыма рэжымамі прадстаўлення."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Загаловак",
+        "description": "Назва цытаванай працы."
+      },
+      {
+        "property": "source",
+        "title": "Спасылка на крыніцу",
+        "description": "URL крыніцы цытаванай працы."
+      },
+      {
+        "property": "date",
+        "title": "Дата звароту",
+        "description": "Дата звароту да крыніцы."
+      },
+      {
+        "property": "scope",
+        "title": "Ахоп",
+        "description": "Элемент, які трэба цытаваць.",
+        "options": {
+          "sibling": "Суседні элемент",
+          "parent": "Бацькоўскі элемент"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Ліцэнзія",
+        "description": "Ліцэнзія цытаванай працы."
+      },
+      {
+        "property": "creator",
+        "title": "Аўтар",
+        "description": "Аўтар або ўладальнік цытаванай працы."
+      },
+      {
+        "property": "typeof",
+        "title": "Тып OER Schema",
+        "description": "Клас OER Schema для гэтай цытаты. Па змаўчанні oer:ReferencedMaterial; замяняйце толькі сапраўдным класам OER (напр. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

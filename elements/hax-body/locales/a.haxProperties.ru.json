@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Простая ссылка",
+    "description": "Базовый элемент ссылки."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Ссылка",
+        "description": "URL назначения."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Текст",
+        "description": "Видимый текст ссылки."
+      },
+      {
+        "attribute": "target",
+        "title": "Цель",
+        "description": "Где открывать ссылку.",
+        "options": {
+          "": "То же окно",
+          "_blank": "Новое окно - _blank",
+          "_top": "Окно верхнего уровня - _top",
+          "_parent": "Родительское окно - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Текст подсказки",
+        "description": "Поясняющий заголовок для доступности и SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Отношение к цели ссылки (безопасность/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

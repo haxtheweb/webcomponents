@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Exemplu de cod",
+    "description": "Un exemplu de cod evidențiat în pagină"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Evidențierea codului",
+        "description": "Evidențierea sintaxei de aplicat zonei de cod",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Date JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Buton de copiere în clipboard",
+        "description": "buton în colțul din dreapta sus pe care scrie copiază în clipboard"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Începutul evidențierii",
+        "description": "Numărul liniei de la care începe evidențierea"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Sfârșitul evidențierii",
+        "description": "Linia la care se termină evidențierea"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Odznak zásluh",
+    "description": "Vizuální odznak sdělující získání dovednosti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Název odznaku",
+        "description": "Název zobrazený na odznaku."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Obrázek odznaku",
+        "description": "URL obrázku odznaku."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Podrobnosti odznaku",
+        "description": "Podrobnosti o odznaku."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hypertextový odkaz",
+        "description": "Odkaz spojený s odznakem."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Dovednosti odznaku",
+        "description": "Dovednosti zobrazené na odznaku."
+      },
+      {
+        "property": "skill",
+        "title": "Dovednost (OER Schema)",
+        "description": "OER Schema: naučená dovednost získaná splněním tohoto výukového cíle."
+      }
+    ]
+  }
+}

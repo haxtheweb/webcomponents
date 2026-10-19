@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Lizenz",
+    "description": "Eng Lizenz fir Äert Wierk uginn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel vum zitéierte Wierk."
+      },
+      {
+        "property": "source",
+        "title": "Quelllink",
+        "description": "Quell-URL vum lizenzéierte Wierk."
+      },
+      {
+        "property": "license",
+        "title": "Lizenz",
+        "description": "Lizenz, déi op dëst Wierk applizéiert gëtt."
+      },
+      {
+        "property": "creator",
+        "title": "Creator",
+        "description": "Creator oder Besëtzer vun dësem Wierk."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Quelllink",
+        "description": "Link op zousätzlech Lizenzdetailer."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Bezeechnung fir „Méi“",
+        "description": "Bezeechnung fir zousätzlech Lizenzdetailer."
+      }
+    ]
+  }
+}

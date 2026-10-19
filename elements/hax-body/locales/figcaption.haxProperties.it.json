@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Didascalia della figura",
+    "description": "Didascalia per una figura."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Didascalia",
+        "description": "Testo mostrato sotto la figura."
+      }
+    ]
+  }
+}

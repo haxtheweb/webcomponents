@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Попередній перегляд GitHub",
+    "description": "Доступна ілюстрація з довгим описом"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Організація",
+        "description": "Машинна назва організації GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Репозиторій",
+        "description": "Машинна назва репозиторію"
+      },
+      {
+        "property": "extended",
+        "title": "Розширений вигляд",
+        "description": "Включає readme в елемент"
+      }
+    ]
+  }
+}

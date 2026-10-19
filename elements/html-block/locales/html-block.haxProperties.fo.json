@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html-blokkur",
+    "description": "Ein grundleggjandi HTML-blokkur, ið veitir HAXschema-tenging"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML-kota, tú vilt vísa í innihaldinum"
+      }
+    ]
+  }
+}

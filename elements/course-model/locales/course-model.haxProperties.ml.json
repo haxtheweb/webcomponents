@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "കോഴ്സ് മോഡൽ",
+    "description": "വിശദാംശങ്ങൾ, ആനിമേഷൻ, അറിവ് പരിശോധനകൾ എന്നിവയോടുകൂടിയ കോഴ്സ് ആശയങ്ങൾക്കുള്ള ഇന്ററാക്ടീവ് ലേഔട്ട്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "തലക്കെട്ട്"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "വിവര ഭാഗം"
+      },
+      {
+        "title": "വിശദാംശ ഭാഗം"
+      },
+      {
+        "title": "ആനിമേഷൻ ഭാഗം"
+      },
+      {
+        "title": "അറിവ് പരിശോധന ഭാഗം"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "ലോഗോ ഭാഗം"
+      }
+    ]
+  }
+}

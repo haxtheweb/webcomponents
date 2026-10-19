@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Ceadúnas",
+    "description": "Soláthair ceadúnas do do shaothar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Teideal an tsaothair a luaitear."
+      },
+      {
+        "property": "source",
+        "title": "Nasc foinse",
+        "description": "URL foinse an tsaothair cheadúnaithe."
+      },
+      {
+        "property": "license",
+        "title": "Ceadúnas",
+        "description": "Ceadúnas a chuirtear i bhfeidhm ar an saothar seo."
+      },
+      {
+        "property": "creator",
+        "title": "Cruthaitheoir",
+        "description": "Cruthaitheoir nó úinéir an tsaothair seo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Nasc foinse",
+        "description": "Nasc chuig sonraí breise ceadúnaithe."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Lipéad tuilleadh",
+        "description": "Lipéad do shonraí breise ceadúnaithe."
+      }
+    ]
+  }
+}

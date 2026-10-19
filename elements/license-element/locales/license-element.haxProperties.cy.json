@@ -1,0 +1,42 @@
+{
+  "gizmo": {
+    "title": "Trwydded",
+    "description": "Darparwch drwydded ar gyfer eich gwaith."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Teitl y gwaith a ddyfynnir."
+      },
+      {
+        "property": "source",
+        "title": "Dolen y ffynhonnell",
+        "description": "URL ffynhonnell y gwaith trwyddedig."
+      },
+      {
+        "property": "license",
+        "title": "Trwydded",
+        "description": "Trwydded a gymhwysir i'r gwaith hwn."
+      },
+      {
+        "property": "creator",
+        "title": "Crëwr",
+        "description": "Crëwr neu berchennog y gwaith hwn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "moreLink",
+        "title": "Dolen y ffynhonnell",
+        "description": "Dolen i fanylion trwyddedu ychwanegol."
+      },
+      {
+        "property": "moreLabel",
+        "title": "Label rhagor",
+        "description": "Label ar gyfer manylion trwyddedu ychwanegol."
+      }
+    ]
+  }
+}

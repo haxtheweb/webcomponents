@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Hodnotenie hviezdičkami",
+    "description": "Widget na zobrazenie hodnotenia alebo tlačidlo na hodnotenie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Skóre",
+        "description": "Aktuálna hodnota skóre."
+      },
+      {
+        "property": "possible",
+        "title": "Možné",
+        "description": "Maximálne možné skóre."
+      },
+      {
+        "property": "numStars",
+        "title": "Počet hviezdičiek",
+        "description": "Počet hviezdičiek na zobrazenie."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktívne",
+        "description": "Povoliť používateľovi nastaviť hodnotenie."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Režim hodnotiacej škály",
+        "description": "Pre každú hviezdičku emitovať metadáta OER Schema RubricScale a RubricLevel (levelOrdinal/levelPoints)."
+      }
+    ]
+  }
+}

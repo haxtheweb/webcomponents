@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Расширенное изображение",
+    "description": "Способ показа изображений с различными улучшениями."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Источник",
+        "description": "URL изображения."
+      },
+      {
+        "property": "alt",
+        "title": "Альтернативный текст",
+        "description": "Текст, описывающий изображение для незрячих пользователей."
+      },
+      {
+        "property": "link",
+        "title": "Ссылка",
+        "description": "Связать изображение с URL"
+      },
+      {
+        "property": "card",
+        "title": "Карточка",
+        "description": "Добавить тень, чтобы изображение выглядело как приподнятая карточка."
+      },
+      {
+        "property": "box",
+        "title": "Рамка",
+        "description": "Добавить визуальную рамку вокруг изображения."
+      },
+      {
+        "property": "offset",
+        "title": "Смещение",
+        "description": "Сместить изображение влево или вправо.",
+        "options": {
+          "none": "нет",
+          "wide": "широкое",
+          "narrow": "узкое"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Источник цитаты",
+        "description": "Ссылка на источник изображения."
+      },
+      {
+        "property": "caption",
+        "title": "Подпись",
+        "description": "Подпись к изображению."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Название иллюстрации",
+        "description": "Название для метки иллюстрации."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Описание иллюстрации",
+        "description": "Описание для метки иллюстрации."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Миниатюра",
+        "description": "Источник миниатюры. Показывает миниатюру, но открывает полный источник в модальном окне."
+      },
+      {
+        "property": "round",
+        "title": "Круглое изображение",
+        "description": "Обрезает изображение в форме круга."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Отключить окно изображения",
+        "description": "Отключить открытие изображения по щелчку в окне просмотра изображений."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Отображать как markdown",
+        "description": "Отображать подпись и ссылку на источник как markdown."
+      }
+    ]
+  }
+}

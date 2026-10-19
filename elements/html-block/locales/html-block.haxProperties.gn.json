@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Html pehẽ",
+    "description": "Peteĩ HTML pehẽ ypy ome'ẽva HAXschema ñembojoaju"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML papapy rehechaukaséva tetepýpe"
+      }
+    ]
+  }
+}

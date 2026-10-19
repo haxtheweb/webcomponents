@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Exemple de code",
+    "description": "Un extrait de code mis en évidence dans la page"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Coloration du code",
+        "description": "Coloration syntaxique à appliquer à la zone de code",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "Données JSON",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Bouton de copie dans le presse-papiers",
+        "description": "bouton en haut à droite indiquant « copier dans le presse-papiers »"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Début de la mise en évidence",
+        "description": "Numéro de ligne où commence la mise en évidence"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Fin de la mise en évidence",
+        "description": "Ligne où se termine la mise en évidence"
+      }
+    ]
+  }
+}

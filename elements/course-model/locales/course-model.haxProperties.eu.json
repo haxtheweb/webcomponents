@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "ikastaro-eredua",
+    "description": "Ikastaroaren kontzeptuetarako diseinu interaktiboa, xehetasunekin, animazioarekin eta ezagutza-egiaztapenekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "izenburua"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Informazio-eremua"
+      },
+      {
+        "title": "Xehetasun-eremua"
+      },
+      {
+        "title": "Animazio-eremua"
+      },
+      {
+        "title": "Ezagutza-egiaztapenaren eremua"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logotipo-eremua"
+      }
+    ]
+  }
+}

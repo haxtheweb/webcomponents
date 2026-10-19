@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Nguồn trích dẫn",
+    "description": "Phần tử trích dẫn với ba chế độ trình bày."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề của tác phẩm được trích dẫn."
+      },
+      {
+        "property": "source",
+        "title": "Liên kết nguồn",
+        "description": "URL nguồn của tác phẩm được trích dẫn."
+      },
+      {
+        "property": "date",
+        "title": "Ngày truy cập",
+        "description": "Ngày truy cập nguồn."
+      },
+      {
+        "property": "scope",
+        "title": "Phạm vi",
+        "description": "Phạm vi phần tử cần trích dẫn.",
+        "options": {
+          "sibling": "Phần tử cùng cấp",
+          "parent": "Phần tử cha"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Giấy phép",
+        "description": "Giấy phép của tác phẩm được trích dẫn."
+      },
+      {
+        "property": "creator",
+        "title": "Tác giả",
+        "description": "Tác giả hoặc chủ sở hữu của tác phẩm được trích dẫn."
+      },
+      {
+        "property": "typeof",
+        "title": "Loại OER Schema",
+        "description": "Lớp OER Schema cho trích dẫn này. Mặc định là oer:ReferencedMaterial; chỉ ghi đè bằng một lớp OER hợp lệ (ví dụ: oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

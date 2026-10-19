@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Singkatan",
+    "description": "Singkatan dengan petua alat istilah penuh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teks",
+        "description": "Teks singkatan yang kelihatan."
+      },
+      {
+        "attribute": "title",
+        "title": "Perkataan",
+        "description": "Istilah penuh yang ditunjukkan semasa dilayang."
+      }
+    ]
+  }
+}

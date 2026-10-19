@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ເອນທິຕີ CMS",
+    "description": "ເອນທິຕີ CMS ທີ່ສະແດງຜົນຢູ່ backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "ປະເພດ",
+        "description": "ປະເພດຈາກ CMS ຂອງພວກເຮົາ",
+        "options": {
+          "node": "ໂນດ",
+          "user": "ຜູ້ໃຊ້",
+          "file": "ໄຟລ໌"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id ຈາກ CMS ຂອງພວກເຮົາ"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "ໂໝດການສະແດງ",
+        "description": "ໂໝດການສະແດງຜົນຈາກ CMS ຂອງພວກເຮົາ"
+      }
+    ]
+  }
+}

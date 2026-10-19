@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "कारकीर्द भूमिका",
+    "description": "संस्थेतील वैयक्तिक भूमिका"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक"
+      },
+      {
+        "property": "startDate",
+        "title": "सुरुवातीची तारीख"
+      },
+      {
+        "property": "endDate",
+        "title": "शेवटची तारीख (पर्यायी)"
+      },
+      {
+        "property": "skills",
+        "title": "संबंधित कौशल्ये",
+        "description": "कौशल्ये जोडणे सुरू करण्यासाठी + बटण निवडा"
+      }
+    ]
+  }
+}

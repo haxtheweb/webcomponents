@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Düşündirişli şekil",
+    "description": "Uzyn düşündirişli elýeterli şekil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Surat"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Alternatiw tekst"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Şekil ýazgysy",
+        "description": "Hemişe görünýän şekil ýazgysynyň teksti."
+      },
+      {
+        "slot": "details",
+        "title": "Düşündiriş",
+        "description": "Gizlenip ýa-da görkezilip bilinýän suratyň jikme-jik düşündirişi"
+      },
+      {
+        "slot": "summary",
+        "title": "Düşündiriş düwmesi",
+        "description": "Düşündiriş tekstini görkezýän/gizleýän düwme üçin deslapky, meselem, \"maglumat\", \"metamaglumat\" we ş.m."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Jikme-jiklikler açyk wagty goşmaça gysgaça tekst"
+      },
+      {
+        "property": "closeText",
+        "title": "Jikme-jiklikler ýapyk wagty goşmaça gysgaça tekst"
+      }
+    ]
+  }
+}

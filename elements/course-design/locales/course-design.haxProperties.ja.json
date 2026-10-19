@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "コース設計",
+    "description": "教材とコース設計要素のためのコンテナー。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "コース識別子",
+        "description": "OER Schema: コースの識別子 (例: MATH-100)。"
+      },
+      {
+        "property": "termOffered",
+        "title": "開講学期",
+        "description": "OER Schema: コースが開講される学期。"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "提供形式",
+        "description": "OER Schema: コースの提供形式 (例: 対面、オンライン、ハイブリッド)。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "主担当講師",
+        "description": "OER Schema: コースの主担当講師。"
+      },
+      {
+        "property": "syllabus",
+        "title": "シラバスの URL",
+        "description": "OER Schema: コースのシラバスへの URL。"
+      }
+    ]
+  }
+}

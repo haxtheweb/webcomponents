@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "GitHub peržiūra",
+    "description": "Prieinama iliustracija su išsamiu aprašu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizacija",
+        "description": "GitHub organizacijos sisteminis pavadinimas"
+      },
+      {
+        "property": "repo",
+        "title": "Saugykla",
+        "description": "Saugyklos sisteminis pavadinimas"
+      },
+      {
+        "property": "extended",
+        "title": "Išplėstinis rodinys",
+        "description": "Įtraukia README į elementą"
+      }
+    ]
+  }
+}

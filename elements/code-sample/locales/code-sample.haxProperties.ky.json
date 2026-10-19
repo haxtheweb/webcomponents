@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Код үлгүсү",
+    "description": "Баракта бөлүнүп көрсөтүлгөн код үлгүсү"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Кодду бөлүп көрсөтүү",
+        "description": "Код аймагына колдонулуучу синтаксисти бөлүп көрсөтүү",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON маалыматтары",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Алмашуу буферине көчүрүү баскычы",
+        "description": "жогорку оң бурчтагы \"алмашуу буферине көчүрүү\" баскычы"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Бөлүп көрсөтүүнүн башталышы",
+        "description": "Бөлүп көрсөтүү башталуучу саптын номери"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Бөлүп көрсөтүүнүн аягы",
+        "description": "Бөлүп көрсөтүү аяктоочу сап"
+      }
+    ]
+  }
+}

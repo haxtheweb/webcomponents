@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Kiungo cha msingi",
+    "description": "Kipengele cha msingi cha kiungo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Kiungo",
+        "description": "URL ya mwisho."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Maandishi",
+        "description": "Maandishi ya kiungo yanayoonekana."
+      },
+      {
+        "attribute": "target",
+        "title": "Lengo",
+        "description": "Mahali pa kufungua kiungo.",
+        "options": {
+          "": "Dirisha lile lile",
+          "_blank": "Dirisha jipya - _blank",
+          "_top": "Dirisha la juu - _top",
+          "_parent": "Dirisha mzazi - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Maandishi ya kichwa",
+        "description": "Kichwa cha ushauri kwa ufikivu na SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Uhusiano na mahali pa mwisho (usalama/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

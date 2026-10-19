@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "የኢ-መጽሐፍ አዝራር",
+    "description": "ወደ ኢ-መጽሐፍ የሚያገናኝ አዝራር።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "የአዝራሩ ርዕስ።"
+      },
+      {
+        "property": "link",
+        "title": "አገናኝ",
+        "description": "ጠቅ ሲደረግ የሚዞርበት አገናኝ።"
+      },
+      {
+        "property": "icon",
+        "title": "አዶ",
+        "description": "ይህን አገናኝ የሚወክል አዶ"
+      }
+    ]
+  }
+}

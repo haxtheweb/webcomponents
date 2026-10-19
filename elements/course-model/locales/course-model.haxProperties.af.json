@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "kursusmodel",
+    "description": "Interaktiewe uitleg vir kursuskonsepte met besonderhede, animasie en kennistoetse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "titel"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Inligtingsarea"
+      },
+      {
+        "title": "Besonderhede-area"
+      },
+      {
+        "title": "Animasie-area"
+      },
+      {
+        "title": "Kennistoets-area"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Logo-area"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Àkójọ oníkókó",
+    "description": "Ṣẹ̀dá àkójọ oníkókó."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Ara kókó",
+        "description": "Ara tí a ń lò fún àwọn kókó àkójọ aláìlétò.",
+        "options": {
+          "": "Àkọ́kọ́ (onígun mẹ́rin)",
+          "list-disc": "Àwo",
+          "list-circle": "Òbìrí",
+          "list-square": "Onígun mẹ́rin"
+        }
+      }
+    ]
+  }
+}

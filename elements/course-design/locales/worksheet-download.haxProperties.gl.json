@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Descarga de folla de traballo",
+    "description": "Un botón para mostrar ficheiros dispoñibles para descargar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "O título da descarga."
+      },
+      {
+        "property": "link",
+        "title": "Ligazón",
+        "description": "A ligazón da descarga."
+      }
+    ]
+  }
+}

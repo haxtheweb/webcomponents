@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "संदर्भ",
+    "description": "तीन प्रस्तुति मोड वाला उद्धरण एलिमेंट।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "उद्धृत कृति का शीर्षक।"
+      },
+      {
+        "property": "source",
+        "title": "स्रोत लिंक",
+        "description": "उद्धृत कृति का स्रोत URL।"
+      },
+      {
+        "property": "date",
+        "title": "देखने की तिथि",
+        "description": "वह तिथि जब स्रोत देखा गया।"
+      },
+      {
+        "property": "scope",
+        "title": "दायरा",
+        "description": "उद्धृत करने के लिए एलिमेंट का दायरा।",
+        "options": {
+          "sibling": "सहोदर एलिमेंट",
+          "parent": "पैरेंट एलिमेंट"
+        }
+      },
+      {
+        "property": "license",
+        "title": "लाइसेंस",
+        "description": "उद्धृत कृति का लाइसेंस।"
+      },
+      {
+        "property": "creator",
+        "title": "निर्माता",
+        "description": "उद्धृत कृति का निर्माता या स्वामी।"
+      },
+      {
+        "property": "typeof",
+        "title": "OER स्कीमा प्रकार",
+        "description": "इस उद्धरण के लिए OER स्कीमा क्लास। डिफ़ॉल्ट oer:ReferencedMaterial है; केवल मान्य OER क्लास (जैसे oer:SupportingMaterial) से ही बदलें।"
+      }
+    ]
+  }
+}

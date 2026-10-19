@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Blọọkụ CMS",
+    "description": "Blọọkụ CMS emepụtara n'azụ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Modul",
+        "description": "Modul a ga-ebudata site na CMS anyị"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta nke blọọkụ a ga-ebudata site na CMS anyị"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gizmo": {
+    "title": "Hình có mô tả",
+    "description": "Hình dễ tiếp cận kèm mô tả chi tiết"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imgSrc",
+        "title": "Hình ảnh"
+      },
+      {
+        "property": "imgAlt",
+        "title": "Văn bản thay thế"
+      },
+      {
+        "slot": "figcaption",
+        "title": "Chú thích hình",
+        "description": "Văn bản chú thích hình luôn hiển thị."
+      },
+      {
+        "slot": "details",
+        "title": "Mô tả",
+        "description": "Mô tả chi tiết hình ảnh có thể ẩn hoặc hiện"
+      },
+      {
+        "slot": "summary",
+        "title": "Nút mô tả",
+        "description": "Mặc định cho nút hiện/ẩn văn bản mô tả, ví dụ: \"thông tin\", \"siêu dữ liệu\", v.v."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Văn bản tóm tắt tùy chọn khi chi tiết đang mở"
+      },
+      {
+        "property": "closeText",
+        "title": "Văn bản tóm tắt tùy chọn khi chi tiết đang đóng"
+      }
+    ]
+  }
+}

@@ -216,7 +216,7 @@ class PlayList extends I18NMixin(DDD) {
         .carousel-track {
           display: flex;
           flex-direction: row;
-          transition: transform 0.6s ease-in-out;
+          transition: transform var(--ddd-duration-slow, 0.6s) ease-in-out;
           height: 100%;
           align-items: stretch;
         }

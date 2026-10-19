@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Ividiyo",
+    "description": "Ukudlalwa kwevidiyo okufikelelekayo kwimithombo emininzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Umthombo",
+        "description": "I-URL yale midiya."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Isihloko",
+        "description": "Isihloko esiboniswa ngezantsi kwevidiyo."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Umfanekiso wepowusta",
+        "description": "I-URL yomfanekiso wepowusta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Iitreki zombhalo",
+        "description": "Imibhalo engezantsi, imibhalo eguqulelweyo, iinkcazo nezinye iitreki zombhalo zevidiyo."
+      },
+      {
+        "property": "startTime",
+        "title": "Ixesha lokuqala",
+        "description": "Qalisa ividiyo ngexesha elithile (imizuzwana)."
+      },
+      {
+        "property": "endTime",
+        "title": "Ixesha lokuphela",
+        "description": "Phelisa ividiyo ngexesha elithile (imizuzwana), ifuna ixesha lokuqala."
+      },
+      {
+        "property": "learningMode",
+        "title": "Vula imo yokufunda",
+        "description": "Ivala ukuqhubela phambili ngokukhawuleza nokubuyisela emva."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Susa iqhosha lokuvula kwi-YouTube",
+        "description": "Isusa iqhosha lokuvula ividiyo kwi-YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "Quka ikhonkco lokwabelana?",
+        "description": "Inika ikhonkco lokwabelana ngevidiyo."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Fihla iitimestamp",
+        "description": "Fihla iitimestamp kumbhalo-mazwi."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Fihla uMbhalo-mazwi",
+        "description": "Fihla umbhalo-mazwi ngokungagqibekanga."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Itreki yenkcazo ngesandi",
+        "description": "I-URL eya kwitreki yenkcazo ngesandi (ifayile ye-MP3) echaza izinto ezibonakalayo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Ibonisa ukuba kusetyenziswe i-CORS na.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Vumela ukudlala ngasemva",
+        "description": "Qhubeka udlala xa ithebhu yesikhangeli iphulukana nogxininiso."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Umxholo omnyama wombhalo-mazwi",
+        "description": "Vula umxholo omnyama wombhalo-mazwi."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Vala Ukusebenzisana",
+        "description": "Vala imo yokusebenzisana eyenza umbhalo-mazwi ucofeke."
+      },
+      {
+        "property": "lang",
+        "title": "Ulwimi",
+        "description": "Ulwimi lwemidiya."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala ogqamisayo",
+        "description": "(ayisasetyenziswa) Khetha umbala wogxininiso womdlali."
+      }
+    ]
+  }
+}

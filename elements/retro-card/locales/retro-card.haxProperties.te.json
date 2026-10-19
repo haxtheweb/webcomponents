@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "రెట్రో కార్డ్",
+    "description": "రెట్రో డిజైన్‌తో సాధారణ కార్డ్."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "ప్రధాన కార్డ్ శీర్షిక."
+      },
+      {
+        "property": "url",
+        "description": "కార్డ్‌ను క్లిక్ చేసినప్పుడు తెరవాల్సిన URL."
+      },
+      {
+        "property": "subtitle",
+        "title": "ఉపశీర్షిక",
+        "description": "కార్డ్ ఉపశీర్షిక."
+      },
+      {
+        "property": "tags",
+        "title": "ట్యాగ్‌లు",
+        "description": "కామాలతో వేరు చేయబడిన ట్యాగ్‌లు."
+      },
+      {
+        "property": "mediaSource",
+        "title": "మీడియా మూలం",
+        "description": "ప్రాథమిక మీడియా మూలం."
+      },
+      {
+        "property": "hoverSource",
+        "title": "హోవర్‌పై మూలం",
+        "description": "కార్డ్‌పై హోవర్ చేసినప్పుడు లేదా సక్రియం చేసినప్పుడు చూపబడే మీడియా మూలం."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "కార్డ్ అంతటా వర్తించే యాక్సెంట్ రంగు."
+      },
+      {
+        "property": "dark",
+        "title": "డార్క్",
+        "description": "డార్క్ మోడ్ ప్రాథమిక రంగులను ఉపయోగించండి."
+      }
+    ]
+  }
+}

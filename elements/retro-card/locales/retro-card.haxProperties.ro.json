@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Card retro",
+    "description": "Card simplu cu design retro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul principal al cardului."
+      },
+      {
+        "property": "url",
+        "description": "URL-ul deschis la clic pe card."
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtitlu",
+        "description": "Subtitlul cardului."
+      },
+      {
+        "property": "tags",
+        "title": "Etichete",
+        "description": "Etichete separate prin virgulă."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Sursa media",
+        "description": "Sursa media principală."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Sursa la trecerea cursorului",
+        "description": "Sursa media afișată când cursorul trece peste card sau cardul este activat."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "Culoarea de accent aplicată pe tot cardul."
+      },
+      {
+        "property": "dark",
+        "title": "Întunecat",
+        "description": "Folosește culorile de bază ale modului întunecat."
+      }
+    ]
+  }
+}

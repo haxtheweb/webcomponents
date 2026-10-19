@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Παραπομπή",
+    "description": "Στοιχείο παραπομπής με τρεις τρόπους παρουσίασης."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Τίτλος",
+        "description": "Τίτλος του έργου που παρατίθεται."
+      },
+      {
+        "property": "source",
+        "title": "Σύνδεσμος πηγής",
+        "description": "URL πηγής για το έργο που παρατίθεται."
+      },
+      {
+        "property": "date",
+        "title": "Ημερομηνία πρόσβασης",
+        "description": "Ημερομηνία πρόσβασης στην πηγή."
+      },
+      {
+        "property": "scope",
+        "title": "Εμβέλεια",
+        "description": "Εμβέλεια στοιχείου προς παράθεση.",
+        "options": {
+          "sibling": "Αδελφό στοιχείο",
+          "parent": "Γονικό στοιχείο"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Άδεια",
+        "description": "Άδεια για το έργο που παρατίθεται."
+      },
+      {
+        "property": "creator",
+        "title": "Δημιουργός",
+        "description": "Δημιουργός ή κάτοχος του έργου που παρατίθεται."
+      },
+      {
+        "property": "typeof",
+        "title": "Τύπος OER Schema",
+        "description": "Κλάση OER Schema για αυτήν την παραπομπή. Προεπιλογή oer:ReferencedMaterial· αντικαταστήστε μόνο με έγκυρη κλάση OER (π.χ. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

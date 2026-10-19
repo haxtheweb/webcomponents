@@ -49,7 +49,7 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSLitElementTheme) {
       }
       :host([edit-mode]) .left-col {
         pointer-events: none;
-        opacity: 0.2;
+        opacity: var(--ddd-opacity-20, 0.2);
       }
       .container {
         margin: 24px auto;
@@ -102,7 +102,7 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSLitElementTheme) {
         );
         color: white;
         padding: 16px;
-        transition: 0.3s opacity linear;
+        transition: var(--ddd-duration-normal, 0.3s) opacity linear;
         opacity: 1;
       }
       site-active-title {

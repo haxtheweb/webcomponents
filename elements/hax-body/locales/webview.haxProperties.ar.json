@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "المصدر",
+        "description": "URL هذا المورد."
+      }
+    ]
+  }
+}

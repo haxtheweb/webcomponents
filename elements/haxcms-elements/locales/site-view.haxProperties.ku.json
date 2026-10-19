@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Dîtina Malperê",
+    "description": "Blokeke dînamîk ku li gorî pîvanan daneyên malperê dipirse û nîşan dide"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "URLa Dîtinê",
+        "description": "Parametreyên query ji bo herikîna daneyên dîtinê. Tu dikarî vê ji dashboarda Dîtinan bistînî."
+      },
+      {
+        "property": "renderer",
+        "title": "Moda nîşandanê",
+        "description": "Encamên dîtinê divê çawa werin nîşandan"
+      },
+      {
+        "property": "entity",
+        "title": "Cureyê yekîneyê",
+        "description": "Cureya entîteyê ku ji bo şîkirina bersivê tê bikaranîn",
+        "options": {
+          "": "Xwerû (tişt)",
+          "item": "Hêman",
+          "page": "Rûpel",
+          "file": "Pel",
+          "tag": "Etîket",
+          "block": "Blok",
+          "view": "Dîtin",
+          "theme": "Mijar",
+          "region": "Herêm",
+          "customElement": "Hêmana Taybet"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Dîtina malperê bişkîne",
+        "description": "Ji bo guherandina rasterast bike naveroka statîk; nûkirina bixweber ji çavkaniyê disekine."
+      }
+    ]
+  }
+}

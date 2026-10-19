@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "HAX-lenke",
+    "description": "En lenke til en bestemt ressurs på nettstedet du jobber med."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Element",
+        "description": "Element som skal vises for lenke-/tittelinformasjonen"
+      }
+    ]
+  }
+}

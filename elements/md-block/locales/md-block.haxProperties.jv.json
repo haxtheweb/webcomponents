@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Blok isi markdown langsung utawa diemot saka remote"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown mentah"
+      },
+      {
+        "property": "source",
+        "title": "Sumber",
+        "description": "Berkas sumber kanggo markdown"
+      }
+    ]
+  }
+}

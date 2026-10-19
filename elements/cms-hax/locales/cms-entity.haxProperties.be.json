@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Сутнасць CMS",
+    "description": "Сутнасць CMS, якая адлюстроўваецца на бэкендзе"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Тып",
+        "description": "тып з нашай CMS",
+        "options": {
+          "node": "Вузел",
+          "user": "Карыстальнік",
+          "file": "Файл"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "id з нашай CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Рэжым адлюстравання",
+        "description": "рэжым адлюстравання з нашай CMS"
+      }
+    ]
+  }
+}

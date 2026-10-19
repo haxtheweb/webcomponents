@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "Basiese prent",
+    "description": "Basiese prentelement."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "src",
+        "title": "Bron",
+        "description": "Prent-URL."
+      },
+      {
+        "attribute": "alt",
+        "title": "Alt-teks",
+        "description": "Alternatiewe teks vir toeganklikheid en SEO."
+      },
+      {
+        "attribute": "height",
+        "title": "Hoogte",
+        "description": "Hoogte in pixels. Laat leeg om natuurlike grootte te gebruik."
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "loading",
+        "title": "Laaigedrag",
+        "description": "Kies wanneer die prent laai.",
+        "options": {
+          "lazy": "Laai wanneer sigbaar",
+          "auto": "Outomaties"
+        }
+      },
+      {
+        "attribute": "srcset",
+        "title": "Responsiewe bronne (srcset)",
+        "description": "Lys prent-URL's en beskrywers (bv. 480w of 2x) sodat blaaiers die beste grootte vir die skerm kies. Gestoor as die standaard srcset-kenmerk."
+      }
+    ]
+  }
+}

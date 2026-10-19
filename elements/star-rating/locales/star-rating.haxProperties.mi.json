@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Whakatauranga Whetū",
+    "description": "Widget whakaatu whakatauranga, pātene rānei hei whakatau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Kaute",
+        "description": "Uara kaute o nāianei."
+      },
+      {
+        "property": "possible",
+        "title": "Ka taea",
+        "description": "Kaute mōrahi ka taea."
+      },
+      {
+        "property": "numStars",
+        "title": "Maha o ngā Whetū",
+        "description": "Maha o ngā whetū hei whakaatu."
+      },
+      {
+        "property": "interactive",
+        "title": "Pāhekoheko",
+        "description": "Tukua te kaiwhakamahi kia pāhekoheko hei tautuhi i te whakatauranga."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Aratau Tauine Rubric",
+        "description": "Tukuna ngā raraunga-taapiri OER Schema RubricScale me RubricLevel (levelOrdinal/levelPoints) mō ia whetū."
+      }
+    ]
+  }
+}

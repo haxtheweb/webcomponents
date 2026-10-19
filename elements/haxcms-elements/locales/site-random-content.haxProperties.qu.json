@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mana Yachasqa P'anqa Ukhun",
+    "description": "Akllasqa p'anqamanta mana yachasqa hanaq pata elementota rikuchiy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Rapi",
+        "description": "Mana yachasqa ukhunta hurqunapaq p'anqata akllay. Elementoqa kay p'anqap hanaq pata HTML elementonkunamanta hukta mana yachasqata rikuchinqa."
+      }
+    ]
+  }
+}

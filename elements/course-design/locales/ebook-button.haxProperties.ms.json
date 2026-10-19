@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Butang e-buku",
+    "description": "Butang yang memaut ke e-buku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk butang."
+      },
+      {
+        "property": "link",
+        "title": "Pautan",
+        "description": "Pautan untuk dialihkan apabila diklik."
+      },
+      {
+        "property": "icon",
+        "title": "Ikon",
+        "description": "Ikon untuk mewakili pautan ini"
+      }
+    ]
+  }
+}

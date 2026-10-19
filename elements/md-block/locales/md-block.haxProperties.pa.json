@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "ਸਿੱਧੀ ਜਾਂ ਰਿਮੋਟ ਤੋਂ ਲੋਡ ਕੀਤੀ markdown ਸਮੱਗਰੀ ਦਾ ਬਲਾਕ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "ਕੱਚਾ markdown"
+      },
+      {
+        "property": "source",
+        "title": "ਸਰੋਤ",
+        "description": "markdown ਲਈ ਸਰੋਤ ਫ਼ਾਈਲ"
+      }
+    ]
+  }
+}

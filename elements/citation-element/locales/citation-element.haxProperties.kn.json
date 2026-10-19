@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "ಉಲ್ಲೇಖ",
+    "description": "ಮೂರು ಪ್ರಸ್ತುತಿ ಮೋಡ್‌ಗಳಿರುವ ಉಲ್ಲೇಖ ಘಟಕ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಉಲ್ಲೇಖಿಸಿದ ಕೃತಿಯ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "source",
+        "title": "ಮೂಲ ಲಿಂಕ್",
+        "description": "ಉಲ್ಲೇಖಿಸಿದ ಕೃತಿಯ ಮೂಲ URL."
+      },
+      {
+        "property": "date",
+        "title": "ಪ್ರವೇಶಿಸಿದ ದಿನಾಂಕ",
+        "description": "ಮೂಲವನ್ನು ಪ್ರವೇಶಿಸಿದ ದಿನಾಂಕ."
+      },
+      {
+        "property": "scope",
+        "title": "ವ್ಯಾಪ್ತಿ",
+        "description": "ಉಲ್ಲೇಖಿಸಬೇಕಾದ ಘಟಕದ ವ್ಯಾಪ್ತಿ.",
+        "options": {
+          "sibling": "ಪಕ್ಕದ ಘಟಕ",
+          "parent": "ಮೂಲ ಘಟಕ"
+        }
+      },
+      {
+        "property": "license",
+        "title": "ಪರವಾನಗಿ",
+        "description": "ಉಲ್ಲೇಖಿಸಿದ ಕೃತಿಯ ಪರವಾನಗಿ."
+      },
+      {
+        "property": "creator",
+        "title": "ರಚನೆಕಾರ",
+        "description": "ಉಲ್ಲೇಖಿಸಿದ ಕೃತಿಯ ರಚನೆಕಾರ ಅಥವಾ ಮಾಲೀಕ."
+      },
+      {
+        "property": "typeof",
+        "title": "OER Schema ಪ್ರಕಾರ",
+        "description": "ಈ ಉಲ್ಲೇಖಕ್ಕಾಗಿ OER Schema ಕ್ಲಾಸ್. ಡೀಫಾಲ್ಟ್ oer:ReferencedMaterial; ಮಾನ್ಯ OER ಕ್ಲಾಸ್‌ನೊಂದಿಗೆ ಮಾತ್ರ ಅತಿಕ್ರಮಿಸಿ (ಉದಾ. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

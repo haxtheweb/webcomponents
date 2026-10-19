@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "ஆடியோ",
+    "description": "இது மூலம் எதுவாக இருந்தாலும் வீடியோவை மிகவும் அணுகக்கூடிய முறையில் காட்ட முடியும்."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "மூலம்",
+        "description": "இந்த ஊடகத்திற்கான URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "தலைப்பு",
+        "description": "வீடியோவின் கீழ் எளிய தலைப்பு"
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "இயக்கிக்கான உச்சரிப்பு நிறத்தைத் தேர்ந்தெடுக்கவும்."
+      },
+      {
+        "property": "track",
+        "title": "மூடிய தலைப்புகள்",
+        "description": "தலைப்புகள் கோப்புக்கான URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "சிறுபடம்",
+        "description": "விருப்பத்தேர்வு. சிறுபடம்/சுவரொட்டிப் படத்திற்கான URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "கற்றல் பயன்முறையை இயக்கு",
+        "description": "வேகமாக முன்னோக்கி மற்றும் பின்னோக்கிச் செல்வதை முடக்குகிறது."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "YouTube இல் திற பொத்தானை அகற்று",
+        "description": "YouTube இல் வீடியோவைத் திறக்கும் பொத்தானை அகற்றுகிறது."
+      },
+      {
+        "property": "linkable",
+        "title": "பகிர்வு இணைப்பைச் சேர்க்கவா?",
+        "description": "வீடியோவைப் பகிர இணைப்பை வழங்குகிறது."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS பயன்படுத்த வேண்டுமா என்பதைக் குறிக்கிறது.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "பின்னணி இயக்கத்தை அனுமதி",
+        "description": "தாவல் கவனத்தை இழக்கும்போது வீடியோக்கள் தானாக இடைநிறுத்தம் / இயக்கம் ஆகும்; தாவல் கவனத்தில் இல்லாமலேயே வீடியோ இயங்க இது உதவுகிறது"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "எழுத்துப்படிக்கான இருண்ட தீம்",
+        "description": "எழுத்துப்படிக்கு இருண்ட தீமை இயக்கு."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "ஊடாடலை முடக்கு",
+        "description": "எழுத்துப்படியைச் சொடுக்கக்கூடியதாக்கும் ஊடாடும் பயன்முறையை முடக்கு."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "நேர முத்திரைகளை மறை",
+        "description": "எழுத்துப்படியில் உள்ள நேர முத்திரைகளை மறை."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "எழுத்துப்படியை மறை",
+        "description": "இயல்பாக எழுத்துப்படியை மறை."
+      },
+      {
+        "property": "lang",
+        "title": "மொழி",
+        "description": "ஊடகத்தின் மொழி."
+      }
+    ]
+  }
+}

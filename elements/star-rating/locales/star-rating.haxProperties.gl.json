@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Valoración con estrelas",
+    "description": "Widget de visualización de valoración ou botón para valorar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Puntuación",
+        "description": "Valor actual da puntuación."
+      },
+      {
+        "property": "possible",
+        "title": "Posible",
+        "description": "Puntuación máxima posible."
+      },
+      {
+        "property": "numStars",
+        "title": "Número de estrelas",
+        "description": "Número de estrelas que mostrar."
+      },
+      {
+        "property": "interactive",
+        "title": "Interactivo",
+        "description": "Permitir que o usuario interactúe para establecer a valoración."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Modo de escala de rúbrica",
+        "description": "Emitir metadatos RubricScale e RubricLevel de OER Schema (levelOrdinal/levelPoints) para cada estrela."
+      }
+    ]
+  }
+}

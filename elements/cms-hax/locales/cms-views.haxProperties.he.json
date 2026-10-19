@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "תצוגת CMS",
+    "description": "תצוגות CMS המעובדות בצד השרת"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "שם",
+        "description": "שם התצוגה מה-CMS שלנו"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "תצוגה",
+        "description": "תצוגה (display) בתוך אותה תצוגה מה-CMS שלנו"
+      }
+    ]
+  }
+}

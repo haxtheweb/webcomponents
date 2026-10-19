@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: child block",
+    "description": "Dynamic na block para ipakita ang child ng kasalukuyang pahina"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Dynamic na paraan",
+        "description": "Paano kakalkulahin ang mga child kaugnay ng element na ito",
+        "options": {
+          "active": "Mga aktibong child",
+          "parent": "Mga child ng parent",
+          "ancestor": "Lahat ng child mula sa pinakamataas na ninuno"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Panimulang antas"
+      },
+      {
+        "property": "end",
+        "title": "Pangwakas na antas"
+      }
+    ]
+  }
+}

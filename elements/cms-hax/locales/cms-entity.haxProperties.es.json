@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Entidad de CMS",
+    "description": "Entidad de CMS renderizada en el backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Tipo",
+        "description": "tipo de nuestro CMS",
+        "options": {
+          "node": "Nodo",
+          "user": "Usuario",
+          "file": "Archivo"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "ID de nuestro CMS"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Modo de visualización",
+        "description": "modo de visualización de nuestro CMS"
+      }
+    ]
+  }
+}

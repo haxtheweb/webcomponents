@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Иқтибос",
+    "description": "Элементи иқтибос бо се реҷаи пешниҳод."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Сарлавҳа",
+        "description": "Сарлавҳаи асари иқтибосшуда."
+      },
+      {
+        "property": "source",
+        "title": "Пайванди манбаъ",
+        "description": "URL-и манбаи асари иқтибосшуда."
+      },
+      {
+        "property": "date",
+        "title": "Санаи дастрасӣ",
+        "description": "Санае, ки ба манбаъ дастрасӣ шуд."
+      },
+      {
+        "property": "scope",
+        "title": "Доира",
+        "description": "Доираи элемент барои иқтибос.",
+        "options": {
+          "sibling": "Элементи ҳамсоя",
+          "parent": "Элементи волидайн"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Иҷозатнома",
+        "description": "Иҷозатнома барои асари иқтибосшуда."
+      },
+      {
+        "property": "creator",
+        "title": "Эҷодкор",
+        "description": "Эҷодкор ё соҳиби асари иқтибосшуда."
+      },
+      {
+        "property": "typeof",
+        "title": "Навъи OER Schema",
+        "description": "Синфи OER Schema барои ин иқтибос. Пешфарз oer:ReferencedMaterial аст; танҳо бо синфи дурусти OER иваз кунед (масалан, oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

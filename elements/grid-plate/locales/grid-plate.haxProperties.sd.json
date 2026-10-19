@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "ڪالم ترتيب",
+    "description": "مواد کي سادن ڪالمن ۾ ترتيب ڏيو"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "ڪالم ترتيب",
+        "description": "انهن شين کي پيش ڪرڻ جو انداز (ننڍين اسڪرينن لاءِ بدلجي سگهي ٿو)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "جوابده بند ڪريو",
+        "description": "وڏين اسڪرينن تي ڪالم رکڻ لاءِ خاني تي نشان لڳايو جڏهن ته سڀ کان ننڍين اسڪرينن تي اڃا به هڪ ٻئي مٿان رهن"
+      },
+      {
+        "property": "itemPadding",
+        "title": "شيءِ جي پيڊنگ",
+        "description": "هر شيءِ اندر پيڊنگ"
+      },
+      {
+        "property": "itemMargin",
+        "title": "شيءِ جا مارجن",
+        "description": "شين جي وچ ۾ مارجن"
+      }
+    ]
+  }
+}

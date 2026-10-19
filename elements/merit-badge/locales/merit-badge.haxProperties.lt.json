@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Nuopelnų ženklelis",
+    "description": "Vizualus ženklelis, rodantis įgytą įgūdį."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Ženklelio pavadinimas",
+        "description": "Ant ženklelio rodomas pavadinimas."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Ženklelio paveikslėlis",
+        "description": "Ženklelio paveikslėlio URL."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Ženklelio informacija",
+        "description": "Informacija apie ženklelį."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Hipersaitas",
+        "description": "Su ženkleliu susieta nuoroda."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Ženklelio įgūdžiai",
+        "description": "Ant ženklelio rodomi įgūdžiai."
+      },
+      {
+        "property": "skill",
+        "title": "Įgūdis (OER Schema)",
+        "description": "OER Schema: įgūdis, įgytas pasiekus šį mokymosi tikslą."
+      }
+    ]
+  }
+}

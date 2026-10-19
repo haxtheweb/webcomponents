@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Note par étoiles",
+    "description": "Widget d'affichage de note ou bouton pour noter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Note",
+        "description": "Valeur actuelle de la note."
+      },
+      {
+        "property": "possible",
+        "title": "Maximum",
+        "description": "Note maximale possible."
+      },
+      {
+        "property": "numStars",
+        "title": "Nombre d'étoiles",
+        "description": "Nombre d'étoiles à afficher."
+      },
+      {
+        "property": "interactive",
+        "title": "Interactif",
+        "description": "Permettre à l'utilisateur de définir la note."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Mode échelle de grille d'évaluation",
+        "description": "Émettre les métadonnées OER Schema RubricScale et RubricLevel (levelOrdinal/levelPoints) pour chaque étoile."
+      }
+    ]
+  }
+}

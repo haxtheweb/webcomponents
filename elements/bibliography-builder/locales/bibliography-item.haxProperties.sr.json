@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Библиографска ставка",
+    "description": "Ставка која представља један цитат у библиографији, са подршком за више формата и опција извоза."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Тип",
+        "description": "Тип цитата",
+        "options": {
+          "web": "Веб",
+          "journal": "Часопис",
+          "book": "Књига"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов ставке"
+      },
+      {
+        "property": "authors",
+        "title": "Аутор(и)",
+        "description": "Догађаји на временској линији"
+      },
+      {
+        "property": "publisher",
+        "title": "Издавач",
+        "description": "Оригинални веб-сајт"
+      }
+    ]
+  }
+}

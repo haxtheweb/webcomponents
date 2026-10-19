@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Öğrenme Bileşeni",
+    "description": "Eğitmenlerin pedagojiyi ve öğretim stratejilerini aktarması için bir kart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tür",
+        "description": "Kullanılacak kart türü."
+      },
+      {
+        "property": "subtitle",
+        "title": "Alt Başlık",
+        "description": "Kartın alt başlığı."
+      },
+      {
+        "property": "url",
+        "title": "Bağlantı",
+        "description": "Kart için isteğe bağlı bağlantı (Öğrenme Hedefleri için bağlantı kullanılamaz)."
+      },
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Başlığı ayarla; bu, türe dayalı başlığı geçersiz kılar"
+      },
+      {
+        "property": "icon",
+        "title": "Simge",
+        "description": "Simgeyi ayarla; bu, türe dayalı simgeyi geçersiz kılar"
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu rengi",
+        "description": "Vurgu rengini ayarla; bu, türe dayalı rengi geçersiz kılar"
+      },
+      {
+        "slot": "",
+        "title": "İçindekiler"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS obyekti",
+    "description": "Backendda koʻrsatiladigan CMS obyekti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Turi",
+        "description": "CMS imizdagi tur",
+        "options": {
+          "node": "Tugun",
+          "user": "Foydalanuvchi",
+          "file": "Fayl"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "CMS imizdagi ID"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Koʻrsatish rejimi",
+        "description": "CMS imizdagi koʻrsatish rejimi"
+      }
+    ]
+  }
+}

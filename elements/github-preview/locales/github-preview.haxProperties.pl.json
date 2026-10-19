@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Podgląd GitHub",
+    "description": "Dostępna ilustracja z długim opisem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organizacja",
+        "description": "Nazwa systemowa organizacji GitHub"
+      },
+      {
+        "property": "repo",
+        "title": "Repozytorium",
+        "description": "Nazwa systemowa repozytorium"
+      },
+      {
+        "property": "extended",
+        "title": "Widok rozszerzony",
+        "description": "Dołącza readme do elementu"
+      }
+    ]
+  }
+}

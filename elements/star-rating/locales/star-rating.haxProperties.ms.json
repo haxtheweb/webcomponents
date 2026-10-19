@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Penarafan Bintang",
+    "description": "Widget paparan penarafan atau butang untuk membuat penarafan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Skor",
+        "description": "Nilai skor semasa."
+      },
+      {
+        "property": "possible",
+        "title": "Mungkin",
+        "description": "Skor maksimum yang mungkin."
+      },
+      {
+        "property": "numStars",
+        "title": "Bilangan Bintang",
+        "description": "Bilangan bintang untuk dipaparkan."
+      },
+      {
+        "property": "interactive",
+        "title": "Interaktif",
+        "description": "Benarkan interaksi pengguna untuk menetapkan penarafan."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Mod Skala Rubrik",
+        "description": "Pancarkan metadata OER Schema RubricScale dan RubricLevel (levelOrdinal/levelPoints) untuk setiap bintang."
+      }
+    ]
+  }
+}

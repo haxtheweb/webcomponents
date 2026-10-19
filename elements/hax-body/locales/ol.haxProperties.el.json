@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Αριθμημένη λίστα",
+    "description": "Δημιουργία αριθμημένης λίστας."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Στυλ αρίθμησης",
+        "description": "Στυλ που χρησιμοποιείται για την αρίθμηση της αριθμημένης λίστας.",
+        "options": {
+          "": "Προεπιλογή (δεκαδικό)",
+          "list-decimal-leading-zero": "Δεκαδικό με αρχικό μηδέν (01, 02, 03)",
+          "list-lower-alpha": "Πεζά γράμματα (a, b, c)",
+          "list-upper-alpha": "Κεφαλαία γράμματα (A, B, C)",
+          "list-lower-roman": "Πεζά λατινικά (i, ii, iii)",
+          "list-upper-roman": "Κεφαλαία λατινικά (I, II, III)"
+        }
+      }
+    ]
+  }
+}

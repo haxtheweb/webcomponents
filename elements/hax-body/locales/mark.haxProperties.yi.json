@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "אָנצייכענונג",
+    "description": "צייכן אָן אינליין טעקסט."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "טעקסט",
+        "description": "אָנגעצייכנטער טעקסט."
+      }
+    ]
+  }
+}

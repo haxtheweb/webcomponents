@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Прогресс дөңгелегі",
+    "description": "Прогресс дөңгелек диаграммасы"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Тақырып",
+        "description": "Элементтің атауы"
+      },
+      {
+        "property": "desc",
+        "title": "Сипаттама",
+        "description": "Қолжетімді толық сипаттама"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Сурет дереккөзі",
+        "description": "Дөңгелек ішіндегі суреттің көзі."
+      },
+      {
+        "property": "imageAlt",
+        "title": "Суреттің балама мәтіні",
+        "description": "Суреттің балама мәтіні."
+      },
+      {
+        "property": "animated",
+        "title": "Анимацияланған",
+        "description": "Алғаш жүктелгенде прогресс анимациялана ма"
+      },
+      {
+        "property": "complete",
+        "title": "Аяқталды",
+        "description": "Аяқталған мәндер массиві."
+      },
+      {
+        "property": "total",
+        "title": "Барлығы",
+        "description": "Барлық элементтер аяқталғандағы жалпы мән."
+      },
+      {
+        "property": "startAngle",
+        "title": "Бастапқы бұрыш",
+        "description": "Прогресс басталатын дөңгелек бұрышы"
+      }
+    ]
+  }
+}

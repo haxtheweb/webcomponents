@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Bidiyo",
+    "description": "Kunna bidiyo mai sauƙin isa daga tushe da yawa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Tushe",
+        "description": "URL na wannan kafar watsa labarai."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Take",
+        "description": "Taken da ake nunawa a ƙasan bidiyo."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Hoton fosta",
+        "description": "URL na hoton fosta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Waƙoƙin rubutu",
+        "description": "Rubutun ƙasa, fassarori, bayanai, da sauran waƙoƙin rubutu na bidiyon."
+      },
+      {
+        "property": "startTime",
+        "title": "Lokacin farawa",
+        "description": "Fara bidiyo a takamaiman lokaci (daƙiƙoƙi)."
+      },
+      {
+        "property": "endTime",
+        "title": "Lokacin ƙarewa",
+        "description": "Ƙare bidiyo a takamaiman lokaci (daƙiƙoƙi), yana buƙatar lokacin farawa."
+      },
+      {
+        "property": "learningMode",
+        "title": "Kunna yanayin koyo",
+        "description": "Yana kashe gaggauta gaba da mayar da baya."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "Cire maɓallin buɗewa a YouTube",
+        "description": "Yana cire maɓallin buɗe bidiyon a YouTube."
+      },
+      {
+        "property": "linkable",
+        "title": "A haɗa hanyar haɗin rabawa?",
+        "description": "Yana samar da hanyar haɗi don raba bidiyon."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ɓoye tambarin lokaci",
+        "description": "Ɓoye tambarin lokaci a rubutun magana."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ɓoye Rubutun Magana",
+        "description": "Ɓoye rubutun magana ta tsoho."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Waƙar bayanin sauti",
+        "description": "URL zuwa waƙar bayanin sauti (fayil ɗin MP3) da ke ba da labarin abubuwan gani."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Yana nuna ko za a yi amfani da CORS.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Ba da izinin kunnawa a bango",
+        "description": "Ci gaba da kunnawa lokacin da shafin burauza ya rasa mayar da hankali."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Jigon duhu don rubutun magana",
+        "description": "Kunna jigon duhu don rubutun magana."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Kashe Mu'amala",
+        "description": "Kashe yanayin mu'amala da ke sa rubutun magana a iya dannawa."
+      },
+      {
+        "property": "lang",
+        "title": "Harshe",
+        "description": "Harshen kafar watsa labarai."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin ƙawa",
+        "description": "(an daina amfani) Zaɓi launin accent na mai kunnawa."
+      }
+    ]
+  }
+}

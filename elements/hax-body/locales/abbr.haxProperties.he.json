@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "קיצור",
+    "description": "קיצור עם תיאור צץ של המונח המלא."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "טקסט",
+        "description": "טקסט הקיצור הגלוי."
+      },
+      {
+        "attribute": "title",
+        "title": "מילה",
+        "description": "המונח המלא המוצג בריחוף."
+      }
+    ]
+  }
+}

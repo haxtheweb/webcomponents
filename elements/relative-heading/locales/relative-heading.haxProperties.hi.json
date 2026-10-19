@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "सापेक्ष शीर्षक",
+    "description": "पैरेंट के शीर्षक के आधार पर सही शीर्षक पदानुक्रम आउटपुट करता है"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "पैरेंट शीर्षक की संसाधन ID"
+      },
+      {
+        "property": "disableLink",
+        "description": "लिंक बटन सुविधा अक्षम करता है।"
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "कॉपी लिंक बटन को शीर्षक के सबसे दाईं ओर संरेखित करता है।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "पैरेंट न मिलने पर शीर्षक स्तर।"
+      },
+      {
+        "property": "copyMessage",
+        "description": "कॉपी लिंक के टोस्ट संदेश के डिफ़ॉल्ट टेक्स्ट को बदलता है।"
+      },
+      {
+        "property": "linkLabel",
+        "description": "कॉपी लिंक बटन के डिफ़ॉल्ट लेबल को बदलता है।"
+      },
+      {
+        "property": "linkIcon",
+        "description": "कॉपी लिंक बटन के डिफ़ॉल्ट आइकन को बदलता है।"
+      },
+      {
+        "property": "closeLabel",
+        "description": "कॉपी लिंक टोस्ट के बंद करें बटन के डिफ़ॉल्ट लेबल को बदलता है।"
+      },
+      {
+        "property": "closeIcon",
+        "description": "कॉपी लिंक टोस्ट के बंद करें बटन के डिफ़ॉल्ट आइकन को बदलता है।"
+      }
+    ]
+  }
+}

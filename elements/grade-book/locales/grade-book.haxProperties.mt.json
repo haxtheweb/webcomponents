@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Reġistru tal-Marki",
+    "description": "Reġistru tal-marki headless li jappoġġja diversi backends b'rubriki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Sors",
+        "description": "Tip tas-sors tad-data (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "Endpoint URL (JSON)",
+          "json": "Blob tad-data JSON",
+          "filesystem": "Sistema tal-fajls"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Data tas-Sors",
+        "description": "URL jew data JSON għar-reġistru tal-marki."
+      },
+      {
+        "property": "forCourse",
+        "title": "Referenza tal-Kors",
+        "description": "Identifikatur tal-kors emess bħala oer:forCourse fuq kull riżors ta' Valutazzjoni."
+      }
+    ]
+  }
+}

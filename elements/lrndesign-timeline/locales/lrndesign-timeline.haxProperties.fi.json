@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Aikajana",
+    "description": "Tapahtumien aikajana kuvilla ja tekstillä"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Aikajanan otsikko",
+        "description": "Aikajanan otsikko."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "Valinnainen korostusväri."
+      },
+      {
+        "property": "dark",
+        "title": "Tumma teema",
+        "description": "Ota tumma teema käyttöön"
+      },
+      {
+        "slot": "",
+        "title": "Aikajanan kuvaus",
+        "description": "Valinnainen aikajanaa kuvaileva teksti."
+      },
+      {
+        "property": "events",
+        "title": "Aikajanan tapahtumat",
+        "description": "Aikajanan tapahtumat"
+      }
+    ]
+  }
+}

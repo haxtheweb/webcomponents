@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Abreviação",
+    "description": "Abreviação com dica do termo completo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Texto",
+        "description": "Texto visível da abreviação."
+      },
+      {
+        "attribute": "title",
+        "title": "Palavra",
+        "description": "Termo completo exibido ao passar o mouse."
+      }
+    ]
+  }
+}

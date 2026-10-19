@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Маркированный список",
+    "description": "Создать маркированный список."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Стиль маркеров",
+        "description": "Стиль маркеров неупорядоченного списка.",
+        "options": {
+          "": "По умолчанию (квадрат)",
+          "list-disc": "Диск",
+          "list-circle": "Круг",
+          "list-square": "Квадрат"
+        }
+      }
+    ]
+  }
+}

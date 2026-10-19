@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "Baza ligilo",
+    "description": "Baza ligila elemento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "Ligilo",
+        "description": "Cela URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "Teksto",
+        "description": "Videbla ligila teksto."
+      },
+      {
+        "attribute": "target",
+        "title": "Celo",
+        "description": "Kie malfermi la ligilon.",
+        "options": {
+          "": "Sama fenestro",
+          "_blank": "Nova fenestro - _blank",
+          "_top": "Supra fenestro - _top",
+          "_parent": "Gepatra fenestro - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "Titola teksto",
+        "description": "Konsila titolo por alirebleco kaj SEO."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "Rilato al la celo (sekureco/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

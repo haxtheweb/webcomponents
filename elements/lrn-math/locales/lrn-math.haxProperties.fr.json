@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mathématiques",
+    "description": "Présenter des mathématiques de façon soignée."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "mathtext",
+        "title": "Mathématiques",
+        "description": "Saisissez l'équation en LaTeX"
+      }
+    ]
+  }
+}

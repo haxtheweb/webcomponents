@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "编号列表",
+    "description": "创建编号列表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "编号样式",
+        "description": "有序列表编号使用的样式。",
+        "options": {
+          "": "默认（十进制数字）",
+          "list-decimal-leading-zero": "带前导零的十进制数字（01, 02, 03）",
+          "list-lower-alpha": "小写字母（a, b, c）",
+          "list-upper-alpha": "大写字母（A, B, C）",
+          "list-lower-roman": "小写罗马数字（i, ii, iii）",
+          "list-upper-roman": "大写罗马数字（I, II, III）"
+        }
+      }
+    ]
+  }
+}

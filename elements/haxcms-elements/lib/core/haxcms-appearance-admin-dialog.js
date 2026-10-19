@@ -280,7 +280,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
           background-color: transparent;
         }
         .action[disabled] {
-          opacity: 0.6;
+          opacity: var(--ddd-opacity-60, 0.6);
           cursor: not-allowed;
         }
         simple-fields {

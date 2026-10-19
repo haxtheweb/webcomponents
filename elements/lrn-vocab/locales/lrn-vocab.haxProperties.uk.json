@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Словник",
+    "description": "Термін словника"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "term",
+        "title": "Термін"
+      },
+      {
+        "slot": "",
+        "title": "Визначення",
+        "description": "Визначення, що показується після натискання на термін."
+      },
+      {
+        "property": "description",
+        "title": "Опис (OER Schema)",
+        "description": "OER Schema: короткий опис терміна. Якщо залишити порожнім, заповнюється автоматично з тексту визначення."
+      }
+    ]
+  }
+}

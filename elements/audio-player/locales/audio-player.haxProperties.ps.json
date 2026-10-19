@@ -1,0 +1,93 @@
+{
+  "gizmo": {
+    "title": "غږ",
+    "description": "دا کولی شي ویډیو د سرچینې په پام کې نیولو پرته په ډېر د لاسرسي وړ ډول وړاندې کړي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "سرچینه",
+        "description": "د دې رسنۍ لپاره URL."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "سرلیک",
+        "description": "د ویډیو لاندې ساده سرلیک"
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "د پلیر لپاره د ټینګار رنګ وټاکئ."
+      },
+      {
+        "property": "track",
+        "title": "تړل شوي سرلیکونه",
+        "description": "د سرلیکونو فایل لپاره URL."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnailSrc",
+        "title": "کوچنی انځور",
+        "description": "اختیاري. د کوچني انځور/پوسټر انځور لپاره URL."
+      },
+      {
+        "property": "learningMode",
+        "title": "د زده کړې حالت فعال کړئ",
+        "description": "مخکې او شاته ګړندي کول غیر فعالوي."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "په YouTube کې د پرانیستلو تڼۍ لرې کړئ",
+        "description": "په YouTube کې د ویډیو د پرانیستلو تڼۍ لرې کوي."
+      },
+      {
+        "property": "linkable",
+        "title": "د شریکولو لینک شامل کړئ؟",
+        "description": "د ویډیو د شریکولو لپاره لینک برابروي."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "ښیي چې ایا CORS وکارول شي.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "په شالید کې د غږېدو اجازه ورکړئ",
+        "description": "ویډیوګانې په اوتومات ډول ودرېږي / چلېږي کله چې ټب فوکس له لاسه ورکړي؛ دا ویډیو ته اجازه ورکوي چې پرته له دې چې ټب فوکس ولري وچلېږي"
+      },
+      {
+        "property": "darkTranscript",
+        "title": "د لیکنې لپاره تیاره بڼه",
+        "description": "د لیکنې لپاره تیاره بڼه فعاله کړئ."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "متقابل غیر فعال کړئ",
+        "description": "هغه متقابل حالت غیر فعال کړئ چې لیکنه د کلیک وړ کوي."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "د وخت نښې پټې کړئ",
+        "description": "په لیکنه کې د وخت نښې پټې کړئ."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "لیکنه پټه کړئ",
+        "description": "لیکنه په تلواله توګه پټه کړئ."
+      },
+      {
+        "property": "lang",
+        "title": "ژبه",
+        "description": "د رسنۍ ژبه."
+      }
+    ]
+  }
+}

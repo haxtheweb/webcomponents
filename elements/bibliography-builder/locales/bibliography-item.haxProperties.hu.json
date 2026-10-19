@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Irodalomjegyzék-elem",
+    "description": "Egyetlen hivatkozást képviselő elem az irodalomjegyzékben, több formátum és exportálási lehetőség támogatásával."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Típus",
+        "description": "Hivatkozás típusa",
+        "options": {
+          "web": "Web",
+          "journal": "Folyóirat",
+          "book": "Könyv"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "Az elem címe"
+      },
+      {
+        "property": "authors",
+        "title": "Szerző(k)",
+        "description": "Az idővonal eseményei"
+      },
+      {
+        "property": "publisher",
+        "title": "Kiadó",
+        "description": "Eredeti webhely"
+      }
+    ]
+  }
+}

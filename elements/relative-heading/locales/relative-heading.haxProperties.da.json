@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Relativ overskrift",
+    "description": "angiver det korrekte overskriftshierarki baseret på den overordnede overskrift"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "Ressource-id for overordnet overskrift"
+      },
+      {
+        "property": "disableLink",
+        "description": "Deaktiverer funktionen med linkknap."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Justerer knappen til kopiering af link helt til højre for overskriften."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Overskriftsniveau, hvis der ikke findes en overordnet."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Tilsidesætter standardteksten i kopiér link-beskeden."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Tilsidesætter standardetiketten for knappen til kopiering af link."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Tilsidesætter standardikonet for knappen til kopiering af link."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Tilsidesætter standardetiketten for lukkeknappen i kopiér link-beskeden."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Tilsidesætter standardikonet for lukkeknappen i kopiér link-beskeden."
+      }
+    ]
+  }
+}

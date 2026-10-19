@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Laburdura",
+    "description": "Termino osoaren argibidea duen laburdura."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Testua",
+        "description": "Laburduraren testu ikusgaia."
+      },
+      {
+        "attribute": "title",
+        "title": "Hitza",
+        "description": "Gainetik pasatzean erakusten den termino osoa."
+      }
+    ]
+  }
+}

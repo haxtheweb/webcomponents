@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Blokeke naveroka markdown, rasterast an ji dûr ve hatî barkirin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdowna xav"
+      },
+      {
+        "property": "source",
+        "title": "Çavkanî",
+        "description": "Pelê çavkaniyê ji bo markdown"
+      }
+    ]
+  }
+}

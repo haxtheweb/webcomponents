@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Жетілдірілген сурет",
+    "description": "Суреттерді түрлі жақсартулармен көрсету тәсілі."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Дереккөз",
+        "description": "Суреттің URL мекенжайы."
+      },
+      {
+        "property": "alt",
+        "title": "Балама мәтін",
+        "description": "Көру қабілеті жоқ пайдаланушыларға суретті сипаттайтын мәтін."
+      },
+      {
+        "property": "link",
+        "title": "Сілтеме",
+        "description": "Суретті URL мекенжайына сілтеу"
+      },
+      {
+        "property": "card",
+        "title": "Карта",
+        "description": "Көтерілген карта сияқты көрінуі үшін көлеңке қолдану."
+      },
+      {
+        "property": "box",
+        "title": "Қорап",
+        "description": "Суреттің айналасына көрнекі қорап қолдану."
+      },
+      {
+        "property": "offset",
+        "title": "Ығысу",
+        "description": "Суретке сол немесе оң жаққа ығысу қолдану.",
+        "options": {
+          "none": "жоқ",
+          "wide": "кең",
+          "narrow": "тар"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Дереккөз сілтемесі",
+        "description": "Суреттің дәйексөзі."
+      },
+      {
+        "property": "caption",
+        "title": "Жазу",
+        "description": "Суреттің жазуы."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Сурет атауы",
+        "description": "Сурет белгісінің атауы."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Сурет сипаттамасы",
+        "description": "Сурет белгісінің сипаттамасы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Нобай суреті",
+        "description": "Нобай суретінің көзі. Нобайды көрсетеді, бірақ толық нұсқасын модальді терезеде ашады."
+      },
+      {
+        "property": "round",
+        "title": "Дөңгелек сурет",
+        "description": "Суреттің көрінісін шеңбер пішінінде қиып алады."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Суреттің модальді терезесін өшіру",
+        "description": "Басқанда суреттің сурет қарау диалогында ашылуын өшіру."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Markdown ретінде көрсету",
+        "description": "Жазу мен дәйексөзді markdown ретінде көрсету."
+      }
+    ]
+  }
+}

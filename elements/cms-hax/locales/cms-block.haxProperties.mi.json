@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Poraka CMS",
+    "description": "Poraka CMS ka whakaaturia ki te tuarongo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Kōwae",
+        "description": "Kōwae hei uta mai i tō mātou CMS"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "Delta o te poraka hei uta mai i tō mātou CMS"
+      }
+    ]
+  }
+}

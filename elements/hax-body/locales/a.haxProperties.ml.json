@@ -1,0 +1,50 @@
+{
+  "gizmo": {
+    "title": "അടിസ്ഥാന ലിങ്ക്",
+    "description": "അടിസ്ഥാന ലിങ്ക് എലമെന്റ്."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "href",
+        "title": "ലിങ്ക്",
+        "description": "ലക്ഷ്യസ്ഥാന URL."
+      },
+      {
+        "attribute": "innerText",
+        "title": "വാചകം",
+        "description": "ദൃശ്യമാകുന്ന ലിങ്ക് ടെക്സ്റ്റ്."
+      },
+      {
+        "attribute": "target",
+        "title": "ലക്ഷ്യം",
+        "description": "ലിങ്ക് എവിടെ തുറക്കണം.",
+        "options": {
+          "": "അതേ വിൻഡോ",
+          "_blank": "പുതിയ വിൻഡോ - _blank",
+          "_top": "മുകളിലെ വിൻഡോ - _top",
+          "_parent": "പാരന്റ് വിൻഡോ - _parent"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "attribute": "title",
+        "title": "തലക്കെട്ട് ടെക്സ്റ്റ്",
+        "description": "ആക്സസിബിലിറ്റിക്കും SEO-യ്ക്കുമുള്ള ഉപദേശക തലക്കെട്ട്."
+      },
+      {
+        "attribute": "rel",
+        "title": "Rel",
+        "description": "ലക്ഷ്യസ്ഥാനവുമായുള്ള ബന്ധം (സുരക്ഷ/SEO).",
+        "options": {
+          "noopener": "noopener",
+          "noopener noreferrer": "noopener noreferrer",
+          "nofollow ": "nofollow",
+          "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+          "opener": "opener"
+        }
+      }
+    ]
+  }
+}

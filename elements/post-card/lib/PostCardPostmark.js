@@ -36,7 +36,7 @@ export class PostCardPostmark extends LitElement {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          opacity: 0.8;
+          opacity: var(--ddd-opacity-80, 0.8);
         }
         img {
           width: var(--post-card-img-width);

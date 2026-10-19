@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Хронология",
+    "description": "Хати вақти рӯйдодҳо бо тасвирҳо ва матн"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Сарлавҳаи хронология",
+        "description": "Сарлавҳа барои хати вақт."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "Ранги таъкидии ихтиёрӣ."
+      },
+      {
+        "property": "dark",
+        "title": "Мавзӯи торик",
+        "description": "Фаъол кардани мавзӯи торик"
+      },
+      {
+        "slot": "",
+        "title": "Тавсифи хати вақт",
+        "description": "Матни ихтиёрӣ, ки хати вақтро тавсиф мекунад."
+      },
+      {
+        "property": "events",
+        "title": "Рӯйдодҳои хати вақт",
+        "description": "Рӯйдодҳо дар хатти замон"
+      }
+    ]
+  }
+}

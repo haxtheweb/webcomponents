@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "स्टार रेटिंग",
+    "description": "रेटिंग प्रदर्शन विजेट या रेटिंग देने का बटन।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "स्कोर",
+        "description": "वर्तमान स्कोर मान।"
+      },
+      {
+        "property": "possible",
+        "title": "संभावित",
+        "description": "अधिकतम संभावित स्कोर।"
+      },
+      {
+        "property": "numStars",
+        "title": "सितारों की संख्या",
+        "description": "दिखाए जाने वाले सितारों की संख्या।"
+      },
+      {
+        "property": "interactive",
+        "title": "इंटरैक्टिव",
+        "description": "रेटिंग सेट करने के लिए उपयोगकर्ता इंटरैक्शन की अनुमति दें।"
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "रूब्रिक स्केल मोड",
+        "description": "हर सितारे के लिए OER स्कीमा RubricScale और RubricLevel मेटाडेटा (levelOrdinal/levelPoints) जारी करें।"
+      }
+    ]
+  }
+}

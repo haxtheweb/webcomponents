@@ -1,0 +1,22 @@
+{
+  "gizmo": {
+    "title": "Кариерен елемент",
+    "description": "Отделна организация и свързаните с нея роли"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "organization",
+        "title": "Име на организацията"
+      },
+      {
+        "property": "location",
+        "title": "Място"
+      },
+      {
+        "property": "source",
+        "title": "Източник"
+      }
+    ]
+  }
+}

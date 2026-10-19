@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Genummerde lijst",
+    "description": "Een genummerde lijst maken."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Nummeringsstijl",
+        "description": "Stijl voor de nummering van geordende lijsten.",
+        "options": {
+          "": "Standaard (decimaal)",
+          "list-decimal-leading-zero": "Decimaal met voorloopnul (01, 02, 03)",
+          "list-lower-alpha": "Kleine letters (a, b, c)",
+          "list-upper-alpha": "Hoofdletters (A, B, C)",
+          "list-lower-roman": "Kleine Romeinse cijfers (i, ii, iii)",
+          "list-upper-roman": "Grote Romeinse cijfers (I, II, III)"
+        }
+      }
+    ]
+  }
+}

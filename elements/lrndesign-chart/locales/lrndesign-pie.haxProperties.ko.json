@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "원형 차트",
+    "description": "CSV를 기반으로 접근성 높은 차트를 만듭니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "강조 색상",
+        "description": "선택적 강조 색상입니다."
+      },
+      {
+        "title": "어두운 테마",
+        "description": "다크 테마 사용"
+      },
+      {
+        "title": "CSV 파일",
+        "description": "CSV에서 데이터를 불러옵니다."
+      },
+      {
+        "title": "차트 제목",
+        "description": "차트의 접근성 대체 텍스트."
+      },
+      {
+        "title": "차트 설명",
+        "description": "차트의 접근성 설명."
+      },
+      {
+        "title": "비율 이름",
+        "description": "차트의 너비:높이 비율입니다($ct-scales 및 $ct-scales-names는 https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings 참조).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "도넛"
+      },
+      {
+        "title": "레이블 표시"
+      },
+      {
+        "title": "시작 각도"
+      },
+      {
+        "title": "안쪽 여백"
+      },
+      {
+        "title": "합계",
+        "description": "선택적으로 지정할 수 있는 합계입니다. 합계를 지정하면 계열 값의 합이 이 합계와 같아야 완전한 원이 그려집니다. 이 매개변수를 사용해 원 또는 게이지 차트의 일부만 그릴 수 있습니다."
+      },
+      {
+        "title": "빈 값 무시",
+        "description": "불필요한 조각과 레이블이 그려지지 않도록 빈 값을 무시합니다."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "데이터 반전",
+        "description": "레이블, 계열 순서 및 전체 계열 데이터 배열을 포함하여 데이터를 반전합니다."
+      },
+      {
+        "title": "HTML 표",
+        "description": "선택 사항: HTML 표로 데이터를 불러옵니다."
+      },
+      {
+        "title": "도넛 선 두께"
+      },
+      {
+        "title": "채워진 도넛",
+        "description": "도넛 조각을 선 대신 도형으로 그립니다."
+      },
+      {
+        "title": "레이블 방향",
+        "description": "도넛 조각을 선 대신 도형으로 그립니다.",
+        "options": {
+          "neutral": "중립",
+          "explode": "바깥쪽",
+          "implode": "안쪽"
+        }
+      },
+      {
+        "title": "레이블 오프셋",
+        "description": "반지름의 절반 거리인 기본 위치로부터 레이블 위치의 오프셋입니다. 양수 또는 음수 값을 사용할 수 있으며, 양수 값은 레이블을 중심에서 멀어지게 배치합니다."
+      },
+      {
+        "title": "레이블 위치",
+        "options": {
+          "inside": "안쪽",
+          "outside": "바깥쪽",
+          "center": "가운데"
+        }
+      }
+    ]
+  }
+}

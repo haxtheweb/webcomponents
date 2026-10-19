@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Rola Kariyerê",
+    "description": "Roleke yekane di nav rêxistinekê de"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Sernav"
+      },
+      {
+        "property": "startDate",
+        "title": "Dîroka Destpêkê"
+      },
+      {
+        "property": "endDate",
+        "title": "Dîroka Dawiyê (Vebijarkî)"
+      },
+      {
+        "property": "skills",
+        "title": "Jêhatîbûnên Têkildar",
+        "description": "Ji bo destpêkirina zêdekirina jêhatîbûnan bişkoka + hilbijêre"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS బ్లాక్",
+    "description": "బ్యాకెండ్‌లో రెండర్ చేయబడిన CMS బ్లాక్"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "మాడ్యూల్",
+        "description": "మా CMS నుండి లోడ్ చేయాల్సిన మాడ్యూల్"
+      },
+      {
+        "property": "blockDelta",
+        "title": "డెల్టా",
+        "description": "మా CMS నుండి లోడ్ చేయాల్సిన బ్లాక్ యొక్క డెల్టా"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "کالم لے آؤٹ",
+    "description": "مواد کو سادہ کالموں میں ترتیب دیں"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "کالم لے آؤٹ",
+        "description": "ان آئٹمز کو پیش کرنے کا انداز (چھوٹی اسکرینوں پر بدل سکتا ہے)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "ریسپانسیو غیر فعال کریں",
+        "description": "بڑی اسکرینوں پر کالم برقرار رکھنے کے لیے خانہ منتخب کریں، جبکہ سب سے چھوٹی اسکرینوں پر وہ پھر بھی اوپر نیچے رہیں گے"
+      },
+      {
+        "property": "itemPadding",
+        "title": "آئٹم پیڈنگ",
+        "description": "ہر آئٹم کے اندر پیڈنگ"
+      },
+      {
+        "property": "itemMargin",
+        "title": "آئٹم مارجنز",
+        "description": "آئٹمز کے درمیان مارجن"
+      }
+    ]
+  }
+}

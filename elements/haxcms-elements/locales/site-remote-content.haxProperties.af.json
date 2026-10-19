@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Afgeleë inhoud",
+    "description": "Hergebruik inhoud van een webwerf in 'n ander."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "siteurl",
+        "title": "Webwerfadres",
+        "description": "Plak adres om na inhoud te verwys as dit nie die huidige webwerf is nie"
+      },
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item om vir die skakel / titeldata te vertoon"
+      },
+      {
+        "property": "breakreference",
+        "title": "Breek verwysing",
+        "description": "As jy hierdie blokkie merk, word die afgeleë inhoud gekopieer vir plaaslike redigering, maar die assosiasie word verwyder. Dit sal nie meer bywerkings kry wanneer die verwysingsmateriaal bygewerk word nie."
+      },
+      {
+        "property": "showTitle",
+        "title": "Wys titel",
+        "description": "Skakel aan om die titel van die hulpbron wat vertoon word, te wys"
+      }
+    ]
+  }
+}

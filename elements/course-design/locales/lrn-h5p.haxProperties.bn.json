@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "H5P এলিমেন্ট",
+    "description": "LRN H5P"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "টেক্সট",
+        "description": "পার্শ্বটীকার কনটেন্ট"
+      }
+    ]
+  }
+}

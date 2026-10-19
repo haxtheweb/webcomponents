@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "HAXcms: bhuroko remwana",
+    "description": "Bhuroko rinochinja rinoratidza mwana wepeji riripo"
+  },
+  "settings": {
+    "advanced": [
+      {
+        "property": "dynamicMethodology",
+        "title": "Nzira inochinja",
+        "description": "Maverengero evana zvichienderana nechinhu ichi",
+        "options": {
+          "active": "Vana vari kushanda",
+          "parent": "Vana vemubereki",
+          "ancestor": "Vana vose kubva kumudzitateguru wepamusoro"
+        }
+      },
+      {
+        "property": "start",
+        "title": "Danho rekutanga"
+      },
+      {
+        "property": "end",
+        "title": "Danho rekupedzisira"
+      }
+    ]
+  }
+}

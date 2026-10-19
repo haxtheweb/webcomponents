@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "کالم لے آؤٹ",
+    "description": "مواد نوں سادہ کالماں وچ رکھو"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "کالم لے آؤٹ",
+        "description": "ایہناں آئٹماں نوں وکھاؤن دا سٹائل (چھوٹیاں سکریناں تے بدل سکدا اے)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "ریسپانسو بند کرو",
+        "description": "وڈیاں سکریناں تے کالم رکھن لئی ڈبہ چیک کرو، سب توں چھوٹیاں سکریناں تے فیر وی اک دوجے تھلے"
+      },
+      {
+        "property": "itemPadding",
+        "title": "آئٹم پیڈنگ",
+        "description": "ہر آئٹم اندر پیڈنگ"
+      },
+      {
+        "property": "itemMargin",
+        "title": "آئٹم حاشیے",
+        "description": "آئٹماں وچکار حاشیہ"
+      }
+    ]
+  }
+}

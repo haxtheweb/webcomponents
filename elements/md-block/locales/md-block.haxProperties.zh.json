@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Markdown",
+    "description": "直接编写或远程加载的 Markdown 内容区块"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "原始 Markdown"
+      },
+      {
+        "property": "source",
+        "title": "来源",
+        "description": "Markdown 的源文件"
+      }
+    ]
+  }
+}

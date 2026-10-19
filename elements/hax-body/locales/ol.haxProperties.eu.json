@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "Zerrenda zenbakitua",
+    "description": "Sortu zerrenda zenbakitu bat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Zenbaki-estiloa",
+        "description": "Zerrenda ordenatuen zenbakikuntzarako erabilitako estiloa.",
+        "options": {
+          "": "Lehenetsia (hamartarra)",
+          "list-decimal-leading-zero": "Hamartarra aurreko zeroarekin (01, 02, 03)",
+          "list-lower-alpha": "Alfabeto minuskula (a, b, c)",
+          "list-upper-alpha": "Alfabeto maiuskula (A, B, C)",
+          "list-lower-roman": "Erromatar minuskula (i, ii, iii)",
+          "list-upper-roman": "Erromatar maiuskula (I, II, III)"
+        }
+      }
+    ]
+  }
+}

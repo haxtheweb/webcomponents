@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Sayt görünüşü",
+    "description": "Meyarlara əsasən sayt məlumatlarını sorğulayan və göstərən dinamik blok"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Görünüş URL-i",
+        "description": "Görünüş məlumat axını üçün sorğu parametrləri. Bunu Görünüşlər idarə panelindən əldə edə bilərsiniz."
+      },
+      {
+        "property": "renderer",
+        "title": "Göstərmə rejimi",
+        "description": "Görünüş nəticələrinin necə göstəriləcəyi"
+      },
+      {
+        "property": "entity",
+        "title": "Obyekt növü",
+        "description": "Cavabın təhlili üçün istifadə edilən obyekt növü",
+        "options": {
+          "": "Standart (elementlər)",
+          "item": "Element",
+          "page": "Səhifə",
+          "file": "Fayl",
+          "tag": "Teq",
+          "block": "Blok",
+          "view": "Görünüş",
+          "theme": "Tema",
+          "region": "Region",
+          "customElement": "Fərdi element"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "property": "breakSiteView",
+        "title": "Sayt görünüşünü qır",
+        "description": "Birbaşa redaktə üçün statik məzmuna çevirin; mənbədən avtomatik yenilənmə dayanır."
+      }
+    ]
+  }
+}

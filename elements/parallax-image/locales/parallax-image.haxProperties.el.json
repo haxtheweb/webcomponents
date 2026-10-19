@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Εικόνα parallax",
+    "description": "Κύλιση εικόνας"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Εικόνα",
+        "description": "εικόνα που χρησιμοποιείται στο φόντο"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Περιοχή επικεφαλίδας",
+        "description": "Περιοχή κειμένου επικεφαλίδας"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "gizmo": {
+    "title": "ផ្ទាំង",
+    "description": "ផ្ទាំងតែមួយ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "រូបតំណាងផ្ទាំង"
+      },
+      {
+        "property": "disabled",
+        "title": "បានបិទ"
+      },
+      {
+        "property": "label",
+        "title": "ស្លាកផ្ទាំង"
+      },
+      {
+        "slot": "",
+        "title": "មាតិកាផ្ទាំង",
+        "description": "មាតិកានៃផ្ទាំង។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "ID តែមួយគត់"
+      },
+      {
+        "property": "flag",
+        "title": "អត្ថបទទង់ (ស្រេចចិត្ត)"
+      },
+      {
+        "property": "flagIcon",
+        "title": "រូបតំណាងទង់ (ស្រេចចិត្ត)"
+      }
+    ]
+  }
+}

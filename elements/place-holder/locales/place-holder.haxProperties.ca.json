@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Marcador de posició",
+    "description": "Un marcador de posició que es pot convertir en el tipus de multimèdia seleccionat"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipus",
+        "description": "Tipus de giny que accepta per a la substitució.",
+        "options": {
+          "text": "Text / contingut",
+          "document": "Document / fitxer",
+          "audio": "Àudio",
+          "video": "Vídeo",
+          "image": "Imatge",
+          "math": "Matemàtiques"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Text",
+        "description": "Identifica amb més detall el marcador de posició desitjat"
+      }
+    ]
+  }
+}

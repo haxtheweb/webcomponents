@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Ihe ndepụta akwụkwọ",
+    "description": "Ihe na-anọchite otu ntụaka n'ime ndepụta akwụkwọ, na-akwado ọtụtụ ụdị na nhọrọ mbupụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "citationType",
+        "title": "Ụdị",
+        "description": "Ụdị ntụaka",
+        "options": {
+          "web": "Weebụ",
+          "journal": "Akwụkwọ akụkọ",
+          "book": "Akwụkwọ"
+        }
+      },
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Aha ihe ahụ"
+      },
+      {
+        "property": "authors",
+        "title": "Odee(ndị)",
+        "description": "Ihe omume ndị dị n'usoro oge"
+      },
+      {
+        "property": "publisher",
+        "title": "Onye mbipụta",
+        "description": "Weebụsaịtị mbụ"
+      }
+    ]
+  }
+}

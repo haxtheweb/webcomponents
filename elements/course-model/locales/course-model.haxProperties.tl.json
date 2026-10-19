@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "modelo ng kurso",
+    "description": "Interactive na layout para sa mga konsepto ng kurso na may mga detalye, animation, at knowledge check."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "poster",
+        "title": "pamagat"
+      },
+      {
+        "property": "src",
+        "title": "src"
+      },
+      {
+        "property": "alt",
+        "title": "alt"
+      },
+      {
+        "title": "Lugar ng impormasyon"
+      },
+      {
+        "title": "Lugar ng mga detalye"
+      },
+      {
+        "title": "Lugar ng animation"
+      },
+      {
+        "title": "Lugar ng Knowledge Check"
+      }
+    ],
+    "advanced": [
+      {
+        "attribute": "environment-image",
+        "title": "Lugar ng logo"
+      }
+    ]
+  }
+}

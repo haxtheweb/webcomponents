@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "រូបភាពកែលម្អ",
+    "description": "វិធីបង្ហាញរូបភាពជាមួយការកែលម្អផ្សេងៗ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "ប្រភព",
+        "description": "URL សម្រាប់រូបភាព។"
+      },
+      {
+        "property": "alt",
+        "title": "អត្ថបទជំនួស",
+        "description": "អត្ថបទសម្រាប់ពិពណ៌នារូបភាពដល់អ្នកប្រើដែលមើលមិនឃើញ។"
+      },
+      {
+        "property": "link",
+        "title": "តំណ",
+        "description": "ភ្ជាប់រូបភាពទៅ URL"
+      },
+      {
+        "property": "card",
+        "title": "កាត",
+        "description": "អនុវត្តស្រមោលដើម្បីឱ្យមើលទៅដូចជាកាតដែលលើកឡើង។"
+      },
+      {
+        "property": "box",
+        "title": "ប្រអប់",
+        "description": "អនុវត្តប្រអប់មើលឃើញជុំវិញរូបភាព។"
+      },
+      {
+        "property": "offset",
+        "title": "គម្លាត",
+        "description": "អនុវត្តគម្លាតខាងឆ្វេង ឬខាងស្ដាំទៅរូបភាព។",
+        "options": {
+          "none": "គ្មាន",
+          "wide": "ធំទូលាយ",
+          "narrow": "តូចចង្អៀត"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "ឯកសារយោង",
+        "description": "ការដកស្រង់សម្រាប់រូបភាព។"
+      },
+      {
+        "property": "caption",
+        "title": "ចំណងជើងរូប",
+        "description": "ចំណងជើងរូបសម្រាប់រូបភាព។"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ចំណងជើងរូបភាព",
+        "description": "ចំណងជើងសម្រាប់ស្លាករូបភាព។"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ការពិពណ៌នារូបភាព",
+        "description": "ការពិពណ៌នាសម្រាប់ស្លាករូបភាព។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "រូបភាពតូច",
+        "description": "ប្រភពរូបភាពតូច។ បង្ហាញរូបភាពតូច ប៉ុន្តែបើកប្រភពពេញនៅក្នុងម៉ូដាល់។"
+      },
+      {
+        "property": "round",
+        "title": "រូបភាពមូល",
+        "description": "កាត់រូបរាងរូបភាពឱ្យមានរាងរង្វង់។"
+      },
+      {
+        "property": "disableZoom",
+        "title": "បិទម៉ូដាល់រូបភាព",
+        "description": "បិទការចុចដែលបើករូបភាពនៅក្នុងប្រអប់ពិនិត្យរូបភាព។"
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "បង្ហាញជា markdown",
+        "description": "បង្ហាញចំណងជើងរូប និងការដកស្រង់ជា markdown។"
+      }
+    ]
+  }
+}

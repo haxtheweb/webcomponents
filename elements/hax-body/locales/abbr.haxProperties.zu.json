@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Isifinyezo",
+    "description": "Isifinyezo esinethiphu yegama eligcwele."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Umbhalo",
+        "description": "Umbhalo wesifinyezo obonakalayo."
+      },
+      {
+        "attribute": "title",
+        "title": "Igama",
+        "description": "Igama eligcwele eliboniswa lapho kudlulwa ngesikhombi."
+      }
+    ]
+  }
+}

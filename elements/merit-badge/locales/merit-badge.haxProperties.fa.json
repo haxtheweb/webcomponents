@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "نشان شایستگی",
+    "description": "نشان بصری برای اعلام کسب یک مهارت."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "عنوان نشان",
+        "description": "عنوان نمایش‌داده‌شده روی نشان."
+      },
+      {
+        "property": "badgeImage",
+        "title": "تصویر نشان",
+        "description": "URL تصویر نشان."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "جزئیات نشان",
+        "description": "جزئیات درباره نشان."
+      },
+      {
+        "property": "hyperLink",
+        "title": "پیوند",
+        "description": "پیوند مرتبط با نشان."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "مهارت‌های نشان",
+        "description": "مهارت‌های نمایش‌داده‌شده روی نشان."
+      },
+      {
+        "property": "skill",
+        "title": "مهارت (OER Schema)",
+        "description": "OER Schema: مهارت آموخته‌شده‌ای که با تکمیل این هدف یادگیری کسب می‌شود."
+      }
+    ]
+  }
+}

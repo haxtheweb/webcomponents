@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Capçalera relativa",
+    "description": "genera la jerarquia de capçaleres correcta segons la capçalera del pare"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "parent",
+        "description": "ID del recurs de la capçalera pare"
+      },
+      {
+        "property": "disableLink",
+        "description": "Desactiva la funció del botó d'enllaç."
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Alinea el botó de copiar l'enllaç a l'extrem dret de la capçalera."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Nivell de capçalera si no es troba el pare."
+      },
+      {
+        "property": "copyMessage",
+        "description": "Substitueix el text per defecte del missatge emergent de copiar l'enllaç."
+      },
+      {
+        "property": "linkLabel",
+        "description": "Substitueix l'etiqueta per defecte del botó de copiar l'enllaç."
+      },
+      {
+        "property": "linkIcon",
+        "description": "Substitueix la icona per defecte del botó de copiar l'enllaç."
+      },
+      {
+        "property": "closeLabel",
+        "description": "Substitueix l'etiqueta per defecte del botó de tancar del missatge emergent de copiar l'enllaç."
+      },
+      {
+        "property": "closeIcon",
+        "description": "Substitueix la icona per defecte del botó de tancar del missatge emergent de copiar l'enllaç."
+      }
+    ]
+  }
+}

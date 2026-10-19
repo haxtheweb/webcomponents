@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Afkorting",
+    "description": "Afkorting met volterm-wenkteks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "innerText",
+        "title": "Teks",
+        "description": "Sigbare afkortingsteks."
+      },
+      {
+        "attribute": "title",
+        "title": "Woord",
+        "description": "Volle term wat by sweef gewys word."
+      }
+    ]
+  }
+}

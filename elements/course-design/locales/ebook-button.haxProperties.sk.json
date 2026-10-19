@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tlačidlo e-knihy",
+    "description": "Tlačidlo, ktoré odkazuje na e-knihu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Názov",
+        "description": "Názov tlačidla."
+      },
+      {
+        "property": "link",
+        "title": "Odkaz",
+        "description": "Odkaz, na ktorý sa po kliknutí presmeruje."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona reprezentujúca tento odkaz"
+      }
+    ]
+  }
+}

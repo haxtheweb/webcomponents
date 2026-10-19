@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Lokokupilo",
+    "description": "Lokokupilo, kiu povas esti konvertita al la elektita aŭdvidaĵa tipo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Tipo",
+        "description": "Tipo de aparateto, kiun ĉi tio akceptas por anstataŭigo.",
+        "options": {
+          "text": "Teksto / enhavo",
+          "document": "Dokumento / dosiero",
+          "audio": "Sono",
+          "video": "Video",
+          "image": "Bildo",
+          "math": "Matematiko"
+        }
+      },
+      {
+        "property": "text",
+        "title": "Teksto",
+        "description": "Identigu la deziratan lokokupilon pli detale"
+      }
+    ]
+  }
+}

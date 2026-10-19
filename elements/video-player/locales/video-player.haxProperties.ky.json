@@ -1,0 +1,108 @@
+{
+  "gizmo": {
+    "title": "Видео",
+    "description": "Бир нече булактан жеткиликтүү видео ойнотуу."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Булак",
+        "description": "Бул медианын URL дареги."
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Аталышы",
+        "description": "Видеонун астында көрсөтүлүүчү аталыш."
+      },
+      {
+        "property": "thumbnailSrc",
+        "title": "Постер сүрөтү",
+        "description": "Постер сүрөтүнүн URL дареги."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tracks",
+        "title": "Текст тректери",
+        "description": "Видео үчүн жабык субтитрлер, субтитрлер, сүрөттөмөлөр жана башка текст тректери."
+      },
+      {
+        "property": "startTime",
+        "title": "Башталыш убактысы",
+        "description": "Видеону белгилүү убакыттан баштоо (секунд)."
+      },
+      {
+        "property": "endTime",
+        "title": "Аяктоо убактысы",
+        "description": "Видеону белгилүү убакытта аяктоо (секунд), башталыш убактысын талап кылат."
+      },
+      {
+        "property": "learningMode",
+        "title": "Окуу режимин иштетүү",
+        "description": "Алдыга жана артка тез жылдырууну өчүрөт."
+      },
+      {
+        "property": "hideYoutubeLink",
+        "title": "\"YouTube'да ачуу\" баскычын алып салуу",
+        "description": "Видеону YouTube'да ачуу баскычын алып салат."
+      },
+      {
+        "property": "linkable",
+        "title": "Бөлүшүү шилтемесин кошосузбу?",
+        "description": "Видеону бөлүшүү үчүн шилтеме берет."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Убакыт белгилерин жашыруу",
+        "description": "Транскрипттеги убакыт белгилерин жашыруу."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Транскриптти жашыруу",
+        "description": "Транскриптти демейки боюнча жашыруу."
+      },
+      {
+        "property": "audioDescriptionSource",
+        "title": "Аудио сүрөттөмө треги",
+        "description": "Визуалдык элементтерди үн менен баяндаган аудио сүрөттөмө трегинин (MP3 файл) URL дареги."
+      }
+    ],
+    "developer": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "CORS колдонулаарын көрсөтөт.",
+        "options": {
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
+      {
+        "property": "allowBackgroundPlay",
+        "title": "Фондо ойнотууга уруксат берүү",
+        "description": "Браузер өтмөгү фокусун жоготкондо да ойноткону улантуу."
+      },
+      {
+        "property": "darkTranscript",
+        "title": "Транскрипт үчүн караңгы тема",
+        "description": "Транскрипт үчүн караңгы теманы иштетүү."
+      },
+      {
+        "property": "disableInteractive",
+        "title": "Интерактивдүүлүктү өчүрүү",
+        "description": "Транскриптти басылуучу кылган интерактивдүү режимди өчүрүү."
+      },
+      {
+        "property": "lang",
+        "title": "Тил",
+        "description": "Медианын тили."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "(эскирген) Ойноткуч үчүн акцент түсүн тандаңыз."
+      }
+    ]
+  }
+}

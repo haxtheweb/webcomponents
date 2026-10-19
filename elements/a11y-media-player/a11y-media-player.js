@@ -346,7 +346,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         }
 
         :host > * {
-          transition: all 0.6s ease-in-out;
+          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
 
         :host,
@@ -438,7 +438,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
 
         a11y-media-youtube {
           opacity: 1;
-          transition: opacity 0.6s;
+          transition: opacity var(--ddd-duration-slow, 0.6s);
         }
 
         a11y-media-youtube.hidden {
@@ -459,7 +459,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           padding: 0.15em 4px;
           background-color: black;
           background-color: rgba(0, 0, 0, 0.8);
-          transition: all 0.6s ease-in-out;
+          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
 
         #player-and-controls[audio-no-thumb] #cc-text {
@@ -578,7 +578,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           width: 0;
           height: 40px;
           overflow: hidden;
-          transition: width 0.6s;
+          transition: width var(--ddd-duration-slow, 0.6s);
           z-index: 3;
           border-radius: 4px;
           background-color: var(--a11y-media-bg-color);
@@ -814,7 +814,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
             left: 0;
             top: 0;
             z-index: 100000;
-            transition: all 0.6s ease-in-out;
+            transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
           }
 
           :host([dark][sticky-mode]) #player-section {

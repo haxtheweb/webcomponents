@@ -145,7 +145,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           cursor: pointer;
           padding: var(--ddd-spacing-2, 8px);
           border-radius: var(--ddd-radius-sm, 4px);
-          transition: background-color 0.3s ease;
+          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
         }
 
         .close-button:hover {
@@ -174,7 +174,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           height: var(--ddd-spacing-3, 12px);
           border-radius: 50%;
           background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          transition: background-color 0.3s ease;
+          transition: background-color var(--ddd-duration-normal, 0.3s) ease;
         }
 
         .step-dot.active {
@@ -260,7 +260,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           font-size: var(--ddd-font-size-s, 16px);
           font-family: var(--ddd-font-primary, sans-serif);
           box-sizing: border-box;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           background-color: var(--ddd-theme-default-limestoneMaxLight, #f5f5f5);
           color: var(--ddd-theme-default-coalyGray, #222);
           min-height: var(--ddd-spacing-8, 32px);
@@ -335,7 +335,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
             var(--ddd-theme-default-futureLime, #99cc33) 100%
           );
           border-radius: var(--ddd-radius-sm, 4px);
-          transition: width 0.6s ease;
+          transition: width var(--ddd-duration-slow, 0.6s) ease;
           width: 0%;
         }
 
@@ -397,7 +397,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           font-weight: var(--ddd-font-weight-medium, 500);
           font-family: var(--ddd-font-primary, sans-serif);
           cursor: pointer;
-          transition: all 0.3s ease-in-out;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           border: none;
           display: flex;
           align-items: center;

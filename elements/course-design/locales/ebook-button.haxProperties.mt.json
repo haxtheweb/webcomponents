@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Buttuna tal-Ebook",
+    "description": "Buttuna li tagħmel link għal Ebook."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "It-titlu tal-buttuna."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Il-link fejn tirridirezzjona meta tikklikkja."
+      },
+      {
+        "property": "icon",
+        "title": "Ikona",
+        "description": "Ikona li tirrappreżenta dan il-link"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Bàjì Ìtayọ",
+    "description": "Bàjì tí a lè rí láti fi hàn pé a ti gba ọgbọ́n kan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "badgeTitle",
+        "title": "Àkọlé Bàjì",
+        "description": "Àkọlé tí a fi hàn lórí bàjì."
+      },
+      {
+        "property": "badgeImage",
+        "title": "Àwòrán Bàjì",
+        "description": "URL àwòrán fún bàjì."
+      },
+      {
+        "property": "badgeDetails",
+        "title": "Àwọn Àlàyé Bàjì",
+        "description": "Àwọn àlàyé nípa bàjì náà."
+      },
+      {
+        "property": "hyperLink",
+        "title": "Ìjápọ̀",
+        "description": "Ìjápọ̀ tó jọmọ́ bàjì náà."
+      },
+      {
+        "property": "badgeSkills",
+        "title": "Àwọn Ọgbọ́n Bàjì",
+        "description": "Àwọn ọgbọ́n tí a fi hàn lórí bàjì."
+      },
+      {
+        "property": "skill",
+        "title": "Ọgbọ́n (OER Schema)",
+        "description": "OER Schema: ọgbọ́n tí a kọ́ tí a gbà nípa píparí èrèdí ẹ̀kọ́ yìí."
+      }
+    ]
+  }
+}

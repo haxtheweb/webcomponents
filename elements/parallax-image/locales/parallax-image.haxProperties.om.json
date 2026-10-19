@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Suuraa paaraalaaksii",
+    "description": "Suuraan yeroo socho'u"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageBg",
+        "title": "Suuraa",
+        "description": "suuraa duuba keessatti hirmaatu"
+      },
+      {
+        "slot": "parallax_heading",
+        "title": "Naannoo mata duree",
+        "description": "Naannoo barreeffama mata duree"
+      }
+    ]
+  }
+}

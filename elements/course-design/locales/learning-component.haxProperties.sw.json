@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Kijenzi cha Kujifunza",
+    "description": "Kadi kwa wakufunzi kuwasilisha ualimu na mikakati ya kufundishia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Aina",
+        "description": "Aina ya kadi ya kutumika."
+      },
+      {
+        "property": "subtitle",
+        "title": "Kichwa Kidogo",
+        "description": "Kichwa kidogo cha kadi."
+      },
+      {
+        "property": "url",
+        "title": "Kiungo",
+        "description": "Kiungo cha hiari cha kadi (Kiungo hakipatikani kwa Malengo ya Kujifunza)."
+      },
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Weka Kichwa, hiki hubatilisha kichwa kinachotegemea aina"
+      },
+      {
+        "property": "icon",
+        "title": "Aikoni",
+        "description": "Weka aikoni, hii hubatilisha aikoni inayotegemea aina"
+      },
+      {
+        "property": "accentColor",
+        "title": "Rangi ya msisitizo",
+        "description": "Weka rangi ya msisitizo, hii hubatilisha rangi inayotegemea aina"
+      },
+      {
+        "slot": "",
+        "title": "Yaliyomo"
+      }
+    ]
+  }
+}

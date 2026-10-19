@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS-vy",
+    "description": "CMS-vyer som renderas i backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "viewsName",
+        "title": "Namn",
+        "description": "Namn på vyn från vårt CMS"
+      },
+      {
+        "property": "viewsDisplay",
+        "title": "Visning",
+        "description": "Visning inom den vyn från vårt CMS"
+      }
+    ]
+  }
+}

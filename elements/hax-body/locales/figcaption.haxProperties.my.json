@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ပုံ စာတန်း",
+    "description": "ပုံအတွက် စာတန်း။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "စာတန်း",
+        "description": "ပုံ အောက်တွင် ပြသော စာသား။"
+      }
+    ]
+  }
+}

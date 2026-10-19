@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Denbora-lerroa",
+    "description": "Irudiak eta testua dituen gertaeren denbora-lerroa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Denbora-lerroaren izenburua",
+        "description": "Denbora-lerroaren izenburua."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "Aukerako nabarmentze kolorea."
+      },
+      {
+        "property": "dark",
+        "title": "Gai iluna",
+        "description": "Gaitu gai iluna"
+      },
+      {
+        "slot": "",
+        "title": "Denbora-lerroaren deskribapena",
+        "description": "Denbora-lerroa deskribatzen duen aukerako testua."
+      },
+      {
+        "property": "events",
+        "title": "Denbora-lerroko gertaerak",
+        "description": "Denbora-lerroko gertaerak"
+      }
+    ]
+  }
+}

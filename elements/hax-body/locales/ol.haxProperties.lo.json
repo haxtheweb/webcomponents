@@ -1,0 +1,23 @@
+{
+  "gizmo": {
+    "title": "ລາຍການຕົວເລກ",
+    "description": "ສ້າງລາຍການຕົວເລກ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "ຮູບແບບຕົວເລກ",
+        "description": "ຮູບແບບທີ່ໃຊ້ສຳລັບການນັບເລກລາຍການມີລຳດັບ.",
+        "options": {
+          "": "ຄ່າເລີ່ມຕົ້ນ (ເລກທົດສະນິຍົມ)",
+          "list-decimal-leading-zero": "ເລກທົດສະນິຍົມມີສູນນຳໜ້າ (01, 02, 03)",
+          "list-lower-alpha": "ຕົວອັກສອນນ້ອຍ (a, b, c)",
+          "list-upper-alpha": "ຕົວອັກສອນໃຫຍ່ (A, B, C)",
+          "list-lower-roman": "ເລກໂຣມັນນ້ອຍ (i, ii, iii)",
+          "list-upper-roman": "ເລກໂຣມັນໃຫຍ່ (I, II, III)"
+        }
+      }
+    ]
+  }
+}

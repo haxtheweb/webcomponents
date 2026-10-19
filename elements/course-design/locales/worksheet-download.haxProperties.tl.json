@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "Pag-download ng Worksheet",
+    "description": "Isang button para sa pagpapakita ng mga file na maaaring i-download."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Ang pamagat ng download."
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Ang link para sa download."
+      }
+    ]
+  }
+}

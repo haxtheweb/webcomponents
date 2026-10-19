@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Github مخکتنه",
+    "description": "د اوږدې تشریح سره د لاسرسي وړ شکل"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "اداره",
+        "description": "د Github سازمان ماشیني نوم"
+      },
+      {
+        "property": "repo",
+        "title": "زېرمتون",
+        "description": "د ریپو ماشیني نوم"
+      },
+      {
+        "property": "extended",
+        "title": "پراخ لید",
+        "description": "په عنصر کې readme شاملوي"
+      }
+    ]
+  }
+}

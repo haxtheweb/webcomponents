@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "CMS ýazgysy",
+    "description": "Arka tarapda görkezilýän CMS ýazgysy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "entityType",
+        "title": "Görnüşi",
+        "description": "biziň CMS-den görnüş",
+        "options": {
+          "node": "Düwün",
+          "user": "Ulanyjy",
+          "file": "Faýl"
+        }
+      },
+      {
+        "property": "entityId",
+        "title": "ID",
+        "description": "biziň CMS-den ID"
+      },
+      {
+        "property": "entityDisplayMode",
+        "title": "Görkeziş tertibi",
+        "description": "biziň CMS-den görkeziş tertibi"
+      }
+    ]
+  }
+}

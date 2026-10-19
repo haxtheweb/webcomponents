@@ -1,0 +1,218 @@
+{
+  "gizmo": {
+    "title": "Ta'ãngarysýi Tysýi",
+    "description": "Omoheñói ta'ãngarysýi ojeikekuaáva peteĩ CSV rehegua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sa'y ojehechaukavéva",
+        "description": "Sa'y ojehechaukavéva ikatúramo."
+      },
+      {
+        "title": "Ñemohenda pytũ",
+        "description": "Emyendy Jeguakaha Ypytũ"
+      },
+      {
+        "title": "CSV Marandurenda",
+        "description": "Emyenyhẽ mba'ekuaarã peteĩ CSV-gui."
+      },
+      {
+        "title": "Ta'ãngarysýi Réra",
+        "description": "Moñe'ẽrã alt ojeikekuaáva nde ta'ãngarysýipe g̃uarã."
+      },
+      {
+        "title": "Ta'ãngarysýi Ñemoha'ãnga",
+        "description": "Ñemoha'ãnga ojeikekuaáva nde ta'ãngarysýipe g̃uarã."
+      },
+      {
+        "title": "Tuichakue Réra",
+        "description": "Ta'ãngarysýi pekue:yvatekue joja (Ehecha https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings $ct-scales ha $ct-scales-names peg̃uarã).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "Ehechauka Kora'i Tapykue"
+      },
+      {
+        "title": "Tysýi Asu-Akatúa",
+        "description": "Embojere ta'ãngarysýi tysýi rehegua eje omoĩ hag̃ua tysýi asu-akatúa. Ejesareko reikotevẽtaha avei rembojere nde eje ñemboheko, Y Eje ohechaukátama techaukaha ha X Eje tepykue."
+      },
+      {
+        "title": "Tysýi Oñembohyruguáiva",
+        "description": "Oñemoĩramo true, ko mba'e omboyruguáita serie tysýi."
+      },
+      {
+        "title": "Emyasãi Serie",
+        "description": "Oñemoĩramo true peteĩ teĩ tysýi ohechaukáta peteĩ serie ha mba'ekuaarã tysýi ha'eva'erã peteĩ tysýi tepykue rehegua ndaha'éi serie tysýi."
+      },
+      {
+        "title": "Ta'ãngarysýi Pa'ũ (yvate)"
+      },
+      {
+        "title": "Ta'ãngarysýi Pa'ũ (yvy)"
+      },
+      {
+        "title": "Ta'ãngarysýi Pa'ũ (asu)"
+      },
+      {
+        "title": "Ta'ãngarysýi Pa'ũ (akatúa)"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Embojere Mba'ekuaarã",
+        "description": "Embojere mba'ekuaarã techaukaha reheve, serie ñemohenda ha opaite serie mba'ekuaarã."
+      },
+      {
+        "title": "HTML Tabla",
+        "description": "Ojeporavokuaáva: Emyenyhẽ mba'ekuaarã HTML tabla ramo."
+      },
+      {
+        "title": "Ta'ãngarysýi Michĩvéva",
+        "description": "Remyengovia ta'ãngarysýi michĩvéva ypyguáva ikatu rembotuicha térã remomichĩ tepykue michĩvéva ojehechaukáva"
+      },
+      {
+        "title": "Ta'ãngarysýi Tuichavéva",
+        "description": "Remyengovia ta'ãngarysýi tuichavéva ypyguáva ikatu rembotuicha térã remomichĩ tepykue tuichavéva ojehechaukáva"
+      },
+      {
+        "title": "X Eje Ehechauka Kora'i",
+        "description": "Ehechauka X Eje kora'i."
+      },
+      {
+        "title": "X Eje Ñemombyry"
+      },
+      {
+        "title": "X Eje Renda",
+        "description": "Tenda oñemoĩhápe techaukaha. Ikatu oñemoĩ \"start\" térã \"end\", \"start\" ojogua asu térã yvate eje oñembo'ývape ha \"end\" ojogua akatúa térã yvy eje asu-akatúape"
+      },
+      {
+        "title": "X Eje Ehechauka Techaukaha",
+        "description": "Ehechauka X Eje techaukaha."
+      },
+      {
+        "title": "X Eje Techaukaha (ñemombyry asu-akatúa)",
+        "description": "X Eje techaukaha renda asu-akatúa."
+      },
+      {
+        "title": "X Eje Techaukaha (ñemombyry yvate-yvy)",
+        "description": "X Eje techaukaha renda yvate-yvy."
+      },
+      {
+        "title": "X Eje Réra",
+        "description": "Téra ojeporavokuaáva X ejépe g̃uarã."
+      },
+      {
+        "title": "X Eje Réra (ñemombyry asu-akatúa)",
+        "description": "X Eje réra renda asu-akatúa."
+      },
+      {
+        "title": "X Eje Réra (ñemombyry yvate-yvy)",
+        "description": "X Eje réra renda yvate-yvy."
+      },
+      {
+        "title": "X Eje Réra Joko",
+        "description": "Joko ojeporavokuaáva X eje rérape g̃uarã.",
+        "options": {
+          "middle": "mbyte",
+          "end": "paha",
+          "start": "ñepyrũ"
+        }
+      },
+      {
+        "title": "X Eje Tuichakue Pa'ũ Michĩvéva",
+        "description": "Ohechauka tuichakue pyrũ yvatekue michĩvéva píxel-pe."
+      },
+      {
+        "title": "X Eje Tuichakue (papapy tee añoite)",
+        "description": "Eiporu papapy tee añoite tuichakue pyrũme g̃uarã."
+      },
+      {
+        "title": "Y Eje: Ehechauka Kora'i",
+        "description": "Ehechauka Y Eje kora'i."
+      },
+      {
+        "title": "Y Eje Ñemombyry"
+      },
+      {
+        "title": "Y Eje Renda",
+        "description": "Tenda oñemoĩhápe techaukaha. Ikatu oñemoĩ \"start\" térã \"end\", \"start\" ojogua asu térã yvate eje oñembo'ývape ha \"end\" ojogua akatúa térã yvy eje asu-akatúape"
+      },
+      {
+        "title": "Y Eje Ehechauka Techaukaha",
+        "description": "Ehechauka Y Eje techaukaha."
+      },
+      {
+        "title": "Y Eje Techaukaha (ñemombyry asu-akatúa)",
+        "description": "Y Eje techaukaha renda asu-akatúa."
+      },
+      {
+        "title": "Y Eje Techaukaha (ñemombyry yvate-yvy)",
+        "description": "Y Eje techaukaha renda yvate-yvy."
+      },
+      {
+        "title": "Y Eje Tuichakue Pa'ũ Michĩvéva",
+        "description": "Ohechauka tuichakue pyrũ yvatekue michĩvéva píxel-pe."
+      },
+      {
+        "title": "Y Eje Tuichakue (papapy tee añoite)",
+        "description": "Eiporu papapy tee añoite tuichakue pyrũme g̃uarã."
+      },
+      {
+        "title": "Y Eje Réra",
+        "description": "Téra ojeporavokuaáva Y ejépe g̃uarã."
+      },
+      {
+        "title": "Y Eje Réra (ñemombyry yvate-yvy)",
+        "description": "Y Eje réra renda asu-akatúa."
+      },
+      {
+        "title": "Y Eje Réra (ñemombyry asu-akatúa)",
+        "description": "Y Eje réra renda asu-akatúa."
+      },
+      {
+        "title": "Y Eje Réra Joko",
+        "description": "Joko ojeporavokuaáva Y eje rérape g̃uarã.",
+        "options": {
+          "middle": "mbyte",
+          "end": "paha",
+          "start": "ñepyrũ"
+        }
+      },
+      {
+        "title": "Y Eje Réra Jere",
+        "description": "Embojerépa Y eje réra?"
+      },
+      {
+        "title": "Tepykue Jehechaukarã",
+        "description": "Michĩvéva/tuichavéva noñemoĩriramo, tysýi ta'ãngarysýi oñemohendáta zero-pe ypyguáva ramo."
+      },
+      {
+        "title": "Serie Tysýi Mombyrykue",
+        "description": "Ehechauka tysýi mombyrykue píxel-pe peteĩ aty ryepýpe."
+      },
+      {
+        "title": "Ñembohyruguái Reko",
+        "description": "Oñemoĩramo \"true\" ko mba'e omoheñóita peteĩ opavave opaite serie kytápe g̃uarã. Kóva omoambuéta avei y eje ha ta'ãngarysýi rembe'y. Oñemoĩramo \"false\" ko mba'e ojapóta tysýi oñembohyruguáiva oñepyrũ zero tysýigui. Ñembohyruguái rekópe \"seriesBarDistance\" ndojapomo'ãi mba'eve."
+      }
+    ]
+  }
+}

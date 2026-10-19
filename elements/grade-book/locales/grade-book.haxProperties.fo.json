@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Karakterbók",
+    "description": "Ein høvdleys karakterbók, ið stuðlar fleiri bakendum við metingarleistum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Kelda",
+        "description": "Slag av dátukeldu (googledocs, url, json, filesystem).",
+        "options": {
+          "googledocs": "Google Docs",
+          "url": "URL-endapunkt (JSON)",
+          "json": "JSON-dátublob",
+          "filesystem": "Fílukervi"
+        }
+      },
+      {
+        "property": "sourceData",
+        "title": "Keldudátur",
+        "description": "URL ella JSON-dátur til karakterbókina."
+      },
+      {
+        "property": "forCourse",
+        "title": "Skeiðstilvísing",
+        "description": "Skeiðsdámkenni sent sum oer:forCourse á hvørjum Assessment-tilfeingi."
+      }
+    ]
+  }
+}

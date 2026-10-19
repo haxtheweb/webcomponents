@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Hex hautatzailea",
+    "description": "Hex kodeko kolore-hautatzailea"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "value",
+        "title": "Balioa",
+        "description": "Hex balio lehenetsia"
+      },
+      {
+        "property": "disabled",
+        "title": "Desgaituta",
+        "description": "Desgaitu testu-eremua"
+      },
+      {
+        "property": "largeDisplay",
+        "title": "Bistaratze handia",
+        "description": "Sartu kolorea bistaratze handian"
+      }
+    ]
+  }
+}

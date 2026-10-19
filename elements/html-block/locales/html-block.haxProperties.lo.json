@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "ບລັອກ Html",
+    "description": "ບລັອກ HTML ພື້ນຖານທີ່ໃຫ້ການເຊື່ອມຕໍ່ HAXschema"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "ໂຄ້ດ HTML ທີ່ທ່ານຕ້ອງການນຳສະເໜີໃນເນື້ອຫາ"
+      }
+    ]
+  }
+}

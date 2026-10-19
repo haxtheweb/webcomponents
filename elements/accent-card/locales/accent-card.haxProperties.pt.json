@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Cartão",
+    "description": "Um cartão com estilo de destaque opcional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "heading",
+        "title": "Cabeçalho",
+        "description": "Um cabeçalho para o cartão."
+      },
+      {
+        "slot": "subheading",
+        "title": "Subtítulo",
+        "description": "Um subtítulo opcional para o cartão."
+      },
+      {
+        "slot": "content",
+        "title": "Conteúdo",
+        "description": "Conteúdo do cartão."
+      },
+      {
+        "slot": "footer",
+        "title": "Rodapé",
+        "description": "Um rodapé opcional para o cartão."
+      },
+      {
+        "property": "imageSrc",
+        "title": "Imagem",
+        "description": "Imagem opcional"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Texto alternativo da imagem",
+        "description": "Texto alternativo que descreve a imagem para leitores de tela. Deixe vazio somente se a imagem for puramente decorativa."
+      },
+      {
+        "property": "imageAlign",
+        "title": "imageAlign",
+        "description": "Alinhamento horizontal da imagem",
+        "options": {
+          "left": "esquerda",
+          "center": "centro",
+          "right": "direita"
+        }
+      },
+      {
+        "property": "imageValign",
+        "title": "imageValign",
+        "description": "Alinhamento vertical da imagem",
+        "options": {
+          "top": "topo",
+          "center": "centro",
+          "bottom": "base"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "Uma cor de destaque opcional."
+      },
+      {
+        "property": "dark",
+        "title": "Tema escuro",
+        "description": "Ativar tema escuro"
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Orientação horizontal?"
+      },
+      {
+        "property": "accentHeading",
+        "title": "Destaque no cabeçalho",
+        "description": "Aplicar cor de destaque ao cabeçalho?"
+      },
+      {
+        "property": "accentBackground",
+        "title": "Destaque no fundo",
+        "description": "Aplicar cor de destaque ao fundo do cartão?"
+      },
+      {
+        "property": "noBorder",
+        "title": "Sem borda de destaque",
+        "description": "Remover a borda de destaque?"
+      },
+      {
+        "property": "flat",
+        "title": "Plano",
+        "description": "Remover a sombra da caixa?"
+      }
+    ],
+    "advanced": [
+      {
+        "slot": "corner",
+        "title": "Canto",
+        "description": "Conteúdo do canto do cartão."
+      }
+    ]
+  }
+}

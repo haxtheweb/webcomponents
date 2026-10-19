@@ -1,0 +1,21 @@
+{
+  "gizmo": {
+    "title": "Маркіраваны спіс",
+    "description": "Стварыць маркіраваны спіс."
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "data-design-treatment",
+        "title": "Стыль маркераў",
+        "description": "Стыль маркераў неўпарадкаванага спіса.",
+        "options": {
+          "": "Па змаўчанні (квадрат)",
+          "list-disc": "Дыск",
+          "list-circle": "Круг",
+          "list-square": "Квадрат"
+        }
+      }
+    ]
+  }
+}

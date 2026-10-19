@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Mallattoo CMS",
+    "description": "Mallattoo CMS backend irratti agarsiifame"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Mallattoo",
+        "description": "Mallattoo CMS keenya irraa"
+      }
+    ]
+  }
+}

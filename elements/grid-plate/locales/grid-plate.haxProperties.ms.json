@@ -1,0 +1,30 @@
+{
+  "gizmo": {
+    "title": "Susun atur lajur",
+    "description": "Susun atur bahan dalam lajur ringkas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "layout",
+        "title": "Susun Atur Lajur",
+        "description": "Gaya untuk mempersembahkan item ini (mungkin berubah untuk skrin kecil)"
+      },
+      {
+        "property": "disableResponsive",
+        "title": "Lumpuhkan responsif",
+        "description": "Tandakan kotak untuk mengekalkan lajur pada skrin yang lebih besar sambil masih bertindan pada skrin terkecil"
+      },
+      {
+        "property": "itemPadding",
+        "title": "Pelapik Item",
+        "description": "Pelapik di dalam setiap item"
+      },
+      {
+        "property": "itemMargin",
+        "title": "Margin item",
+        "description": "Margin antara item"
+      }
+    ]
+  }
+}

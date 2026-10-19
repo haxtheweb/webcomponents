@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Ithokheni ye-CMS",
+    "description": "Ithokheni ye-CMS eboniswa kwi-backend"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "token",
+        "title": "Ithokheni",
+        "description": "Ithokheni evela kwi-CMS yethu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "ʻĀpana aʻo",
+    "description": "He kāleka no nā kumu e hōʻike ai i ke kumu aʻo a me nā hoʻolālā aʻo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "ʻAno",
+        "description": "Ke ʻano kāleka e hoʻohana ʻia ai."
+      },
+      {
+        "property": "subtitle",
+        "title": "Poʻo inoa lalo",
+        "description": "Ke poʻo inoa lalo o ke kāleka."
+      },
+      {
+        "property": "url",
+        "title": "Loulou",
+        "description": "He loulou koho no ke kāleka (ʻAʻole loaʻa ka loulou no nā Pahuhopu aʻo)."
+      },
+      {
+        "property": "title",
+        "title": "Poʻo inoa",
+        "description": "Hoʻonoho i ke poʻo inoa, pani kēia i ke poʻo inoa ma ke ʻano"
+      },
+      {
+        "property": "icon",
+        "title": "Hōʻailona",
+        "description": "Hoʻonoho i ka ikona, pani kēia i ka ikona ma ke ʻano"
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu kiko",
+        "description": "Hoʻonoho i ka waihoʻoluʻu kiko, pani kēia i ka waihoʻoluʻu ma ke ʻano"
+      },
+      {
+        "slot": "",
+        "title": "Nā mea o loko"
+      }
+    ]
+  }
+}

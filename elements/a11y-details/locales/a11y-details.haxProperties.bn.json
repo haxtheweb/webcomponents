@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "অ্যাক্সেসযোগ্য বিস্তারিত বাটন",
+    "description": "details ও summary সহ অ্যাক্সেসযোগ্য ধাপে ধাপে প্রকাশ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "বাটন",
+        "description": "লুকানো থাকলে কনটেন্টের সারাংশ, যেমন \"info\", \"medatadata\" ইত্যাদি।"
+      },
+      {
+        "slot": "details",
+        "title": "বিবরণ",
+        "description": "বিস্তারিত বিবরণ যা লুকানো বা দেখানো যায়"
+      },
+      {
+        "slot": "",
+        "title": "বিবরণ বাটন",
+        "description": "বিবরণ টেক্সট দেখানো/লুকানো বাটনের ডিফল্ট, যেমন \"info\", \"medatadata\" ইত্যাদি।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "বিস্তারিত খোলা থাকলে ঐচ্ছিক সারাংশ টেক্সট"
+      },
+      {
+        "property": "closeText",
+        "title": "বিস্তারিত বন্ধ থাকলে ঐচ্ছিক সারাংশ টেক্সট"
+      }
+    ]
+  }
+}

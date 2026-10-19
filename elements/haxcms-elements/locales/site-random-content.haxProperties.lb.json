@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Zoufällegen Säiteninhalt",
+    "description": "En zoufällegt Element vun der ieweschter Ebene vun enger ausgewielter Säit uweisen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Säit",
+        "description": "Wielt d'Säit, vun där zoufällegen Inhalt geholl gëtt. D'Element weist zoufälleg eent vun den HTML-Elementer vun der ieweschter Ebene vun dëser Säit."
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Boarnefermelding",
+    "description": "Sitaasje-elemint mei trije presintaasjemodi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Titel fan it oanhelle wurk."
+      },
+      {
+        "property": "source",
+        "title": "Boarnekeppeling",
+        "description": "Boarne-URL fan it oanhelle wurk."
+      },
+      {
+        "property": "date",
+        "title": "Datum rieplachte",
+        "description": "Datum wêrop't de boarne rieplachte is."
+      },
+      {
+        "property": "scope",
+        "title": "Berik",
+        "description": "Elemintberik om oan te heljen.",
+        "options": {
+          "sibling": "Njonkenlizzend elemint",
+          "parent": "Boppelizzend elemint"
+        }
+      },
+      {
+        "property": "license",
+        "title": "Lisinsje",
+        "description": "Lisinsje fan it oanhelle wurk."
+      },
+      {
+        "property": "creator",
+        "title": "Makker",
+        "description": "Makker of eigner fan it oanhelle wurk."
+      },
+      {
+        "property": "typeof",
+        "title": "OER-skematype",
+        "description": "OER-skemaklasse foar dizze sitaasje. Standert oer:ReferencedMaterial; oerskriuw allinnich mei in jildige OER-klasse (bgl. oer:SupportingMaterial)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "Retrokort",
+    "description": "Enkelt kort med retrodesign."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Kortets huvudtitel."
+      },
+      {
+        "property": "url",
+        "description": "URL att öppna när kortet klickas."
+      },
+      {
+        "property": "subtitle",
+        "title": "Undertitel",
+        "description": "Kortets undertitel."
+      },
+      {
+        "property": "tags",
+        "title": "Taggar",
+        "description": "Kommaseparerade taggar."
+      },
+      {
+        "property": "mediaSource",
+        "title": "Mediekälla",
+        "description": "Primär mediekälla."
+      },
+      {
+        "property": "hoverSource",
+        "title": "Källa vid hovring",
+        "description": "Mediekälla som visas när kortet hovras eller aktiveras."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfärg",
+        "description": "Accentfärg som tillämpas på hela kortet."
+      },
+      {
+        "property": "dark",
+        "title": "Mörk",
+        "description": "Använd basfärger för mörkt läge."
+      }
+    ]
+  }
+}

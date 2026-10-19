@@ -1,0 +1,37 @@
+{
+  "gizmo": {
+    "title": "ਕੋਰਸ ਡਿਜ਼ਾਈਨ",
+    "description": "ਵਿੱਦਿਅਕ ਸਮੱਗਰੀ ਅਤੇ ਕੋਰਸ ਡਿਜ਼ਾਈਨ ਐਲੀਮੈਂਟਾਂ ਲਈ ਕੰਟੇਨਰ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "courseIdentifier",
+        "title": "ਕੋਰਸ ਪਛਾਣਕਰਤਾ",
+        "description": "OER ਸਕੀਮਾ: ਕੋਰਸ ਦਾ ਪਛਾਣਕਰਤਾ, ਜਿਵੇਂ MATH-100।"
+      },
+      {
+        "property": "termOffered",
+        "title": "ਪੇਸ਼ ਕੀਤੀ ਮਿਆਦ",
+        "description": "OER ਸਕੀਮਾ: ਉਹ ਮਿਆਦ ਜਿਸ ਦੌਰਾਨ ਕੋਰਸ ਪੇਸ਼ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।"
+      },
+      {
+        "property": "deliveryFormat",
+        "title": "ਡਿਲੀਵਰੀ ਫ਼ਾਰਮੈਟ",
+        "description": "OER ਸਕੀਮਾ: ਕੋਰਸ ਪ੍ਰਦਾਨ ਕਰਨ ਲਈ ਵਰਤਿਆ ਫ਼ਾਰਮੈਟ (ਜਿਵੇਂ ਆਹਮੋ-ਸਾਹਮਣੇ, ਔਨਲਾਈਨ, ਹਾਈਬ੍ਰਿਡ)।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "primaryInstructor",
+        "title": "ਮੁੱਖ ਅਧਿਆਪਕ",
+        "description": "OER ਸਕੀਮਾ: ਕੋਰਸ ਲਈ ਮੁੱਖ ਅਧਿਆਪਕ।"
+      },
+      {
+        "property": "syllabus",
+        "title": "ਸਿਲੇਬਸ URL",
+        "description": "OER ਸਕੀਮਾ: ਕੋਰਸ ਸਿਲੇਬਸ ਦਾ URL।"
+      }
+    ]
+  }
+}

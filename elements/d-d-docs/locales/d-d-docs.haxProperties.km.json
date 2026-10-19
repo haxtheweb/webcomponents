@@ -1,0 +1,17 @@
+{
+  "gizmo": {
+    "title": "Design, Develop, Destroy",
+    "description": "ការអនុវត្តប្រព័ន្ធរចនាសម្រាប់ HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "option",
+        "title": "ជម្រើសដែលត្រូវបង្ហាញ",
+        "options": {
+          "*": "មគ្គុទ្ទេសក៍រចនាប័ទ្មពេញលេញ"
+        }
+      }
+    ]
+  }
+}

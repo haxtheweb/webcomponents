@@ -1,0 +1,49 @@
+{
+  "gizmo": {
+    "title": "রেট্রো কার্ড",
+    "description": "রেট্রো ডিজাইনের সাধারণ কার্ড।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "কার্ডের প্রধান শিরোনাম।"
+      },
+      {
+        "property": "url",
+        "description": "কার্ডে ক্লিক করলে যে URL খুলবে।"
+      },
+      {
+        "property": "subtitle",
+        "title": "উপশিরোনাম",
+        "description": "কার্ডের উপশিরোনাম।"
+      },
+      {
+        "property": "tags",
+        "title": "ট্যাগ",
+        "description": "কমা দিয়ে আলাদা করা ট্যাগ।"
+      },
+      {
+        "property": "mediaSource",
+        "title": "মিডিয়া সোর্স",
+        "description": "প্রধান মিডিয়া সোর্স।"
+      },
+      {
+        "property": "hoverSource",
+        "title": "হোভার করলে সোর্স",
+        "description": "কার্ডে হোভার বা সক্রিয় করলে দেখানো মিডিয়া সোর্স।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "পুরো কার্ডে প্রয়োগ করা অ্যাকসেন্ট রং।"
+      },
+      {
+        "property": "dark",
+        "title": "ডার্ক",
+        "description": "ডার্ক মোডের মূল রং ব্যবহার করুন।"
+      }
+    ]
+  }
+}

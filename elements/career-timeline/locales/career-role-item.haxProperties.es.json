@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Puesto de trayectoria",
+    "description": "Un puesto individual dentro de una organización"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Título"
+      },
+      {
+        "property": "startDate",
+        "title": "Fecha de inicio"
+      },
+      {
+        "property": "endDate",
+        "title": "Fecha de fin (opcional)"
+      },
+      {
+        "property": "skills",
+        "title": "Habilidades asociadas",
+        "description": "Selecciona el botón + para empezar a añadir habilidades"
+      }
+    ]
+  }
+}

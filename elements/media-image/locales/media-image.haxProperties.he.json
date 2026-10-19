@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "תמונה משופרת",
+    "description": "דרך להצגת תמונות עם שיפורים מגוונים."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "מקור",
+        "description": "כתובת ה-URL של התמונה."
+      },
+      {
+        "property": "alt",
+        "title": "טקסט חלופי",
+        "description": "טקסט המתאר את התמונה למשתמשים עיוורים."
+      },
+      {
+        "property": "link",
+        "title": "קישור",
+        "description": "קישור התמונה לכתובת URL"
+      },
+      {
+        "property": "card",
+        "title": "כרטיס",
+        "description": "החלת צל כדי ליצור מראה של כרטיס מורם."
+      },
+      {
+        "property": "box",
+        "title": "תיבה",
+        "description": "החלת תיבה חזותית סביב התמונה."
+      },
+      {
+        "property": "offset",
+        "title": "היסט",
+        "description": "החלת היסט שמאלי או ימני לתמונה.",
+        "options": {
+          "none": "ללא",
+          "wide": "רחב",
+          "narrow": "צר"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "מקור הציטוט",
+        "description": "מובאה עבור התמונה."
+      },
+      {
+        "property": "caption",
+        "title": "כיתוב",
+        "description": "כיתוב לתמונה."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "כותרת האיור",
+        "description": "כותרת לתווית האיור."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "תיאור האיור",
+        "description": "תיאור לתווית האיור."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "תמונה ממוזערת",
+        "description": "מקור התמונה הממוזערת. מציג תמונה ממוזערת אך פותח את המקור המלא בחלון."
+      },
+      {
+        "property": "round",
+        "title": "תמונה עגולה",
+        "description": "חיתוך מראה התמונה לצורת עיגול."
+      },
+      {
+        "property": "disableZoom",
+        "title": "השבתת חלון התמונה",
+        "description": "השבתת פתיחת התמונה בחלון בודק התמונות בלחיצה."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "עיבוד כ-markdown",
+        "description": "עיבוד הכיתוב והמובאה כ-markdown."
+      }
+    ]
+  }
+}

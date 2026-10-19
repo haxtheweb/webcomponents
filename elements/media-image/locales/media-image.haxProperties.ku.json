@@ -1,0 +1,89 @@
+{
+  "gizmo": {
+    "title": "Wêneyê Pêşxistî",
+    "description": "Rêyek ji bo pêşkêşkirina wêneyan bi pêşxistinên cuda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Çavkanî",
+        "description": "URL ji bo wêneyê."
+      },
+      {
+        "property": "alt",
+        "title": "Nivîsa alternatîf",
+        "description": "Nivîs ji bo danasîna wêneyê ji bikarhênerên nabîna re."
+      },
+      {
+        "property": "link",
+        "title": "Girêdan",
+        "description": "Wêneyê bi URLyekê ve girê bide"
+      },
+      {
+        "property": "card",
+        "title": "Kart",
+        "description": "Siyekê bisepîne da ku wekî karteke bilindkirî xuya bike."
+      },
+      {
+        "property": "box",
+        "title": "Qutî",
+        "description": "Qutiyeke dîtbarî li dora wêneyê bisepîne."
+      },
+      {
+        "property": "offset",
+        "title": "Dûrkirin",
+        "description": "Dûrkirineke çep an rast li wêneyê bisepîne.",
+        "options": {
+          "none": "tune",
+          "wide": "fireh",
+          "narrow": "teng"
+        }
+      },
+      {
+        "property": "citation",
+        "title": "Jêgirtin",
+        "description": "Jêgirtin ji bo wêneyê."
+      },
+      {
+        "property": "caption",
+        "title": "Binnivîs",
+        "description": "Binnivîs ji bo wêneyê."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Sernavê Wêneyê",
+        "description": "Sernav ji bo etîketa wêneyê."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Danasîna Wêneyê",
+        "description": "Danasîn ji bo etîketa wêneyê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "thumbnail",
+        "title": "Wêneyê biçûk",
+        "description": "Çavkaniya wêneyê biçûk. Wêneyê biçûk nîşan dide lê çavkaniya tevahî di modalê de vedike."
+      },
+      {
+        "property": "round",
+        "title": "Wêneyê girover",
+        "description": "Xuyanga wêneyê wekî xelekê qut dike."
+      },
+      {
+        "property": "disableZoom",
+        "title": "Modala wêneyê neçalak bike",
+        "description": "Pêşî li tikandinên ku wêneyê di diyaloga venêrîna wêneyê de vedikin bigire."
+      }
+    ],
+    "developer": [
+      {
+        "property": "asMd",
+        "title": "Wekî markdown nîşan bide",
+        "description": "Binnivîs û jêgirtinê wekî markdown nîşan bide."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "Isi Kaca Acak",
+    "description": "Tampilake elemen tingkat ndhuwur acak saka kaca sing dipilih"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Kaca",
+        "description": "Pilih kaca kanggo njupuk isi acak. Elemen bakal nampilake salah siji elemen HTML tingkat ndhuwur saka kaca iki kanthi acak."
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "gizmo": {
+    "title": "Kodo pavyzdys",
+    "description": "Puslapyje paryškintas kodo pavyzdys"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Kodo paryškinimas",
+        "description": "Sintaksės paryškinimas, taikomas kodo sričiai",
+        "options": {
+          "javascript": "JavaScript",
+          "html": "HTML",
+          "css": "CSS",
+          "xml": "XML",
+          "json": "JSON duomenys",
+          "yaml": "YAML",
+          "php": "PHP"
+        }
+      },
+      {
+        "property": "copyClipboardButton",
+        "title": "Kopijavimo į iškarpinę mygtukas",
+        "description": "mygtukas viršutiniame dešiniajame kampe su užrašu „kopijuoti į iškarpinę“"
+      },
+      {
+        "property": "highlightStart",
+        "title": "Paryškinimo pradžia",
+        "description": "Eilutės numeris, nuo kurio pradėti paryškinimą"
+      },
+      {
+        "property": "highlightEnd",
+        "title": "Paryškinimo pabaiga",
+        "description": "Eilutė, kurioje baigti paryškinimą"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "gizmo": {
+    "title": "Βαθμολογία με αστέρια",
+    "description": "Widget εμφάνισης βαθμολογίας ή κουμπί για βαθμολόγηση."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "score",
+        "title": "Βαθμολογία",
+        "description": "Τρέχουσα τιμή βαθμολογίας."
+      },
+      {
+        "property": "possible",
+        "title": "Μέγιστη",
+        "description": "Μέγιστη δυνατή βαθμολογία."
+      },
+      {
+        "property": "numStars",
+        "title": "Αριθμός αστεριών",
+        "description": "Αριθμός αστεριών προς εμφάνιση."
+      },
+      {
+        "property": "interactive",
+        "title": "Διαδραστικό",
+        "description": "Να επιτρέπεται στον χρήστη να ορίζει τη βαθμολογία."
+      },
+      {
+        "property": "rubricScaleMode",
+        "title": "Λειτουργία κλίμακας ρουμπρίκας",
+        "description": "Εκπομπή μεταδεδομένων OER Schema RubricScale και RubricLevel (levelOrdinal/levelPoints) για κάθε αστέρι."
+      }
+    ]
+  }
+}

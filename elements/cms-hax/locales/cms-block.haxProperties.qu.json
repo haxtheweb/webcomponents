@@ -1,0 +1,20 @@
+{
+  "gizmo": {
+    "title": "CMS T'aqa",
+    "description": "Backend-pi rikuchisqa CMS t'aqa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "blockModule",
+        "title": "Módulo",
+        "description": "CMS-nchikmanta apamunapaq modulo"
+      },
+      {
+        "property": "blockDelta",
+        "title": "Delta",
+        "description": "CMS-nchikmanta apamunapaq t'aqap deltan"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gizmo": {
+    "title": "Karjääriroll",
+    "description": "Üksik roll organisatsioonis"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Pealkiri"
+      },
+      {
+        "property": "startDate",
+        "title": "Alguskuupäev"
+      },
+      {
+        "property": "endDate",
+        "title": "Lõppkuupäev (valikuline)"
+      },
+      {
+        "property": "skills",
+        "title": "Seotud oskused",
+        "description": "Oskuste lisamise alustamiseks vali nupp +"
+      }
+    ]
+  }
+}

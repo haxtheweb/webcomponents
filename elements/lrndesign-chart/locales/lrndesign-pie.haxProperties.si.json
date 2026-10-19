@@ -1,0 +1,111 @@
+{
+  "gizmo": {
+    "title": "වට ප්‍රස්ථාරය",
+    "description": "CSV එකක් මත පදනම්ව ප්‍රවේශ විය හැකි ප්‍රස්ථාරයක් සාදයි."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "උච්චාරණ වර්ණය",
+        "description": "විකල්ප උච්චාරණ වර්ණයක්."
+      },
+      {
+        "title": "අඳුරු තේමාව",
+        "description": "අඳුරු තේමාව සක්‍රිය කරන්න"
+      },
+      {
+        "title": "CSV ගොනුව",
+        "description": "CSV එකකින් දත්ත පූරණය කරන්න."
+      },
+      {
+        "title": "ප්‍රස්ථාර මාතෘකාව",
+        "description": "ඔබේ ප්‍රස්ථාරය සඳහා ප්‍රවේශ විය හැකි alt පෙළ."
+      },
+      {
+        "title": "ප්‍රස්ථාර විස්තරය",
+        "description": "ඔබේ ප්‍රස්ථාරයේ ප්‍රවේශ විය හැකි විස්තරය."
+      },
+      {
+        "title": "පරිමාණ නාමය",
+        "description": "ප්‍රස්ථාරයේ පළල:උස අනුපාතය ($ct-scales සහ $ct-scales-names සඳහා https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings බලන්න).",
+        "options": {
+          "ct-square": "ct-square (1:1)",
+          "ct-minor-second": "ct-minor-second (15:16)",
+          "ct-major-second": "ct-major-second (8:9)",
+          "ct-minor-third": "ct-minor-third (5:6)",
+          "ct-major-third": "ct-major-third (4:5)",
+          "ct-perfect-fourth": "ct-perfect-fourth (3:4)",
+          "ct-perfect-fifth": "ct-perfect-fifth (2:3)",
+          "ct-minor-sixth": "ct-minor-sixth (5:8)",
+          "ct-golden-section": "ct-golden-section (1:1.618)",
+          "ct-major-sixth": "ct-major-sixth (3:5)",
+          "ct-minor-seventh": "ct-minor-seventh (9:16)",
+          "ct-major-seventh": "ct-major-seventh (8:15)",
+          "ct-octave": "ct-octave (1:2)",
+          "ct-major-tenth": "ct-major-tenth (2:5)",
+          "ct-major-eleventh": "ct-major-eleventh (3:8)",
+          "ct-major-twelfth": "ct-major-twelfth (1:3)",
+          "ct-double-octave": "ct-double-octave (1:4)"
+        }
+      },
+      {
+        "title": "ඩෝනට්"
+      },
+      {
+        "title": "ලේබලය පෙන්වන්න"
+      },
+      {
+        "title": "ආරම්භක කෝණය"
+      },
+      {
+        "title": "පිරවුම"
+      },
+      {
+        "title": "එකතුව",
+        "description": "ඔබට නියම කළ හැකි විකල්ප එකතුව. එකතුවක් නියම කිරීමෙන්, සම්පූර්ණ වට ප්‍රස්ථාරයක් ඇඳීමට ශ්‍රේණියේ අගයන්ගේ එකතුව මෙම අගයට සමාන විය යුතුය. වට ප්‍රස්ථාරයක කොටස් පමණක් හෝ මිනුම් ප්‍රස්ථාර ඇඳීමට ඔබට මෙම පරාමිතිය භාවිත කළ හැක."
+      },
+      {
+        "title": "හිස් අගයන් නොසලකා හරින්න",
+        "description": "අනවශ්‍ය පෙති සහ ලේබල් ඇඳීම වැළැක්වීමට හිස් අගයන් නොසලකා හරිනු ලැබේ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "දත්ත ප්‍රතිලෝම කරන්න",
+        "description": "ලේබල්, ශ්‍රේණි අනුපිළිවෙළ මෙන්ම සම්පූර්ණ ශ්‍රේණි දත්ත අරා ඇතුළුව දත්ත ප්‍රතිලෝම කරන්න."
+      },
+      {
+        "title": "HTML වගුව",
+        "description": "විකල්ප: දත්ත HTML වගුවක් ලෙස පූරණය කරන්න."
+      },
+      {
+        "title": "ඩෝනට් රේඛා පළල"
+      },
+      {
+        "title": "ඝන ඩෝනට්",
+        "description": "ඩෝනට් කොටස් රේඛා වෙනුවට හැඩ ලෙස අඳින්න."
+      },
+      {
+        "title": "ලේබල් දිශාව",
+        "description": "ඩෝනට් කොටස් රේඛා වෙනුවට හැඩ ලෙස අඳින්න.",
+        "options": {
+          "neutral": "මධ්‍යස්ථ",
+          "explode": "පිටතට",
+          "implode": "ඇතුළට"
+        }
+      },
+      {
+        "title": "ලේබල් ඕෆ්සෙට්",
+        "description": "අරයේ අඩක දුර වන සම්මත පිහිටීමේ සිට ලේබල් පිහිටීමේ ඕෆ්සෙට්. මෙම අගය ධන හෝ ඍණ විය හැක. ධන අගයන් ලේබලය කේන්ද්‍රයෙන් ඈතට තබයි."
+      },
+      {
+        "title": "ලේබල් පිහිටීම",
+        "options": {
+          "inside": "ඇතුළත",
+          "outside": "පිටත",
+          "center": "මැද"
+        }
+      }
+    ]
+  }
+}

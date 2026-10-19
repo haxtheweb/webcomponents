@@ -1,0 +1,15 @@
+{
+  "gizmo": {
+    "title": "图片说明",
+    "description": "图片的说明文字。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "说明文字",
+        "description": "显示在图片下方的文字。"
+      }
+    ]
+  }
+}
