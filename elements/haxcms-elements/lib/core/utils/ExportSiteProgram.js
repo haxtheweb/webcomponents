@@ -14,6 +14,7 @@ import { toJS } from "mobx";
 import { SITE_EXPORT_FORMATS } from "./import-export-options.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForAppHAXSystemApiRegistryReady } from "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js";
+import { haxcmsApiMessage } from "./HAXCMSApiMessages.js";
 
 // English defaults for messages these helpers show. They run with `this`
 // bound to haxcms-site-editor-ui, so translations come from its (haxcms
@@ -398,10 +399,10 @@ export async function _downloadSiteArchive() {
       typeof response.status === "number" &&
       response.status >= 400
     ) {
-      const message =
-        typeof response.message === "string" && response.message
-          ? response.message
-          : _t(this, "siteArchiveDownloadNotAvailable");
+      const message = haxcmsApiMessage(
+        response,
+        _t(this, "siteArchiveDownloadNotAvailable"),
+      );
       this.clearProcessingVisual();
       HAXStore.toast(message, 3000, "fit-bottom");
       return;

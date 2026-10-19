@@ -4,6 +4,7 @@ import { toJS, autorun } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { store } from "./AppHaxStore.js";
+import { apiMessageParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
 import {
   configureAppHAXSystemApiRegistry,
   waitForAppHAXSystemApiRegistryReady,
@@ -428,13 +429,14 @@ export class AppHaxBackendAPI extends LitElement {
         "X-HAXCMS-User-Token header is required for this endpoint",
         "Invalid X-HAXCMS-User-Token header",
       ];
-      const denialMessage =
-        response &&
-        typeof response === "object" &&
-        typeof response.message === "string"
-          ? response.message
-          : "";
-      if (denialMessage && HARD_DENIAL_MESSAGES.indexOf(denialMessage) !== -1) {
+      // both backends send a message code (issues#3157); the English list
+      // covers backends from before codes existed
+      const HARD_DENIAL_CODES = ["ACCESS_DENIED", "USER_TOKEN_REQUIRED"];
+      const denial = apiMessageParts(response);
+      if (
+        (denial.code && HARD_DENIAL_CODES.indexOf(denial.code) !== -1) ||
+        (denial.message && HARD_DENIAL_MESSAGES.indexOf(denial.message) !== -1)
+      ) {
         // Hard denial: surface the error, leave the session intact.
         this._clearRetryCount(retryKey);
         return true;

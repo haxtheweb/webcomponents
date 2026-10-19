@@ -312,17 +312,40 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
           } catch (e) {
             body = null;
           }
-          return {
+          // HAXcms backends put the message (plus a translatable `code`
+          // and `params`, issues#3157) in body.data; older shapes use the
+          // top level or data.error
+          let holder = {};
+          if (body && typeof body === "object") {
+            if (typeof body.message === "string") {
+              holder = body;
+            } else if (
+              body.data &&
+              typeof body.data === "object" &&
+              (typeof body.data.message === "string" ||
+                typeof body.data.error === "string")
+            ) {
+              holder = body.data;
+            }
+          }
+          const result = {
             status: response.status,
             data: null,
             message:
-              body &&
-              typeof body === "object" &&
-              typeof body.message === "string"
-                ? body.message
-                : "",
+              typeof holder.message === "string"
+                ? holder.message
+                : typeof holder.error === "string"
+                  ? holder.error
+                  : "",
             body: body,
           };
+          if (typeof holder.code === "string") {
+            result.code = holder.code;
+            if (holder.params && typeof holder.params === "object") {
+              result.params = holder.params;
+            }
+          }
+          return result;
         };
         let data = null;
         switch (method) {

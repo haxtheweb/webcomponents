@@ -755,6 +755,52 @@ describe("call() method", () => {
     expect(result.body).to.deep.equal({ message: "Forbidden" });
   });
 
+  it("reads a HAXcms data.message envelope and keeps its code and params", async () => {
+    const name = "@test/callNonOkEnvelope";
+    MicroFrontendRegistry.add({
+      endpoint: "https://example.com/api",
+      name: name,
+    });
+    const envelope = {
+      status: 404,
+      data: {
+        message: 'Item not found for idOrSlug "intro"',
+        code: "ITEM_NOT_FOUND",
+        params: { idOrSlug: "intro" },
+      },
+    };
+    globalThis.fetch = () =>
+      Promise.resolve(
+        makeMockResponse({ ok: false, status: 404, jsonData: envelope }),
+      );
+    const result = await MicroFrontendRegistry.call(name, {});
+    expect(result.status).to.equal(404);
+    expect(result.data).to.equal(null);
+    expect(result.message).to.equal('Item not found for idOrSlug "intro"');
+    expect(result.code).to.equal("ITEM_NOT_FOUND");
+    expect(result.params).to.deep.equal({ idOrSlug: "intro" });
+    expect(result.body).to.deep.equal(envelope);
+  });
+
+  it("reads data.error when the envelope has no message", async () => {
+    const name = "@test/callNonOkDataError";
+    MicroFrontendRegistry.add({
+      endpoint: "https://example.com/api",
+      name: name,
+    });
+    globalThis.fetch = () =>
+      Promise.resolve(
+        makeMockResponse({
+          ok: false,
+          status: 400,
+          jsonData: { status: 400, data: { error: "Conversion failed" } },
+        }),
+      );
+    const result = await MicroFrontendRegistry.call(name, {});
+    expect(result.message).to.equal("Conversion failed");
+    expect(result).to.not.have.property("code");
+  });
+
   it("returns empty message when non-ok body has no message field", async () => {
     const name = "@test/callNonOkNoMessage";
     MicroFrontendRegistry.add({

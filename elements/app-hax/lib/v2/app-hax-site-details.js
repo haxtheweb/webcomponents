@@ -8,6 +8,7 @@ import { store } from "./AppHaxStore.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./app-hax-confirmation-modal.js";
+import { haxcmsApiMessage } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
 
 // wrapper to simplify the slug if it has additional values on it
 function makeSlug(url) {
@@ -372,12 +373,12 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
         typeof opResponse.status === "number" &&
         opResponse.status >= 400
       ) {
-        const errMsg =
-          typeof opResponse.message === "string" && opResponse.message
-            ? opResponse.message
-            : this.t.siteOperationFailed
-                .replace("{siteName}", () => site.metadata.site.name)
-                .replace("{operation}", () => (this._operationVerb(op)));
+        const errMsg = haxcmsApiMessage(
+          opResponse,
+          this.t.siteOperationFailed
+            .replace("{siteName}", () => site.metadata.site.name)
+            .replace("{operation}", () => this._operationVerb(op)),
+        );
         store.toast(errMsg, 3000, { hat: "random" });
       } else {
         store.toast(

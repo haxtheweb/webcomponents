@@ -1365,8 +1365,15 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       );
       const status = d && d.status ? d.status : 0;
       if (status !== 200) {
+        // HAXcms registers a translator for backend messages (issues#3157)
         this.__fileActionsError =
-          d && d.data && d.data.message ? d.data.message : this.t.fileOpFailed;
+          typeof globalThis.haxcmsApiMessage === "function"
+            ? globalThis.haxcmsApiMessage(d, this.t.fileOpFailed)
+            : d && typeof d.message === "string" && d.message
+              ? d.message
+              : d && d.data && d.data.message
+                ? d.data.message
+                : this.t.fileOpFailed;
         HAXStore.toast(this.__fileActionsError, 4000);
         return;
       }

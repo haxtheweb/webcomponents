@@ -13,6 +13,7 @@ import "@haxtheweb/hax-body/lib/hax-upload-field.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForAppHAXSystemApiRegistryReady } from "../app-hax-system-api-registry.js";
 import "./haxcms-system-allowed-blocks.js";
+import { haxcmsApiMessage } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
 
 class HAXCMSSystemSettings extends I18NMixin(DDD) {
   static get tag() {
@@ -1637,26 +1638,8 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
   }
 
   _schemaOperationResponseMessage(response = null, fallback = "") {
-    if (
-      response &&
-      response.__failed &&
-      typeof response.__failed.message === "string" &&
-      response.__failed.message
-    ) {
-      return response.__failed.message;
-    }
-    if (response && typeof response.message === "string" && response.message) {
-      return response.message;
-    }
-    if (
-      response &&
-      response.data &&
-      typeof response.data.message === "string" &&
-      response.data.message
-    ) {
-      return response.data.message;
-    }
-    return fallback || this.t.requestFailed;
+    // backend message, translated by its code when possible (issues#3157)
+    return haxcmsApiMessage(response, fallback || this.t.requestFailed);
   }
 
   _parseUploadJsonResponse(xhr = null) {

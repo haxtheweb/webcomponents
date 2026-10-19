@@ -8,6 +8,7 @@ import "@haxtheweb/promise-progress/promise-progress.js";
 import "./app-hax-simple-hat-progress.js";
 import { store } from "./AppHaxStore.js";
 import { toJS } from "mobx";
+import { haxcmsApiMessage } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
 
 export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   static get tag() {
@@ -975,13 +976,10 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       ) {
         this.currentStep = 1;
         this.isCreating = false;
-        this.errorMessage =
-          createResult &&
-          typeof createResult === "object" &&
-          typeof createResult.message === "string" &&
-          createResult.message
-            ? createResult.message
-            : this.t.siteCreationFailed;
+        this.errorMessage = haxcmsApiMessage(
+          createResult,
+          this.t.siteCreationFailed,
+        );
         return;
       }
 

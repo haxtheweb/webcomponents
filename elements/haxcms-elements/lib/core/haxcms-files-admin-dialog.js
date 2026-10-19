@@ -14,6 +14,7 @@ import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/hax-body/lib/hax-file-actions.js";
+import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 
 const FILE_TYPE_FILTER_ITEMS = [
   { value: "", text: "All types", key: "allTypes" },
@@ -759,14 +760,9 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     }
   }
   _em(resp, d, fb) {
-    if (
-      d &&
-      d.__failed &&
-      typeof d.__failed.message === "string" &&
-      d.__failed.message
-    )
-      return d.__failed.message;
-    if (d && typeof d.message === "string" && d.message) return d.message;
+    // backend message, translated by its code when possible (issues#3157)
+    const apiText = haxcmsApiMessage(d, "");
+    if (apiText) return apiText;
     if (resp && resp.status) return `${fb} (${resp.status})`;
     return fb;
   }
@@ -816,17 +812,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   }
   _messageFromResponse(response, fallbackMessage) {
     if (!response || typeof response !== "object") return fallbackMessage;
-    if (typeof response.message === "string" && response.message) {
-      return response.message;
-    }
-    if (
-      response.data &&
-      typeof response.data === "object" &&
-      typeof response.data.message === "string" &&
-      response.data.message
-    ) {
-      return response.data.message;
-    }
+    const apiText = haxcmsApiMessage(response, "");
+    if (apiText) return apiText;
     const status = this._statusCode(response);
     if (status > 0) {
       return `${fallbackMessage} (${status})`;
@@ -1250,7 +1237,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           }
         } else {
           failCount++;
-          if (result && result.message) lastError = result.message;
+          const resultText = haxcmsApiMessage(result, "");
+          if (resultText) lastError = resultText;
         }
       }
       await this.refreshFiles();
