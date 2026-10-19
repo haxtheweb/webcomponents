@@ -272,6 +272,10 @@ globalThis.DisqusSingleton.requestAvailability = () => {
       "afterbegin",
       globalThis.DisqusSingleton.instance,
     );
+  } else if (!globalThis.DisqusSingleton.instance && globalThis.document) {
+    // no body to attach to (server side render): a detached instance still
+    // answers importers that use the singleton at import time
+    globalThis.DisqusSingleton.instance = new DisqusBroker();
   }
   return globalThis.DisqusSingleton.instance;
 };

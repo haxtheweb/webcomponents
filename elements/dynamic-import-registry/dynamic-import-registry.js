@@ -20,6 +20,13 @@ globalThis.DynamicImportRegistry.requestAvailability = () => {
         globalThis.DynamicImportRegistry.instance,
       );
     }
+  } else if (
+    !globalThis.DynamicImportRegistry.instance &&
+    globalThis.document
+  ) {
+    // no body to attach to (server side render): a detached instance still
+    // answers importers that use the singleton at import time
+    globalThis.DynamicImportRegistry.instance = new DynamicImportRegistry();
   }
   return globalThis.DynamicImportRegistry.instance;
 };

@@ -268,6 +268,10 @@ globalThis.DesignSystemManager.requestAvailability = () => {
     let ds = globalThis.document.createElement("design-system");
     globalThis.document.body.appendChild(ds);
     globalThis.DesignSystemManager.instance = ds;
+  } else if (!globalThis.DesignSystemManager.instance && globalThis.document) {
+    // no body to attach to (server side render): a detached instance still
+    // answers importers that use the singleton at import time
+    globalThis.DesignSystemManager.instance = new DesignSystem();
   }
   return globalThis.DesignSystemManager.instance;
 };

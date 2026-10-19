@@ -187,10 +187,12 @@ globalThis.WCAutoload.postLoaded = (e) => {
   }, 0);
 };
 // listen for new tags being registered
-globalThis.addEventListener(
-  "dynamic-import-registry--new-registration",
-  globalThis.WCAutoload.postLoaded,
-);
+if (globalThis.addEventListener) {
+  globalThis.addEventListener(
+    "dynamic-import-registry--new-registration",
+    globalThis.WCAutoload.postLoaded,
+  );
+}
 /**
  * `wc-registry`
  * `optionally build the registry from the innerHTML of an element`
