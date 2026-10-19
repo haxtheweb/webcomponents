@@ -145,7 +145,9 @@ export class IcsRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
   get displayLocale() {
     return (
       this.lang ||
-      (globalThis.document && globalThis.document.documentElement.lang) ||
+      (globalThis.document &&
+        globalThis.document.documentElement &&
+        globalThis.document.documentElement.lang) ||
       undefined
     );
   }

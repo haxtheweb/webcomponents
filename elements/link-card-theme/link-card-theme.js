@@ -67,7 +67,9 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     this._i18nProfileName = this.profileName;
     this.profileDescription = "";
     this.paletteAnnouncement = "";
-    const storedPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette");
+    const storedPalette = UserScaffoldInstance
+      ? UserScaffoldInstance.readMemory("HAXCMSSitePalette")
+      : null;
     this.dataPalette =
       storedPalette === null || storedPalette === ""
         ? "0"

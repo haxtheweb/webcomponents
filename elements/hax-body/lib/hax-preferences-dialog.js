@@ -59,7 +59,7 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
   }
   updateSchema() {
     // JSON schema object needs delayed to ensure page repaints the form
-    let lang = I18NManagerStore.lang;
+    let lang = I18NManagerStore.lang || "en";
     if (lang.indexOf("-")) {
       lang = lang.split("-")[0];
     }

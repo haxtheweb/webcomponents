@@ -83,9 +83,11 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
         });
       }),
     );
-    globalThis.document.body.style.backgroundImage = `url(${
-      new URL("assets/header.jpg", import.meta.url).href
-    }/../productionzbg.jpg)`;
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.style.backgroundImage = `url(${
+        new URL("assets/header.jpg", import.meta.url).href
+      }/../productionzbg.jpg)`;
+    }
   }
 
   HAXCMSGlobalStyleSheetContent() {

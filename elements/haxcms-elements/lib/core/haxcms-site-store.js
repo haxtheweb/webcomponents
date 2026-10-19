@@ -666,14 +666,16 @@ class Store {
    */
   get routerManifest() {
     const manifest = this.manifest;
-    globalThis.document.body.dispatchEvent(
-      new CustomEvent("json-outline-schema-changed", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: manifest,
-      }),
-    );
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.dispatchEvent(
+        new CustomEvent("json-outline-schema-changed", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: manifest,
+        }),
+      );
+    }
     if (manifest && typeof manifest.items !== "undefined") {
       let manifestItems = manifest.items.map((i) => {
         let parentLocation = null;
@@ -1170,6 +1172,9 @@ class Store {
    * Return a clone of the manifest items list
    */
   getManifestItems(cloneIt = true) {
+    if (!this.manifest) {
+      return [];
+    }
     if (cloneIt) {
       return toJS(this.manifest.items);
     }

@@ -128,7 +128,7 @@ class SiteRecentContentBlock extends I18NMixin(LitElement) {
           start-index="${this.startIndex}"
         >
         </site-query>
-        ${this.__items.map(
+        ${(this.__items || []).map(
           (item) => html`
             <div class="item-wrap" data-id="${item.id}">
               <div class="image-wrapper">

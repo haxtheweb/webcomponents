@@ -251,7 +251,9 @@ export const UIRenderPieces = function (SuperClass) {
           for="activeassignmentbtn"
           auto
         >
-          ${this.database.assignments[this.activeAssignment]
+          ${this.database &&
+          this.database.assignments &&
+          this.database.assignments[this.activeAssignment]
             ? html`
                 <h3>
                   ${this.database.assignments[this.activeAssignment].name}

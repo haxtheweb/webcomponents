@@ -689,7 +689,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // full on store that does the heavy lifting
     this.store = store;
     // centralized sound source to not flood sounds when playing
-    this.sound = new Audio();
+    this.sound = typeof Audio !== "undefined" ? new Audio() : null;
     // @todo need this from app deploy itself
     autorun(() => {
       const _mobx_val_0 = toJS(store.isNewUser);

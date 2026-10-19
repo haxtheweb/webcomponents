@@ -862,7 +862,9 @@ export const displayBehaviors = function (SuperClass) {
       this.__tempDiv =
         this.__tempDiv || globalThis.document.createElement("template");
       this.__tempDiv.innerHTML = str;
-      let temp = this.__tempDiv.content.cloneNode(true);
+      let temp = this.__tempDiv.content
+        ? this.__tempDiv.content.cloneNode(true)
+        : null;
       return temp;
     }
 

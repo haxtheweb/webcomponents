@@ -981,7 +981,9 @@ class SimpleColorsSharedStyles extends LitElement {
           : "colorColor",
       aa = isLarge ? "aaLarge" : "aa",
       index = this.shadeToIndex(colorShade),
-      range = this.contrasts[hasGrey][aa][index];
+      range = this.contrasts
+        ? this.contrasts[hasGrey][aa][index]
+        : { min: 0, max: -1 };
     return Array(range.max - range.min + 1)
       .fill()
       .map((_, idx) => range.min + idx);

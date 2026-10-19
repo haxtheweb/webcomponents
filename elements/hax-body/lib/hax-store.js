@@ -3840,7 +3840,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.appList = [];
     this.gizmoList = [];
     this.recentGizmoList =
-      UserScaffoldInstance.readMemory("recentGizmoList") || [];
+      (UserScaffoldInstance &&
+        UserScaffoldInstance.readMemory("recentGizmoList")) ||
+      [];
     this.platformConfig = {};
     // Keep a master list of required blocks for the baseline HAX experience
     // NOTE: these can't be disabled by the user's skeleton
@@ -4097,7 +4099,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // test for sandboxed env
     let test = globalThis.document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
-    globalThis.document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
+    if (globalThis.document && globalThis.document.body) {
+      globalThis.document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
+    }
     // mobx
     makeObservable(this, {
       daemonKeyCombo: observable,
@@ -5467,8 +5471,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
      * This
      */
     if (
-      globalThis.document.head.createShadowRoot ||
-      globalThis.document.head.attachShadow
+      globalThis.document.head &&
+      (globalThis.document.head.createShadowRoot ||
+        globalThis.document.head.attachShadow)
     ) {
       return true;
     } else {

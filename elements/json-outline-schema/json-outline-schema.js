@@ -142,7 +142,9 @@ class JsonOutlineSchema extends HTMLElement {
     if (globalThis.ShadyCSS) {
       globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    if (this.template.content) {
+      this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    }
   }
   /**
    * life cycle, element is removed from the DOM

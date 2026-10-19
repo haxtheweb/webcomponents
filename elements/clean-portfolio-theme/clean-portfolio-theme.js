@@ -103,7 +103,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       context: this,
       localesPath: new URL("./locales/", import.meta.url).href,
     });
-    this.dataPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette") || "";
+    this.dataPalette =
+      (UserScaffoldInstance &&
+        UserScaffoldInstance.readMemory("HAXCMSSitePalette")) ||
+      "";
     this.selectedTag = "";
     this.activeLayout = "text"; // text, media, listing
     // mobile menu

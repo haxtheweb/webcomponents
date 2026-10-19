@@ -415,7 +415,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     addButton(config, div) {
       let button = this._renderButton(config);
       div = div || this;
-      div.appendChild(button);
+      if (div && div.appendChild) div.appendChild(button);
       return button;
     }
     /**
@@ -897,7 +897,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           ? config.type
           : "div";
       let group = globalThis.document.createElement(type);
-      group.setAttribute("class", "group");
+      if (group.setAttribute) {
+        group.setAttribute("class", "group");
+      }
       Object.keys(config).forEach((key) => (group[key] = config[key]));
       return group;
     }

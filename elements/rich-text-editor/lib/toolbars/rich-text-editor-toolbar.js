@@ -1351,7 +1351,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     _renderButtonGroup(config) {
       let group = super._renderButtonGroup(config);
-      if (config.subtype) group.classList.add(config.subtype);
+      if (config.subtype && group.classList) group.classList.add(config.subtype);
       return group;
     }
 
