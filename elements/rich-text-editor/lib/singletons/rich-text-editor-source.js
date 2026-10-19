@@ -285,7 +285,7 @@ globalThis.RichTextEditorSource.requestAvailability = () => {
         globalThis.RichTextEditorSource.instance,
       );
     }
-    if (globalThis.document.head) {
+    if (globalThis.document && globalThis.document.head) {
       globalThis.document.head.appendChild(
         globalThis.RichTextEditorSource.stylesheet,
       );

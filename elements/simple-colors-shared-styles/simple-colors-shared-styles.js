@@ -1087,7 +1087,7 @@ globalThis.SimpleColorsSharedStyles.requestAvailability = () => {
     globalThis.SimpleColorsSharedStyles.stylesheet =
       globalThis.document.createElement("style");
     globalThis.SimpleColorsSharedStyles.stylesheet.innerHTML = `${SimpleColorsSharedStyles.styles[0].cssText}`;
-    if (globalThis.document.head) {
+    if (globalThis.document && globalThis.document.head) {
       globalThis.document.head.appendChild(
         globalThis.SimpleColorsSharedStyles.stylesheet,
       );
