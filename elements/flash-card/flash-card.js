@@ -143,8 +143,7 @@ export class FlashCard extends SchemaBehaviors(DDD) {
     let toastShowEventName = "simple-toast-show";
 
     if (this.status === "correct") {
-      toastColor = "green";Full suite (test:all equivalent) in Chromium: 11,924 passed, 7 failed. All 7 are load timing: each passes when its file runs alone, on this branch and on master (chat-agent, h-a-x a11y, lazy-import-discover, a11y-media-player transcript, grade-book filesystem, simple-popover orientation), plus simple-datetime, which fails on master too because of the container's locale.
-
+      toastColor = "green";
       toastIcon = "icons:thumb-up";
       toastText = "Correct!";
       this.makeItRain();
