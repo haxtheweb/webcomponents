@@ -98,7 +98,7 @@
           "protocol": "https",
           "url": "api.giphy.com",
           "data": {
-            "api_key": "mr3blNkTT0HeTvtyPPT4TIftqUSgyHoO"
+            "api_key": ""
           },
           "operations": {
             "browse": {

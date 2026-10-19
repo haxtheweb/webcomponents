@@ -50,7 +50,7 @@ globalThis.addEventListener("hax-store-ready", () => {
           protocol: "https",
           url: "www.googleapis.com/youtube/v3",
           data: {
-            key: "AIzaSyAF9zKXv-fxus9GNqn40SHzTn6F8A7h-Yo",
+            key: "",
           },
           operations: {
             browse: {
@@ -111,7 +111,7 @@ globalThis.addEventListener("hax-store-ready", () => {
           protocol: "https",
           url: "api.vimeo.com",
           data: {
-            access_token: "0a718b853bad87571d52e9fb554e0a43",
+            access_token: "",
           },
           operations: {
             browse: {
@@ -175,7 +175,7 @@ globalThis.addEventListener("hax-store-ready", () => {
           protocol: "https",
           url: "api.flickr.com",
           data: {
-            api_key: "43ccc969703b7afd4e2a1b16f02ce84e",
+            api_key: "",
           },
           operations: {
             browse: {
@@ -328,7 +328,7 @@ globalThis.addEventListener("hax-store-ready", () => {
           protocol: "https",
           url: "api.giphy.com",
           data: {
-            api_key: "mr3blNkTT0HeTvtyPPT4TIftqUSgyHoO",
+            api_key: "",
           },
           operations: {
             browse: {
@@ -659,7 +659,7 @@ globalThis.addEventListener("hax-store-ready", () => {
           url: "api.unsplash.com",
           data: {
             client_id:
-              "0e1fa3a203724415c10c03581e8db8a43e8bc8906ad934e0f321d28be16281ff",
+              "",
           },
           operations: {
             browse: {
