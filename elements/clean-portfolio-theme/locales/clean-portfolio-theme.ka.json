@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "ღუზის ბმული დაკოპირდა!",
+  "skipToContent": "შიგთავსზე გადასვლა",
+  "siteHome": "საიტის მთავარი",
+  "mainNavigation": "მთავარი ნავიგაცია",
+  "toggleMenu": "მენიუს გადართვა",
+  "changeTheme": "თემის შეცვლა",
+  "breadcrumb": "ნავიგაციის ჯაჭვი",
+  "tagFilter": "ტეგის ფილტრი:",
+  "all": "ყველა",
+  "pageNumberOfTotal": "გვერდის ნომერი: {current} / {total}",
+  "siteGenerated": "საიტი გენერირებულია: {date}",
+  "copyright": "საავტორო უფლება: {year} {author}",
+  "viewContentByTag": "კონტენტის ნახვა ტეგების მიხედვით",
+  "licenseGraphic": "{license} — გრაფიკა"
+}

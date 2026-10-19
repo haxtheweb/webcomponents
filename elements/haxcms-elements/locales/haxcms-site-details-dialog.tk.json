@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- adaty boýunça birinji sahypa --",
+  "details": "Jikme-jiklikler",
+  "title": "Ady",
+  "titleDescription": "Saýtyň ady",
+  "homePage": "Baş sahypa",
+  "homePageDescription": "Deslapky açylýan / baş sahypa hökmünde ulanyljak sahypa",
+  "advanced": "Giňişleýin",
+  "serviceWorker": "Dinamiki sahypa service worker goş",
+  "serviceWorkerDescription": "Ulanyjylar serweriň iň soňky çykyşyny derrew görmeli bolsa, muny öçüriň.",
+  "forceBrowserUpgrade": "Brauzeri täzelemäge mejbur et",
+  "forceBrowserUpgradeDescription": "Saýty ýüklemezden öň hemişe täzelenýän brauzerleri talap et.",
+  "unableToLoadSiteDetails": "Saýtyň maglumatlaryny ýükläp bolmady.",
+  "noSiteDetails": "Saýtyň maglumatlary ýok.",
+  "save": "Ýatda saklamak"
+}

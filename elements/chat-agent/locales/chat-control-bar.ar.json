@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "تنزيل السجل بصيغة txt",
+  "downloadChatLog": "تنزيل سجل المحادثة",
+  "resetChat": "إعادة تعيين المحادثة",
+  "toggleDataCollection": "تبديل جمع البيانات",
+  "dataCollection": "جمع البيانات",
+  "toggleDeveloperMode": "تبديل وضع المطور",
+  "exitFullView": "الخروج من العرض الكامل",
+  "enterFullView": "الدخول إلى العرض الكامل",
+  "hideInterface": "إخفاء الواجهة",
+  "resetChatConfirm": "إعادة تعيين المحادثة؟",
+  "downloadBeforeResetConfirm": "هل تريد تنزيل سجل المحادثة قبل إعادة التعيين؟",
+  "dataCollectionOn": "ستُستخدم محادثاتك لتدريب نماذج AI الخاصة بنا",
+  "dataCollectionOff": "لن تُستخدم محادثاتك لتدريب نماذج AI الخاصة بنا"
+}

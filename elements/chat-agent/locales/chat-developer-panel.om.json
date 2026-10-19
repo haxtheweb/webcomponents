@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Gabatee konsoolii galmee haasawa fayyadamaa",
+  "consoleTableUserText": "console.table() galmee haasawa fayyadamaa",
+  "consoleTableUserTooltip": "Galmee Haasawa Fayyadamaa Akka Gabateetti Konsoolii irratti Maxxansi",
+  "consoleTableMerlinLabel": "Gabatee konsoolii galmee haasawa merlin",
+  "consoleTableMerlinText": "console.table() galmee haasawa merlin",
+  "consoleTableMerlinTooltip": "Galmee Haasawa Merlin Akka Gabateetti Konsoolii irratti Maxxansi",
+  "consoleTableAllLabel": "Gabatee konsoolii galmee haasawa guutuu",
+  "consoleTableAllText": "console.table() galmee haasawa guutuu",
+  "consoleTableAllTooltip": "Galmee Haasawa Guutuu Akka Gabateetti Konsoolii irratti Maxxansi",
+  "downloadChatLogJson": "Galmee haasawaa akka .json tti buufadhu",
+  "downloadChatLogJsonTooltip": "Galmee Haasawaa Akka .json tti Buufadhu"
+}

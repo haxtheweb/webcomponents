@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Foydalanuvchi chat jurnalini konsol jadvali sifatida",
+  "consoleTableUserText": "console.table() foydalanuvchi chat jurnali",
+  "consoleTableUserTooltip": "Foydalanuvchi chat jurnalini konsolga jadval sifatida chiqarish",
+  "consoleTableMerlinLabel": "Merlin chat jurnalini konsol jadvali sifatida",
+  "consoleTableMerlinText": "console.table() Merlin chat jurnali",
+  "consoleTableMerlinTooltip": "Merlin chat jurnalini konsolga jadval sifatida chiqarish",
+  "consoleTableAllLabel": "Butun chat jurnalini konsol jadvali sifatida",
+  "consoleTableAllText": "console.table() butun chat jurnali",
+  "consoleTableAllTooltip": "Butun chat jurnalini konsolga jadval sifatida chiqarish",
+  "downloadChatLogJson": "Chat jurnalini .json sifatida yuklab olish",
+  "downloadChatLogJsonTooltip": "Chat jurnalini .json sifatida yuklab olish"
+}

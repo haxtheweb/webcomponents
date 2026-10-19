@@ -36,5 +36,7 @@
   "clickToDoAnything": "E kaomi e hana i kekahi mea!",
   "moreDetails": "Nā kikoʻī hou",
   "details": "Nā kikoʻī",
-  "saved": "Ua mālama ʻia"
+  "saved": "Ua mālama ʻia",
+  "opensInNewWindow": "Wehe ʻia ma kahi pukaaniani hou",
+  "resultsCount": "{count} hopena"
 }

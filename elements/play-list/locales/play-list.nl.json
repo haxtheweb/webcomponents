@@ -1,0 +1,11 @@
+{
+  "playlist": "Afspeellijst",
+  "carousel": "carrousel",
+  "slide": "dia",
+  "slideNumber": "Dia {number}",
+  "slideOfTotal": "Dia {number} van {total}",
+  "previousSlide": "Vorige dia",
+  "nextSlide": "Volgende dia",
+  "slidePages": "Diapagina's",
+  "goToSlide": "Ga naar dia {number}"
+}

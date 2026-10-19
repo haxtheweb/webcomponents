@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Lësho skedarët këtu",
+  "uploadQueue": "Radha e ngarkimit",
+  "pending": "Në pritje",
+  "preparing": "Duke u përgatitur",
+  "uploading": "Duke u ngarkuar",
+  "complete": "Përfunduar",
+  "aborted": "Ndërprerë",
+  "cancelled": "Anuluar",
+  "error": "Gabim",
+  "errorWithStatus": "Gabim: {status}",
+  "cancel": "Anulo",
+  "cancelUploadOf": "Anulo ngarkimin e {name}",
+  "retry": "Provo përsëri",
+  "retryUploadOf": "Riprovo ngarkimin e {name}",
+  "remove": "Hiq",
+  "removeFromQueue": "Hiq {name} nga radha",
+  "fileTypeNotAccepted": "Lloji i skedarit nuk pranohet: {name}",
+  "uploadFailed": "Ngarkimi dështoi: {status}",
+  "networkError": "Gabim rrjeti"
+}

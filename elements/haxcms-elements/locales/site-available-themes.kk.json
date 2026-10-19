@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Тақырыптарды жүктеу сәтсіз аяқталды: {error}",
+  "noThemesForView": "Бұл көрініс үшін қолжетімді тақырыптар жоқ.",
+  "active": "Белсенді",
+  "themeIsActive": "{name} тақырыбы белсенді",
+  "applyTheme": "{name} тақырыбын қолдану",
+  "apply": "Қолдану",
+  "preview": "Алдын ала қарау",
+  "name": "Аты",
+  "element": "Элемент",
+  "description": "Сипаттама",
+  "action": "Әрекет",
+  "loadingThemes": "Тақырыптар жүктелуде...",
+  "themesShown": "{count} тақырып көрсетілген",
+  "themesShownDefaults": "{count} тақырып көрсетілген (app-hax әдепкілері)",
+  "availableHaxcmsThemes": "Қолжетімді HAXcms тақырыптары",
+  "gallery": "Галерея",
+  "table": "Кесте"
+}

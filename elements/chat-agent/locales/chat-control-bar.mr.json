@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "लॉग txt म्हणून डाउनलोड करा",
+  "downloadChatLog": "चॅट लॉग डाउनलोड करा",
+  "resetChat": "चॅट रीसेट करा",
+  "toggleDataCollection": "डेटा संकलन टॉगल करा",
+  "dataCollection": "डेटा संकलन",
+  "toggleDeveloperMode": "विकसक मोड टॉगल करा",
+  "exitFullView": "पूर्ण दृश्यातून बाहेर पडा",
+  "enterFullView": "पूर्ण दृश्यात जा",
+  "hideInterface": "इंटरफेस लपवा",
+  "resetChatConfirm": "चॅट रीसेट करायची?",
+  "downloadBeforeResetConfirm": "रीसेट करण्यापूर्वी चॅट लॉग डाउनलोड करायचा?",
+  "dataCollectionOn": "तुमची संभाषणे आमच्या AI मॉडेल्सना प्रशिक्षण देण्यासाठी वापरली जातील",
+  "dataCollectionOff": "तुमची संभाषणे आमच्या AI मॉडेल्सना प्रशिक्षण देण्यासाठी वापरली जाणार नाहीत"
+}

@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Link jangkar disalin!",
+  "skipToContent": "Langsung menyang isi",
+  "siteHome": "Ngarep situs",
+  "mainNavigation": "Navigasi utama",
+  "toggleMenu": "Ganti menu",
+  "changeTheme": "Ganti tema",
+  "breadcrumb": "Breadcrumb",
+  "tagFilter": "Saringan tag:",
+  "all": "Kabeh",
+  "pageNumberOfTotal": "Nomer kaca: {current} saka {total}",
+  "siteGenerated": "Situs digawe: {date}",
+  "copyright": "Hak cipta: {year} {author}",
+  "viewContentByTag": "Deleng Isi miturut Tag",
+  "licenseGraphic": "Gambar {license}"
+}

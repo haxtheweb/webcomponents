@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Нәтиҗәләр юк",
+  "viewsRecordHeading": "Язу",
+  "viewsTitleImage": "{title} рәсеме",
+  "viewsTitlePreview": "{title} алдан карау",
+  "viewsNoTimelineRecords": "Вакыт сызыгын күрсәтү өчен датага бәйле язмалар юк.",
+  "viewsTimelineTitle": "{title} вакыт сызыгы",
+  "viewsNoChartField": "Диаграмма төзү өчен санлы кыр табылмады.",
+  "viewsChartingValue": "{value} диаграммасы",
+  "viewsChartingValueByLabel": "{label} буенча {value} диаграммасы",
+  "viewsChartTitle": "{title} диаграммасы",
+  "viewsNoTreeRecords": "Агач күрсәтү өчен иерархик язмалар юк.",
+  "viewsNoGalleryRecords": "Галерея күрсәтү өчен рәсем язмалары юк.",
+  "viewsNoPlaylistRecords": "Плейлист күрсәтү өчен медиа язмалары юк.",
+  "fetchFailed": "Алу уңышсыз ({status})",
+  "unableToLoadViewData": "Күренеш мәгълүматын йөкләп булмады.",
+  "noResultsFound": "Нәтиҗәләр табылмады.",
+  "refreshView": "Күренешне яңарту",
+  "breakIntoStaticContent": "Статик эчтәлеккә әйләндерү",
+  "viewsOpenRecord": "Язманы ачу"
+}

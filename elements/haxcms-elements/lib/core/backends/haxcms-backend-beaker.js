@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
@@ -17,7 +18,7 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
  * @microcopy - the mental model for this element
  * - jwt - a JSON Web Token used as an encrypted security token for communication
  */
-class HAXCMSBackendBeaker extends LitElement {
+class HAXCMSBackendBeaker extends I18NMixin(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -55,6 +56,20 @@ class HAXCMSBackendBeaker extends LitElement {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      pageUpdated: "Page updated!",
+      outlineSaved: "Outline saved!",
+      seoSettingsSaved: "SEO settings saved!",
+      titleDeleted: "{title} deleted",
+      titleCreated: "{title} created!",
+      detailsSaved: "Details saved!",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.windowControllers = new AbortController();
     this.__disposer = [];
     // set up a tag to place RIGHT next to the site-builder itself
@@ -147,7 +162,7 @@ class HAXCMSBackendBeaker extends LitElement {
       );
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
-      .show("Page updated!");
+      .show(this.t.pageUpdated);
     const evt = new CustomEvent("haxcms-trigger-update-node", {
       bubbles: true,
       composed: true,
@@ -192,7 +207,7 @@ class HAXCMSBackendBeaker extends LitElement {
     // simulate save events since they wont fire
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
-      .show("Outline saved!");
+      .show(this.t.outlineSaved);
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -226,7 +241,7 @@ class HAXCMSBackendBeaker extends LitElement {
       .write("site.json", JSON.stringify(this.manifest, null, 2));
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
-      .show("SEO settings saved!");
+      .show(this.t.seoSettingsSaved);
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -681,7 +696,7 @@ class HAXCMSBackendBeaker extends LitElement {
     // simulate save events since they wont fire
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
-      .show(`${page.title} deleted`);
+      .show(this.t.titleDeleted.replace("{title}", () => page.title));
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -743,7 +758,7 @@ class HAXCMSBackendBeaker extends LitElement {
     // simulate save events since they wont fire
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
-      .show(`${page.title} created!`);
+      .show(this.t.titleCreated.replace("{title}", () => page.title));
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -809,7 +824,7 @@ class HAXCMSBackendBeaker extends LitElement {
     // simulate save events since they wont fire
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
-      .show("Details saved!");
+      .show(this.t.detailsSaved);
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,

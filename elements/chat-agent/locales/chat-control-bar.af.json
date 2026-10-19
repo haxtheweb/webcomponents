@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Laai log af as txt",
+  "downloadChatLog": "Laai kletslog af",
+  "resetChat": "Stel klets terug",
+  "toggleDataCollection": "Wissel data-insameling",
+  "dataCollection": "Data-insameling",
+  "toggleDeveloperMode": "Wissel ontwikkelaarmodus",
+  "exitFullView": "Verlaat volle aansig",
+  "enterFullView": "Betree volle aansig",
+  "hideInterface": "Versteek koppelvlak",
+  "resetChatConfirm": "Stel die klets terug?",
+  "downloadBeforeResetConfirm": "Laai die kletslog af voordat jy terugstel?",
+  "dataCollectionOn": "Jou gesprekke sal gebruik word om ons AI-modelle op te lei",
+  "dataCollectionOff": "Jou gesprekke sal nie gebruik word om ons AI-modelle op te lei nie"
+}

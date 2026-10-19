@@ -1,0 +1,18 @@
+{
+  "copy": "کاپی کرو",
+  "download": "ڈاؤن لوڈ",
+  "archive": "آرکائیو",
+  "copyOperation": "کاپی",
+  "downloadOperation": "ڈاؤن لوڈ",
+  "archiveOperation": "آرکائیو",
+  "created": "بݨی",
+  "updated": "اپ ڈیٹ ہوئی",
+  "pages": "صفحے",
+  "url": "URL",
+  "confirm": "پکا کرو",
+  "cancel": "منسوخ کرو",
+  "siteOperationConfirmTitle": "{operationName} {siteName}؟",
+  "siteOperationConfirmMessage": "کی تسیں پکا {siteName} نوں {operation} کرنا چاہندے او؟",
+  "siteOperationSuccessful": "{siteName} {operation} کامیاب!",
+  "siteOperationFailed": "{siteName} {operation} ناکام"
+}

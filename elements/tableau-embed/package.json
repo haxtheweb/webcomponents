@@ -31,6 +31,7 @@
     "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
+    "@haxtheweb/i18n-manager": "^26.8.0",
     "lit": "3.3.3"
   },
   "devDependencies": {

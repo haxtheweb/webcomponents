@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "ফিচারসমূহে বন্ধ করা আছে",
+  "appearance": "চেহারা",
+  "structure": "কাঠামো",
+  "content": "বিষয়বস্তু",
+  "reports": "রিপোর্ট",
+  "about": "পরিচিতি",
+  "files": "ফাইল",
+  "views": "ভিউ",
+  "features": "ফিচারসমূহ",
+  "editor": "এডিটর",
+  "blocks": "ব্লক",
+  "importExport": "ইমপোর্ট / এক্সপোর্ট",
+  "details": "বিস্তারিত",
+  "advanced": "উন্নত"
+}

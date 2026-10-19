@@ -1,0 +1,18 @@
+{
+  "copy": "Хуулах",
+  "download": "Татах",
+  "archive": "Архивлах",
+  "copyOperation": "хуулах",
+  "downloadOperation": "татах",
+  "archiveOperation": "архивлах",
+  "created": "үүсгэсэн",
+  "updated": "шинэчилсэн",
+  "pages": "хуудас",
+  "url": "URL",
+  "confirm": "Баталгаажуулах",
+  "cancel": "Цуцлах",
+  "siteOperationConfirmTitle": "{siteName}: {operationName}?",
+  "siteOperationConfirmMessage": "Та {siteName}-ийг {operation} гэдэгтээ итгэлтэй байна уу?",
+  "siteOperationSuccessful": "{siteName}: {operation} амжилттай!",
+  "siteOperationFailed": "{siteName}: {operation} амжилтгүй"
+}

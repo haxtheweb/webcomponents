@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Наведи извор",
+  "licenseBySa": "Наведи извор-Сподели под исти услови",
+  "licenseByNd": "Наведи извор-Без деривати",
+  "licenseByNc": "Наведи извор-Некомерцијално",
+  "licenseByNcSa": "Наведи извор-Некомерцијално-Сподели под исти услови",
+  "licenseByNcNd": "Наведи извор-Некомерцијално-Без деривати",
+  "licenseGraphic": "Графика за {license}",
+  "workByCreator": "{title} од {creator}",
+  "workByCreatorLicensed": "{title} од {creator} е лиценцирано под {license}.",
+  "permissionsBeyondScope": "Дозволи надвор од опсегот на оваа лиценца се достапни {link}.",
+  "author": "(автор)",
+  "onTheLicensingDetailsPage": "на страницата со детали за лиценцирање"
+}

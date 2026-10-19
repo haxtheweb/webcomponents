@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Chinongedzo cheanchor chakopwa!",
+  "skipToContent": "Svetukira kune zviri mukati",
+  "changePalette": "Shandura paleti",
+  "primaryLinks": "Zvinongedzo zvikuru",
+  "socialLinks": "Zvinongedzo zvesocial",
+  "myProfile": "Purofaira yangu",
+  "profileImageOf": "Mufananidzo wepurofaira wa{name}",
+  "profileImage": "Mufananidzo wepurofaira",
+  "linkCardProfile": "Purofaira yekadhi rezvinongedzo",
+  "emptyStateLinks": "Wedzera zvinhu zvemenyu zvepamusoro musite.json kuti uratidze mabhatani ezvinongedzo.",
+  "titleOnPlatform": "{title} pa{platform}",
+  "openPlatform": "Vhura {platform}",
+  "paletteUpdated": "Paleti yemavara yashandurwa kuita sarudzo {number}."
+}

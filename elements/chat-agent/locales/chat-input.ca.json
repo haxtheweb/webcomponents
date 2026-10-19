@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Mostra el missatge enviat anteriorment (amunt)",
+  "displayPreviousMessageDown": "Mostra el missatge enviat anteriorment (avall)",
+  "sendPrompt": "Envia la petició",
+  "sendPromptToMerlin": "Envia la petició a Merlin",
+  "shortenPrompt": "Escurça la petició a un màxim de {limit} caràcters."
+}

@@ -7,5 +7,7 @@
   "userAccessGranted": "用户权限授予成功！",
   "userNotFound": "寻勿着用户或者呒没授权",
   "loadingAddingUser": "正在添加用户...",
-  "grantAccessTo": "授予权限拨："
+  "grantAccessTo": "授予权限拨：",
+  "networkErrorTryAgain": "网络出错了。请再试一趟。",
+  "characterWillAppear": "输入用户名以后角色会出来"
 }

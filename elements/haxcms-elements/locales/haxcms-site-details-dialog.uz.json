@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- standart: birinchi sahifa --",
+  "details": "Tafsilotlar",
+  "title": "Sarlavha",
+  "titleDescription": "Sayt nomi",
+  "homePage": "Bosh sahifa",
+  "homePageDescription": "Standart kirish / bosh sahifa sifatida ishlatiladigan sahifa",
+  "advanced": "Qoʻshimcha",
+  "serviceWorker": "Dinamik sahifaga service worker qoʻshish",
+  "serviceWorkerDescription": "Agar foydalanuvchilar doim serverning eng soʻnggi natijasini darhol koʻrishi kerak boʻlsa, buni oʻchiring.",
+  "forceBrowserUpgrade": "Brauzerni yangilashga majburlash",
+  "forceBrowserUpgradeDescription": "Saytni yuklashdan oldin doimiy yangilanadigan brauzerlarni talab qilish.",
+  "unableToLoadSiteDetails": "Sayt tafsilotlarini yuklab boʻlmadi.",
+  "noSiteDetails": "Sayt tafsilotlari mavjud emas.",
+  "save": "Saqlash"
+}

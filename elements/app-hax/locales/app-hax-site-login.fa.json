@@ -1,0 +1,14 @@
+{
+  "enterUserName": "نام کاربری را وارد کنید",
+  "invalidUsernameOrPassword": "نام کاربری یا گذرواژه نامعتبر است",
+  "welcomeLetsGo": "خوش آمدی {username}! بزن بریم!",
+  "enterYourUsername": "نام کاربری خود را وارد کنید",
+  "username": "نام کاربری",
+  "next": "بعدی",
+  "welcomeBack": "خوش برگشتی، {username}!",
+  "notYou": "شما نیستید؟",
+  "enterYourPassword": "گذرواژه خود را وارد کنید",
+  "password": "گذرواژه",
+  "togglePasswordDisplay": "نمایش/پنهان کردن گذرواژه",
+  "login": "ورود"
+}

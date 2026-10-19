@@ -36,5 +36,7 @@
   "clickToDoAnything": "کجھ وی کرن لئی کلک کرو!",
   "moreDetails": "ہور تفصیلاں",
   "details": "تفصیلاں",
-  "saved": "محفوظ ہو گیا"
+  "saved": "محفوظ ہو گیا",
+  "opensInNewWindow": "نویں ونڈو وچ کھلدا اے",
+  "resultsCount": "{count} نتیجے"
 }

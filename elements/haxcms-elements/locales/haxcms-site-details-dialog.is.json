@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- sjálfgefið fyrsta síða --",
+  "details": "Nánar",
+  "title": "Titill",
+  "titleDescription": "Heiti vefsins",
+  "homePage": "Forsíða",
+  "homePageDescription": "Síða sem notuð er sem sjálfgefin upphafssíða / forsíða",
+  "advanced": "Ítarlegt",
+  "serviceWorker": "Bæta þjónustuþræði (service worker) við kvika síðu",
+  "serviceWorkerDescription": "Slökktu á þessu ef notendur eiga alltaf að sjá nýjasta úttak þjónsins strax.",
+  "forceBrowserUpgrade": "Þvinga uppfærslu vafra",
+  "forceBrowserUpgradeDescription": "Krefjast sísuppfærðra vafra áður en vefurinn er hlaðinn.",
+  "unableToLoadSiteDetails": "Ekki tókst að hlaða upplýsingum um vefinn.",
+  "noSiteDetails": "Engar upplýsingar um vefinn eru tiltækar.",
+  "save": "Vista"
+}

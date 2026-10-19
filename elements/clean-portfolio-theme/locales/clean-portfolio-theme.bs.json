@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Link sidra kopiran!",
+  "skipToContent": "Preskoči na sadržaj",
+  "siteHome": "Početna sajta",
+  "mainNavigation": "Glavna navigacija",
+  "toggleMenu": "Uključi/isključi meni",
+  "changeTheme": "Promijeni temu",
+  "breadcrumb": "Navigacijski put",
+  "tagFilter": "Filter oznaka:",
+  "all": "Sve",
+  "pageNumberOfTotal": "Broj stranice: {current} od {total}",
+  "siteGenerated": "Sajt generisan: {date}",
+  "copyright": "Autorska prava: {year} {author}",
+  "viewContentByTag": "Prikaži sadržaj po oznaci",
+  "licenseGraphic": "Grafika licence {license}"
+}

@@ -33,6 +33,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
     this.siteTitle = "";
     this.t = {
       userAccess: "User Access",
+      characterWillAppear: "Character will appear when you enter a username",
       enterUsername: "Enter username to grant access",
       usernamePlaceholder: "Username",
       addUser: "Add User",
@@ -41,6 +42,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
       userNotFound: "User not found or unauthorized",
       loadingAddingUser: "Adding user...",
       grantAccessTo: "Grant access to:",
+      networkErrorTryAgain: "Network error occurred. Please try again.",
     };
     this.registerLocalization({
       context: this,
@@ -335,7 +337,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
               `
             : html`
                 <div class="empty-character">
-                  Character will appear when you enter a username
+                  ${this.t.characterWillAppear}
                 </div>
               `}
         </div>
@@ -432,7 +434,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
       }
     } catch (error) {
       console.error("Error adding user access:", error);
-      this.error = "Network error occurred. Please try again.";
+      this.error = this.t.networkErrorTryAgain;
     } finally {
       this.loading = false;
     }

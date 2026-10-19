@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- за замовчуванням перша сторінка --",
+  "details": "Подробиці",
+  "title": "Назва",
+  "titleDescription": "Назва сайту",
+  "homePage": "Головна сторінка",
+  "homePageDescription": "Сторінка, що використовується як стартова / головна сторінка за замовчуванням",
+  "advanced": "Додатково",
+  "serviceWorker": "Додати service worker до динамічної сторінки",
+  "serviceWorkerDescription": "Вимкніть це, якщо користувачі завжди мають одразу бачити найновіший вивід сервера.",
+  "forceBrowserUpgrade": "Примусове оновлення браузера",
+  "forceBrowserUpgradeDescription": "Вимагати сучасні браузери перед завантаженням сайту.",
+  "unableToLoadSiteDetails": "Не вдалося завантажити відомості про сайт.",
+  "noSiteDetails": "Відомості про сайт відсутні.",
+  "save": "Зберегти"
+}

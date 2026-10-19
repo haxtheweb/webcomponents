@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "कन्सोल तालिका प्रयोगकर्ता च्याट लग",
+  "consoleTableUserText": "console.table() प्रयोगकर्ता च्याट लग",
+  "consoleTableUserTooltip": "प्रयोगकर्ता च्याट लग कन्सोलमा तालिकाको रूपमा प्रिन्ट गर्नुहोस्",
+  "consoleTableMerlinLabel": "कन्सोल तालिका merlin च्याट लग",
+  "consoleTableMerlinText": "console.table() merlin च्याट लग",
+  "consoleTableMerlinTooltip": "Merlin च्याट लग कन्सोलमा तालिकाको रूपमा प्रिन्ट गर्नुहोस्",
+  "consoleTableAllLabel": "कन्सोल तालिका पूरै च्याट लग",
+  "consoleTableAllText": "console.table() पूरै च्याट लग",
+  "consoleTableAllTooltip": "पूरै च्याट लग कन्सोलमा तालिकाको रूपमा प्रिन्ट गर्नुहोस्",
+  "downloadChatLogJson": "च्याट लग .json को रूपमा डाउनलोड गर्नुहोस्",
+  "downloadChatLogJsonTooltip": "च्याट लग .json को रूपमा डाउनलोड गर्नुहोस्"
+}

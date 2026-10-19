@@ -1,0 +1,18 @@
+{
+  "copy": "प्रतिलिपि गर्नुहोस्",
+  "download": "डाउनलोड",
+  "archive": "अभिलेख",
+  "copyOperation": "प्रतिलिपि",
+  "downloadOperation": "डाउनलोड",
+  "archiveOperation": "अभिलेख",
+  "created": "बनाइएको",
+  "updated": "अद्यावधिक गरिएको",
+  "pages": "पेजहरू",
+  "url": "URL",
+  "confirm": "पुष्टि गर्नुहोस्",
+  "cancel": "रद्द गर्नुहोस्",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "के तपाईं {siteName} {operation} गर्न निश्चित हुनुहुन्छ?",
+  "siteOperationSuccessful": "{siteName} {operation} सफल भयो!",
+  "siteOperationFailed": "{siteName} {operation} असफल भयो"
+}

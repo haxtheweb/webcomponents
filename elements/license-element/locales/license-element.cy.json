@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Cydnabyddiaeth",
+  "licenseBySa": "Cydnabyddiaeth Rhannu Fel Ei Gilydd",
+  "licenseByNd": "Cydnabyddiaeth Dim Deilliadau",
+  "licenseByNc": "Cydnabyddiaeth Anfasnachol",
+  "licenseByNcSa": "Cydnabyddiaeth Anfasnachol Rhannu Fel Ei Gilydd",
+  "licenseByNcNd": "Cydnabyddiaeth Anfasnachol Dim Deilliadau",
+  "licenseGraphic": "Graffig {license}",
+  "workByCreator": "{title} gan {creator}",
+  "workByCreatorLicensed": "Mae {title} gan {creator} wedi'i drwyddedu o dan {license}.",
+  "permissionsBeyondScope": "Mae caniatâd y tu hwnt i gwmpas y drwydded hon ar gael {link}.",
+  "author": "(awdur)",
+  "onTheLicensingDetailsPage": "ar y dudalen manylion trwyddedu"
+}

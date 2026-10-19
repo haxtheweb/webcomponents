@@ -1,0 +1,18 @@
+{
+  "copy": "Monguatia",
+  "download": "Emboguejy",
+  "archive": "Ñongatuha",
+  "copyOperation": "monguatia",
+  "downloadOperation": "mboguejy",
+  "archiveOperation": "ñongatu",
+  "created": "oñemoheñói",
+  "updated": "oñembohekopyahu",
+  "pages": "kuatiarogue",
+  "url": "URL",
+  "confirm": "Emoneĩ",
+  "cancel": "Heja",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Eréparei piko rejaposeha {operation} {siteName} ndive?",
+  "siteOperationSuccessful": "{siteName} {operation} oiko porã!",
+  "siteOperationFailed": "{siteName} {operation} ndoikói"
+}

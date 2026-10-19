@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "טעינת ערכות הנושא נכשלה: {error}",
+  "noThemesForView": "אין ערכות נושא זמינות לתצוגה זו.",
+  "active": "פעילה",
+  "themeIsActive": "ערכת הנושא {name} פעילה",
+  "applyTheme": "החלת ערכת הנושא {name}",
+  "apply": "החלה",
+  "preview": "תצוגה מקדימה",
+  "name": "שם",
+  "element": "רכיב",
+  "description": "תיאור",
+  "action": "פעולה",
+  "loadingThemes": "טוען ערכות נושא...",
+  "themesShown": "מוצגות {count} ערכות נושא",
+  "themesShownDefaults": "מוצגות {count} ערכות נושא (ברירות המחדל של app-hax)",
+  "availableHaxcmsThemes": "ערכות נושא זמינות של HAXcms",
+  "gallery": "גלריה",
+  "table": "טבלה"
+}

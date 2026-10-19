@@ -1,0 +1,8 @@
+{
+  "loading": "लोड हुँदैछ",
+  "settingUpContainer": "कन्टेनर तयार हुँदैछ",
+  "runningCommands": "कमान्डहरू चलिरहेका छन्",
+  "installing": "स्थापना हुँदैछ..",
+  "runningStart": "Start चलिरहेको छ..",
+  "webContainerPreview": "वेब कन्टेनर पूर्वावलोकन"
+}

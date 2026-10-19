@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Titlu tar-Rwol",
+  "describeYourRole": "Iddeskrivi r-rwol tiegħek hawn...",
+  "present": "Ippreżenta",
+  "skills": "Ħiliet:",
+  "skillsAndMore": "{skills} u +{count} oħra",
+  "yearShort": "{count} sena",
+  "yearsShort": "{count} snin",
+  "monthShort": "{count} xahar",
+  "monthsShort": "{count} xhur"
+}

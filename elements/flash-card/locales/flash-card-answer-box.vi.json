@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Câu trả lời của bạn",
   "checkAnswer": "Kiểm tra câu trả lời",
-  "retry": "Thử lại"
+  "retry": "Thử lại",
+  "correct": "Chính xác!",
+  "incorrect": "Không chính xác!",
+  "correctAnswer": "Đáp án đúng: {answer}"
 }

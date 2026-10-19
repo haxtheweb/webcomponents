@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Ditt svar",
   "checkAnswer": "Sjekk svar",
-  "retry": "Prøv igjen"
+  "retry": "Prøv igjen",
+  "correct": "Riktig!",
+  "incorrect": "Feil!",
+  "correctAnswer": "Riktig svar: {answer}"
 }

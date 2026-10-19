@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- caadi ahaan bogga koowaad --",
+  "details": "Faahfaahin",
+  "title": "Cinwaan",
+  "titleDescription": "Magaca goobta",
+  "homePage": "Bogga hore",
+  "homePageDescription": "Bogga loo isticmaalayo bogga caadiga ah ee lagu soo dego / bogga hore",
+  "advanced": "Horumarsan",
+  "serviceWorker": "Ku dar service worker bogga firfircoon",
+  "serviceWorkerDescription": "Dami tan haddii isticmaalayaashu had iyo jeer ay arkaan soo-saarka ugu dambeeyay ee server-ka isla markiiba.",
+  "forceBrowserUpgrade": "Ku khasab cusboonaysiinta baadhaha",
+  "forceBrowserUpgradeDescription": "U baahan baadhayaal casri ah ka hor inta aan la soo rarin waaya-aragnimada goobta.",
+  "unableToLoadSiteDetails": "Faahfaahinta goobta lama soo rari karo.",
+  "noSiteDetails": "Faahfaahin goob lama heli karo.",
+  "save": "Kaydi"
+}

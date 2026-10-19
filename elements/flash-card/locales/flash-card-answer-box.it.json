@@ -1,5 +1,8 @@
 {
   "yourAnswer": "La tua risposta",
   "checkAnswer": "Verifica risposta",
-  "retry": "Riprova"
+  "retry": "Riprova",
+  "correct": "Corretto!",
+  "incorrect": "Sbagliato!",
+  "correctAnswer": "Risposta corretta: {answer}"
 }

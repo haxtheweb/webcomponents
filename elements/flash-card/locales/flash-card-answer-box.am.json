@@ -1,5 +1,8 @@
 {
   "yourAnswer": "የእርስዎ መልስ",
   "checkAnswer": "መልሱን አረጋግጥ",
-  "retry": "እንደገና ሞክር"
+  "retry": "እንደገና ሞክር",
+  "correct": "ትክክል!",
+  "incorrect": "ትክክል አይደለም!",
+  "correctAnswer": "ትክክለኛ መልስ: {answer}"
 }

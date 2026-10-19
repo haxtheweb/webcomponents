@@ -1,0 +1,17 @@
+{
+  "editNodes": "Redigér knuder",
+  "editLines": "Redigér linjer",
+  "reset": "Nulstil",
+  "save": "Gem",
+  "cancel": "Annuller",
+  "delete": "Slet",
+  "type": "Type:",
+  "topic": "Emne",
+  "subsection": "Underafsnit",
+  "name": "Navn:",
+  "enterName": "Indtast navn",
+  "url": "URL:",
+  "enterUrl": "Indtast URL",
+  "activeNode": "Aktiv knude?",
+  "nodeId": "Knude {id}"
+}

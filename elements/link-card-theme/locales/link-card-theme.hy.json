@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Խարիսխ հղումը պատճենվեց!",
+  "skipToContent": "Անցնել բովանդակությանը",
+  "changePalette": "Փոխել գունապնակը",
+  "primaryLinks": "Հիմնական հղումներ",
+  "socialLinks": "Սոցիալական հղումներ",
+  "myProfile": "Իմ պրոֆիլը",
+  "profileImageOf": "{name}-ի պրոֆիլի նկար",
+  "profileImage": "Պրոֆիլի նկար",
+  "linkCardProfile": "Հղումների քարտի պրոֆիլ",
+  "emptyStateLinks": "Ավելացրեք վերին մակարդակի ընտրացանկի տարրեր site.json-ում՝ հղման կոճակներ ցուցադրելու համար։",
+  "titleOnPlatform": "{title}-ը {platform}-ում",
+  "openPlatform": "Բացել {platform}-ը",
+  "paletteUpdated": "Գունապնակը փոխվեց {number} տարբերակի։"
+}

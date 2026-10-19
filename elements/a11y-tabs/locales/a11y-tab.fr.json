@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Onglet {xOfY}",
+  "xOfY": "{order} sur {total}",
+  "endOfTab": "Fin de l'onglet {xOfY}. Retour aux {tabs}.",
+  "tabs": "onglets"
+}

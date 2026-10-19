@@ -1,0 +1,18 @@
+{
+  "copy": "Avrita",
+  "download": "Tak niður",
+  "archive": "Goym í skjalasavn",
+  "copyOperation": "avrita",
+  "downloadOperation": "taka niður",
+  "archiveOperation": "goyma í skjalasavn",
+  "created": "stovnað",
+  "updated": "dagført",
+  "pages": "síður",
+  "url": "URL",
+  "confirm": "Vátta",
+  "cancel": "Angra",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Ert tú vís/ur í, at tú vilt {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName} {operation} eydnaðist!",
+  "siteOperationFailed": "{siteName} {operation} miseydnaðist"
+}

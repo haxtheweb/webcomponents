@@ -4,9 +4,10 @@
 // dependencies / things imported
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
-export class AppHaxUserMenu extends DDDSuper(LitElement) {
+export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "app-hax-user-menu";
@@ -16,6 +17,17 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
     super();
     this.isOpen = false;
     this.icon = "account-circle";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      menuControls: "Menu Controls",
+      mainMenuItems: "Main Menu Items",
+      accountActions: "Account Actions",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.__boundKeydownHandler = this._handleKeydown.bind(this);
     this.__boundDocumentPointerDown =
       this._handleDocumentPointerDown.bind(this);
@@ -207,13 +219,13 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           class="user-menu ${this.isOpen ? "open" : ""}"
           ?inert="${!this.isOpen}"
         >
-          <div class="pre-menu" role="group" aria-label="Menu Controls">
+          <div class="pre-menu" role="group" aria-label="${this.t.menuControls}">
             <slot name="pre-menu"></slot>
           </div>
-          <div class="main-menu" role="group" aria-label="Main Menu Items">
+          <div class="main-menu" role="group" aria-label="${this.t.mainMenuItems}">
             <slot name="main-menu"></slot>
           </div>
-          <div class="post-menu" role="group" aria-label="Account Actions">
+          <div class="post-menu" role="group" aria-label="${this.t.accountActions}">
             <slot name="post-menu"></slot>
           </div>
         </div>

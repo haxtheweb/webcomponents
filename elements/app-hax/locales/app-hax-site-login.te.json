@@ -1,0 +1,14 @@
+{
+  "enterUserName": "వినియోగదారు పేరును నమోదు చేయండి",
+  "invalidUsernameOrPassword": "చెల్లని వినియోగదారు పేరు లేదా పాస్‌వర్డ్",
+  "welcomeLetsGo": "స్వాగతం {username}! పదండి!",
+  "enterYourUsername": "మీ వినియోగదారు పేరును నమోదు చేయండి",
+  "username": "వినియోగదారు పేరు",
+  "next": "తదుపరి",
+  "welcomeBack": "తిరిగి స్వాగతం, {username}!",
+  "notYou": "మీరు కాదా?",
+  "enterYourPassword": "మీ పాస్‌వర్డ్‌ను నమోదు చేయండి",
+  "password": "పాస్‌వర్డ్",
+  "togglePasswordDisplay": "పాస్‌వర్డ్ ప్రదర్శనను టోగుల్ చేయండి",
+  "login": "లాగిన్"
+}

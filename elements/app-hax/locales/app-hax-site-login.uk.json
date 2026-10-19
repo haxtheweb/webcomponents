@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Введіть ім'я користувача",
+  "invalidUsernameOrPassword": "Недійсне ім'я користувача або пароль",
+  "welcomeLetsGo": "Вітаємо, {username}! Поїхали!",
+  "enterYourUsername": "Введіть ім'я користувача",
+  "username": "Ім'я користувача",
+  "next": "Далі",
+  "welcomeBack": "З поверненням, {username}!",
+  "notYou": "Не ви?",
+  "enterYourPassword": "Введіть пароль",
+  "password": "Пароль",
+  "togglePasswordDisplay": "Показати/приховати пароль",
+  "login": "Увійти"
+}

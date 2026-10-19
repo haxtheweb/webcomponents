@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Awtorlyk görkezmek",
+  "licenseBySa": "Awtorlyk görkezmek — Şol şertlerde paýlaşmak",
+  "licenseByNd": "Awtorlyk görkezmek — Önüm döretmezlik",
+  "licenseByNc": "Awtorlyk görkezmek — Täjirçilik däl",
+  "licenseByNcSa": "Awtorlyk görkezmek — Täjirçilik däl — Şol şertlerde paýlaşmak",
+  "licenseByNcNd": "Awtorlyk görkezmek — Täjirçilik däl — Önüm döretmezlik",
+  "licenseGraphic": "{license} grafikasy",
+  "workByCreator": "{title}, awtory {creator}",
+  "workByCreatorLicensed": "{title}, awtory {creator}, {license} boýunça ygtyýarlandyrylan.",
+  "permissionsBeyondScope": "Bu ygtyýarnamanyň çäginden daşary rugsatlar {link} elýeterli.",
+  "author": "(awtor)",
+  "onTheLicensingDetailsPage": "ygtyýarnama jikme-jiklikleri sahypasynda"
+}

@@ -44,51 +44,61 @@ function soundToggle() {
 const SYSTEM_SETTINGS_PANELS = {
   dashboard: {
     label: "Settings",
+    tKey: "settings",
     icon: "settings",
     route: "",
   },
   status: {
     label: "Status",
+    tKey: "statusPanel",
     icon: "hax:graph",
     route: "status",
   },
   skeletons: {
     label: "Skeletons",
+    tKey: "skeletonsPanel",
     icon: "hax:site-map",
     route: "skeletons",
   },
   themes: {
     label: "Themes",
+    tKey: "themesPanel",
     icon: "lrn:palette",
     route: "themes",
   },
   blocks: {
     label: "Blocks",
+    tKey: "blocks",
     icon: "hax:blocks",
     route: "blocks",
   },
   integrations: {
     label: "Integrations",
+    tKey: "integrationsPanel",
     icon: "communication:vpn-key",
     route: "integrations",
   },
   media: {
     label: "Media",
+    tKey: "media",
     icon: "image:image",
     route: "media",
   },
   configuration: {
     label: "Configuration",
+    tKey: "configurationPanel",
     icon: "icons:language",
     route: "configuration",
   },
   "style-guide": {
     label: "Style guide",
+    tKey: "styleGuidePanel",
     icon: "editor:format-color-text",
     route: "style-guide",
   },
   "custom-code": {
     label: "JS/CSS",
+    tKey: "customCodePanel",
     icon: "code",
     route: "js-css",
   },
@@ -330,6 +340,55 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       menu: "Menu",
       showMore: "More",
       userAccess: "User Access",
+      statusPanel: "Status",
+      skeletonsPanel: "Skeletons",
+      themesPanel: "Themes",
+      integrationsPanel: "Integrations",
+      configurationPanel: "Configuration",
+      styleGuidePanel: "Style guide",
+      customCodePanel: "JS/CSS",
+      unlockHiddenFeatures: "Unlock hidden features",
+      showTerribleThemes: "Show terrible themes",
+      showHiddenTemplates: "Show hidden templates",
+      goToSite: "Go to site",
+      systemSettings: "System Settings",
+      joinOurCommunity: "Join our Community",
+      userTutorials: "User Tutorials",
+      userDocumentation: "User Documentation",
+      haxTeachingExcellence: "HAX Teaching Excellence",
+      bugIssue: "Bug / issue",
+      ideaFeatureRequest: "Idea / Feature request",
+      pageMissBurns: "the page miss.. it burns!!!",
+      scaredOfTheDark: "I'm ascared of the dark",
+      sunnyDayItIs: "Sunny day it is",
+      soundOffHello: "Sound off.. hey! HELLO!?!",
+      canHearMeNow: "You can hear me now? Good.",
+      terribleThemesUnlocked:
+        "Enjoy these early 2000s table based layouts. May they remind you how never to web, again.",
+      hiddenTemplatesRevealed:
+        "Hidden templates revealed. With great power comes great questionable design decisions.",
+      allFeaturesUnlocked:
+        "Unbelievable! You, (Subject Name), must be the pride of (Subject Hometown). Enjoy all locked features as a boon!",
+      loginToHax: "Login to HAX",
+      systemSettingsNotAvailableHaxiam:
+        "System settings are not available in HAXiam deployments.",
+      unableToLoadSystemSettings: "Unable to load system settings UI",
+      user: "User",
+      haxSiteDashboard: "HAX Site Dashboard",
+      userMenuFor: "User menu for {name}",
+      toggleSoundEffectsOff: "Toggle sound effects off",
+      toggleSoundEffectsOn: "Toggle sound effects on",
+      soundEffects: "Sound effects",
+      // route text from AppHaxStore baseRoutes (see _translateRoute)
+      welcomeBack: "Welcome back",
+      letsGoOnAHaxJourney: "Let's go on a HAX Journey",
+      search: "Search",
+      discoverActiveAdventures: "Discover active adventures",
+      searchSites: "Search sites",
+      welcome: "Welcome",
+      letsBuildSomethingAwesome: "Let's build something awesome!",
+      notFoundStatement: "it's not you.. it's me",
+      notFoundTitle: "FoUr Oh FoUr",
     };
     this.registerLocalization({
       context: this,
@@ -351,7 +410,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
-      title: "Unlock hidden features",
+      i18n: { context: this, title: "unlockHiddenFeatures" },
+      title: this.t.unlockHiddenFeatures,
       icon: "hax:hax2022",
       tags: ["Developer", "features", "hidden"],
       value: {
@@ -366,7 +426,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
     // Expose terrible themes ("90s" themes) in the v2 template picker
     SuperDaemonInstance.defineOption({
-      title: "Show terrible themes",
+      i18n: { context: this, title: "showTerribleThemes" },
+      title: this.t.showTerribleThemes,
       icon: "icons:warning",
       tags: ["Developer", "themes", "terrible"],
       value: {
@@ -381,7 +442,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
     // Expose hidden themes / use cases in the v2 template picker
     SuperDaemonInstance.defineOption({
-      title: "Show hidden templates",
+      i18n: { context: this, title: "showHiddenTemplates" },
+      title: this.t.showHiddenTemplates,
       icon: "icons:visibility",
       tags: ["Developer", "templates", "hidden"],
       value: {
@@ -394,7 +456,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: [">"],
     });
     SuperDaemonInstance.defineOption({
-      title: "Go to site",
+      i18n: { context: this, title: "goToSite" },
+      title: this.t.goToSite,
       icon: "hax:hax2022",
       tags: ["Sites", "Administration", "change"],
       eventName: "super-daemon-run-program",
@@ -440,7 +503,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["*"],
     });
     SuperDaemonInstance.defineOption({
-      title: "System Settings",
+      i18n: { context: this, title: "systemSettings" },
+      title: this.t.systemSettings,
       icon: "settings",
       tags: ["Administration", "settings", "system", "dashboard"],
       value: {
@@ -454,7 +518,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     });
     // contribution helpers
     SuperDaemonInstance.defineOption({
-      title: "Join our Community",
+      i18n: { context: this, title: "joinOurCommunity" },
+      title: this.t.joinOurCommunity,
       icon: "hax:discord",
       priority: -100,
       tags: ["community", "discord", "chat", "help"],
@@ -469,7 +534,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
-      title: "User Tutorials",
+      i18n: { context: this, title: "userTutorials" },
+      title: this.t.userTutorials,
       icon: "hax:hax2022",
       priority: -1000,
       tags: ["Documentation", "community", "help"],
@@ -484,7 +550,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
-      title: "User Documentation",
+      i18n: { context: this, title: "userDocumentation" },
+      title: this.t.userDocumentation,
       icon: "hax:hax2022",
       tags: ["Documentation", "community", "help"],
       externalLink: true,
@@ -498,7 +565,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
-      title: "HAX Teaching Excellence",
+      i18n: { context: this, title: "haxTeachingExcellence" },
+      title: this.t.haxTeachingExcellence,
       icon: "hax:hax2022",
       tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
       externalLink: true,
@@ -512,7 +580,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
-      title: "Bug / issue",
+      i18n: { context: this, title: "bugIssue" },
+      title: this.t.bugIssue,
       icon: "mdi-social:github-circle",
       tags: ["Bug report", "github", "git", "community", "issue queue"],
       value: {
@@ -525,7 +594,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
-      title: "Idea / Feature request",
+      i18n: { context: this, title: "ideaFeatureRequest" },
+      title: this.t.ideaFeatureRequest,
       icon: "mdi-social:github-circle",
       tags: [
         "Feature request",
@@ -549,7 +619,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     autorun(() => {
       const _mobx_val_0 = toJS(store.activeItem);
       Promise.resolve().then(() => {
-        const item = _mobx_val_0;
+        const item = this._translateRoute(_mobx_val_0);
         if (item && item.title) {
           store.setPageTitle(item.title);
         }
@@ -687,7 +757,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             store.createSiteSteps = false;
             store.appMode = "404";
             setTimeout(() => {
-              store.toast("the page miss.. it burns!!!", 3000, {
+              store.toast(this.t.pageMissBurns, 3000, {
                 fire: true,
                 walking: true,
               });
@@ -739,13 +809,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         requestAnimationFrame(() => {
           if (_mobx_val_1) {
             globalThis.document.body.classList.add("dark-mode");
-            store.toast("I'm ascared of the dark", 2000, { fire: true });
+            store.toast(this.t.scaredOfTheDark, 2000, { fire: true });
             this.dark = true;
             SuperDaemonInstance.dark = true;
             SuperDaemonInstance.toastInstance.darkMode = true;
           } else {
             globalThis.document.body.classList.remove("dark-mode");
-            store.toast("Sunny day it is", 2000, { hat: "random" });
+            store.toast(this.t.sunnyDayItIs, 2000, { hat: "random" });
             this.dark = false;
             SuperDaemonInstance.dark = false;
             SuperDaemonInstance.toastInstance.darkMode = false;
@@ -836,9 +906,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     store.appEl.playSound("coin").then(() => {
       store.appEl.playSound("coin2").then(() => {
         store.appEl.playSound("success").then(() => {
-          SuperDaemonInstance.merlinSpeak(
-            "Enjoy these early 2000s table based layouts. May they remind you how never to web, again.",
-          );
+          SuperDaemonInstance.merlinSpeak(this.t.terribleThemesUnlocked);
         });
       });
     });
@@ -848,9 +916,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // Expose hidden themes / use cases in v2 template picker
     store.showHiddenTemplates = true;
     store.appEl.playSound("success").then(() => {
-      SuperDaemonInstance.merlinSpeak(
-        "Hidden templates revealed. With great power comes great questionable design decisions.",
-      );
+      SuperDaemonInstance.merlinSpeak(this.t.hiddenTemplatesRevealed);
     });
   }
   fireUnlocked() {
@@ -858,9 +924,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     store.appEl.playSound("coin").then(() => {
       store.appEl.playSound("coin2").then(() => {
         store.appEl.playSound("success").then(() => {
-          SuperDaemonInstance.merlinSpeak(
-            "Unbelievable! You, (Subject Name), must be the pride of (Subject Hometown). Enjoy all locked features as a boon!",
-          );
+          SuperDaemonInstance.merlinSpeak(this.t.allFeaturesUnlocked);
         });
       });
     });
@@ -916,7 +980,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               cancelable: true,
               composed: true,
               detail: {
-                title: "Login to HAX",
+                title: this.t.loginToHax,
                 elements: { content: p },
                 modal: true,
                 styles: {
@@ -1586,7 +1650,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       const _mobx_val_0 = toJS(store.activeItem);
       Promise.resolve().then(() => {
         if (store.activeItem) {
-          this.activeItem = _mobx_val_0;
+          this.activeItem = this._translateRoute(_mobx_val_0);
         }
       });
     });
@@ -1598,9 +1662,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           ? new URL("./lib/assets/images/FullVolume.svg", import.meta.url).href
           : new URL("./lib/assets/images/Silence.svg", import.meta.url).href;
         if (!_mobx_val_1) {
-          store.toast("Sound off.. hey! HELLO!?!", 2000, { fire: true });
+          store.toast(this.t.soundOffHello, 2000, { fire: true });
         } else {
-          store.toast("You can hear me now? Good.", 2000, { hat: "random" });
+          store.toast(this.t.canHearMeNow, 2000, { hat: "random" });
         }
       });
     });
@@ -1794,9 +1858,26 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     return null;
   }
 
+  // swap a route's English label / statement / title for this.t versions
+  _translateRoute(item) {
+    if (!item || !item.tKeys || !this.t) {
+      return item;
+    }
+    const translated = { ...item };
+    Object.keys(item.tKeys).forEach((field) => {
+      const key = item.tKeys[field];
+      if (key && this.t[key]) {
+        translated[field] = this.t[key];
+      }
+    });
+    return translated;
+  }
+
   _systemSettingsModalRouteState(panelKey = "dashboard") {
     const normalizedPanel = this._normalizeSystemSettingsPanel(panelKey);
     const panelMeta = this._systemSettingsPanelMeta(normalizedPanel);
+    const panelLabel =
+      (panelMeta.tKey && this.t[panelMeta.tKey]) || panelMeta.label;
     if (normalizedPanel === "dashboard") {
       return {
         title: this.t.settings,
@@ -1805,7 +1886,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       };
     }
     return {
-      title: `${this.t.settings} > ${panelMeta.label}`,
+      title: `${this.t.settings} > ${panelLabel}`,
       titleIcon: panelMeta.icon,
       breadcrumbs: [
         {
@@ -1815,7 +1896,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           clickable: true,
         },
         {
-          label: panelMeta.label,
+          label: panelLabel,
           icon: panelMeta.icon,
           clickable: false,
         },
@@ -2122,8 +2203,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     const options =
       routeOptions && typeof routeOptions === "object" ? routeOptions : {};
     if (!this._allowSystemSettings()) {
-      const deniedMessage =
-        "System settings are not available in HAXiam deployments.";
+      const deniedMessage = this.t.systemSettingsNotAvailableHaxiam;
       if (!options.silent) {
         if (
           fromMerlin &&
@@ -2176,7 +2256,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             this.__systemSettingsModalOpen = false;
             this.__systemSettingsDialog = null;
             if (!options.silent) {
-              store.toast("Unable to load system settings UI", 3000, {
+              store.toast(this.t.unableToLoadSystemSettings, 3000, {
                 hat: "random",
               });
             }
@@ -2186,7 +2266,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         this.__systemSettingsModalOpen = false;
         this.__systemSettingsDialog = null;
         if (!options.silent) {
-          store.toast("Unable to load system settings UI", 3000, {
+          store.toast(this.t.unableToLoadSystemSettings, 3000, {
             hat: "random",
           });
         }
@@ -2267,7 +2347,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   render() {
     const displayUserName =
-      this.userName && this.userName.trim() !== "" ? this.userName : "User";
+      this.userName && this.userName.trim() !== ""
+        ? this.userName
+        : this.t.user;
     return html`<app-hax-router></app-hax-router>
       <!-- plain div: app-hax-top-bar provides the banner landmark itself, a
            wrapping <header> would nest/duplicate banner landmarks (axe:
@@ -2294,7 +2376,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               : ``}
           </div>
 
-          <div slot="center">HAX Site Dashboard</div>
+          <div slot="center">${this.t.haxSiteDashboard}</div>
 
           <div slot="right" class="right-group">
             <app-hax-user-menu
@@ -2309,7 +2391,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 width="68"
                 height="68"
                 hat="${this.userMenuOpen ? "edit" : "none"}"
-                aria-label="User menu for ${displayUserName}"
+                aria-label="${this.t.userMenuFor.replace(
+                  "{name}",
+                  () => displayUserName,
+                )}"
                 aria-expanded="${this.userMenuOpen}"
                 ?walking="${this.rpgWalk}"
                 @click="${this.toggleMenu}"
@@ -2326,10 +2411,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 <button
                   class="soundToggle"
                   @click="${soundToggle}"
-                  aria-label="Toggle sound effects ${this.soundIcon &&
+                  aria-label="${this.soundIcon &&
                   this.soundIcon.indexOf("Full") !== -1
-                    ? "off"
-                    : "on"}"
+                    ? this.t.toggleSoundEffectsOff
+                    : this.t.toggleSoundEffectsOn}"
                   aria-pressed="${this.soundIcon &&
                   this.soundIcon.indexOf("Full") !== -1
                     ? "true"
@@ -2341,7 +2426,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                     decoding="async"
                     aria-hidden="true"
                   ></simple-icon-lite>
-                  <span class="sound-label">Sound effects</span>
+                  <span class="sound-label">${this.t.soundEffects}</span>
                 </button>
               </div>
               ${this._allowSystemSettings()

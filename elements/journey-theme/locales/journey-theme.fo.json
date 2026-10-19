@@ -1,4 +1,11 @@
 {
   "readMore": "Les meira",
-  "home": "Heim"
+  "home": "Heim",
+  "anchorLinkCopied": "Akkerleinki avritað!",
+  "skipToContent": "Far til innihaldið",
+  "changeTheme": "Broyt tema",
+  "siteSections": "Partar á vevstaðnum",
+  "pageOfTotal": "Síða {current} av {total}",
+  "siteGenerated": "Vevstaður framleiddur: {date}",
+  "licenseGraphic": "{license} grafikkur"
 }

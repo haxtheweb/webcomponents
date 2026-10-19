@@ -43,5 +43,22 @@
   "emailAddress": "Saada sellele õppijale e-kiri",
   "notes": "Märkmed",
   "interests": "Huvid",
-  "profileImageFor": "Profiilipilt:"
+  "profileImageFor": "Profiilipilt:",
+  "fileSystem": "Failisüsteem",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL-i lõpp-punkt (JSON)",
+  "jsonDataBlob": "JSON-andmeplokk",
+  "additionalCriteriaFeedback": "Täiendav tagasiside: {criteria}",
+  "outOfPoints": "/ {points} p",
+  "feedbackReport": "Tagasiside aruanne",
+  "criteriaDetails": "Kriteeriumide üksikasjad",
+  "yourFeedback": "Sinu tagasiside",
+  "additionalCriteriaFeedbackHeading": "Täiendav kriteeriumide tagasiside",
+  "yourTotalScore": "Sinu koondtulemus",
+  "scoreOutOfPoints": "{score} / {points} p",
+  "studentAssignment": "Õppija {student} ülesanne {assignment}",
+  "downloadPDF": "Laadi alla PDF",
+  "displayMode1": "Režiim 1",
+  "displayMode2": "Režiim 2",
+  "twoWindows": "Kaks akent"
 }

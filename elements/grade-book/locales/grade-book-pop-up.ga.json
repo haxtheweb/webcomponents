@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Aighneacht an dalta",
   "openInNewWindow": "Oscail i bhfuinneog nua",
-  "submitted": "Curtha isteach"
+  "submitted": "Curtha isteach",
+  "previousStudent": "An dalta roimhe seo",
+  "nextStudent": "An chéad dalta eile",
+  "previousAssignment": "An tasc roimhe seo",
+  "nextAssignment": "An chéad tasc eile"
 }

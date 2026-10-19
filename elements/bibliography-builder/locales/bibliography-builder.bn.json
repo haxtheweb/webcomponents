@@ -1,3 +1,8 @@
 {
-  "title": "তথ্যসূত্র"
+  "title": "তথ্যসূত্র",
+  "export": "এক্সপোর্ট",
+  "exportCitations": "সাইটেশন এক্সপোর্ট করুন",
+  "copy": "কপি করুন",
+  "exportCitationFormat": "সাইটেশন ফরম্যাট এক্সপোর্ট করুন",
+  "selectCitationFormatBelow": "নিচে একটি সাইটেশন ফরম্যাট নির্বাচন করুন"
 }

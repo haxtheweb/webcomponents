@@ -1,4 +1,11 @@
 {
   "readMore": "Werengani zambiri",
-  "home": "Kunyumba"
+  "home": "Kunyumba",
+  "anchorLinkCopied": "Ulalo wa nangula wakopedwa!",
+  "skipToContent": "Pitani ku zomwe zili mkati",
+  "changeTheme": "Sinthani mawonekedwe",
+  "siteSections": "Zigawo za webusayiti",
+  "pageOfTotal": "Tsamba {current} mwa {total}",
+  "siteGenerated": "Webusayiti yapangidwa: {date}",
+  "licenseGraphic": "Chithunzi cha {license}"
 }

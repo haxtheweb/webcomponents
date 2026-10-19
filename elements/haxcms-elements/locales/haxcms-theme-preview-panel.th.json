@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "แสดงตัวอย่างธีม",
+  "hideThemePreview": "ซ่อนตัวอย่างธีม",
+  "themePreviewPanel": "แผงตัวอย่างธีม",
+  "themePreview": "ตัวอย่างธีม",
+  "themePreviewDescription": "ลองใช้ธีมและชุดสีชั่วคราวขณะเรียกดู ใช้ยกเลิกเพื่อคืนรูปลักษณ์เดิมของคุณ",
+  "loadingThemes": "กำลังโหลดธีม...",
+  "theme": "ธีม",
+  "palette": "ชุดสี",
+  "cancel": "ยกเลิก",
+  "openAppearanceSettings": "เปิดการตั้งค่ารูปลักษณ์"
+}

@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Karta {xOfY}",
+  "xOfY": "{order} z {total}",
+  "endOfTab": "Koniec karty {xOfY}. Powrót do {tabs}.",
+  "tabs": "kart"
+}

@@ -6,6 +6,7 @@ import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
@@ -24,6 +25,18 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      contactInformation: "Contact information",
+      social: "Social",
+    };
+    // no I18NMixin in this class chain, so register with the store directly
+    I18NManagerStore.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.siteTitle = "";
     this.siteDescription = "";
     this.authorName = "";
@@ -471,7 +484,7 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
     if (lower.includes("instagram.com")) return "Instagram";
     if (lower.includes("youtube.com")) return "YouTube";
     if (lower.includes("tiktok.com")) return "TikTok";
-    return "Social";
+    return this.t.social;
   }
 
   renderSocialLink(url) {
@@ -499,8 +512,8 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
   render() {
     return html`
       <div class="resume-layout">
-        <a class="skip-link" href="#contentcontainer">Skip to content</a>
-        <aside class="sidebar" part="sidebar" aria-label="Contact information">
+        <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
+        <aside class="sidebar" part="sidebar" aria-label="${this.t.contactInformation}">
           <div class="avatar-wrapper" part="avatar-wrapper">
             ${this.authorImage
               ? html`<img

@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Travagliu resu da u studiente",
   "openInNewWindow": "Apre in una finestra nova",
-  "submitted": "Resu"
+  "submitted": "Resu",
+  "previousStudent": "Studiente precedente",
+  "nextStudent": "Studiente seguente",
+  "previousAssignment": "Compitu precedente",
+  "nextAssignment": "Compitu seguente"
 }

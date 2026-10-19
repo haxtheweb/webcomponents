@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Los lêers hier",
+  "uploadQueue": "Oplaai-tou",
+  "pending": "Hangende",
+  "preparing": "Berei voor",
+  "uploading": "Laai op",
+  "complete": "Voltooi",
+  "aborted": "Gestaak",
+  "cancelled": "Gekanselleer",
+  "error": "Fout",
+  "errorWithStatus": "Fout: {status}",
+  "cancel": "Kanselleer",
+  "cancelUploadOf": "Kanselleer oplaai van {name}",
+  "retry": "Probeer weer",
+  "retryUploadOf": "Probeer oplaai van {name} weer",
+  "remove": "Verwyder",
+  "removeFromQueue": "Verwyder {name} uit tou",
+  "fileTypeNotAccepted": "Lêertipe nie aanvaar nie: {name}",
+  "uploadFailed": "Oplaai het misluk: {status}",
+  "networkError": "Netwerkfout"
+}

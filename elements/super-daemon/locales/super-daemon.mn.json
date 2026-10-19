@@ -36,5 +36,7 @@
   "clickToDoAnything": "Юу ч хийхийн тулд дарна уу!",
   "moreDetails": "Илүү дэлгэрэнгүй",
   "details": "Дэлгэрэнгүй",
-  "saved": "Хадгалагдлаа"
+  "saved": "Хадгалагдлаа",
+  "opensInNewWindow": "Шинэ цонхонд нээгдэнэ",
+  "resultsCount": "{count} үр дүн"
 }

@@ -1,3 +1,8 @@
 {
-  "title": "Mga Sanggunian"
+  "title": "Mga Sanggunian",
+  "export": "I-export",
+  "exportCitations": "I-export ang mga Sanggunian",
+  "copy": "Kopyahin",
+  "exportCitationFormat": "Format ng pag-export ng sanggunian",
+  "selectCitationFormatBelow": "Pumili ng format ng sanggunian sa ibaba"
 }

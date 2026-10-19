@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Натыйжа жок",
+  "viewsRecordHeading": "Жаздыруу",
+  "viewsTitleImage": "{title} сүрөтү",
+  "viewsTitlePreview": "{title} алдын ала көрүү",
+  "viewsNoTimelineRecords": "Убакыт тилкесин көрсөтүү үчүн датага байланыштуу жазуулар жок.",
+  "viewsTimelineTitle": "{title} убакыт тилкеси",
+  "viewsNoChartField": "Диаграмма үчүн сандык талаа табылган жок.",
+  "viewsChartingValue": "Диаграмма: {value}",
+  "viewsChartingValueByLabel": "Диаграмма: {label} боюнча {value}",
+  "viewsChartTitle": "{title} диаграммасы",
+  "viewsNoTreeRecords": "Дарак түрүндө көрсөтүү үчүн иерархиялык жазуулар жок.",
+  "viewsNoGalleryRecords": "Галерея үчүн сүрөт жазуулары жок.",
+  "viewsNoPlaylistRecords": "Ойнотмо тизме үчүн медиа жазуулары жок.",
+  "fetchFailed": "Жүктөө ишке ашкан жок ({status})",
+  "unableToLoadViewData": "Көрүнүш маалыматтарын жүктөө мүмкүн болгон жок.",
+  "noResultsFound": "Эч нерсе табылган жок.",
+  "refreshView": "Көрүнүштү жаңылоо",
+  "breakIntoStaticContent": "Статикалык мазмунга бөлүү",
+  "viewsOpenRecord": "Жазууну ачуу"
+}

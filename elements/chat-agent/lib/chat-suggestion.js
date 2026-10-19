@@ -3,17 +3,27 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { css, html } from "lit";
 import { autorun, toJS } from "mobx";
 import { ChatStore } from "./chat-agent-store.js";
 
-class ChatSuggestion extends DDD {
+class ChatSuggestion extends I18NMixin(DDD) {
   static get tag() {
     return "chat-suggestion";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      sendSuggestionToMerlin: 'Send suggestion "{suggestion}" to Merlin',
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
 
     this.chosenPrompt = false;
     this.disabled = false;
@@ -155,7 +165,10 @@ class ChatSuggestion extends DDD {
         tabindex="0"
         role="button"
         aria-disabled="${this.disabled ? "true" : "false"}"
-        aria-label='Send suggestion "${this.suggestion}" to Merlin'
+        aria-label="${this.t.sendSuggestionToMerlin.replace(
+          "{suggestion}",
+          () => this.suggestion,
+        )}"
       >
         <div class="suggestion-icon">
           <div class="circle-wrapper">

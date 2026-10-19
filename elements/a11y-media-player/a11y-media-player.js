@@ -1193,7 +1193,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                   ?dark="${this.dark}"
                   class="hide-sticky"
                   icon="mdi-social:youtube"
-                  label="Open on YouTube"
+                  label="${this.t.openOnYouTube}"
                   ?hidden="${this.learningMode || this.hideYoutubeLink}"
                   @click="${this.goToYoutube}"
                 ></a11y-media-button>`
@@ -1919,6 +1919,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
       youTubeLoadingLabel: "Loading...",
       youTubeStartLoading: "Press play.",
       youTubeTranscriptLabel: "Transcript will load once media plays.",
+      openOnYouTube: "Open on YouTube",
       audioDescriptionLabel: "Audio Description",
     };
     this.registerLocalization({

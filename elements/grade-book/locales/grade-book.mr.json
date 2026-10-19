@@ -43,5 +43,22 @@
   "emailAddress": "या विद्यार्थ्याला ईमेल करा",
   "notes": "टिपा",
   "interests": "आवडी",
-  "profileImageFor": "प्रोफाइल प्रतिमा:"
+  "profileImageFor": "प्रोफाइल प्रतिमा:",
+  "fileSystem": "फाइल सिस्टम",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL एंडपॉइंट (JSON)",
+  "jsonDataBlob": "JSON डेटा ब्लॉब",
+  "additionalCriteriaFeedback": "अतिरिक्त {criteria} अभिप्राय",
+  "outOfPoints": "/ {points} गुण",
+  "feedbackReport": "अभिप्राय अहवाल",
+  "criteriaDetails": "निकष तपशील",
+  "yourFeedback": "तुमचा अभिप्राय",
+  "additionalCriteriaFeedbackHeading": "अतिरिक्त निकष अभिप्राय",
+  "yourTotalScore": "तुमचे एकूण गुण",
+  "scoreOutOfPoints": "{score} / {points} गुण",
+  "studentAssignment": "{student} यांचा असाइनमेंट {assignment}",
+  "downloadPDF": "PDF डाउनलोड करा",
+  "displayMode1": "मोड 1",
+  "displayMode2": "मोड 2",
+  "twoWindows": "दोन विंडो"
 }

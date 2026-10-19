@@ -1,0 +1,11 @@
+{
+  "playlist": "Purahéi rysýi",
+  "carousel": "jere",
+  "slide": "ta'ãnga",
+  "slideNumber": "Ta'ãnga {number}",
+  "slideOfTotal": "Ta'ãnga {number} {total} apytépe",
+  "previousSlide": "Ta'ãnga mboyvegua",
+  "nextSlide": "Ta'ãnga upeigua",
+  "slidePages": "Ta'ãnga kuatiarogue",
+  "goToSlide": "Eho ta'ãnga {number}-pe"
+}

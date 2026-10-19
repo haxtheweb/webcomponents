@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Laden fan tema's mislearre: {error}",
+  "noThemesForView": "Gjin tema's beskikber foar dizze werjefte.",
+  "active": "Aktyf",
+  "themeIsActive": "Tema {name} is aktyf",
+  "applyTheme": "Tema {name} tapasse",
+  "apply": "Tapasse",
+  "preview": "Foarbyld",
+  "name": "Namme",
+  "element": "Elemint",
+  "description": "Beskriuwing",
+  "action": "Aksje",
+  "loadingThemes": "Tema's lade...",
+  "themesShown": "{count} tema's toand",
+  "themesShownDefaults": "{count} tema's toand (standerts fan app-hax)",
+  "availableHaxcmsThemes": "Beskikbere HAXcms-tema's",
+  "gallery": "Galerij",
+  "table": "Tabel"
+}

@@ -54,5 +54,6 @@
   "requirementUppercase": "ຕົວພິມໃຫຍ່ໜຶ່ງຕົວ",
   "requirementLowercase": "ຕົວພິມນ້ອຍໜຶ່ງຕົວ",
   "requirementNumber": "ຕົວເລກໜຶ່ງຕົວ",
-  "requirementSymbol": "ສັນຍາລັກໜຶ່ງຕົວ"
+  "requirementSymbol": "ສັນຍາລັກໜຶ່ງຕົວ",
+  "haxcmsMascotAlt": "ມາສະຄອດ HAXcms ນັກເດີນທາງຮອບໂລກ"
 }

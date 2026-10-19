@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Konzolna tabela korisničkog zapisnika razgovora",
+  "consoleTableUserText": "console.table() korisnički zapisnik razgovora",
+  "consoleTableUserTooltip": "Ispiši korisnički zapisnik razgovora kao tabelu u konzolu",
+  "consoleTableMerlinLabel": "Konzolna tabela Merlinovog zapisnika razgovora",
+  "consoleTableMerlinText": "console.table() Merlinov zapisnik razgovora",
+  "consoleTableMerlinTooltip": "Ispiši Merlinov zapisnik razgovora kao tabelu u konzolu",
+  "consoleTableAllLabel": "Konzolna tabela cijelog zapisnika razgovora",
+  "consoleTableAllText": "console.table() cijeli zapisnik razgovora",
+  "consoleTableAllTooltip": "Ispiši cijeli zapisnik razgovora kao tabelu u konzolu",
+  "downloadChatLogJson": "Preuzmi zapisnik razgovora kao .json",
+  "downloadChatLogJsonTooltip": "Preuzmi zapisnik razgovora kao .json"
+}

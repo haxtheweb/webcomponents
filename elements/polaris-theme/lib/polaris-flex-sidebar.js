@@ -161,13 +161,13 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
     return html`
       <aside
         role="complementary"
-        aria-label="Primary Sidebar"
+        aria-label="${this.t.primarySidebar}"
         itemscope
         itemtype="http://schema.org/WPSideBar"
         part="page-primary-sidebar"
       >
         <section>
-          <h4 class="sr-only">Contents</h4>
+          <h4 class="sr-only">${this.t.contents}</h4>
           <site-children-block
             part="page-children-block"
             dynamic-methodology="ancestor"
@@ -200,6 +200,12 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      primarySidebar: "Primary Sidebar",
+      contents: "Contents",
+    };
   }
 }
 globalThis.customElements.define(PolarisFlexSidebar.tag, PolarisFlexSidebar);

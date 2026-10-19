@@ -216,6 +216,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
       githubRepository: "GitHub Repository",
       anErrorOccurred: "An error occurred",
       retry: "Retry",
+      haxcmsMascotAlt: "HAXcms World Traveler mascot",
     };
     this.registerLocalization({
       context: this,
@@ -1645,7 +1646,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
         <div class="installer-header">
           <img
             src="${new URL("./lib/hax.png", import.meta.url).href}"
-            alt="HAXcms World Traveler mascot"
+            alt="${this.t.haxcmsMascotAlt}"
             class="installer-logo"
           />
           <span class="installer-name">${this.t.haxcmsInstaller}</span>

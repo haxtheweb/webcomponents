@@ -284,6 +284,7 @@ class SimpleFieldsUpload extends I18NMixin(
       recordScreen: "Record screen",
       cancel: "Cancel",
       uploadMedia: "Upload media",
+      url: "URL",
     };
     this.registerLocalization({
       context: this,
@@ -478,7 +479,7 @@ class SimpleFieldsUpload extends I18NMixin(
               ?autofocus="${this.autofocus}"
               autocomplete="both"
               value="${this.value || ""}"
-              label="URL"
+              label="${this.t.url}"
               type="url"
               auto-validate=""
               part="url"

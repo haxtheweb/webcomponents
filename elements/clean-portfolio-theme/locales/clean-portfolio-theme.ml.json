@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "ആങ്കർ ലിങ്ക് പകർത്തി!",
+  "skipToContent": "ഉള്ളടക്കത്തിലേക്ക് പോകുക",
+  "siteHome": "സൈറ്റ് ഹോം",
+  "mainNavigation": "പ്രധാന നാവിഗേഷൻ",
+  "toggleMenu": "മെനു ടോഗിൾ ചെയ്യുക",
+  "changeTheme": "തീം മാറ്റുക",
+  "breadcrumb": "ബ്രെഡ്ക്രംബ്",
+  "tagFilter": "ടാഗ് ഫിൽട്ടർ:",
+  "all": "എല്ലാം",
+  "pageNumberOfTotal": "പേജ് നമ്പർ: {total}-ൽ {current}",
+  "siteGenerated": "സൈറ്റ് ജനറേറ്റ് ചെയ്തത്: {date}",
+  "copyright": "പകർപ്പവകാശം: {year} {author}",
+  "viewContentByTag": "ടാഗ് അനുസരിച്ച് ഉള്ളടക്കം കാണുക",
+  "licenseGraphic": "{license} ഗ്രാഫിക്"
+}

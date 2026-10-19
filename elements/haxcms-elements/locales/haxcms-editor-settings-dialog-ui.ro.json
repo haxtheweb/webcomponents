@@ -5,5 +5,9 @@
   "buttons": "Butoane",
   "futureButtonConfiguration": "Configurarea personalizată a butoanelor editorului va fi disponibilă în curând.",
   "save": "Salvează",
-  "saving": "Se salvează…"
+  "saving": "Se salvează…",
+  "novice": "Începător",
+  "expert": "Expert",
+  "toolbarPreviewAlt": "Previzualizarea barei de editare pentru {audience}",
+  "savingEditorSettingsFailed": "Salvarea setărilor editorului a eșuat: {error}"
 }

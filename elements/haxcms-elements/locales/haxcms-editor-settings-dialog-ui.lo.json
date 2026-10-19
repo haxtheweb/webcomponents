@@ -5,5 +5,9 @@
   "buttons": "ປຸ່ມ",
   "futureButtonConfiguration": "ການຕັ້ງຄ່າປຸ່ມຕົວແກ້ໄຂແບບກຳນົດເອງຈະມາໃນໄວໆນີ້.",
   "save": "ບັນທຶກ",
-  "saving": "ກຳລັງບັນທຶກ…"
+  "saving": "ກຳລັງບັນທຶກ…",
+  "novice": "ຜູ້ເລີ່ມຕົ້ນ",
+  "expert": "ຜູ້ຊ່ຽວຊານ",
+  "toolbarPreviewAlt": "ຕົວຢ່າງແຖບເຄື່ອງມືແກ້ໄຂສຳລັບ {audience}",
+  "savingEditorSettingsFailed": "ການບັນທຶກການຕັ້ງຄ່າຕົວແກ້ໄຂລົ້ມເຫຼວ: {error}"
 }

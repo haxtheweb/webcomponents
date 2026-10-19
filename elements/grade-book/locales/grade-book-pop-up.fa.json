@@ -1,5 +1,9 @@
 {
   "studentSubmission": "ارسال دانش‌آموز",
   "openInNewWindow": "باز کردن در پنجره جدید",
-  "submitted": "ارسال‌شده"
+  "submitted": "ارسال‌شده",
+  "previousStudent": "دانش‌آموز قبلی",
+  "nextStudent": "دانش‌آموز بعدی",
+  "previousAssignment": "تکلیف قبلی",
+  "nextAssignment": "تکلیف بعدی"
 }

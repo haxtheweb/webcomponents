@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Voer gebruikersnaam in",
+  "invalidUsernameOrPassword": "Ongeldige gebruikersnaam of wagwoord",
+  "welcomeLetsGo": "Welkom {username}! Kom ons gaan!",
+  "enterYourUsername": "Voer jou gebruikersnaam in",
+  "username": "Gebruikersnaam",
+  "next": "Volgende",
+  "welcomeBack": "Welkom terug, {username}!",
+  "notYou": "Nie jy nie?",
+  "enterYourPassword": "Voer jou wagwoord in",
+  "password": "Wagwoord",
+  "togglePasswordDisplay": "Wissel wagwoordvertoning",
+  "login": "Meld aan"
+}

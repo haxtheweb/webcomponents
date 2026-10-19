@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Enllaç d'ancoratge copiat!",
+  "skipToContent": "Salta al contingut",
+  "siteHome": "Inici del lloc",
+  "mainNavigation": "Navegació principal",
+  "toggleMenu": "Commuta el menú",
+  "changeTheme": "Canvia el tema",
+  "breadcrumb": "Ruta de navegació",
+  "tagFilter": "Filtre d'etiquetes:",
+  "all": "Tots",
+  "pageNumberOfTotal": "Número de pàgina: {current} de {total}",
+  "siteGenerated": "Lloc generat: {date}",
+  "copyright": "Drets d'autor: {year} {author}",
+  "viewContentByTag": "Mostra el contingut per etiqueta",
+  "licenseGraphic": "Gràfic de {license}"
+}

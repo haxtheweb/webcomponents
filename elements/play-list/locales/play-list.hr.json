@@ -1,0 +1,11 @@
+{
+  "playlist": "Popis za reprodukciju",
+  "carousel": "vrtuljak",
+  "slide": "slajd",
+  "slideNumber": "Slajd {number}",
+  "slideOfTotal": "Slajd {number} od {total}",
+  "previousSlide": "Prethodni slajd",
+  "nextSlide": "Sljedeći slajd",
+  "slidePages": "Stranice slajdova",
+  "goToSlide": "Idi na slajd {number}"
+}

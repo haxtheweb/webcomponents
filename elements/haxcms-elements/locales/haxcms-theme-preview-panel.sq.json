@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Shfaq pamjen paraprake të temës",
+  "hideThemePreview": "Fshih pamjen paraprake të temës",
+  "themePreviewPanel": "Paneli i pamjes paraprake të temës",
+  "themePreview": "Pamje paraprake e temës",
+  "themePreviewDescription": "Provo përkohësisht një temë dhe paletë ndërsa shfleton. Përdor Anulo për të rikthyer pamjen origjinale.",
+  "loadingThemes": "Duke ngarkuar temat...",
+  "theme": "Tema",
+  "palette": "Paleta",
+  "cancel": "Anulo",
+  "openAppearanceSettings": "Hap cilësimet e pamjes"
+}

@@ -1,4 +1,11 @@
 {
   "readMore": "Leghje di più",
-  "home": "Accolta"
+  "home": "Accolta",
+  "anchorLinkCopied": "Ligame d'ancura cupiatu!",
+  "skipToContent": "Andà à u cuntenutu",
+  "changeTheme": "Cambià u tema",
+  "siteSections": "Sezzioni di u situ",
+  "pageOfTotal": "Pagina {current} nant'à {total}",
+  "siteGenerated": "Situ generatu: {date}",
+  "licenseGraphic": "Graficu di {license}"
 }

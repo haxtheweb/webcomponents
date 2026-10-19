@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Mavzu koʻrinishini koʻrsatish",
+  "hideThemePreview": "Mavzu koʻrinishini yashirish",
+  "themePreviewPanel": "Mavzuni oldindan koʻrish paneli",
+  "themePreview": "Mavzuni oldindan koʻrish",
+  "themePreviewDescription": "Koʻrib chiqish davomida mavzu va palitrani vaqtincha sinab koʻring. Asl koʻrinishni tiklash uchun Bekor qilish tugmasidan foydalaning.",
+  "loadingThemes": "Mavzular yuklanmoqda...",
+  "theme": "Mavzu",
+  "palette": "Palitra",
+  "cancel": "Bekor qilish",
+  "openAppearanceSettings": "Tashqi koʻrinish sozlamalarini ochish"
+}

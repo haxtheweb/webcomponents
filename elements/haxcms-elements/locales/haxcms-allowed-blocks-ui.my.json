@@ -10,5 +10,9 @@
   "save": "သိမ်းရန်",
   "noDescription": "ဖော်ပြချက် မရှိပါ။",
   "details": "အသေးစိတ်",
-  "loadingInventory": "ဘလောက် စာရင်းအပြည့်အစုံကို ဖွင့်နေသည်…"
+  "loadingInventory": "ဘလောက် စာရင်းအပြည့်အစုံကို ဖွင့်နေသည်…",
+  "selectAllButton": "အားလုံး ရွေးရန်",
+  "deselectAllButton": "အားလုံး ရွေးချယ်မှု ဖြုတ်ရန်",
+  "selectedOfAvailable": "{selected} ခု ရွေးထားသည် / {total} ခု ရနိုင်သည်",
+  "savingBlocksFailed": "ဘလော့ခ်များ သိမ်းခြင်း မအောင်မြင်ပါ: {error}"
 }

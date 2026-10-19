@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "锚点链接已经复制!",
+  "skipToContent": "跳到内容",
+  "siteHome": "网站首页",
+  "mainNavigation": "主导航",
+  "toggleMenu": "切换菜单",
+  "changeTheme": "换主题",
+  "breadcrumb": "面包屑",
+  "tagFilter": "标签筛选:",
+  "all": "全部",
+  "pageNumberOfTotal": "页码:{current} / {total}",
+  "siteGenerated": "网站生成辰光:{date}",
+  "copyright": "版权:{year} {author}",
+  "viewContentByTag": "按标签看内容",
+  "licenseGraphic": "{license} 图标"
+}

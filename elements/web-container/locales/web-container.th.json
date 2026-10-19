@@ -1,0 +1,8 @@
+{
+  "loading": "กำลังโหลด",
+  "settingUpContainer": "กำลังตั้งค่าคอนเทนเนอร์",
+  "runningCommands": "กำลังรันคำสั่ง",
+  "installing": "กำลังติดตั้ง..",
+  "runningStart": "กำลังรัน Start..",
+  "webContainerPreview": "ตัวอย่างเว็บคอนเทนเนอร์"
+}

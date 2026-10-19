@@ -1,0 +1,11 @@
+{
+  "licenseBy": "ಗುಣಾರೋಪಣೆ",
+  "licenseBySa": "ಗುಣಾರೋಪಣೆ ಸಮಾನವಾಗಿ ಹಂಚಿಕೊಳ್ಳಿ",
+  "licenseByNd": "ಗುಣಾರೋಪಣೆ ವ್ಯುತ್ಪನ್ನಗಳಿಲ್ಲ",
+  "licenseByNc": "ಗುಣಾರೋಪಣೆ ವಾಣಿಜ್ಯೇತರ",
+  "licenseByNcSa": "ಗುಣಾರೋಪಣೆ ವಾಣಿಜ್ಯೇತರ ಸಮಾನವಾಗಿ ಹಂಚಿಕೊಳ್ಳಿ",
+  "licenseByNcNd": "ಗುಣಾರೋಪಣೆ ವಾಣಿಜ್ಯೇತರ ವ್ಯುತ್ಪನ್ನಗಳಿಲ್ಲ",
+  "citationWithLicense": "{creator} ಅವರ {title}, {license} ಅಡಿಯಲ್ಲಿ ಪರವಾನಗಿ ಪಡೆದಿದೆ. ಪ್ರವೇಶಿಸಿದ ದಿನಾಂಕ {date}.",
+  "citationWithoutLicense": "{creator} ಅವರ {title}. ಪ್ರವೇಶಿಸಿದ ದಿನಾಂಕ {date}.",
+  "licenseGraphic": "{license} ಗ್ರಾಫಿಕ್"
+}

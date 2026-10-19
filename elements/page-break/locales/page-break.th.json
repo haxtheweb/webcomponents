@@ -22,6 +22,13 @@
   "unpublish": "ยกเลิกการเผยแพร่",
   "savePage": "บันทึกหน้า",
   "cancel": "ยกเลิก",
+  "delete": "ลบ",
+  "editTitle": "แก้ไขชื่อเรื่อง",
+  "editIcon": "แก้ไขไอคอน",
+  "agent": "เอเจนต์",
+  "pageLockedUnlockToEdit": "หน้านี้ถูกล็อก ปลดล็อกก่อนเพื่อแก้ไข",
+  "pageLockedUnlockToChangePublishStatus": "หน้านี้ถูกล็อก ปลดล็อกก่อนเพื่อเปลี่ยนสถานะการเผยแพร่",
+  "pageLockedUnlockToDelete": "หน้านี้ถูกล็อก ปลดล็อกก่อนเพื่อลบ",
   "pageDetails": "รายละเอียดหน้า",
   "clickToUnlock": "คลิกเพื่อปลดล็อก"
 }

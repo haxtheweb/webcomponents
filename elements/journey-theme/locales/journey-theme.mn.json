@@ -1,4 +1,11 @@
 {
   "readMore": "Дэлгэрэнгүй унших",
-  "home": "Нүүр"
+  "home": "Нүүр",
+  "anchorLinkCopied": "Зангуу холбоосыг хууллаа!",
+  "skipToContent": "Агуулга руу шилжих",
+  "changeTheme": "Загвар солих",
+  "siteSections": "Сайтын хэсгүүд",
+  "pageOfTotal": "Хуудас {current} / {total}",
+  "siteGenerated": "Сайт үүсгэсэн: {date}",
+  "licenseGraphic": "{license} график"
 }

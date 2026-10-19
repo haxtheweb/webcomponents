@@ -1,0 +1,11 @@
+{
+  "playlist": "Playlist",
+  "carousel": "carousel",
+  "slide": "slide",
+  "slideNumber": "Slide {number}",
+  "slideOfTotal": "Slide {number} of {total}",
+  "previousSlide": "Previous slide",
+  "nextSlide": "Next slide",
+  "slidePages": "Slide pages",
+  "goToSlide": "Go to slide {number}"
+}

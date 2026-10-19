@@ -1,5 +1,9 @@
 {
   "studentSubmission": "ကျောင်းသား တင်သွင်းချက်",
   "openInNewWindow": "ဝင်းဒိုးအသစ်တွင် ဖွင့်ရန်",
-  "submitted": "တင်သွင်းပြီး"
+  "submitted": "တင်သွင်းပြီး",
+  "previousStudent": "ယခင် ကျောင်းသား",
+  "nextStudent": "နောက် ကျောင်းသား",
+  "previousAssignment": "ယခင် လုပ်ငန်းတာဝန်",
+  "nextAssignment": "နောက် လုပ်ငန်းတာဝန်"
 }

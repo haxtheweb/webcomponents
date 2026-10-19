@@ -1,6 +1,7 @@
 import { html, css } from "lit";
 import { toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import {
@@ -11,7 +12,7 @@ import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-regis
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
-class HAXCMSAppearanceAdminDialog extends DDD {
+class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-appearance-admin-dialog";
   }
@@ -33,6 +34,55 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     this.__themesRegistry = {};
     this.__themesRegistryLoaded = false;
     this.__themePreviewSelection = null;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      page: "Page",
+      palette: "Palette",
+      paletteDescription: "DDD palette applied at theme scope for color-token cascading",
+      theme: "Theme",
+      themeGroupDescription: "Choose the active theme for your site.",
+      themeFieldDescription: "Design and presentation layer for your site",
+      paletteGroupDescription: "Control accent colors and DDD palette tokens.",
+      accentColor: "Accent color",
+      accentColorDescription: "Accent color applied to themes that implement it",
+      branding: "Branding",
+      brandingDescription: "Set brand imagery, iconography, and related metadata.",
+      image: "Image",
+      imageDescription: "Image applied to themes that implement one",
+      bannerAlt: "Banner alt",
+      bannerAltDescription: "Alternative text for the banner image",
+      bannerLink: "Banner link",
+      bannerLinkDescription: "Optional banner image link",
+      icon: "Icon",
+      iconDescription: "Icon to represent the site in themes that implement it",
+      regions: "Regions",
+      regionsDescription: "Assign pages to theme region slots.",
+      header: "Header",
+      headerDescription: "Page shown in the header region",
+      sidebarFirst: "Sidebar first",
+      sidebarFirstDescription: "Page shown in the first sidebar region",
+      sidebarSecond: "Sidebar second",
+      sidebarSecondDescription: "Page shown in the second sidebar region",
+      contentTop: "Content top",
+      contentTopDescription: "Page shown in the top content region",
+      contentBottom: "Content bottom",
+      contentBottomDescription: "Page shown in the bottom content region",
+      footerPrimary: "Footer primary",
+      footerPrimaryDescription: "Page shown in the primary footer region",
+      footerSecondary: "Footer secondary",
+      footerSecondaryDescription: "Page shown in the secondary footer region",
+      unableToLoadAppearanceSettings: "Unable to load appearance settings.",
+      appearance: "Appearance",
+      appearanceNote: "Configure theme, palette, branding, and layout regions for your site.",
+      noAppearanceSettings: "No appearance settings are available.",
+      themePreview: "Theme Preview",
+      save: "Save",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
   }
 
   connectedCallback() {
@@ -580,7 +630,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
       properties: [
         {
           property: "node",
-          title: "Page",
+          title: this.t.page,
           inputMethod: "select",
           itemsList: items,
         },
@@ -626,9 +676,8 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     const paletteOptions = this._getSupportedPalettesForTheme(themeElement);
     const paletteField = {
       property: "manifest-metadata-theme-variables-palette",
-      title: "Palette",
-      description:
-        "DDD palette applied at theme scope for color-token cascading",
+      title: this.t.palette,
+      description: this.t.paletteDescription,
       inputMethod: "hax-palette-picker",
       required: false,
     };
@@ -638,15 +687,15 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     return [
       {
         key: "theme",
-        label: "Theme",
+        label: this.t.theme,
         icon: "image:style",
-        description: "Choose the active theme for your site.",
+        description: this.t.themeGroupDescription,
         open: true,
         fields: [
           {
             property: "manifest-metadata-theme-element",
-            title: "Theme",
-            description: "Design and presentation layer for your site",
+            title: this.t.theme,
+            description: this.t.themeFieldDescription,
             inputMethod: "haxcms-theme-picker",
             required: false,
             options: this._themeOptions(themeElement),
@@ -657,16 +706,16 @@ class HAXCMSAppearanceAdminDialog extends DDD {
       },
       {
         key: "palette",
-        label: "Palette",
+        label: this.t.palette,
         icon: "lrn:palette",
-        description: "Control accent colors and DDD palette tokens.",
+        description: this.t.paletteGroupDescription,
         open: false,
         fields: [
           paletteField,
           {
             property: "manifest-metadata-theme-variables-cssVariable",
-            title: "Accent color",
-            description: "Accent color applied to themes that implement it",
+            title: this.t.accentColor,
+            description: this.t.accentColorDescription,
             inputMethod: "colorpicker",
             required: true,
           },
@@ -674,15 +723,15 @@ class HAXCMSAppearanceAdminDialog extends DDD {
       },
       {
         key: "branding",
-        label: "Branding",
+        label: this.t.branding,
         icon: "editor:insert-photo",
-        description: "Set brand imagery, iconography, and related metadata.",
+        description: this.t.brandingDescription,
         open: false,
         fields: [
           {
             property: "manifest-metadata-theme-variables-image",
-            title: "Image",
-            description: "Image applied to themes that implement one",
+            title: this.t.image,
+            description: this.t.imageDescription,
             inputMethod: "haxupload",
             fileActions: true,
             noVoiceRecord: true,
@@ -692,24 +741,23 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           },
           {
             property: "manifest-metadata-theme-variables-imageAlt",
-            title: "Banner alt",
-            description: "Alternative text for the banner image",
+            title: this.t.bannerAlt,
+            description: this.t.bannerAltDescription,
             inputMethod: "textfield",
             required: false,
             noVoiceRecord: true,
           },
           {
             property: "manifest-metadata-theme-variables-imageLink",
-            title: "Banner link",
-            description: "Optional banner image link",
+            title: this.t.bannerLink,
+            description: this.t.bannerLinkDescription,
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "manifest-metadata-theme-variables-icon",
-            title: "Icon",
-            description:
-              "Icon to represent the site in themes that implement it",
+            title: this.t.icon,
+            description: this.t.iconDescription,
             inputMethod: "iconpicker",
             required: false,
           },
@@ -717,51 +765,51 @@ class HAXCMSAppearanceAdminDialog extends DDD {
       },
       {
         key: "regions",
-        label: "Regions",
+        label: this.t.regions,
         icon: "hax:site-map",
-        description: "Assign pages to theme region slots.",
+        description: this.t.regionsDescription,
         open: false,
         fields: [
           this._regionField(
             "manifest-metadata-theme-regions-header",
-            "Header",
-            "Page shown in the header region",
+            this.t.header,
+            this.t.headerDescription,
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-sidebarFirst",
-            "Sidebar first",
-            "Page shown in the first sidebar region",
+            this.t.sidebarFirst,
+            this.t.sidebarFirstDescription,
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-sidebarSecond",
-            "Sidebar second",
-            "Page shown in the second sidebar region",
+            this.t.sidebarSecond,
+            this.t.sidebarSecondDescription,
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-contentTop",
-            "Content top",
-            "Page shown in the top content region",
+            this.t.contentTop,
+            this.t.contentTopDescription,
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-contentBottom",
-            "Content bottom",
-            "Page shown in the bottom content region",
+            this.t.contentBottom,
+            this.t.contentBottomDescription,
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-footerPrimary",
-            "Footer primary",
-            "Page shown in the primary footer region",
+            this.t.footerPrimary,
+            this.t.footerPrimaryDescription,
             regionItems,
           ),
           this._regionField(
             "manifest-metadata-theme-regions-footerSecondary",
-            "Footer secondary",
-            "Page shown in the secondary footer region",
+            this.t.footerSecondary,
+            this.t.footerSecondaryDescription,
             regionItems,
           ),
         ],
@@ -869,7 +917,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
       this.groups = [];
       this.values = {};
       this.__groupValues = {};
-      this.errorMessage = "Unable to load appearance settings.";
+      this.errorMessage = this.t.unableToLoadAppearanceSettings;
       return;
     }
     this.__valueChangeLock = true;
@@ -1145,16 +1193,13 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
-          <h2>Appearance</h2>
-          <p class="appearance-note">
-            Configure theme, palette, branding, and layout regions for your
-            site.
-          </p>
+          <h2>${this.t.appearance}</h2>
+          <p class="appearance-note">${this.t.appearanceNote}</p>
           ${this.errorMessage
             ? html`<p class="error">${this.errorMessage}</p>`
             : ``}
           ${!this.errorMessage && this.groups.length === 0
-            ? html`<p class="status">No appearance settings are available.</p>`
+            ? html`<p class="status">${this.t.noAppearanceSettings}</p>`
             : ``}
           ${!this.errorMessage
             ? html`
@@ -1202,7 +1247,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
             @click="${this._openThemePreviewTap}"
             ?disabled="${this.groups.length === 0}"
           >
-            Theme Preview
+            ${this.t.themePreview}
           </button>
           <button
             type="button"
@@ -1210,7 +1255,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
             @click="${this._saveAppearanceSettingsTap}"
             ?disabled="${this.groups.length === 0}"
           >
-            Save
+            ${this.t.save}
           </button>
         </div>
       </div>

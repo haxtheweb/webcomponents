@@ -5,5 +5,9 @@
   "buttons": "Amaqhosha",
   "futureButtonConfiguration": "Ukuqwalaselwa kwamaqhosha omhleli ngokwakho kuyeza kungekudala.",
   "save": "Gcina",
-  "saving": "Kuyagcinwa…"
+  "saving": "Kuyagcinwa…",
+  "novice": "Umqalisi",
+  "expert": "Ingcali",
+  "toolbarPreviewAlt": "Umboniso webha yezixhobo zokuhlela ye-{audience}",
+  "savingEditorSettingsFailed": "Ukugcina iisetingi zomhleli akuphumelelanga: {error}"
 }

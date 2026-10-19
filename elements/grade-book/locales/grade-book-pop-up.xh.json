@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Okungeniswe ngumfundi",
   "openInNewWindow": "Vula kwifestile entsha",
-  "submitted": "Kungenisiwe"
+  "submitted": "Kungenisiwe",
+  "previousStudent": "Umfundi ongaphambili",
+  "nextStudent": "Umfundi olandelayo",
+  "previousAssignment": "Isabelo esingaphambili",
+  "nextAssignment": "Isabelo esilandelayo"
 }

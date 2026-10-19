@@ -1,0 +1,11 @@
+{
+  "playlist": "Rhestr chwarae",
+  "carousel": "carwsél",
+  "slide": "sleid",
+  "slideNumber": "Sleid {number}",
+  "slideOfTotal": "Sleid {number} o {total}",
+  "previousSlide": "Sleid flaenorol",
+  "nextSlide": "Sleid nesaf",
+  "slidePages": "Tudalennau sleidiau",
+  "goToSlide": "Mynd i sleid {number}"
+}

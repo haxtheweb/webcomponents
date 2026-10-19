@@ -11,6 +11,7 @@ import { JsonOutlineSchema } from "@haxtheweb/json-outline-schema/json-outline-s
 import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 configure({ enforceActions: false }); // strict mode off
 function hasStoredSoundPreference() {
   try {
@@ -226,7 +227,16 @@ class Store {
       print: "Print page",
       "displays/style-guide": "Theme Style Guide",
       pageNotFound: "Page not found",
+      exitViewOnlyMode: "Exit View Only Mode",
+      viewOnlyModeMessage:
+        "You are now viewing the site as a visitor would see it. All editing tools are hidden.",
     };
+    // Store is not an element; register it against the shared haxcms namespace
+    I18NManagerStore.registerLocalization({
+      context: this,
+      namespace: "haxcms",
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.activeId = null;
     this.userData = {};
     this.cmsSiteEditor = {
@@ -988,7 +998,7 @@ class Store {
   showViewOnlyModeToast() {
     // Create exit button
     const exitButton = globalThis.document.createElement("button");
-    exitButton.innerText = "Exit View Only Mode";
+    exitButton.innerText = this.t.exitViewOnlyMode;
     exitButton.style.cssText = `
       background-color: var(--simple-colors-default-theme-blue-7);
       color: white;
@@ -1005,7 +1015,7 @@ class Store {
     });
     // Show toast with button
     store.toast(
-      "You are now viewing the site as a visitor would see it. All editing tools are hidden.",
+      this.t.viewOnlyModeMessage,
       0,
       {
         hat: "coffee",

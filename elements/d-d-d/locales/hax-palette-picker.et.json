@@ -1,0 +1,9 @@
+{
+  "palette": "Palett",
+  "paletteSelection": "Paleti valik",
+  "active": "Aktiivne",
+  "selected": "Valitud",
+  "currentlyActiveAndSelectedPalette": "Praegu aktiivne ja valitud palett",
+  "currentlyActivePalette": "Praegu aktiivne palett",
+  "selectedPaletteToApply": "Rakendamiseks valitud palett"
+}

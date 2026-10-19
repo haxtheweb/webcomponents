@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Ladataan...",
   "youTubeStartLoading": "Paina toista.",
   "youTubeTranscriptLabel": "Litterointi latautuu, kun media alkaa toistua.",
-  "audioDescriptionLabel": "Kuvailutulkkaus"
+  "audioDescriptionLabel": "Kuvailutulkkaus",
+  "openOnYouTube": "Avaa YouTubessa"
 }

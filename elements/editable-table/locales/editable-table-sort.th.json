@@ -1,0 +1,6 @@
+{
+  "ascending": "(น้อยไปมาก)",
+  "descending": "(มากไปน้อย)",
+  "toggleSortMode": "สลับโหมดการเรียงลำดับ",
+  "togglesSortingByColumn": "สลับการเรียงลำดับตามคอลัมน์นี้"
+}

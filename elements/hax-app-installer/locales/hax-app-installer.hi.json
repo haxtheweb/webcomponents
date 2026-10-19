@@ -54,5 +54,6 @@
   "requirementUppercase": "एक बड़ा अक्षर",
   "requirementLowercase": "एक छोटा अक्षर",
   "requirementNumber": "एक अंक",
-  "requirementSymbol": "एक चिह्न"
+  "requirementSymbol": "एक चिह्न",
+  "haxcmsMascotAlt": "HAXcms विश्व यात्री शुभंकर"
 }

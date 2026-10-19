@@ -1,0 +1,5 @@
+{
+  "pageNavigation": "Навигация между страниците",
+  "goToPreviousPage": "Към предишната страница: {title}",
+  "goToNextPage": "Към следващата страница: {title}"
+}

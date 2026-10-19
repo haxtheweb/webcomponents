@@ -1,0 +1,18 @@
+{
+  "copy": "Afrita",
+  "download": "Sækja",
+  "archive": "Setja í safn",
+  "copyOperation": "afrita",
+  "downloadOperation": "sækja",
+  "archiveOperation": "setja í safn",
+  "created": "búið til",
+  "updated": "uppfært",
+  "pages": "síður",
+  "url": "URL",
+  "confirm": "Staðfesta",
+  "cancel": "Hætta við",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Ertu viss um að þú viljir {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} tókst!",
+  "siteOperationFailed": "{siteName}: {operation} mistókst"
+}

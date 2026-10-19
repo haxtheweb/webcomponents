@@ -1,0 +1,17 @@
+{
+  "editNodes": "Editar nós",
+  "editLines": "Editar linhas",
+  "reset": "Redefinir",
+  "save": "Salvar",
+  "cancel": "Cancelar",
+  "delete": "Excluir",
+  "type": "Tipo:",
+  "topic": "Tópico",
+  "subsection": "Subseção",
+  "name": "Nome:",
+  "enterName": "Digite o nome",
+  "url": "URL:",
+  "enterUrl": "Digite a URL",
+  "activeNode": "Nó ativo?",
+  "nodeId": "Nó {id}"
+}

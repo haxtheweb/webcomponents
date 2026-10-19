@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Нэр заах",
+  "licenseBySa": "Нэр заах-Ижил нөхцөлөөр түгээх",
+  "licenseByNd": "Нэр заах-Өөрчлөхгүй",
+  "licenseByNc": "Нэр заах-Арилжааны бус",
+  "licenseByNcSa": "Нэр заах-Арилжааны бус-Ижил нөхцөлөөр түгээх",
+  "licenseByNcNd": "Нэр заах-Арилжааны бус-Өөрчлөхгүй",
+  "licenseGraphic": "{license} график",
+  "workByCreator": "{title}, зохиогч {creator}",
+  "workByCreatorLicensed": "{creator}-ийн {title} нь {license} лицензтэй.",
+  "permissionsBeyondScope": "Энэ лицензийн хүрээнээс гадуурх зөвшөөрлийг {link} авах боломжтой.",
+  "author": "(зохиогч)",
+  "onTheLicensingDetailsPage": "лицензийн дэлгэрэнгүй хуудаснаас"
+}

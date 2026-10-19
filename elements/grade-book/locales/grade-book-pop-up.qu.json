@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Yachaqaqpa apachisqan",
   "openInNewWindow": "Musuq ventanapi kichay",
-  "submitted": "Apachisqa"
+  "submitted": "Apachisqa",
+  "previousStudent": "Ñawpaq yachaqaq",
+  "nextStudent": "Qatiq yachaqaq",
+  "previousAssignment": "Ñawpaq llamk'ay",
+  "nextAssignment": "Qatiq llamk'ay"
 }

@@ -1,0 +1,17 @@
+{
+  "editNodes": "Редактировать узлы",
+  "editLines": "Редактировать линии",
+  "reset": "Сбросить",
+  "save": "Сохранить",
+  "cancel": "Отмена",
+  "delete": "Удалить",
+  "type": "Тип:",
+  "topic": "Тема",
+  "subsection": "Подраздел",
+  "name": "Имя:",
+  "enterName": "Введите имя",
+  "url": "URL:",
+  "enterUrl": "Введите URL",
+  "activeNode": "Активный узел?",
+  "nodeId": "Узел {id}"
+}

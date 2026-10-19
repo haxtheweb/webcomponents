@@ -1,8 +1,9 @@
 import { css, html } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-export class MiniMap extends DDD {
+export class MiniMap extends I18NMixin(DDD) {
   static properties = {
     gridSize: { type: Number },
     nodeList: { type: Array },
@@ -18,6 +19,29 @@ export class MiniMap extends DDD {
     this.lineList = [];
     this.activeNode = null;
     this.availableNodes = [];
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      editNodes: "Edit Nodes",
+      editLines: "Edit Lines",
+      reset: "Reset",
+      save: "Save",
+      cancel: "Cancel",
+      delete: "Delete",
+      type: "Type:",
+      topic: "Topic",
+      subsection: "Subsection",
+      name: "Name:",
+      enterName: "Enter Name",
+      url: "URL:",
+      enterUrl: "Enter URL",
+      activeNode: "Active Node?",
+      nodeId: "Node {id}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     // modal buttons keep their listeners because simple-modal receives the
     // original nodes (clone: false); bind once so `this` is the MiniMap
     this.saveNode = this.saveNode.bind(this);
@@ -165,16 +189,16 @@ export class MiniMap extends DDD {
       }
     </style>
     <span id="node-input-id" hidden></span>
-    <label>Type:
+    <label>${this.t.type}
       <select id="node-input-type">
-        <option value="topic">Topic</option>
-        <option value="subsection">Subsection</option>
+        <option value="topic">${this.t.topic}</option>
+        <option value="subsection">${this.t.subsection}</option>
       </select>
     </label>
-    <label>Name: <input type="text" id="node-input-name" placeholder="Enter Name"></label>
-    <label>URL: <input type="url" id="node-input-url" placeholder="Enter URL"></label>
+    <label>${this.t.name} <input type="text" id="node-input-name" placeholder="${this.t.enterName}"></label>
+    <label>${this.t.url} <input type="url" id="node-input-url" placeholder="${this.t.enterUrl}"></label>
     <div>
-      <label>Active Node? <input type="checkbox" id="node-input-active"></label>
+      <label>${this.t.activeNode} <input type="checkbox" id="node-input-active"></label>
     </div>
     `;
     // populate the form from node data instead of interpolating it into HTML
@@ -189,15 +213,15 @@ export class MiniMap extends DDD {
     buttons.classList.add("modal-buttons");
     const saveButton = globalThis.document.createElement("button");
     saveButton.id = "nodeSaveBtn";
-    saveButton.textContent = "Save";
+    saveButton.textContent = this.t.save;
     saveButton.addEventListener("click", this.saveNode);
     const cancelButton = globalThis.document.createElement("button");
     cancelButton.id = "nodeCancelBtn";
-    cancelButton.textContent = "Cancel";
+    cancelButton.textContent = this.t.cancel;
     cancelButton.addEventListener("click", this.closeModal);
     const deleteButton = globalThis.document.createElement("button");
     deleteButton.id = "nodeDeleteBtn";
-    deleteButton.textContent = "Delete";
+    deleteButton.textContent = this.t.delete;
     deleteButton.addEventListener("click", this.deleteNode);
     buttons.append(saveButton, cancelButton, deleteButton);
 
@@ -206,7 +230,7 @@ export class MiniMap extends DDD {
       cancelable: true,
       composed: true,
       detail: {
-        title: "Node " + id,
+        title: this.t.nodeId.replace("{id}", () => id),
         elements: { content, buttons },
         invokedBy: invokedBy || saveButton,
         clone: false,
@@ -282,10 +306,10 @@ export class MiniMap extends DDD {
 
   render() {
     return html`
-      <button>Edit Nodes</button>
-      <button>Edit Lines</button>
-      <button @click="${this.removeAllNodes}">Reset</button>
-      <button>Save</button>
+      <button>${this.t.editNodes}</button>
+      <button>${this.t.editLines}</button>
+      <button @click="${this.removeAllNodes}">${this.t.reset}</button>
+      <button>${this.t.save}</button>
       <div
         id="gridTarget"
         class="grid"

@@ -9,5 +9,8 @@
   "record": "Ýazgy etmek",
   "pause": "Ýazgyny saklamak",
   "stopSave": "Togtatmak we ýatda saklamak",
-  "clickToTakePhoto": "Surata almak üçin basyň"
+  "clickToTakePhoto": "Surata almak üçin basyň",
+  "url": "URL",
+  "open": "aç",
+  "removeValue": "{value} aýyr"
 }

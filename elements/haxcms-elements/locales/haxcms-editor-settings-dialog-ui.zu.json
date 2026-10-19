@@ -5,5 +5,9 @@
   "buttons": "Izinkinobho",
   "futureButtonConfiguration": "Ukulungiselela izinkinobho zomhleli ngokwezifiso kuyeza maduze.",
   "save": "Londoloza",
-  "saving": "Iyalondoloza…"
+  "saving": "Iyalondoloza…",
+  "novice": "Oqalayo",
+  "expert": "Uchwepheshe",
+  "toolbarPreviewAlt": "Ukubuka kuqala kwebha yamathuluzi okuhlela ye-{audience}",
+  "savingEditorSettingsFailed": "Ukugcina izilungiselelo zesihleli kwehlulekile: {error}"
 }

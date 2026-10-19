@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Det gick inte att läsa in teman: {error}",
+  "noThemesForView": "Inga teman tillgängliga för den här vyn.",
+  "active": "Aktiv",
+  "themeIsActive": "Temat {name} är aktivt",
+  "applyTheme": "Tillämpa temat {name}",
+  "apply": "Tillämpa",
+  "preview": "Förhandsgranska",
+  "name": "Namn",
+  "element": "Element",
+  "description": "Beskrivning",
+  "action": "Åtgärd",
+  "loadingThemes": "Läser in teman...",
+  "themesShown": "{count} teman visas",
+  "themesShownDefaults": "{count} teman visas (app-hax-standard)",
+  "availableHaxcmsThemes": "Tillgängliga HAXcms-teman",
+  "gallery": "Galleri",
+  "table": "Tabell"
+}

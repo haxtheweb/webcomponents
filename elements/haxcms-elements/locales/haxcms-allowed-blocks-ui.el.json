@@ -10,5 +10,9 @@
   "save": "Αποθήκευση",
   "noDescription": "Δεν υπάρχει διαθέσιμη περιγραφή.",
   "details": "Λεπτομέρειες",
-  "loadingInventory": "Φόρτωση πλήρους καταλόγου μπλοκ…"
+  "loadingInventory": "Φόρτωση πλήρους καταλόγου μπλοκ…",
+  "selectAllButton": "Επιλογή όλων",
+  "deselectAllButton": "Αποεπιλογή όλων",
+  "selectedOfAvailable": "{selected} επιλεγμένα / {total} διαθέσιμα",
+  "savingBlocksFailed": "Η αποθήκευση μπλοκ απέτυχε: {error}"
 }

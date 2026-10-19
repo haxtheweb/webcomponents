@@ -1,4 +1,11 @@
 {
   "readMore": "ಇನ್ನಷ್ಟು ಓದಿ",
-  "home": "ಮುಖಪುಟ"
+  "home": "ಮುಖಪುಟ",
+  "anchorLinkCopied": "ಆಂಕರ್ ಲಿಂಕ್ ನಕಲಿಸಲಾಗಿದೆ!",
+  "skipToContent": "ವಿಷಯಕ್ಕೆ ಹೋಗಿ",
+  "changeTheme": "ಥೀಮ್ ಬದಲಾಯಿಸಿ",
+  "siteSections": "ಸೈಟ್ ವಿಭಾಗಗಳು",
+  "pageOfTotal": "ಪುಟ {total} ರಲ್ಲಿ {current}",
+  "siteGenerated": "ಸೈಟ್ ರಚಿಸಿದ್ದು: {date}",
+  "licenseGraphic": "{license} ಗ್ರಾಫಿಕ್"
 }

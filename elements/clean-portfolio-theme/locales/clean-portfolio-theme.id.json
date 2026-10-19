@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Tautan jangkar disalin!",
+  "skipToContent": "Lompat ke konten",
+  "siteHome": "Beranda situs",
+  "mainNavigation": "Navigasi utama",
+  "toggleMenu": "Alihkan menu",
+  "changeTheme": "Ganti tema",
+  "breadcrumb": "Breadcrumb",
+  "tagFilter": "Filter tag:",
+  "all": "Semua",
+  "pageNumberOfTotal": "Nomor halaman: {current} dari {total}",
+  "siteGenerated": "Situs dibuat: {date}",
+  "copyright": "Hak cipta: {year} {author}",
+  "viewContentByTag": "Lihat Konten menurut Tag",
+  "licenseGraphic": "Grafis {license}"
+}

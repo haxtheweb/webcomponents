@@ -1,0 +1,8 @@
+{
+  "loading": "Wczytywanie",
+  "settingUpContainer": "Konfigurowanie kontenera",
+  "runningCommands": "Uruchamianie poleceń",
+  "installing": "Instalowanie...",
+  "runningStart": "Uruchamianie start...",
+  "webContainerPreview": "Podgląd kontenera webowego"
+}

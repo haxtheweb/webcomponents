@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Lidhja e ankorës u kopjua!",
+  "skipToContent": "Kalo te përmbajtja",
+  "changePalette": "Ndrysho paletën",
+  "primaryLinks": "Lidhjet kryesore",
+  "socialLinks": "Lidhjet sociale",
+  "myProfile": "Profili im",
+  "profileImageOf": "Imazhi i profilit të {name}",
+  "profileImage": "Imazhi i profilit",
+  "linkCardProfile": "Profili i kartës së lidhjeve",
+  "emptyStateLinks": "Shto elemente menyje të nivelit të lartë në site.json për të shfaqur butonat e lidhjeve.",
+  "titleOnPlatform": "{title} në {platform}",
+  "openPlatform": "Hap {platform}",
+  "paletteUpdated": "Paleta e ngjyrave u përditësua në opsionin {number}."
+}

@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Imenovanje",
+  "licenseBySa": "Imenovanje-Dijeli pod istim uvjetima",
+  "licenseByNd": "Imenovanje-Bez prerada",
+  "licenseByNc": "Imenovanje-Nekomercijalno",
+  "licenseByNcSa": "Imenovanje-Nekomercijalno-Dijeli pod istim uvjetima",
+  "licenseByNcNd": "Imenovanje-Nekomercijalno-Bez prerada",
+  "licenseGraphic": "Grafika licence {license}",
+  "workByCreator": "{title}, autor: {creator}",
+  "workByCreatorLicensed": "{title}, autor: {creator}, licencirano je pod licencom {license}.",
+  "permissionsBeyondScope": "Dozvole izvan opsega ove licence dostupne su {link}.",
+  "author": "(autor)",
+  "onTheLicensingDetailsPage": "na stranici s detaljima licenciranja"
+}

@@ -10,6 +10,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
     this.t = {
       moreDetails: "More details",
       details: "Details",
+      opensInNewWindow: "Opens in a new window",
     };
     this.registerLocalization({
       context: this,
@@ -407,7 +408,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           ? html`<simple-icon-lite
               icon="icons:open-in-new"
               class="external-link-icon"
-              title="Opens in a new window"
+              title="${this.t.opensInNewWindow}"
               aria-hidden="true"
             ></simple-icon-lite>`
           : ""}

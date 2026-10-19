@@ -36,5 +36,7 @@
   "clickToDoAnything": "Кликни да урадиш било шта!",
   "moreDetails": "Више детаља",
   "details": "Детаљи",
-  "saved": "Сачувано"
+  "saved": "Сачувано",
+  "opensInNewWindow": "Отвара се у новом прозору",
+  "resultsCount": "Резултата: {count}"
 }

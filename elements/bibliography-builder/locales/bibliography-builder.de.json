@@ -1,3 +1,8 @@
 {
-  "title": "Literaturverzeichnis"
+  "title": "Literaturverzeichnis",
+  "export": "Exportieren",
+  "exportCitations": "Zitate exportieren",
+  "copy": "Kopieren",
+  "exportCitationFormat": "Zitierformat für den Export",
+  "selectCitationFormatBelow": "Wähle unten ein Zitierformat"
 }

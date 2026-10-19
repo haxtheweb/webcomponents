@@ -16,6 +16,7 @@ import {
   HaxElementizer,
 } from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `haxcms-site-dashboard`
@@ -23,12 +24,22 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
  *
  * @demo demo/index.html
  */
-class HAXCMSSiteDashboard extends SimpleColors {
+class HAXCMSSiteDashboard extends I18NMixin(SimpleColors) {
   static get tag() {
     return "haxcms-site-dashboard";
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      save: "Save",
+      defaultToFirstPage: "-- default to first page --",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.siteTitle = "";
     this.activeSection = "site";
     this.method = "POST";
@@ -154,7 +165,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
       </div>
       <div class="buttons">
         <button class="hax-modal-btn" @click="${this._saveSiteFieldsTap}">
-          Save
+          ${this.t.save}
         </button>
       </div>
     `;
@@ -270,7 +281,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
         if (homepageField) {
           // Convert itemsList format to options format for select field
           const options = {
-            "": "-- default to first page --",
+            "": this.t.defaultToFirstPage,
           };
           items.forEach((item) => {
             options[item.value] = item.text;

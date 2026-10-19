@@ -5,5 +5,9 @@
   "buttons": "Gumbi",
   "futureButtonConfiguration": "Prilagojena nastavitev gumbov urejevalnika bo kmalu na voljo.",
   "save": "Shrani",
-  "saving": "Shranjevanje …"
+  "saving": "Shranjevanje …",
+  "novice": "Začetnik",
+  "expert": "Strokovnjak",
+  "toolbarPreviewAlt": "Predogled orodne vrstice za urejanje ({audience})",
+  "savingEditorSettingsFailed": "Shranjevanje nastavitev urejevalnika ni uspelo: {error}"
 }

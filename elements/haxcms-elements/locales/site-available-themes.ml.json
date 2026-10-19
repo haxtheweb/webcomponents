@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "തീമുകൾ ലോഡ് ചെയ്യാനായില്ല: {error}",
+  "noThemesForView": "ഈ വ്യൂവിന് തീമുകളൊന്നും ലഭ്യമല്ല.",
+  "active": "സജീവം",
+  "themeIsActive": "{name} തീം സജീവമാണ്",
+  "applyTheme": "{name} തീം പ്രയോഗിക്കുക",
+  "apply": "പ്രയോഗിക്കുക",
+  "preview": "പ്രിവ്യൂ",
+  "name": "പേര്",
+  "element": "എലമെന്റ്",
+  "description": "വിവരണം",
+  "action": "പ്രവർത്തനം",
+  "loadingThemes": "തീമുകൾ ലോഡ് ചെയ്യുന്നു...",
+  "themesShown": "{count} തീമുകൾ കാണിക്കുന്നു",
+  "themesShownDefaults": "{count} തീമുകൾ കാണിക്കുന്നു (app-hax ഡിഫോൾട്ടുകൾ)",
+  "availableHaxcmsThemes": "ലഭ്യമായ HAXcms തീമുകൾ",
+  "gallery": "ഗാലറി",
+  "table": "പട്ടിക"
+}

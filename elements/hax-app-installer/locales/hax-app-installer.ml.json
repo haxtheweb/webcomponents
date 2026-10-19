@@ -54,5 +54,6 @@
   "requirementUppercase": "ഒരു വലിയക്ഷരം",
   "requirementLowercase": "ഒരു ചെറിയക്ഷരം",
   "requirementNumber": "ഒരു സംഖ്യ",
-  "requirementSymbol": "ഒരു ചിഹ്നം"
+  "requirementSymbol": "ഒരു ചിഹ്നം",
+  "haxcmsMascotAlt": "HAXcms ലോക സഞ്ചാരി ഭാഗ്യചിഹ്നം"
 }

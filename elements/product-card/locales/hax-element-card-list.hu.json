@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "A webkomponens-jegyzék átvizsgálása további HAX elemekért..",
+  "enabled": "Engedélyezve",
+  "disabled": "Letiltva",
+  "details": "Részletek",
+  "tags": "Címkék:",
+  "tagName": "Címke neve:",
+  "developerUsage": "Fejlesztői használat:",
+  "demo": "Bemutató",
+  "popUpDemo": "Felugró bemutató",
+  "demoOf": "{tag} bemutatója"
+}

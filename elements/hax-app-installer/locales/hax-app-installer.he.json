@@ -54,5 +54,6 @@
   "requirementUppercase": "אות גדולה אחת",
   "requirementLowercase": "אות קטנה אחת",
   "requirementNumber": "ספרה אחת",
-  "requirementSymbol": "סימן אחד"
+  "requirementSymbol": "סימן אחד",
+  "haxcmsMascotAlt": "הקמע HAXcms World Traveler"
 }

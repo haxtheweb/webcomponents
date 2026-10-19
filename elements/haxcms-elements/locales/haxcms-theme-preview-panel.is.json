@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Sýna forskoðun þema",
+  "hideThemePreview": "Fela forskoðun þema",
+  "themePreviewPanel": "Spjald fyrir forskoðun þema",
+  "themePreview": "Forskoðun þema",
+  "themePreviewDescription": "Prófaðu þema og litaspjald tímabundið á meðan þú vafrar. Notaðu Hætta við til að endurheimta upprunalega útlitið.",
+  "loadingThemes": "Hleður þemum...",
+  "theme": "Þema",
+  "palette": "Litaspjald",
+  "cancel": "Hætta við",
+  "openAppearanceSettings": "Opna útlitsstillingar"
+}

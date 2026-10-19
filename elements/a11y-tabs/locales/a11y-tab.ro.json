@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Fila {xOfY}",
+  "xOfY": "{order} din {total}",
+  "endOfTab": "Sfârșitul filei {xOfY}. Înapoi la {tabs}.",
+  "tabs": "file"
+}

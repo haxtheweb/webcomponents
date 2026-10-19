@@ -43,5 +43,22 @@
   "emailAddress": "Bu okuwça e-poçta iberiň",
   "notes": "Bellikler",
   "interests": "Gyzyklanmalar",
-  "profileImageFor": "Profil suraty:"
+  "profileImageFor": "Profil suraty:",
+  "fileSystem": "Faýl ulgamy",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "JSON maglumat bloky",
+  "additionalCriteriaFeedback": "Goşmaça {criteria} teswiri",
+  "outOfPoints": "/ {points} bal",
+  "feedbackReport": "Teswir hasabaty",
+  "criteriaDetails": "Ölçeg jikme-jiklikleri",
+  "yourFeedback": "Siziň teswiriňiz",
+  "additionalCriteriaFeedbackHeading": "Goşmaça ölçeg teswiri",
+  "yourTotalScore": "Siziň umumy balyňyz",
+  "scoreOutOfPoints": "{score} / {points} bal",
+  "studentAssignment": "{student} atly okuwçynyň {assignment} ýumuşy",
+  "downloadPDF": "PDF ýükläp almak",
+  "displayMode1": "Tertip 1",
+  "displayMode2": "Tertip 2",
+  "twoWindows": "Iki penjire"
 }

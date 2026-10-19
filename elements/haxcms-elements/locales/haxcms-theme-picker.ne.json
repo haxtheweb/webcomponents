@@ -1,0 +1,11 @@
+{
+  "theme": "थिम",
+  "active": "सक्रिय",
+  "selected": "चयन गरिएको",
+  "noPreview": "पूर्वावलोकन छैन",
+  "currentlyActiveAndSelected": "हाल सक्रिय र चयन गरिएको थिम",
+  "currentlyActive": "हाल सक्रिय थिम",
+  "selectedToApplyOnSave": "सेभ गर्दा लागू गर्न चयन गरिएको थिम",
+  "themeSelection": "थिम चयन",
+  "noThemesAvailable": "कुनै थिम उपलब्ध छैन।"
+}

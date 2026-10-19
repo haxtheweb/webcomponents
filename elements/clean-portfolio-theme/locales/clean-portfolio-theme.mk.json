@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Врската до сидрото е копирана!",
+  "skipToContent": "Прескокни до содржината",
+  "siteHome": "Почетна на сајтот",
+  "mainNavigation": "Главна навигација",
+  "toggleMenu": "Вклучи/исклучи мени",
+  "changeTheme": "Промени тема",
+  "breadcrumb": "Патека",
+  "tagFilter": "Филтер по ознака:",
+  "all": "Сите",
+  "pageNumberOfTotal": "Број на страница: {current} од {total}",
+  "siteGenerated": "Сајтот е генериран: {date}",
+  "copyright": "Авторски права: {year} {author}",
+  "viewContentByTag": "Прегледај содржина по ознака",
+  "licenseGraphic": "Графика за {license}"
+}

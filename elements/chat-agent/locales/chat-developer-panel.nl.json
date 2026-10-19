@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Consoletabel chatlog gebruiker",
+  "consoleTableUserText": "console.table() chatlog gebruiker",
+  "consoleTableUserTooltip": "Chatlog van gebruiker als tabel naar console schrijven",
+  "consoleTableMerlinLabel": "Consoletabel chatlog Merlin",
+  "consoleTableMerlinText": "console.table() chatlog Merlin",
+  "consoleTableMerlinTooltip": "Chatlog van Merlin als tabel naar console schrijven",
+  "consoleTableAllLabel": "Consoletabel volledig chatlog",
+  "consoleTableAllText": "console.table() volledig chatlog",
+  "consoleTableAllTooltip": "Volledig chatlog als tabel naar console schrijven",
+  "downloadChatLogJson": "Chatlog downloaden als .json",
+  "downloadChatLogJsonTooltip": "Chatlog downloaden als .json"
+}

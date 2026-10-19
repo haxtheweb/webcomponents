@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Въведете потребителско име",
+  "invalidUsernameOrPassword": "Невалидно потребителско име или парола",
+  "welcomeLetsGo": "Добре дошли, {username}! Да започваме!",
+  "enterYourUsername": "Въведете потребителското си име",
+  "username": "Потребителско име",
+  "next": "Следващ",
+  "welcomeBack": "Добре дошли отново, {username}!",
+  "notYou": "Не сте вие?",
+  "enterYourPassword": "Въведете паролата си",
+  "password": "Парола",
+  "togglePasswordDisplay": "Показване/скриване на паролата",
+  "login": "Вход"
+}

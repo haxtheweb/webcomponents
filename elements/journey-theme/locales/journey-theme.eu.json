@@ -1,4 +1,11 @@
 {
   "readMore": "Irakurri gehiago",
-  "home": "Hasiera"
+  "home": "Hasiera",
+  "anchorLinkCopied": "Aingura-esteka kopiatu da!",
+  "skipToContent": "Joan edukira",
+  "changeTheme": "Aldatu gaia",
+  "siteSections": "Gunearen atalak",
+  "pageOfTotal": "{current}. orria / {total}",
+  "siteGenerated": "Gunea sortua: {date}",
+  "licenseGraphic": "{license} grafikoa"
 }

@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "បង្ហាញសារដែលបានផ្ញើពីមុន (ឡើង)",
+  "displayPreviousMessageDown": "បង្ហាញសារដែលបានផ្ញើពីមុន (ចុះ)",
+  "sendPrompt": "ផ្ញើការជំរុញ",
+  "sendPromptToMerlin": "ផ្ញើការជំរុញទៅ Merlin",
+  "shortenPrompt": "សូមបង្រួមការជំរុញរបស់អ្នកឱ្យមិនលើសពី {limit} តួអក្សរ។"
+}

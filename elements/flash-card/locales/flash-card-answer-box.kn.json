@@ -1,5 +1,8 @@
 {
   "yourAnswer": "ನಿಮ್ಮ ಉತ್ತರ",
   "checkAnswer": "ಉತ್ತರ ಪರಿಶೀಲಿಸಿ",
-  "retry": "ಮರುಪ್ರಯತ್ನಿಸಿ"
+  "retry": "ಮರುಪ್ರಯತ್ನಿಸಿ",
+  "correct": "ಸರಿ!",
+  "incorrect": "ತಪ್ಪು!",
+  "correctAnswer": "ಸರಿಯಾದ ಉತ್ತರ: {answer}"
 }

@@ -1,4 +1,11 @@
 {
   "readMore": "Les mer",
-  "home": "Hjem"
+  "home": "Hjem",
+  "anchorLinkCopied": "Ankerlenke kopiert!",
+  "skipToContent": "Hopp til innhold",
+  "changeTheme": "Bytt tema",
+  "siteSections": "Nettstedsseksjoner",
+  "pageOfTotal": "Side {current} av {total}",
+  "siteGenerated": "Nettstedet generert: {date}",
+  "licenseGraphic": "Grafikk for {license}"
 }

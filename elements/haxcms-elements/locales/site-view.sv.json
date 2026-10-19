@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Inga resultat",
+  "viewsRecordHeading": "Spela in",
+  "viewsTitleImage": "Bild för {title}",
+  "viewsTitlePreview": "Förhandsvisning av {title}",
+  "viewsNoTimelineRecords": "Inga datumbaserade poster finns för tidslinjevisning.",
+  "viewsTimelineTitle": "Tidslinje för {title}",
+  "viewsNoChartField": "Inget numeriskt fält hittades för diagramvisning.",
+  "viewsChartingValue": "Diagram över {value}",
+  "viewsChartingValueByLabel": "Diagram över {value} per {label}",
+  "viewsChartTitle": "Diagram för {title}",
+  "viewsNoTreeRecords": "Inga hierarkiska poster finns för trädvisning.",
+  "viewsNoGalleryRecords": "Inga bildposter finns för gallerivisning.",
+  "viewsNoPlaylistRecords": "Inga medieposter finns för spellistevisning.",
+  "fetchFailed": "Hämtningen misslyckades ({status})",
+  "unableToLoadViewData": "Det gick inte att läsa in vydata.",
+  "noResultsFound": "Inga resultat hittades.",
+  "refreshView": "Uppdatera vy",
+  "breakIntoStaticContent": "Bryt upp till statiskt innehåll",
+  "viewsOpenRecord": "Öppna post"
+}

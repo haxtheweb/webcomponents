@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Tema Önizlemesini Göster",
+  "hideThemePreview": "Tema Önizlemesini Gizle",
+  "themePreviewPanel": "Tema Önizleme Paneli",
+  "themePreview": "Tema Önizlemesi",
+  "themePreviewDescription": "Gezinirken bir temayı ve paleti geçici olarak deneyin. Orijinal görünümünüzü geri yüklemek için İptal'i kullanın.",
+  "loadingThemes": "Temalar yükleniyor...",
+  "theme": "Tema",
+  "palette": "Palet",
+  "cancel": "İptal",
+  "openAppearanceSettings": "Görünüm Ayarlarını Aç"
+}

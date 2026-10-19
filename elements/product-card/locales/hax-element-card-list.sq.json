@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Duke skanuar regjistrin e komponentëve ueb për më shumë elemente HAX..",
+  "enabled": "Aktivizuar",
+  "disabled": "I çaktivizuar",
+  "details": "Detajet",
+  "tags": "Etiketat:",
+  "tagName": "Emri i etiketës:",
+  "developerUsage": "Përdorimi për zhvilluesit:",
+  "demo": "Demo",
+  "popUpDemo": "Demo në dritare",
+  "demoOf": "Demo e {tag}"
+}

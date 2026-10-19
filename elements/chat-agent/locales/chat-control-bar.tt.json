@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Журналны txt итеп йөкләп алу",
+  "downloadChatLog": "Чат журналын йөкләп алу",
+  "resetChat": "Чатны яңадан башлау",
+  "toggleDataCollection": "Мәгълүмат җыюны күчерү",
+  "dataCollection": "Мәгълүмат җыю",
+  "toggleDeveloperMode": "Эшләүче режимын күчерү",
+  "exitFullView": "Тулы күренештән чыгу",
+  "enterFullView": "Тулы күренешкә керү",
+  "hideInterface": "Интерфейсны яшерү",
+  "resetChatConfirm": "Чатны яңадан башларгамы?",
+  "downloadBeforeResetConfirm": "Яңадан башлаганчы чат журналын йөкләп аласызмы?",
+  "dataCollectionOn": "Сезнең сөйләшүләр безнең AI модельләрен өйрәтү өчен кулланылачак",
+  "dataCollectionOff": "Сезнең сөйләшүләр безнең AI модельләрен өйрәтү өчен кулланылмаячак"
+}

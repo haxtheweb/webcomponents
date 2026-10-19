@@ -1,4 +1,11 @@
 {
   "readMore": "Кененирээк окуу",
-  "home": "Башкы бет"
+  "home": "Башкы бет",
+  "anchorLinkCopied": "Анкер шилтемеси көчүрүлдү!",
+  "skipToContent": "Мазмунга өтүү",
+  "changeTheme": "Теманы өзгөртүү",
+  "siteSections": "Сайттын бөлүмдөрү",
+  "pageOfTotal": "{total} ичинен {current}-барак",
+  "siteGenerated": "Сайт түзүлгөн: {date}",
+  "licenseGraphic": "{license} сүрөтү"
 }

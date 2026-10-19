@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Ankurlink kopeeriti!",
+  "skipToContent": "Liigu sisu juurde",
+  "siteHome": "Saidi avaleht",
+  "mainNavigation": "Peamine navigeerimine",
+  "toggleMenu": "Lülita menüü",
+  "changeTheme": "Muuda teemat",
+  "breadcrumb": "Leivapuru",
+  "tagFilter": "Sildifilter:",
+  "all": "Kõik",
+  "pageNumberOfTotal": "Lehekülg: {current} / {total}",
+  "siteGenerated": "Sait genereeritud: {date}",
+  "copyright": "Autoriõigus: {year} {author}",
+  "viewContentByTag": "Vaata sisu siltide kaupa",
+  "licenseGraphic": "{license} graafika"
+}

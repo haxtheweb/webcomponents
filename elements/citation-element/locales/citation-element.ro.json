@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Atribuire",
+  "licenseBySa": "Atribuire-Distribuire în condiții identice",
+  "licenseByNd": "Atribuire-Fără opere derivate",
+  "licenseByNc": "Atribuire-Necomercial",
+  "licenseByNcSa": "Atribuire-Necomercial-Distribuire în condiții identice",
+  "licenseByNcNd": "Atribuire-Necomercial-Fără opere derivate",
+  "citationWithLicense": "{title} de {creator}, licențiat sub {license}. Accesat la {date}.",
+  "citationWithoutLicense": "{title} de {creator}. Accesat la {date}.",
+  "licenseGraphic": "Grafica {license}"
+}

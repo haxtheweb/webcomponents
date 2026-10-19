@@ -5,5 +5,9 @@
   "buttons": "બટનો",
   "futureButtonConfiguration": "કસ્ટમ એડિટર બટન ગોઠવણી ટૂંક સમયમાં આવી રહી છે.",
   "save": "સાચવો",
-  "saving": "સાચવી રહ્યા છીએ…"
+  "saving": "સાચવી રહ્યા છીએ…",
+  "novice": "શિખાઉ",
+  "expert": "નિષ્ણાત",
+  "toolbarPreviewAlt": "{audience} સંપાદન ટૂલબાર પૂર્વાવલોકન",
+  "savingEditorSettingsFailed": "એડિટર સેટિંગ્સ સાચવવામાં નિષ્ફળ: {error}"
 }

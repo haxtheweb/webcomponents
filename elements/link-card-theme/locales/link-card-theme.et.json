@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ankurlink kopeeriti!",
+  "skipToContent": "Liigu sisu juurde",
+  "changePalette": "Muuda paletti",
+  "primaryLinks": "Peamised lingid",
+  "socialLinks": "Sotsiaalmeedia lingid",
+  "myProfile": "Minu profiil",
+  "profileImageOf": "{name} profiilipilt",
+  "profileImage": "Profiilipilt",
+  "linkCardProfile": "Lingikaardi profiil",
+  "emptyStateLinks": "Linginuppude kuvamiseks lisa failis site.json ülataseme menüüüksused.",
+  "titleOnPlatform": "{title} platvormil {platform}",
+  "openPlatform": "Ava {platform}",
+  "paletteUpdated": "Värvipalett muudeti valikuks {number}."
+}

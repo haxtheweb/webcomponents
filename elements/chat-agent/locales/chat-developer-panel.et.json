@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Kasutaja vestluslogi konsoolitabelina",
+  "consoleTableUserText": "console.table() kasutaja vestluslogi",
+  "consoleTableUserTooltip": "Prindi kasutaja vestluslogi tabelina konsooli",
+  "consoleTableMerlinLabel": "Merlini vestluslogi konsoolitabelina",
+  "consoleTableMerlinText": "console.table() Merlini vestluslogi",
+  "consoleTableMerlinTooltip": "Prindi Merlini vestluslogi tabelina konsooli",
+  "consoleTableAllLabel": "Kogu vestluslogi konsoolitabelina",
+  "consoleTableAllText": "console.table() kogu vestluslogi",
+  "consoleTableAllTooltip": "Prindi kogu vestluslogi tabelina konsooli",
+  "downloadChatLogJson": "Laadi vestluslogi alla .json-failina",
+  "downloadChatLogJsonTooltip": "Laadi vestluslogi alla .json-failina"
+}

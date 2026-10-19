@@ -1,0 +1,17 @@
+{
+  "editNodes": "Node များ တည်းဖြတ်ရန်",
+  "editLines": "မျဉ်းများ တည်းဖြတ်ရန်",
+  "reset": "ပြန်သတ်မှတ်ရန်",
+  "save": "သိမ်းရန်",
+  "cancel": "မလုပ်တော့ပါ",
+  "delete": "ဖျက်ရန်",
+  "type": "အမျိုးအစား:",
+  "topic": "ခေါင်းစဉ်",
+  "subsection": "အပိုင်းခွဲ",
+  "name": "အမည်:",
+  "enterName": "အမည် ထည့်ပါ",
+  "url": "URL:",
+  "enterUrl": "URL ထည့်ပါ",
+  "activeNode": "အသက်ဝင် Node လား?",
+  "nodeId": "Node {id}"
+}

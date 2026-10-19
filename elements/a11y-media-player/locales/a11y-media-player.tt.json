@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Йөкләнә...",
   "youTubeStartLoading": "Уйнатуга басыгыз.",
   "youTubeTranscriptLabel": "Транскрипт медиа уйнала башлагач йөкләнәчәк.",
-  "audioDescriptionLabel": "Аудиотасвирлама"
+  "audioDescriptionLabel": "Аудиотасвирлама",
+  "openOnYouTube": "YouTube'та ачу"
 }

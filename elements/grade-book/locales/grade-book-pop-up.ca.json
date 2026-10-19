@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Lliurament de l'estudiant",
   "openInNewWindow": "Obre en una finestra nova",
-  "submitted": "Lliurat"
+  "submitted": "Lliurat",
+  "previousStudent": "Estudiant anterior",
+  "nextStudent": "Estudiant següent",
+  "previousAssignment": "Tasca anterior",
+  "nextAssignment": "Tasca següent"
 }

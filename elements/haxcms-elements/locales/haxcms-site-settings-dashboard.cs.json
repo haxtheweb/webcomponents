@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "Zakázáno ve Funkcích",
+  "appearance": "Vzhled",
+  "structure": "Struktura",
+  "content": "Obsah",
+  "reports": "Přehledy",
+  "about": "O webu",
+  "files": "Soubory",
+  "views": "Zobrazení",
+  "features": "Funkce",
+  "editor": "Editor",
+  "blocks": "Bloky",
+  "importExport": "Import / export",
+  "details": "Podrobnosti",
+  "advanced": "Pokročilé"
+}

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Tilnevning",
+  "licenseBySa": "Tilnevning Deil líka",
+  "licenseByNd": "Tilnevning Ongar avleiðingar",
+  "licenseByNc": "Tilnevning Ikki-vinnulig",
+  "licenseByNcSa": "Tilnevning Ikki-vinnulig Deil líka",
+  "licenseByNcNd": "Tilnevning Ikki-vinnulig Ongar avleiðingar",
+  "citationWithLicense": "{title} eftir {creator}, loyvisskipað undir {license}. Lisið {date}.",
+  "citationWithoutLicense": "{title} eftir {creator}. Lisið {date}.",
+  "licenseGraphic": "{license} grafikkur"
+}

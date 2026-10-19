@@ -7,5 +7,7 @@
   "userAccessGranted": "¡Acceso concedido correctamente!",
   "userNotFound": "Usuario no encontrado o no autorizado",
   "loadingAddingUser": "Añadiendo usuario...",
-  "grantAccessTo": "Conceder acceso a:"
+  "grantAccessTo": "Conceder acceso a:",
+  "networkErrorTryAgain": "Se produjo un error de red. Inténtalo de nuevo.",
+  "characterWillAppear": "El personaje aparecerá cuando introduzcas un nombre de usuario"
 }

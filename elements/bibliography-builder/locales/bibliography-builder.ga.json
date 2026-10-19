@@ -1,3 +1,8 @@
 {
-  "title": "Tagairtí"
+  "title": "Tagairtí",
+  "export": "Easpórtáil",
+  "exportCitations": "Easpórtáil Luanna",
+  "copy": "Cóipeáil",
+  "exportCitationFormat": "Formáid easpórtála luanna",
+  "selectCitationFormatBelow": "Roghnaigh formáid luanna thíos"
 }

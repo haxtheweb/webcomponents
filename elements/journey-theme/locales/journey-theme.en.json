@@ -1,4 +1,11 @@
 {
   "readMore": "Read more",
-  "home": "Home"
+  "home": "Home",
+  "anchorLinkCopied": "Anchor link copied!",
+  "skipToContent": "Skip to content",
+  "changeTheme": "Change theme",
+  "siteSections": "Site sections",
+  "pageOfTotal": "Page {current} of {total}",
+  "siteGenerated": "Site generated: {date}",
+  "licenseGraphic": "{license} graphic"
 }

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- анхдагчаар эхний хуудас --",
+  "details": "Дэлгэрэнгүй",
+  "title": "Гарчиг",
+  "titleDescription": "Сайтын нэр",
+  "homePage": "Нүүр хуудас",
+  "homePageDescription": "Анхдагч нүүр / эхлэх хуудас болгон ашиглах хуудас",
+  "advanced": "Нарийвчилсан",
+  "serviceWorker": "Динамик хуудсанд service worker нэмэх",
+  "serviceWorkerDescription": "Хэрэглэгчид серверийн хамгийн сүүлийн гаралтыг үргэлж шууд харах ёстой бол үүнийг идэвхгүй болгоно уу.",
+  "forceBrowserUpgrade": "Хөтчийг шинэчлэхийг шаардах",
+  "forceBrowserUpgradeDescription": "Сайтыг ачаалахаас өмнө байнга шинэчлэгддэг хөтөч шаардах.",
+  "unableToLoadSiteDetails": "Сайтын дэлгэрэнгүйг ачаалж чадсангүй.",
+  "noSiteDetails": "Сайтын дэлгэрэнгүй мэдээлэл байхгүй.",
+  "save": "Хадгалах"
+}

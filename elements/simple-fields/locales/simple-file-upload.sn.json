@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Isa mafaira pano",
+  "uploadQueue": "Mutsara wekuisa",
+  "pending": "Zvakamirira",
+  "preparing": "Kugadzirira",
+  "uploading": "Kuisa",
+  "complete": "Zvapera",
+  "aborted": "Zvamiswa",
+  "cancelled": "Zvakanzurwa",
+  "error": "Kukanganisa",
+  "errorWithStatus": "Chikanganiso: {status}",
+  "cancel": "Kanzura",
+  "cancelUploadOf": "Kanzura kuisa {name}",
+  "retry": "Edza zvakare",
+  "retryUploadOf": "Edza zvakare kuisa {name}",
+  "remove": "Bvisa",
+  "removeFromQueue": "Bvisa {name} mumutsara",
+  "fileTypeNotAccepted": "Mhando yefaira haigamuchirwi: {name}",
+  "uploadFailed": "Kuisa kwakundikana: {status}",
+  "networkError": "Chikanganiso chenetiweki"
+}

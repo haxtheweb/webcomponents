@@ -22,6 +22,13 @@
   "unpublish": "Kwụsị mbipụta",
   "savePage": "Chekwaa ibe",
   "cancel": "Kagbuo",
+  "delete": "Hichapụ",
+  "editTitle": "Dezie aha",
+  "editIcon": "Dezie akara ngosi",
+  "agent": "Onye nnọchite",
+  "pageLockedUnlockToEdit": "Ibe a akpọchiri. Mepee ya ebe mbụ iji dezie.",
+  "pageLockedUnlockToChangePublishStatus": "Ibe a akpọchiri. Mepee ya ebe mbụ iji gbanwee ọnọdụ mbipụta.",
+  "pageLockedUnlockToDelete": "Ibe a akpọchiri. Mepee ya ebe mbụ iji hichapụ.",
   "pageDetails": "Nkọwa ibe",
   "clickToUnlock": "Pịa ka ị meghe"
 }

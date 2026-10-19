@@ -3,6 +3,7 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `tableau-embed`
@@ -11,13 +12,24 @@ import { LitElement, html, css } from "lit";
  * @demo index.html
  * @element tableau-embed
  */
-export class TableauEmbed extends LitElement {
+export class TableauEmbed extends I18NMixin(LitElement) {
   static get tag() {
     return "tableau-embed";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      loadingTableau: "Loading Tableau...",
+      unableToLoadTableau: "Unable to load Tableau.",
+      tableauVisualization: "Tableau visualization",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.src = "";
     this.width = "100%";
     this.height = "800px";
@@ -138,7 +150,9 @@ export class TableauEmbed extends LitElement {
     if (!this.loaded) {
       return html`
         <div class="loading-msg" role="status" aria-live="polite">
-          ${this.loading ? "Loading Tableau..." : "Unable to load Tableau."}
+          ${this.loading
+            ? this.t.loadingTableau
+            : this.t.unableToLoadTableau}
         </div>
       `;
     }
@@ -150,7 +164,7 @@ export class TableauEmbed extends LitElement {
         toolbar="${this.toolbar}"
         ?hide-tabs="${this.hideTabs}"
         device="${this.device}"
-        aria-label="Tableau visualization"
+        aria-label="${this.t.tableauVisualization}"
       ></tableau-viz>
     `;
   }

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Akukho ziphumo",
+  "viewsRecordHeading": "Rekhoda",
+  "viewsTitleImage": "Umfanekiso we-{title}",
+  "viewsTitlePreview": "Umboniso we-{title}",
+  "viewsNoTimelineRecords": "Akukho zingxelo zinemihla zikhoyo zokubonisa umgca wexesha.",
+  "viewsTimelineTitle": "Umgca wexesha we-{title}",
+  "viewsNoChartField": "Akukho ndawo yamanani ifunyenweyo yokubonisa itshati.",
+  "viewsChartingValue": "Kwenziwa itshati ye-{value}",
+  "viewsChartingValueByLabel": "Kwenziwa itshati ye-{value} ngokwe-{label}",
+  "viewsChartTitle": "Itshati ye-{title}",
+  "viewsNoTreeRecords": "Akukho zingxelo zinamanqanaba zikhoyo zokubonisa umthi.",
+  "viewsNoGalleryRecords": "Akukho zingxelo zemifanekiso zikhoyo zokubonisa igalari.",
+  "viewsNoPlaylistRecords": "Akukho zingxelo zemidiya zikhoyo zokubonisa uluhlu lokudlala.",
+  "fetchFailed": "Ukulanda akuphumelelanga ({status})",
+  "unableToLoadViewData": "Ayikwazi ukulayisha idatha yokujonga.",
+  "noResultsFound": "Akukho ziphumo zifunyenweyo.",
+  "refreshView": "Hlaziya umboniso",
+  "breakIntoStaticContent": "Yiqhekeze ibe ngumxholo ongatshintshiyo",
+  "viewsOpenRecord": "Vula irekhodi"
+}

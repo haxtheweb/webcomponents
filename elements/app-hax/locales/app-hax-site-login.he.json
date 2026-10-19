@@ -1,0 +1,14 @@
+{
+  "enterUserName": "הזינו שם משתמש",
+  "invalidUsernameOrPassword": "שם משתמש או סיסמה שגויים",
+  "welcomeLetsGo": "ברוכים הבאים {username}! יוצאים לדרך!",
+  "enterYourUsername": "הזינו את שם המשתמש שלכם",
+  "username": "שם משתמש",
+  "next": "הבא",
+  "welcomeBack": "ברוכים השבים, {username}!",
+  "notYou": "לא אתם?",
+  "enterYourPassword": "הזינו את הסיסמה שלכם",
+  "password": "סיסמה",
+  "togglePasswordDisplay": "הצגה/הסתרה של הסיסמה",
+  "login": "התחברות"
+}

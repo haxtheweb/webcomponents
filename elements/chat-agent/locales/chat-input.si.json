@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "කලින් යැවූ පණිවිඩය පෙන්වන්න (ඉහළ)",
+  "displayPreviousMessageDown": "කලින් යැවූ පණිවිඩය පෙන්වන්න (පහළ)",
+  "sendPrompt": "විමසුම යවන්න",
+  "sendPromptToMerlin": "විමසුම Merlin වෙත යවන්න",
+  "shortenPrompt": "කරුණාකර ඔබේ විමසුම අක්ෂර {limit} කට වඩා නොවන ලෙස කෙටි කරන්න."
+}

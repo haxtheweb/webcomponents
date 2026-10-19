@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Mokinio pateiktas darbas",
   "openInNewWindow": "Atidaryti naujame lange",
-  "submitted": "Pateikta"
+  "submitted": "Pateikta",
+  "previousStudent": "Ankstesnis mokinys",
+  "nextStudent": "Kitas mokinys",
+  "previousAssignment": "Ankstesnė užduotis",
+  "nextAssignment": "Kita užduotis"
 }

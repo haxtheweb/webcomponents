@@ -54,5 +54,6 @@
   "requirementUppercase": "Бер баш хәреф",
   "requirementLowercase": "Бер юл хәрефе",
   "requirementNumber": "Бер сан",
-  "requirementSymbol": "Бер символ"
+  "requirementSymbol": "Бер символ",
+  "haxcmsMascotAlt": "HAXcms Дөнья сәяхәтчесе маскоты"
 }

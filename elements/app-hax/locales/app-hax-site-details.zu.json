@@ -1,0 +1,18 @@
+{
+  "copy": "Kopisha",
+  "download": "Landa",
+  "archive": "Gcina emlandweni",
+  "copyOperation": "kopisha",
+  "downloadOperation": "landa",
+  "archiveOperation": "gcina emlandweni",
+  "created": "kudaliwe",
+  "updated": "kubuyekeziwe",
+  "pages": "amakhasi",
+  "url": "URL",
+  "confirm": "Qinisekisa",
+  "cancel": "Khansela",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Uqinisekile ukuthi ufuna uku-{operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName} {operation} kuphumelele!",
+  "siteOperationFailed": "{siteName} {operation} kwehlulekile"
+}

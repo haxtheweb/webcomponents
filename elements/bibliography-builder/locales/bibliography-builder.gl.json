@@ -1,3 +1,8 @@
 {
-  "title": "Referencias"
+  "title": "Referencias",
+  "export": "Exportar",
+  "exportCitations": "Exportar citas",
+  "copy": "Copiar",
+  "exportCitationFormat": "Formato de exportación de citas",
+  "selectCitationFormatBelow": "Selecciona un formato de cita abaixo"
 }

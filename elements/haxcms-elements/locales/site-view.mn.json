@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Үр дүн алга",
+  "viewsRecordHeading": "Бичих",
+  "viewsTitleImage": "{title} зураг",
+  "viewsTitlePreview": "{title}-ийн урьдчилсан харагдац",
+  "viewsNoTimelineRecords": "Цагийн хэлхээс харуулах огноотой бичлэг алга.",
+  "viewsTimelineTitle": "{title} цагийн хэлхээс",
+  "viewsNoChartField": "График зурах тоон талбар илэрсэнгүй.",
+  "viewsChartingValue": "{value}-ийн график",
+  "viewsChartingValueByLabel": "{value}-ийг {label}-аар харуулсан график",
+  "viewsChartTitle": "{title} график",
+  "viewsNoTreeRecords": "Мод бүтэц харуулах шаталсан бичлэг алга.",
+  "viewsNoGalleryRecords": "Галерей харуулах зургийн бичлэг алга.",
+  "viewsNoPlaylistRecords": "Тоглуулах жагсаалт харуулах медиа бичлэг алга.",
+  "fetchFailed": "Татаж авах амжилтгүй ({status})",
+  "unableToLoadViewData": "Харагдацын өгөгдлийг ачаалж чадсангүй.",
+  "noResultsFound": "Үр дүн олдсонгүй.",
+  "refreshView": "Харагдацыг шинэчлэх",
+  "breakIntoStaticContent": "Статик агуулга болгон задлах",
+  "viewsOpenRecord": "Бичлэгийг нээх"
+}

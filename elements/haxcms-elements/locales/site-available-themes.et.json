@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Teemade laadimine ebaõnnestus: {error}",
+  "noThemesForView": "Selle vaate jaoks pole teemasid saadaval.",
+  "active": "Aktiivne",
+  "themeIsActive": "Teema {name} on aktiivne",
+  "applyTheme": "Rakenda teema {name}",
+  "apply": "Rakenda",
+  "preview": "Eelvaade",
+  "name": "Nimi",
+  "element": "Element",
+  "description": "Kirjeldus",
+  "action": "Toiming",
+  "loadingThemes": "Teemade laadimine...",
+  "themesShown": "Kuvatud {count} teemat",
+  "themesShownDefaults": "Kuvatud {count} teemat (app-hax vaikeväärtused)",
+  "availableHaxcmsThemes": "Saadaolevad HAXcms-i teemad",
+  "gallery": "Galerii",
+  "table": "Tabel"
+}

@@ -1,0 +1,5 @@
+{
+  "navigateToSection": "{label} - Navigera till avsnitt",
+  "clickToScrollToSection": "Klicka för att rulla till avsnittet {label}",
+  "navigatedToSection": "Navigerade till avsnittet {label}"
+}

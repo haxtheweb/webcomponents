@@ -1,4 +1,11 @@
 {
   "readMore": "Méi liesen",
-  "home": "Startsäit"
+  "home": "Startsäit",
+  "anchorLinkCopied": "Anker-Link kopéiert!",
+  "skipToContent": "Op den Inhalt sprangen",
+  "changeTheme": "Theme wiesselen",
+  "siteSections": "Site-Rubriken",
+  "pageOfTotal": "Säit {current} vun {total}",
+  "siteGenerated": "Site generéiert: {date}",
+  "licenseGraphic": "Grafik {license}"
 }

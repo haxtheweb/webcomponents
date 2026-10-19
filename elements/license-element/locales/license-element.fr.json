@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Attribution",
+  "licenseBySa": "Attribution - Partage dans les mêmes conditions",
+  "licenseByNd": "Attribution - Pas de modification",
+  "licenseByNc": "Attribution - Pas d'utilisation commerciale",
+  "licenseByNcSa": "Attribution - Pas d'utilisation commerciale - Partage dans les mêmes conditions",
+  "licenseByNcNd": "Attribution - Pas d'utilisation commerciale - Pas de modification",
+  "licenseGraphic": "Logo {license}",
+  "workByCreator": "{title} par {creator}",
+  "workByCreatorLicensed": "{title} par {creator} est mis à disposition selon les termes de la licence {license}.",
+  "permissionsBeyondScope": "Des autorisations au-delà du champ de cette licence sont disponibles {link}.",
+  "author": "(auteur)",
+  "onTheLicensingDetailsPage": "sur la page des détails de la licence"
+}

@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Отпустите датотеке овде",
+  "uploadQueue": "Ред за отпремање",
+  "pending": "На чекању",
+  "preparing": "Припрема",
+  "uploading": "Отпремање",
+  "complete": "Завршено",
+  "aborted": "Прекинуто",
+  "cancelled": "Отказано",
+  "error": "Грешка",
+  "errorWithStatus": "Грешка: {status}",
+  "cancel": "Откажи",
+  "cancelUploadOf": "Откажи отпремање датотеке {name}",
+  "retry": "Покушај поново",
+  "retryUploadOf": "Поново покушај отпремање датотеке {name}",
+  "remove": "Уклони",
+  "removeFromQueue": "Уклони {name} из реда",
+  "fileTypeNotAccepted": "Тип датотеке није прихваћен: {name}",
+  "uploadFailed": "Отпремање није успело: {status}",
+  "networkError": "Мрежна грешка"
+}

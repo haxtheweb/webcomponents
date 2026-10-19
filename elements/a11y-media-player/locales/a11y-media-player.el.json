@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Φόρτωση...",
   "youTubeStartLoading": "Πατήστε αναπαραγωγή.",
   "youTubeTranscriptLabel": "Η απομαγνητοφώνηση θα φορτωθεί μόλις ξεκινήσει η αναπαραγωγή.",
-  "audioDescriptionLabel": "Ακουστική περιγραφή"
+  "audioDescriptionLabel": "Ακουστική περιγραφή",
+  "openOnYouTube": "Άνοιγμα στο YouTube"
 }

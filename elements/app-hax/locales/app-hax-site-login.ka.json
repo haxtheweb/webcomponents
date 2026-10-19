@@ -1,0 +1,14 @@
+{
+  "enterUserName": "შეიყვანეთ მომხმარებლის სახელი",
+  "invalidUsernameOrPassword": "მომხმარებლის სახელი ან პაროლი არასწორია",
+  "welcomeLetsGo": "მოგესალმებით, {username}! წავედით!",
+  "enterYourUsername": "შეიყვანეთ თქვენი მომხმარებლის სახელი",
+  "username": "მომხმარებლის სახელი",
+  "next": "შემდეგი",
+  "welcomeBack": "კეთილი იყოს თქვენი დაბრუნება, {username}!",
+  "notYou": "თქვენ არ ხართ?",
+  "enterYourPassword": "შეიყვანეთ თქვენი პაროლი",
+  "password": "პაროლი",
+  "togglePasswordDisplay": "პაროლის ჩვენების გადართვა",
+  "login": "შესვლა"
+}

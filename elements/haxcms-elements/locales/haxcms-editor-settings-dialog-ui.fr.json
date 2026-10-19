@@ -5,5 +5,9 @@
   "buttons": "Boutons",
   "futureButtonConfiguration": "La configuration personnalisée des boutons de l'éditeur arrive bientôt.",
   "save": "Enregistrer",
-  "saving": "Enregistrement…"
+  "saving": "Enregistrement…",
+  "novice": "Débutant",
+  "expert": "Expert",
+  "toolbarPreviewAlt": "Aperçu de la barre d'outils d'édition {audience}",
+  "savingEditorSettingsFailed": "Échec de l'enregistrement des paramètres de l'éditeur : {error}"
 }

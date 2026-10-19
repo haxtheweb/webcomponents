@@ -5,5 +5,9 @@
   "buttons": "Pulsanti",
   "futureButtonConfiguration": "La configurazione personalizzata dei pulsanti dell'editor sarà disponibile a breve.",
   "save": "Salva",
-  "saving": "Salvataggio…"
+  "saving": "Salvataggio…",
+  "novice": "Principiante",
+  "expert": "Esperto",
+  "toolbarPreviewAlt": "Anteprima della barra di modifica per {audience}",
+  "savingEditorSettingsFailed": "Salvataggio delle impostazioni dell'editor non riuscito: {error}"
 }

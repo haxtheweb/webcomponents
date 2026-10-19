@@ -100,6 +100,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
     this.t = {
       ...this.t,
       home: "Home",
+      breadcrumb: "Breadcrumb",
     };
     this.registerLocalization({
       context: this,
@@ -114,7 +115,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
             class="breadcrumb"
             itemscope
             itemtype="https://schema.org/BreadcrumbList"
-            aria-label="Breadcrumb"
+            aria-label="${this.t.breadcrumb}"
           >
             ${this.items.map(
               (item, index) =>

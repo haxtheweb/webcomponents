@@ -54,5 +54,6 @@
   "requirementUppercase": "ఒక పెద్ద అక్షరం",
   "requirementLowercase": "ఒక చిన్న అక్షరం",
   "requirementNumber": "ఒక సంఖ్య",
-  "requirementSymbol": "ఒక చిహ్నం"
+  "requirementSymbol": "ఒక చిహ్నం",
+  "haxcmsMascotAlt": "HAXcms ప్రపంచ యాత్రికుడు మస్కట్"
 }

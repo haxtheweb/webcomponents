@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Baixa el registre com a txt",
+  "downloadChatLog": "Baixa el registre del xat",
+  "resetChat": "Restableix el xat",
+  "toggleDataCollection": "Commuta la recollida de dades",
+  "dataCollection": "Recollida de dades",
+  "toggleDeveloperMode": "Commuta el mode de desenvolupador",
+  "exitFullView": "Surt de la vista completa",
+  "enterFullView": "Entra a la vista completa",
+  "hideInterface": "Amaga la interfície",
+  "resetChatConfirm": "Vols restablir el xat?",
+  "downloadBeforeResetConfirm": "Vols baixar el registre del xat abans de restablir-lo?",
+  "dataCollectionOn": "Les teves converses s'utilitzaran per entrenar els nostres models d'AI",
+  "dataCollectionOff": "Les teves converses no s'utilitzaran per entrenar els nostres models d'AI"
+}

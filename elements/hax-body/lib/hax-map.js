@@ -149,7 +149,12 @@ class HaxMap extends I18NMixin(SimpleColors) {
     this.__mapMutationObserver = null;
     this.__mapMutationObserverTarget = null;
     this.__mapRefreshDebounce = null;
-    this.t = {};
+    this.t = {
+      lockUnlock: "Lock / Unlock",
+      moveUp: "Move up",
+      moveDown: "Move down",
+      delete: "Delete",
+    };
     this.registerLocalization({
       context: this,
       namespace: "hax",
@@ -397,25 +402,25 @@ class HaxMap extends I18NMixin(SimpleColors) {
                           ? "icons:lock"
                           : "icons:lock-open"}"
                         @click="${(e) => this.itemOp(index, "lock")}"
-                        title="Lock / Unlock"
+                        title="${this.t.lockUnlock}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         icon="hax:keyboard-arrow-up"
                         @click="${(e) => this.itemOp(index, "up")}"
-                        title="Move up"
+                        title="${this.t.moveUp}"
                         ?disabled="${this.isLocked(index)}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         icon="hax:keyboard-arrow-down"
                         @click="${(e) => this.itemOp(index, "down")}"
-                        title="Move down"
+                        title="${this.t.moveDown}"
                         ?disabled="${this.isLocked(index)}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         class="del"
                         icon="delete"
                         @click="${(e) => this.itemOp(index, "delete")}"
-                        title="Delete"
+                        title="${this.t.delete}"
                         ?disabled="${this.isLocked(index)}"
                       ></simple-icon-button-lite>
                     `

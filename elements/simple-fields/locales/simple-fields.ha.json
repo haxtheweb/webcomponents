@@ -9,5 +9,8 @@
   "record": "Naɗa",
   "pause": "Dakatar da naɗawa",
   "stopSave": "Tsaya & Ajiye",
-  "clickToTakePhoto": "Danna don ɗaukar hoto"
+  "clickToTakePhoto": "Danna don ɗaukar hoto",
+  "url": "URL",
+  "open": "buɗe",
+  "removeValue": "Cire {value}"
 }

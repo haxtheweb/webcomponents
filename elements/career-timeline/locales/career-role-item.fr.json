@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Intitulé du poste",
+  "describeYourRole": "Décrivez votre poste ici...",
+  "present": "Présenter",
+  "skills": "Compétences :",
+  "skillsAndMore": "{skills} et {count} de plus",
+  "yearShort": "{count} an",
+  "yearsShort": "{count} ans",
+  "monthShort": "{count} mois",
+  "monthsShort": "{count} mois"
+}

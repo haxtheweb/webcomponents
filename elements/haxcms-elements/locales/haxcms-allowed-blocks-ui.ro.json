@@ -10,5 +10,9 @@
   "save": "Salvează",
   "noDescription": "Nicio descriere disponibilă.",
   "details": "Detalii",
-  "loadingInventory": "Se încarcă inventarul complet de blocuri…"
+  "loadingInventory": "Se încarcă inventarul complet de blocuri…",
+  "selectAllButton": "Selectează tot",
+  "deselectAllButton": "Deselectează tot",
+  "selectedOfAvailable": "{selected} selectate / {total} disponibile",
+  "savingBlocksFailed": "Salvarea blocurilor a eșuat: {error}"
 }

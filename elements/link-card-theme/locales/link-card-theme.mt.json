@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Il-link tal-ankra ġie kkupjat!",
+  "skipToContent": "Aqbeż għall-kontenut",
+  "changePalette": "Ibdel il-paletta",
+  "primaryLinks": "Links primarji",
+  "socialLinks": "Links soċjali",
+  "myProfile": "Il-profil tiegħi",
+  "profileImageOf": "Immaġni tal-profil ta' {name}",
+  "profileImage": "Immaġni tal-profil",
+  "linkCardProfile": "Profil tal-karta tal-links",
+  "emptyStateLinks": "Żid oġġetti tal-menu tal-ogħla livell f'site.json biex jintwerew il-buttuni tal-links.",
+  "titleOnPlatform": "{title} fuq {platform}",
+  "openPlatform": "Iftaħ {platform}",
+  "paletteUpdated": "Il-paletta tal-kuluri ġiet aġġornata għall-għażla {number}."
+}

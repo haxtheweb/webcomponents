@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Tō whakautu",
   "checkAnswer": "Arowhai whakautu",
-  "retry": "Whakamātau anō"
+  "retry": "Whakamātau anō",
+  "correct": "Tika!",
+  "incorrect": "Hē!",
+  "correctAnswer": "Whakautu Tika: {answer}"
 }

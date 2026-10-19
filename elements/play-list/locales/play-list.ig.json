@@ -1,0 +1,11 @@
+{
+  "playlist": "Ndepụta egwu",
+  "carousel": "carousel",
+  "slide": "slide",
+  "slideNumber": "Slide {number}",
+  "slideOfTotal": "Slide {number} n'ime {total}",
+  "previousSlide": "Slide gara aga",
+  "nextSlide": "Slide na-esote",
+  "slidePages": "Ibe slide",
+  "goToSlide": "Gaa na slide {number}"
+}

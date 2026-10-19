@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Atribuim",
+  "licenseBySa": "Atribuim-ShpërndajNjësoj",
+  "licenseByNd": "Atribuim-PaVeprimeTëPrejardhura",
+  "licenseByNc": "Atribuim-JoTregtar",
+  "licenseByNcSa": "Atribuim-JoTregtar-ShpërndajNjësoj",
+  "licenseByNcNd": "Atribuim-JoTregtar-PaVeprimeTëPrejardhura",
+  "citationWithLicense": "{title} nga {creator}, licencuar nën {license}. Qasur më {date}.",
+  "citationWithoutLicense": "{title} nga {creator}. Qasur më {date}.",
+  "licenseGraphic": "Grafika e {license}"
+}

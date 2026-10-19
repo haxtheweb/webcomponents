@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Examinando o rexistro de compoñentes web en busca de máis elementos HAX..",
+  "enabled": "Activado",
+  "disabled": "Desactivado",
+  "details": "Detalles",
+  "tags": "Etiquetas:",
+  "tagName": "Nome da etiqueta:",
+  "developerUsage": "Uso para desenvolvedores:",
+  "demo": "Demostración",
+  "popUpDemo": "Demostración emerxente",
+  "demoOf": "Demostración de {tag}"
+}

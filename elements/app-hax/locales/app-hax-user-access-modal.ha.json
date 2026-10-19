@@ -7,5 +7,7 @@
   "userAccessGranted": "An ba mai amfani dama cikin nasara!",
   "userNotFound": "Ba a sami mai amfani ba ko ba shi da izini",
   "loadingAddingUser": "Ana ƙara mai amfani...",
-  "grantAccessTo": "Ba da dama ga:"
+  "grantAccessTo": "Ba da dama ga:",
+  "networkErrorTryAgain": "Kuskuren hanyar sadarwa ya faru. Da fatan za a sake gwadawa.",
+  "characterWillAppear": "Hali zai bayyana idan ka shigar da sunan mai amfani"
 }

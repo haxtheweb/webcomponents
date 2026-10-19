@@ -43,5 +43,22 @@
   "emailAddress": "Zigara nwa akwụkwọ a ozi email",
   "notes": "Ndetu",
   "interests": "Ihe ndị masịrị ya",
-  "profileImageFor": "Foto profaịlụ nke"
+  "profileImageFor": "Foto profaịlụ nke",
+  "fileSystem": "Sistemu faịlụ",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "Ngwugwu data JSON",
+  "additionalCriteriaFeedback": "Nzaghachi {criteria} ọzọ",
+  "outOfPoints": "/ {points} pts",
+  "feedbackReport": "Akụkọ nzaghachi",
+  "criteriaDetails": "Nkọwa njirisi",
+  "yourFeedback": "Nzaghachi gị",
+  "additionalCriteriaFeedbackHeading": "Nzaghachi njirisi ọzọ",
+  "yourTotalScore": "Mkpokọta akara gị",
+  "scoreOutOfPoints": "{score} / {points} pts",
+  "studentAssignment": "Ọrụ {assignment} nke {student}",
+  "downloadPDF": "Budata PDF",
+  "displayMode1": "Ọnọdụ 1",
+  "displayMode2": "Ọnọdụ 2",
+  "twoWindows": "Windo abụọ"
 }

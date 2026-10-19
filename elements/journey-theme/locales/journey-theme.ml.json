@@ -1,4 +1,11 @@
 {
   "readMore": "കൂടുതൽ വായിക്കുക",
-  "home": "ഹോം"
+  "home": "ഹോം",
+  "anchorLinkCopied": "ആങ്കർ ലിങ്ക് പകർത്തി!",
+  "skipToContent": "ഉള്ളടക്കത്തിലേക്ക് പോകുക",
+  "changeTheme": "തീം മാറ്റുക",
+  "siteSections": "സൈറ്റ് വിഭാഗങ്ങൾ",
+  "pageOfTotal": "പേജ് {total}-ൽ {current}",
+  "siteGenerated": "സൈറ്റ് ജനറേറ്റ് ചെയ്തത്: {date}",
+  "licenseGraphic": "{license} ഗ്രാഫിക്"
 }

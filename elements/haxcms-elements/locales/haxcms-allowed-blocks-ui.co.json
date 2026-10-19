@@ -10,5 +10,9 @@
   "save": "Salvà",
   "noDescription": "Nisuna discrizzione dispunibule.",
   "details": "Ditaglii",
-  "loadingInventory": "Caricamentu di l'inventariu cumpletu di i blocchi…"
+  "loadingInventory": "Caricamentu di l'inventariu cumpletu di i blocchi…",
+  "selectAllButton": "Selezziunà tuttu",
+  "deselectAllButton": "Deselezziunà tuttu",
+  "selectedOfAvailable": "{selected} selezziunati / {total} dispunibuli",
+  "savingBlocksFailed": "Fiascu di u salvamentu di i blocchi: {error}"
 }

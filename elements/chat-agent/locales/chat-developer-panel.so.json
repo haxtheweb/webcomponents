@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Shaxda console-ka ee diiwaanka sheekaysiga isticmaalaha",
+  "consoleTableUserText": "console.table() diiwaanka sheekaysiga isticmaalaha",
+  "consoleTableUserTooltip": "Ku Daabac Diiwaanka Sheekaysiga Isticmaalaha Shax ahaan Console-ka",
+  "consoleTableMerlinLabel": "Shaxda console-ka ee diiwaanka sheekaysiga merlin",
+  "consoleTableMerlinText": "console.table() diiwaanka sheekaysiga merlin",
+  "consoleTableMerlinTooltip": "Ku Daabac Diiwaanka Sheekaysiga Merlin Shax ahaan Console-ka",
+  "consoleTableAllLabel": "Shaxda console-ka ee diiwaanka sheekaysiga oo dhan",
+  "consoleTableAllText": "console.table() diiwaanka sheekaysiga oo dhan",
+  "consoleTableAllTooltip": "Ku Daabac Diiwaanka Sheekaysiga Oo Dhan Shax ahaan Console-ka",
+  "downloadChatLogJson": "Soo deji diiwaanka sheekaysiga sida .json",
+  "downloadChatLogJsonTooltip": "Soo deji Diiwaanka Sheekaysiga sida .json"
+}

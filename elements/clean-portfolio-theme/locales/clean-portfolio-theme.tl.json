@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Nakopya ang anchor link!",
+  "skipToContent": "Lumaktaw sa nilalaman",
+  "siteHome": "Home ng site",
+  "mainNavigation": "Pangunahing nabigasyon",
+  "toggleMenu": "I-toggle ang menu",
+  "changeTheme": "Palitan ang tema",
+  "breadcrumb": "Breadcrumb",
+  "tagFilter": "Filter ng tag:",
+  "all": "Lahat",
+  "pageNumberOfTotal": "Numero ng pahina: {current} sa {total}",
+  "siteGenerated": "Nabuo ang site: {date}",
+  "copyright": "Copyright: {year} {author}",
+  "viewContentByTag": "Tingnan ang Nilalaman ayon sa Tag",
+  "licenseGraphic": "Grapiko ng {license}"
+}

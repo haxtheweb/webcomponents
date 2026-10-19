@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Langar havolasi nusxalandi!",
+  "skipToContent": "Kontentga o‘tish",
+  "changePalette": "Palitrani oʻzgartirish",
+  "primaryLinks": "Asosiy havolalar",
+  "socialLinks": "Ijtimoiy havolalar",
+  "myProfile": "Mening profilim",
+  "profileImageOf": "{name} profil rasmi",
+  "profileImage": "Profil rasmi",
+  "linkCardProfile": "Havola kartasi profili",
+  "emptyStateLinks": "Havola tugmalarini koʻrsatish uchun site.json ga yuqori darajali menyu bandlarini qoʻshing.",
+  "titleOnPlatform": "{title}, {platform} da",
+  "openPlatform": "{platform} ni ochish",
+  "paletteUpdated": "Rang palitrasi {number}-variantga yangilandi."
+}

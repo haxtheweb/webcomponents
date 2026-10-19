@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Odevzdaná práce studenta",
   "openInNewWindow": "Otevřít v novém okně",
-  "submitted": "Odevzdáno"
+  "submitted": "Odevzdáno",
+  "previousStudent": "Předchozí student",
+  "nextStudent": "Další student",
+  "previousAssignment": "Předchozí úkol",
+  "nextAssignment": "Další úkol"
 }

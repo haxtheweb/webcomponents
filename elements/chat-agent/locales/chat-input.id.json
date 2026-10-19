@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Tampilkan pesan yang dikirim sebelumnya (atas)",
+  "displayPreviousMessageDown": "Tampilkan pesan yang dikirim sebelumnya (bawah)",
+  "sendPrompt": "Kirim Prompt",
+  "sendPromptToMerlin": "Kirim Prompt ke Merlin",
+  "shortenPrompt": "Harap persingkat prompt Anda menjadi tidak lebih dari {limit} karakter."
+}

@@ -1,0 +1,17 @@
+{
+  "editNodes": "Dezie ọnụ",
+  "editLines": "Dezie ahịrị",
+  "reset": "Tọgharịa",
+  "save": "Chekwaa",
+  "cancel": "Kagbuo",
+  "delete": "Hichapụ",
+  "type": "Ụdị:",
+  "topic": "Isiokwu",
+  "subsection": "Ngalaba nta",
+  "name": "Aha:",
+  "enterName": "Tinye aha",
+  "url": "URL:",
+  "enterUrl": "Tinye URL",
+  "activeNode": "Ọnụ na-arụ ọrụ?",
+  "nodeId": "Ọnụ {id}"
+}

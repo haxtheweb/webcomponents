@@ -10,5 +10,9 @@
   "save": "Gem",
   "noDescription": "Ingen beskrivelse tilgængelig.",
   "details": "Detaljer",
-  "loadingInventory": "Indlæser fuld oversigt over blokke…"
+  "loadingInventory": "Indlæser fuld oversigt over blokke…",
+  "selectAllButton": "Vælg alle",
+  "deselectAllButton": "Fravælg alle",
+  "selectedOfAvailable": "{selected} valgt / {total} tilgængelige",
+  "savingBlocksFailed": "Kunne ikke gemme blokke: {error}"
 }

@@ -54,5 +54,6 @@
   "requirementUppercase": "Ein stórur bókstavur",
   "requirementLowercase": "Ein lítil bókstavur",
   "requirementNumber": "Eitt tal",
-  "requirementSymbol": "Eitt tekn"
+  "requirementSymbol": "Eitt tekn",
+  "haxcmsMascotAlt": "HAXcms World Traveler-maskott"
 }

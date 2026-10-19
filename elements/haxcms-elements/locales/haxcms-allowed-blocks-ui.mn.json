@@ -10,5 +10,9 @@
   "save": "Хадгалах",
   "noDescription": "Тайлбар байхгүй.",
   "details": "Дэлгэрэнгүй",
-  "loadingInventory": "Блокуудын бүрэн жагсаалтыг ачаалж байна…"
+  "loadingInventory": "Блокуудын бүрэн жагсаалтыг ачаалж байна…",
+  "selectAllButton": "Бүгдийг сонгох",
+  "deselectAllButton": "Бүх сонголтыг цуцлах",
+  "selectedOfAvailable": "{selected} сонгосон / {total} боломжтой",
+  "savingBlocksFailed": "Блокуудыг хадгалж чадсангүй: {error}"
 }

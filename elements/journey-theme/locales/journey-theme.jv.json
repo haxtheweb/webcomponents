@@ -1,4 +1,11 @@
 {
   "readMore": "Waca sabanjure",
-  "home": "Ngarep"
+  "home": "Ngarep",
+  "anchorLinkCopied": "Link jangkar disalin!",
+  "skipToContent": "Langsung menyang isi",
+  "changeTheme": "Ganti tema",
+  "siteSections": "Bagean situs",
+  "pageOfTotal": "Kaca {current} saka {total}",
+  "siteGenerated": "Situs digawe: {date}",
+  "licenseGraphic": "Gambar {license}"
 }

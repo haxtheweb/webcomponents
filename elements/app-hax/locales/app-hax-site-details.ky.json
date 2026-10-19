@@ -1,0 +1,18 @@
+{
+  "copy": "Көчүрүү",
+  "download": "Жүктөп алуу",
+  "archive": "Архивдөө",
+  "copyOperation": "көчүрүү",
+  "downloadOperation": "жүктөп алуу",
+  "archiveOperation": "архивдөө",
+  "created": "түзүлдү",
+  "updated": "жаңыртылды",
+  "pages": "барактар",
+  "url": "URL",
+  "confirm": "Ырастоо",
+  "cancel": "Жокко чыгаруу",
+  "siteOperationConfirmTitle": "{siteName}: {operationName}?",
+  "siteOperationConfirmMessage": "{siteName} сайтына карата {operation} аракетин аткарууну чын эле каалайсызбы?",
+  "siteOperationSuccessful": "{siteName}: {operation} ийгиликтүү аткарылды!",
+  "siteOperationFailed": "{siteName}: {operation} ишке ашкан жок"
+}

@@ -1,0 +1,11 @@
+{
+  "playlist": "Lista e luajtjes",
+  "carousel": "karusel",
+  "slide": "sllajd",
+  "slideNumber": "Sllajdi {number}",
+  "slideOfTotal": "Sllajdi {number} nga {total}",
+  "previousSlide": "Sllajdi i mëparshëm",
+  "nextSlide": "Sllajdi tjetër",
+  "slidePages": "Faqet e sllajdeve",
+  "goToSlide": "Shko te sllajdi {number}"
+}

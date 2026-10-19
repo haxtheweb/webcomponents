@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ",
+  "viewsRecordHeading": "ਰਿਕਾਰਡ ਕਰੋ",
+  "viewsTitleImage": "{title} ਚਿੱਤਰ",
+  "viewsTitlePreview": "{title} ਪ੍ਰੀਵਿਊ",
+  "viewsNoTimelineRecords": "ਟਾਈਮਲਾਈਨ ਦਿਖਾਉਣ ਲਈ ਕੋਈ ਮਿਤੀ-ਅਧਾਰਿਤ ਰਿਕਾਰਡ ਉਪਲਬਧ ਨਹੀਂ।",
+  "viewsTimelineTitle": "{title} ਟਾਈਮਲਾਈਨ",
+  "viewsNoChartField": "ਚਾਰਟ ਦਿਖਾਉਣ ਲਈ ਕੋਈ ਅੰਕੀ ਖੇਤਰ ਨਹੀਂ ਮਿਲਿਆ।",
+  "viewsChartingValue": "{value} ਦਾ ਚਾਰਟ",
+  "viewsChartingValueByLabel": "{label} ਅਨੁਸਾਰ {value} ਦਾ ਚਾਰਟ",
+  "viewsChartTitle": "{title} ਚਾਰਟ",
+  "viewsNoTreeRecords": "ਟ੍ਰੀ ਦਿਖਾਉਣ ਲਈ ਕੋਈ ਦਰਜਾਬੰਦ ਰਿਕਾਰਡ ਉਪਲਬਧ ਨਹੀਂ।",
+  "viewsNoGalleryRecords": "ਗੈਲਰੀ ਦਿਖਾਉਣ ਲਈ ਕੋਈ ਚਿੱਤਰ ਰਿਕਾਰਡ ਉਪਲਬਧ ਨਹੀਂ।",
+  "viewsNoPlaylistRecords": "ਪਲੇਲਿਸਟ ਦਿਖਾਉਣ ਲਈ ਕੋਈ ਮੀਡੀਆ ਰਿਕਾਰਡ ਉਪਲਬਧ ਨਹੀਂ।",
+  "fetchFailed": "ਪ੍ਰਾਪਤੀ ਅਸਫਲ ({status})",
+  "unableToLoadViewData": "ਦ੍ਰਿਸ਼ ਡਾਟਾ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕਿਆ।",
+  "noResultsFound": "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ ਮਿਲਿਆ।",
+  "refreshView": "ਦ੍ਰਿਸ਼ ਤਾਜ਼ਾ ਕਰੋ",
+  "breakIntoStaticContent": "ਸਥਿਰ ਸਮੱਗਰੀ ਵਿੱਚ ਤੋੜੋ",
+  "viewsOpenRecord": "ਰਿਕਾਰਡ ਖੋਲ੍ਹੋ"
+}

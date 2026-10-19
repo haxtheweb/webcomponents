@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Solta aquí os ficheiros",
+  "uploadQueue": "Cola de carga",
+  "pending": "Pendente",
+  "preparing": "Preparando",
+  "uploading": "Cargando",
+  "complete": "Completado",
+  "aborted": "Abortado",
+  "cancelled": "Cancelado",
+  "error": "Erro",
+  "errorWithStatus": "Erro: {status}",
+  "cancel": "Cancelar",
+  "cancelUploadOf": "Cancelar a carga de {name}",
+  "retry": "Tentar de novo",
+  "retryUploadOf": "Reintentar a carga de {name}",
+  "remove": "Quitar",
+  "removeFromQueue": "Quitar {name} da cola",
+  "fileTypeNotAccepted": "Tipo de ficheiro non aceptado: {name}",
+  "uploadFailed": "Fallou a carga: {status}",
+  "networkError": "Erro de rede"
+}

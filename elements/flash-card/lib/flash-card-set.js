@@ -1,11 +1,12 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "../flash-card.js";
 
-export class FlashCardSet extends DDD {
+export class FlashCardSet extends I18NMixin(DDD) {
   static get tag() {
     return "flash-card-set";
   }
@@ -13,6 +14,16 @@ export class FlashCardSet extends DDD {
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      previousCard: "Previous card",
+      nextCard: "Next card",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.questions = [];
     this.currentQuestion = 0;
     this.cardLength = 4;
@@ -176,14 +187,14 @@ export class FlashCardSet extends DDD {
         <div style="display: inline-flex">
           <simple-icon-button-lite
             icon="arrow-back"
-            label="Previous card"
+            label="${this.t.previousCard}"
             class="arrow-left"
             @click="${this._prevCard}"
           ></simple-icon-button-lite>
           <div id="content"></div>
           <simple-icon-button-lite
             icon="arrow-forward"
-            label="Next card"
+            label="${this.t.nextCard}"
             class="arrow-right"
             @click="${this._nextCard}"
           ></simple-icon-button-lite>

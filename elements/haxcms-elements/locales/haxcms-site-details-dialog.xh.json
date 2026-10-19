@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- okungagqibekanga liphepha lokuqala --",
+  "details": "Iinkcukacha",
+  "title": "Isihloko",
+  "titleDescription": "Igama lesayithi",
+  "homePage": "Iphepha lasekhaya",
+  "homePageDescription": "Iphepha eliza kusetyenziswa njengephepha lokufika / lasekhaya elingagqibekanga",
+  "advanced": "Okuphambili",
+  "serviceWorker": "Yongeza i-service worker kwiphepha elitshintshayo",
+  "serviceWorkerDescription": "Vala oku ukuba abasebenzisi kufuneka bahlale bebona isiphumo samva nje seseva ngokukhawuleza.",
+  "forceBrowserUpgrade": "Nyanzela ukuphuculwa kwesikhangeli",
+  "forceBrowserUpgradeDescription": "Funa izikhangeli ezihlala zihlaziyiwe ngaphambi kokulayisha amava esayithi.",
+  "unableToLoadSiteDetails": "Ayikwazi ukulayisha iinkcukacha zesayithi.",
+  "noSiteDetails": "Akukho nkcukacha zesayithi zikhoyo.",
+  "save": "Gcina"
+}

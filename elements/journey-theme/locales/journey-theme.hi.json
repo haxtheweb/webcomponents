@@ -1,5 +1,12 @@
 {
   "readMore": "और पढ़ें",
   "home": "होम",
+  "anchorLinkCopied": "एंकर लिंक कॉपी किया गया!",
+  "skipToContent": "सामग्री पर जाएँ",
+  "changeTheme": "थीम बदलें",
+  "siteSections": "साइट अनुभाग",
+  "pageOfTotal": "पेज {total} में से {current}",
+  "siteGenerated": "साइट जनरेट की गई: {date}",
+  "licenseGraphic": "{license} ग्राफ़िक",
   "title": "शीर्षक"
 }

@@ -1,0 +1,5 @@
+{
+  "navigateToSection": "{label} - 导航到章节",
+  "clickToScrollToSection": "点一记滚到 {label} 章节",
+  "navigatedToSection": "已经导航到 {label} 章节"
+}

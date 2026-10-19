@@ -1,0 +1,18 @@
+{
+  "copy": "Kopiera",
+  "download": "Ladda ner",
+  "archive": "Arkivera",
+  "copyOperation": "kopiera",
+  "downloadOperation": "ladda ner",
+  "archiveOperation": "arkivera",
+  "created": "skapad",
+  "updated": "uppdaterad",
+  "pages": "sidor",
+  "url": "URL",
+  "confirm": "Bekräfta",
+  "cancel": "Avbryt",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Är du säker på att du vill {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} lyckades!",
+  "siteOperationFailed": "{siteName}: {operation} misslyckades"
+}

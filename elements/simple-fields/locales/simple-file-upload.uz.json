@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Fayllarni shu yerga tashlang",
+  "uploadQueue": "Yuklash navbati",
+  "pending": "Kutilmoqda",
+  "preparing": "Tayyorlanmoqda",
+  "uploading": "Yuklanmoqda",
+  "complete": "Tugallandi",
+  "aborted": "Toʻxtatildi",
+  "cancelled": "Bekor qilindi",
+  "error": "Xato",
+  "errorWithStatus": "Xato: {status}",
+  "cancel": "Bekor qilish",
+  "cancelUploadOf": "{name} yuklanishini bekor qilish",
+  "retry": "Qayta urinish",
+  "retryUploadOf": "{name} yuklanishini qayta urinish",
+  "remove": "Olib tashlash",
+  "removeFromQueue": "{name} faylini navbatdan olib tashlash",
+  "fileTypeNotAccepted": "Fayl turi qabul qilinmaydi: {name}",
+  "uploadFailed": "Yuklash muvaffaqiyatsiz: {status}",
+  "networkError": "Tarmoq xatosi"
+}

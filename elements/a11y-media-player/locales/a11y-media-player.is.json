@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "",
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
-  "audioDescriptionLabel": "Hljóðlýsing"
+  "audioDescriptionLabel": "Hljóðlýsing",
+  "openOnYouTube": "Opna á YouTube"
 }

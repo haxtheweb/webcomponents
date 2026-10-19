@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Авторлыкны күрсәтү",
+  "licenseBySa": "Авторлыкны күрсәтү — Шул ук шартларда тарату",
+  "licenseByNd": "Авторлыкны күрсәтү — Үзгәртмичә",
+  "licenseByNc": "Авторлыкны күрсәтү — Коммерциячел булмаган",
+  "licenseByNcSa": "Авторлыкны күрсәтү — Коммерциячел булмаган — Шул ук шартларда тарату",
+  "licenseByNcNd": "Авторлыкны күрсәтү — Коммерциячел булмаган — Үзгәртмичә",
+  "licenseGraphic": "{license} графикасы",
+  "workByCreator": "{title}, авторы {creator}",
+  "workByCreatorLicensed": "{title}, авторы {creator}, {license} лицензиясе буенча таратыла.",
+  "permissionsBeyondScope": "Бу лицензия кысаларыннан тыш рөхсәтләр {link} бар.",
+  "author": "(автор)",
+  "onTheLicensingDetailsPage": "лицензия тәфсилләре битендә"
+}

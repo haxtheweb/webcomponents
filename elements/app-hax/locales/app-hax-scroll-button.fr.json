@@ -1,0 +1,5 @@
+{
+  "navigateToSection": "{label} - Aller à la section",
+  "clickToScrollToSection": "Cliquez pour défiler jusqu'à la section {label}",
+  "navigatedToSection": "Section {label} atteinte"
+}

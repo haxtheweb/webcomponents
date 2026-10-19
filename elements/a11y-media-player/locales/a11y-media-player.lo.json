@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "ກຳລັງໂຫຼດ...",
   "youTubeStartLoading": "ກົດຫຼິ້ນ.",
   "youTubeTranscriptLabel": "ບົດຖອດຄວາມຈະໂຫຼດເມື່ອສື່ເລີ່ມຫຼິ້ນ.",
-  "audioDescriptionLabel": "ຄຳອະທິບາຍດ້ວຍສຽງ"
+  "audioDescriptionLabel": "ຄຳອະທິບາຍດ້ວຍສຽງ",
+  "openOnYouTube": "ເປີດໃນ YouTube"
 }

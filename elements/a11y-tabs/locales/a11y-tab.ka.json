@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "ჩანართი {xOfY}",
+  "xOfY": "{order} / {total}",
+  "endOfTab": "ჩანართის {xOfY} დასასრული. დაბრუნება: {tabs}.",
+  "tabs": "ჩანართები"
+}

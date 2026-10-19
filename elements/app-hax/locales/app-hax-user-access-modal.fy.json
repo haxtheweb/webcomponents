@@ -7,5 +7,7 @@
   "userAccessGranted": "Brûkerstagong mei sukses jûn!",
   "userNotFound": "Brûker net fûn of net autorisearre",
   "loadingAddingUser": "Brûker tafoegje...",
-  "grantAccessTo": "Tagong jaan oan:"
+  "grantAccessTo": "Tagong jaan oan:",
+  "networkErrorTryAgain": "Der is in netwurkflater bard. Besykje it opnij.",
+  "characterWillAppear": "It personaazje ferskynt as jo in brûkersnamme ynfiere"
 }

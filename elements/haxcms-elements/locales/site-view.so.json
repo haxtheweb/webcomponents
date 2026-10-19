@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Natiijooyin ma jiraan",
+  "viewsRecordHeading": "Duub",
+  "viewsTitleImage": "Sawirka {title}",
+  "viewsTitlePreview": "Hordhaca {title}",
+  "viewsNoTimelineRecords": "Diiwaanno taariikh ku salaysan looma hayo muujinta jadwalka waqtiga.",
+  "viewsTimelineTitle": "Jadwalka waqtiga {title}",
+  "viewsNoChartField": "Goob tiro ah lagama helin muujinta jaantuska.",
+  "viewsChartingValue": "Jaantuska {value}",
+  "viewsChartingValueByLabel": "Jaantuska {value} marka loo eego {label}",
+  "viewsChartTitle": "Jaantuska {title}",
+  "viewsNoTreeRecords": "Diiwaanno heerar leh looma hayo muujinta geedka.",
+  "viewsNoGalleryRecords": "Diiwaanno sawir looma hayo muujinta gallery-ga.",
+  "viewsNoPlaylistRecords": "Diiwaanno warbaahin looma hayo muujinta liiska ciyaarta.",
+  "fetchFailed": "Soo qaadashadu way fashilantay ({status})",
+  "unableToLoadViewData": "Xogta muuqaalka lama soo rari karo.",
+  "noResultsFound": "Natiijooyin lama helin.",
+  "refreshView": "Cusboonaysii muuqaalka",
+  "breakIntoStaticContent": "U kala jebi waxyaabo taagan",
+  "viewsOpenRecord": "Fur diiwaanka"
+}

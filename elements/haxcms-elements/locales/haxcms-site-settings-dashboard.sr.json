@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "Онемогућено у функцијама",
+  "appearance": "Изглед",
+  "structure": "Структура",
+  "content": "Садржај",
+  "reports": "Извештаји",
+  "about": "О сајту",
+  "files": "Датотеке",
+  "views": "Прикази",
+  "features": "Функције",
+  "editor": "Уређивач",
+  "blocks": "Блокови",
+  "importExport": "Увоз / извоз",
+  "details": "Детаљи",
+  "advanced": "Напредно"
+}

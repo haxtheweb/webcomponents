@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ankerkeppeling kopiearre!",
+  "skipToContent": "Gean nei de ynhâld",
+  "changePalette": "Palet wizigje",
+  "primaryLinks": "Primêre keppelings",
+  "socialLinks": "Sosjale keppelings",
+  "myProfile": "Myn profyl",
+  "profileImageOf": "Profylôfbylding fan {name}",
+  "profileImage": "Profylôfbylding",
+  "linkCardProfile": "Profyl fan keppelingskaart",
+  "emptyStateLinks": "Foegje menu-items op it boppeste nivo ta yn site.json om keppelingsknoppen wer te jaan.",
+  "titleOnPlatform": "{title} op {platform}",
+  "openPlatform": "{platform} iepenje",
+  "paletteUpdated": "Kleurpalet bywurke nei opsje {number}."
+}

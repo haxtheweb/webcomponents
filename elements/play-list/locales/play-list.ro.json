@@ -1,0 +1,11 @@
+{
+  "playlist": "Listă de redare",
+  "carousel": "carusel",
+  "slide": "diapozitiv",
+  "slideNumber": "Diapozitivul {number}",
+  "slideOfTotal": "Diapozitivul {number} din {total}",
+  "previousSlide": "Diapozitivul anterior",
+  "nextSlide": "Diapozitivul următor",
+  "slidePages": "Paginile diapozitivelor",
+  "goToSlide": "Mergi la diapozitivul {number}"
+}

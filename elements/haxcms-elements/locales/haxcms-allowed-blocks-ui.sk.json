@@ -10,5 +10,9 @@
   "save": "Uložiť",
   "noDescription": "Popis nie je k dispozícii.",
   "details": "Podrobnosti",
-  "loadingInventory": "Načítava sa úplný zoznam blokov…"
+  "loadingInventory": "Načítava sa úplný zoznam blokov…",
+  "selectAllButton": "Vybrať všetko",
+  "deselectAllButton": "Zrušiť výber všetkého",
+  "selectedOfAvailable": "Vybrané: {selected} / dostupné: {total}",
+  "savingBlocksFailed": "Ukladanie blokov zlyhalo: {error}"
 }

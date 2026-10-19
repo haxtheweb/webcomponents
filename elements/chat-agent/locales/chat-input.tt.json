@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Элек җибәрелгән хәбәрне күрсәтү (өскә)",
+  "displayPreviousMessageDown": "Элек җибәрелгән хәбәрне күрсәтү (аска)",
+  "sendPrompt": "Сорауны җибәрү",
+  "sendPromptToMerlin": "Сорауны Merlin'га җибәрү",
+  "shortenPrompt": "Зинһар, сорауыгызны {limit} символдан артык булмаслык итеп кыскартыгыз."
+}

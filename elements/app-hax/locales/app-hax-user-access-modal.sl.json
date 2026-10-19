@@ -7,5 +7,7 @@
   "userAccessGranted": "Dostop uporabniku je bil uspešno dodeljen!",
   "userNotFound": "Uporabnik ni najden ali nima pooblastil",
   "loadingAddingUser": "Dodajanje uporabnika ...",
-  "grantAccessTo": "Dodeli dostop:"
+  "grantAccessTo": "Dodeli dostop:",
+  "networkErrorTryAgain": "Prišlo je do omrežne napake. Poskusite znova.",
+  "characterWillAppear": "Lik se bo pojavil, ko vnesete uporabniško ime"
 }

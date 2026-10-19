@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "An kwafi hanyar haɗin anga!",
+  "skipToContent": "Tsallaka zuwa abun ciki",
+  "changePalette": "Canza palet",
+  "primaryLinks": "Manyan hanyoyin haɗi",
+  "socialLinks": "Hanyoyin haɗi na sada zumunta",
+  "myProfile": "Bayanin martabata",
+  "profileImageOf": "Hoton bayanin martaba na {name}",
+  "profileImage": "Hoton bayanin martaba",
+  "linkCardProfile": "Bayanin martabar katin hanyar haɗi",
+  "emptyStateLinks": "Ƙara abubuwan menu na babban mataki a site.json don nuna maɓallan hanyoyin haɗi.",
+  "titleOnPlatform": "{title} a {platform}",
+  "openPlatform": "Buɗe {platform}",
+  "paletteUpdated": "An sabunta palet na launi zuwa zaɓi {number}."
+}

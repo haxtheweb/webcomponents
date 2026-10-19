@@ -3,13 +3,14 @@ import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/img-pan-zoom/img-pan-zoom.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `image-inspector`
  * `Zoom, Rotate, Mirror, Download, and View image`
  * @demo demo/index.html
  * @element image-inspector
  */
-class ImageInspector extends LitElement {
+class ImageInspector extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -95,34 +96,47 @@ class ImageInspector extends LitElement {
     this.noLeft = false;
     this.degrees = 0;
     this.src = "";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      zoomIn: "Zoom in",
+      zoomOut: "Zoom out",
+      rotateRight: "Rotate right",
+      mirrorImage: "Mirror image",
+      openInNewWindow: "Open in new window",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
   }
   render() {
     return html`
       <div class="wrap">
         <div class="internal-btn-wrap">
           <simple-icon-button-lite
-            label="Zoom in"
+            label="${this.t.zoomIn}"
             icon="zoom-in"
             @click="${this.zoomIn}"
           ></simple-icon-button-lite>
           <simple-icon-button-lite
-            label="Zoom out"
+            label="${this.t.zoomOut}"
             icon="zoom-out"
             @click="${this.zoomOut}"
           ></simple-icon-button-lite>
           <simple-icon-button-lite
-            label="Rotate right"
+            label="${this.t.rotateRight}"
             icon="image:rotate-right"
             @click="${this.rotateRight}"
           ></simple-icon-button-lite>
           <simple-icon-button-lite
-            label="Mirror image"
+            label="${this.t.mirrorImage}"
             icon="image:flip"
             @click="${this.mirrorImage}"
           ></simple-icon-button-lite>
           <a href="${this.src}" target="_blank" rel="noopener noreferrer">
             <simple-icon-button-lite
-              label="Open in new window"
+              label="${this.t.openInNewWindow}"
               icon="launch"
             ></simple-icon-button-lite>
           </a>

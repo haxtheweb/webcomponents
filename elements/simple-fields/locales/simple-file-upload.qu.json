@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Willañiqikunata kaypi churay",
+  "uploadQueue": "Wichachiy suyay",
+  "pending": "Suyachkan",
+  "preparing": "Wakichichkan",
+  "uploading": "Wichachichkan",
+  "complete": "Tukusqa",
+  "aborted": "Saqisqa",
+  "cancelled": "Chinkachisqa",
+  "error": "Pantay",
+  "errorWithStatus": "Pantay: {status}",
+  "cancel": "Chinkachiy",
+  "cancelUploadOf": "{name} wichachiyta chinkachiy",
+  "retry": "Hukmanta kallpachakuy",
+  "retryUploadOf": "{name} wichachiyta hukmanta ruray",
+  "remove": "Hurquy",
+  "removeFromQueue": "{name}-ta suyaymanta hurquy",
+  "fileTypeNotAccepted": "Willañiqi rikch'ay mana chaskisqachu: {name}",
+  "uploadFailed": "Wichachiy pantarqan: {status}",
+  "networkError": "Llika pantay"
+}

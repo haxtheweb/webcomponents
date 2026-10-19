@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Bu'aan hin jiru",
+  "viewsRecordHeading": "Waraabi",
+  "viewsTitleImage": "Suuraa {title}",
+  "viewsTitlePreview": "Agarsiisa duraa {title}",
+  "viewsNoTimelineRecords": "Agarsiisa yeroo-tarreeffamaaf galmeen guyyaa irratti hundaa'e hin jiru.",
+  "viewsTimelineTitle": "Yeroo-tarreeffama {title}",
+  "viewsNoChartField": "Agarsiisa chaartiif dirreen lakkoofsaa hin argamne.",
+  "viewsChartingValue": "{value} chaartii irratti agarsiisaa jira",
+  "viewsChartingValueByLabel": "{value} {label} n chaartii irratti agarsiisaa jira",
+  "viewsChartTitle": "Chaartii {title}",
+  "viewsNoTreeRecords": "Agarsiisa muka-caasaaf galmeen sadarkaa qabu hin jiru.",
+  "viewsNoGalleryRecords": "Agarsiisa galeeriif galmeen suuraa hin jiru.",
+  "viewsNoPlaylistRecords": "Agarsiisa tarree taphaaf galmeen miidiyaa hin jiru.",
+  "fetchFailed": "Fiduun hin milkoofne ({status})",
+  "unableToLoadViewData": "Daataa ilaalchaa fe'uu hin dandeenye.",
+  "noResultsFound": "Bu'aan hin argamne.",
+  "refreshView": "Ilaalcha haaromsi",
+  "breakIntoStaticContent": "Gara qabiyyee dhaabbataatti caccabsi",
+  "viewsOpenRecord": "Galmee bani"
+}

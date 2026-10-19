@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Aikin da ɗalibi ya miƙa",
   "openInNewWindow": "Buɗe a sabuwar taga",
-  "submitted": "An miƙa"
+  "submitted": "An miƙa",
+  "previousStudent": "Ɗalibi na baya",
+  "nextStudent": "Ɗalibi na gaba",
+  "previousAssignment": "Aiki na baya",
+  "nextAssignment": "Aiki na gaba"
 }

@@ -10,5 +10,9 @@
   "save": "Spara",
   "noDescription": "Ingen beskrivning tillgänglig.",
   "details": "Detaljer",
-  "loadingInventory": "Laddar fullständig blocklista…"
+  "loadingInventory": "Laddar fullständig blocklista…",
+  "selectAllButton": "Markera alla",
+  "deselectAllButton": "Avmarkera alla",
+  "selectedOfAvailable": "{selected} valda / {total} tillgängliga",
+  "savingBlocksFailed": "Det gick inte att spara block: {error}"
 }

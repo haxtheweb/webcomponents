@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Judhul Peran",
+  "describeYourRole": "Gambarake peranmu ing kene...",
+  "present": "Presentasi",
+  "skills": "Katrampilan:",
+  "skillsAndMore": "{skills} lan +{count} liyane",
+  "yearShort": "{count} th",
+  "yearsShort": "{count} th",
+  "monthShort": "{count} sas",
+  "monthsShort": "{count} sas"
+}

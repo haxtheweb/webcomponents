@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Whakaatu i te karere i tukuna i mua (ake)",
+  "displayPreviousMessageDown": "Whakaatu i te karere i tukuna i mua (iho)",
+  "sendPrompt": "Tuku Tohu",
+  "sendPromptToMerlin": "Tuku Tohu ki a Merlin",
+  "shortenPrompt": "Whakapotohia tō tohu kia kaua e neke ake i te {limit} pūāhua."
+}

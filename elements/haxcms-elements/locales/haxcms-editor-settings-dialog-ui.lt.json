@@ -5,5 +5,9 @@
   "buttons": "Mygtukai",
   "futureButtonConfiguration": "Pasirinktinė redaktoriaus mygtukų konfigūracija netrukus.",
   "save": "Išsaugoti",
-  "saving": "Išsaugoma…"
+  "saving": "Išsaugoma…",
+  "novice": "Pradedantysis",
+  "expert": "Ekspertas",
+  "toolbarPreviewAlt": "{audience} redagavimo įrankių juostos peržiūra",
+  "savingEditorSettingsFailed": "Nepavyko išsaugoti rengyklės nustatymų: {error}"
 }

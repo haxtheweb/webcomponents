@@ -1,3 +1,8 @@
 {
-  "title": "Cyfeiriadau"
+  "title": "Cyfeiriadau",
+  "export": "Allforio",
+  "exportCitations": "Allforio Dyfyniadau",
+  "copy": "Copïo",
+  "exportCitationFormat": "Fformat allforio dyfyniadau",
+  "selectCitationFormatBelow": "Dewiswch fformat dyfynnu isod"
 }

@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Attribuzione",
+  "licenseBySa": "Attribuzione - Sparte à l'identicu",
+  "licenseByNd": "Attribuzione - Senza opere derivate",
+  "licenseByNc": "Attribuzione - Micca cummerciale",
+  "licenseByNcSa": "Attribuzione - Micca cummerciale - Sparte à l'identicu",
+  "licenseByNcNd": "Attribuzione - Micca cummerciale - Senza opere derivate",
+  "licenseGraphic": "Graficu di {license}",
+  "workByCreator": "{title} da {creator}",
+  "workByCreatorLicensed": "{title} da {creator} hè sottu à una licenza {license}.",
+  "permissionsBeyondScope": "Permessi al di là di u scopu di sta licenza sò dispunibuli {link}.",
+  "author": "(autore)",
+  "onTheLicensingDetailsPage": "nant'à a pagina di i dettagli di a licenza"
+}

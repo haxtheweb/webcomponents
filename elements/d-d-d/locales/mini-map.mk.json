@@ -1,0 +1,17 @@
+{
+  "editNodes": "Уреди јазли",
+  "editLines": "Уреди линии",
+  "reset": "Ресетирај",
+  "save": "Зачувај",
+  "cancel": "Откажи",
+  "delete": "Избриши",
+  "type": "Тип:",
+  "topic": "Тема",
+  "subsection": "Потдел",
+  "name": "Име:",
+  "enterName": "Внесете име",
+  "url": "URL:",
+  "enterUrl": "Внесете URL",
+  "activeNode": "Активен јазол?",
+  "nodeId": "Јазол {id}"
+}

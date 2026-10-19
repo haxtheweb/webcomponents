@@ -173,7 +173,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
   scrubContent(e) {
     // import contents of this text area into the activeHaxBody
     const htmlBody = this.shadowRoot.querySelector("#textarea").value || "";
-    HAXStore.toast("Scrubbed. Content updated.");
+    HAXStore.toast(this.t.scrubbedContentUpdated);
     HAXStore.activeHaxBody.importContent(stripMSWord(htmlBody));
     this.close();
   }
@@ -191,7 +191,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
       }, 0);
     }
     const htmlBody = this.shadowRoot.querySelector("#textarea").value || "";
-    HAXStore.toast("Formatting updated. Content updated.");
+    HAXStore.toast(this.t.formattingUpdated);
     HAXStore.activeHaxBody.importContent(htmlBody);
   }
   /**
@@ -322,6 +322,8 @@ class HaxViewSource extends I18NMixin(LitElement) {
       cleanFormatting: "Clean Formatting",
       haxSchema: "HAX schema JSON",
       revisionHistory: "Revision history",
+      scrubbedContentUpdated: "Scrubbed. Content updated.",
+      formattingUpdated: "Formatting updated. Content updated.",
     };
     this.registerLocalization({
       context: this,

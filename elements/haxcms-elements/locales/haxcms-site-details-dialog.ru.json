@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- по умолчанию первая страница --",
+  "details": "Подробности",
+  "title": "Название",
+  "titleDescription": "Название сайта",
+  "homePage": "Главная страница",
+  "homePageDescription": "Страница, используемая как начальная / главная по умолчанию",
+  "advanced": "Дополнительно",
+  "serviceWorker": "Добавить service worker на динамическую страницу",
+  "serviceWorkerDescription": "Отключите, если пользователи всегда должны сразу видеть последний вывод сервера.",
+  "forceBrowserUpgrade": "Принудительное обновление браузера",
+  "forceBrowserUpgradeDescription": "Требовать современный (evergreen) браузер перед загрузкой сайта.",
+  "unableToLoadSiteDetails": "Не удалось загрузить сведения о сайте.",
+  "noSiteDetails": "Нет доступных сведений о сайте.",
+  "save": "Сохранить"
+}

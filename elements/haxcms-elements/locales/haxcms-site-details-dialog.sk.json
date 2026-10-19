@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- predvolene prvá stránka --",
+  "details": "Podrobnosti",
+  "title": "Názov",
+  "titleDescription": "Názov webu",
+  "homePage": "Domovská stránka",
+  "homePageDescription": "Stránka použitá ako predvolená úvodná / domovská stránka",
+  "advanced": "Rozšírené",
+  "serviceWorker": "Pridať service worker na dynamickú stránku",
+  "serviceWorkerDescription": "Vypnite, ak majú používatelia vždy okamžite vidieť najnovší výstup servera.",
+  "forceBrowserUpgrade": "Vynútiť aktualizáciu prehliadača",
+  "forceBrowserUpgradeDescription": "Pred načítaním webu vyžadovať priebežne aktualizované prehliadače.",
+  "unableToLoadSiteDetails": "Podrobnosti webu sa nepodarilo načítať.",
+  "noSiteDetails": "Nie sú dostupné žiadne podrobnosti webu.",
+  "save": "Uložiť"
+}

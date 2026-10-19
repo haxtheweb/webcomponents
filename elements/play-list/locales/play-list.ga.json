@@ -1,0 +1,11 @@
+{
+  "playlist": "Seinnliosta",
+  "carousel": "timpeallán",
+  "slide": "sleamhnán",
+  "slideNumber": "Sleamhnán {number}",
+  "slideOfTotal": "Sleamhnán {number} as {total}",
+  "previousSlide": "An sleamhnán roimhe seo",
+  "nextSlide": "An chéad sleamhnán eile",
+  "slidePages": "Leathanaigh sleamhnán",
+  "goToSlide": "Téigh go sleamhnán {number}"
+}

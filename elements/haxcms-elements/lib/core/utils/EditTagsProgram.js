@@ -5,6 +5,17 @@
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
 
+// English defaults for the labels this program shows; translations come from
+// the context element's this.t (haxcms-site-editor-ui, haxcms namespace)
+const EDIT_TAGS_T = {
+  noActivePageFound: "No active page found",
+  saveTagsValue: "Save tags: {tags}",
+  clearAllTags: "Clear all tags",
+  noTagsSet: "No tags set",
+};
+const _t = (context, key) =>
+  context && context.t && context.t[key] ? context.t[key] : EDIT_TAGS_T[key];
+
 /**
  * Creates the edit tags program for use in SuperDaemon
  * @param {Object} context - The context object (typically the haxcms-site-editor-ui instance)
@@ -18,7 +29,7 @@ export const createEditTagsProgram = (context) => {
     if (!activeItem || !activeItem.id) {
       return [
         {
-          title: "No active page found",
+          title: _t(context, "noActivePageFound"),
           icon: "icons:warning",
           tags: ["error"],
           value: { disabled: true },
@@ -42,7 +53,7 @@ export const createEditTagsProgram = (context) => {
     // User typed something - offer to save their input verbatim.
     if (input && input.trim() !== "") {
       results.push({
-        title: `Save tags: ${input}`,
+        title: _t(context, "saveTagsValue").replace("{tags}", () => input),
         icon: "icons:check",
         tags: ["confirm", "save"],
         value: {
@@ -73,7 +84,7 @@ export const createEditTagsProgram = (context) => {
     // clear them.
     if (currentTags) {
       results.push({
-        title: `Save tags: ${currentTags}`,
+        title: _t(context, "saveTagsValue").replace("{tags}", () => currentTags),
         icon: "icons:check",
         tags: ["confirm", "save"],
         value: {
@@ -97,7 +108,7 @@ export const createEditTagsProgram = (context) => {
         path: "CMS/edit/tags/confirm",
       });
       results.push({
-        title: "Clear all tags",
+        title: _t(context, "clearAllTags"),
         icon: "icons:clear",
         tags: ["confirm", "clear"],
         value: {
@@ -125,7 +136,7 @@ export const createEditTagsProgram = (context) => {
 
     // No input and no current tags - nothing to save or clear.
     results.push({
-      title: "No tags set",
+      title: _t(context, "noTagsSet"),
       icon: "icons:info",
       tags: ["empty"],
       value: { disabled: true },

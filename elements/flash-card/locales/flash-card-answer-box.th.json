@@ -1,5 +1,8 @@
 {
   "yourAnswer": "คำตอบของคุณ",
   "checkAnswer": "ตรวจคำตอบ",
-  "retry": "ลองใหม่"
+  "retry": "ลองใหม่",
+  "correct": "ถูกต้อง!",
+  "incorrect": "ไม่ถูกต้อง!",
+  "correctAnswer": "คำตอบที่ถูกต้อง: {answer}"
 }

@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klikkja biex tagħmel xi ħaġa!",
   "moreDetails": "Aktar dettalji",
   "details": "Dettalji",
-  "saved": "Salvat"
+  "saved": "Salvat",
+  "opensInNewWindow": "Jiftaħ f'tieqa ġdida",
+  "resultsCount": "{count} riżultati"
 }

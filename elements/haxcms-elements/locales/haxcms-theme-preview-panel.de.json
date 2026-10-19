@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Theme-Vorschau anzeigen",
+  "hideThemePreview": "Theme-Vorschau ausblenden",
+  "themePreviewPanel": "Theme-Vorschaubereich",
+  "themePreview": "Theme-Vorschau",
+  "themePreviewDescription": "Probiere beim Surfen vorübergehend ein Theme und eine Palette aus. Mit Abbrechen stellst du dein ursprüngliches Erscheinungsbild wieder her.",
+  "loadingThemes": "Themes werden geladen...",
+  "theme": "Design",
+  "palette": "Palette",
+  "cancel": "Abbrechen",
+  "openAppearanceSettings": "Einstellungen zum Erscheinungsbild öffnen"
+}

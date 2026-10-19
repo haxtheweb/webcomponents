@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Uchazo-mthombo",
+  "licenseBySa": "Uchazo-mthombo Kwabelwana ngokufanayo",
+  "licenseByNd": "Uchazo-mthombo Akukho mveliso zisuselweyo",
+  "licenseByNc": "Uchazo-mthombo okungekho kurhwebo",
+  "licenseByNcSa": "Uchazo-mthombo okungekho kurhwebo kwabelwana ngokufanayo",
+  "licenseByNcNd": "Uchazo-mthombo Okungekho kurhwebo Akukho mveliso zisuselweyo",
+  "citationWithLicense": "{title} ngu-{creator}, inelayisensi phantsi kwe-{license}. Ifikelelwe ngo-{date}.",
+  "citationWithoutLicense": "{title} ngu-{creator}. Ifikelelwe ngo-{date}.",
+  "licenseGraphic": "Umfanekiso we-{license}"
+}

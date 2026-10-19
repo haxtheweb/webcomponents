@@ -43,5 +43,22 @@
   "emailAddress": "E-mel pelajar ini",
   "notes": "Nota",
   "interests": "Minat",
-  "profileImageFor": "Imej profil untuk"
+  "profileImageFor": "Imej profil untuk",
+  "fileSystem": "Sistem fail",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Titik akhir URL (JSON)",
+  "jsonDataBlob": "Gumpalan data JSON",
+  "additionalCriteriaFeedback": "Maklum balas {criteria} tambahan",
+  "outOfPoints": "/ {points} mata",
+  "feedbackReport": "Laporan maklum balas",
+  "criteriaDetails": "Butiran kriteria",
+  "yourFeedback": "Maklum balas anda",
+  "additionalCriteriaFeedbackHeading": "Maklum balas Kriteria tambahan",
+  "yourTotalScore": "Jumlah Skor anda",
+  "scoreOutOfPoints": "{score} / {points} mata",
+  "studentAssignment": "Tugasan {assignment} milik {student}",
+  "downloadPDF": "Muat Turun PDF",
+  "displayMode1": "Mod 1",
+  "displayMode2": "Mod 2",
+  "twoWindows": "Dua tetingkap"
 }

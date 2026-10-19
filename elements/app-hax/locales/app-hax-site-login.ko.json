@@ -1,0 +1,14 @@
+{
+  "enterUserName": "사용자 이름을 입력하세요",
+  "invalidUsernameOrPassword": "잘못된 사용자 이름 또는 비밀번호",
+  "welcomeLetsGo": "{username}님 환영합니다! 시작해 봅시다!",
+  "enterYourUsername": "사용자 이름을 입력하세요",
+  "username": "사용자 이름",
+  "next": "다음",
+  "welcomeBack": "다시 오신 것을 환영합니다, {username}님!",
+  "notYou": "본인이 아니신가요?",
+  "enterYourPassword": "비밀번호를 입력하세요",
+  "password": "비밀번호",
+  "togglePasswordDisplay": "비밀번호 표시 전환",
+  "login": "로그인"
+}

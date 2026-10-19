@@ -36,5 +36,7 @@
   "clickToDoAnything": "Qhweba ukwenza noma yini!",
   "moreDetails": "Eminye imininingwane",
   "details": "Imininingwane",
-  "saved": "Kugcinwe"
+  "saved": "Kugcinwe",
+  "opensInNewWindow": "Kuvuleka ewindini elisha",
+  "resultsCount": "Imiphumela engu-{count}"
 }

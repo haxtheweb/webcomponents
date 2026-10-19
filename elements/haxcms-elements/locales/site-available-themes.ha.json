@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "An kasa loda jigogi: {error}",
+  "noThemesForView": "Babu jigogi don wannan kallo.",
+  "active": "Mai aiki",
+  "themeIsActive": "Jigon {name} yana aiki",
+  "applyTheme": "Yi amfani da jigon {name}",
+  "apply": "Yi amfani",
+  "preview": "Samfoti",
+  "name": "Suna",
+  "element": "Abu",
+  "description": "Bayani",
+  "action": "Aiki",
+  "loadingThemes": "Ana loda jigogi...",
+  "themesShown": "An nuna jigogi {count}",
+  "themesShownDefaults": "An nuna jigogi {count} (tsoffin app-hax)",
+  "availableHaxcmsThemes": "Jigogin HAXcms da Ke Akwai",
+  "gallery": "Tarin hotuna",
+  "table": "Tebur"
+}

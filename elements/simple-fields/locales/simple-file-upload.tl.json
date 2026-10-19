@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "I-drop ang mga file dito",
+  "uploadQueue": "Pila ng upload",
+  "pending": "Nakabinbin",
+  "preparing": "Inihahanda",
+  "uploading": "Ina-upload",
+  "complete": "Kumpleto",
+  "aborted": "Na-abort",
+  "cancelled": "Kinansela",
+  "error": "Error",
+  "errorWithStatus": "Error: {status}",
+  "cancel": "Kanselahin",
+  "cancelUploadOf": "Kanselahin ang pag-upload ng {name}",
+  "retry": "Subukang muli",
+  "retryUploadOf": "Subukang muli ang pag-upload ng {name}",
+  "remove": "Alisin",
+  "removeFromQueue": "Alisin ang {name} sa pila",
+  "fileTypeNotAccepted": "Hindi tinatanggap ang uri ng file: {name}",
+  "uploadFailed": "Nabigo ang pag-upload: {status}",
+  "networkError": "Error sa network"
+}

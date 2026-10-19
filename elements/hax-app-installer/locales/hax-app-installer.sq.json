@@ -54,5 +54,6 @@
   "requirementUppercase": "Një shkronjë e madhe",
   "requirementLowercase": "Një shkronjë e vogël",
   "requirementNumber": "Një numër",
-  "requirementSymbol": "Një simbol"
+  "requirementSymbol": "Një simbol",
+  "haxcmsMascotAlt": "Maskota HAXcms Udhëtari i Botës"
 }

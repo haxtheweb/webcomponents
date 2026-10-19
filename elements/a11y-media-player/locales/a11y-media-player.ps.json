@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "پورته کېږي...",
   "youTubeStartLoading": "غږول کېکاږئ.",
   "youTubeTranscriptLabel": "متن به هغه وخت پورته شي چې رسنۍ وغږېږي.",
-  "audioDescriptionLabel": "غږيز تشریح"
+  "audioDescriptionLabel": "غږيز تشریح",
+  "openOnYouTube": "په YouTube کې پرانیزئ"
 }

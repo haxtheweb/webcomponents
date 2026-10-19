@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "テーマのプレビューを表示",
+  "hideThemePreview": "テーマのプレビューを非表示",
+  "themePreviewPanel": "テーマプレビューパネル",
+  "themePreview": "テーマのプレビュー",
+  "themePreviewDescription": "閲覧中にテーマとパレットを一時的に試せます。元の外観に戻すには「キャンセル」を使用してください。",
+  "loadingThemes": "テーマを読み込み中...",
+  "theme": "テーマ",
+  "palette": "パレット",
+  "cancel": "キャンセル",
+  "openAppearanceSettings": "外観設定を開く"
+}

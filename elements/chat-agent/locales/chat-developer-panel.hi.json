@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "कंसोल तालिका उपयोगकर्ता चैट लॉग",
+  "consoleTableUserText": "console.table() उपयोगकर्ता चैट लॉग",
+  "consoleTableUserTooltip": "उपयोगकर्ता चैट लॉग को तालिका के रूप में कंसोल में प्रिंट करें",
+  "consoleTableMerlinLabel": "कंसोल तालिका merlin चैट लॉग",
+  "consoleTableMerlinText": "console.table() merlin चैट लॉग",
+  "consoleTableMerlinTooltip": "Merlin चैट लॉग को तालिका के रूप में कंसोल में प्रिंट करें",
+  "consoleTableAllLabel": "कंसोल तालिका पूरा चैट लॉग",
+  "consoleTableAllText": "console.table() पूरा चैट लॉग",
+  "consoleTableAllTooltip": "पूरे चैट लॉग को तालिका के रूप में कंसोल में प्रिंट करें",
+  "downloadChatLogJson": "चैट लॉग .json के रूप में डाउनलोड करें",
+  "downloadChatLogJsonTooltip": "चैट लॉग .json के रूप में डाउनलोड करें"
+}

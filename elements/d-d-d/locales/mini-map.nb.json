@@ -1,0 +1,17 @@
+{
+  "editNodes": "Rediger noder",
+  "editLines": "Rediger linjer",
+  "reset": "Tilbakestill",
+  "save": "Lagre",
+  "cancel": "Avbryt",
+  "delete": "Slett",
+  "type": "Type:",
+  "topic": "Emne",
+  "subsection": "Underseksjon",
+  "name": "Navn:",
+  "enterName": "Skriv inn navn",
+  "url": "URL:",
+  "enterUrl": "Skriv inn URL",
+  "activeNode": "Aktiv node?",
+  "nodeId": "Node {id}"
+}

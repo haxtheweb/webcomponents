@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Jadual konsol log sembang pengguna",
+  "consoleTableUserText": "console.table() log sembang pengguna",
+  "consoleTableUserTooltip": "Cetak Log Sembang Pengguna sebagai Jadual ke Konsol",
+  "consoleTableMerlinLabel": "Jadual konsol log sembang merlin",
+  "consoleTableMerlinText": "console.table() log sembang merlin",
+  "consoleTableMerlinTooltip": "Cetak Log Sembang Merlin sebagai Jadual ke Konsol",
+  "consoleTableAllLabel": "Jadual konsol keseluruhan log sembang",
+  "consoleTableAllText": "console.table() keseluruhan log sembang",
+  "consoleTableAllTooltip": "Cetak Keseluruhan Log Sembang sebagai Jadual ke Konsol",
+  "downloadChatLogJson": "Muat turun log sembang sebagai .json",
+  "downloadChatLogJsonTooltip": "Muat Turun Log Sembang sebagai .json"
+}

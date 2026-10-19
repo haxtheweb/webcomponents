@@ -1,0 +1,11 @@
+{
+  "playlist": "Рӯйхати пахш",
+  "carousel": "карусел",
+  "slide": "слайд",
+  "slideNumber": "Слайди {number}",
+  "slideOfTotal": "Слайди {number} аз {total}",
+  "previousSlide": "Слайди қаблӣ",
+  "nextSlide": "Слайди навбатӣ",
+  "slidePages": "Саҳифаҳои слайд",
+  "goToSlide": "Ба слайди {number} гузаштан"
+}

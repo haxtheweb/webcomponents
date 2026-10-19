@@ -1,0 +1,17 @@
+{
+  "editNodes": "Cuir Nóid in Eagar",
+  "editLines": "Cuir Línte in Eagar",
+  "reset": "Athshocraigh",
+  "save": "Sábháil",
+  "cancel": "Cealaigh",
+  "delete": "Scrios",
+  "type": "Cineál:",
+  "topic": "Topaic",
+  "subsection": "Fo-rannóg",
+  "name": "Ainm:",
+  "enterName": "Cuir isteach Ainm",
+  "url": "URL:",
+  "enterUrl": "Cuir isteach URL",
+  "activeNode": "Nód Gníomhach?",
+  "nodeId": "Nód {id}"
+}

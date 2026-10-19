@@ -1,0 +1,14 @@
+{
+  "enterUserName": "प्रयोगकर्ता नाम प्रविष्ट गर्नुहोस्",
+  "invalidUsernameOrPassword": "अमान्य प्रयोगकर्ता नाम वा पासवर्ड",
+  "welcomeLetsGo": "स्वागत छ {username}! जाऔँ!",
+  "enterYourUsername": "आफ्नो प्रयोगकर्ता नाम प्रविष्ट गर्नुहोस्",
+  "username": "प्रयोगकर्ता नाम",
+  "next": "अर्को",
+  "welcomeBack": "फेरि स्वागत छ, {username}!",
+  "notYou": "तपाईं होइन?",
+  "enterYourPassword": "आफ्नो पासवर्ड प्रविष्ट गर्नुहोस्",
+  "password": "पासवर्ड",
+  "togglePasswordDisplay": "पासवर्ड देखाउने/लुकाउने",
+  "login": "लगइन"
+}

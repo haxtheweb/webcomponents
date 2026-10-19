@@ -1,0 +1,11 @@
+{
+  "playlist": "Papa mele",
+  "carousel": "kalakuʻela",
+  "slide": "kiʻi paheʻe",
+  "slideNumber": "Kiʻi paheʻe {number}",
+  "slideOfTotal": "Kiʻi paheʻe {number} o {total}",
+  "previousSlide": "Kiʻi paheʻe ma mua",
+  "nextSlide": "Kiʻi paheʻe aʻe",
+  "slidePages": "Nā ʻaoʻao kiʻi paheʻe",
+  "goToSlide": "Hele i ke kiʻi paheʻe {number}"
+}

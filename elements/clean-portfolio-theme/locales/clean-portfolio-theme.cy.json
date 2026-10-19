@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Dolen angor wedi'i chopïo!",
+  "skipToContent": "Neidio i'r cynnwys",
+  "siteHome": "Hafan y wefan",
+  "mainNavigation": "Prif lywio",
+  "toggleMenu": "Toglo'r ddewislen",
+  "changeTheme": "Newid thema",
+  "breadcrumb": "Briwsion bara",
+  "tagFilter": "Hidlydd tagiau:",
+  "all": "Y cyfan",
+  "pageNumberOfTotal": "Rhif tudalen: {current} o {total}",
+  "siteGenerated": "Gwefan wedi'i chynhyrchu: {date}",
+  "copyright": "Hawlfraint: {year} {author}",
+  "viewContentByTag": "Gweld Cynnwys yn ôl Tag",
+  "licenseGraphic": "Graffig {license}"
+}

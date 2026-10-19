@@ -1,0 +1,11 @@
+{
+  "playlist": "Tarree taphaa",
+  "carousel": "kaaruuselii",
+  "slide": "islaayidii",
+  "slideNumber": "Islaayidii {number}",
+  "slideOfTotal": "Islaayidii {total} keessaa {number}",
+  "previousSlide": "Islaayidii duraa",
+  "nextSlide": "Islaayidii itti aanu",
+  "slidePages": "Fuulota islaayidii",
+  "goToSlide": "Gara islaayidii {number} tti deemi"
+}

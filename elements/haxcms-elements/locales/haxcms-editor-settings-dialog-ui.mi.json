@@ -5,5 +5,9 @@
   "buttons": "Ngā pātene",
   "futureButtonConfiguration": "Ākuanei ka wātea te whirihoranga pātene ētita ritenga.",
   "save": "Tiaki",
-  "saving": "E tiaki ana…"
+  "saving": "E tiaki ana…",
+  "novice": "Tauhou",
+  "expert": "Tohunga",
+  "toolbarPreviewAlt": "Arokite paeutauta whakatika {audience}",
+  "savingEditorSettingsFailed": "I rahua te tiaki tautuhinga ētita: {error}"
 }

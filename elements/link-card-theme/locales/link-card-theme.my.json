@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "ကျောက်ဆူး လင့်ခ်ကို ကူးယူပြီးပါပြီ!",
+  "skipToContent": "အကြောင်းအရာသို့ ကျော်သွားရန်",
+  "changePalette": "အရောင်စု ပြောင်းရန်",
+  "primaryLinks": "အဓိက လင့်ခ်များ",
+  "socialLinks": "ဆိုရှယ် လင့်ခ်များ",
+  "myProfile": "ကျွန်ုပ်၏ ပရိုဖိုင်",
+  "profileImageOf": "{name} ပရိုဖိုင် ပုံ",
+  "profileImage": "ပရိုဖိုင် ပုံ",
+  "linkCardProfile": "လင့်ခ် ကတ် ပရိုဖိုင်",
+  "emptyStateLinks": "လင့်ခ် ခလုတ်များ ပြသရန် site.json တွင် ထိပ်ဆုံးအဆင့် မီနူး အရာများ ထည့်ပါ။",
+  "titleOnPlatform": "{platform} ပေါ်ရှိ {title}",
+  "openPlatform": "{platform} ကို ဖွင့်ရန်",
+  "paletteUpdated": "အရောင်စုကို ရွေးချယ်စရာ {number} သို့ အပ်ဒိတ်လုပ်ပြီး။"
+}

@@ -1,3 +1,8 @@
 {
-  "title": "Keldur"
+  "title": "Keldur",
+  "export": "Flyt út",
+  "exportCitations": "Flyt tilvísingar út",
+  "copy": "Avrita",
+  "exportCitationFormat": "Útflutningssnið fyri tilvísingar",
+  "selectCitationFormatBelow": "Vel eitt tilvísingarsnið niðanfyri"
 }

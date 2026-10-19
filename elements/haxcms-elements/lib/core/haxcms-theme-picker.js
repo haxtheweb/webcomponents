@@ -1,5 +1,6 @@
 import { css, html } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `haxcms-theme-picker`
@@ -9,7 +10,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
  * - `value` is the selected theme key (for example `"clean-one"`).
  * - Emits `value-changed` and `change` with `{ value, key, option }`.
  */
-class HAXCMSThemePicker extends DDD {
+class HAXCMSThemePicker extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-theme-picker";
   }
@@ -250,7 +251,24 @@ class HAXCMSThemePicker extends DDD {
 
   constructor() {
     super();
-    this.label = "Theme";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      theme: "Theme",
+      active: "Active",
+      selected: "Selected",
+      noPreview: "No preview",
+      currentlyActiveAndSelected: "Currently active and selected theme",
+      currentlyActive: "Currently active theme",
+      selectedToApplyOnSave: "Selected theme to apply on save",
+      themeSelection: "Theme selection",
+      noThemesAvailable: "No themes available.",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
+    this.i18nDefault("label", "theme");
     this.description = "";
     this.value = "";
     this.activeValue = "";
@@ -597,13 +615,17 @@ class HAXCMSThemePicker extends DDD {
             class="flags"
             ?hidden="${!this.showStatusFlags || !(active || checked)}"
           >
-            <span class="flag active" ?hidden="${!active}">Active</span>
-            <span class="flag selected" ?hidden="${!checked}">Selected</span>
+            <span class="flag active" ?hidden="${!active}"
+              >${this.t.active}</span
+            >
+            <span class="flag selected" ?hidden="${!checked}"
+              >${this.t.selected}</span
+            >
           </div>
           ${this._isThumbnailUnavailable(option)
             ? html`
                 <div class="preview preview-fallback" aria-hidden="true">
-                  No preview
+                  ${this.t.noPreview}
                 </div>
               `
             : html`
@@ -622,19 +644,19 @@ class HAXCMSThemePicker extends DDD {
           class="sr-only"
           ?hidden="${!this.showStatusFlags || !(active && checked)}"
         >
-          Currently active and selected theme
+          ${this.t.currentlyActiveAndSelected}
         </span>
         <span
           class="sr-only"
           ?hidden="${!this.showStatusFlags || !(active && !checked)}"
         >
-          Currently active theme
+          ${this.t.currentlyActive}
         </span>
         <span
           class="sr-only"
           ?hidden="${!this.showStatusFlags || !(!active && checked)}"
         >
-          Selected theme to apply on save
+          ${this.t.selectedToApplyOnSave}
         </span>
       </label>
     `;
@@ -645,7 +667,7 @@ class HAXCMSThemePicker extends DDD {
     return html`
       <fieldset
         role="radiogroup"
-        aria-label="${this.label || "Theme selection"}"
+        aria-label="${this.label || this.t.themeSelection}"
         aria-describedby="${this.description
           ? `${this.__inputId}-description`
           : ""}"
@@ -665,7 +687,7 @@ class HAXCMSThemePicker extends DDD {
           )}
         </div>
         <p class="empty" ?hidden="${pickerOptions.length !== 0}">
-          No themes available.
+          ${this.t.noThemesAvailable}
         </p>
       </fieldset>
     `;

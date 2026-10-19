@@ -1,0 +1,18 @@
+{
+  "copy": "Kopéieren",
+  "download": "Eroflueden",
+  "archive": "Archivéieren",
+  "copyOperation": "kopéieren",
+  "downloadOperation": "eroflueden",
+  "archiveOperation": "archivéieren",
+  "created": "erstallt",
+  "updated": "aktualiséiert",
+  "pages": "Säiten",
+  "url": "URL",
+  "confirm": "Bestätegen",
+  "cancel": "Ofbriechen",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Sidd Dir sécher, datt Dir {siteName} {operation} wëllt?",
+  "siteOperationSuccessful": "{siteName}: {operation} erfollegräich!",
+  "siteOperationFailed": "{siteName}: {operation} feelgeschloen"
+}

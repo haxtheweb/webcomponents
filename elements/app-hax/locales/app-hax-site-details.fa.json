@@ -1,0 +1,18 @@
+{
+  "copy": "کپی",
+  "download": "بارگیری",
+  "archive": "بایگانی",
+  "copyOperation": "کپی",
+  "downloadOperation": "بارگیری",
+  "archiveOperation": "بایگانی",
+  "created": "ایجادشده",
+  "updated": "به‌روزشده",
+  "pages": "صفحه",
+  "url": "URL",
+  "confirm": "تأیید",
+  "cancel": "لغو",
+  "siteOperationConfirmTitle": "{operationName} {siteName}؟",
+  "siteOperationConfirmMessage": "آیا مطمئنید که می‌خواهید {siteName} را {operation} کنید؟",
+  "siteOperationSuccessful": "{operation} {siteName} موفق بود!",
+  "siteOperationFailed": "{operation} {siteName} ناموفق بود"
+}

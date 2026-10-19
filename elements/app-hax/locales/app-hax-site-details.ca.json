@@ -1,0 +1,18 @@
+{
+  "copy": "Copia",
+  "download": "Baixa",
+  "archive": "Arxiva",
+  "copyOperation": "copiar",
+  "downloadOperation": "baixar",
+  "archiveOperation": "arxivar",
+  "created": "creat",
+  "updated": "actualitzat",
+  "pages": "pàgines",
+  "url": "URL",
+  "confirm": "Confirma",
+  "cancel": "Cancel·la",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Segur que vols {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} correcte!",
+  "siteOperationFailed": "{siteName}: ha fallat {operation}"
+}

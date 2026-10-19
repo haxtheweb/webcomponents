@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Your answer",
   "checkAnswer": "Check answer",
-  "retry": "Retry"
+  "retry": "Retry",
+  "correct": "Correct!",
+  "incorrect": "Incorrect!",
+  "correctAnswer": "Correct Answer: {answer}"
 }

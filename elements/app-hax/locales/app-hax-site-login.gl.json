@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Introduce o nome de usuario",
+  "invalidUsernameOrPassword": "Nome de usuario ou contrasinal non válidos",
+  "welcomeLetsGo": "Benvido, {username}! Imos!",
+  "enterYourUsername": "Introduce o teu nome de usuario",
+  "username": "Nome de usuario",
+  "next": "Seguinte",
+  "welcomeBack": "Benvido de novo, {username}!",
+  "notYou": "Non es ti?",
+  "enterYourPassword": "Introduce o teu contrasinal",
+  "password": "Contrasinal",
+  "togglePasswordDisplay": "Mostrar/ocultar o contrasinal",
+  "login": "Iniciar sesión"
+}

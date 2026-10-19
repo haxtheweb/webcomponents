@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "अधिक HAX घटकांसाठी वेब घटक नोंदणी स्कॅन करत आहे..",
+  "enabled": "सक्षम",
+  "disabled": "अक्षम",
+  "details": "तपशील",
+  "tags": "टॅग:",
+  "tagName": "टॅग नाव:",
+  "developerUsage": "विकसक वापर:",
+  "demo": "डेमो",
+  "popUpDemo": "पॉप अप डेमो",
+  "demoOf": "{tag} चा डेमो"
+}

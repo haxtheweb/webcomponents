@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Rhowch Enw defnyddiwr",
+  "invalidUsernameOrPassword": "Enw Defnyddiwr neu Gyfrinair Annilys",
+  "welcomeLetsGo": "Croeso {username}! Awn ni!",
+  "enterYourUsername": "Rhowch eich enw defnyddiwr",
+  "username": "Enw defnyddiwr",
+  "next": "Nesaf",
+  "welcomeBack": "Croeso'n ôl, {username}!",
+  "notYou": "Nid chi?",
+  "enterYourPassword": "Rhowch eich cyfrinair",
+  "password": "Cyfrinair",
+  "togglePasswordDisplay": "Toglo dangos y cyfrinair",
+  "login": "Mewngofnodi"
+}

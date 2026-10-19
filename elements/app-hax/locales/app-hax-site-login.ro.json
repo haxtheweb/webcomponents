@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Introdu numele de utilizator",
+  "invalidUsernameOrPassword": "Nume de utilizator sau parolă nevalide",
+  "welcomeLetsGo": "Bun venit, {username}! Să începem!",
+  "enterYourUsername": "Introdu numele de utilizator",
+  "username": "Nume de utilizator",
+  "next": "Următorul",
+  "welcomeBack": "Bine ai revenit, {username}!",
+  "notYou": "Nu ești tu?",
+  "enterYourPassword": "Introdu parola",
+  "password": "Parolă",
+  "togglePasswordDisplay": "Comută afișarea parolei",
+  "login": "Autentificare"
+}

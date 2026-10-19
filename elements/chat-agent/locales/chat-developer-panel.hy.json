@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Օգտատիրոջ զրույցի գրանցամատյանը console աղյուսակով",
+  "consoleTableUserText": "console.table() օգտատիրոջ զրույցի գրանցամատյան",
+  "consoleTableUserTooltip": "Տպել օգտատիրոջ զրույցի գրանցամատյանը աղյուսակով Console-ում",
+  "consoleTableMerlinLabel": "Merlin-ի զրույցի գրանցամատյանը console աղյուսակով",
+  "consoleTableMerlinText": "console.table() Merlin-ի զրույցի գրանցամատյան",
+  "consoleTableMerlinTooltip": "Տպել Merlin-ի զրույցի գրանցամատյանը աղյուսակով Console-ում",
+  "consoleTableAllLabel": "Ամբողջ զրույցի գրանցամատյանը console աղյուսակով",
+  "consoleTableAllText": "console.table() ամբողջ զրույցի գրանցամատյան",
+  "consoleTableAllTooltip": "Տպել ամբողջ զրույցի գրանցամատյանը աղյուսակով Console-ում",
+  "downloadChatLogJson": "Ներբեռնել զրույցի գրանցամատյանը որպես .json",
+  "downloadChatLogJsonTooltip": "Ներբեռնել զրույցի գրանցամատյանը որպես .json"
+}

@@ -9,6 +9,7 @@ import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXC
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   DDDVariables,
   DDDPaletteStyles,
@@ -36,11 +37,34 @@ export class LinkCardTheme extends HAXCMSThemeParts(
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      changePalette: "Change palette",
+      primaryLinks: "Primary links",
+      socialLinks: "Social links",
+      myProfile: "My profile",
+      profileImageOf: "{name} profile image",
+      profileImage: "Profile image",
+      linkCardProfile: "Link card profile",
+      emptyStateLinks: "Add top-level menu items in site.json to render link buttons.",
+      titleOnPlatform: "{title} on {platform}",
+      openPlatform: "Open {platform}",
+      paletteUpdated: "Color palette updated to option {number}.",
+    };
+    // no I18NMixin in this class chain, so register with the store directly
+    I18NManagerStore.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+      updateCallback: "_i18nUpdated",
+    });
     this.manifest = {};
     this.linkItems = [];
     this.socialItems = [];
     this.profileImage = "";
-    this.profileName = "My profile";
+    this.profileName = this.t.myProfile;
+    this._i18nProfileName = this.profileName;
     this.profileDescription = "";
     this.paletteAnnouncement = "";
     const storedPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette");
@@ -60,6 +84,17 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     );
   }
 
+  /**
+   * i18n manager callback: translate the default profile name unless the
+   * site manifest (or anything else) already replaced it
+   */
+  _i18nUpdated() {
+    if (this.profileName === this._i18nProfileName) {
+      this.profileName = this.t.myProfile;
+      this._i18nProfileName = this.profileName;
+    }
+    this.requestUpdate();
+  }
   static get properties() {
     return {
       ...super.properties,
@@ -430,9 +465,11 @@ export class LinkCardTheme extends HAXCMSThemeParts(
   _socialAriaLabel(item) {
     const platform = this._socialLabel(item.socialType);
     if (item.title) {
-      return `${item.title} on ${platform}`;
+      return this.t.titleOnPlatform
+        .replace("{title}", () => item.title)
+        .replace("{platform}", () => platform);
     }
-    return `Open ${platform}`;
+    return this.t.openPlatform.replace("{platform}", () => platform);
   }
 
   _syncManifestData() {
@@ -470,7 +507,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
         ? author.name
         : site.name
           ? site.name
-          : "My profile";
+          : this.t.myProfile;
     this.profileDescription = manifest.description ? manifest.description : "";
     this.profileImage = variables.image
       ? variables.image
@@ -522,7 +559,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     }
     this.dataPalette = `${paletteValue}`;
     this.paletteAnnouncement =
-      "Color palette updated to option " + (paletteValue + 1) + ".";
+      this.t.paletteUpdated.replace("{number}", () => (paletteValue + 1));
   }
 
   testEditMode(e) {
@@ -537,12 +574,12 @@ export class LinkCardTheme extends HAXCMSThemeParts(
 
   render() {
     const profileAlt = this.profileName
-      ? `${this.profileName} profile image`
-      : "Profile image";
-    const profileLabel = this.profileName ? this.profileName : "Link card profile";
+      ? this.t.profileImageOf.replace("{name}", () => this.profileName)
+      : this.t.profileImage;
+    const profileLabel = this.profileName ? this.profileName : this.t.linkCardProfile;
     return html`
       <div class="theme-shell">
-        <a class="skip-link" href="#main-content">Skip to content</a>
+        <a class="skip-link" href="#main-content">${this.t.skipToContent}</a>
         <span class="contrast-color-resolver" aria-hidden="true"></span>
         <span class="visually-hidden" aria-live="polite"
           >${this.paletteAnnouncement}</span
@@ -550,8 +587,8 @@ export class LinkCardTheme extends HAXCMSThemeParts(
         <simple-icon-button-lite
           class="palette-picker"
           icon="image:style"
-          label="Change palette"
-          title="Change palette"
+          label="${this.t.changePalette}"
+          title="${this.t.changePalette}"
           aria-pressed="${this.dataPalette !== "0" ? "true" : "false"}"
           @click="${this.togglePalette}"
         ></simple-icon-button-lite>
@@ -578,7 +615,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           ${this.profileDescription
             ? html`<p class="description">${this.profileDescription}</p>`
             : ``}
-          <nav class="primary-links" aria-label="Primary links">
+          <nav class="primary-links" aria-label="${this.t.primaryLinks}">
             ${this.linkItems.length > 0
               ? this.linkItems.map(
                   (item) => html`<a
@@ -591,11 +628,11 @@ export class LinkCardTheme extends HAXCMSThemeParts(
                   >`,
                 )
               : html`<p class="empty-state">
-                  Add top-level menu items in site.json to render link buttons.
+                  ${this.t.emptyStateLinks}
                 </p>`}
           </nav>
           ${this.socialItems.length > 0
-            ? html`<ul class="social-links" aria-label="Social links">
+            ? html`<ul class="social-links" aria-label="${this.t.socialLinks}">
                 ${this.socialItems.map(
                   (item) => html`<li>
                     <a

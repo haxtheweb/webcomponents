@@ -43,5 +43,22 @@
   "emailAddress": "මෙම ශිෂ්‍යයාට ඊමේල් කරන්න",
   "notes": "සටහන්",
   "interests": "රුචිකත්වයන්",
-  "profileImageFor": "පැතිකඩ රූපය:"
+  "profileImageFor": "පැතිකඩ රූපය:",
+  "fileSystem": "ගොනු පද්ධතිය",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL අන්ත ලක්ෂ්‍යය (JSON)",
+  "jsonDataBlob": "JSON දත්ත කට්ටලය",
+  "additionalCriteriaFeedback": "අමතර {criteria} ප්‍රතිපෝෂණය",
+  "outOfPoints": "/ ලකුණු {points}",
+  "feedbackReport": "ප්‍රතිපෝෂණ වාර්තාව",
+  "criteriaDetails": "නිර්ණායක විස්තර",
+  "yourFeedback": "ඔබේ ප්‍රතිපෝෂණය",
+  "additionalCriteriaFeedbackHeading": "අමතර නිර්ණායක ප්‍රතිපෝෂණය",
+  "yourTotalScore": "ඔබේ මුළු ලකුණු",
+  "scoreOutOfPoints": "{score} / ලකුණු {points}",
+  "studentAssignment": "{student} ගේ පැවරුම {assignment}",
+  "downloadPDF": "PDF බාගන්න",
+  "displayMode1": "ප්‍රකාරය 1",
+  "displayMode2": "ප්‍රකාරය 2",
+  "twoWindows": "කවුළු දෙකක්"
 }

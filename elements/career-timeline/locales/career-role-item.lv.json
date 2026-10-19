@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Amata nosaukums",
+  "describeYourRole": "Aprakstiet savu amatu šeit...",
+  "present": "Prezentējiet",
+  "skills": "Prasmes:",
+  "skillsAndMore": "{skills} un vēl {count}",
+  "yearShort": "{count} g.",
+  "yearsShort": "{count} g.",
+  "monthShort": "{count} mēn.",
+  "monthsShort": "{count} mēn."
+}

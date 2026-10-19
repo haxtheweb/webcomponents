@@ -5,5 +5,9 @@
   "buttons": "بٹن",
   "futureButtonConfiguration": "ایڈیٹر بٹناں دی اپنی ترتیب چھیتی آ رہی اے۔",
   "save": "محفوظ کرو",
-  "saving": "محفوظ ہو رہیا اے…"
+  "saving": "محفوظ ہو رہیا اے…",
+  "novice": "نواں سکھاندرو",
+  "expert": "ماہر",
+  "toolbarPreviewAlt": "{audience} ایڈٹنگ ٹول بار دی جھلک",
+  "savingEditorSettingsFailed": "ایڈیٹر ترتیباں سانبھݨ ناکام: {error}"
 }

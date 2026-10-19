@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Mana atikunchu rikch'aykunata apamuyta: {error}",
+  "noThemesForView": "Kay qhawaypaq mana rikch'aykuna kanchu.",
+  "active": "Kawsaq",
+  "themeIsActive": "{name} rikch'ay kawsachkan",
+  "applyTheme": "{name} rikch'ayta churay",
+  "apply": "Churay",
+  "preview": "Ñawpaq qhaway",
+  "name": "Suti",
+  "element": "Elemento",
+  "description": "Willakuy",
+  "action": "Ruray",
+  "loadingThemes": "Rikch'aykunata apamuchkan...",
+  "themesShown": "{count} rikch'aykuna rikuchisqa",
+  "themesShownDefaults": "{count} rikch'aykuna rikuchisqa (app-hax kikin kaqkuna)",
+  "availableHaxcmsThemes": "Kachkaq HAXcms Rikch'aykuna",
+  "gallery": "Galería",
+  "table": "Tabla"
+}

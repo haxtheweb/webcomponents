@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Navdêrî",
+  "licenseBySa": "Navdêrî-LiHevParvekirin",
+  "licenseByNd": "Navdêrî-Nebidarêjkirin",
+  "licenseByNc": "Navdêrî-Nebazirganî",
+  "licenseByNcSa": "Navdêrî-Nebazirganî-LiHevParvekirin",
+  "licenseByNcNd": "Navdêrî-Nebazirganî-Nebidarêjkirin",
+  "licenseGraphic": "Grafîka {license}",
+  "workByCreator": "{title} ji aliyê {creator}",
+  "workByCreatorLicensed": "{title} ji aliyê {creator} di bin {license} de lîsansdar e.",
+  "permissionsBeyondScope": "Destûrên ji derveyî çarçoveya vê lîsansê {link} hene.",
+  "author": "(nivîskar)",
+  "onTheLicensingDetailsPage": "li ser rûpela hûrgiliyên lîsansê"
+}

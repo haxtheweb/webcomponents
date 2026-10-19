@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Ang iyong sagot",
   "checkAnswer": "Suriin ang sagot",
-  "retry": "Subukang muli"
+  "retry": "Subukang muli",
+  "correct": "Tama!",
+  "incorrect": "Mali!",
+  "correctAnswer": "Tamang Sagot: {answer}"
 }

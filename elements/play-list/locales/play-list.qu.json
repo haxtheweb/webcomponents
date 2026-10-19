@@ -1,0 +1,11 @@
+{
+  "playlist": "Puklana lista",
+  "carousel": "muyuq",
+  "slide": "diapositiva",
+  "slideNumber": "Diapositiva {number}",
+  "slideOfTotal": "{total}manta {number} diapositiva",
+  "previousSlide": "Ñawpaq diapositiva",
+  "nextSlide": "Qatiq diapositiva",
+  "slidePages": "Diapositiva p'anqakuna",
+  "goToSlide": "{number} diapositivaman riy"
+}

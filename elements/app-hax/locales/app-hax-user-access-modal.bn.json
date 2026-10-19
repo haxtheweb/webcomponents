@@ -7,5 +7,7 @@
   "userAccessGranted": "ব্যবহারকারীকে সফলভাবে অ্যাক্সেস দেওয়া হয়েছে!",
   "userNotFound": "ব্যবহারকারী পাওয়া যায়নি বা অনুমোদিত নয়",
   "loadingAddingUser": "ব্যবহারকারী যোগ করা হচ্ছে...",
-  "grantAccessTo": "অ্যাক্সেস দিন:"
+  "grantAccessTo": "অ্যাক্সেস দিন:",
+  "networkErrorTryAgain": "নেটওয়ার্ক ত্রুটি হয়েছে। আবার চেষ্টা করুন।",
+  "characterWillAppear": "ইউজারনেম দিলে ক্যারেক্টার দেখা যাবে"
 }

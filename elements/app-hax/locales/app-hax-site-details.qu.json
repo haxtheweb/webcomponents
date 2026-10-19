@@ -1,0 +1,18 @@
+{
+  "copy": "Kopiay",
+  "download": "Uraqachiy",
+  "archive": "Waqaychay",
+  "copyOperation": "kikinchay",
+  "downloadOperation": "uraqachiy",
+  "archiveOperation": "waqaychay",
+  "created": "rurasqa",
+  "updated": "musuqchasqa",
+  "pages": "p'anqakuna",
+  "url": "URL",
+  "confirm": "Takyachiy",
+  "cancel": "Chinkachiy",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Chiqapchu {siteName}-ta {operation} munanki?",
+  "siteOperationSuccessful": "{siteName} {operation} allinta tukusqa!",
+  "siteOperationFailed": "{siteName} {operation} pantarqan"
+}

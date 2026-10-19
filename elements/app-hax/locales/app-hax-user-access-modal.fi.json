@@ -7,5 +7,7 @@
   "userAccessGranted": "Käyttöoikeus myönnetty onnistuneesti!",
   "userNotFound": "Käyttäjää ei löytynyt tai oikeudet puuttuvat",
   "loadingAddingUser": "Lisätään käyttäjää...",
-  "grantAccessTo": "Myönnä käyttöoikeus:"
+  "grantAccessTo": "Myönnä käyttöoikeus:",
+  "networkErrorTryAgain": "Tapahtui verkkovirhe. Yritä uudelleen.",
+  "characterWillAppear": "Hahmo ilmestyy, kun kirjoitat käyttäjänimen"
 }

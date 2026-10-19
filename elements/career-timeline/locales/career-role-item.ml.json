@@ -1,0 +1,11 @@
+{
+  "roleTitle": "റോൾ തലക്കെട്ട്",
+  "describeYourRole": "നിങ്ങളുടെ റോൾ ഇവിടെ വിവരിക്കുക...",
+  "present": "അവതരിപ്പിക്കുക",
+  "skills": "കഴിവുകൾ:",
+  "skillsAndMore": "{skills}, കൂടാതെ +{count} എണ്ണം കൂടി",
+  "yearShort": "{count} വർഷം",
+  "yearsShort": "{count} വർഷം",
+  "monthShort": "{count} മാസം",
+  "monthsShort": "{count} മാസം"
+}

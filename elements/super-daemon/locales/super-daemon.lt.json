@@ -36,5 +36,7 @@
   "clickToDoAnything": "Spauskite, kad ką nors padarytumėte!",
   "moreDetails": "Daugiau detalių",
   "details": "Detalės",
-  "saved": "Išsaugota"
+  "saved": "Išsaugota",
+  "opensInNewWindow": "Atidaroma naujame lange",
+  "resultsCount": "Rezultatų: {count}"
 }

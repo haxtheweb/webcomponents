@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Povezava sidra je kopirana!",
+  "skipToContent": "Skoči na vsebino",
+  "siteHome": "Domača stran spletnega mesta",
+  "mainNavigation": "Glavna navigacija",
+  "toggleMenu": "Preklopi meni",
+  "changeTheme": "Spremeni temo",
+  "breadcrumb": "Drobtinice",
+  "tagFilter": "Filter oznak:",
+  "all": "Vse",
+  "pageNumberOfTotal": "Številka strani: {current} od {total}",
+  "siteGenerated": "Spletno mesto ustvarjeno: {date}",
+  "copyright": "Avtorske pravice: {year} {author}",
+  "viewContentByTag": "Prikaži vsebino po oznakah",
+  "licenseGraphic": "Grafika {license}"
+}

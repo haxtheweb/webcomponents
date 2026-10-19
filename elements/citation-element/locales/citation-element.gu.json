@@ -1,0 +1,11 @@
+{
+  "licenseBy": "એટ્રિબ્યુશન",
+  "licenseBySa": "એટ્રિબ્યુશન શેરએલાઇક",
+  "licenseByNd": "એટ્રિબ્યુશન નોડેરિવેટિવ્સ",
+  "licenseByNc": "એટ્રિબ્યુશન નોનકોમર્શિયલ",
+  "licenseByNcSa": "એટ્રિબ્યુશન નોનકોમર્શિયલ શેરએલાઇક",
+  "licenseByNcNd": "એટ્રિબ્યુશન નોનકોમર્શિયલ નોડેરિવેટિવ્સ",
+  "citationWithLicense": "{creator} દ્વારા {title}, {license} હેઠળ લાઇસન્સ પ્રાપ્ત. {date} ના રોજ ઍક્સેસ કર્યું.",
+  "citationWithoutLicense": "{creator} દ્વારા {title}. {date} ના રોજ ઍક્સેસ કર્યું.",
+  "licenseGraphic": "{license} ગ્રાફિક"
+}

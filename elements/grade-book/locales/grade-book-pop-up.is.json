@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Skil nemanda",
   "openInNewWindow": "Opna í nýjum glugga",
-  "submitted": "Skilað"
+  "submitted": "Skilað",
+  "previousStudent": "Fyrri nemandi",
+  "nextStudent": "Næsti nemandi",
+  "previousAssignment": "Fyrra verkefni",
+  "nextAssignment": "Næsta verkefni"
 }

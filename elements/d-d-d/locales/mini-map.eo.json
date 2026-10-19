@@ -1,0 +1,17 @@
+{
+  "editNodes": "Redakti nodojn",
+  "editLines": "Redakti liniojn",
+  "reset": "Restarigi",
+  "save": "Konservi",
+  "cancel": "Nuligi",
+  "delete": "Forigi",
+  "type": "Tipo:",
+  "topic": "Temo",
+  "subsection": "Subsekcio",
+  "name": "Nomo:",
+  "enterName": "Enigu nomon",
+  "url": "URL:",
+  "enterUrl": "Enigu URL",
+  "activeNode": "Ĉu aktiva nodo?",
+  "nodeId": "Nodo {id}"
+}

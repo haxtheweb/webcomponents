@@ -5,5 +5,9 @@
   "buttons": "קנעפּלעך",
   "futureButtonConfiguration": "אײגענע קאָנפֿיגוראַציע פֿון רעדאַקטאָר־קנעפּלעך קומט באַלד.",
   "save": "אױפֿהיטן",
-  "saving": "היט אױף…"
+  "saving": "היט אױף…",
+  "novice": "אָנהייבער",
+  "expert": "עקספּערט",
+  "toolbarPreviewAlt": "פֿאָרויסבליק פֿון רעדאַגיר־מכשירים־פּאַס פֿאַר {audience}",
+  "savingEditorSettingsFailed": "אָפּהיטן רעדאַקטאָר־באַשטימונגען דורכגעפֿאַלן: {error}"
 }

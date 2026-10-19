@@ -43,5 +43,22 @@
   "emailAddress": "ایس طالب علم نوں ای میل کرو",
   "notes": "نوٹ",
   "interests": "دلچسپیاں",
-  "profileImageFor": "پروفائل تصویر:"
+  "profileImageFor": "پروفائل تصویر:",
+  "fileSystem": "فائل سسٹم",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL ایںڈ پوائنٹ (JSON)",
+  "jsonDataBlob": "JSON ڈیٹا بلاب",
+  "additionalCriteriaFeedback": "{criteria} لئی ہور فیڈبیک",
+  "outOfPoints": "/ {points} نمبر",
+  "feedbackReport": "فیڈبیک رپورٹ",
+  "criteriaDetails": "معیار دیاں تفصیلاں",
+  "yourFeedback": "تہاڈا فیڈبیک",
+  "additionalCriteriaFeedbackHeading": "معیار لئی ہور فیڈبیک",
+  "yourTotalScore": "تہاڈا کُل سکور",
+  "scoreOutOfPoints": "{score} / {points} نمبر",
+  "studentAssignment": "{student} دی اسائنمنٹ {assignment}",
+  "downloadPDF": "PDF ڈاؤن لوڈ کرو",
+  "displayMode1": "موڈ 1",
+  "displayMode2": "موڈ 2",
+  "twoWindows": "دو ونڈوز"
 }

@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Xiriirka barroosinka waa la koobiyeeyay!",
+  "skipToContent": "U bood nuxurka",
+  "changePalette": "Beddel midab-qaybeedka",
+  "primaryLinks": "Xiriirrada koowaad",
+  "socialLinks": "Xiriirrada bulshada",
+  "myProfile": "Astaantayda",
+  "profileImageOf": "Sawirka astaanta {name}",
+  "profileImage": "Sawirka astaanta",
+  "linkCardProfile": "Astaanta kaarka xiriirka",
+  "emptyStateLinks": "Ku dar shayada liiska heerka sare site.json si loo muujiyo badhamada xiriirka.",
+  "titleOnPlatform": "{title} ee {platform}",
+  "openPlatform": "Fur {platform}",
+  "paletteUpdated": "Midab-qaybeedka waxaa loo cusboonaysiiyay ikhtiyaarka {number}."
+}

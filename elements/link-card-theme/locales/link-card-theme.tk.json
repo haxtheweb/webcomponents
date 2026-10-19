@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Labyr baglanyşygy göçürildi!",
+  "skipToContent": "Mazmuna geçmek",
+  "changePalette": "Palitrany üýtget",
+  "primaryLinks": "Esasy salgylar",
+  "socialLinks": "Sosial salgylar",
+  "myProfile": "Meniň profilim",
+  "profileImageOf": "{name} profil suraty",
+  "profileImage": "Profil suraty",
+  "linkCardProfile": "Salgy kartyň profili",
+  "emptyStateLinks": "Salgy düwmelerini görkezmek üçin site.json-a ýokary derejeli menýu elementlerini goşuň.",
+  "titleOnPlatform": "{platform} platformasyndaky {title}",
+  "openPlatform": "{platform} aç",
+  "paletteUpdated": "Reňk palitrasy {number} warianta üýtgedildi."
+}

@@ -1,0 +1,18 @@
+{
+  "copy": "Kopyala",
+  "download": "Endir",
+  "archive": "Arxivləşdir",
+  "copyOperation": "kopyalama",
+  "downloadOperation": "endirmə",
+  "archiveOperation": "arxivləşdirmə",
+  "created": "yaradılıb",
+  "updated": "yenilənib",
+  "pages": "səhifə",
+  "url": "URL",
+  "confirm": "Təsdiq et",
+  "cancel": "Ləğv et",
+  "siteOperationConfirmTitle": "{siteName}: {operationName}?",
+  "siteOperationConfirmMessage": "{siteName} üçün {operation} əməliyyatını icra etmək istədiyinizə əminsiniz?",
+  "siteOperationSuccessful": "{siteName}: {operation} uğurla başa çatdı!",
+  "siteOperationFailed": "{siteName}: {operation} alınmadı"
+}

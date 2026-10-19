@@ -36,5 +36,7 @@
   "clickToDoAnything": "Cliciwch i wneud unrhyw beth!",
   "moreDetails": "Mwy o fanylion",
   "details": "Manylion",
-  "saved": "Wedi'i gadw"
+  "saved": "Wedi'i gadw",
+  "opensInNewWindow": "Yn agor mewn ffenestr newydd",
+  "resultsCount": "{count} canlyniad"
 }

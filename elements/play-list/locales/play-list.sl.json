@@ -1,0 +1,11 @@
+{
+  "playlist": "Seznam predvajanja",
+  "carousel": "vrtiljak",
+  "slide": "prosojnica",
+  "slideNumber": "Prosojnica {number}",
+  "slideOfTotal": "Prosojnica {number} od {total}",
+  "previousSlide": "Prejšnja prosojnica",
+  "nextSlide": "Naslednja prosojnica",
+  "slidePages": "Strani prosojnic",
+  "goToSlide": "Pojdi na prosojnico {number}"
+}

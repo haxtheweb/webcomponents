@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "이전에 보낸 메시지 표시 (위)",
+  "displayPreviousMessageDown": "이전에 보낸 메시지 표시 (아래)",
+  "sendPrompt": "프롬프트 보내기",
+  "sendPromptToMerlin": "Merlin에게 프롬프트 보내기",
+  "shortenPrompt": "프롬프트를 {limit}자 이하로 줄여 주세요."
+}

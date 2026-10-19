@@ -5,5 +5,9 @@
   "buttons": "تڼۍ",
   "futureButtonConfiguration": "د ایډیټر د تڼیو ځانګړی تنظیم ډېر ژر راځي.",
   "save": "خوندي کول",
-  "saving": "خوندي کېږي…"
+  "saving": "خوندي کېږي…",
+  "novice": "نوی زده کوونکی",
+  "expert": "متخصص",
+  "toolbarPreviewAlt": "د {audience} سمون وسیلو پټې مخکتنه",
+  "savingEditorSettingsFailed": "د سمونګر تنظیماتو خوندي کول ناکام شول: {error}"
 }

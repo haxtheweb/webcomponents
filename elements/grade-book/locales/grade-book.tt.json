@@ -43,5 +43,22 @@
   "emailAddress": "Бу укучыга электрон хат җибәрергә",
   "notes": "Искәрмәләр",
   "interests": "Кызыксынулар",
-  "profileImageFor": "Профиль рәсеме:"
+  "profileImageFor": "Профиль рәсеме:",
+  "fileSystem": "Файл системасы",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL ноктасы (JSON)",
+  "jsonDataBlob": "JSON мәгълүмат блогы",
+  "additionalCriteriaFeedback": "Өстәмә {criteria} кире бәйләнеше",
+  "outOfPoints": "/ {points} балл",
+  "feedbackReport": "Кире бәйләнеш хисабы",
+  "criteriaDetails": "Критерийлар турында тулырак",
+  "yourFeedback": "Сезнең кире бәйләнеш",
+  "additionalCriteriaFeedbackHeading": "Критерийлар буенча өстәмә кире бәйләнеш",
+  "yourTotalScore": "Сезнең гомуми балл",
+  "scoreOutOfPoints": "{score} / {points} балл",
+  "studentAssignment": "{student} — {assignment} биреме",
+  "downloadPDF": "PDF йөкләп алу",
+  "displayMode1": "1 нче режим",
+  "displayMode2": "2 нче режим",
+  "twoWindows": "Ике тәрәзә"
 }

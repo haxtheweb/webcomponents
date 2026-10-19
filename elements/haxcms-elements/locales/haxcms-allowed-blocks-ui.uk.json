@@ -10,5 +10,9 @@
   "save": "Зберегти",
   "noDescription": "Опис відсутній.",
   "details": "Подробиці",
-  "loadingInventory": "Завантаження повного переліку блоків…"
+  "loadingInventory": "Завантаження повного переліку блоків…",
+  "selectAllButton": "Вибрати все",
+  "deselectAllButton": "Скасувати вибір усього",
+  "selectedOfAvailable": "Вибрано {selected} / доступно {total}",
+  "savingBlocksFailed": "Не вдалося зберегти блоки: {error}"
 }

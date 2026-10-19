@@ -1,0 +1,11 @@
+{
+  "licenseBy": "ອ້າງອີງແຫຼ່ງທີ່ມາ",
+  "licenseBySa": "ອ້າງອີງແຫຼ່ງທີ່ມາ ແບ່ງປັນແບບດຽວກັນ",
+  "licenseByNd": "ອ້າງອີງແຫຼ່ງທີ່ມາ ບໍ່ດັດແປງ",
+  "licenseByNc": "ອ້າງອີງແຫຼ່ງທີ່ມາ ບໍ່ໃຊ້ເພື່ອການຄ້າ",
+  "licenseByNcSa": "ອ້າງອີງແຫຼ່ງທີ່ມາ ບໍ່ໃຊ້ເພື່ອການຄ້າ ແບ່ງປັນແບບດຽວກັນ",
+  "licenseByNcNd": "ອ້າງອີງແຫຼ່ງທີ່ມາ ບໍ່ໃຊ້ເພື່ອການຄ້າ ບໍ່ດັດແປງ",
+  "citationWithLicense": "{title} ໂດຍ {creator}, ໄດ້ຮັບອະນຸຍາດພາຍໃຕ້ {license}. ເຂົ້າເຖິງເມື່ອ {date}.",
+  "citationWithoutLicense": "{title} ໂດຍ {creator}. ເຂົ້າເຖິງເມື່ອ {date}.",
+  "licenseGraphic": "ກຣາຟິກ {license}"
+}

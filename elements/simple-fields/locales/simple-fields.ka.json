@@ -9,5 +9,8 @@
   "record": "ჩაწერა",
   "pause": "ჩაწერის პაუზა",
   "stopSave": "შეჩერება და შენახვა",
-  "clickToTakePhoto": "დააწკაპუნეთ ფოტოს გადასაღებად"
+  "clickToTakePhoto": "დააწკაპუნეთ ფოტოს გადასაღებად",
+  "url": "URL",
+  "open": "გახსნა",
+  "removeValue": "{value}-ის წაშლა"
 }

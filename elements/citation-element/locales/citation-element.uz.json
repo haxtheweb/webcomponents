@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Mualliflikni koʻrsatish",
+  "licenseBySa": "Mualliflikni koʻrsatish — Xuddi shunday tarqatish",
+  "licenseByNd": "Mualliflikni koʻrsatish — Oʻzgartirmaslik",
+  "licenseByNc": "Mualliflikni koʻrsatish — Notijorat",
+  "licenseByNcSa": "Mualliflikni koʻrsatish — Notijorat — Xuddi shunday tarqatish",
+  "licenseByNcNd": "Mualliflikni koʻrsatish — Notijorat — Oʻzgartirmaslik",
+  "citationWithLicense": "{title}, muallif: {creator}, {license} litsenziyasi asosida. Murojaat qilingan sana: {date}.",
+  "citationWithoutLicense": "{title}, muallif: {creator}. Murojaat qilingan sana: {date}.",
+  "licenseGraphic": "{license} belgisi"
+}

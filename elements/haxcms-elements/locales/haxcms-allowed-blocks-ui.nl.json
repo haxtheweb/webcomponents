@@ -10,5 +10,9 @@
   "save": "Opslaan",
   "noDescription": "Geen beschrijving beschikbaar.",
   "details": "Details",
-  "loadingInventory": "Volledige blokkeninventaris laden…"
+  "loadingInventory": "Volledige blokkeninventaris laden…",
+  "selectAllButton": "Alles selecteren",
+  "deselectAllButton": "Alles deselecteren",
+  "selectedOfAvailable": "{selected} geselecteerd / {total} beschikbaar",
+  "savingBlocksFailed": "Opslaan van blokken mislukt: {error}"
 }

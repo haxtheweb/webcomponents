@@ -1,4 +1,11 @@
 {
   "readMore": "Bêtir bixwîne",
-  "home": "Destpêk"
+  "home": "Destpêk",
+  "anchorLinkCopied": "Girêdana lengerê hat kopîkirin!",
+  "skipToContent": "Derbasî naverokê bibe",
+  "changeTheme": "Temayê biguherîne",
+  "siteSections": "Beşên malperê",
+  "pageOfTotal": "Rûpel {current} ji {total}",
+  "siteGenerated": "Malper hat çêkirin: {date}",
+  "licenseGraphic": "Grafîka {license}"
 }

@@ -1,3 +1,8 @@
 {
-  "title": "ಉಲ್ಲೇಖಗಳು"
+  "title": "ಉಲ್ಲೇಖಗಳು",
+  "export": "ರಫ್ತು",
+  "exportCitations": "ಉಲ್ಲೇಖಗಳನ್ನು ರಫ್ತು ಮಾಡಿ",
+  "copy": "ನಕಲಿಸಿ",
+  "exportCitationFormat": "ಉಲ್ಲೇಖ ಸ್ವರೂಪವನ್ನು ರಫ್ತು ಮಾಡಿ",
+  "selectCitationFormatBelow": "ಕೆಳಗೆ ಉಲ್ಲೇಖ ಸ್ವರೂಪವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 }

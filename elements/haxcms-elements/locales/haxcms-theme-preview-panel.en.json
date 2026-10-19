@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Show Theme Preview",
+  "hideThemePreview": "Hide Theme Preview",
+  "themePreviewPanel": "Theme Preview Panel",
+  "themePreview": "Theme Preview",
+  "themePreviewDescription": "Try a theme and palette temporarily while you browse. Use Cancel to restore your original appearance.",
+  "loadingThemes": "Loading themes...",
+  "theme": "Theme",
+  "palette": "Palette",
+  "cancel": "Cancel",
+  "openAppearanceSettings": "Open Appearance Settings"
+}

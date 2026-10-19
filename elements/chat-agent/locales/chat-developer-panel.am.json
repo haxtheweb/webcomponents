@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "የተጠቃሚ ውይይት ምዝግብ ማስታወሻ የኮንሶል ሰንጠረዥ",
+  "consoleTableUserText": "console.table() የተጠቃሚ ውይይት ምዝግብ ማስታወሻ",
+  "consoleTableUserTooltip": "የተጠቃሚ ውይይት ምዝግብ ማስታወሻን እንደ ሰንጠረዥ ወደ ኮንሶል አትም",
+  "consoleTableMerlinLabel": "የmerlin ውይይት ምዝግብ ማስታወሻ የኮንሶል ሰንጠረዥ",
+  "consoleTableMerlinText": "console.table() የmerlin ውይይት ምዝግብ ማስታወሻ",
+  "consoleTableMerlinTooltip": "የMerlin ውይይት ምዝግብ ማስታወሻን እንደ ሰንጠረዥ ወደ ኮንሶል አትም",
+  "consoleTableAllLabel": "የሙሉ ውይይት ምዝግብ ማስታወሻ የኮንሶል ሰንጠረዥ",
+  "consoleTableAllText": "console.table() ሙሉ የውይይት ምዝግብ ማስታወሻ",
+  "consoleTableAllTooltip": "ሙሉ የውይይት ምዝግብ ማስታወሻን እንደ ሰንጠረዥ ወደ ኮንሶል አትም",
+  "downloadChatLogJson": "የውይይት ምዝግብ ማስታወሻን እንደ .json አውርድ",
+  "downloadChatLogJsonTooltip": "የውይይት ምዝግብ ማስታወሻን እንደ .json አውርድ"
+}

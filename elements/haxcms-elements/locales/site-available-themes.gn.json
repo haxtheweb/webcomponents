@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Ndaikatúi oñemyenyhẽ jeguakaha: {error}",
+  "noThemesForView": "Ndaipóri jeguakaha ko jehechápe g̃uarã.",
+  "active": "Hekovéva",
+  "themeIsActive": "{name} jeguakaha hekovéma",
+  "applyTheme": "Emoĩ {name} jeguakaha",
+  "apply": "Emoĩ",
+  "preview": "Jehecha ypy",
+  "name": "Téra",
+  "element": "Pehẽ",
+  "description": "Myesakã",
+  "action": "Tembiapo",
+  "loadingThemes": "Henyhẽhína jeguakaha...",
+  "themesShown": "{count} jeguakaha ojehechauka",
+  "themesShownDefaults": "{count} jeguakaha ojehechauka (app-hax ypyguáva)",
+  "availableHaxcmsThemes": "HAXcms Jeguakaha Oĩva",
+  "gallery": "Ta'ãngaryru",
+  "table": "Tabla"
+}

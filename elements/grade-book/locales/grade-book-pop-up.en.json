@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Student submission",
   "openInNewWindow": "Open in new window",
-  "submitted": "Submitted"
+  "submitted": "Submitted",
+  "previousStudent": "Previous student",
+  "nextStudent": "Next student",
+  "previousAssignment": "Previous assignment",
+  "nextAssignment": "Next assignment"
 }

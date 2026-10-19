@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tebulo la console la zolemba za macheza za wogwiritsa ntchito",
+  "consoleTableUserText": "console.table() zolemba za macheza za wogwiritsa ntchito",
+  "consoleTableUserTooltip": "Sindikizani Zolemba za Macheza za Wogwiritsa Ntchito ngati Tebulo ku Console",
+  "consoleTableMerlinLabel": "Tebulo la console la zolemba za macheza za merlin",
+  "consoleTableMerlinText": "console.table() zolemba za macheza za merlin",
+  "consoleTableMerlinTooltip": "Sindikizani Zolemba za Macheza za Merlin ngati Tebulo ku Console",
+  "consoleTableAllLabel": "Tebulo la console la zolemba zonse za macheza",
+  "consoleTableAllText": "console.table() zolemba zonse za macheza",
+  "consoleTableAllTooltip": "Sindikizani Zolemba Zonse za Macheza ngati Tebulo ku Console",
+  "downloadChatLogJson": "Tsitsani zolemba za macheza ngati .json",
+  "downloadChatLogJsonTooltip": "Tsitsani Zolemba za Macheza ngati .json"
+}

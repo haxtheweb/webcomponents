@@ -18,6 +18,10 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       this.t.closeMenu = "Close menu";
       this.t.openMenu = "Open menu";
       this.t.toggleSiteMenu = "Toggle site menu";
+      this.t = {
+        ...this.t,
+        siteNavigation: "Site navigation",
+      };
       let status = localStorageGet("hax-mobile-menu-menuOpen", null);
       if (status !== null) {
         if (status === true) {
@@ -137,7 +141,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         <nav
           id="haxcmsmobilemenunav"
           role="navigation"
-          aria-label="Site navigation"
+          aria-label="${this.t.siteNavigation}"
           aria-labelledby="sitemenu"
           itemscope
           itemtype="http://schema.org/SiteNavigationElement"
@@ -156,7 +160,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         <nav
           id="haxcmsmobilemenunav"
           role="navigation"
-          aria-label="Site navigation"
+          aria-label="${this.t.siteNavigation}"
           aria-labelledby="sitemenu"
           itemscope
           itemtype="http://schema.org/SiteNavigationElement"

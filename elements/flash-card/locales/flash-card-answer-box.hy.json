@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Ձեր պատասխանը",
   "checkAnswer": "Ստուգել պատասխանը",
-  "retry": "Կրկին փորձել"
+  "retry": "Կրկին փորձել",
+  "correct": "Ճիշտ է։",
+  "incorrect": "Սխալ է։",
+  "correctAnswer": "Ճիշտ պատասխան՝ {answer}"
 }

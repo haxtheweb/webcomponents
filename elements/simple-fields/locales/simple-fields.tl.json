@@ -9,5 +9,8 @@
   "record": "Mag-record",
   "pause": "I-pause ang pag-record",
   "stopSave": "Ihinto at I-save",
-  "clickToTakePhoto": "I-click para kumuha ng larawan"
+  "clickToTakePhoto": "I-click para kumuha ng larawan",
+  "url": "URL",
+  "open": "buksan",
+  "removeValue": "Alisin ang {value}"
 }

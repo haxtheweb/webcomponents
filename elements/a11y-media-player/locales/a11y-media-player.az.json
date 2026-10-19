@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Yüklənir...",
   "youTubeStartLoading": "Oxut düyməsini basın.",
   "youTubeTranscriptLabel": "Transkript media oxudulduqda yüklənəcək.",
-  "audioDescriptionLabel": "Səsli təsvir"
+  "audioDescriptionLabel": "Səsli təsvir",
+  "openOnYouTube": "YouTube-da aç"
 }

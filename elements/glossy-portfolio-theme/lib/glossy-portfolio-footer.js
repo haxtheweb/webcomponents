@@ -23,6 +23,15 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      lastUpdatedOn: "Last updated: {date}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.title = "Title";
     this.homeLink = "";
     this.__disposer = this.__disposer || [];
@@ -161,7 +170,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
     return html`
 <footer class="background" role="contentinfo">
   <div class="wrapper">
-      <p class="item"> Last updated: ${this.lastUpdated} </p>
+      <p class="item"> ${this.t.lastUpdatedOn.replace("{date}", () => (this.lastUpdated ?? ""))} </p>
       <p class="center">© ${this.copyrightYear}   </p>
     ${this.licenseLink ? html`
     <div class="license item"> 

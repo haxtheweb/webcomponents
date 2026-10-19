@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Faylasha halkan ku dhig",
+  "uploadQueue": "Safka soo rarka",
+  "pending": "Sugaya",
+  "preparing": "Diyaarinaya",
+  "uploading": "Soo raraya",
+  "complete": "Dhammaaday",
+  "aborted": "La joojiyay",
+  "cancelled": "La baajiyay",
+  "error": "Khalad",
+  "errorWithStatus": "Khalad: {status}",
+  "cancel": "Jooji",
+  "cancelUploadOf": "Jooji soo rarka {name}",
+  "retry": "Isku day mar kale",
+  "retryUploadOf": "Isku day mar kale soo rarka {name}",
+  "remove": "Ka saar",
+  "removeFromQueue": "Ka saar {name} safka",
+  "fileTypeNotAccepted": "Nooca faylka lama aqbalin: {name}",
+  "uploadFailed": "Soo rarku wuu fashilmay: {status}",
+  "networkError": "Khalad shabakadeed"
+}

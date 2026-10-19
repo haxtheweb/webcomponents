@@ -7,5 +7,7 @@
   "userAccessGranted": "Qasja e përdoruesit u dha me sukses!",
   "userNotFound": "Përdoruesi nuk u gjet ose është i paautorizuar",
   "loadingAddingUser": "Po shtohet përdoruesi...",
-  "grantAccessTo": "Jep qasje për:"
+  "grantAccessTo": "Jep qasje për:",
+  "networkErrorTryAgain": "Ndodhi një gabim rrjeti. Të lutem provo përsëri.",
+  "characterWillAppear": "Personazhi do të shfaqet kur të futësh një emër përdoruesi"
 }

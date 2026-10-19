@@ -43,5 +43,22 @@
   "emailAddress": "Thumela lo mfundi i-imeyile",
   "notes": "Amanqaku",
   "interests": "Izinto anomdla kuzo",
-  "profileImageFor": "Umfanekiso weprofayile ka"
+  "profileImageFor": "Umfanekiso weprofayile ka",
+  "fileSystem": "Inkqubo yeefayile",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Indawo ye-URL (JSON)",
+  "jsonDataBlob": "Iqhekeza ledatha le-JSON",
+  "additionalCriteriaFeedback": "Ingxelo eyongezelelweyo ye-{criteria}",
+  "outOfPoints": "/ {points} amanqaku",
+  "feedbackReport": "Ingxelo yempendulo",
+  "criteriaDetails": "Iinkcukacha zeenqobo",
+  "yourFeedback": "Ingxelo yakho",
+  "additionalCriteriaFeedbackHeading": "Ingxelo eyongezelelweyo yeeNqobo",
+  "yourTotalScore": "Amanqaku akho apheleleyo",
+  "scoreOutOfPoints": "{score} / {points} amanqaku",
+  "studentAssignment": "Isabelo sika-{student} {assignment}",
+  "downloadPDF": "Khuphela i-PDF",
+  "displayMode1": "Imo 1",
+  "displayMode2": "Imo 2",
+  "twoWindows": "Iifestile ezimbini"
 }

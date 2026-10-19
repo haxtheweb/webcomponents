@@ -1,0 +1,9 @@
+{
+  "palette": "പാലറ്റ്",
+  "paletteSelection": "പാലറ്റ് തിരഞ്ഞെടുപ്പ്",
+  "active": "സജീവം",
+  "selected": "തിരഞ്ഞെടുത്തത്",
+  "currentlyActiveAndSelectedPalette": "നിലവിൽ സജീവവും തിരഞ്ഞെടുത്തതുമായ പാലറ്റ്",
+  "currentlyActivePalette": "നിലവിൽ സജീവമായ പാലറ്റ്",
+  "selectedPaletteToApply": "പ്രയോഗിക്കാൻ തിരഞ്ഞെടുത്ത പാലറ്റ്"
+}

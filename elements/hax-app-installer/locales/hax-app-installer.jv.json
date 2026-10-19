@@ -54,5 +54,6 @@
   "requirementUppercase": "Siji huruf gedhé",
   "requirementLowercase": "Siji huruf cilik",
   "requirementNumber": "Siji angka",
-  "requirementSymbol": "Siji simbol"
+  "requirementSymbol": "Siji simbol",
+  "haxcmsMascotAlt": "Maskot HAXcms World Traveler"
 }

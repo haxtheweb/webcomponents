@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Arată previzualizarea temei",
+  "hideThemePreview": "Ascunde previzualizarea temei",
+  "themePreviewPanel": "Panoul de previzualizare a temei",
+  "themePreview": "Previzualizare temă",
+  "themePreviewDescription": "Încearcă temporar o temă și o paletă în timp ce navighezi. Folosește Anulează pentru a restabili aspectul original.",
+  "loadingThemes": "Se încarcă temele...",
+  "theme": "Temă",
+  "palette": "Paletă",
+  "cancel": "Anulează",
+  "openAppearanceSettings": "Deschide setările de aspect"
+}

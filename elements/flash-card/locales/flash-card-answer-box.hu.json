@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Az Ön válasza",
   "checkAnswer": "Válasz ellenőrzése",
-  "retry": "Újra"
+  "retry": "Újra",
+  "correct": "Helyes!",
+  "incorrect": "Helytelen!",
+  "correctAnswer": "Helyes válasz: {answer}"
 }

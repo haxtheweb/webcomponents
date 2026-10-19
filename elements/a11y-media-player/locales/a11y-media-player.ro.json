@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Se încarcă...",
   "youTubeStartLoading": "Apăsați redare.",
   "youTubeTranscriptLabel": "Transcrierea se va încărca după pornirea redării.",
-  "audioDescriptionLabel": "Descriere audio"
+  "audioDescriptionLabel": "Descriere audio",
+  "openOnYouTube": "Deschide pe YouTube"
 }

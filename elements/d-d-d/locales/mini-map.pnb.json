@@ -1,0 +1,17 @@
+{
+  "editNodes": "نوڈ ایڈٹ کرو",
+  "editLines": "لکیراں ایڈٹ کرو",
+  "reset": "ری سیٹ",
+  "save": "محفوظ کرو",
+  "cancel": "منسوخ کرو",
+  "delete": "مٹاؤ",
+  "type": "قسم:",
+  "topic": "موضوع",
+  "subsection": "ذیلی حصہ",
+  "name": "ناں:",
+  "enterName": "ناں لکھو",
+  "url": "URL:",
+  "enterUrl": "URL لکھو",
+  "activeNode": "چالو نوڈ؟",
+  "nodeId": "نوڈ {id}"
+}

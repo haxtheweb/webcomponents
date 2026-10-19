@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Gollyngwch ffeiliau yma",
+  "uploadQueue": "Ciw llwytho i fyny",
+  "pending": "Yn yr arfaeth",
+  "preparing": "Wrthi'n paratoi",
+  "uploading": "Wrthi'n llwytho i fyny",
+  "complete": "Wedi'i gwblhau",
+  "aborted": "Wedi'i erthylu",
+  "cancelled": "Wedi'i ganslo",
+  "error": "Gwall",
+  "errorWithStatus": "Gwall: {status}",
+  "cancel": "Canslo",
+  "cancelUploadOf": "Canslo llwytho {name} i fyny",
+  "retry": "Ceisio eto",
+  "retryUploadOf": "Rhoi cynnig arall ar lwytho {name} i fyny",
+  "remove": "Tynnu",
+  "removeFromQueue": "Tynnu {name} o'r ciw",
+  "fileTypeNotAccepted": "Ni dderbynnir y math o ffeil: {name}",
+  "uploadFailed": "Methodd y llwytho i fyny: {status}",
+  "networkError": "Gwall rhwydwaith"
+}

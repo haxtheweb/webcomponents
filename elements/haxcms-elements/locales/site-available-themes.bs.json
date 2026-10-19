@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Učitavanje tema nije uspjelo: {error}",
+  "noThemesForView": "Nema dostupnih tema za ovaj prikaz.",
+  "active": "Aktivna",
+  "themeIsActive": "Tema {name} je aktivna",
+  "applyTheme": "Primijeni temu {name}",
+  "apply": "Primijeni",
+  "preview": "Pregled",
+  "name": "Ime",
+  "element": "Element",
+  "description": "Opis",
+  "action": "Radnja",
+  "loadingThemes": "Učitavanje tema...",
+  "themesShown": "Prikazano tema: {count}",
+  "themesShownDefaults": "Prikazano tema: {count} (zadane postavke app-hax)",
+  "availableHaxcmsThemes": "Dostupne HAXcms teme",
+  "gallery": "Galerija",
+  "table": "Tabela"
+}

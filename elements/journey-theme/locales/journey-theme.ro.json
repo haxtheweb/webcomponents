@@ -1,4 +1,11 @@
 {
   "readMore": "Citește mai mult",
-  "home": "Acasă"
+  "home": "Acasă",
+  "anchorLinkCopied": "Link de ancoră copiat!",
+  "skipToContent": "Salt la conținut",
+  "changeTheme": "Schimbă tema",
+  "siteSections": "Secțiunile site-ului",
+  "pageOfTotal": "Pagina {current} din {total}",
+  "siteGenerated": "Site generat: {date}",
+  "licenseGraphic": "Grafica {license}"
 }

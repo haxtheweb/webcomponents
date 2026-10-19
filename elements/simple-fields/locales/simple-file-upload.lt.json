@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Numeskite failus čia",
+  "uploadQueue": "Įkėlimo eilė",
+  "pending": "Laukiama",
+  "preparing": "Ruošiama",
+  "uploading": "Įkeliama",
+  "complete": "Baigta",
+  "aborted": "Nutraukta",
+  "cancelled": "Atšaukta",
+  "error": "Klaida",
+  "errorWithStatus": "Klaida: {status}",
+  "cancel": "Atšaukti",
+  "cancelUploadOf": "Atšaukti {name} įkėlimą",
+  "retry": "Bandyti dar kartą",
+  "retryUploadOf": "Pakartoti {name} įkėlimą",
+  "remove": "Pašalinti",
+  "removeFromQueue": "Pašalinti {name} iš eilės",
+  "fileTypeNotAccepted": "Failo tipas nepriimamas: {name}",
+  "uploadFailed": "Įkelti nepavyko: {status}",
+  "networkError": "Tinklo klaida"
+}

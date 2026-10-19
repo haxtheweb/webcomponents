@@ -5,5 +5,9 @@
   "buttons": "Àwọn bọ́tìnnì",
   "futureButtonConfiguration": "Ìṣètò bọ́tìnnì olóòtú àdáni ń bọ̀ láìpẹ́.",
   "save": "Fi pamọ́",
-  "saving": "Ó ń fi pamọ́…"
+  "saving": "Ó ń fi pamọ́…",
+  "novice": "Olùbẹ̀rẹ̀",
+  "expert": "Ọ̀jọ̀gbọ́n",
+  "toolbarPreviewAlt": "Àwòtẹ́lẹ̀ ọ̀pá irinṣẹ́ àtúnṣe {audience}",
+  "savingEditorSettingsFailed": "Fífi àwọn ètò olóòtú pamọ́ kùnà: {error}"
 }

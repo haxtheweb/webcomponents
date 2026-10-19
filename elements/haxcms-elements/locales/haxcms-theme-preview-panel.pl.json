@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Pokaż podgląd motywu",
+  "hideThemePreview": "Ukryj podgląd motywu",
+  "themePreviewPanel": "Panel podglądu motywu",
+  "themePreview": "Podgląd motywu",
+  "themePreviewDescription": "Wypróbuj tymczasowo motyw i paletę podczas przeglądania. Użyj Anuluj, aby przywrócić pierwotny wygląd.",
+  "loadingThemes": "Wczytywanie motywów...",
+  "theme": "Motyw",
+  "palette": "Paleta",
+  "cancel": "Anuluj",
+  "openAppearanceSettings": "Otwórz ustawienia wyglądu"
+}

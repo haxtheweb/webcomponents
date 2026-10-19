@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Đã sao chép liên kết neo!",
+  "skipToContent": "Chuyển đến nội dung",
+  "changePalette": "Đổi bảng màu",
+  "primaryLinks": "Liên kết chính",
+  "socialLinks": "Liên kết mạng xã hội",
+  "myProfile": "Hồ sơ của tôi",
+  "profileImageOf": "Ảnh hồ sơ của {name}",
+  "profileImage": "Ảnh hồ sơ",
+  "linkCardProfile": "Hồ sơ thẻ liên kết",
+  "emptyStateLinks": "Thêm các mục menu cấp cao nhất trong site.json để hiển thị nút liên kết.",
+  "titleOnPlatform": "{title} trên {platform}",
+  "openPlatform": "Mở {platform}",
+  "paletteUpdated": "Đã cập nhật bảng màu sang tùy chọn {number}."
+}

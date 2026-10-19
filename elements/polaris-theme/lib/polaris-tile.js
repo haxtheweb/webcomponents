@@ -1,11 +1,21 @@
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-export class PolarisTile extends LitElement {
+export class PolarisTile extends I18NMixin(LitElement) {
   static get tag() {
     return "polaris-tile";
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      additionalDetails: "Additional details about this fact",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.type = null;
     this.line1 = null;
     this.line2 = null;
@@ -195,10 +205,10 @@ export class PolarisTile extends LitElement {
                 @click="${this._clickLink}"
                 aria-label="${this.line1
                   ? this.line1
-                  : "Additional details about this fact"}"
+                  : this.t.additionalDetails}"
                 title="${this.line1
                   ? this.line1
-                  : "Additional details about this fact"}"
+                  : this.t.additionalDetails}"
                 ><svg
                   viewBox="0 0 24 24"
                   width="24"

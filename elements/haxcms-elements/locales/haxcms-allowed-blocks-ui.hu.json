@@ -10,5 +10,9 @@
   "save": "Mentés",
   "noDescription": "Nincs elérhető leírás.",
   "details": "Részletek",
-  "loadingInventory": "A teljes blokkleltár betöltése…"
+  "loadingInventory": "A teljes blokkleltár betöltése…",
+  "selectAllButton": "Összes kijelölése",
+  "deselectAllButton": "Kijelölés megszüntetése",
+  "selectedOfAvailable": "{selected} kijelölve / {total} elérhető",
+  "savingBlocksFailed": "A blokkok mentése sikertelen: {error}"
 }

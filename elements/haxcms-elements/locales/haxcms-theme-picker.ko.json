@@ -1,0 +1,11 @@
+{
+  "theme": "테마",
+  "active": "활성",
+  "selected": "선택됨",
+  "noPreview": "미리보기 없음",
+  "currentlyActiveAndSelected": "현재 활성화되고 선택된 테마",
+  "currentlyActive": "현재 활성 테마",
+  "selectedToApplyOnSave": "저장 시 적용할 선택된 테마",
+  "themeSelection": "테마 선택",
+  "noThemesAvailable": "사용 가능한 테마가 없습니다."
+}

@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Isihloko Sendima",
+  "describeYourRole": "Chaza indima yakho lapha...",
+  "present": "Yethula",
+  "skills": "Amakhono:",
+  "skillsAndMore": "{skills} nokunye okungu-+{count}",
+  "yearShort": "unyaka ongu-{count}",
+  "yearsShort": "iminyaka engu-{count}",
+  "monthShort": "inyanga engu-{count}",
+  "monthsShort": "izinyanga ezingu-{count}"
+}

@@ -10,5 +10,9 @@
   "save": "Salvesta",
   "noDescription": "Kirjeldus puudub.",
   "details": "Üksikasjad",
-  "loadingInventory": "Plokkide täieliku loendi laadimine…"
+  "loadingInventory": "Plokkide täieliku loendi laadimine…",
+  "selectAllButton": "Vali kõik",
+  "deselectAllButton": "Tühista kõigi valik",
+  "selectedOfAvailable": "{selected} valitud / {total} saadaval",
+  "savingBlocksFailed": "Plokkide salvestamine ebaõnnestus: {error}"
 }

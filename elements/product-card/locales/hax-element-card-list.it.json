@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Scansione del registro dei Web Component alla ricerca di altri elementi HAX..",
+  "enabled": "Abilitato",
+  "disabled": "Disattivato",
+  "details": "Dettagli",
+  "tags": "Tag:",
+  "tagName": "Nome del tag:",
+  "developerUsage": "Uso per sviluppatori:",
+  "demo": "Demo",
+  "popUpDemo": "Demo in finestra",
+  "demoOf": "Demo di {tag}"
+}

@@ -43,5 +43,22 @@
   "emailAddress": "Leka uila i kēia haumāna",
   "notes": "Nā Kākau Pōkole",
   "interests": "Nā Mea Hoihoi",
-  "profileImageFor": "Kiʻi moʻolelo pilikino o"
+  "profileImageFor": "Kiʻi moʻolelo pilikino o",
+  "fileSystem": "ʻŌnaehana faila",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Wēlau URL (JSON)",
+  "jsonDataBlob": "Puʻu ʻikepili JSON",
+  "additionalCriteriaFeedback": "Manaʻo hoʻihoʻi {criteria} hou aku",
+  "outOfPoints": "/ {points} ʻai",
+  "feedbackReport": "Hōʻike manaʻo hoʻihoʻi",
+  "criteriaDetails": "Nā kikoʻī o nā kumu loiloi",
+  "yourFeedback": "Kou manaʻo hoʻihoʻi",
+  "additionalCriteriaFeedbackHeading": "Manaʻo hoʻihoʻi kumu loiloi hou aku",
+  "yourTotalScore": "Kou helu holoʻokoʻa",
+  "scoreOutOfPoints": "{score} / {points} ʻai",
+  "studentAssignment": "Haʻawina hana {assignment} a {student}",
+  "downloadPDF": "Hoʻoiho i ka PDF",
+  "displayMode1": "ʻAno 1",
+  "displayMode2": "ʻAno 2",
+  "twoWindows": "ʻElua pukaaniani"
 }

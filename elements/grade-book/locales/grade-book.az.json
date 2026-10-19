@@ -43,5 +43,22 @@
   "emailAddress": "Bu tələbəyə e-poçt göndər",
   "notes": "Qeydlər",
   "interests": "Maraqlar",
-  "profileImageFor": "Profil şəkli:"
+  "profileImageFor": "Profil şəkli:",
+  "fileSystem": "Fayl sistemi",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL son nöqtəsi (JSON)",
+  "jsonDataBlob": "JSON məlumat bloku",
+  "additionalCriteriaFeedback": "Əlavə {criteria} rəyi",
+  "outOfPoints": "/ {points} bal",
+  "feedbackReport": "Rəy hesabatı",
+  "criteriaDetails": "Meyar təfərrüatları",
+  "yourFeedback": "Sizin rəyiniz",
+  "additionalCriteriaFeedbackHeading": "Əlavə meyar rəyi",
+  "yourTotalScore": "Ümumi balınız",
+  "scoreOutOfPoints": "{score} / {points} bal",
+  "studentAssignment": "{student} — {assignment} tapşırığı",
+  "downloadPDF": "PDF endir",
+  "displayMode1": "Rejim 1",
+  "displayMode2": "Rejim 2",
+  "twoWindows": "İki pəncərə"
 }

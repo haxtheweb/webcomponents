@@ -22,6 +22,13 @@
   "unpublish": "Nashrdan olish",
   "savePage": "Sahifani saqlash",
   "cancel": "Bekor qilish",
+  "delete": "O‘chirish",
+  "editTitle": "Sarlavhani tahrirlash",
+  "editIcon": "Belgini tahrirlash",
+  "agent": "Agent",
+  "pageLockedUnlockToEdit": "Bu sahifa qulflangan. Tahrirlash uchun avval qulfdan chiqaring.",
+  "pageLockedUnlockToChangePublishStatus": "Bu sahifa qulflangan. Nashr holatini oʻzgartirish uchun avval qulfdan chiqaring.",
+  "pageLockedUnlockToDelete": "Bu sahifa qulflangan. Oʻchirish uchun avval qulfdan chiqaring.",
   "pageDetails": "Sahifa tafsilotlari",
   "clickToUnlock": "Ochish uchun bosing"
 }

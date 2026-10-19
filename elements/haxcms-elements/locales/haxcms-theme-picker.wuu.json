@@ -1,0 +1,11 @@
+{
+  "theme": "主题",
+  "active": "当前用个",
+  "selected": "已选",
+  "noPreview": "呒没预览",
+  "currentlyActiveAndSelected": "当前用个也是已选个主题",
+  "currentlyActive": "当前用个主题",
+  "selectedToApplyOnSave": "保存辰光要应用个已选主题",
+  "themeSelection": "主题选择",
+  "noThemesAvailable": "呒没可用个主题。"
+}

@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Atribución",
+  "licenseBySa": "Atribución-CompartirIgual",
+  "licenseByNd": "Atribución-SinDerivadas",
+  "licenseByNc": "Atribución-NoComercial",
+  "licenseByNcSa": "Atribución-NoComercial-CompartirIgual",
+  "licenseByNcNd": "Atribución-NoComercial-SinDerivadas",
+  "licenseGraphic": "Gráfico de {license}",
+  "workByCreator": "{title} de {creator}",
+  "workByCreatorLicensed": "{title} de {creator} está bajo una licencia {license}.",
+  "permissionsBeyondScope": "Hay permisos más allá del alcance de esta licencia disponibles {link}.",
+  "author": "(autor)",
+  "onTheLicensingDetailsPage": "en la página de detalles de la licencia"
+}

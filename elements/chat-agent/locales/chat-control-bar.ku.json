@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Tomarê wekî txt Daxîne",
+  "downloadChatLog": "Tomara Sohbetê Daxîne",
+  "resetChat": "Sohbetê Ji Nû Ve Dest Pê Bike",
+  "toggleDataCollection": "Berhevkirina Daneyan Veke/Bigire",
+  "dataCollection": "Berhevkirina Daneyan",
+  "toggleDeveloperMode": "Moda Pêşdebiran Veke/Bigire",
+  "exitFullView": "Ji Dîtina Tevahî Derkeve",
+  "enterFullView": "Dîtina Tevahî",
+  "hideInterface": "Navrûyê Veşêre",
+  "resetChatConfirm": "Sohbet ji nû ve dest pê bike?",
+  "downloadBeforeResetConfirm": "Berî ji nû ve destpêkirinê tomara sohbetê daxînî?",
+  "dataCollectionOn": "Axaftinên te dê ji bo perwerdekirina modelên me yên AI werin bikaranîn",
+  "dataCollectionOff": "Axaftinên te dê ji bo perwerdekirina modelên me yên AI neyên bikaranîn"
+}

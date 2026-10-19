@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Kuyamikira",
+  "licenseBySa": "Kuyamikira Kugawana Chimodzimodzi",
+  "licenseByNd": "Kuyamikira Osasintha",
+  "licenseByNc": "Kuyamikira Osati Zamalonda",
+  "licenseByNcSa": "Kuyamikira Osati Zamalonda Kugawana Chimodzimodzi",
+  "licenseByNcNd": "Kuyamikira Osati Zamalonda Osasintha",
+  "citationWithLicense": "{title} lolembedwa ndi {creator}, lili ndi chilolezo cha {license}. Lapezeka pa {date}.",
+  "citationWithoutLicense": "{title} lolembedwa ndi {creator}. Lapezeka pa {date}.",
+  "licenseGraphic": "Chithunzi cha {license}"
+}

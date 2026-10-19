@@ -43,5 +43,22 @@
   "emailAddress": "Bidali mezu elektronikoa ikasle honi",
   "notes": "Oharrak",
   "interests": "Interesak",
-  "profileImageFor": "Profil-irudia:"
+  "profileImageFor": "Profil-irudia:",
+  "fileSystem": "Fitxategi-sistema",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL amaiera-puntua (JSON)",
+  "jsonDataBlob": "JSON datu-bloba",
+  "additionalCriteriaFeedback": "{criteria} irizpidearen feedback gehigarria",
+  "outOfPoints": "/ {points} puntu",
+  "feedbackReport": "Feedback-txostena",
+  "criteriaDetails": "Irizpideen xehetasunak",
+  "yourFeedback": "Zure feedbacka",
+  "additionalCriteriaFeedbackHeading": "Irizpideen feedback gehigarria",
+  "yourTotalScore": "Zure puntuazio osoa",
+  "scoreOutOfPoints": "{score} / {points} puntu",
+  "studentAssignment": "{student}: {assignment} zeregina",
+  "downloadPDF": "Deskargatu PDFa",
+  "displayMode1": "1. modua",
+  "displayMode2": "2. modua",
+  "twoWindows": "Bi leiho"
 }

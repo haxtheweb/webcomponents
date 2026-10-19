@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Budata ndekọ dị ka txt",
+  "downloadChatLog": "Budata ndekọ mkparịta ụka",
+  "resetChat": "Tọgharịa mkparịta ụka",
+  "toggleDataCollection": "Gbanwee nchịkọta data",
+  "dataCollection": "Nchịkọta data",
+  "toggleDeveloperMode": "Gbanwee ọnọdụ onye mmepụta",
+  "exitFullView": "Pụọ na nlele zuru oke",
+  "enterFullView": "Banye na nlele zuru oke",
+  "hideInterface": "Zoo ihu ọrụ",
+  "resetChatConfirm": "Tọgharịa mkparịta ụka?",
+  "downloadBeforeResetConfirm": "Budata ndekọ mkparịta ụka tupu ị tọgharịa?",
+  "dataCollectionOn": "A ga-eji mkparịta ụka gị zụọ ụdị AI anyị",
+  "dataCollectionOff": "A gaghị eji mkparịta ụka gị zụọ ụdị AI anyị"
+}

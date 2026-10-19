@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Բեռնվում է...",
   "youTubeStartLoading": "Սեղմեք նվագարկել։",
   "youTubeTranscriptLabel": "Սղագրությունը կբեռնվի, երբ մեդիան սկսի նվագարկվել։",
-  "audioDescriptionLabel": "Աուդիո նկարագրություն"
+  "audioDescriptionLabel": "Աուդիո նկարագրություն",
+  "openOnYouTube": "Բացել YouTube-ում"
 }

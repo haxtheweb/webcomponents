@@ -10,5 +10,9 @@
   "save": "Lagre",
   "noDescription": "Ingen beskrivelse tilgjengelig.",
   "details": "Detaljer",
-  "loadingInventory": "Laster inn fullstendig blokkoversikt…"
+  "loadingInventory": "Laster inn fullstendig blokkoversikt…",
+  "selectAllButton": "Velg alle",
+  "deselectAllButton": "Fjern alle valg",
+  "selectedOfAvailable": "{selected} valgt / {total} tilgjengelig",
+  "savingBlocksFailed": "Lagring av blokker mislyktes: {error}"
 }

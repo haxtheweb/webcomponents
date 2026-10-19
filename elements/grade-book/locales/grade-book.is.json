@@ -43,5 +43,22 @@
   "emailAddress": "Senda þessum nemanda tölvupóst",
   "notes": "Athugasemdir",
   "interests": "Áhugamál",
-  "profileImageFor": "Prófílmynd fyrir"
+  "profileImageFor": "Prófílmynd fyrir",
+  "fileSystem": "Skráakerfi",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL-endapunktur (JSON)",
+  "jsonDataBlob": "JSON-gagnablob",
+  "additionalCriteriaFeedback": "Viðbótarendurgjöf fyrir {criteria}",
+  "outOfPoints": "/ {points} stig",
+  "feedbackReport": "Endurgjafarskýrsla",
+  "criteriaDetails": "Upplýsingar um viðmið",
+  "yourFeedback": "Endurgjöfin þín",
+  "additionalCriteriaFeedbackHeading": "Viðbótarendurgjöf fyrir viðmið",
+  "yourTotalScore": "Heildareinkunn þín",
+  "scoreOutOfPoints": "{score} / {points} stig",
+  "studentAssignment": "Verkefni {assignment} hjá {student}",
+  "downloadPDF": "Sækja PDF",
+  "displayMode1": "Hamur 1",
+  "displayMode2": "Hamur 2",
+  "twoWindows": "Tveir gluggar"
 }

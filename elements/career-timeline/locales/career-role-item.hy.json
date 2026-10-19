@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Դերի անվանում",
+  "describeYourRole": "Նկարագրեք ձեր դերն այստեղ...",
+  "present": "Ներկայացնել",
+  "skills": "Հմտություններ՝",
+  "skillsAndMore": "{skills} և ևս +{count}",
+  "yearShort": "{count} տ.",
+  "yearsShort": "{count} տ.",
+  "monthShort": "{count} ամ.",
+  "monthsShort": "{count} ամ."
+}

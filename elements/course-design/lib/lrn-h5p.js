@@ -1,8 +1,9 @@
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
-export class LrnH5p extends LitElement {
+export class LrnH5p extends I18NMixin(LitElement) {
   static get properties() {
     return {
       _editing: { type: Boolean },
@@ -11,6 +12,15 @@ export class LrnH5p extends LitElement {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      edit: "edit",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this._editing = false;
     this._disposer = autorun(() => {
       const _mobx_val_0 = toJS(store.editMode);
@@ -109,7 +119,7 @@ export class LrnH5p extends LitElement {
                 target="_blank"
                 rel="noopener noreferrer"
                 href="${editUrl}"
-                >edit</a
+                >${this.t.edit}</a
               >`
             : ``}
           <slot></slot>

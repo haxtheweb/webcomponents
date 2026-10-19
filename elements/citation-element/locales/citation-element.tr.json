@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Atıf",
+  "licenseBySa": "Atıf-AynıLisanslaPaylaş",
+  "licenseByNd": "Atıf-Türetilemez",
+  "licenseByNc": "Atıf-GayriTicari",
+  "licenseByNcSa": "Atıf-GayriTicari-AynıLisanslaPaylaş",
+  "licenseByNcNd": "Atıf-GayriTicari-Türetilemez",
+  "citationWithLicense": "{creator} tarafından hazırlanan {title}, {license} ile lisanslanmıştır. Erişim tarihi: {date}.",
+  "citationWithoutLicense": "{creator} tarafından hazırlanan {title}. Erişim tarihi: {date}.",
+  "licenseGraphic": "{license} grafiği"
+}

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Navdêrî",
+  "licenseBySa": "Navdêrî-LiHevParvekirin",
+  "licenseByNd": "Navdêrî-Nebidarêjkirin",
+  "licenseByNc": "Navdêrî-Nebazirganî",
+  "licenseByNcSa": "Navdêrî-Nebazirganî-LiHevParvekirin",
+  "licenseByNcNd": "Navdêrî-Nebazirganî-Nebidarêjkirin",
+  "citationWithLicense": "{title} ji aliyê {creator}, di bin {license} de lîsansdar. Gihîştin {date}.",
+  "citationWithoutLicense": "{title} ji aliyê {creator}. Gihîştin {date}.",
+  "licenseGraphic": "Grafîka {license}"
+}

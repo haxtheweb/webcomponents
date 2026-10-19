@@ -1,4 +1,11 @@
 {
   "readMore": "Tovább olvasom",
-  "home": "Kezdőlap"
+  "home": "Kezdőlap",
+  "anchorLinkCopied": "Horgonyhivatkozás másolva!",
+  "skipToContent": "Ugrás a tartalomra",
+  "changeTheme": "Téma módosítása",
+  "siteSections": "Webhelyszakaszok",
+  "pageOfTotal": "{current}. oldal / {total}",
+  "siteGenerated": "Webhely generálva: {date}",
+  "licenseGraphic": "{license} ábra"
 }

@@ -7,5 +7,7 @@
   "userAccessGranted": "Хэрэглэгчид амжилттай эрх олголоо!",
   "userNotFound": "Хэрэглэгч олдсонгүй эсвэл эрхгүй байна",
   "loadingAddingUser": "Хэрэглэгч нэмж байна...",
-  "grantAccessTo": "Эрх олгох:"
+  "grantAccessTo": "Эрх олгох:",
+  "networkErrorTryAgain": "Сүлжээний алдаа гарлаа. Дахин оролдоно уу.",
+  "characterWillAppear": "Хэрэглэгчийн нэр оруулахад дүр гарч ирнэ"
 }

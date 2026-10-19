@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "تھیماں لوڈ نئیں ہو سکیاں: {error}",
+  "noThemesForView": "ایس ویو لئی کوئی تھیم دستیاب نئیں۔",
+  "active": "چالو",
+  "themeIsActive": "{name} تھیم چالو اے",
+  "applyTheme": "{name} تھیم لاؤ",
+  "apply": "لاؤ",
+  "preview": "جھلک",
+  "name": "ناں",
+  "element": "عنصر",
+  "description": "تفصیل",
+  "action": "کارروائی",
+  "loadingThemes": "تھیماں لوڈ ہو رہیاں نیں...",
+  "themesShown": "{count} تھیماں وکھائیاں",
+  "themesShownDefaults": "{count} تھیماں وکھائیاں (app-hax ڈیفالٹ)",
+  "availableHaxcmsThemes": "دستیاب HAXcms تھیماں",
+  "gallery": "گیلری",
+  "table": "جدول"
+}

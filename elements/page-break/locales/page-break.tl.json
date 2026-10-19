@@ -21,5 +21,12 @@
   "publish": "I-publish",
   "unpublish": "I-unpublish",
   "savePage": "I-save ang pahina",
-  "cancel": "Kanselahin"
+  "cancel": "Kanselahin",
+  "delete": "Burahin",
+  "editTitle": "I-edit ang pamagat",
+  "editIcon": "I-edit ang Icon",
+  "agent": "Agent",
+  "pageLockedUnlockToEdit": "Naka-lock ang pahinang ito. I-unlock muna ito para ma-edit.",
+  "pageLockedUnlockToChangePublishStatus": "Naka-lock ang pahinang ito. I-unlock muna ito para mabago ang status ng pag-publish.",
+  "pageLockedUnlockToDelete": "Naka-lock ang pahinang ito. I-unlock muna ito para mabura."
 }

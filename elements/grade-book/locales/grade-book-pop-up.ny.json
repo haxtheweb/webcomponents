@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Ntchito ya wophunzira",
   "openInNewWindow": "Tsegulani pa zenera latsopano",
-  "submitted": "Yatumizidwa"
+  "submitted": "Yatumizidwa",
+  "previousStudent": "Wophunzira wam'mbuyo",
+  "nextStudent": "Wophunzira wotsatira",
+  "previousAssignment": "Ntchito yam'mbuyo",
+  "nextAssignment": "Ntchito yotsatira"
 }

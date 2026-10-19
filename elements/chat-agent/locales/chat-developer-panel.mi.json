@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Rangitaki kōrerorero kaiwhakamahi ripanga papatohu",
+  "consoleTableUserText": "console.table() rangitaki kōrerorero kaiwhakamahi",
+  "consoleTableUserTooltip": "Tā i te Rangitaki Kōrerorero Kaiwhakamahi hei Ripanga ki te Papatohu",
+  "consoleTableMerlinLabel": "Rangitaki kōrerorero merlin ripanga papatohu",
+  "consoleTableMerlinText": "console.table() rangitaki kōrerorero merlin",
+  "consoleTableMerlinTooltip": "Tā i te Rangitaki Kōrerorero a Merlin hei Ripanga ki te Papatohu",
+  "consoleTableAllLabel": "Rangitaki kōrerorero katoa ripanga papatohu",
+  "consoleTableAllText": "console.table() rangitaki kōrerorero katoa",
+  "consoleTableAllTooltip": "Tā i te Rangitaki Kōrerorero Katoa hei Ripanga ki te Papatohu",
+  "downloadChatLogJson": "Tikiake rangitaki kōrerorero hei .json",
+  "downloadChatLogJsonTooltip": "Tikiake Rangitaki Kōrerorero hei .json"
+}

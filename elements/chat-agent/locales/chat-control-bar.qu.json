@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Qillqasqata txt hina uraqachiy",
+  "downloadChatLog": "Rimanakuy Qillqasqata Uraqachiy",
+  "resetChat": "Rimanakuyta Kutichiy",
+  "toggleDataCollection": "Willakuy Huñuyta T'ikray",
+  "dataCollection": "Willakuy Huñuy",
+  "toggleDeveloperMode": "Desarrollador Kayta T'ikray",
+  "exitFullView": "Hunt'asqa Qhawaymanta Lluqsiy",
+  "enterFullView": "Hunt'asqa Qhawayman Yaykuy",
+  "hideInterface": "Interfazta Pakay",
+  "resetChatConfirm": "Rimanakuyta kutichinkichu?",
+  "downloadBeforeResetConfirm": "Manaraq kutichichkaspa rimanakuy qillqasqata uraqachinkichu?",
+  "dataCollectionOn": "Rimanakuyniykikunaqa AI modelonchikkunata yachachinapaq llamk'achisqa kanqa",
+  "dataCollectionOff": "Rimanakuyniykikunaqa mana AI modelonchikkunata yachachinapaq llamk'achisqa kanqachu"
+}

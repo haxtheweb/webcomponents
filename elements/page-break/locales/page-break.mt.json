@@ -22,6 +22,13 @@
   "unpublish": "Neħħi mill-pubblikazzjoni",
   "savePage": "Issejvja l-paġna",
   "cancel": "Ikkanċella",
+  "delete": "Ħassar",
+  "editTitle": "Editja t-titlu",
+  "editIcon": "Editja l-Ikona",
+  "agent": "Aġent",
+  "pageLockedUnlockToEdit": "Din il-paġna hija msakkra. Iftaħha l-ewwel biex teditjaha.",
+  "pageLockedUnlockToChangePublishStatus": "Din il-paġna hija msakkra. Iftaħha l-ewwel biex tibdel l-istatus tal-pubblikazzjoni.",
+  "pageLockedUnlockToDelete": "Din il-paġna hija msakkra. Iftaħha l-ewwel biex tħassarha.",
   "pageDetails": "Dettalji tal-paġna",
   "clickToUnlock": "Ikklikkja biex tiftaħ"
 }

@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Mata Duree Gahee",
+  "describeYourRole": "Gahee kee asitti ibsi...",
+  "present": "Dhiyeessi",
+  "skills": "Dandeettiiwwan:",
+  "skillsAndMore": "{skills} fi +{count} dabalataa",
+  "yearShort": "w {count}",
+  "yearsShort": "w {count}",
+  "monthShort": "j {count}",
+  "monthsShort": "j {count}"
+}

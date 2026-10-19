@@ -54,5 +54,6 @@
   "requirementUppercase": "Unu majuskla litero",
   "requirementLowercase": "Unu minuskla litero",
   "requirementNumber": "Unu cifero",
-  "requirementSymbol": "Unu simbolo"
+  "requirementSymbol": "Unu simbolo",
+  "haxcmsMascotAlt": "Maskoto HAXcms Mondvojaĝanto"
 }

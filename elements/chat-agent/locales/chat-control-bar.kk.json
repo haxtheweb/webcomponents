@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Журналды txt ретінде жүктеп алу",
+  "downloadChatLog": "Чат журналын жүктеп алу",
+  "resetChat": "Чатты қалпына келтіру",
+  "toggleDataCollection": "Деректер жинауды қосу/өшіру",
+  "dataCollection": "Деректер жинау",
+  "toggleDeveloperMode": "Әзірлеуші режимін қосу/өшіру",
+  "exitFullView": "Толық көріністен шығу",
+  "enterFullView": "Толық көрініске өту",
+  "hideInterface": "Интерфейсті жасыру",
+  "resetChatConfirm": "Чатты қалпына келтіру керек пе?",
+  "downloadBeforeResetConfirm": "Қалпына келтірмес бұрын чат журналын жүктеп аласыз ба?",
+  "dataCollectionOn": "Сөйлесулеріңіз біздің AI модельдерімізді үйрету үшін пайдаланылады",
+  "dataCollectionOff": "Сөйлесулеріңіз біздің AI модельдерімізді үйрету үшін пайдаланылмайды"
+}

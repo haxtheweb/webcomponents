@@ -43,5 +43,22 @@
   "emailAddress": "Trimite un e-mail acestui student",
   "notes": "Notițe",
   "interests": "Interese",
-  "profileImageFor": "Imagine de profil pentru"
+  "profileImageFor": "Imagine de profil pentru",
+  "fileSystem": "Sistem de fișiere",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "Endpoint URL (JSON)",
+  "jsonDataBlob": "Bloc de date JSON",
+  "additionalCriteriaFeedback": "Feedback suplimentar pentru {criteria}",
+  "outOfPoints": "/ {points} pct.",
+  "feedbackReport": "Raport de feedback",
+  "criteriaDetails": "Detaliile criteriilor",
+  "yourFeedback": "Feedbackul tău",
+  "additionalCriteriaFeedbackHeading": "Feedback suplimentar pe criterii",
+  "yourTotalScore": "Scorul tău total",
+  "scoreOutOfPoints": "{score} / {points} pct.",
+  "studentAssignment": "Tema {assignment} a lui {student}",
+  "downloadPDF": "Descarcă PDF",
+  "displayMode1": "Modul 1",
+  "displayMode2": "Modul 2",
+  "twoWindows": "Două ferestre"
 }

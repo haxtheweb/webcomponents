@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- پیش‌فرض: صفحه اول --",
+  "details": "جزئیات",
+  "title": "عنوان",
+  "titleDescription": "نام سایت",
+  "homePage": "صفحه اصلی",
+  "homePageDescription": "صفحه‌ای که به‌عنوان صفحه فرود / صفحه اصلی پیش‌فرض استفاده شود",
+  "advanced": "پیشرفته",
+  "serviceWorker": "افزودن service worker به صفحه پویا",
+  "serviceWorkerDescription": "اگر کاربران باید همیشه بلافاصله آخرین خروجی سرور را ببینند، این را غیرفعال کنید.",
+  "forceBrowserUpgrade": "اجبار به ارتقای مرورگر",
+  "forceBrowserUpgradeDescription": "پیش از بارگذاری تجربه سایت، مرورگرهای همیشه‌به‌روز الزامی باشند.",
+  "unableToLoadSiteDetails": "بارگذاری جزئیات سایت ممکن نشد.",
+  "noSiteDetails": "هیچ جزئیاتی از سایت در دسترس نیست.",
+  "save": "ذخیره"
+}

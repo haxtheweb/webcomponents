@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Fane {xOfY}",
+  "xOfY": "{order} av {total}",
+  "endOfTab": "Slutt på fane {xOfY}. Tilbake til {tabs}.",
+  "tabs": "faner"
+}

@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Изтегляне на дневника като txt",
+  "downloadChatLog": "Изтегляне на дневника на чата",
+  "resetChat": "Нулиране на чата",
+  "toggleDataCollection": "Превключване на събирането на данни",
+  "dataCollection": "Събиране на данни",
+  "toggleDeveloperMode": "Превключване на режима за разработчици",
+  "exitFullView": "Изход от пълния изглед",
+  "enterFullView": "Пълен изглед",
+  "hideInterface": "Скриване на интерфейса",
+  "resetChatConfirm": "Нулиране на чата?",
+  "downloadBeforeResetConfirm": "Да се изтегли ли дневникът на чата преди нулирането?",
+  "dataCollectionOn": "Разговорите ви ще бъдат използвани за обучение на нашите AI модели",
+  "dataCollectionOff": "Разговорите ви няма да бъдат използвани за обучение на нашите AI модели"
+}

@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Ma setgħux jitgħabbew it-temi: {error}",
+  "noThemesForView": "M'hemm l-ebda tema disponibbli għal din il-veduta.",
+  "active": "Attiva",
+  "themeIsActive": "It-tema {name} hija attiva",
+  "applyTheme": "Applika t-tema {name}",
+  "apply": "Applika",
+  "preview": "Previżjoni",
+  "name": "Isem",
+  "element": "Element",
+  "description": "Deskrizzjoni",
+  "action": "Azzjoni",
+  "loadingThemes": "Qed jitgħabbew it-temi...",
+  "themesShown": "{count} temi murija",
+  "themesShownDefaults": "{count} temi murija (defaults ta' app-hax)",
+  "availableHaxcmsThemes": "Temi HAXcms Disponibbli",
+  "gallery": "Gallerija",
+  "table": "Tabella"
+}

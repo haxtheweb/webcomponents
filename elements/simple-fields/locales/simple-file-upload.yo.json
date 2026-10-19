@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Ju àwọn fáìlì sílẹ̀ síbí",
+  "uploadQueue": "Ìlà ìgbéjáde",
+  "pending": "Ń dúró",
+  "preparing": "Ń múra sílẹ̀",
+  "uploading": "Ń gbé sókè",
+  "complete": "Ó ti parí",
+  "aborted": "A dá a dúró",
+  "cancelled": "A fagilé e",
+  "error": "Àṣìṣe",
+  "errorWithStatus": "Àṣìṣe: {status}",
+  "cancel": "Fagilé",
+  "cancelUploadOf": "Fagilé ìgbéjáde {name}",
+  "retry": "Tún gbìyànjú",
+  "retryUploadOf": "Tún gbìyànjú ìgbéjáde {name}",
+  "remove": "Yọ kúrò",
+  "removeFromQueue": "Yọ {name} kúrò nínú ìlà",
+  "fileTypeNotAccepted": "A kò gba irú fáìlì yìí: {name}",
+  "uploadFailed": "Ìgbéjáde kùnà: {status}",
+  "networkError": "Àṣìṣe nẹ́tíwọ́ọ̀kì"
+}

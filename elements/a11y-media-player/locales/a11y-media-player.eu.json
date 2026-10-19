@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Kargatzen...",
   "youTubeStartLoading": "Sakatu erreproduzitu.",
   "youTubeTranscriptLabel": "Transkripzioa multimedia erreproduzitzen hasten denean kargatuko da.",
-  "audioDescriptionLabel": "Audio-deskribapena"
+  "audioDescriptionLabel": "Audio-deskribapena",
+  "openOnYouTube": "Ireki YouTube-n"
 }

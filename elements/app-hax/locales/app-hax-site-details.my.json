@@ -1,0 +1,18 @@
+{
+  "copy": "ကူးယူရန်",
+  "download": "ဒေါင်းလုဒ်",
+  "archive": "မော်ကွန်းတင်ရန်",
+  "copyOperation": "ကူးယူ",
+  "downloadOperation": "ဒေါင်းလုဒ်လုပ်",
+  "archiveOperation": "မော်ကွန်းတင်",
+  "created": "ဖန်တီးခဲ့သည်",
+  "updated": "အပ်ဒိတ်လုပ်ခဲ့သည်",
+  "pages": "စာမျက်နှာများ",
+  "url": "URL",
+  "confirm": "အတည်ပြုရန်",
+  "cancel": "မလုပ်တော့ပါ",
+  "siteOperationConfirmTitle": "{siteName} ကို {operationName} မလား?",
+  "siteOperationConfirmMessage": "{siteName} ကို {operation} ရန် သေချာပါသလား?",
+  "siteOperationSuccessful": "{siteName} {operation} အောင်မြင်ပါပြီ!",
+  "siteOperationFailed": "{siteName} {operation} မအောင်မြင်ပါ"
+}

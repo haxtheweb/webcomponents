@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Uveďte původ",
+  "licenseBySa": "Uveďte původ-Zachovejte licenci",
+  "licenseByNd": "Uveďte původ-Nezpracovávejte",
+  "licenseByNc": "Uveďte původ-Neužívejte komerčně",
+  "licenseByNcSa": "Uveďte původ-Neužívejte komerčně-Zachovejte licenci",
+  "licenseByNcNd": "Uveďte původ-Neužívejte komerčně-Nezpracovávejte",
+  "licenseGraphic": "Grafika {license}",
+  "workByCreator": "{title}, autor: {creator}",
+  "workByCreatorLicensed": "{title}, autor: {creator}, je licencováno pod {license}.",
+  "permissionsBeyondScope": "Oprávnění nad rámec této licence jsou k dispozici {link}.",
+  "author": "(autor)",
+  "onTheLicensingDetailsPage": "na stránce s podrobnostmi o licenci"
+}

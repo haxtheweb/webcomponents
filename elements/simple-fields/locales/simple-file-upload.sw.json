@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Dondosha faili hapa",
+  "uploadQueue": "Foleni ya kupakia",
+  "pending": "Inasubiri",
+  "preparing": "Inaandaa",
+  "uploading": "Inapakia",
+  "complete": "Imekamilika",
+  "aborted": "Imekatizwa",
+  "cancelled": "Imeghairiwa",
+  "error": "Hitilafu",
+  "errorWithStatus": "Hitilafu: {status}",
+  "cancel": "Ghairi",
+  "cancelUploadOf": "Ghairi upakiaji wa {name}",
+  "retry": "Jaribu tena",
+  "retryUploadOf": "Jaribu tena kupakia {name}",
+  "remove": "Ondoa",
+  "removeFromQueue": "Ondoa {name} kwenye foleni",
+  "fileTypeNotAccepted": "Aina ya faili haikubaliki: {name}",
+  "uploadFailed": "Kupakia kumeshindwa: {status}",
+  "networkError": "Hitilafu ya mtandao"
+}

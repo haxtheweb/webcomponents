@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "ገጽታዎችን መጫን አልተሳካም: {error}",
+  "noThemesForView": "ለዚህ እይታ ምንም ገጽታዎች የሉም።",
+  "active": "ንቁ",
+  "themeIsActive": "የ{name} ገጽታ ንቁ ነው",
+  "applyTheme": "የ{name} ገጽታን ተግብር",
+  "apply": "ተግብር",
+  "preview": "ቅድመ እይታ",
+  "name": "ስም",
+  "element": "አካል",
+  "description": "መግለጫ",
+  "action": "እርምጃ",
+  "loadingThemes": "ገጽታዎችን በመጫን ላይ...",
+  "themesShown": "{count} ገጽታዎች ታይተዋል",
+  "themesShownDefaults": "{count} ገጽታዎች ታይተዋል (የapp-hax ነባሪዎች)",
+  "availableHaxcmsThemes": "የሚገኙ የHAXcms ገጽታዎች",
+  "gallery": "ማዕከለ-ስዕላት",
+  "table": "ሰንጠረዥ"
+}

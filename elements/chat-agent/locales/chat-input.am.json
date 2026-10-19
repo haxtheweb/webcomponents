@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "ቀደም ሲል የተላከ መልእክት አሳይ (ላይ)",
+  "displayPreviousMessageDown": "ቀደም ሲል የተላከ መልእክት አሳይ (ታች)",
+  "sendPrompt": "ጥያቄ ላክ",
+  "sendPromptToMerlin": "ጥያቄን ወደ Merlin ላክ",
+  "shortenPrompt": "እባክዎ ጥያቄዎን ከ{limit} ቁምፊዎች ወደማይበልጥ ያሳጥሩ።"
+}

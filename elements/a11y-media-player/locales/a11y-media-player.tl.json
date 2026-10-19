@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Naglo-load...",
   "youTubeStartLoading": "Pindutin ang play.",
   "youTubeTranscriptLabel": "Maglo-load ang transcript kapag nag-play ang media.",
-  "audioDescriptionLabel": "Audio Description"
+  "audioDescriptionLabel": "Audio Description",
+  "openOnYouTube": "Buksan sa YouTube"
 }

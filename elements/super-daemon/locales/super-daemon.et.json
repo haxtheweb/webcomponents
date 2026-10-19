@@ -36,5 +36,7 @@
   "clickToDoAnything": "Kliki, et teha midagi!",
   "moreDetails": "Rohkem detaile",
   "details": "Üksikasjad",
-  "saved": "Salvestatud"
+  "saved": "Salvestatud",
+  "opensInNewWindow": "Avaneb uues aknas",
+  "resultsCount": "{count} tulemust"
 }

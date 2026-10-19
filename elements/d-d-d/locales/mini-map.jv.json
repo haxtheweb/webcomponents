@@ -1,0 +1,17 @@
+{
+  "editNodes": "Sunting Simpul",
+  "editLines": "Sunting Garis",
+  "reset": "Reset",
+  "save": "Simpen",
+  "cancel": "Batal",
+  "delete": "Busak",
+  "type": "Jinis:",
+  "topic": "Topik",
+  "subsection": "Subbagean",
+  "name": "Jeneng:",
+  "enterName": "Lebokake Jeneng",
+  "url": "URL:",
+  "enterUrl": "Lebokake URL",
+  "activeNode": "Simpul Aktif?",
+  "nodeId": "Simpul {id}"
+}

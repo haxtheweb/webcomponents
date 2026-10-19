@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Веза сидра копирана!",
+  "skipToContent": "Пређи на садржај",
+  "changePalette": "Промени палету",
+  "primaryLinks": "Примарне везе",
+  "socialLinks": "Друштвене везе",
+  "myProfile": "Мој профил",
+  "profileImageOf": "Слика профила: {name}",
+  "profileImage": "Слика профила",
+  "linkCardProfile": "Профил картице веза",
+  "emptyStateLinks": "Додајте ставке менија највишег нивоа у site.json да бисте приказали дугмад веза.",
+  "titleOnPlatform": "{title} на {platform}",
+  "openPlatform": "Отвори {platform}",
+  "paletteUpdated": "Палета боја је ажурирана на опцију {number}."
+}

@@ -20,6 +20,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@haxtheweb/date-card/lib/date-chip.js";
 import "@haxtheweb/accent-card/accent-card.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 /**
  * @title Haxor blog
@@ -28,8 +29,8 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
  * @demo demo/index.html
  * @element haxor-slevin
  */
-class HaxorSlevin extends HAXCMSThemeParts(
-  SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)),
+class HaxorSlevin extends I18NMixin(
+  HAXCMSThemeParts(SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme))),
 ) {
   static get styles() {
     return [
@@ -346,14 +347,16 @@ class HaxorSlevin extends HAXCMSThemeParts(
   }
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer"
+        >${this.t.skipToContent}</a
+      >
       <header class="header-wrapper">
         <div>
           <site-modal
             @site-modal-click="${this.siteModalClick}"
             icon="icons:search"
-            title="Search site"
-            button-label="Search"
+            title="${this.t.searchSite}"
+            button-label="${this.t.search}"
             dark
           >
             <site-search></site-search>
@@ -362,11 +365,11 @@ class HaxorSlevin extends HAXCMSThemeParts(
         <div>
           <simple-icon-button-lite
             class="backbutton"
-            label="Home"
+            label="${this.t.home}"
             @click="${this._goBack}"
             icon="${this.icon}"
           >
-            <span class="hide-small">Home</span>
+            <span class="hide-small">${this.t.home}</span>
           </simple-icon-button-lite>
         </div>
         <site-region name="header"></site-region>
@@ -465,12 +468,12 @@ class HaxorSlevin extends HAXCMSThemeParts(
           )}
           <nav
             class="social-float hide-small ${this.stateClass}"
-            aria-label="Social links"
+            aria-label="${this.t.socialLinks}"
           >
             <ul>
               <li>
                 <social-share-link
-                  title="Share on twitter"
+                  title="${this.t.shareOnTwitter}"
                   button-style
                   mode="icon-only"
                   message="${this.shareMsg}"
@@ -480,7 +483,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
               </li>
               <li>
                 <social-share-link
-                  title="Share on LinkedIn"
+                  title="${this.t.shareOnLinkedIn}"
                   button-style
                   mode="icon-only"
                   message="${this.shareMsg}"
@@ -491,7 +494,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
               </li>
               <li>
                 <social-share-link
-                  title="Share on Facebook"
+                  title="${this.t.shareOnFacebook}"
                   button-style
                   mode="icon-only"
                   url="${this.shareUrl}"
@@ -502,7 +505,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
               </li>
               <li>
                 <social-share-link
-                  title="Share on Pinterest"
+                  title="${this.t.shareOnPinterest}"
                   button-style
                   mode="icon-only"
                   message="${this.shareMsg}"
@@ -521,15 +524,18 @@ class HaxorSlevin extends HAXCMSThemeParts(
                 class="hide-small"
               ></simple-icon-lite>
               <span class="hide-small">
-                Never miss a story from <strong>${this.title}</strong> use RSS
-                today!
+                ${this.t.neverMissAStory
+                  .split("{title}")
+                  .map((part, i) =>
+                    i === 0 ? part : html`<strong>${this.title}</strong>${part}`,
+                  )}
               </span>
               <span class="rss">
                 <site-rss-button type="atom"></site-rss-button>
                 <site-rss-button type="rss"></site-rss-button>
               </span>
               <site-share-widget
-                alt="Share on social media"
+                alt="${this.t.shareOnSocialMedia}"
               ></site-share-widget>
             </div>
           </footer>
@@ -621,6 +627,25 @@ class HaxorSlevin extends HAXCMSThemeParts(
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      searchSite: "Search site",
+      search: "Search",
+      home: "Home",
+      socialLinks: "Social links",
+      shareOnTwitter: "Share on twitter",
+      shareOnLinkedIn: "Share on LinkedIn",
+      shareOnFacebook: "Share on Facebook",
+      shareOnPinterest: "Share on Pinterest",
+      neverMissAStory: "Never miss a story from {title} use RSS today!",
+      shareOnSocialMedia: "Share on social media",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     // to avoid error
     this.icon = "icons:search";
     this.__disposer = [];

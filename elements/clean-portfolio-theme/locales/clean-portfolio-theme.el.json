@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Ο σύνδεσμος αγκύρωσης αντιγράφηκε!",
+  "skipToContent": "Μετάβαση στο περιεχόμενο",
+  "siteHome": "Αρχική ιστοτόπου",
+  "mainNavigation": "Κύρια πλοήγηση",
+  "toggleMenu": "Εναλλαγή μενού",
+  "changeTheme": "Αλλαγή θέματος",
+  "breadcrumb": "Διαδρομή πλοήγησης",
+  "tagFilter": "Φίλτρο ετικέτας:",
+  "all": "Όλα",
+  "pageNumberOfTotal": "Αριθμός σελίδας: {current} από {total}",
+  "siteGenerated": "Ο ιστότοπος δημιουργήθηκε: {date}",
+  "copyright": "Πνευματικά δικαιώματα: {year} {author}",
+  "viewContentByTag": "Προβολή περιεχομένου ανά ετικέτα",
+  "licenseGraphic": "Γραφικό {license}"
+}

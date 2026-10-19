@@ -789,6 +789,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.__linkClickHandlers = new WeakMap();
     this.t = {
       addContent: "Add Content",
+      cantBeTransformed: "Sorry, this can not be transformed!",
     };
     // double key press counter
     this.timesClickedArrowDown = 0;
@@ -2862,7 +2863,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
     } else {
       if (!testOnly) {
-        HAXStore.toast("Sorry, this can not be transformed!", 5000);
+        HAXStore.toast(this.t.cantBeTransformed, 5000);
       }
     }
     return haxElements;

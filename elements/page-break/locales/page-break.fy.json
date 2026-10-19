@@ -22,6 +22,13 @@
   "unpublish": "Publikaasje ynlûke",
   "savePage": "Side bewarje",
   "cancel": "Annulearje",
+  "delete": "Wiskje",
+  "editTitle": "Titel bewurkje",
+  "editIcon": "Ikoan bewurkje",
+  "agent": "Agint",
+  "pageLockedUnlockToEdit": "Dizze side is beskoattele. Untskoattelje him earst om te bewurkjen.",
+  "pageLockedUnlockToChangePublishStatus": "Dizze side is beskoattele. Untskoattelje him earst om de publikaasjestatus te wizigjen.",
+  "pageLockedUnlockToDelete": "Dizze side is beskoattele. Untskoattelje him earst om te wiskjen.",
   "pageDetails": "Side-details",
   "clickToUnlock": "Klik om te ûntgrinzeljen"
 }

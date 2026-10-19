@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Download Log as txt",
+  "downloadChatLog": "Download Chat Log",
+  "resetChat": "Reset Chat",
+  "toggleDataCollection": "Toggle Data Collection",
+  "dataCollection": "Data Collection",
+  "toggleDeveloperMode": "Toggle Developer Mode",
+  "exitFullView": "Exit Full View",
+  "enterFullView": "Enter Full View",
+  "hideInterface": "Hide Interface",
+  "resetChatConfirm": "Reset the chat?",
+  "downloadBeforeResetConfirm": "Download the chat log before you reset?",
+  "dataCollectionOn": "Your conversations will be used to train our AI models",
+  "dataCollectionOff": "Your conversations will not be used to train our AI models"
+}

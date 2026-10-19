@@ -5,5 +5,9 @@
   "buttons": "Botons",
   "futureButtonConfiguration": "Aviat es podran configurar botons personalitzats de l'editor.",
   "save": "Desa",
-  "saving": "S'està desant…"
+  "saving": "S'està desant…",
+  "novice": "Principiant",
+  "expert": "Expert",
+  "toolbarPreviewAlt": "Previsualització de la barra d'eines d'edició per a {audience}",
+  "savingEditorSettingsFailed": "Ha fallat el desament de la configuració de l'editor: {error}"
 }

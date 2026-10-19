@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "در حال پویش رجیستری Web Component برای عناصر HAX بیشتر..",
+  "enabled": "فعال",
+  "disabled": "غیرفعال",
+  "details": "جزئیات",
+  "tags": "برچسب‌ها:",
+  "tagName": "نام برچسب:",
+  "developerUsage": "نحوه استفاده توسعه‌دهنده:",
+  "demo": "نمایش آزمایشی",
+  "popUpDemo": "نمایش آزمایشی در پنجره",
+  "demoOf": "نمایش آزمایشی {tag}"
+}

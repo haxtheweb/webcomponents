@@ -1,5 +1,12 @@
 {
   "readMore": "阅读更多",
   "home": "首页",
+  "anchorLinkCopied": "锚点链接已复制！",
+  "skipToContent": "跳到内容",
+  "changeTheme": "更换主题",
+  "siteSections": "站点栏目",
+  "pageOfTotal": "第 {current} 页，共 {total} 页",
+  "siteGenerated": "站点生成于：{date}",
+  "licenseGraphic": "{license} 图标",
   "title": "标题"
 }

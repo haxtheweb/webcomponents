@@ -22,6 +22,13 @@
   "unpublish": "Veröffentlichung aufheben",
   "savePage": "Seite speichern",
   "cancel": "Abbrechen",
+  "delete": "Löschen",
+  "editTitle": "Titel bearbeiten",
+  "editIcon": "Symbol bearbeiten",
+  "agent": "Agent",
+  "pageLockedUnlockToEdit": "Diese Seite ist gesperrt. Entsperre sie zuerst, um sie zu bearbeiten.",
+  "pageLockedUnlockToChangePublishStatus": "Diese Seite ist gesperrt. Entsperre sie zuerst, um den Veröffentlichungsstatus zu ändern.",
+  "pageLockedUnlockToDelete": "Diese Seite ist gesperrt. Entsperre sie zuerst, um sie zu löschen.",
   "pageDetails": "Seitendetails",
   "clickToUnlock": "Zum Entsperren klicken"
 }

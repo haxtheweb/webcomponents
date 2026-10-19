@@ -54,5 +54,6 @@
   "requirementUppercase": "Einn hástafur",
   "requirementLowercase": "Einn lágstafur",
   "requirementNumber": "Ein tala",
-  "requirementSymbol": "Eitt tákn"
+  "requirementSymbol": "Eitt tákn",
+  "haxcmsMascotAlt": "HAXcms-heimsflakkarinn, lukkudýr"
 }

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Нема резултата",
+  "viewsRecordHeading": "Сними",
+  "viewsTitleImage": "Слика: {title}",
+  "viewsTitlePreview": "Преглед: {title}",
+  "viewsNoTimelineRecords": "Нема записа са датумима за приказ временске линије.",
+  "viewsTimelineTitle": "Временска линија: {title}",
+  "viewsNoChartField": "Није пронађено нумеричко поље за приказ графикона.",
+  "viewsChartingValue": "Графикон: {value}",
+  "viewsChartingValueByLabel": "Графикон: {value} по {label}",
+  "viewsChartTitle": "Графикон: {title}",
+  "viewsNoTreeRecords": "Нема хијерархијских записа за приказ стабла.",
+  "viewsNoGalleryRecords": "Нема записа слика за приказ галерије.",
+  "viewsNoPlaylistRecords": "Нема записа медија за приказ листе за репродукцију.",
+  "fetchFailed": "Преузимање није успело ({status})",
+  "unableToLoadViewData": "Није могуће учитати податке приказа.",
+  "noResultsFound": "Нису пронађени резултати.",
+  "refreshView": "Освежи приказ",
+  "breakIntoStaticContent": "Претвори у статички садржај",
+  "viewsOpenRecord": "Отвори запис"
+}

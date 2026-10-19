@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Loading...",
   "youTubeStartLoading": "Press play.",
   "youTubeTranscriptLabel": "Transcript will load once media plays.",
-  "audioDescriptionLabel": "Audio Description"
+  "audioDescriptionLabel": "Audio Description",
+  "openOnYouTube": "Open on YouTube"
 }

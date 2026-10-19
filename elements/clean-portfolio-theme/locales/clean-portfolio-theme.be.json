@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Спасылка-якар скапіравана!",
+  "skipToContent": "Перайсці да змесціва",
+  "siteHome": "Галоўная сайта",
+  "mainNavigation": "Асноўная навігацыя",
+  "toggleMenu": "Пераключыць меню",
+  "changeTheme": "Змяніць тэму",
+  "breadcrumb": "Навігацыйны ланцужок",
+  "tagFilter": "Фільтр па тэгах:",
+  "all": "Усе",
+  "pageNumberOfTotal": "Нумар старонкі: {current} з {total}",
+  "siteGenerated": "Сайт згенераваны: {date}",
+  "copyright": "Аўтарскае права: {year} {author}",
+  "viewContentByTag": "Паказаць змесціва па тэгу",
+  "licenseGraphic": "Значок {license}"
+}

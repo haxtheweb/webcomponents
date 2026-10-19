@@ -1,0 +1,11 @@
+{
+  "theme": "Thema",
+  "active": "Gweithredol",
+  "selected": "Wedi'i ddewis",
+  "noPreview": "Dim rhagolwg",
+  "currentlyActiveAndSelected": "Thema weithredol a dewisedig ar hyn o bryd",
+  "currentlyActive": "Thema weithredol ar hyn o bryd",
+  "selectedToApplyOnSave": "Thema a ddewiswyd i'w chymhwyso wrth gadw",
+  "themeSelection": "Dewis thema",
+  "noThemesAvailable": "Dim themâu ar gael."
+}

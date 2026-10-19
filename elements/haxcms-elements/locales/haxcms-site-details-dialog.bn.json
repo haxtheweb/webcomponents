@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ডিফল্টভাবে প্রথম পেজ --",
+  "details": "বিস্তারিত",
+  "title": "শিরোনাম",
+  "titleDescription": "সাইটের নাম",
+  "homePage": "হোম পেজ",
+  "homePageDescription": "ডিফল্ট ল্যান্ডিং / হোম পেজ হিসেবে ব্যবহারের পেজ",
+  "advanced": "উন্নত",
+  "serviceWorker": "ডায়নামিক পেজে সার্ভিস ওয়ার্কার যোগ করুন",
+  "serviceWorkerDescription": "ব্যবহারকারীরা সবসময় সার্ভারের সর্বশেষ আউটপুট সঙ্গে সঙ্গে দেখবেন এমন হলে এটি বন্ধ করুন।",
+  "forceBrowserUpgrade": "ব্রাউজার আপগ্রেড বাধ্যতামূলক করুন",
+  "forceBrowserUpgradeDescription": "সাইট লোড করার আগে আধুনিক (evergreen) ব্রাউজার আবশ্যক করুন।",
+  "unableToLoadSiteDetails": "সাইটের বিবরণ লোড করা যায়নি।",
+  "noSiteDetails": "সাইটের কোনো বিবরণ উপলভ্য নেই।",
+  "save": "সংরক্ষণ করুন"
+}

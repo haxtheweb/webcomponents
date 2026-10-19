@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "ჟურნალის ჩამოტვირთვა txt-ად",
+  "downloadChatLog": "ჩატის ჟურნალის ჩამოტვირთვა",
+  "resetChat": "ჩატის ჩამოყრა",
+  "toggleDataCollection": "მონაცემთა შეგროვების გადართვა",
+  "dataCollection": "მონაცემთა შეგროვება",
+  "toggleDeveloperMode": "დეველოპერის რეჟიმის გადართვა",
+  "exitFullView": "სრული ხედიდან გასვლა",
+  "enterFullView": "სრულ ხედზე გადასვლა",
+  "hideInterface": "ინტერფეისის დამალვა",
+  "resetChatConfirm": "ჩამოვყაროთ ჩატი?",
+  "downloadBeforeResetConfirm": "ჩამოყრამდე ჩამოვტვირთოთ ჩატის ჟურნალი?",
+  "dataCollectionOn": "თქვენი საუბრები გამოყენებული იქნება ჩვენი AI მოდელების გასაწვრთნელად",
+  "dataCollectionOff": "თქვენი საუბრები არ იქნება გამოყენებული ჩვენი AI მოდელების გასაწვრთნელად"
+}

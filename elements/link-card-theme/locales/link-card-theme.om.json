@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Liinkiin qabduu garagalfameera!",
+  "skipToContent": "Gara qabiyyeetti darbi",
+  "changePalette": "Paaleetii jijjiiri",
+  "primaryLinks": "Liinkiiwwan ijoo",
+  "socialLinks": "Liinkiiwwan hawaasaa",
+  "myProfile": "Piroofaayilii koo",
+  "profileImageOf": "Suuraa piroofaayilii {name}",
+  "profileImage": "Suuraa piroofaayilii",
+  "linkCardProfile": "Piroofaayilii kaardii liinkii",
+  "emptyStateLinks": "Qabduuwwan liinkii agarsiisuuf site.json keessatti wantoota baafata sadarkaa olaanaa dabali.",
+  "titleOnPlatform": "{title} {platform} irratti",
+  "openPlatform": "{platform} bani",
+  "paletteUpdated": "Paaleetiin halluu gara filannoo {number} tti haaromfameera."
+}

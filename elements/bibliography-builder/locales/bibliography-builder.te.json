@@ -1,3 +1,8 @@
 {
-  "title": "సూచనలు"
+  "title": "సూచనలు",
+  "export": "ఎగుమతి",
+  "exportCitations": "ఉల్లేఖనాలను ఎగుమతి చేయండి",
+  "copy": "కాపీ చేయి",
+  "exportCitationFormat": "ఉల్లేఖన ఫార్మాట్‌ను ఎగుమతి చేయండి",
+  "selectCitationFormatBelow": "క్రింద ఒక ఉల్లేఖన ఫార్మాట్‌ను ఎంచుకోండి"
 }

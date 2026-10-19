@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- па змаўчанні першая старонка --",
+  "details": "Падрабязнасці",
+  "title": "Загаловак",
+  "titleDescription": "Назва сайта",
+  "homePage": "Галоўная старонка",
+  "homePageDescription": "Старонка, якая выкарыстоўваецца як пачатковая / галоўная па змаўчанні",
+  "advanced": "Дадаткова",
+  "serviceWorker": "Дадаць service worker на дынамічную старонку",
+  "serviceWorkerDescription": "Адключыце, калі карыстальнікі заўсёды павінны адразу бачыць апошні вывад сервера.",
+  "forceBrowserUpgrade": "Прымусовае абнаўленне браўзера",
+  "forceBrowserUpgradeDescription": "Патрабаваць сучасныя браўзеры перад загрузкай сайта.",
+  "unableToLoadSiteDetails": "Не ўдалося загрузіць звесткі пра сайт.",
+  "noSiteDetails": "Няма даступных звестак пра сайт.",
+  "save": "Захаваць"
+}

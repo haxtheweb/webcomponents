@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Vertoon voorheen gestuurde boodskap (op)",
+  "displayPreviousMessageDown": "Vertoon voorheen gestuurde boodskap (af)",
+  "sendPrompt": "Stuur aansporing",
+  "sendPromptToMerlin": "Stuur aansporing na Merlin",
+  "shortenPrompt": "Verkort asseblief jou aansporing tot hoogstens {limit} karakters."
+}

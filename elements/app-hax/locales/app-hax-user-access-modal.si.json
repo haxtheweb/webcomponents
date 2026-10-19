@@ -7,5 +7,7 @@
   "userAccessGranted": "පරිශීලක ප්‍රවේශය සාර්ථකව ලබා දෙන ලදී!",
   "userNotFound": "පරිශීලකයා හමු නොවීය හෝ අනුමැතිය නැත",
   "loadingAddingUser": "පරිශීලකයා එක් කරමින්...",
-  "grantAccessTo": "ප්‍රවේශය ලබා දෙන්න:"
+  "grantAccessTo": "ප්‍රවේශය ලබා දෙන්න:",
+  "networkErrorTryAgain": "ජාල දෝෂයක් ඇති විය. කරුණාකර නැවත උත්සාහ කරන්න.",
+  "characterWillAppear": "ඔබ පරිශීලක නාමයක් ඇතුළු කළ විට චරිතය දිස් වේ"
 }

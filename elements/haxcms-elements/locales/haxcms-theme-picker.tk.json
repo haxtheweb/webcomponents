@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Işjeň",
+  "selected": "Saýlanan",
+  "noPreview": "Deslapky görnüş ýok",
+  "currentlyActiveAndSelected": "Häzir işjeň we saýlanan tema",
+  "currentlyActive": "Häzir işjeň tema",
+  "selectedToApplyOnSave": "Ýatda saklananda ulanyljak saýlanan tema",
+  "themeSelection": "Tema saýlamak",
+  "noThemesAvailable": "Elýeterli tema ýok."
+}

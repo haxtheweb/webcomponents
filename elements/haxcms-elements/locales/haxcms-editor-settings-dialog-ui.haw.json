@@ -5,5 +5,9 @@
   "buttons": "Nā pihi",
   "futureButtonConfiguration": "E hiki koke mai ana ka hoʻonohonoho pihi mea hoʻoponopono maʻamau ʻole.",
   "save": "Mālama",
-  "saving": "Ke mālama nei…"
+  "saving": "Ke mālama nei…",
+  "novice": "Malihini",
+  "expert": "Loea",
+  "toolbarPreviewAlt": "Hōʻike mua pā hoʻoponopono {audience}",
+  "savingEditorSettingsFailed": "Ua hāʻule ka mālama ʻana i nā hoʻonohonoho mea hoʻoponopono: {error}"
 }

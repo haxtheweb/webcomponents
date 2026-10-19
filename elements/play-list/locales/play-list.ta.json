@@ -1,0 +1,11 @@
+{
+  "playlist": "இயக்கப் பட்டியல்",
+  "carousel": "சுழல் காட்சி",
+  "slide": "ஸ்லைடு",
+  "slideNumber": "ஸ்லைடு {number}",
+  "slideOfTotal": "ஸ்லைடு {number} / {total}",
+  "previousSlide": "முந்தைய ஸ்லைடு",
+  "nextSlide": "அடுத்த ஸ்லைடு",
+  "slidePages": "ஸ்லைடு பக்கங்கள்",
+  "goToSlide": "ஸ்லைடு {number} க்குச் செல்"
+}

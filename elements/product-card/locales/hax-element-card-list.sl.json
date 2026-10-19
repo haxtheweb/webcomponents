@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Pregledovanje registra spletnih komponent za več elementov HAX ..",
+  "enabled": "Omogočeno",
+  "disabled": "Onemogočeno",
+  "details": "Podrobnosti",
+  "tags": "Oznake:",
+  "tagName": "Ime oznake:",
+  "developerUsage": "Uporaba za razvijalce:",
+  "demo": "Predstavitev",
+  "popUpDemo": "Pojavna predstavitev",
+  "demoOf": "Predstavitev {tag}"
+}

@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Mengimbas Daftar Komponen Web untuk lebih banyak elemen HAX..",
+  "enabled": "Didayakan",
+  "disabled": "Dilumpuhkan",
+  "details": "Butiran",
+  "tags": "Tag:",
+  "tagName": "Nama tag:",
+  "developerUsage": "Penggunaan pembangun:",
+  "demo": "Demo",
+  "popUpDemo": "Demo timbul",
+  "demoOf": "Demo {tag}"
+}

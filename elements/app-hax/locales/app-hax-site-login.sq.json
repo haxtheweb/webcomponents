@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Fut emrin e përdoruesit",
+  "invalidUsernameOrPassword": "Emër përdoruesi ose fjalëkalim i pavlefshëm",
+  "welcomeLetsGo": "Mirë se erdhe {username}! Le të fillojmë!",
+  "enterYourUsername": "Fut emrin tënd të përdoruesit",
+  "username": "Emri i përdoruesit",
+  "next": "Tjetri",
+  "welcomeBack": "Mirë se u ktheve, {username}!",
+  "notYou": "Nuk je ti?",
+  "enterYourPassword": "Fut fjalëkalimin tënd",
+  "password": "Fjalëkalimi",
+  "togglePasswordDisplay": "Shfaq/fshih fjalëkalimin",
+  "login": "Hyr"
+}

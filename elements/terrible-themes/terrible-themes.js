@@ -34,6 +34,19 @@ class TerribleThemes extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      terribleQuote:
+        '"If you\'re flammable and have legs, you are never blocking a fire exit." - Mitch Hedberg',
+      logIn: "Log in",
+      room407: "Room 407",
+      pageContent: "Page content",
+      pageNavigation: "Page navigation",
+      previous: "Previous",
+      next: "Next",
+    };
     // do NOT reassign this.__disposer here: the constructor chain
     // (HAXCMSLitElementTheme + HAXCMSThemeParts + HAXCMSRememberRoute)
     // already pushed its constructor-time autoruns into it; a fresh array
@@ -308,7 +321,9 @@ class TerribleThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer"
+        >${this.t.skipToContent}</a
+      >
       <table
         role="presentation"
         border="4"
@@ -333,8 +348,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
                 <tbody>
                   <tr>
                     <td align="left">
-                      "If you're flammable and have legs, you are never blocking
-                      a fire exit." - Mitch Hedberg
+                      ${this.t.terribleQuote}
                     </td>
                     <td align="right" width="100">
                       <p class="loginState">
@@ -343,7 +357,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
                           aria-disabled="true"
                           role="link"
                           tabindex="-1"
-                          >Log in</a
+                          >${this.t.logIn}</a
                         >
                       </p>
                     </td>
@@ -357,7 +371,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
                   width="100%"
                   height="200"
                   border="0"
-                  alt="Room 407"
+                  alt="${this.t.room407}"
                   align="absbottom"
                   vspace="0"
                   hspace="0"
@@ -425,12 +439,12 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                       <section
                                         id="slot"
                                         role="main"
-                                        aria-label="Page content"
+                                        aria-label="${this.t.pageContent}"
                                       >
                                         <site-active-title></site-active-title>
                                         <slot></slot>
                                       </section>
-                                      <aside aria-label="Page navigation">
+                                      <aside aria-label="${this.t.pageNavigation}">
                                         <site-menu-button
                                           hide-label
                                           type="prev"
@@ -440,7 +454,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                             .__prevPageLabelChanged}"
                                         >
                                           <div slot="suffix" class="wrapper">
-                                            <div class="top">Previous</div>
+                                            <div class="top">${this.t.previous}</div>
                                             <div class="bottom">
                                               ${this.prevPage}
                                             </div>
@@ -455,7 +469,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                             .__nextPageLabelChanged}"
                                         >
                                           <div slot="prefix" class="wrapper">
-                                            <div class="top">Next</div>
+                                            <div class="top">${this.t.next}</div>
                                             <div class="bottom">
                                               ${this.nextPage}
                                             </div>

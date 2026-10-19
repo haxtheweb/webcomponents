@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Konsolltalva við kjattlogg brúkarans",
+  "consoleTableUserText": "console.table() kjattlogg brúkarans",
+  "consoleTableUserTooltip": "Prenta kjattlogg brúkarans sum talvu í konsollina",
+  "consoleTableMerlinLabel": "Konsolltalva við Merlin-kjattlogg",
+  "consoleTableMerlinText": "console.table() Merlin-kjattlogg",
+  "consoleTableMerlinTooltip": "Prenta Merlin-kjattlogg sum talvu í konsollina",
+  "consoleTableAllLabel": "Konsolltalva við øllum kjattlogginum",
+  "consoleTableAllText": "console.table() allur kjattloggurin",
+  "consoleTableAllTooltip": "Prenta allan kjattloggin sum talvu í konsollina",
+  "downloadChatLogJson": "Tak kjattlogg niður sum .json",
+  "downloadChatLogJsonTooltip": "Tak kjattlogg niður sum .json"
+}

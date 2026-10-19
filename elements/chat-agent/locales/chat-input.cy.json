@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Dangos neges a anfonwyd yn flaenorol (i fyny)",
+  "displayPreviousMessageDown": "Dangos neges a anfonwyd yn flaenorol (i lawr)",
+  "sendPrompt": "Anfon Anogwr",
+  "sendPromptToMerlin": "Anfon Anogwr at Merlin",
+  "shortenPrompt": "Byrhewch eich anogwr i ddim mwy na {limit} nod."
+}

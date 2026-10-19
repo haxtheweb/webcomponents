@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- تلواله لومړۍ پاڼه --",
+  "details": "جزئیات",
+  "title": "سرلیک",
+  "titleDescription": "د سایټ نوم",
+  "homePage": "کور پاڼه",
+  "homePageDescription": "هغه پاڼه چې د تلوالې ننوتلو / کور پاڼې په توګه وکارول شي",
+  "advanced": "پرمختللی",
+  "serviceWorker": "متحرکې پاڼې ته service worker ورزیات کړئ",
+  "serviceWorkerDescription": "که کارنان باید تل سمدستي د سرور وروستۍ پایله وویني، دا غیر فعال کړئ.",
+  "forceBrowserUpgrade": "د براوزر تازه کول اجباري کړئ",
+  "forceBrowserUpgradeDescription": "د سایټ د تجربې له پورته کولو مخکې تل تازه براوزرونه اړین کړئ.",
+  "unableToLoadSiteDetails": "د سایټ جزیات نه شي پورته کېدای.",
+  "noSiteDetails": "د سایټ هېڅ جزیات شتون نه لري.",
+  "save": "خوندي کول"
+}

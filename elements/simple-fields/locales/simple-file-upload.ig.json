@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Tọpụ faịlụ ebe a",
+  "uploadQueue": "Ahịrị ibulite",
+  "pending": "Na-echere",
+  "preparing": "Na-akwado",
+  "uploading": "Na-ebulite",
+  "complete": "Agwụla",
+  "aborted": "Akwụsịrị",
+  "cancelled": "Kagburu",
+  "error": "Njehie",
+  "errorWithStatus": "Njehie: {status}",
+  "cancel": "Kagbuo",
+  "cancelUploadOf": "Kagbuo ibulite {name}",
+  "retry": "Nwaa ọzọ",
+  "retryUploadOf": "Nwaa ibulite {name} ọzọ",
+  "remove": "Wepụ",
+  "removeFromQueue": "Wepụ {name} n'ahịrị",
+  "fileTypeNotAccepted": "Anabataghị ụdị faịlụ: {name}",
+  "uploadFailed": "Ibulite dara: {status}",
+  "networkError": "Njehie netwọk"
+}

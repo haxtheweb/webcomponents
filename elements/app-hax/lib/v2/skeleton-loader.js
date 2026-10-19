@@ -10,7 +10,8 @@ export class SkeletonLoader {
   /**
    * Load skeleton from JSON data and prepare for app-hax usage
    * @param {Object} skeletonData - Raw skeleton JSON data
-   * @param {Object} options - Loading options
+   * @param {Object} options - Loading options (options.t: translated strings
+   *   from the calling element, e.g. t.siteTemplate)
    * @returns {Object} Processed skeleton ready for app-hax
    */
   static loadSkeleton(skeletonData, options = {}) {
@@ -28,7 +29,10 @@ export class SkeletonLoader {
       useCaseImage:
         skeletonData.meta.useCaseImage || options.defaultImage || "",
       useCaseIcon: options.defaultIcons || [
-        { icon: "hax:site", tooltip: "Site Template" },
+        {
+          icon: "hax:site",
+          tooltip: (options.t && options.t.siteTemplate) || "Site Template",
+        },
       ],
       useCaseTag: this.extractTags(skeletonData),
       demoLink: skeletonData.meta.sourceUrl || "#",

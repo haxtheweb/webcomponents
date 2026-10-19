@@ -1,0 +1,11 @@
+{
+  "playlist": "Seznam skladeb",
+  "carousel": "karusel",
+  "slide": "snímek",
+  "slideNumber": "Snímek {number}",
+  "slideOfTotal": "Snímek {number} z {total}",
+  "previousSlide": "Předchozí snímek",
+  "nextSlide": "Další snímek",
+  "slidePages": "Stránky snímků",
+  "goToSlide": "Přejít na snímek {number}"
+}

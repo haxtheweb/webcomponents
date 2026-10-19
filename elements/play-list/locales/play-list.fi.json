@@ -1,0 +1,11 @@
+{
+  "playlist": "Soittolista",
+  "carousel": "karuselli",
+  "slide": "dia",
+  "slideNumber": "Dia {number}",
+  "slideOfTotal": "Dia {number}/{total}",
+  "previousSlide": "Edellinen dia",
+  "nextSlide": "Seuraava dia",
+  "slidePages": "Diasivut",
+  "goToSlide": "Siirry diaan {number}"
+}

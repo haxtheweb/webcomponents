@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Ankra ligilo kopiita!",
+  "skipToContent": "Salti al enhavo",
+  "siteHome": "Reteja hejmo",
+  "mainNavigation": "Ĉefa navigado",
+  "toggleMenu": "Baskuligi menuon",
+  "changeTheme": "Ŝanĝi etoson",
+  "breadcrumb": "Paneroj",
+  "tagFilter": "Etikeda filtrilo:",
+  "all": "Ĉiuj",
+  "pageNumberOfTotal": "Paĝnumero: {current} el {total}",
+  "siteGenerated": "Retejo generita: {date}",
+  "copyright": "Kopirajto: {year} {author}",
+  "viewContentByTag": "Vidi enhavon laŭ etikedo",
+  "licenseGraphic": "Grafikaĵo de {license}"
+}

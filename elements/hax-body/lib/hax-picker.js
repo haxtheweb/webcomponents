@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-element-demo.js";
@@ -16,7 +17,7 @@ import "@haxtheweb/simple-popover/lib/simple-popover-selection.js";
 @microcopy - the mental model for this element
  - data - this is the app data model for an element which expresses itself to hax
 */
-class HaxPicker extends LitElement {
+class HaxPicker extends I18NMixin(LitElement) {
   static get styles() {
     return [
       ...HaxComponentStyles,
@@ -77,6 +78,17 @@ class HaxPicker extends LitElement {
     this.selectionList = [];
     this.activePreview = null;
     this.pickerType = "gizmo";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      toggleFilters: "Toggle Filters",
+      filters: "Filters",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "hax",
+      basePath: import.meta.url + "/../../",
+    });
   }
   render() {
     return html`
@@ -84,7 +96,7 @@ class HaxPicker extends LitElement {
         ? html` <div id="filters">
             <simple-icon-button-lite
               icon="editable-table:filter${!this.filterOn ? "" : "-off"}"
-              label="Toggle Filters"
+              label="${this.t.toggleFilters}"
               tooltip-position="right"
               @click="${(e) => (this.filterOn = !this.filterOn)}"
             >
@@ -92,7 +104,7 @@ class HaxPicker extends LitElement {
             <simple-fields-field
               ?hidden="${!this.filterOn}"
               id="hax-gizmo-filters"
-              label="Filters"
+              label="${this.t.filters}"
               type="checkbox"
               .options="${this.keywords}"
               @value-changed="${this._handleFilters}"

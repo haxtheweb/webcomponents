@@ -1,0 +1,11 @@
+{
+  "licenseBy": "אַטריבוציע",
+  "licenseBySa": "אַטריבוציע גלײַך־טיילן",
+  "licenseByNd": "אַטריבוציע קיין דעריוואַטן",
+  "licenseByNc": "אַטריבוציע נישט־קאָמערציעל",
+  "licenseByNcSa": "אַטריבוציע נישט־קאָמערציעל גלײַך־טיילן",
+  "licenseByNcNd": "אַטריבוציע נישט־קאָמערציעל קיין דעריוואַטן",
+  "citationWithLicense": "{title} פֿון {creator}, ליצענצירט אונטער {license}. צוגעגריפֿן {date}.",
+  "citationWithoutLicense": "{title} פֿון {creator}. צוגעגריפֿן {date}.",
+  "licenseGraphic": "גראַפֿיק פֿון {license}"
+}

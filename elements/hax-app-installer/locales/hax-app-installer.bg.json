@@ -54,5 +54,6 @@
   "requirementUppercase": "Една главна буква",
   "requirementLowercase": "Една малка буква",
   "requirementNumber": "Една цифра",
-  "requirementSymbol": "Един специален символ"
+  "requirementSymbol": "Един специален символ",
+  "haxcmsMascotAlt": "Талисманът на HAXcms – Световният пътешественик"
 }

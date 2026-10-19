@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ankerlink kopieret!",
+  "skipToContent": "Spring til indhold",
+  "changePalette": "Skift palet",
+  "primaryLinks": "Primære links",
+  "socialLinks": "Sociale links",
+  "myProfile": "Min profil",
+  "profileImageOf": "Profilbillede af {name}",
+  "profileImage": "Profilbillede",
+  "linkCardProfile": "Profil med linkkort",
+  "emptyStateLinks": "Tilføj menupunkter på øverste niveau i site.json for at vise linkknapper.",
+  "titleOnPlatform": "{title} på {platform}",
+  "openPlatform": "Åbn {platform}",
+  "paletteUpdated": "Farvepalet opdateret til mulighed {number}."
+}

@@ -1,0 +1,18 @@
+{
+  "copy": "Copïo",
+  "download": "Llwytho i lawr",
+  "archive": "Archifo",
+  "copyOperation": "copïo",
+  "downloadOperation": "llwytho i lawr",
+  "archiveOperation": "archifo",
+  "created": "crëwyd",
+  "updated": "diweddarwyd",
+  "pages": "tudalennau",
+  "url": "URL",
+  "confirm": "Cadarnhau",
+  "cancel": "Canslo",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Ydych chi'n siŵr eich bod am {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} yn llwyddiannus!",
+  "siteOperationFailed": "{siteName}: methodd {operation}"
+}

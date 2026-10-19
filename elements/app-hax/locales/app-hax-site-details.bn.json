@@ -1,0 +1,18 @@
+{
+  "copy": "কপি করুন",
+  "download": "ডাউনলোড",
+  "archive": "আর্কাইভ",
+  "copyOperation": "কপি",
+  "downloadOperation": "ডাউনলোড",
+  "archiveOperation": "আর্কাইভ",
+  "created": "তৈরি হয়েছে",
+  "updated": "আপডেট হয়েছে",
+  "pages": "পেজ",
+  "url": "URL",
+  "confirm": "নিশ্চিত করুন",
+  "cancel": "বাতিল করুন",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "আপনি কি নিশ্চিত যে {siteName} {operation} করতে চান?",
+  "siteOperationSuccessful": "{siteName} {operation} সফল হয়েছে!",
+  "siteOperationFailed": "{siteName} {operation} ব্যর্থ হয়েছে"
+}

@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Пайдаланушы чат журналының консоль кестесі",
+  "consoleTableUserText": "console.table() пайдаланушы чат журналы",
+  "consoleTableUserTooltip": "Пайдаланушы чат журналын кесте ретінде консольге шығару",
+  "consoleTableMerlinLabel": "Merlin чат журналының консоль кестесі",
+  "consoleTableMerlinText": "console.table() merlin чат журналы",
+  "consoleTableMerlinTooltip": "Merlin чат журналын кесте ретінде консольге шығару",
+  "consoleTableAllLabel": "Толық чат журналының консоль кестесі",
+  "consoleTableAllText": "console.table() толық чат журналы",
+  "consoleTableAllTooltip": "Толық чат журналын кесте ретінде консольге шығару",
+  "downloadChatLogJson": "Чат журналын .json ретінде жүктеп алу",
+  "downloadChatLogJsonTooltip": "Чат журналын .json ретінде жүктеп алу"
+}

@@ -1,0 +1,14 @@
+{
+  "enterUserName": "ป้อนชื่อผู้ใช้",
+  "invalidUsernameOrPassword": "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง",
+  "welcomeLetsGo": "ยินดีต้อนรับ {username}! ไปกันเลย!",
+  "enterYourUsername": "ป้อนชื่อผู้ใช้ของคุณ",
+  "username": "ชื่อผู้ใช้",
+  "next": "ถัดไป",
+  "welcomeBack": "ยินดีต้อนรับกลับ {username}!",
+  "notYou": "ไม่ใช่คุณใช่ไหม?",
+  "enterYourPassword": "ป้อนรหัสผ่านของคุณ",
+  "password": "รหัสผ่าน",
+  "togglePasswordDisplay": "สลับการแสดงรหัสผ่าน",
+  "login": "เข้าสู่ระบบ"
+}

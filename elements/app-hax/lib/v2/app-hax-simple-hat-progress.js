@@ -1,13 +1,23 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-export class AppHaxSimpleHatProgress extends DDDSuper(LitElement) {
+export class AppHaxSimpleHatProgress extends I18NMixin(DDDSuper(LitElement)) {
   static get tag() {
     return "app-hax-simple-hat-progress";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      progressHat: "Progress Hat",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.progress = 0;
     this.max = 100;
   }
@@ -110,7 +120,7 @@ export class AppHaxSimpleHatProgress extends DDDSuper(LitElement) {
           class="hat-image"
           src="${new URL("../assets/images/HatBlank.svg", import.meta.url)
             .href}"
-          alt="Progress Hat"
+          alt="${this.t.progressHat}"
           loading="lazy"
           decoding="async"
           fetchpriority="low"

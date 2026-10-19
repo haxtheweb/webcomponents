@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Kullanıcı adını girin",
+  "invalidUsernameOrPassword": "Geçersiz Kullanıcı Adı veya Parola",
+  "welcomeLetsGo": "Hoş geldin {username}! Haydi başlayalım!",
+  "enterYourUsername": "Kullanıcı adınızı girin",
+  "username": "Kullanıcı adı",
+  "next": "Sonraki",
+  "welcomeBack": "Tekrar hoş geldin, {username}!",
+  "notYou": "Siz değil misiniz?",
+  "enterYourPassword": "Parolanızı girin",
+  "password": "Parola",
+  "togglePasswordDisplay": "Parola görünümünü değiştir",
+  "login": "Giriş"
+}

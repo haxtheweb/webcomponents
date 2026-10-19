@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- numatytasis – pirmasis puslapis --",
+  "details": "Išsami informacija",
+  "title": "Pavadinimas",
+  "titleDescription": "Svetainės pavadinimas",
+  "homePage": "Pagrindinis puslapis",
+  "homePageDescription": "Puslapis, naudojamas kaip numatytasis pradinis / pagrindinis puslapis",
+  "advanced": "Išplėstinės",
+  "serviceWorker": "Pridėti paslaugų darbuotoją (service worker) prie dinaminio puslapio",
+  "serviceWorkerDescription": "Išjunkite tai, jei naudotojai visada turėtų iškart matyti naujausią serverio išvestį.",
+  "forceBrowserUpgrade": "Priverstinai atnaujinti naršyklę",
+  "forceBrowserUpgradeDescription": "Prieš įkeliant svetainę reikalauti nuolat atnaujinamų naršyklių.",
+  "unableToLoadSiteDetails": "Nepavyko įkelti svetainės informacijos.",
+  "noSiteDetails": "Svetainės informacijos nėra.",
+  "save": "Išsaugoti"
+}

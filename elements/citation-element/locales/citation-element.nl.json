@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Naamsvermelding",
+  "licenseBySa": "Naamsvermelding-GelijkDelen",
+  "licenseByNd": "Naamsvermelding-GeenAfgeleideWerken",
+  "licenseByNc": "Naamsvermelding-NietCommercieel",
+  "licenseByNcSa": "Naamsvermelding-NietCommercieel-GelijkDelen",
+  "licenseByNcNd": "Naamsvermelding-NietCommercieel-GeenAfgeleideWerken",
+  "citationWithLicense": "{title} door {creator}, gelicentieerd onder {license}. Geraadpleegd op {date}.",
+  "citationWithoutLicense": "{title} door {creator}. Geraadpleegd op {date}.",
+  "licenseGraphic": "Afbeelding van {license}"
+}

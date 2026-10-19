@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "থিম লোড করা যায়নি: {error}",
+  "noThemesForView": "এই ভিউয়ের জন্য কোনো থিম উপলভ্য নেই।",
+  "active": "সক্রিয়",
+  "themeIsActive": "{name} থিম সক্রিয় আছে",
+  "applyTheme": "{name} থিম প্রয়োগ করুন",
+  "apply": "প্রয়োগ করুন",
+  "preview": "প্রিভিউ",
+  "name": "নাম",
+  "element": "এলিমেন্ট",
+  "description": "বিবরণ",
+  "action": "অ্যাকশন",
+  "loadingThemes": "থিম লোড হচ্ছে...",
+  "themesShown": "{count}টি থিম দেখানো হচ্ছে",
+  "themesShownDefaults": "{count}টি থিম দেখানো হচ্ছে (app-hax ডিফল্ট)",
+  "availableHaxcmsThemes": "উপলভ্য HAXcms থিম",
+  "gallery": "গ্যালারি",
+  "table": "টেবিল"
+}

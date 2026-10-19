@@ -1,0 +1,18 @@
+{
+  "copy": "Копировать",
+  "download": "Скачать",
+  "archive": "Архивировать",
+  "copyOperation": "копировать",
+  "downloadOperation": "скачать",
+  "archiveOperation": "архивировать",
+  "created": "создан",
+  "updated": "обновлён",
+  "pages": "страниц",
+  "url": "URL",
+  "confirm": "Подтвердить",
+  "cancel": "Отмена",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Вы уверены, что хотите {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: операция «{operation}» выполнена успешно!",
+  "siteOperationFailed": "{siteName}: операция «{operation}» не удалась"
+}

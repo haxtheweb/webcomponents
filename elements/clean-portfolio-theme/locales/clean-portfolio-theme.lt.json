@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Inkaro nuoroda nukopijuota!",
+  "skipToContent": "Pereiti prie turinio",
+  "siteHome": "Svetainės pradžia",
+  "mainNavigation": "Pagrindinė navigacija",
+  "toggleMenu": "Perjungti meniu",
+  "changeTheme": "Keisti temą",
+  "breadcrumb": "Naršymo kelias",
+  "tagFilter": "Žymų filtras:",
+  "all": "Visi",
+  "pageNumberOfTotal": "Puslapis: {current} iš {total}",
+  "siteGenerated": "Svetainė sugeneruota: {date}",
+  "copyright": "Autorių teisės: {year} {author}",
+  "viewContentByTag": "Peržiūrėti turinį pagal žymą",
+  "licenseGraphic": "{license} ženklas"
+}

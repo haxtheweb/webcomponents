@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "読み込み中...",
   "youTubeStartLoading": "再生を押してください。",
   "youTubeTranscriptLabel": "メディアの再生が始まるとトランスクリプトが読み込まれます。",
-  "audioDescriptionLabel": "音声解説"
+  "audioDescriptionLabel": "音声解説",
+  "openOnYouTube": "YouTubeで開く"
 }

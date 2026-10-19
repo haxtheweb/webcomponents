@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- 기본값: 첫 번째 페이지 --",
+  "details": "세부 정보",
+  "title": "제목",
+  "titleDescription": "사이트 이름",
+  "homePage": "홈 페이지",
+  "homePageDescription": "기본 랜딩 / 홈 페이지로 사용할 페이지",
+  "advanced": "고급",
+  "serviceWorker": "동적 페이지에 서비스 워커 추가",
+  "serviceWorkerDescription": "사용자가 항상 최신 서버 출력을 즉시 보아야 한다면 이 옵션을 끄세요.",
+  "forceBrowserUpgrade": "브라우저 업그레이드 강제",
+  "forceBrowserUpgradeDescription": "사이트를 불러오기 전에 최신(에버그린) 브라우저를 요구합니다.",
+  "unableToLoadSiteDetails": "사이트 세부 정보를 불러올 수 없습니다.",
+  "noSiteDetails": "사용 가능한 사이트 세부 정보가 없습니다.",
+  "save": "저장"
+}

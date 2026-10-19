@@ -22,6 +22,13 @@
   "unpublish": "非公開にする",
   "savePage": "ページを保存",
   "cancel": "キャンセル",
+  "delete": "削除",
+  "editTitle": "タイトルを編集",
+  "editIcon": "アイコンを編集",
+  "agent": "エージェント",
+  "pageLockedUnlockToEdit": "このページはロックされています。編集するには先にロックを解除してください。",
+  "pageLockedUnlockToChangePublishStatus": "このページはロックされています。公開状態を変更するには先にロックを解除してください。",
+  "pageLockedUnlockToDelete": "このページはロックされています。削除するには先にロックを解除してください。",
   "pageDetails": "ページの詳細",
   "clickToUnlock": "ロックを解除するためにクリック"
 }

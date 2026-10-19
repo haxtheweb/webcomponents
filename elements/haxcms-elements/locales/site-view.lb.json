@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Keng Resultater",
+  "viewsRecordHeading": "Ophuelen",
+  "viewsTitleImage": "Bild {title}",
+  "viewsTitlePreview": "Virschau vun {title}",
+  "viewsNoTimelineRecords": "Et gi keng datumsbezunnen Donnéeë fir eng Zäitlinn.",
+  "viewsTimelineTitle": "Zäitlinn {title}",
+  "viewsNoChartField": "Kee numerescht Feld fir en Diagramm fonnt.",
+  "viewsChartingValue": "Diagramm vu(n) {value}",
+  "viewsChartingValueByLabel": "Diagramm vu(n) {value} no {label}",
+  "viewsChartTitle": "Diagramm {title}",
+  "viewsNoTreeRecords": "Et gi keng hierarchesch Donnéeë fir eng Bamusiicht.",
+  "viewsNoGalleryRecords": "Et gi keng Biller fir eng Galerie.",
+  "viewsNoPlaylistRecords": "Et gi keng Medien fir eng Playlist.",
+  "fetchFailed": "Lueden ass feelgeschloen ({status})",
+  "unableToLoadViewData": "D'Donnéeë vun der Usiicht konnten net geluede ginn.",
+  "noResultsFound": "Keng Resultater fonnt.",
+  "refreshView": "Usiicht aktualiséieren",
+  "breakIntoStaticContent": "An statesche Inhalt ëmwandelen",
+  "viewsOpenRecord": "Agrag opmaachen"
+}

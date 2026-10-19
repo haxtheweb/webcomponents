@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Descarcă jurnalul ca txt",
+  "downloadChatLog": "Descarcă jurnalul conversației",
+  "resetChat": "Resetează conversația",
+  "toggleDataCollection": "Comută colectarea datelor",
+  "dataCollection": "Colectarea datelor",
+  "toggleDeveloperMode": "Comută modul dezvoltator",
+  "exitFullView": "Ieși din vizualizarea completă",
+  "enterFullView": "Intră în vizualizarea completă",
+  "hideInterface": "Ascunde interfața",
+  "resetChatConfirm": "Resetezi conversația?",
+  "downloadBeforeResetConfirm": "Descarci jurnalul conversației înainte de resetare?",
+  "dataCollectionOn": "Conversațiile tale vor fi folosite pentru antrenarea modelelor noastre AI",
+  "dataCollectionOff": "Conversațiile tale nu vor fi folosite pentru antrenarea modelelor noastre AI"
+}

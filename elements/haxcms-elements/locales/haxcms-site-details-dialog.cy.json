@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- y dudalen gyntaf yn ddiofyn --",
+  "details": "Manylion",
+  "title": "Teitl",
+  "titleDescription": "Enw'r wefan",
+  "homePage": "Hafan",
+  "homePageDescription": "Tudalen i'w defnyddio fel y dudalen lanio / hafan ddiofyn",
+  "advanced": "Uwch",
+  "serviceWorker": "Ychwanegu gweithiwr gwasanaeth at dudalen ddynamig",
+  "serviceWorkerDescription": "Analluogwch hwn os dylai defnyddwyr bob amser weld allbwn diweddaraf y gweinydd ar unwaith.",
+  "forceBrowserUpgrade": "Gorfodi uwchraddio'r porwr",
+  "forceBrowserUpgradeDescription": "Mynnu porwyr bytholwyrdd cyn llwytho profiad y wefan.",
+  "unableToLoadSiteDetails": "Methu llwytho manylion y wefan.",
+  "noSiteDetails": "Nid oes manylion gwefan ar gael.",
+  "save": "Cadw"
+}

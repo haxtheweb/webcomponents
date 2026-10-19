@@ -7,5 +7,7 @@
   "userAccessGranted": "Ulanyja elýeterlilik üstünlikli berildi!",
   "userNotFound": "Ulanyjy tapylmady ýa-da ygtyýarsyz",
   "loadingAddingUser": "Ulanyjy goşulýar...",
-  "grantAccessTo": "Elýeterlilik bermek:"
+  "grantAccessTo": "Elýeterlilik bermek:",
+  "networkErrorTryAgain": "Tor ýalňyşlygy ýüze çykdy. Gaýtadan synanyşyň.",
+  "characterWillAppear": "Ulanyjy adyny girizeniňizde keşp peýda bolar"
 }

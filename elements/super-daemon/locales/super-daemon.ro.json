@@ -36,5 +36,7 @@
   "clickToDoAnything": "Dă click pentru orice!",
   "moreDetails": "Mai multe detalii",
   "details": "Detalii",
-  "saved": "Salvat"
+  "saved": "Salvat",
+  "opensInNewWindow": "Se deschide într-o fereastră nouă",
+  "resultsCount": "Rezultate: {count}"
 }

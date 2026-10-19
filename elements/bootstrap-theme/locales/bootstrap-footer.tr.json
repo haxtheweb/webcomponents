@@ -1,0 +1,5 @@
+{
+  "pageNavigation": "Sayfa gezintisi",
+  "goToPreviousPage": "Önceki sayfaya git: {title}",
+  "goToNextPage": "Sonraki sayfaya git: {title}"
+}

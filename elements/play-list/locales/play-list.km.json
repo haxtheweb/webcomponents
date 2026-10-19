@@ -1,0 +1,11 @@
+{
+  "playlist": "បញ្ជីចាក់",
+  "carousel": "ការ៉ូសែល",
+  "slide": "ស្លាយ",
+  "slideNumber": "ស្លាយ {number}",
+  "slideOfTotal": "ស្លាយ {number} នៃ {total}",
+  "previousSlide": "ស្លាយមុន",
+  "nextSlide": "ស្លាយបន្ទាប់",
+  "slidePages": "ទំព័រស្លាយ",
+  "goToSlide": "ទៅកាន់ស្លាយ {number}"
+}

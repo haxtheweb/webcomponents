@@ -5,5 +5,9 @@
   "buttons": "Düymələr",
   "futureButtonConfiguration": "Redaktor düymələrinin fərdi tənzimlənməsi tezliklə əlavə olunacaq.",
   "save": "Saxla",
-  "saving": "Saxlanılır…"
+  "saving": "Saxlanılır…",
+  "novice": "Yeni başlayan",
+  "expert": "Ekspert",
+  "toolbarPreviewAlt": "{audience} redaktə alətlər panelinin önizləməsi",
+  "savingEditorSettingsFailed": "Redaktor parametrlərini saxlamaq alınmadı: {error}"
 }

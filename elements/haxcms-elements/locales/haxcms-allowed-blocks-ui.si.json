@@ -10,5 +10,9 @@
   "save": "සුරකින්න",
   "noDescription": "විස්තරයක් නොමැත.",
   "details": "විස්තර",
-  "loadingInventory": "සම්පූර්ණ කොටස් ලැයිස්තුව පූරණය වෙමින්…"
+  "loadingInventory": "සම්පූර්ණ කොටස් ලැයිස්තුව පූරණය වෙමින්…",
+  "selectAllButton": "සියල්ල තෝරන්න",
+  "deselectAllButton": "සියල්ල තේරීම ඉවත් කරන්න",
+  "selectedOfAvailable": "{selected} ක් තෝරා ඇත / {total} ක් ඇත",
+  "savingBlocksFailed": "කොටස් සුරැකීම අසාර්ථක විය: {error}"
 }

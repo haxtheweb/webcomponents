@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "טבלת קונסולה של יומן הצ'אט של המשתמש",
+  "consoleTableUserText": "console.table() של יומן הצ'אט של המשתמש",
+  "consoleTableUserTooltip": "הדפסת יומן הצ'אט של המשתמש כטבלה בקונסולה",
+  "consoleTableMerlinLabel": "טבלת קונסולה של יומן הצ'אט של merlin",
+  "consoleTableMerlinText": "console.table() של יומן הצ'אט של merlin",
+  "consoleTableMerlinTooltip": "הדפסת יומן הצ'אט של Merlin כטבלה בקונסולה",
+  "consoleTableAllLabel": "טבלת קונסולה של יומן הצ'אט המלא",
+  "consoleTableAllText": "console.table() של יומן הצ'אט המלא",
+  "consoleTableAllTooltip": "הדפסת יומן הצ'אט המלא כטבלה בקונסולה",
+  "downloadChatLogJson": "הורדת יומן הצ'אט כ-.json",
+  "downloadChatLogJsonTooltip": "הורדת יומן הצ'אט כ-.json"
+}

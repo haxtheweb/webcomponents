@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Oddaja študenta",
   "openInNewWindow": "Odpri v novem oknu",
-  "submitted": "Oddano"
+  "submitted": "Oddano",
+  "previousStudent": "Prejšnji študent",
+  "nextStudent": "Naslednji študent",
+  "previousAssignment": "Prejšnja naloga",
+  "nextAssignment": "Naslednja naloga"
 }

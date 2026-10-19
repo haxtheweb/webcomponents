@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "锚点链接已复制！",
+  "skipToContent": "跳到内容",
+  "siteHome": "站点主页",
+  "mainNavigation": "主导航",
+  "toggleMenu": "切换菜单",
+  "changeTheme": "更换主题",
+  "breadcrumb": "导航路径",
+  "tagFilter": "标签筛选：",
+  "all": "全部",
+  "pageNumberOfTotal": "页码：第 {current} 页，共 {total} 页",
+  "siteGenerated": "站点生成于：{date}",
+  "copyright": "版权所有：{year} {author}",
+  "viewContentByTag": "按标签查看内容",
+  "licenseGraphic": "{license} 图标"
+}

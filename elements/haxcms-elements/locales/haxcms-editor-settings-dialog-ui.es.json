@@ -5,5 +5,9 @@
   "buttons": "Botones",
   "futureButtonConfiguration": "Pronto estará disponible la configuración personalizada de los botones del editor.",
   "save": "Guardar",
-  "saving": "Guardando…"
+  "saving": "Guardando…",
+  "novice": "Principiante",
+  "expert": "Experto",
+  "toolbarPreviewAlt": "Vista previa de la barra de edición para {audience}",
+  "savingEditorSettingsFailed": "Error al guardar la configuración del editor: {error}"
 }

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "ප්‍රතිඵල නැත",
+  "viewsRecordHeading": "පටිගත කරන්න",
+  "viewsTitleImage": "{title} රූපය",
+  "viewsTitlePreview": "{title} පෙරදසුන",
+  "viewsNoTimelineRecords": "කාලරේඛා විදැහුම සඳහා දින-නැඹුරු වාර්තා නොමැත.",
+  "viewsTimelineTitle": "{title} කාලරේඛාව",
+  "viewsNoChartField": "ප්‍රස්ථාර විදැහුම සඳහා සංඛ්‍යාත්මක ක්ෂේත්‍රයක් හඳුනා නොගැනිණි.",
+  "viewsChartingValue": "{value} ප්‍රස්ථාරගත කරමින්",
+  "viewsChartingValueByLabel": "{label} අනුව {value} ප්‍රස්ථාරගත කරමින්",
+  "viewsChartTitle": "{title} ප්‍රස්ථාරය",
+  "viewsNoTreeRecords": "ගස් විදැහුම සඳහා ධුරාවලි වාර්තා නොමැත.",
+  "viewsNoGalleryRecords": "ගැලරි විදැහුම සඳහා රූප වාර්තා නොමැත.",
+  "viewsNoPlaylistRecords": "ධාවන ලැයිස්තු විදැහුම සඳහා මාධ්‍ය වාර්තා නොමැත.",
+  "fetchFailed": "ලබා ගැනීම අසාර්ථක විය ({status})",
+  "unableToLoadViewData": "දසුන් දත්ත පූරණය කළ නොහැක.",
+  "noResultsFound": "ප්‍රතිඵල හමු නොවීය.",
+  "refreshView": "දසුන නැවුම් කරන්න",
+  "breakIntoStaticContent": "ස්ථිතික අන්තර්ගතයට කඩන්න",
+  "viewsOpenRecord": "වාර්තාව විවෘත කරන්න"
+}

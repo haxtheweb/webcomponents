@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Հղում",
+  "licenseBySa": "Հղում–Տարածում նույն պայմաններով",
+  "licenseByNd": "Հղում–Առանց ածանցյալների",
+  "licenseByNc": "Հղում–Ոչ առևտրային",
+  "licenseByNcSa": "Հղում–Ոչ առևտրային–Տարածում նույն պայմաններով",
+  "licenseByNcNd": "Հղում–Ոչ առևտրային–Առանց ածանցյալների",
+  "licenseGraphic": "{license} պատկեր",
+  "workByCreator": "{title}, հեղինակ՝ {creator}",
+  "workByCreatorLicensed": "{title}, հեղինակ՝ {creator}, լիցենզավորված է {license} լիցենզիայով.",
+  "permissionsBeyondScope": "Այս լիցենզիայի շրջանակներից դուրս թույլտվությունները հասանելի են {link}.",
+  "author": "(հեղինակ)",
+  "onTheLicensingDetailsPage": "լիցենզավորման մանրամասների էջում"
+}

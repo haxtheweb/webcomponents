@@ -1,0 +1,17 @@
+{
+  "editNodes": "Editează nodurile",
+  "editLines": "Editează liniile",
+  "reset": "Resetează",
+  "save": "Salvează",
+  "cancel": "Anulează",
+  "delete": "Șterge",
+  "type": "Tip:",
+  "topic": "Subiect",
+  "subsection": "Subsecțiune",
+  "name": "Nume:",
+  "enterName": "Introdu numele",
+  "url": "URL:",
+  "enterUrl": "Introdu URL-ul",
+  "activeNode": "Nod activ?",
+  "nodeId": "Nodul {id}"
+}

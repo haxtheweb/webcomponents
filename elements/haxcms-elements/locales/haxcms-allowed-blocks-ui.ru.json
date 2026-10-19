@@ -10,5 +10,9 @@
   "save": "Сохранить",
   "noDescription": "Описание отсутствует.",
   "details": "Подробности",
-  "loadingInventory": "Загрузка полного списка блоков…"
+  "loadingInventory": "Загрузка полного списка блоков…",
+  "selectAllButton": "Выбрать все",
+  "deselectAllButton": "Снять выбор со всех",
+  "selectedOfAvailable": "Выбрано {selected} / доступно {total}",
+  "savingBlocksFailed": "Не удалось сохранить блоки: {error}"
 }

@@ -5,5 +5,9 @@
   "buttons": "Կոճակներ",
   "futureButtonConfiguration": "Խմբագրիչի կոճակների անհատական կարգավորումը շուտով հասանելի կլինի։",
   "save": "Պահպանել",
-  "saving": "Պահպանվում է…"
+  "saving": "Պահպանվում է…",
+  "novice": "Սկսնակ",
+  "expert": "Փորձառու",
+  "toolbarPreviewAlt": "{audience} խմբագրման գործիքագոտու նախադիտում",
+  "savingEditorSettingsFailed": "Խմբագրիչի կարգավորումների պահպանումը ձախողվեց՝ {error}"
 }

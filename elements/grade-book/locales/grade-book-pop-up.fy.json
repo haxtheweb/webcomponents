@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Ynlevering fan studint",
   "openInNewWindow": "Iepenje yn nij finster",
-  "submitted": "Ynlevere"
+  "submitted": "Ynlevere",
+  "previousStudent": "Foarige studint",
+  "nextStudent": "Folgjende studint",
+  "previousAssignment": "Foarige opdracht",
+  "nextAssignment": "Folgjende opdracht"
 }

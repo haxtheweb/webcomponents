@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "لا توجد نتائج",
+  "viewsRecordHeading": "تسجيل",
+  "viewsTitleImage": "صورة {title}",
+  "viewsTitlePreview": "معاينة {title}",
+  "viewsNoTimelineRecords": "لا توجد سجلات مرتبطة بتواريخ لعرض المخطط الزمني.",
+  "viewsTimelineTitle": "المخطط الزمني لـ {title}",
+  "viewsNoChartField": "لم يتم اكتشاف حقل رقمي لعرض المخطط البياني.",
+  "viewsChartingValue": "رسم {value} بيانيًا",
+  "viewsChartingValueByLabel": "رسم {value} بيانيًا حسب {label}",
+  "viewsChartTitle": "مخطط {title} البياني",
+  "viewsNoTreeRecords": "لا توجد سجلات هرمية لعرض الشجرة.",
+  "viewsNoGalleryRecords": "لا توجد سجلات صور لعرض المعرض.",
+  "viewsNoPlaylistRecords": "لا توجد سجلات وسائط لعرض قائمة التشغيل.",
+  "fetchFailed": "فشل الجلب ({status})",
+  "unableToLoadViewData": "تعذّر تحميل بيانات العرض.",
+  "noResultsFound": "لم يتم العثور على نتائج.",
+  "refreshView": "تحديث العرض",
+  "breakIntoStaticContent": "تحويل إلى محتوى ثابت",
+  "viewsOpenRecord": "فتح السجل"
+}

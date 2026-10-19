@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Tabblad {xOfY}",
+  "xOfY": "{order} van {total}",
+  "endOfTab": "Einde van tabblad {xOfY}. Terug naar {tabs}.",
+  "tabs": "tabbladen"
+}

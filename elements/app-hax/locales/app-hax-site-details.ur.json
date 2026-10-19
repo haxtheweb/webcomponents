@@ -1,0 +1,18 @@
+{
+  "copy": "کاپی کریں",
+  "download": "ڈاؤن لوڈ",
+  "archive": "آرکائیو",
+  "copyOperation": "کاپی",
+  "downloadOperation": "ڈاؤن لوڈ",
+  "archiveOperation": "آرکائیو",
+  "created": "بنایا گیا",
+  "updated": "اپ ڈیٹ کیا گیا",
+  "pages": "صفحات",
+  "url": "URL",
+  "confirm": "تصدیق کریں",
+  "cancel": "منسوخ کریں",
+  "siteOperationConfirmTitle": "{operationName} {siteName}؟",
+  "siteOperationConfirmMessage": "کیا آپ واقعی {siteName} کو {operation} کرنا چاہتے ہیں؟",
+  "siteOperationSuccessful": "{siteName} {operation} کامیاب!",
+  "siteOperationFailed": "{siteName} {operation} ناکام"
+}

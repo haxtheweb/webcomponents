@@ -1,0 +1,11 @@
+{
+  "playlist": "Rārangi pāpāho",
+  "carousel": "kōrari",
+  "slide": "kiriata",
+  "slideNumber": "Kiriata {number}",
+  "slideOfTotal": "Kiriata {number} o te {total}",
+  "previousSlide": "Kiriata o mua",
+  "nextSlide": "Kiriata e whai ake nei",
+  "slidePages": "Ngā whārangi kiriata",
+  "goToSlide": "Haere ki te kiriata {number}"
+}

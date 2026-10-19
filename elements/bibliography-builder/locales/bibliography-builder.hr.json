@@ -1,3 +1,8 @@
 {
-  "title": "Literatura"
+  "title": "Literatura",
+  "export": "Izvoz",
+  "exportCitations": "Izvoz citata",
+  "copy": "Kopiraj",
+  "exportCitationFormat": "Format izvoza citata",
+  "selectCitationFormatBelow": "Odaberite format citata u nastavku"
 }

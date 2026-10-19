@@ -1,0 +1,18 @@
+{
+  "copy": "പകർത്തുക",
+  "download": "ഡൗൺലോഡ്",
+  "archive": "ആർക്കൈവ്",
+  "copyOperation": "പകർത്തുക",
+  "downloadOperation": "ഡൗൺലോഡ് ചെയ്യുക",
+  "archiveOperation": "ആർക്കൈവ് ചെയ്യുക",
+  "created": "സൃഷ്ടിച്ചത്",
+  "updated": "അപ്ഡേറ്റ് ചെയ്തത്",
+  "pages": "പേജുകൾ",
+  "url": "URL",
+  "confirm": "സ്ഥിരീകരിക്കുക",
+  "cancel": "റദ്ദാക്കുക",
+  "siteOperationConfirmTitle": "{siteName} {operationName}?",
+  "siteOperationConfirmMessage": "{siteName} {operation} എന്ന് ഉറപ്പാണോ?",
+  "siteOperationSuccessful": "{siteName} {operation} വിജയിച്ചു!",
+  "siteOperationFailed": "{siteName} {operation} പരാജയപ്പെട്ടു"
+}

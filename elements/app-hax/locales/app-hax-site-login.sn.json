@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Isa zita remushandisi",
+  "invalidUsernameOrPassword": "Zita reMushandisi kana Pasiwedhi Hazvina Kunaka",
+  "welcomeLetsGo": "Mauya {username}! Ngatiende!",
+  "enterYourUsername": "Isa zita rako remushandisi",
+  "username": "Zita remushandisi",
+  "next": "Zvinotevera",
+  "welcomeBack": "Mauya zvakare, {username}!",
+  "notYou": "Hausi iwe?",
+  "enterYourPassword": "Isa pasiwedhi yako",
+  "password": "Pasiwedhi",
+  "togglePasswordDisplay": "Ratidza/vanza pasiwedhi",
+  "login": "Pinda"
+}

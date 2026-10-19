@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Elevens inlämning",
   "openInNewWindow": "Öppna i nytt fönster",
-  "submitted": "Inlämnad"
+  "submitted": "Inlämnad",
+  "previousStudent": "Föregående elev",
+  "nextStudent": "Nästa elev",
+  "previousAssignment": "Föregående uppgift",
+  "nextAssignment": "Nästa uppgift"
 }

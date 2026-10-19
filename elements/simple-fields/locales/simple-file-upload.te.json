@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "ఫైల్‌లను ఇక్కడ వదలండి",
+  "uploadQueue": "అప్‌లోడ్ క్యూ",
+  "pending": "పెండింగ్‌లో ఉంది",
+  "preparing": "సిద్ధమవుతోంది",
+  "uploading": "అప్‌లోడ్ అవుతోంది",
+  "complete": "పూర్తయింది",
+  "aborted": "ఆపివేయబడింది",
+  "cancelled": "రద్దు చేయబడింది",
+  "error": "లోపం",
+  "errorWithStatus": "లోపం: {status}",
+  "cancel": "రద్దు చేయి",
+  "cancelUploadOf": "{name} అప్‌లోడ్‌ను రద్దు చేయండి",
+  "retry": "మళ్లీ ప్రయత్నించు",
+  "retryUploadOf": "{name} అప్‌లోడ్‌ను మళ్లీ ప్రయత్నించండి",
+  "remove": "తీసివేయండి",
+  "removeFromQueue": "{name}ను క్యూ నుండి తీసివేయండి",
+  "fileTypeNotAccepted": "ఫైల్ రకం ఆమోదించబడలేదు: {name}",
+  "uploadFailed": "అప్‌లోడ్ విఫలమైంది: {status}",
+  "networkError": "నెట్‌వర్క్ లోపం"
+}

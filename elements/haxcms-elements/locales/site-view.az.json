@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Nəticə yoxdur",
+  "viewsRecordHeading": "Yazmaq",
+  "viewsTitleImage": "{title} şəkli",
+  "viewsTitlePreview": "{title} önizləməsi",
+  "viewsNoTimelineRecords": "Zaman xətti üçün tarix əsaslı qeyd yoxdur.",
+  "viewsTimelineTitle": "{title} zaman xətti",
+  "viewsNoChartField": "Diaqram üçün rəqəmli sahə aşkarlanmadı.",
+  "viewsChartingValue": "{value} diaqramı",
+  "viewsChartingValueByLabel": "{label} üzrə {value} diaqramı",
+  "viewsChartTitle": "{title} diaqramı",
+  "viewsNoTreeRecords": "Ağac görünüşü üçün iyerarxik qeyd yoxdur.",
+  "viewsNoGalleryRecords": "Qalereya üçün şəkil qeydi yoxdur.",
+  "viewsNoPlaylistRecords": "Pleylist üçün media qeydi yoxdur.",
+  "fetchFailed": "Sorğu alınmadı ({status})",
+  "unableToLoadViewData": "Görünüş məlumatlarını yükləmək mümkün olmadı.",
+  "noResultsFound": "Nəticə tapılmadı.",
+  "refreshView": "Görünüşü yenilə",
+  "breakIntoStaticContent": "Statik məzmuna çevir",
+  "viewsOpenRecord": "Qeydi aç"
+}

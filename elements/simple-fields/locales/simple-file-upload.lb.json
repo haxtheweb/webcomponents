@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Fichieren hei ofleeën",
+  "uploadQueue": "Eroplued-Schlaang",
+  "pending": "Am Gaang",
+  "preparing": "Gëtt preparéiert",
+  "uploading": "Gëtt eropgelueden",
+  "complete": "Fäerdeg",
+  "aborted": "Ofgebrach",
+  "cancelled": "Annuléiert",
+  "error": "Feeler",
+  "errorWithStatus": "Feeler: {status}",
+  "cancel": "Ofbriechen",
+  "cancelUploadOf": "Eroplueden vu(n) {name} annuléieren",
+  "retry": "Nach eng Kéier",
+  "retryUploadOf": "Eroplueden vu(n) {name} nach eng Kéier probéieren",
+  "remove": "Ewechhuelen",
+  "removeFromQueue": "{name} aus der Schlaang ewechhuelen",
+  "fileTypeNotAccepted": "Fichierstyp net akzeptéiert: {name}",
+  "uploadFailed": "Eroplueden feelgeschloen: {status}",
+  "networkError": "Netzwierkfeeler"
+}

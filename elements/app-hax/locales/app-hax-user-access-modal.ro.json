@@ -7,5 +7,7 @@
   "userAccessGranted": "Accesul utilizatorului a fost acordat cu succes!",
   "userNotFound": "Utilizator inexistent sau neautorizat",
   "loadingAddingUser": "Se adaugă utilizatorul...",
-  "grantAccessTo": "Acordă acces pentru:"
+  "grantAccessTo": "Acordă acces pentru:",
+  "networkErrorTryAgain": "A apărut o eroare de rețea. Încearcă din nou.",
+  "characterWillAppear": "Personajul va apărea când introduci un nume de utilizator"
 }

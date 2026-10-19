@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Καρτέλα {xOfY}",
+  "xOfY": "{order} από {total}",
+  "endOfTab": "Τέλος καρτέλας {xOfY}. Επιστροφή στις {tabs}.",
+  "tabs": "καρτέλες"
+}

@@ -5,5 +5,9 @@
   "buttons": "Tlačítka",
   "futureButtonConfiguration": "Vlastní nastavení tlačítek editoru bude brzy k dispozici.",
   "save": "Uložit",
-  "saving": "Ukládání…"
+  "saving": "Ukládání…",
+  "novice": "Začátečník",
+  "expert": "Expert",
+  "toolbarPreviewAlt": "Náhled panelu nástrojů úprav pro {audience}",
+  "savingEditorSettingsFailed": "Uložení nastavení editoru se nezdařilo: {error}"
 }

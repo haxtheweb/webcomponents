@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Emaitzarik ez",
+  "viewsRecordHeading": "Grabatu",
+  "viewsTitleImage": "{title} irudia",
+  "viewsTitlePreview": "{title} aurrebista",
+  "viewsNoTimelineRecords": "Ez dago data-erregistrorik denbora-lerroa errendatzeko.",
+  "viewsTimelineTitle": "{title} denbora-lerroa",
+  "viewsNoChartField": "Ez da zenbakizko eremurik detektatu grafikoa errendatzeko.",
+  "viewsChartingValue": "Grafikoa: {value}",
+  "viewsChartingValueByLabel": "Grafikoa: {value}, {label} arabera",
+  "viewsChartTitle": "{title} grafikoa",
+  "viewsNoTreeRecords": "Ez dago erregistro hierarkikorik zuhaitza errendatzeko.",
+  "viewsNoGalleryRecords": "Ez dago irudi-erregistrorik galeria errendatzeko.",
+  "viewsNoPlaylistRecords": "Ez dago multimedia erregistrorik erreprodukzio-zerrenda errendatzeko.",
+  "fetchFailed": "Eskuratzeak huts egin du ({status})",
+  "unableToLoadViewData": "Ezin dira ikuspegiaren datuak kargatu.",
+  "noResultsFound": "Ez da emaitzarik aurkitu.",
+  "refreshView": "Freskatu ikuspegia",
+  "breakIntoStaticContent": "Bihurtu eduki estatiko",
+  "viewsOpenRecord": "Ireki erregistroa"
+}

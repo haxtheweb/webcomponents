@@ -7,5 +7,7 @@
   "userAccessGranted": "Användaren har fått åtkomst!",
   "userNotFound": "Användaren hittades inte eller saknar behörighet",
   "loadingAddingUser": "Lägger till användare...",
-  "grantAccessTo": "Ge åtkomst till:"
+  "grantAccessTo": "Ge åtkomst till:",
+  "networkErrorTryAgain": "Ett nätverksfel uppstod. Försök igen.",
+  "characterWillAppear": "Figuren visas när du anger ett användarnamn"
 }

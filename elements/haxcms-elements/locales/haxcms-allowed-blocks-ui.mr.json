@@ -10,5 +10,9 @@
   "save": "जतन करा",
   "noDescription": "वर्णन उपलब्ध नाही.",
   "details": "तपशील",
-  "loadingInventory": "संपूर्ण ब्लॉक यादी लोड होत आहे…"
+  "loadingInventory": "संपूर्ण ब्लॉक यादी लोड होत आहे…",
+  "selectAllButton": "सर्व निवडा",
+  "deselectAllButton": "सर्वांची निवड रद्द करा",
+  "selectedOfAvailable": "{selected} निवडले / {total} उपलब्ध",
+  "savingBlocksFailed": "ब्लॉक जतन करणे अयशस्वी: {error}"
 }

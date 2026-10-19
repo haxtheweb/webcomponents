@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Faýllary şu ýere taşlaň",
+  "uploadQueue": "Ýükleme nobaty",
+  "pending": "Garaşylýar",
+  "preparing": "Taýýarlanýar",
+  "uploading": "Ýüklenýär",
+  "complete": "Tamamlandy",
+  "aborted": "Bes edildi",
+  "cancelled": "Ýatyryldy",
+  "error": "Ýalňyşlyk",
+  "errorWithStatus": "Ýalňyşlyk: {status}",
+  "cancel": "Ýatyrmak",
+  "cancelUploadOf": "{name} ýüklemesini ýatyr",
+  "retry": "Gaýtadan synanyşmak",
+  "retryUploadOf": "{name} ýüklemesini gaýtala",
+  "remove": "Aýyr",
+  "removeFromQueue": "{name} faýlyny nobatdan aýyr",
+  "fileTypeNotAccepted": "Faýl görnüşi kabul edilmeýär: {name}",
+  "uploadFailed": "Ýükleme şowsuz boldy: {status}",
+  "networkError": "Tor ýalňyşlygy"
+}

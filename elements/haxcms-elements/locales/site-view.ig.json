@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Enweghị nsonaazụ",
+  "viewsRecordHeading": "Dekọọ",
+  "viewsTitleImage": "Onyonyo {title}",
+  "viewsTitlePreview": "Nlele {title}",
+  "viewsNoTimelineRecords": "Enweghị ndekọ nwere ụbọchị maka ngosipụta usoro oge.",
+  "viewsTimelineTitle": "Usoro oge {title}",
+  "viewsNoChartField": "Achọpụtaghị mpaghara ọnụọgụ maka ngosipụta chaatị.",
+  "viewsChartingValue": "Na-ese chaatị {value}",
+  "viewsChartingValueByLabel": "Na-ese chaatị {value} site na {label}",
+  "viewsChartTitle": "Chaatị {title}",
+  "viewsNoTreeRecords": "Enweghị ndekọ nwere usoro ọkwa maka ngosipụta osisi.",
+  "viewsNoGalleryRecords": "Enweghị ndekọ onyonyo maka ngosipụta ọba onyonyo.",
+  "viewsNoPlaylistRecords": "Enweghị ndekọ mgbasa ozi maka ngosipụta ndepụta egwu.",
+  "fetchFailed": "Iweta dara ({status})",
+  "unableToLoadViewData": "Enweghị ike ibudata data nlele.",
+  "noResultsFound": "Ahụghị nsonaazụ ọ bụla.",
+  "refreshView": "Mee ka nlele dị ọhụrụ",
+  "breakIntoStaticContent": "Kewaa ka ọ bụrụ ọdịnaya kwụ ọtọ",
+  "viewsOpenRecord": "Mepee ndekọ"
+}

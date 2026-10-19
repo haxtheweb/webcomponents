@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Atribuim",
+  "licenseBySa": "Atribuim-ShpërndajNjësoj",
+  "licenseByNd": "Atribuim-PaVeprimeTëPrejardhura",
+  "licenseByNc": "Atribuim-JoTregtar",
+  "licenseByNcSa": "Atribuim-JoTregtar-ShpërndajNjësoj",
+  "licenseByNcNd": "Atribuim-JoTregtar-PaVeprimeTëPrejardhura",
+  "licenseGraphic": "Grafika e {license}",
+  "workByCreator": "{title} nga {creator}",
+  "workByCreatorLicensed": "{title} nga {creator} është licencuar nën {license}.",
+  "permissionsBeyondScope": "Leje përtej fushës së kësaj licence janë të disponueshme {link}.",
+  "author": "(autori)",
+  "onTheLicensingDetailsPage": "në faqen e detajeve të licencimit"
+}

@@ -7,5 +7,7 @@
   "userAccessGranted": "Pomyślnie przyznano dostęp użytkownikowi!",
   "userNotFound": "Nie znaleziono użytkownika lub brak uprawnień",
   "loadingAddingUser": "Dodawanie użytkownika...",
-  "grantAccessTo": "Przyznaj dostęp dla:"
+  "grantAccessTo": "Przyznaj dostęp dla:",
+  "networkErrorTryAgain": "Wystąpił błąd sieci. Spróbuj ponownie.",
+  "characterWillAppear": "Postać pojawi się po wpisaniu nazwy użytkownika"
 }

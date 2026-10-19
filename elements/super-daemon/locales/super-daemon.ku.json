@@ -36,5 +36,7 @@
   "clickToDoAnything": "Ji bo kîrikî tiştî bikî bitikîne!",
   "moreDetails": "Zêdetir hûrgulî",
   "details": "Hûrgulî",
-  "saved": "Hate tomarkirin"
+  "saved": "Hate tomarkirin",
+  "opensInNewWindow": "Di pencereyeke nû de vedibe",
+  "resultsCount": "{count} encam"
 }

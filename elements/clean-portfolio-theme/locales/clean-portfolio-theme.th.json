@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "คัดลอกลิงก์ยึดแล้ว!",
+  "skipToContent": "ข้ามไปยังเนื้อหา",
+  "siteHome": "หน้าแรกของไซต์",
+  "mainNavigation": "การนำทางหลัก",
+  "toggleMenu": "สลับเมนู",
+  "changeTheme": "เปลี่ยนธีม",
+  "breadcrumb": "เบรดครัมบ์",
+  "tagFilter": "ตัวกรองแท็ก:",
+  "all": "ทั้งหมด",
+  "pageNumberOfTotal": "หมายเลขหน้า: {current} จาก {total}",
+  "siteGenerated": "สร้างไซต์เมื่อ: {date}",
+  "copyright": "ลิขสิทธิ์: {year} {author}",
+  "viewContentByTag": "ดูเนื้อหาตามแท็ก",
+  "licenseGraphic": "กราฟิก {license}"
+}

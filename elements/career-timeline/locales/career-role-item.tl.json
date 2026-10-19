@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Pamagat ng Tungkulin",
+  "describeYourRole": "Ilarawan ang iyong tungkulin dito...",
+  "present": "Maglahad",
+  "skills": "Mga kasanayan:",
+  "skillsAndMore": "{skills} at +{count} pa",
+  "yearShort": "{count} taon",
+  "yearsShort": "{count} taon",
+  "monthShort": "{count} buwan",
+  "monthsShort": "{count} buwan"
+}

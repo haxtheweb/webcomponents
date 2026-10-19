@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "ಫೈಲ್‌ಗಳನ್ನು ಇಲ್ಲಿ ಬಿಡಿ",
+  "uploadQueue": "ಅಪ್‌ಲೋಡ್ ಸರತಿ",
+  "pending": "ಬಾಕಿ ಇದೆ",
+  "preparing": "ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ",
+  "uploading": "ಅಪ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ",
+  "complete": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+  "aborted": "ಸ್ಥಗಿತಗೊಳಿಸಲಾಗಿದೆ",
+  "cancelled": "ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ",
+  "error": "ದೋಷ",
+  "errorWithStatus": "ದೋಷ: {status}",
+  "cancel": "ರದ್ದುಮಾಡಿ",
+  "cancelUploadOf": "{name} ಅಪ್‌ಲೋಡ್ ರದ್ದುಗೊಳಿಸಿ",
+  "retry": "ಮರುಪ್ರಯತ್ನಿಸಿ",
+  "retryUploadOf": "{name} ಅಪ್‌ಲೋಡ್ ಮರುಪ್ರಯತ್ನಿಸಿ",
+  "remove": "ತೆಗೆದುಹಾಕಿ",
+  "removeFromQueue": "{name} ಅನ್ನು ಸರತಿಯಿಂದ ತೆಗೆದುಹಾಕಿ",
+  "fileTypeNotAccepted": "ಫೈಲ್ ಪ್ರಕಾರ ಸ್ವೀಕಾರಾರ್ಹವಲ್ಲ: {name}",
+  "uploadFailed": "ಅಪ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ: {status}",
+  "networkError": "ನೆಟ್‌ವರ್ಕ್ ದೋಷ"
+}

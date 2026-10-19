@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Посилання-якір скопійовано!",
+  "skipToContent": "Перейти до вмісту",
+  "siteHome": "Головна сайту",
+  "mainNavigation": "Головна навігація",
+  "toggleMenu": "Перемкнути меню",
+  "changeTheme": "Змінити тему",
+  "breadcrumb": "Навігаційний ланцюжок",
+  "tagFilter": "Фільтр за тегом:",
+  "all": "Усі",
+  "pageNumberOfTotal": "Номер сторінки: {current} з {total}",
+  "siteGenerated": "Сайт згенеровано: {date}",
+  "copyright": "Авторські права: {year} {author}",
+  "viewContentByTag": "Переглянути вміст за тегами",
+  "licenseGraphic": "Графіка {license}"
+}

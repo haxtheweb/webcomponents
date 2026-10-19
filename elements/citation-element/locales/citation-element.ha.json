@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Ambaton Mallaka",
+  "licenseBySa": "Ambaton Mallaka Raba Haka",
+  "licenseByNd": "Ambaton Mallaka Babu Gyare-gyare",
+  "licenseByNc": "Ambaton Mallaka Ba na Kasuwanci ba",
+  "licenseByNcSa": "Ambaton Mallaka Ba na Kasuwanci ba Raba Haka",
+  "licenseByNcNd": "Ambaton Mallaka Ba na Kasuwanci ba Babu Gyare-gyare",
+  "citationWithLicense": "{title} daga {creator}, mai lasisi ƙarƙashin {license}. An samu a {date}.",
+  "citationWithoutLicense": "{title} daga {creator}. An samu a {date}.",
+  "licenseGraphic": "Hoton {license}"
+}

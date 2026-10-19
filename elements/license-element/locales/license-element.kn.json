@@ -1,0 +1,14 @@
+{
+  "licenseBy": "ಗುಣಾರೋಪಣೆ",
+  "licenseBySa": "ಗುಣಾರೋಪಣೆ ಸಮಾನವಾಗಿ ಹಂಚಿಕೊಳ್ಳಿ",
+  "licenseByNd": "ಗುಣಾರೋಪಣೆ ವ್ಯುತ್ಪನ್ನಗಳಿಲ್ಲ",
+  "licenseByNc": "ಗುಣಾರೋಪಣೆ ವಾಣಿಜ್ಯೇತರ",
+  "licenseByNcSa": "ಗುಣಾರೋಪಣೆ ವಾಣಿಜ್ಯೇತರ ಸಮಾನವಾಗಿ ಹಂಚಿಕೊಳ್ಳಿ",
+  "licenseByNcNd": "ಗುಣಾರೋಪಣೆ ವಾಣಿಜ್ಯೇತರ ವ್ಯುತ್ಪನ್ನಗಳಿಲ್ಲ",
+  "licenseGraphic": "{license} ಗ್ರಾಫಿಕ್",
+  "workByCreator": "{creator} ಅವರಿಂದ {title}",
+  "workByCreatorLicensed": "{creator} ಅವರ {title} ಕೃತಿಯು {license} ಅಡಿಯಲ್ಲಿ ಪರವಾನಗಿ ಪಡೆದಿದೆ.",
+  "permissionsBeyondScope": "ಈ ಪರವಾನಗಿಯ ವ್ಯಾಪ್ತಿಯನ್ನು ಮೀರಿದ ಅನುಮತಿಗಳು {link} ಲಭ್ಯವಿವೆ.",
+  "author": "(ಲೇಖಕ)",
+  "onTheLicensingDetailsPage": "ಪರವಾನಗಿ ವಿವರಗಳ ಪುಟದಲ್ಲಿ"
+}

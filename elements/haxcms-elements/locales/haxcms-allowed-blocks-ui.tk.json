@@ -10,5 +10,9 @@
   "save": "Ýatda saklamak",
   "noDescription": "Düşündiriş ýok.",
   "details": "Jikme-jiklikler",
-  "loadingInventory": "Bloklaryň doly sanawy ýüklenýär…"
+  "loadingInventory": "Bloklaryň doly sanawy ýüklenýär…",
+  "selectAllButton": "Hemmesini saýla",
+  "deselectAllButton": "Hemmesiniň saýlanyşyny aýyr",
+  "selectedOfAvailable": "{selected} saýlandy / {total} elýeterli",
+  "savingBlocksFailed": "Bloklary ýatda saklamak şowsuz boldy: {error}"
 }

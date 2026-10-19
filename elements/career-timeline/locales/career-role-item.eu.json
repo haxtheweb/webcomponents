@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Rolaren izena",
+  "describeYourRole": "Deskribatu zure rola hemen...",
+  "present": "Aurkeztu",
+  "skills": "Trebetasunak:",
+  "skillsAndMore": "{skills} eta beste {count}",
+  "yearShort": "{count} urte",
+  "yearsShort": "{count} urte",
+  "monthShort": "{count} hil",
+  "monthsShort": "{count} hil"
+}

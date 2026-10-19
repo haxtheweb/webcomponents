@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Hiện bản xem trước giao diện",
+  "hideThemePreview": "Ẩn bản xem trước giao diện",
+  "themePreviewPanel": "Bảng xem trước giao diện",
+  "themePreview": "Xem trước giao diện",
+  "themePreviewDescription": "Thử tạm thời một giao diện và bảng màu khi duyệt. Dùng Hủy để khôi phục diện mạo ban đầu.",
+  "loadingThemes": "Đang tải giao diện...",
+  "theme": "Chủ đề",
+  "palette": "Bảng màu",
+  "cancel": "Hủy",
+  "openAppearanceSettings": "Mở cài đặt diện mạo"
+}

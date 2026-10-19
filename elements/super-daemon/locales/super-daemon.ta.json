@@ -36,5 +36,7 @@
   "clickToDoAnything": "எதையும் செய்ய சொடுக்கவும்!",
   "moreDetails": "மேலும் விவரங்கள்",
   "details": "விவரங்கள்",
-  "saved": "சேமிக்கப்பட்டது"
+  "saved": "சேமிக்கப்பட்டது",
+  "opensInNewWindow": "புதிய சாளரத்தில் திறக்கும்",
+  "resultsCount": "{count} முடிவுகள்"
 }

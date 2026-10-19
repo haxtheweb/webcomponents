@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "એન્કર લિંક કૉપિ થઈ!",
+  "skipToContent": "સામગ્રી પર જાઓ",
+  "siteHome": "સાઇટ હોમ",
+  "mainNavigation": "મુખ્ય નેવિગેશન",
+  "toggleMenu": "મેનૂ ટૉગલ કરો",
+  "changeTheme": "થીમ બદલો",
+  "breadcrumb": "બ્રેડક્રમ્બ",
+  "tagFilter": "ટૅગ ફિલ્ટર:",
+  "all": "બધું",
+  "pageNumberOfTotal": "પેજ નંબર: {total} માંથી {current}",
+  "siteGenerated": "સાઇટ જનરેટ કરી: {date}",
+  "copyright": "કૉપિરાઇટ: {year} {author}",
+  "viewContentByTag": "ટૅગ પ્રમાણે સામગ્રી જુઓ",
+  "licenseGraphic": "{license} ગ્રાફિક"
+}

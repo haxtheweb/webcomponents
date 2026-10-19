@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "标签页 {xOfY}",
+  "xOfY": "{order} / {total}",
+  "endOfTab": "标签页 {xOfY} 结束。回到 {tabs}。",
+  "tabs": "标签页"
+}

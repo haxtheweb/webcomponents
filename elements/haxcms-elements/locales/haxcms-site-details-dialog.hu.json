@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- alapértelmezés: első oldal --",
+  "details": "Részletek",
+  "title": "Cím",
+  "titleDescription": "A webhely neve",
+  "homePage": "Kezdőlap",
+  "homePageDescription": "Az alapértelmezett nyitó-/kezdőlapként használt oldal",
+  "advanced": "Speciális",
+  "serviceWorker": "Service worker hozzáadása a dinamikus oldalhoz",
+  "serviceWorkerDescription": "Kapcsold ki, ha a felhasználóknak mindig azonnal a legfrissebb szerverkimenetet kell látniuk.",
+  "forceBrowserUpgrade": "Böngészőfrissítés kényszerítése",
+  "forceBrowserUpgradeDescription": "Folyamatosan frissülő böngészők megkövetelése a webhely betöltése előtt.",
+  "unableToLoadSiteDetails": "Nem sikerült betölteni a webhely részleteit.",
+  "noSiteDetails": "Nincsenek elérhető webhelyrészletek.",
+  "save": "Mentés"
+}

@@ -1,0 +1,14 @@
+{
+  "licenseBy": "მითითება",
+  "licenseBySa": "მითითება — ანალოგიური გავრცელება",
+  "licenseByNd": "მითითება — ნაწარმოების შეცვლის გარეშე",
+  "licenseByNc": "მითითება — არაკომერციული",
+  "licenseByNcSa": "მითითება — არაკომერციული — ანალოგიური გავრცელება",
+  "licenseByNcNd": "მითითება — არაკომერციული — ნაწარმოების შეცვლის გარეშე",
+  "licenseGraphic": "{license} — გრაფიკა",
+  "workByCreator": "{title}, ავტორი: {creator}",
+  "workByCreatorLicensed": "{title}, ავტორი: {creator}, ლიცენზირებულია {license}-ით.",
+  "permissionsBeyondScope": "ამ ლიცენზიის ფარგლებს მიღმა ნებართვები ხელმისაწვდომია {link}.",
+  "author": "(ავტორი)",
+  "onTheLicensingDetailsPage": "ლიცენზირების დეტალების გვერდზე"
+}

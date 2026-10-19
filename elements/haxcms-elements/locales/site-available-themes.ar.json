@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "فشل تحميل السمات: {error}",
+  "noThemesForView": "لا توجد سمات متاحة لهذا العرض.",
+  "active": "نشطة",
+  "themeIsActive": "السمة {name} نشطة",
+  "applyTheme": "تطبيق السمة {name}",
+  "apply": "تطبيق",
+  "preview": "معاينة",
+  "name": "الاسم",
+  "element": "العنصر",
+  "description": "الوصف",
+  "action": "الإجراء",
+  "loadingThemes": "جارٍ تحميل السمات...",
+  "themesShown": "يتم عرض {count} سمة",
+  "themesShownDefaults": "يتم عرض {count} سمة (الإعدادات الافتراضية لـ app-hax)",
+  "availableHaxcmsThemes": "سمات HAXcms المتاحة",
+  "gallery": "المعرض",
+  "table": "جدول"
+}

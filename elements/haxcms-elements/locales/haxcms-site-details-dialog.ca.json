@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- per defecte, la primera pàgina --",
+  "details": "Detalls",
+  "title": "Títol",
+  "titleDescription": "Nom del lloc",
+  "homePage": "Pàgina d'inici",
+  "homePageDescription": "Pàgina que s'utilitzarà com a pàgina d'inici o de destinació per defecte",
+  "advanced": "Avançat",
+  "serviceWorker": "Afegeix un service worker a la pàgina dinàmica",
+  "serviceWorkerDescription": "Desactiva-ho si els usuaris han de veure sempre immediatament la darrera sortida del servidor.",
+  "forceBrowserUpgrade": "Força l'actualització del navegador",
+  "forceBrowserUpgradeDescription": "Requereix navegadors actualitzats abans de carregar l'experiència del lloc.",
+  "unableToLoadSiteDetails": "No s'han pogut carregar els detalls del lloc.",
+  "noSiteDetails": "No hi ha detalls del lloc disponibles.",
+  "save": "Desa"
+}

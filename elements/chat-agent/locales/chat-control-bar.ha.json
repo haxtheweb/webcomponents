@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Sauke Tarihi a matsayin txt",
+  "downloadChatLog": "Sauke Tarihin Taɗi",
+  "resetChat": "Sake Saita Taɗi",
+  "toggleDataCollection": "Sauya Tattara Bayanai",
+  "dataCollection": "Tattara Bayanai",
+  "toggleDeveloperMode": "Sauya Yanayin Mai Haɓakawa",
+  "exitFullView": "Fita daga Cikakken Kallo",
+  "enterFullView": "Shiga Cikakken Kallo",
+  "hideInterface": "Ɓoye Fuskar Mu'amala",
+  "resetChatConfirm": "A sake saita taɗin?",
+  "downloadBeforeResetConfirm": "A sauke tarihin taɗi kafin ka sake saitawa?",
+  "dataCollectionOn": "Za a yi amfani da tattaunawarka don horar da samfuran AI ɗinmu",
+  "dataCollectionOff": "Ba za a yi amfani da tattaunawarka don horar da samfuran AI ɗinmu ba"
+}

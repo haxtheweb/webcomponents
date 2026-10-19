@@ -1,0 +1,11 @@
+{
+  "roleTitle": "역할 제목",
+  "describeYourRole": "여기에 역할을 설명하세요...",
+  "present": "발표하기",
+  "skills": "기술:",
+  "skillsAndMore": "{skills} 외 +{count}개",
+  "yearShort": "{count}년",
+  "yearsShort": "{count}년",
+  "monthShort": "{count}개월",
+  "monthsShort": "{count}개월"
+}

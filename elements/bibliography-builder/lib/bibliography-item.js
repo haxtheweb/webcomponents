@@ -38,6 +38,17 @@ export class BibliographyItem extends SchemaBehaviors(
     this.url = "";
     this.startPage = "";
     this.endPage = "";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      copy: "Copy",
+      addCitationAbove: "Add citation above",
+      addCitationBelow: "Add citation below",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
   }
 
   // Lit reactive properties
@@ -101,7 +112,7 @@ export class BibliographyItem extends SchemaBehaviors(
             <simple-icon-button-lite
               part="icon"
               class="icon"
-              title="Copy"
+              title="${this.t.copy}"
               icon="content-copy"
               @click=${this._copyToClipboard}
             ></simple-icon-button-lite>
@@ -354,12 +365,12 @@ export class BibliographyItem extends SchemaBehaviors(
       {
         icon: "communication:call-made",
         callback: "_addItemAbove",
-        label: "Add citation above",
+        label: this.t.addCitationAbove,
       },
       {
         icon: "communication:call-received",
         callback: "_addItemBelow",
-        label: "Add citation below",
+        label: this.t.addCitationBelow,
       }
     ];
   }

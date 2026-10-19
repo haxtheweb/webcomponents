@@ -1,3 +1,8 @@
 {
-  "title": "سرچینې"
+  "title": "سرچینې",
+  "export": "صادرول",
+  "exportCitations": "حوالې صادرې کړئ",
+  "copy": "کاپي",
+  "exportCitationFormat": "د حوالې د صادرولو بڼه",
+  "selectCitationFormatBelow": "لاندې د حوالې بڼه وټاکئ"
 }

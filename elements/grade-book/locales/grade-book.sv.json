@@ -43,5 +43,22 @@
   "emailAddress": "Mejla den här eleven",
   "notes": "Anteckningar",
   "interests": "Intressen",
-  "profileImageFor": "Profilbild för"
+  "profileImageFor": "Profilbild för",
+  "fileSystem": "Filsystem",
+  "googleDocs": "Google-dokument",
+  "urlEndpointJSON": "URL-slutpunkt (JSON)",
+  "jsonDataBlob": "JSON-datablob",
+  "additionalCriteriaFeedback": "Ytterligare feedback för {criteria}",
+  "outOfPoints": "/ {points} p",
+  "feedbackReport": "Feedbackrapport",
+  "criteriaDetails": "Kriteriedetaljer",
+  "yourFeedback": "Din feedback",
+  "additionalCriteriaFeedbackHeading": "Ytterligare kriteriefeedback",
+  "yourTotalScore": "Din totala poäng",
+  "scoreOutOfPoints": "{score} / {points} p",
+  "studentAssignment": "{student}s uppgift {assignment}",
+  "downloadPDF": "Ladda ner PDF",
+  "displayMode1": "Läge 1",
+  "displayMode2": "Läge 2",
+  "twoWindows": "Två fönster"
 }

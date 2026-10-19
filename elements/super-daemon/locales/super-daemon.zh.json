@@ -36,5 +36,7 @@
   "clickToDoAnything": "点击做任何事情！",
   "moreDetails": "更多详情",
   "details": "详情",
-  "saved": "已保存"
+  "saved": "已保存",
+  "opensInNewWindow": "在新窗口中打开",
+  "resultsCount": "{count} 个结果"
 }

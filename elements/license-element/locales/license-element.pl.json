@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Uznanie autorstwa",
+  "licenseBySa": "Uznanie autorstwa – Na tych samych warunkach",
+  "licenseByNd": "Uznanie autorstwa – Bez utworów zależnych",
+  "licenseByNc": "Uznanie autorstwa – Użycie niekomercyjne",
+  "licenseByNcSa": "Uznanie autorstwa – Użycie niekomercyjne – Na tych samych warunkach",
+  "licenseByNcNd": "Uznanie autorstwa – Użycie niekomercyjne – Bez utworów zależnych",
+  "licenseGraphic": "Grafika licencji {license}",
+  "workByCreator": "{title}, autor: {creator}",
+  "workByCreatorLicensed": "{title}, autor: {creator}, jest objęty licencją {license}.",
+  "permissionsBeyondScope": "Uprawnienia wykraczające poza zakres tej licencji są dostępne {link}.",
+  "author": "(autor)",
+  "onTheLicensingDetailsPage": "na stronie ze szczegółami licencji"
+}

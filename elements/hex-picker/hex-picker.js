@@ -3,6 +3,7 @@
  * @license MIT, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hex-picker`
@@ -10,7 +11,7 @@ import { LitElement, html, css } from "lit";
  * @demo demo/index.html
  * @element hex-picker
  */
-class HexPicker extends LitElement {
+class HexPicker extends I18NMixin(LitElement) {
   static get haxProperties() {
     return {
       canScale: false,
@@ -159,6 +160,15 @@ class HexPicker extends LitElement {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      hexCode: "HEX code",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.value = "#000000FF";
     this._rValue = 0;
     this._gValue = 0;
@@ -172,7 +182,7 @@ class HexPicker extends LitElement {
       ${this.largeDisplay ? html`<div class="large-display"></div>` : ``}
       <div class="input-container">
         <input
-          aria-label="HEX code"
+          aria-label="${this.t.hexCode}"
           class="text-input"
           maxlength="9"
           @input="${this._inputChanged}"

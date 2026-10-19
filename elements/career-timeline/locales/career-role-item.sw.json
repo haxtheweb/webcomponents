@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Jina la Wadhifa",
+  "describeYourRole": "Eleza wadhifa wako hapa...",
+  "present": "Wasilisha",
+  "skills": "Ujuzi:",
+  "skillsAndMore": "{skills} na +{count} zaidi",
+  "yearShort": "mwaka {count}",
+  "yearsShort": "miaka {count}",
+  "monthShort": "mwezi {count}",
+  "monthsShort": "miezi {count}"
+}

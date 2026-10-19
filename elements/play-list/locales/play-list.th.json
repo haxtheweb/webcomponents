@@ -1,0 +1,11 @@
+{
+  "playlist": "เพลย์ลิสต์",
+  "carousel": "ภาพหมุนเวียน",
+  "slide": "สไลด์",
+  "slideNumber": "สไลด์ {number}",
+  "slideOfTotal": "สไลด์ {number} จาก {total}",
+  "previousSlide": "สไลด์ก่อนหน้า",
+  "nextSlide": "สไลด์ถัดไป",
+  "slidePages": "หน้าสไลด์",
+  "goToSlide": "ไปที่สไลด์ {number}"
+}

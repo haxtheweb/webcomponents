@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "فایلونه دلته پرېږدئ",
+  "uploadQueue": "د پورته کولو کتار",
+  "pending": "په تمه",
+  "preparing": "چمتو کېږي",
+  "uploading": "پورته کېږي",
+  "complete": "بشپړ",
+  "aborted": "بند شو",
+  "cancelled": "لغوه شو",
+  "error": "تېروتنه",
+  "errorWithStatus": "تېروتنه: {status}",
+  "cancel": "لغوه کول",
+  "cancelUploadOf": "د {name} پورته کول لغوه کړئ",
+  "retry": "بیا هڅه",
+  "retryUploadOf": "د {name} پورته کول بیا هڅه کړئ",
+  "remove": "لرې کول",
+  "removeFromQueue": "{name} له کتار څخه لرې کړئ",
+  "fileTypeNotAccepted": "د فایل ډول نه منل کېږي: {name}",
+  "uploadFailed": "پورته کول ناکام شول: {status}",
+  "networkError": "د شبکې تېروتنه"
+}

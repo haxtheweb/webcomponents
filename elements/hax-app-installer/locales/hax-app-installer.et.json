@@ -54,5 +54,6 @@
   "requirementUppercase": "Üks suurtäht",
   "requirementLowercase": "Üks väiketäht",
   "requirementNumber": "Üks number",
-  "requirementSymbol": "Üks sümbol"
+  "requirementSymbol": "Üks sümbol",
+  "haxcmsMascotAlt": "HAXcms-i maailmarändurist maskott"
 }

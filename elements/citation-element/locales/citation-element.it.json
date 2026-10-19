@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Attribuzione",
+  "licenseBySa": "Attribuzione - Condividi allo stesso modo",
+  "licenseByNd": "Attribuzione - Non opere derivate",
+  "licenseByNc": "Attribuzione - Non commerciale",
+  "licenseByNcSa": "Attribuzione - Non commerciale - Condividi allo stesso modo",
+  "licenseByNcNd": "Attribuzione - Non commerciale - Non opere derivate",
+  "citationWithLicense": "{title} di {creator}, con licenza {license}. Consultato il {date}.",
+  "citationWithoutLicense": "{title} di {creator}. Consultato il {date}.",
+  "licenseGraphic": "Grafica della licenza {license}"
+}

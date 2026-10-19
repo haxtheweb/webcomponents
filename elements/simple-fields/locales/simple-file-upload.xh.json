@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Wisa iifayile apha",
+  "uploadQueue": "Umgca wokulayisha",
+  "pending": "Isalindile",
+  "preparing": "Iyalungiselelwa",
+  "uploading": "Iyalayishwa",
+  "complete": "Igqityiwe",
+  "aborted": "Iyekisiwe",
+  "cancelled": "Irhoxisiwe",
+  "error": "Impazamo",
+  "errorWithStatus": "Impazamo: {status}",
+  "cancel": "Rhoxisa",
+  "cancelUploadOf": "Rhoxisa ukulayishwa kwe-{name}",
+  "retry": "Zama kwakhona",
+  "retryUploadOf": "Zama kwakhona ukulayisha i-{name}",
+  "remove": "Susa",
+  "removeFromQueue": "Susa i-{name} emgceni",
+  "fileTypeNotAccepted": "Uhlobo lwefayile alwamkelekanga: {name}",
+  "uploadFailed": "Ukulayisha akuphumelelanga: {status}",
+  "networkError": "Impazamo yenethiwekhi"
+}

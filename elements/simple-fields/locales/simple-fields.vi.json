@@ -9,5 +9,8 @@
   "record": "Ghi",
   "pause": "Tạm dừng ghi",
   "stopSave": "Dừng & Lưu",
-  "clickToTakePhoto": "Nhấp để chụp ảnh"
+  "clickToTakePhoto": "Nhấp để chụp ảnh",
+  "url": "URL",
+  "open": "mở",
+  "removeValue": "Xóa {value}"
 }

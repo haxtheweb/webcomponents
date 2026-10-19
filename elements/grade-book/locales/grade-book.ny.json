@@ -43,5 +43,22 @@
   "emailAddress": "Tumizani imelo kwa wophunzira uyu",
   "notes": "Zolemba",
   "interests": "Zokonda",
-  "profileImageFor": "Chithunzi cha mbiri ya"
+  "profileImageFor": "Chithunzi cha mbiri ya",
+  "fileSystem": "Fayilo sisitimu",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Malo a URL (JSON)",
+  "jsonDataBlob": "Gulu la deta la JSON",
+  "additionalCriteriaFeedback": "Ndemanga zowonjezera za {criteria}",
+  "outOfPoints": "/ {points} mapointi",
+  "feedbackReport": "Lipoti la ndemanga",
+  "criteriaDetails": "Zambiri za njira zoyezera",
+  "yourFeedback": "Ndemanga zanu",
+  "additionalCriteriaFeedbackHeading": "Ndemanga zowonjezera za Njira Zoyezera",
+  "yourTotalScore": "Zigoli zanu zonse",
+  "scoreOutOfPoints": "{score} / {points} mapointi",
+  "studentAssignment": "Ntchito {assignment} ya {student}",
+  "downloadPDF": "Tsitsani PDF",
+  "displayMode1": "Njira 1",
+  "displayMode2": "Njira 2",
+  "twoWindows": "Mawindo awiri"
 }

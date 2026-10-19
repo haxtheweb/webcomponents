@@ -1,4 +1,11 @@
 {
   "readMore": "Чытаць далей",
-  "home": "Галоўная"
+  "home": "Галоўная",
+  "anchorLinkCopied": "Спасылка-якар скапіравана!",
+  "skipToContent": "Перайсці да змесціва",
+  "changeTheme": "Змяніць тэму",
+  "siteSections": "Раздзелы сайта",
+  "pageOfTotal": "Старонка {current} з {total}",
+  "siteGenerated": "Сайт згенераваны: {date}",
+  "licenseGraphic": "Значок {license}"
 }

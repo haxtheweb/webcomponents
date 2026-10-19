@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Մուտքագրեք օգտանունը",
+  "invalidUsernameOrPassword": "Անվավեր օգտանուն կամ գաղտնաբառ",
+  "welcomeLetsGo": "Բարի գալուստ, {username}! Գնացինք!",
+  "enterYourUsername": "Մուտքագրեք ձեր օգտանունը",
+  "username": "Օգտանուն",
+  "next": "Հաջորդ",
+  "welcomeBack": "Բարի վերադարձ, {username}!",
+  "notYou": "Դուք չե՞ք?",
+  "enterYourPassword": "Մուտքագրեք ձեր գաղտնաբառը",
+  "password": "Գաղտնաբառ",
+  "togglePasswordDisplay": "Ցույց տալ/թաքցնել գաղտնաբառը",
+  "login": "Մուտք"
+}

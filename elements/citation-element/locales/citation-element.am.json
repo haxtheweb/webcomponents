@@ -1,0 +1,11 @@
+{
+  "licenseBy": "እውቅና",
+  "licenseBySa": "እውቅና በተመሳሳይ አጋራ",
+  "licenseByNd": "እውቅና ምንም ተዋጽኦዎች",
+  "licenseByNc": "እውቅና ንግድ ያልሆነ",
+  "licenseByNcSa": "እውቅና ንግድ ያልሆነ በተመሳሳይ አጋራ",
+  "licenseByNcNd": "እውቅና ንግድ ያልሆነ ምንም ተዋጽኦዎች",
+  "citationWithLicense": "{title} በ{creator}፣ በ{license} ፈቃድ የተሰጠው። የተደረሰበት {date}።",
+  "citationWithoutLicense": "{title} በ{creator}። የተደረሰበት {date}።",
+  "licenseGraphic": "የ{license} ምስል"
+}

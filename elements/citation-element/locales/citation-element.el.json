@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Αναφορά Δημιουργού",
+  "licenseBySa": "Αναφορά Δημιουργού - Παρόμοια Διανομή",
+  "licenseByNd": "Αναφορά Δημιουργού - Όχι Παράγωγα Έργα",
+  "licenseByNc": "Αναφορά Δημιουργού - Μη Εμπορική Χρήση",
+  "licenseByNcSa": "Αναφορά Δημιουργού - Μη Εμπορική Χρήση - Παρόμοια Διανομή",
+  "licenseByNcNd": "Αναφορά Δημιουργού - Μη Εμπορική Χρήση - Όχι Παράγωγα Έργα",
+  "citationWithLicense": "{title} από {creator}, με άδεια {license}. Πρόσβαση {date}.",
+  "citationWithoutLicense": "{title} από {creator}. Πρόσβαση {date}.",
+  "licenseGraphic": "Γραφικό {license}"
+}

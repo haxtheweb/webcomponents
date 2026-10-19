@@ -36,5 +36,7 @@
   "clickToDoAnything": "Pịa ime ihe ọ bụla!",
   "moreDetails": "Nkọwa ndị ọzọ",
   "details": "Nkọwa",
-  "saved": "Echekwala"
+  "saved": "Echekwala",
+  "opensInNewWindow": "Na-emepe na windo ọhụrụ",
+  "resultsCount": "Nsonaazụ {count}"
 }

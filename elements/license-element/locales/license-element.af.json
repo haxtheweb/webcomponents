@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Erkenning",
+  "licenseBySa": "Erkenning-InsgelyksDeel",
+  "licenseByNd": "Erkenning-GeenAfleidings",
+  "licenseByNc": "Erkenning-NieKommersieel",
+  "licenseByNcSa": "Erkenning-NieKommersieel-InsgelyksDeel",
+  "licenseByNcNd": "Erkenning-NieKommersieel-GeenAfleidings",
+  "licenseGraphic": "{license}-grafika",
+  "workByCreator": "{title} deur {creator}",
+  "workByCreatorLicensed": "{title} deur {creator} is gelisensieer onder 'n {license}.",
+  "permissionsBeyondScope": "Toestemmings buite die omvang van hierdie lisensie is beskikbaar {link}.",
+  "author": "(outeur)",
+  "onTheLicensingDetailsPage": "op die lisensiebesonderhede-bladsy"
+}

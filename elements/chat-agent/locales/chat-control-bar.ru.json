@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Скачать журнал как txt",
+  "downloadChatLog": "Скачать журнал чата",
+  "resetChat": "Сбросить чат",
+  "toggleDataCollection": "Переключить сбор данных",
+  "dataCollection": "Сбор данных",
+  "toggleDeveloperMode": "Переключить режим разработчика",
+  "exitFullView": "Выйти из полноэкранного вида",
+  "enterFullView": "Полноэкранный вид",
+  "hideInterface": "Скрыть интерфейс",
+  "resetChatConfirm": "Сбросить чат?",
+  "downloadBeforeResetConfirm": "Скачать журнал чата перед сбросом?",
+  "dataCollectionOn": "Ваши беседы будут использоваться для обучения наших моделей AI",
+  "dataCollectionOff": "Ваши беседы не будут использоваться для обучения наших моделей AI"
+}

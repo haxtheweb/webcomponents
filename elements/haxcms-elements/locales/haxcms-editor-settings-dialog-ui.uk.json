@@ -5,5 +5,9 @@
   "buttons": "Кнопки",
   "futureButtonConfiguration": "Налаштування власних кнопок редактора з'явиться незабаром.",
   "save": "Зберегти",
-  "saving": "Збереження…"
+  "saving": "Збереження…",
+  "novice": "Початківець",
+  "expert": "Експерт",
+  "toolbarPreviewAlt": "Попередній перегляд панелі редагування для аудиторії {audience}",
+  "savingEditorSettingsFailed": "Не вдалося зберегти налаштування редактора: {error}"
 }

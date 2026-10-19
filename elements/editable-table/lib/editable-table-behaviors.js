@@ -1184,6 +1184,9 @@ export const displayBehaviors = function (SuperClass) {
   };
 };
 
+// marks a toolbar config generated from this.t labels (not author supplied)
+const editableTableToolbarConfigT = Symbol("editableTableToolbarConfigT");
+
 /**
  * behaviors needed to display table in either mode
  * @class
@@ -1213,14 +1216,36 @@ export const editBehaviors = function (SuperClass) {
       this.hideSort = false;
       this.caption = "";
       this.hideStriped = false;
-      this.config = [
+      this.t = this.t || {};
+      this.t = {
+        ...this.t,
+        closeToolbar: "Close toolbar",
+        bold: "Bold",
+        italics: "Italics",
+        eraseFormat: "Erase Format",
+        link: "Link",
+        unlink: "Unink",
+        subscriptAndSuperscript: "Subscript and Superscript",
+        subscript: "Subscript",
+        superscript: "Superscript",
+      };
+      this.config = this._defaultEditableTableToolbarConfig();
+    }
+
+    /**
+     * default rich text editor toolbar config, labels from this.t
+     * @returns {array} toolbar config
+     */
+    _defaultEditableTableToolbarConfig() {
+      const t = this.t || {};
+      const config = [
         {
           type: "button-group",
           buttons: [
             {
               command: "close",
               icon: "close",
-              label: "Close toolbar",
+              label: t.closeToolbar,
               toggles: false,
               type: "rich-text-editor-button",
             },
@@ -1232,21 +1257,21 @@ export const editBehaviors = function (SuperClass) {
             {
               command: "bold",
               icon: "editor:format-bold",
-              label: "Bold",
+              label: t.bold,
               toggles: true,
               type: "rich-text-editor-button",
             },
             {
               command: "italic",
               icon: "editor:format-italic",
-              label: "Italics",
+              label: t.italics,
               toggles: true,
               type: "rich-text-editor-button",
             },
             {
               command: "removeFormat",
               icon: "editor:format-clear",
-              label: "Erase Format",
+              label: t.eraseFormat,
               type: "rich-text-editor-button",
             },
           ],
@@ -1257,35 +1282,52 @@ export const editBehaviors = function (SuperClass) {
             {
               command: "link",
               icon: "link",
-              label: "Link",
+              label: t.link,
               toggledCommand: "unlink",
               toggledIcon: "mdextra:unlink",
-              toggledLabel: "Unink",
+              toggledLabel: t.unlink,
               toggles: true,
               type: "rich-text-editor-link",
             },
           ],
         },
         {
-          label: "Subscript and Superscript",
+          label: t.subscriptAndSuperscript,
           buttons: [
             {
               command: "subscript",
               icon: "mdextra:subscript",
-              label: "Subscript",
+              label: t.subscript,
               toggles: true,
               type: "rich-text-editor-button",
             },
             {
               command: "superscript",
               icon: "mdextra:superscript",
-              label: "Superscript",
+              label: t.superscript,
               toggles: true,
               type: "rich-text-editor-button",
             },
           ],
         },
       ];
+      // remember which this.t built it so it can be rebuilt on translation
+      config[editableTableToolbarConfigT] = t;
+      return config;
+    }
+
+    willUpdate(changedProperties) {
+      if (super.willUpdate) super.willUpdate(changedProperties);
+      // swap a default toolbar config built from other / stale labels
+      // for one using this element's current (translated) labels
+      if (
+        (changedProperties.has("t") || changedProperties.has("config")) &&
+        this.config &&
+        this.config[editableTableToolbarConfigT] &&
+        this.config[editableTableToolbarConfigT] !== this.t
+      ) {
+        this.config = this._defaultEditableTableToolbarConfig();
+      }
     }
   };
 };

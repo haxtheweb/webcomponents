@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Korábban küldött üzenet megjelenítése (fel)",
+  "displayPreviousMessageDown": "Korábban küldött üzenet megjelenítése (le)",
+  "sendPrompt": "Prompt küldése",
+  "sendPromptToMerlin": "Prompt küldése Merlinnek",
+  "shortenPrompt": "Rövidítsd a promptot legfeljebb {limit} karakterre."
+}

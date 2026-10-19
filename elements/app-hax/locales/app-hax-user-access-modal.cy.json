@@ -7,5 +7,7 @@
   "userAccessGranted": "Rhoddwyd mynediad i'r defnyddiwr yn llwyddiannus!",
   "userNotFound": "Defnyddiwr heb ei ganfod neu heb awdurdod",
   "loadingAddingUser": "Yn ychwanegu defnyddiwr...",
-  "grantAccessTo": "Rhoi mynediad i:"
+  "grantAccessTo": "Rhoi mynediad i:",
+  "networkErrorTryAgain": "Digwyddodd gwall rhwydwaith. Rhowch gynnig arall arni.",
+  "characterWillAppear": "Bydd y cymeriad yn ymddangos pan fyddwch yn rhoi enw defnyddiwr"
 }

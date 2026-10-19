@@ -1,12 +1,13 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toast/simple-toast.js";
 import "./lib/flash-card-answer-box.js";
 import "./lib/flash-card-prompt-img.js";
 
-export class FlashCard extends SchemaBehaviors(DDD) {
+export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
   static get tag() {
     return "flash-card";
   }
@@ -14,6 +15,16 @@ export class FlashCard extends SchemaBehaviors(DDD) {
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      correct: "Correct!",
+      tryAgain: "Try again!",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.imgKeyword = "";
     this.imgSource = "";
     this.typeOfAction = "";
@@ -145,13 +156,13 @@ export class FlashCard extends SchemaBehaviors(DDD) {
     if (this.status === "correct") {
       toastColor = "green";
       toastIcon = "icons:thumb-up";
-      toastText = "Correct!";
+      toastText = this.t.correct;
       this.makeItRain();
       this.playSound("success");
     } else if (this.status === "incorrect") {
       toastColor = "red";
       toastIcon = "icons:thumb-down";
-      toastText = "Try again!";
+      toastText = this.t.tryAgain;
       this.playSound("error");
     }
 

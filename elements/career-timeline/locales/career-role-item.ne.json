@@ -1,0 +1,11 @@
+{
+  "roleTitle": "भूमिकाको शीर्षक",
+  "describeYourRole": "आफ्नो भूमिकाको विवरण यहाँ लेख्नुहोस्...",
+  "present": "प्रस्तुत गर्नुहोस्",
+  "skills": "सीपहरू:",
+  "skillsAndMore": "{skills} र +{count} थप",
+  "yearShort": "{count} वर्ष",
+  "yearsShort": "{count} वर्ष",
+  "monthShort": "{count} महिना",
+  "monthsShort": "{count} महिना"
+}

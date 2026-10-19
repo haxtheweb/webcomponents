@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Deixa anar els fitxers aquí",
+  "uploadQueue": "Cua de pujada",
+  "pending": "Pendent",
+  "preparing": "En preparació",
+  "uploading": "S'està pujant",
+  "complete": "Completat",
+  "aborted": "Avortat",
+  "cancelled": "Cancel·lat",
+  "error": "Error",
+  "errorWithStatus": "Error: {status}",
+  "cancel": "Cancel·la",
+  "cancelUploadOf": "Cancel·la la pujada de {name}",
+  "retry": "Torna-ho a provar",
+  "retryUploadOf": "Torna a provar la pujada de {name}",
+  "remove": "Suprimeix",
+  "removeFromQueue": "Treu {name} de la cua",
+  "fileTypeNotAccepted": "Tipus de fitxer no acceptat: {name}",
+  "uploadFailed": "Ha fallat la pujada: {status}",
+  "networkError": "Error de xarxa"
+}

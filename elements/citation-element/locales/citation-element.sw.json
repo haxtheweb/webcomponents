@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Utambulisho",
+  "licenseBySa": "Utambulisho Shiriki Sawa",
+  "licenseByNd": "Utambulisho Hakuna Kazi Zinazotokana",
+  "licenseByNc": "Utambulisho Isiyo ya Kibiashara",
+  "licenseByNcSa": "Utambulisho Isiyo ya Kibiashara Shiriki Sawa",
+  "licenseByNcNd": "Utambulisho Isiyo ya Kibiashara Hakuna Kazi Zinazotokana",
+  "citationWithLicense": "{title} na {creator}, imepewa leseni chini ya {license}. Ilifikiwa {date}.",
+  "citationWithoutLicense": "{title} na {creator}. Ilifikiwa {date}.",
+  "licenseGraphic": "Mchoro wa {license}"
+}

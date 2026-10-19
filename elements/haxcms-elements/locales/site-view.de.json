@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Keine Ergebnisse",
+  "viewsRecordHeading": "Aufnehmen",
+  "viewsTitleImage": "Bild zu {title}",
+  "viewsTitlePreview": "Vorschau von {title}",
+  "viewsNoTimelineRecords": "Keine datumsbezogenen Datensätze für die Zeitleistendarstellung verfügbar.",
+  "viewsTimelineTitle": "Zeitleiste: {title}",
+  "viewsNoChartField": "Kein numerisches Feld für die Diagrammdarstellung erkannt.",
+  "viewsChartingValue": "Diagramm für {value}",
+  "viewsChartingValueByLabel": "Diagramm für {value} nach {label}",
+  "viewsChartTitle": "Diagramm: {title}",
+  "viewsNoTreeRecords": "Keine hierarchischen Datensätze für die Baumdarstellung verfügbar.",
+  "viewsNoGalleryRecords": "Keine Bilddatensätze für die Galeriedarstellung verfügbar.",
+  "viewsNoPlaylistRecords": "Keine Mediendatensätze für die Playlist-Darstellung verfügbar.",
+  "fetchFailed": "Abruf fehlgeschlagen ({status})",
+  "unableToLoadViewData": "Ansichtsdaten konnten nicht geladen werden.",
+  "noResultsFound": "Keine Ergebnisse gefunden.",
+  "refreshView": "Ansicht aktualisieren",
+  "breakIntoStaticContent": "In statischen Inhalt umwandeln",
+  "viewsOpenRecord": "Datensatz öffnen"
+}

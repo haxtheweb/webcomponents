@@ -1,0 +1,11 @@
+{
+  "theme": "തീം",
+  "active": "സജീവം",
+  "selected": "തിരഞ്ഞെടുത്തത്",
+  "noPreview": "പ്രിവ്യൂ ഇല്ല",
+  "currentlyActiveAndSelected": "നിലവിൽ സജീവവും തിരഞ്ഞെടുത്തതുമായ തീം",
+  "currentlyActive": "നിലവിൽ സജീവമായ തീം",
+  "selectedToApplyOnSave": "സേവ് ചെയ്യുമ്പോൾ പ്രയോഗിക്കാൻ തിരഞ്ഞെടുത്ത തീം",
+  "themeSelection": "തീം തിരഞ്ഞെടുപ്പ്",
+  "noThemesAvailable": "തീമുകളൊന്നും ലഭ്യമല്ല."
+}

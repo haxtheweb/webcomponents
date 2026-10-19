@@ -5,5 +5,9 @@
   "buttons": "לחצנים",
   "futureButtonConfiguration": "הגדרה מותאמת אישית של לחצני העורך תגיע בקרוב.",
   "save": "שמירה",
-  "saving": "שומר…"
+  "saving": "שומר…",
+  "novice": "מתחיל",
+  "expert": "מומחה",
+  "toolbarPreviewAlt": "תצוגה מקדימה של סרגל העריכה עבור {audience}",
+  "savingEditorSettingsFailed": "שמירת הגדרות העורך נכשלה: {error}"
 }

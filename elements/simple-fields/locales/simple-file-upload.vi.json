@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Thả tệp vào đây",
+  "uploadQueue": "Hàng đợi tải lên",
+  "pending": "Đang chờ",
+  "preparing": "Đang chuẩn bị",
+  "uploading": "Đang tải lên",
+  "complete": "Hoàn tất",
+  "aborted": "Đã hủy bỏ",
+  "cancelled": "Đã hủy",
+  "error": "Lỗi",
+  "errorWithStatus": "Lỗi: {status}",
+  "cancel": "Hủy",
+  "cancelUploadOf": "Hủy tải lên {name}",
+  "retry": "Thử lại",
+  "retryUploadOf": "Thử tải lên lại {name}",
+  "remove": "Xóa",
+  "removeFromQueue": "Xóa {name} khỏi hàng đợi",
+  "fileTypeNotAccepted": "Loại tệp không được chấp nhận: {name}",
+  "uploadFailed": "Tải lên thất bại: {status}",
+  "networkError": "Lỗi mạng"
+}

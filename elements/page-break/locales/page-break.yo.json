@@ -22,6 +22,13 @@
   "unpublish": "Yọ ìtẹ̀jáde kúrò",
   "savePage": "Fi ojú-ìwé pamọ́",
   "cancel": "Fagilé",
+  "delete": "Pa rẹ́",
+  "editTitle": "Ṣàtúnkọ àkọlé",
+  "editIcon": "Ṣàtúnṣe Àmì",
+  "agent": "Aṣojú",
+  "pageLockedUnlockToEdit": "A ti ti ojú-ìwé yìí. Ṣí i ná kí o tó ṣàtúnṣe.",
+  "pageLockedUnlockToChangePublishStatus": "A ti ti ojú-ìwé yìí. Ṣí i ná kí o tó yí ipò ìtẹ̀jáde padà.",
+  "pageLockedUnlockToDelete": "A ti ti ojú-ìwé yìí. Ṣí i ná kí o tó pa á rẹ́.",
   "pageDetails": "Àwọn àlàyé ojú ìwé",
   "clickToUnlock": "Tẹ láti ṣí"
 }

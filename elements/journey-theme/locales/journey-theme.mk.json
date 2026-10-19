@@ -1,4 +1,11 @@
 {
   "readMore": "Прочитај повеќе",
-  "home": "Почетна"
+  "home": "Почетна",
+  "anchorLinkCopied": "Врската до сидрото е копирана!",
+  "skipToContent": "Прескокни до содржината",
+  "changeTheme": "Промени тема",
+  "siteSections": "Делови на сајтот",
+  "pageOfTotal": "Страница {current} од {total}",
+  "siteGenerated": "Сајтот е генериран: {date}",
+  "licenseGraphic": "Графика за {license}"
 }

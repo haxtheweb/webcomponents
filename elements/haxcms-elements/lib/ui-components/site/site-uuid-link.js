@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
 /**
@@ -11,7 +12,7 @@ import { toJS } from "mobx";
  *
  * @demo demo/index.html
  */
-class SiteUuidLink extends LitElement {
+class SiteUuidLink extends I18NMixin(LitElement) {
   static get styles() {
     return [
       css`
@@ -29,6 +30,15 @@ class SiteUuidLink extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      selectPage: "Select page",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.uuid = null;
   }
   /**
@@ -153,7 +163,7 @@ class SiteUuidLink extends LitElement {
       // default to null parent as the whole site
       var items = [
         {
-          text: `Select page`,
+          text: this.t.selectPage,
           value: null,
         },
       ];

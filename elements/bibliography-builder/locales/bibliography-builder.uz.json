@@ -1,3 +1,8 @@
 {
-  "title": "Manbalar"
+  "title": "Manbalar",
+  "export": "Eksport",
+  "exportCitations": "Iqtiboslarni eksport qilish",
+  "copy": "Nusxalash",
+  "exportCitationFormat": "Iqtibos formatini eksport qilish",
+  "selectCitationFormatBelow": "Quyidan iqtibos formatini tanlang"
 }

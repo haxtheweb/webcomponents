@@ -43,5 +43,22 @@
   "emailAddress": "ఈ విద్యార్థికి ఇమెయిల్ పంపు",
   "notes": "గమనికలు",
   "interests": "ఆసక్తులు",
-  "profileImageFor": "ప్రొఫైల్ చిత్రం:"
+  "profileImageFor": "ప్రొఫైల్ చిత్రం:",
+  "fileSystem": "ఫైల్ సిస్టమ్",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL ఎండ్‌పాయింట్ (JSON)",
+  "jsonDataBlob": "JSON డేటా బ్లాబ్",
+  "additionalCriteriaFeedback": "అదనపు {criteria} అభిప్రాయం",
+  "outOfPoints": "/ {points} పాయింట్లు",
+  "feedbackReport": "అభిప్రాయ నివేదిక",
+  "criteriaDetails": "ప్రమాణాల వివరాలు",
+  "yourFeedback": "మీ అభిప్రాయం",
+  "additionalCriteriaFeedbackHeading": "అదనపు ప్రమాణాల అభిప్రాయం",
+  "yourTotalScore": "మీ మొత్తం స్కోర్",
+  "scoreOutOfPoints": "{score} / {points} పాయింట్లు",
+  "studentAssignment": "{student} యొక్క అసైన్‌మెంట్ {assignment}",
+  "downloadPDF": "PDF డౌన్‌లోడ్ చేయి",
+  "displayMode1": "మోడ్ 1",
+  "displayMode2": "మోడ్ 2",
+  "twoWindows": "రెండు విండోలు"
 }

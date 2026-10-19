@@ -36,5 +36,7 @@
   "clickToDoAnything": "何でもするにはクリック！",
   "moreDetails": "詳細",
   "details": "詳細",
-  "saved": "保存済み"
+  "saved": "保存済み",
+  "opensInNewWindow": "新しいウィンドウで開きます",
+  "resultsCount": "{count}件の結果"
 }

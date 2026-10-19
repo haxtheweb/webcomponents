@@ -36,5 +36,7 @@
   "clickToDoAnything": "Սեղմել ցանկացած բան անելու համար!",
   "moreDetails": "Ավելի մանրամասն",
   "details": "Մանրամասներ",
-  "saved": "Պահված"
+  "saved": "Պահված",
+  "opensInNewWindow": "Բացվում է նոր պատուհանում",
+  "resultsCount": "{count} արդյունք"
 }

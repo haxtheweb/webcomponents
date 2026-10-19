@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "အပြင်အဆင်များ ဖွင့်၍ မရပါ: {error}",
+  "noThemesForView": "ဤမြင်ကွင်းအတွက် အပြင်အဆင် မရှိပါ။",
+  "active": "အသက်ဝင်",
+  "themeIsActive": "{name} အပြင်အဆင် အသက်ဝင်နေသည်",
+  "applyTheme": "{name} အပြင်အဆင်ကို အသုံးချရန်",
+  "apply": "အသုံးချရန်",
+  "preview": "အစမ်းကြည့်ရန်",
+  "name": "အမည်",
+  "element": "အစိတ်အပိုင်း",
+  "description": "ဖော်ပြချက်",
+  "action": "လုပ်ဆောင်ချက်",
+  "loadingThemes": "အပြင်အဆင်များ ဖွင့်နေသည်...",
+  "themesShown": "အပြင်အဆင် {count} ခု ပြထားသည်",
+  "themesShownDefaults": "အပြင်အဆင် {count} ခု ပြထားသည် (app-hax မူလများ)",
+  "availableHaxcmsThemes": "ရနိုင်သော HAXcms အပြင်အဆင်များ",
+  "gallery": "ပြခန်း",
+  "table": "ဇယား"
+}

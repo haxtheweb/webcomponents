@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Ithebula le-console lerekhodi lengxoxo yomsebenzisi",
+  "consoleTableUserText": "console.table() irekhodi lengxoxo yomsebenzisi",
+  "consoleTableUserTooltip": "Phrinta Irekhodi Lengxoxo Yomsebenzisi njengeThebula ku-Console",
+  "consoleTableMerlinLabel": "Ithebula le-console lerekhodi lengxoxo ka-merlin",
+  "consoleTableMerlinText": "console.table() irekhodi lengxoxo ka-merlin",
+  "consoleTableMerlinTooltip": "Phrinta Irekhodi Lengxoxo ka-Merlin njengeThebula ku-Console",
+  "consoleTableAllLabel": "Ithebula le-console lerekhodi lonke lengxoxo",
+  "consoleTableAllText": "console.table() irekhodi lonke lengxoxo",
+  "consoleTableAllTooltip": "Phrinta Irekhodi Lonke Lengxoxo njengeThebula ku-Console",
+  "downloadChatLogJson": "Landa irekhodi lengxoxo njenge-.json",
+  "downloadChatLogJsonTooltip": "Landa Irekhodi Lengxoxo njenge-.json"
+}

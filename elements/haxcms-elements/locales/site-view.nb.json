@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Ingen resultater",
+  "viewsRecordHeading": "Ta opp",
+  "viewsTitleImage": "Bilde for {title}",
+  "viewsTitlePreview": "Forhåndsvisning av {title}",
+  "viewsNoTimelineRecords": "Ingen datobaserte poster er tilgjengelige for visning som tidslinje.",
+  "viewsTimelineTitle": "Tidslinje for {title}",
+  "viewsNoChartField": "Fant ikke noe numerisk felt for visning som diagram.",
+  "viewsChartingValue": "Diagram over {value}",
+  "viewsChartingValueByLabel": "Diagram over {value} etter {label}",
+  "viewsChartTitle": "Diagram for {title}",
+  "viewsNoTreeRecords": "Ingen hierarkiske poster er tilgjengelige for visning som tre.",
+  "viewsNoGalleryRecords": "Ingen bildeposter er tilgjengelige for visning som galleri.",
+  "viewsNoPlaylistRecords": "Ingen medieposter er tilgjengelige for visning som spilleliste.",
+  "fetchFailed": "Henting mislyktes ({status})",
+  "unableToLoadViewData": "Kan ikke laste visningsdata.",
+  "noResultsFound": "Fant ingen resultater.",
+  "refreshView": "Oppdater visning",
+  "breakIntoStaticContent": "Gjør om til statisk innhold",
+  "viewsOpenRecord": "Åpne post"
+}

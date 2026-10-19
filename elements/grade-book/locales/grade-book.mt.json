@@ -43,5 +43,22 @@
   "emailAddress": "Ibgħat email lil dan l-istudent",
   "notes": "Noti",
   "interests": "Interessi",
-  "profileImageFor": "Immaġni tal-profil ta'"
+  "profileImageFor": "Immaġni tal-profil ta'",
+  "fileSystem": "Sistema tal-fajls",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Endpoint URL (JSON)",
+  "jsonDataBlob": "Blob tad-data JSON",
+  "additionalCriteriaFeedback": "Feedback addizzjonali dwar {criteria}",
+  "outOfPoints": "/ {points} pti",
+  "feedbackReport": "Rapport tal-feedback",
+  "criteriaDetails": "Dettalji tal-kriterji",
+  "yourFeedback": "Il-feedback tiegħek",
+  "additionalCriteriaFeedbackHeading": "Feedback addizzjonali dwar il-Kriterji",
+  "yourTotalScore": "Il-Punteġġ totali tiegħek",
+  "scoreOutOfPoints": "{score} / {points} pti",
+  "studentAssignment": "Assignment {assignment} ta' {student}",
+  "downloadPDF": "Niżżel il-PDF",
+  "displayMode1": "Mod 1",
+  "displayMode2": "Mod 2",
+  "twoWindows": "Żewġ twieqi"
 }

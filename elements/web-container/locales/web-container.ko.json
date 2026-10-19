@@ -1,0 +1,8 @@
+{
+  "loading": "불러오는 중",
+  "settingUpContainer": "컨테이너 설정 중",
+  "runningCommands": "명령 실행 중",
+  "installing": "설치 중..",
+  "runningStart": "시작 실행 중..",
+  "webContainerPreview": "웹 컨테이너 미리 보기"
+}

@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Avval yuborilgan xabarni koʻrsatish (yuqoriga)",
+  "displayPreviousMessageDown": "Avval yuborilgan xabarni koʻrsatish (pastga)",
+  "sendPrompt": "Soʻrovni yuborish",
+  "sendPromptToMerlin": "Soʻrovni Merlin’ga yuborish",
+  "shortenPrompt": "Iltimos, soʻrovingizni {limit} belgidan oshmaydigan qilib qisqartiring."
+}

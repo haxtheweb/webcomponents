@@ -1,4 +1,11 @@
 {
   "readMore": "Akhri wax dheeraad ah",
-  "home": "Bogga hore"
+  "home": "Bogga hore",
+  "anchorLinkCopied": "Xiriirka barroosinka waa la koobiyeeyay!",
+  "skipToContent": "U bood nuxurka",
+  "changeTheme": "Beddel naqshadda",
+  "siteSections": "Qaybaha goobta",
+  "pageOfTotal": "Bogga {current} ka mid ah {total}",
+  "siteGenerated": "Goobta waxaa la sameeyay: {date}",
+  "licenseGraphic": "Sawirka {license}"
 }

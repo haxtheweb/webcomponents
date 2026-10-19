@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ပထမ စာမျက်နှာကို မူလအဖြစ် --",
+  "details": "အသေးစိတ်",
+  "title": "ခေါင်းစဉ်",
+  "titleDescription": "ဆိုက်၏ အမည်",
+  "homePage": "ပင်မ စာမျက်နှာ",
+  "homePageDescription": "မူလ ရောက်ရှိရာ / ပင်မ စာမျက်နှာအဖြစ် သုံးမည့် စာမျက်နှာ",
+  "advanced": "အဆင့်မြင့်",
+  "serviceWorker": "dynamic စာမျက်နှာတွင် service worker ထည့်ရန်",
+  "serviceWorkerDescription": "အသုံးပြုသူများ နောက်ဆုံး ဆာဗာ ထွက်ရှိမှုကို ချက်ချင်း အမြဲ မြင်သင့်ပါက ၎င်းကို ပိတ်ပါ။",
+  "forceBrowserUpgrade": "ဘရောက်ဆာ အဆင့်မြှင့်ရန် အတင်းအကျပ်",
+  "forceBrowserUpgradeDescription": "ဆိုက် အတွေ့အကြုံကို မဖွင့်မီ evergreen ဘရောက်ဆာများ လိုအပ်စေရန်။",
+  "unableToLoadSiteDetails": "ဆိုက် အသေးစိတ်ကို ဖွင့်၍ မရပါ။",
+  "noSiteDetails": "ဆိုက် အသေးစိတ် မရှိပါ။",
+  "save": "သိမ်းရန်"
+}

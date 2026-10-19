@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Wezipäniň ady",
+  "describeYourRole": "Wezipäňizi şu ýerde beýan ediň...",
+  "present": "Görkeziň",
+  "skills": "Başarnyklar:",
+  "skillsAndMore": "{skills} we ýene +{count}",
+  "yearShort": "{count} ýyl",
+  "yearsShort": "{count} ýyl",
+  "monthShort": "{count} aý",
+  "monthsShort": "{count} aý"
+}

@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klicka för att göra vad som helst!",
   "moreDetails": "Fler detaljer",
   "details": "Detaljer",
-  "saved": "Sparad"
+  "saved": "Sparad",
+  "opensInNewWindow": "Öppnas i ett nytt fönster",
+  "resultsCount": "{count} resultat"
 }

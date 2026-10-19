@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Erkenning",
+  "licenseBySa": "Erkenning-InsgelyksDeel",
+  "licenseByNd": "Erkenning-GeenAfleidings",
+  "licenseByNc": "Erkenning-NieKommersieel",
+  "licenseByNcSa": "Erkenning-NieKommersieel-InsgelyksDeel",
+  "licenseByNcNd": "Erkenning-NieKommersieel-GeenAfleidings",
+  "citationWithLicense": "{title} deur {creator}, gelisensieer onder {license}. Geraadpleeg {date}.",
+  "citationWithoutLicense": "{title} deur {creator}. Geraadpleeg {date}.",
+  "licenseGraphic": "{license}-grafika"
+}

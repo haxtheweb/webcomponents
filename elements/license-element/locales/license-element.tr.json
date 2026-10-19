@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Atıf",
+  "licenseBySa": "Atıf-AynıLisanslaPaylaş",
+  "licenseByNd": "Atıf-Türetilemez",
+  "licenseByNc": "Atıf-GayriTicari",
+  "licenseByNcSa": "Atıf-GayriTicari-AynıLisanslaPaylaş",
+  "licenseByNcNd": "Atıf-GayriTicari-Türetilemez",
+  "licenseGraphic": "{license} grafiği",
+  "workByCreator": "{creator} tarafından {title}",
+  "workByCreatorLicensed": "{creator} tarafından hazırlanan {title}, {license} ile lisanslanmıştır.",
+  "permissionsBeyondScope": "Bu lisansın kapsamı dışındaki izinlere {link} ulaşılabilir.",
+  "author": "(yazar)",
+  "onTheLicensingDetailsPage": "lisans ayrıntıları sayfasından"
+}

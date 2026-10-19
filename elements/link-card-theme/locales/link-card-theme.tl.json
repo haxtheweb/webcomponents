@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Nakopya ang anchor link!",
+  "skipToContent": "Lumaktaw sa nilalaman",
+  "changePalette": "Palitan ang palette",
+  "primaryLinks": "Mga pangunahing link",
+  "socialLinks": "Mga social link",
+  "myProfile": "Aking profile",
+  "profileImageOf": "Larawan ng profile ni {name}",
+  "profileImage": "Larawan ng profile",
+  "linkCardProfile": "Profile ng link card",
+  "emptyStateLinks": "Magdagdag ng mga top-level na item ng menu sa site.json para mag-render ng mga link button.",
+  "titleOnPlatform": "{title} sa {platform}",
+  "openPlatform": "Buksan ang {platform}",
+  "paletteUpdated": "Na-update ang color palette sa opsyon {number}."
+}

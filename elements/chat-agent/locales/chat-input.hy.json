@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Ցուցադրել նախկինում ուղարկված հաղորդագրությունը (վեր)",
+  "displayPreviousMessageDown": "Ցուցադրել նախկինում ուղարկված հաղորդագրությունը (վար)",
+  "sendPrompt": "Ուղարկել հարցումը",
+  "sendPromptToMerlin": "Ուղարկել հարցումը Merlin-ին",
+  "shortenPrompt": "Խնդրում ենք կրճատել ձեր հարցումը մինչև {limit} նիշ."
+}

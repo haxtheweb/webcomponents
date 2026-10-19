@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "د بڼو پورته کول ناکام شول: {error}",
+  "noThemesForView": "د دې لید لپاره هېڅ بڼه شتون نه لري.",
+  "active": "فعال",
+  "themeIsActive": "د {name} بڼه فعاله ده",
+  "applyTheme": "د {name} بڼه پلي کړئ",
+  "apply": "پلي کول",
+  "preview": "مخکتنه",
+  "name": "نوم",
+  "element": "عنصر",
+  "description": "تشریح",
+  "action": "کړنه",
+  "loadingThemes": "بڼې پورته کېږي...",
+  "themesShown": "{count} بڼې ښودل شوې",
+  "themesShownDefaults": "{count} بڼې ښودل شوې (د app-hax تلوالې)",
+  "availableHaxcmsThemes": "شته HAXcms بڼې",
+  "gallery": "ګالري",
+  "table": "جدول"
+}

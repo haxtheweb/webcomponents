@@ -35,10 +35,15 @@ export class SortingQuestion extends QuestionElement {
     this.quizName = "default";
     this.question = "Put the following in order";
     this.t = {
+      ...this.t,
       numCorrectLeft: "You have",
       numCorrectRight: "correct",
       checkAnswer: "Check answer",
       tryAgain: "Try again",
+      sortingDirections:
+        "Place the items in the correct order either by clicking the up and down arrows or drag and drop. When you believe you have them in the correct order, test your answer by selecting {checkAnswer}. You will get feedback just below here indicating correctness of your answer.",
+      numCorrectOfTotal: "You have {correct} of {total} correct",
+      numCorrectOutOfTotal: "You have {correct} out of {total} correct",
     };
     this.registerLocalization({
       context: this,
@@ -157,7 +162,9 @@ export class SortingQuestion extends QuestionElement {
           } else {
             this.__toastColor = "red";
             this.__toastIcon = "icons:thumb-down";
-            this.__toastText = `${this.t.numCorrectLeft} ${this.numberCorrect} of ${this.answers.length} ${this.t.numCorrectRight}`;
+            this.__toastText = this.t.numCorrectOfTotal
+              .replace("{correct}", () => this.numberCorrect)
+              .replace("{total}", () => this.answers.length);
             this.playSound("error");
             extras.fire = true;
           }
@@ -334,11 +341,9 @@ export class SortingQuestion extends QuestionElement {
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      Place the items in the correct order either by clicking the up and down
-      arrows or drag and drop. When you believe you have them in the correct
-      order, test your answer by selecting
-      <strong>${this.t.checkAnswer}</strong>. You will get feedback just below
-      here indicating correctness of your answer.
+      ${this._tParts(this.t.sortingDirections, {
+        checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
+      })}
     </p>`;
   }
 
@@ -348,8 +353,10 @@ export class SortingQuestion extends QuestionElement {
       ? html`
           ${this.showAnswer && this.numberCorrect !== this.answers.length
             ? html` <p class="feedback">
-                  ${this.t.numCorrectLeft} ${this.numberCorrect} out of
-                  ${this.answers.length} ${this.t.numCorrectRight}
+                  ${this._tParts(this.t.numCorrectOutOfTotal, {
+                    correct: this.numberCorrect,
+                    total: this.answers.length,
+                  })}
                 </p>
                 ${this.querySelector &&
                 this.querySelector('[slot="feedbackIncorrect"]')
@@ -374,7 +381,7 @@ export class SortingQuestion extends QuestionElement {
           this.showAnswer &&
           this.numberCorrect !== this.answers.length
             ? html`
-                <h4>Need a hint?</h4>
+                <h4>${this.t.needAHint}</h4>
                 <div>
                   <slot name="hint"></slot>
                 </div>
@@ -385,7 +392,7 @@ export class SortingQuestion extends QuestionElement {
           this.showAnswer &&
           this.numberCorrect === this.answers.length
             ? html`
-                <h4>Evidence</h4>
+                <h4>${this.t.evidence}</h4>
                 <div>
                   <slot name="evidence"></slot>
                 </div>
@@ -417,17 +424,17 @@ export class SortingQuestion extends QuestionElement {
       {
         icon: "icons:add",
         callback: "haxClickInlineAdd",
-        label: "Add answer",
+        label: this.t.addAnswer,
       },
       {
         icon: "icons:remove",
         callback: "haxClickInlineRemove",
-        label: "Remove answer",
+        label: this.t.removeAnswer,
       },
       {
         icon: "lrn:edit",
         callback: "haxToggleEdit",
-        label: "Toggle editing feedback blocks",
+        label: this.t.toggleEditingFeedbackBlocks,
       },
     ];
   }

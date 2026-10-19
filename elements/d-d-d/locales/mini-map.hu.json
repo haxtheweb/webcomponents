@@ -1,0 +1,17 @@
+{
+  "editNodes": "Csomópontok szerkesztése",
+  "editLines": "Vonalak szerkesztése",
+  "reset": "Visszaállítás",
+  "save": "Mentés",
+  "cancel": "Mégse",
+  "delete": "Törlés",
+  "type": "Típus:",
+  "topic": "Téma",
+  "subsection": "Alszakasz",
+  "name": "Név:",
+  "enterName": "Add meg a nevet",
+  "url": "URL:",
+  "enterUrl": "Add meg az URL-t",
+  "activeNode": "Aktív csomópont?",
+  "nodeId": "{id}. csomópont"
+}

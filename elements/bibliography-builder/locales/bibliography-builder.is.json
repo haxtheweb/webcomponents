@@ -1,3 +1,8 @@
 {
-  "title": "Heimildir"
+  "title": "Heimildir",
+  "export": "Flytja út",
+  "exportCitations": "Flytja út tilvitnanir",
+  "copy": "Afrita",
+  "exportCitationFormat": "Snið tilvitnana við útflutning",
+  "selectCitationFormatBelow": "Veldu snið tilvitnana hér fyrir neðan"
 }

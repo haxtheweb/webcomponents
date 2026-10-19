@@ -43,5 +43,22 @@
   "emailAddress": "ផ្ញើអ៊ីមែលទៅសិស្សនេះ",
   "notes": "កំណត់ចំណាំ",
   "interests": "ចំណាប់អារម្មណ៍",
-  "profileImageFor": "រូបភាពប្រវត្តិរូបរបស់"
+  "profileImageFor": "រូបភាពប្រវត្តិរូបរបស់",
+  "fileSystem": "ប្រព័ន្ធឯកសារ",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "ចំណុចបញ្ចប់ URL (JSON)",
+  "jsonDataBlob": "ដុំទិន្នន័យ JSON",
+  "additionalCriteriaFeedback": "មតិត្រឡប់បន្ថែមសម្រាប់ {criteria}",
+  "outOfPoints": "/ {points} ពិន្ទុ",
+  "feedbackReport": "របាយការណ៍មតិត្រឡប់",
+  "criteriaDetails": "ព័ត៌មានលម្អិតលក្ខណៈវិនិច្ឆ័យ",
+  "yourFeedback": "មតិត្រឡប់របស់អ្នក",
+  "additionalCriteriaFeedbackHeading": "មតិត្រឡប់លក្ខណៈវិនិច្ឆ័យបន្ថែម",
+  "yourTotalScore": "ពិន្ទុសរុបរបស់អ្នក",
+  "scoreOutOfPoints": "{score} / {points} ពិន្ទុ",
+  "studentAssignment": "កិច្ចការ {assignment} របស់ {student}",
+  "downloadPDF": "ទាញយក PDF",
+  "displayMode1": "របៀប 1",
+  "displayMode2": "របៀប 2",
+  "twoWindows": "បង្អួចពីរ"
 }

@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Зангуу холбоосыг хууллаа!",
+  "skipToContent": "Агуулга руу шилжих",
+  "changePalette": "Палитр солих",
+  "primaryLinks": "Үндсэн холбоосууд",
+  "socialLinks": "Олон нийтийн холбоосууд",
+  "myProfile": "Миний профайл",
+  "profileImageOf": "{name}-ийн профайл зураг",
+  "profileImage": "Профайл зураг",
+  "linkCardProfile": "Холбоосын картын профайл",
+  "emptyStateLinks": "Холбоосын товчлуур харуулахын тулд site.json-д дээд түвшний цэсийн зүйлс нэмнэ үү.",
+  "titleOnPlatform": "{platform} дээрх {title}",
+  "openPlatform": "{platform}-ийг нээх",
+  "paletteUpdated": "Өнгөний палитрыг {number}-р сонголт болгон шинэчиллээ."
+}

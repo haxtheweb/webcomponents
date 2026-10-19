@@ -1,3 +1,4 @@
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import { SimpleFieldsFieldBehaviors } from "./simple-fields-field.js";
 
@@ -13,7 +14,7 @@ import { SimpleFieldsFieldBehaviors } from "./simple-fields-field.js";
  * @extends {SimpleFieldsFieldBehaviors(LitElement)}
  * @demo demo/index.html Demo
  */
-class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
+class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)) {
   static get tag() {
     return "simple-fields-combo";
   }
@@ -172,6 +173,16 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      open: "open",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "simple-fields",
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.expanded = false;
     this.filter = "";
     this.filteredOptions = [];
@@ -290,7 +301,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
       <simple-icon-button-lite
         icon="arrow-drop-down"
         ?hidden="${this.sortedOptions.length < 1}"
-        label="open"
+        label="${this.t.open}"
         @click="${this._onButtonClick}"
         part="option-icon"
         tabindex="-1"

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Palibe zotsatira",
+  "viewsRecordHeading": "Jambulani",
+  "viewsTitleImage": "Chithunzi cha {title}",
+  "viewsTitlePreview": "Chithunzithunzi cha {title}",
+  "viewsNoTimelineRecords": "Palibe zolemba zokhala ndi madeti zoonetsera mndandanda wa nthawi.",
+  "viewsTimelineTitle": "Mndandanda wa nthawi wa {title}",
+  "viewsNoChartField": "Palibe gawo la manambala lopezeka kuti lionetse tchati.",
+  "viewsChartingValue": "Tchati cha {value}",
+  "viewsChartingValueByLabel": "Tchati cha {value} molingana ndi {label}",
+  "viewsChartTitle": "Tchati cha {title}",
+  "viewsNoTreeRecords": "Palibe zolemba zokhala ndi magawo zoonetsera mtengo.",
+  "viewsNoGalleryRecords": "Palibe zolemba za zithunzi zoonetsera m'gulu la zithunzi.",
+  "viewsNoPlaylistRecords": "Palibe zolemba za zofalitsa zoonetsera mndandanda wa nyimbo.",
+  "fetchFailed": "Kupeza kwalephera ({status})",
+  "unableToLoadViewData": "Sitinathe kutsegula deta ya mawonekedwe.",
+  "noResultsFound": "Palibe zotsatira zopezeka.",
+  "refreshView": "Tsitsimutsani mawonekedwe",
+  "breakIntoStaticContent": "Sinthani kukhala zinthu zokhazikika",
+  "viewsOpenRecord": "Tsegulani cholemba"
+}

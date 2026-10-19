@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Ruranap Sutin",
+  "describeYourRole": "Ruranaykita kaypi willay...",
+  "present": "Rikuchiy",
+  "skills": "Atiykuna:",
+  "skillsAndMore": "{skills} hinallataq +{count} aswan",
+  "yearShort": "{count} wata",
+  "yearsShort": "{count} watakuna",
+  "monthShort": "{count} killa",
+  "monthsShort": "{count} killakuna"
+}

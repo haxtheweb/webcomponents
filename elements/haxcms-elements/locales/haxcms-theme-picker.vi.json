@@ -1,0 +1,11 @@
+{
+  "theme": "Chủ đề",
+  "active": "Đang dùng",
+  "selected": "Đã chọn",
+  "noPreview": "Không có bản xem trước",
+  "currentlyActiveAndSelected": "Giao diện đang dùng và đã chọn",
+  "currentlyActive": "Giao diện đang dùng",
+  "selectedToApplyOnSave": "Giao diện đã chọn để áp dụng khi lưu",
+  "themeSelection": "Chọn giao diện",
+  "noThemesAvailable": "Không có giao diện nào."
+}

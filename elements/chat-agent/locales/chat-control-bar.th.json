@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "ดาวน์โหลดบันทึกเป็น txt",
+  "downloadChatLog": "ดาวน์โหลดบันทึกแชต",
+  "resetChat": "รีเซ็ตแชต",
+  "toggleDataCollection": "สลับการเก็บข้อมูล",
+  "dataCollection": "การเก็บข้อมูล",
+  "toggleDeveloperMode": "สลับโหมดนักพัฒนา",
+  "exitFullView": "ออกจากมุมมองเต็ม",
+  "enterFullView": "เข้าสู่มุมมองเต็ม",
+  "hideInterface": "ซ่อนอินเทอร์เฟซ",
+  "resetChatConfirm": "รีเซ็ตแชตหรือไม่?",
+  "downloadBeforeResetConfirm": "ดาวน์โหลดบันทึกแชตก่อนรีเซ็ตหรือไม่?",
+  "dataCollectionOn": "การสนทนาของคุณจะถูกใช้ฝึกโมเดล AI ของเรา",
+  "dataCollectionOff": "การสนทนาของคุณจะไม่ถูกใช้ฝึกโมเดล AI ของเรา"
+}

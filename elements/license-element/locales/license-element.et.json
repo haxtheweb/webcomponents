@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Autorile viitamine",
+  "licenseBySa": "Autorile viitamine + Jagamine samadel tingimustel",
+  "licenseByNd": "Autorile viitamine + Tuletatud teoste keeld",
+  "licenseByNc": "Autorile viitamine + Mitteäriline eesmärk",
+  "licenseByNcSa": "Autorile viitamine + Mitteäriline eesmärk + Jagamine samadel tingimustel",
+  "licenseByNcNd": "Autorile viitamine + Mitteäriline eesmärk + Tuletatud teoste keeld",
+  "licenseGraphic": "{license} graafika",
+  "workByCreator": "{title}, autor {creator}",
+  "workByCreatorLicensed": "{title}, autor {creator}, on litsentsitud litsentsiga {license}.",
+  "permissionsBeyondScope": "Selle litsentsi ulatust ületavad load on saadaval {link}.",
+  "author": "(autor)",
+  "onTheLicensingDetailsPage": "litsentsi üksikasjade lehel"
+}

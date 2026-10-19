@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Bonisa umyalezo othunyelwe ngaphambili (phezulu)",
+  "displayPreviousMessageDown": "Bonisa umyalezo othunyelwe ngaphambili (ezantsi)",
+  "sendPrompt": "Thumela uMyalelo",
+  "sendPromptToMerlin": "Thumela uMyalelo ku-Merlin",
+  "shortenPrompt": "Nceda unciphise umyalelo wakho ungabi ngaphezulu koonobumba abangama-{limit}."
+}

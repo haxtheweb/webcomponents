@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "קישור העוגן הועתק!",
+  "skipToContent": "דילוג לתוכן",
+  "siteHome": "דף הבית של האתר",
+  "mainNavigation": "ניווט ראשי",
+  "toggleMenu": "החלפת תפריט",
+  "changeTheme": "שינוי ערכת נושא",
+  "breadcrumb": "פירורי לחם",
+  "tagFilter": "סינון לפי תגית:",
+  "all": "הכול",
+  "pageNumberOfTotal": "מספר עמוד: {current} מתוך {total}",
+  "siteGenerated": "האתר נוצר: {date}",
+  "copyright": "זכויות יוצרים: {year} {author}",
+  "viewContentByTag": "הצגת תוכן לפי תגית",
+  "licenseGraphic": "סמל {license}"
+}

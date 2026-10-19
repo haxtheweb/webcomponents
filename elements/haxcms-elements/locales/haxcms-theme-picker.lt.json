@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Aktyvi",
+  "selected": "Pasirinkta",
+  "noPreview": "Peržiūros nėra",
+  "currentlyActiveAndSelected": "Šiuo metu aktyvi ir pasirinkta tema",
+  "currentlyActive": "Šiuo metu aktyvi tema",
+  "selectedToApplyOnSave": "Pasirinkta tema, kuri bus pritaikyta išsaugojus",
+  "themeSelection": "Temos pasirinkimas",
+  "noThemesAvailable": "Temų nėra."
+}

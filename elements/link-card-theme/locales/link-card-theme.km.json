@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "បានចម្លងតំណយុថ្កា!",
+  "skipToContent": "រំលងទៅខ្លឹមសារ",
+  "changePalette": "ប្ដូរក្ដារពណ៌",
+  "primaryLinks": "តំណចម្បង",
+  "socialLinks": "តំណសង្គម",
+  "myProfile": "ប្រវត្តិរូបរបស់ខ្ញុំ",
+  "profileImageOf": "រូបភាពប្រវត្តិរូប {name}",
+  "profileImage": "រូបភាពប្រវត្តិរូប",
+  "linkCardProfile": "ប្រវត្តិរូបកាតតំណ",
+  "emptyStateLinks": "បន្ថែមធាតុម៉ឺនុយកម្រិតកំពូលនៅក្នុង site.json ដើម្បីបង្ហាញប៊ូតុងតំណ។",
+  "titleOnPlatform": "{title} នៅលើ {platform}",
+  "openPlatform": "បើក {platform}",
+  "paletteUpdated": "ក្ដារពណ៌ត្រូវបានធ្វើបច្ចុប្បន្នភាពទៅជម្រើស {number}។"
+}

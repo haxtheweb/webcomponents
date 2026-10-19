@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Benotzernumm aginn",
+  "invalidUsernameOrPassword": "Ongëltege Benotzernumm oder Passwuert",
+  "welcomeLetsGo": "Wëllkomm {username}! Lass geet et!",
+  "enterYourUsername": "Gitt Äre Benotzernumm an",
+  "username": "Benotzernumm",
+  "next": "Nächst",
+  "welcomeBack": "Wëllkomm zréck, {username}!",
+  "notYou": "Net Dir?",
+  "enterYourPassword": "Gitt Äert Passwuert an",
+  "password": "Passwuert",
+  "togglePasswordDisplay": "Passwuert weisen/verstoppen",
+  "login": "Umellen"
+}

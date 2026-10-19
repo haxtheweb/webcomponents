@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Rezultatų nėra",
+  "viewsRecordHeading": "Įrašyti",
+  "viewsTitleImage": "{title} paveikslėlis",
+  "viewsTitlePreview": "{title} peržiūra",
+  "viewsNoTimelineRecords": "Laiko juostai atvaizduoti nėra įrašų su datomis.",
+  "viewsTimelineTitle": "{title} laiko juosta",
+  "viewsNoChartField": "Diagramai atvaizduoti nerasta skaitinio lauko.",
+  "viewsChartingValue": "Diagrama: {value}",
+  "viewsChartingValueByLabel": "Diagrama: {value} pagal {label}",
+  "viewsChartTitle": "{title} diagrama",
+  "viewsNoTreeRecords": "Medžiui atvaizduoti nėra hierarchinių įrašų.",
+  "viewsNoGalleryRecords": "Galerijai atvaizduoti nėra paveikslėlių įrašų.",
+  "viewsNoPlaylistRecords": "Grojaraščiui atvaizduoti nėra medijos įrašų.",
+  "fetchFailed": "Gauti nepavyko ({status})",
+  "unableToLoadViewData": "Nepavyko įkelti rodinio duomenų.",
+  "noResultsFound": "Rezultatų nerasta.",
+  "refreshView": "Atnaujinti rodinį",
+  "breakIntoStaticContent": "Paversti statiniu turiniu",
+  "viewsOpenRecord": "Atidaryti įrašą"
+}

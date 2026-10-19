@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Đang tải...",
   "youTubeStartLoading": "Nhấn phát.",
   "youTubeTranscriptLabel": "Bản ghi sẽ được tải khi phương tiện bắt đầu phát.",
-  "audioDescriptionLabel": "Mô tả âm thanh"
+  "audioDescriptionLabel": "Mô tả âm thanh",
+  "openOnYouTube": "Mở trên YouTube"
 }

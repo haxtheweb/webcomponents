@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Faylları buraya buraxın",
+  "uploadQueue": "Yükləmə növbəsi",
+  "pending": "Gözləmədə",
+  "preparing": "Hazırlanır",
+  "uploading": "Yüklənir",
+  "complete": "Tamamlandı",
+  "aborted": "Dayandırıldı",
+  "cancelled": "Ləğv edildi",
+  "error": "Xəta",
+  "errorWithStatus": "Xəta: {status}",
+  "cancel": "Ləğv et",
+  "cancelUploadOf": "{name} yükləməsini ləğv et",
+  "retry": "Yenidən cəhd et",
+  "retryUploadOf": "{name} yükləməsini təkrarla",
+  "remove": "Sil",
+  "removeFromQueue": "{name} faylını növbədən sil",
+  "fileTypeNotAccepted": "Fayl növü qəbul edilmir: {name}",
+  "uploadFailed": "Yükləmə alınmadı: {status}",
+  "networkError": "Şəbəkə xətası"
+}

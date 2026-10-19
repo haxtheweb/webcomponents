@@ -1,0 +1,11 @@
+{
+  "theme": "থিম",
+  "active": "সক্রিয়",
+  "selected": "নির্বাচিত",
+  "noPreview": "কোনো প্রিভিউ নেই",
+  "currentlyActiveAndSelected": "বর্তমানে সক্রিয় ও নির্বাচিত থিম",
+  "currentlyActive": "বর্তমানে সক্রিয় থিম",
+  "selectedToApplyOnSave": "সেভ করলে প্রয়োগের জন্য নির্বাচিত থিম",
+  "themeSelection": "থিম নির্বাচন",
+  "noThemesAvailable": "কোনো থিম উপলভ্য নেই।"
+}

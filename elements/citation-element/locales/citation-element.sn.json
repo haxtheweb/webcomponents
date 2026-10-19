@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Kupa Mbiri",
+  "licenseBySa": "Kupa Mbiri Govera Zvakafanana",
+  "licenseByNd": "Kupa Mbiri Pasina Zvakatorwa",
+  "licenseByNc": "Kupa Mbiri Kwete Kwekutengesa",
+  "licenseByNcSa": "Kupa Mbiri Kwete Kwekutengesa Govera Zvakafanana",
+  "licenseByNcNd": "Kupa Mbiri Kwete Kwekutengesa Pasina Zvakatorwa",
+  "citationWithLicense": "{title} na{creator}, ine rezinesi re{license}. Yakawanikwa {date}.",
+  "citationWithoutLicense": "{title} na{creator}. Yakawanikwa {date}.",
+  "licenseGraphic": "Mufananidzo we{license}"
+}

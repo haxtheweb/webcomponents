@@ -43,5 +43,22 @@
   "emailAddress": "שליחת דוא\"ל לתלמיד זה",
   "notes": "הערות",
   "interests": "תחומי עניין",
-  "profileImageFor": "תמונת פרופיל של"
+  "profileImageFor": "תמונת פרופיל של",
+  "fileSystem": "מערכת קבצים",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "נקודת קצה URL ‏(JSON)",
+  "jsonDataBlob": "גוש נתוני JSON",
+  "additionalCriteriaFeedback": "משוב נוסף על {criteria}",
+  "outOfPoints": "/ {points} נק'",
+  "feedbackReport": "דוח משוב",
+  "criteriaDetails": "פרטי הקריטריונים",
+  "yourFeedback": "המשוב שלכם",
+  "additionalCriteriaFeedbackHeading": "משוב נוסף על הקריטריונים",
+  "yourTotalScore": "הציון הכולל שלכם",
+  "scoreOutOfPoints": "{score} / {points} נק'",
+  "studentAssignment": "המטלה {assignment} של {student}",
+  "downloadPDF": "הורדת PDF",
+  "displayMode1": "מצב 1",
+  "displayMode2": "מצב 2",
+  "twoWindows": "שני חלונות"
 }

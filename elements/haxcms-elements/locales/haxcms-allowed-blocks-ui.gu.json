@@ -10,5 +10,9 @@
   "save": "સાચવો",
   "noDescription": "કોઈ વર્ણન ઉપલબ્ધ નથી.",
   "details": "વિગતો",
-  "loadingInventory": "સંપૂર્ણ બ્લૉક સૂચિ લોડ થઈ રહી છે…"
+  "loadingInventory": "સંપૂર્ણ બ્લૉક સૂચિ લોડ થઈ રહી છે…",
+  "selectAllButton": "બધું પસંદ કરો",
+  "deselectAllButton": "બધું નાપસંદ કરો",
+  "selectedOfAvailable": "{selected} પસંદ કર્યા / {total} ઉપલબ્ધ",
+  "savingBlocksFailed": "બ્લોક્સ સાચવવામાં નિષ્ફળ: {error}"
 }

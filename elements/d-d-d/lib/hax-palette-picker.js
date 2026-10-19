@@ -6,6 +6,7 @@ import {
   getDDDPaletteOptions,
 } from "./DDDPaletteRegistry.js";
 import { DDDPaletteStyles } from "./DDDStyles.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hax-palette-picker`
@@ -16,7 +17,7 @@ import { DDDPaletteStyles } from "./DDDStyles.js";
  * - `selectedKey` is the associated palette key (for example `"monotone"`).
  * - Emits `value-changed` with `{ value, key, dataPalette, option }`.
  */
-class HaxPalettePicker extends DDD {
+class HaxPalettePicker extends I18NMixin(DDD) {
   static get tag() {
     return "hax-palette-picker";
   }
@@ -212,7 +213,22 @@ class HaxPalettePicker extends DDD {
 
   constructor() {
     super();
-    this.label = "Palette";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      palette: "Palette",
+      paletteSelection: "Palette selection",
+      active: "Active",
+      selected: "Selected",
+      currentlyActiveAndSelectedPalette: "Currently active and selected palette",
+      currentlyActivePalette: "Currently active palette",
+      selectedPaletteToApply: "Selected palette to apply",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
+    this.i18nDefault("label", "palette");
     this.description = "";
     this.activeValue = "";
     this.showStatusFlags = false;
@@ -414,8 +430,10 @@ class HaxPalettePicker extends DDD {
           class="flags"
           ?hidden="${!this.showStatusFlags || !(active || checked)}"
         >
-          <span class="flag active" ?hidden="${!active}">Active</span>
-          <span class="flag selected" ?hidden="${!checked}">Selected</span>
+          <span class="flag active" ?hidden="${!active}">${this.t.active}</span>
+          <span class="flag selected" ?hidden="${!checked}"
+            >${this.t.selected}</span
+          >
         </div>
         <div class="option-display">
           <div class="option-header">
@@ -433,19 +451,19 @@ class HaxPalettePicker extends DDD {
           class="sr-only"
           ?hidden="${!this.showStatusFlags || !(active && checked)}"
         >
-          Currently active and selected palette
+          ${this.t.currentlyActiveAndSelectedPalette}
         </span>
         <span
           class="sr-only"
           ?hidden="${!this.showStatusFlags || !(active && !checked)}"
         >
-          Currently active palette
+          ${this.t.currentlyActivePalette}
         </span>
         <span
           class="sr-only"
           ?hidden="${!this.showStatusFlags || !(!active && checked)}"
         >
-          Selected palette to apply
+          ${this.t.selectedPaletteToApply}
         </span>
       </label>
     `;
@@ -455,7 +473,7 @@ class HaxPalettePicker extends DDD {
     return html`
       <fieldset
         role="radiogroup"
-        aria-label="${this.label || "Palette selection"}"
+        aria-label="${this.label || this.t.paletteSelection}"
         aria-describedby="${this.description
           ? `${this.__inputId}-description`
           : ""}"

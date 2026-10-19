@@ -1,0 +1,14 @@
+{
+  "licenseBy": "အမည်ဖော်ပြခြင်း",
+  "licenseBySa": "အမည်ဖော်ပြခြင်း တူညီစွာ မျှဝေခြင်း",
+  "licenseByNd": "အမည်ဖော်ပြခြင်း ပြုပြင်ထုတ်လုပ်ခြင်း မပြုရ",
+  "licenseByNc": "အမည်ဖော်ပြခြင်း စီးပွားဖြစ် မဟုတ်",
+  "licenseByNcSa": "အမည်ဖော်ပြခြင်း စီးပွားဖြစ် မဟုတ် တူညီစွာ မျှဝေခြင်း",
+  "licenseByNcNd": "အမည်ဖော်ပြခြင်း စီးပွားဖြစ် မဟုတ် ပြုပြင်ထုတ်လုပ်ခြင်း မပြုရ",
+  "licenseGraphic": "{license} ရုပ်ပုံ",
+  "workByCreator": "{creator} ၏ {title}",
+  "workByCreatorLicensed": "{creator} ၏ {title} ကို {license} အောက်တွင် လိုင်စင်ပေးထားသည်။",
+  "permissionsBeyondScope": "ဤလိုင်စင်၏ နယ်ပယ်ကျော်လွန်သော ခွင့်ပြုချက်များကို {link} ရရှိနိုင်သည်။",
+  "author": "(စာရေးသူ)",
+  "onTheLicensingDetailsPage": "လိုင်စင် အသေးစိတ် စာမျက်နှာတွင်"
+}

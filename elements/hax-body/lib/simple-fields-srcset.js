@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit";
 import { live } from "lit/directives/live.js";
 import { SimpleFieldsContainerBehaviors } from "@haxtheweb/simple-fields/lib/simple-fields-container.js";
 import { SimpleFieldsButtonStyles } from "@haxtheweb/simple-fields/lib/simple-fields-ui.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -27,7 +28,9 @@ import "./hax-upload-field.js";
  * @class SimpleFieldsSrcset
  * @extends {SimpleFieldsContainerBehaviors(LitElement)}
  */
-class SimpleFieldsSrcset extends SimpleFieldsContainerBehaviors(LitElement) {
+class SimpleFieldsSrcset extends I18NMixin(
+  SimpleFieldsContainerBehaviors(LitElement),
+) {
   static get tag() {
     return "simple-fields-srcset";
   }
@@ -200,6 +203,22 @@ class SimpleFieldsSrcset extends SimpleFieldsContainerBehaviors(LitElement) {
   constructor() {
     super();
     this.__rows = [];
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      noResponsiveSources: "No responsive sources yet. Add one below.",
+      addResponsiveSource: "Add responsive source",
+      addSource: "Add source",
+      descriptor: "Descriptor",
+      moveUp: "Move up",
+      moveDown: "Move down",
+      removeSource: "Remove source",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "hax",
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
   }
   /**
    * container base tries to read a slotted field; we render our own
@@ -268,7 +287,7 @@ class SimpleFieldsSrcset extends SimpleFieldsContainerBehaviors(LitElement) {
         >
           ${this.__rows.length === 0
             ? html`<div class="empty-state" part="empty-state">
-                No responsive sources yet. Add one below.
+                ${this.t.noResponsiveSources}
               </div>`
             : this.__rows.map((row, i) => this._rowTemplate(row, i))}
         </div>
@@ -279,10 +298,10 @@ class SimpleFieldsSrcset extends SimpleFieldsContainerBehaviors(LitElement) {
             part="add-btn"
             ?disabled="${this.disabled}"
             @click="${this._addRow}"
-            aria-label="Add responsive source"
+            aria-label="${this.t.addResponsiveSource}"
           >
             <simple-icon-lite icon="add"></simple-icon-lite>
-            Add source
+            ${this.t.addSource}
           </button>
         </div>
         <div
@@ -315,7 +334,7 @@ class SimpleFieldsSrcset extends SimpleFieldsContainerBehaviors(LitElement) {
         </div>
         <div class="row-meta" part="row-meta">
           <div class="field-cell">
-            <label for="${this.id}-desc-${i}">Descriptor</label>
+            <label for="${this.id}-desc-${i}">${this.t.descriptor}</label>
             <input
               id="${this.id}-desc-${i}"
               class="row-desc"
@@ -330,19 +349,19 @@ class SimpleFieldsSrcset extends SimpleFieldsContainerBehaviors(LitElement) {
           <div class="row-controls" part="row-controls">
             <simple-icon-button-lite
               icon="arrow-upward"
-              label="Move up"
+              label="${this.t.moveUp}"
               ?disabled="${this.disabled || i === 0}"
               @click="${() => this._moveRow(i, -1)}"
             ></simple-icon-button-lite>
             <simple-icon-button-lite
               icon="arrow-downward"
-              label="Move down"
+              label="${this.t.moveDown}"
               ?disabled="${this.disabled || i === last}"
               @click="${() => this._moveRow(i, 1)}"
             ></simple-icon-button-lite>
             <simple-icon-button-lite
               icon="delete"
-              label="Remove source"
+              label="${this.t.removeSource}"
               ?disabled="${this.disabled}"
               @click="${() => this._removeRow(i)}"
             ></simple-icon-button-lite>

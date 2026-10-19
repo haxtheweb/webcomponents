@@ -1,0 +1,5 @@
+{
+  "navigateToSection": "{label} – ugrás a szakaszhoz",
+  "clickToScrollToSection": "Kattints a(z) {label} szakaszhoz görgetéshez",
+  "navigatedToSection": "Ugrás megtörtént: {label} szakasz"
+}

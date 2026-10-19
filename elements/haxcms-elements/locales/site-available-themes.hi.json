@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "थीम लोड करने में विफल: {error}",
+  "noThemesForView": "इस व्यू के लिए कोई थीम उपलब्ध नहीं।",
+  "active": "सक्रिय",
+  "themeIsActive": "{name} थीम सक्रिय है",
+  "applyTheme": "{name} थीम लागू करें",
+  "apply": "लागू करें",
+  "preview": "पूर्वावलोकन",
+  "name": "नाम",
+  "element": "एलिमेंट",
+  "description": "विवरण",
+  "action": "क्रिया",
+  "loadingThemes": "थीम लोड हो रही हैं...",
+  "themesShown": "{count} थीम दिखाई गईं",
+  "themesShownDefaults": "{count} थीम दिखाई गईं (app-hax डिफ़ॉल्ट)",
+  "availableHaxcmsThemes": "उपलब्ध HAXcms थीम",
+  "gallery": "गैलरी",
+  "table": "तालिका"
+}

@@ -10,5 +10,9 @@
   "save": "خوندي کول",
   "noDescription": "هېڅ تشریح شتون نه لري.",
   "details": "جزئیات",
-  "loadingInventory": "د بلاکونو بشپړ لیست پورته کېږي…"
+  "loadingInventory": "د بلاکونو بشپړ لیست پورته کېږي…",
+  "selectAllButton": "ټول وټاکئ",
+  "deselectAllButton": "ټول مه ټاکئ",
+  "selectedOfAvailable": "{selected} ټاکل شوي / {total} شته",
+  "savingBlocksFailed": "د بلاکونو خوندي کول ناکام شول: {error}"
 }

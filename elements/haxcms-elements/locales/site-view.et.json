@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Tulemusi pole",
+  "viewsRecordHeading": "Salvesta",
+  "viewsTitleImage": "{title} pilt",
+  "viewsTitlePreview": "{title} eelvaade",
+  "viewsNoTimelineRecords": "Ajajoone kuvamiseks pole kuupäevapõhiseid kirjeid saadaval.",
+  "viewsTimelineTitle": "{title} ajajoon",
+  "viewsNoChartField": "Diagrammi kuvamiseks ei leitud arvulist välja.",
+  "viewsChartingValue": "Diagramm: {value}",
+  "viewsChartingValueByLabel": "Diagramm: {value} {label} järgi",
+  "viewsChartTitle": "{title} diagramm",
+  "viewsNoTreeRecords": "Puu kuvamiseks pole hierarhilisi kirjeid saadaval.",
+  "viewsNoGalleryRecords": "Galerii kuvamiseks pole pildikirjeid saadaval.",
+  "viewsNoPlaylistRecords": "Esitusloendi kuvamiseks pole meediakirjeid saadaval.",
+  "fetchFailed": "Laadimine ebaõnnestus ({status})",
+  "unableToLoadViewData": "Vaate andmeid ei õnnestunud laadida.",
+  "noResultsFound": "Tulemusi ei leitud.",
+  "refreshView": "Värskenda vaadet",
+  "breakIntoStaticContent": "Muuda staatiliseks sisuks",
+  "viewsOpenRecord": "Ava kirje"
+}

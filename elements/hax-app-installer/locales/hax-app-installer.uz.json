@@ -54,5 +54,6 @@
   "requirementUppercase": "Bitta katta harf",
   "requirementLowercase": "Bitta kichik harf",
   "requirementNumber": "Bitta raqam",
-  "requirementSymbol": "Bitta maxsus belgi"
+  "requirementSymbol": "Bitta maxsus belgi",
+  "haxcmsMascotAlt": "HAXcms World Traveler maskoti"
 }

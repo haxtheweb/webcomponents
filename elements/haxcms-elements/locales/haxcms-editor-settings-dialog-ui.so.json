@@ -5,5 +5,9 @@
   "buttons": "Badhamada",
   "futureButtonConfiguration": "Habaynta badhamada tifaftiraha ayaa dhowaan imanaysa.",
   "save": "Kaydi",
-  "saving": "Waa la kaydinayaa…"
+  "saving": "Waa la kaydinayaa…",
+  "novice": "Bilow",
+  "expert": "Khabiir",
+  "toolbarPreviewAlt": "Hordhaca baarka qalabka tafatirka ee {audience}",
+  "savingEditorSettingsFailed": "Kaydinta dejimaha tifaftiraha way fashilantay: {error}"
 }

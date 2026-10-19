@@ -4,10 +4,22 @@ import "@haxtheweb/simple-toolbar/simple-toolbar.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "./simple-popover-manager.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-class SimpleTour extends LitElement {
+class SimpleTour extends I18NMixin(LitElement) {
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      stopTour: "Stop Tour",
+      prev: "Prev",
+      next: "Next",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.stacks = {};
     this.orientation = "lr";
     this.active = null;
@@ -148,7 +160,7 @@ class SimpleTour extends LitElement {
         id="close"
         slot="heading"
         @click="${this.stopTour.bind(this)}"
-        label="Stop Tour"
+        label="${this.t.stopTour}"
         icon="close"
       >
       </simple-icon-button-lite>
@@ -157,8 +169,8 @@ class SimpleTour extends LitElement {
         slot="nav"
         @click="${this.prevStop.bind(this)}"
         ?disabled="${!this.hasPrev()}"
-        label="Prev"
-        title="Prev"
+        label="${this.t.prev}"
+        title="${this.t.prev}"
         icon="arrow-back"
         show-text-label
       >
@@ -168,8 +180,8 @@ class SimpleTour extends LitElement {
         slot="nav"
         @click="${this.nextStop.bind(this)}"
         ?disabled="${!this.hasNext()}"
-        title="Next"
-        label="Next"
+        title="${this.t.next}"
+        label="${this.t.next}"
         icon="arrow-forward"
         show-text-label
       >

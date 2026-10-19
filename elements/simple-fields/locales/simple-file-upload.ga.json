@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Scaoil comhaid anseo",
+  "uploadQueue": "Scuaine uaslódála",
+  "pending": "Ar feitheamh",
+  "preparing": "Á ullmhú",
+  "uploading": "Á uaslódáil",
+  "complete": "Críochnaithe",
+  "aborted": "Tobscortha",
+  "cancelled": "Cealaithe",
+  "error": "Earráid",
+  "errorWithStatus": "Earráid: {status}",
+  "cancel": "Cealaigh",
+  "cancelUploadOf": "Cealaigh uaslódáil {name}",
+  "retry": "Bain triail eile as",
+  "retryUploadOf": "Atriail uaslódáil {name}",
+  "remove": "Bain",
+  "removeFromQueue": "Bain {name} den scuaine",
+  "fileTypeNotAccepted": "Ní ghlactar leis an gcineál comhaid: {name}",
+  "uploadFailed": "Theip ar an uaslódáil: {status}",
+  "networkError": "Earráid líonra"
+}

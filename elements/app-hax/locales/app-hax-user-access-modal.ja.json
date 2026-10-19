@@ -7,5 +7,7 @@
   "userAccessGranted": "ユーザーにアクセスを許可しました！",
   "userNotFound": "ユーザーが見つからないか、権限がありません",
   "loadingAddingUser": "ユーザーを追加中...",
-  "grantAccessTo": "アクセスを許可する相手:"
+  "grantAccessTo": "アクセスを許可する相手:",
+  "networkErrorTryAgain": "ネットワークエラーが発生しました。もう一度お試しください。",
+  "characterWillAppear": "ユーザー名を入力するとキャラクターが表示されます"
 }

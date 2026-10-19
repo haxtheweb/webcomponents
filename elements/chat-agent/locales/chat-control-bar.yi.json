@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "לאָד אַראָפּ דעם לאָג ווי txt",
+  "downloadChatLog": "לאָד אַראָפּ דעם שמועס־לאָג",
+  "resetChat": "שטעל צוריק דעם שמועס",
+  "toggleDataCollection": "דאַטן־זאַמלונג אײַן/אויס",
+  "dataCollection": "דאַטן־זאַמלונג",
+  "toggleDeveloperMode": "אַנטוויקלער־מאָדוס אײַן/אויס",
+  "exitFullView": "אַרויס פֿון פֿולן אָנבליק",
+  "enterFullView": "גיי אַרײַן אין פֿולן אָנבליק",
+  "hideInterface": "באַהאַלט דעם אינטערפֿייס",
+  "resetChatConfirm": "צוריקשטעלן דעם שמועס?",
+  "downloadBeforeResetConfirm": "אַראָפּלאָדן דעם שמועס־לאָג איידער דו שטעלסט צוריק?",
+  "dataCollectionOn": "דײַנע שמועסן וועלן באַניצט ווערן צו טרענירן אונדזערע AI מאָדעלן",
+  "dataCollectionOff": "דײַנע שמועסן וועלן נישט באַניצט ווערן צו טרענירן אונדזערע AI מאָדעלן"
+}

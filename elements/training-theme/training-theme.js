@@ -52,6 +52,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
     this.t.pagesViewed = "pages viewed";
     this.t.trainingTopics = "Training topics";
     this.t.support = "Support";
+    this.t.skipToContent = "Skip to content";
     this.maxIndex = 0;
     this.activeId = null; // To keep track of the active index
     autorun(() => {
@@ -552,7 +553,7 @@ class TrainingTheme extends HAXCMSOperationButtons(
     const authorName = varGet(this, "manifest.metadata.author.name", "");
     const authorEmail = varGet(this, "manifest.metadata.author.email", "");
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <div class="alignContent">
         <aside class="training-column">
           <div class="sidebar-header">

@@ -1,5 +1,9 @@
 {
   "studentSubmission": "विद्यार्थ्याचे सबमिशन",
   "openInNewWindow": "नवीन विंडोमध्ये उघडा",
-  "submitted": "सबमिट केले"
+  "submitted": "सबमिट केले",
+  "previousStudent": "मागील विद्यार्थी",
+  "nextStudent": "पुढील विद्यार्थी",
+  "previousAssignment": "मागील असाइनमेंट",
+  "nextAssignment": "पुढील असाइनमेंट"
 }

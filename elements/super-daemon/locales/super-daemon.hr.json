@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klikni za bilo što!",
   "moreDetails": "Više detalja",
   "details": "Detalji",
-  "saved": "Spremljeno"
+  "saved": "Spremljeno",
+  "opensInNewWindow": "Otvara se u novom prozoru",
+  "resultsCount": "Rezultata: {count}"
 }

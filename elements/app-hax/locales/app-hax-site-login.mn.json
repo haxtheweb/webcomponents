@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Хэрэглэгчийн нэр оруулна уу",
+  "invalidUsernameOrPassword": "Хэрэглэгчийн нэр эсвэл нууц үг буруу",
+  "welcomeLetsGo": "Тавтай морил, {username}! Эхэлцгээе!",
+  "enterYourUsername": "Хэрэглэгчийн нэрээ оруулна уу",
+  "username": "Хэрэглэгчийн нэр",
+  "next": "Дараах",
+  "welcomeBack": "Эргэн тавтай морил, {username}!",
+  "notYou": "Та биш үү?",
+  "enterYourPassword": "Нууц үгээ оруулна уу",
+  "password": "Нууц үг",
+  "togglePasswordDisplay": "Нууц үгийг харуулах/нуух",
+  "login": "Нэвтрэх"
+}

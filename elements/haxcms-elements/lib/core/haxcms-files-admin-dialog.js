@@ -1,6 +1,7 @@
 import { html, css } from "lit";
 import { keyed } from "lit/directives/keyed.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
@@ -15,10 +16,10 @@ import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/hax-body/lib/hax-file-actions.js";
 
 const FILE_TYPE_FILTER_ITEMS = [
-  { value: "", text: "All types" },
-  { value: "image", text: "Images" },
-  { value: "video", text: "Video" },
-  { value: "audio", text: "Audio" },
+  { value: "", text: "All types", key: "allTypes" },
+  { value: "image", text: "Images", key: "images" },
+  { value: "video", text: "Video", key: "video" },
+  { value: "audio", text: "Audio", key: "audio" },
   { value: "application/pdf", text: "PDF" },
 ];
 
@@ -34,7 +35,7 @@ const SCALE_PRESETS = {
   xl: { width: 1920, height: 1920, label: "1920px" },
 };
 
-class HAXCMSFilesAdminDialog extends DDD {
+class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-files-admin-dialog";
   }
@@ -62,6 +63,91 @@ class HAXCMSFilesAdminDialog extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      allTypes: "All types",
+      images: "Images",
+      video: "Video",
+      audio: "Audio",
+      timeAgo: "{time} ago",
+      month: "month",
+      months: "months",
+      day: "day",
+      days: "days",
+      hour: "hour",
+      hours: "hours",
+      minute: "minute",
+      minutes: "minutes",
+      second: "second",
+      seconds: "seconds",
+      unableToLoadFiles: "Unable to load files",
+      uploadComplete: "Upload complete",
+      unableToRunFileOperation: "Unable to run file operation.",
+      fileUuidMissing: "File UUID is missing",
+      fileOperationEndpointUnavailable: "File operation endpoint is not available",
+      fileOperationFailed: "File operation failed",
+      fileOperationComplete: "File operation complete",
+      fileDeleted: "File deleted",
+      fileRenamed: "File renamed",
+      imageConvertedToJpg: "Image converted to JPG",
+      imageRotated90: "Image rotated 90 degrees",
+      imageTransformedSepia: "Image transformed to sepia",
+      imageTransformedBlackAndWhite: "Image transformed to black and white",
+      scaledTo: "Scaled to {size}",
+      compressedLevel: "Compressed ({level})",
+      fileDuplicated: "File duplicated",
+      processingProgress: "Processing {current} of {total}…",
+      bulkSummaryFile: "{verb}: {count} file",
+      bulkSummaryFiles: "{verb}: {count} files",
+      bulkFailed: "{verb} failed",
+      bulkFailedAllFile: "{verb} failed for all {count} file",
+      bulkFailedAllFiles: "{verb} failed for all {count} files",
+      bulkPartial: "{verb}: {ok} succeeded, {failed} failed",
+      onlyRasterScaled: "Only raster images can be scaled.",
+      onlyRasterRotated: "Only raster images can be rotated.",
+      rotated: "Rotated",
+      onlyRasterConvertedJpg: "Only raster images can be converted to JPG.",
+      onlyRasterTransformed: "Only raster images can be transformed.",
+      transformed: "Transformed",
+      onlyRasterCompressed: "Only raster images can be compressed.",
+      duplicated: "Duplicated",
+      renamePromptSingle: "Rename file using letters, numbers, and hyphens. Keep the existing extension.",
+      renamePromptMultiple: "Rename {count} files. Enter a base name; files will be named base-1, base-2, etc.",
+      renameCancelled: "Rename cancelled",
+      renamed: "Renamed",
+      selectedFilesCount: "{count} selected files",
+      deleteConfirm: "Delete {label}? This cannot be undone.",
+      deleted: "Deleted",
+      noPublicUrl: "No public URL available for the selected file(s).",
+      unableToEmbed: "Unable to embed: no active page editor found.",
+      insertedSkipped: "Inserted {count} file(s); skipped {skipped} without a public URL.",
+      insertedIntoPage: "Inserted {count} file(s) into page",
+      type: "Type",
+      extension: "Extension",
+      extensionPlaceholder: "e.g. png",
+      nameContains: "Name contains",
+      nameContainsPlaceholder: "filename…",
+      perPage: "Per page",
+      refresh: "Refresh",
+      refreshFileList: "Refresh file list",
+      loading: "Loading…",
+      filesPagination: "Files pagination",
+      noFilesFound: "No files found.",
+      selectAllFiles: "Select all files",
+      preview: "Preview",
+      file: "File",
+      size: "Size",
+      updated: "Updated",
+      selectFile: "Select {name}",
+      copyPath: "Copy path",
+      pathCopied: "Path copied",
+      embedInPage: "Embed in page",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.rows = [];
     this.loading = false;
     this.busy = false;
@@ -432,26 +518,44 @@ class HAXCMSFilesAdminDialog extends DDD {
     const minute = 60;
     if (delta >= month) {
       const months = Math.floor(delta / month);
-      return `${months} month${months === 1 ? "" : "s"} ago`;
+      return this.t.timeAgo.replace(
+        "{time}",
+        () => (`${months} ${months === 1 ? this.t.month : this.t.months}`),
+      );
     }
     if (delta >= day) {
       const days = Math.floor(delta / day);
-      return `${days} day${days === 1 ? "" : "s"} ago`;
+      return this.t.timeAgo.replace(
+        "{time}",
+        () => (`${days} ${days === 1 ? this.t.day : this.t.days}`),
+      );
     }
     if (delta >= hour) {
       const hours = Math.floor(delta / hour);
       const minutes = Math.floor((delta % hour) / minute);
       if (minutes > 0) {
-        return `${hours} hour${hours === 1 ? "" : "s"} ${minutes} minute${minutes === 1 ? "" : "s"} ago`;
+        return this.t.timeAgo.replace(
+          "{time}",
+          () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours} ${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes}`),
+        );
       }
-      return `${hours} hour${hours === 1 ? "" : "s"} ago`;
+      return this.t.timeAgo.replace(
+        "{time}",
+        () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours}`),
+      );
     }
     if (delta >= minute) {
       const minutes = Math.floor(delta / minute);
       const seconds = Math.floor(delta % minute);
-      return `${minutes} minute${minutes === 1 ? "" : "s"} ${seconds} second${seconds === 1 ? "" : "s"} ago`;
+      return this.t.timeAgo.replace(
+        "{time}",
+        () => (`${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes} ${seconds} ${seconds === 1 ? this.t.second : this.t.seconds}`),
+      );
     }
-    return `${delta} second${delta === 1 ? "" : "s"} ago`;
+    return this.t.timeAgo.replace(
+      "{time}",
+      () => (`${delta} ${delta === 1 ? this.t.second : this.t.seconds}`),
+    );
   }
 
   _mime(v) {
@@ -753,7 +857,7 @@ class HAXCMSFilesAdminDialog extends DDD {
         typeof MicroFrontendRegistry.has !== "function" ||
         !MicroFrontendRegistry.has("@site/listFiles")
       ) {
-        this.errorMessage = "Unable to load files";
+        this.errorMessage = this.t.unableToLoadFiles;
         this.rows = [];
         this.pageTotal = 0;
         return;
@@ -782,7 +886,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       if (status !== 200) {
         this.errorMessage = this._messageFromResponse(
           response,
-          "Unable to load files",
+          this.t.unableToLoadFiles,
         );
         this.rows = [];
         this.pageTotal = 0;
@@ -792,7 +896,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       this.rows = this._normPayload(response);
       this.selectedRows = new Set();
     } catch (e) {
-      this.errorMessage = "Unable to load files";
+      this.errorMessage = this.t.unableToLoadFiles;
       this.rows = [];
       this.pageTotal = 0;
     } finally {
@@ -806,7 +910,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       e && e.detail && typeof e.detail.value === "string" ? e.detail.value : "";
     if (!value) return;
     this.errorMessage = "";
-    this._msg("Upload complete");
+    this._msg(this.t.uploadComplete);
     this.refreshFiles();
   }
 
@@ -1024,15 +1128,15 @@ class HAXCMSFilesAdminDialog extends DDD {
     const silent = !!(options && options.silent);
     const skipRefresh = !!(options && options.skipRefresh);
     if (!this._canOp) {
-      if (!silent) this._msg("Unable to run file operation.", true);
-      return { ok: false, message: "Unable to run file operation." };
+      if (!silent) this._msg(this.t.unableToRunFileOperation, true);
+      return { ok: false, message: this.t.unableToRunFileOperation };
     }
     if (!silent) this.busy = true;
     this.errorMessage = "";
     try {
       const fileUuid = this._s(row && row.uuid ? row.uuid : "");
       if (!fileUuid) {
-        this.errorMessage = "File UUID is missing";
+        this.errorMessage = this.t.fileUuidMissing;
         if (!silent) this._msg(this.errorMessage, true);
         return { ok: false, message: this.errorMessage };
       }
@@ -1045,7 +1149,7 @@ class HAXCMSFilesAdminDialog extends DDD {
         typeof MicroFrontendRegistry.has !== "function" ||
         !MicroFrontendRegistry.has(operationName)
       ) {
-        this.errorMessage = "File operation endpoint is not available";
+        this.errorMessage = this.t.fileOperationEndpointUnavailable;
         if (!silent) this._msg(this.errorMessage, true);
         return { ok: false, message: this.errorMessage };
       }
@@ -1072,29 +1176,29 @@ class HAXCMSFilesAdminDialog extends DDD {
       if (status !== 200) {
         this.errorMessage = this._messageFromResponse(
           d,
-          "File operation failed",
+          this.t.fileOperationFailed,
         );
         if (!silent) this._msg(this.errorMessage, true);
         return { ok: false, message: this.errorMessage };
       }
-      let message = "File operation complete";
-      if (op === "delete") message = "File deleted";
-      else if (op === "rename") message = "File renamed";
-      else if (op === "convert-jpg") message = "Image converted to JPG";
-      else if (op === "rotate-90") message = "Image rotated 90 degrees";
-      else if (op === "sepia") message = "Image transformed to sepia";
+      let message = this.t.fileOperationComplete;
+      if (op === "delete") message = this.t.fileDeleted;
+      else if (op === "rename") message = this.t.fileRenamed;
+      else if (op === "convert-jpg") message = this.t.imageConvertedToJpg;
+      else if (op === "rotate-90") message = this.t.imageRotated90;
+      else if (op === "sepia") message = this.t.imageTransformedSepia;
       else if (op === "black-and-white")
-        message = "Image transformed to black and white";
+        message = this.t.imageTransformedBlackAndWhite;
       else if (op === "scale" && options && options.size)
-        message = `Scaled to ${options.size}`;
+        message = this.t.scaledTo.replace("{size}", () => options.size);
       else if (op === "compress" && options && options.level)
-        message = `Compressed (${options.level})`;
-      else if (op === "duplicate") message = "File duplicated";
+        message = this.t.compressedLevel.replace("{level}", () => options.level);
+      else if (op === "duplicate") message = this.t.fileDuplicated;
       if (!silent) this._msg(message);
       if (!skipRefresh) await this.refreshFiles();
       return { ok: true, message };
     } catch (e) {
-      this.errorMessage = "File operation failed";
+      this.errorMessage = this.t.fileOperationFailed;
       if (!silent) this._msg(this.errorMessage, true);
       return { ok: false, message: this.errorMessage };
     } finally {
@@ -1125,7 +1229,11 @@ class HAXCMSFilesAdminDialog extends DDD {
       for (let idx = 0; idx < rows.length; idx++) {
         const row = rows[idx];
         if (multi) {
-          this._msg(`Processing ${idx + 1} of ${rows.length}\u2026`);
+          this._msg(
+            this.t.processingProgress
+              .replace("{current}", () => (idx + 1))
+              .replace("{total}", () => rows.length),
+          );
         }
         const result = await opFn(row, idx);
         if (result && result.ok) {
@@ -1147,16 +1255,29 @@ class HAXCMSFilesAdminDialog extends DDD {
       }
       await this.refreshFiles();
       if (failCount === 0) {
-        this._msg(`${summaryVerb}: ${okCount} file${okCount === 1 ? "" : "s"}`);
-      } else if (okCount === 0) {
-        this.errorMessage = lastError || `${summaryVerb} failed`;
         this._msg(
-          `${summaryVerb} failed for all ${failCount} file${failCount === 1 ? "" : "s"}`,
+          (okCount === 1 ? this.t.bulkSummaryFile : this.t.bulkSummaryFiles)
+            .replace("{verb}", () => summaryVerb)
+            .replace("{count}", () => okCount),
+        );
+      } else if (okCount === 0) {
+        this.errorMessage =
+          lastError || this.t.bulkFailed.replace("{verb}", () => summaryVerb);
+        this._msg(
+          (failCount === 1
+            ? this.t.bulkFailedAllFile
+            : this.t.bulkFailedAllFiles
+          )
+            .replace("{verb}", () => summaryVerb)
+            .replace("{count}", () => failCount),
           true,
         );
       } else {
         this._msg(
-          `${summaryVerb}: ${okCount} succeeded, ${failCount} failed`,
+          this.t.bulkPartial
+            .replace("{verb}", () => summaryVerb)
+            .replace("{ok}", () => okCount)
+            .replace("{failed}", () => failCount),
           true,
         );
       }
@@ -1171,7 +1292,7 @@ class HAXCMSFilesAdminDialog extends DDD {
     if (!normalizedSize || !SCALE_PRESETS[normalizedSize]) return;
     const scalable = rows.filter((r) => this._canScale(r));
     if (scalable.length === 0) {
-      this._msg("Only raster images can be scaled.", true);
+      this._msg(this.t.onlyRasterScaled, true);
       return;
     }
     this.scalePreset = normalizedSize;
@@ -1183,20 +1304,20 @@ class HAXCMSFilesAdminDialog extends DDD {
           silent: true,
           skipRefresh: true,
         }),
-      `Scaled to ${normalizedSize}`,
+      this.t.scaledTo.replace("{size}", () => normalizedSize),
       { refreshMedia: true },
     );
   }
   async _onBulkRotate(rows) {
     const scalable = rows.filter((r) => this._canScale(r));
     if (scalable.length === 0) {
-      this._msg("Only raster images can be rotated.", true);
+      this._msg(this.t.onlyRasterRotated, true);
       return;
     }
     await this._runBulkOp(
       scalable,
       (row) => this._op(row, "rotate-90", { silent: true, skipRefresh: true }),
-      "Rotated",
+      this.t.rotated,
       { refreshMedia: true },
     );
   }
@@ -1207,20 +1328,20 @@ class HAXCMSFilesAdminDialog extends DDD {
     if (normalizedOp === "convert-jpg") {
       applicable = rows.filter((r) => this._canConvertToJpg(r));
       if (applicable.length === 0) {
-        this._msg("Only raster images can be converted to JPG.", true);
+        this._msg(this.t.onlyRasterConvertedJpg, true);
         return;
       }
     } else {
       applicable = rows.filter((r) => this._canScale(r));
       if (applicable.length === 0) {
-        this._msg("Only raster images can be transformed.", true);
+        this._msg(this.t.onlyRasterTransformed, true);
         return;
       }
     }
     await this._runBulkOp(
       rows,
       (row) => this._op(row, normalizedOp, { silent: true, skipRefresh: true }),
-      "Transformed",
+      this.t.transformed,
       { refreshMedia: true },
     );
   }
@@ -1230,7 +1351,7 @@ class HAXCMSFilesAdminDialog extends DDD {
       return;
     const compressible = rows.filter((r) => this._canScale(r));
     if (compressible.length === 0) {
-      this._msg("Only raster images can be compressed.", true);
+      this._msg(this.t.onlyRasterCompressed, true);
       return;
     }
     await this._runBulkOp(
@@ -1241,7 +1362,7 @@ class HAXCMSFilesAdminDialog extends DDD {
           silent: true,
           skipRefresh: true,
         }),
-      `Compressed (${normalizedLevel})`,
+      this.t.compressedLevel.replace("{level}", () => normalizedLevel),
       { refreshMedia: true },
     );
   }
@@ -1249,7 +1370,7 @@ class HAXCMSFilesAdminDialog extends DDD {
     await this._runBulkOp(
       rows,
       (row) => this._op(row, "duplicate", { silent: true, skipRefresh: true }),
-      "Duplicated",
+      this.t.duplicated,
     );
   }
   async _onBulkRename(rows) {
@@ -1259,14 +1380,14 @@ class HAXCMSFilesAdminDialog extends DDD {
         : "";
     const requestedName = globalThis.prompt(
       rows.length === 1
-        ? "Rename file using letters, numbers, and hyphens. Keep the existing extension."
-        : `Rename ${rows.length} files. Enter a base name; files will be named base-1, base-2, etc.`,
+        ? this.t.renamePromptSingle
+        : this.t.renamePromptMultiple.replace("{count}", () => rows.length),
       defaultName,
     );
     if (typeof requestedName !== "string") return;
     const baseName = requestedName.trim();
     if (!baseName) {
-      this._msg("Rename cancelled", true);
+      this._msg(this.t.renameCancelled, true);
       return;
     }
     await this._runBulkOp(
@@ -1279,17 +1400,20 @@ class HAXCMSFilesAdminDialog extends DDD {
           skipRefresh: true,
         });
       },
-      "Renamed",
+      this.t.renamed,
     );
   }
   async _onBulkDelete(rows) {
     const label =
-      rows.length === 1 ? rows[0].path : `${rows.length} selected files`;
-    if (!globalThis.confirm(`Delete ${label}? This cannot be undone.`)) return;
+      rows.length === 1
+        ? rows[0].path
+        : this.t.selectedFilesCount.replace("{count}", () => rows.length);
+    if (!globalThis.confirm(this.t.deleteConfirm.replace("{label}", () => label)))
+      return;
     await this._runBulkOp(
       rows,
       (row) => this._op(row, "delete", { silent: true, skipRefresh: true }),
-      "Deleted",
+      this.t.deleted,
     );
   }
 
@@ -1317,7 +1441,7 @@ class HAXCMSFilesAdminDialog extends DDD {
     const insertable = rows.filter((r) => r && r.publicUrl);
     const skipped = rows.length - insertable.length;
     if (insertable.length === 0) {
-      this._msg("No public URL available for the selected file(s).", true);
+      this._msg(this.t.noPublicUrl, true);
       return;
     }
     store.editMode = true;
@@ -1331,7 +1455,7 @@ class HAXCMSFilesAdminDialog extends DDD {
     );
     setTimeout(() => {
       if (!HAXStore.activeHaxBody) {
-        this._msg("Unable to embed: no active page editor found.", true);
+        this._msg(this.t.unableToEmbed, true);
         return;
       }
       if (mode === "gallery") {
@@ -1367,11 +1491,15 @@ class HAXCMSFilesAdminDialog extends DDD {
       }
       if (skipped > 0) {
         this._msg(
-          `Inserted ${insertable.length} file(s); skipped ${skipped} without a public URL.`,
+          this.t.insertedSkipped
+            .replace("{count}", () => insertable.length)
+            .replace("{skipped}", () => skipped),
           true,
         );
       } else {
-        this._msg(`Inserted ${insertable.length} file(s) into page`);
+        this._msg(
+          this.t.insertedIntoPage.replace("{count}", () => insertable.length),
+        );
       }
     }, 300);
   }
@@ -1403,18 +1531,21 @@ class HAXCMSFilesAdminDialog extends DDD {
             <div class="ctrl">
               <div class="toolbar">
                 <simple-fields-field
-                  label="Type"
+                  label="${this.t.type}"
                   type="select"
                   .value="${this.filterType}"
-                  .itemsList="${FILE_TYPE_FILTER_ITEMS}"
+                  .itemsList="${FILE_TYPE_FILTER_ITEMS.map((item) => ({
+                    value: item.value,
+                    text: item.key && this.t[item.key] ? this.t[item.key] : item.text,
+                  }))}"
                   ?disabled="${this.busy || !this._canList}"
                   @value-changed="${this._onFilterTypeChanged}"
                 >
                 </simple-fields-field>
                 <simple-fields-field
-                  label="Extension"
+                  label="${this.t.extension}"
                   type="text"
-                  placeholder="e.g. png"
+                  placeholder="${this.t.extensionPlaceholder}"
                   .value="${this.filterExtension}"
                   ?disabled="${this.busy || !this._canList}"
                   @value-changed="${this._onFilterExtensionChanged}"
@@ -1423,9 +1554,9 @@ class HAXCMSFilesAdminDialog extends DDD {
                 >
                 </simple-fields-field>
                 <simple-fields-field
-                  label="Name contains"
+                  label="${this.t.nameContains}"
                   type="text"
-                  placeholder="filename…"
+                  placeholder="${this.t.nameContainsPlaceholder}"
                   .value="${this.filterNameContains}"
                   ?disabled="${this.busy || !this._canList}"
                   @value-changed="${this._onFilterNameContainsChanged}"
@@ -1434,7 +1565,7 @@ class HAXCMSFilesAdminDialog extends DDD {
                 >
                 </simple-fields-field>
                 <simple-fields-field
-                  label="Per page"
+                  label="${this.t.perPage}"
                   type="select"
                   .value="${String(this.pageLimit)}"
                   .itemsList="${PAGE_SIZE_OPTIONS.map((size) => ({
@@ -1448,8 +1579,8 @@ class HAXCMSFilesAdminDialog extends DDD {
                 <simple-icon-button-lite
                   class="ib"
                   icon="icons:refresh"
-                  label="Refresh"
-                  title="Refresh file list"
+                  label="${this.t.refresh}"
+                  title="${this.t.refreshFileList}"
                   ?disabled="${this.loading || !this._canList}"
                   @click="${this.refreshFiles}"
                 >
@@ -1462,7 +1593,7 @@ class HAXCMSFilesAdminDialog extends DDD {
             aria-live="polite"
           >
             ${this.loading
-              ? "Loading\u2026"
+              ? this.t.loading
               : this.errorMessage
                 ? this.errorMessage
                 : ``}
@@ -1489,13 +1620,13 @@ class HAXCMSFilesAdminDialog extends DDD {
             offset="${this.pageOffset}"
             total="${this.pageTotal}"
             count="${this.rows.length}"
-            label="Files pagination"
+            label="${this.t.filesPagination}"
             @page-changed="${this._onPageChanged}"
           ></simple-pager>
         </div>
         <div class="tw">
           ${this.rows.length === 0 && !this.loading
-            ? html`<div class="empty">No files found.</div>`
+            ? html`<div class="empty">${this.t.noFilesFound}</div>`
             : keyed(
                 this._rowsRenderKey(),
                 html`
@@ -1516,19 +1647,19 @@ class HAXCMSFilesAdminDialog extends DDD {
                           <th>
                             <input
                               type="checkbox"
-                              aria-label="Select all files"
-                              title="Select all files"
+                              aria-label="${this.t.selectAllFiles}"
+                              title="${this.t.selectAllFiles}"
                               data-action="select-all"
                               ?disabled="${this.busy}"
                               ?checked="${this.rows.length > 0 &&
                               this.selectedRows.size === this.rows.length}"
                             />
                           </th>
-                          <th>Preview</th>
-                          <th>File</th>
-                          <th>Type</th>
-                          <th>Size</th>
-                          <th>Updated</th>
+                          <th>${this.t.preview}</th>
+                          <th>${this.t.file}</th>
+                          <th>${this.t.type}</th>
+                          <th>${this.t.size}</th>
+                          <th>${this.t.updated}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1538,7 +1669,7 @@ class HAXCMSFilesAdminDialog extends DDD {
                               <td>
                                 <input
                                   type="checkbox"
-                                  aria-label="Select ${r.name}"
+                                  aria-label="${this.t.selectFile.replace("{name}", () => r.name)}"
                                   data-action="select-row"
                                   data-row-key="${this._rowKey(r)}"
                                   ?disabled="${this.busy}"
@@ -1571,17 +1702,17 @@ class HAXCMSFilesAdminDialog extends DDD {
                                     : html`${r.name}`}
                                   <simple-clipboard-copy-button
                                     class="ib"
-                                    label="Copy path"
+                                    label="${this.t.copyPath}"
                                     title="${r.path}"
                                     data-cp="${r.path}"
-                                    success-message="Path copied"
+                                    success-message="${this.t.pathCopied}"
                                   >
                                   </simple-clipboard-copy-button>
                                   <simple-icon-button-lite
                                     class="ib"
                                     icon="hax:embed"
-                                    label="Embed in page"
-                                    title="Embed in page"
+                                    label="${this.t.embedInPage}"
+                                    title="${this.t.embedInPage}"
                                     data-action="embed"
                                     data-row-key="${this._rowKey(r)}"
                                   >

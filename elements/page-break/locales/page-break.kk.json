@@ -22,6 +22,13 @@
   "unpublish": "Жариялауды тоқтату",
   "savePage": "Бетті сақтау",
   "cancel": "Бас тарту",
+  "delete": "Жою",
+  "editTitle": "Тақырыпты өңдеу",
+  "editIcon": "Белгішені өңдеу",
+  "agent": "Агент",
+  "pageLockedUnlockToEdit": "Бұл бет құлыпталған. Өңдеу үшін алдымен құлпын ашыңыз.",
+  "pageLockedUnlockToChangePublishStatus": "Бұл бет құлыпталған. Жариялау күйін өзгерту үшін алдымен құлпын ашыңыз.",
+  "pageLockedUnlockToDelete": "Бұл бет құлыпталған. Жою үшін алдымен құлпын ашыңыз.",
   "pageDetails": "Бет мәліметтері",
   "clickToUnlock": "Ашу үшін басыңыз"
 }

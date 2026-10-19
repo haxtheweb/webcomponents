@@ -1,0 +1,14 @@
+{
+  "enterUserName": "பயனர் பெயரை உள்ளிடவும்",
+  "invalidUsernameOrPassword": "தவறான பயனர் பெயர் அல்லது கடவுச்சொல்",
+  "welcomeLetsGo": "வருக {username}! தொடங்குவோம்!",
+  "enterYourUsername": "உங்கள் பயனர் பெயரை உள்ளிடவும்",
+  "username": "பயனர்பெயர்",
+  "next": "அடுத்து",
+  "welcomeBack": "மீண்டும் வருக, {username}!",
+  "notYou": "நீங்கள் இல்லையா?",
+  "enterYourPassword": "உங்கள் கடவுச்சொல்லை உள்ளிடவும்",
+  "password": "கடவுச்சொல்",
+  "togglePasswordDisplay": "கடவுச்சொல் காட்சியை மாற்று",
+  "login": "உள்நுழை"
+}

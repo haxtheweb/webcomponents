@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Nevezd meg!",
+  "licenseBySa": "Nevezd meg! – Így add tovább!",
+  "licenseByNd": "Nevezd meg! – Ne változtasd!",
+  "licenseByNc": "Nevezd meg! – Ne add el!",
+  "licenseByNcSa": "Nevezd meg! – Ne add el! – Így add tovább!",
+  "licenseByNcNd": "Nevezd meg! – Ne add el! – Ne változtasd!",
+  "licenseGraphic": "{license} ábra",
+  "workByCreator": "{title}, szerző: {creator}",
+  "workByCreatorLicensed": "{title}, szerző: {creator}, licenc: {license}.",
+  "permissionsBeyondScope": "A licenc hatályán túli engedélyek elérhetők {link}.",
+  "author": "(szerző)",
+  "onTheLicensingDetailsPage": "a licencrészletek oldalán"
+}

@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Gbígbé àwọn àkòrí wọlé kùnà: {error}",
+  "noThemesForView": "Kò sí àkòrí kankan fún ìwò yìí.",
+  "active": "Ń ṣiṣẹ́",
+  "themeIsActive": "Àkòrí {name} ń ṣiṣẹ́",
+  "applyTheme": "Lo àkòrí {name}",
+  "apply": "Lò ó",
+  "preview": "Àwòtẹ́lẹ̀",
+  "name": "Orúkọ",
+  "element": "Ẹ̀yà",
+  "description": "Àpèjúwe",
+  "action": "Ìṣe",
+  "loadingThemes": "Ń gbé àwọn àkòrí wọlé...",
+  "themesShown": "A fi àkòrí {count} hàn",
+  "themesShownDefaults": "A fi àkòrí {count} hàn (àwọn àkọ́kọ́ app-hax)",
+  "availableHaxcmsThemes": "Àwọn Àkòrí HAXcms Tó Wà",
+  "gallery": "Àkójọ àwòrán",
+  "table": "Tábìlì"
+}

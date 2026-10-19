@@ -1,0 +1,9 @@
+{
+  "palette": "팔레트",
+  "paletteSelection": "팔레트 선택",
+  "active": "활성",
+  "selected": "선택됨",
+  "currentlyActiveAndSelectedPalette": "현재 활성화되어 선택된 팔레트",
+  "currentlyActivePalette": "현재 활성 팔레트",
+  "selectedPaletteToApply": "적용할 선택된 팔레트"
+}

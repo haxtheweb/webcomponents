@@ -7,5 +7,7 @@
   "userAccessGranted": "उपयोगकर्ता को सफलतापूर्वक पहुँच दी गई!",
   "userNotFound": "उपयोगकर्ता नहीं मिला या अनधिकृत है",
   "loadingAddingUser": "उपयोगकर्ता जोड़ा जा रहा है...",
-  "grantAccessTo": "इन्हें पहुँच दें:"
+  "grantAccessTo": "इन्हें पहुँच दें:",
+  "networkErrorTryAgain": "नेटवर्क त्रुटि हुई। कृपया फिर से प्रयास करें।",
+  "characterWillAppear": "जब आप उपयोगकर्ता नाम दर्ज करेंगे तो पात्र दिखाई देगा"
 }

@@ -11,6 +11,24 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
+      this.t = this.t || {};
+      this.t = {
+        ...this.t,
+        textSettings: "Text settings",
+        fontSizeLabel: "Font Size",
+        fontSize: "Font size",
+        decreaseFontSize: "Decrease font size",
+        increaseFontSize: "Increase font size",
+        fontFamilyLabel: "Font Family",
+        fontFamily: "Font family",
+        fontSans: "Sans",
+        fontMonospace: "Monospace",
+        themeColorLabel: "Theme Color",
+        themeColor: "Theme color",
+        themeLight: "Light",
+        themePalenight: "Palenight",
+        themeDark: "Dark",
+      };
       this.hideUserStylesMenu = true;
       this.fontSize = localStorageGet("haxcms-bootstrap-userPref-fontSize", 1);
       this.fontFamily = localStorageGet(
@@ -331,19 +349,19 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
         <simple-icon-button-lite
           .part="${this.editMode ? `edit-mode-active` : ``}"
           class="btn"
-          label="Text settings"
+          label="${this.t.textSettings}"
           icon="editor:format-size"
           @click="${this.toggleUserStylesMenu}"
           id="haxcmsuserstylesmenupopover"
         ></simple-icon-button-lite>
         <simple-tooltip for="haxcmsuserstylesmenupopover">
-          Text settings
+          ${this.t.textSettings}
         </simple-tooltip>
         <simple-popover
           class="hcusm pull-left font-settings js-toolbar-action hcusm-settings-container"
           ?hidden="${this.hideUserStylesMenu}"
           id="haxcmsuserstylesmenu"
-          aria-label="Text settings"
+          aria-label="${this.t.textSettings}"
           auto
         >
           <div class="open">
@@ -351,32 +369,32 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
               <span class="hcusm-caret-outer"></span>
               <span class="hcusm-caret-inner"></span>
             </div>
-            <div class="btn-group-title">Font Size</div>
-            <div class="btn-group" role="group" aria-label="Font size">
+            <div class="btn-group-title">${this.t.fontSizeLabel}</div>
+            <div class="btn-group" role="group" aria-label="${this.t.fontSize}">
               <button
                 class="btn btn-size"
-                aria-label="Decrease font size"
+                aria-label="${this.t.decreaseFontSize}"
                 @click="${this.UserStylesSizeDown}"
               >
                 A
               </button>
               <button
                 class="btn btn-size size-2"
-                aria-label="Increase font size"
+                aria-label="${this.t.increaseFontSize}"
                 @click="${this.UserStylesSizeUp}"
               >
                 A
               </button>
             </div>
-            <div class="btn-group-title">Font Family</div>
-            <div class="btn-group" role="group" aria-label="Font family">
+            <div class="btn-group-title">${this.t.fontFamilyLabel}</div>
+            <div class="btn-group" role="group" aria-label="${this.t.fontFamily}">
               <button
                 class="btn btn-font"
                 data-font="0"
                 aria-pressed="${this.fontFamily === 0 ? "true" : "false"}"
                 @click="${this.UserStylesFontFamilyChange}"
               >
-                Sans
+                ${this.t.fontSans}
               </button>
               <button
                 class="btn btn-font"
@@ -384,18 +402,18 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
                 aria-pressed="${this.fontFamily === 1 ? "true" : "false"}"
                 @click="${this.UserStylesFontFamilyChange}"
               >
-                Monospace
+                ${this.t.fontMonospace}
               </button>
             </div>
-            <div class="btn-group-title">Theme Color</div>
-            <div class="btn-group" role="group" aria-label="Theme color">
+            <div class="btn-group-title">${this.t.themeColorLabel}</div>
+            <div class="btn-group" role="group" aria-label="${this.t.themeColor}">
               <button
                 class="btn btn-light"
                 data-theme="0"
                 aria-pressed="${this.colorTheme === 0 ? "true" : "false"}"
                 @click="${this.UserStylesColorThemeChange}"
               >
-                Light
+                ${this.t.themeLight}
               </button>
               <button
                 class="btn btn-palenight"
@@ -403,7 +421,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
                 aria-pressed="${this.colorTheme === 2 ? "true" : "false"}"
                 @click="${this.UserStylesColorThemeChange}"
               >
-                Palenight
+                ${this.t.themePalenight}
               </button>
               <button
                 class="btn btn-dark"
@@ -411,7 +429,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
                 aria-pressed="${this.colorTheme === 1 ? "true" : "false"}"
                 @click="${this.UserStylesColorThemeChange}"
               >
-                Dark
+                ${this.t.themeDark}
               </button>
             </div>
           </div>

@@ -1,3 +1,8 @@
 {
-  "title": "Referinsjes"
+  "title": "Referinsjes",
+  "export": "Eksportearje",
+  "exportCitations": "Sitaasjes eksportearje",
+  "copy": "Kopiearje",
+  "exportCitationFormat": "Sitaasjeformaat foar eksport",
+  "selectCitationFormatBelow": "Selektearje hjirûnder in sitaasjeformaat"
 }

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Атрибуция",
+  "licenseBySa": "Атрибуция — На тех же условиях",
+  "licenseByNd": "Атрибуция — Без производных произведений",
+  "licenseByNc": "Атрибуция — Некоммерческое использование",
+  "licenseByNcSa": "Атрибуция — Некоммерческое использование — На тех же условиях",
+  "licenseByNcNd": "Атрибуция — Некоммерческое использование — Без производных произведений",
+  "citationWithLicense": "{title}, автор: {creator}, лицензия {license}. Дата обращения: {date}.",
+  "citationWithoutLicense": "{title}, автор: {creator}. Дата обращения: {date}.",
+  "licenseGraphic": "Значок {license}"
+}

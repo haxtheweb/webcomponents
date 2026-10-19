@@ -54,5 +54,6 @@
   "requirementUppercase": "Ein Großbuchstabe",
   "requirementLowercase": "Ein Kleinbuchstabe",
   "requirementNumber": "Eine Ziffer",
-  "requirementSymbol": "Ein Sonderzeichen"
+  "requirementSymbol": "Ein Sonderzeichen",
+  "haxcmsMascotAlt": "HAXcms-Maskottchen Weltenbummler"
 }

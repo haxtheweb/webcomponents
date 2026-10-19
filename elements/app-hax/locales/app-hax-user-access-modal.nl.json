@@ -7,5 +7,7 @@
   "userAccessGranted": "Gebruikerstoegang is verleend!",
   "userNotFound": "Gebruiker niet gevonden of niet gemachtigd",
   "loadingAddingUser": "Gebruiker toevoegen...",
-  "grantAccessTo": "Toegang verlenen aan:"
+  "grantAccessTo": "Toegang verlenen aan:",
+  "networkErrorTryAgain": "Er is een netwerkfout opgetreden. Probeer het opnieuw.",
+  "characterWillAppear": "Het personage verschijnt wanneer je een gebruikersnaam invoert"
 }

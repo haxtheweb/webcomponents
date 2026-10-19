@@ -1,0 +1,18 @@
+{
+  "copy": "Kope",
+  "download": "Hoʻoiho",
+  "archive": "Waihona",
+  "copyOperation": "kope",
+  "downloadOperation": "hoʻoiho",
+  "archiveOperation": "waihona",
+  "created": "hana ʻia",
+  "updated": "hoʻololi ʻia",
+  "pages": "ʻaoʻao",
+  "url": "URL",
+  "confirm": "Hōʻoia",
+  "cancel": "Hoʻopau",
+  "siteOperationConfirmTitle": "{operationName} iā {siteName}?",
+  "siteOperationConfirmMessage": "Ua maopopo anei iā ʻoe e makemake ʻoe e {operation} iā {siteName}?",
+  "siteOperationSuccessful": "Ua kūleʻa ka {operation} o {siteName}!",
+  "siteOperationFailed": "Ua hāʻule ka {operation} o {siteName}"
+}

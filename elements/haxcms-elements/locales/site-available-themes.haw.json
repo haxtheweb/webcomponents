@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "ʻAʻole i hiki ke hoʻouka i nā kumuhana: {error}",
+  "noThemesForView": "ʻAʻohe kumuhana i loaʻa no kēia hiʻohiʻona.",
+  "active": "E hana nei",
+  "themeIsActive": "E hana nei ke kumuhana {name}",
+  "applyTheme": "Kau i ke kumuhana {name}",
+  "apply": "Kau",
+  "preview": "Nānā mua",
+  "name": "Inoa",
+  "element": "Mea",
+  "description": "Wehewehe",
+  "action": "Hana",
+  "loadingThemes": "Ke hoʻouka nei i nā kumuhana...",
+  "themesShown": "{count} kumuhana i hōʻike ʻia",
+  "themesShownDefaults": "{count} kumuhana i hōʻike ʻia (nā paʻamau app-hax)",
+  "availableHaxcmsThemes": "Nā kumuhana HAXcms i loaʻa",
+  "gallery": "Hōʻikeʻike kiʻi",
+  "table": "Papa"
+}

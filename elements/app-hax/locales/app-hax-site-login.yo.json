@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Tẹ orúkọ olùlò",
+  "invalidUsernameOrPassword": "Orúkọ Olùlò tàbí Ọ̀rọ̀ Aṣínà Kò Tọ́",
+  "welcomeLetsGo": "Káàbọ̀ {username}! Ẹ jẹ́ ká lọ!",
+  "enterYourUsername": "Tẹ orúkọ olùlò rẹ",
+  "username": "Orúkọ olùmúlò",
+  "next": "Èyí tó kàn",
+  "welcomeBack": "Káàbọ̀ padà, {username}!",
+  "notYou": "Kì í ṣe ìwọ?",
+  "enterYourPassword": "Tẹ ọ̀rọ̀ aṣínà rẹ",
+  "password": "Ọ̀rọ̀ aṣínà",
+  "togglePasswordDisplay": "Yí ìfihàn ọ̀rọ̀ aṣínà padà",
+  "login": "Wọlé"
+}

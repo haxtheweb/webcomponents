@@ -6,6 +6,7 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./app-hax-confirmation-modal.js";
 
 // wrapper to simplify the slug if it has additional values on it
@@ -21,7 +22,7 @@ function makeSlug(url) {
 }
 // EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
 // which has the magic life-cycles and developer experience below added
-export class AppHaxSiteDetails extends SimpleColors {
+export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "app-hax-site-details";
@@ -30,22 +31,50 @@ export class AppHaxSiteDetails extends SimpleColors {
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      copy: "Copy",
+      download: "Download",
+      archive: "Archive",
+      copyOperation: "copy",
+      downloadOperation: "download",
+      archiveOperation: "archive",
+      created: "created",
+      updated: "updated",
+      pages: "pages",
+      url: "URL",
+      confirm: "Confirm",
+      cancel: "Cancel",
+      siteOperationConfirmTitle: "{operationName} {siteName}?",
+      siteOperationConfirmMessage:
+        "Are you sure you want to {operation} {siteName}?",
+      siteOperationSuccessful: "{siteName} {operation} successful!",
+      siteOperationFailed: "{siteName} {operation} failed",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.need = "all need to succeed";
     this.details = {};
     this.siteId = "";
     this.detailOps = [
       {
         name: "Copy",
+        labelKey: "copy",
         op: "copySite",
         icon: "icons:content-copy",
       },
       {
         name: "Download",
+        labelKey: "download",
         op: "downloadSite",
         icon: "file-download",
       },
       {
         name: "Archive",
+        labelKey: "archive",
         op: "archiveSite",
         icon: "icons:archive",
       },
@@ -194,6 +223,12 @@ export class AppHaxSiteDetails extends SimpleColors {
     ];
   }
 
+  // translated verb for an operation such as copySite / archiveSite
+  _operationVerb(op) {
+    const verb = op.replace("Site", "");
+    return this.t[`${verb}Operation`] || verb;
+  }
+
   // eslint-disable-next-line class-methods-use-this
   siteOperation(e) {
     // let elements;
@@ -215,10 +250,14 @@ export class AppHaxSiteDetails extends SimpleColors {
 
     // Create and configure the confirmation modal
     const modal = document.createElement("app-hax-confirmation-modal");
-    modal.title = `${opName} ${site.metadata.site.name}?`;
-    modal.message = `Are you sure you want to ${op.replace("Site", "")} ${site.metadata.site.name}?`;
-    modal.confirmText = "Confirm";
-    modal.cancelText = "Cancel";
+    modal.title = this.t.siteOperationConfirmTitle
+      .replace("{operationName}", () => opName)
+      .replace("{siteName}", () => site.metadata.site.name);
+    modal.message = this.t.siteOperationConfirmMessage
+      .replace("{operation}", () => (this._operationVerb(op)))
+      .replace("{siteName}", () => site.metadata.site.name);
+    modal.confirmText = this.t.confirm;
+    modal.cancelText = this.t.cancel;
 
     // Mark archive operations as dangerous for red styling
     modal.dangerous = op === "archiveSite";
@@ -336,11 +375,15 @@ export class AppHaxSiteDetails extends SimpleColors {
         const errMsg =
           typeof opResponse.message === "string" && opResponse.message
             ? opResponse.message
-            : `${site.metadata.site.name} ${op.replace("Site", "")} failed`;
+            : this.t.siteOperationFailed
+                .replace("{siteName}", () => site.metadata.site.name)
+                .replace("{operation}", () => (this._operationVerb(op)));
         store.toast(errMsg, 3000, { hat: "random" });
       } else {
         store.toast(
-          `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,
+          this.t.siteOperationSuccessful
+            .replace("{siteName}", () => site.metadata.site.name)
+            .replace("{operation}", () => (this._operationVerb(op))),
           3000,
           {
             hat: "random",
@@ -356,7 +399,9 @@ export class AppHaxSiteDetails extends SimpleColors {
       );
       store.clearProcessingVisual();
       store.toast(
-        `${site.metadata.site.name} ${op.replace("Site", "")} failed`,
+        this.t.siteOperationFailed
+          .replace("{siteName}", () => site.metadata.site.name)
+          .replace("{operation}", () => (this._operationVerb(op))),
         3000,
         { hat: "random" },
       );
@@ -370,7 +415,7 @@ export class AppHaxSiteDetails extends SimpleColors {
       <div class="pre"><slot name="pre"></slot></div>
       <div class="flex-container" id="infomation">
           <div class="info-group">
-            <div class="info-headings">created</div>
+            <div class="info-headings">${this.t.created}</div>
             <simple-datetime
                 format="m/j/y"
                 .timestamp="${this.details.created}"
@@ -379,7 +424,7 @@ export class AppHaxSiteDetails extends SimpleColors {
             ></simple-datetime>
           </div>
           <div class="info-group">
-            <div class="info-headings">updated</div>
+            <div class="info-headings">${this.t.updated}</div>
             <simple-datetime
                 format="m/j/y"
                 .timestamp="${this.details.updated}"
@@ -388,39 +433,40 @@ export class AppHaxSiteDetails extends SimpleColors {
             ></simple-datetime>
           </div>
           <div class = info-group>
-            <div class="info-headings">pages</div>
+            <div class="info-headings">${this.t.pages}</div>
             <div class="info-item">${this.details.pages}</div>
           </div>
           <div class = info-group>
-            <div class="info-headings">URL</div>
+            <div class="info-headings">${this.t.url}</div>
             <a href="${
               this.details.url
             }" class="info-item" id="slug">${makeSlug(this.details.url)}</a>
           </div>
       </div>
         <div class="flex-container" id="actions">
-          ${this.detailOps.map(
-            (item) => html`
+          ${this.detailOps.map((item) => {
+            const itemLabel = this.t[item.labelKey] || item.name;
+            return html`
               <div class="info-group">
                 <simple-icon-button-lite
                   data-site="${this.siteId}"
                   data-site-operation="${item.op}"
-                  data-site-operation-name="${item.name}"
+                  data-site-operation-name="${itemLabel}"
                   icon="${item.icon}"
                   id="op-${item.op}"
                   class="info-icon"
-                  label="${item.name}"
-                  aria-label="${item.name}"
+                  label="${itemLabel}"
+                  aria-label="${itemLabel}"
                   @click=${this.siteOperation}
                 >
-                  <div class="info-item">${item.name.toLowerCase()}</div>
+                  <div class="info-item">${itemLabel.toLowerCase()}</div>
                 </simple-icon-button-lite>
                 <simple-tooltip for="op-${item.op}" position="bottom"
-                  >${item.name}</simple-tooltip
+                  >${itemLabel}</simple-tooltip
                 >
               </div>
-            `,
-          )}
+            `;
+          })}
         </div>
       </div>
     `;

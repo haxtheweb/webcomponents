@@ -2,6 +2,7 @@
  * Copyright 2023
  * @license , see License.md for full text.
  */
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/iframe-loader/iframe-loader.js";
 /**
@@ -10,12 +11,22 @@ import "@haxtheweb/iframe-loader/iframe-loader.js";
  * @demo demo/index.html
  * @element discord-embed
  */
-class DiscordEmbed extends LitElement {
+class DiscordEmbed extends I18NMixin(LitElement) {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      discordChatEmbed: "Discord chat embed",
+      invalidShareLink: "Invalid Discord share link",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.source = "";
     this.height = "500";
     this.width = "100%";
@@ -63,13 +74,13 @@ class DiscordEmbed extends LitElement {
           <iframe-loader>
             <iframe
               data-src="${this.source}"
-              title="Discord chat embed"
+              title="${this.t.discordChatEmbed}"
               height="${this.height}"
               width="${this.width}"
             ></iframe>
           </iframe-loader>
         `
-      : html`<div>Invalid Discord share link</div>`}`;
+      : html`<div>${this.t.invalidShareLink}</div>`}`;
   }
 
   connectedCallback() {

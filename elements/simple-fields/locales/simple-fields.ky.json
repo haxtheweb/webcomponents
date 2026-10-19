@@ -9,5 +9,8 @@
   "record": "Жаздыруу",
   "pause": "Жаздырууну тындыруу",
   "stopSave": "Токтотуу жана сактоо",
-  "clickToTakePhoto": "Сүрөткө тартуу үчүн басыңыз"
+  "clickToTakePhoto": "Сүрөткө тартуу үчүн басыңыз",
+  "url": "URL",
+  "open": "ачуу",
+  "removeValue": "{value} өчүрүү"
 }

@@ -1,0 +1,11 @@
+{
+  "playlist": "Листа за репродукција",
+  "carousel": "вртелешка",
+  "slide": "слајд",
+  "slideNumber": "Слајд {number}",
+  "slideOfTotal": "Слајд {number} од {total}",
+  "previousSlide": "Претходен слајд",
+  "nextSlide": "Следен слајд",
+  "slidePages": "Страници со слајдови",
+  "goToSlide": "Оди на слајд {number}"
+}

@@ -1,3 +1,8 @@
 {
-  "title": "Referințe"
+  "title": "Referințe",
+  "export": "Exportă",
+  "exportCitations": "Exportă citările",
+  "copy": "Copiază",
+  "exportCitationFormat": "Formatul de export al citărilor",
+  "selectCitationFormatBelow": "Selectează un format de citare mai jos"
 }

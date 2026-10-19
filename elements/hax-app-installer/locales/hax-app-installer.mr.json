@@ -54,5 +54,6 @@
   "requirementUppercase": "एक कॅपिटल अक्षर",
   "requirementLowercase": "एक लहान अक्षर",
   "requirementNumber": "एक अंक",
-  "requirementSymbol": "एक चिन्ह"
+  "requirementSymbol": "एक चिन्ह",
+  "haxcmsMascotAlt": "HAXcms जागतिक प्रवासी शुभंकर"
 }

@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Lataa loki txt-muodossa",
+  "downloadChatLog": "Lataa keskusteluloki",
+  "resetChat": "Nollaa keskustelu",
+  "toggleDataCollection": "Tiedonkeruu päälle/pois",
+  "dataCollection": "Tiedonkeruu",
+  "toggleDeveloperMode": "Kehittäjätila päälle/pois",
+  "exitFullView": "Poistu koko näkymästä",
+  "enterFullView": "Siirry koko näkymään",
+  "hideInterface": "Piilota käyttöliittymä",
+  "resetChatConfirm": "Nollataanko keskustelu?",
+  "downloadBeforeResetConfirm": "Ladataanko keskusteluloki ennen nollausta?",
+  "dataCollectionOn": "Keskustelujasi käytetään AI-malliemme kouluttamiseen",
+  "dataCollectionOff": "Keskustelujasi ei käytetä AI-malliemme kouluttamiseen"
+}

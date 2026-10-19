@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Awtorlyk görkezmek",
+  "licenseBySa": "Awtorlyk görkezmek — Şol şertlerde paýlaşmak",
+  "licenseByNd": "Awtorlyk görkezmek — Önüm döretmezlik",
+  "licenseByNc": "Awtorlyk görkezmek — Täjirçilik däl",
+  "licenseByNcSa": "Awtorlyk görkezmek — Täjirçilik däl — Şol şertlerde paýlaşmak",
+  "licenseByNcNd": "Awtorlyk görkezmek — Täjirçilik däl — Önüm döretmezlik",
+  "citationWithLicense": "{title}, awtory {creator}, {license} boýunça ygtyýarlandyrylan. Giren senesi {date}.",
+  "citationWithoutLicense": "{title}, awtory {creator}. Giren senesi {date}.",
+  "licenseGraphic": "{license} grafikasy"
+}

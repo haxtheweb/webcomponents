@@ -43,5 +43,22 @@
   "emailAddress": "Envia un correu a aquest alumne",
   "notes": "Notes",
   "interests": "Interessos",
-  "profileImageFor": "Imatge de perfil de"
+  "profileImageFor": "Imatge de perfil de",
+  "fileSystem": "Sistema de fitxers",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "Punt final URL (JSON)",
+  "jsonDataBlob": "Blob de dades JSON",
+  "additionalCriteriaFeedback": "Retroacció addicional de {criteria}",
+  "outOfPoints": "/ {points} punts",
+  "feedbackReport": "Informe de retroacció",
+  "criteriaDetails": "Detalls dels criteris",
+  "yourFeedback": "La teva retroacció",
+  "additionalCriteriaFeedbackHeading": "Retroacció addicional dels criteris",
+  "yourTotalScore": "La teva puntuació total",
+  "scoreOutOfPoints": "{score} / {points} punts",
+  "studentAssignment": "Tasca {assignment} de {student}",
+  "downloadPDF": "Baixa el PDF",
+  "displayMode1": "Mode 1",
+  "displayMode2": "Mode 2",
+  "twoWindows": "Dues finestres"
 }

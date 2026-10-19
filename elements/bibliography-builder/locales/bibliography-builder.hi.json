@@ -1,3 +1,8 @@
 {
-  "title": "संदर्भ"
+  "title": "संदर्भ",
+  "export": "निर्यात करें",
+  "exportCitations": "उद्धरण निर्यात करें",
+  "copy": "कॉपी करें",
+  "exportCitationFormat": "उद्धरण फ़ॉर्मेट निर्यात करें",
+  "selectCitationFormatBelow": "नीचे एक उद्धरण फ़ॉर्मेट चुनें"
 }

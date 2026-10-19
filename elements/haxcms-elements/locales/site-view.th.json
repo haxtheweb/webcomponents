@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "ไม่มีผลลัพธ์",
+  "viewsRecordHeading": "บันทึก",
+  "viewsTitleImage": "รูปภาพ {title}",
+  "viewsTitlePreview": "ตัวอย่าง {title}",
+  "viewsNoTimelineRecords": "ไม่มีระเบียนที่มีวันที่สำหรับแสดงไทม์ไลน์",
+  "viewsTimelineTitle": "ไทม์ไลน์ {title}",
+  "viewsNoChartField": "ไม่พบฟิลด์ตัวเลขสำหรับแสดงแผนภูมิ",
+  "viewsChartingValue": "แผนภูมิ {value}",
+  "viewsChartingValueByLabel": "แผนภูมิ {value} ตาม {label}",
+  "viewsChartTitle": "แผนภูมิ {title}",
+  "viewsNoTreeRecords": "ไม่มีระเบียนแบบลำดับชั้นสำหรับแสดงแผนภาพต้นไม้",
+  "viewsNoGalleryRecords": "ไม่มีระเบียนรูปภาพสำหรับแสดงแกลเลอรี",
+  "viewsNoPlaylistRecords": "ไม่มีระเบียนสื่อสำหรับแสดงเพลย์ลิสต์",
+  "fetchFailed": "ดึงข้อมูลไม่สำเร็จ ({status})",
+  "unableToLoadViewData": "ไม่สามารถโหลดข้อมูลมุมมองได้",
+  "noResultsFound": "ไม่พบผลลัพธ์",
+  "refreshView": "รีเฟรชมุมมอง",
+  "breakIntoStaticContent": "แยกเป็นเนื้อหาคงที่",
+  "viewsOpenRecord": "เปิดระเบียน"
+}

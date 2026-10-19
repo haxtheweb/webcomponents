@@ -480,7 +480,9 @@ class AppHaxTheme extends HAXCMSRememberRoute(
   render() {
     return html`
       <div class="site">
-        <a class="skip-link" href="#contentcontainer">Skip to content</a>
+        <a class="skip-link" href="#contentcontainer"
+          >${this.t.skipToContent}</a
+        >
         <div class="menu-outline">${this.HAXCMSMobileMenu()}</div>
         <div id="body" class="site-body" part="site-body">
           <div id="haxcms-theme-top"></div>
@@ -541,6 +543,11 @@ class AppHaxTheme extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+    };
     this.HAXCMSThemeSettings.autoScroll = true;
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(

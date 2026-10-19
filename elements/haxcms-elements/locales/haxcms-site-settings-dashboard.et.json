@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "Funktsioonides keelatud",
+  "appearance": "Välimus",
+  "structure": "Struktuur",
+  "content": "Sisu",
+  "reports": "Aruanded",
+  "about": "Teave",
+  "files": "Failid",
+  "views": "Vaated",
+  "features": "Funktsioonid",
+  "editor": "Redaktor",
+  "blocks": "Plokid",
+  "importExport": "Import / eksport",
+  "details": "Üksikasjad",
+  "advanced": "Täpsemad"
+}

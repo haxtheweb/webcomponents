@@ -7,5 +7,7 @@
   "userAccessGranted": "کارن ته لاسرسی په بریالیتوب سره ورکړل شو!",
   "userNotFound": "کارن ونه موندل شو یا اجازه نه لري",
   "loadingAddingUser": "کارن زیاتېږي...",
-  "grantAccessTo": "لاسرسی ورکړئ:"
+  "grantAccessTo": "لاسرسی ورکړئ:",
+  "networkErrorTryAgain": "د شبکې تېروتنه رامنځته شوه. مهرباني وکړئ بیا هڅه وکړئ.",
+  "characterWillAppear": "کله چې کارن نوم ولیکئ کرکټر به راښکاره شي"
 }

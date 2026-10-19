@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Slepp fílur her",
+  "uploadQueue": "Uppleggingarbiðrað",
+  "pending": "Bíðar",
+  "preparing": "Fyrireiki",
+  "uploading": "Leggi upp",
+  "complete": "Liðugt",
+  "aborted": "Avbrotið",
+  "cancelled": "Ógildað",
+  "error": "Feilur",
+  "errorWithStatus": "Feilur: {status}",
+  "cancel": "Angra",
+  "cancelUploadOf": "Ógilda upplegging av {name}",
+  "retry": "Royn aftur",
+  "retryUploadOf": "Royn upplegging av {name} aftur",
+  "remove": "Tak burtur",
+  "removeFromQueue": "Tak {name} úr biðraðini",
+  "fileTypeNotAccepted": "Fílusnið ikki góðtikið: {name}",
+  "uploadFailed": "Upplegging miseydnaðist: {status}",
+  "networkError": "Netverksfeilur"
+}

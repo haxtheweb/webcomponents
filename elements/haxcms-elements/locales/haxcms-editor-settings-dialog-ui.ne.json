@@ -5,5 +5,9 @@
   "buttons": "बटनहरू",
   "futureButtonConfiguration": "अनुकूल सम्पादक बटन कन्फिगरेसन चाँडै आउँदैछ।",
   "save": "सुरक्षित गर्नुहोस्",
-  "saving": "सुरक्षित हुँदैछ…"
+  "saving": "सुरक्षित हुँदैछ…",
+  "novice": "नौसिखिया",
+  "expert": "विशेषज्ञ",
+  "toolbarPreviewAlt": "{audience} सम्पादन उपकरणपट्टी पूर्वावलोकन",
+  "savingEditorSettingsFailed": "सम्पादक सेटिङहरू सेभ गर्न असफल: {error}"
 }

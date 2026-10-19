@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Erakutsi aurrez bidalitako mezua (gora)",
+  "displayPreviousMessageDown": "Erakutsi aurrez bidalitako mezua (behera)",
+  "sendPrompt": "Bidali galdera",
+  "sendPromptToMerlin": "Bidali galdera Merlini",
+  "shortenPrompt": "Laburtu zure galdera, gehienez {limit} karaktere izan arte."
+}

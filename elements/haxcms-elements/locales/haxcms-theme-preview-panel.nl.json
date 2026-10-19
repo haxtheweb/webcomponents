@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Themavoorbeeld tonen",
+  "hideThemePreview": "Themavoorbeeld verbergen",
+  "themePreviewPanel": "Paneel themavoorbeeld",
+  "themePreview": "Themavoorbeeld",
+  "themePreviewDescription": "Probeer tijdelijk een thema en palet terwijl je rondkijkt. Gebruik Annuleren om je oorspronkelijke uiterlijk te herstellen.",
+  "loadingThemes": "Thema's laden...",
+  "theme": "Thema",
+  "palette": "Palet",
+  "cancel": "Annuleren",
+  "openAppearanceSettings": "Instellingen voor uiterlijk openen"
+}

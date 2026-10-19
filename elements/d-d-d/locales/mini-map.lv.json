@@ -1,0 +1,17 @@
+{
+  "editNodes": "Rediģēt mezglus",
+  "editLines": "Rediģēt līnijas",
+  "reset": "Atiestatīt",
+  "save": "Saglabāt",
+  "cancel": "Atcelt",
+  "delete": "Dzēst",
+  "type": "Veids:",
+  "topic": "Tēma",
+  "subsection": "Apakšsadaļa",
+  "name": "Nosaukums:",
+  "enterName": "Ievadiet nosaukumu",
+  "url": "URL:",
+  "enterUrl": "Ievadiet URL",
+  "activeNode": "Aktīvs mezgls?",
+  "nodeId": "Mezgls {id}"
+}

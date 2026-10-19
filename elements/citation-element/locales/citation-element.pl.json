@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Uznanie autorstwa",
+  "licenseBySa": "Uznanie autorstwa – Na tych samych warunkach",
+  "licenseByNd": "Uznanie autorstwa – Bez utworów zależnych",
+  "licenseByNc": "Uznanie autorstwa – Użycie niekomercyjne",
+  "licenseByNcSa": "Uznanie autorstwa – Użycie niekomercyjne – Na tych samych warunkach",
+  "licenseByNcNd": "Uznanie autorstwa – Użycie niekomercyjne – Bez utworów zależnych",
+  "citationWithLicense": "{title}, autor: {creator}, licencja {license}. Dostęp: {date}.",
+  "citationWithoutLicense": "{title}, autor: {creator}. Dostęp: {date}.",
+  "licenseGraphic": "Grafika licencji {license}"
+}

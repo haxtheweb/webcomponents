@@ -1,0 +1,17 @@
+{
+  "editNodes": "ویرایش گره‌ها",
+  "editLines": "ویرایش خطوط",
+  "reset": "بازنشانی",
+  "save": "ذخیره",
+  "cancel": "لغو",
+  "delete": "حذف",
+  "type": "نوع:",
+  "topic": "موضوع",
+  "subsection": "زیربخش",
+  "name": "نام:",
+  "enterName": "نام را وارد کنید",
+  "url": "URL:",
+  "enterUrl": "URL را وارد کنید",
+  "activeNode": "گره فعال؟",
+  "nodeId": "گره {id}"
+}

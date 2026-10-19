@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- طے شدہ طور پر پہلا صفحہ --",
+  "details": "تفصیلات",
+  "title": "عنوان",
+  "titleDescription": "سائٹ کا نام",
+  "homePage": "ہوم پیج",
+  "homePageDescription": "طے شدہ لینڈنگ / ہوم پیج کے طور پر استعمال ہونے والا صفحہ",
+  "advanced": "اعلیٰ درجے کی",
+  "serviceWorker": "متحرک صفحے میں سروس ورکر شامل کریں",
+  "serviceWorkerDescription": "اگر صارفین کو ہمیشہ فوراً سرور کا تازہ ترین آؤٹ پٹ دیکھنا چاہیے تو اسے غیر فعال کریں۔",
+  "forceBrowserUpgrade": "براؤزر اپ گریڈ لازمی کریں",
+  "forceBrowserUpgradeDescription": "سائٹ کا تجربہ لوڈ کرنے سے پہلے جدید (ایور گرین) براؤزرز لازمی کریں۔",
+  "unableToLoadSiteDetails": "سائٹ کی تفصیلات لوڈ نہیں ہو سکیں۔",
+  "noSiteDetails": "سائٹ کی کوئی تفصیلات دستیاب نہیں۔",
+  "save": "محفوظ کریں"
+}

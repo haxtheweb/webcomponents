@@ -1,4 +1,11 @@
 {
   "readMore": "Læs mere",
-  "home": "Forside"
+  "home": "Forside",
+  "anchorLinkCopied": "Ankerlink kopieret!",
+  "skipToContent": "Spring til indhold",
+  "changeTheme": "Skift tema",
+  "siteSections": "Webstedssektioner",
+  "pageOfTotal": "Side {current} af {total}",
+  "siteGenerated": "Websted genereret: {date}",
+  "licenseGraphic": "Grafik for {license}"
 }

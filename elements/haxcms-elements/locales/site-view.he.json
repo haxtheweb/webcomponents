@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "אין תוצאות",
+  "viewsRecordHeading": "הקלטה",
+  "viewsTitleImage": "תמונה של {title}",
+  "viewsTitlePreview": "תצוגה מקדימה של {title}",
+  "viewsNoTimelineRecords": "אין רשומות מבוססות תאריך להצגת ציר זמן.",
+  "viewsTimelineTitle": "ציר הזמן של {title}",
+  "viewsNoChartField": "לא זוהה שדה מספרי להצגת תרשים.",
+  "viewsChartingValue": "תרשים של {value}",
+  "viewsChartingValueByLabel": "תרשים של {value} לפי {label}",
+  "viewsChartTitle": "תרשים {title}",
+  "viewsNoTreeRecords": "אין רשומות היררכיות להצגת עץ.",
+  "viewsNoGalleryRecords": "אין רשומות תמונה להצגת גלריה.",
+  "viewsNoPlaylistRecords": "אין רשומות מדיה להצגת רשימת השמעה.",
+  "fetchFailed": "האחזור נכשל ({status})",
+  "unableToLoadViewData": "לא ניתן לטעון את נתוני התצוגה.",
+  "noResultsFound": "לא נמצאו תוצאות.",
+  "refreshView": "רענון התצוגה",
+  "breakIntoStaticContent": "פירוק לתוכן סטטי",
+  "viewsOpenRecord": "פתיחת רשומה"
+}

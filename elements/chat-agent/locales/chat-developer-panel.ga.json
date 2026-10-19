@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tábla consóil de logchomhad comhrá an úsáideora",
+  "consoleTableUserText": "console.table() logchomhad comhrá an úsáideora",
+  "consoleTableUserTooltip": "Priontáil Logchomhad Comhrá an Úsáideora mar Thábla sa Chonsól",
+  "consoleTableMerlinLabel": "Tábla consóil de logchomhad comhrá Merlin",
+  "consoleTableMerlinText": "console.table() logchomhad comhrá Merlin",
+  "consoleTableMerlinTooltip": "Priontáil Logchomhad Comhrá Merlin mar Thábla sa Chonsól",
+  "consoleTableAllLabel": "Tábla consóil den logchomhad comhrá iomlán",
+  "consoleTableAllText": "console.table() logchomhad comhrá iomlán",
+  "consoleTableAllTooltip": "Priontáil an Logchomhad Comhrá Iomlán mar Thábla sa Chonsól",
+  "downloadChatLogJson": "Íoslódáil logchomhad an chomhrá mar .json",
+  "downloadChatLogJsonTooltip": "Íoslódáil Logchomhad an Chomhrá mar .json"
+}

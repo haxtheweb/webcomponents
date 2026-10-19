@@ -1,0 +1,18 @@
+{
+  "copy": "Kopiëren",
+  "download": "Downloaden",
+  "archive": "Archiveren",
+  "copyOperation": "kopiëren",
+  "downloadOperation": "downloaden",
+  "archiveOperation": "archiveren",
+  "created": "gemaakt",
+  "updated": "bijgewerkt",
+  "pages": "pagina's",
+  "url": "URL",
+  "confirm": "Bevestigen",
+  "cancel": "Annuleren",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Weet je zeker dat je {siteName} wilt {operation}?",
+  "siteOperationSuccessful": "{siteName} {operation} gelukt!",
+  "siteOperationFailed": "{siteName} {operation} mislukt"
+}

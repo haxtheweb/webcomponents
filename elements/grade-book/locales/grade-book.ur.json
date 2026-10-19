@@ -43,5 +43,22 @@
   "emailAddress": "اس طالب علم کو ای میل کریں",
   "notes": "نوٹس",
   "interests": "دلچسپیاں",
-  "profileImageFor": "پروفائل تصویر:"
+  "profileImageFor": "پروفائل تصویر:",
+  "fileSystem": "فائل سسٹم",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL اینڈپوائنٹ (JSON)",
+  "jsonDataBlob": "JSON ڈیٹا بلاب",
+  "additionalCriteriaFeedback": "اضافی {criteria} فیڈبیک",
+  "outOfPoints": "/ {points} پوائنٹس",
+  "feedbackReport": "فیڈبیک رپورٹ",
+  "criteriaDetails": "معیار کی تفصیلات",
+  "yourFeedback": "آپ کا فیڈبیک",
+  "additionalCriteriaFeedbackHeading": "اضافی معیار کا فیڈبیک",
+  "yourTotalScore": "آپ کا کل اسکور",
+  "scoreOutOfPoints": "{score} / {points} پوائنٹس",
+  "studentAssignment": "{student} کی اسائنمنٹ {assignment}",
+  "downloadPDF": "PDF ڈاؤن لوڈ کریں",
+  "displayMode1": "موڈ 1",
+  "displayMode2": "موڈ 2",
+  "twoWindows": "دو ونڈوز"
 }

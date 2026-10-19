@@ -1,0 +1,11 @@
+{
+  "licenseBy": "انتساب",
+  "licenseBySa": "انتساب ساڳيءَ طرح شيئر ڪريو",
+  "licenseByNd": "انتساب ڪا به ماخوذ تخليق نه",
+  "licenseByNc": "انتساب غير تجارتي",
+  "licenseByNcSa": "انتساب غير تجارتي ساڳيءَ طرح شيئر ڪريو",
+  "licenseByNcNd": "انتساب غير تجارتي ڪا به ماخوذ تخليق نه",
+  "citationWithLicense": "{creator} جو {title}، {license} تحت لائسنس يافته. رسائي {date}.",
+  "citationWithoutLicense": "{creator} جو {title}. رسائي {date}.",
+  "licenseGraphic": "{license} گرافڪ"
+}

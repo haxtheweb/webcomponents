@@ -22,6 +22,13 @@
   "unpublish": "Ritirà a publicazione",
   "savePage": "Salvà a pagina",
   "cancel": "Abbandunà",
+  "delete": "Squassà",
+  "editTitle": "Mudificà u titulu",
+  "editIcon": "Mudificà l'icona",
+  "agent": "Agente",
+  "pageLockedUnlockToEdit": "Sta pagina hè bluccata. Sbluccatela prima di mudificalla.",
+  "pageLockedUnlockToChangePublishStatus": "Sta pagina hè bluccata. Sbluccatela prima di cambià u statu di publicazione.",
+  "pageLockedUnlockToDelete": "Sta pagina hè bluccata. Sbluccatela prima di sguassalla.",
   "pageDetails": "Dettagli di a pagina",
   "clickToUnlock": "Cliccate per sbluccà"
 }
