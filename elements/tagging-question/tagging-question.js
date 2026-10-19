@@ -20,6 +20,19 @@ class TaggingQuestion extends QuestionElement {
 
   constructor() {
     super();
+    this.t = {
+      ...this.t,
+      selectAllDirections:
+        "Select all that apply. When you are done, press {checkAnswer}. You will get feedback indicating correctness of your answer and how to proceed.",
+      numCorrectOutOfTotal: "{correct} out of {total} correct.",
+      numCorrectOutOfTotalTooMany: "{correct} out of {total} correct, {warning}",
+      tooManyOptionsPresent: "but too many options present!",
+      answersSelected: "Answers selected",
+      answersNotSelected: "Answers not selected",
+      answersNotSelectedDescription:
+        "Incorrectness implies it should have been selected. Correctness implies it was correctly {not} selected",
+      not: "not",
+    };
     // QuestionElement's shared strings live in each question type's own namespace
     this.registerLocalization({
       context: this,
@@ -153,9 +166,9 @@ class TaggingQuestion extends QuestionElement {
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      Select all that apply. When you are done, press
-      <strong>${this.t.checkAnswer}</strong>. You will get feedback indicating
-      correctness of your answer and how to proceed.
+      ${this._tParts(this.t.selectAllDirections, {
+        checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
+      })}
     </p>`;
   }
 
@@ -245,19 +258,27 @@ class TaggingQuestion extends QuestionElement {
           ${this.showAnswer
             ? html`
                 <p class="feedback">
-                  ${this.selectedAnswers.filter((answer) => answer.correct)
-                    .length}
-                  out of
-                  ${this.answers.filter((answer) => answer.correct).length}
-                  correct${this.selectedAnswers.length >
-                    this.answers.filter((answer) => answer.correct).length &&
-                  this.selectedAnswers.length >
-                    this.selectedAnswers.filter((answer) => answer.correct)
-                      .length
-                    ? html`, <strong>but too many options present!</strong>`
-                    : "."}
+                  ${this._tParts(
+                    this.selectedAnswers.length >
+                      this.answers.filter((answer) => answer.correct).length &&
+                      this.selectedAnswers.length >
+                        this.selectedAnswers.filter((answer) => answer.correct)
+                          .length
+                      ? this.t.numCorrectOutOfTotalTooMany
+                      : this.t.numCorrectOutOfTotal,
+                    {
+                      correct: this.selectedAnswers.filter(
+                        (answer) => answer.correct,
+                      ).length,
+                      total: this.answers.filter((answer) => answer.correct)
+                        .length,
+                      warning: html`<strong
+                        >${this.t.tooManyOptionsPresent}</strong
+                      >`,
+                    },
+                  )}
                 </p>
-                <h4>Answers selected</h4>
+                <h4>${this.t.answersSelected}</h4>
                 <dl>
                   ${this.selectedAnswers.map(
                     (answer) => html`
@@ -268,11 +289,11 @@ class TaggingQuestion extends QuestionElement {
                     `,
                   )}
                 </dl>
-                <h4>Answers not selected</h4>
+                <h4>${this.t.answersNotSelected}</h4>
                 <p>
-                  Incorrectness implies it should have been selected.
-                  Correctness implies it was correctly
-                  <strong>not</strong> selected
+                  ${this._tParts(this.t.answersNotSelectedDescription, {
+                    not: html`<strong>${this.t.not}</strong>`,
+                  })}
                 </p>
                 <dl>
                   ${this.displayedAnswers.map(
@@ -291,7 +312,7 @@ class TaggingQuestion extends QuestionElement {
           this.showAnswer &&
           !this.isCorrect()
             ? html`
-                <h4>Need a hint?</h4>
+                <h4>${this.t.needAHint}</h4>
                 <div>
                   <slot name="hint"></slot>
                 </div>
@@ -302,7 +323,7 @@ class TaggingQuestion extends QuestionElement {
           this.showAnswer &&
           this.isCorrect()
             ? html`
-                <h4>Evidence</h4>
+                <h4>${this.t.evidence}</h4>
                 <div>
                   <slot name="evidence"></slot>
                 </div>

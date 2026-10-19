@@ -198,21 +198,36 @@ export const createPrintProgram = (i18nMixin) => {
 
     // Get localized strings (fallback to English if not available)
     const t = {
-      printPage:
-        (i18nMixin && i18nMixin.t && i18nMixin.t.printPage) || "Print page",
-      printSite:
-        (i18nMixin && i18nMixin.t && i18nMixin.t.printSite) || "Print site",
-      printBranch: "Print this page and its children",
-      printCurrent: "Print current page only",
+      printPage: "Print page",
+      printSite: "Print site",
+      printPageAndChildren: "Print this page and its children",
+      printCurrentPageOnly: "Print current page only",
       downloadPdf: "Download PDF",
-      printView: "Open print-friendly view",
-      jsonView: "View page data (JSON)",
+      openPrintFriendlyView: "Open print-friendly view",
+      viewPageDataJson: "View page data (JSON)",
       printingPleaseWait: "Printing, please wait...",
+      printBranchDescription:
+        "Print the current page and all child pages as HTML",
+      printSiteDescription: "Print every page in the site as HTML",
+      printCurrentPageDescription:
+        "Use the browser's print dialog for the current page only",
+      downloadPdfDescription:
+        "Export the current page and child pages as PDF (when available)",
+      printViewDescription:
+        "Open a clean, print-optimized view in a new window",
+      jsonViewDescription: "View the current page data as JSON in a code view",
     };
+    if (i18nMixin && i18nMixin.t) {
+      Object.keys(t).forEach((key) => {
+        if (i18nMixin.t[key]) {
+          t[key] = i18nMixin.t[key];
+        }
+      });
+    }
 
     // Option 1: Print current page and children (branch)
     results.push({
-      title: t.printBranch,
+      title: t.printPageAndChildren,
       icon: "icons:print",
       tags: ["print", "page", "branch", "children"],
       value: {
@@ -222,7 +237,7 @@ export const createPrintProgram = (i18nMixin) => {
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/print/branch",
-      more: "Print the current page and all child pages as HTML",
+      more: t.printBranchDescription,
     });
 
     // Option 2: Print entire site
@@ -237,12 +252,12 @@ export const createPrintProgram = (i18nMixin) => {
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/print/site",
-      more: "Print every page in the site as HTML",
+      more: t.printSiteDescription,
     });
 
     // Option 3: Print current page only (browser print)
     results.push({
-      title: t.printCurrent,
+      title: t.printCurrentPageOnly,
       icon: "icons:print",
       tags: ["print", "page", "current", "browser"],
       value: {
@@ -252,7 +267,7 @@ export const createPrintProgram = (i18nMixin) => {
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/print/current",
-      more: "Use the browser's print dialog for the current page only",
+      more: t.printCurrentPageDescription,
     });
 
     // Option 4: Download as PDF (uses same service as branch print)
@@ -268,13 +283,13 @@ export const createPrintProgram = (i18nMixin) => {
         },
         eventName: "super-daemon-element-method",
         path: "CMS/action/print/pdf",
-        more: "Export the current page and child pages as PDF (when available)",
+        more: t.downloadPdfDescription,
       });
     }
 
     // Option 5: Print-friendly view
     results.push({
-      title: t.printView,
+      title: t.openPrintFriendlyView,
       icon: "icons:launch",
       tags: ["print", "view", "friendly", "clean"],
       value: {
@@ -284,12 +299,12 @@ export const createPrintProgram = (i18nMixin) => {
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/print/view",
-      more: "Open a clean, print-optimized view in a new window",
+      more: t.printViewDescription,
     });
 
     // Option 6: JSON data view
     results.push({
-      title: t.jsonView,
+      title: t.viewPageDataJson,
       icon: "code",
       tags: ["json", "data", "view", "code", "debug"],
       value: {
@@ -299,7 +314,7 @@ export const createPrintProgram = (i18nMixin) => {
       },
       eventName: "super-daemon-element-method",
       path: "CMS/action/view/json",
-      more: "View the current page data as JSON in a code view",
+      more: t.jsonViewDescription,
     });
 
     return results;

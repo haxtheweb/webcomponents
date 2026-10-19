@@ -1,0 +1,17 @@
+{
+  "editNodes": "Redaguoti mazgus",
+  "editLines": "Redaguoti linijas",
+  "reset": "Atkurti",
+  "save": "Išsaugoti",
+  "cancel": "Atšaukti",
+  "delete": "Ištrinti",
+  "type": "Tipas:",
+  "topic": "Tema",
+  "subsection": "Poskyris",
+  "name": "Pavadinimas:",
+  "enterName": "Įveskite pavadinimą",
+  "url": "URL:",
+  "enterUrl": "Įveskite URL",
+  "activeNode": "Aktyvus mazgas?",
+  "nodeId": "Mazgas {id}"
+}

@@ -2,6 +2,7 @@
  * Copyright 2024
  * @license Apache-2.0, see License.md for full text.
  */
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
@@ -11,7 +12,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element media-quote
  */
-class MediaQuote extends DDD {
+class MediaQuote extends I18NMixin(DDD) {
   /**
    * Convention we use
    */
@@ -24,6 +25,15 @@ class MediaQuote extends DDD {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      showCaption: "Show Caption",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
 
     // Media Item (Img)
     this.src = "";
@@ -282,7 +292,7 @@ class MediaQuote extends DDD {
                 ? html`
                     <div class="caption">
                       <details>
-                        <summary>Show Caption</summary>
+                        <summary>${this.t.showCaption}</summary>
                         <figcaption>
                           <slot name="caption">${this.caption}</slot>
                         </figcaption>

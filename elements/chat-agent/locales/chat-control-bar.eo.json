@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Elŝuti protokolon kiel txt",
+  "downloadChatLog": "Elŝuti babilprotokolon",
+  "resetChat": "Restarigi babilon",
+  "toggleDataCollection": "Baskuligi datumkolektadon",
+  "dataCollection": "Datumkolektado",
+  "toggleDeveloperMode": "Baskuligi programistan reĝimon",
+  "exitFullView": "Eliri el plena vido",
+  "enterFullView": "Eniri plenan vidon",
+  "hideInterface": "Kaŝi fasadon",
+  "resetChatConfirm": "Ĉu restarigi la babilon?",
+  "downloadBeforeResetConfirm": "Ĉu elŝuti la babilprotokolon antaŭ ol restarigi?",
+  "dataCollectionOn": "Viaj konversacioj estos uzataj por trejni niajn AI-modelojn",
+  "dataCollectionOff": "Viaj konversacioj ne estos uzataj por trejni niajn AI-modelojn"
+}

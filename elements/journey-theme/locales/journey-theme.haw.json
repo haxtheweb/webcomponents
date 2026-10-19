@@ -1,4 +1,11 @@
 {
   "readMore": "Heluhelu hou aku",
-  "home": "ʻAoʻao hale"
+  "home": "ʻAoʻao hale",
+  "anchorLinkCopied": "Ua kope ʻia ka loulou heleuma!",
+  "skipToContent": "Lele i ka ʻike",
+  "changeTheme": "Hoʻololi i ke kumuhana",
+  "siteSections": "Nā māhele pūnaewele",
+  "pageOfTotal": "ʻAoʻao {current} o {total}",
+  "siteGenerated": "Ua hana ʻia ka pūnaewele: {date}",
+  "licenseGraphic": "Kiʻi {license}"
 }

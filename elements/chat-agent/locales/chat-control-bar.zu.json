@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Landa Irekhodi njenge-txt",
+  "downloadChatLog": "Landa Irekhodi Lengxoxo",
+  "resetChat": "Setha Kabusha Ingxoxo",
+  "toggleDataCollection": "Shintsha Ukuqoqwa Kwedatha",
+  "dataCollection": "Ukuqoqwa Kwedatha",
+  "toggleDeveloperMode": "Shintsha Imodi Yonjiniyela",
+  "exitFullView": "Phuma Ekubukeni Okugcwele",
+  "enterFullView": "Ngena Ekubukeni Okugcwele",
+  "hideInterface": "Fihla Isixhumi",
+  "resetChatConfirm": "Setha kabusha ingxoxo?",
+  "downloadBeforeResetConfirm": "Landa irekhodi lengxoxo ngaphambi kokusetha kabusha?",
+  "dataCollectionOn": "Izingxoxo zakho zizosetshenziselwa ukuqeqesha amamodeli ethu e-AI",
+  "dataCollectionOff": "Izingxoxo zakho ngeke zisetshenziselwe ukuqeqesha amamodeli ethu e-AI"
+}

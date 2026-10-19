@@ -1,0 +1,18 @@
+{
+  "copy": "Копиране",
+  "download": "Изтегляне",
+  "archive": "Архивиране",
+  "copyOperation": "копиране",
+  "downloadOperation": "изтегляне",
+  "archiveOperation": "архивиране",
+  "created": "създаден",
+  "updated": "обновен",
+  "pages": "страници",
+  "url": "URL",
+  "confirm": "Потвърждаване",
+  "cancel": "Отказ",
+  "siteOperationConfirmTitle": "{operationName} на {siteName}?",
+  "siteOperationConfirmMessage": "Сигурни ли сте, че искате {operation} на {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} – успешно!",
+  "siteOperationFailed": "{siteName}: {operation} – неуспешно"
+}

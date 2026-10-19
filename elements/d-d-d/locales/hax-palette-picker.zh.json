@@ -1,0 +1,9 @@
+{
+  "palette": "调色板",
+  "paletteSelection": "调色板选择",
+  "active": "当前使用",
+  "selected": "已选择",
+  "currentlyActiveAndSelectedPalette": "当前使用且已选择的调色板",
+  "currentlyActivePalette": "当前使用的调色板",
+  "selectedPaletteToApply": "已选择待应用的调色板"
+}

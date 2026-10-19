@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Ṣe ìgbàsílẹ̀ Àkọsílẹ̀ bí txt",
+  "downloadChatLog": "Ṣe ìgbàsílẹ̀ Àkọsílẹ̀ Ìjíròrò",
+  "resetChat": "Tún Ìjíròrò Bẹ̀rẹ̀",
+  "toggleDataCollection": "Yí Ìkójọ Dátà Padà",
+  "dataCollection": "Ìkójọ Dátà",
+  "toggleDeveloperMode": "Yí Ipò Olùgbéejáde Padà",
+  "exitFullView": "Jáde Kúrò Nínú Ìwò Kíkún",
+  "enterFullView": "Wọ Ìwò Kíkún",
+  "hideInterface": "Fi Ojú-ìbáṣepọ̀ Pamọ́",
+  "resetChatConfirm": "Tún ìjíròrò bẹ̀rẹ̀?",
+  "downloadBeforeResetConfirm": "Ṣe ìgbàsílẹ̀ àkọsílẹ̀ ìjíròrò kí o tó tún bẹ̀rẹ̀?",
+  "dataCollectionOn": "A ó lo àwọn ìjíròrò rẹ láti kọ́ àwọn àwòṣe AI wa",
+  "dataCollectionOff": "A kò ní lo àwọn ìjíròrò rẹ láti kọ́ àwọn àwòṣe AI wa"
+}

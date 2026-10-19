@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "లాగ్‌ను txtగా డౌన్‌లోడ్ చేయండి",
+  "downloadChatLog": "చాట్ లాగ్‌ను డౌన్‌లోడ్ చేయండి",
+  "resetChat": "చాట్‌ను రీసెట్ చేయండి",
+  "toggleDataCollection": "డేటా సేకరణను టోగుల్ చేయండి",
+  "dataCollection": "డేటా సేకరణ",
+  "toggleDeveloperMode": "డెవలపర్ మోడ్‌ను టోగుల్ చేయండి",
+  "exitFullView": "పూర్తి వీక్షణ నుండి నిష్క్రమించండి",
+  "enterFullView": "పూర్తి వీక్షణలోకి ప్రవేశించండి",
+  "hideInterface": "ఇంటర్‌ఫేస్‌ను దాచు",
+  "resetChatConfirm": "చాట్‌ను రీసెట్ చేయాలా?",
+  "downloadBeforeResetConfirm": "రీసెట్ చేసే ముందు చాట్ లాగ్‌ను డౌన్‌లోడ్ చేయాలా?",
+  "dataCollectionOn": "మీ సంభాషణలు మా AI మోడల్‌లకు శిక్షణ ఇవ్వడానికి ఉపయోగించబడతాయి",
+  "dataCollectionOff": "మీ సంభాషణలు మా AI మోడల్‌లకు శిక్షణ ఇవ్వడానికి ఉపయోగించబడవు"
+}

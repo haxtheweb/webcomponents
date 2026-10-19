@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Файлларны монда ташлагыз",
+  "uploadQueue": "Йөкләү чираты",
+  "pending": "Көтелә",
+  "preparing": "Әзерләнә",
+  "uploading": "Йөкләнә",
+  "complete": "Тәмамланды",
+  "aborted": "Өзелде",
+  "cancelled": "Туктатылды",
+  "error": "Хата",
+  "errorWithStatus": "Хата: {status}",
+  "cancel": "Баш тарту",
+  "cancelUploadOf": "{name} йөкләүне туктату",
+  "retry": "Кабатлау",
+  "retryUploadOf": "{name} йөкләүне кабатлау",
+  "remove": "Алу",
+  "removeFromQueue": "{name} чираттан алу",
+  "fileTypeNotAccepted": "Файл төре кабул ителми: {name}",
+  "uploadFailed": "Йөкләү уңышсыз: {status}",
+  "networkError": "Челтәр хатасы"
+}

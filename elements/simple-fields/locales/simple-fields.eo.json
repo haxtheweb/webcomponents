@@ -9,5 +9,8 @@
   "record": "Registri",
   "pause": "Paŭzi registradon",
   "stopSave": "Ĉesi kaj konservi",
-  "clickToTakePhoto": "Alklaku por foti"
+  "clickToTakePhoto": "Alklaku por foti",
+  "url": "URL",
+  "open": "malfermi",
+  "removeValue": "Forigi {value}"
 }

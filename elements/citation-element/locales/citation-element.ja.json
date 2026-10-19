@@ -1,0 +1,11 @@
+{
+  "licenseBy": "表示",
+  "licenseBySa": "表示-継承",
+  "licenseByNd": "表示-改変禁止",
+  "licenseByNc": "表示-非営利",
+  "licenseByNcSa": "表示-非営利-継承",
+  "licenseByNcNd": "表示-非営利-改変禁止",
+  "citationWithLicense": "{creator} による {title}、{license} の下に提供。{date} アクセス。",
+  "citationWithoutLicense": "{creator} による {title}。{date} アクセス。",
+  "licenseGraphic": "{license} のグラフィック"
+}

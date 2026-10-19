@@ -79,6 +79,7 @@ import "@haxtheweb/simple-cta/simple-cta.js";
 import "@haxtheweb/stop-note/stop-note.js";
 import "@haxtheweb/video-player/video-player.js";
 import { css, html } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 /**
@@ -116,12 +117,123 @@ export const styleGuideTopics = {
   InternalContracts: "InternalContracts",
 };
 
-class DDDocs extends DDD {
+class DDDocs extends I18NMixin(DDD) {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      pointerEventsNote: "Note: Pointer events are disabled so the pulsing will not self-remove on hover",
+      headerSampleNumber: "Header Sample {number}",
+      dddEnabledElements: "DDD Enabled Elements",
+      testing: "Testing",
+      classLabel: "Class:",
+      classLabelLowercase: "class:",
+      cssVariableLabel: "css variable:",
+      cssVariableLabelTitleCase: "CSS Variable:",
+      availableBorders: "Available Borders",
+      availableBreakpoints: "Available Breakpoints",
+      breakpoint: "Breakpoint",
+      size: "Size",
+      breakpointSizesNote: "Sizes are named by width, not device, so the same scale describes the viewport (themes) or an element's own width (grid-plate). CSS variables cannot be used inside media queries, so import the numbers:",
+      readableFromJsViaCssVariables: "Readable from JS via css variables:",
+      layoutWidths: "Layout Widths",
+      region: "Region",
+      width: "Width",
+      cssVariable: "css variable",
+      layoutWidthAliasesNote: "Themes describe their regions with the aliases {contentWidth}, {sidebarWidth}, {containerWidth} and {layoutGutter}. Grid elements use {gridGap} and {gridItemSpacing}.",
+      availableColorsPolaris: "Available Colors from the Polaris Theme",
+      availableFunctionalColorsPolaris: "Available Functional Colors from the Polaris Theme",
+      availablePalettesInDdd: "Available palettes in DDD",
+      paletteSelectorOr: "{name} or {index}",
+      defaultInParens: "(default)",
+      palettePickerPrototype: "hax-palette-picker prototype",
+      palettePickerIntro: "Registry-driven field prototype for HAX appearance settings, using the same palette data model as DDD.",
+      defaultContext: "Default context",
+      themePalette: "Theme palette",
+      themePaletteDescription: "Choose a palette; this value is written as the data-palette attribute at theme scope.",
+      selectedPaletteTokens: "Selected palette tokens",
+      darkContextCheck: "Dark context check",
+      darkContextDescription: "Readability and selected state preview in dark-mode presentation.",
+      themePaletteDarkContext: "Theme palette (dark context)",
+      availableGradientsPolaris: "Available Gradients from the Polaris Theme",
+      availableRadiusClasses: "Available Radius classes",
+      availableShadowClasses: "Available Shadow classes",
+      availableSpacingClasses: "Available Spacing classes",
+      className: "Class Name",
+      value: "Value",
+      example: "Example",
+      accessibleUsingFormat: "Accessible using format:",
+      spacingSides: "Sides: Top (t), Right (r), Bottom (b), Left (l), X (x), Y (y)",
+      exampleLabel: "Example:",
+      availableTypefaces: "Available Typefaces",
+      primaryFont: "Primary Font:",
+      weights: "Weights:",
+      defaultLabel: "Default",
+      fontSizes: "Font sizes:",
+      letterSpacing: "Letter Spacing",
+      letterSpacingVariableNote: "CSS Variable is same as class name, with '--ddd-' prefix",
+      classHeader: "Class",
+      lineHeight: "Line Height",
+      notApplicable: "N/A",
+      richTextHeading: "Rich text formatting and other data displays",
+      basicTextTypes: "Basic text types",
+      headingLevelSample: "{level} Heading",
+      hyperlink: "HyperLink",
+      boldText: "Bold Text",
+      italicText: "Italic Text",
+      underlinedText: "Underlined Text",
+      unorderedList: "Unordered List",
+      orderedList: "Ordered List",
+      itemNumber: "Item {number}",
+      otherHtmlTextTypes: "Other html text types",
+      detailsText: "Details text",
+      inlineCodeExample: "This is an example of code:{code} in a paragraph",
+      blockCodeExample: "Here is an example of a block of code on it's own, using class 'block-code', redundant, but avoids common 'block' class name",
+      highlightExampleIntro: "Here is a good example of some",
+      highlightExampleText: "Here's a super long version of a Highlighted Text that extends beyond the end of the border box",
+      abbreviationExample: "Here is an example of an abbreviation:",
+      subExample: "Here's an example of a sub:",
+      supExample: "And a sup:",
+      textDesignTreatment: "Text design-treatment",
+      underlineWays: "There's 2 ways to get underlined styling",
+      hrElements: "HR elements",
+      defaultHrLine: "Default horizontal line using hr element",
+      hrDataPrimaryNote: "hr elements also accept data-primary values, and are are designed to play-nice when placed inside a heading element",
+      hrFitContentNote: "When combined with width: fit-content on the header itself, can limit the underlining to exactly the text",
+      variableLengthDesignTreatment: "Or, if you want variable length, use design-treatment:",
+      pMeansPercent: "(with p meaning %)",
+      verticalLineLabel: "Vertical Line -",
+      otherDesignTreatments: "Other design treatments:",
+      backgroundColor: "Background color",
+      dropCapSmall: "Drop Cap - Small",
+      dropCapMedium: "Drop Cap - Medium",
+      dropCapLarge: "Drop Cap - Large",
+      buttonsSupportDataAccent: "Buttons also support data-accent!",
+      accentContrastNote: "Note: Accent color will not be applied if the primary color does not meet constrast requirements",
+      haxCapabilityGap: "HAX-capability gap: {components} is not HAX-capable. This pattern is documented but not published to the insert rail until wiring is created.",
+      copyHtml: "Copy HTML",
+      copy: "Copy",
+      insert: "Insert",
+      copied: "Copied!",
+      atoms: "Atoms",
+      molecules: "Molecules",
+      organisms: "Organisms",
+      templates: "Templates",
+      internalConsistencyContracts: "Internal consistency contracts",
+      internalContractsIntro: "Cross-cutting contracts for element internals (titles, callouts, collapsibles, embeds, admin fieldsets). These are what the hax-pattern-library-audit skill grades; mass-enforcement across the ecosystem is later work.",
+      contractSurface: "Surface: {surface}",
+      contractAppliesTo: "Applies to: {elements}",
+      selectOptionToRender: "Select an option to render",
+      fullStyleguide: "Full styleguide",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.option = "*";
     this.options = Object.keys(styleGuideTopics);
     this.palettePickerOptions = getDDDPaletteOptions();
@@ -538,8 +650,7 @@ class DDDocs extends DDD {
         `,
       )}
       <h5 style="margin-top: 64px;">
-        Note: Pointer events are disabled so the pulsing will not self-remove on
-        hover
+        ${this.t.pointerEventsNote}
       </h5>
       <div
         style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 32px 64px 64px; row-gap: 32px; pointer-events: none;"
@@ -566,7 +677,7 @@ class DDDocs extends DDD {
             data-primary="${i}"
             style="color: var(--ddd-theme-primary); background-color: var(--ddd-theme-bgContrast);"
           >
-            Header Sample ${i}
+            ${this.t.headerSampleNumber.replace("{number}", () => i)}
           </summary>
           ${Array(6)
             .fill()
@@ -647,7 +758,7 @@ class DDDocs extends DDD {
 
   renderDDDelementsList() {
     return html`
-      <h2>DDD Enabled Elements</h2>
+      <h2>${this.t.dddEnabledElements}</h2>
       <ul>
         <li>DDD</li>
         <li>figure-label</li>
@@ -666,7 +777,7 @@ class DDDocs extends DDD {
         <li>license-element</li>
         <li>simple-modal</li>
       </ul>
-      <h3>Testing</h3>
+      <h3>${this.t.testing}</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -689,34 +800,34 @@ class DDDocs extends DDD {
 
   renderBorders() {
     return html`
-      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Borders</h2>
+      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">${this.t.availableBorders}</h2>
       <div class="grid-4 gap-10 mx-5 my-15">
         <div class="p-10 b-xs bs-sm">
           <p class="bb-xs mb-5"></p>
-          <p>Class: <span class="fw-3">b-xs</span></p>
+          <p>${this.t.classLabel} <span class="fw-3">b-xs</span></p>
           <p class="mb-5">
-            css variable: <span class="fw-3">--ddd-border-xs</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-border-xs</span>
           </p>
         </div>
         <div class="p-10 b-sm bs-sm">
           <p class="bb-sm mb-5"></p>
-          <p>Class: <span class="fw-3">b-sm</span></p>
+          <p>${this.t.classLabel} <span class="fw-3">b-sm</span></p>
           <p class="mb-5">
-            css variable: <span class="fw-3">--ddd-border-sm</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-border-sm</span>
           </p>
         </div>
         <div class="p-10 b-md bs-sm">
           <p class="bb-md mb-5"></p>
-          <p>Class: <span class="fw-3">b-md</span></p>
+          <p>${this.t.classLabel} <span class="fw-3">b-md</span></p>
           <p class="mb-5">
-            css variable: <span class="fw-3">--ddd-border-md</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-border-md</span>
           </p>
         </div>
         <div class="p-10 b-lg bs-sm">
           <p class="bb-lg mb-5"></p>
-          <p>Class: <span class="fw-3">b-lg</span></p>
+          <p>${this.t.classLabel} <span class="fw-3">b-lg</span></p>
           <p class="mb-5">
-            css variable: <span class="fw-3">--ddd-border-lg</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-border-lg</span>
           </p>
         </div>
       </div>
@@ -725,12 +836,12 @@ class DDDocs extends DDD {
 
   renderBreakpoints() {
     return html`
-      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Breakpoints</h2>
+      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">${this.t.availableBreakpoints}</h2>
       <table class="my-15 mx-5 p-5" data-primary="1">
         <thead data-primary="2">
           <tr>
-            <th>Breakpoint</th>
-            <th>Size</th>
+            <th>${this.t.breakpoint}</th>
+            <th>${this.t.size}</th>
           </tr>
         </thead>
         ${Object.entries(DDDBreakpoints).map(
@@ -743,26 +854,24 @@ class DDDocs extends DDD {
         )}
       </table>
       <p class="fw-2 ml-10 mb-5">
-        Sizes are named by width, not device, so the same scale describes the
-        viewport (themes) or an element's own width (grid-plate). CSS variables
-        cannot be used inside media queries, so import the numbers:
+        ${this.t.breakpointSizesNote}
         <span class="fw-3"
           >import { DDDBreakpoints } from
           "@haxtheweb/d-d-d/lib/DDDLayout.js"</span
         >
       </p>
       <p class="fw-2 ml-10 mb-15">
-        Readable from JS via css variables:
+        ${this.t.readableFromJsViaCssVariables}
         <span class="fw-3">--ddd-breakpoint-x</span>
       </p>
-      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Layout Widths</h2>
+      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">${this.t.layoutWidths}</h2>
       <table class="my-15 mx-5 p-5" data-primary="1">
         <thead data-primary="2">
           <tr>
-            <th>Region</th>
-            <th>Size</th>
-            <th>Width</th>
-            <th>css variable</th>
+            <th>${this.t.region}</th>
+            <th>${this.t.size}</th>
+            <th>${this.t.width}</th>
+            <th>${this.t.cssVariable}</th>
           </tr>
         </thead>
         ${[
@@ -783,13 +892,16 @@ class DDDocs extends DDD {
         )}
       </table>
       <p class="fw-2 ml-10 mb-15">
-        Themes describe their regions with the aliases
-        <span class="fw-3">--ddd-theme-content-width</span>,
-        <span class="fw-3">--ddd-theme-sidebar-width</span>,
-        <span class="fw-3">--ddd-theme-container-width</span> and
-        <span class="fw-3">--ddd-theme-layout-gutter</span>. Grid elements use
-        <span class="fw-3">--ddd-grid-gap</span> and
-        <span class="fw-3">--ddd-grid-item-spacing</span>.
+        ${this._fillTemplate(this.t.layoutWidthAliasesNote, {
+          contentWidth: html`<span class="fw-3">--ddd-theme-content-width</span>`,
+          sidebarWidth: html`<span class="fw-3">--ddd-theme-sidebar-width</span>`,
+          containerWidth: html`<span class="fw-3"
+            >--ddd-theme-container-width</span
+          >`,
+          layoutGutter: html`<span class="fw-3">--ddd-theme-layout-gutter</span>`,
+          gridGap: html`<span class="fw-3">--ddd-grid-gap</span>`,
+          gridItemSpacing: html`<span class="fw-3">--ddd-grid-item-spacing</span>`,
+        })}
       </p>
     `;
   }
@@ -797,7 +909,7 @@ class DDDocs extends DDD {
   renderDefaultColors() {
     return html`
       <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
-        Available Colors from the Polaris Theme
+        ${this.t.availableColorsPolaris}
       </h2>
       <div class="grid-2 gap-1 my-5">
         <h5>--ddd-theme-default-beaverBlue</h5>
@@ -1089,7 +1201,7 @@ class DDDocs extends DDD {
   renderDefaultFunctionalColors() {
     return html`
       <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
-        Available Functional Colors from the Polaris Theme
+        ${this.t.availableFunctionalColorsPolaris}
       </h2>
       <div class="grid-2 gap-1 my-5">
         <h5>--ddd-theme-default-link</h5>
@@ -1194,10 +1306,13 @@ class DDDocs extends DDD {
 
   renderPalettes() {
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available palettes in DDD</h2>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.availablePalettesInDdd}</h2>
       <div class="my-5" data-palette="0">
         <h5>
-          [data-palette="wisdom-walk-green"] or [data-palette="0"] (default)
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="wisdom-walk-green"]')
+            .replace("{index}", '[data-palette="0"]')}
+          ${this.t.defaultInParens}
         </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
@@ -1237,7 +1352,11 @@ class DDDocs extends DDD {
       </div>
 
       <div class="my-5" data-palette="1">
-        <h5>[data-palette="very-violent-red"] or [data-palette="1"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="very-violent-red"]')
+            .replace("{index}", '[data-palette="1"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1275,7 +1394,11 @@ class DDDocs extends DDD {
         ></div>
       </div>
       <div class="my-5" data-palette="2">
-        <h5>[data-palette="beetles-yellow"] or [data-palette="2"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="beetles-yellow"]')
+            .replace("{index}", '[data-palette="2"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1313,7 +1436,11 @@ class DDDocs extends DDD {
         ></div>
       </div>
       <div class="my-5" data-palette="3">
-        <h5>[data-palette="offbrand-nittany-blue"] or [data-palette="3"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="offbrand-nittany-blue"]')
+            .replace("{index}", '[data-palette="3"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1351,7 +1478,11 @@ class DDDocs extends DDD {
         ></div>
       </div>
       <div class="my-5" data-palette="4">
-        <h5>[data-palette="boring-blue-gray"] or [data-palette="4"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="boring-blue-gray"]')
+            .replace("{index}", '[data-palette="4"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1389,7 +1520,11 @@ class DDDocs extends DDD {
         ></div>
       </div>
       <div class="my-5" data-palette="5">
-        <h5>[data-palette="monotone"] or [data-palette="5"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="monotone"]')
+            .replace("{index}", '[data-palette="5"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1428,7 +1563,11 @@ class DDDocs extends DDD {
       </div>
 
       <div class="my-5" data-palette="6">
-        <h5>[data-palette="salmon-season"] or [data-palette="6"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="salmon-season"]')
+            .replace("{index}", '[data-palette="6"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1467,7 +1606,11 @@ class DDDocs extends DDD {
       </div>
 
       <div class="my-5" data-palette="7">
-        <h5>[data-palette="tweedle-dee"] or [data-palette="7"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="tweedle-dee"]')
+            .replace("{index}", '[data-palette="7"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1506,7 +1649,11 @@ class DDDocs extends DDD {
       </div>
 
       <div class="my-5" data-palette="8">
-        <h5>[data-palette="polaris-invent"] or [data-palette="8"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="polaris-invent"]')
+            .replace("{index}", '[data-palette="8"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1545,7 +1692,11 @@ class DDDocs extends DDD {
       </div>
 
       <div class="my-5" data-palette="9">
-        <h5>[data-palette="positively-purple"] or [data-palette="9"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="positively-purple"]')
+            .replace("{index}", '[data-palette="9"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1584,7 +1735,11 @@ class DDDocs extends DDD {
       </div>
 
       <div class="my-5" data-palette="10">
-        <h5>[data-palette="honey-bear"] or [data-palette="10"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="honey-bear"]')
+            .replace("{index}", '[data-palette="10"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1623,7 +1778,11 @@ class DDDocs extends DDD {
       </div>
 
       <div class="my-5" data-palette="11">
-        <h5>[data-palette="boldly-lion"] or [data-palette="11"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="boldly-lion"]')
+            .replace("{index}", '[data-palette="11"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1662,7 +1821,11 @@ class DDDocs extends DDD {
       </div>
 
       <div class="my-5" data-palette="12">
-        <h5>[data-palette="ocean-current"] or [data-palette="12"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="ocean-current"]')
+            .replace("{index}", '[data-palette="12"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1701,7 +1864,11 @@ class DDDocs extends DDD {
       </div>
 
       <div class="my-5" data-palette="13">
-        <h5>[data-palette="twilight-indigo"] or [data-palette="13"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="twilight-indigo"]')
+            .replace("{index}", '[data-palette="13"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1740,7 +1907,11 @@ class DDDocs extends DDD {
       </div>
 
       <div class="my-5" data-palette="14">
-        <h5>[data-palette="evergreen-earth"] or [data-palette="14"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="evergreen-earth"]')
+            .replace("{index}", '[data-palette="14"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1779,7 +1950,11 @@ class DDDocs extends DDD {
       </div>
 
       <div class="my-5" data-palette="15">
-        <h5>[data-palette="graphite-contrast"] or [data-palette="15"]</h5>
+        <h5>
+          ${this.t.paletteSelectorOr
+            .replace("{name}", '[data-palette="graphite-contrast"]')
+            .replace("{index}", '[data-palette="15"]')}
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1820,6 +1995,19 @@ class DDDocs extends DDD {
     `;
   }
 
+  /**
+   * Fill {placeholder} tokens in a translated string with template values
+   * so markup (spans, code) can sit inside a single translatable sentence.
+   */
+  _fillTemplate(text, values) {
+    return text
+      .split(/(\{[a-zA-Z0-9]+\})/)
+      .map((part) => {
+        const m = part.match(/^\{([a-zA-Z0-9]+)\}$/);
+        return m && values[m[1]] !== undefined ? values[m[1]] : part;
+      });
+  }
+
   _onPalettePickerValueChanged(e) {
     if (
       e.detail &&
@@ -1848,25 +2036,24 @@ class DDDocs extends DDD {
         ? selectedPalette.swatches
         : [1, 2, 3, 4, 5, 6, 7];
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">hax-palette-picker prototype</h2>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.palettePickerPrototype}</h2>
       <p class="mb-4">
-        Registry-driven field prototype for HAX appearance settings, using the
-        same palette data model as DDD.
+        ${this.t.palettePickerIntro}
       </p>
       <div class="palette-picker-layout">
         <div class="palette-picker-control">
-          <h3 class="mt-0 mb-4">Default context</h3>
+          <h3 class="mt-0 mb-4">${this.t.defaultContext}</h3>
           <hax-palette-picker
             .options="${this.palettePickerOptions}"
             value="${selectedDataPalette}"
-            label="Theme palette"
-            description="Choose a palette; this value is written as the data-palette attribute at theme scope."
+            label="${this.t.themePalette}"
+            description="${this.t.themePaletteDescription}"
             @value-changed="${this._onPalettePickerValueChanged}"
           ></hax-palette-picker>
         </div>
         <div class="palette-picker-preview-stack">
           <div class="palette-picker-preview" data-palette="${selectedDataPalette}">
-            <h3 class="mt-0 mb-2">Selected palette tokens</h3>
+            <h3 class="mt-0 mb-2">${this.t.selectedPaletteTokens}</h3>
             <p class="palette-picker-meta">
               ${selectedLabel} (${selectedKey}) → data-palette="${selectedDataPalette}"
             </p>
@@ -1882,14 +2069,14 @@ class DDDocs extends DDD {
             class="palette-picker-preview palette-picker-preview-dark"
             data-palette="${selectedDataPalette}"
           >
-            <h3 class="mt-0 mb-2">Dark context check</h3>
+            <h3 class="mt-0 mb-2">${this.t.darkContextCheck}</h3>
             <p class="palette-picker-meta">
-              Readability and selected state preview in dark-mode presentation.
+              ${this.t.darkContextDescription}
             </p>
             <hax-palette-picker
               .options="${this.palettePickerOptions}"
               value="${selectedDataPalette}"
-              label="Theme palette (dark context)"
+              label="${this.t.themePaletteDarkContext}"
               @value-changed="${this._onPalettePickerValueChanged}"
             ></hax-palette-picker>
           </div>
@@ -1900,26 +2087,26 @@ class DDDocs extends DDD {
   renderGradients() {
     return html`
       <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
-        Available Gradients from the Polaris Theme
+        ${this.t.availableGradientsPolaris}
       </h2>
       <div class="grid-6 my-15 ml-10">
         <div>
           <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-navBar"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">bg-gradient-navBar</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-navBar</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable:
+            ${this.t.cssVariableLabel}
             <span class="fw-3">--ddd-theme-default-gradient-navBar</span>
           </p>
         </div>
         <div>
           <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-footer"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">bg-gradient-footer</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-footer</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable:
+            ${this.t.cssVariableLabel}
             <span class="fw-3">--ddd-theme-default-gradient-footer</span>
           </p>
         </div>
@@ -1928,40 +2115,40 @@ class DDDocs extends DDD {
             class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-newsFeature"
           ></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">bg-gradient-newsFeature</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-newsFeature</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable:
+            ${this.t.cssVariableLabel}
             <span class="fw-3">--ddd-theme-default-gradient-newsFeature</span>
           </p>
         </div>
         <div>
           <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-buttons"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">bg-gradient-buttons</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-buttons</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable:
+            ${this.t.cssVariableLabel}
             <span class="fw-3">--ddd-theme-default-gradient-buttons</span>
           </p>
         </div>
         <div>
           <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-hero"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">bg-gradient-hero</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-hero</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable:
+            ${this.t.cssVariableLabel}
             <span class="fw-3">--ddd-theme-default-gradient-hero</span>
           </p>
         </div>
         <div>
           <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-hero2"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">bg-gradient-hero2</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-hero2</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable:
+            ${this.t.cssVariableLabel}
             <span class="fw-3">--ddd-theme-default-gradient-hero2</span>
           </p>
         </div>
@@ -1971,69 +2158,69 @@ class DDDocs extends DDD {
 
   renderRadius() {
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Radius classes</h2>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.availableRadiusClasses}</h2>
       <div class="grid-7 my-15 mx-5 gap-2 radius">
         <div>
           <p class="p-20 r-xs b-sm bs-sm"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">r-xs</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">r-xs</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable: <span class="fw-3">--ddd-radius-xs</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-radius-xs</span>
           </p>
         </div>
         <div>
           <p class="p-20 r-sm b-sm bs-sm"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">r-sm</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">r-sm</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable: <span class="fw-3">--ddd-radius-sm</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-radius-sm</span>
           </p>
         </div>
         <div>
           <p class="p-20 r-md b-sm bs-sm"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">r-md</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">r-md</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable: <span class="fw-3">--ddd-radius-md</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-radius-md</span>
           </p>
         </div>
         <div>
           <p class="p-20 r-lg b-sm bs-sm"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">r-lg</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">r-lg</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable: <span class="fw-3">--ddd-radius-lg</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-radius-lg</span>
           </p>
         </div>
         <div>
           <p class="p-20 r-xl b-sm bs-sm"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">r-xl</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">r-xl</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable: <span class="fw-3">--ddd-radius-xl</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-radius-xl</span>
           </p>
         </div>
         <div>
           <p class="p-20 r-rounded b-sm bs-sm"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">r-rounded</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">r-rounded</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable: <span class="fw-3">--ddd-radius-rounded</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-radius-rounded</span>
           </p>
         </div>
         <div>
           <p class="my-4 p-20 r-circle b-sm bs-sm"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">r-circle</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">r-circle</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable: <span class="fw-3">--ddd-radius-circle</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-radius-circle</span>
           </p>
         </div>
       </div>
@@ -2042,42 +2229,42 @@ class DDDocs extends DDD {
 
   renderShadows() {
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Shadow classes</h2>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.availableShadowClasses}</h2>
       <div class="grid-4 my-15 mx-30 gap-10">
         <div>
           <p class="py-20 b-sm bs-sm"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">bs-sm</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">bs-sm</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable: <span class="fw-3">--ddd-boxShadow-sm</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-boxShadow-sm</span>
           </p>
         </div>
         <div>
           <p class="py-20 b-sm bs-md"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">bs-md</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">bs-md</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable: <span class="fw-3">--ddd-boxShadow-md</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-boxShadow-md</span>
           </p>
         </div>
         <div>
           <p class="py-20 b-sm bs-lg"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">bs-lg</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">bs-lg</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable: <span class="fw-3">--ddd-boxShadow-lg</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-boxShadow-lg</span>
           </p>
         </div>
         <div>
           <p class="py-20 b-sm bs-xl"></p>
           <p class="mt-5 mx-auto text-center">
-            class: <span class="fw-3">bs-xl</span>
+            ${this.t.classLabelLowercase} <span class="fw-3">bs-xl</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            css variable: <span class="fw-3">--ddd-boxShadow-xl</span>
+            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-boxShadow-xl</span>
           </p>
         </div>
       </div>
@@ -2086,14 +2273,14 @@ class DDDocs extends DDD {
 
   renderSpacing() {
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available Spacing classes</h2>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.availableSpacingClasses}</h2>
       <h6 class="fw-2 ml-10 mb-15">
-        CSS Variable:<span class="fw-3">--ddd-spacing-x</span> (1-30)
+        ${this.t.cssVariableLabelTitleCase}<span class="fw-3">--ddd-spacing-x</span> (1-30)
       </h6>
       <div class="grid-3 gap-4 mt-10 mb-5 mx-20">
-        <h4>Class Name</h4>
-        <h4>Value</h4>
-        <h4>Example</h4>
+        <h4>${this.t.className}</h4>
+        <h4>${this.t.value}</h4>
+        <h4>${this.t.example}</h4>
         <h5>m-0</h5>
         <h5>0px</h5>
         <div class="bg-potentialMidnight">
@@ -2251,38 +2438,38 @@ class DDDocs extends DDD {
         </div>
       </div>
       <h6 class="fw-2 ml-10 my-0">
-        Accessible using format:
+        ${this.t.accessibleUsingFormat}
         <span class="fw-3">(m or p)(side [optional])-x</span>
       </h6>
       <h6 class="fw-2 ml-10">
-        Sides: Top (t), Right (r), Bottom (b), Left (l), X (x), Y (y)
+        ${this.t.spacingSides}
       </h6>
       <h6 class="fw-2 ml-10 mb-15">
-        Example: <span class="fw-3">mt-1</span> = margin-top: 4px
+        ${this.t.exampleLabel} <span class="fw-3">mt-1</span> = margin-top: 4px
       </h6>
     `;
   }
 
   renderTypography() {
     return html`
-      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Typefaces</h2>
+      <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">${this.t.availableTypefaces}</h2>
       <div class="mx-5">
         <p>
-          Primary Font:
+          ${this.t.primaryFont}
           <span class="fw-3"
             >Roboto (ddd-font-primary) [--ddd-font-primary]</span
           >
         </p>
         <p class="mb-10">
-          Weights: 400 (fw-1) [--ddd-font-weight-regular],
+          ${this.t.weights} 400 (fw-1) [--ddd-font-weight-regular],
           <span class="fw-2">500 (fw-2) [--ddd-font-weight-medium],</span>
           <span class="fw-3"
-            ><< Default >> 700 (fw-3) [--ddd-font-weight-bold],</span
+            >&lt;&lt; ${this.t.defaultLabel} &gt;&gt; 700 (fw-3) [--ddd-font-weight-bold],</span
           >
           <span class="fw-3">900 (fw-3) [--ddd-font-weight-black]</span>
         </p>
         <p class="mb-10">
-          Font sizes:
+          ${this.t.fontSizes}
           <span class="fw-3"
             >12 (fs-6xs) to 72 (fs-4xl) [--ddd-font-size-VALUE]</span
           >
@@ -2354,13 +2541,13 @@ class DDDocs extends DDD {
       </div>
       <div class="mx-5">
         <p>
-          Primary Font:
+          ${this.t.primaryFont}
           <span class="fw-3"
             >Roboto Slab (ddd-font-secondary) [--ddd-font-secondary]</span
           >
         </p>
         <p class="mb-10">
-          Weights:
+          ${this.t.weights}
           <span class="fw-3">700 (fw-3) [--ddd-font-weight-bold]</span>
         </p>
       </div>
@@ -2430,13 +2617,13 @@ class DDDocs extends DDD {
       </div>
       <div class="mx-5">
         <p>
-          Primary Font:
+          ${this.t.primaryFont}
           <span class="fw-3"
             >Roboto Condensed (ddd-font-nav) [--ddd-font-navigation]</span
           >
         </p>
         <p class="mb-10">
-          Weights:
+          ${this.t.weights}
           <span class="fw-0">300 (fw-0) [--ddd-font-weight-light],</span>
           <span class="fw-1">400 (fw-1) [--ddd-font-weight-regular],</span>
           <span class="fw-3">700 (fw-3) [--ddd-font-weight-bold]</span>
@@ -2507,13 +2694,13 @@ class DDDocs extends DDD {
         </h3>
       </div>
       <div class="mx-5">
-        <h2 class="mt-0 mb-5 pb-5 ">Letter Spacing</h2>
-        <h6>CSS Variable is same as class name, with '--ddd-' prefix</h6>
+        <h2 class="mt-0 mb-5 pb-5 ">${this.t.letterSpacing}</h2>
+        <h6>${this.t.letterSpacingVariableNote}</h6>
         <table class="my-10 p-5" data-primary="2">
           <thead data-primary="0">
-            <th>Class</th>
-            <th>Value</th>
-            <th>Example</th>
+            <th>${this.t.classHeader}</th>
+            <th>${this.t.value}</th>
+            <th>${this.t.example}</th>
           </thead>
           <tr>
             <td>ls-16-sm</td>
@@ -2646,16 +2833,16 @@ class DDDocs extends DDD {
             <td><span class="ls-72-lg fw-1">DDD-FLEX</span></td>
           </tr>
         </table>
-        <h2 class="fs-s mt-4 mb-5 pb-5 ">Line Height</h2>
+        <h2 class="fs-s mt-4 mb-5 pb-5 ">${this.t.lineHeight}</h2>
         <div class="grid-4 gap-4">
           <div>
             <p class="lh-120 p-5 b-xs bs-sm mb-10">
               So, I came across your post because I was facing the same issue,
               but I've found a solution.
             </p>
-            <p class="text-center">Class: <span class="fw-3">lh-120</span></p>
+            <p class="text-center">${this.t.classLabel} <span class="fw-3">lh-120</span></p>
             <p class="text-center">
-              CSS Variable: <span class="fw-3">--ddd-lh-120</span>
+              ${this.t.cssVariableLabelTitleCase} <span class="fw-3">--ddd-lh-120</span>
             </p>
           </div>
           <div>
@@ -2663,9 +2850,9 @@ class DDDocs extends DDD {
               So, I came across your post because I was facing the same issue,
               but I've found a solution.
             </p>
-            <p class="text-center">Class: <span class="fw-3">lh-140</span></p>
+            <p class="text-center">${this.t.classLabel} <span class="fw-3">lh-140</span></p>
             <p class="text-center">
-              CSS Variable: <span class="fw-3">--ddd-lh-140</span>
+              ${this.t.cssVariableLabelTitleCase} <span class="fw-3">--ddd-lh-140</span>
             </p>
           </div>
           <div>
@@ -2673,9 +2860,9 @@ class DDDocs extends DDD {
               So, I came across your post because I was facing the same issue,
               but I've found a solution.
             </p>
-            <p class="text-center">Class: <span class="fw-3">lh-150</span></p>
+            <p class="text-center">${this.t.classLabel} <span class="fw-3">lh-150</span></p>
             <p class="text-center">
-              CSS Variable: <span class="fw-3">--ddd-lh-150</span>
+              ${this.t.cssVariableLabelTitleCase} <span class="fw-3">--ddd-lh-150</span>
             </p>
           </div>
           <div>
@@ -2683,9 +2870,9 @@ class DDDocs extends DDD {
               So, I came across your post because I was facing the same issue,
               but I've found a solution.
             </p>
-            <p class="text-center">Class: <span class="fw-3">lh-auto</span></p>
+            <p class="text-center">${this.t.classLabel} <span class="fw-3">lh-auto</span></p>
             <p class="text-center">
-              CSS Variable: <span class="fw-3">N/A</span>
+              ${this.t.cssVariableLabelTitleCase} <span class="fw-3">${this.t.notApplicable}</span>
             </p>
           </div>
         </div>
@@ -2696,16 +2883,16 @@ class DDDocs extends DDD {
   renderRichText() {
     return html`
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">
-        Rich text formatting and other data displays
+        ${this.t.richTextHeading}
       </h2>
-      <h3 class="mx-10">Basic text types</h3>
+      <h3 class="mx-10">${this.t.basicTextTypes}</h3>
       <div class="b-xs py-8 px-4 my-10 mx-30">
-        <h1>h1 Heading</h1>
-        <h2>h2 Heading</h2>
-        <h3>h3 Heading</h3>
-        <h4>h4 Heading</h4>
-        <h5>h5 Heading</h5>
-        <h6>h6 Heading</h6>
+        <h1>${this.t.headingLevelSample.replace("{level}", "h1")}</h1>
+        <h2>${this.t.headingLevelSample.replace("{level}", "h2")}</h2>
+        <h3>${this.t.headingLevelSample.replace("{level}", "h3")}</h3>
+        <h4>${this.t.headingLevelSample.replace("{level}", "h4")}</h4>
+        <h5>${this.t.headingLevelSample.replace("{level}", "h5")}</h5>
+        <h6>${this.t.headingLevelSample.replace("{level}", "h6")}</h6>
         <p>
           Body text - It is a long established fact that a reader will be
           distracted by the readable content of a page when looking at its
@@ -2713,24 +2900,24 @@ class DDDocs extends DDD {
           normal distribution of leteters, as opposed to using 'Content here,
           content here', making it look like readable English.
         </p>
-        <p class="my-2"><a>HyperLink</a></p>
-        <p class="my-2"><b>Bold Text</b></p>
-        <p class="my-2"><i>Italic Text</i></p>
-        <u>Underlined Text</u>
-        <p>Unordered List</p>
+        <p class="my-2"><a>${this.t.hyperlink}</a></p>
+        <p class="my-2"><b>${this.t.boldText}</b></p>
+        <p class="my-2"><i>${this.t.italicText}</i></p>
+        <u>${this.t.underlinedText}</u>
+        <p>${this.t.unorderedList}</p>
         <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
+          <li>${this.t.itemNumber.replace("{number}", 1)}</li>
+          <li>${this.t.itemNumber.replace("{number}", 2)}</li>
+          <li>${this.t.itemNumber.replace("{number}", 3)}</li>
         </ul>
-        <p>Ordered List</p>
+        <p>${this.t.orderedList}</p>
         <ol>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
+          <li>${this.t.itemNumber.replace("{number}", 1)}</li>
+          <li>${this.t.itemNumber.replace("{number}", 2)}</li>
+          <li>${this.t.itemNumber.replace("{number}", 3)}</li>
         </ol>
       </div>
-      <h3 class="mx-10">Other html text types</h3>
+      <h3 class="mx-10">${this.t.otherHtmlTextTypes}</h3>
       <div class="b-xs py-8 px-4 my-10 mx-30">
         <blockquote>
           The Pennsylvania State University is a multi-campus, land-grant,
@@ -2745,29 +2932,28 @@ class DDDocs extends DDD {
         </ul>
         <details class="my-5">
           <summary>U.S. News & World Report</summary>
-          <p>Details text</p>
+          <p>${this.t.detailsText}</p>
         </details>
         <p>
-          This is an example of code:<code>Console.log("Hello World!");</code>
-          in a paragraph
+          ${this._fillTemplate(this.t.inlineCodeExample, {
+            code: html`<code>Console.log("Hello World!");</code>`,
+          })}
         </p>
         <textarea></textarea>
         <code class="block-code">
-          Here is an example of a block of code on it's own, using class
-          'block-code', redundant, but avoids common 'block' class name
+          ${this.t.blockCodeExample}
         </code>
         <pre>
         Here is an    example of a    block using the         'pre'    tag on it's    own</pre
         >
         <p>
-          Here is a good example of some
+          ${this.t.highlightExampleIntro}
           <mark
-            >Here's a super long version of a Highlighted Text that extends
-            beyond the end of the border box</mark
+            >${this.t.highlightExampleText}</mark
           >
         </p>
         <p>
-          Here is an example of an abbreviation:
+          ${this.t.abbreviationExample}
           <abbr title="Pennsylvania State University">Penn State</abbr>
         </p>
         <ul class="ddd-link-list">
@@ -2778,41 +2964,41 @@ class DDDocs extends DDD {
           <li><a href="#">NEW: Engineering and Science Degree</a></li>
           <li><a href="#">NEW: Digital Media Arts and Technology</a></li>
         </ul>
-        <p>Here's an example of a sub: H<sub>2</sub>O</p>
-        <p>And a sup: x<sup>3</sup> = 9</p>
+        <p>${this.t.subExample} H<sub>2</sub>O</p>
+        <p>${this.t.supExample} x<sup>3</sup> = 9</p>
         <p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
         <p><s>My car is blue.</s></p>
       </div>
-      <h3 class="mx-10">Text design-treatment</h3>
+      <h3 class="mx-10">${this.t.textDesignTreatment}</h3>
       <div class="b-xs py-8 px-4 my-10 mx-30">
-      <h2>There's 2 ways to get underlined styling</h2>
-      <h3>HR elements</h3>
+      <h2>${this.t.underlineWays}</h2>
+      <h3>${this.t.hrElements}</h3>
       <div class="pl-5">
         <hr />
-        <p>Default horizontal line using hr element </p>
+        <p>${this.t.defaultHrLine} </p>
         <br />
         <hr data-primary="1" />
-        <p>hr elements also accept data-primary values, and are are designed to play-nice when placed inside a heading element</p>
+        <p>${this.t.hrDataPrimaryNote}</p>
         <h2 style="width: fit-content">Heading with internal hr element<hr /></h2>
         <code class="block-code">&lt;h2 style="width: fit-content"&gt;Heading with internal hr element&lt;hr /&gt;&lt;/h2&gt;</code>
-        <p>When combined with width: fit-content on the header itself, can limit the underlining to exactly the text</p>
+        <p>${this.t.hrFitContentNote}</p>
       </div>
-        <h3>Or, if you want variable length, use design-treatment:</h3>
-        <h4>(with p meaning %)</h4>
+        <h3>${this.t.variableLengthDesignTreatment}</h3>
+        <h4>${this.t.pMeansPercent}</h4>
         <div class="pl-5">
-          <h5 class="label" data-design-treatment="vert" data-primary="15">Vertical Line - <i>data-design-treament="vert"</i></h5>
-          <h5 class="label" data-design-treatment="horz-10p" data-primary="15">Vertical Line - <i>data-design-treament="horz-10p"</i></h5>
-          <h5 class="label" data-design-treatment="horz-25p" data-primary="15">Vertical Line - <i>data-design-treament="horz-25p"</i></h5>
-          <h5 class="label" data-design-treatment="horz-50p" data-primary="15">Vertical Line - <i>data-design-treament="horz-50p"</i></h5>
-          <h5 class="label" data-design-treatment="horz-full" data-primary="15">Vertical Line - <i>data-design-treament="horz-full"</i></h5>
-          <h5 class="label" data-design-treatment="horz-md" data-primary="15">Vertical Line - <i>data-design-treament="horz-md"</i></h5>
-          <h5 class="label" data-design-treatment="horz-lg" data-primary="15">Vertical Line - <i>data-design-treament="horz-lg"</i></h5>
+          <h5 class="label" data-design-treatment="vert" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="vert"</i></h5>
+          <h5 class="label" data-design-treatment="horz-10p" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-10p"</i></h5>
+          <h5 class="label" data-design-treatment="horz-25p" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-25p"</i></h5>
+          <h5 class="label" data-design-treatment="horz-50p" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-50p"</i></h5>
+          <h5 class="label" data-design-treatment="horz-full" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-full"</i></h5>
+          <h5 class="label" data-design-treatment="horz-md" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-md"</i></h5>
+          <h5 class="label" data-design-treatment="horz-lg" data-primary="15">${this.t.verticalLineLabel} <i>data-design-treament="horz-lg"</i></h5>
           <br />
-          <h3>Other design treatments:</h3>
-          <p data-design-treatment="bg" data-primary="1">Background color <i>data-design-treatment="bg"</i></p>
-          <h5 data-design-treatment="dropCap-sm">Drop Cap - Small <i>data-design-treatment="dropCap-sm"</i></h5>
-          <h3 data-design-treatment="dropCap-md">Drop Cap - Medium <i>data-design-treatment="dropCap-md"</i></h3>
-          <h1 data-design-treatment="dropCap-lg">Drop Cap - Large <i>data-design-treatment="dropCap-lg"</i></h1>
+          <h3>${this.t.otherDesignTreatments}</h3>
+          <p data-design-treatment="bg" data-primary="1">${this.t.backgroundColor} <i>data-design-treatment="bg"</i></p>
+          <h5 data-design-treatment="dropCap-sm">${this.t.dropCapSmall} <i>data-design-treatment="dropCap-sm"</i></h5>
+          <h3 data-design-treatment="dropCap-md">${this.t.dropCapMedium} <i>data-design-treatment="dropCap-md"</i></h3>
+          <h1 data-design-treatment="dropCap-lg">${this.t.dropCapLarge} <i>data-design-treatment="dropCap-lg"</i></h1>
         </div>
       </div>
     </div>
@@ -2960,7 +3146,7 @@ class DDDocs extends DDD {
         <simple-cta hide-icon>Default hide-icon</simple-cta>
         <simple-cta light saturate>Default saturate</simple-cta>
       </div>
-      <h3>Buttons also support data-accent!</h3>
+      <h3>${this.t.buttonsSupportDataAccent}</h3>
       <div
         style="display: inline-flex; width: fit-content; align-items: center;"
       >
@@ -2979,8 +3165,7 @@ class DDDocs extends DDD {
         >
       </div>
       <h5>
-        Note: Accent color will not be applied if the primary color does not
-        meet constrast requirements
+        ${this.t.accentContrastNote}
       </h5>
       <div
         style="display: inline-flex; width: fit-content; align-items: center; margin-bottom: 64px;"
@@ -3378,10 +3563,10 @@ class DDDocs extends DDD {
         <p class="pattern-card-desc">${pattern.description}</p>
         ${flagged
           ? html`<div class="pattern-gap">
-              HAX-capability gap: ${flagged.excludedComponents.join(
-                ", ",
-              )} is not HAX-capable. This pattern is documented but not
-              published to the insert rail until wiring is created.
+              ${this.t.haxCapabilityGap.replace(
+                "{components}",
+                () => (flagged.excludedComponents.join(", ")),
+              )}
             </div>`
           : ``}
         <div class="pattern-preview">
@@ -3391,7 +3576,7 @@ class DDDocs extends DDD {
           <simple-icon-button-lite
             class="pattern-recipe-copy"
             icon="content-copy"
-            label="Copy HTML"
+            label="${this.t.copyHtml}"
             @click="${() => this._copyToClipboard(pattern.html, pattern.id)}"
           ></simple-icon-button-lite>
           <pre class="pattern-recipe">${pattern.html}</pre>
@@ -3408,18 +3593,18 @@ class DDDocs extends DDD {
           <simple-cta
             hide-icon
             @click="${() => this._copyToClipboard(pattern.html, pattern.id)}"
-            >Copy</simple-cta
+            >${this.t.copy}</simple-cta
           >
           <simple-cta
             ?disabled="${!!flagged}"
             @click="${() => this._insertPattern(pattern)}"
-            >Insert</simple-cta
+            >${this.t.insert}</simple-cta
           >
           <span
             class="pattern-copy-feedback"
             id="copy-feedback-${pattern.id}"
             hidden
-            >Copied!</span
+            >${this.t.copied}</span
           >
         </div>
       </div>
@@ -3507,52 +3692,51 @@ class DDDocs extends DDD {
   }
 
   renderAtoms() {
-    return this._renderPatternsByLevel("atom", "Atoms");
+    return this._renderPatternsByLevel("atom", this.t.atoms);
   }
 
   renderMolecules() {
-    return this._renderPatternsByLevel("molecule", "Molecules");
+    return this._renderPatternsByLevel("molecule", this.t.molecules);
   }
 
   renderOrganisms() {
-    return this._renderPatternsByLevel("organism", "Organisms");
+    return this._renderPatternsByLevel("organism", this.t.organisms);
   }
 
   renderTemplates() {
-    return this._renderPatternsByLevel("template", "Templates");
+    return this._renderPatternsByLevel("template", this.t.templates);
   }
 
   renderInternalContracts() {
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Internal consistency contracts</h2>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.internalConsistencyContracts}</h2>
       <p class="pattern-card-desc">
-        Cross-cutting contracts for element internals (titles, callouts,
-        collapsibles, embeds, admin fieldsets). These are what the
-        hax-pattern-library-audit skill grades; mass-enforcement across the
-        ecosystem is later work.
+        ${this.t.internalContractsIntro}
       </p>
       <div class="pattern-section">
         ${INTERNAL_CONTRACTS.map(
           (c) => html`
             <div class="contract-card">
               <p class="contract-card-title">${c.title}</p>
-              <p class="contract-card-surface">Surface: ${c.surface}</p>
+              <p class="contract-card-surface">
+                ${this.t.contractSurface.replace("{surface}", () => (c.surface || ""))}
+              </p>
               <p class="contract-card-structure">${c.structure}</p>
               ${c.example
-                ? html`<p class="contract-example-label">Example</p>
+                ? html`<p class="contract-example-label">${this.t.example}</p>
                     <div class="contract-example">
                       ${unsafeHTML(c.example)}
                       <div class="pattern-meta" style="margin-top: var(--ddd-spacing-3)">
                         <simple-cta
                           hide-icon
                           @click="${() => this._copyToClipboard(c.example, c.id)}"
-                          >Copy</simple-cta
+                          >${this.t.copy}</simple-cta
                         >
                         <span
                           class="pattern-copy-feedback"
                           id="copy-feedback-${c.id}"
                           hidden
-                          >Copied!</span
+                          >${this.t.copied}</span
                         >
                       </div>
                     </div>`
@@ -3568,7 +3752,10 @@ class DDDocs extends DDD {
                 )}
               </div>
               <p class="contract-card-targets">
-                Applies to: ${(c.targetElements || []).join(", ")}
+                ${this.t.contractAppliesTo.replace(
+                  "{elements}",
+                  () => ((c.targetElements || []).join(", ")),
+                )}
               </p>
             </div>
           `,
@@ -3579,16 +3766,16 @@ class DDDocs extends DDD {
 
   selectOption() {
     return html`
-      <h1 class="fs-m my-2">Select an option to render</h1>
+      <h1 class="fs-m my-2">${this.t.selectOptionToRender}</h1>
       <select
         class="mb-5"
-        aria-label="Select an option to render"
+        aria-label="${this.t.selectOptionToRender}"
         .value="${this.option}"
         @change="${(e) => {
           this.option = e.target.value;
         }}"
       >
-        <option value="*" ?selected="${this.option === "*"}">Full styleguide</option>
+        <option value="*" ?selected="${this.option === "*"}">${this.t.fullStyleguide}</option>
         ${this.options.map(
           (option) =>
             html`<option

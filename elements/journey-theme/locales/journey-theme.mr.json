@@ -1,4 +1,11 @@
 {
   "readMore": "अधिक वाचा",
-  "home": "मुख्यपृष्ठ"
+  "home": "मुख्यपृष्ठ",
+  "anchorLinkCopied": "अँकर लिंक कॉपी केली!",
+  "skipToContent": "मजकुराकडे जा",
+  "changeTheme": "थीम बदला",
+  "siteSections": "साइट विभाग",
+  "pageOfTotal": "पान {total} पैकी {current}",
+  "siteGenerated": "साइट तयार केली: {date}",
+  "licenseGraphic": "{license} चिन्ह"
 }

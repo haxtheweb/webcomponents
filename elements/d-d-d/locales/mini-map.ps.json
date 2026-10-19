@@ -1,0 +1,17 @@
+{
+  "editNodes": "غوټې سمې کړئ",
+  "editLines": "کرښې سمې کړئ",
+  "reset": "بیا تنظیمول",
+  "save": "خوندي کول",
+  "cancel": "لغوه کول",
+  "delete": "ړنګول",
+  "type": "ډول:",
+  "topic": "موضوع",
+  "subsection": "فرعي برخه",
+  "name": "نوم:",
+  "enterName": "نوم ولیکئ",
+  "url": "URL:",
+  "enterUrl": "URL ولیکئ",
+  "activeNode": "فعاله غوټه؟",
+  "nodeId": "غوټه {id}"
+}

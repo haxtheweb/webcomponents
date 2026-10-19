@@ -1,0 +1,18 @@
+{
+  "copy": "העתקה",
+  "download": "הורדה",
+  "archive": "ארכיון",
+  "copyOperation": "העתקה",
+  "downloadOperation": "הורדה",
+  "archiveOperation": "העברה לארכיון",
+  "created": "נוצר",
+  "updated": "עודכן",
+  "pages": "דפים",
+  "url": "URL",
+  "confirm": "אישור",
+  "cancel": "ביטול",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "האם אתם בטוחים שברצונכם לבצע {operation} של {siteName}?",
+  "siteOperationSuccessful": "{operation} של {siteName} הצליחה!",
+  "siteOperationFailed": "{operation} של {siteName} נכשלה"
+}

@@ -1,0 +1,11 @@
+{
+  "playlist": "播放列表",
+  "carousel": "轮播",
+  "slide": "幻灯片",
+  "slideNumber": "幻灯片 {number}",
+  "slideOfTotal": "幻灯片 {number} / {total}",
+  "previousSlide": "上一张幻灯片",
+  "nextSlide": "下一张幻灯片",
+  "slidePages": "幻灯片页面",
+  "goToSlide": "去幻灯片 {number}"
+}

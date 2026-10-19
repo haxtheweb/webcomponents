@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Ke huli nei i ka papa inoa Web Component no nā mea HAX hou aku..",
+  "enabled": "Hoʻā ʻia",
+  "disabled": "Hoʻopio ʻia",
+  "details": "Nā kikoʻī",
+  "tags": "Nā lepili:",
+  "tagName": "Inoa lepili:",
+  "developerUsage": "Hoʻohana mea hoʻomohala:",
+  "demo": "Hōʻike",
+  "popUpDemo": "Hōʻike pukaaniani",
+  "demoOf": "Hōʻike o {tag}"
+}

@@ -7,5 +7,7 @@
   "userAccessGranted": "استعمال ڪندڙ کي ڪاميابيءَ سان رسائي ڏني وئي!",
   "userNotFound": "استعمال ڪندڙ نه مليو يا اختيار ناهي",
   "loadingAddingUser": "استعمال ڪندڙ شامل ٿي رهيو آهي...",
-  "grantAccessTo": "رسائي ڏيو:"
+  "grantAccessTo": "رسائي ڏيو:",
+  "networkErrorTryAgain": "نيٽ ورڪ غلطي ٿي. مهرباني ڪري ٻيهر ڪوشش ڪريو.",
+  "characterWillAppear": "صارف نالو داخل ڪرڻ تي ڪردار ظاهر ٿيندو"
 }

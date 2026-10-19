@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Преземи го дневникот како txt",
+  "downloadChatLog": "Преземи го дневникот на разговорот",
+  "resetChat": "Ресетирај го разговорот",
+  "toggleDataCollection": "Вклучи/исклучи собирање податоци",
+  "dataCollection": "Собирање податоци",
+  "toggleDeveloperMode": "Вклучи/исклучи режим за програмери",
+  "exitFullView": "Излези од целосен приказ",
+  "enterFullView": "Влези во целосен приказ",
+  "hideInterface": "Скриј го интерфејсот",
+  "resetChatConfirm": "Да се ресетира разговорот?",
+  "downloadBeforeResetConfirm": "Да се преземе дневникот на разговорот пред ресетирање?",
+  "dataCollectionOn": "Вашите разговори ќе се користат за обука на нашите AI-модели",
+  "dataCollectionOff": "Вашите разговори нема да се користат за обука на нашите AI-модели"
+}

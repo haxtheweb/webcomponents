@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Madda ibsuu",
+  "licenseBySa": "Madda ibsuu Akkasuma qoodi",
+  "licenseByNd": "Madda ibsuu Hojii irraa dhalate hin qabu",
+  "licenseByNc": "Madda ibsuu daldalaaf miti",
+  "licenseByNcSa": "Madda ibsuu daldalaaf miti akkasuma qoodi",
+  "licenseByNcNd": "Madda ibsuu Daldalaaf miti Hojii irraa dhalate hin qabu",
+  "citationWithLicense": "{title} kan {creator}, hayyama {license} jalatti hayyamame. Kan argame {date}.",
+  "citationWithoutLicense": "{title} kan {creator}. Kan argame {date}.",
+  "licenseGraphic": "Fakkii {license}"
+}

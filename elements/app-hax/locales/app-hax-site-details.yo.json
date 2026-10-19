@@ -1,0 +1,18 @@
+{
+  "copy": "Ṣe àdàkọ",
+  "download": "Ṣe ìgbàsílẹ̀",
+  "archive": "Pamọ́ sí àkójọ ìtàn",
+  "copyOperation": "ṣẹ̀dà",
+  "downloadOperation": "ṣe ìgbàsílẹ̀",
+  "archiveOperation": "pamọ́ sí àkójọ ìtàn",
+  "created": "ìṣẹ̀dá",
+  "updated": "ìmúdójúìwọ̀n",
+  "pages": "ojú-ìwé",
+  "url": "URL",
+  "confirm": "Fìdí rẹ̀ múlẹ̀",
+  "cancel": "Fagilé",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Ṣé o dájú pé o fẹ́ {operation} {siteName}?",
+  "siteOperationSuccessful": "{operation} {siteName} ti ṣàṣeyọrí!",
+  "siteOperationFailed": "{operation} {siteName} kùnà"
+}

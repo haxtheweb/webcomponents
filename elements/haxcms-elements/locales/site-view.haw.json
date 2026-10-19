@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "ʻAʻohe hualoaʻa",
+  "viewsRecordHeading": "Hoʻopaʻa",
+  "viewsTitleImage": "Kiʻi {title}",
+  "viewsTitlePreview": "Hōʻike mua o {title}",
+  "viewsNoTimelineRecords": "ʻAʻohe moʻolelo ma ka lā i loaʻa no ka hōʻike laina manawa.",
+  "viewsTimelineTitle": "Laina manawa {title}",
+  "viewsNoChartField": "ʻAʻohe kahua helu i ʻike ʻia no ka hōʻike pakuhi.",
+  "viewsChartingValue": "Ke kiʻi pakuhi nei iā {value}",
+  "viewsChartingValueByLabel": "Ke kiʻi pakuhi nei iā {value} ma o {label}",
+  "viewsChartTitle": "Pakuhi {title}",
+  "viewsNoTreeRecords": "ʻAʻohe moʻolelo pae i loaʻa no ka hōʻike lāʻau.",
+  "viewsNoGalleryRecords": "ʻAʻohe moʻolelo kiʻi i loaʻa no ka hōʻike hale kiʻi.",
+  "viewsNoPlaylistRecords": "ʻAʻohe moʻolelo media i loaʻa no ka hōʻike papa mele.",
+  "fetchFailed": "Ua hāʻule ke kiʻi ʻana ({status})",
+  "unableToLoadViewData": "ʻAʻole hiki ke hoʻouka i ka ʻikepili hiʻohiʻona.",
+  "noResultsFound": "ʻAʻohe hualoaʻa i loaʻa.",
+  "refreshView": "Hoʻohou i ka hiʻohiʻona",
+  "breakIntoStaticContent": "Hoʻokaʻawale i ʻike paʻa",
+  "viewsOpenRecord": "Wehe i ka moʻolelo"
+}

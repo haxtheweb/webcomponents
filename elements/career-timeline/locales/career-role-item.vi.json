@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Chức danh",
+  "describeYourRole": "Mô tả vai trò của bạn tại đây...",
+  "present": "Trình bày",
+  "skills": "Kỹ năng:",
+  "skillsAndMore": "{skills} và +{count} kỹ năng khác",
+  "yearShort": "{count} năm",
+  "yearsShort": "{count} năm",
+  "monthShort": "{count} tháng",
+  "monthsShort": "{count} tháng"
+}

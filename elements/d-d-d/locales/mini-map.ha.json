@@ -1,0 +1,17 @@
+{
+  "editNodes": "Gyara Kulli",
+  "editLines": "Gyara Layuka",
+  "reset": "Sake saitawa",
+  "save": "Ajiye",
+  "cancel": "Soke",
+  "delete": "Share",
+  "type": "Nau'i:",
+  "topic": "Batu",
+  "subsection": "Ƙaramin sashe",
+  "name": "Suna:",
+  "enterName": "Shigar da Suna",
+  "url": "URL:",
+  "enterUrl": "Shigar da URL",
+  "activeNode": "Kulli Mai Aiki?",
+  "nodeId": "Kulli {id}"
+}

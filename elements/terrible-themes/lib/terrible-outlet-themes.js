@@ -35,6 +35,12 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      backToTop: "Back to top",
+    };
     // do NOT reassign this.__disposer here: the constructor chain
     // (HAXCMSLitElementTheme + HAXCMSThemeParts + HAXCMSRememberRoute)
     // already pushed its constructor-time autoruns into it; a fresh array
@@ -162,7 +168,9 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer"
+        >${this.t.skipToContent}</a
+      >
       <table role="presentation" align="left" border="0" width="1024">
         <tbody>
           <tr>
@@ -202,7 +210,7 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
                 <site-footer></site-footer>
                 <scroll-button
                   position="right"
-                  label="Back to top"
+                  label="${this.t.backToTop}"
                 ></scroll-button>
               </div>
             </td>

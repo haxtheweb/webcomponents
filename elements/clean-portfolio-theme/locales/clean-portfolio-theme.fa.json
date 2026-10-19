@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "پیوند لنگر کپی شد!",
+  "skipToContent": "پرش به محتوا",
+  "siteHome": "خانه سایت",
+  "mainNavigation": "پیمایش اصلی",
+  "toggleMenu": "تغییر نمایش منو",
+  "changeTheme": "تغییر پوسته",
+  "breadcrumb": "مسیر راهنما",
+  "tagFilter": "فیلتر برچسب:",
+  "all": "همه",
+  "pageNumberOfTotal": "شماره صفحه: {current} از {total}",
+  "siteGenerated": "تاریخ تولید سایت: {date}",
+  "copyright": "حق نشر: {year} {author}",
+  "viewContentByTag": "مشاهده محتوا بر اساس برچسب",
+  "licenseGraphic": "نشان {license}"
+}

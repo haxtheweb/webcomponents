@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Ndaipóri tembiapokue",
+  "viewsRecordHeading": "Mbopyahẽ",
+  "viewsTitleImage": "{title} ta'ãnga",
+  "viewsTitlePreview": "{title} jehecha ypy",
+  "viewsNoTimelineRecords": "Ndaipóri mba'ekuaarã arange rehegua ára rysýi jehechaukarã.",
+  "viewsTimelineTitle": "{title} ára rysýi",
+  "viewsNoChartField": "Ndojejuhúi kora papapy rehegua ta'ãngarysýi jehechaukarã.",
+  "viewsChartingValue": "Ta'ãngarysýi {value}",
+  "viewsChartingValueByLabel": "Ta'ãngarysýi {value} {label} rupi",
+  "viewsChartTitle": "{title} ta'ãngarysýi",
+  "viewsNoTreeRecords": "Ndaipóri mba'ekuaarã ojoapykuéva yvyramáta jehechaukarã.",
+  "viewsNoGalleryRecords": "Ndaipóri ta'ãnga mba'ekuaarã ta'ãngaty jehechaukarã.",
+  "viewsNoPlaylistRecords": "Ndaipóri momarandu ñemyasãi mba'ekuaarã purahéi rysýi jehechaukarã.",
+  "fetchFailed": "Jegueru ndoikói ({status})",
+  "unableToLoadViewData": "Ndaikatúi oñemyenyhẽ jehecha mba'ekuaarã.",
+  "noResultsFound": "Ndojejuhúi mba'eve.",
+  "refreshView": "Embopyahu jehecha",
+  "breakIntoStaticContent": "Emboja'o tetepy oku'e'ỹvape",
+  "viewsOpenRecord": "Embojuruja kuatiañongatu"
+}

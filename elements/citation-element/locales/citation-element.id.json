@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Atribusi",
+  "licenseBySa": "Atribusi-BerbagiSerupa",
+  "licenseByNd": "Atribusi-TanpaTurunan",
+  "licenseByNc": "Atribusi-NonKomersial",
+  "licenseByNcSa": "Atribusi-NonKomersial-BerbagiSerupa",
+  "licenseByNcNd": "Atribusi-NonKomersial-TanpaTurunan",
+  "citationWithLicense": "{title} oleh {creator}, dilisensikan di bawah {license}. Diakses {date}.",
+  "citationWithoutLicense": "{title} oleh {creator}. Diakses {date}.",
+  "licenseGraphic": "Grafis {license}"
+}

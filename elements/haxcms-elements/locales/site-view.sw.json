@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Hakuna matokeo",
+  "viewsRecordHeading": "Rekodi",
+  "viewsTitleImage": "Picha ya {title}",
+  "viewsTitlePreview": "Onyesho la kukagua {title}",
+  "viewsNoTimelineRecords": "Hakuna rekodi zenye tarehe zinazopatikana kwa kuonyesha ratiba ya matukio.",
+  "viewsTimelineTitle": "Ratiba ya matukio ya {title}",
+  "viewsNoChartField": "Hakuna sehemu ya nambari iliyogunduliwa kwa kuonyesha chati.",
+  "viewsChartingValue": "Inaonyesha chati ya {value}",
+  "viewsChartingValueByLabel": "Inaonyesha chati ya {value} kwa {label}",
+  "viewsChartTitle": "Chati ya {title}",
+  "viewsNoTreeRecords": "Hakuna rekodi za kidaraja zinazopatikana kwa kuonyesha mti.",
+  "viewsNoGalleryRecords": "Hakuna rekodi za picha zinazopatikana kwa kuonyesha matunzio.",
+  "viewsNoPlaylistRecords": "Hakuna rekodi za midia zinazopatikana kwa kuonyesha orodha ya kucheza.",
+  "fetchFailed": "Kuleta kumeshindwa ({status})",
+  "unableToLoadViewData": "Imeshindwa kupakia data ya mwonekano.",
+  "noResultsFound": "Hakuna matokeo yaliyopatikana.",
+  "refreshView": "Onyesha upya mwonekano",
+  "breakIntoStaticContent": "Vunja kuwa maudhui tuli",
+  "viewsOpenRecord": "Fungua rekodi"
+}

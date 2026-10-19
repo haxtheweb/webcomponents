@@ -1,0 +1,11 @@
+{
+  "theme": "Temo",
+  "active": "Aktiva",
+  "selected": "Elektita",
+  "noPreview": "Neniu antaŭrigardo",
+  "currentlyActiveAndSelected": "Nuntempe aktiva kaj elektita etoso",
+  "currentlyActive": "Nuntempe aktiva etoso",
+  "selectedToApplyOnSave": "Elektita etoso aplikota ĉe konservado",
+  "themeSelection": "Elekto de etoso",
+  "noThemesAvailable": "Neniuj etosoj disponeblas."
+}

@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Вашиот одговор",
   "checkAnswer": "Провери одговор",
-  "retry": "Обиди се повторно"
+  "retry": "Обиди се повторно",
+  "correct": "Точно!",
+  "incorrect": "Неточно!",
+  "correctAnswer": "Точен одговор: {answer}"
 }

@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Ipakita ang dating naipadalang mensahe (pataas)",
+  "displayPreviousMessageDown": "Ipakita ang dating naipadalang mensahe (pababa)",
+  "sendPrompt": "Ipadala ang Prompt",
+  "sendPromptToMerlin": "Ipadala ang Prompt kay Merlin",
+  "shortenPrompt": "Paki-ikli ang iyong prompt sa hindi hihigit sa {limit} character."
+}

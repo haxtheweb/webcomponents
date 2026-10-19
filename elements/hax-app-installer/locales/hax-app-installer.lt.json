@@ -54,5 +54,6 @@
   "requirementUppercase": "Viena didžioji raidė",
   "requirementLowercase": "Viena mažoji raidė",
   "requirementNumber": "Vienas skaitmuo",
-  "requirementSymbol": "Vienas specialusis simbolis"
+  "requirementSymbol": "Vienas specialusis simbolis",
+  "haxcmsMascotAlt": "HAXcms talismanas „World Traveler“"
 }

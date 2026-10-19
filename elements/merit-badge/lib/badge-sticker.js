@@ -8,6 +8,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./date-title.js";
 import "./locked-badge.js";
 /**
@@ -16,12 +17,23 @@ import "./locked-badge.js";
  * @demo demo/index.html
  * @element merit-badge
  */
-class BadgeSticker extends SimpleColors {
+class BadgeSticker extends I18NMixin(SimpleColors) {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      verifyThisBadge: "Verify this badge",
+      details: "Details",
+      skills: "Skills",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     const currentDate = new Date();
     this.badgeDate = currentDate.toLocaleDateString();
     this.badgeImage = "";
@@ -203,7 +215,7 @@ class BadgeSticker extends SimpleColors {
             href="${this.hyperLink}"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Verify this badge"
+            aria-label="${this.t.verifyThisBadge}"
           >
             <simple-icon-lite
               class="linkicon"
@@ -224,9 +236,9 @@ class BadgeSticker extends SimpleColors {
         .target="${this.activeNode}"
         ?hidden="${!this.skillsOpened}"
       >
-        <h3>Details</h3>
+        <h3>${this.t.details}</h3>
         <p>${this.badgeDetails}</p>
-        <h3>Skills</h3>
+        <h3>${this.t.skills}</h3>
         ${this.skillsArray.map(
           (item) => html`
             <ul>

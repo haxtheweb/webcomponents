@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "കൺസോൾ ടേബിൾ ഉപയോക്തൃ ചാറ്റ് ലോഗ്",
+  "consoleTableUserText": "console.table() ഉപയോക്തൃ ചാറ്റ് ലോഗ്",
+  "consoleTableUserTooltip": "ഉപയോക്തൃ ചാറ്റ് ലോഗ് ടേബിളായി കൺസോളിൽ പ്രിന്റ് ചെയ്യുക",
+  "consoleTableMerlinLabel": "കൺസോൾ ടേബിൾ merlin ചാറ്റ് ലോഗ്",
+  "consoleTableMerlinText": "console.table() merlin ചാറ്റ് ലോഗ്",
+  "consoleTableMerlinTooltip": "Merlin ചാറ്റ് ലോഗ് ടേബിളായി കൺസോളിൽ പ്രിന്റ് ചെയ്യുക",
+  "consoleTableAllLabel": "കൺസോൾ ടേബിൾ മുഴുവൻ ചാറ്റ് ലോഗ്",
+  "consoleTableAllText": "console.table() മുഴുവൻ ചാറ്റ് ലോഗ്",
+  "consoleTableAllTooltip": "മുഴുവൻ ചാറ്റ് ലോഗും ടേബിളായി കൺസോളിൽ പ്രിന്റ് ചെയ്യുക",
+  "downloadChatLogJson": "ചാറ്റ് ലോഗ് .json ആയി ഡൗൺലോഡ് ചെയ്യുക",
+  "downloadChatLogJsonTooltip": "ചാറ്റ് ലോഗ് .json ആയി ഡൗൺലോഡ് ചെയ്യുക"
+}

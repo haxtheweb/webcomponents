@@ -1,5 +1,8 @@
 {
   "yourAnswer": "ستاسو ځواب",
   "checkAnswer": "ځواب وګورئ",
-  "retry": "بیا هڅه"
+  "retry": "بیا هڅه",
+  "correct": "سم!",
+  "incorrect": "ناسم!",
+  "correctAnswer": "سم ځواب: {answer}"
 }

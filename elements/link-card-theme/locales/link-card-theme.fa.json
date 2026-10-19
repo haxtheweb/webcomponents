@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "پیوند لنگر کپی شد!",
+  "skipToContent": "پرش به محتوا",
+  "changePalette": "تغییر پالت",
+  "primaryLinks": "پیوندهای اصلی",
+  "socialLinks": "پیوندهای اجتماعی",
+  "myProfile": "نمایه من",
+  "profileImageOf": "تصویر نمایه {name}",
+  "profileImage": "تصویر نمایه",
+  "linkCardProfile": "نمایه کارت پیوند",
+  "emptyStateLinks": "برای نمایش دکمه‌های پیوند، موارد منوی سطح بالا را در site.json اضافه کنید.",
+  "titleOnPlatform": "{title} در {platform}",
+  "openPlatform": "باز کردن {platform}",
+  "paletteUpdated": "پالت رنگ به گزینه {number} به‌روزرسانی شد."
+}

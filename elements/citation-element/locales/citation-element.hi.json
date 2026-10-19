@@ -1,0 +1,11 @@
+{
+  "licenseBy": "श्रेय",
+  "licenseBySa": "श्रेय-समान रूप से साझा करें",
+  "licenseByNd": "श्रेय-कोई व्युत्पन्न नहीं",
+  "licenseByNc": "श्रेय-गैर-व्यावसायिक",
+  "licenseByNcSa": "श्रेय-गैर-व्यावसायिक-समान रूप से साझा करें",
+  "licenseByNcNd": "श्रेय-गैर-व्यावसायिक-कोई व्युत्पन्न नहीं",
+  "citationWithLicense": "{creator} द्वारा {title}, {license} के अंतर्गत लाइसेंस प्राप्त। {date} को देखा गया।",
+  "citationWithoutLicense": "{creator} द्वारा {title}। {date} को देखा गया।",
+  "licenseGraphic": "{license} ग्राफ़िक"
+}

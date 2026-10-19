@@ -1,3 +1,8 @@
 {
-  "title": "Marejeleo"
+  "title": "Marejeleo",
+  "export": "Hamisha",
+  "exportCitations": "Hamisha Manukuu",
+  "copy": "Nakili",
+  "exportCitationFormat": "Muundo wa kuhamisha manukuu",
+  "selectCitationFormatBelow": "Chagua muundo wa manukuu hapa chini"
 }

@@ -1,0 +1,9 @@
+{
+  "palette": "パレット",
+  "paletteSelection": "パレットの選択",
+  "active": "使用中",
+  "selected": "選択済み",
+  "currentlyActiveAndSelectedPalette": "現在使用中かつ選択済みのパレット",
+  "currentlyActivePalette": "現在使用中のパレット",
+  "selectedPaletteToApply": "適用するために選択したパレット"
+}

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- lehen orria lehenetsita --",
+  "details": "Xehetasunak",
+  "title": "Izenburua",
+  "titleDescription": "Gunearen izena",
+  "homePage": "Hasierako orria",
+  "homePageDescription": "Helmuga- / hasierako orri lehenetsi gisa erabiliko den orria",
+  "advanced": "Aurreratua",
+  "serviceWorker": "Gehitu service worker-a orri dinamikoari",
+  "serviceWorkerDescription": "Desgaitu hau erabiltzaileek zerbitzariaren azken irteera berehala ikusi behar badute beti.",
+  "forceBrowserUpgrade": "Behartu nabigatzailearen bertsio-berritzea",
+  "forceBrowserUpgradeDescription": "Eskatu beti eguneratutako nabigatzaileak gunearen esperientzia kargatu aurretik.",
+  "unableToLoadSiteDetails": "Ezin dira gunearen xehetasunak kargatu.",
+  "noSiteDetails": "Ez dago gunearen xehetasunik erabilgarri.",
+  "save": "Gorde"
+}

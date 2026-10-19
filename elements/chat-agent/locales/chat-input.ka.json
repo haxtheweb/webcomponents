@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "ადრე გაგზავნილი შეტყობინების ჩვენება (ზემოთ)",
+  "displayPreviousMessageDown": "ადრე გაგზავნილი შეტყობინების ჩვენება (ქვემოთ)",
+  "sendPrompt": "მოთხოვნის გაგზავნა",
+  "sendPromptToMerlin": "მოთხოვნის გაგზავნა Merlin-ისთვის",
+  "shortenPrompt": "გთხოვთ, შეამოკლოთ მოთხოვნა არაუმეტეს {limit} სიმბოლომდე."
+}

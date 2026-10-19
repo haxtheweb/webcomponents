@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Прикажи претходно послату поруку (горе)",
+  "displayPreviousMessageDown": "Прикажи претходно послату поруку (доле)",
+  "sendPrompt": "Пошаљи упит",
+  "sendPromptToMerlin": "Пошаљи упит Merlin-у",
+  "shortenPrompt": "Скратите свој упит на највише {limit} знакова."
+}

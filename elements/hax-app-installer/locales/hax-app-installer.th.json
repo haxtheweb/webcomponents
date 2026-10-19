@@ -54,5 +54,6 @@
   "requirementUppercase": "ตัวพิมพ์ใหญ่หนึ่งตัว",
   "requirementLowercase": "ตัวพิมพ์เล็กหนึ่งตัว",
   "requirementNumber": "ตัวเลขหนึ่งตัว",
-  "requirementSymbol": "สัญลักษณ์หนึ่งตัว"
+  "requirementSymbol": "สัญลักษณ์หนึ่งตัว",
+  "haxcmsMascotAlt": "มาสคอตนักเดินทางรอบโลกของ HAXcms"
 }

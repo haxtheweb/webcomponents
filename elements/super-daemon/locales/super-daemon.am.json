@@ -36,5 +36,7 @@
   "clickToDoAnything": "ማንኛውንም ነገር ለማድረግ ይጫኑ!",
   "moreDetails": "ተጨማሪ ዝርዝሮች",
   "details": "ዝርዝሮች",
-  "saved": "ተመዝግቧል"
+  "saved": "ተመዝግቧል",
+  "opensInNewWindow": "በአዲስ መስኮት ይከፈታል",
+  "resultsCount": "{count} ውጤቶች"
 }

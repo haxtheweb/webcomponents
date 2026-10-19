@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Erkännande",
+  "licenseBySa": "Erkännande-DelaLika",
+  "licenseByNd": "Erkännande-IngaBearbetningar",
+  "licenseByNc": "Erkännande-IckeKommersiell",
+  "licenseByNcSa": "Erkännande-IckeKommersiell-DelaLika",
+  "licenseByNcNd": "Erkännande-IckeKommersiell-IngaBearbetningar",
+  "citationWithLicense": "{title} av {creator}, licensierad under {license}. Hämtad {date}.",
+  "citationWithoutLicense": "{title} av {creator}. Hämtad {date}.",
+  "licenseGraphic": "Grafik för {license}"
+}

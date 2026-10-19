@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "کوئی نتائج نہیں",
+  "viewsRecordHeading": "ریکارڈ کریں",
+  "viewsTitleImage": "{title} کی تصویر",
+  "viewsTitlePreview": "{title} کا پیش منظر",
+  "viewsNoTimelineRecords": "ٹائم لائن دکھانے کے لیے تاریخ پر مبنی کوئی ریکارڈ دستیاب نہیں۔",
+  "viewsTimelineTitle": "{title} ٹائم لائن",
+  "viewsNoChartField": "چارٹ دکھانے کے لیے کوئی عددی فیلڈ نہیں ملی۔",
+  "viewsChartingValue": "{value} کا چارٹ",
+  "viewsChartingValueByLabel": "{label} کے لحاظ سے {value} کا چارٹ",
+  "viewsChartTitle": "{title} چارٹ",
+  "viewsNoTreeRecords": "درخت دکھانے کے لیے کوئی درجہ وار ریکارڈ دستیاب نہیں۔",
+  "viewsNoGalleryRecords": "گیلری دکھانے کے لیے کوئی تصویری ریکارڈ دستیاب نہیں۔",
+  "viewsNoPlaylistRecords": "پلے لسٹ دکھانے کے لیے کوئی میڈیا ریکارڈ دستیاب نہیں۔",
+  "fetchFailed": "حاصل کرنا ناکام ({status})",
+  "unableToLoadViewData": "ویو ڈیٹا لوڈ نہیں ہو سکا۔",
+  "noResultsFound": "کوئی نتائج نہیں ملے۔",
+  "refreshView": "ویو ریفریش کریں",
+  "breakIntoStaticContent": "جامد مواد میں تبدیل کریں",
+  "viewsOpenRecord": "ریکارڈ کھولیں"
+}

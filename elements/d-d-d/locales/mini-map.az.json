@@ -1,0 +1,17 @@
+{
+  "editNodes": "Düyünləri redaktə et",
+  "editLines": "Xətləri redaktə et",
+  "reset": "Sıfırla",
+  "save": "Saxla",
+  "cancel": "Ləğv et",
+  "delete": "Sil",
+  "type": "Növ:",
+  "topic": "Mövzu",
+  "subsection": "Alt bölmə",
+  "name": "Ad:",
+  "enterName": "Ad daxil edin",
+  "url": "URL:",
+  "enterUrl": "URL daxil edin",
+  "activeNode": "Aktiv düyün?",
+  "nodeId": "Düyün {id}"
+}

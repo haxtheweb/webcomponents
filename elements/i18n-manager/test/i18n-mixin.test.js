@@ -391,3 +391,113 @@ describe("I18NMixin", () => {
     });
   });
 });
+
+// ---------------------------------------------------------------------------
+// i18nDefault / i18nBind: defaults copied from this.t in a constructor
+// follow translations that load later, until something else sets them
+// ---------------------------------------------------------------------------
+class TestDefaultsElement extends I18NMixin(LitElement) {
+  static get tag() {
+    return "test-i18n-defaults-element";
+  }
+  static get properties() {
+    return {
+      ...super.properties,
+      closeLabel: { type: String, attribute: "close-label" },
+      items: { type: Array },
+      heading: { type: String, reflect: true },
+    };
+  }
+  constructor() {
+    super();
+    this.t = { ...this.t, close: "Close", item: "Item" };
+    this.i18nDefault("closeLabel", "close");
+    this.i18nDefault("items", (t) => [t.item]);
+    this.i18nDefault("heading", "item");
+  }
+}
+customElements.define(TestDefaultsElement.tag, TestDefaultsElement);
+
+describe("I18NMixin i18nDefault / i18nBind", () => {
+  it("follows translations that arrive after the constructor", async () => {
+    const el = await fixture(
+      html`<test-i18n-defaults-element></test-i18n-defaults-element>`,
+    );
+    expect(el.closeLabel).to.equal("Close");
+    el.t = { ...el.t, close: "Cerrar", item: "Elemento" };
+    await el.updateComplete;
+    expect(el.closeLabel).to.equal("Cerrar");
+    expect(el.items).to.deep.equal(["Elemento"]);
+  });
+
+  it("leaves values set by an attribute alone", async () => {
+    const el = await fixture(
+      html`<test-i18n-defaults-element
+        close-label="Dismiss"
+      ></test-i18n-defaults-element>`,
+    );
+    el.t = { ...el.t, close: "Cerrar" };
+    await el.updateComplete;
+    expect(el.closeLabel).to.equal("Dismiss");
+  });
+
+  it("leaves an authored attribute alone even when it matches the default", async () => {
+    const el = await fixture(
+      html`<test-i18n-defaults-element
+        close-label="Close"
+      ></test-i18n-defaults-element>`,
+    );
+    el.t = { ...el.t, close: "Cerrar" };
+    await el.updateComplete;
+    expect(el.closeLabel).to.equal("Close");
+  });
+
+  it("keeps translating a reflected property", async () => {
+    const el = await fixture(
+      html`<test-i18n-defaults-element></test-i18n-defaults-element>`,
+    );
+    expect(el.getAttribute("heading")).to.equal("Item");
+    el.t = { ...el.t, item: "Elemento" };
+    await el.updateComplete;
+    expect(el.heading).to.equal("Elemento");
+    el.t = { ...el.t, item: "Élément" };
+    await el.updateComplete;
+    expect(el.heading).to.equal("Élément");
+    expect(el.getAttribute("heading")).to.equal("Élément");
+  });
+
+  it("does not replace list defaults when their text is unchanged", async () => {
+    const el = await fixture(
+      html`<test-i18n-defaults-element></test-i18n-defaults-element>`,
+    );
+    const before = el.items;
+    el.t = { ...el.t };
+    await el.updateComplete;
+    expect(el.items).to.equal(before);
+  });
+
+  it("stops following once something else sets the value", async () => {
+    const el = await fixture(
+      html`<test-i18n-defaults-element></test-i18n-defaults-element>`,
+    );
+    el.closeLabel = "Custom";
+    await el.updateComplete;
+    el.t = { ...el.t, close: "Fermer" };
+    await el.updateComplete;
+    expect(el.closeLabel).to.equal("Custom");
+  });
+
+  it("binds fields on other objects and reports changes", async () => {
+    const el = await fixture(
+      html`<test-i18n-defaults-element></test-i18n-defaults-element>`,
+    );
+    const option = { value: {} };
+    let changes = 0;
+    el.i18nBind(option.value, "name", "item", () => changes++);
+    expect(option.value.name).to.equal("Item");
+    el.t = { ...el.t, item: "Elemento" };
+    await el.updateComplete;
+    expect(option.value.name).to.equal("Elemento");
+    expect(changes).to.equal(1);
+  });
+});

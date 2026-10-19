@@ -1,5 +1,9 @@
 {
   "studentSubmission": "הגשת התלמיד",
   "openInNewWindow": "פתיחה בחלון חדש",
-  "submitted": "הוגש"
+  "submitted": "הוגש",
+  "previousStudent": "התלמיד הקודם",
+  "nextStudent": "התלמיד הבא",
+  "previousAssignment": "המטלה הקודמת",
+  "nextAssignment": "המטלה הבאה"
 }

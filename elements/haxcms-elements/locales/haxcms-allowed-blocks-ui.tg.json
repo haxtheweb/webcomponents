@@ -10,5 +10,9 @@
   "save": "Нигоҳ доштан",
   "noDescription": "Тавсиф мавҷуд нест.",
   "details": "Тафсилот",
-  "loadingInventory": "Рӯйхати пурраи блокҳо бор шуда истодааст…"
+  "loadingInventory": "Рӯйхати пурраи блокҳо бор шуда истодааст…",
+  "selectAllButton": "Ҳамаро интихоб кардан",
+  "deselectAllButton": "Бекор кардани интихоби ҳама",
+  "selectedOfAvailable": "{selected} интихобшуда / {total} дастрас",
+  "savingBlocksFailed": "Нигоҳ доштани блокҳо муяссар нашуд: {error}"
 }

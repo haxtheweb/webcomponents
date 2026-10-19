@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klik untuk melakukan apapun!",
   "moreDetails": "Detail lainnya",
   "details": "Detail",
-  "saved": "Tersimpan"
+  "saved": "Tersimpan",
+  "opensInNewWindow": "Terbuka di jendela baru",
+  "resultsCount": "{count} hasil"
 }

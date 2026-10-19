@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Връзката към котвата е копирана!",
+  "skipToContent": "Към съдържанието",
+  "siteHome": "Начало на сайта",
+  "mainNavigation": "Основна навигация",
+  "toggleMenu": "Превключване на менюто",
+  "changeTheme": "Смяна на темата",
+  "breadcrumb": "Навигационна пътека",
+  "tagFilter": "Филтър по етикет:",
+  "all": "Всички",
+  "pageNumberOfTotal": "Номер на страница: {current} от {total}",
+  "siteGenerated": "Сайтът е генериран: {date}",
+  "copyright": "Авторско право: {year} {author}",
+  "viewContentByTag": "Преглед на съдържанието по етикет",
+  "licenseGraphic": "Графика на {license}"
+}

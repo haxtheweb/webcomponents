@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- taunoa ki te whārangi tuatahi --",
+  "details": "Ngā taipitopito",
+  "title": "Taitara",
+  "titleDescription": "Ingoa o te pae",
+  "homePage": "Whārangi kāinga",
+  "homePageDescription": "Whārangi hei whārangi taunga / kāinga taunoa",
+  "advanced": "Matatau",
+  "serviceWorker": "Tāpiri kaimahi ratonga ki te whārangi hihiri",
+  "serviceWorkerDescription": "Whakakorea tēnei mēnā me kite tonu ngā kaiwhakamahi i te putanga tūmau hou rawa.",
+  "forceBrowserUpgrade": "Me whakahou te pūtirotiro",
+  "forceBrowserUpgradeDescription": "Me whai pūtirotiro hou i mua i te uta i te wheako pae.",
+  "unableToLoadSiteDetails": "Kāore e taea te uta i ngā taipitopito pae.",
+  "noSiteDetails": "Kāore he taipitopito pae e wātea ana.",
+  "save": "Tiaki"
+}

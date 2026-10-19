@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `monaco-element`
  * Webcomponent wrapper for the monaco editor.
@@ -10,7 +11,7 @@ import { LitElement, html, css } from "lit";
  *
  * @element monaco-element
  */
-class MonacoElement extends LitElement {
+class MonacoElement extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -34,6 +35,15 @@ class MonacoElement extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      codeEditor: "Code editor",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.windowControllers = new AbortController();
     this.iframe = null;
     this.value = "";
@@ -63,7 +73,7 @@ class MonacoElement extends LitElement {
     return html` <iframe
       id="iframe"
       frameborder="0"
-      aria-label="Code editor"
+      aria-label="${this.t.codeEditor}"
     ></iframe>`;
   }
   /**

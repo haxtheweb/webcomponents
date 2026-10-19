@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Үүргийн нэр",
+  "describeYourRole": "Үүргээ энд тайлбарлана уу...",
+  "present": "Танилцуулах",
+  "skills": "Ур чадварууд:",
+  "skillsAndMore": "{skills} болон өөр +{count}",
+  "yearShort": "{count} жил",
+  "yearsShort": "{count} жил",
+  "monthShort": "{count} сар",
+  "monthsShort": "{count} сар"
+}

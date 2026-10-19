@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Do fhreagra",
   "checkAnswer": "Seiceáil an freagra",
-  "retry": "Bain triail eile as"
+  "retry": "Bain triail eile as",
+  "correct": "Ceart!",
+  "incorrect": "Mícheart!",
+  "correctAnswer": "Freagra Ceart: {answer}"
 }

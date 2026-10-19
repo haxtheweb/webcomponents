@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Няма резултати",
+  "viewsRecordHeading": "Запис",
+  "viewsTitleImage": "Изображение на {title}",
+  "viewsTitlePreview": "Преглед на {title}",
+  "viewsNoTimelineRecords": "Няма записи с дати за показване на времева линия.",
+  "viewsTimelineTitle": "Времева линия на {title}",
+  "viewsNoChartField": "Не е открито числово поле за показване на диаграма.",
+  "viewsChartingValue": "Диаграма на {value}",
+  "viewsChartingValueByLabel": "Диаграма на {value} по {label}",
+  "viewsChartTitle": "Диаграма на {title}",
+  "viewsNoTreeRecords": "Няма йерархични записи за показване на дърво.",
+  "viewsNoGalleryRecords": "Няма записи с изображения за показване на галерия.",
+  "viewsNoPlaylistRecords": "Няма медийни записи за показване на плейлист.",
+  "fetchFailed": "Неуспешно извличане ({status})",
+  "unableToLoadViewData": "Данните на изгледа не могат да бъдат заредени.",
+  "noResultsFound": "Няма намерени резултати.",
+  "refreshView": "Обновяване на изгледа",
+  "breakIntoStaticContent": "Разделяне на статично съдържание",
+  "viewsOpenRecord": "Отваряне на записа"
+}

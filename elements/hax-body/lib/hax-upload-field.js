@@ -71,6 +71,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       fileTypeNotAllowed: "This field only accepts the following media types:",
       transformFailed:
         "Post-upload transform failed; the original file was kept.",
+      imageGalleryCreated: "Image gallery created successfully!",
     };
     this.registerLocalization({
       context: this,

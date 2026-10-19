@@ -5,5 +5,9 @@
   "buttons": "Knoppen",
   "futureButtonConfiguration": "Aangepaste configuratie van editorknoppen komt binnenkort.",
   "save": "Opslaan",
-  "saving": "Opslaan…"
+  "saving": "Opslaan…",
+  "novice": "Beginner",
+  "expert": "Expert",
+  "toolbarPreviewAlt": "Voorbeeld van bewerkingswerkbalk voor {audience}",
+  "savingEditorSettingsFailed": "Opslaan van editorinstellingen mislukt: {error}"
 }

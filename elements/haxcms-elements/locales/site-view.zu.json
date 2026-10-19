@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Ayikho imiphumela",
+  "viewsRecordHeading": "Qopha",
+  "viewsTitleImage": "Isithombe se-{title}",
+  "viewsTitlePreview": "Ukubuka kuqala kwe-{title}",
+  "viewsNoTimelineRecords": "Awekho amarekhodi asekelwe ezinsukwini atholakalayo okubonisa umugqa wesikhathi.",
+  "viewsTimelineTitle": "Umugqa wesikhathi we-{title}",
+  "viewsNoChartField": "Ayikho inkambu yezinombolo etholakele yokubonisa ishadi.",
+  "viewsChartingValue": "Kwenziwa ishadi le-{value}",
+  "viewsChartingValueByLabel": "Kwenziwa ishadi le-{value} ngokwe-{label}",
+  "viewsChartTitle": "Ishadi le-{title}",
+  "viewsNoTreeRecords": "Awekho amarekhodi ahlelwe ngokwezigaba atholakalayo okubonisa isihlahla.",
+  "viewsNoGalleryRecords": "Awekho amarekhodi ezithombe atholakalayo okubonisa igalari.",
+  "viewsNoPlaylistRecords": "Awekho amarekhodi emidiya atholakalayo okubonisa uhlu lokudlala.",
+  "fetchFailed": "Ukulanda kwehlulekile ({status})",
+  "unableToLoadViewData": "Ayikwazi ukulayisha idatha yokubuka.",
+  "noResultsFound": "Ayikho imiphumela etholakele.",
+  "refreshView": "Vuselela ukubuka",
+  "breakIntoStaticContent": "Hlukanisa kube okuqukethwe okungashintshi",
+  "viewsOpenRecord": "Vula irekhodi"
+}

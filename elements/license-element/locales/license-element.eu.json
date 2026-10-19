@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Aitortu",
+  "licenseBySa": "Aitortu-PartekatuBerdin",
+  "licenseByNd": "Aitortu-LanEratorririkGabe",
+  "licenseByNc": "Aitortu-EzKomertziala",
+  "licenseByNcSa": "Aitortu-EzKomertziala-PartekatuBerdin",
+  "licenseByNcNd": "Aitortu-EzKomertziala-LanEratorririkGabe",
+  "licenseGraphic": "{license} grafikoa",
+  "workByCreator": "{title}, egilea: {creator}",
+  "workByCreatorLicensed": "{title}, egilea: {creator}, {license} lizentziapean dago.",
+  "permissionsBeyondScope": "Lizentzia honen esparrutik kanpoko baimenak eskuragarri daude {link}.",
+  "author": "(egilea)",
+  "onTheLicensingDetailsPage": "lizentziaren xehetasunen orrian"
+}

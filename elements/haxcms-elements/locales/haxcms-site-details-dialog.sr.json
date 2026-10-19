@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- подразумевано прва страница --",
+  "details": "Детаљи",
+  "title": "Наслов",
+  "titleDescription": "Назив сајта",
+  "homePage": "Почетна страница",
+  "homePageDescription": "Страница која се користи као подразумевана почетна / одредишна страница",
+  "advanced": "Напредно",
+  "serviceWorker": "Додај service worker динамичкој страници",
+  "serviceWorkerDescription": "Онемогућите ово ако корисници увек треба одмах да виде најновији излаз сервера.",
+  "forceBrowserUpgrade": "Принудно ажурирање прегледача",
+  "forceBrowserUpgradeDescription": "Захтевај увек ажурне прегледаче пре учитавања сајта.",
+  "unableToLoadSiteDetails": "Није могуће учитати детаље сајта.",
+  "noSiteDetails": "Нема доступних детаља сајта.",
+  "save": "Сачувај"
+}

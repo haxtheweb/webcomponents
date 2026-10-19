@@ -1,0 +1,11 @@
+{
+  "playlist": "Spilleliste",
+  "carousel": "karusell",
+  "slide": "lysbilde",
+  "slideNumber": "Lysbilde {number}",
+  "slideOfTotal": "Lysbilde {number} av {total}",
+  "previousSlide": "Forrige lysbilde",
+  "nextSlide": "Neste lysbilde",
+  "slidePages": "Lysbildesider",
+  "goToSlide": "Gå til lysbilde {number}"
+}

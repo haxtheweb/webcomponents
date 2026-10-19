@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 const SimpleModalCssVars = [
   "--simple-modal-resize",
@@ -74,7 +75,7 @@ const SimpleModalCssVars = [
   * @demo ./demo/template.html using simple-modal-template
   * @element simple-modal
   */
-class SimpleModal extends LitElement {
+class SimpleModal extends I18NMixin(LitElement) {
   //styles function
   static get styles() {
     return [
@@ -510,6 +511,17 @@ class SimpleModal extends LitElement {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      close: "Close",
+      modalDialog: "Modal Dialog",
+      modalBreadcrumb: "Modal breadcrumb",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.windowControllers = new AbortController();
     this.__focusRestoreTimer = null;
     this.__modalContentFocusTimer = null;
@@ -518,7 +530,7 @@ class SimpleModal extends LitElement {
     this.breadcrumbs = [];
     this.showClose = false;
     this.opened = false;
-    this.closeLabel = "Close";
+    this.i18nDefault("closeLabel", "close");
     this.closeIcon = "close";
     this.modal = false;
   }
@@ -979,7 +991,7 @@ class SimpleModal extends LitElement {
    * If there is no title, supply a generic aria-label
    */
   _getAriaLabel(title) {
-    return !title ? "Modal Dialog" : null;
+    return !title ? this.t.modalDialog : null;
   }
   _renderTitle() {
     if (Array.isArray(this.breadcrumbs) && this.breadcrumbs.length > 0) {
@@ -1006,7 +1018,7 @@ class SimpleModal extends LitElement {
       return this.title;
     }
     const lastIndex = visibleCrumbs.length - 1;
-    return html`<nav class="breadcrumbs" aria-label="Modal breadcrumb">
+    return html`<nav class="breadcrumbs" aria-label="${this.t.modalBreadcrumb}">
       ${visibleCrumbs.map((crumb, index) => {
         const icon =
           crumb.icon ||

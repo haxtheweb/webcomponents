@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "د لنګر لینک کاپي شو!",
+  "skipToContent": "منځپانګې ته ورشئ",
+  "siteHome": "د سایټ کور",
+  "mainNavigation": "اصلي نېویګېشن",
+  "toggleMenu": "مینو بدل کړئ",
+  "changeTheme": "بڼه بدل کړئ",
+  "breadcrumb": "بریډکرمب",
+  "tagFilter": "د ټګ چاڼ:",
+  "all": "ټول",
+  "pageNumberOfTotal": "د پاڼې شمېره: {current} له {total} څخه",
+  "siteGenerated": "سایټ جوړ شوی: {date}",
+  "copyright": "د چاپ حق: {year} {author}",
+  "viewContentByTag": "منځپانګه د ټګ له مخې وګورئ",
+  "licenseGraphic": "د {license} ګرافیک"
+}

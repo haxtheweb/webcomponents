@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Ваш ответ",
   "checkAnswer": "Проверить ответ",
-  "retry": "Повторить"
+  "retry": "Повторить",
+  "correct": "Верно!",
+  "incorrect": "Неверно!",
+  "correctAnswer": "Правильный ответ: {answer}"
 }

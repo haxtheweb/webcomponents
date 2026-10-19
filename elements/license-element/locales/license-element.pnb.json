@@ -1,0 +1,14 @@
+{
+  "licenseBy": "انتساب",
+  "licenseBySa": "انتساب ایکو جیہا شیئر",
+  "licenseByNd": "انتساب کوئی ماخوذ کم نئیں",
+  "licenseByNc": "انتساب غیر تجارتی",
+  "licenseByNcSa": "انتساب غیر تجارتی ایکو جیہا شیئر",
+  "licenseByNcNd": "انتساب غیر تجارتی کوئی ماخوذ کم نئیں",
+  "licenseGraphic": "{license} گرافک",
+  "workByCreator": "{creator} دا {title}",
+  "workByCreatorLicensed": "{creator} دا {title} {license} تحت لائسنس شدہ اے۔",
+  "permissionsBeyondScope": "ایس لائسنس توں ودھ اجازتاں {link} دستیاب نیں۔",
+  "author": "(لکھاری)",
+  "onTheLicensingDetailsPage": "لائسنس تفصیلاں والے صفحے تے"
+}

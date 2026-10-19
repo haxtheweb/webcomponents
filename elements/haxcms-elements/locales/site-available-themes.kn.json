@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "ಥೀಮ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ: {error}",
+  "noThemesForView": "ಈ ವೀಕ್ಷಣೆಗೆ ಯಾವುದೇ ಥೀಮ್‌ಗಳು ಲಭ್ಯವಿಲ್ಲ.",
+  "active": "ಸಕ್ರಿಯ",
+  "themeIsActive": "{name} ಥೀಮ್ ಸಕ್ರಿಯವಾಗಿದೆ",
+  "applyTheme": "{name} ಥೀಮ್ ಅನ್ವಯಿಸಿ",
+  "apply": "ಅನ್ವಯಿಸಿ",
+  "preview": "ಪೂರ್ವವೀಕ್ಷಣೆ",
+  "name": "ಹೆಸರು",
+  "element": "ಘಟಕ",
+  "description": "ವಿವರಣೆ",
+  "action": "ಕ್ರಿಯೆ",
+  "loadingThemes": "ಥೀಮ್‌ಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ...",
+  "themesShown": "{count} ಥೀಮ್‌ಗಳನ್ನು ತೋರಿಸಲಾಗಿದೆ",
+  "themesShownDefaults": "{count} ಥೀಮ್‌ಗಳನ್ನು ತೋರಿಸಲಾಗಿದೆ (app-hax ಡೀಫಾಲ್ಟ್‌ಗಳು)",
+  "availableHaxcmsThemes": "ಲಭ್ಯವಿರುವ HAXcms ಥೀಮ್‌ಗಳು",
+  "gallery": "ಗ್ಯಾಲರಿ",
+  "table": "ಕೋಷ್ಟಕ"
+}

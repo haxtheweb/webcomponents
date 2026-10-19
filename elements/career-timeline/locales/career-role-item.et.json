@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Rolli nimetus",
+  "describeYourRole": "Kirjelda siin oma rolli...",
+  "present": "Esitle",
+  "skills": "Oskused:",
+  "skillsAndMore": "{skills} ja veel +{count}",
+  "yearShort": "{count} a",
+  "yearsShort": "{count} a",
+  "monthShort": "{count} k",
+  "monthsShort": "{count} k"
+}

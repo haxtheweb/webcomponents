@@ -36,5 +36,7 @@
   "clickToDoAnything": "Націсніце, каб зрабіць што заўгодна!",
   "moreDetails": "Больш падрабязна",
   "details": "Падрабязнасці",
-  "saved": "Захавана"
+  "saved": "Захавана",
+  "opensInNewWindow": "Адкрываецца ў новым акне",
+  "resultsCount": "Вынікаў: {count}"
 }

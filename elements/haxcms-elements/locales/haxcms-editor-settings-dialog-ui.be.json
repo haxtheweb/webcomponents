@@ -5,5 +5,9 @@
   "buttons": "Кнопкі",
   "futureButtonConfiguration": "Уласная канфігурацыя кнопак рэдактара хутка з'явіцца.",
   "save": "Захаваць",
-  "saving": "Захаванне…"
+  "saving": "Захаванне…",
+  "novice": "Пачатковец",
+  "expert": "Эксперт",
+  "toolbarPreviewAlt": "Папярэдні прагляд панэлі рэдагавання для: {audience}",
+  "savingEditorSettingsFailed": "Не ўдалося захаваць налады рэдактара: {error}"
 }

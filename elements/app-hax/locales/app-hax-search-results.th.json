@@ -1,0 +1,11 @@
+{
+  "siteResultsCarousel": "ภาพหมุนผลลัพธ์ไซต์",
+  "previous": "ก่อนหน้า",
+  "previousSites": "ไซต์ก่อนหน้า",
+  "viewPreviousSites": "ดูไซต์ก่อนหน้าในภาพหมุน",
+  "next": "ถัดไป",
+  "nextSites": "ไซต์ถัดไป",
+  "viewNextSites": "ดูไซต์ถัดไปในภาพหมุน",
+  "noResults": "ไม่มีผลลัพธ์",
+  "noResultsCreateNewSite": "ไม่มีผลลัพธ์ สร้างไซต์ใหม่เลย!"
+}

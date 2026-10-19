@@ -1,0 +1,6 @@
+{
+  "answerInCorrectOrder": "Vastaus on oikeassa järjestyksessä",
+  "answerInIncorrectOrder": "Vastaus on väärässä järjestyksessä",
+  "moveOptionUp": "Valitse siirtääksesi vaihtoehtoa ylöspäin järjestyksessä",
+  "moveOptionDown": "Valitse siirtääksesi vaihtoehtoa alaspäin järjestyksessä"
+}

@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Cuir isteach ainm úsáideora",
+  "invalidUsernameOrPassword": "Ainm Úsáideora nó Pasfhocal Neamhbhailí",
+  "welcomeLetsGo": "Fáilte {username}! Ar aghaidh linn!",
+  "enterYourUsername": "Cuir isteach d'ainm úsáideora",
+  "username": "Ainm úsáideora",
+  "next": "Ar aghaidh",
+  "welcomeBack": "Fáilte ar ais, {username}!",
+  "notYou": "Ní tusa?",
+  "enterYourPassword": "Cuir isteach do phasfhocal",
+  "password": "Pasfhocal",
+  "togglePasswordDisplay": "Scoránaigh taispeáint an phasfhocail",
+  "login": "Logáil isteach"
+}

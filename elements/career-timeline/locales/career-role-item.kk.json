@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Лауазым атауы",
+  "describeYourRole": "Лауазымыңызды осында сипаттаңыз...",
+  "present": "Таныстыру",
+  "skills": "Дағдылар:",
+  "skillsAndMore": "{skills} және тағы +{count}",
+  "yearShort": "{count} жыл",
+  "yearsShort": "{count} жыл",
+  "monthShort": "{count} ай",
+  "monthsShort": "{count} ай"
+}

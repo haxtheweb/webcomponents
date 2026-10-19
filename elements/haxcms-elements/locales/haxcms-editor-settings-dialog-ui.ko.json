@@ -5,5 +5,9 @@
   "buttons": "버튼",
   "futureButtonConfiguration": "편집기 버튼 사용자 지정 기능이 곧 제공됩니다.",
   "save": "저장",
-  "saving": "저장 중…"
+  "saving": "저장 중…",
+  "novice": "초보자",
+  "expert": "전문가",
+  "toolbarPreviewAlt": "{audience} 편집 도구 모음 미리보기",
+  "savingEditorSettingsFailed": "편집기 설정 저장 실패: {error}"
 }

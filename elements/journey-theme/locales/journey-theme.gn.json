@@ -1,4 +1,11 @@
 {
   "readMore": "Moñe'ẽve",
-  "home": "Ñepyrũ"
+  "home": "Ñepyrũ",
+  "anchorLinkCopied": "Joajuha oñemonguatia!",
+  "skipToContent": "Eho tetepy peve",
+  "changeTheme": "Emoambue jeguakaha",
+  "siteSections": "Tenda pehẽ",
+  "pageOfTotal": "Kuatiarogue {current} {total}-gui",
+  "siteGenerated": "Tenda oñemoheñói: {date}",
+  "licenseGraphic": "{license} ta'ãnga"
 }

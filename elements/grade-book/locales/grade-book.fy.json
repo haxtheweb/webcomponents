@@ -43,5 +43,22 @@
   "emailAddress": "Dizze studint e-maile",
   "notes": "Notysjes",
   "interests": "Ynteresses",
-  "profileImageFor": "Profylfoto fan"
+  "profileImageFor": "Profylfoto fan",
+  "fileSystem": "Triemsysteem",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL-einpunt (JSON)",
+  "jsonDataBlob": "JSON-gegevensblob",
+  "additionalCriteriaFeedback": "Ekstra weromkeppeling foar {criteria}",
+  "outOfPoints": "/ {points} pnt",
+  "feedbackReport": "Weromkeppelingsrapport",
+  "criteriaDetails": "Details fan kritearia",
+  "yourFeedback": "Jo weromkeppeling",
+  "additionalCriteriaFeedbackHeading": "Ekstra weromkeppeling op kritearia",
+  "yourTotalScore": "Jo totale skoare",
+  "scoreOutOfPoints": "{score} / {points} pnt",
+  "studentAssignment": "Opdracht {assignment} fan {student}",
+  "downloadPDF": "PDF downloade",
+  "displayMode1": "Modus 1",
+  "displayMode2": "Modus 2",
+  "twoWindows": "Twa finsters"
 }

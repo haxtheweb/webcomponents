@@ -35,6 +35,22 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       hours: "hours",
       minute: "minute",
       minutes: "minutes",
+      lessonAudioCount: "{count} Audio",
+      lessonImagesCount: "{count} Images",
+      lessonObjectivesCount: "{count} Objectives",
+      lessonObjectivesSubtitle: "Goals for you as you learn",
+      lessonDataTablesCount: "{count} Data tables",
+      lessonPagesCount: "{count} Pages",
+      lessonLearningObjectivesCount: "{count} learning objectives",
+      lessonImagesLowerCount: "{count} images",
+      lessonDataTablesLowerCount: "{count} data tables",
+      lessonApproxReading: "Approx. {time} of reading",
+      lessonReadingEstimate: "This is just an estimate of words to read",
+      lessonInteractiveItemsCount: "{count} Interactive items",
+      lessonSelfChecksSubtitle: "Self checks and interactive widgets to learn by applying knowledge",
+      lessonVideosCount: "{count} Videos",
+      lessonVideoLength: "{time} of video",
+      lessonValueOfKey: "{value} of {key}",
     };
     this.registerLocalization({
       context: this,
@@ -136,33 +152,45 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
         // walk response details, setting things into associated smart blocks
         switch (key) {
           case "audio":
-            item.title = `${value} Audio`;
+            item.title = this.t.lessonAudioCount.replace("{count}", () => value);
             item.icon = "av:music-video";
             break;
           case "images":
-            item.title = `${value} Images`;
+            item.title = this.t.lessonImagesCount.replace("{count}", () => value);
             item.icon = "image:image";
             break;
           case "objectives":
-            item.title = `${value} Objectives`;
-            item.subtitle = "Goals for you as you learn";
+            item.title = this.t.lessonObjectivesCount.replace("{count}", () => value);
+            item.subtitle = this.t.lessonObjectivesSubtitle;
             item.icon = "editor:format-list-numbered";
             break;
           case "dataTables":
-            item.title = `${value} Data tables`;
+            item.title = this.t.lessonDataTablesCount.replace("{count}", () => value);
             item.icon = "image:grid-on";
             break;
           case "pages":
             let items = [];
-            item.title = `${value} Pages`;
+            item.title = this.t.lessonPagesCount.replace("{count}", () => value);
             if (data.objectives) {
-              items.push(`${data.objectives} learning objectives`);
+              items.push(
+                this.t.lessonLearningObjectivesCount.replace(
+                  "{count}",
+                  () => data.objectives,
+                ),
+              );
             }
             if (data.images) {
-              items.push(`${data.images} images`);
+              items.push(
+                this.t.lessonImagesLowerCount.replace("{count}", () => data.images),
+              );
             }
             if (data.dataTables) {
-              items.push(`${data.dataTables} data tables`);
+              items.push(
+                this.t.lessonDataTablesLowerCount.replace(
+                  "{count}",
+                  () => data.dataTables,
+                ),
+              );
             }
             item.subtitle = items.join(", ");
             item.icon = "editor:insert-drive-file";
@@ -187,29 +215,42 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
             } else {
               readVal.push(`${minutes} ${this.t.minutes}`);
             }
-            item.title = `Approx. ${readVal.join(", ")} of reading`;
-            item.subtitle = "This is just an estimate of words to read";
+            item.title = this.t.lessonApproxReading.replace(
+              "{time}",
+              () => (readVal.join(", ")),
+            );
+            item.subtitle = this.t.lessonReadingEstimate;
             item.icon = "communication:import-contacts";
             break;
           case "selfChecks":
-            item.title = `${value} Interactive items`;
-            item.subtitle =
-              "Self checks and interactive widgets to learn by applying knowledge";
+            item.title = this.t.lessonInteractiveItemsCount.replace(
+              "{count}",
+              () => value,
+            );
+            item.subtitle = this.t.lessonSelfChecksSubtitle;
             item.icon = "hardware:videogame-asset";
             break;
           case "video":
-            item.title = `${value} Videos`;
+            item.title = this.t.lessonVideosCount.replace("{count}", () => value);
             if (data.videoLength) {
-              item.subtitle = `${toHHMMSS(data.videoLength)} of video`;
+              item.subtitle = this.t.lessonVideoLength.replace(
+                "{time}",
+                () => (toHHMMSS(data.videoLength)),
+              );
             }
             item.icon = "av:play-circle-outline";
             break;
           case "videoLength":
-            item.title = `${toHHMMSS(value)} of video`;
+            item.title = this.t.lessonVideoLength.replace(
+              "{time}",
+              () => (toHHMMSS(value)),
+            );
             item.icon = "av:play-circle-outline";
             break;
           default:
-            item.title = `${value} of ${key}`;
+            item.title = this.t.lessonValueOfKey
+              .replace("{value}", () => value)
+              .replace("{key}", () => key);
             item.icon = "hardware:videogame-asset";
             break;
         }

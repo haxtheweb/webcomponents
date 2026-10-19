@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- standard är första sidan --",
+  "details": "Detaljer",
+  "title": "Titel",
+  "titleDescription": "Webbplatsens namn",
+  "homePage": "Startsida",
+  "homePageDescription": "Sida som ska användas som standardlandningssida / startsida",
+  "advanced": "Avancerat",
+  "serviceWorker": "Lägg till service worker på dynamisk sida",
+  "serviceWorkerDescription": "Inaktivera detta om användarna alltid ska se serverns senaste utdata direkt.",
+  "forceBrowserUpgrade": "Tvinga webbläsaruppgradering",
+  "forceBrowserUpgradeDescription": "Kräv ständigt uppdaterade webbläsare innan webbplatsen läses in.",
+  "unableToLoadSiteDetails": "Det gick inte att läsa in webbplatsdetaljer.",
+  "noSiteDetails": "Inga webbplatsdetaljer är tillgängliga.",
+  "save": "Spara"
+}

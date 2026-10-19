@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Theip ar lódáil na dtéamaí: {error}",
+  "noThemesForView": "Níl téamaí ar fáil don amharc seo.",
+  "active": "Gníomhach",
+  "themeIsActive": "Tá an téama {name} gníomhach",
+  "applyTheme": "Cuir an téama {name} i bhfeidhm",
+  "apply": "Cuir i bhfeidhm",
+  "preview": "Réamhamharc",
+  "name": "Ainm",
+  "element": "Eilimint",
+  "description": "Cur síos",
+  "action": "Gníomh",
+  "loadingThemes": "Téamaí á lódáil...",
+  "themesShown": "{count} téama á dtaispeáint",
+  "themesShownDefaults": "{count} téama á dtaispeáint (réamhshocruithe app-hax)",
+  "availableHaxcmsThemes": "Téamaí HAXcms atá ar Fáil",
+  "gallery": "Gailearaí",
+  "table": "Tábla"
+}

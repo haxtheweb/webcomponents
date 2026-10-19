@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "แท็บ {xOfY}",
+  "xOfY": "{order} จาก {total}",
+  "endOfTab": "สิ้นสุดแท็บ {xOfY} กลับไปที่{tabs}",
+  "tabs": "แท็บ"
+}

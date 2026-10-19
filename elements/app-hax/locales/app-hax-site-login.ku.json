@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Navê bikarhêner binivîse",
+  "invalidUsernameOrPassword": "Navê bikarhêner an şîfre nederbasdar e",
+  "welcomeLetsGo": "Bi xêr hatî {username}! Em biçin!",
+  "enterYourUsername": "Navê bikarhêner ê xwe binivîse",
+  "username": "Navê bikarhêner",
+  "next": "Pêşve",
+  "welcomeBack": "Bi xêr hatî dîsa, {username}!",
+  "notYou": "Ne tu yî?",
+  "enterYourPassword": "Şîfreya xwe binivîse",
+  "password": "Şîfre",
+  "togglePasswordDisplay": "Nîşandana şîfreyê veguherîne",
+  "login": "Têkeve"
+}

@@ -36,5 +36,7 @@
   "clickToDoAnything": "לחץ לעשות כל דבר!",
   "moreDetails": "פרטים נוספים",
   "details": "פרטים",
-  "saved": "נשמר"
+  "saved": "נשמר",
+  "opensInNewWindow": "נפתח בחלון חדש",
+  "resultsCount": "{count} תוצאות"
 }

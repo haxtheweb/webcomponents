@@ -1,0 +1,11 @@
+{
+  "playlist": "Danh sách phát",
+  "carousel": "băng chuyền",
+  "slide": "trang chiếu",
+  "slideNumber": "Trang chiếu {number}",
+  "slideOfTotal": "Trang chiếu {number} / {total}",
+  "previousSlide": "Trang chiếu trước",
+  "nextSlide": "Trang chiếu tiếp theo",
+  "slidePages": "Các trang chiếu",
+  "goToSlide": "Đi đến trang chiếu {number}"
+}

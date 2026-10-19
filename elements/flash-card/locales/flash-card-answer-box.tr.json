@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Cevabınız",
   "checkAnswer": "Cevabı kontrol et",
-  "retry": "Tekrar dene"
+  "retry": "Tekrar dene",
+  "correct": "Doğru!",
+  "incorrect": "Yanlış!",
+  "correctAnswer": "Doğru Cevap: {answer}"
 }

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "შედეგები არ არის",
+  "viewsRecordHeading": "ჩაწერა",
+  "viewsTitleImage": "{title} — სურათი",
+  "viewsTitlePreview": "{title} გადახედვა",
+  "viewsNoTimelineRecords": "ქრონოლოგიისთვის თარიღიანი ჩანაწერები არ არის ხელმისაწვდომი.",
+  "viewsTimelineTitle": "{title} — ქრონოლოგია",
+  "viewsNoChartField": "დიაგრამისთვის რიცხვითი ველი ვერ მოიძებნა.",
+  "viewsChartingValue": "დიაგრამა: {value}",
+  "viewsChartingValueByLabel": "დიაგრამა: {value} {label}-ის მიხედვით",
+  "viewsChartTitle": "{title} — დიაგრამა",
+  "viewsNoTreeRecords": "ხისებრი ჩვენებისთვის იერარქიული ჩანაწერები არ არის ხელმისაწვდომი.",
+  "viewsNoGalleryRecords": "გალერეისთვის სურათების ჩანაწერები არ არის ხელმისაწვდომი.",
+  "viewsNoPlaylistRecords": "დასაკრავი სიისთვის მედიაჩანაწერები არ არის ხელმისაწვდომი.",
+  "fetchFailed": "ჩატვირთვა ვერ მოხერხდა ({status})",
+  "unableToLoadViewData": "ხედის მონაცემების ჩატვირთვა ვერ მოხერხდა.",
+  "noResultsFound": "შედეგები ვერ მოიძებნა.",
+  "refreshView": "ხედის განახლება",
+  "breakIntoStaticContent": "სტატიკურ შიგთავსად გარდაქმნა",
+  "viewsOpenRecord": "ჩანაწერის გახსნა"
+}

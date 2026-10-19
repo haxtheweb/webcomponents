@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Рад ученика",
   "openInNewWindow": "Отвори у новом прозору",
-  "submitted": "Предато"
+  "submitted": "Предато",
+  "previousStudent": "Претходни ученик",
+  "nextStudent": "Следећи ученик",
+  "previousAssignment": "Претходни задатак",
+  "nextAssignment": "Следећи задатак"
 }

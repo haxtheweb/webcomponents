@@ -10,5 +10,9 @@
   "save": "Kaydet",
   "noDescription": "Açıklama yok.",
   "details": "Ayrıntılar",
-  "loadingInventory": "Tüm blok envanteri yükleniyor…"
+  "loadingInventory": "Tüm blok envanteri yükleniyor…",
+  "selectAllButton": "Tümünü Seç",
+  "deselectAllButton": "Tüm Seçimleri Kaldır",
+  "selectedOfAvailable": "{selected} seçili / {total} kullanılabilir",
+  "savingBlocksFailed": "Bloklar kaydedilemedi: {error}"
 }

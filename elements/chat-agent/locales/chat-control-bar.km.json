@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "ទាញយកកំណត់ហេតុជា txt",
+  "downloadChatLog": "ទាញយកកំណត់ហេតុជជែក",
+  "resetChat": "កំណត់ការជជែកឡើងវិញ",
+  "toggleDataCollection": "បិទ/បើកការប្រមូលទិន្នន័យ",
+  "dataCollection": "ការប្រមូលទិន្នន័យ",
+  "toggleDeveloperMode": "បិទ/បើករបៀបអ្នកអភិវឌ្ឍន៍",
+  "exitFullView": "ចាកចេញពីទិដ្ឋភាពពេញ",
+  "enterFullView": "ចូលទិដ្ឋភាពពេញ",
+  "hideInterface": "លាក់ផ្ទាំងអន្តរកម្ម",
+  "resetChatConfirm": "កំណត់ការជជែកឡើងវិញ?",
+  "downloadBeforeResetConfirm": "ទាញយកកំណត់ហេតុជជែកមុនពេលកំណត់ឡើងវិញ?",
+  "dataCollectionOn": "ការសន្ទនារបស់អ្នកនឹងត្រូវបានប្រើដើម្បីបណ្ដុះបណ្ដាលគំរូ AI របស់យើង",
+  "dataCollectionOff": "ការសន្ទនារបស់អ្នកនឹងមិនត្រូវបានប្រើដើម្បីបណ្ដុះបណ្ដាលគំរូ AI របស់យើងទេ"
+}

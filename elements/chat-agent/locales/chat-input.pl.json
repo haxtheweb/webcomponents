@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Pokaż wcześniej wysłaną wiadomość (w górę)",
+  "displayPreviousMessageDown": "Pokaż wcześniej wysłaną wiadomość (w dół)",
+  "sendPrompt": "Wyślij polecenie",
+  "sendPromptToMerlin": "Wyślij polecenie do Merlina",
+  "shortenPrompt": "Skróć polecenie do maksymalnie {limit} znaków."
+}

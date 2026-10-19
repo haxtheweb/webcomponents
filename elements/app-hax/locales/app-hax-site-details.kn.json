@@ -1,0 +1,18 @@
+{
+  "copy": "ನಕಲಿಸಿ",
+  "download": "ಡೌನ್‌ಲೋಡ್",
+  "archive": "ಆರ್ಕೈವ್",
+  "copyOperation": "ನಕಲಿಸು",
+  "downloadOperation": "ಡೌನ್‌ಲೋಡ್",
+  "archiveOperation": "ಆರ್ಕೈವ್",
+  "created": "ರಚಿಸಲಾಗಿದೆ",
+  "updated": "ನವೀಕರಿಸಲಾಗಿದೆ",
+  "pages": "ಪುಟಗಳು",
+  "url": "URL",
+  "confirm": "ದೃಢೀಕರಿಸಿ",
+  "cancel": "ರದ್ದುಮಾಡಿ",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "ನೀವು ಖಚಿತವಾಗಿ {siteName} ಅನ್ನು {operation} ಮಾಡಲು ಬಯಸುವಿರಾ?",
+  "siteOperationSuccessful": "{siteName} {operation} ಯಶಸ್ವಿಯಾಗಿದೆ!",
+  "siteOperationFailed": "{siteName} {operation} ವಿಫಲವಾಗಿದೆ"
+}

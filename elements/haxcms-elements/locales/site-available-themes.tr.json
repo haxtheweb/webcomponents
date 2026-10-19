@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Temalar yüklenemedi: {error}",
+  "noThemesForView": "Bu görünüm için kullanılabilir tema yok.",
+  "active": "Etkin",
+  "themeIsActive": "{name} teması etkin",
+  "applyTheme": "{name} temasını uygula",
+  "apply": "Uygula",
+  "preview": "Önizleme",
+  "name": "Ad",
+  "element": "Öğe",
+  "description": "Açıklama",
+  "action": "Eylem",
+  "loadingThemes": "Temalar yükleniyor...",
+  "themesShown": "{count} tema gösteriliyor",
+  "themesShownDefaults": "{count} tema gösteriliyor (app-hax varsayılanları)",
+  "availableHaxcmsThemes": "Kullanılabilir HAXcms Temaları",
+  "gallery": "Galeri",
+  "table": "Tablo"
+}

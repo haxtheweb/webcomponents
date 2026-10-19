@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ua kope ʻia ka loulou heleuma!",
+  "skipToContent": "Lele i ka ʻike",
+  "changePalette": "Hoʻololi i ka papa waihoʻoluʻu",
+  "primaryLinks": "Nā loulou mua",
+  "socialLinks": "Nā loulou kaiaulu",
+  "myProfile": "Koʻu moʻolelo pilikino",
+  "profileImageOf": "Kiʻi moʻolelo pilikino o {name}",
+  "profileImage": "Kiʻi moʻolelo pilikino",
+  "linkCardProfile": "Moʻolelo pilikino kāleka loulou",
+  "emptyStateLinks": "Hoʻohui i nā mea papa koho pae luna ma site.json e hōʻike ai i nā pihi loulou.",
+  "titleOnPlatform": "{title} ma {platform}",
+  "openPlatform": "Wehe iā {platform}",
+  "paletteUpdated": "Ua hoʻololi ʻia ka papa waihoʻoluʻu i ke koho {number}."
+}

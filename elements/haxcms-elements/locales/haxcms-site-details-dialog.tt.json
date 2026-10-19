@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- килешү буенча беренче бит --",
+  "details": "Тулырак",
+  "title": "Исем",
+  "titleDescription": "Сайт исеме",
+  "homePage": "Баш бит",
+  "homePageDescription": "Килешү буенча керү / баш бит итеп кулланыла торган бит",
+  "advanced": "Өстәмә",
+  "serviceWorker": "Динамик биткә service worker өстәү",
+  "serviceWorkerDescription": "Кулланучылар серверның соңгы нәтиҗәсен һәрвакыт шунда ук күрергә тиеш булса, моны сүндерегез.",
+  "forceBrowserUpgrade": "Браузерны мәҗбүри яңарту",
+  "forceBrowserUpgradeDescription": "Сайтны йөкләгәнче һәрдаим яңара торган браузерлар таләп итү.",
+  "unableToLoadSiteDetails": "Сайт мәгълүматларын йөкләп булмады.",
+  "noSiteDetails": "Сайт мәгълүматлары юк.",
+  "save": "Саклау"
+}

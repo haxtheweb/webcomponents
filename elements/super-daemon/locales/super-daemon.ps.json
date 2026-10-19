@@ -36,5 +36,7 @@
   "clickToDoAnything": "د هر څه کولو لپاره کلیک وکړئ!",
   "moreDetails": "نورې تفصیلاں",
   "details": "تفصیلاں",
-  "saved": "خوندي شو"
+  "saved": "خوندي شو",
+  "opensInNewWindow": "په نوې کړکۍ کې پرانیستل کېږي",
+  "resultsCount": "{count} پایلې"
 }

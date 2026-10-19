@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Mualliflikni koʻrsatish",
+  "licenseBySa": "Mualliflikni koʻrsatish — Xuddi shunday tarqatish",
+  "licenseByNd": "Mualliflikni koʻrsatish — Oʻzgartirmaslik",
+  "licenseByNc": "Mualliflikni koʻrsatish — Notijorat",
+  "licenseByNcSa": "Mualliflikni koʻrsatish — Notijorat — Xuddi shunday tarqatish",
+  "licenseByNcNd": "Mualliflikni koʻrsatish — Notijorat — Oʻzgartirmaslik",
+  "licenseGraphic": "{license} belgisi",
+  "workByCreator": "{title}, muallif: {creator}",
+  "workByCreatorLicensed": "{title}, muallif: {creator}, {license} litsenziyasi asosida tarqatiladi.",
+  "permissionsBeyondScope": "Ushbu litsenziya doirasidan tashqari ruxsatlar {link} mavjud.",
+  "author": "(muallif)",
+  "onTheLicensingDetailsPage": "litsenziya tafsilotlari sahifasida"
+}

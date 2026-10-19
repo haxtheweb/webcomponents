@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Tak logg niður sum txt",
+  "downloadChatLog": "Tak kjattlogg niður",
+  "resetChat": "Nullstilla kjatt",
+  "toggleDataCollection": "Skift dátuinnsavning",
+  "dataCollection": "Dátuinnsavning",
+  "toggleDeveloperMode": "Skift menningarhátt",
+  "exitFullView": "Far úr fullari vísing",
+  "enterFullView": "Far í fulla vísing",
+  "hideInterface": "Fjal flatu",
+  "resetChatConfirm": "Nullstilla kjattið?",
+  "downloadBeforeResetConfirm": "Taka kjattloggin niður, áðrenn tú nullstillar?",
+  "dataCollectionOn": "Samrøður tínar verða nýttar til at venja AI-modellini hjá okkum",
+  "dataCollectionOff": "Samrøður tínar verða ikki nýttar til at venja AI-modellini hjá okkum"
+}

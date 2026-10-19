@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
   * `a11y-details`
   * accessible progressive disclosure with detail and summary
@@ -53,7 +54,7 @@ import { LitElement, html, css } from "lit";
   * @lit-element
   * @demo demo/index.html
   */
-class A11yDetails extends LitElement {
+class A11yDetails extends I18NMixin(LitElement) {
   //styles function
   static get styles() {
     return [
@@ -205,7 +206,9 @@ class A11yDetails extends LitElement {
         >
           <span class="open-text">${this.openText}</span>
           <span class="close-text">${this.closeText}</span>
-          <slot name="summary" class="${this.summaryClasses}">Details</slot>
+          <slot name="summary" class="${this.summaryClasses}"
+            >${this.t.details}</slot
+          >
         </summary>
         <div id="details-inner"><slot name="details"></slot></div>
       </details>
@@ -323,6 +326,17 @@ class A11yDetails extends LitElement {
   // life cycle
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      details: "Details",
+    };
+    // explicit namespace so subclasses (a11y-figure) share this bucket
+    this.registerLocalization({
+      context: this,
+      namespace: "a11y-details",
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.closeText = "";
     this.openText = "";
     this.tag = A11yDetails.tag;

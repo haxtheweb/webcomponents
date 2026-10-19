@@ -21,6 +21,18 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      home: "Home",
+      siteNameHome: "{name} home",
+      site: "Site",
+      toggleNavigationMenu: "Toggle navigation menu",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.title = "Title";
     this.homeLink = "";
     this.topItems = [];
@@ -289,11 +301,11 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       >
 
         <div class="logo-hamburger desktop">
-          <a class="logo-link desktop" href="${this.homeLink}" aria-label="${store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : 'Home'} home" @focus=${this.fullOpacity}>
+          <a class="logo-link desktop" href="${this.homeLink}" aria-label="${this.t.siteNameHome.replace("{name}", () => (store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : this.t.home))}" @focus=${this.fullOpacity}>
             <img class="logo desktop" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="" />
           </a>
         </div>
-        <nav aria-label="Site">
+        <nav aria-label="${this.t.site}">
         <ul class="nav-links desktop">
           ${Array.from(this.topItems).map((item) => html`
               <li>
@@ -309,12 +321,12 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       <!-- -----------MOBILE HEADER--------------- -->
       <div class="container mobile">
         <div class="logo-hamburger mobile">
-          <a class="logo-link mobile" href="${this.homeLink}" aria-label="${store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : 'Home'} home" @click="${this.closeHamburger}">
+          <a class="logo-link mobile" href="${this.homeLink}" aria-label="${this.t.siteNameHome.replace("{name}", () => (store.manifest && store.manifest.metadata && store.manifest.metadata.site && store.manifest.metadata.site.name ? store.manifest.metadata.site.name : this.t.home))}" @click="${this.closeHamburger}">
             <img class="logo mobile" src="${store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : ''}" @error=${this.handleImageError} alt="" />
           </a> 
 
           <!-- hamburger/close button -->
-          <button @click="${this.toggleHamburger}" aria-label="Toggle navigation menu" aria-expanded="${this.isOpen}" aria-controls="mobile-nav-menu">
+          <button @click="${this.toggleHamburger}" aria-label="${this.t.toggleNavigationMenu}" aria-expanded="${this.isOpen}" aria-controls="mobile-nav-menu">
             ${this.isOpen ? html`
               <svg class="cross mobile"
                 version="1.1" 
@@ -346,7 +358,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
         </div>
         <div class="mobile nav-menu" id="mobile-nav-menu">
-          <nav aria-label="Site">
+          <nav aria-label="${this.t.site}">
           <ul class="nav-links mobile">
             ${Array.from(this.topItems).map((item) => html`
                 <li class="mobile">

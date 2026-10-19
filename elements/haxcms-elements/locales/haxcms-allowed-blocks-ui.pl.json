@@ -10,5 +10,9 @@
   "save": "Zapisz",
   "noDescription": "Brak opisu.",
   "details": "Szczegóły",
-  "loadingInventory": "Ładowanie pełnej listy bloków…"
+  "loadingInventory": "Ładowanie pełnej listy bloków…",
+  "selectAllButton": "Zaznacz wszystko",
+  "deselectAllButton": "Odznacz wszystko",
+  "selectedOfAvailable": "Wybrano {selected} / dostępnych {total}",
+  "savingBlocksFailed": "Zapisywanie bloków nie powiodło się: {error}"
 }

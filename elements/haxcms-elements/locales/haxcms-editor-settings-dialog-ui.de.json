@@ -5,5 +5,9 @@
   "buttons": "Schaltflächen",
   "futureButtonConfiguration": "Die benutzerdefinierte Konfiguration der Editor-Schaltflächen ist bald verfügbar.",
   "save": "Speichern",
-  "saving": "Wird gespeichert…"
+  "saving": "Wird gespeichert…",
+  "novice": "Anfänger",
+  "expert": "Experte",
+  "toolbarPreviewAlt": "Vorschau der Bearbeitungsleiste für {audience}",
+  "savingEditorSettingsFailed": "Speichern der Editor-Einstellungen fehlgeschlagen: {error}"
 }

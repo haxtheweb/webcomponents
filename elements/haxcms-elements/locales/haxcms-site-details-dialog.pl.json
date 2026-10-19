@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- domyślnie pierwsza strona --",
+  "details": "Szczegóły",
+  "title": "Tytuł",
+  "titleDescription": "Nazwa witryny",
+  "homePage": "Strona główna",
+  "homePageDescription": "Strona używana jako domyślna strona docelowa / główna",
+  "advanced": "Zaawansowane",
+  "serviceWorker": "Dodaj service worker do strony dynamicznej",
+  "serviceWorkerDescription": "Wyłącz tę opcję, jeśli użytkownicy powinni zawsze od razu widzieć najnowsze dane z serwera.",
+  "forceBrowserUpgrade": "Wymuś aktualizację przeglądarki",
+  "forceBrowserUpgradeDescription": "Wymagaj aktualnych przeglądarek przed wczytaniem witryny.",
+  "unableToLoadSiteDetails": "Nie można wczytać szczegółów witryny.",
+  "noSiteDetails": "Brak dostępnych szczegółów witryny.",
+  "save": "Zapisz"
+}

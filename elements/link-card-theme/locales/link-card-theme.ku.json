@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Girêdana lengerê hat kopîkirin!",
+  "skipToContent": "Derbasî naverokê bibe",
+  "changePalette": "Paletê biguherîne",
+  "primaryLinks": "Girêdanên sereke",
+  "socialLinks": "Girêdanên civakî",
+  "myProfile": "Profîla min",
+  "profileImageOf": "Wêneyê profîla {name}",
+  "profileImage": "Wêneyê profîlê",
+  "linkCardProfile": "Profîla karta girêdanê",
+  "emptyStateLinks": "Ji bo nîşandana bişkokên girêdanê di site.json de tiştên menuyê yên asta jorîn lê zêde bike.",
+  "titleOnPlatform": "{title} li ser {platform}",
+  "openPlatform": "{platform} veke",
+  "paletteUpdated": "Paleta rengan bû vebijarka {number}."
+}

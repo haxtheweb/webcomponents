@@ -10,9 +10,17 @@ import { CleanTwo } from "@haxtheweb/clean-two/clean-two.js";
 
 // a blank theme that extends the conventions of CleanTwo bootstrap but can output a very clean
 class HAXCMSBlankTheme extends CleanTwo {
+  constructor() {
+    super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+    };
+  }
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <main>
         <article id="contentcontainer">
           <site-active-title></site-active-title>

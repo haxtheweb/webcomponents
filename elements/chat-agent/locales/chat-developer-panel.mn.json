@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Хэрэглэгчийн чатын бүртгэлийг консолд хүснэгтээр",
+  "consoleTableUserText": "console.table() хэрэглэгчийн чатын бүртгэл",
+  "consoleTableUserTooltip": "Хэрэглэгчийн чатын бүртгэлийг консолд хүснэгтээр хэвлэх",
+  "consoleTableMerlinLabel": "Merlin-ий чатын бүртгэлийг консолд хүснэгтээр",
+  "consoleTableMerlinText": "console.table() merlin-ий чатын бүртгэл",
+  "consoleTableMerlinTooltip": "Merlin-ий чатын бүртгэлийг консолд хүснэгтээр хэвлэх",
+  "consoleTableAllLabel": "Чатын бүх бүртгэлийг консолд хүснэгтээр",
+  "consoleTableAllText": "console.table() чатын бүх бүртгэл",
+  "consoleTableAllTooltip": "Чатын бүх бүртгэлийг консолд хүснэгтээр хэвлэх",
+  "downloadChatLogJson": "Чатын бүртгэлийг .json-оор татах",
+  "downloadChatLogJsonTooltip": "Чатын бүртгэлийг .json-оор татах"
+}

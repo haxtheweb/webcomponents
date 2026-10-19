@@ -10,5 +10,9 @@
   "save": "Išsaugoti",
   "noDescription": "Aprašymo nėra.",
   "details": "Išsami informacija",
-  "loadingInventory": "Įkeliamas visas blokų sąrašas…"
+  "loadingInventory": "Įkeliamas visas blokų sąrašas…",
+  "selectAllButton": "Pasirinkti viską",
+  "deselectAllButton": "Atžymėti viską",
+  "selectedOfAvailable": "Pasirinkta: {selected} / galima: {total}",
+  "savingBlocksFailed": "Nepavyko išsaugoti blokų: {error}"
 }

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "کوئی نتیجہ نئیں",
+  "viewsRecordHeading": "ریکارڈ کرو",
+  "viewsTitleImage": "{title} تصویر",
+  "viewsTitlePreview": "{title} جھلک",
+  "viewsNoTimelineRecords": "ٹائم لائن بݨاؤن لئی تاریخ والے کوئی ریکارڈ دستیاب نئیں۔",
+  "viewsTimelineTitle": "{title} ٹائم لائن",
+  "viewsNoChartField": "چارٹ بݨاؤن لئی کوئی ہندسیاں والا خانہ نئیں لبھا۔",
+  "viewsChartingValue": "{value} دا چارٹ",
+  "viewsChartingValueByLabel": "{label} دے حساب نال {value} دا چارٹ",
+  "viewsChartTitle": "{title} چارٹ",
+  "viewsNoTreeRecords": "درخت بݨاؤن لئی درجہ وار ریکارڈ دستیاب نئیں۔",
+  "viewsNoGalleryRecords": "گیلری بݨاؤن لئی تصویر ریکارڈ دستیاب نئیں۔",
+  "viewsNoPlaylistRecords": "پلے لسٹ بݨاؤن لئی میڈیا ریکارڈ دستیاب نئیں۔",
+  "fetchFailed": "لیاؤݨ ناکام ({status})",
+  "unableToLoadViewData": "ویو ڈیٹا لوڈ نئیں ہو سکیا۔",
+  "noResultsFound": "کوئی نتیجہ نئیں لبھا۔",
+  "refreshView": "ویو تازہ کرو",
+  "breakIntoStaticContent": "جامد مواد وچ توڑو",
+  "viewsOpenRecord": "ریکارڈ کھولو"
+}

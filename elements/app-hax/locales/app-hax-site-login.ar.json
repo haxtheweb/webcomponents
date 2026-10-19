@@ -1,0 +1,14 @@
+{
+  "enterUserName": "أدخل اسم المستخدم",
+  "invalidUsernameOrPassword": "اسم المستخدم أو كلمة المرور غير صحيحة",
+  "welcomeLetsGo": "مرحبًا {username}! لننطلق!",
+  "enterYourUsername": "أدخل اسم المستخدم",
+  "username": "اسم المستخدم",
+  "next": "التالي",
+  "welcomeBack": "مرحبًا بعودتك، {username}!",
+  "notYou": "لست أنت؟",
+  "enterYourPassword": "أدخل كلمة المرور",
+  "password": "كلمة المرور",
+  "togglePasswordDisplay": "تبديل عرض كلمة المرور",
+  "login": "تسجيل الدخول"
+}

@@ -1,0 +1,18 @@
+{
+  "copy": "Kopeeri",
+  "download": "Laadi alla",
+  "archive": "Arhiveeri",
+  "copyOperation": "kopeerimine",
+  "downloadOperation": "allalaadimine",
+  "archiveOperation": "arhiveerimine",
+  "created": "loodud",
+  "updated": "uuendatud",
+  "pages": "lehte",
+  "url": "URL",
+  "confirm": "Kinnita",
+  "cancel": "Tühista",
+  "siteOperationConfirmTitle": "{operationName}: {siteName}?",
+  "siteOperationConfirmMessage": "Kas soovid kindlasti alustada toimingut „{operation}” saidil {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} õnnestus!",
+  "siteOperationFailed": "{siteName}: {operation} ebaõnnestus"
+}

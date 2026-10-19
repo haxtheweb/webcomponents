@@ -1,0 +1,14 @@
+{
+  "enterUserName": "输入用户名",
+  "invalidUsernameOrPassword": "用户名或者密码勿对",
+  "welcomeLetsGo": "欢迎 {username}!阿拉开始!",
+  "enterYourUsername": "输入侬个用户名",
+  "username": "用户名",
+  "next": "下一个",
+  "welcomeBack": "欢迎转来,{username}!",
+  "notYou": "勿是侬?",
+  "enterYourPassword": "输入侬个密码",
+  "password": "密码",
+  "togglePasswordDisplay": "切换密码显示",
+  "login": "登录"
+}

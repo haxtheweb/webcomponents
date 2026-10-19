@@ -1,4 +1,11 @@
 {
   "readMore": "Lees meer",
-  "home": "Tuis"
+  "home": "Tuis",
+  "anchorLinkCopied": "Ankerskakel gekopieer!",
+  "skipToContent": "Spring na inhoud",
+  "changeTheme": "Verander tema",
+  "siteSections": "Webwerfafdelings",
+  "pageOfTotal": "Bladsy {current} van {total}",
+  "siteGenerated": "Webwerf gegenereer: {date}",
+  "licenseGraphic": "{license}-grafika"
 }

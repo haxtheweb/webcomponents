@@ -1,0 +1,5 @@
+{
+  "pageNavigation": "Sivunavigointi",
+  "goToPreviousPage": "Siirry edelliselle sivulle: {title}",
+  "goToNextPage": "Siirry seuraavalle sivulle: {title}"
+}

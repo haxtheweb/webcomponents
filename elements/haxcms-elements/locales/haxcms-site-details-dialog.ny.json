@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- tsamba loyamba mwachisawawa --",
+  "details": "Zambiri",
+  "title": "Mutu",
+  "titleDescription": "Dzina la webusayiti",
+  "homePage": "Tsamba loyamba",
+  "homePageDescription": "Tsamba logwiritsidwa ntchito ngati tsamba lofikira / loyamba",
+  "advanced": "Zapamwamba",
+  "serviceWorker": "Onjezani service worker ku tsamba losintha",
+  "serviceWorkerDescription": "Zimitsani izi ngati ogwiritsa ntchito ayenera kuona nthawi zonse zotuluka zaposachedwa za seva nthawi yomweyo.",
+  "forceBrowserUpgrade": "Kakamizani kukweza msakatuli",
+  "forceBrowserUpgradeDescription": "Funani asakatuli osinthidwa nthawi zonse musanatsegule webusayiti.",
+  "unableToLoadSiteDetails": "Sitinathe kutsegula zambiri za webusayiti.",
+  "noSiteDetails": "Palibe zambiri za webusayiti zomwe zilipo.",
+  "save": "Sungani"
+}

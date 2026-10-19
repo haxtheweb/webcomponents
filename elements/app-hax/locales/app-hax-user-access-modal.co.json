@@ -7,5 +7,7 @@
   "userAccessGranted": "Accessu datu à l'utilizatore cù successu!",
   "userNotFound": "Utilizatore micca trovu o micca auturizatu",
   "loadingAddingUser": "Aghjunta di l'utilizatore...",
-  "grantAccessTo": "Dà l'accessu à:"
+  "grantAccessTo": "Dà l'accessu à:",
+  "networkErrorTryAgain": "Hè accaduta un errore di reta. Pruvate torna.",
+  "characterWillAppear": "U persunagiu apparisce quandu scrivite un nome d'utilizatore"
 }

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "L-ebda riżultat",
+  "viewsRecordHeading": "Irrekordja",
+  "viewsTitleImage": "Immaġni ta' {title}",
+  "viewsTitlePreview": "Preview ta' {title}",
+  "viewsNoTimelineRecords": "L-ebda rekord orjentat lejn id-dati disponibbli għall-wiri tal-kronoloġija.",
+  "viewsTimelineTitle": "Kronoloġija ta' {title}",
+  "viewsNoChartField": "Ma nstab l-ebda qasam numeriku għall-wiri tal-grafika.",
+  "viewsChartingValue": "Grafika ta' {value}",
+  "viewsChartingValueByLabel": "Grafika ta' {value} skont {label}",
+  "viewsChartTitle": "Grafika ta' {title}",
+  "viewsNoTreeRecords": "L-ebda rekord ġerarkiku disponibbli għall-wiri tas-siġra.",
+  "viewsNoGalleryRecords": "L-ebda rekord tal-immaġnijiet disponibbli għall-wiri tal-gallerija.",
+  "viewsNoPlaylistRecords": "L-ebda rekord tal-midja disponibbli għall-wiri tal-playlist.",
+  "fetchFailed": "Il-ġbir falla ({status})",
+  "unableToLoadViewData": "Ma setgħetx titgħabba d-data tal-veduta.",
+  "noResultsFound": "Ma nstab l-ebda riżultat.",
+  "refreshView": "Aġġorna l-veduta",
+  "breakIntoStaticContent": "Aqsam f'kontenut statiku",
+  "viewsOpenRecord": "Iftaħ ir-rekord"
+}

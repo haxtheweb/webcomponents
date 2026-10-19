@@ -1,0 +1,18 @@
+{
+  "copy": "Copiază",
+  "download": "Descarcă",
+  "archive": "Arhivează",
+  "copyOperation": "copiere",
+  "downloadOperation": "descărcare",
+  "archiveOperation": "arhivare",
+  "created": "creat",
+  "updated": "actualizat",
+  "pages": "pagini",
+  "url": "URL",
+  "confirm": "Confirmă",
+  "cancel": "Anulează",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Sigur vrei să efectuezi operațiunea de {operation} pentru {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} reușită!",
+  "siteOperationFailed": "{siteName}: {operation} eșuată"
+}

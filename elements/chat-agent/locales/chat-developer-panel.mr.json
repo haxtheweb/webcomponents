@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "कन्सोल टेबल वापरकर्ता चॅट लॉग",
+  "consoleTableUserText": "console.table() वापरकर्ता चॅट लॉग",
+  "consoleTableUserTooltip": "वापरकर्ता चॅट लॉग टेबल म्हणून कन्सोलवर छापा",
+  "consoleTableMerlinLabel": "कन्सोल टेबल merlin चॅट लॉग",
+  "consoleTableMerlinText": "console.table() merlin चॅट लॉग",
+  "consoleTableMerlinTooltip": "Merlin चॅट लॉग टेबल म्हणून कन्सोलवर छापा",
+  "consoleTableAllLabel": "कन्सोल टेबल संपूर्ण चॅट लॉग",
+  "consoleTableAllText": "console.table() संपूर्ण चॅट लॉग",
+  "consoleTableAllTooltip": "संपूर्ण चॅट लॉग टेबल म्हणून कन्सोलवर छापा",
+  "downloadChatLogJson": "चॅट लॉग .json म्हणून डाउनलोड करा",
+  "downloadChatLogJsonTooltip": "चॅट लॉग .json म्हणून डाउनलोड करा"
+}

@@ -1,0 +1,11 @@
+{
+  "theme": "ገጽታ",
+  "active": "ንቁ",
+  "selected": "የተመረጠ",
+  "noPreview": "ቅድመ እይታ የለም",
+  "currentlyActiveAndSelected": "በአሁኑ ጊዜ ንቁ እና የተመረጠ ገጽታ",
+  "currentlyActive": "በአሁኑ ጊዜ ንቁ ገጽታ",
+  "selectedToApplyOnSave": "ሲቀመጥ የሚተገበር የተመረጠ ገጽታ",
+  "themeSelection": "የገጽታ ምርጫ",
+  "noThemesAvailable": "ምንም ገጽታዎች የሉም።"
+}

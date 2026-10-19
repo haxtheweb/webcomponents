@@ -1,0 +1,17 @@
+{
+  "editNodes": "Upraviť uzly",
+  "editLines": "Upraviť čiary",
+  "reset": "Obnoviť",
+  "save": "Uložiť",
+  "cancel": "Zrušiť",
+  "delete": "Odstrániť",
+  "type": "Typ:",
+  "topic": "Téma",
+  "subsection": "Podsekcia",
+  "name": "Názov:",
+  "enterName": "Zadajte názov",
+  "url": "URL:",
+  "enterUrl": "Zadajte URL",
+  "activeNode": "Aktívny uzol?",
+  "nodeId": "Uzol {id}"
+}

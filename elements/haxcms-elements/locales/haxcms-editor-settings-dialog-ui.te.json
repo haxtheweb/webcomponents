@@ -5,5 +5,9 @@
   "buttons": "బటన్‌లు",
   "futureButtonConfiguration": "అనుకూల ఎడిటర్ బటన్ కాన్ఫిగరేషన్ త్వరలో వస్తుంది.",
   "save": "సేవ్ చేయి",
-  "saving": "సేవ్ అవుతోంది…"
+  "saving": "సేవ్ అవుతోంది…",
+  "novice": "ప్రారంభకులు",
+  "expert": "నిపుణులు",
+  "toolbarPreviewAlt": "{audience} సవరణ టూల్‌బార్ ప్రివ్యూ",
+  "savingEditorSettingsFailed": "ఎడిటర్ సెట్టింగ్‌లను సేవ్ చేయడం విఫలమైంది: {error}"
 }

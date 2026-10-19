@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Neizdevās ielādēt motīvus: {error}",
+  "noThemesForView": "Šim skatam nav pieejamu motīvu.",
+  "active": "Aktīva",
+  "themeIsActive": "Motīvs {name} ir aktīvs",
+  "applyTheme": "Piemērot motīvu {name}",
+  "apply": "Piemērot",
+  "preview": "Priekšskatījums",
+  "name": "Vārds",
+  "element": "Elements",
+  "description": "Apraksts",
+  "action": "Darbība",
+  "loadingThemes": "Ielādē motīvus...",
+  "themesShown": "Parādīti motīvi: {count}",
+  "themesShownDefaults": "Parādīti motīvi: {count} (app-hax noklusējumi)",
+  "availableHaxcmsThemes": "Pieejamie HAXcms motīvi",
+  "gallery": "Galerija",
+  "table": "Tabula"
+}

@@ -22,6 +22,13 @@
   "unpublish": "Dadgyhoeddi",
   "savePage": "Cadw'r dudalen",
   "cancel": "Canslo",
+  "delete": "Dileu",
+  "editTitle": "Golygu'r teitl",
+  "editIcon": "Golygu Eicon",
+  "agent": "Asiant",
+  "pageLockedUnlockToEdit": "Mae'r dudalen hon wedi'i chloi. Datglowch hi yn gyntaf i'w golygu.",
+  "pageLockedUnlockToChangePublishStatus": "Mae'r dudalen hon wedi'i chloi. Datglowch hi yn gyntaf i newid y statws cyhoeddi.",
+  "pageLockedUnlockToDelete": "Mae'r dudalen hon wedi'i chloi. Datglowch hi yn gyntaf i'w dileu.",
   "pageDetails": "Manylion tudalen",
   "clickToUnlock": "Cliciwch i ddatgloi"
 }

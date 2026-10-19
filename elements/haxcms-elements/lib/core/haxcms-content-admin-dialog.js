@@ -1,6 +1,7 @@
 import { html, css } from "lit";
 import { keyed } from "lit/directives/keyed.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
@@ -12,7 +13,7 @@ import "@haxtheweb/simple-pager/simple-pager.js";
 // content admin's pagination feels consistent with the files admin.
 const PAGE_SIZE_OPTIONS = [10, 25, 50, 75, 100, 250, 500];
 
-class HAXCMSContentAdminDialog extends DDD {
+class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-content-admin-dialog";
   }
@@ -41,6 +42,76 @@ class HAXCMSContentAdminDialog extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      published: "Published",
+      unpublished: "Unpublished",
+      timeAgo: "{time} ago",
+      month: "month",
+      months: "months",
+      day: "day",
+      days: "days",
+      hour: "hour",
+      hours: "hours",
+      minute: "minute",
+      minutes: "minutes",
+      second: "second",
+      seconds: "seconds",
+      bulkReplaceConfirm: "This bulk replacement cannot be undone. Continue?",
+      emptyReplacementConfirm: "Replacement text is empty, so this will remove all matches. Confirm again to continue.",
+      tag: "Tag",
+      parentPageTitle: "Parent page title",
+      selectorPlaceholder: "Simple selector (example: h2, a[href], img[alt=\"\"])",
+      fullTextPlaceholder: "Text to find across title, tags, and content",
+      filterValue: "Filter value",
+      showOnlyItemsWhere: "Show only items where",
+      filterBy: "Filter by",
+      searchContent: "Search content",
+      visibility: "Visibility",
+      tags: "Tags",
+      parentPage: "Parent page",
+      value: "Value",
+      any: "Any",
+      visible: "Visible",
+      notVisible: "Not visible",
+      mode: "Mode",
+      search: "Search",
+      searchAndReplace: "Search and replace",
+      searchType: "Search type",
+      fullText: "Full text",
+      querySelector: "Query selector",
+      caseSensitive: "Case sensitive",
+      no: "No",
+      yes: "Yes",
+      perPage: "Per page",
+      replaceWith: "Replace with",
+      replacementPlaceholder: "Replacement phrase (leave empty to remove)",
+      replacing: "Replacing…",
+      replace: "Replace",
+      searching: "Searching…",
+      matchCountSingular: "{count} match",
+      matchCountPlural: "{count} matches",
+      noMatchingContent: "No matching content found.",
+      title: "Title",
+      status: "Status",
+      updated: "Updated",
+      parent: "Parent",
+      slug: "Slug",
+      actions: "Actions",
+      viewRevisions: "View revisions",
+      viewPageRevisions: "View page revisions",
+      contentPagination: "Content pagination",
+      replaceSummary: "Updated {pageCount} {pageUnit} with {replacementCount} {replacementUnit}.",
+      pageUnit: "page",
+      pagesUnit: "pages",
+      replacementUnit: "replacement",
+      replacementsUnit: "replacements",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.rows = [];
     this.filterField = "search";
     this.filterValue = "";
@@ -353,7 +424,7 @@ class HAXCMSContentAdminDialog extends DDD {
         tags: tags,
         published: published,
         visible: visible,
-        statusLabel: published ? "Published" : "Unpublished",
+        statusLabel: published ? this.t.published : this.t.unpublished,
         updated,
         updatedLabel: this._formatRelativeTime(updated),
         titleLower: (item.title || "").toLowerCase(),
@@ -422,26 +493,44 @@ class HAXCMSContentAdminDialog extends DDD {
     const minute = 60;
     if (delta >= month) {
       const months = Math.floor(delta / month);
-      return `${months} month${months === 1 ? "" : "s"} ago`;
+      return this.t.timeAgo.replace(
+        "{time}",
+        () => (`${months} ${months === 1 ? this.t.month : this.t.months}`),
+      );
     }
     if (delta >= day) {
       const days = Math.floor(delta / day);
-      return `${days} day${days === 1 ? "" : "s"} ago`;
+      return this.t.timeAgo.replace(
+        "{time}",
+        () => (`${days} ${days === 1 ? this.t.day : this.t.days}`),
+      );
     }
     if (delta >= hour) {
       const hours = Math.floor(delta / hour);
       const minutes = Math.floor((delta % hour) / minute);
       if (minutes > 0) {
-        return `${hours} hour${hours === 1 ? "" : "s"} ${minutes} minute${minutes === 1 ? "" : "s"} ago`;
+        return this.t.timeAgo.replace(
+          "{time}",
+          () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours} ${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes}`),
+        );
       }
-      return `${hours} hour${hours === 1 ? "" : "s"} ago`;
+      return this.t.timeAgo.replace(
+        "{time}",
+        () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours}`),
+      );
     }
     if (delta >= minute) {
       const minutes = Math.floor(delta / minute);
       const seconds = Math.floor(delta % minute);
-      return `${minutes} minute${minutes === 1 ? "" : "s"} ${seconds} second${seconds === 1 ? "" : "s"} ago`;
+      return this.t.timeAgo.replace(
+        "{time}",
+        () => (`${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes} ${seconds} ${seconds === 1 ? this.t.second : this.t.seconds}`),
+      );
     }
-    return `${delta} second${delta === 1 ? "" : "s"} ago`;
+    return this.t.timeAgo.replace(
+      "{time}",
+      () => (`${delta} ${delta === 1 ? this.t.second : this.t.seconds}`),
+    );
   }
 
   _onFilterField(e) {
@@ -599,7 +688,16 @@ class HAXCMSContentAdminDialog extends DDD {
     const totalReplacements =
       typeof data.totalReplacements === "number" ? data.totalReplacements : 0;
     store.toast(
-      `Updated ${updatedItems} page${updatedItems === 1 ? "" : "s"} with ${totalReplacements} replacement${totalReplacements === 1 ? "" : "s"}.`,
+      this.t.replaceSummary
+        .replace("{pageCount}", () => updatedItems)
+        .replace("{pageUnit}", () => (updatedItems === 1 ? this.t.pageUnit : this.t.pagesUnit))
+        .replace("{replacementCount}", () => totalReplacements)
+        .replace(
+          "{replacementUnit}",
+          () => (totalReplacements === 1
+            ? this.t.replacementUnit
+            : this.t.replacementsUnit),
+        ),
       3000,
       { hat: "construction" },
     );
@@ -692,16 +790,14 @@ class HAXCMSContentAdminDialog extends DDD {
     }
     const searchTerm = this.filterValue ? this.filterValue.trim() : "";
     const replacement = this.replaceValue ? this.replaceValue.trim() : "";
-    const confirmation = globalThis.confirm(
-      "This bulk replacement cannot be undone. Continue?",
-    );
+    const confirmation = globalThis.confirm(this.t.bulkReplaceConfirm);
     if (!confirmation) {
       return;
     }
     let emptyReplacementConfirmed = false;
     if (replacement === "") {
       emptyReplacementConfirmed = globalThis.confirm(
-        "Replacement text is empty, so this will remove all matches. Confirm again to continue.",
+        this.t.emptyReplacementConfirm,
       );
       if (!emptyReplacementConfirmed) {
         return;
@@ -765,18 +861,18 @@ class HAXCMSContentAdminDialog extends DDD {
 
   _searchPlaceholder() {
     if (this.filterField === "tags") {
-      return "Tag";
+      return this.t.tag;
     }
     if (this.filterField === "parents") {
-      return "Parent page title";
+      return this.t.parentPageTitle;
     }
     if (this.filterField === "search") {
       if (this.searchMode === "selector") {
-        return 'Simple selector (example: h2, a[href], img[alt=""])';
+        return this.t.selectorPlaceholder;
       }
-      return "Text to find across title, tags, and content";
+      return this.t.fullTextPlaceholder;
     }
-    return "Filter value";
+    return this.t.filterValue;
   }
   _actionTargetFromEvent(e) {
     const path =
@@ -862,37 +958,37 @@ class HAXCMSContentAdminDialog extends DDD {
       <div class="panel-shell">
         <div class="panel-scroll">
           <div class="filters">
-            <h3 class="filters-title">Show only items where</h3>
+            <h3 class="filters-title">${this.t.showOnlyItemsWhere}</h3>
             <div class="controls">
               <simple-fields-field
                 type="select"
-                label="Filter by"
+                label="${this.t.filterBy}"
                 .value="${this.filterField}"
                 .itemsList="${[
-                  { value: "search", text: "Search content" },
-                  { value: "visibility", text: "Visibility" },
-                  { value: "tags", text: "Tags" },
-                  { value: "parents", text: "Parent page" },
+                  { value: "search", text: this.t.searchContent },
+                  { value: "visibility", text: this.t.visibility },
+                  { value: "tags", text: this.t.tags },
+                  { value: "parents", text: this.t.parentPage },
                 ]}"
                 @value-changed="${this._onFilterField}"
               ></simple-fields-field>
               ${this.filterField === "visibility"
                 ? html`<simple-fields-field
                     type="select"
-                    label="Value"
+                    label="${this.t.value}"
                     .value="${this.filterValue}"
                     .itemsList="${[
-                      { value: "any", text: "Any" },
-                      { value: "published", text: "Published" },
-                      { value: "unpublished", text: "Unpublished" },
-                      { value: "visible", text: "Visible" },
-                      { value: "not-visible", text: "Not visible" },
+                      { value: "any", text: this.t.any },
+                      { value: "published", text: this.t.published },
+                      { value: "unpublished", text: this.t.unpublished },
+                      { value: "visible", text: this.t.visible },
+                      { value: "not-visible", text: this.t.notVisible },
                     ]}"
                     @value-changed="${this._onFilterValue}"
                   ></simple-fields-field>`
                 : html`<simple-fields-field
                     type="text"
-                    label="Value"
+                    label="${this.t.value}"
                     .value="${this.filterValue}"
                     placeholder="${this._searchPlaceholder()}"
                     @value-changed="${this._onFilterValue}"
@@ -902,37 +998,37 @@ class HAXCMSContentAdminDialog extends DDD {
                 ? html`
                     <simple-fields-field
                       type="select"
-                      label="Mode"
+                      label="${this.t.mode}"
                       .value="${this.operationMode}"
                       .itemsList="${[
-                        { value: "search", text: "Search" },
-                        { value: "replace", text: "Search and replace" },
+                        { value: "search", text: this.t.search },
+                        { value: "replace", text: this.t.searchAndReplace },
                       ]}"
                       @value-changed="${this._onOperationMode}"
                     ></simple-fields-field>
                     <simple-fields-field
                       type="select"
-                      label="Search type"
+                      label="${this.t.searchType}"
                       .value="${this.searchMode}"
                       .itemsList="${[
-                        { value: "fulltext", text: "Full text" },
-                        { value: "selector", text: "Query selector" },
+                        { value: "fulltext", text: this.t.fullText },
+                        { value: "selector", text: this.t.querySelector },
                       ]}"
                       @value-changed="${this._onSearchMode}"
                     ></simple-fields-field>
                     <simple-fields-field
                       type="select"
-                      label="Case sensitive"
+                      label="${this.t.caseSensitive}"
                       .value="${this.searchCaseSensitive ? "true" : "false"}"
                       .itemsList="${[
-                        { value: "false", text: "No" },
-                        { value: "true", text: "Yes" },
+                        { value: "false", text: this.t.no },
+                        { value: "true", text: this.t.yes },
                       ]}"
                       @value-changed="${this._onSearchCaseSensitive}"
                     ></simple-fields-field>
                     <simple-fields-field
                       type="select"
-                      label="Per page"
+                      label="${this.t.perPage}"
                       .value="${String(this.searchLimit)}"
                       .itemsList="${PAGE_SIZE_OPTIONS.map((size) => ({
                         value: String(size),
@@ -944,17 +1040,17 @@ class HAXCMSContentAdminDialog extends DDD {
                       ? html`
                           <simple-fields-field
                             type="text"
-                            label="Replace with"
+                            label="${this.t.replaceWith}"
                             .value="${this.replaceValue}"
-                            placeholder="Replacement phrase (leave empty to remove)"
+                            placeholder="${this.t.replacementPlaceholder}"
                             @value-changed="${this._onReplaceValue}"
                           ></simple-fields-field>
                           <simple-icon-button-lite
                             class="replace-btn"
                             icon="find-replace"
                             label="${this.replaceLoading
-                              ? "Replacing…"
-                              : "Replace"}"
+                              ? this.t.replacing
+                              : this.t.replace}"
                             ?disabled="${!this._canRunReplace()}"
                             @click="${this._applyReplace}"
                           ></simple-icon-button-lite>
@@ -962,15 +1058,18 @@ class HAXCMSContentAdminDialog extends DDD {
                       : ``}
                     <p class="meta" role="status" aria-live="polite">
                       ${this.searchLoading
-                        ? "Searching…"
-                        : `${this._searchMatchCount()} match${this._searchMatchCount() === 1 ? "" : "es"}`}
+                        ? this.t.searching
+                        : (this._searchMatchCount() === 1
+                            ? this.t.matchCountSingular
+                            : this.t.matchCountPlural
+                          ).replace("{count}", () => (this._searchMatchCount()))}
                     </p>
                   `
                 : ``}
             </div>
           </div>
           ${this.filteredRows.length === 0
-            ? html`<div class="empty">No matching content found.</div>`
+            ? html`<div class="empty">${this.t.noMatchingContent}</div>`
             : keyed(
                 `${this.filterField}|${this.filterValue}|${this.filteredRows.length}|${this.pageOffset}|${this.pageLimit}`,
                 html`<div class="table-scroll">
@@ -989,12 +1088,12 @@ class HAXCMSContentAdminDialog extends DDD {
                     <table>
                       <thead>
                         <tr>
-                          <th>Title</th>
-                          <th>Status</th>
-                          <th>Updated</th>
-                          <th>Parent</th>
-                          <th>Slug</th>
-                          <th>Actions</th>
+                          <th>${this.t.title}</th>
+                          <th>${this.t.status}</th>
+                          <th>${this.t.updated}</th>
+                          <th>${this.t.parent}</th>
+                          <th>${this.t.slug}</th>
+                          <th>${this.t.actions}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1016,8 +1115,8 @@ class HAXCMSContentAdminDialog extends DDD {
                                 <simple-icon-button-lite
                                   class="row-action"
                                   icon="icons:history"
-                                  label="View revisions"
-                                  title="View page revisions"
+                                  label="${this.t.viewRevisions}"
+                                  title="${this.t.viewPageRevisions}"
                                   data-action="open-revisions"
                                   data-node-id="${row.id}"
                                   data-node-title="${row.title}"
@@ -1038,7 +1137,7 @@ class HAXCMSContentAdminDialog extends DDD {
           offset="${this.pageOffset}"
           total="${this.filteredRows.length}"
           count="${this.pagedRows.length}"
-          label="Content pagination"
+          label="${this.t.contentPagination}"
           @page-changed="${this._onPageChanged}"
         ></simple-pager>
       </div>

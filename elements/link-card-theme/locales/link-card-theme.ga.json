@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Nasc ancaire cóipeáilte!",
+  "skipToContent": "Léim go dtí an t-ábhar",
+  "changePalette": "Athraigh an pailéad",
+  "primaryLinks": "Príomhnaisc",
+  "socialLinks": "Naisc shóisialta",
+  "myProfile": "Mo phróifíl",
+  "profileImageOf": "Íomhá phróifíle {name}",
+  "profileImage": "Íomhá phróifíle",
+  "linkCardProfile": "Próifíl cárta naisc",
+  "emptyStateLinks": "Cuir míreanna roghchláir barrleibhéil in site.json chun cnaipí naisc a thaispeáint.",
+  "titleOnPlatform": "{title} ar {platform}",
+  "openPlatform": "Oscail {platform}",
+  "paletteUpdated": "Pailéad datha nuashonraithe go rogha {number}."
+}

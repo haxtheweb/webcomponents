@@ -36,5 +36,7 @@
   "clickToDoAnything": "Waan haa godhuuf cuqaami!",
   "moreDetails": "Bal'inaan",
   "details": "Bal'ina",
-  "saved": "Olkaa'eera"
+  "saved": "Olkaa'eera",
+  "opensInNewWindow": "Foddaa haaraa keessatti bana",
+  "resultsCount": "Bu'aa {count}"
 }

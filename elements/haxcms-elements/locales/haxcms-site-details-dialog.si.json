@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- පෙරනිමියෙන් පළමු පිටුව --",
+  "details": "විස්තර",
+  "title": "මාතෘකාව",
+  "titleDescription": "අඩවියේ නම",
+  "homePage": "මුල් පිටුව",
+  "homePageDescription": "පෙරනිමි ගොඩබෑමේ / මුල් පිටුව ලෙස භාවිත කළ යුතු පිටුව",
+  "advanced": "උසස්",
+  "serviceWorker": "ගතික පිටුවට service worker එක් කරන්න",
+  "serviceWorkerDescription": "පරිශීලකයින්ට සැමවිටම නවතම සේවාදායක ප්‍රතිදානය වහාම දැකිය යුතු නම් මෙය අක්‍රිය කරන්න.",
+  "forceBrowserUpgrade": "බ්‍රවුසර උත්ශ්‍රේණි කිරීම බලකරන්න",
+  "forceBrowserUpgradeDescription": "අඩවි අත්දැකීම පූරණය කිරීමට පෙර නිතර යාවත්කාලීන වන බ්‍රවුසර අවශ්‍ය කරන්න.",
+  "unableToLoadSiteDetails": "අඩවි විස්තර පූරණය කළ නොහැක.",
+  "noSiteDetails": "අඩවි විස්තර නොමැත.",
+  "save": "සුරකින්න"
+}

@@ -1,5 +1,8 @@
 {
   "yourAnswer": "あなたの答え",
   "checkAnswer": "答えをチェック",
-  "retry": "再試行"
+  "retry": "再試行",
+  "correct": "正解!",
+  "incorrect": "不正解!",
+  "correctAnswer": "正解: {answer}"
 }

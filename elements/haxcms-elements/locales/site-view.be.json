@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Няма вынікаў",
+  "viewsRecordHeading": "Запісаць",
+  "viewsTitleImage": "Выява {title}",
+  "viewsTitlePreview": "Папярэдні прагляд {title}",
+  "viewsNoTimelineRecords": "Няма запісаў з датамі для паказу храналогіі.",
+  "viewsTimelineTitle": "Храналогія {title}",
+  "viewsNoChartField": "Не знойдзена лікавага поля для пабудовы дыяграмы.",
+  "viewsChartingValue": "Дыяграма для {value}",
+  "viewsChartingValueByLabel": "Дыяграма {value} па {label}",
+  "viewsChartTitle": "Дыяграма {title}",
+  "viewsNoTreeRecords": "Няма іерархічных запісаў для паказу дрэва.",
+  "viewsNoGalleryRecords": "Няма запісаў выяў для паказу галерэі.",
+  "viewsNoPlaylistRecords": "Няма медыязапісаў для паказу плэйліста.",
+  "fetchFailed": "Збой атрымання ({status})",
+  "unableToLoadViewData": "Не ўдалося загрузіць даныя прагляду.",
+  "noResultsFound": "Нічога не знойдзена.",
+  "refreshView": "Абнавіць прагляд",
+  "breakIntoStaticContent": "Пераўтварыць у статычнае змесціва",
+  "viewsOpenRecord": "Адкрыць запіс"
+}

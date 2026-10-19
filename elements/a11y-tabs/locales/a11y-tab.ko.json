@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "탭 {xOfY}",
+  "xOfY": "{total} 중 {order}",
+  "endOfTab": "탭 {xOfY} 끝. {tabs}(으)로 돌아가기.",
+  "tabs": "탭"
+}

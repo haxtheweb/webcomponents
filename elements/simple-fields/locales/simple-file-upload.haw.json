@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Hoʻokuʻu i nā faila ma ʻaneʻi",
+  "uploadQueue": "Laina hoʻouka",
+  "pending": "Ke kali nei",
+  "preparing": "Ke hoʻomākaukau nei",
+  "uploading": "Ke hoʻouka nei",
+  "complete": "Ua pau",
+  "aborted": "Ua hoʻōki ʻia",
+  "cancelled": "Ua hoʻopau ʻia",
+  "error": "Hewa",
+  "errorWithStatus": "Hewa: {status}",
+  "cancel": "Hoʻopau",
+  "cancelUploadOf": "Hoʻōki i ka hoʻouka ʻana o {name}",
+  "retry": "Hoʻāʻo hou",
+  "retryUploadOf": "Hoʻāʻo hou i ka hoʻouka ʻana o {name}",
+  "remove": "Wehe",
+  "removeFromQueue": "Wehe iā {name} mai ka laina",
+  "fileTypeNotAccepted": "ʻAʻole ʻae ʻia ke ʻano faila: {name}",
+  "uploadFailed": "Ua hāʻule ka hoʻouka: {status}",
+  "networkError": "Hewa pūnaewele"
+}

@@ -43,5 +43,22 @@
   "emailAddress": "Написати цьому студентові",
   "notes": "Нотатки",
   "interests": "Інтереси",
-  "profileImageFor": "Фото профілю:"
+  "profileImageFor": "Фото профілю:",
+  "fileSystem": "Файлова система",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Кінцева точка URL (JSON)",
+  "jsonDataBlob": "Блок даних JSON",
+  "additionalCriteriaFeedback": "Додатковий відгук щодо критерію {criteria}",
+  "outOfPoints": "/ {points} бал.",
+  "feedbackReport": "Звіт із відгуком",
+  "criteriaDetails": "Подробиці критеріїв",
+  "yourFeedback": "Ваш відгук",
+  "additionalCriteriaFeedbackHeading": "Додатковий відгук за критеріями",
+  "yourTotalScore": "Ваш загальний бал",
+  "scoreOutOfPoints": "{score} / {points} бал.",
+  "studentAssignment": "Завдання {assignment} студента {student}",
+  "downloadPDF": "Завантажити PDF",
+  "displayMode1": "Режим 1",
+  "displayMode2": "Режим 2",
+  "twoWindows": "Два вікна"
 }

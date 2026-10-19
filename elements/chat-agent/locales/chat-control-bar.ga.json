@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Íoslódáil an Logchomhad mar txt",
+  "downloadChatLog": "Íoslódáil Logchomhad an Chomhrá",
+  "resetChat": "Athshocraigh an Comhrá",
+  "toggleDataCollection": "Scoránaigh Bailiú Sonraí",
+  "dataCollection": "Bailiú Sonraí",
+  "toggleDeveloperMode": "Scoránaigh an Mód Forbróra",
+  "exitFullView": "Fág an tAmharc Iomlán",
+  "enterFullView": "Téigh isteach san Amharc Iomlán",
+  "hideInterface": "Folaigh an Comhéadan",
+  "resetChatConfirm": "Athshocraigh an comhrá?",
+  "downloadBeforeResetConfirm": "Íoslódáil logchomhad an chomhrá sula n-athshocraíonn tú?",
+  "dataCollectionOn": "Úsáidfear do chomhráite chun ár samhlacha AI a oiliúint",
+  "dataCollectionOff": "Ní úsáidfear do chomhráite chun ár samhlacha AI a oiliúint"
+}

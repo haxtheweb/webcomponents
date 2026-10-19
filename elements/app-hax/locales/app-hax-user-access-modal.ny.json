@@ -7,5 +7,7 @@
   "userAccessGranted": "Mwayi waperekedwa bwino!",
   "userNotFound": "Wogwiritsa ntchito sanapezeke kapena alibe chilolezo",
   "loadingAddingUser": "Akuwonjezera wogwiritsa ntchito...",
-  "grantAccessTo": "Patsani mwayi kwa:"
+  "grantAccessTo": "Patsani mwayi kwa:",
+  "networkErrorTryAgain": "Vuto la netiweki lachitika. Chonde yesaninso.",
+  "characterWillAppear": "Munthu adzaonekera mukalowetsa dzina la wogwiritsa ntchito"
 }

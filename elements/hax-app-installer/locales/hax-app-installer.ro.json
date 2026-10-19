@@ -54,5 +54,6 @@
   "requirementUppercase": "O literă mare",
   "requirementLowercase": "O literă mică",
   "requirementNumber": "O cifră",
-  "requirementSymbol": "Un simbol"
+  "requirementSymbol": "Un simbol",
+  "haxcmsMascotAlt": "Mascota HAXcms World Traveler"
 }

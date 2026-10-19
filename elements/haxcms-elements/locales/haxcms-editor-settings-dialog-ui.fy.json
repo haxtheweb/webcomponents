@@ -5,5 +5,9 @@
   "buttons": "Knoppen",
   "futureButtonConfiguration": "Oanpaste konfiguraasje fan bewurkerknoppen komt gau.",
   "save": "Bewarje",
-  "saving": "Bewarje…"
+  "saving": "Bewarje…",
+  "novice": "Begjinner",
+  "expert": "Saakkundige",
+  "toolbarPreviewAlt": "Foarbyld fan bewurkingsarkbalke foar {audience}",
+  "savingEditorSettingsFailed": "Bewarjen fan bewurkerynstellings mislearre: {error}"
 }

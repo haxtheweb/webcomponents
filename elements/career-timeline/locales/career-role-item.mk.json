@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Наслов на улогата",
+  "describeYourRole": "Опишете ја вашата улога тука...",
+  "present": "Презентирај",
+  "skills": "Вештини:",
+  "skillsAndMore": "{skills} и уште +{count}",
+  "yearShort": "{count} год.",
+  "yearsShort": "{count} год.",
+  "monthShort": "{count} мес.",
+  "monthsShort": "{count} мес."
+}

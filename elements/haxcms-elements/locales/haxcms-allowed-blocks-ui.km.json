@@ -10,5 +10,9 @@
   "save": "រក្សាទុក",
   "noDescription": "មិនមានការពិពណ៌នាទេ។",
   "details": "ព័ត៌មានលម្អិត",
-  "loadingInventory": "កំពុងផ្ទុកបញ្ជីប្លុកពេញលេញ…"
+  "loadingInventory": "កំពុងផ្ទុកបញ្ជីប្លុកពេញលេញ…",
+  "selectAllButton": "ជ្រើសរើសទាំងអស់",
+  "deselectAllButton": "ដោះការជ្រើសរើសទាំងអស់",
+  "selectedOfAvailable": "បានជ្រើសរើស {selected} / មាន {total}",
+  "savingBlocksFailed": "ការរក្សាទុកប្លុកបានបរាជ័យ៖ {error}"
 }

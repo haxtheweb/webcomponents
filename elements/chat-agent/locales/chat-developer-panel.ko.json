@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "사용자 채팅 로그 콘솔 표",
+  "consoleTableUserText": "console.table() 사용자 채팅 로그",
+  "consoleTableUserTooltip": "사용자 채팅 로그를 표 형식으로 콘솔에 출력",
+  "consoleTableMerlinLabel": "Merlin 채팅 로그 콘솔 표",
+  "consoleTableMerlinText": "console.table() Merlin 채팅 로그",
+  "consoleTableMerlinTooltip": "Merlin 채팅 로그를 표 형식으로 콘솔에 출력",
+  "consoleTableAllLabel": "전체 채팅 로그 콘솔 표",
+  "consoleTableAllText": "console.table() 전체 채팅 로그",
+  "consoleTableAllTooltip": "전체 채팅 로그를 표 형식으로 콘솔에 출력",
+  "downloadChatLogJson": "채팅 로그를 .json으로 다운로드",
+  "downloadChatLogJsonTooltip": "채팅 로그를 .json으로 다운로드"
+}

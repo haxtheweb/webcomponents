@@ -1,0 +1,8 @@
+{
+  "loading": "Läser in",
+  "settingUpContainer": "Konfigurerar container",
+  "runningCommands": "Kör kommandon",
+  "installing": "Installerar..",
+  "runningStart": "Kör start..",
+  "webContainerPreview": "Förhandsvisning av webbcontainer"
+}

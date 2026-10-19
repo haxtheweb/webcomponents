@@ -54,5 +54,6 @@
   "requirementUppercase": "Една голема буква",
   "requirementLowercase": "Една мала буква",
   "requirementNumber": "Една цифра",
-  "requirementSymbol": "Еден симбол"
+  "requirementSymbol": "Еден симбол",
+  "haxcmsMascotAlt": "Маскотата HAXcms Светски патник"
 }

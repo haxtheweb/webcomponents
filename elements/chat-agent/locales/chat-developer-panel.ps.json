@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "د کارن چټ لاګ کنسول جدول",
+  "consoleTableUserText": "console.table() د کارن چټ لاګ",
+  "consoleTableUserTooltip": "د کارن چټ لاګ د جدول په توګه کنسول ته چاپ کړئ",
+  "consoleTableMerlinLabel": "د merlin چټ لاګ کنسول جدول",
+  "consoleTableMerlinText": "console.table() د merlin چټ لاګ",
+  "consoleTableMerlinTooltip": "د Merlin چټ لاګ د جدول په توګه کنسول ته چاپ کړئ",
+  "consoleTableAllLabel": "د بشپړ چټ لاګ کنسول جدول",
+  "consoleTableAllText": "console.table() بشپړ چټ لاګ",
+  "consoleTableAllTooltip": "بشپړ چټ لاګ د جدول په توګه کنسول ته چاپ کړئ",
+  "downloadChatLogJson": "د چټ لاګ د .json په توګه ښکته کړئ",
+  "downloadChatLogJsonTooltip": "د چټ لاګ د .json په توګه ښکته کړئ"
+}

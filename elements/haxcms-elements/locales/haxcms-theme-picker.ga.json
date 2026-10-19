@@ -1,0 +1,11 @@
+{
+  "theme": "Téama",
+  "active": "Gníomhach",
+  "selected": "Roghnaithe",
+  "noPreview": "Gan réamhamharc",
+  "currentlyActiveAndSelected": "Téama gníomhach agus roghnaithe faoi láthair",
+  "currentlyActive": "Téama gníomhach faoi láthair",
+  "selectedToApplyOnSave": "Téama roghnaithe le cur i bhfeidhm ar shábháil",
+  "themeSelection": "Roghnú téama",
+  "noThemesAvailable": "Níl téamaí ar fáil."
+}

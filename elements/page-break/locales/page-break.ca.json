@@ -22,6 +22,13 @@
   "unpublish": "Despublica",
   "savePage": "Desa la pàgina",
   "cancel": "Cancel·la",
+  "delete": "Suprimeix",
+  "editTitle": "Edita el títol",
+  "editIcon": "Edita la icona",
+  "agent": "Agent",
+  "pageLockedUnlockToEdit": "Aquesta pàgina està bloquejada. Desbloqueja-la primer per editar-la.",
+  "pageLockedUnlockToChangePublishStatus": "Aquesta pàgina està bloquejada. Desbloqueja-la primer per canviar l'estat de publicació.",
+  "pageLockedUnlockToDelete": "Aquesta pàgina està bloquejada. Desbloqueja-la primer per suprimir-la.",
   "pageDetails": "Detalls de la pàgina",
   "clickToUnlock": "Feu clic per desbloquejar"
 }

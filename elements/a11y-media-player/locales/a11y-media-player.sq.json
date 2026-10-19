@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Po ngarkohet...",
   "youTubeStartLoading": "Shtyp luaj.",
   "youTubeTranscriptLabel": "Transkripti do të ngarkohet sapo të luhet media.",
-  "audioDescriptionLabel": "Përshkrim audio"
+  "audioDescriptionLabel": "Përshkrim audio",
+  "openOnYouTube": "Hap në YouTube"
 }

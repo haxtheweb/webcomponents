@@ -22,6 +22,13 @@
   "unpublish": "Chotsani posindikiza",
   "savePage": "Sungani tsamba",
   "cancel": "Letsani",
+  "delete": "Fufutani",
+  "editTitle": "Sinthani mutu",
+  "editIcon": "Sinthani Chizindikiro",
+  "agent": "Wothandizira",
+  "pageLockedUnlockToEdit": "Tsamba ili latsekedwa. Litsegulenitu kuti musinthe.",
+  "pageLockedUnlockToChangePublishStatus": "Tsamba ili latsekedwa. Litsegulenitu kuti musinthe mkhalidwe wa kufalitsa.",
+  "pageLockedUnlockToDelete": "Tsamba ili latsekedwa. Litsegulenitu kuti muchotse.",
   "pageDetails": "Zambiri za tsamba",
   "clickToUnlock": "Dinani kuti mutsegule"
 }

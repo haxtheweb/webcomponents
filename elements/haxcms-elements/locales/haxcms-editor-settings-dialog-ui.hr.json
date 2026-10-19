@@ -5,5 +5,9 @@
   "buttons": "Gumbi",
   "futureButtonConfiguration": "Prilagođena konfiguracija gumba uređivača uskoro stiže.",
   "save": "Spremi",
-  "saving": "Spremanje…"
+  "saving": "Spremanje…",
+  "novice": "Početnik",
+  "expert": "Stručnjak",
+  "toolbarPreviewAlt": "Pretpregled alatne trake za uređivanje ({audience})",
+  "savingEditorSettingsFailed": "Spremanje postavki uređivača nije uspjelo: {error}"
 }

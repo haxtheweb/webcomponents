@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Сіздің жауабыңыз",
   "checkAnswer": "Жауапты тексеру",
-  "retry": "Қайталау"
+  "retry": "Қайталау",
+  "correct": "Дұрыс!",
+  "incorrect": "Қате!",
+  "correctAnswer": "Дұрыс жауап: {answer}"
 }

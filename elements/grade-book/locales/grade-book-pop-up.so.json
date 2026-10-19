@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Gudbinta ardayga",
   "openInNewWindow": "Ku fur daaqad cusub",
-  "submitted": "La gudbiyay"
+  "submitted": "La gudbiyay",
+  "previousStudent": "Ardayga hore",
+  "nextStudent": "Ardayga xiga",
+  "previousAssignment": "Hawsha hore",
+  "nextAssignment": "Hawsha xigta"
 }

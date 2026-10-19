@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Αποτυχία φόρτωσης θεμάτων: {error}",
+  "noThemesForView": "Δεν υπάρχουν διαθέσιμα θέματα για αυτήν την προβολή.",
+  "active": "Ενεργή",
+  "themeIsActive": "Το θέμα {name} είναι ενεργό",
+  "applyTheme": "Εφαρμογή του θέματος {name}",
+  "apply": "Εφαρμογή",
+  "preview": "Προεπισκόπηση",
+  "name": "Όνομα",
+  "element": "Στοιχείο",
+  "description": "Περιγραφή",
+  "action": "Ενέργεια",
+  "loadingThemes": "Φόρτωση θεμάτων...",
+  "themesShown": "Εμφανίζονται {count} θέματα",
+  "themesShownDefaults": "Εμφανίζονται {count} θέματα (προεπιλογές app-hax)",
+  "availableHaxcmsThemes": "Διαθέσιμα θέματα HAXcms",
+  "gallery": "Συλλογή",
+  "table": "Πίνακας"
+}

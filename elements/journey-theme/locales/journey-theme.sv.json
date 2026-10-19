@@ -1,4 +1,11 @@
 {
   "readMore": "Läs mer",
-  "home": "Hem"
+  "home": "Hem",
+  "anchorLinkCopied": "Ankarlänk kopierad!",
+  "skipToContent": "Hoppa till innehållet",
+  "changeTheme": "Byt tema",
+  "siteSections": "Webbplatsens avsnitt",
+  "pageOfTotal": "Sida {current} av {total}",
+  "siteGenerated": "Webbplatsen genererad: {date}",
+  "licenseGraphic": "Grafik för {license}"
 }

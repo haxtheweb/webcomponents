@@ -1,5 +1,9 @@
 {
   "studentSubmission": "ວຽກທີ່ນັກຮຽນສົ່ງ",
   "openInNewWindow": "ເປີດໃນໜ້າຕ່າງໃໝ່",
-  "submitted": "ສົ່ງແລ້ວ"
+  "submitted": "ສົ່ງແລ້ວ",
+  "previousStudent": "ນັກຮຽນກ່ອນໜ້າ",
+  "nextStudent": "ນັກຮຽນຕໍ່ໄປ",
+  "previousAssignment": "ວຽກມອບໝາຍກ່ອນໜ້າ",
+  "nextAssignment": "ວຽກມອບໝາຍຕໍ່ໄປ"
 }

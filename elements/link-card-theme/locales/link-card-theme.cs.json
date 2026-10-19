@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Odkaz na kotvu zkopírován!",
+  "skipToContent": "Přeskočit na obsah",
+  "changePalette": "Změnit paletu",
+  "primaryLinks": "Hlavní odkazy",
+  "socialLinks": "Sociální odkazy",
+  "myProfile": "Můj profil",
+  "profileImageOf": "Profilový obrázek {name}",
+  "profileImage": "Profilový obrázek",
+  "linkCardProfile": "Profil karty odkazů",
+  "emptyStateLinks": "Pro vykreslení tlačítek odkazů přidejte položky nabídky nejvyšší úrovně do site.json.",
+  "titleOnPlatform": "{title} na {platform}",
+  "openPlatform": "Otevřít {platform}",
+  "paletteUpdated": "Barevná paleta změněna na možnost {number}."
+}

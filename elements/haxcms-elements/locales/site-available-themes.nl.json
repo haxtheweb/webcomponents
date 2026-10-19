@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Laden van thema's mislukt: {error}",
+  "noThemesForView": "Geen thema's beschikbaar voor deze weergave.",
+  "active": "Actief",
+  "themeIsActive": "Thema {name} is actief",
+  "applyTheme": "Thema {name} toepassen",
+  "apply": "Toepassen",
+  "preview": "Voorbeeld",
+  "name": "Naam",
+  "element": "Element",
+  "description": "Beschrijving",
+  "action": "Actie",
+  "loadingThemes": "Thema's laden...",
+  "themesShown": "{count} thema's getoond",
+  "themesShownDefaults": "{count} thema's getoond (standaarden van app-hax)",
+  "availableHaxcmsThemes": "Beschikbare HAXcms-thema's",
+  "gallery": "Galerij",
+  "table": "Tabel"
+}

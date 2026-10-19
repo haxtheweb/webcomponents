@@ -1,0 +1,14 @@
+{
+  "enterUserName": "පරිශීලක නාමය ඇතුළු කරන්න",
+  "invalidUsernameOrPassword": "වලංගු නොවන පරිශීලක නාමය හෝ මුරපදය",
+  "welcomeLetsGo": "සාදරයෙන් පිළිගනිමු {username}! අපි යමු!",
+  "enterYourUsername": "ඔබේ පරිශීලක නාමය ඇතුළු කරන්න",
+  "username": "පරිශීලක නාමය",
+  "next": "ඊළඟ",
+  "welcomeBack": "නැවත සාදරයෙන් පිළිගනිමු, {username}!",
+  "notYou": "ඔබ නොවේද?",
+  "enterYourPassword": "ඔබේ මුරපදය ඇතුළු කරන්න",
+  "password": "මුරපදය",
+  "togglePasswordDisplay": "මුරපද සංදර්ශනය මාරු කරන්න",
+  "login": "පිවිසෙන්න"
+}

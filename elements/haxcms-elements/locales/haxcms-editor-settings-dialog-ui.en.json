@@ -5,5 +5,9 @@
   "buttons": "Buttons",
   "futureButtonConfiguration": "Custom editor button configuration is coming soon.",
   "save": "Save",
-  "saving": "Saving…"
+  "saving": "Saving…",
+  "novice": "Novice",
+  "expert": "Expert",
+  "toolbarPreviewAlt": "{audience} editing toolbar preview",
+  "savingEditorSettingsFailed": "Saving editor settings failed: {error}"
 }

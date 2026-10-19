@@ -7,5 +7,7 @@
   "userAccessGranted": "L-aċċess tal-utent ingħata b'suċċess!",
   "userNotFound": "L-utent ma nstabx jew mhuwiex awtorizzat",
   "loadingAddingUser": "Qed jiżdied l-utent...",
-  "grantAccessTo": "Agħti aċċess lil:"
+  "grantAccessTo": "Agħti aċċess lil:",
+  "networkErrorTryAgain": "Seħħ żball fin-netwerk. Jekk jogħġbok erġa' pprova.",
+  "characterWillAppear": "Il-karattru jidher meta tdaħħal isem tal-utent"
 }

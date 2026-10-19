@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, LitElement } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
@@ -15,7 +16,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
  *
  * @demo demo/index.html
  */
-class SiteTopMenu extends LitElement {
+class SiteTopMenu extends I18NMixin(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -24,6 +25,17 @@ class SiteTopMenu extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      navigation: "Navigation",
+      openNavigation: "Open navigation",
+      goToPage: "Go to {title}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.windowControllers = new AbortController();
     this.__disposer = [];
     this.activeId = null;
@@ -39,7 +51,7 @@ class SiteTopMenu extends LitElement {
     this.conditions = {
       parent: null,
     };
-    this.mobileTitle = "Navigation";
+    this.i18nDefault("mobileTitle", "navigation");
     this.editMode = false;
     this.__items = [];
   }
@@ -214,7 +226,7 @@ class SiteTopMenu extends LitElement {
           class="mobile-button"
           icon="menu"
           id="menu"
-          title="Open navigation"
+          title="${this.t.openNavigation}"
         >
           <span class="mobiletitle">${this.mobileTitle}</span>
         </simple-icon-button-lite>
@@ -231,7 +243,7 @@ class SiteTopMenu extends LitElement {
                         data-id="${item.id}"
                         class="link"
                         tabindex="-1"
-                        title="Go to ${item.title}"
+                        title="${this.t.goToPage.replace("{title}", () => item.title)}"
                         href="${item.slug}"
                         part="a"
                         itemprop="url"

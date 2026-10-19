@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "",
   "youTubeStartLoading": "",
   "youTubeTranscriptLabel": "",
-  "audioDescriptionLabel": "توصیف صوتی"
+  "audioDescriptionLabel": "توصیف صوتی",
+  "openOnYouTube": "باز کردن در YouTube"
 }

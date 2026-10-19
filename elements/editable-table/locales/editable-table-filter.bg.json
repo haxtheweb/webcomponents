@@ -1,0 +1,5 @@
+{
+  "toggleFilter": "Превключване на филтъра.",
+  "toggleFilterForColumn": "Превключване на филтъра за колоната.",
+  "toggleColumnFilter": "Превключване на филтъра за колона {column}."
+}

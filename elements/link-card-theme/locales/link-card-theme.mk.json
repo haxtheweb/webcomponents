@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Врската до сидрото е копирана!",
+  "skipToContent": "Прескокни до содржината",
+  "changePalette": "Промени палета",
+  "primaryLinks": "Примарни врски",
+  "socialLinks": "Врски до социјални мрежи",
+  "myProfile": "Мој профил",
+  "profileImageOf": "Профилна слика на {name}",
+  "profileImage": "Профилна слика",
+  "linkCardProfile": "Профил со картичка со врски",
+  "emptyStateLinks": "Додајте ставки од највисоко ниво во менито во site.json за да се прикажат копчињата со врски.",
+  "titleOnPlatform": "{title} на {platform}",
+  "openPlatform": "Отвори {platform}",
+  "paletteUpdated": "Палетата на бои е ажурирана на опција {number}."
+}

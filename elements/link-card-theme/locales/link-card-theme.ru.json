@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ссылка-якорь скопирована!",
+  "skipToContent": "Перейти к содержимому",
+  "changePalette": "Сменить палитру",
+  "primaryLinks": "Основные ссылки",
+  "socialLinks": "Социальные сети",
+  "myProfile": "Мой профиль",
+  "profileImageOf": "Фото профиля {name}",
+  "profileImage": "Фото профиля",
+  "linkCardProfile": "Профиль-визитка со ссылками",
+  "emptyStateLinks": "Добавьте пункты меню верхнего уровня в site.json, чтобы отобразить кнопки-ссылки.",
+  "titleOnPlatform": "{title} в {platform}",
+  "openPlatform": "Открыть {platform}",
+  "paletteUpdated": "Цветовая палитра изменена на вариант {number}."
+}

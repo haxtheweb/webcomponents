@@ -10,5 +10,9 @@
   "save": "Desa",
   "noDescription": "No hi ha cap descripció disponible.",
   "details": "Detalls",
-  "loadingInventory": "S'està carregant l'inventari complet de blocs…"
+  "loadingInventory": "S'està carregant l'inventari complet de blocs…",
+  "selectAllButton": "Selecciona-ho tot",
+  "deselectAllButton": "Desselecciona-ho tot",
+  "selectedOfAvailable": "{selected} seleccionats / {total} disponibles",
+  "savingBlocksFailed": "Ha fallat el desament dels blocs: {error}"
 }

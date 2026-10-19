@@ -1,0 +1,11 @@
+{
+  "licenseBy": "انتساب",
+  "licenseBySa": "انتساب-اشتراک همسان",
+  "licenseByNd": "انتساب-بدون اشتقاق",
+  "licenseByNc": "انتساب-غیرتجاری",
+  "licenseByNcSa": "انتساب-غیرتجاری-اشتراک همسان",
+  "licenseByNcNd": "انتساب-غیرتجاری-بدون اشتقاق",
+  "citationWithLicense": "{title} اثر {creator}، تحت مجوز {license}. دسترسی در {date}.",
+  "citationWithoutLicense": "{title} اثر {creator}. دسترسی در {date}.",
+  "licenseGraphic": "نشان {license}"
+}

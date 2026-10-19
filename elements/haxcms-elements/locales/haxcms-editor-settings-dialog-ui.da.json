@@ -5,5 +5,9 @@
   "buttons": "Knapper",
   "futureButtonConfiguration": "Tilpasning af editorens knapper kommer snart.",
   "save": "Gem",
-  "saving": "Gemmer…"
+  "saving": "Gemmer…",
+  "novice": "Begynder",
+  "expert": "Ekspert",
+  "toolbarPreviewAlt": "Forhåndsvisning af redigeringsværktøjslinje for {audience}",
+  "savingEditorSettingsFailed": "Kunne ikke gemme editorindstillinger: {error}"
 }

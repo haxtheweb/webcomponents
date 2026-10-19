@@ -5,5 +5,9 @@
   "buttons": "ღილაკები",
   "futureButtonConfiguration": "რედაქტორის ღილაკების მორგება მალე იქნება ხელმისაწვდომი.",
   "save": "შენახვა",
-  "saving": "ინახება…"
+  "saving": "ინახება…",
+  "novice": "დამწყები",
+  "expert": "ექსპერტი",
+  "toolbarPreviewAlt": "{audience} — რედაქტირების ხელსაწყოთა ზოლის გადახედვა",
+  "savingEditorSettingsFailed": "რედაქტორის პარამეტრების შენახვა ვერ მოხერხდა: {error}"
 }

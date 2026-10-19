@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Tidak ada hasil",
+  "viewsRecordHeading": "Rekam",
+  "viewsTitleImage": "Gambar {title}",
+  "viewsTitlePreview": "Pratinjau {title}",
+  "viewsNoTimelineRecords": "Tidak ada rekaman berbasis tanggal untuk ditampilkan sebagai linimasa.",
+  "viewsTimelineTitle": "Linimasa {title}",
+  "viewsNoChartField": "Tidak ada bidang numerik yang terdeteksi untuk ditampilkan sebagai diagram.",
+  "viewsChartingValue": "Menampilkan diagram {value}",
+  "viewsChartingValueByLabel": "Menampilkan diagram {value} menurut {label}",
+  "viewsChartTitle": "Diagram {title}",
+  "viewsNoTreeRecords": "Tidak ada rekaman hierarkis untuk ditampilkan sebagai pohon.",
+  "viewsNoGalleryRecords": "Tidak ada rekaman gambar untuk ditampilkan sebagai galeri.",
+  "viewsNoPlaylistRecords": "Tidak ada rekaman media untuk ditampilkan sebagai daftar putar.",
+  "fetchFailed": "Pengambilan gagal ({status})",
+  "unableToLoadViewData": "Tidak dapat memuat data tampilan.",
+  "noResultsFound": "Tidak ada hasil ditemukan.",
+  "refreshView": "Segarkan tampilan",
+  "breakIntoStaticContent": "Pecah menjadi konten statis",
+  "viewsOpenRecord": "Buka rekaman"
+}

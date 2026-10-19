@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Erakutsi gaiaren aurrebista",
+  "hideThemePreview": "Ezkutatu gaiaren aurrebista",
+  "themePreviewPanel": "Gaiaren aurrebista-panela",
+  "themePreview": "Gaiaren aurrebista",
+  "themePreviewDescription": "Probatu gai eta paleta bat aldi baterako nabigatzen duzun bitartean. Erabili Utzi zure jatorrizko itxura berrezartzeko.",
+  "loadingThemes": "Gaiak kargatzen...",
+  "theme": "Gaia",
+  "palette": "Paleta",
+  "cancel": "Utzi",
+  "openAppearanceSettings": "Ireki itxura-ezarpenak"
+}

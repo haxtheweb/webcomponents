@@ -12,6 +12,7 @@ import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/re
 import "@haxtheweb/simple-picker/simple-picker.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `editable-table-display`
@@ -24,8 +25,8 @@ import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
  * @extends ResponsiveUtilityBehaviors
  * @extends LitElement
  */
-class EditableTableDisplay extends displayBehaviors(
-  ResponsiveUtilityBehaviors(DDD),
+class EditableTableDisplay extends I18NMixin(
+  displayBehaviors(ResponsiveUtilityBehaviors(DDD)),
 ) {
   static get styles() {
     return [
@@ -91,7 +92,7 @@ class EditableTableDisplay extends displayBehaviors(
                     <simple-toolbar-button
                       id="download"
                       icon="file-download"
-                      label="Download as CSV."
+                      label="${this.t.downloadAsCsv}"
                       @click="${this.download}"
                     >
                     </simple-toolbar-button>
@@ -102,7 +103,7 @@ class EditableTableDisplay extends displayBehaviors(
                     <simple-toolbar-button
                       id="copy"
                       icon="content-copy"
-                      label="Copy as CSV."
+                      label="${this.t.copyAsCsv}"
                       @click="${this.copy}"
                     >
                     </simple-toolbar-button>
@@ -113,7 +114,7 @@ class EditableTableDisplay extends displayBehaviors(
                     <simple-toolbar-button
                       id="print"
                       icon="print"
-                      label="Print Table"
+                      label="${this.t.printTable}"
                       @click="${this.print}"
                     >
                     </simple-toolbar-button>
@@ -153,7 +154,7 @@ class EditableTableDisplay extends displayBehaviors(
                           id="simple-picker-${index}"
                           class="column"
                           align-right
-                          aria-label="Select Column"
+                          aria-label="${this.t.selectColumn}"
                           @change="${this._selectedChanged}"
                           hide-sample
                           .options="${this.options}"
@@ -164,7 +165,7 @@ class EditableTableDisplay extends displayBehaviors(
                           position="top"
                           for="simple-picker-${index}"
                           aria-hidden="true"
-                          >Select Column</simple-tooltip
+                          >${this.t.selectColumn}</simple-tooltip
                         >`
                     : ``}
                 </th>
@@ -254,6 +255,18 @@ class EditableTableDisplay extends displayBehaviors(
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      downloadAsCsv: "Download as CSV.",
+      copyAsCsv: "Copy as CSV.",
+      printTable: "Print Table",
+      selectColumn: "Select Column",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.selected = 1;
     this.sortMode = "none";
     this.sortColumn = -1;

@@ -36,5 +36,7 @@
   "clickToDoAnything": "Qhwalasa ukwenza nantoni na!",
   "moreDetails": "Iinkcukacha ezongezelelweyo",
   "details": "Iinkcukacha",
-  "saved": "Igciniwe"
+  "saved": "Igciniwe",
+  "opensInNewWindow": "Ivula kwifestile entsha",
+  "resultsCount": "Iziphumo ezingu-{count}"
 }

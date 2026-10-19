@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "और HAX एलिमेंट के लिए वेब कंपोनेंट रजिस्ट्री स्कैन की जा रही है..",
+  "enabled": "सक्षम",
+  "disabled": "अक्षम",
+  "details": "विवरण",
+  "tags": "टैग:",
+  "tagName": "टैग नाम:",
+  "developerUsage": "डेवलपर उपयोग:",
+  "demo": "डेमो",
+  "popUpDemo": "पॉप अप डेमो",
+  "demoOf": "{tag} का डेमो"
+}

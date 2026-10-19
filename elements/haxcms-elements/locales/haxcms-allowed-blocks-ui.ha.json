@@ -10,5 +10,9 @@
   "save": "Ajiye",
   "noDescription": "Babu bayani.",
   "details": "Cikakkun bayanai",
-  "loadingInventory": "Ana loda cikakken jerin tubala…"
+  "loadingInventory": "Ana loda cikakken jerin tubala…",
+  "selectAllButton": "Zaɓi Duka",
+  "deselectAllButton": "Cire Zaɓin Duka",
+  "selectedOfAvailable": "An zaɓi {selected} / {total} suna samuwa",
+  "savingBlocksFailed": "Adana tubala ya gaza: {error}"
 }

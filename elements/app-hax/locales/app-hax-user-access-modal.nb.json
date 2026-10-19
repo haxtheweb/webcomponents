@@ -7,5 +7,7 @@
   "userAccessGranted": "Brukertilgang er gitt!",
   "userNotFound": "Brukeren ble ikke funnet eller er ikke autorisert",
   "loadingAddingUser": "Legger til bruker...",
-  "grantAccessTo": "Gi tilgang til:"
+  "grantAccessTo": "Gi tilgang til:",
+  "networkErrorTryAgain": "Det oppstod en nettverksfeil. Prøv igjen.",
+  "characterWillAppear": "Figuren vises når du skriver inn et brukernavn"
 }

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- இயல்பாக முதல் பக்கம் --",
+  "details": "விவரங்கள்",
+  "title": "தலைப்பு",
+  "titleDescription": "தளத்தின் பெயர்",
+  "homePage": "முகப்புப் பக்கம்",
+  "homePageDescription": "இயல்புநிலை இறங்கு / முகப்புப் பக்கமாகப் பயன்படுத்த வேண்டிய பக்கம்",
+  "advanced": "மேம்பட்டவை",
+  "serviceWorker": "டைனமிக் பக்கத்தில் service worker ஐச் சேர்",
+  "serviceWorkerDescription": "பயனர்கள் எப்போதும் சமீபத்திய சேவையக வெளியீட்டை உடனடியாகக் காண வேண்டுமெனில் இதை முடக்கவும்.",
+  "forceBrowserUpgrade": "உலாவி மேம்படுத்தலைக் கட்டாயப்படுத்து",
+  "forceBrowserUpgradeDescription": "தள அனுபவத்தை ஏற்றும் முன் evergreen உலாவிகள் தேவை.",
+  "unableToLoadSiteDetails": "தள விவரங்களை ஏற்ற முடியவில்லை.",
+  "noSiteDetails": "தள விவரங்கள் எதுவும் கிடைக்கவில்லை.",
+  "save": "சேமி"
+}

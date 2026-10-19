@@ -1,0 +1,11 @@
+{
+  "playlist": "רשימת השמעה",
+  "carousel": "קרוסלה",
+  "slide": "שקופית",
+  "slideNumber": "שקופית {number}",
+  "slideOfTotal": "שקופית {number} מתוך {total}",
+  "previousSlide": "השקופית הקודמת",
+  "nextSlide": "השקופית הבאה",
+  "slidePages": "עמודי שקופיות",
+  "goToSlide": "מעבר לשקופית {number}"
+}

@@ -9,5 +9,8 @@
   "record": "Record",
   "pause": "Pause record",
   "stopSave": "Stop & Save",
-  "clickToTakePhoto": "Click to take photo"
+  "clickToTakePhoto": "Click to take photo",
+  "url": "URL",
+  "open": "open",
+  "removeValue": "Remove {value}"
 }

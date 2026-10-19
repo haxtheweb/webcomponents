@@ -5,5 +5,9 @@
   "buttons": "பொத்தான்கள்",
   "futureButtonConfiguration": "தனிப்பயன் திருத்தி பொத்தான் உள்ளமைவு விரைவில் வருகிறது.",
   "save": "சேமி",
-  "saving": "சேமிக்கிறது…"
+  "saving": "சேமிக்கிறது…",
+  "novice": "தொடக்கநிலையாளர்",
+  "expert": "நிபுணர்",
+  "toolbarPreviewAlt": "{audience} திருத்தக் கருவிப்பட்டி முன்னோட்டம்",
+  "savingEditorSettingsFailed": "திருத்தி அமைப்புகளைச் சேமிப்பது தோல்வியடைந்தது: {error}"
 }

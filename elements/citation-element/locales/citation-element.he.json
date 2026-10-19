@@ -1,0 +1,11 @@
+{
+  "licenseBy": "ייחוס",
+  "licenseBySa": "ייחוס-שיתוף זהה",
+  "licenseByNd": "ייחוס-ללא יצירות נגזרות",
+  "licenseByNc": "ייחוס-שימוש לא מסחרי",
+  "licenseByNcSa": "ייחוס-שימוש לא מסחרי-שיתוף זהה",
+  "licenseByNcNd": "ייחוס-שימוש לא מסחרי-ללא יצירות נגזרות",
+  "citationWithLicense": "{title} מאת {creator}, ברישיון {license}. נצפה בתאריך {date}.",
+  "citationWithoutLicense": "{title} מאת {creator}. נצפה בתאריך {date}.",
+  "licenseGraphic": "סמל {license}"
+}

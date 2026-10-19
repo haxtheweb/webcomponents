@@ -54,5 +54,6 @@
   "requirementUppercase": "একটি বড় হাতের অক্ষর",
   "requirementLowercase": "একটি ছোট হাতের অক্ষর",
   "requirementNumber": "একটি সংখ্যা",
-  "requirementSymbol": "একটি চিহ্ন"
+  "requirementSymbol": "একটি চিহ্ন",
+  "haxcmsMascotAlt": "HAXcms বিশ্বপর্যটক মাসকট"
 }

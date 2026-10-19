@@ -201,7 +201,7 @@ class HaxTrayUpload extends HaxUploadField {
                 detail: gallery,
               }),
             );
-            HAXStore.toast("Image gallery created successfully!");
+            HAXStore.toast(this.t.imageGalleryCreated);
             this.__imageBatchTotal = 0;
             this.__imageBatch = [];
             this.__imageBatchPlaceHolder = null;

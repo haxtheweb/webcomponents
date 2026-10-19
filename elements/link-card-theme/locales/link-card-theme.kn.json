@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "ಆಂಕರ್ ಲಿಂಕ್ ನಕಲಿಸಲಾಗಿದೆ!",
+  "skipToContent": "ವಿಷಯಕ್ಕೆ ಹೋಗಿ",
+  "changePalette": "ಪ್ಯಾಲೆಟ್ ಬದಲಾಯಿಸಿ",
+  "primaryLinks": "ಪ್ರಾಥಮಿಕ ಲಿಂಕ್‌ಗಳು",
+  "socialLinks": "ಸಾಮಾಜಿಕ ಲಿಂಕ್‌ಗಳು",
+  "myProfile": "ನನ್ನ ಪ್ರೊಫೈಲ್",
+  "profileImageOf": "{name} ಪ್ರೊಫೈಲ್ ಚಿತ್ರ",
+  "profileImage": "ಪ್ರೊಫೈಲ್ ಚಿತ್ರ",
+  "linkCardProfile": "ಲಿಂಕ್ ಕಾರ್ಡ್ ಪ್ರೊಫೈಲ್",
+  "emptyStateLinks": "ಲಿಂಕ್ ಬಟನ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಲು site.json ನಲ್ಲಿ ಉನ್ನತ ಮಟ್ಟದ ಮೆನು ಐಟಂಗಳನ್ನು ಸೇರಿಸಿ.",
+  "titleOnPlatform": "{platform} ನಲ್ಲಿ {title}",
+  "openPlatform": "{platform} ತೆರೆಯಿರಿ",
+  "paletteUpdated": "ಬಣ್ಣದ ಪ್ಯಾಲೆಟ್ ಅನ್ನು ಆಯ್ಕೆ {number} ಗೆ ನವೀಕರಿಸಲಾಗಿದೆ."
+}

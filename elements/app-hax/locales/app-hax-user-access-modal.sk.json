@@ -7,5 +7,7 @@
   "userAccessGranted": "Prístup používateľovi bol úspešne udelený!",
   "userNotFound": "Používateľ sa nenašiel alebo nemá oprávnenie",
   "loadingAddingUser": "Pridáva sa používateľ...",
-  "grantAccessTo": "Udeliť prístup:"
+  "grantAccessTo": "Udeliť prístup:",
+  "networkErrorTryAgain": "Vyskytla sa chyba siete. Skúste to znova.",
+  "characterWillAppear": "Postava sa zobrazí, keď zadáte používateľské meno"
 }

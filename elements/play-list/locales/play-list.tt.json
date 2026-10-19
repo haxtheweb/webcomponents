@@ -1,0 +1,11 @@
+{
+  "playlist": "Уйнату исемлеге",
+  "carousel": "карусель",
+  "slide": "слайд",
+  "slideNumber": "{number} нче слайд",
+  "slideOfTotal": "Слайд {number} / {total}",
+  "previousSlide": "Алдагы слайд",
+  "nextSlide": "Киләсе слайд",
+  "slidePages": "Слайд битләре",
+  "goToSlide": "{number} нче слайдка күчү"
+}

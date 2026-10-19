@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Demetu dosierojn ĉi tie",
+  "uploadQueue": "Alŝuta vico",
+  "pending": "Atendanta",
+  "preparing": "Preparante",
+  "uploading": "Alŝutante",
+  "complete": "Finita",
+  "aborted": "Ĉesigita",
+  "cancelled": "Nuligita",
+  "error": "Eraro",
+  "errorWithStatus": "Eraro: {status}",
+  "cancel": "Nuligi",
+  "cancelUploadOf": "Nuligi alŝuton de {name}",
+  "retry": "Reprovi",
+  "retryUploadOf": "Reprovi alŝuton de {name}",
+  "remove": "Forigi",
+  "removeFromQueue": "Forigi {name} el la vico",
+  "fileTypeNotAccepted": "Dosiertipo ne akceptata: {name}",
+  "uploadFailed": "Alŝuto malsukcesis: {status}",
+  "networkError": "Reta eraro"
+}

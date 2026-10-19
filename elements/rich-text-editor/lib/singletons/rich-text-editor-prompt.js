@@ -8,6 +8,7 @@ import "@haxtheweb/simple-popover/simple-popover.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "./rich-text-editor-highlight.js";
 import { RichTextEditorRangeBehaviors } from "./rich-text-editor-range-behaviors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `rich-text-editor-prompt`
  * `A utility that manages state of multiple rich-text-prompts on one page.`
@@ -17,7 +18,9 @@ import { RichTextEditorRangeBehaviors } from "./rich-text-editor-range-behaviors
  * @lit-element
  * @element rich-text-editor-prompt
  */
-class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
+class RichTextEditorPrompt extends I18NMixin(
+  RichTextEditorRangeBehaviors(LitElement),
+) {
   static get styles() {
     return [
       ...RichTextToolbarStyles,
@@ -160,7 +163,7 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
             <simple-toolbar-button
               id="cancel"
               controls="${this.__highlight ? this.__highlight.id : ""}"
-              label="Cancel"
+              label="${this.t.cancel}"
               icon="clear"
               @click="${this._cancel}"
             >
@@ -170,7 +173,7 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
               controls="${this.__highlight ? this.__highlight.id : ""}"
               @click="${this._confirm}"
               icon="check"
-              label="OK"
+              label="${this.t.ok}"
             >
             </simple-toolbar-button>
           </div>
@@ -233,6 +236,16 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      cancel: "Cancel",
+      ok: "OK",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.haxUIElement = true;
     globalThis.addEventListener(
       "rich-text-editor-prompt-open",

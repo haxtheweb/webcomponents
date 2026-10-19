@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Enigu uzantnomon",
+  "invalidUsernameOrPassword": "Nevalida uzantnomo aŭ pasvorto",
+  "welcomeLetsGo": "Bonvenon, {username}! Ek!",
+  "enterYourUsername": "Enigu vian uzantnomon",
+  "username": "Uzantnomo",
+  "next": "Sekva",
+  "welcomeBack": "Bonvenon denove, {username}!",
+  "notYou": "Ĉu ne vi?",
+  "enterYourPassword": "Enigu vian pasvorton",
+  "password": "Pasvorto",
+  "togglePasswordDisplay": "Baskuligi montron de pasvorto",
+  "login": "Ensaluti"
+}

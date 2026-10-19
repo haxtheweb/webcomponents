@@ -1,0 +1,11 @@
+{
+  "playlist": "Afspilningsliste",
+  "carousel": "karrusel",
+  "slide": "dias",
+  "slideNumber": "Dias {number}",
+  "slideOfTotal": "Dias {number} af {total}",
+  "previousSlide": "Forrige dias",
+  "nextSlide": "Næste dias",
+  "slidePages": "Diassider",
+  "goToSlide": "Gå til dias {number}"
+}

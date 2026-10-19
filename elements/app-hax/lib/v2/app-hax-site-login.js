@@ -2,9 +2,10 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import { store } from "./AppHaxStore.js";
-export class AppHaxSiteLogin extends DDDSuper(LitElement) {
+export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "app-hax-site-login";
@@ -13,10 +14,30 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      enterUserName: "Enter User name",
+      invalidUsernameOrPassword: "Invalid Username or Password",
+      welcomeLetsGo: "Welcome {username}! Let's go!",
+      enterYourUsername: "Enter your username",
+      username: "Username",
+      next: "Next",
+      welcomeBack: "Welcome back, {username}!",
+      notYou: "Not you?",
+      enterYourPassword: "Enter your password",
+      password: "Password",
+      togglePasswordDisplay: "Toggle password display",
+      login: "Login",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.windowControllers = new AbortController();
     this.username = "";
     this.password = "";
-    this.errorMSG = "Enter User name";
+    this.i18nDefault("errorMSG", "enterUserName");
     this.hidePassword = true;
     this.hasPass = false;
   }
@@ -275,7 +296,7 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
   // implies that it failed to connect via the login credentials
   _jwtLoginFailed(e) {
     this.hidePassword = true;
-    this.errorMSG = "Invalid Username or Password";
+    this.errorMSG = this.t.invalidUsernameOrPassword;
     store.appEl.playSound("error");
   }
   _jwtLoggedIn(e) {
@@ -292,9 +313,13 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
           detail: {},
         }),
       );
-      store.toast(`Welcome ${this.username}! Let's go!`, 5000, {
-        hat: "construction",
-      });
+      store.toast(
+        this.t.welcomeLetsGo.replace("{username}", () => this.username),
+        5000,
+        {
+          hat: "construction",
+        },
+      );
       // just to be safe
       store.appEl.reset();
     }
@@ -336,8 +361,8 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
                 <input
                   id="username"
                   type="text"
-                  placeholder="Enter your username"
-                  aria-label="Username"
+                  placeholder="${this.t.enterYourUsername}"
+                  aria-label="${this.t.username}"
                   @input="${this.nameChange}"
                   @keydown="${this.handleKeyDown}"
                 />
@@ -347,32 +372,32 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
                 @click=${this.checkUsername}
               >
                 <simple-icon-lite icon="icons:arrow-forward"></simple-icon-lite>
-                Next
+                ${this.t.next}
               </button>`
           : html` <div class="notyou">
-                Welcome back, ${this.username}!
-                <a @click=${this.reset}>Not you?</a>
+                ${this.t.welcomeBack.replace("{username}", () => this.username)}
+                <a @click=${this.reset}>${this.t.notYou}</a>
               </div>
               <div class="form-group">
                 <input
                   id="password"
                   type="password"
-                  placeholder="Enter your password"
-                  aria-label="Password"
+                  placeholder="${this.t.enterYourPassword}"
+                  aria-label="${this.t.password}"
                   @input="${this.passChange}"
                   @keydown="${this.handleKeyDown}"
                 />
                 <simple-icon-button-lite
                   icon="lrn:view-off"
                   tabindex="-1"
-                  title="Toggle password display"
+                  title="${this.t.togglePasswordDisplay}"
                   @click="${this.toggleViewPass}"
                   class="visibility-icon"
                 ></simple-icon-button-lite>
               </div>
               <button ?disabled="${!this.hasPass}" @click=${this.checkPassword}>
                 <simple-icon-lite icon="icons:input"></simple-icon-lite>
-                Login
+                ${this.t.login}
               </button>`}
         <div class="external">
           <slot name="externalproviders"></slot>

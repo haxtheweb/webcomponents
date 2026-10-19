@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Inkaro nuoroda nukopijuota!",
+  "skipToContent": "Pereiti prie turinio",
+  "changePalette": "Keisti paletę",
+  "primaryLinks": "Pagrindinės nuorodos",
+  "socialLinks": "Socialinių tinklų nuorodos",
+  "myProfile": "Mano profilis",
+  "profileImageOf": "{name} profilio nuotrauka",
+  "profileImage": "Profilio nuotrauka",
+  "linkCardProfile": "Nuorodų kortelės profilis",
+  "emptyStateLinks": "Pridėkite aukščiausio lygio meniu elementų į site.json, kad būtų rodomi nuorodų mygtukai.",
+  "titleOnPlatform": "{title} platformoje {platform}",
+  "openPlatform": "Atidaryti {platform}",
+  "paletteUpdated": "Spalvų paletė pakeista į {number} variantą."
+}

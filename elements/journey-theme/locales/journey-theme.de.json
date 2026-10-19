@@ -1,4 +1,11 @@
 {
   "readMore": "Weiterlesen",
-  "home": "Startseite"
+  "home": "Startseite",
+  "anchorLinkCopied": "Ankerlink kopiert!",
+  "skipToContent": "Zum Inhalt springen",
+  "changeTheme": "Theme wechseln",
+  "siteSections": "Website-Bereiche",
+  "pageOfTotal": "Seite {current} von {total}",
+  "siteGenerated": "Website erzeugt: {date}",
+  "licenseGraphic": "Grafik zu {license}"
 }

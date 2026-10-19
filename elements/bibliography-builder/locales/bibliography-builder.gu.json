@@ -1,3 +1,8 @@
 {
-  "title": "સંદર્ભો"
+  "title": "સંદર્ભો",
+  "export": "નિકાસ",
+  "exportCitations": "સંદર્ભો નિકાસ કરો",
+  "copy": "કૉપિ કરો",
+  "exportCitationFormat": "સંદર્ભ ફોર્મેટ નિકાસ કરો",
+  "selectCitationFormatBelow": "નીચે સંદર્ભ ફોર્મેટ પસંદ કરો"
 }

@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Faayiliiwwan asitti gadi lakkisi",
+  "uploadQueue": "Tarree ol fe'iinsaa",
+  "pending": "Eeggachaa jira",
+  "preparing": "Qopheessaa jira",
+  "uploading": "Ol fe'aa jira",
+  "complete": "Xumurame",
+  "aborted": "Addaan citeera",
+  "cancelled": "Haqameera",
+  "error": "Dogoggora",
+  "errorWithStatus": "Dogoggora: {status}",
+  "cancel": "Haqi",
+  "cancelUploadOf": "Ol fe'iinsa {name} dhiisi",
+  "retry": "Irra deebi'ii yaali",
+  "retryUploadOf": "Ol fe'iinsa {name} irra deebi'ii yaali",
+  "remove": "Balleessi",
+  "removeFromQueue": "{name} tarree keessaa balleessi",
+  "fileTypeNotAccepted": "Gosti faayilii hin fudhatamne: {name}",
+  "uploadFailed": "Ol fe'iinsi hin milkoofne: {status}",
+  "networkError": "Dogoggora neetworkii"
+}

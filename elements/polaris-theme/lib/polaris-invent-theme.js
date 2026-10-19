@@ -619,7 +619,7 @@ class PolarisInventTheme extends LTIResizingMixin(
   // render function
   render() {
     return html`
-      <a class="skip-link" href="#main">Skip to content</a>
+      <a class="skip-link" href="#main">${this.t.skipToContent}</a>
       <div id="haxcms-theme-top"></div>
       <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="wrap">
@@ -635,9 +635,9 @@ class PolarisInventTheme extends LTIResizingMixin(
             .part="${this.editMode ? `edit-mode-active` : ``}"
             ?disabled="${this.editMode}"
             icon="icons:search"
-            title="Search site"
+            title="${this.t.searchSite}"
             class="search-modal-btn"
-            button-label="Search"
+            button-label="${this.t.search}"
             part="search-btn"
             position="right"
           >
@@ -680,7 +680,7 @@ class PolarisInventTheme extends LTIResizingMixin(
                 data-primary="4"
               >
                 <div slot="suffix" class="wrapper">
-                  <div class="top">Go back</div>
+                  <div class="top">${this.t.goBack}</div>
                 </div>
               </site-menu-button>
               <site-menu-button
@@ -691,7 +691,7 @@ class PolarisInventTheme extends LTIResizingMixin(
                 data-primary="4"
               >
                 <div slot="prefix" class="wrapper">
-                  <div class="top">Continue</div>
+                  <div class="top">${this.t.continue}</div>
                 </div>
               </site-menu-button>
             </div>
@@ -781,6 +781,15 @@ class PolarisInventTheme extends LTIResizingMixin(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      searchSite: "Search site",
+      search: "Search",
+      goBack: "Go back",
+      continue: "Continue",
+    };
     this.dataPalette = 8;
     // forcibly set things about the RPG toast for this design
     HAXCMSToastInstance.style.setProperty(

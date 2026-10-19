@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Barkirina temayan bi ser neket: {error}",
+  "noThemesForView": "Ji bo vê dîtinê tu tema berdest nînin.",
+  "active": "Çalak",
+  "themeIsActive": "Temaya {name} çalak e",
+  "applyTheme": "Temaya {name} bisepîne",
+  "apply": "Bisepîne",
+  "preview": "Pêşdîtin",
+  "name": "Nav",
+  "element": "Hêman",
+  "description": "Danasîn",
+  "action": "Çalakî",
+  "loadingThemes": "Tema têne barkirin...",
+  "themesShown": "{count} tema têne nîşandan",
+  "themesShownDefaults": "{count} tema têne nîşandan (xwerûyên app-hax)",
+  "availableHaxcmsThemes": "Temayên HAXcms ên Berdest",
+  "gallery": "Galerî",
+  "table": "Tablo"
+}

@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Bağlantı adresi kopyalandı!",
+  "skipToContent": "İçeriğe geç",
+  "siteHome": "Site ana sayfası",
+  "mainNavigation": "Ana gezinti",
+  "toggleMenu": "Menüyü aç/kapat",
+  "changeTheme": "Temayı değiştir",
+  "breadcrumb": "İçerik yolu",
+  "tagFilter": "Etiket filtresi:",
+  "all": "Tümü",
+  "pageNumberOfTotal": "Sayfa numarası: {current} / {total}",
+  "siteGenerated": "Site oluşturulma tarihi: {date}",
+  "copyright": "Telif hakkı: {year} {author}",
+  "viewContentByTag": "İçeriği Etikete Göre Görüntüle",
+  "licenseGraphic": "{license} grafiği"
+}

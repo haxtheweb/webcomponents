@@ -7,5 +7,7 @@
   "userAccessGranted": "Tugadh rochtain don úsáideoir go rathúil!",
   "userNotFound": "Úsáideoir gan aimsiú nó gan údarú",
   "loadingAddingUser": "Úsáideoir á chur leis...",
-  "grantAccessTo": "Tabhair rochtain do:"
+  "grantAccessTo": "Tabhair rochtain do:",
+  "networkErrorTryAgain": "Tharla earráid líonra. Bain triail eile as.",
+  "characterWillAppear": "Feicfear an carachtar nuair a chuireann tú ainm úsáideora isteach"
 }

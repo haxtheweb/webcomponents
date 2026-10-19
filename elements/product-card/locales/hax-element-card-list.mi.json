@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "E matawai ana i te Rēhita Waehanga Tukutuku mō ētahi atu huānga HAX..",
+  "enabled": "Kua whakahohea",
+  "disabled": "Kua monokia",
+  "details": "Ngā taipitopito",
+  "tags": "Ngā tūtohu:",
+  "tagName": "Ingoa tūtohu:",
+  "developerUsage": "Whakamahinga kaiwhakawhanake:",
+  "demo": "Whakaatu",
+  "popUpDemo": "Whakaatu pahū ake",
+  "demoOf": "Whakaaturanga o {tag}"
+}

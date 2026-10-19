@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Zet bestanden hier neer",
+  "uploadQueue": "Uploadwachtrij",
+  "pending": "In afwachting",
+  "preparing": "Voorbereiden",
+  "uploading": "Uploaden",
+  "complete": "Voltooid",
+  "aborted": "Afgebroken",
+  "cancelled": "Geannuleerd",
+  "error": "Fout",
+  "errorWithStatus": "Fout: {status}",
+  "cancel": "Annuleren",
+  "cancelUploadOf": "Upload van {name} annuleren",
+  "retry": "Opnieuw proberen",
+  "retryUploadOf": "Upload van {name} opnieuw proberen",
+  "remove": "Verwijderen",
+  "removeFromQueue": "{name} uit wachtrij verwijderen",
+  "fileTypeNotAccepted": "Bestandstype niet geaccepteerd: {name}",
+  "uploadFailed": "Uploaden mislukt: {status}",
+  "networkError": "Netwerkfout"
+}

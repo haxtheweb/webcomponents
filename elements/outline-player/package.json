@@ -44,6 +44,7 @@
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/hax-iconset": "^26.8.0",
     "@haxtheweb/haxcms-elements": "^26.8.0",
+    "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/map-menu": "^26.8.0",
     "@haxtheweb/schema-behaviors": "^26.8.0",
     "@haxtheweb/simple-colors": "^26.8.0",

@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Mavzularni yuklab boʻlmadi: {error}",
+  "noThemesForView": "Bu koʻrinish uchun mavzular mavjud emas.",
+  "active": "Faol",
+  "themeIsActive": "{name} mavzusi faol",
+  "applyTheme": "{name} mavzusini qoʻllash",
+  "apply": "Qoʻllash",
+  "preview": "Oldindan ko‘rish",
+  "name": "Ism",
+  "element": "Element",
+  "description": "Tavsif",
+  "action": "Amal",
+  "loadingThemes": "Mavzular yuklanmoqda...",
+  "themesShown": "{count} ta mavzu koʻrsatilgan",
+  "themesShownDefaults": "{count} ta mavzu koʻrsatilgan (app-hax standartlari)",
+  "availableHaxcmsThemes": "Mavjud HAXcms mavzulari",
+  "gallery": "Galereya",
+  "table": "Jadval"
+}

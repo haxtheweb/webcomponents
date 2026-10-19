@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Nde mbohovái",
   "checkAnswer": "Hecha mbohovái",
-  "retry": "Ñeha'ã jey"
+  "retry": "Ñeha'ã jey",
+  "correct": "Hekopete!",
+  "incorrect": "Ndahekopetéi!",
+  "correctAnswer": "Mbohovái Hekopetéva: {answer}"
 }

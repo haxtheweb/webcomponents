@@ -9,5 +9,8 @@
   "record": "Įrašyti",
   "pause": "Pristabdyti įrašymą",
   "stopSave": "Sustabdyti ir išsaugoti",
-  "clickToTakePhoto": "Spustelėkite, kad nufotografuotumėte"
+  "clickToTakePhoto": "Spustelėkite, kad nufotografuotumėte",
+  "url": "URL",
+  "open": "atidaryti",
+  "removeValue": "Pašalinti {value}"
 }

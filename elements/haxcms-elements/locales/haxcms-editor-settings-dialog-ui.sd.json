@@ -5,5 +5,9 @@
   "buttons": "بٽڻ",
   "futureButtonConfiguration": "ايڊيٽر بٽڻن جي ڪسٽم ترتيب جلد اچي رهي آهي.",
   "save": "محفوظ ڪريو",
-  "saving": "محفوظ ٿي رهيو آهي…"
+  "saving": "محفوظ ٿي رهيو آهي…",
+  "novice": "نئون سکندڙ",
+  "expert": "ماهر",
+  "toolbarPreviewAlt": "{audience} ايڊيٽنگ ٽول بار جو پيش منظر",
+  "savingEditorSettingsFailed": "ايڊيٽر سيٽنگون محفوظ ڪرڻ ناڪام: {error}"
 }

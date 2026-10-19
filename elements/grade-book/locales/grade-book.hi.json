@@ -43,5 +43,22 @@
   "emailAddress": "इस छात्र को ईमेल करें",
   "notes": "नोट्स",
   "interests": "रुचियाँ",
-  "profileImageFor": "प्रोफ़ाइल छवि:"
+  "profileImageFor": "प्रोफ़ाइल छवि:",
+  "fileSystem": "फ़ाइल सिस्टम",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL एंडपॉइंट (JSON)",
+  "jsonDataBlob": "JSON डेटा ब्लॉब",
+  "additionalCriteriaFeedback": "अतिरिक्त {criteria} फ़ीडबैक",
+  "outOfPoints": "/ {points} अंक",
+  "feedbackReport": "फ़ीडबैक रिपोर्ट",
+  "criteriaDetails": "मानदंड विवरण",
+  "yourFeedback": "आपका फ़ीडबैक",
+  "additionalCriteriaFeedbackHeading": "अतिरिक्त मानदंड फ़ीडबैक",
+  "yourTotalScore": "आपका कुल स्कोर",
+  "scoreOutOfPoints": "{score} / {points} अंक",
+  "studentAssignment": "{student} का असाइनमेंट {assignment}",
+  "downloadPDF": "PDF डाउनलोड करें",
+  "displayMode1": "मोड 1",
+  "displayMode2": "मोड 2",
+  "twoWindows": "दो विंडो"
 }

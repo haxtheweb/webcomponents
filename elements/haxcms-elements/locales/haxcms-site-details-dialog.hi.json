@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- डिफ़ॉल्ट रूप से पहला पेज --",
+  "details": "विवरण",
+  "title": "शीर्षक",
+  "titleDescription": "साइट का नाम",
+  "homePage": "होम पेज",
+  "homePageDescription": "डिफ़ॉल्ट लैंडिंग / होम पेज के रूप में उपयोग होने वाला पेज",
+  "advanced": "उन्नत",
+  "serviceWorker": "डायनामिक पेज में सर्विस वर्कर जोड़ें",
+  "serviceWorkerDescription": "यदि उपयोगकर्ताओं को हमेशा तुरंत नवीनतम सर्वर आउटपुट दिखना चाहिए, तो इसे अक्षम करें।",
+  "forceBrowserUpgrade": "ब्राउज़र अपग्रेड अनिवार्य करें",
+  "forceBrowserUpgradeDescription": "साइट अनुभव लोड करने से पहले एवरग्रीन ब्राउज़र आवश्यक करें।",
+  "unableToLoadSiteDetails": "साइट विवरण लोड नहीं हो सके।",
+  "noSiteDetails": "कोई साइट विवरण उपलब्ध नहीं है।",
+  "save": "सहेजें"
+}

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Nevezd meg!",
+  "licenseBySa": "Nevezd meg! – Így add tovább!",
+  "licenseByNd": "Nevezd meg! – Ne változtasd!",
+  "licenseByNc": "Nevezd meg! – Ne add el!",
+  "licenseByNcSa": "Nevezd meg! – Ne add el! – Így add tovább!",
+  "licenseByNcNd": "Nevezd meg! – Ne add el! – Ne változtasd!",
+  "citationWithLicense": "{title}, szerző: {creator}, licenc: {license}. Hozzáférés: {date}.",
+  "citationWithoutLicense": "{title}, szerző: {creator}. Hozzáférés: {date}.",
+  "licenseGraphic": "{license} ábra"
+}

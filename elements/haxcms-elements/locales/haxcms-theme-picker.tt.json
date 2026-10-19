@@ -1,0 +1,11 @@
+{
+  "theme": "Тема",
+  "active": "Актив",
+  "selected": "Сайланган",
+  "noPreview": "Алдан карау юк",
+  "currentlyActiveAndSelected": "Хәзерге вакытта актив һәм сайланган тема",
+  "currentlyActive": "Хәзерге вакытта актив тема",
+  "selectedToApplyOnSave": "Саклаганда кулланылачак сайланган тема",
+  "themeSelection": "Тема сайлау",
+  "noThemesAvailable": "Темалар юк."
+}

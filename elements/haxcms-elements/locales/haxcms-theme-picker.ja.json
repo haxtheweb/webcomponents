@@ -1,0 +1,11 @@
+{
+  "theme": "テーマ",
+  "active": "使用中",
+  "selected": "選択済み",
+  "noPreview": "プレビューなし",
+  "currentlyActiveAndSelected": "現在有効で選択中のテーマ",
+  "currentlyActive": "現在有効なテーマ",
+  "selectedToApplyOnSave": "保存時に適用される選択中のテーマ",
+  "themeSelection": "テーマの選択",
+  "noThemesAvailable": "利用できるテーマはありません。"
+}

@@ -1,0 +1,17 @@
+{
+  "editNodes": "تحرير العُقد",
+  "editLines": "تحرير الخطوط",
+  "reset": "إعادة تعيين",
+  "save": "حفظ",
+  "cancel": "إلغاء",
+  "delete": "حذف",
+  "type": "النوع:",
+  "topic": "موضوع",
+  "subsection": "قسم فرعي",
+  "name": "الاسم:",
+  "enterName": "أدخل الاسم",
+  "url": "URL:",
+  "enterUrl": "أدخل URL",
+  "activeNode": "عقدة نشطة؟",
+  "nodeId": "العقدة {id}"
+}

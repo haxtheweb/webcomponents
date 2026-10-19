@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Maqaa Fayyadamaa galchi",
+  "invalidUsernameOrPassword": "Maqaa Fayyadamaa yookaan Jecha Icciitii Sirrii Hin Taane",
+  "welcomeLetsGo": "Baga nagaan dhufte {username}! Haa deemnu!",
+  "enterYourUsername": "Maqaa fayyadamaa kee galchi",
+  "username": "Maqaa fayyadamaa",
+  "next": "Itti aanu",
+  "welcomeBack": "Baga deebitee dhufte, {username}!",
+  "notYou": "Ati miti?",
+  "enterYourPassword": "Jecha icciitii kee galchi",
+  "password": "Jecha icciitii",
+  "togglePasswordDisplay": "Agarsiisa jecha icciitii jijjiiri",
+  "login": "Seeni"
+}

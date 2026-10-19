@@ -54,5 +54,6 @@
   "requirementUppercase": "ერთი დიდი ასო",
   "requirementLowercase": "ერთი პატარა ასო",
   "requirementNumber": "ერთი ციფრი",
-  "requirementSymbol": "ერთი სპეციალური სიმბოლო"
+  "requirementSymbol": "ერთი სპეციალური სიმბოლო",
+  "haxcmsMascotAlt": "HAXcms-ის მსოფლიო მოგზაური თილისმა"
 }

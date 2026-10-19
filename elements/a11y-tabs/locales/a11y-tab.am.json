@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "ትር {xOfY}",
+  "xOfY": "{order} ከ{total}",
+  "endOfTab": "የትር {xOfY} መጨረሻ። ወደ {tabs} ተመለስ።",
+  "tabs": "ትሮች"
+}

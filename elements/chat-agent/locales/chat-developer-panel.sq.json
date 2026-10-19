@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tabela në konsolë e regjistrit të bisedës së përdoruesit",
+  "consoleTableUserText": "console.table() regjistri i bisedës së përdoruesit",
+  "consoleTableUserTooltip": "Printo regjistrin e bisedës së përdoruesit si tabelë në konsolë",
+  "consoleTableMerlinLabel": "Tabela në konsolë e regjistrit të bisedës së Merlinit",
+  "consoleTableMerlinText": "console.table() regjistri i bisedës së Merlinit",
+  "consoleTableMerlinTooltip": "Printo regjistrin e bisedës së Merlinit si tabelë në konsolë",
+  "consoleTableAllLabel": "Tabela në konsolë e të gjithë regjistrit të bisedës",
+  "consoleTableAllText": "console.table() i gjithë regjistri i bisedës",
+  "consoleTableAllTooltip": "Printo të gjithë regjistrin e bisedës si tabelë në konsolë",
+  "downloadChatLogJson": "Shkarko regjistrin e bisedës si .json",
+  "downloadChatLogJsonTooltip": "Shkarko regjistrin e bisedës si .json"
+}

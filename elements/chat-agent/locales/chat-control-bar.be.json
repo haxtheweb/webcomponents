@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Спампаваць журнал як txt",
+  "downloadChatLog": "Спампаваць журнал чата",
+  "resetChat": "Скінуць чат",
+  "toggleDataCollection": "Пераключыць збор даных",
+  "dataCollection": "Збор даных",
+  "toggleDeveloperMode": "Пераключыць рэжым распрацоўшчыка",
+  "exitFullView": "Выйсці з поўнаэкраннага прагляду",
+  "enterFullView": "Поўнаэкранны прагляд",
+  "hideInterface": "Схаваць інтэрфейс",
+  "resetChatConfirm": "Скінуць чат?",
+  "downloadBeforeResetConfirm": "Спампаваць журнал чата перад скідам?",
+  "dataCollectionOn": "Вашы размовы будуць выкарыстоўвацца для навучання нашых мадэляў ШІ",
+  "dataCollectionOff": "Вашы размовы не будуць выкарыстоўвацца для навучання нашых мадэляў ШІ"
+}

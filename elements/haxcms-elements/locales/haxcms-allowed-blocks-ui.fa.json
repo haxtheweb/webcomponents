@@ -10,5 +10,9 @@
   "save": "ذخیره",
   "noDescription": "توضیحی موجود نیست.",
   "details": "جزئیات",
-  "loadingInventory": "در حال بارگذاری فهرست کامل بلوک‌ها…"
+  "loadingInventory": "در حال بارگذاری فهرست کامل بلوک‌ها…",
+  "selectAllButton": "انتخاب همه",
+  "deselectAllButton": "لغو انتخاب همه",
+  "selectedOfAvailable": "{selected} انتخاب‌شده / {total} موجود",
+  "savingBlocksFailed": "ذخیره بلوک‌ها ناموفق بود: {error}"
 }

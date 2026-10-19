@@ -54,5 +54,6 @@
   "requirementUppercase": "စာလုံးကြီး တစ်လုံး",
   "requirementLowercase": "စာလုံးသေး တစ်လုံး",
   "requirementNumber": "ဂဏန်း တစ်လုံး",
-  "requirementSymbol": "သင်္ကေတ တစ်ခု"
+  "requirementSymbol": "သင်္ကေတ တစ်ခု",
+  "haxcmsMascotAlt": "HAXcms ကမ္ဘာလှည့်ခရီးသည် mascot"
 }

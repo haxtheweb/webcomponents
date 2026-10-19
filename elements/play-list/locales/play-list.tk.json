@@ -1,0 +1,11 @@
+{
+  "playlist": "Pleýlist",
+  "carousel": "karusel",
+  "slide": "slaýd",
+  "slideNumber": "Slaýd {number}",
+  "slideOfTotal": "Slaýd {number} / {total}",
+  "previousSlide": "Öňki slaýd",
+  "nextSlide": "Indiki slaýd",
+  "slidePages": "Slaýd sahypalary",
+  "goToSlide": "{number} slaýda geç"
+}

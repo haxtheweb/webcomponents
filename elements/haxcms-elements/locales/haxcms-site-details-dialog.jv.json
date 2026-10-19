@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- gawan menyang kaca kapisan --",
+  "details": "Rincian",
+  "title": "Irah-irahan",
+  "titleDescription": "Jeneng situs",
+  "homePage": "Kaca ngarep",
+  "homePageDescription": "Kaca sing dienggo minangka kaca landing / ngarep gawan",
+  "advanced": "Lanjutan",
+  "serviceWorker": "Tambah service worker menyang kaca dinamis",
+  "serviceWorkerDescription": "Pateni iki yen pangguna kudu tansah weruh output server paling anyar langsung.",
+  "forceBrowserUpgrade": "Peksa nganyarke browser",
+  "forceBrowserUpgradeDescription": "Mbutuhake browser evergreen sadurunge ngemot pengalaman situs.",
+  "unableToLoadSiteDetails": "Ora bisa ngemot rincian situs.",
+  "noSiteDetails": "Ora ana rincian situs sing kasedhiya.",
+  "save": "Simpen"
+}

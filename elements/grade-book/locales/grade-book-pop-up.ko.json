@@ -1,5 +1,9 @@
 {
   "studentSubmission": "학생 제출물",
   "openInNewWindow": "새 창에서 열기",
-  "submitted": "제출됨"
+  "submitted": "제출됨",
+  "previousStudent": "이전 학생",
+  "nextStudent": "다음 학생",
+  "previousAssignment": "이전 과제",
+  "nextAssignment": "다음 과제"
 }

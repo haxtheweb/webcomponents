@@ -1,0 +1,17 @@
+{
+  "editNodes": "መስቀለኛ መንገዶችን አርትዕ",
+  "editLines": "መስመሮችን አርትዕ",
+  "reset": "ዳግም አስጀምር",
+  "save": "አስቀምጥ",
+  "cancel": "ሰርዝ",
+  "delete": "ሰርዝ",
+  "type": "ዓይነት:",
+  "topic": "ርዕሰ ጉዳይ",
+  "subsection": "ንዑስ ክፍል",
+  "name": "ስም:",
+  "enterName": "ስም ያስገቡ",
+  "url": "URL:",
+  "enterUrl": "URL ያስገቡ",
+  "activeNode": "ንቁ መስቀለኛ መንገድ?",
+  "nodeId": "መስቀለኛ መንገድ {id}"
+}

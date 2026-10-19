@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "נישט געקענט לאָדן טעמעס: {error}",
+  "noThemesForView": "קיין טעמעס נישטאָ פֿאַר דעם אָנבליק.",
+  "active": "אַקטיוו",
+  "themeIsActive": "די טעמע {name} איז אַקטיוו",
+  "applyTheme": "ווענד אָן די טעמע {name}",
+  "apply": "אָנווענדן",
+  "preview": "פֿאָרויסבליק",
+  "name": "נאָמען",
+  "element": "עלעמענט",
+  "description": "באַשרײַבונג",
+  "action": "אַקציע",
+  "loadingThemes": "לאָדט טעמעס...",
+  "themesShown": "{count} טעמעס געוויזן",
+  "themesShownDefaults": "{count} טעמעס געוויזן (app-hax פֿאַרויסשטעלונגען)",
+  "availableHaxcmsThemes": "פֿאַראַנענע HAXcms טעמעס",
+  "gallery": "גאַלעריע",
+  "table": "טאַבעלע"
+}

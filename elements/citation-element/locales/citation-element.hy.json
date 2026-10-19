@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Հղում",
+  "licenseBySa": "Հղում–Տարածում նույն պայմաններով",
+  "licenseByNd": "Հղում–Առանց ածանցյալների",
+  "licenseByNc": "Հղում–Ոչ առևտրային",
+  "licenseByNcSa": "Հղում–Ոչ առևտրային–Տարածում նույն պայմաններով",
+  "licenseByNcNd": "Հղում–Ոչ առևտրային–Առանց ածանցյալների",
+  "citationWithLicense": "{title}, հեղինակ՝ {creator}, լիցենզավորված է {license} լիցենզիայով. Դիտվել է {date}.",
+  "citationWithoutLicense": "{title}, հեղինակ՝ {creator}. Դիտվել է {date}.",
+  "licenseGraphic": "{license} պատկեր"
+}

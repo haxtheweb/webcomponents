@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Пуштете ги датотеките тука",
+  "uploadQueue": "Редица за прикачување",
+  "pending": "Во чекање",
+  "preparing": "Се подготвува",
+  "uploading": "Се прикачува",
+  "complete": "Завршено",
+  "aborted": "Прекинато",
+  "cancelled": "Откажано",
+  "error": "Грешка",
+  "errorWithStatus": "Грешка: {status}",
+  "cancel": "Откажи",
+  "cancelUploadOf": "Откажи го прикачувањето на {name}",
+  "retry": "Обиди се повторно",
+  "retryUploadOf": "Повторно обиди се да го прикачиш {name}",
+  "remove": "Отстрани",
+  "removeFromQueue": "Отстрани го {name} од редицата",
+  "fileTypeNotAccepted": "Типот на датотека не е прифатен: {name}",
+  "uploadFailed": "Прикачувањето не успеа: {status}",
+  "networkError": "Мрежна грешка"
+}

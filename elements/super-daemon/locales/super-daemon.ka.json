@@ -36,5 +36,7 @@
   "clickToDoAnything": "დააჭირე რამის გასაკეთებლად!",
   "moreDetails": "მეტი დეტალი",
   "details": "დეტალები",
-  "saved": "შენახულია"
+  "saved": "შენახულია",
+  "opensInNewWindow": "იხსნება ახალ ფანჯარაში",
+  "resultsCount": "{count} შედეგი"
 }

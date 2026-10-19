@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Ankarlänk kopierad!",
+  "skipToContent": "Hoppa till innehållet",
+  "siteHome": "Webbplatsens startsida",
+  "mainNavigation": "Huvudnavigering",
+  "toggleMenu": "Växla meny",
+  "changeTheme": "Byt tema",
+  "breadcrumb": "Brödsmulor",
+  "tagFilter": "Taggfilter:",
+  "all": "Alla",
+  "pageNumberOfTotal": "Sidnummer: {current} av {total}",
+  "siteGenerated": "Webbplatsen genererad: {date}",
+  "copyright": "Upphovsrätt: {year} {author}",
+  "viewContentByTag": "Visa innehåll efter tagg",
+  "licenseGraphic": "Grafik för {license}"
+}

@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "کنسول ٹیبل صارف چیٹ لاگ",
+  "consoleTableUserText": "console.table() صارف چیٹ لاگ",
+  "consoleTableUserTooltip": "صارف چیٹ لاگ ٹیبل وجوں کنسول تے پرنٹ کرو",
+  "consoleTableMerlinLabel": "کنسول ٹیبل merlin چیٹ لاگ",
+  "consoleTableMerlinText": "console.table() merlin چیٹ لاگ",
+  "consoleTableMerlinTooltip": "Merlin چیٹ لاگ ٹیبل وجوں کنسول تے پرنٹ کرو",
+  "consoleTableAllLabel": "کنسول ٹیبل پورا چیٹ لاگ",
+  "consoleTableAllText": "console.table() پورا چیٹ لاگ",
+  "consoleTableAllTooltip": "پورا چیٹ لاگ ٹیبل وجوں کنسول تے پرنٹ کرو",
+  "downloadChatLogJson": "چیٹ لاگ .json وجوں ڈاؤن لوڈ کرو",
+  "downloadChatLogJsonTooltip": "چیٹ لاگ .json وجوں ڈاؤن لوڈ کرو"
+}

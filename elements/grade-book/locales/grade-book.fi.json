@@ -43,5 +43,22 @@
   "emailAddress": "Lähetä sähköpostia tälle opiskelijalle",
   "notes": "Muistiinpanot",
   "interests": "Kiinnostuksen kohteet",
-  "profileImageFor": "Profiilikuva:"
+  "profileImageFor": "Profiilikuva:",
+  "fileSystem": "Tiedostojärjestelmä",
+  "googleDocs": "Google-dokumentit",
+  "urlEndpointJSON": "URL-päätepiste (JSON)",
+  "jsonDataBlob": "JSON-datamöhkäle",
+  "additionalCriteriaFeedback": "Lisäpalaute: {criteria}",
+  "outOfPoints": "/ {points} p",
+  "feedbackReport": "Palauteraportti",
+  "criteriaDetails": "Kriteerien tiedot",
+  "yourFeedback": "Palautteesi",
+  "additionalCriteriaFeedbackHeading": "Kriteerikohtainen lisäpalaute",
+  "yourTotalScore": "Kokonaispisteesi",
+  "scoreOutOfPoints": "{score} / {points} p",
+  "studentAssignment": "Opiskelijan {student} tehtävä {assignment}",
+  "downloadPDF": "Lataa PDF",
+  "displayMode1": "Tila 1",
+  "displayMode2": "Tila 2",
+  "twoWindows": "Kaksi ikkunaa"
 }

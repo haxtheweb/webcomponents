@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Номи вазифа",
+  "describeYourRole": "Вазифаи худро дар ин ҷо тавсиф кунед...",
+  "present": "Муаррифӣ",
+  "skills": "Малакаҳо:",
+  "skillsAndMore": "{skills} ва боз +{count}",
+  "yearShort": "{count} сол",
+  "yearsShort": "{count} сол",
+  "monthShort": "{count} моҳ",
+  "monthsShort": "{count} моҳ"
+}

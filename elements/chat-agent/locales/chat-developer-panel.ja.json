@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "ユーザーのチャットログをコンソールに表で出力",
+  "consoleTableUserText": "console.table() ユーザーのチャットログ",
+  "consoleTableUserTooltip": "ユーザーのチャットログを表としてコンソールに出力",
+  "consoleTableMerlinLabel": "Merlin のチャットログをコンソールに表で出力",
+  "consoleTableMerlinText": "console.table() Merlin のチャットログ",
+  "consoleTableMerlinTooltip": "Merlin のチャットログを表としてコンソールに出力",
+  "consoleTableAllLabel": "チャットログ全体をコンソールに表で出力",
+  "consoleTableAllText": "console.table() チャットログ全体",
+  "consoleTableAllTooltip": "チャットログ全体を表としてコンソールに出力",
+  "downloadChatLogJson": "チャットログを .json でダウンロード",
+  "downloadChatLogJsonTooltip": "チャットログを .json でダウンロード"
+}

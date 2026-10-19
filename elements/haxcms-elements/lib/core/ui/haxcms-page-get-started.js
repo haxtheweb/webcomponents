@@ -16,6 +16,22 @@ import "@haxtheweb/place-holder/place-holder.js";
 class HAXCMSPageGetStarted extends HAXCMSI18NMixin(LitElement) {
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      chooseAMethodOfGettingStartedQuickly:
+        "Choose a method of getting started quickly",
+      doubleClickOrDragAndDropFileToReplace:
+        "Double click or drag and drop file to replace",
+      provideFile: "Provide file",
+      videoTemplate: "Video template",
+      assignmentTemplate: "Assignment template",
+      editThisPage: "Edit this page",
+      addAPageOutline: "Add a page outline",
+      helpMeDecide: "Help me decide",
+      getStartedDragDropTip:
+        "Tip: Drag and drop files onto the first tile to get started",
+    };
   }
   static get tag() {
     return "haxcms-page-get-started";
@@ -75,36 +91,36 @@ class HAXCMSPageGetStarted extends HAXCMSI18NMixin(LitElement) {
   render() {
     return html`
       <div class="wrapper" @click="${this.handleWhoGotClicked}">
-        <h3>Choose a method of getting started quickly</h3>
+        <h3>${this.t.chooseAMethodOfGettingStartedQuickly}</h3>
         <div class="row">
           <div class="tile" data-action="file">
             <place-holder
-              directions="Double click or drag and drop file to replace"
-              text="Provide file"
+              directions="${this.t.doubleClickOrDragAndDropFileToReplace}"
+              text="${this.t.provideFile}"
             ></place-holder>
           </div>
           <div class="tile" data-action="video">
             <simple-icon-lite icon="hax:video"></simple-icon-lite>
-            <div class="label">Video template</div>
+            <div class="label">${this.t.videoTemplate}</div>
           </div>
           <div class="tile" data-action="assignment">
             <simple-icon-lite icon="hax:lesson"></simple-icon-lite>
-            <div class="label">Assignment template</div>
+            <div class="label">${this.t.assignmentTemplate}</div>
           </div>
         </div>
 
         <div class="row">
           <div class="tile" data-action="edit">
             <simple-icon-lite icon="hax:page-edit"></simple-icon-lite>
-            <div class="label">Edit this page</div>
+            <div class="label">${this.t.editThisPage}</div>
           </div>
           <div class="tile" data-action="outline">
             <simple-icon-lite icon="hax:site-map"></simple-icon-lite>
-            <div class="label">Add a page outline</div>
+            <div class="label">${this.t.addAPageOutline}</div>
           </div>
           <div class="tile" data-action="merlin">
             <simple-icon-lite icon="hax:wizard-hat"></simple-icon-lite>
-            <div class="label">Help me decide</div>
+            <div class="label">${this.t.helpMeDecide}</div>
           </div>
         </div>
 
@@ -113,7 +129,7 @@ class HAXCMSPageGetStarted extends HAXCMSI18NMixin(LitElement) {
             icon="hax:wizard-hat"
           ></simple-icon-button-lite>
           <span class="tip"
-            >Tip: Drag and drop files onto the first tile to get started</span
+            >${this.t.getStartedDragDropTip}</span
           >
         </div>
       </div>

@@ -1,0 +1,11 @@
+{
+  "theme": "थीम",
+  "active": "सक्रिय",
+  "selected": "निवडलेले",
+  "noPreview": "पूर्वावलोकन नाही",
+  "currentlyActiveAndSelected": "सध्या सक्रिय आणि निवडलेली थीम",
+  "currentlyActive": "सध्या सक्रिय थीम",
+  "selectedToApplyOnSave": "जतन केल्यावर लागू करण्यासाठी निवडलेली थीम",
+  "themeSelection": "थीम निवड",
+  "noThemesAvailable": "कोणत्याही थीम उपलब्ध नाहीत."
+}

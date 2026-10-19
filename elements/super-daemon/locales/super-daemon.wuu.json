@@ -36,5 +36,7 @@
   "clickToDoAnything": "点一下啥事体好做!",
   "moreDetails": "更多细节",
   "details": "细节",
-  "saved": "存好勒"
+  "saved": "存好勒",
+  "opensInNewWindow": "辣新窗口打开",
+  "resultsCount": "{count} 个结果"
 }

@@ -9,6 +9,7 @@ import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * @title  Simple Blog
@@ -17,7 +18,9 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  * @demo demo/index.html
  * @element simple-blog
  */
-class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
+class SimpleBlog extends I18NMixin(
+  SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)),
+) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -121,7 +124,7 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
   render() {
     return html`
       <main id="main-content" tabindex="-1">
-        <a class="skip-link" href="#main-content">Skip to content</a>
+        <a class="skip-link" href="#main-content">${this.t.skipToContent}</a>
         ${this.selectedPage === 0
           ? html`
               <section>
@@ -133,7 +136,7 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
               <simple-icon-button
                 id="backbutton"
                 icon="icons:arrow-back"
-                label="Back to blog"
+                label="${this.t.backToBlog}"
                 @click="${this._goBack}"
               ></simple-icon-button>
               <simple-tooltip
@@ -141,7 +144,7 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
                 position="right"
                 offset="14"
                 animation-delay="0"
-                >Back to listing
+                >${this.t.backToListing}
               </simple-tooltip>
               <article>
                 <simple-blog-post ?edit-mode="${this.editMode}"
@@ -174,6 +177,17 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
     // constructor already created it and pushed its constructor-time
     // autoruns (editMode/trayStatus/activeItemContent) into it; a fresh
     // array would orphan them so disconnectedCallback never disposes them
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      backToBlog: "Back to blog",
+      backToListing: "Back to listing",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.selectedPage = 0;
     setTimeout(() => {
       import("@haxtheweb/simple-blog/lib/simple-blog-header.js");

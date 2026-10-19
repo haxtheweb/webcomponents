@@ -1,0 +1,11 @@
+{
+  "roleTitle": "المسمى الوظيفي",
+  "describeYourRole": "صف دورك هنا...",
+  "present": "اعرض",
+  "skills": "المهارات:",
+  "skillsAndMore": "{skills} و+{count} أخرى",
+  "yearShort": "{count} سنة",
+  "yearsShort": "{count} سنوات",
+  "monthShort": "{count} شهر",
+  "monthsShort": "{count} أشهر"
+}

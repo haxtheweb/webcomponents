@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "لاګ د txt په توګه ښکته کړئ",
+  "downloadChatLog": "د چټ لاګ ښکته کړئ",
+  "resetChat": "چټ بیا پیل کړئ",
+  "toggleDataCollection": "د معلوماتو راټولول بدل کړئ",
+  "dataCollection": "د معلوماتو راټولول",
+  "toggleDeveloperMode": "د پراختیاکوونکي حالت بدل کړئ",
+  "exitFullView": "له بشپړ لید څخه ووځئ",
+  "enterFullView": "بشپړ لید ته ننوځئ",
+  "hideInterface": "انټرفېس پټ کړئ",
+  "resetChatConfirm": "چټ بیا پیل کړئ؟",
+  "downloadBeforeResetConfirm": "د بیا پیلولو مخکې د چټ لاګ ښکته کړئ؟",
+  "dataCollectionOn": "ستاسو خبرې اترې به زموږ د AI ماډلونو د روزنې لپاره وکارول شي",
+  "dataCollectionOff": "ستاسو خبرې اترې به زموږ د AI ماډلونو د روزنې لپاره ونه کارول شي"
+}

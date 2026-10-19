@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Tab {xOfY}",
+  "xOfY": "{order} daripada {total}",
+  "endOfTab": "Akhir tab {xOfY}. Kembali ke {tabs}.",
+  "tabs": "tab"
+}

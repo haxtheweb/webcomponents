@@ -1,0 +1,18 @@
+{
+  "copy": "Cóipeáil",
+  "download": "Íoslódáil",
+  "archive": "Cartlannaigh",
+  "copyOperation": "cóipeáil",
+  "downloadOperation": "íoslódáil",
+  "archiveOperation": "cartlannú",
+  "created": "cruthaithe",
+  "updated": "nuashonraithe",
+  "pages": "leathanaigh",
+  "url": "URL",
+  "confirm": "Deimhnigh",
+  "cancel": "Cealaigh",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "An bhfuil tú cinnte gur mian leat {operation} a dhéanamh ar {siteName}?",
+  "siteOperationSuccessful": "D'éirigh le {operation} {siteName}!",
+  "siteOperationFailed": "Theip ar {operation} {siteName}"
+}

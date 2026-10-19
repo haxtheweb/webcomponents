@@ -10,5 +10,9 @@
   "save": "שמירה",
   "noDescription": "אין תיאור זמין.",
   "details": "פרטים",
-  "loadingInventory": "טוען את מלאי הרכיבים המלא…"
+  "loadingInventory": "טוען את מלאי הרכיבים המלא…",
+  "selectAllButton": "בחירת הכול",
+  "deselectAllButton": "ביטול בחירת הכול",
+  "selectedOfAvailable": "{selected} נבחרו / {total} זמינים",
+  "savingBlocksFailed": "שמירת הבלוקים נכשלה: {error}"
 }

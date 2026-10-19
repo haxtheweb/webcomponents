@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Pelan li vir berde",
+  "uploadQueue": "Rêza barkirinê",
+  "pending": "Li bendê",
+  "preparing": "Tê amadekirin",
+  "uploading": "Tê barkirin",
+  "complete": "Temam",
+  "aborted": "Hat rawestandin",
+  "cancelled": "Hat betalkirin",
+  "error": "Çewtî",
+  "errorWithStatus": "Çewtî: {status}",
+  "cancel": "Betal bike",
+  "cancelUploadOf": "Barkirina {name} betal bike",
+  "retry": "Dîsa biceribîne",
+  "retryUploadOf": "Barkirina {name} dîsa biceribîne",
+  "remove": "Rake",
+  "removeFromQueue": "{name} ji rêzê rake",
+  "fileTypeNotAccepted": "Cureyê pelê nayê qebûlkirin: {name}",
+  "uploadFailed": "Barkirin bi ser neket: {status}",
+  "networkError": "Çewtiya torê"
+}

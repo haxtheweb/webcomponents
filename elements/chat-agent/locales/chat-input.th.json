@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "แสดงข้อความที่ส่งก่อนหน้า (ขึ้น)",
+  "displayPreviousMessageDown": "แสดงข้อความที่ส่งก่อนหน้า (ลง)",
+  "sendPrompt": "ส่งพรอมต์",
+  "sendPromptToMerlin": "ส่งพรอมต์ถึง Merlin",
+  "shortenPrompt": "โปรดย่อพรอมต์ของคุณให้ไม่เกิน {limit} ตัวอักษร"
+}

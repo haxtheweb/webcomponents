@@ -25,6 +25,9 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
       yourAnswer: "Your answer",
       checkAnswer: "Check answer",
       retry: "Retry",
+      correct: "Correct!",
+      incorrect: "Incorrect!",
+      correctAnswer: "Correct Answer: {answer}",
     };
     this.registerLocalization({
       context: this,
@@ -93,7 +96,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
     this.correct = this.equalsIgnoringCase(comparison);
     this.status = this.correct ? "correct" : "incorrect";
     this.icon = this.correct ? "check" : "cancel";
-    this.message = this.correct ? "Correct!" : "Incorrect!";
+    this.message = this.correct ? this.t.correct : this.t.incorrect;
     this.showResult = !this.correct;
     // the answer is whichever side the user is guessing
     this.correctAnswer = comparison;
@@ -323,7 +326,9 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
               ></simple-icon-lite
               >${this.message}
             </p>
-            <p class="answer-message">Correct Answer: ${this.correctAnswer}</p>`
+            <p class="answer-message">
+              ${this.t.correctAnswer.replace("{answer}", () => this.correctAnswer)}
+            </p>`
         : ``}
       <div id="buttons">
         <simple-toolbar-button

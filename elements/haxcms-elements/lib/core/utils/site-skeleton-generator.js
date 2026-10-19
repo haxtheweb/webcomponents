@@ -11,9 +11,11 @@ class SiteSkeletonGenerator {
   /**
    * Generate skeleton from current live site
    * @param {boolean} confirmed - Whether user confirmed for large sites
+   * @param {Object} t - Optional translated strings from the calling element
+   *   (key: skeletonLargeSiteConfirm, with a {count} placeholder)
    * @returns {Object} Skeleton schema
    */
-  static async generateFromCurrentSite(confirmed = false) {
+  static async generateFromCurrentSite(confirmed = false, t = {}) {
     const manifest = toJS(store.manifest);
 
     if (!manifest || !manifest.items) {
@@ -22,8 +24,11 @@ class SiteSkeletonGenerator {
 
     // Check for large sites and get confirmation
     if (manifest.items.length > 20 && !confirmed) {
+      const confirmText =
+        (t && t.skeletonLargeSiteConfirm) ||
+        "This site has {count} pages. Generating a skeleton may take a while and create a large file. Continue?";
       const shouldContinue = confirm(
-        `This site has ${manifest.items.length} pages. Generating a skeleton may take a while and create a large file. Continue?`,
+        confirmText.replace("{count}", () => manifest.items.length),
       );
       if (!shouldContinue) {
         throw new Error("Skeleton generation cancelled by user");

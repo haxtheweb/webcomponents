@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Spustite datoteke sem",
+  "uploadQueue": "Čakalna vrsta nalaganja",
+  "pending": "V čakanju",
+  "preparing": "Pripravljanje",
+  "uploading": "Nalaganje",
+  "complete": "Dokončano",
+  "aborted": "Prekinjeno",
+  "cancelled": "Preklicano",
+  "error": "Napaka",
+  "errorWithStatus": "Napaka: {status}",
+  "cancel": "Prekliči",
+  "cancelUploadOf": "Prekliči nalaganje {name}",
+  "retry": "Poskusi znova",
+  "retryUploadOf": "Znova poskusi naložiti {name}",
+  "remove": "Odstrani",
+  "removeFromQueue": "Odstrani {name} iz čakalne vrste",
+  "fileTypeNotAccepted": "Vrsta datoteke ni sprejeta: {name}",
+  "uploadFailed": "Nalaganje ni uspelo: {status}",
+  "networkError": "Omrežna napaka"
+}

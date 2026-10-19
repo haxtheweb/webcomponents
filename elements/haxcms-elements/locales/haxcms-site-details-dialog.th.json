@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ค่าเริ่มต้นเป็นหน้าแรก --",
+  "details": "รายละเอียด",
+  "title": "ชื่อเรื่อง",
+  "titleDescription": "ชื่อของไซต์",
+  "homePage": "หน้าแรก",
+  "homePageDescription": "หน้าที่ใช้เป็นหน้าเริ่มต้น / หน้าแรก",
+  "advanced": "ขั้นสูง",
+  "serviceWorker": "เพิ่ม service worker ให้กับหน้าแบบไดนามิก",
+  "serviceWorkerDescription": "ปิดใช้งานตัวเลือกนี้หากผู้ใช้ควรเห็นผลลัพธ์ล่าสุดจากเซิร์ฟเวอร์ทันทีเสมอ",
+  "forceBrowserUpgrade": "บังคับอัปเกรดเบราว์เซอร์",
+  "forceBrowserUpgradeDescription": "กำหนดให้ใช้เบราว์เซอร์ที่อัปเดตอยู่เสมอก่อนโหลดไซต์",
+  "unableToLoadSiteDetails": "ไม่สามารถโหลดรายละเอียดไซต์ได้",
+  "noSiteDetails": "ไม่มีรายละเอียดไซต์",
+  "save": "บันทึก"
+}

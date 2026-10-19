@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Ҷадвали консолии сабти чати корбар",
+  "consoleTableUserText": "console.table() сабти чати корбар",
+  "consoleTableUserTooltip": "Чопи сабти чати корбар ҳамчун ҷадвал дар консол",
+  "consoleTableMerlinLabel": "Ҷадвали консолии сабти чати Merlin",
+  "consoleTableMerlinText": "console.table() сабти чати Merlin",
+  "consoleTableMerlinTooltip": "Чопи сабти чати Merlin ҳамчун ҷадвал дар консол",
+  "consoleTableAllLabel": "Ҷадвали консолии тамоми сабти чат",
+  "consoleTableAllText": "console.table() тамоми сабти чат",
+  "consoleTableAllTooltip": "Чопи тамоми сабти чат ҳамчун ҷадвал дар консол",
+  "downloadChatLogJson": "Боргирии сабти чат ҳамчун .json",
+  "downloadChatLogJsonTooltip": "Боргирии сабти чат ҳамчун .json"
+}

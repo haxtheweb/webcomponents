@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Dorëzimi i studentit",
   "openInNewWindow": "Hap në dritare të re",
-  "submitted": "Dorëzuar"
+  "submitted": "Dorëzuar",
+  "previousStudent": "Studenti i mëparshëm",
+  "nextStudent": "Studenti tjetër",
+  "previousAssignment": "Detyra e mëparshme",
+  "nextAssignment": "Detyra tjetër"
 }

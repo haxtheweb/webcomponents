@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- mặc định là trang đầu tiên --",
+  "details": "Chi tiết",
+  "title": "Tiêu đề",
+  "titleDescription": "Tên của trang web",
+  "homePage": "Trang chủ",
+  "homePageDescription": "Trang dùng làm trang đích / trang chủ mặc định",
+  "advanced": "Nâng cao",
+  "serviceWorker": "Thêm service worker vào trang động",
+  "serviceWorkerDescription": "Tắt tùy chọn này nếu người dùng luôn cần thấy ngay kết quả mới nhất từ máy chủ.",
+  "forceBrowserUpgrade": "Bắt buộc nâng cấp trình duyệt",
+  "forceBrowserUpgradeDescription": "Yêu cầu trình duyệt luôn cập nhật trước khi tải trải nghiệm trang web.",
+  "unableToLoadSiteDetails": "Không thể tải chi tiết trang web.",
+  "noSiteDetails": "Không có chi tiết trang web nào.",
+  "save": "Lưu"
+}

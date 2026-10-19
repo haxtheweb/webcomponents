@@ -43,5 +43,22 @@
   "emailAddress": "Kay yachakuqman e-mail apachiy",
   "notes": "Willaykuna",
   "interests": "Munasqankuna",
-  "profileImageFor": "Perfil siq'i:"
+  "profileImageFor": "Perfil siq'i:",
+  "fileSystem": "Willañiqi sistema",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "JSON willakuy blob",
+  "additionalCriteriaFeedback": "Yapasqa {criteria} kutichiy",
+  "outOfPoints": "/ {points} pts",
+  "feedbackReport": "Kutichiy willakuy",
+  "criteriaDetails": "Criterio detallekuna",
+  "yourFeedback": "Qampa kutichiyniyki",
+  "additionalCriteriaFeedbackHeading": "Yapasqa Criterio kutichiy",
+  "yourTotalScore": "Llapan Puntajeyki",
+  "scoreOutOfPoints": "{score} / {points} pts",
+  "studentAssignment": "{student}-pa {assignment} llamk'aynin",
+  "downloadPDF": "PDF-ta uraqachiy",
+  "displayMode1": "Kay 1",
+  "displayMode2": "Kay 2",
+  "twoWindows": "Iskay ventanakuna"
 }

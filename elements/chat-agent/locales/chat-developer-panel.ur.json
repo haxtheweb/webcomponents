@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "صارف چیٹ لاگ کا کنسول ٹیبل",
+  "consoleTableUserText": "console.table() صارف چیٹ لاگ",
+  "consoleTableUserTooltip": "صارف چیٹ لاگ کو ٹیبل کی صورت میں کنسول پر پرنٹ کریں",
+  "consoleTableMerlinLabel": "merlin چیٹ لاگ کا کنسول ٹیبل",
+  "consoleTableMerlinText": "console.table() merlin چیٹ لاگ",
+  "consoleTableMerlinTooltip": "Merlin چیٹ لاگ کو ٹیبل کی صورت میں کنسول پر پرنٹ کریں",
+  "consoleTableAllLabel": "مکمل چیٹ لاگ کا کنسول ٹیبل",
+  "consoleTableAllText": "console.table() مکمل چیٹ لاگ",
+  "consoleTableAllTooltip": "مکمل چیٹ لاگ کو ٹیبل کی صورت میں کنسول پر پرنٹ کریں",
+  "downloadChatLogJson": "چیٹ لاگ کو .json کے طور پر ڈاؤن لوڈ کریں",
+  "downloadChatLogJsonTooltip": "چیٹ لاگ کو .json کے طور پر ڈاؤن لوڈ کریں"
+}

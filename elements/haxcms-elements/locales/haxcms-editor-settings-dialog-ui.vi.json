@@ -5,5 +5,9 @@
   "buttons": "Nút",
   "futureButtonConfiguration": "Tính năng tùy chỉnh nút của trình soạn thảo sắp ra mắt.",
   "save": "Lưu",
-  "saving": "Đang lưu…"
+  "saving": "Đang lưu…",
+  "novice": "Người mới",
+  "expert": "Chuyên gia",
+  "toolbarPreviewAlt": "Xem trước thanh công cụ chỉnh sửa cho {audience}",
+  "savingEditorSettingsFailed": "Lưu cài đặt trình chỉnh sửa thất bại: {error}"
 }

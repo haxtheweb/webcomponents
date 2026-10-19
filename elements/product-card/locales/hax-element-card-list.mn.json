@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Бусад HAX элементүүдийг олохоор Web Component бүртгэлийг шалгаж байна..",
+  "enabled": "Идэвхтэй",
+  "disabled": "Идэвхгүй",
+  "details": "Дэлгэрэнгүй",
+  "tags": "Шошгууд:",
+  "tagName": "Шошгын нэр:",
+  "developerUsage": "Хөгжүүлэгчийн хэрэглээ:",
+  "demo": "Демо",
+  "popUpDemo": "Демог цонхонд харах",
+  "demoOf": "{tag}-ийн демо"
+}

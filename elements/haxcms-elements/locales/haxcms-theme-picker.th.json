@@ -1,0 +1,11 @@
+{
+  "theme": "ธีม",
+  "active": "ใช้งานอยู่",
+  "selected": "เลือกแล้ว",
+  "noPreview": "ไม่มีตัวอย่าง",
+  "currentlyActiveAndSelected": "ธีมที่ใช้งานอยู่และถูกเลือก",
+  "currentlyActive": "ธีมที่ใช้งานอยู่",
+  "selectedToApplyOnSave": "ธีมที่เลือกเพื่อนำไปใช้เมื่อบันทึก",
+  "themeSelection": "การเลือกธีม",
+  "noThemesAvailable": "ไม่มีธีมให้ใช้งาน"
+}

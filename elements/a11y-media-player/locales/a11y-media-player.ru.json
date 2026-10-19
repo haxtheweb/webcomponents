@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Загрузка...",
   "youTubeStartLoading": "Нажмите воспроизведение.",
   "youTubeTranscriptLabel": "Стенограмма загрузится после начала воспроизведения.",
-  "audioDescriptionLabel": "Аудиоописание"
+  "audioDescriptionLabel": "Аудиоописание",
+  "openOnYouTube": "Открыть на YouTube"
 }

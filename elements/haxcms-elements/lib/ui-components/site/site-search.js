@@ -239,6 +239,12 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
       found: "Found",
       typeAtLeast3LettersToStartSearch:
         "Type at least 3 letters to start search",
+      loadingSearchResults: "Loading search results",
+      searchResults: "Search results",
+      searchResultTags: "Tags",
+      createdOn: "Created on",
+      pageLocation: "Page location",
+      noResultsFor: 'No results found for "{search}"',
     };
     this.whileLoading = false;
     this.hideInput = false;
@@ -293,7 +299,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
       <loading-indicator
         full
         ?loading="${this.whileLoading}"
-        aria-label="Loading search results"
+        aria-label="${this.t.loadingSearchResults}"
       ></loading-indicator>
 
       ${this.__results.length > 0
@@ -301,7 +307,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
             <section
               id="search-results"
               role="region"
-              aria-label="Search results"
+              aria-label="${this.t.searchResults}"
               class="search-results"
             >
               ${this.__results.map(
@@ -331,7 +337,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
                         >(${item.location})</span
                       >
                       ${item.tags && item.tags != ""
-                        ? html`<div class="tags" role="list" aria-label="Tags">
+                        ? html`<div class="tags" role="list" aria-label="${this.t.searchResultTags}">
                             ${item.tags
                               .split(",")
                               .map(
@@ -349,12 +355,12 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
                         format="M jS"
                         .timestamp="${item.created}"
                         unix
-                        aria-label="Created on"
+                        aria-label="${this.t.createdOn}"
                         >${item.created}</simple-datetime
                       >
                     </div>
                     ${item.breadcrumb
-                      ? html`<nav class="breadcrumb" aria-label="Page location">
+                      ? html`<nav class="breadcrumb" aria-label="${this.t.pageLocation}">
                           ${item.breadcrumb.map(
                             (crumb, i) =>
                               html`${i != 0
@@ -376,7 +382,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
           `
         : this.search.length > 0 && !this.whileLoading
           ? html`<div class="no-results" role="status">
-              No results found for "${this.search}"
+              ${this.t.noResultsFor.replace("{search}", () => this.search)}
             </div>`
           : html``}
     `;

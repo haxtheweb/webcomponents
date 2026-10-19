@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Scaricà u ghjurnale in txt",
+  "downloadChatLog": "Scaricà u ghjurnale di a chat",
+  "resetChat": "Reinizializà a chat",
+  "toggleDataCollection": "Cummutà a racolta di dati",
+  "dataCollection": "Racolta di dati",
+  "toggleDeveloperMode": "Cummutà u modu sviluppatore",
+  "exitFullView": "Esce da a vista cumpleta",
+  "enterFullView": "Entre in a vista cumpleta",
+  "hideInterface": "Piattà l'interfaccia",
+  "resetChatConfirm": "Reinizializà a chat?",
+  "downloadBeforeResetConfirm": "Scaricà u ghjurnale di a chat nanzu di reinizializà?",
+  "dataCollectionOn": "E vostre cunversazione saranu aduprate per addestrà i nostri mudelli d'AI",
+  "dataCollectionOff": "E vostre cunversazione ùn saranu micca aduprate per addestrà i nostri mudelli d'AI"
+}

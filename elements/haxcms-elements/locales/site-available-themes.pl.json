@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Nie udało się wczytać motywów: {error}",
+  "noThemesForView": "Brak motywów dostępnych dla tego widoku.",
+  "active": "Aktywna",
+  "themeIsActive": "Motyw {name} jest aktywny",
+  "applyTheme": "Zastosuj motyw {name}",
+  "apply": "Zastosuj",
+  "preview": "Podgląd",
+  "name": "Imię i nazwisko",
+  "element": "Element",
+  "description": "Opis",
+  "action": "Akcja",
+  "loadingThemes": "Wczytywanie motywów...",
+  "themesShown": "Wyświetlone motywy: {count}",
+  "themesShownDefaults": "Wyświetlone motywy: {count} (domyślne app-hax)",
+  "availableHaxcmsThemes": "Dostępne motywy HAXcms",
+  "gallery": "Galeria",
+  "table": "Tabela"
+}

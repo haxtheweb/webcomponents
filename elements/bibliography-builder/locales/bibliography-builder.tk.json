@@ -1,3 +1,8 @@
 {
-  "title": "Çeşmeler"
+  "title": "Çeşmeler",
+  "export": "Eksport",
+  "exportCitations": "Sitatalary eksport et",
+  "copy": "Göçürmek",
+  "exportCitationFormat": "Sitata formatyny eksport et",
+  "selectCitationFormatBelow": "Aşakdan sitata formatyny saýlaň"
 }

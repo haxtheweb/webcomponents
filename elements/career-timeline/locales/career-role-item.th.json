@@ -1,0 +1,11 @@
+{
+  "roleTitle": "ชื่อตำแหน่ง",
+  "describeYourRole": "อธิบายบทบาทของคุณที่นี่...",
+  "present": "นำเสนอ",
+  "skills": "ทักษะ:",
+  "skillsAndMore": "{skills} และอีก +{count}",
+  "yearShort": "{count} ปี",
+  "yearsShort": "{count} ปี",
+  "monthShort": "{count} เดือน",
+  "monthsShort": "{count} เดือน"
+}

@@ -36,5 +36,7 @@
   "clickToDoAnything": "Nhấp để làm bất cứ điều gì!",
   "moreDetails": "Chi tiết hơn",
   "details": "Chi tiết",
-  "saved": "Đã lưu"
+  "saved": "Đã lưu",
+  "opensInNewWindow": "Mở trong cửa sổ mới",
+  "resultsCount": "{count} kết quả"
 }

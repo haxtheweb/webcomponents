@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Ուսանողի հանձնած աշխատանքը",
   "openInNewWindow": "Բացել նոր պատուհանում",
-  "submitted": "Հանձնված է"
+  "submitted": "Հանձնված է",
+  "previousStudent": "Նախորդ ուսանողը",
+  "nextStudent": "Հաջորդ ուսանողը",
+  "previousAssignment": "Նախորդ առաջադրանքը",
+  "nextAssignment": "Հաջորդ առաջադրանքը"
 }

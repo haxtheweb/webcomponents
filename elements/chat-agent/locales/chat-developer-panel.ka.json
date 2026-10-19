@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "მომხმარებლის ჩატის ჟურნალის ცხრილი კონსოლში",
+  "consoleTableUserText": "console.table() მომხმარებლის ჩატის ჟურნალი",
+  "consoleTableUserTooltip": "მომხმარებლის ჩატის ჟურნალის ცხრილად გამოტანა კონსოლში",
+  "consoleTableMerlinLabel": "Merlin-ის ჩატის ჟურნალის ცხრილი კონსოლში",
+  "consoleTableMerlinText": "console.table() Merlin-ის ჩატის ჟურნალი",
+  "consoleTableMerlinTooltip": "Merlin-ის ჩატის ჟურნალის ცხრილად გამოტანა კონსოლში",
+  "consoleTableAllLabel": "მთლიანი ჩატის ჟურნალის ცხრილი კონსოლში",
+  "consoleTableAllText": "console.table() მთლიანი ჩატის ჟურნალი",
+  "consoleTableAllTooltip": "მთლიანი ჩატის ჟურნალის ცხრილად გამოტანა კონსოლში",
+  "downloadChatLogJson": "ჩატის ჟურნალის ჩამოტვირთვა .json-ად",
+  "downloadChatLogJsonTooltip": "ჩატის ჟურნალის ჩამოტვირთვა .json-ად"
+}

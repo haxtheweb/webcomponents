@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "هېڅ پایله نشته",
+  "viewsRecordHeading": "ثبتول",
+  "viewsTitleImage": "د {title} انځور",
+  "viewsTitlePreview": "د {title} مخکتنه",
+  "viewsNoTimelineRecords": "د مهالوېش د ښودلو لپاره د نېټې پر بنسټ هېڅ ریکارډ شتون نه لري.",
+  "viewsTimelineTitle": "د {title} مهالوېش",
+  "viewsNoChartField": "د چارټ د ښودلو لپاره هېڅ عددي ساحه ونه موندل شوه.",
+  "viewsChartingValue": "د {value} چارټ",
+  "viewsChartingValueByLabel": "د {label} له مخې د {value} چارټ",
+  "viewsChartTitle": "د {title} چارټ",
+  "viewsNoTreeRecords": "د ونې د ښودلو لپاره هېڅ درجه بندي ریکارډ شتون نه لري.",
+  "viewsNoGalleryRecords": "د ګالرۍ د ښودلو لپاره هېڅ انځوري ریکارډ شتون نه لري.",
+  "viewsNoPlaylistRecords": "د پلې لېست د ښودلو لپاره هېڅ رسنیز ریکارډ شتون نه لري.",
+  "fetchFailed": "راوړل ناکام شول ({status})",
+  "unableToLoadViewData": "د لید معلومات نه شي پورته کېدای.",
+  "noResultsFound": "هېڅ پایله ونه موندل شوه.",
+  "refreshView": "لید تازه کړئ",
+  "breakIntoStaticContent": "په ثابته منځپانګه یې بدل کړئ",
+  "viewsOpenRecord": "ریکارډ پرانیزئ"
+}

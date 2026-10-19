@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 const FALLBACK_LANG = "en";
 
 /**
@@ -8,7 +9,7 @@ const FALLBACK_LANG = "en";
  * @demo demo/index.html
  * @element twitter-embed
  */
-class TwitterEmbed extends LitElement {
+class TwitterEmbed extends I18NMixin(LitElement) {
   static get tag() {
     return "twitter-embed";
   }
@@ -17,6 +18,15 @@ class TwitterEmbed extends LitElement {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      twitterTweet: "Twitter Tweet",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.lang =
       this.getAttribute("lang") ||
       globalThis.document.body.getAttribute("xml:lang") ||
@@ -169,7 +179,7 @@ class TwitterEmbed extends LitElement {
           allow="autoplay; encrypted-media; fullscreen"
           style="position: static; visibility: visible; width: ${this
             .dataWidth}; height: 498px; display: block; flex-grow: 1;"
-          title="Twitter Tweet"
+          title="${this.t.twitterTweet}"
           src="https://platform.x.com/embed/index.html?dnt=true&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${this
             .tweetId}&amp;lang=${this.lang}&amp;theme=${this
             .dataTheme}&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this

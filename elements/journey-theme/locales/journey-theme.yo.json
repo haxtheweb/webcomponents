@@ -1,4 +1,11 @@
 {
   "readMore": "Ka síi",
-  "home": "Ilé"
+  "home": "Ilé",
+  "anchorLinkCopied": "A ti ṣe àdàkọ ìjápọ̀ ìdákọ̀ró!",
+  "skipToContent": "Fò lọ sí àkóónú",
+  "changeTheme": "Yí àkòrí padà",
+  "siteSections": "Àwọn abala ojú òpó",
+  "pageOfTotal": "Ojú-ìwé {current} nínú {total}",
+  "siteGenerated": "A ṣẹ̀dá ojú òpó ní: {date}",
+  "licenseGraphic": "Àwòrán {license}"
 }

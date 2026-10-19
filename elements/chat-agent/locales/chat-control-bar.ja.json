@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "ログを txt でダウンロード",
+  "downloadChatLog": "チャットログをダウンロード",
+  "resetChat": "チャットをリセット",
+  "toggleDataCollection": "データ収集を切り替え",
+  "dataCollection": "データ収集",
+  "toggleDeveloperMode": "開発者モードを切り替え",
+  "exitFullView": "全画面表示を終了",
+  "enterFullView": "全画面表示",
+  "hideInterface": "インターフェースを非表示",
+  "resetChatConfirm": "チャットをリセットしますか?",
+  "downloadBeforeResetConfirm": "リセットする前にチャットログをダウンロードしますか?",
+  "dataCollectionOn": "会話は AI モデルのトレーニングに使用されます",
+  "dataCollectionOff": "会話は AI モデルのトレーニングに使用されません"
+}

@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Mövzuları yükləmək alınmadı: {error}",
+  "noThemesForView": "Bu görünüş üçün mövcud mövzu yoxdur.",
+  "active": "Aktiv",
+  "themeIsActive": "{name} mövzusu aktivdir",
+  "applyTheme": "{name} mövzusunu tətbiq et",
+  "apply": "Tətbiq et",
+  "preview": "Önizləmə",
+  "name": "Ad",
+  "element": "Element",
+  "description": "Təsvir",
+  "action": "Əməliyyat",
+  "loadingThemes": "Mövzular yüklənir...",
+  "themesShown": "{count} mövzu göstərilir",
+  "themesShownDefaults": "{count} mövzu göstərilir (app-hax standartları)",
+  "availableHaxcmsThemes": "Mövcud HAXcms mövzuları",
+  "gallery": "Qalereya",
+  "table": "Cədvəl"
+}

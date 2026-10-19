@@ -1,3 +1,8 @@
 {
-  "title": "Verwysings"
+  "title": "Verwysings",
+  "export": "Voer uit",
+  "exportCitations": "Voer aanhalings uit",
+  "copy": "Kopieer",
+  "exportCitationFormat": "Uitvoerformaat vir aanhalings",
+  "selectCitationFormatBelow": "Kies 'n aanhalingsformaat hieronder"
 }

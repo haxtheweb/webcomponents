@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Link da âncora copiado!",
+  "skipToContent": "Pular para o conteúdo",
+  "changePalette": "Mudar paleta",
+  "primaryLinks": "Links principais",
+  "socialLinks": "Links sociais",
+  "myProfile": "Meu perfil",
+  "profileImageOf": "Imagem de perfil de {name}",
+  "profileImage": "Imagem de perfil",
+  "linkCardProfile": "Perfil do cartão de links",
+  "emptyStateLinks": "Adicione itens de menu de nível superior no site.json para exibir botões de link.",
+  "titleOnPlatform": "{title} no {platform}",
+  "openPlatform": "Abrir {platform}",
+  "paletteUpdated": "Paleta de cores atualizada para a opção {number}."
+}

@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "アンカーリンクをコピーしました!",
+  "skipToContent": "コンテンツへスキップ",
+  "changePalette": "パレットを変更",
+  "primaryLinks": "主要リンク",
+  "socialLinks": "ソーシャルリンク",
+  "myProfile": "マイプロフィール",
+  "profileImageOf": "{name} のプロフィール画像",
+  "profileImage": "プロフィール画像",
+  "linkCardProfile": "リンクカードのプロフィール",
+  "emptyStateLinks": "リンクボタンを表示するには、site.json にトップレベルのメニュー項目を追加してください。",
+  "titleOnPlatform": "{platform} の {title}",
+  "openPlatform": "{platform} を開く",
+  "paletteUpdated": "カラーパレットをオプション {number} に変更しました。"
+}

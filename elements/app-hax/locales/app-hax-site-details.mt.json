@@ -1,0 +1,18 @@
+{
+  "copy": "Ikkopja",
+  "download": "Niżżel",
+  "archive": "Arkivja",
+  "copyOperation": "tikkopja",
+  "downloadOperation": "tniżżel",
+  "archiveOperation": "tarkivja",
+  "created": "maħluq",
+  "updated": "aġġornat",
+  "pages": "paġni",
+  "url": "URL",
+  "confirm": "Ikkonferma",
+  "cancel": "Ikkanċella",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Żgur li trid {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName} {operation} b'suċċess!",
+  "siteOperationFailed": "{siteName} {operation} falla"
+}

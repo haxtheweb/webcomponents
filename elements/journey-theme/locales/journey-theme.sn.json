@@ -1,4 +1,11 @@
 {
   "readMore": "Verenga zvimwe",
-  "home": "Kumba"
+  "home": "Kumba",
+  "anchorLinkCopied": "Chinongedzo cheanchor chakopwa!",
+  "skipToContent": "Svetukira kune zviri mukati",
+  "changeTheme": "Shandura dingindira",
+  "siteSections": "Zvikamu zvesaiti",
+  "pageOfTotal": "Peji {current} pa{total}",
+  "siteGenerated": "Saiti yakagadzirwa: {date}",
+  "licenseGraphic": "Mufananidzo we{license}"
 }

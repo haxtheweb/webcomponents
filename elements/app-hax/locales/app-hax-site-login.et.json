@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Sisesta kasutajanimi",
+  "invalidUsernameOrPassword": "Vale kasutajanimi või parool",
+  "welcomeLetsGo": "Tere tulemast, {username}! Lähme!",
+  "enterYourUsername": "Sisesta oma kasutajanimi",
+  "username": "Kasutajanimi",
+  "next": "Järgmine",
+  "welcomeBack": "Tere tulemast tagasi, {username}!",
+  "notYou": "Pole sina?",
+  "enterYourPassword": "Sisesta oma parool",
+  "password": "Parool",
+  "togglePasswordDisplay": "Lülita parooli kuvamine",
+  "login": "Logi sisse"
+}

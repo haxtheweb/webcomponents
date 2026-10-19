@@ -1,0 +1,11 @@
+{
+  "playlist": "ධාවන ලැයිස්තුව",
+  "carousel": "කැරසලය",
+  "slide": "ස්ලයිඩය",
+  "slideNumber": "ස්ලයිඩය {number}",
+  "slideOfTotal": "ස්ලයිඩය {total} න් {number}",
+  "previousSlide": "පෙර ස්ලයිඩය",
+  "nextSlide": "ඊළඟ ස්ලයිඩය",
+  "slidePages": "ස්ලයිඩ පිටු",
+  "goToSlide": "ස්ලයිඩය {number} වෙත යන්න"
+}

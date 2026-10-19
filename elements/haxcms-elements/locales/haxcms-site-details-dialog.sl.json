@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- privzeto prva stran --",
+  "details": "Podrobnosti",
+  "title": "Naslov",
+  "titleDescription": "Ime spletnega mesta",
+  "homePage": "Domača stran",
+  "homePageDescription": "Stran, ki se uporabi kot privzeta pristajalna / domača stran",
+  "advanced": "Napredno",
+  "serviceWorker": "Dodaj service worker na dinamično stran",
+  "serviceWorkerDescription": "To onemogočite, če naj uporabniki vedno takoj vidijo najnovejši izhod strežnika.",
+  "forceBrowserUpgrade": "Vsili nadgradnjo brskalnika",
+  "forceBrowserUpgradeDescription": "Pred nalaganjem spletnega mesta zahtevaj sodobne (evergreen) brskalnike.",
+  "unableToLoadSiteDetails": "Podrobnosti spletnega mesta ni mogoče naložiti.",
+  "noSiteDetails": "Ni razpoložljivih podrobnosti spletnega mesta.",
+  "save": "Shrani"
+}

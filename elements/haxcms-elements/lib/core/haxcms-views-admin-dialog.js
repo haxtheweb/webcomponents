@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "./haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import {
@@ -36,7 +37,7 @@ import "@haxtheweb/image-gallery/image-gallery.js";
 import "@haxtheweb/media-playlist/media-playlist.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
 
-class HAXCMSViewsAdminDialog extends DDD {
+class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-views-admin-dialog";
   }
@@ -70,6 +71,81 @@ class HAXCMSViewsAdminDialog extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      noEntitiesFound: "No entities were found in /x/api/v1/entities.",
+      unableToLoadViewsMetadata: "Unable to load Views metadata from the site API specification.",
+      any: "Any",
+      noListOperation: "No list operation is defined for this entity.",
+      unableToLoadPreview: "Unable to load preview results from the generated query.",
+      filterableFields: "Filterable: {fields}",
+      selectableFields: "Selectable fields: {fields}",
+      loadingPreview: "Loading preview…",
+      noResultsYet: "No results yet for the current query configuration.",
+      copiedToClipboard: "Copied to clipboard",
+      typePageTitle: "Type page title to create page",
+      default: "Default",
+      loadingMetadata: "Loading entity and OpenAPI metadata…",
+      dataSource: "Data source",
+      entityType: "Entity type",
+      displayAs: "Display as",
+      fieldSelection: "Field selection",
+      fieldsToPresent: "Fields to present",
+      includeRelatedResources: "Include related resources",
+      sortField: "Sort field",
+      sortDescending: "Sort descending",
+      filtersQueryParameters: "Filters / query parameters",
+      noAdditionalQueryParameters: "No additional query parameters are available for this entity endpoint.",
+      queryDataFeed: "Query / data feed",
+      methodGet: "Method: GET",
+      copyUrl: "Copy URL",
+      refreshPreview: "Refresh preview",
+      embedInPage: "Embed in page",
+      copyPathToClipboard: "Copy path to clipboard",
+      createAsNewPage: "Create as new page",
+      resizeControlsAndPreview: "Resize controls and preview",
+      preview: "Preview",
+      loading: "Loading…",
+      recordsShown: "{count} record(s) shown",
+      recordsShownOfTotal: "{count} record(s) shown of {total}",
+      previewPagination: "Preview pagination",
+      rendererCollection: "Collection",
+      rendererTable: "Table",
+      rendererGrid: "Grid",
+      rendererCarousel: "Carousel",
+      rendererImageGallery: "Image Gallery",
+      rendererMediaPlaylist: "Media Playlist",
+      rendererList: "List",
+      rendererContent: "Content",
+      rendererAccordion: "Accordion",
+      rendererTabs: "Tabs",
+      rendererTimeline: "Timeline",
+      rendererChart: "Chart",
+      rendererTree: "Tree",
+      viewsRecordNoTitle: "No results",
+      viewsRecordHeading: "Record",
+      viewsTitleImage: "{title} image",
+      viewsTitlePreview: "{title} preview",
+      viewsNoTimelineRecords:
+        "No date-oriented records available for timeline rendering.",
+      viewsTimelineTitle: "{title} timeline",
+      viewsNoChartField: "No numeric field detected for chart rendering.",
+      viewsChartingValue: "Charting {value}",
+      viewsChartingValueByLabel: "Charting {value} by {label}",
+      viewsChartTitle: "{title} chart",
+      viewsNoTreeRecords:
+        "No hierarchical records available for tree rendering.",
+      viewsNoGalleryRecords:
+        "No image records available for gallery rendering.",
+      viewsNoPlaylistRecords:
+        "No media records available for playlist rendering.",
+      viewsOpenRecord: "Open record",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.specLoading = false;
     this.previewLoading = false;
     this.errorMessage = "";
@@ -915,7 +991,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           text: entity.title,
         }));
       if (this.entityOptions.length < 1) {
-        this.errorMessage = "No entities were found in /x/api/v1/entities.";
+        this.errorMessage = this.t.noEntitiesFound;
         this.previewRecords = [];
         this.specLoading = false;
         return;
@@ -934,8 +1010,7 @@ class HAXCMSViewsAdminDialog extends DDD {
       }
       this._applyEntityConfig(defaultEntity);
     } catch (e) {
-      this.errorMessage =
-        "Unable to load Views metadata from the site API specification.";
+      this.errorMessage = this.t.unableToLoadViewsMetadata;
       this.previewRecords = [];
     } finally {
       this.specLoading = false;
@@ -1024,7 +1099,7 @@ class HAXCMSViewsAdminDialog extends DDD {
         }
         if (parameter.type === "boolean") {
           field.options = {
-            "": "Any",
+            "": this.t.any,
             true: "true",
             false: "false",
           };
@@ -1559,8 +1634,7 @@ class HAXCMSViewsAdminDialog extends DDD {
       this.previewRecords = [];
       this.previewCount = 0;
       this.previewTotal = 0;
-      this.previewErrorMessage =
-        "No list operation is defined for this entity.";
+      this.previewErrorMessage = this.t.noListOperation;
       return;
     }
     this._abortPreviewRequest();
@@ -1618,8 +1692,7 @@ class HAXCMSViewsAdminDialog extends DDD {
       this.previewRecords = [];
       this.previewCount = 0;
       this.previewTotal = 0;
-      this.previewErrorMessage =
-        "Unable to load preview results from the generated query.";
+      this.previewErrorMessage = this.t.unableToLoadPreview;
     } finally {
       if (activeRequestId === this.__previewRequestId) {
         this.previewLoading = false;
@@ -1754,7 +1827,10 @@ class HAXCMSViewsAdminDialog extends DDD {
       entityConfig.filterableFields.length > 0
     ) {
       pieces.push(
-        `Filterable: ${entityConfig.filterableFields.slice(0, 6).join(", ")}${entityConfig.filterableFields.length > 6 ? "…" : ""}`,
+        this.t.filterableFields.replace(
+          "{fields}",
+          () => (`${entityConfig.filterableFields.slice(0, 6).join(", ")}${entityConfig.filterableFields.length > 6 ? "…" : ""}`),
+        ),
       );
     }
     if (
@@ -1762,7 +1838,10 @@ class HAXCMSViewsAdminDialog extends DDD {
       entityConfig.selectableFields.length > 0
     ) {
       pieces.push(
-        `Selectable fields: ${entityConfig.selectableFields.slice(0, 8).join(", ")}${entityConfig.selectableFields.length > 8 ? "…" : ""}`,
+        this.t.selectableFields.replace(
+          "{fields}",
+          () => (`${entityConfig.selectableFields.slice(0, 8).join(", ")}${entityConfig.selectableFields.length > 8 ? "…" : ""}`),
+        ),
       );
     }
     return pieces.join(" ");
@@ -1784,7 +1863,7 @@ class HAXCMSViewsAdminDialog extends DDD {
   _renderPreview() {
     if (this.previewLoading) {
       return html`<p class="status" role="status" aria-live="polite">
-        Loading preview…
+        ${this.t.loadingPreview}
       </p>`;
     }
     if (this.previewErrorMessage) {
@@ -1794,7 +1873,7 @@ class HAXCMSViewsAdminDialog extends DDD {
     }
     if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
       return html`<p class="empty-preview">
-        No results yet for the current query configuration.
+        ${this.t.noResultsYet}
       </p>`;
     }
     const renderer =
@@ -1807,6 +1886,7 @@ class HAXCMSViewsAdminDialog extends DDD {
       selectedFields: this.selectedFields,
       selectedEntity: this.selectedEntity,
       resolveHref: this._resolveSiteHref.bind(this),
+      t: this.t,
     });
   }
 
@@ -1821,7 +1901,7 @@ class HAXCMSViewsAdminDialog extends DDD {
         .writeText(text)
         .then(() => {
           if (store && typeof store.toast === "function") {
-            store.toast("Copied to clipboard", 2000);
+            store.toast(this.t.copiedToClipboard, 2000);
           }
         })
         .catch(() => {});
@@ -1878,7 +1958,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           "create-page",
           "create-page",
           "",
-          "Type page title to create page",
+          this.t.typePageTitle,
         ],
         null,
         null,
@@ -1930,20 +2010,38 @@ class HAXCMSViewsAdminDialog extends DDD {
     const sortFieldOptions =
       entityConfig && Array.isArray(entityConfig.sortableFields)
         ? [
-            { value: "", text: "Default" },
+            { value: "", text: this.t.default },
             ...entityConfig.sortableFields.map((field) => ({
               value: field,
               text: this._titleFromParameterName(field),
             })),
           ]
-        : [{ value: "", text: "Default" }];
+        : [{ value: "", text: this.t.default }];
     const selectedRenderer =
       this.renderer === "playlist"
         ? "carousel"
         : this.renderer === "cards"
           ? "grid"
           : this.renderer;
-    const rendererOptions = RENDERER_OPTIONS;
+    const rendererLabels = {
+      "collection": this.t.rendererCollection,
+      "table": this.t.rendererTable,
+      "grid": this.t.rendererGrid,
+      "carousel": this.t.rendererCarousel,
+      "image-gallery": this.t.rendererImageGallery,
+      "media-playlist": this.t.rendererMediaPlaylist,
+      "list": this.t.rendererList,
+      "content": this.t.rendererContent,
+      "accordion": this.t.rendererAccordion,
+      "tabs": this.t.rendererTabs,
+      "timeline": this.t.rendererTimeline,
+      "chart": this.t.rendererChart,
+      "tree": this.t.rendererTree,
+    };
+    const rendererOptions = RENDERER_OPTIONS.map((option) => ({
+      value: option.value,
+      text: rendererLabels[option.value] || option.text,
+    }));
     const leftColumnWidth = Number.isFinite(Number(this.leftPanelWidth))
       ? Math.max(24, Math.min(68, Number(this.leftPanelWidth)))
       : 38;
@@ -1957,7 +2055,7 @@ class HAXCMSViewsAdminDialog extends DDD {
           : ""}
         ${this.specLoading
           ? html`<p class="status" role="status" aria-live="polite">
-              Loading entity and OpenAPI metadata…
+              ${this.t.loadingMetadata}
             </p>`
           : ""}
         ${!this.errorMessage && entityConfig
@@ -1965,12 +2063,12 @@ class HAXCMSViewsAdminDialog extends DDD {
               <div class="workspace" style="${workspaceStyle}">
                 <div class="left-column">
                   <details class="group-panel" open>
-                    <summary>Data source</summary>
+                    <summary>${this.t.dataSource}</summary>
                     <div class="group-body">
                       <div class="inline-grid">
                         <simple-fields-field
                           type="select"
-                          label="Entity type"
+                          label="${this.t.entityType}"
                           .itemsList="${this.entityOptions}"
                           .value="${this.selectedEntity}"
                           @value-changed="${this._onEntityChanged}"
@@ -1978,7 +2076,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                         ></simple-fields-field>
                         <simple-fields-field
                           type="select"
-                          label="Display as"
+                          label="${this.t.displayAs}"
                           .itemsList="${rendererOptions}"
                           .value="${selectedRenderer}"
                           @value-changed="${this._onRendererChanged}"
@@ -1991,11 +2089,11 @@ class HAXCMSViewsAdminDialog extends DDD {
                     </div>
                   </details>
                   <details class="group-panel" open>
-                    <summary>Field selection</summary>
+                    <summary>${this.t.fieldSelection}</summary>
                     <div class="group-body">
                       <simple-fields-field
                         type="checkbox"
-                        label="Fields to present"
+                        label="${this.t.fieldsToPresent}"
                         .itemsList="${selectableFieldOptions}"
                         .value="${this.selectedFields}"
                         @value-changed="${this._onFieldSelectionChanged}"
@@ -2005,7 +2103,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                         ? html`
                             <simple-fields-field
                               type="checkbox"
-                              label="Include related resources"
+                              label="${this.t.includeRelatedResources}"
                               .itemsList="${includeOptions}"
                               .value="${this.selectedIncludes}"
                               @value-changed="${this
@@ -2017,7 +2115,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                       <div class="inline-grid">
                         <simple-fields-field
                           type="select"
-                          label="Sort field"
+                          label="${this.t.sortField}"
                           .itemsList="${sortFieldOptions}"
                           .value="${this.sortField}"
                           @value-changed="${this._onSortFieldChanged}"
@@ -2025,7 +2123,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                         ></simple-fields-field>
                         <simple-fields-field
                           type="checkbox"
-                          label="Sort descending"
+                          label="${this.t.sortDescending}"
                           .value="${this.sortDescending}"
                           @value-changed="${this._onSortDirectionChanged}"
                           @change="${this._onSortDirectionChanged}"
@@ -2034,7 +2132,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                     </div>
                   </details>
                   <details class="group-panel" open>
-                    <summary>Filters / query parameters</summary>
+                    <summary>${this.t.filtersQueryParameters}</summary>
                     <div class="group-body">
                       ${this.queryFields.length > 0
                         ? html`
@@ -2050,23 +2148,22 @@ class HAXCMSViewsAdminDialog extends DDD {
                             ></simple-fields>
                           `
                         : html`<p class="note">
-                            No additional query parameters are available for
-                            this entity endpoint.
+                            ${this.t.noAdditionalQueryParameters}
                           </p>`}
                     </div>
                   </details>
                   <details class="query-details" open>
-                    <summary>Query / data feed</summary>
+                    <summary>${this.t.queryDataFeed}</summary>
                     <div class="query-copy-row">
-                      <span class="note">Method: GET</span>
+                      <span class="note">${this.t.methodGet}</span>
                       <simple-icon-button-lite
                         icon="icons:content-copy"
-                        title="Copy URL"
+                        title="${this.t.copyUrl}"
                         @click="${this._copyQueryUrl}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         icon="icons:refresh"
-                        title="Refresh preview"
+                        title="${this.t.refreshPreview}"
                         @click="${this._refreshPreviewTap}"
                       ></simple-icon-button-lite>
                     </div>
@@ -2077,17 +2174,17 @@ class HAXCMSViewsAdminDialog extends DDD {
                     >
                       <simple-icon-button-lite
                         icon="hax:embed"
-                        title="Embed in page"
+                        title="${this.t.embedInPage}"
                         @click="${this._embedInPage}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         icon="icons:content-copy"
-                        title="Copy path to clipboard"
+                        title="${this.t.copyPathToClipboard}"
                         @click="${this._copyPath}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         icon="hax:add"
-                        title="Create as new page"
+                        title="${this.t.createAsNewPage}"
                         @click="${this._createAsNewPage}"
                       ></simple-icon-button-lite>
                     </div>
@@ -2096,7 +2193,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                 <div
                   class="resize-handle"
                   role="separator"
-                  aria-label="Resize controls and preview"
+                  aria-label="${this.t.resizeControlsAndPreview}"
                   aria-orientation="vertical"
                   aria-valuemin="24"
                   aria-valuemax="68"
@@ -2108,11 +2205,18 @@ class HAXCMSViewsAdminDialog extends DDD {
                 <div class="right-column">
                   <div class="preview-shell" aria-live="polite">
                     <div class="preview-head">
-                      <h3>Preview</h3>
+                      <h3>${this.t.preview}</h3>
                       <span class="note">
                         ${this.previewLoading
-                          ? "Loading…"
-                          : `${this.previewCount} record(s) shown${this.previewTotal > this.previewCount ? ` of ${this.previewTotal}` : ""}`}
+                          ? this.t.loading
+                          : this.previewTotal > this.previewCount
+                            ? this.t.recordsShownOfTotal
+                                .replace("{count}", () => this.previewCount)
+                                .replace("{total}", () => this.previewTotal)
+                            : this.t.recordsShown.replace(
+                                "{count}",
+                                () => this.previewCount,
+                              )}
                       </span>
                     </div>
                     <div class="preview-body">${this._renderPreview()}</div>
@@ -2122,7 +2226,7 @@ class HAXCMSViewsAdminDialog extends DDD {
                       offset="${this.pageOffset}"
                       total="${this.previewTotal}"
                       count="${this.previewRecords.length}"
-                      label="Preview pagination"
+                      label="${this.t.previewPagination}"
                       @page-changed="${this._onPageChanged}"
                     ></simple-pager>
                   </div>

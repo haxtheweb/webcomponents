@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "ਐਂਕਰ ਲਿੰਕ ਕਾਪੀ ਹੋ ਗਿਆ!",
+  "skipToContent": "ਸਮੱਗਰੀ 'ਤੇ ਜਾਓ",
+  "changePalette": "ਪੈਲੇਟ ਬਦਲੋ",
+  "primaryLinks": "ਮੁੱਖ ਲਿੰਕ",
+  "socialLinks": "ਸੋਸ਼ਲ ਲਿੰਕ",
+  "myProfile": "ਮੇਰੀ ਪ੍ਰੋਫ਼ਾਈਲ",
+  "profileImageOf": "{name} ਪ੍ਰੋਫ਼ਾਈਲ ਚਿੱਤਰ",
+  "profileImage": "ਪ੍ਰੋਫ਼ਾਈਲ ਚਿੱਤਰ",
+  "linkCardProfile": "ਲਿੰਕ ਕਾਰਡ ਪ੍ਰੋਫ਼ਾਈਲ",
+  "emptyStateLinks": "ਲਿੰਕ ਬਟਨ ਦਿਖਾਉਣ ਲਈ site.json ਵਿੱਚ ਸਿਖਰ-ਪੱਧਰੀ ਮੀਨੂ ਆਈਟਮਾਂ ਸ਼ਾਮਲ ਕਰੋ।",
+  "titleOnPlatform": "{platform} 'ਤੇ {title}",
+  "openPlatform": "{platform} ਖੋਲ੍ਹੋ",
+  "paletteUpdated": "ਰੰਗ ਪੈਲੇਟ ਵਿਕਲਪ {number} 'ਤੇ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ।"
+}

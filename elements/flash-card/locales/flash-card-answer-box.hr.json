@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Vaš odgovor",
   "checkAnswer": "Provjeri odgovor",
-  "retry": "Pokušaj ponovno"
+  "retry": "Pokušaj ponovno",
+  "correct": "Točno!",
+  "incorrect": "Netočno!",
+  "correctAnswer": "Točan odgovor: {answer}"
 }

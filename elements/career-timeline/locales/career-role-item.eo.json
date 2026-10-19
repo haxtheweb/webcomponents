@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Rola titolo",
+  "describeYourRole": "Priskribu vian rolon ĉi tie...",
+  "present": "Prezenti",
+  "skills": "Kapabloj:",
+  "skillsAndMore": "{skills} kaj +{count} pliaj",
+  "yearShort": "{count} j.",
+  "yearsShort": "{count} j.",
+  "monthShort": "{count} mon.",
+  "monthsShort": "{count} mon."
+}

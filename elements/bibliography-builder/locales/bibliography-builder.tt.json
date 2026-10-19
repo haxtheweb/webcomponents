@@ -1,3 +1,8 @@
 {
-  "title": "Чыганаклар"
+  "title": "Чыганаклар",
+  "export": "Экспорт",
+  "exportCitations": "Цитаталарны экспортлау",
+  "copy": "Күчерү",
+  "exportCitationFormat": "Цитата форматын экспортлау",
+  "selectCitationFormatBelow": "Түбәндә цитата форматын сайлагыз"
 }

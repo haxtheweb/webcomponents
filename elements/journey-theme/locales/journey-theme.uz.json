@@ -1,4 +1,11 @@
 {
   "readMore": "Batafsil",
-  "home": "Bosh sahifa"
+  "home": "Bosh sahifa",
+  "anchorLinkCopied": "Langar havolasi nusxalandi!",
+  "skipToContent": "Kontentga o‘tish",
+  "changeTheme": "Mavzuni oʻzgartirish",
+  "siteSections": "Sayt boʻlimlari",
+  "pageOfTotal": "Sahifa {current} / {total}",
+  "siteGenerated": "Sayt yaratilgan sana: {date}",
+  "licenseGraphic": "{license} belgisi"
 }

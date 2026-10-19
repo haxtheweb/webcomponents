@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Prikaži pregled teme",
+  "hideThemePreview": "Sakrij pregled teme",
+  "themePreviewPanel": "Panel za pregled teme",
+  "themePreview": "Pregled teme",
+  "themePreviewDescription": "Privremeno isprobajte temu i paletu dok pregledate. Koristite Otkaži da vratite svoj izvorni izgled.",
+  "loadingThemes": "Učitavanje tema...",
+  "theme": "Tema",
+  "palette": "Paleta",
+  "cancel": "Otkaži",
+  "openAppearanceSettings": "Otvori postavke izgleda"
+}

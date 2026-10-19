@@ -36,5 +36,7 @@
   "clickToDoAnything": "Бірдеңе істеу үшін басыңыз!",
   "moreDetails": "Қосымша ақпарат",
   "details": "Ақпарат",
-  "saved": "Сақталды"
+  "saved": "Сақталды",
+  "opensInNewWindow": "Жаңа терезеде ашылады",
+  "resultsCount": "{count} нәтиже"
 }

@@ -1,0 +1,11 @@
+{
+  "theme": "Itimu",
+  "active": "Kuyasebenza",
+  "selected": "Kukhethiwe",
+  "noPreview": "Akukho ukubuka kuqala",
+  "currentlyActiveAndSelected": "Ithimu esebenzayo nekhethiwe okwamanje",
+  "currentlyActive": "Ithimu esebenzayo okwamanje",
+  "selectedToApplyOnSave": "Ithimu ekhethiwe ezosetshenziswa lapho kugcinwa",
+  "themeSelection": "Ukukhethwa kwethimu",
+  "noThemesAvailable": "Awekho amathimu atholakalayo."
+}

@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Prikaži prethodno poslanu poruku (gore)",
+  "displayPreviousMessageDown": "Prikaži prethodno poslanu poruku (dolje)",
+  "sendPrompt": "Pošalji upit",
+  "sendPromptToMerlin": "Pošalji upit Merlinu",
+  "shortenPrompt": "Skratite upit na najviše {limit} znakova."
+}

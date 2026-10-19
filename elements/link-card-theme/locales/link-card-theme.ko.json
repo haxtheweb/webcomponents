@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "앵커 링크가 복사되었습니다!",
+  "skipToContent": "본문으로 건너뛰기",
+  "changePalette": "팔레트 변경",
+  "primaryLinks": "주요 링크",
+  "socialLinks": "소셜 링크",
+  "myProfile": "내 프로필",
+  "profileImageOf": "{name} 프로필 이미지",
+  "profileImage": "프로필 이미지",
+  "linkCardProfile": "링크 카드 프로필",
+  "emptyStateLinks": "링크 버튼을 표시하려면 site.json에 최상위 메뉴 항목을 추가하세요.",
+  "titleOnPlatform": "{platform}의 {title}",
+  "openPlatform": "{platform} 열기",
+  "paletteUpdated": "색상 팔레트가 {number}번 옵션으로 업데이트되었습니다."
+}

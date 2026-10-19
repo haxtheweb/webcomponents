@@ -7,5 +7,7 @@
   "userAccessGranted": "Gelitaanka isticmaalaha si guul leh ayaa loo siiyay!",
   "userNotFound": "Isticmaalaha lama helin ama ma laha ogolaansho",
   "loadingAddingUser": "Isticmaalaha waa la darayaa...",
-  "grantAccessTo": "Sii gelitaan:"
+  "grantAccessTo": "Sii gelitaan:",
+  "networkErrorTryAgain": "Khalad shabakadeed ayaa dhacay. Fadlan mar kale isku day.",
+  "characterWillAppear": "Jilaa ayaa soo muuqan doona marka aad geliso magaca isticmaalaha"
 }

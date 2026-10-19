@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Kuva varem saadetud sõnum (üles)",
+  "displayPreviousMessageDown": "Kuva varem saadetud sõnum (alla)",
+  "sendPrompt": "Saada päring",
+  "sendPromptToMerlin": "Saada päring Merlinile",
+  "shortenPrompt": "Lühenda oma päringut kuni {limit} märgini."
+}

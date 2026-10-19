@@ -1,3 +1,8 @@
 {
-  "title": "Viri"
+  "title": "Viri",
+  "export": "Izvozi",
+  "exportCitations": "Izvozi citate",
+  "copy": "Kopiraj",
+  "exportCitationFormat": "Format izvoza citatov",
+  "selectCitationFormatBelow": "Spodaj izberite format citiranja"
 }

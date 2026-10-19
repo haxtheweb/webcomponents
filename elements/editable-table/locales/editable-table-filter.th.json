@@ -1,0 +1,5 @@
+{
+  "toggleFilter": "สลับตัวกรอง",
+  "toggleFilterForColumn": "สลับตัวกรองของคอลัมน์",
+  "toggleColumnFilter": "สลับตัวกรองของคอลัมน์ {column}"
+}

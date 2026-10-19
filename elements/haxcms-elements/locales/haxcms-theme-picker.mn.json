@@ -1,0 +1,11 @@
+{
+  "theme": "Загвар",
+  "active": "Идэвхтэй",
+  "selected": "Сонгосон",
+  "noPreview": "Урьдчилсан харагдац алга",
+  "currentlyActiveAndSelected": "Одоо идэвхтэй бөгөөд сонгосон загвар",
+  "currentlyActive": "Одоо идэвхтэй загвар",
+  "selectedToApplyOnSave": "Хадгалахад хэрэглэхээр сонгосон загвар",
+  "themeSelection": "Загвар сонгох",
+  "noThemesAvailable": "Загвар байхгүй."
+}

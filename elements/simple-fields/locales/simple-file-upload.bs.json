@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Ispustite datoteke ovdje",
+  "uploadQueue": "Red za otpremanje",
+  "pending": "Na čekanju",
+  "preparing": "Priprema",
+  "uploading": "Otpremanje",
+  "complete": "Završeno",
+  "aborted": "Prekinuto",
+  "cancelled": "Otkazano",
+  "error": "Greška",
+  "errorWithStatus": "Greška: {status}",
+  "cancel": "Otkaži",
+  "cancelUploadOf": "Otkaži otpremanje datoteke {name}",
+  "retry": "Pokušaj ponovo",
+  "retryUploadOf": "Ponovi otpremanje datoteke {name}",
+  "remove": "Ukloni",
+  "removeFromQueue": "Ukloni {name} iz reda",
+  "fileTypeNotAccepted": "Vrsta datoteke nije prihvaćena: {name}",
+  "uploadFailed": "Otpremanje nije uspjelo: {status}",
+  "networkError": "Mrežna greška"
+}

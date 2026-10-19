@@ -10,5 +10,9 @@
   "save": "አስቀምጥ",
   "noDescription": "ምንም መግለጫ የለም።",
   "details": "ዝርዝሮች",
-  "loadingInventory": "ሙሉ የብሎክ ዝርዝር በመጫን ላይ…"
+  "loadingInventory": "ሙሉ የብሎክ ዝርዝር በመጫን ላይ…",
+  "selectAllButton": "ሁሉንም ምረጥ",
+  "deselectAllButton": "ሁሉንም አትምረጥ",
+  "selectedOfAvailable": "{selected} ተመርጠዋል / {total} ይገኛሉ",
+  "savingBlocksFailed": "ብሎኮችን ማስቀመጥ አልተሳካም: {error}"
 }

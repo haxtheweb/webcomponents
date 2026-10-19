@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Gagal ngemot tema: {error}",
+  "noThemesForView": "Ora ana tema sing kasedhiya kanggo tampilan iki.",
+  "active": "Aktif",
+  "themeIsActive": "Tema {name} aktif",
+  "applyTheme": "Trapake tema {name}",
+  "apply": "Trapake",
+  "preview": "Pratinjau",
+  "name": "Jeneng",
+  "element": "Elemen",
+  "description": "Katrangan",
+  "action": "Aksi",
+  "loadingThemes": "Ngemot tema...",
+  "themesShown": "{count} tema ditampilake",
+  "themesShownDefaults": "{count} tema ditampilake (gawan app-hax)",
+  "availableHaxcmsThemes": "Tema HAXcms sing Kasedhiya",
+  "gallery": "Galeri",
+  "table": "Tabel"
+}

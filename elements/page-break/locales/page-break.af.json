@@ -22,6 +22,13 @@
   "unpublish": "Ontpubliseer",
   "savePage": "Stoor bladsy",
   "cancel": "Kanselleer",
+  "delete": "Skrap",
+  "editTitle": "Wysig titel",
+  "editIcon": "Wysig ikoon",
+  "agent": "Agent",
+  "pageLockedUnlockToEdit": "Hierdie bladsy is gesluit. Ontsluit dit eers om te redigeer.",
+  "pageLockedUnlockToChangePublishStatus": "Hierdie bladsy is gesluit. Ontsluit dit eers om die publikasiestatus te verander.",
+  "pageLockedUnlockToDelete": "Hierdie bladsy is gesluit. Ontsluit dit eers om uit te vee.",
   "pageDetails": "Bladsy besonderhede",
   "clickToUnlock": "Klik om te ontsluit"
 }

@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Tinye aha onye ọrụ",
+  "invalidUsernameOrPassword": "Aha onye ọrụ ma ọ bụ okwuntughe ezighi ezi",
+  "welcomeLetsGo": "Nnọọ {username}! Ka anyị gaa!",
+  "enterYourUsername": "Tinye aha onye ọrụ gị",
+  "username": "Aha onye ọrụ",
+  "next": "Nke ọzọ",
+  "welcomeBack": "Nnọọ ọzọ, {username}!",
+  "notYou": "Ọ bụghị gị?",
+  "enterYourPassword": "Tinye okwuntughe gị",
+  "password": "Okwuntughe",
+  "togglePasswordDisplay": "Gbanwee ngosipụta okwuntughe",
+  "login": "Banye"
+}

@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import {
@@ -9,7 +10,7 @@ import {
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
-class HAXCMSSiteDetailsDialog extends DDD {
+class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-site-details-dialog";
   }
@@ -25,12 +26,34 @@ class HAXCMSSiteDetailsDialog extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      defaultToFirstPage: "-- default to first page --",
+      details: "Details",
+      title: "Title",
+      titleDescription: "Name of the site",
+      homePage: "Home page",
+      homePageDescription: "Page to use as the default landing / home page",
+      advanced: "Advanced",
+      serviceWorker: "Add service worker to dynamic page",
+      serviceWorkerDescription: "Disable this if users should always see the latest server output immediately.",
+      forceBrowserUpgrade: "Force browser upgrade",
+      forceBrowserUpgradeDescription: "Require evergreen browsers before loading the site experience.",
+      unableToLoadSiteDetails: "Unable to load site details.",
+      noSiteDetails: "No site details are available.",
+      save: "Save",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.groups = [];
     this.values = {};
     this.errorMessage = "";
-    this.homePageItemsList = [
-      { value: "", text: "-- default to first page --" },
-    ];
+    this.i18nDefault("homePageItemsList", (t) => [
+      { value: "", text: t.defaultToFirstPage },
+    ]);
     this.__valueChangeLock = false;
     this.__groupValues = {};
     this.__manifestReaction = null;
@@ -340,7 +363,7 @@ class HAXCMSSiteDetailsDialog extends DDD {
   // hierarchy/order presented here. `itemsList` preserves given order.
   _buildHomePageItemsList(manifest) {
     const itemManifest = this._manifestItems(manifest);
-    const items = [{ value: "", text: "-- default to first page --" }];
+    const items = [{ value: "", text: this.t.defaultToFirstPage }];
     itemManifest.forEach((item) => {
       if (!item || !item.id) {
         return;
@@ -363,21 +386,21 @@ class HAXCMSSiteDetailsDialog extends DDD {
     return [
       {
         key: "details",
-        label: "Details",
+        label: this.t.details,
         icon: "settings",
         open: true,
         fields: [
           {
             property: "manifest-title",
-            title: "Title",
-            description: "Name of the site",
+            title: this.t.title,
+            description: this.t.titleDescription,
             inputMethod: "textfield",
             required: true,
           },
           {
             property: "manifest-metadata-site-homePageId",
-            title: "Home page",
-            description: "Page to use as the default landing / home page",
+            title: this.t.homePage,
+            description: this.t.homePageDescription,
             inputMethod: "select",
             itemsList: this._cloneData(this.homePageItemsList),
             required: false,
@@ -386,23 +409,21 @@ class HAXCMSSiteDetailsDialog extends DDD {
       },
       {
         key: "advanced",
-        label: "Advanced",
+        label: this.t.advanced,
         icon: "hax:add-item",
         open: false,
         fields: [
           {
             property: "manifest-metadata-site-settings-sw",
-            title: "Add service worker to dynamic page",
-            description:
-              "Disable this if users should always see the latest server output immediately.",
+            title: this.t.serviceWorker,
+            description: this.t.serviceWorkerDescription,
             inputMethod: "boolean",
             required: false,
           },
           {
             property: "manifest-metadata-site-settings-forceUpgrade",
-            title: "Force browser upgrade",
-            description:
-              "Require evergreen browsers before loading the site experience.",
+            title: this.t.forceBrowserUpgrade,
+            description: this.t.forceBrowserUpgradeDescription,
             inputMethod: "boolean",
             required: false,
           },
@@ -450,7 +471,7 @@ class HAXCMSSiteDetailsDialog extends DDD {
       this.groups = [];
       this.values = {};
       this.__groupValues = {};
-      this.errorMessage = "Unable to load site details.";
+      this.errorMessage = this.t.unableToLoadSiteDetails;
       return;
     }
     this.__valueChangeLock = true;
@@ -581,7 +602,7 @@ class HAXCMSSiteDetailsDialog extends DDD {
             ? html`<p class="error">${this.errorMessage}</p>`
             : ``}
           ${!this.errorMessage && this.groups.length === 0
-            ? html`<p class="status">No site details are available.</p>`
+            ? html`<p class="status">${this.t.noSiteDetails}</p>`
             : ``}
           ${!this.errorMessage
             ? this.groups.map(
@@ -617,7 +638,7 @@ class HAXCMSSiteDetailsDialog extends DDD {
             @click="${this._saveSiteDetailsTap}"
             ?disabled="${this.groups.length === 0}"
           >
-            Save
+            ${this.t.save}
           </button>
         </div>
       </div>

@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Анкер шилтемеси көчүрүлдү!",
+  "skipToContent": "Мазмунга өтүү",
+  "siteHome": "Сайттын башкы барагы",
+  "mainNavigation": "Негизги навигация",
+  "toggleMenu": "Менюну которуу",
+  "changeTheme": "Теманы өзгөртүү",
+  "breadcrumb": "Навигация чынжыры",
+  "tagFilter": "Тег чыпкасы:",
+  "all": "Баары",
+  "pageNumberOfTotal": "Барактын номери: {total} ичинен {current}",
+  "siteGenerated": "Сайт түзүлгөн: {date}",
+  "copyright": "Автордук укук: {year} {author}",
+  "viewContentByTag": "Мазмунду тег боюнча көрүү",
+  "licenseGraphic": "{license} сүрөтү"
+}

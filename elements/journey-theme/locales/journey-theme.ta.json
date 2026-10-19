@@ -1,4 +1,11 @@
 {
   "readMore": "மேலும் படிக்க",
-  "home": "முகப்பு"
+  "home": "முகப்பு",
+  "anchorLinkCopied": "நங்கூர இணைப்பு நகலெடுக்கப்பட்டது!",
+  "skipToContent": "உள்ளடக்கத்திற்குச் செல்",
+  "changeTheme": "தீமை மாற்று",
+  "siteSections": "தளப் பிரிவுகள்",
+  "pageOfTotal": "பக்கம் {current} / {total}",
+  "siteGenerated": "தளம் உருவாக்கப்பட்டது: {date}",
+  "licenseGraphic": "{license} வரைகலை"
 }

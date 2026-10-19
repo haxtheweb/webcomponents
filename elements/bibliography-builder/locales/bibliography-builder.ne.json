@@ -1,3 +1,8 @@
 {
-  "title": "सन्दर्भहरू"
+  "title": "सन्दर्भहरू",
+  "export": "निर्यात",
+  "exportCitations": "उद्धरणहरू निर्यात गर्नुहोस्",
+  "copy": "प्रतिलिपि गर्नुहोस्",
+  "exportCitationFormat": "उद्धरण ढाँचा निर्यात",
+  "selectCitationFormatBelow": "तल उद्धरण ढाँचा चयन गर्नुहोस्"
 }

@@ -1,0 +1,11 @@
+{
+  "theme": "Θέμα",
+  "active": "Ενεργή",
+  "selected": "Επιλεγμένη",
+  "noPreview": "Χωρίς προεπισκόπηση",
+  "currentlyActiveAndSelected": "Το τρέχον ενεργό και επιλεγμένο θέμα",
+  "currentlyActive": "Το τρέχον ενεργό θέμα",
+  "selectedToApplyOnSave": "Επιλεγμένο θέμα προς εφαρμογή κατά την αποθήκευση",
+  "themeSelection": "Επιλογή θέματος",
+  "noThemesAvailable": "Δεν υπάρχουν διαθέσιμα θέματα."
+}

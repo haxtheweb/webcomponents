@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Descargar o rexistro como txt",
+  "downloadChatLog": "Descargar o rexistro do chat",
+  "resetChat": "Restablecer o chat",
+  "toggleDataCollection": "Alternar a recollida de datos",
+  "dataCollection": "Recollida de datos",
+  "toggleDeveloperMode": "Alternar o modo desenvolvedor",
+  "exitFullView": "Saír da vista completa",
+  "enterFullView": "Entrar na vista completa",
+  "hideInterface": "Ocultar a interface",
+  "resetChatConfirm": "Restablecer o chat?",
+  "downloadBeforeResetConfirm": "Descargar o rexistro do chat antes de restablecer?",
+  "dataCollectionOn": "As túas conversas utilizaranse para adestrar os nosos modelos de AI",
+  "dataCollectionOff": "As túas conversas non se utilizarán para adestrar os nosos modelos de AI"
+}

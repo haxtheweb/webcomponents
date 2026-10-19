@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Impendulo yakho",
   "checkAnswer": "Jonga impendulo",
-  "retry": "Zama kwakhona"
+  "retry": "Zama kwakhona",
+  "correct": "Ichanekile!",
+  "incorrect": "Ayichanekanga!",
+  "correctAnswer": "Impendulo Echanekileyo: {answer}"
 }

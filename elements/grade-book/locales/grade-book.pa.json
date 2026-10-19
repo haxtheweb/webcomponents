@@ -43,5 +43,22 @@
   "emailAddress": "ਇਸ ਵਿਦਿਆਰਥੀ ਨੂੰ ਈਮੇਲ ਕਰੋ",
   "notes": "ਨੋਟਸ",
   "interests": "ਰੁਚੀਆਂ",
-  "profileImageFor": "ਪ੍ਰੋਫਾਈਲ ਤਸਵੀਰ:"
+  "profileImageFor": "ਪ੍ਰੋਫਾਈਲ ਤਸਵੀਰ:",
+  "fileSystem": "ਫ਼ਾਈਲ ਸਿਸਟਮ",
+  "googleDocs": "Google ਦਸਤਾਵੇਜ਼",
+  "urlEndpointJSON": "URL ਐਂਡਪੁਆਇੰਟ (JSON)",
+  "jsonDataBlob": "JSON ਡਾਟਾ ਬਲੌਬ",
+  "additionalCriteriaFeedback": "ਵਾਧੂ {criteria} ਫ਼ੀਡਬੈਕ",
+  "outOfPoints": "/ {points} ਅੰਕ",
+  "feedbackReport": "ਫ਼ੀਡਬੈਕ ਰਿਪੋਰਟ",
+  "criteriaDetails": "ਮਾਪਦੰਡ ਵੇਰਵੇ",
+  "yourFeedback": "ਤੁਹਾਡਾ ਫ਼ੀਡਬੈਕ",
+  "additionalCriteriaFeedbackHeading": "ਵਾਧੂ ਮਾਪਦੰਡ ਫ਼ੀਡਬੈਕ",
+  "yourTotalScore": "ਤੁਹਾਡਾ ਕੁੱਲ ਸਕੋਰ",
+  "scoreOutOfPoints": "{score} / {points} ਅੰਕ",
+  "studentAssignment": "{student} ਦੀ ਅਸਾਈਨਮੈਂਟ {assignment}",
+  "downloadPDF": "PDF ਡਾਊਨਲੋਡ ਕਰੋ",
+  "displayMode1": "ਮੋਡ 1",
+  "displayMode2": "ਮੋਡ 2",
+  "twoWindows": "ਦੋ ਵਿੰਡੋਆਂ"
 }

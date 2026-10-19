@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- defaŭlte la unua paĝo --",
+  "details": "Detaloj",
+  "title": "Titolo",
+  "titleDescription": "Nomo de la retejo",
+  "homePage": "Hejmpaĝo",
+  "homePageDescription": "Paĝo uzota kiel la defaŭlta alteriĝa / hejma paĝo",
+  "advanced": "Altnivelaj",
+  "serviceWorker": "Aldoni service worker al dinamika paĝo",
+  "serviceWorkerDescription": "Malŝaltu ĉi tion, se uzantoj ĉiam devas tuj vidi la plej novan servilan eligon.",
+  "forceBrowserUpgrade": "Devigi retumilan ĝisdatigon",
+  "forceBrowserUpgradeDescription": "Postuli ĉiam-ĝisdatajn retumilojn antaŭ ŝargi la retejan sperton.",
+  "unableToLoadSiteDetails": "Ne eblas ŝargi retejajn detalojn.",
+  "noSiteDetails": "Neniuj retejaj detaloj disponeblas.",
+  "save": "Konservi"
+}

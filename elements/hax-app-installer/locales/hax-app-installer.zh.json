@@ -54,5 +54,6 @@
   "requirementUppercase": "一个大写字母",
   "requirementLowercase": "一个小写字母",
   "requirementNumber": "一个数字",
-  "requirementSymbol": "一个符号"
+  "requirementSymbol": "一个符号",
+  "haxcmsMascotAlt": "HAXcms 环球旅行者吉祥物"
 }

@@ -1,0 +1,8 @@
+{
+  "loading": "载入当中",
+  "settingUpContainer": "容器设置当中",
+  "runningCommands": "命令运行当中",
+  "installing": "安装当中..",
+  "runningStart": "启动运行当中..",
+  "webContainerPreview": "Web 容器预览"
+}

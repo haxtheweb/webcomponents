@@ -9,5 +9,8 @@
   "record": "ریکارڈ کرو",
   "pause": "ریکارڈنگ روکو",
   "stopSave": "بند کرو تے محفوظ کرو",
-  "clickToTakePhoto": "تصویر لین لئی کلک کرو"
+  "clickToTakePhoto": "تصویر لین لئی کلک کرو",
+  "url": "URL",
+  "open": "کھولو",
+  "removeValue": "{value} ہٹاؤ"
 }

@@ -1,4 +1,11 @@
 {
   "readMore": "وڌيڪ پڙهو",
-  "home": "مکيه صفحو"
+  "home": "مکيه صفحو",
+  "anchorLinkCopied": "اينڪر لنڪ ڪاپي ٿي وئي!",
+  "skipToContent": "مواد ڏانهن وڃو",
+  "changeTheme": "ٿيم بدلايو",
+  "siteSections": "سائيٽ جا حصا",
+  "pageOfTotal": "صفحو {total} مان {current}",
+  "siteGenerated": "سائيٽ ٺهي: {date}",
+  "licenseGraphic": "{license} گرافڪ"
 }

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- an chéad leathanach de réir réamhshocraithe --",
+  "details": "Sonraí",
+  "title": "Teideal",
+  "titleDescription": "Ainm an tsuímh",
+  "homePage": "Leathanach baile",
+  "homePageDescription": "Leathanach le húsáid mar leathanach tuirlingthe / baile réamhshocraithe",
+  "advanced": "Ardleibhéal",
+  "serviceWorker": "Cuir oibrí seirbhíse le leathanach dinimiciúil",
+  "serviceWorkerDescription": "Díchumasaigh é seo más ceart d'úsáideoirí an t-aschur is déanaí ón bhfreastalaí a fheiceáil láithreach i gcónaí.",
+  "forceBrowserUpgrade": "Cuir uasghrádú brabhsálaí i bhfeidhm",
+  "forceBrowserUpgradeDescription": "Éiligh brabhsálaithe síorghlasa sula lódáiltear taithí an tsuímh.",
+  "unableToLoadSiteDetails": "Ní féidir sonraí an tsuímh a lódáil.",
+  "noSiteDetails": "Níl sonraí suímh ar fáil.",
+  "save": "Sábháil"
+}

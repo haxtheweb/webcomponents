@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Masukkan Nama pengguna",
+  "invalidUsernameOrPassword": "Nama Pengguna atau Kata Laluan Tidak Sah",
+  "welcomeLetsGo": "Selamat datang {username}! Jom!",
+  "enterYourUsername": "Masukkan nama pengguna anda",
+  "username": "Nama pengguna",
+  "next": "Seterusnya",
+  "welcomeBack": "Selamat kembali, {username}!",
+  "notYou": "Bukan anda?",
+  "enterYourPassword": "Masukkan kata laluan anda",
+  "password": "Kata laluan",
+  "togglePasswordDisplay": "Togol paparan kata laluan",
+  "login": "Log masuk"
+}

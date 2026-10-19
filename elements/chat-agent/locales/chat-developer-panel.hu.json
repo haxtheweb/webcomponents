@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Felhasználói csevegési napló konzoltáblázatként",
+  "consoleTableUserText": "console.table() felhasználói csevegési napló",
+  "consoleTableUserTooltip": "Felhasználói csevegési napló kiírása táblázatként a konzolra",
+  "consoleTableMerlinLabel": "Merlin csevegési napló konzoltáblázatként",
+  "consoleTableMerlinText": "console.table() Merlin csevegési napló",
+  "consoleTableMerlinTooltip": "Merlin csevegési napló kiírása táblázatként a konzolra",
+  "consoleTableAllLabel": "Teljes csevegési napló konzoltáblázatként",
+  "consoleTableAllText": "console.table() teljes csevegési napló",
+  "consoleTableAllTooltip": "Teljes csevegési napló kiírása táblázatként a konzolra",
+  "downloadChatLogJson": "Csevegési napló letöltése .json-ként",
+  "downloadChatLogJsonTooltip": "Csevegési napló letöltése .json-ként"
+}

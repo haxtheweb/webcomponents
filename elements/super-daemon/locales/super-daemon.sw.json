@@ -36,5 +36,7 @@
   "clickToDoAnything": "Bofya kufanya chochote!",
   "moreDetails": "Maelezo zaidi",
   "details": "Maelezo",
-  "saved": "Imehifadhiwa"
+  "saved": "Imehifadhiwa",
+  "opensInNewWindow": "Hufunguka katika dirisha jipya",
+  "resultsCount": "Matokeo {count}"
 }

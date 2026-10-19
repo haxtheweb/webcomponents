@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Ei tuloksia",
+  "viewsRecordHeading": "Tallenna",
+  "viewsTitleImage": "{title}: kuva",
+  "viewsTitlePreview": "{title}: esikatselu",
+  "viewsNoTimelineRecords": "Aikajanan näyttämiseen ei ole saatavilla päivämääräpohjaisia tietueita.",
+  "viewsTimelineTitle": "{title}: aikajana",
+  "viewsNoChartField": "Kaavion näyttämiseen ei havaittu numeerista kenttää.",
+  "viewsChartingValue": "Kaaviona {value}",
+  "viewsChartingValueByLabel": "Kaaviona {value} kentän {label} mukaan",
+  "viewsChartTitle": "{title}: kaavio",
+  "viewsNoTreeRecords": "Puunäkymään ei ole saatavilla hierarkkisia tietueita.",
+  "viewsNoGalleryRecords": "Kuvagalleriaan ei ole saatavilla kuvatietueita.",
+  "viewsNoPlaylistRecords": "Soittolistaan ei ole saatavilla mediatietueita.",
+  "fetchFailed": "Haku epäonnistui ({status})",
+  "unableToLoadViewData": "Näkymän dataa ei voitu ladata.",
+  "noResultsFound": "Tuloksia ei löytynyt.",
+  "refreshView": "Päivitä näkymä",
+  "breakIntoStaticContent": "Muunna staattiseksi sisällöksi",
+  "viewsOpenRecord": "Avaa tietue"
+}

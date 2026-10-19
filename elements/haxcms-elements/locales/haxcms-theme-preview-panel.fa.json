@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "نمایش پیش‌نمایش پوسته",
+  "hideThemePreview": "پنهان کردن پیش‌نمایش پوسته",
+  "themePreviewPanel": "پنل پیش‌نمایش پوسته",
+  "themePreview": "پیش‌نمایش پوسته",
+  "themePreviewDescription": "هنگام مرور، یک پوسته و پالت را موقتاً امتحان کنید. برای بازگرداندن ظاهر اصلی از لغو استفاده کنید.",
+  "loadingThemes": "در حال بارگذاری پوسته‌ها...",
+  "theme": "پوسته",
+  "palette": "پالت",
+  "cancel": "لغو",
+  "openAppearanceSettings": "باز کردن تنظیمات ظاهر"
+}

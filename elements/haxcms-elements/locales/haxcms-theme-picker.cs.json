@@ -1,0 +1,11 @@
+{
+  "theme": "Motiv",
+  "active": "Aktivní",
+  "selected": "Vybraná",
+  "noPreview": "Bez náhledu",
+  "currentlyActiveAndSelected": "Aktuálně aktivní a vybraný motiv",
+  "currentlyActive": "Aktuálně aktivní motiv",
+  "selectedToApplyOnSave": "Motiv vybraný k použití při uložení",
+  "themeSelection": "Výběr motivu",
+  "noThemesAvailable": "Nejsou k dispozici žádné motivy."
+}

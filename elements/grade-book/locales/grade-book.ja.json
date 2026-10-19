@@ -43,5 +43,22 @@
   "emailAddress": "この学生にメールを送る",
   "notes": "メモ",
   "interests": "興味・関心",
-  "profileImageFor": "プロフィール画像:"
+  "profileImageFor": "プロフィール画像:",
+  "fileSystem": "ファイルシステム",
+  "googleDocs": "Google ドキュメント",
+  "urlEndpointJSON": "URL エンドポイント (JSON)",
+  "jsonDataBlob": "JSON データ",
+  "additionalCriteriaFeedback": "{criteria} に関する追加フィードバック",
+  "outOfPoints": "/ {points} 点",
+  "feedbackReport": "フィードバックレポート",
+  "criteriaDetails": "評価基準の詳細",
+  "yourFeedback": "あなたへのフィードバック",
+  "additionalCriteriaFeedbackHeading": "評価基準に関する追加フィードバック",
+  "yourTotalScore": "あなたの合計スコア",
+  "scoreOutOfPoints": "{score} / {points} 点",
+  "studentAssignment": "{student} さんの課題 {assignment}",
+  "downloadPDF": "PDF をダウンロード",
+  "displayMode1": "モード 1",
+  "displayMode2": "モード 2",
+  "twoWindows": "2 ウィンドウ"
 }

@@ -9,5 +9,8 @@
   "record": "ບັນທຶກ",
   "pause": "ຢຸດການບັນທຶກຊົ່ວຄາວ",
   "stopSave": "ຢຸດ ແລະ ບັນທຶກ",
-  "clickToTakePhoto": "ຄລິກເພື່ອຖ່າຍຮູບ"
+  "clickToTakePhoto": "ຄລິກເພື່ອຖ່າຍຮູບ",
+  "url": "URL",
+  "open": "ເປີດ",
+  "removeValue": "ລຶບ {value}"
 }

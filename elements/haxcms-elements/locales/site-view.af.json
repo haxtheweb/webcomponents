@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Geen resultate nie",
+  "viewsRecordHeading": "Neem op",
+  "viewsTitleImage": "{title}-prent",
+  "viewsTitlePreview": "{title}-voorskou",
+  "viewsNoTimelineRecords": "Geen datumgerigte rekords beskikbaar vir tydlynweergawe nie.",
+  "viewsTimelineTitle": "{title}-tydlyn",
+  "viewsNoChartField": "Geen numeriese veld vir grafiekweergawe bespeur nie.",
+  "viewsChartingValue": "Grafiek van {value}",
+  "viewsChartingValueByLabel": "Grafiek van {value} volgens {label}",
+  "viewsChartTitle": "{title}-grafiek",
+  "viewsNoTreeRecords": "Geen hiërargiese rekords beskikbaar vir boomweergawe nie.",
+  "viewsNoGalleryRecords": "Geen prentrekords beskikbaar vir galeryweergawe nie.",
+  "viewsNoPlaylistRecords": "Geen mediarekords beskikbaar vir speellysweergawe nie.",
+  "fetchFailed": "Ophaal het misluk ({status})",
+  "unableToLoadViewData": "Kan nie aansigdata laai nie.",
+  "noResultsFound": "Geen resultate gevind nie.",
+  "refreshView": "Verfris aansig",
+  "breakIntoStaticContent": "Breek op in statiese inhoud",
+  "viewsOpenRecord": "Open rekord"
+}

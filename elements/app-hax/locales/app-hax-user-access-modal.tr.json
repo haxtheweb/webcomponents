@@ -7,5 +7,7 @@
   "userAccessGranted": "Kullanıcı erişimi başarıyla verildi!",
   "userNotFound": "Kullanıcı bulunamadı veya yetkisiz",
   "loadingAddingUser": "Kullanıcı ekleniyor...",
-  "grantAccessTo": "Erişim verilecek kişi:"
+  "grantAccessTo": "Erişim verilecek kişi:",
+  "networkErrorTryAgain": "Bir ağ hatası oluştu. Lütfen tekrar deneyin.",
+  "characterWillAppear": "Bir kullanıcı adı girdiğinizde karakter görünecek"
 }

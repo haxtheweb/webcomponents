@@ -1,0 +1,11 @@
+{
+  "playlist": "ప్లేలిస్ట్",
+  "carousel": "కరోసెల్",
+  "slide": "స్లయిడ్",
+  "slideNumber": "స్లయిడ్ {number}",
+  "slideOfTotal": "స్లయిడ్ {total}లో {number}",
+  "previousSlide": "మునుపటి స్లయిడ్",
+  "nextSlide": "తదుపరి స్లయిడ్",
+  "slidePages": "స్లయిడ్ పేజీలు",
+  "goToSlide": "స్లయిడ్ {number}కు వెళ్లండి"
+}

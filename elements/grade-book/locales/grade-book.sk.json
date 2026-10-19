@@ -43,5 +43,22 @@
   "emailAddress": "Poslať e-mail tomuto študentovi",
   "notes": "Poznámky",
   "interests": "Záujmy",
-  "profileImageFor": "Profilový obrázok:"
+  "profileImageFor": "Profilový obrázok:",
+  "fileSystem": "Súborový systém",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "Koncový bod URL (JSON)",
+  "jsonDataBlob": "Blob dát JSON",
+  "additionalCriteriaFeedback": "Ďalšia spätná väzba k {criteria}",
+  "outOfPoints": "/ {points} b.",
+  "feedbackReport": "Správa so spätnou väzbou",
+  "criteriaDetails": "Podrobnosti kritérií",
+  "yourFeedback": "Vaša spätná väzba",
+  "additionalCriteriaFeedbackHeading": "Ďalšia spätná väzba ku kritériám",
+  "yourTotalScore": "Vaše celkové skóre",
+  "scoreOutOfPoints": "{score} / {points} b.",
+  "studentAssignment": "Zadanie {assignment} študenta {student}",
+  "downloadPDF": "Stiahnuť PDF",
+  "displayMode1": "Režim 1",
+  "displayMode2": "Režim 2",
+  "twoWindows": "Dve okná"
 }

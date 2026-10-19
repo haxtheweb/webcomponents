@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Utambulisho",
+  "licenseBySa": "Utambulisho Shiriki Sawa",
+  "licenseByNd": "Utambulisho Hakuna Kazi Zinazotokana",
+  "licenseByNc": "Utambulisho Isiyo ya Kibiashara",
+  "licenseByNcSa": "Utambulisho Isiyo ya Kibiashara Shiriki Sawa",
+  "licenseByNcNd": "Utambulisho Isiyo ya Kibiashara Hakuna Kazi Zinazotokana",
+  "licenseGraphic": "Mchoro wa {license}",
+  "workByCreator": "{title} na {creator}",
+  "workByCreatorLicensed": "{title} na {creator} imepewa leseni chini ya {license}.",
+  "permissionsBeyondScope": "Ruhusa zaidi ya upeo wa leseni hii zinapatikana {link}.",
+  "author": "(mwandishi)",
+  "onTheLicensingDetailsPage": "kwenye ukurasa wa maelezo ya leseni"
+}

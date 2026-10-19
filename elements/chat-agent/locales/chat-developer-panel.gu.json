@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "કન્સોલ કોષ્ટક વપરાશકર્તા ચેટ લૉગ",
+  "consoleTableUserText": "console.table() વપરાશકર્તા ચેટ લૉગ",
+  "consoleTableUserTooltip": "વપરાશકર્તા ચેટ લૉગને કોષ્ટક તરીકે કન્સોલમાં પ્રિન્ટ કરો",
+  "consoleTableMerlinLabel": "કન્સોલ કોષ્ટક merlin ચેટ લૉગ",
+  "consoleTableMerlinText": "console.table() merlin ચેટ લૉગ",
+  "consoleTableMerlinTooltip": "Merlin ચેટ લૉગને કોષ્ટક તરીકે કન્સોલમાં પ્રિન્ટ કરો",
+  "consoleTableAllLabel": "કન્સોલ કોષ્ટક સંપૂર્ણ ચેટ લૉગ",
+  "consoleTableAllText": "console.table() સંપૂર્ણ ચેટ લૉગ",
+  "consoleTableAllTooltip": "સંપૂર્ણ ચેટ લૉગને કોષ્ટક તરીકે કન્સોલમાં પ્રિન્ટ કરો",
+  "downloadChatLogJson": "ચેટ લૉગ .json તરીકે ડાઉનલોડ કરો",
+  "downloadChatLogJsonTooltip": "ચેટ લૉગ .json તરીકે ડાઉનલોડ કરો"
+}

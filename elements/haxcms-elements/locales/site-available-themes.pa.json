@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "ਥੀਮਾਂ ਲੋਡ ਕਰਨ ਵਿੱਚ ਅਸਫਲ: {error}",
+  "noThemesForView": "ਇਸ ਦ੍ਰਿਸ਼ ਲਈ ਕੋਈ ਥੀਮ ਉਪਲਬਧ ਨਹੀਂ।",
+  "active": "ਸਰਗਰਮ",
+  "themeIsActive": "{name} ਥੀਮ ਸਰਗਰਮ ਹੈ",
+  "applyTheme": "{name} ਥੀਮ ਲਾਗੂ ਕਰੋ",
+  "apply": "ਲਾਗੂ ਕਰੋ",
+  "preview": "ਝਲਕ",
+  "name": "ਨਾਮ",
+  "element": "ਐਲੀਮੈਂਟ",
+  "description": "ਵੇਰਵਾ",
+  "action": "ਕਾਰਵਾਈ",
+  "loadingThemes": "ਥੀਮਾਂ ਲੋਡ ਹੋ ਰਹੀਆਂ ਹਨ...",
+  "themesShown": "{count} ਥੀਮਾਂ ਦਿਖਾਈਆਂ",
+  "themesShownDefaults": "{count} ਥੀਮਾਂ ਦਿਖਾਈਆਂ (app-hax ਪੂਰਵ-ਨਿਰਧਾਰਤ)",
+  "availableHaxcmsThemes": "ਉਪਲਬਧ HAXcms ਥੀਮਾਂ",
+  "gallery": "ਗੈਲਰੀ",
+  "table": "ਸਾਰਣੀ"
+}

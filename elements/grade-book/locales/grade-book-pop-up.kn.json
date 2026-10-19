@@ -1,5 +1,9 @@
 {
   "studentSubmission": "ವಿದ್ಯಾರ್ಥಿ ಸಲ್ಲಿಕೆ",
   "openInNewWindow": "ಹೊಸ ವಿಂಡೋದಲ್ಲಿ ತೆರೆಯಿರಿ",
-  "submitted": "ಸಲ್ಲಿಸಲಾಗಿದೆ"
+  "submitted": "ಸಲ್ಲಿಸಲಾಗಿದೆ",
+  "previousStudent": "ಹಿಂದಿನ ವಿದ್ಯಾರ್ಥಿ",
+  "nextStudent": "ಮುಂದಿನ ವಿದ್ಯಾರ್ಥಿ",
+  "previousAssignment": "ಹಿಂದಿನ ನಿಯೋಜನೆ",
+  "nextAssignment": "ಮುಂದಿನ ನಿಯೋಜನೆ"
 }

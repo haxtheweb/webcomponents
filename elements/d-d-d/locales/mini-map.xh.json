@@ -1,0 +1,17 @@
+{
+  "editNodes": "Hlela iiNodi",
+  "editLines": "Hlela iMigca",
+  "reset": "Seta kwakhona",
+  "save": "Gcina",
+  "cancel": "Rhoxisa",
+  "delete": "Cima",
+  "type": "Uhlobo:",
+  "topic": "Isihloko",
+  "subsection": "Icandelwana",
+  "name": "Igama:",
+  "enterName": "Faka iGama",
+  "url": "I-URL:",
+  "enterUrl": "Faka i-URL",
+  "activeNode": "INodi Esebenzayo?",
+  "nodeId": "INodi {id}"
+}

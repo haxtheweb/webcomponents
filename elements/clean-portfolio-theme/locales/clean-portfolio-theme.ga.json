@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Nasc ancaire cóipeáilte!",
+  "skipToContent": "Léim go dtí an t-ábhar",
+  "siteHome": "Baile an tsuímh",
+  "mainNavigation": "Príomhnascleanúint",
+  "toggleMenu": "Scoránaigh an roghchlár",
+  "changeTheme": "Athraigh an téama",
+  "breadcrumb": "Brioscbhruar",
+  "tagFilter": "Scagaire clibe:",
+  "all": "Gach",
+  "pageNumberOfTotal": "Uimhir leathanaigh: {current} as {total}",
+  "siteGenerated": "Suíomh ginte: {date}",
+  "copyright": "Cóipcheart: {year} {author}",
+  "viewContentByTag": "Féach ar Ábhar de réir Clibe",
+  "licenseGraphic": "Grafaic {license}"
+}

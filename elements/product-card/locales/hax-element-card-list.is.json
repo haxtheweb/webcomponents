@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Leitar í vefhlutaskrá að fleiri HAX-einingum..",
+  "enabled": "Virkt",
+  "disabled": "Óvirkt",
+  "details": "Nánar",
+  "tags": "Merki:",
+  "tagName": "Heiti merkis:",
+  "developerUsage": "Notkun fyrir forritara:",
+  "demo": "Sýnidæmi",
+  "popUpDemo": "Sýnidæmi í sprettiglugga",
+  "demoOf": "Sýnidæmi af {tag}"
+}

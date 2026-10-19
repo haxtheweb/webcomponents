@@ -1,0 +1,17 @@
+{
+  "editNodes": "نوڊ ايڊٽ ڪريو",
+  "editLines": "ليڪون ايڊٽ ڪريو",
+  "reset": "ري سيٽ",
+  "save": "محفوظ ڪريو",
+  "cancel": "منسوخ ڪريو",
+  "delete": "ڊليٽ ڪريو",
+  "type": "قسم:",
+  "topic": "موضوع",
+  "subsection": "ذيلي حصو",
+  "name": "نالو:",
+  "enterName": "نالو داخل ڪريو",
+  "url": "URL:",
+  "enterUrl": "URL داخل ڪريو",
+  "activeNode": "سرگرم نوڊ؟",
+  "nodeId": "نوڊ {id}"
+}

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Наведи извор",
+  "licenseBySa": "Наведи извор-Сподели под исти услови",
+  "licenseByNd": "Наведи извор-Без деривати",
+  "licenseByNc": "Наведи извор-Некомерцијално",
+  "licenseByNcSa": "Наведи извор-Некомерцијално-Сподели под исти услови",
+  "licenseByNcNd": "Наведи извор-Некомерцијално-Без деривати",
+  "citationWithLicense": "{title} од {creator}, лиценцирано под {license}. Пристапено на {date}.",
+  "citationWithoutLicense": "{title} од {creator}. Пристапено на {date}.",
+  "licenseGraphic": "Графика за {license}"
+}

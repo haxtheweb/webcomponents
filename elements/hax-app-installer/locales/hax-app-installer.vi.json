@@ -54,5 +54,6 @@
   "requirementUppercase": "Một chữ cái viết hoa",
   "requirementLowercase": "Một chữ cái viết thường",
   "requirementNumber": "Một chữ số",
-  "requirementSymbol": "Một ký hiệu"
+  "requirementSymbol": "Một ký hiệu",
+  "haxcmsMascotAlt": "Linh vật Nhà du hành thế giới HAXcms"
 }

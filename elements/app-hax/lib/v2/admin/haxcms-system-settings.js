@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   HaxSchematizer,
   HaxElementizer,
@@ -13,7 +14,7 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import { waitForAppHAXSystemApiRegistryReady } from "../app-hax-system-api-registry.js";
 import "./haxcms-system-allowed-blocks.js";
 
-class HAXCMSSystemSettings extends DDD {
+class HAXCMSSystemSettings extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-system-settings";
   }
@@ -64,6 +65,197 @@ class HAXCMSSystemSettings extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      providerApiKey: "{provider} API key",
+      langEnUS: "English (United States)",
+      langEnGB: "English (United Kingdom)",
+      langEsES: "Spanish (Spain)",
+      langEsMX: "Spanish (Mexico)",
+      langFrFR: "French (France)",
+      langDeDE: "German (Germany)",
+      langItIT: "Italian (Italy)",
+      langPtBR: "Portuguese (Brazil)",
+      langPtPT: "Portuguese (Portugal)",
+      langNlNL: "Dutch (Netherlands)",
+      langPlPL: "Polish (Poland)",
+      langRuRU: "Russian (Russia)",
+      langUkUA: "Ukrainian (Ukraine)",
+      langJaJP: "Japanese (Japan)",
+      langKoKR: "Korean (Korea)",
+      langZhCN: "Chinese (Simplified)",
+      langZhTW: "Chinese (Traditional)",
+      langArSA: "Arabic (Saudi Arabia)",
+      langHiIN: "Hindi (India)",
+      langTrTR: "Turkish (Turkey)",
+      langSvSE: "Swedish (Sweden)",
+      langDaDK: "Danish (Denmark)",
+      langFiFI: "Finnish (Finland)",
+      langNbNO: "Norwegian (Norway)",
+      langCsCZ: "Czech (Czech Republic)",
+      langElGR: "Greek (Greece)",
+      langHeIL: "Hebrew (Israel)",
+      langThTH: "Thai (Thailand)",
+      langViVN: "Vietnamese (Vietnam)",
+      langIdID: "Indonesian (Indonesia)",
+      langRoRO: "Romanian (Romania)",
+      langHuHU: "Hungarian (Hungary)",
+      langCaES: "Catalan (Spain)",
+      status: "Status",
+      skeletons: "Skeletons",
+      themes: "Themes",
+      blocks: "Blocks",
+      integrations: "Integrations",
+      apiKeys: "API Keys",
+      media: "Media",
+      mediaPolicy: "Media policy",
+      configuration: "Configuration",
+      localization: "Localization",
+      styleGuide: "Style Guide",
+      customCodePanel: "JS/CSS",
+      runtimeAndUpdateStatus: "Runtime and update status",
+      availableStarterStructures: "Available starter structures",
+      availableThemes: "Available themes",
+      allowedBlockRegistry: "Allowed block registry",
+      thirdPartyCredentials: "Third-party credentials",
+      mediaDefaults: "Media defaults",
+      jpegImageQuality: "JPEG image quality (1-100)",
+      maxUploadSizeMb: "Max upload size (MB)",
+      acceptedFileFormats: "Accepted file formats",
+      systemWideDefaults: "System-wide defaults",
+      defaultLanguageForNewSites: "Default language for new sites",
+      authoringStyleGuidance: "Authoring style guidance",
+      globalCssAndJavaScript: "Global CSS and JavaScript",
+      statusPanelIntro:
+        "System health report modeled after the admin status table, using backend-friendly keys for both PHP and NodeJS deployments.",
+      skeletonsPanelIntro:
+        "Enable or disable site skeletons discovered from the skeleton listing endpoint.",
+      themesPanelIntro:
+        "Enable or disable installable themes discovered from the theme listing source.",
+      blocksPanelIntro:
+        "Manage allowed blocks using the same grouped checkbox experience as allowed-blocks UI.",
+      integrationsPanelIntro:
+        "Configure API credentials and integration defaults used by media and automation features.",
+      apiKeysSectionDescription:
+        "Manage provider API keys used for media and AI integrations. Keys are stored server-side in _config/apiKeys.json.",
+      mediaPanelIntro:
+        "Set image quality, upload constraints, and transformation behavior defaults.",
+      mediaPolicySectionDescription:
+        "Media policy values are stored in system-level media settings.",
+      configurationPanelIntro:
+        "Set the default language applied to newly created sites and other system-wide configuration defaults.",
+      localizationSectionDescription:
+        "Localization defaults are stored in the system config localization block.",
+      styleGuidePanelIntro:
+        "Style guide controls are intentionally disabled while backend support is finalized.",
+      customCodePanelIntro:
+        "Edit global CSS and JavaScript. Empty values are valid and will save as empty.",
+      schemaEndpointUnavailable:
+        "Schema file operation endpoint is unavailable.",
+      networkRequestFailed: "Network request failed.",
+      schemaOperationFailed: "Schema file operation failed.",
+      requestFailed: "Request failed.",
+      uploadingSkeleton: "Uploading skeleton…",
+      uploadedSkeleton: "Uploaded skeleton: {machineName}",
+      skeletonUploaded: "Skeleton uploaded.",
+      unableToUploadSkeleton: "Unable to upload skeleton.",
+      settings: "Settings",
+      skeletonOptionsSaved: "{count} skeleton options saved",
+      unableToSaveSkeletonOptions: "Unable to save skeleton options",
+      themeOptionsSaved: "{count} theme options saved",
+      unableToSaveThemeOptions: "Unable to save theme options",
+      panelSavedLocally: "{panel} saved locally",
+      panelSaved: "{panel} saved",
+      unableToSavePanel: "Unable to save {panel}",
+      panelSavedLocallyPending:
+        "{panel} saved locally (backend wiring pending)",
+      enabledBlocksSaved: "Enabled blocks saved",
+      unableToSaveEnabledBlocks: "Unable to save enabled blocks",
+      savedApiKeysLoadFailed:
+        "Saved API keys could not be loaded right now.",
+      apiKeySettingsSaveFailed: "API key settings could not be saved.",
+      savedMediaSettingsLoadFailed:
+        "Saved media settings could not be loaded right now.",
+      savedLocalizationSettingsLoadFailed:
+        "Saved localization settings could not be loaded right now.",
+      programmingLanguageRuntime: "Programming language runtime",
+      serverVersion: "Server version",
+      fileSystemAccess: "File system access",
+      writable: "Writable",
+      backgroundJobs: "Background jobs",
+      enabledStatus: "Enabled",
+      tlsCertificate: "TLS certificate",
+      valid: "Valid",
+      haxcmsVersion: "HAXcms version",
+      haxcmsVersionDescription:
+        "Compare installed HAXcms version with latest available release.",
+      versionUpdateAvailable: "{version} (update available)",
+      versionUpToDate: "{version} (up to date)",
+      unknown: "Unknown",
+      currentLatestVersion: "Current: {current} · Latest: {latest}",
+      unknownLower: "unknown",
+      ok: "OK",
+      warning: "Warning",
+      error: "Error",
+      info: "Info",
+      comingSoon: "Coming soon",
+      systemSettings: "System settings",
+      systemSettingsDescription:
+        "System-level controls for runtime status, skeletons, themes, allowed blocks, integrations, media defaults, configuration defaults, and global custom code.",
+      loadingSkeletonOptions: "Loading skeleton options…",
+      dragDropSkeleton:
+        "Drag and drop a skeleton JSON file to add it to user skeletons.",
+      uploadEndpointUnavailable:
+        "Upload endpoint unavailable for this backend.",
+      enabled: "Enabled",
+      skeleton: "Skeleton",
+      actions: "Actions",
+      noSkeletonOptions: "No skeleton options were returned.",
+      renamePromptUnavailable: "Rename prompt is unavailable.",
+      renameSkeleton: "Rename skeleton",
+      skeletonNameRequired: "Skeleton name is required.",
+      skeletonNameNeedsAlphanumeric:
+        "Skeleton name must include letters or numbers.",
+      renameEndpointUnavailable: "Rename endpoint is unavailable.",
+      renamedSkeleton: "Renamed skeleton to {machineName}.",
+      unableToRenameSkeleton: "Unable to rename skeleton.",
+      deleteConfirmationUnavailable: "Delete confirmation is unavailable.",
+      deleteSkeletonConfirm:
+        "Delete skeleton \"{machineName}\"? This cannot be undone.",
+      deleteEndpointUnavailable: "Delete endpoint is unavailable.",
+      deletedSkeleton: "Deleted skeleton {machineName}.",
+      unableToDeleteSkeleton: "Unable to delete skeleton.",
+      renameSkeletonNamed: "Rename skeleton {machineName}",
+      deleteSkeletonNamed: "Delete skeleton {machineName}",
+      loadingThemeOptions: "Loading theme options…",
+      preview: "Preview",
+      theme: "Theme",
+      noThemeOptions: "No theme options were returned.",
+      themePreviewAlt: "Preview of {theme} theme",
+      noPreview: "No preview",
+      programmingLanguage: "Programming language",
+      haxcmsCurrent: "HAXcms current",
+      haxcmsLatest: "HAXcms latest",
+      loadingStatusReport: "Loading status report…",
+      globalCss: "Global CSS",
+      globalJavaScript: "Global JavaScript",
+      styleGuideHeading: "Style guide",
+      styleGuideDisabledRelease:
+        "Style guide controls are intentionally disabled in this release while backend integration is completed.",
+      loadingSavedApiKeys: "Loading saved API keys…",
+      noIntegrationProviders: "No integration providers are configured.",
+      getApiKey: "Get API key",
+      hideApiKeyValue: "Hide API key value",
+      showApiKeyValue: "Show API key value",
+      noSettingsForPanel: "No settings available for this panel yet.",
+      saving: "Saving…",
+      save: "Save",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../../locales/", import.meta.url).href,
+    });
     this.activePanel = "dashboard";
     this.statusMessage = "";
     this.statusRows = [];
@@ -951,68 +1143,68 @@ class HAXCMSSystemSettings extends DDD {
     return [
       {
         key: "status",
-        label: "Status",
+        label: this.t.status,
         icon: "hax:graph",
         group: "primary",
-        description: "Runtime and update status",
+        description: this.t.runtimeAndUpdateStatus,
         intro:
-          "System health report modeled after the admin status table, using backend-friendly keys for both PHP and NodeJS deployments.",
+          this.t.statusPanelIntro,
         panelType: "status",
       },
       {
         key: "skeletons",
-        label: "Skeletons",
+        label: this.t.skeletons,
         icon: "hax:site-map",
         group: "primary",
-        description: "Available starter structures",
+        description: this.t.availableStarterStructures,
         intro:
-          "Enable or disable site skeletons discovered from the skeleton listing endpoint.",
+          this.t.skeletonsPanelIntro,
         panelType: "skeletons",
       },
       {
         key: "themes",
-        label: "Themes",
+        label: this.t.themes,
         icon: "lrn:palette",
         group: "primary",
-        description: "Available themes",
+        description: this.t.availableThemes,
         intro:
-          "Enable or disable installable themes discovered from the theme listing source.",
+          this.t.themesPanelIntro,
         panelType: "themes",
       },
       {
         key: "blocks",
-        label: "Blocks",
+        label: this.t.blocks,
         icon: "hax:blocks",
         group: "primary",
-        description: "Allowed block registry",
+        description: this.t.allowedBlockRegistry,
         intro:
-          "Manage allowed blocks using the same grouped checkbox experience as allowed-blocks UI.",
+          this.t.blocksPanelIntro,
         panelType: "blocks",
         disabled: true,
       },
       {
         key: "integrations",
-        label: "Integrations",
+        label: this.t.integrations,
         icon: "communication:vpn-key",
         group: "advanced",
-        description: "Third-party credentials",
+        description: this.t.thirdPartyCredentials,
         intro:
-          "Configure API credentials and integration defaults used by media and automation features.",
+          this.t.integrationsPanelIntro,
         panelType: "integrations",
         disabled: true,
         sections: [
           {
             key: "api-keys",
-            label: "API Keys",
+            label: this.t.apiKeys,
             icon: "communication:vpn-key",
             description:
-              "Manage provider API keys used for media and AI integrations. Keys are stored server-side in _config/apiKeys.json.",
+              this.t.apiKeysSectionDescription,
             fields: [
               {
                 property: "youtubeApiKey",
                 providerLabel: "YouTube",
                 storageKey: "youtube",
-                title: "YouTube API key",
+                title: this.t.providerApiKey.replace("{provider}", "YouTube"),
                 helpUrl:
                   "https://developers.google.com/youtube/v3/getting-started",
                 inputMethod: "textfield",
@@ -1022,7 +1214,7 @@ class HAXCMSSystemSettings extends DDD {
                 property: "giphyApiKey",
                 providerLabel: "Giphy",
                 storageKey: "giphy",
-                title: "Giphy API key",
+                title: this.t.providerApiKey.replace("{provider}", "Giphy"),
                 helpUrl: "https://developers.giphy.com/dashboard/",
                 inputMethod: "textfield",
                 default: "",
@@ -1031,7 +1223,7 @@ class HAXCMSSystemSettings extends DDD {
                 property: "vimeoApiKey",
                 providerLabel: "Vimeo",
                 storageKey: "vimeo",
-                title: "Vimeo API key",
+                title: this.t.providerApiKey.replace("{provider}", "Vimeo"),
                 helpUrl: "https://developer.vimeo.com/apps",
                 inputMethod: "textfield",
                 default: "",
@@ -1040,7 +1232,7 @@ class HAXCMSSystemSettings extends DDD {
                 property: "unsplashApiKey",
                 providerLabel: "Unsplash",
                 storageKey: "unsplash",
-                title: "Unsplash API key",
+                title: this.t.providerApiKey.replace("{provider}", "Unsplash"),
                 helpUrl: "https://unsplash.com/developers",
                 inputMethod: "textfield",
                 default: "",
@@ -1049,7 +1241,7 @@ class HAXCMSSystemSettings extends DDD {
                 property: "flickrApiKey",
                 providerLabel: "Flickr",
                 storageKey: "flickr",
-                title: "Flickr API key",
+                title: this.t.providerApiKey.replace("{provider}", "Flickr"),
                 helpUrl: "https://www.flickr.com/services/apps/create/",
                 inputMethod: "textfield",
                 default: "",
@@ -1058,7 +1250,7 @@ class HAXCMSSystemSettings extends DDD {
                 property: "anthropicApiKey",
                 providerLabel: "Anthropic",
                 storageKey: "anthropic",
-                title: "Anthropic API key",
+                title: this.t.providerApiKey.replace("{provider}", "Anthropic"),
                 helpUrl: "https://console.anthropic.com/settings/keys",
                 inputMethod: "textfield",
                 default: "",
@@ -1069,36 +1261,36 @@ class HAXCMSSystemSettings extends DDD {
       },
       {
         key: "media",
-        label: "Media",
+        label: this.t.media,
         icon: "image:image",
         group: "advanced",
-        description: "Media defaults",
+        description: this.t.mediaDefaults,
         intro:
-          "Set image quality, upload constraints, and transformation behavior defaults.",
+          this.t.mediaPanelIntro,
         panelType: "fields",
         sections: [
           {
             key: "media-policy",
-            label: "Media policy",
+            label: this.t.mediaPolicy,
             icon: "image:image",
             description:
-              "Media policy values are stored in system-level media settings.",
+              this.t.mediaPolicySectionDescription,
             fields: [
               {
                 property: "jpegQuality",
-                title: "JPEG image quality (1-100)",
+                title: this.t.jpegImageQuality,
                 inputMethod: "number",
                 default: 90,
               },
               {
                 property: "maxUploadSizeMb",
-                title: "Max upload size (MB)",
+                title: this.t.maxUploadSizeMb,
                 inputMethod: "number",
                 default: 25,
               },
               {
                 property: "acceptedFormats",
-                title: "Accepted file formats",
+                title: this.t.acceptedFileFormats,
                 inputMethod: "textarea",
                 default: "jpg,jpeg,png,webp,gif",
               },
@@ -1108,59 +1300,59 @@ class HAXCMSSystemSettings extends DDD {
       },
       {
         key: "configuration",
-        label: "Configuration",
+        label: this.t.configuration,
         icon: "icons:language",
         group: "advanced",
-        description: "System-wide defaults",
+        description: this.t.systemWideDefaults,
         intro:
-          "Set the default language applied to newly created sites and other system-wide configuration defaults.",
+          this.t.configurationPanelIntro,
         panelType: "fields",
         sections: [
           {
             key: "localization",
-            label: "Localization",
+            label: this.t.localization,
             icon: "icons:language",
             description:
-              "Localization defaults are stored in the system config localization block.",
+              this.t.localizationSectionDescription,
             fields: [
               {
                 property: "defaultLanguage",
-                title: "Default language for new sites",
+                title: this.t.defaultLanguageForNewSites,
                 inputMethod: "select",
                 options: {
-                  "en-US": "English (United States)",
-                  "en-GB": "English (United Kingdom)",
-                  "es-ES": "Spanish (Spain)",
-                  "es-MX": "Spanish (Mexico)",
-                  "fr-FR": "French (France)",
-                  "de-DE": "German (Germany)",
-                  "it-IT": "Italian (Italy)",
-                  "pt-BR": "Portuguese (Brazil)",
-                  "pt-PT": "Portuguese (Portugal)",
-                  "nl-NL": "Dutch (Netherlands)",
-                  "pl-PL": "Polish (Poland)",
-                  "ru-RU": "Russian (Russia)",
-                  "uk-UA": "Ukrainian (Ukraine)",
-                  "ja-JP": "Japanese (Japan)",
-                  "ko-KR": "Korean (Korea)",
-                  "zh-CN": "Chinese (Simplified)",
-                  "zh-TW": "Chinese (Traditional)",
-                  "ar-SA": "Arabic (Saudi Arabia)",
-                  "hi-IN": "Hindi (India)",
-                  "tr-TR": "Turkish (Turkey)",
-                  "sv-SE": "Swedish (Sweden)",
-                  "da-DK": "Danish (Denmark)",
-                  "fi-FI": "Finnish (Finland)",
-                  "nb-NO": "Norwegian (Norway)",
-                  "cs-CZ": "Czech (Czech Republic)",
-                  "el-GR": "Greek (Greece)",
-                  "he-IL": "Hebrew (Israel)",
-                  "th-TH": "Thai (Thailand)",
-                  "vi-VN": "Vietnamese (Vietnam)",
-                  "id-ID": "Indonesian (Indonesia)",
-                  "ro-RO": "Romanian (Romania)",
-                  "hu-HU": "Hungarian (Hungary)",
-                  "ca-ES": "Catalan (Spain)",
+                  "en-US": this.t.langEnUS,
+                  "en-GB": this.t.langEnGB,
+                  "es-ES": this.t.langEsES,
+                  "es-MX": this.t.langEsMX,
+                  "fr-FR": this.t.langFrFR,
+                  "de-DE": this.t.langDeDE,
+                  "it-IT": this.t.langItIT,
+                  "pt-BR": this.t.langPtBR,
+                  "pt-PT": this.t.langPtPT,
+                  "nl-NL": this.t.langNlNL,
+                  "pl-PL": this.t.langPlPL,
+                  "ru-RU": this.t.langRuRU,
+                  "uk-UA": this.t.langUkUA,
+                  "ja-JP": this.t.langJaJP,
+                  "ko-KR": this.t.langKoKR,
+                  "zh-CN": this.t.langZhCN,
+                  "zh-TW": this.t.langZhTW,
+                  "ar-SA": this.t.langArSA,
+                  "hi-IN": this.t.langHiIN,
+                  "tr-TR": this.t.langTrTR,
+                  "sv-SE": this.t.langSvSE,
+                  "da-DK": this.t.langDaDK,
+                  "fi-FI": this.t.langFiFI,
+                  "nb-NO": this.t.langNbNO,
+                  "cs-CZ": this.t.langCsCZ,
+                  "el-GR": this.t.langElGR,
+                  "he-IL": this.t.langHeIL,
+                  "th-TH": this.t.langThTH,
+                  "vi-VN": this.t.langViVN,
+                  "id-ID": this.t.langIdID,
+                  "ro-RO": this.t.langRoRO,
+                  "hu-HU": this.t.langHuHU,
+                  "ca-ES": this.t.langCaES,
                 },
                 default: "en-US",
               },
@@ -1170,23 +1362,23 @@ class HAXCMSSystemSettings extends DDD {
       },
       {
         key: "style-guide",
-        label: "Style Guide",
+        label: this.t.styleGuide,
         icon: "editor:format-color-text",
         group: "advanced",
-        description: "Authoring style guidance",
+        description: this.t.authoringStyleGuidance,
         intro:
-          "Style guide controls are intentionally disabled while backend support is finalized.",
+          this.t.styleGuidePanelIntro,
         panelType: "style-guide",
         disabled: true,
       },
       {
         key: "custom-code",
-        label: "JS/CSS",
+        label: this.t.customCodePanel,
         icon: "code",
         group: "advanced",
-        description: "Global CSS and JavaScript",
+        description: this.t.globalCssAndJavaScript,
         intro:
-          "Edit global CSS and JavaScript. Empty values are valid and will save as empty.",
+          this.t.customCodePanelIntro,
         panelType: "custom-code",
         disabled: true,
       },
@@ -1390,7 +1582,7 @@ class HAXCMSSystemSettings extends DDD {
         ok: false,
         status: 0,
         data: null,
-        message: "Schema file operation endpoint is unavailable.",
+        message: this.t.schemaEndpointUnavailable,
       };
     }
     const body = {};
@@ -1422,7 +1614,7 @@ class HAXCMSSystemSettings extends DDD {
         ok: false,
         status: 0,
         data: null,
-        message: "Network request failed.",
+        message: this.t.networkRequestFailed,
       };
     }
     if (response && response.ok) {
@@ -1439,7 +1631,7 @@ class HAXCMSSystemSettings extends DDD {
       data: data,
       message: this._schemaOperationResponseMessage(
         data,
-        "Schema file operation failed.",
+        this.t.schemaOperationFailed,
       ),
     };
   }
@@ -1464,7 +1656,7 @@ class HAXCMSSystemSettings extends DDD {
     ) {
       return response.data.message;
     }
-    return fallback || "Request failed.";
+    return fallback || this.t.requestFailed;
   }
 
   _parseUploadJsonResponse(xhr = null) {
@@ -1572,7 +1764,7 @@ class HAXCMSSystemSettings extends DDD {
         formData.append(key, payload[key]);
       }
     }
-    this.statusMessage = "Uploading skeleton…";
+    this.statusMessage = this.t.uploadingSkeleton;
   }
 
   async _onSkeletonUploadResponse(e = null) {
@@ -1588,21 +1780,21 @@ class HAXCMSSystemSettings extends DDD {
           ? response.data.machineName
           : "";
       this.statusMessage = machineName
-        ? `Uploaded skeleton: ${machineName}`
-        : "Skeleton uploaded.";
+        ? this.t.uploadedSkeleton.replace("{machineName}", () => machineName)
+        : this.t.skeletonUploaded;
       this._clearSkeletonUploaderQueue();
       await this._loadSkeletonOptions(true);
       return;
     }
     this.statusMessage = this._schemaOperationResponseMessage(
       response,
-      "Unable to upload skeleton.",
+      this.t.unableToUploadSkeleton,
     );
     this._clearSkeletonUploaderQueue();
   }
 
   _onSkeletonUploadReject(e = null) {
-    let message = "Unable to upload skeleton.";
+    let message = this.t.unableToUploadSkeleton;
     if (
       e &&
       e.detail &&
@@ -1616,7 +1808,7 @@ class HAXCMSSystemSettings extends DDD {
 
   _panelLabel(panelKey) {
     const panel = this._getPanelByKey(panelKey);
-    return panel ? panel.label : "Settings";
+    return panel ? panel.label : this.t.settings;
   }
 
   _normalizePanelKey(panelKey) {
@@ -1862,40 +2054,59 @@ class HAXCMSSystemSettings extends DDD {
         savePayload.enabledSkeletons,
       );
       this.statusMessage = saved
-        ? `${savePayload.enabledSkeletons.length} skeleton options saved`
-        : "Unable to save skeleton options";
+        ? this.t.skeletonOptionsSaved.replace(
+            "{count}",
+            () => savePayload.enabledSkeletons.length,
+          )
+        : this.t.unableToSaveSkeletonOptions;
       if (saved) {
         this._reloadAfterOptionSave(panelKey);
       }
     } else if (panelKey === "themes") {
       saved = await this._saveEnabledThemesData(savePayload.enabledThemes);
       this.statusMessage = saved
-        ? `${savePayload.enabledThemes.length} theme options saved`
-        : "Unable to save theme options";
+        ? this.t.themeOptionsSaved.replace(
+            "{count}",
+            () => savePayload.enabledThemes.length,
+          )
+        : this.t.unableToSaveThemeOptions;
       if (saved) {
         this._reloadAfterOptionSave(panelKey);
       }
     } else if (panelKey === "custom-code") {
-      this.statusMessage = `${this._panelLabel(panelKey)} saved locally`;
+      this.statusMessage = this.t.panelSavedLocally.replace(
+        "{panel}",
+        () => (this._panelLabel(panelKey)),
+      );
     } else if (panelKey === "integrations") {
       saved = await this._saveApiKeysData(savePayload);
       this.statusMessage = saved
-        ? `${this._panelLabel(panelKey)} saved`
-        : `Unable to save ${this._panelLabel(panelKey).toLowerCase()}`;
+        ? this.t.panelSaved.replace("{panel}", () => (this._panelLabel(panelKey)))
+        : this.t.unableToSavePanel.replace(
+            "{panel}",
+            () => (this._panelLabel(panelKey).toLowerCase()),
+          );
     } else if (panelKey === "media") {
       saved = await this._saveMediaSettingsData(savePayload);
       this.statusMessage = saved
-        ? `${this._panelLabel(panelKey)} saved`
-        : `Unable to save ${this._panelLabel(panelKey).toLowerCase()}`;
+        ? this.t.panelSaved.replace("{panel}", () => (this._panelLabel(panelKey)))
+        : this.t.unableToSavePanel.replace(
+            "{panel}",
+            () => (this._panelLabel(panelKey).toLowerCase()),
+          );
     } else if (panelKey === "configuration") {
       saved = await this._saveLocalizationSettingsData(savePayload);
       this.statusMessage = saved
-        ? `${this._panelLabel(panelKey)} saved`
-        : `Unable to save ${this._panelLabel(panelKey).toLowerCase()}`;
+        ? this.t.panelSaved.replace("{panel}", () => (this._panelLabel(panelKey)))
+        : this.t.unableToSavePanel.replace(
+            "{panel}",
+            () => (this._panelLabel(panelKey).toLowerCase()),
+          );
     } else {
-      this.statusMessage = `${this._panelLabel(
-        panelKey,
-      )} saved locally (backend wiring pending)`;
+      this.statusMessage = this.t.panelSavedLocallyPending.replace(
+        "{panel}",
+        () => (this._panelLabel(panelKey)),
+      );
     }
     this.dispatchEvent(
       new CustomEvent("haxcms-system-settings-save", {
@@ -1919,8 +2130,8 @@ class HAXCMSSystemSettings extends DDD {
     const payload = e && e.detail ? e.detail : {};
     const saved = await this._saveEnabledBlocksData(payload);
     this.statusMessage = saved
-      ? "Enabled blocks saved"
-      : "Unable to save enabled blocks";
+      ? this.t.enabledBlocksSaved
+      : this.t.unableToSaveEnabledBlocks;
     this.dispatchEvent(
       new CustomEvent("haxcms-system-settings-save", {
         bubbles: true,
@@ -2225,7 +2436,7 @@ class HAXCMSSystemSettings extends DDD {
       this._applyApiKeysRecord(this._normalizeApiKeysRecord(response.data));
       this.__integrationsLoaded = true;
     } else {
-      this.apiKeysError = "Saved API keys could not be loaded right now.";
+      this.apiKeysError = this.t.savedApiKeysLoadFailed;
     }
     this.apiKeysLoading = false;
   }
@@ -2240,7 +2451,7 @@ class HAXCMSSystemSettings extends DDD {
       this.__integrationsLoaded = true;
       return true;
     }
-    this.apiKeysError = "API key settings could not be saved.";
+    this.apiKeysError = this.t.apiKeySettingsSaveFailed;
     return false;
   }
 
@@ -2372,7 +2583,7 @@ class HAXCMSSystemSettings extends DDD {
       return;
     }
     this._applyMediaSettingsRecord(this.defaultPanelValues.media || {});
-    this.statusMessage = "Saved media settings could not be loaded right now.";
+    this.statusMessage = this.t.savedMediaSettingsLoadFailed;
   }
 
   async _saveMediaSettingsData(payload = {}) {
@@ -2494,8 +2705,7 @@ class HAXCMSSystemSettings extends DDD {
     this._applyLocalizationSettingsRecord(
       this.defaultPanelValues.configuration || {},
     );
-    this.statusMessage =
-      "Saved localization settings could not be loaded right now.";
+    this.statusMessage = this.t.savedLocalizationSettingsLoadFailed;
   }
 
   async _saveLocalizationSettingsData(payload = {}) {
@@ -2833,39 +3043,39 @@ class HAXCMSSystemSettings extends DDD {
       {
         key: "runtime",
         tone: "info",
-        title: "Programming language runtime",
+        title: this.t.programmingLanguageRuntime,
         value: summary.programmingLanguage,
       },
       {
         key: "server",
         tone: "ok",
-        title: "Server version",
+        title: this.t.serverVersion,
         value: summary.serverVersion,
       },
       {
         key: "storage",
         tone: "ok",
-        title: "File system access",
-        value: "Writable",
+        title: this.t.fileSystemAccess,
+        value: this.t.writable,
       },
       {
         key: "jobs",
         tone: "info",
-        title: "Background jobs",
-        value: "Enabled",
+        title: this.t.backgroundJobs,
+        value: this.t.enabledStatus,
       },
       {
         key: "tls",
         tone: "ok",
-        title: "TLS certificate",
-        value: "Valid",
+        title: this.t.tlsCertificate,
+        value: this.t.valid,
       },
     ];
     return this._ensureVersionStatusRow(
       rows,
       summary,
-      "HAXcms version",
-      "Compare installed HAXcms version with latest available release.",
+      this.t.haxcmsVersion,
+      this.t.haxcmsVersionDescription,
     );
   }
 
@@ -2924,7 +3134,7 @@ class HAXCMSSystemSettings extends DDD {
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i] || {};
       const tone = this._normalizeStatusTone(row.tone || row.status);
-      const title = row.title || row.label || row.key || "Status";
+      const title = row.title || row.label || row.key || this.t.status;
       const value =
         typeof row.value === "undefined" || row.value === null ? "" : row.value;
       const description = row.description || row.details || "";
@@ -2972,7 +3182,7 @@ class HAXCMSSystemSettings extends DDD {
   _ensureVersionStatusRow(
     rows,
     summary,
-    title = "HAXcms version",
+    title = this.t.haxcmsVersion,
     description = "",
   ) {
     const compare = this._compareVersion(
@@ -2981,11 +3191,22 @@ class HAXCMSSystemSettings extends DDD {
     );
     const versionTone = compare < 0 ? "warning" : "ok";
     const versionValue = summary.haxcmsVersionCurrent
-      ? `${summary.haxcmsVersionCurrent} (${compare < 0 ? "update available" : "up to date"})`
-      : "Unknown";
+      ? (compare < 0
+          ? this.t.versionUpdateAvailable
+          : this.t.versionUpToDate
+        ).replace("{version}", () => summary.haxcmsVersionCurrent)
+      : this.t.unknown;
     const versionDescription =
       compare < 0
-        ? `Current: ${summary.haxcmsVersionCurrent || "unknown"} · Latest: ${summary.haxcmsVersionLatest || "unknown"}`
+        ? this.t.currentLatestVersion
+            .replace(
+              "{current}",
+              () => (summary.haxcmsVersionCurrent || this.t.unknownLower),
+            )
+            .replace(
+              "{latest}",
+              () => (summary.haxcmsVersionLatest || this.t.unknownLower),
+            )
         : description;
     const nextRows = Array.isArray(rows) ? this._cloneData(rows) : [];
     let found = false;
@@ -3046,13 +3267,13 @@ class HAXCMSSystemSettings extends DDD {
           {
             key: "runtime",
             tone: "info",
-            title: "Programming language runtime",
+            title: this.t.programmingLanguageRuntime,
             value: summary.programmingLanguage || "",
           },
           {
             key: "server",
             tone: "ok",
-            title: "Server version",
+            title: this.t.serverVersion,
             value: summary.serverVersion || "",
           },
         ];
@@ -3067,20 +3288,20 @@ class HAXCMSSystemSettings extends DDD {
 
   _statusToneLabel(tone = "info") {
     if (tone === "ok") {
-      return "OK";
+      return this.t.ok;
     }
     if (tone === "warning") {
-      return "Warning";
+      return this.t.warning;
     }
     if (tone === "error") {
-      return "Error";
+      return this.t.error;
     }
-    return "Info";
+    return this.t.info;
   }
 
   _statusSummaryValue(key) {
     if (!this.statusSummary || typeof this.statusSummary !== "object") {
-      return "Unknown";
+      return this.t.unknown;
     }
     const value = this.statusSummary[key];
     if (
@@ -3088,7 +3309,7 @@ class HAXCMSSystemSettings extends DDD {
       value === null ||
       `${value}`.trim() === ""
     ) {
-      return "Unknown";
+      return this.t.unknown;
     }
     return `${value}`;
   }
@@ -3127,7 +3348,7 @@ class HAXCMSSystemSettings extends DDD {
         <span class="label">${panel.label}</span>
         <span class="description">${panel.description}</span>
         ${panel.disabled
-          ? html`<span class="coming-soon-chip">Coming soon</span>`
+          ? html`<span class="coming-soon-chip">${this.t.comingSoon}</span>`
           : ""}
       </button>
     `;
@@ -3146,12 +3367,8 @@ class HAXCMSSystemSettings extends DDD {
       <div class="dashboard-shell">
         <div class="dashboard-scroll">
           <div class="dashboard-header">
-            <h2>System settings</h2>
-            <p>
-              System-level controls for runtime status, skeletons, themes,
-              allowed blocks, integrations, media defaults, configuration
-              defaults, and global custom code.
-            </p>
+            <h2>${this.t.systemSettings}</h2>
+            <p>${this.t.systemSettingsDescription}</p>
           </div>
           <div class="primary-grid">
             ${firstRowOrder.map((panelKey) =>
@@ -3208,11 +3425,11 @@ class HAXCMSSystemSettings extends DDD {
       <section class="section">
         <div class="section-body">
           ${this.loadingSkeletons
-            ? html`<p class="helper">Loading skeleton options…</p>`
+            ? html`<p class="helper">${this.t.loadingSkeletonOptions}</p>`
             : ""}
           <div class="skeleton-upload-wrap">
             <p class="helper">
-              Drag and drop a skeleton JSON file to add it to user skeletons.
+              ${this.t.dragDropSkeleton}
             </p>
             ${this._hasSchemaFileOperationEndpoint()
               ? html`
@@ -3227,7 +3444,7 @@ class HAXCMSSystemSettings extends DDD {
                 `
               : html`
                   <p class="empty-state">
-                    Upload endpoint unavailable for this backend.
+                    ${this.t.uploadEndpointUnavailable}
                   </p>
                 `}
           </div>
@@ -3237,9 +3454,9 @@ class HAXCMSSystemSettings extends DDD {
                   <table class="settings-option-table">
                     <thead>
                       <tr>
-                        <th class="select-col">Enabled</th>
-                        <th>Skeleton</th>
-                        <th class="actions-col">Actions</th>
+                        <th class="select-col">${this.t.enabled}</th>
+                        <th>${this.t.skeleton}</th>
+                        <th class="actions-col">${this.t.actions}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -3251,7 +3468,7 @@ class HAXCMSSystemSettings extends DDD {
                 </div>
               `
             : html`<p class="empty-state">
-                No skeleton options were returned.
+                ${this.t.noSkeletonOptions}
               </p>`}
         </div>
       </section>
@@ -3317,7 +3534,7 @@ class HAXCMSSystemSettings extends DDD {
       return;
     }
     if (!globalThis || typeof globalThis.prompt !== "function") {
-      this.statusMessage = "Rename prompt is unavailable.";
+      this.statusMessage = this.t.renamePromptUnavailable;
       return;
     }
     const currentName = this._normalizeMachineName(option.machineName);
@@ -3326,7 +3543,7 @@ class HAXCMSSystemSettings extends DDD {
         ? option.label.trim()
         : currentName;
     const requestedName = globalThis.prompt(
-      "Rename skeleton",
+      this.t.renameSkeleton,
       currentDisplayName,
     );
     if (typeof requestedName !== "string") {
@@ -3334,19 +3551,19 @@ class HAXCMSSystemSettings extends DDD {
     }
     const displayName = requestedName.trim();
     if (!displayName) {
-      this.statusMessage = "Skeleton name is required.";
+      this.statusMessage = this.t.skeletonNameRequired;
       return;
     }
     const nextName = this._normalizeMachineName(displayName);
     if (!nextName) {
-      this.statusMessage = "Skeleton name must include letters or numbers.";
+      this.statusMessage = this.t.skeletonNameNeedsAlphanumeric;
       return;
     }
     if (nextName === currentName && displayName === currentDisplayName) {
       return;
     }
     if (!this._hasSkeletonRenameEndpoint()) {
-      this.statusMessage = "Rename endpoint is unavailable.";
+      this.statusMessage = this.t.renameEndpointUnavailable;
       return;
     }
     this.skeletonActionBusy = true;
@@ -3364,12 +3581,15 @@ class HAXCMSSystemSettings extends DDD {
           response.data.machineName.trim() !== ""
             ? response.data.machineName.trim()
             : nextName;
-        this.statusMessage = `Renamed skeleton to ${renamedMachineName}.`;
+        this.statusMessage = this.t.renamedSkeleton.replace(
+          "{machineName}",
+          () => renamedMachineName,
+        );
         await this._loadSkeletonOptions(true);
       } else {
         this.statusMessage = this._schemaOperationResponseMessage(
           response,
-          "Unable to rename skeleton.",
+          this.t.unableToRenameSkeleton,
         );
       }
     } finally {
@@ -3390,18 +3610,18 @@ class HAXCMSSystemSettings extends DDD {
       return;
     }
     if (!globalThis || typeof globalThis.confirm !== "function") {
-      this.statusMessage = "Delete confirmation is unavailable.";
+      this.statusMessage = this.t.deleteConfirmationUnavailable;
       return;
     }
     const machineName = this._normalizeMachineName(option.machineName);
     const shouldDelete = globalThis.confirm(
-      `Delete skeleton "${machineName}"? This cannot be undone.`,
+      this.t.deleteSkeletonConfirm.replace("{machineName}", () => machineName),
     );
     if (!shouldDelete) {
       return;
     }
     if (!this._hasSkeletonDeleteEndpoint()) {
-      this.statusMessage = "Delete endpoint is unavailable.";
+      this.statusMessage = this.t.deleteEndpointUnavailable;
       return;
     }
     this.skeletonActionBusy = true;
@@ -3410,12 +3630,15 @@ class HAXCMSSystemSettings extends DDD {
         skeletonName: machineName,
       });
       if (response && response.status === 200) {
-        this.statusMessage = `Deleted skeleton ${machineName}.`;
+        this.statusMessage = this.t.deletedSkeleton.replace(
+          "{machineName}",
+          () => machineName,
+        );
         await this._loadSkeletonOptions(true);
       } else {
         this.statusMessage = this._schemaOperationResponseMessage(
           response,
-          "Unable to delete skeleton.",
+          this.t.unableToDeleteSkeleton,
         );
       }
     } finally {
@@ -3462,7 +3685,10 @@ class HAXCMSSystemSettings extends DDD {
                         <simple-icon-button-lite
                           class="skeleton-action-button"
                           icon="icons:create"
-                          label="Rename skeleton ${option.machineName}"
+                          label="${this.t.renameSkeletonNamed.replace(
+                            "{machineName}",
+                            () => option.machineName,
+                          )}"
                           ?disabled="${actionDisabled}"
                           @click="${(e) =>
                             this._renameSkeletonOption(option, e)}"
@@ -3474,7 +3700,10 @@ class HAXCMSSystemSettings extends DDD {
                         <simple-icon-button-lite
                           class="skeleton-action-button"
                           icon="delete"
-                          label="Delete skeleton ${option.machineName}"
+                          label="${this.t.deleteSkeletonNamed.replace(
+                            "{machineName}",
+                            () => option.machineName,
+                          )}"
                           ?disabled="${actionDisabled}"
                           @click="${(e) =>
                             this._deleteSkeletonOption(option, e)}"
@@ -3495,7 +3724,7 @@ class HAXCMSSystemSettings extends DDD {
       <section class="section">
         <div class="section-body">
           ${this.loadingThemes
-            ? html`<p class="helper">Loading theme options…</p>`
+            ? html`<p class="helper">${this.t.loadingThemeOptions}</p>`
             : ""}
           ${options.length > 0
             ? html`
@@ -3503,9 +3732,9 @@ class HAXCMSSystemSettings extends DDD {
                   <table class="settings-option-table">
                     <thead>
                       <tr>
-                        <th class="select-col">Enabled</th>
-                        <th class="preview-col">Preview</th>
-                        <th>Theme</th>
+                        <th class="select-col">${this.t.enabled}</th>
+                        <th class="preview-col">${this.t.preview}</th>
+                        <th>${this.t.theme}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -3516,7 +3745,7 @@ class HAXCMSSystemSettings extends DDD {
                   </table>
                 </div>
               `
-            : html`<p class="empty-state">No theme options were returned.</p>`}
+            : html`<p class="empty-state">${this.t.noThemeOptions}</p>`}
         </div>
       </section>
     `;
@@ -3566,7 +3795,7 @@ class HAXCMSSystemSettings extends DDD {
               ? html`
                   <img
                     src="${option.screenshot}"
-                    alt="Preview of ${option.label} theme"
+                    alt="${this.t.themePreviewAlt.replace("{theme}", () => option.label)}"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
@@ -3574,7 +3803,7 @@ class HAXCMSSystemSettings extends DDD {
                 `
               : html`
                   <span class="settings-theme-preview-fallback"
-                    >No preview</span
+                    >${this.t.noPreview}</span
                   >
                 `}
           </div>
@@ -3650,25 +3879,25 @@ class HAXCMSSystemSettings extends DDD {
     return html`
       <div class="status-summary-grid">
         <div class="status-summary">
-          <span class="label">Programming language</span>
+          <span class="label">${this.t.programmingLanguage}</span>
           <span class="value"
             >${this._statusSummaryValue("programmingLanguage")}</span
           >
         </div>
         <div class="status-summary">
-          <span class="label">Server version</span>
+          <span class="label">${this.t.serverVersion}</span>
           <span class="value"
             >${this._statusSummaryValue("serverVersion")}</span
           >
         </div>
         <div class="status-summary">
-          <span class="label">HAXcms current</span>
+          <span class="label">${this.t.haxcmsCurrent}</span>
           <span class="value"
             >${this._statusSummaryValue("haxcmsVersionCurrent")}</span
           >
         </div>
         <div class="status-summary">
-          <span class="label">HAXcms latest</span>
+          <span class="label">${this.t.haxcmsLatest}</span>
           <span class="value"
             >${this._statusSummaryValue("haxcmsVersionLatest")}</span
           >
@@ -3683,7 +3912,7 @@ class HAXCMSSystemSettings extends DDD {
       <section class="section">
         <div class="section-body">
           ${this.statusLoading
-            ? html`<p class="helper">Loading status report…</p>`
+            ? html`<p class="helper">${this.t.loadingStatusReport}</p>`
             : ""}
           ${this.statusError
             ? html`<p class="status-message error">${this.statusError}</p>`
@@ -3766,7 +3995,7 @@ class HAXCMSSystemSettings extends DDD {
           <div class="code-editor-grid">
             <div class="code-editor-wrapper">
               <code-editor
-                title="Global CSS"
+                title="${this.t.globalCss}"
                 language="css"
                 theme="auto"
                 .editorValue="${cssValue}"
@@ -3780,7 +4009,7 @@ class HAXCMSSystemSettings extends DDD {
             </div>
             <div class="code-editor-wrapper">
               <code-editor
-                title="Global JavaScript"
+                title="${this.t.globalJavaScript}"
                 language="javascript"
                 theme="auto"
                 .editorValue="${jsValue}"
@@ -3797,13 +4026,10 @@ class HAXCMSSystemSettings extends DDD {
   _renderStyleGuidePanel() {
     return html`
       <div class="style-guide-disabled">
-        <h3>Style guide</h3>
-        <p>Coming soon</p>
-        <p>
-          Style guide controls are intentionally disabled in this release while
-          backend integration is completed.
-        </p>
-        <button type="button" disabled>Coming soon</button>
+        <h3>${this.t.styleGuideHeading}</h3>
+        <p>${this.t.comingSoon}</p>
+        <p>${this.t.styleGuideDisabledRelease}</p>
+        <button type="button" disabled>${this.t.comingSoon}</button>
       </div>
     `;
   }
@@ -3814,14 +4040,14 @@ class HAXCMSSystemSettings extends DDD {
       <section class="section">
         <div class="section-body">
           ${this.apiKeysLoading
-            ? html`<p class="helper">Loading saved API keys…</p>`
+            ? html`<p class="helper">${this.t.loadingSavedApiKeys}</p>`
             : ""}
           ${this.apiKeysError
             ? html`<p class="status-message error">${this.apiKeysError}</p>`
             : ""}
           ${fields.length === 0
             ? html`<p class="empty-state">
-                No integration providers are configured.
+                ${this.t.noIntegrationProviders}
               </p>`
             : html`
                 <div class="api-key-list">
@@ -3845,7 +4071,7 @@ class HAXCMSSystemSettings extends DDD {
                                   target="_blank"
                                   rel="noopener noreferrer"
                                 >
-                                  Get API key
+                                  ${this.t.getApiKey}
                                 </a>
                               `
                             : ""}
@@ -3873,8 +4099,8 @@ class HAXCMSSystemSettings extends DDD {
                               ? "icons:visibility-off"
                               : "icons:visibility"}"
                             label="${this._isApiKeyVisible(field.property)
-                              ? "Hide API key value"
-                              : "Show API key value"}"
+                              ? this.t.hideApiKeyValue
+                              : this.t.showApiKeyValue}"
                             @click="${(e) =>
                               this._toggleApiKeyVisibility(field.property, e)}"
                           ></simple-icon-button-lite>
@@ -3920,7 +4146,7 @@ class HAXCMSSystemSettings extends DDD {
       );
     }
     return html`<p class="empty-state">
-      No settings available for this panel yet.
+      ${this.t.noSettingsForPanel}
     </p>`;
   }
 
@@ -3954,7 +4180,7 @@ class HAXCMSSystemSettings extends DDD {
                   ?disabled="${this.panelSaving}"
                   @click="${this._saveActivePanel}"
                 >
-                  ${this.panelSaving ? "Saving…" : "Save"}
+                  ${this.panelSaving ? this.t.saving : this.t.save}
                 </button>
               </div>
             `

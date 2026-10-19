@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Iṣẹ́ tí akẹ́kọ̀ọ́ fi sílẹ̀",
   "openInNewWindow": "Ṣí ní fèrèsé tuntun",
-  "submitted": "Ó ti fi sílẹ̀"
+  "submitted": "Ó ti fi sílẹ̀",
+  "previousStudent": "Akẹ́kọ̀ọ́ tẹ́lẹ̀",
+  "nextStudent": "Akẹ́kọ̀ọ́ tó kàn",
+  "previousAssignment": "Iṣẹ́ àyànfúnni tẹ́lẹ̀",
+  "nextAssignment": "Iṣẹ́ àyànfúnni tó kàn"
 }

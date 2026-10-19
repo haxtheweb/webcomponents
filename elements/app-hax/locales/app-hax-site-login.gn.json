@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Ehai Puruhára réra",
+  "invalidUsernameOrPassword": "Puruhára réra térã Ñe'ẽñemi ndoikói",
+  "welcomeLetsGo": "Eg̃uahẽporã {username}! Jaha!",
+  "enterYourUsername": "Ehai nde puruhára réra",
+  "username": "Puruhára réra",
+  "next": "Upeigua",
+  "welcomeBack": "Eg̃uahẽporãjey, {username}!",
+  "notYou": "Ndaha'éipa nde?",
+  "enterYourPassword": "Ehai nde ñe'ẽñemi",
+  "password": "Ñe'ẽñemi",
+  "togglePasswordDisplay": "Ehechauka/emokañy ñe'ẽñemi",
+  "login": "Eike"
+}

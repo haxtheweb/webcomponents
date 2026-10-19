@@ -1,0 +1,18 @@
+{
+  "copy": "Kopyala",
+  "download": "İndir",
+  "archive": "Arşivle",
+  "copyOperation": "kopyalama",
+  "downloadOperation": "indirme",
+  "archiveOperation": "arşivleme",
+  "created": "oluşturuldu",
+  "updated": "güncellendi",
+  "pages": "sayfa",
+  "url": "URL",
+  "confirm": "Onayla",
+  "cancel": "İptal",
+  "siteOperationConfirmTitle": "{operationName}: {siteName}?",
+  "siteOperationConfirmMessage": "{siteName} için {operation} işlemini yapmak istediğinizden emin misiniz?",
+  "siteOperationSuccessful": "{siteName} {operation} işlemi başarılı!",
+  "siteOperationFailed": "{siteName} {operation} işlemi başarısız"
+}

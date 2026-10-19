@@ -1,3 +1,8 @@
 {
-  "title": "参考文献"
+  "title": "参考文献",
+  "export": "エクスポート",
+  "exportCitations": "引用文献をエクスポート",
+  "copy": "コピー",
+  "exportCitationFormat": "引用形式をエクスポート",
+  "selectCitationFormatBelow": "以下から引用形式を選択してください"
 }

@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Ankerkeppeling kopiearre!",
+  "skipToContent": "Gean nei de ynhâld",
+  "siteHome": "Websteestart",
+  "mainNavigation": "Haadnavigaasje",
+  "toggleMenu": "Menu skeakelje",
+  "changeTheme": "Tema wizigje",
+  "breadcrumb": "Breadcrumb",
+  "tagFilter": "Tagfilter:",
+  "all": "Alle",
+  "pageNumberOfTotal": "Sidenûmer: {current} fan {total}",
+  "siteGenerated": "Webstee generearre: {date}",
+  "copyright": "Auteursrjocht: {year} {author}",
+  "viewContentByTag": "Ynhâld besjen per tag",
+  "licenseGraphic": "Ofbylding fan {license}"
+}

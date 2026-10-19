@@ -43,5 +43,22 @@
   "emailAddress": "Испрати е-пошта на овој ученик",
   "notes": "Белешки",
   "interests": "Интереси",
-  "profileImageFor": "Профилна слика на"
+  "profileImageFor": "Профилна слика на",
+  "fileSystem": "Датотечен систем",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL крајна точка (JSON)",
+  "jsonDataBlob": "JSON блок на податоци",
+  "additionalCriteriaFeedback": "Дополнителни повратни информации за {criteria}",
+  "outOfPoints": "/ {points} поени",
+  "feedbackReport": "Извештај со повратни информации",
+  "criteriaDetails": "Детали за критериумите",
+  "yourFeedback": "Вашите повратни информации",
+  "additionalCriteriaFeedbackHeading": "Дополнителни повратни информации за критериумите",
+  "yourTotalScore": "Вашиот вкупен резултат",
+  "scoreOutOfPoints": "{score} / {points} поени",
+  "studentAssignment": "Задачата {assignment} на {student}",
+  "downloadPDF": "Преземи PDF",
+  "displayMode1": "Режим 1",
+  "displayMode2": "Режим 2",
+  "twoWindows": "Два прозорци"
 }

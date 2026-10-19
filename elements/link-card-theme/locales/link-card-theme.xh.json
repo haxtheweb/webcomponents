@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ikhonkco le-ankile likhutshelwe!",
+  "skipToContent": "Tsiba uye kumxholo",
+  "changePalette": "Tshintsha iphalethi",
+  "primaryLinks": "Amakhonkco aphambili",
+  "socialLinks": "Amakhonkco oluntu",
+  "myProfile": "Iprofayile yam",
+  "profileImageOf": "Umfanekiso weprofayile ka-{name}",
+  "profileImage": "Umfanekiso weprofayile",
+  "linkCardProfile": "Iprofayile yekhadi lamakhonkco",
+  "emptyStateLinks": "Yongeza izinto zemenyu zenqanaba eliphezulu kwi-site.json ukuze kuboniswe amaqhosha amakhonkco.",
+  "titleOnPlatform": "{title} kwi-{platform}",
+  "openPlatform": "Vula i-{platform}",
+  "paletteUpdated": "Iphalethi yemibala ihlaziywe yaba lukhetho {number}."
+}

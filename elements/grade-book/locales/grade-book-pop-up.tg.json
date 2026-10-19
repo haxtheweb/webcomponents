@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Кори пешниҳодшудаи донишҷӯ",
   "openInNewWindow": "Дар равзанаи нав кушодан",
-  "submitted": "Пешниҳод шуд"
+  "submitted": "Пешниҳод шуд",
+  "previousStudent": "Донишҷӯи қаблӣ",
+  "nextStudent": "Донишҷӯи навбатӣ",
+  "previousAssignment": "Супориши қаблӣ",
+  "nextAssignment": "Супориши навбатӣ"
 }

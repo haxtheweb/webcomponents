@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Nimeä",
+  "licenseBySa": "Nimeä-JaaSamoin",
+  "licenseByNd": "Nimeä-EiMuutoksia",
+  "licenseByNc": "Nimeä-EiKaupallinen",
+  "licenseByNcSa": "Nimeä-EiKaupallinen-JaaSamoin",
+  "licenseByNcNd": "Nimeä-EiKaupallinen-EiMuutoksia",
+  "licenseGraphic": "{license}-kuva",
+  "workByCreator": "{title}, tekijä {creator}",
+  "workByCreatorLicensed": "{title}, tekijä {creator}, on lisensoitu lisenssillä {license}.",
+  "permissionsBeyondScope": "Tämän lisenssin ulkopuoliset oikeudet ovat saatavilla {link}.",
+  "author": "(tekijä)",
+  "onTheLicensingDetailsPage": "lisenssitietojen sivulla"
+}

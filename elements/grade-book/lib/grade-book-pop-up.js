@@ -11,6 +11,10 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
       studentSubmission: "Student submission",
       openInNewWindow: "Open in new window",
       submitted: "Submitted",
+      previousStudent: "Previous student",
+      nextStudent: "Next student",
+      previousAssignment: "Previous assignment",
+      nextAssignment: "Next assignment",
     };
     this.registerLocalization({
       context: this,
@@ -93,16 +97,16 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
       </style>
       <div class="shortcut-btns">
         <button @click="${this.changeActive}" value="prev-Student">
-          Previous student
+          ${this.t.previousStudent}
         </button>
         <button @click="${this.changeActive}" value="next-Student">
-          Next student
+          ${this.t.nextStudent}
         </button>
         <button @click="${this.changeActive}" value="prev-Assignment">
-          Previous assignment
+          ${this.t.previousAssignment}
         </button>
         <button @click="${this.changeActive}" value="next-Assignment">
-          Next assignment
+          ${this.t.nextAssignment}
         </button>
       </div>
       <div class="assignment-container">

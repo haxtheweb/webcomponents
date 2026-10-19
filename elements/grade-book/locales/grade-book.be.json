@@ -43,5 +43,22 @@
   "emailAddress": "Напісаць гэтаму навучэнцу",
   "notes": "Нататкі",
   "interests": "Інтарэсы",
-  "profileImageFor": "Фота профілю:"
+  "profileImageFor": "Фота профілю:",
+  "fileSystem": "Файлавая сістэма",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL-адрас (JSON)",
+  "jsonDataBlob": "Блок даных JSON",
+  "additionalCriteriaFeedback": "Дадатковы водгук па крытэрыі {criteria}",
+  "outOfPoints": "/ {points} бал.",
+  "feedbackReport": "Справаздача з водгукамі",
+  "criteriaDetails": "Падрабязнасці крытэрыяў",
+  "yourFeedback": "Ваш водгук",
+  "additionalCriteriaFeedbackHeading": "Дадатковы водгук па крытэрыях",
+  "yourTotalScore": "Ваш агульны бал",
+  "scoreOutOfPoints": "{score} / {points} бал.",
+  "studentAssignment": "Заданне {assignment} навучэнца {student}",
+  "downloadPDF": "Спампаваць PDF",
+  "displayMode1": "Рэжым 1",
+  "displayMode2": "Рэжым 2",
+  "twoWindows": "Два вокны"
 }

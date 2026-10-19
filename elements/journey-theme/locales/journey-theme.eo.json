@@ -1,4 +1,11 @@
 {
   "readMore": "Legi pli",
-  "home": "Hejmo"
+  "home": "Hejmo",
+  "anchorLinkCopied": "Ankra ligilo kopiita!",
+  "skipToContent": "Salti al enhavo",
+  "changeTheme": "Ŝanĝi etoson",
+  "siteSections": "Retejaj sekcioj",
+  "pageOfTotal": "Paĝo {current} el {total}",
+  "siteGenerated": "Retejo generita: {date}",
+  "licenseGraphic": "Grafikaĵo de {license}"
 }

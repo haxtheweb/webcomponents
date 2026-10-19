@@ -1,0 +1,11 @@
+{
+  "licenseBy": "കടപ്പാട്",
+  "licenseBySa": "കടപ്പാട് ഒരുപോലെ പങ്കിടുക",
+  "licenseByNd": "കടപ്പാട് വ്യുൽപ്പന്നങ്ങൾ പാടില്ല",
+  "licenseByNc": "കടപ്പാട് വാണിജ്യേതരം",
+  "licenseByNcSa": "കടപ്പാട് വാണിജ്യേതരം ഒരുപോലെ പങ്കിടുക",
+  "licenseByNcNd": "കടപ്പാട് വാണിജ്യേതരം വ്യുൽപ്പന്നങ്ങൾ പാടില്ല",
+  "citationWithLicense": "{creator} രചിച്ച {title}, {license} പ്രകാരം ലൈസൻസ് ചെയ്തത്. ആക്സസ് ചെയ്തത് {date}.",
+  "citationWithoutLicense": "{creator} രചിച്ച {title}. ആക്സസ് ചെയ്തത് {date}.",
+  "licenseGraphic": "{license} ഗ്രാഫിക്"
+}

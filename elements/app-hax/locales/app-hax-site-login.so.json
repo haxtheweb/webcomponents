@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Geli magaca isticmaalaha",
+  "invalidUsernameOrPassword": "Magaca Isticmaalaha ama Furaha Sirta ah waa khalad",
+  "welcomeLetsGo": "Soo dhowoow {username}! Aan bilowno!",
+  "enterYourUsername": "Geli magacaaga isticmaalaha",
+  "username": "Magaca isticmaalaha",
+  "next": "Xiga",
+  "welcomeBack": "Ku soo dhowoow mar kale, {username}!",
+  "notYou": "Adiga ma tihid?",
+  "enterYourPassword": "Geli furahaaga sirta ah",
+  "password": "Furaha sirta ah",
+  "togglePasswordDisplay": "Beddel muujinta furaha sirta ah",
+  "login": "Gal"
+}

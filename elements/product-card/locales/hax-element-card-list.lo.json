@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "ກຳລັງສະແກນທະບຽນ Web Component ເພື່ອຫາອົງປະກອບ HAX ເພີ່ມເຕີມ..",
+  "enabled": "ເປີດໃຊ້ແລ້ວ",
+  "disabled": "ປິດໃຊ້ງານ",
+  "details": "ລາຍລະອຽດ",
+  "tags": "ແທັກ:",
+  "tagName": "ຊື່ແທັກ:",
+  "developerUsage": "ການນຳໃຊ້ສຳລັບນັກພັດທະນາ:",
+  "demo": "ຕົວຢ່າງ",
+  "popUpDemo": "ຕົວຢ່າງແບບປັອບອັບ",
+  "demoOf": "ຕົວຢ່າງຂອງ {tag}"
+}

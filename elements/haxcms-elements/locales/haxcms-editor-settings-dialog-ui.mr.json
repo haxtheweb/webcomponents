@@ -5,5 +5,9 @@
   "buttons": "बटणे",
   "futureButtonConfiguration": "सानुकूल संपादक बटण कॉन्फिगरेशन लवकरच येत आहे.",
   "save": "जतन करा",
-  "saving": "जतन करत आहे…"
+  "saving": "जतन करत आहे…",
+  "novice": "नवशिका",
+  "expert": "तज्ञ",
+  "toolbarPreviewAlt": "{audience} संपादन टूलबार पूर्वावलोकन",
+  "savingEditorSettingsFailed": "संपादक सेटिंग्ज जतन करणे अयशस्वी: {error}"
 }

@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Tilnevning",
+  "licenseBySa": "Tilnevning Deil líka",
+  "licenseByNd": "Tilnevning Ongar avleiðingar",
+  "licenseByNc": "Tilnevning Ikki-vinnulig",
+  "licenseByNcSa": "Tilnevning Ikki-vinnulig Deil líka",
+  "licenseByNcNd": "Tilnevning Ikki-vinnulig Ongar avleiðingar",
+  "licenseGraphic": "{license} grafikkur",
+  "workByCreator": "{title} eftir {creator}",
+  "workByCreatorLicensed": "{title} eftir {creator} er loyvisskipað undir {license}.",
+  "permissionsBeyondScope": "Loyvi út um umfatanina av hesum loyvinum eru tøk {link}.",
+  "author": "(høvundur)",
+  "onTheLicensingDetailsPage": "á síðuni við loyvisupplýsingum"
+}

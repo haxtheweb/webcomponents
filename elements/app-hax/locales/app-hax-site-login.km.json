@@ -1,0 +1,14 @@
+{
+  "enterUserName": "បញ្ចូលឈ្មោះអ្នកប្រើ",
+  "invalidUsernameOrPassword": "ឈ្មោះអ្នកប្រើ ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ",
+  "welcomeLetsGo": "សូមស្វាគមន៍ {username}! តោះចាប់ផ្ដើម!",
+  "enterYourUsername": "បញ្ចូលឈ្មោះអ្នកប្រើរបស់អ្នក",
+  "username": "ឈ្មោះអ្នកប្រើ",
+  "next": "បន្ទាប់",
+  "welcomeBack": "សូមស្វាគមន៍ការត្រឡប់មកវិញ {username}!",
+  "notYou": "មិនមែនជាអ្នក?",
+  "enterYourPassword": "បញ្ចូលពាក្យសម្ងាត់របស់អ្នក",
+  "password": "ពាក្យសម្ងាត់",
+  "togglePasswordDisplay": "បិទ/បើកការបង្ហាញពាក្យសម្ងាត់",
+  "login": "ចូល"
+}

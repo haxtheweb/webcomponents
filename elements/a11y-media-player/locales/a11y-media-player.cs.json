@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Načítání...",
   "youTubeStartLoading": "Stiskněte přehrát.",
   "youTubeTranscriptLabel": "Přepis se načte po spuštění přehrávání.",
-  "audioDescriptionLabel": "Zvukový popis"
+  "audioDescriptionLabel": "Zvukový popis",
+  "openOnYouTube": "Otevřít na YouTube"
 }

@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "أفلت الملفات هنا",
+  "uploadQueue": "قائمة انتظار الرفع",
+  "pending": "قيد الانتظار",
+  "preparing": "جارٍ التحضير",
+  "uploading": "جارٍ الرفع",
+  "complete": "مكتمل",
+  "aborted": "تم الإيقاف",
+  "cancelled": "أُلغي",
+  "error": "خطأ",
+  "errorWithStatus": "خطأ: {status}",
+  "cancel": "إلغاء",
+  "cancelUploadOf": "إلغاء رفع {name}",
+  "retry": "إعادة المحاولة",
+  "retryUploadOf": "إعادة محاولة رفع {name}",
+  "remove": "إزالة",
+  "removeFromQueue": "إزالة {name} من قائمة الانتظار",
+  "fileTypeNotAccepted": "نوع الملف غير مقبول: {name}",
+  "uploadFailed": "فشل الرفع: {status}",
+  "networkError": "خطأ في الشبكة"
+}

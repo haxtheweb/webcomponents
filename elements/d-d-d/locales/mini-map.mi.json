@@ -1,0 +1,17 @@
+{
+  "editNodes": "Whakatika Pona",
+  "editLines": "Whakatika Rārangi",
+  "reset": "Tautuhi anō",
+  "save": "Tiaki",
+  "cancel": "Whakakore",
+  "delete": "Muku",
+  "type": "Momo:",
+  "topic": "Kaupapa",
+  "subsection": "Wāhanga-iti",
+  "name": "Ingoa:",
+  "enterName": "Tāurua te Ingoa",
+  "url": "URL:",
+  "enterUrl": "Tāurua te URL",
+  "activeNode": "Pona Hohe?",
+  "nodeId": "Pona {id}"
+}

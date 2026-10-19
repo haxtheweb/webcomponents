@@ -1,0 +1,11 @@
+{
+  "licenseBy": "ਸ਼੍ਰੇਯ",
+  "licenseBySa": "ਸ਼੍ਰੇਯ ਸਮਾਨ ਸਾਂਝ",
+  "licenseByNd": "ਸ਼੍ਰੇਯ ਕੋਈ ਵਿਉਤਪੰਨ ਨਹੀਂ",
+  "licenseByNc": "ਸ਼੍ਰੇਯ ਗ਼ੈਰ-ਵਪਾਰਕ",
+  "licenseByNcSa": "ਸ਼੍ਰੇਯ ਗ਼ੈਰ-ਵਪਾਰਕ ਸਮਾਨ ਸਾਂਝ",
+  "licenseByNcNd": "ਸ਼੍ਰੇਯ ਗ਼ੈਰ-ਵਪਾਰਕ ਕੋਈ ਵਿਉਤਪੰਨ ਨਹੀਂ",
+  "citationWithLicense": "{creator} ਦੁਆਰਾ {title}, {license} ਅਧੀਨ ਲਾਇਸੈਂਸਸ਼ੁਦਾ। {date} ਨੂੰ ਪਹੁੰਚ ਕੀਤੀ।",
+  "citationWithoutLicense": "{creator} ਦੁਆਰਾ {title}। {date} ਨੂੰ ਪਹੁੰਚ ਕੀਤੀ।",
+  "licenseGraphic": "{license} ਗ੍ਰਾਫ਼ਿਕ"
+}

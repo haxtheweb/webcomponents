@@ -43,5 +43,22 @@
   "emailAddress": "ສົ່ງອີເມວຫານັກຮຽນຄົນນີ້",
   "notes": "ບັນທຶກ",
   "interests": "ຄວາມສົນໃຈ",
-  "profileImageFor": "ຮູບໂປຣໄຟລ໌ຂອງ"
+  "profileImageFor": "ຮູບໂປຣໄຟລ໌ຂອງ",
+  "fileSystem": "ລະບົບໄຟລ໌",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "ກ້ອນຂໍ້ມູນ JSON",
+  "additionalCriteriaFeedback": "ຄຳຕິຊົມເພີ່ມເຕີມສຳລັບ {criteria}",
+  "outOfPoints": "/ {points} ຄະແນນ",
+  "feedbackReport": "ລາຍງານຄຳຕິຊົມ",
+  "criteriaDetails": "ລາຍລະອຽດເກນ",
+  "yourFeedback": "ຄຳຕິຊົມຂອງທ່ານ",
+  "additionalCriteriaFeedbackHeading": "ຄຳຕິຊົມເກນເພີ່ມເຕີມ",
+  "yourTotalScore": "ຄະແນນລວມຂອງທ່ານ",
+  "scoreOutOfPoints": "{score} / {points} ຄະແນນ",
+  "studentAssignment": "ວຽກມອບໝາຍ {assignment} ຂອງ {student}",
+  "downloadPDF": "ດາວໂຫຼດ PDF",
+  "displayMode1": "ໂໝດ 1",
+  "displayMode2": "ໂໝດ 2",
+  "twoWindows": "ສອງໜ້າຕ່າງ"
 }

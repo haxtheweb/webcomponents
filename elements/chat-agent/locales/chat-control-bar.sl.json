@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Prenesi dnevnik kot txt",
+  "downloadChatLog": "Prenesi dnevnik klepeta",
+  "resetChat": "Ponastavi klepet",
+  "toggleDataCollection": "Preklopi zbiranje podatkov",
+  "dataCollection": "Zbiranje podatkov",
+  "toggleDeveloperMode": "Preklopi način za razvijalce",
+  "exitFullView": "Zapusti polni pogled",
+  "enterFullView": "Odpri polni pogled",
+  "hideInterface": "Skrij vmesnik",
+  "resetChatConfirm": "Ponastavim klepet?",
+  "downloadBeforeResetConfirm": "Želite pred ponastavitvijo prenesti dnevnik klepeta?",
+  "dataCollectionOn": "Vaši pogovori bodo uporabljeni za učenje naših modelov AI",
+  "dataCollectionOff": "Vaši pogovori ne bodo uporabljeni za učenje naših modelov AI"
+}

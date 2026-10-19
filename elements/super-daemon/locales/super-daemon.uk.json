@@ -36,5 +36,7 @@
   "clickToDoAnything": "Натисніть, щоб зробити що завгодно!",
   "moreDetails": "Більше деталей",
   "details": "Деталі",
-  "saved": "Збережено"
+  "saved": "Збережено",
+  "opensInNewWindow": "Відкривається в новому вікні",
+  "resultsCount": "Результатів: {count}"
 }

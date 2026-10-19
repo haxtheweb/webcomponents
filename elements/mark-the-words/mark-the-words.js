@@ -15,6 +15,16 @@ export class MarkTheWords extends QuestionElement {
 
   constructor() {
     super();
+    this.t = {
+      ...this.t,
+      selectAll: "Select all",
+      markTheWordsDirections:
+        "{selectAll} the words that apply. Then press {checkAnswer} to test your answers. You will get feedback indicating correctness of your answer.",
+      numCorrectOutOfGuessed:
+        "You have {correct} out of {total} correct ({guessed} guessed)",
+      wordsSelectedFeedback: "Words selected feedback",
+      wordsNotSelectedFeedback: "Words not selected feedback",
+    };
     // QuestionElement's shared strings live in each question type's own namespace
     this.registerLocalization({
       context: this,
@@ -248,9 +258,10 @@ export class MarkTheWords extends QuestionElement {
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      <strong>Select all</strong> the words that apply. Then press
-      <strong>${this.t.checkAnswer}</strong> to test your answers. You will get
-      feedback indicating correctness of your answer.
+      ${this._tParts(this.t.markTheWordsDirections, {
+        selectAll: html`<strong>${this.t.selectAll}</strong>`,
+        checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
+      })}
     </p>`;
   }
 
@@ -260,14 +271,17 @@ export class MarkTheWords extends QuestionElement {
       ? html`
           ${this.showAnswer
             ? html` <p class="feedback">
-                  ${this.t.numCorrectLeft} ${this.numberCorrect} out of
-                  ${this.displayedAnswers.filter((answer) => answer.correct)
-                    .length}
-                  ${this.t.numCorrectRight} (${this.numberGuessed} guessed)
+                  ${this._tParts(this.t.numCorrectOutOfGuessed, {
+                    correct: this.numberCorrect,
+                    total: this.displayedAnswers.filter(
+                      (answer) => answer.correct,
+                    ).length,
+                    guessed: this.numberGuessed,
+                  })}
                 </p>
                 ${this.wordList.filter((word) => word.selected).length > 0
                   ? html`
-                      <h4>Words selected feedback</h4>
+                      <h4>${this.t.wordsSelectedFeedback}</h4>
                       <dl>
                         ${this.wordList
                           .filter((word) => word.selected)
@@ -290,7 +304,7 @@ export class MarkTheWords extends QuestionElement {
                   (word) => !word.selected && word.unselectedFeedback,
                 ).length > 0
                   ? html`
-                      <h4>Words not selected feedback</h4>
+                      <h4>${this.t.wordsNotSelectedFeedback}</h4>
                       <dl>
                         ${this.wordList
                           .filter(
@@ -330,7 +344,7 @@ export class MarkTheWords extends QuestionElement {
           this.numberCorrect !==
             this.displayedAnswers.filter((answer) => answer.correct).length
             ? html`
-                <h4>Need a hint?</h4>
+                <h4>${this.t.needAHint}</h4>
                 <div>
                   <slot name="hint"></slot>
                 </div>
@@ -342,7 +356,7 @@ export class MarkTheWords extends QuestionElement {
           this.numberCorrect ===
             this.displayedAnswers.filter((answer) => answer.correct).length
             ? html`
-                <h4>Evidence</h4>
+                <h4>${this.t.evidence}</h4>
                 <div>
                   <slot name="evidence"></slot>
                 </div>

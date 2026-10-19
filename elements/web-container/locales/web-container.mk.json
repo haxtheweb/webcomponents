@@ -1,0 +1,8 @@
+{
+  "loading": "Се вчитува",
+  "settingUpContainer": "Се поставува контејнерот",
+  "runningCommands": "Се извршуваат команди",
+  "installing": "Се инсталира..",
+  "runningStart": "Се извршува стартување..",
+  "webContainerPreview": "Преглед на веб-контејнерот"
+}

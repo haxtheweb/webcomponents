@@ -36,5 +36,7 @@
   "clickToDoAnything": "Smelltu til að gera hvaðeina!",
   "moreDetails": "Fleiri upplýsingar",
   "details": "Upplýsingar",
-  "saved": "Vistað"
+  "saved": "Vistað",
+  "opensInNewWindow": "Opnast í nýjum glugga",
+  "resultsCount": "{count} niðurstöður"
 }

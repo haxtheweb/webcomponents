@@ -1,0 +1,11 @@
+{
+  "playlist": "Ойнотмо тизме",
+  "carousel": "карусель",
+  "slide": "слайд",
+  "slideNumber": "{number}-слайд",
+  "slideOfTotal": "{total} ичинен {number}-слайд",
+  "previousSlide": "Мурунку слайд",
+  "nextSlide": "Кийинки слайд",
+  "slidePages": "Слайд барактары",
+  "goToSlide": "{number}-слайдга өтүү"
+}

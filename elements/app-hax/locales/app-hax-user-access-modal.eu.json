@@ -7,5 +7,7 @@
   "userAccessGranted": "Erabiltzaileari sarbidea ondo eman zaio!",
   "userNotFound": "Ez da erabiltzailea aurkitu edo ez du baimenik",
   "loadingAddingUser": "Erabiltzailea gehitzen...",
-  "grantAccessTo": "Eman sarbidea honi:"
+  "grantAccessTo": "Eman sarbidea honi:",
+  "networkErrorTryAgain": "Sareko errore bat gertatu da. Saiatu berriro.",
+  "characterWillAppear": "Pertsonaia erabiltzaile-izena idaztean agertuko da"
 }

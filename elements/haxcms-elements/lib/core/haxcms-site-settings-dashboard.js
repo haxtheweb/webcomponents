@@ -1,8 +1,9 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
-class HAXCMSSiteSettingsDashboard extends DDD {
+class HAXCMSSiteSettingsDashboard extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-site-settings-dashboard";
   }
@@ -34,6 +35,28 @@ class HAXCMSSiteSettingsDashboard extends DDD {
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      disabledInFeatures: "Disabled in Features",
+      appearance: "Appearance",
+      structure: "Structure",
+      content: "Content",
+      reports: "Reports",
+      about: "About",
+      files: "Files",
+      views: "Views",
+      features: "Features",
+      editor: "Editor",
+      blocks: "Blocks",
+      importExport: "Import / Export",
+      details: "Details",
+      advanced: "Advanced",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
     this.allowContent = true;
     this.allowStructure = true;
     this.allowAppearance = true;
@@ -195,7 +218,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     );
   }
   _disabledViaFeaturesTooltip(disabled) {
-    return disabled ? "Disabled in Features" : "";
+    return disabled ? this.t.disabledInFeatures : "";
   }
   _shouldHideAction(item) {
     if (!item) {
@@ -250,35 +273,35 @@ class HAXCMSSiteSettingsDashboard extends DDD {
       {
         action: "theme-settings",
         icon: "lrn:palette",
-        label: "Appearance",
+        label: this.t.appearance,
         disabled: appearanceDisabled,
         tooltip: this._disabledViaFeaturesTooltip(appearanceDisabled),
       },
       {
         action: "outline",
         icon: "hax:site-map",
-        label: "Structure",
+        label: this.t.structure,
         disabled: structureDisabled,
         tooltip: this._disabledViaFeaturesTooltip(structureDisabled),
       },
       {
         action: "content-admin",
         icon: "editor:insert-drive-file",
-        label: "Content",
+        label: this.t.content,
         disabled: contentDisabled,
         tooltip: this._disabledViaFeaturesTooltip(contentDisabled),
       },
       {
         action: "reports",
         icon: "hax:graph",
-        label: "Reports",
+        label: this.t.reports,
         disabled: reportsDisabled,
         tooltip: this._disabledViaFeaturesTooltip(reportsDisabled),
       },
       {
         action: "about",
         icon: "help",
-        label: "About",
+        label: this.t.about,
         disabled: aboutDisabled,
         tooltip: this._disabledViaFeaturesTooltip(aboutDisabled),
       },
@@ -287,29 +310,29 @@ class HAXCMSSiteSettingsDashboard extends DDD {
       {
         action: "files-admin",
         icon: "icons:folder",
-        label: "Files",
+        label: this.t.files,
         disabled: filesDisabled,
         tooltip: this._disabledViaFeaturesTooltip(filesDisabled),
       },
       {
         action: "views-admin",
         icon: "hax:view-gallery",
-        label: "Views",
+        label: this.t.views,
         disabled: viewsDisabled,
         tooltip: this._disabledViaFeaturesTooltip(viewsDisabled),
       },
-      { action: "platform", icon: "hax:add-item", label: "Features" },
+      { action: "platform", icon: "hax:add-item", label: this.t.features },
       {
         action: "editor",
         icon: "hax:page-edit",
-        label: "Editor",
+        label: this.t.editor,
         disabled: editorDisabled,
         tooltip: this._disabledViaFeaturesTooltip(editorDisabled),
       },
       {
         action: "blocks",
         icon: "hax:blocks",
-        label: "Blocks",
+        label: this.t.blocks,
         disabled: blocksDisabled,
         tooltip: this._disabledViaFeaturesTooltip(blocksDisabled),
       },
@@ -323,14 +346,14 @@ class HAXCMSSiteSettingsDashboard extends DDD {
       {
         action: "import-export",
         icon: "icons:file-download",
-        label: "Import / Export",
+        label: this.t.importExport,
         disabled: importExportDisabled,
         tooltip: this._disabledViaFeaturesTooltip(importExportDisabled),
       },
       {
         action: "site-settings",
         icon: "settings",
-        label: "Details",
+        label: this.t.details,
         disabled: siteDetailsDisabled,
         tooltip: this._disabledViaFeaturesTooltip(siteDetailsDisabled),
       },
@@ -343,7 +366,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           )}
         </div>
         <div class="advanced-heading">
-          <h3 class="advanced-title">Advanced</h3>
+          <h3 class="advanced-title">${this.t.advanced}</h3>
           <div class="advanced-rule"></div>
         </div>
         <div class="advanced-grid">

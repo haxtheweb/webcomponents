@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tabulka v konzoli – záznam chatu uživatele",
+  "consoleTableUserText": "console.table() záznam chatu uživatele",
+  "consoleTableUserTooltip": "Vypsat záznam chatu uživatele jako tabulku do konzole",
+  "consoleTableMerlinLabel": "Tabulka v konzoli – záznam chatu Merlina",
+  "consoleTableMerlinText": "console.table() záznam chatu Merlina",
+  "consoleTableMerlinTooltip": "Vypsat záznam chatu Merlina jako tabulku do konzole",
+  "consoleTableAllLabel": "Tabulka v konzoli – celý záznam chatu",
+  "consoleTableAllText": "console.table() celý záznam chatu",
+  "consoleTableAllTooltip": "Vypsat celý záznam chatu jako tabulku do konzole",
+  "downloadChatLogJson": "Stáhnout záznam chatu jako .json",
+  "downloadChatLogJsonTooltip": "Stáhnout záznam chatu jako .json"
+}

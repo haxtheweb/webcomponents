@@ -10,5 +10,9 @@
   "save": "Сачувај",
   "noDescription": "Опис није доступан.",
   "details": "Детаљи",
-  "loadingInventory": "Учитавање комплетног списка блокова…"
+  "loadingInventory": "Учитавање комплетног списка блокова…",
+  "selectAllButton": "Изабери све",
+  "deselectAllButton": "Поништи избор свих",
+  "selectedOfAvailable": "Изабрано {selected} / доступно {total}",
+  "savingBlocksFailed": "Чување блокова није успело: {error}"
 }

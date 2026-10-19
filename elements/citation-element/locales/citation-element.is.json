@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Höfundargreining",
+  "licenseBySa": "Höfundargreining – Deilist eins",
+  "licenseByNd": "Höfundargreining – Engin afleidd verk",
+  "licenseByNc": "Höfundargreining – Ekki í hagnaðarskyni",
+  "licenseByNcSa": "Höfundargreining – Ekki í hagnaðarskyni – Deilist eins",
+  "licenseByNcNd": "Höfundargreining – Ekki í hagnaðarskyni – Engin afleidd verk",
+  "citationWithLicense": "{title} eftir {creator}, gefið út með leyfinu {license}. Sótt {date}.",
+  "citationWithoutLicense": "{title} eftir {creator}. Sótt {date}.",
+  "licenseGraphic": "Merki {license}"
+}

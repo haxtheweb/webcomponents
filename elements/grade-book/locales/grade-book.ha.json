@@ -43,5 +43,22 @@
   "emailAddress": "Aika imel ga wannan ɗalibi",
   "notes": "Bayanai",
   "interests": "Abubuwan sha'awa",
-  "profileImageFor": "Hoton bayanin martaba na"
+  "profileImageFor": "Hoton bayanin martaba na",
+  "fileSystem": "Tsarin fayil",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Wurin URL (JSON)",
+  "jsonDataBlob": "Tarin bayanan JSON",
+  "additionalCriteriaFeedback": "Ƙarin martanin {criteria}",
+  "outOfPoints": "/ maki {points}",
+  "feedbackReport": "Rahoton martani",
+  "criteriaDetails": "Cikakkun bayanan sharuɗɗa",
+  "yourFeedback": "Martaninka",
+  "additionalCriteriaFeedbackHeading": "Ƙarin martanin Sharuɗɗa",
+  "yourTotalScore": "Jimillar Makinka",
+  "scoreOutOfPoints": "{score} / maki {points}",
+  "studentAssignment": "Aikin {assignment} na {student}",
+  "downloadPDF": "Sauke PDF",
+  "displayMode1": "Yanayi 1",
+  "displayMode2": "Yanayi 2",
+  "twoWindows": "Tagogi biyu"
 }

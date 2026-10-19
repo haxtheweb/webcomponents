@@ -1,0 +1,11 @@
+{
+  "licenseBy": "ఆపాదింపు",
+  "licenseBySa": "ఆపాదింపు సమానంగా పంచుకోండి",
+  "licenseByNd": "ఆపాదింపు వ్యుత్పన్నాలు లేవు",
+  "licenseByNc": "ఆపాదింపు వాణిజ్యేతర",
+  "licenseByNcSa": "ఆపాదింపు వాణిజ్యేతర సమానంగా పంచుకోండి",
+  "licenseByNcNd": "ఆపాదింపు వాణిజ్యేతర వ్యుత్పన్నాలు లేవు",
+  "citationWithLicense": "{creator} రచించిన {title}, {license} కింద లైసెన్స్ పొందింది. {date}న యాక్సెస్ చేయబడింది.",
+  "citationWithoutLicense": "{creator} రచించిన {title}. {date}న యాక్సెస్ చేయబడింది.",
+  "licenseGraphic": "{license} గ్రాఫిక్"
+}

@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Ange användarnamn",
+  "invalidUsernameOrPassword": "Ogiltigt användarnamn eller lösenord",
+  "welcomeLetsGo": "Välkommen {username}! Nu kör vi!",
+  "enterYourUsername": "Ange ditt användarnamn",
+  "username": "Användarnamn",
+  "next": "Nästa",
+  "welcomeBack": "Välkommen tillbaka, {username}!",
+  "notYou": "Inte du?",
+  "enterYourPassword": "Ange ditt lösenord",
+  "password": "Lösenord",
+  "togglePasswordDisplay": "Visa/dölj lösenord",
+  "login": "Logga in"
+}

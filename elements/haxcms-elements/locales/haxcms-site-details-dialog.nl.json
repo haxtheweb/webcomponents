@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- standaard eerste pagina --",
+  "details": "Details",
+  "title": "Titel",
+  "titleDescription": "Naam van de site",
+  "homePage": "Startpagina",
+  "homePageDescription": "Pagina die als standaard landings-/startpagina wordt gebruikt",
+  "advanced": "Geavanceerd",
+  "serviceWorker": "Service worker toevoegen aan dynamische pagina",
+  "serviceWorkerDescription": "Schakel dit uit als gebruikers altijd direct de nieuwste serveruitvoer moeten zien.",
+  "forceBrowserUpgrade": "Browserupgrade afdwingen",
+  "forceBrowserUpgradeDescription": "Evergreen-browsers vereisen voordat de site wordt geladen.",
+  "unableToLoadSiteDetails": "Kan sitedetails niet laden.",
+  "noSiteDetails": "Er zijn geen sitedetails beschikbaar.",
+  "save": "Opslaan"
+}

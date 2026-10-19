@@ -54,5 +54,6 @@
   "requirementUppercase": "Una lettera maiuscula",
   "requirementLowercase": "Una lettera minuscula",
   "requirementNumber": "Una cifra",
-  "requirementSymbol": "Un simbulu"
+  "requirementSymbol": "Un simbulu",
+  "haxcmsMascotAlt": "Mascotta HAXcms Viaghjatore di u mondu"
 }

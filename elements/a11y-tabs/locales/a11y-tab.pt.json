@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Aba {xOfY}",
+  "xOfY": "{order} de {total}",
+  "endOfTab": "Fim da aba {xOfY}. Voltar para {tabs}.",
+  "tabs": "abas"
+}

@@ -5,5 +5,9 @@
   "buttons": "ปุ่ม",
   "futureButtonConfiguration": "การกำหนดค่าปุ่มตัวแก้ไขแบบกำหนดเองจะมาเร็วๆ นี้",
   "save": "บันทึก",
-  "saving": "กำลังบันทึก…"
+  "saving": "กำลังบันทึก…",
+  "novice": "มือใหม่",
+  "expert": "ผู้เชี่ยวชาญ",
+  "toolbarPreviewAlt": "ตัวอย่างแถบเครื่องมือแก้ไขสำหรับ{audience}",
+  "savingEditorSettingsFailed": "บันทึกการตั้งค่าตัวแก้ไขไม่สำเร็จ: {error}"
 }

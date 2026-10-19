@@ -1,0 +1,18 @@
+{
+  "copy": "Күчерү",
+  "download": "Йөкләп алу",
+  "archive": "Архивлау",
+  "copyOperation": "күчерү",
+  "downloadOperation": "йөкләп алу",
+  "archiveOperation": "архивлау",
+  "created": "булдырылды",
+  "updated": "яңартылды",
+  "pages": "битләр",
+  "url": "URL",
+  "confirm": "Раслау",
+  "cancel": "Баш тарту",
+  "siteOperationConfirmTitle": "{siteName}: {operationName}?",
+  "siteOperationConfirmMessage": "{siteName} сайтын {operation} теләвегезгә ышанасызмы?",
+  "siteOperationSuccessful": "{siteName}: {operation} уңышлы!",
+  "siteOperationFailed": "{siteName}: {operation} уңышсыз"
+}

@@ -43,5 +43,22 @@
   "emailAddress": "Seol ríomhphost chuig an dalta seo",
   "notes": "Nótaí",
   "interests": "Spéiseanna",
-  "profileImageFor": "Íomhá phróifíle do"
+  "profileImageFor": "Íomhá phróifíle do",
+  "fileSystem": "Córas comhad",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Críochphointe URL (JSON)",
+  "jsonDataBlob": "Bloba sonraí JSON",
+  "additionalCriteriaFeedback": "Aiseolas breise ar {criteria}",
+  "outOfPoints": "/ {points} pointe",
+  "feedbackReport": "Tuairisc aiseolais",
+  "criteriaDetails": "Sonraí na gcritéar",
+  "yourFeedback": "D'aiseolas",
+  "additionalCriteriaFeedbackHeading": "Aiseolas breise ar Chritéir",
+  "yourTotalScore": "Do Scór iomlán",
+  "scoreOutOfPoints": "{score} / {points} pointe",
+  "studentAssignment": "Tasc {assignment} de chuid {student}",
+  "downloadPDF": "Íoslódáil PDF",
+  "displayMode1": "Mód 1",
+  "displayMode2": "Mód 2",
+  "twoWindows": "Dhá fhuinneog"
 }

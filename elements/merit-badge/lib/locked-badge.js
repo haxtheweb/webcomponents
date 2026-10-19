@@ -1,8 +1,21 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-class LockedBadge extends LitElement {
+class LockedBadge extends I18NMixin(LitElement) {
+  constructor() {
+    super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      lockedBadge: "Locked badge",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
+  }
   static get tag() {
     return "locked-badge";
   }
@@ -61,7 +74,7 @@ class LockedBadge extends LitElement {
           class="badgepic"
           icon="icons:lock"
           role="img"
-          aria-label="Locked badge"
+          aria-label="${this.t.lockedBadge}"
         ></simple-icon-lite>
       </div>
     `;

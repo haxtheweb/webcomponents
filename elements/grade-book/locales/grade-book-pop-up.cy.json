@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Cyflwyniad y myfyriwr",
   "openInNewWindow": "Agor mewn ffenestr newydd",
-  "submitted": "Cyflwynwyd"
+  "submitted": "Cyflwynwyd",
+  "previousStudent": "Myfyriwr blaenorol",
+  "nextStudent": "Myfyriwr nesaf",
+  "previousAssignment": "Aseiniad blaenorol",
+  "nextAssignment": "Aseiniad nesaf"
 }

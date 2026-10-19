@@ -36,5 +36,7 @@
   "clickToDoAnything": "যেকোনো কিছু করতে ক্লিক করুন!",
   "moreDetails": "আরও বিস্তারিত",
   "details": "বিস্তারিত",
-  "saved": "সংরক্ষিত"
+  "saved": "সংরক্ষিত",
+  "opensInNewWindow": "নতুন উইন্ডোতে খোলে",
+  "resultsCount": "{count}টি ফলাফল"
 }

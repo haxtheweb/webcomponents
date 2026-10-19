@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Ora ana asil",
+  "viewsRecordHeading": "Rekam",
+  "viewsTitleImage": "Gambar {title}",
+  "viewsTitlePreview": "Pratinjau {title}",
+  "viewsNoTimelineRecords": "Ora ana rekaman adhedhasar tanggal kanggo nampilake garis wektu.",
+  "viewsTimelineTitle": "Garis wektu {title}",
+  "viewsNoChartField": "Ora ana kolom angka sing dideteksi kanggo nampilake grafik.",
+  "viewsChartingValue": "Grafik {value}",
+  "viewsChartingValueByLabel": "Grafik {value} miturut {label}",
+  "viewsChartTitle": "Grafik {title}",
+  "viewsNoTreeRecords": "Ora ana rekaman hierarkis kanggo nampilake wit.",
+  "viewsNoGalleryRecords": "Ora ana rekaman gambar kanggo nampilake galeri.",
+  "viewsNoPlaylistRecords": "Ora ana rekaman media kanggo nampilake dhaftar puter.",
+  "fetchFailed": "Gagal njupuk ({status})",
+  "unableToLoadViewData": "Ora bisa ngemot data tampilan.",
+  "noResultsFound": "Ora ana asil sing ditemokake.",
+  "refreshView": "Anyari tampilan",
+  "breakIntoStaticContent": "Pecah dadi isi statis",
+  "viewsOpenRecord": "Bukak rekaman"
+}

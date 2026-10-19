@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Suelta los archivos aquí",
+  "uploadQueue": "Cola de subida",
+  "pending": "Pendiente",
+  "preparing": "Preparando",
+  "uploading": "Subiendo",
+  "complete": "Completado",
+  "aborted": "Abortado",
+  "cancelled": "Cancelado",
+  "error": "Error",
+  "errorWithStatus": "Error: {status}",
+  "cancel": "Cancelar",
+  "cancelUploadOf": "Cancelar la subida de {name}",
+  "retry": "Reintentar",
+  "retryUploadOf": "Reintentar la subida de {name}",
+  "remove": "Quitar",
+  "removeFromQueue": "Quitar {name} de la cola",
+  "fileTypeNotAccepted": "Tipo de archivo no aceptado: {name}",
+  "uploadFailed": "Error en la subida: {status}",
+  "networkError": "Error de red"
+}

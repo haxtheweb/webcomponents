@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "በመጫን ላይ...",
   "youTubeStartLoading": "አጫውትን ይጫኑ።",
   "youTubeTranscriptLabel": "ሚዲያው መጫወት ሲጀምር ግልባጩ ይጫናል።",
-  "audioDescriptionLabel": "የድምፅ መግለጫ"
+  "audioDescriptionLabel": "የድምፅ መግለጫ",
+  "openOnYouTube": "በYouTube ክፈት"
 }

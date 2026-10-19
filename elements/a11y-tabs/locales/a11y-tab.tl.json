@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Tab {xOfY}",
+  "xOfY": "{order} sa {total}",
+  "endOfTab": "Katapusan ng tab {xOfY}. Bumalik sa {tabs}.",
+  "tabs": "mga tab"
+}

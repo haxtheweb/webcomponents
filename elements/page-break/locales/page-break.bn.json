@@ -22,6 +22,13 @@
   "unpublish": "প্রকাশ বাতিল করুন",
   "savePage": "পৃষ্ঠা সংরক্ষণ করুন",
   "cancel": "বাতিল করুন",
+  "delete": "মুছুন",
+  "editTitle": "শিরোনাম সম্পাদনা করুন",
+  "editIcon": "আইকন এডিট করুন",
+  "agent": "এজেন্ট",
+  "pageLockedUnlockToEdit": "এই পেজটি লক করা। এডিট করতে আগে আনলক করুন।",
+  "pageLockedUnlockToChangePublishStatus": "এই পেজটি লক করা। প্রকাশের অবস্থা বদলাতে আগে আনলক করুন।",
+  "pageLockedUnlockToDelete": "এই পেজটি লক করা। মুছতে আগে আনলক করুন।",
   "pageDetails": "পৃষ্ঠার বিবরণ",
   "clickToUnlock": "আনলক করতে ক্লিক করুন"
 }

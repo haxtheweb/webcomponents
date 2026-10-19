@@ -1,0 +1,14 @@
+{
+  "licenseBy": "অ্যাট্রিবিউশন",
+  "licenseBySa": "অ্যাট্রিবিউশন শেয়ার-অ্যালাইক",
+  "licenseByNd": "অ্যাট্রিবিউশন নো-ডেরিভেটিভস",
+  "licenseByNc": "অ্যাট্রিবিউশন নন-কমার্শিয়াল",
+  "licenseByNcSa": "অ্যাট্রিবিউশন নন-কমার্শিয়াল শেয়ার-অ্যালাইক",
+  "licenseByNcNd": "অ্যাট্রিবিউশন নন-কমার্শিয়াল নো-ডেরিভেটিভস",
+  "licenseGraphic": "{license} গ্রাফিক",
+  "workByCreator": "{creator}-এর {title}",
+  "workByCreatorLicensed": "{creator}-এর {title} একটি {license}-এর অধীনে লাইসেন্সকৃত।",
+  "permissionsBeyondScope": "এই লাইসেন্সের পরিধির বাইরের অনুমতি {link} পাওয়া যাবে।",
+  "author": "(লেখক)",
+  "onTheLicensingDetailsPage": "লাইসেন্সিং বিবরণ পেজে"
+}

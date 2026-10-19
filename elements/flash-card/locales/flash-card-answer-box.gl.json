@@ -1,5 +1,8 @@
 {
   "yourAnswer": "A túa resposta",
   "checkAnswer": "Comprobar resposta",
-  "retry": "Tentar de novo"
+  "retry": "Tentar de novo",
+  "correct": "Correcto!",
+  "incorrect": "Incorrecto!",
+  "correctAnswer": "Resposta correcta: {answer}"
 }

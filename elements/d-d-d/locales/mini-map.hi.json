@@ -1,0 +1,17 @@
+{
+  "editNodes": "नोड संपादित करें",
+  "editLines": "रेखाएँ संपादित करें",
+  "reset": "रीसेट करें",
+  "save": "सहेजें",
+  "cancel": "रद्द करें",
+  "delete": "हटाएँ",
+  "type": "प्रकार:",
+  "topic": "विषय",
+  "subsection": "उपखंड",
+  "name": "नाम:",
+  "enterName": "नाम दर्ज करें",
+  "url": "URL:",
+  "enterUrl": "URL दर्ज करें",
+  "activeNode": "सक्रिय नोड?",
+  "nodeId": "नोड {id}"
+}

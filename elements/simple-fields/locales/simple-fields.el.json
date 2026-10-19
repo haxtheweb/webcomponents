@@ -9,5 +9,8 @@
   "record": "Εγγραφή",
   "pause": "Παύση εγγραφής",
   "stopSave": "Διακοπή & αποθήκευση",
-  "clickToTakePhoto": "Κάντε κλικ για λήψη φωτογραφίας"
+  "clickToTakePhoto": "Κάντε κλικ για λήψη φωτογραφίας",
+  "url": "URL",
+  "open": "άνοιγμα",
+  "removeValue": "Κατάργηση {value}"
 }

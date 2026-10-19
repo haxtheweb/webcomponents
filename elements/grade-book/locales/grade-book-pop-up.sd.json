@@ -1,5 +1,9 @@
 {
   "studentSubmission": "شاگرد جو جمع ڪيل ڪم",
   "openInNewWindow": "نئين ونڊو ۾ کوليو",
-  "submitted": "جمع ٿيل"
+  "submitted": "جمع ٿيل",
+  "previousStudent": "پويون شاگرد",
+  "nextStudent": "اڳيون شاگرد",
+  "previousAssignment": "پوئين اسائنمينٽ",
+  "nextAssignment": "اڳين اسائنمينٽ"
 }

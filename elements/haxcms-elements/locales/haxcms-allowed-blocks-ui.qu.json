@@ -10,5 +10,9 @@
   "save": "Waqaychay",
   "noDescription": "Manam willakuy kanchu.",
   "details": "Sut'inchaykuna",
-  "loadingInventory": "Llapan bloque inventariota cargachkan…"
+  "loadingInventory": "Llapan bloque inventariota cargachkan…",
+  "selectAllButton": "Llapanta Akllay",
+  "deselectAllButton": "Llapanta Mana Akllay",
+  "selectedOfAvailable": "{selected} akllasqa / {total} kachkaq",
+  "savingBlocksFailed": "T'aqakunata waqaychay pantarqan: {error}"
 }

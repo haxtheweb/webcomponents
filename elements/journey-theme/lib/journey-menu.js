@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
-export class JourneyMenu extends LitElement {
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+export class JourneyMenu extends I18NMixin(LitElement) {
   static get tag() {
     return "journey-menu";
   }
@@ -15,6 +16,17 @@ export class JourneyMenu extends LitElement {
   constructor() {
     super();
     this.open = false;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      toggleNavigationMenu: "Toggle navigation menu",
+      pageNavigation: "Page navigation",
+      closeNavigationMenu: "Close navigation menu",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
   }
 
   toggleOpen() {
@@ -221,7 +233,7 @@ export class JourneyMenu extends LitElement {
       <button
         class="menu-toggle"
         type="button"
-        aria-label="Toggle navigation menu"
+        aria-label="${this.t.toggleNavigationMenu}"
         aria-expanded="${this.open ? "true" : "false"}"
         aria-controls="journeymenu-nav"
         @click="${this.toggleOpen}"
@@ -244,13 +256,13 @@ export class JourneyMenu extends LitElement {
       <nav
         id="journeymenu-nav"
         class="${this.open ? "open" : ""}"
-        aria-label="Page navigation"
+        aria-label="${this.t.pageNavigation}"
         @keydown="${this._navKeydown}"
       >
         <button
           class="menu-close"
           type="button"
-          aria-label="Close navigation menu"
+          aria-label="${this.t.closeNavigationMenu}"
           @click="${this.closeNav}"
         >
           <svg

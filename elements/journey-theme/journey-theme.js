@@ -62,6 +62,12 @@ class JourneyTheme extends HAXCMSLitElementTheme {
     this.t = {
       readMore: "Read more",
       home: "Home",
+      skipToContent: "Skip to content",
+      changeTheme: "Change theme",
+      siteSections: "Site sections",
+      pageOfTotal: "Page {current} of {total}",
+      siteGenerated: "Site generated: {date}",
+      licenseGraphic: "{license} graphic",
     };
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
@@ -824,14 +830,14 @@ class JourneyTheme extends HAXCMSLitElementTheme {
   render() {
     if (!this.manifest || !this.manifest.metadata) {
       return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <div id="contentcontainer" tabindex="-1"><div id="slot"></div></div>
       `;
     }
     return html`
-    <a class="skip-link" href="#contentcontainer">Skip to content</a>
+    <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
     <header>
-      <simple-icon-button-lite icon="image:style" label="Change theme" title="Change theme" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
+      <simple-icon-button-lite icon="image:style" label="${this.t.changeTheme}" title="${this.t.changeTheme}" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
       <div class="author">
         <a href="${this.basePath}">${
           this.manifest.metadata.author.image
@@ -853,7 +859,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         </a>
       </div>
     </header>
-    <nav class="lower-header-box ${this.location && this.location.route.name === "home" ? "home" : "not-home"}" aria-label="Site sections">
+    <nav class="lower-header-box ${this.location && this.location.route.name === "home" ? "home" : "not-home"}" aria-label="${this.t.siteSections}">
       <simple-tooltip for="top" position="bottom">${this.t.home}</simple-tooltip>
       <a tabindex="-1" href="${this.basePath}" class="top article-link-icon"><simple-icon-button-lite id="top" title="${this.t.home}" label="${this.t.home}" icon="${this.manifest.metadata.icon ? this.manifest.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
       ${
@@ -1005,8 +1011,8 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           <div class="h1">${this.manifest.title}</div>
           <div class="h2">${this.manifest.description}</div class="h2">
           <div>
-              ${this.pageCurrent > 0 ? html`Page ${this.pageCurrent} of ${this.pageTotal}` : nothing} <br /><br />
-              Site generated: ${this.lastUpdated}<br><br>
+              ${this.pageCurrent > 0 ? html`${this.t.pageOfTotal.replace("{current}", () => this.pageCurrent).replace("{total}", () => this.pageTotal)}` : nothing} <br /><br />
+              ${this.t.siteGenerated.replace("{date}", () => (this.lastUpdated ?? ""))}<br><br>
               © ${this.copyrightYear} ${this.manifest.author}.
           </div>
           <div
@@ -1027,7 +1033,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
                       loading="lazy"
                       decoding="async"
                       fetchpriority="low"
-                      alt="${this.licenseName} graphic"
+                      alt="${this.t.licenseGraphic.replace("{license}", () => this.licenseName)}"
                       src="${this.licenseImage}"
                     />
                   </a>
@@ -1035,7 +1041,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
               : ``
           }
           </div>
-          <simple-icon-button-lite label="Change theme" title="Change theme" icon="image:style" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
+          <simple-icon-button-lite label="${this.t.changeTheme}" title="${this.t.changeTheme}" icon="image:style" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
           <scroll-button></scroll-button>
         </div>
         </div>

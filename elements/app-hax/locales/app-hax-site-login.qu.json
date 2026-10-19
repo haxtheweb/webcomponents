@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Ruraqpa sutinta qillqay",
+  "invalidUsernameOrPassword": "Mana allin Ruraq suti utaq Yaykuna simi",
+  "welcomeLetsGo": "Allin hamusqa {username}! Risun!",
+  "enterYourUsername": "Ruraq sutiykita qillqay",
+  "username": "Ruraqpa sutin",
+  "next": "Qatiq",
+  "welcomeBack": "Allinllamanta kutimunki, {username}!",
+  "notYou": "Manachu qamqa?",
+  "enterYourPassword": "Yaykuna simiykita qillqay",
+  "password": "Yaykuna simi",
+  "togglePasswordDisplay": "Yaykuna simita rikuchiy/pakay",
+  "login": "Yaykuy"
+}

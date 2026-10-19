@@ -43,5 +43,22 @@
   "emailAddress": "ایمیل به این دانشجو",
   "notes": "یادداشت‌ها",
   "interests": "علاقه‌مندی‌ها",
-  "profileImageFor": "تصویر نمایه"
+  "profileImageFor": "تصویر نمایه",
+  "fileSystem": "سیستم فایل",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "نقطه پایانی URL (JSON)",
+  "jsonDataBlob": "داده JSON",
+  "additionalCriteriaFeedback": "بازخورد بیشتر {criteria}",
+  "outOfPoints": "/ {points} امتیاز",
+  "feedbackReport": "گزارش بازخورد",
+  "criteriaDetails": "جزئیات معیارها",
+  "yourFeedback": "بازخورد شما",
+  "additionalCriteriaFeedbackHeading": "بازخورد بیشتر معیارها",
+  "yourTotalScore": "امتیاز کل شما",
+  "scoreOutOfPoints": "{score} / {points} امتیاز",
+  "studentAssignment": "تکلیف {assignment} مربوط به {student}",
+  "downloadPDF": "دانلود PDF",
+  "displayMode1": "حالت ۱",
+  "displayMode2": "حالت ۲",
+  "twoWindows": "دو پنجره"
 }

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- lalai kepada halaman pertama --",
+  "details": "Butiran",
+  "title": "Tajuk",
+  "titleDescription": "Nama laman",
+  "homePage": "Halaman utama",
+  "homePageDescription": "Halaman untuk digunakan sebagai halaman pendaratan / utama lalai",
+  "advanced": "Lanjutan",
+  "serviceWorker": "Tambah service worker pada halaman dinamik",
+  "serviceWorkerDescription": "Lumpuhkan ini jika pengguna sepatutnya sentiasa melihat output pelayan terkini dengan serta-merta.",
+  "forceBrowserUpgrade": "Paksa naik taraf pelayar",
+  "forceBrowserUpgradeDescription": "Perlukan pelayar evergreen sebelum memuatkan pengalaman laman.",
+  "unableToLoadSiteDetails": "Tidak dapat memuatkan butiran laman.",
+  "noSiteDetails": "Tiada butiran laman tersedia.",
+  "save": "Simpan"
+}

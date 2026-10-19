@@ -22,6 +22,13 @@
   "unpublish": "Nyahterbit",
   "savePage": "Simpan halaman",
   "cancel": "Batal",
+  "delete": "Padam",
+  "editTitle": "Edit tajuk",
+  "editIcon": "Edit Ikon",
+  "agent": "Ejen",
+  "pageLockedUnlockToEdit": "Halaman ini dikunci. Buka kuncinya dahulu untuk mengedit.",
+  "pageLockedUnlockToChangePublishStatus": "Halaman ini dikunci. Buka kuncinya dahulu untuk menukar status penerbitan.",
+  "pageLockedUnlockToDelete": "Halaman ini dikunci. Buka kuncinya dahulu untuk memadam.",
   "pageDetails": "Butiran halaman",
   "clickToUnlock": "Klik untuk buka kunci"
 }

@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Lohista failid siia",
+  "uploadQueue": "Üleslaadimise järjekord",
+  "pending": "Ootel",
+  "preparing": "Ettevalmistamine",
+  "uploading": "Üleslaadimine",
+  "complete": "Valmis",
+  "aborted": "Katkestatud",
+  "cancelled": "Tühistatud",
+  "error": "Viga",
+  "errorWithStatus": "Viga: {status}",
+  "cancel": "Tühista",
+  "cancelUploadOf": "Tühista faili {name} üleslaadimine",
+  "retry": "Proovi uuesti",
+  "retryUploadOf": "Proovi faili {name} üleslaadimist uuesti",
+  "remove": "Eemalda",
+  "removeFromQueue": "Eemalda {name} järjekorrast",
+  "fileTypeNotAccepted": "Failitüüp pole lubatud: {name}",
+  "uploadFailed": "Üleslaadimine ebaõnnestus: {status}",
+  "networkError": "Võrguviga"
+}

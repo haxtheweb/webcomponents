@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Tələbənin təqdim etdiyi iş",
   "openInNewWindow": "Yeni pəncərədə aç",
-  "submitted": "Təqdim edilib"
+  "submitted": "Təqdim edilib",
+  "previousStudent": "Əvvəlki tələbə",
+  "nextStudent": "Növbəti tələbə",
+  "previousAssignment": "Əvvəlki tapşırıq",
+  "nextAssignment": "Növbəti tapşırıq"
 }

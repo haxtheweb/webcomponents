@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- ડિફૉલ્ટ પ્રથમ પેજ --",
+  "details": "વિગતો",
+  "title": "શીર્ષક",
+  "titleDescription": "સાઇટનું નામ",
+  "homePage": "હોમ પેજ",
+  "homePageDescription": "ડિફૉલ્ટ લેન્ડિંગ / હોમ પેજ તરીકે વાપરવાનું પેજ",
+  "advanced": "અદ્યતન",
+  "serviceWorker": "ડાયનેમિક પેજમાં સર્વિસ વર્કર ઉમેરો",
+  "serviceWorkerDescription": "જો વપરાશકર્તાઓએ હંમેશાં તરત જ નવીનતમ સર્વર આઉટપુટ જોવું જોઈએ તો આને અક્ષમ કરો.",
+  "forceBrowserUpgrade": "બ્રાઉઝર અપગ્રેડ ફરજિયાત કરો",
+  "forceBrowserUpgradeDescription": "સાઇટ અનુભવ લોડ કરતાં પહેલાં અદ્યતન (evergreen) બ્રાઉઝર આવશ્યક બનાવો.",
+  "unableToLoadSiteDetails": "સાઇટ વિગતો લોડ કરી શકાઈ નથી.",
+  "noSiteDetails": "કોઈ સાઇટ વિગતો ઉપલબ્ધ નથી.",
+  "save": "સાચવો"
+}

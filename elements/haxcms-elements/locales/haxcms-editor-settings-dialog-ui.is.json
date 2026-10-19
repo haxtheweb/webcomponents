@@ -5,5 +5,9 @@
   "buttons": "Hnappar",
   "futureButtonConfiguration": "Sérsniðin uppsetning hnappa í ritlinum kemur bráðlega.",
   "save": "Vista",
-  "saving": "Vista…"
+  "saving": "Vista…",
+  "novice": "Byrjandi",
+  "expert": "Sérfræðingur",
+  "toolbarPreviewAlt": "Forskoðun breytingatækjastiku fyrir {audience}",
+  "savingEditorSettingsFailed": "Vistun stillinga ritils mistókst: {error}"
 }

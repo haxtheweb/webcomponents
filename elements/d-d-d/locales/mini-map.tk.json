@@ -1,0 +1,17 @@
+{
+  "editNodes": "Düwünleri redaktirle",
+  "editLines": "Çyzyklary redaktirle",
+  "reset": "Täzeden düz",
+  "save": "Ýatda saklamak",
+  "cancel": "Ýatyrmak",
+  "delete": "Pozmak",
+  "type": "Görnüşi:",
+  "topic": "Tema",
+  "subsection": "Kiçi bölüm",
+  "name": "Ady:",
+  "enterName": "Ady giriziň",
+  "url": "URL:",
+  "enterUrl": "URL giriziň",
+  "activeNode": "Işjeň düwünmi?",
+  "nodeId": "{id} düwüni"
+}

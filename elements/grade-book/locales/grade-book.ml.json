@@ -43,5 +43,22 @@
   "emailAddress": "ഈ വിദ്യാർത്ഥിക്ക് ഇമെയിൽ അയയ്ക്കുക",
   "notes": "കുറിപ്പുകൾ",
   "interests": "താൽപ്പര്യങ്ങൾ",
-  "profileImageFor": "പ്രൊഫൈൽ ചിത്രം:"
+  "profileImageFor": "പ്രൊഫൈൽ ചിത്രം:",
+  "fileSystem": "ഫയൽ സിസ്റ്റം",
+  "googleDocs": "Google ഡോക്സ്",
+  "urlEndpointJSON": "URL എൻഡ്‌പോയിന്റ് (JSON)",
+  "jsonDataBlob": "JSON ഡാറ്റ ബ്ലോബ്",
+  "additionalCriteriaFeedback": "അധിക {criteria} ഫീഡ്ബാക്ക്",
+  "outOfPoints": "/ {points} പോയിന്റ്",
+  "feedbackReport": "ഫീഡ്ബാക്ക് റിപ്പോർട്ട്",
+  "criteriaDetails": "മാനദണ്ഡ വിശദാംശങ്ങൾ",
+  "yourFeedback": "നിങ്ങളുടെ ഫീഡ്ബാക്ക്",
+  "additionalCriteriaFeedbackHeading": "അധിക മാനദണ്ഡ ഫീഡ്ബാക്ക്",
+  "yourTotalScore": "നിങ്ങളുടെ ആകെ സ്കോർ",
+  "scoreOutOfPoints": "{score} / {points} പോയിന്റ്",
+  "studentAssignment": "{student}-ന്റെ അസൈൻമെന്റ് {assignment}",
+  "downloadPDF": "PDF ഡൗൺലോഡ് ചെയ്യുക",
+  "displayMode1": "മോഡ് 1",
+  "displayMode2": "മോഡ് 2",
+  "twoWindows": "രണ്ട് വിൻഡോകൾ"
 }

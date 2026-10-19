@@ -1,0 +1,11 @@
+{
+  "playlist": "Mndandanda",
+  "carousel": "zozungulira",
+  "slide": "chithunzi",
+  "slideNumber": "Chithunzi {number}",
+  "slideOfTotal": "Chithunzi {number} mwa {total}",
+  "previousSlide": "Chithunzi cham'mbuyo",
+  "nextSlide": "Chithunzi chotsatira",
+  "slidePages": "Masamba a zithunzi",
+  "goToSlide": "Pitani ku chithunzi {number}"
+}

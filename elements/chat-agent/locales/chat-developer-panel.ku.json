@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tabloya konsolê ya tomara sohbetê ya bikarhêner",
+  "consoleTableUserText": "console.table() tomara sohbetê ya bikarhêner",
+  "consoleTableUserTooltip": "Tomara Sohbetê ya Bikarhêner wekî Tablo li Konsolê Çap Bike",
+  "consoleTableMerlinLabel": "Tabloya konsolê ya tomara sohbetê ya Merlin",
+  "consoleTableMerlinText": "console.table() tomara sohbetê ya Merlin",
+  "consoleTableMerlinTooltip": "Tomara Sohbetê ya Merlin wekî Tablo li Konsolê Çap Bike",
+  "consoleTableAllLabel": "Tabloya konsolê ya tevahiya tomara sohbetê",
+  "consoleTableAllText": "console.table() tevahiya tomara sohbetê",
+  "consoleTableAllTooltip": "Tevahiya Tomara Sohbetê wekî Tablo li Konsolê Çap Bike",
+  "downloadChatLogJson": "Tomara sohbetê wekî .json daxîne",
+  "downloadChatLogJsonTooltip": "Tomara Sohbetê wekî .json Daxîne"
+}

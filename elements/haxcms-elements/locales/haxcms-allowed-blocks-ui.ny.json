@@ -10,5 +10,9 @@
   "save": "Sungani",
   "noDescription": "Palibe kufotokozera.",
   "details": "Zambiri",
-  "loadingInventory": "Ikutsegula mndandanda wonse wa mabuloko…"
+  "loadingInventory": "Ikutsegula mndandanda wonse wa mabuloko…",
+  "selectAllButton": "Sankhani Zonse",
+  "deselectAllButton": "Osasankha Zonse",
+  "selectedOfAvailable": "{selected} zasankhidwa / {total} zilipo",
+  "savingBlocksFailed": "Kusunga zipika kwalephera: {error}"
 }

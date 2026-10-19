@@ -9,5 +9,8 @@
   "record": "Rekodha",
   "pause": "Mbomira kurekodha",
   "stopSave": "Mira & Chengeta",
-  "clickToTakePhoto": "Dzvanya kuti utore mufananidzo"
+  "clickToTakePhoto": "Dzvanya kuti utore mufananidzo",
+  "url": "URL",
+  "open": "vhura",
+  "removeValue": "Bvisa {value}"
 }

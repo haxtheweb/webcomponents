@@ -10,5 +10,9 @@
   "save": "Tiaki",
   "noDescription": "Kāore he whakaahuatanga e wātea ana.",
   "details": "Ngā taipitopito",
-  "loadingInventory": "E uta ana i te rārangi paraka katoa…"
+  "loadingInventory": "E uta ana i te rārangi paraka katoa…",
+  "selectAllButton": "Tīpako Katoa",
+  "deselectAllButton": "Wetetīpako Katoa",
+  "selectedOfAvailable": "{selected} kua tīpakohia / {total} e wātea ana",
+  "savingBlocksFailed": "I rahua te tiaki poraka: {error}"
 }

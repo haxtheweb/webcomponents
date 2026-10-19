@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Gagal memuat tema: {error}",
+  "noThemesForView": "Tidak ada tema yang tersedia untuk tampilan ini.",
+  "active": "Aktif",
+  "themeIsActive": "Tema {name} aktif",
+  "applyTheme": "Terapkan tema {name}",
+  "apply": "Terapkan",
+  "preview": "Pratinjau",
+  "name": "Nama",
+  "element": "Elemen",
+  "description": "Deskripsi",
+  "action": "Tindakan",
+  "loadingThemes": "Memuat tema...",
+  "themesShown": "{count} tema ditampilkan",
+  "themesShownDefaults": "{count} tema ditampilkan (default app-hax)",
+  "availableHaxcmsThemes": "Tema HAXcms yang Tersedia",
+  "gallery": "Galeri",
+  "table": "Tabel"
+}

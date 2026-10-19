@@ -10,5 +10,9 @@
   "save": "Konservi",
   "noDescription": "Neniu priskribo disponebla.",
   "details": "Detaloj",
-  "loadingInventory": "Ŝargante la plenan inventaron de blokoj…"
+  "loadingInventory": "Ŝargante la plenan inventaron de blokoj…",
+  "selectAllButton": "Elekti ĉiujn",
+  "deselectAllButton": "Malelekti ĉiujn",
+  "selectedOfAvailable": "{selected} elektitaj / {total} disponeblaj",
+  "savingBlocksFailed": "Konservado de blokoj malsukcesis: {error}"
 }

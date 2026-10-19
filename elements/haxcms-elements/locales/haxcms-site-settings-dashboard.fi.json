@@ -1,0 +1,16 @@
+{
+  "disabledInFeatures": "Poistettu käytöstä ominaisuuksissa",
+  "appearance": "Ulkoasu",
+  "structure": "Rakenne",
+  "content": "Sisältö",
+  "reports": "Raportit",
+  "about": "Tietoja",
+  "files": "Tiedostot",
+  "views": "Näkymät",
+  "features": "Ominaisuudet",
+  "editor": "Editori",
+  "blocks": "Lohkot",
+  "importExport": "Tuonti / vienti",
+  "details": "Tiedot",
+  "advanced": "Lisäasetukset"
+}

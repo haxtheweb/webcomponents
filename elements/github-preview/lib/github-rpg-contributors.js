@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 
 /**
@@ -12,13 +13,23 @@ import "@haxtheweb/rpg-character/rpg-character.js";
  * @demo index.html
  * @element github-rpg-contributors
  */
-export class GithubRpgContributors extends DDDSuper(LitElement) {
+export class GithubRpgContributors extends I18NMixin(DDDSuper(LitElement)) {
   static get tag() {
     return "github-rpg-contributors";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      githubRepo: "GitHub Repo:",
+      commits: "Commits: {count}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.org = "";
     this.repo = "";
     this.limit = 50;
@@ -123,7 +134,7 @@ export class GithubRpgContributors extends DDDSuper(LitElement) {
   render() {
     return html` <div class="wrapper">
         <h3>
-          GitHub Repo:
+          ${this.t.githubRepo}
           <a href="https://github.com/${this.org}/${this.repo}"
             >${this.org}/${this.repo}</a
           >
@@ -139,7 +150,7 @@ export class GithubRpgContributors extends DDDSuper(LitElement) {
         <rpg-character seed="${item.login}"></rpg-character>
         <div class="content">
           <div>${item.login}</div>
-          <div>Commits: ${item.contributions}</div>
+          <div>${this.t.commits.replace("{count}", () => item.contributions)}</div>
         </div>
       </a>
     </div>

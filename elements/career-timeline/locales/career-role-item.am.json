@@ -1,0 +1,11 @@
+{
+  "roleTitle": "የሚና ርዕስ",
+  "describeYourRole": "ሚናዎን እዚህ ይግለጹ...",
+  "present": "አቅርቡ",
+  "skills": "ክህሎቶች:",
+  "skillsAndMore": "{skills} እና +{count} ተጨማሪ",
+  "yearShort": "{count} ዓመት",
+  "yearsShort": "{count} ዓመታት",
+  "monthShort": "{count} ወር",
+  "monthsShort": "{count} ወራት"
+}

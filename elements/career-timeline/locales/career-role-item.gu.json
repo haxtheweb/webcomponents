@@ -1,0 +1,11 @@
+{
+  "roleTitle": "ભૂમિકાનું શીર્ષક",
+  "describeYourRole": "તમારી ભૂમિકાનું અહીં વર્ણન કરો...",
+  "present": "પ્રસ્તુત કરો",
+  "skills": "કૌશલ્યો:",
+  "skillsAndMore": "{skills} અને +{count} વધુ",
+  "yearShort": "{count} વર્ષ",
+  "yearsShort": "{count} વર્ષ",
+  "monthShort": "{count} મહિનો",
+  "monthsShort": "{count} મહિના"
+}

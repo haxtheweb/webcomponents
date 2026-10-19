@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- Standard ass déi éischt Säit --",
+  "details": "Detailer",
+  "title": "Titel",
+  "titleDescription": "Numm vum Site",
+  "homePage": "Haaptsäit",
+  "homePageDescription": "Säit, déi als Standard-Landing- / Haaptsäit benotzt gëtt",
+  "advanced": "Fortgeschratt",
+  "serviceWorker": "Service Worker op dynamesch Säit derbäisetzen",
+  "serviceWorkerDescription": "Desaktivéiert dëst, wann d'Benotzer ëmmer direkt déi neisten Server-Ausgab gesi sollen.",
+  "forceBrowserUpgrade": "Browser-Upgrade erzwéngen",
+  "forceBrowserUpgradeDescription": "Aktuell Browser verlaangen, ier de Site gelueden gëtt.",
+  "unableToLoadSiteDetails": "Site-Detailer konnten net geluede ginn.",
+  "noSiteDetails": "Et sinn keng Site-Detailer disponibel.",
+  "save": "Späicheren"
+}

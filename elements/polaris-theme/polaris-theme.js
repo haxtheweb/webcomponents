@@ -436,16 +436,18 @@ class PolarisTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer">Skip to content</a>
+      <a class="skip-link" href="#contentcontainer"
+        >${this.t.skipToContent}</a
+      >
       <header itemscope itemtype="http://schema.org/WPHeader">
         <site-modal
           @site-modal-click="${this.siteModalClick}"
           .part="${this.editMode ? `edit-mode-active` : ``}"
           ?disabled="${this.editMode}"
           icon="icons:search"
-          title="Search site"
+          title="${this.t.searchSite}"
           class="search-modal-btn"
-          button-label="Search"
+          button-label="${this.t.search}"
           part="search-btn"
           position="right"
         >
@@ -484,7 +486,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
       <nav
         itemscope
         itemtype="http://schema.org/SiteNavigationElement"
-        aria-label="Primary"
+        aria-label="${this.t.primary}"
       >
         <site-top-menu indicator="none"></site-top-menu>
       </nav>
@@ -505,13 +507,13 @@ class PolarisTheme extends HAXCMSOperationButtons(
         </main>
         <aside
           role="complementary"
-          aria-label="Primary Sidebar"
+          aria-label="${this.t.primarySidebar}"
           itemscope
           itemtype="http://schema.org/WPSideBar"
           part="page-primary-sidebar"
         >
           <section>
-            <h4>Contents</h4>
+            <h4>${this.t.contents}</h4>
             <site-children-block
               part="page-children-block"
               dynamic-methodology="ancestor"
@@ -597,6 +599,16 @@ class PolarisTheme extends HAXCMSOperationButtons(
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      skipToContent: "Skip to content",
+      searchSite: "Search site",
+      search: "Search",
+      primary: "Primary",
+      primarySidebar: "Primary Sidebar",
+      contents: "Contents",
+    };
     this.windowControllersLoaded = new AbortController();
     globalThis.addEventListener(
       "hax-store-app-store-loaded",

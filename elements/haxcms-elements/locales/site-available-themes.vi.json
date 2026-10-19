@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Tải giao diện thất bại: {error}",
+  "noThemesForView": "Không có giao diện nào cho chế độ xem này.",
+  "active": "Đang dùng",
+  "themeIsActive": "Giao diện {name} đang được dùng",
+  "applyTheme": "Áp dụng giao diện {name}",
+  "apply": "Áp dụng",
+  "preview": "Xem trước",
+  "name": "Tên",
+  "element": "Phần tử",
+  "description": "Mô tả",
+  "action": "Thao tác",
+  "loadingThemes": "Đang tải giao diện...",
+  "themesShown": "Đang hiển thị {count} giao diện",
+  "themesShownDefaults": "Đang hiển thị {count} giao diện (mặc định của app-hax)",
+  "availableHaxcmsThemes": "Các giao diện HAXcms có sẵn",
+  "gallery": "Thư viện ảnh",
+  "table": "Bảng"
+}

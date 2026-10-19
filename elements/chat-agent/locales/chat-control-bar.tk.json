@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Ýazgyny txt hökmünde ýükläp al",
+  "downloadChatLog": "Söhbetdeşlik ýazgysyny ýükläp al",
+  "resetChat": "Söhbetdeşligi täzeden başla",
+  "toggleDataCollection": "Maglumat ýygnamagy aç/ýap",
+  "dataCollection": "Maglumat ýygnamak",
+  "toggleDeveloperMode": "Işläp düzüji režimini aç/ýap",
+  "exitFullView": "Doly görnüşden çyk",
+  "enterFullView": "Doly görnüşe gir",
+  "hideInterface": "Interfeýsi gizle",
+  "resetChatConfirm": "Söhbetdeşligi täzeden başlamalymy?",
+  "downloadBeforeResetConfirm": "Täzeden başlamazdan öň söhbetdeşlik ýazgysyny ýükläp almalymy?",
+  "dataCollectionOn": "Söhbetdeşlikleriňiz AI modellerimizi öwretmek üçin ulanylar",
+  "dataCollectionOff": "Söhbetdeşlikleriňiz AI modellerimizi öwretmek üçin ulanylmaz"
+}

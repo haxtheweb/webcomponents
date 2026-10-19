@@ -54,5 +54,6 @@
   "requirementUppercase": "Ien haadletter",
   "requirementLowercase": "Ien lytse letter",
   "requirementNumber": "Ien sifer",
-  "requirementSymbol": "Ien symboal"
+  "requirementSymbol": "Ien symboal",
+  "haxcmsMascotAlt": "HAXcms World Traveler-maskotte"
 }

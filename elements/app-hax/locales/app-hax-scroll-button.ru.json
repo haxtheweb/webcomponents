@@ -1,0 +1,5 @@
+{
+  "navigateToSection": "{label} — перейти к разделу",
+  "clickToScrollToSection": "Нажмите, чтобы прокрутить к разделу {label}",
+  "navigatedToSection": "Выполнен переход к разделу {label}"
+}

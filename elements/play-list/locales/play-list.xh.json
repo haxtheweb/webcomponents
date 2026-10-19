@@ -1,0 +1,11 @@
+{
+  "playlist": "Uluhlu lokudlala",
+  "carousel": "ikharusele",
+  "slide": "isilayidi",
+  "slideNumber": "Isilayidi {number}",
+  "slideOfTotal": "Isilayidi {number} kwezi {total}",
+  "previousSlide": "Isilayidi esidlulileyo",
+  "nextSlide": "Isilayidi esilandelayo",
+  "slidePages": "Amaphepha ezilayidi",
+  "goToSlide": "Yiya kwisilayidi {number}"
+}

@@ -1,4 +1,11 @@
 {
   "readMore": "קראו עוד",
-  "home": "דף הבית"
+  "home": "דף הבית",
+  "anchorLinkCopied": "קישור העוגן הועתק!",
+  "skipToContent": "דילוג לתוכן",
+  "changeTheme": "שינוי ערכת נושא",
+  "siteSections": "מקטעי האתר",
+  "pageOfTotal": "עמוד {current} מתוך {total}",
+  "siteGenerated": "האתר נוצר: {date}",
+  "licenseGraphic": "סמל {license}"
 }

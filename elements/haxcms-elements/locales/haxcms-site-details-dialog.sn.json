@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- peji rekutanga sezvakagara --",
+  "details": "Ruzivo rwakawanda",
+  "title": "Musoro",
+  "titleDescription": "Zita resaiti",
+  "homePage": "Peji rekumba",
+  "homePageDescription": "Peji rekushandisa sepeji rekutanga / rekumba",
+  "advanced": "Zvepamusoro",
+  "serviceWorker": "Wedzera service worker kupeji rinochinja",
+  "serviceWorkerDescription": "Dzima izvi kana vashandisi vachifanira kugara vachiona zvazvino kwazvo zvinobva pasevha pakarepo.",
+  "forceBrowserUpgrade": "Manikidza kuvandudza bhurawuza",
+  "forceBrowserUpgradeDescription": "Da mabhurawuza anogara achivandudzwa usati warodha saiti.",
+  "unableToLoadSiteDetails": "Hazvigoneke kurodha ruzivo rwesaiti.",
+  "noSiteDetails": "Hapana ruzivo rwesaiti rwuripo.",
+  "save": "Chengeta"
+}

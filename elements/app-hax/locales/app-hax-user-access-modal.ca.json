@@ -7,5 +7,7 @@
   "userAccessGranted": "S'ha concedit l'accés a l'usuari correctament!",
   "userNotFound": "Usuari no trobat o no autoritzat",
   "loadingAddingUser": "S'està afegint l'usuari...",
-  "grantAccessTo": "Concedeix accés a:"
+  "grantAccessTo": "Concedeix accés a:",
+  "networkErrorTryAgain": "S'ha produït un error de xarxa. Torna-ho a provar.",
+  "characterWillAppear": "El personatge apareixerà quan introdueixis un nom d'usuari"
 }

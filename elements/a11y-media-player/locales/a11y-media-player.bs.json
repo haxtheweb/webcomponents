@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "Učitavanje...",
   "youTubeStartLoading": "Pritisnite reprodukciju.",
   "youTubeTranscriptLabel": "Transkript će se učitati kada se medij počne reproducirati.",
-  "audioDescriptionLabel": "Audio opis"
+  "audioDescriptionLabel": "Audio opis",
+  "openOnYouTube": "Otvori na YouTubeu"
 }

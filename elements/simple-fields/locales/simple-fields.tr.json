@@ -9,5 +9,8 @@
   "record": "Kaydet",
   "pause": "Kaydı duraklat",
   "stopSave": "Durdur ve kaydet",
-  "clickToTakePhoto": "Fotoğraf çekmek için tıklayın"
+  "clickToTakePhoto": "Fotoğraf çekmek için tıklayın",
+  "url": "URL",
+  "open": "aç",
+  "removeValue": "{value} öğesini kaldır"
 }

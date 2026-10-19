@@ -36,5 +36,7 @@
   "clickToDoAnything": "Tinya kuita chero chinhu!",
   "moreDetails": "Mamwe matsanangurwo",
   "details": "Matsanangurwo",
-  "saved": "Yakachengetwa"
+  "saved": "Yakachengetwa",
+  "opensInNewWindow": "Inovhura muhwindo idzva",
+  "resultsCount": "Mhedzisiro {count}"
 }

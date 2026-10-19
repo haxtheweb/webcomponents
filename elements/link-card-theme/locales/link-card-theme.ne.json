@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "एंकर लिङ्क प्रतिलिपि गरियो!",
+  "skipToContent": "सामग्रीमा जानुहोस्",
+  "changePalette": "प्यालेट परिवर्तन गर्नुहोस्",
+  "primaryLinks": "मुख्य लिङ्कहरू",
+  "socialLinks": "सामाजिक लिङ्कहरू",
+  "myProfile": "मेरो प्रोफाइल",
+  "profileImageOf": "{name} को प्रोफाइल छवि",
+  "profileImage": "प्रोफाइल छवि",
+  "linkCardProfile": "लिङ्क कार्ड प्रोफाइल",
+  "emptyStateLinks": "लिङ्क बटनहरू देखाउन site.json मा शीर्ष-तहका मेनु वस्तुहरू थप्नुहोस्।",
+  "titleOnPlatform": "{platform} मा {title}",
+  "openPlatform": "{platform} खोल्नुहोस्",
+  "paletteUpdated": "रङ प्यालेट विकल्प {number} मा अद्यावधिक गरियो।"
+}

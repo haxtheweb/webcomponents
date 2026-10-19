@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "ตารางคอนโซลบันทึกแชตของผู้ใช้",
+  "consoleTableUserText": "console.table() บันทึกแชตของผู้ใช้",
+  "consoleTableUserTooltip": "พิมพ์บันทึกแชตของผู้ใช้เป็นตารางในคอนโซล",
+  "consoleTableMerlinLabel": "ตารางคอนโซลบันทึกแชตของ Merlin",
+  "consoleTableMerlinText": "console.table() บันทึกแชตของ Merlin",
+  "consoleTableMerlinTooltip": "พิมพ์บันทึกแชตของ Merlin เป็นตารางในคอนโซล",
+  "consoleTableAllLabel": "ตารางคอนโซลบันทึกแชตทั้งหมด",
+  "consoleTableAllText": "console.table() บันทึกแชตทั้งหมด",
+  "consoleTableAllTooltip": "พิมพ์บันทึกแชตทั้งหมดเป็นตารางในคอนโซล",
+  "downloadChatLogJson": "ดาวน์โหลดบันทึกแชตเป็น .json",
+  "downloadChatLogJsonTooltip": "ดาวน์โหลดบันทึกแชตเป็น .json"
+}

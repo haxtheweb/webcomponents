@@ -5,5 +5,9 @@
   "buttons": "Бутони",
   "futureButtonConfiguration": "Персонализирането на бутоните на редактора предстои скоро.",
   "save": "Запазване",
-  "saving": "Запазване…"
+  "saving": "Запазване…",
+  "novice": "Начинаещ",
+  "expert": "Експерт",
+  "toolbarPreviewAlt": "Преглед на лентата за редактиране за {audience}",
+  "savingEditorSettingsFailed": "Запазването на настройките на редактора е неуспешно: {error}"
 }

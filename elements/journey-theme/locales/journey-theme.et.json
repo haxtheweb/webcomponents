@@ -1,4 +1,11 @@
 {
   "readMore": "Loe edasi",
-  "home": "Avaleht"
+  "home": "Avaleht",
+  "anchorLinkCopied": "Ankurlink kopeeriti!",
+  "skipToContent": "Liigu sisu juurde",
+  "changeTheme": "Muuda teemat",
+  "siteSections": "Saidi jaotised",
+  "pageOfTotal": "Lehekülg {current} / {total}",
+  "siteGenerated": "Sait genereeritud: {date}",
+  "licenseGraphic": "{license} graafika"
 }

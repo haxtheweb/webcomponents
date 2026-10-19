@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ankarlänk kopierad!",
+  "skipToContent": "Hoppa till innehållet",
+  "changePalette": "Byt palett",
+  "primaryLinks": "Primära länkar",
+  "socialLinks": "Sociala länkar",
+  "myProfile": "Min profil",
+  "profileImageOf": "Profilbild för {name}",
+  "profileImage": "Profilbild",
+  "linkCardProfile": "Länkkortsprofil",
+  "emptyStateLinks": "Lägg till menyobjekt på toppnivå i site.json för att visa länkknappar.",
+  "titleOnPlatform": "{title} på {platform}",
+  "openPlatform": "Öppna {platform}",
+  "paletteUpdated": "Färgpaletten uppdaterades till alternativ {number}."
+}

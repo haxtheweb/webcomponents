@@ -5,5 +5,9 @@
   "buttons": "Botonkuna",
   "futureButtonConfiguration": "Editor botonkunata munasqaykiman hina allichayqa pisi tiempollapim hamunqa.",
   "save": "Waqaychay",
-  "saving": "Waqaychachkan…"
+  "saving": "Waqaychachkan…",
+  "novice": "Qallariq",
+  "expert": "Yachaysapa",
+  "toolbarPreviewAlt": "{audience} allichay barrap qhawarichiynin",
+  "savingEditorSettingsFailed": "Allichaq churanakunata waqaychay pantarqan: {error}"
 }

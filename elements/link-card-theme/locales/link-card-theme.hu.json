@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Horgonyhivatkozás másolva!",
+  "skipToContent": "Ugrás a tartalomra",
+  "changePalette": "Paletta módosítása",
+  "primaryLinks": "Elsődleges hivatkozások",
+  "socialLinks": "Közösségi hivatkozások",
+  "myProfile": "Profilom",
+  "profileImageOf": "{name} profilképe",
+  "profileImage": "Profilkép",
+  "linkCardProfile": "Hivatkozáskártya-profil",
+  "emptyStateLinks": "Adj hozzá legfelső szintű menüpontokat a site.json fájlban a hivatkozásgombok megjelenítéséhez.",
+  "titleOnPlatform": "{title} itt: {platform}",
+  "openPlatform": "{platform} megnyitása",
+  "paletteUpdated": "A színpaletta módosítva erre: {number}. lehetőség."
+}

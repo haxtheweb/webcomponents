@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Zure erantzuna",
   "checkAnswer": "Egiaztatu erantzuna",
-  "retry": "Saiatu berriro"
+  "retry": "Saiatu berriro",
+  "correct": "Zuzena!",
+  "incorrect": "Okerra!",
+  "correctAnswer": "Erantzun zuzena: {answer}"
 }

@@ -10,5 +10,9 @@
   "save": "Issejvja",
   "noDescription": "L-ebda deskrizzjoni disponibbli.",
   "details": "Dettalji",
-  "loadingInventory": "Qed jittella' l-inventarju sħiħ tal-blokki…"
+  "loadingInventory": "Qed jittella' l-inventarju sħiħ tal-blokki…",
+  "selectAllButton": "Agħżel Kollox",
+  "deselectAllButton": "Neħħi l-Għażla minn Kollox",
+  "selectedOfAvailable": "{selected} magħżula / {total} disponibbli",
+  "savingBlocksFailed": "Is-salvataġġ tal-blokki falla: {error}"
 }

@@ -1,4 +1,11 @@
 {
   "readMore": "ተጨማሪ ያንብቡ",
-  "home": "መነሻ"
+  "home": "መነሻ",
+  "anchorLinkCopied": "የመልህቅ አገናኝ ተቀድቷል!",
+  "skipToContent": "ወደ ይዘቱ ዝለል",
+  "changeTheme": "ገጽታ ቀይር",
+  "siteSections": "የድረ-ገጽ ክፍሎች",
+  "pageOfTotal": "ገጽ {current} ከ{total}",
+  "siteGenerated": "ድረ-ገጹ የመነጨው: {date}",
+  "licenseGraphic": "የ{license} ምስል"
 }

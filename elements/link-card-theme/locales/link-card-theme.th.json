@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "คัดลอกลิงก์ยึดแล้ว!",
+  "skipToContent": "ข้ามไปยังเนื้อหา",
+  "changePalette": "เปลี่ยนชุดสี",
+  "primaryLinks": "ลิงก์หลัก",
+  "socialLinks": "ลิงก์โซเชียล",
+  "myProfile": "โปรไฟล์ของฉัน",
+  "profileImageOf": "รูปโปรไฟล์ของ {name}",
+  "profileImage": "รูปโปรไฟล์",
+  "linkCardProfile": "โปรไฟล์การ์ดลิงก์",
+  "emptyStateLinks": "เพิ่มรายการเมนูระดับบนสุดใน site.json เพื่อแสดงปุ่มลิงก์",
+  "titleOnPlatform": "{title} บน {platform}",
+  "openPlatform": "เปิด {platform}",
+  "paletteUpdated": "อัปเดตชุดสีเป็นตัวเลือกที่ {number} แล้ว"
+}

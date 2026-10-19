@@ -32,6 +32,7 @@
     "@haxtheweb/create": "26.8.1",
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/haxcms-elements": "^26.8.0",
+    "@haxtheweb/i18n-manager": "^26.8.0",
     "@web/dev-server-esbuild": "1.0.5",
     "gulp-sourcemaps": "2.6.5",
     "lerna": "10.0.1",

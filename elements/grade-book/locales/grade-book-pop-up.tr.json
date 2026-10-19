@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Öğrenci teslimi",
   "openInNewWindow": "Yeni pencerede aç",
-  "submitted": "Teslim edildi"
+  "submitted": "Teslim edildi",
+  "previousStudent": "Önceki öğrenci",
+  "nextStudent": "Sonraki öğrenci",
+  "previousAssignment": "Önceki ödev",
+  "nextAssignment": "Sonraki ödev"
 }

@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Таблица в конзолата с дневника на потребителя",
+  "consoleTableUserText": "console.table() дневник на потребителя",
+  "consoleTableUserTooltip": "Отпечатване на дневника на потребителя като таблица в конзолата",
+  "consoleTableMerlinLabel": "Таблица в конзолата с дневника на Merlin",
+  "consoleTableMerlinText": "console.table() дневник на Merlin",
+  "consoleTableMerlinTooltip": "Отпечатване на дневника на Merlin като таблица в конзолата",
+  "consoleTableAllLabel": "Таблица в конзолата с целия дневник на чата",
+  "consoleTableAllText": "console.table() целият дневник на чата",
+  "consoleTableAllTooltip": "Отпечатване на целия дневник на чата като таблица в конзолата",
+  "downloadChatLogJson": "Изтегляне на дневника на чата като .json",
+  "downloadChatLogJsonTooltip": "Изтегляне на дневника на чата като .json"
+}

@@ -10,5 +10,9 @@
   "save": "Tallenna",
   "noDescription": "Kuvausta ei ole saatavilla.",
   "details": "Tiedot",
-  "loadingInventory": "Ladataan koko lohkovalikoimaa…"
+  "loadingInventory": "Ladataan koko lohkovalikoimaa…",
+  "selectAllButton": "Valitse kaikki",
+  "deselectAllButton": "Poista kaikki valinnat",
+  "selectedOfAvailable": "{selected} valittu / {total} saatavilla",
+  "savingBlocksFailed": "Lohkojen tallennus epäonnistui: {error}"
 }

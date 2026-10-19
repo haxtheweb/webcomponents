@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- standert de earste side --",
+  "details": "Details",
+  "title": "Titel",
+  "titleDescription": "Namme fan de webstee",
+  "homePage": "Startside",
+  "homePageDescription": "Side om te brûken as standert lâningside / startside",
+  "advanced": "Avansearre",
+  "serviceWorker": "Service worker tafoegje oan dynamyske side",
+  "serviceWorkerDescription": "Skeakelje dit út as brûkers altyd fuortendaliks de lêste serverútfier sjen moatte.",
+  "forceBrowserUpgrade": "Blêderupgrade ôftwinge",
+  "forceBrowserUpgradeDescription": "Evergreen-blêders fereaskje foardat de webstee laden wurdt.",
+  "unableToLoadSiteDetails": "Kin websteedetails net lade.",
+  "noSiteDetails": "Der binne gjin websteedetails beskikber.",
+  "save": "Bewarje"
+}

@@ -1,0 +1,18 @@
+{
+  "copy": "קאָפּירן",
+  "download": "אַראָפּלאָדן",
+  "archive": "אַרכיוו",
+  "copyOperation": "קאָפּירן",
+  "downloadOperation": "אַראָפּלאָדן",
+  "archiveOperation": "אַרכיווירן",
+  "created": "באַשאַפֿן",
+  "updated": "דערהײַנטיקט",
+  "pages": "זײַטן",
+  "url": "URL",
+  "confirm": "באַשטעטיק",
+  "cancel": "אָפּזאָגן",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "ביסטו זיכער אַז דו ווילסט {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName} {operation} הצלחהדיק!",
+  "siteOperationFailed": "{siteName} {operation} דורכגעפֿאַלן"
+}

@@ -1,0 +1,18 @@
+{
+  "copy": "कॉपी करा",
+  "download": "डाउनलोड",
+  "archive": "संग्रहित करा",
+  "copyOperation": "कॉपी",
+  "downloadOperation": "डाउनलोड",
+  "archiveOperation": "संग्रहित",
+  "created": "तयार केले",
+  "updated": "अद्यतनित",
+  "pages": "पाने",
+  "url": "URL",
+  "confirm": "पुष्टी करा",
+  "cancel": "रद्द करा",
+  "siteOperationConfirmTitle": "{siteName} {operationName}?",
+  "siteOperationConfirmMessage": "तुम्हाला नक्की {siteName} {operation} करायचे आहे का?",
+  "siteOperationSuccessful": "{siteName} {operation} यशस्वी!",
+  "siteOperationFailed": "{siteName} {operation} अयशस्वी"
+}

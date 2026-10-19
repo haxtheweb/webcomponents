@@ -1,5 +1,9 @@
 {
   "studentSubmission": "ការដាក់ស្នើរបស់សិស្ស",
   "openInNewWindow": "បើកក្នុងបង្អួចថ្មី",
-  "submitted": "បានដាក់ស្នើ"
+  "submitted": "បានដាក់ស្នើ",
+  "previousStudent": "សិស្សមុន",
+  "nextStudent": "សិស្សបន្ទាប់",
+  "previousAssignment": "កិច្ចការមុន",
+  "nextAssignment": "កិច្ចការបន្ទាប់"
 }

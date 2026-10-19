@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Ҷавоби шумо",
   "checkAnswer": "Санҷидани ҷавоб",
-  "retry": "Аз нав кӯшиш кардан"
+  "retry": "Аз нав кӯшиш кардан",
+  "correct": "Дуруст!",
+  "incorrect": "Нодуруст!",
+  "correctAnswer": "Ҷавоби дуруст: {answer}"
 }

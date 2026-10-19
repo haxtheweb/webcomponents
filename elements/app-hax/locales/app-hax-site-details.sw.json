@@ -1,0 +1,18 @@
+{
+  "copy": "Nakili",
+  "download": "Pakua",
+  "archive": "Hifadhi kwenye kumbukumbu",
+  "copyOperation": "nakili",
+  "downloadOperation": "pakua",
+  "archiveOperation": "hifadhi kwenye kumbukumbu",
+  "created": "imeundwa",
+  "updated": "imesasishwa",
+  "pages": "kurasa",
+  "url": "URL",
+  "confirm": "Thibitisha",
+  "cancel": "Ghairi",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Una uhakika unataka {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName} {operation} imefanikiwa!",
+  "siteOperationFailed": "{siteName} {operation} imeshindwa"
+}

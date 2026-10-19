@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "İstifadəçi söhbət jurnalının konsol cədvəli",
+  "consoleTableUserText": "console.table() istifadəçi söhbət jurnalı",
+  "consoleTableUserTooltip": "İstifadəçi söhbət jurnalını cədvəl kimi konsola çıxar",
+  "consoleTableMerlinLabel": "Merlin söhbət jurnalının konsol cədvəli",
+  "consoleTableMerlinText": "console.table() Merlin söhbət jurnalı",
+  "consoleTableMerlinTooltip": "Merlin söhbət jurnalını cədvəl kimi konsola çıxar",
+  "consoleTableAllLabel": "Bütün söhbət jurnalının konsol cədvəli",
+  "consoleTableAllText": "console.table() bütün söhbət jurnalı",
+  "consoleTableAllTooltip": "Bütün söhbət jurnalını cədvəl kimi konsola çıxar",
+  "downloadChatLogJson": "Söhbət jurnalını .json kimi endir",
+  "downloadChatLogJsonTooltip": "Söhbət jurnalını .json kimi endir"
+}

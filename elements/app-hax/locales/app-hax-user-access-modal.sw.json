@@ -7,5 +7,7 @@
   "userAccessGranted": "Ufikiaji wa mtumiaji umetolewa kwa mafanikio!",
   "userNotFound": "Mtumiaji hakupatikana au hana idhini",
   "loadingAddingUser": "Inaongeza mtumiaji...",
-  "grantAccessTo": "Toa ufikiaji kwa:"
+  "grantAccessTo": "Toa ufikiaji kwa:",
+  "networkErrorTryAgain": "Hitilafu ya mtandao imetokea. Tafadhali jaribu tena.",
+  "characterWillAppear": "Mhusika ataonekana utakapoingiza jina la mtumiaji"
 }

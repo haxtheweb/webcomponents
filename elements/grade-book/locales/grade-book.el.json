@@ -43,5 +43,22 @@
   "emailAddress": "Αποστολή email σε αυτόν τον μαθητή",
   "notes": "Σημειώσεις",
   "interests": "Ενδιαφέροντα",
-  "profileImageFor": "Εικόνα προφίλ του/της"
+  "profileImageFor": "Εικόνα προφίλ του/της",
+  "fileSystem": "Σύστημα αρχείων",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "Τελικό σημείο URL (JSON)",
+  "jsonDataBlob": "Μπλοκ δεδομένων JSON",
+  "additionalCriteriaFeedback": "Πρόσθετη ανατροφοδότηση για {criteria}",
+  "outOfPoints": "/ {points} μον.",
+  "feedbackReport": "Αναφορά ανατροφοδότησης",
+  "criteriaDetails": "Λεπτομέρειες κριτηρίων",
+  "yourFeedback": "Η ανατροφοδότησή σας",
+  "additionalCriteriaFeedbackHeading": "Πρόσθετη ανατροφοδότηση κριτηρίων",
+  "yourTotalScore": "Η συνολική σας βαθμολογία",
+  "scoreOutOfPoints": "{score} / {points} μον.",
+  "studentAssignment": "Εργασία {assignment} του/της {student}",
+  "downloadPDF": "Λήψη PDF",
+  "displayMode1": "Λειτουργία 1",
+  "displayMode2": "Λειτουργία 2",
+  "twoWindows": "Δύο παράθυρα"
 }

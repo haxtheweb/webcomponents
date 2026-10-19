@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Aingura-esteka kopiatu da!",
+  "skipToContent": "Joan edukira",
+  "changePalette": "Aldatu paleta",
+  "primaryLinks": "Esteka nagusiak",
+  "socialLinks": "Sare sozialetako estekak",
+  "myProfile": "Nire profila",
+  "profileImageOf": "{name} profil-irudia",
+  "profileImage": "Profil-irudia",
+  "linkCardProfile": "Esteka-txartelaren profila",
+  "emptyStateLinks": "Gehitu goi-mailako menu-elementuak site.json fitxategian esteka-botoiak errendatzeko.",
+  "titleOnPlatform": "{title} ({platform})",
+  "openPlatform": "Ireki {platform}",
+  "paletteUpdated": "Kolore-paleta {number}. aukerara eguneratu da."
+}

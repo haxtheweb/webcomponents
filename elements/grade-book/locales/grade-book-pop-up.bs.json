@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Predaja studenta",
   "openInNewWindow": "Otvori u novom prozoru",
-  "submitted": "Predano"
+  "submitted": "Predano",
+  "previousStudent": "Prethodni student",
+  "nextStudent": "Sljedeći student",
+  "previousAssignment": "Prethodni zadatak",
+  "nextAssignment": "Sljedeći zadatak"
 }

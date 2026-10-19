@@ -43,5 +43,22 @@
   "emailAddress": "Send e-mail til denne studerende",
   "notes": "Noter",
   "interests": "Interesser",
-  "profileImageFor": "Profilbillede af"
+  "profileImageFor": "Profilbillede af",
+  "fileSystem": "Filsystem",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL-endpoint (JSON)",
+  "jsonDataBlob": "JSON-dataklump",
+  "additionalCriteriaFeedback": "Yderligere feedback for {criteria}",
+  "outOfPoints": "/ {points} point",
+  "feedbackReport": "Feedbackrapport",
+  "criteriaDetails": "Kriteriedetaljer",
+  "yourFeedback": "Din feedback",
+  "additionalCriteriaFeedbackHeading": "Yderligere feedback for kriterier",
+  "yourTotalScore": "Din samlede score",
+  "scoreOutOfPoints": "{score} / {points} point",
+  "studentAssignment": "{student}s opgave {assignment}",
+  "downloadPDF": "Download PDF",
+  "displayMode1": "Tilstand 1",
+  "displayMode2": "Tilstand 2",
+  "twoWindows": "To vinduer"
 }

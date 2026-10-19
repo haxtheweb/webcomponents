@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Nometiet failus šeit",
+  "uploadQueue": "Augšupielādes rinda",
+  "pending": "Gaida",
+  "preparing": "Sagatavo",
+  "uploading": "Augšupielādē",
+  "complete": "Pabeigts",
+  "aborted": "Pārtraukts",
+  "cancelled": "Atcelts",
+  "error": "Kļūda",
+  "errorWithStatus": "Kļūda: {status}",
+  "cancel": "Atcelt",
+  "cancelUploadOf": "Atcelt {name} augšupielādi",
+  "retry": "Mēģināt vēlreiz",
+  "retryUploadOf": "Atkārtot {name} augšupielādi",
+  "remove": "Noņemt",
+  "removeFromQueue": "Noņemt {name} no rindas",
+  "fileTypeNotAccepted": "Faila veids netiek pieņemts: {name}",
+  "uploadFailed": "Augšupielāde neizdevās: {status}",
+  "networkError": "Tīkla kļūda"
+}

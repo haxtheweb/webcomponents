@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `full-width-image`
  * `full width image that flows beyond boundaries`
@@ -15,7 +16,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
  * @demo demo/index.html
  * @element full-width-image
  */
-class FullWidthImage extends LitElement {
+class FullWidthImage extends I18NMixin(LitElement) {
   //styles function
   static get styles() {
     return [
@@ -84,7 +85,7 @@ class FullWidthImage extends LitElement {
         icon="${this.captionHidden ? "icons:visibility" : "icons:visibility-off"}"
         toggles
         ?toggled="${this.captionHidden}"
-        label="toggle caption"
+        label="${this.t.toggleCaption}"
         @click="${this._toggleCaption}"
       ></simple-icon-button-lite>
       <div class="wrapper" id="captionWrapper" ?hidden="${this.captionHidden}">
@@ -134,6 +135,15 @@ class FullWidthImage extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      toggleCaption: "toggle caption",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.captionHidden = false;
   }
 

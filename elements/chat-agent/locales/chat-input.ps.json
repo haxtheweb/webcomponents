@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "مخکې لېږل شوی پیغام وښایاست (پورته)",
+  "displayPreviousMessageDown": "مخکې لېږل شوی پیغام وښایاست (ښکته)",
+  "sendPrompt": "پوښتنه ولېږئ",
+  "sendPromptToMerlin": "پوښتنه Merlin ته ولېږئ",
+  "shortenPrompt": "مهرباني وکړئ خپله پوښتنه له {limit} تورو څخه زیاته لنډه کړئ."
+}

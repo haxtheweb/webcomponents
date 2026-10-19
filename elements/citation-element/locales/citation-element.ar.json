@@ -1,0 +1,11 @@
+{
+  "licenseBy": "نسب المصنَّف",
+  "licenseBySa": "نسب المصنَّف - الترخيص بالمثل",
+  "licenseByNd": "نسب المصنَّف - منع الاشتقاق",
+  "licenseByNc": "نسب المصنَّف - غير تجاري",
+  "licenseByNcSa": "نسب المصنَّف - غير تجاري - الترخيص بالمثل",
+  "licenseByNcNd": "نسب المصنَّف - غير تجاري - منع الاشتقاق",
+  "citationWithLicense": "{title} بواسطة {creator}، مرخّص بموجب {license}. تاريخ الوصول {date}.",
+  "citationWithoutLicense": "{title} بواسطة {creator}. تاريخ الوصول {date}.",
+  "licenseGraphic": "رسم {license}"
+}

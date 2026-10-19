@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "ಲಾಗ್ ಅನ್ನು txt ಆಗಿ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+  "downloadChatLog": "ಚಾಟ್ ಲಾಗ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+  "resetChat": "ಚಾಟ್ ಮರುಹೊಂದಿಸಿ",
+  "toggleDataCollection": "ಡೇಟಾ ಸಂಗ್ರಹಣೆ ಟಾಗಲ್ ಮಾಡಿ",
+  "dataCollection": "ಡೇಟಾ ಸಂಗ್ರಹಣೆ",
+  "toggleDeveloperMode": "ಡೆವಲಪರ್ ಮೋಡ್ ಟಾಗಲ್ ಮಾಡಿ",
+  "exitFullView": "ಪೂರ್ಣ ವೀಕ್ಷಣೆಯಿಂದ ನಿರ್ಗಮಿಸಿ",
+  "enterFullView": "ಪೂರ್ಣ ವೀಕ್ಷಣೆಗೆ ಹೋಗಿ",
+  "hideInterface": "ಇಂಟರ್‌ಫೇಸ್ ಮರೆಮಾಡಿ",
+  "resetChatConfirm": "ಚಾಟ್ ಮರುಹೊಂದಿಸುವುದೇ?",
+  "downloadBeforeResetConfirm": "ಮರುಹೊಂದಿಸುವ ಮೊದಲು ಚಾಟ್ ಲಾಗ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡುವುದೇ?",
+  "dataCollectionOn": "ನಿಮ್ಮ ಸಂಭಾಷಣೆಗಳನ್ನು ನಮ್ಮ AI ಮಾದರಿಗಳಿಗೆ ತರಬೇತಿ ನೀಡಲು ಬಳಸಲಾಗುತ್ತದೆ",
+  "dataCollectionOff": "ನಿಮ್ಮ ಸಂಭಾಷಣೆಗಳನ್ನು ನಮ್ಮ AI ಮಾದರಿಗಳಿಗೆ ತರಬೇತಿ ನೀಡಲು ಬಳಸಲಾಗುವುದಿಲ್ಲ"
+}

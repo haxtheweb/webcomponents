@@ -36,5 +36,7 @@
   "clickToDoAnything": "انقر لفعل أي شيء!",
   "moreDetails": "المزيد من التفاصيل",
   "details": "التفاصيل",
-  "saved": "محفوظ"
+  "saved": "محفوظ",
+  "opensInNewWindow": "يُفتح في نافذة جديدة",
+  "resultsCount": "{count} نتيجة"
 }

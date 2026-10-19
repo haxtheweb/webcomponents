@@ -1,0 +1,11 @@
+{
+  "playlist": "Dhaptar puter",
+  "carousel": "korsel",
+  "slide": "slide",
+  "slideNumber": "Slide {number}",
+  "slideOfTotal": "Slide {number} saka {total}",
+  "previousSlide": "Slide sadurunge",
+  "nextSlide": "Slide sabanjure",
+  "slidePages": "Kaca slide",
+  "goToSlide": "Menyang slide {number}"
+}

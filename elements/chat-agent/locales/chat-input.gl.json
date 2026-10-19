@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Mostrar a mensaxe enviada anteriormente (arriba)",
+  "displayPreviousMessageDown": "Mostrar a mensaxe enviada anteriormente (abaixo)",
+  "sendPrompt": "Enviar instrución",
+  "sendPromptToMerlin": "Enviar instrución a Merlin",
+  "shortenPrompt": "Acurta a túa instrución a non máis de {limit} caracteres."
+}

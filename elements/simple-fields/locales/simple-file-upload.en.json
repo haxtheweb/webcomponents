@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Drop files here",
+  "uploadQueue": "Upload queue",
+  "pending": "Pending",
+  "preparing": "Preparing",
+  "uploading": "Uploading",
+  "complete": "Complete",
+  "aborted": "Aborted",
+  "cancelled": "Cancelled",
+  "error": "Error",
+  "errorWithStatus": "Error: {status}",
+  "cancel": "Cancel",
+  "cancelUploadOf": "Cancel upload of {name}",
+  "retry": "Retry",
+  "retryUploadOf": "Retry upload of {name}",
+  "remove": "Remove",
+  "removeFromQueue": "Remove {name} from queue",
+  "fileTypeNotAccepted": "File type not accepted: {name}",
+  "uploadFailed": "Upload failed: {status}",
+  "networkError": "Network error"
+}

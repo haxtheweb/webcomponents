@@ -1,0 +1,11 @@
+{
+  "theme": "Teema",
+  "active": "Aktiivne",
+  "selected": "Valitud",
+  "noPreview": "Eelvaade puudub",
+  "currentlyActiveAndSelected": "Praegu aktiivne ja valitud teema",
+  "currentlyActive": "Praegu aktiivne teema",
+  "selectedToApplyOnSave": "Salvestamisel rakendamiseks valitud teema",
+  "themeSelection": "Teema valik",
+  "noThemesAvailable": "Teemasid pole saadaval."
+}

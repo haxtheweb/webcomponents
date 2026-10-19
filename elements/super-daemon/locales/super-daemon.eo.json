@@ -36,5 +36,7 @@
   "clickToDoAnything": "Kliku por fari ion ajn!",
   "moreDetails": "Pli da detaloj",
   "details": "Detaloj",
-  "saved": "Konservita"
+  "saved": "Konservita",
+  "opensInNewWindow": "Malfermiĝas en nova fenestro",
+  "resultsCount": "{count} rezultoj"
 }

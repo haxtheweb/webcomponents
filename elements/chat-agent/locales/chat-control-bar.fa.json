@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "بارگیری گزارش به‌صورت txt",
+  "downloadChatLog": "بارگیری گزارش گفتگو",
+  "resetChat": "بازنشانی گفتگو",
+  "toggleDataCollection": "تغییر وضعیت جمع‌آوری داده",
+  "dataCollection": "جمع‌آوری داده",
+  "toggleDeveloperMode": "تغییر وضعیت حالت توسعه‌دهنده",
+  "exitFullView": "خروج از نمای کامل",
+  "enterFullView": "ورود به نمای کامل",
+  "hideInterface": "پنهان کردن رابط",
+  "resetChatConfirm": "گفتگو بازنشانی شود؟",
+  "downloadBeforeResetConfirm": "پیش از بازنشانی، گزارش گفتگو بارگیری شود؟",
+  "dataCollectionOn": "گفتگوهای شما برای آموزش مدل‌های AI ما استفاده خواهد شد",
+  "dataCollectionOff": "گفتگوهای شما برای آموزش مدل‌های AI ما استفاده نخواهد شد"
+}

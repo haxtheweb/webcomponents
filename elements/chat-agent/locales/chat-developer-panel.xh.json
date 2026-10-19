@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Itafile yekhonsoli yelog yengxoxo yomsebenzisi",
+  "consoleTableUserText": "console.table() ilog yengxoxo yomsebenzisi",
+  "consoleTableUserTooltip": "Shicilela iLog yeNgxoxo yoMsebenzisi njengeTafile kwiKhonsoli",
+  "consoleTableMerlinLabel": "Itafile yekhonsoli yelog yengxoxo ka-merlin",
+  "consoleTableMerlinText": "console.table() ilog yengxoxo ka-merlin",
+  "consoleTableMerlinTooltip": "Shicilela iLog yeNgxoxo ka-Merlin njengeTafile kwiKhonsoli",
+  "consoleTableAllLabel": "Itafile yekhonsoli yelog yengxoxo iphela",
+  "consoleTableAllText": "console.table() ilog yengxoxo iphela",
+  "consoleTableAllTooltip": "Shicilela iLog yeNgxoxo iPhela njengeTafile kwiKhonsoli",
+  "downloadChatLogJson": "Khuphela ilog yengxoxo njenge-.json",
+  "downloadChatLogJsonTooltip": "Khuphela iLog yeNgxoxo njenge-.json"
+}

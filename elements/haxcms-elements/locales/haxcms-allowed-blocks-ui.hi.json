@@ -10,5 +10,9 @@
   "save": "सहेजें",
   "noDescription": "कोई विवरण उपलब्ध नहीं है।",
   "details": "विवरण",
-  "loadingInventory": "पूरी ब्लॉक सूची लोड हो रही है…"
+  "loadingInventory": "पूरी ब्लॉक सूची लोड हो रही है…",
+  "selectAllButton": "सभी चुनें",
+  "deselectAllButton": "सभी का चयन हटाएँ",
+  "selectedOfAvailable": "{selected} चयनित / {total} उपलब्ध",
+  "savingBlocksFailed": "ब्लॉक सहेजना विफल: {error}"
 }

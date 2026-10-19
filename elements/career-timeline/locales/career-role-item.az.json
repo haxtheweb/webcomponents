@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Vəzifə adı",
+  "describeYourRole": "Vəzifənizi burada təsvir edin...",
+  "present": "Təqdim edin",
+  "skills": "Bacarıqlar:",
+  "skillsAndMore": "{skills} və daha +{count}",
+  "yearShort": "{count} il",
+  "yearsShort": "{count} il",
+  "monthShort": "{count} ay",
+  "monthsShort": "{count} ay"
+}

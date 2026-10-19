@@ -22,6 +22,13 @@
   "unpublish": "Mana rikuchiy",
   "savePage": "Rapita waqaychay",
   "cancel": "Chinkachiy",
+  "delete": "Qulluchiy",
+  "editTitle": "Sutichayta allichay",
+  "editIcon": "Iconota Allichay",
+  "agent": "Yanapaq",
+  "pageLockedUnlockToEdit": "Kay p'anqa wichq'asqam. Allichanaykipaq ñawpaqta kichay.",
+  "pageLockedUnlockToChangePublishStatus": "Kay p'anqa wichq'asqam. Uyarichiy kayninta tikranaykipaq ñawpaqta kichay.",
+  "pageLockedUnlockToDelete": "Kay p'anqa wichq'asqam. Qullunaykipaq ñawpaqta kichay.",
   "pageDetails": "P'anqap willakuyninkunata",
   "clickToUnlock": "Kichanapaq ñit'iy"
 }

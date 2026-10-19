@@ -7,5 +7,7 @@
   "userAccessGranted": "دسترسی کاربر با موفقیت اعطا شد!",
   "userNotFound": "کاربر یافت نشد یا مجاز نیست",
   "loadingAddingUser": "در حال افزودن کاربر...",
-  "grantAccessTo": "اعطای دسترسی به:"
+  "grantAccessTo": "اعطای دسترسی به:",
+  "networkErrorTryAgain": "خطای شبکه رخ داد. لطفاً دوباره تلاش کنید.",
+  "characterWillAppear": "شخصیت پس از وارد کردن نام کاربری نمایان می‌شود"
 }

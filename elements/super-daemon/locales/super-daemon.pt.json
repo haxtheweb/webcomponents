@@ -36,5 +36,7 @@
   "clickToDoAnything": "Clique para fazer qualquer coisa!",
   "moreDetails": "Mais detalhes",
   "details": "Detalhes",
-  "saved": "Salvo"
+  "saved": "Salvo",
+  "opensInNewWindow": "Abre em uma nova janela",
+  "resultsCount": "{count} resultados"
 }

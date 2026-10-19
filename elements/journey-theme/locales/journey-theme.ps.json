@@ -1,4 +1,11 @@
 {
   "readMore": "نور ولولئ",
-  "home": "کور"
+  "home": "کور",
+  "anchorLinkCopied": "د لنګر لینک کاپي شو!",
+  "skipToContent": "منځپانګې ته ورشئ",
+  "changeTheme": "بڼه بدل کړئ",
+  "siteSections": "د سایټ برخې",
+  "pageOfTotal": "پاڼه {current} له {total} څخه",
+  "siteGenerated": "سایټ جوړ شوی: {date}",
+  "licenseGraphic": "د {license} ګرافیک"
 }

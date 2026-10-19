@@ -1,3 +1,8 @@
 {
-  "title": "ਹਵਾਲੇ"
+  "title": "ਹਵਾਲੇ",
+  "export": "ਨਿਰਯਾਤ",
+  "exportCitations": "ਹਵਾਲੇ ਨਿਰਯਾਤ ਕਰੋ",
+  "copy": "ਕਾਪੀ ਕਰੋ",
+  "exportCitationFormat": "ਹਵਾਲਾ ਫ਼ਾਰਮੈਟ ਨਿਰਯਾਤ ਕਰੋ",
+  "selectCitationFormatBelow": "ਹੇਠਾਂ ਹਵਾਲਾ ਫ਼ਾਰਮੈਟ ਚੁਣੋ"
 }

@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tabel în consolă cu jurnalul conversației utilizatorului",
+  "consoleTableUserText": "console.table() jurnalul conversației utilizatorului",
+  "consoleTableUserTooltip": "Afișează jurnalul conversației utilizatorului ca tabel în consolă",
+  "consoleTableMerlinLabel": "Tabel în consolă cu jurnalul conversației Merlin",
+  "consoleTableMerlinText": "console.table() jurnalul conversației Merlin",
+  "consoleTableMerlinTooltip": "Afișează jurnalul conversației Merlin ca tabel în consolă",
+  "consoleTableAllLabel": "Tabel în consolă cu întregul jurnal al conversației",
+  "consoleTableAllText": "console.table() întregul jurnal al conversației",
+  "consoleTableAllTooltip": "Afișează întregul jurnal al conversației ca tabel în consolă",
+  "downloadChatLogJson": "Descarcă jurnalul conversației ca .json",
+  "downloadChatLogJsonTooltip": "Descarcă jurnalul conversației ca .json"
+}

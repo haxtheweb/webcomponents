@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Sekme {xOfY}",
+  "xOfY": "{order} / {total}",
+  "endOfTab": "Sekme {xOfY} sonu. {tabs} bölümüne dön.",
+  "tabs": "sekmeler"
+}

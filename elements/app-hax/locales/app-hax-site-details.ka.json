@@ -1,0 +1,18 @@
+{
+  "copy": "კოპირება",
+  "download": "ჩამოტვირთვა",
+  "archive": "დაარქივება",
+  "copyOperation": "კოპირება",
+  "downloadOperation": "ჩამოტვირთვა",
+  "archiveOperation": "დაარქივება",
+  "created": "შექმნილია",
+  "updated": "განახლებულია",
+  "pages": "გვერდი",
+  "url": "URL",
+  "confirm": "დადასტურება",
+  "cancel": "გაუქმება",
+  "siteOperationConfirmTitle": "{operationName}: {siteName}?",
+  "siteOperationConfirmMessage": "დარწმუნებული ხართ, რომ გსურთ {siteName}-ის {operation}?",
+  "siteOperationSuccessful": "{siteName}: {operation} წარმატებით დასრულდა!",
+  "siteOperationFailed": "{siteName}: {operation} ვერ მოხერხდა"
+}

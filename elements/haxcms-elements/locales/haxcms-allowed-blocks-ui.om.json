@@ -10,5 +10,9 @@
   "save": "Olkaa'i",
   "noDescription": "Ibsi hin jiru.",
   "details": "Bal'ina",
-  "loadingInventory": "Galmee bilookii guutuu fe'aa jira…"
+  "loadingInventory": "Galmee bilookii guutuu fe'aa jira…",
+  "selectAllButton": "Hunda Fili",
+  "deselectAllButton": "Filannoo Hunda Haqi",
+  "selectedOfAvailable": "{selected} filatame / {total} ni argama",
+  "savingBlocksFailed": "Boolokiiwwan olkaa'uun hin milkoofne: {error}"
 }

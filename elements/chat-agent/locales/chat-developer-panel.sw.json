@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Jedwali la console la kumbukumbu ya gumzo ya mtumiaji",
+  "consoleTableUserText": "console.table() kumbukumbu ya gumzo ya mtumiaji",
+  "consoleTableUserTooltip": "Chapisha Kumbukumbu ya Gumzo ya Mtumiaji kama Jedwali kwenye Console",
+  "consoleTableMerlinLabel": "Jedwali la console la kumbukumbu ya gumzo ya merlin",
+  "consoleTableMerlinText": "console.table() kumbukumbu ya gumzo ya merlin",
+  "consoleTableMerlinTooltip": "Chapisha Kumbukumbu ya Gumzo ya Merlin kama Jedwali kwenye Console",
+  "consoleTableAllLabel": "Jedwali la console la kumbukumbu nzima ya gumzo",
+  "consoleTableAllText": "console.table() kumbukumbu nzima ya gumzo",
+  "consoleTableAllTooltip": "Chapisha Kumbukumbu Nzima ya Gumzo kama Jedwali kwenye Console",
+  "downloadChatLogJson": "Pakua kumbukumbu ya gumzo kama .json",
+  "downloadChatLogJsonTooltip": "Pakua Kumbukumbu ya Gumzo kama .json"
+}

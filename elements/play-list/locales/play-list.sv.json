@@ -1,0 +1,11 @@
+{
+  "playlist": "Spellista",
+  "carousel": "karusell",
+  "slide": "bild",
+  "slideNumber": "Bild {number}",
+  "slideOfTotal": "Bild {number} av {total}",
+  "previousSlide": "Föregående bild",
+  "nextSlide": "Nästa bild",
+  "slidePages": "Bildsidor",
+  "goToSlide": "Gå till bild {number}"
+}

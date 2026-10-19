@@ -10,5 +10,9 @@
   "save": "Späicheren",
   "noDescription": "Keng Beschreiwung disponibel.",
   "details": "Detailer",
-  "loadingInventory": "Komplett Blockinventar gëtt gelueden…"
+  "loadingInventory": "Komplett Blockinventar gëtt gelueden…",
+  "selectAllButton": "Alles auswielen",
+  "deselectAllButton": "Auswiel ophiewen",
+  "selectedOfAvailable": "{selected} ausgewielt / {total} disponibel",
+  "savingBlocksFailed": "Späichere vun de Bléck ass feelgeschloen: {error}"
 }

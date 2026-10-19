@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Hiển thị tin nhắn đã gửi trước đó (lên)",
+  "displayPreviousMessageDown": "Hiển thị tin nhắn đã gửi trước đó (xuống)",
+  "sendPrompt": "Gửi yêu cầu",
+  "sendPromptToMerlin": "Gửi yêu cầu đến Merlin",
+  "shortenPrompt": "Vui lòng rút ngắn yêu cầu của bạn xuống không quá {limit} ký tự."
+}

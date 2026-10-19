@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Kāu pane",
   "checkAnswer": "Nānā i ka pane",
-  "retry": "Hoʻāʻo hou"
+  "retry": "Hoʻāʻo hou",
+  "correct": "Pololei!",
+  "incorrect": "Hewa!",
+  "correctAnswer": "Pane pololei: {answer}"
 }

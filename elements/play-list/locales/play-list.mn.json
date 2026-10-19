@@ -1,0 +1,11 @@
+{
+  "playlist": "Тоглуулах жагсаалт",
+  "carousel": "карусель",
+  "slide": "слайд",
+  "slideNumber": "Слайд {number}",
+  "slideOfTotal": "Слайд {number} / {total}",
+  "previousSlide": "Өмнөх слайд",
+  "nextSlide": "Дараагийн слайд",
+  "slidePages": "Слайдын хуудсууд",
+  "goToSlide": "{number}-р слайд руу очих"
+}

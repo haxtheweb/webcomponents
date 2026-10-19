@@ -36,5 +36,7 @@
   "clickToDoAnything": "I-click para gumawa ng kahit ano!",
   "moreDetails": "Karagdagang detalye",
   "details": "Detalye",
-  "saved": "Na-save"
+  "saved": "Na-save",
+  "opensInNewWindow": "Bubukas sa bagong window",
+  "resultsCount": "{count} resulta"
 }

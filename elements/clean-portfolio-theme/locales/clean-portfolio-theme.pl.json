@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Skopiowano link do kotwicy!",
+  "skipToContent": "Przejdź do treści",
+  "siteHome": "Strona główna witryny",
+  "mainNavigation": "Nawigacja główna",
+  "toggleMenu": "Przełącz menu",
+  "changeTheme": "Zmień motyw",
+  "breadcrumb": "Ścieżka nawigacji",
+  "tagFilter": "Filtr tagów:",
+  "all": "Wszystkie",
+  "pageNumberOfTotal": "Numer strony: {current} z {total}",
+  "siteGenerated": "Wygenerowano witrynę: {date}",
+  "copyright": "Prawa autorskie: {year} {author}",
+  "viewContentByTag": "Przeglądaj treści według tagów",
+  "licenseGraphic": "Grafika licencji {license}"
+}

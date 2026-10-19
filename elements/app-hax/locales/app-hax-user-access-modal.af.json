@@ -7,5 +7,7 @@
   "userAccessGranted": "Gebruikerstoegang suksesvol verleen!",
   "userNotFound": "Gebruiker nie gevind nie of ongemagtig",
   "loadingAddingUser": "Voeg tans gebruiker by...",
-  "grantAccessTo": "Verleen toegang aan:"
+  "grantAccessTo": "Verleen toegang aan:",
+  "networkErrorTryAgain": "Netwerkfout het voorgekom. Probeer asseblief weer.",
+  "characterWillAppear": "Karakter sal verskyn wanneer jy 'n gebruikersnaam invoer"
 }

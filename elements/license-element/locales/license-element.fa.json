@@ -1,0 +1,14 @@
+{
+  "licenseBy": "انتساب",
+  "licenseBySa": "انتساب-اشتراک همسان",
+  "licenseByNd": "انتساب-بدون اشتقاق",
+  "licenseByNc": "انتساب-غیرتجاری",
+  "licenseByNcSa": "انتساب-غیرتجاری-اشتراک همسان",
+  "licenseByNcNd": "انتساب-غیرتجاری-بدون اشتقاق",
+  "licenseGraphic": "نشان {license}",
+  "workByCreator": "{title} اثر {creator}",
+  "workByCreatorLicensed": "{title} اثر {creator} تحت مجوز {license} منتشر شده است.",
+  "permissionsBeyondScope": "مجوزهای فراتر از دامنه این مجوز {link} در دسترس است.",
+  "author": "(نویسنده)",
+  "onTheLicensingDetailsPage": "در صفحه جزئیات مجوز"
+}

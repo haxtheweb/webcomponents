@@ -9,5 +9,8 @@
   "record": "Regjistro",
   "pause": "Pezullo regjistrimin",
   "stopSave": "Ndalo & Ruaj",
-  "clickToTakePhoto": "Kliko për të bërë foto"
+  "clickToTakePhoto": "Kliko për të bërë foto",
+  "url": "URL",
+  "open": "hap",
+  "removeValue": "Hiq {value}"
 }

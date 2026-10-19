@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Submetaĵo de studento",
   "openInNewWindow": "Malfermi en nova fenestro",
-  "submitted": "Submetita"
+  "submitted": "Submetita",
+  "previousStudent": "Antaŭa studento",
+  "nextStudent": "Sekva studento",
+  "previousAssignment": "Antaŭa tasko",
+  "nextAssignment": "Sekva tasko"
 }

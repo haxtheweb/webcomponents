@@ -36,5 +36,7 @@
   "clickToDoAnything": "केही गर्न क्लिक गर्नुहोस्!",
   "moreDetails": "थप विवरण",
   "details": "विवरण",
-  "saved": "सेभ भयो"
+  "saved": "सेभ भयो",
+  "opensInNewWindow": "नयाँ विन्डोमा खुल्छ",
+  "resultsCount": "{count} नतिजाहरू"
 }

@@ -1,3 +1,8 @@
 {
-  "title": "참고 문헌"
+  "title": "참고 문헌",
+  "export": "내보내기",
+  "exportCitations": "인용 내보내기",
+  "copy": "복사",
+  "exportCitationFormat": "인용 형식 내보내기",
+  "selectCitationFormatBelow": "아래에서 인용 형식을 선택하세요"
 }

@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Файлуудыг энд оруулна уу",
+  "uploadQueue": "Байршуулах дараалал",
+  "pending": "Хүлээгдэж буй",
+  "preparing": "Бэлтгэж байна",
+  "uploading": "Байршуулж байна",
+  "complete": "Дууссан",
+  "aborted": "Зогсоосон",
+  "cancelled": "Цуцалсан",
+  "error": "Алдаа",
+  "errorWithStatus": "Алдаа: {status}",
+  "cancel": "Цуцлах",
+  "cancelUploadOf": "{name}-ийн байршуулалтыг цуцлах",
+  "retry": "Дахин оролдох",
+  "retryUploadOf": "{name}-ийг дахин байршуулах",
+  "remove": "Хасах",
+  "removeFromQueue": "{name}-ийг дарааллаас хасах",
+  "fileTypeNotAccepted": "Файлын төрөл зөвшөөрөгдөөгүй: {name}",
+  "uploadFailed": "Байршуулалт амжилтгүй: {status}",
+  "networkError": "Сүлжээний алдаа"
+}

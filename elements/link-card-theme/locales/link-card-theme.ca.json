@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Enllaç d'ancoratge copiat!",
+  "skipToContent": "Salta al contingut",
+  "changePalette": "Canvia la paleta",
+  "primaryLinks": "Enllaços principals",
+  "socialLinks": "Enllaços socials",
+  "myProfile": "El meu perfil",
+  "profileImageOf": "Imatge de perfil de {name}",
+  "profileImage": "Imatge de perfil",
+  "linkCardProfile": "Perfil de targeta d'enllaços",
+  "emptyStateLinks": "Afegeix elements de menú de primer nivell a site.json per mostrar botons d'enllaç.",
+  "titleOnPlatform": "{title} a {platform}",
+  "openPlatform": "Obre {platform}",
+  "paletteUpdated": "Paleta de colors actualitzada a l'opció {number}."
+}

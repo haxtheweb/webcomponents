@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- xwerû rûpela yekem --",
+  "details": "Hûrgulî",
+  "title": "Sernav",
+  "titleDescription": "Navê malperê",
+  "homePage": "Rûpela destpêkê",
+  "homePageDescription": "Rûpela ku wekî rûpela xwerû ya hatinê / destpêkê were bikaranîn",
+  "advanced": "Pêşketî",
+  "serviceWorker": "Service worker li rûpela dînamîk zêde bike",
+  "serviceWorkerDescription": "Heke divê bikarhêner her dem yekser derketina herî dawî ya serverê bibînin, vê neçalak bike.",
+  "forceBrowserUpgrade": "Nûkirina gerokê bi zorê",
+  "forceBrowserUpgradeDescription": "Berî barkirina ezmûna malperê gerokên evergreen bixwaze.",
+  "unableToLoadSiteDetails": "Hûrgiliyên malperê nayên barkirin.",
+  "noSiteDetails": "Tu hûrgiliyên malperê berdest nînin.",
+  "save": "Tomar bike"
+}

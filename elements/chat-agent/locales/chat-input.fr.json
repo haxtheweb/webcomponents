@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "Afficher le message envoyé précédemment (haut)",
+  "displayPreviousMessageDown": "Afficher le message envoyé précédemment (bas)",
+  "sendPrompt": "Envoyer la requête",
+  "sendPromptToMerlin": "Envoyer la requête à Merlin",
+  "shortenPrompt": "Veuillez raccourcir votre requête à {limit} caractères maximum."
+}

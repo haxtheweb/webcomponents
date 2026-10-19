@@ -43,5 +43,22 @@
   "emailAddress": "Tumira email kumudzidzi uyu",
   "notes": "Zvinyorwa",
   "interests": "Zvaanofarira",
-  "profileImageFor": "Mufananidzo wepurofayili wa"
+  "profileImageFor": "Mufananidzo wepurofayili wa",
+  "fileSystem": "Fairo sisitimu",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL endpoint (JSON)",
+  "jsonDataBlob": "Blob yedata reJSON",
+  "additionalCriteriaFeedback": "Imwe mhinduro ye{criteria}",
+  "outOfPoints": "/ mapoinzi {points}",
+  "feedbackReport": "Mushumo wemhinduro",
+  "criteriaDetails": "Ruzivo rwezviyero",
+  "yourFeedback": "Mhinduro yako",
+  "additionalCriteriaFeedbackHeading": "Imwe mhinduro yeZviyero",
+  "yourTotalScore": "Mamakisi ako ose",
+  "scoreOutOfPoints": "{score} / mapoinzi {points}",
+  "studentAssignment": "Basa {assignment} ra{student}",
+  "downloadPDF": "Dhawunirodha PDF",
+  "displayMode1": "Modhi 1",
+  "displayMode2": "Modhi 2",
+  "twoWindows": "Mahwindo maviri"
 }

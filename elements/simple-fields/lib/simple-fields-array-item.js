@@ -7,6 +7,7 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import "@haxtheweb/responsive-utility/responsive-utility.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `simple-fields-array-item`
  * an accessible expand collapse
@@ -39,7 +40,9 @@ Custom property | Description | Default
  * @class SimpleFieldsArrayItem
  * @extends {SimpleFieldsFieldsetBehaviors(LitElement)}
  */
-class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
+class SimpleFieldsArrayItem extends I18NMixin(
+  SimpleFieldsFieldsetBehaviors(LitElement),
+) {
   static get styles() {
     return [
       super.styles,
@@ -206,7 +209,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         id="drag-handle"
         controls="${this.id}"
         icon="icons:reorder"
-        label="Reorder this item"
+        label="${this.t.reorderThisItem}"
         ?disabled="${this.disabled}"
         ?hidden="${this.__dropAccepts || this.__dragging || this.hideReorder}"
         part="drag"
@@ -221,7 +224,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
             role="menuitem"
             icon="arrow-upward"
             show-text-label
-            label="Up"
+            label="${this.t.up}"
             @click="${this._moveUp}"
           >
           </simple-toolbar-button>
@@ -233,7 +236,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
             role="menuitem"
             icon="arrow-downward"
             show-text-label
-            label="Down"
+            label="${this.t.down}"
             @click="${this._moveDown}"
           >
           </simple-toolbar-button>
@@ -245,7 +248,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
           id="expand"
           controls="${this.id}"
           icon="more-vert"
-          label="Toggle expand"
+          label="${this.t.toggleExpand}"
           ?disabled="${this.disabled}"
           @click="${this.toggle}"
           toggles
@@ -264,7 +267,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
               ?hidden="${this.hideDuplicate}"
               controls="${(this.parentNode || {}).id}"
               icon="content-copy"
-              label="Copy this item"
+              label="${this.t.copyThisItem}"
               ?disabled="${this.disabled}"
               @click="${this._handleCopy}"
               part="copy"
@@ -279,7 +282,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
               role="menuitem"
               controls="${this.id}"
               icon="delete"
-              label="Remove"
+              label="${this.t.remove}"
               ?disabled="${this.disabled}"
               @click="${this._handleRemove}"
               part="confirm-remove"
@@ -372,6 +375,20 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
     this.previewBy = [];
     this.expanded = false;
     this.responsiveSize = "sm";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      reorderThisItem: "Reorder this item",
+      up: "Up",
+      down: "Down",
+      toggleExpand: "Toggle expand",
+      copyThisItem: "Copy this item",
+      remove: "Remove",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.addEventListener("dragenter", this._dragEnter);
     this.addEventListener("dragleave", this._dragLeave);
     this.addEventListener("dragover", this._dragMoving);

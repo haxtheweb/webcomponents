@@ -5,5 +5,9 @@
   "buttons": "ബട്ടണുകൾ",
   "futureButtonConfiguration": "ഇഷ്ടാനുസൃത എഡിറ്റർ ബട്ടൺ ക്രമീകരണം ഉടൻ വരുന്നു.",
   "save": "സംരക്ഷിക്കുക",
-  "saving": "സംരക്ഷിക്കുന്നു…"
+  "saving": "സംരക്ഷിക്കുന്നു…",
+  "novice": "തുടക്കക്കാരൻ",
+  "expert": "വിദഗ്ദ്ധൻ",
+  "toolbarPreviewAlt": "{audience} എഡിറ്റിംഗ് ടൂൾബാർ പ്രിവ്യൂ",
+  "savingEditorSettingsFailed": "എഡിറ്റർ ക്രമീകരണങ്ങൾ സേവ് ചെയ്യുന്നത് പരാജയപ്പെട്ടു: {error}"
 }

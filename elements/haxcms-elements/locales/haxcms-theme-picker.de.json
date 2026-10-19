@@ -1,0 +1,11 @@
+{
+  "theme": "Design",
+  "active": "Aktiv",
+  "selected": "Ausgewählt",
+  "noPreview": "Keine Vorschau",
+  "currentlyActiveAndSelected": "Aktuell aktives und ausgewähltes Theme",
+  "currentlyActive": "Aktuell aktives Theme",
+  "selectedToApplyOnSave": "Ausgewähltes Theme, das beim Speichern angewendet wird",
+  "themeSelection": "Theme-Auswahl",
+  "noThemesAvailable": "Keine Themes verfügbar."
+}

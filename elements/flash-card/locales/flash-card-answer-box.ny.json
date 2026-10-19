@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Yankho lanu",
   "checkAnswer": "Onani yankho",
-  "retry": "Yesaninso"
+  "retry": "Yesaninso",
+  "correct": "Zolondola!",
+  "incorrect": "Zolakwika!",
+  "correctAnswer": "Yankho Lolondola: {answer}"
 }

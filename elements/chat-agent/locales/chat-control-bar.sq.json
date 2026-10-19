@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Shkarko regjistrin si txt",
+  "downloadChatLog": "Shkarko regjistrin e bisedës",
+  "resetChat": "Rivendos bisedën",
+  "toggleDataCollection": "Ndrysho mbledhjen e të dhënave",
+  "dataCollection": "Mbledhja e të dhënave",
+  "toggleDeveloperMode": "Ndrysho modalitetin e zhvilluesit",
+  "exitFullView": "Dil nga pamja e plotë",
+  "enterFullView": "Hyr në pamjen e plotë",
+  "hideInterface": "Fshih ndërfaqen",
+  "resetChatConfirm": "Të rivendoset biseda?",
+  "downloadBeforeResetConfirm": "Të shkarkohet regjistri i bisedës para rivendosjes?",
+  "dataCollectionOn": "Bisedat e tua do të përdoren për të trajnuar modelet tona të AI",
+  "dataCollectionOff": "Bisedat e tua nuk do të përdoren për të trajnuar modelet tona të AI"
+}

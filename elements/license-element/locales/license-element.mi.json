@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Tohutoro",
+  "licenseBySa": "Tohutoro Tiri Ōrite",
+  "licenseByNd": "Tohutoro Kore Pārekereke",
+  "licenseByNc": "Tohutoro Kore Arumoni",
+  "licenseByNcSa": "Tohutoro Kore Arumoni Tiri Ōrite",
+  "licenseByNcNd": "Tohutoro Kore Arumoni Kore Pārekereke",
+  "licenseGraphic": "Whakairoiro {license}",
+  "workByCreator": "{title} nā {creator}",
+  "workByCreatorLicensed": "Ko {title} nā {creator} kua raihanatia i raro i te {license}.",
+  "permissionsBeyondScope": "Kei te wātea ngā whakaaetanga i tua atu i te korahi o tēnei raihana {link}.",
+  "author": "(kaituhi)",
+  "onTheLicensingDetailsPage": "i te whārangi taipitopito raihana"
+}

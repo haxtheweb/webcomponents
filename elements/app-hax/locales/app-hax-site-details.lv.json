@@ -1,0 +1,18 @@
+{
+  "copy": "Kopēt",
+  "download": "Lejupielādēt",
+  "archive": "Arhivēt",
+  "copyOperation": "kopēt",
+  "downloadOperation": "lejupielādēt",
+  "archiveOperation": "arhivēt",
+  "created": "izveidota",
+  "updated": "atjaunināta",
+  "pages": "lapas",
+  "url": "URL",
+  "confirm": "Apstiprināt",
+  "cancel": "Atcelt",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Vai tiešām vēlaties {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} – veiksmīgi!",
+  "siteOperationFailed": "{siteName}: {operation} – neizdevās"
+}

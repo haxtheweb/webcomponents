@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "Zobrazit náhled motivu",
+  "hideThemePreview": "Skrýt náhled motivu",
+  "themePreviewPanel": "Panel náhledu motivu",
+  "themePreview": "Náhled motivu",
+  "themePreviewDescription": "Při procházení si dočasně vyzkoušejte motiv a paletu. Tlačítkem Zrušit obnovíte původní vzhled.",
+  "loadingThemes": "Načítání motivů...",
+  "theme": "Motiv",
+  "palette": "Paleta",
+  "cancel": "Zrušit",
+  "openAppearanceSettings": "Otevřít nastavení vzhledu"
+}

@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Pautan sauh disalin!",
+  "skipToContent": "Langkau ke kandungan",
+  "siteHome": "Laman utama",
+  "mainNavigation": "Navigasi utama",
+  "toggleMenu": "Togol menu",
+  "changeTheme": "Tukar tema",
+  "breadcrumb": "Serbuk roti",
+  "tagFilter": "Penapis tag:",
+  "all": "Semua",
+  "pageNumberOfTotal": "Nombor halaman: {current} daripada {total}",
+  "siteGenerated": "Laman dijana: {date}",
+  "copyright": "Hak cipta: {year} {author}",
+  "viewContentByTag": "Lihat Kandungan mengikut Tag",
+  "licenseGraphic": "Grafik {license}"
+}

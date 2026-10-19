@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Atribuite",
+  "licenseBySa": "Atribuite-Samkondiĉe",
+  "licenseByNd": "Atribuite-Nemodifite",
+  "licenseByNc": "Atribuite-Nekomerce",
+  "licenseByNcSa": "Atribuite-Nekomerce-Samkondiĉe",
+  "licenseByNcNd": "Atribuite-Nekomerce-Nemodifite",
+  "licenseGraphic": "Grafikaĵo de {license}",
+  "workByCreator": "{title} de {creator}",
+  "workByCreatorLicensed": "{title} de {creator} estas permesita laŭ {license}.",
+  "permissionsBeyondScope": "Permesoj preter la amplekso de ĉi tiu permesilo disponeblas {link}.",
+  "author": "(aŭtoro)",
+  "onTheLicensingDetailsPage": "ĉe la paĝo de permesilaj detaloj"
+}

@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- पहिलो पेज पूर्वनिर्धारित --",
+  "details": "विवरण",
+  "title": "शीर्षक",
+  "titleDescription": "साइटको नाम",
+  "homePage": "गृह पेज",
+  "homePageDescription": "पूर्वनिर्धारित ल्यान्डिङ / गृह पेजको रूपमा प्रयोग गर्ने पेज",
+  "advanced": "उन्नत",
+  "serviceWorker": "गतिशील पेजमा service worker थप्नुहोस्",
+  "serviceWorkerDescription": "प्रयोगकर्ताहरूले सधैँ तुरुन्तै नवीनतम सर्भर आउटपुट देख्नुपर्ने भए यसलाई असक्षम गर्नुहोस्।",
+  "forceBrowserUpgrade": "ब्राउजर अपग्रेड अनिवार्य गर्नुहोस्",
+  "forceBrowserUpgradeDescription": "साइट अनुभव लोड गर्नुअघि अद्यावधिक (evergreen) ब्राउजरहरू आवश्यक बनाउनुहोस्।",
+  "unableToLoadSiteDetails": "साइट विवरण लोड गर्न सकिएन।",
+  "noSiteDetails": "कुनै साइट विवरण उपलब्ध छैन।",
+  "save": "सुरक्षित गर्नुहोस्"
+}

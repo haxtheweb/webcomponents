@@ -36,5 +36,7 @@
   "clickToDoAnything": "کچھ بھی کرنے کے لیے کلک کریں!",
   "moreDetails": "مزید تفصیلات",
   "details": "تفصیلات",
-  "saved": "محفوظ ہو گیا"
+  "saved": "محفوظ ہو گیا",
+  "opensInNewWindow": "نئی ونڈو میں کھلتا ہے",
+  "resultsCount": "{count} نتائج"
 }

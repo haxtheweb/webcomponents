@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Link da âncora copiado!",
+  "skipToContent": "Pular para o conteúdo",
+  "siteHome": "Início do site",
+  "mainNavigation": "Navegação principal",
+  "toggleMenu": "Alternar menu",
+  "changeTheme": "Mudar tema",
+  "breadcrumb": "Trilha de navegação",
+  "tagFilter": "Filtro de tag:",
+  "all": "Todos",
+  "pageNumberOfTotal": "Número da página: {current} de {total}",
+  "siteGenerated": "Site gerado em: {date}",
+  "copyright": "Copyright: {year} {author}",
+  "viewContentByTag": "Ver conteúdo por tag",
+  "licenseGraphic": "Selo {license}"
+}

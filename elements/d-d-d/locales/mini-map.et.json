@@ -1,0 +1,17 @@
+{
+  "editNodes": "Muuda sõlmi",
+  "editLines": "Muuda jooni",
+  "reset": "Lähtesta",
+  "save": "Salvesta",
+  "cancel": "Tühista",
+  "delete": "Kustuta",
+  "type": "Tüüp:",
+  "topic": "Teema",
+  "subsection": "Alajaotis",
+  "name": "Nimi:",
+  "enterName": "Sisesta nimi",
+  "url": "URL:",
+  "enterUrl": "Sisesta URL",
+  "activeNode": "Aktiivne sõlm?",
+  "nodeId": "Sõlm {id}"
+}

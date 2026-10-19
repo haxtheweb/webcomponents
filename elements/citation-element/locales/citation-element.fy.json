@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Nammefermelding",
+  "licenseBySa": "Nammefermelding-GelykDiele",
+  "licenseByNd": "Nammefermelding-GjinAfliedings",
+  "licenseByNc": "Nammefermelding-NetKommersjeel",
+  "licenseByNcSa": "Nammefermelding-NetKommersjeel-GelykDiele",
+  "licenseByNcNd": "Nammefermelding-NetKommersjeel-GjinAfliedings",
+  "citationWithLicense": "{title} troch {creator}, beskikber steld ûnder {license}. Rieplachte op {date}.",
+  "citationWithoutLicense": "{title} troch {creator}. Rieplachte op {date}.",
+  "licenseGraphic": "Ofbylding fan {license}"
+}

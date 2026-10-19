@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Imeshindwa kupakia mandhari: {error}",
+  "noThemesForView": "Hakuna mandhari yanayopatikana kwa mwonekano huu.",
+  "active": "Amilifu",
+  "themeIsActive": "Mandhari ya {name} ni amilifu",
+  "applyTheme": "Tumia mandhari ya {name}",
+  "apply": "Tumia",
+  "preview": "Hakiki",
+  "name": "Jina",
+  "element": "Kipengele",
+  "description": "Maelezo",
+  "action": "Kitendo",
+  "loadingThemes": "Inapakia mandhari...",
+  "themesShown": "Mandhari {count} yanaonyeshwa",
+  "themesShownDefaults": "Mandhari {count} yanaonyeshwa (chaguomsingi za app-hax)",
+  "availableHaxcmsThemes": "Mandhari ya HAXcms Yanayopatikana",
+  "gallery": "Matunzio",
+  "table": "Jedwali"
+}

@@ -1,3 +1,4 @@
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { css, html, LitElement } from "lit";
 import { autorun, toJS } from "mobx";
@@ -6,7 +7,7 @@ import "@haxtheweb/iframe-loader/iframe-loader.js";
 // wrapped implementation of h5p which is an iframe on the page
 // if we use this method then we can try and see if HAXcms is around
 // this won't hurt anything if it's not, but will opt into edit mode if it is
-class H5pWrappedElement extends LitElement {
+class H5pWrappedElement extends I18NMixin(LitElement) {
   static get properties() {
     return {
       __editLink: { type: String, attribute: false },
@@ -48,6 +49,15 @@ class H5pWrappedElement extends LitElement {
   }
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      editH5pSource: "Edit H5P Source",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.src = "";
     this.__disposer = autorun(() => {
       const _mobx_val_0 = toJS(store.editMode);
@@ -90,7 +100,7 @@ class H5pWrappedElement extends LitElement {
                     href="${this.__editLink}"
                     target="_blank"
                     rel="noopener"
-                    >Edit H5P Source</a
+                    >${this.t.editH5pSource}</a
                   >
                 </div>
               </div>

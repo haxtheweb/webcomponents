@@ -1,5 +1,9 @@
 {
   "studentSubmission": "طالب علم دا جمع کرایا کم",
   "openInNewWindow": "نویں ونڈو وچ کھولو",
-  "submitted": "جمع کرایا گیا"
+  "submitted": "جمع کرایا گیا",
+  "previousStudent": "پچھلا طالب علم",
+  "nextStudent": "اگلا طالب علم",
+  "previousAssignment": "پچھلی اسائنمنٹ",
+  "nextAssignment": "اگلی اسائنمنٹ"
 }

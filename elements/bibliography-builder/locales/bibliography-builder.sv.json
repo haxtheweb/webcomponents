@@ -1,3 +1,8 @@
 {
-  "title": "Referenser"
+  "title": "Referenser",
+  "export": "Exportera",
+  "exportCitations": "Exportera källhänvisningar",
+  "copy": "Kopiera",
+  "exportCitationFormat": "Format för export av källhänvisningar",
+  "selectCitationFormatBelow": "Välj ett format för källhänvisningar nedan"
 }

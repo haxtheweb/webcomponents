@@ -1,0 +1,18 @@
+{
+  "copy": "Kopírovať",
+  "download": "Stiahnuť",
+  "archive": "Archivovať",
+  "copyOperation": "kopírovať",
+  "downloadOperation": "stiahnuť",
+  "archiveOperation": "archivovať",
+  "created": "vytvorené",
+  "updated": "aktualizované",
+  "pages": "stránky",
+  "url": "URL",
+  "confirm": "Potvrdiť",
+  "cancel": "Zrušiť",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Naozaj chcete {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} – úspešné!",
+  "siteOperationFailed": "{siteName}: {operation} – zlyhalo"
+}

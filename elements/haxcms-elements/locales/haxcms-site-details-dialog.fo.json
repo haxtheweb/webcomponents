@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- sjálvsett til fyrstu síðu --",
+  "details": "Smálutir",
+  "title": "Heiti",
+  "titleDescription": "Navn á vevstaðnum",
+  "homePage": "Forsíða",
+  "homePageDescription": "Síða at nýta sum sjálvsetta lendingar-/forsíðu",
+  "advanced": "Víðkað",
+  "serviceWorker": "Legg service worker afturat dynamiskari síðu",
+  "serviceWorkerDescription": "Slókk hetta, um brúkarar altíð skulu síggja seinasta úrslitið frá ambætaranum beinanvegin.",
+  "forceBrowserUpgrade": "Tvinga kagadagføring",
+  "forceBrowserUpgradeDescription": "Krev sígrønar kagar, áðrenn vevstaðurin verður innlisin.",
+  "unableToLoadSiteDetails": "Kundi ikki innlesa smálutir um vevstaðin.",
+  "noSiteDetails": "Eingir smálutir um vevstaðin eru tøkir.",
+  "save": "Goym"
+}

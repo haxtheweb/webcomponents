@@ -10,5 +10,9 @@
   "save": "Londoloza",
   "noDescription": "Ayikho incazelo etholakalayo.",
   "details": "Imininingwane",
-  "loadingInventory": "Kulayishwa uhlu oluphelele lwamabhulokhi…"
+  "loadingInventory": "Kulayishwa uhlu oluphelele lwamabhulokhi…",
+  "selectAllButton": "Khetha Konke",
+  "deselectAllButton": "Ungakhethi Lutho",
+  "selectedOfAvailable": "{selected} kukhethiwe / {total} kuyatholakala",
+  "savingBlocksFailed": "Ukugcina amabhulokhi kwehlulekile: {error}"
 }

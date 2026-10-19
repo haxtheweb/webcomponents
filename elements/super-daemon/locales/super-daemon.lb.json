@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klick fir eppes ze maachen!",
   "moreDetails": "Méi Detailer",
   "details": "Detailer",
-  "saved": "Gespäichert"
+  "saved": "Gespäichert",
+  "opensInNewWindow": "Mécht an enger neier Fënster op",
+  "resultsCount": "{count} Resultater"
 }

@@ -1,3 +1,8 @@
 {
-  "title": "حوالا"
+  "title": "حوالا",
+  "export": "برآمد",
+  "exportCitations": "حوالا برآمد ڪريو",
+  "copy": "ڪاپي ڪريو",
+  "exportCitationFormat": "حوالي جو فارميٽ برآمد ڪريو",
+  "selectCitationFormatBelow": "هيٺ حوالي جو فارميٽ چونڊيو"
 }

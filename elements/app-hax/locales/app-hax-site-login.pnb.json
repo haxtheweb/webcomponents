@@ -1,0 +1,14 @@
+{
+  "enterUserName": "صارف ناں لکھو",
+  "invalidUsernameOrPassword": "غلط صارف ناں یا پاس ورڈ",
+  "welcomeLetsGo": "جی آیاں نوں {username}! چلو!",
+  "enterYourUsername": "اپݨا صارف ناں لکھو",
+  "username": "صارف ناں",
+  "next": "اگلا",
+  "welcomeBack": "جی آیاں نوں فیر، {username}!",
+  "notYou": "تسیں نئیں او؟",
+  "enterYourPassword": "اپݨا پاس ورڈ لکھو",
+  "password": "پاس ورڈ",
+  "togglePasswordDisplay": "پاس ورڈ وکھاؤ/لُکاؤ",
+  "login": "لاگ ان"
+}

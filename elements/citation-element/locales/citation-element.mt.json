@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Attribuzzjoni",
+  "licenseBySa": "Attribuzzjoni-Aqsam Bl-Istess Mod",
+  "licenseByNd": "Attribuzzjoni-Ebda Xogħol Derivattiv",
+  "licenseByNc": "Attribuzzjoni-Mhux Kummerċjali",
+  "licenseByNcSa": "Attribuzzjoni-Mhux Kummerċjali-Aqsam Bl-Istess Mod",
+  "licenseByNcNd": "Attribuzzjoni-Mhux Kummerċjali-Ebda Xogħol Derivattiv",
+  "citationWithLicense": "{title} minn {creator}, liċenzjat taħt {license}. Aċċessat fil-{date}.",
+  "citationWithoutLicense": "{title} minn {creator}. Aċċessat fil-{date}.",
+  "licenseGraphic": "Grafika ta' {license}"
+}

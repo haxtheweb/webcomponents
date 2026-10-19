@@ -36,5 +36,7 @@
   "clickToDoAnything": "Нәрсә дә булса эшләү өчен бас!",
   "moreDetails": "Күбрәк детальләр",
   "details": "Детальләр",
-  "saved": "Сакланды"
+  "saved": "Сакланды",
+  "opensInNewWindow": "Яңа тәрәзәдә ачыла",
+  "resultsCount": "{count} нәтиҗә"
 }

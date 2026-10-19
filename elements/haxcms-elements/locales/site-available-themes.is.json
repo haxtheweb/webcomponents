@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Ekki tókst að hlaða þemum: {error}",
+  "noThemesForView": "Engin þemu tiltæk fyrir þessa sýn.",
+  "active": "Virkt",
+  "themeIsActive": "Þemað {name} er virkt",
+  "applyTheme": "Nota þemað {name}",
+  "apply": "Nota",
+  "preview": "Forskoðun",
+  "name": "Nafn",
+  "element": "Eining",
+  "description": "Lýsing",
+  "action": "Aðgerð",
+  "loadingThemes": "Hleður þemum...",
+  "themesShown": "{count} þemu sýnd",
+  "themesShownDefaults": "{count} þemu sýnd (sjálfgefin í app-hax)",
+  "availableHaxcmsThemes": "Tiltæk HAXcms-þemu",
+  "gallery": "Myndasafn",
+  "table": "Tafla"
+}

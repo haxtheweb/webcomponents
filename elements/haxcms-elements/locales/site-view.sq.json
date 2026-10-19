@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Asnjë rezultat",
+  "viewsRecordHeading": "Regjistro",
+  "viewsTitleImage": "Imazhi i {title}",
+  "viewsTitlePreview": "Pamje paraprake e {title}",
+  "viewsNoTimelineRecords": "Nuk ka regjistrime me data për shfaqjen e vijës kohore.",
+  "viewsTimelineTitle": "Vija kohore e {title}",
+  "viewsNoChartField": "Nuk u zbulua asnjë fushë numerike për shfaqjen e grafikut.",
+  "viewsChartingValue": "Grafiku i {value}",
+  "viewsChartingValueByLabel": "Grafiku i {value} sipas {label}",
+  "viewsChartTitle": "Grafiku i {title}",
+  "viewsNoTreeRecords": "Nuk ka regjistrime hierarkike për shfaqjen e pemës.",
+  "viewsNoGalleryRecords": "Nuk ka regjistrime imazhesh për shfaqjen e galerisë.",
+  "viewsNoPlaylistRecords": "Nuk ka regjistrime mediash për shfaqjen e listës së luajtjes.",
+  "fetchFailed": "Marrja dështoi ({status})",
+  "unableToLoadViewData": "Të dhënat e pamjes nuk mund të ngarkohen.",
+  "noResultsFound": "Nuk u gjetën rezultate.",
+  "refreshView": "Rifresko pamjen",
+  "breakIntoStaticContent": "Ktheje në përmbajtje statike",
+  "viewsOpenRecord": "Hap regjistrimin"
+}

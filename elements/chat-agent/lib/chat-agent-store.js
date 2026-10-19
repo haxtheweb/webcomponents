@@ -5,6 +5,7 @@
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { autorun, configure, makeObservable, observable, toJS } from "mobx";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * Resolve the HAXcms site store off globalThis when running inside a
  * HAXcms site. Resolved lazily because importing haxcms-site-store.js
@@ -70,7 +71,19 @@ class ChatAgentStore {
     this.messageIndex = 0;
     // 0 disables the prompt character limit (no maxlength enforced)
     this.promptCharacterLimit = 0;
-    this.promptPlaceholder = "Enter your prompt here...";
+    // user-facing defaults; translated via the chat-agent namespace below
+    this.t = {
+      promptPlaceholder: "Enter your prompt here...",
+    };
+    this.promptPlaceholder = this.t.promptPlaceholder;
+    this._i18nPromptPlaceholder = this.promptPlaceholder;
+    // Store is not an element; register it directly with the i18n manager
+    I18NManagerStore.registerLocalization({
+      context: this,
+      namespace: "chat-agent",
+      localesPath: new URL("../locales/", import.meta.url).href,
+      updateCallback: "_i18nUpdated",
+    });
     this.userIndex = 0;
     this.userTypeWriterSpeed = 0;
     siteUser !== undefined
@@ -150,6 +163,17 @@ class ChatAgentStore {
         }
       });
     });
+  }
+
+  /**
+   * i18n manager callback: apply translated defaults unless a custom value
+   * was set on the store
+   */
+  _i18nUpdated() {
+    if (this.promptPlaceholder === this._i18nPromptPlaceholder) {
+      this.promptPlaceholder = this.t.promptPlaceholder;
+      this._i18nPromptPlaceholder = this.promptPlaceholder;
+    }
   }
 
   /**

@@ -1,4 +1,11 @@
 {
   "readMore": "더 읽기",
-  "home": "홈"
+  "home": "홈",
+  "anchorLinkCopied": "앵커 링크가 복사되었습니다!",
+  "skipToContent": "본문으로 건너뛰기",
+  "changeTheme": "테마 변경",
+  "siteSections": "사이트 섹션",
+  "pageOfTotal": "{total}페이지 중 {current}페이지",
+  "siteGenerated": "사이트 생성일: {date}",
+  "licenseGraphic": "{license} 그래픽"
 }

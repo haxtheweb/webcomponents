@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Praca ucznia",
   "openInNewWindow": "Otwórz w nowym oknie",
-  "submitted": "Przesłano"
+  "submitted": "Przesłano",
+  "previousStudent": "Poprzedni uczeń",
+  "nextStudent": "Następny uczeń",
+  "previousAssignment": "Poprzednie zadanie",
+  "nextAssignment": "Następne zadanie"
 }

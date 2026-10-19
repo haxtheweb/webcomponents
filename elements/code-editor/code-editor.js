@@ -2,6 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/code-editor/lib/monaco-element/monaco-element.js";
@@ -15,7 +16,7 @@ import "@haxtheweb/code-editor/lib/monaco-element/monaco-element.js";
  * - monaco is the VS code editor
  * @element code-editor
  */
-class CodeEditor extends SchemaBehaviors(LitElement) {
+class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -120,6 +121,15 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
    */
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      checkItOutOnCodePen: "Check it out on code pen:",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("./locales/", import.meta.url).href,
+    });
     this.codePenData = null;
     this.haxUIElement = true;
     this.value = "";
@@ -188,7 +198,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       <slot hidden></slot>
       ${this.showCodePen
         ? html`<div class="code-pen-container" part="code-pen">
-            <span>Check it out on code pen: </span
+            <span>${this.t.checkItOutOnCodePen} </span
             ><code-pen-button .data="${this.codePenData}"></code-pen-button>
           </div>`
         : ``}

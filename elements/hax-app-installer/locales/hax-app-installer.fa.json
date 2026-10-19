@@ -54,5 +54,6 @@
   "requirementUppercase": "یک حرف بزرگ",
   "requirementLowercase": "یک حرف کوچک",
   "requirementNumber": "یک عدد",
-  "requirementSymbol": "یک نماد"
+  "requirementSymbol": "یک نماد",
+  "haxcmsMascotAlt": "نشان HAXcms جهانگرد"
 }

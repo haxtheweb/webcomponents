@@ -1,4 +1,11 @@
 {
   "readMore": "Lês mear",
-  "home": "Thús"
+  "home": "Thús",
+  "anchorLinkCopied": "Ankerkeppeling kopiearre!",
+  "skipToContent": "Gean nei de ynhâld",
+  "changeTheme": "Tema wizigje",
+  "siteSections": "Websteeseksjes",
+  "pageOfTotal": "Side {current} fan {total}",
+  "siteGenerated": "Webstee generearre: {date}",
+  "licenseGraphic": "Ofbylding fan {license}"
 }

@@ -36,5 +36,7 @@
   "clickToDoAnything": "무엇이든 하려면 클릭하세요!",
   "moreDetails": "자세히 보기",
   "details": "세부사항",
-  "saved": "저장됨"
+  "saved": "저장됨",
+  "opensInNewWindow": "새 창에서 열림",
+  "resultsCount": "결과 {count}개"
 }

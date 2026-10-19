@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klik egin edozer egiteko!",
   "moreDetails": "Xehetasun gehiago",
   "details": "Xehetasunak",
-  "saved": "Gordeta"
+  "saved": "Gordeta",
+  "opensInNewWindow": "Leiho berri batean irekitzen da",
+  "resultsCount": "{count} emaitza"
 }

@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "কোনো ফলাফল নেই",
+  "viewsRecordHeading": "রেকর্ড করুন",
+  "viewsTitleImage": "{title} ছবি",
+  "viewsTitlePreview": "{title} প্রিভিউ",
+  "viewsNoTimelineRecords": "টাইমলাইন দেখানোর জন্য তারিখভিত্তিক কোনো রেকর্ড নেই।",
+  "viewsTimelineTitle": "{title} টাইমলাইন",
+  "viewsNoChartField": "চার্ট দেখানোর জন্য কোনো সংখ্যাসূচক ফিল্ড পাওয়া যায়নি।",
+  "viewsChartingValue": "{value}-এর চার্ট",
+  "viewsChartingValueByLabel": "{label} অনুযায়ী {value}-এর চার্ট",
+  "viewsChartTitle": "{title} চার্ট",
+  "viewsNoTreeRecords": "ট্রি দেখানোর জন্য কোনো স্তরভিত্তিক রেকর্ড নেই।",
+  "viewsNoGalleryRecords": "গ্যালারি দেখানোর জন্য কোনো ছবির রেকর্ড নেই।",
+  "viewsNoPlaylistRecords": "প্লেলিস্ট দেখানোর জন্য কোনো মিডিয়া রেকর্ড নেই।",
+  "fetchFailed": "আনা ব্যর্থ হয়েছে ({status})",
+  "unableToLoadViewData": "ভিউয়ের ডেটা লোড করা যায়নি।",
+  "noResultsFound": "কোনো ফলাফল পাওয়া যায়নি।",
+  "refreshView": "ভিউ রিফ্রেশ করুন",
+  "breakIntoStaticContent": "স্থির কনটেন্টে ভেঙে দিন",
+  "viewsOpenRecord": "রেকর্ড খুলুন"
+}

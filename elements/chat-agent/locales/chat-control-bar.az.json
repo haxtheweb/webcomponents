@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Jurnalı txt kimi endir",
+  "downloadChatLog": "Söhbət jurnalını endir",
+  "resetChat": "Söhbəti sıfırla",
+  "toggleDataCollection": "Məlumat toplanmasını aç/bağla",
+  "dataCollection": "Məlumat toplanması",
+  "toggleDeveloperMode": "Tərtibatçı rejimini aç/bağla",
+  "exitFullView": "Tam görünüşdən çıx",
+  "enterFullView": "Tam görünüşə keç",
+  "hideInterface": "İnterfeysi gizlət",
+  "resetChatConfirm": "Söhbət sıfırlansın?",
+  "downloadBeforeResetConfirm": "Sıfırlamazdan əvvəl söhbət jurnalı endirilsin?",
+  "dataCollectionOn": "Söhbətləriniz AI modellərimizi öyrətmək üçün istifadə olunacaq",
+  "dataCollectionOff": "Söhbətləriniz AI modellərimizi öyrətmək üçün istifadə olunmayacaq"
+}

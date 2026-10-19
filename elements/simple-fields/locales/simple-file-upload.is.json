@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "Slepptu skrám hér",
+  "uploadQueue": "Upphleðsluröð",
+  "pending": "Í bið",
+  "preparing": "Undirbýr",
+  "uploading": "Hleður upp",
+  "complete": "Lokið",
+  "aborted": "Hætt við",
+  "cancelled": "Afturkallað",
+  "error": "Villa",
+  "errorWithStatus": "Villa: {status}",
+  "cancel": "Hætta við",
+  "cancelUploadOf": "Hætta við upphleðslu á {name}",
+  "retry": "Reyna aftur",
+  "retryUploadOf": "Reyna aftur upphleðslu á {name}",
+  "remove": "Fjarlægja",
+  "removeFromQueue": "Fjarlægja {name} úr röð",
+  "fileTypeNotAccepted": "Skráartegund ekki samþykkt: {name}",
+  "uploadFailed": "Upphleðsla mistókst: {status}",
+  "networkError": "Netvilla"
+}

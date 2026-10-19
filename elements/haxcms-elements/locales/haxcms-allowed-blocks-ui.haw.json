@@ -10,5 +10,9 @@
   "save": "Mālama",
   "noDescription": "ʻAʻohe wehewehe.",
   "details": "Nā kikoʻī",
-  "loadingInventory": "Ke hoʻouka nei i ka papa inoa piha o nā poloka…"
+  "loadingInventory": "Ke hoʻouka nei i ka papa inoa piha o nā poloka…",
+  "selectAllButton": "Koho i nā mea a pau",
+  "deselectAllButton": "Wehe i ke koho ʻana i nā mea a pau",
+  "selectedOfAvailable": "{selected} i koho ʻia / {total} i loaʻa",
+  "savingBlocksFailed": "Ua hāʻule ka mālama ʻana i nā poloka: {error}"
 }

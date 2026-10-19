@@ -1,0 +1,17 @@
+{
+  "editNodes": "નોડ્સ સંપાદિત કરો",
+  "editLines": "રેખાઓ સંપાદિત કરો",
+  "reset": "રીસેટ કરો",
+  "save": "સાચવો",
+  "cancel": "રદ કરો",
+  "delete": "કાઢી નાખો",
+  "type": "પ્રકાર:",
+  "topic": "વિષય",
+  "subsection": "પેટાવિભાગ",
+  "name": "નામ:",
+  "enterName": "નામ દાખલ કરો",
+  "url": "URL:",
+  "enterUrl": "URL દાખલ કરો",
+  "activeNode": "સક્રિય નોડ?",
+  "nodeId": "નોડ {id}"
+}

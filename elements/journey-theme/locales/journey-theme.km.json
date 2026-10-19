@@ -1,4 +1,11 @@
 {
   "readMore": "អានបន្ថែម",
-  "home": "ទំព័រដើម"
+  "home": "ទំព័រដើម",
+  "anchorLinkCopied": "បានចម្លងតំណយុថ្កា!",
+  "skipToContent": "រំលងទៅខ្លឹមសារ",
+  "changeTheme": "ប្ដូរធីម",
+  "siteSections": "ផ្នែកគេហទំព័រ",
+  "pageOfTotal": "ទំព័រ {current} នៃ {total}",
+  "siteGenerated": "គេហទំព័របានបង្កើត៖ {date}",
+  "licenseGraphic": "រូបភាព {license}"
 }

@@ -1,0 +1,14 @@
+{
+  "enterUserName": "Ulanyjy adyny giriziň",
+  "invalidUsernameOrPassword": "Nädogry ulanyjy ady ýa-da parol",
+  "welcomeLetsGo": "Hoş geldiňiz, {username}! Başladyk!",
+  "enterYourUsername": "Ulanyjy adyňyzy giriziň",
+  "username": "Ulanyjy ady",
+  "next": "Indiki",
+  "welcomeBack": "Gaýdyp hoş geldiňiz, {username}!",
+  "notYou": "Siz dälmi?",
+  "enterYourPassword": "Parolyňyzy giriziň",
+  "password": "Parol",
+  "togglePasswordDisplay": "Paroly görkez/gizle",
+  "login": "Giriş"
+}

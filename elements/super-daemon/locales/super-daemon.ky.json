@@ -36,5 +36,7 @@
   "clickToDoAnything": "Бирдеме кылуу үчүн басыңыз!",
   "moreDetails": "Толук маалымат",
   "details": "Маалымат",
-  "saved": "Сакталды"
+  "saved": "Сакталды",
+  "opensInNewWindow": "Жаңы терезеде ачылат",
+  "resultsCount": "{count} натыйжа"
 }

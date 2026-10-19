@@ -1,0 +1,11 @@
+{
+  "playlist": "ಪ್ಲೇಲಿಸ್ಟ್",
+  "carousel": "ಕ್ಯಾರೊಸೆಲ್",
+  "slide": "ಸ್ಲೈಡ್",
+  "slideNumber": "ಸ್ಲೈಡ್ {number}",
+  "slideOfTotal": "ಸ್ಲೈಡ್ {total} ರಲ್ಲಿ {number}",
+  "previousSlide": "ಹಿಂದಿನ ಸ್ಲೈಡ್",
+  "nextSlide": "ಮುಂದಿನ ಸ್ಲೈಡ್",
+  "slidePages": "ಸ್ಲೈಡ್ ಪುಟಗಳು",
+  "goToSlide": "ಸ್ಲೈಡ್ {number} ಗೆ ಹೋಗಿ"
+}

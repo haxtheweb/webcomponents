@@ -1,0 +1,11 @@
+{
+  "theme": "Tema",
+  "active": "Activa",
+  "selected": "Seleccionada",
+  "noPreview": "Sin vista previa",
+  "currentlyActiveAndSelected": "Tema activo y seleccionado actualmente",
+  "currentlyActive": "Tema activo actualmente",
+  "selectedToApplyOnSave": "Tema seleccionado para aplicar al guardar",
+  "themeSelection": "Selección de tema",
+  "noThemesAvailable": "No hay temas disponibles."
+}

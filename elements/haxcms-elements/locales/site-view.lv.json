@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Nav rezultātu",
+  "viewsRecordHeading": "Ierakstīt",
+  "viewsTitleImage": "{title} attēls",
+  "viewsTitlePreview": "{title} priekšskatījums",
+  "viewsNoTimelineRecords": "Laika joslas attēlošanai nav pieejamu ierakstu ar datumiem.",
+  "viewsTimelineTitle": "{title} laika josla",
+  "viewsNoChartField": "Diagrammas attēlošanai netika atrasts skaitlisks lauks.",
+  "viewsChartingValue": "Diagrammā: {value}",
+  "viewsChartingValueByLabel": "Diagrammā: {value} pēc {label}",
+  "viewsChartTitle": "{title} diagramma",
+  "viewsNoTreeRecords": "Koka attēlošanai nav pieejamu hierarhisku ierakstu.",
+  "viewsNoGalleryRecords": "Galerijas attēlošanai nav pieejamu attēlu ierakstu.",
+  "viewsNoPlaylistRecords": "Atskaņošanas saraksta attēlošanai nav pieejamu multivides ierakstu.",
+  "fetchFailed": "Ielāde neizdevās ({status})",
+  "unableToLoadViewData": "Nevar ielādēt skata datus.",
+  "noResultsFound": "Rezultāti nav atrasti.",
+  "refreshView": "Atsvaidzināt skatu",
+  "breakIntoStaticContent": "Pārvērst statiskā saturā",
+  "viewsOpenRecord": "Atvērt ierakstu"
+}

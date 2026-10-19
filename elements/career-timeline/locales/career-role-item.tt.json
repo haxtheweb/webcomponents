@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Вазыйфа исеме",
+  "describeYourRole": "Вазыйфагызны монда тасвирлагыз...",
+  "present": "Тәкъдим итү",
+  "skills": "Күнекмәләр:",
+  "skillsAndMore": "{skills} һәм тагын +{count}",
+  "yearShort": "{count} ел",
+  "yearsShort": "{count} ел",
+  "monthShort": "{count} ай",
+  "monthsShort": "{count} ай"
+}

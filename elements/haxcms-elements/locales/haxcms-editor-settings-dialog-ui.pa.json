@@ -5,5 +5,9 @@
   "buttons": "ਬਟਨ",
   "futureButtonConfiguration": "ਸੰਪਾਦਕ ਬਟਨਾਂ ਦੀ ਕਸਟਮ ਸੰਰਚਨਾ ਜਲਦੀ ਆ ਰਹੀ ਹੈ।",
   "save": "ਸੰਭਾਲੋ",
-  "saving": "ਸੰਭਾਲਿਆ ਜਾ ਰਿਹਾ ਹੈ…"
+  "saving": "ਸੰਭਾਲਿਆ ਜਾ ਰਿਹਾ ਹੈ…",
+  "novice": "ਨਵਾਂ ਸਿੱਖਣ ਵਾਲਾ",
+  "expert": "ਮਾਹਰ",
+  "toolbarPreviewAlt": "{audience} ਸੰਪਾਦਨ ਟੂਲਬਾਰ ਪ੍ਰੀਵਿਊ",
+  "savingEditorSettingsFailed": "ਸੰਪਾਦਕ ਸੈਟਿੰਗਾਂ ਸੰਭਾਲਣਾ ਅਸਫਲ: {error}"
 }

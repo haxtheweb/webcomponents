@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Bài nộp của học sinh",
   "openInNewWindow": "Mở trong cửa sổ mới",
-  "submitted": "Đã nộp"
+  "submitted": "Đã nộp",
+  "previousStudent": "Học sinh trước",
+  "nextStudent": "Học sinh tiếp theo",
+  "previousAssignment": "Bài tập trước",
+  "nextAssignment": "Bài tập tiếp theo"
 }

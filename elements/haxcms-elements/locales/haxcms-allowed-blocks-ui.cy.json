@@ -10,5 +10,9 @@
   "save": "Cadw",
   "noDescription": "Dim disgrifiad ar gael.",
   "details": "Manylion",
-  "loadingInventory": "Yn llwytho'r rhestr lawn o flociau…"
+  "loadingInventory": "Yn llwytho'r rhestr lawn o flociau…",
+  "selectAllButton": "Dewis y Cyfan",
+  "deselectAllButton": "Dad-ddewis y Cyfan",
+  "selectedOfAvailable": "{selected} wedi'u dewis / {total} ar gael",
+  "savingBlocksFailed": "Methodd cadw'r blociau: {error}"
 }

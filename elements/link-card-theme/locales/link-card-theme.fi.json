@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Ankkurilinkki kopioitu!",
+  "skipToContent": "Siirry sisältöön",
+  "changePalette": "Vaihda palettia",
+  "primaryLinks": "Ensisijaiset linkit",
+  "socialLinks": "Sosiaaliset linkit",
+  "myProfile": "Profiilini",
+  "profileImageOf": "Käyttäjän {name} profiilikuva",
+  "profileImage": "Profiilikuva",
+  "linkCardProfile": "Linkkikorttiprofiili",
+  "emptyStateLinks": "Lisää ylätason valikkokohteita site.json-tiedostoon näyttääksesi linkkipainikkeet.",
+  "titleOnPlatform": "{title} palvelussa {platform}",
+  "openPlatform": "Avaa {platform}",
+  "paletteUpdated": "Väripaletti päivitetty vaihtoehtoon {number}."
+}

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Attiecinājums",
+  "licenseBySa": "Attiecinājums-Līdzīga koplietošana",
+  "licenseByNd": "Attiecinājums-Bez atvasinājumiem",
+  "licenseByNc": "Attiecinājums-Nekomerciāls",
+  "licenseByNcSa": "Attiecinājums-Nekomerciāls-Līdzīga koplietošana",
+  "licenseByNcNd": "Attiecinājums-Nekomerciāls-Bez atvasinājumiem",
+  "citationWithLicense": "{title}, autors: {creator}, licencēts saskaņā ar {license}. Skatīts {date}.",
+  "citationWithoutLicense": "{title}, autors: {creator}. Skatīts {date}.",
+  "licenseGraphic": "{license} grafika"
+}

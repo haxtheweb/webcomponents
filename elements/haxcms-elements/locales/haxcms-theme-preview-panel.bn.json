@@ -1,0 +1,12 @@
+{
+  "showThemePreview": "থিম প্রিভিউ দেখান",
+  "hideThemePreview": "থিম প্রিভিউ লুকান",
+  "themePreviewPanel": "থিম প্রিভিউ প্যানেল",
+  "themePreview": "থিম প্রিভিউ",
+  "themePreviewDescription": "ব্রাউজ করার সময় সাময়িকভাবে একটি থিম ও প্যালেট চেষ্টা করে দেখুন। আপনার আগের চেহারা ফিরিয়ে আনতে বাতিল ব্যবহার করুন।",
+  "loadingThemes": "থিম লোড হচ্ছে...",
+  "theme": "থিম",
+  "palette": "প্যালেট",
+  "cancel": "বাতিল করুন",
+  "openAppearanceSettings": "চেহারার সেটিংস খুলুন"
+}

@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "アンカーリンクをコピーしました!",
+  "skipToContent": "コンテンツへスキップ",
+  "siteHome": "サイトのホーム",
+  "mainNavigation": "メインナビゲーション",
+  "toggleMenu": "メニューを切り替え",
+  "changeTheme": "テーマを変更",
+  "breadcrumb": "パンくずリスト",
+  "tagFilter": "タグで絞り込み:",
+  "all": "すべて",
+  "pageNumberOfTotal": "ページ番号: {current} / {total}",
+  "siteGenerated": "サイト生成日: {date}",
+  "copyright": "著作権: {year} {author}",
+  "viewContentByTag": "タグ別にコンテンツを表示",
+  "licenseGraphic": "{license} のグラフィック"
+}

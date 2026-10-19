@@ -1,0 +1,18 @@
+{
+  "copy": "Kopii",
+  "download": "Elŝuti",
+  "archive": "Arkivigi",
+  "copyOperation": "kopii",
+  "downloadOperation": "elŝuti",
+  "archiveOperation": "arkivigi",
+  "created": "kreita",
+  "updated": "ĝisdatigita",
+  "pages": "paĝoj",
+  "url": "URL",
+  "confirm": "Konfirmi",
+  "cancel": "Nuligi",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Ĉu vi certas, ke vi volas {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} sukcesis!",
+  "siteOperationFailed": "{siteName}: {operation} malsukcesis"
+}

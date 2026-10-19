@@ -7,5 +7,7 @@
   "userAccessGranted": "A ti fún olùmúlò ní ààyè ní àṣeyọrí!",
   "userNotFound": "A kò rí olùmúlò tàbí kò ní àṣẹ",
   "loadingAddingUser": "Ó ń ṣàfikún olùmúlò...",
-  "grantAccessTo": "Fún ní ààyè:"
+  "grantAccessTo": "Fún ní ààyè:",
+  "networkErrorTryAgain": "Àṣìṣe nẹ́tíwọ́ọ̀kì ṣẹlẹ̀. Jọ̀wọ́ gbìyànjú lẹ́ẹ̀kan sí i.",
+  "characterWillAppear": "Ẹ̀dá-ìtàn yóò fara hàn nígbà tí o bá tẹ orúkọ olùlò"
 }

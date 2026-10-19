@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Agab vum Schüler",
   "openInNewWindow": "An enger neier Fënster opmaachen",
-  "submitted": "Agereecht"
+  "submitted": "Agereecht",
+  "previousStudent": "Virege Schüler",
+  "nextStudent": "Nächste Schüler",
+  "previousAssignment": "Viregt Aufgab",
+  "nextAssignment": "Nächst Aufgab"
 }

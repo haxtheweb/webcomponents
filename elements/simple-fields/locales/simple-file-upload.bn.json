@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "এখানে ফাইল ছাড়ুন",
+  "uploadQueue": "আপলোডের সারি",
+  "pending": "অপেক্ষমাণ",
+  "preparing": "প্রস্তুত হচ্ছে",
+  "uploading": "আপলোড হচ্ছে",
+  "complete": "সম্পন্ন",
+  "aborted": "বাতিল হয়েছে",
+  "cancelled": "বাতিল করা হয়েছে",
+  "error": "ত্রুটি",
+  "errorWithStatus": "ত্রুটি: {status}",
+  "cancel": "বাতিল করুন",
+  "cancelUploadOf": "{name}-এর আপলোড বাতিল করুন",
+  "retry": "আবার চেষ্টা করুন",
+  "retryUploadOf": "{name}-এর আপলোড আবার চেষ্টা করুন",
+  "remove": "সরান",
+  "removeFromQueue": "সারি থেকে {name} সরান",
+  "fileTypeNotAccepted": "ফাইলের ধরন গ্রহণযোগ্য নয়: {name}",
+  "uploadFailed": "আপলোড ব্যর্থ: {status}",
+  "networkError": "নেটওয়ার্ক ত্রুটি"
+}

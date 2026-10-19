@@ -1,3 +1,8 @@
 {
-  "title": "Референци"
+  "title": "Референци",
+  "export": "Извези",
+  "exportCitations": "Извези цитати",
+  "copy": "Копирај",
+  "exportCitationFormat": "Формат за извоз на цитати",
+  "selectCitationFormatBelow": "Изберете формат на цитирање подолу"
 }

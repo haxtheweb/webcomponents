@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Akkeristengill afritaður!",
+  "skipToContent": "Fara beint í efni",
+  "changePalette": "Skipta um litaspjald",
+  "primaryLinks": "Helstu tenglar",
+  "socialLinks": "Samfélagsmiðlatenglar",
+  "myProfile": "Prófíllinn minn",
+  "profileImageOf": "Prófílmynd {name}",
+  "profileImage": "Prófílmynd",
+  "linkCardProfile": "Tenglaspjaldsprófíll",
+  "emptyStateLinks": "Bættu við efstu valmyndaratriðum í site.json til að birta tenglahnappa.",
+  "titleOnPlatform": "{title} á {platform}",
+  "openPlatform": "Opna {platform}",
+  "paletteUpdated": "Litaspjaldi breytt í valkost {number}."
+}

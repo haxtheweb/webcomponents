@@ -1,0 +1,12 @@
+{
+  "scanningRegistry": "Kuskenwa iRejista yeWeb Component ukufumana ezinye izinto ze-HAX..",
+  "enabled": "Yenziwe isebenze",
+  "disabled": "Kuvaliwe",
+  "details": "Iinkcukacha",
+  "tags": "Iithegi:",
+  "tagName": "Igama lethegi:",
+  "developerUsage": "Ukusetyenziswa ngumphuhlisi:",
+  "demo": "Umboniso",
+  "popUpDemo": "Umboniso oqhumayo",
+  "demoOf": "Umboniso we-{tag}"
+}

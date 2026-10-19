@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- výchozí je první stránka --",
+  "details": "Podrobnosti",
+  "title": "Název",
+  "titleDescription": "Název webu",
+  "homePage": "Domovská stránka",
+  "homePageDescription": "Stránka použitá jako výchozí úvodní / domovská stránka",
+  "advanced": "Pokročilé",
+  "serviceWorker": "Přidat service worker k dynamické stránce",
+  "serviceWorkerDescription": "Vypněte, pokud mají uživatelé vždy okamžitě vidět nejnovější výstup serveru.",
+  "forceBrowserUpgrade": "Vynutit aktualizaci prohlížeče",
+  "forceBrowserUpgradeDescription": "Před načtením webu vyžadovat průběžně aktualizované prohlížeče.",
+  "unableToLoadSiteDetails": "Podrobnosti webu nelze načíst.",
+  "noSiteDetails": "Nejsou k dispozici žádné podrobnosti webu.",
+  "save": "Uložit"
+}

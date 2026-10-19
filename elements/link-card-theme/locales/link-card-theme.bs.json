@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "Link sidra kopiran!",
+  "skipToContent": "Preskoči na sadržaj",
+  "changePalette": "Promijeni paletu",
+  "primaryLinks": "Primarni linkovi",
+  "socialLinks": "Društveni linkovi",
+  "myProfile": "Moj profil",
+  "profileImageOf": "Profilna slika: {name}",
+  "profileImage": "Profilna slika",
+  "linkCardProfile": "Profil kartice linkova",
+  "emptyStateLinks": "Dodajte stavke menija najvišeg nivoa u site.json za prikaz dugmadi linkova.",
+  "titleOnPlatform": "{title} na {platform}",
+  "openPlatform": "Otvori {platform}",
+  "paletteUpdated": "Paleta boja ažurirana na opciju {number}."
+}

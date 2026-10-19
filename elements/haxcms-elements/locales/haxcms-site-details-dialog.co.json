@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- predefinitu à a prima pagina --",
+  "details": "Ditaglii",
+  "title": "Titulu",
+  "titleDescription": "Nome di u situ",
+  "homePage": "Pagina d'accolta",
+  "homePageDescription": "Pagina da aduprà cum'è pagina d'arrivu / d'accolta predefinita",
+  "advanced": "Avanzatu",
+  "serviceWorker": "Aghjunghje un service worker à a pagina dinamica",
+  "serviceWorkerDescription": "Disattivate questu s'è l'utilizatori devenu sempre vede subitu l'ultimu risultatu di u servitore.",
+  "forceBrowserUpgrade": "Furzà l'aghjurnamentu di u navigatore",
+  "forceBrowserUpgradeDescription": "Esige navigatori sempre à ghjornu nanzu di caricà u situ.",
+  "unableToLoadSiteDetails": "Impussibule di caricà i dettagli di u situ.",
+  "noSiteDetails": "Nisunu dettagliu di u situ hè dispunibule.",
+  "save": "Salvà"
+}

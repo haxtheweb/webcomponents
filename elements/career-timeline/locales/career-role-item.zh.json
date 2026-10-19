@@ -1,0 +1,11 @@
+{
+  "roleTitle": "职位名称",
+  "describeYourRole": "在此描述你的职位...",
+  "present": "展示",
+  "skills": "技能：",
+  "skillsAndMore": "{skills} 及另外 {count} 项",
+  "yearShort": "{count} 年",
+  "yearsShort": "{count} 年",
+  "monthShort": "{count} 个月",
+  "monthsShort": "{count} 个月"
+}

@@ -43,5 +43,22 @@
   "emailAddress": "Emondo ñanduti marandu ko temimbo'épe",
   "notes": "Jehai'i",
   "interests": "Mba'e oipotáva",
-  "profileImageFor": "Ta'ãnga perfil rehegua:"
+  "profileImageFor": "Ta'ãnga perfil rehegua:",
+  "fileSystem": "Marandurenda apopyvusu",
+  "googleDocs": "Google docs",
+  "urlEndpointJSON": "URL rape (JSON)",
+  "jsonDataBlob": "JSON mba'ekuaarã ñembyaty",
+  "additionalCriteriaFeedback": "{criteria} mbohovái ambue",
+  "outOfPoints": "/ {points} pts",
+  "feedbackReport": "Mbohovái marandu",
+  "criteriaDetails": "Jehechakuaarã mba'emimi",
+  "yourFeedback": "Nde mbohovái",
+  "additionalCriteriaFeedbackHeading": "Jehechakuaarã mbohovái ambue",
+  "yourTotalScore": "Nde papaha opavave",
+  "scoreOutOfPoints": "{score} / {points} pts",
+  "studentAssignment": "{student} rembiapo {assignment}",
+  "downloadPDF": "Mboguejy PDF",
+  "displayMode1": "Reko 1",
+  "displayMode2": "Reko 2",
+  "twoWindows": "Mokõi ovetã"
 }

@@ -22,6 +22,13 @@
   "unpublish": "اشاعت ختم ڪريو",
   "savePage": "صفحو محفوظ ڪريو",
   "cancel": "منسوخ ڪريو",
+  "delete": "ڊليٽ ڪريو",
+  "editTitle": "عنوان ايڊٽ ڪريو",
+  "editIcon": "آئڪن ايڊٽ ڪريو",
+  "agent": "ايجنٽ",
+  "pageLockedUnlockToEdit": "هي صفحو لاڪ ٿيل آهي. ايڊٽ ڪرڻ لاءِ پهريان ان کي کوليو.",
+  "pageLockedUnlockToChangePublishStatus": "هي صفحو لاڪ ٿيل آهي. اشاعت جي حالت بدلائڻ لاءِ پهريان ان کي کوليو.",
+  "pageLockedUnlockToDelete": "هي صفحو لاڪ ٿيل آهي. ختم ڪرڻ لاءِ پهريان ان کي کوليو.",
   "pageDetails": "صفحي جا تفصيل",
   "clickToUnlock": "کولڻ لاءِ ڪلڪ ڪريو"
 }

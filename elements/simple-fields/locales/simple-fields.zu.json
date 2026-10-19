@@ -9,5 +9,8 @@
   "record": "Qopha",
   "pause": "Misa ukuqopha",
   "stopSave": "Misa futhi ulondoloze",
-  "clickToTakePhoto": "Chofoza ukuze uthathe isithombe"
+  "clickToTakePhoto": "Chofoza ukuze uthathe isithombe",
+  "url": "URL",
+  "open": "vula",
+  "removeValue": "Susa {value}"
 }

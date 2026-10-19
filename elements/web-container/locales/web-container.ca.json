@@ -1,0 +1,8 @@
+{
+  "loading": "S'està carregant",
+  "settingUpContainer": "S'està configurant el contenidor",
+  "runningCommands": "S'estan executant ordres",
+  "installing": "S'està instal·lant..",
+  "runningStart": "S'està executant l'inici..",
+  "webContainerPreview": "Previsualització del contenidor web"
+}

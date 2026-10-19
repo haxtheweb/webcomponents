@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Tiada hasil",
+  "viewsRecordHeading": "Rakam",
+  "viewsTitleImage": "Imej {title}",
+  "viewsTitlePreview": "Pratonton {title}",
+  "viewsNoTimelineRecords": "Tiada rekod berorientasikan tarikh tersedia untuk paparan garis masa.",
+  "viewsTimelineTitle": "Garis masa {title}",
+  "viewsNoChartField": "Tiada medan berangka dikesan untuk paparan carta.",
+  "viewsChartingValue": "Mencartakan {value}",
+  "viewsChartingValueByLabel": "Mencartakan {value} mengikut {label}",
+  "viewsChartTitle": "Carta {title}",
+  "viewsNoTreeRecords": "Tiada rekod berhierarki tersedia untuk paparan pepohon.",
+  "viewsNoGalleryRecords": "Tiada rekod imej tersedia untuk paparan galeri.",
+  "viewsNoPlaylistRecords": "Tiada rekod media tersedia untuk paparan senarai main.",
+  "fetchFailed": "Pengambilan gagal ({status})",
+  "unableToLoadViewData": "Tidak dapat memuatkan data paparan.",
+  "noResultsFound": "Tiada hasil ditemui.",
+  "refreshView": "Muat semula paparan",
+  "breakIntoStaticContent": "Pecahkan kepada kandungan statik",
+  "viewsOpenRecord": "Buka rekod"
+}

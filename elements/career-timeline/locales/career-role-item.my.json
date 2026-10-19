@@ -1,0 +1,11 @@
+{
+  "roleTitle": "ရာထူး ခေါင်းစဉ်",
+  "describeYourRole": "သင့်ရာထူးကို ဤနေရာတွင် ဖော်ပြပါ...",
+  "present": "တင်ပြရန်",
+  "skills": "ကျွမ်းကျင်မှုများ:",
+  "skillsAndMore": "{skills} နှင့် နောက်ထပ် +{count} ခု",
+  "yearShort": "{count} နှစ်",
+  "yearsShort": "{count} နှစ်",
+  "monthShort": "{count} လ",
+  "monthsShort": "{count} လ"
+}

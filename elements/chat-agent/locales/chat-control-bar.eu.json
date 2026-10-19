@@ -1,0 +1,15 @@
+{
+  "downloadLogAsTxt": "Deskargatu erregistroa txt gisa",
+  "downloadChatLog": "Deskargatu txataren erregistroa",
+  "resetChat": "Berrezarri txata",
+  "toggleDataCollection": "Aktibatu/desaktibatu datu-bilketa",
+  "dataCollection": "Datu-bilketa",
+  "toggleDeveloperMode": "Aktibatu/desaktibatu garatzaile modua",
+  "exitFullView": "Irten ikuspegi osotik",
+  "enterFullView": "Sartu ikuspegi osoan",
+  "hideInterface": "Ezkutatu interfazea",
+  "resetChatConfirm": "Berrezarri txata?",
+  "downloadBeforeResetConfirm": "Txataren erregistroa deskargatu nahi duzu berrezarri aurretik?",
+  "dataCollectionOn": "Zure elkarrizketak gure AI ereduak entrenatzeko erabiliko dira",
+  "dataCollectionOff": "Zure elkarrizketak ez dira gure AI ereduak entrenatzeko erabiliko"
+}

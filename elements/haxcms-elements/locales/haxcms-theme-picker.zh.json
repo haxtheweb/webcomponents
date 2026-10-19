@@ -1,0 +1,11 @@
+{
+  "theme": "主题",
+  "active": "当前使用",
+  "selected": "已选择",
+  "noPreview": "无预览",
+  "currentlyActiveAndSelected": "当前使用且已选择的主题",
+  "currentlyActive": "当前使用的主题",
+  "selectedToApplyOnSave": "已选择、将在保存时应用的主题",
+  "themeSelection": "主题选择",
+  "noThemesAvailable": "没有可用的主题。"
+}

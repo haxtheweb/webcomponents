@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klikšķiniet, lai darītu jebko!",
   "moreDetails": "Vairāk detaļu",
   "details": "Detaļas",
-  "saved": "Saglabāts"
+  "saved": "Saglabāts",
+  "opensInNewWindow": "Atveras jaunā logā",
+  "resultsCount": "Rezultāti: {count}"
 }

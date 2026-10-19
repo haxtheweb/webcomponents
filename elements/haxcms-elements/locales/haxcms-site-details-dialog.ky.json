@@ -1,0 +1,16 @@
+{
+  "defaultToFirstPage": "-- демейки боюнча биринчи барак --",
+  "details": "Толук маалымат",
+  "title": "Аталышы",
+  "titleDescription": "Сайттын аталышы",
+  "homePage": "Башкы барак",
+  "homePageDescription": "Демейки кирүү / башкы барак катары колдонулуучу барак",
+  "advanced": "Кошумча",
+  "serviceWorker": "Динамикалык баракка service worker кошуу",
+  "serviceWorkerDescription": "Колдонуучулар сервердин акыркы натыйжасын дароо көрүшү керек болсо, муну өчүрүңүз.",
+  "forceBrowserUpgrade": "Браузерди жаңыртууну мажбурлоо",
+  "forceBrowserUpgradeDescription": "Сайтты жүктөөдөн мурун дайыма жаңыланып туруучу браузерлерди талап кылуу.",
+  "unableToLoadSiteDetails": "Сайттын маалыматтарын жүктөө мүмкүн болбоду.",
+  "noSiteDetails": "Сайттын маалыматтары жок.",
+  "save": "Сактоо"
+}

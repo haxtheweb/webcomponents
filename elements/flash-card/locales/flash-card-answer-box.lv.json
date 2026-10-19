@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Jūsu atbilde",
   "checkAnswer": "Pārbaudīt atbildi",
-  "retry": "Mēģināt vēlreiz"
+  "retry": "Mēģināt vēlreiz",
+  "correct": "Pareizi!",
+  "incorrect": "Nepareizi!",
+  "correctAnswer": "Pareizā atbilde: {answer}"
 }

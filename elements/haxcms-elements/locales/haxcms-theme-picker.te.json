@@ -1,0 +1,11 @@
+{
+  "theme": "థీమ్",
+  "active": "సక్రియం",
+  "selected": "ఎంచుకోబడింది",
+  "noPreview": "ప్రివ్యూ లేదు",
+  "currentlyActiveAndSelected": "ప్రస్తుతం సక్రియంగా ఉన్న మరియు ఎంచుకున్న థీమ్",
+  "currentlyActive": "ప్రస్తుతం సక్రియంగా ఉన్న థీమ్",
+  "selectedToApplyOnSave": "సేవ్ చేసినప్పుడు వర్తింపజేయడానికి ఎంచుకున్న థీమ్",
+  "themeSelection": "థీమ్ ఎంపిక",
+  "noThemesAvailable": "థీమ్‌లు ఏవీ అందుబాటులో లేవు."
+}

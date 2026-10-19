@@ -1,0 +1,17 @@
+{
+  "editNodes": "Knoten bearbeiten",
+  "editLines": "Linien bearbeiten",
+  "reset": "Zurücksetzen",
+  "save": "Speichern",
+  "cancel": "Abbrechen",
+  "delete": "Löschen",
+  "type": "Typ:",
+  "topic": "Thema",
+  "subsection": "Unterabschnitt",
+  "name": "Name:",
+  "enterName": "Namen eingeben",
+  "url": "URL:",
+  "enterUrl": "URL eingeben",
+  "activeNode": "Aktiver Knoten?",
+  "nodeId": "Knoten {id}"
+}

@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Uvedenie autora",
+  "licenseBySa": "Uvedenie autora – Zachovať licenciu",
+  "licenseByNd": "Uvedenie autora – Bez odvodených diel",
+  "licenseByNc": "Uvedenie autora – Nekomerčné",
+  "licenseByNcSa": "Uvedenie autora – Nekomerčné – Zachovať licenciu",
+  "licenseByNcNd": "Uvedenie autora – Nekomerčné – Bez odvodených diel",
+  "citationWithLicense": "{title}, autor: {creator}, licencované pod {license}. Prístup: {date}.",
+  "citationWithoutLicense": "{title}, autor: {creator}. Prístup: {date}.",
+  "licenseGraphic": "Grafika {license}"
+}

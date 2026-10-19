@@ -36,5 +36,7 @@
   "clickToDoAnything": "ဘာလုပ်ချင်လုပ် နှိပ်ပါ!",
   "moreDetails": "နောက်ထပ်အသေးအစိတ်",
   "details": "အသေးအစိတ်",
-  "saved": "သိမ်းဆည်းပြီး"
+  "saved": "သိမ်းဆည်းပြီး",
+  "opensInNewWindow": "ဝင်းဒိုးအသစ်တွင် ဖွင့်သည်",
+  "resultsCount": "ရလဒ် {count} ခု"
 }

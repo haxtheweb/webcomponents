@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "نتیجه‌ای یافت نشد",
+  "viewsRecordHeading": "ضبط",
+  "viewsTitleImage": "تصویر {title}",
+  "viewsTitlePreview": "پیش‌نمایش {title}",
+  "viewsNoTimelineRecords": "هیچ رکورد تاریخ‌محوری برای نمایش خط زمانی موجود نیست.",
+  "viewsTimelineTitle": "خط زمانی {title}",
+  "viewsNoChartField": "هیچ فیلد عددی برای نمایش نمودار شناسایی نشد.",
+  "viewsChartingValue": "نمودار {value}",
+  "viewsChartingValueByLabel": "نمودار {value} بر اساس {label}",
+  "viewsChartTitle": "نمودار {title}",
+  "viewsNoTreeRecords": "هیچ رکورد سلسله‌مراتبی برای نمایش درختی موجود نیست.",
+  "viewsNoGalleryRecords": "هیچ رکورد تصویری برای نمایش گالری موجود نیست.",
+  "viewsNoPlaylistRecords": "هیچ رکورد رسانه‌ای برای نمایش فهرست پخش موجود نیست.",
+  "fetchFailed": "دریافت ناموفق بود ({status})",
+  "unableToLoadViewData": "بارگذاری داده نما ممکن نشد.",
+  "noResultsFound": "نتیجه‌ای یافت نشد.",
+  "refreshView": "تازه‌سازی نما",
+  "breakIntoStaticContent": "تبدیل به محتوای ایستا",
+  "viewsOpenRecord": "باز کردن رکورد"
+}

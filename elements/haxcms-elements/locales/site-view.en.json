@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "No results",
+  "viewsRecordHeading": "Record",
+  "viewsTitleImage": "{title} image",
+  "viewsTitlePreview": "{title} preview",
+  "viewsNoTimelineRecords": "No date-oriented records available for timeline rendering.",
+  "viewsTimelineTitle": "{title} timeline",
+  "viewsNoChartField": "No numeric field detected for chart rendering.",
+  "viewsChartingValue": "Charting {value}",
+  "viewsChartingValueByLabel": "Charting {value} by {label}",
+  "viewsChartTitle": "{title} chart",
+  "viewsNoTreeRecords": "No hierarchical records available for tree rendering.",
+  "viewsNoGalleryRecords": "No image records available for gallery rendering.",
+  "viewsNoPlaylistRecords": "No media records available for playlist rendering.",
+  "fetchFailed": "Fetch failed ({status})",
+  "unableToLoadViewData": "Unable to load view data.",
+  "noResultsFound": "No results found.",
+  "refreshView": "Refresh view",
+  "breakIntoStaticContent": "Break into static content",
+  "viewsOpenRecord": "Open record"
+}

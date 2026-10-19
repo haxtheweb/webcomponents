@@ -1,0 +1,15 @@
+{
+  "anchorLinkCopied": "ആങ്കർ ലിങ്ക് പകർത്തി!",
+  "skipToContent": "ഉള്ളടക്കത്തിലേക്ക് പോകുക",
+  "changePalette": "പാലറ്റ് മാറ്റുക",
+  "primaryLinks": "പ്രാഥമിക ലിങ്കുകൾ",
+  "socialLinks": "സോഷ്യൽ ലിങ്കുകൾ",
+  "myProfile": "എന്റെ പ്രൊഫൈൽ",
+  "profileImageOf": "{name} പ്രൊഫൈൽ ചിത്രം",
+  "profileImage": "പ്രൊഫൈൽ ചിത്രം",
+  "linkCardProfile": "ലിങ്ക് കാർഡ് പ്രൊഫൈൽ",
+  "emptyStateLinks": "ലിങ്ക് ബട്ടണുകൾ റെൻഡർ ചെയ്യാൻ site.json-ൽ ടോപ്പ്-ലെവൽ മെനു ഇനങ്ങൾ ചേർക്കുക.",
+  "titleOnPlatform": "{platform}-ൽ {title}",
+  "openPlatform": "{platform} തുറക്കുക",
+  "paletteUpdated": "കളർ പാലറ്റ് ഓപ്ഷൻ {number}-ലേക്ക് അപ്ഡേറ്റ് ചെയ്തു."
+}

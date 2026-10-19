@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Taitara Tūranga",
+  "describeYourRole": "Whakaahuahia tō tūranga ki konei...",
+  "present": "Whakaatu",
+  "skills": "Ngā pūkenga:",
+  "skillsAndMore": "{skills} me ētahi atu e +{count}",
+  "yearShort": "{count} tau",
+  "yearsShort": "{count} tau",
+  "monthShort": "{count} mrm",
+  "monthsShort": "{count} mrm"
+}

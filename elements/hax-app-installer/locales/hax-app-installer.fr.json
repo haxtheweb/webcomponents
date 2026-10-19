@@ -54,5 +54,6 @@
   "requirementUppercase": "Une lettre majuscule",
   "requirementLowercase": "Une lettre minuscule",
   "requirementNumber": "Un chiffre",
-  "requirementSymbol": "Un symbole"
+  "requirementSymbol": "Un symbole",
+  "haxcmsMascotAlt": "Mascotte Globe-trotteur de HAXcms"
 }

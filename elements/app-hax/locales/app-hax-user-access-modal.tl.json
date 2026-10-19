@@ -7,5 +7,7 @@
   "userAccessGranted": "Matagumpay na nabigyan ng access ang user!",
   "userNotFound": "Hindi nahanap ang user o walang pahintulot",
   "loadingAddingUser": "Idinadagdag ang user...",
-  "grantAccessTo": "Bigyan ng access si:"
+  "grantAccessTo": "Bigyan ng access si:",
+  "networkErrorTryAgain": "Nagkaroon ng error sa network. Pakisubukang muli.",
+  "characterWillAppear": "Lilitaw ang karakter kapag naglagay ka ng username"
 }

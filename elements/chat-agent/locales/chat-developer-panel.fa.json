@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "جدول کنسول گزارش گفتگوی کاربر",
+  "consoleTableUserText": "console.table() گزارش گفتگوی کاربر",
+  "consoleTableUserTooltip": "چاپ گزارش گفتگوی کاربر به‌صورت جدول در کنسول",
+  "consoleTableMerlinLabel": "جدول کنسول گزارش گفتگوی merlin",
+  "consoleTableMerlinText": "console.table() گزارش گفتگوی merlin",
+  "consoleTableMerlinTooltip": "چاپ گزارش گفتگوی Merlin به‌صورت جدول در کنسول",
+  "consoleTableAllLabel": "جدول کنسول کل گزارش گفتگو",
+  "consoleTableAllText": "console.table() کل گزارش گفتگو",
+  "consoleTableAllTooltip": "چاپ کل گزارش گفتگو به‌صورت جدول در کنسول",
+  "downloadChatLogJson": "بارگیری گزارش گفتگو به‌صورت .json",
+  "downloadChatLogJsonTooltip": "بارگیری گزارش گفتگو به‌صورت .json"
+}

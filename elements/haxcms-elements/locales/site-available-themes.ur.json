@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "تھیمز لوڈ کرنا ناکام: {error}",
+  "noThemesForView": "اس ویو کے لیے کوئی تھیم دستیاب نہیں۔",
+  "active": "فعال",
+  "themeIsActive": "{name} تھیم فعال ہے",
+  "applyTheme": "{name} تھیم لاگو کریں",
+  "apply": "لاگو کریں",
+  "preview": "پیش منظر",
+  "name": "نام",
+  "element": "عنصر",
+  "description": "تفصیل",
+  "action": "عمل",
+  "loadingThemes": "تھیمز لوڈ ہو رہے ہیں...",
+  "themesShown": "{count} تھیمز دکھائے گئے",
+  "themesShownDefaults": "{count} تھیمز دکھائے گئے (app-hax کے طے شدہ)",
+  "availableHaxcmsThemes": "دستیاب HAXcms تھیمز",
+  "gallery": "گیلری",
+  "table": "جدول"
+}

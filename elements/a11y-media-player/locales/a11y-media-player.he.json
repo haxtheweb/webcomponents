@@ -34,5 +34,6 @@
   "youTubeLoadingLabel": "טוען...",
   "youTubeStartLoading": "לחצו על ניגון.",
   "youTubeTranscriptLabel": "התמליל ייטען לאחר שהמדיה תתחיל להתנגן.",
-  "audioDescriptionLabel": "תיאור קולי"
+  "audioDescriptionLabel": "תיאור קולי",
+  "openOnYouTube": "פתיחה ב-YouTube"
 }

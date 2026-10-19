@@ -36,5 +36,7 @@
   "clickToDoAnything": "Klik om enigiets te doen!",
   "moreDetails": "Meer besonderhede",
   "details": "Besonderhede",
-  "saved": "Gestoor"
+  "saved": "Gestoor",
+  "opensInNewWindow": "Maak in 'n nuwe venster oop",
+  "resultsCount": "{count} resultate"
 }

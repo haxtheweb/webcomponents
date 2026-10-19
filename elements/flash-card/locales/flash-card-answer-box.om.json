@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Deebii kee",
   "checkAnswer": "Deebii mirkaneessi",
-  "retry": "Irra deebi'ii yaali"
+  "retry": "Irra deebi'ii yaali",
+  "correct": "Sirrii!",
+  "incorrect": "Dogoggora!",
+  "correctAnswer": "Deebii Sirrii: {answer}"
 }

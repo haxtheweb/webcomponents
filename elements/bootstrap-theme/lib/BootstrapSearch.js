@@ -2,10 +2,23 @@ import { LitElement, html, css } from "lit";
 import { autorun, toJS } from "mobx";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { adoptBootstrapStylesheet } from "./BootstrapStylesheetManager.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-class BootstrapSearch extends LitElement {
+class BootstrapSearch extends I18NMixin(LitElement) {
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      searchSiteContent: "Search site content",
+      typeToSearch: "Type to search",
+      searchInstructions:
+        "Type to search site content. Press Enter to search or Escape to clear.",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this._bootstrapPath = this._resolveBootstrapStylesheetPath();
     this.searchText = "";
   }
@@ -60,20 +73,20 @@ class BootstrapSearch extends LitElement {
     return html`
       <form class="d-flex" role="search" @submit=${this.handleSubmit}>
         <label for="bootstrap-search-input" class="visually-hidden"
-          >Search site content</label
+          >${this.t.searchSiteContent}</label
         >
         <input
           id="bootstrap-search-input"
           class="form-control mr-2"
           type="search"
-          placeholder="Type to search"
-          aria-label="Search site content"
+          placeholder="${this.t.typeToSearch}"
+          aria-label="${this.t.searchSiteContent}"
           aria-describedby="search-instructions"
           @input=${this.inputChanged}
           @keydown=${this.handleKeydown}
         />
         <div id="search-instructions" class="visually-hidden">
-          Type to search site content. Press Enter to search or Escape to clear.
+          ${this.t.searchInstructions}
         </div>
       </form>
     `;

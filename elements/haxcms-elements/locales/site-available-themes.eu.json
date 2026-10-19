@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Ezin izan dira gaiak kargatu: {error}",
+  "noThemesForView": "Ez dago gairik erabilgarri ikuspegi honetarako.",
+  "active": "Aktiboa",
+  "themeIsActive": "{name} gaia aktibo dago",
+  "applyTheme": "Aplikatu {name} gaia",
+  "apply": "Aplikatu",
+  "preview": "Aurrebista",
+  "name": "Izena",
+  "element": "Elementua",
+  "description": "Deskribapena",
+  "action": "Ekintza",
+  "loadingThemes": "Gaiak kargatzen...",
+  "themesShown": "{count} gai erakusten",
+  "themesShownDefaults": "{count} gai erakusten (app-hax lehenespenak)",
+  "availableHaxcmsThemes": "HAXcms gai erabilgarriak",
+  "gallery": "Galeria",
+  "table": "Taula"
+}

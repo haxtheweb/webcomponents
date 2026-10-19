@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Innlat hjá næmingi",
   "openInNewWindow": "Lat upp í nýggjum glugga",
-  "submitted": "Latið inn"
+  "submitted": "Latið inn",
+  "previousStudent": "Undanfarni næmingur",
+  "nextStudent": "Næsti næmingur",
+  "previousAssignment": "Undanfarna uppgáva",
+  "nextAssignment": "Næsta uppgáva"
 }

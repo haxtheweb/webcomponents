@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Nepavyko įkelti temų: {error}",
+  "noThemesForView": "Šiam rodiniui temų nėra.",
+  "active": "Aktyvi",
+  "themeIsActive": "Tema {name} yra aktyvi",
+  "applyTheme": "Pritaikyti temą {name}",
+  "apply": "Pritaikyti",
+  "preview": "Peržiūra",
+  "name": "Vardas",
+  "element": "Elementas",
+  "description": "Aprašymas",
+  "action": "Veiksmas",
+  "loadingThemes": "Įkeliamos temos...",
+  "themesShown": "Rodoma temų: {count}",
+  "themesShownDefaults": "Rodoma temų: {count} (app-hax numatytosios)",
+  "availableHaxcmsThemes": "Galimos HAXcms temos",
+  "gallery": "Galerija",
+  "table": "Lentelė"
+}

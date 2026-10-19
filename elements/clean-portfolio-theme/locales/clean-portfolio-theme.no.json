@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Ankerlenke kopiert!",
+  "skipToContent": "Hopp til innhold",
+  "siteHome": "Nettstedets startside",
+  "mainNavigation": "Hovednavigasjon",
+  "toggleMenu": "Vis/skjul meny",
+  "changeTheme": "Bytt tema",
+  "breadcrumb": "Brødsmulesti",
+  "tagFilter": "Taggfilter:",
+  "all": "Alle",
+  "pageNumberOfTotal": "Sidenummer: {current} av {total}",
+  "siteGenerated": "Nettsted generert: {date}",
+  "copyright": "Opphavsrett: {year} {author}",
+  "viewContentByTag": "Vis innhold etter tagg",
+  "licenseGraphic": "Grafikk for {license}"
+}

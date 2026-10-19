@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "முடிவுகள் இல்லை",
+  "viewsRecordHeading": "பதிவுசெய்",
+  "viewsTitleImage": "{title} படம்",
+  "viewsTitlePreview": "{title} முன்னோட்டம்",
+  "viewsNoTimelineRecords": "காலவரிசைக் காட்சிக்குத் தேதி சார்ந்த பதிவுகள் எதுவும் இல்லை.",
+  "viewsTimelineTitle": "{title} காலவரிசை",
+  "viewsNoChartField": "விளக்கப்படக் காட்சிக்கு எண் புலம் எதுவும் கண்டறியப்படவில்லை.",
+  "viewsChartingValue": "{value} விளக்கப்படமாக்கப்படுகிறது",
+  "viewsChartingValueByLabel": "{label} வாரியாக {value} விளக்கப்படமாக்கப்படுகிறது",
+  "viewsChartTitle": "{title} விளக்கப்படம்",
+  "viewsNoTreeRecords": "மரக் காட்சிக்குப் படிநிலைப் பதிவுகள் எதுவும் இல்லை.",
+  "viewsNoGalleryRecords": "தொகுப்புக் காட்சிக்குப் படப் பதிவுகள் எதுவும் இல்லை.",
+  "viewsNoPlaylistRecords": "இயக்கப்பட்டியல் காட்சிக்கு ஊடகப் பதிவுகள் எதுவும் இல்லை.",
+  "fetchFailed": "பெறுதல் தோல்வியடைந்தது ({status})",
+  "unableToLoadViewData": "காட்சித் தரவை ஏற்ற முடியவில்லை.",
+  "noResultsFound": "முடிவுகள் எதுவும் கிடைக்கவில்லை.",
+  "refreshView": "காட்சியைப் புதுப்பி",
+  "breakIntoStaticContent": "நிலையான உள்ளடக்கமாகப் பிரி",
+  "viewsOpenRecord": "பதிவைத் திற"
+}

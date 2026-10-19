@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "ここにファイルをドロップ",
+  "uploadQueue": "アップロードキュー",
+  "pending": "保留中",
+  "preparing": "準備中",
+  "uploading": "アップロード中",
+  "complete": "完了",
+  "aborted": "中止",
+  "cancelled": "キャンセル済み",
+  "error": "エラー",
+  "errorWithStatus": "エラー:{status}",
+  "cancel": "キャンセル",
+  "cancelUploadOf": "{name} のアップロードをキャンセル",
+  "retry": "再試行",
+  "retryUploadOf": "{name} のアップロードを再試行",
+  "remove": "削除",
+  "removeFromQueue": "{name} をキューから削除",
+  "fileTypeNotAccepted": "受け付けられないファイル形式です:{name}",
+  "uploadFailed": "アップロードに失敗しました:{status}",
+  "networkError": "ネットワークエラー"
+}

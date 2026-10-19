@@ -5,5 +5,9 @@
   "buttons": "Knøttar",
   "futureButtonConfiguration": "Sertillagaðir ritilsknøttar koma skjótt.",
   "save": "Goym",
-  "saving": "Goymir…"
+  "saving": "Goymir…",
+  "novice": "Byrjari",
+  "expert": "Serfrøðingur",
+  "toolbarPreviewAlt": "Forsýning av rættingaramboðsstong fyri {audience}",
+  "savingEditorSettingsFailed": "Goyming av ritstjórastillingum miseydnaðist: {error}"
 }

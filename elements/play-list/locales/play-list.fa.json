@@ -1,0 +1,11 @@
+{
+  "playlist": "فهرست پخش",
+  "carousel": "چرخ‌فلک",
+  "slide": "اسلاید",
+  "slideNumber": "اسلاید {number}",
+  "slideOfTotal": "اسلاید {number} از {total}",
+  "previousSlide": "اسلاید قبلی",
+  "nextSlide": "اسلاید بعدی",
+  "slidePages": "صفحه‌های اسلاید",
+  "goToSlide": "رفتن به اسلاید {number}"
+}

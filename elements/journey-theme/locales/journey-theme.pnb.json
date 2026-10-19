@@ -1,4 +1,11 @@
 {
   "readMore": "ہور پڑھو",
-  "home": "مکھ صفحہ"
+  "home": "مکھ صفحہ",
+  "anchorLinkCopied": "اینکر لنک کاپی ہو گیا!",
+  "skipToContent": "مواد تے جاؤ",
+  "changeTheme": "تھیم بدلو",
+  "siteSections": "سائٹ دے حصے",
+  "pageOfTotal": "صفحہ {total} وچوں {current}",
+  "siteGenerated": "سائٹ بݨی: {date}",
+  "licenseGraphic": "{license} گرافک"
 }

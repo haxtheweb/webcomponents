@@ -1,0 +1,18 @@
+{
+  "copy": "Nusxalash",
+  "download": "Yuklab olish",
+  "archive": "Arxivlash",
+  "copyOperation": "nusxalash",
+  "downloadOperation": "yuklab olish",
+  "archiveOperation": "arxivlash",
+  "created": "yaratilgan",
+  "updated": "yangilangan",
+  "pages": "sahifalar",
+  "url": "URL",
+  "confirm": "Tasdiqlash",
+  "cancel": "Bekor qilish",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "{siteName} saytini {operation}ni xohlaysizmi?",
+  "siteOperationSuccessful": "{siteName}: {operation} muvaffaqiyatli!",
+  "siteOperationFailed": "{siteName}: {operation} muvaffaqiyatsiz"
+}

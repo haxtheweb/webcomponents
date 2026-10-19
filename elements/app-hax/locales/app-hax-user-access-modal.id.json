@@ -7,5 +7,7 @@
   "userAccessGranted": "Akses pengguna berhasil diberikan!",
   "userNotFound": "Pengguna tidak ditemukan atau tidak berwenang",
   "loadingAddingUser": "Menambahkan pengguna...",
-  "grantAccessTo": "Berikan akses kepada:"
+  "grantAccessTo": "Berikan akses kepada:",
+  "networkErrorTryAgain": "Terjadi kesalahan jaringan. Silakan coba lagi.",
+  "characterWillAppear": "Karakter akan muncul saat Anda memasukkan nama pengguna"
 }

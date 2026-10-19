@@ -1,0 +1,11 @@
+{
+  "licenseBy": "Cydnabyddiaeth",
+  "licenseBySa": "Cydnabyddiaeth Rhannu Fel Ei Gilydd",
+  "licenseByNd": "Cydnabyddiaeth Dim Deilliadau",
+  "licenseByNc": "Cydnabyddiaeth Anfasnachol",
+  "licenseByNcSa": "Cydnabyddiaeth Anfasnachol Rhannu Fel Ei Gilydd",
+  "licenseByNcNd": "Cydnabyddiaeth Anfasnachol Dim Deilliadau",
+  "citationWithLicense": "{title} gan {creator}, wedi'i drwyddedu o dan {license}. Cyrchwyd {date}.",
+  "citationWithoutLicense": "{title} gan {creator}. Cyrchwyd {date}.",
+  "licenseGraphic": "Graffig {license}"
+}

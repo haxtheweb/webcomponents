@@ -7,5 +7,7 @@
   "userAccessGranted": "Lietotāja piekļuve veiksmīgi piešķirta!",
   "userNotFound": "Lietotājs nav atrasts vai nav pilnvarots",
   "loadingAddingUser": "Pievieno lietotāju...",
-  "grantAccessTo": "Piešķirt piekļuvi:"
+  "grantAccessTo": "Piešķirt piekļuvi:",
+  "networkErrorTryAgain": "Radās tīkla kļūda. Lūdzu, mēģiniet vēlreiz.",
+  "characterWillAppear": "Tēls parādīsies, kad ievadīsiet lietotājvārdu"
 }

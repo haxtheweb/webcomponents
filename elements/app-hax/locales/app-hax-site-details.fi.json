@@ -1,0 +1,18 @@
+{
+  "copy": "Kopioi",
+  "download": "Lataa",
+  "archive": "Arkistoi",
+  "copyOperation": "kopioida",
+  "downloadOperation": "ladata",
+  "archiveOperation": "arkistoida",
+  "created": "luotu",
+  "updated": "päivitetty",
+  "pages": "sivua",
+  "url": "URL",
+  "confirm": "Vahvista",
+  "cancel": "Peruuta",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Haluatko varmasti {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} onnistui!",
+  "siteOperationFailed": "{siteName}: {operation} epäonnistui"
+}

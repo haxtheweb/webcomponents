@@ -1,0 +1,14 @@
+{
+  "licenseBy": "ອ້າງອີງແຫຼ່ງທີ່ມາ",
+  "licenseBySa": "ອ້າງອີງແຫຼ່ງທີ່ມາ ແບ່ງປັນແບບດຽວກັນ",
+  "licenseByNd": "ອ້າງອີງແຫຼ່ງທີ່ມາ ບໍ່ດັດແປງ",
+  "licenseByNc": "ອ້າງອີງແຫຼ່ງທີ່ມາ ບໍ່ໃຊ້ເພື່ອການຄ້າ",
+  "licenseByNcSa": "ອ້າງອີງແຫຼ່ງທີ່ມາ ບໍ່ໃຊ້ເພື່ອການຄ້າ ແບ່ງປັນແບບດຽວກັນ",
+  "licenseByNcNd": "ອ້າງອີງແຫຼ່ງທີ່ມາ ບໍ່ໃຊ້ເພື່ອການຄ້າ ບໍ່ດັດແປງ",
+  "licenseGraphic": "ກຣາຟິກ {license}",
+  "workByCreator": "{title} ໂດຍ {creator}",
+  "workByCreatorLicensed": "{title} ໂດຍ {creator} ໄດ້ຮັບອະນຸຍາດພາຍໃຕ້ {license}.",
+  "permissionsBeyondScope": "ການອະນຸຍາດທີ່ເກີນຂອບເຂດຂອງໃບອະນຸຍາດນີ້ມີໃຫ້ {link}.",
+  "author": "(ຜູ້ຂຽນ)",
+  "onTheLicensingDetailsPage": "ຢູ່ໜ້າລາຍລະອຽດໃບອະນຸຍາດ"
+}

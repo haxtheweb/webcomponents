@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Hōʻaiʻē",
+  "licenseBySa": "Hōʻaiʻē Kaʻana Like",
+  "licenseByNd": "Hōʻaiʻē ʻAʻohe Mea Hoʻololi",
+  "licenseByNc": "Hōʻaiʻē ʻAʻole Kālepa",
+  "licenseByNcSa": "Hōʻaiʻē ʻAʻole Kālepa Kaʻana Like",
+  "licenseByNcNd": "Hōʻaiʻē ʻAʻole Kālepa ʻAʻohe Mea Hoʻololi",
+  "licenseGraphic": "Kiʻi {license}",
+  "workByCreator": "{title} na {creator}",
+  "workByCreatorLicensed": "Ua laikini ʻia ʻo {title} na {creator} ma lalo o kahi {license}.",
+  "permissionsBeyondScope": "Loaʻa nā ʻae ma waho o ke ākea o kēia laikini {link}.",
+  "author": "(mea kākau)",
+  "onTheLicensingDetailsPage": "ma ka ʻaoʻao kikoʻī laikini"
+}

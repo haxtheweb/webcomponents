@@ -1,0 +1,17 @@
+{
+  "editNodes": "עריכת צמתים",
+  "editLines": "עריכת קווים",
+  "reset": "איפוס",
+  "save": "שמירה",
+  "cancel": "ביטול",
+  "delete": "מחיקה",
+  "type": "סוג:",
+  "topic": "נושא",
+  "subsection": "תת-מקטע",
+  "name": "שם:",
+  "enterName": "הזינו שם",
+  "url": "כתובת URL:",
+  "enterUrl": "הזינו כתובת URL",
+  "activeNode": "צומת פעיל?",
+  "nodeId": "צומת {id}"
+}

@@ -1,4 +1,11 @@
 {
   "readMore": "Подробнее",
-  "home": "Главная"
+  "home": "Главная",
+  "anchorLinkCopied": "Ссылка-якорь скопирована!",
+  "skipToContent": "Перейти к содержимому",
+  "changeTheme": "Сменить тему",
+  "siteSections": "Разделы сайта",
+  "pageOfTotal": "Страница {current} из {total}",
+  "siteGenerated": "Сайт сгенерирован: {date}",
+  "licenseGraphic": "Значок {license}"
 }

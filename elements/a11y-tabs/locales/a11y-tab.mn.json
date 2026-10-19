@@ -1,0 +1,6 @@
+{
+  "tabXOfY": "Таб {xOfY}",
+  "xOfY": "{total}-аас {order}",
+  "endOfTab": "{xOfY} табын төгсгөл. {tabs} руу буцах.",
+  "tabs": "табууд"
+}

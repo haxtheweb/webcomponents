@@ -1,5 +1,8 @@
 {
   "yourAnswer": "Jawaban Anda",
   "checkAnswer": "Periksa jawaban",
-  "retry": "Coba lagi"
+  "retry": "Coba lagi",
+  "correct": "Benar!",
+  "incorrect": "Salah!",
+  "correctAnswer": "Jawaban Benar: {answer}"
 }

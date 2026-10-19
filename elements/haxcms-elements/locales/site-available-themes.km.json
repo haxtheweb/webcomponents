@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "ការផ្ទុកធីមបានបរាជ័យ៖ {error}",
+  "noThemesForView": "គ្មានធីមដែលអាចប្រើបានសម្រាប់ទិដ្ឋភាពនេះទេ។",
+  "active": "សកម្ម",
+  "themeIsActive": "ធីម {name} កំពុងសកម្ម",
+  "applyTheme": "អនុវត្តធីម {name}",
+  "apply": "អនុវត្ត",
+  "preview": "មើលជាមុន",
+  "name": "ឈ្មោះ",
+  "element": "ធាតុ",
+  "description": "ការពិពណ៌នា",
+  "action": "សកម្មភាព",
+  "loadingThemes": "កំពុងផ្ទុកធីម...",
+  "themesShown": "បានបង្ហាញធីម {count}",
+  "themesShownDefaults": "បានបង្ហាញធីម {count} (លំនាំដើម app-hax)",
+  "availableHaxcmsThemes": "ធីម HAXcms ដែលមាន",
+  "gallery": "វិចិត្រសាល",
+  "table": "តារាង"
+}

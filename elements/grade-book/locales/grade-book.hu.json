@@ -43,5 +43,22 @@
   "emailAddress": "E-mail küldése a hallgatónak",
   "notes": "Jegyzetek",
   "interests": "Érdeklődési körök",
-  "profileImageFor": "Profilkép:"
+  "profileImageFor": "Profilkép:",
+  "fileSystem": "Fájlrendszer",
+  "googleDocs": "Google Docs",
+  "urlEndpointJSON": "URL-végpont (JSON)",
+  "jsonDataBlob": "JSON-adatblob",
+  "additionalCriteriaFeedback": "További visszajelzés: {criteria}",
+  "outOfPoints": "/ {points} pont",
+  "feedbackReport": "Visszajelzési jelentés",
+  "criteriaDetails": "Kritériumok részletei",
+  "yourFeedback": "Visszajelzésed",
+  "additionalCriteriaFeedbackHeading": "További visszajelzés a kritériumokhoz",
+  "yourTotalScore": "Összpontszámod",
+  "scoreOutOfPoints": "{score} / {points} pont",
+  "studentAssignment": "{student} feladata: {assignment}",
+  "downloadPDF": "PDF letöltése",
+  "displayMode1": "1. mód",
+  "displayMode2": "2. mód",
+  "twoWindows": "Két ablak"
 }

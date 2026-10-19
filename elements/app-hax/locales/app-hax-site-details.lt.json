@@ -1,0 +1,18 @@
+{
+  "copy": "Kopijuoti",
+  "download": "Atsisiųsti",
+  "archive": "Archyvuoti",
+  "copyOperation": "kopijuoti",
+  "downloadOperation": "atsisiųsti",
+  "archiveOperation": "archyvuoti",
+  "created": "sukurta",
+  "updated": "atnaujinta",
+  "pages": "puslapiai",
+  "url": "URL",
+  "confirm": "Patvirtinti",
+  "cancel": "Atšaukti",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Ar tikrai norite {operation} {siteName}?",
+  "siteOperationSuccessful": "{siteName}: {operation} pavyko!",
+  "siteOperationFailed": "{siteName}: {operation} nepavyko"
+}

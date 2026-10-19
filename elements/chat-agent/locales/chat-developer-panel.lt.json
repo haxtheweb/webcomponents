@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Naudotojo pokalbio žurnalo lentelė konsolėje",
+  "consoleTableUserText": "console.table() naudotojo pokalbio žurnalas",
+  "consoleTableUserTooltip": "Išvesti naudotojo pokalbio žurnalą lentele į konsolę",
+  "consoleTableMerlinLabel": "Merlin pokalbio žurnalo lentelė konsolėje",
+  "consoleTableMerlinText": "console.table() Merlin pokalbio žurnalas",
+  "consoleTableMerlinTooltip": "Išvesti Merlin pokalbio žurnalą lentele į konsolę",
+  "consoleTableAllLabel": "Viso pokalbio žurnalo lentelė konsolėje",
+  "consoleTableAllText": "console.table() visas pokalbio žurnalas",
+  "consoleTableAllTooltip": "Išvesti visą pokalbio žurnalą lentele į konsolę",
+  "downloadChatLogJson": "Atsisiųsti pokalbio žurnalą kaip .json",
+  "downloadChatLogJsonTooltip": "Atsisiųsti pokalbio žurnalą kaip .json"
+}

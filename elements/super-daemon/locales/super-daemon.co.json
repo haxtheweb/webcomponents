@@ -36,5 +36,7 @@
   "clickToDoAnything": "Clicca per fà qualchì cosa!",
   "moreDetails": "Più detagli",
   "details": "Detagli",
-  "saved": "Arregistratu"
+  "saved": "Arregistratu",
+  "opensInNewWindow": "S'apre in una finestra nova",
+  "resultsCount": "{count} risultati"
 }

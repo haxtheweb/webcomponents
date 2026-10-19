@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Сурагчийн илгээсэн ажил",
   "openInNewWindow": "Шинэ цонхонд нээх",
-  "submitted": "Илгээсэн"
+  "submitted": "Илгээсэн",
+  "previousStudent": "Өмнөх сурагч",
+  "nextStudent": "Дараагийн сурагч",
+  "previousAssignment": "Өмнөх даалгавар",
+  "nextAssignment": "Дараагийн даалгавар"
 }

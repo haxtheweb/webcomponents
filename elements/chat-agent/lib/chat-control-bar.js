@@ -3,17 +3,41 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { css, html } from "lit";
 import { autorun, toJS } from "mobx";
 import { ChatStore } from "./chat-agent-store.js";
 
-class ChatControlBar extends DDD {
+class ChatControlBar extends I18NMixin(DDD) {
   static get tag() {
     return "chat-control-bar";
   }
 
   constructor() {
     super();
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      downloadLogAsTxt: "Download Log as txt",
+      downloadChatLog: "Download Chat Log",
+      resetChat: "Reset Chat",
+      toggleDataCollection: "Toggle Data Collection",
+      dataCollection: "Data Collection",
+      toggleDeveloperMode: "Toggle Developer Mode",
+      exitFullView: "Exit Full View",
+      enterFullView: "Enter Full View",
+      hideInterface: "Hide Interface",
+      resetChatConfirm: "Reset the chat?",
+      downloadBeforeResetConfirm: "Download the chat log before you reset?",
+      dataCollectionOn:
+        "Your conversations will be used to train our AI models",
+      dataCollectionOff:
+        "Your conversations will not be used to train our AI models",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
 
     this.dataCollectionEnabled = null;
     this.isFullView = null;
@@ -124,57 +148,59 @@ class ChatControlBar extends DDD {
           <button
             id="download-button"
             @click=${this.handleDownloadLogButton}
-            aria-label="Download Log as txt"
+            aria-label="${this.t.downloadLogAsTxt}"
           >
             <simple-icon-lite icon="icons:file-download"></simple-icon-lite>
           </button>
           <simple-tooltip
             for="download-button"
             position="${this.isFullView ? "right" : "top"}"
-            >Download Chat Log</simple-tooltip
+            >${this.t.downloadChatLog}</simple-tooltip
           >
 
           <button
             id="reset-button"
             @click=${this.handleResetButton}
-            aria-label="Reset Chat"
+            aria-label="${this.t.resetChat}"
           >
             <simple-icon-lite icon="icons:refresh"></simple-icon-lite>
           </button>
           <simple-tooltip
             for="reset-button"
             position="${this.isFullView ? "right" : "top"}"
-            >Reset Chat</simple-tooltip
+            >${this.t.resetChat}</simple-tooltip
           >
 
           <button
             id="data-collection-button"
             @click=${this.handleDataCollectionButton}
-            aria-label="Toggle Data Collection"
+            aria-label="${this.t.toggleDataCollection}"
           >
             <simple-icon-lite
               icon="lrn:data_usage"
               class="data-collection-icon"
             ></simple-icon-lite>
-            <span class="data-collection-label">Data Collection</span>
+            <span class="data-collection-label"
+              >${this.t.dataCollection}</span
+            >
           </button>
           <simple-tooltip
             for="data-collection-button"
             position="${this.isFullView ? "right" : "top"}"
-            >Toggle Data Collection</simple-tooltip
+            >${this.t.toggleDataCollection}</simple-tooltip
           >
 
           <button
             id="dev-mode-button"
             @click=${this.handleDevModeButton}
-            aria-label="Toggle Developer Mode"
+            aria-label="${this.t.toggleDeveloperMode}"
           >
             <simple-icon-lite icon="hax:console-line"></simple-icon-lite>
           </button>
           <simple-tooltip
             for="dev-mode-button"
             position="${this.isFullView ? "right" : "top"}"
-            >Toggle Developer Mode</simple-tooltip
+            >${this.t.toggleDeveloperMode}</simple-tooltip
           >
         </div>
         <div class="right-side">
@@ -182,8 +208,8 @@ class ChatControlBar extends DDD {
             id="view-button"
             @click=${this.handleViewButton}
             aria-label="${this.isFullView
-              ? "Exit Full View"
-              : "Enter Full View"}"
+              ? this.t.exitFullView
+              : this.t.enterFullView}"
           >
             <simple-icon-lite
               icon="${this.isFullView
@@ -195,8 +221,8 @@ class ChatControlBar extends DDD {
             for="view-button"
             position="${this.isFullView ? "left" : "top"}"
             >${this.isFullView
-              ? "Exit Full View"
-              : "Enter Full View"}</simple-tooltip
+              ? this.t.exitFullView
+              : this.t.enterFullView}</simple-tooltip
           >
 
           ${this.isFullView
@@ -204,14 +230,14 @@ class ChatControlBar extends DDD {
                 <button
                   id="hide-button"
                   @click=${this.handleHideButton}
-                  aria-label="Hide Interface"
+                  aria-label="${this.t.hideInterface}"
                 >
                   <simple-icon-lite icon="remove"></simple-icon-lite>
                 </button>
                 <simple-tooltip
                   for="hide-button"
                   position="${this.isFullView ? "left" : "top"}"
-                  >Hide Interface</simple-tooltip
+                  >${this.t.hideInterface}</simple-tooltip
                 >
               `
             : ""}
@@ -235,8 +261,8 @@ class ChatControlBar extends DDD {
   handleResetButton() {
     ChatStore.devStatement("Reset button pressed.", "log");
 
-    if (confirm("Reset the chat?")) {
-      if (confirm("Download the chat log before you reset?")) {
+    if (confirm(this.t.resetChatConfirm)) {
+      if (confirm(this.t.downloadBeforeResetConfirm)) {
         ChatStore.devStatement(
           "Download chat log before reset confirmed.",
           "info",
@@ -259,8 +285,8 @@ class ChatControlBar extends DDD {
     ChatStore.dataCollectionEnabled = !ChatStore.dataCollectionEnabled;
 
     this.dataCollectionEnabled
-      ? alert("Your conversations will be used to train our AI models")
-      : alert("Your conversations will not be used to train our AI models");
+      ? alert(this.t.dataCollectionOn)
+      : alert(this.t.dataCollectionOff);
   }
 
   /**

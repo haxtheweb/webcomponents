@@ -1,0 +1,14 @@
+{
+  "licenseBy": "Naamsvermelding",
+  "licenseBySa": "Naamsvermelding-GelijkDelen",
+  "licenseByNd": "Naamsvermelding-GeenAfgeleideWerken",
+  "licenseByNc": "Naamsvermelding-NietCommercieel",
+  "licenseByNcSa": "Naamsvermelding-NietCommercieel-GelijkDelen",
+  "licenseByNcNd": "Naamsvermelding-NietCommercieel-GeenAfgeleideWerken",
+  "licenseGraphic": "Afbeelding van {license}",
+  "workByCreator": "{title} door {creator}",
+  "workByCreatorLicensed": "{title} door {creator} is gelicentieerd onder een {license}.",
+  "permissionsBeyondScope": "Toestemming buiten het bereik van deze licentie is {link} beschikbaar.",
+  "author": "(auteur)",
+  "onTheLicensingDetailsPage": "op de pagina met licentiegegevens"
+}

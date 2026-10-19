@@ -1,0 +1,11 @@
+{
+  "playlist": "Ойнату тізімі",
+  "carousel": "карусель",
+  "slide": "слайд",
+  "slideNumber": "{number}-слайд",
+  "slideOfTotal": "{number}-слайд / {total}",
+  "previousSlide": "Алдыңғы слайд",
+  "nextSlide": "Келесі слайд",
+  "slidePages": "Слайд беттері",
+  "goToSlide": "{number}-слайдқа өту"
+}

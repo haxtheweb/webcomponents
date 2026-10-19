@@ -1,0 +1,11 @@
+{
+  "playlist": "Jerin waƙoƙi",
+  "carousel": "mai jujjuyawa",
+  "slide": "nunin faifai",
+  "slideNumber": "Nunin faifai {number}",
+  "slideOfTotal": "Nunin faifai {number} cikin {total}",
+  "previousSlide": "Nunin faifai na baya",
+  "nextSlide": "Nunin faifai na gaba",
+  "slidePages": "Shafukan nunin faifai",
+  "goToSlide": "Je zuwa nunin faifai {number}"
+}

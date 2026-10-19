@@ -34,6 +34,11 @@ export class BibliographyBuilder extends SchemaBehaviors(
     this.t = {
       ...this.t,
       title: "References",
+      export: "Export",
+      exportCitations: "Export Citations",
+      copy: "Copy",
+      exportCitationFormat: "Export citation format",
+      selectCitationFormatBelow: "Select a citation format below",
     };
     this.registerLocalization({
       context: this,
@@ -42,7 +47,8 @@ export class BibliographyBuilder extends SchemaBehaviors(
         "/../",
     });
     this.exportMode = "";
-    this.citationArr = [ "Select a citation format below" ];
+    // empty until a format is picked; render shows the translated prompt
+    this.citationArr = [];
 
     this.addEventListener("add-citation", this._addItemHandler.bind(this));
   }
@@ -95,7 +101,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
       <meta property="oer:forCourse" content="${this.forCourse}" />
       <div class="title-card">
         <h3><span>${this.t.title}:</span> ${this.title}</h3>
-        <button id="export-button" @click=${this._showExportModal}>Export</button>
+        <button id="export-button" @click=${this._showExportModal}>${this.t.export}</button>
       </div>      
 
       <slot></slot>
@@ -127,7 +133,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
         composed: true,
         cancelable: true,
         detail: {
-          title: `Export Citations`,
+          title: this.t.exportCitations,
           elements: { content: this._modalContent },
           invokedBy: e.target
         },
@@ -167,26 +173,28 @@ export class BibliographyBuilder extends SchemaBehaviors(
         }
       </style>
       <div class="citation-list">
-        ${this.citationArr.map(citation => html`<div class="citation-entry">${citation}</div>`)}
+        ${(this.citationArr.length ? this.citationArr : [this.t.selectCitationFormatBelow]).map(citation => html`<div class="citation-entry">${citation}</div>`)}
       </div>
       <div class="control-bar">
         <div class="copy-button">
           <simple-icon-button-lite
             part="icon"
             class="icon"
-            title="Copy"
+            title="${this.t.copy}"
             icon="content-copy"
             @click=${this._copyToClipboard}
-          >Copy</simple-icon-button-lite>
+          >${this.t.copy}</simple-icon-button-lite>
         </div>
         <div class="export-drop">
           <select
             id="export-dropdown"
-            aria-label="Export citation format"
+            aria-label="${this.t.exportCitationFormat}"
             @change=${this._exportHandler}
           >
-            <option value="Export">Export</option>
+            <option value="Export">${this.t.export}</option>
+            <!-- i18n-ignore: citation format names -->
             <option value="APA">APA</option>
+            <!-- i18n-ignore: citation format names -->
             <option value="BibTeX">BibTeX</option>
           </select>
         </div>
@@ -206,7 +214,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
     } else if (this.exportMode === "BibTeX") {
       this.citationArr = slot.map((item) => item.exportBibtex())
     } else {
-      this.citationArr = [ "Select a citation format below" ];
+      this.citationArr = [];
     }
   }
 

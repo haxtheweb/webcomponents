@@ -1,0 +1,21 @@
+{
+  "viewsRecordNoTitle": "Kāore he hua",
+  "viewsRecordHeading": "Hopu",
+  "viewsTitleImage": "Atahanga {title}",
+  "viewsTitlePreview": "Arokite {title}",
+  "viewsNoTimelineRecords": "Kāore he pūkete e hāngai ana ki te rā hei whakaatu i te rārangi wā.",
+  "viewsTimelineTitle": "Rārangi wā {title}",
+  "viewsNoChartField": "Kāore he āpure tau i kitea hei whakaatu i te kauwhata.",
+  "viewsChartingValue": "E kauwhata ana i te {value}",
+  "viewsChartingValueByLabel": "E kauwhata ana i te {value} mā te {label}",
+  "viewsChartTitle": "Kauwhata {title}",
+  "viewsNoTreeRecords": "Kāore he pūkete hiranga e wātea ana hei whakaatu i te rākau.",
+  "viewsNoGalleryRecords": "Kāore he pūkete atahanga e wātea ana hei whakaatu i te taiwhanga.",
+  "viewsNoPlaylistRecords": "Kāore he pūkete pāpāho e wātea ana hei whakaatu i te rārangi pāpāho.",
+  "fetchFailed": "I rahua te tiki ({status})",
+  "unableToLoadViewData": "Kāore e taea te uta i ngā raraunga tirohanga.",
+  "noResultsFound": "Kāore he hua i kitea.",
+  "refreshView": "Whakahou tirohanga",
+  "breakIntoStaticContent": "Wāwāhi hei ihirangi pateko",
+  "viewsOpenRecord": "Whakatuwhera pūkete"
+}

@@ -1,5 +1,9 @@
 {
   "studentSubmission": "Υποβολή μαθητή",
   "openInNewWindow": "Άνοιγμα σε νέο παράθυρο",
-  "submitted": "Υποβλήθηκε"
+  "submitted": "Υποβλήθηκε",
+  "previousStudent": "Προηγούμενος μαθητής",
+  "nextStudent": "Επόμενος μαθητής",
+  "previousAssignment": "Προηγούμενη εργασία",
+  "nextAssignment": "Επόμενη εργασία"
 }

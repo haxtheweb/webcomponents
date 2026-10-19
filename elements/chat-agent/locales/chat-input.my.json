@@ -1,0 +1,7 @@
+{
+  "displayPreviousMessageUp": "ယခင်က ပို့ခဲ့သော စာကို ပြရန် (အပေါ်)",
+  "displayPreviousMessageDown": "ယခင်က ပို့ခဲ့သော စာကို ပြရန် (အောက်)",
+  "sendPrompt": "Prompt ပို့ရန်",
+  "sendPromptToMerlin": "Merlin သို့ Prompt ပို့ရန်",
+  "shortenPrompt": "သင့် prompt ကို စာလုံး {limit} လုံးထက် မပိုစေရန် တိုစေပါ။"
+}

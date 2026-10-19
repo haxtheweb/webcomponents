@@ -1,0 +1,17 @@
+{
+  "editNodes": "កែសម្រួលថ្នាំង",
+  "editLines": "កែសម្រួលបន្ទាត់",
+  "reset": "កំណត់ឡើងវិញ",
+  "save": "រក្សាទុក",
+  "cancel": "បោះបង់",
+  "delete": "លុប",
+  "type": "ប្រភេទ៖",
+  "topic": "ប្រធានបទ",
+  "subsection": "ផ្នែករង",
+  "name": "ឈ្មោះ៖",
+  "enterName": "បញ្ចូលឈ្មោះ",
+  "url": "URL៖",
+  "enterUrl": "បញ្ចូល URL",
+  "activeNode": "ថ្នាំងសកម្ម?",
+  "nodeId": "ថ្នាំង {id}"
+}

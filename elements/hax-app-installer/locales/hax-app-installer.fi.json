@@ -54,5 +54,6 @@
   "requirementUppercase": "Yksi iso kirjain",
   "requirementLowercase": "Yksi pieni kirjain",
   "requirementNumber": "Yksi numero",
-  "requirementSymbol": "Yksi erikoismerkki"
+  "requirementSymbol": "Yksi erikoismerkki",
+  "haxcmsMascotAlt": "HAXcms-maailmanmatkaaja-maskotti"
 }

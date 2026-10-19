@@ -1,0 +1,18 @@
+{
+  "copy": "Нусха бардоштан",
+  "download": "Боргирӣ",
+  "archive": "Бойгонӣ",
+  "copyOperation": "нусхабардорӣ",
+  "downloadOperation": "боргирӣ",
+  "archiveOperation": "бойгонӣ кардан",
+  "created": "сохта шуд",
+  "updated": "навсозӣ шуд",
+  "pages": "саҳифаҳо",
+  "url": "URL",
+  "confirm": "Тасдиқ",
+  "cancel": "Бекор кардан",
+  "siteOperationConfirmTitle": "{operationName} {siteName}?",
+  "siteOperationConfirmMessage": "Оё мутмаин ҳастед, ки мехоҳед {siteName}-ро {operation} кунед?",
+  "siteOperationSuccessful": "{operation}-и {siteName} бомуваффақият анҷом ёфт!",
+  "siteOperationFailed": "{operation}-и {siteName} муяссар нашуд"
+}

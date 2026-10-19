@@ -1,0 +1,13 @@
+{
+  "consoleTableUserLabel": "Tabl consol log sgwrs y defnyddiwr",
+  "consoleTableUserText": "console.table() log sgwrs y defnyddiwr",
+  "consoleTableUserTooltip": "Argraffu Log Sgwrs y Defnyddiwr fel Tabl i'r Consol",
+  "consoleTableMerlinLabel": "Tabl consol log sgwrs merlin",
+  "consoleTableMerlinText": "console.table() log sgwrs merlin",
+  "consoleTableMerlinTooltip": "Argraffu Log Sgwrs Merlin fel Tabl i'r Consol",
+  "consoleTableAllLabel": "Tabl consol log y sgwrs gyfan",
+  "consoleTableAllText": "console.table() log y sgwrs gyfan",
+  "consoleTableAllTooltip": "Argraffu Log y Sgwrs Gyfan fel Tabl i'r Consol",
+  "downloadChatLogJson": "Llwytho log y sgwrs i lawr fel .json",
+  "downloadChatLogJsonTooltip": "Llwytho Log y Sgwrs i lawr fel .json"
+}

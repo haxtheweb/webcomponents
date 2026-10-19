@@ -5,5 +5,9 @@
   "buttons": "Dugmad",
   "futureButtonConfiguration": "Prilagođena konfiguracija dugmadi uređivača uskoro dolazi.",
   "save": "Sačuvaj",
-  "saving": "Spremanje…"
+  "saving": "Spremanje…",
+  "novice": "Početnik",
+  "expert": "Stručnjak",
+  "toolbarPreviewAlt": "Pregled alatne trake za uređivanje za {audience}",
+  "savingEditorSettingsFailed": "Čuvanje postavki uređivača nije uspjelo: {error}"
 }

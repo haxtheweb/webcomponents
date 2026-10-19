@@ -1,0 +1,16 @@
+{
+  "anchorLinkCopied": "Зәкір сілтемесі көшірілді!",
+  "skipToContent": "Мазмұнға өту",
+  "siteHome": "Сайттың басты беті",
+  "mainNavigation": "Негізгі навигация",
+  "toggleMenu": "Мәзірді ашу/жабу",
+  "changeTheme": "Тақырыпты өзгерту",
+  "breadcrumb": "Навигация жолы",
+  "tagFilter": "Тег сүзгісі:",
+  "all": "Барлығы",
+  "pageNumberOfTotal": "Бет нөмірі: {current} / {total}",
+  "siteGenerated": "Сайт жасалған уақыты: {date}",
+  "copyright": "Авторлық құқық: {year} {author}",
+  "viewContentByTag": "Мазмұнды тег бойынша көру",
+  "licenseGraphic": "{license} графикасы"
+}

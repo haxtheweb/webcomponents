@@ -1,0 +1,11 @@
+{
+  "roleTitle": "Taken Matsayi",
+  "describeYourRole": "Bayyana matsayinka a nan...",
+  "present": "Gabatar",
+  "skills": "Ƙwarewa:",
+  "skillsAndMore": "{skills} da ƙarin +{count}",
+  "yearShort": "shekara {count}",
+  "yearsShort": "shekaru {count}",
+  "monthShort": "wata {count}",
+  "monthsShort": "watanni {count}"
+}

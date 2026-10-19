@@ -1,0 +1,19 @@
+{
+  "failedToLoadThemes": "Încărcarea temelor a eșuat: {error}",
+  "noThemesForView": "Nu există teme disponibile pentru această vizualizare.",
+  "active": "Activă",
+  "themeIsActive": "Tema {name} este activă",
+  "applyTheme": "Aplică tema {name}",
+  "apply": "Aplică",
+  "preview": "Previzualizare",
+  "name": "Nume",
+  "element": "Element",
+  "description": "Descriere",
+  "action": "Acțiune",
+  "loadingThemes": "Se încarcă temele...",
+  "themesShown": "{count} teme afișate",
+  "themesShownDefaults": "{count} teme afișate (implicite app-hax)",
+  "availableHaxcmsThemes": "Teme HAXcms disponibile",
+  "gallery": "Galerie",
+  "table": "Tabel"
+}

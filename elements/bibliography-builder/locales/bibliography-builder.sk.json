@@ -1,3 +1,8 @@
 {
-  "title": "Zdroje"
+  "title": "Zdroje",
+  "export": "Exportovať",
+  "exportCitations": "Exportovať citácie",
+  "copy": "Kopírovať",
+  "exportCitationFormat": "Formát exportu citácií",
+  "selectCitationFormatBelow": "Nižšie vyberte formát citácií"
 }

@@ -1,0 +1,14 @@
+{
+  "enterUserName": "ユーザー名を入力",
+  "invalidUsernameOrPassword": "ユーザー名またはパスワードが無効です",
+  "welcomeLetsGo": "ようこそ、{username} さん!始めましょう!",
+  "enterYourUsername": "ユーザー名を入力",
+  "username": "ユーザー名",
+  "next": "次へ",
+  "welcomeBack": "おかえりなさい、{username} さん!",
+  "notYou": "別のユーザーですか?",
+  "enterYourPassword": "パスワードを入力",
+  "password": "パスワード",
+  "togglePasswordDisplay": "パスワードの表示を切り替え",
+  "login": "ログイン"
+}

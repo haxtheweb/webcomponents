@@ -1,0 +1,21 @@
+{
+  "dropFilesHere": "فائلون هتي ڇڏيو",
+  "uploadQueue": "اپلوڊ قطار",
+  "pending": "التوا ۾",
+  "preparing": "تيار ٿي رهيو آهي",
+  "uploading": "اپلوڊ ٿي رهيو آهي",
+  "complete": "مڪمل",
+  "aborted": "روڪيو ويو",
+  "cancelled": "منسوخ ٿيل",
+  "error": "غلطي",
+  "errorWithStatus": "غلطي: {status}",
+  "cancel": "منسوخ ڪريو",
+  "cancelUploadOf": "{name} جو اپلوڊ منسوخ ڪريو",
+  "retry": "ٻيهر ڪوشش ڪريو",
+  "retryUploadOf": "{name} جو اپلوڊ ٻيهر ڪوشش ڪريو",
+  "remove": "هٽايو",
+  "removeFromQueue": "{name} قطار مان هٽايو",
+  "fileTypeNotAccepted": "فائل جو قسم قبول ناهي: {name}",
+  "uploadFailed": "اپلوڊ ناڪام: {status}",
+  "networkError": "نيٽ ورڪ غلطي"
+}
