@@ -135,8 +135,12 @@ export const SimpleIconBehaviors = function (SuperClass) {
       );
     }
     get safariMask() {
+      // quote the url so srcs containing spaces, parentheses or quotes
+      // (data: URIs, encoded file names) stay a valid CSS url()
       return this.src && this.useSafariPolyfill
-        ? `url(${this.src}) no-repeat center / contain`
+        ? `url("${String(this.src).replace(/["\\\n\r]/g, (c) => {
+            return c === "\n" ? "\\a " : c === "\r" ? "\\d " : "\\" + c;
+          })}") no-repeat center / contain`
         : "";
     }
     firstUpdated(changedProperties) {
