@@ -200,7 +200,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
         transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
       }
       input:disabled:not(.correct):not(.incorrect) {
-        opacity: 0.7;
+        opacity: var(--ddd-opacity-80, 0.7);
       }
       input.correct {
         outline: 3px solid var(--ddd-theme-default-opportunityGreen);
@@ -281,7 +281,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
           var(--ddd-theme-default-slateGray)
         );
         color: light-dark(black, white);
-        opacity: 0.7;
+        opacity: var(--ddd-opacity-80, 0.7);
       }
       simple-toolbar-button:hover::part(button),
       simple-toolbar-button:focus::part(button),

@@ -30,7 +30,7 @@ class A11yCollapse extends DDD {
           );
         }
         :host([disabled]) {
-          opacity: 0.5;
+          opacity: var(--ddd-state-disabled-opacity, 0.5);
         }
         *[aria-controls="content"][disabled] {
           cursor: not-allowed;

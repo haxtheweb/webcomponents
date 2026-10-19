@@ -478,7 +478,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         }
 
         .feature-row.disabled {
-          opacity: 0.58;
+          opacity: var(--ddd-opacity-60, 0.58);
           background-color: light-dark(
             rgba(0, 0, 0, 0),
             rgba(255, 255, 255, 0.02)
@@ -549,7 +549,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         }
 
         .feature-card.disabled {
-          opacity: 0.58;
+          opacity: var(--ddd-opacity-60, 0.58);
           background-color: light-dark(
             rgba(0, 0, 0, 0),
             rgba(255, 255, 255, 0.02)

@@ -5,6 +5,8 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun } from "mobx";
 
 // security: resolve the known LMS origin to use as postMessage targetOrigin instead of '*' (JS-MSG-001)
+// never returns '*': if the origin can't be resolved confidently, the post is
+// dropped (browser requires an exact origin match) rather than sent to any parent
 function getLtiTargetOrigin() {
   try {
     const cmsStore =
@@ -12,19 +14,20 @@ function getLtiTargetOrigin() {
       globalThis.HAXCMS.instance &&
       globalThis.HAXCMS.instance.store;
     const settings = cmsStore && cmsStore.appSettings;
-    if (settings && settings.ltiOrigin) {
-      if (settings.ltiOrigin === "*") {
-        return "*";
-      }
+    if (settings && settings.ltiOrigin && settings.ltiOrigin !== "*") {
       return new URL(settings.ltiOrigin).origin;
     }
     if (globalThis.document && globalThis.document.referrer) {
       return new URL(globalThis.document.referrer).origin;
     }
-  } catch (e) {}
+  } catch {
+    // origin resolution is best-effort; fall through to the same-origin default
+  }
+  // "/" is the postMessage targetOrigin meaning "same origin as this document",
+  // a safe fallback that will not deliver cross-origin
   return globalThis.location && globalThis.location.origin
     ? globalThis.location.origin
-    : "*";
+    : "/";
 }
 
 export const LTIResizingMixin = function (SuperClass) {

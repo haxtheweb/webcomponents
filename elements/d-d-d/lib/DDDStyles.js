@@ -2162,7 +2162,7 @@ export const DDDReset = css`
   details[disabled] {
     cursor: not-allowed;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: var(--ddd-state-disabled-opacity, 0.5);
   }
   details[open] > summary::after {
     content: "-";
@@ -2214,7 +2214,7 @@ export const DDDReset = css`
     border: var(--ddd-border-md);
     border-style: groove;
     border-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), black);
-    font-family: monospace;
+    font-family: var(--ddd-font-mono, monospace);
     letter-spacing: var(--ddd-ls-16-lg);
     pointer-events: auto;
   }

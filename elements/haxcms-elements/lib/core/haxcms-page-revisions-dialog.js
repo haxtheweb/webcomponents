@@ -249,7 +249,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(DDD) {
           word-break: break-word;
           font-size: var(--ddd-font-size-6xs);
           line-height: 1.4;
-          font-family: monospace;
+          font-family: var(--ddd-font-mono, monospace);
         }
         .preview-rendered {
           font-size: var(--ddd-font-size-6xs);

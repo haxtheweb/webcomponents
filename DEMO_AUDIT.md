@@ -41,7 +41,7 @@ This audit covers all elements in `elements/` and categorizes them by demo quali
 
 These 26 non-visual infrastructure packages ship no `demo/` and no root `index.html`:
 
-- `a11y-behaviors`, `a11y-utils`, `anchor-behaviors`, `baseline-build-hax`, `deduping-fix`, `dl-behavior`, `dynamic-import-registry`, `es-global-bridge`, `fullscreen-behaviors`, `hax-body-behaviors`, `hax-bookmarklet`, `intersection-element`, `json-outline-schema`, `lazy-image-helpers`, `lazy-import-discover`, `media-behaviors`, `micro-frontend-registry`, `mutation-observer-import-mixin`, `pouch-db`, `radio-behaviors`, `schema-behaviors`, `shadow-style`, `simple-colors-shared-styles`, `simple-filter`, `utils`, `wc-autoload`
+- `a11y-behaviors`, `a11y-utils`, `anchor-behaviors`, `baseline-build-hax`, `deduping-fix`, `dl-behavior`, `dynamic-import-registry`, `es-global-bridge`, `fullscreen-behaviors`, `hax-body-behaviors`, `intersection-element`, `json-outline-schema`, `lazy-image-helpers`, `lazy-import-discover`, `media-behaviors`, `micro-frontend-registry`, `mutation-observer-import-mixin`, `pouch-db`, `radio-behaviors`, `schema-behaviors`, `shadow-style`, `simple-colors-shared-styles`, `simple-filter`, `utils`, `wc-autoload`
 
 *Note:* ~10 of these still carry `@demo` JSDoc tags in their source pointing at the deleted demos — harmless documentation boilerplate; can be stripped in a follow-up.
 

@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (223 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (222 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -84,7 +84,6 @@ Every element in this monorepo (223 packages). Browse them live with `yarn galle
 | [hax-app-installer](./hax-app-installer/) | Webcomponent hax-app-installer following hax / open-wc recommendations | `@haxtheweb/hax-app-installer` | [demo](./hax-app-installer/demo/) |
 | [hax-body](./hax-body/) | A full on Headless authoring experience as a single tag. The ultimate authoring solution across platforms to win the future. | `@haxtheweb/hax-body` | [demo](./hax-body/demo/) |
 | [hax-body-behaviors](./hax-body-behaviors/) | Wire any element up to HAX | `@haxtheweb/hax-body-behaviors` |  |
-| [hax-bookmarklet](./hax-bookmarklet/) | HAX as a bookmarklet script | `@haxtheweb/hax-bookmarklet` |  |
 | [hax-iconset](./hax-iconset/) | HAX-specific icons | `@haxtheweb/hax-iconset` | [demo](./hax-iconset/demo/) |
 | [hax-logo](./hax-logo/) | logo element for hax, obviously as a hax capable element. | `@haxtheweb/hax-logo` | [demo](./hax-logo/demo/) |
 | [haxcms-elements](./haxcms-elements/) | HAX CMS series of elements to provide a full on CMS | `@haxtheweb/haxcms-elements` | [demo](./haxcms-elements/demo/) |

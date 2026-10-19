@@ -178,7 +178,7 @@ export const HaxUiFields = [
       --simple-fields-button-disabled-color: unset;
       --simple-fields-button-disabled-background-color: unset;
       --simple-fields-button-disabled-border-color: unset;
-      --simple-fields-button-disabled-opacity: 0.5;
+      --simple-fields-button-disabled-opacity: var(--ddd-state-disabled-opacity, 0.5);
       --hexagon-color: var(--hax-ui-color-accent);
     }
   `,
@@ -303,7 +303,7 @@ export const HaxUiSingletons = [
     }
     simple-popover-manager[mode="hax"]
       simple-icon-button-lite[slot="nav"][disabled]::part(button) {
-      opacity: 0.5;
+      opacity: var(--ddd-state-disabled-opacity, 0.5);
       border: 1px solid var(--hax-ui-border-color);
     }
   `,
@@ -457,7 +457,7 @@ export const HaxFields = [
       color: var(--hax-ui-color-accent);
     }
     simple-fields-tabs::part(tab-disabled) {
-      opacity: 0.5;
+      opacity: var(--ddd-state-disabled-opacity, 0.5);
       background-color: rgba(127, 127, 127, 0.2);
     }
     simple-fields-tabs::part(content) {

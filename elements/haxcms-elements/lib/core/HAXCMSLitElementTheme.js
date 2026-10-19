@@ -437,7 +437,15 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           this._location.hash &&
           this.HAXCMSThemeSettings.autoScroll
         ) {
-          let target = this.querySelector(this._location.hash);
+          // security: hash is attacker-controlled and may not be a valid selector
+          let target = null;
+          try {
+            target = this.querySelector(this._location.hash);
+          } catch {
+            // invalid selector (e.g. text fragments); retry as a plain id match
+            const id = this._location.hash.replace(/^#/, "");
+            target = this.querySelector(`[id="${globalThis.CSS.escape(id)}"]`);
+          }
           if (target) {
             if (this.isSafari) {
               target.scrollIntoView();
@@ -536,7 +544,17 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             this._location.hash &&
             this.HAXCMSThemeSettings.autoScroll
           ) {
-            let target = this.querySelector(this._location.hash);
+            // security: hash is attacker-controlled and may not be a valid selector
+            let target = null;
+            try {
+              target = this.querySelector(this._location.hash);
+            } catch {
+              // invalid selector (e.g. text fragments); retry as a plain id match
+              const id = this._location.hash.replace(/^#/, "");
+              target = this.querySelector(
+                `[id="${globalThis.CSS.escape(id)}"]`,
+              );
+            }
             if (target) {
               if (this.isSafari) {
                 target.scrollIntoView();

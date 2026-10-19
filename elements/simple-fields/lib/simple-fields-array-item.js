@@ -59,7 +59,7 @@ class SimpleFieldsArrayItem extends I18NMixin(
           position: relative;
         }
         :host([disabled]) {
-          opacity: 0.5;
+          opacity: var(--ddd-state-disabled-opacity, 0.5);
         }
         :host([aria-expanded="true"]) {
           padding: var(--simple-fields-margin, 16px)

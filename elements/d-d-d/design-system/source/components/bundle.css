@@ -3,8 +3,11 @@
    imported; previews hide the chat agent unless they opt in with
    <body class="show-chat-agent">. */
 body:not(.show-chat-agent) > chat-agent { display: none !important; }
+
 html { color-scheme: light; }
+
 html[data-theme="dark"] { color-scheme: dark; }
+
 body {
   margin: 0;
   padding: var(--ddd-spacing-4);
