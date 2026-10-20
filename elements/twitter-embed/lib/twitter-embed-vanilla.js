@@ -40,6 +40,15 @@ class TwitterEmbedVanilla extends HTMLElement {
    */
   constructor() {
     super();
+    this.__initialized = false;
+  }
+  /**
+   * HTMLElement spec; attributes can not be read or written in the
+   * constructor (document.createElement), so defaults are applied here.
+   */
+  connectedCallback() {
+    if (this.__initialized) return;
+    this.__initialized = true;
     if (globalThis.document && globalThis.document.body) {
       this.lang =
         this.getAttribute("lang") ||
@@ -62,7 +71,10 @@ class TwitterEmbedVanilla extends HTMLElement {
     this.tweetId = this.getAttribute("tweet-id")
       ? this.getAttribute("tweet-id")
       : null;
-    this.allowPopups = this.getAttribute("no-popups") ? "" : "allow-popups";
+    // an authored no-popups attribute was already handled by
+    // attributeChangedCallback (which runs before connection); only
+    // apply the default when it is absent
+    if (!this.hasAttribute("no-popups")) this.allowPopups = "allow-popups";
   }
   /**
    * HTMLElement spec

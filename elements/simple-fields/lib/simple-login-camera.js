@@ -28,8 +28,8 @@ class SimpleLoginCamera extends HTMLElement {
           context: this,
           namespace: "simple-fields",
           localesPath:
-            new URL("../locales/simple-fields.es.json", import.meta.url)
-              .href + "/../",
+            new URL("../locales/simple-fields.es.json", import.meta.url).href +
+            "/../",
           updateCallback: "render",
         },
       }),
@@ -63,34 +63,6 @@ class SimpleLoginCamera extends HTMLElement {
       this.documentLoaded.bind(this),
       { signal: this.windowControllers.signal },
     );
-
-    if (!this.hasAttribute("record")) {
-      this._record.remove();
-      this._pauseRecord.remove();
-    } else {
-      this._record.addEventListener("click", () => {
-        if (!this._record.hasAttribute("recording")) {
-          this._record.innerText = this.t.stopSave;
-          this._record.setAttribute("recording", "");
-          return this._startRecording();
-        } else {
-          this._record.innerText = this.t.record;
-          this._record.removeAttribute("recording");
-          return this._stopRecording();
-        }
-      });
-      this._pauseRecord.addEventListener("click", () => {
-        if (!this._pauseRecord.hasAttribute("resume")) {
-          this._pauseRecord.innerText = "Resume record";
-          this._pauseRecord.setAttribute("resume", "");
-          return this._pauseRecording();
-        } else {
-          this._pauseRecord.innerText = "Pause record";
-          this._pauseRecord.removeAttribute("resume");
-          return this._resumeRecording();
-        }
-      });
-    }
   }
 
   render() {
@@ -239,7 +211,43 @@ class SimpleLoginCamera extends HTMLElement {
     );
   }
 
+  /**
+   * record controls depend on the record attribute, which can not be read
+   * in the constructor, so they are wired once when connected
+   */
+  _setupRecordControls() {
+    if (this.__recordControls) return;
+    this.__recordControls = true;
+    if (!this.hasAttribute("record")) {
+      this._record.remove();
+      this._pauseRecord.remove();
+    } else {
+      this._record.addEventListener("click", () => {
+        if (!this._record.hasAttribute("recording")) {
+          this._record.innerText = this.t.stopSave;
+          this._record.setAttribute("recording", "");
+          return this._startRecording();
+        } else {
+          this._record.innerText = this.t.record;
+          this._record.removeAttribute("recording");
+          return this._stopRecording();
+        }
+      });
+      this._pauseRecord.addEventListener("click", () => {
+        if (!this._pauseRecord.hasAttribute("resume")) {
+          this._pauseRecord.innerText = "Resume record";
+          this._pauseRecord.setAttribute("resume", "");
+          return this._pauseRecording();
+        } else {
+          this._pauseRecord.innerText = "Pause record";
+          this._pauseRecord.removeAttribute("resume");
+          return this._resumeRecording();
+        }
+      });
+    }
+  }
   connectedCallback() {
+    this._setupRecordControls();
     if (
       globalThis.ESGlobalBridge.requestAvailability().imports["msr"] === true
     ) {

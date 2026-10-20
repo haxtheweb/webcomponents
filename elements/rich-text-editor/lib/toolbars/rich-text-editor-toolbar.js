@@ -1480,8 +1480,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         // Capture the range on mouseup/keyup on the target itself,
         // which is the reliable moment a selection is finalized.
         if (isWebKit()) {
+          const toolbarRef = this;
           if (!this.__webkitTargetSelHandler) {
-            var toolbarRef = this;
             this.__webkitTargetSelHandler = () => {
               // Always update the saved range (including collapsed/caret)
               // so it reflects the CURRENT position, not a stale one

@@ -148,11 +148,11 @@ class SimpleFieldsArrayItem extends I18NMixin(
         #dropzone {
           height: 0px;
         }
-        :host(.dragging) #heading {
+        :host([dragging]) #heading {
           opacity: 0.5;
         }
-        :host(.dragging) #content,
-        :host(.dragging) #expand {
+        :host([dragging]) #content,
+        :host([dragging]) #expand {
           display: none;
         }
         #content:hover,
@@ -161,11 +161,11 @@ class SimpleFieldsArrayItem extends I18NMixin(
         #content:focus-within #content-inner {
           overflow: visible;
         }
-        :host(.dragging) #preview,
-        :host(.droppable) #preview {
+        :host([dragging]) #preview,
+        :host([droppable]) #preview {
           margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
         }
-        :host(.dropzone) #dropzone {
+        :host([dropzone]) #dropzone {
           background-color: var(
             --simple-fields-button-focus-background-color,
             var(--simple-fields-accent-color-light, #d9eaff)
@@ -190,7 +190,7 @@ class SimpleFieldsArrayItem extends I18NMixin(
         :host(:focus-within) {
           z-index: 100000;
         }
-        :host(.dropzone) {
+        :host([dropzone]) {
           z-index: 1;
         }
         [hidden],
@@ -371,6 +371,7 @@ class SimpleFieldsArrayItem extends I18NMixin(
     this.hideReorder = false;
     this.hideDuplicate = false;
     this.disabled = false;
+    // eslint-disable-next-line wc/no-constructor-attributes -- Lit reactive property default; attribute reflection is deferred to the update cycle
     this.draggable = "truest";
     this.previewBy = [];
     this.expanded = false;
@@ -484,25 +485,25 @@ class SimpleFieldsArrayItem extends I18NMixin(
       [...this.parentNode.childNodes].forEach((item) => {
         if (item !== this && item.isArrayItem) {
           item.__dropAccepts = this;
-          item.classList.add("droppable");
+          item.setAttribute("droppable", "");
         }
       });
-      this.classList.add("dragging");
+      this.setAttribute("dragging", "");
     } else {
       [...this.parentNode.childNodes].forEach((item) => {
         if (item !== this && item.isArrayItem) {
           item.__dropAccepts = undefined;
-          item.classList.remove("droppable");
+          item.removeAttribute("droppable");
         }
       });
-      this.classList.remove("dragging");
+      this.removeAttribute("dragging");
     }
   }
   _setDropzone(show = true) {
     if (show && !this.__dragging && this.__dropAccepts) {
-      this.classList.add("dropzone");
+      this.setAttribute("dropzone", "");
     } else {
-      this.classList.remove("dropzone");
+      this.removeAttribute("dropzone");
     }
   }
   connectedCallback() {

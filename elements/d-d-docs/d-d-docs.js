@@ -125,7 +125,8 @@ class DDDocs extends I18NMixin(DDD) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      pointerEventsNote: "Note: Pointer events are disabled so the pulsing will not self-remove on hover",
+      pointerEventsNote:
+        "Note: Pointer events are disabled so the pulsing will not self-remove on hover",
       headerSampleNumber: "Header Sample {number}",
       dddEnabledElements: "DDD Enabled Elements",
       testing: "Testing",
@@ -137,26 +138,32 @@ class DDDocs extends I18NMixin(DDD) {
       availableBreakpoints: "Available Breakpoints",
       breakpoint: "Breakpoint",
       size: "Size",
-      breakpointSizesNote: "Sizes are named by width, not device, so the same scale describes the viewport (themes) or an element's own width (grid-plate). CSS variables cannot be used inside media queries, so import the numbers:",
+      breakpointSizesNote:
+        "Sizes are named by width, not device, so the same scale describes the viewport (themes) or an element's own width (grid-plate). CSS variables cannot be used inside media queries, so import the numbers:",
       readableFromJsViaCssVariables: "Readable from JS via css variables:",
       layoutWidths: "Layout Widths",
       region: "Region",
       width: "Width",
       cssVariable: "css variable",
-      layoutWidthAliasesNote: "Themes describe their regions with the aliases {contentWidth}, {sidebarWidth}, {containerWidth} and {layoutGutter}. Grid elements use {gridGap} and {gridItemSpacing}.",
+      layoutWidthAliasesNote:
+        "Themes describe their regions with the aliases {contentWidth}, {sidebarWidth}, {containerWidth} and {layoutGutter}. Grid elements use {gridGap} and {gridItemSpacing}.",
       availableColorsPolaris: "Available Colors from the Polaris Theme",
-      availableFunctionalColorsPolaris: "Available Functional Colors from the Polaris Theme",
+      availableFunctionalColorsPolaris:
+        "Available Functional Colors from the Polaris Theme",
       availablePalettesInDdd: "Available palettes in DDD",
       paletteSelectorOr: "{name} or {index}",
       defaultInParens: "(default)",
       palettePickerPrototype: "hax-palette-picker prototype",
-      palettePickerIntro: "Registry-driven field prototype for HAX appearance settings, using the same palette data model as DDD.",
+      palettePickerIntro:
+        "Registry-driven field prototype for HAX appearance settings, using the same palette data model as DDD.",
       defaultContext: "Default context",
       themePalette: "Theme palette",
-      themePaletteDescription: "Choose a palette; this value is written as the data-palette attribute at theme scope.",
+      themePaletteDescription:
+        "Choose a palette; this value is written as the data-palette attribute at theme scope.",
       selectedPaletteTokens: "Selected palette tokens",
       darkContextCheck: "Dark context check",
-      darkContextDescription: "Readability and selected state preview in dark-mode presentation.",
+      darkContextDescription:
+        "Readability and selected state preview in dark-mode presentation.",
       themePaletteDarkContext: "Theme palette (dark context)",
       availableGradientsPolaris: "Available Gradients from the Polaris Theme",
       availableRadiusClasses: "Available Radius classes",
@@ -166,7 +173,8 @@ class DDDocs extends I18NMixin(DDD) {
       value: "Value",
       example: "Example",
       accessibleUsingFormat: "Accessible using format:",
-      spacingSides: "Sides: Top (t), Right (r), Bottom (b), Left (l), X (x), Y (y)",
+      spacingSides:
+        "Sides: Top (t), Right (r), Bottom (b), Left (l), X (x), Y (y)",
       exampleLabel: "Example:",
       availableTypefaces: "Available Typefaces",
       primaryFont: "Primary Font:",
@@ -174,7 +182,8 @@ class DDDocs extends I18NMixin(DDD) {
       defaultLabel: "Default",
       fontSizes: "Font sizes:",
       letterSpacing: "Letter Spacing",
-      letterSpacingVariableNote: "CSS Variable is same as class name, with '--ddd-' prefix",
+      letterSpacingVariableNote:
+        "CSS Variable is same as class name, with '--ddd-' prefix",
       classHeader: "Class",
       lineHeight: "Line Height",
       notApplicable: "N/A",
@@ -191,9 +200,11 @@ class DDDocs extends I18NMixin(DDD) {
       otherHtmlTextTypes: "Other html text types",
       detailsText: "Details text",
       inlineCodeExample: "This is an example of code:{code} in a paragraph",
-      blockCodeExample: "Here is an example of a block of code on it's own, using class 'block-code', redundant, but avoids common 'block' class name",
+      blockCodeExample:
+        "Here is an example of a block of code on it's own, using class 'block-code', redundant, but avoids common 'block' class name",
       highlightExampleIntro: "Here is a good example of some",
-      highlightExampleText: "Here's a super long version of a Highlighted Text that extends beyond the end of the border box",
+      highlightExampleText:
+        "Here's a super long version of a Highlighted Text that extends beyond the end of the border box",
       abbreviationExample: "Here is an example of an abbreviation:",
       subExample: "Here's an example of a sub:",
       supExample: "And a sup:",
@@ -201,9 +212,12 @@ class DDDocs extends I18NMixin(DDD) {
       underlineWays: "There's 2 ways to get underlined styling",
       hrElements: "HR elements",
       defaultHrLine: "Default horizontal line using hr element",
-      hrDataPrimaryNote: "hr elements also accept data-primary values, and are are designed to play-nice when placed inside a heading element",
-      hrFitContentNote: "When combined with width: fit-content on the header itself, can limit the underlining to exactly the text",
-      variableLengthDesignTreatment: "Or, if you want variable length, use design-treatment:",
+      hrDataPrimaryNote:
+        "hr elements also accept data-primary values, and are are designed to play-nice when placed inside a heading element",
+      hrFitContentNote:
+        "When combined with width: fit-content on the header itself, can limit the underlining to exactly the text",
+      variableLengthDesignTreatment:
+        "Or, if you want variable length, use design-treatment:",
       pMeansPercent: "(with p meaning %)",
       verticalLineLabel: "Vertical Line -",
       otherDesignTreatments: "Other design treatments:",
@@ -212,8 +226,10 @@ class DDDocs extends I18NMixin(DDD) {
       dropCapMedium: "Drop Cap - Medium",
       dropCapLarge: "Drop Cap - Large",
       buttonsSupportDataAccent: "Buttons also support data-accent!",
-      accentContrastNote: "Note: Accent color will not be applied if the primary color does not meet constrast requirements",
-      haxCapabilityGap: "HAX-capability gap: {components} is not HAX-capable. This pattern is documented but not published to the insert rail until wiring is created.",
+      accentContrastNote:
+        "Note: Accent color will not be applied if the primary color does not meet constrast requirements",
+      haxCapabilityGap:
+        "HAX-capability gap: {components} is not HAX-capable. This pattern is documented but not published to the insert rail until wiring is created.",
       copyHtml: "Copy HTML",
       copy: "Copy",
       insert: "Insert",
@@ -223,7 +239,8 @@ class DDDocs extends I18NMixin(DDD) {
       organisms: "Organisms",
       templates: "Templates",
       internalConsistencyContracts: "Internal consistency contracts",
-      internalContractsIntro: "Cross-cutting contracts for element internals (titles, callouts, collapsibles, embeds, admin fieldsets). These are what the hax-pattern-library-audit skill grades; mass-enforcement across the ecosystem is later work.",
+      internalContractsIntro:
+        "Cross-cutting contracts for element internals (titles, callouts, collapsibles, embeds, admin fieldsets). These are what the hax-pattern-library-audit skill grades; mass-enforcement across the ecosystem is later work.",
       contractSurface: "Surface: {surface}",
       contractAppliesTo: "Applies to: {elements}",
       selectOptionToRender: "Select an option to render",
@@ -588,9 +605,15 @@ class DDDocs extends I18NMixin(DDD) {
           animation: ddd-pattern-copy-fade 1.6s ease-out forwards;
         }
         @keyframes ddd-pattern-copy-fade {
-          0% { opacity: 1; }
-          70% { opacity: 1; }
-          100% { opacity: 0; }
+          0% {
+            opacity: 1;
+          }
+          70% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+          }
         }
         .pattern-gap {
           border: var(--ddd-border-sm);
@@ -640,7 +663,7 @@ class DDDocs extends I18NMixin(DDD) {
               (key2) => html`
                 <d-d-d-sample type="${key}" option="${key2}"
                   ><em style="margin-left:12px;"
-                    >${"data-" + key}="${key2}"</em
+                    >${`data-${key}="${key2}"`}</em
                   ></d-d-d-sample
                 >
               `,
@@ -648,9 +671,7 @@ class DDDocs extends I18NMixin(DDD) {
           </div>
         `,
       )}
-      <h5 style="margin-top: 64px;">
-        ${this.t.pointerEventsNote}
-      </h5>
+      <h5 style="margin-top: 64px;">${this.t.pointerEventsNote}</h5>
       <div
         style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 32px 64px 64px; row-gap: 32px; pointer-events: none;"
       >
@@ -892,14 +913,22 @@ class DDDocs extends I18NMixin(DDD) {
       </table>
       <p class="fw-2 ml-10 mb-15">
         ${this._fillTemplate(this.t.layoutWidthAliasesNote, {
-          contentWidth: html`<span class="fw-3">--ddd-theme-content-width</span>`,
-          sidebarWidth: html`<span class="fw-3">--ddd-theme-sidebar-width</span>`,
+          contentWidth: html`<span class="fw-3"
+            >--ddd-theme-content-width</span
+          >`,
+          sidebarWidth: html`<span class="fw-3"
+            >--ddd-theme-sidebar-width</span
+          >`,
           containerWidth: html`<span class="fw-3"
             >--ddd-theme-container-width</span
           >`,
-          layoutGutter: html`<span class="fw-3">--ddd-theme-layout-gutter</span>`,
+          layoutGutter: html`<span class="fw-3"
+            >--ddd-theme-layout-gutter</span
+          >`,
           gridGap: html`<span class="fw-3">--ddd-grid-gap</span>`,
-          gridItemSpacing: html`<span class="fw-3">--ddd-grid-item-spacing</span>`,
+          gridItemSpacing: html`<span class="fw-3"
+            >--ddd-grid-item-spacing</span
+          >`,
         })}
       </p>
     `;
@@ -1305,7 +1334,9 @@ class DDDocs extends I18NMixin(DDD) {
 
   renderPalettes() {
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.availablePalettesInDdd}</h2>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
+        ${this.t.availablePalettesInDdd}
+      </h2>
       <div class="my-5" data-palette="0">
         <h5>
           ${this.t.paletteSelectorOr
@@ -1990,7 +2021,6 @@ class DDDocs extends I18NMixin(DDD) {
           title="--ddd-palette-color-7"
         ></div>
       </div>
-
     `;
   }
 
@@ -1999,12 +2029,10 @@ class DDDocs extends I18NMixin(DDD) {
    * so markup (spans, code) can sit inside a single translatable sentence.
    */
   _fillTemplate(text, values) {
-    return text
-      .split(/(\{[a-zA-Z0-9]+\})/)
-      .map((part) => {
-        const m = part.match(/^\{([a-zA-Z0-9]+)\}$/);
-        return m && values[m[1]] !== undefined ? values[m[1]] : part;
-      });
+    return text.split(/(\{[a-zA-Z0-9]+\})/).map((part) => {
+      const m = part.match(/^\{([a-zA-Z0-9]+)\}$/);
+      return m && values[m[1]] !== undefined ? values[m[1]] : part;
+    });
   }
 
   _onPalettePickerValueChanged(e) {
@@ -2035,10 +2063,10 @@ class DDDocs extends I18NMixin(DDD) {
         ? selectedPalette.swatches
         : [1, 2, 3, 4, 5, 6, 7];
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.palettePickerPrototype}</h2>
-      <p class="mb-4">
-        ${this.t.palettePickerIntro}
-      </p>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
+        ${this.t.palettePickerPrototype}
+      </h2>
+      <p class="mb-4">${this.t.palettePickerIntro}</p>
       <div class="palette-picker-layout">
         <div class="palette-picker-control">
           <h3 class="mt-0 mb-4">${this.t.defaultContext}</h3>
@@ -2051,15 +2079,21 @@ class DDDocs extends I18NMixin(DDD) {
           ></hax-palette-picker>
         </div>
         <div class="palette-picker-preview-stack">
-          <div class="palette-picker-preview" data-palette="${selectedDataPalette}">
+          <div
+            class="palette-picker-preview"
+            data-palette="${selectedDataPalette}"
+          >
             <h3 class="mt-0 mb-2">${this.t.selectedPaletteTokens}</h3>
             <p class="palette-picker-meta">
-              ${selectedLabel} (${selectedKey}) → data-palette="${selectedDataPalette}"
+              ${selectedLabel} (${selectedKey}) →
+              data-palette="${selectedDataPalette}"
             </p>
             <div class="palette-picker-swatches">
               ${selectedSwatches.map(
                 (index) => html`
-                  <span class="palette-picker-swatch palette-picker-swatch-${index}"></span>
+                  <span
+                    class="palette-picker-swatch palette-picker-swatch-${index}"
+                  ></span>
                 `,
               )}
             </div>
@@ -2069,9 +2103,7 @@ class DDDocs extends I18NMixin(DDD) {
             data-palette="${selectedDataPalette}"
           >
             <h3 class="mt-0 mb-2">${this.t.darkContextCheck}</h3>
-            <p class="palette-picker-meta">
-              ${this.t.darkContextDescription}
-            </p>
+            <p class="palette-picker-meta">${this.t.darkContextDescription}</p>
             <hax-palette-picker
               .options="${this.palettePickerOptions}"
               value="${selectedDataPalette}"
@@ -2092,7 +2124,8 @@ class DDDocs extends I18NMixin(DDD) {
         <div>
           <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-navBar"></p>
           <p class="mt-5 mx-auto text-center">
-            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-navBar</span>
+            ${this.t.classLabelLowercase}
+            <span class="fw-3">bg-gradient-navBar</span>
           </p>
           <p class="mb-5 mx-auto text-center">
             ${this.t.cssVariableLabel}
@@ -2102,7 +2135,8 @@ class DDDocs extends I18NMixin(DDD) {
         <div>
           <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-footer"></p>
           <p class="mt-5 mx-auto text-center">
-            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-footer</span>
+            ${this.t.classLabelLowercase}
+            <span class="fw-3">bg-gradient-footer</span>
           </p>
           <p class="mb-5 mx-auto text-center">
             ${this.t.cssVariableLabel}
@@ -2114,7 +2148,8 @@ class DDDocs extends I18NMixin(DDD) {
             class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-newsFeature"
           ></p>
           <p class="mt-5 mx-auto text-center">
-            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-newsFeature</span>
+            ${this.t.classLabelLowercase}
+            <span class="fw-3">bg-gradient-newsFeature</span>
           </p>
           <p class="mb-5 mx-auto text-center">
             ${this.t.cssVariableLabel}
@@ -2124,7 +2159,8 @@ class DDDocs extends I18NMixin(DDD) {
         <div>
           <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-buttons"></p>
           <p class="mt-5 mx-auto text-center">
-            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-buttons</span>
+            ${this.t.classLabelLowercase}
+            <span class="fw-3">bg-gradient-buttons</span>
           </p>
           <p class="mb-5 mx-auto text-center">
             ${this.t.cssVariableLabel}
@@ -2134,7 +2170,8 @@ class DDDocs extends I18NMixin(DDD) {
         <div>
           <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-hero"></p>
           <p class="mt-5 mx-auto text-center">
-            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-hero</span>
+            ${this.t.classLabelLowercase}
+            <span class="fw-3">bg-gradient-hero</span>
           </p>
           <p class="mb-5 mx-auto text-center">
             ${this.t.cssVariableLabel}
@@ -2144,7 +2181,8 @@ class DDDocs extends I18NMixin(DDD) {
         <div>
           <p class="mx-2 p-24 px-10 r-md b-xs bs-lg bg-gradient-hero2"></p>
           <p class="mt-5 mx-auto text-center">
-            ${this.t.classLabelLowercase} <span class="fw-3">bg-gradient-hero2</span>
+            ${this.t.classLabelLowercase}
+            <span class="fw-3">bg-gradient-hero2</span>
           </p>
           <p class="mb-5 mx-auto text-center">
             ${this.t.cssVariableLabel}
@@ -2157,7 +2195,9 @@ class DDDocs extends I18NMixin(DDD) {
 
   renderRadius() {
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.availableRadiusClasses}</h2>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
+        ${this.t.availableRadiusClasses}
+      </h2>
       <div class="grid-7 my-15 mx-5 gap-2 radius">
         <div>
           <p class="p-20 r-xs b-sm bs-sm"></p>
@@ -2210,7 +2250,8 @@ class DDDocs extends I18NMixin(DDD) {
             ${this.t.classLabelLowercase} <span class="fw-3">r-rounded</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-radius-rounded</span>
+            ${this.t.cssVariableLabel}
+            <span class="fw-3">--ddd-radius-rounded</span>
           </p>
         </div>
         <div>
@@ -2219,7 +2260,8 @@ class DDDocs extends I18NMixin(DDD) {
             ${this.t.classLabelLowercase} <span class="fw-3">r-circle</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-radius-circle</span>
+            ${this.t.cssVariableLabel}
+            <span class="fw-3">--ddd-radius-circle</span>
           </p>
         </div>
       </div>
@@ -2228,7 +2270,9 @@ class DDDocs extends I18NMixin(DDD) {
 
   renderShadows() {
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.availableShadowClasses}</h2>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
+        ${this.t.availableShadowClasses}
+      </h2>
       <div class="grid-4 my-15 mx-30 gap-10">
         <div>
           <p class="py-20 b-sm bs-sm"></p>
@@ -2236,7 +2280,8 @@ class DDDocs extends I18NMixin(DDD) {
             ${this.t.classLabelLowercase} <span class="fw-3">bs-sm</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-boxShadow-sm</span>
+            ${this.t.cssVariableLabel}
+            <span class="fw-3">--ddd-boxShadow-sm</span>
           </p>
         </div>
         <div>
@@ -2245,7 +2290,8 @@ class DDDocs extends I18NMixin(DDD) {
             ${this.t.classLabelLowercase} <span class="fw-3">bs-md</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-boxShadow-md</span>
+            ${this.t.cssVariableLabel}
+            <span class="fw-3">--ddd-boxShadow-md</span>
           </p>
         </div>
         <div>
@@ -2254,7 +2300,8 @@ class DDDocs extends I18NMixin(DDD) {
             ${this.t.classLabelLowercase} <span class="fw-3">bs-lg</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-boxShadow-lg</span>
+            ${this.t.cssVariableLabel}
+            <span class="fw-3">--ddd-boxShadow-lg</span>
           </p>
         </div>
         <div>
@@ -2263,7 +2310,8 @@ class DDDocs extends I18NMixin(DDD) {
             ${this.t.classLabelLowercase} <span class="fw-3">bs-xl</span>
           </p>
           <p class="mb-5 mx-auto text-center">
-            ${this.t.cssVariableLabel} <span class="fw-3">--ddd-boxShadow-xl</span>
+            ${this.t.cssVariableLabel}
+            <span class="fw-3">--ddd-boxShadow-xl</span>
           </p>
         </div>
       </div>
@@ -2272,9 +2320,14 @@ class DDDocs extends I18NMixin(DDD) {
 
   renderSpacing() {
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.availableSpacingClasses}</h2>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
+        ${this.t.availableSpacingClasses}
+      </h2>
       <h6 class="fw-2 ml-10 mb-15">
-        ${this.t.cssVariableLabelTitleCase}<span class="fw-3">--ddd-spacing-x</span> (1-30)
+        ${this.t.cssVariableLabelTitleCase}<span class="fw-3"
+          >--ddd-spacing-x</span
+        >
+        (1-30)
       </h6>
       <div class="grid-3 gap-4 mt-10 mb-5 mx-20">
         <h4>${this.t.className}</h4>
@@ -2440,9 +2493,7 @@ class DDDocs extends I18NMixin(DDD) {
         ${this.t.accessibleUsingFormat}
         <span class="fw-3">(m or p)(side [optional])-x</span>
       </h6>
-      <h6 class="fw-2 ml-10">
-        ${this.t.spacingSides}
-      </h6>
+      <h6 class="fw-2 ml-10">${this.t.spacingSides}</h6>
       <h6 class="fw-2 ml-10 mb-15">
         ${this.t.exampleLabel} <span class="fw-3">mt-1</span> = margin-top: 4px
       </h6>
@@ -2463,7 +2514,8 @@ class DDDocs extends I18NMixin(DDD) {
           ${this.t.weights} 400 (fw-1) [--ddd-font-weight-regular],
           <span class="fw-2">500 (fw-2) [--ddd-font-weight-medium],</span>
           <span class="fw-3"
-            >&lt;&lt; ${this.t.defaultLabel} &gt;&gt; 700 (fw-3) [--ddd-font-weight-bold],</span
+            >&lt;&lt; ${this.t.defaultLabel} &gt;&gt; 700 (fw-3)
+            [--ddd-font-weight-bold],</span
           >
           <span class="fw-3">900 (fw-3) [--ddd-font-weight-black]</span>
         </p>
@@ -2839,9 +2891,12 @@ class DDDocs extends I18NMixin(DDD) {
               So, I came across your post because I was facing the same issue,
               but I've found a solution.
             </p>
-            <p class="text-center">${this.t.classLabel} <span class="fw-3">lh-120</span></p>
             <p class="text-center">
-              ${this.t.cssVariableLabelTitleCase} <span class="fw-3">--ddd-lh-120</span>
+              ${this.t.classLabel} <span class="fw-3">lh-120</span>
+            </p>
+            <p class="text-center">
+              ${this.t.cssVariableLabelTitleCase}
+              <span class="fw-3">--ddd-lh-120</span>
             </p>
           </div>
           <div>
@@ -2849,9 +2904,12 @@ class DDDocs extends I18NMixin(DDD) {
               So, I came across your post because I was facing the same issue,
               but I've found a solution.
             </p>
-            <p class="text-center">${this.t.classLabel} <span class="fw-3">lh-140</span></p>
             <p class="text-center">
-              ${this.t.cssVariableLabelTitleCase} <span class="fw-3">--ddd-lh-140</span>
+              ${this.t.classLabel} <span class="fw-3">lh-140</span>
+            </p>
+            <p class="text-center">
+              ${this.t.cssVariableLabelTitleCase}
+              <span class="fw-3">--ddd-lh-140</span>
             </p>
           </div>
           <div>
@@ -2859,9 +2917,12 @@ class DDDocs extends I18NMixin(DDD) {
               So, I came across your post because I was facing the same issue,
               but I've found a solution.
             </p>
-            <p class="text-center">${this.t.classLabel} <span class="fw-3">lh-150</span></p>
             <p class="text-center">
-              ${this.t.cssVariableLabelTitleCase} <span class="fw-3">--ddd-lh-150</span>
+              ${this.t.classLabel} <span class="fw-3">lh-150</span>
+            </p>
+            <p class="text-center">
+              ${this.t.cssVariableLabelTitleCase}
+              <span class="fw-3">--ddd-lh-150</span>
             </p>
           </div>
           <div>
@@ -2869,9 +2930,12 @@ class DDDocs extends I18NMixin(DDD) {
               So, I came across your post because I was facing the same issue,
               but I've found a solution.
             </p>
-            <p class="text-center">${this.t.classLabel} <span class="fw-3">lh-auto</span></p>
             <p class="text-center">
-              ${this.t.cssVariableLabelTitleCase} <span class="fw-3">${this.t.notApplicable}</span>
+              ${this.t.classLabel} <span class="fw-3">lh-auto</span>
+            </p>
+            <p class="text-center">
+              ${this.t.cssVariableLabelTitleCase}
+              <span class="fw-3">${this.t.notApplicable}</span>
             </p>
           </div>
         </div>
@@ -3163,9 +3227,7 @@ class DDDocs extends I18NMixin(DDD) {
           >Accent-13</simple-cta
         >
       </div>
-      <h5>
-        ${this.t.accentContrastNote}
-      </h5>
+      <h5>${this.t.accentContrastNote}</h5>
       <div
         style="display: inline-flex; width: fit-content; align-items: center; margin-bottom: 64px;"
       >
@@ -3550,9 +3612,7 @@ class DDDocs extends I18NMixin(DDD) {
    */
   _renderPatternCard(pattern) {
     const gateReport = resolveHaxCapabilityReport();
-    const flagged = gateReport.flaggedPatterns.find(
-      (f) => f.id === pattern.id,
-    );
+    const flagged = gateReport.flaggedPatterns.find((f) => f.id === pattern.id);
     return html`
       <div class="pattern-card">
         <div class="pattern-card-header">
@@ -3562,9 +3622,8 @@ class DDDocs extends I18NMixin(DDD) {
         <p class="pattern-card-desc">${pattern.description}</p>
         ${flagged
           ? html`<div class="pattern-gap">
-              ${this.t.haxCapabilityGap.replace(
-                "{components}",
-                () => (flagged.excludedComponents.join(", ")),
+              ${this.t.haxCapabilityGap.replace("{components}", () =>
+                flagged.excludedComponents.join(", "),
               )}
             </div>`
           : ``}
@@ -3635,9 +3694,7 @@ class DDDocs extends I18NMixin(DDD) {
     } catch {
       // no-op; clipboard may be unavailable in some contexts
     }
-    const feedback = this.shadowRoot.querySelector(
-      `#copy-feedback-${id}`,
-    );
+    const feedback = this.shadowRoot.querySelector(`#copy-feedback-${id}`);
     if (feedback) {
       feedback.hidden = false;
       // restart the fade animation
@@ -3708,27 +3765,34 @@ class DDDocs extends I18NMixin(DDD) {
 
   renderInternalContracts() {
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.internalConsistencyContracts}</h2>
-      <p class="pattern-card-desc">
-        ${this.t.internalContractsIntro}
-      </p>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
+        ${this.t.internalConsistencyContracts}
+      </h2>
+      <p class="pattern-card-desc">${this.t.internalContractsIntro}</p>
       <div class="pattern-section">
         ${INTERNAL_CONTRACTS.map(
           (c) => html`
             <div class="contract-card">
               <p class="contract-card-title">${c.title}</p>
               <p class="contract-card-surface">
-                ${this.t.contractSurface.replace("{surface}", () => (c.surface || ""))}
+                ${this.t.contractSurface.replace(
+                  "{surface}",
+                  () => c.surface || "",
+                )}
               </p>
               <p class="contract-card-structure">${c.structure}</p>
               ${c.example
                 ? html`<p class="contract-example-label">${this.t.example}</p>
                     <div class="contract-example">
                       ${unsafeHTML(sanitizeHTMLString(c.example))}
-                      <div class="pattern-meta" style="margin-top: var(--ddd-spacing-3)">
+                      <div
+                        class="pattern-meta"
+                        style="margin-top: var(--ddd-spacing-3)"
+                      >
                         <simple-cta
                           hide-icon
-                          @click="${() => this._copyToClipboard(c.example, c.id)}"
+                          @click="${() =>
+                            this._copyToClipboard(c.example, c.id)}"
                           >${this.t.copy}</simple-cta
                         >
                         <span
@@ -3751,9 +3815,8 @@ class DDDocs extends I18NMixin(DDD) {
                 )}
               </div>
               <p class="contract-card-targets">
-                ${this.t.contractAppliesTo.replace(
-                  "{elements}",
-                  () => ((c.targetElements || []).join(", ")),
+                ${this.t.contractAppliesTo.replace("{elements}", () =>
+                  (c.targetElements || []).join(", "),
                 )}
               </p>
             </div>
@@ -3774,14 +3837,17 @@ class DDDocs extends I18NMixin(DDD) {
           this.option = e.target.value;
         }}"
       >
-        <option value="*" ?selected="${this.option === "*"}">${this.t.fullStyleguide}</option>
+        <option value="*" ?selected="${this.option === "*"}">
+          ${this.t.fullStyleguide}
+        </option>
         ${this.options.map(
           (option) =>
             html`<option
               value="${option}"
               ?selected="${this.option === option}"
-              >${option}</option
-            >`,
+            >
+              ${option}
+            </option>`,
         )}
       </select>
     `;

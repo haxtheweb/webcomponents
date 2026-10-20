@@ -93,8 +93,10 @@ class WordCount extends I18NMixin(LitElement) {
     this.__observer.disconnect();
     super.disconnectedCallback();
   }
-  update(changedProperties) {
-    super.update(changedProperties);
+  // derived state is computed in willUpdate so it batches into the current
+  // update cycle instead of scheduling extra renders
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
     if (changedProperties.has("t")) {
       // skip the constructor-default first pass (oldValue undefined) so
       // a parse-time words-prefix attribute survives the first update;

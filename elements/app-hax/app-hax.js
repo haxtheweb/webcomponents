@@ -139,14 +139,15 @@ export class AppHax extends I18NMixin(ResponsiveUtilityBehaviors(DDD)) {
 
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     let body = "";
+    let title;
     if (type == "merlin") {
-      var title = `[${type}] New command request from HAX daemon`;
+      title = `[${type}] New command request from HAX daemon`;
       body = `Location: ${globalThis.location.href}
 Merlin command: ${daemonTerm}
 What did you want merlin to do?
 `;
     } else {
-      var title = `[${type}] User report from HAX daemon`;
+      title = `[${type}] User report from HAX daemon`;
       // userAgentData/deviceMemory/hardwareConcurrency are Chromium-only and
       // undefined in other browsers, so guard them before use
       const osName =

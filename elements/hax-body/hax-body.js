@@ -5514,42 +5514,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       order = containers.indexOf(container) || -1;
     return order;
   }
-  /**
-   * Determines if the item can move a set number of slots.
-   *
-   * @param {object} the item
-   * @param {number} -1 for left or +1 for right
-   * @returns {boolean} if the item can move a set number of slots
-   */
-  __layoutCanMove(target, layout, before) {
-    if (!layout.shadowRoot) return false;
-    let slot = target.getAttribute("slot"),
-      container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
-      containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
-        (node) => node.parentNode,
-      ),
-      order = containers.indexOf(container) || -1,
-      dest = order + (before ? -1 : 1);
-    return dest >= containers[0] && dest <= containers[containers.length - 1];
-  }
-  /**
-   * Moves an item a set number of slots.
-   *
-   * @param {object} the item
-   * @param {number} -1 for left or +1 for right
-   */
-  __layoutMove(target, layout, before) {
-    if (!layout.shadowRoot) return false;
-    let currentSlot = target.getAttribute("slot"),
-      container = layout.shadowRoot.querySelector(`[slot=${currentSlot}]`),
-      containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
-        (node) => node.parentNode,
-      ),
-      order = containers.indexOf(container) || -1,
-      dest = order + (before ? -1 : 1),
-      slot = containers[dest];
-    if (slot) target.setAttribute("slot", slot);
-  }
   async __sortLayoutChildren(layout) {
     layout.setAttribute("hax-layout-sorting", true);
     try {

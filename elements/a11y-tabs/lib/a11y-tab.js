@@ -79,7 +79,9 @@ class A11yTab extends I18NMixin(LitElement) {
   }
   render() {
     return html`
-      <span class="sr-only">${this.t.tabXOfY.replace("{xOfY}", () => this.xOfY)}</span>
+      <span class="sr-only"
+        >${this.t.tabXOfY.replace("{xOfY}", () => this.xOfY)}</span
+      >
       <div class="label-heading" part="heading">
         <simple-icon-lite
           class="icon"
@@ -255,6 +257,7 @@ class A11yTab extends I18NMixin(LitElement) {
       localesPath: new URL("../locales/", import.meta.url).href,
     });
     this.disabled = false;
+    // eslint-disable-next-line wc/no-constructor-attributes -- Lit reactive property default; attribute reflection is deferred to the update cycle
     this.hidden = false;
     this.order = 1;
     this.role = "tabpanel";
@@ -292,7 +295,9 @@ class A11yTab extends I18NMixin(LitElement) {
    * @returns {array} text before and after the tabs link
    */
   _endOfTabParts() {
-    let parts = this.t.endOfTab.replace("{xOfY}", () => this.xOfY).split("{tabs}");
+    let parts = this.t.endOfTab
+      .replace("{xOfY}", () => this.xOfY)
+      .split("{tabs}");
     return [parts[0], parts.slice(1).join("")];
   }
 
@@ -326,8 +331,7 @@ class A11yTab extends I18NMixin(LitElement) {
       !this.label
     )
       this._labelChanged();
-    if (changedProperties.has("id"))
-      this.ariaLabelledby = `${this.id}-button`;
+    if (changedProperties.has("id")) this.ariaLabelledby = `${this.id}-button`;
   }
 
   /**
@@ -366,8 +370,8 @@ class A11yTab extends I18NMixin(LitElement) {
     if (!this.label || this.label.trim() === "")
       this.label =
         this.querySelector && this.querySelector('*[slot="label"]')
-        ? this.querySelector('*[slot="label"]').innerHTML
-        : `Tab ${this.order}`;
+          ? this.querySelector('*[slot="label"]').innerHTML
+          : `Tab ${this.order}`;
   }
   /**
    * handles any change in the tab attributes

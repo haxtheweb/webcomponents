@@ -1616,9 +1616,9 @@ class GradeBook extends UIRenderPieces(
                           data-assignment="[h]"
                           type="checkbox"
                           class="select-all"
-                          title="Select all submissions ${a.shortName}"
+                          title="Select all submissions [shortName]"
                           name="select-all-submission"
-                          aria-label="${a.shortName}"
+                          aria-label="[shortName]"
                         ></simple-fields-field> -->
                         ${a.shortName}
                       </th>`,

@@ -191,7 +191,7 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
       <div class="buttons">
         <site-menu-button type="prev"></site-menu-button>
         <site-menu-button type="next"></site-menu-button>
-        <button id="unset" on-click="resetActive">Unset activeItem</button>
+        <button id="unset">Unset activeItem</button>
         <site-rss-button type="atom"></site-rss-button>
         <site-rss-button type="rss"></site-rss-button>
       </div>
