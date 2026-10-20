@@ -634,7 +634,9 @@
       "en": "That URL isn't allowed.",
       "match": [
         "url target is not allowed",
-        "blocked upstream request: (?<detail>.+)"
+        "blocked upstream request: (?<detail>.+)",
+        "`repoUrl` is not a valid URL: (?<url>.+)",
+        "`repoUrl` must be an openstax\\.org URL, got: (?<host>.+)"
       ]
     },
     {
@@ -791,7 +793,8 @@
         ".+ import failed to produce content",
         "no sheets found in excel file",
         ".+ discovered but import failed to produce content",
-        "drupal json:api is available but .+"
+        "drupal json:api is available but .+",
+        "openstax returned (?:no|an empty) table of contents for \".+\""
       ]
     },
     {
@@ -811,7 +814,12 @@
         "no \\.vitepress\\/config file found in .+",
         "unable to parse .+",
         "unsupported import platform .*",
-        "unknown adapter .*"
+        "unknown adapter .*",
+        "unable to read a book slug from `repoUrl`.*",
+        "openstax returned unreadable data for .+",
+        "the openstax release manifest did not name an archive",
+        "openstax has no book with the slug \".+\"",
+        "openstax is not currently publishing \".+\""
       ]
     },
     {
@@ -825,7 +833,9 @@
         "plone search failed at .+",
         "unable to reach (?<source>.+?): (?<detail>.+)",
         "unable to read (?<path>\\S+)",
-        "http (?<status>\\d{3})"
+        "http (?<status>\\d{3})",
+        "unable to reach openstax for .+",
+        "openstax returned \\d+ for .+"
       ]
     },
     {
