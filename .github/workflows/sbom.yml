@@ -1,0 +1,65 @@
+name: sbom
+
+# CycloneDX SBOM generated from yarn.lock (haxtheweb/issues#3092).
+#
+# cdxgen parses the lockfile directly (`--no-install-deps`), so no `yarn install`
+# and no network lookups are needed, and only the manifests are checked out
+# rather than the full 40k+ file tree. The SBOM is uploaded as a workflow
+# artifact named webcomponents-sbom.cdx.json (same naming as the sibling
+# haxcms-php / haxcms-nodejs workflows).
+#
+# Runs when dependency manifests change (so a broken generator is caught in the
+# PR), when a release tag is pushed, and on demand. This workflow does not
+# publish anything to npm and does not touch GitHub Releases.
+on:
+  push:
+    tags: ["v*"]
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - yarn.lock
+      - package.json
+      - "elements/*/package.json"
+      - .github/workflows/sbom.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sbom:
+    name: Generate CycloneDX SBOM
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          # The SBOM is built from the lockfile and manifests only.
+          sparse-checkout: |
+            /package.json
+            /yarn.lock
+            /elements/*/package.json
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+      - name: Generate CycloneDX SBOM
+        run: >-
+          npx --yes @cyclonedx/cdxgen@12.8.5
+          -t js --no-recurse --no-install-deps --no-babel
+          --project-name webcomponents
+          -o "$RUNNER_TEMP/webcomponents-sbom.cdx.json" .
+      - name: Check SBOM is non-empty
+        run: |
+          count=$(jq '.components | length' "$RUNNER_TEMP/webcomponents-sbom.cdx.json")
+          echo "SBOM components: $count"
+          echo "### SBOM: $count components (CycloneDX, from yarn.lock)" >> "$GITHUB_STEP_SUMMARY"
+          test "$count" -gt 0
+      - name: Upload SBOM
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: webcomponents-sbom.cdx.json
+          path: ${{ runner.temp }}/webcomponents-sbom.cdx.json
+          if-no-files-found: error
+          retention-days: 90
