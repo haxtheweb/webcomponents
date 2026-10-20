@@ -60,7 +60,8 @@ function collectElements() {
   return { elements, warnings };
 }
 
-const cell = (s) => s.replace(/\|/g, "\\|");
+// escape backslashes first so an existing "\\" cannot cancel the pipe escape
+const cell = (s) => s.replace(/\\/g, "\\\\").replace(/\|/g, "\\|");
 
 function render(elements) {
   const rows = elements.map((el) => {

@@ -1079,7 +1079,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     // execute 1st match
     let match = myRegexp.exec(html);
     while (match != null) {
-      let tag = match[1].replace("<", "").replace(">", "");
+      let tag = match[1].replace(/[<>]/g, "");
       if (tag.indexOf(" ")) {
         tag = tag.split(" ")[0];
       }

@@ -366,14 +366,45 @@ function findDemoSchema(tag) {
   return null;
 }
 
+// escape a string for literal use inside a RegExp
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// remove HTML comments with a forward-only scan (no backtracking regex);
+// a comment ends at "-->" or "--!>" like browsers parse it, and an opener
+// with no terminator is left alone
+function stripHtmlComments(html) {
+  const close = /--!?>/g;
+  let out = "";
+  let pos = 0;
+  for (;;) {
+    const start = html.indexOf("<!--", pos);
+    if (start === -1) {
+      break;
+    }
+    close.lastIndex = start + 4;
+    const end = close.exec(html);
+    if (!end) {
+      break;
+    }
+    out += html.slice(pos, start);
+    pos = end.index + end[0].length;
+  }
+  return out + html.slice(pos);
+}
+
 /**
  * Pull the first full usage of `tag` out of demo HTML, tracking nesting of
  * the same tag so self-nesting usage closes on the correct close tag.
  */
 function extractTagUsage(html, tag) {
   // ignore commented-out examples
-  html = html.replace(/<!--[\s\S]*?-->/g, "");
-  const openMatch = new RegExp("<" + tag + "(\\s[^>]*)?>", "i").exec(html);
+  html = stripHtmlComments(html);
+  const openMatch = new RegExp(
+    "<" + escapeRegExp(tag) + "(\\s[^>]*)?>",
+    "i",
+  ).exec(html);
   if (!openMatch) {
     return null;
   }

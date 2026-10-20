@@ -2,6 +2,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { stripScriptMarkup } from "@haxtheweb/utils/lib/safe-html.js";
 
 export class LrnH5p extends I18NMixin(LitElement) {
   static get properties() {
@@ -31,12 +32,9 @@ export class LrnH5p extends I18NMixin(LitElement) {
     // remove script tags and work against light dom if there
     if (this.querySelector && this.querySelector("span")) {
       this.querySelector("span").childNodes.forEach((el, _index) => {
-        if (el.nodeName === "#text" && el.textContent.includes("<script>")) {
+        if (el.nodeName === "#text" && /<script/i.test(el.textContent)) {
           // strip only the script markup so surrounding text is preserved
-          el.textContent = el.textContent.replace(
-            /<script>[\s\S]*?(<\/script>|$)/g,
-            "",
-          );
+          el.textContent = stripScriptMarkup(el.textContent);
         }
       });
     }
