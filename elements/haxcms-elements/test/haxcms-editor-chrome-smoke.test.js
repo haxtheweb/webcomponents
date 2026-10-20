@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, fixtureSync, expect, html } from "@open-wc/testing";
 import { store } from "../lib/core/haxcms-site-store.js";
 import "../lib/core/haxcms-site-editor.js";
 import "../lib/core/haxcms-site-editor-ui.js";
@@ -77,7 +77,10 @@ describe("haxcms-editor-builder smoke + a11y baseline", () => {
   });
 
   it("instantiates and registers itself into the HAXCMS store pieces", async () => {
-    const el = await fixture(
+    // plain HTMLElement (no updateComplete): fixture() would wait on
+    // requestAnimationFrame, which never fires on a backgrounded page when
+    // test files run in parallel
+    const el = fixtureSync(
       html`<haxcms-editor-builder></haxcms-editor-builder>`,
     );
     expect(el).to.exist;
@@ -87,7 +90,10 @@ describe("haxcms-editor-builder smoke + a11y baseline", () => {
   });
 
   it("is accessible", async () => {
-    const el = await fixture(
+    // plain HTMLElement (no updateComplete): fixture() would wait on
+    // requestAnimationFrame, which never fires on a backgrounded page when
+    // test files run in parallel
+    const el = fixtureSync(
       html`<haxcms-editor-builder></haxcms-editor-builder>`,
     );
     await expect(el).to.be.accessible();

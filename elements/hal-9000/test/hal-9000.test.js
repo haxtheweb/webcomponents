@@ -406,7 +406,9 @@ describe("hal-9000 es-global-bridge integration", () => {
         once: true,
       });
     });
-    const location = "data:text/javascript,void 0;";
+    // the bridge only accepts http(s) URLs (data:/javascript: are refused), so
+    // load a real same-origin classic script served by the test runner
+    const location = new URL("./fixtures/fresh-test.js", import.meta.url).href;
     const result = await store.load("fresh-test", location);
     expect(result).to.equal(location);
     expect(store.imports["fresh-test"]).to.equal(true);

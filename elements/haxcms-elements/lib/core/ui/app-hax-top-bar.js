@@ -109,13 +109,28 @@ export class AppHaxTopBar extends I18NMixin(LitElement) {
         role="banner"
         aria-label="${this.t.applicationHeader}"
       >
-        <div class="left" part="left" aria-label="${this.t.navigationAndHome}">
+        <div
+          class="left"
+          part="left"
+          role="group"
+          aria-label="${this.t.navigationAndHome}"
+        >
           <slot name="left"></slot>
         </div>
-        <div class="center" part="center" aria-label="${this.t.mainActions}">
+        <div
+          class="center"
+          part="center"
+          role="group"
+          aria-label="${this.t.mainActions}"
+        >
           <slot name="center"></slot>
         </div>
-        <div class="right" part="right" aria-label="${this.t.userControls}">
+        <div
+          class="right"
+          part="right"
+          role="group"
+          aria-label="${this.t.userControls}"
+        >
           <slot name="right"></slot>
         </div>
       </div>
