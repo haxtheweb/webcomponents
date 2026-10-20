@@ -36,6 +36,7 @@ import "@haxtheweb/map-menu/map-menu.js";
 import "@haxtheweb/image-gallery/image-gallery.js";
 import "@haxtheweb/media-playlist/media-playlist.js";
 import "@haxtheweb/simple-pager/simple-pager.js";
+import { trimTrailingSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 
 class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
   static get tag() {
@@ -1407,7 +1408,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     }
     normalized = normalized.replace(/\/{2,}/g, "/");
     if (normalized.length > 1) {
-      normalized = normalized.replace(/\/+$/, "");
+      normalized = trimTrailingSlashes(normalized);
     }
     if (normalized.charAt(normalized.length - 1) !== "/") {
       normalized = `${normalized}/`;

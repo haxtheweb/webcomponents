@@ -1,5 +1,6 @@
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForHAXCMSSiteApiRegistryReady } from "./haxcms-site-api-registry.js";
+import { trimTrailingSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 const VIEWS_SPEC_CACHE = new Map();
 
 function normalizePath(path = "") {
@@ -12,7 +13,7 @@ function normalizePath(path = "") {
   }
   normalized = normalized.replace(/\/{2,}/g, "/");
   if (normalized.length > 1) {
-    normalized = normalized.replace(/\/+$/, "");
+    normalized = trimTrailingSlashes(normalized);
   }
   return normalized;
 }

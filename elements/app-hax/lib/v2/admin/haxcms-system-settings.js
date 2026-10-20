@@ -18,6 +18,7 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import { waitForAppHAXSystemApiRegistryReady } from "../app-hax-system-api-registry.js";
 import "./haxcms-system-allowed-blocks.js";
 import { haxcmsApiMessage } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSApiMessages.js";
+import { trimChars } from "@haxtheweb/utils/lib/safe-html.js";
 
 class HAXCMSSystemSettings extends I18NMixin(DDD) {
   static get tag() {
@@ -2673,7 +2674,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     normalized = normalized.replace(/[\s_]+/g, "-");
     normalized = normalized.replace(/[^a-z0-9-]/g, "-");
     normalized = normalized.replace(/-+/g, "-");
-    normalized = normalized.replace(/^-+/, "").replace(/-+$/, "");
+    normalized = trimChars(normalized, "-");
     return normalized;
   }
 

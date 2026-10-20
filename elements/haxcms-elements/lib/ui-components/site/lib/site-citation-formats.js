@@ -41,6 +41,7 @@
  *   BibTeX    Public, Jane Q.
  */
 
+import { trimTrailingSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 export const CITATION_STYLES = ["apa", "mla", "chicago", "bibtex"];
 export const CITATION_SCOPES = ["page", "site"];
 // Style names are proper nouns, not translatable UI text, so they live here
@@ -214,7 +215,7 @@ export function buildCitationSource(manifest, item, options = {}) {
   if (domain && !/^[a-z][a-z0-9+.-]*:\/\//i.test(domain)) {
     domain = "https://" + domain;
   }
-  domain = domain.replace(/\/+$/, "");
+  domain = trimTrailingSlashes(domain);
   let url = "";
   if (domain) {
     const slug = scope === "page" ? clean(it.slug).replace(/^\/+/, "") : "";

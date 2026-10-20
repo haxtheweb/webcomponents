@@ -23,6 +23,7 @@
  * come from the pages/<id>/index.md files written on save.
  */
 import { autorun, toJS } from "mobx";
+import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 
 const SEARCH_LIMIT_DEFAULT = 10;
 const SEARCH_LIMIT_MAX = 25;
@@ -143,9 +144,7 @@ function summarizeItem(item) {
 }
 
 function findVisibleItem(manifest, slugOrId) {
-  const needle = String(slugOrId || "")
-    .trim()
-    .replace(/^\/+|\/+$/g, "");
+  const needle = trimSlashes(String(slugOrId || "").trim());
   if (needle === "") {
     return null;
   }
