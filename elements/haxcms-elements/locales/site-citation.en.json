@@ -1,0 +1,8 @@
+{
+  "cite": "Cite this",
+  "citationFormat": "Citation format",
+  "copy": "Copy citation",
+  "copied": "Citation copied to clipboard",
+  "copyFailed": "Could not copy. Select the citation text and copy it manually.",
+  "noData": "No citation information is available yet."
+}
