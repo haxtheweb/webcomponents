@@ -1414,3 +1414,65 @@ describe("utils stripMSWord direct import", () => {
     expect(result).to.include("text");
   });
 });
+
+// Regex hardening: stripMSWord and validURL used patterns such as
+// `(\s|.)*?` and `([a-z\d-]*[a-z\d])*` whose alternatives/quantifiers overlap,
+// which backtrack exponentially on input that does not match. The inputs below
+// made the old patterns run for seconds to minutes; they must now finish
+// quickly, and the output for ordinary input must be unchanged.
+describe("utils regex hardening", () => {
+  const elapsed = (fn) => {
+    const start = performance.now();
+    fn();
+    return performance.now() - start;
+  };
+
+  it("stripMSWord removes comments, declarations and attributes as before", () => {
+    expect(stripMSWord("a<!-- c\n x -->b<!DOCTYPE html>c")).to.equal("abc");
+    expect(
+      stripMSWord('<p style="color:red" id="a" class="x">hi</p>'),
+    ).to.equal("<p>hi</p>");
+    expect(stripMSWord('<p style=\'a\' dir="ltr" role="x">hi</p>')).to.equal(
+      "<p>hi</p>",
+    );
+    expect(
+      stripMSWord(
+        '<p data-a="b" data-hax-ray="q" contenteditable="true">x</p>',
+      ),
+    ).to.equal("<p>x</p>");
+    expect(
+      stripMSWord("<html><head><title>t</title></head><body>x</body></html>"),
+    ).to.equal("tx");
+  });
+
+  it("stripMSWord runs in linear time on unterminated comments and attributes", () => {
+    expect(
+      elapsed(() => stripMSWord("<!--" + " \n".repeat(20000))),
+    ).to.be.below(1000);
+    expect(
+      elapsed(() => stripMSWord('<p style="' + " ".repeat(50000))),
+    ).to.be.below(1000);
+    expect(elapsed(() => stripMSWord("<!" + " ".repeat(50000)))).to.be.below(
+      1000,
+    );
+    expect(
+      elapsed(() => stripMSWord('<p data-x="' + " ".repeat(50000))),
+    ).to.be.below(1000);
+  });
+
+  it("validURL accepts and rejects the same hosts as before", () => {
+    expect(validURL("example.com")).to.be.true;
+    expect(validURL("a-b.example.co.uk/path/x?y=1&z=2#frag")).to.be.true;
+    expect(validURL("http://example.com")).to.be.false;
+    expect(validURL("https://a-b.example.co.uk/path/x?y=1#f")).to.be.true;
+    expect(validURL("exa mple.com")).to.be.false;
+  });
+
+  it("validURL runs in linear time on long non-matching host names", () => {
+    expect(
+      elapsed(() => validURL("a".repeat(5000) + "-".repeat(5000) + "!")),
+    ).to.be.below(1000);
+    expect(elapsed(() => validURL("a-".repeat(40) + "!."))).to.be.below(1000);
+    expect(elapsed(() => validURL("a".repeat(40) + "!"))).to.be.below(1000);
+  });
+});
