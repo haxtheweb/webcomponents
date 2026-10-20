@@ -7,6 +7,7 @@ import { RichTextStyles } from "./lib/buttons/rich-text-editor-button.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
+import { stripHtmlComments } from "./lib/stripHtmlComments.js";
 /**
 
  * RichTextEditorBehaviors
@@ -289,9 +290,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
     get isEmpty() {
       return (
         !this.innerHTML ||
-        this.innerHTML
-          .replace(/<!--[^(-->)]*-->/g, "")
-          .replace(/[\s\t\r\n]/gim, "") == ""
+        stripHtmlComments(this.innerHTML).replace(/[\s\t\r\n]/gim, "") == ""
       );
     }
 

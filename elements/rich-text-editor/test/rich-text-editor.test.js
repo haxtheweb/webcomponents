@@ -78,6 +78,12 @@ describe("rich-text-editor behavior", () => {
     expect(element.isEmpty).to.equal(true);
     element.innerHTML = "<!-- comment only -->  ";
     expect(element.isEmpty).to.equal(true);
+    // the old `[^(-->)]` class excluded the character range "(" to ">", which
+    // includes digits, so comments containing digits were not treated as empty
+    element.innerHTML = "<!-- comment 123 (x) -->  ";
+    expect(element.isEmpty).to.equal(true);
+    element.innerHTML = "<!-- a --><!-- b2 -->";
+    expect(element.isEmpty).to.equal(true);
     element.innerHTML = "<p>x</p>";
     expect(element.isEmpty).to.equal(false);
     element.innerHTML = saved;
