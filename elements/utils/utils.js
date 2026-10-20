@@ -19,6 +19,14 @@ import {
 } from "./lib/selection.js";
 import { wipeSlot } from "./lib/slot.js";
 import {
+  encapsulateScriptsAndStyles,
+  findClosingCustomTags,
+  replaceLazyRun,
+  replaceThroughGt,
+  stripHtmlComments,
+  unwrapSpans,
+} from "./lib/safe-html.js";
+import {
   badURLProtocols,
   hasUnsafeURLProtocol,
   sanitizeEmbeddableURL,
@@ -1442,26 +1450,8 @@ function haxElementToNode(haxSchema) {
 function encapScript(html) {
   // ensure this is a string to then do replacements on, rare but possible w/ null
   if (html && typeof html.replace === "function") {
-    html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
-    html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
-    // ensure that HAX tags aren't leaking in here
-    html = html.replace(/<hax-(body|tray|store)[\s\S]*?>/gi, "");
-    html = html.replace(/<\/hax-(body|tray|store)[\s\S]*?>/gi, "");
-    html = html.replace(/<h-a-x[\s\S]*?>/gi, "");
-    html = html.replace(/<\/h-a-x*?>/gi, "");
-    html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
-    html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
-    // special case, it's inside a template tag
-    html = html.replace(
-      /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
-      function (match, _contents, _offset, _input_string) {
-        match = match.replace("&lt;script&gt;", "<script>");
-        match = match.replace("&lt;/script&gt;", "</script>");
-        match = match.replace("&lt;style&gt;", "<style>");
-        match = match.replace("&lt;/style&gt;", "</style>");
-        return match;
-      },
-    );
+    // linear-time (non regex-backtracking) implementation, see lib/safe-html.js
+    html = encapsulateScriptsAndStyles(html);
   }
   return html;
 }
@@ -1469,14 +1459,7 @@ function encapScript(html) {
  * Find custom elements in HTML
  */
 function findTagsInHTML(html) {
-  let tags = {};
-  let tag = "";
-  let matches = html.match(/<\/([a-z,0-9]*?)-(\S*?)>/g);
-  for (let i in matches) {
-    tag = matches[i].replace("</", "").replace(">", "");
-    tags[tag] = tag;
-  }
-  return tags;
+  return findClosingCustomTags(html);
 }
 //converts unicode to HTML entity
 export function utf2Html(str) {
@@ -1520,69 +1503,141 @@ function stripMSWord(input) {
   let beforeCommentStrip;
   do {
     beforeCommentStrip = output;
-    output = output.replace(/<!--[\s\S]*?-->/gim, "");
+    output = stripHtmlComments(output);
   } while (output !== beforeCommentStrip);
-  output = output.replace(/<![^>]*>/gim, "");
+  output = replaceThroughGt(output, /<!/g, "");
   // 3. remove tags leave content if any (but NOT span tags yet)
-  output = output.replace(
-    /<\/*(?:meta|link|title|html|head|body|font|br|\\\\?xml:|xml|st1:|o:|w:|m:|v:)[^>]*>/gim,
+  output = replaceThroughGt(
+    output,
+    /<\/*(?:meta|link|title|html|head|body|font|br|\\\\?xml:|xml|st1:|o:|w:|m:|v:)/gi,
     "",
   );
   // Handle spans specially - remove span wrapper but preserve content and nested elements
-  output = output.replace(/<span[^>]*>([\s\S]*?)<\/span>/gim, "$1");
+  output = unwrapSpans(output);
   // 4. Remove everything in between and including tags '<style(.)style(.)>'
   let badTags = ["style", "script", "applet", "embed", "noframes", "noscript"];
   for (let i in badTags) {
-    let tagStripper = new RegExp(
-      "<" + badTags[i] + ".*?" + badTags[i] + ".*?>",
-      "gim",
-    );
-    output = output.replace(tagStripper, "");
+    output = replaceLazyRun(output, ["<" + badTags[i], badTags[i], ">"], {
+      ignoreCase: true,
+    });
   }
   // 5. remove attributes ' style="..."', align, start and others that we know we dont need
-  output = output.replace(/ style='[^']*'/gim, "");
-  output = output.replace(/ style="[^"]*"/gim, ""); // Fix: handle double-quoted style attributes
-  output = output.replace(/ face="[^"]*"/gim, "");
-  output = output.replace(/ align=.*? /g, "");
-  output = output.replace(/ start='.*?'/g, "");
+  output = replaceLazyRun(output, [" style='", "'"], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [' style="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  }); // Fix: handle double-quoted style attributes
+  output = replaceLazyRun(output, [' face="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [" align=", " "]);
+  output = replaceLazyRun(output, [" start='", "'"]);
   // remove line-height; commonly set via html copy and paste in google docs
-  output = output.replace(/line-height:.*?"/g, '"');
-  output = output.replace(/line-height:.*?;/g, "");
+  output = replaceLazyRun(output, ["line-height:", '"'], {
+    replacement: '"',
+  });
+  output = replaceLazyRun(output, ["line-height:", ";"]);
   // normal font cause... obviously
   output = output.replace(/font-weight:normal;/g, "");
   // text decoration in a link...
   output = output.replace(/text-decoration:none;/g, "");
   // margin clean up that is in point values; only machines make these
-  output = output.replace(/margin-.*?:.*?"/g, '"');
-  output = output.replace(/margin-.*?:.*?;/g, "");
+  output = replaceLazyRun(output, ["margin-", ":", '"'], {
+    replacement: '"',
+  });
+  output = replaceLazyRun(output, ["margin-", ":", ";"]);
   // empty style tags
   output = output.replace(/ style=""/g, "");
   // ID's wont apply meaningfully on a paste
-  output = output.replace(/ id="[^"]*"/gim, "");
+  output = replaceLazyRun(output, [' id="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
   // Google Docs ones
-  output = output.replace(/ dir="[^"]*"/gim, "");
-  output = output.replace(/ role="[^"]*"/gim, "");
+  output = replaceLazyRun(output, [' dir="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [' role="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
   // Google AI internal tracking attributes (jsaction, jscontroller, jsuid, etc.)
-  output = output.replace(/ jsaction="[^"]*"/gim, "");
-  output = output.replace(/ jsaction='[^']*'/gim, "");
-  output = output.replace(/ jscontroller="[^"]*"/gim, "");
-  output = output.replace(/ jscontroller='[^']*'/gim, "");
-  output = output.replace(/ jsuid="[^"]*"/gim, "");
-  output = output.replace(/ jsuid='[^']*'/gim, "");
-  output = output.replace(/ jsname="[^"]*"/gim, "");
-  output = output.replace(/ jsname='[^']*'/gim, "");
-  output = output.replace(/ jsslot="[^"]*"/gim, "");
-  output = output.replace(/ jsslot='[^']*'/gim, "");
-  output = output.replace(/ jsan="[^"]*"/gim, "");
-  output = output.replace(/ jsan='[^']*'/gim, "");
-  output = output.replace(/ jsdata="[^"]*"/gim, "");
-  output = output.replace(/ jsdata='[^']*'/gim, "");
+  output = replaceLazyRun(output, [' jsaction="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [" jsaction='", "'"], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [' jscontroller="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [" jscontroller='", "'"], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [' jsuid="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [" jsuid='", "'"], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [' jsname="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [" jsname='", "'"], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [' jsslot="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [" jsslot='", "'"], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [' jsan="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [" jsan='", "'"], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [' jsdata="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [" jsdata='", "'"], {
+    ignoreCase: true,
+    crossLines: true,
+  });
   // these are universally true tho so fine to have here
-  output = output.replace(/ contenteditable="[^"]*"/gim, "");
+  output = replaceLazyRun(output, [' contenteditable="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
   // some medium, box, github and other paste stuff as well as general paste clean up for classes
   // in multiple HTML primitives
-  output = output.replace(/ data-[^"]*"[^"]*"/gim, "");
-  output = output.replace(/ class="[^"]*"/gim, "");
+  output = replaceLazyRun(output, [" data-", '"', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [' class="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
   output = output.replace(/<pstyle/gm, "<p style");
   // HIGHLY specific to certain platforms, empty link tag
   output = output.replace(/<a name="_GoBack"><\/a>/gm, "");
@@ -1608,14 +1663,26 @@ function stripMSWord(input) {
   output = output.replace(/<\/b>/gm, "</strong>");
   // clean up in lists because they get messy for no real reason...ever.
   // tables as well
-  output = output.replace(/<p style=".*?">/gm, "<p>");
-  output = output.replace(/<ul style=".*?">/gm, "<ul>");
-  output = output.replace(/<ol style=".*?">/gm, "<ol>");
-  output = output.replace(/<li style=".*?">/gm, "<li>");
-  output = output.replace(/<td style=".*?">/gm, "<td>");
-  output = output.replace(/<tr style=".*?">/gm, "<tr>");
+  output = replaceLazyRun(output, ['<p style="', '">'], {
+    replacement: "<p>",
+  });
+  output = replaceLazyRun(output, ['<ul style="', '">'], {
+    replacement: "<ul>",
+  });
+  output = replaceLazyRun(output, ['<ol style="', '">'], {
+    replacement: "<ol>",
+  });
+  output = replaceLazyRun(output, ['<li style="', '">'], {
+    replacement: "<li>",
+  });
+  output = replaceLazyRun(output, ['<td style="', '">'], {
+    replacement: "<td>",
+  });
+  output = replaceLazyRun(output, ['<tr style="', '">'], {
+    replacement: "<tr>",
+  });
   // drop list wrappers (handle attributes on <p> e.g. Google Docs)
-  output = output.replace(/<li><p[^>]*>/gm, "<li>");
+  output = replaceThroughGt(output, /<li><p/g, "<li>");
   output = output.replace(/<\/p><\/li>/gm, "</li>");
   // bold wraps as an outer tag like p can, and on lists
   output = output.replace(/<b><ul>/gm, "<ul>");
@@ -1637,11 +1704,20 @@ function stripMSWord(input) {
   // whitespace in reverse of the top case now that we've cleaned it up
   output = output.replace(/<\/p>(\s*)<p>/gm, "</p><p>");
   // target and remove hax specific things from output if they slipped through
-  output = output.replace(/ data-hax-ray="[^"]*"/gim, "");
+  output = replaceLazyRun(output, [' data-hax-ray="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
   output = output.replace(/ class=""/gim, "");
   output = output.replace(/ class="hax-active"/gim, "");
-  output = output.replace(/ contenteditable="[^"]*"/gim, "");
-  output = output.replace(/ t="[^"]*"/gim, "");
+  output = replaceLazyRun(output, [' contenteditable="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
+  output = replaceLazyRun(output, [' t="', '"'], {
+    ignoreCase: true,
+    crossLines: true,
+  });
   // wow do I hate contenteditable and the dom....
   // bold and italic are treated as if they are block elements in a paste scenario
   // 8. check for empty bad tags

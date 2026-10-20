@@ -190,7 +190,7 @@ function initialSpace(node) {
   if (node.nodeType !== Node.TEXT_NODE) {
     return 0;
   }
-  return /^\s*/.exec(node.textContent)[0].length;
+  return node.textContent.length - node.textContent.trimStart().length;
 }
 
 /**
@@ -201,7 +201,8 @@ function ignoredTrailingSpace(node) {
   if (node.nodeType !== Node.TEXT_NODE) {
     return 0;
   }
-  const trailingSpaceCount = /\s*$/.exec(node.textContent)[0].length;
+  const trailingSpaceCount =
+    node.textContent.length - node.textContent.trimEnd().length;
   if (!trailingSpaceCount) {
     return 0;
   }

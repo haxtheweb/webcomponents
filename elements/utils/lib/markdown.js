@@ -18,44 +18,97 @@ export function detectMarkdown(text) {
 
   // Strong indicators (these alone suggest markdown)
   const strongIndicators = [
-    /^#{1,6}\s+.+$/m, // Headers (# ## ### etc.)
-    /^```[\s\S]*?```$/m, // Fenced code blocks
-    /^\|.+\|.+\|.*$/m, // Tables (at least 2 pipes per line)
-    /^>\s+.+$/m, // Blockquotes (line-level)
-    /^\s*\*{3,}\s*$/m, // Horizontal rules (***)
-    /^\s*-{3,}\s*$/m, // Horizontal rules (---)
-    /^\s*_{3,}\s*$/m, // Horizontal rules (___)
+    // Headers (# ## ### etc.)
+    (t) => /^#{1,6}\s+\S/m.test(t),
+    hasFencedCodeBlock, // Fenced code blocks
+    hasTableRow, // Tables (at least 2 pipes per line)
+    (t) => /^>\s+\S/m.test(t), // Blockquotes (line-level)
+    (t) => HR_STAR.test(t), // Horizontal rules (***)
+    (t) => HR_DASH.test(t), // Horizontal rules (---)
+    (t) => HR_UNDERSCORE.test(t), // Horizontal rules (___)
   ];
 
   // Check for strong indicators first
-  for (const pattern of strongIndicators) {
-    if (pattern.test(plainText)) {
+  for (const check of strongIndicators) {
+    if (check(plainText)) {
       return true;
     }
   }
 
   // Moderate indicators (need multiple matches)
   const moderateIndicators = [
-    /^\s*[-*+]\s+.+$/m, // Unordered lists (line-level)
-    /^\s*\d+\.\s+.+$/m, // Ordered lists (line-level)
-    /\*\*[^*]+\*\*/, // Bold text (non-greedy)
-    /(?<!\*)\*[^*]+\*(?!\*)/, // Italic text (not bold)
-    /\[.+?\]\(.+?\)/, // Links [text](url)
-    /!\[.*?\]\(.+?\)/, // Images ![alt](url)
-    /`[^`\n]+`/, // Inline code (no line breaks)
-    /^\s{4,}.+$/m, // Indented code blocks (4+ spaces)
+    // Unordered lists (line-level)
+    (t) => /^[^\S\n\r\u2028\u2029]*[-*+]\s+\S/m.test(t),
+    // Ordered lists (line-level)
+    (t) => /^[^\S\n\r\u2028\u2029]*\d+\.\s+\S/m.test(t),
+    (t) => /\*\*[^*]+\*\*/.test(t), // Bold text (non-greedy)
+    (t) => /(?<!\*)\*[^*]+\*(?!\*)/.test(t), // Italic text (not bold)
+    hasLink, // Links [text](url)
+    hasImage, // Images ![alt](url)
+    (t) => /`[^`\n]+`/.test(t), // Inline code (no line breaks)
+    // Indented code blocks (4+ whitespace; plainText is trimmed so a run of
+    // whitespace is always followed by content)
+    (t) => /^\s{4}/m.test(t),
   ];
 
   // Count moderate indicators
   let matches = 0;
-  for (const pattern of moderateIndicators) {
-    if (pattern.test(plainText)) {
+  for (const check of moderateIndicators) {
+    if (check(plainText)) {
       matches++;
     }
   }
 
   // Need at least 2 moderate indicators to consider it markdown
   return matches >= 2;
+}
+
+// Horizontal rules: optional indentation, 3+ marker characters, optional trailing
+// whitespace, all on one line. Whitespace classes exclude line terminators so the
+// scan is anchored per line (linear time) rather than spanning blank lines.
+const HR_STAR = /^[^\S\n\r\u2028\u2029]*\*{3,}[^\S\n\r\u2028\u2029]*$/m;
+const HR_DASH = /^[^\S\n\r\u2028\u2029]*-{3,}[^\S\n\r\u2028\u2029]*$/m;
+const HR_UNDERSCORE = /^[^\S\n\r\u2028\u2029]*_{3,}[^\S\n\r\u2028\u2029]*$/m;
+const LINE_BREAKS = /[\n\r\u2028\u2029]/;
+
+/**
+ * A line opening with ``` and a later ``` that ends a line. Only the first
+ * opener needs checking: any later opener has a subset of possible closers.
+ */
+function hasFencedCodeBlock(text) {
+  const opener = /^```/m.exec(text);
+  if (!opener) return false;
+  return /```(?=[\n\r\u2028\u2029]|$)/g.test(text.slice(opener.index + 3));
+}
+
+/** a line like `| a | b |`: starts with | and has two more pipes, each after at least one character */
+function hasTableRow(text) {
+  for (const line of text.split(LINE_BREAKS)) {
+    if (line[0] !== "|") continue;
+    const a = line.indexOf("|", 2);
+    if (a !== -1 && line.indexOf("|", a + 2) !== -1) return true;
+  }
+  return false;
+}
+
+/** `[text](url)` on one line, with non-empty text and url */
+function hasLink(text) {
+  return text.split(LINE_BREAKS).some((line) => {
+    const a = line.indexOf("[");
+    if (a === -1) return false;
+    const b = line.indexOf("](", a + 2);
+    return b !== -1 && line.indexOf(")", b + 3) !== -1;
+  });
+}
+
+/** `![alt](url)` on one line, alt may be empty, url non-empty */
+function hasImage(text) {
+  return text.split(LINE_BREAKS).some((line) => {
+    const a = line.indexOf("![");
+    if (a === -1) return false;
+    const b = line.indexOf("](", a + 2);
+    return b !== -1 && line.indexOf(")", b + 3) !== -1;
+  });
 }
 
 /**
