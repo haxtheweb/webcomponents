@@ -296,3 +296,48 @@ export function trimLineEdges(text) {
   }
   return out + text.slice(keepFrom);
 }
+
+/**
+ * Remove `<script ...>` ... `</script>` (case-insensitive, attributes and
+ * `</script >` closers allowed) from text, keeping the text around it. An
+ * opener with no closer removes everything to the end of the string, like the
+ * regex it replaces: `/<script>[\s\S]*?(<\/script>|$)/g`.
+ */
+export function stripScriptMarkup(str) {
+  const open = /<script(?:[\s/][^<>]*)?>/gi;
+  const close = /<\/script[^<>]*>/gi;
+  let out = "";
+  let pos = 0;
+  for (;;) {
+    const o = execFrom(open, str, pos);
+    if (!o) break;
+    out += str.slice(pos, o.index);
+    const c = execFrom(close, str, o.index + o[0].length);
+    if (!c) return out;
+    pos = c.index + c[0].length;
+  }
+  return out + str.slice(pos);
+}
+
+/**
+ * Remove every <name ...> / </name ...> tag along with the whitespace around it.
+ * Equivalent to the global regex `\s*<\/?name[^>]*>\s*` without the leading `\s*` (which
+ * rescans each whitespace run once per candidate start, i.e. quadratic time).
+ * Tag bodies stop at the next "<" so unterminated tags cannot rescan the input.
+ * Call it in a loop until the output is stable to defeat nested input.
+ * @param {string} content
+ * @param {string} name plain tag name such as "template" (not a pattern)
+ */
+export function stripTagsAndSurroundingSpace(content, name) {
+  const parts = content.split(
+    new RegExp("</?" + escapeRegExp(name) + "[^<>]*>", "g"),
+  );
+  const last = parts.length - 1;
+  return parts
+    .map((part, i) => {
+      if (i > 0) part = part.trimStart();
+      if (i < last) part = part.trimEnd();
+      return part;
+    })
+    .join("");
+}

@@ -7,6 +7,7 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { gSheetInterface } from "@haxtheweb/utils/lib/gSheetsInterface.js";
 import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { stripHtmlComments } from "@haxtheweb/utils/lib/safe-html.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -1114,11 +1115,14 @@ class GradeBookLite extends UIRenderPieces(
   async downloadPDFviaMicro(_e) {
     this.__pdfLoading = true;
     // active dom, but remove the Lit comments from response
-    let htmlContent = this.shadowRoot
-      .querySelector("#studentreport")
-      .innerHTML.replace(/<!--.*?-->/g, "")
-      .replace(/\s+/g, " ")
-      .trim();
+    // (repeat until stable so nested "<!<!-- x -->-- y -->" leaves no opener)
+    let htmlContent = this.shadowRoot.querySelector("#studentreport").innerHTML;
+    let previousContent;
+    do {
+      previousContent = htmlContent;
+      htmlContent = stripHtmlComments(htmlContent);
+    } while (htmlContent !== previousContent);
+    htmlContent = htmlContent.replace(/\s+/g, " ").trim();
     // base helps w/ calculating URLs in content
     let base = "";
     if (globalThis.document.querySelector("base")) {
