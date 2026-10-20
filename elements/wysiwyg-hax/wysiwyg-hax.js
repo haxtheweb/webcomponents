@@ -26,11 +26,9 @@ class WysiwygHax extends LitElement {
         class="${this.fieldClass}"
         id="${this.fieldId}"
         name="${this.fieldName}"
+        .value="${this.bodyValue}"
         hidden=""
-      >
-      ${this.bodyValue}
-      </textarea
-      >
+      ></textarea>
       <cms-hax
         hide-message=""
         redirect-location="${this.redirectLocation}"

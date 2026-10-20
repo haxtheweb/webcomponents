@@ -7,7 +7,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 // upstream widget (web-platform-dx/baseline-status). It registers
 // <baseline-status>; this element wraps it so it can be placed and configured
 // in HAX. Import the ESM entry (not the .min.js bundle) so lit is not duplicated.
-import "baseline-status";
+import "baseline-status/baseline-status.js";
 
 /**
  * `web-baseline-status`

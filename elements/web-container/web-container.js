@@ -6,8 +6,12 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { WebContainer } from "@webcontainer/api";
-import { Terminal } from "@xterm/xterm";
-import { FitAddon } from "@xterm/addon-fit";
+// namespace imports: xterm only ships a CommonJS build for Node, where a named
+// import (`import { Terminal }`) stops the whole element from loading under
+// server-side rendering. Namespace imports never throw; the classes are read
+// off the namespace (or its CommonJS default) when a terminal is created.
+import * as xterm from "@xterm/xterm";
+import * as xtermFit from "@xterm/addon-fit";
 /**
  * `web-container`
  * 
@@ -225,6 +229,8 @@ export class WebContainerEl extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   async setupWebContainers() {
+    const FitAddon = xtermFit.FitAddon || xtermFit.default.FitAddon;
+    const Terminal = xterm.Terminal || xterm.default.Terminal;
     const fitAddon = new FitAddon();
     const terminal = new Terminal({
       convertEol: true,
