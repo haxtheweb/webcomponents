@@ -302,7 +302,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
     _dragLeave(e) {
       e.target.classList.remove("hax-hovered");
     }
-    _dropEvent(e) {
+    _dropEvent(_e) {
       this.querySelectorAll(".hax-hovered").forEach((el) => {
         el.classList.remove("hax-hovered");
       });
@@ -322,7 +322,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
      */
     _slotMonitor(e) {
       // sanity, we have a local slot
-      var eventPath = normalizeEventPath(e);
+      let eventPath = normalizeEventPath(e);
 
       if (
         eventPath[0] &&

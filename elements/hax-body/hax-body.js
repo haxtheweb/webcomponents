@@ -1,4 +1,4 @@
-import { html, css, render, unsafeCSS } from "lit";
+import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { UndoManagerBehaviors } from "@haxtheweb/undo-manager/undo-manager.js";
 import { HAXStore } from "./lib/hax-store.js";
@@ -22,7 +22,7 @@ import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
+import "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import "./lib/hax-context-behaviors.js";
 import "./lib/hax-plate-context.js";
 // our default way of handing grids
@@ -33,7 +33,7 @@ import "@haxtheweb/media-image/media-image.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 
 // variables required as part of the gravity drag and scroll
-var gravityScrollTimer = null;
+let gravityScrollTimer = null;
 const maxStep = 25;
 const edgeSize = 200;
 
@@ -861,7 +861,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       });
     });
     autorun(() => {
-      const activeEditingElement = toJS(HAXStore.activeEditingElement);
+      toJS(HAXStore.activeEditingElement);
     });
   }
 
@@ -872,7 +872,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * When we end dragging ensure we remove the mover class.
    */
-  dragEndBody(e) {
+  dragEndBody(_e) {
     this.__manageFakeEndCap(false);
     HAXStore._lockContextPosition = false;
     this.querySelectorAll(".hax-hovered").forEach((el) => {
@@ -885,7 +885,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       el.classList.remove("hax-drop-below");
     });
   }
-  _mouseLeave(e) {
+  _mouseLeave(_e) {
     if (this.editMode && HAXStore.ready) {
       clearTimeout(this.__mouseQuickTimer);
       clearTimeout(this.__mouseTimer);
@@ -894,7 +894,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   }
   _mouseMove(e) {
     if (this.editMode && HAXStore.ready) {
-      var eventPath = normalizeEventPath(e);
+      let eventPath = normalizeEventPath(e);
       clearTimeout(this.__mouseQuickTimer);
       this.__mouseQuickTimer = setTimeout(() => {
         if (
@@ -990,7 +990,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * On mouse release, dump any scroller and the end cap element
    */
-  _mouseUp(e) {
+  _mouseUp(_e) {
     // this helps w/ ensuring that the "focusin" event doesn't
     // fire when a mousedown is executed
     setTimeout(() => {
@@ -1001,13 +1001,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     clearTimeout(gravityScrollTimer);
     this.__manageFakeEndCap(false);
   }
-  scrollerFixclickEvent(e) {
+  scrollerFixclickEvent(_e) {
     this._useristyping = false;
     this.positionContextMenus();
     // failsafe to clear to the gravity scrolling
     clearTimeout(gravityScrollTimer);
   }
-  blurEvent(e) {
+  blurEvent(_e) {
     if (this.editMode) {
       // specialized element / item interaction that generated a blur
       // event which could imply we clicked on an iframe and "left" the
@@ -1042,14 +1042,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Activation allowed from outside this grid as far as drop areas
    */
-  dragEnterBody(e) {
+  dragEnterBody(_e) {
     this.hideContextMenus();
     this._useristyping = false;
     this.__addAbove = true;
     // insert a fake child at the end
     this.__manageFakeEndCap(true);
   }
-  revealMenuIfHidden(e) {
+  revealMenuIfHidden(_e) {
     this._useristyping = false;
     this.positionContextMenus();
   }
@@ -1229,7 +1229,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // issues as well as any "tap" event from a phone knowing what text
     // WAS selected prior to an operation that might lose focus / selection
     // during the workflow like replacing an element in context / inline
-    this.shadowRoot.querySelector("slot").addEventListener("mouseup", (e) => {
+    this.shadowRoot.querySelector("slot").addEventListener("mouseup", (_e) => {
       if (this.editMode) {
         setTimeout(() => {
           const tmp = HAXStore.getSelection();
@@ -1319,7 +1319,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Keep the context menu visible if needed
    */
-  _keepContextVisible(e = null) {
+  _keepContextVisible(_e = null) {
     if (this.editMode) {
       clearTimeout(this.__contextVisibleLock);
       this.__contextVisibleLock = setTimeout(() => {
@@ -2370,7 +2370,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       return;
     }
     const spans = Array.from(rootNode.querySelectorAll("span[style]"));
-    for (var i = 0; i < spans.length; i++) {
+    for (let i = 0; i < spans.length; i++) {
       if (this.__isTransientEditorStyleSpan(spans[i])) {
         this.__unwrapTransientEditorStyleSpan(spans[i]);
       }
@@ -2413,7 +2413,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       : node.tagName.toLowerCase();
     const newNode = globalThis.document.createElement(insertTag);
     if (insertTag === node.tagName.toLowerCase()) {
-      for (var i = 0; i < node.attributes.length; i++) {
+      for (let i = 0; i < node.attributes.length; i++) {
         const attr = node.attributes[i];
         if (!["id", "data-hax-active", "contenteditable"].includes(attr.name)) {
           newNode.setAttribute(attr.name, attr.value);
@@ -2611,7 +2611,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * This can fire for things like events needing this workflow to
    * invoke whether it's a "convert" event or a "replace placeholder" event
    */
-  async insertElementWorkflow(activeNode = null, testOnly = false) {}
+  async insertElementWorkflow(_activeNode = null, _testOnly = false) {}
   /**
    * Whole workflow of replacing something in place contextually.
    * This can fire for things like events needing this workflow to
@@ -2733,8 +2733,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   getParentGrid(node) {
     node = node || this.activeNode;
-    let slot = !!node ? node.slot : undefined;
-    return !!slot ? nodeToHaxElement(node.parentNode) : undefined;
+    let slot = node ? node.slot : undefined;
+    return slot ? nodeToHaxElement(node.parentNode) : undefined;
   }
   /**
    *
@@ -2746,7 +2746,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   getSlotConfig(slotId = "", props = {}) {
     let settings = props.settings,
-      matchingSlots = !!settings
+      matchingSlots = settings
         ? Object.keys(settings || {})
             .map((group) =>
               settings[group].filter(
@@ -2778,7 +2778,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (this.primitiveTextBlocks.includes(element.tag)) {
       skipPropMatch = true;
     }
-    var props = !!element.content ? { innerHTML: element.content } : {};
+    let props = element.content ? { innerHTML: element.content } : {};
     // see if we have a gizmo as it's not a requirement to registration
     // as well as having handlers since mapping is not required either
     if (
@@ -2791,7 +2791,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // get the haxProperties for this item
       let gizmo = HAXStore.elementList[element.tag].gizmo;
       // walk through each handler
-      for (var i = 0; i < gizmo.handles.length; i++) {
+      for (let i = 0; i < gizmo.handles.length; i++) {
         // walk the properties defined as they would be to the
         // left side of the ledger and tell us which property to
         // mesh with. This effectively rehydrates / inverts that
@@ -2799,9 +2799,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // "oh ya, but what could have handled this" so that we
         // can use that translation to offer up convertion to a
         // new element. This is insane.
-        if (!!element.properties.innerHTML)
+        if (element.properties.innerHTML)
           props["innerHTML"] = element.properties.innerHTML;
-        for (var prop in gizmo.handles[i]) {
+        for (let prop in gizmo.handles[i]) {
           // type is a reserved handler but any other property
           // which we actually have in our element let's go for it
           if (
@@ -2824,16 +2824,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     let haxElements = HAXStore.guessGizmo(type, props, skipPropMatch);
 
     //if element is in a grid, only allow changes that the slot allows
-    let slots = !!grid
+    let slots = grid
       ? this.getSlotConfig(slot, HAXStore.elementList[grid.tag])
       : undefined;
     let exclusions =
       !!grid && grid.tag === "grid-plate"
         ? ["grid-plate"]
-        : !!slots
+        : slots
           ? slots.excludedSlotWrappers
           : undefined;
-    let inclusions = !!slots ? slots.allowedSlotWrappers : undefined;
+    let inclusions = slots ? slots.allowedSlotWrappers : undefined;
     if (!!exclusions || !!inclusions)
       haxElements = haxElements.filter(
         (el) =>
@@ -2876,7 +2876,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     content,
     properties = {},
     active = this.activeNode,
-    child = false,
+    _child = false,
     insertScrollOptions = {},
   ) {
     // Signal that we're inserting content so the MutationObserver
@@ -2887,7 +2887,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // verify this tag is a valid one
     // create a new element fragment w/ content in it
     // if this is a custom-element it won't expand though
-    var frag = globalThis.document.createElement(tag);
+    let frag = globalThis.document.createElement(tag);
     // set text forcibly
     //frag.innerText = content;
     // now set html forcibly which would overwrite the other one
@@ -2895,7 +2895,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // clone the fragment which will force an escalation to full node
     const newNode = frag.cloneNode(true);
     // support for properties if they exist
-    for (var property in properties) {
+    for (let property in properties) {
       let attributeName = camelToDash(property);
       if (attributeName != "" && properties.hasOwnProperty(property)) {
         // special supporting for boolean because html is weird :p
@@ -2963,7 +2963,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // insert at active insert point if we have one
     else if (active && active.parentNode) {
       // allow for inserting things into things but not grid plate
-      if (!!this.__isLayout(active.parentNode)) {
+      if (this.__isLayout(active.parentNode)) {
         if (active.getAttribute("slot") != null) {
           newNode.setAttribute("slot", active.getAttribute("slot"));
         }
@@ -3043,7 +3043,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         customElements.whenDefined(tagName).then(() => {
           done();
         });
-      } catch (e) {
+      } catch {
         done();
       }
       setTimeout(() => {
@@ -3061,7 +3061,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   async haxToContent() {
     this.hideContextMenus();
-    var __active = this.activeNode;
+    let __active = this.activeNode;
     // null this to drop hax based classes
     HAXStore.activeNode = null;
     let children =
@@ -3070,7 +3070,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             flatten: true,
           })
         : [];
-    var content = "";
+    let content = "";
     for (var i = 0; i < children.length; i++) {
       // skip the auto-inserted trailing text affordance entirely when
       // it's still empty; it's a UX-only aid and should never be part
@@ -3092,7 +3092,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         children[i].classList.remove("hax-hovered");
         children[i].removeAttribute("contenteditable");
         content += await HAXStore.nodeToContent(children[i]);
-        if (!!this.__isLayout(children[i])) {
+        if (this.__isLayout(children[i])) {
           this._applyContentEditable(this.editMode, children[i]);
         }
       }
@@ -3219,7 +3219,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     // convert it back to a clone, seems odd I'm sure but this ensures that all props are copied
     // correctly and that we get a brand new object
-    var nodeClone = haxElementToNode({
+    let nodeClone = haxElementToNode({
       tag: haxElement.tag,
       content: haxElement.content,
       properties: haxElement.properties,
@@ -3346,14 +3346,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * other actions where the in-context menus are distracting
    */
   __addActiveVisible() {
-    for (var i in this.contextMenus) {
+    for (let i in this.contextMenus) {
       if (i != "add" || this.__activeHover) {
         this.contextMenus[i].classList.add("hax-context-menu-active");
       }
     }
   }
   __dropActiveVisible() {
-    for (var i in this.contextMenus) {
+    for (let i in this.contextMenus) {
       this.contextMenus[i].classList.remove("hax-context-menu-active");
     }
     // force hiding add menu
@@ -3388,7 +3388,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         node,
         direction > 0 ? target.nextElementSibling : target,
       );
-    } else if (!!move) {
+    } else if (move) {
       //move slot
       node.setAttribute("slot", move);
     } else if (node && parent && parent !== this) {
@@ -3397,7 +3397,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         (move = parent.getAttribute("slot"));
       if (target) {
         parent.parentNode.insertBefore(node, target);
-        if (!!move) node.setAttribute("slot", move);
+        if (move) node.setAttribute("slot", move);
       }
     }
     // Signal that we're manipulating active node to prevent MutationObserver interference
@@ -3601,7 +3601,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
 
     // Create a replacement tag of the desired type
-    var replacement = globalThis.document.createElement(tagName);
+    let replacement = globalThis.document.createElement(tagName);
 
     // Store slot attribute early to ensure it's preserved
     const originalSlot = node.getAttribute("slot");
@@ -3628,7 +3628,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
     // Grab all of the original's attributes, and pass them to the replacement
     // These will override style guide defaults if they exist
-    for (var i = 0, l = node.attributes.length; i < l; ++i) {
+    for (let i = 0, l = node.attributes.length; i < l; ++i) {
       let nodeName = node.attributes.item(i).nodeName;
       let value = node.attributes.item(i).value;
       try {
@@ -3882,8 +3882,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       if (fallbackNode && fallbackNode.focus) {
         HAXStore.activeNode = fallbackNode;
         try {
-          var range = globalThis.document.createRange();
-          var sel = HAXStore.getSelection();
+          let range = globalThis.document.createRange();
+          let sel = HAXStore.getSelection();
           range.setStart(fallbackNode, 0);
           range.collapse(true);
           sel.removeAllRanges();
@@ -3951,15 +3951,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             fragment.firstChild.tagName.toLowerCase() === "iframe"
           ) {
             // Create a replacement tag of the desired type
-            var replacement = globalThis.document.createElement("webview");
+            let replacement = globalThis.document.createElement("webview");
             // Grab all of the original's attributes, and pass them to the replacement
             for (
-              var j = 0, l = fragment.firstChild.attributes.length;
+              let j = 0, l = fragment.firstChild.attributes.length;
               j < l;
               ++j
             ) {
-              var nodeName = fragment.firstChild.attributes.item(j).nodeName;
-              var value = fragment.firstChild.attributes.item(j).value;
+              let nodeName = fragment.firstChild.attributes.item(j).nodeName;
+              let value = fragment.firstChild.attributes.item(j).value;
               if (nodeName === "height" || nodeName === "width") {
                 replacement.style[nodeName] == value;
               }
@@ -3996,7 +3996,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           if (children.length === 0) {
             children = this.shadowRoot.querySelector("#body").children;
           }
-          for (var i = 0; i < children.length; i++) {
+          for (let i = 0; i < children.length; i++) {
             await HAXStore.runHook(children[i], "editModeChanged", [true]);
           }
         }
@@ -4528,8 +4528,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               HAXStore.isTextElement(activeNode)
             ) {
               try {
-                var range = globalThis.document.createRange();
-                var sel = HAXStore.getSelection();
+                let range = globalThis.document.createRange();
+                let sel = HAXStore.getSelection();
                 range.setStart(this.activeNode, 0);
                 range.collapse(true);
                 sel.removeAllRanges();
@@ -4666,8 +4666,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           } else {
             this.haxInsert("p", "", {});
             try {
-              var range = globalThis.document.createRange();
-              var sel = HAXStore.getSelection();
+              let range = globalThis.document.createRange();
+              let sel = HAXStore.getSelection();
               range.setStart(this.activeNode, 0);
               range.collapse(true);
               sel.removeAllRanges();
@@ -4721,7 +4721,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
       } else {
         //make sure ective node is not still in edit mode
-        if (!!this.activeNode) {
+        if (this.activeNode) {
           this.unsetSlotEditMode(this.activeNode);
           this.unsetElementEditMode(this.activeNode);
         }
@@ -4875,7 +4875,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
     // mutation observer that ensures state of hax applied correctly
     this._observer = new MutationObserver((mutations) => {
-      var mutFind = false;
+      let mutFind = false;
       if (
         !this.__ignoreActive &&
         !this.__dragMoving &&
@@ -5408,7 +5408,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       return;
     }
     let grandKids = layoutNode.querySelectorAll("*");
-    for (var j = 0; j < grandKids.length; j++) {
+    for (let j = 0; j < grandKids.length; j++) {
       if (this._validElementTest(grandKids[j], true)) {
         await this.__applyNodeEditableStateWhenReady(grandKids[j], status);
       }
@@ -5430,7 +5430,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (children.length === 0) {
       children = target.children;
     }
-    for (var i = 0; i < children.length; i++) {
+    for (let i = 0; i < children.length; i++) {
       // sanity check for being a valid element / not a "hax" element
       if (this._validElementTest(children[i], true)) {
         // For custom elements (like grid-plate), wait for them to upgrade
@@ -5441,7 +5441,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             await customElements.whenDefined(tagName);
             // Extra frame to ensure shadowRoot is ready
             await new Promise((resolve) => requestAnimationFrame(resolve));
-          } catch (e) {
+          } catch {
             // Element not registered, proceed anyway
           }
         }
@@ -5479,7 +5479,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   }
   __layoutMonitor(e) {
     // sanity, we have a local slot
-    var eventPath = normalizeEventPath(e);
+    let eventPath = normalizeEventPath(e);
 
     if (
       eventPath[0] &&
@@ -5544,7 +5544,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // select all direct children w/ a slot attribute and convert to an Array
       let children = Array.prototype.reduce.call(
         layout.querySelectorAll("[slot]"),
-        function (acc, e) {
+        function (acc, _e) {
           return acc;
         },
         [],
@@ -5718,7 +5718,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         await customElements.whenDefined(tagName);
         // Extra frame to ensure shadowRoot is initialized
         await new Promise((resolve) => requestAnimationFrame(resolve));
-      } catch (e) {
+      } catch {
         // Element not registered, proceed anyway
       }
     }
@@ -5785,7 +5785,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
       if (node.querySelectorAll("a").length > 0) {
         let links = node.querySelectorAll("a");
-        for (var j = 0, len2 = links.length; j < len2; j++) {
+        for (let j = 0, len2 = links.length; j < len2; j++) {
           if (status) {
             links[j].setAttribute("contenteditable", status);
           } else {
@@ -5831,8 +5831,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       HAXStore._lockContextPosition = false;
       // trick the tray into forcing active to be Configure
       HAXStore.haxTray.activeTab = "item-1";
-      var target = null;
-      var eventPath = normalizeEventPath(e);
+      let target = null;
+      let eventPath = normalizeEventPath(e);
       if (
         e.target.closest("[data-hax-layout]") &&
         e.target.parentNode != e.target.closest("[data-hax-layout]")
@@ -5881,7 +5881,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // establish an activeNode /container based on drop position
       HAXStore.activeNode = target;
       // var for the local drop target
-      var local;
+      let local;
       // this helps ensure that what gets drag and dropped is a file
       // this prevents issues with selecting and dragging text (which triggers drag/drop)
       // as well as compatibility with things that are legit in a draggable state
@@ -6454,26 +6454,26 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // parts as possible and keep the demo as simple as possible.
 
     // Get the viewport-relative coordinates of the mousemove event.
-    var viewportX = e.clientX;
-    var viewportY = e.clientY;
+    let viewportX = e.clientX;
+    let viewportY = e.clientY;
 
     // Get the viewport dimensions.
-    var viewportWidth = globalThis.document.documentElement.clientWidth;
-    var viewportHeight = globalThis.document.documentElement.clientHeight;
+    let viewportWidth = globalThis.document.documentElement.clientWidth;
+    let viewportHeight = globalThis.document.documentElement.clientHeight;
 
     // Next, we need to determine if the mouse is within the "edge" of the
     // viewport, which may require scrolling the window . To do this, we need to
     // calculate the boundaries of the edge in the viewport (these coordinates
     // are relative to the viewport grid system).
-    var edgeTop = edgeSize;
-    var edgeLeft = edgeSize;
-    var edgeBottom = viewportHeight - edgeSize;
-    var edgeRight = viewportWidth - edgeSize;
+    let edgeTop = edgeSize;
+    let edgeLeft = edgeSize;
+    let edgeBottom = viewportHeight - edgeSize;
+    let edgeRight = viewportWidth - edgeSize;
 
-    var isInLeftEdge = viewportX < edgeLeft;
-    var isInRightEdge = viewportX > edgeRight;
-    var isInTopEdge = viewportY < edgeTop;
-    var isInBottomEdge = viewportY > edgeBottom;
+    let isInLeftEdge = viewportX < edgeLeft;
+    let isInRightEdge = viewportX > edgeRight;
+    let isInTopEdge = viewportY < edgeTop;
+    let isInBottomEdge = viewportY > edgeBottom;
 
     // If the mouse is not in the viewport edge, there's no need to calculate
     // anything else.
@@ -6489,7 +6489,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // --
     // NOTE: The various property reads here are for cross-browser compatibility
     // as outlined in the JavaScript.info site (link provided above).
-    var documentWidth = Math.max(
+    let documentWidth = Math.max(
       globalThis.document.body.scrollWidth,
       globalThis.document.body.offsetWidth,
       globalThis.document.body.clientWidth,
@@ -6497,7 +6497,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       globalThis.document.documentElement.offsetWidth,
       globalThis.document.documentElement.clientWidth,
     );
-    var documentHeight = Math.max(
+    let documentHeight = Math.max(
       globalThis.document.body.scrollHeight,
       globalThis.document.body.offsetHeight,
       globalThis.document.body.clientHeight,
@@ -6509,8 +6509,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // Calculate the maximum scroll offset in each direction. Since you can only
     // scroll the overflow portion of the document, the maximum represents the
     // length of the document that is NOT in the viewport.
-    var maxScrollX = documentWidth - viewportWidth;
-    var maxScrollY = documentHeight - viewportHeight;
+    let maxScrollX = documentWidth - viewportWidth;
+    let maxScrollY = documentHeight - viewportHeight;
 
     // As we examine the mousemove event, we want to adjust the window scroll in
     // immediate response to the event; but, we also want to continue adjusting
@@ -6533,21 +6533,21 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // or False depending on whether or not the window scroll was changed.
     function adjustWindowScroll() {
       // Get the current scroll position of the document.
-      var currentScrollX = globalThis.pageXOffset;
-      var currentScrollY = globalThis.pageYOffset;
+      let currentScrollX = globalThis.pageXOffset;
+      let currentScrollY = globalThis.pageYOffset;
 
       // Determine if the window can be scrolled in any particular direction.
-      var canScrollUp = currentScrollY > 0;
-      var canScrollDown = currentScrollY < maxScrollY;
-      var canScrollLeft = currentScrollX > 0;
-      var canScrollRight = currentScrollX < maxScrollX;
+      let canScrollUp = currentScrollY > 0;
+      let canScrollDown = currentScrollY < maxScrollY;
+      let canScrollLeft = currentScrollX > 0;
+      let canScrollRight = currentScrollX < maxScrollX;
 
       // Since we can potentially scroll in two directions at the same time,
       // let's keep track of the next scroll, starting with the current scroll.
       // Each of these values can then be adjusted independently in the logic
       // below.
-      var nextScrollX = currentScrollX;
-      var nextScrollY = currentScrollY;
+      let nextScrollX = currentScrollX;
+      let nextScrollY = currentScrollY;
 
       // As we examine the mouse position within the edge, we want to make the
       // incremental scroll changes more "intense" the closer that the user
@@ -6607,7 +6607,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   }
 
   toggleElementEditMode(node, editProp) {
-    if (!!node[editProp]) {
+    if (node[editProp]) {
       this.unsetElementEditMode(node, editProp);
     } else {
       this.setElementEditMode(node, editProp);
@@ -6656,7 +6656,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param {object} node node that could be a grid
    * @memberof HaxBody
    */
-  setSlotEditMode(node, settings, focusTarget) {
+  setSlotEditMode(node, settings, _focusTarget) {
     let saved = !node.getAttribute("data-grid-saved-settings")
         ? {}
         : JSON.parse(node.getAttribute("data-grid-saved-settings")),
@@ -6792,7 +6792,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             oldSchema.saveOptions.unsetAttributes &&
             oldSchema.saveOptions.unsetAttributes.length
           ) {
-            for (var i in oldSchema.saveOptions.unsetAttributes) {
+            for (let i in oldSchema.saveOptions.unsetAttributes) {
               replacement.removeAttribute(
                 oldSchema.saveOptions.unsetAttributes[i],
               );
@@ -6918,7 +6918,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         let node = this.activeNode.parentNode;
         const activeNodeTagName = this.activeNode.parentNode.tagName;
         let range = HAXStore.getRange().cloneRange();
-        var tagTest = range.commonAncestorContainer.tagName;
+        let tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
           tagTest = range.commonAncestorContainer.parentNode.tagName;
         }
@@ -6965,7 +6965,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         let node = this.activeNode.parentNode;
         const activeNodeTagName = this.activeNode.parentNode.tagName;
         let range = HAXStore.getRange().cloneRange();
-        var tagTest = range.commonAncestorContainer.tagName;
+        let tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
           tagTest = range.commonAncestorContainer.parentNode.tagName;
         }

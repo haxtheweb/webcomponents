@@ -68,7 +68,7 @@ export const PDFPageMixin = function (SuperClass) {
     /**
      * Download PDF via v1 item export endpoint
      */
-    async downloadPDFviaMicro(e) {
+    async downloadPDFviaMicro(_e) {
       this.__pdfLoading = true;
       try {
         const activeItem = toJS(store.activeItem);

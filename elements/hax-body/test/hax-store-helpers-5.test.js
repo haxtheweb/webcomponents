@@ -225,6 +225,7 @@ describe("hax-store helpers round 5 (app store + editor command logic)", () => {
 
     it("imports an external URL directly when referenced", async () => {
       const originalWarn = console.warn;
+      // eslint-disable-next-line no-unused-vars -- written by the test, never read
       let warned = false;
       console.warn = () => {
         warned = true;

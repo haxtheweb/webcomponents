@@ -7,7 +7,7 @@ globalThis.process = globalThis.process || {
 };
 import { fixture, expect, html } from "@open-wc/testing";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { TrainingTheme } from "../training-theme.js";
+import "../training-theme.js";
 import "../lib/training-button.js";
 import { TrainingButton } from "../lib/training-button.js";
 

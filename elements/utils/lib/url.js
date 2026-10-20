@@ -61,7 +61,7 @@ export function sanitizeEmbeddableURL(value, fallback = "") {
     if (!["http:", "https:"].includes(parsed.protocol)) {
       return fallback;
     }
-  } catch (e) {
+  } catch {
     return fallback;
   }
   return normalizedValue;

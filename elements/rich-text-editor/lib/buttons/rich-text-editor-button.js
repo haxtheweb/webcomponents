@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, css } from "lit";
 import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { RichTextEditorRangeBehaviors } from "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
 import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
@@ -218,10 +218,10 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       // Capture the range on pointerdown (fires before mousedown)
       // using the native Selection API.
       if (isWebKit()) {
-        this.addEventListener("pointerdown", (e) => {
-          var sel = globalThis.getSelection();
+        this.addEventListener("pointerdown", (_e) => {
+          let sel = globalThis.getSelection();
           if (sel && sel.rangeCount > 0) {
-            var r = sel.getRangeAt(0);
+            let r = sel.getRangeAt(0);
             if (r && !r.collapsed) {
               this.__webkitSavedRange = r.cloneRange();
             }
@@ -312,7 +312,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * @param {object} toolbar parent toolbar
      * @param {object} selection range/selection manager
      */
-    commandCallback(editor, toolbar, selection) {}
+    commandCallback(_editor, _toolbar, _selection) {}
     /**
      * indicates range should be wrapped in given element
      * @event wrapselection
@@ -333,7 +333,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      *
      * @param {object} event
      */
-    sendCommand(event) {
+    sendCommand(_event) {
       this._handleCommand(
         this.operationCommand,
         this.operationCommandVal,
@@ -375,17 +375,17 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       // WebKit: restore focus and selection from the range we captured
       // on pointerdown, before the toolbar's sendCommand pipeline runs.
       if (isWebKit()) {
-        var target = this.__toolbar && this.__toolbar.target;
-        var saved =
+        let target = this.__toolbar && this.__toolbar.target;
+        let saved =
           this.__webkitSavedRange ||
           (this.__toolbar && this.__toolbar.__webkitSavedRange);
         if (target && saved) {
           target.focus({ preventScroll: true });
-          var sel = globalThis.getSelection();
+          let sel = globalThis.getSelection();
           sel.removeAllRanges();
           try {
             sel.addRange(saved);
-          } catch (err) {}
+          } catch {}
           // addRange may silently fail in shadow DOM; try setBaseAndExtent
           if (sel.rangeCount === 0) {
             try {
@@ -395,11 +395,11 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
                 saved.endContainer,
                 saved.endOffset,
               );
-            } catch (err) {
+            } catch {
               // last resort: collapse to caret position
               try {
                 sel.collapse(saved.startContainer, saved.startOffset);
-              } catch (err2) {}
+              } catch {}
             }
           }
           // Keep saved range for _handleCommand; don't null it yet
@@ -414,7 +414,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * @param {string} newVal new editor id
      * @param {string} oldVal old editor id
      */
-    _editorChanged(newValue, oldValue) {}
+    _editorChanged(_newValue, _oldValue) {}
     /**
      * gets appplicable selection
      * @returns {object}
@@ -465,7 +465,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * @param {object} newVal new range
      * @param {object} oldVal old range
      */
-    _rangeChanged(newVal, oldVal) {}
+    _rangeChanged(_newVal, _oldVal) {}
   };
 };
 /**

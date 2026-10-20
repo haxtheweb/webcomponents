@@ -229,7 +229,7 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         throw new Error(`request for ${this.dataSource} failed`);
       }
       this.contactData = await response.text();
-    } catch (error) {
+    } catch {
       this.contacts = [];
       this.status = "error";
     }

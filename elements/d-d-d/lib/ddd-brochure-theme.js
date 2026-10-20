@@ -29,7 +29,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
       top: "Top",
     };
     this.sectionLoad = false;
-    this._observer = new MutationObserver((mutations) => {
+    this._observer = new MutationObserver((_mutations) => {
       this.sectionLoad = true;
     });
     this._observer.observe(this, {
@@ -37,7 +37,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
     });
     this.__disposer = this.__disposer || [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.location.pathname);
         Promise.resolve().then(() => {
           if (store && store.location && store.location.pathname) {

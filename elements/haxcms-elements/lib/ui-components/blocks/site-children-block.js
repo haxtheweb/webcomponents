@@ -82,7 +82,7 @@ class SiteChildrenBlock extends LitElement {
     this.__items = [];
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -90,7 +90,7 @@ class SiteChildrenBlock extends LitElement {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0;
@@ -98,7 +98,7 @@ class SiteChildrenBlock extends LitElement {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeId);
         Promise.resolve().then(() => {
           this.activeId = _mobx_val_0;

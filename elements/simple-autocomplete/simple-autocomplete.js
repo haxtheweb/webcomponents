@@ -123,7 +123,7 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
    * When input changes as in user types into the contenteditable area
    * Then we need to open the autocomplete menu and start filtering
    */
-  inputChanged(e) {
+  inputChanged(_e) {
     this.processInput(this.$input.innerText);
   }
   /**
@@ -306,18 +306,18 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
     this.value = "";
     this.opened = false;
     // click trap to ensure we don't close the popover menu by accident of clicking on it
-    this.addEventListener("mousedown", (e) => {
+    this.addEventListener("mousedown", (_e) => {
       this._clicking = true;
     });
     // remove the trap
-    this.addEventListener("mouseup", (e) => {
+    this.addEventListener("mouseup", (_e) => {
       this._clicking = false;
     });
     // ONLY execute a focusout if we mousedown'ed outside of the scope of this element
     // if mousedown happens inside the element then this doesn't fire
     // if you click away on the screen or tab away from the element then this ensures
     // the popover menu automatically closes and the value is established as the contenteditable
-    this.addEventListener("focusout", (e) => {
+    this.addEventListener("focusout", (_e) => {
       if (!this._clicking) {
         if (!this.hideInput) {
           this.value = this.$input.innerText;
@@ -341,7 +341,7 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
       // set target for popover so it shows up on the input element
       this.shadowRoot.querySelector("simple-popover").target = this.$input;
       // when focusing the input area ensure we open the popover correctly
-      this.$input.addEventListener("focusin", (e) => {
+      this.$input.addEventListener("focusin", (_e) => {
         // ensure when we optimize for a value to fill in the area that we don't accidentally open the menu immediately
         if (this.value && !this._ignoreFocusOpen) {
           this.opened = true;
@@ -411,8 +411,8 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
       ) {
         // generate a fake range at the end of the input so that we can place
         // the cursor where the user expects (end of the input area)
-        var range = globalThis.document.createRange();
-        var sel = this.getSelection();
+        let range = globalThis.document.createRange();
+        let sel = this.getSelection();
         range.setEnd(this.$input.childNodes[0], this.$input.innerText.length);
         range.collapse(true);
         sel.removeAllRanges();

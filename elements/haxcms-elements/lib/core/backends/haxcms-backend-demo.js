@@ -76,7 +76,7 @@ class HAXCMSBackendDemo extends LitElement {
    * Detached life cycle
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -105,7 +105,7 @@ class HAXCMSBackendDemo extends LitElement {
     this.__disposer = [];
     // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.jwt);
         Promise.resolve().then(() => {
           this.jwt = _mobx_val_0;
@@ -113,7 +113,7 @@ class HAXCMSBackendDemo extends LitElement {
       }),
     );
   }
-  _jwtChanged(newValue) {
+  _jwtChanged(_newValue) {
     //console.warn("JWT now set to: " + newValue);
   }
   /**
@@ -129,7 +129,7 @@ class HAXCMSBackendDemo extends LitElement {
   /**
    * LitElement life cycle - element ready
    */
-  firstUpdated(changedProperties) {
+  firstUpdated(_changedProperties) {
     setTimeout(async () => {
       if (globalThis.appSettings) {
         store.appSettings = globalThis.appSettings;
@@ -155,7 +155,7 @@ class HAXCMSBackendDemo extends LitElement {
           import(
             "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
           ).then(
-            (e) => {
+            (_e) => {
               // validate availability
               store.cmsSiteEditorAvailability();
               store.cmsSiteEditor.instance.jwt = this.jwt;
@@ -176,7 +176,7 @@ class HAXCMSBackendDemo extends LitElement {
             console.warn(e);
           }
         );
-        } catch (err) {
+        } catch {
           // error in the event this is a double registration
         }
       }

@@ -4,9 +4,6 @@ import { HAXStore } from "../lib/hax-store.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 
 // helper: restore an own-property mock that shadowed a prototype method
-function restoreMethod(obj, key) {
-  delete obj[key];
-}
 
 describe("hax-store helpers round 4 (gizmo matching + insertion logic)", () => {
   let saved = {};

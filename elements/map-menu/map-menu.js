@@ -709,8 +709,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
     // get the bound client
     const targetPosition = target.getBoundingClientRect();
     // get the scroll Element position
-    const scrollElementPosition =
-      _options.scrollElement.getBoundingClientRect();
+    _options.scrollElement.getBoundingClientRect();
     // get the height of the scroll Element
     const scrollElementHeight =
       _options.scrollElement.getBoundingClientRect().bottom -
@@ -778,7 +777,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
       }
     });
     // Recursively find and set children
-    items.forEach((item, i) => {
+    items.forEach((item, _i) => {
       this._setChildren(item, data);
     });
     // Update items array
@@ -860,10 +859,10 @@ class MapMenu extends SchemaBehaviors(LitElement) {
     const scrollParent = this.__getScrollParent(element);
     if (!scrollParent) return false;
 
-    var elementTop = element.offsetTop;
-    var elementBottom = elementTop + element.offsetHeight;
-    var viewportTop = scrollParent.offsetTop;
-    var viewportBottom = viewportTop + scrollParent.offsetHeight;
+    let elementTop = element.offsetTop;
+    let elementBottom = elementTop + element.offsetHeight;
+    let viewportTop = scrollParent.offsetTop;
+    let viewportBottom = viewportTop + scrollParent.offsetHeight;
     return elementBottom > viewportTop && elementTop < viewportBottom;
   }
 

@@ -34,7 +34,7 @@ function _t(context, key) {
 }
 
 export function createExportPageProgram(context) {
-  return async (input, values) => {
+  return async (input, _values) => {
     let results = [];
 
     // Filter results based on input
@@ -182,7 +182,7 @@ export function _pageRouteVariantUrl(format) {
       `x/api/v1/items/${encodeURIComponent(itemId)}/export/${encodeURIComponent(apiFormat)}`,
       baseUrl,
     ).toString();
-  } catch (e) {
+  } catch {
     return null;
   }
 }
@@ -334,7 +334,7 @@ export function _pageItemExportUrl(format = "pdf") {
       `x/api/v1/items/${encodeURIComponent(itemId)}/export/${encodeURIComponent(format)}`,
       baseUrl,
     ).toString();
-  } catch (e) {
+  } catch {
     return null;
   }
 }

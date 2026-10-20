@@ -145,9 +145,9 @@ class SiteQueryMenuSlice extends LitElement {
   /**
    * LitElement life cycle
    */
-  firstUpdated(changedProperties) {
+  firstUpdated(_changedProperties) {
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.routerManifest);
         Promise.resolve().then(() => {
           this._routerManifest = Object.assign({}, _mobx_val_0);
@@ -156,7 +156,7 @@ class SiteQueryMenuSlice extends LitElement {
     );
     if (!this.fixedId) {
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.activeId);
           Promise.resolve().then(() => {
             this.parent = _mobx_val_0;
@@ -169,7 +169,7 @@ class SiteQueryMenuSlice extends LitElement {
    * HTMLElement life cycle
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

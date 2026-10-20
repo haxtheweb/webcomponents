@@ -7,7 +7,7 @@
 (function (document, Chartist) {
   "use strict";
 
-  var defaultOptions = {
+  let defaultOptions = {
     fillClass: "ct-fill-donut",
     label: {
       html: "div",
@@ -21,17 +21,17 @@
     options = Chartist.extend({}, defaultOptions, options);
     return function fillDonut(chart) {
       if (chart instanceof Chartist.Pie) {
-        var $chart = chart.container;
+        let $chart = chart.container;
         $chart.style.position = "relative";
-        var $svg;
+        let $svg;
 
-        var drawDonut = function (data) {
+        let drawDonut = function (data) {
           if (data.type === "slice") {
             if (data.index === 0) {
               $svg = $chart.querySelector("svg");
             }
 
-            var $clone = data.group._node.cloneNode(true);
+            let $clone = data.group._node.cloneNode(true);
             options.fillClass.split(" ").forEach(function (className) {
               $clone.setAttribute(
                 "class",
@@ -56,7 +56,7 @@
         });
 
         chart.on("created", function (data) {
-          var itemIndex = 0;
+          let itemIndex = 0;
 
           if (chart.options.fillDonutOptions) {
             options = Chartist.extend(
@@ -68,7 +68,7 @@
           }
 
           [].forEach.call(options.items, function (thisItem) {
-            var $wrapper = globalThis.document.createElement(
+            let $wrapper = globalThis.document.createElement(
               options.label.html,
             );
             options.label.class.split(" ").forEach(function (className) {
@@ -78,7 +78,7 @@
                 $wrapper.className += " " + className;
               }
             });
-            var item = Chartist.extend(
+            let item = Chartist.extend(
               {},
               {
                 class: "",
@@ -113,12 +113,12 @@
             $wrapper.style.position = "absolute";
             $chart.appendChild($wrapper);
 
-            var cWidth = Math.ceil($chart.offsetWidth / 2);
-            var cHeight = Math.ceil($chart.clientHeight / 2);
-            var wWidth = Math.ceil($wrapper.offsetWidth / 2);
-            var wHeight = Math.ceil($wrapper.clientHeight / 2);
+            let cWidth = Math.ceil($chart.offsetWidth / 2);
+            let cHeight = Math.ceil($chart.clientHeight / 2);
+            let wWidth = Math.ceil($wrapper.offsetWidth / 2);
+            let wHeight = Math.ceil($wrapper.clientHeight / 2);
 
-            var style = {
+            let style = {
               bottom: {
                 bottom: 0 + item.offsetY + "px",
                 left: cWidth - wWidth + item.offsetX + "px",

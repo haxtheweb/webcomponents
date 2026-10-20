@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement } from "lit";
 import { HaxToolbarItemBehaviors } from "@haxtheweb/hax-body/lib/hax-toolbar-item.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { HAXStore } from "./hax-store.js";
@@ -102,13 +102,13 @@ class HaxContextItem extends HaxToolbarItemBehaviors(LitElement) {
    * the selection priority, making it impossible to know what's
    * been selected if clicking a button to try and apply something to.
    */
-  _handleMousedown(e) {
+  _handleMousedown(_e) {
     if (!this.disabled) HAXStore._tmpSelection = HAXStore.getSelection();
   }
   /**
    * Fire an event that includes the eventName of what was just pressed.
    */
-  _handleClick(e) {
+  _handleClick(_e) {
     if (!this.disabled) {
       this.dispatchEvent(
         new CustomEvent("hax-context-item-selected", {

@@ -316,7 +316,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         if (match && match[1]) {
           try {
             return decodeURIComponent(match[1]);
-          } catch (err) {
+          } catch {
             return match[1];
           }
         }
@@ -364,7 +364,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         this.shadowRoot.querySelector("#fileupload").files = [];
       } else {
         // we have no clue what this is.. let's try and guess..
-        var type = HAXStore.guessGizmoType(values);
+        let type = HAXStore.guessGizmoType(values);
         // find targets that support this type
         let targets = HAXStore.getHaxAppStoreTargets(type);
         // make sure we have targets
@@ -538,7 +538,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   /**
    * Handle JWT token refresh
    */
-  _jwtTokenRefreshed(e) {
+  _jwtTokenRefreshed(_e) {
     // If we have a pending upload retry, execute it now
     if (this.__pendingUploadRetry) {
       const fileUpload = this.shadowRoot.querySelector("#fileupload");
@@ -647,7 +647,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           }
           item.type = map.defaultGizmoType;
           // pull in prop matches
-          for (var prop in map.gizmo) {
+          for (let prop in map.gizmo) {
             item[prop] = this._resolveObjectPath(map.gizmo[prop], data);
           }
           // another sanity check, if we don't have a url but have a source bind that too
@@ -749,7 +749,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
    * sets the field value. On failure, toasts an error and leaves the
    * field at the uploaded file path.
    */
-  async _runUploadTransform(response, item) {
+  async _runUploadTransform(response, _item) {
     const transform = this.uploadTransform;
     if (!transform || !transform.operation) return;
     const fileUuid =
@@ -799,7 +799,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           }),
         );
       }
-    } catch (err) {
+    } catch {
       HAXStore.toast(this.t.transformFailed, 4000);
     } finally {
       this.__transformBusy = false;
@@ -821,8 +821,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   valueChanged(e) {
     this.value = e.detail.value;
   }
-  _clickMediaButton(e) {
-    var type = "";
+  _clickMediaButton(_e) {
+    let type = "";
     if (this.label.toLowerCase().includes("image")) {
       type = "image";
     } else if (this.label.toLowerCase().includes("video")) {
@@ -1036,7 +1036,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
             return;
           }
         }
-      } catch (e) {}
+      } catch {}
     }
     // Fallback: client-side stats only (no uuid -> actions disabled with a
     // noFileUuid toast). Dims via Image(); size+mimetype via same-origin fetch.
@@ -1070,7 +1070,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           this._recomputeRecs();
         }
       }
-    } catch (e) {}
+    } catch {}
   }
   /**
    * Read pixel dimensions from the cached file's fullUrl (or source) and merge
@@ -1141,7 +1141,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     try {
       const u = new URL(s, globalThis.location.href);
       return u.origin === globalThis.location.origin;
-    } catch (e) {
+    } catch {
       return false;
     }
   }
@@ -1286,7 +1286,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           resolve({ width: 0, height: 0 });
         };
         img.src = url;
-      } catch (e) {
+      } catch {
         resolve({ width: 0, height: 0 });
       }
     });
@@ -1384,7 +1384,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       // would resolve a stale uuid and 404.
       this._refreshUploadedFileFromResponse(d);
       this._reloadSourceCacheBust();
-    } catch (e) {
+    } catch {
       this.__fileActionsError = this.t.fileOpFailed;
       HAXStore.toast(this.__fileActionsError, 4000);
     } finally {
@@ -1480,7 +1480,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     try {
       const d = new Date(s * 1000);
       return d.toLocaleDateString() + " " + d.toLocaleTimeString();
-    } catch (e) {
+    } catch {
       return "\u2014";
     }
   }

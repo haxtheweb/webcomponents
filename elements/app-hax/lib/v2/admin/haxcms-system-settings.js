@@ -1406,11 +1406,11 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     if (api && typeof api._configureSystemApiRegistry === "function") {
       try {
         await api._configureSystemApiRegistry();
-      } catch (e) {}
+      } catch {}
     }
     try {
       await waitForAppHAXSystemApiRegistryReady();
-    } catch (e) {}
+    } catch {}
   }
 
   _schemaFileOperationEndpoint() {
@@ -1544,10 +1544,10 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       });
       try {
         data = await response.json();
-      } catch (e) {
+      } catch {
         data = null;
       }
-    } catch (e) {
+    } catch {
       return {
         ok: false,
         status: 0,
@@ -1589,7 +1589,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     }
     try {
       return JSON.parse(xhr.response);
-    } catch (e) {
+    } catch {
       return null;
     }
   }
@@ -2112,7 +2112,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           if (response) {
             return response;
           }
-        } catch (e) {
+        } catch {
           return null;
         }
       }
@@ -2138,7 +2138,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           if (response) {
             return response;
           }
-        } catch (e) {
+        } catch {
           return null;
         }
       }
@@ -2542,7 +2542,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       let known = null;
       try {
         known = matchLanguageCode(text);
-      } catch (e) {
+      } catch {
         // registry not loaded yet; the shape check below still applies
       }
       if (known) {

@@ -1,4 +1,4 @@
-import { fixture, expect, html } from '@open-wc/testing'
+import { expect } from '@open-wc/testing'
 
 // Explicit import so istanbul instruments the lib file
 import '../lib/simple-iconset.js'

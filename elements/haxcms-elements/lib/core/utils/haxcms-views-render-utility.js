@@ -489,14 +489,14 @@ export const displayValue = (value) => {
     if (containsObject) {
       try {
         return JSON.stringify(value, null, 2);
-      } catch (e) {}
+      } catch {}
     }
     return value.map((item) => safeString(item)).join(", ");
   }
   if (typeof value === "object") {
     try {
       return JSON.stringify(value, null, 2);
-    } catch (e) {
+    } catch {
       return safeString(value);
     }
   }

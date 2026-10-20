@@ -322,7 +322,7 @@ if (isMain) {
       let same = false;
       try {
         same = JSON.stringify(JSON.parse(fs.readFileSync(file, "utf8"))) === JSON.stringify(data);
-      } catch (e) {
+      } catch {
         same = false;
       }
       if (!same) stale.push(name);

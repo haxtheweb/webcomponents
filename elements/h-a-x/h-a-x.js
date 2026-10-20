@@ -158,7 +158,7 @@ class HAX extends HTMLElement {
       this.shadowRoot.adoptedStyleSheets = [...existingSheets, testSheet];
       this.shadowRoot.adoptedStyleSheets = existingSheets;
       this.__canAdoptConstructedStylesheets = true;
-    } catch (e) {
+    } catch {
       this.__canAdoptConstructedStylesheets = false;
     }
     return this.__canAdoptConstructedStylesheets;
@@ -174,7 +174,7 @@ class HAX extends HTMLElement {
       return Array.from(sheet.cssRules)
         .map((rule) => rule.cssText)
         .join("\n");
-    } catch (e) {
+    } catch {
       return "";
     }
   }
@@ -210,7 +210,7 @@ class HAX extends HTMLElement {
         adopted = haxSheets.every((sheet) =>
           this.shadowRoot.adoptedStyleSheets.includes(sheet),
         );
-      } catch (e) {
+      } catch {
         adopted = false;
       }
     }
@@ -237,7 +237,7 @@ class HAX extends HTMLElement {
     fallbackStyle.textContent = fallbackCSSText;
     this.shadowRoot.appendChild(fallbackStyle);
   }
-  cancelEvent(e) {
+  cancelEvent(_e) {
     this.importSlotToHaxBody();
   }
   async saveEvent(e) {
@@ -304,7 +304,7 @@ class HAX extends HTMLElement {
   // import into the active body if there's content
   // obtain the nodes that have been assigned to the slot of our element
   importSlotToHaxBody() {
-    var nodes = [];
+    let nodes = [];
     if (this.shadowRoot.querySelector("slot")) {
       nodes = this.shadowRoot.querySelector("slot").assignedNodes();
     } else {
@@ -439,7 +439,7 @@ class HAX extends HTMLElement {
       };
     }
   }
-  attributeChangedCallback(attr, oldValue, newValue) {}
+  attributeChangedCallback(_attr, _oldValue, _newValue) {}
 }
 globalThis.customElements.define("h-a-x", HAX);
 export { HAX };

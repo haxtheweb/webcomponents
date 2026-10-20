@@ -173,7 +173,7 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
   /**
    * Handle HAX store being ready
    */
-  _handleHaxStoreReady(e) {
+  _handleHaxStoreReady(_e) {
     if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability()) {
       let haxStore = globalThis.HaxStore.requestAvailability();
 

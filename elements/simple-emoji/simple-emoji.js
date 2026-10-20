@@ -65,7 +65,7 @@ class SimpleEmoji extends LitElement {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    changedProperties.forEach((oldValue, propName) => {
+    changedProperties.forEach((_oldValue, _propName) => {
       /* notify example
       // notify
       if (propName == 'format') {

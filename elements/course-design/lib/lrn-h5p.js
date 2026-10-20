@@ -30,7 +30,7 @@ export class LrnH5p extends I18NMixin(LitElement) {
     });
     // remove script tags and work against light dom if there
     if (this.querySelector && this.querySelector("span")) {
-      this.querySelector("span").childNodes.forEach((el, index) => {
+      this.querySelector("span").childNodes.forEach((el, _index) => {
         if (el.nodeName === "#text" && el.textContent.includes("<script>")) {
           // strip only the script markup so surrounding text is preserved
           el.textContent = el.textContent.replace(
@@ -140,7 +140,7 @@ export class LrnH5p extends I18NMixin(LitElement) {
     if (typeof this.tokenData !== typeof undefined) {
       href = this.tokenData.editEndpoint;
       slot = this.tokenData.editText;
-      for (var i in this.tokenData.schema) {
+      for (let i in this.tokenData.schema) {
         schema.properties[i] = this.tokenData.schema[i];
       }
     }

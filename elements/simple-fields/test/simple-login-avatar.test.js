@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout } from '@open-wc/testing'
+import { fixture, expect, html } from '@open-wc/testing'
 
 import '../lib/simple-login-avatar.js'
 import '../lib/simple-camera-snap.js'

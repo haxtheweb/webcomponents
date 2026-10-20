@@ -55,7 +55,7 @@ export const SchemaBehaviors = function (SuperClass) {
     /**
      * Notice the schema map has changed, reprocess attributes.
      */
-    _schemaMapChanged(newValue, oldValue) {
+    _schemaMapChanged(newValue, _oldValue) {
       if (typeof newValue !== typeof undefined) {
         // use this to tie into schemaResourceID build
         this.schemaResourceID = this.getAttribute("resource");
@@ -71,7 +71,7 @@ export const SchemaBehaviors = function (SuperClass) {
         let prefixes = newValue.prefix;
         let prefix = "";
         // build prefix string
-        for (var property in prefixes) {
+        for (let property in prefixes) {
           if (prefixes.hasOwnProperty(property)) {
             prefix += property + ":" + prefixes[property] + " ";
           }

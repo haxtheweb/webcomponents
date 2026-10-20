@@ -48,7 +48,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
     this.__disposer = this.__disposer || [];
 
-   autorun((reaction) => {
+   autorun((_reaction) => {
     const _mobx_val_0 = toJS(store.activeItem);
     Promise.resolve().then(() => {
       this.isHome = false; // default to false
@@ -364,7 +364,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   disconnectedCallback() {
     // dispose the store reaction (and any inherited ones) so a detached
     // theme stops reacting to the site store
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

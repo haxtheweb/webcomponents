@@ -62,10 +62,9 @@ export class FlashCardSet extends I18NMixin(DDD) {
       .querySelector(`slot`)
       .assignedNodes({ flatten: true })[1].childNodes;
     const questionData = ["", "", "", ""];
-    // eslint-disable-next-line no-plusplus
+
     for (let i = 0; i < slotData2.length; i++) {
       if (i % 2 === 1) {
-        // eslint-disable-next-line no-plusplus
         for (let j = 0; j < slotData2[i].childNodes.length; j++) {
           if (j % 2 === 1) {
             const { slot } = slotData2[i].childNodes[j];
@@ -83,11 +82,11 @@ export class FlashCardSet extends I18NMixin(DDD) {
             }
           }
         }
-        // eslint-disable-next-line no-plusplus
+
         for (let k = 0; k < questionData.length; k++) {
           this.questions.push(questionData[k]);
         }
-        // eslint-disable-next-line no-plusplus
+
         for (let l = 0; l < 4; l++) {
           questionData[l] = "";
         }
@@ -127,9 +126,9 @@ export class FlashCardSet extends I18NMixin(DDD) {
     el.innerHTML = `
       <p slot="front">${arguments[1]}</p>
       <p slot="back">${arguments[2]}</p>`;
-    // eslint-disable-next-line prefer-rest-params
+
     el.setAttribute("img-source", arguments[3]);
-    // eslint-disable-next-line prefer-rest-params
+
     if (arguments[4].includes("dark")) {
       el.setAttribute("dark", "");
     }

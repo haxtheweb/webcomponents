@@ -256,7 +256,7 @@ describe('AppHaxSiteBars pure logic', () => {
     beforeEach(() => {
       el = createSiteBar()
       el.closeOptionsMenu = () => {}
-      el.siteOperation = (op, name, icon) => {
+      el.siteOperation = (op, name, _icon) => {
         el._lastOp = op
         el._lastName = name
       }

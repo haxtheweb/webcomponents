@@ -226,8 +226,8 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
   }
 
   _getHaxSelectOptions() {
-    var licenseOptions = {}
-    var modifierOptions = { "": "No modifier" }
+    let licenseOptions = {}
+    let modifierOptions = { "": "No modifier" }
     if (
       this._aiulData &&
       this._aiulData.licenses &&
@@ -270,7 +270,7 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
    * @see haxHooks: gizmoRegistration
    * Register haxProperties locales so the HAX editor UI can be translated
    */
-  haxgizmoRegistration(store) {
+  haxgizmoRegistration(_store) {
     globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {

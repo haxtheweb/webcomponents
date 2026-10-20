@@ -81,7 +81,7 @@ function load_library() {
       });
     },
   };
-  var script = globalThis.document.createElement("script");
+  let script = globalThis.document.createElement("script");
   script.type = "text/javascript";
   script.src = src;
   script.async = true;

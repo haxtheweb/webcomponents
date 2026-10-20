@@ -1,4 +1,4 @@
-import { html, css } from "lit";
+import "lit";
 import { HAXStore } from "./hax-store.js";
 import { HaxUploadField } from "./hax-upload-field.js";
 import { autorun, toJS } from "mobx";

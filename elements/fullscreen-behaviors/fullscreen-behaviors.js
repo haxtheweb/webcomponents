@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html } from "lit";
 
 const FullscreenBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -67,7 +67,7 @@ const FullscreenBehaviors = function (SuperClass) {
       return this;
     }
 
-    _handleFullscreenChange(e) {
+    _handleFullscreenChange(_e) {
       this.fullscreen =
         globalThis.document.fullscreenElement === this.fullscreenTarget;
     }

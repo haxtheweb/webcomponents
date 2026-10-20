@@ -161,7 +161,7 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
   get focusableElement() {
     return this.querySelector("*:not([disabled]):not([hidden])");
   }
-  toggleFocus(e) {
+  toggleFocus(_e) {
     if (this.focusableElement.clientWidth > 10) {
       this.focusableElement.blur();
     } else {
@@ -202,7 +202,7 @@ class SimpleToolbarField extends SimpleToolbarButtonBehaviors(LitElement) {
     return new MutationObserver(callback);
   }
 
-  _watchChildren(mutationsList) {
+  _watchChildren(_mutationsList) {
     this._syncFocusableState();
   }
 }

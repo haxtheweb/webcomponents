@@ -92,13 +92,13 @@ class HaxPicker extends I18NMixin(LitElement) {
   }
   render() {
     return html`
-      ${!!this.keywords
+      ${this.keywords
         ? html` <div id="filters">
             <simple-icon-button-lite
               icon="editable-table:filter${!this.filterOn ? "" : "-off"}"
               label="${this.t.toggleFilters}"
               tooltip-position="right"
-              @click="${(e) => (this.filterOn = !this.filterOn)}"
+              @click="${(_e) => (this.filterOn = !this.filterOn)}"
             >
             </simple-icon-button-lite>
             <simple-fields-field
@@ -213,12 +213,12 @@ class HaxPicker extends I18NMixin(LitElement) {
   buildOptions(
     elements,
     type = "element",
-    title = "Select an option",
+    _title = "Select an option",
     pickerType = "gizmo",
   ) {
     // wipe existing
     this.pickerType = pickerType;
-    var tmp = [],
+    let tmp = [],
       addKeywords = (i) => {
         if (pickerType === "gizmo") {
           if (
@@ -288,7 +288,7 @@ class HaxPicker extends I18NMixin(LitElement) {
       if (firstOption) firstOption.focus();
     }, 50);
   }
-  _handleFilters(e) {
+  _handleFilters(_e) {
     let filters =
       this.shadowRoot && this.shadowRoot.querySelector("#hax-gizmo-filters")
         ? this.shadowRoot.querySelector("#hax-gizmo-filters")

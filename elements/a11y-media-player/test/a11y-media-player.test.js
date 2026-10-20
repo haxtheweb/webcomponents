@@ -284,7 +284,7 @@ describe("a11y-media-player calculated getters", () => {
   it("buffered reads from the youtube player or defaults to 0", () => {
     expect(video.buffered).to.equal(0);
     const fake = yt.youtube.__yt;
-    fake.bufferedRange = { length: 1, end: (i) => 42 };
+    fake.bufferedRange = { length: 1, end: (_i) => 42 };
     expect(yt.buffered).to.equal(42);
     fake.bufferedRange = null;
     expect(yt.buffered).to.equal(0);

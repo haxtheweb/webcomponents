@@ -274,9 +274,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         align-vertical="${this.alignVertical}"
         aria-controls="buttons"
         class="button"
-        @click="${(e) => (this.collapsed = !this.collapsed)}"
+        @click="${(_e) => (this.collapsed = !this.collapsed)}"
         ?disabled=${this.collapseDisabled}
-        @toggle="${(e) => (this.collapsed = !this.collapsed)}"
+        @toggle="${(_e) => (this.collapsed = !this.collapsed)}"
         ?hidden=${this.collapseDisabled}
         icon="${this.icon}"
         icon-position="${this.iconPosition}"
@@ -366,10 +366,10 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     firstUpdated(changedProperties) {
       this.setAttribute("aria-live", "polite");
       this.setAttribute("role", "toolbar");
-      this.onfocus = (e) => (this.__focused = true);
-      this.onblur = (e) => (this.__focused = false);
-      this.onmouseover = (e) => (this.__hovered = true);
-      this.onmouseout = (e) => (this.__hovered = false);
+      this.onfocus = (_e) => (this.__focused = true);
+      this.onblur = (_e) => (this.__focused = false);
+      this.onmouseover = (_e) => (this.__hovered = true);
+      this.onmouseout = (_e) => (this.__hovered = false);
       this.addEventListener("keydown", this._handleKeydown);
       if (super.firstUpdated) super.firstUpdated(changedProperties);
     }
@@ -458,10 +458,10 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       (button.shortcutKeys || "")
         .split(" ")
         .forEach((key) => delete this.shortcutKeys[key]);
-      button.removeEventListener("blur", (e) =>
+      button.removeEventListener("blur", (_e) =>
         this._handleFocusChange(button),
       );
-      button.removeEventListener("focus", (e) =>
+      button.removeEventListener("focus", (_e) =>
         this._handleFocusChange(button),
       );
     }
@@ -478,8 +478,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         .split(" ")
         .forEach((key) => (this.shortcutKeys[key] = button));
       if (button.role !== "menuitem") button.isCurrentItem = false;
-      button.addEventListener("blur", (e) => this._handleFocusChange(button));
-      button.addEventListener("focus", (e) => this._handleFocusChange(button));
+      button.addEventListener("blur", (_e) => this._handleFocusChange(button));
+      button.addEventListener("focus", (_e) => this._handleFocusChange(button));
       if (!this.currentItem) this.setCurrentItem(button);
     }
     /**
@@ -616,7 +616,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     updateToolbar(config = this.config) {
       if (!this || !this.config || this.config.length == 0) return;
       this.clearToolbar();
-      if (typeof this.config != typeof []) this.config = JSON.parse(config);
+      if (typeof this.config !== typeof []) this.config = JSON.parse(config);
       this._addConfigItems(this.config);
       this.resizeToolbar();
     }
@@ -837,7 +837,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * resizes toolbar on window resize
      *
      */
-    _handleResize(e) {
+    _handleResize(_e) {
       this.resizeToolbar();
     }
     /**
@@ -920,7 +920,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           uppercase = keyEvt.shiftKey && keyEvt.code > 65 && keyEvt.code < 91,
           filter = keys
             .filter((key) => key.length == 1)
-            .map((key) => (!!uppercase ? key.toUpperCase() : key)),
+            .map((key) => (uppercase ? key.toUpperCase() : key)),
           key = filter[0],
           match =
             altKey === keyEvt.altKey &&

@@ -4,7 +4,7 @@
  * relying on document.execCommand('formatBlock'), which can drop
  * HAX-specific attributes and editable state.
  */
-import { LitElement } from "lit";
+import "lit";
 import { HAXStore } from "../hax-store.js";
 import { RichTextEditorHeadingPicker } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js";
 

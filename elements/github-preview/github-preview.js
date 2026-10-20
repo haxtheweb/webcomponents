@@ -556,7 +556,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
       .then((json) => {
         this.handleResponse(json);
       })
-      .catch((error) => {
+      .catch((_error) => {
         this.__assetAvailable = false;
       });
   }
@@ -565,7 +565,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
    * enables overflow-y property by setting readmeExtended to true
    * removes 'show more' button from the dom
    */
-  readmeViewMoreHandler(event) {
+  readmeViewMoreHandler(_event) {
     this.readmeExtended = true;
     this.shadowRoot.querySelector(".readme-btn").remove();
   }
@@ -594,7 +594,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
   haxgizmoRegistration(store) {
     store.validGizmoTypes.push("github");
     if (
-      store.appList.filter((el, i) => {
+      store.appList.filter((el, _i) => {
         // ensure we don't double load the endpoint if already defined
         if (el.connection.url === "api.github.com") {
           return true;

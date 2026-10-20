@@ -397,7 +397,7 @@ const great = "example";</template>`,
       "xml",
       "html",
     ];
-    for (var i in list) {
+    for (let i in list) {
       store.keyboardShortcuts["```" + list[i]] = {
         tag: "code-sample",
         properties: {
@@ -423,7 +423,7 @@ const great = "example";</template>`,
       },
     ];
   }
-  haxToggleEdit(e) {
+  haxToggleEdit(_e) {
     this.editMode = !this.editMode;
     return true;
   }
@@ -511,7 +511,7 @@ if ($MrTheCheat) {
   connectedCallback() {
     super.connectedCallback();
     if (this.querySelector("template")) {
-      this._observer = new MutationObserver((mutations) => {
+      this._observer = new MutationObserver((_mutations) => {
         if (this.shadowRoot) {
           this._updateContent();
         }
@@ -545,7 +545,7 @@ if ($MrTheCheat) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "editMode") {
         if (this.editMode) {
-          import("@haxtheweb/code-editor/code-editor.js").then((module) => {
+          import("@haxtheweb/code-editor/code-editor.js").then((_module) => {
             const codeEditor = this.shadowRoot.querySelector("code-editor");
             if (codeEditor) {
               codeEditor.innerHTML = this.innerHTML;

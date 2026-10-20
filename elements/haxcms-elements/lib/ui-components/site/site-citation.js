@@ -281,7 +281,7 @@ export class SiteCitation extends HAXCMSI18NMixin(DDD) {
         await globalThis.navigator.clipboard.writeText(c.text);
         ok = true;
       }
-    } catch (e) {
+    } catch {
       ok = false;
     }
     if (!ok) ok = this._legacyCopy(c.text);
@@ -303,7 +303,7 @@ export class SiteCitation extends HAXCMSI18NMixin(DDD) {
       const ok = doc.execCommand("copy");
       doc.body.removeChild(ta);
       return !!ok;
-    } catch (e) {
+    } catch {
       return false;
     }
   }

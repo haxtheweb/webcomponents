@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import "@open-wc/testing";
 
 import "../hax-body.js";
 /*

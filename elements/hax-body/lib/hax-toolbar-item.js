@@ -140,9 +140,9 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
       ];
     }
 
-    _handleClick(e) {}
-    _handleKeys(e) {}
-    _handleMousedown(e) {}
+    _handleClick(_e) {}
+    _handleKeys(_e) {}
+    _handleMousedown(_e) {}
   };
 };
 /**

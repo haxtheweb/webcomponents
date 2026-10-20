@@ -58,15 +58,16 @@ describe('registerDDDStyleGuideAuthoring with mocked HaxStore', () => {
       },
     }
 
+    // eslint-disable-next-line no-unused-vars -- written by the test, never read
     let designSystemHAXPropsCalled = false
-    globalThis.HaxStore = {
+        globalThis.HaxStore = {
       requestAvailability: () => ({
         elementList: mockElementList,
         editMode: false,
         __dddStyleGuideAuthoringApplied: false,
         __dddStyleGuideDefaultSchemaReady: false,
         isInlineElement: () => false,
-        designSystemHAXProperties: (props, tag) => {
+        designSystemHAXProperties: (props, _tag) => {
           designSystemHAXPropsCalled = true
           return props
         },

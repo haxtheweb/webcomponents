@@ -16,7 +16,7 @@ const _t = (context, key) =>
   context && context.t && context.t[key] ? context.t[key] : SHARE_PAGE_T[key];
 
 export const createSharePageProgram = (context) => {
-  return async (input, values) => {
+  return async (input, _values) => {
     const results = [];
     const activeItem = toJS(store.activeItem);
 

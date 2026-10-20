@@ -142,7 +142,7 @@ export const SimpleFilterMixin = function (SuperClass) {
       // most logical for search results but not our default for legacy api reasons
       if (multiMatch) {
         const multiPat = like.split("\\ ");
-        var patterns = [];
+        let patterns = [];
         // support multiple patterns based on space separated words
         multiPat.forEach((pat) => {
           pat = pat
@@ -158,7 +158,7 @@ export const SimpleFilterMixin = function (SuperClass) {
         // this way we don't get things like "join" matching on "rejoin party"
         like = patterns.join("|");
       }
-      var filtered = [];
+      let filtered = [];
       //Filter by `like`
       filtered = items.filter((item) => {
         // regex is going to run multiple times against the same object
@@ -173,9 +173,9 @@ export const SimpleFilterMixin = function (SuperClass) {
             regex = new RegExp(like, "ig");
           }
           // This is when a complex object is provided
-          if (typeof item == "object") {
+          if (typeof item === "object") {
             //Decompose where incase it is represented in . notation for complex objects
-            var decomposed = this._decomposeWhere(where, item);
+            let decomposed = this._decomposeWhere(where, item);
             //Check if the items specified are defined
             // Only warn when an actual filter is being applied (like !== "").
             // With an empty `like` the regex matches everything regardless of
@@ -183,7 +183,7 @@ export const SimpleFilterMixin = function (SuperClass) {
             // per-item warning is pure noise (e.g. program-result lists where
             // items lack the `where` field but no filtering is happening).
             if (
-              typeof decomposed == "undefined" &&
+              typeof decomposed === "undefined" &&
               where != "" &&
               like !== ""
             ) {
@@ -202,14 +202,14 @@ export const SimpleFilterMixin = function (SuperClass) {
           }
 
           //When a simple object of strings is provided
-          if (typeof item == "string") {
+          if (typeof item === "string") {
             return regex.test(item);
           }
           //When a simple object of numbers is provided
-          if (typeof item == "number") {
+          if (typeof item === "number") {
             return regex.test(item.toString());
           }
-        } catch (e) {
+        } catch {
           // if use types a ? or other form of regex, it will throw an error
         }
       });

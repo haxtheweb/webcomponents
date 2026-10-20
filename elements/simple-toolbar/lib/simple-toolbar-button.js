@@ -331,7 +331,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      *
      * @param {event} e event
      */
-    _handleClick(e) {
+    _handleClick(_e) {
       if (!this.disabled) {
         this.toggle();
       }
@@ -341,31 +341,31 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      *
      * @param {event} e event
      */
-    _handleBlur(e) {}
+    _handleBlur(_e) {}
     /**
      * handles focus
      *
      * @param {event} e event
      */
-    _handleFocus(e) {}
+    _handleFocus(_e) {}
     /**
      * handles keydown
      *
      * @param {event} e event
      */
-    _handleKeydown(e) {}
+    _handleKeydown(_e) {}
     /**
      * handles keydown
      *
      * @param {event} e event
      */
-    _handleKeys(e) {}
+    _handleKeys(_e) {}
     /**
      * customizable event for when shortcut keys are pressed
      *
      * @param {string} key
      */
-    _handleShortcutKeys(e, key) {}
+    _handleShortcutKeys(_e, _key) {}
 
     toggle() {
       if (this.toggles || this.radio) this.toggled = !this.toggled;

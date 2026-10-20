@@ -69,7 +69,7 @@ export const PrintBranchMixin = function (SuperClass) {
           `x/api/v1/items/${encodeURIComponent(itemId)}?format=${encodeURIComponent(normalizedFormat)}`,
           baseUrl,
         ).toString();
-      } catch (e) {
+      } catch {
         return "";
       }
     }
@@ -78,7 +78,7 @@ export const PrintBranchMixin = function (SuperClass) {
         const printUrl = new URL(globalThis.location.href);
         printUrl.searchParams.set("format", "print-page");
         return printUrl.toString();
-      } catch (e) {
+      } catch {
         const separator = globalThis.location.href.includes("?") ? "&" : "?";
         return `${globalThis.location.href}${separator}format=print-page`;
       }
@@ -144,7 +144,7 @@ export const PrintBranchMixin = function (SuperClass) {
           : ``}
       `;
     }
-    async printBranchOfSite(e) {
+    async printBranchOfSite(_e) {
       this.__printBranchLoading = true;
       try {
         const baseElement = globalThis.document.querySelector("base");
@@ -226,7 +226,7 @@ export const PrintBranchMixin = function (SuperClass) {
           : ``}
       `;
     }
-    async printWholeSite(e) {
+    async printWholeSite(_e) {
       this.__printBranchLoading = true;
       try {
         const baseElement = globalThis.document.querySelector("base");

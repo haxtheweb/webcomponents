@@ -368,7 +368,7 @@ class GridPlate extends LitElement {
       </div>
     `;
   }
-  _drop(e) {
+  _drop(_e) {
     if (!this.dataHaxRay) return;
     this.querySelectorAll(".active").forEach((el) => {
       el.classList.remove("active");
@@ -778,7 +778,7 @@ class GridPlate extends LitElement {
   _getColumns(__columnWidths) {
     return __columnWidths.length;
   }
-  haxactiveElementChanged(el, val) {}
+  haxactiveElementChanged(_el, _val) {}
 }
 globalThis.customElements.define(GridPlate.tag, GridPlate);
 export { GridPlate };

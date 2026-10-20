@@ -1,5 +1,5 @@
-import { expect, html } from '@open-wc/testing'
-import { CodePenButton } from '../lib/code-pen-button.js'
+import { expect } from '@open-wc/testing'
+import '../lib/code-pen-button.js';
 
 // FIXED (issue #3102 bug 20): the input[type=image] src is now an inline
 // data-URI SVG baked into the static template (previously a hardcoded

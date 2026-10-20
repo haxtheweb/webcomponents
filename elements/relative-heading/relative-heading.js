@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { RelativeHeadingLite } from "./lib/relative-heading-lite.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";

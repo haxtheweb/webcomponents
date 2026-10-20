@@ -374,7 +374,7 @@ export class RPGCharacterToast extends SimpleToastEl {
     );
   }
 
-  hideSimpleToast(e) {
+  hideSimpleToast(_e) {
     // event always trumps waiting for input
     this.awaitingMerlinInput = false;
     this.hide();

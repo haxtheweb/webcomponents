@@ -411,10 +411,10 @@ class RetroCard extends SimpleColors {
         break;
     }
   }
-  _hoverStateOff(e) {
+  _hoverStateOff(_e) {
     this.hoverState = false;
   }
-  _hoverStateOn(e) {
+  _hoverStateOn(_e) {
     this.hoverState = true;
   }
   firstUpdated(changedProperties) {

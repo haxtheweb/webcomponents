@@ -321,7 +321,7 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
       <div id="timeline">
         <div id="events" @scroll="${this._checkScroll}">
           ${this.eventsList.map(
-            (event, index) => html`
+            (event, _index) => html`
               <section
                 class="event"
                 ?has-media="${event.imagesrc && event.imagesrc !== ""}"
@@ -662,8 +662,8 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
     return this.__observer;
   }
   _setScroll(e) {
-    var el = normalizeEventPath(e)[0];
-    var parent = el.parentNode;
+    let el = normalizeEventPath(e)[0];
+    let parent = el.parentNode;
     parent.scroll({
       top: el.offsetTop,
       left: 0,
@@ -674,7 +674,7 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
   /**
    * checks the scroll of each event
    */
-  _checkScroll(e) {
+  _checkScroll(_e) {
     if (this.shadowRoot) {
       let events = this.shadowRoot.querySelectorAll(".event") || [];
       events.forEach((event) => {

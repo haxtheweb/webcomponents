@@ -45,7 +45,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
     //get top level items (items shown on header -- they have no parent)
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.getItemChildren(null));
         Promise.resolve().then(() => {
           let items = _mobx_val_0;
@@ -58,7 +58,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
     // get home link (lading page slug)
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.homeLink);
         Promise.resolve().then(() => {
           this.homeLink = _mobx_val_0;
@@ -420,7 +420,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
 
 
-  firstUpdated(changedProperties) {
+  firstUpdated(_changedProperties) {
       // window resize observer for mobile menu
     // NOTE: an event listener works for this too, but only for manual resizing and not in
     //       certain cases when the window is popped out via minimize or dragging
@@ -444,7 +444,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     globalThis.removeEventListener("scroll", this.__onScroll);
     globalThis.removeEventListener("keydown", this.__onKeydown);
     // dispose the store reactions so a detached header stops reacting
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

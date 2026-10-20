@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement } from "lit";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 /**
  * `rich-text-editor-source-code`
@@ -75,7 +75,7 @@ class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
    * @param {object} editor
    * @memberof RichTextEditorSourceCode
    */
-  commandCallback(editor, toolbar, selection) {
+  commandCallback(_editor, _toolbar, _selection) {
     if (!this.toggled) this.__highlight.unwrap(this.range);
     this.toggled =
       this.__toolbar &&

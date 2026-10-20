@@ -196,7 +196,7 @@ export class DesignSystem extends LitElement {
             }
           });
         }
-      } catch (e) {
+      } catch {
         const oldStyleSafariBs = globalThis.document.createElement("style");
         oldStyleSafariBs.innerHTML = globalStyles;
         globalThis.document.head.appendChild(oldStyleSafariBs);
@@ -234,7 +234,7 @@ export class DesignSystem extends LitElement {
           ...globalThis.document.adoptedStyleSheets,
           adoptableDS,
         ];
-      } catch (e) {
+      } catch {
         const oldStyleSafariBs = globalThis.document.createElement("style");
         oldStyleSafariBs.innerHTML = globalStyles;
         globalThis.document.head.appendChild(oldStyleSafariBs);

@@ -1,4 +1,4 @@
-import { html, css, unsafeCSS } from "lit";
+import { html, css } from "lit";
 import { store } from "./haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
@@ -561,14 +561,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     return "haxcms-site-editor-ui";
   }
 
-  _expandSettingsPanel(e) {
+  _expandSettingsPanel(_e) {
     this.shadowRoot.querySelector("#content-edit").click();
   }
 
   // a file needs to be selected via the program and then sub-program options presented
   selectFileToProcess() {
     import("@haxtheweb/file-system-broker/file-system-broker.js").then(
-      async (e) => {
+      async (_e) => {
         const broker = globalThis.FileSystemBroker.requestAvailability();
         const contents = await broker.getFileContents("*");
         const fileData = broker.fileHandler;
@@ -629,7 +629,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     try {
       new URL(string);
       return true;
-    } catch (_) {
+    } catch {
       return false;
     }
   }
@@ -681,7 +681,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
 
       return "generic";
-    } catch (error) {
+    } catch {
       return "generic";
     }
   }
@@ -988,9 +988,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   // upload file and do what the user asked contextually
   async processFileContentsBasedOnUserDesire(values, mode, operationType) {
-    const usData = toJS(UserScaffoldInstance.data);
-    const e = usData.event;
-    this.setProcessingVisual();
+    toJS(UserScaffoldInstance.data);
+        this.setProcessingVisual();
     switch (mode) {
       // upload and possibly link/embed the item
       case "set-page-media":
@@ -1137,7 +1136,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 }
               } else {
                 // Insert as formatted CSV text
-                const preElement = HAXStore.activeHaxBody.haxInsert(
+                HAXStore.activeHaxBody.haxInsert(
                   "pre",
                   csvData,
                   {},
@@ -1390,7 +1389,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (title == "") {
       title = this.t.newPageDefaultTitle;
     }
-    var payload = {
+    let payload = {
       node: {
         title: title,
         location: "",
@@ -1960,7 +1959,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ${this.t.expectingToSeeAnOptionMerlinDidntProvide}
         </div>
         <a
-          @click="${(e) => {
+          @click="${(_e) => {
             HAXStore._haxStoreContribute(
               "merlin",
               "POP,enhancement",
@@ -2050,7 +2049,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
             // Add template options if templates are available
             if (pageTemplates && pageTemplates.length > 0) {
-              pageTemplates.forEach((template, index) => {
+              pageTemplates.forEach((template, _index) => {
                 results.push({
                   title: this.t.createTemplateNamedTitle
                     .replace("{template}", () => template.name)
@@ -2595,7 +2594,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         machineName: "hax-link-agent",
         program: async (input, values) => {
           const usAction = toJS(UserScaffoldInstance.action);
-          const usMemory = toJS(UserScaffoldInstance.memory);
+          toJS(UserScaffoldInstance.memory);
           const usData = toJS(UserScaffoldInstance.data);
           let results = [];
 
@@ -2793,10 +2792,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       if (!HAXStore.primativeHooks.a) {
         HAXStore.primativeHooks.a = {};
       }
-      HAXStore.primativeHooks.a.setupActiveElementForm = (props) => {
+      HAXStore.primativeHooks.a.setupActiveElementForm = (_props) => {
         const itemManifest = store.getManifestItems(true);
         // default to null parent as the whole site
-        var items = [
+        let items = [
           {
             text: `-- ${this.t.selectPage} --`,
             value: null,
@@ -2910,7 +2909,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         if (isLoggedIn && !this.loggedInTime) {
           this.displayConsoleWarning();
           this.loggedInTime = tstamp;
-          var ll = UserScaffoldInstance.readMemory("recentLogins");
+          let ll = UserScaffoldInstance.readMemory("recentLogins");
           if (!ll) {
             UserScaffoldInstance.writeMemory("recentLogins", [tstamp], "long");
           } else if (ll) {
@@ -3512,7 +3511,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    * Window-level drag leave: remove highlight once the drag truly leaves
    * the browser window (counter handles nested element churn).
    */
-  __windowDragLeave(e) {
+  __windowDragLeave(_e) {
     this.__dragCounter--;
     if (this.__dragCounter <= 0) {
       this.__dragCounter = 0;
@@ -3591,7 +3590,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.sdSearch.dragover = false;
   }
   // daemon was told to close so enable the search bar again
-  sdCloseEvent(e) {
+  sdCloseEvent(_e) {
     setTimeout(() => {
       // trap helps ensure user expectation of no input but without triggering
       // an input change event which activates things running
@@ -4106,7 +4105,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         name: this.t.loadComponentSchema,
         context: ">",
-        program: async (input, values) => {
+        program: async (input, _values) => {
           const reg = globalThis.WCAutoload.requestAvailability();
           let results = [];
           Object.keys(reg.registry.list).forEach(async (tag) => {
@@ -4269,7 +4268,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         name: "Show getting started tasks",
         machineName: "welcome",
         context: "CMS",
-        program: async (input, values) => {
+        program: async (_input, _values) => {
           // Five most common operations for new users
           return welcomeOps.filter(
             (item) =>
@@ -4298,7 +4297,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         name: this.t.previewAudienceMode,
         context: ">",
-        program: async (input, values) => {
+        program: async (input, _values) => {
           let results = [];
           // Load in the supported audiences in platformConfig
           const audienceOptions = {
@@ -4437,7 +4436,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         name: this.t.switchToAnotherSite,
         context: "CMS",
-        program: async (input, values) => {
+        program: async (input, _values) => {
           let results = [];
           // will work in a production haxiam environment to allow hopping between spaces
           await fetch("./../../system/api/v1/sites")
@@ -4673,7 +4672,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         placeholder: this.t.enterTagsSeparatedByCommas,
         // Pre-fill the input with the active page's current tags so the
         // user can edit them in place when launched from Merlin search.
-        initialValue: (values) => {
+        initialValue: (_values) => {
           const activeItem = toJS(store.activeItem);
           const tags =
             (activeItem && activeItem.metadata && activeItem.metadata.tags) ||
@@ -4737,7 +4736,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         name: this.t.viewPageRevisions,
         machineName: "page-revisions",
         placeholder: this.t.openRevisionHistoryForCurrentPage,
-        program: async (input, values) => {
+        program: async (_input, _values) => {
           const activeItem = toJS(store.activeItem);
           if (!activeItem || !activeItem.id) {
             return [
@@ -4788,7 +4787,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         name: this.t.openAPageInThisSite,
         context: "CMS",
-        program: async (input, values) => {
+        program: async (input, _values) => {
           let results = [];
           const manifest = toJS(store.routerManifest) || toJS(store.manifest);
           if (manifest && manifest.items && manifest.items.length > 0) {
@@ -4861,7 +4860,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         name: this.t.insertALinkToAPage,
         context: "/",
-        program: async (input, values) => {
+        program: async (input, _values) => {
           let results = [];
           const manifest = toJS(store.routerManifest) || toJS(store.manifest);
           if (manifest && manifest.items && manifest.items.length > 0) {
@@ -5212,7 +5211,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
       url.searchParams.set("format", normalizedFormat);
       globalThis.location.href = url.toString();
-    } catch (e) {}
+    } catch {}
   }
   getCurrentPageShareLink(activeItem = null) {
     let item = activeItem;
@@ -5235,7 +5234,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       } else {
         shareUrl = new URL(globalThis.location.href);
       }
-    } catch (e) {
+    } catch {
       return globalThis.location.href;
     }
 
@@ -5265,7 +5264,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         await globalThis.navigator.clipboard.writeText(shareLink);
         copied = true;
       }
-    } catch (e) {
+    } catch {
       copied = false;
     }
 
@@ -5280,7 +5279,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         textArea.select();
         copied = globalThis.document.execCommand("copy");
         globalThis.document.body.removeChild(textArea);
-      } catch (e) {
+      } catch {
         copied = false;
       }
     }
@@ -5645,7 +5644,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // IMPORTANT: use the observable HAXStore.trayDetail, not haxTray.trayDetail,
     // so MobX actually tracks and updates this value.
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(HAXStore.trayDetail);
         Promise.resolve().then(() => {
           this.trayDetail = _mobx_val_0;
@@ -5655,7 +5654,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // detect changes in platformConfig for internal testing with Merlin
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         if (store.platformConfig) {
           // Don't redundantly reload the page on first boot
           if (!this.__initialPlatformConfig) {
@@ -5668,7 +5667,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.userData.userName);
         const _mobx_val_1 = toJS(store.userData.userPicture);
         Promise.resolve().then(() => {
@@ -5680,7 +5679,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           const previousEditMode = this.editMode;
@@ -5713,7 +5712,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.adminMode);
         Promise.resolve().then(() => {
           this.manifestEditMode = _mobx_val_0;
@@ -5721,7 +5720,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.pageAllowed);
         Promise.resolve().then(() => {
           this.pageAllowed = _mobx_val_0;
@@ -5729,7 +5728,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           const activeItem = _mobx_val_0;
@@ -5765,7 +5764,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.appReady);
         const _mobx_val_1 = toJS(store.isLoggedIn);
         Promise.resolve().then(() => {
@@ -5803,7 +5802,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     window.removeEventListener("dragover", this.__boundWindowDragOver);
     window.removeEventListener("drop", this.__boundWindowDrop);
     window.removeEventListener("drop", this.__boundWindowDropCleanup, true);
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -6011,7 +6010,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         range.collapse(false);
         selection.removeAllRanges();
         selection.addRange(range);
-      } catch (e) {
+      } catch {
         HAXStore._positionCursorInNode(HAXStore.activeNode, 0);
       }
     }
@@ -6110,7 +6109,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       key: "2",
       ctrl: true,
       shift: true,
-      callback: (e) => {
+      callback: (_e) => {
         if (this.editMode) {
           // Edit mode: Page structure
           if (HAXStore.haxTray) {
@@ -6139,7 +6138,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       key: "3",
       ctrl: true,
       shift: true,
-      callback: (e) => {
+      callback: (_e) => {
         if (this.editMode) {
           // Edit mode: Blocks browser
           if (HAXStore.haxTray) {
@@ -6169,7 +6168,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       key: "4",
       ctrl: true,
       shift: true,
-      callback: (e) => {
+      callback: (_e) => {
         if (this.editMode) {
           // Edit mode: Open configure panel
           if (HAXStore.haxTray) {
@@ -6721,7 +6720,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this._applyAdminRoutePath(routePath, 0, true);
     }
   }
-  _adminRoutePopState(e) {
+  _adminRoutePopState(_e) {
     const routePath = this._getAdminRoutePathFromLocation();
     if (routePath) {
       store.adminMode = true;
@@ -6752,7 +6751,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
     }
   }
-  _simpleModalClosed(e) {
+  _simpleModalClosed(_e) {
     const initialRoutePath = this._getAdminRoutePathFromLocation();
     if (
       this.__currentAdminRoutePath === "theme-preview" ||
@@ -6987,7 +6986,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Navigate to style guide route
    */
-  _styleGuideButtonTap(e) {
+  _styleGuideButtonTap(_e) {
     this._clearAdminRoutePathFromLocation("replace");
     store.playSound("click");
     globalThis.location.href = "x/displays/style-guide";
@@ -7215,7 +7214,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.themePreviewCollapsed = isCollapsed;
     this._setThemePreviewCanvasState(true, this.themePreviewCollapsed);
   }
-  _handleThemePreviewCancel(e) {
+  _handleThemePreviewCancel(_e) {
     this._closeThemePreview(true, "replace");
     store.playSound("error");
   }
@@ -7361,7 +7360,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * delete active item
    */
-  _deleteActive(e) {
+  _deleteActive(_e) {
     store.playSound("click");
     const evt = new CustomEvent("haxcms-delete-node", {
       bubbles: true,
@@ -7376,7 +7375,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Edit title via Merlin program
    */
-  _editTitlePrompt(e) {
+  _editTitlePrompt(_e) {
     const activeItem = toJS(store.activeItem);
     if (!activeItem || !activeItem.id) {
       return;
@@ -7396,7 +7395,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Edit description via Merlin program
    */
-  _editDescriptionPrompt(e) {
+  _editDescriptionPrompt(_e) {
     const activeItem = toJS(store.activeItem);
     if (!activeItem || !activeItem.id) {
       return;
@@ -7417,7 +7416,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Toggle lock status
    */
-  _toggleLockStatus(e) {
+  _toggleLockStatus(_e) {
     const activeItem = toJS(store.activeItem);
     if (!activeItem || !activeItem.id) return;
 
@@ -7439,7 +7438,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Duplicate page prompt
    */
-  _duplicatePagePrompt(e) {
+  _duplicatePagePrompt(_e) {
     const activeItem = toJS(store.activeItem);
     if (!activeItem || !activeItem.id) return;
 
@@ -7464,7 +7463,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Edit slug prompt
    */
-  _editSlugPrompt(e) {
+  _editSlugPrompt(_e) {
     const activeItem = toJS(store.activeItem);
     if (!activeItem || !activeItem.id) {
       return;
@@ -7485,7 +7484,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Move page program from menu
    */
-  _movePageProgramFromMenu(e) {
+  _movePageProgramFromMenu(_e) {
     const item = toJS(store.activeItem);
     if (!item || !item.id) {
       return;
@@ -7505,7 +7504,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Toggle locked status
    */
-  _toggleLockedStatus(e) {
+  _toggleLockedStatus(_e) {
     const item = toJS(store.activeItem);
     if (!item || !item.id) {
       return;
@@ -7529,7 +7528,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Toggle published status
    */
-  _togglePublishedStatus(e) {
+  _togglePublishedStatus(_e) {
     const item = toJS(store.activeItem);
     if (!item || !item.id) {
       return;
@@ -7742,7 +7741,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const items = detail.items || [];
     this._openImportHierarchy(items, false, {});
   }
-  _selectFileForHierarchyImport(e) {
+  _selectFileForHierarchyImport(_e) {
     globalThis.dispatchEvent(
       new CustomEvent("haxcms-create-node", {
         bubbles: true,
@@ -8685,7 +8684,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Note changes to the outline / structure of the page's items
    */
-  _outlineEditModeChanged(newValue, oldValue) {
+  _outlineEditModeChanged(newValue, _oldValue) {
     this.dispatchEvent(
       new CustomEvent("haxcms-outline-edit-mode-changed", {
         bubbles: true,
@@ -8698,7 +8697,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Note changes to the outline / structure of the page's items
    */
-  _manifestEditModeChanged(newValue, oldValue) {
+  _manifestEditModeChanged(newValue, _oldValue) {
     this.dispatchEvent(
       new CustomEvent("haxcms-manifest-edit-mode-changed", {
         bubbles: true,
@@ -8712,7 +8711,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Handle Konami Code activation - dynamically load cheat codes
    */
-  async _konamiCodeActivated(e) {
+  async _konamiCodeActivated(_e) {
     if (!this.konamiCodeActivated) {
       this.konamiCodeActivated = true;
 

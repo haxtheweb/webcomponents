@@ -583,7 +583,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     try {
       const url = new URL(globalThis.location.href);
       return url.searchParams.get("name") || "";
-    } catch (e) {
+    } catch {
       return "";
     }
   }
@@ -617,7 +617,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         "",
         `${url.pathname}${url.search}${url.hash}`,
       );
-    } catch (e) {
+    } catch {
       // do nothing
     }
   }
@@ -753,7 +753,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     );
   }
 
-  handleModalClosed(e) {
+  handleModalClosed(_e) {
     // web-dialog sends close event, we need to sync our state
     if (this.isCreating) {
       this.creationCancelled = true;
@@ -1139,7 +1139,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       if (matchedSite && matchedSite.slug) {
         this.siteUrl = matchedSite.slug.replace("index.html", "");
       }
-    } catch (e) {
+    } catch {
       // Non-fatal: UI already has a fallback URL and can still continue.
     }
   }

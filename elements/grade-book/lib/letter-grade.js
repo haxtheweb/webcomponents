@@ -202,7 +202,7 @@ class LetterGrade extends LitElement {
       this._letterIndex = 0;
       return this.gradeScale[0].letter;
     } else {
-      for (var i in this.gradeScale) {
+      for (let i in this.gradeScale) {
         let val = this.gradeScale[i];
         if (percent <= val.highRange && percent >= val.lowRange) {
           this._letterIndex = i;

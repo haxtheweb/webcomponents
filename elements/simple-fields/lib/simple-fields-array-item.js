@@ -214,8 +214,8 @@ class SimpleFieldsArrayItem extends I18NMixin(
         ?hidden="${this.__dropAccepts || this.__dragging || this.hideReorder}"
         part="drag"
         tooltip-direction="right"
-        @mousedown="${(e) => (this.draggable = "true")}"
-        @mouseup="${(e) => (this.draggable = "false")}"
+        @mousedown="${(_e) => (this.draggable = "true")}"
+        @mouseup="${(_e) => (this.draggable = "false")}"
       >
         <simple-toolbar-menu-item id="move-up-outer">
           <simple-toolbar-button
@@ -413,7 +413,7 @@ class SimpleFieldsArrayItem extends I18NMixin(
   /**
    * When we end dragging ensure we remove the mover class.
    */
-  _dragEnd(e) {
+  _dragEnd(_e) {
     [...this.parentNode.childNodes].forEach((item) => {
       if (item.isArrayItem) item._setDropzone(false);
     });
@@ -433,13 +433,13 @@ class SimpleFieldsArrayItem extends I18NMixin(
   /**
    * Enter an element, meaning we've over it while dragging
    */
-  _dragEnter(e) {
+  _dragEnter(_e) {
     this._setDropzone();
   }
   /**
    * Leaving an element while dragging.
    */
-  _dragLeave(e) {
+  _dragLeave(_e) {
     this._setDropzone(false);
   }
   /**

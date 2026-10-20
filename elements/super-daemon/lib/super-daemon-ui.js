@@ -640,7 +640,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     }, 1000);
   }
   // reset search values because we selected something
-  itemSelected(e) {
+  itemSelected(_e) {
     this.like = "";
     this.programSearch = "";
   }

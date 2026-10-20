@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import "lit";
 import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
 import { A11yTab } from "@haxtheweb/a11y-tabs/lib/a11y-tab.js";
 /**

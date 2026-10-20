@@ -18,7 +18,7 @@ export class IframeLoader extends LitElement {
         new URL(source, globalThis.location.href).origin !==
         globalThis.location.origin
       );
-    } catch (e) {
+    } catch {
       return false;
     }
   }
@@ -137,7 +137,7 @@ export class IframeLoader extends LitElement {
         }
       });
     });
-    this.__observer = new MutationObserver((mutations) => {
+    this.__observer = new MutationObserver((_mutations) => {
       if (this.querySelector("iframe")) {
         this.__iframe = this.querySelector("iframe");
         this.source = this._safeSource(this.__iframe.getAttribute("src"));
@@ -192,7 +192,7 @@ export class IframeLoader extends LitElement {
     return node;
   }
   // ALWAYS enable edit mode if HAX is around
-  haxactiveElementChanged(el, val) {
+  haxactiveElementChanged(el, _val) {
     if (this.__iframe) {
       if (this.source !== this.__iframe.getAttribute("src")) {
         this.source = this._safeSource(this.__iframe.getAttribute("src"));

@@ -247,7 +247,7 @@ describe('AppHaxUserAccessModal pure logic', () => {
   let store
 
   before(async () => {
-    const mod = await import('../lib/v2/app-hax-user-access-modal.js')
+    await import('../lib/v2/app-hax-user-access-modal.js')
     // The class is not exported, but it's registered as a custom element
     AppHaxUserAccessModal = customElements.get('app-hax-user-access-modal')
     store = (await import('../lib/v2/AppHaxStore.js')).store

@@ -51,7 +51,7 @@ class SimplePopoverSelection extends LitElement {
       globalThis.SimplePopoverManager.requestAvailability().querySelectorAll(
         "*",
       );
-    for (var i in children) {
+    for (let i in children) {
       if (children[i].addEventListener) {
         children[i].addEventListener("click", this.__boundItemSelect);
         this.__popoverItemListeners.push(children[i]);
@@ -59,7 +59,7 @@ class SimplePopoverSelection extends LitElement {
     }
   }
 
-  openedToggle(e) {
+  openedToggle(_e) {
     if (!this.disabled) {
       this.opened = !this.opened;
     }
@@ -83,7 +83,7 @@ class SimplePopoverSelection extends LitElement {
       ) {
         slot = slot[0].children[0].assignedNodes({ flatten: true });
       }
-      for (var i in slot) {
+      for (let i in slot) {
         if (slot[i].cloneNode && slot[i].tagName) {
           let clone = slot[i].cloneNode(true);
           clone.removeAttribute("slot");

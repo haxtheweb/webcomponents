@@ -157,7 +157,7 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   /**
    * Print the type in question
    */
-  async print(e) {
+  async print(_e) {
     globalThis.open(
       globalThis.location.href + "?format=print-" + this.type,
       "",

@@ -186,7 +186,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     if (title === "") {
       title = "New";
     }
-    var payload = {
+    let payload = {
       node: {
         title: title,
         location: "",

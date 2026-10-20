@@ -38,7 +38,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
    
     // gets licensing stuff
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0;
@@ -58,7 +58,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(
           store.manifest && store.manifest.metadata && store.manifest.metadata.site
             ? store.manifest.metadata.site.updated
@@ -88,7 +88,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
 
   disconnectedCallback() {
     // dispose the store reactions so a detached footer stops reacting
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

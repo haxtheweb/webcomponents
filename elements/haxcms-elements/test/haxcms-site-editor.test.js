@@ -5,7 +5,7 @@
 import { fixture, expect, html } from '@open-wc/testing'
 import '../lib/core/haxcms-site-editor.js'
 import { store } from '../lib/core/haxcms-site-store.js'
-import { HAXStore } from '@haxtheweb/hax-body/lib/hax-store.js'
+import '@haxtheweb/hax-body/lib/hax-store.js';
 
 function makeManifest() {
   return {
@@ -485,7 +485,7 @@ describe('haxcms-site-editor _buildRequestTarget', () => {
 
   it('generateRequest calls requestExecutor when provided', async () => {
     let executorCalled = false
-    const executor = (t) => { executorCalled = true; return 'result' }
+    const executor = (_t) => { executorCalled = true; return 'result' }
     const target = element._buildRequestTarget('req', {}, executor, {})
     const result = await target.generateRequest()
     expect(executorCalled).to.equal(true)
@@ -896,8 +896,7 @@ describe('haxcms-site-editor _autoEnterEditModeForCreatedNode', () => {
   it('tears down previous disposer when called again', () => {
     element._merlinCreated = true
     element._autoEnterEditModeForCreatedNode({ id: 'page-a', title: 'A' })
-    const firstDisposer = element.__autoEditDisposer
-    element._autoEnterEditModeForCreatedNode({ id: 'page-b', title: 'B' })
+        element._autoEnterEditModeForCreatedNode({ id: 'page-b', title: 'B' })
     // second call should have torn down the first disposer
     expect(element.__autoEditDisposer).to.exist
     // the disposer should be a new one (can't compare directly but should exist)

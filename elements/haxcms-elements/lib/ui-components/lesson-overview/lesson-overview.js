@@ -93,7 +93,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
   }
   // calculate smart details and update associated blocks
   async getSmartData(manualSite = null) {
-    var params = {
+    let params = {
       type: "link",
       __method: "GET",
     };
@@ -106,7 +106,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       // assemble manifest
       const site = toJS(store.manifest);
       if (site) {
-        var base = "";
+        let base = "";
         if (document.querySelector("base")) {
           base = globalThis.document.querySelector("base").href;
         }
@@ -270,10 +270,10 @@ export { LessonOverview };
 
 // convert seconds back into full time stamp
 function toHHMMSS(seconds) {
-  var out = "";
-  var snum = parseInt(seconds, 10);
-  var hours = Math.floor(snum / 3600);
-  var minutes = Math.floor((snum - hours * 3600) / 60);
+  let out = "";
+  let snum = parseInt(seconds, 10);
+  let hours = Math.floor(snum / 3600);
+  let minutes = Math.floor((snum - hours * 3600) / 60);
 
   if (hours !== 0) {
     out += `${hours} hour`;

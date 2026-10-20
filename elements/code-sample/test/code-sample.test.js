@@ -1,4 +1,4 @@
-import { fixture, expect, html, assert } from "@open-wc/testing";
+import { fixture, expect, html } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
 
 import "../code-sample.js";

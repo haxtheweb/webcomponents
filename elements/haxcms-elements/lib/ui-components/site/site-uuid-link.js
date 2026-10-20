@@ -161,7 +161,7 @@ class SiteUuidLink extends I18NMixin(LitElement) {
     if (globalThis.HAXCMS) {
       const itemManifest = store.getManifestItems(true);
       // default to null parent as the whole site
-      var items = [
+      let items = [
         {
           text: this.t.selectPage,
           value: null,

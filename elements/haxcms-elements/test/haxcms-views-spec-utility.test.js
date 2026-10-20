@@ -376,7 +376,7 @@ describe("haxcms-views-spec-utility", () => {
       let threw = false;
       try {
         await loadHAXCMSViewsSpec({ apiBasePath: "/x/api" });
-      } catch (e) {
+      } catch {
         threw = true;
       }
       expect(threw).to.equal(true);

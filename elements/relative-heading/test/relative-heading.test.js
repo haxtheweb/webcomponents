@@ -125,7 +125,7 @@ describe('relative-heading hierarchy', () => {
   })
 
   it('relevels a subtree when reparented', async () => {
-    const el = await fixture(
+    await fixture(
       html` <relative-heading id="rh-a2">
           <h1>Top</h1>
         </relative-heading>

@@ -116,7 +116,7 @@ export function isPrivateSite(manifest) {
 function resolveUrl(path) {
   try {
     return new URL(String(path || ""), globalThis.document.baseURI).href;
-  } catch (e) {
+  } catch {
     return String(path || "");
   }
 }
@@ -283,7 +283,7 @@ export function buildPublicTools(getManifest, fetchImpl = globalThis.fetch) {
             if (response && response.ok) {
               markdown = await response.text();
             }
-          } catch (e) {}
+          } catch {}
         }
         return JSON.stringify(Object.assign(summarizeItem(item), { markdown }));
       },
@@ -371,7 +371,7 @@ export function initHAXcmsWebMCP(store) {
     buildPublicTools(getManifest).forEach((tool) => {
       try {
         modelContext.registerTool(tool, { signal: controller.signal });
-      } catch (e) {
+      } catch {
         // an agent-side failure must never break the site
       }
     });

@@ -58,7 +58,7 @@ class PlayList extends I18NMixin(DDD) {
     this._touchCurrentY = 0;
     this._isDragging = false;
     // mutation observer for light dom changes
-    this._observer = new MutationObserver((mutations) => {
+    this._observer = new MutationObserver((_mutations) => {
       clearTimeout(this._debounceMutations);
       this._debounceMutations = setTimeout(() => {
         this.mirrorLightDomToItems();
@@ -501,7 +501,7 @@ class PlayList extends I18NMixin(DDD) {
     this._touchCurrentY = touch.clientY;
   }
 
-  _handleTouchEnd(e) {
+  _handleTouchEnd(_e) {
     if (!this._isDragging) return;
     this._isDragging = false;
     const deltaX = this._touchStartX - this._touchCurrentX;
@@ -582,7 +582,7 @@ class PlayList extends I18NMixin(DDD) {
     };
   }
 
-  haxClickSlideIndex(e) {
+  haxClickSlideIndex(_e) {
     copyToClipboard(this.slide);
     return true;
   }
@@ -609,11 +609,11 @@ class PlayList extends I18NMixin(DDD) {
       },
     ];
   }
-  haxToggleEdit(e) {
+  haxToggleEdit(_e) {
     this.edit = !this.edit;
     return true;
   }
-  haxBreakOutPlaylist(e) {
+  haxBreakOutPlaylist(_e) {
     if (!this.parentNode) {
       return false;
     }

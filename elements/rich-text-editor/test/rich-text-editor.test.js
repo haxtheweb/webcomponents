@@ -118,7 +118,7 @@ describe("rich-text-editor behavior", () => {
 
   it("focus on a disabled editor does not enable editing", async () => {
     const events = [];
-    element.addEventListener("focus", (e) => events.push(true));
+    element.addEventListener("focus", (_e) => events.push(true));
     element.disabled = true;
     element.contenteditable = "false";
     element.focus();
@@ -241,7 +241,6 @@ describe("rich-text-editor toolbar creation", () => {
   })
 })
 
-/* eslint-disable */
 /*
 describe("A11y/chai axe tests", () => {
   it("rich-text-editor passes accessibility test", async () => {

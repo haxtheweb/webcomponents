@@ -181,7 +181,7 @@ class BootstrapBreadcrumb extends I18NMixin(LitElement) {
     this._bootstrapPath = this._resolveBootstrapStylesheetPath();
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(
           store.manifest && store.manifest.items
             ? store.manifest.items[0]
@@ -302,12 +302,12 @@ class BootstrapBreadcrumb extends I18NMixin(LitElement) {
     }
   }
 
-  firstUpdated(changedProperties) {
+  firstUpdated(_changedProperties) {
     adoptBootstrapStylesheet(this, this._bootstrapPath);
   }
 
   updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {});
+    changedProperties.forEach((_oldValue, _propName) => {});
   }
 }
 globalThis.customElements.define(BootstrapBreadcrumb.tag, BootstrapBreadcrumb);

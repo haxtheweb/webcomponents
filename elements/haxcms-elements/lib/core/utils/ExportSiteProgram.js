@@ -62,7 +62,7 @@ function _buildV1ContentUrl(baseUrl, queryParams = {}) {
 }
 
 export function createExportSiteProgram(context) {
-  return async (input, values) => {
+  return async (input, _values) => {
     let results = [];
 
     // Filter results based on input

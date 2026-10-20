@@ -357,7 +357,7 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
     }
     try {
       return matchLanguageCode(text, this._registryArg());
-    } catch (e) {
+    } catch {
       return null;
     }
   }

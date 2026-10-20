@@ -87,7 +87,7 @@ describe('simple-modal test', () => {
 
   it('_mobileBreadcrumbLimit returns first and last when > 2 and mobile', () => {
     const origMatchMedia = globalThis.matchMedia
-    globalThis.matchMedia = (q) => ({ matches: true })
+    globalThis.matchMedia = (_q) => ({ matches: true })
     const crumbs = [{ label: 'a' }, { label: 'b' }, { label: 'c' }]
     const result = element._mobileBreadcrumbLimit(crumbs)
     expect(result.length).to.equal(2)
@@ -98,7 +98,7 @@ describe('simple-modal test', () => {
 
   it('_mobileBreadcrumbLimit returns all when > 2 and not mobile', () => {
     const origMatchMedia = globalThis.matchMedia
-    globalThis.matchMedia = (q) => ({ matches: false })
+    globalThis.matchMedia = (_q) => ({ matches: false })
     const crumbs = [{ label: 'a' }, { label: 'b' }, { label: 'c' }]
     const result = element._mobileBreadcrumbLimit(crumbs)
     expect(result.length).to.equal(3)

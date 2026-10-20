@@ -1,4 +1,4 @@
-import { fixture, expect, html } from '@open-wc/testing'
+import { expect } from '@open-wc/testing'
 import '../lib/simple-popover-manager.js'
 
 const aTimeout = (ms) => new Promise((r) => setTimeout(r, ms))

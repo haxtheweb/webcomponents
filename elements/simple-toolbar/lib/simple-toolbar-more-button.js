@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, css } from "lit";
 import { SimpleToolbarButtonBehaviors } from "./simple-toolbar-button.js";
 /**
  * `simple-toolbar-more-button`
@@ -49,7 +49,7 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
    * @param {string} key
    * @event toggle
    */
-  _handleShortcutKeys(e, key) {
+  _handleShortcutKeys(e, _key) {
     this.dispatchEvent(
       new CustomEvent("toggle", {
         bubbles: true,

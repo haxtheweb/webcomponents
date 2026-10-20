@@ -169,7 +169,7 @@ class HAXElementCardList extends I18NMixin(LitElement) {
                       class="checkbox"
                       type="checkbox"
                       ?checked="${el.status}"
-                      @change="${(e) => this.elementStatusChange(el)}"
+                      @change="${(_e) => this.elementStatusChange(el)}"
                     />
                   </label>
                   <div slot="details-collapse-header">${this.t.details}</div>

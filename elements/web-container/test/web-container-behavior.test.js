@@ -52,8 +52,9 @@ const makeFakeContainer = () => {
 }
 
 describe('web-container', () => {
+  // eslint-disable-next-line no-unused-vars -- written by the test, never read
   let element
-  let originalRequestAvailability
+    let originalRequestAvailability
   let originalFetch
 
   beforeEach(async () => {

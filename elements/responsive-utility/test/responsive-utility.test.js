@@ -2,7 +2,7 @@ import { fixture, expect, html } from "@open-wc/testing";
 import { LitElement } from "lit";
 
 import "../responsive-utility.js";
-import { ResponsiveUtility } from "../responsive-utility.js";
+import "../responsive-utility.js";
 import { ResponsiveUtilityBehaviors } from "../lib/responsive-utility-behaviors.js";
 import "../lib/responsive-utility-element.js";
 

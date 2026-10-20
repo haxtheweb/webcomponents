@@ -1,4 +1,4 @@
-import { fixture, expect, html, assert } from "@open-wc/testing";
+import { fixture, expect, html } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
 
 import "../count-up.js";
@@ -278,8 +278,6 @@ describe("count-up animation functionality", () => {
     const el = await fixture(
       html`<count-up start="0" end="50" duration="0.1"></count-up>`,
     );
-
-    const originalCountUp = el._countUp;
 
     el.end = 100;
     await el.updateComplete;

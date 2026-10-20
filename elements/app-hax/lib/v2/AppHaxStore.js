@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import { localStorageGet } from "@haxtheweb/utils/utils.js";
 import { observable, makeObservable, computed, configure } from "mobx";
 import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
@@ -8,7 +7,7 @@ configure({ enforceActions: false }); // strict mode off
 function hasStoredSoundPreference() {
   try {
     return globalThis.localStorage.getItem("app-hax-soundStatus") !== null;
-  } catch (e) {
+  } catch {
     return false;
   }
 }

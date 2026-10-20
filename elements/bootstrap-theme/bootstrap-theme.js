@@ -2,11 +2,11 @@
  * Copyright 2021 collinkleest
  * @license MIT, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { BootstrapUserStylesMenuMixin } from "@haxtheweb/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js";
-import { HAXCMSUserStylesMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
+import "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { DesignSystemManager } from "@haxtheweb/d-d-d/lib/DesignSystemManager.js";
 import { BootstrapDesignSystemStyles } from "@haxtheweb/bootstrap-theme/lib/BootstrapDesignSystemStyles.js";
@@ -625,7 +625,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     }
     this.__disposer = this.__disposer || [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);
         const _mobx_val_1 = toJS(
           store.manifest && store.manifest.title ? store.manifest.title : null,
@@ -756,7 +756,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     }
   }
 
-  searchItemSelected(e) {
+  searchItemSelected(_e) {
     this.searchTerm = "";
   }
 
@@ -778,7 +778,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     if (this._bootstrapLink && this._bootstrapLink.parentNode) {
       this._bootstrapLink.parentNode.removeChild(this._bootstrapLink);
     }
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -824,7 +824,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     );
   }
 
-  _bootstrapLoaded(e) {
+  _bootstrapLoaded(_e) {
     this._bootstrap = true;
   }
 
@@ -852,7 +852,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     ).href;
   }
 
-  _jqueryLoaded(e) {
+  _jqueryLoaded(_e) {
     this._jquery = true;
     this._loadBootstrap();
   }
@@ -864,7 +864,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     if (super.updated) {
       super.updated(changedProperties);
     }
-    changedProperties.forEach((oldValue, propName) => {});
+    changedProperties.forEach((_oldValue, _propName) => {});
   }
 }
 globalThis.customElements.define(BootstrapTheme.tag, BootstrapTheme);

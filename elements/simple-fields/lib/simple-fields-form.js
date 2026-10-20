@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { html } from "lit";
 import { SimpleFieldsFormLite } from "./simple-fields-form-lite.js";
 import { SimpleFields } from "../simple-fields.js";
 /**

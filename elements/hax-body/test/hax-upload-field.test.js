@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout, oneEvent } from "@open-wc/testing";
+import { fixture, expect, html, aTimeout } from "@open-wc/testing";
 import "../lib/hax-upload-field.js";
 import "../lib/hax-tray-upload.js";
 import "@haxtheweb/simple-fields/lib/simple-file-upload.js";

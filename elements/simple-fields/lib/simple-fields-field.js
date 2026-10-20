@@ -848,7 +848,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         this.addEventListener("click", this._selectClickActivate.bind(this));
       }
     }
-    _selectionShortCut(e) {
+    _selectionShortCut(_e) {
       let checked = true
         ? !!this.value
         : this.type === "radio"
@@ -913,7 +913,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       if (this.field && typeof this.field.showPicker === "function") {
         try {
           this.field.showPicker();
-        } catch (err) {
+        } catch {
           // showPicker unsupported or blocked; focus is the fallback
         }
       }
@@ -1039,7 +1039,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       return html`
         <fieldset
           part="fieldset"
-          class="${!!this.blockOptions ? "block-options" : "inline-options"}"
+          class="${this.blockOptions ? "block-options" : "inline-options"}"
         >
           <legend
             class="label-main"
@@ -1239,7 +1239,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsField
      */
     get sortedOptions() {
-      let sorted = (this.itemsList || []).map((item, i) =>
+      let sorted = (this.itemsList || []).map((item, _i) =>
         typeof item === "object" ? item : { value: item, text: item },
       );
       Object.keys(this.options || {})
@@ -1406,7 +1406,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
      * handles field changes by field type
      *
      */
-    _handleFieldChange(e) {
+    _handleFieldChange(_e) {
       super._handleFieldChange();
       if (this.multicheck && this.autovalidate) {
         this.error = false;

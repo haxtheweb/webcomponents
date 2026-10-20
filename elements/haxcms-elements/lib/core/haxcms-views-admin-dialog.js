@@ -761,7 +761,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     }
     try {
       return JSON.stringify(a) === JSON.stringify(b);
-    } catch (e) {
+    } catch {
       return false;
     }
   }
@@ -1009,7 +1009,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         }
       }
       this._applyEntityConfig(defaultEntity);
-    } catch (e) {
+    } catch {
       this.errorMessage = this.t.unableToLoadViewsMetadata;
       this.previewRecords = [];
     } finally {
@@ -1431,7 +1431,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
                 : "http://localhost",
             );
             sitePath = parsed.pathname;
-          } catch (e) {
+          } catch {
             sitePath = href;
           }
         }
@@ -1483,7 +1483,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         return `${resolved.pathname}${resolved.search}${resolved.hash}`;
       }
       return resolved.toString();
-    } catch (e) {
+    } catch {
       if (normalizedCandidate.charAt(0) !== "/") {
         return `/${normalizedCandidate}`;
       }
@@ -1505,7 +1505,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     try {
       const parsed = new URL(candidate, globalThis.location.origin);
       return parsed.toString();
-    } catch (e) {
+    } catch {
       return candidate;
     }
   }
@@ -1685,7 +1685,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         typeof extracted.count === "number" ? extracted.count : records.length;
       this.previewTotal =
         typeof extracted.total === "number" ? extracted.total : records.length;
-    } catch (e) {
+    } catch {
       if (activeRequestId !== this.__previewRequestId) {
         return;
       }

@@ -122,7 +122,7 @@ class CMSToken extends CMSBase {
   /**
    * Window visibility callback to monitor when we are being seen
    */
-  _windowVisibilityChanged(e) {
+  _windowVisibilityChanged(_e) {
     if (!this.loading && this._clickInvoked) {
       this._doRequest();
       this._clickInvoked = false;
@@ -131,7 +131,7 @@ class CMSToken extends CMSBase {
   /**
    * Notice a click on our edit button and set a flag.
    */
-  __tokenClicked(e) {
+  __tokenClicked(_e) {
     this._clickInvoked = true;
   }
   connectedCallback() {
@@ -198,7 +198,7 @@ class CMSToken extends CMSBase {
     if (typeof this.tokenData !== typeof undefined) {
       href = this.tokenData.editEndpoint;
       slot = this.tokenData.editText;
-      for (var i in this.tokenData.schema) {
+      for (let i in this.tokenData.schema) {
         schema.properties[i] = this.tokenData.schema[i];
       }
     }

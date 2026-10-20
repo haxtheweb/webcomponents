@@ -590,8 +590,9 @@ describe('AppHaxUseCaseFilter pure logic', () => {
 
   describe('_getUseCaseParamFromUrl', () => {
     let el
+    // eslint-disable-next-line no-unused-vars -- written by the test, never read
     let originalHref
-    beforeEach(() => {
+        beforeEach(() => {
       el = createFilter()
       originalHref = globalThis.location.href
     })

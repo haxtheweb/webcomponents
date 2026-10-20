@@ -98,7 +98,7 @@ describe('HaxLayoutBehaviors', () => {
     try {
       bare.__addLayoutEvents()
       bare.__removeLayoutEvents()
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.equal(false)

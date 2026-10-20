@@ -1,5 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { sendKeys } from "@web/test-runner-commands";
+import "@web/test-runner-commands";
 import "../portal-launcher.js";
 
 // Simple spy utility

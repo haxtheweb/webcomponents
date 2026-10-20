@@ -247,7 +247,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       this.__windowAbortController.abort();
       this.__windowAbortController = null;
     }
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       if (typeof this.__disposer[i] === "function") {
         this.__disposer[i]();
       } else if (
@@ -409,7 +409,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       this.__allowNextModalClose = true;
     }
   }
-  _importTap(e) {
+  _importTap(_e) {
     if (!this._confirmDiscardUnsavedOutlineChanges()) {
       return;
     }
@@ -436,7 +436,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
   /**
    * Save hit, send the message to push up the outline changes.
    */
-  async _saveTap(e) {
+  async _saveTap(_e) {
     store.playSound("click");
     const outline = this._getOutline();
     if (!outline) {

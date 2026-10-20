@@ -5,7 +5,7 @@ var __assign =
         Object.assign ||
         function (t) {
           for (var i, a = 1, s = arguments.length; a < s; a++)
-            for (var n in (i = arguments[a]))
+            for (let n in (i = arguments[a]))
               Object.prototype.hasOwnProperty.call(i, n) && (t[n] = i[n]);
 
           return t;
@@ -13,7 +13,7 @@ var __assign =
     },
   CountUp = (function () {
     function t(t, i, a) {
-      var s = this;
+      let s = this;
       (this.target = t),
         (this.endVal = i),
         (this.options = a),
@@ -39,7 +39,7 @@ var __assign =
         (this.paused = !0),
         (this.count = function (t) {
           s.startTime || (s.startTime = t);
-          var i = t - s.startTime;
+          let i = t - s.startTime;
           (s.remaining = s.duration - i),
             s.useEasing
               ? s.countDown
@@ -70,7 +70,7 @@ var __assign =
                 : s.callback && s.callback();
         }),
         (this.formatNumber = function (t) {
-          var i,
+          let i,
             a,
             n,
             e,
@@ -85,7 +85,7 @@ var __assign =
           ) {
             r = "";
 
-            for (var l = 0, h = n.length; l < h; ++l)
+            for (let l = 0, h = n.length; l < h; ++l)
               0 !== l && l % 3 == 0 && (r = s.options.separator + r),
                 (r = n[h - l - 1] + r);
 
@@ -124,7 +124,7 @@ var __assign =
         (this.useEasing = this.options.useEasing),
         "" === this.options.separator && (this.options.useGrouping = !1),
         (this.el =
-          "string" == typeof t ? globalThis.document.getElementById(t) : t),
+          "string" === typeof t ? globalThis.document.getElementById(t) : t),
         this.el
           ? this.printValue(this.startVal)
           : (this.error = "[CountUp] target is null or undefined");
@@ -132,13 +132,13 @@ var __assign =
 
     return (
       (t.prototype.determineDirectionAndSmartEasing = function () {
-        var t = this.finalEndVal ? this.finalEndVal : this.endVal;
+        let t = this.finalEndVal ? this.finalEndVal : this.endVal;
         this.countDown = this.startVal > t;
-        var i = t - this.startVal;
+        let i = t - this.startVal;
 
         if (Math.abs(i) > this.options.smartEasingThreshold) {
           this.finalEndVal = t;
-          var a = this.countDown ? 1 : -1;
+          let a = this.countDown ? 1 : -1;
           (this.endVal = t + a * this.options.smartEasingAmount),
             (this.duration = this.duration / 2);
         } else (this.endVal = t), (this.finalEndVal = null);
@@ -185,7 +185,7 @@ var __assign =
             (this.rAF = requestAnimationFrame(this.count)));
       }),
       (t.prototype.printValue = function (t) {
-        var i = this.formattingFn(t);
+        let i = this.formattingFn(t);
         "INPUT" === this.el.tagName
           ? (this.el.value = i)
           : "text" === this.el.tagName || "tspan" === this.el.tagName
@@ -193,10 +193,10 @@ var __assign =
             : (this.el.innerHTML = i);
       }),
       (t.prototype.ensureNumber = function (t) {
-        return "number" == typeof t && !isNaN(t);
+        return "number" === typeof t && !isNaN(t);
       }),
       (t.prototype.validateValue = function (t) {
-        var i = Number(t);
+        let i = Number(t);
         return this.ensureNumber(i)
           ? i
           : ((this.error = "[CountUp] invalid start or end value: " + t), null);

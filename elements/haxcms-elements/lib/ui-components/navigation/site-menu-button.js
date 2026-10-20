@@ -111,7 +111,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
     this.__slottedText = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeRouterManifestIndex);
         Promise.resolve().then(() => {
           this.activeRouterManifestIndex = _mobx_val_0;
@@ -119,7 +119,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.routerManifest);
         Promise.resolve().then(() => {
           this.routerManifest = _mobx_val_0;
@@ -127,7 +127,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -414,7 +414,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
       }),
     );
   }
-  clickLink(e) {
+  clickLink(_e) {
     this.shadowRoot.querySelector("a").click();
   }
   pageLink(type, activeRouterManifestIndex, items) {
@@ -485,7 +485,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
       this.__slotObserver.disconnect();
       this.__slotObserver = null;
     }
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

@@ -1,6 +1,6 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
-import { A11yMediaStateManager } from "../lib/a11y-media-state-manager.js";
+import "../lib/a11y-media-state-manager.js";
 
 /**
  * A real element acting as a player so IntersectionObserver.observe() stays

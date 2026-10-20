@@ -343,7 +343,7 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
   connectedCallback() {
     super.connectedCallback();
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(HAXStore.platformConfig);
         Promise.resolve().then(() => {
           const platformConfig = _mobx_val_0;

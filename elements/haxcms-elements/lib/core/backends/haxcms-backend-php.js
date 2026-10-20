@@ -68,7 +68,7 @@ class HAXCMSBackendPHP extends LitElement {
   /**
    * LitElement life cycle - ready
    */
-  firstUpdated(changedProperties) {
+  firstUpdated(_changedProperties) {
     setTimeout(async () => {
       if (globalThis.appSettings) {
         store.appSettings = globalThis.appSettings;
@@ -104,7 +104,7 @@ class HAXCMSBackendPHP extends LitElement {
     this.__validatedJwt = "";
     // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.jwt);
         Promise.resolve().then(() => {
           this.jwt = _mobx_val_0;
@@ -113,7 +113,7 @@ class HAXCMSBackendPHP extends LitElement {
     );
   }
   _hasValidJWT(jwt) {
-    return jwt != null && jwt != "null" && jwt != "" && typeof jwt == "string";
+    return jwt != null && jwt != "null" && jwt != "" && typeof jwt === "string";
   }
   _setConnectionValidated(validated) {
     store.connectionValidated = validated === true;
@@ -218,7 +218,7 @@ class HAXCMSBackendPHP extends LitElement {
         }
         try {
           return await response.json();
-        } catch (e) {
+        } catch {
           return {
             authenticated: false,
           };
@@ -276,7 +276,7 @@ class HAXCMSBackendPHP extends LitElement {
    * Detached life cycle
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -317,7 +317,7 @@ class HAXCMSBackendPHP extends LitElement {
       import(
         "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
       ).then(
-        (e) => {
+        (_e) => {
           // if we don't have appSettings by this point
           // it means we don't actually have a backend / directions
           // this would be a published state or a state where
@@ -345,11 +345,11 @@ class HAXCMSBackendPHP extends LitElement {
             );
           }
         },
-        (e) => {
+        (_e) => {
           //import failed
         }
       );
-    } catch (err) {
+    } catch {
       // error in the event this is a double registration
     }
   }

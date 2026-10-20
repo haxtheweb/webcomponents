@@ -316,7 +316,7 @@ class SimpleFieldsUpload extends I18NMixin(
    * (issue #2996, shared threshold from simple-fields-ui.js).
    */
   get _descWordCount() {
-    return !!this.description
+    return this.description
       ? this.description.trim().split(/\s+/).filter(Boolean).length
       : 0;
   }
@@ -439,7 +439,7 @@ class SimpleFieldsUpload extends I18NMixin(
     `;
   }
 
-  _fileUploadResponse(e) {
+  _fileUploadResponse(_e) {
     // placeholder as those implementing this will need to respond to it
     // elements upstream of this class typically will know how they
     // want to handle the response
@@ -830,7 +830,7 @@ class SimpleFieldsUpload extends I18NMixin(
   /**
    * Invoke the camera to set itself up
    */
-  _takeSelfie(e) {
+  _takeSelfie(_e) {
     if (!this.camera) {
       import("./simple-camera-snap.js").then(() => {
         this.camera = globalThis.document.createElement("simple-camera-snap");
@@ -843,7 +843,7 @@ class SimpleFieldsUpload extends I18NMixin(
       });
     }
   }
-  _voiceRecorder(e) {
+  _voiceRecorder(_e) {
     if (!this.voice) {
       import("@haxtheweb/voice-recorder/voice-recorder.js").then(() => {
         this.voice = globalThis.document.createElement("voice-recorder");
@@ -856,7 +856,7 @@ class SimpleFieldsUpload extends I18NMixin(
       });
     }
   }
-  _screenRecorder(e) {
+  _screenRecorder(_e) {
     if (!this.screenRecorder) {
       import("@haxtheweb/screen-recorder/screen-recorder.js").then(() => {
         this.screenRecorder =

@@ -61,8 +61,7 @@ describe("AbsolutePositionStateManager direct lib import", () => {
     });
 
     it("loadElement does not duplicate existing element", () => {
-      const before = manager.elements.length;
-      manager.loadElement(el);
+            manager.loadElement(el);
       manager.loadElement(el);
       expect(manager.elements.filter((e) => e === el).length).to.equal(1);
     });

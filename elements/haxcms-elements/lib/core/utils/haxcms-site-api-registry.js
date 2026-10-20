@@ -422,7 +422,7 @@ export function configureHAXCMSSiteApiRegistry(appSettings = {}, jwtValue) {
       state.bootstrapped = true;
       state.bootstrapping = false;
       return true;
-    } catch (e) {
+    } catch {
       state.bootstrapping = false;
       state.bootstrapped = false;
       return false;

@@ -126,7 +126,7 @@ describe('rich-text-editor-prompt-button', () => {
 
   it('close unwraps the highlight and fires a close event', async () => {
     const events = []
-    button.addEventListener('rich-text-editor-prompt-close', (e) =>
+    button.addEventListener('rich-text-editor-prompt-close', (_e) =>
       events.push(true),
     )
     const range = selectContents(editor)
@@ -138,7 +138,7 @@ describe('rich-text-editor-prompt-button', () => {
 
   it('cancel delegates to close', async () => {
     const events = []
-    button.addEventListener('rich-text-editor-prompt-close', (e) =>
+    button.addEventListener('rich-text-editor-prompt-close', (_e) =>
       events.push(true),
     )
     button.cancel()
@@ -157,7 +157,7 @@ describe('rich-text-editor-prompt-button', () => {
     range.selectNodeContents(span)
     button.range = range
     const events = []
-    button.addEventListener('rich-text-editor-prompt-confirm', (e) =>
+    button.addEventListener('rich-text-editor-prompt-confirm', (_e) =>
       events.push(true),
     )
     // value without innerHTML previously triggered the false assignment

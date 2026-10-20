@@ -147,7 +147,7 @@ class I18NManager extends LitElement {
     if (this._docObserver) {
       try {
         this._docObserver.disconnect();
-      } catch (e) {}
+      } catch {}
       this._docObserver = null;
     }
     super.disconnectedCallback();
@@ -324,7 +324,7 @@ class I18NManager extends LitElement {
       if (response && response.ok && response.json) {
         return await response.json();
       }
-    } catch (e) {}
+    } catch {}
     return false;
   }
   /**
@@ -377,7 +377,7 @@ class I18NManager extends LitElement {
         return {};
       }
 
-      var fetchTarget = "";
+      let fetchTarget = "";
       if (shouldLoadExact || (isManifestBased && supportsExact)) {
         fetchTarget = `${el.localesPath}/${el.namespace}.${lang}.json`;
       } else if (shouldLoadBase || (isManifestBased && supportsBase)) {
@@ -467,7 +467,7 @@ class I18NManager extends LitElement {
             !componentSupportsBase &&
             !manifestBasedSupport
           );
-        } catch (e) {
+        } catch {
           return true; // Fallback on error
         }
       });
@@ -490,7 +490,7 @@ class I18NManager extends LitElement {
       // run through and match exact matches
       for (var i in processList) {
         let el = processList[i];
-        var fetchTarget = "";
+        let fetchTarget = "";
         // Use manifest checks first, fallback to component locales
         const supportsExact = this.hasTranslation(el.namespace, lang);
         const supportsBase = this.hasTranslation(el.namespace, langPieces[0]);

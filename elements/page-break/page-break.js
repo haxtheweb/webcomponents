@@ -113,7 +113,7 @@ export class PageBreak extends IntersectionObserverMixin(
     this.__disposer = [];
     // Set up HAXcms store observer for login status
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.isLoggedIn);
         Promise.resolve().then(() => {
           this.isLoggedIn = _mobx_val_0;
@@ -350,7 +350,7 @@ export class PageBreak extends IntersectionObserverMixin(
     );
     this.remoteHeadingobserver.disconnect();
     // Clean up store observers
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       if (typeof this.__disposer[i] === "function") {
         this.__disposer[i]();
       } else if (
@@ -554,7 +554,7 @@ export class PageBreak extends IntersectionObserverMixin(
               tagNumber = tagNumber > 6 ? 6 : tagNumber;
               const newH = globalThis.document.createElement(`h${tagNumber}`);
               newH.setAttribute("data-original-level", el.tagName);
-              for (var i = 0, l = el.attributes.length; i < l; ++i) {
+              for (let i = 0, l = el.attributes.length; i < l; ++i) {
                 newH.setAttribute(
                   el.attributes.item(i).nodeName,
                   el.attributes.item(i).nodeValue,
@@ -579,7 +579,7 @@ export class PageBreak extends IntersectionObserverMixin(
                   const newH = globalThis.document.createElement(
                     `h${tagNumber}`,
                   );
-                  for (var i = 0, l = el.attributes.length; i < l; ++i) {
+                  for (let i = 0, l = el.attributes.length; i < l; ++i) {
                     newH.setAttribute(
                       el.attributes.item(i).nodeName,
                       el.attributes.item(i).nodeValue,
@@ -603,7 +603,7 @@ export class PageBreak extends IntersectionObserverMixin(
                 tagNumber = tagNumber > 6 ? 6 : tagNumber;
                 const newH = globalThis.document.createElement(`h${tagNumber}`);
                 newH.setAttribute("data-original-level", el.tagName);
-                for (var i = 0, l = el.attributes.length; i < l; ++i) {
+                for (let i = 0, l = el.attributes.length; i < l; ++i) {
                   newH.setAttribute(
                     el.attributes.item(i).nodeName,
                     el.attributes.item(i).nodeValue,
@@ -986,7 +986,7 @@ export class PageBreak extends IntersectionObserverMixin(
     menu.toggle(e.target);
   }
 
-  _editPage(e) {
+  _editPage(_e) {
     // Don't allow edit if locked
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
@@ -1006,7 +1006,7 @@ export class PageBreak extends IntersectionObserverMixin(
     store.cmsSiteEditor.haxCmsSiteEditorUIElement._cancelButtonTap(e);
   }
 
-  async _editTitle(e) {
+  async _editTitle(_e) {
     // Don't allow edit if locked
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
@@ -1046,7 +1046,7 @@ export class PageBreak extends IntersectionObserverMixin(
     ]);
   }
 
-  async _editIcon(e) {
+  async _editIcon(_e) {
     // Don't allow edit if locked
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
@@ -1078,7 +1078,7 @@ export class PageBreak extends IntersectionObserverMixin(
     SuperDaemonInstance.waveWand(["", "/", {}, "edit-icon", this.t.editIcon]);
   }
 
-  async _editMedia(e) {
+  async _editMedia(_e) {
     // Don't allow edit if locked
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
@@ -1099,7 +1099,7 @@ export class PageBreak extends IntersectionObserverMixin(
     SuperDaemonInstance.waveWand(["", "/", {}, "hax-agent", this.t.agent]);
   }
 
-  async _editTags(e) {
+  async _editTags(_e) {
     // Don't allow edit if locked
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
@@ -1148,7 +1148,7 @@ export class PageBreak extends IntersectionObserverMixin(
     globalThis.addEventListener("keydown", handleEscape, { once: true });
   }
 
-  _openRevisions(e) {
+  _openRevisions(_e) {
     const menu = this.shadowRoot.querySelector("#menu");
     if (menu) menu.close();
     const nodeId =
@@ -1175,7 +1175,7 @@ export class PageBreak extends IntersectionObserverMixin(
     );
   }
 
-  async _toggleLocked(e) {
+  async _toggleLocked(_e) {
     const menu = this.shadowRoot.querySelector("#menu");
     if (menu) menu.close();
 
@@ -1198,7 +1198,7 @@ export class PageBreak extends IntersectionObserverMixin(
     );
   }
 
-  async _togglePublished(e) {
+  async _togglePublished(_e) {
     // Don't allow toggling published if locked
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
@@ -1233,11 +1233,11 @@ export class PageBreak extends IntersectionObserverMixin(
     );
   }
 
-  async _savePage(e) {
+  async _savePage(_e) {
     store.cmsSiteEditor.haxCmsSiteEditorUIElement._editButtonTap();
   }
 
-  _deletePage(e) {
+  _deletePage(_e) {
     // Don't allow delete if locked
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
@@ -1337,7 +1337,7 @@ export class PageBreak extends IntersectionObserverMixin(
       const itemManifest =
         globalThis.HAXCMS.requestAvailability().store.getManifestItems(true);
       // default to null parent as the whole site
-      var items = [
+      let items = [
         {
           text: `-- ${this.t.noParent} --`,
           value: null,
@@ -1394,7 +1394,7 @@ export class PageBreak extends IntersectionObserverMixin(
           globalThis.appSettings &&
           globalThis.appSettings.themes
         ) {
-          var themes = [
+          let themes = [
             {
               text: "",
               value: null,
@@ -1491,15 +1491,15 @@ export class PageBreak extends IntersectionObserverMixin(
       },
     ];
   }
-  haxClickLockInPage(e) {
+  haxClickLockInPage(_e) {
     this.locked = !this.locked;
     globalThis.dispatchEvent(new CustomEvent("hax-refresh-tray-form", {}));
   }
-  haxClickInlineLock(e) {
+  haxClickInlineLock(_e) {
     this.locked = !this.locked;
     return true;
   }
-  haxClickInlinePublished(e) {
+  haxClickInlinePublished(_e) {
     this.published = !this.published;
     return true;
   }

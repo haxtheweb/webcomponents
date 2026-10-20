@@ -38,7 +38,7 @@ class SiteFooter extends LitElement {
     super();
     this.__disposer = [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0;
@@ -46,7 +46,7 @@ class SiteFooter extends LitElement {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -54,7 +54,7 @@ class SiteFooter extends LitElement {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.siteTitle);
         Promise.resolve().then(() => {
           this.siteTitle = _mobx_val_0;
@@ -98,7 +98,7 @@ class SiteFooter extends LitElement {
   }
   disconnectedCallback() {
     // clean up state
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

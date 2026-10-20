@@ -91,7 +91,7 @@ describe('lazy-import-discover', () => {
     host.innerHTML = `<l-i-d-target-el data-wc-def="lazy-import-discover.js"></l-i-d-target-el>`
     globalThis.document.body.appendChild(host)
     try {
-      const el = await fixture(
+      await fixture(
         html`<lazy-import-discover base="${elDirBase}"></lazy-import-discover>`,
       )
       const script = lastGeneratedScript()
@@ -116,7 +116,7 @@ describe('lazy-import-discover', () => {
     globalThis.document.body.appendChild(host)
     try {
       expect(globalThis.customElements.get('b-r')).to.not.exist
-      const el = await fixture(
+      await fixture(
         html`<lazy-import-discover
           base="${nodeModulesBase}"
         ></lazy-import-discover>`,

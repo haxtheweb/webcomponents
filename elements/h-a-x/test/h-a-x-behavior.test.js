@@ -3,7 +3,7 @@ import { fixture, expect, html } from '@open-wc/testing'
 import '../h-a-x.js'
 import '../lib/h-a-x-dependencies.js'
 import { HAX } from '../h-a-x.js'
-import { HAXStore } from '@haxtheweb/hax-body/lib/hax-store.js'
+import '@haxtheweb/hax-body/lib/hax-store.js';
 
 describe('h-a-x construction and rendering', () => {
   it('passes the a11y audit', async () => {
@@ -268,7 +268,7 @@ describe('h-a-x attributeChangedCallback', () => {
 
 describe('h-a-x applyHAX', () => {
   it('applies HAX and sets globalThis.__HAXApplied', async () => {
-    const el = await fixture(html`<h-a-x><p>test</p></h-a-x>`)
+    await fixture(html`<h-a-x><p>test</p></h-a-x>`)
     expect(globalThis.__HAXApplied).to.equal(true)
   })
 })

@@ -71,7 +71,7 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
     if (!this.disabled) {
       this.correct = null;
       this.incorrect = null;
-      var posY = e.clientY;
+      let posY = e.clientY;
       this.currentPosition = posY;
     }
   }
@@ -98,18 +98,18 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
     if (!this.disabled) {
       this.dragging = true;
       // distance above or below current pos to switch index
-      var changeBuffer = 64;
+      let changeBuffer = 64;
       //if slottted images increase change buffer size
       if (this.querySelectorAll("img").length > 0) {
         changeBuffer = 92;
       }
-      var posY = e.clientY;
+      let posY = e.clientY;
       //drag stop counts as drag for some reason so make sure not to set drag pos to zero
       if (posY != 0 && posY > 0) {
         this.dragPosition = posY;
       }
-      var element = this;
-      var parent = this.parentNode;
+      let element = this;
+      let parent = this.parentNode;
       //going up
       if (this.dragPosition + changeBuffer < this.currentPosition) {
         //find old index

@@ -48,7 +48,7 @@ class HAXCMSSiteDashboard extends I18NMixin(SimpleColors) {
     this.headers = {};
     this.__disposer = [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.siteTitle);
         Promise.resolve().then(() => {
           this.siteTitle = _mobx_val_0;
@@ -222,7 +222,7 @@ class HAXCMSSiteDashboard extends I18NMixin(SimpleColors) {
    * Detached life cycle
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -235,7 +235,7 @@ class HAXCMSSiteDashboard extends I18NMixin(SimpleColors) {
   }
   fieldDataLoaded() {
     const itemManifest = store.getManifestItems(true);
-    var items = [];
+    let items = [];
     itemManifest.forEach((el) => {
       if (el.id != this.itemId) {
         // calculate -- depth so it looks like a tree
@@ -336,7 +336,7 @@ class HAXCMSSiteDashboard extends I18NMixin(SimpleColors) {
   /**
    * Save the fields as we get tapped
    */
-  _saveSiteFieldsTap(e) {
+  _saveSiteFieldsTap(_e) {
     store.playSound("click");
     // fire event with details for saving
     globalThis.dispatchEvent(

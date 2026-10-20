@@ -127,7 +127,7 @@ const UndoManagerBehaviors = function (SuperClass) {
      * if it matches what they care to monitor as far as detail.
      * Default is to monitor every possible useful detail
      */
-    undoManagerStackLogic(mutations) {
+    undoManagerStackLogic(_mutations) {
       // compare light dom children to previous value
       const newValue = this.innerHTML;
       if (
@@ -173,7 +173,7 @@ const UndoManagerBehaviors = function (SuperClass) {
       this.undoStack.undoStackPosition = -1;
       this.undoStack.commands = [];
       // simple hook into being notified of changes to the object
-      this.undoStack.changed = (e) => {
+      this.undoStack.changed = (_e) => {
         const prevCanUndo = this.canUndo,
           prevCanRedo = this.canRedo;
         this.canRedo = this.undoStack.canRedo();

@@ -239,7 +239,7 @@ class PaperInputFlagged extends LitElement {
    * testStatus based on current input
    */
   testStatus(test, value) {
-    for (var i in test) {
+    for (let i in test) {
       // special case for null if testing empty
       if (test[i].match === null && (value === "" || value === null)) {
         this.__activeMessage = test[i].message;

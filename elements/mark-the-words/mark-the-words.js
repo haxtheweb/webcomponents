@@ -180,7 +180,7 @@ export class MarkTheWords extends QuestionElement {
     let gotRight = true;
     // dedupe correct answers so authoring the same word twice only counts once
     let uniqueCorrectAnswers = [];
-    for (var j in this.displayedAnswers) {
+    for (let j in this.displayedAnswers) {
       if (this.displayedAnswers[j].correct) {
         let label = this.displayedAnswers[j].label.toLowerCase();
         if (!uniqueCorrectAnswers.includes(label)) {
@@ -189,7 +189,7 @@ export class MarkTheWords extends QuestionElement {
       }
     }
 
-    for (var i in this.wordList) {
+    for (let i in this.wordList) {
       if (
         this.wordList[i].selected &&
         uniqueCorrectAnswers.includes(this.wordList[i].text.toLowerCase())

@@ -153,13 +153,13 @@ class LaTex extends LitElement {
     return node;
   }
   // ALWAYS enable edit mode if HAX is around
-  haxactiveElementChanged(el, val) {
+  haxactiveElementChanged(el, _val) {
     this.innerHTML = this.initialText;
     this.hydrated = false;
     return el;
   }
   // allow HAX to toggle edit state when activated
-  haxeditModeChanged(val) {
+  haxeditModeChanged(_val) {
     this.innerHTML = this.initialText;
     this.hydrated = false;
     setTimeout(() => {

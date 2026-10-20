@@ -98,14 +98,14 @@ class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
         : (this.selectionAncestors || []).map(
             (ancestor, i) => html`
               <button
-                class="${!!ancestor.selectAll ? "" : "selectnode"}"
+                class="${ancestor.selectAll ? "" : "selectnode"}"
                 controls="${this.controls}"
                 aria-current="${
                   i + 1 >= (this.selectionAncestors || []).length
                     ? "true"
                     : "false"
                 }"
-                @click="${(e) => this._handleClick(ancestor)}"
+                @click="${(_e) => this._handleClick(ancestor)}"
                 tabindex="0"
               >
                 ${ancestor.nodeName.toLowerCase()}

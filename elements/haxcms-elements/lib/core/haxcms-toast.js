@@ -235,7 +235,7 @@ export class HAXCMSToast extends RPGCharacterToast {
     );
   }
 
-  hideSimpleToast(e) {
+  hideSimpleToast(_e) {
     if (!this.alwaysvisible) {
       this.awaitingMerlinInput = false;
       this.hide();

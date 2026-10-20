@@ -153,8 +153,8 @@ class BeakerBroker extends LitElement {
    * @usage - await this.read('index.html'); to get this file
    */
   async read(path, type) {
-    var ftype = "utf8";
-    var response;
+    let ftype = "utf8";
+    let response;
     // special cases for image types
     switch (type) {
       case "jpeg":

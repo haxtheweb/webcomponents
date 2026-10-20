@@ -200,13 +200,13 @@ class SimpleBlogOverview extends SimpleColors {
   /**
    * special handling for taps on the thing
    */
-  tapEventOn(e) {
+  tapEventOn(_e) {
     this.elevation = 2;
   }
   /**
    * Hover off stop showing the deeper shadow.
    */
-  tapEventOff(e) {
+  tapEventOff(_e) {
     this.elevation = 0;
   }
 }

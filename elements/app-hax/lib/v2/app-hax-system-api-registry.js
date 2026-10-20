@@ -533,7 +533,7 @@ export function configureAppHAXSystemApiRegistry(appSettings = {}, jwtValue) {
       state.bootstrapped = true;
       state.bootstrapping = false;
       return true;
-    } catch (e) {
+    } catch {
       state.bootstrapped = false;
       state.bootstrapping = false;
       return false;

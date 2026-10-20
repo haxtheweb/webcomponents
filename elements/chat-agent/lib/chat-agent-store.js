@@ -113,35 +113,24 @@ class ChatAgentStore {
 
     autorun(() => {
       const siteStore = getHAXcmsStore();
-      const _mobx_val_0 = toJS(this.buttonIcon);
-      const _mobx_val_1 = toJS(this.chatLog);
-      const _mobx_val_2 = toJS(this.context);
+      toJS(this.buttonIcon);
+      toJS(this.chatLog);
+      toJS(this.context);
       const _mobx_val_3 = toJS(siteStore ? siteStore.darkMode : undefined);
-      const _mobx_val_4 = toJS(this.dataCollectionEnabled);
-      const _mobx_val_5 = toJS(this.developerModeEnabled);
+      toJS(this.dataCollectionEnabled);
+      toJS(this.developerModeEnabled);
       const _mobx_val_6 = toJS(siteStore ? siteStore.editMode : undefined);
-      const _mobx_val_7 = toJS(this.engine);
-      const _mobx_val_8 = toJS(this.isFullView);
-      const _mobx_val_9 = toJS(this.isInterfaceHidden);
+      toJS(this.engine);
+      toJS(this.isFullView);
+      toJS(this.isInterfaceHidden);
       const _mobx_val_10 = toJS(this.isLoading);
-      const _mobx_val_11 = toJS(this.merlinIndex);
-      const _mobx_val_12 = toJS(this.messageIndex);
-      const _mobx_val_13 = toJS(this.userIndex);
+      toJS(this.merlinIndex);
+      toJS(this.messageIndex);
+      toJS(this.userIndex);
       Promise.resolve().then(() => {
-        const buttonIcon = _mobx_val_0;
-        const chatLog = _mobx_val_1;
-        const context = _mobx_val_2;
         const darkMode = _mobx_val_3;
-        const dataCollectionEnabled = _mobx_val_4;
-        const developerModeEnabled = _mobx_val_5;
         const editMode = _mobx_val_6;
-        const engine = _mobx_val_7;
-        const isFullView = _mobx_val_8;
-        const isInterfaceHidden = _mobx_val_9;
         const isLoading = _mobx_val_10;
-        const merlinIndex = _mobx_val_11;
-        const messageIndex = _mobx_val_12;
-        const userIndex = _mobx_val_13;
 
         // these are here because these updates weren't working without them
         if (isLoading) {

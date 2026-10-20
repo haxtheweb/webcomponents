@@ -517,7 +517,7 @@ class HexagonLoader extends LitElement {
   // render function
   render() {
     return html` <div>
-      ${this.items.map((item) => html`<hex-a-gon></hex-a-gon>`)}
+      ${this.items.map((_item) => html`<hex-a-gon></hex-a-gon>`)}
     </div>`;
   }
 
@@ -649,7 +649,7 @@ class HexagonLoader extends LitElement {
   /**
    * Color changed
    */
-  _colorChanged(newValue, oldValue) {
+  _colorChanged(newValue, _oldValue) {
     if (newValue && globalThis.ShadyCSS) {
       globalThis.ShadyCSS.styleSubtree(this, { "--hexagon-color": newValue });
     }

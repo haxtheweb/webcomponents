@@ -485,7 +485,7 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
   /**
    * Open Explore Slot
    */
-  _openInfo(e) {
+  _openInfo(_e) {
     if (this.visible == "model-info") {
       this.visible = "model";
     } else if (this.visible != "model-info") {
@@ -495,7 +495,7 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
   /**
    * Open Info Slot
    */
-  _openText(e) {
+  _openText(_e) {
     if (this.visible == "model-text") {
       this.visible = "model";
     } else if (this.visible != "model-text") {
@@ -505,7 +505,7 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
   /**
    * Open Animation Slot
    */
-  _openAnimation(e) {
+  _openAnimation(_e) {
     if (this.visible == "model-animation") {
       this.visible = "model";
     } else if (this.visible != "model-animation") {
@@ -515,7 +515,7 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
   /**
    * Open Knowledge-Check Slot
    */
-  _openCheck(e) {
+  _openCheck(_e) {
     if (this.visible == "model-check") {
       this.visible = "model";
     } else if (this.visible != "model-check") {

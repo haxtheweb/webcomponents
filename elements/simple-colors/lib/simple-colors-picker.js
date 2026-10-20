@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, css } from "lit";
 import { SimpleColorsSuper } from "../simple-colors.js";
 import { SimplePickerBehaviors } from "@haxtheweb/simple-picker/simple-picker.js";
 

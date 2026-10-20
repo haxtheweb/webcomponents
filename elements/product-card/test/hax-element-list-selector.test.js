@@ -240,7 +240,7 @@ describe('hax-element-list-selector', () => {
       'broken-element': '@haxtheweb/nonexistent-package-xyz/broken.js',
     }
     const stub = globalThis.fetch
-    globalThis.fetch = (url) =>
+    globalThis.fetch = (_url) =>
       Promise.resolve({ json: () => Promise.resolve(broken) })
     const warnings = []
     const warn = globalThis.console.warn

@@ -372,11 +372,11 @@ class PageSection extends DDD {
     return anchor ? anchor.replace(/[^a-zA-Z]+/g, "").toLowerCase() : "";
   }
 
-  videoPlay(e) {
+  videoPlay(_e) {
     this.bg = "var(--ddd-theme-default-coalyGray)";
   }
 
-  videoPause(e) {
+  videoPause(_e) {
     this.bg = "var(--ddd-theme-default-limestoneLight)";
   }
 
@@ -480,7 +480,7 @@ class PageSection extends DDD {
     `;
   }
 
-  scrollToNextTarget(e) {
+  scrollToNextTarget(_e) {
     const nextTarget = this.nextElementSibling;
     if (nextTarget && nextTarget.scrollIntoView) {
       nextTarget.scrollIntoView({ behavior: "smooth", block: "start" });

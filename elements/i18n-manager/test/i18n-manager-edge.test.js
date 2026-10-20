@@ -136,7 +136,7 @@ describe('i18n-manager edge cases', () => {
     let threw = false
     try {
       el = document.createElement('i18n-manager')
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.equal(false)

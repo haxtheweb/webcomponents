@@ -414,7 +414,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
       } else if (el.getAttribute("tracks")) {
         try {
           tracks = JSON.parse(el.getAttribute("tracks"));
-        } catch (e) {}
+        } catch {}
       }
       const mediaTitle =
         el.mediaTitle ||
@@ -455,7 +455,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
       if (player && player.restart && typeof player.restart === "function") {
         try {
           player.restart();
-        } catch (e) {}
+        } catch {}
       }
       return;
     }
@@ -596,7 +596,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
               ) {
                 item.element.pause();
               }
-            } catch (e) {}
+            } catch {}
           });
         }
       }
@@ -617,7 +617,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
             ) {
               try {
                 player.restart();
-              } catch (e) {}
+              } catch {}
             }
             this._attachPlayerListeners();
             this._scrollToActiveItem();
@@ -676,7 +676,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
    * @see haxHooks: gizmoRegistration
    * Register haxProperties locales so the HAX editor UI can be translated
    */
-  haxgizmoRegistration(store) {
+  haxgizmoRegistration(_store) {
     globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
@@ -738,12 +738,12 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     ];
   }
 
-  haxToggleEdit(e) {
+  haxToggleEdit(_e) {
     this.edit = !this.edit;
     return true;
   }
 
-  haxAddVideo(e) {
+  haxAddVideo(_e) {
     const video = globalThis.document.createElement("video-player");
     video.setAttribute("source", "");
     video.setAttribute("media-title", "New video");
@@ -751,7 +751,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     return true;
   }
 
-  haxAddAudio(e) {
+  haxAddAudio(_e) {
     const audio = globalThis.document.createElement("audio-player");
     audio.setAttribute("source", "");
     audio.setAttribute("media-title", "New audio");
@@ -759,7 +759,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     return true;
   }
 
-  haxBreakOutPlaylist(e) {
+  haxBreakOutPlaylist(_e) {
     if (!this.parentNode) {
       return false;
     }
@@ -784,7 +784,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     return false;
   }
 
-  haxCopyActiveIndex(e) {
+  haxCopyActiveIndex(_e) {
     copyToClipboard(this.activeIndex);
     return true;
   }
@@ -793,7 +793,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability) {
       try {
         return globalThis.HaxStore.requestAvailability();
-      } catch (e) {
+      } catch {
         return null;
       }
     }

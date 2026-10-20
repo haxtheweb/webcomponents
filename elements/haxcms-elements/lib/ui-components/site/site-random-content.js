@@ -46,7 +46,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
 
     // React to manifest changes
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         Promise.resolve().then(() => {
           if (store.manifest && this.page) {
             this.loadPageElements();
@@ -57,7 +57,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
 
     // React to edit mode changes
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -444,7 +444,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
       const itemManifest =
         globalThis.HAXCMS.requestAvailability().store.getManifestItems(true);
       // default option for no page selected
-      var items = [
+      let items = [
         {
           text: `-- ${this.t.noPage} --`,
           value: null,

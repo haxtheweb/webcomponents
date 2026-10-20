@@ -1,4 +1,4 @@
-import { fixture, expect, html, elementUpdated, aTimeout } from '@open-wc/testing'
+import { fixture, expect, html } from '@open-wc/testing'
 import {
   JsonOutlineSchema,
   JSONOutlineSchemaItem,
@@ -74,7 +74,7 @@ describe('json-outline-schema behaviors', () => {
         styleElement: (el) => calls.push('style:' + el.tagName.toLowerCase()),
         prepareTemplate: (t, tag) => calls.push('prepare:' + tag),
       }
-      const el = await fixture(html`<json-outline-schema></json-outline-schema>`)
+      await fixture(html`<json-outline-schema></json-outline-schema>`)
       expect(calls).to.include('style:json-outline-schema')
       expect(calls).to.include('prepare:json-outline-schema')
     })

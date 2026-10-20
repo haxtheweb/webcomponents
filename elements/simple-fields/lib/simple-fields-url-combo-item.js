@@ -178,7 +178,7 @@ class SimpleFieldsUrlComboItem extends LitElement {
       extension =
         parts && parts[0]
           ? parts[0].replace(/^\./, "")
-          : !!this.type
+          : this.type
             ? this.type
             : "";
     return (extension || "").toLowerCase();
@@ -450,12 +450,12 @@ class SimpleFieldsUrlComboItem extends LitElement {
   /**
    * LitElement ready
    */
-  firstUpdated(changedProperties) {}
+  firstUpdated(_changedProperties) {}
   /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {});
+    changedProperties.forEach((_oldValue, _propName) => {});
   }
 }
 globalThis.customElements.define(

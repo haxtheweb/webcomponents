@@ -186,7 +186,7 @@ class RichTextEditorSource extends LitElement {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {});
+    changedProperties.forEach((_oldValue, _propName) => {});
   }
 
   toggle(toolbar) {

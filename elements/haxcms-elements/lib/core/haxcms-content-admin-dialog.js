@@ -310,7 +310,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       "haxcms-trigger-update",
       this.__triggerUpdateHandler,
     );
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

@@ -136,7 +136,7 @@ describe("grade-book-pop-up", () => {
     let threw = false;
     try {
       el.render();
-    } catch (e) {
+    } catch {
       threw = true;
     }
     expect(threw).to.equal(false);

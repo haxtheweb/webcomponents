@@ -63,10 +63,9 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     this.renderXTagsTag = this._renderXTagsTag;
     this.__disposer = this.__disposer || [];
     this.__disposer.push(
-      autorun((reaction) => {
-        const _mobx_val_0 = toJS(store.themeElement);
+      autorun((_reaction) => {
+        toJS(store.themeElement);
         Promise.resolve().then(() => {
-          const theme = _mobx_val_0;
           this._processCustomThemeRoutes();
         });
       }),
@@ -74,7 +73,7 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     if (globalThis.addEventListener) {
       globalThis.addEventListener(
         "theme-ready-changed",
-        (e) => {
+        (_e) => {
           this._processCustomThemeRoutes();
         },
         { signal: this.windowControllers.signal },
@@ -108,7 +107,7 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -132,7 +131,7 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     this.search = globalThis.location.search;
   }
 
-  _resetClick(e) {
+  _resetClick(_e) {
     const rawParams = new URLSearchParams(this.search);
     rawParams.delete("tag");
     globalThis.history.replaceState(

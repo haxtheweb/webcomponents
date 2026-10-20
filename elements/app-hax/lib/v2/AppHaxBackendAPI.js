@@ -540,7 +540,7 @@ export class AppHaxBackendAPI extends LitElement {
     let response = null;
     try {
       response = await MicroFrontendRegistry.call(operationName, payload);
-    } catch (e) {
+    } catch {
       return {};
     }
     if (!response || typeof response !== "object") {
@@ -677,7 +677,7 @@ export class AppHaxBackendAPI extends LitElement {
         }
         try {
           return await response.json();
-        } catch (e) {
+        } catch {
           return {
             authenticated: false,
           };
@@ -735,7 +735,7 @@ export class AppHaxBackendAPI extends LitElement {
         this.__validatedJwt = "";
         return false;
       })
-      .catch((err) => {
+      .catch((_err) => {
         store.authValidated = false;
         this.__validatedJwt = "";
         return false;
@@ -762,7 +762,7 @@ export class AppHaxBackendAPI extends LitElement {
     }
     this.__loopBlock = false;
   }
-  _resolvePathParamValue(call = "", paramName = "", requestData = {}) {
+  _resolvePathParamValue(_call = "", paramName = "", requestData = {}) {
     const normalizedParamName = String(paramName || "").trim();
     if (!normalizedParamName) {
       return "";
@@ -866,7 +866,7 @@ export class AppHaxBackendAPI extends LitElement {
   }
 
   // failed to get valid JWT, wipe current
-  jwtFailed(e) {
+  jwtFailed(_e) {
     this._clearAuthSession(false);
   }
   // event meaning we either got or removed the jwt

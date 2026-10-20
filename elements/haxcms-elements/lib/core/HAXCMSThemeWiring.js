@@ -116,7 +116,7 @@ const HAXCMSTheme = function (SuperClass) {
         this.HAXCMSThemeWiring.disconnect(this);
       }
     }
-    _locationChanged(newValue, oldValue) {
+    _locationChanged(newValue, _oldValue) {
       if (!newValue || typeof newValue.route === "undefined") return;
       const location = newValue;
       const name = location.route.name;
@@ -200,7 +200,7 @@ const HAXCMSTheme = function (SuperClass) {
       }, 50);
       // keep activeItemContent in sync globally
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.activeItemContent);
           Promise.resolve().then(() => {
             this.activeItemContent = _mobx_val_0;
@@ -209,7 +209,7 @@ const HAXCMSTheme = function (SuperClass) {
       );
       // keep editMode in sync globally
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.editMode);
           Promise.resolve().then(() => {
             this.editMode = _mobx_val_0;
@@ -220,7 +220,7 @@ const HAXCMSTheme = function (SuperClass) {
       // the constructor-time autorun pushed by HAXCMSLitElementTheme is
       // disposed on the first disconnect and never re-established
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.trayStatus);
           Promise.resolve().then(() => {
             this.trayStatus = _mobx_val_0;
@@ -229,7 +229,7 @@ const HAXCMSTheme = function (SuperClass) {
       );
       // logged in so we can visualize things differently as needed
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.isLoggedIn);
           Promise.resolve().then(() => {
             this.isLoggedIn = _mobx_val_0;
@@ -238,7 +238,7 @@ const HAXCMSTheme = function (SuperClass) {
       );
       // store disposer so we can clean up later
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.manifest);
           Promise.resolve().then(() => {
             const __manifest = _mobx_val_0;
@@ -257,7 +257,7 @@ const HAXCMSTheme = function (SuperClass) {
               ary.pop();
               // simple colors "accent color" property
               this.accentColor = ary.join("-");
-              var color = varGet(
+              let color = varGet(
                 __manifest,
                 "metadata.theme.variables.cssVariable",
                 null,
@@ -282,7 +282,7 @@ const HAXCMSTheme = function (SuperClass) {
         }),
       );
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.location);
           Promise.resolve().then(() => {
             this._location = _mobx_val_0;
@@ -298,7 +298,7 @@ const HAXCMSTheme = function (SuperClass) {
       if (!this.__disposer) {
         return;
       }
-      for (var i in this.__disposer) {
+      for (let i in this.__disposer) {
         const disposer = this.__disposer[i];
         if (typeof disposer === "function") {
           disposer();
@@ -370,7 +370,7 @@ class HAXCMSThemeWiring {
     }
     this.__watchdogEstablished = true;
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         // we have a backend and we have a jwt, but didnt at onee point...
         if (
           store.jwt &&
@@ -395,7 +395,7 @@ class HAXCMSThemeWiring {
     if (!this.__disposer) {
       return;
     }
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -455,7 +455,7 @@ class HAXCMSThemeWiring {
   /**
    * detatch element events from whats passed in
    */
-  disconnect(element) {
+  disconnect(_element) {
     this.windowControllers.abort();
     // need to unplug this so that the new theme can pick it up.
     if (this.cmsSiteEditorInstance) {
@@ -493,7 +493,7 @@ class HAXCMSThemeWiring {
   /**
    * Generic event to ensure that the active item change is noticed
    */
-  _triggerUpdate(e) {
+  _triggerUpdate(_e) {
     this.dispatchEvent(
       new CustomEvent("haxcms-active-item-changed", {
         bubbles: true,

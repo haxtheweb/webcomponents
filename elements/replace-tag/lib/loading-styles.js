@@ -1,6 +1,6 @@
 const windowControllers = new AbortController();
 // loader that uses a CSS selector and variables in order to auto generate outlines
-var WCRegistryLoaderCSSDebounce;
+let WCRegistryLoaderCSSDebounce;
 export function WCRegistryLoaderCSS(
   auto = false,
   parent = "*",
@@ -30,7 +30,7 @@ export function WCRegistryLoaderCSS(
       el.style.setProperty("--laserEdgeAni-innerWidth", d.width - 2 + "px");
       el.style.setProperty("--laserEdgeAni-innerHeight", d.height - 2 + "px");
       el.style.setProperty("--laserEdgeAni-height", d.height + "px");
-      customElements.whenDefined(el.localName).then((response) => {
+      customElements.whenDefined(el.localName).then((_response) => {
         if (el.localName != "replace-tag") {
           // this would be a way of doing loading state on ANYTHING without definition
           el.setAttribute("loaded", "loaded");
@@ -52,7 +52,7 @@ export function WCRegistryLoaderCSS(
     });
   }, 10);
 }
-var WCRegistryLoaderCSSDebounce2;
+let WCRegistryLoaderCSSDebounce2;
 const loadingStylesResizeEvent = function () {
   clearTimeout(WCRegistryLoaderCSSDebounce2);
   WCRegistryLoaderCSSDebounce2 = setTimeout(() => {

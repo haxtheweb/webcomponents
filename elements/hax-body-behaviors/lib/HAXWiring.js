@@ -408,7 +408,7 @@ export class HAXWiring {
           // support possible dynamic import of iconset
           // this would be if the user defined their own icons
           if (typeof props.gizmo.iconLib !== typeof undefined) {
-            var basePath;
+            let basePath;
             if (globalThis.WCGlobalBasePath) {
               basePath = globalThis.WCGlobalBasePath;
             } else {
@@ -565,7 +565,7 @@ export class HAXWiring {
     /**
      * Standard advanced properties we support for all forms
      */
-    this.standardAdvancedProps = (props, tag) => {
+    this.standardAdvancedProps = (props, _tag) => {
       if (!props.hideDefaultSettings) {
         // specialized attribute to allow locking in hax of anything
         props.settings.advanced.push({
@@ -716,7 +716,7 @@ export class HAXWiring {
         haxProperties = target.haxProperties;
       }
       let settings = haxProperties.settings[type];
-      var schema = {
+      let schema = {
         $schema: "http://json-schema.org/schema#",
         title: "HAX " + type + " form schema",
         type: "object",
@@ -761,7 +761,7 @@ export class HAXWiring {
      * Convert input method to schema type
      */
     this.getHaxJSONSchemaType = (inputMethod) => {
-      var method =
+      let method =
         new SimpleFields().fieldsConversion.inputMethod[inputMethod] ||
         new SimpleFields().fieldsConversion;
       return method && method.defaultSettings && method.defaultSettings.type
@@ -772,7 +772,7 @@ export class HAXWiring {
      * List valid input methods.
      */
     this.validHAXPropertyInputMethod = () => {
-      var methods = Object.keys(
+      let methods = Object.keys(
         new SimpleFields().fieldsConversion.inputMethod,
       );
       return methods;
@@ -916,7 +916,7 @@ export const HAXElement = function (SuperClass) {
      * @param {String} tag - tagName of the element
      * @returns props object
      */
-    designSystemHAXProperties(props, tag) {
+    designSystemHAXProperties(props, _tag) {
       // design systems can implement this in order to inject options into elements in a pervasive way
       // this does nothing but ensure that HAX works without a design system
       return props;

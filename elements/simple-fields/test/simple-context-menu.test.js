@@ -1,4 +1,4 @@
-import { fixture, expect, html, oneEvent, aTimeout } from '@open-wc/testing'
+import { fixture, expect, html } from '@open-wc/testing'
 
 import '../lib/simple-context-menu.js'
 

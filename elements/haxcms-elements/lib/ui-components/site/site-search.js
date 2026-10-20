@@ -2,14 +2,13 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
 import {
   store,
-  HAXcmsStore,
 } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -431,7 +430,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
           "slug",
           "item",
         );
-        var breadcrumb = [
+        let breadcrumb = [
           {
             title: fullItem ? fullItem.title : "",
           },
@@ -552,7 +551,7 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
   /**
    * Notice search term changed and let's fire up some results
    */
-  _searchChanged(term, oldTerm) {
+  _searchChanged(term, _oldTerm) {
     if (term.length >= 3) {
       this.whileLoading = true;
       // only load up the lunr source data once they have 3 or more characters

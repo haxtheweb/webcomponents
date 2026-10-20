@@ -1,4 +1,4 @@
-import { LitElement, html, css, unsafeCSS } from "lit";
+import { LitElement, html } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -40,7 +40,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
     this.dispatchEvent(evt);
   }
   // this ensures data binding doesn't fail
-  HAXCMSButtonClick(e) {
+  HAXCMSButtonClick(_e) {
     // stub, the classes implementing this will actually do something
     // you always will call super.HAXCMS
   }

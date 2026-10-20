@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout, oneEvent } from "@open-wc/testing";
+import { fixture, expect, html, oneEvent } from "@open-wc/testing";
 import "../lib/simple-fields-upload.js";
 import "../lib/simple-file-upload.js";
 
@@ -149,7 +149,7 @@ describe("simple-fields-upload integration with simple-file-upload", () => {
   it("hides the URL input when option is 'selfie'", async () => {
     element.option = "selfie";
     await element.updateComplete;
-    const url = element.shadowRoot.querySelector("simple-fields-url-combo");
+    element.shadowRoot.querySelector("simple-fields-url-combo");
     // url is inside a div with hidden based on option, so it's still in DOM but parent is hidden
     const urlContainer = element.shadowRoot.querySelector(
       '[part="browse-area"]',

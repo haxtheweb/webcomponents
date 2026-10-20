@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { SiteBreadcrumb } from "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 
@@ -153,7 +153,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
     }
     // keep editMode in sync globally
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -161,7 +161,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           this._activeItemChanged(_mobx_val_0);
@@ -175,7 +175,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
   _activeItemChanged(active) {
     const activeItem = active;
     if (activeItem && this.shadowRoot) {
-      var items = [
+      let items = [
         {
           title: activeItem.title,
           slug: activeItem.slug,
@@ -220,7 +220,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
     }
   }
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       if (typeof this.__disposer[i] === "function") {
         this.__disposer[i]();
       } else if (

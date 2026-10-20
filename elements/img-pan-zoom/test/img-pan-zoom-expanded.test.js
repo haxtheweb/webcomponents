@@ -581,7 +581,7 @@ describe('img-pan-zoom viewer lifecycle', () => {
       await el.updateComplete
       el.navigatorToggled = false
       await el.updateComplete
-    } catch (e) {
+    } catch {
       threw = true
     }
     // real OpenSeadragon only builds the navigator with showNavigator on,

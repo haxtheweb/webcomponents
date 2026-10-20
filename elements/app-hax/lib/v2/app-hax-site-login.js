@@ -232,9 +232,7 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
     ];
   }
 
-  // eslint-disable-next-line class-methods-use-this
   checkUsername() {
-    // eslint-disable-next-line prefer-destructuring
     const value = this.shadowRoot.querySelector("#username").value;
     this.hidePassword = false;
     this.errorMSG = "";
@@ -245,10 +243,9 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
     }, 0);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   async checkPassword() {
     store.appEl.playSound("click2");
-    // eslint-disable-next-line prefer-destructuring
+
     const value = this.shadowRoot.querySelector("#password").value;
     // attempt login and wait for response from the jwt-login tag via
     // jwt-logged-in event @see _jwtLoggedIn
@@ -265,7 +262,6 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
     );
   }
 
-  // eslint-disable-next-line class-methods-use-this
   reset() {
     this.errorMSG = "";
     this.username = "";
@@ -294,7 +290,7 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
     super.disconnectedCallback();
   }
   // implies that it failed to connect via the login credentials
-  _jwtLoginFailed(e) {
+  _jwtLoginFailed(_e) {
     this.hidePassword = true;
     this.errorMSG = this.t.invalidUsernameOrPassword;
     store.appEl.playSound("error");
@@ -325,7 +321,7 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
     }
   }
 
-  passChange(e) {
+  passChange(_e) {
     const value = this.shadowRoot.querySelector("#password").value;
     if (value) {
       this.hasPass = true;

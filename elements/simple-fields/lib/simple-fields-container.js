@@ -423,7 +423,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      *
      * @memberof SimpleFieldsContainer
      */
-    autoGrow(field = this.field) {
+    autoGrow(_field = this.field) {
       if (this.field) {
         this.field.style.height = "auto";
         // @todo this breaks if we're inside of a tab / element is not visible
@@ -998,7 +998,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      * @param {number} [n=1]
      * @memberof SimpleFieldsContainer
      */
-    stepDown(n = 1) {
+    stepDown(_n = 1) {
       if (this.field && this.numeric) this.field.stepDown();
     }
 
@@ -1008,7 +1008,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
      * @param {number} [n=1]
      * @memberof SimpleFieldsContainer
      */
-    stepUp(n = 1) {
+    stepUp(_n = 1) {
       if (this.field && this.numeric) this.field.stepUp();
     }
 

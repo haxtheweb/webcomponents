@@ -497,11 +497,11 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
   /**
    * Delay importing site-search until we click to open it directly
    */
-  siteModalClick(e) {
+  siteModalClick(_e) {
     // prettier-ignore
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-    ).then((m) => {
+    ).then((_m) => {
       // weird looking but forces focus when it opens the search form
       globalThis.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
     });
@@ -606,10 +606,10 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
       },
     };
   }
-  toggleDrawer(e) {
+  toggleDrawer(_e) {
     this.opened = !this.opened;
   }
-  _closeDrawer(e) {
+  _closeDrawer(_e) {
     this.opened = false;
   }
 }

@@ -172,7 +172,7 @@ describe("place-holder test", () => {
     });
 
     it("should handle drop event with file", (done) => {
-      const mockFile = new File(["test"], "test.txt", { type: "text/plain" });
+      new File(["test"], "test.txt", { type: "text/plain" });
       const mockDataTransfer = {
         items: [{ kind: "file" }],
       };
@@ -350,7 +350,7 @@ describe("place-holder test", () => {
       element.dragOver = true;
       await element.updateComplete;
 
-      const computedStyle = getComputedStyle(element);
+      getComputedStyle(element);
       // The drag-over attribute should be present, enabling CSS targeting
       expect(element.hasAttribute("drag-over")).to.be.true;
     });

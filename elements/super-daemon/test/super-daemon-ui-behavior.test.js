@@ -326,7 +326,7 @@ describe('super-daemon-ui behavior', () => {
     element.programName = 'P'
     element.programSearch = ''
     let evt = null
-    element.addEventListener('super-daemon-program-enter', (e) => (evt = true))
+    element.addEventListener('super-daemon-program-enter', (_e) => (evt = true))
     element._inputKeydown(
       new KeyboardEvent('keydown', { key: 'Enter', cancelable: true }),
     )

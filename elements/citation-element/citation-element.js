@@ -3,7 +3,7 @@ import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { DDDReset } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * `citation-element`
@@ -489,7 +489,7 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
    */
   _licenseUpdated(newValue) {
     if (typeof newValue !== typeof undefined) {
-      var list = new licenseList();
+      let list = new licenseList();
       if (typeof list[newValue] !== typeof undefined) {
         this.licenseName = list[newValue].name;
         this.licenseLink = list[newValue].link;

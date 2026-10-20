@@ -189,7 +189,7 @@ describe('CMSBase', () => {
     let threw = false
     try {
       await el._doRequest()
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.equal(false)
@@ -224,7 +224,7 @@ describe('CMSBase', () => {
     let threw = false
     try {
       el._updateEditLink({ editEndpoint: 'https://edit.example' })
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.equal(false)

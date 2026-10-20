@@ -551,7 +551,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
     this.HAXCMSThemeSettings.autoScroll = true;
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);
         Promise.resolve().then(() => {
           this.activeManifestIndex = _mobx_val_0;

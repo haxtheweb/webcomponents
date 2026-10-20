@@ -237,8 +237,8 @@ describe('rich-text-editor-toolbar', () => {
   it('cancel and close dispatch events', async () => {
     const canceled = []
     const closed = []
-    toolbar.addEventListener('cancel', (e) => canceled.push(true))
-    toolbar.addEventListener('close', (e) => closed.push(true))
+    toolbar.addEventListener('cancel', (_e) => canceled.push(true))
+    toolbar.addEventListener('close', (_e) => closed.push(true))
     toolbar.cancel()
     expect(canceled.length).to.equal(1)
     toolbar.target = editor
@@ -250,7 +250,7 @@ describe('rich-text-editor-toolbar', () => {
 
   it('_editorChanged dispatches an editor-change event', async () => {
     const events = []
-    toolbar.addEventListener('editor-change', (e) => events.push(true))
+    toolbar.addEventListener('editor-change', (_e) => events.push(true))
     toolbar._editorChanged()
     expect(events.length).to.equal(1)
   })
@@ -355,7 +355,7 @@ describe('rich-text-editor-toolbar', () => {
 
   it('_rangeChanged updates buttons and fires range-changed', async () => {
     const events = []
-    toolbar.addEventListener('range-changed', (e) => events.push(true))
+    toolbar.addEventListener('range-changed', (_e) => events.push(true))
     toolbar.target = editor
     const range = selectContents(editor)
     toolbar.range = range
@@ -755,7 +755,7 @@ describe('rich-text-editor-toolbar', () => {
     // fixed (issue #3077 bug 4): updated() calls _editorChanged(), the actual
     // method name, instead of the nonexistent _editorChange()
     const events = []
-    toolbar.addEventListener('editor-change', (e) => events.push(true))
+    toolbar.addEventListener('editor-change', (_e) => events.push(true))
     toolbar.updated(new Map([['editor', undefined]]))
     expect(events.length).to.equal(1)
   })

@@ -164,7 +164,7 @@ class H5PElement extends LitElement {
       import("./lib/h5p-wrapped-element.js");
     }
   }
-  h5pReadyCallback(e) {
+  h5pReadyCallback(_e) {
     if (this.contentId) {
       this.setupH5P(this.contentId);
     }

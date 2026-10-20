@@ -72,12 +72,11 @@ class PouchDb extends HTMLElement {
     if (!e || !e.detail || !e.target) {
       return;
     }
-    var eventData = e.detail;
-    var whatEvent = e.target.tagName;
+    let eventData = e.detail;
+    let whatEvent = e.target.tagName;
 
     switch (whatEvent) {
       case "MULTIPLE-CHOICE":
-        var dbType = "xapistatements";
         var activityDisplay = eventData.activityDisplay;
         var activityId = "http://adlnet.gov/expapi/verbs/" + activityDisplay; //this may need to be changed in the future for more verbs
         var objectId = "http://haxcms.psu.edu/haxQuiz";
@@ -99,10 +98,10 @@ class PouchDb extends HTMLElement {
     }
 
     //these need to be updated to pull from global
-    var userEmail = "mailto:dave@gmail.com";
-    var userName = "Dave Fusco";
+    let userEmail = "mailto:dave@gmail.com";
+    let userName = "Dave Fusco";
 
-    var objectStatement = {
+    let objectStatement = {
       actor: {
         mbox: userEmail,
         name: userName,
@@ -140,14 +139,14 @@ class PouchDb extends HTMLElement {
       },
     };
 
-    var xapistatement = {
+    let xapistatement = {
       _id: new Date().toISOString(),
       title: JSON.stringify(objectStatement),
       completed: false,
     };
     console.log(xapistatement);
 
-    this.db.put(xapistatement, function callback(err, result) {
+    this.db.put(xapistatement, function callback(err, _result) {
       if (!err) {
         console.log("Successfully posted a statement!");
       }
@@ -169,43 +168,36 @@ class PouchDb extends HTMLElement {
     if (!e || !e.detail || !e.target) {
       return;
     }
-    var eventData = e.detail;
-    var whatEvent = e.target.tagName;
+    let eventData = e.detail;
     switch (eventData.queryRequest) {
       case "all-quizzes":
-        var dbType = "xapistatements"; //this needs to be changed to be more dynamic in the future
+        //this needs to be changed to be more dynamic in the future
         break;
       case "single-quiz":
-        var dbType = "xapistatements"; //this needs to be changed to be more dynamic in the future
-        var objectName = eventData.objectName; //"Quiz2"
+        //this needs to be changed to be more dynamic in the future
+        //"Quiz2"
         break;
       case "future-query":
-        var dbType = "xapistatements";
-        var activityDisplay = eventData.activityDisplay;
-        var objectName = eventData.objectName;
-        var resultSuccess = eventData.resultSuccess;
-        var resultCompletion = eventData.resultCompletion;
         break;
       default:
-        var dbType = "xapistatements";
         break;
     }
 
     //ADD SINGLE-QUIZ QUERY
 
     function processxAPI(statements, callback) {
-      var arrayxAPI = [];
+      let arrayxAPI = [];
       statements.forEach(function (statement) {
-        var out = JSON.parse(statement.doc.title);
+        let out = JSON.parse(statement.doc.title);
         //var jsonStatement = out.verb.display['en-US'];  //verb
-        var jsonStatement = out.object.definition.name["en-US"]; //all quizzes; quiz name
+        let jsonStatement = out.object.definition.name["en-US"]; //all quizzes; quiz name
         arrayxAPI.push(jsonStatement);
       });
       callback(arrayxAPI);
     }
 
     function processItems(statements, callback) {
-      var map = {};
+      let map = {};
       statements.forEach(function (statement) {
         map[statement] = (map[statement] || 0) + 1;
       });
@@ -221,8 +213,8 @@ class PouchDb extends HTMLElement {
             processItems(
               mapxAPI,
               function display(backMap) {
-                var labelsArray = [];
-                var resultsArray = [];
+                let labelsArray = [];
+                let resultsArray = [];
 
                 for (let key of Object.keys(backMap)) {
                   labelsArray.push(key);

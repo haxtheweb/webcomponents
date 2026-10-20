@@ -4,9 +4,9 @@ import '../simple-picker.js'
 import '../lib/simple-picker-option.js'
 import '../lib/simple-emoji-picker.js'
 import '../lib/simple-symbol-picker.js'
-import { SimplePicker, SimplePickerBehaviors } from '../simple-picker.js'
-import { SimplePickerOption } from '../lib/simple-picker-option.js'
-import { SimpleSymbolPicker } from '../lib/simple-symbol-picker.js'
+import { SimplePickerBehaviors } from '../simple-picker.js'
+import '../lib/simple-picker-option.js';
+import '../lib/simple-symbol-picker.js';
 
 // helper to build a small grid of options
 function makeOptions() {

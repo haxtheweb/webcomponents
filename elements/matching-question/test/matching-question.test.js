@@ -225,7 +225,7 @@ describe("MatchingQuestion test", () => {
 
   // Answer processing and data model tests
   it("processes input data correctly for targets", async () => {
-    const result = element.processInput(0, [], []);
+    element.processInput(0, [], []);
     const targetData = { correct: true, order: 0 };
     const processed = element.processInput(0, [targetData], []);
 

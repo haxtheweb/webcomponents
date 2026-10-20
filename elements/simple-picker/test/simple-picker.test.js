@@ -3,8 +3,8 @@ import { fixture, expect, html, oneEvent } from "@open-wc/testing";
 import "../simple-picker.js";
 import "../lib/simple-picker-option.js";
 import "../lib/simple-emoji-picker.js";
-import { SimplePicker, SimplePickerBehaviors } from "../simple-picker.js";
-import { SimplePickerOption } from "../lib/simple-picker-option.js";
+import { SimplePickerBehaviors } from "../simple-picker.js";
+import "../lib/simple-picker-option.js";
 
 // Basic functionality and accessibility
 describe("simple-picker basic functionality", () => {

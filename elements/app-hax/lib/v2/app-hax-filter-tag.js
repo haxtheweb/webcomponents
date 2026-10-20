@@ -1,4 +1,3 @@
-/* eslint-disable no-return-assign */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
@@ -18,7 +17,7 @@ export class AppHaxFilterTag extends LitElement {
     };
   }
 
-  updated(changedProperties) {}
+  updated(_changedProperties) {}
 
   static get styles() {
     return [

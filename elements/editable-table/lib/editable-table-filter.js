@@ -118,7 +118,7 @@ class EditableTableFilter extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
    * Fires when filter button is clicked
    * @event toggle-filter
    */
-  _handleClick(e) {
+  _handleClick(_e) {
     this.dispatchEvent(
       new CustomEvent("toggle-filter", {
         bubbles: true,

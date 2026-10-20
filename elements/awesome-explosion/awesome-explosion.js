@@ -278,7 +278,7 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
   /**
    * calculate if it is stopped
    */
-  _calculateStopped(newValue, oldValue) {
+  _calculateStopped(newValue, _oldValue) {
     if (newValue == "stop") {
       this.stopped = true;
       if (typeof globalThis.audio !== typeof undefined) {
@@ -301,7 +301,7 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
   /**
    * calculate if it is stopped
    */
-  _calculatePlaying(newValue, oldValue) {
+  _calculatePlaying(newValue, _oldValue) {
     if (newValue == "play") {
       this.playing = true;
       this._playSound();
@@ -321,7 +321,7 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
   /**
    * calculate if it is stopped
    */
-  _calculatePaused(newValue, oldValue) {
+  _calculatePaused(newValue, _oldValue) {
     if (newValue == "pause") {
       this.paused = true;
       this._stopSound();
@@ -353,7 +353,7 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
   /**
    * Handle click events with accessibility considerations
    */
-  _handleClick(e) {
+  _handleClick(_e) {
     if (this.disabled) return;
 
     if (this.state === "play") {
@@ -379,7 +379,7 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
   /**
    * Handle mouse over with reduced motion consideration
    */
-  _handleMouseOver(e) {
+  _handleMouseOver(_e) {
     if (this.disabled || !this.soundEnabled) return;
 
     // Only play on hover if not reduced motion
@@ -391,7 +391,7 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
   /**
    * Handle mouse out
    */
-  _handleMouseOut(e) {
+  _handleMouseOut(_e) {
     if (this.disabled) return;
     this.state = "pause";
   }
@@ -440,14 +440,14 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
   /**
    * Set the state to play from an event.
    */
-  _setPlaySound(e) {
+  _setPlaySound(_e) {
     this.state = "play";
   }
 
   /**
    * Set the state to stop from an event.
    */
-  _setStopSound(e) {
+  _setStopSound(_e) {
     this.state = "pause";
   }
 

@@ -6,7 +6,7 @@ import { html } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { autorun, toJS } from "mobx";
+import "mobx";
 
 /**
  * `site-print-route`

@@ -8,7 +8,6 @@ import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 import {
   wipeSlot,
   lightChildrenToShadowRootSelector,
-  unwrap,
   sanitizeHTMLForImport,
 } from "@haxtheweb/utils/utils.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
@@ -252,10 +251,10 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
         !this.breakreference
       ) {
         globalThis.HaxStore.instance.activeBodyIgnoreActive(false);
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1;
-        var yyyy = today.getFullYear();
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+        let yyyy = today.getFullYear();
         // create and inject these values into the dom node NEXT to this one.
         if (
           !this.nextElementSibling ||
@@ -420,7 +419,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
   }
   // render the shadow root hidden content to lightDom
   // so we can pull it in on initial page load
-  haxprogressiveEnhancement(el) {
+  haxprogressiveEnhancement(_el) {
     if (this.shadowRoot && this.shadowRoot.querySelector("#content")) {
       return this.shadowRoot.querySelector("#content").innerHTML;
     }
@@ -449,7 +448,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
         }
       }
       // default to null parent as the whole site
-      var items = [
+      let items = [
         {
           text: this.t.selectPage,
           value: null,

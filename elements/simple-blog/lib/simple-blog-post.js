@@ -209,7 +209,7 @@ class SimpleBlogPost extends SimpleColors {
         signal: this.windowControllers.signal,
       });
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.activeItemFields);
           Promise.resolve().then(() => {
             const fields = _mobx_val_0;
@@ -227,7 +227,7 @@ class SimpleBlogPost extends SimpleColors {
    */
   disconnectedCallback() {
     this.windowControllers.abort();
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       if (typeof this.__disposer[i] === "function") {
         this.__disposer[i]();
       } else if (
@@ -244,7 +244,7 @@ class SimpleBlogPost extends SimpleColors {
   /**
    * Scroll event listener to do image effects.
    */
-  _scrollListener(e) {
+  _scrollListener(_e) {
     // respect reduced-motion: skip JS parallax entirely
     if (
       globalThis.matchMedia &&
@@ -278,7 +278,7 @@ class SimpleBlogPost extends SimpleColors {
   /**
    * image has changed, ensure we set padding appropriately.
    */
-  _hasImageChanged(newValue, oldValue) {
+  _hasImageChanged(newValue, _oldValue) {
     if (newValue) {
       setTimeout(() => {
         let rect = this.shadowRoot

@@ -134,7 +134,7 @@ export class PageAnchor extends DDDSuper(LitElement) {
     let icon;
     try {
       icon = this.getMatchFromFields(this.entityId, this.target, "icon");
-    } catch (e) {}
+    } catch {}
     return html`<mark
       tabindex="0"
       role="link"
@@ -181,7 +181,7 @@ export class PageAnchor extends DDDSuper(LitElement) {
    * with values to do so
    */
   haxsetupActiveElementForm(props) {
-    var relatedDomNode = [
+    let relatedDomNode = [
       {
         text: `-- No association --`,
         value: null,
@@ -231,7 +231,7 @@ export class PageAnchor extends DDDSuper(LitElement) {
 
     const entityData = toJS(store.entityData);
     // default to null parent as the whole site
-    var items = [
+    let items = [
       {
         text: `-- No association --`,
         value: null,

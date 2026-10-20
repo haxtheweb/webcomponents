@@ -481,13 +481,13 @@ describe("i18n-manager test", () => {
 
     it("copies _t snapshot from context.t when context has t", () => {
       const ctx = { tagName: "X", t: { hello: "world" } };
-      const detail = element.detailNormalize({ context: ctx });
+      element.detailNormalize({ context: ctx });
       expect(ctx._t).to.deep.equal({ hello: "world" });
     });
 
     it("does not set _t when context has no t", () => {
       const ctx = { tagName: "X" };
-      const detail = element.detailNormalize({ context: ctx });
+      element.detailNormalize({ context: ctx });
       expect(ctx._t).to.equal(undefined);
     });
 

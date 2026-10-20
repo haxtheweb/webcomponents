@@ -69,11 +69,11 @@ export class WebContainerWCRegistryDocs extends DDD {
     }
   }
 
-  async selectChange(e) {
+  async selectChange(_e) {
     const select = this.shadowRoot.querySelector('select');
     if (select.value) {
       // ensure we have a container image
-      let wcm = await globalThis.WebContainerManager.requestAvailability();
+      await globalThis.WebContainerManager.requestAvailability();
       let wcdp = globalThis.document.createElement('web-container-doc-player');
       let ary = this.options[select.value].split('/');
       wcdp.project = `${ary.shift()}/${ary.shift()}`;

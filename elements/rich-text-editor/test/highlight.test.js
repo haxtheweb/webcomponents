@@ -1,6 +1,6 @@
 import { fixture, expect, html } from '@open-wc/testing'
 import '../lib/singletons/rich-text-editor-highlight.js'
-import { sleep } from './helpers.js'
+import './helpers.js';
 
 describe('rich-text-editor-highlight', () => {
   it('requestAvailability returns a singleton', async () => {

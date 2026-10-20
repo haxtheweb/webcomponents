@@ -12,7 +12,7 @@ export class PageBreakManagerEl extends HTMLElement {
   // in order to figure out which states are incorrect
   // indent and outdent are inconsistent at best
   getParent(el, rel = null) {
-    var prevNode = null,
+    let prevNode = null,
       targetNode = null;
     if (this.target) {
       if (rel === "indent") {
@@ -63,7 +63,7 @@ export class PageBreakManagerEl extends HTMLElement {
     direction = "nextElementSibling",
   ) {
     // Setup siblings array
-    var siblings = [];
+    let siblings = [];
     // Get the next sibling element
     elem = elem[direction];
     // As long as a sibling exists
@@ -101,7 +101,7 @@ export class PageBreakManagerEl extends HTMLElement {
 
   // common between element queries
   betweenElementsQuery(type = "all") {
-    var allEl = [];
+    let allEl = [];
     switch (type) {
       case "headings":
         this.breaks.forEach((element) => {
@@ -204,7 +204,7 @@ export class PageBreakManagerEl extends HTMLElement {
             tagNumber = tagNumber > 6 ? 6 : tagNumber;
             const newH = globalThis.document.createElement(`h${tagNumber}`);
             newH.setAttribute("data-original-level", el.tagName);
-            for (var i = 0, l = el.attributes.length; i < l; ++i) {
+            for (let i = 0, l = el.attributes.length; i < l; ++i) {
               // can't assume attributes in the HTML are all valid
               try {
                 newH.setAttribute(
