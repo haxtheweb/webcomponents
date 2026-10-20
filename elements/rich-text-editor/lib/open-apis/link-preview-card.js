@@ -229,8 +229,9 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
 
   getThemeColor(link) {
     try {
-      const hostname = new URL(link).hostname;
-      if (hostname.endsWith("psu.edu")) {
+      const hostname = new URL(link).hostname.toLowerCase();
+      // exact domain or a subdomain; a bare suffix check also matched "evilpsu.edu"
+      if (hostname === "psu.edu" || hostname.endsWith(".psu.edu")) {
         return "var(--ddd-primary-2)";
       }
     } catch {

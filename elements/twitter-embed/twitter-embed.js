@@ -1,5 +1,31 @@
 import { LitElement, html } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+
+/**
+ * True when `value` is an http(s) URL (scheme-less "twitter.com/..." is
+ * accepted too) whose parsed hostname is x.com / twitter.com or a subdomain
+ * of either, so the domain in a path or query string does not count.
+ */
+function isTweetUrl(value) {
+  try {
+    const text = `${value}`.trim();
+    const url = new URL(
+      /^[a-z][a-z0-9+.-]*:/i.test(text) || text.startsWith("/")
+        ? text
+        : `https://${text}`,
+      "https://placeholder.invalid/",
+    );
+    if (url.protocol !== "http:" && url.protocol !== "https:") {
+      return false;
+    }
+    const host = url.hostname.toLowerCase();
+    return ["twitter.com", "x.com"].some(
+      (domain) => host === domain || host.endsWith("." + domain),
+    );
+  } catch {
+    return false;
+  }
+}
 const FALLBACK_LANG = "en";
 
 /**
@@ -151,8 +177,7 @@ class TwitterEmbed extends I18NMixin(LitElement) {
       if (
         propName === "tweet" &&
         this[propName] &&
-        (this[propName].includes("twitter.com") ||
-          this[propName].includes("x.com"))
+        isTweetUrl(this[propName])
       ) {
         this.tweetId = this[propName].split("/").pop();
       }

@@ -196,6 +196,19 @@ describe("twitter-embed properties", () => {
     expect(element.tweetId).to.equal("77");
   });
 
+  it("ignores look-alike hosts and urls that only mention twitter.com or x.com", async () => {
+    element.tweetId = "77";
+    for (const tweet of [
+      "https://dropbox.com/s/1",
+      "https://evil.example/?u=twitter.com/a/status/1",
+      "https://twitter.com.evil.example/a/status/2",
+    ]) {
+      element.tweet = tweet;
+      await element.updateComplete;
+      expect(element.tweetId).to.equal("77");
+    }
+  });
+
   it("leaves the tweet id alone for non twitter urls", async () => {
     element.tweetId = "77";
     element.tweet = "https://example.com/not-a-tweet";
