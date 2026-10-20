@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
+import { CSVtoArray } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 
 const ChartistRenderSuper = function (SuperClass) {
@@ -1229,39 +1230,18 @@ const ChartistRenderSuper = function (SuperClass) {
     }
 
     /**
-     * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
+     * Parse csv text via the shared @haxtheweb/utils parser, then coerce
+     * integer-looking cells to numbers (charts need numbers, the shared
+     * parser returns only strings).
      * @param {string} text csv
      * @returns {array} chart raw data
      */
     _CSVtoArray(text) {
-      let p = "",
-        row = [""],
-        ret = [row],
-        i = 0,
-        r = 0,
-        s = !0,
-        l;
-      for (l in text) {
-        l = text[l];
-        if ('"' === l) {
-          if (s && l === p) row[i] += l;
-          s = !s;
-        } else if ("," === l && s) {
-          if (row[i].trim().match(/^\d+$/m) !== null)
-            row[i] = parseInt(row[i].trim());
-          l = row[++i] = "";
-        } else if ("\n" === l && s) {
-          if ("\r" === p) row[i] = row[i].slice(0, -1);
-          if (row[i].trim().match(/^\d+$/m) !== null)
-            row[i] = parseInt(row[i].trim());
-          row = ret[++r] = [(l = "")];
-          i = 0;
-        } else row[i] += l;
-        p = l;
-      }
-      if (row[i].trim().match(/^\d+$/m) !== null)
-        row[i] = parseInt(row[i].trim());
-      return ret;
+      return CSVtoArray(text).map((row) =>
+        row.map((cell) =>
+          cell.trim().match(/^\d+$/m) !== null ? parseInt(cell.trim()) : cell,
+        ),
+      );
     }
 
     /**

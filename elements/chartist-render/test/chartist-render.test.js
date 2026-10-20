@@ -320,6 +320,29 @@ describe("chartist-render test", () => {
       expect(result[0][1]).to.equal("c");
     });
 
+    it("coerces integer cells after the shared parser, with CRLF and trailing cells", () => {
+      expect(element._CSVtoArray(" 12 ,x\r\n3,4")).to.deep.equal([
+        [12, "x"],
+        [3, 4],
+      ]);
+      expect(element._CSVtoArray("a,b,\n1,2,")).to.deep.equal([
+        ["a", "b", ""],
+        [1, 2, ""],
+      ]);
+    });
+
+    it("leaves non-integer cells as strings", () => {
+      expect(element._CSVtoArray("1.5,-3,007")).to.deep.equal([
+        ["1.5", "-3", 7],
+      ]);
+    });
+
+    it("handles escaped quotes, quoted newlines and empty input", () => {
+      expect(element._CSVtoArray('"a""b",1')).to.deep.equal([['a"b', 1]]);
+      expect(element._CSVtoArray('"x\ny",5')).to.deep.equal([["x\ny", 5]]);
+      expect(element._CSVtoArray("")).to.deep.equal([[""]]);
+    });
+
     it("loads csv data from a data-source url", async () => {
       element.dataSource = "data:text/plain,Month,Sold%0AJan,5%0AFeb,10";
       await aTimeout(300);
