@@ -104,6 +104,10 @@ describe('HaxSchematizer', () => {
     expect(
       HaxSchematizer.inputMethod['haxcms-theme-picker'].defaultSettings.format,
     ).to.equal('haxcms-theme-picker')
+    expect(
+      HaxSchematizer.inputMethod['haxcms-language-picker'].defaultSettings
+        .format,
+    ).to.equal('haxcms-language-picker')
   })
 
   it('supports the simple-fields wrapper format', () => {
@@ -156,6 +160,13 @@ describe('HaxElementizer', () => {
       HaxElementizer.format['haxcms-theme-picker'].defaultSettings.properties
         .showAllThemes,
     ).to.equal('showAllThemes')
+    expect(
+      HaxElementizer.format['haxcms-language-picker'].defaultSettings.element,
+    ).to.equal('haxcms-language-picker')
+    expect(
+      HaxElementizer.format['haxcms-language-picker'].defaultSettings.properties
+        .allowCustom,
+    ).to.equal('allowCustom')
   })
 
   it('maps types to form elements', () => {

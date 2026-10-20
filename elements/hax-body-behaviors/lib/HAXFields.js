@@ -142,6 +142,12 @@ export const HaxSchematizer = {
         format: "haxcms-theme-picker",
       },
     },
+    "haxcms-language-picker": {
+      defaultSettings: {
+        type: "string",
+        format: "haxcms-language-picker",
+      },
+    },
     slider: {
       defaultSettings: {
         type: "number",
@@ -283,6 +289,22 @@ export const HaxElementizer = {
           options: "options",
           showAllThemes: "showAllThemes",
           activeValue: "activeValue",
+        },
+      },
+    },
+    "haxcms-language-picker": {
+      defaultSettings: {
+        import: "@haxtheweb/haxcms-elements/lib/core/haxcms-language-picker.js",
+        element: "haxcms-language-picker",
+        noWrap: true,
+        attributes: {
+          autofocus: true,
+        },
+        properties: {
+          options: "options",
+          includeRegions: "includeRegions",
+          popularFirst: "popularFirst",
+          allowCustom: "allowCustom",
         },
       },
     },
