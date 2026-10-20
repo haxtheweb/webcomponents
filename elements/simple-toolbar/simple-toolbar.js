@@ -429,7 +429,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     addButtonGroup(config = {}, parent) {
       if (!config.buttons || config.buttons.length < 1) return;
       let group = this._renderButtonGroup(config);
-      (parent || this).appendChild(group);
+      const host = parent || this;
+      if (host.appendChild) host.appendChild(group);
       this._addConfigItems(config.buttons, group);
       return group;
     }
@@ -478,8 +479,14 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         .split(" ")
         .forEach((key) => (this.shortcutKeys[key] = button));
       if (button.role !== "menuitem") button.isCurrentItem = false;
-      button.addEventListener("blur", (_e) => this._handleFocusChange(button));
-      button.addEventListener("focus", (_e) => this._handleFocusChange(button));
+      if (button.addEventListener) {
+        button.addEventListener("blur", (_e) =>
+          this._handleFocusChange(button),
+        );
+        button.addEventListener("focus", (_e) =>
+          this._handleFocusChange(button),
+        );
+      }
       if (!this.currentItem) this.setCurrentItem(button);
     }
     /**
@@ -881,7 +888,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     _renderButton(config) {
       let button = globalThis.document.createElement(config.type);
       Object.keys(config).forEach((key) => (button[key] = config[key]));
-      button.addEventListener("button-command", this._handleButton);
+      if (button.addEventListener) {
+        button.addEventListener("button-command", this._handleButton);
+      }
       return button;
     }
     /**
