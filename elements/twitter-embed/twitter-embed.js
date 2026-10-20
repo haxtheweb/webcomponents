@@ -27,13 +27,15 @@ class TwitterEmbed extends I18NMixin(LitElement) {
       context: this,
       localesPath: new URL("./locales/", import.meta.url).href,
     });
+    const docBody = globalThis.document && globalThis.document.body;
+    const docRoot = globalThis.document && globalThis.document.documentElement;
     this.lang =
       this.getAttribute("lang") ||
-      globalThis.document.body.getAttribute("xml:lang") ||
-      globalThis.document.body.getAttribute("lang") ||
-      globalThis.document.documentElement.getAttribute("xml:lang") ||
-      globalThis.document.documentElement.getAttribute("lang") ||
-      globalThis.navigator.language ||
+      (docBody && docBody.getAttribute("xml:lang")) ||
+      (docBody && docBody.getAttribute("lang")) ||
+      (docRoot && docRoot.getAttribute("xml:lang")) ||
+      (docRoot && docRoot.getAttribute("lang")) ||
+      (globalThis.navigator && globalThis.navigator.language) ||
       FALLBACK_LANG;
     this.dataWidth = "550px";
     this.dataTheme = "light";

@@ -60,12 +60,14 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
     super();
     this.hideTitle = false;
     const FALLBACK_LANG = "en";
+    const docBody = globalThis.document && globalThis.document.body;
+    const docRoot = globalThis.document && globalThis.document.documentElement;
     const language =
-      globalThis.document.body.getAttribute("xml:lang") ||
-      globalThis.document.body.getAttribute("lang") ||
-      globalThis.document.documentElement.getAttribute("xml:lang") ||
-      globalThis.document.documentElement.getAttribute("lang") ||
-      globalThis.navigator.language ||
+      (docBody && docBody.getAttribute("xml:lang")) ||
+      (docBody && docBody.getAttribute("lang")) ||
+      (docRoot && docRoot.getAttribute("xml:lang")) ||
+      (docRoot && docRoot.getAttribute("lang")) ||
+      (globalThis.navigator && globalThis.navigator.language) ||
       FALLBACK_LANG;
     this.language = language.split("-")[0];
     this.headers = {

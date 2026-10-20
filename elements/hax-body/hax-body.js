@@ -800,7 +800,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       context: this,
       namespace: "hax",
     });
-    if (!globalThis.HaxUiStyles) {
+    if (!globalThis.HaxUiStyles && globalThis.document.body) {
       globalThis.HaxUiStyles = globalThis.document.createElement("div");
       let s = globalThis.document.createElement("style"),
         css = HaxUiBaseStyles.map((st) => st.cssText).join("");

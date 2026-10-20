@@ -47,6 +47,8 @@ class GradeBookLite extends UIRenderPieces(
   constructor() {
     super();
     this.__disposer = [];
+    // the first render can run before the autorun below hands over the store data
+    this.database = toJS(GradeBookStore.database);
     this.__resizeObserver = null;
     this.__xlsxFileSystemDataHandler = null;
     this.__pdfLoading = false;

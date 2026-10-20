@@ -23,7 +23,10 @@ export class AppHaxScrollButton extends I18NMixin(LitElement) {
     });
     this.label = "";
     this.targetId = "";
-    this.isDarkMode = document.body.classList.contains("dark-mode");
+    this.isDarkMode =
+      !!globalThis.document &&
+      !!globalThis.document.body &&
+      globalThis.document.body.classList.contains("dark-mode");
     this.addEventListener("keydown", this._handleKeydown.bind(this));
   }
 

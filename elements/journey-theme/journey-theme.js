@@ -50,7 +50,9 @@ class JourneyTheme extends HAXCMSLitElementTheme {
   constructor() {
     super();
 
-    const storedPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette");
+    const storedPalette = UserScaffoldInstance
+      ? UserScaffoldInstance.readMemory("HAXCMSSitePalette")
+      : null;
     this.dataPalette = storedPalette === "" || storedPalette === null ? 11 : storedPalette;
     this._items = [];
     this.location = null;

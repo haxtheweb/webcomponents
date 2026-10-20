@@ -80,7 +80,9 @@ class FillInTheBlanks extends MarkTheWords {
     this.numberCorrect = 0;
     this.numberGuessed = 0;
     for (var i in this.answers) {
-      let input = this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
+      let input =
+        this.shadowRoot &&
+        this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
       if (
         typeof this.answers[i].answer === "object" &&
         input &&
@@ -143,7 +145,9 @@ class FillInTheBlanks extends MarkTheWords {
   guessCount() {
     let counter = 0;
     for (var i in this.answers) {
-      let input = this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
+      let input =
+        this.shadowRoot &&
+        this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
       if (input && input.value) {
         counter++;
       }

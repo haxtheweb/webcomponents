@@ -774,7 +774,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.__themePaletteReapplyStamp = 0;
     this.outlineLocation = "";
     this.activeItemLocation = "";
-    HAXcmsStore.storePieces.siteBuilder = this;
+    if (HAXcmsStore.storePieces) {
+      HAXcmsStore.storePieces.siteBuilder = this;
+    }
     // support initial setup stuff with slots
     for (var i in this.children) {
       if (this.children[i].tagName && this.children[i].getAttribute("slot")) {

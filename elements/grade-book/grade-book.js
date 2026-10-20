@@ -44,6 +44,8 @@ class GradeBook extends UIRenderPieces(
   constructor() {
     super();
     this.__disposer = [];
+    // the first render can run before the autorun below hands over the store data
+    this.database = toJS(GradeBookStore.database);
     this.__resizeObserver = null;
     this.__xlsxFileSystemDataHandler = null;
     this.hasFilePicker = false;
@@ -1456,8 +1458,9 @@ class GradeBook extends UIRenderPieces(
             value="next"
             title="${this.t.nextStudent}"
             icon="arrow-downward"
-            ?disabled="${this.database.roster.length - 1 ===
-              this.activeStudent || !this.ready}"
+            ?disabled="${(this.database && this.database.roster
+              ? this.database.roster.length - 1
+              : 0) === this.activeStudent || !this.ready}"
           >
             <span class="hide-900" value="next">${this.t.next}</span>
           </simple-icon-button-lite>
