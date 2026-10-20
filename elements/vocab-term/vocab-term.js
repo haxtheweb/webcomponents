@@ -249,8 +249,8 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
     if (
       (this.details &&
         typeof this.detailsOpen === "undefined" &&
-        e.keyCode == 13) ||
-      e.keyCode == 32
+        e.keyCode === 13) ||
+      e.keyCode === 32
     ) {
       this.toggleOpen();
     }

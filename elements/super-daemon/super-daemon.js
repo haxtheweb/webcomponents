@@ -1004,7 +1004,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     });
     // highest priority if item title is exact match
     tmpItems.forEach((item) => {
-      if (item.title.toLocaleLowerCase() == this.value.toLocaleLowerCase()) {
+      if (item.title.toLocaleLowerCase() === this.value.toLocaleLowerCase()) {
         item.priority = -10000000;
       }
     });

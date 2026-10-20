@@ -474,7 +474,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       connection.operations.add.method;
     let requestEndPoint = connection.protocol + "://" + connection.url;
     // ensure we build a url correctly
-    if (requestEndPoint.substr(requestEndPoint.length - 1) != "/") {
+    if (requestEndPoint.substr(requestEndPoint.length - 1) !== "/") {
       requestEndPoint += "/";
     }
     // support local end point modification
@@ -848,7 +848,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
 
     //SuperDaemonInstance.appendContext();
     // allows for diverting input back to target
-    if (this.tagName.toLowerCase() == "hax-upload-field") {
+    if (this.tagName.toLowerCase() === "hax-upload-field") {
       SuperDaemonInstance.programTarget = this;
     }
     SuperDaemonInstance.open();

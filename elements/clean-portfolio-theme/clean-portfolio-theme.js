@@ -1453,7 +1453,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
               </div>
             ` : ''}
         </div>
-        ${this.menuOverflow.length == 0
+        ${this.menuOverflow.length === 0
             ? html`
               <simple-icon-button-lite title="${this.t.changeTheme}" label="${this.t.changeTheme}" icon="image:style" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
             ` : ''}

@@ -425,8 +425,8 @@ class A11yDetails extends I18NMixin(LitElement) {
     if (
       (this.details &&
         typeof this.details.open === "undefined" &&
-        e.keyCode == 13) ||
-      e.keyCode == 32
+        e.keyCode === 13) ||
+      e.keyCode === 32
     ) {
       this.toggleOpen();
       e.preventDefault();

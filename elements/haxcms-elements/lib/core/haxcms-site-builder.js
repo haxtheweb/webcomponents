@@ -307,7 +307,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       requestedItem && requestedItem.id ? requestedItem.id : null;
     let url = `${this.outlineLocation}${requestedLocation}`;
     if (this._timeStamp) {
-      if (url.indexOf("?") != -1) {
+      if (url.indexOf("?") !== -1) {
         url += `&${this._timeStamp}`;
       } else {
         url += `?${this._timeStamp}`;
@@ -372,7 +372,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         // weird looking but this is the typical use-case in which
         // we got a file path and try to load it because the above silently failed
         if (this._timeStamp && this._timeStamp != "") {
-          if (url.indexOf("?") != -1) {
+          if (url.indexOf("?") !== -1) {
             url += `&${this._timeStamp}`;
           } else {
             url += `?${this._timeStamp}`;
@@ -1086,7 +1086,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // replace the matching custom element tag name with replace-tag
       // unless it's in the exclusion list (see replaceTagExcludedTags)
       if (
-        tag.indexOf("-") != -1 &&
+        tag.indexOf("-") !== -1 &&
         !HAXCMSSiteBuilder.replaceTagExcludedTags.includes(tag)
       ) {
         // shift the replacement over to with; leave everything else the same

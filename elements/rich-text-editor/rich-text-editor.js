@@ -290,7 +290,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
     get isEmpty() {
       return (
         !this.innerHTML ||
-        stripHtmlComments(this.innerHTML).replace(/[\s\t\r\n]/gim, "") == ""
+        stripHtmlComments(this.innerHTML).replace(/[\s\t\r\n]/gim, "") === ""
       );
     }
 

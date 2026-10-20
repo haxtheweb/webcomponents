@@ -516,7 +516,7 @@ export function cleanVideoSource(input) {
   let tmp = input.split("?");
   let v = "";
   input = tmp[0];
-  if (tmp.length == 2) {
+  if (tmp.length === 2) {
     let tmp2 = tmp[1].split("&"),
       args = tmp2[0].split("="),
       qry = Array.isArray(tmp2.shift()) ? tmp2.shift().join("") : tmp2.shift();
@@ -527,32 +527,32 @@ export function cleanVideoSource(input) {
   }
   // link to the vimeo video instead of the embed player address
   if (
-    input.indexOf("player.vimeo.com") == -1 &&
-    input.indexOf("vimeo.com") != -1
+    input.indexOf("player.vimeo.com") === -1 &&
+    input.indexOf("vimeo.com") !== -1
   ) {
     // normalize what the API will return since it is API based
     // and needs cleaned up for front-end
-    if (input.indexOf("/videos/") != -1) {
+    if (input.indexOf("/videos/") !== -1) {
       input = input.replace("/videos/", "/");
     }
     return input.replace("vimeo.com/", "player.vimeo.com/video/");
   }
   // copy and paste from the URL
-  else if (input.indexOf("youtube.com/watch") != -1) {
+  else if (input.indexOf("youtube.com/watch") !== -1) {
     return input.replace("youtube.com/watch", "youtube.com/embed/") + v;
   }
   // copy and paste from the URL
-  else if (input.indexOf("youtube-no-cookie.com/") != -1) {
+  else if (input.indexOf("youtube-no-cookie.com/") !== -1) {
     return input.replace("youtube-no-cookie.com/", "youtube.com/") + v;
   }
   // weird share-ly style version
-  else if (input.indexOf("youtu.be") != -1) {
+  else if (input.indexOf("youtu.be") !== -1) {
     return input.replace("youtu.be/", "www.youtube.com/embed/") + v;
   }
   // copy and paste from the URL for sketchfab
   else if (
-    input.indexOf("sketchfab.com") != -1 &&
-    input.indexOf("/embed") == -1
+    input.indexOf("sketchfab.com") !== -1 &&
+    input.indexOf("/embed") === -1
   ) {
     return input + "/embed";
   }
@@ -867,7 +867,7 @@ function formatHTML(html_source, options) {
 
       let tag_complete = content.join("");
       let tag_index;
-      if (tag_complete.indexOf(" ") != -1) {
+      if (tag_complete.indexOf(" ") !== -1) {
         //if there's whitespace, thats where the tag name ends
         tag_index = tag_complete.indexOf(" ");
       } else {
@@ -918,19 +918,19 @@ function formatHTML(html_source, options) {
         this.tag_type = "SINGLE";
       } else if (tag_check.charAt(0) === "!") {
         //peek for <!-- comment
-        if (tag_check.indexOf("[if") != -1) {
+        if (tag_check.indexOf("[if") !== -1) {
           //peek for <!--[if conditional comment
-          if (tag_complete.indexOf("!IE") != -1) {
+          if (tag_complete.indexOf("!IE") !== -1) {
             //this type needs a closing --> so...
             let comment = this.get_unformatted("-->", tag_complete); //...delegate to get_unformatted
             content.push(comment);
           }
           this.tag_type = "START";
-        } else if (tag_check.indexOf("[endif") != -1) {
+        } else if (tag_check.indexOf("[endif") !== -1) {
           //peek for <!--[endif end conditional comment
           this.tag_type = "END";
           this.unindent();
-        } else if (tag_check.indexOf("[cdata[") != -1) {
+        } else if (tag_check.indexOf("[cdata[") !== -1) {
           //if it's a <[cdata[ comment...
           let comment = this.get_unformatted("]]>", tag_complete); //...delegate to get_unformatted function
           content.push(comment);
@@ -961,7 +961,7 @@ function formatHTML(html_source, options) {
     this.get_unformatted = function (delimiter, orig_tag) {
       //function to return unformatted content in its entirety
 
-      if (orig_tag && orig_tag.toLowerCase().indexOf(delimiter) != -1) {
+      if (orig_tag && orig_tag.toLowerCase().indexOf(delimiter) !== -1) {
         return "";
       }
       let input_char = "";
@@ -995,7 +995,7 @@ function formatHTML(html_source, options) {
         content += input_char;
         this.line_char_count++;
         space = true;
-      } while (content.toLowerCase().indexOf(delimiter) == -1);
+      } while (content.toLowerCase().indexOf(delimiter) === -1);
       return content;
     };
 

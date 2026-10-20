@@ -123,7 +123,9 @@ class SimpleModalTemplate extends LitElement {
   }
   _getCustom() {
     let slot = this.querySelectorAll('[slot="custom"]');
-    return slot.length == 1 ? slot[0].cloneNode(true) : this._getSlot("custom");
+    return slot.length === 1
+      ? slot[0].cloneNode(true)
+      : this._getSlot("custom");
   }
   /**
    * clones content in a named slot
@@ -134,7 +136,7 @@ class SimpleModalTemplate extends LitElement {
   _getSlot(slotName) {
     let slot = this.querySelectorAll('[slot="' + slotName + '"]');
     // account for slot passing down from parent element
-    if (slot && slot[0] && slot[0].tagName == "SLOT") {
+    if (slot && slot[0] && slot[0].tagName === "SLOT") {
       slot = slot[0].assignedNodes({ flatten: true });
     }
     let container = globalThis.document.createElement("div");

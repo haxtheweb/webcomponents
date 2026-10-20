@@ -939,7 +939,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // but we KNOW there MUST be an element somewhere in this
             if (
               eventPath[0].closest("[data-move-order]").parentNode.parentNode
-                .host.children.length == 0
+                .host.children.length === 0
             ) {
               let p = globalThis.document.createElement("p");
               eventPath[0]
@@ -1763,7 +1763,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               // a container about to be made empty will then delete table or iframe before it
               if (
                 this.activeNode &&
-                this.activeNode.textContent == "" &&
+                this.activeNode.textContent === "" &&
                 this.activeNode.previousElementSibling &&
                 this.activeNode.previousElementSibling.tagName &&
                 ([
@@ -3789,8 +3789,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             replacement.innerHTML = "<li>" + node.innerHTML + "</li>";
           } else if (
             !(
-              node.tagName.toLowerCase() == "ul" ||
-              node.tagName.toLowerCase() == "ol"
+              node.tagName.toLowerCase() === "ul" ||
+              node.tagName.toLowerCase() === "ol"
             )
           ) {
             replacement.innerHTML = node.innerHTML
@@ -3812,8 +3812,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }, 0);
           }
         } else if (
-          node.tagName.toLowerCase() == "ul" ||
-          node.tagName.toLowerCase() == "ol"
+          node.tagName.toLowerCase() === "ul" ||
+          node.tagName.toLowerCase() === "ol"
         ) {
           // if we're coming from ul or ol strip out the li tags
           const items = Array.from(node.children).map((child) => {
@@ -4437,7 +4437,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         containerNode.tagName === "SPAN" &&
         HAXStore.isTextElement(containerNode.parentNode) &&
         containerNode.parentNode.getAttribute &&
-        (containerNode.parentNode.getAttribute("slot") == "" ||
+        (containerNode.parentNode.getAttribute("slot") === "" ||
           containerNode.parentNode.getAttribute("slot") == null)
       ) {
         containerNode = target.parentNode;
@@ -4464,7 +4464,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // where we have a valid element yet the parent is a paragraph
         if (
           containerNode.parentNode.tagName === "P" &&
-          containerNode.parentNode.getAttribute("slot") == "" &&
+          containerNode.parentNode.getAttribute("slot") === "" &&
           containerNode.tagName !== "B" &&
           containerNode.tagName !== "I" &&
           containerNode.tagName !== "STRONG" &&
@@ -4480,7 +4480,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           while (
             containerNode.parentNode &&
             containerNode.parentNode.tagName &&
-            containerNode.parentNode.tagName != "HAX-BODY"
+            containerNode.parentNode.tagName !== "HAX-BODY"
           ) {
             // make sure active is set after closest legit element
             if (
@@ -5109,9 +5109,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 // let's make sure that we maintain state associated with contenteditable
                 if (
                   this.editMode &&
-                  (node.getAttribute("contenteditable") == "true" ||
+                  (node.getAttribute("contenteditable") === "true" ||
                     node.getAttribute("contenteditable") === true ||
-                    node.getAttribute("contenteditable") == "contenteditable")
+                    node.getAttribute("contenteditable") === "contenteditable")
                 ) {
                   this.__applyNodeEditableState(node, !this.editMode);
                 }
@@ -5402,7 +5402,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (
       node != null &&
       typeof node.tagName !== typeof undefined &&
-      node.tagName.indexOf("-") == -1
+      node.tagName.indexOf("-") === -1
     ) {
       return true;
     }
@@ -5458,8 +5458,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         if (
           !status ||
           (children[i].getAttribute("contenteditable") !== true &&
-            children[i].getAttribute("contenteditable") != "true" &&
-            children[i].getAttribute("contenteditable") != "contenteditable")
+            children[i].getAttribute("contenteditable") !== "true" &&
+            children[i].getAttribute("contenteditable") !== "contenteditable")
         ) {
           this.__applyNodeEditableState(children[i], status);
         }
@@ -5720,7 +5720,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     if (node.tagName !== "PAGE-BREAK") {
       // force images to NOT be draggable as we will manage D&D
-      if (node.tagName == "IMG") {
+      if (node.tagName === "IMG") {
         node.setAttribute("draggable", false);
       }
       // oooooo snap, drag and drop..
@@ -6856,7 +6856,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       container =
         !parent || !parent.nodeType
           ? undefined
-          : parent.nodeType == 1
+          : parent.nodeType === 1
             ? parent
             : parent.host;
     return container;

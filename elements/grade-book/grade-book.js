@@ -631,10 +631,10 @@ class GradeBook extends UIRenderPieces(
       el.classList.remove("col-highlight");
     });
     // have to possibly resolve UI click handler of span vs the button
-    if (e.target.getAttribute("value") == "prev" && 0 !== this.activeStudent) {
+    if (e.target.getAttribute("value") === "prev" && 0 !== this.activeStudent) {
       GradeBookStore.activeStudent--;
     } else if (
-      e.target.getAttribute("value") == "next" &&
+      e.target.getAttribute("value") === "next" &&
       this.database.roster.length - 1 !== this.activeStudent
     ) {
       GradeBookStore.activeStudent++;
@@ -647,12 +647,12 @@ class GradeBook extends UIRenderPieces(
     });
     // have to possibly resolve UI click handler of span vs the button
     if (
-      e.target.getAttribute("value") == "prev" &&
+      e.target.getAttribute("value") === "prev" &&
       0 !== this.activeAssignment
     ) {
       GradeBookStore.activeAssignment--;
     } else if (
-      e.target.getAttribute("value") == "next" &&
+      e.target.getAttribute("value") === "next" &&
       this.database.assignments.length - 1 !== GradeBookStore.activeAssignment
     ) {
       GradeBookStore.activeAssignment++;

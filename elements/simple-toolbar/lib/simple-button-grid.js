@@ -154,7 +154,7 @@ const SimpleButtonGridBehaviors = function (SuperClass) {
         rows = [];
       items.forEach((item) => {
         if (item.removeAttribute) item.removeAttribute("collapse-hide");
-        if (rows.length == 0) {
+        if (rows.length === 0) {
           rows.unshift(item.offsetTop);
         } else {
           let newrow = item.offsetTop > rows[0];

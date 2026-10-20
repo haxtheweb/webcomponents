@@ -211,7 +211,7 @@ class WcRegistry extends HTMLElement {
   }
   connectedCallback() {
     setTimeout(() => {
-      if (this.children.length > 0 && this.children[0].tagName == "TEMPLATE") {
+      if (this.children.length > 0 && this.children[0].tagName === "TEMPLATE") {
         // we don't trust no JS blobs :p
         try {
           let jsonList = JSON.parse(this.children[0].content.textContent);
@@ -286,9 +286,9 @@ class WcAutoload extends HTMLElement {
     if (
       node.tagName &&
       node.tagName.includes("-") &&
-      node.tagName != "DYNAMIC-IMPORT-REGISTRY" &&
-      node.tagName != "WC-REGISTRY" &&
-      node.tagName != "WC-AUTOLOAD"
+      node.tagName !== "DYNAMIC-IMPORT-REGISTRY" &&
+      node.tagName !== "WC-REGISTRY" &&
+      node.tagName !== "WC-AUTOLOAD"
     ) {
       this.registry.loadDefinition(node.tagName);
     }

@@ -1903,7 +1903,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           if (i < targetNodeIndex) {
             oldContent += node.outerHTML;
           } else if (i === targetNodeIndex) {
-            if (node.innerText != "") {
+            if (node.innerText !== "") {
               title = node.innerText;
             }
           } else {

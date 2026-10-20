@@ -112,7 +112,7 @@ class ShortAnswerQuestion extends QuestionElement {
       if (
         this.displayedAnswers[i] &&
         this.displayedAnswers[i].label &&
-        this.displayedAnswers[i].label.toLowerCase() ==
+        this.displayedAnswers[i].label.toLowerCase() ===
           this.shortanswer.toLowerCase()
       ) {
         return true;

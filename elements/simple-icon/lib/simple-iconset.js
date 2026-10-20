@@ -84,7 +84,7 @@ class SimpleIconset extends LitElement {
     if (ary.length === 1) {
       ary = ["icons", val];
     }
-    if (ary.length == 2 && this.iconsets[ary[0]]) {
+    if (ary.length === 2 && this.iconsets[ary[0]]) {
       if (
         typeof this.iconsets[ary[0]] !== "string" &&
         this.iconsets[ary[0]][ary[1]] &&

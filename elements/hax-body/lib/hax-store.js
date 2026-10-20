@@ -1106,64 +1106,64 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (typeof guess.source !== typeof undefined) {
       const source = guess.source.toLowerCase();
       if (
-        source.indexOf(".mp3") != -1 ||
-        source.indexOf(".midi") != -1 ||
-        source.indexOf(".mid") != -1 ||
-        source.indexOf(".m4a") != -1 ||
-        source.indexOf(".wav") != -1 ||
-        source.indexOf(".ogg") != -1 ||
-        source.indexOf(".flac") != -1 ||
-        source.indexOf(".aac") != -1
+        source.indexOf(".mp3") !== -1 ||
+        source.indexOf(".midi") !== -1 ||
+        source.indexOf(".mid") !== -1 ||
+        source.indexOf(".m4a") !== -1 ||
+        source.indexOf(".wav") !== -1 ||
+        source.indexOf(".ogg") !== -1 ||
+        source.indexOf(".flac") !== -1 ||
+        source.indexOf(".aac") !== -1
       ) {
         return "audio";
       } else if (
-        source.indexOf(".mp4") != -1 ||
-        source.indexOf(".webm") != -1 ||
-        source.indexOf(".mov") != -1 ||
-        source.indexOf(".mkv") != -1 ||
-        source.indexOf(".avi") != -1 ||
-        source.indexOf(".m4v") != -1
+        source.indexOf(".mp4") !== -1 ||
+        source.indexOf(".webm") !== -1 ||
+        source.indexOf(".mov") !== -1 ||
+        source.indexOf(".mkv") !== -1 ||
+        source.indexOf(".avi") !== -1 ||
+        source.indexOf(".m4v") !== -1
       ) {
         return "video";
       } else if (
-        source.indexOf(".png") != -1 ||
-        source.indexOf(".jpg") != -1 ||
-        source.indexOf(".jpeg") != -1
+        source.indexOf(".png") !== -1 ||
+        source.indexOf(".jpg") !== -1 ||
+        source.indexOf(".jpeg") !== -1
       ) {
         return "image";
-      } else if (source.indexOf(".gif") != -1) {
+      } else if (source.indexOf(".gif") !== -1) {
         return "gif";
-      } else if (source.indexOf(".pdf") != -1) {
+      } else if (source.indexOf(".pdf") !== -1) {
         return "pdf";
-      } else if (source.indexOf(".svg") != -1) {
+      } else if (source.indexOf(".svg") !== -1) {
         return "svg";
-      } else if (source.indexOf(".csv") != -1) {
+      } else if (source.indexOf(".csv") !== -1) {
         return "csv";
-      } else if (source.indexOf(".md") != -1) {
+      } else if (source.indexOf(".md") !== -1) {
         return "markdown";
       } else if (
-        source.indexOf(".html") != -1 ||
-        source.indexOf(".htm") != -1
+        source.indexOf(".html") !== -1 ||
+        source.indexOf(".htm") !== -1
       ) {
         return "html";
-      } else if (source.indexOf(".pptx") != -1) {
+      } else if (source.indexOf(".pptx") !== -1) {
         // .pptx must be checked BEFORE the .ppt substring so it returns
         // "pptx" instead of falling through to "document" via .ppt.
         return "pptx";
       } else if (
-        source.indexOf(".txt") != -1 ||
-        source.indexOf(".doc") != -1 ||
-        source.indexOf(".docx") != -1 ||
-        source.indexOf(".xls") != -1 ||
-        source.indexOf(".xlsx") != -1 ||
-        source.indexOf(".vtt") != -1 ||
-        source.indexOf(".ppt") != -1
+        source.indexOf(".txt") !== -1 ||
+        source.indexOf(".doc") !== -1 ||
+        source.indexOf(".docx") !== -1 ||
+        source.indexOf(".xls") !== -1 ||
+        source.indexOf(".xlsx") !== -1 ||
+        source.indexOf(".vtt") !== -1 ||
+        source.indexOf(".ppt") !== -1
       ) {
         return "document";
       } else if (
-        source.indexOf(".zip") != -1 ||
-        source.indexOf(".tar.gz") != -1 ||
-        source.indexOf(".tar") != -1
+        source.indexOf(".zip") !== -1 ||
+        source.indexOf(".tar.gz") !== -1 ||
+        source.indexOf(".tar") !== -1
       ) {
         return "archive";
       }
@@ -1356,7 +1356,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
 
   isSingleSlotElement(node) {
     let slots = Object.keys(this.slotsSchemaFromNode(node));
-    return slots.length == 1 && slots[0].length === 0;
+    return slots.length === 1 && slots[0].length === 0;
   }
   /**
    * If this is a text node or not so we know if the inline context
@@ -2219,14 +2219,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
     }
     let items = pasteEvent.clipboardData.items;
-    if (items == undefined) {
+    if (items == null) {
       if (typeof callback === "function") {
         return callback(undefined);
       }
     }
     for (let i = 0; i < items.length; i++) {
       // Skip content if not image
-      if (items[i].type.indexOf("image") == -1) continue;
+      if (items[i].type.indexOf("image") === -1) continue;
       // Retrieve image on clipboard as blob
       let blob = items[i].getAsFile();
 
@@ -2629,7 +2629,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (haxElements.length === 0 && isLocalFileImagePath) {
         // ONLY use this logic if we're on an empty container
         // so that inline pastes of text keep current behavior
-        if (this.activeNode.innerText.trim() != "") {
+        if (this.activeNode.innerText.trim() !== "") {
           newContent = pasteContent;
           inlinePaste = true;
         } else {
@@ -2668,7 +2668,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         }
 
         // ONLY use this logic if we're on an empty container
-        if (this.activeNode.innerText.trim() != "") {
+        if (this.activeNode.innerText.trim() !== "") {
           inlinePaste = true;
         }
 
@@ -2780,7 +2780,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         }
 
         // ONLY use this logic if we're on an empty container
-        if (this.activeNode.innerText.trim() != "") {
+        if (this.activeNode.innerText.trim() !== "") {
           newContent = haxElements[0].properties.href;
           inlinePaste = true;
         } else {
@@ -2962,7 +2962,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             let _enterSplit, activeEl, siblingEl;
             // only insert a P if we are splitting something
             if (
-              this.activeNode.innerText.trim() != "" &&
+              this.activeNode.innerText.trim() !== "" &&
               range.endOffset != this.activeNode.innerText.length
             ) {
               _enterSplit = true;
@@ -3024,7 +3024,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                 }
                 // if we have an empty element we are hitting paste on
                 // then leverage it for the 1st item as opposed to making a new line
-                if (this.activeNode.innerText.trim() == "") {
+                if (this.activeNode.innerText.trim() === "") {
                   this.activeHaxBody.haxReplaceNode(this.activeNode, activeEl);
                 } else {
                   this.activeNode.parentNode.insertBefore(
@@ -4356,7 +4356,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       return;
     }
     setTimeout(() => {
-      if (this.activeNode && this.activeNode.textContent == "") {
+      if (this.activeNode && this.activeNode.textContent === "") {
         this.activeNode.textContent = text;
       } else {
         globalThis.document.execCommand("insertHTML", false, text);
@@ -5331,7 +5331,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       } else if (
         this.activeNode &&
         this.activeNode.parentNode &&
-        this.activeNode.parentNode.tagName != "HAX-BODY"
+        this.activeNode.parentNode.tagName !== "HAX-BODY"
       ) {
         let node = haxElementToNode({
           tag: details.tag,
@@ -6253,7 +6253,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   HTMLPrimativeTest(node) {
     if (
       typeof node.tagName !== typeof undefined &&
-      node.tagName.indexOf("-") == -1
+      node.tagName.indexOf("-") === -1
     ) {
       return true;
     }

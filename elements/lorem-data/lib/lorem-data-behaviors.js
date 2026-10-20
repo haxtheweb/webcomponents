@@ -333,7 +333,7 @@ export const LoremDataBehaviors = function (SuperClass) {
           : [];
       if (blur > 0) params.push(`blur=${blur}`);
       return `https://picsum.photos/${id > -1 ? `id/${id}/` : ``}${aspect}${
-        params.length == 0 ? "" : `?${params.join("&")}`
+        params.length === 0 ? "" : `?${params.join("&")}`
       }`;
     }
 

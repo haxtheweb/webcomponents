@@ -409,7 +409,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @returns {boolean}
      */
     rangeIsElement(range = this.range || this.getRange()) {
-      return this.rangeIsNode(range) && range.startContainer.nodeType == 1;
+      return this.rangeIsNode(range) && range.startContainer.nodeType === 1;
     }
     /**
      * gets parent element of range
@@ -421,7 +421,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       let common = !range ? undefined : range.commonAncestorContainer;
       return !common
         ? undefined
-        : common.nodeType == 1
+        : common.nodeType === 1
           ? common
           : common.parentElement;
     }

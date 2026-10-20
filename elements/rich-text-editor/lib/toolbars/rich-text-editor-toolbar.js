@@ -1666,7 +1666,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         if (
           oldTarget &&
           oldTarget.getAttribute &&
-          oldTarget.getAttribute("role") == "textbox"
+          oldTarget.getAttribute("role") === "textbox"
         ) {
           oldTarget.removeAttribute("role");
         }
@@ -1861,7 +1861,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         return;
       }
       this.range = this.getRange();
-      if (!this.target || this.target.getAttribute("contenteditable") != "true")
+      if (
+        !this.target ||
+        this.target.getAttribute("contenteditable") !== "true"
+      )
         return;
       this.__highlight.wrap(this.range || this.getRange());
     }

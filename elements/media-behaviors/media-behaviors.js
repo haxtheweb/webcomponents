@@ -41,7 +41,7 @@ globalThis.MediaBehaviors.Video = {
       let tmp = input.split("?");
       let v = "";
       input = tmp[0];
-      if (tmp.length == 2) {
+      if (tmp.length === 2) {
         let tmp2 = tmp[1].split("&"),
           args = tmp2[0].split("=");
         // drop the v parameter (the video id) and keep every other
@@ -55,34 +55,34 @@ globalThis.MediaBehaviors.Video = {
       }
       // link to the vimeo video instead of the embed player address
       if (
-        input.indexOf("player.vimeo.com") == -1 &&
-        input.indexOf("vimeo.com") != -1
+        input.indexOf("player.vimeo.com") === -1 &&
+        input.indexOf("vimeo.com") !== -1
       ) {
         // normalize what the API will return since it is API based
         // and needs cleaned up for front-end
-        if (input.indexOf("/videos/") != -1) {
+        if (input.indexOf("/videos/") !== -1) {
           input = input.replace("/videos/", "/");
         }
         return input.replace("vimeo.com/", "player.vimeo.com/video/");
       }
       // copy and paste from the URL
-      else if (input.indexOf("youtube.com/watch") != -1) {
+      else if (input.indexOf("youtube.com/watch") !== -1) {
         return input.replace("youtube.com/watch", "youtube.com/embed/") + v;
       }
       // copy and paste from the URL shorts
-      else if (input.indexOf("youtube.com/shorts/") != -1) {
+      else if (input.indexOf("youtube.com/shorts/") !== -1) {
         return input.replace("youtube.com/shorts/", "youtube.com/embed/") + v;
       }
       // copy and paste from the URL
-      else if (input.indexOf("youtube-no-cookie.com/") != -1) {
+      else if (input.indexOf("youtube-no-cookie.com/") !== -1) {
         return input.replace("youtube-no-cookie.com/", "youtube.com/") + v;
       }
       // weird share-ly style version
-      else if (input.indexOf("youtu.be") != -1) {
+      else if (input.indexOf("youtu.be") !== -1) {
         return input.replace("youtu.be/", "www.youtube.com/embed/") + v;
       }
       // embed link
-      else if (input.indexOf("player.twitch.tv/") != -1) {
+      else if (input.indexOf("player.twitch.tv/") !== -1) {
         if (tmp[1]) {
           return `${input}?${tmp[1].replace("&parent=www.example.com", "")}`;
         } else {
@@ -90,25 +90,25 @@ globalThis.MediaBehaviors.Video = {
           // a /video(s) path segment means the last segment is a video id,
           // otherwise it is a channel name
           let isVideo =
-            input.indexOf("/video/") != -1 || input.indexOf("/videos/") != -1;
+            input.indexOf("/video/") !== -1 || input.indexOf("/videos/") !== -1;
           let type = isVideo ? "video" : "channel";
           return `https://player.twitch.tv/?${type}=${tmp2.pop()}`;
         }
       }
       // URL / share link
-      else if (input.indexOf("twitch.tv/videos/") != -1) {
+      else if (input.indexOf("twitch.tv/videos/") !== -1) {
         let tmp2 = input.replace("&parent=www.example.com", "").split("/");
         return `https://player.twitch.tv/?video=${tmp2.pop()}`;
       }
       // twitch channel URL / share link
-      else if (input.indexOf("twitch.tv/") != -1) {
+      else if (input.indexOf("twitch.tv/") !== -1) {
         let tmp2 = input.replace("&parent=www.example.com", "").split("/");
         return `https://player.twitch.tv/?channel=${tmp2.pop()}`;
       }
       // copy and paste from the URL for sketchfab
       else if (
-        input.indexOf("sketchfab.com") != -1 &&
-        input.indexOf("/embed") == -1
+        input.indexOf("sketchfab.com") !== -1 &&
+        input.indexOf("/embed") === -1
       ) {
         return input + "/embed";
       }
@@ -116,8 +116,8 @@ globalThis.MediaBehaviors.Video = {
       // https://{tenant}.mediaspace.kaltura.com/media/t/{mediaId}
       // -> https://{tenant}.mediaspace.kaltura.com/embed/secure/iframe/entryId/{mediaId}/uiConfId/56368382/st/0
       else if (
-        input.indexOf("mediaspace.kaltura.com") != -1 &&
-        input.indexOf("/media/t/") != -1
+        input.indexOf("mediaspace.kaltura.com") !== -1 &&
+        input.indexOf("/media/t/") !== -1
       ) {
         let match = input.match(/^https?:\/\/([^/]+)\/media\/t\/([^/?#]+)/i);
         if (match) {
@@ -154,21 +154,21 @@ globalThis.MediaBehaviors.Video = {
       ],
       isLocal = false;
     // some common ones
-    if (source.indexOf("vimeo") != -1) {
+    if (source.indexOf("vimeo") !== -1) {
       return "vimeo";
     } else if (
-      source.indexOf("youtube") != -1 ||
-      source.indexOf("youtu.be") != -1
+      source.indexOf("youtube") !== -1 ||
+      source.indexOf("youtu.be") !== -1
     ) {
       return "youtube";
-    } else if (source.indexOf("sketchfab.com") != -1) {
+    } else if (source.indexOf("sketchfab.com") !== -1) {
       return "sketchfab";
-    } else if (source.indexOf("twitch.tv") != -1) {
+    } else if (source.indexOf("twitch.tv") !== -1) {
       return "twitch";
     } else if (
-      source.indexOf("mediaspace.kaltura.com") != -1 &&
-      (source.indexOf("/media/t/") != -1 ||
-        source.indexOf("/embed/secure/iframe/entryId/") != -1)
+      source.indexOf("mediaspace.kaltura.com") !== -1 &&
+      (source.indexOf("/media/t/") !== -1 ||
+        source.indexOf("/embed/secure/iframe/entryId/") !== -1)
     ) {
       return "kaltura";
     }

@@ -61,9 +61,9 @@ export const remoteLinkBehavior = function (SuperClass) {
      * Internal function to check if a url is external
      */
     remoteLinkURLisExternalLink(url) {
-      if (url.indexOf("http") != 0) return false;
+      if (url.indexOf("http") !== 0) return false;
       let root = globalThis.location.origin;
-      return url.indexOf(root) != 0;
+      return url.indexOf(root) !== 0;
     }
   };
 };
