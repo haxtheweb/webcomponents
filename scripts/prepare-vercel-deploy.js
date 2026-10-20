@@ -65,9 +65,12 @@ function injectImportMap(filePath) {
   if (scriptMatch) {
     insertPos = scriptMatch.index;
   } else {
-    var headMatch = html.match(/<head[^>]*>/i);
-    if (headMatch) {
-      insertPos = headMatch.index + headMatch[0].length;
+    // "<head" up to the next ">" (indexOf, not a [^>]* regex, so a pile of
+    // "<head" with no ">" cannot go quadratic)
+    var headStart = html.search(/<head/i);
+    var headEnd = headStart < 0 ? -1 : html.indexOf(">", headStart + 5);
+    if (headEnd >= 0) {
+      insertPos = headEnd + 1;
     } else {
       insertPos = 0;
     }
@@ -85,22 +88,21 @@ function rewriteNodeModulesPaths(filePath) {
   let changed = false;
 
   // Double-quoted attributes: src="...node_modules/path" / href="...node_modules/path"
-  html = html.replace(
-    /(src|href)="([^"]*?)node_modules\/([^"]+)"/g,
-    function (match, attr, prefix, pkgPath) {
+  // and single-quoted ones. The attribute value is matched once with a single
+  // quantifier, then the first "node_modules/" inside it is located with indexOf
+  // (a lazy prefix regex rescans the value for every candidate position).
+  [/(src|href)="([^"]*)"/g, /(src|href)='([^']*)'/g].forEach(function (re, n) {
+    var quote = n === 0 ? '"' : "'";
+    html = html.replace(re, function (match, attr, value) {
+      var marker = value.indexOf("node_modules/");
+      var pkgPath = marker < 0 ? "" : value.slice(marker + 13);
+      if (pkgPath === "") {
+        return match;
+      }
       changed = true;
-      return attr + '="' + CDN_BASE + pkgPath + '"';
-    },
-  );
-
-  // Single-quoted attributes
-  html = html.replace(
-    /(src|href)='([^']*?)node_modules\/([^']+)'/g,
-    function (match, attr, prefix, pkgPath) {
-      changed = true;
-      return attr + "='" + CDN_BASE + pkgPath + "'";
-    },
-  );
+      return attr + "=" + quote + CDN_BASE + pkgPath + quote;
+    });
+  });
 
   if (changed) {
     fs.writeFileSync(filePath, html);

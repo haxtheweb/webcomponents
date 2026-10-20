@@ -37,6 +37,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { stripHtmlComments } from "../elements/utils/lib/safe-html.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -372,7 +373,7 @@ function findDemoSchema(tag) {
  */
 function extractTagUsage(html, tag) {
   // ignore commented-out examples
-  html = html.replace(/<!--[\s\S]*?-->/g, "");
+  html = stripHtmlComments(html);
   const openMatch = new RegExp("<" + tag + "(\\s[^>]*)?>", "i").exec(html);
   if (!openMatch) {
     return null;
