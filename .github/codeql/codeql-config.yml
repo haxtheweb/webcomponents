@@ -11,6 +11,8 @@ name: "webcomponents CodeQL config"
 #     elements/slide-deck/lib/pptx-rendered.js          minified pptx renderer bundle
 #     elements/chartist-render/lib/**                   chartist + chartist plugins
 #     elements/file-system-broker/lib/xlsx/**           SheetJS
+#     elements/code-sample/lib/highlightjs/**           highlight.js + language files
+#     elements/moment-element/lib/moment/**             Moment.js
 paths-ignore:
   - "**/test/**"
   - "**/*.test.js"
@@ -20,3 +22,5 @@ paths-ignore:
   - elements/slide-deck/lib/pptx-rendered.js
   - elements/chartist-render/lib/**
   - elements/file-system-broker/lib/xlsx/**
+  - elements/code-sample/lib/highlightjs/**
+  - elements/moment-element/lib/moment/**
