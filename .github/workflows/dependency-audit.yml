@@ -1,0 +1,80 @@
+name: dependency-audit
+
+# Reporting-only dependency audit (haxtheweb/issues#3092).
+#
+# Runs `yarn audit` against yarn.lock. It needs no `yarn install` (the audit
+# reads the lockfile), so it stays cheap in this large monorepo, and it only
+# runs when dependency manifests change, weekly, or on demand.
+#
+# The step is `continue-on-error`, same pattern as the ESLint step in build.yml:
+# findings are visible in the log and the job summary, but they do not fail the
+# job. Hundreds of advisories already exist transitively, so a blocking gate
+# would fail every PR for unrelated reasons. Tightening it (e.g. fail on
+# critical in production dependencies) is a follow-up once the baseline is
+# triaged.
+on:
+  push:
+    branches: [master]
+    paths:
+      - yarn.lock
+      - package.json
+      - "elements/*/package.json"
+      - .github/workflows/dependency-audit.yml
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - yarn.lock
+      - package.json
+      - "elements/*/package.json"
+      - .github/workflows/dependency-audit.yml
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dependency-audit:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          # The audit only reads lockfile + manifests; skip the 40k-file tree.
+          sparse-checkout: |
+            /package.json
+            /yarn.lock
+            /elements/*/package.json
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+      - name: Dependency audit
+        # Reporting-only, see header comment. `--groups dependencies` is what
+        # ships to consumers; the dev/tooling tree is counted separately below.
+        continue-on-error: true
+        run: |
+          status=0
+          yarn audit --groups dependencies --json > "$RUNNER_TEMP/audit-prod.json" || status=$?
+          yarn audit --json > "$RUNNER_TEMP/audit-all.json" || true
+          {
+            echo "### Dependency audit (reporting-only)"
+            echo
+            echo "| Scope | Critical | High | Moderate | Low |"
+            echo "| --- | --- | --- | --- | --- |"
+            for scope in prod all; do
+              label="all groups (incl. dev tooling)"
+              [ "$scope" = "prod" ] && label="production dependencies"
+              jq -rs --arg label "$label" '
+                (map(select(.type == "auditSummary").data.vulnerabilities) | last) as $v
+                | "| \($label) | \($v.critical) | \($v.high) | \($v.moderate) | \($v.low) |"
+              ' "$RUNNER_TEMP/audit-$scope.json"
+            done
+            echo
+            echo "Full details are in the \`Dependency audit\` step log. This step does not fail the job."
+          } >> "$GITHUB_STEP_SUMMARY"
+          yarn audit --groups dependencies || true
+          exit "$status"
