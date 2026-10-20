@@ -258,6 +258,7 @@ LICENSE
 - **PR Title Format**: `[<project_name>] <Descriptive Title>`
   - Example: `[my-element] Add dynamic property binding`
 - **Pre-commit checks**:
+  - Run `yarn precheck` before every push or PR. It runs the Prettier, Stylelint, ESLint and DDD token checks CI runs, on the files you changed. Fix everything it reports and re-run until it passes (`yarn precheck:fix` auto-fixes formatting and fixable lint). A Claude Code hook in `.claude/` blocks `git push` and `gh pr create` until it passes.
   - Run `npm test` to ensure all tests pass.
   - Run `npm run lint` to verify code style.
   - Run `hax audit` for web components to confirm DDD compliance.

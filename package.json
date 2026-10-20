@@ -48,6 +48,8 @@
     "lint": "eslint elements",
     "lint:fix": "eslint elements --fix",
     "lint:ddd-tokens": "node scripts/ddd-token-lint.js",
+    "precheck": "node scripts/precheck.mjs",
+    "precheck:fix": "node scripts/precheck.mjs --fix",
     "tokens:ddd": "node elements/d-d-d/design-system/build-tokens.js",
     "design-system:sync": "node elements/d-d-d/design-system/sync.js",
     "test": "lerna run test --concurrency=1",
