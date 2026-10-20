@@ -162,7 +162,7 @@ class FillInTheBlanks extends MarkTheWords {
     for (let i in wordList) {
       // a blank is a token with a closing bracket; punctuation may trail
       // the bracket and malformed input may lack the opening bracket
-      const blank = wordList[i].match(/^\[?([^\[\]]*)\]/);
+      const blank = wordList[i].match(/^\[?([^[\]]*)\]/);
       if (blank) {
         let answer = {
           text: `[${blank[1]}]`,
@@ -249,7 +249,7 @@ class FillInTheBlanks extends MarkTheWords {
       <div class="text">
         ${this.wordList.map(
           (word) => html`
-            ${word.text.match(/^\[?[^\[\]]*\]/)
+            ${word.text.match(/^\[?[^[\]]*\]/)
               ? this.renderFillInBlankField(word)
               : html`${word.text} `}
           `,
@@ -270,7 +270,7 @@ class FillInTheBlanks extends MarkTheWords {
   }
 
   renderFillInBlankField(word) {
-    const blank = word.text.match(/^\[?([^\[\]]*)\](.*)$/);
+    const blank = word.text.match(/^\[?([^[\]]*)\](.*)$/);
     const index = this.answers.findIndex(
       (answer) => blank && answer.text === `[${blank[1]}]`,
     );

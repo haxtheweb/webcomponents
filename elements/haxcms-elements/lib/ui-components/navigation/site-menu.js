@@ -303,7 +303,9 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         "HAXCMSSystemData",
         JSON.stringify(userData),
       );
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
   }
   mapMenuHoveredChanged(e) {
     console.log(e.detail);

@@ -438,7 +438,6 @@ export const LoremDataBehaviors = function (SuperClass) {
             break;
           case "data":
             return schema.data;
-            break;
           case "date":
             val = this.randomDate(
               schema.start,
@@ -492,7 +491,6 @@ export const LoremDataBehaviors = function (SuperClass) {
             return schema.weightedOptions
               ? this.randomWeightedOption(schema.weightedOptions)
               : this.randomOption(schema.options);
-            break;
           case "paragraph":
             val = this.randomParagraph(
               schema.min,

@@ -2276,7 +2276,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         : false;
     return !this.thumbnailSrc && this.youtubeId
       ? `https://img.youtube.com/vi/${this.youtubeId.replace(
-          /[\?&].*/,
+          /[?&].*/,
           "",
         )}/hqdefault.jpg`
       : thumbnail;
@@ -2381,6 +2381,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
     );
     if (this.anchor && this.anchor.target === this) return t;
     if (this.videoData) return this.videoData.t || this.videoData.start;
+    return undefined;
   }
 
   /**
@@ -2423,7 +2424,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
 
   get videoData() {
     if (this.youtubeId) {
-      let videoData = this.youtubeId.split(/[\?\&]/),
+      let videoData = this.youtubeId.split(/[?&]/),
         params = {};
       params.videoId = videoData[0];
       videoData.forEach((param, index) => {
@@ -2434,9 +2435,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
       });
       return params;
     }
+    return undefined;
   }
   get videoId() {
     if (this.videoData) return this.videoData.videoId;
+    return undefined;
   }
 
   /**

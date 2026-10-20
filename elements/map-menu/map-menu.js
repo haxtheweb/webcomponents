@@ -702,7 +702,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
       align: "top",
       delay: 0,
       duration: 300,
-      scrollElement: window,
+      scrollElement: globalThis,
     };
     // combine default and user defined options
     const _options = Object.assign({}, defaultOptions, options);

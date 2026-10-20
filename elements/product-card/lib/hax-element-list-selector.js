@@ -180,14 +180,17 @@ class HaxElementListSelector extends LitElement {
   }
   get searchColumns() {
     this._getElement("haxcore.search.haxcore-search-columns");
+    return undefined;
   }
   get haxTags() {
     this._getElement("haxcore.providerdetails.haxcore-providerdetails-haxtags");
+    return undefined;
   }
   get otherTags() {
     this._getElement(
       "haxcore.providerdetails.haxcore-providerdetails-othertags",
     );
+    return undefined;
   }
   updated(changedProperties) {
     changedProperties.forEach(async (oldValue, propName) => {
@@ -215,7 +218,7 @@ class HaxElementListSelector extends LitElement {
       if (propName == "imports") {
         let list = this.haxData,
           noSchema = this.noSchema;
-        for (var tag in this[propName]) {
+        for (let tag in this[propName]) {
           let file = this[propName][tag];
           try {
             await import(`${this.basePath}${file}`).then((module) => {

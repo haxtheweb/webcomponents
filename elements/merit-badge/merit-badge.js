@@ -156,7 +156,6 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
             noVoiceRecord: true,
             noCamera: true,
             noScreenRecord: true,
-            noVoiceRecord: true,
           },
           {
             property: "badgeDetails",

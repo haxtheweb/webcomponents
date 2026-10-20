@@ -51,7 +51,7 @@ export {
   varGet,
   wipeSlot,
 };
-export var badJSEventAttributes = [
+export let badJSEventAttributes = [
   // these are all leaker JS event attributes we don't allow
   "onabort",
   "onanimationcancel",
@@ -165,9 +165,9 @@ export var badJSEventAttributes = [
   "onwaiting",
   "onwheel",
 ];
-export var badIFrameAttributes = ["srcdoc"];
+export let badIFrameAttributes = ["srcdoc"];
 // elements that never belong in authored / imported content
-export var badContentElements = ["base", "meta", "lrn-math-controller"];
+export let badContentElements = ["base", "meta", "lrn-math-controller"];
 
 /**
  * Is this attribute an inline event handler the browser will execute?
@@ -891,7 +891,7 @@ function formatHTML(html_source, options) {
         this.tag_type = "STYLE";
       } else if (this.Utils.in_array(tag_check, unformatted)) {
         // do not reformat the "unformatted" tags
-        var comment = this.get_unformatted(
+        let comment = this.get_unformatted(
           "</" + tag_check + ">",
           tag_complete,
         ); //...delegate to get_unformatted function
@@ -922,7 +922,7 @@ function formatHTML(html_source, options) {
           //peek for <!--[if conditional comment
           if (tag_complete.indexOf("!IE") != -1) {
             //this type needs a closing --> so...
-            var comment = this.get_unformatted("-->", tag_complete); //...delegate to get_unformatted
+            let comment = this.get_unformatted("-->", tag_complete); //...delegate to get_unformatted
             content.push(comment);
           }
           this.tag_type = "START";
@@ -932,11 +932,11 @@ function formatHTML(html_source, options) {
           this.unindent();
         } else if (tag_check.indexOf("[cdata[") != -1) {
           //if it's a <[cdata[ comment...
-          var comment = this.get_unformatted("]]>", tag_complete); //...delegate to get_unformatted function
+          let comment = this.get_unformatted("]]>", tag_complete); //...delegate to get_unformatted function
           content.push(comment);
           this.tag_type = "SINGLE"; //<![CDATA[ comments are treated like single tags
         } else {
-          var comment = this.get_unformatted("-->", tag_complete);
+          let comment = this.get_unformatted("-->", tag_complete);
           content.push(comment);
           this.tag_type = "SINGLE";
         }
@@ -1154,9 +1154,9 @@ function formatHTML(html_source, options) {
         multi_parser.print_token(multi_parser.token_text);
         multi_parser.current_mode = "CONTENT";
         break;
-      case "TK_TAG_SINGLE":
+      case "TK_TAG_SINGLE": {
         // Don't add a newline before elements that should remain unformatted.
-        var tag_check = multi_parser.token_text.match(/^\s*<([a-z]+)/i);
+        let tag_check = multi_parser.token_text.match(/^\s*<([a-z]+)/i);
         if (
           !tag_check ||
           !multi_parser.Utils.in_array(tag_check[1], unformatted)
@@ -1166,6 +1166,7 @@ function formatHTML(html_source, options) {
         multi_parser.print_token(multi_parser.token_text);
         multi_parser.current_mode = "CONTENT";
         break;
+      }
       case "TK_CONTENT":
         if (multi_parser.token_text !== "") {
           multi_parser.print_token(multi_parser.token_text);
@@ -1373,7 +1374,7 @@ function haxElementToNode(haxSchema) {
     // as we handle our VDOM through here regularly, make sure the bad JSEventAttributes
     // don't get set as attributes on the node, ever.
     if (
-      properties.hasOwnProperty(property) &&
+      Object.prototype.hasOwnProperty.call(properties, property) &&
       badJSEventAttributes.indexOf(property) === -1 &&
       !(
         ["iframe", "webview"].includes(tag.toLowerCase()) &&
@@ -1396,6 +1397,7 @@ function haxElementToNode(haxSchema) {
           frag.properties[property] &&
           frag.properties[property].readOnly
         ) {
+          // intentionally empty
         } else {
           // assign by property name: arrays are JS properties, and the
           // dash-cased attribute name (media-items) never matches a camelCase
@@ -1417,6 +1419,7 @@ function haxElementToNode(haxSchema) {
           frag.properties[property] &&
           frag.properties[property].readOnly
         ) {
+          // intentionally empty
         } else {
           if (newNode.set) {
             newNode.set(property, properties[property]);
@@ -1487,7 +1490,7 @@ export function htmlEntities(s) {
   if (!s || typeof s !== "string") {
     return "";
   }
-  return s.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
+  return s.replace(/[\u00A0-\u9999<>&]/gim, function (i) {
     return "&#" + i.charCodeAt(0) + ";";
   });
 }
@@ -1512,8 +1515,8 @@ function stripMSWord(input) {
     .replace(/( class=(")?Mso[a-zA-Z]+(")?)/g, "");
 
   // 2. strip Word generated HTML comments
-  output = output.replace(/<\!--(\s|.)*?-->/gim, "");
-  output = output.replace(/<\!(\s|.)*?>/gim, "");
+  output = output.replace(/<!--(\s|.)*?-->/gim, "");
+  output = output.replace(/<!(\s|.)*?>/gim, "");
   // 3. remove tags leave content if any (but NOT span tags yet)
   output = output.replace(
     /<(\/)*(meta|link|title|html|head|body|font|br|\\\\?xml:|xml|st1:|o:|w:|m:|v:)(\s|.)*?>/gim,
@@ -1523,7 +1526,7 @@ function stripMSWord(input) {
   output = output.replace(/<span[^>]*>([\s\S]*?)<\/span>/gim, "$1");
   // 4. Remove everything in between and including tags '<style(.)style(.)>'
   let badTags = ["style", "script", "applet", "embed", "noframes", "noscript"];
-  for (var i in badTags) {
+  for (let i in badTags) {
     let tagStripper = new RegExp(
       "<" + badTags[i] + "(s|.)*?" + badTags[i] + "(.*?)>",
       "gim",
@@ -1537,14 +1540,14 @@ function stripMSWord(input) {
   output = output.replace(/ align=.*? /g, "");
   output = output.replace(/ start='.*?'/g, "");
   // remove line-height; commonly set via html copy and paste in google docs
-  output = output.replace(/line-height:.*?\"/g, '"');
+  output = output.replace(/line-height:.*?"/g, '"');
   output = output.replace(/line-height:.*?;/g, "");
   // normal font cause... obviously
   output = output.replace(/font-weight:normal;/g, "");
   // text decoration in a link...
   output = output.replace(/text-decoration:none;/g, "");
   // margin clean up that is in point values; only machines make these
-  output = output.replace(/margin-.*?:.*?\"/g, '"');
+  output = output.replace(/margin-.*?:.*?"/g, '"');
   output = output.replace(/margin-.*?:.*?;/g, "");
   // empty style tags
   output = output.replace(/ style=""/g, "");
@@ -1576,7 +1579,7 @@ function stripMSWord(input) {
   output = output.replace(/ class="(\s|.)*?"/gim, "");
   output = output.replace(/<pstyle/gm, "<p style");
   // HIGHLY specific to certain platforms, empty link tag
-  output = output.replace(/<a name=\"_GoBack\"><\/a>/gm, "");
+  output = output.replace(/<a name="_GoBack"><\/a>/gm, "");
   // 7. clean out empty paragraphs and endlines that cause weird spacing
   output = output.replace(/&nbsp;/gm, " ");
   // start of double, do it twice for nesting
@@ -1599,12 +1602,12 @@ function stripMSWord(input) {
   output = output.replace(/<\/b>/gm, "</strong>");
   // clean up in lists because they get messy for no real reason...ever.
   // tables as well
-  output = output.replace(/<p style=\".*?\">/gm, "<p>");
-  output = output.replace(/<ul style=\".*?\">/gm, "<ul>");
-  output = output.replace(/<ol style=\".*?\">/gm, "<ol>");
-  output = output.replace(/<li style=\".*?\">/gm, "<li>");
-  output = output.replace(/<td style=\".*?\">/gm, "<td>");
-  output = output.replace(/<tr style=\".*?\">/gm, "<tr>");
+  output = output.replace(/<p style=".*?">/gm, "<p>");
+  output = output.replace(/<ul style=".*?">/gm, "<ul>");
+  output = output.replace(/<ol style=".*?">/gm, "<ol>");
+  output = output.replace(/<li style=".*?">/gm, "<li>");
+  output = output.replace(/<td style=".*?">/gm, "<td>");
+  output = output.replace(/<tr style=".*?">/gm, "<tr>");
   // drop list wrappers (handle attributes on <p> e.g. Google Docs)
   output = output.replace(/<li><p[^>]*>/gm, "<li>");
   output = output.replace(/<\/p><\/li>/gm, "</li>");
@@ -1636,7 +1639,7 @@ function stripMSWord(input) {
   // wow do I hate contenteditable and the dom....
   // bold and italic are treated as if they are block elements in a paste scenario
   // 8. check for empty bad tags
-  for (var i in badTags) {
+  for (let i in badTags) {
     let emptyTagRemove = new RegExp(
       "<" + badTags[i] + "></" + badTags[i] + ">",
       "gi",
@@ -1838,8 +1841,8 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
       if (
         property != "class" &&
         property != "style" &&
-        tmpProps.hasOwnProperty(property) &&
-        typeof node[property] !== undefined &&
+        Object.prototype.hasOwnProperty.call(tmpProps, property) &&
+        typeof node[property] !== "undefined" &&
         node[property] != null &&
         node[property] != ""
       ) {
@@ -1857,22 +1860,25 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
         //console.warn(node[property], property);
       }
     }
-    for (var attribute in node.attributes) {
+    for (let attribute in node.attributes) {
       // make sure we only set things that have a value
       if (
         typeof node.attributes[attribute].name !== typeof undefined &&
         node.attributes[attribute].name != "class" &&
         node.attributes[attribute].name != "style" &&
         node.attributes[attribute].name != "id" &&
-        node.attributes.hasOwnProperty(attribute) &&
-        typeof node.attributes[attribute].value !== undefined &&
+        Object.prototype.hasOwnProperty.call(node.attributes, attribute) &&
+        typeof node.attributes[attribute].value !== "undefined" &&
         node.attributes[attribute].value != null &&
         node.attributes[attribute].value != "" &&
         !(
           ["iframe", "webview"].includes(nodeTag) &&
           node.attributes[attribute].name === "srcdoc"
         ) &&
-        !tmpProps.hasOwnProperty(dashToCamel(node.attributes[attribute].name))
+        !Object.prototype.hasOwnProperty.call(
+          tmpProps,
+          dashToCamel(node.attributes[attribute].name),
+        )
       ) {
         props[node.attributes[attribute].name] =
           node.attributes[attribute].value;
@@ -1892,15 +1898,15 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
     }
   } else {
     // much easier case, usually just in primatives
-    for (var attribute in node.attributes) {
+    for (let attribute in node.attributes) {
       // make sure we only set things that have a value
       if (
         typeof node.attributes[attribute].name !== typeof undefined &&
         node.attributes[attribute].name != "class" &&
         node.attributes[attribute].name != "style" &&
         node.attributes[attribute].name != "id" &&
-        node.attributes.hasOwnProperty(attribute) &&
-        typeof node.attributes[attribute].value !== undefined &&
+        Object.prototype.hasOwnProperty.call(node.attributes, attribute) &&
+        typeof node.attributes[attribute].value !== "undefined" &&
         node.attributes[attribute].value != null &&
         node.attributes[attribute].value != "" &&
         !(
@@ -1979,7 +1985,7 @@ export const winEventsElement = function (SuperClass) {
     __applyWinEvents(status) {
       if (this.__winEvents) {
         for (let eName in this.__winEvents) {
-          window[`${status ? "add" : "remove"}EventListener`](
+          globalThis[`${status ? "add" : "remove"}EventListener`](
             eName,
             this[this.__winEvents[eName]],
           );

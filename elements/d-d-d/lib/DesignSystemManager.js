@@ -197,9 +197,13 @@ export class DesignSystem extends LitElement {
           });
         }
       } catch {
-        const oldStyleSafariBs = globalThis.document.createElement("style");
-        oldStyleSafariBs.innerHTML = globalStyles;
-        globalThis.document.head.appendChild(oldStyleSafariBs);
+        // browsers without constructable stylesheets: remove the <style>
+        // fallback that was added for the old system
+        globalThis.document
+          .querySelectorAll('style[data-ds="style"]')
+          .forEach((style) => {
+            style.remove();
+          });
       }
       if (oldSystem.fonts) {
         globalThis.document.head
@@ -236,6 +240,7 @@ export class DesignSystem extends LitElement {
         ];
       } catch {
         const oldStyleSafariBs = globalThis.document.createElement("style");
+        oldStyleSafariBs.setAttribute("data-ds", "style");
         oldStyleSafariBs.innerHTML = globalStyles;
         globalThis.document.head.appendChild(oldStyleSafariBs);
       }

@@ -700,7 +700,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       let elementToInsert = null;
 
       switch (mode) {
-        case "embed-youtube":
+        case "embed-youtube": {
           // Extract YouTube video ID
           const videoId = this.extractYouTubeId(url);
           if (videoId) {
@@ -714,6 +714,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             );
           }
           break;
+}
 
         case "embed-kaltura":
           // Insert the Kaltura MediaSpace share URL; video-player's
@@ -763,7 +764,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           });
           break;
 
-        case "hax-default":
+        case "hax-default": {
           // Use HAX's original insertLogicFromValues method for automatic detection
           const haxValues = {
             source: url,
@@ -781,8 +782,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             rel: "noopener",
           });
           break;
+}
 
-        case "apply-to-selected-text":
+        case "apply-to-selected-text": {
           // Apply URL as link to currently selected text
           const selection = globalThis.getSelection();
           if (selection && !selection.isCollapsed) {
@@ -821,6 +823,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             rel: "noopener",
           });
           break;
+}
 
         case "insert-simple-link":
         default:
@@ -844,7 +847,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // Helper to extract YouTube video ID from various YouTube URL formats
   extractYouTubeId(url) {
     const regExp =
-      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
     return match && match[2].length === 11 ? match[2] : null;
   }
@@ -1101,7 +1104,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         break;
       case "insert-table":
-      case "insert-csv":
+      case "insert-csv": {
         // Handle Excel file conversion to CSV and table
         let excelDataToPost = new FormData();
         excelDataToPost.append("upload", values.data); // Excel file
@@ -1170,10 +1173,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           );
         }
         break;
+}
       case "insert-html":
       case "create-sibling":
       case "create-child":
-      case "create-branch":
+      case "create-branch": {
         let endpointCall = null;
         let dataToPost = new FormData();
         switch (values.type) {
@@ -1342,6 +1346,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         }
         break;
+}
     }
   }
   // create node w/ title and contents passed in
@@ -1486,7 +1491,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       .toLowerCase()
       .split(" ")
       .join("-")
-      .replace(/[^0-9\-\/a-z]/gi, "");
+      .replace(/[^0-9\-/a-z]/gi, "");
   }
 
   // Get available page templates from style guide
@@ -2864,7 +2869,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       unlockPage: "Unlock page",
       accountInfo: "Account Info",
       outlineDesigner: "Site Outline",
-      outline: "Outline",
       pageOutline: "Structure",
       more: "More",
       pageActions: "Page actions",
@@ -5211,7 +5215,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
       url.searchParams.set("format", normalizedFormat);
       globalThis.location.href = url.toString();
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
   }
   getCurrentPageShareLink(activeItem = null) {
     let item = activeItem;
@@ -5634,11 +5640,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.__boundWindowDragOver = this.__windowDragOver.bind(this);
     this.__boundWindowDrop = this.__windowDrop.bind(this);
     this.__boundWindowDropCleanup = this.__windowDropCleanup.bind(this);
-    window.addEventListener("dragenter", this.__boundWindowDragEnter);
-    window.addEventListener("dragleave", this.__boundWindowDragLeave);
-    window.addEventListener("dragover", this.__boundWindowDragOver);
-    window.addEventListener("drop", this.__boundWindowDrop);
-    window.addEventListener("drop", this.__boundWindowDropCleanup, true);
+    globalThis.addEventListener("dragenter", this.__boundWindowDragEnter);
+    globalThis.addEventListener("dragleave", this.__boundWindowDragLeave);
+    globalThis.addEventListener("dragover", this.__boundWindowDragOver);
+    globalThis.addEventListener("drop", this.__boundWindowDrop);
+    globalThis.addEventListener("drop", this.__boundWindowDropCleanup, true);
 
     // Mirror HAX tray detail into this element so we can expose and style active state.
     // IMPORTANT: use the observable HAXStore.trayDetail, not haxTray.trayDetail,
@@ -5797,11 +5803,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // Unregister keyboard shortcuts
     HAXCMSKeyboardShortcutsInstance.disable();
 
-    window.removeEventListener("dragenter", this.__boundWindowDragEnter);
-    window.removeEventListener("dragleave", this.__boundWindowDragLeave);
-    window.removeEventListener("dragover", this.__boundWindowDragOver);
-    window.removeEventListener("drop", this.__boundWindowDrop);
-    window.removeEventListener("drop", this.__boundWindowDropCleanup, true);
+    globalThis.removeEventListener("dragenter", this.__boundWindowDragEnter);
+    globalThis.removeEventListener("dragleave", this.__boundWindowDragLeave);
+    globalThis.removeEventListener("dragover", this.__boundWindowDragOver);
+    globalThis.removeEventListener("drop", this.__boundWindowDrop);
+    globalThis.removeEventListener("drop", this.__boundWindowDropCleanup, true);
     for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
@@ -8055,7 +8061,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-height": "80px",
               "--simple-modal-width": "80vw",
               "--simple-modal-max-width": "80vw",
-              "--simple-modal-min-width": "300px",
               "--simple-modal-min-width": "300px",
               "--simple-modal-height": "80vh",
               "--simple-modal-max-height": "80vh",

@@ -271,7 +271,9 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
    * @readonly
    * @memberof SimpleFieldsContainerBehaviors
    */
-  get slottedFieldObserver() {}
+  get slottedFieldObserver() {
+    return undefined;
+  }
 
   /**
    * checks validation constraints and returns error data

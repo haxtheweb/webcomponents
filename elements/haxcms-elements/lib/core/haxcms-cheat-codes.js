@@ -2298,7 +2298,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       let effectCleanup = null;
 
       switch (effect) {
-        case "contentDisappear":
+        case "contentDisappear": {
           const editButtons = globalThis.document.querySelectorAll(
             '[data-hax-ray="editButton"], button[aria-label*="edit"], .edit-btn',
           );
@@ -2328,8 +2328,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             }
           };
           break;
+}
 
-        case "fakeError":
+        case "fakeError": {
           const errorModal = globalThis.document.createElement("div");
           errorModal.className = "eternal-darkness-error";
           errorModal.style.cssText = `
@@ -2369,8 +2370,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             if (errorModal.parentNode) errorModal.remove();
           };
           break;
+}
 
-        case "volumeMeter":
+        case "volumeMeter": {
           const volumeModal = globalThis.document.createElement("div");
           volumeModal.className = "eternal-darkness-volume";
           volumeModal.style.cssText = `
@@ -2413,8 +2415,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             clearInterval(volumeInterval),
           );
           break;
+}
 
-        case "cursorGlitch":
+        case "cursorGlitch": {
           const originalCursor = globalThis.document.body.style.cursor;
           const cursors = [
             "wait",
@@ -2442,8 +2445,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             clearInterval(cursorInterval),
           );
           break;
+}
 
-        case "zombieInvasion":
+        case "zombieInvasion": {
           const invasionContainer = globalThis.document.createElement("div");
           invasionContainer.className = "eternal-darkness-invasion";
           invasionContainer.style.cssText = `
@@ -2571,8 +2575,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             clearInterval(growthInterval),
           );
           break;
+}
 
-        case "buttonSwap":
+        case "buttonSwap": {
           const buttons = globalThis.document.querySelectorAll("button");
           const originalButtonTexts = [];
 
@@ -2591,8 +2596,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             });
           };
           break;
+}
 
-        case "textScramble":
+        case "textScramble": {
           const textElements = globalThis.document.querySelectorAll(
             "p, h1, h2, h3, h4, h5, h6, span, div",
           );
@@ -2623,8 +2629,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             });
           };
           break;
+}
 
-        case "mouseScaleDown":
+        case "mouseScaleDown": {
           const body = globalThis.document.body;
           body.style.transformOrigin = "center center";
           body.style.transition = "transform 0.3s ease-out";
@@ -2660,8 +2667,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             body.style.transition = "";
           };
           break;
+}
 
-        case "mouseScaleUp":
+        case "mouseScaleUp": {
           const bodyUp = globalThis.document.body;
           bodyUp.style.transformOrigin = "center center";
           bodyUp.style.transition = "transform 0.3s ease-out";
@@ -2694,6 +2702,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             bodyUp.style.transition = "";
           };
           break;
+}
       }
 
       // Store cleanup function

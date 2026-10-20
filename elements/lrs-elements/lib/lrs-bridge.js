@@ -86,7 +86,9 @@ class LrsBridge extends LitElement {
       fetch(this.endpoint, query)
         .then((res) => res.json())
         .then((_res) => {});
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
   }
 
   /**

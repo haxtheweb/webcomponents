@@ -66,6 +66,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
    */
   get promptCommandVal() {
     this.commandVal = undefined;
+    return undefined;
   }
 
   /**

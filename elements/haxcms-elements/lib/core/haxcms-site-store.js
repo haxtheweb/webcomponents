@@ -54,43 +54,30 @@ export function iconFromPageType(type) {
       return "hax:shovel";
     case "connection":
       return "courseicons:chem-connection";
-      break;
     case "knowledge":
       return "courseicons:knowledge";
-      break;
     case "strategy":
       return "courseicons:strategy";
-      break;
     case "discuss":
       return "courseicons:strategy";
-      break;
     case "listen":
       return "courseicons:listen";
-      break;
     case "make":
       return "courseicons:strategy";
-      break;
     case "observe":
       return "courseicons:strategy";
-      break;
     case "present":
       return "courseicons:strategy";
-      break;
     case "read":
       return "courseicons:strategy";
-      break;
     case "reflect":
       return "courseicons:strategy";
-      break;
     case "research":
       return "courseicons:strategy";
-      break;
     case "watch":
       return "courseicons:strategy";
-      break;
     case "write":
       return "lrn:write";
-      break;
   }
   return "courseicons:learning-objectives";
 }
@@ -313,6 +300,7 @@ class Store {
       });
       return entityData;
     }
+    return undefined;
   }
 
   /**
@@ -387,7 +375,7 @@ class Store {
       .toLowerCase()
       .split(" ")
       .join("-")
-      .replace(/[^0-9\-\/a-z]/gi, "");
+      .replace(/[^0-9\-/a-z]/gi, "");
   }
   // see if this device is poor
   async evaluatebadDevice() {
@@ -475,8 +463,8 @@ class Store {
    */
   async loadManifest(manifest, target = null) {
     // support a custom target or ensure event fires off window
-    if (target == null && window) {
-      target = window;
+    if (target == null && globalThis) {
+      target = globalThis;
     }
     // @todo replace this with a schema version mapper
     if (varExists(manifest, "metadata.siteName")) {
@@ -523,13 +511,13 @@ class Store {
       }
       // we default published to true if not set
       // this avoids constantly checking downstream
-      if (!item.metadata.hasOwnProperty("published")) {
+      if (!Object.prototype.hasOwnProperty.call(item.metadata, "published")) {
         array[index].metadata.published = true;
       }
       // fix order typing
       array[index].order = Number(array[index].order);
       // we default locked to false if not set
-      if (!item.metadata.hasOwnProperty("locked")) {
+      if (!Object.prototype.hasOwnProperty.call(item.metadata, "locked")) {
         array[index].metadata.locked = false;
       }
       // normalize parent to null if empty string or undefined
@@ -544,7 +532,7 @@ class Store {
     let correctOrder = site.nodesToItems(nodes);
     let newItems = [];
     // build a new array in the correct order by pushing the old items around
-    for (var key in correctOrder) {
+    for (let key in correctOrder) {
       newItems.push(
         manifest.items.find((element) => {
           return element.id === correctOrder[key].id;
@@ -597,7 +585,9 @@ class Store {
     return this.cmsSiteEditor.instance;
   }
 
-  get processedItems() {}
+  get processedItems() {
+    return undefined;
+  }
   /**
    * Get children given an item
    */
@@ -746,6 +736,7 @@ class Store {
         items: manifestItems,
       });
     }
+    return undefined;
   }
   /**
    * Return the site title
@@ -793,7 +784,7 @@ class Store {
       (item === null || typeof item === "undefined")
     ) {
       switch (this.activeId) {
-        case "404":
+        case "404": {
           // 404 page bc of a miss on the router
           item = {
             id: "404",
@@ -823,6 +814,7 @@ class Store {
             };
           }
           break;
+        }
       }
     }
     // ensure we found something, return null for consistency in data
@@ -851,6 +843,7 @@ class Store {
         return Object.assign({}, fields, this.activeItem.metadata.fields);
       }
     }
+    return undefined;
   }
   /**
    * get theme data from manifest + activeId combo
@@ -891,6 +884,7 @@ class Store {
       }
       return themeData;
     }
+    return undefined;
   }
   /**
    * Get the active manifest index array position
@@ -1361,7 +1355,7 @@ class Store {
     let correctOrder = schema.nodesToItems(nodes);
     let newItems = [];
     // build a new array in the correct order by pushing the old items around
-    for (var key in correctOrder) {
+    for (let key in correctOrder) {
       newItems.push(
         schema.items.find((element) => {
           return element.id === correctOrder[key].id;

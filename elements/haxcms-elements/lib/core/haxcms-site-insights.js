@@ -857,7 +857,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           }
         }
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     this._setReportTabsFromDescriptors(descriptors);
     this.__loadingReportTabs = false;
   }
@@ -1167,7 +1169,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       if (loadedFromV1) {
         return;
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     this.loading = false;
   }
   /**
@@ -1285,13 +1289,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         switch (this.filters.sort) {
           case "title":
             return a.title.localeCompare(b.title);
-            break;
           case "contentLength":
             return b.readTime - a.readTime;
-            break;
           case "lastUpdated":
             return new Date(b.updated) - new Date(a.updated);
-            break;
         }
       });
     }

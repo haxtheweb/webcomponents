@@ -283,7 +283,9 @@ export function buildPublicTools(getManifest, fetchImpl = globalThis.fetch) {
             if (response && response.ok) {
               markdown = await response.text();
             }
-          } catch {}
+          } catch {
+            // intentionally empty
+          }
         }
         return JSON.stringify(Object.assign(summarizeItem(item), { markdown }));
       },

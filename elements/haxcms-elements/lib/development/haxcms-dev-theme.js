@@ -241,8 +241,8 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
                 <div>changed: ${item.metadata ? item.metadata.updated : ""}</div>
               </div>
               <div class="card-actions">
-                <a tabindex="-1" href$="${item.slug}"
-                  ><button data-id$="${item.id}" @click="${this._itemTapped}">
+                <a tabindex="-1" href="${item.slug}"
+                  ><button data-id="${item.id}" @click="${this._itemTapped}">
                     Set as active
                   </button></a
                 >

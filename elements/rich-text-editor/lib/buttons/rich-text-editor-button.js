@@ -385,7 +385,9 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           sel.removeAllRanges();
           try {
             sel.addRange(saved);
-          } catch {}
+          } catch {
+            // intentionally empty
+          }
           // addRange may silently fail in shadow DOM; try setBaseAndExtent
           if (sel.rangeCount === 0) {
             try {
@@ -399,7 +401,9 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
               // last resort: collapse to caret position
               try {
                 sel.collapse(saved.startContainer, saved.startOffset);
-              } catch {}
+              } catch {
+                // intentionally empty
+              }
             }
           }
           // Keep saved range for _handleCommand; don't null it yet

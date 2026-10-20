@@ -398,7 +398,7 @@ class LinkedinEmbed extends I18NMixin(DDD) {
         ? globalThis.location.origin
         : "*",
     );
-    const sizeScript = `<script>(function(){function s(){var b=document.body;if(!b)return;parent.postMessage({type:"linkedin-embed-size",height:b.scrollHeight||300,width:b.scrollWidth||330},${parentOrigin});}window.addEventListener("load",s);setTimeout(s,500);setTimeout(s,2000);})();<\/script>`;
+    const sizeScript = `<script>(function(){function s(){var b=document.body;if(!b)return;parent.postMessage({type:"linkedin-embed-size",height:b.scrollHeight||300,width:b.scrollWidth||330},${parentOrigin});}window.addEventListener("load",s);setTimeout(s,500);setTimeout(s,2000);})();</script>`;
     // security: write badge via srcdoc instead of document.write (avoids JS-XSS-002 document.write sink)
     iframe.srcdoc = `<!doctype html><html><head><base target="_blank"><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent;line-height:0;}</style></head><body>${badgeHtml}${sizeScript}</body></html>`;
   }

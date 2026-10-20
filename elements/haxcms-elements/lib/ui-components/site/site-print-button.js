@@ -145,13 +145,10 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     switch (type) {
       case "page":
         return `${t.printPage}`;
-        break;
       case "site":
         return `${t.printSite}`;
-        break;
       default:
         return `${t.printOutline}`;
-        break;
     }
   }
   /**

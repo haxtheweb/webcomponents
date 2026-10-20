@@ -293,6 +293,7 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
     while (count < amount) {
       let icon = "star";
       if (count + 1 <= amount * this._calPercent) {
+        // intentionally empty
       } else if (
         amount * this._calPercent - (count + 1) < -0.01 &&
         amount * this._calPercent - (count + 1) >= -0.5

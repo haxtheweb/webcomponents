@@ -248,7 +248,7 @@ class HaxPicker extends I18NMixin(LitElement) {
     switch (pickerType) {
       // hax gizmo selector
       case "gizmo":
-        for (var i in elements) {
+        for (let i in elements) {
           elements[i].__type = type;
           tmp.push({
             icon: elements[i].gizmo.icon,
@@ -262,7 +262,7 @@ class HaxPicker extends I18NMixin(LitElement) {
         break;
       // app selector
       case "app":
-        for (var i in elements) {
+        for (let i in elements) {
           tmp.push({
             icon: elements[i].details.icon,
             title: elements[i].details.title,

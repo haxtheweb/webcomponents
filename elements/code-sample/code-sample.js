@@ -439,7 +439,6 @@ const great = "example";</template>`,
     margin: 4px;
   }
 `;
-        break;
       case "html":
         return `
   <blockquote>
@@ -450,7 +449,6 @@ const great = "example";</template>`,
   John
   </blockquote>
 `;
-        break;
       case "javascript":
       case "js":
         return `const everyBody = "to the limit";
@@ -458,24 +456,20 @@ const great = "example";</template>`,
   if (theCheat) {
     return \`is \${everyBody}\`;
   }`;
-        break;
       case "xml":
         return `<IAmLike>
   <ComeOn>fhqwhgads</ComeOn>
 </IAmLike>`;
-        break;
       case "yaml":
         return `- CaracterList:
   - Homestar Runner
   - Strongbad
   - The Cheat`;
-        break;
       case "php":
         return `  $MrTheCheat = "wins the big race";
 if ($MrTheCheat) {
   return "HaVe A tRoPhY";
 }`;
-        break;
       case "json":
         return `{
   "mainMenu": [
@@ -486,7 +480,6 @@ if ($MrTheCheat) {
     "Store"
   ]
 }`;
-        break;
     }
   }
 

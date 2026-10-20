@@ -1163,7 +1163,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       // WebKit: use getComposedRanges to pierce shadow DOM boundaries.
       // Collect ALL shadow roots from the target's ancestor chain.
       if (isWebKit()) {
-        var sel = globalThis.getSelection();
+        let sel = globalThis.getSelection();
         if (sel && sel.getComposedRanges) {
           try {
             let allRoots = [];
@@ -1195,7 +1195,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       // (LitElement, incl. rich-text-editor itself) always lost the range
       // here (issue #3077, bug 2)
       try {
-        var sel = globalThis.document.getSelection
+        let sel = globalThis.document.getSelection
           ? globalThis.document.getSelection()
           : globalThis.getSelection();
         if (sel && sel.rangeCount > 0) {
@@ -1506,7 +1506,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
                     toolbarRef.range = range;
                     return;
                   }
-                } catch {}
+                } catch {
+                  // intentionally empty
+                }
               }
               // Fallback
               try {
@@ -1514,7 +1516,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
                 if (r) {
                   toolbarRef.__webkitSavedRange = r.cloneRange();
                 }
-              } catch {}
+              } catch {
+                // intentionally empty
+              }
             };
           }
           target.addEventListener("mouseup", this.__webkitTargetSelHandler);

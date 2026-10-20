@@ -261,7 +261,7 @@ class MatchingQuestion extends QuestionElement {
 
   isCorrect() {
     let gotRight = true;
-    for (var i = 0; i < this.matchAnswers.length; i++) {
+    for (let i = 0; i < this.matchAnswers.length; i++) {
       // if the match index does not line up with the guess index we got it wrong
       if (this.matchAnswers[i].guess !== this.matchAnswers[i].match) {
         gotRight = false;
@@ -272,7 +272,7 @@ class MatchingQuestion extends QuestionElement {
     }
     // this implies we left correct answers off the table
     // we don't show correctness though when not in matchAnswers tho
-    for (var i = 0; i < this.displayedAnswers.length; i++) {
+    for (let i = 0; i < this.displayedAnswers.length; i++) {
       if (this.displayedAnswers[i].match !== false) {
         gotRight = false;
       }

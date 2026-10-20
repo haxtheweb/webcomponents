@@ -208,7 +208,7 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
    */
   possiblePhone(text) {
     return text.match(
-      /^(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e][X|x][T|t][\:|\.|]?)|x|X)(\s?\d+))?$/,
+      /^(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e][X|x][T|t][:|.|]?)|x|X)(\s?\d+))?$/,
     );
   }
   /**
@@ -232,7 +232,7 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
       this.filteredOptions = [
         {
           value: `tel:${filter
-            .replace(/[\(\)\-\s\:\.]/g, "")
+            .replace(/[()\-\s:.]/g, "")
             .replace(/[a-zA-Z]+/, "p")}`,
           id: "tel",
         },

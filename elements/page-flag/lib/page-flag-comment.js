@@ -193,7 +193,6 @@ export class PageFlagComment extends I18NMixin(LitElement) {
   }
   static get styles() {
     return [
-      ,
       css`
         :host {
           display: block;

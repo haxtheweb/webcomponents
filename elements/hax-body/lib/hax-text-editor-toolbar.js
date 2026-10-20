@@ -198,7 +198,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       globalThis.HaxTextEditorToolbarConfig || {};
     globalThis.HaxTextEditorToolbarConfig.inlineGizmos =
       globalThis.HaxTextEditorToolbarConfig.inlineGizmos || {};
-    globalThis.HaxTextEditorToolbarConfig.default = window
+    globalThis.HaxTextEditorToolbarConfig.default = globalThis
       .HaxTextEditorToolbarConfig.default || [...this.defaultConfig];
     this.config = globalThis.HaxTextEditorToolbarConfig.default;
     this.sticky = false;

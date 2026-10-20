@@ -414,6 +414,7 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
     }
     // anything else we ignore sot hat contentContainer can be set manually
     else {
+      // intentionally empty
     }
     setTimeout(() => {
       this.updateMenu();

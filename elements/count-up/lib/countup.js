@@ -1,10 +1,10 @@
-var __assign =
+let __assign =
     (globalThis && globalThis.__assign) ||
     function () {
       return (__assign =
         Object.assign ||
         function (t) {
-          for (var i, a = 1, s = arguments.length; a < s; a++)
+          for (let i, a = 1, s = arguments.length; a < s; a++)
             for (let n in (i = arguments[a]))
               Object.prototype.hasOwnProperty.call(i, n) && (t[n] = i[n]);
 

@@ -54,7 +54,7 @@ class ContentStateManager {
   }
 
   setState(key, value) {
-    if (this.states.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(this.states, key)) {
       this.states[key] = value;
       if (!value) {
         this.notifyListeners(key);
@@ -866,7 +866,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   }
 
   get isGridActive() {
-    return HAXStore.isGridPlateElement(activeNode);
+    return HAXStore.isGridPlateElement(this.activeNode);
   }
 
   /**
@@ -1015,6 +1015,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // what can cause this is monaco-editor
       // @todo implement a possible hook here
       if (HAXStore.activeEditingElement) {
+        // intentionally empty
       }
     }
   }
@@ -1513,7 +1514,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 }
               }
               break;
-            case "Enter":
+            case "Enter": {
               this._useristyping = true;
               let handledEnter = false;
               if (this.activeNode) {
@@ -1751,6 +1752,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 );
               }
               break;
+            }
             // extra trap set for this in case we care that we are in the act of deleting
             case "Backspace":
             case "Delete":
@@ -1852,7 +1854,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             case "Escape":
               this._useristyping = true;
               break;
-            case "/":
+            case "/": {
               const rng = HAXStore.getRange();
               let slashTarget = this.activeNode;
               // If the cursor is inside a list item, use the LI as the target
@@ -1929,6 +1931,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 SuperDaemonInstance.open();
               }
               break;
+            }
             case "ArrowUp":
             case "ArrowDown":
             case "ArrowLeft":
@@ -2193,7 +2196,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     let guess = node.textContent
       .replaceAll(/\u200b/g, "")
-      .replaceAll(/ /g, " ")
+      .replaceAll(/\u00A0/g, " ")
       .replaceAll(/\n/g, "")
       .replaceAll(/\r/g, "");
     if (guess[0] === " ") {
@@ -2721,7 +2724,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (!node) return;
     let grid = this.getParentGrid(node);
     return !!grid && !!grid.tag
-      ? this.getSlotConfig(HAXStore.elementList[grid.tag], slot)
+      ? this.getSlotConfig("", HAXStore.elementList[grid.tag])
       : undefined;
   }
   /**
@@ -2897,7 +2900,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // support for properties if they exist
     for (let property in properties) {
       let attributeName = camelToDash(property);
-      if (attributeName != "" && properties.hasOwnProperty(property)) {
+      if (
+        attributeName != "" &&
+        Object.prototype.hasOwnProperty.call(properties, property)
+      ) {
         // special supporting for boolean because html is weird :p
         if (properties[property] === true) {
           newNode.setAttribute(attributeName, attributeName);
@@ -2908,6 +2914,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           properties[property].constructor === Array
         ) {
           if (newNode.properties && newNode.properties[property].readOnly) {
+            // intentionally empty
           } else {
             if (newNode.set) {
               newNode.set(attributeName, properties[property]);
@@ -2920,6 +2927,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           properties[property].constructor === Object
         ) {
           if (newNode.properties && newNode.properties[property].readOnly) {
+            // intentionally empty
           } else {
             if (newNode.set) {
               newNode.set(attributeName, properties[property]);
@@ -3071,7 +3079,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           })
         : [];
     let content = "";
-    for (var i = 0; i < children.length; i++) {
+    for (let i = 0; i < children.length; i++) {
       // skip the auto-inserted trailing text affordance entirely when
       // it's still empty; it's a UX-only aid and should never be part
       // of saved / serialized content. If the user actually typed
@@ -3146,7 +3154,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
     }
     // remove the contenteditable attribute
-    content = content.replace(/\scontenteditable=\"false\"/g, "");
+    content = content.replace(/\scontenteditable="false"/g, "");
     content = content.replace(/\scontenteditable/g, "");
     content = content.replace(/\sdraggable/g, "");
     // target and remove hax specific things from output if they slipped through
@@ -3176,7 +3184,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       content = content.replace(re, "");
       // now all tags we have defined as valid
       let tags = HAXStore.validTagList;
-      for (var i in tags) {
+      for (let i in tags) {
         string = "style-scope " + tags[i];
         re = new RegExp(string, "g");
         content = content.replace(re, "");
@@ -3189,8 +3197,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
     }
     // remove empty class structures
-    content = content.replace(/\sclass=\"\"/g, "");
-    content = content.replace(/\sclass=\"\s\"/g, "");
+    content = content.replace(/\sclass=""/g, "");
+    content = content.replace(/\sclass="\s"/g, "");
     // re-apply contenteditable if needed
     this._applyContentEditable(this.editMode);
     HAXStore.activeNode = __active;
@@ -3473,7 +3481,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           case "1-3":
           case "3-1":
           case "1-1":
-          case "1":
+          case "1": {
             // implies we are removing the grid plate
             let cloneEl;
             await node.childNodes.forEach((el) => {
@@ -3496,6 +3504,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }, 0);
             changed = true;
             break;
+          }
           case "1-1-1":
             node.layout = "1-1";
             changed = true;
@@ -3675,7 +3684,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         wrap(currentNode, replacement);
         return replacement;
-      case "outdent":
+      case "outdent": {
         if (!currentNode || !currentNode.parentNode) {
           return node;
         }
@@ -3769,6 +3778,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         } else {
           return this.haxChangeTagName(node, "p", true);
         }
+      }
       default:
         // Persist contents
         // account for empty list and ordered list items
@@ -4138,8 +4148,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             //make sure we target correct slot after dom changes
             //setTimeout(targetItem(), 500);
           } else {
-            this.setActiveNode(node, true);
-            this.positionContextMenus(node);
+            nodePosition();
           }
         }
         break;
@@ -4229,7 +4238,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             oldSchema.saveOptions.unsetAttributes &&
             oldSchema.saveOptions.unsetAttributes.length
           ) {
-            for (var i in oldSchema.saveOptions.unsetAttributes) {
+            for (let i in oldSchema.saveOptions.unsetAttributes) {
               replacement.removeAttribute(
                 oldSchema.saveOptions.unsetAttributes[i],
               );
@@ -4302,7 +4311,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             oldSchema.saveOptions.unsetAttributes &&
             oldSchema.saveOptions.unsetAttributes.length
           ) {
-            for (var i in oldSchema.saveOptions.unsetAttributes) {
+            for (let i in oldSchema.saveOptions.unsetAttributes) {
               replacement.removeAttribute(
                 oldSchema.saveOptions.unsetAttributes[i],
               );
@@ -4375,7 +4384,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         HAXStore.haxTray.trayDetail = "content-edit";
         break;
-      case "super-daemon":
+      case "super-daemon": {
         const rng = HAXStore.getRange();
         SuperDaemonInstance.mini = true;
         SuperDaemonInstance.activeRange = rng;
@@ -4393,6 +4402,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         SuperDaemonInstance.runProgram(active.textContent.trim(), "*");
         SuperDaemonInstance.open();
         break;
+      }
       case "hide-context-menus":
         this.hideContextMenus();
         break;
@@ -4781,7 +4791,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       let activeKids = this.querySelectorAll(
         "[contenteditable],[data-hax-active],[data-hax-empty]",
       );
-      for (var i = 0; i < activeKids.length; i++) {
+      for (let i = 0; i < activeKids.length; i++) {
         let el = activeKids[i];
         el.removeAttribute("contenteditable");
         el.removeAttribute("data-hax-active");
@@ -4800,7 +4810,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       children = this.shadowRoot.querySelector("#body").children;
     }
     // see if anyone cares about editMode changing; some link based things do
-    for (var i = 0; i < children.length; i++) {
+    for (let i = 0; i < children.length; i++) {
       await HAXStore.runHook(children[i], "editModeChanged", [newValue]);
     }
     // apply our specialized mutation observer or remove it
@@ -4889,13 +4899,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         mutations.forEach((mutation) => {
           // move toolbar when active Node is deleted
           if (mutation.removedNodes.length > 0)
-            for (var node of mutation.removedNodes) {
+            for (let node of mutation.removedNodes) {
               if (mutation.previousSibling && this.activeNode == node) {
                 //this.setActiveNode(mutation.previousSibling);
               }
             }
           if (mutation.addedNodes.length > 0) {
-            for (var node of mutation.addedNodes) {
+            for (let node of mutation.addedNodes) {
               if (this.__isTransientEditorStyleSpan(node)) {
                 this.__unwrapTransientEditorStyleSpan(node);
                 continue;
@@ -5513,7 +5523,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __layoutCanMove(target, layout, before) {
     if (!layout.shadowRoot) return false;
-    let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
+    let slot = target.getAttribute("slot"),
+      container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
       containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
         (node) => node.parentNode,
       ),
@@ -5529,7 +5540,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __layoutMove(target, layout, before) {
     if (!layout.shadowRoot) return false;
-    let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
+    let currentSlot = target.getAttribute("slot"),
+      container = layout.shadowRoot.querySelector(`[slot=${currentSlot}]`),
       containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
         (node) => node.parentNode,
       ),
@@ -6416,13 +6428,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.__addAbove = false;
     }
   }
-  dragLeave(e) {
-    if (this.editMode && e.currentTarget && e.currentTarget.classList) {
-      e.currentTarget.classList.remove("hax-hovered");
-      e.currentTarget.classList.remove("hax-drop-above");
-      e.currentTarget.classList.remove("hax-drop-below");
-    }
-  }
   dragEnter(e) {
     if (
       this.editMode &&
@@ -6557,26 +6562,26 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
       // Should we scroll left?
       if (isInLeftEdge && canScrollLeft) {
-        var intensity = (edgeLeft - viewportX) / edgeSize;
+        let intensity = (edgeLeft - viewportX) / edgeSize;
 
         nextScrollX = nextScrollX - maxStep * intensity;
 
         // Should we scroll right?
       } else if (isInRightEdge && canScrollRight) {
-        var intensity = (viewportX - edgeRight) / edgeSize;
+        let intensity = (viewportX - edgeRight) / edgeSize;
 
         nextScrollX = nextScrollX + maxStep * intensity;
       }
 
       // Should we scroll up?
       if (isInTopEdge && canScrollUp) {
-        var intensity = (edgeTop - viewportY) / edgeSize;
+        let intensity = (edgeTop - viewportY) / edgeSize;
 
         nextScrollY = nextScrollY - maxStep * intensity;
 
         // Should we scroll down?
       } else if (isInBottomEdge && canScrollDown) {
-        var intensity = (viewportY - edgeBottom) / edgeSize;
+        let intensity = (viewportY - edgeBottom) / edgeSize;
 
         nextScrollY = nextScrollY + maxStep * intensity;
       }

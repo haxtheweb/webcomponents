@@ -688,6 +688,8 @@ export class WebContainerEl extends I18NMixin(DDDSuper(LitElement)) {
 
   refreshIframe() {
     const iframe = this.shadowRoot.querySelector('iframe');
+    // assigning src to itself is the intentional way to reload the iframe
+    // eslint-disable-next-line no-self-assign
     iframe.src = iframe.src;
   }
 

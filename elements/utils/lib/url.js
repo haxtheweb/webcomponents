@@ -1,13 +1,17 @@
-export var badURLProtocols = ["javascript:", "vbscript:", "data:"];
+export let badURLProtocols = ["javascript:", "vbscript:", "data:"];
 
 function urlValueToProtocolCheck(value) {
   if (typeof value !== "string") {
     return "";
   }
-  return value
-    .trim()
-    .replace(/[\u0000-\u001F\u007F\s]+/g, "")
-    .toLowerCase();
+  return (
+    value
+      .trim()
+      // strip control characters on purpose (URL sanitizing)
+      // eslint-disable-next-line no-control-regex
+      .replace(/[\u0000-\u001F\u007F\s]+/g, "")
+      .toLowerCase()
+  );
 }
 
 function protocolFromValue(value) {

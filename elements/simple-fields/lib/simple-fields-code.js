@@ -189,7 +189,9 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
    * @readonly
    * @memberof SimpleFieldsContainerBehaviors
    */
-  get slottedFieldObserver() {}
+  get slottedFieldObserver() {
+    return undefined;
+  }
 
   /**
    * checks validation constraints and returns error data

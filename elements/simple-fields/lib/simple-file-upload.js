@@ -311,8 +311,8 @@ class SimpleFileUpload extends I18NMixin(DDD) {
     this.addEventListener("dragleave", this._onDragLeave);
     this.addEventListener("dragover", this._onDragOver);
     this.addEventListener("drop", this._onDrop);
-    window.addEventListener("dragover", this._preventWindowDrop, true);
-    window.addEventListener("drop", this._preventWindowDrop, true);
+    globalThis.addEventListener("dragover", this._preventWindowDrop, true);
+    globalThis.addEventListener("drop", this._preventWindowDrop, true);
   }
 
   disconnectedCallback() {
@@ -320,8 +320,8 @@ class SimpleFileUpload extends I18NMixin(DDD) {
     this.removeEventListener("dragleave", this._onDragLeave);
     this.removeEventListener("dragover", this._onDragOver);
     this.removeEventListener("drop", this._onDrop);
-    window.removeEventListener("dragover", this._preventWindowDrop, true);
-    window.removeEventListener("drop", this._preventWindowDrop, true);
+    globalThis.removeEventListener("dragover", this._preventWindowDrop, true);
+    globalThis.removeEventListener("drop", this._preventWindowDrop, true);
     super.disconnectedCallback();
   }
 

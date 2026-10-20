@@ -170,7 +170,7 @@ class A11yCollapseGroup extends LitElement {
     if (propName === "globalOptions" || propName === "__items") {
       if (Object.keys(this.globalOptions).length > 0)
         for (let key in this.globalOptions) {
-          if (this.globalOptions.hasOwnProperty(key)) {
+          if (Object.prototype.hasOwnProperty.call(this.globalOptions, key)) {
             item[key] = this.globalOptions[key];
           }
         }

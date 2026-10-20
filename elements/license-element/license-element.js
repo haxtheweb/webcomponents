@@ -182,10 +182,9 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
               <span
                 >${this._fillTemplate(this.t.permissionsBeyondScope, {
                   link: html`<a
-                    rel="cc:morePermissions"
+                    rel="cc:morePermissions noopener noreferrer"
                     target="_blank"
                     href="${this.moreLink}"
-                    rel="noopener noreferrer"
                     >${this.moreLabel}</a
                   >`,
                 })}</span

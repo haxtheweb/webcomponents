@@ -113,8 +113,8 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
       //going up
       if (this.dragPosition + changeBuffer < this.currentPosition) {
         //find old index
-        var oldIndex;
-        for (var i = 0; i < parent.children.length; i++) {
+        let oldIndex;
+        for (let i = 0; i < parent.children.length; i++) {
           if (parent.children[i].isEqualNode(element)) {
             oldIndex = i;
           }
@@ -129,8 +129,8 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
       //going down
       if (this.dragPosition - changeBuffer > this.currentPosition) {
         //find old index
-        var oldIndex;
-        for (var i = 0; i < parent.children.length; i++) {
+        let oldIndex;
+        for (let i = 0; i < parent.children.length; i++) {
           if (parent.children[i].isEqualNode(element)) {
             oldIndex = i;
           }

@@ -486,10 +486,10 @@ class GradeBookLite extends UIRenderPieces(
     let tmp = table.shift();
     let headings = {};
     let data = [];
-    for (var i in tmp) {
+    for (let i in tmp) {
       headings[tmp[i]] = i;
     }
-    for (var i in table) {
+    for (let i in table) {
       let item = {};
       for (let j in headings) {
         item[j] = table[i][headings[j]];
@@ -509,7 +509,9 @@ class GradeBookLite extends UIRenderPieces(
         try {
           const event = new Date(`${data[i].dueDate} ${data[i].dueTime}`);
           data[i]._ISODueDate = event.toISOString();
-        } catch {}
+        } catch {
+          // intentionally empty
+        }
       }
     }
     return data;
@@ -1114,7 +1116,7 @@ class GradeBookLite extends UIRenderPieces(
     // active dom, but remove the Lit comments from response
     let htmlContent = this.shadowRoot
       .querySelector("#studentreport")
-      .innerHTML.replace(/<\!--.*?-->/g, "")
+      .innerHTML.replace(/<!--.*?-->/g, "")
       .replace(/\s+/g, " ")
       .trim();
     // base helps w/ calculating URLs in content

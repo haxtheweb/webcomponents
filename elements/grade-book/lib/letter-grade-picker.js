@@ -182,6 +182,7 @@ class LetterGradePicker extends LitElement {
         import("@haxtheweb/simple-fields/lib/simple-fields-field.js");
       }
       if (propName === "reveal" && this[propName]) {
+        // intentionally empty
       }
       if (["value", "score"].includes(propName)) {
         this.dispatchEvent(

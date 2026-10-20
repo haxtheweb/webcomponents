@@ -646,7 +646,9 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
             sel.removeAllRanges();
             try {
               sel.addRange(webkitRange);
-            } catch {}
+            } catch {
+              // intentionally empty
+            }
             // addRange may silently fail in shadow DOM; try setBaseAndExtent
             if (sel.rangeCount === 0) {
               try {
@@ -663,7 +665,9 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
                     webkitRange.startContainer,
                     webkitRange.startOffset,
                   );
-                } catch {}
+                } catch {
+                  // intentionally empty
+                }
               }
             }
           }

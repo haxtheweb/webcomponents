@@ -118,7 +118,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
                 switch (mutation.type) {
                   case "attributes":
                     switch (mutation.attributeName) {
-                      case "title":
+                      case "title": {
                         const pageBreakTitle =
                           haxStore.activeHaxBody.querySelector("page-break");
                         if (pageBreakTitle) {
@@ -131,8 +131,9 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
                           );
                         }
                         break;
+                      }
                       case "icon":
-                      case "page-type":
+                      case "page-type": {
                         const pageBreakIcon =
                           haxStore.activeHaxBody.querySelector("page-break");
                         if (pageBreakIcon && pageBreakIcon.icon) {
@@ -143,6 +144,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
                           this.icon = null;
                         }
                         break;
+                      }
                     }
                     break;
                 }
@@ -208,16 +210,13 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
           return activeTitle;
         }
         return parentTitle;
-        break;
       case "ancestor":
         if (ancestorTitle === "" && !this.noFallback) {
           return activeTitle;
         }
         return ancestorTitle;
-        break;
       default:
         return activeTitle;
-        break;
     }
   }
   /**

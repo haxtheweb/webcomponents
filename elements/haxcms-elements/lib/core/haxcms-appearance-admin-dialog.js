@@ -551,7 +551,9 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
           }
         }
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     this.refreshFromManifest();
   }
 
@@ -1072,7 +1074,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       this.__groupValues[groupKey] = incoming;
     }
     // if the theme changed, update the palette field options
-    if (incoming.hasOwnProperty("manifest-metadata-theme-element")) {
+    if (Object.prototype.hasOwnProperty.call(incoming, "manifest-metadata-theme-element")) {
       this._updatePaletteFieldOptions(
         incoming["manifest-metadata-theme-element"],
       );
@@ -1101,7 +1103,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
     const paletteField = { ...paletteGroup.fields[paletteFieldIndex] };
     if (paletteOptions) {
       paletteField.options = paletteOptions;
-    } else if (paletteField.hasOwnProperty("options")) {
+    } else if (Object.prototype.hasOwnProperty.call(paletteField, "options")) {
       delete paletteField.options;
     }
     paletteGroup.fields[paletteFieldIndex] = paletteField;

@@ -179,13 +179,14 @@ class SiteActiveTags extends I18NMixin(LitElement) {
                 switch (mutation.type) {
                   case "attributes":
                     switch (mutation.attributeName) {
-                      case "tags":
+                      case "tags": {
                         const pageBreak =
                           haxStore.activeHaxBody.querySelector("page-break");
                         if (pageBreak) {
                           this.tags = pageBreak.tags;
                         }
                         break;
+                      }
                     }
                     break;
                 }

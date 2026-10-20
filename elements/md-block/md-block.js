@@ -109,7 +109,6 @@ class MdBlock extends DDD {
             inputMethod: "haxupload",
             noVoiceRecord: true,
             noCamera: true,
-            noVoiceRecord: true,
           },
         ],
         advanced: [],

@@ -925,8 +925,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           match =
             altKey === keyEvt.altKey &&
             (ctrlKey === keyEvt.ctrlKey ||
-              ((ctrlKey === globalThis.navigator.platform) === "MacIntel" &&
-                e.metaKey)) &&
+              (ctrlKey &&
+                globalThis.navigator.platform === "MacIntel" &&
+                keyEvt.metaKey)) &&
             metaKey === keyEvt.metaKey &&
             shiftKey === keyEvt.shiftKey &&
             (keyEvt.key ? keyEvt.key === key : !key);

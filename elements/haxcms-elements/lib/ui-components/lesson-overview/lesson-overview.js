@@ -168,7 +168,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
             item.title = this.t.lessonDataTablesCount.replace("{count}", () => value);
             item.icon = "image:grid-on";
             break;
-          case "pages":
+          case "pages": {
             let items = [];
             item.title = this.t.lessonPagesCount.replace("{count}", () => value);
             if (data.objectives) {
@@ -195,10 +195,11 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
             item.subtitle = items.join(", ");
             item.icon = "editor:insert-drive-file";
             break;
-          case "readTime":
+}
+          case "readTime": {
             let readVal = [];
-            var hours = Math.floor(value / 60);
-            var minutes = Math.floor(value - hours * 60);
+            let hours = Math.floor(value / 60);
+            let minutes = Math.floor(value - hours * 60);
             // handle hours of reading
             if (hours === 1) {
               readVal.push(`${hours} ${this.t.hour}`);
@@ -222,6 +223,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
             item.subtitle = this.t.lessonReadingEstimate;
             item.icon = "communication:import-contacts";
             break;
+}
           case "selfChecks":
             item.title = this.t.lessonInteractiveItemsCount.replace(
               "{count}",

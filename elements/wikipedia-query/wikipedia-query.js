@@ -206,7 +206,8 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
     if (typeof response !== typeof undefined && response.query) {
       for (let key in response.query.pages) {
         // skip anything that's prototype object
-        if (!response.query.pages.hasOwnProperty(key)) continue;
+        if (!Object.prototype.hasOwnProperty.call(response.query.pages, key))
+          continue;
         // load object response, double check we have an extract
         if (
           response.query.pages[key].extract &&

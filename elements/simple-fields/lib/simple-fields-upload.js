@@ -517,8 +517,7 @@ class SimpleFieldsUpload extends I18NMixin(
           <div
             id="camerahole"
             ?hidden="${this.option !== "selfie"}"
-            part="camera"
-            part="camera-preview"
+            part="camera camera-preview"
           ></div>
           <div
             id="voicerecorder"
@@ -709,6 +708,7 @@ class SimpleFieldsUpload extends I18NMixin(
       }
       return false;
     }
+    return undefined;
   }
   /**
    * focuses on field

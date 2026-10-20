@@ -476,10 +476,10 @@ class GradeBook extends UIRenderPieces(
     let tmp = table.shift();
     let headings = {};
     let data = [];
-    for (var i in tmp) {
+    for (let i in tmp) {
       headings[tmp[i]] = i;
     }
-    for (var i in table) {
+    for (let i in table) {
       let item = {};
       for (let j in headings) {
         item[j] = table[i][headings[j]];
@@ -545,7 +545,9 @@ class GradeBook extends UIRenderPieces(
         try {
           const event = new Date(`${data[i].dueDate} ${data[i].dueTime}`);
           data[i]._ISODueDate = event.toISOString();
-        } catch {}
+        } catch {
+          // intentionally empty
+        }
       }
     }
     return data;
@@ -1611,7 +1613,7 @@ class GradeBook extends UIRenderPieces(
                         data-assignment="${h}"
                       >
                         <!-- @todo add once we support multi-select <simple-fields-field
-                          data-assignment="${h}"
+                          data-assignment="[h]"
                           type="checkbox"
                           class="select-all"
                           title="Select all submissions ${a.shortName}"

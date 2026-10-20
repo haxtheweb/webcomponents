@@ -268,17 +268,13 @@ class PaperInputFlagged extends LitElement {
     switch (status) {
       case "error":
         return "icons:error";
-        break;
       case "warning":
       case "notice":
         return "icons:warning";
-        break;
       case "info":
         return "icons:info-outline";
-        break;
       default:
         return "icons:info";
-        break;
     }
   }
 }

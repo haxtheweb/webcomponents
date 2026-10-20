@@ -466,7 +466,7 @@ class SimpleContextMenu extends DDD {
         this.close();
         break;
       case "Enter":
-      case " ":
+      case " ": {
         e.preventDefault();
         let itemToActivate = currentIndex >= 0 ? menuItems[currentIndex] : null;
         if (!itemToActivate) {
@@ -488,6 +488,7 @@ class SimpleContextMenu extends DDD {
           this._activateMenuItem(itemToActivate);
         }
         break;
+      }
     }
   }
 

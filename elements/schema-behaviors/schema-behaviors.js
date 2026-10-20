@@ -72,7 +72,7 @@ export const SchemaBehaviors = function (SuperClass) {
         let prefix = "";
         // build prefix string
         for (let property in prefixes) {
-          if (prefixes.hasOwnProperty(property)) {
+          if (Object.prototype.hasOwnProperty.call(prefixes, property)) {
             prefix += property + ":" + prefixes[property] + " ";
           }
         }

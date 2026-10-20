@@ -414,7 +414,9 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
       } else if (el.getAttribute("tracks")) {
         try {
           tracks = JSON.parse(el.getAttribute("tracks"));
-        } catch {}
+        } catch {
+          // intentionally empty
+        }
       }
       const mediaTitle =
         el.mediaTitle ||
@@ -455,7 +457,9 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
       if (player && player.restart && typeof player.restart === "function") {
         try {
           player.restart();
-        } catch {}
+        } catch {
+          // intentionally empty
+        }
       }
       return;
     }
@@ -596,7 +600,9 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
               ) {
                 item.element.pause();
               }
-            } catch {}
+            } catch {
+              // intentionally empty
+            }
           });
         }
       }
@@ -617,7 +623,9 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
             ) {
               try {
                 player.restart();
-              } catch {}
+              } catch {
+                // intentionally empty
+              }
             }
             this._attachPlayerListeners();
             this._scrollToActiveItem();

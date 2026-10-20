@@ -158,26 +158,30 @@ class BeakerBroker extends LitElement {
     // special cases for image types
     switch (type) {
       case "jpeg":
-      case "jpg":
+      case "jpg": {
         ftype = "binary";
-        var buf = await this.archive.readFile(path, ftype);
-        var blob = new Blob([buf], { type: "image/jpeg" });
+        let buf = await this.archive.readFile(path, ftype);
+        let blob = new Blob([buf], { type: "image/jpeg" });
         response = URL.createObjectURL(blob);
         break;
-      case "png":
+      }
+      case "png": {
         ftype = "binary";
-        var buf = await this.archive.readFile(path, ftype);
-        var blob = new Blob([buf], { type: "image/png" });
+        let buf = await this.archive.readFile(path, ftype);
+        let blob = new Blob([buf], { type: "image/png" });
         response = URL.createObjectURL(blob);
         break;
-      case "base64":
-        var str = await this.archive.readFile(path, type);
+      }
+      case "base64": {
+        let str = await this.archive.readFile(path, type);
         response = "data:image/png;base64," + str;
         break;
-      default:
-        var str = await this.archive.readFile(path, type);
+      }
+      default: {
+        let str = await this.archive.readFile(path, type);
         response = str;
         break;
+      }
     }
     return await response;
   }

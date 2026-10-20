@@ -350,7 +350,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
         let data = null;
         switch (method) {
           case "GET":
-          case "HEAD":
+          case "HEAD": {
             // support for formdata which is already encoded
             const searchPayload =
               requestParams instanceof FormData ? {} : requestParams;
@@ -374,8 +374,9 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
                 return { status: 500, data: null };
               });
             break;
+          }
           case "POST":
-          default:
+          default: {
             const postOptions = Object.assign({}, fetchOptions, {
               method: method,
             });
@@ -408,6 +409,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
                 return { status: 500, data: null };
               });
             break;
+          }
         }
         // endpoints can require a callback be hit every time
         if (item.callback) {
@@ -433,7 +435,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
         const item = this.get(name);
         // no null submissions
         for (let key in params) {
-          if (params.hasOwnProperty(key)) {
+          if (Object.prototype.hasOwnProperty.call(params, key)) {
             if (params[key] == null) delete params[key];
           }
         }

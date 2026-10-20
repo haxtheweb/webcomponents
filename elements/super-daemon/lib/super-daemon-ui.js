@@ -846,7 +846,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             this.shadowRoot.querySelector("super-daemon-row").selected();
           }
           break;
-        case "ArrowUp":
+        case "ArrowUp": {
           e.preventDefault();
           e.stopPropagation();
           const prevIndex =
@@ -855,7 +855,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
               : this._selectedIndex - 1;
           this._updateActiveDescendant(prevIndex);
           break;
-        case "ArrowDown":
+}
+        case "ArrowDown": {
           e.preventDefault();
           e.stopPropagation();
           const nextIndex =
@@ -864,6 +865,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
               : this._selectedIndex + 1;
           this._updateActiveDescendant(nextIndex);
           break;
+}
         case "Escape":
           e.preventDefault();
           e.stopPropagation();

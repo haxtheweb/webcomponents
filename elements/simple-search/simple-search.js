@@ -500,7 +500,7 @@ class SimpleSearch extends LitElement {
     let find = this.shadowRoot.querySelector("#input").value,
       temp = new Array();
     if (find !== undefined && find !== null) {
-      temp = find.split(/[\"']/gm);
+      temp = find.split(/["']/gm);
       // iterate backwards so splicing empty terms never skips the next entry
       for (let i = temp.length - 1; i >= 0; i--) {
         temp[i] = temp[i].trim();

@@ -845,7 +845,7 @@ export const displayBehaviors = function (SuperClass) {
               // the old comma-strip on this branch was unreachable
               return this._isNumericCell(cell)
                 ? cell
-                : `\"${cell.replace(/"/g, '""')}\"`;
+                : `"${cell.replace(/"/g, '""')}"`;
             })
             .join(",");
         })

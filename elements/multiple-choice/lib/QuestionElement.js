@@ -856,10 +856,10 @@ export class QuestionElement extends SchemaBehaviors(
       // otherwise page to page saves we could lose statefulness
       // these should not actually exist..
       let inputs = Array.from(this.querySelectorAll("input:not([slot])"));
-      for (var i in inputs) {
+      for (let i in inputs) {
         inputs[i].remove();
       }
-      for (var i in node.answers) {
+      for (let i in node.answers) {
         if (node.answers[i]) {
           let answer = globalThis.document.createElement("input");
           answer.setAttribute("type", "checkbox");
@@ -1329,7 +1329,7 @@ export class QuestionElement extends SchemaBehaviors(
     if (this.children.length > 0) {
       let inputs = Array.from(this.querySelectorAll("input:not([slot])"));
       let answers = [];
-      for (var i in inputs) {
+      for (let i in inputs) {
         let answer = this.processInput(i, inputs, answers);
         answers.push(answer);
       }
@@ -1337,7 +1337,7 @@ export class QuestionElement extends SchemaBehaviors(
       // wipe lightdom after reading it in for data. This makes it harder for someone
       // to just inspect the document and get at the underlying data
       // remove just the inputs we found
-      for (var i in inputs) {
+      for (let i in inputs) {
         inputs[i].remove();
       }
     }

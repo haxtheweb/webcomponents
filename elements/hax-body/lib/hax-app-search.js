@@ -73,7 +73,9 @@ class HaxAppSearch extends LitElement {
     let pathname = requestUrl.split("?")[0];
     try {
       pathname = new URL(requestUrl).pathname || pathname;
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     if (pathname.charAt(0) !== "/") {
       pathname = "/" + pathname;
     }
@@ -390,7 +392,7 @@ class HaxAppSearch extends LitElement {
    * Callback for when media has been updated via the end point
    */
   _requestDataChanged(newValue) {
-    if (this.resultMap && typeof newValue !== {}) {
+    if (this.resultMap) {
       let media = [];
       let map = this.resultMap;
       let data = [];

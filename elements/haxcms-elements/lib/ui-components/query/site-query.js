@@ -173,31 +173,31 @@ class SiteQuery extends LitElement {
       // ensure no data references, clone object
       let items = [...toJS(routerManifest.items)];
       // ensure that metadata is not a proxy because it's not deep cloning this dataset
-      for (var i in items) {
+      for (let i in items) {
         items[i].metadata = toJS(items[i].metadata);
       }
       // ohhh.... boy.... let's completely alter how this thing works
       if (entity !== "node") {
         let newItems = [];
-        for (var i in items) {
+        for (let i in items) {
           // we found a match...
           // for example maybe this is metadata.files
           // so now you've got things files centric as opposed to item centric
           if (typeof Object.byString(items[i], entity) !== typeof undefined) {
             let tmp;
             let val = Object.byString(items[i], entity);
-            if (typeof val === "object" || typeof val === "array") {
+            if (typeof val === "object" || Array.isArray(val)) {
               tmp = Object.assign([], Object.byString(items[i], entity));
             } else {
               tmp = val;
             }
-            if (typeof tmp === "object" || typeof tmp === "array") {
-              for (var i in tmp) {
+            if (typeof tmp === "object" || Array.isArray(tmp)) {
+              for (let i in tmp) {
                 // we can push this onto objects, meaning full entities
                 // if the user queries for something weird like by title
                 // it's still valid but can't push the node onto it in the
                 // same way
-                if (typeof tmp[i] === "object" || typeof tmp[i] === "array") {
+                if (typeof tmp[i] === "object" || Array.isArray(tmp[i])) {
                   // check for singular keys which could be grouped
                   tmp[i]._node = Object.assign({}, items[i]);
                   newItems.push(tmp[i]);
@@ -233,7 +233,7 @@ class SiteQuery extends LitElement {
       // if there are no conditions just do a 1 to 1 presentation
       if (conditions && items) {
         // apply conditions, this will automatically filter our items
-        for (var i in conditions) {
+        for (let i in conditions) {
           // test for object vs direct form of condition
           if (conditions[i] === null) {
             conditions[i] = {
@@ -247,7 +247,7 @@ class SiteQuery extends LitElement {
             };
           }
           // normalize special case evaluations
-          var evaluate = conditions[i].value;
+          let evaluate = conditions[i].value;
           if (conditions[i].value === "$activeId") {
             evaluate = activeId;
           } else if (conditions[i].value === "$firstId") {
@@ -290,19 +290,16 @@ class SiteQuery extends LitElement {
                   console.warn(e);
                 }
                 return false;
-                break;
               case ">":
                 if (Object.byString(item, i) > evaluate) {
                   return true;
                 }
                 return false;
-                break;
               case "<":
                 if (Object.byString(item, i) < evaluate) {
                   return true;
                 }
                 return false;
-                break;
               case "!=":
                 if (
                   typeof evaluate === "object" &&
@@ -329,7 +326,6 @@ class SiteQuery extends LitElement {
                   //                  return true;
                 }
                 return false;
-                break;
               // most common
               case "=":
               default:
@@ -358,7 +354,6 @@ class SiteQuery extends LitElement {
                   //                  return false;
                 }
                 return true;
-                break;
             }
           });
         }
@@ -366,7 +361,7 @@ class SiteQuery extends LitElement {
       // @todo need to support multi-facetted sort
       // right now this will just sort one way then undo it with another
       if (sorts) {
-        for (var i in sorts) {
+        for (let i in sorts) {
           items.sort((item1, item2) => {
             if (sorts[i] === "ASC") {
               if (Object.byString(item1, i) < Object.byString(item2, i)) {

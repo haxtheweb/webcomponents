@@ -36,7 +36,9 @@ export class ESGlobalBridge {
           if (parsed.protocol === "https:" || parsed.protocol === "http:") {
             safeLocation = parsed.href;
           }
-        } catch {}
+        } catch {
+          // intentionally empty
+        }
         if (!safeLocation) {
           return Promise.reject(
             new Error(`Refused to load ${name} script from ${location}.`),

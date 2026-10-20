@@ -1833,7 +1833,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                 content += node.outerHTML;
                 break;
               case "in":
-              case "out":
+              case "out": {
                 // heading to modify
                 let hlevel = parseInt(
                   node.tagName.toLowerCase().replace("h", ""),
@@ -1860,6 +1860,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                 }
                 content += h.outerHTML;
                 break;
+}
             }
           } else {
             content += node.outerHTML;
@@ -3074,7 +3075,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       if (!this.items[index].metadata.locked) {
         switch (action) {
           // @note this will force reload which is not ideal but not that big a deal
-          case "goto":
+          case "goto": {
             let href = this.items[index].slug || this.items[index].location;
             const navigationRequested = this.dispatchEvent(
               new CustomEvent("outline-designer-request-navigate", {
@@ -3099,6 +3100,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             );
             globalThis.location.href = href;
             break;
+}
           case "lock":
             this.items[index].metadata.locked = true;
             if (this.hasChildren(this.items[index].id)) {
@@ -3163,7 +3165,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             }
             break;
           case "up":
-          case "down":
+          case "down": {
             this.setAttribute("stop-animation", "true");
             // thing in question
             let element = this.items[index];
@@ -3219,6 +3221,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
               this.scrollIntoViewIfNeeded(element.id);
             }
             break;
+}
         }
         // has to be on its own bc we block ALL actions if we are locked
       } else if (action === "lock") {
@@ -3273,7 +3276,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     let newItems = [];
     // build a new array in the correct order by pushing the old items around
     // delete "children" key as we deal in JOS only here
-    for (var key in correctOrder) {
+    for (let key in correctOrder) {
       let newItem = this.items.find((element) => {
         // IDs may be converted to strings during DOM round-trip;
         // compare as strings to avoid losing items on mismatch
