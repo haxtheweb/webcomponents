@@ -59,7 +59,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
         "/../",
     });
     if (globalThis.location.hash) {
-      let id = globalThis.location.hash.split("--")[0];
       let timestamp =
         globalThis.location.hash.split("--")[1] ||
         this.associatedNodes["slide-1"];

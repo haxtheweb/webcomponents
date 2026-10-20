@@ -117,7 +117,7 @@ export default [
       ],
       // A leading underscore marks an intentionally unused parameter (for
       // example an event handler signature that has to keep its arity).
-      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "no-undef": "error",
       // New code should use ===, but existing == that works and passes tests is
       // not a problem, so this is advisory and `== null` is allowed.

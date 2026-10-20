@@ -147,7 +147,6 @@ const SimpleButtonGridBehaviors = function (SuperClass) {
       let more = !this.shadowRoot
           ? undefined
           : this.shadowRoot.querySelector("#morebutton"),
-        morebottom = this._bottom(more),
         max = this._bottom(this),
         items = [...(this.children || [])],
         shown = true,

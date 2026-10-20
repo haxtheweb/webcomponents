@@ -3314,13 +3314,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             this._showContextMenu(this.contextMenus.text);
             // text menu can expand based on selection
           }
-          let gizmo = (props || {}).gizmo || {},
-            inlineGizmo =
-              props &&
-              props.gizmo &&
-              (props.gizmo.handles || []).filter(
-                (handle) => (handle || {}).type === "inline",
-              ).length > 0;
+          let inlineGizmo =
+            props &&
+            props.gizmo &&
+            (props.gizmo.handles || []).filter(
+              (handle) => (handle || {}).type === "inline",
+            ).length > 0;
           if (!props || props.editingElement == "core") {
             // hide menu if we have active on a list item
             // special case because it should not be moved anywhere or have these
@@ -3380,8 +3379,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       slots = this.__layoutSlots(parent) || [],
       slot = node.getAttribute("slot"),
       index = slot ? slots.indexOf(slot) : -1,
-      move = slots[index + direction],
-      sameSlot = !!target && (!slot || slot === target.getAttribute("slot"));
+      move = slots[index + direction];
     if (
       direction < 0 &&
       target &&
@@ -5965,10 +5963,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 firstFile &&
                 ((firstFile.type && firstFile.type.startsWith("audio/")) ||
                   /\.(mp3|ogg|wav|m4a|flac|aac)$/i.test(firstFile.name));
-              const isVideo =
-                firstFile &&
-                ((firstFile.type && firstFile.type.startsWith("video/")) ||
-                  /\.(mp4|webm|ogg|mov|mkv|avi|m4v)$/i.test(firstFile.name));
               tmp = globalThis.document.createElement(
                 isAudio ? "audio-player" : "video-player",
               );

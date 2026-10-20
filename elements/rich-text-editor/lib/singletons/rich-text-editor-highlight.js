@@ -116,8 +116,7 @@ class RichTextEditorHighlight extends LitElement {
     this.hidden = false;
   }
   unwrap(range) {
-    let nodes = [...this.childNodes].reverse(),
-      collapse = nodes.length < 1;
+    let nodes = [...this.childNodes].reverse();
     if (range) range.setStartBefore(this);
     nodes.forEach((node, _i) => {
       if (range) range.insertNode(node);

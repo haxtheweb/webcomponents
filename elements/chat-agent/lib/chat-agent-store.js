@@ -396,12 +396,6 @@ class ChatAgentStore {
 
       // Online messages, do request response from backend AI
       default: {
-        let base = "";
-
-        if (globalThis.document.querySelector("base")) {
-          base = globalThis.document.querySelector("base").href;
-        }
-
         // TODO: Add support for data collection toggle (this.dataCollectionEnabled)
         const params = {
           site: {

@@ -24,7 +24,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
       if (!frame.src || e.origin !== new URL(frame.src).origin) {
         return;
       }
-    } catch (error) {
+    } catch {
       return;
     }
     if (typeof e.data !== "string") {
@@ -32,7 +32,11 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
     }
     try {
       let message = JSON.parse(e.data);
-      if (message.subject === "frameResize" && message.height && this.shadowRoot) {
+      if (
+        message.subject === "frameResize" &&
+        message.height &&
+        this.shadowRoot
+      ) {
         this.shadowRoot
           .querySelector("web-container")
           .style.setProperty(
@@ -65,7 +69,10 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (['element', 'project', 'version'].includes(propName) && this.shadowRoot) {
+      if (
+        ["element", "project", "version"].includes(propName) &&
+        this.shadowRoot
+      ) {
         if (!this.rebuilding) {
           this.rebuildwebcontainerdocs();
         }
@@ -77,11 +84,11 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
     this.rebuilding = true;
     let wcEl = this.shadowRoot.querySelector("#webcontainer");
     await globalThis.WebContainerManager.requestAvailability();
-    let wc = globalThis.document.createElement('web-container');
+    let wc = globalThis.document.createElement("web-container");
     wc.hideTerminal = true;
     wc.hideEditor = true;
-    wc.files ={
-      'index.html': {
+    wc.files = {
+      "index.html": {
         file: {
           contents: `
 <!doctype html>
@@ -177,7 +184,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
 `,
         },
       },
-      'package.json': {
+      "package.json": {
         file: {
           contents: `
             {
@@ -200,7 +207,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
             }`,
         },
       },
-      'web-dev-server.config.mjs': {
+      "web-dev-server.config.mjs": {
         file: {
           contents: `
 const hmr = process.argv.includes('--hmr');
@@ -215,11 +222,11 @@ export default ({
   appIndex: 'index.html',
 });
 `,
-        }
+        },
       },
     };
     wc.innerHTML = ``;
-    wcEl.innerHTML = '';
+    wcEl.innerHTML = "";
     wcEl.appendChild(wc);
     this.rebuilding = false;
   }
@@ -247,23 +254,24 @@ export default ({
         type: Boolean,
         reflect: true,
       },
-    }
+    };
   }
 
   static get styles() {
-    return [super.styles,
+    return [
+      super.styles,
       css`
         :host {
           display: block;
         }
-      `
-    ]
+      `,
+    ];
   }
 
   // take tag and convert it to a demo implementation
   async getExample(tagName, asText = true) {
     let el = globalThis.document.createElement(tagName);
-    if (typeof el.haxProperties === 'function') {
+    if (typeof el.haxProperties === "function") {
       let schema = el.haxProperties();
       // resolve direct setting vs loading file
       if (typeof schema === "string") {
@@ -285,9 +293,7 @@ export default ({
   }
 
   render() {
-    return html`
-      <div id="webcontainer"></div>
-    `;
+    return html` <div id="webcontainer"></div> `;
   }
 
   _getDataString(data) {
@@ -302,19 +308,21 @@ export default ({
     });
     // only act when a code-pen-button is actually present in the shadow
     // root; render() never supplies one itself so the host page must
-    const codePenButton = this.shadowRoot.querySelector('code-pen-button');
+    const codePenButton = this.shadowRoot.querySelector("code-pen-button");
     if (codePenButton) {
-      codePenButton.setAttribute('data-string', data);
+      codePenButton.setAttribute("data-string", data);
     }
   }
 
-    /**
+  /**
    * haxProperties integration via file reference
    */
-    static get haxProperties() {
-      return new URL(`./${this.tag}.haxProperties.json`, import.meta.url)
-        .href;
-    }
+  static get haxProperties() {
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
+  }
 }
 
-globalThis.customElements.define(WebContainerDocPlayer.tag, WebContainerDocPlayer);
+globalThis.customElements.define(
+  WebContainerDocPlayer.tag,
+  WebContainerDocPlayer,
+);
