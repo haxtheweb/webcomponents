@@ -177,6 +177,30 @@ export function normalizeLanguageCode(value, source) {
 }
 
 /**
+ * @description The registry code a value is exactly, or an alias of, ignoring
+ * case and `_` vs `-` (`zh_CN`, `ZH-cn` and the alias `zh` all give `zh-CN`).
+ * Unlike normalizeLanguageCode this never drops a region or script, so a
+ * well-formed code the registry does not list (`fr-CA`) returns null instead
+ * of silently becoming `fr`. Use it to tidy a stored value without losing it.
+ * @param {String} value a language code
+ * @param {Object} source optional raw registry (defaults to the loaded one)
+ * @returns {String|null} canonical code, or null when not an exact match
+ */
+export function matchLanguageCode(value, source) {
+  if (!value || typeof value !== "string") {
+    return null;
+  }
+  const { languages, lookup } = resolveSource(source);
+  const cleaned = value.trim().replace(/_/g, "-").toLowerCase();
+  const code = lookup[cleaned];
+  if (!code) {
+    return null;
+  }
+  // lookup holds codes and aliases; both are exact matches
+  return languages[code] ? code : null;
+}
+
+/**
  * @description Whether the registry knows this language
  */
 export function isSupportedLanguageCode(value, source) {
