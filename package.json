@@ -77,6 +77,7 @@
     "hax-elements-demo-page": "gulp hax-elements-demo-page --gulpfile=gulpfile.mjs",
     "elements-readme": "node scripts/generate-elements-readme.js",
     "translation-manifest": "node scripts/generate-translation-manifest.js",
+    "language-registry-report": "node scripts/validate-language-registry.js",
     "version-match": "gulp version-match --gulpfile=gulpfile.mjs",
     "license-restore": "node scripts/copy-dep-licenses.js",
     "depcheck": "depcheck"
