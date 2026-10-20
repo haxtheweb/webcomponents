@@ -105,9 +105,23 @@ export class LrnH5p extends I18NMixin(LitElement) {
   }
   render() {
     if (this.querySelector("iframe")) {
-      const matches = /(https?:\/\/[^/]*).*embed\/([0-9]*)/g.exec(
-        this.querySelector("iframe").src,
-      );
+      // origin = scheme + host of the iframe src, id = digits after the last
+      // "embed/" (searched with lastIndexOf rather than a `.*embed\/` regex,
+      // which backtracks polynomially on long URLs)
+      const src = this.querySelector("iframe").src;
+      const scheme = /https?:\/\//.exec(src);
+      const embedAt = src.lastIndexOf("embed/");
+      let matches = null;
+      if (scheme && embedAt >= scheme.index + scheme[0].length) {
+        const hostStart = scheme.index + scheme[0].length;
+        const slash = src.indexOf("/", hostStart);
+        const hostEnd = slash === -1 ? src.length : slash;
+        matches = [
+          null,
+          src.slice(scheme.index, Math.min(hostEnd, embedAt)),
+          /^[0-9]*/.exec(src.slice(embedAt + "embed/".length))[0],
+        ];
+      }
       const editUrl = `${matches[1]}/node/${matches[2]}/edit`;
       return html`
         <div id="container">

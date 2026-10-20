@@ -1090,7 +1090,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         !HAXCMSSiteBuilder.replaceTagExcludedTags.includes(tag)
       ) {
         // shift the replacement over to with; leave everything else the same
-        html = html.replace("<" + tag, '<replace-tag with="' + tag + '" ');
+        // (tag is only ever a custom element name; escape quotes anyway because it
+        // lands inside an attribute value, and use a function so "$" in the
+        // name is not read as a replacement pattern)
+        html = html.replace(
+          "<" + tag,
+          () => '<replace-tag with="' + tag.replace(/"/g, "&quot;") + '" ',
+        );
         // ensure a matching closing tag is also updated
         html = html.replace("</" + tag + ">", "</replace-tag>");
       }
