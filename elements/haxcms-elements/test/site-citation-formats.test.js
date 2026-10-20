@@ -312,4 +312,115 @@ describe("site-citation-formats", () => {
       ).to.equal("zoe2020uber");
     });
   });
+
+  describe("author given / family pieces", () => {
+    const withAuthor = (author, pg = { title: "Getting Started" }) =>
+      buildCitationSource(
+        {
+          title: "Intro to HAX",
+          metadata: { author, site: { domain: "example.edu/hax" } },
+        },
+        pg,
+      );
+
+    it("keeps the pieces only when both are given explicitly", () => {
+      const s = withAuthor({ given: "Jane Q.", family: "Public" });
+      expect(s.author).to.equal("Jane Q. Public");
+      expect(s.authorParts).to.deep.equal({
+        given: "Jane Q.",
+        family: "Public",
+      });
+      // schema.org names are accepted too
+      expect(
+        withAuthor({ givenName: "Jane", familyName: "Public" }).authorParts,
+      ).to.deep.equal({ given: "Jane", family: "Public" });
+    });
+    it("never splits a free-text name", () => {
+      expect(withAuthor("Jane Q. Public").authorParts).to.equal(null);
+      expect(withAuthor({ name: "Jane Q. Public" }).authorParts).to.equal(null);
+      expect(
+        withAuthor({ name: "Penn State University" }).authorParts,
+      ).to.equal(null);
+    });
+    it("falls back to the name as written when only one piece is given", () => {
+      const s = withAuthor({ name: "Penn State", given: "Penn" });
+      expect(s.authorParts).to.equal(null);
+      expect(s.author).to.equal("Penn State");
+      expect(formatCitation(s, "apa").text).to.equal(
+        "Penn State. (n.d.). Getting Started. Intro to HAX. https://example.edu/hax",
+      );
+    });
+    it("uses the name field as the display name when present", () => {
+      const s = withAuthor({
+        name: "J. Public",
+        given: "Jane",
+        family: "Public",
+      });
+      expect(s.author).to.equal("J. Public");
+      expect(s.authorParts).to.deep.equal({ given: "Jane", family: "Public" });
+    });
+    it("does not mix a page author with site author pieces", () => {
+      const s = buildCitationSource(
+        { metadata: { author: { given: "Jane", family: "Public" } } },
+        { title: "P", metadata: { author: "Sam Lee" } },
+      );
+      expect(s.author).to.equal("Sam Lee");
+      expect(s.authorParts).to.equal(null);
+    });
+    it("APA inverts to family name and initials", () => {
+      const t = formatCitation(
+        withAuthor({ given: "Jane Q.", family: "Public" }),
+        "apa",
+      ).text;
+      expect(t.startsWith("Public, J. Q. (n.d.). ")).to.equal(true);
+    });
+    it("APA handles hyphenated given names and family-name particles", () => {
+      expect(
+        formatCitation(
+          withAuthor({ given: "Jean-Paul", family: "Sartre" }),
+          "apa",
+        ).text.startsWith("Sartre, J.-P. (n.d.)."),
+      ).to.equal(true);
+      expect(
+        formatCitation(
+          withAuthor({ given: "Anna Marie", family: "van der Berg" }),
+          "apa",
+        ).text.startsWith("van der Berg, A. M. (n.d.)."),
+      ).to.equal(true);
+    });
+    it("MLA and Chicago invert to family, full given name", () => {
+      const s = withAuthor({ given: "Jane Q.", family: "Public" });
+      expect(
+        formatCitation(s, "mla").text.startsWith("Public, Jane Q. “"),
+      ).to.equal(true);
+      expect(
+        formatCitation(s, "chicago").text.startsWith("Public, Jane Q. “"),
+      ).to.equal(true);
+    });
+    it("BibTeX writes Family, Given and keys on the family name", () => {
+      const s = withAuthor({ given: "Jane Q.", family: "Public" });
+      expect(formatCitation(s, "bibtex").text).to.include(
+        "author = {Public, Jane Q.}",
+      );
+      expect(bibtexKey(s)).to.match(/^public/);
+    });
+    it("a free-text name is printed as written in every style", () => {
+      const s = withAuthor({ name: "Jane Q. Public" });
+      ["apa", "mla", "chicago", "bibtex"].forEach((style) =>
+        expect(formatCitation(s, style).text).to.include("Jane Q. Public"),
+      );
+    });
+    it("formatCitation accepts pieces without a display name", () => {
+      const c = formatCitation(
+        {
+          scope: "site",
+          title: "T",
+          authorParts: { given: "Jane", family: "Public" },
+        },
+        "chicago",
+      );
+      expect(c.text).to.equal("Public, Jane. T.");
+      expect(c.missing).to.not.include("author");
+    });
+  });
 });

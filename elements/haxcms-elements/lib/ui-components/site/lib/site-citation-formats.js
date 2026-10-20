@@ -25,13 +25,32 @@
  *                else the caller supplied fallbackUrl (the current location)
  *   license      manifest.license | manifest.metadata.author.license
  *
- * Author names are used exactly as authored (v1). Names are NOT split into
- * surname / given name, so "Jane Q. Public" is printed as written in every
- * style rather than inverted ("Public, J. Q.").
+ * Author names are used exactly as authored unless the site supplies the name
+ * as two separate pieces. A free-text name is never guessed at or split:
+ * organisations, single names, particles ("van der Berg") and non-Western
+ * names cannot be inverted reliably, and a wrong inversion is worse than the
+ * name as written. So "Jane Q. Public" is printed as written in every style.
+ *
+ * When the author value is an object with explicit `given` and `family` (or
+ * schema.org `givenName` and `familyName`) fields, each style uses the form it
+ * calls for:
+ *
+ *   APA       Public, J. Q.
+ *   MLA       Public, Jane Q.
+ *   Chicago   Public, Jane Q.
+ *   BibTeX    Public, Jane Q.
  */
 
 export const CITATION_STYLES = ["apa", "mla", "chicago", "bibtex"];
 export const CITATION_SCOPES = ["page", "site"];
+// Style names are proper nouns, not translatable UI text, so they live here
+// rather than in the locale files.
+export const CITATION_STYLE_LABELS = {
+  apa: "APA",
+  mla: "MLA",
+  chicago: "Chicago",
+  bibtex: "BibTeX",
+};
 
 const MONTHS = [
   "January",
@@ -92,12 +111,63 @@ export function toDate(value) {
 }
 
 /**
- * Pull a display name out of a string or { name } author value
+ * Explicit { given, family } pieces from an author value, or null. Only
+ * explicit fields count; a free-text name is never split.
+ */
+function authorParts(a) {
+  if (!a || typeof a !== "object") return null;
+  const given = clean(a.given) || clean(a.givenName);
+  const family = clean(a.family) || clean(a.familyName);
+  return given && family ? { given, family } : null;
+}
+
+/**
+ * Pull a display name out of a string or { name } author value. An object with
+ * explicit given / family pieces and no `name` reads as "given family".
  */
 function authorName(a) {
   if (typeof a === "string") return clean(a);
-  if (a && typeof a === "object") return clean(a.name);
+  if (a && typeof a === "object") {
+    const parts = authorParts(a);
+    return clean(a.name) || (parts ? `${parts.given} ${parts.family}` : "");
+  }
   return "";
+}
+
+/**
+ * First author value (in priority order) that yields a name, as
+ * { name, parts }. parts is null unless that same value has explicit pieces.
+ */
+function pickAuthor(values) {
+  for (const v of values) {
+    const name = authorName(v);
+    if (name) return { name, parts: authorParts(v) };
+  }
+  return { name: "", parts: null };
+}
+
+/**
+ * Author as one style wants it. Without explicit pieces this is the name
+ * exactly as authored, for every style.
+ */
+function authorFor(style, s) {
+  const p = s.authorParts;
+  if (!p) return s.author;
+  if (style === "apa") {
+    const initials = p.given
+      .split(/\s+/)
+      .filter(Boolean)
+      .map((word) =>
+        word
+          .split("-")
+          .filter(Boolean)
+          .map((piece) => `${Array.from(piece)[0].toUpperCase()}.`)
+          .join("-"),
+      )
+      .join(" ");
+    return `${p.family}, ${initials}`;
+  }
+  return `${p.family}, ${p.given}`;
 }
 
 function firstNonEmpty(list) {
@@ -112,7 +182,7 @@ function firstNonEmpty(list) {
  * @param {object} manifest site.json / store.manifest
  * @param {object} item active page item (required for scope "page")
  * @param {object} options { scope: "page" | "site", fallbackUrl: string }
- * @returns {{scope, author, title, siteTitle, date, url, license}}
+ * @returns {{scope, author, authorParts, title, siteTitle, date, url, license}}
  */
 export function buildCitationSource(manifest, item, options = {}) {
   const scope = options.scope === "site" ? "site" : "page";
@@ -123,15 +193,13 @@ export function buildCitationSource(manifest, item, options = {}) {
   const itMeta =
     it.metadata && typeof it.metadata === "object" ? it.metadata : {};
 
-  const siteAuthor = firstNonEmpty([
-    authorName(meta.author),
-    authorName(m.author),
-    authorName(site.author),
-  ]);
-  const author = firstNonEmpty([
-    authorName(itMeta.author),
-    authorName(it.author),
-    siteAuthor,
+  // page author wins over the site author; each value keeps its own pieces
+  const { name: author, parts: authorPieces } = pickAuthor([
+    itMeta.author,
+    it.author,
+    meta.author,
+    m.author,
+    site.author,
   ]);
 
   const siteTitle = clean(m.title);
@@ -162,6 +230,8 @@ export function buildCitationSource(manifest, item, options = {}) {
   return {
     scope,
     author,
+    // { given, family } only when the site supplied both explicitly, else null
+    authorParts: authorPieces,
     // for a page: the page title; for a site: the site title
     title: pageTitle || siteTitle,
     // container; only present when it adds information beyond the title
@@ -209,7 +279,7 @@ function apa(s) {
   const date = s.date
     ? `(${dY(s.date)}, ${MONTHS[dM(s.date)]} ${dD(s.date)}).`
     : "(n.d.).";
-  const authorG = s.author ? [T(dot(s.author))] : [];
+  const authorG = s.author ? [T(dot(authorFor("apa", s)))] : [];
   // page: title is plain text, site is the italic container.
   // site: the site title is itself the italic work.
   const pageScope = s.scope === "page" && s.siteTitle;
@@ -231,7 +301,7 @@ function mlaDate(d) {
 }
 
 function mla(s, accessed) {
-  const authorG = s.author ? [T(dot(s.author))] : [];
+  const authorG = s.author ? [T(dot(authorFor("mla", s)))] : [];
   const pageScope = s.scope === "page" && s.siteTitle;
   let head;
   let tail = [];
@@ -266,7 +336,7 @@ function chicagoDate(d) {
 }
 
 function chicago(s, accessed) {
-  const authorG = s.author ? [T(dot(s.author))] : [];
+  const authorG = s.author ? [T(dot(authorFor("chicago", s)))] : [];
   const pageScope = s.scope === "page" && s.siteTitle;
   const titleG = s.title
     ? pageScope
@@ -311,8 +381,10 @@ export function bibtexKey(s) {
       .normalize("NFD")
       .replace(/[̀-ͯ]/g, "")
       .match(/[A-Za-z0-9]+/) || [""])[0].toLowerCase();
+  // with explicit pieces the key starts from the family name
+  const lead = s.authorParts ? s.authorParts.family : s.author;
   const key =
-    word(s.author || s.siteTitle || s.title) +
+    word(lead || s.siteTitle || s.title) +
     (s.date ? String(dY(s.date)) : "") +
     word(s.title && s.author ? s.title : "");
   return key || "citation";
@@ -321,7 +393,7 @@ export function bibtexKey(s) {
 function bibtex(s, accessed) {
   const fields = [];
   const add = (k, v) => v && fields.push([k, escapeBibtex(v)]);
-  add("author", s.author);
+  add("author", s.author && authorFor("bibtex", s));
   add("title", s.title);
   if (s.scope === "page") add("organization", s.siteTitle);
   if (s.date) fields.push(["date", iso(s.date)]);
@@ -348,9 +420,11 @@ function bibtex(s, accessed) {
  */
 export function formatCitation(source, style, options = {}) {
   const s = source || {};
+  const parts = authorParts(s.authorParts);
   const norm = {
     scope: s.scope === "site" ? "site" : "page",
-    author: clean(s.author),
+    author: clean(s.author) || (parts ? `${parts.given} ${parts.family}` : ""),
+    authorParts: parts,
     title: clean(s.title),
     siteTitle: clean(s.siteTitle),
     date: toDate(s.date),

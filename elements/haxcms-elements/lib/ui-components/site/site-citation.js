@@ -9,6 +9,7 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 import {
   CITATION_STYLES,
+  CITATION_STYLE_LABELS,
   buildCitationSource,
   formatCitation,
 } from "./lib/site-citation-formats.js";
@@ -47,10 +48,6 @@ export class SiteCitation extends HAXCMSI18NMixin(DDD) {
       copyFailed:
         "Could not copy. Select the citation text and copy it manually.",
       noData: "No citation information is available yet.",
-      apa: "APA",
-      mla: "MLA",
-      chicago: "Chicago",
-      bibtex: "BibTeX",
     };
     this.__disposer = this.__disposer ? this.__disposer : [];
     // Only the handful of fields we cite are read inside the autorun, so it
@@ -229,7 +226,7 @@ export class SiteCitation extends HAXCMSI18NMixin(DDD) {
                   value="${s}"
                   ?selected="${s === (c ? c.style : this.format)}"
                 >
-                  ${this.t[s]}
+                  ${CITATION_STYLE_LABELS[s]}
                 </option>`,
             )}
           </select>
