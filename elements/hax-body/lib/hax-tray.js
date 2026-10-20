@@ -1143,7 +1143,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           }),
         );
         break;
-}
+      }
       case "toggle-element-align": {
         let directions = ["left", "right"],
           direction = directions[e.detail.index]
@@ -1153,7 +1153,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         //set local storage
         localStorageSet("hax-tray-elementAlign", direction);
         break;
-}
+      }
       case "super-daemon":
         SuperDaemonInstance.open();
         this.collapsed = false;
@@ -1368,11 +1368,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         this.activeTagName = this.activeGizmo.title;
         if (
           !oldValue ||
-          ![
-            "content-map",
-            "content-edit",
-            "content-add",
-          ].includes(this.trayDetail)
+          !["content-map", "content-edit", "content-add"].includes(
+            this.trayDetail,
+          )
         ) {
           this.trayDetail = "content-edit";
         }
@@ -1988,7 +1986,10 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
               else if (
                 Object.prototype.hasOwnProperty.call(this.activeNode, prop) ||
                 (this.activeNode.properties &&
-                  Object.prototype.hasOwnProperty.call(this.activeNode.properties, prop)) ||
+                  Object.prototype.hasOwnProperty.call(
+                    this.activeNode.properties,
+                    prop,
+                  )) ||
                 (settings[key][prop] != null &&
                   settings[key][prop].constructor === Array) ||
                 (settings[key][prop] != null &&

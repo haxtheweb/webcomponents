@@ -178,7 +178,10 @@ export const HaxUiFields = [
       --simple-fields-button-disabled-color: unset;
       --simple-fields-button-disabled-background-color: unset;
       --simple-fields-button-disabled-border-color: unset;
-      --simple-fields-button-disabled-opacity: var(--ddd-state-disabled-opacity, 0.5);
+      --simple-fields-button-disabled-opacity: var(
+        --ddd-state-disabled-opacity,
+        0.5
+      );
       --hexagon-color: var(--hax-ui-color-accent);
     }
   `,

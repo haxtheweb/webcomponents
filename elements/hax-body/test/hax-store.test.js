@@ -121,9 +121,15 @@ describe("hax-store #3066 image replace-on-drop helpers", () => {
       const galleries = host.querySelectorAll("image-gallery");
       expect(galleries.length).to.equal(0);
       const stillThere = host.querySelector("media-image");
-      expect(stillThere).to.equal(original, "original image should remain in-place");
+      expect(stillThere).to.equal(
+        original,
+        "original image should remain in-place",
+      );
       expect(original.getAttribute("source")).to.equal("files/new.jpg");
-      expect(original.getAttribute("alt")).to.equal("Old alt", "alt preserved on replace");
+      expect(original.getAttribute("alt")).to.equal(
+        "Old alt",
+        "alt preserved on replace",
+      );
       // card reflects the attribute on the element
       expect(original.hasAttribute("card")).to.equal(true);
       expect(HAXStore.activeNode).to.equal(original);
@@ -177,7 +183,10 @@ describe("hax-store #3066 image replace-on-drop helpers", () => {
 
       HAXStore._replaceImageInPlace(img, { source: "files/new.jpg" });
 
-      expect(host.querySelector("p")).to.equal(null, "temp <p> should be removed");
+      expect(host.querySelector("p")).to.equal(
+        null,
+        "temp <p> should be removed",
+      );
       expect(img.getAttribute("source")).to.equal("files/new.jpg");
       expect(HAXStore.activePlaceHolder).to.equal(null);
     });
@@ -198,7 +207,9 @@ describe("hax-store #3066 image replace-on-drop helpers", () => {
 
     it("is a no-op when imageTarget is null", () => {
       makeActiveHaxBodyFor(globalThis.document.createElement("div"));
-      expect(() => HAXStore._replaceImageInPlace(null, { source: "files/x.jpg" })).to.not.throw();
+      expect(() =>
+        HAXStore._replaceImageInPlace(null, { source: "files/x.jpg" }),
+      ).to.not.throw();
       expect(originalsToastEvents.length).to.equal(0);
     });
   });

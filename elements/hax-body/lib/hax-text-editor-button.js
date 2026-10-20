@@ -62,7 +62,10 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     // and subsequent element changes. Run on the first update regardless of
     // whether `element` is in changedProperties, matching the old
     // firstUpdated unconditional call.
-    if (this.__highlight && (!this.hasUpdated || changedProperties.has("element"))) {
+    if (
+      this.__highlight &&
+      (!this.hasUpdated || changedProperties.has("element"))
+    ) {
       this.updateElement();
     }
   }

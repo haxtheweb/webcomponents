@@ -4118,7 +4118,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let test = globalThis.document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
     if (globalThis.document && globalThis.document.body) {
-      globalThis.document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
+      globalThis.document.body.style.setProperty(
+        "--hax-ui-headings",
+        "#d4ff77",
+      );
     }
     // mobx
     makeObservable(this, {

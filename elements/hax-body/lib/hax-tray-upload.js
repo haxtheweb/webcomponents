@@ -158,15 +158,20 @@ class HaxTrayUpload extends HaxUploadField {
             type: file.type,
           });
           if (this.__imageBatch.length >= this.__imageBatchTotal) {
-            const gallery =
-              globalThis.document.createElement("image-gallery");
+            const gallery = globalThis.document.createElement("image-gallery");
             // Clone properties from any pre-existing media-image already inside
             // the page so the new gallery is visually consistent with the page
             // being authored.
             let templateImage = null;
-            if (this.__imageBatchPlaceHolder && this.__imageBatchPlaceHolder.parentNode) {
-              templateImage = this.__imageBatchPlaceHolder.parentNode.querySelector
-                ? this.__imageBatchPlaceHolder.parentNode.querySelector("media-image")
+            if (
+              this.__imageBatchPlaceHolder &&
+              this.__imageBatchPlaceHolder.parentNode
+            ) {
+              templateImage = this.__imageBatchPlaceHolder.parentNode
+                .querySelector
+                ? this.__imageBatchPlaceHolder.parentNode.querySelector(
+                    "media-image",
+                  )
                 : null;
             }
             this.__imageBatch.forEach((item) => {

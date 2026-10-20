@@ -27,7 +27,7 @@
               "name": "dragEndBody",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "When we end dragging ensure we remove the mover class."
@@ -37,7 +37,7 @@
               "name": "_mouseLeave",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -64,7 +64,7 @@
               "name": "_mouseUp",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "On mouse release, dump any scroller and the end cap element"
@@ -74,7 +74,7 @@
               "name": "scrollerFixclickEvent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -83,7 +83,7 @@
               "name": "blurEvent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -103,7 +103,7 @@
               "name": "dragEnterBody",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Activation allowed from outside this grid as far as drop areas"
@@ -113,7 +113,7 @@
               "name": "revealMenuIfHidden",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -140,7 +140,7 @@
               "name": "_keepContextVisible",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e",
                   "default": "null"
                 }
               ],
@@ -394,11 +394,11 @@
               "name": "insertElementWorkflow",
               "parameters": [
                 {
-                  "name": "activeNode",
+                  "name": "_activeNode",
                   "default": "null"
                 },
                 {
-                  "name": "testOnly",
+                  "name": "_testOnly",
                   "default": "false"
                 }
               ],
@@ -523,7 +523,7 @@
                   "default": "this.activeNode"
                 },
                 {
-                  "name": "child",
+                  "name": "_child",
                   "default": "false"
                 },
                 {
@@ -908,71 +908,6 @@
             },
             {
               "kind": "method",
-              "name": "__layoutCanMove",
-              "parameters": [
-                {
-                  "name": "target"
-                },
-                {
-                  "name": "layout"
-                },
-                {
-                  "name": "before"
-                },
-                {
-                  "description": "item",
-                  "name": "the",
-                  "type": {
-                    "text": "object"
-                  }
-                },
-                {
-                  "description": "-1 for left or +1 for right",
-                  "name": "",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ],
-              "description": "Determines if the item can move a set number of slots.",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "__layoutMove",
-              "parameters": [
-                {
-                  "name": "target"
-                },
-                {
-                  "name": "layout"
-                },
-                {
-                  "name": "before"
-                },
-                {
-                  "description": "item",
-                  "name": "the",
-                  "type": {
-                    "text": "object"
-                  }
-                },
-                {
-                  "description": "-1 for left or +1 for right",
-                  "name": "",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ],
-              "description": "Moves an item a set number of slots."
-            },
-            {
-              "kind": "method",
               "name": "__sortLayoutChildren",
               "parameters": [
                 {
@@ -1123,15 +1058,6 @@
             },
             {
               "kind": "method",
-              "name": "dragLeave",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            },
-            {
-              "kind": "method",
               "name": "dragEnter",
               "parameters": [
                 {
@@ -1222,7 +1148,7 @@
                   "name": "settings"
                 },
                 {
-                  "name": "focusTarget"
+                  "name": "_focusTarget"
                 }
               ],
               "description": "saves grid settings before applying edit mode settings"
@@ -1400,19 +1326,11 @@
             },
             {
               "kind": "field",
-              "name": "part",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"hax-body\""
-            },
-            {
-              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ addContent: \"Add Content\", }"
+              "default": "{ addContent: \"Add Content\", cantBeTransformed: \"Sorry, this can not be transformed!\", }"
             },
             {
               "kind": "field",
@@ -1657,7 +1575,7 @@
                 },
                 {
                   "name": "target",
-                  "default": "window"
+                  "default": "globalThis"
                 }
               ],
               "description": "Bridge since everything calls here"
@@ -1762,7 +1680,7 @@
                   "default": "{}"
                 },
                 {
-                  "name": "requestUrl",
+                  "name": "_requestUrl",
                   "default": "\"\""
                 }
               ]
@@ -2236,7 +2154,7 @@
               "name": "processNewElements",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Process new elements"
@@ -2648,7 +2566,7 @@
               "name": "_handleMousedown",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Store the selection object. This helps fix issues with safari\nand holding focus on non-text elements actually stealing\nthe selection priority, making it impossible to know what's\nbeen selected if clicking a button to try and apply something to.",
@@ -2806,7 +2724,7 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -3068,7 +2986,7 @@
               "name": "_handleMousedown",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Store the selection object. This helps fix issues with safari\nand holding focus on non-text elements actually stealing\nthe selection priority, making it impossible to know what's\nbeen selected if clicking a button to try and apply something to.",
@@ -3082,7 +3000,7 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Fire an event that includes the eventName of what was just pressed.",
@@ -3280,7 +3198,7 @@
               "name": "_handleKeys",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -3762,7 +3680,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{ xs: { width: 200, height: 150, label: \"200\\u00d7150\" }, sm: { width: 320, height: 240, label: \"320\\u00d7240\" }, md: { width: 400, height: 300, label: \"400\\u00d7300\" }, lg: { width: 800, height: 600, label: \"800\\u00d7600\" }, xl: { width: 1200, height: 900, label: \"1200\\u00d7900\" }, }"
+          "default": "{ xs: { width: 150, height: 150, label: \"150px\" }, sm: { width: 480, height: 480, label: \"480px\" }, md: { width: 800, height: 800, label: \"800px\" }, lg: { width: 1200, height: 1200, label: \"1200px\" }, xl: { width: 1920, height: 1920, label: \"1920px\" }, }"
         },
         {
           "kind": "variable",
@@ -3878,6 +3796,14 @@
               "default": "\"bulk\"",
               "attribute": "mode",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, chooseAnAction: \"Choose an action\\u2026\", operations: \"Operations\", insertGallery: \"Insert Gallery\", imageButton: \"Insert Image\", duplicate: \"Duplicate\", rename: \"Rename\", delete: \"Delete\", transform: \"Transform\", convertToJpg: \"Convert to JPG\", sepia: \"Sepia\", blackAndWhite: \"Black and white\", rotate90: \"Rotate 90\\u00b0\", compress: \"Compress\", scale: \"Scale\", compressLight: \"Light ({quality})\", compressMedium: \"Medium ({quality})\", compressHeavy: \"Heavy ({quality})\", compressMaximum: \"Maximum ({quality})\", imageActions: \"Image actions\", bulkFileActions: \"Bulk file actions\", fileSelected: \"{count} file selected\", filesSelected: \"{count} files selected\", action: \"Action\", }"
             }
           ],
           "events": [
@@ -3929,6 +3855,12 @@
               "description": "Presentation mode.\n- \"bulk\" (default): full action set including Operations\n  (insert/duplicate/rename/delete) for the file-admin dialog.\n- \"field\": transformations only (Transform/Compress/Scale),\n  used inline under a single haxupload schema field so the\n  destructive / insert operations are never offered in a\n  single-field context. See issue #3028.",
               "default": "\"bulk\"",
               "fieldName": "mode"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {
@@ -4304,7 +4236,7 @@
               "name": "updateHAXMap",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -4358,7 +4290,12 @@
             },
             {
               "kind": "method",
-              "name": "scrollInMap"
+              "name": "scrollInMap",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
             },
             {
               "kind": "field",
@@ -4417,7 +4354,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{}"
+              "default": "{ lockUnlock: \"Lock / Unlock\", moveUp: \"Move up\", moveDown: \"Move down\", delete: \"Delete\", }"
             },
             {
               "kind": "field",
@@ -4571,7 +4508,7 @@
                   "default": "\"element\""
                 },
                 {
-                  "name": "title",
+                  "name": "_title",
                   "default": "\"Select an option\""
                 },
                 {
@@ -4591,7 +4528,7 @@
               "name": "_handleFilters",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -4660,6 +4597,14 @@
               "description": "Allow multiple uses",
               "default": "\"gizmo\"",
               "attribute": "picker-type"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, toggleFilters: \"Toggle Filters\", filters: \"Filters\", }"
             },
             {
               "kind": "field",
@@ -4760,6 +4705,12 @@
                 "text": "boolean"
               },
               "fieldName": "filterOn"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {
@@ -5490,7 +5441,7 @@
               "name": "closeBtn",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -5871,6 +5822,41 @@
             },
             {
               "kind": "method",
+              "name": "applyFileUploadTransform",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "upload-response event (e.detail.xhr.response is JSON)",
+                  "type": {
+                    "text": "Event"
+                  }
+                },
+                {
+                  "name": "context",
+                  "description": "the upload field (has #url in its shadowRoot)",
+                  "type": {
+                    "text": "Element"
+                  }
+                }
+              ],
+              "description": "Generic post-upload hook orchestrator for the tray upload / drag-drop\npath. Resolves the candidate gizmo for the uploaded file's type and, if\nthat gizmo implements the `processFileUpload` haxHook, runs it. The hook\nreturns a transform spec { fileUuid, operation, valueMapping, fallbackType? }\nwhich this method executes via"
+            },
+            {
+              "kind": "method",
+              "name": "_waitForSiteOp",
+              "parameters": [
+                {
+                  "name": "operationName"
+                },
+                {
+                  "name": "timeoutMs",
+                  "default": "5000"
+                }
+              ],
+              "description": "Poll until a"
+            },
+            {
+              "kind": "method",
               "name": "write",
               "parameters": [
                 {
@@ -5907,6 +5893,19 @@
                 }
               ],
               "description": "Check if an element is an image element by tag name or schema metadata"
+            },
+            {
+              "kind": "method",
+              "name": "_replaceImageInPlace",
+              "parameters": [
+                {
+                  "name": "imageTarget"
+                },
+                {
+                  "name": "newValues"
+                }
+              ],
+              "description": "#3066: Replace an image (or image place-holder) in place with a new\nsource. No gallery wrap. Preserves the original element's slot, alt,\ncard/box/round/size/offset, etc. If `imageTarget` is a <place-holder>,\nthe placeholder is replaced by a fresh <media-image> carrying the\nplaceholder's slot. The temporary <p> placeholder created in\nhax-body dropEvent is removed if still attached."
             },
             {
               "kind": "method",
@@ -6420,7 +6419,7 @@
               "name": "_onBeforeUnload",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Before the browser closes / changes paths, ask if they are sure they want to leave"
@@ -6901,6 +6900,59 @@
             },
             {
               "kind": "method",
+              "name": "_matchTranslatedSetting",
+              "parameters": [
+                {
+                  "name": "fields",
+                  "description": "settings group from the base haxProperties",
+                  "type": {
+                    "text": "Array"
+                  }
+                },
+                {
+                  "name": "entry",
+                  "description": "translated entry from the locale overlay",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "index",
+                  "description": "position of the entry in the overlay",
+                  "type": {
+                    "text": "Number"
+                  }
+                }
+              ],
+              "description": "Find the settings field a locale overlay entry translates.\nEntries that name the field they translate (`property`, `attribute`\nor `slot`) are matched on that key, so reordering fields in the base\nhaxProperties does not mislabel translations. Entries without one fall\nback to the field at the same array index (original behavior).",
+              "return": {
+                "type": {
+                  "text": "Object|null"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_packageLocalesPath",
+              "parameters": [
+                {
+                  "name": "tag"
+                }
+              ],
+              "description": "Where a block's package keeps its locales, worked out from the import\npath HAX loaded it with (app store autoloader, else the dynamic import\nregistry). Only"
+            },
+            {
+              "kind": "method",
+              "name": "_registerHaxPropertiesLocales",
+              "parameters": [
+                {
+                  "name": "tag"
+                }
+              ],
+              "description": "Register `<tag>.haxProperties` with the i18n manager so a block's editor\nlabels translate from its package's locales folder without a per-element\ngizmoRegistration hook. File-based schemas\n(<package>/lib/<tag>.haxProperties.json) resolve from the schema URL;\ninline schemas resolve from the element's import path. Blocks that\nalready registered are left alone."
+            },
+            {
+              "kind": "method",
               "name": "attemptGizmoTranslation",
               "parameters": [
                 {
@@ -6929,7 +6981,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ close: \"Close\", }"
+              "default": "{ close: \"Close\", uploadSuccessful: \"Upload successful!\", cantHandleLinkType: \"Sorry, HAX doesn't know how to handle that type of link yet.\", pickHowToPresent: \"Pick how to present this {type}\", transformFailedFileLink: \"Post-upload transform failed; inserted a file link.\", imageReplaced: \"Image replaced\", imageGalleryCreated: \"Image gallery created successfully!\", imageAddedToGallery: \"Image added to gallery successfully!\", mediaPlaylistCreated: \"Media playlist created successfully!\", mediaAddedToPlaylist: \"Media added to playlist successfully!\", imageGalleryCreatedAddMore: \"Image gallery created! Add more images by editing the gallery.\", notAValidTag: \"{tag} is not a valid tag\", termsOfService: \"Terms of service:\", searchApp: \"Search {title}\", insertEmoji: \"Insert emoji\", insertEmojiInline: \"Insert emoji (inline token)\", searchForEmoji: \"Search for an emoji\", insertSymbol: \"Insert symbol\", insertSymbolInline: \"Insert symbol (inline token)\", searchForSymbol: \"Search for a symbol\", joinOurCommunity: \"Join our Community\", userTutorials: \"User Tutorials\", userDocumentation: \"User Documentation\", haxTeachingExcellence: \"HAX Teaching Excellence\", reportAnIssueTogether: \"Report an issue together\", leaveWithoutSaving: \"Are you sure you want to leave? Your work will not be saved!\", letsLearnHax: \"Let's learn HAX\", }"
             },
             {
               "kind": "field",
@@ -8183,6 +8235,9 @@
               "name": "positionByTarget",
               "parameters": [
                 {
+                  "name": "_target"
+                },
+                {
                   "name": "target",
                   "type": {
                     "text": "object"
@@ -8208,6 +8263,9 @@
               "kind": "method",
               "name": "_handleHaxStoreReady",
               "parameters": [
+                {
+                  "name": "_e"
+                },
                 {
                   "name": "e",
                   "type": {
@@ -8323,32 +8381,26 @@
             {
               "kind": "field",
               "name": "__updated",
-              "privacy": "public",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
-              "attribute": "__updated"
+              "default": "false"
             },
             {
               "kind": "field",
               "name": "__inList",
-              "privacy": "public",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
-              "attribute": "__inList"
+              "default": "false"
             },
             {
               "kind": "field",
               "name": "__hasSelection",
-              "privacy": "public",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
-              "attribute": "__hasSelection"
+              "default": "false"
             },
             {
               "kind": "field",
@@ -8558,31 +8610,27 @@
               }
             }
           ],
+          "mixins": [
+            {
+              "name": "RichTextEditorToolbarBehaviors",
+              "package": "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "HaxContextBehaviors",
+              "module": "/lib/hax-context-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hax-text-editor-toolbar",
+          "customElement": true,
           "attributes": [
-            {
-              "name": "__updated",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "__updated"
-            },
-            {
-              "name": "__inList",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "__inList"
-            },
-            {
-              "name": "__hasSelection",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "__hasSelection"
-            },
             {
               "name": "activeNode",
               "type": {
@@ -8639,27 +8687,7 @@
                 "module": "lib/hax-context-behaviors.js"
               }
             }
-          ],
-          "mixins": [
-            {
-              "name": "RichTextEditorToolbarBehaviors",
-              "package": "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js"
-            },
-            {
-              "name": "I18NMixin",
-              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
-            },
-            {
-              "name": "HaxContextBehaviors",
-              "module": "/lib/hax-context-behaviors.js"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "hax-text-editor-toolbar",
-          "customElement": true
+          ]
         }
       ],
       "exports": [
@@ -8821,7 +8849,7 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -8830,7 +8858,7 @@
               "name": "_handleKeys",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -8839,7 +8867,7 @@
               "name": "_handleMousedown",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -9119,7 +9147,7 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -9132,7 +9160,7 @@
               "name": "_handleKeys",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -9145,7 +9173,7 @@
               "name": "_handleMousedown",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -9624,7 +9652,7 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Fire an event that includes the eventName of what was just pressed.",
@@ -9738,7 +9766,7 @@
               "name": "_handleKeys",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -9751,7 +9779,7 @@
               "name": "_handleMousedown",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -10109,6 +10137,30 @@
             },
             {
               "kind": "field",
+              "name": "__imageBatchTotal",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "__imageBatch",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "__imageBatchPlaceHolder",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
               "name": "__winEvents",
               "type": {
                 "text": "object"
@@ -10191,6 +10243,20 @@
             },
             {
               "kind": "method",
+              "name": "_passesUploadRequirements",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Validate the selected file against uploadRequirements (extensions\nand/or types). Returns true when the file passes or no requirements\nare declared, false when it should be blocked. Toasts the reason.",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_haxAppPickerSelection",
               "parameters": [
                 {
@@ -10208,10 +10274,27 @@
               "name": "_jwtTokenRefreshed",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Handle JWT token refresh",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_runUploadTransform",
+              "parameters": [
+                {
+                  "name": "response"
+                },
+                {
+                  "name": "_item"
+                }
+              ],
+              "description": "Run the post-upload transform declared by `uploadTransform`. Calls",
               "inheritedFrom": {
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
@@ -10244,7 +10327,7 @@
               "name": "_clickMediaButton",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -10644,7 +10727,45 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", imageInfo: \"Image info\", imageActions: \"Image actions\", imageRecommendations: \"Image recommendations\", compressImage: \"Compress image\", resizeTo: \"Resize to\", created: \"Created\", size: \"Size\", dimensions: \"Dimensions\", type: \"Type\", done: \"done\", noFileUuid: \"File reference unavailable; re-upload to enable actions.\", fileOpsUnavailable: \"File operations are not available for this site.\", fileOpFailed: \"File operation failed.\", }",
+              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", imageInfo: \"Image info\", imageActions: \"Image actions\", imageRecommendations: \"Image recommendations\", compressImage: \"Compress image\", resizeTo: \"Resize to\", created: \"Created\", size: \"Size\", dimensions: \"Dimensions\", type: \"Type\", done: \"done\", noFileUuid: \"File reference unavailable; re-upload to enable actions.\", fileOpsUnavailable: \"File operations are not available for this site.\", fileOpFailed: \"File operation failed.\", fileExtensionNotAllowed: \"This field only accepts the following file types:\", fileTypeNotAllowed: \"This field only accepts the following media types:\", transformFailed: \"Post-upload transform failed; the original file was kept.\", imageGalleryCreated: \"Image gallery created successfully!\", }",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "uploadRequirements",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional schema field property. When declared on a haxupload /\nfileupload field, the selected file is validated BEFORE upload.\n`extensions` is an array like [\".pptx\"] matched against the file\nname; `types` is an array of gizmo-type vocabulary strings (e.g.\n[\"image\"], [\"pptx\"]) matched via HAXStore.guessGizmoType. A file\nthat does not match is blocked with a toast.",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "uploadTransform",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional schema field property. When declared, after the normal\nupload (POST /x/api/v1/files) returns {data:{file:{uuid,path}}},\nthe field calls",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__transformBusy",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
               "inheritedFrom": {
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
@@ -10676,6 +10797,18 @@
               "description": "#3028: opt-in flag on a haxupload/fileupload schema field. When true,\nthe field surfaces an Image Info panel (size / dimensions / mimetype)\nwith actionable compress/resize icons plus a collapsed Image Actions\narea offering in-place transform/compress/scale run via",
               "default": "false",
               "fieldName": "fileActions",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
               "inheritedFrom": {
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
@@ -10723,7 +10856,7 @@
               "name": "_expandSettingsPanel",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -10764,7 +10897,7 @@
               "name": "resetSize",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -10817,7 +10950,7 @@
               "name": "_clickMediaButton",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -10904,6 +11037,16 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "_applyTrayDetailDom",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ],
+              "description": "DOM + edge-case work for a trayDetail change. Safe to call from\nupdated() because it does NOT set trayIcon/trayLabel (those are\nderived in willUpdate) and does NOT call requestUpdate. The only\nreactive sets here are the rare content-edit-with-no-active-node and\nempty-trayDetail normalizations, which are edge cases."
+            },
+            {
               "kind": "field",
               "name": "flattenObject"
             },
@@ -10942,7 +11085,7 @@
               "name": "_clickEditButton",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Edit clicked, activate"
@@ -11035,7 +11178,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ structure: \"Structure\", htmlSource: \"HTML Source\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", pages: \"Pages\", templates: \"Templates\", width: \"Width\", }"
+              "default": "{ structure: \"Structure\", htmlSource: \"HTML Source\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", pages: \"Pages\", templates: \"Templates\", width: \"Width\", content: \"Content\", linkHtmlContentDescription: \"HTML inside this link. Nested elements like images are preserved; edit carefully.\", }"
             },
             {
               "kind": "field",
@@ -11529,7 +11672,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` body { --hax-ui-color: #222; --hax-ui-color-focus: #000; --hax-ui-color-faded: #444; --hax-ui-disabled-color: #bbb; --hax-ui-background-color: #fff; --hax-ui-background-color-secondary: #e8e8e8; --hax-ui-background-color-faded: #b0b8bb; --hax-ui-color-accent: var(--ddd-theme-default-skyBlue, #009dc7); --hax-ui-color-accent-secondary: #007999; --hax-ui-background-color-accent: #e5f6fd; --hax-ui-color-danger: #ee0000; --hax-ui-color-danger-secondary: #850000; --hax-ui-background-color-danger: #fdeded; --hax-ui-border-color: #ddd; } body[hax-ui-theme=\"haxdark\"] { --hax-ui-color: #eeeae6; --hax-ui-color-focus: #fff; --hax-ui-color-faded: #c5c3be; --hax-ui-disabled-color: #666; --hax-ui-background-color: #111; --hax-ui-background-color-secondary: #111; --hax-ui-background-color-faded: #222; --hax-ui-color-accent-secondary: #00c9ff; --hax-ui-background-color-accent: #000; --hax-ui-color-danger: #ff8f8f; --hax-ui-color-danger-secondary: #ff2222; --hax-ui-background-color-danger: #000; --hax-ui-border-color: #000; } @media (prefers-color-scheme: dark) { body[hax-ui-theme=\"system\"] { --hax-ui-color: #eeeae6; --hax-ui-color-focus: #fff; --hax-ui-color-faded: #c5c3be; --hax-ui-background-color: #111; --hax-ui-background-color-secondary: #111; --hax-ui-background-color-faded: #222; --hax-ui-color-accent-secondary: #00c9ff; --hax-ui-background-color-accent: #000; --hax-ui-color-danger: #ff8f8f; --hax-ui-color-danger-secondary: #ff2222; --hax-ui-background-color-danger: #000; --hax-ui-border-color: #000; } } `, ]"
+          "default": "[ css` body { --hax-ui-color: #222; --hax-ui-color-focus: #000; --hax-ui-color-faded: #444; --hax-ui-disabled-color: #bbb; --hax-ui-background-color: #fff; --hax-ui-background-color-secondary: #e8e8e8; --hax-ui-background-color-faded: #b0b8bb; /* beaverBlue keeps 4.5:1 contrast both as white-text background and as text on white (skyBlue failed at 3.08:1) */ --hax-ui-color-accent: var(--ddd-theme-default-beaverBlue, #1e407c); --hax-ui-color-accent-secondary: #007999; --hax-ui-background-color-accent: #e5f6fd; --hax-ui-color-danger: #ee0000; --hax-ui-color-danger-secondary: #850000; --hax-ui-background-color-danger: #fdeded; --hax-ui-border-color: #ddd; } body[hax-ui-theme=\"haxdark\"] { --hax-ui-color: #eeeae6; --hax-ui-color-focus: #fff; --hax-ui-color-faded: #c5c3be; --hax-ui-background-color: #111; --hax-ui-background-color-secondary: #111; --hax-ui-background-color-faded: #222; /* light cyan keeps 4.5:1 on dark backgrounds in both accent roles */ --hax-ui-color-accent: #00c9ff; --hax-ui-color-accent-secondary: #00c9ff; --hax-ui-background-color-accent: #000; --hax-ui-color-danger: #ff8f8f; --hax-ui-color-danger-secondary: #ff2222; --hax-ui-background-color-danger: #000; --hax-ui-border-color: #000; } @media (prefers-color-scheme: dark) { body[hax-ui-theme=\"system\"] { --hax-ui-color: #eeeae6; --hax-ui-color-focus: #fff; --hax-ui-color-faded: #c5c3be; --hax-ui-background-color: #111; --hax-ui-background-color-secondary: #111; --hax-ui-background-color-faded: #222; /* light cyan keeps 4.5:1 on dark backgrounds in both accent roles */ --hax-ui-color-accent: #00c9ff; --hax-ui-color-accent-secondary: #00c9ff; --hax-ui-background-color-accent: #000; --hax-ui-color-danger: #ff8f8f; --hax-ui-color-danger-secondary: #ff2222; --hax-ui-background-color-danger: #000; --hax-ui-border-color: #000; } } `, ]"
         },
         {
           "kind": "variable",
@@ -11545,7 +11688,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` body { --simple-fields-field-margin: calc(2 * var(--hax-ui-font-size)); --simple-toolbar-focus-z-index: var(--hax-ui-focus-z-index); --simple-fields-font-family: var(--hax-ui-font-family); --simple-fields-font-size: var(--hax-ui-font-size); --simple-fields-line-height: 135%; --simple-fields-detail-font-size: var(--hax-ui-font-size-sm); --simple-fields-detail-line-height: 120%; --simple-fields-margin: var(--hax-ui-spacing); --simple-fields-background-color: var(--hax-ui-background-color); --simple-fields-color: var(--hax-ui-color); --simple-picker-option-active-color: var(--hax-ui-color); --simple-picker-color-active: var(--hax-ui-color); --simple-picker-color: var(--hax-ui-color); --simple-fields-accent-color: var(--hax-ui-color-accent); --simple-fields-accent-color-light: var(--hax-ui-background-color-faded); --simple-fields-error-color: var(--hax-ui-color-danger-secondary); --simple-fields-button-danger-background-color: var( --hax-ui-color-danger ); --simple-fields-button-danger-focus-color: var( --hax-ui-color-danger-secondary ); --simple-fields-button-danger-background-color: var( --hax-ui-background-color ); --simple-fields-secondary-accent-color: var( --hax-ui-color-accent-secondary ); --simple-fields-border-color: var(--hax-ui-color-faded); --simple-fields-fieldset-border-color: rgba(127, 127, 127, 0.2); --simple-fields-legend-text-transform: capitalize; --simple-fields-legend-font-size: var(--hax-ui-font-size-xs); --simple-fields-meta-font-size: var(--hax-ui-font-size-xs); --simple-fields-meta-line-height: 120%; --simple-fields-meta-opacity: 0.7; --simple-fields-focus-meta-opacity: 1; --simple-fields-button-color: var(--hax-ui-color); --simple-fields-button-background-color: var(--hax-ui-background-color); --simple-fields-button-border-color: var(--hax-ui-border-color); --simple-fields-button-text-transform: capitalize; --simple-fields-border-radius: var(--hax-ui-border-radius); --simple-fields-button-padding-sm: var(--hax-ui-spacing-sm); --simple-fields-button-padding: var(--hax-ui-spacing-sm); --simple-fields-button-toggled-color: var(--hax-ui-color); --simple-fields-button-toggled-background-color: var( --hax-ui-background-color-accent ); --simple-fields-button-toggled-border-color: var(--hax-ui-color-accent); --simple-fields-button-focus-color: var(--hax-ui-color); --simple-fields-button-focus-background-color: var( --hax-ui-background-color-accent ); --simple-fields-button-focus-border-color: var(--hax-ui-color-accent); --simple-fields-button-disabled-color: unset; --simple-fields-button-disabled-background-color: unset; --simple-fields-button-disabled-border-color: unset; --simple-fields-button-disabled-opacity: 0.5; --hexagon-color: var(--hax-ui-color-accent); } `, ]"
+          "default": "[ css` body { --simple-fields-field-margin: calc(2 * var(--hax-ui-font-size)); --simple-toolbar-focus-z-index: var(--hax-ui-focus-z-index); --simple-fields-font-family: var(--hax-ui-font-family); --simple-fields-font-size: var(--hax-ui-font-size); --simple-fields-line-height: 135%; --simple-fields-detail-font-size: var(--hax-ui-font-size-sm); --simple-fields-detail-line-height: 120%; --simple-fields-margin: var(--hax-ui-spacing); --simple-fields-background-color: var(--hax-ui-background-color); --simple-fields-color: var(--hax-ui-color); --simple-picker-option-active-color: var(--hax-ui-color); --simple-picker-color-active: var(--hax-ui-color); --simple-picker-color: var(--hax-ui-color); --simple-fields-accent-color: var(--hax-ui-color-accent); --simple-fields-accent-color-light: var(--hax-ui-background-color-faded); --simple-fields-error-color: var(--hax-ui-color-danger-secondary); --simple-fields-button-danger-background-color: var( --hax-ui-color-danger ); --simple-fields-button-danger-focus-color: var( --hax-ui-color-danger-secondary ); --simple-fields-button-danger-background-color: var( --hax-ui-background-color ); --simple-fields-secondary-accent-color: var( --hax-ui-color-accent-secondary ); --simple-fields-border-color: var(--hax-ui-color-faded); --simple-fields-fieldset-border-color: rgba(127, 127, 127, 0.2); --simple-fields-legend-text-transform: capitalize; --simple-fields-legend-font-size: var(--hax-ui-font-size-xs); --simple-fields-meta-font-size: var(--hax-ui-font-size-xs); --simple-fields-meta-line-height: 120%; --simple-fields-meta-opacity: 0.7; --simple-fields-focus-meta-opacity: 1; --simple-fields-button-color: var(--hax-ui-color); --simple-fields-button-background-color: var(--hax-ui-background-color); --simple-fields-button-border-color: var(--hax-ui-border-color); --simple-fields-button-text-transform: capitalize; --simple-fields-border-radius: var(--hax-ui-border-radius); --simple-fields-button-padding-sm: var(--hax-ui-spacing-sm); --simple-fields-button-padding: var(--hax-ui-spacing-sm); --simple-fields-button-toggled-color: var(--hax-ui-color); --simple-fields-button-toggled-background-color: var( --hax-ui-background-color-accent ); --simple-fields-button-toggled-border-color: var(--hax-ui-color-accent); --simple-fields-button-focus-color: var(--hax-ui-color); --simple-fields-button-focus-background-color: var( --hax-ui-background-color-accent ); --simple-fields-button-focus-border-color: var(--hax-ui-color-accent); --simple-fields-button-disabled-color: unset; --simple-fields-button-disabled-background-color: unset; --simple-fields-button-disabled-border-color: unset; --simple-fields-button-disabled-opacity: var( --ddd-state-disabled-opacity, 0.5 ); --hexagon-color: var(--hax-ui-color-accent); } `, ]"
         },
         {
           "kind": "variable",
@@ -11553,7 +11696,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` simple-modal[mode=\"hax-ui\"], simple-popover-manager[mode=\"hax\"] { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); --simple-modal-height: 80vh; --simple-modal-width: 80vw; --simple-popover-background-color: light-dark( var(--ddd-primary-4), var(--ddd-accent-6) ); --simple-popover-padding: var(--hax-ui-spacing); --simple-popover-border-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-popover-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-modal-border-color: var(--hax-ui-color); } rich-text-editor-prompt { z-index: calc(var(--hax-ui-focus-z-index) - 1); } simple-modal[mode=\"hax-ui\"]::part(dialog) { --simple-modal-z-index: 100000001 !important; } simple-modal[opened] { z-index: 100000001 !important; position: fixed; } simple-modal[mode=\"hax-ui\"]::part(titlebar), simple-popover-manager[mode=\"hax\"]::part(simple-popover-heading), simple-popover-manager[mode=\"hax\"] h1[slot=\"heading\"] { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing); margin: 0; } simple-modal[mode=\"hax-ui\"]::part(close), simple-popover-manager[mode=\"hax\"] #close { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); outline: 1px solid var(--hax-ui-color-accent); --simple-icon-button-border: 0px solid transparent; --simple-icon-button-border-radius: var(--hax-ui-border-radius); width: 24px; height: 24px; padding: 0; } simple-modal[mode=\"hax-ui\"]:focus-within::part(close), simple-modal[mode=\"hax-ui\"]:hover::part(close), simple-popover-manager[mode=\"hax\"] #close:focus, simple-popover-manager[mode=\"hax\"] #close:hover { background-color: var(--hax-ui-color-accent-secondary); --simple-icon-button-border: 0px solid transparent; } simple-modal[mode=\"hax-ui\"]::part(title), simple-popover-manager[mode=\"hax\"] h1 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); font-weight: normal; margin: 0 var(--hax-ui-spacing-sm) 0 0; padding: 0; } simple-popover-manager[mode=\"hax\"] h2 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size-lg); font-weight: normal; color: var(--hax-ui-color-accent-secondary); margin: 0 0 var(--hax-ui-spacing-lg); } simple-modal[mode=\"hax-ui\"]::part(content), simple-modal[mode=\"hax-ui\"]::part(custom), simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { font-size: var(--hax-ui-font-size); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); } simple-modal[mode=\"hax-ui\"]::part(content) { padding: 0 var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]::part(custom) { padding: 0; } simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { padding: var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]::part(buttons), simple-popover-manager[mode=\"hax\"]:part(simple-popover-nav) { background-color: var(--hax-ui-background-color); } #hax-cancel-no, #hax-cancel-yes { flex: 1 1 auto; } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button) { text-transform: capitalize; font-size: var(--hax-ui-font-size-sm); padding: var(--hax-ui-spacing-sm); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); border: 1px solid var(--hax-ui-border-color); border-radius: var(--hax-ui-border-radius); background-color: var(--hax-ui-background-color); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):hover, simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):focus-within { color: var(--hax-ui-color); background-color: var(--hax-ui-background-color-accent); border-color: var(--hax-ui-color-accent); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"][disabled]::part(button) { opacity: 0.5; border: 1px solid var(--hax-ui-border-color); } `, ]"
+          "default": "[ css` simple-modal[mode=\"hax-ui\"], simple-popover-manager[mode=\"hax\"] { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); --simple-modal-height: 80vh; --simple-modal-width: 80vw; --simple-popover-background-color: light-dark( var(--ddd-primary-4), var(--ddd-accent-6) ); --simple-popover-padding: var(--hax-ui-spacing); --simple-popover-border-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-popover-color: light-dark( var(--ddd-accent-6), var(--ddd-primary-4) ); --simple-modal-border-color: var(--hax-ui-color); } rich-text-editor-prompt { z-index: calc(var(--hax-ui-focus-z-index) - 1); } simple-modal[mode=\"hax-ui\"]::part(dialog) { --simple-modal-z-index: 100000001 !important; } simple-modal[opened] { z-index: 100000001 !important; position: fixed; } simple-modal[mode=\"hax-ui\"]::part(titlebar), simple-popover-manager[mode=\"hax\"]::part(simple-popover-heading), simple-popover-manager[mode=\"hax\"] h1[slot=\"heading\"] { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing); margin: 0; } simple-modal[mode=\"hax-ui\"]::part(close), simple-popover-manager[mode=\"hax\"] #close { color: var(--hax-ui-background-color); background-color: var(--hax-ui-color-accent); outline: 1px solid var(--hax-ui-color-accent); --simple-icon-button-border: 0px solid transparent; --simple-icon-button-border-radius: var(--hax-ui-border-radius); width: 24px; height: 24px; padding: 0; } simple-modal[mode=\"hax-ui\"]:focus-within::part(close), simple-modal[mode=\"hax-ui\"]:hover::part(close), simple-popover-manager[mode=\"hax\"] #close:focus, simple-popover-manager[mode=\"hax\"] #close:hover { background-color: var(--hax-ui-color-accent-secondary); --simple-icon-button-border: 0px solid transparent; } simple-modal[mode=\"hax-ui\"]::part(title), simple-popover-manager[mode=\"hax\"] h1 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size); font-weight: normal; margin: 0 var(--hax-ui-spacing-sm) 0 0; padding: 0; } simple-popover-manager[mode=\"hax\"] h2 { font-family: var(--hax-ui-font-family); font-size: var(--hax-ui-font-size-lg); font-weight: normal; color: var(--hax-ui-color-accent-secondary); margin: 0 0 var(--hax-ui-spacing-lg); } simple-modal[mode=\"hax-ui\"]::part(content), simple-modal[mode=\"hax-ui\"]::part(custom), simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { font-size: var(--hax-ui-font-size); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); } simple-modal[mode=\"hax-ui\"]::part(content) { padding: 0 var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]::part(custom) { padding: 0; } simple-popover-manager[mode=\"hax\"]::part(simple-popover-body) { padding: var(--hax-ui-spacing); } simple-modal[mode=\"hax-ui\"]::part(buttons), simple-popover-manager[mode=\"hax\"]:part(simple-popover-nav) { background-color: var(--hax-ui-background-color); } #hax-cancel-no, #hax-cancel-yes { flex: 1 1 auto; } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button) { text-transform: capitalize; font-size: var(--hax-ui-font-size-sm); padding: var(--hax-ui-spacing-sm); color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); border: 1px solid var(--hax-ui-border-color); border-radius: var(--hax-ui-border-radius); background-color: var(--hax-ui-background-color); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):hover, simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"]::part(button):focus-within { color: var(--hax-ui-color); background-color: var(--hax-ui-background-color-accent); border-color: var(--hax-ui-color-accent); } simple-popover-manager[mode=\"hax\"] simple-icon-button-lite[slot=\"nav\"][disabled]::part(button) { opacity: var(--ddd-state-disabled-opacity, 0.5); border: 1px solid var(--hax-ui-border-color); } `, ]"
         },
         {
           "kind": "variable",
@@ -11570,7 +11713,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` hexagon-loader { display: none; margin: 0 auto; z-index: 1000; } hexagon-loader[loading] { display: block; opacity: 0.8; } `, ]"
+          "default": "[ css` hexagon-loader { display: none; margin: 0 auto; z-index: 1000; } hexagon-loader[loading] { display: block; opacity: var(--ddd-opacity-80, 0.8); } `, ]"
         },
         {
           "kind": "variable",
@@ -11586,7 +11729,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` simple-fields-tabs { padding: 0; border: none; margin-left: calc(0 - var(--hax-ui-spacing-sm)); margin-right: calc(0 - var(--hax-ui-spacing-sm)); } simple-fields-tabs::part(tablist) { margin-bottom: var(--hax-ui-spacing); } simple-fields-tabs::part(tab), simple-fields-tabs::part(tab-active), simple-fields-tabs::part(tab-disabled) { border: 1px solid var(--hax-ui-border-color); text-decoration: none; border-radius: 3px; color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); outline: unset; text-transform: capitalize; font-size: var(--hax-ui-font-size-sm); padding: var(--hax-ui-spacing-xs); flex: 1 1 auto; } simple-fields-tabs::part(tab-active) { color: var(--hax-ui-color-accent); } simple-fields-tabs::part(tab-disabled) { opacity: 0.5; background-color: rgba(127, 127, 127, 0.2); } simple-fields-tabs::part(content) { border: none; } simple-fields-tab { padding: 0; } simple-fields *::part(label) { text-transform: captitalize; margin: 0; } `, ]"
+          "default": "[ css` simple-fields-tabs { padding: 0; border: none; margin-left: calc(0 - var(--hax-ui-spacing-sm)); margin-right: calc(0 - var(--hax-ui-spacing-sm)); } simple-fields-tabs::part(tablist) { margin-bottom: var(--hax-ui-spacing); } simple-fields-tabs::part(tab), simple-fields-tabs::part(tab-active), simple-fields-tabs::part(tab-disabled) { border: 1px solid var(--hax-ui-border-color); text-decoration: none; border-radius: 3px; color: var(--hax-ui-color); background-color: var(--hax-ui-background-color); outline: unset; text-transform: capitalize; font-size: var(--hax-ui-font-size-sm); padding: var(--hax-ui-spacing-xs); flex: 1 1 auto; } simple-fields-tabs::part(tab-active) { color: var(--hax-ui-color-accent); } simple-fields-tabs::part(tab-disabled) { opacity: var(--ddd-state-disabled-opacity, 0.5); background-color: rgba(127, 127, 127, 0.2); } simple-fields-tabs::part(content) { border: none; } simple-fields-tab { padding: 0; } simple-fields *::part(label) { text-transform: captitalize; margin: 0; } `, ]"
         },
         {
           "kind": "variable",
@@ -11821,6 +11964,16 @@
             },
             {
               "kind": "method",
+              "name": "_passesUploadRequirements",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Validate the selected file against uploadRequirements (extensions\nand/or types). Returns true when the file passes or no requirements\nare declared, false when it should be blocked. Toasts the reason."
+            },
+            {
+              "kind": "method",
               "name": "_haxAppPickerSelection",
               "parameters": [
                 {
@@ -11834,7 +11987,7 @@
               "name": "_jwtTokenRefreshed",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Handle JWT token refresh"
@@ -11848,6 +12001,19 @@
                 }
               ],
               "description": "Respond to successful file upload, now inject url into url field and\ndo a gizmo guess from there!"
+            },
+            {
+              "kind": "method",
+              "name": "_runUploadTransform",
+              "parameters": [
+                {
+                  "name": "response"
+                },
+                {
+                  "name": "_item"
+                }
+              ],
+              "description": "Run the post-upload transform declared by `uploadTransform`. Calls"
             },
             {
               "kind": "field",
@@ -11868,7 +12034,7 @@
               "name": "_clickMediaButton",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -12164,7 +12330,41 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", imageInfo: \"Image info\", imageActions: \"Image actions\", imageRecommendations: \"Image recommendations\", compressImage: \"Compress image\", resizeTo: \"Resize to\", created: \"Created\", size: \"Size\", dimensions: \"Dimensions\", type: \"Type\", done: \"done\", noFileUuid: \"File reference unavailable; re-upload to enable actions.\", fileOpsUnavailable: \"File operations are not available for this site.\", fileOpFailed: \"File operation failed.\", }"
+              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", imageInfo: \"Image info\", imageActions: \"Image actions\", imageRecommendations: \"Image recommendations\", compressImage: \"Compress image\", resizeTo: \"Resize to\", created: \"Created\", size: \"Size\", dimensions: \"Dimensions\", type: \"Type\", done: \"done\", noFileUuid: \"File reference unavailable; re-upload to enable actions.\", fileOpsUnavailable: \"File operations are not available for this site.\", fileOpFailed: \"File operation failed.\", fileExtensionNotAllowed: \"This field only accepts the following file types:\", fileTypeNotAllowed: \"This field only accepts the following media types:\", transformFailed: \"Post-upload transform failed; the original file was kept.\", imageGalleryCreated: \"Image gallery created successfully!\", }"
+            },
+            {
+              "kind": "field",
+              "name": "uploadRequirements",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional schema field property. When declared on a haxupload /\nfileupload field, the selected file is validated BEFORE upload.\n`extensions` is an array like [\".pptx\"] matched against the file\nname; `types` is an array of gizmo-type vocabulary strings (e.g.\n[\"image\"], [\"pptx\"]) matched via HAXStore.guessGizmoType. A file\nthat does not match is blocked with a toast."
+            },
+            {
+              "kind": "field",
+              "name": "uploadTransform",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional schema field property. When declared, after the normal\nupload (POST /x/api/v1/files) returns {data:{file:{uuid,path}}},\nthe field calls"
+            },
+            {
+              "kind": "field",
+              "name": "__transformBusy",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
             }
           ],
           "attributes": [
@@ -12240,7 +12440,7 @@
               "name": "refreshHTMLEditor",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -12249,7 +12449,7 @@
               "name": "updateBodyFromHTML",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Import content into body area."
@@ -12259,7 +12459,7 @@
               "name": "scrubContent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Scrub and then import content as if pasted from Word / GDocs"
@@ -12269,7 +12469,7 @@
               "name": "prettifyContent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -12283,7 +12483,7 @@
               "name": "selectBody",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "selectBody"
@@ -12312,7 +12512,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ updateHTML: \"Update HTML\", copyHTML: \"Copy HTML\", copiedToClipboard: \"Copied to clipboard\", prettifyHtml: \"Prettify HTML\", cleanFormatting: \"Clean Formatting\", haxSchema: \"HAX schema JSON\", revisionHistory: \"Revision history\", }"
+              "default": "{ updateHTML: \"Update HTML\", copyHTML: \"Copy HTML\", copiedToClipboard: \"Copied to clipboard\", prettifyHtml: \"Prettify HTML\", cleanFormatting: \"Clean Formatting\", haxSchema: \"HAX schema JSON\", revisionHistory: \"Revision history\", scrubbedContentUpdated: \"Scrubbed. Content updated.\", formattingUpdated: \"Formatting updated. Content updated.\", }"
             },
             {
               "kind": "field",
@@ -12539,6 +12739,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, noResponsiveSources: \"No responsive sources yet. Add one below.\", addResponsiveSource: \"Add responsive source\", addSource: \"Add source\", descriptor: \"Descriptor\", moveUp: \"Move up\", moveDown: \"Move down\", removeSource: \"Remove source\", }"
+            },
+            {
+              "kind": "field",
               "name": "value",
               "privacy": "public",
               "type": {
@@ -12567,6 +12775,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "SimpleFieldsContainerBehaviors",
               "package": "@haxtheweb/simple-fields/lib/simple-fields-container.js"

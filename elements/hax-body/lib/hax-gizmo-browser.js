@@ -438,11 +438,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     // Derive categories from items in willUpdate so it batches into the
     // current update cycle. Setting categories in updated() scheduled a
     // redundant second update (Lit change-in-update warning).
-    if (
-      changedProperties.has("items") &&
-      this.items &&
-      this.items.length > 0
-    ) {
+    if (changedProperties.has("items") && this.items && this.items.length > 0) {
       this.categories = [...this.updateCategories(this.items)];
     }
   }
