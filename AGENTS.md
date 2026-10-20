@@ -8,54 +8,19 @@
 
 This file provides comprehensive instructions for AI coding agents working within the HAX ecosystem. HAX (Headless Authoring eXperience) is a comprehensive web development ecosystem that enables rapid creation of accessible, performant web components and static sites. Follow these guidelines to set up, develop, test, and contribute effectively to HAX projects.
 
-## HAX Ecosystem Overview
+## Ecosystem context (maintained in PRAW)
 
-The HAX ecosystem consists of multiple interconnected repositories, each serving specific purposes:
+Shared HAX ecosystem guidance (repo map, pillars, rules, scoped rules, skills) lives in one place,
+https://github.com/haxtheweb/praw, and is read from there instead of being copied into each repo:
 
-### Core Repositories
-
-- **`webcomponents`** - The heart of HAX: a monorepo containing 250+ LitElement-based web components, themes, and the DDD design system. All components are built with accessibility, performance, and HAX compatibility in mind.
-
-- **`create` (@haxtheweb/create)** - The HAX CLI tool for scaffolding new web components, HAXsites, and managing the development workflow. This is your primary interface for creating new HAX projects.
-
-- **`haxcms-php`** - PHP backend implementation of HAXcms, providing content management capabilities, API endpoints, and server-side rendering for HAXsites.
-
-- **`haxcms-nodejs`** - Node.js backend implementation of HAXcms, offering the same capabilities as the PHP version but in a JavaScript environment.
-
-- **`desktop`** - Electron-based desktop application that provides a local development environment for HAX, combining the power of HAXcms with desktop convenience.
-
-### Supporting Repositories
-
-- **`hax11ty`** - Integration layer that bridges HAX components with Eleventy (11ty) static site generator, enabling HAX components in traditional static sites.
-
-- **`json-outline-schema`** - Defines the JSON schema used by HAXcms for content structure, site navigation, and metadata management.
-
-- **`hax-schema`** - Contains HAX property schemas that define how web components integrate with the HAX authoring interface.
-
-- **`open-apis`** - Microservice APIs and shared infrastructure for HAXTheWeb ecosystem. Contains Express-based Vercel endpoints deployed at https://open-apis.hax.cloud/ providing advanced capabilities like content importing, parsing, analysis, site conversion, and migration services. Also hosts the pre-built Storybook documentation for HAX components.
-
-- **`docs`** - Official HAX documentation site built as a HAXcms site. Contains comprehensive documentation about HAX philosophy, pillars, community guidelines, tutorials, and developer resources. Structure follows HAXcms conventions with site.json (JSON Outline Schema), pages/ directory for content, and files/ for assets.
-
-- **`issues`** - Unified issue tracking repository for the entire HAX ecosystem, where all bugs, features, and discussions are centralized.
-
-### Development Philosophy & Community Pillars
-
-HAX is built on a foundation of community pillars that guide all development decisions and community interactions. These are not just technical specifications but ethical commitments:
-
-#### Core Pillars
-- **Accessible**: HAX maximizes accessibility while removing the knowledge required to maintain accessibility standards. Components adhere to WCAG 2.0 AA standards, with automated color contrast ratios and expert-audited implementations.
-- **Extensible**: Built for sustainable extension through web standards, microservices, and modular architecture that grows with user needs.
-- **Free and Open**: Open community welcoming all (Penn State and beyond), embracing the 5Rs of OER (Retain, Reuse, Revise, Remix, Redistribute) for content and code.
-- **Efficient**: Optimized for performance through web standards over heavy libraries, lazy loading, offline capability, and minimal resource usage.
-- **Platform Agnostic**: Works anywhere - standalone HAXsites, integrated HAXcms, static web pages, or existing CMS platforms.
-- **Remixable**: Maximizes remix-ability through modular design, open licensing, and semantic content structures.
-- **Sustainable**: Environmental (less data, lower battery usage), technological (web standards-based longevity), and community (inclusive, collaborative governance) sustainability.
-
-#### Technical Emphasis
-- **Rapid Development**: Scaffolding tools and design systems accelerate creation
-- **Unbundled Delivery**: Pure JavaScript, HTML, CSS approach without compilation steps
-- **Modularity**: Components work independently and compose together seamlessly
-- **Ubiquitous Web**: The web needs a file format - content should "just work" regardless of how it was built
+- Always-on rules and ecosystem index: <https://github.com/haxtheweb/praw/blob/main/WARP.md>
+- Rule registry, by Rule ID: <https://github.com/haxtheweb/praw/blob/main/RULES.md>
+- Scoped rules: [webcomponents](https://github.com/haxtheweb/praw/blob/main/webcomponents/WARP.md), [HAXcms backends](https://github.com/haxtheweb/praw/blob/main/haxcms/WARP.md), [DDD design system](https://github.com/haxtheweb/praw/blob/main/design-system/WARP.md)
+- What HAX is, pillars, and the repo map: <https://github.com/haxtheweb/praw/blob/main/what-is-hax.md>
+- Workflow skills: <https://github.com/haxtheweb/praw/tree/main/skills>; interface skills: <https://github.com/haxtheweb/create/tree/main/src/skills>
+- Machine-readable index: <https://raw.githubusercontent.com/haxtheweb/praw/main/llms.txt>
+- Work queue: <https://github.com/haxtheweb/issues> (`gh issue list --repo haxtheweb/issues`)
+- CLI options: `hax help`, `hax <command> --help`, or `man hax`
 
 ## Development Environment Setup
 
@@ -187,12 +152,6 @@ The HAX ecosystem uses a sophisticated build pipeline optimized for unbundled Ja
   yarn run dev
   ```
 
-- **Monorepo build** (from webcomponents root):
-  ```bash
-  yarn run build
-  ```
-  - Builds all components in the monorepo
-
 ### Testing Instructions
 
 - **Run tests** (from project or component root):
@@ -269,238 +228,6 @@ LICENSE
   - Test locally with `hax serve` to verify page rendering.
   - Ensure new pages or content updates align with `site.json` and JSON Outline Schema.
 
-## CLI Command Options
-
-The HAX CLI supports various options for fine-tuned control. Use `hax help`, `hax webcomponent --help`, or `hax site --help` for details. Key options include:
-- `--v`: Verbose output.
-- `--debug`: Developer-focused output.
-- `--format <char>`: Output format (json, yaml; default: json).
-- `--path <char>`: Directory to perform operation.
-- `--name <char>`: Project or component name.
-- `--npm-client <char>`: Package manager (npm, yarn, pnpm; default: npm).
-- `--y` or `--auto`: Auto-accept all prompts.
-- `--skip`: Skip animations for faster execution.
-- `--quiet`: Suppress console logging.
-- `--no-i`: Prevent interactive sub-processes (ideal for scripting).
-- `--to-file <char>`: Redirect output to a file.
-- `--no-extras`: Skip automatic command processing.
-- `--root <char>`: Root directory for command execution.
-- `--org <char>`: Organization for `package.json`.
-- `--author <char>`: Author for site or `package.json`.
-- `--writeHaxProperties`: Write `haxProperties` for web components.
-- `--import-site <char>`: URL of site to import.
-- `--import-structure <char>`: Import method (e.g., pressbooksToSite, htmlToSite).
-- `--custom-theme-name <char>`: Custom theme name for HAXsites.
-- `--custom-theme-template <char>`: Theme template (base, polaris-flex, polaris-sidebar).
-- `--repos <char...>`: Repositories to clone.
-
-## HAX Theme Development
-
-### Theme Architecture
-- **Base Class**: HAXcms themes extend `HAXCMSLitElement` class
-- **Design Integration**: Themes inherit DDD design system automatically
-- **Template Options**: Choose from `base`, `polaris-flex`, `polaris-sidebar`
-- **Custom Themes**: Create entirely custom themes with full control
-- **Pure JavaScript**: All theme code written in JavaScript, HTML, CSS only
-
-### Theme Creation Workflow
-1. **Create custom theme**:
-   ```bash
-   hax site --custom-theme-name my-theme --custom-theme-template base
-   ```
-
-2. **Modify theme files** in the generated theme directory
-   - Edit JavaScript files directly (no TypeScript compilation needed)
-   - Use standard HTML templates
-   - Apply CSS with DDD tokens
-
-3. **Build theme** (CRITICAL STEP):
-   ```bash
-   yarn run build
-   ```
-   - Generates `custom-elements.json`
-   - Compiles styles and assets
-   - Updates component metadata
-
-4. **Test theme locally**:
-   ```bash
-   hax serve
-   ```
-
-### Theme Best Practices
-- Use DDD tokens for consistent styling
-- Import external libraries from their JavaScript distributions
-- Implement responsive design patterns
-- Ensure accessibility compliance
-- Test across different content types
-- Follow HAX component patterns
-
-## Monorepo Navigation & Management
-
-### Repository Structure
-```
-~/Documents/git/haxtheweb/
-├── webcomponents/           # Component library & themes
-│   └── elements/           # Individual components
-│       ├── d-d-d/         # Design system
-│       ├── clean-two/     # Example theme
-│       └── [250+ more]/   # All other components
-├── create/                 # HAX CLI tool
-├── haxcms-php/            # PHP backend
-├── haxcms-nodejs/         # Node.js backend  
-├── desktop/               # Electron app
-├── hax11ty/              # 11ty integration
-├── json-outline-schema/   # Content schemas
-├── hax-schema/           # HAX property schemas
-├── open-apis/            # Microservice APIs & Component Gallery
-│   ├── api/               # Express Vercel endpoints
-│   │   ├── apps/         # HAXcms conversion services
-│   │   ├── services/     # Media processing, analysis
-│   │   ├── users/        # Authentication endpoints
-│   │   └── utilities/    # Shared API helpers
-│   └── component-gallery/# Component documentation
-├── docs/                 # Official HAX documentation
-│   ├── site.json         # JSON Outline Schema structure
-│   ├── pages/            # Documentation content (HTML)
-│   └── files/            # Assets and media
-└── issues/               # Unified issue tracking
-```
-
-### Working Across Repositories
-- **Component Development**: Work in `webcomponents/elements/[component-name]/`
-- **CLI Development**: Work in `create/`
-- **Backend Development**: Choose `haxcms-php/` or `haxcms-nodejs/`
-- **API/Microservices**: Develop Express endpoints in `open-apis/api/`
-- **Documentation**: Update in `docs/` (HAXcms site format)
-- **Schema Changes**: Update in `json-outline-schema/` or `hax-schema/`
-- **Issues**: Always check `issues/` first
-
-### Lerna Management (webcomponents repo)
-```bash
-# Run command across all components
-lerna run build
-
-# Publish components (maintainers only)
-lerna publish
-
-# Add dependency to specific component
-lerna add package-name --scope=@haxtheweb/component-name
-```
-
-## Advanced HAX Patterns
-
-### Content Import & Migration
-- **Import from external sources**:
-  ```bash
-  hax site --import-site https://example.com --import-structure htmlToSite
-  ```
-  
-- **Supported import methods**:
-  - `pressbooksToSite` - Academic textbook platform
-  - `elmslnToSite` - ELMS Learning Network
-  - `haxcmsToSite` - Between HAXcms instances
-  - `notionToSite` - Notion workspace
-  - `gitbookToSite` - GitBook documentation
-  - `evolutionToSite` - Evolution CMS
-  - `htmlToSite` - Generic HTML import
-  - `docxToSite` - Microsoft Word documents
-
-### Site Management
-- **Add pages programmatically**:
-  ```bash
-  hax site --title "New Page" --content "<p>Content</p>" --slug "new-page"
-  ```
-  
-- **Advanced page options**:
-  ```bash
-  hax site --title "Page" --parent "parent-slug" --order 3 --theme "custom-theme" --hide-in-menu
-  ```
-
-### GitHub CLI Integration
-- **Check issues**: `gh issue list`
-- **Create issues**: `gh issue create`
-- **Review PRs**: `gh pr review`
-- **CLI is pre-installed** - use directly without verification
-
-### External Library Integration
-- **Other Libraries**: Always use the `/dist/` or compiled JavaScript version
-- **Open APIs**: Leverage https://open-apis.hax.cloud/ for conversion, analysis, and processing services
-- **Avoid**: Direct TypeScript imports or source files requiring compilation
-
-## Additional Instructions
-
-## HAX Cloud Infrastructure
-
-### HAX.cloud Services
-HAX leverages cloud infrastructure at https://hax.cloud for:
-- **CDN**: Content delivery network for component libraries
-- **AI Services**: Content analysis and processing capabilities
-- **Documentation**: Centralized documentation and community resources
-- **Open Infrastructure**: Publicly available APIs and services
-
-### Microservice Architecture
-- **open-apis.hax.cloud**: Conversion, analysis, and processing services
-- **Stateless Design**: Services designed for scalability and reliability
-- **REST APIs**: Standard HTTP interfaces for integration
-- **Vercel Deployment**: Serverless functions for optimal performance
-
-## Ecosystem-Specific Guidance
-
-### Development Workflows
-- **Monorepo Support**: Place additional `AGENTS.md` files in subproject folders for component-specific instructions
-- **Schema Evolution**: Changes to JSON schemas require coordination across repositories
-- **Component Dependencies**: Use `@haxtheweb/` scope for internal dependencies
-- **Version Synchronization**: Components should maintain version alignment
-- **No Compilation Step**: Pure JavaScript approach means faster development cycles
-- **API Development**: Express endpoints in `open-apis/` deploy automatically to Vercel at https://open-apis.hax.cloud/
-
-### Documentation Standards
-- **HAXcms Format**: Documentation sites use HAXcms structure (site.json + pages/ + files/)
-- **JSON Outline Schema**: All content structure follows standardized schema
-- **Semantic HTML**: Content authored in semantic HTML for maximum portability
-- **Asset Management**: Media files organized in files/ directory with proper metadata
-
-### Community Governance
-- **Pillar-Driven Development**: All decisions evaluated against community pillars
-- **Inclusive Decision Making**: Community input welcomed on major changes
-- **Issue-Driven Development**: Work organized through GitHub issues with pillar labels
-- **Educational Mission**: Remember HAX's roots in empowering educators and learners
-
-## Educational & Pedagogical Context
-
-HAX has deep roots in educational technology, evolving from over a decade of work in online learning:
-
-### Educational Heritage
-- **ELMS:LN Legacy**: HAX evolved from ELMS Learning Network (2012-2022), a Next Generation Digital Learning Environment (NGDLE) that powered hundreds of online courses at Penn State and beyond
-- **OER Commitment**: Embraces the 5Rs of Open Educational Resources (Retain, Reuse, Revise, Remix, Redistribute)
-- **Instructional Design Focus**: Built-in support for pedagogical patterns through specialized components
-
-### Educational Components
-HAX includes purpose-built components for learning:
-- **Question Types**: Multiple choice, fill-in-the-blanks, drag-and-drop, true/false, short answer, sorting, tagging
-- **Instructional Tools**: Self-check activities, stop notes, timelines, math notation (MathML/LaTeX)
-- **Assessment Features**: Immediate feedback, progressive disclosure, formative assessment patterns
-- **Accessibility in Learning**: Screen reader compatibility, keyboard navigation, high contrast support
-
-### Pedagogical Patterns
-- **Chunked Content**: Break complex topics into digestible components
-- **Active Learning**: Interactive elements encourage engagement over passive consumption
-- **Universal Design for Learning**: Multiple means of representation, engagement, and expression
-- **Evidence-Based Design**: Components based on learning science research
-
-### Related Educational Projects
-- **ELMS:LN**: Legacy platform still maintained but effectively replaced by HAX
-- **Course Design Templates**: Pre-built pedagogical frameworks for common course structures
-- **Learning Analytics**: Integration points for tracking learner engagement and progress
-
-### Community & Support
-- **HAX Community**: Run `hax party` for involvement opportunities
-- **Discord**: https://discord.gg/aCGxmRHEJP
-- **Issue Reporting**: Use `haxtheweb/issues` or GitHub interface
-- **Merlin Integration**: Use "Issue" command in HAX spaces for automated reporting
-- **Documentation**: Run `man hax` (Linux/macOS) for comprehensive CLI docs
-- **Educational Resources**: Complete documentation at https://haxtheweb.org/
-
 ## Security Considerations
 
 - **Dependencies**: Keep dependencies updated before running `npm install`
@@ -519,7 +246,6 @@ HAX includes purpose-built components for learning:
 - **Lerna Issues**: Run `lerna clean && lerna bootstrap`
 
 ### Development Environment
-- **Wrong Directory**: Always work from `haxtheweb/`
 - **CLI Not Found**: Ensure `@haxtheweb/create` is globally installed
 - **Permission Errors**: Check file permissions and ownership
 
@@ -537,3 +263,25 @@ HAX includes purpose-built components for learning:
 ---
 
 *This AGENTS.md file is maintained across all HAX ecosystem repositories to ensure consistent development experience regardless of entry point.*
+
+## Monorepo (Lerna)
+
+```bash
+# Run command across all components
+lerna run build
+
+# Publish components (maintainers only)
+lerna publish
+
+# Add dependency to specific component
+lerna add package-name --scope=@haxtheweb/component-name
+```
+
+## Community & Support
+
+- **HAX Community**: Run `hax party` for involvement opportunities
+- **Discord**: https://discord.gg/aCGxmRHEJP
+- **Issue Reporting**: Use `haxtheweb/issues` or GitHub interface
+- **Merlin Integration**: Use "Issue" command in HAX spaces for automated reporting
+- **Documentation**: Run `man hax` (Linux/macOS) for comprehensive CLI docs
+- **Educational Resources**: Complete documentation at https://haxtheweb.org/
