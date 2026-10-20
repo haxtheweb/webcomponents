@@ -283,12 +283,23 @@ function chicago(s, accessed) {
 
 /** escape the characters BibTeX / LaTeX treat specially in a field value */
 export function escapeBibtex(str) {
-  return String(str)
-    .replace(/\\/g, "\\textbackslash{}")
-    .replace(/([{}&%$#_])/g, "\\$1")
-    .replace(/~/g, "\\textasciitilde{}")
-    .replace(/\^/g, "\\textasciicircum{}");
+  // single pass: replacing in stages would re-escape the braces and
+  // backslashes that earlier replacements insert
+  return String(str).replace(/[\\{}&%$#_~^]/g, (c) => BIBTEX_ESCAPES[c]);
 }
+
+const BIBTEX_ESCAPES = {
+  "\\": "\\textbackslash{}",
+  "{": "\\{",
+  "}": "\\}",
+  "&": "\\&",
+  "%": "\\%",
+  $: "\\$",
+  "#": "\\#",
+  _: "\\_",
+  "~": "\\textasciitilde{}",
+  "^": "\\textasciicircum{}",
+};
 
 const iso = (d) =>
   `${dY(d)}-${String(dM(d) + 1).padStart(2, "0")}-${String(dD(d)).padStart(2, "0")}`;

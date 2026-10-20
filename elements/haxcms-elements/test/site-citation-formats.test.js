@@ -292,6 +292,9 @@ describe("site-citation-formats", () => {
         "R\\&D 100\\% \\{x\\} a\\_b \\#1 \\$5 \\textasciitilde{} \\textasciicircum{}",
       );
     });
+    it("escapes a backslash once and keeps its replacement intact", () => {
+      expect(escapeBibtex("a\\b {c}")).to.equal("a\\textbackslash{}b \\{c\\}");
+    });
     it("leaves the url unescaped", () => {
       const t = formatCitation(
         { title: "T", url: "https://a.test/a_b?x=1&y=2%20" },
