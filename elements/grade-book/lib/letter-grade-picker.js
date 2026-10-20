@@ -91,7 +91,7 @@ class LetterGradePicker extends LitElement {
     return html`
       <div class="wrapper">
         <slot name="prefix"><span class="prefix">${this.label}</span></slot>
-        ${GradeBookStore.gradeScale.map(
+        ${(GradeBookStore.gradeScale || []).map(
           (scale, index) => html`
             <button
               ?data-selected-value="${scale.letter == this.value}"

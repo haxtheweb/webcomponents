@@ -106,7 +106,7 @@ export class LrnH5p extends I18NMixin(LitElement) {
     ];
   }
   render() {
-    if (this.querySelector("iframe")) {
+    if (this.querySelector && this.querySelector("iframe")) {
       const matches = /(https?:\/\/[^/]*).*embed\/([0-9]*)/g.exec(
         this.querySelector("iframe").src,
       );

@@ -49,7 +49,7 @@ class GradeBookLite extends UIRenderPieces(
     super();
     this.__disposer = [];
     // the first render can run before the autorun below hands over the store data
-    this.database = toJS(GradeBookStore.database);
+    this.database = toJS(GradeBookStore.database) || {};
     this.__resizeObserver = null;
     this.__xlsxFileSystemDataHandler = null;
     this.__pdfLoading = false;
@@ -186,7 +186,7 @@ class GradeBookLite extends UIRenderPieces(
     );
     this.__disposer.push(
       autorun(() => {
-        const _mobx_val_0 = toJS(GradeBookStore.database);
+        const _mobx_val_0 = toJS(GradeBookStore.database) || {};
         Promise.resolve().then(() => {
           this.database = _mobx_val_0;
         });
@@ -1195,7 +1195,10 @@ class GradeBookLite extends UIRenderPieces(
             @click="${this.changeAssignment}"
             value="next"
             title="${this.t.nextAssignment}"
-            ?disabled="${this.database.assignments.length - 1 ===
+            ?disabled="${(this.database && this.database.assignments
+              ? this.database.assignments.length
+              : 0) -
+              1 ===
               this.activeAssignment || !this.ready}"
             icon="arrow-forward"
           >

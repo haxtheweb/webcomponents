@@ -201,6 +201,7 @@ export class AppHaxBackendAPI extends LitElement {
     this.basePath = "/";
     if (
       globalThis.document &&
+      typeof globalThis.document.querySelector === "function" &&
       globalThis.document.querySelector("app-hax") &&
       globalThis.document.querySelector("app-hax").getAttribute
     ) {

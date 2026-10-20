@@ -919,7 +919,7 @@ export { hljs };
 
 export function highlightjs_line_numbers() {
   "use strict";
-  var w = window;
+  var w = typeof window !== "undefined" && window ? window : {};
   var d = document;
   var TABLE_NAME = "hljs-ln",
     LINE_NAME = "hljs-ln-line",
@@ -934,7 +934,7 @@ export function highlightjs_line_numbers() {
     w.hljs.lineNumbersBlock = lineNumbersBlock;
     w.hljs.lineNumbersValue = lineNumbersValue;
   } else {
-    w.console.error("highlight.js not detected!");
+    console.error("highlight.js not detected!");
   }
 
   function isHljsLnCodeDescendant(domElt) {

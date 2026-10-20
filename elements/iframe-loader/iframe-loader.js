@@ -154,7 +154,7 @@ export class IframeLoader extends LitElement {
       childList: true,
     });
     // parent iframe loader gobbles child. this is to avoid issues
-    if (this.querySelector("iframe-loader")) {
+    if ((this.querySelector && this.querySelector("iframe-loader"))) {
       this.querySelector("iframe-loader").remove();
     }
   }

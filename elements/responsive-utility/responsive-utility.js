@@ -130,21 +130,24 @@ class ResponsiveUtility extends LitElement {
     this.__resizeFallbackHandler = this.__handleResizeFallback.bind(this);
     if (typeof globalThis.ResizeObserver !== "function") {
       if (globalThis.addEventListener) {
-        globalThis.addEventListener("resize", this.__resizeFallbackHandler);
+        globalThis.addEventListener &&
+          globalThis.addEventListener("resize", this.__resizeFallbackHandler);
       }
     }
     if (globalThis.addEventListener) {
-      globalThis.addEventListener(
-        "responsive-element",
-        this.responiveElementEvent.bind(this),
-      );
+      globalThis.addEventListener &&
+        globalThis.addEventListener(
+          "responsive-element",
+          this.responiveElementEvent.bind(this),
+        );
     }
 
     /* handle element deregistration */
-    globalThis.addEventListener(
-      "delete-responsive-element",
-      this.deleteResponiveElementEvent.bind(this),
-    );
+    globalThis.addEventListener &&
+      globalThis.addEventListener(
+        "delete-responsive-element",
+        this.deleteResponiveElementEvent.bind(this),
+      );
     if (globalThis.ResponsiveUtility.instance == null)
       globalThis.ResponsiveUtility.instance = this;
   }

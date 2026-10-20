@@ -794,17 +794,17 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         }
       }
     }
-    globalThis.addEventListener("hax-store-ready", this.storeReady.bind(this), {
+    globalThis.addEventListener && globalThis.addEventListener("hax-store-ready", this.storeReady.bind(this), {
       signal: this.windowControllers.signal,
     });
 
-    globalThis.addEventListener(
+    globalThis.addEventListener && globalThis.addEventListener(
       "haxcms-trigger-update",
       this._triggerUpdatedData.bind(this),
       { signal: this.windowControllers.signal },
     );
 
-    globalThis.addEventListener(
+    globalThis.addEventListener && globalThis.addEventListener(
       "haxcms-trigger-update-node",
       this._triggerUpdatedNode.bind(this),
       { signal: this.windowControllers.signal },
@@ -813,16 +813,19 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     // Only apply the platform preference on a first-ever visit (no stored
     // choice) so we never clobber an explicit light/dark override.
     if (localStorageGet("app-hax-darkMode", null) === null) {
-      store.darkMode = globalThis.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
+      store.darkMode = globalThis.matchMedia
+        ? globalThis.matchMedia("(prefers-color-scheme: dark)").matches
+        : false;
     }
     // change is if platform / browser preference changes while using
-    globalThis
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", darkToggle, {
+    const darkQuery = globalThis.matchMedia
+      ? globalThis.matchMedia("(prefers-color-scheme: dark)")
+      : null;
+    if (darkQuery) {
+      darkQuery.addEventListener("change", darkToggle, {
         signal: this.windowControllers.signal,
       });
+    }
 
     autorun(() => {
       const _mobx_val_0 = toJS(store.darkMode);

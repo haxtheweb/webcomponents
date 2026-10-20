@@ -28,15 +28,17 @@ class SimpleTour extends I18NMixin(LitElement) {
     this.activeElementDelay = 500;
     this.stop = -1;
     if (globalThis.addEventListener) {
-      globalThis.addEventListener(
-        "simple-tour-register",
-        this.registerNewTourEvent.bind(this),
-      );
+      globalThis.addEventListener &&
+        globalThis.addEventListener(
+          "simple-tour-register",
+          this.registerNewTourEvent.bind(this),
+        );
     }
-    globalThis.addEventListener(
-      "simple-tour-create-tour-stop",
-      this.createTourStopEvent.bind(this),
-    );
+    globalThis.addEventListener &&
+      globalThis.addEventListener(
+        "simple-tour-create-tour-stop",
+        this.createTourStopEvent.bind(this),
+      );
   }
   registerNewTourEvent(e) {
     this.registerNewTour(e.detail);

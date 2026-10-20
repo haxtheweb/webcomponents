@@ -318,7 +318,7 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
    */
   _scopeChanged(newValue) {
     // make sure we actually have a sibling first
-    if (newValue === "sibling" && this.previousElementSibling !== null) {
+    if (newValue === "sibling" && this.previousElementSibling) {
       // find the sibling element in the DOM and associate to it's resource ID
       // also generate a resource ID if it doesn't have one
       if (this.previousElementSibling.getAttribute("resource")) {

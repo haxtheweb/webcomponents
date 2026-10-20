@@ -1968,15 +1968,18 @@ class A11yMediaPlayer extends SchemaBehaviors(
         true,
       );
     }
-    globalThis.addEventListener("click", this._settingsClickHandler, true);
-    this.querySelectorAll("video,audio").forEach((html5) => {
-      html5.addEventListener("loadedmetadata", (_e) => {
-        // only keep a real duration; sourceless media reports NaN
-        if (isFinite(html5.duration) && html5.duration > 0) {
-          this.__preloadedDuration = html5.duration;
-        }
-      });
-    });
+    globalThis.addEventListener &&
+      globalThis.addEventListener("click", this._settingsClickHandler, true);
+    (this.querySelectorAll ? this.querySelectorAll("video,audio") : []).forEach(
+      (html5) => {
+        html5.addEventListener("loadedmetadata", (_e) => {
+          // only keep a real duration; sourceless media reports NaN
+          if (isFinite(html5.duration) && html5.duration > 0) {
+            this.__preloadedDuration = html5.duration;
+          }
+        });
+      },
+    );
   }
 
   /** -------------------------- CALACULATED PROPERTIES ----------------- */
@@ -2003,7 +2006,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
     let aspect =
       this.media && this.media.aspectRatio ? this.media.aspectRatio : 16 / 9;
     this.width !== null ? this.width : "100%";
-    this.style.maxWidth = this.width;
+    if (this.style) this.style.maxWidth = this.width;
     return aspect;
   }
 
@@ -3552,7 +3555,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
         globalThis.removeEventListener("pointerup", resume);
         if (slider) slider.removeEventListener("blur", resume);
       };
-      globalThis.addEventListener("pointerup", resume);
+      globalThis.addEventListener &&
+        globalThis.addEventListener("pointerup", resume);
       if (slider) slider.addEventListener("blur", resume);
     }
   }
