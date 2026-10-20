@@ -325,6 +325,35 @@ describe("UserScaffold user action handlers", () => {
     expect(element.data.value).to.not.contain("style=");
   });
 
+  it("userPasteAction strips multi-declaration style attributes", () => {
+    const fakeEvent = {
+      isTrusted: true,
+      clipboardData: {
+        getData: (type) =>
+          type === "text/html"
+            ? '<p style="color: red; background: url(http://a/b);  margin:0;">Hi</p>'
+            : "",
+        files: [],
+      },
+    };
+    element.userPasteAction(fakeEvent);
+    expect(element.data.value).to.equal("<p>Hi</p>");
+  });
+
+  it("userPasteAction does not backtrack catastrophically on unterminated styles", () => {
+    const fakeEvent = {
+      isTrusted: true,
+      clipboardData: {
+        getData: (type) =>
+          type === "text/html" ? '<p style="' + "a:b;".repeat(40) + "x" : "",
+        files: [],
+      },
+    };
+    const start = performance.now();
+    element.userPasteAction(fakeEvent);
+    expect(performance.now() - start).to.be.below(1000);
+  });
+
   it("userPasteAction cleans empty span tags", () => {
     const fakeEvent = {
       isTrusted: true,

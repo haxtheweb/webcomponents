@@ -327,6 +327,26 @@ describe("hax-store methods round 3", () => {
       expect(content).to.not.contain("contenteditable");
     });
 
+    it("removes hax-specific attributes whose values span lines", async () => {
+      const p = globalThis.document.createElement("p");
+      p.textContent = "Hello";
+      p.setAttribute("data-hax-active", "a\nb");
+      p.setAttribute("t", "x y");
+      const content = await HAXStore.nodeToContent(p);
+      expect(content).to.not.contain("data-hax-active");
+      expect(content).to.not.contain(' t="');
+      expect(content).to.contain("Hello");
+    });
+
+    it("does not backtrack catastrophically on an unterminated attribute-like text", async () => {
+      const p = globalThis.document.createElement("p");
+      p.textContent = ' data-hax-ray="' + " ".repeat(50000);
+      const start = performance.now();
+      const content = await HAXStore.nodeToContent(p);
+      expect(performance.now() - start).to.be.below(2000);
+      expect(content).to.contain("data-hax-ray");
+    });
+
     it("handles self-closing void tags", async () => {
       const hr = globalThis.document.createElement("hr");
       const content = await HAXStore.nodeToContent(hr);
