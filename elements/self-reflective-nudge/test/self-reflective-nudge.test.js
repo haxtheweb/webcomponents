@@ -178,6 +178,17 @@ describe("SelfReflectiveNudge test", () => {
     expect(nudge.bottom).to.be.at.most(host.bottom);
   });
 
+  it("keeps the prompt inside the box instead of straddling the top border", async () => {
+    // a native legend straddles the border, putting half of it on the page
+    // background (dark text on a dark page is unreadable)
+    const fieldset = element.shadowRoot.querySelector("fieldset");
+    const legend = element.shadowRoot.querySelector("legend");
+    const borderLine =
+      fieldset.getBoundingClientRect().top +
+      parseFloat(globalThis.getComputedStyle(fieldset).borderTopWidth);
+    expect(legend.getBoundingClientRect().top).to.be.at.least(borderLine);
+  });
+
   it("writes the nudges array to light DOM on a HAX save", async () => {
     const node = globalThis.document.createElement("self-reflective-nudge");
     node.nudges = [

@@ -120,8 +120,15 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
           border-radius: var(--ddd-radius-sm);
           background-color: var(--ddd-theme-default-white);
         }
+        /* A native legend straddles the top border, so half of it sits outside
+           the box on whatever background the page has (unreadable dark on dark).
+           Floating it full width lays it out as a normal block inside the box. */
         legend {
-          padding: 0 var(--ddd-spacing-2);
+          float: left;
+          width: 100%;
+          box-sizing: border-box;
+          padding: var(--ddd-spacing-0) var(--ddd-spacing-0)
+            var(--ddd-spacing-3);
           font-size: var(--ddd-font-size-s);
           font-weight: var(--ddd-font-weight-bold);
         }
@@ -134,6 +141,7 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
           white-space: nowrap;
         }
         .options {
+          clear: both;
           display: flex;
           flex-wrap: wrap;
           gap: var(--ddd-spacing-2);
