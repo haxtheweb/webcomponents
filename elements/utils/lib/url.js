@@ -70,3 +70,54 @@ export function sanitizeEmbeddableURL(value, fallback = "") {
   }
   return normalizedValue;
 }
+
+/**
+ * Whether a URL targets a different origin than the current page.
+ * Unparseable values are treated as same-origin so the stricter
+ * sandbox applies to them.
+ */
+export function isCrossOriginURL(value) {
+  if (!value || !globalThis.location || !globalThis.location.href) {
+    return false;
+  }
+  try {
+    return (
+      new URL(value, globalThis.location.href).origin !==
+      globalThis.location.origin
+    );
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
+ * Whether a URL points at a same-origin uploaded .html/.xml style document
+ * (under /files/). Uploads of these types are allowed, but they must never be
+ * embedded in a frame since they would run with the page's origin.
+ */
+export function isSameOriginUploadedMarkup(value) {
+  if (!value || !globalThis.location || !globalThis.location.href) {
+    return false;
+  }
+  try {
+    const parsed = new URL(value, globalThis.location.href);
+    return (
+      parsed.origin === globalThis.location.origin &&
+      /\/files\/.*\.(x?html?|xml)$/i.test(parsed.pathname)
+    );
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
+ * Sandbox value for an iframe loading `source`. allow-scripts combined with
+ * allow-same-origin on a same-origin source lets the framed document remove
+ * its own sandbox, so allow-same-origin is only granted to cross-origin
+ * sources (where it is relative to the foreign origin).
+ */
+export function iframeSandboxForSource(source) {
+  return isCrossOriginURL(source)
+    ? "allow-scripts allow-same-origin"
+    : "allow-scripts";
+}
