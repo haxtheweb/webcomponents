@@ -200,10 +200,25 @@ export function encapsulateScriptsAndStyles(html) {
  */
 export function findClosingCustomTags(html) {
   const tags = {};
-  const matches = html.match(/<\/[a-z,0-9]*-[^\s>]*>/g);
-  for (const m of matches || []) {
-    const tag = m.slice(2, -1);
-    tags[tag] = tag;
+  // `</` + [a-z,0-9]* + `-`, then non-space characters up to the next ">".
+  // Done as prefix + forward search for the terminator (not one regex with an
+  // open-ended `[^\s>]*`) so unterminated candidates cannot rescan the input.
+  const prefix = /<\/[a-z,0-9]*-/g;
+  const stop = /[\s>]/g;
+  let pos = 0;
+  for (;;) {
+    const p = execFrom(prefix, html, pos);
+    if (!p) break;
+    const s = execFrom(stop, html, p.index + p[0].length);
+    if (!s) break;
+    if (s[0] === ">") {
+      const tag = html.slice(p.index + 2, s.index);
+      tags[tag] = tag;
+      pos = s.index + 1;
+    } else {
+      // whitespace before ">": every start before it fails the same way
+      pos = s.index;
+    }
   }
   return tags;
 }

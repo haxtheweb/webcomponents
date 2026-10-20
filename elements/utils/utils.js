@@ -1215,10 +1215,10 @@ function formatHTML(html_source, options) {
             let reindent = multi_parser.get_full_indent(
               script_indent_level - _level,
             );
-            text = text
-              .replace(/^\s*/, indentation)
+            // (trimStart / trimEnd instead of /^\s*/ and /\s*$/, which backtrack)
+            text = (indentation + text.trimStart())
               .replace(/\r\n|\r|\n/g, "\n" + reindent)
-              .replace(/\s*$/, "");
+              .trimEnd();
           }
           if (text) {
             multi_parser.print_token(text);
@@ -1853,27 +1853,39 @@ export function normalizeTypography(html) {
   if (!html || typeof html !== "string") {
     return html;
   }
-  return html.replace(
-    /<[^>]*>|[\u2018\u2019\u201A\u201B\u201C\u201D\u201E\u201F]/g,
-    (match) => {
-      if (match.charAt(0) === "<") {
+  const replacer = (match) => {
+    if (match.charAt(0) === "<") {
+      return match;
+    }
+    switch (match) {
+      case "\u201C":
+      case "\u201D":
+      case "\u201E":
+      case "\u201F":
+        return '"';
+      case "\u2018":
+      case "\u2019":
+      case "\u201A":
+      case "\u201B":
+        return "'";
+      default:
         return match;
-      }
-      switch (match) {
-        case "\u201C":
-        case "\u201D":
-        case "\u201E":
-        case "\u201F":
-          return '"';
-        case "\u2018":
-        case "\u2019":
-        case "\u201A":
-        case "\u201B":
-          return "'";
-        default:
-          return match;
-      }
-    },
+    }
+  };
+  // A "<" only starts a tag when a ">" follows somewhere. Everything after the
+  // last ">" can therefore only contain quotes to convert; matching `<[^>]*>`
+  // against it would rescan to the end of the string for every "<" (quadratic).
+  const lastGt = html.lastIndexOf(">") + 1;
+  return (
+    html
+      .slice(0, lastGt)
+      .replace(
+        /<[^>]*>|[\u2018\u2019\u201A\u201B\u201C\u201D\u201E\u201F]/g,
+        replacer,
+      ) +
+    html
+      .slice(lastGt)
+      .replace(/[\u2018\u2019\u201A\u201B\u201C\u201D\u201E\u201F]/g, replacer)
   );
 }
 

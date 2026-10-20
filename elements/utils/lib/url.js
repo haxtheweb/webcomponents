@@ -101,9 +101,15 @@ export function isSameOriginUploadedMarkup(value) {
   }
   try {
     const parsed = new URL(value, globalThis.location.href);
+    // first "/files/", then any text, then the extension. Searching the
+    // remainder avoids the backtracking of /\/files\/.*\.(x?html?|xml)$/i
+    const files = /\/files\//i.exec(parsed.pathname);
     return (
       parsed.origin === globalThis.location.origin &&
-      /\/files\/.*\.(x?html?|xml)$/i.test(parsed.pathname)
+      files !== null &&
+      /\.(x?html?|xml)$/i.test(
+        parsed.pathname.slice(files.index + files[0].length),
+      )
     );
   } catch (e) {
     return false;

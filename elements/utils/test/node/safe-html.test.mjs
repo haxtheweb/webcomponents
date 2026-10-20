@@ -1,7 +1,13 @@
 // Plain `node --test` suite (no browser needed):  yarn test:node
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { encapScript, findTagsInHTML, stripMSWord } from "../../utils.js";
+import {
+  encapScript,
+  findTagsInHTML,
+  normalizeTypography,
+  stripMSWord,
+} from "../../utils.js";
+import { isSameOriginUploadedMarkup } from "../../lib/url.js";
 import {
   replaceLazyRun,
   stripHtmlComments,
@@ -231,6 +237,7 @@ const hostile = {
   "margin-": "margin-:".repeat(N / 8),
   "line-height:": "line-height:".repeat(N / 12),
   "</a": "</a".repeat(N / 3),
+  "</a-</a-": "</a-".repeat(N / 4),
   "<!": "<! ".repeat(N / 3),
   "<meta": "<meta ".repeat(N / 6),
   "<li><p": "<li><p ".repeat(N / 7),
@@ -342,4 +349,84 @@ test("detectMarkdown is linear on hostile input", () => {
       `detectMarkdown took ${ms.toFixed(0)}ms on ${h.slice(0, 12)}...`,
     );
   }
+});
+
+// ---- normalizeTypography / isSameOriginUploadedMarkup -----------------------
+const OLD_TYPO = (html) =>
+  html.replace(
+    /<[^>]*>|[\u2018\u2019\u201A\u201B\u201C\u201D\u201E\u201F]/g,
+    (m) => {
+      if (m.charAt(0) === "<") return m;
+      return "\u201C\u201D\u201E\u201F".includes(m) ? '"' : "'";
+    },
+  );
+test("normalizeTypography matches the old regex (tags kept, text quotes straightened)", () => {
+  const P = [
+    "\u201Chi\u201D",
+    "\u2018x\u2019",
+    '<a href="x">',
+    "</a>",
+    '<img alt="a \u201Cfancy\u201D image">',
+    "text ",
+    "<",
+    ">",
+    "<p",
+    "a > b",
+    "<<",
+    "\n",
+    "\u201E",
+    "\u201B",
+  ];
+  for (let seed = 1; seed <= 600; seed++) {
+    const h = build(P, 14, seed);
+    assert.equal(normalizeTypography(h), OLD_TYPO(h), JSON.stringify(h));
+  }
+  assert.equal(normalizeTypography(""), "");
+  assert.equal(normalizeTypography(null), null);
+});
+test("normalizeTypography is linear on '<' without '>'", () => {
+  const ms = timed(() => normalizeTypography("<a ".repeat(N / 3)));
+  assert.ok(ms < LIMIT_MS, `took ${ms.toFixed(0)}ms`);
+  assert.ok(
+    timed(() => normalizeTypography("<\u201C".repeat(N / 2))) < LIMIT_MS,
+  );
+});
+test("isSameOriginUploadedMarkup matches the old regex", () => {
+  globalThis.location = new URL("https://example.edu/site/page");
+  const old = (v) => {
+    try {
+      const u = new URL(v, globalThis.location.href);
+      return (
+        u.origin === globalThis.location.origin &&
+        /\/files\/.*\.(x?html?|xml)$/i.test(u.pathname)
+      );
+    } catch {
+      return false;
+    }
+  };
+  for (const v of [
+    "/files/a.html",
+    "files/a.html",
+    "/site/files/x/y.XML",
+    "/files/.html",
+    "/files/a.htm?x=1",
+    "/FILES/a.xhtml",
+    "/files/a.txt",
+    "/other/a.html",
+    "https://evil.test/files/a.html",
+    "/files/a/files/b.html",
+    "/files/",
+    "/files/a.html/b",
+    "",
+    null,
+    "/a/files/b.png/c.xml",
+  ]) {
+    assert.equal(isSameOriginUploadedMarkup(v), old(v), String(v));
+  }
+  assert.ok(
+    timed(() =>
+      isSameOriginUploadedMarkup("/files/" + "/files/".repeat(N / 7)),
+    ) < LIMIT_MS,
+  );
+  delete globalThis.location;
 });
