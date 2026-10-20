@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>WebBaselineStatus: web-baseline-status Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "../web-baseline-status.js";
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic web-baseline-status demo</h3>
+      <demo-snippet>
+        <template>
+          <web-baseline-status feature-id="anchor-positioning"></web-baseline-status>
+          <web-baseline-status feature-id="css-nesting"></web-baseline-status>
+          <web-baseline-status feature-id="font-size-adjust"></web-baseline-status>
+        </template>
+      </demo-snippet>
+      <p>
+        The status is loaded from api.webstatus.dev, so the demo needs a network
+        connection.
+      </p>
+    </div>
+  </body>
+</html>
