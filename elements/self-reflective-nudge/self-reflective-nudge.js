@@ -108,6 +108,9 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
           display: block;
           font-family: var(--ddd-font-navigation);
           color: var(--ddd-theme-default-coalyGray);
+          /* do not inherit a tight line-height from the surrounding theme,
+             it squashes the options and packs the nudge text together */
+          line-height: var(--ddd-lh-150);
         }
         fieldset {
           margin: var(--ddd-spacing-0);
@@ -160,6 +163,7 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
           background-color: var(--ddd-theme-default-white);
           font-size: var(--ddd-font-size-l);
           font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-120);
           cursor: pointer;
         }
         :host([input="mood"]) .option label {

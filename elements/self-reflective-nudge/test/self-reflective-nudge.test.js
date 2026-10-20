@@ -152,6 +152,30 @@ describe("SelfReflectiveNudge test", () => {
     expect(element.shadowRoot.querySelector(".nudge a")).to.not.exist;
   });
 
+  it("does not inherit a tight line-height from the surrounding theme", async () => {
+    const tight = await fixture(html`
+      <div style="line-height: 1">
+        <self-reflective-nudge input="mood">
+          <p data-nudge data-max-value="4">A nudge that is long enough to wrap.</p>
+        </self-reflective-nudge>
+      </div>
+    `);
+    const el = tight.querySelector("self-reflective-nudge");
+    await el.updateComplete;
+    el.shadowRoot.querySelector("#option-1").click();
+    await el.updateComplete;
+    const text = el.shadowRoot.querySelector(".nudge p");
+    const style = globalThis.getComputedStyle(text);
+    // an inherited line-height of 1 would make this equal to the font size
+    expect(parseFloat(style.lineHeight)).to.be.greaterThan(
+      parseFloat(style.fontSize) * 1.2,
+    );
+    // the nudge fits entirely inside the element's own box
+    const host = el.getBoundingClientRect();
+    const nudge = el.shadowRoot.querySelector(".nudge").getBoundingClientRect();
+    expect(nudge.bottom).to.be.at.most(host.bottom);
+  });
+
   it("writes the nudges array to light DOM on a HAX save", async () => {
     const node = globalThis.document.createElement("self-reflective-nudge");
     node.nudges = [
