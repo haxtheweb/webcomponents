@@ -4367,7 +4367,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     const reportType = type || "bug";
     let body = "";
     if (reportType == "merlin") {
-            body = `Location: ${globalThis.location.href}
+      var title = `[${reportType}] New command request from HAX daemon`;
+      body = `Location: ${globalThis.location.href}
 Merlin command: ${daemonTerm}
 What did you want merlin to do?
 `;

@@ -1179,13 +1179,16 @@ function formatHTML(html_source, options) {
           multi_parser.output.push("\n");
           let text = multi_parser.token_text;
           if (multi_parser.token_type == "TK_SCRIPT") {
+            var _beautifier = typeof js_beautify === "function" && js_beautify;
           } else if (multi_parser.token_type == "TK_STYLE") {
             var _beautifier =
               typeof css_beautify === "function" && css_beautify;
           }
 
           if (options.indent_scripts == "keep") {
+            var script_indent_level = 0;
           } else if (options.indent_scripts == "separate") {
+            var script_indent_level = -multi_parser.indent_level;
           } else {
             var script_indent_level = 1;
           }

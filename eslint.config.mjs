@@ -65,6 +65,8 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.es2021,
+        // optional global used by utils.js formatHTML when a host page provides it
+        js_beautify: "readonly",
       },
     },
     rules: {
