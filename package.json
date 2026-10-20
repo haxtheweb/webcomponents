@@ -226,7 +226,11 @@
     "@haxtheweb/utils": "26.8.0"
   },
   "lint-staged": {
-    "*.{js,json}": "prettier --write",
+    "*.js": [
+      "eslint --fix --no-warn-ignored",
+      "prettier --write"
+    ],
+    "*.json": "prettier --write",
     "*.{png,jpeg,jpg,gif,svg}": "node scripts/optimize-staged-images.js",
     "*.css": "stylelint --fix"
   },

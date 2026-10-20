@@ -1909,6 +1909,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       };
       // support flattening empty keys
       for (let key in settingsKeys) {
+        // loop count (one pass per child key) is intentional: each pass
+        // flattens one more level of nesting
+        // eslint-disable-next-line no-unused-vars
         for (let prop in settings[key]) {
           // if we get an empty key, we need to flatten the values
           // we are writing to HTML in the end and not some infinitely nested object

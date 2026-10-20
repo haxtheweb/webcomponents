@@ -1,6 +1,5 @@
 // forked from https://github.com/janmarthedal/math-tex
-const document = globalThis.document,
-  states = { start: 1, loading: 2, ready: 3, typesetting: 4, error: 5 };
+const states = { start: 1, loading: 2, ready: 3, typesetting: 4, error: 5 };
 // security: the MathJax URL is a fixed constant and can not be overridden by
 // markup. A configurable src let any injected lrn-math-controller load an
 // arbitrary script, bypassing HTML sanitization (script gadget).
@@ -116,8 +115,7 @@ Typesets math written in (La)TeX, using [MathJax](http://mathjax.org).
 @version 0.3.2
 @homepage http://github.com/janmarthedal/math-tex/
 */
-const TAG_NAME = "lrn-math",
-  CONTROLLER_TAG_NAME = "lrn-math-controller",
+const CONTROLLER_TAG_NAME = "lrn-math-controller",
   mutation_config = {
     childList: true,
     characterData: true,

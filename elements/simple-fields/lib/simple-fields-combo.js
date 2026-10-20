@@ -14,7 +14,9 @@ import { SimpleFieldsFieldBehaviors } from "./simple-fields-field.js";
  * @extends {SimpleFieldsFieldBehaviors(LitElement)}
  * @demo demo/index.html Demo
  */
-class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)) {
+class SimpleFieldsCombo extends I18NMixin(
+  SimpleFieldsFieldBehaviors(LitElement),
+) {
   static get tag() {
     return "simple-fields-combo";
   }
@@ -766,11 +768,7 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
       filter = "";
     }
 
-    let firstMatch = false,
-      i,
-      option,
-      textContent,
-      numItems;
+    let i, option, textContent, numItems;
 
     filter = filter.toLowerCase();
 

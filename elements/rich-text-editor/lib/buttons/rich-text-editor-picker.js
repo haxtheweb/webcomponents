@@ -269,8 +269,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
      * Picker change
      */
     _pickerChange(e) {
-      let val = this._getSelectionType() || "",
-        parent = this.__highlight.parentNode;
+      let val = this._getSelectionType() || "";
       this.commandVal = e.detail.value || "";
       /* only update when there is an actual change */
       if (this.range && val !== this.commandVal) {

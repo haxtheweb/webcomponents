@@ -251,7 +251,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
             --ddd-theme-default-limestoneMaxLight
           );
           --a11y-media-transcript-match-color: var(--ddd-theme-default-white);
-          --a11y-media-transcript-match-bg-color: var(--ddd-theme-default-black);
+          --a11y-media-transcript-match-bg-color: var(
+            --ddd-theme-default-black
+          );
           --a11y-media-transcript-match-border-color: var(
             --ddd-theme-default-black
           );
@@ -1959,7 +1961,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this._settingsKeydownHandler = this._onSettingsKeydown.bind(this);
     this._settingsClickHandler = this._onSettingsDocumentClick.bind(this);
     if (globalThis.addEventListener) {
-      globalThis.addEventListener("keydown", this._settingsKeydownHandler, true);
+      globalThis.addEventListener(
+        "keydown",
+        this._settingsKeydownHandler,
+        true,
+      );
     }
     globalThis.addEventListener("click", this._settingsClickHandler, true);
     this.querySelectorAll("video,audio").forEach((html5) => {
@@ -2479,26 +2485,24 @@ class A11yMediaPlayer extends SchemaBehaviors(
         this.disableSeek = this[propName];
         this.hideTranscript = this[propName];
       }
-    // Captions handlers: move to willUpdate so __captionsOption / cc /
-    // captionsTrack reactive sets batch into the current update cycle.
-    // Guard on this.loadedTracks (assigned in firstUpdated) — these props
-    // don't change on the first update (they're set by user interaction),
-    // so the guard is inherently satisfied on every update that reaches
-    // here. Setting them in updated() scheduled a redundant second update
-    // (Lit change-in-update warning).
-    if (
-      changedProperties.has("__captionsOption") &&
-      this.loadedTracks
-    ) {
-      this._captionsOptionChanged();
-    }
-    if (
-      (changedProperties.has("cc") || changedProperties.has("captionsTrack")) &&
-      this.loadedTracks
-    ) {
-      this._captionsChanged();
-    }
-    if (propName === "id" && this.id === null)
+      // Captions handlers: move to willUpdate so __captionsOption / cc /
+      // captionsTrack reactive sets batch into the current update cycle.
+      // Guard on this.loadedTracks (assigned in firstUpdated) — these props
+      // don't change on the first update (they're set by user interaction),
+      // so the guard is inherently satisfied on every update that reaches
+      // here. Setting them in updated() scheduled a redundant second update
+      // (Lit change-in-update warning).
+      if (changedProperties.has("__captionsOption") && this.loadedTracks) {
+        this._captionsOptionChanged();
+      }
+      if (
+        (changedProperties.has("cc") ||
+          changedProperties.has("captionsTrack")) &&
+        this.loadedTracks
+      ) {
+        this._captionsChanged();
+      }
+      if (propName === "id" && this.id === null)
         this.id = "a11y-media-player" + Date.now();
     });
   }
@@ -2979,8 +2983,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
     let media = this.querySelector("audio,video"),
       crossorigin = media ? media.getAttribute("crossorigin") : undefined,
       primary = null,
-      sourceVideo =
-        this.source && this.source.match(/webm|ogv|mov|mp4$/),
+      sourceVideo = this.source && this.source.match(/webm|ogv|mov|mp4$/),
       sourcesVideo =
         (this.sources || []).filter((source) =>
           `${source.type || ""}${source.kind || ""}`.match(
@@ -3769,9 +3772,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
       },
       b = (val, i, none) => {
         return max >= i ? a(Math.floor(val / i)) + ":" : none;
-      },
-      c = (val) => {
-        return val < 100 ? val + "0" : val;
       };
     return (
       b(val, 3600, "") + b(val % 3600, 60, "00:") + a(Math.round(val % 60))
