@@ -120,6 +120,13 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       selectedFilesCount: "{count} selected files",
       deleteConfirm: "Delete {label}? This cannot be undone.",
       deleted: "Deleted",
+      bulkOverwriteConfirm:
+        "{action} {count} files? This replaces the original files and cannot be undone.",
+      actionScale: "Scale",
+      actionRotate: "Rotate",
+      actionTransform: "Transform",
+      actionConvertJpg: "Convert to JPG",
+      actionCompress: "Compress",
       noPublicUrl: "No public URL available for the selected file(s).",
       unableToEmbed: "Unable to embed: no active page editor found.",
       insertedSkipped: "Inserted {count} file(s); skipped {skipped} without a public URL.",
@@ -1275,6 +1282,20 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
     }
   }
 
+  /**
+   * Confirm in-place bulk operations (scale, rotate, transform, compress) that
+   * overwrite the original files. Single-file actions are not prompted.
+   * Native confirm matches the delete flow: focus is trapped, Escape cancels
+   * and the cancel action is the default.
+   */
+  _confirmBulkOverwrite(count, actionLabel) {
+    if (count < 2) return true;
+    return !!globalThis.confirm(
+      this.t.bulkOverwriteConfirm
+        .replace("{action}", () => actionLabel)
+        .replace("{count}", () => count),
+    );
+  }
   async _onBulkScale(rows, size) {
     const normalizedSize = typeof size === "string" ? size.trim() : "";
     if (!normalizedSize || !SCALE_PRESETS[normalizedSize]) return;
@@ -1283,6 +1304,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       this._msg(this.t.onlyRasterScaled, true);
       return;
     }
+    if (!this._confirmBulkOverwrite(scalable.length, this.t.actionScale)) return;
     this.scalePreset = normalizedSize;
     await this._runBulkOp(
       scalable,
@@ -1302,6 +1324,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       this._msg(this.t.onlyRasterRotated, true);
       return;
     }
+    if (!this._confirmBulkOverwrite(scalable.length, this.t.actionRotate)) return;
     await this._runBulkOp(
       scalable,
       (row) => this._op(row, "rotate-90", { silent: true, skipRefresh: true }),
@@ -1326,6 +1349,16 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         return;
       }
     }
+    // the op below runs on every selected row, so the count is rows.length
+    if (
+      !this._confirmBulkOverwrite(
+        rows.length,
+        normalizedOp === "convert-jpg"
+          ? this.t.actionConvertJpg
+          : this.t.actionTransform,
+      )
+    )
+      return;
     await this._runBulkOp(
       rows,
       (row) => this._op(row, normalizedOp, { silent: true, skipRefresh: true }),
@@ -1342,6 +1375,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       this._msg(this.t.onlyRasterCompressed, true);
       return;
     }
+    if (!this._confirmBulkOverwrite(compressible.length, this.t.actionCompress))
+      return;
     await this._runBulkOp(
       compressible,
       (row) =>
