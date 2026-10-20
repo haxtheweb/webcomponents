@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>RadarChart: radar-chart Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../radar-chart.js';
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>HEOSAT defaults with scores</h3>
+      <radar-chart
+        title="HEOSAT facet scores"
+        scores="3,2,4,3,2,3,5,4,2"
+      ></radar-chart>
+
+      <h3>Custom categories, scale of 10, no legend</h3>
+      <radar-chart
+        title="Skills evaluation"
+        max-score="10"
+        categories='["Design","Frontend","Backend","Testing","Docs"]'
+        scores="7,8,5,6,9"
+        target-scores="8,8,8,8,8"
+        show-legend="false"
+      ></radar-chart>
+
+      <h3>Compact: no labels, hover a point for its value</h3>
+      <radar-chart
+        compact
+        title="HEOSAT facet scores"
+        scores="3,2,4,3,2,3,5,4,2"
+      ></radar-chart>
+    </div>
+  </body>
+</html>
