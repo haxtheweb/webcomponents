@@ -403,7 +403,7 @@ describe("constructor-time autorun disposal (issue 3106)", () => {
   it("disposes every autorun on disconnect so removed themes stop reacting", async () => {
     const savedEditMode = store.editMode;
     try {
-      for (const { tag, expected, template } of themes) {
+      for (const { expected, template } of themes) {
         const el = await fixture(template);
         expect(el.__disposer.length).to.be.at.least(expected);
         el.remove();

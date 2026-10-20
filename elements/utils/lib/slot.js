@@ -8,7 +8,7 @@ export function wipeSlot(element, slot = "*") {
       element.removeChild(element.firstChild);
     }
   } else {
-    for (var i in element.childNodes) {
+    for (let i in element.childNodes) {
       // test for element nodes to be safe
       if (
         typeof element.childNodes[i] !== typeof undefined &&

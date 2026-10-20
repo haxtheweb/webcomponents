@@ -103,7 +103,7 @@ class JwtLogin extends LitElement {
       // users are migrated away from persisted access tokens.
       try {
         localStorage.removeItem(this.key);
-      } catch (e) {}
+      } catch {}
       this.dispatchEvent(
         new CustomEvent("jwt-logged-in", {
           bubbles: true,
@@ -185,7 +185,7 @@ class JwtLogin extends LitElement {
     Promise.resolve().then(() => {
       try {
         localStorage.removeItem(this.key);
-      } catch (e) {}
+      } catch {}
     });
   }
 
@@ -312,7 +312,7 @@ class JwtLogin extends LitElement {
         }
         var subs = this.__refreshSubscribers;
         this.__refreshSubscribers = [];
-        for (var i = 0; i < subs.length; i++) {
+        for (let i = 0; i < subs.length; i++) {
           this._invokeRefreshCallback(subs[i], actualJwt);
         }
         break;
@@ -386,9 +386,9 @@ class JwtLogin extends LitElement {
 
   // Phase 2: error handler uses the captured context
   _handleResponseError(response, meta) {
-    var ctx = meta.ctx;
-    var proactive = meta.proactive;
-    var redirect = meta.redirect;
+    let ctx = meta.ctx;
+    let proactive = meta.proactive;
+    let redirect = meta.redirect;
     if (ctx === "logout" && redirect && this.redirectUrl) {
       setTimeout(() => {
         // security: validate scheme before navigation (JS-URL-001)
@@ -439,8 +439,8 @@ class JwtLogin extends LitElement {
 
   // Phase 2: network error handler uses the captured context
   _handleNetworkError(err, meta) {
-    var ctx = meta.ctx;
-    var proactive = meta.proactive;
+    let ctx = meta.ctx;
+    let proactive = meta.proactive;
     if (ctx === "login") {
       this.__loginInFlight = false;
     }
@@ -496,7 +496,7 @@ class JwtLogin extends LitElement {
     this.__refreshSubscribers = [];
     this.body = {};
     this.jwt = null;
-    var redirect = e && e.detail ? e.detail.redirect : false;
+    let redirect = e && e.detail ? e.detail.redirect : false;
     if (
       this.logoutUrl &&
       this.logoutUrl !== "" &&
@@ -525,8 +525,8 @@ class JwtLogin extends LitElement {
 
   isDifferentDomain(urlToCheck) {
     try {
-      var currentUrl = new URL(globalThis.location.href);
-      var targetUrl = new URL(urlToCheck, globalThis.location.href);
+      let currentUrl = new URL(globalThis.location.href);
+      let targetUrl = new URL(urlToCheck, globalThis.location.href);
       return currentUrl.hostname !== targetUrl.hostname;
     } catch (error) {
       console.error("Invalid URL provided:", error);
@@ -542,7 +542,7 @@ class JwtLogin extends LitElement {
         return "/";
       }
       return u.href;
-    } catch (e) {
+    } catch {
       return "/";
     }
   }
@@ -556,21 +556,21 @@ class JwtLogin extends LitElement {
     if (!jwt || typeof jwt !== "string") {
       return 0;
     }
-    var parts = jwt.split(".");
+    let parts = jwt.split(".");
     if (parts.length < 2) {
       return 0;
     }
     try {
-      var payload = parts[1].replace(/-/g, "+").replace(/_/g, "/");
+      let payload = parts[1].replace(/-/g, "+").replace(/_/g, "/");
       while (payload.length % 4) {
         payload += "=";
       }
-      var decoded = globalThis.atob(payload);
-      var parsed = JSON.parse(decoded);
+      let decoded = globalThis.atob(payload);
+      let parsed = JSON.parse(decoded);
       if (parsed && typeof parsed.exp === "number") {
         return parsed.exp;
       }
-    } catch (e) {}
+    } catch {}
     return 0;
   }
 
@@ -602,16 +602,16 @@ class JwtLogin extends LitElement {
     if (!this._hasValidJwtForRefresh(this.jwt)) {
       return;
     }
-    var exp = this._decodeJwtExpUnverified(this.jwt);
+    let exp = this._decodeJwtExpUnverified(this.jwt);
     if (!exp) {
       return;
     }
-    var msUntilExpiry = exp * 1000 - Date.now();
+    let msUntilExpiry = exp * 1000 - Date.now();
     if (msUntilExpiry <= 0) {
       return;
     }
-    var leadMs = 60000;
-    var delay = msUntilExpiry - leadMs;
+    let leadMs = 60000;
+    let delay = msUntilExpiry - leadMs;
     if (delay < 0) {
       delay = 0;
     }
@@ -650,11 +650,11 @@ class JwtLogin extends LitElement {
     if (this.__loginInFlight || this.__logoutInFlight) {
       return;
     }
-    var exp = this._decodeJwtExpUnverified(this.jwt);
+    let exp = this._decodeJwtExpUnverified(this.jwt);
     if (!exp) {
       return;
     }
-    var msUntilExpiry = exp * 1000 - Date.now();
+    let msUntilExpiry = exp * 1000 - Date.now();
     if (msUntilExpiry <= 0 || msUntilExpiry < 120000) {
       this._requestProactiveRefreshToken();
     } else {

@@ -142,7 +142,7 @@ class MusicPlayer extends LitElement {
     this.__wirePlaybackAnnouncements();
     this.__wiringTimer = setTimeout(() => {
       this.__wiringTimer = null;
-      import("./lib/html-midi-player.js").then((module) => {
+      import("./lib/html-midi-player.js").then((_module) => {
         // associate the visualizer to the player, but never wire a detached
         // element even when the import resolves late
         if (this.isConnected) {

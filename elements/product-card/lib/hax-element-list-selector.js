@@ -254,7 +254,7 @@ class HaxElementListSelector extends LitElement {
         this.filteredHaxData = [...this.haxData];
         if (this.haxData.length > 0) {
           let renderHaxData = {};
-          for (var i in this.haxData) {
+          for (let i in this.haxData) {
             renderHaxData[this.haxData[i].tag] = this.haxData[i].file;
           }
           if (this.cardList) {
@@ -328,7 +328,7 @@ class HaxElementListSelector extends LitElement {
   /**
    * Listen for response and then apply initial settings
    */
-  _response(e) {
+  _response(_e) {
     if (this.searchColumns) this.searchColumns.value = this.cols;
     if (this.cardList) this.cardList.cols = this.cols;
     //this._valueChanged(e);
@@ -394,7 +394,7 @@ class HaxElementListSelector extends LitElement {
       autoloader: value.haxcore.search["haxcore-search-autoloader"],
     };
     // find the API keys
-    for (var key in value.haxcore.integrations) {
+    for (let key in value.haxcore.integrations) {
       appstore.apps[key.replace("haxcore-integrations-", "")] =
         value.haxcore.integrations[key];
     }
@@ -405,7 +405,7 @@ class HaxElementListSelector extends LitElement {
    */
   getAutoloader(data) {
     let autoload = {};
-    for (var i in data) {
+    for (let i in data) {
       if (data[i].status) {
         autoload[data[i].tag] = data[i].file;
       }

@@ -124,7 +124,7 @@ class SimpleClipboardCopyButton extends SimpleIconButtonLite {
       textarea.select();
       ok = globalThis.document.execCommand("copy");
       globalThis.document.body.removeChild(textarea);
-    } catch (e) {}
+    } catch {}
     return ok;
   }
 
@@ -136,7 +136,7 @@ class SimpleClipboardCopyButton extends SimpleIconButtonLite {
     let copied = false;
     try {
       copied = await this._writeClipboard(value);
-    } catch (e) {}
+    } catch {}
     if (!copied) {
       copied = this._legacyWriteClipboard(value);
     }

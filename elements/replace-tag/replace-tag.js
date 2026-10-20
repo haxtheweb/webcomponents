@@ -167,7 +167,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
             // or HTML imported that was improper in the past
             try {
               replacement.setAttribute(i, props[i]);
-            } catch (error) {
+            } catch {
               console.warn("Invalid Attribute Name detected: " + i);
             }
           }
@@ -180,58 +180,64 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
         this.replaceWith(replacement);
       }
     } else {
-      customElements.whenDefined(this.getAttribute("with")).then((response) => {
-        let props = {};
-        if (this.getAttribute("import-only") != null) {
-          this.exists = false;
-          setTimeout(() => {
-            this.remove();
-          }, 0);
-        } else {
-          // just the props off of this for complex state
-          for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
-            props[atts[i].nodeName] = atts[i].nodeValue;
-          }
-          let replacement = globalThis.document.createElement(props.with);
-          replacement.setAttribute("popup-loader", "popup-loader");
-          // set the value in the new object
-          for (var i in props) {
-            if (props[i] != null) {
-              // trap for bad attributes that were manually typed
-              // or HTML imported that was improper in the past
-              try {
-                replacement.setAttribute(i, props[i]);
-              } catch (error) {
-                console.warn("Invalid Attribute Name detected: " + i);
+      customElements
+        .whenDefined(this.getAttribute("with"))
+        .then((_response) => {
+          let props = {};
+          if (this.getAttribute("import-only") != null) {
+            this.exists = false;
+            setTimeout(() => {
+              this.remove();
+            }, 0);
+          } else {
+            // just the props off of this for complex state
+            for (
+              var i = 0, atts = this.attributes, n = atts.length;
+              i < n;
+              i++
+            ) {
+              props[atts[i].nodeName] = atts[i].nodeValue;
+            }
+            let replacement = globalThis.document.createElement(props.with);
+            replacement.setAttribute("popup-loader", "popup-loader");
+            // set the value in the new object
+            for (var i in props) {
+              if (props[i] != null) {
+                // trap for bad attributes that were manually typed
+                // or HTML imported that was improper in the past
+                try {
+                  replacement.setAttribute(i, props[i]);
+                } catch {
+                  console.warn("Invalid Attribute Name detected: " + i);
+                }
               }
             }
-          }
-          replacement.removeAttribute("laser-loader");
-          replacement.innerHTML = this.innerHTML;
-          this.replaceWith(replacement);
-          // variable / attribute clean up on the element that got replaced as
-          // "this" is still valid for this loop
-          setTimeout(() => {
-            replacement.removeAttribute("popup-loader");
-            replacement.removeAttribute("with");
-            replacement.removeAttribute("import-method");
-            replacement.removeAttribute("importing-text");
             replacement.removeAttribute("laser-loader");
-            replacement.style.setProperty("--laserEdgeAni-width", null);
-            replacement.style.setProperty("--laserEdgeAni-innerWidth", null);
-            replacement.style.setProperty("--laserEdgeAni-height", null);
-            replacement.style.setProperty("--laserEdgeAni-innerHeight", null);
-          }, 250);
-        }
-        // we resolved 1 definition so now we know it's safe to do all of them
-        setTimeout(() => {
-          globalThis.document.body
-            .querySelectorAll('replace-tag[with="' + props.with + '"]')
-            .forEach((el) => {
-              el.runReplacement();
-            });
-        }, 0);
-      });
+            replacement.innerHTML = this.innerHTML;
+            this.replaceWith(replacement);
+            // variable / attribute clean up on the element that got replaced as
+            // "this" is still valid for this loop
+            setTimeout(() => {
+              replacement.removeAttribute("popup-loader");
+              replacement.removeAttribute("with");
+              replacement.removeAttribute("import-method");
+              replacement.removeAttribute("importing-text");
+              replacement.removeAttribute("laser-loader");
+              replacement.style.setProperty("--laserEdgeAni-width", null);
+              replacement.style.setProperty("--laserEdgeAni-innerWidth", null);
+              replacement.style.setProperty("--laserEdgeAni-height", null);
+              replacement.style.setProperty("--laserEdgeAni-innerHeight", null);
+            }, 250);
+          }
+          // we resolved 1 definition so now we know it's safe to do all of them
+          setTimeout(() => {
+            globalThis.document.body
+              .querySelectorAll('replace-tag[with="' + props.with + '"]')
+              .forEach((el) => {
+                el.runReplacement();
+              });
+          }, 0);
+        });
     }
     if (this.exists) {
       this.template = globalThis.document.createElement("template");

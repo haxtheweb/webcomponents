@@ -471,7 +471,7 @@ describe("chat-agent test", () => {
       element.isFullView = true;
       await element.updateComplete;
 
-      const computedStyle = globalThis.getComputedStyle(element);
+      globalThis.getComputedStyle(element);
       // Element should have the is-full-view attribute for CSS targeting
       expect(element.hasAttribute("is-full-view")).to.be.true;
     });
@@ -603,7 +603,7 @@ describe("chat-agent test", () => {
       const chatLogBefore = ChatStore.chatLog.length;
 
       // Create new element to trigger firstUpdated
-      const newElement = await fixture(html`<chat-agent></chat-agent>`);
+      await fixture(html`<chat-agent></chat-agent>`);
 
       // Should have added initial Merlin greeting
       expect(ChatStore.chatLog.length).to.be.greaterThan(chatLogBefore);

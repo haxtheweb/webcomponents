@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { ImgPanZoom } from "@haxtheweb/img-pan-zoom/img-pan-zoom.js";
 import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -984,7 +984,7 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
    *
    * @param {boolean} toggle on or off, default is opposite current state
    */
-  _setFullscreen(mode) {
+  _setFullscreen(_mode) {
     return;
   }
 
@@ -1041,7 +1041,7 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
     if (!disabled) this.goToPageXofY(e);
   }
   goToPageXofY(e) {
-    var eventPath = normalizeEventPath(e);
+    let eventPath = normalizeEventPath(e);
     this.page = eventPath ? eventPath[0].value - 1 : e.target.value;
   }
   loadedChangedEvent(e) {

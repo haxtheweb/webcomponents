@@ -168,7 +168,7 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
       },
     };
   }
-  _generateforComponentLink(source) {
+  _generateforComponentLink(_source) {
     if (globalThis.document && globalThis.document.head) {
       // remove existing if this is moving around
       if (this._OERLink) {

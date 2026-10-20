@@ -132,7 +132,7 @@ describe("PDFPageMixin", () => {
       };
     };
     const objectUrls = [];
-    globalThis.URL.createObjectURL = (blob) => {
+    globalThis.URL.createObjectURL = (_blob) => {
       const url = `blob:fake-${objectUrls.length}`;
       objectUrls.push(url);
       return url;

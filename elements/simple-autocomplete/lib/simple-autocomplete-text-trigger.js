@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html } from "lit";
 import { getRange } from "@haxtheweb/utils/lib/selection.js";
 import "../simple-autocomplete.js";
 
@@ -78,8 +78,8 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
           );
         } else if (this.target.getAttribute("contenteditable") != null) {
           // set range appropriately for cursor placement
-          var range = globalThis.document.createRange();
-          var sel = this.getSelection();
+          let range = globalThis.document.createRange();
+          let sel = this.getSelection();
           range.setStart(
             this.target.childNodes[0],
             this._triggerStart - 1 + this.value.length,

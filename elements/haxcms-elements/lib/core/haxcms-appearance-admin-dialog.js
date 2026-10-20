@@ -551,7 +551,7 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
           }
         }
       }
-    } catch (e) {}
+    } catch {}
     this.refreshFromManifest();
   }
 

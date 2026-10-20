@@ -489,7 +489,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
       try {
         this.api.tex(this._tex);
         this.api.render();
-      } catch (e) {
+      } catch {
         // ignore parse failures from incomplete alphaTex mid-keystroke
       }
     }, 200);
@@ -783,7 +783,7 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
     if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability) {
       try {
         store = globalThis.HaxStore.requestAvailability();
-      } catch (err) {
+      } catch {
         store = null;
       }
     }

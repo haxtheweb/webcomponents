@@ -315,7 +315,7 @@ class FileSystemBroker extends HTMLElement {
           typeof entry.getFile === "function" &&
           entry.name === fileName
         ) {
-          var FileSystemFileHandle = await this.dirHandler.getFileHandle(
+          let FileSystemFileHandle = await this.dirHandler.getFileHandle(
             entry.name,
           );
           const writable = await FileSystemFileHandle.createWritable();

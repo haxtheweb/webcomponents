@@ -297,8 +297,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             role="menu"
             aria-labelledby="menubutton"
             ?hidden="${!this.expanded}"
-            @mouseover="${(e) => (this.hovered = true)}"
-            @mouseout="${(e) => (this.hovered = false)}"
+            @mouseover="${(_e) => (this.hovered = true)}"
+            @mouseout="${(_e) => (this.hovered = false)}"
             part="menu"
           >
             ${this.listItemTemplate}
@@ -448,7 +448,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         index,
         char = char.toLowerCase(),
         firstChars = (startIndex, char) => {
-          for (var i = startIndex; i < this.firstChars.length; i++) {
+          for (let i = startIndex; i < this.firstChars.length; i++) {
             if (char === this.firstChars[i]) {
               return i;
             }
@@ -668,7 +668,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @param {event} event
      * @returns
      */
-    _excludeEvent(event) {
+    _excludeEvent(_event) {
       return false;
     }
     /**
@@ -804,7 +804,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     _handleKeydown(event) {
-      var flag = false;
+      let flag = false;
 
       switch (event.keyCode) {
         case this.keyCode.ESC:
@@ -875,7 +875,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @param {event} event
      * @memberof A11yMenuButton
      */
-    _handleFocus(event) {
+    _handleFocus(_event) {
       this.focused = true;
     }
 
@@ -911,7 +911,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @param {event} event
      * @memberof A11yMenuButton
      */
-    _handleMouseover(event) {
+    _handleMouseover(_event) {
       this.hovered = true;
       if (!this.noOpenOnHover) this.open();
     }
@@ -922,7 +922,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @param {event} event
      * @memberof A11yMenuButton
      */
-    _handleMouseout(event) {
+    _handleMouseout(_event) {
       this.hovered = false;
       setTimeout(() => this.close(), 300);
     }

@@ -1,7 +1,7 @@
-import { fixture, expect, html, aTimeout } from '@open-wc/testing'
+import { fixture, expect, html } from '@open-wc/testing'
 
 import '../lib/simple-fields-srcset.js'
-import { SimpleFieldsSrcset } from '../lib/simple-fields-srcset.js'
+import '../lib/simple-fields-srcset.js';
 
 describe('simple-fields-srcset', () => {
   let el

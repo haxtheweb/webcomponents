@@ -53,7 +53,7 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.__disposer = this.__disposer || [];
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0;
@@ -76,7 +76,7 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           this.activeItem = _mobx_val_0;

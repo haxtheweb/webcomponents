@@ -396,11 +396,11 @@ class OutlinePlayer extends I18NMixin(
   /**
    * Delay importing site-search until we click to open it directly
    */
-  siteModalClick(e) {
+  siteModalClick(_e) {
     // prettier-ignore
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-    ).then((m) => {
+    ).then((_m) => {
       // weird looking but forces focus when it opens the search form
       globalThis.SimpleModal.requestAvailability().querySelector("site-search").shadowRoot.querySelector("simple-fields-field").focus();
     });
@@ -533,13 +533,13 @@ class OutlinePlayer extends I18NMixin(
   /**
    * Link menu button to open and closing the side panel.
    */
-  _toggleMenu(e) {
+  _toggleMenu(_e) {
     this.opened = !this.opened;
     this.closed = !this.opened;
     globalThis.dispatchEvent(new Event("resize"));
   }
 
-  _closeDrawer(e) {
+  _closeDrawer(_e) {
     this.opened = false;
     this.closed = true;
   }
@@ -562,7 +562,7 @@ class OutlinePlayer extends I18NMixin(
   /**
    * active id has changed.
    */
-  _activeIdChanged(newValue, oldValue) {
+  _activeIdChanged(_newValue, _oldValue) {
     if (this.opened && this.narrow) {
       this.opened = false;
       this.closed = true;
@@ -594,7 +594,7 @@ class OutlinePlayer extends I18NMixin(
     }
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeId);
         Promise.resolve().then(() => {
           this.activeId = _mobx_val_0;

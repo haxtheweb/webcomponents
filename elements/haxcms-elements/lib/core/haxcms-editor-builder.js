@@ -202,7 +202,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
       }
     }, 600);
   }
-  editorLoaded(e) {
+  editorLoaded(_e) {
     this._dedupeEditorUIElements();
     if (
       (!store.cmsSiteEditor.haxCmsSiteEditorUIElement ||
@@ -238,14 +238,14 @@ class HAXCMSEditorBuilder extends HTMLElement {
         store.cmsSiteEditor.haxCmsSiteEditorUIElement = globalThis.document.createElement(
           "haxcms-site-editor-ui"
         );
-        for (var key in store.setupSlots) {
+        for (let key in store.setupSlots) {
           switch (key) {
             case "haxcms-site-editor-ui-prefix-avatar":
             case "haxcms-site-editor-ui-prefix-buttons":
             case "haxcms-site-editor-ui-suffix-buttons":
             case "haxcms-site-editor-ui-main-menu":
             case "haxcms-site-editor-ui-topbar-character-button":
-              for (var key2 in store.setupSlots[key])
+              for (let key2 in store.setupSlots[key])
               store.cmsSiteEditor.haxCmsSiteEditorUIElement.appendChild(
                 store.setupSlots[key][key2]
               );
@@ -298,7 +298,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
         store.cmsSiteEditorBackend.tag = `haxcms-backend-${context}`;
         // delay import slightly to ensure global scope is there
         import(`${basePath}backends/${store.cmsSiteEditorBackend.tag}.js`).then(
-          (e) => {
+          (_e) => {
             if (!store.cmsSiteEditorBackend.instance) {
               store.cmsSiteEditorBackend.instance =
                 globalThis.document.createElement(

@@ -332,7 +332,7 @@ describe("a11y-media-youtube playback controls", () => {
 
   it("getters expose player state safely", async () => {
     expect(el.buffered).to.equal(-1);
-    el.__yt.bufferedRange = { length: 1, end: (i) => 42 };
+    el.__yt.bufferedRange = { length: 1, end: (_i) => 42 };
     expect(el.buffered).to.equal(42);
     el.__yt.time = 12;
     expect(el.currentTime).to.equal(12);

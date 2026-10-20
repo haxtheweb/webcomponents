@@ -275,10 +275,10 @@ class RichTextEditorPrompt extends I18NMixin(
     this.__highlight.addEventListener("change", (e) =>
       setTimeout(() => this._handleChange(e), 300),
     );
-    this.addEventListener("mousedown", (e) => (this.__retainFocus = true));
-    this.addEventListener("mouseup", (e) => (this.__retainFocus = false));
-    this.addEventListener("focusin", (e) => (this.__retainFocusIn = true));
-    this.addEventListener("focusout", (e) => (this.__retainFocusIn = false));
+    this.addEventListener("mousedown", (_e) => (this.__retainFocus = true));
+    this.addEventListener("mouseup", (_e) => (this.__retainFocus = false));
+    this.addEventListener("focusin", (_e) => (this.__retainFocusIn = true));
+    this.addEventListener("focusout", (_e) => (this.__retainFocusIn = false));
     this.addEventListener("focus", this._handleFocus);
     this.addEventListener("blur", this._handleBlur);
   }
@@ -305,7 +305,7 @@ class RichTextEditorPrompt extends I18NMixin(
    * @param {event} e
    * @memberof RichTextEditorPrompt
    */
-  _handleFocus(e) {
+  _handleFocus(_e) {
     this.__focused = true;
   }
   /**
@@ -315,7 +315,7 @@ class RichTextEditorPrompt extends I18NMixin(
    * @param {event} e
    * @memberof RichTextEditorPrompt
    */
-  _handleBlur(e) {
+  _handleBlur(_e) {
     if (this.__retainFocus || this.__retainFocusIn) return;
     this.__focused = false;
   }
@@ -326,7 +326,7 @@ class RichTextEditorPrompt extends I18NMixin(
    * @param {event} e
    * @memberof RichTextEditorPrompt
    */
-  _handleChange(e) {
+  _handleChange(_e) {
     setTimeout(() => {
       if (this.__opened && !this.__focused && !this.__hovered) this._cancel();
     }, 500);

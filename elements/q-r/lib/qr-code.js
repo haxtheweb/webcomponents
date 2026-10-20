@@ -102,7 +102,7 @@ class QRCodeElement extends HTMLElement {
       img.alt = "QR code for " + this.data;
       this.clear();
       this.shadowRoot.appendChild(img);
-    } catch (e) {
+    } catch {
       this.shadowRoot.innerHTML = "<div>qr-code: no canvas support!</div>";
     }
   }

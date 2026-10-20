@@ -255,10 +255,8 @@ class a11yCompareImage extends SimpleColors {
     // This is the layer number that is current on top.
     this.activeLayer = active + 1;
     // This is the slider percent when upper image is at 0.
-    let lastSection = section * active;
-    // How far we are into the current section.
-    let relativePosition = this.position - lastSection;
-    /* Percentage into the current section
+        // How far we are into the current section.
+        /* Percentage into the current section
     if (this.position === 100 && relativePosition === 0) {
     } else {
       this.position = (relativePosition * 100) / section || 0;

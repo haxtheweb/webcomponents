@@ -2,7 +2,7 @@
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -630,7 +630,7 @@ export class ImageGallery extends I18NMixin(DDD) {
     if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability) {
       try {
         return globalThis.HaxStore.requestAvailability();
-      } catch (e) {
+      } catch {
         return null;
       }
     }
@@ -803,7 +803,7 @@ export class ImageGallery extends I18NMixin(DDD) {
       if (child.tagName.includes("-")) {
         try {
           await customElements.whenDefined(child.tagName.toLowerCase());
-        } catch (e) {
+        } catch {
           // not registered yet; fall through to direct assignment below
         }
       }
@@ -892,12 +892,12 @@ export class ImageGallery extends I18NMixin(DDD) {
     ];
   }
 
-  haxToggleEdit(e) {
+  haxToggleEdit(_e) {
     this.edit = !this.edit;
     return true;
   }
 
-  haxAddImage(e) {
+  haxAddImage(_e) {
     const img = globalThis.document.createElement("media-image");
     img.setAttribute("source", "https://dummyimage.com/300x200/000/fff");
     img.setAttribute("alt", "");
@@ -910,7 +910,7 @@ export class ImageGallery extends I18NMixin(DDD) {
     return true;
   }
 
-  haxRemoveLastImage(e) {
+  haxRemoveLastImage(_e) {
     const items = Array.from(this.children).filter(
       (el) => el.tagName === "MEDIA-IMAGE" || el.tagName === "IMG",
     );
@@ -920,7 +920,7 @@ export class ImageGallery extends I18NMixin(DDD) {
     return true;
   }
 
-  haxBreakOutGallery(e) {
+  haxBreakOutGallery(_e) {
     if (!this.parentNode) {
       return false;
     }

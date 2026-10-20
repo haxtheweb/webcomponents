@@ -176,7 +176,7 @@ describe('media-playlist items and rendering', () => {
   })
 
   it('drives arrow-key and Enter navigation', async () => {
-    const items = element.shadowRoot.querySelectorAll('.playlist-item')
+    element.shadowRoot.querySelectorAll('.playlist-item')
     const mkEvent = (key, index) => {
       const target = element.shadowRoot.querySelector(
         `.playlist-item[data-index="${index}"]`,

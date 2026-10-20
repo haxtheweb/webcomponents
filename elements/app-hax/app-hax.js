@@ -1,4 +1,4 @@
-import { css, html, unsafeCSS } from "lit";
+import { css, html } from "lit";
 import { toJS, autorun } from "mobx";
 import {
   localStorageSet,
@@ -183,7 +183,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       "_blank",
     );
   }
-  // eslint-disable-next-line class-methods-use-this
+
   playSound(sound = "coin2") {
     return new Promise((resolve) => {
       if (store.soundStatus && store.appReady) {
@@ -201,7 +201,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href,
         );
         this.audio.volume = 0.1;
-        this.audio.onended = (event) => {
+        this.audio.onended = (_event) => {
           resolve();
         };
         this.audio.play();
@@ -218,7 +218,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   /**
    * A token refresh just failed so force to login prompt / state
    */
-  _tokenRefreshFailed(e) {
+  _tokenRefreshFailed(_e) {
     globalThis.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
         composed: true,
@@ -464,7 +464,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       path: "HAX/action/goToSite",
       value: {
         name: "Go to site",
-        program: async (input, values) => {
+        program: async (input, _values) => {
           let results = [];
           const items = toJS(store.manifest.items);
           items.forEach(async (site) => {
@@ -865,7 +865,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     };
   }
 
-  // eslint-disable-next-line class-methods-use-this
   reset(reload = false, logout = false) {
     // localStorage possible to be blocked by permission of system
     try {
@@ -895,7 +894,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           globalThis.location.reload();
         }
       }
-    } catch (e) {
+    } catch {
       //console.warn(e);
     }
   }
@@ -929,7 +928,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       });
     });
   }
-  // eslint-disable-next-line class-methods-use-this
+
   logout() {
     globalThis.dispatchEvent(
       new CustomEvent("jwt-login-logout", {
@@ -957,7 +956,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // It only resets on logout when we actually want to show the login modal again
   }
 
-  // eslint-disable-next-line class-methods-use-this
   login() {
     // prevent multiple login modals from being created
     if (this.__loginModalOpen) {
@@ -2311,7 +2309,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     return false;
   }
 
-  _handleSuperDaemonClose(e) {
+  _handleSuperDaemonClose(_e) {
     // Defer to allow the underlying dialog to fully close first
     requestAnimationFrame(() => {
       if (this._isDashboardModalOpen()) {
@@ -2334,7 +2332,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         ) {
           globalThis.document.documentElement.style.overflow = "";
         }
-      } catch (e) {
+      } catch {
         // do nothing
       }
     });
@@ -2472,7 +2470,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   siteReadyToGo(e) {
     import("@haxtheweb/multiple-choice/lib/confetti-container.js").then(
-      (module) => {
+      (_module) => {
         setTimeout(() => {
           this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
         }, 0);

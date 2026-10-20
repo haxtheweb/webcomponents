@@ -1,4 +1,4 @@
-import { fixture, expect, html, assert } from "@open-wc/testing";
+import { fixture, expect, html } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
 import "../d-d-d.js";
 import { DDDSuper, DDDPulseEffectSuper } from "../d-d-d.js";
@@ -113,7 +113,7 @@ describe("d-d-d property validation", () => {
 // Design system integration tests
 describe("d-d-d design system integration", () => {
   it("registers DDD design system with DesignSystemManager", async () => {
-    const el = await fixture(html`<d-d-d></d-d-d>`);
+    await fixture(html`<d-d-d></d-d-d>`);
 
     // DesignSystemManager is a global singleton wrapper; the active
     // <design-system> element (which holds .systems and .active) lives on
@@ -153,7 +153,7 @@ describe("d-d-d design system integration", () => {
   });
 
   it("sets DesignSystemManager active to ddd", async () => {
-    const el = await fixture(html`<d-d-d></d-d-d>`);
+    await fixture(html`<d-d-d></d-d-d>`);
 
     expect(globalThis.DesignSystemManager.instance.active).to.equal("ddd");
   });
@@ -185,7 +185,7 @@ describe("DDDSuper mixin functionality", () => {
   });
 
   it("properly initializes DesignSystemManager", async () => {
-    const el = await fixture(html`<d-d-d></d-d-d>`);
+    await fixture(html`<d-d-d></d-d-d>`);
     const manager = globalThis.DesignSystemManager.instance;
 
     expect(globalThis.DesignSystemManager).to.exist;
@@ -265,7 +265,7 @@ describe("d-d-d SimpleColors integration", () => {
     const el = await fixture(html`<d-d-d accent-color="blue"></d-d-d>`);
 
     // SimpleColors should generate CSS custom properties
-    const computedStyle = getComputedStyle(el);
+    getComputedStyle(el);
     expect(el.accentColor).to.equal("blue");
   });
 });

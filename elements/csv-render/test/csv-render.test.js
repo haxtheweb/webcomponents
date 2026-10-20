@@ -1,5 +1,5 @@
-import { fixture, expect, html, oneEvent, waitUntil } from "@open-wc/testing";
-import { sendKeys } from "@web/test-runner-commands";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
+import "@web/test-runner-commands";
 import sinon from "sinon";
 import "../csv-render.js";
 // csv-render dynamically imports these when it becomes visible; import them

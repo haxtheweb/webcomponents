@@ -1,4 +1,4 @@
-import { html, css, LitElement } from "lit";
+import { css, LitElement } from "lit";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import { localStorageGet } from "@haxtheweb/utils/utils.js";
@@ -73,13 +73,13 @@ class HaxAppSearch extends LitElement {
     let pathname = requestUrl.split("?")[0];
     try {
       pathname = new URL(requestUrl).pathname || pathname;
-    } catch (e) {}
+    } catch {}
     if (pathname.charAt(0) !== "/") {
       pathname = "/" + pathname;
     }
     return /\/x\/api\/v1(?:\/|$)/.test(pathname);
   }
-  buildRequestHeaders(params = {}, requestUrl = "") {
+  buildRequestHeaders(params = {}, _requestUrl = "") {
     const headers =
       this.headers && typeof this.headers === "object"
         ? { ...this.headers }
@@ -164,7 +164,7 @@ class HaxAppSearch extends LitElement {
     if (Object.prototype.hasOwnProperty.call(requestParams, "siteToken")) {
       delete requestParams.siteToken;
     }
-    var queryString = "";
+    let queryString = "";
     // support specialized appending data that is a string
     // to allow devs more flexibility
     if (
@@ -176,7 +176,7 @@ class HaxAppSearch extends LitElement {
     queryString = queryString + this.queryStringData(requestParams);
     // look for a specialized param
     if (queryString) {
-      var bindingChar = url.indexOf("?") >= 0 ? "&" : "?";
+      let bindingChar = url.indexOf("?") >= 0 ? "&" : "?";
       return url + bindingChar + queryString;
     }
     return url;
@@ -185,9 +185,9 @@ class HaxAppSearch extends LitElement {
    * from queryString but without encoding param
    */
   queryStringData(params) {
-    var queryParts = [];
-    var param;
-    var value;
+    let queryParts = [];
+    let param;
+    let value;
 
     for (param in params) {
       value = params[param];
@@ -199,7 +199,7 @@ class HaxAppSearch extends LitElement {
       ) {
         // do nothing we skip these internal values
       } else if (Array.isArray(value)) {
-        for (var i = 0; i < value.length; i++) {
+        for (let i = 0; i < value.length; i++) {
           queryParts.push(
             param + "=" + globalThis.encodeURIComponent(value[i]),
           );
@@ -306,7 +306,7 @@ class HaxAppSearch extends LitElement {
   _resetAppSearch(newValue) {
     if (newValue && newValue.details) {
       let app = newValue;
-      var requestParams = {};
+      let requestParams = {};
       // disable auto for a moment while we switch inputs
       this.auto = false;
       this.media = [];
@@ -349,7 +349,7 @@ class HaxAppSearch extends LitElement {
       }
       this.requestParams = { ...requestParams };
       // build the request end point
-      var requestEndPoint =
+      let requestEndPoint =
         app.connection.protocol + "://" + app.connection.url;
       // ensure we build a url correctly
       if (requestEndPoint.substr(requestEndPoint.length - 1) != "/") {
@@ -362,7 +362,7 @@ class HaxAppSearch extends LitElement {
         requestEndPoint += app.connection.operations.browse.endPoint;
       }
       this.requestEndPoint = requestEndPoint;
-      var searchSchema = {
+      let searchSchema = {
         properties: {},
       };
       if (typeof app.connection.operations.browse.search !== typeof undefined) {
@@ -390,7 +390,7 @@ class HaxAppSearch extends LitElement {
    * Callback for when media has been updated via the end point
    */
   _requestDataChanged(newValue) {
-    if (this.resultMap && typeof newValue != {}) {
+    if (this.resultMap && typeof newValue !== {}) {
       let media = [];
       let map = this.resultMap;
       let data = [];
@@ -414,7 +414,7 @@ class HaxAppSearch extends LitElement {
       if (data != null) {
         // step through and translate response data into a form we can easily
         // understand when stamping out our cards above.
-        for (var i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
           media[i] = {
             title: this._resolveObjectPath(map.preview.title, data[i]),
             details: this._resolveObjectPath(map.preview.details, data[i]),
@@ -449,7 +449,7 @@ class HaxAppSearch extends LitElement {
           } else {
             media[i].image = "";
           }
-          for (var prop in map.gizmo) {
+          for (let prop in map.gizmo) {
             // check for a _url_source modifier... stupid youtube and others.
             if (prop === "_url_source") {
               let _id = "";

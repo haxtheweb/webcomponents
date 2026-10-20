@@ -1,5 +1,5 @@
 import { fixture, expect, html, aTimeout } from '@open-wc/testing'
-import { H5pWrappedElement } from '../lib/h5p-wrapped-element.js'
+import '../lib/h5p-wrapped-element.js';
 import { store } from '@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js'
 
 describe('h5p-wrapped-element', () => {

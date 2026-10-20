@@ -118,7 +118,7 @@ class AirHorn extends HTMLElement {
   /**
    * Play the sound effect.
    */
-  _playSound(e) {
+  _playSound(_e) {
     let audio = new Audio(new URL(`./lib/airhorn.mp3`, import.meta.url).href);
     audio.play();
   }

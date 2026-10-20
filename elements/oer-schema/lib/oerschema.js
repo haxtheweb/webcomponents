@@ -901,7 +901,7 @@ class OERSchema {
       "SupplementalMaterial",
       "ReferencedMaterial",
     ];
-    for (var i in schema.classes) {
+    for (let i in schema.classes) {
       if (
         typeof schema.classes[i].label !== typeof undefined &&
         typeof schema.classes[i].subClassOf !== typeof undefined &&

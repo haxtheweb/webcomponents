@@ -24,7 +24,7 @@ globalThis.AnchorBehaviors.getTarget = (element = null) => {
         isJSON = (json) => {
           try {
             JSON.parse(json);
-          } catch (e) {
+          } catch {
             return false;
           }
           return true;

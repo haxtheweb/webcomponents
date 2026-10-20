@@ -74,7 +74,7 @@ class VoiceRecorder extends LitElement {
     this.recording = false;
     this.label = "Activate Recorder";
   }
-  toggleRecording(e) {
+  toggleRecording(_e) {
     this.recording = !this.recording;
   }
   updated(changedProperties) {

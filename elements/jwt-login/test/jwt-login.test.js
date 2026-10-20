@@ -445,7 +445,7 @@ describe("jwt-login behavior", () => {
   it("proactive refresh failure stays silent", async () => {
     element.refreshUrl = "https://example.com/refresh";
     const errors = [];
-    element.addEventListener("jwt-login-refresh-error", (e) =>
+    element.addEventListener("jwt-login-refresh-error", (_e) =>
       errors.push(true),
     );
     globalThis.fetch = () => Promise.resolve(badResponse());
@@ -458,7 +458,7 @@ describe("jwt-login behavior", () => {
   it("refresh network failure fires jwt-login-refresh-error", async () => {
     element.refreshUrl = "https://example.com/refresh";
     const errors = [];
-    element.addEventListener("jwt-login-refresh-error", (e) =>
+    element.addEventListener("jwt-login-refresh-error", (_e) =>
       errors.push(true),
     );
     globalThis.fetch = () => Promise.reject(new Error("offline"));
@@ -470,7 +470,7 @@ describe("jwt-login behavior", () => {
   it("refresh network failure is silent when proactive", async () => {
     element.refreshUrl = "https://example.com/refresh";
     const errors = [];
-    element.addEventListener("jwt-login-refresh-error", (e) =>
+    element.addEventListener("jwt-login-refresh-error", (_e) =>
       errors.push(true),
     );
     globalThis.fetch = () => Promise.reject(new Error("offline"));
@@ -612,7 +612,6 @@ describe("jwt-login behavior", () => {
   });
 });
 
-/* eslint-disable */
 /*
 describe("A11y/chai axe tests", () => {
   it("jwt-login passes accessibility test", async () => {

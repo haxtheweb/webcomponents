@@ -2,9 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit";
+import { LitElement } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { FileSystemBrokerSingleton } from "@haxtheweb/file-system-broker/file-system-broker.js";
+import "@haxtheweb/file-system-broker/file-system-broker.js";
 import {
   store,
   HAXcmsStore,
@@ -77,7 +77,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
     this.jwt = "hax-cloud-fake";
     // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.jwt);
         Promise.resolve().then(() => {
           this.jwt = _mobx_val_0;
@@ -85,7 +85,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           this.activeItem = _mobx_val_0;
@@ -162,9 +162,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
     // need to pull <page-break> off and parse
     htmlContent = htmlContent.replace(/<page-break(.*?)><\/page-break>/gm, "");
     // @todo need to parse HAXStore.activeHaxBody.children[0] and ensure it's saved into the manifest
-    let pageBreak = await HAXStore.nodeToContent(
-      HAXStore.activeHaxBody.children[0],
-    );
+    await HAXStore.nodeToContent(HAXStore.activeHaxBody.children[0]);
     // find the file handler that matches the current item based on location match
     let pathTest =
       this.fileRoot + "/" + this.activeItem.location.replace("/index.html", "");
@@ -192,7 +190,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
       e.preventDefault();
       e.stopPropagation();
       let reader = new FileReader();
-      reader.onload = (event) => {
+      reader.onload = (_event) => {
         let fileLocation =
           "files/" +
           HAXStore.haxTray.shadowRoot.querySelector("#fileupload").files[0]
@@ -211,7 +209,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
   /**
    * Save page data
    */
-  async saveNode(e) {
+  async saveNode(_e) {
     if (
       await this.writeActiveItemContent(
         await HAXStore.activeHaxBody.haxToContent(),
@@ -766,7 +764,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
         if (!page.location) {
           page.location = "pages/" + page.id + "/index.html";
         }
-        let directory = page.location.replace("/index.html", "");
+        page.location.replace("/index.html", "");
         element.id = page.id;
         element.location = page.location;
         element.slug = page.title;
@@ -881,7 +879,7 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
    * Detached life cycle
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -916,16 +914,16 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
         import(
         "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
       ).then(
-        (e) => {
+        (_e) => {
           store.cmsSiteEditorAvailability();
           store.cmsSiteEditor.instance.jwt = this.jwt;
           store.cmsSiteEditor.instance.appStore = appstore;
         },
-        (e) => {
+        (_e) => {
           //import failed
         }
       );
-      } catch (err) {
+      } catch {
         // error in the event this is a double registration
       }
     }

@@ -1,7 +1,7 @@
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
-import { SimpleIconsetDemo } from "@haxtheweb/simple-icon/lib/simple-iconset-demo.js";
-import { SimpleIcon } from "@haxtheweb/simple-icon/simple-icon.js";
-import { SimpleIconLite } from "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-icon/lib/simple-iconset-demo.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { SimpleIconIconsetsManifest } from "@haxtheweb/simple-icon/lib/simple-iconset-manifest.js";
 import { HaxIconsetManifest } from "@haxtheweb/hax-iconset/lib/hax-iconset-manifest.js";
 
@@ -286,7 +286,7 @@ export const LoremDataBehaviors = function (SuperClass) {
       };
     }
 
-    randomKitten(aspect = this.randomAspect(), greyscale) {
+    randomKitten(aspect = this.randomAspect(), _greyscale) {
       return `https://placehold.co/${aspect}`;
     }
 
@@ -538,7 +538,7 @@ export const LoremDataBehaviors = function (SuperClass) {
      * @returns {arr} shuffled array
      */
     shuffle(arr = []) {
-      return arr.sort((a, b) => Math.random() - Math.random());
+      return arr.sort((_a, _b) => Math.random() - Math.random());
     }
 
     /**

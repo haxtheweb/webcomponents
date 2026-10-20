@@ -259,7 +259,7 @@ class HAXCMSSlideTheme extends I18NMixin(
     super.connectedCallback();
     // store disposer so we can clean up later
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.routerManifest.items.length);
         Promise.resolve().then(() => {
           this.manifestLength = _mobx_val_0;
@@ -267,7 +267,7 @@ class HAXCMSSlideTheme extends I18NMixin(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         this.activeManifestIndexCounter = toJS(
           store.activeManifestIndexCounter,
         );

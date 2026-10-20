@@ -114,7 +114,7 @@ export class PromiseProgressLite extends LitElement {
   async process() {
     const list = this.list;
     if (this.canLoad) {
-      var count = 0;
+      let count = 0;
       const promises = await list.map(async (item) => {
         // chain each result through the thenable so per-item outcomes
         // flow into the settled results below instead of being discarded

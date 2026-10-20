@@ -353,7 +353,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       },
     };
   }
-  _openedChanged(newValue, oldValue) {
+  _openedChanged(newValue, _oldValue) {
     if (newValue) {
       this.__collapseIcon = "icons:expand-more";
       this.__collapseAria = "collapse menu";
@@ -400,7 +400,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
     }
   }
 
-  __toggleEventHandler(e) {
+  __toggleEventHandler(_e) {
     if (!this.parentNode.expanded) {
       this.dispatchEvent(
         new CustomEvent("toggle-header", {

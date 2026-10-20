@@ -71,7 +71,7 @@ class HtmlBlock extends HTMLElement {
   /**
    * life cycle
    */
-  constructor(delayRender = false) {
+  constructor(_delayRender = false) {
     super();
 
     // set tag for later use

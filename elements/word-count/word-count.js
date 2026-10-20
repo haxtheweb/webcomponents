@@ -124,7 +124,7 @@ class WordCount extends I18NMixin(LitElement) {
   /**
    * Update words based on data in the slot.
    */
-  _updateWords(mutations) {
+  _updateWords(_mutations) {
     // trim + filter empty tokens so N plain words report N regardless
     // of leading/trailing whitespace (haxtheweb/issues#3102)
     this.words = this.textContent

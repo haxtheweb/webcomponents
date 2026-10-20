@@ -1,5 +1,5 @@
 import { css, html } from "lit";
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 export const HAXCMSOperationButtons = function (SuperClass) {
@@ -77,7 +77,7 @@ export const HAXCMSOperationButtons = function (SuperClass) {
           : ``}
       `;
     }
-    _editButtonTap(e) {
+    _editButtonTap(_e) {
       this.editMode = !this.editMode;
     }
   };

@@ -492,7 +492,7 @@ describe("MediaQuote test", () => {
     await element.updateComplete;
 
     // Check that container-type is set for container queries
-    const styles = getComputedStyle(element);
+    getComputedStyle(element);
     expect(element.shadowRoot.querySelector(".media-quote-container")).to.exist;
   });
 

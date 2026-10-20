@@ -347,7 +347,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       };
     }
     checkUserStylesMenuOpen(e) {
-      var target = normalizeEventPath(e);
+      let target = normalizeEventPath(e);
       if (
         !this.hideUserStylesMenu &&
         !target.includes(this.toggleUserStylesMenuTarget) &&
@@ -384,28 +384,28 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       this.shadowRoot.querySelector("#haxcmsuserstylesmenu").target =
         this.toggleUserStylesMenuTarget;
     }
-    toggleUserStylesMenu(e) {
+    toggleUserStylesMenu(_e) {
       this.hideUserStylesMenu = !this.hideUserStylesMenu;
     }
-    UserStylesSizeDown(e) {
+    UserStylesSizeDown(_e) {
       if (this.fontSize > 0) {
         this.fontSize = this.fontSize - 1;
         localStorageSet("haxcms-userPref-fontSize", this.fontSize);
       }
     }
-    UserStylesSizeUp(e) {
+    UserStylesSizeUp(_e) {
       if (this.fontSize < 4) {
         this.fontSize = this.fontSize + 1;
         localStorageSet("haxcms-userPref-fontSize", this.fontSize);
       }
     }
     UserStylesFontFamilyChange(e) {
-      var target = normalizeEventPath(e)[0];
+      let target = normalizeEventPath(e)[0];
       this.fontFamily = parseInt(target.getAttribute("data-font"));
       localStorageSet("haxcms-userPref-fontFamily", this.fontFamily);
     }
     UserStylesColorThemeChange(e) {
-      var target = normalizeEventPath(e)[0];
+      let target = normalizeEventPath(e)[0];
       this.colorTheme = parseInt(target.getAttribute("data-theme"));
       localStorageSet("haxcms-userPref-colorTheme", this.colorTheme);
     }

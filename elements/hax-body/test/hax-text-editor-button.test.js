@@ -1,4 +1,4 @@
-import { fixture, expect, html, oneEvent } from '@open-wc/testing'
+import { fixture, expect, html } from '@open-wc/testing'
 
 import '../lib/hax-text-editor-button.js'
 import { HaxTextEditorButton } from '../lib/hax-text-editor-button.js'

@@ -52,7 +52,7 @@ export const DDDPulseEffectSuper = function (SuperClass) {
       return [styles, DDDPulseEffect, DDDAnimations];
     }
 
-    removePulseEffect(e) {
+    removePulseEffect(_e) {
       this.dataPulse = null;
     }
 

@@ -193,7 +193,7 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
   // Import and trigger confetti animation
   makeItRain() {
     import("@haxtheweb/multiple-choice/lib/confetti-container.js").then(
-      (module) => {
+      (_module) => {
         setTimeout(() => {
           this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
         }, 0);

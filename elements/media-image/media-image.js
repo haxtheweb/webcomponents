@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { SimpleModalHandler } from "@haxtheweb/simple-modal/lib/simple-modal-handler.js";
 import "@haxtheweb/figure-label/figure-label.js";
@@ -442,7 +442,7 @@ class MediaImage extends SchemaBehaviors(DDD) {
   }
   connectedCallback() {
     super.connectedCallback();
-    this._observer = new MutationObserver((mutations) => {
+    this._observer = new MutationObserver((_mutations) => {
       this._computeHasCaption();
     });
     this._observer.observe(this, {
@@ -692,7 +692,7 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
    * Only import the definition if they call up the modal because it's a pretty
    * heavy library tree
    */
-  __modalShowEvent(e) {
+  __modalShowEvent(_e) {
     import("@haxtheweb/image-inspector/image-inspector.js");
   }
   render() {

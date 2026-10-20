@@ -219,7 +219,7 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
     // update cycle. Setting these in firstUpdated/updated() scheduled
     // redundant second updates (Lit change-in-update warning).
     if (!this.hasUpdated) {
-      this.filter = !!this.value ? this.value : "";
+      this.filter = this.value ? this.value : "";
       this.filterOptions(this.filter, this.option);
     }
     if (changedProperties.has("autocomplete")) {
@@ -495,7 +495,7 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
    * @param {event} event
    * @memberof SimpleFieldsCombo
    */
-  _onButtonClick(event) {
+  _onButtonClick(_event) {
     if (this.expanded) {
       this.close(true);
     } else {
@@ -510,7 +510,7 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
    * @param {event} event
    * @memberof SimpleFieldsCombo
    */
-  _onInputClick(event) {
+  _onInputClick(_event) {
     if (this.expanded) {
       this.close(true);
     } else {
@@ -523,15 +523,15 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
    * @param {event} event
    * @memberof SimpleFieldsCombo
    */
-  _onInputBlur(event) {
-    if (!!this.hoveredOption) return;
+  _onInputBlur(_event) {
+    if (this.hoveredOption) return;
     this.listFocus = false;
     this.setCurrentOptionStyle(null);
     this.removeVisualFocusAll();
     setTimeout(this.close(false), 300);
   }
 
-  _onInputPaste(e) {
+  _onInputPaste(_e) {
     clearTimeout(this.__debounce);
     this.__debounce = setTimeout(() => {
       this.value = this.input.value;
@@ -543,7 +543,7 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
    * @param {event} event
    * @memberof SimpleFieldsCombo
    */
-  _onInputFocus(event) {
+  _onInputFocus(_event) {
     this.setVisualFocusTextbox();
     this.option = false;
     this.setCurrentOptionStyle(null);
@@ -559,7 +559,7 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
     this.__debounce = setTimeout(() => {
       this.value = this.input.value;
     }, 300);
-    var flag = false,
+    let flag = false,
       altKey = event.altKey;
 
     switch (event.keyCode) {
@@ -643,7 +643,7 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
       }),
     );
 
-    var flag = false,
+    let flag = false,
       option = false,
       char = event.key || "";
 
@@ -766,7 +766,7 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
       filter = "";
     }
 
-    var firstMatch = false,
+    let firstMatch = false,
       i,
       option,
       textContent,
@@ -830,10 +830,10 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
       ? "true"
       : "false";
   }
-  _onListboxMouseover(event) {
+  _onListboxMouseover(_event) {
     this.listHover = true;
   }
-  _onListboxMouseout(event) {
+  _onListboxMouseout(_event) {
     this.listHover = false;
     this.hoveredOption = undefined;
     setTimeout(this.close(false), 300);
@@ -865,14 +865,14 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
     this.listHover = true;
     this.open();
   }
-  _onOptionMouseout(e, option) {
+  _onOptionMouseout(_e, _option) {
     this.listHover = false;
     this.hoveredOption = undefined;
     setTimeout(this.close(false), 300);
   }
 
   get previousItem() {
-    var index,
+    let index,
       optionText = !this.option ? undefined : this.option.textComparison,
       firstText = !this.firstOption
         ? undefined
@@ -885,7 +885,7 @@ class SimpleFieldsCombo extends I18NMixin(SimpleFieldsFieldBehaviors(LitElement)
     return this.lastOption;
   }
   get nextItem() {
-    var index,
+    let index,
       optionText = !this.option ? undefined : this.option.textComparison,
       lastText = !this.lastOption ? undefined : this.lastOption.textComparison,
       filteredtext = this.filteredOptions.map((o) => o.textComparison);

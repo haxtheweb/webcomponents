@@ -4,7 +4,7 @@ window.process = window.process || {
     NODE_ENV: "development",
   },
 };
-import { fixture, expect, html, assert } from "@open-wc/testing";
+import { fixture, expect, html } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
 
 import "../clean-one.js";
@@ -243,7 +243,7 @@ describe("clean-one desktop responsiveness", () => {
 describe("clean-one DDD integration", () => {
   it("uses DDD design system tokens", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    const styles = getComputedStyle(el);
+    getComputedStyle(el);
 
     // Check that DDD CSS custom properties are being used
     const cssText =

@@ -39,7 +39,7 @@ class DynamicImportRegistry extends HTMLElement {
   static get tag() {
     return "dynamic-import-registry";
   }
-  constructor(delayRender = false) {
+  constructor(_delayRender = false) {
     super();
     this.windowControllers = new AbortController();
     // object for tracking what the registry is

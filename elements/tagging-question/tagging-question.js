@@ -5,7 +5,7 @@
 import { html, css } from "lit";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
-import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
  * `tagging-question`

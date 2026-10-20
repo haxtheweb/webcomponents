@@ -449,7 +449,7 @@ export function safeNavigateHref(raw) {
       return "/";
     }
     return u.href;
-  } catch (e) {
+  } catch {
     return "/";
   }
 }
@@ -513,8 +513,8 @@ export function cleanVideoSource(input) {
     return input;
   }
   // strip off the ? modifier for youtube/vimeo so we can build ourselves
-  var tmp = input.split("?");
-  var v = "";
+  let tmp = input.split("?");
+  let v = "";
   input = tmp[0];
   if (tmp.length == 2) {
     let tmp2 = tmp[1].split("&"),
@@ -592,7 +592,7 @@ export function lightChildrenToShadowRootSelector(el, selector) {
 function wrapAll(ary, wrapper) {
   if (ary && ary.length) {
     ary[0].parentNode.insertBefore(wrapper, ary[0]);
-    for (var i in ary) {
+    for (let i in ary) {
       wrapper.appendChild(ary[i]);
     }
   }
@@ -614,7 +614,7 @@ function unwrap(el) {
 function formatHTML(html_source, options) {
   //Wrapper function to invoke all the necessary constructors and deal with the output.
 
-  var multi_parser,
+  let multi_parser,
     indent_size,
     indent_character,
     max_char,
@@ -695,7 +695,7 @@ function formatHTML(html_source, options) {
         ), //all the single tags for HTML
       extra_liners: "head,body,/html".split(","), //for tags that need a line of whitespace before them
       in_array: function (what, arr) {
-        for (var i = 0; i < arr.length; i++) {
+        for (let i = 0; i < arr.length; i++) {
           if (what === arr[i]) {
             return true;
           }
@@ -707,7 +707,7 @@ function formatHTML(html_source, options) {
     this.get_content = function () {
       //function to capture regular content between tags
 
-      var input_char = "",
+      let input_char = "",
         content = [],
         space = false; //if a space is needed
 
@@ -730,7 +730,7 @@ function formatHTML(html_source, options) {
           if (this.line_char_count >= this.max_char) {
             //insert a line when the max_char is reached
             content.push("\n");
-            for (var i = 0; i < this.indent_level; i++) {
+            for (let i = 0; i < this.indent_level; i++) {
               content.push(this.indent_string);
             }
             this.line_char_count = 0;
@@ -750,12 +750,11 @@ function formatHTML(html_source, options) {
       if (this.pos == this.input.length) {
         return ["", "TK_EOF"];
       }
-      var input_char = "";
-      var content = "";
-      var reg_match = new RegExp("</" + name + "\\s*>", "igm");
+      let content = "";
+      let reg_match = new RegExp("</" + name + "\\s*>", "igm");
       reg_match.lastIndex = this.pos;
-      var reg_array = reg_match.exec(this.input);
-      var end_script = reg_array ? reg_array.index : this.input.length; //absolute end of script
+      let reg_array = reg_match.exec(this.input);
+      let end_script = reg_array ? reg_array.index : this.input.length; //absolute end of script
       if (this.pos < end_script) {
         //get everything in between the script tags
         content = this.input.substring(this.pos, end_script);
@@ -783,7 +782,7 @@ function formatHTML(html_source, options) {
       //function to retrieve the opening tag to the corresponding closer
       if (this.tags[tag + "count"]) {
         //if the openener is not in the Object we ignore it
-        var temp_parent = this.tags.parent; //check to see if it's a closable tag.
+        let temp_parent = this.tags.parent; //check to see if it's a closable tag.
         while (temp_parent) {
           //till we reach '' (the initial value);
           if (tag + this.tags[tag + "count"] === temp_parent) {
@@ -809,7 +808,7 @@ function formatHTML(html_source, options) {
 
     this.get_tag = function () {
       //function to get a full tag and parse its type
-      var input_char = "",
+      let input_char = "",
         content = [],
         space = false,
         tag_start,
@@ -866,8 +865,8 @@ function formatHTML(html_source, options) {
         content.push(input_char); //inserts character at-a-time (or string)
       } while (input_char !== ">");
 
-      var tag_complete = content.join("");
-      var tag_index;
+      let tag_complete = content.join("");
+      let tag_index;
       if (tag_complete.indexOf(" ") != -1) {
         //if there's whitespace, thats where the tag name ends
         tag_index = tag_complete.indexOf(" ");
@@ -875,7 +874,7 @@ function formatHTML(html_source, options) {
         //otherwise go with the tag ending
         tag_index = tag_complete.indexOf(">");
       }
-      var tag_check = tag_complete.substring(1, tag_index).toLowerCase();
+      let tag_check = tag_complete.substring(1, tag_index).toLowerCase();
       if (
         tag_complete.charAt(tag_complete.length - 2) === "/" ||
         this.Utils.in_array(tag_check, this.Utils.single_token)
@@ -965,9 +964,9 @@ function formatHTML(html_source, options) {
       if (orig_tag && orig_tag.toLowerCase().indexOf(delimiter) != -1) {
         return "";
       }
-      var input_char = "";
-      var content = "";
-      var space = true;
+      let input_char = "";
+      let content = "";
+      let space = true;
       do {
         if (this.pos >= this.input.length) {
           return content;
@@ -1002,14 +1001,14 @@ function formatHTML(html_source, options) {
 
     this.get_token = function () {
       //initial handler for token-retrieval
-      var token;
+      let token;
 
       if (
         this.last_token === "TK_TAG_SCRIPT" ||
         this.last_token === "TK_TAG_STYLE"
       ) {
         //check if we need to format javascript
-        var type = this.last_token.substr(7);
+        let type = this.last_token.substr(7);
         token = this.get_contents_to(type);
         if (typeof token !== "string") {
           return token;
@@ -1030,7 +1029,7 @@ function formatHTML(html_source, options) {
         if (typeof token !== "string") {
           return token;
         } else {
-          var tag_name_type = "TK_TAG_" + this.tag_type;
+          let tag_name_type = "TK_TAG_" + this.tag_type;
           return [token, tag_name_type];
         }
       }
@@ -1062,7 +1061,7 @@ function formatHTML(html_source, options) {
       this.max_char = max_char;
       this.line_char_count = 0; //count to see if max_char was exceeded
 
-      for (var i = 0; i < this.indent_size; i++) {
+      for (let i = 0; i < this.indent_size; i++) {
         this.indent_string += this.indent_character;
       }
 
@@ -1080,7 +1079,7 @@ function formatHTML(html_source, options) {
           }
         }
         arr.push("\n");
-        for (var i = 0; i < this.indent_level; i++) {
+        for (let i = 0; i < this.indent_level; i++) {
           arr.push(this.indent_string);
         }
       };
@@ -1114,7 +1113,7 @@ function formatHTML(html_source, options) {
   ); //initialize starting values
 
   while (true) {
-    var t = multi_parser.get_token();
+    let t = multi_parser.get_token();
     multi_parser.token_text = t[0];
     multi_parser.token_type = t[1];
 
@@ -1141,8 +1140,8 @@ function formatHTML(html_source, options) {
           multi_parser.last_token === "TK_CONTENT" &&
           multi_parser.last_text === ""
         ) {
-          var tag_name = multi_parser.token_text.match(/\w+/)[0];
-          var tag_extracted_from_last_output =
+          let tag_name = multi_parser.token_text.match(/\w+/)[0];
+          let tag_extracted_from_last_output =
             multi_parser.output[multi_parser.output.length - 1].match(
               /<\s*(\w+)/,
             );
@@ -1177,11 +1176,12 @@ function formatHTML(html_source, options) {
       case "TK_SCRIPT":
         if (multi_parser.token_text !== "") {
           multi_parser.output.push("\n");
-          var text = multi_parser.token_text;
+          let text = multi_parser.token_text;
           if (multi_parser.token_type == "TK_SCRIPT") {
-            var _beautifier = typeof js_beautify == "function" && js_beautify;
+            var _beautifier = typeof js_beautify === "function" && js_beautify;
           } else if (multi_parser.token_type == "TK_STYLE") {
-            var _beautifier = typeof css_beautify == "function" && css_beautify;
+            var _beautifier =
+              typeof css_beautify === "function" && css_beautify;
           }
 
           if (options.indent_scripts == "keep") {
@@ -1192,17 +1192,17 @@ function formatHTML(html_source, options) {
             var script_indent_level = 1;
           }
 
-          var indentation = multi_parser.get_full_indent(script_indent_level);
+          let indentation = multi_parser.get_full_indent(script_indent_level);
           if (_beautifier) {
             // call the Beautifier if avaliable
             text = _beautifier(text.replace(/^\s*/, indentation), options);
           } else {
             // simply indent the string otherwise
-            var white = text.match(/^\s*/)[0];
-            var _level =
+            let white = text.match(/^\s*/)[0];
+            let _level =
               white.match(/[^\n\r]*$/)[0].split(multi_parser.indent_string)
                 .length - 1;
-            var reindent = multi_parser.get_full_indent(
+            let reindent = multi_parser.get_full_indent(
               script_indent_level - _level,
             );
             text = text
@@ -1231,7 +1231,7 @@ export function localStorageGet(name, defaultValue = "") {
       return defaultValue;
     }
     return JSON.parse(localStorage.getItem(name));
-  } catch (e) {
+  } catch {
     return defaultValue;
   }
 }
@@ -1288,7 +1288,7 @@ export function mimeTypeToName(mimeType) {
 export function localStorageSet(name, newItem) {
   try {
     return localStorage.setItem(name, JSON.stringify(newItem));
-  } catch (e) {
+  } catch {
     return false;
   }
 }
@@ -1297,7 +1297,7 @@ export function localStorageSet(name, newItem) {
 export function localStorageDelete(name) {
   try {
     return localStorage.removeItem(name);
-  } catch (e) {
+  } catch {
     return false;
   }
 }
@@ -1307,8 +1307,8 @@ function validURL(str) {
   let url;
   try {
     url = new URL(str);
-  } catch (e) {
-    var pattern = new RegExp(
+  } catch {
+    let pattern = new RegExp(
       "^(https?:\\/\\/)?" + // protocol
         "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
         "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
@@ -1358,13 +1358,13 @@ function haxElementToNode(haxSchema) {
   ) {
     tag = "webview";
   }
-  var frag = globalThis.document.createElement(tag);
+  let frag = globalThis.document.createElement(tag);
   frag.innerHTML = content;
   // clone the fragment which will force an escalation to full node
-  var newNode = frag.cloneNode(true);
+  let newNode = frag.cloneNode(true);
 
   // support for properties if they exist
-  for (var property in properties) {
+  for (let property in properties) {
     // skip innerHTML and innerText as they should be handled as content, not attributes
     if (property === "innerHTML" || property === "innerText") {
       continue;
@@ -1450,7 +1450,7 @@ function encapScript(html) {
     // special case, it's inside a template tag
     html = html.replace(
       /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
-      function (match, contents, offset, input_string) {
+      function (match, _contents, _offset, _input_string) {
         match = match.replace("&lt;script&gt;", "<script>");
         match = match.replace("&lt;/script&gt;", "</script>");
         match = match.replace("&lt;style&gt;", "<style>");
@@ -1467,8 +1467,8 @@ function encapScript(html) {
 function findTagsInHTML(html) {
   let tags = {};
   let tag = "";
-  var matches = html.match(/<\/([a-z,0-9]*?)-(\S*?)>/g);
-  for (var i in matches) {
+  let matches = html.match(/<\/([a-z,0-9]*?)-(\S*?)>/g);
+  for (let i in matches) {
     tag = matches[i].replace("</", "").replace(">", "");
     tags[tag] = tag;
   }
@@ -1496,7 +1496,7 @@ export function htmlEntities(s) {
  */
 function stripMSWord(input) {
   // 1. remove line breaks / Mso classes right off the bat
-  var output = input
+  let output = input
     .split("\n\r")
     .join("\n")
     .split("\r")
@@ -1522,7 +1522,7 @@ function stripMSWord(input) {
   // Handle spans specially - remove span wrapper but preserve content and nested elements
   output = output.replace(/<span[^>]*>([\s\S]*?)<\/span>/gim, "$1");
   // 4. Remove everything in between and including tags '<style(.)style(.)>'
-  var badTags = ["style", "script", "applet", "embed", "noframes", "noscript"];
+  let badTags = ["style", "script", "applet", "embed", "noframes", "noscript"];
   for (var i in badTags) {
     let tagStripper = new RegExp(
       "<" + badTags[i] + "(s|.)*?" + badTags[i] + "(.*?)>",
@@ -1803,7 +1803,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
   }
   const nodeTag = node.tagName.toLowerCase();
   // build out the properties to send along
-  var props = {};
+  let props = {};
   // support basic styles
   if (typeof node.style !== typeof undefined) {
     props.style = node.getAttribute("style");
@@ -1833,7 +1833,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
   if (typeof tmpProps !== typeof undefined) {
     // run through attributes, though non-reflected props won't be here
     // run through props, we always defer to property values
-    for (var property in tmpProps) {
+    for (let property in tmpProps) {
       // make sure we only set things that have a value
       if (
         property != "class" &&
@@ -1978,7 +1978,7 @@ export const winEventsElement = function (SuperClass) {
   return class extends SuperClass {
     __applyWinEvents(status) {
       if (this.__winEvents) {
-        for (var eName in this.__winEvents) {
+        for (let eName in this.__winEvents) {
           window[`${status ? "add" : "remove"}EventListener`](
             eName,
             this[this.__winEvents[eName]],
@@ -1994,7 +1994,7 @@ export const winEventsElement = function (SuperClass) {
         super.connectedCallback();
       }
       // bind to this context prior to assignment so we can enable and disable accurately from window
-      for (var eName in this.__winEvents) {
+      for (let eName in this.__winEvents) {
         this[this.__winEvents[eName]] =
           this[this.__winEvents[eName]].bind(this);
       }

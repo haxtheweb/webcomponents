@@ -414,7 +414,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       clearTimeout(this.__filterDebounceTimer);
       this.__filterDebounceTimer = null;
     }
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const d = this.__disposer[i];
       if (typeof d === "function") {
         d();
@@ -762,7 +762,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
   async _rj(resp) {
     try {
       return await resp.json();
-    } catch (e) {
+    } catch {
       return null;
     }
   }
@@ -889,7 +889,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       this.pageTotal = this._readPageTotal(response);
       this.rows = this._normPayload(response);
       this.selectedRows = new Set();
-    } catch (e) {
+    } catch {
       this.errorMessage = this.t.unableToLoadFiles;
       this.rows = [];
       this.pageTotal = 0;
@@ -1191,7 +1191,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       if (!silent) this._msg(message);
       if (!skipRefresh) await this.refreshFiles();
       return { ok: true, message };
-    } catch (e) {
+    } catch {
       this.errorMessage = this.t.fileOperationFailed;
       if (!silent) this._msg(this.errorMessage, true);
       return { ok: false, message: this.errorMessage };
@@ -1687,7 +1687,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
                       </thead>
                       <tbody>
                         ${this.rows.map(
-                          (r, i) => html`
+                          (r, _i) => html`
                             <tr>
                               <td>
                                 <input

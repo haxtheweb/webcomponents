@@ -94,11 +94,11 @@ class EnhancedText extends LitElement {
           .filter((child) => child.textContent.trim()); // eliminate empty text
       }
       // loop through data and apply vocab-term wrapper
-      for (var i = 0; i < data.data.length; i++) {
+      for (let i = 0; i < data.data.length; i++) {
         let term = data.data[i];
         let found = false;
         // find textnodes that match the term and apply
-        for (var j = 0; j < textNodes.length; j++) {
+        for (let j = 0; j < textNodes.length; j++) {
           let el = textNodes[j];
           if (
             el.textContent.toLowerCase() == term.term.toLowerCase() &&
@@ -113,7 +113,7 @@ class EnhancedText extends LitElement {
             if (term.links && term.links.length > 0) {
               let div = globalThis.document.createElement("div");
               div.classList.add("links");
-              for (var t = 0; t < term.links.length; t++) {
+              for (let t = 0; t < term.links.length; t++) {
                 let a = globalThis.document.createElement("a");
                 a.href = term.links[t].href;
                 a.innerText = term.links[t].title;

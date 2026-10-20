@@ -200,7 +200,7 @@ class JsonOutlineSchema extends HTMLElement {
   validateItem(item) {
     // create a generic schema item
     let tmp = new JSONOutlineSchemaItem();
-    for (var key in tmp) {
+    for (let key in tmp) {
       // only set what the element from spec allows into a new object
       if (typeof item[key] !== typeof undefined) {
         tmp[key] = item[key];
@@ -214,7 +214,7 @@ class JsonOutlineSchema extends HTMLElement {
    * @return JSONOutlineSchemaItem or false if not found
    */
   removeItem(id) {
-    for (var key in this.items) {
+    for (let key in this.items) {
       if (this.items[key].id == id) {
         let tmp = this.items[key];
         this.items.splice(key, 1);
@@ -231,7 +231,7 @@ class JsonOutlineSchema extends HTMLElement {
   updateItem(item, save = false) {
     // verify this is a legit item
     let safeItem = this.validateItem(item);
-    for (var key in this.items) {
+    for (let key in this.items) {
       // match the current item's ID to our safeItem passed in
       if (this.items[key].id == safeItem.id) {
         // overwrite the item
@@ -316,7 +316,7 @@ class JsonOutlineSchema extends HTMLElement {
   /**
    * Allow toggling of debug mode which visualizes the outline and writes it to console.
    */
-  _toggleDebug(e) {
+  _toggleDebug(_e) {
     this.debug = !this.debug;
     this._triggerDebugPaint(this.debug);
   }
@@ -346,7 +346,7 @@ class JsonOutlineSchema extends HTMLElement {
     return ["file", "id", "title", "author", "description", "license", "debug"];
   }
 
-  attributeChangedCallback(attr, oldValue, newValue) {
+  attributeChangedCallback(attr, _oldValue, _newValue) {
     // an external attribute write replaces any pending value for it
     if (this.__pending) {
       delete this.__pending[attr];
@@ -441,7 +441,7 @@ class JsonOutlineSchema extends HTMLElement {
    * Return some items populated correctly
    */
   getItemValues(item, parent = false) {
-    var valid;
+    let valid;
     if (item) {
       valid = this.validateItem(item);
     } else {
@@ -457,13 +457,13 @@ class JsonOutlineSchema extends HTMLElement {
    * Return valid JSON Schema relative to what asked for
    */
   getItemSchema(requested = "item") {
-    var schema = {
+    let schema = {
       $schema: "http://json-schema.org/schema#",
       title: this.title,
       type: "object",
       properties: {},
     };
-    var obj;
+    let obj;
     if (requested == "item") {
       obj = new JSONOutlineSchemaItem();
     } else {
@@ -482,7 +482,7 @@ class JsonOutlineSchema extends HTMLElement {
         obj.items = this.items;
       }
     }
-    for (var key in obj) {
+    for (let key in obj) {
       let props = {
         title: key,
         type: "string",
@@ -569,7 +569,7 @@ class JsonOutlineSchema extends HTMLElement {
     return this.treeToNodes(tree, globalThis.document.createElement("ul"));
   }
   treeToNodes(tree, appendTarget) {
-    for (var i in tree) {
+    for (let i in tree) {
       let li = globalThis.document.createElement("li");
       li.innerText = tree[i].title;
       li.setAttribute("data-jos-id", tree[i].id);
@@ -638,7 +638,7 @@ class JsonOutlineSchema extends HTMLElement {
    */
   scrubElementJOSData(node) {
     // attempt to replace things inside very aggressively
-    for (var i in node.children) {
+    for (let i in node.children) {
       node.removeAttribute("data-jos-id");
       node.removeAttribute("data-jos-location");
       node.removeAttribute("data-jos-slug");

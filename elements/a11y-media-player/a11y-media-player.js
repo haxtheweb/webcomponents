@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -1063,7 +1063,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
               label="${this.t.rewindLabel}"
               ?disabled="${this.disableSeek || this.currentTime <= 0}"
               ?hidden="${this.disableSeek}"
-              @click="${(e) => {
+              @click="${(_e) => {
                 this.rewind();
               }}"
             ></a11y-media-button>
@@ -1076,7 +1076,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
               ?disabled="${this.disableSeek ||
               this.currentTime >= this.duration}"
               ?hidden="${this.disableSeek}"
-              @click="${(e) => {
+              @click="${(_e) => {
                 this.forward();
               }}"
             ></a11y-media-button>
@@ -1094,8 +1094,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
             ></a11y-media-button>
             <div
               id="volume-and-mute"
-              @focus="${(e) => (this.__volumeSlider = true)}"
-              @blur="${(e) => (this.__volumeSlider = false)}"
+              @focus="${(_e) => (this.__volumeSlider = true)}"
+              @blur="${(_e) => (this.__volumeSlider = false)}"
             >
               <a11y-media-button
                 accent-color="${this.accentColor}"
@@ -1103,7 +1103,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                 id="mute"
                 icon="${this.muted ? "av:volume-off" : "av:volume-up"}"
                 label="${this.muted ? this.t.unmuteLabel : this.t.muteLabel}"
-                @click="${(e) => {
+                @click="${(_e) => {
                   this.toggleMute();
                 }}"
               ></a11y-media-button>
@@ -1138,7 +1138,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
               ?disabled="${!this.hasCaptions}"
               ?hidden="${!this.hasCaptions}"
               ?toggle="${this.captionsTrackKey > -1}"
-              @click="${(e) => this.toggleCC()}"
+              @click="${(_e) => this.toggleCC()}"
             >
             </a11y-media-button>
             <a11y-media-button
@@ -1154,7 +1154,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
               (this.height && this.responsiveSize.indexOf("s") > -1) ||
               this.learningMode}"
               ?toggle="${this.transcriptTrackKey > -1}"
-              @click="${(e) => this.toggleTranscript()}"
+              @click="${(_e) => this.toggleTranscript()}"
             >
             </a11y-media-button>
             <a11y-media-button
@@ -1174,7 +1174,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
               label="${this.t.fullscreenLabel}"
               ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
               ?toggle="${this.fullscreen}"
-              @click="${(e) => this.toggleFullscreen()}"
+              @click="${(_e) => this.toggleFullscreen()}"
             >
             </a11y-media-button>
             <a11y-media-button
@@ -1185,7 +1185,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
               controls="settings"
               icon="settings"
               label="${this.t.settingsLabel}"
-              @click="${(e) => this.toggleSettings()}"
+              @click="${(_e) => this.toggleSettings()}"
             ></a11y-media-button>
             ${this.isYoutube
               ? html` <a11y-media-button
@@ -1358,7 +1358,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                 icon="swap-vert"
                 label="${this.t.autoScrollLabel}"
                 ?toggle="${!this.disableScroll}"
-                @click="${(e) => (this.disableScroll = !this.disableScroll)}"
+                @click="${(_e) => (this.disableScroll = !this.disableScroll)}"
               >
               </a11y-media-button>
             </div>
@@ -1396,7 +1396,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
             ${this.transcriptCues.length > 0
               ? html`
                   <div class="transcript-from-track">
-                    ${this.transcriptCues.map((cue, index) => {
+                    ${this.transcriptCues.map((cue, _index) => {
                       return html`
                         <a11y-media-transcript-cue
                           controls="html5"
@@ -1415,7 +1415,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
                           this.duration === 0
                             ? -1
                             : 0}"
-                          @click="${(e) => this._handleCueSeek(cue)}"
+                          @click="${(_e) => this._handleCueSeek(cue)}"
                           @keydown="${(e) => this._handleCueKeydown(e, cue)}"
                           @active-changed="${this._setActiveCue}"
                           ?active="${cue.track.activeCues &&
@@ -1963,7 +1963,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
     }
     globalThis.addEventListener("click", this._settingsClickHandler, true);
     this.querySelectorAll("video,audio").forEach((html5) => {
-      html5.addEventListener("loadedmetadata", (e) => {
+      html5.addEventListener("loadedmetadata", (_e) => {
         // only keep a real duration; sourceless media reports NaN
         if (isFinite(html5.duration) && html5.duration > 0) {
           this.__preloadedDuration = html5.duration;
@@ -2727,7 +2727,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
     print.document.close();
     print.focus();
     print.print();
-    print.addEventListener("afterprint", (event) => {
+    print.addEventListener("afterprint", (_event) => {
       print.close();
     });
 
@@ -2911,7 +2911,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
       // attempt to move the playback head directly so the UI doesn't feel broken.
       try {
         this.media.currentTime = safeTime;
-      } catch (e) {
+      } catch {
         // Some environments may still refuse manual seeking; in that case just bail.
         this.__seeking = false;
         clearTimeout(this.__seekingFallback);
@@ -3495,7 +3495,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
   /**
    * handles media metadata when media is loaded
    */
-  _handleMediaLoaded(e) {
+  _handleMediaLoaded(_e) {
     this._handleTimeUpdate();
     if (!this.youtubeId && this.anchor.target === this) {
       this.seek(
@@ -3519,7 +3519,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * @param {event} e slider event
    */
   _handleSpeedChanged(e) {
-    var target = normalizeEventPath(e)[0];
+    let target = normalizeEventPath(e)[0];
     this.setPlaybackRate(target.value);
   }
 
@@ -3527,7 +3527,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * handles duration slider dragging with a mouse
    * @param {event} e slider start event
    */
-  _handleSliderDragging(e) {
+  _handleSliderDragging(_e) {
     let slider = this.__sliderEl;
     if (!slider || slider.disabled || !slider.dragging) return;
     // Only pause-on-drag-start if actually playing; remember to resume on
@@ -3616,7 +3616,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * @param {event} e volume change event
    */
   _handleVolumeChanged(e) {
-    var target = normalizeEventPath(e)[0];
+    let target = normalizeEventPath(e)[0];
     this.volume = target.value;
   }
 
@@ -3729,8 +3729,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
       //javascript scrolling from:  https://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation#answer-8918062
       let scrollingTo = (element, to, duration) => {
         if (duration <= 0) return;
-        var difference = to - element.scrollTop;
-        var perTick = (difference / duration) * 10;
+        let difference = to - element.scrollTop;
+        let perTick = (difference / duration) * 10;
 
         setTimeout(() => {
           element.scrollTop = element.scrollTop + perTick;
@@ -3746,7 +3746,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * handles transcript scroll toggle
    * @param {event} e scroll event
    */
-  _transcriptScroll(e) {
+  _transcriptScroll(_e) {
     this.disableScroll = !this.disableScroll;
   }
 
@@ -3780,7 +3780,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
    */
   _onSettingsKeydown(event) {
     if (!this.__settingsOpen) return;
-    var key = event.key || event.code || "";
+    let key = event.key || event.code || "";
     if (key === "Escape" || key === "Esc" || event.keyCode === 27) {
       this.toggleSettings(false);
       event.stopPropagation();
@@ -3793,18 +3793,18 @@ class A11yMediaPlayer extends SchemaBehaviors(
    */
   _onSettingsDocumentClick(event) {
     if (!this.__settingsOpen) return;
-    var path = event.composedPath
+    let path = event.composedPath
       ? event.composedPath()
       : normalizeEventPath(event) || [];
-    var settingsEl = this.shadowRoot
+    let settingsEl = this.shadowRoot
       ? this.shadowRoot.querySelector("#settings")
       : null;
-    var settingsButton = this.shadowRoot
+    let settingsButton = this.shadowRoot
       ? this.shadowRoot.querySelector("#settings-button")
       : null;
-    var isInside = false;
-    for (var i = 0; i < path.length; i++) {
-      var node = path[i];
+    let isInside = false;
+    for (let i = 0; i < path.length; i++) {
+      let node = path[i];
       if (node === this || node === settingsEl || node === settingsButton) {
         isInside = true;
         break;

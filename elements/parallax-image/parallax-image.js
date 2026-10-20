@@ -118,7 +118,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
     });
   }
 
-  scrollBy(e) {
+  scrollBy(_e) {
     const bgParallax = this.shadowRoot.querySelector("#bgParallax");
     const titleParallax = this.shadowRoot.querySelector("#titleParallax");
     const yParallaxPosition = globalThis.scrollY * -0.2;

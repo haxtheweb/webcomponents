@@ -67,7 +67,7 @@ describe("DocumentationPlayer test", () => {
     // Allow more time for template rendering
     await new Promise((resolve) => setTimeout(resolve, 200));
 
-    const template = element.shadowRoot.querySelector("template");
+    element.shadowRoot.querySelector("template");
     // Template content should be rendered inside play-list
     const playList = element.shadowRoot.querySelector("play-list");
     expect(playList).to.exist;

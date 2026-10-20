@@ -318,10 +318,10 @@ class SimpleTooltip extends LitElement {
    * @type {Node}
    */
   get target() {
-    var parentNode = this.parentNode;
+    let parentNode = this.parentNode;
     // If the parentNode is a document fragment, then we need to use the host.
-    var ownerRoot = this.getRootNode();
-    var target;
+    let ownerRoot = this.getRootNode();
+    let target;
     if (this.for) {
       target = ownerRoot.querySelector("#" + CSS.escape(this.for));
     } else {
@@ -381,9 +381,9 @@ class SimpleTooltip extends LitElement {
 
     if (this.textContent.trim() === "") {
       // Check if effective children are also empty
-      var allChildrenEmpty = true;
-      var effectiveChildren = this.children;
-      for (var i = 0; i < effectiveChildren.length; i++) {
+      let allChildrenEmpty = true;
+      let effectiveChildren = this.children;
+      for (let i = 0; i < effectiveChildren.length; i++) {
         if (effectiveChildren[i].textContent.trim() !== "") {
           allChildrenEmpty = false;
           break;
@@ -416,21 +416,21 @@ class SimpleTooltip extends LitElement {
     if (typeof time !== "string") {
       return 0;
     }
-    var t = time.trim();
+    let t = time.trim();
     if (t.endsWith("ms")) {
-      var ms = parseFloat(t.replace("ms", ""));
+      let ms = parseFloat(t.replace("ms", ""));
       return Number.isNaN(ms) ? 0 : ms;
     }
     if (t.endsWith("s")) {
-      var s = parseFloat(t.replace("s", ""));
+      let s = parseFloat(t.replace("s", ""));
       return Number.isNaN(s) ? 0 : s * 1000;
     }
-    var n = parseFloat(t);
+    let n = parseFloat(t);
     return Number.isNaN(n) ? 0 : n;
   }
 
   _getExitAnimationTiming() {
-    var tip =
+    let tip =
       this.shadowRoot && this.shadowRoot.querySelector
         ? this.shadowRoot.querySelector("#tooltip")
         : null;
@@ -440,10 +440,10 @@ class SimpleTooltip extends LitElement {
         duration: 0,
       };
     }
-    var style = globalThis.getComputedStyle(tip);
+    let style = globalThis.getComputedStyle(tip);
     // can be comma-separated lists; use the first item
-    var durationRaw = (style.animationDuration || "0s").split(",")[0].trim();
-    var delayRaw = (style.animationDelay || "0s").split(",")[0].trim();
+    let durationRaw = (style.animationDuration || "0s").split(",")[0].trim();
+    let delayRaw = (style.animationDelay || "0s").split(",")[0].trim();
     return {
       delay: this._timeToMs(delayRaw),
       duration: this._timeToMs(durationRaw),
@@ -471,8 +471,8 @@ class SimpleTooltip extends LitElement {
 
     // If duration-out is 0ms (common in DDD/HAX UI), some browsers won't emit
     // animationend; compute timing and ensure we still hide quickly.
-    var timing = this._getExitAnimationTiming();
-    var total = timing.delay + timing.duration;
+    let timing = this._getExitAnimationTiming();
+    let total = timing.delay + timing.duration;
 
     // force hide if we are open too long
     // helps older platforms and the monster known as Safari
@@ -496,17 +496,17 @@ class SimpleTooltip extends LitElement {
    */
   updatePosition() {
     if (!this._target || !this.offsetParent) return;
-    var offset = this.offset;
+    let offset = this.offset;
     // If a marginTop has been provided by the user (pre 1.0.3), use it.
     if (this.marginTop != 14 && this.offset == 14) offset = this.marginTop;
-    var parentRect = this.offsetParent.getBoundingClientRect();
-    var targetRect = this._target.getBoundingClientRect();
-    var thisRect = this.getBoundingClientRect();
-    var horizontalCenterOffset = (targetRect.width - thisRect.width) / 2;
-    var verticalCenterOffset = (targetRect.height - thisRect.height) / 2;
-    var targetLeft = targetRect.left - parentRect.left;
-    var targetTop = targetRect.top - parentRect.top;
-    var tooltipLeft, tooltipTop;
+    let parentRect = this.offsetParent.getBoundingClientRect();
+    let targetRect = this._target.getBoundingClientRect();
+    let thisRect = this.getBoundingClientRect();
+    let horizontalCenterOffset = (targetRect.width - thisRect.width) / 2;
+    let verticalCenterOffset = (targetRect.height - thisRect.height) / 2;
+    let targetLeft = targetRect.left - parentRect.left;
+    let targetTop = targetRect.top - parentRect.top;
+    let tooltipLeft, tooltipTop;
     switch (this.position) {
       case "top":
         tooltipLeft = targetLeft + horizontalCenterOffset;
@@ -635,7 +635,7 @@ class SimpleTooltip extends LitElement {
         this.animationConfig[type][0].timing.delay &&
         this.animationConfig[type][0].timing.delay !== 0
       ) {
-        var timingDelay = this.animationConfig[type][0].timing.delay;
+        let timingDelay = this.animationConfig[type][0].timing.delay;
         // Has Timing Change - Update CSS
         if (type === "entry") {
           globalThis.document.documentElement.style.setProperty(
@@ -665,7 +665,7 @@ class SimpleTooltip extends LitElement {
   /**
    * LitElement ready
    */
-  firstUpdated(changedProperties) {
+  firstUpdated(_changedProperties) {
     this.setAttribute("role", "tooltip");
     this.setAttribute("tabindex", -1);
     this._findTarget();

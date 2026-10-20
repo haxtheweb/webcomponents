@@ -79,7 +79,7 @@ class FillInTheBlanks extends MarkTheWords {
     let gotRight = true;
     this.numberCorrect = 0;
     this.numberGuessed = 0;
-    for (var i in this.answers) {
+    for (let i in this.answers) {
       let input =
         this.shadowRoot &&
         this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
@@ -90,7 +90,7 @@ class FillInTheBlanks extends MarkTheWords {
         input.value !== ""
       ) {
         this.numberGuessed++;
-        for (var j in this.answers[i].answer) {
+        for (let j in this.answers[i].answer) {
           if (
             input.value.toLowerCase().trim() ===
             this.answers[i].answer[j].toLowerCase().trim()
@@ -129,7 +129,7 @@ class FillInTheBlanks extends MarkTheWords {
       let inputs = Array.from(
         this.shadowRoot.querySelectorAll("[data-answer-index]"),
       );
-      for (var i in inputs) {
+      for (let i in inputs) {
         inputs[i].value = "";
         this.answers[i].userGuessCorrect = false;
         if (inputs[i].selectedIndex) {
@@ -144,7 +144,7 @@ class FillInTheBlanks extends MarkTheWords {
   // major thing this provides is disabling answer checking until we've made a selection
   guessCount() {
     let counter = 0;
-    for (var i in this.answers) {
+    for (let i in this.answers) {
       let input =
         this.shadowRoot &&
         this.shadowRoot.querySelector(`[data-answer-index="${i}"]`);
@@ -159,7 +159,7 @@ class FillInTheBlanks extends MarkTheWords {
     this.answers = [];
     this.wordList = [];
     const wordList = statement.trim().split(/\s+/g);
-    for (var i in wordList) {
+    for (let i in wordList) {
       // a blank is a token with a closing bracket; punctuation may trail
       // the bracket and malformed input may lack the opening bracket
       const blank = wordList[i].match(/^\[?([^\[\]]*)\]/);
@@ -265,7 +265,7 @@ class FillInTheBlanks extends MarkTheWords {
     }
   }
 
-  refreshEvent(e) {
+  refreshEvent(_e) {
     this.requestUpdate();
   }
 

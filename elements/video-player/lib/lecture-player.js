@@ -59,8 +59,8 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
         "/../",
     });
     if (globalThis.location.hash) {
-      var id = globalThis.location.hash.split("--")[0];
-      var timestamp =
+      let id = globalThis.location.hash.split("--")[0];
+      let timestamp =
         globalThis.location.hash.split("--")[1] ||
         this.associatedNodes["slide-1"];
       setTimeout(() => {
@@ -93,7 +93,7 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
       }, 2000);
     }
     globalThis.addEventListener("hashChange", () => {
-      var [id, timestamp] = globalThis.location.hash.split("--");
+      let [id, timestamp] = globalThis.location.hash.split("--");
       if (id === "#lecture-player-video" && !timestamp) {
         this.showModal();
         setTimeout(() => {
@@ -270,7 +270,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
     valueList.innerHTML = ""; // Clear previous buttons
 
     Object.keys(this.associatedNodes).forEach((key) => {
-      const timestamp = this.associatedNodes[key];
       const slideAnchor = globalThis.document.querySelector(`#${key}`);
       const valueBtn = globalThis.document.createElement("button");
       valueBtn.classList.add("valueBtn");
@@ -361,7 +360,6 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   showModal() {
-    let videoSectionColumns = "1fr 1fr";
     let c = globalThis.document.createElement("div");
     c.classList.add("modal-content");
     c.innerHTML = `

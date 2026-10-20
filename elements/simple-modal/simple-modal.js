@@ -541,7 +541,7 @@ class SimpleModal extends I18NMixin(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    import("web-dialog/index.js").then((e) => {
+    import("web-dialog/index.js").then((_e) => {
       setTimeout(() => {
         this._styleBackdrop();
       }, 0);
@@ -710,7 +710,7 @@ class SimpleModal extends I18NMixin(LitElement) {
     } else {
       this.removeAttribute("class");
     }
-    for (var i in slots) {
+    for (let i in slots) {
       if (elements[slots[i]]) {
         if (clone) {
           element = elements[slots[i]].cloneNode(true);
@@ -841,7 +841,7 @@ class SimpleModal extends I18NMixin(LitElement) {
       // p dialog backport; a nice, simple solution for close buttons
       let dismiss = this.querySelectorAll("[dialog-dismiss]");
       dismiss.forEach((el) => {
-        el.addEventListener("click", (e) => {
+        el.addEventListener("click", (_e) => {
           const evt = new CustomEvent("simple-modal-dismissed", {
             bubbles: true,
             composed: true,
@@ -857,7 +857,7 @@ class SimpleModal extends I18NMixin(LitElement) {
       });
       let confirm = this.querySelectorAll("[dialog-confirm]");
       confirm.forEach((el) => {
-        el.addEventListener("click", (e) => {
+        el.addEventListener("click", (_e) => {
           const evt = new CustomEvent("simple-modal-confirmed", {
             composed: true,
             bubbles: true,

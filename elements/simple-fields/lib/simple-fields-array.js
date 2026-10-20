@@ -106,7 +106,7 @@ class SimpleFieldsArray extends I18NMixin(
           controls="item-fields"
           icon="more-vert"
           ?disabled="${this.disabled}"
-          @click="${(e) => this.toggle()}"
+          @click="${(_e) => this.toggle()}"
           ?toggled="${this.expanded}"
           ?hidden="${this.hideExpand}"
           toggles
@@ -122,7 +122,7 @@ class SimpleFieldsArray extends I18NMixin(
           icon="add"
           ?disabled="${this.disabled || this.disableAdd}"
           controls="item-fields"
-          @click="${(e) => this._handleAdd()}"
+          @click="${(_e) => this._handleAdd()}"
           part="add"
           icon="more-vert"
           ?toggled="${this.expanded}"

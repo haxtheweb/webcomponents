@@ -108,7 +108,7 @@ class ShortAnswerQuestion extends QuestionElement {
     if (!this.shortanswer || typeof this.shortanswer !== "string") {
       return false;
     }
-    for (var i in this.displayedAnswers) {
+    for (let i in this.displayedAnswers) {
       if (
         this.displayedAnswers[i] &&
         this.displayedAnswers[i].label &&

@@ -27,7 +27,7 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
     this.__disposer = this.__disposer ? this.__disposer : [];
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           let activeItem = _mobx_val_0;
@@ -40,7 +40,7 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           let activeItem = _mobx_val_0;
@@ -159,7 +159,7 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
 
   __videoHandler() {
     if (this.mediaType == "video") {
-      var video = this.shadowRoot.querySelector("video");
+      let video = this.shadowRoot.querySelector("video");
       if (this.playing) {
         video.pause();
         this.icon = "av:play-circle-outline";
@@ -232,7 +232,7 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

@@ -428,7 +428,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       });
     });
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           let manifest = _mobx_val_0;
@@ -448,7 +448,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         const _mobx_val_1 = toJS(store.manifest);
         Promise.resolve().then(() => {
@@ -467,7 +467,7 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeTitle);
         Promise.resolve().then(() => {
           this.activeTitle = _mobx_val_0;

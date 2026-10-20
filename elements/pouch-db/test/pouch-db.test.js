@@ -297,11 +297,6 @@ describe("pouch-db test", () => {
 
   describe("Event Dispatching", () => {
     it("should dispatch pouch-db-show-data event", (done) => {
-      const mockQueryData = {
-        labels: ["Quiz1", "Quiz2"],
-        series: [[1, 2]],
-      };
-
       // Listen for the dispatched event
       globalThis.addEventListener(
         "pouch-db-show-data",

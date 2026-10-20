@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, css } from "lit";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 /**
  * `rich-text-editor-emoji-picker`
@@ -57,7 +57,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorButtonBehaviors(
    * "Insert emoji" program at the RTE cursor instead of running an
    * execCommand. HAXStore listens for the event and opens the program.
    */
-  _handleClick(e) {
+  _handleClick(_e) {
     if (this.disabled) {
       return;
     }

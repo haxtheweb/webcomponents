@@ -1,4 +1,4 @@
-import { LitElement, html, nothing } from "lit";
+import { LitElement, html } from "lit";
 import { SimpleTourManager } from "@haxtheweb/simple-popover/lib/simple-tour.js";
 import {
   HaxSchematizer,
@@ -212,7 +212,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * Try and guess the Gizmo based on what we were just handed
    */
   guessGizmo(guess, values, skipPropMatch = false, preferExclusive = false) {
-    var matches = [],
+    let matches = [],
       matchedTags = [];
     if (typeof guess !== typeof undefined) {
       // verify type
@@ -221,7 +221,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         // look for a match
         for (let gizmoposition in this.gizmoList) {
           let gizmo = toJS(this.gizmoList[gizmoposition]);
-          let props = !!values.innerHTML ? { innerHTML: values.innerHTML } : {};
+          let props = values.innerHTML ? { innerHTML: values.innerHTML } : {};
           // reset match per gizmo
           let match = false;
           // ensure this gizmo can handle things
@@ -487,7 +487,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let response = null;
     try {
       response = JSON.parse(e.detail.xhr.response);
-    } catch (err) {
+    } catch {
       return;
     }
     const urlEl =
@@ -547,7 +547,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           useTransformed = true;
         }
       }
-    } catch (err) {
+    } catch {
       // transform threw; leave #url at raw uploaded path
     }
     if (useTransformed) {
@@ -606,7 +606,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         const found = current.closest(tagName);
         if (found) return found;
       }
-    } catch (e) {}
+    } catch {}
     // Fallback manual traversal (covers non-Elements, shadow DOM, or when closest not available)
     while (current) {
       if (match(current)) return current;
@@ -707,7 +707,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       replacement.source = newSource;
       try {
         replacement.setAttribute("source", newSource);
-      } catch (e) {}
+      } catch {}
     }
     if (
       typeof newValues.alt === "string" &&
@@ -717,7 +717,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       replacement.alt = newValues.alt;
       try {
         replacement.setAttribute("alt", newValues.alt);
-      } catch (e) {}
+      } catch {}
     }
 
     if (tagName === "place-holder") {
@@ -744,7 +744,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch (e) {}
+    } catch {}
 
     this.activePlaceHolder = null;
     this.activeNode = replacement;
@@ -809,7 +809,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch (e) {}
+    } catch {}
 
     // Clean up
     this.activePlaceHolder = null;
@@ -854,7 +854,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch (e) {}
+    } catch {}
 
     // Clean up
     this.activePlaceHolder = null;
@@ -900,7 +900,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch (e) {}
+    } catch {}
 
     // Clean up
     this.activePlaceHolder = null;
@@ -975,7 +975,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch (e) {}
+    } catch {}
 
     // Clean up
     this.activePlaceHolder = null;
@@ -1004,7 +1004,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch (e) {}
+    } catch {}
 
     // Clean up
     this.activePlaceHolder = null;
@@ -1601,7 +1601,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   async _loadAppStoreData(appDataResponse) {
     if (appDataResponse != null) {
-      var items = {};
+      let items = {};
       // autoload elements
       if (typeof appDataResponse.autoloader !== typeof undefined) {
         // ensure the list is in the right order so we can async dynamic imports
@@ -1640,7 +1640,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       // load apps automatically
       if (typeof appDataResponse.apps !== typeof undefined) {
-        var apps = appDataResponse.apps;
+        let apps = appDataResponse.apps;
         for (let i = 0; i < apps.length; i++) {
           if (!this.platformAllows("onlineMedia")) {
             if (!Object.hasOwn(apps[i].connection.operations, "add")) continue;
@@ -1653,7 +1653,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       // load in stax dynamically
       if (typeof appDataResponse.stax !== typeof undefined) {
-        var staxs = appDataResponse.stax;
+        let staxs = appDataResponse.stax;
         for (let i = 0; i < staxs.length; i++) {
           let stax = globalThis.document.createElement("hax-stax");
           stax.data = staxs[i];
@@ -1713,7 +1713,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           try {
             let tmpEl = globalThis.document.createElement(i);
             haxAutoloader.appendChild(tmpEl);
-          } catch (e) {}
+          } catch {}
         }
       } else {
         let importPath = `${basePath}${items[i]}`;
@@ -1723,7 +1723,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         }
         // we have to import and then respond to it being imported by checking again
         await import(importPath)
-          .then((response) => {
+          .then((_response) => {
             // see if it imported now
             if (
               globalThis.customElements.get(i) &&
@@ -1752,7 +1752,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
 
     try {
       url = new URL(string);
-    } catch (_) {
+    } catch {
       return false;
     }
 
@@ -1889,7 +1889,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       return null;
     }
     for (let gizmoposition in this.gizmoList) {
-      var gizmo = this.gizmoList[gizmoposition];
+      let gizmo = this.gizmoList[gizmoposition];
       if (gizmo.tag === activeNode.tagName.toLowerCase()) {
         return gizmo;
       }
@@ -2054,7 +2054,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           .associateEvents(
             haxTray.shadowRoot.querySelector("#haxcancelbutton"),
           );
-        if (!!haxCancel.shadowRoot.querySelector("#dialog")) {
+        if (haxCancel.shadowRoot.querySelector("#dialog")) {
           globalThis.addEventListener(
             "simple-modal-confirmed",
             this._handleConfirmCancel.bind(this),
@@ -2067,7 +2067,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let globalData = localStorageGet("haxUserData", {});
         this.storageData = globalData;
         this._storageDataChanged(this.storageData);
-      } catch (e) {}
+      } catch {}
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
 
@@ -2097,8 +2097,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _positionCursorInNode(node, position = 0) {
     this.activeHaxBody.positionContextMenus();
-    var range = globalThis.document.createRange();
-    var sel = this.getSelection();
+    let range = globalThis.document.createRange();
+    let sel = this.getSelection();
     range.setStart(node, position);
     range.collapse(true);
     sel.removeAllRanges();
@@ -2161,7 +2161,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (root.querySelectorAll) {
       nodes = [...nodes, ...root.querySelectorAll("*")];
     }
-    for (var i = 0; i < nodes.length; i++) {
+    for (let i = 0; i < nodes.length; i++) {
       let current = nodes[i];
       if (
         current &&
@@ -2175,7 +2175,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * Before the browser closes / changes paths, ask if they are sure they want to leave
    */
-  _onBeforeUnload(e) {
+  _onBeforeUnload(_e) {
     // ensure we don't leave DURING edit mode
     if (!this.skipExitTrap && this.editMode) {
       return "Are you sure you want to leave? Your work will not be saved!";
@@ -2187,19 +2187,19 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   isBase64(str) {
     try {
       return btoa(atob(str)) == str;
-    } catch (err) {
+    } catch {
       return false;
     }
   }
   retrieveImageFromClipboardAsBlob(pasteEvent, callback) {
     if (pasteEvent.clipboardData == false) {
-      if (typeof callback == "function") {
+      if (typeof callback === "function") {
         return callback(undefined);
       }
     }
-    var items = pasteEvent.clipboardData.items;
+    let items = pasteEvent.clipboardData.items;
     if (items == undefined) {
-      if (typeof callback == "function") {
+      if (typeof callback === "function") {
         return callback(undefined);
       }
     }
@@ -2207,9 +2207,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // Skip content if not image
       if (items[i].type.indexOf("image") == -1) continue;
       // Retrieve image on clipboard as blob
-      var blob = items[i].getAsFile();
+      let blob = items[i].getAsFile();
 
-      if (typeof callback == "function") {
+      if (typeof callback === "function") {
         return callback(blob);
       }
     }
@@ -2258,7 +2258,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           return;
         }
         // Restore data-* values that are not HAX internals
-        for (var i in dataset) {
+        for (let i in dataset) {
           if (!i.startsWith("hax")) {
             newNode.dataset[i] = dataset[i];
           }
@@ -2409,7 +2409,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           // If there's an image, display it in the canvas
           if (imageBlob) {
             // Crossbrowser support for URL
-            var URLObj = globalThis.URL || globalThis.webkitURL;
+            let URLObj = globalThis.URL || globalThis.webkitURL;
             let img = globalThis.document.createElement("img");
             // turn blob into a url to visualize locally, this is just temporary
             const blobUrl = URLObj.createObjectURL(imageBlob);
@@ -2937,7 +2937,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               this._positionCursorInNode(txt, txt.length);
             }, 0);
           } else {
-            var _enterSplit, activeEl, siblingEl;
+            let _enterSplit, activeEl, siblingEl;
             // only insert a P if we are splitting something
             if (
               this.activeNode.innerText.trim() != "" &&
@@ -3296,7 +3296,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         machineName: "insert-emoji",
         context: "/",
         placeholder: this.t.searchForEmoji,
-        program: async (input, values) => {
+        program: async (input, _values) => {
           if (!globalThis.SimplePickerEmojis) {
             await import("@haxtheweb/simple-picker/lib/SimplePickerEmojis.js");
           }
@@ -3607,7 +3607,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         machineName: "insert-symbol",
         context: "/",
         placeholder: this.t.searchForSymbol,
-        program: async (input, values) => {
+        program: async (input, _values) => {
           // SimplePickerSymbols is defined inline at the bottom of
           // simple-symbol-picker.js (no standalone data file), so importing
           // that module populates the globalThis entry as a side effect.
@@ -3786,7 +3786,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // prevent leaving if we are in editMode
     globalThis.onbeforeunload = (e) => {
       if (!this.skipExitTrap && this.editMode) {
-        var saving = this.t.leaveWithoutSaving;
+        let saving = this.t.leaveWithoutSaving;
         e.returnValue = saving;
         return saving;
       }
@@ -5209,7 +5209,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           );
         }
       }
-      var properties = {};
+      let properties = {};
       // support for properties to be set automatically optionally
       if (typeof details.properties !== typeof undefined) {
         properties = details.properties;
@@ -5401,7 +5401,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
    */
   _haxStoreInsertMultiple(e) {
     if (e.detail) {
-      var properties;
+      let properties;
       for (let i in e.detail) {
         properties = {};
         // support for properties to be set automatically optionally
@@ -5564,8 +5564,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             let data = await HAXStore.appSearch.loadAppData();
             let results = [];
             await data.forEach(async (item) => {
-              var map = item.map;
-              var gizmoType = item.type;
+              let map = item.map;
+              let gizmoType = item.type;
               // sanity check as well as guessing based on type if we absolutely have to
               if (
                 (!gizmoType ||
@@ -5733,7 +5733,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           await this.detectAndRegisterPageTemplateStax(styleGuideContent);
         }
       }
-    } catch (error) {
+    } catch {
       // Style guide may not be available in all contexts, which is fine
     }
   }
@@ -5894,14 +5894,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       node.setAttribute("sandbox", "allow-scripts allow-same-origin");
     }
 
-    var content = "";
+    let content = "";
     // start to rebuild the same tag we got in a generalized way
     content += "<" + tag;
     // account for things that say NOT to save slot values
-    var props = this.elementList[tag];
-    var propvals = {};
+    let props = this.elementList[tag];
+    let propvals = {};
     // prevent these from being put in the DOM
-    var badAttributes = [
+    let badAttributes = [
       "data-hax-ray",
       "data-hax-layout",
       "data-hax-grid",
@@ -6007,7 +6007,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   new RegExp('"', "g"),
                   "&quot;",
                 );
-              } catch (e) {
+              } catch {
                 // circular reference or other serialization issue, skip
               }
             } else if (typeof value === "object" && value != {}) {
@@ -6016,7 +6016,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   new RegExp('"', "g"),
                   "&quot;",
                 );
-              } catch (e) {
+              } catch {
                 // circular reference or other serialization issue, skip
               }
             }
@@ -6278,7 +6278,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       return node.innerHTML;
     }
     let content = "";
-    var slotnodes = node.childNodes;
+    let slotnodes = node.childNodes;
     // ensure there's something inside of this
     if (slotnodes.length > 0) {
       // loop through everything found in the slotted area and put it back in
@@ -6540,7 +6540,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       const url = new URL(importPath, globalThis.document.baseURI);
       // ignore any query / hash so only the path decides the package
       resolved = url.href.split(/[?#]/)[0];
-    } catch (e) {
+    } catch {
       return null;
     }
     // the element's own package is the last @haxtheweb/<pkg> in the path
@@ -6587,7 +6587,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     let source;
     try {
       source = definition.haxProperties;
-    } catch (e) {
+    } catch {
       return;
     }
     let localesPath = null;
@@ -6614,7 +6614,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       translationMap = await I18NManagerStore.loadNamespaceFile(
         tag + ".haxProperties",
       );
-    } catch (e) {}
+    } catch {}
     // if we have a map, rewrite the matching properties within the objects
     if (
       !translationMap &&
@@ -6632,7 +6632,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             translationMap = false;
           }
         }
-      } catch (e) {
+      } catch {
         translationMap = false;
       }
     }

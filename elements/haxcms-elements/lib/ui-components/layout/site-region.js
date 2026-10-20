@@ -18,7 +18,7 @@ class SiteRegion extends LitElement {
     this.__disposer = this.__disposer ? this.__disposer : [];
     // load region data when we get access to it
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.regionData);
         Promise.resolve().then(() => {
           const data = _mobx_val_0;
@@ -80,7 +80,7 @@ class SiteRegion extends LitElement {
                     // never get their definitions loaded / hydrated.
                     this._hydrateRegionContent(div);
                   })
-                  .catch((err) => {
+                  .catch((_err) => {
                     console.error("region data not found");
                   });
               }

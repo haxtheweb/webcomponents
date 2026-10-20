@@ -243,7 +243,7 @@ export class IcsRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         throw new Error(`request for ${this.dataSource} failed`);
       }
       this.calendarData = await response.text();
-    } catch (error) {
+    } catch {
       this.events = [];
       this.status = "error";
     }

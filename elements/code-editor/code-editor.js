@@ -184,7 +184,7 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
         ?read-only="${this.readOnly}"
         @code-editor-focus="${this._handleFocus}"
         @code-editor-blur="${this._handleBlur}"
-        @monaco-element-ready="${(e) => (this.ready = true)}"
+        @monaco-element-ready="${(_e) => (this.ready = true)}"
         part="code"
       >
       </monaco-element>
@@ -425,20 +425,20 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
    * sets focused attribute when monaco-elements's focus event fires
    * @param {event} e the monaco-elements's focus event
    */
-  _handleFocus(e) {
+  _handleFocus(_e) {
     this.focused = true;
   }
   /**
    * unsets focused attribute when monaco-elements's blur event fires
    * @param {event} e the monaco-elements's blur event
    */
-  _handleBlur(e) {
+  _handleBlur(_e) {
     this.focused = false;
   }
   /**
    * LEGACY: pass down mode to language if that api is used
    */
-  _modeChanged(newValue) {
+  _modeChanged(_newValue) {
     this.language = this.mode;
   }
 
@@ -454,13 +454,13 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
    * Calculate what's in slot currently and then inject it into the editor.
    */
   updateEditorValue() {
-    var content = "";
+    let content = "";
     // check for template tag; it is prefered but if not there support as text string
     if (this.children[0] && this.children[0].tagName !== "TEMPLATE") {
       let children = this.childNodes;
       if (children.length > 0) {
         // loop through everything found in the slotted area and put it back in
-        for (var j = 0, len2 = children.length; j < len2; j++) {
+        for (let j = 0, len2 = children.length; j < len2; j++) {
           if (children[j].tagName) {
             content += children[j].outerHTML;
           } else {
@@ -563,7 +563,7 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
   connectedCallback() {
     super.connectedCallback();
     // mutation observer that ensures state of hax applied correctly
-    this._observer = new MutationObserver((mutations) => {
+    this._observer = new MutationObserver((_mutations) => {
       this.updateEditorValue();
     });
   }
@@ -574,7 +574,7 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
     }
     super.disconnectedCallback();
   }
-  editorReady(e) {
+  editorReady(_e) {
     if (this.editorValue) {
       this.shadowRoot.querySelector("#codeeditor").value = this.editorValue;
     } else {

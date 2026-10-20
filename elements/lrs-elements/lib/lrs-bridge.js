@@ -85,15 +85,15 @@ class LrsBridge extends LitElement {
     try {
       fetch(this.endpoint, query)
         .then((res) => res.json())
-        .then((res) => {});
-    } catch (error) {}
+        .then((_res) => {});
+    } catch {}
   }
 
   /**
    * Get the user name from local storage
    */
   getUserName() {
-    var currentName = localStorageGet("lrs-name", "");
+    let currentName = localStorageGet("lrs-name", "");
     if (!currentName) {
       const newName = this.makeGUID();
       localStorageSet("lrs-name", newName);

@@ -266,7 +266,7 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
     this.skillsArray = this.badgeSkills.split(",");
   }
 
-  skillClick(e) {
+  skillClick(_e) {
     this.skillsOpened = !this.skillsOpened;
   }
 }

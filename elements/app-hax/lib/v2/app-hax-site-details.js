@@ -230,11 +230,10 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
     return this.t[`${verb}Operation`] || verb;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   siteOperation(e) {
     // let elements;
     store.appEl.playSound("click");
-    var target = e.target;
+    let target = e.target;
     // avoid label trigger
     if (target.tagName === "DIV") {
       target = target.parentNode;

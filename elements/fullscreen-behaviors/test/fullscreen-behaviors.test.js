@@ -70,7 +70,7 @@ describe('fullscreen-behaviors core behavior', () => {
   it('preserves existing document-level fullscreen handlers', async () => {
     const sentinel = () => {};
     globalThis.document.onfullscreenchange = sentinel;
-    const el = await fixture(
+    await fixture(
       html`<fullscreen-behaviors></fullscreen-behaviors>`,
     );
     // fixed: the document-level handler is wired with addEventListener so

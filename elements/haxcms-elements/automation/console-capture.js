@@ -79,7 +79,7 @@ await page.evaluateOnNewDocument(() => {
         }
         proto = Object.getPrototypeOf(proto);
       }
-    } catch (e) {
+    } catch {
       // never let instrumentation break definitions
     }
     if (name === "lrndesign-timeline" && ctor && ctor.prototype) {
@@ -122,7 +122,7 @@ await page.evaluateOnNewDocument(() => {
                 " | chain: " +
                 chain.join(" <- "),
             );
-          } catch (e) {
+          } catch {
             // never break the page from logging
           }
           return origUT.apply(this, args);
@@ -162,7 +162,7 @@ await page.evaluateOnNewDocument(() => {
           " | chain: " +
           path.join(" <- "),
       );
-    } catch (e) {
+    } catch {
       // never let instrumentation break the page
     }
     return origReplaceWith.apply(this, args);

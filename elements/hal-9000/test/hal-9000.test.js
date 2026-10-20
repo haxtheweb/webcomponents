@@ -317,7 +317,7 @@ describe("hal-9000 _annyangLoaded", () => {
   });
 
   it("starts automatically when auto is set at load time", async () => {
-    const el = await fixture(html`<hal-9000 auto></hal-9000>`);
+    await fixture(html`<hal-9000 auto></hal-9000>`);
     const stub = new AnnyangStub();
     const originalAnnyang = globalThis.annyang;
     globalThis.annyang = stub;
@@ -332,7 +332,7 @@ describe("hal-9000 _annyangLoaded", () => {
   });
 
   it("starts once when enabled without auto", async () => {
-    const el = await fixture(html`<hal-9000 enabled></hal-9000>`);
+    await fixture(html`<hal-9000 enabled></hal-9000>`);
     const stub = new AnnyangStub();
     const originalAnnyang = globalThis.annyang;
     globalThis.annyang = stub;

@@ -64,7 +64,7 @@ export const lazyImageLoader = function (SuperClass) {
           .setAttribute("xlink:href", loadingImg);
       }
       // check if it completed ahead of time for really fast connections
-      var img = this.shadowRoot.querySelector('img[loading="lazy"]');
+      let img = this.shadowRoot.querySelector('img[loading="lazy"]');
       if (img) {
         if (img.complete) {
           this._lazyImageLoadComplete();

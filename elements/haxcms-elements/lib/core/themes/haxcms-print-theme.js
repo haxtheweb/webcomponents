@@ -45,7 +45,7 @@ class HAXCMSPrintTheme extends CleanTwo {
       </footer>
     `;
   }
-  async print(e) {
+  async print(_e) {
     this.shadowRoot.querySelector("#printbtn").style.display = "none";
     if (this.__afterPrintHandler) {
       globalThis.removeEventListener("afterprint", this.__afterPrintHandler);

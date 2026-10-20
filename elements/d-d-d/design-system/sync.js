@@ -253,7 +253,7 @@ function stepIcons() {
       let isDir = false;
       try {
         isDir = fs.statSync(sdir).isDirectory();
-      } catch (e) {
+      } catch {
         // dangling symlink (e.g. a set that lives in another repo)
       }
       if (!isDir) continue;
@@ -406,7 +406,7 @@ async function bundleOne(entryCode, label) {
     let esbuild;
     try {
       esbuild = await import("esbuild");
-    } catch (e) {
+    } catch {
       throw new Error("esbuild not found: run yarn install at the repo root (or run this script with bun)");
     }
     const r = await esbuild.build({

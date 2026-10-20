@@ -137,7 +137,7 @@ class PageFlag extends SimpleColors {
     ];
   }
 
-  toggleOpen(e) {
+  toggleOpen(_e) {
     this.opened = !this.opened;
     this.dark = this.opened;
     this.querySelectorAll("page-flag-comment").forEach((comment) => {
@@ -231,7 +231,7 @@ class PageFlag extends SimpleColors {
       },
     ];
   }
-  haxResolveThread(e) {
+  haxResolveThread(_e) {
     this.remove();
     return true;
   }

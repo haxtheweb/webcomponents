@@ -73,7 +73,7 @@ export class HaxRouter {
           globalThis.document.baseURI ||
           globalThis.location.href,
       );
-    } catch (e) {
+    } catch {
       return;
     }
 
@@ -85,7 +85,7 @@ export class HaxRouter {
       if (basePath.includes("://")) {
         try {
           basePath = new URL(basePath, globalThis.location.href).pathname;
-        } catch (e) {}
+        } catch {}
       }
       if (!url.pathname.startsWith(basePath)) {
         return;
@@ -138,7 +138,7 @@ export class HaxRouter {
     if (baseUrl && baseUrl.includes("://")) {
       try {
         baseUrl = new URL(baseUrl, globalThis.location.href).pathname;
-      } catch (e) {
+      } catch {
         // baseUrl is not a valid URL, keep original
       }
     }

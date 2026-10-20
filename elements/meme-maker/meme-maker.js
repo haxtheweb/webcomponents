@@ -182,7 +182,7 @@ class MemeMaker extends LitElement {
   /**
    * Supply translations for the UI elements of HAX in meme-maker
    */
-  haxgizmoRegistration(store) {
+  haxgizmoRegistration(_store) {
     globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
@@ -197,7 +197,7 @@ class MemeMaker extends LitElement {
    * Hook for HAX to support progressive enhancement and return a string
    * to place in the slot of this tag for RSS, bots and legacy formats
    */
-  haxprogressiveEnhancement(el) {
+  haxprogressiveEnhancement(_el) {
     return `
     ${this.topText ? `<div>${this.topText}</div>` : ""}
       <img src="${this.imageUrl}" alt="${

@@ -212,7 +212,7 @@ describe("bootstrap-theme test", () => {
         element.colorTheme = "1";
         await element.updateComplete;
 
-        const computedStyle = globalThis.getComputedStyle(element);
+        globalThis.getComputedStyle(element);
         // Dark theme should change background color
         expect(element.getAttribute("color-theme")).to.equal("1");
 
@@ -366,12 +366,8 @@ describe("bootstrap-theme test", () => {
 
     it("should have mobile menu components", () => {
       // Should have mobile menu button and navigation
-      const mobileMenuButton = element.shadowRoot.querySelector(
-        "#haxcmsmobilemenubutton",
-      );
-      const mobileMenuNav = element.shadowRoot.querySelector(
-        "#haxcmsmobilemenunav",
-      );
+      element.shadowRoot.querySelector("#haxcmsmobilemenubutton");
+      element.shadowRoot.querySelector("#haxcmsmobilemenunav");
 
       // HAXCMSMobileMenu renders a <nav> and HAXCMSMobileMenuButton renders
       // a <simple-icon-button-lite>. Check for the rendered elements rather

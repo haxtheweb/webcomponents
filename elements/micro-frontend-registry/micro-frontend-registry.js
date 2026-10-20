@@ -123,7 +123,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
         // support for local resolution of vercel vs serve for things that are
         // built off of the main registry on localhost
         if (item.endpoint.startsWith("/api/")) {
-          var base = "";
+          let base = "";
           // support base rewrite
           if (globalThis.MicroFrontendRegistryConfig.base) {
             base = globalThis.MicroFrontendRegistryConfig.base;
@@ -309,7 +309,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
           let body = null;
           try {
             body = await response.json();
-          } catch (e) {
+          } catch {
             body = null;
           }
           // HAXcms backends put the message (plus a translatable `code`
@@ -432,7 +432,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
       if (this.has(name)) {
         const item = this.get(name);
         // no null submissions
-        for (var key in params) {
+        for (let key in params) {
           if (params.hasOwnProperty(key)) {
             if (params[key] == null) delete params[key];
           }

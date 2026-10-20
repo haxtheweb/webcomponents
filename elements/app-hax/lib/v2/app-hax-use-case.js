@@ -1,9 +1,8 @@
-/* eslint-disable no-return-assign */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { store } from "./AppHaxStore.js";
+import "./AppHaxStore.js";
 
 export class AppHaxUseCase extends I18NMixin(LitElement) {
   static get tag() {

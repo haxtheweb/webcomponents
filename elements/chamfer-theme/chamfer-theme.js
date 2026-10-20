@@ -61,7 +61,7 @@ class ChamferTheme extends HAXCMSThemeParts(
     });
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         // guard for contexts where the store isn't fully hydrated yet
         const _mobx_val_0 = toJS(
           store.themeData && store.themeData.variables,

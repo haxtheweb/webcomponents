@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, css } from "lit";
 import { SimpleToolbarMenuBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu.js";
 import { HaxButton } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 /**

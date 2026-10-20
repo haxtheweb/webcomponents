@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html } from "lit";
 
 /**
  * `simple-search-content`
@@ -23,7 +23,7 @@ class SimpleSearchContent extends LitElement {
    * @param {object} the simple-search element
    */
   enableSearch(searchObject) {
-    searchObject.addEventListener("simple-search", (e) =>
+    searchObject.addEventListener("simple-search", (_e) =>
       this._searchContent(searchObject),
     );
     searchObject.addEventListener("goto-result", (e) => this.focus(e.detail));

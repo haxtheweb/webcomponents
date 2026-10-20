@@ -347,7 +347,7 @@ class SiteSkeletonGenerator {
    * @param {string} filesBaseUrl - Base URL for files folder
    * @returns {Array} Array of file references
    */
-  static extractFileReferences(content, filesBaseUrl) {
+  static extractFileReferences(content, _filesBaseUrl) {
     const fileRefs = [];
     // Look for attributes like src="files/..." or href="files/..." etc.
     // Ensure the path ends with a file extension
@@ -533,7 +533,7 @@ class SiteSkeletonGenerator {
    * @param {Object} customizations - User customizations
    * @returns {Object} File map
    */
-  static generateFilesFromSkeleton(skeleton, customizations = {}) {
+  static generateFilesFromSkeleton(skeleton, _customizations = {}) {
     const files = {};
 
     // Add page content files

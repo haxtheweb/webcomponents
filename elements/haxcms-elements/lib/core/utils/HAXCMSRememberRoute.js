@@ -17,7 +17,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
       this.t.resumeMessage = resumeMessage;
       this.t.resume = "Resume";
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(
             store && store.location && store.location.pathname
               ? store.location.pathname
@@ -87,7 +87,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
       }, 500);
     }
     disconnectedCallback() {
-      for (var i in this.__disposer) {
+      for (let i in this.__disposer) {
         const disposer = this.__disposer[i];
         if (typeof disposer === "function") {
           disposer();
@@ -103,7 +103,7 @@ const HAXCMSRememberRoute = function (SuperClass) {
     /**
      * Respond to confirmation of wanting to resume the previous route
      */
-    resumeLastRoute(e) {
+    resumeLastRoute(_e) {
       globalThis.dispatchEvent(
         new CustomEvent("haxcms-toast-hide", {
           bubbles: true,

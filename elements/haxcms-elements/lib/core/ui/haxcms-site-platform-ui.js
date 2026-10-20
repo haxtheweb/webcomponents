@@ -806,7 +806,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     super.connectedCallback();
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           const manifest = _mobx_val_0;
@@ -818,7 +818,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     );
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(HAXStore.platformConfig);
         const _mobx_val_1 = HAXStore.platformConfig
           ? toJS(HAXStore.platformConfig.features)
@@ -872,7 +872,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     );
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.isMobile);
         Promise.resolve().then(() => {
           this.isMobile = !!_mobx_val_0;

@@ -746,7 +746,7 @@ describe('BootstrapStylesheetManager', () => {
       adoptBootstrapStylesheet({ shadowRoot: null }, '/fake.css')
       const host = makeHost()
       adoptBootstrapStylesheet(host, '')
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.equal(false)
@@ -754,7 +754,7 @@ describe('BootstrapStylesheetManager', () => {
 
   it('falls back to a link when the stylesheet fetch fails', async () => {
     let calls = 0
-    globalThis.fetch = (path) => {
+    globalThis.fetch = (_path) => {
       calls++
       return Promise.resolve({ ok: false })
     }
@@ -782,7 +782,7 @@ describe('BootstrapStylesheetManager', () => {
 
   it('shares one constructable sheet across shadow roots', async () => {
     let calls = 0
-    globalThis.fetch = (path) => {
+    globalThis.fetch = (_path) => {
       calls++
       return Promise.resolve({
         ok: true,

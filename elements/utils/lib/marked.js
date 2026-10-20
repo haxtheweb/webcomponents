@@ -111,7 +111,7 @@ function cleanUrl(sanitize, base, href) {
       prot = decodeURIComponent(unescape(href))
         .replace(nonWordAndColonTest, "")
         .toLowerCase();
-    } catch (e) {
+    } catch {
       return null;
     }
     if (
@@ -127,7 +127,7 @@ function cleanUrl(sanitize, base, href) {
   }
   try {
     href = encodeURI(href).replace(/%25/g, "%");
-  } catch (e) {
+  } catch {
     return null;
   }
   return href;

@@ -122,7 +122,7 @@ describe('rich-text-editor-button', () => {
 
   it('_handleClick sends the command', async () => {
     const events = []
-    button.addEventListener('command', (e) => events.push(true))
+    button.addEventListener('command', (_e) => events.push(true))
     const range = selectContents(editor)
     button.range = range
     button._handleClick(fakeEvent())
@@ -177,7 +177,7 @@ describe('rich-text-editor-button', () => {
 
   it('updated refreshes the registry on shortcut or tag changes', async () => {
     const events = []
-    button.addEventListener('update-button-registry', (e) =>
+    button.addEventListener('update-button-registry', (_e) =>
       events.push(true),
     )
     button.shortcutKeys = 'ctrl+b'

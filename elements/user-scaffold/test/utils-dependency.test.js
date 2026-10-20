@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { expect } from "@open-wc/testing";
 import "../user-scaffold.js";
 // Direct imports of utils lib files to get istanbul to instrument them
 import {
@@ -145,6 +145,7 @@ describe("utils lib coverage for user-scaffold dependencies", () => {
   });
 
   describe("clipboard.js", () => {
+    // eslint-disable-next-line no-unused-vars -- written by the test, never read
     let originalClipboard;
     let originalDescriptor;
 
@@ -160,7 +161,7 @@ describe("utils lib coverage for user-scaffold dependencies", () => {
           configurable: true,
           writable: true,
         });
-      } catch (e) {
+      } catch {
         // clipboard is not configurable, skip mock
       }
     });
@@ -174,7 +175,7 @@ describe("utils lib coverage for user-scaffold dependencies", () => {
             originalDescriptor,
           );
         }
-      } catch (e) {
+      } catch {
         // ignore restore failure
       }
     });

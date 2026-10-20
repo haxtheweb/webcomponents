@@ -69,7 +69,7 @@ describe('a11y-menu-button behaviors', () => {
     let threw = false
     try {
       bare.focus()
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.equal(false)
@@ -91,7 +91,7 @@ describe('a11y-menu-button behaviors', () => {
     let threw = false
     try {
       empty.focusOn()
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.equal(false)
@@ -286,7 +286,7 @@ describe('a11y-menu-button behaviors', () => {
     let threw = false
     try {
       el._handleItemKeydown(keyEvent(38, inputTarget, { key: 'Shift' }))
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.equal(false)

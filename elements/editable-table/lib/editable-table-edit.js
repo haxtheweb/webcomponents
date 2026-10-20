@@ -6,7 +6,6 @@ import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
-  displayBehaviors,
   editBehaviors,
   editableTableStyles,
 } from "./editable-table-behaviors.js";
@@ -1076,7 +1075,7 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
   /**
    * Makes sure there is always on cell to work from
    */
-  _dataChanged(data, oldData) {
+  _dataChanged(data, _oldData) {
     if ((data && data.length < 1) || data[0].length < 1) {
       this.data = [
         ["", ""],

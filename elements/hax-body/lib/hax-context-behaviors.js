@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { autorun, toJS } from "mobx";
 import { HAXStore } from "./hax-store.js";
 /**
@@ -77,11 +77,10 @@ export const HaxContextBehaviors = function (SuperClass) {
         });
       });
       autorun(() => {
-        const _mobx_val_0 = toJS(HAXStore.editMode);
+        toJS(HAXStore.editMode);
         const _mobx_val_1 = toJS(HAXStore.activeNode);
         Promise.resolve().then(() => {
           // this just forces this block to run when editMode is modified
-          const editMode = _mobx_val_0;
           const activeNode = _mobx_val_1;
           this.sourceView = false;
           if (activeNode && activeNode.tagName) {

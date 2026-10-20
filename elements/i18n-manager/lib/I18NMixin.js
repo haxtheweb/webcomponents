@@ -95,7 +95,7 @@ export const I18NMixin = function (SuperClass) {
       if (plain(a) && plain(b)) {
         try {
           return JSON.stringify(a) === JSON.stringify(b);
-        } catch (e) {
+        } catch {
           return false;
         }
       }

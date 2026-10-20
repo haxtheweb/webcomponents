@@ -131,7 +131,7 @@ export class CMSBase extends LitElement {
         // bug 38)
         this.loading = false;
       }
-    } catch (e) {
+    } catch {
       // fail silently, but never stay stuck in loading state (issue
       // #3077, bug 38)
       this.loading = false;

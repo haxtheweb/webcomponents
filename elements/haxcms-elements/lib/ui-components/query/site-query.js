@@ -167,18 +167,18 @@ class SiteQuery extends LitElement {
     limit,
     startIndex,
     random,
-    forceRebuild,
+    _forceRebuild,
   ) {
     if (routerManifest && routerManifest.items) {
       // ensure no data references, clone object
-      var items = [...toJS(routerManifest.items)];
+      let items = [...toJS(routerManifest.items)];
       // ensure that metadata is not a proxy because it's not deep cloning this dataset
       for (var i in items) {
         items[i].metadata = toJS(items[i].metadata);
       }
       // ohhh.... boy.... let's completely alter how this thing works
       if (entity !== "node") {
-        var newItems = [];
+        let newItems = [];
         for (var i in items) {
           // we found a match...
           // for example maybe this is metadata.files
@@ -394,7 +394,7 @@ class SiteQuery extends LitElement {
       }
       // randomize the results, this would goof up the usefulness of sorts
       if (random) {
-        items.sort((item1, item2) => {
+        items.sort((_item1, _item2) => {
           if (Math.random() < Math.random()) {
             return -1;
           } else if (Math.random() > Math.random()) {

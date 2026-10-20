@@ -65,7 +65,7 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
     this.__disposer = this.__disposer || [];
     // Set up reactivity to HAXcms store
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0;
@@ -74,7 +74,7 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
     );
     
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           this.activeItem = _mobx_val_0;
@@ -83,7 +83,7 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
     );
     
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest && store.manifest.items ? store.manifest.items : []);
         Promise.resolve().then(() => {
           this._items = _mobx_val_0;
@@ -757,8 +757,6 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
     const manifest = this.manifest || {};
     const metadata = manifest.metadata || {};
     const site = metadata.site || {};
-    const activeItem = this.activeItem || {};
-    
     return html`
       <div class="app-container">
         <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>

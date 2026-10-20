@@ -522,7 +522,7 @@ class ImgPanZoom extends LitElement {
   // Init openseadragon
   _initOpenSeadragon() {
     setTimeout(() => {
-      var tileSources = [this.src].filter((src) => !!src);
+      let tileSources = [this.src].filter((src) => !!src);
       if (!this.dzi) {
         tileSources = tileSources.map((src) => {
           return {
@@ -691,7 +691,7 @@ class ImgPanZoom extends LitElement {
    * @param {number} fraction of viewport height to pan vertically
    */
   pan(dx = 0, dy = 0.2) {
-    var home = this.viewer.viewport.getBounds();
+    this.viewer.viewport.getBounds();
     //TODO contranin pan dy = Math.min(home.y, Math.max(0 - home.y, dy));
     this.viewer.viewport.panBy(new OpenSeadragon.Point(dx, dy));
   }
@@ -702,9 +702,9 @@ class ImgPanZoom extends LitElement {
    */
   zoomIn(z = 0.7) {
     // TODO: Replace with native openseadragon zoomIn
-    var currentZoom = this.viewer.viewport.getZoom();
-    var maxZoom = this.viewer.viewport.getMaxZoom();
-    var zoomTo = currentZoom + z;
+    let currentZoom = this.viewer.viewport.getZoom();
+    let maxZoom = this.viewer.viewport.getMaxZoom();
+    let zoomTo = currentZoom + z;
     if (zoomTo < maxZoom) {
       this.viewer.viewport.zoomTo(zoomTo);
     }
@@ -716,9 +716,9 @@ class ImgPanZoom extends LitElement {
    */
   zoomOut(z = 0.7) {
     // TODO: Replace with openseadragon native zoomOut
-    var currentZoom = this.viewer.viewport.getZoom();
-    var minZoom = this.viewer.viewport.getMinZoom();
-    var zoomTo = currentZoom - z;
+    let currentZoom = this.viewer.viewport.getZoom();
+    let minZoom = this.viewer.viewport.getMinZoom();
+    let zoomTo = currentZoom - z;
     if (zoomTo > minZoom) {
       this.viewer.viewport.zoomTo(zoomTo);
     } else {

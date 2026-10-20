@@ -87,7 +87,7 @@ export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElemen
     this.removeEventListener('start-date-changed', this._sortByDate);
   }
 
-  _sortByDate(e) {
+  _sortByDate(_e) {
     const items = Array.from(this.querySelectorAll('career-org-item'));
 
     // Descending order; if an item doesn't have a start date, default to today's date
@@ -99,7 +99,7 @@ export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElemen
     sorted.forEach(item => this.appendChild(item));
   }
 
-  _addItemHandler(e){
+  _addItemHandler(_e){
     const item = globalThis.document.createElement("career-org-item");
 
     // We need to hydrate these if we're directly appending
@@ -127,7 +127,7 @@ export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElemen
    * @see haxHooks: gizmoRegistration
    * Register haxProperties locales so the HAX editor UI can be translated
    */
-  haxgizmoRegistration(store) {
+  haxgizmoRegistration(_store) {
     globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {

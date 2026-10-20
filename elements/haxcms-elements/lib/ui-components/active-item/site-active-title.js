@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html } from "lit";
 import {
   store,
   iconFromPageType,
@@ -106,7 +106,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
             if (this.activePageBreak) {
               this.addEventListener(
                 "click",
-                (e) => {
+                (_e) => {
                   haxStore.activeNode =
                     haxStore.activeHaxBody.querySelector("page-break");
                 },
@@ -237,7 +237,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
       basePath: import.meta.url,
     });
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -245,7 +245,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           const activeItem = _mobx_val_0;
@@ -258,7 +258,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeTitle);
         Promise.resolve().then(() => {
           this.activeTitle = _mobx_val_0;
@@ -272,7 +272,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.ancestorTitle);
         Promise.resolve().then(() => {
           this.ancestorTitle = _mobx_val_0;
@@ -286,7 +286,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.parentTitle);
         Promise.resolve().then(() => {
           this.parentTitle = _mobx_val_0;
@@ -305,7 +305,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
    */
   disconnectedCallback() {
     // clean up state
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

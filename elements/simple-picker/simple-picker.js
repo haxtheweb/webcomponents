@@ -720,7 +720,7 @@ const SimplePickerBehaviors = function (SuperClass) {
       this.__activeDesc = "option-0-0";
       this.__hasLabel = true;
       this.__selectedOption = {};
-      this.addEventListener("blur", function (e) {
+      this.addEventListener("blur", function (_e) {
         this.expanded = false;
       });
     }
@@ -912,7 +912,7 @@ const SimplePickerBehaviors = function (SuperClass) {
      * @param {event} e event
      * @returns {void}
      */
-    _handleListboxClick(e) {
+    _handleListboxClick(_e) {
       if (this.disabled) return;
       /**
        * handles listbox click event
@@ -927,7 +927,7 @@ const SimplePickerBehaviors = function (SuperClass) {
      * @param {event} e event
      * @returns {void}
      */
-    _handleListboxMousedown(e) {
+    _handleListboxMousedown(_e) {
       if (this.disabled) return;
       /**
        * fires with listbox mousedown event
@@ -1015,7 +1015,7 @@ const SimplePickerBehaviors = function (SuperClass) {
      * @param {object} oldValue old value for picker
      * @returns {void}
      */
-    _valueChanged(oldValue) {
+    _valueChanged(_oldValue) {
       this._setSelectedOption();
       /**
        * fires when value changes
@@ -1051,7 +1051,7 @@ const SimplePickerBehaviors = function (SuperClass) {
      * @param {object} oldValue old options for picker
      * @returns {void}
      */
-    _optionsChanged(oldValue) {
+    _optionsChanged(_oldValue) {
       this.__ready = (this.options || []).length > 0;
       // drop the stale selection so a matching-value early return in
       // _setSelectedOption can never skip rebuilding __options against the
@@ -1080,9 +1080,9 @@ const SimplePickerBehaviors = function (SuperClass) {
             : this.options;
         //if nulls are allowed, set active descendant to first not null option
         this.__activeDesc = this.allowNull ? "option-0-0" : null;
-        for (var i = 0; i < this.__options.length; i++) {
+        for (let i = 0; i < this.__options.length; i++) {
           let found = false;
-          for (var j = 0; j < this.__options[i].length; j++) {
+          for (let j = 0; j < this.__options[i].length; j++) {
             //if unset, set active descendant to first not null option
             if (this.value !== null && this.__activeDesc === null)
               this.__activeDesc = `option-${i}-${j}`;
@@ -1150,7 +1150,7 @@ const SimplePickerBehaviors = function (SuperClass) {
      * life cycle, element is removed from DOM
      */
     disconnectedCallback() {
-      this.removeEventListener("blur", function (e) {
+      this.removeEventListener("blur", function (_e) {
         this.expanded = false;
       });
       super.disconnectedCallback();

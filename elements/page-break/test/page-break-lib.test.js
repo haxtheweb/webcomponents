@@ -358,7 +358,7 @@ describe('page-break-manager', () => {
   }
 
   it('collects the elements between two breaks', () => {
-    const { pb1, h2, p, pb2 } = makeHost()
+    const { pb1, pb2 } = makeHost()
     const between = pageBreakManager.elementsBetween(pb1)
     expect(between.length).to.equal(2)
     expect(between[0].tagName).to.equal('H2')

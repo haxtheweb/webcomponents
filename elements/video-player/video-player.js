@@ -871,7 +871,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         new URL(src, globalThis.location.href).origin !==
         globalThis.location.origin
       );
-    } catch (e) {
+    } catch {
       return false;
     }
   }
@@ -1180,7 +1180,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       },
     ];
   }
-  haxClickTimeCode(e) {
+  haxClickTimeCode(_e) {
     this.pause();
     copyToClipboard(parseInt(this.currentTime));
     return true;
@@ -1463,7 +1463,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       }, 1000);
     }
   }
-  _visChange(e) {
+  _visChange(_e) {
     setTimeout(() => {
       if (
         globalThis.document.visibilityState === "visible" &&

@@ -157,7 +157,7 @@ class SimpleLoginCamera extends HTMLElement {
     canvas.width = this._video.videoWidth; // set its size to the one of the video
     canvas.height = this._video.videoHeight;
     ctx.drawImage(this._video, 0, 0); // the video
-    return await new Promise((res, rej) => {
+    return await new Promise((res, _rej) => {
       canvas.toBlob(res, "image/jpeg"); // request a Blob from the canvas
     });
   }
@@ -188,7 +188,7 @@ class SimpleLoginCamera extends HTMLElement {
     this._video.autoplay = this.hasAttribute("autoplay");
     this._video.controls = this.hasAttribute("controls");
   }
-  _msrLoaded(e) {
+  _msrLoaded(_e) {
     this._applyMSR();
   }
   async _applyMSR() {
@@ -250,7 +250,7 @@ class SimpleLoginCamera extends HTMLElement {
   /**
    * Try to apply when fully loaded dom
    */
-  documentLoaded(e) {
+  documentLoaded(_e) {
     if (
       globalThis.ESGlobalBridge.requestAvailability().imports["msr"] === true
     ) {

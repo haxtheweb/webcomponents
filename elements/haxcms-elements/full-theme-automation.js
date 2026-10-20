@@ -26,8 +26,7 @@ async function runFullAutomation() {
     console.log(`Theme name: ${themeConfig.name || "Unknown"}`);
 
     // Generate the JavaScript code to switch themes
-    const switchCode =
-      ThemeScreenshotAutomation.generateThemeSwitchCode(themeElement);
+    ThemeScreenshotAutomation.generateThemeSwitchCode(themeElement);
 
     console.log(`MCP Puppeteer Instructions for ${themeElement}:`);
     console.log(`1. Execute JavaScript: HAXCMS.setTheme('${themeElement}')`);

@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement } from "lit";
 import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-button.js";
 /**
  * `rich-text-editor-link`
@@ -193,9 +193,9 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     if (!target) return;
     // Find the link element — check highlight first (WebKit DOM path),
     // then fall back to range ancestor (execCommand path)
-    var linkEl = this.__highlight ? this.__highlight.querySelector("a") : null;
+    let linkEl = this.__highlight ? this.__highlight.querySelector("a") : null;
     if (!linkEl && range) {
-      var ancestor = range.commonAncestorContainer;
+      let ancestor = range.commonAncestorContainer;
       linkEl =
         ancestor && ancestor.nodeType === 1
           ? ancestor.querySelector("a") || ancestor.children[0]

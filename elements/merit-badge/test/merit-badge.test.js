@@ -64,7 +64,7 @@ describe("elementName test", () => {
 
       // Check for proper semantic structure
       const figure = element.shadowRoot.querySelector("figure");
-      const container = element.shadowRoot.querySelector(
+      element.shadowRoot.querySelector(
         ".container, .badge-container",
       );
 

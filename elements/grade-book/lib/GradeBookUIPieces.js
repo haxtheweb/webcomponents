@@ -122,7 +122,7 @@ export const UIRenderPieces = function (SuperClass) {
         </simple-popover>`;
     }
     // toggle logic for active student
-    toggleActiveStudentOverview(e) {
+    toggleActiveStudentOverview(_e) {
       this.hideActiveStudentOverview = !this.hideActiveStudentOverview;
       if (!this.hideActiveStudentOverview) {
         this.hideSettings = true;
@@ -176,7 +176,7 @@ export const UIRenderPieces = function (SuperClass) {
         </simple-popover>`;
     }
     // toggle logic for button
-    toggleGradeScale(e) {
+    toggleGradeScale(_e) {
       this.hideGradeScale = !this.hideGradeScale;
       if (!this.hideGradeScale) {
         this.hideSettings = true;
@@ -228,7 +228,7 @@ export const UIRenderPieces = function (SuperClass) {
         </simple-popover>`;
     }
     // toggle logic for button
-    toggleSettings(e) {
+    toggleSettings(_e) {
       this.hideSettings = !this.hideSettings;
       if (!this.hideSettings) {
         this.hideGradeScale = true;
@@ -276,7 +276,7 @@ export const UIRenderPieces = function (SuperClass) {
         </simple-popover>`;
     }
     // toggle logic for button
-    toggleActiveAssignment(e) {
+    toggleActiveAssignment(_e) {
       this.hideActiveAssignment = !this.hideActiveAssignment;
       if (!this.hideActiveAssignment) {
         this.hideSettings = true;

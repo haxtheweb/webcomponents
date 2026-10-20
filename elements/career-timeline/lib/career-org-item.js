@@ -206,7 +206,7 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
     });
   }
 
-  _addItemHandler(e){
+  _addItemHandler(_e){
     const item = globalThis.document.createElement("career-role-item");
 
     // We need to hydrate these if we're directly appending

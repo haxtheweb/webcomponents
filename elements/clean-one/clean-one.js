@@ -20,10 +20,7 @@ import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/Prin
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import {
-  DDDVariables,
-  DDDPaletteStyles,
-} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { DDDBreakpoints } from "@haxtheweb/d-d-d/lib/DDDLayout.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 
@@ -932,7 +929,7 @@ class CleanOne extends LTIResizingMixin(
     // on subsequent, real page navigations.
     let __isInitialManifestIndexRun = true;
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);
         Promise.resolve().then(() => {
           this.activeManifestIndex = _mobx_val_0;

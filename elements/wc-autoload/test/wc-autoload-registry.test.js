@@ -1,4 +1,4 @@
-import { fixture, expect, html } from '@open-wc/testing'
+import { expect } from '@open-wc/testing'
 
 // wc-autoload depends on dynamic-import-registry and the package's
 // coverage aggregate includes it, so its public behaviors are exercised

@@ -32,7 +32,7 @@ const MutationObserverImportMixin = function (SuperClass) {
       });
     }
     processElementList(list) {
-      for (var i = 0; i < list.length; i++) {
+      for (let i = 0; i < list.length; i++) {
         this.processNewElement(list[i]);
       }
     }

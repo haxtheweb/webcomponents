@@ -128,7 +128,7 @@ class A11yMediaStateManager extends LitElement {
    * @param {array} entries
    * @param {object} observer
    */
-  _handleIntersect(entries, observer) {
+  _handleIntersect(entries, _observer) {
     entries.forEach((entry) => {
       if (!this.activePlayer || this.activePlayer.fullscreen) {
       } else if (!this.activePlayer.__playing) {

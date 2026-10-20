@@ -2,9 +2,9 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, css } from "lit";
 import { RichTextEditorToolbarBehaviors } from "@haxtheweb/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
-import { HaxTextEditorButton } from "./hax-text-editor-button.js";
+import "./hax-text-editor-button.js";
 import { HAXStore } from "./hax-store.js";
 import { HaxContextBehaviors } from "./hax-context-behaviors.js";
 import "./hax-text-editor-paste-button.js";
@@ -811,7 +811,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * (can be overriden for custom positioning)
    * @param {object} target
    */
-  positionByTarget(target) {
+  positionByTarget(_target) {
     return;
   }
   /**
@@ -834,7 +834,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * @param {event} e
    * @memberof HaxTextEditorToolbar
    */
-  _handleHaxStoreReady(e) {
+  _handleHaxStoreReady(_e) {
     this.__ready = true;
     let elements = HAXStore.elementList || {},
       keys = Object.keys(elements);
@@ -881,7 +881,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         type: "hax-text-editor-button",
       };
       this.__updated = false;
-      setTimeout((e) => {
+      setTimeout((_e) => {
         // several inline gizmos can register in one tick; only the first
         // timeout gets a config back (the rest return undefined)
         const config = this.updateToolbarElements();

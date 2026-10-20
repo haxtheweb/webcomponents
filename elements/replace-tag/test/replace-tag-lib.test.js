@@ -194,7 +194,7 @@ describe('replace-tag with pre-defined element', () => {
         }
       },
     )
-    const el = await fixture(
+    await fixture(
       html`<replace-tag
         with="test-replace-target"
         data-custom="val"
@@ -221,7 +221,7 @@ describe('replace-tag with pre-defined element', () => {
         }
       },
     )
-    const el = await fixture(
+    await fixture(
       html`<replace-tag with="test-replace-target-2" import-only
         >text</replace-tag
       >`,
@@ -384,7 +384,7 @@ describe('WCRegistryLoaderCSS function', () => {
   })
 
   it('accepts auto=true parameter', async () => {
-    const el = await fixture(
+    await fixture(
       html`<replace-tag with="word-count">text</replace-tag>`,
     )
     await new Promise((resolve) => setTimeout(resolve, 200))

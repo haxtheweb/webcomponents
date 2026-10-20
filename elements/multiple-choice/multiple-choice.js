@@ -70,14 +70,14 @@ class MultipleChoice extends QuestionElement {
       },
     ];
   }
-  haxClickInlineAdd(e) {
+  haxClickInlineAdd(_e) {
     this.resetAnswer();
     let d = this.answers;
     d.push({ label: "New answer", correct: false });
     this.answers = [...d];
     return true;
   }
-  haxClickInlineRemove(e) {
+  haxClickInlineRemove(_e) {
     if (this.answers.length > 0) {
       this.resetAnswer();
       let d = this.answers;

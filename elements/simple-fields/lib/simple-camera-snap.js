@@ -176,7 +176,7 @@ class SimpleCameraSnap extends HTMLElement {
       this.clearPhoto(e);
     }
   }
-  clearPhoto(e) {
+  clearPhoto(_e) {
     const camera = this.shadowRoot.querySelector("#camera");
     camera.setAttribute("autoplay", "autoplay");
     const selfie = this.shadowRoot.querySelector("#selfie");

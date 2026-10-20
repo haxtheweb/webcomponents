@@ -237,13 +237,13 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
       this.scrollToObject(e);
     }
   }
-  toggleSettings(e) {
+  toggleSettings(_e) {
     if (this.mobile) {
       this.hideSettings = !this.hideSettings;
     }
   }
   scrollToObject(e) {
-    var target = normalizeEventPath(e)[0];
+    let target = normalizeEventPath(e)[0];
     if (
       this.items &&
       this.contentContainer &&
@@ -442,7 +442,7 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
       if (propName == "mobile") {
         if (this[propName]) {
           import("@haxtheweb/simple-popover/simple-popover.js").then(
-            (module) => {
+            (_module) => {
               setTimeout(() => {
                 // hook up the pop over menu
                 this.__toggleTarget =
@@ -479,7 +479,7 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
       return;
     }
     // loop over the new nodes
-    for (var i = 0; i < this.contentContainer.childNodes.length; i++) {
+    for (let i = 0; i < this.contentContainer.childNodes.length; i++) {
       // verify this tag is a valid one
       let item = this.contentContainer.childNodes[i];
       if (

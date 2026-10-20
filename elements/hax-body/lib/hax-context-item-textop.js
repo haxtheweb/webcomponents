@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement } from "lit";
 import { HaxToolbarItemBehaviors } from "@haxtheweb/hax-body/lib/hax-toolbar-item.js";
 /**
  * `hax-context-item-textop`
@@ -90,7 +90,7 @@ class HaxContextItemTextop extends HaxToolbarItemBehaviors(LitElement) {
    * the selection priority, making it impossible to know what's
    * been selected if clicking a button to try and apply something to.
    */
-  _handleMousedown(e) {
+  _handleMousedown(_e) {
     if (!this.disabled) {
       this.dispatchEvent(
         new CustomEvent("hax-context-item-selected", {

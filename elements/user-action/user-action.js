@@ -192,7 +192,7 @@ class UserAction extends HTMLElement {
   /**
    * Supply translations for the UI elements of HAX in meme-maker
    */
-  haxgizmoRegistration(store) {
+  haxgizmoRegistration(_store) {
     globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {

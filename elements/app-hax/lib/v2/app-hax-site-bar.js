@@ -1,6 +1,5 @@
-/* eslint-disable no-console */
 // dependencies / things imported
-import { html, css, unsafeCSS } from "lit";
+import { html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
@@ -394,7 +393,7 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
   }
 
   // Site operation handler using new confirmation modal
-  siteOperation(op, opName, icon) {
+  siteOperation(op, opName, _icon) {
     if (store.appEl && store.appEl.playSound) {
       store.appEl.playSound("click");
     }

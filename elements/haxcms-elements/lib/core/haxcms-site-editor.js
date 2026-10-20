@@ -111,7 +111,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     }
     this.__disposer = [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         const _mobx_val_1 = toJS(HAXStore.activeHaxBody);
         const _mobx_val_2 = toJS(store.activeItemContent);
@@ -130,7 +130,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0;
@@ -139,7 +139,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     );
     // Sync activeItem directly from store via MobX for proper state management
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           this.activeItem = _mobx_val_0;
@@ -147,7 +147,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.platformConfig);
         Promise.resolve().then(() => {
           HAXStore.platformConfig = _mobx_val_0;
@@ -157,7 +157,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
   }
   __disposeDisposers() {
     if (this.__disposer && this.__disposer.length > 0) {
-      for (var i in this.__disposer) {
+      for (let i in this.__disposer) {
         const disposer = this.__disposer[i];
         if (typeof disposer === "function") {
           disposer();
@@ -770,7 +770,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       if (responseText && responseText.trim() !== "") {
         try {
           responseData = JSON.parse(responseText);
-        } catch (e) {}
+        } catch {}
       }
       const normalizedResponse =
         responseData && typeof responseData === "object"
@@ -987,7 +987,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         store.toast(this.t.sessionExpired, 4000, {
           fire: true,
         });
-      } catch (e) {}
+      } catch {}
       return;
     }
     this.jwt = jwt;
@@ -1046,7 +1046,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
   /**
    * ready life cycle
    */
-  firstUpdated(changedProperties) {
+  firstUpdated(_changedProperties) {
     this._ensureBaseDDDVariables();
     if (HAXStore.ready) {
       let detail = {
@@ -1119,7 +1119,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
   // when the user logs out. Access JWTs remain valid until their 15-minute exp
   // and are NOT revoked server-side; revoking those would require access-token
   // jti denylisting, which is not recommended unless the threat model changes.
-  _tokenRefreshFailed(e) {
+  _tokenRefreshFailed(_e) {
     this._clearAllRefreshRetryCounts();
     // only message + snapshot when we actually had a session to lose,
     // so a login failure (no jwt) doesn't toast "session expired"
@@ -1128,7 +1128,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         store.toast(this.t.sessionExpired, 4000, {
           fire: true,
         });
-      } catch (ex) {}
+      } catch {}
       this._snapshotPendingEditForLogout();
     }
     this.dispatchEvent(
@@ -1324,7 +1324,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
    * Load user data from backend
    */
 
-  loadUserData(e) {
+  loadUserData(_e) {
     const appSettings =
       globalThis.appSettings && typeof globalThis.appSettings === "object"
         ? globalThis.appSettings
@@ -1382,15 +1382,8 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     });
   }
 
-  _schemaFormValueChanged(e) {
-    let customTag = {
-      property: "custom-theme-tag",
-      title: "Custom theme tag",
-      description: "Tag that supplies the custom theme",
-      inputMethod: "textfield",
-      required: true,
-      validationType: "text",
-    }; // @todo figure out why this isn't adding a field in on the fly
+  _schemaFormValueChanged(_e) {
+     // @todo figure out why this isn't adding a field in on the fly
 
     /*if (e.target.value.theme === "haxcms-custom-theme") {
       e.target.addField(customTag.property, customTag);
@@ -1414,7 +1407,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     }
 
     if (e.detail.values) {
-      var reqBody = e.detail.values;
+      let reqBody = e.detail.values;
       // ensure site name is set in request
       if (Object.prototype.hasOwnProperty.call(reqBody, "jwt")) {
         delete reqBody.jwt;
@@ -1430,7 +1423,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       if (reqBody.docximport) {
         await import(
           "@haxtheweb/file-system-broker/lib/docx-file-system-broker.js"
-        ).then(async (e) => {
+        ).then(async (_e) => {
           // enable core services
           enableServices(["haxcms"]);
           // get the broker for docx selection
@@ -1509,7 +1502,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     }
   }
 
-  _handleCreateResponse(response) {
+  _handleCreateResponse(_response) {
     setTimeout(() => {
       this.dispatchEvent(
         new CustomEvent("haxcms-trigger-update", {
@@ -1592,7 +1585,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
    * node deleted response
    */
 
-  _handleDeleteResponse(response) {
+  _handleDeleteResponse(_response) {
     // this will force ID to update and avoid a page miss
     // when we deleted the node
     globalThis.history.replaceState({}, null, store.fallbackItemSlug());
@@ -1654,7 +1647,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         "haxcms-pending-edit",
         JSON.stringify(snapshot),
       );
-    } catch (e) {}
+    } catch {}
   }
   /**
    * On editor startup, look for a recovered-edit snapshot and notify the
@@ -1674,7 +1667,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       }
       // Phase 4 (L1): enforce a retention TTL so stale snapshots from a
       // long-closed session are not offered indefinitely. Default 30 minutes.
-      var maxAgeMs = 30 * 60 * 1000;
+      let maxAgeMs = 30 * 60 * 1000;
       if (
         typeof snapshot.savedAt === "number" &&
         Date.now() - snapshot.savedAt > maxAgeMs
@@ -1689,7 +1682,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         6000,
         { fire: true, hat: "save" },
       );
-    } catch (e) {}
+    } catch {}
   }
   /**
    * Apply a recovered-edit snapshot when the user is editing the page it
@@ -1714,14 +1707,14 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     this.__pendingRestore = null;
     try {
       globalThis.sessionStorage.removeItem("haxcms-pending-edit");
-    } catch (e) {}
+    } catch {}
     try {
       const title = snapshot.title || this.t.thisPage;
       store.toast(this.t.restoredUnsavedEdits.replace("{title}", () => title), 4000, {
         fire: true,
         hat: "save",
       });
-    } catch (e) {}
+    } catch {}
   }
 
   /**
@@ -1748,7 +1741,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
    * active item changed
    */
 
-  _activeItemChanged(newValue, oldValue) {
+  _activeItemChanged(newValue, _oldValue) {
     if (newValue && this.manifest) {
       // set upload manager to point to this location in a more dynamic fashion
       HAXStore.connectionRewrites.appendUploadEndPoint =
@@ -1847,7 +1840,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           this.__pendingRestore = null;
         }
       }
-    } catch (err) {}
+    } catch {}
     setTimeout(() => {
       store.playSound("coin");
       this.dispatchEvent(
@@ -1997,7 +1990,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     }, 300);
   }
 
-  _handleManifestResponse(e) {
+  _handleManifestResponse(_e) {
     // trigger a refresh of the data in node
     store.playSound("coin");
     this.dispatchEvent(
@@ -2013,7 +2006,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     }, 300);
   }
 
-  _handlePlatformSettingsResponse(e) {
+  _handlePlatformSettingsResponse(_e) {
     // mirror the site manifest save UX
     store.playSound("coin");
     this.dispatchEvent(
@@ -2035,7 +2028,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     this._handlePlatformSettingsResponse(e);
   }
 
-  _handleAppearanceSettingsResponse(e) {
+  _handleAppearanceSettingsResponse(_e) {
     // mirror the platform + manifest save UX
     store.playSound("coin");
     this.dispatchEvent(
@@ -2244,7 +2237,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             return;
           }
         }
-      } catch (error) {}
+      } catch {}
     }
   }
   async loadNodeRevision(e) {
@@ -2307,7 +2300,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           }),
         );
       }
-    } catch (error) {}
+    } catch {}
   }
   async restoreNodeRevision(e) {
     const detail = e && e.detail ? e.detail : {};
@@ -2528,7 +2521,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       );
       store.toast(message, 4000, { fire: true });
       store.playSound("error");
-    } catch (error) {
+    } catch {
       store.toast(this.t.unableToCompleteOperation, 4000, { fire: true });
       store.playSound("error");
     }
@@ -2641,7 +2634,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     });
   }
 
-  async normalizeSlugs(e) {
+  async normalizeSlugs(_e) {
     const siteName = this._siteName();
     if (!siteName) {
       store.toast(this.t.slugNormalizationEndpointUnavailable, 3000, {

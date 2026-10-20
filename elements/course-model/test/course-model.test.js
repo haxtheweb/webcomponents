@@ -1,4 +1,4 @@
-import { fixture, expect, html, waitUntil } from "@open-wc/testing";
+import { fixture, expect, html } from "@open-wc/testing";
 import "../course-model.js";
 import { CourseModel } from "../course-model.js";
 
@@ -151,7 +151,7 @@ describe("CourseModel test", () => {
 
   // CSS visibility tests based on view mode
   it("shows/hides correct content based on visible attribute", async () => {
-    const overlay = element.shadowRoot.querySelector(".overlay");
+    element.shadowRoot.querySelector(".overlay");
 
     // Default model view - overlay should be hidden
     expect(element.visible).to.equal("model");
@@ -436,7 +436,7 @@ describe('course-model HAX integration', () => {
 describe('course-model HaxStore constructor wiring', () => {
   it('wires the insert-content listener when a HaxStore exists', async () => {
     globalThis.HaxStore = {};
-    const el = await fixture(html`<course-model></course-model>`);
+    await fixture(html`<course-model></course-model>`);
     expect(globalThis.ModelViewerController).to.exist;
     expect(globalThis.ModelViewerController.signal.aborted).to.be.false;
     // firing the insert-content event for a model-viewer import aborts it

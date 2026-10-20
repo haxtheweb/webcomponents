@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { LrndesignPie } from "@haxtheweb/lrndesign-chart/lib/lrndesign-pie.js";
 /**
  * `progress-donut`
@@ -210,13 +210,13 @@ class ProgressDonut extends LrndesignPie {
   addAnimation(e) {
     let data = e && e.detail ? e.detail : undefined;
     if (this.animation > 0 && data && data.type && data.type === "slice") {
-      var opacity = 1,
+      let opacity = 1,
         val = data.value || this.donutTotal / this.donutData.length,
         dur = (this.animation * val) / this.donutTotal;
       data.element.attr({
         c: opacity,
       });
-      var animationDefinition = {
+      let animationDefinition = {
         opacity: {
           id: "anim" + data.index,
           dur: dur,

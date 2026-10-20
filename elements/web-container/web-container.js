@@ -151,7 +151,7 @@ export class WebContainerEl extends I18NMixin(DDDSuper(LitElement)) {
       }
     }
     if (!this.hideEditor) {
-      import("@haxtheweb/code-editor/code-editor.js").then((e) => {
+      import("@haxtheweb/code-editor/code-editor.js").then((_e) => {
         setTimeout(() => {
           
           if (this.files['index.js']) {
@@ -286,7 +286,7 @@ export class WebContainerEl extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   async runCommands(commands) {
-    var commandProcess;
+    let commandProcess;
     for (let i=0; i<commands.length; i++) {
       this.dispatchEvent(new CustomEvent('web-container-command-start', { bubbles: true, compose: true, cancelable: false, detail: {
         command: commands[i],

@@ -46,7 +46,7 @@ export class PrintHelper {
       const printUrl = new URL(globalThis.location.href);
       printUrl.searchParams.set("format", "print-page");
       return printUrl.toString();
-    } catch (e) {
+    } catch {
       const separator = globalThis.location.href.includes("?") ? "&" : "?";
       return `${globalThis.location.href}${separator}format=print-page`;
     }
@@ -76,7 +76,7 @@ export class PrintHelper {
         `x/api/v1/items/${encodeURIComponent(itemId)}?format=${encodeURIComponent(normalizedFormat)}`,
         baseUrl,
       ).toString();
-    } catch (e) {
+    } catch {
       return "";
     }
   }
@@ -193,7 +193,7 @@ export class PrintHelper {
 }
 
 export const createPrintProgram = (i18nMixin) => {
-  return async (input, values) => {
+  return async (_input, _values) => {
     const results = [];
 
     // Get localized strings (fallback to English if not available)

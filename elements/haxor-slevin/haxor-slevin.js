@@ -554,7 +554,7 @@ class HaxorSlevin extends I18NMixin(
     this.__mainPosts = e.detail.value;
   }
   __followUpPostsChanged(e) {
-    var posts = [];
+    let posts = [];
     // support for posts to define their own related content
     if (
       this.activeItem &&
@@ -619,7 +619,7 @@ class HaxorSlevin extends I18NMixin(
   /**
    * Delay importing site-search until we click to open it directly
    */
-  siteModalClick(e) {
+  siteModalClick(_e) {
     // prettier-ignore
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
@@ -655,7 +655,7 @@ class HaxorSlevin extends I18NMixin(
     this.selectedPage = 0;
     this.activeManifestIndexCounter = 0;
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.location);
         Promise.resolve().then(() => {
           let location = _mobx_val_0;
@@ -664,7 +664,7 @@ class HaxorSlevin extends I18NMixin(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           let manifest = _mobx_val_0;
@@ -685,14 +685,14 @@ class HaxorSlevin extends I18NMixin(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         this.activeManifestIndexCounter = toJS(
           store.activeManifestIndexCounter,
         );
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeTitle);
         Promise.resolve().then(() => {
           this.activeTitle = _mobx_val_0;
@@ -702,7 +702,7 @@ class HaxorSlevin extends I18NMixin(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           this.activeItem = _mobx_val_0;
@@ -791,7 +791,7 @@ class HaxorSlevin extends I18NMixin(
   /**
    * Manage the back button to get to the home page of items
    */
-  _goBack(e) {
+  _goBack(_e) {
     globalThis.history.pushState(null, null, store.location.baseUrl);
     globalThis.dispatchEvent(new PopStateEvent("popstate"));
     // should help account for starting on a page where popstate isn't set

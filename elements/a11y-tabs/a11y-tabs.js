@@ -531,7 +531,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     this.hidden = false;
     this.__tabs = [];
     this.__tabFocus = 0;
-    this.addEventListener("a11y-tab-changed", (e) => this.updateTabs());
+    this.addEventListener("a11y-tab-changed", (_e) => this.updateTabs());
   }
   get buttons() {
     return this.__tabButtons;
@@ -676,7 +676,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   /**
    * updates the list of items based on slotted a11y-tab elements
    */
-  updateTabs(e) {
+  updateTabs(_e) {
     this.__tabs = this.querySelectorAll(this.tabQuery);
     this.__tabButtons = this.shadowRoot.querySelectorAll("[role=tab]");
     this.selectTab(this.activeTab);
@@ -756,7 +756,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @param {string} newValue the new id
    * @param {string} oldValue the old id
    */
-  _idChanged(newValue, oldValue) {
+  _idChanged(newValue, _oldValue) {
     if (!newValue) this.id = "a11y-tabs" + this._generateUUID();
   }
 
@@ -775,7 +775,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         aria-controls="${tab.id}"
         class="${tab.id === this.activeTab && !this.disabled ? "active" : ""}"
         .flag="${tab.flag}"
-        @click="${(e) => this._handleTab(tab)}"
+        @click="${(_e) => this._handleTab(tab)}"
         @keydown="${(e) => this._handleKey(i, e)}"
         ?disabled="${tab.disabled || this.disabled}"
         tabindex="${tab.id === this.activeTab ? 0 : -1}"

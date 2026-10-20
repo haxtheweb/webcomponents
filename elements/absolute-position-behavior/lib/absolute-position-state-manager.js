@@ -223,7 +223,7 @@ class AbsolutePositionStateManager extends LitElement {
   _safeQuerySelector(node, selector) {
     try {
       return node.querySelector(selector);
-    } catch (e) {
+    } catch {
       return undefined;
     }
   }
@@ -408,7 +408,7 @@ class AbsolutePositionStateManager extends LitElement {
       //determines if element fits on screen in the desired position
       isFit = (pos = el.position) => {
         //determines if room for element between parent and target
-        let distance = (rect) =>
+        let distance = (_rect) =>
           vertical(pos) ? e.height + offset : e.width + offset;
         return before(pos)
           ? t[pos] - w[pos] > distance

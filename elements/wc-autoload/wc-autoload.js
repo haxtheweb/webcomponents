@@ -42,12 +42,12 @@ const fetch_retry = async (url, options, n) => {
  * process the loading event in case we need to ensure timing is
  * better handled downstream.
  */
-globalThis.WCAutoload.process = (e) => {
-  return new Promise((resolve, reject) => {
+globalThis.WCAutoload.process = (_e) => {
+  return new Promise((resolve, _reject) => {
     // find the loader
-    var loader = globalThis.WCAutoload.requestAvailability();
+    let loader = globalThis.WCAutoload.requestAvailability();
     loader.loaded = true;
-    var list = {};
+    let list = {};
     // microtask timing to ensure window settings are accepted
     if (globalThis.WCAutoloadRegistryFileProcessed) {
       // mutation observer will pick up changes after initial load
@@ -216,7 +216,7 @@ class WcRegistry extends HTMLElement {
         try {
           let jsonList = JSON.parse(this.children[0].content.textContent);
           // register these items on the fly
-          for (var i in jsonList) {
+          for (let i in jsonList) {
             this.loader.registry.register({
               tag: i,
               path: jsonList[i],

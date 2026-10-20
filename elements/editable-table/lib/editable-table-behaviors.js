@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { css } from "lit";
 /**
  * `editable-table-behaviors`
  * A set of common behaviors for editable-table web components.
@@ -727,7 +727,7 @@ export const displayBehaviors = function (SuperClass) {
           await globalThis.navigator.clipboard.writeText(data);
           copied = true;
         }
-      } catch (e) {
+      } catch {
         copied = false;
       }
       if (!copied) {
@@ -741,7 +741,7 @@ export const displayBehaviors = function (SuperClass) {
           textArea.select();
           copied = globalThis.document.execCommand("copy");
           globalThis.document.body.removeChild(textArea);
-        } catch (e) {
+        } catch {
           copied = false;
         }
       }
@@ -789,7 +789,7 @@ export const displayBehaviors = function (SuperClass) {
         print.document.close();
         print.focus();
         print.print();
-        print.addEventListener("afterprint", (event) => {
+        print.addEventListener("afterprint", (_event) => {
           print.close();
         });
       }
@@ -823,7 +823,7 @@ export const displayBehaviors = function (SuperClass) {
             // that we should be storing for any reason
             this.dataCsv = null;
           })
-          .catch((err) => {
+          .catch((_err) => {
             this.loadSlottedTable();
           });
       }
@@ -976,7 +976,7 @@ export const displayBehaviors = function (SuperClass) {
       let n = globalThis.document.createElement("editable-table-display");
       // replicate values that we had previously so they get reflected back into DOM
       let props = this.getTableProperties();
-      for (var i in props) {
+      for (let i in props) {
         n[i] = props[i];
       }
       n.innerHTML = this.getTableHTML();
@@ -1097,7 +1097,7 @@ export const displayBehaviors = function (SuperClass) {
      * @event change
      * @param {event} event
      */
-    _dataChanged(newValue, oldValue) {
+    _dataChanged(_newValue, _oldValue) {
       /*if (
         this.__ready &&
         (!newValue || newValue.length < 1 || newValue[0].length < 1)
@@ -1170,7 +1170,7 @@ export const displayBehaviors = function (SuperClass) {
     /**
      * Convert from csv text to an array in table function
      */
-    _loadExternalData(e) {
+    _loadExternalData(_e) {
       let data = this.CSVtoArray(this.csvData);
       if (data.length > 0 && data[0].length > 0) this.data = data;
       this.columnHeader = true;

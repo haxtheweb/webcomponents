@@ -119,7 +119,7 @@ export const SimpleTagLiteSuper = function (SuperClass) {
     render() {
       return html`
         <span>${this.value}<slot></slot></span>
-        ${!!this.readonly
+        ${this.readonly
           ? ""
           : html`
               <simple-icon-button-lite
@@ -136,8 +136,8 @@ export const SimpleTagLiteSuper = function (SuperClass) {
             `}
       `;
     }
-    clickEvent(e) {
-      if (!!this.toggles) this.toggled = !this.toggled;
+    clickEvent(_e) {
+      if (this.toggles) this.toggled = !this.toggled;
       this.dispatchEvent(
         new CustomEvent("simple-tag-clicked", {
           composed: false,

@@ -580,7 +580,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
     return "polaris-theme";
   }
 
-  appStoreReady(e) {
+  appStoreReady(_e) {
     if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability()) {
       let store = globalThis.HaxStore.requestAvailability();
       // elements that are in HAXcms that are injected regardless of what editor says
@@ -630,7 +630,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
     this.imageLink = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.themeData.variables);
         Promise.resolve().then(() => {
           if (store.themeData && store.themeData.variables) {
@@ -643,7 +643,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.siteDescription);
         Promise.resolve().then(() => {
           this.siteDescription = _mobx_val_0;
@@ -651,7 +651,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);
         Promise.resolve().then(() => {
           this.activeManifestIndex = _mobx_val_0;
@@ -678,7 +678,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
     });
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(
           store.activeItem && store.activeItem.metadata
             ? store.activeItem.metadata.updated
@@ -695,11 +695,11 @@ class PolarisTheme extends HAXCMSOperationButtons(
   /**
    * Delay importing site-search until we click to open it directly
    */
-  siteModalClick(e) {
+  siteModalClick(_e) {
     // prettier-ignore
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-    ).then((m) => {
+    ).then((_m) => {
       if (store.getInternalRoute() !== 'displays/search') {
         globalThis.history.replaceState({}, null, "x/displays/search");
       }

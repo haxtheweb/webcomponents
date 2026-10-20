@@ -19,7 +19,7 @@ class LazyImportDiscover extends HTMLElement {
   /**
    * life cycle
    */
-  constructor(delayRender = false) {
+  constructor(_delayRender = false) {
     super();
     // set tag for later use
     this.tag = LazyImportDiscover.tag;
@@ -37,13 +37,13 @@ class LazyImportDiscover extends HTMLElement {
    */
   connectedCallback() {
     this.__ready = true;
-    var dyn = "";
+    let dyn = "";
     if (this.base == null) {
       this.base = "../node_modules";
     }
     globalThis.document
       .querySelectorAll(":not(:defined)")
-      .forEach((el, index) => {
+      .forEach((el, _index) => {
         let t = el.tagName.toLowerCase();
         let path = `@haxtheweb/${t}/${t}.js`;
         if (el.getAttribute("data-wc-def") != null) {
@@ -73,8 +73,8 @@ export { LazyImportDiscover };
 
 // self append. this is beyond trippy but the window loading will actually self invoke
 if (globalThis.addEventListener) {
-  globalThis.addEventListener("DOMContentLoaded", (event) => {
-    var el = globalThis.document.createElement(LazyImportDiscover.tag);
+  globalThis.addEventListener("DOMContentLoaded", (_event) => {
+    let el = globalThis.document.createElement(LazyImportDiscover.tag);
     if (globalThis.LazyImportBase) {
       el.setAttribute("base", globalThis.LazyImportBase);
     }

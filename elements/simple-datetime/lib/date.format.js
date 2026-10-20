@@ -41,10 +41,10 @@
     "Saturday",
   ];
   // Defining patterns
-  var replaceChars = {
+  let replaceChars = {
     // Day
     d: function () {
-      var d = this.getDate();
+      let d = this.getDate();
       return (d < 10 ? "0" : "") + d;
     },
     D: function () {
@@ -57,11 +57,11 @@
       return Date.longDays[this.getDay()];
     },
     N: function () {
-      var N = this.getDay();
+      let N = this.getDay();
       return N === 0 ? 7 : N;
     },
     S: function () {
-      var S = this.getDate();
+      let S = this.getDate();
       return S % 10 === 1 && S !== 11
         ? "st"
         : S % 10 === 2 && S !== 12
@@ -74,20 +74,20 @@
       return this.getDay();
     },
     z: function () {
-      var d = new Date(this.getFullYear(), 0, 1);
+      let d = new Date(this.getFullYear(), 0, 1);
       return Math.ceil((this - d) / 86400000);
     },
     // Week
     W: function () {
-      var target = new Date(this.valueOf());
-      var dayNr = (this.getDay() + 6) % 7;
+      let target = new Date(this.valueOf());
+      let dayNr = (this.getDay() + 6) % 7;
       target.setDate(target.getDate() - dayNr + 3);
-      var firstThursday = target.valueOf();
+      let firstThursday = target.valueOf();
       target.setMonth(0, 1);
       if (target.getDay() !== 4) {
         target.setMonth(0, 1 + ((4 - target.getDay() + 7) % 7));
       }
-      var retVal = 1 + Math.ceil((firstThursday - target) / 604800000);
+      let retVal = 1 + Math.ceil((firstThursday - target) / 604800000);
 
       return retVal < 10 ? "0" + retVal : retVal;
     },
@@ -96,7 +96,7 @@
       return Date.longMonths[this.getMonth()];
     },
     m: function () {
-      var m = this.getMonth();
+      let m = this.getMonth();
       return (m < 9 ? "0" : "") + (m + 1);
     },
     M: function () {
@@ -106,8 +106,8 @@
       return this.getMonth() + 1;
     },
     t: function () {
-      var year = this.getFullYear();
-      var nextMonth = this.getMonth() + 1;
+      let year = this.getFullYear();
+      let nextMonth = this.getMonth() + 1;
       if (nextMonth === 12) {
         year = year + 1;
         nextMonth = 0;
@@ -116,11 +116,11 @@
     },
     // Year
     L: function () {
-      var L = this.getFullYear();
+      let L = this.getFullYear();
       return L % 400 === 0 || (L % 100 !== 0 && L % 4 === 0);
     },
     o: function () {
-      var d = new Date(this.valueOf());
+      let d = new Date(this.valueOf());
       d.setDate(d.getDate() - ((this.getDay() + 6) % 7) + 3);
       return d.getFullYear();
     },
@@ -153,23 +153,23 @@
       return this.getHours();
     },
     h: function () {
-      var h = this.getHours();
+      let h = this.getHours();
       return ((h % 12 || 12) < 10 ? "0" : "") + (h % 12 || 12);
     },
     H: function () {
-      var H = this.getHours();
+      let H = this.getHours();
       return (H < 10 ? "0" : "") + H;
     },
     i: function () {
-      var i = this.getMinutes();
+      let i = this.getMinutes();
       return (i < 10 ? "0" : "") + i;
     },
     s: function () {
-      var s = this.getSeconds();
+      let s = this.getSeconds();
       return (s < 10 ? "0" : "") + s;
     },
     v: function () {
-      var v = this.getMilliseconds();
+      let v = this.getMilliseconds();
       return (v < 10 ? "00" : v < 100 ? "0" : "") + v;
     },
     // Timezone
@@ -179,10 +179,10 @@
     I: function () {
       // compare the smallest and largest monthly offsets of the year; a
       // timezone without any variation never observes DST (PHP returns 0)
-      var min = null;
-      var max = null;
-      for (var i = 0; i < 12; ++i) {
-        var offset = new Date(this.getFullYear(), i, 1).getTimezoneOffset();
+      let min = null;
+      let max = null;
+      for (let i = 0; i < 12; ++i) {
+        let offset = new Date(this.getFullYear(), i, 1).getTimezoneOffset();
         if (min === null || offset < min) min = offset;
         if (max === null || offset > max) max = offset;
       }
@@ -193,7 +193,7 @@
       return (this.getTimezoneOffset() === min) | 0;
     },
     O: function () {
-      var O = this.getTimezoneOffset();
+      let O = this.getTimezoneOffset();
       return (
         (-O < 0 ? "-" : "+") +
         (Math.abs(O / 60) < 10 ? "0" : "") +
@@ -204,7 +204,7 @@
       );
     },
     P: function () {
-      var P = this.getTimezoneOffset();
+      let P = this.getTimezoneOffset();
       return (
         (-P < 0 ? "-" : "+") +
         (Math.abs(P / 60) < 10 ? "0" : "") +
@@ -216,7 +216,7 @@
       );
     },
     T: function () {
-      var tz = this.toLocaleTimeString(navigator.language, {
+      let tz = this.toLocaleTimeString(navigator.language, {
         timeZoneName: "short",
       }).split(" ");
       return tz[tz.length - 1];
@@ -238,7 +238,7 @@
 
   // Simulates PHP's date function
   Date.prototype.format = function (format) {
-    var date = this;
+    let date = this;
     return format.replace(/(\\?)(.)/g, function (_, esc, chr) {
       return esc === "" && replaceChars[chr]
         ? replaceChars[chr].call(date)

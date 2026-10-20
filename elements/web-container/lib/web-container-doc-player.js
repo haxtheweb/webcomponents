@@ -31,7 +31,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
             parseInt(message.height) + 40 + "px",
           );
       }
-    } catch (error) {}
+    } catch {}
   }
   disconnectedCallback() {
     globalThis.removeEventListener("message", this.__onFrameResizeMessage);

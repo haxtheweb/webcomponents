@@ -94,7 +94,7 @@ export class TableauEmbed extends I18NMixin(LitElement) {
    * @see haxHooks: gizmoRegistration
    * Register haxProperties locales so the HAX editor UI can be translated
    */
-  haxgizmoRegistration(store) {
+  haxgizmoRegistration(_store) {
     globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {

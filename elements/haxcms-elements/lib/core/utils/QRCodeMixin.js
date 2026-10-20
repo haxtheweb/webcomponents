@@ -100,7 +100,7 @@ const QRCodeMixin = function (SuperClass) {
         </div>
       `;
     }
-    QRCodeButtonToggle(e) {
+    QRCodeButtonToggle(_e) {
       this.showQRCode = !this.showQRCode;
     }
     static get properties() {

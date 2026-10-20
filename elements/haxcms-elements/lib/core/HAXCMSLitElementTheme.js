@@ -42,7 +42,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.__hoverIntentLeaveHandler = this.hoverIntentLeave.bind(this);
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -50,7 +50,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.trayStatus);
         Promise.resolve().then(() => {
           this.trayStatus = _mobx_val_0;
@@ -59,7 +59,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     );
     // when this changes, query our light dom children and apply a click hanlder to copy a link to the item
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItemContent);
         Promise.resolve().then(() => {
           let tmp = _mobx_val_0;

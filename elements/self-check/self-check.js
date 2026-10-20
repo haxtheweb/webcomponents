@@ -1,4 +1,4 @@
-import { LitElement, html, css, svg } from "lit";
+import { html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { lazyImageLoader } from "@haxtheweb/lazy-image-helpers/lazy-image-helpers.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -627,7 +627,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   /**
    * Property for toggling "checkbtn".
    */
-  async openAnswer(e) {
+  async openAnswer(_e) {
     this.correct = !this.correct;
     // move focus into the panel that just became visible/interactive so
     // keyboard/screen reader users aren't dropped to <body> when the

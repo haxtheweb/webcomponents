@@ -857,7 +857,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           }
         }
       }
-    } catch (e) {}
+    } catch {}
     this._setReportTabsFromDescriptors(descriptors);
     this.__loadingReportTabs = false;
   }
@@ -1167,7 +1167,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       if (loadedFromV1) {
         return;
       }
-    } catch (e) {}
+    } catch {}
     this.loading = false;
   }
   /**
@@ -1179,8 +1179,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   }
   getReadingTime(value) {
     let readVal = [];
-    var hours = Math.floor(value / 60);
-    var minutes = Math.floor(value - hours * 60);
+    let hours = Math.floor(value / 60);
+    let minutes = Math.floor(value - hours * 60);
     // handle hours of reading
     if (hours === 1) {
       readVal.push(`${hours} ${this.t.hour}`);
@@ -2025,7 +2025,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       this.selectedReportId,
     );
     // default to null parent as the whole site
-    var items = [
+    let items = [
       {
         text: `-- ${this.t.fullSite} --`,
         value: "",
@@ -2079,10 +2079,10 @@ export { HAXCMSShareDialog };
 
 // convert seconds back into full time stamp
 function toHHMMSS(seconds) {
-  var out = "";
-  var snum = parseInt(seconds, 10);
-  var hours = Math.floor(snum / 3600);
-  var minutes = Math.floor((snum - hours * 3600) / 60);
+  let out = "";
+  let snum = parseInt(seconds, 10);
+  let hours = Math.floor(snum / 3600);
+  let minutes = Math.floor((snum - hours * 3600) / 60);
 
   if (hours !== 0) {
     out += `${hours} hour`;

@@ -1,4 +1,3 @@
-/* eslint-disable no-return-assign */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -782,7 +781,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       if (useCaseAlt2) {
         return useCaseAlt2;
       }
-    } catch (e) {
+    } catch {
       // do nothing
     }
     return "";
@@ -804,7 +803,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         "",
         `${url.pathname}${url.search}${url.hash}`,
       );
-    } catch (e) {
+    } catch {
       // do nothing
     }
   }
@@ -937,7 +936,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     if (el && typeof el.scrollIntoView === "function") {
       try {
         el.scrollIntoView({ behavior: "smooth", block: "center" });
-      } catch (e) {
+      } catch {
         el.scrollIntoView();
       }
     }
@@ -1044,7 +1043,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       }
 
       this.__useCaseParamHandled = true;
-    } catch (e) {
+    } catch {
       this.__useCaseParamHandled = true;
     }
 
@@ -1106,7 +1105,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       if (focusTarget && typeof focusTarget.focus === "function") {
         try {
           focusTarget.focus({ preventScroll: true });
-        } catch (e) {
+        } catch {
           focusTarget.focus();
         }
         return;
@@ -2574,7 +2573,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         return "";
       }
       return `${resolved.pathname}${resolved.search}${resolved.hash}`;
-    } catch (e) {
+    } catch {
       return "";
     }
   }

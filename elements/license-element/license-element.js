@@ -46,8 +46,8 @@ export class licenseList {
     };
     // support mutating the array into a select list
     if (mode == "select") {
-      var select = {};
-      for (var i in list) {
+      let select = {};
+      for (let i in list) {
         select[i] = list[i].name;
       }
       return select;

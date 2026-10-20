@@ -98,7 +98,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     this.__operationsLoaded = false;
     this.__disposer = [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.routerManifest);
         Promise.resolve().then(() => {
           this.routerManifest = Object.assign({}, _mobx_val_0);
@@ -106,7 +106,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.isLoggedIn);
         Promise.resolve().then(() => {
           // Flex / horizontal site menus (polaris-flex, etc.) must never show
@@ -122,7 +122,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     );
     // executing this here ensures that the timing is correct with highlighting the active item in the menu
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeId);
         Promise.resolve().then(() => {
           this.activeId = _mobx_val_0;
@@ -254,7 +254,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
   }
 
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -289,7 +289,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
           timestamp: Math.floor(Date.now() / 1000),
           trackIcon: this.trackIcon,
         };
-        for (var i in this.routerManifest.items) {
+        for (let i in this.routerManifest.items) {
           if (this.routerManifest.items[i].id === e.detail.id) {
             this.routerManifest.items[i].metadata.accessData =
               userData.manifests[this.routerManifest.id].accessData[
@@ -303,7 +303,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         "HAXCMSSystemData",
         JSON.stringify(userData),
       );
-    } catch (e) {}
+    } catch {}
   }
   mapMenuHoveredChanged(e) {
     console.log(e.detail);

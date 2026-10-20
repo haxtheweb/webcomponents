@@ -70,7 +70,7 @@ function getHaxStore() {
   ) {
     try {
       return globalThis.HaxStore.requestAvailability();
-    } catch (e) {
+    } catch {
       return null;
     }
   }
@@ -89,7 +89,7 @@ function isDDDActive() {
     try {
       const manager = globalThis.DesignSystemManager.requestAvailability();
       return !!manager && manager.active === "ddd";
-    } catch (e) {
+    } catch {
       return false;
     }
   }
@@ -114,7 +114,7 @@ async function registerStaxPattern(store, pattern) {
   let staxElements = [];
   try {
     staxElements = await store.htmlToHaxElements(pattern.html);
-  } catch (e) {
+  } catch {
     // if conversion fails, skip this pattern rather than insert undefined
     return;
   }
@@ -153,7 +153,7 @@ async function registerDemoSchemaOverride(store, pattern) {
   let elements = [];
   try {
     elements = await store.htmlToHaxElements(pattern.html);
-  } catch (e) {
+  } catch {
     return;
   }
   if (!elements || elements.length === 0) {

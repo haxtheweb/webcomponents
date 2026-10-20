@@ -120,9 +120,9 @@ export class SortingQuestion extends QuestionElement {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "showAnswer") {
         if (this.showAnswer) {
-          var numCorrect = 0;
+          let numCorrect = 0;
           let children = this.getOptions();
-          for (var i = 0; i < this.answers.length; i++) {
+          for (let i = 0; i < this.answers.length; i++) {
             if (
               children[i].innerText === this.answers[i].label &&
               i === this.answers[i].order
@@ -438,7 +438,7 @@ export class SortingQuestion extends QuestionElement {
       },
     ];
   }
-  haxClickInlineAdd(e) {
+  haxClickInlineAdd(_e) {
     this.resetAnswer();
     this.displayedAnswers = [];
     let d = this.answers;
@@ -446,7 +446,7 @@ export class SortingQuestion extends QuestionElement {
     this.answers = [...d];
     return true;
   }
-  haxClickInlineRemove(e) {
+  haxClickInlineRemove(_e) {
     if (this.answers.length > 0) {
       this.resetAnswer();
       this.displayedAnswers = [];

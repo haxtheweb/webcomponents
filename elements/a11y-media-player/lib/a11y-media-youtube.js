@@ -267,8 +267,8 @@ class A11yMediaYoutube extends LitElement {
     let seekable = { length: 0 };
     if (this.duration > 0) {
       seekable.length = 1;
-      seekable.start = (index) => 0;
-      seekable.end = (index) => this.duration;
+      seekable.start = (_index) => 0;
+      seekable.end = (_index) => this.duration;
     }
     return seekable;
   }
@@ -286,7 +286,7 @@ class A11yMediaYoutube extends LitElement {
       if (globalThis.YT && globalThis.YT.Player)
         globalThis.A11yMediaYoutubeManager.getIframes();
     } else {
-      globalThis.onYouTubeIframeAPIReady = (e) => {
+      globalThis.onYouTubeIframeAPIReady = (_e) => {
         globalThis.A11yMediaYoutubeManager.getIframes();
       };
 
@@ -343,7 +343,7 @@ class A11yMediaYoutube extends LitElement {
       !!this.videoId
     ) {
       this.__playQueued = true;
-      var yt = this.__yt,
+      let yt = this.__yt,
         root = this,
         startPlay = function () {
           root.__playRaf = null;
@@ -466,7 +466,7 @@ class A11yMediaYoutube extends LitElement {
    * Fires as YouTube video time changes
    * @event timeupdate
    */
-  _handleMediaLoaded(e) {
+  _handleMediaLoaded(_e) {
     this.dispatchEvent(
       new CustomEvent("loadedmetadata", {
         bubbles: true,
@@ -534,8 +534,8 @@ class A11yMediaYoutube extends LitElement {
    * loads video (and optionally preloads) from video data object {videoId, optional start timecode, }
    * @param {string} preload mode for preloading: `auto`, `metadata`, `none`
    */
-  _loadVideo(preload = this.preload) {
-    if (!!this.videoId) this.__video.cueVideoById({ videoId: this.videoId });
+  _loadVideo(_preload = this.preload) {
+    if (this.videoId) this.__video.cueVideoById({ videoId: this.videoId });
   }
 
   /**

@@ -102,7 +102,7 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
     return "lrs-emitter";
   }
 
-  _clickEventHandler(e) {
+  _clickEventHandler(_e) {
     this.dispatchEvent(
       new CustomEvent("lrs-emitter", {
         bubbles: true,

@@ -109,7 +109,7 @@ describe('SimpleTourFinder mixin', () => {
   })
 
   it('connectedCallback calls discoverSimpleTourStops when super has no firstUpdated', async () => {
-    const el = await fixture(html`<test-tour-finder></test-tour-finder>`)
+    await fixture(html`<test-tour-finder></test-tour-finder>`)
     await aTimeout(10)
     // discoverSimpleTourStops should have been called from connectedCallback
     // (LitElement has firstUpdated so it also runs there, but connectedCallback
@@ -120,7 +120,7 @@ describe('SimpleTourFinder mixin', () => {
   })
 
   it('discoverSimpleTourStops registers stops with correct title and content', async () => {
-    const el = await fixture(html`<test-tour-finder></test-tour-finder>`)
+    await fixture(html`<test-tour-finder></test-tour-finder>`)
     await aTimeout(10)
     const stops = SimpleTourManager.stacks['default']
     expect(stops[0].title).to.equal('Step A Title')
@@ -140,7 +140,7 @@ describe('SimpleTourFinder mixin', () => {
   })
 
   it('uses custom tourName property', async () => {
-    const el = await fixture(
+    await fixture(
       html`<test-tour-finder .tourName=${'custom-tour'}></test-tour-finder>`,
     )
     await aTimeout(10)
@@ -149,7 +149,7 @@ describe('SimpleTourFinder mixin', () => {
   })
 
   it('does not register stops when shadowRoot has none', async () => {
-    const el = await fixture(
+    await fixture(
       html`<test-tour-finder-empty></test-tour-finder-empty>`,
     )
     await aTimeout(10)
@@ -166,7 +166,7 @@ describe('SimpleTourFinder mixin', () => {
     let warnCalled = false
     console.warn = () => { warnCalled = true }
     try {
-      const el = await fixture(
+      await fixture(
         html`<test-tour-finder-broken></test-tour-finder-broken>`,
       )
       await aTimeout(10)
@@ -190,7 +190,7 @@ describe('SimpleTourFinder mixin', () => {
   })
 
   it('firstUpdated calls discoverSimpleTourStops', async () => {
-    const el = await fixture(html`<test-tour-finder></test-tour-finder>`)
+    await fixture(html`<test-tour-finder></test-tour-finder>`)
     await aTimeout(10)
     // Clear the stacks to verify firstUpdated already ran
     const firstRunCount = SimpleTourManager.stacks['default']
@@ -219,7 +219,7 @@ describe('SimpleTourFinder mixin', () => {
       }
     }
     globalThis.customElements.define('test-attr-title', TestAttrTitle)
-    const el = await fixture(html`<test-attr-title></test-attr-title>`)
+    await fixture(html`<test-attr-title></test-attr-title>`)
     await aTimeout(10)
     const stops = SimpleTourManager.stacks['default']
     expect(stops).to.exist
@@ -251,7 +251,7 @@ describe('SimpleTourFinder mixin', () => {
     let threw = false
     try {
       globalThis.document.body.removeChild(el)
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.equal(false)

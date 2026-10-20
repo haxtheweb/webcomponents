@@ -267,7 +267,7 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
     let shortDate;
     try {
       shortDate = new Intl.DateTimeFormat(docLang, dateOptions);
-    } catch (e) {
+    } catch {
       // invalid lang tag on the document
       shortDate = new Intl.DateTimeFormat(undefined, dateOptions);
     }

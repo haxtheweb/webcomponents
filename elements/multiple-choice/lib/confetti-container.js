@@ -138,7 +138,7 @@
       return ["popped"];
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
+    attributeChangedCallback(name, oldValue, _newValue) {
       const reduceMotion = globalThis.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
@@ -164,7 +164,7 @@
     render() {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-      this.confetti.forEach((confetto, index) => {
+      this.confetti.forEach((confetto, _index) => {
         let width = confetto.dimensions.x * confetto.scale.x;
         let height = confetto.dimensions.y * confetto.scale.y;
 
@@ -186,7 +186,7 @@
         this.ctx.setTransform(1, 0, 0, 1, 0, 0);
       });
 
-      this.sequins.forEach((sequin, index) => {
+      this.sequins.forEach((sequin, _index) => {
         // move canvas to position
         this.ctx.translate(sequin.position.x, sequin.position.y);
 

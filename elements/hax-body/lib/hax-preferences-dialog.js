@@ -8,7 +8,7 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import { HAXStore } from "./hax-store.js";
-import { autorun, toJS } from "mobx";
+import "mobx";
 import {
   I18NMixin,
   I18NManagerStore,
@@ -85,7 +85,7 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
       this.reloadPreferencesForm();
     }
   }
-  closeBtn(e) {
+  closeBtn(_e) {
     this.dispatchEvent(
       new CustomEvent("hax-tray-button-click", {
         bubbles: true,
@@ -137,7 +137,7 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
     };
   }
 
-  firstUpdated(changedProperties) {
+  firstUpdated(_changedProperties) {
     this.reloadPreferencesForm();
     this.shadowRoot
       .querySelector("#settingsform")

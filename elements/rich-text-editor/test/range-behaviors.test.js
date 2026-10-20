@@ -183,7 +183,7 @@ describe('RichTextEditorRangeBehaviors (via rich-text-editor-toolbar)', () => {
     // the toolbar overrides _rangeChanged which fires range-changed (the
     // un-dashed rangechange event only comes from buttons and breadcrumbs)
     const events = []
-    toolbar.addEventListener('range-changed', (e) => events.push(true))
+    toolbar.addEventListener('range-changed', (_e) => events.push(true))
     const p = editor.querySelector('p')
     toolbar.selectNode(p)
     expect(events.length > 0).to.equal(true)
@@ -340,7 +340,7 @@ describe('RichTextEditorRangeBehaviors (via rich-text-editor-toolbar)', () => {
   it('_handleCommand close closes the toolbar', async () => {
     toolbar.setTarget(editor)
     const closed = []
-    toolbar.addEventListener('close', (e) => closed.push(true))
+    toolbar.addEventListener('close', (_e) => closed.push(true))
     toolbar._handleCommand('close', null, toolbar.range)
     expect(closed.length).to.equal(1)
     expect(toolbar.target === undefined).to.equal(true)

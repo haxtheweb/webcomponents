@@ -105,7 +105,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     };
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.siteDescription);
         Promise.resolve().then(() => {
           this.siteDescription = _mobx_val_0;
@@ -113,7 +113,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeId);
         Promise.resolve().then(() => {
           this.activeId = _mobx_val_0;
@@ -121,7 +121,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -129,7 +129,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeTags);
         Promise.resolve().then(() => {
           this.activeTags = _mobx_val_0;
@@ -137,7 +137,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           const activeItem = _mobx_val_0;

@@ -2,7 +2,7 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css, svg, unsafeCSS } from "lit";
+import { html, css, svg } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 // default movement speed
 const defaultSpeed = 500;
@@ -74,7 +74,7 @@ class RpgCharacter extends SimpleColors {
     this.fire = false;
     // stored so updated() removes the exact reference it added while demo
     // was enabled (a fresh anonymous arrow could never be removed)
-    this._demoClickHandler = (e) => {
+    this._demoClickHandler = (_e) => {
       this.seed = Math.random().toString(36).substring(2, 12);
     };
     if (globalThis.matchMedia) {
