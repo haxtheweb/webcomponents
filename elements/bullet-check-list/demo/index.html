@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>bullet-check-list demo</title>
+  <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+  <script type="module">
+    import "@haxtheweb/demo-snippet/demo-snippet.js";
+    import "../bullet-check-list.js";
+  </script>
+</head>
+
+<body>
+  <div class="vertical-section-container">
+    <h3>Basic bullet-check-list demo: Default</h3>
+    <demo-snippet>
+      <template>
+        <bullet-check-list
+          title="Before you begin"
+          storage-id="demo-before-you-begin"
+          items='[{"label":"Read the syllabus"},{"label":"Introduce yourself in the forum"},{"label":"Install the course software"}]'
+        ></bullet-check-list>
+      </template>
+    </demo-snippet>
+  </div>
+  <div class="vertical-section-container">
+    <h3>Ordered, with checked and disabled items</h3>
+    <demo-snippet>
+      <template>
+        <bullet-check-list
+          title="Lab steps"
+          ordered
+          status="success"
+          storage-id="demo-lab-steps"
+          items='[{"label":"Safety briefing complete","checked":true},{"label":"Calibrate the scale"},{"label":"Run the trial"},{"label":"Instructor sign-off (not available yet)","disabled":true}]'
+        ></bullet-check-list>
+      </template>
+    </demo-snippet>
+  </div>
+  <div class="vertical-section-container">
+    <h3>No storage-id (fingerprint key) and warning status</h3>
+    <demo-snippet>
+      <template>
+        <bullet-check-list
+          title="Before submitting"
+          status="warning"
+          items='[{"label":"Spell check"},{"label":"Cite sources"}]'
+        ></bullet-check-list>
+      </template>
+    </demo-snippet>
+  </div>
+  <div class="vertical-section-container">
+    <h3>Custom colors</h3>
+    <demo-snippet>
+      <template>
+        <div style="
+          --ddd-component-bullet-check-list-icon-background: var(--ddd-theme-default-nittanyNavy);
+          --ddd-component-bullet-check-list-background: var(--ddd-theme-default-skyLight);
+          --ddd-component-bullet-check-list-border: var(--ddd-theme-default-nittanyNavy);
+          ">
+          <bullet-check-list
+            title="Themed list"
+            storage-id="demo-themed"
+            items='[{"label":"One"},{"label":"Two"}]'
+          ></bullet-check-list>
+        </div>
+      </template>
+    </demo-snippet>
+  </div>
+</body>
+
+</html>
