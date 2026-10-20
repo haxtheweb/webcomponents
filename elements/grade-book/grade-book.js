@@ -1613,7 +1613,7 @@ class GradeBook extends UIRenderPieces(
                         data-assignment="${h}"
                       >
                         <!-- @todo add once we support multi-select <simple-fields-field
-                          data-assignment="${h}"
+                          data-assignment="[h]"
                           type="checkbox"
                           class="select-all"
                           title="Select all submissions ${a.shortName}"

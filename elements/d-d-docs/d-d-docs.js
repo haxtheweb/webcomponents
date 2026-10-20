@@ -640,7 +640,7 @@ class DDDocs extends I18NMixin(DDD) {
               (key2) => html`
                 <d-d-d-sample type="${key}" option="${key2}"
                   ><em style="margin-left:12px;"
-                    >data-${key}="${key2}"</em
+                    >${"data-" + key}="${key2}"</em
                   ></d-d-d-sample
                 >
               `,
@@ -3007,7 +3007,7 @@ class DDDocs extends I18NMixin(DDD) {
   renderCards() {
     return html` <h3>ddd-card</h3>
       <ddd-card
-        src="https://images.ctfassets.net/ni9rh5nu0d99/1paFaX2Dc7iHh9Z6K7mIim/1427b9970ff21dd9c8a770067638efc1/abington-02.jpg?fm=webp&w=1080&q=75"
+        src="https://images.ctfassets.net/ni9rh5nu0d99/1paFaX2Dc7iHh9Z6K7mIim/1427b9970ff21dd9c8a770067638efc1/abington-02.jpg?fm=webp&amp;w=1080&amp;q=75"
         title="Abington"
         href="https://www.psu.edu/academics/campuses/abington"
       >
@@ -3017,7 +3017,7 @@ class DDDocs extends I18NMixin(DDD) {
         </p>
       </ddd-card>
       <ddd-card
-        src="https://images.ctfassets.net/ni9rh5nu0d99/6oBUNrVTNPJaoE9ahnVX2E/2c655bdcf28befdf81d5a24248a9dca5/altoona-01.jpg?fm=webp&w=1080&q=75"
+        src="https://images.ctfassets.net/ni9rh5nu0d99/6oBUNrVTNPJaoE9ahnVX2E/2c655bdcf28befdf81d5a24248a9dca5/altoona-01.jpg?fm=webp&amp;w=1080&amp;q=75"
         title="Altoona"
         href="https://www.psu.edu/academics/campuses/altoona"
         data-primary="10"
@@ -3029,7 +3029,7 @@ class DDDocs extends I18NMixin(DDD) {
         </p>
       </ddd-card>
       <ddd-card
-        src="https://images.ctfassets.net/ni9rh5nu0d99/C6YPZMqHyRaPeRrVTun8k/1ca61866afa1b3d903944a38ea34cecc/beaver-01.jpg?fm=webp&w=1080&q=75"
+        src="https://images.ctfassets.net/ni9rh5nu0d99/C6YPZMqHyRaPeRrVTun8k/1ca61866afa1b3d903944a38ea34cecc/beaver-01.jpg?fm=webp&amp;w=1080&amp;q=75"
         title="Beaver"
         href="https://www.psu.edu/academics/campuses/beaver"
         data-primary="20"
@@ -3053,7 +3053,7 @@ class DDDocs extends I18NMixin(DDD) {
         </p>
       </ddd-card>
       <ddd-card
-        src="https://images.ctfassets.net/ni9rh5nu0d99/3WXgadpl3oKX50MmPHGV6m/a91103dc9e4bbe123e29fd25b81e3402/berks-02.jpg?fm=webp&w=1080&q=75"
+        src="https://images.ctfassets.net/ni9rh5nu0d99/3WXgadpl3oKX50MmPHGV6m/a91103dc9e4bbe123e29fd25b81e3402/berks-02.jpg?fm=webp&amp;w=1080&amp;q=75"
         title="Berks"
       >
         <p>
@@ -3063,7 +3063,7 @@ class DDDocs extends I18NMixin(DDD) {
         </p>
       </ddd-card>
       <ddd-card
-        src="https://images.ctfassets.net/ni9rh5nu0d99/2p1eWsDl9umbeRKa02UEsQ/bba80b11dd34aecab19db215eaa8bb59/brandywine-01.jpg?fm=webp&w=1080&q=75"
+        src="https://images.ctfassets.net/ni9rh5nu0d99/2p1eWsDl9umbeRKa02UEsQ/bba80b11dd34aecab19db215eaa8bb59/brandywine-01.jpg?fm=webp&amp;w=1080&amp;q=75"
         title="Brandywine"
         href="https://www.psu.edu/academics/campuses/brandywine"
       >
@@ -3074,7 +3074,7 @@ class DDDocs extends I18NMixin(DDD) {
         </p>
       </ddd-card>
       <ddd-card
-        src="https://images.ctfassets.net/ni9rh5nu0d99/3rzA2HLc3Sy7uePX63LmYU/55d57acd326e0476cf70b5d7011e23b0/carlisle-01.jpg?fm=webp&w=1080&q=75"
+        src="https://images.ctfassets.net/ni9rh5nu0d99/3rzA2HLc3Sy7uePX63LmYU/55d57acd326e0476cf70b5d7011e23b0/carlisle-01.jpg?fm=webp&amp;w=1080&amp;q=75"
         title="Carlisle"
         href="https://www.psu.edu/academics/campuses/carlisle"
       >
@@ -3084,7 +3084,7 @@ class DDDocs extends I18NMixin(DDD) {
         </p>
       </ddd-card>
       <ddd-card
-        src="https://images.ctfassets.net/ni9rh5nu0d99/eR6sYQ8zjwro8K2PxH20N/b495fd6e0f8f501631793c176c017859/dubois-01.jpg?fm=webp&w=1080&q=75"
+        src="https://images.ctfassets.net/ni9rh5nu0d99/eR6sYQ8zjwro8K2PxH20N/b495fd6e0f8f501631793c176c017859/dubois-01.jpg?fm=webp&amp;w=1080&amp;q=75"
         title="Dubois"
         href="https://www.psu.edu/academics/campuses/dubois"
       >

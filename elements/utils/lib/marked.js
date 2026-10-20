@@ -1292,6 +1292,8 @@ block.pedantic = merge({}, block.normal, {
  */
 const inline = {
   escape: /^\\([!"#$%&'()*+,\-./:;<=>?@[\]\\^_`{|}~])/,
+  // control characters are intentionally excluded from URLs
+  // eslint-disable-next-line no-control-regex
   autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/,
   url: noopTest,
   tag:
@@ -1365,6 +1367,8 @@ inline.tag = edit(inline.tag)
   .getRegex();
 
 inline._label = /(?:\[(?:\\.|[^[\]\\])*\]|\\.|`[^`]*`|[^[\]\\`])*?/;
+// control characters are intentionally excluded from URLs
+// eslint-disable-next-line no-control-regex
 inline._href = /<(?:\\.|[^\n<>\\])+>|[^\s\x00-\x1f]*/;
 inline._title = /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/;
 

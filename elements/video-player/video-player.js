@@ -913,7 +913,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     if (
       this.sourceData &&
       this.sourceData.length > 0 &&
-      typeof this.sourceData[0] !== undefined &&
+      typeof this.sourceData[0] !== "undefined" &&
       globalThis.MediaBehaviors.Video._sourceIsIframe(this.sourceData[0].src)
     ) {
       // fake creation of a webview element to see if it's valid
@@ -1066,7 +1066,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         "",
       );
     }
-    return;
+    return undefined;
   }
 
   /**
@@ -1089,7 +1089,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         data.forEach((item) => {
           if (
             type === "" &&
-            typeof source !== undefined &&
+            typeof source !== "undefined" &&
             source !== null &&
             source.toLowerCase().indexOf("." + item) > -1
           ) {
@@ -1108,7 +1108,7 @@ class VideoPlayer extends IntersectionObserverMixin(
    * of valid values.
    */
   _computeSRC(source, type) {
-    if (source !== null && typeof source !== undefined) {
+    if (source !== null && typeof source !== "undefined") {
       // ensure that this is a valid url / cleaned up a bit
       type = type || globalThis.MediaBehaviors.Video.getVideoType(source);
       source = globalThis.MediaBehaviors.Video.cleanVideoSource(source, type);

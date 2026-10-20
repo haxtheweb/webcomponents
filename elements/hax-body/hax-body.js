@@ -866,7 +866,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   }
 
   get isGridActive() {
-    return HAXStore.isGridPlateElement(activeNode);
+    return HAXStore.isGridPlateElement(this.activeNode);
   }
 
   /**
@@ -2196,7 +2196,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     let guess = node.textContent
       .replaceAll(/\u200b/g, "")
-      .replaceAll(/ /g, " ")
+      .replaceAll(/\u00A0/g, " ")
       .replaceAll(/\n/g, "")
       .replaceAll(/\r/g, "");
     if (guess[0] === " ") {
@@ -2724,7 +2724,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (!node) return;
     let grid = this.getParentGrid(node);
     return !!grid && !!grid.tag
-      ? this.getSlotConfig(HAXStore.elementList[grid.tag], slot)
+      ? this.getSlotConfig("", HAXStore.elementList[grid.tag])
       : undefined;
   }
   /**
@@ -4148,8 +4148,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             //make sure we target correct slot after dom changes
             //setTimeout(targetItem(), 500);
           } else {
-            this.setActiveNode(node, true);
-            this.positionContextMenus(node);
+            nodePosition();
           }
         }
         break;
@@ -5524,7 +5523,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __layoutCanMove(target, layout, before) {
     if (!layout.shadowRoot) return false;
-    let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
+    let slot = target.getAttribute("slot"),
+      container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
       containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
         (node) => node.parentNode,
       ),
@@ -5540,7 +5540,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __layoutMove(target, layout, before) {
     if (!layout.shadowRoot) return false;
-    let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
+    let currentSlot = target.getAttribute("slot"),
+      container = layout.shadowRoot.querySelector(`[slot=${currentSlot}]`),
       containers = [...layout.shadowRoot.querySelectorAll("[slot]")].map(
         (node) => node.parentNode,
       ),
@@ -6425,13 +6426,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       target.classList.add("hax-drop-below");
       target.classList.remove("hax-drop-above");
       this.__addAbove = false;
-    }
-  }
-  dragLeave(e) {
-    if (this.editMode && e.currentTarget && e.currentTarget.classList) {
-      e.currentTarget.classList.remove("hax-hovered");
-      e.currentTarget.classList.remove("hax-drop-above");
-      e.currentTarget.classList.remove("hax-drop-below");
     }
   }
   dragEnter(e) {

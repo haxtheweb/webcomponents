@@ -555,7 +555,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
       }, 500);
     }
   }
-  scrollInMap() {
+  scrollInMap(e) {
     let target = normalizeEventPath(e)[0];
     this.goToItem(target.getAttribute("data-index"));
   }

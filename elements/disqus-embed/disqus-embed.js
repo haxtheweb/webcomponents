@@ -243,7 +243,7 @@ class DisqusBroker extends LitElement {
     switch (call) {
       // ready to use, render to target
       case "onReady":
-      // user identified / logged in; this can fire multiple times
+      // falls through: user identified / logged in; this can fire multiple times
       case "onIdentify":
         this.renderToTarget();
         break;

@@ -110,7 +110,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                 polymer: true,
               },
             });
-            context.dispatchEvent(evt);
+            this.dispatchEvent(evt);
           } else if (typeof effectiveChildren[i].HAXWiring === "function") {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
@@ -122,7 +122,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                 polymer: false,
               },
             });
-            context.dispatchEvent(evt);
+            this.dispatchEvent(evt);
           } else {
             // @todo support CDN failover or a flag of some kind to ensure
             // this delivers locally or from remote

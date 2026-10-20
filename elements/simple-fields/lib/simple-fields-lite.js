@@ -713,7 +713,7 @@ class SimpleFieldsLite extends LitElement {
         //set element attributes according to schema
         Object.keys(data.attributes || {}).forEach((attr) => {
           if (
-            typeof data.attributes[attr] !== undefined &&
+            typeof data.attributes[attr] !== "undefined" &&
             data.attributes[attr] !== null
           ) {
             element.setAttribute(attr, data.attributes[attr]);

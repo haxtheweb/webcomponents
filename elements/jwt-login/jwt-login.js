@@ -307,7 +307,7 @@ class JwtLogin extends LitElement {
         this.__loginInFlight = false;
         this.jwt = actualJwt;
         break;
-      case "refresh":
+      case "refresh": {
         this.__refreshInFlight = false;
         this.__refreshPromise = null;
         this.jwt = actualJwt;
@@ -320,6 +320,7 @@ class JwtLogin extends LitElement {
           this._invokeRefreshCallback(subs[i], actualJwt);
         }
         break;
+      }
       case "logout":
         this.__logoutInFlight = false;
         if (meta.redirect && this.redirectUrl) {

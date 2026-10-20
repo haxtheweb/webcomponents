@@ -300,6 +300,7 @@ class Store {
       });
       return entityData;
     }
+    return undefined;
   }
 
   /**
@@ -584,7 +585,9 @@ class Store {
     return this.cmsSiteEditor.instance;
   }
 
-  get processedItems() {}
+  get processedItems() {
+    return undefined;
+  }
   /**
    * Get children given an item
    */
@@ -733,6 +736,7 @@ class Store {
         items: manifestItems,
       });
     }
+    return undefined;
   }
   /**
    * Return the site title
@@ -839,6 +843,7 @@ class Store {
         return Object.assign({}, fields, this.activeItem.metadata.fields);
       }
     }
+    return undefined;
   }
   /**
    * get theme data from manifest + activeId combo
@@ -879,6 +884,7 @@ class Store {
       }
       return themeData;
     }
+    return undefined;
   }
   /**
    * Get the active manifest index array position

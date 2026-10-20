@@ -147,9 +147,8 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
           ></span>`
         : ``}
       <simple-popover
-        part="popover"
+        part="popover simple-popover"
         auto
-        part="simple-popover"
         aria-label="${this.t.labelSuggestions.replace(
           "{label}",
           () => this.inputLabel,

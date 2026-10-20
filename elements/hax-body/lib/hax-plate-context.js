@@ -379,7 +379,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           ?disabled="${
             this.hasActiveEditingElement || this.viewSource || this.disableOps
           }"
-          icon="delete"
           label="${this.t.remove}"
           event-name="hax-plate-delete"
       >

@@ -808,11 +808,11 @@ const SimplePickerBehaviors = function (SuperClass) {
                 .getBoundingClientRect();
               // null initial option which some things allow in their options provided
               if (rowData.width === 0) {
-                [...virtualizer.querySelectorAll(".row")].map((item) =>
-                  item.getBoundingClientRect().width > rowData.width
-                    ? (rowData = item.getBoundingClientRect())
-                    : (rowData = rowData),
-                );
+                [...virtualizer.querySelectorAll(".row")].forEach((item) => {
+                  if (item.getBoundingClientRect().width > rowData.width) {
+                    rowData = item.getBoundingClientRect();
+                  }
+                });
               }
               // if 1st item is null, we need to account for that when having multiple
               // items in a single row

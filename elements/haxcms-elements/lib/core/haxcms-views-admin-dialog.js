@@ -1806,14 +1806,6 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     this._schedulePreviewRefresh();
   }
 
-  _titleFromParameterName(name = "") {
-    const label = this._safeString(name)
-      .replace(/[._-]/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-    return label.replace(/\b\w/g, (char) => char.toUpperCase());
-  }
-
   _entityDescription(entityConfig) {
     if (!entityConfig) {
       return "";

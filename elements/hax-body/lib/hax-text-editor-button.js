@@ -193,7 +193,7 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
         html += `<${this.getSlotWrapper(field)}${Object.keys(
           field.slotAttributes || {},
         ).map((attr) => ` ${attr}="${field.slotAttributes[attr]}"`)}>
-            ${this.value[slot]}
+            ${this.value[field.slot]}
           </${this.getSlotWrapper(field)}>`;
     });
     if (!this.value || Object.keys(this.value).length === 0) {

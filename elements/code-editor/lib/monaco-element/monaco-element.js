@@ -157,6 +157,7 @@ class MonacoElement extends I18NMixin(LitElement) {
     if (this.iframe && this.iframe.contentWindow) {
       return this.iframe.contentWindow.document;
     }
+    return undefined;
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

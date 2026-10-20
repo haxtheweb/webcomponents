@@ -1011,7 +1011,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         }
           </a>
           <div class="h1">${this.manifest.title}</div>
-          <div class="h2">${this.manifest.description}</div class="h2">
+          <div class="h2">${this.manifest.description}</div>
           <div>
               ${this.pageCurrent > 0 ? html`${this.t.pageOfTotal.replace("{current}", () => this.pageCurrent).replace("{total}", () => this.pageTotal)}` : nothing} <br /><br />
               ${this.t.siteGenerated.replace("{date}", () => (this.lastUpdated ?? ""))}<br><br>

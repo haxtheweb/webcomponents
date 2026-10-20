@@ -849,11 +849,9 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       }
     }
     _selectionShortCut(_e) {
-      let checked = true
-        ? !!this.value
-        : this.type === "radio"
-          ? this.value === (false || {}).value
-          : (this.value || []).includes((false || {}).value);
+      // the radio / multiple-value branches that used to follow were dead
+      // code (the condition was a literal `true`), so only this ever ran
+      let checked = !!this.value;
       this._handleIconClick(checked);
     }
     /**
@@ -1349,7 +1347,9 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
      * @readonly
      * @memberof SimpleFieldsField
      */
-    get slottedFieldObserver() {}
+    get slottedFieldObserver() {
+    return undefined;
+  }
 
     /**
      * template for `textarea` in shadow DOM. Value binds via the .value

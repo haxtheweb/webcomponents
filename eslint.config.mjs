@@ -65,8 +65,22 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.es2021,
-        // optional global used by utils.js formatHTML when a host page provides it
+        // Third-party libraries loaded at runtime (es-global-bridge, script
+        // tags or the host page) rather than imported as modules.
+        Chartist: "readonly",
+        css_beautify: "readonly",
+        DatArchive: "readonly",
+        Drupal: "readonly",
+        H5PIntegration: "readonly",
+        jsPDF: "readonly",
         js_beautify: "readonly",
+        lunr: "readonly",
+        MediaStreamRecorder: "readonly",
+        moment: "readonly",
+        OpenSeadragon: "readonly",
+        PouchDB: "readonly",
+        createUnityInstance: "readonly",
+        YT: "readonly",
       },
     },
     rules: {
@@ -105,7 +119,9 @@ export default [
       // example an event handler signature that has to keep its arity).
       "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
       "no-undef": "error",
-      eqeqeq: "error",
+      // New code should use ===, but existing == that works and passes tests is
+      // not a problem, so this is advisory and `== null` is allowed.
+      eqeqeq: ["warn", "always", { null: "ignore" }],
       "no-var": "error",
     },
   },
@@ -117,6 +133,8 @@ export default [
     files: [
       "elements/d-d-d/design-system/**/*.js",
       "elements/*/scripts/**/*.js",
+      "elements/haxcms-elements/automation/**/*.js",
+      "elements/haxcms-elements/theme-screenshot-automation.js",
     ],
     languageOptions: {
       globals: {

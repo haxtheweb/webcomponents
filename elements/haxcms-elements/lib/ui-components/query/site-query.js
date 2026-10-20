@@ -186,18 +186,18 @@ class SiteQuery extends LitElement {
           if (typeof Object.byString(items[i], entity) !== typeof undefined) {
             let tmp;
             let val = Object.byString(items[i], entity);
-            if (typeof val === "object" || typeof val === "array") {
+            if (typeof val === "object" || Array.isArray(val)) {
               tmp = Object.assign([], Object.byString(items[i], entity));
             } else {
               tmp = val;
             }
-            if (typeof tmp === "object" || typeof tmp === "array") {
+            if (typeof tmp === "object" || Array.isArray(tmp)) {
               for (let i in tmp) {
                 // we can push this onto objects, meaning full entities
                 // if the user queries for something weird like by title
                 // it's still valid but can't push the node onto it in the
                 // same way
-                if (typeof tmp[i] === "object" || typeof tmp[i] === "array") {
+                if (typeof tmp[i] === "object" || Array.isArray(tmp[i])) {
                   // check for singular keys which could be grouped
                   tmp[i]._node = Object.assign({}, items[i]);
                   newItems.push(tmp[i]);

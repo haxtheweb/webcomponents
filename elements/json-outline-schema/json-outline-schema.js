@@ -496,7 +496,7 @@ class JsonOutlineSchema extends HTMLElement {
         case "description":
         case "license":
         case "location":
-        // @todo break parent out into selector
+        // falls through (@todo break parent out into selector)
         case "parent":
           props.component = {
             name: "paper-input",

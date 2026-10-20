@@ -2381,6 +2381,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
     );
     if (this.anchor && this.anchor.target === this) return t;
     if (this.videoData) return this.videoData.t || this.videoData.start;
+    return undefined;
   }
 
   /**
@@ -2434,9 +2435,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
       });
       return params;
     }
+    return undefined;
   }
   get videoId() {
     if (this.videoData) return this.videoData.videoId;
+    return undefined;
   }
 
   /**

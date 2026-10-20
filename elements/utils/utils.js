@@ -1842,7 +1842,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
         property != "class" &&
         property != "style" &&
         Object.prototype.hasOwnProperty.call(tmpProps, property) &&
-        typeof node[property] !== undefined &&
+        typeof node[property] !== "undefined" &&
         node[property] != null &&
         node[property] != ""
       ) {
@@ -1868,7 +1868,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
         node.attributes[attribute].name != "style" &&
         node.attributes[attribute].name != "id" &&
         Object.prototype.hasOwnProperty.call(node.attributes, attribute) &&
-        typeof node.attributes[attribute].value !== undefined &&
+        typeof node.attributes[attribute].value !== "undefined" &&
         node.attributes[attribute].value != null &&
         node.attributes[attribute].value != "" &&
         !(
@@ -1906,7 +1906,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
         node.attributes[attribute].name != "style" &&
         node.attributes[attribute].name != "id" &&
         Object.prototype.hasOwnProperty.call(node.attributes, attribute) &&
-        typeof node.attributes[attribute].value !== undefined &&
+        typeof node.attributes[attribute].value !== "undefined" &&
         node.attributes[attribute].value != null &&
         node.attributes[attribute].value != "" &&
         !(

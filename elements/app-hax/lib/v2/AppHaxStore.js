@@ -253,6 +253,7 @@ class Store {
       }
       return null;
     }
+    return undefined;
   }
   // see if this device is poor
   async evaluateBadDevice() {
@@ -320,6 +321,7 @@ class Store {
     if (this.manifest && this.manifest.items) {
       return this.manifest.items.length === 0;
     }
+    return undefined;
   }
 
   // site{ structure, type, theme } (course, portfolio, buz, colors)
@@ -337,6 +339,7 @@ class Store {
         return this.location.route;
       }
     }
+    return undefined;
   }
 
   // load themes data for theme thumbnails
