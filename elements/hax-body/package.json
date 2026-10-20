@@ -51,6 +51,7 @@
     "@haxtheweb/hexagon-loader": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/iframe-loader": "^26.8.0",
+    "@haxtheweb/image-gallery": "^26.8.0",
     "@haxtheweb/intersection-element": "^26.8.0",
     "@haxtheweb/media-behaviors": "^26.8.0",
     "@haxtheweb/media-image": "^26.8.0",
