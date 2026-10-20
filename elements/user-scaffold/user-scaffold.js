@@ -178,10 +178,11 @@ export class UserScaffold extends HTMLElement {
       // clear empty span tags that can pop up
       pasteContent = pasteContent.replace(/<span>\s*?<\/span>/g, " ");
       //remove styling
-      // (property names cannot contain whitespace, ":", ";" or quotes, so each
-      // declaration can only be consumed one way and matching stays linear)
+      // (property names cannot contain whitespace, ":", ";" or quotes, and the
+      // value class already covers whitespace, so each declaration can only be
+      // consumed one way and matching stays linear)
       pasteContent = pasteContent.replace(
-        /style="(?:[^\s:;"]+:\s*[^;"]+;\s*)*"/g,
+        /style="(?:[^\s:;"]+:[^;"]+;\s*)*"/g,
         "",
       );
       // clean up div tags that can come in from contenteditable pastes
