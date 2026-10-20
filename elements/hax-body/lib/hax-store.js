@@ -2603,13 +2603,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         // convert all images to place-holder tags and then reference the internal file system object
         // this probably means nothing to the user but MIGHT be a real file in some cases that they
         // could potentially paste / find
-        pasteContent = pasteContent.replace(
-          /<img src="file:(.*?)\/>/g,
-          function (placeholder, part) {
+        pasteContent = replaceLazyRun(pasteContent, ['<img src="file:', "/>"], {
+          replacement: function (part) {
             let s = part.split('"');
             return `<place-holder type="image" text="file:${s[0]}"></place-holder>`;
           },
-        );
+        });
         // edges that some things preserve empty white space needlessly
         haxElements = await this.htmlToHaxElements(pasteContent);
         // ensure that if we only have 1 element that we are wrapped correctly

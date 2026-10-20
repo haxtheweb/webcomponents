@@ -33,7 +33,8 @@ const LINE_TERMINATORS = /([\n\r\u2028\u2029])/;
  *   /\sdata-x="/), matched in order, earliest first
  * @param {Object} [opts]
  * @param {boolean} [opts.ignoreCase=false]
- * @param {string} [opts.replacement=""]
+ * @param {string|function(string): string} [opts.replacement=""] replacement text, or
+ *   a function receiving the text between the first and the last token
  * @param {boolean} [opts.crossLines=false] true for `[^x]*`-style gaps that may
  *   span line breaks; false for `.*?` gaps which stop at a line terminator
  */
@@ -59,17 +60,23 @@ export function replaceLazyRun(
       if (!first) break;
       let cur = first.index + first[0].length;
       let ok = true;
+      let gapEnd = cur;
       for (let k = 1; k < res.length; k++) {
         const m = execFrom(res[k], line, cur);
         if (!m) {
           ok = false;
           break;
         }
+        gapEnd = m.index;
         cur = m.index + m[0].length;
       }
       // if the earliest start cannot complete, no later start can either
       if (!ok) break;
-      out += line.slice(pos, first.index) + replacement;
+      out +=
+        line.slice(pos, first.index) +
+        (typeof replacement === "function"
+          ? replacement(line.slice(first.index + first[0].length, gapEnd))
+          : replacement);
       pos = cur;
     }
     parts[p] = out + line.slice(pos);
@@ -237,4 +244,55 @@ export function findClosingCustomTags(html) {
  */
 export function stripInlineStyleAttributes(str) {
   return str.replace(/style="(?:[^\s:;"]+:[^;"]+;\s*)*"/g, "");
+}
+
+/**
+ * Linear emulation of `text.replace(/^\s+|\s+$/gm, "")`: whitespace that starts
+ * a line, or that ends a line, is removed (whitespace runs may include line
+ * breaks, exactly as the regex's `\s` does). The regex rescans each whitespace
+ * run once per start position; this precomputes per-position answers in one
+ * backward pass instead.
+ */
+export function trimLineEdges(text) {
+  const n = text.length;
+  const isWs = (i) => /\s/.test(text[i]);
+  const isTerm = (i) => /[\n\r\u2028\u2029]/.test(text[i]);
+  // wsEnd[i]: end (exclusive) of the whitespace run starting at i (i itself ws)
+  // endAt[i]: largest j in (i, wsEnd[i]] where `$` holds, or -1
+  const wsEnd = new Int32Array(n + 1);
+  const endAt = new Int32Array(n + 1).fill(-1);
+  const dollar = (j) => j === n || isTerm(j);
+  for (let i = n - 1; i >= 0; i--) {
+    if (!isWs(i)) continue;
+    const next = i + 1;
+    wsEnd[i] = next < n && isWs(next) ? wsEnd[next] : next;
+    if (next < n && isWs(next) && endAt[next] !== -1) {
+      endAt[i] = endAt[next];
+    } else if (dollar(next)) {
+      endAt[i] = next;
+    } else {
+      endAt[i] = -1;
+    }
+  }
+  let out = "";
+  let i = 0;
+  let keepFrom = 0;
+  while (i < n) {
+    let end = -1;
+    if (isWs(i)) {
+      if (i === 0 || isTerm(i - 1)) {
+        end = wsEnd[i]; // /^\s+/ takes the whole run
+      } else if (endAt[i] !== -1) {
+        end = endAt[i]; // /\s+$/ takes the longest prefix ending at a line end
+      }
+    }
+    if (end > i) {
+      out += text.slice(keepFrom, i);
+      keepFrom = end;
+      i = end;
+    } else {
+      i++;
+    }
+  }
+  return out + text.slice(keepFrom);
 }

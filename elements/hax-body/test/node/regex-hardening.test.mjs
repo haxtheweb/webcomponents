@@ -6,6 +6,7 @@ import {
   replaceLazyRun,
   replaceThroughGt,
   stripInlineStyleAttributes,
+  trimLineEdges,
 } from "../../../utils/lib/safe-html.js";
 
 function rng(seed) {
@@ -231,4 +232,82 @@ test("tag stripping matches the old regex", () => {
     assert.equal(NEW_TAGS(s), OLD_TAGS(s), JSON.stringify(s));
   }
   assert.ok(timed(() => NEW_TAGS("<a".repeat(N / 2))) < LIMIT_MS);
+});
+
+// ---- hax-store: pasted file: images -> place-holder ------------------------
+const OLD_IMG = (c) =>
+  c.replace(/<img src="file:(.*?)\/>/g, function (placeholder, part) {
+    let s = part.split('"');
+    return `<place-holder type="image" text="file:${s[0]}"></place-holder>`;
+  });
+const NEW_IMG = (c) =>
+  replaceLazyRun(c, ['<img src="file:', "/>"], {
+    replacement: function (part) {
+      let s = part.split('"');
+      return `<place-holder type="image" text="file:${s[0]}"></place-holder>`;
+    },
+  });
+test("pasted file: image replacement matches the old regex", () => {
+  const P = [
+    '<img src="file:///C:/a.png" alt="x"/>',
+    '<img src="file:abc"/>',
+    '<img src="http://x/y.png"/>',
+    '<img src="file:a"\n/>',
+    "<p>",
+    "text",
+    " ",
+    "/>",
+    '<img src="file:',
+    "\n",
+  ];
+  for (let seed = 1; seed <= 500; seed++) {
+    const h = build(P, 10, seed);
+    assert.equal(NEW_IMG(h), OLD_IMG(h), JSON.stringify(h));
+  }
+  assert.ok(timed(() => NEW_IMG('<img src="file:'.repeat(N / 15))) < LIMIT_MS);
+});
+
+// ---- hax-view-source: prettified HTML trim ---------------------------------
+test("trimLineEdges is identical to /^\\s+|\\s+$/gm replacement", () => {
+  const P = [
+    "a",
+    "bc",
+    " ",
+    "  ",
+    "\n",
+    "\r\n",
+    "\t",
+    "\u2028",
+    "<p>",
+    "x y",
+    " \n ",
+    "\n\n",
+    "\r",
+    "\u00a0",
+  ];
+  for (let seed = 1; seed <= 3000; seed++) {
+    const r = rng(seed);
+    let t = "";
+    const n = Math.floor(r() * 12);
+    for (let i = 0; i < n; i++) t += P[Math.floor(r() * P.length)];
+    assert.equal(
+      trimLineEdges(t),
+      t.replace(/^\s+|\s+$/gm, ""),
+      JSON.stringify(t),
+    );
+  }
+  const html = "<div>\n  <p>hi</p>  \n\n    <p>there</p>\n</div>\n";
+  assert.equal(trimLineEdges(html), html.replace(/^\s+|\s+$/gm, ""));
+});
+test("trimLineEdges is linear time", () => {
+  for (const h of [
+    " ".repeat(N) + "x",
+    "x" + " ".repeat(N) + "x",
+    "a \n".repeat(N / 3),
+    "\n ".repeat(N / 2) + "x",
+    " \t".repeat(N / 2),
+  ]) {
+    const ms = timed(() => trimLineEdges(h));
+    assert.ok(ms < LIMIT_MS, `took ${ms.toFixed(0)}ms`);
+  }
 });
