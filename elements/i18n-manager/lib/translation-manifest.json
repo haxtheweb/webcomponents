@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 226,
-    "elementsWithTranslations": 145,
-    "translationFilesFound": 37621,
+    "elementsScanned": 229,
+    "elementsWithTranslations": 146,
+    "translationFilesFound": 37622,
     "languagesSupported": [
       "af",
       "am",
@@ -4086,6 +4086,9 @@
       "yo",
       "zh",
       "zu"
+    ],
+    "bullet-check-list": [
+      "en"
     ],
     "career-org-item": [
       "af",

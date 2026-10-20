@@ -1764,9 +1764,6 @@
     "@polymer/iron-a11y-keys" "^3.0.1"
     "@polymer/polymer" "^3.5.1"
 
-"@haxtheweb/es-global-bridge@^9.0.1":
-  version "26.8.0"
-
 "@haxtheweb/hax-iconset@^9.0.1":
   version "26.8.0"
   dependencies:

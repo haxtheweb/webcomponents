@@ -21,6 +21,7 @@
   "bibliography-item": "Bibliography Item",
   "block-quote": "Block Quote",
   "blockquote": "Block quote",
+  "bullet-check-list": "Bullet Check List",
   "caption": "Caption",
   "career-org-item": "Career Org Item",
   "career-role-item": "Career Role Item",
@@ -127,6 +128,7 @@
   "product-glance": "Product Glance",
   "progress-donut": "Progress Donut",
   "q-r": "Q R",
+  "radar-chart": "Radar Chart",
   "relative-heading": "Relative heading",
   "retro-card": "Retro card",
   "rpg-character": "Rpg Character",
@@ -143,6 +145,7 @@
   "simple-tags": "Simple Tags",
   "simple-wc": "Simple Wc",
   "site-children-block": "HAXcms: child block",
+  "site-citation": "Citation",
   "site-collection-list": "Site Collection List",
   "site-random-content": "Random Page Content",
   "site-remote-content": "Remote Content",
@@ -173,6 +176,7 @@
   "video": "Video",
   "video-player": "Video",
   "vocab-term": "Vocab Term",
+  "web-baseline-status": "Web Baseline Status",
   "wikipedia-query": "Wikipedia Query",
   "worksheet-download": "Worksheet Download"
 }

@@ -708,6 +708,24 @@
       "tags": []
     },
     {
+      "tag": "bullet-check-list",
+      "title": "Bullet Check List",
+      "description": "Bulleted or numbered list of checkboxes whose state is remembered on this machine",
+      "package": "@haxtheweb/bullet-check-list",
+      "import": "@haxtheweb/bullet-check-list/bullet-check-list.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "content",
+        "pedagogy",
+        "checklist",
+        "todo",
+        "steps",
+        "progress"
+      ]
+    },
+    {
       "tag": "career-org-item",
       "title": "Career Org Item",
       "description": "",
@@ -2454,6 +2472,16 @@
       "tags": []
     },
     {
+      "tag": "haxcms-language-picker",
+      "title": "",
+      "description": "A searchable language select that lists every language in the canonical language registry (@haxtheweb/i18n-manager/lib/languages.json) as \"English name - code\", for example \"Swahili - sw\". Typing matches the English name, native name, code or an alias, so \"swa\", \"Kiswahili\" and \"sw\" all find Swah...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-language-picker.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "haxcms-outline-editor-dialog",
       "title": "",
       "description": "Dialog for presenting an editable outline",
@@ -4150,6 +4178,20 @@
       "tags": []
     },
     {
+      "tag": "radar-chart",
+      "title": "Radar Chart",
+      "description": "A radar (spider) chart for maturity models, skill evaluations and facet scoring such as HEOSAT. Draws an SVG for sighted users and always provides the same data as a text description and a data table.",
+      "package": "@haxtheweb/radar-chart",
+      "import": "@haxtheweb/radar-chart/radar-chart.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Visualization",
+        "Metrics",
+        "Data"
+      ]
+    },
+    {
       "tag": "relative-heading",
       "title": "Relative heading",
       "description": "outputs the correct heading hierarchy based on parent heading",
@@ -5438,6 +5480,16 @@
       "tags": []
     },
     {
+      "tag": "site-citation",
+      "title": "Citation",
+      "description": "Generate a copyable APA, MLA, Chicago or BibTeX citation for the current page or whole site from site.json data Fields used (anything missing is left out of the citation, never invented): page / site title, author, license, created / updated dates and the site domain. See lib/site-citation-format...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-citation.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": []
+    },
+    {
       "tag": "site-collection-list",
       "title": "Site Collection List",
       "description": "",
@@ -6224,6 +6276,23 @@
       "type": "element",
       "haxCapable": false,
       "tags": []
+    },
+    {
+      "tag": "web-baseline-status",
+      "title": "Web Baseline Status",
+      "description": "Displays the Baseline status (limited / newly available / widely available) of a web platform feature, using the baseline-status widget from web-platform-dx. Feature data is fetched by the widget at runtime from https://api.webstatus.dev.",
+      "package": "@haxtheweb/web-baseline-status",
+      "import": "@haxtheweb/web-baseline-status/web-baseline-status.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Other",
+        "Developer",
+        "baseline",
+        "web platform",
+        "browser support",
+        "interop"
+      ]
     },
     {
       "tag": "web-container",

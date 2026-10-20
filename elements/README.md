@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (222 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (225 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -33,6 +33,7 @@ Every element in this monorepo (222 packages). Browse them live with `yarn galle
 | [beaker-broker](./beaker-broker/) | A broker element to make working with Beaker Browser's API even easier. | `@haxtheweb/beaker-broker` | [demo](./beaker-broker/demo/) |
 | [bibliography-builder](./bibliography-builder/) | Webcomponent bibliography-builder following hax / open-wc recommendations | `bibliography-builder` | [demo](./bibliography-builder/demo/) |
 | [bootstrap-theme](./bootstrap-theme/) | Hax bootstrap themeing | `@haxtheweb/bootstrap-theme` | [demo](./bootstrap-theme/demo/) |
+| [bullet-check-list](./bullet-check-list/) | Bulleted or numbered list of checkboxes whose state is remembered on this machine | `@haxtheweb/bullet-check-list` | [demo](./bullet-check-list/demo/) |
 | [career-timeline](./career-timeline/) | Webcomponent career-timeline following hax / open-wc recommendations | `career-timeline` | [demo](./career-timeline/demo/) |
 | [chamfer-theme](./chamfer-theme/) | Fixed-width HAXcms theme with a left navigation column and a chamfered top-left corner on the body area. | `@haxtheweb/chamfer-theme` | [demo](./chamfer-theme/demo/) |
 | [chartist-render](./chartist-render/) | Renders charts with the Chartist library | `@haxtheweb/chartist-render` | [demo](./chartist-render/demo/) |
@@ -160,6 +161,7 @@ Every element in this monorepo (222 packages). Browse them live with `yarn galle
 | [progress-donut](./progress-donut/) | Donut chart that visualizes progress or proportions | `@haxtheweb/progress-donut` | [demo](./progress-donut/demo/) |
 | [promise-progress](./promise-progress/) | An element to display the progress visually of forfilling an array of JS Promise objects | `@haxtheweb/promise-progress` | [demo](./promise-progress/demo/) |
 | [q-r](./q-r/) | Generates a QR code from a URL or text | `@haxtheweb/q-r` | [demo](./q-r/demo/) |
+| [radar-chart](./radar-chart/) | Webcomponent radar-chart following hax / open-wc recommendations | `@haxtheweb/radar-chart` | [demo](./radar-chart/demo/) |
 | [radio-behaviors](./radio-behaviors/) | Provides state management when only one child can be selected at a time. | `@haxtheweb/radio-behaviors` |  |
 | [relative-heading](./relative-heading/) | Heading whose level is set relative to its parent heading | `@haxtheweb/relative-heading` | [demo](./relative-heading/demo/) |
 | [replace-tag](./replace-tag/) | Loading helpers and css | `@haxtheweb/replace-tag` | [demo](./replace-tag/demo/) |
@@ -225,6 +227,7 @@ Every element in this monorepo (222 packages). Browse them live with `yarn galle
 | [vocab-term](./vocab-term/) | a vocabulary term visualized in the page | `@haxtheweb/vocab-term` | [demo](./vocab-term/demo/) |
 | [voice-recorder](./voice-recorder/) | Records audio from the microphone and exports it as an MP3 | `@haxtheweb/voice-recorder` | [demo](./voice-recorder/demo/) |
 | [wc-autoload](./wc-autoload/) | automatically load new tags in the dom | `@haxtheweb/wc-autoload` |  |
+| [web-baseline-status](./web-baseline-status/) | Wrapper that makes the web-platform-dx baseline-status widget usable in HAX | `@haxtheweb/web-baseline-status` | [demo](./web-baseline-status/demo/) |
 | [web-container](./web-container/) | Webcomponent web-container following hax / open-wc recommendations | `@haxtheweb/web-container` | [demo](./web-container/demo/) |
 | [wikipedia-query](./wikipedia-query/) | Queries Wikipedia and presents the result with citation | `@haxtheweb/wikipedia-query` | [demo](./wikipedia-query/demo/) |
 | [word-count](./word-count/) | Counts the words in slotted text and shows a small badge | `@haxtheweb/word-count` | [demo](./word-count/demo/) |
