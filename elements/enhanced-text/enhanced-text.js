@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 // enable services for glossary enhancement
 enableServices(["haxcms"]);
@@ -213,8 +214,12 @@ class EnhancedText extends LitElement {
 
   enhancedTextResponse(data) {
     if (data.status && data.data && data.data.length) {
+      // security: service response is untrusted; sanitize before innerHTML
       let parser = new DOMParser();
-      let doc = parser.parseFromString(data.data, "text/html");
+      let doc = parser.parseFromString(
+        sanitizeHTMLString(data.data),
+        "text/html",
+      );
       this.innerHTML = doc.body.innerHTML;
     }
   }
