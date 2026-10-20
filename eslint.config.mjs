@@ -38,6 +38,15 @@ export default [
       "elements/wave-player/lib/**",
       "elements/moment-element/lib/**",
       "elements/d-d-d/design-system/dist/**",
+      // Vendored third-party libraries (not ours to lint or reformat).
+      "elements/slide-deck/lib/pptx-rendered.js",
+      "elements/file-system-broker/lib/xlsx/**",
+      "elements/file-system-broker/lib/mammoth/**",
+      "elements/la-tex/lib/latex2html5.js",
+      "elements/music-player/lib/html-midi-player.js",
+      "elements/sheet-music/lib/alphatab/**",
+      "elements/q-r/lib/qr.js",
+      "elements/code-sample/lib/highlightjs/**",
     ],
   },
   js.configs.recommended,
@@ -87,7 +96,9 @@ export default [
             "Prefer `globalThis` over bare `window` for global-scope JS. If this usage genuinely requires the browser window object specifically, disable this rule inline with a comment explaining why.",
         },
       ],
-      "no-unused-vars": "warn",
+      // A leading underscore marks an intentionally unused parameter (for
+      // example an event handler signature that has to keep its arity).
+      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
       "no-undef": "error",
       eqeqeq: "error",
       "no-var": "error",
