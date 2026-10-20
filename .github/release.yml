@@ -1,0 +1,14 @@
+# Configures GitHub's auto-generated release notes (used by
+# .github/workflows/release.yml). See
+# https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes
+changelog:
+  exclude:
+    labels:
+      - skip changelog
+    authors:
+      - renovate[bot]
+      - dependabot[bot]
+  categories:
+    - title: Changes
+      labels:
+        - "*"

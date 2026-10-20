@@ -1,0 +1,57 @@
+name: release
+
+# Creates the GitHub Release for a version tag (haxtheweb/issues#3092).
+#
+# The maintainer publishes packages to npm by hand (`lerna publish`), which
+# creates and pushes a v* tag. This workflow only reacts to that tag: it does
+# NOT publish to npm and holds no npm credentials. For the tag it
+#   1. creates a GitHub Release with auto-generated notes (merged PRs since the
+#      previous tag, grouped per .github/release.yml), and
+#   2. attaches a source archive of the tagged commit plus SHA256SUMS for it.
+#
+# Signed tags are not handled here; see the PR description for the follow-up.
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: read
+jobs:
+  release:
+    name: Release notes and checksums
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      # Needed to create the release and upload its assets. Nothing else.
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Build source archive and SHA256SUMS
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/release"
+          git archive --format=tar.gz --prefix="webcomponents-${TAG}/" \
+            -o "$RUNNER_TEMP/release/webcomponents-${TAG}.tar.gz" "$TAG"
+          cd "$RUNNER_TEMP/release"
+          sha256sum "webcomponents-${TAG}.tar.gz" > SHA256SUMS
+          sha256sum --check SHA256SUMS
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          cd "$RUNNER_TEMP/release"
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            echo "Release $TAG already exists; only refreshing its assets."
+            gh release upload "$TAG" --repo "$GITHUB_REPOSITORY" --clobber \
+              "webcomponents-${TAG}.tar.gz" SHA256SUMS
+          else
+            prerelease=()
+            case "$TAG" in *-*) prerelease=(--prerelease) ;; esac
+            gh release create "$TAG" --repo "$GITHUB_REPOSITORY" \
+              --verify-tag --title "$TAG" --generate-notes "${prerelease[@]}" \
+              "webcomponents-${TAG}.tar.gz" SHA256SUMS
+          fi
