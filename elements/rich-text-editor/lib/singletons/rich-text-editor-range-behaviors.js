@@ -158,7 +158,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      */
     trimString(str) {
       return (str || "")
-        .replace(/<!--[^(-->)]*-->/g, "")
+        .replace(/<!--[\s\S]*?-->/g, "")
         .replace(/[\s\t\r\n]/gim, "");
     }
     /**

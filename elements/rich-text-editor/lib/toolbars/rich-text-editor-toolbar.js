@@ -1542,7 +1542,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             composed: true,
             cancelable: true,
             detail: (this.target.innerHTML || "")
-              .replace(/<!--[^(-->)]*-->/g, "")
+              .replace(/<!--[\s\S]*?-->/g, "")
               .trim(),
           }),
         );
@@ -1584,7 +1584,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             composed: true,
             cancelable: true,
             detail: (this.target.innerHTML || "")
-              .replace(/<!--[^(-->)]*-->/g, "")
+              .replace(/<!--[\s\S]*?-->/g, "")
               .trim(),
           }),
         );

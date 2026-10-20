@@ -290,7 +290,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
       return (
         !this.innerHTML ||
         this.innerHTML
-          .replace(/<!--[^(-->)]*-->/g, "")
+          .replace(/<!--[\s\S]*?-->/g, "")
           .replace(/[\s\t\r\n]/gim, "") == ""
       );
     }
