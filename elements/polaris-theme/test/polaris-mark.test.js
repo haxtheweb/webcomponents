@@ -36,10 +36,11 @@ describe('polaris-mark', () => {
     expect(a.getAttribute('target')).to.equal('_blank')
     expect(a.getAttribute('rel')).to.equal('noopener')
     expect(a.getAttribute('aria-label')).to.equal('Penn State — visit psu.edu')
-    // svg title falls back to Penn State when no name is set
-    expect(element.shadowRoot.querySelector('svg title').textContent.trim()).to.equal(
-      'Penn State',
-    )
+    // the svg is named "Penn State" when no name is set (aria-label rather
+    // than a <title>, which Lit SSR cannot render with an expression in it)
+    const svg = element.shadowRoot.querySelector('svg')
+    expect(svg.getAttribute('role')).to.equal('img')
+    expect(svg.getAttribute('aria-label')).to.equal('Penn State')
     // default type renders the default svg with the navy name fill
     expect(
       element.shadowRoot.querySelector('svg #name-line1').getAttribute('fill'),

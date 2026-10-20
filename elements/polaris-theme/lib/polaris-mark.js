@@ -144,8 +144,12 @@ class PolarisMark extends I18NMixin(LitElement) {
   renderDark() {
     return svg`
       <div id="svg">
-        <svg viewBox="0 0 ${this.svgwidth} ${this.svgheight}" xmlns="http://www.w3.org/2000/svg">
-          <title>${this.name || "Penn State"}</title>
+        <svg
+          viewBox="0 0 ${this.svgwidth} ${this.svgheight}"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="${this.name || "Penn State"}"
+        >
           <defs>
             <style>
               .b7fa77f5-1930-4db8-8b8c-83ec9083c90c {
@@ -198,8 +202,12 @@ class PolarisMark extends I18NMixin(LitElement) {
   renderDefault(_type = "default") {
     return svg`
       <div id="svg">
-        <svg viewBox="0 0 ${this.svgwidth} ${this.svgheight}" xmlns="http://www.w3.org/2000/svg">
-          <title>${this.name || "Penn State"}</title>
+        <svg
+          viewBox="0 0 ${this.svgwidth} ${this.svgheight}"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="${this.name || "Penn State"}"
+        >
           <defs>
             <style>
               .b7fa77f5-1930-4db8-8b8c-83ec9083c90c {
