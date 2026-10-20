@@ -1,26 +1,26 @@
 import { LitElement, html, css } from "lit";
-import { sanitizeEmbeddableURL } from "@haxtheweb/utils/lib/url.js";
+import {
+  sanitizeEmbeddableURL,
+  isCrossOriginURL,
+  isSameOriginUploadedMarkup,
+  iframeSandboxForSource,
+} from "@haxtheweb/utils/lib/url.js";
 import "./lib/loading-indicator.js";
 
 export class IframeLoader extends LitElement {
   _safeSource(source) {
-    return sanitizeEmbeddableURL(source, null);
+    const safe = sanitizeEmbeddableURL(source, null);
+    // uploaded .html/.xml are allowed to exist but never to be framed
+    if (safe && isSameOriginUploadedMarkup(safe)) {
+      return null;
+    }
+    return safe;
   }
   /**
    * Whether a source URL targets another origin than the current page.
    */
   _isCrossOriginSource(source) {
-    if (!source) {
-      return false;
-    }
-    try {
-      return (
-        new URL(source, globalThis.location.href).origin !==
-        globalThis.location.origin
-      );
-    } catch {
-      return false;
-    }
+    return isCrossOriginURL(source);
   }
   /**
    * Applies the embed policy to a managed iframe: embeds like YouTube
@@ -243,7 +243,7 @@ export class IframeLoader extends LitElement {
       if (!this.isPDF) {
         this.__iframe.setAttribute(
           "sandbox",
-          "allow-scripts allow-same-origin",
+          iframeSandboxForSource(safeSource),
         );
       }
       this._applyEmbedPolicy(this.__iframe, safeSource);
@@ -309,7 +309,7 @@ export class IframeLoader extends LitElement {
         } else {
           this.__iframe.setAttribute(
             "sandbox",
-            "allow-scripts allow-same-origin",
+            iframeSandboxForSource(this._safeSource(this.source)),
           );
         }
       } else if (propName === "source") {
@@ -320,7 +320,7 @@ export class IframeLoader extends LitElement {
           } else {
             this.__iframe.setAttribute(
               "sandbox",
-              "allow-scripts allow-same-origin",
+              iframeSandboxForSource(safeSource),
             );
           }
           if (safeSource) {
@@ -346,7 +346,7 @@ export class IframeLoader extends LitElement {
           } else {
             this.__iframe.setAttribute(
               "sandbox",
-              "allow-scripts allow-same-origin",
+              iframeSandboxForSource(safeSource),
             );
           }
           if (safeSource) {

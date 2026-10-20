@@ -23,6 +23,10 @@ import {
   sanitizeHTMLForImport,
 } from "@haxtheweb/utils/utils.js";
 import {
+  isSameOriginUploadedMarkup,
+  iframeSandboxForSource,
+} from "@haxtheweb/utils/lib/url.js";
+import {
   observable,
   makeObservable,
   computed,
@@ -3630,9 +3634,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           // simple-symbol-picker.js (no standalone data file), so importing
           // that module populates the globalThis entry as a side effect.
           if (!globalThis.SimplePickerSymbols) {
-            await import(
-              "@haxtheweb/simple-picker/lib/simple-symbol-picker.js"
-            );
+            await import("@haxtheweb/simple-picker/lib/simple-symbol-picker.js");
           }
           // resolve a readable name for an entity, falling back to a
           // title-cased version of the entity name when unmapped
@@ -5913,7 +5915,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // this way we can ensure that we don't have any scripts running that confuse the user into
     // leaking sensitive information
     if (tag === "iframe") {
-      node.setAttribute("sandbox", "allow-scripts allow-same-origin");
+      const frameSrc = node.getAttribute("src");
+      // same-origin uploaded .html/.xml are never allowed to be framed
+      if (isSameOriginUploadedMarkup(frameSrc)) {
+        node.removeAttribute("src");
+      }
+      // allow-same-origin is only safe for cross-origin sources
+      node.setAttribute("sandbox", iframeSandboxForSource(frameSrc));
     }
 
     let content = "";
