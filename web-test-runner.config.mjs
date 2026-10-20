@@ -16,6 +16,21 @@ const isElementDir =
 
 export default {
     concurrency: 5,
+    // mocha defaults to a 2s timeout per test. Many tests await several axe
+    // audits back to back (see the a11y-* and accent-card suites), and on a
+    // shared CI runner with 5 browser pages competing for CPU a single audit
+    // can occasionally take longer than that. When a test times out its axe
+    // run is still in flight (axe._running stays true), so the next tests in
+    // that file fail instantly with "Axe is already running. Use `await
+    // axe.run()` to wait for the previous run to finish" until the slow run
+    // completes. That produced a handful of false failures out of ~1000 audits.
+    // Giving each test generous headroom stops the first timeout, and with it
+    // the whole cascade. Individual tests can still set a tighter this.timeout.
+    testFramework: {
+      config: {
+        timeout: 10000,
+      },
+    },
     nodeResolve: true,
     // in a monorepo you need to set set the root dir to resolve modules
     rootDir: '../../',
