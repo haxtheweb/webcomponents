@@ -1,5 +1,6 @@
 import { fixture, expect, html, aTimeout } from "@open-wc/testing";
 import "../lib/hax-upload-field.js";
+import { HAXStore } from "../lib/hax-store.js";
 import "../lib/hax-tray-upload.js";
 import "@haxtheweb/simple-fields/lib/simple-file-upload.js";
 
@@ -92,5 +93,37 @@ describe("hax-tray-upload integration with simple-file-upload", () => {
     upload.files = [{ name: "old.png" }];
     element._editModeChanged(false);
     expect(upload.files).to.deep.equal([]);
+  });
+});
+
+describe("hax-upload-field uploadRequirements extension check", () => {
+  let element;
+  let originalToast;
+  beforeEach(async () => {
+    element = await fixture(html`
+      <hax-upload-field label="Upload"></hax-upload-field>
+    `);
+    await element.updateComplete;
+    originalToast = HAXStore.toast;
+    HAXStore.toast = () => {};
+    element.uploadRequirements = { extensions: [".png", ".JPG"] };
+  });
+  afterEach(() => {
+    HAXStore.toast = originalToast;
+  });
+  const check = (name) =>
+    element._passesUploadRequirements({ detail: { file: { name, type: "" } } });
+
+  it("accepts files that end with an allowed extension, case-insensitively", () => {
+    expect(check("photo.png")).to.be.true;
+    expect(check("PHOTO.PNG")).to.be.true;
+    expect(check("photo.jpg")).to.be.true;
+    expect(check("a.png.png")).to.be.true;
+  });
+  it("rejects names where the extension only appears elsewhere or the name is too short", () => {
+    expect(check("photo.png.exe")).to.be.false;
+    expect(check("photo.pngx")).to.be.false;
+    expect(check("png")).to.be.false;
+    expect(check("")).to.be.false;
   });
 });

@@ -431,7 +431,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           typeof ext === "string"
             ? ext.toLowerCase()
             : String(ext || "").toLowerCase();
-        return e2 && lower.indexOf(e2) === lower.length - e2.length;
+        return e2 && lower.endsWith(e2);
       });
       if (!matched) {
         HAXStore.toast(

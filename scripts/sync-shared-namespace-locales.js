@@ -210,7 +210,12 @@ function main() {
   );
 
   // Only files that actually register this namespace contribute to it.
-  const nsPattern = new RegExp(`namespace:\\s*["']${args.namespace}["']`);
+  // escape the CLI value so regex metacharacters in it are matched literally
+  const escapedNamespace = args.namespace.replace(
+    /[.*+?^${}()|[\]\\]/g,
+    "\\$&",
+  );
+  const nsPattern = new RegExp(`namespace:\\s*["']${escapedNamespace}["']`);
   const contributors = [];
   const canonical = new Map();
   const reads = new Map();
