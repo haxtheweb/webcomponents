@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (225 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (226 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -175,6 +175,7 @@ Every element in this monorepo (225 packages). Browse them live with `yarn galle
 | [screen-recorder](./screen-recorder/) | Webcomponent screen-recorder following hax / open-wc recommendations | `@haxtheweb/screen-recorder` | [demo](./screen-recorder/demo/) |
 | [scroll-button](./scroll-button/) | button to scroll to an area or back to top | `@haxtheweb/scroll-button` | [demo](./scroll-button/demo/) |
 | [self-check](./self-check/) | Self check question card that reveals an answer on demand | `@haxtheweb/self-check` | [demo](./self-check/demo/) |
+| [self-reflective-nudge](./self-reflective-nudge/) | Webcomponent self-reflective-nudge following hax / open-wc recommendations | `@haxtheweb/self-reflective-nudge` | [demo](./self-reflective-nudge/demo/) |
 | [shadow-style](./shadow-style/) | write css that is for piercing shadow roots and applying CSS automatically | `@haxtheweb/shadow-style` |  |
 | [sheet-music](./sheet-music/) | Webcomponent sheet-music following hax / open-wc recommendations | `@haxtheweb/sheet-music` | [demo](./sheet-music/demo/) |
 | [simple-autocomplete](./simple-autocomplete/) | auto complete either from an endpoint or local json array | `@haxtheweb/simple-autocomplete` | [demo](./simple-autocomplete/demo/) |

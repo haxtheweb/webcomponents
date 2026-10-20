@@ -463,6 +463,7 @@
   "screen-recorder": "@haxtheweb/screen-recorder/screen-recorder.js",
   "scroll-button": "@haxtheweb/scroll-button/scroll-button.js",
   "self-check": "@haxtheweb/self-check/self-check.js",
+  "self-reflective-nudge": "@haxtheweb/self-reflective-nudge/self-reflective-nudge.js",
   "shadow-style": "@haxtheweb/shadow-style/shadow-style.js",
   "sheet-music": "@haxtheweb/sheet-music/sheet-music.js",
   "simple-autocomplete-text-trigger": "@haxtheweb/simple-autocomplete/lib/simple-autocomplete-text-trigger.js",

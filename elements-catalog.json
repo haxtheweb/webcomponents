@@ -4326,6 +4326,24 @@
       ]
     },
     {
+      "tag": "self-reflective-nudge",
+      "title": "Self Reflective Nudge",
+      "description": "Ask a student to reflect on how they are doing (a grade or a mood) and offer a self-corrective nudge based on their answer. Nudges are authored as light DOM children so the content stays portable and readable. Each child carries the range it applies to as data attributes: html <self-reflective-nu...",
+      "package": "@haxtheweb/self-reflective-nudge",
+      "import": "@haxtheweb/self-reflective-nudge/self-reflective-nudge.js",
+      "type": "grid",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "reflection",
+        "feedback",
+        "self check",
+        "grade",
+        "mood",
+        "nudge"
+      ]
+    },
+    {
       "tag": "shadow-style",
       "title": "",
       "description": "write css that is for piercing shadow roots and applying CSS automatically",
