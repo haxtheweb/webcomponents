@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Selsreflektyf stimulâns",
+    "description": "Freegje in studint om nei te tinken oer in sifer of stimming en jou op grûn fan it antwurd in stimulâns foar selskorreksje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ynfiertype",
+        "description": "Hoe't de studint oanjout hoe it mei him giet. Beide brûke in skaal fan 0 oant 4 (sifer: F=0, D=1, C=2, B=3, A=4; stimming: tige leech=0 oant geweldich=4).",
+        "options": {
+          "grade": "Letterwurdearring",
+          "mood": "Stimming"
+        }
+      },
+      {
+        "title": "Fraach",
+        "description": "Fraach foar de studint. Lit leech om de standertwearde foar it ynfiertype te brûken."
+      },
+      {
+        "title": "Stimulânsen",
+        "description": "Feedback dy't toand wurdt foar in berik fan antwurden. It earste oerienkommende berik wurdt brûkt."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Dorongan refleksi diri",
+    "description": "Minta siswa merefleksikan nilai atau suasana hati dan berikan dorongan koreksi diri berdasarkan jawabannya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jenis input",
+        "description": "Cara siswa melaporkan kondisinya. Keduanya memakai skala 0 sampai 4 (nilai: F=0, D=1, C=2, B=3, A=4; suasana hati: sangat rendah=0 sampai luar biasa=4).",
+        "options": {
+          "grade": "Nilai huruf",
+          "mood": "Suasana hati"
+        }
+      },
+      {
+        "title": "Pertanyaan",
+        "description": "Pertanyaan untuk siswa. Biarkan kosong untuk memakai bawaan sesuai jenis input."
+      },
+      {
+        "title": "Dorongan",
+        "description": "Umpan balik yang ditampilkan untuk rentang jawaban tertentu. Rentang pertama yang cocok akan digunakan."
+      }
+    ]
+  }
+}

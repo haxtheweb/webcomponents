@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Welche Note hast du im letzten Quiz bekommen?",
+  "moodPrompt": "Wie denkst du, läuft es bei dir?",
+  "reviewLink": "Diesen Stoff wiederholen",
+  "grade": "Note",
+  "moodVeryLow": "Sehr schlecht",
+  "moodLow": "Schlecht",
+  "moodOkay": "Okay",
+  "moodGood": "Gut",
+  "moodGreat": "Großartig"
+}

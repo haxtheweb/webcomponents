@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Son kvizdə nə qiymət aldın?",
+  "moodPrompt": "Səncə, işlərin necə gedir?",
+  "reviewLink": "Bu materialı nəzərdən keçir",
+  "grade": "Qiymət",
+  "moodVeryLow": "Çox aşağı",
+  "moodLow": "Aşağı",
+  "moodOkay": "Normal",
+  "moodGood": "Yaxşı",
+  "moodGreat": "Əla"
+}

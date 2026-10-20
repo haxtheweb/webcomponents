@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Kiun poenton vi ricevis en la lasta kvizo?",
+  "moodPrompt": "Kiel vi pensas, ke vi progresas?",
+  "reviewLink": "Revizii ĉi tiun materialon",
+  "grade": "Poento",
+  "moodVeryLow": "Tre malalte",
+  "moodLow": "Malalte",
+  "moodOkay": "Tolerinde",
+  "moodGood": "Bone",
+  "moodGreat": "Bonege"
+}

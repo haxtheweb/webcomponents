@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Estímulo de autorreflexión",
+    "description": "Pide ao alumnado que reflexione sobre unha nota ou un estado de ánimo e ofrece un estímulo de autocorrección segundo a resposta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tipo de entrada",
+        "description": "Como informa o alumno de como lle está indo. Ambos usan unha escala de 0 a 4 (nota: F=0, D=1, C=2, B=3, A=4; ánimo: moi baixo=0 a excelente=4).",
+        "options": {
+          "grade": "Nota con letra",
+          "mood": "Estado de ánimo"
+        }
+      },
+      {
+        "title": "Pregunta",
+        "description": "Pregunta para o alumno. Déixaa baleira para usar a predeterminada segundo o tipo de entrada."
+      },
+      {
+        "title": "Estímulos",
+        "description": "Comentarios que se mostran para un intervalo de respostas. Úsase o primeiro intervalo que coincida."
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Mis hinde said viimasest testist?",
+  "moodPrompt": "Kuidas sinu arvates sul läheb?",
+  "reviewLink": "Vaata see materjal üle",
+  "grade": "Hinne",
+  "moodVeryLow": "Väga madal",
+  "moodLow": "Madal",
+  "moodOkay": "Keskmine",
+  "moodGood": "Hea",
+  "moodGreat": "Suurepärane"
+}

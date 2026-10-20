@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Självreflekterande knuff",
+    "description": "Be en student reflektera över ett betyg eller ett humör och ge en självkorrigerande knuff baserat på svaret."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inmatningstyp",
+        "description": "Hur studenten rapporterar hur det går. Båda använder en skala från 0 till 4 (betyg: F=0, D=1, C=2, B=3, A=4; humör: mycket lågt=0 till utmärkt=4).",
+        "options": {
+          "grade": "Bokstavsbetyg",
+          "mood": "Humör"
+        }
+      },
+      {
+        "title": "Fråga",
+        "description": "Fråga till studenten. Lämna tomt för att använda standardvärdet för inmatningstypen."
+      },
+      {
+        "title": "Knuffar",
+        "description": "Återkoppling som visas för ett intervall av svar. Det första matchande intervallet används."
+      }
+    ]
+  }
+}

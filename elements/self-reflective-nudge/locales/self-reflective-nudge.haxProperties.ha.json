@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ƙarfafawa ta tunanin kai",
+    "description": "Ka nemi ɗalibi ya yi tunani a kan maki ko yanayin zuciya, sannan ka ba da ƙarfafawa ta gyara kai bisa amsar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nau'in shigarwa",
+        "description": "Yadda ɗalibi yake bayyana yadda yake yi. Duka biyun suna amfani da ma'auni na 0 zuwa 4 (maki: F=0, D=1, C=2, B=3, A=4; yanayin zuciya: ƙasa ƙwarai=0 zuwa mai kyau ƙwarai=4).",
+        "options": {
+          "grade": "Maki na harafi",
+          "mood": "Yanayin zuciya"
+        }
+      },
+      {
+        "title": "Tambaya",
+        "description": "Tambaya ga ɗalibi. Bar shi babu komai don amfani da tsohon zaɓi na nau'in shigarwa."
+      },
+      {
+        "title": "Ƙarfafawa",
+        "description": "Ra'ayin da ake nunawa ga jerin amsoshi. Ana amfani da jerin farko da ya dace."
+      }
+    ]
+  }
+}

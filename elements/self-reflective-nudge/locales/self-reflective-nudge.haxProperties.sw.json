@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Kichocheo cha kujitafakari",
+    "description": "Mwombe mwanafunzi atafakari kuhusu daraja au hali yake na umpe kichocheo cha kujisahihisha kulingana na jibu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aina ya ingizo",
+        "description": "Jinsi mwanafunzi anavyoripoti anavyoendelea. Zote mbili hutumia kipimo cha 0 hadi 4 (daraja: F=0, D=1, C=2, B=3, A=4; hali: chini sana=0 hadi bora kabisa=4).",
+        "options": {
+          "grade": "Daraja la herufi",
+          "mood": "Hali"
+        }
+      },
+      {
+        "title": "Swali",
+        "description": "Swali kwa mwanafunzi. Acha tupu ili kutumia chaguo-msingi la aina ya ingizo."
+      },
+      {
+        "title": "Vichocheo",
+        "description": "Maoni yanayoonyeshwa kwa safu ya majibu. Safu ya kwanza inayolingana ndiyo hutumika."
+      }
+    ]
+  }
+}

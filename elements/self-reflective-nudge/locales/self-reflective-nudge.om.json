@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Qormaata dhumaa irratti maal argatte?",
+  "moodPrompt": "Akkamitti jirta jettee yaaddaa?",
+  "reviewLink": "Meeshaa kana irra deebi'ii ilaali",
+  "grade": "Qabxii",
+  "moodVeryLow": "Baay'ee gad aanaa",
+  "moodLow": "Gad aanaa",
+  "moodOkay": "Sirrii",
+  "moodGood": "Gaarii",
+  "moodGreat": "Baay'ee gaarii"
+}

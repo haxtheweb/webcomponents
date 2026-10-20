@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Zer nota atera zenuen azken galdetegian?",
+  "moodPrompt": "Zer moduz zoaz, zure ustez?",
+  "reviewLink": "Berrikusi material hau",
+  "grade": "Nota",
+  "moodVeryLow": "Oso baxua",
+  "moodLow": "Baxua",
+  "moodOkay": "Ados",
+  "moodGood": "Ona",
+  "moodGreat": "Bikaina"
+}

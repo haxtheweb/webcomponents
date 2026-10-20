@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Spreagadh féinmhachnaimh",
+    "description": "Iarr ar mhac léinn machnamh a dhéanamh ar ghrád nó ar ghiúmar agus tabhair spreagadh féincheartaithe bunaithe ar an bhfreagra."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cineál ionchuir",
+        "description": "Conas a thuairiscíonn an mac léinn an dóigh a bhfuil sé ag éirí leis. Úsáideann an dá cheann scála 0 go 4 (grád: F=0, D=1, C=2, B=3, A=4; giúmar: an-íseal=0 go togha=4).",
+        "options": {
+          "grade": "Litir-ghrád",
+          "mood": "Giúmar"
+        }
+      },
+      {
+        "title": "Leid",
+        "description": "Ceist don mhac léinn. Fág folamh chun an réamhshocrú don chineál ionchuir a úsáid."
+      },
+      {
+        "title": "Spreagthaí",
+        "description": "Aiseolas a thaispeántar do raon freagraí. Úsáidtear an chéad raon a mheaitseálann."
+      }
+    ]
+  }
+}

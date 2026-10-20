@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Wat heb je gehaald voor de laatste quiz?",
+  "moodPrompt": "Hoe denk je dat het met je gaat?",
+  "reviewLink": "Bekijk deze stof opnieuw",
+  "grade": "Cijfer",
+  "moodVeryLow": "Zeer laag",
+  "moodLow": "Laag",
+  "moodOkay": "Oké",
+  "moodGood": "Goed",
+  "moodGreat": "Geweldig"
+}

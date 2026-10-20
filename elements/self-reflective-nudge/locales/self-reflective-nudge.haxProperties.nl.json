@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Zelfreflectieve stimulans",
+    "description": "Vraag een student om na te denken over een cijfer of stemming en geef op basis van het antwoord een zelfcorrigerende stimulans."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Invoertype",
+        "description": "Hoe de student aangeeft hoe het gaat. Beide gebruiken een schaal van 0 tot 4 (cijfer: F=0, D=1, C=2, B=3, A=4; stemming: zeer laag=0 tot geweldig=4).",
+        "options": {
+          "grade": "Lettercijfer",
+          "mood": "Stemming"
+        }
+      },
+      {
+        "title": "Vraag",
+        "description": "Vraag voor de student. Laat leeg om de standaardwaarde voor het invoertype te gebruiken."
+      },
+      {
+        "title": "Aanmoedigingen",
+        "description": "Feedback die wordt getoond voor een bereik van antwoorden. Het eerste overeenkomende bereik wordt gebruikt."
+      }
+    ]
+  }
+}

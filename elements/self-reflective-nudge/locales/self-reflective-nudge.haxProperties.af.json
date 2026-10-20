@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Selfreflektiewe porring",
+    "description": "Vra 'n student om oor 'n punt of bui na te dink en bied 'n selfkorrigerende porring gebaseer op die antwoord."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Invoertipe",
+        "description": "Hoe die student aandui hoe dit met hom of haar gaan. Albei gebruik 'n skaal van 0 tot 4 (punt: F=0, D=1, C=2, B=3, A=4; bui: baie laag=0 tot uitstekend=4).",
+        "options": {
+          "grade": "Letterpunt",
+          "mood": "Bui"
+        }
+      },
+      {
+        "title": "Vraag",
+        "description": "Vraag aan die student. Los leeg om die verstek vir die invoertipe te gebruik."
+      },
+      {
+        "title": "Porringe",
+        "description": "Terugvoer wat vir 'n reeks antwoorde gewys word. Die eerste passende reeks word gebruik."
+      }
+    ]
+  }
+}

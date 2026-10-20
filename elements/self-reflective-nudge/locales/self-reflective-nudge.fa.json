@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "در آخرین آزمون چه نمره‌ای گرفتی؟",
+  "moodPrompt": "فکر می‌کنی وضعیتت چطور است؟",
+  "reviewLink": "این مطلب را مرور کن",
+  "grade": "نمره",
+  "moodVeryLow": "خیلی پایین",
+  "moodLow": "پایین",
+  "moodOkay": "متوسط",
+  "moodGood": "خوب",
+  "moodGreat": "عالی"
+}

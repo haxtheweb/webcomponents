@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Hvønn karakter fekst tú á seinasta royndarprøvinum?",
+  "moodPrompt": "Hvussu heldur tú, at tað gongur hjá tær?",
+  "reviewLink": "Endurskoða hetta tilfarið",
+  "grade": "Karakter",
+  "moodVeryLow": "Sera lágt",
+  "moodLow": "Lágt",
+  "moodOkay": "Miðal",
+  "moodGood": "Gott",
+  "moodGreat": "Frálíkt"
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Dorongan refleksi diri",
+    "description": "Njaluk siswa mikirake nilai utawa swasanane lan menehi dorongan kanggo mbenerake awake dhewe adhedhasar wangsulane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jinis input",
+        "description": "Carane siswa nglaporake kahanane. Loro-lorone nganggo skala 0 nganti 4 (nilai: F=0, D=1, C=2, B=3, A=4; swasana: banget kurang=0 nganti apik banget=4).",
+        "options": {
+          "grade": "Nilai aksara",
+          "mood": "Swasana"
+        }
+      },
+      {
+        "title": "Pitakon",
+        "description": "Pitakon kanggo siswa. Kosongna kanggo nggunakake standar miturut jinis input."
+      },
+      {
+        "title": "Dorongan",
+        "description": "Umpan balik sing ditampilake kanggo sawetara wangsulan. Rentang pisanan sing cocog sing digunakake."
+      }
+    ]
+  }
+}

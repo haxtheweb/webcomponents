@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Impuls d'autoreflexió",
+    "description": "Demana a l'estudiant que reflexioni sobre una nota o un estat d'ànim i ofereix un impuls d'autocorrecció segons la resposta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tipus d'entrada",
+        "description": "Com explica l'estudiant com li va. Tots dos utilitzen una escala de 0 a 4 (nota: F=0, D=1, C=2, B=3, A=4; estat d'ànim: molt baix=0 a genial=4).",
+        "options": {
+          "grade": "Nota amb lletra",
+          "mood": "Estat d'ànim"
+        }
+      },
+      {
+        "title": "Pregunta",
+        "description": "Pregunta per a l'estudiant. Deixa-la buida per utilitzar la predeterminada del tipus d'entrada."
+      },
+      {
+        "title": "Impulsos",
+        "description": "Comentaris que es mostren per a un interval de respostes. S'utilitza el primer interval coincident."
+      }
+    ]
+  }
+}

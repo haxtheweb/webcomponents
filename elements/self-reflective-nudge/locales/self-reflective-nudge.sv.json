@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Vad fick du på det senaste provet?",
+  "moodPrompt": "Hur tycker du att det går för dig?",
+  "reviewLink": "Repetera materialet",
+  "grade": "Betyg",
+  "moodVeryLow": "Mycket lågt",
+  "moodLow": "Lågt",
+  "moodOkay": "Okej",
+  "moodGood": "Bra",
+  "moodGreat": "Utmärkt"
+}

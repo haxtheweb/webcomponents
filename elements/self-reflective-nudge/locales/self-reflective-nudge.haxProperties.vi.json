@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Lời nhắc tự suy ngẫm",
+    "description": "Yêu cầu học viên suy ngẫm về điểm số hoặc tâm trạng của mình và đưa ra lời nhắc giúp tự điều chỉnh dựa trên câu trả lời."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kiểu nhập",
+        "description": "Cách học viên báo cáo tình hình học của mình. Cả hai đều dùng thang từ 0 đến 4 (điểm: F=0, D=1, C=2, B=3, A=4; tâm trạng: rất thấp=0 đến tuyệt vời=4).",
+        "options": {
+          "grade": "Điểm chữ",
+          "mood": "Tâm trạng"
+        }
+      },
+      {
+        "title": "Câu hỏi",
+        "description": "Câu hỏi dành cho học viên. Để trống để dùng mặc định theo kiểu nhập."
+      },
+      {
+        "title": "Lời nhắc",
+        "description": "Phản hồi hiển thị cho một khoảng câu trả lời. Khoảng khớp đầu tiên sẽ được dùng."
+      }
+    ]
+  }
+}

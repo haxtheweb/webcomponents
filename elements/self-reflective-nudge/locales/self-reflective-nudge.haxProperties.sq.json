@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Shtysë vetëreflektuese",
+    "description": "Kërkoji një studenti të reflektojë mbi një notë ose gjendje shpirtërore dhe ofroji një shtysë vetëkorrigjuese bazuar në përgjigje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lloji i hyrjes",
+        "description": "Si raporton studenti se si po ia del. Të dyja përdorin një shkallë nga 0 në 4 (nota: F=0, D=1, C=2, B=3, A=4; gjendja: shumë keq=0 deri te shkëlqyeshëm=4).",
+        "options": {
+          "grade": "Notë me shkronjë",
+          "mood": "Gjendja shpirtërore"
+        }
+      },
+      {
+        "title": "Pyetja",
+        "description": "Pyetja për studentin. Lëre bosh për të përdorur parazgjedhjen e llojit të hyrjes."
+      },
+      {
+        "title": "Shtysat",
+        "description": "Reagimi i shfaqur për një varg përgjigjesh. Përdoret vargu i parë që përputhet."
+      }
+    ]
+  }
+}

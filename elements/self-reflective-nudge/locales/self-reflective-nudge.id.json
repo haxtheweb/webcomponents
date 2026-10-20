@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Berapa nilaimu di kuis terakhir?",
+  "moodPrompt": "Menurutmu bagaimana perkembanganmu?",
+  "reviewLink": "Pelajari ulang materi ini",
+  "grade": "Nilai",
+  "moodVeryLow": "Sangat rendah",
+  "moodLow": "Rendah",
+  "moodOkay": "Biasa saja",
+  "moodGood": "Baik",
+  "moodGreat": "Luar biasa"
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Spinta ta' riflessjoni personali",
+    "description": "Staqsi lil student jirrifletti fuq grad jew burdata u offri spinta ta' awtokorrezzjoni bbażata fuq it-tweġiba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tip ta' input",
+        "description": "Kif l-istudent jirrapporta kif qed jimxi. It-tnejn jużaw skala minn 0 sa 4 (grad: F=0, D=1, C=2, B=3, A=4; burdata: baxx ħafna=0 sa eċċellenti=4).",
+        "options": {
+          "grade": "Grad bl-ittra",
+          "mood": "Burdata"
+        }
+      },
+      {
+        "title": "Mistoqsija",
+        "description": "Mistoqsija għall-istudent. Ħalliha vojta biex tuża d-default għat-tip ta' input."
+      },
+      {
+        "title": "Spinti",
+        "description": "Il-feedback muri għal firxa ta' tweġibiet. Tintuża l-ewwel firxa li taqbel."
+      }
+    ]
+  }
+}

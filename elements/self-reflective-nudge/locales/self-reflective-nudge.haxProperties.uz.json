@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "O'z-o'zini tahlil qilish eslatmasi",
+    "description": "Talabadan bahosi yoki kayfiyati haqida o'ylab ko'rishni so'rang va javobga qarab o'zini tuzatishga yordam beradigan eslatma taklif qiling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kiritish turi",
+        "description": "Talaba ishlari qanday ketayotganini qanday bildiradi. Ikkalasi ham 0 dan 4 gacha shkaladan foydalanadi (baho: F=0, D=1, C=2, B=3, A=4; kayfiyat: juda past=0, ajoyib=4).",
+        "options": {
+          "grade": "Harfli baho",
+          "mood": "Kayfiyat"
+        }
+      },
+      {
+        "title": "Savol",
+        "description": "Talaba uchun savol. Kiritish turining standart savolidan foydalanish uchun bo'sh qoldiring."
+      },
+      {
+        "title": "Eslatmalar",
+        "description": "Javoblar oralig'i uchun ko'rsatiladigan fikr-mulohaza. Birinchi mos keladigan oraliq ishlatiladi."
+      }
+    ]
+  }
+}

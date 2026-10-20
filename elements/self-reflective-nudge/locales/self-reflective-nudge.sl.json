@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Kakšno oceno ste dobili pri zadnjem kvizu?",
+  "moodPrompt": "Kako mislite, da vam gre?",
+  "reviewLink": "Preglejte to gradivo",
+  "grade": "Ocena",
+  "moodVeryLow": "Zelo slabo",
+  "moodLow": "Slabo",
+  "moodOkay": "V redu",
+  "moodGood": "Dobro",
+  "moodGreat": "Odlično"
+}

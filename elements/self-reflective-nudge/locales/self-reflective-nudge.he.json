@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "מה קיבלת בבוחן האחרון?",
+  "moodPrompt": "איך נראה לך שהולך לך?",
+  "reviewLink": "חזרה על החומר הזה",
+  "grade": "ציון",
+  "moodVeryLow": "נמוך מאוד",
+  "moodLow": "נמוך",
+  "moodOkay": "בסדר",
+  "moodGood": "טוב",
+  "moodGreat": "מצוין"
+}

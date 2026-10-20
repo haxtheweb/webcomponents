@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Enesepeegelduse tõuge",
+    "description": "Palu õppijal mõelda oma hindele või tujule ja paku vastuse põhjal enesekorrektsiooni tõuget."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sisendi tüüp",
+        "description": "Kuidas õppija teatab, kuidas tal läheb. Mõlemad kasutavad skaalat 0 kuni 4 (hinne: F=0, D=1, C=2, B=3, A=4; tuju: väga madal=0 kuni suurepärane=4).",
+        "options": {
+          "grade": "Tähthinne",
+          "mood": "Tuju"
+        }
+      },
+      {
+        "title": "Küsimus",
+        "description": "Õppijale esitatav küsimus. Jäta tühjaks, et kasutada sisendi tüübi vaikeväärtust."
+      },
+      {
+        "title": "Tõuked",
+        "description": "Tagasiside, mida näidatakse vastuste vahemiku korral. Kasutatakse esimest sobivat vahemikku."
+      }
+    ]
+  }
+}

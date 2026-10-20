@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Impuls de autoreflecție",
+    "description": "Cere unui student să reflecteze asupra unei note sau stări de spirit și oferă un impuls de autocorectare pe baza răspunsului."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tip de intrare",
+        "description": "Cum raportează studentul cum se descurcă. Ambele folosesc o scară de la 0 la 4 (notă: F=0, D=1, C=2, B=3, A=4; stare: foarte slabă=0 până la excelentă=4).",
+        "options": {
+          "grade": "Notă cu litere",
+          "mood": "Stare de spirit"
+        }
+      },
+      {
+        "title": "Întrebare",
+        "description": "Întrebare pentru student. Lasă gol pentru a folosi valoarea implicită pentru tipul de intrare."
+      },
+      {
+        "title": "Impulsuri",
+        "description": "Feedback afișat pentru un interval de răspunsuri. Se folosește primul interval care se potrivește."
+      }
+    ]
+  }
+}

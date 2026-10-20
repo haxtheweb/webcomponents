@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Impuls zur Selbstreflexioun",
+    "description": "Fuerder e Student op, iwwer eng Note oder eng Stëmmung nozedenken, a gëff op Basis vun der Äntwert en Impuls zur Selbstkorrektur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Eingabeart",
+        "description": "Wéi de Student mellt, wéi et him geet. Béid benotzen eng Skala vun 0 bis 4 (Note: F=0, D=1, C=2, B=3, A=4; Stëmmung: ganz niddereg=0 bis super=4).",
+        "options": {
+          "grade": "Buschtawennote",
+          "mood": "Stëmmung"
+        }
+      },
+      {
+        "title": "Fro",
+        "description": "Fro un de Student. Eidel loossen, fir de Standard fir d'Eingabeart ze benotzen."
+      },
+      {
+        "title": "Impulser",
+        "description": "Feedback, dat fir e Beräich vun Äntwerten ugewise gëtt. Deen éischte passende Beräich gëtt benotzt."
+      }
+    ]
+  }
+}

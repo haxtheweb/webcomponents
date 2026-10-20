@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Bạn được bao nhiêu điểm trong bài kiểm tra gần nhất?",
+  "moodPrompt": "Bạn nghĩ mình đang học thế nào?",
+  "reviewLink": "Ôn lại tài liệu này",
+  "grade": "Điểm",
+  "moodVeryLow": "Rất thấp",
+  "moodLow": "Thấp",
+  "moodOkay": "Tạm ổn",
+  "moodGood": "Tốt",
+  "moodGreat": "Tuyệt vời"
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Chilimbikitso choganizira za iwe wekha",
+    "description": "Funsani wophunzira kuti aganizire za giredi kapena momwe akumvera, ndipo mupereke chilimbikitso chodzikonza malinga ndi yankho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mtundu wolowetsa",
+        "description": "Momwe wophunzira amanenera zomwe akuchita. Zonse zimagwiritsa ntchito sikelo ya 0 mpaka 4 (giredi: F=0, D=1, C=2, B=3, A=4; momwe akumvera: pansi kwambiri=0 mpaka zabwino kwambiri=4).",
+        "options": {
+          "grade": "Giredi ya zilembo",
+          "mood": "Momwe akumvera"
+        }
+      },
+      {
+        "title": "Funso",
+        "description": "Funso la wophunzira. Siyani opanda kanthu kuti mugwiritse ntchito lokhazikika la mtundu wolowetsa."
+      },
+      {
+        "title": "Zilimbikitso",
+        "description": "Mayankho owonetsedwa pa mayankho osiyanasiyana. Gawo loyamba lofanana ndilo limagwiritsidwa ntchito."
+      }
+    ]
+  }
+}

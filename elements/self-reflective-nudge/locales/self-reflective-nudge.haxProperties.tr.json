@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Öz değerlendirme hatırlatması",
+    "description": "Öğrenciden notu veya ruh hali üzerine düşünmesini isteyin ve cevaba göre kendini düzeltmesine yardımcı olacak bir hatırlatma sunun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Giriş türü",
+        "description": "Öğrencinin nasıl gittiğini nasıl bildirdiği. İkisi de 0 ile 4 arasında bir ölçek kullanır (not: F=0, D=1, C=2, B=3, A=4; ruh hali: çok düşük=0, harika=4).",
+        "options": {
+          "grade": "Harf notu",
+          "mood": "Ruh hali"
+        }
+      },
+      {
+        "title": "Soru",
+        "description": "Öğrenciye sorulacak soru. Giriş türünün varsayılanını kullanmak için boş bırakın."
+      },
+      {
+        "title": "Hatırlatmalar",
+        "description": "Bir yanıt aralığı için gösterilen geri bildirim. Eşleşen ilk aralık kullanılır."
+      }
+    ]
+  }
+}

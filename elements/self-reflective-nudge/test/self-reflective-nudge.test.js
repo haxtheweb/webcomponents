@@ -156,7 +156,9 @@ describe("SelfReflectiveNudge test", () => {
     const tight = await fixture(html`
       <div style="line-height: 1">
         <self-reflective-nudge input="mood">
-          <p data-nudge data-max-value="4">A nudge that is long enough to wrap.</p>
+          <p data-nudge data-max-value="4">
+            A nudge that is long enough to wrap.
+          </p>
         </self-reflective-nudge>
       </div>
     `);

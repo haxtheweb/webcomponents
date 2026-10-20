@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ndụmọdụ nlebanya onwe onye",
+    "description": "Gwa nwa akwụkwọ ka o chee echiche banyere akara ma ọ bụ ọnọdụ obi ya, ma nye ya ndụmọdụ iji meziwanye onwe ya dabere na azịza ya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ụdị ntinye",
+        "description": "Otú nwa akwụkwọ si ekwu ka o si eme. Ha abụọ na-eji ọkwa 0 ruo 4 (akara: F=0, D=1, C=2, B=3, A=4; ọnọdụ obi: dị ala nke ukwuu=0 ruo ọ magburu onwe ya=4).",
+        "options": {
+          "grade": "Akara mkpụrụedemede",
+          "mood": "Ọnọdụ obi"
+        }
+      },
+      {
+        "title": "Ajụjụ",
+        "description": "Ajụjụ maka nwa akwụkwọ. Hapụ ya efu iji jiri ihe ndabara maka ụdị ntinye."
+      },
+      {
+        "title": "Ndụmọdụ",
+        "description": "Nzaghachi a na-egosi maka ọnụọgụ azịza. A na-eji ọnụọgụ mbụ kwekọrọ."
+      }
+    ]
+  }
+}

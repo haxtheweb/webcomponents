@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Ìrànnilétí ìrònú ara ẹni",
+    "description": "Bẹ̀ akẹ́kọ̀ọ́ kí ó ronú lórí máàkì tàbí ìṣesí rẹ̀, kí o sì fún un ní ìrànnilétí láti tún ara rẹ̀ ṣe gẹ́gẹ́ bí ìdáhùn rẹ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Irú ìfisílẹ̀",
+        "description": "Bí akẹ́kọ̀ọ́ ṣe ń sọ bí nǹkan ṣe ń lọ fún un. Méjèèjì lo òṣùwọ̀n 0 sí 4 (máàkì: F=0, D=1, C=2, B=3, A=4; ìṣesí: kéré gan-an=0 sí dára gan-an=4).",
+        "options": {
+          "grade": "Máàkì lẹ́tà",
+          "mood": "Ìṣesí"
+        }
+      },
+      {
+        "title": "Ìbéèrè",
+        "description": "Ìbéèrè fún akẹ́kọ̀ọ́. Fi sílẹ̀ lófo láti lo èyí tí a yàn ṣáájú fún irú ìfisílẹ̀."
+      },
+      {
+        "title": "Àwọn ìrànnilétí",
+        "description": "Èsì tí a fihàn fún ìwọ̀n ìdáhùn. A óò lo ìwọ̀n àkọ́kọ́ tó bá mu."
+      }
+    ]
+  }
+}

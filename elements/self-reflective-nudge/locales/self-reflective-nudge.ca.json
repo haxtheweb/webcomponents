@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Quina nota vas treure al darrer qüestionari?",
+  "moodPrompt": "Com creus que et va?",
+  "reviewLink": "Repassa aquest material",
+  "grade": "Nota",
+  "moodVeryLow": "Molt baix",
+  "moodLow": "Baix",
+  "moodOkay": "Normal",
+  "moodGood": "Bé",
+  "moodGreat": "Genial"
+}

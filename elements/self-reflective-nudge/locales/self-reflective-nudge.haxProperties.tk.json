@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Özüni analiz ediji ýatlatma",
+    "description": "Talyptan bahasy ýa-da keýpi barada oýlanmagy haýyş ediň we jogaba görä özüni düzetmäge kömek edýän ýatlatma hödürläň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Giriş görnüşi",
+        "description": "Talyp işleriniň nähili barýandygyny nädip habar berýär. Ikisi hem 0-dan 4-e çenli şkalany ulanýar (baha: F=0, D=1, C=2, B=3, A=4; keýp: gaty pes=0, ajaýyp=4).",
+        "options": {
+          "grade": "Harply baha",
+          "mood": "Keýp"
+        }
+      },
+      {
+        "title": "Sorag",
+        "description": "Talyp üçin sorag. Giriş görnüşiniň demirgazyk bahasyny ulanmak üçin boş goýuň."
+      },
+      {
+        "title": "Ýatlatmalar",
+        "description": "Jogaplaryň aralygy üçin görkezilýän gaýtargy. Ilkinji gabat gelýän aralyk ulanylýar."
+      }
+    ]
+  }
+}

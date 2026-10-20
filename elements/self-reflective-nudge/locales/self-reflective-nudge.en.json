@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "What did you get on the last quiz?",
+  "moodPrompt": "How do you think you are doing?",
+  "reviewLink": "Review this material",
+  "grade": "Grade",
+  "moodVeryLow": "Very low",
+  "moodLow": "Low",
+  "moodOkay": "Okay",
+  "moodGood": "Good",
+  "moodGreat": "Great"
+}

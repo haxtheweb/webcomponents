@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Zachęta do autorefleksji",
+    "description": "Poproś studenta o refleksję nad oceną lub nastrojem i zaproponuj wskazówkę do samodzielnej poprawy na podstawie odpowiedzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Typ danych wejściowych",
+        "description": "Jak student zgłasza, jak mu idzie. Oba używają skali od 0 do 4 (ocena: F=0, D=1, C=2, B=3, A=4; nastrój: bardzo słabo=0 do świetnie=4).",
+        "options": {
+          "grade": "Ocena literowa",
+          "mood": "Nastrój"
+        }
+      },
+      {
+        "title": "Pytanie",
+        "description": "Pytanie do studenta. Pozostaw puste, aby użyć wartości domyślnej dla danego typu danych."
+      },
+      {
+        "title": "Wskazówki",
+        "description": "Informacja zwrotna wyświetlana dla zakresu odpowiedzi. Używany jest pierwszy pasujący zakres."
+      }
+    ]
+  }
+}

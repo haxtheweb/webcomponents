@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Mi lett az eredményed a legutóbbi kvízen?",
+  "moodPrompt": "Szerinted hogy állsz?",
+  "reviewLink": "Az anyag áttekintése",
+  "grade": "Jegy",
+  "moodVeryLow": "Nagyon rossz",
+  "moodLow": "Rossz",
+  "moodOkay": "Elfogadható",
+  "moodGood": "Jó",
+  "moodGreat": "Nagyszerű"
+}

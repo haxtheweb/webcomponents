@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "په وروستي کوئز کې تاسو څه ترلاسه کړل؟",
+  "moodPrompt": "تاسو څنګه فکر کوئ چې مخ پر مخ ځئ؟",
+  "reviewLink": "دا مواد بیا وګورئ",
+  "grade": "درجه",
+  "moodVeryLow": "ډیر ټیټ",
+  "moodLow": "ټیټ",
+  "moodOkay": "سم دی",
+  "moodGood": "ښه",
+  "moodGreat": "عالي"
+}

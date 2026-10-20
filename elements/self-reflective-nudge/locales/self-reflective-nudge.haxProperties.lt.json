@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Savirefleksijos paskatinimas",
+    "description": "Paprašykite mokinio apmąstyti pažymį ar nuotaiką ir pasiūlykite savitaisos paskatinimą pagal atsakymą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Įvesties tipas",
+        "description": "Kaip mokinys nurodo, kaip jam sekasi. Abu naudoja skalę nuo 0 iki 4 (pažymys: F=0, D=1, C=2, B=3, A=4; nuotaika: labai prastai=0 iki puikiai=4).",
+        "options": {
+          "grade": "Raidinis pažymys",
+          "mood": "Nuotaika"
+        }
+      },
+      {
+        "title": "Klausimas",
+        "description": "Klausimas mokiniui. Palikite tuščią, jei norite naudoti numatytąjį pagal įvesties tipą."
+      },
+      {
+        "title": "Paskatinimai",
+        "description": "Atsiliepimai, rodomi atsakymų intervalui. Naudojamas pirmas atitinkantis intervalas."
+      }
+    ]
+  }
+}

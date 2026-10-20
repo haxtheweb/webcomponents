@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Whakaoho whakaaroaro ki a koe anō",
+    "description": "Me tono ki te ākonga kia whakaaro ki tētahi tohu, ki tētahi āhua rānei, ā, me tuku he whakaoho hei whakatika i a ia anō i runga i tana whakautu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Momo whakaurunga",
+        "description": "Te huarahi e kōrero ai te ākonga i tōna āhua. E rua ngā momo e whakamahi ana i tētahi tauine 0 ki te 4 (tohu: F=0, D=1, C=2, B=3, A=4; āhua: tino iti=0 ki tino pai=4).",
+        "options": {
+          "grade": "Tohu reta",
+          "mood": "Āhua"
+        }
+      },
+      {
+        "title": "Pātai",
+        "description": "He pātai mā te ākonga. Waiho kia kau hei whakamahi i te taunoa mō te momo whakaurunga."
+      },
+      {
+        "title": "Ngā whakaoho",
+        "description": "Urupare e whakaaturia ana mō tētahi awhe whakautu. Ka whakamahia te awhe tuatahi e ōrite ana."
+      }
+    ]
+  }
+}

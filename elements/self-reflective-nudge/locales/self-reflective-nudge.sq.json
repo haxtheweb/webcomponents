@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Çfarë note more në kuizin e fundit?",
+  "moodPrompt": "Si mendon se po ia del?",
+  "reviewLink": "Rishiko këtë material",
+  "grade": "Nota",
+  "moodVeryLow": "Shumë keq",
+  "moodLow": "Keq",
+  "moodOkay": "Në rregull",
+  "moodGood": "Mirë",
+  "moodGreat": "Shkëlqyeshëm"
+}

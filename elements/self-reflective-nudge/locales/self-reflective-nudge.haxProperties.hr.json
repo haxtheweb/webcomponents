@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Poticaj za samorefleksiju",
+    "description": "Zamolite studenta da razmisli o ocjeni ili raspoloženju i ponudite poticaj za samoispravljanje na temelju odgovora."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vrsta unosa",
+        "description": "Kako student prijavljuje kako mu ide. Oba koriste ljestvicu od 0 do 4 (ocjena: F=0, D=1, C=2, B=3, A=4; raspoloženje: vrlo loše=0 do odlično=4).",
+        "options": {
+          "grade": "Slovna ocjena",
+          "mood": "Raspoloženje"
+        }
+      },
+      {
+        "title": "Pitanje",
+        "description": "Pitanje za studenta. Ostavite prazno za zadanu vrijednost za vrstu unosa."
+      },
+      {
+        "title": "Poticaji",
+        "description": "Povratna informacija prikazana za raspon odgovora. Koristi se prvi odgovarajući raspon."
+      }
+    ]
+  }
+}

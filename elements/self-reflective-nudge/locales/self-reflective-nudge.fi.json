@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Minkä arvosanan sait viimeisestä kokeesta?",
+  "moodPrompt": "Miten uskot pärjääväsi?",
+  "reviewLink": "Kertaa tämä materiaali",
+  "grade": "Arvosana",
+  "moodVeryLow": "Erittäin huono",
+  "moodLow": "Huono",
+  "moodOkay": "Kohtalainen",
+  "moodGood": "Hyvä",
+  "moodGreat": "Erinomainen"
+}

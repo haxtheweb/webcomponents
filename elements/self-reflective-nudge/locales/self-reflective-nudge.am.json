@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "በመጨረሻው ፈተና ምን ውጤት አገኙ?",
+  "moodPrompt": "እንዴት እየሄደልዎት ነው ብለው ያስባሉ?",
+  "reviewLink": "ይህን ይዘት ይከልሱ",
+  "grade": "ውጤት",
+  "moodVeryLow": "በጣም ዝቅተኛ",
+  "moodLow": "ዝቅተኛ",
+  "moodOkay": "ደህና",
+  "moodGood": "ጥሩ",
+  "moodGreat": "በጣም ጥሩ"
+}

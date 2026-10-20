@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Kokį pažymį gavai už paskutinį testą?",
+  "moodPrompt": "Kaip manai, kaip tau sekasi?",
+  "reviewLink": "Pakartoti šią medžiagą",
+  "grade": "Pažymys",
+  "moodVeryLow": "Labai prastai",
+  "moodLow": "Prastai",
+  "moodOkay": "Vidutiniškai",
+  "moodGood": "Gerai",
+  "moodGreat": "Puikiai"
+}

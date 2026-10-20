@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Beth gawsoch chi yn y cwis diwethaf?",
+  "moodPrompt": "Sut ydych chi'n meddwl rydych chi'n gwneud?",
+  "reviewLink": "Adolygu'r deunydd hwn",
+  "grade": "Gradd",
+  "moodVeryLow": "Isel iawn",
+  "moodLow": "Isel",
+  "moodOkay": "Iawn",
+  "moodGood": "Da",
+  "moodGreat": "Gwych"
+}

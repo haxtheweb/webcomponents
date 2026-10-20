@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Coup de pouce réflexif",
+    "description": "Invitez l'étudiant à réfléchir à sa note ou à son humeur et proposez-lui un coup de pouce d'autocorrection selon sa réponse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Type de saisie",
+        "description": "Comment l'étudiant indique où il en est. Les deux utilisent une échelle de 0 à 4 (note : F=0, D=1, C=2, B=3, A=4 ; humeur : très bas=0 à excellent=4).",
+        "options": {
+          "grade": "Note en lettre",
+          "mood": "Humeur"
+        }
+      },
+      {
+        "title": "Question",
+        "description": "Question posée à l'étudiant. Laissez vide pour utiliser la valeur par défaut du type de saisie."
+      },
+      {
+        "title": "Coups de pouce",
+        "description": "Commentaire affiché pour une plage de réponses. La première plage correspondante est utilisée."
+      }
+    ]
+  }
+}

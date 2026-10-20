@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Gorsa of-ilaalaa",
+    "description": "Barataan qabxii yookaan miira isaa irratti akka of-ilaalu gaafadhuu, deebii isaa irratti hundaa'uun gorsa of-sirreessu kenni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gosa galmee",
+        "description": "Barataan akkamitti akka jiru akkamitti gabaasa. Lamaanuu sikeelii 0 hanga 4 fayyadamu (qabxii: F=0, D=1, C=2, B=3, A=4; miira: baay'ee gad aanaa=0 hanga baay'ee gaarii=4).",
+        "options": {
+          "grade": "Qabxii mallattoo",
+          "mood": "Miira"
+        }
+      },
+      {
+        "title": "Gaaffii",
+        "description": "Gaaffii barataaf. Gosa galmee sanaaf kan durtii fayyadamuuf duwwaa dhiisi."
+      },
+      {
+        "title": "Gorsawwan",
+        "description": "Yaada deebii garaagaraaf agarsiifamu. Daangaan jalqabaa wal simu ni fayyadama."
+      }
+    ]
+  }
+}

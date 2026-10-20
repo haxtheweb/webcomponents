@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Incentivo à autorreflexão",
+    "description": "Peça ao aluno que reflita sobre uma nota ou um humor e ofereça um incentivo de autocorreção com base na resposta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tipo de entrada",
+        "description": "Como o aluno informa como está indo. Ambos usam uma escala de 0 a 4 (nota: F=0, D=1, C=2, B=3, A=4; humor: muito baixo=0 a ótimo=4).",
+        "options": {
+          "grade": "Nota com letra",
+          "mood": "Humor"
+        }
+      },
+      {
+        "title": "Pergunta",
+        "description": "Pergunta para o aluno. Deixe em branco para usar o padrão do tipo de entrada."
+      },
+      {
+        "title": "Incentivos",
+        "description": "Feedback exibido para uma faixa de respostas. Usa-se a primeira faixa correspondente."
+      }
+    ]
+  }
+}

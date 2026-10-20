@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Akú známku ste dostali z posledného testu?",
+  "moodPrompt": "Ako si myslíte, že sa vám darí?",
+  "reviewLink": "Zopakovať tento materiál",
+  "grade": "Známka",
+  "moodVeryLow": "Veľmi zlé",
+  "moodLow": "Zlé",
+  "moodOkay": "Ujde to",
+  "moodGood": "Dobré",
+  "moodGreat": "Skvelé"
+}

@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "지난 퀴즈에서 어떤 점수를 받았나요?",
+  "moodPrompt": "지금 어떻게 지내고 있다고 생각하나요?",
+  "reviewLink": "이 자료 복습하기",
+  "grade": "성적",
+  "moodVeryLow": "매우 나쁨",
+  "moodLow": "나쁨",
+  "moodOkay": "보통",
+  "moodGood": "좋음",
+  "moodGreat": "매우 좋음"
+}

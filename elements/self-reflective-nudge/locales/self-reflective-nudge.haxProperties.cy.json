@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Hwb hunanfyfyriol",
+    "description": "Gofyn i fyfyriwr fyfyrio ar radd neu hwyliau a chynnig hwb hunan-gywirol yn seiliedig ar yr ateb."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Math o fewnbwn",
+        "description": "Sut mae'r myfyriwr yn adrodd sut mae'n gwneud. Mae'r ddau'n defnyddio graddfa 0 i 4 (gradd: F=0, D=1, C=2, B=3, A=4; hwyliau: isel iawn=0 i wych=4).",
+        "options": {
+          "grade": "Gradd llythyren",
+          "mood": "Hwyliau"
+        }
+      },
+      {
+        "title": "Anogwr",
+        "description": "Cwestiwn i'r myfyriwr. Gadewch yn wag i ddefnyddio'r rhagosodiad ar gyfer y math o fewnbwn."
+      },
+      {
+        "title": "Hwbiau",
+        "description": "Adborth a ddangosir ar gyfer ystod o ymatebion. Defnyddir yr ystod gyntaf sy'n cyfateb."
+      }
+    ]
+  }
+}

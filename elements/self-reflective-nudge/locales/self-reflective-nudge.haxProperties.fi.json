@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Itsereflektiivinen vinkki",
+    "description": "Pyydä opiskelijaa pohtimaan arvosanaansa tai mielialaansa ja tarjoa vastauksen perusteella itseä korjaava vinkki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Syötteen tyyppi",
+        "description": "Miten opiskelija kertoo, miten hänellä menee. Molemmissa käytetään asteikkoa 0–4 (arvosana: F=0, D=1, C=2, B=3, A=4; mieliala: erittäin huono=0 – erinomainen=4).",
+        "options": {
+          "grade": "Kirjainarvosana",
+          "mood": "Mieliala"
+        }
+      },
+      {
+        "title": "Kysymys",
+        "description": "Opiskelijalle esitettävä kysymys. Jätä tyhjäksi, jos haluat käyttää syötteen tyypin oletusta."
+      },
+      {
+        "title": "Vinkit",
+        "description": "Palaute, joka näytetään vastausvälille. Käytetään ensimmäistä täsmäävää väliä."
+      }
+    ]
+  }
+}

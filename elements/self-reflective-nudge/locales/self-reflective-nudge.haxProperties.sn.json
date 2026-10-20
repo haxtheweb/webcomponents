@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Kusundidzira kuzvifungisisa",
+    "description": "Kumbira mudzidzi kuti afungisise giredhi kana manzwiro ake, wozopa kurudziro yekuzvigadzirisa zvichibva pamhinduro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mhando yekupinza",
+        "description": "Nzira yaanoudza nayo mudzidzi kuti ari kuita sei. Dzose dzinoshandisa chiyero che0 kusvika ku4 (giredhi: F=0, D=1, C=2, B=3, A=4; manzwiro: pasi zvikuru=0 kusvika zvakanakisa=4).",
+        "options": {
+          "grade": "Giredhi remavara",
+          "mood": "Manzwiro"
+        }
+      },
+      {
+        "title": "Mubvunzo",
+        "description": "Mubvunzo wemudzidzi. Siya uri pasina kuti ushandise zvakajairwa zvemhando yekupinza."
+      },
+      {
+        "title": "Kurudziro",
+        "description": "Mhinduro inoratidzwa pamhando dzakasiyana dzemhinduro. Inoshandiswa renji yekutanga inoenderana."
+      }
+    ]
+  }
+}

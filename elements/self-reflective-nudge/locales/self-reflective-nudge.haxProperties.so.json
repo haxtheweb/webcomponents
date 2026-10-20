@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Tilmaan is-milicsi",
+    "description": "Ka codso arday inuu ka fiirsado darajo ama niyad, kuna bixi tilmaan is-hagaajin ah iyadoo lagu salaynayo jawaabta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nooca gelinta",
+        "description": "Sida ardaygu u sheego xaaladdiisa. Labaduba waxay isticmaalaan cabbir 0 ilaa 4 (darajo: F=0, D=1, C=2, B=3, A=4; niyad: aad u liita=0 ilaa aad u wanaagsan=4).",
+        "options": {
+          "grade": "Darajo xaraf ah",
+          "mood": "Niyad"
+        }
+      },
+      {
+        "title": "Su'aal",
+        "description": "Su'aal loogu talagalay ardayga. Ka tag madhan si loo isticmaalo qiimaha caadiga ah ee nooca gelinta."
+      },
+      {
+        "title": "Tilmaamo",
+        "description": "Jawaab-celin lagu muujiyo kala duwanaansho jawaabo. Waxaa la isticmaalaa kala duwanaanshaha ugu horreeya ee ku habboon."
+      }
+    ]
+  }
+}
