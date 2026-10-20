@@ -123,7 +123,7 @@ describe("LTIResizingMixin", () => {
     expect(postMessageCalls[0].origin).to.equal("https://canvas.example.edu");
   });
 
-  it('passes ltiOrigin "*" straight through as the target origin', async () => {
+  it('never uses ltiOrigin "*" as the target origin (JS-MSG-001)', async () => {
     stubPostMessage();
     globalThis.HAXCMS = {
       instance: {
@@ -133,7 +133,8 @@ describe("LTIResizingMixin", () => {
     globalThis.document.createElement("lti-resizing-test-host");
     store.appReady = true;
     await wait(0);
-    expect(postMessageCalls[0].origin).to.equal("*");
+    expect(postMessageCalls[0].origin).to.not.equal("*");
+    expect(postMessageCalls[0].origin).to.equal(globalThis.location.origin);
   });
 
   it("falls back to the location origin when no ltiOrigin is configured", async () => {

@@ -3164,11 +3164,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               position="bottom"
               ?hidden="${this.editMode}"
             >
-              >${this.backText || this.t.siteDashboard}</simple-tooltip
+              ${this.backText || this.t.siteDashboard}</simple-tooltip
             >
             <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
           </span>
-          <div class="toolbar-buttons left-toolbar-buttons">
+          <div class="toolbar-buttons left-toolbar-buttons" role="menubar">
             <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
             <simple-toolbar-button
               id="exportbtn"
@@ -3306,7 +3306,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </div>
         </div>
         <div slot="center" class="topbar-center-group">
-          <div class="toolbar-buttons center-toolbar-buttons">
+          <div class="toolbar-buttons center-toolbar-buttons" role="group">
             <simple-toolbar-button
               icon="hax:wizard-hat"
               label="${this.t.merlin}"
@@ -3337,7 +3337,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </div>
         </div>
         <div slot="right" class="topbar-right-group">
-          <div class="toolbar-buttons right-toolbar-buttons">
+          <div class="toolbar-buttons right-toolbar-buttons" role="menubar">
             ${this.__haxcmsButtonAddReady
               ? html`<haxcms-button-add
                   ?hidden="${!store.platformAllows("addPage")}"
@@ -3409,7 +3409,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               for="menubtn"
               slot="menuButton"
               position="bottom"
-              ?hidden="${this.editMode}"
+              ?hidden="${this.editMode || !this.userName}"
               >${this.userName}</simple-tooltip
             >
             <div slot="pre-menu" class="ops-panel">

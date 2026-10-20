@@ -123,7 +123,10 @@ describe("HAXCMSRememberRoute", () => {
         "Resume where you left off last session?",
       );
       expect(toasts[0].slot).to.exist;
-      expect(toasts[0].slot.getAttribute("href")).to.equal("/rr-site/page-2");
+      // safeNavigateHref resolves the stored route to an absolute http(s) URL
+      expect(toasts[0].slot.getAttribute("href")).to.equal(
+        new URL("/rr-site/page-2", globalThis.location.href).href,
+      );
       expect(el.__evaluateRoute).to.equal(true);
     } finally {
       el.remove();
