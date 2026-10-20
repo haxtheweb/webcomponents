@@ -8,117 +8,8 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-
-/**
- * Supported language codes mapped to native names.
- * Front-end-driven: user picks in step 1, element renders in that language.
- */
-const SUPPORTED_LANGUAGES = {
-  af: "Afrikaans",
-  am: "አማርኛ",
-  ar: "العربية",
-  az: "Azərbaycan",
-  be: "Беларуская",
-  bg: "Български",
-  bn: "বাংলা",
-  bs: "Bosanski",
-  ca: "Català",
-  co: "Corsu",
-  cs: "Čeština",
-  cy: "Cymraeg",
-  da: "Dansk",
-  de: "Deutsch",
-  el: "Ελληνικά",
-  en: "English",
-  eo: "Esperanto",
-  es: "Español",
-  et: "Eesti",
-  eu: "Euskara",
-  fa: "فارسی",
-  fi: "Suomi",
-  fo: "Føroyskt",
-  fr: "Français",
-  fy: "Frysk",
-  ga: "Gaeilge",
-  gl: "Galego",
-  gn: "Avañe'ẽ",
-  gu: "ગુજરાતી",
-  ha: "Hausa",
-  haw: "ʻŌlelo Hawaiʻi",
-  he: "עברית",
-  hi: "हिन्दी",
-  hr: "Hrvatski",
-  hu: "Magyar",
-  hy: "Հայերեն",
-  id: "Bahasa Indonesia",
-  ig: "Igbo",
-  is: "Íslenska",
-  it: "Italiano",
-  ja: "日本語",
-  jv: "Basa Jawa",
-  ka: "ქართული",
-  kk: "Қазақ",
-  km: "ខ្មែរ",
-  kn: "ಕನ್ನಡ",
-  ko: "한국어",
-  ku: "Kurdî",
-  ky: "Кыргызча",
-  lb: "Lëtzebuergesch",
-  lo: "ລາວ",
-  lt: "Lietuvių",
-  lv: "Latviešu",
-  mi: "Māori",
-  mk: "Македонски",
-  ml: "മലയാളം",
-  mn: "Монгол",
-  mr: "मराठी",
-  ms: "Bahasa Melayu",
-  mt: "Malti",
-  my: "မြန်မာ",
-  nb: "Norsk Bokmål",
-  ne: "नेपाली",
-  nl: "Nederlands",
-  no: "Norsk",
-  ny: "Chichewa",
-  om: "Oromoo",
-  pa: "ਪੰਜਾਬੀ",
-  pl: "Polski",
-  pnb: "پنجابی",
-  ps: "پښتو",
-  pt: "Português",
-  qu: "Runa Simi",
-  ro: "Română",
-  ru: "Русский",
-  sd: "سنڌي",
-  si: "සිංහල",
-  sk: "Slovenčina",
-  sl: "Slovenščina",
-  sn: "ChiShona",
-  so: "Soomaali",
-  sq: "Shqip",
-  sr: "Српски",
-  sv: "Svenska",
-  sw: "Kiswahili",
-  ta: "தமிழ்",
-  te: "తెలుగు",
-  tg: "Тоҷикӣ",
-  th: "ไทย",
-  tk: "Türkmen",
-  tl: "Filipino",
-  tr: "Türkçe",
-  tt: "Татар",
-  uk: "Українська",
-  ur: "اردو",
-  uz: "O'zbek",
-  vi: "Tiếng Việt",
-  wuu: "吴语",
-  xh: "isiXhosa",
-  yi: "ייִדיש",
-  yo: "Yorùbá",
-  zh: "中文",
-  zh_CN: "中文（简体）",
-  zu: "isiZulu",
-};
+// the shared, searchable language list (reads the canonical language registry)
+import "@haxtheweb/haxcms-elements/lib/core/haxcms-language-picker.js";
 
 /**
  * `hax-app-installer`
@@ -407,8 +298,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           color: light-dark(var(--ddd-primary-3), var(--ddd-accent-6));
         }
 
-        .field-group input,
-        .field-group select {
+        .field-group input {
           width: 100%;
           box-sizing: border-box;
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
@@ -421,8 +311,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
           border-color: light-dark(var(--ddd-primary-5), var(--ddd-accent-6));
         }
 
-        .field-group input:focus,
-        .field-group select:focus {
+        .field-group input:focus {
           outline: var(--ddd-focus-ring);
           outline-offset: var(--ddd-focus-offset);
           border-color: var(--ddd-primary-8);
@@ -1523,8 +1412,8 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   /**
-   * Handle language select change.
-   * @param {Event} e - select change event
+   * Handle language picker change (value is the canonical registry code).
+   * @param {Event} e - value-changed event from haxcms-language-picker
    */
   _handleLanguageChange(e) {
     const target = e.target;
@@ -1796,32 +1685,17 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   renderStep1() {
-    const langCodes = Object.keys(SUPPORTED_LANGUAGES).sort((a, b) => {
-      const nameA = SUPPORTED_LANGUAGES[a];
-      const nameB = SUPPORTED_LANGUAGES[b];
-      return nameA.localeCompare(nameB);
-    });
     return html`
       <h2>${this.t.chooseLanguage}</h2>
       <p class="description">${this.t.selectLanguageDescription}</p>
       <div class="field-group">
-        <label for="lang-select">${this.t.chooseLanguage}</label>
-        <select
+        <haxcms-language-picker
           id="lang-select"
-          @change="${this._handleLanguageChange}"
+          .label="${this.t.chooseLanguage}"
           .value="${this._selectedLanguage}"
-        >
-          ${langCodes.map(
-            (code) => html`
-              <option
-                value="${code}"
-                ?selected="${code === this._selectedLanguage}"
-              >
-                ${SUPPORTED_LANGUAGES[code]}
-              </option>
-            `,
-          )}
-        </select>
+          popular-first
+          @value-changed="${this._handleLanguageChange}"
+        ></haxcms-language-picker>
       </div>
       <div class="btn-row">
         <button class="btn btn-primary" @click="${this._handleStep1Submit}">

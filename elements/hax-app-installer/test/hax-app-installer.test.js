@@ -1,5 +1,20 @@
 import { html, fixture, expect } from "@open-wc/testing";
 import "../hax-app-installer.js";
+import { loadLanguageRegistry } from "@haxtheweb/i18n-manager/lib/LanguageRegistry.js";
+
+// these suites stub fetch for the installer API, which also answers the
+// picker's languages.json request; load the real registry with the real fetch
+async function loadRealRegistry(realFetch, picker) {
+  const stub = globalThis.fetch;
+  globalThis.fetch = realFetch;
+  await loadLanguageRegistry();
+  globalThis.fetch = stub;
+  picker._ensureRegistry();
+  for (let i = 0; i < 50 && !picker._ready; i++) {
+    await new Promise((r) => setTimeout(r, 20));
+  }
+  await picker.updateComplete;
+}
 
 describe("HaxAppInstaller test", () => {
   let element;
@@ -51,6 +66,38 @@ describe("HaxAppInstaller test", () => {
     await element.updateComplete;
     const select = element.shadowRoot.querySelector("#lang-select");
     expect(select).to.exist;
+  });
+
+  it("step 1 uses the shared searchable language picker", async () => {
+    element.step = 1;
+    element.loading = false;
+    element.error = "";
+    await element.updateComplete;
+    const picker = element.shadowRoot.querySelector("haxcms-language-picker");
+    expect(picker).to.exist;
+    expect(picker.id).to.equal("lang-select");
+    // the installer no longer carries its own list: the picker lists the
+    // registry, which has every language the translation files ship
+    await loadRealRegistry(originalFetch, picker);
+    expect(picker._listedOptions.length).to.be.greaterThan(100);
+    // choosing a language in the picker updates what step 1 submits
+    picker.value = "sw";
+    picker.dispatchEvent(
+      new CustomEvent("value-changed", { bubbles: true, composed: true }),
+    );
+    expect(element._selectedLanguage).to.equal("sw");
+  });
+
+  it("step 1 shows a language saved in the install state", async () => {
+    element.step = 1;
+    element.loading = false;
+    element.error = "";
+    element._applyState({ step: 1, language: "zh_CN" });
+    await element.updateComplete;
+    const picker = element.shadowRoot.querySelector("haxcms-language-picker");
+    await loadRealRegistry(originalFetch, picker);
+    // the legacy underscore form is shown as the canonical code
+    expect(picker.value).to.equal("zh-CN");
   });
 
   it("renders step 2 content when step is 2", async () => {
