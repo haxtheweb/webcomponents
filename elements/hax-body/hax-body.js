@@ -31,6 +31,7 @@ import "@haxtheweb/image-gallery/image-gallery.js";
 // our default image in core
 import "@haxtheweb/media-image/media-image.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
+import { replaceLazyRun } from "@haxtheweb/utils/lib/safe-html.js";
 
 // variables required as part of the gravity drag and scroll
 let gravityScrollTimer = null;
@@ -3158,14 +3159,32 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     content = content.replace(/\scontenteditable/g, "");
     content = content.replace(/\sdraggable/g, "");
     // target and remove hax specific things from output if they slipped through
-    content = content.replace(/\sdata-hax-ray="[^"]*"/gim, "");
-    content = content.replace(/\sdata-hax-grid="[^"]*"/gim, "");
+    content = replaceLazyRun(content, [/\sdata-hax-ray="/, '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
+    content = replaceLazyRun(content, [/\sdata-hax-grid="/, '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
     // slips through with no value at times
-    content = content.replace(/\sdata-hax-layout="[^"]*"/gim, "");
-    content = content.replace(/\sdata-hax-active="[^"]*"/gim, "");
+    content = replaceLazyRun(content, [/\sdata-hax-layout="/, '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
+    content = replaceLazyRun(content, [/\sdata-hax-active="/, '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
     content = content.replace(/ class=""/gim, "");
-    content = content.replace(/ contenteditable="[^"]*"/gim, "");
-    content = content.replace(/\st="[^"]*"/gim, "");
+    content = replaceLazyRun(content, [' contenteditable="', '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
+    content = replaceLazyRun(content, [/\st="/, '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
     // spacing niceness for output readability
     content = content.replace(/&nbsp;/gm, " ");
     // remove HAX specific classes / scoping classes
