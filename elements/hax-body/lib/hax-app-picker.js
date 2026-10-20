@@ -69,7 +69,7 @@ class HaxAppPicker extends LitElement {
     type = "element",
     title = "Select an option",
     pickerType = "gizmo",
-    target = window,
+    target = globalThis,
   ) {
     this.elements = elements;
     this.type = type;

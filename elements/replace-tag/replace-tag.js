@@ -156,12 +156,12 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
           this.remove();
         }, 0);
       } else {
-        for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
+        for (let i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
           props[atts[i].nodeName] = atts[i].nodeValue;
         }
         let replacement = globalThis.document.createElement(props.with);
         // set the value in the new object
-        for (var i in props) {
+        for (let i in props) {
           if (props[i] != null) {
             // trap for bad attributes that were manually typed
             // or HTML imported that was improper in the past
@@ -192,7 +192,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
           } else {
             // just the props off of this for complex state
             for (
-              var i = 0, atts = this.attributes, n = atts.length;
+              let i = 0, atts = this.attributes, n = atts.length;
               i < n;
               i++
             ) {
@@ -201,7 +201,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
             let replacement = globalThis.document.createElement(props.with);
             replacement.setAttribute("popup-loader", "popup-loader");
             // set the value in the new object
-            for (var i in props) {
+            for (let i in props) {
               if (props[i] != null) {
                 // trap for bad attributes that were manually typed
                 // or HTML imported that was improper in the past

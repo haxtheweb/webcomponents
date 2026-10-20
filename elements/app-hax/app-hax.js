@@ -140,7 +140,6 @@ export class AppHax extends I18NMixin(ResponsiveUtilityBehaviors(DDD)) {
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     let body = "";
     if (type == "merlin") {
-      var title = `[${type}] New command request from HAX daemon`;
       body = `Location: ${globalThis.location.href}
 Merlin command: ${daemonTerm}
 What did you want merlin to do?

@@ -257,7 +257,7 @@ class JsonOutlineSchema extends HTMLElement {
         return response.text();
       });
       let fileData = JSON.parse(data);
-      for (var key in fileData) {
+      for (let key in fileData) {
         if (typeof this[key] !== typeof undefined && key !== "items") {
           this[key] = fileData[key];
         }
@@ -265,7 +265,7 @@ class JsonOutlineSchema extends HTMLElement {
       // check for items and escalate to full JSONOutlineSchemaItem object
       // also ensures data matches only what is supported
       if (fileData.items) {
-        for (var key in fileData.items) {
+        for (let key in fileData.items) {
           let item = fileData.items[key];
           let newItem = new JSONOutlineSchemaItem();
           newItem.id = item.id;

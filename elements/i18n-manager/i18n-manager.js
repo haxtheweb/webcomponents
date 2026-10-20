@@ -147,7 +147,9 @@ class I18NManager extends LitElement {
     if (this._docObserver) {
       try {
         this._docObserver.disconnect();
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
       this._docObserver = null;
     }
     super.disconnectedCallback();
@@ -324,7 +326,9 @@ class I18NManager extends LitElement {
       if (response && response.ok && response.json) {
         return await response.json();
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     return false;
   }
   /**
@@ -474,7 +478,7 @@ class I18NManager extends LitElement {
       // no matches found, now we should fallback to defaults in the elements
       if (fallBack.length !== 0) {
         // fallback to documentLanguage
-        for (var i in fallBack) {
+        for (let i in fallBack) {
           let el = fallBack[i];
           // verify we have a context
           if (el.context) {
@@ -488,7 +492,7 @@ class I18NManager extends LitElement {
         }
       }
       // run through and match exact matches
-      for (var i in processList) {
+      for (let i in processList) {
         let el = processList[i];
         let fetchTarget = "";
         // Use manifest checks first, fallback to component locales
@@ -528,7 +532,7 @@ class I18NManager extends LitElement {
           if (el.context) {
             let data = this.fetchTargets[fetchTarget];
             if (data) {
-              for (var id in data) {
+              for (let id in data) {
                 el.context.t[id] = data[id];
               }
             }
@@ -547,7 +551,7 @@ class I18NManager extends LitElement {
             let data = this.fetchTargets[fetchTarget];
             // set values
             if (data) {
-              for (var id in data) {
+              for (let id in data) {
                 el.context.t[id] = data[id];
               }
             }

@@ -520,7 +520,7 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
       // if we have new items do advanced processing of the items
       if (propName == "items" && this.items.length > 0 && !this._ignore) {
         this._ignore = true;
-        for (var i = 0; i < this.items.length; i++) {
+        for (let i = 0; i < this.items.length; i++) {
           // oh... your going to enjoy this one..
           // convert ALL objcet keys into a searchable string called title
           if (!this.items[i].title) {

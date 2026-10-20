@@ -71,7 +71,7 @@ export class MarkTheWords extends QuestionElement {
   rebuildWordList(statement) {
     this.wordList = [];
     const wordList = statement.trim().split(/\s+/g);
-    for (var i in wordList) {
+    for (let i in wordList) {
       let answerMatch = this.displayedAnswers.find(
         (answer) =>
           answer.label &&

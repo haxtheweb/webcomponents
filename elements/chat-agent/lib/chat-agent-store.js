@@ -395,8 +395,8 @@ class ChatAgentStore {
         break;
 
       // Online messages, do request response from backend AI
-      default:
-        var base = "";
+      default: {
+        let base = "";
 
         if (globalThis.document.querySelector("base")) {
           base = globalThis.document.querySelector("base").href;
@@ -454,6 +454,7 @@ class ChatAgentStore {
             );
             this.devStatement(error, "error");
           });
+      }
     }
   }
 

@@ -40,7 +40,9 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
             parseInt(message.height) + 40 + "px",
           );
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
   }
   disconnectedCallback() {
     globalThis.removeEventListener("message", this.__onFrameResizeMessage);

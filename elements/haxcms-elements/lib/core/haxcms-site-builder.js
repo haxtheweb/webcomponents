@@ -1073,7 +1073,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   replaceTagReplacement(html) {
     // all closing tags
-    let myRegexp = /\<(\w+?\-\w*.*)\s*?\>/gim;
+    let myRegexp = /<(\w+?-\w*.*)\s*?>/gim;
     // execute 1st match
     let match = myRegexp.exec(html);
     while (match != null) {

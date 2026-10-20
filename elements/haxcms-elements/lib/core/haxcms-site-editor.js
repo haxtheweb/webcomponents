@@ -770,7 +770,9 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       if (responseText && responseText.trim() !== "") {
         try {
           responseData = JSON.parse(responseText);
-        } catch {}
+        } catch {
+          // intentionally empty
+        }
       }
       const normalizedResponse =
         responseData && typeof responseData === "object"
@@ -956,7 +958,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           );
           break;
         }
-        default:
+        default: {
           const statusText =
             e.detail.value.statusText && e.detail.value.statusText !== ""
               ? e.detail.value.statusText
@@ -966,6 +968,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           });
           store.playSound("error");
           break;
+}
       }
     }
   }
@@ -987,7 +990,9 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         store.toast(this.t.sessionExpired, 4000, {
           fire: true,
         });
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
       return;
     }
     this.jwt = jwt;
@@ -1128,7 +1133,9 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         store.toast(this.t.sessionExpired, 4000, {
           fire: true,
         });
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
       this._snapshotPendingEditForLogout();
     }
     this.dispatchEvent(
@@ -1647,7 +1654,9 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         "haxcms-pending-edit",
         JSON.stringify(snapshot),
       );
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
   }
   /**
    * On editor startup, look for a recovered-edit snapshot and notify the
@@ -1682,7 +1691,9 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         6000,
         { fire: true, hat: "save" },
       );
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
   }
   /**
    * Apply a recovered-edit snapshot when the user is editing the page it
@@ -1707,14 +1718,18 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     this.__pendingRestore = null;
     try {
       globalThis.sessionStorage.removeItem("haxcms-pending-edit");
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     try {
       const title = snapshot.title || this.t.thisPage;
       store.toast(this.t.restoredUnsavedEdits.replace("{title}", () => title), 4000, {
         fire: true,
         hat: "save",
       });
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
   }
 
   /**
@@ -1840,7 +1855,9 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           this.__pendingRestore = null;
         }
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     setTimeout(() => {
       store.playSound("coin");
       this.dispatchEvent(
@@ -2237,7 +2254,9 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             return;
           }
         }
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
     }
   }
   async loadNodeRevision(e) {
@@ -2300,7 +2319,9 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           }),
         );
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
   }
   async restoreNodeRevision(e) {
     const detail = e && e.detail ? e.detail : {};

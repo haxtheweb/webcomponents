@@ -131,6 +131,7 @@ class A11yMediaStateManager extends LitElement {
   _handleIntersect(entries, _observer) {
     entries.forEach((entry) => {
       if (!this.activePlayer || this.activePlayer.fullscreen) {
+        // intentionally empty
       } else if (!this.activePlayer.__playing) {
         this.activePlayer.toggleSticky(false);
       } else {

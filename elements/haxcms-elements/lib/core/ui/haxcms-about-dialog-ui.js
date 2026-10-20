@@ -240,7 +240,9 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
         : `${globalThis.location.origin}/`;
     try {
       return new URL(outlineLocation || ".", baseHref).toString();
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     return baseHref;
   }
 
@@ -248,7 +250,9 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
     const cleanResource = String(resource || "").replace(/^\/+/, "");
     try {
       return new URL(cleanResource, this._currentSiteBaseHref()).toString();
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     return cleanResource;
   }
 

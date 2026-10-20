@@ -215,7 +215,7 @@ class HaxElementListSelector extends LitElement {
       if (propName == "imports") {
         let list = this.haxData,
           noSchema = this.noSchema;
-        for (var tag in this[propName]) {
+        for (let tag in this[propName]) {
           let file = this[propName][tag];
           try {
             await import(`${this.basePath}${file}`).then((module) => {

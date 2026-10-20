@@ -54,22 +54,16 @@ class PerformanceDetect extends HTMLElement {
     switch (detail) {
       case "memory":
         return this.details.lowMemory;
-        break;
       case "processor":
         return this.details.lowProcessor;
-        break;
       case "battery":
         return this.details.lowBattery;
-        break;
       case "connection":
         return this.details.poorConnection;
-        break;
       case "data":
         return this.details.dataSaver;
-        break;
       case "mobile":
         return this.details.mobileDevice;
-        break;
     }
     return this.details;
   }

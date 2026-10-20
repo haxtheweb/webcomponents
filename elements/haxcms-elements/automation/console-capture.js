@@ -183,16 +183,16 @@ await page.evaluate(async () => {
       document.documentElement.scrollHeight,
     );
   for (let y = 0; y < getHeight(); y += step) {
-    window.scrollTo(0, y);
+    globalThis.scrollTo(0, y);
     await new Promise((r) => setTimeout(r, 200));
   }
-  window.scrollTo(0, getHeight());
+  globalThis.scrollTo(0, getHeight());
   await new Promise((r) => setTimeout(r, 2000));
   for (let y = getHeight(); y > 0; y -= step) {
-    window.scrollTo(0, y);
+    globalThis.scrollTo(0, y);
     await new Promise((r) => setTimeout(r, 200));
   }
-  window.scrollTo(0, 0);
+  globalThis.scrollTo(0, 0);
 });
 // wait for lazy imports to settle and log anything they throw
 await new Promise((r) => setTimeout(r, 10000));

@@ -489,7 +489,9 @@ export const displayValue = (value) => {
     if (containsObject) {
       try {
         return JSON.stringify(value, null, 2);
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
     }
     return value.map((item) => safeString(item)).join(", ");
   }

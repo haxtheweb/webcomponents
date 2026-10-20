@@ -73,7 +73,9 @@ class HaxAppSearch extends LitElement {
     let pathname = requestUrl.split("?")[0];
     try {
       pathname = new URL(requestUrl).pathname || pathname;
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     if (pathname.charAt(0) !== "/") {
       pathname = "/" + pathname;
     }

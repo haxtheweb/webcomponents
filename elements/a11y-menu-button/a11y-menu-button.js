@@ -760,7 +760,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             flag = true;
             break;
 
-          case this.keyCode.TAB:
+          case this.keyCode.TAB: {
             // Tab: check which menu item currently has focus
             let currentIndex = this.menuItems.findIndex(
               (item) =>
@@ -783,6 +783,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
               flag = true;
             }
             break;
+}
 
           default:
             if (isPrintableCharacter(char)) {

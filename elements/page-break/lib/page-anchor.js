@@ -134,7 +134,9 @@ export class PageAnchor extends DDDSuper(LitElement) {
     let icon;
     try {
       icon = this.getMatchFromFields(this.entityId, this.target, "icon");
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     return html`<mark
       tabindex="0"
       role="link"

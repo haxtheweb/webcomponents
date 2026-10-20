@@ -606,7 +606,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         const found = current.closest(tagName);
         if (found) return found;
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     // Fallback manual traversal (covers non-Elements, shadow DOM, or when closest not available)
     while (current) {
       if (match(current)) return current;
@@ -707,7 +709,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       replacement.source = newSource;
       try {
         replacement.setAttribute("source", newSource);
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
     }
     if (
       typeof newValues.alt === "string" &&
@@ -717,7 +721,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       replacement.alt = newValues.alt;
       try {
         replacement.setAttribute("alt", newValues.alt);
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
     }
 
     if (tagName === "place-holder") {
@@ -744,7 +750,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
 
     this.activePlaceHolder = null;
     this.activeNode = replacement;
@@ -809,7 +817,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
 
     // Clean up
     this.activePlaceHolder = null;
@@ -854,7 +864,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
 
     // Clean up
     this.activePlaceHolder = null;
@@ -900,7 +912,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
 
     // Clean up
     this.activePlaceHolder = null;
@@ -975,7 +989,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
 
     // Clean up
     this.activePlaceHolder = null;
@@ -1004,7 +1020,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       ) {
         this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
 
     // Clean up
     this.activePlaceHolder = null;
@@ -1055,22 +1073,18 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     switch (parts[0]) {
       case "audio":
         return "audio";
-        break;
       case "image":
         if (parts[1] == "svg+xml") {
           return "svg";
         }
         return "image";
-        break;
       case "video":
         return "video";
-        break;
       case "text":
         if (["csv", "html", "markdown"].includes(parts[1])) {
           return parts[1];
         }
         return "document";
-        break;
       case "application":
         if (parts[1] == "pdf") {
           return "pdf";
@@ -1079,7 +1093,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           return "archive";
         }
         return "document";
-        break;
     }
   }
   /**
@@ -1713,7 +1726,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           try {
             let tmpEl = globalThis.document.createElement(i);
             haxAutoloader.appendChild(tmpEl);
-          } catch {}
+          } catch {
+            // intentionally empty
+          }
         }
       } else {
         let importPath = `${basePath}${items[i]}`;
@@ -2067,7 +2082,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         let globalData = localStorageGet("haxUserData", {});
         this.storageData = globalData;
         this._storageDataChanged(this.storageData);
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
 
@@ -2335,6 +2352,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // only perform this on a text element that is active
       // otherwise inject a P so we can paste into it
       if (this.isTextElement(this.activeNode)) {
+        // intentionally empty
       } else {
         this.activeNode = this.activeHaxBody.haxInsert("p", "", {});
       }
@@ -2581,10 +2599,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         // this probably means nothing to the user but MIGHT be a real file in some cases that they
         // could potentially paste / find
         pasteContent = pasteContent.replace(
-          /<img src=\"file:(.*?)\/>/g,
+          /<img src="file:(.*?)\/>/g,
           function (placeholder, part) {
             let s = part.split('"');
-            return `<place-holder type=\"image\" text=\"file:${s[0]}"></place-holder>`;
+            return `<place-holder type="image" text="file:${s[0]}"></place-holder>`;
           },
         );
         // edges that some things preserve empty white space needlessly
@@ -4349,8 +4367,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     const reportType = type || "bug";
     let body = "";
     if (reportType == "merlin") {
-      var title = `[${reportType}] New command request from HAX daemon`;
-      body = `Location: ${globalThis.location.href}
+            body = `Location: ${globalThis.location.href}
 Merlin command: ${daemonTerm}
 What did you want merlin to do?
 `;
@@ -5921,8 +5938,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     removeBadJSEventAttributes(node);
     // grab all of the original's attributes, and pass them to the replacement
     for (let j = 0, l = node.attributes.length; j < l; ++j) {
-      var nodeName = node.attributes.item(j).nodeName;
-      var value = node.attributes.item(j).value;
+      let nodeName = node.attributes.item(j).nodeName;
+      let value = node.attributes.item(j).value;
       // encode objects and arrays because they are special
       if (
         nodeName != "style" &&
@@ -5978,8 +5995,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         if (j === "innerHTML" || j === "innerText") {
           continue;
         }
-        var nodeName = camelToDash(j);
-        var value = null;
+        let nodeName = camelToDash(j);
+        let value = null;
         // prefer local value over properties object if possible
         if (typeof node[j] !== typeof undefined) {
           value = node[j];
@@ -6614,7 +6631,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       translationMap = await I18NManagerStore.loadNamespaceFile(
         tag + ".haxProperties",
       );
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     // if we have a map, rewrite the matching properties within the objects
     if (
       !translationMap &&
@@ -6744,7 +6763,7 @@ globalThis.Hax.grid = function (op = true) {
 };
 
 globalThis.Hax.set = function (key, value) {
-  HAXStore.write(key, value, window);
+  HAXStore.write(key, value, globalThis);
 };
 
 globalThis.Hax.get = function (key) {

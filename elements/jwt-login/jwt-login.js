@@ -103,7 +103,9 @@ class JwtLogin extends LitElement {
       // users are migrated away from persisted access tokens.
       try {
         localStorage.removeItem(this.key);
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
       this.dispatchEvent(
         new CustomEvent("jwt-logged-in", {
           bubbles: true,
@@ -185,7 +187,9 @@ class JwtLogin extends LitElement {
     Promise.resolve().then(() => {
       try {
         localStorage.removeItem(this.key);
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
     });
   }
 
@@ -310,7 +314,7 @@ class JwtLogin extends LitElement {
         if (element) {
           this._invokeRefreshCallback(element, actualJwt);
         }
-        var subs = this.__refreshSubscribers;
+        let subs = this.__refreshSubscribers;
         this.__refreshSubscribers = [];
         for (let i = 0; i < subs.length; i++) {
           this._invokeRefreshCallback(subs[i], actualJwt);
@@ -570,7 +574,9 @@ class JwtLogin extends LitElement {
       if (parsed && typeof parsed.exp === "number") {
         return parsed.exp;
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     return 0;
   }
 

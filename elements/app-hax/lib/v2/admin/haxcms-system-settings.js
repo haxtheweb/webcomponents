@@ -1406,11 +1406,15 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     if (api && typeof api._configureSystemApiRegistry === "function") {
       try {
         await api._configureSystemApiRegistry();
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
     }
     try {
       await waitForAppHAXSystemApiRegistryReady();
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
   }
 
   _schemaFileOperationEndpoint() {

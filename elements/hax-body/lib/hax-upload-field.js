@@ -1036,7 +1036,9 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
             return;
           }
         }
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
     }
     // Fallback: client-side stats only (no uuid -> actions disabled with a
     // noFileUuid toast). Dims via Image(); size+mimetype via same-origin fetch.
@@ -1070,7 +1072,9 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           this._recomputeRecs();
         }
       }
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
   }
   /**
    * Read pixel dimensions from the cached file's fullUrl (or source) and merge

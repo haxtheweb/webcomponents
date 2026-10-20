@@ -108,7 +108,9 @@ class RichTextEditorHighlight extends LitElement {
     this.append(contents);
     try {
       range.insertNode(this);
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
     range.selectNodeContents(this);
     this.hidden = false;
   }

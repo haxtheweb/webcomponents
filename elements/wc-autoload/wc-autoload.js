@@ -84,7 +84,7 @@ globalThis.WCAutoload.process = (_e) => {
               globalThis.WCAutoloadRegistryFile,
             ];
           }
-          for (var i = 0; i < globalThis.WCAutoloadRegistryFile.length; i++) {
+          for (let i = 0; i < globalThis.WCAutoloadRegistryFile.length; i++) {
             await fetch_retry(
               globalThis.WCAutoloadRegistryFile[i],
               { priority: "high" },
@@ -104,7 +104,7 @@ globalThis.WCAutoload.process = (_e) => {
         }
         // build out the registry via events translated from object
         if (globalThis.WCAutoloadRegistry) {
-          for (var i in globalThis.WCAutoloadRegistry) {
+          for (let i in globalThis.WCAutoloadRegistry) {
             loader.registry.register({
               tag: i,
               path: globalThis.WCAutoloadRegistry[i],

@@ -83,7 +83,9 @@ export function resolveSiteApiBasePath() {
     try {
       const apiUrl = new URL("x/api", baseHref);
       return normalizePath(apiUrl.pathname || "/x/api");
-    } catch {}
+    } catch {
+      // intentionally empty
+    }
   }
   return "/x/api";
 }

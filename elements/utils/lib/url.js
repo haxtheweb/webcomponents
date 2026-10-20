@@ -1,4 +1,4 @@
-export var badURLProtocols = ["javascript:", "vbscript:", "data:"];
+export let badURLProtocols = ["javascript:", "vbscript:", "data:"];
 
 function urlValueToProtocolCheck(value) {
   if (typeof value !== "string") {

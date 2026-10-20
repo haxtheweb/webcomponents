@@ -247,7 +247,9 @@ class PlaceHolder extends DDD {
             }),
           );
         }
-      } catch {}
+      } catch {
+        // intentionally empty
+      }
     });
   }
   /**

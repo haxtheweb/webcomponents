@@ -28,7 +28,7 @@ export class HaxRouter {
         const baseHref = baseElement.getAttribute("href");
         if (baseHref) {
           const url = new URL(baseHref, globalThis.document.URL);
-          return url.pathname.replace(/[^\/]*$/, "");
+          return url.pathname.replace(/[^/]*$/, "");
         }
       }
     }
@@ -85,7 +85,9 @@ export class HaxRouter {
       if (basePath.includes("://")) {
         try {
           basePath = new URL(basePath, globalThis.location.href).pathname;
-        } catch {}
+        } catch {
+          // intentionally empty
+        }
       }
       if (!url.pathname.startsWith(basePath)) {
         return;

@@ -136,7 +136,6 @@ class PolarisMark extends I18NMixin(LitElement) {
     switch (type) {
       case "dark":
         return this.renderDark();
-      break;
     }
     return this.renderDefault(type);
   }

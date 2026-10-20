@@ -76,7 +76,7 @@ class PouchDb extends HTMLElement {
     let whatEvent = e.target.tagName;
 
     switch (whatEvent) {
-      case "MULTIPLE-CHOICE":
+      case "MULTIPLE-CHOICE": {
         var activityDisplay = eventData.activityDisplay;
         var activityId = "http://adlnet.gov/expapi/verbs/" + activityDisplay; //this may need to be changed in the future for more verbs
         var objectId = "http://haxcms.psu.edu/haxQuiz";
@@ -93,6 +93,7 @@ class PouchDb extends HTMLElement {
         var resultDuration = "sample";
         //hard-coded for now for results, future tracking change to pull data from eventData.x
         break;
+      }
       default:
         break;
     }
