@@ -1,5 +1,5 @@
 {
-  "name": "bibliography-builder",
+  "name": "@haxtheweb/bibliography-builder",
   "version": "26.8.0",
   "description": "Webcomponent bibliography-builder following hax / open-wc recommendations",
   "license": "Apache-2.0",

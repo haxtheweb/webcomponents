@@ -1,5 +1,5 @@
 {
-  "name": "career-timeline",
+  "name": "@haxtheweb/career-timeline",
   "version": "26.8.0",
   "description": "Webcomponent career-timeline following hax / open-wc recommendations",
   "license": "Apache-2.0",
