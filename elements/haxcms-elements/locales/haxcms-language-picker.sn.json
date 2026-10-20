@@ -1,0 +1,9 @@
+{
+  "language": "Mutauro",
+  "searchPlaceholder": "Tsvaga mitauro",
+  "noResults": "Hapana mitauro inofanana",
+  "oneLanguageFound": "Mutauro 1 wawanikwa",
+  "languagesFound": "Mitauro {count} yawanikwa",
+  "useCustom": "Shandisa {code}",
+  "loadError": "Rondedzero yemitauro haina kukwanisa kuvhurwa."
+}

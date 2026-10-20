@@ -7,7 +7,7 @@
   "domain": "Domen",
   "domainDescription": "Bu veb-saytın domeni",
   "language": "Dil",
-  "languageDescription": "Bu sayt üçün ISO 639-1 dil kodu (məsələn, en, es, fr).",
+  "languageDescription": "Bu saytın dili. Ad və ya kod üzrə axtarın, yaxud fr-CA kimi başqa kod daxil edin.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "Analitika inteqrasiyaları üçün istifadə olunan izləmə ID-si",
   "privateSite": "Şəxsi sayt",

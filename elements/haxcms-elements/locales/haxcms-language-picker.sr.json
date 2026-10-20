@@ -1,0 +1,9 @@
+{
+  "language": "Језик",
+  "searchPlaceholder": "Претражи језике",
+  "noResults": "Нема језика који одговарају",
+  "oneLanguageFound": "Пронађен је 1 језик",
+  "languagesFound": "Пронађено језика: {count}",
+  "useCustom": "Користи {code}",
+  "loadError": "Листа језика није могла бити учитана."
+}

@@ -1,0 +1,9 @@
+{
+  "language": "Wika",
+  "searchPlaceholder": "Maghanap ng mga wika",
+  "noResults": "Walang tugmang wika",
+  "oneLanguageFound": "1 wika ang natagpuan",
+  "languagesFound": "{count} wika ang natagpuan",
+  "useCustom": "Gamitin ang {code}",
+  "loadError": "Hindi ma-load ang listahan ng mga wika."
+}

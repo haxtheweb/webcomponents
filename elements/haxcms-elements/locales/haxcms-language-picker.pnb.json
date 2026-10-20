@@ -1,0 +1,9 @@
+{
+  "language": "بولی",
+  "searchPlaceholder": "بولیاں لبھو",
+  "noResults": "کوئی بولی نئیں ملدی",
+  "oneLanguageFound": "1 بولی لبھی",
+  "languagesFound": "{count} بولیاں لبھیاں",
+  "useCustom": "{code} ورتو",
+  "loadError": "بولیاں دی لسٹ لوڈ نئیں ہو سکی۔"
+}

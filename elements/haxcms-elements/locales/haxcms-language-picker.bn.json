@@ -1,0 +1,9 @@
+{
+  "language": "ভাষা",
+  "searchPlaceholder": "ভাষা খুঁজুন",
+  "noResults": "কোনো ভাষা মেলেনি",
+  "oneLanguageFound": "১টি ভাষা পাওয়া গেছে",
+  "languagesFound": "{count}টি ভাষা পাওয়া গেছে",
+  "useCustom": "{code} ব্যবহার করুন",
+  "loadError": "ভাষার তালিকা লোড করা যায়নি।"
+}

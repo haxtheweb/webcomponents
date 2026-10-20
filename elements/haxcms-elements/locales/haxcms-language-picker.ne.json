@@ -1,0 +1,9 @@
+{
+  "language": "भाषा",
+  "searchPlaceholder": "भाषा खोज्नुहोस्",
+  "noResults": "कुनै भाषा मेल खाँदैन",
+  "oneLanguageFound": "१ भाषा फेला पर्‍यो",
+  "languagesFound": "{count} भाषा फेला परे",
+  "useCustom": "{code} प्रयोग गर्नुहोस्",
+  "loadError": "भाषा सूची लोड गर्न सकिएन।"
+}

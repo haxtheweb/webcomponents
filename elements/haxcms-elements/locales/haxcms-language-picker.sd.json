@@ -1,0 +1,9 @@
+{
+  "language": "ٻولي",
+  "searchPlaceholder": "ٻوليون ڳوليو",
+  "noResults": "ڪا به ٻولي ميل نٿي کائي",
+  "oneLanguageFound": "1 ٻولي ملي",
+  "languagesFound": "{count} ٻوليون مليون",
+  "useCustom": "{code} استعمال ڪريو",
+  "loadError": "ٻولين جي فهرست لوڊ نه ٿي سگهي."
+}

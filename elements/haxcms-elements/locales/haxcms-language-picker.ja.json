@@ -1,0 +1,9 @@
+{
+  "language": "言語",
+  "searchPlaceholder": "言語を検索",
+  "noResults": "一致する言語がありません",
+  "oneLanguageFound": "1 件の言語が見つかりました",
+  "languagesFound": "{count} 件の言語が見つかりました",
+  "useCustom": "{code} を使用",
+  "loadError": "言語の一覧を読み込めませんでした。"
+}

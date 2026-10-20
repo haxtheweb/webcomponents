@@ -1,0 +1,9 @@
+{
+  "language": "Тіл",
+  "searchPlaceholder": "Тілдерді іздеу",
+  "noResults": "Сәйкес тілдер жоқ",
+  "oneLanguageFound": "1 тіл табылды",
+  "languagesFound": "{count} тіл табылды",
+  "useCustom": "{code} пайдалану",
+  "loadError": "Тілдер тізімін жүктеу мүмкін болмады."
+}

@@ -7,7 +7,7 @@
   "domain": "Domain",
   "domainDescription": "A webhely domainje",
   "language": "Nyelv",
-  "languageDescription": "A webhely ISO 639-1 nyelvkódja (például en, es, fr).",
+  "languageDescription": "Az oldal nyelve. Keressen név vagy kód alapján, vagy adjon meg másik kódot, például fr-CA.",
   "googleAnalyticsId": "Google Analytics-azonosító",
   "googleAnalyticsIdDescription": "Analitikai integrációkhoz használt követési azonosító",
   "privateSite": "Privát webhely",

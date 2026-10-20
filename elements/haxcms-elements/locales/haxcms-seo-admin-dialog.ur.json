@@ -7,7 +7,7 @@
   "domain": "ڈومین",
   "domainDescription": "اس ویب سائٹ کا ڈومین",
   "language": "زبان",
-  "languageDescription": "اس سائٹ کے لیے ISO 639-1 زبان کوڈ (مثلاً en، es، fr)۔",
+  "languageDescription": "اس سائٹ کی زبان۔ نام یا کوڈ سے تلاش کریں، یا fr-CA جیسا کوئی اور کوڈ درج کریں۔",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "تجزیاتی انضمام کے لیے استعمال ہونے والی ٹریکنگ ID",
   "privateSite": "نجی سائٹ",

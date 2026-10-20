@@ -1,0 +1,9 @@
+{
+  "language": "زبان",
+  "searchPlaceholder": "جستجوی زبان‌ها",
+  "noResults": "هیچ زبانی مطابقت ندارد",
+  "oneLanguageFound": "۱ زبان پیدا شد",
+  "languagesFound": "{count} زبان پیدا شد",
+  "useCustom": "استفاده از {code}",
+  "loadError": "فهرست زبان‌ها بارگذاری نشد."
+}

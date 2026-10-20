@@ -7,7 +7,7 @@
   "domain": "Domein",
   "domainDescription": "Domein van deze website",
   "language": "Taal",
-  "languageDescription": "ISO 639-1-taalcode voor deze site (bijvoorbeeld en, es, fr).",
+  "languageDescription": "Taal van deze site. Zoek op naam of code, of voer een andere code in zoals fr-CA.",
   "googleAnalyticsId": "Google Analytics-ID",
   "googleAnalyticsIdDescription": "Tracking-ID voor analyse-integraties",
   "privateSite": "Privésite",

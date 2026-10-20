@@ -7,7 +7,7 @@
   "domain": "โดเมน",
   "domainDescription": "โดเมนของเว็บไซต์นี้",
   "language": "ภาษา",
-  "languageDescription": "รหัสภาษา ISO 639-1 ของไซต์นี้ (เช่น en, es, fr)",
+  "languageDescription": "ภาษาของไซต์นี้ ค้นหาด้วยชื่อหรือรหัส หรือป้อนรหัสอื่น เช่น fr-CA",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "ID ติดตามที่ใช้สำหรับการเชื่อมต่อด้านการวิเคราะห์",
   "privateSite": "ไซต์ส่วนตัว",

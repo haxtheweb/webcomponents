@@ -7,7 +7,7 @@
   "domain": "Домен",
   "domainDescription": "Бу веб-сайтның домены",
   "language": "Тел",
-  "languageDescription": "Бу сайт өчен ISO 639-1 тел коды (мәсәлән, en, es, fr).",
+  "languageDescription": "Бу сайт теле. Исем яки код буенча эзләгез, яисә fr-CA кебек башка код кертегез.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "Аналитика интеграцияләре өчен кулланыла торган күзәтү ID'ы",
   "privateSite": "Шәхси сайт",

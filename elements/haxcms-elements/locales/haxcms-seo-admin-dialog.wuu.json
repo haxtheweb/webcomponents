@@ -7,7 +7,7 @@
   "domain": "域名",
   "domainDescription": "搿只网站个域名",
   "language": "语言",
-  "languageDescription": "搿只网站个 ISO 639-1 语言代码(比方 en、es、fr)。",
+  "languageDescription": "该个站点个语言。可以照名字或者代码搜，也可以输入别个代码，比如 fr-CA。",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "分析集成用个跟踪 ID",
   "privateSite": "私人网站",

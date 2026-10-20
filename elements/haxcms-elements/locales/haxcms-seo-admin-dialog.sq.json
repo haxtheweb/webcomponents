@@ -7,7 +7,7 @@
   "domain": "Domeni",
   "domainDescription": "Domeni i këtij sajti",
   "language": "Gjuha",
-  "languageDescription": "Kodi ISO 639-1 i gjuhës për këtë sajt (për shembull, en, es, fr).",
+  "languageDescription": "Gjuha e këtij faqeje. Kërko sipas emrit ose kodit, ose fut një kod tjetër si fr-CA.",
   "googleAnalyticsId": "ID-ja e Google Analytics",
   "googleAnalyticsIdDescription": "ID-ja e gjurmimit e përdorur për integrimet e analitikës",
   "privateSite": "Sajt privat",

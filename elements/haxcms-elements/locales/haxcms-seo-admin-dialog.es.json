@@ -7,7 +7,7 @@
   "domain": "Dominio",
   "domainDescription": "Dominio de este sitio web",
   "language": "Idioma",
-  "languageDescription": "Código de idioma ISO 639-1 de este sitio (por ejemplo, en, es, fr).",
+  "languageDescription": "Idioma de este sitio. Busca por nombre o código, o introduce otro código como fr-CA.",
   "googleAnalyticsId": "ID de Google Analytics",
   "googleAnalyticsIdDescription": "ID de seguimiento usado para integraciones de analítica",
   "privateSite": "Sitio privado",

@@ -1,0 +1,9 @@
+{
+  "language": "Γλώσσα",
+  "searchPlaceholder": "Αναζήτηση γλωσσών",
+  "noResults": "Καμία γλώσσα δεν ταιριάζει",
+  "oneLanguageFound": "Βρέθηκε 1 γλώσσα",
+  "languagesFound": "Βρέθηκαν {count} γλώσσες",
+  "useCustom": "Χρήση του {code}",
+  "loadError": "Δεν ήταν δυνατή η φόρτωση της λίστας γλωσσών."
+}

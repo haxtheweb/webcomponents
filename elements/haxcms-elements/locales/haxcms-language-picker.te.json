@@ -1,0 +1,9 @@
+{
+  "language": "భాష",
+  "searchPlaceholder": "భాషలను వెతకండి",
+  "noResults": "సరిపోలే భాషలు లేవు",
+  "oneLanguageFound": "1 భాష కనుగొనబడింది",
+  "languagesFound": "{count} భాషలు కనుగొనబడ్డాయి",
+  "useCustom": "{code} ఉపయోగించండి",
+  "loadError": "భాషల జాబితాను లోడ్ చేయడం సాధ్యం కాలేదు."
+}

@@ -1,0 +1,9 @@
+{
+  "language": "ਭਾਸ਼ਾ",
+  "searchPlaceholder": "ਭਾਸ਼ਾਵਾਂ ਖੋਜੋ",
+  "noResults": "ਕੋਈ ਭਾਸ਼ਾ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀ",
+  "oneLanguageFound": "1 ਭਾਸ਼ਾ ਮਿਲੀ",
+  "languagesFound": "{count} ਭਾਸ਼ਾਵਾਂ ਮਿਲੀਆਂ",
+  "useCustom": "{code} ਵਰਤੋ",
+  "loadError": "ਭਾਸ਼ਾ ਸੂਚੀ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀ।"
+}

@@ -7,7 +7,7 @@
   "domain": "Navnaøki",
   "domainDescription": "Navnaøki hjá hesi heimasíðuni",
   "language": "Mál",
-  "languageDescription": "ISO 639-1 málkota fyri henda vevstaðin (til dømis en, es, fr).",
+  "languageDescription": "Mál á hesi síðuni. Leita eftir navni ella kodu, ella skriva aðra kodu sum fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "Sporings-ID, ið verður nýtt til greiningarsamantengingar",
   "privateSite": "Privatur vevstaður",

@@ -1,0 +1,9 @@
+{
+  "language": "Langue",
+  "searchPlaceholder": "Rechercher des langues",
+  "noResults": "Aucune langue ne correspond",
+  "oneLanguageFound": "1 langue trouvée",
+  "languagesFound": "{count} langues trouvées",
+  "useCustom": "Utiliser {code}",
+  "loadError": "La liste des langues n'a pas pu être chargée."
+}

@@ -1,0 +1,9 @@
+{
+  "language": "Limbă",
+  "searchPlaceholder": "Căutați limbi",
+  "noResults": "Nicio limbă nu corespunde",
+  "oneLanguageFound": "1 limbă găsită",
+  "languagesFound": "{count} limbi găsite",
+  "useCustom": "Utilizați {code}",
+  "loadError": "Lista de limbi nu a putut fi încărcată."
+}

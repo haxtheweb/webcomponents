@@ -7,7 +7,7 @@
   "domain": "დომენი",
   "domainDescription": "ამ ვებსაიტის დომენი",
   "language": "ენა",
-  "languageDescription": "ამ საიტის ენის ISO 639-1 კოდი (მაგალითად, en, es, fr).",
+  "languageDescription": "ამ საიტის ენა. მოძებნეთ სახელით ან კოდით, ან შეიყვანეთ სხვა კოდი, მაგალითად fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "ანალიტიკის ინტეგრაციებისთვის გამოყენებული თვალთვალის ID",
   "privateSite": "პირადი საიტი",

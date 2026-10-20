@@ -7,7 +7,7 @@
   "domain": "Doména",
   "domainDescription": "Doména tohoto webu",
   "language": "Jazyk",
-  "languageDescription": "Kód jazyka ISO 639-1 pro tento web (například en, es, fr).",
+  "languageDescription": "Jazyk tohoto webu. Hledejte podle názvu nebo kódu, nebo zadejte jiný kód, například fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",
   "googleAnalyticsIdDescription": "Sledovací ID používané pro integrace analytiky",
   "privateSite": "Soukromý web",

@@ -1,0 +1,9 @@
+{
+  "language": "שפה",
+  "searchPlaceholder": "חיפוש שפות",
+  "noResults": "אין שפות תואמות",
+  "oneLanguageFound": "נמצאה שפה אחת",
+  "languagesFound": "נמצאו {count} שפות",
+  "useCustom": "שימוש ב-{code}",
+  "loadError": "לא ניתן היה לטעון את רשימת השפות."
+}

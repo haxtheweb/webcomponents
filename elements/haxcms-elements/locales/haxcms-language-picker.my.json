@@ -1,0 +1,9 @@
+{
+  "language": "ဘာသာစကား",
+  "searchPlaceholder": "ဘာသာစကားများ ရှာရန်",
+  "noResults": "ကိုက်ညီသော ဘာသာစကား မရှိပါ",
+  "oneLanguageFound": "ဘာသာစကား ၁ ခု တွေ့ရှိသည်",
+  "languagesFound": "ဘာသာစကား {count} ခု တွေ့ရှိသည်",
+  "useCustom": "{code} ကို သုံးရန်",
+  "loadError": "ဘာသာစကားစာရင်းကို ဖွင့်၍မရပါ။"
+}

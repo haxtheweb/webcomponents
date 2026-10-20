@@ -1,0 +1,9 @@
+{
+  "language": "Kalba",
+  "searchPlaceholder": "Ieškoti kalbų",
+  "noResults": "Nėra atitinkančių kalbų",
+  "oneLanguageFound": "Rasta 1 kalba",
+  "languagesFound": "Rasta kalbų: {count}",
+  "useCustom": "Naudoti {code}",
+  "loadError": "Nepavyko įkelti kalbų sąrašo."
+}

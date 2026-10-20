@@ -1,0 +1,9 @@
+{
+  "language": "Тел",
+  "searchPlaceholder": "Телләрне эзләү",
+  "noResults": "Туры килгән телләр юк",
+  "oneLanguageFound": "1 тел табылды",
+  "languagesFound": "{count} тел табылды",
+  "useCustom": "{code} куллану",
+  "loadError": "Телләр исемлеген йөкләп булмады."
+}

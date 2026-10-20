@@ -1,0 +1,9 @@
+{
+  "language": "Език",
+  "searchPlaceholder": "Търсене на езици",
+  "noResults": "Няма съвпадащи езици",
+  "oneLanguageFound": "Намерен е 1 език",
+  "languagesFound": "Намерени езици: {count}",
+  "useCustom": "Използване на {code}",
+  "loadError": "Списъкът с езици не можа да бъде зареден."
+}

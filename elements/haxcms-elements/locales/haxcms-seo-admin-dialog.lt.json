@@ -7,7 +7,7 @@
   "domain": "Domenas",
   "domainDescription": "Šios svetainės domenas",
   "language": "Kalba",
-  "languageDescription": "ISO 639-1 šios svetainės kalbos kodas (pvz., en, es, fr).",
+  "languageDescription": "Šios svetainės kalba. Ieškokite pagal pavadinimą ar kodą arba įveskite kitą kodą, pvz., fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "Analitikos integracijoms naudojamas sekimo ID",
   "privateSite": "Privati svetainė",

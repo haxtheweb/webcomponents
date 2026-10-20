@@ -7,7 +7,7 @@
   "domain": "النطاق",
   "domainDescription": "نطاق هذا الموقع",
   "language": "اللغة",
-  "languageDescription": "رمز اللغة وفق ISO 639-1 لهذا الموقع (مثل en وes وfr).",
+  "languageDescription": "لغة هذا الموقع. ابحث بالاسم أو الرمز، أو أدخل رمزًا آخر مثل fr-CA.",
   "googleAnalyticsId": "معرّف Google Analytics",
   "googleAnalyticsIdDescription": "معرّف التتبع المستخدم في تكاملات التحليلات",
   "privateSite": "موقع خاص",

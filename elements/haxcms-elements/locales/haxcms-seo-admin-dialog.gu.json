@@ -7,7 +7,7 @@
   "domain": "ડોમેન",
   "domainDescription": "આ વેબસાઇટનું ડોમેન",
   "language": "ભાષા",
-  "languageDescription": "આ સાઇટ માટે ISO 639-1 ભાષા કોડ (ઉદાહરણ તરીકે, en, es, fr).",
+  "languageDescription": "આ સાઇટની ભાષા. નામ અથવા કોડથી શોધો, અથવા fr-CA જેવો બીજો કોડ દાખલ કરો.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "એનાલિટિક્સ સંકલનો માટે વપરાતું ટ્રેકિંગ ID",
   "privateSite": "ખાનગી સાઇટ",

@@ -1,0 +1,9 @@
+{
+  "language": "Valoda",
+  "searchPlaceholder": "Meklēt valodas",
+  "noResults": "Nav atbilstošu valodu",
+  "oneLanguageFound": "Atrasta 1 valoda",
+  "languagesFound": "Atrastas {count} valodas",
+  "useCustom": "Izmantot {code}",
+  "loadError": "Valodu sarakstu neizdevās ielādēt."
+}

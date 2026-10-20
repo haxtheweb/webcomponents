@@ -1,0 +1,9 @@
+{
+  "language": "Dil",
+  "searchPlaceholder": "Dillər üzrə axtar",
+  "noResults": "Heç bir dil uyğun gəlmir",
+  "oneLanguageFound": "1 dil tapıldı",
+  "languagesFound": "{count} dil tapıldı",
+  "useCustom": "{code} istifadə et",
+  "loadError": "Dil siyahısını yükləmək mümkün olmadı."
+}

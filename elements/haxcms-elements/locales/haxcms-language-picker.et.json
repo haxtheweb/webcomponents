@@ -1,0 +1,9 @@
+{
+  "language": "Keel",
+  "searchPlaceholder": "Otsi keeli",
+  "noResults": "Ühtegi keelt ei leitud",
+  "oneLanguageFound": "Leiti 1 keel",
+  "languagesFound": "Leiti {count} keelt",
+  "useCustom": "Kasuta {code}",
+  "loadError": "Keelte loendit ei õnnestunud laadida."
+}

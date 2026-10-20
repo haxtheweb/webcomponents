@@ -1,0 +1,9 @@
+{
+  "language": "Hizkuntza",
+  "searchPlaceholder": "Bilatu hizkuntzak",
+  "noResults": "Ez dago bat datorren hizkuntzarik",
+  "oneLanguageFound": "Hizkuntza 1 aurkitu da",
+  "languagesFound": "{count} hizkuntza aurkitu dira",
+  "useCustom": "Erabili {code}",
+  "loadError": "Ezin izan da hizkuntzen zerrenda kargatu."
+}

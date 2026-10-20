@@ -7,7 +7,7 @@
   "domain": "Domain",
   "domainDescription": "Domain ng website na ito",
   "language": "Wika",
-  "languageDescription": "ISO 639-1 na code ng wika para sa site na ito (halimbawa, en, es, fr).",
+  "languageDescription": "Wika ng site na ito. Maghanap ayon sa pangalan o code, o maglagay ng ibang code tulad ng fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "Tracking ID na ginagamit para sa mga integrasyon ng analytics",
   "privateSite": "Pribadong site",

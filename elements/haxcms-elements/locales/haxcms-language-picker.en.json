@@ -1,0 +1,9 @@
+{
+  "language": "Language",
+  "searchPlaceholder": "Search languages",
+  "noResults": "No languages match",
+  "oneLanguageFound": "1 language found",
+  "languagesFound": "{count} languages found",
+  "useCustom": "Use {code}",
+  "loadError": "The language list could not be loaded."
+}

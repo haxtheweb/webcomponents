@@ -1,0 +1,9 @@
+{
+  "language": "Dil",
+  "searchPlaceholder": "Dilleri gözle",
+  "noResults": "Gabat gelýän dil ýok",
+  "oneLanguageFound": "1 dil tapyldy",
+  "languagesFound": "{count} dil tapyldy",
+  "useCustom": "{code} ulan",
+  "loadError": "Dil sanawyny ýüklemek başartmady."
+}

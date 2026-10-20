@@ -7,7 +7,7 @@
   "domain": "ഡൊമെയ്ൻ",
   "domainDescription": "ഈ വെബ്സൈറ്റിന്റെ ഡൊമെയ്ൻ",
   "language": "ഭാഷ",
-  "languageDescription": "ഈ സൈറ്റിനുള്ള ISO 639-1 ഭാഷാ കോഡ് (ഉദാഹരണത്തിന്, en, es, fr).",
+  "languageDescription": "ഈ സൈറ്റിന്റെ ഭാഷ. പേരോ കോഡോ ഉപയോഗിച്ച് തിരയുക, അല്ലെങ്കിൽ fr-CA പോലെ മറ്റൊരു കോഡ് നൽകുക.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "അനലിറ്റിക്സ് ഇന്റഗ്രേഷനുകൾക്ക് ഉപയോഗിക്കുന്ന ട്രാക്കിംഗ് ID",
   "privateSite": "സ്വകാര്യ സൈറ്റ്",

@@ -7,7 +7,7 @@
   "domain": "Τομέας",
   "domainDescription": "Τομέας αυτού του ιστοτόπου",
   "language": "Γλώσσα",
-  "languageDescription": "Κωδικός γλώσσας ISO 639-1 για αυτόν τον ιστότοπο (για παράδειγμα, en, es, fr).",
+  "languageDescription": "Γλώσσα αυτού του ιστότοπου. Αναζητήστε με όνομα ή κωδικό ή εισαγάγετε άλλο κωδικό, όπως fr-CA.",
   "googleAnalyticsId": "Αναγνωριστικό Google Analytics",
   "googleAnalyticsIdDescription": "Αναγνωριστικό παρακολούθησης για ενσωματώσεις αναλυτικών στοιχείων",
   "privateSite": "Ιδιωτικός ιστότοπος",

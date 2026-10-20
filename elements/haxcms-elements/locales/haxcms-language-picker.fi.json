@@ -1,0 +1,9 @@
+{
+  "language": "Kieli",
+  "searchPlaceholder": "Hae kieliä",
+  "noResults": "Ei vastaavia kieliä",
+  "oneLanguageFound": "1 kieli löytyi",
+  "languagesFound": "{count} kieltä löytyi",
+  "useCustom": "Käytä {code}",
+  "loadError": "Kieliluetteloa ei voitu ladata."
+}

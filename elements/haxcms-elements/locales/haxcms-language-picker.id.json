@@ -1,0 +1,9 @@
+{
+  "language": "Bahasa",
+  "searchPlaceholder": "Cari bahasa",
+  "noResults": "Tidak ada bahasa yang cocok",
+  "oneLanguageFound": "1 bahasa ditemukan",
+  "languagesFound": "{count} bahasa ditemukan",
+  "useCustom": "Gunakan {code}",
+  "loadError": "Daftar bahasa tidak dapat dimuat."
+}

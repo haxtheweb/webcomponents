@@ -7,7 +7,7 @@
   "domain": "Domeinua",
   "domainDescription": "Webgune honen domeinua",
   "language": "Hizkuntza",
-  "languageDescription": "Gune honen ISO 639-1 hizkuntza-kodea (adibidez, en, es, fr).",
+  "languageDescription": "Gune honen hizkuntza. Bilatu izenaren edo kodearen arabera, edo idatzi beste kode bat, adibidez fr-CA.",
   "googleAnalyticsId": "Google Analytics IDa",
   "googleAnalyticsIdDescription": "Analitika-integrazioetarako erabilitako jarraipen-IDa",
   "privateSite": "Gune pribatua",

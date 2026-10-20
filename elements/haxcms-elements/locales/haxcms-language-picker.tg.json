@@ -1,0 +1,9 @@
+{
+  "language": "Забон",
+  "searchPlaceholder": "Ҷустуҷӯи забонҳо",
+  "noResults": "Забони мувофиқ нест",
+  "oneLanguageFound": "1 забон ёфт шуд",
+  "languagesFound": "{count} забон ёфт шуд",
+  "useCustom": "Истифодаи {code}",
+  "loadError": "Рӯйхати забонҳоро бор кардан муяссар нашуд."
+}

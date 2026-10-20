@@ -1,0 +1,9 @@
+{
+  "language": "Sprooch",
+  "searchPlaceholder": "Sproochen sichen",
+  "noResults": "Keng Sproochen passen",
+  "oneLanguageFound": "1 Sprooch fonnt",
+  "languagesFound": "{count} Sproochen fonnt",
+  "useCustom": "{code} benotzen",
+  "loadError": "D'Sproochelëscht konnt net gelueden ginn."
+}

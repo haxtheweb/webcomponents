@@ -1,0 +1,9 @@
+{
+  "language": "Teanga",
+  "searchPlaceholder": "Cuardaigh teangacha",
+  "noResults": "Níl aon teanga ag teacht leis",
+  "oneLanguageFound": "Fuarthas 1 teanga",
+  "languagesFound": "Fuarthas {count} teanga",
+  "useCustom": "Úsáid {code}",
+  "loadError": "Níorbh fhéidir liosta na dteangacha a luchtú."
+}

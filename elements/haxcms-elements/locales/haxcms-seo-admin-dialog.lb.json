@@ -7,7 +7,7 @@
   "domain": "Domain",
   "domainDescription": "Domain vun dëser Websäit",
   "language": "Sprooch",
-  "languageDescription": "ISO 639-1-Sproochcode fir dëse Site (zum Beispill en, es, fr).",
+  "languageDescription": "Sprooch vun dësem Site. Sicht no Numm oder Code, oder gitt en aneren Code wéi fr-CA un.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "Tracking-ID fir Analytics-Integratiounen",
   "privateSite": "Privaten Site",

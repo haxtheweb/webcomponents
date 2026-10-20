@@ -1,0 +1,9 @@
+{
+  "language": "ژبه",
+  "searchPlaceholder": "ژبې ولټوئ",
+  "noResults": "هیڅ ژبه سمون نه خوري",
+  "oneLanguageFound": "۱ ژبه وموندل شوه",
+  "languagesFound": "{count} ژبې وموندل شوې",
+  "useCustom": "{code} وکاروئ",
+  "loadError": "د ژبو لیست بار نه شو."
+}

@@ -1,0 +1,9 @@
+{
+  "language": "Lingvo",
+  "searchPlaceholder": "Serĉi lingvojn",
+  "noResults": "Neniu lingvo kongruas",
+  "oneLanguageFound": "1 lingvo trovita",
+  "languagesFound": "{count} lingvoj trovitaj",
+  "useCustom": "Uzi {code}",
+  "loadError": "La lingvolisto ne povis esti ŝargita."
+}

@@ -1,0 +1,9 @@
+{
+  "language": "Språk",
+  "searchPlaceholder": "Søk etter språk",
+  "noResults": "Ingen språk samsvarer",
+  "oneLanguageFound": "1 språk funnet",
+  "languagesFound": "{count} språk funnet",
+  "useCustom": "Bruk {code}",
+  "loadError": "Språklisten kunne ikke lastes inn."
+}

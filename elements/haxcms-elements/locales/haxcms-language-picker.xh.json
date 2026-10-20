@@ -1,0 +1,9 @@
+{
+  "language": "Ulwimi",
+  "searchPlaceholder": "Khangela iilwimi",
+  "noResults": "Akukho lwimi lufanayo",
+  "oneLanguageFound": "Ulwimi olu-1 lufunyenwe",
+  "languagesFound": "Iilwimi ezi-{count} zifunyenwe",
+  "useCustom": "Sebenzisa {code}",
+  "loadError": "Uluhlu lweelwimi aluzange luthwalwe."
+}

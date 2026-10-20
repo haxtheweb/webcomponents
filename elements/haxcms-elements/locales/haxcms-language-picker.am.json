@@ -1,0 +1,9 @@
+{
+  "language": "ቋንቋ",
+  "searchPlaceholder": "ቋንቋዎችን ፈልግ",
+  "noResults": "ምንም ቋንቋ አልተገኘም",
+  "oneLanguageFound": "1 ቋንቋ ተገኝቷል",
+  "languagesFound": "{count} ቋንቋዎች ተገኝተዋል",
+  "useCustom": "{code} ተጠቀም",
+  "loadError": "የቋንቋ ዝርዝሩን መጫን አልተቻለም።"
+}

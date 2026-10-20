@@ -7,7 +7,7 @@
   "domain": "ڊومين",
   "domainDescription": "هن ويب سائيٽ جو ڊومين",
   "language": "ٻولي",
-  "languageDescription": "هن سائيٽ لاءِ ISO 639-1 ٻولي ڪوڊ (مثال طور، en، es، fr).",
+  "languageDescription": "هن سائيٽ جي ٻولي. نالي يا ڪوڊ سان ڳوليو، يا fr-CA وانگر ٻيو ڪوڊ داخل ڪريو.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "تجزيي جي انٽيگريشنز لاءِ استعمال ٿيندڙ ٽريڪنگ ID",
   "privateSite": "نجي سائيٽ",

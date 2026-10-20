@@ -1,0 +1,9 @@
+{
+  "language": "Idioma",
+  "searchPlaceholder": "Cerca idiomes",
+  "noResults": "Cap idioma coincideix",
+  "oneLanguageFound": "S'ha trobat 1 idioma",
+  "languagesFound": "S'han trobat {count} idiomes",
+  "useCustom": "Utilitza {code}",
+  "loadError": "No s'ha pogut carregar la llista d'idiomes."
+}

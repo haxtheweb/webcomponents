@@ -7,7 +7,7 @@
   "domain": "Домэйн",
   "domainDescription": "Энэ вэбсайтын домэйн",
   "language": "Хэл",
-  "languageDescription": "Энэ сайтын ISO 639-1 хэлний код (жишээ нь en, es, fr).",
+  "languageDescription": "Энэ сайтын хэл. Нэр эсвэл кодоор хайх, эсвэл fr-CA гэх мэт өөр код оруулна уу.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "Аналитикийн холболтод ашиглагдах хянах ID",
   "privateSite": "Хувийн сайт",

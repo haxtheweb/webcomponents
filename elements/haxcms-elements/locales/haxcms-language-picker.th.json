@@ -1,0 +1,9 @@
+{
+  "language": "ภาษา",
+  "searchPlaceholder": "ค้นหาภาษา",
+  "noResults": "ไม่พบภาษาที่ตรงกัน",
+  "oneLanguageFound": "พบ 1 ภาษา",
+  "languagesFound": "พบ {count} ภาษา",
+  "useCustom": "ใช้ {code}",
+  "loadError": "ไม่สามารถโหลดรายการภาษาได้"
+}

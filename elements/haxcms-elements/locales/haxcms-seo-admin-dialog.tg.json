@@ -7,7 +7,7 @@
   "domain": "Домен",
   "domainDescription": "Домени ин вебсомона",
   "language": "Забон",
-  "languageDescription": "Рамзи забони ISO 639-1 барои ин сомона (масалан, en, es, fr).",
+  "languageDescription": "Забони ин сомона. Аз рӯи ном ё код ҷустуҷӯ кунед ё коди дигареро, масалан fr-CA, ворид намоед.",
   "googleAnalyticsId": "ID-и Google Analytics",
   "googleAnalyticsIdDescription": "ID-и пайгирӣ, ки барои ҳамгироиҳои таҳлил истифода мешавад",
   "privateSite": "Сомонаи хусусӣ",

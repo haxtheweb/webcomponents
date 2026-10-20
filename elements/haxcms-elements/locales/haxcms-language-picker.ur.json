@@ -1,0 +1,9 @@
+{
+  "language": "زبان",
+  "searchPlaceholder": "زبانیں تلاش کریں",
+  "noResults": "کوئی زبان مطابقت نہیں رکھتی",
+  "oneLanguageFound": "1 زبان ملی",
+  "languagesFound": "{count} زبانیں ملیں",
+  "useCustom": "{code} استعمال کریں",
+  "loadError": "زبانوں کی فہرست لوڈ نہیں ہو سکی۔"
+}
