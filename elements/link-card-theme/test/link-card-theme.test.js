@@ -301,6 +301,13 @@ describe('LinkCardTheme behavior', () => {
     expect(element._detectSocialType('https://x.com/jane')).to.equal('x')
     expect(element._detectSocialType('https://twitter.com/jane')).to.equal('x')
     expect(element._detectSocialType('https://example.com')).to.equal('')
+    expect(element._detectSocialType('https://dropbox.com/x')).to.equal('')
+    expect(
+      element._detectSocialType('https://evil.example/?u=linkedin.com'),
+    ).to.equal('')
+    expect(
+      element._detectSocialType('https://twitter.com.evil.example/'),
+    ).to.equal('')
     expect(element._socialIcon('linkedin')).to.equal('mdi-social:linkedin')
     expect(element._socialIcon('x')).to.equal('mdi-social:twitter')
     expect(element._socialLabel('linkedin')).to.equal('LinkedIn')

@@ -7,6 +7,32 @@
  */
 const FALLBACK_LANG = "en";
 const FALLBACK_WIDTH = "550px";
+
+/**
+ * True when `value` is an http(s) URL (scheme-less "twitter.com/..." is
+ * accepted too) whose parsed hostname is x.com / twitter.com or a subdomain
+ * of either, so the domain in a path or query string does not count.
+ */
+function isTweetUrl(value) {
+  try {
+    const text = `${value}`.trim();
+    const url = new URL(
+      /^[a-z][a-z0-9+.-]*:/i.test(text) || text.startsWith("/")
+        ? text
+        : `https://${text}`,
+      "https://placeholder.invalid/",
+    );
+    if (url.protocol !== "http:" && url.protocol !== "https:") {
+      return false;
+    }
+    const host = url.hostname.toLowerCase();
+    return ["twitter.com", "x.com"].some(
+      (domain) => host === domain || host.endsWith("." + domain),
+    );
+  } catch {
+    return false;
+  }
+}
 // security: every value interpolated into the innerHTML template below is
 // validated against a strict pattern and then escaped, so author / imported
 // attribute values can not break out of the markup (DOM XSS)
@@ -93,11 +119,7 @@ class TwitterEmbedVanilla extends HTMLElement {
    * HTMLElement spec
    */
   attributeChangedCallback(attr, oldValue, newValue) {
-    if (
-      attr == "tweet" &&
-      newValue &&
-      (newValue.includes("twitter.com") || newValue.includes("x.com"))
-    ) {
+    if (attr == "tweet" && newValue && isTweetUrl(newValue)) {
       this.tweetId = newValue.split("/").pop();
     }
     if (attr == "no-popups") {

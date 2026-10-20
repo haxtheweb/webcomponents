@@ -5,6 +5,7 @@
 import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { urlHostMatches } from "@haxtheweb/haxcms-elements/lib/core/utils/urlHost.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
@@ -453,37 +454,30 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   socialLinkIcon(url) {
     if (!url) return "icons:launch";
-    const lower = url.toLowerCase();
-    if (lower.includes("linkedin.com")) return "mdi-social:linkedin";
-    if (lower.includes("github.com") || lower.includes("gitlab.com"))
-      return "mdi-social:github-circle";
-    if (
-      lower.includes("twitter.com") ||
-      lower.includes("x.com") ||
-      lower.includes("t.co")
-    )
-      return "mdi-social:twitter";
-    if (lower.includes("facebook.com") || lower.includes("fb.me"))
-      return "mdi-social:facebook";
-    if (lower.includes("instagram.com")) return "mdi-social:instagram";
-    if (lower.includes("youtube.com") || lower.includes("youtu.be"))
-      return "mdi-social:youtube";
-    if (lower.includes("tiktok.com")) return "mdi-social:tiktok";
+    const is = (...domains) =>
+      urlHostMatches(url, domains, { allowSchemeless: true });
+    if (is("linkedin.com")) return "mdi-social:linkedin";
+    if (is("github.com", "gitlab.com")) return "mdi-social:github-circle";
+    if (is("twitter.com", "x.com", "t.co")) return "mdi-social:twitter";
+    if (is("facebook.com", "fb.me")) return "mdi-social:facebook";
+    if (is("instagram.com")) return "mdi-social:instagram";
+    if (is("youtube.com", "youtu.be")) return "mdi-social:youtube";
+    if (is("tiktok.com")) return "mdi-social:tiktok";
     return "icons:launch";
   }
 
   socialLinkLabel(url) {
     if (!url) return "Link";
-    const lower = url.toLowerCase();
-    if (lower.includes("linkedin.com")) return "LinkedIn";
-    if (lower.includes("github.com")) return "GitHub";
-    if (lower.includes("gitlab.com")) return "GitLab";
-    if (lower.includes("twitter.com") || lower.includes("x.com"))
-      return "X / Twitter";
-    if (lower.includes("facebook.com")) return "Facebook";
-    if (lower.includes("instagram.com")) return "Instagram";
-    if (lower.includes("youtube.com")) return "YouTube";
-    if (lower.includes("tiktok.com")) return "TikTok";
+    const is = (...domains) =>
+      urlHostMatches(url, domains, { allowSchemeless: true });
+    if (is("linkedin.com")) return "LinkedIn";
+    if (is("github.com")) return "GitHub";
+    if (is("gitlab.com")) return "GitLab";
+    if (is("twitter.com", "x.com")) return "X / Twitter";
+    if (is("facebook.com")) return "Facebook";
+    if (is("instagram.com")) return "Instagram";
+    if (is("youtube.com")) return "YouTube";
+    if (is("tiktok.com")) return "TikTok";
     return this.t.social;
   }
 

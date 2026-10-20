@@ -75,6 +75,23 @@ describe("twitter-embed-vanilla", () => {
     expect(el.tweetId).to.equal("6789");
   });
 
+  it("ignores look-alike hosts and urls that only mention twitter.com or x.com", async () => {
+    const el = await fixture(
+      html`<twitter-embed-vanilla></twitter-embed-vanilla>`,
+    );
+    el.tweet = "https://x.com/btopro/status/6789";
+    expect(el.tweetId).to.equal("6789");
+    [
+      "https://dropbox.com/s/1",
+      "https://evil.example/?u=twitter.com/a/status/1",
+      "https://twitter.com.evil.example/a/status/2",
+      "javascript:alert('x.com/3')",
+    ].forEach((tweet) => {
+      el.tweet = tweet;
+      expect(el.tweetId).to.equal("6789");
+    });
+  });
+
   it("builds iframe markup for the current state", async () => {
     const el = await fixture(
       html`<twitter-embed-vanilla

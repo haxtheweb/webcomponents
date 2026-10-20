@@ -7,6 +7,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { urlHostMatches } from "@haxtheweb/haxcms-elements/lib/core/utils/urlHost.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -437,14 +438,11 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     if (!this._isExternalHref(href)) {
       return "";
     }
-    const normalizedHref = href.toLowerCase();
-    if (normalizedHref.indexOf("linkedin.com") !== -1) {
+    const options = { allowSchemeless: true };
+    if (urlHostMatches(href, ["linkedin.com"], options)) {
       return "linkedin";
     }
-    if (
-      normalizedHref.indexOf("x.com") !== -1 ||
-      normalizedHref.indexOf("twitter.com") !== -1
-    ) {
+    if (urlHostMatches(href, ["x.com", "twitter.com"], options)) {
       return "x";
     }
     return "";

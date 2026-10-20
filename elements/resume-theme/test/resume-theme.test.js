@@ -231,6 +231,25 @@ describe("ResumeTheme behavior", () => {
     ).to.equal("S");
   });
 
+  it("does not map look-alike hosts or urls that only mention a platform", () => {
+    expect(
+      element.socialLinkIcon("https://evil.example/?u=linkedin.com"),
+    ).to.equal("icons:launch");
+    expect(element.socialLinkIcon("https://dropbox.com/jane")).to.equal(
+      "icons:launch",
+    );
+    expect(element.socialLinkLabel("https://dropbox.com/jane")).to.equal(
+      element.t.social,
+    );
+    expect(
+      element.socialLinkLabel("https://github.com.evil.example/"),
+    ).to.equal(element.t.social);
+    // scheme-less profile links typed by authors still resolve
+    expect(element.socialLinkIcon("linkedin.com/in/jane")).to.equal(
+      "mdi-social:linkedin",
+    );
+  });
+
   it("maps social urls to icons", () => {
     expect(element.socialLinkIcon("")).to.equal("icons:launch");
     expect(element.socialLinkIcon(null)).to.equal("icons:launch");

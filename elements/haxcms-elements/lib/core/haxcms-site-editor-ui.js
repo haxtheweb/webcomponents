@@ -36,6 +36,7 @@ import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
 import { SiteView } from "../ui-components/magic/site-view.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
+import { urlHostMatches } from "./utils/urlHost.js";
 
 const ADMIN_ROUTE_QUERY_PATHS = {
   admin: "admin",
@@ -638,23 +639,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   detectUrlType(url) {
     try {
       const urlObj = new URL(url);
-      const hostname = urlObj.hostname.toLowerCase();
       const pathname = urlObj.pathname.toLowerCase();
       const search = urlObj.search.toLowerCase();
 
       // YouTube detection
-      if (
-        hostname.includes("youtube.com") ||
-        hostname.includes("youtu.be") ||
-        hostname.includes("m.youtube.com")
-      ) {
+      if (urlHostMatches(url, ["youtube.com", "youtu.be"])) {
         return "youtube";
       }
 
       // Kaltura MediaSpace detection
       // https://{tenant}.mediaspace.kaltura.com/media/t/{mediaId}
       if (
-        hostname.includes("mediaspace.kaltura.com") &&
+        urlHostMatches(url, ["mediaspace.kaltura.com"]) &&
         pathname.includes("/media/t/")
       ) {
         return "kaltura";
