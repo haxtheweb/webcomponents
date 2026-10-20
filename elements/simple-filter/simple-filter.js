@@ -137,26 +137,28 @@ export const SimpleFilterMixin = function (SuperClass) {
      * @return array} Filter results.
      */
     _computeFiltered(items, where, like, caseSensitive, multiMatch) {
-      like = this.escapeRegExp(like);
       let regex = null;
       // most logical for search results but not our default for legacy api reasons
       if (multiMatch) {
-        const multiPat = like.split("\\ ");
         let patterns = [];
-        // support multiple patterns based on space separated words
-        multiPat.forEach((pat) => {
-          pat = pat
-            .replace("\\", "")
-            .replace("\\?", "")
-            .replace("\\.", "")
-            .replace("\\!", "");
-          if (pat.length > 0) {
-            patterns.push(`(\\s${pat}|^${pat})`);
-          }
-        });
+        // support multiple patterns based on space separated words. Characters
+        // we deliberately ignore in search terms (backslash, ?, ., !) are
+        // removed from the raw word FIRST, then the rest is escaped, so every
+        // remaining character matches literally and no stray regex syntax
+        // from user input can survive into the pattern.
+        String(like)
+          .split(" ")
+          .forEach((word) => {
+            const pat = this.escapeRegExp(word.replace(/[\\?.!]/g, ""));
+            if (pat.length > 0) {
+              patterns.push(`(\\s${pat}|^${pat})`);
+            }
+          });
         // rejoin them for a combined or statement regex for start of a word or space after word
         // this way we don't get things like "join" matching on "rejoin party"
         like = patterns.join("|");
+      } else {
+        like = this.escapeRegExp(like);
       }
       let filtered = [];
       //Filter by `like`
