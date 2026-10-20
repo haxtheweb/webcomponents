@@ -6,6 +6,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/code-editor/lib/monaco-element/monaco-element.js";
+import { removeTagsWithSpace } from "@haxtheweb/utils/lib/safe-html.js";
 /**
  * `code-editor`
  * `Wrapper on top of a code editor`
@@ -216,9 +217,8 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
 
   get placeholder() {
     let content = `${this.editorValue || this.innerHTML}`;
-    return content
-      .replace(/\s*<\/?template[^>]*>\s*/g, "")
-      .replace(/\s*<\/?iframe[^>]*>\s*/g, "");
+    content = removeTagsWithSpace(content, /<\/?template/g);
+    return removeTagsWithSpace(content, /<\/?iframe/g);
   }
 
   static get tag() {

@@ -2,6 +2,7 @@ import { html, css } from "lit";
 import "./simple-fields-field.js";
 import { SimpleFieldsCombo } from "./simple-fields-combo.js";
 import "./simple-fields-url-combo-item.js";
+import { looksLikeEmail } from "@haxtheweb/utils/lib/safe-html.js";
 
 /**
  *`simple-fields-url-combo`
@@ -196,7 +197,7 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
    * @memberof SimpleFieldsUrlCombo
    */
   possibleEmail(text) {
-    return text.match(/^\S+@\S+.\S+$/);
+    return looksLikeEmail(text) ? [text] : null;
   }
 
   /**

@@ -570,7 +570,20 @@ class SimpleSearch extends LitElement {
       this.resultCount = 0;
     }
     this.resultPointer = 0;
-    results = results.replace(/<\/?simple-search-match[^>]*>/g, "");
+    {
+      // linear scan: remove each <simple-search-match ...> / </simple-search-match ...> tag
+      const tagStart = /<\/?simple-search-match/g;
+      let cleaned = "";
+      let pos = 0;
+      for (let m = tagStart.exec(results); m; m = tagStart.exec(results)) {
+        const gt = results.indexOf(">", m.index + m[0].length);
+        if (gt < 0) break;
+        cleaned += results.slice(pos, m.index);
+        pos = gt + 1;
+        tagStart.lastIndex = pos;
+      }
+      results = cleaned + results.slice(pos);
+    }
     this.searchTerms.forEach((term) => {
       let modifier = this.caseSensitive ? "gm" : "gim",
         regex = new RegExp(

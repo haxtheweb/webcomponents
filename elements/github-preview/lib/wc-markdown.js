@@ -1,5 +1,6 @@
 import { markdownToHTML } from "@haxtheweb/utils/lib/markdown.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
+import { replaceLazyRun } from "@haxtheweb/utils/lib/safe-html.js";
 
 export class WCMarkdown extends HTMLElement {
   static get observedAttributes() {
@@ -45,7 +46,9 @@ export class WCMarkdown extends HTMLElement {
     if (scriptTag) {
       if (scriptTag.getAttribute("type") === "wc-content") {
         let content = WCMarkdown.dedentText(scriptTag.innerHTML);
-        content = content.replace(/&lt;(\/?script)(.*?)&gt;/g, "<$1$2>");
+        content = replaceLazyRun(content, [/&lt;(?=\/?script)/, "&gt;"], {
+          replacement: (inner) => `<${inner}>`,
+        });
         this.value = content;
       }
     } else {

@@ -10,6 +10,7 @@ import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/I
 import { MediaBehaviorsVideo } from "@haxtheweb/media-behaviors/media-behaviors.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { copyToClipboard } from "@haxtheweb/utils/lib/clipboard.js";
+import { removeThroughLast } from "@haxtheweb/utils/lib/safe-html.js";
 /**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`
@@ -1061,9 +1062,10 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.sourceData[0] &&
       this.sourceType === "youtube"
     ) {
-      return this._computeSRC(this.sourceData[0].src).replace(
-        /.*\/embed\//,
-        "",
+      return removeThroughLast(
+        this._computeSRC(this.sourceData[0].src),
+        "/embed/",
+        { all: false },
       );
     }
     return undefined;
