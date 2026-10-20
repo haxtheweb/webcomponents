@@ -107,7 +107,10 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
         :host {
           display: block;
           font-family: var(--ddd-font-navigation);
-          color: var(--ddd-theme-default-coalyGray);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           /* do not inherit a tight line-height from the surrounding theme,
              it squashes the options and packs the nudge text together */
           line-height: var(--ddd-lh-150);
@@ -118,7 +121,10 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
           border: var(--ddd-border-sm);
           border-color: var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-sm);
-          background-color: var(--ddd-theme-default-white);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-nittanyNavy)
+          );
         }
         /* A native legend straddles the top border, so half of it sits outside
            the box on whatever background the page has (unreadable dark on dark).
@@ -168,7 +174,10 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
           border: var(--ddd-border-md);
           border-color: var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-sm);
-          background-color: var(--ddd-theme-default-white);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-nittanyNavy)
+          );
           font-size: var(--ddd-font-size-l);
           font-weight: var(--ddd-font-weight-bold);
           line-height: var(--ddd-lh-120);
@@ -178,7 +187,10 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
           font-size: var(--ddd-font-size-xl);
         }
         .option label:hover {
-          background-color: var(--ddd-theme-default-limestoneLight);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
         }
         .option input:focus-visible + label {
           outline: var(--ddd-border-md);
@@ -186,16 +198,28 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
           outline-offset: var(--ddd-spacing-1);
         }
         .option input:checked + label {
-          border-color: var(--ddd-theme-default-beaverBlue);
-          background-color: var(--ddd-theme-default-beaverBlue);
-          color: var(--ddd-theme-default-white);
+          border-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-black)
+          );
         }
         .nudge {
           margin-top: var(--ddd-spacing-4);
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
           border-left: var(--ddd-border-lg);
           border-color: var(--ddd-theme-default-skyBlue);
-          background-color: var(--ddd-theme-default-limestoneMaxLight);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-slateGray)
+          );
           font-size: var(--ddd-font-size-s);
         }
         .nudge p {
@@ -204,7 +228,10 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
         .nudge a {
           display: inline-block;
           margin-top: var(--ddd-spacing-2);
-          color: var(--ddd-theme-default-link);
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
           font-weight: var(--ddd-font-weight-bold);
         }
       `,

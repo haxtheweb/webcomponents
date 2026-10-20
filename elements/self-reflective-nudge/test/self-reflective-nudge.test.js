@@ -189,6 +189,29 @@ describe("SelfReflectiveNudge test", () => {
     expect(legend.getBoundingClientRect().top).to.be.at.least(borderLine);
   });
 
+  it("follows the page color-scheme (light-dark) for dark mode", async () => {
+    const colors = async (scheme) => {
+      const wrap = await fixture(html`
+        <div style="color-scheme: ${scheme}">
+          <self-reflective-nudge
+            input="grade"
+            prompt="Q"
+          ></self-reflective-nudge>
+        </div>
+      `);
+      const el = wrap.querySelector("self-reflective-nudge");
+      await el.updateComplete;
+      const fieldset = el.shadowRoot.querySelector("fieldset");
+      const style = globalThis.getComputedStyle(fieldset);
+      return { background: style.backgroundColor, text: style.color };
+    };
+    const light = await colors("light");
+    const dark = await colors("dark");
+    expect(light.background).to.equal("rgb(255, 255, 255)");
+    expect(dark.background).to.not.equal(light.background);
+    expect(dark.text).to.not.equal(light.text);
+  });
+
   it("writes the nudges array to light DOM on a HAX save", async () => {
     const node = globalThis.document.createElement("self-reflective-nudge");
     node.nudges = [
