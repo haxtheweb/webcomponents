@@ -29,6 +29,11 @@ class PortalLauncher extends HTMLElement {
     super();
     // set tag for later use
     this.tag = PortalLauncher.tag;
+  }
+  connectedCallback() {
+    // light DOM children are not reliably available in the constructor
+    if (this.__initialized) return;
+    this.__initialized = true;
     // ensure there's at least 1 link in here somewhere...
     if (this.querySelectorAll("a")) {
       this.querySelectorAll("a").forEach((a) => {

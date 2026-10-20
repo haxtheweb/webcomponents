@@ -118,6 +118,7 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
     super();
     this.autofocus = false;
     this.fontSize = 14;
+    // eslint-disable-next-line wc/no-constructor-attributes -- Lit reactive property default; attribute reflection is deferred to the update cycle
     this.id = this._generateUUID();
     this.language = "html";
     this.mode = "html";

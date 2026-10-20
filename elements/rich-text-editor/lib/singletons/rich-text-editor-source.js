@@ -168,6 +168,7 @@ class RichTextEditorSource extends LitElement {
   }
   constructor() {
     super();
+    // eslint-disable-next-line wc/no-constructor-attributes -- Lit reactive property default; attribute reflection is deferred to the update cycle
     this.id = "";
     import("@haxtheweb/code-editor/code-editor.js");
     // sets instance to current instance

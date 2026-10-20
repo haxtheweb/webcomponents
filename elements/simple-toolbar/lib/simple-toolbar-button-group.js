@@ -36,14 +36,12 @@ class SimpleToolbarButtonGroup extends RadioBehaviors(LitElement) {
 
   constructor() {
     super();
-    this.setAttribute("role", "radiogroup");
-    if (this.classList) {
-      this.classList.add("group");
-    }
     this.addEventListener("button-toggled", this._handleToggle);
   }
   connectedCallback() {
     super.connectedCallback();
+    // attributes can not be set in the constructor (createElement)
+    if (!this.hasAttribute("role")) this.setAttribute("role", "radiogroup");
     this.querySelectorAll(`${this.__query}`).forEach((i) => {
       if (!i.id) i.id = this._generateUUID();
     });

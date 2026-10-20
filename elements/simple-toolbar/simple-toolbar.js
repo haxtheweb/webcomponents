@@ -79,7 +79,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           #morebutton {
             flex: 0 0 auto;
           }
-          ::slotted(.group) {
+          ::slotted(.group),
+          ::slotted(simple-toolbar-button-group) {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-evenly;

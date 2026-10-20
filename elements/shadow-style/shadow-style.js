@@ -11,6 +11,13 @@
 class ShadowStyle extends HTMLElement {
   constructor() {
     super();
+    // this will build the map for all styles
+    this.cssMap = {};
+  }
+  connectedCallback() {
+    // attributes / styles can not be touched in the constructor
+    if (this.__initialized) return;
+    this.__initialized = true;
     // support evil
     if (this.getAttribute("evil") != null) {
       // this will forcibly hijack all shadowRoot definitions to ensure that they
@@ -35,8 +42,6 @@ class ShadowStyle extends HTMLElement {
       console.warn("You .. you're evil.");
       console.error("I am nessecary evil");
     }
-    // this will build the map for all styles
-    this.cssMap = {};
     // force this to not be shown visually
     this.style.display = "none";
     // run through the injector based on innerText

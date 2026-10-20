@@ -72,6 +72,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
 
   constructor() {
     super();
+    // eslint-disable-next-line wc/no-constructor-attributes -- Lit reactive property default; attribute reflection is deferred to the update cycle
     this.hidden = true;
     this.sticky = false;
     this.label = "Select";
@@ -100,11 +101,9 @@ class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
               <button
                 class="${ancestor.selectAll ? "" : "selectnode"}"
                 controls="${this.controls}"
-                aria-current="${
-                  i + 1 >= (this.selectionAncestors || []).length
-                    ? "true"
-                    : "false"
-                }"
+                aria-current="${i + 1 >= (this.selectionAncestors || []).length
+                  ? "true"
+                  : "false"}"
                 @click="${(_e) => this._handleClick(ancestor)}"
                 tabindex="0"
               >

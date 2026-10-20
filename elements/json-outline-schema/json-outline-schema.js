@@ -80,7 +80,11 @@ class JsonOutlineSchema extends HTMLElement {
     // values written before we are ready are held here and applied once
     // connected so constructor defaults and early writes are not discarded
     this.__pending = {};
+    // id / title setters are gated on __ready (held in __pending), so no
+    // attribute is written until connected
+    // eslint-disable-next-line wc/no-constructor-attributes
     this.id = this.generateUUID();
+    // eslint-disable-next-line wc/no-constructor-attributes
     this.title = "New site";
     this.author = "";
     this.description = "";

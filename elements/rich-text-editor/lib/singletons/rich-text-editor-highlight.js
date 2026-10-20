@@ -88,6 +88,7 @@ class RichTextEditorHighlight extends LitElement {
     let hex = Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
       .substring(1);
+    // eslint-disable-next-line wc/no-constructor-attributes -- Lit reactive property default; attribute reflection is deferred to the update cycle
     this.id = "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
   }
 

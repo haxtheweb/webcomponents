@@ -39,7 +39,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
             var(--simple-fields-button-padding, 2px);
           height: var(--simple-fields-tag-list-height);
         }
-        :host(.drop-possible) [part="option-inner"] {
+        :host([drop-possible]) [part="option-inner"] {
           --simple-fields-accent-color: var(
             --simple-fields-tag-list-possible,
             var(--simple-colors-default-theme-accent-2, #eeffee)
@@ -49,7 +49,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
             var(--simple-colors-default-theme-accent-12, #eeffee);
           outline-offset: 1px;
         }
-        :host(.drag-focus) [part="option-inner"] {
+        :host([drag-focus]) [part="option-inner"] {
           --simple-fields-accent-color: var(
             --simple-fields-tag-list-focus,
             var(--simple-colors-default-theme-accent-8, #44ff44)
@@ -101,6 +101,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
     this.singleValueOnly = false;
     this.value = "";
     this.tagList = [];
+    // eslint-disable-next-line wc/no-constructor-attributes -- Lit reactive property default; attribute reflection is deferred to the update cycle
     this.id = this._generateUUID();
     this.addEventListener("dragleave", this._handleDragLeave);
     this.addEventListener("dragover", this._handleDragEnter);
@@ -123,10 +124,10 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
     });
   }
   _handleGlobalTagDrop(_e) {
-    this.classList.remove("drop-possible");
+    this.removeAttribute("drop-possible");
   }
   _handleGlobalTagDrag(_e) {
-    this.classList.add("drop-possible");
+    this.setAttribute("drop-possible", "");
   }
   /**
    * template for slotted or shadow DOM prefix
@@ -194,18 +195,18 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
     ];
   }
   _handleDragLeave(_e) {
-    this.classList.remove("drag-focus");
-    this.classList.add("drop-possible");
+    this.removeAttribute("drag-focus");
+    this.setAttribute("drop-possible", "");
   }
   _handleDragEnter(e) {
     e.preventDefault();
-    this.classList.add("drag-focus");
-    this.classList.remove("drop-possible");
+    this.setAttribute("drag-focus", "");
+    this.removeAttribute("drop-possible");
   }
   _handleDragDrop(e) {
     e.preventDefault();
-    this.classList.remove("drop-possible");
-    this.classList.remove("drag-focus");
+    this.removeAttribute("drop-possible");
+    this.removeAttribute("drag-focus");
     // sanity check we have text here; this HAS to have been set by
     if (JSON.parse(e.dataTransfer.getData("text"))) {
       let tmp = JSON.parse(e.dataTransfer.getData("text"));

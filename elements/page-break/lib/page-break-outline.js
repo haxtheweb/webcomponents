@@ -8,7 +8,6 @@ export class PageBreakOutline extends HTMLElement {
     this.target = null;
     this.selector = null;
     this.div = globalThis.document.createElement("div");
-    this.appendChild(this.div);
     this.basePath = "";
     this.addEventListener("click", this.clickHandler.bind(this));
   }
@@ -29,6 +28,8 @@ export class PageBreakOutline extends HTMLElement {
     }
   }
   connectedCallback() {
+    // children can not be added in the constructor (createElement)
+    if (!this.div.parentNode) this.appendChild(this.div);
     setTimeout(() => {
       globalThis.addEventListener(
         "page-break-change",

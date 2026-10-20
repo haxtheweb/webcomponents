@@ -40,6 +40,15 @@ class TwitterEmbedVanilla extends HTMLElement {
    */
   constructor() {
     super();
+    this.__initialized = false;
+  }
+  /**
+   * HTMLElement spec; attributes can not be read or written in the
+   * constructor (document.createElement), so defaults are applied here.
+   */
+  connectedCallback() {
+    if (this.__initialized) return;
+    this.__initialized = true;
     if (globalThis.document && globalThis.document.body) {
       this.lang =
         this.getAttribute("lang") ||

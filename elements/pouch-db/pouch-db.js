@@ -75,7 +75,19 @@ class PouchDb extends HTMLElement {
     let eventData = e.detail;
     let whatEvent = e.target.tagName;
 
-    let activityDisplay, activityId, objectId, objectName, objectDescription, resultScoreScaled, resultScoreMin, resultScoreMax, resultScoreRaw, resultSuccess, resultCompletion, resultResponse, resultDuration;
+    let activityDisplay,
+      activityId,
+      objectId,
+      objectName,
+      objectDescription,
+      resultScoreScaled,
+      resultScoreMin,
+      resultScoreMax,
+      resultScoreRaw,
+      resultSuccess,
+      resultCompletion,
+      resultResponse,
+      resultDuration;
     switch (whatEvent) {
       case "MULTIPLE-CHOICE": {
         activityDisplay = eventData.activityDisplay;

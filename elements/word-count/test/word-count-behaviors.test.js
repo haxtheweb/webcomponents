@@ -86,8 +86,8 @@ describe('word-count behaviors', () => {
     const el = await fixture(html`<word-count>one two</word-count>`)
     await new Promise((resolve) => setTimeout(resolve, 50))
     el.t = { wordsPrefix: 'Contador de palabras' }
-    // t-branch sets wordsPrefix inside update(), which schedules a second
-    // update pass; await both cycles before asserting the attribute
+    // t-branch sets wordsPrefix inside willUpdate(), batched into one
+    // update pass; awaiting extra cycles is harmless
     await el.updateComplete
     await el.updateComplete
     expect(el.wordsPrefix).to.equal('Contador de palabras')

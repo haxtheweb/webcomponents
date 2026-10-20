@@ -227,23 +227,25 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         @media screen {
           :host([vertical]) {
             border-radius: var(--a11y-tabs-vertical-border-radius, 2px);
-            border: 1px solid var(
-              --a11y-tabs-border-color,
-              light-dark(
-                var(--ddd-theme-default-limestoneLight),
-                var(--ddd-theme-default-limestoneMaxLight)
-              )
-            );
+            border: 1px solid
+              var(
+                --a11y-tabs-border-color,
+                light-dark(
+                  var(--ddd-theme-default-limestoneLight),
+                  var(--ddd-theme-default-limestoneMaxLight)
+                )
+              );
           }
 
           #content {
-            border: 1px solid var(
-              --a11y-tabs-border-color,
-              light-dark(
-                var(--ddd-theme-default-limestoneLight),
-                var(--ddd-theme-default-limestoneMaxLight)
-              )
-            );
+            border: 1px solid
+              var(
+                --a11y-tabs-border-color,
+                light-dark(
+                  var(--ddd-theme-default-limestoneLight),
+                  var(--ddd-theme-default-limestoneMaxLight)
+                )
+              );
             padding: var(--a11y-tabs-content-padding, 16px);
             background-color: var(--a11y-tabs-content-background);
           }
@@ -387,9 +389,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     return html` <ul id="tabs" role="tablist" part="tablist">
         ${this.tabs.map(
           (tab, i) => html`
-            <li part="tablist-item" role="none">
-              ${this._tabButton(tab, i)}
-            </li>
+            <li part="tablist-item" role="none">${this._tabButton(tab, i)}</li>
           `,
         )}
       </ul>
@@ -528,6 +528,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     this.disableResponsive = false;
     this.disabled = false;
     this.showTooltip = false;
+    // eslint-disable-next-line wc/no-constructor-attributes -- Lit reactive property default; attribute reflection is deferred to the update cycle
     this.hidden = false;
     this.__tabs = [];
     this.__tabFocus = 0;

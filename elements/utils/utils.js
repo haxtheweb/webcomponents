@@ -1183,8 +1183,7 @@ function formatHTML(html_source, options) {
           if (multi_parser.token_type == "TK_SCRIPT") {
             _beautifier = typeof js_beautify === "function" && js_beautify;
           } else if (multi_parser.token_type == "TK_STYLE") {
-            _beautifier =
-              typeof css_beautify === "function" && css_beautify;
+            _beautifier = typeof css_beautify === "function" && css_beautify;
           }
 
           if (options.indent_scripts == "keep") {

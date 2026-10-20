@@ -278,6 +278,7 @@ class EditableTableDisplay extends I18NMixin(
     // notice changes and update the data to match
     this._observer = new MutationObserver((_mutations) => {
       if (this.shadowRoot) {
+        // eslint-disable-next-line wc/no-constructor-attributes -- runs inside the observer callback, after construction
         this.importHTML(this.children.item(0));
       }
     });
@@ -314,8 +315,7 @@ class EditableTableDisplay extends I18NMixin(
       }
     }
     if (
-      (changedProperties.has("disabled") ||
-        changedProperties.has("hidden")) &&
+      (changedProperties.has("disabled") || changedProperties.has("hidden")) &&
       !this.hidden &&
       !this.disabled
     ) {
@@ -620,7 +620,9 @@ class EditableTableDisplay extends I18NMixin(
   _updateCols() {
     // the column picker is rendered as class="column" inside #table
     // (id="simple-picker-<index>"), not as id="column"
-    let table = this.shadowRoot ? this.shadowRoot.querySelector("#table") : null,
+    let table = this.shadowRoot
+        ? this.shadowRoot.querySelector("#table")
+        : null,
       picker = table ? table.querySelector(".column") : null;
     if (!table || !picker) return;
     let selected = picker.value,
