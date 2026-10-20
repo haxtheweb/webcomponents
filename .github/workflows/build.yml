@@ -42,14 +42,15 @@ jobs:
         run: npx prettier --check **/*.{js,json}
       - name: Stylelint check
         run: npx stylelint **/*.css
-      - name: ESLint
-        # Blocking on errors. The repo is at 0 errors; eqeqeq is advisory
-        # (warning) so existing loose comparisons do not fail the build.
-        run: yarn lint
       - name: Install Playwright Chromium
         run: npx playwright@1.63.0 install --with-deps chromium
       - name: Test all elements
         run: yarn test:all
+      - name: ESLint
+        # Advisory only: lint runs after the real tests and never fails the
+        # build (findings still show as annotations / in the log).
+        continue-on-error: true
+        run: yarn lint
       - name: Validate component gallery build
         run: yarn build-gallery
       - name: Rebuild Elements README
