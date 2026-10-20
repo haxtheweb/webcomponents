@@ -9,6 +9,7 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import "./hax-tray-button.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { trimLineEdges } from "@haxtheweb/utils/lib/safe-html.js";
 
 /**
  * `hax-eview-source`
@@ -186,7 +187,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
     if (response.status == 200) {
       this.shadowRoot.querySelector("#textarea").editorValue = "";
       setTimeout(() => {
-        const htmlCode = response.data.replace(/^\s+|\s+$/gm, "");
+        const htmlCode = trimLineEdges(response.data);
         this.shadowRoot.querySelector("#textarea").editorValue = htmlCode;
       }, 0);
     }

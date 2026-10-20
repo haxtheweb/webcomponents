@@ -2,6 +2,7 @@ import { css, LitElement } from "lit";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import { localStorageGet } from "@haxtheweb/utils/utils.js";
+import { replaceThroughGt } from "@haxtheweb/utils/lib/safe-html.js";
 
 /**
  * `hax-app-search`
@@ -428,7 +429,11 @@ class HaxAppSearch extends LitElement {
             typeof media[i].details !== typeof undefined &&
             media[i].details != null
           ) {
-            media[i].details = media[i].details.replace(/(<([^>]+)>)/gi, "");
+            media[i].details = replaceThroughGt(
+              media[i].details,
+              /<(?=[^>])/g,
+              "",
+            );
           }
           // allow id to use deeper logic to split it back out
           if (map.preview.id.constructor === Object) {
