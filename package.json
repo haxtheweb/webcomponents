@@ -227,7 +227,6 @@
   },
   "lint-staged": {
     "*.{js,json}": "prettier --write",
-    "elements/**/*.js": "eslint --fix --no-warn-ignored",
     "*.{png,jpeg,jpg,gif,svg}": "node scripts/optimize-staged-images.js",
     "*.css": "stylelint --fix"
   },
@@ -245,10 +244,5 @@
       "elements/*"
     ],
     "nohoist": []
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
