@@ -371,6 +371,10 @@ class LinkedinEmbed extends I18NMixin(DDD) {
       if (!iframe.contentWindow || event.source !== iframe.contentWindow) {
         return;
       }
+      // the sandboxed (no allow-same-origin) frame has an opaque origin
+      if (event.origin !== "null") {
+        return;
+      }
       const data = event.data;
       if (
         !data ||
@@ -388,7 +392,9 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     globalThis.addEventListener("message", this.__badgeSizeHandler);
     badgeHost.appendChild(iframe);
     const parentOrigin = JSON.stringify(
-      globalThis.location && globalThis.location.origin
+      globalThis.location &&
+        globalThis.location.origin &&
+        globalThis.location.origin !== "null"
         ? globalThis.location.origin
         : "*",
     );

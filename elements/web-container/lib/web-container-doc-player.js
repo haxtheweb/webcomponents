@@ -18,6 +18,15 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
     if (!frame || !frame.contentWindow || e.source !== frame.contentWindow) {
       return;
     }
+    // security: the message must also come from the origin the preview frame
+    // was pointed at (the webcontainer server-ready url)
+    try {
+      if (!frame.src || e.origin !== new URL(frame.src).origin) {
+        return;
+      }
+    } catch (error) {
+      return;
+    }
     if (typeof e.data !== "string") {
       return;
     }
@@ -152,7 +161,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
             const newHeight = entry.contentRect.height;
             parent.postMessage(
               '{"subject":"frameResize", "height":"' + entry.contentRect.height + '" }',
-              ${JSON.stringify(globalThis.location && globalThis.location.origin ? globalThis.location.origin : "*")},
+              ${JSON.stringify(globalThis.location && globalThis.location.origin && globalThis.location.origin !== "null" ? globalThis.location.origin : "*")},
             );
           }
         }
