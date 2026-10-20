@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stiilijuhend salvestatud.",
   "STYLE_GUIDE_SAVE_FAILED": "Stiilijuhendi salvestamine ebaõnnestus.",
   "SETTINGS_LOAD_FAILED": "Seadete laadimine ebaõnnestus.",
+  "LANGUAGE_NOT_FOUND": "Keelt ei leitud.",
+  "LANGUAGES_LOAD_FAILED": "Keeli ei õnnestunud laadida.",
   "SETTINGS_SAVE_FAILED": "Seadete salvestamine ebaõnnestus.",
   "PLATFORM_SETTINGS_MISSING": "Platvormi seaded puuduvad.",
   "API_KEY_MISSING": "Teenusepakkuja {provider} jaoks on vaja API võtit.",

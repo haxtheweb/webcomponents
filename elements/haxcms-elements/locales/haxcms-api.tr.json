@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stil kılavuzu kaydedildi.",
   "STYLE_GUIDE_SAVE_FAILED": "Stil kılavuzu kaydedilemedi.",
   "SETTINGS_LOAD_FAILED": "Ayarlar yüklenemedi.",
+  "LANGUAGE_NOT_FOUND": "Dil bulunamadı.",
+  "LANGUAGES_LOAD_FAILED": "Diller yüklenemedi.",
   "SETTINGS_SAVE_FAILED": "Ayarlar kaydedilemedi.",
   "PLATFORM_SETTINGS_MISSING": "Platform ayarları eksik.",
   "API_KEY_MISSING": "{provider} için bir API anahtarı gerekli.",

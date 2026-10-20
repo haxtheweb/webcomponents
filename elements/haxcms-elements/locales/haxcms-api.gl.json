@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Gardouse a guía de estilo.",
   "STYLE_GUIDE_SAVE_FAILED": "Non se puido gardar a guía de estilo.",
   "SETTINGS_LOAD_FAILED": "Non se puido cargar a configuración.",
+  "LANGUAGE_NOT_FOUND": "Non se atopou o idioma.",
+  "LANGUAGES_LOAD_FAILED": "Non se puideron cargar os idiomas.",
   "SETTINGS_SAVE_FAILED": "Non se puido gardar a configuración.",
   "PLATFORM_SETTINGS_MISSING": "Falta a configuración da plataforma.",
   "API_KEY_MISSING": "É necesaria unha clave de API para {provider}.",

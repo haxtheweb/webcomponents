@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Дастури услуб нигоҳ дошта шуд.",
   "STYLE_GUIDE_SAVE_FAILED": "Нигоҳ доштани дастури услуб имконнопазир аст.",
   "SETTINGS_LOAD_FAILED": "Бор кардани танзимот имконнопазир аст.",
+  "LANGUAGE_NOT_FOUND": "Забон ёфт нашуд.",
+  "LANGUAGES_LOAD_FAILED": "Забонҳоро бор кардан муяссар нашуд.",
   "SETTINGS_SAVE_FAILED": "Нигоҳ доштани танзимот имконнопазир аст.",
   "PLATFORM_SETTINGS_MISSING": "Танзимоти платформа мавҷуд нест.",
   "API_KEY_MISSING": "Калиди API барои {provider} лозим аст.",

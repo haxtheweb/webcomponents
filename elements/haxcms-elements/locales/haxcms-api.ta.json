@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "நடை வழிகாட்டி சேமிக்கப்பட்டது.",
   "STYLE_GUIDE_SAVE_FAILED": "நடை வழிகாட்டியைச் சேமிக்க முடியவில்லை.",
   "SETTINGS_LOAD_FAILED": "அமைப்புகளை ஏற்ற முடியவில்லை.",
+  "LANGUAGE_NOT_FOUND": "மொழி கிடைக்கவில்லை.",
+  "LANGUAGES_LOAD_FAILED": "மொழிகளை ஏற்ற முடியவில்லை.",
   "SETTINGS_SAVE_FAILED": "அமைப்புகளைச் சேமிக்க முடியவில்லை.",
   "PLATFORM_SETTINGS_MISSING": "இயங்குதள அமைப்புகள் இல்லை.",
   "API_KEY_MISSING": "{provider}-க்கான API விசை தேவை.",

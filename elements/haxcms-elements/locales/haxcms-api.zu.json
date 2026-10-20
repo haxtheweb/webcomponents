@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Umhlahlandlela wesitayela ulondoloziwe.",
   "STYLE_GUIDE_SAVE_FAILED": "Akukwazi ukulondoloza umhlahlandlela wesitayela.",
   "SETTINGS_LOAD_FAILED": "Akukwazi ukulayisha izilungiselelo.",
+  "LANGUAGE_NOT_FOUND": "Ulimi alutholakalanga.",
+  "LANGUAGES_LOAD_FAILED": "Ayikwazanga ukulayisha izilimi.",
   "SETTINGS_SAVE_FAILED": "Akukwazi ukulondoloza izilungiselelo.",
   "PLATFORM_SETTINGS_MISSING": "Izilungiselelo zenkundla azikho.",
   "API_KEY_MISSING": "Kudingeka ukhiye we-API we-{provider}.",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Qajeelfamni akkaataa olkaa'ameera.",
   "STYLE_GUIDE_SAVE_FAILED": "Qajeelfama akkaataa olkaa'uun hin danda'amne.",
   "SETTINGS_LOAD_FAILED": "Qindaa'inaalee fe'uun hin danda'amne.",
+  "LANGUAGE_NOT_FOUND": "Afaanichi hin argamne.",
+  "LANGUAGES_LOAD_FAILED": "Afaanonni fe'amuu hin dandeenye.",
   "SETTINGS_SAVE_FAILED": "Qindaa'inaalee olkaa'uun hin danda'amne.",
   "PLATFORM_SETTINGS_MISSING": "Qindaa'inaaleen waltajjii hin jiran.",
   "API_KEY_MISSING": "Furtuun API {provider}f barbaachisa.",

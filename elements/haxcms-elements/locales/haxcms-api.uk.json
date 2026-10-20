@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Посібник зі стилю збережено.",
   "STYLE_GUIDE_SAVE_FAILED": "Не вдалося зберегти посібник зі стилю.",
   "SETTINGS_LOAD_FAILED": "Не вдалося завантажити налаштування.",
+  "LANGUAGE_NOT_FOUND": "Мову не знайдено.",
+  "LANGUAGES_LOAD_FAILED": "Не вдалося завантажити мови.",
   "SETTINGS_SAVE_FAILED": "Не вдалося зберегти налаштування.",
   "PLATFORM_SETTINGS_MISSING": "Налаштування платформи відсутні.",
   "API_KEY_MISSING": "Потрібен ключ API для {provider}.",

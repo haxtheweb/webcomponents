@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "スタイルガイドを保存しました。",
   "STYLE_GUIDE_SAVE_FAILED": "スタイルガイドを保存できませんでした。",
   "SETTINGS_LOAD_FAILED": "設定を読み込めませんでした。",
+  "LANGUAGE_NOT_FOUND": "言語が見つかりません。",
+  "LANGUAGES_LOAD_FAILED": "言語を読み込めませんでした。",
   "SETTINGS_SAVE_FAILED": "設定を保存できませんでした。",
   "PLATFORM_SETTINGS_MISSING": "プラットフォーム設定がありません。",
   "API_KEY_MISSING": "{provider} の API キーが必要です。",

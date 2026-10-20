@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "စတိုင်လမ်းညွှန်ကို သိမ်းဆည်းပြီးပါပြီ။",
   "STYLE_GUIDE_SAVE_FAILED": "စတိုင်လမ်းညွှန်ကို သိမ်းဆည်း၍ မရပါ။",
   "SETTINGS_LOAD_FAILED": "ဆက်တင်များကို ဖွင့်၍ မရပါ။",
+  "LANGUAGE_NOT_FOUND": "ဘာသာစကား ရှာမတွေ့ပါ။",
+  "LANGUAGES_LOAD_FAILED": "ဘာသာစကားများကို ဖွင့်၍မရပါ။",
   "SETTINGS_SAVE_FAILED": "ဆက်တင်များကို သိမ်းဆည်း၍ မရပါ။",
   "PLATFORM_SETTINGS_MISSING": "ပလက်ဖောင်း ဆက်တင်များ မရှိပါ။",
   "API_KEY_MISSING": "{provider} အတွက် API ကီး လိုအပ်ပါသည်။",

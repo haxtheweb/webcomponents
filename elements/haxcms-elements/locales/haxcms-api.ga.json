@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Sábháladh an treoir stíle.",
   "STYLE_GUIDE_SAVE_FAILED": "Ní féidir an treoir stíle a shábháil.",
   "SETTINGS_LOAD_FAILED": "Ní féidir na socruithe a lódáil.",
+  "LANGUAGE_NOT_FOUND": "Níor aimsíodh an teanga.",
+  "LANGUAGES_LOAD_FAILED": "Níorbh fhéidir na teangacha a luchtú.",
   "SETTINGS_SAVE_FAILED": "Ní féidir na socruithe a shábháil.",
   "PLATFORM_SETTINGS_MISSING": "Tá socruithe an ardáin ar iarraidh.",
   "API_KEY_MISSING": "Tá eochair API do {provider} ag teastáil.",

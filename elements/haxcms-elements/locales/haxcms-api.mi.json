@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Kua tiakina te aratohu kāhua.",
   "STYLE_GUIDE_SAVE_FAILED": "Kāore i taea te tiaki i te aratohu kāhua.",
   "SETTINGS_LOAD_FAILED": "Kāore i taea te uta i ngā tautuhinga.",
+  "LANGUAGE_NOT_FOUND": "Kāore i kitea te reo.",
+  "LANGUAGES_LOAD_FAILED": "Kāore i taea te uta i ngā reo.",
   "SETTINGS_SAVE_FAILED": "Kāore i taea te tiaki i ngā tautuhinga.",
   "PLATFORM_SETTINGS_MISSING": "Kei te ngaro ngā tautuhinga pūhara.",
   "API_KEY_MISSING": "Me whai kī API mō {provider}.",

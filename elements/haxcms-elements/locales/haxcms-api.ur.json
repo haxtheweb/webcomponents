@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "اسٹائل گائیڈ محفوظ ہو گئی۔",
   "STYLE_GUIDE_SAVE_FAILED": "اسٹائل گائیڈ محفوظ کرنے سے قاصر۔",
   "SETTINGS_LOAD_FAILED": "ترتیبات لوڈ کرنے سے قاصر۔",
+  "LANGUAGE_NOT_FOUND": "زبان نہیں ملی۔",
+  "LANGUAGES_LOAD_FAILED": "زبانیں لوڈ نہیں ہو سکیں۔",
   "SETTINGS_SAVE_FAILED": "ترتیبات محفوظ کرنے سے قاصر۔",
   "PLATFORM_SETTINGS_MISSING": "پلیٹ فارم کی ترتیبات موجود نہیں ہیں۔",
   "API_KEY_MISSING": "{provider} کے لیے API کلید درکار ہے۔",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stijlgids opgeslagen.",
   "STYLE_GUIDE_SAVE_FAILED": "Kan de stijlgids niet opslaan.",
   "SETTINGS_LOAD_FAILED": "Kan de instellingen niet laden.",
+  "LANGUAGE_NOT_FOUND": "Taal niet gevonden.",
+  "LANGUAGES_LOAD_FAILED": "Kan talen niet laden.",
   "SETTINGS_SAVE_FAILED": "Kan de instellingen niet opslaan.",
   "PLATFORM_SETTINGS_MISSING": "De platforminstellingen ontbreken.",
   "API_KEY_MISSING": "Een API-sleutel voor {provider} is vereist.",

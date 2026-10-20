@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Guide de style enregistré.",
   "STYLE_GUIDE_SAVE_FAILED": "Impossible d'enregistrer le guide de style.",
   "SETTINGS_LOAD_FAILED": "Impossible de charger les paramètres.",
+  "LANGUAGE_NOT_FOUND": "Langue introuvable.",
+  "LANGUAGES_LOAD_FAILED": "Impossible de charger les langues.",
   "SETTINGS_SAVE_FAILED": "Impossible d'enregistrer les paramètres.",
   "PLATFORM_SETTINGS_MISSING": "Les paramètres de la plateforme sont manquants.",
   "API_KEY_MISSING": "Une clé API pour {provider} est requise.",

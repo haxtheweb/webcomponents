@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Mwongozo wa mtindo umehifadhiwa.",
   "STYLE_GUIDE_SAVE_FAILED": "Imeshindikana kuhifadhi mwongozo wa mtindo.",
   "SETTINGS_LOAD_FAILED": "Imeshindikana kupakia mipangilio.",
+  "LANGUAGE_NOT_FOUND": "Lugha haikupatikana.",
+  "LANGUAGES_LOAD_FAILED": "Imeshindwa kupakia lugha.",
   "SETTINGS_SAVE_FAILED": "Imeshindikana kuhifadhi mipangilio.",
   "PLATFORM_SETTINGS_MISSING": "Mipangilio ya jukwaa haipo.",
   "API_KEY_MISSING": "Ufunguo wa API wa {provider} unahitajika.",

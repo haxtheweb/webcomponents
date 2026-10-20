@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Il-gwida tal-istil ġiet issejvjata.",
   "STYLE_GUIDE_SAVE_FAILED": "Ma kienx possibbli li tiġi ssejvjata l-gwida tal-istil.",
   "SETTINGS_LOAD_FAILED": "Ma kienx possibbli li jittellgħu s-settings.",
+  "LANGUAGE_NOT_FOUND": "Lingwa ma nstabitx.",
+  "LANGUAGES_LOAD_FAILED": "Ma setgħux jitgħabbew il-lingwi.",
   "SETTINGS_SAVE_FAILED": "Ma kienx possibbli li jiġu ssejvjati s-settings.",
   "PLATFORM_SETTINGS_MISSING": "Is-settings tal-pjattaforma huma neqsin.",
   "API_KEY_MISSING": "Hija meħtieġa ċavetta tal-API għal {provider}.",

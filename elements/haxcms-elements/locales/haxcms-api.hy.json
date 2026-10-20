@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Ոճի ուղեցույցը պահպանված է։",
   "STYLE_GUIDE_SAVE_FAILED": "Չհաջողվեց պահպանել ոճի ուղեցույցը։",
   "SETTINGS_LOAD_FAILED": "Չհաջողվեց բեռնել կարգավորումները։",
+  "LANGUAGE_NOT_FOUND": "Լեզուն չի գտնվել։",
+  "LANGUAGES_LOAD_FAILED": "Չհաջողվեց բեռնել լեզուները։",
   "SETTINGS_SAVE_FAILED": "Չհաջողվեց պահպանել կարգավորումները։",
   "PLATFORM_SETTINGS_MISSING": "Հարթակի կարգավորումները բացակայում են։",
   "API_KEY_MISSING": "Անհրաժեշտ է API բանալի {provider}-ի համար։",

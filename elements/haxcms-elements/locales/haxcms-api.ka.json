@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "სტილის სახელმძღვანელო შენახულია.",
   "STYLE_GUIDE_SAVE_FAILED": "სტილის სახელმძღვანელოს შენახვა ვერ მოხერხდა.",
   "SETTINGS_LOAD_FAILED": "პარამეტრების ჩატვირთვა ვერ მოხერხდა.",
+  "LANGUAGE_NOT_FOUND": "ენა ვერ მოიძებნა.",
+  "LANGUAGES_LOAD_FAILED": "ენების ჩატვირთვა ვერ მოხერხდა.",
   "SETTINGS_SAVE_FAILED": "პარამეტრების შენახვა ვერ მოხერხდა.",
   "PLATFORM_SETTINGS_MISSING": "პლატფორმის პარამეტრები არ არის მითითებული.",
   "API_KEY_MISSING": "საჭიროა API გასაღები {provider}-ისთვის.",

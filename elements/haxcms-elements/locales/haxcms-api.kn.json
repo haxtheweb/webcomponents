@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "ಶೈಲಿ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಉಳಿಸಲಾಗಿದೆ.",
   "STYLE_GUIDE_SAVE_FAILED": "ಶೈಲಿ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
   "SETTINGS_LOAD_FAILED": "ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+  "LANGUAGE_NOT_FOUND": "ಭಾಷೆ ಕಂಡುಬಂದಿಲ್ಲ.",
+  "LANGUAGES_LOAD_FAILED": "ಭಾಷೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ.",
   "SETTINGS_SAVE_FAILED": "ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
   "PLATFORM_SETTINGS_MISSING": "ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಕಾಣೆಯಾಗಿವೆ.",
   "API_KEY_MISSING": "{provider} ಗಾಗಿ API ಕೀ ಅಗತ್ಯವಿದೆ.",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "บันทึกคู่มือสไตล์แล้ว",
   "STYLE_GUIDE_SAVE_FAILED": "ไม่สามารถบันทึกคู่มือสไตล์ได้",
   "SETTINGS_LOAD_FAILED": "ไม่สามารถโหลดการตั้งค่าได้",
+  "LANGUAGE_NOT_FOUND": "ไม่พบภาษา",
+  "LANGUAGES_LOAD_FAILED": "ไม่สามารถโหลดภาษาได้",
   "SETTINGS_SAVE_FAILED": "ไม่สามารถบันทึกการตั้งค่าได้",
   "PLATFORM_SETTINGS_MISSING": "ไม่มีการตั้งค่าแพลตฟอร์ม",
   "API_KEY_MISSING": "ต้องมีคีย์ API สำหรับ {provider}",

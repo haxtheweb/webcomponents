@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Стиль колдонмосу сакталды.",
   "STYLE_GUIDE_SAVE_FAILED": "Стиль колдонмосун сактоо мүмкүн болгон жок.",
   "SETTINGS_LOAD_FAILED": "Жөндөөлөрдү жүктөө мүмкүн болгон жок.",
+  "LANGUAGE_NOT_FOUND": "Тил табылган жок.",
+  "LANGUAGES_LOAD_FAILED": "Тилдерди жүктөө мүмкүн болгон жок.",
   "SETTINGS_SAVE_FAILED": "Жөндөөлөрдү сактоо мүмкүн болгон жок.",
   "PLATFORM_SETTINGS_MISSING": "Платформанын жөндөөлөрү жок.",
   "API_KEY_MISSING": "{provider} үчүн API ачкычы талап кылынат.",

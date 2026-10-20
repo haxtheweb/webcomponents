@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Průvodce stylem byl uložen.",
   "STYLE_GUIDE_SAVE_FAILED": "Průvodce stylem se nepodařilo uložit.",
   "SETTINGS_LOAD_FAILED": "Nastavení se nepodařilo načíst.",
+  "LANGUAGE_NOT_FOUND": "Jazyk nebyl nalezen.",
+  "LANGUAGES_LOAD_FAILED": "Jazyky se nepodařilo načíst.",
   "SETTINGS_SAVE_FAILED": "Nastavení se nepodařilo uložit.",
   "PLATFORM_SETTINGS_MISSING": "Chybí nastavení platformy.",
   "API_KEY_MISSING": "Je vyžadován klíč API pro {provider}.",

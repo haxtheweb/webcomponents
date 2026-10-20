@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Panduan gaya disimpan.",
   "STYLE_GUIDE_SAVE_FAILED": "Tidak dapat menyimpan panduan gaya.",
   "SETTINGS_LOAD_FAILED": "Tidak dapat memuatkan tetapan.",
+  "LANGUAGE_NOT_FOUND": "Bahasa tidak ditemui.",
+  "LANGUAGES_LOAD_FAILED": "Tidak dapat memuatkan bahasa.",
   "SETTINGS_SAVE_FAILED": "Tidak dapat menyimpan tetapan.",
   "PLATFORM_SETTINGS_MISSING": "Tetapan platform tiada.",
   "API_KEY_MISSING": "Kunci API untuk {provider} diperlukan.",

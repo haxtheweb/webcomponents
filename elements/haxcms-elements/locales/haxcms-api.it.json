@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Guida di stile salvata.",
   "STYLE_GUIDE_SAVE_FAILED": "Impossibile salvare la guida di stile.",
   "SETTINGS_LOAD_FAILED": "Impossibile caricare le impostazioni.",
+  "LANGUAGE_NOT_FOUND": "Lingua non trovata.",
+  "LANGUAGES_LOAD_FAILED": "Impossibile caricare le lingue.",
   "SETTINGS_SAVE_FAILED": "Impossibile salvare le impostazioni.",
   "PLATFORM_SETTINGS_MISSING": "Le impostazioni della piattaforma sono mancanti.",
   "API_KEY_MISSING": "È necessaria una chiave API per {provider}.",

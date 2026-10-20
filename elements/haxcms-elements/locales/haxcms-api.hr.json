@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Vodič za stil je spremljen.",
   "STYLE_GUIDE_SAVE_FAILED": "Nije moguće spremiti vodič za stil.",
   "SETTINGS_LOAD_FAILED": "Nije moguće učitati postavke.",
+  "LANGUAGE_NOT_FOUND": "Jezik nije pronađen.",
+  "LANGUAGES_LOAD_FAILED": "Nije moguće učitati jezike.",
   "SETTINGS_SAVE_FAILED": "Nije moguće spremiti postavke.",
   "PLATFORM_SETTINGS_MISSING": "Nedostaju postavke platforme.",
   "API_KEY_MISSING": "Potreban je API ključ za {provider}.",

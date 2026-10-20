@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Стиль кулланмасы сакланды.",
   "STYLE_GUIDE_SAVE_FAILED": "Стиль кулланмасын саклап булмады.",
   "SETTINGS_LOAD_FAILED": "Көйләүләрне йөкләп булмады.",
+  "LANGUAGE_NOT_FOUND": "Тел табылмады.",
+  "LANGUAGES_LOAD_FAILED": "Телләрне йөкләп булмады.",
   "SETTINGS_SAVE_FAILED": "Көйләүләрне саклап булмады.",
   "PLATFORM_SETTINGS_MISSING": "Платформа көйләүләре юк.",
   "API_KEY_MISSING": "{provider} өчен API ачкычы кирәк.",

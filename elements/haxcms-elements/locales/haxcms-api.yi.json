@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "סטיל־וועגווײַזער אויפֿגעהיט.",
   "STYLE_GUIDE_SAVE_FAILED": "מע קען נישט אויפֿהיטן דעם סטיל־וועגווײַזער.",
   "SETTINGS_LOAD_FAILED": "מע קען נישט לאָדן די באַשטימונגען.",
+  "LANGUAGE_NOT_FOUND": "שפּראַך נישט געפֿונען.",
+  "LANGUAGES_LOAD_FAILED": "קען נישט לאָדן שפּראַכן.",
   "SETTINGS_SAVE_FAILED": "מע קען נישט אויפֿהיטן די באַשטימונגען.",
   "PLATFORM_SETTINGS_MISSING": "די פּלאַטפֿאָרמע־באַשטימונגען פֿעלן.",
   "API_KEY_MISSING": "מע דאַרף אַן API־שליסל פֿאַר {provider}.",

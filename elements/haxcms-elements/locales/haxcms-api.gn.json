@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Estilo rape oñeñongatúma.",
   "STYLE_GUIDE_SAVE_FAILED": "Ndaikatúi oñeñongatu estilo rape.",
   "SETTINGS_LOAD_FAILED": "Ndaikatúi ojehupi ñemboheko.",
+  "LANGUAGE_NOT_FOUND": "Ñe'ẽ ndojejuhúi.",
+  "LANGUAGES_LOAD_FAILED": "Ndaikatúi ojegueru umi ñe'ẽ.",
   "SETTINGS_SAVE_FAILED": "Ndaikatúi oñeñongatu ñemboheko.",
   "PLATFORM_SETTINGS_MISSING": "Ndaipóri plataforma ñemboheko.",
   "API_KEY_MISSING": "Oikotevẽ API ñe'ẽñemi {provider} g̃uarã.",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Gwaro remaitiro rachengetwa.",
   "STYLE_GUIDE_SAVE_FAILED": "Hazvigoneke kuchengeta gwaro remaitiro.",
   "SETTINGS_LOAD_FAILED": "Hazvigoneke kuvhura marongero.",
+  "LANGUAGE_NOT_FOUND": "Mutauro haucharwa.",
+  "LANGUAGES_LOAD_FAILED": "Hatina kukwanisa kuvhura mitauro.",
   "SETTINGS_SAVE_FAILED": "Hazvigoneke kuchengeta marongero.",
   "PLATFORM_SETTINGS_MISSING": "Marongero epuratifomu haapo.",
   "API_KEY_MISSING": "Kiyi yeAPI ye {provider} inodiwa.",

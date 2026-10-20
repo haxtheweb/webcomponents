@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "اسٽائل گائيڊ محفوظ ٿي وئي.",
   "STYLE_GUIDE_SAVE_FAILED": "اسٽائل گائيڊ محفوظ نه ٿي سگهي.",
   "SETTINGS_LOAD_FAILED": "سيٽنگون لوڊ نه ٿي سگهيون.",
+  "LANGUAGE_NOT_FOUND": "ٻولي نه ملي.",
+  "LANGUAGES_LOAD_FAILED": "ٻوليون لوڊ نه ٿي سگهيون.",
   "SETTINGS_SAVE_FAILED": "سيٽنگون محفوظ نه ٿي سگهيون.",
   "PLATFORM_SETTINGS_MISSING": "پليٽفارم سيٽنگون موجود ناهن.",
   "API_KEY_MISSING": "{provider} لاءِ API ڪي گهربل آهي.",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Кіраўніцтва па стылі захавана.",
   "STYLE_GUIDE_SAVE_FAILED": "Не ўдалося захаваць кіраўніцтва па стылі.",
   "SETTINGS_LOAD_FAILED": "Не ўдалося загрузіць налады.",
+  "LANGUAGE_NOT_FOUND": "Мова не знойдзена.",
+  "LANGUAGES_LOAD_FAILED": "Не ўдалося загрузіць мовы.",
   "SETTINGS_SAVE_FAILED": "Не ўдалося захаваць налады.",
   "PLATFORM_SETTINGS_MISSING": "Налады платформы адсутнічаюць.",
   "API_KEY_MISSING": "Патрэбны ключ API для {provider}.",

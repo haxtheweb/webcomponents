@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stilguiden er lagret.",
   "STYLE_GUIDE_SAVE_FAILED": "Kunne ikke lagre stilguiden.",
   "SETTINGS_LOAD_FAILED": "Kunne ikke laste inn innstillingene.",
+  "LANGUAGE_NOT_FOUND": "Fant ikke språket.",
+  "LANGUAGES_LOAD_FAILED": "Kunne ikke laste inn språk.",
   "SETTINGS_SAVE_FAILED": "Kunne ikke lagre innstillingene.",
   "PLATFORM_SETTINGS_MISSING": "Plattforminnstillingene mangler.",
   "API_KEY_MISSING": "En API-nøkkel for {provider} er påkrevd.",

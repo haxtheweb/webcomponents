@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Chitsogozo cha kalembedwe chasungidwa.",
   "STYLE_GUIDE_SAVE_FAILED": "Sizinatheke kusunga chitsogozo cha kalembedwe.",
   "SETTINGS_LOAD_FAILED": "Sizinatheke kutsitsa zokonda.",
+  "LANGUAGE_NOT_FOUND": "Chilankhulo sichinapezeke.",
+  "LANGUAGES_LOAD_FAILED": "Sitinathe kutsegula zilankhulo.",
   "SETTINGS_SAVE_FAILED": "Sizinatheke kusunga zokonda.",
   "PLATFORM_SETTINGS_MISSING": "Zokonda za pulatifomu palibe.",
   "API_KEY_MISSING": "Kiyi ya API ya {provider} ikufunika.",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Đã lưu hướng dẫn văn phong.",
   "STYLE_GUIDE_SAVE_FAILED": "Không thể lưu hướng dẫn văn phong.",
   "SETTINGS_LOAD_FAILED": "Không thể tải cài đặt.",
+  "LANGUAGE_NOT_FOUND": "Không tìm thấy ngôn ngữ.",
+  "LANGUAGES_LOAD_FAILED": "Không thể tải các ngôn ngữ.",
   "SETTINGS_SAVE_FAILED": "Không thể lưu cài đặt.",
   "PLATFORM_SETTINGS_MISSING": "Thiếu cài đặt nền tảng.",
   "API_KEY_MISSING": "Cần có khóa API cho {provider}.",

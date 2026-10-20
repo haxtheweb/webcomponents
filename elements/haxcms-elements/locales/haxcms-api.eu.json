@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Estilo-gida gorde da.",
   "STYLE_GUIDE_SAVE_FAILED": "Ezin izan da estilo-gida gorde.",
   "SETTINGS_LOAD_FAILED": "Ezin izan dira ezarpenak kargatu.",
+  "LANGUAGE_NOT_FOUND": "Ez da hizkuntza aurkitu.",
+  "LANGUAGES_LOAD_FAILED": "Ezin izan dira hizkuntzak kargatu.",
   "SETTINGS_SAVE_FAILED": "Ezin izan dira ezarpenak gorde.",
   "PLATFORM_SETTINGS_MISSING": "Plataformaren ezarpenak falta dira.",
   "API_KEY_MISSING": "{provider} hornitzailearentzako API gako bat behar da.",

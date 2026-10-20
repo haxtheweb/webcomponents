@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "විලාස මාර්ගෝපදේශය සුරකින ලදී.",
   "STYLE_GUIDE_SAVE_FAILED": "විලාස මාර්ගෝපදේශය සුරැකිය නොහැකි විය.",
   "SETTINGS_LOAD_FAILED": "සැකසීම් පූරණය කළ නොහැකි විය.",
+  "LANGUAGE_NOT_FOUND": "භාෂාව හමු නොවීය.",
+  "LANGUAGES_LOAD_FAILED": "භාෂා පූරණය කළ නොහැකි විය.",
   "SETTINGS_SAVE_FAILED": "සැකසීම් සුරැකිය නොහැකි විය.",
   "PLATFORM_SETTINGS_MISSING": "වේදිකා සැකසීම් නොමැත.",
   "API_KEY_MISSING": "{provider} සඳහා API යතුරක් අවශ්‍යයි.",

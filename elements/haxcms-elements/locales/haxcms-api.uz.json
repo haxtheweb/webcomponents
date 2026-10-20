@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Uslub qoʻllanmasi saqlandi.",
   "STYLE_GUIDE_SAVE_FAILED": "Uslub qoʻllanmasini saqlab boʻlmadi.",
   "SETTINGS_LOAD_FAILED": "Sozlamalarni yuklab boʻlmadi.",
+  "LANGUAGE_NOT_FOUND": "Til topilmadi.",
+  "LANGUAGES_LOAD_FAILED": "Tillarni yuklab bo‘lmadi.",
   "SETTINGS_SAVE_FAILED": "Sozlamalarni saqlab boʻlmadi.",
   "PLATFORM_SETTINGS_MISSING": "Platforma sozlamalari mavjud emas.",
   "API_KEY_MISSING": "{provider} uchun API kaliti kerak.",

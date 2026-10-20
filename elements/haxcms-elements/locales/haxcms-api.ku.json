@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Rêbera şêwazê hat tomarkirin.",
   "STYLE_GUIDE_SAVE_FAILED": "Rêbera şêwazê nehat tomarkirin.",
   "SETTINGS_LOAD_FAILED": "Mîheng nehatin barkirin.",
+  "LANGUAGE_NOT_FOUND": "Ziman nehat dîtin.",
+  "LANGUAGES_LOAD_FAILED": "Zimanan nehatin barkirin.",
   "SETTINGS_SAVE_FAILED": "Mîheng nehatin tomarkirin.",
   "PLATFORM_SETTINGS_MISSING": "Mîhengên platformê tune ne.",
   "API_KEY_MISSING": "Ji bo {provider} mifteya API pêwîst e.",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "تم حفظ دليل الأنماط.",
   "STYLE_GUIDE_SAVE_FAILED": "تعذّر حفظ دليل الأنماط.",
   "SETTINGS_LOAD_FAILED": "تعذّر تحميل الإعدادات.",
+  "LANGUAGE_NOT_FOUND": "اللغة غير موجودة.",
+  "LANGUAGES_LOAD_FAILED": "تعذر تحميل اللغات.",
   "SETTINGS_SAVE_FAILED": "تعذّر حفظ الإعدادات.",
   "PLATFORM_SETTINGS_MISSING": "إعدادات المنصة مفقودة.",
   "API_KEY_MISSING": "يلزم مفتاح API لـ {provider}.",

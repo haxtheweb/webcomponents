@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "A ti fi ìtọ́sọ́nà ara pamọ́.",
   "STYLE_GUIDE_SAVE_FAILED": "Kò ṣeé ṣe láti fi ìtọ́sọ́nà ara pamọ́.",
   "SETTINGS_LOAD_FAILED": "Kò ṣeé ṣe láti gbé àwọn ètò wọlé.",
+  "LANGUAGE_NOT_FOUND": "A kò rí èdè náà.",
+  "LANGUAGES_LOAD_FAILED": "Kò ṣeé ṣe láti gbé àwọn èdè wọlé.",
   "SETTINGS_SAVE_FAILED": "Kò ṣeé ṣe láti fi àwọn ètò pamọ́.",
   "PLATFORM_SETTINGS_MISSING": "Àwọn ètò pẹpẹ kò sí.",
   "API_KEY_MISSING": "A nílò kọ́kọ́rọ́ API fún {provider}.",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "የቅጥ መመሪያው ተቀምጧል።",
   "STYLE_GUIDE_SAVE_FAILED": "የቅጥ መመሪያውን ማስቀመጥ አልተቻለም።",
   "SETTINGS_LOAD_FAILED": "ቅንብሮችን መጫን አልተቻለም።",
+  "LANGUAGE_NOT_FOUND": "ቋንቋ አልተገኘም።",
+  "LANGUAGES_LOAD_FAILED": "ቋንቋዎችን መጫን አልተቻለም።",
   "SETTINGS_SAVE_FAILED": "ቅንብሮችን ማስቀመጥ አልተቻለም።",
   "PLATFORM_SETTINGS_MISSING": "የመድረክ ቅንብሮች የሉም።",
   "API_KEY_MISSING": "ለ{provider} የAPI ቁልፍ ያስፈልጋል።",

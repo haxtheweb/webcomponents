@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "سٹائل گائیڈ سیو ہو گئی۔",
   "STYLE_GUIDE_SAVE_FAILED": "سٹائل گائیڈ سیو نہیں ہو سکی۔",
   "SETTINGS_LOAD_FAILED": "سیٹنگاں لوڈ نہیں ہو سکیاں۔",
+  "LANGUAGE_NOT_FOUND": "بولی نئیں لبھی۔",
+  "LANGUAGES_LOAD_FAILED": "بولیاں لوڈ نئیں ہو سکیاں۔",
   "SETTINGS_SAVE_FAILED": "سیٹنگاں سیو نہیں ہو سکیاں۔",
   "PLATFORM_SETTINGS_MISSING": "پلیٹ فارم سیٹنگاں موجود نہیں نیں۔",
   "API_KEY_MISSING": "{provider} لئی API کی ضروری اے۔",

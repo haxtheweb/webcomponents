@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Ua mālama ʻia ke alakaʻi kaila.",
   "STYLE_GUIDE_SAVE_FAILED": "ʻAʻole hiki ke mālama i ke alakaʻi kaila.",
   "SETTINGS_LOAD_FAILED": "ʻAʻole hiki ke hoʻouka i nā hoʻonohonoho.",
+  "LANGUAGE_NOT_FOUND": "ʻAʻole i loaʻa ka ʻōlelo.",
+  "LANGUAGES_LOAD_FAILED": "ʻAʻole hiki ke hoʻouka i nā ʻōlelo.",
   "SETTINGS_SAVE_FAILED": "ʻAʻole hiki ke mālama i nā hoʻonohonoho.",
   "PLATFORM_SETTINGS_MISSING": "Nalowale nā hoʻonohonoho kahua.",
   "API_KEY_MISSING": "Pono he kī API no {provider}.",

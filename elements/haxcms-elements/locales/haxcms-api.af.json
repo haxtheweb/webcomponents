@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stylgids gestoor.",
   "STYLE_GUIDE_SAVE_FAILED": "Kan nie die stylgids stoor nie.",
   "SETTINGS_LOAD_FAILED": "Kan nie instellings laai nie.",
+  "LANGUAGE_NOT_FOUND": "Taal nie gevind nie.",
+  "LANGUAGES_LOAD_FAILED": "Kan nie tale laai nie.",
   "SETTINGS_SAVE_FAILED": "Kan nie instellings stoor nie.",
   "PLATFORM_SETTINGS_MISSING": "Platforminstellings ontbreek.",
   "API_KEY_MISSING": "'n API-sleutel vir {provider} word benodig.",

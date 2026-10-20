@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stiliaus vadovas išsaugotas.",
   "STYLE_GUIDE_SAVE_FAILED": "Nepavyko išsaugoti stiliaus vadovo.",
   "SETTINGS_LOAD_FAILED": "Nepavyko įkelti nustatymų.",
+  "LANGUAGE_NOT_FOUND": "Kalba nerasta.",
+  "LANGUAGES_LOAD_FAILED": "Nepavyko įkelti kalbų.",
   "SETTINGS_SAVE_FAILED": "Nepavyko išsaugoti nustatymų.",
   "PLATFORM_SETTINGS_MISSING": "Trūksta platformos nustatymų.",
   "API_KEY_MISSING": "Būtinas {provider} API raktas.",
