@@ -242,7 +242,7 @@ describe("license-element behavior", () => {
         "Permissions beyond the scope of this license are available",
       ),
     ).to.be.true;
-    const more = el.shadowRoot.querySelector('a[rel="cc:morePermissions"]');
+    const more = el.shadowRoot.querySelector('a[rel~="cc:morePermissions"]');
     expect(more.getAttribute("href")).to.equal("https://example.com/more");
     expect(more.textContent.trim()).to.equal("in our FAQ");
   });
@@ -264,7 +264,7 @@ describe("license-element behavior", () => {
     expect(el.hasMore).to.be.true;
     expect(el.shadowRoot.textContent.includes("Permissions beyond the scope"))
       .to.be.true;
-    const more = el.shadowRoot.querySelector('a[rel="cc:morePermissions"]');
+    const more = el.shadowRoot.querySelector('a[rel~="cc:morePermissions"]');
     expect(more.getAttribute("href")).to.equal("https://example.com/more");
   });
 
