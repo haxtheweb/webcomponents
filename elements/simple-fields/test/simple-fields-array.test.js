@@ -227,30 +227,30 @@ describe('simple-fields-array-item', () => {
     expect(removedFired).to.equal(true)
   })
 
-  it('_setDragging sets __dragging and adds class', () => {
+  it('_setDragging sets __dragging and adds attribute', () => {
     el._setDragging(true)
     expect(el.__dragging).to.equal(true)
-    expect(el.classList.contains('dragging')).to.equal(true)
+    expect(el.hasAttribute('dragging')).to.equal(true)
   })
 
-  it('_setDragging false removes class', () => {
+  it('_setDragging false removes attribute', () => {
     el._setDragging(true)
     el._setDragging(false)
     expect(el.__dragging).to.equal(false)
-    expect(el.classList.contains('dragging')).to.equal(false)
+    expect(el.hasAttribute('dragging')).to.equal(false)
   })
 
-  it('_setDropzone adds dropzone class when __dropAccepts is set', () => {
+  it('_setDropzone adds dropzone attribute when __dropAccepts is set', () => {
     el.__dropAccepts = { id: 'other' }
     el.__dragging = false
     el._setDropzone(true)
-    expect(el.classList.contains('dropzone')).to.equal(true)
+    expect(el.hasAttribute('dropzone')).to.equal(true)
   })
 
-  it('_setDropzone false removes class', () => {
-    el.classList.add('dropzone')
+  it('_setDropzone false removes attribute', () => {
+    el.setAttribute('dropzone', '')
     el._setDropzone(false)
-    expect(el.classList.contains('dropzone')).to.equal(false)
+    expect(el.hasAttribute('dropzone')).to.equal(false)
   })
 
   it('_moveUp is no-op when no previous sibling', () => {
