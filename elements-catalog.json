@@ -71,9 +71,7 @@
       "import": "@haxtheweb/a11y-collapse/a11y-collapse.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Layout"
-      ]
+      "tags": ["Layout"]
     },
     {
       "tag": "a11y-collapse-group",
@@ -83,9 +81,7 @@
       "import": "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Layout"
-      ]
+      "tags": ["Layout"]
     },
     {
       "tag": "a11y-compare-image",
@@ -234,12 +230,7 @@
       "import": "@haxtheweb/a11y-tabs/a11y-tabs.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Layout",
-        "tabs",
-        "display",
-        "layout"
-      ]
+      "tags": ["Layout", "tabs", "display", "layout"]
     },
     {
       "tag": "absolute-position-behavior",
@@ -289,13 +280,7 @@
       "import": "@haxtheweb/course-design/lib/activity-box.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Instructional",
-        "design",
-        "pedagogy",
-        "presentation",
-        "action"
-      ]
+      "tags": ["Instructional", "design", "pedagogy", "presentation", "action"]
     },
     {
       "tag": "aframe-player",
@@ -574,9 +559,7 @@
       "import": "@haxtheweb/author-card/author-card.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other"
-      ]
+      "tags": ["Other"]
     },
     {
       "tag": "awesome-explosion",
@@ -586,13 +569,7 @@
       "import": "@haxtheweb/awesome-explosion/awesome-explosion.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "Animation",
-        "Interactive",
-        "Sound",
-        "Effect"
-      ]
+      "tags": ["Other", "Animation", "Interactive", "Sound", "Effect"]
     },
     {
       "tag": "b-r",
@@ -628,24 +605,18 @@
       "tag": "bibliography-builder",
       "title": "Bibliography Builder",
       "description": "A tool for creating and managing bibliographies",
-      "package": "bibliography-builder",
-      "import": "bibliography-builder/bibliography-builder.js",
+      "package": "@haxtheweb/bibliography-builder",
+      "import": "@haxtheweb/bibliography-builder/bibliography-builder.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Content",
-        "portfolio",
-        "citation",
-        "reference",
-        "bibliography"
-      ]
+      "tags": ["Content", "portfolio", "citation", "reference", "bibliography"]
     },
     {
       "tag": "bibliography-item",
       "title": "Bibliography Item",
       "description": "",
-      "package": "bibliography-builder",
-      "import": "bibliography-builder/lib/bibliography-item.js",
+      "package": "@haxtheweb/bibliography-builder",
+      "import": "@haxtheweb/bibliography-builder/lib/bibliography-item.js",
       "type": "element",
       "haxCapable": true,
       "tags": []
@@ -729,8 +700,8 @@
       "tag": "career-org-item",
       "title": "Career Org Item",
       "description": "",
-      "package": "career-timeline",
-      "import": "career-timeline/lib/career-org-item.js",
+      "package": "@haxtheweb/career-timeline",
+      "import": "@haxtheweb/career-timeline/lib/career-org-item.js",
       "type": "element",
       "haxCapable": true,
       "tags": []
@@ -739,8 +710,8 @@
       "tag": "career-role-item",
       "title": "Career Role Item",
       "description": "",
-      "package": "career-timeline",
-      "import": "career-timeline/lib/career-role-item.js",
+      "package": "@haxtheweb/career-timeline",
+      "import": "@haxtheweb/career-timeline/lib/career-role-item.js",
       "type": "element",
       "haxCapable": true,
       "tags": []
@@ -749,17 +720,11 @@
       "tag": "career-timeline",
       "title": "Career Timeline",
       "description": "A career timeline containing organizations, roles, and other data",
-      "package": "career-timeline",
-      "import": "career-timeline/career-timeline.js",
+      "package": "@haxtheweb/career-timeline",
+      "import": "@haxtheweb/career-timeline/career-timeline.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Content",
-        "portfolio",
-        "career",
-        "timeline",
-        "resume"
-      ]
+      "tags": ["Content", "portfolio", "career", "timeline", "resume"]
     },
     {
       "tag": "chamfer-theme",
@@ -999,12 +964,7 @@
       "import": "@haxtheweb/collection-list/lib/collection-item.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Layout",
-        "collection",
-        "list",
-        "card"
-      ]
+      "tags": ["Layout", "collection", "list", "card"]
     },
     {
       "tag": "collection-list",
@@ -1014,12 +974,7 @@
       "import": "@haxtheweb/collection-list/collection-list.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Layout",
-        "collection",
-        "list",
-        "items"
-      ]
+      "tags": ["Layout", "collection", "list", "items"]
     },
     {
       "tag": "collection-row",
@@ -1029,12 +984,7 @@
       "import": "@haxtheweb/collection-list/lib/collection-row.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Layout",
-        "collection",
-        "list",
-        "row"
-      ]
+      "tags": ["Layout", "collection", "list", "row"]
     },
     {
       "tag": "collections-theme",
@@ -1064,14 +1014,7 @@
       "import": "@haxtheweb/count-up/count-up.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "data",
-        "number",
-        "animation",
-        "counter",
-        "stats"
-      ]
+      "tags": ["Media", "data", "number", "animation", "counter", "stats"]
     },
     {
       "tag": "course-card",
@@ -1141,12 +1084,7 @@
       "import": "@haxtheweb/course-model/course-model.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "Course",
-        "Model",
-        "Eberly"
-      ]
+      "tags": ["Other", "Course", "Model", "Eberly"]
     },
     {
       "tag": "csv-render",
@@ -1206,14 +1144,7 @@
       "import": "@haxtheweb/date-card/date-card.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "date",
-        "place",
-        "location",
-        "evenet",
-        "calendar"
-      ]
+      "tags": ["Other", "date", "place", "location", "evenet", "calendar"]
     },
     {
       "tag": "date-chip",
@@ -1253,12 +1184,7 @@
       "import": "@haxtheweb/d-d-d/lib/ddd-card.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Layout",
-        "content",
-        "card",
-        "Image"
-      ]
+      "tags": ["Layout", "content", "card", "Image"]
     },
     {
       "tag": "ddd-steps-list",
@@ -1268,11 +1194,7 @@
       "import": "@haxtheweb/d-d-d/lib/ddd-steps-list.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Content",
-        "list",
-        "step"
-      ]
+      "tags": ["Content", "list", "step"]
     },
     {
       "tag": "ddd-steps-list-item",
@@ -1282,11 +1204,7 @@
       "import": "@haxtheweb/d-d-d/lib/ddd-steps-list-item.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Content",
-        "list",
-        "step"
-      ]
+      "tags": ["Content", "list", "step"]
     },
     {
       "tag": "demo-snippet",
@@ -1316,13 +1234,7 @@
       "import": "@haxtheweb/discord-embed/discord-embed.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "discord",
-        "embed",
-        "link",
-        "social"
-      ]
+      "tags": ["Other", "discord", "embed", "link", "social"]
     },
     {
       "tag": "disqus-broker",
@@ -1342,13 +1254,7 @@
       "import": "@haxtheweb/disqus-embed/disqus-embed.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "disqus",
-        "comments",
-        "embed",
-        "social"
-      ]
+      "tags": ["Other", "disqus", "comments", "embed", "social"]
     },
     {
       "tag": "documentation-player",
@@ -1488,14 +1394,7 @@
       "import": "@haxtheweb/event-badge/event-badge.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "event",
-        "badge",
-        "conference",
-        "meeting",
-        "fun"
-      ]
+      "tags": ["Other", "event", "badge", "conference", "meeting", "fun"]
     },
     {
       "tag": "example-hax-element",
@@ -1505,9 +1404,7 @@
       "import": "@haxtheweb/example-hax-element/example-hax-element.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other"
-      ]
+      "tags": ["Other"]
     },
     {
       "tag": "example-haxcms-theme",
@@ -1517,9 +1414,7 @@
       "import": "@haxtheweb/example-haxcms-theme/example-haxcms-theme.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other"
-      ]
+      "tags": ["Other"]
     },
     {
       "tag": "figure-label",
@@ -1549,10 +1444,7 @@
       "import": "@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Instructional",
-        "question"
-      ]
+      "tags": ["Instructional", "question"]
     },
     {
       "tag": "flash-card",
@@ -1608,13 +1500,7 @@
       "import": "@haxtheweb/full-width-image/full-width-image.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Layout",
-        "image",
-        "layout",
-        "section",
-        "heading"
-      ]
+      "tags": ["Layout", "image", "layout", "section", "heading"]
     },
     {
       "tag": "fullscreen-behaviors",
@@ -1674,12 +1560,7 @@
       "import": "@haxtheweb/github-preview/lib/github-rpg-contributors.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "developer",
-        "community",
-        "git"
-      ]
+      "tags": ["Other", "developer", "community", "git"]
     },
     {
       "tag": "glossy-portfolio-about",
@@ -1849,11 +1730,7 @@
       "import": "@haxtheweb/h5p-element/h5p-element.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Instructional",
-        "Interactive",
-        "media"
-      ]
+      "tags": ["Instructional", "Interactive", "media"]
     },
     {
       "tag": "hal-9000",
@@ -2053,13 +1930,7 @@
       "import": "@haxtheweb/hax-logo/hax-logo.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "hax",
-        "promo",
-        "dev",
-        "developer"
-      ]
+      "tags": ["Other", "hax", "promo", "dev", "developer"]
     },
     {
       "tag": "hax-map",
@@ -2809,14 +2680,7 @@
       "import": "@haxtheweb/ics-render/ics-render.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Content",
-        "calendar",
-        "events",
-        "ics",
-        "schedule",
-        "dates"
-      ]
+      "tags": ["Content", "calendar", "events", "ics", "schedule", "dates"]
     },
     {
       "tag": "iframe-loader",
@@ -2826,13 +2690,7 @@
       "import": "@haxtheweb/iframe-loader/iframe-loader.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "iframe",
-        "embed",
-        "web",
-        "link"
-      ]
+      "tags": ["Other", "iframe", "embed", "web", "link"]
     },
     {
       "tag": "image-compare-slider",
@@ -2860,14 +2718,7 @@
       "import": "@haxtheweb/image-gallery/image-gallery.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "image",
-        "gallery",
-        "grid",
-        "masonry",
-        "slideshow"
-      ]
+      "tags": ["Media", "image", "gallery", "grid", "masonry", "slideshow"]
     },
     {
       "tag": "image-inspector",
@@ -3015,14 +2866,7 @@
       "import": "@haxtheweb/la-tex/la-tex.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Instructional",
-        "math",
-        "mathjax",
-        "mathml",
-        "latex",
-        "mathml"
-      ]
+      "tags": ["Instructional", "math", "mathjax", "mathml", "latex", "mathml"]
     },
     {
       "tag": "lazy-image",
@@ -3142,13 +2986,7 @@
       "import": "@haxtheweb/linkedin-embed/lib/linkedin-embed.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "social media",
-        "linkedin",
-        "profile",
-        "card"
-      ]
+      "tags": ["Other", "social media", "linkedin", "profile", "card"]
     },
     {
       "tag": "loading-indicator",
@@ -3258,13 +3096,7 @@
       "import": "@haxtheweb/lrndesign-imagemap/lrndesign-imagemap.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Images",
-        "image",
-        "map",
-        "hotspot",
-        "accessibility"
-      ]
+      "tags": ["Images", "image", "map", "hotspot", "accessibility"]
     },
     {
       "tag": "lrndesign-imagemap-hotspot",
@@ -3440,12 +3272,7 @@
       "import": "@haxtheweb/matching-question/matching-question.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Instructional",
-        "matching",
-        "drag and drop",
-        "question"
-      ]
+      "tags": ["Instructional", "matching", "drag and drop", "question"]
     },
     {
       "tag": "md-block",
@@ -3505,13 +3332,7 @@
       "import": "@haxtheweb/media-playlist/media-playlist.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "video",
-        "audio",
-        "playlist",
-        "player"
-      ]
+      "tags": ["Media", "video", "audio", "playlist", "player"]
     },
     {
       "tag": "media-quote",
@@ -3521,10 +3342,7 @@
       "import": "@haxtheweb/media-quote/media-quote.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "quote"
-      ]
+      "tags": ["Media", "quote"]
     },
     {
       "tag": "meme-maker",
@@ -3534,12 +3352,7 @@
       "import": "@haxtheweb/meme-maker/meme-maker.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "funny",
-        "meme",
-        "image"
-      ]
+      "tags": ["Media", "funny", "meme", "image"]
     },
     {
       "tag": "merit-badge",
@@ -3569,13 +3382,7 @@
       "import": "@haxtheweb/moar-sarcasm/moar-sarcasm.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "troll",
-        "sarcasm",
-        "text",
-        "funny"
-      ]
+      "tags": ["Other", "troll", "sarcasm", "text", "funny"]
     },
     {
       "tag": "model-info",
@@ -3710,9 +3517,7 @@
       "import": "@haxtheweb/page-break/page-break.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other"
-      ]
+      "tags": ["Other"]
     },
     {
       "tag": "page-break-outline",
@@ -3742,14 +3547,7 @@
       "import": "@haxtheweb/page-flag/page-flag.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "workflow",
-        "edit",
-        "note",
-        "flag",
-        "page"
-      ]
+      "tags": ["Other", "workflow", "edit", "note", "flag", "page"]
     },
     {
       "tag": "page-flag-comment",
@@ -3779,13 +3577,7 @@
       "import": "@haxtheweb/page-section/page-section.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Layout",
-        "page",
-        "section",
-        "container",
-        "cta"
-      ]
+      "tags": ["Layout", "page", "section", "container", "cta"]
     },
     {
       "tag": "page-template",
@@ -3825,13 +3617,7 @@
       "import": "@haxtheweb/pdf-browser-viewer/pdf-browser-viewer.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "pdf",
-        "document",
-        "file",
-        "viewer"
-      ]
+      "tags": ["Media", "pdf", "document", "file", "viewer"]
     },
     {
       "tag": "performance-detect",
@@ -3911,12 +3697,7 @@
       "import": "@haxtheweb/polaris-theme/lib/polaris-cta.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Action",
-        "Button",
-        "Link",
-        "Polaris"
-      ]
+      "tags": ["Action", "Button", "Link", "Polaris"]
     },
     {
       "tag": "polaris-flex-sidebar",
@@ -3956,12 +3737,7 @@
       "import": "@haxtheweb/polaris-theme/lib/polaris-mark.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Brand",
-        "Header",
-        "Logo",
-        "Polaris"
-      ]
+      "tags": ["Brand", "Header", "Logo", "Polaris"]
     },
     {
       "tag": "polaris-story-card",
@@ -3971,12 +3747,7 @@
       "import": "@haxtheweb/polaris-theme/lib/polaris-story-card.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Layout",
-        "Card",
-        "Theme",
-        "Polaris"
-      ]
+      "tags": ["Layout", "Card", "Theme", "Polaris"]
     },
     {
       "tag": "polaris-theme",
@@ -3996,12 +3767,7 @@
       "import": "@haxtheweb/polaris-theme/lib/polaris-tile.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Layout",
-        "Card",
-        "Tile",
-        "Polaris"
-      ]
+      "tags": ["Layout", "Card", "Tile", "Polaris"]
     },
     {
       "tag": "portal-launcher",
@@ -4100,13 +3866,7 @@
       "import": "@haxtheweb/product-glance/product-glance.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "product",
-        "marketing",
-        "overview",
-        "card"
-      ]
+      "tags": ["Other", "product", "marketing", "overview", "card"]
     },
     {
       "tag": "product-offering",
@@ -4185,11 +3945,7 @@
       "import": "@haxtheweb/radar-chart/radar-chart.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Visualization",
-        "Metrics",
-        "Data"
-      ]
+      "tags": ["Visualization", "Metrics", "Data"]
     },
     {
       "tag": "relative-heading",
@@ -4519,12 +4275,7 @@
       "import": "@haxtheweb/rpg-character/rpg-character.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "fun",
-        "8bit",
-        "game"
-      ]
+      "tags": ["Other", "fun", "8bit", "game"]
     },
     {
       "tag": "rpg-character-toast",
@@ -4544,13 +4295,7 @@
       "import": "@haxtheweb/screen-recorder/screen-recorder.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "screen",
-        "recording",
-        "video",
-        "capture"
-      ]
+      "tags": ["Media", "screen", "recording", "video", "capture"]
     },
     {
       "tag": "scroll-button",
@@ -4598,11 +4343,7 @@
       "import": "@haxtheweb/sheet-music/sheet-music.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "Music",
-        "Instructional"
-      ]
+      "tags": ["Media", "Music", "Instructional"]
     },
     {
       "tag": "short-answer-question",
@@ -4612,12 +4353,7 @@
       "import": "@haxtheweb/multiple-choice/lib/short-answer-question.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Instructional",
-        "question",
-        "quiz",
-        "short answer"
-      ]
+      "tags": ["Instructional", "question", "quiz", "short answer"]
     },
     {
       "tag": "simple-autocomplete",
@@ -5017,11 +4753,7 @@
       "import": "@haxtheweb/simple-icon/simple-icon.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Content",
-        "text",
-        "icon"
-      ]
+      "tags": ["Content", "text", "icon"]
     },
     {
       "tag": "simple-icon-button",
@@ -5091,10 +4823,7 @@
       "import": "@haxtheweb/simple-img/simple-img.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "image"
-      ]
+      "tags": ["Media", "image"]
     },
     {
       "tag": "simple-login",
@@ -5109,7 +4838,7 @@
     {
       "tag": "simple-login-avatar",
       "title": "",
-      "description": "Inspiration from https://clicknathan.com/web-design/css-avatar-icons/",
+      "description": "",
       "package": "@haxtheweb/simple-fields",
       "import": "@haxtheweb/simple-fields/lib/simple-login-avatar.js",
       "type": "element",
@@ -5254,15 +4983,7 @@
       "import": "@haxtheweb/simple-fields/lib/simple-tag.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Content",
-        "tag",
-        "pill",
-        "label",
-        "chip",
-        "badge",
-        "metadata"
-      ]
+      "tags": ["Content", "tag", "pill", "label", "chip", "badge", "metadata"]
     },
     {
       "tag": "simple-tag-lite",
@@ -5282,12 +5003,7 @@
       "import": "@haxtheweb/simple-fields/lib/simple-tags.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "content",
-        "tag",
-        "list"
-      ]
+      "tags": ["Other", "content", "tag", "list"]
     },
     {
       "tag": "simple-toast",
@@ -5807,13 +5523,7 @@
       "import": "@haxtheweb/slide-deck/slide-deck.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "presentation",
-        "slides",
-        "powerpoint",
-        "pptx"
-      ]
+      "tags": ["Media", "presentation", "slides", "powerpoint", "pptx"]
     },
     {
       "tag": "social-share-link",
@@ -5870,11 +5580,7 @@
       "import": "@haxtheweb/spotify-embed/spotify-embed.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "music",
-        "spotify"
-      ]
+      "tags": ["Media", "music", "spotify"]
     },
     {
       "tag": "star-rating",
@@ -5963,14 +5669,7 @@
       "import": "@haxtheweb/tableau-embed/tableau-embed.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "tableau",
-        "chart",
-        "data",
-        "visualization",
-        "embed"
-      ]
+      "tags": ["Media", "tableau", "chart", "data", "visualization", "embed"]
     },
     {
       "tag": "tagging-question",
@@ -5980,12 +5679,7 @@
       "import": "@haxtheweb/tagging-question/tagging-question.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Instructional",
-        "self check",
-        "assessment",
-        "tag"
-      ]
+      "tags": ["Instructional", "self check", "assessment", "tag"]
     },
     {
       "tag": "terrible-best-themes",
@@ -6065,12 +5759,7 @@
       "import": "@haxtheweb/multiple-choice/lib/true-false-question.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Instructional",
-        "quiz",
-        "question",
-        "true false"
-      ]
+      "tags": ["Instructional", "quiz", "question", "true false"]
     },
     {
       "tag": "twenty-six-theme",
@@ -6090,13 +5779,7 @@
       "import": "@haxtheweb/twitter-embed/twitter-embed.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "social media",
-        "twitter",
-        "embed",
-        "tweet"
-      ]
+      "tags": ["Other", "social media", "twitter", "embed", "tweet"]
     },
     {
       "tag": "twitter-embed-vanilla",
@@ -6126,10 +5809,7 @@
       "import": "@haxtheweb/un-sdg/un-sdg.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "sustainable"
-      ]
+      "tags": ["Other", "sustainable"]
     },
     {
       "tag": "undo-manager",
@@ -6149,12 +5829,7 @@
       "import": "@haxtheweb/unity-webgl/unity-webgl.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "3D",
-        "game",
-        "unity",
-        "media"
-      ]
+      "tags": ["3D", "game", "unity", "media"]
     },
     {
       "tag": "user-action",
@@ -6192,14 +5867,7 @@
       "import": "@haxtheweb/vcf-render/vcf-render.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Content",
-        "contacts",
-        "vcard",
-        "vcf",
-        "directory",
-        "people"
-      ]
+      "tags": ["Content", "contacts", "vcard", "vcf", "directory", "people"]
     },
     {
       "tag": "video-player",
@@ -6229,13 +5897,7 @@
       "import": "@haxtheweb/vocab-term/vocab-term.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Instructional",
-        "definition",
-        "term",
-        "vocabulary",
-        "glossary"
-      ]
+      "tags": ["Instructional", "definition", "term", "vocabulary", "glossary"]
     },
     {
       "tag": "voice-recorder",
@@ -6302,12 +5964,7 @@
       "import": "@haxtheweb/web-container/web-container.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "web",
-        "developer",
-        "code"
-      ]
+      "tags": ["Other", "web", "developer", "code"]
     },
     {
       "tag": "web-container-doc-player",
@@ -6317,13 +5974,7 @@
       "import": "@haxtheweb/web-container/lib/web-container-doc-player.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "web",
-        "developer",
-        "code",
-        "hax"
-      ]
+      "tags": ["Other", "web", "developer", "code", "hax"]
     },
     {
       "tag": "web-container-wc-registry-docs",

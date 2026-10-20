@@ -31,10 +31,10 @@ Every element in this monorepo (225 packages). Browse them live with `yarn galle
 | [b-r](./b-r/) | Creates break statements to show conditional rendering | `@haxtheweb/b-r` | [demo](./b-r/demo/) |
 | [baseline-build-hax](./baseline-build-hax/) | create an inflexible baseline build of hax with all elements | `@haxtheweb/baseline-build-hax` |  |
 | [beaker-broker](./beaker-broker/) | A broker element to make working with Beaker Browser's API even easier. | `@haxtheweb/beaker-broker` | [demo](./beaker-broker/demo/) |
-| [bibliography-builder](./bibliography-builder/) | Webcomponent bibliography-builder following hax / open-wc recommendations | `bibliography-builder` | [demo](./bibliography-builder/demo/) |
+| [bibliography-builder](./bibliography-builder/) | Webcomponent bibliography-builder following hax / open-wc recommendations | `@haxtheweb/bibliography-builder` | [demo](./bibliography-builder/demo/) |
 | [bootstrap-theme](./bootstrap-theme/) | Hax bootstrap themeing | `@haxtheweb/bootstrap-theme` | [demo](./bootstrap-theme/demo/) |
 | [bullet-check-list](./bullet-check-list/) | Bulleted or numbered list of checkboxes whose state is remembered on this machine | `@haxtheweb/bullet-check-list` | [demo](./bullet-check-list/demo/) |
-| [career-timeline](./career-timeline/) | Webcomponent career-timeline following hax / open-wc recommendations | `career-timeline` | [demo](./career-timeline/demo/) |
+| [career-timeline](./career-timeline/) | Webcomponent career-timeline following hax / open-wc recommendations | `@haxtheweb/career-timeline` | [demo](./career-timeline/demo/) |
 | [chamfer-theme](./chamfer-theme/) | Fixed-width HAXcms theme with a left navigation column and a chamfered top-left corner on the body area. | `@haxtheweb/chamfer-theme` | [demo](./chamfer-theme/demo/) |
 | [chartist-render](./chartist-render/) | Renders charts with the Chartist library | `@haxtheweb/chartist-render` | [demo](./chartist-render/demo/) |
 | [chat-agent](./chat-agent/) | chatbot agent style chat widget | `@haxtheweb/chat-agent` | [demo](./chat-agent/demo/) |
