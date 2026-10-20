@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Na-save ang style guide.",
   "STYLE_GUIDE_SAVE_FAILED": "Hindi ma-save ang style guide.",
   "SETTINGS_LOAD_FAILED": "Hindi ma-load ang mga setting.",
+  "LANGUAGE_NOT_FOUND": "Hindi nahanap ang wika.",
+  "LANGUAGES_LOAD_FAILED": "Hindi ma-load ang mga wika.",
   "SETTINGS_SAVE_FAILED": "Hindi ma-save ang mga setting.",
   "PLATFORM_SETTINGS_MISSING": "Nawawala ang mga setting ng platform.",
   "API_KEY_MISSING": "Kailangan ng API key para sa {provider}.",

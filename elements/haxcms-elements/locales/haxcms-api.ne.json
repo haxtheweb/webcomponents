@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "शैली निर्देशिका सुरक्षित गरियो।",
   "STYLE_GUIDE_SAVE_FAILED": "शैली निर्देशिका सुरक्षित गर्न सकिएन।",
   "SETTINGS_LOAD_FAILED": "सेटिङहरू लोड गर्न सकिएन।",
+  "LANGUAGE_NOT_FOUND": "भाषा फेला परेन।",
+  "LANGUAGES_LOAD_FAILED": "भाषाहरू लोड गर्न सकिएन।",
   "SETTINGS_SAVE_FAILED": "सेटिङहरू सुरक्षित गर्न सकिएन।",
   "PLATFORM_SETTINGS_MISSING": "प्लेटफर्म सेटिङहरू छैनन्।",
   "API_KEY_MISSING": "{provider} का लागि API कुञ्जी आवश्यक छ।",

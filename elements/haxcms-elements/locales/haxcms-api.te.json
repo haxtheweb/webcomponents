@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "స్టైల్ గైడ్ సేవ్ చేయబడింది.",
   "STYLE_GUIDE_SAVE_FAILED": "స్టైల్ గైడ్‌ను సేవ్ చేయడం సాధ్యం కాలేదు.",
   "SETTINGS_LOAD_FAILED": "సెట్టింగ్‌లను లోడ్ చేయడం సాధ్యం కాలేదు.",
+  "LANGUAGE_NOT_FOUND": "భాష కనుగొనబడలేదు.",
+  "LANGUAGES_LOAD_FAILED": "భాషలను లోడ్ చేయడం సాధ్యం కాలేదు.",
   "SETTINGS_SAVE_FAILED": "సెట్టింగ్‌లను సేవ్ చేయడం సాధ్యం కాలేదు.",
   "PLATFORM_SETTINGS_MISSING": "ప్లాట్‌ఫారమ్ సెట్టింగ్‌లు లేవు.",
   "API_KEY_MISSING": "{provider} కోసం API కీ అవసరం.",

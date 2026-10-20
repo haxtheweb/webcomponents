@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stilguiden har sparats.",
   "STYLE_GUIDE_SAVE_FAILED": "Det gick inte att spara stilguiden.",
   "SETTINGS_LOAD_FAILED": "Det gick inte att läsa in inställningarna.",
+  "LANGUAGE_NOT_FOUND": "Språket hittades inte.",
+  "LANGUAGES_LOAD_FAILED": "Det gick inte att läsa in språk.",
   "SETTINGS_SAVE_FAILED": "Det gick inte att spara inställningarna.",
   "PLATFORM_SETTINGS_MISSING": "Plattformsinställningar saknas.",
   "API_KEY_MISSING": "En API-nyckel för {provider} krävs.",

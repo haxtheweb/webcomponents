@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Стиль нұсқаулығы сақталды.",
   "STYLE_GUIDE_SAVE_FAILED": "Стиль нұсқаулығын сақтау мүмкін болмады.",
   "SETTINGS_LOAD_FAILED": "Баптауларды жүктеу мүмкін болмады.",
+  "LANGUAGE_NOT_FOUND": "Тіл табылмады.",
+  "LANGUAGES_LOAD_FAILED": "Тілдерді жүктеу мүмкін болмады.",
   "SETTINGS_SAVE_FAILED": "Баптауларды сақтау мүмкін болмады.",
   "PLATFORM_SETTINGS_MISSING": "Платформа баптаулары жоқ.",
   "API_KEY_MISSING": "{provider} үшін API кілті қажет.",

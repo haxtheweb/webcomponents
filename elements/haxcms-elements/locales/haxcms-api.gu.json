@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "સ્ટાઇલ ગાઇડ સાચવવામાં આવી.",
   "STYLE_GUIDE_SAVE_FAILED": "સ્ટાઇલ ગાઇડ સાચવવામાં અસમર્થ.",
   "SETTINGS_LOAD_FAILED": "સેટિંગ્સ લોડ કરવામાં અસમર્થ.",
+  "LANGUAGE_NOT_FOUND": "ભાષા મળી નથી.",
+  "LANGUAGES_LOAD_FAILED": "ભાષાઓ લોડ કરી શકાઈ નથી.",
   "SETTINGS_SAVE_FAILED": "સેટિંગ્સ સાચવવામાં અસમર્થ.",
   "PLATFORM_SETTINGS_MISSING": "પ્લેટફોર્મ સેટિંગ્સ ખૂટે છે.",
   "API_KEY_MISSING": "{provider} માટે API કી જરૂરી છે.",

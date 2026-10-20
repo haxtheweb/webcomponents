@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "An ajiye jagorar salo.",
   "STYLE_GUIDE_SAVE_FAILED": "Ba a iya ajiye jagorar salo ba.",
   "SETTINGS_LOAD_FAILED": "Ba a iya loda saituna ba.",
+  "LANGUAGE_NOT_FOUND": "Ba a sami yaren ba.",
+  "LANGUAGES_LOAD_FAILED": "Ba a iya loda harsuna ba.",
   "SETTINGS_SAVE_FAILED": "Ba a iya ajiye saituna ba.",
   "PLATFORM_SETTINGS_MISSING": "Saitunan dandali ba sa nan.",
   "API_KEY_MISSING": "Ana buƙatar maɓallin API na {provider}.",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Хэв маягийн зааврыг хадгаллаа.",
   "STYLE_GUIDE_SAVE_FAILED": "Хэв маягийн зааврыг хадгалж чадсангүй.",
   "SETTINGS_LOAD_FAILED": "Тохиргоог ачаалж чадсангүй.",
+  "LANGUAGE_NOT_FOUND": "Хэл олдсонгүй.",
+  "LANGUAGES_LOAD_FAILED": "Хэлүүдийг ачаалж чадсангүй.",
   "SETTINGS_SAVE_FAILED": "Тохиргоог хадгалж чадсангүй.",
   "PLATFORM_SETTINGS_MISSING": "Платформын тохиргоо байхгүй байна.",
   "API_KEY_MISSING": "{provider}-ийн API түлхүүр шаардлагатай.",

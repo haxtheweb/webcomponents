@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Guida di stile salvata.",
   "STYLE_GUIDE_SAVE_FAILED": "Impussibule di salvà a guida di stile.",
   "SETTINGS_LOAD_FAILED": "Impussibule di caricà i parametri.",
+  "LANGUAGE_NOT_FOUND": "Lingua micca trova.",
+  "LANGUAGES_LOAD_FAILED": "Impussibule di carricà e lingue.",
   "SETTINGS_SAVE_FAILED": "Impussibule di salvà i parametri.",
   "PLATFORM_SETTINGS_MISSING": "I parametri di a piattaforma mancanu.",
   "API_KEY_MISSING": "Ci vole una chjave API per {provider}.",

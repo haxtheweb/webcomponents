@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stilgvidilo konservita.",
   "STYLE_GUIDE_SAVE_FAILED": "Ne eblis konservi la stilgvidilon.",
   "SETTINGS_LOAD_FAILED": "Ne eblis ŝargi la agordojn.",
+  "LANGUAGE_NOT_FOUND": "Lingvo ne troviĝis.",
+  "LANGUAGES_LOAD_FAILED": "Ne eblis ŝargi la lingvojn.",
   "SETTINGS_SAVE_FAILED": "Ne eblis konservi la agordojn.",
   "PLATFORM_SETTINGS_MISSING": "La platformaj agordoj mankas.",
   "API_KEY_MISSING": "API-ŝlosilo por {provider} estas bezonata.",

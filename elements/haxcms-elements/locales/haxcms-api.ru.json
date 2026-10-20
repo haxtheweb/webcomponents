@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Руководство по стилю сохранено.",
   "STYLE_GUIDE_SAVE_FAILED": "Не удалось сохранить руководство по стилю.",
   "SETTINGS_LOAD_FAILED": "Не удалось загрузить настройки.",
+  "LANGUAGE_NOT_FOUND": "Язык не найден.",
+  "LANGUAGES_LOAD_FAILED": "Не удалось загрузить языки.",
   "SETTINGS_SAVE_FAILED": "Не удалось сохранить настройки.",
   "PLATFORM_SETTINGS_MISSING": "Отсутствуют настройки платформы.",
   "API_KEY_MISSING": "Требуется ключ API для {provider}.",

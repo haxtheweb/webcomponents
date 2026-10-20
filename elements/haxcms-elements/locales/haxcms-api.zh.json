@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "样式指南已保存。",
   "STYLE_GUIDE_SAVE_FAILED": "无法保存样式指南。",
   "SETTINGS_LOAD_FAILED": "无法加载设置。",
+  "LANGUAGE_NOT_FOUND": "未找到该语言。",
+  "LANGUAGES_LOAD_FAILED": "无法加载语言。",
   "SETTINGS_SAVE_FAILED": "无法保存设置。",
   "PLATFORM_SETTINGS_MISSING": "缺少平台设置。",
   "API_KEY_MISSING": "需要 {provider} 的 API 密钥。",

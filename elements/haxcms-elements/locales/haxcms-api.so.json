@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Hagaha qaabka waa la kaydiyay.",
   "STYLE_GUIDE_SAVE_FAILED": "Lama kaydin karo hagaha qaabka.",
   "SETTINGS_LOAD_FAILED": "Lama soo rari karo dejinta.",
+  "LANGUAGE_NOT_FOUND": "Luqadda lama helin.",
+  "LANGUAGES_LOAD_FAILED": "Luqadaha lama soo shubi karo.",
   "SETTINGS_SAVE_FAILED": "Lama kaydin karo dejinta.",
   "PLATFORM_SETTINGS_MISSING": "Dejinta madalka way maqan tahay.",
   "API_KEY_MISSING": "Furaha API ee {provider} ayaa loo baahan yahay.",

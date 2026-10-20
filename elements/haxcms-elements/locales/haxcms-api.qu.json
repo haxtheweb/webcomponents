@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Estilo pusaqqa waqaychasqaña.",
   "STYLE_GUIDE_SAVE_FAILED": "Manam estilo pusaqta waqaychayta atikurqanchu.",
   "SETTINGS_LOAD_FAILED": "Manam allichaykunata cargayta atikurqanchu.",
+  "LANGUAGE_NOT_FOUND": "Simi mana tarisqachu.",
+  "LANGUAGES_LOAD_FAILED": "Simikunata mana apayta atinichu.",
   "SETTINGS_SAVE_FAILED": "Manam allichaykunata waqaychayta atikurqanchu.",
   "PLATFORM_SETTINGS_MISSING": "Plataformapa allichayninkunaqa manam kanchu.",
   "API_KEY_MISSING": "{provider} nisqapaq API llaventa necesitakun.",

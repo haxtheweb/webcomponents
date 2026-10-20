@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "ບັນທຶກຄູ່ມືຮູບແບບແລ້ວ.",
   "STYLE_GUIDE_SAVE_FAILED": "ບໍ່ສາມາດບັນທຶກຄູ່ມືຮູບແບບໄດ້.",
   "SETTINGS_LOAD_FAILED": "ບໍ່ສາມາດໂຫຼດການຕັ້ງຄ່າໄດ້.",
+  "LANGUAGE_NOT_FOUND": "ບໍ່ພົບພາສາ.",
+  "LANGUAGES_LOAD_FAILED": "ບໍ່ສາມາດໂຫຼດພາສາໄດ້.",
   "SETTINGS_SAVE_FAILED": "ບໍ່ສາມາດບັນທຶກການຕັ້ງຄ່າໄດ້.",
   "PLATFORM_SETTINGS_MISSING": "ບໍ່ມີການຕັ້ງຄ່າແພລດຟອມ.",
   "API_KEY_MISSING": "ຕ້ອງມີລະຫັດ API ສຳລັບ {provider}.",

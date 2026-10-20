@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Styleguide gespeichert.",
   "STYLE_GUIDE_SAVE_FAILED": "Der Styleguide konnte nicht gespeichert werden.",
   "SETTINGS_LOAD_FAILED": "Die Einstellungen konnten nicht geladen werden.",
+  "LANGUAGE_NOT_FOUND": "Sprache nicht gefunden.",
+  "LANGUAGES_LOAD_FAILED": "Sprachen konnten nicht geladen werden.",
   "SETTINGS_SAVE_FAILED": "Die Einstellungen konnten nicht gespeichert werden.",
   "PLATFORM_SETTINGS_MISSING": "Die Plattformeinstellungen fehlen.",
   "API_KEY_MISSING": "Ein API-Schlüssel für {provider} ist erforderlich.",

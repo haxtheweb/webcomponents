@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Zapisano przewodnik stylu.",
   "STYLE_GUIDE_SAVE_FAILED": "Nie można zapisać przewodnika stylu.",
   "SETTINGS_LOAD_FAILED": "Nie można wczytać ustawień.",
+  "LANGUAGE_NOT_FOUND": "Nie znaleziono języka.",
+  "LANGUAGES_LOAD_FAILED": "Nie można załadować języków.",
   "SETTINGS_SAVE_FAILED": "Nie można zapisać ustawień.",
   "PLATFORM_SETTINGS_MISSING": "Brak ustawień platformy.",
   "API_KEY_MISSING": "Wymagany jest klucz API dla {provider}.",

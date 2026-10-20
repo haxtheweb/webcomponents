@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stílhandbók vistuð.",
   "STYLE_GUIDE_SAVE_FAILED": "Ekki tókst að vista stílhandbókina.",
   "SETTINGS_LOAD_FAILED": "Ekki tókst að hlaða stillingum.",
+  "LANGUAGE_NOT_FOUND": "Tungumál fannst ekki.",
+  "LANGUAGES_LOAD_FAILED": "Ekki tókst að hlaða tungumálum.",
   "SETTINGS_SAVE_FAILED": "Ekki tókst að vista stillingar.",
   "PLATFORM_SETTINGS_MISSING": "Kerfisstillingar vantar.",
   "API_KEY_MISSING": "API-lykill fyrir {provider} er nauðsynlegur.",

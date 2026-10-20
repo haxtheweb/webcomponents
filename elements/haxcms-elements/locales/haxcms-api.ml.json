@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "സ്റ്റൈൽ ഗൈഡ് സംരക്ഷിച്ചു.",
   "STYLE_GUIDE_SAVE_FAILED": "സ്റ്റൈൽ ഗൈഡ് സംരക്ഷിക്കാനായില്ല.",
   "SETTINGS_LOAD_FAILED": "ക്രമീകരണങ്ങൾ ലോഡ് ചെയ്യാനായില്ല.",
+  "LANGUAGE_NOT_FOUND": "ഭാഷ കണ്ടെത്തിയില്ല.",
+  "LANGUAGES_LOAD_FAILED": "ഭാഷകൾ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല.",
   "SETTINGS_SAVE_FAILED": "ക്രമീകരണങ്ങൾ സംരക്ഷിക്കാനായില്ല.",
   "PLATFORM_SETTINGS_MISSING": "പ്ലാറ്റ്‌ഫോം ക്രമീകരണങ്ങൾ കാണുന്നില്ല.",
   "API_KEY_MISSING": "{provider}-നായി ഒരു API കീ ആവശ്യമാണ്.",

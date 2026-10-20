@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stila rokasgrāmata saglabāta.",
   "STYLE_GUIDE_SAVE_FAILED": "Neizdevās saglabāt stila rokasgrāmatu.",
   "SETTINGS_LOAD_FAILED": "Neizdevās ielādēt iestatījumus.",
+  "LANGUAGE_NOT_FOUND": "Valoda nav atrasta.",
+  "LANGUAGES_LOAD_FAILED": "Neizdevās ielādēt valodas.",
   "SETTINGS_SAVE_FAILED": "Neizdevās saglabāt iestatījumus.",
   "PLATFORM_SETTINGS_MISSING": "Trūkst platformas iestatījumu.",
   "API_KEY_MISSING": "Nepieciešama {provider} API atslēga.",

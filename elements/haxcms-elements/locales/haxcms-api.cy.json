@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Cadwyd y canllaw arddull.",
   "STYLE_GUIDE_SAVE_FAILED": "Methu cadw'r canllaw arddull.",
   "SETTINGS_LOAD_FAILED": "Methu llwytho'r gosodiadau.",
+  "LANGUAGE_NOT_FOUND": "Heb ganfod yr iaith.",
+  "LANGUAGES_LOAD_FAILED": "Methu llwytho'r ieithoedd.",
   "SETTINGS_SAVE_FAILED": "Methu cadw'r gosodiadau.",
   "PLATFORM_SETTINGS_MISSING": "Mae gosodiadau'r platfform ar goll.",
   "API_KEY_MISSING": "Mae angen allwedd API ar gyfer {provider}.",

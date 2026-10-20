@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "បានរក្សាទុកមគ្គុទ្ទេសក៍រចនាប័ទ្ម។",
   "STYLE_GUIDE_SAVE_FAILED": "មិនអាចរក្សាទុកមគ្គុទ្ទេសក៍រចនាប័ទ្មបានទេ។",
   "SETTINGS_LOAD_FAILED": "មិនអាចផ្ទុកការកំណត់បានទេ។",
+  "LANGUAGE_NOT_FOUND": "រកមិនឃើញភាសា។",
+  "LANGUAGES_LOAD_FAILED": "មិនអាចផ្ទុកភាសាបានទេ។",
   "SETTINGS_SAVE_FAILED": "មិនអាចរក្សាទុកការកំណត់បានទេ។",
   "PLATFORM_SETTINGS_MISSING": "បាត់ការកំណត់វេទិកា។",
   "API_KEY_MISSING": "ត្រូវការសោ API សម្រាប់ {provider}។",

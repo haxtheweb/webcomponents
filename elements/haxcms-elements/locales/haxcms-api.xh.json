@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Isikhokelo sesitayile sigciniwe.",
   "STYLE_GUIDE_SAVE_FAILED": "Akukwazeki ukugcina isikhokelo sesitayile.",
   "SETTINGS_LOAD_FAILED": "Akukwazeki ukulayisha iisetingi.",
+  "LANGUAGE_NOT_FOUND": "Ulwimi alufunyanwanga.",
+  "LANGUAGES_LOAD_FAILED": "Iilwimi azikwazanga ukulayishwa.",
   "SETTINGS_SAVE_FAILED": "Akukwazeki ukugcina iisetingi.",
   "PLATFORM_SETTINGS_MISSING": "Iisetingi zeqonga azikho.",
   "API_KEY_MISSING": "Kufuneka isitshixo se-API se-{provider}.",

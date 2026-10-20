@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "스타일 가이드가 저장되었습니다.",
   "STYLE_GUIDE_SAVE_FAILED": "스타일 가이드를 저장할 수 없습니다.",
   "SETTINGS_LOAD_FAILED": "설정을 불러올 수 없습니다.",
+  "LANGUAGE_NOT_FOUND": "언어를 찾을 수 없습니다.",
+  "LANGUAGES_LOAD_FAILED": "언어를 불러올 수 없습니다.",
   "SETTINGS_SAVE_FAILED": "설정을 저장할 수 없습니다.",
   "PLATFORM_SETTINGS_MISSING": "플랫폼 설정이 없습니다.",
   "API_KEY_MISSING": "{provider}의 API 키가 필요합니다.",

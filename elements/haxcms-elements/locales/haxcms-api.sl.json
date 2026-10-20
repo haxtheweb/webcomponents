@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Slogovni priročnik je shranjen.",
   "STYLE_GUIDE_SAVE_FAILED": "Slogovnega priročnika ni mogoče shraniti.",
   "SETTINGS_LOAD_FAILED": "Nastavitev ni mogoče naložiti.",
+  "LANGUAGE_NOT_FOUND": "Jezik ni bil najden.",
+  "LANGUAGES_LOAD_FAILED": "Jezikov ni bilo mogoče naložiti.",
   "SETTINGS_SAVE_FAILED": "Nastavitev ni mogoče shraniti.",
   "PLATFORM_SETTINGS_MISSING": "Nastavitve platforme manjkajo.",
   "API_KEY_MISSING": "Potreben je ključ API za {provider}.",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Echekwala ntuziaka ụdị.",
   "STYLE_GUIDE_SAVE_FAILED": "Enweghị ike ịchekwa ntuziaka ụdị.",
   "SETTINGS_LOAD_FAILED": "Enweghị ike ibunye ntọala.",
+  "LANGUAGE_NOT_FOUND": "Achọtaghị asụsụ.",
+  "LANGUAGES_LOAD_FAILED": "Enweghị ike ibu asụsụ.",
   "SETTINGS_SAVE_FAILED": "Enweghị ike ịchekwa ntọala.",
   "PLATFORM_SETTINGS_MISSING": "Ntọala ikpo okwu adịghị.",
   "API_KEY_MISSING": "Achọrọ igodo API maka {provider}.",

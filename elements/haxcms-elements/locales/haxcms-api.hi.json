@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "स्टाइल गाइड सहेजी गई।",
   "STYLE_GUIDE_SAVE_FAILED": "स्टाइल गाइड सहेजने में असमर्थ।",
   "SETTINGS_LOAD_FAILED": "सेटिंग्स लोड करने में असमर्थ।",
+  "LANGUAGE_NOT_FOUND": "भाषा नहीं मिली।",
+  "LANGUAGES_LOAD_FAILED": "भाषाएँ लोड नहीं की जा सकीं।",
   "SETTINGS_SAVE_FAILED": "सेटिंग्स सहेजने में असमर्थ।",
   "PLATFORM_SETTINGS_MISSING": "प्लेटफ़ॉर्म सेटिंग्स मौजूद नहीं हैं।",
   "API_KEY_MISSING": "{provider} के लिए API कुंजी आवश्यक है।",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "ਸਟਾਈਲ ਗਾਈਡ ਸੇਵ ਹੋ ਗਈ।",
   "STYLE_GUIDE_SAVE_FAILED": "ਸਟਾਈਲ ਗਾਈਡ ਸੇਵ ਕਰਨ ਵਿੱਚ ਅਸਮਰੱਥ।",
   "SETTINGS_LOAD_FAILED": "ਸੈਟਿੰਗਾਂ ਲੋਡ ਕਰਨ ਵਿੱਚ ਅਸਮਰੱਥ।",
+  "LANGUAGE_NOT_FOUND": "ਭਾਸ਼ਾ ਨਹੀਂ ਮਿਲੀ।",
+  "LANGUAGES_LOAD_FAILED": "ਭਾਸ਼ਾਵਾਂ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀਆਂ।",
   "SETTINGS_SAVE_FAILED": "ਸੈਟਿੰਗਾਂ ਸੇਵ ਕਰਨ ਵਿੱਚ ਅਸਮਰੱਥ।",
   "PLATFORM_SETTINGS_MISSING": "ਪਲੇਟਫ਼ਾਰਮ ਸੈਟਿੰਗਾਂ ਮੌਜੂਦ ਨਹੀਂ ਹਨ।",
   "API_KEY_MISSING": "{provider} ਲਈ ਇੱਕ API ਕੁੰਜੀ ਲੋੜੀਂਦੀ ਹੈ।",

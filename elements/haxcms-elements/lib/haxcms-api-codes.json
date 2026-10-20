@@ -851,6 +851,20 @@
       ]
     },
     {
+      "code": "LANGUAGE_NOT_FOUND",
+      "en": "Language not found.",
+      "match": [
+        "language not found"
+      ]
+    },
+    {
+      "code": "LANGUAGES_LOAD_FAILED",
+      "en": "Unable to load languages.",
+      "match": [
+        "unable to load (?:languages|language|translations)"
+      ]
+    },
+    {
       "code": "SETTINGS_SAVE_FAILED",
       "en": "Unable to save settings.",
       "match": [

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Ο οδηγός στυλ αποθηκεύτηκε.",
   "STYLE_GUIDE_SAVE_FAILED": "Δεν ήταν δυνατή η αποθήκευση του οδηγού στυλ.",
   "SETTINGS_LOAD_FAILED": "Δεν ήταν δυνατή η φόρτωση των ρυθμίσεων.",
+  "LANGUAGE_NOT_FOUND": "Η γλώσσα δεν βρέθηκε.",
+  "LANGUAGES_LOAD_FAILED": "Δεν ήταν δυνατή η φόρτωση των γλωσσών.",
   "SETTINGS_SAVE_FAILED": "Δεν ήταν δυνατή η αποθήκευση των ρυθμίσεων.",
   "PLATFORM_SETTINGS_MISSING": "Λείπουν οι ρυθμίσεις της πλατφόρμας.",
   "API_KEY_MISSING": "Απαιτείται κλειδί API για {provider}.",

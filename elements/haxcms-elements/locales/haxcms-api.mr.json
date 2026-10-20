@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "शैली मार्गदर्शक जतन केले.",
   "STYLE_GUIDE_SAVE_FAILED": "शैली मार्गदर्शक जतन करता आले नाही.",
   "SETTINGS_LOAD_FAILED": "सेटिंग्ज लोड करता आली नाहीत.",
+  "LANGUAGE_NOT_FOUND": "भाषा सापडली नाही.",
+  "LANGUAGES_LOAD_FAILED": "भाषा लोड करता आल्या नाहीत.",
   "SETTINGS_SAVE_FAILED": "सेटिंग्ज जतन करता आली नाहीत.",
   "PLATFORM_SETTINGS_MISSING": "प्लॅटफॉर्म सेटिंग्ज उपलब्ध नाहीत.",
   "API_KEY_MISSING": "{provider} साठी API की आवश्यक आहे.",

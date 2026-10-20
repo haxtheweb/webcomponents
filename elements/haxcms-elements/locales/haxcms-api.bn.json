@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "স্টাইল গাইড সংরক্ষিত হয়েছে।",
   "STYLE_GUIDE_SAVE_FAILED": "স্টাইল গাইড সংরক্ষণ করা যায়নি।",
   "SETTINGS_LOAD_FAILED": "সেটিংস লোড করা যায়নি।",
+  "LANGUAGE_NOT_FOUND": "ভাষা পাওয়া যায়নি।",
+  "LANGUAGES_LOAD_FAILED": "ভাষাগুলি লোড করা যায়নি।",
   "SETTINGS_SAVE_FAILED": "সেটিংস সংরক্ষণ করা যায়নি।",
   "PLATFORM_SETTINGS_MISSING": "প্ল্যাটফর্ম সেটিংস অনুপস্থিত।",
   "API_KEY_MISSING": "{provider}-এর জন্য একটি API কী প্রয়োজন।",

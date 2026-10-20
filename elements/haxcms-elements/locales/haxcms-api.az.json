@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Üslub bələdçisi saxlanıldı.",
   "STYLE_GUIDE_SAVE_FAILED": "Üslub bələdçisini saxlamaq mümkün olmadı.",
   "SETTINGS_LOAD_FAILED": "Parametrləri yükləmək mümkün olmadı.",
+  "LANGUAGE_NOT_FOUND": "Dil tapılmadı.",
+  "LANGUAGES_LOAD_FAILED": "Dilləri yükləmək mümkün olmadı.",
   "SETTINGS_SAVE_FAILED": "Parametrləri saxlamaq mümkün olmadı.",
   "PLATFORM_SETTINGS_MISSING": "Platforma parametrləri yoxdur.",
   "API_KEY_MISSING": "{provider} üçün API açarı tələb olunur.",

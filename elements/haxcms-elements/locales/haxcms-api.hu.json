@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "A stílusútmutató mentve.",
   "STYLE_GUIDE_SAVE_FAILED": "Nem sikerült menteni a stílusútmutatót.",
   "SETTINGS_LOAD_FAILED": "Nem sikerült betölteni a beállításokat.",
+  "LANGUAGE_NOT_FOUND": "A nyelv nem található.",
+  "LANGUAGES_LOAD_FAILED": "A nyelveket nem sikerült betölteni.",
   "SETTINGS_SAVE_FAILED": "Nem sikerült menteni a beállításokat.",
   "PLATFORM_SETTINGS_MISSING": "Hiányoznak a platformbeállítások.",
   "API_KEY_MISSING": "API-kulcs szükséges a következőhöz: {provider}.",

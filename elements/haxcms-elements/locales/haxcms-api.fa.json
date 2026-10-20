@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "راهنمای سبک ذخیره شد.",
   "STYLE_GUIDE_SAVE_FAILED": "ذخیرهٔ راهنمای سبک ممکن نشد.",
   "SETTINGS_LOAD_FAILED": "بارگیری تنظیمات ممکن نشد.",
+  "LANGUAGE_NOT_FOUND": "زبان پیدا نشد.",
+  "LANGUAGES_LOAD_FAILED": "بارگذاری زبان‌ها ممکن نبود.",
   "SETTINGS_SAVE_FAILED": "ذخیرهٔ تنظیمات ممکن نشد.",
   "PLATFORM_SETTINGS_MISSING": "تنظیمات پلتفرم وجود ندارد.",
   "API_KEY_MISSING": "کلید API برای {provider} لازم است.",

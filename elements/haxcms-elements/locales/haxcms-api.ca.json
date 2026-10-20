@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "S'ha desat la guia d'estil.",
   "STYLE_GUIDE_SAVE_FAILED": "No s'ha pogut desar la guia d'estil.",
   "SETTINGS_LOAD_FAILED": "No s'han pogut carregar els paràmetres.",
+  "LANGUAGE_NOT_FOUND": "No s'ha trobat l'idioma.",
+  "LANGUAGES_LOAD_FAILED": "No s'han pogut carregar els idiomes.",
   "SETTINGS_SAVE_FAILED": "No s'han pogut desar els paràmetres.",
   "PLATFORM_SETTINGS_MISSING": "Falten els paràmetres de la plataforma.",
   "API_KEY_MISSING": "Cal una clau d'API per a {provider}.",

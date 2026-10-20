@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Udhëzuesi i stilit u ruajt.",
   "STYLE_GUIDE_SAVE_FAILED": "Udhëzuesi i stilit nuk mund të ruhet.",
   "SETTINGS_LOAD_FAILED": "Cilësimet nuk mund të ngarkohen.",
+  "LANGUAGE_NOT_FOUND": "Gjuha nuk u gjet.",
+  "LANGUAGES_LOAD_FAILED": "Gjuhët nuk mund të ngarkoheshin.",
   "SETTINGS_SAVE_FAILED": "Cilësimet nuk mund të ruhen.",
   "PLATFORM_SETTINGS_MISSING": "Cilësimet e platformës mungojnë.",
   "API_KEY_MISSING": "Kërkohet një çelës API për {provider}.",

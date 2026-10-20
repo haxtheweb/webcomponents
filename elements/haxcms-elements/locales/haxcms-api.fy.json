@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stylgids bewarre.",
   "STYLE_GUIDE_SAVE_FAILED": "Kin de stylgids net bewarje.",
   "SETTINGS_LOAD_FAILED": "Kin de ynstellingen net lade.",
+  "LANGUAGE_NOT_FOUND": "Taal net fûn.",
+  "LANGUAGES_LOAD_FAILED": "Talen kinne net laden wurde.",
   "SETTINGS_SAVE_FAILED": "Kin de ynstellingen net bewarje.",
   "PLATFORM_SETTINGS_MISSING": "De platfoarmynstellingen ûntbrekke.",
   "API_KEY_MISSING": "In API-kaai foar {provider} is fereaske.",

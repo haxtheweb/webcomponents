@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Styleguide gespäichert.",
   "STYLE_GUIDE_SAVE_FAILED": "De Styleguide konnt net gespäichert ginn.",
   "SETTINGS_LOAD_FAILED": "D'Astellunge konnten net geluede ginn.",
+  "LANGUAGE_NOT_FOUND": "Sprooch net fonnt.",
+  "LANGUAGES_LOAD_FAILED": "D'Sproochen konnten net gelueden ginn.",
   "SETTINGS_SAVE_FAILED": "D'Astellunge konnten net gespäichert ginn.",
   "PLATFORM_SETTINGS_MISSING": "D'Plattformastellunge feelen.",
   "API_KEY_MISSING": "En API-Schlëssel fir {provider} ass erfuerderlech.",

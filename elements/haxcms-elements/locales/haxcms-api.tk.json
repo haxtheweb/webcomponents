@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stil gollanmasy ýazdyryldy.",
   "STYLE_GUIDE_SAVE_FAILED": "Stil gollanmasyny ýazdyryp bolmady.",
   "SETTINGS_LOAD_FAILED": "Sazlamalary ýükläp bolmady.",
+  "LANGUAGE_NOT_FOUND": "Dil tapylmady.",
+  "LANGUAGES_LOAD_FAILED": "Diller ýüklenip bilmedi.",
   "SETTINGS_SAVE_FAILED": "Sazlamalary ýazdyryp bolmady.",
   "PLATFORM_SETTINGS_MISSING": "Platforma sazlamalary ýok.",
   "API_KEY_MISSING": "{provider} üçin API açary gerek.",

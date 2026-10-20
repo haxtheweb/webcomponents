@@ -116,6 +116,8 @@ export const HAXCMS_API_MESSAGES_EN = Object.freeze({
   STYLE_GUIDE_SAVED: "Style guide saved.",
   STYLE_GUIDE_SAVE_FAILED: "Unable to save the style guide.",
   SETTINGS_LOAD_FAILED: "Unable to load settings.",
+  LANGUAGE_NOT_FOUND: "Language not found.",
+  LANGUAGES_LOAD_FAILED: "Unable to load languages.",
   SETTINGS_SAVE_FAILED: "Unable to save settings.",
   PLATFORM_SETTINGS_MISSING: "Platform settings are missing.",
   API_KEY_MISSING: "An API key for {provider} is required.",

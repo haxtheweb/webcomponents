@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Pandhuan gaya wis disimpen.",
   "STYLE_GUIDE_SAVE_FAILED": "Ora bisa nyimpen pandhuan gaya.",
   "SETTINGS_LOAD_FAILED": "Ora bisa ngemot setelan.",
+  "LANGUAGE_NOT_FOUND": "Basa ora ditemokake.",
+  "LANGUAGES_LOAD_FAILED": "Ora bisa ngunggah basa.",
   "SETTINGS_SAVE_FAILED": "Ora bisa nyimpen setelan.",
   "PLATFORM_SETTINGS_MISSING": "Setelan platform ora ana.",
   "API_KEY_MISSING": "Butuh kunci API kanggo {provider}.",

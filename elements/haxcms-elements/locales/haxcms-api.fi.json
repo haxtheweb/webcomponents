@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Tyyliopas tallennettu.",
   "STYLE_GUIDE_SAVE_FAILED": "Tyylioppaan tallentaminen epäonnistui.",
   "SETTINGS_LOAD_FAILED": "Asetusten lataaminen epäonnistui.",
+  "LANGUAGE_NOT_FOUND": "Kieltä ei löytynyt.",
+  "LANGUAGES_LOAD_FAILED": "Kielten lataaminen epäonnistui.",
   "SETTINGS_SAVE_FAILED": "Asetusten tallentaminen epäonnistui.",
   "PLATFORM_SETTINGS_MISSING": "Alustan asetukset puuttuvat.",
   "API_KEY_MISSING": "Palveluntarjoajalle {provider} tarvitaan API-avain.",

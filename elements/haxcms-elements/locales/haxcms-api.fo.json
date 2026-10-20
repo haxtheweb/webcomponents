@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Stílleiðbeiningin er goymd.",
   "STYLE_GUIDE_SAVE_FAILED": "Tað bar ikki til at goyma stílleiðbeiningina.",
   "SETTINGS_LOAD_FAILED": "Tað bar ikki til at innlesa stillingarnar.",
+  "LANGUAGE_NOT_FOUND": "Málið varð ikki funnið.",
+  "LANGUAGES_LOAD_FAILED": "Ikki bar til at lesa málini.",
   "SETTINGS_SAVE_FAILED": "Tað bar ikki til at goyma stillingarnar.",
   "PLATFORM_SETTINGS_MISSING": "Pallstillingarnar mangla.",
   "API_KEY_MISSING": "Ein API-lykil til {provider} krevst.",

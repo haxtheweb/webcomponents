@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Ghidul de stil a fost salvat.",
   "STYLE_GUIDE_SAVE_FAILED": "Ghidul de stil nu a putut fi salvat.",
   "SETTINGS_LOAD_FAILED": "Setările nu au putut fi încărcate.",
+  "LANGUAGE_NOT_FOUND": "Limba nu a fost găsită.",
+  "LANGUAGES_LOAD_FAILED": "Nu s-au putut încărca limbile.",
   "SETTINGS_SAVE_FAILED": "Setările nu au putut fi salvate.",
   "PLATFORM_SETTINGS_MISSING": "Setările platformei lipsesc.",
   "API_KEY_MISSING": "Este necesară o cheie API pentru {provider}.",

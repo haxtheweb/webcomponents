@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "Водич за стил је сачуван.",
   "STYLE_GUIDE_SAVE_FAILED": "Није могуће сачувати водич за стил.",
   "SETTINGS_LOAD_FAILED": "Није могуће учитати подешавања.",
+  "LANGUAGE_NOT_FOUND": "Језик није пронађен.",
+  "LANGUAGES_LOAD_FAILED": "Није могуће учитати језике.",
   "SETTINGS_SAVE_FAILED": "Није могуће сачувати подешавања.",
   "PLATFORM_SETTINGS_MISSING": "Подешавања платформе недостају.",
   "API_KEY_MISSING": "Потребан је API кључ за {provider}.",

@@ -101,6 +101,8 @@
   "STYLE_GUIDE_SAVED": "د سټایل لارښود خوندي شو.",
   "STYLE_GUIDE_SAVE_FAILED": "د سټایل لارښود خوندي کول ممکن نه شول.",
   "SETTINGS_LOAD_FAILED": "امستنې پورته کول ممکن نه شول.",
+  "LANGUAGE_NOT_FOUND": "ژبه ونه موندل شوه.",
+  "LANGUAGES_LOAD_FAILED": "ژبې بار نه شوې.",
   "SETTINGS_SAVE_FAILED": "امستنې خوندي کول ممکن نه شول.",
   "PLATFORM_SETTINGS_MISSING": "د پلاتفورم امستنې نشته.",
   "API_KEY_MISSING": "د {provider} لپاره د API کیلي اړینه ده.",
