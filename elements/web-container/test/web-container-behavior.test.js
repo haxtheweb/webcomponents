@@ -615,10 +615,16 @@ describe('web-container-doc-player', () => {
     await new Promise((r) => setTimeout(r, 250))
     const wc = el.shadowRoot.querySelector('web-container')
     const frame = wc.shadowRoot.querySelector('iframe')
-    // messages are only honored when they come from the preview iframe
-    const fromFrame = (data) =>
+    // messages are only honored when they come from the preview iframe AND
+    // from the origin that iframe was pointed at (JS-MSG-001)
+    const frameOrigin = new URL(frame.src).origin
+    const fromFrame = (data, origin = frameOrigin) =>
       globalThis.dispatchEvent(
-        new MessageEvent('message', { data, source: frame.contentWindow }),
+        new MessageEvent('message', {
+          data,
+          origin,
+          source: frame.contentWindow,
+        }),
       )
     // a message from any other window (here: this page) is ignored
     globalThis.postMessage(
@@ -626,6 +632,14 @@ describe('web-container-doc-player', () => {
       '*',
     )
     await new Promise((r) => setTimeout(r, 50))
+    expect(
+      wc.style.getPropertyValue('--web-container-iframe-height'),
+    ).to.equal('')
+    // right window but wrong origin is ignored too
+    fromFrame(
+      JSON.stringify({ subject: 'frameResize', height: '960' }),
+      'https://evil.example',
+    )
     expect(
       wc.style.getPropertyValue('--web-container-iframe-height'),
     ).to.equal('')
@@ -652,9 +666,12 @@ describe('web-container-doc-player', () => {
     const wc = el.shadowRoot.querySelector('web-container')
     const frame = wc.shadowRoot.querySelector('iframe')
     el.disconnectedCallback()
+    // origin matches the frame, so only the removed listener can explain
+    // the height staying unset
     globalThis.dispatchEvent(
       new MessageEvent('message', {
         data: JSON.stringify({ subject: 'frameResize', height: '900' }),
+        origin: new URL(frame.src).origin,
         source: frame.contentWindow,
       }),
     )
