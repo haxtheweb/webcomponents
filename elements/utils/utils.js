@@ -1312,7 +1312,7 @@ function validURL(str) {
   } catch {
     let pattern = new RegExp(
       "^(https?:\\/\\/)?" + // protocol
-        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((?:[a-z\\d](?:[a-z\\d-]*[a-z\\d])?\\.)+[a-z]{2,}|" + // domain name (labels cannot nest quantifiers)
         "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
         "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
         "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
@@ -1516,11 +1516,16 @@ function stripMSWord(input) {
     .replace(/( class=(")?Mso[a-zA-Z]+(")?)/g, "");
 
   // 2. strip Word generated HTML comments
-  output = output.replace(/<!--(\s|.)*?-->/gim, "");
-  output = output.replace(/<!(\s|.)*?>/gim, "");
+  // repeat until stable so "<!<!-- x -->-- y -->" cannot leave a comment opener behind
+  let beforeCommentStrip;
+  do {
+    beforeCommentStrip = output;
+    output = output.replace(/<!--[\s\S]*?-->/gim, "");
+  } while (output !== beforeCommentStrip);
+  output = output.replace(/<![^>]*>/gim, "");
   // 3. remove tags leave content if any (but NOT span tags yet)
   output = output.replace(
-    /<(\/)*(meta|link|title|html|head|body|font|br|\\\\?xml:|xml|st1:|o:|w:|m:|v:)(\s|.)*?>/gim,
+    /<\/*(?:meta|link|title|html|head|body|font|br|\\\\?xml:|xml|st1:|o:|w:|m:|v:)[^>]*>/gim,
     "",
   );
   // Handle spans specially - remove span wrapper but preserve content and nested elements
@@ -1529,15 +1534,15 @@ function stripMSWord(input) {
   let badTags = ["style", "script", "applet", "embed", "noframes", "noscript"];
   for (let i in badTags) {
     let tagStripper = new RegExp(
-      "<" + badTags[i] + "(s|.)*?" + badTags[i] + "(.*?)>",
+      "<" + badTags[i] + ".*?" + badTags[i] + ".*?>",
       "gim",
     );
     output = output.replace(tagStripper, "");
   }
   // 5. remove attributes ' style="..."', align, start and others that we know we dont need
-  output = output.replace(/ style='(\s|.)*?'/gim, "");
-  output = output.replace(/ style="(\s|.)*?"/gim, ""); // Fix: handle double-quoted style attributes
-  output = output.replace(/ face="(\s|.)*?"/gim, "");
+  output = output.replace(/ style='[^']*'/gim, "");
+  output = output.replace(/ style="[^"]*"/gim, ""); // Fix: handle double-quoted style attributes
+  output = output.replace(/ face="[^"]*"/gim, "");
   output = output.replace(/ align=.*? /g, "");
   output = output.replace(/ start='.*?'/g, "");
   // remove line-height; commonly set via html copy and paste in google docs
@@ -1553,31 +1558,31 @@ function stripMSWord(input) {
   // empty style tags
   output = output.replace(/ style=""/g, "");
   // ID's wont apply meaningfully on a paste
-  output = output.replace(/ id="(\s|.)*?"/gim, "");
+  output = output.replace(/ id="[^"]*"/gim, "");
   // Google Docs ones
-  output = output.replace(/ dir="(\s|.)*?"/gim, "");
-  output = output.replace(/ role="(\s|.)*?"/gim, "");
+  output = output.replace(/ dir="[^"]*"/gim, "");
+  output = output.replace(/ role="[^"]*"/gim, "");
   // Google AI internal tracking attributes (jsaction, jscontroller, jsuid, etc.)
-  output = output.replace(/ jsaction="(\s|.)*?"/gim, "");
-  output = output.replace(/ jsaction='(\s|.)*?'/gim, "");
-  output = output.replace(/ jscontroller="(\s|.)*?"/gim, "");
-  output = output.replace(/ jscontroller='(\s|.)*?'/gim, "");
-  output = output.replace(/ jsuid="(\s|.)*?"/gim, "");
-  output = output.replace(/ jsuid='(\s|.)*?'/gim, "");
-  output = output.replace(/ jsname="(\s|.)*?"/gim, "");
-  output = output.replace(/ jsname='(\s|.)*?'/gim, "");
-  output = output.replace(/ jsslot="(\s|.)*?"/gim, "");
-  output = output.replace(/ jsslot='(\s|.)*?'/gim, "");
-  output = output.replace(/ jsan="(\s|.)*?"/gim, "");
-  output = output.replace(/ jsan='(\s|.)*?'/gim, "");
-  output = output.replace(/ jsdata="(\s|.)*?"/gim, "");
-  output = output.replace(/ jsdata='(\s|.)*?'/gim, "");
+  output = output.replace(/ jsaction="[^"]*"/gim, "");
+  output = output.replace(/ jsaction='[^']*'/gim, "");
+  output = output.replace(/ jscontroller="[^"]*"/gim, "");
+  output = output.replace(/ jscontroller='[^']*'/gim, "");
+  output = output.replace(/ jsuid="[^"]*"/gim, "");
+  output = output.replace(/ jsuid='[^']*'/gim, "");
+  output = output.replace(/ jsname="[^"]*"/gim, "");
+  output = output.replace(/ jsname='[^']*'/gim, "");
+  output = output.replace(/ jsslot="[^"]*"/gim, "");
+  output = output.replace(/ jsslot='[^']*'/gim, "");
+  output = output.replace(/ jsan="[^"]*"/gim, "");
+  output = output.replace(/ jsan='[^']*'/gim, "");
+  output = output.replace(/ jsdata="[^"]*"/gim, "");
+  output = output.replace(/ jsdata='[^']*'/gim, "");
   // these are universally true tho so fine to have here
-  output = output.replace(/ contenteditable="(\s|.)*?"/gim, "");
+  output = output.replace(/ contenteditable="[^"]*"/gim, "");
   // some medium, box, github and other paste stuff as well as general paste clean up for classes
   // in multiple HTML primitives
-  output = output.replace(/ data-(\s|.)*?"(\s|.)*?"/gim, "");
-  output = output.replace(/ class="(\s|.)*?"/gim, "");
+  output = output.replace(/ data-[^"]*"[^"]*"/gim, "");
+  output = output.replace(/ class="[^"]*"/gim, "");
   output = output.replace(/<pstyle/gm, "<p style");
   // HIGHLY specific to certain platforms, empty link tag
   output = output.replace(/<a name="_GoBack"><\/a>/gm, "");
@@ -1632,11 +1637,11 @@ function stripMSWord(input) {
   // whitespace in reverse of the top case now that we've cleaned it up
   output = output.replace(/<\/p>(\s*)<p>/gm, "</p><p>");
   // target and remove hax specific things from output if they slipped through
-  output = output.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
+  output = output.replace(/ data-hax-ray="[^"]*"/gim, "");
   output = output.replace(/ class=""/gim, "");
   output = output.replace(/ class="hax-active"/gim, "");
-  output = output.replace(/ contenteditable="(\s|.)*?"/gim, "");
-  output = output.replace(/ t="(\s|.)*?"/gim, "");
+  output = output.replace(/ contenteditable="[^"]*"/gim, "");
+  output = output.replace(/ t="[^"]*"/gim, "");
   // wow do I hate contenteditable and the dom....
   // bold and italic are treated as if they are block elements in a paste scenario
   // 8. check for empty bad tags
