@@ -260,6 +260,12 @@ describe("lib/object-path", () => {
 });
 
 // ---- markdown.js ----
+describe("lib/markdown detectMarkdown tag stripping", () => {
+  it("does not let nested tags hide markdown structure or leave a tag behind", () => {
+    expect(detectMarkdown("<p># Title</p>\n\n```js\nx\n```")).to.be.true;
+  });
+});
+
 describe("lib/markdown detectMarkdown", () => {
   it("returns false for empty/non-string input", () => {
     expect(detectMarkdown("")).to.be.false;

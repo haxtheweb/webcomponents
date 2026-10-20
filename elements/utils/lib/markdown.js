@@ -7,7 +7,14 @@ export function detectMarkdown(text) {
   if (!text || typeof text !== "string") return false;
 
   // Strip HTML tags for analysis but keep line breaks
-  const plainText = text.replace(/<[^>]*>/g, "").trim();
+  // (repeat until stable so nested input cannot leave a tag behind)
+  let stripped = text;
+  let previous;
+  do {
+    previous = stripped;
+    stripped = stripped.replace(/<[^>]*>/g, "");
+  } while (stripped !== previous);
+  const plainText = stripped.trim();
 
   // Strong indicators (these alone suggest markdown)
   const strongIndicators = [

@@ -846,10 +846,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     // Many templates wind up with an extra "-site-" segment in their machine names.
     // Strip that segment so that (course-template) can match (course-site-template).
     name = name.replace(/-site-/g, "-");
-    if (
-      name.indexOf("-site") !== -1 &&
-      name.lastIndexOf("-site") === name.length - 5
-    ) {
+    if (name.endsWith("-site")) {
       name = name.replace(/-site$/, "");
     }
     name = name.replace(/-+/g, "-");

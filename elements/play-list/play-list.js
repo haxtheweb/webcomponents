@@ -116,7 +116,14 @@ class PlayList extends I18NMixin(DDD) {
       }
     }
     if (item.content) {
-      const text = item.content.replace(/<[^>]*>/g, "").trim();
+      let stripped = item.content;
+      let previous;
+      // repeat until stable so nested input cannot leave a tag behind
+      do {
+        previous = stripped;
+        stripped = stripped.replace(/<[^>]*>/g, "");
+      } while (stripped !== previous);
+      const text = stripped.trim();
       if (text) {
         return text.length > 60 ? text.substring(0, 60) + "..." : text;
       }
