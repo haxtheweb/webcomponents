@@ -37,9 +37,9 @@ describe("course-card", () => {
         .querySelector("#course_icon simple-icon")
         .getAttribute("icon"),
     ).to.equal("icons:explore");
-    expect(el.shadowRoot.querySelector("#course_author").textContent).to.equal(
-      "By: Carl Sagan",
-    );
+    expect(
+      el.shadowRoot.querySelector("#course_author").textContent.trim(),
+    ).to.equal("By: Carl Sagan");
   });
 
   it("omits the author block when no author is set", async () => {

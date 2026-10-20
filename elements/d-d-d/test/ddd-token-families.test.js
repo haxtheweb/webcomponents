@@ -5,7 +5,15 @@ import { DDDVariables } from "../lib/DDDStyles.js";
 const text = DDDVariables.cssText;
 const value = (name) => {
   const m = new RegExp(`${name}:\\s*([^;]+);`).exec(text);
-  return m ? m[1].replace(/\s+/g, " ").trim() : undefined;
+  // normalize whitespace and the padding Prettier adds inside parentheses
+  return m
+    ? m[1]
+        .replace(/\s+/g, " ")
+        .replace(/\(\s+/g, "(")
+        .replace(/\s+\)/g, ")")
+        .replace(/,\s*/g, ", ")
+        .trim()
+    : undefined;
 };
 
 describe("DDD control sizes and touch targets", () => {
