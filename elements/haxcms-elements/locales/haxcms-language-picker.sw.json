@@ -1,0 +1,9 @@
+{
+  "language": "Lugha",
+  "searchPlaceholder": "Tafuta lugha",
+  "noResults": "Hakuna lugha inayolingana",
+  "oneLanguageFound": "Lugha 1 imepatikana",
+  "languagesFound": "Lugha {count} zimepatikana",
+  "useCustom": "Tumia {code}",
+  "loadError": "Orodha ya lugha haikuweza kupakiwa."
+}

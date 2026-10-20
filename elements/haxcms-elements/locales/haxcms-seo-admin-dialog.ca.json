@@ -7,7 +7,7 @@
   "domain": "Domini",
   "domainDescription": "Domini d'aquest lloc web",
   "language": "Idioma",
-  "languageDescription": "Codi d'idioma ISO 639-1 d'aquest lloc (per exemple, en, es, fr).",
+  "languageDescription": "Idioma d'aquest lloc. Cerca per nom o codi, o introdueix un altre codi com fr-CA.",
   "googleAnalyticsId": "ID de Google Analytics",
   "googleAnalyticsIdDescription": "ID de seguiment utilitzat per a les integracions d'analítica",
   "privateSite": "Lloc privat",

@@ -7,7 +7,7 @@
   "domain": "டொமைன்",
   "domainDescription": "இந்த இணையதளத்தின் டொமைன்",
   "language": "மொழி",
-  "languageDescription": "இந்தத் தளத்திற்கான ISO 639-1 மொழிக் குறியீடு (எடுத்துக்காட்டாக, en, es, fr).",
+  "languageDescription": "இந்தத் தளத்தின் மொழி. பெயர் அல்லது குறியீட்டால் தேடுங்கள், அல்லது fr-CA போன்ற வேறு குறியீட்டை உள்ளிடுங்கள்.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "பகுப்பாய்வு ஒருங்கிணைப்புகளுக்குப் பயன்படும் கண்காணிப்பு ID",
   "privateSite": "தனிப்பட்ட தளம்",

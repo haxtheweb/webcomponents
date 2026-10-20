@@ -1,0 +1,9 @@
+{
+  "language": "ಭಾಷೆ",
+  "searchPlaceholder": "ಭಾಷೆಗಳನ್ನು ಹುಡುಕಿ",
+  "noResults": "ಯಾವುದೇ ಭಾಷೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ",
+  "oneLanguageFound": "1 ಭಾಷೆ ಕಂಡುಬಂದಿದೆ",
+  "languagesFound": "{count} ಭಾಷೆಗಳು ಕಂಡುಬಂದಿವೆ",
+  "useCustom": "{code} ಬಳಸಿ",
+  "loadError": "ಭಾಷೆಗಳ ಪಟ್ಟಿಯನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ."
+}

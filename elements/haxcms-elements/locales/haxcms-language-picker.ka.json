@@ -1,0 +1,9 @@
+{
+  "language": "ენა",
+  "searchPlaceholder": "ენების ძებნა",
+  "noResults": "შესაბამისი ენა ვერ მოიძებნა",
+  "oneLanguageFound": "ნაპოვნია 1 ენა",
+  "languagesFound": "ნაპოვნია {count} ენა",
+  "useCustom": "გამოიყენეთ {code}",
+  "loadError": "ენების სია ვერ ჩაიტვირთა."
+}

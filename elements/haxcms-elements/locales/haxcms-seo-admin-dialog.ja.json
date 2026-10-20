@@ -7,7 +7,7 @@
   "domain": "ドメイン",
   "domainDescription": "この Web サイトのドメイン",
   "language": "言語",
-  "languageDescription": "このサイトの ISO 639-1 言語コード (例: en、es、fr)。",
+  "languageDescription": "このサイトの言語です。名前またはコードで検索するか、fr-CA などの別のコードを入力してください。",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "アナリティクス連携に使用するトラッキング ID",
   "privateSite": "非公開サイト",

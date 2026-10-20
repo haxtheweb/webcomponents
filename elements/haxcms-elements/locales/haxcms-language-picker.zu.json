@@ -1,0 +1,9 @@
+{
+  "language": "Ulimi",
+  "searchPlaceholder": "Sesha izilimi",
+  "noResults": "Azikho izilimi ezifanayo",
+  "oneLanguageFound": "Kutholwe ulimi olu-1",
+  "languagesFound": "Kutholwe izilimi ezingu-{count}",
+  "useCustom": "Sebenzisa {code}",
+  "loadError": "Uhlu lwezilimi alukwazanga ukulayishwa."
+}

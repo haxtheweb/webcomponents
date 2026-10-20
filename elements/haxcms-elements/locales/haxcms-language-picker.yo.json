@@ -1,0 +1,9 @@
+{
+  "language": "Èdè",
+  "searchPlaceholder": "Wá àwọn èdè",
+  "noResults": "Kò sí èdè tó bára mu",
+  "oneLanguageFound": "A rí èdè kan",
+  "languagesFound": "A rí èdè {count}",
+  "useCustom": "Lo {code}",
+  "loadError": "Kò ṣeé ṣe láti gbé àtòjọ èdè wọlé."
+}

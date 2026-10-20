@@ -1,0 +1,9 @@
+{
+  "language": "Язык",
+  "searchPlaceholder": "Поиск языков",
+  "noResults": "Нет подходящих языков",
+  "oneLanguageFound": "Найден 1 язык",
+  "languagesFound": "Найдено языков: {count}",
+  "useCustom": "Использовать {code}",
+  "loadError": "Не удалось загрузить список языков."
+}

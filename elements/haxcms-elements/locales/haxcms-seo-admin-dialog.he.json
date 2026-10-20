@@ -7,7 +7,7 @@
   "domain": "דומיין",
   "domainDescription": "הדומיין של אתר זה",
   "language": "שפה",
-  "languageDescription": "קוד שפה ISO 639-1 עבור אתר זה (לדוגמה, en, es, fr).",
+  "languageDescription": "שפת האתר. חפשו לפי שם או קוד, או הזינו קוד אחר כגון fr-CA.",
   "googleAnalyticsId": "מזהה Google Analytics",
   "googleAnalyticsIdDescription": "מזהה מעקב המשמש לשילובי אנליטיקה",
   "privateSite": "אתר פרטי",

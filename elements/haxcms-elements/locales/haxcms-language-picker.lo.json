@@ -1,0 +1,9 @@
+{
+  "language": "ພາສາ",
+  "searchPlaceholder": "ຄົ້ນຫາພາສາ",
+  "noResults": "ບໍ່ມີພາສາທີ່ກົງກັນ",
+  "oneLanguageFound": "ພົບ 1 ພາສາ",
+  "languagesFound": "ພົບ {count} ພາສາ",
+  "useCustom": "ໃຊ້ {code}",
+  "loadError": "ບໍ່ສາມາດໂຫຼດລາຍການພາສາໄດ້."
+}

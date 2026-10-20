@@ -7,7 +7,7 @@
   "domain": "Domeniu",
   "domainDescription": "Domeniul acestui site web",
   "language": "Limbă",
-  "languageDescription": "Codul de limbă ISO 639-1 pentru acest site (de exemplu, en, es, fr).",
+  "languageDescription": "Limba acestui site. Căutați după nume sau cod ori introduceți alt cod, de exemplu fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",
   "googleAnalyticsIdDescription": "ID de urmărire folosit pentru integrările de analiză",
   "privateSite": "Site privat",

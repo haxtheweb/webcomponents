@@ -1,0 +1,9 @@
+{
+  "language": "Taal",
+  "searchPlaceholder": "Talen sykje",
+  "noResults": "Gjin talen kamen oerien",
+  "oneLanguageFound": "1 taal fûn",
+  "languagesFound": "{count} talen fûn",
+  "useCustom": "{code} brûke",
+  "loadError": "De taallist koe net laden wurde."
+}

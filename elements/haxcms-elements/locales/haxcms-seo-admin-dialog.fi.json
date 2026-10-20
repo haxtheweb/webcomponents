@@ -7,7 +7,7 @@
   "domain": "Verkkotunnus",
   "domainDescription": "Tämän verkkosivuston verkkotunnus",
   "language": "Kieli",
-  "languageDescription": "Tämän sivuston ISO 639-1 -kielikoodi (esimerkiksi en, es, fr).",
+  "languageDescription": "Tämän sivuston kieli. Hae nimellä tai koodilla tai kirjoita toinen koodi, esimerkiksi fr-CA.",
   "googleAnalyticsId": "Google Analytics -tunnus",
   "googleAnalyticsIdDescription": "Analytiikkaintegraatioissa käytettävä seurantatunnus",
   "privateSite": "Yksityinen sivusto",

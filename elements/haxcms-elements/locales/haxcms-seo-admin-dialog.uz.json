@@ -7,7 +7,7 @@
   "domain": "Domen",
   "domainDescription": "Ushbu veb-sayt domeni",
   "language": "Til",
-  "languageDescription": "Ushbu sayt uchun ISO 639-1 til kodi (masalan, en, es, fr).",
+  "languageDescription": "Ushbu saytning tili. Nomi yoki kodi bo‘yicha qidiring yoki fr-CA kabi boshqa kodni kiriting.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "Analitika integratsiyalari uchun ishlatiladigan kuzatuv ID si",
   "privateSite": "Shaxsiy sayt",

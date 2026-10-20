@@ -1,0 +1,9 @@
+{
+  "language": "Tungumál",
+  "searchPlaceholder": "Leita að tungumálum",
+  "noResults": "Engin tungumál samsvara",
+  "oneLanguageFound": "1 tungumál fannst",
+  "languagesFound": "{count} tungumál fundust",
+  "useCustom": "Nota {code}",
+  "loadError": "Ekki tókst að hlaða tungumálalistanum."
+}

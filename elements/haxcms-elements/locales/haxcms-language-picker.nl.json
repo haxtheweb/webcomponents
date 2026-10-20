@@ -1,0 +1,9 @@
+{
+  "language": "Taal",
+  "searchPlaceholder": "Talen zoeken",
+  "noResults": "Geen talen gevonden",
+  "oneLanguageFound": "1 taal gevonden",
+  "languagesFound": "{count} talen gevonden",
+  "useCustom": "{code} gebruiken",
+  "loadError": "De talenlijst kon niet worden geladen."
+}

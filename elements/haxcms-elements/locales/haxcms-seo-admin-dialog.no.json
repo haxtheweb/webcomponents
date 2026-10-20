@@ -7,7 +7,7 @@
   "domain": "Domene",
   "domainDescription": "Domenet til dette nettstedet",
   "language": "Språk",
-  "languageDescription": "ISO 639-1-språkkode for dette nettstedet (for eksempel en, es, fr).",
+  "languageDescription": "Språket til dette nettstedet. Søk etter navn eller kode, eller skriv inn en annen kode som fr-CA.",
   "googleAnalyticsId": "Google Analytics-ID",
   "googleAnalyticsIdDescription": "Sporings-ID som brukes til analyseintegrasjoner",
   "privateSite": "Privat nettsted",

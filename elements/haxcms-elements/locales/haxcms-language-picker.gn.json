@@ -1,0 +1,9 @@
+{
+  "language": "Ñe'ẽ",
+  "searchPlaceholder": "Eheka ñe'ẽ",
+  "noResults": "Ndaipóri ñe'ẽ oĩva",
+  "oneLanguageFound": "1 ñe'ẽ ojejuhu",
+  "languagesFound": "{count} ñe'ẽ ojejuhu",
+  "useCustom": "Eipuru {code}",
+  "loadError": "Ndaikatúi ojegueru ñe'ẽ rysýi."
+}

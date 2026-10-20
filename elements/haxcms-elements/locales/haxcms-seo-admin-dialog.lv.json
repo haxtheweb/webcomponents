@@ -7,7 +7,7 @@
   "domain": "Domēns",
   "domainDescription": "Šīs vietnes domēns",
   "language": "Valoda",
-  "languageDescription": "Šīs vietnes ISO 639-1 valodas kods (piemēram, en, es, fr).",
+  "languageDescription": "Šīs vietnes valoda. Meklējiet pēc nosaukuma vai koda vai ievadiet citu kodu, piemēram, fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "Izsekošanas ID, ko izmanto analītikas integrācijām",
   "privateSite": "Privāta vietne",

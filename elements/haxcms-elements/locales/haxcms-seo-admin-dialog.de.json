@@ -7,7 +7,7 @@
   "domain": "Domain",
   "domainDescription": "Domain dieser Website",
   "language": "Sprache",
-  "languageDescription": "ISO-639-1-Sprachcode für diese Website (zum Beispiel en, es, fr).",
+  "languageDescription": "Sprache dieser Website. Nach Name oder Code suchen oder einen anderen Code wie fr-CA eingeben.",
   "googleAnalyticsId": "Google-Analytics-ID",
   "googleAnalyticsIdDescription": "Tracking-ID für Analyse-Integrationen",
   "privateSite": "Private Website",

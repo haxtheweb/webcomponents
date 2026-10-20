@@ -7,7 +7,7 @@
   "domain": "Domeen",
   "domainDescription": "Selle veebisaidi domeen",
   "language": "Keel",
-  "languageDescription": "Selle saidi ISO 639-1 keelekood (näiteks en, es, fr).",
+  "languageDescription": "Selle saidi keel. Otsige nime või koodi järgi või sisestage muu kood, näiteks fr-CA.",
   "googleAnalyticsId": "Google Analyticsi ID",
   "googleAnalyticsIdDescription": "Analüütikaintegratsioonides kasutatav jälgimis-ID",
   "privateSite": "Privaatne sait",

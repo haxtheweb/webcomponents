@@ -7,7 +7,7 @@
   "domain": "도메인",
   "domainDescription": "이 웹사이트의 도메인",
   "language": "언어",
-  "languageDescription": "이 사이트의 ISO 639-1 언어 코드 (예: en, es, fr).",
+  "languageDescription": "이 사이트의 언어입니다. 이름이나 코드로 검색하거나 fr-CA와 같은 다른 코드를 입력하세요.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "분석 연동에 사용되는 추적 ID",
   "privateSite": "비공개 사이트",

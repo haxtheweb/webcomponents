@@ -7,7 +7,7 @@
   "domain": "دامنه",
   "domainDescription": "دامنه این وب‌سایت",
   "language": "زبان",
-  "languageDescription": "کد زبان ISO 639-1 برای این سایت (برای مثال، en، es، fr).",
+  "languageDescription": "زبان این سایت. بر اساس نام یا کد جستجو کنید یا کد دیگری مانند fr-CA وارد کنید.",
   "googleAnalyticsId": "شناسه Google Analytics",
   "googleAnalyticsIdDescription": "شناسه ردیابی مورد استفاده برای یکپارچه‌سازی‌های تحلیلی",
   "privateSite": "سایت خصوصی",

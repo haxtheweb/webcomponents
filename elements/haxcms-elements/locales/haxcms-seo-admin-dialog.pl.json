@@ -7,7 +7,7 @@
   "domain": "Domena",
   "domainDescription": "Domena tej witryny",
   "language": "Język",
-  "languageDescription": "Kod języka ISO 639-1 dla tej witryny (na przykład en, es, fr).",
+  "languageDescription": "Język tej witryny. Szukaj według nazwy lub kodu albo wpisz inny kod, na przykład fr-CA.",
   "googleAnalyticsId": "Identyfikator Google Analytics",
   "googleAnalyticsIdDescription": "Identyfikator śledzenia używany w integracjach analitycznych",
   "privateSite": "Witryna prywatna",

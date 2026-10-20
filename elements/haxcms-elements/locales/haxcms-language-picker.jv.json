@@ -1,0 +1,9 @@
+{
+  "language": "Basa",
+  "searchPlaceholder": "Golek basa",
+  "noResults": "Ora ana basa sing cocog",
+  "oneLanguageFound": "1 basa ditemokake",
+  "languagesFound": "{count} basa ditemokake",
+  "useCustom": "Gunakake {code}",
+  "loadError": "Dhaptar basa ora bisa diunggah."
+}

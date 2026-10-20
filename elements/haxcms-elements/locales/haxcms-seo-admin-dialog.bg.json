@@ -7,7 +7,7 @@
   "domain": "Домейн",
   "domainDescription": "Домейн на този уебсайт",
   "language": "Език",
-  "languageDescription": "ISO 639-1 код на езика на този сайт (например en, es, fr).",
+  "languageDescription": "Език на този сайт. Търсете по име или код или въведете друг код, например fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "ID за проследяване, използван за интеграции с анализи",
   "privateSite": "Частен сайт",

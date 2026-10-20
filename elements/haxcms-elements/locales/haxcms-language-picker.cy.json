@@ -1,0 +1,9 @@
+{
+  "language": "Iaith",
+  "searchPlaceholder": "Chwilio am ieithoedd",
+  "noResults": "Dim ieithoedd yn cyfateb",
+  "oneLanguageFound": "Canfuwyd 1 iaith",
+  "languagesFound": "Canfuwyd {count} iaith",
+  "useCustom": "Defnyddio {code}",
+  "loadError": "Methwyd llwytho'r rhestr ieithoedd."
+}

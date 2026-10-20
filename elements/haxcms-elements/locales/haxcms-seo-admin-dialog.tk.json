@@ -7,7 +7,7 @@
   "domain": "Domen",
   "domainDescription": "Bu web saýtyň domeni",
   "language": "Dil",
-  "languageDescription": "Bu saýt üçin ISO 639-1 dil kody (mysal üçin, en, es, fr).",
+  "languageDescription": "Bu saýtyň dili. Ady ýa-da kody boýunça gözläň, ýa-da fr-CA ýaly başga kod giriziň.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "Analitika integrasiýalary üçin ulanylýan yzarlama ID-si",
   "privateSite": "Hususy saýt",

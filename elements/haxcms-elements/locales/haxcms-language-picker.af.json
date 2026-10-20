@@ -1,0 +1,9 @@
+{
+  "language": "Taal",
+  "searchPlaceholder": "Soek tale",
+  "noResults": "Geen tale stem ooreen nie",
+  "oneLanguageFound": "1 taal gevind",
+  "languagesFound": "{count} tale gevind",
+  "useCustom": "Gebruik {code}",
+  "loadError": "Die taallys kon nie gelaai word nie."
+}

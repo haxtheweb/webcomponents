@@ -1,0 +1,9 @@
+{
+  "language": "Lingwa",
+  "searchPlaceholder": "Fittex lingwi",
+  "noResults": "L-ebda lingwa ma taqbel",
+  "oneLanguageFound": "Instabet lingwa 1",
+  "languagesFound": "Instabu {count} lingwi",
+  "useCustom": "Uża {code}",
+  "loadError": "Il-lista tal-lingwi ma setgħetx titgħabba."
+}

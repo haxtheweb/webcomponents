@@ -1,0 +1,9 @@
+{
+  "language": "Til",
+  "searchPlaceholder": "Tillarni qidirish",
+  "noResults": "Mos keladigan til yo‘q",
+  "oneLanguageFound": "1 ta til topildi",
+  "languagesFound": "{count} ta til topildi",
+  "useCustom": "{code} dan foydalanish",
+  "loadError": "Tillar ro‘yxatini yuklab bo‘lmadi."
+}

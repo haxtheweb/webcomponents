@@ -7,7 +7,7 @@
   "domain": "Домен",
   "domainDescription": "Домен этого веб-сайта",
   "language": "Язык",
-  "languageDescription": "Код языка ISO 639-1 для этого сайта (например, en, es, fr).",
+  "languageDescription": "Язык этого сайта. Ищите по названию или коду либо введите другой код, например fr-CA.",
   "googleAnalyticsId": "Идентификатор Google Analytics",
   "googleAnalyticsIdDescription": "Идентификатор отслеживания для интеграций аналитики",
   "privateSite": "Закрытый сайт",

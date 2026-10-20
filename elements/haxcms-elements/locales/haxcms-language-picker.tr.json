@@ -1,0 +1,9 @@
+{
+  "language": "Dil",
+  "searchPlaceholder": "Dil ara",
+  "noResults": "Eşleşen dil yok",
+  "oneLanguageFound": "1 dil bulundu",
+  "languagesFound": "{count} dil bulundu",
+  "useCustom": "{code} kullan",
+  "loadError": "Dil listesi yüklenemedi."
+}

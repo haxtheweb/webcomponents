@@ -1,0 +1,9 @@
+{
+  "language": "Լեզու",
+  "searchPlaceholder": "Որոնել լեզուներ",
+  "noResults": "Համապատասխան լեզուներ չկան",
+  "oneLanguageFound": "Գտնվել է 1 լեզու",
+  "languagesFound": "Գտնվել է {count} լեզու",
+  "useCustom": "Օգտագործել {code}",
+  "loadError": "Լեզուների ցանկը չհաջողվեց բեռնել։"
+}

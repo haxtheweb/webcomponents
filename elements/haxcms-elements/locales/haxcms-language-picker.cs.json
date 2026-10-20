@@ -1,0 +1,9 @@
+{
+  "language": "Jazyk",
+  "searchPlaceholder": "Hledat jazyky",
+  "noResults": "Žádné jazyky neodpovídají",
+  "oneLanguageFound": "Nalezen 1 jazyk",
+  "languagesFound": "Nalezeno jazyků: {count}",
+  "useCustom": "Použít {code}",
+  "loadError": "Seznam jazyků se nepodařilo načíst."
+}

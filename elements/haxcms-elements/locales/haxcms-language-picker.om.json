@@ -1,0 +1,9 @@
+{
+  "language": "Afaan",
+  "searchPlaceholder": "Afaanota barbaadi",
+  "noResults": "Afaan wal simu hin jiru",
+  "oneLanguageFound": "Afaan 1 argameera",
+  "languagesFound": "Afaanonni {count} argamaniiru",
+  "useCustom": "{code} fayyadami",
+  "loadError": "Tarreeffamni afaanotaa fe'amuu hin dandeenye."
+}

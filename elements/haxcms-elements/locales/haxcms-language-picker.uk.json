@@ -1,0 +1,9 @@
+{
+  "language": "Мова",
+  "searchPlaceholder": "Пошук мов",
+  "noResults": "Немає відповідних мов",
+  "oneLanguageFound": "Знайдено 1 мову",
+  "languagesFound": "Знайдено мов: {count}",
+  "useCustom": "Використати {code}",
+  "loadError": "Не вдалося завантажити список мов."
+}

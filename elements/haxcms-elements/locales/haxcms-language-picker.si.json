@@ -1,0 +1,9 @@
+{
+  "language": "භාෂාව",
+  "searchPlaceholder": "භාෂා සොයන්න",
+  "noResults": "ගැළපෙන භාෂා නැත",
+  "oneLanguageFound": "භාෂා 1ක් හමු විය",
+  "languagesFound": "භාෂා {count}ක් හමු විය",
+  "useCustom": "{code} භාවිත කරන්න",
+  "loadError": "භාෂා ලැයිස්තුව පූරණය කළ නොහැකි විය."
+}

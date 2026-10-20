@@ -1,0 +1,9 @@
+{
+  "language": "语言",
+  "searchPlaceholder": "搜索语言",
+  "noResults": "没有匹配的语言",
+  "oneLanguageFound": "找到 1 种语言",
+  "languagesFound": "找到 {count} 种语言",
+  "useCustom": "使用 {code}",
+  "loadError": "无法加载语言列表。"
+}

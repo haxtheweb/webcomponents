@@ -7,7 +7,7 @@
   "domain": "Domain",
   "domainDescription": "Domain situs web iki",
   "language": "Basa",
-  "languageDescription": "Kode basa ISO 639-1 kanggo situs iki (contone, en, es, fr).",
+  "languageDescription": "Basane situs iki. Golek miturut jeneng utawa kode, utawa lebokna kode liyane kayata fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",
   "googleAnalyticsIdDescription": "ID pelacakan sing dienggo kanggo integrasi analitik",
   "privateSite": "Situs pribadi",

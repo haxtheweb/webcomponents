@@ -1,0 +1,9 @@
+{
+  "language": "Jezik",
+  "searchPlaceholder": "Iskanje jezikov",
+  "noResults": "Noben jezik se ne ujema",
+  "oneLanguageFound": "Najden 1 jezik",
+  "languagesFound": "Najdenih jezikov: {count}",
+  "useCustom": "Uporabi {code}",
+  "loadError": "Seznama jezikov ni bilo mogoče naložiti."
+}

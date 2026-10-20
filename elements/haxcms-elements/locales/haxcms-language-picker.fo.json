@@ -1,0 +1,9 @@
+{
+  "language": "Mál",
+  "searchPlaceholder": "Leita eftir málum",
+  "noResults": "Eingi mál samsvara",
+  "oneLanguageFound": "1 mál funnið",
+  "languagesFound": "{count} mál funnin",
+  "useCustom": "Brúka {code}",
+  "loadError": "Málslistin kundi ikki lesast."
+}

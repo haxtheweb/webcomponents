@@ -1,0 +1,9 @@
+{
+  "language": "Simi",
+  "searchPlaceholder": "Simikunata maskay",
+  "noResults": "Mana simi kanchu",
+  "oneLanguageFound": "1 simi tarisqa",
+  "languagesFound": "{count} simikuna tarisqa",
+  "useCustom": "{code} llamk'achiy",
+  "loadError": "Mana atikurqachu simi sutichayta apayta."
+}

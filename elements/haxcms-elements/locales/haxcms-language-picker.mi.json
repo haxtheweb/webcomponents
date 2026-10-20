@@ -1,0 +1,9 @@
+{
+  "language": "Reo",
+  "searchPlaceholder": "Rapua ngā reo",
+  "noResults": "Kāore he reo e hāngai ana",
+  "oneLanguageFound": "1 te reo i kitea",
+  "languagesFound": "{count} ngā reo i kitea",
+  "useCustom": "Whakamahia {code}",
+  "loadError": "Kāore i taea te uta i te rārangi reo."
+}

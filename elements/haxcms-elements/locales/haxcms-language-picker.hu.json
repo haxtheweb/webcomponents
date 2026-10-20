@@ -1,0 +1,9 @@
+{
+  "language": "Nyelv",
+  "searchPlaceholder": "Nyelvek keresése",
+  "noResults": "Nincs egyező nyelv",
+  "oneLanguageFound": "1 nyelv található",
+  "languagesFound": "{count} nyelv található",
+  "useCustom": "{code} használata",
+  "loadError": "A nyelvlistát nem sikerült betölteni."
+}

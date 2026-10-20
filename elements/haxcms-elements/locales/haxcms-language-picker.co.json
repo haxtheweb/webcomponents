@@ -1,0 +1,9 @@
+{
+  "language": "Lingua",
+  "searchPlaceholder": "Circà lingue",
+  "noResults": "Nisuna lingua currisponde",
+  "oneLanguageFound": "1 lingua trova",
+  "languagesFound": "{count} lingue trove",
+  "useCustom": "Aduprà {code}",
+  "loadError": "Ùn si pò carricà a lista di e lingue."
+}

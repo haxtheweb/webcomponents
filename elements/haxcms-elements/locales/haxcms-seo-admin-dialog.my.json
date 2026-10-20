@@ -7,7 +7,7 @@
   "domain": "ဒိုမိန်း",
   "domainDescription": "ဤဝဘ်ဆိုက်၏ ဒိုမိန်း",
   "language": "ဘာသာစကား",
-  "languageDescription": "ဤဆိုက်အတွက် ISO 639-1 ဘာသာစကား ကုဒ် (ဥပမာ en, es, fr)။",
+  "languageDescription": "ဤဝဘ်ဆိုက်၏ ဘာသာစကား။ အမည် သို့မဟုတ် ကုဒ်ဖြင့် ရှာပါ၊ သို့မဟုတ် fr-CA ကဲ့သို့ အခြားကုဒ်တစ်ခု ထည့်ပါ။",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "ခွဲခြမ်းစိတ်ဖြာမှု ချိတ်ဆက်မှုများအတွက် သုံးသော tracking ID",
   "privateSite": "ကိုယ်ပိုင် ဆိုက်",

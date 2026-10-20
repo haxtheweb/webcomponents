@@ -1,0 +1,9 @@
+{
+  "language": "மொழி",
+  "searchPlaceholder": "மொழிகளைத் தேடுங்கள்",
+  "noResults": "பொருந்தும் மொழிகள் இல்லை",
+  "oneLanguageFound": "1 மொழி கிடைத்தது",
+  "languagesFound": "{count} மொழிகள் கிடைத்தன",
+  "useCustom": "{code} ஐப் பயன்படுத்துக",
+  "loadError": "மொழிப் பட்டியலை ஏற்ற முடியவில்லை."
+}

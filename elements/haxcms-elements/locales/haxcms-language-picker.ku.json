@@ -1,0 +1,9 @@
+{
+  "language": "Ziman",
+  "searchPlaceholder": "Li zimanan bigere",
+  "noResults": "Ti ziman nayê",
+  "oneLanguageFound": "1 ziman hat dîtin",
+  "languagesFound": "{count} ziman hatin dîtin",
+  "useCustom": "{code} bi kar bîne",
+  "loadError": "Lîsteya zimanan nehat barkirin."
+}

@@ -7,7 +7,7 @@
   "domain": "ጎራ",
   "domainDescription": "የዚህ ድረ-ገጽ ጎራ",
   "language": "ቋንቋ",
-  "languageDescription": "ለዚህ ድረ-ገጽ የISO 639-1 የቋንቋ ኮድ (ለምሳሌ en, es, fr)።",
+  "languageDescription": "የዚህ ጣቢያ ቋንቋ። በስም ወይም በኮድ ይፈልጉ፣ ወይም እንደ fr-CA ያለ ሌላ ኮድ ያስገቡ።",
   "googleAnalyticsId": "የGoogle Analytics ID",
   "googleAnalyticsIdDescription": "ለትንታኔ ውህደቶች ጥቅም ላይ የሚውል የመከታተያ ID",
   "privateSite": "የግል ድረ-ገጽ",

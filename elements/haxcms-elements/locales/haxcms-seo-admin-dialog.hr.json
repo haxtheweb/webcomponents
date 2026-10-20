@@ -7,7 +7,7 @@
   "domain": "Domena",
   "domainDescription": "Domena ovog web-mjesta",
   "language": "Jezik",
-  "languageDescription": "ISO 639-1 kod jezika za ovo mjesto (na primjer en, es, fr).",
+  "languageDescription": "Jezik ove web-stranice. Pretražite po nazivu ili kodu ili unesite drugi kod, na primjer fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "ID praćenja koji se koristi za integracije analitike",
   "privateSite": "Privatno mjesto",

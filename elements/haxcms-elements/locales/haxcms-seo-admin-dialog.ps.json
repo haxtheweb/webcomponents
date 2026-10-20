@@ -7,7 +7,7 @@
   "domain": "ډومین",
   "domainDescription": "د دې ویبسایټ ډومین",
   "language": "ژبه",
-  "languageDescription": "د دې سایټ لپاره د ISO 639-1 ژبې کوډ (د بېلګې په توګه، en، es، fr).",
+  "languageDescription": "د دې سایټ ژبه. په نوم یا کوډ ولټوئ، یا بل کوډ لکه fr-CA دننه کړئ.",
   "googleAnalyticsId": "د Google Analytics ID",
   "googleAnalyticsIdDescription": "د تحلیلي ادغامونو لپاره کارول شوی د تعقیب ID",
   "privateSite": "خصوصي سایټ",

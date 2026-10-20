@@ -1,0 +1,9 @@
+{
+  "language": "Jezik",
+  "searchPlaceholder": "Pretraži jezike",
+  "noResults": "Nema odgovarajućih jezika",
+  "oneLanguageFound": "Pronađen 1 jezik",
+  "languagesFound": "Pronađeno jezika: {count}",
+  "useCustom": "Koristi {code}",
+  "loadError": "Popis jezika nije mogao biti učitan."
+}

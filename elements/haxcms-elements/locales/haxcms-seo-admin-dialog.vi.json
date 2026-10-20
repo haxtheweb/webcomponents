@@ -7,7 +7,7 @@
   "domain": "Tên miền",
   "domainDescription": "Tên miền của trang web này",
   "language": "Ngôn ngữ",
-  "languageDescription": "Mã ngôn ngữ ISO 639-1 cho trang web này (ví dụ: en, es, fr).",
+  "languageDescription": "Ngôn ngữ của trang này. Tìm theo tên hoặc mã, hoặc nhập mã khác như fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",
   "googleAnalyticsIdDescription": "ID theo dõi dùng cho các tích hợp phân tích",
   "privateSite": "Trang web riêng tư",

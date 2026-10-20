@@ -7,7 +7,7 @@
   "domain": "డొమైన్",
   "domainDescription": "ఈ వెబ్‌సైట్ డొమైన్",
   "language": "భాష",
-  "languageDescription": "ఈ సైట్ కోసం ISO 639-1 భాషా కోడ్ (ఉదాహరణకు, en, es, fr).",
+  "languageDescription": "ఈ సైట్ భాష. పేరు లేదా కోడ్ ద్వారా వెతకండి, లేదా fr-CA వంటి మరొక కోడ్‌ను నమోదు చేయండి.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "విశ్లేషణ ఇంటిగ్రేషన్‌ల కోసం ఉపయోగించే ట్రాకింగ్ ID",
   "privateSite": "ప్రైవేట్ సైట్",

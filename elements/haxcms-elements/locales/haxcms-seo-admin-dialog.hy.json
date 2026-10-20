@@ -7,7 +7,7 @@
   "domain": "Դոմեն",
   "domainDescription": "Այս կայքի դոմենը",
   "language": "Լեզու",
-  "languageDescription": "Այս կայքի ISO 639-1 լեզվի կոդը (օրինակ՝ en, es, fr).",
+  "languageDescription": "Այս կայքի լեզուն։ Որոնեք անվամբ կամ կոդով, կամ մուտքագրեք այլ կոդ, օրինակ՝ fr-CA։",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "Վերլուծական ինտեգրումների համար օգտագործվող հետևման ID",
   "privateSite": "Անձնական կայք",

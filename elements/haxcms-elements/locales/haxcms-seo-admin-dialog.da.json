@@ -7,7 +7,7 @@
   "domain": "Domæne",
   "domainDescription": "Domænet for dette websted",
   "language": "Sprog",
-  "languageDescription": "ISO 639-1-sprogkode for dette websted (f.eks. en, es, fr).",
+  "languageDescription": "Dette websteds sprog. Søg efter navn eller kode, eller indtast en anden kode som fr-CA.",
   "googleAnalyticsId": "Google Analytics-ID",
   "googleAnalyticsIdDescription": "Sporings-ID, der bruges til analyseintegrationer",
   "privateSite": "Privat websted",

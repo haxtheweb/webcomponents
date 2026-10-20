@@ -1,0 +1,9 @@
+{
+  "language": "Harshe",
+  "searchPlaceholder": "Nemo harsuna",
+  "noResults": "Babu harshen da ya dace",
+  "oneLanguageFound": "An sami harshe 1",
+  "languagesFound": "An sami harsuna {count}",
+  "useCustom": "Yi amfani da {code}",
+  "loadError": "Ba a iya loda jerin harsuna ba."
+}

@@ -7,7 +7,7 @@
   "domain": "Duminiu",
   "domainDescription": "Duminiu di stu situ web",
   "language": "Lingua",
-  "languageDescription": "Codice di lingua ISO 639-1 per stu situ (per esempiu, en, es, fr).",
+  "languageDescription": "Lingua di stu situ. Circate per nome o codice, o scrivite un altru codice cum'è fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",
   "googleAnalyticsIdDescription": "ID di seguitu adupratu per l'integrazioni d'analisi",
   "privateSite": "Situ privatu",

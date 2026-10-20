@@ -1,0 +1,9 @@
+{
+  "language": "Luqad",
+  "searchPlaceholder": "Raadi luqadaha",
+  "noResults": "Luqad ku habboon lama helin",
+  "oneLanguageFound": "Luqad 1 ayaa la helay",
+  "languagesFound": "{count} luqadood ayaa la helay",
+  "useCustom": "Isticmaal {code}",
+  "loadError": "Liiska luqadaha lama soo shubi karin."
+}

@@ -7,7 +7,7 @@
   "domain": "වසම",
   "domainDescription": "මෙම වෙබ් අඩවියේ වසම",
   "language": "භාෂාව",
-  "languageDescription": "මෙම අඩවිය සඳහා ISO 639-1 භාෂා කේතය (උදාහරණයක් ලෙස, en, es, fr).",
+  "languageDescription": "මෙම අඩවියේ භාෂාව. නමෙන් හෝ කේතයෙන් සොයන්න, නැතහොත් fr-CA වැනි වෙනත් කේතයක් ඇතුළත් කරන්න.",
   "googleAnalyticsId": "Google Analytics ID",
   "googleAnalyticsIdDescription": "විශ්ලේෂණ ඒකාබද්ධ කිරීම් සඳහා භාවිත කරන ලුහුබැඳීමේ ID",
   "privateSite": "පෞද්ගලික අඩවිය",

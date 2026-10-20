@@ -1,0 +1,9 @@
+{
+  "language": "ʻŌlelo",
+  "searchPlaceholder": "Huli i nā ʻōlelo",
+  "noResults": "ʻAʻohe ʻōlelo kūpono",
+  "oneLanguageFound": "1 ʻōlelo i loaʻa",
+  "languagesFound": "{count} ʻōlelo i loaʻa",
+  "useCustom": "E hoʻohana i ka {code}",
+  "loadError": "ʻAʻole hiki ke hoʻouka i ka papa ʻōlelo."
+}

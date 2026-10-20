@@ -1,0 +1,9 @@
+{
+  "language": "Gjuha",
+  "searchPlaceholder": "Kërko gjuhë",
+  "noResults": "Asnjë gjuhë nuk përputhet",
+  "oneLanguageFound": "U gjet 1 gjuhë",
+  "languagesFound": "U gjetën {count} gjuhë",
+  "useCustom": "Përdor {code}",
+  "loadError": "Lista e gjuhëve nuk mund të ngarkohej."
+}

@@ -1,0 +1,9 @@
+{
+  "language": "Хэл",
+  "searchPlaceholder": "Хэл хайх",
+  "noResults": "Таарах хэл алга",
+  "oneLanguageFound": "1 хэл олдлоо",
+  "languagesFound": "{count} хэл олдлоо",
+  "useCustom": "{code} ашиглах",
+  "loadError": "Хэлний жагсаалтыг ачаалж чадсангүй."
+}

@@ -1,0 +1,9 @@
+{
+  "language": "Chilankhulo",
+  "searchPlaceholder": "Sakani zilankhulo",
+  "noResults": "Palibe zilankhulo zofanana",
+  "oneLanguageFound": "Chilankhulo 1 chapezeka",
+  "languagesFound": "Zilankhulo {count} zapezeka",
+  "useCustom": "Gwiritsani ntchito {code}",
+  "loadError": "Sitinathe kutsegula mndandanda wa zilankhulo."
+}
