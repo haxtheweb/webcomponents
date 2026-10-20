@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Wat het jy in die laaste toets gekry?",
+  "moodPrompt": "Hoe dink jy gaan dit met jou?",
+  "reviewLink": "Hersien hierdie materiaal",
+  "grade": "Punt",
+  "moodVeryLow": "Baie laag",
+  "moodLow": "Laag",
+  "moodOkay": "Aanvaarbaar",
+  "moodGood": "Goed",
+  "moodGreat": "Uitstekend"
+}

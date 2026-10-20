@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Kikin yuyaymanay kallpachay",
+    "description": "Yachaqaman niy kikinpa notanmanta icha sonqonmanta yuyaymanananpaq, hinaspa kutichisqanman hina kikinta allichanapaq kallpachayta qoy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Yaykuchiy laya",
+        "description": "Yachaqa imayna kasqanmanta imaynatas willan. Iskayninpas 0 manta 4 kama tupuyta llamk'achin (nota: F=0, D=1, C=2, B=3, A=4; sonqo: anchata uray=0 manta anchata allin=4).",
+        "options": {
+          "grade": "Qillqawan nota",
+          "mood": "Sonqo"
+        }
+      },
+      {
+        "title": "Tapukuy",
+        "description": "Yachaqapaq tapukuy. Yaykuchiy layapaq kikin churasqata llamk'achinaykipaq ch'usaqta saqey."
+      },
+      {
+        "title": "Kallpachaykuna",
+        "description": "Kutichiykunapa huk kamachisqanpaq rikuchisqa yanapay. Ñawpaq tupaq kamachisqa llamk'achisqa kanqa."
+      }
+    ]
+  }
+}

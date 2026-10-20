@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Önreflexiós buzdítás",
+    "description": "Kérje meg a tanulót, hogy gondolkodjon el egy jegyen vagy hangulaton, és adjon önkorrekciós buzdítást a válasz alapján."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Beviteli típus",
+        "description": "Hogyan jelzi a tanuló, hogy áll. Mindkettő 0–4 skálát használ (jegy: F=0, D=1, C=2, B=3, A=4; hangulat: nagyon rossz=0 – nagyszerű=4).",
+        "options": {
+          "grade": "Betűjegy",
+          "mood": "Hangulat"
+        }
+      },
+      {
+        "title": "Kérdés",
+        "description": "A tanulónak szánt kérdés. Hagyja üresen a beviteli típus alapértelmezett kérdésének használatához."
+      },
+      {
+        "title": "Buzdítások",
+        "description": "A válaszok egy tartományához megjelenő visszajelzés. Az első egyező tartományt használja a rendszer."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Podnet na sebareflexiu",
+    "description": "Požiadajte študenta, aby zhodnotil známku alebo náladu, a ponúknite mu podľa odpovede podnet na sebakorekciu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Typ vstupu",
+        "description": "Ako študent uvádza, ako sa mu darí. Oba používajú stupnicu od 0 do 4 (známka: F=0, D=1, C=2, B=3, A=4; nálada: veľmi zlá=0 až skvelá=4).",
+        "options": {
+          "grade": "Písmenová známka",
+          "mood": "Nálada"
+        }
+      },
+      {
+        "title": "Výzva",
+        "description": "Otázka pre študenta. Ak chcete použiť predvolenú hodnotu pre daný typ vstupu, nechajte prázdne."
+      },
+      {
+        "title": "Podnety",
+        "description": "Spätná väzba zobrazená pre rozsah odpovedí. Použije sa prvý zodpovedajúci rozsah."
+      }
+    ]
+  }
+}

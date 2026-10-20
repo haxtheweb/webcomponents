@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "侬上趟测验考了啥个成绩?",
+  "moodPrompt": "侬觉着自家最近哪能?",
+  "reviewLink": "复习迭个教材",
+  "grade": "成绩",
+  "moodVeryLow": "老低",
+  "moodLow": "低",
+  "moodOkay": "一般",
+  "moodGood": "好",
+  "moodGreat": "老好"
+}

@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Apakah markah anda dalam kuiz yang lepas?",
+  "moodPrompt": "Bagaimana pendapat anda tentang prestasi anda?",
+  "reviewLink": "Ulang kaji bahan ini",
+  "grade": "Gred",
+  "moodVeryLow": "Sangat rendah",
+  "moodLow": "Rendah",
+  "moodOkay": "Okey",
+  "moodGood": "Baik",
+  "moodGreat": "Hebat"
+}

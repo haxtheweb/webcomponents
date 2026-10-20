@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Kowe entuk apa ing kuis pungkasan?",
+  "moodPrompt": "Miturutmu, kowe lagi piye?",
+  "reviewLink": "Waca maneh materi iki",
+  "grade": "Nilai",
+  "moodVeryLow": "Banget kurang",
+  "moodLow": "Kurang",
+  "moodOkay": "Lumayan",
+  "moodGood": "Apik",
+  "moodGreat": "Apik banget"
+}

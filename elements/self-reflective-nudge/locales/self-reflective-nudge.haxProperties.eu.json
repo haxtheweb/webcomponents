@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Autoerreflexiorako bultzada",
+    "description": "Eskatu ikasleari bere nota edo aldartea hausnartzeko eta eskaini erantzunaren araberako autozuzenketarako bultzada bat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarreraren mota",
+        "description": "Ikasleak nola doakion adierazteko modua. Biek 0tik 4rako eskala erabiltzen dute (nota: F=0, D=1, C=2, B=3, A=4; aldartea: oso baxua=0 eta bikaina=4).",
+        "options": {
+          "grade": "Letra bidezko nota",
+          "mood": "Aldartea"
+        }
+      },
+      {
+        "title": "Galdera",
+        "description": "Ikasleari egiten zaion galdera. Utzi hutsik sarrera motaren lehenetsia erabiltzeko."
+      },
+      {
+        "title": "Bultzadak",
+        "description": "Erantzun-tarte baterako erakusten den iritzia. Bat datorren lehen tartea erabiltzen da."
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Munapeza zotani pa mayeso omaliza?",
+  "moodPrompt": "Mukuganiza kuti mukuchita bwanji?",
+  "reviewLink": "Bwerezani zinthu izi",
+  "grade": "Giredi",
+  "moodVeryLow": "Pansi kwambiri",
+  "moodLow": "Pansi",
+  "moodOkay": "Zili bwino",
+  "moodGood": "Chabwino",
+  "moodGreat": "Zabwino kwambiri"
+}

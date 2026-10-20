@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Paalala para sa sariling pagninilay",
+    "description": "Hilingin sa mag-aaral na magnilay sa kanyang marka o mood at magbigay ng paalalang nakatutulong sa sariling pagwawasto batay sa sagot."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Uri ng input",
+        "description": "Paano iniuulat ng mag-aaral ang kanyang lagay. Parehong gumagamit ng sukat na 0 hanggang 4 (marka: F=0, D=1, C=2, B=3, A=4; mood: napakababa=0 hanggang napakaganda=4).",
+        "options": {
+          "grade": "Markang titik",
+          "mood": "Mood"
+        }
+      },
+      {
+        "title": "Tanong",
+        "description": "Tanong para sa mag-aaral. Iwanang walang laman para gamitin ang default ng uri ng input."
+      },
+      {
+        "title": "Mga paalala",
+        "description": "Puna na ipinapakita para sa isang saklaw ng mga sagot. Ang unang tumutugmang saklaw ang ginagamit."
+      }
+    ]
+  }
+}

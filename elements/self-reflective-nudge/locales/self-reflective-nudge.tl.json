@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Ano ang nakuha mo sa huling pagsusulit?",
+  "moodPrompt": "Kumusta sa tingin mo ang takbo mo?",
+  "reviewLink": "Balikan ang materyal na ito",
+  "grade": "Marka",
+  "moodVeryLow": "Napakababa",
+  "moodLow": "Mababa",
+  "moodOkay": "Okay lang",
+  "moodGood": "Maganda",
+  "moodGreat": "Napakaganda"
+}

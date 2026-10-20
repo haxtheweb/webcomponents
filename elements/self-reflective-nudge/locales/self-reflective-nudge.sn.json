@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Wakawana sei pakuedzwa kwekupedzisira?",
+  "moodPrompt": "Unofunga kuti uri kuita sei?",
+  "reviewLink": "Dzokorora zvinhu izvi",
+  "grade": "Giredhi",
+  "moodVeryLow": "Pasi zvikuru",
+  "moodLow": "Pasi",
+  "moodOkay": "Zvakadaro",
+  "moodGood": "Zvakanaka",
+  "moodGreat": "Zvakanakisa"
+}

@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Kādu atzīmi tu ieguvi pēdējā testā?",
+  "moodPrompt": "Kā tu domā, kā tev iet?",
+  "reviewLink": "Pārskatīt šo materiālu",
+  "grade": "Atzīme",
+  "moodVeryLow": "Ļoti slikti",
+  "moodLow": "Slikti",
+  "moodOkay": "Normāli",
+  "moodGood": "Labi",
+  "moodGreat": "Lieliski"
+}

@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Quelle note as-tu obtenue au dernier quiz ?",
+  "moodPrompt": "Comment penses-tu t'en sortir ?",
+  "reviewLink": "Révise ce contenu",
+  "grade": "Note",
+  "moodVeryLow": "Très bas",
+  "moodLow": "Bas",
+  "moodOkay": "Moyen",
+  "moodGood": "Bien",
+  "moodGreat": "Excellent"
+}

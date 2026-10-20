@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Hişyariya xwe-nirxandinê",
+    "description": "Ji xwendekarekî bixwaze li ser nimre an hesta xwe bifikire û li gorî bersivê şîreteke xwe-rastkirinê pêşkêş bike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cureyê têketinê",
+        "description": "Xwendekar çawa rewşa xwe radigihîne. Her du jî pîvanek 0 heta 4 bi kar tînin (nimre: F=0, D=1, C=2, B=3, A=4; hest: gelek nizm=0 heta pir baş=4).",
+        "options": {
+          "grade": "Nimreya bi tîp",
+          "mood": "Hest"
+        }
+      },
+      {
+        "title": "Pirs",
+        "description": "Pirs ji bo xwendekar. Ji bo bikaranîna nirxa bingehîn a cureyê têketinê vala bihêle."
+      },
+      {
+        "title": "Şîret",
+        "description": "Bersiva ku ji bo navbereke bersivan tê nîşandan. Navbera yekem a lihevhatî tê bikaranîn."
+      }
+    ]
+  }
+}

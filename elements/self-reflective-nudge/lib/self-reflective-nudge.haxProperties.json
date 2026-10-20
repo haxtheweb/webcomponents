@@ -1,0 +1,104 @@
+{
+  "api": "1",
+  "canScale": false,
+  "canEditSource": true,
+  "type": "grid",
+  "designSystem": {
+    "accent": true,
+    "primary": true
+  },
+  "editMode": {
+    "editMode": true
+  },
+  "gizmo": {
+    "title": "Self-reflective nudge",
+    "description": "Ask a student to reflect on a grade or mood and offer a self-corrective nudge based on the answer.",
+    "icon": "hax:multiple-choice",
+    "color": "purple",
+    "tags": [
+      "Instructional",
+      "reflection",
+      "feedback",
+      "self check",
+      "grade",
+      "mood",
+      "nudge"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "input",
+        "title": "Input type",
+        "description": "How the student reports how they are doing. Both use a 0 to 4 scale (grade: F=0, D=1, C=2, B=3, A=4; mood: very low=0 to great=4).",
+        "inputMethod": "select",
+        "options": {
+          "grade": "Letter grade",
+          "mood": "Mood"
+        }
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt",
+        "description": "Question for the student. Leave empty to use the default for the input type.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "nudges",
+        "title": "Nudges",
+        "description": "Feedback shown for a range of responses. The first matching range is used.",
+        "inputMethod": "array",
+        "itemLabel": "nudge",
+        "hideReorder": false,
+        "expanded": false,
+        "properties": [
+          {
+            "property": "minValue",
+            "title": "Minimum value",
+            "description": "Lowest response (0 to 4) this nudge applies to. Leave empty for no lower limit.",
+            "inputMethod": "number"
+          },
+          {
+            "property": "maxValue",
+            "title": "Maximum value",
+            "description": "Highest response (0 to 4) this nudge applies to. Leave empty for no upper limit.",
+            "inputMethod": "number"
+          },
+          {
+            "property": "nudge",
+            "title": "Nudge",
+            "description": "Feedback or suggestion shown to the student.",
+            "inputMethod": "textarea",
+            "required": true
+          },
+          {
+            "property": "link",
+            "title": "Link",
+            "description": "Optional page to review, such as node/15 or a full URL.",
+            "inputMethod": "textfield"
+          }
+        ]
+      }
+    ],
+    "advanced": [],
+    "developer": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": ["nudges", "response", "t"]
+  },
+  "demoSchema": [
+    {
+      "tag": "self-reflective-nudge",
+      "properties": {
+        "input": "grade",
+        "prompt": "What did you get on the last quiz?"
+      },
+      "content": "<p data-nudge data-max-value=\"1\" data-link=\"node/15\">To improve, try focusing on the end of lesson interactive exercises. While not on the exam directly, they show how to answer when it comes time for the next examination.</p><p data-nudge data-min-value=\"2\">That's great! Keep engaging with the materials fully.</p>"
+    }
+  ]
+}

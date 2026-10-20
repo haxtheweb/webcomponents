@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Sjálfsmatshvatning",
+    "description": "Biddu nemanda að velta fyrir sér einkunn eða líðan og bjóddu upp á hvatningu til sjálfsbóta út frá svarinu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tegund inntaks",
+        "description": "Hvernig nemandinn greinir frá því hvernig honum gengur. Báðar nota kvarða frá 0 til 4 (einkunn: F=0, D=1, C=2, B=3, A=4; líðan: mjög slæmt=0 til frábært=4).",
+        "options": {
+          "grade": "Bókstafaeinkunn",
+          "mood": "Líðan"
+        }
+      },
+      {
+        "title": "Spurning",
+        "description": "Spurning til nemandans. Skildu eftir autt til að nota sjálfgefið gildi fyrir tegund inntaks."
+      },
+      {
+        "title": "Hvatningar",
+        "description": "Endurgjöf sem birtist fyrir bil svara. Fyrsta samsvarandi bilið er notað."
+      }
+    ]
+  }
+}

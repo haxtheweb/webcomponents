@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Özünüdüşündürücü yönləndirmə",
+    "description": "Tələbədən qiymət və ya əhval barədə düşünməyi xahiş edin və cavaba əsasən özünüdüzəldici yönləndirmə təklif edin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Daxiletmə növü",
+        "description": "Tələbənin işlərinin necə getdiyini bildirmə üsulu. Hər ikisi 0-dan 4-ə qədər şkaladan istifadə edir (qiymət: F=0, D=1, C=2, B=3, A=4; əhval: çox aşağı=0-dan əla=4-ə qədər).",
+        "options": {
+          "grade": "Hərfli qiymət",
+          "mood": "Əhval"
+        }
+      },
+      {
+        "title": "Sual",
+        "description": "Tələbə üçün sual. Daxiletmə növü üçün defolt dəyərdən istifadə etmək üçün boş buraxın."
+      },
+      {
+        "title": "Yönləndirmələr",
+        "description": "Bir sıra cavablar üçün göstərilən rəy. İlk uyğun gələn aralıq istifadə olunur."
+      }
+    ]
+  }
+}

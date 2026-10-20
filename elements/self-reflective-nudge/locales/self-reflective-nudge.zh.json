@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "你上次测验的成绩是什么?",
+  "moodPrompt": "你觉得自己目前状态如何?",
+  "reviewLink": "复习这部分内容",
+  "grade": "成绩",
+  "moodVeryLow": "非常低落",
+  "moodLow": "低落",
+  "moodOkay": "一般",
+  "moodGood": "良好",
+  "moodGreat": "很棒"
+}

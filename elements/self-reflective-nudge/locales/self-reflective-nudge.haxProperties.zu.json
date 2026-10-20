@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Isikhumbuzo sokuzibonela",
+    "description": "Cela umfundi acabange ngezinga noma isimo sakhe sengqondo, bese unikeza isikhumbuzo sokuzilungisa esisekelwe empendulweni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Uhlobo lokufaka",
+        "description": "Indlela umfundi abika ngayo ukuthi wenza kanjani. Kokubili kusebenzisa isikali esingu-0 kuya ku-4 (izinga: F=0, D=1, C=2, B=3, A=4; isimo sengqondo: phansi kakhulu=0 kuya kuhle kakhulu=4).",
+        "options": {
+          "grade": "Izinga elinohlamvu",
+          "mood": "Isimo sengqondo"
+        }
+      },
+      {
+        "title": "Umbuzo",
+        "description": "Umbuzo womfundi. Yiyeke ingenalutho ukuze kusetshenziswe okuzenzakalelayo kohlobo lokufaka."
+      },
+      {
+        "title": "Izikhumbuzo",
+        "description": "Impendulo eboniswa ebangeni lezimpendulo. Kusetshenziswa ibanga lokuqala elifanayo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Hvað fékkstu á síðasta prófi?",
+  "moodPrompt": "Hvernig heldurðu að þér gangi?",
+  "reviewLink": "Rifjaðu upp þetta efni",
+  "grade": "Einkunn",
+  "moodVeryLow": "Mjög slæmt",
+  "moodLow": "Slæmt",
+  "moodOkay": "Í lagi",
+  "moodGood": "Gott",
+  "moodGreat": "Frábært"
+}

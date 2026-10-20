@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Cad a fuair tú ar an tástáil dheireanach?",
+  "moodPrompt": "Cén chaoi a gceapann tú go bhfuil tú ag éirí leat?",
+  "reviewLink": "Déan athbhreithniú ar an ábhar seo",
+  "grade": "Grád",
+  "moodVeryLow": "An-íseal",
+  "moodLow": "Íseal",
+  "moodOkay": "Ceart go leor",
+  "moodGood": "Maith",
+  "moodGreat": "Togha"
+}

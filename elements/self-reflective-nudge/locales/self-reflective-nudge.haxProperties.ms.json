@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Dorongan refleksi kendiri",
+    "description": "Minta pelajar merenung gred atau emosi mereka dan berikan dorongan pembetulan kendiri berdasarkan jawapan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jenis input",
+        "description": "Cara pelajar melaporkan prestasi mereka. Kedua-duanya menggunakan skala 0 hingga 4 (gred: F=0, D=1, C=2, B=3, A=4; emosi: sangat rendah=0 hingga hebat=4).",
+        "options": {
+          "grade": "Gred huruf",
+          "mood": "Emosi"
+        }
+      },
+      {
+        "title": "Soalan",
+        "description": "Soalan untuk pelajar. Biarkan kosong untuk menggunakan nilai lalai bagi jenis input."
+      },
+      {
+        "title": "Dorongan",
+        "description": "Maklum balas yang dipaparkan untuk julat respons. Julat pertama yang sepadan digunakan."
+      }
+    ]
+  }
+}

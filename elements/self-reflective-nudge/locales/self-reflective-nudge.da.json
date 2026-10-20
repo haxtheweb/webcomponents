@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Hvad fik du til den sidste quiz?",
+  "moodPrompt": "Hvordan synes du, det går?",
+  "reviewLink": "Gennemgå dette materiale",
+  "grade": "Karakter",
+  "moodVeryLow": "Meget dårligt",
+  "moodLow": "Dårligt",
+  "moodOkay": "Okay",
+  "moodGood": "Godt",
+  "moodGreat": "Fantastisk"
+}

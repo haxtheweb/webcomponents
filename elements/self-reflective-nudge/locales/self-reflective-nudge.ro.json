@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Ce notă ai primit la ultimul test?",
+  "moodPrompt": "Cum crezi că te descurci?",
+  "reviewLink": "Recapitulează acest material",
+  "grade": "Notă",
+  "moodVeryLow": "Foarte slab",
+  "moodLow": "Slab",
+  "moodOkay": "Acceptabil",
+  "moodGood": "Bine",
+  "moodGreat": "Excelent"
+}

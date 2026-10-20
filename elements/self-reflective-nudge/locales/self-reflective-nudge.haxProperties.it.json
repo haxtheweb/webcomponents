@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Spunto di autoriflessione",
+    "description": "Chiedi allo studente di riflettere su un voto o su uno stato d'animo e offri uno spunto di autocorrezione in base alla risposta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tipo di input",
+        "description": "Come lo studente indica come sta andando. Entrambi usano una scala da 0 a 4 (voto: F=0, D=1, C=2, B=3, A=4; umore: molto basso=0 a ottimo=4).",
+        "options": {
+          "grade": "Voto in lettere",
+          "mood": "Umore"
+        }
+      },
+      {
+        "title": "Domanda",
+        "description": "Domanda per lo studente. Lascia vuoto per usare quella predefinita per il tipo di input."
+      },
+      {
+        "title": "Spunti",
+        "description": "Feedback mostrato per un intervallo di risposte. Viene usato il primo intervallo corrispondente."
+      }
+    ]
+  }
+}

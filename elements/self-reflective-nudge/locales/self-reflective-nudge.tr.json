@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Son sınavdan kaç aldın?",
+  "moodPrompt": "Sence nasıl gidiyorsun?",
+  "reviewLink": "Bu materyali gözden geçir",
+  "grade": "Not",
+  "moodVeryLow": "Çok düşük",
+  "moodLow": "Düşük",
+  "moodOkay": "İdare eder",
+  "moodGood": "İyi",
+  "moodGreat": "Harika"
+}

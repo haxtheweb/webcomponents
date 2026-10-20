@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Selvreflekterende skub",
+    "description": "Bed en studerende reflektere over en karakter eller et humør, og giv et selvkorrigerende skub ud fra svaret."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inputtype",
+        "description": "Hvordan den studerende angiver, hvordan det går. Begge bruger en skala fra 0 til 4 (karakter: F=0, D=1, C=2, B=3, A=4; humør: meget dårligt=0 til fantastisk=4).",
+        "options": {
+          "grade": "Bogstavkarakter",
+          "mood": "Humør"
+        }
+      },
+      {
+        "title": "Spørgsmål",
+        "description": "Spørgsmål til den studerende. Lad feltet stå tomt for at bruge standarden for inputtypen."
+      },
+      {
+        "title": "Skub",
+        "description": "Feedback, der vises for et interval af svar. Det første matchende interval bruges."
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Oxirgi testdan qanday baho oldingiz?",
+  "moodPrompt": "Sizningcha, ishlaringiz qanday ketyapti?",
+  "reviewLink": "Bu materialni takrorlang",
+  "grade": "Baho",
+  "moodVeryLow": "Juda past",
+  "moodLow": "Past",
+  "moodOkay": "Yomon emas",
+  "moodGood": "Yaxshi",
+  "moodGreat": "Ajoyib"
+}

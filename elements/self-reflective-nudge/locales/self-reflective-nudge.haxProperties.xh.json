@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Isikhumbuzo sokuziqwalasela",
+    "description": "Cela umfundi acinge ngebakala okanye imvakalelo yakhe, kwaye unike isikhumbuzo sokuzilungisa esisekelwe kuphendulo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Uhlobo lokufaka",
+        "description": "Indlela umfundi axela ngayo ukuba wenza njani. Zombini zisebenzisa isikali esingu-0 ukuya ku-4 (ibakala: F=0, D=1, C=2, B=3, A=4; imvakalelo: phantsi kakhulu=0 ukuya kuhle kakhulu=4).",
+        "options": {
+          "grade": "Ibakala leleta",
+          "mood": "Imvakalelo"
+        }
+      },
+      {
+        "title": "Umbuzo",
+        "description": "Umbuzo kumfundi. Shiya engenanto ukusebenzisa oqhelekileyo woluhlobo lokufaka."
+      },
+      {
+        "title": "Izikhumbuzo",
+        "description": "Impendulo ebonisiweyo kuluhlu lweempendulo. Kusetyenziswa uluhlu lokuqala olufanayo."
+      }
+    ]
+  }
+}

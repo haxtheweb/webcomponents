@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "前回のクイズの結果はどうでしたか？",
+  "moodPrompt": "自分の調子はどうだと思いますか？",
+  "reviewLink": "この教材を復習する",
+  "grade": "成績",
+  "moodVeryLow": "とても低い",
+  "moodLow": "低い",
+  "moodOkay": "まあまあ",
+  "moodGood": "良い",
+  "moodGreat": "とても良い"
+}

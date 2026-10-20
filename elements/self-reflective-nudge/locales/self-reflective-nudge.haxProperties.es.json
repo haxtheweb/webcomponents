@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Empujón de autorreflexión",
+    "description": "Pide a un estudiante que reflexione sobre su nota o estado de ánimo y ofrece un empujón de autocorrección según la respuesta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tipo de entrada",
+        "description": "Cómo indica el estudiante cómo le va. Ambos usan una escala de 0 a 4 (nota: F=0, D=1, C=2, B=3, A=4; estado de ánimo: muy bajo=0 a excelente=4).",
+        "options": {
+          "grade": "Nota con letra",
+          "mood": "Estado de ánimo"
+        }
+      },
+      {
+        "title": "Pregunta",
+        "description": "Pregunta para el estudiante. Déjalo vacío para usar el valor predeterminado del tipo de entrada."
+      },
+      {
+        "title": "Empujones",
+        "description": "Comentarios que se muestran para un rango de respuestas. Se usa el primer rango que coincida."
+      }
+    ]
+  }
+}

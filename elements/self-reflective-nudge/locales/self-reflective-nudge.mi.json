@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "He aha tō tohu i te whakamātautau whakamutunga?",
+  "moodPrompt": "Ki tōu whakaaro, kei te pēhea koe?",
+  "reviewLink": "Arotake anō i ēnei rauemi",
+  "grade": "Tohu",
+  "moodVeryLow": "Tino iti",
+  "moodLow": "Iti",
+  "moodOkay": "Pai noa",
+  "moodGood": "Pai",
+  "moodGreat": "Tino pai"
+}

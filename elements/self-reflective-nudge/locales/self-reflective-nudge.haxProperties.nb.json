@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Selvreflekterende dytt",
+    "description": "Be en student reflektere over en karakter eller et humør, og gi et selvkorrigerende dytt basert på svaret."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inndatatype",
+        "description": "Hvordan studenten melder fra om hvordan det går. Begge bruker en skala fra 0 til 4 (karakter: F=0, D=1, C=2, B=3, A=4; humør: svært lavt=0 til veldig bra=4).",
+        "options": {
+          "grade": "Bokstavkarakter",
+          "mood": "Humør"
+        }
+      },
+      {
+        "title": "Spørsmål",
+        "description": "Spørsmål til studenten. La feltet stå tomt for å bruke standarden for inndatatypen."
+      },
+      {
+        "title": "Dytt",
+        "description": "Tilbakemelding som vises for et område av svar. Det første samsvarende området brukes."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Pašrefleksijas mudinājums",
+    "description": "Lūdziet izglītojamajam apdomāt atzīmi vai garastāvokli un piedāvājiet paškorekcijas mudinājumu atbilstoši atbildei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ievades veids",
+        "description": "Kā izglītojamais norāda, kā viņam iet. Abos gadījumos tiek izmantota skala no 0 līdz 4 (atzīme: F=0, D=1, C=2, B=3, A=4; garastāvoklis: ļoti slikti=0 līdz lieliski=4).",
+        "options": {
+          "grade": "Burtu atzīme",
+          "mood": "Garastāvoklis"
+        }
+      },
+      {
+        "title": "Jautājums",
+        "description": "Jautājums izglītojamajam. Atstājiet tukšu, lai izmantotu ievades veida noklusējumu."
+      },
+      {
+        "title": "Mudinājumi",
+        "description": "Atsauksme, kas tiek rādīta atbilžu diapazonam. Tiek izmantots pirmais atbilstošais diapazons."
+      }
+    ]
+  }
+}

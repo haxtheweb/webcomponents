@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Spinta d'autoriflessione",
+    "description": "Dumanda à un studiente di riflettere nantu à un votu o un umore è prupone una spinta d'autocorrezzione secondu a risposta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tipu d'intrata",
+        "description": "Cumu u studiente dice cumu si trova. Tutti dui impieganu una scala da 0 à 4 (votu: F=0, D=1, C=2, B=3, A=4; umore: bassu assai=0 à eccellente=4).",
+        "options": {
+          "grade": "Votu in lettere",
+          "mood": "Umore"
+        }
+      },
+      {
+        "title": "Dumanda",
+        "description": "Dumanda per u studiente. Lascia vòta per aduprà quella predefinita di u tipu d'intrata."
+      },
+      {
+        "title": "Spinte",
+        "description": "Cummenti mostri per una gamma di risposte. Hè adupratu u primu intervallu currispundente."
+      }
+    ]
+  }
+}

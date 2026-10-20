@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Selbstreflexions-Impuls",
+    "description": "Fordert Lernende auf, über eine Note oder ihre Stimmung nachzudenken, und gibt je nach Antwort einen Impuls zur Selbstkorrektur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Eingabeart",
+        "description": "Wie Lernende angeben, wie es für sie läuft. Beide verwenden eine Skala von 0 bis 4 (Note: F=0, D=1, C=2, B=3, A=4; Stimmung: sehr schlecht=0 bis großartig=4).",
+        "options": {
+          "grade": "Buchstabennote",
+          "mood": "Stimmung"
+        }
+      },
+      {
+        "title": "Frage",
+        "description": "Frage an die Lernenden. Leer lassen, um den Standard für die Eingabeart zu verwenden."
+      },
+      {
+        "title": "Impulse",
+        "description": "Rückmeldung, die für einen Bereich von Antworten angezeigt wird. Es wird der erste passende Bereich verwendet."
+      }
+    ]
+  }
+}

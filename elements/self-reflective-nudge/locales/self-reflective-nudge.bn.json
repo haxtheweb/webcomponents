@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "শেষ কুইজে তুমি কত পেয়েছ?",
+  "moodPrompt": "তোমার কেমন চলছে বলে মনে হয়?",
+  "reviewLink": "এই বিষয়বস্তু আবার দেখো",
+  "grade": "গ্রেড",
+  "moodVeryLow": "খুব খারাপ",
+  "moodLow": "খারাপ",
+  "moodOkay": "মোটামুটি",
+  "moodGood": "ভালো",
+  "moodGreat": "দারুণ"
+}

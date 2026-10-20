@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Spodbuda za samorefleksijo",
+    "description": "Prosite učenca, naj razmisli o oceni ali počutju, in mu glede na odgovor ponudite spodbudo za samopopravek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vrsta vnosa",
+        "description": "Kako učenec sporoči, kako mu gre. Oba uporabljata lestvico od 0 do 4 (ocena: F=0, D=1, C=2, B=3, A=4; počutje: zelo slabo=0 do odlično=4).",
+        "options": {
+          "grade": "Črkovna ocena",
+          "mood": "Počutje"
+        }
+      },
+      {
+        "title": "Vprašanje",
+        "description": "Vprašanje za učenca. Pustite prazno za privzeto vrednost glede na vrsto vnosa."
+      },
+      {
+        "title": "Spodbude",
+        "description": "Povratna informacija, prikazana za razpon odgovorov. Uporabljen je prvi ustrezen razpon."
+      }
+    ]
+  }
+}

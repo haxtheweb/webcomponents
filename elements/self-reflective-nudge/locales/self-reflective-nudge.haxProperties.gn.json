@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Mbopu'ã ñandejehe jepy'amongeta",
+    "description": "Ejerure temimbo'e ojepy'amongeta peteĩ nota térã py'a rehe ha ome'ẽ peteĩ mbopu'ã ojemoĩporã haguã pe mbohováipe he'ívare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mba'e ñemoĩ",
+        "description": "Mba'éichapa temimbo'e he'i oĩ haguã. Mokõivévape oiporu 0 guive 4 peve (nota: F=0, D=1, C=2, B=3, A=4; py'a: michĩetereí=0 guive porãiterei=4).",
+        "options": {
+          "grade": "Nota letra reheve",
+          "mood": "Py'a"
+        }
+      },
+      {
+        "title": "Porandu",
+        "description": "Porandu temimbo'e pe guarã. Eheja nandi eipuru hag̃ua pe ojepuru tapiaite."
+      },
+      {
+        "title": "Mbopu'ã",
+        "description": "Ñemoñe'ẽ ojehechauka heta ñembohovái rehe. Ojepuru pe tenondegua ojuehegua."
+      }
+    ]
+  }
+}

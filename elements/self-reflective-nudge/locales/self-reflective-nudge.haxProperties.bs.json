@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Samorefleksivni podsticaj",
+    "description": "Zamolite učenika da razmisli o svojoj ocjeni ili raspoloženju i ponudite samokorektivni podsticaj na osnovu odgovora."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vrsta unosa",
+        "description": "Kako učenik izvještava kako mu ide. Oba koriste skalu od 0 do 4 (ocjena: F=0, D=1, C=2, B=3, A=4; raspoloženje: vrlo nisko=0 do odlično=4).",
+        "options": {
+          "grade": "Slovna ocjena",
+          "mood": "Raspoloženje"
+        }
+      },
+      {
+        "title": "Pitanje",
+        "description": "Pitanje za učenika. Ostavite prazno da se koristi zadana vrijednost za vrstu unosa."
+      },
+      {
+        "title": "Podsticaji",
+        "description": "Povratna informacija prikazana za raspon odgovora. Koristi se prvi odgovarajući raspon."
+      }
+    ]
+  }
+}

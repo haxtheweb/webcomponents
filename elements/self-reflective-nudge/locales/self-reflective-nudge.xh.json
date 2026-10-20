@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Ufumene mangaphi kuvavanyo lokugqibela?",
+  "moodPrompt": "Ucinga ukuba wenza njani?",
+  "reviewLink": "Phonononga le nto ifundwayo",
+  "grade": "Ibakala",
+  "moodVeryLow": "Phantsi kakhulu",
+  "moodLow": "Phantsi",
+  "moodOkay": "Kulungile",
+  "moodGood": "Kuhle",
+  "moodGreat": "Kuhle kakhulu"
+}

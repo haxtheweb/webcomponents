@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Sjálvhugsandi tøkk",
+    "description": "Bið ein næmingin hugsa um sín karakter ella sítt lyndi og bjóða eitt sjálvrættandi tøkk grundað á svarinum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Slag av inntaki",
+        "description": "Hvussu næmingurin sigur frá, hvussu tað gongur. Bæði nýta eina skala frá 0 til 4 (karakter: F=0, D=1, C=2, B=3, A=4; lyndi: sera lágt=0 til frálíkt=4).",
+        "options": {
+          "grade": "Bókstavakarakter",
+          "mood": "Lyndi"
+        }
+      },
+      {
+        "title": "Spurningur",
+        "description": "Spurningur til næmingin. Lat standa tómt fyri at brúka ásetta virðið fyri slagið av inntaki."
+      },
+      {
+        "title": "Tøkk",
+        "description": "Afturmelding, sum verður víst fyri eitt øki av svarum. Fyrsta økið, sum svarar til, verður brúkt."
+      }
+    ]
+  }
+}

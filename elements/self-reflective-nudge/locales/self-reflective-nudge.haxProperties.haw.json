@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Hoʻoikaika noʻonoʻo iā ia iho",
+    "description": "E noi i ka haumāna e noʻonoʻo i kekahi māka a kūlana naʻau a hāʻawi i kahi hoʻoikaika hoʻoponopono iā ia iho ma muli o ka pane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ʻAno hoʻokomo",
+        "description": "Pehea ka haumāna e hōʻike ai i kāna hana ʻana. Hoʻohana ʻia ka unahi 0 a 4 e nā mea ʻelua (māka: F=0, D=1, C=2, B=3, A=4; kūlana naʻau: haʻahaʻa loa=0 a maikaʻi loa=4).",
+        "options": {
+          "grade": "Māka leka",
+          "mood": "Kūlana naʻau"
+        }
+      },
+      {
+        "title": "Nīnau",
+        "description": "Nīnau na ka haumāna. E waiho i ka hakahaka e hoʻohana i ka mea paʻamau no ke ʻano hoʻokomo."
+      },
+      {
+        "title": "Hoʻoikaika",
+        "description": "Manaʻo i hōʻike ʻia no kekahi pae pane. Hoʻohana ʻia ka pae mua e kūlike ana."
+      }
+    ]
+  }
+}

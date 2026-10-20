@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "ما الدرجة التي حصلت عليها في الاختبار الأخير؟",
+  "moodPrompt": "كيف تقيّم أداءك حاليًا؟",
+  "reviewLink": "راجع هذه المادة",
+  "grade": "الدرجة",
+  "moodVeryLow": "منخفض جدًا",
+  "moodLow": "منخفض",
+  "moodOkay": "مقبول",
+  "moodGood": "جيد",
+  "moodGreat": "ممتاز"
+}

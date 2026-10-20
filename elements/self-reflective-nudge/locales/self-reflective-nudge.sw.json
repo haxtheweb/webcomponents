@@ -1,0 +1,11 @@
+{
+  "gradePrompt": "Ulipata alama ngapi kwenye jaribio la mwisho?",
+  "moodPrompt": "Unafikiri unaendeleaje?",
+  "reviewLink": "Pitia nyenzo hii",
+  "grade": "Daraja",
+  "moodVeryLow": "Chini sana",
+  "moodLow": "Chini",
+  "moodOkay": "Sawa",
+  "moodGood": "Nzuri",
+  "moodGreat": "Bora kabisa"
+}

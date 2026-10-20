@@ -1,0 +1,26 @@
+{
+  "gizmo": {
+    "title": "Memrefleksa puŝeto",
+    "description": "Petu lernanton pripensi poenton aŭ humoron kaj proponu memkorektan puŝeton surbaze de la respondo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Enigtipo",
+        "description": "Kiel la lernanto raportas, kiel li progresas. Ambaŭ uzas skalon de 0 ĝis 4 (poento: F=0, D=1, C=2, B=3, A=4; humoro: tre malalta=0 ĝis bonega=4).",
+        "options": {
+          "grade": "Litera poento",
+          "mood": "Humoro"
+        }
+      },
+      {
+        "title": "Demando",
+        "description": "Demando por la lernanto. Lasu malplena por uzi la defaŭlton de la enigtipo."
+      },
+      {
+        "title": "Puŝetoj",
+        "description": "Religo montrata por gamo de respondoj. La unua kongrua gamo estas uzata."
+      }
+    ]
+  }
+}
