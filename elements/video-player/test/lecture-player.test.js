@@ -33,19 +33,13 @@ describe('lecture-player registration', () => {
   })
 })
 
-describe('lecture-player constructor bug', () => {
-  it('throws because querySelector returns null during construction', () => {
-    // BUG: constructor calls this.querySelector("video-player").outerHTML
-    // but children are not available during construction, so this always
-    // throws TypeError: Cannot read properties of null (reading 'outerHTML')
-    let threw = false
-    try {
-      // eslint-disable-next-line no-new
-      new LecturePlayer()
-    } catch (e) {
-      threw = true
-    }
-    expect(threw).to.equal(true)
+describe('lecture-player constructor', () => {
+  it('constructs without an embedded video-player', () => {
+    // the constructor used to call this.querySelector("video-player").outerHTML,
+    // which throws because children are not available during construction
+    // (and SSR has no querySelector at all); it now falls back to empty
+    const instance = new LecturePlayer()
+    expect(instance.videoPlayer).to.equal('')
   })
 })
 
