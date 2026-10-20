@@ -23,6 +23,7 @@ import "./lib/v2/app-hax-use-case-filter.js";
 import "./lib/v2/app-hax-search-results.js";
 import "./lib/v2/app-hax-scroll-button.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu.js";
+import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 
 // toggle store darkmode
 function darkToggle(e) {
@@ -1806,11 +1807,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (typeof segment !== "string") {
       return null;
     }
-    const normalized = segment
-      .trim()
-      .toLowerCase()
-      .replace(/^\/+/, "")
-      .replace(/\/+$/, "");
+    const normalized = trimSlashes(segment.trim().toLowerCase());
     if (normalized === "") {
       return "dashboard";
     }
@@ -1988,7 +1985,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (!normalized) {
       return null;
     }
-    normalized = normalized.replace(/^\/+/, "").replace(/\/+$/, "");
+    normalized = trimSlashes(normalized);
     if (normalized === "admin") {
       return "admin";
     }

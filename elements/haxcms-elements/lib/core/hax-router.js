@@ -3,6 +3,7 @@
  * Lightweight router replacement for router
  * Implements only the API surface used by HAXcms and app-hax.
  */
+import { trimTrailingSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 export class HaxRouter {
   constructor(outlet, options = {}) {
     this.outlet = outlet;
@@ -28,7 +29,7 @@ export class HaxRouter {
         const baseHref = baseElement.getAttribute("href");
         if (baseHref) {
           const url = new URL(baseHref, globalThis.document.URL);
-          return url.pathname.replace(/[^/]*$/, "");
+          return url.pathname.slice(0, url.pathname.lastIndexOf("/") + 1);
         }
       }
     }
@@ -164,7 +165,7 @@ export class HaxRouter {
   _normalizeStaticPathname(pathname) {
     let normalized = pathname.replace(/\/index\.html?$/i, "/");
     if (normalized.length > 1 && normalized.endsWith("/")) {
-      normalized = normalized.replace(/\/+$/, "");
+      normalized = trimTrailingSlashes(normalized);
     }
     return normalized === "" ? "/" : normalized;
   }
@@ -201,7 +202,7 @@ export class HaxRouter {
       // index.html / index.php routes keep their existing precedence.
       const exactRoutePath =
         normalizedRoutePath.length > 1
-          ? normalizedRoutePath.replace(/\/+$/, "")
+          ? trimTrailingSlashes(normalizedRoutePath)
           : normalizedRoutePath;
       if (exactRoutePath === pathname) {
         return { route, params: [] };

@@ -10,6 +10,7 @@ import "./app-hax-search-results.js";
 import "./app-hax-filter-tag.js";
 import "./app-hax-scroll-button.js";
 import "./app-hax-site-creation-modal.js";
+import { trimChars } from "@haxtheweb/utils/lib/safe-html.js";
 
 export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
   static get tag() {
@@ -834,7 +835,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     name = name.replace(/[\s_]+/g, "-");
     name = name.replace(/[^a-z0-9-]/g, "-");
     name = name.replace(/-+/g, "-");
-    name = name.replace(/^-+/, "").replace(/-+$/, "");
+    name = trimChars(name, "-");
     return name;
   }
 
@@ -850,7 +851,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       name = name.replace(/-site$/, "");
     }
     name = name.replace(/-+/g, "-");
-    name = name.replace(/^-+/, "").replace(/-+$/, "");
+    name = trimChars(name, "-");
     return name;
   }
 
