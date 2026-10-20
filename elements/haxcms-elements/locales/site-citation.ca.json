@@ -1,0 +1,8 @@
+{
+  "cite": "Cita això",
+  "citationFormat": "Format de la citació",
+  "copy": "Copia la citació",
+  "copied": "Citació copiada al porta-retalls",
+  "copyFailed": "No s'ha pogut copiar. Seleccioneu el text de la citació i copieu-lo manualment.",
+  "noData": "Encara no hi ha informació de citació disponible."
+}

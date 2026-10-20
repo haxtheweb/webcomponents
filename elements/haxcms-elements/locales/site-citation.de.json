@@ -1,0 +1,8 @@
+{
+  "cite": "Dies zitieren",
+  "citationFormat": "Zitierformat",
+  "copy": "Zitat kopieren",
+  "copied": "Zitat in die Zwischenablage kopiert",
+  "copyFailed": "Kopieren nicht möglich. Markieren Sie den Zitattext und kopieren Sie ihn manuell.",
+  "noData": "Es sind noch keine Zitierinformationen verfügbar."
+}

@@ -1,0 +1,8 @@
+{
+  "cite": "Citer ceci",
+  "citationFormat": "Format de citation",
+  "copy": "Copier la citation",
+  "copied": "Citation copiée dans le presse-papiers",
+  "copyFailed": "Copie impossible. Sélectionnez le texte de la citation et copiez-le manuellement.",
+  "noData": "Aucune information de citation n'est encore disponible."
+}
