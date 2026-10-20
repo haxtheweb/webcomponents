@@ -29,7 +29,7 @@ function toPathname(urlOrPath = "") {
     try {
       const parsed = new URL(normalizedInput);
       return normalizePath(parsed.pathname || "/");
-    } catch (e) {
+    } catch {
       return normalizePath(normalizedInput);
     }
   }
@@ -83,7 +83,7 @@ export function resolveSiteApiBasePath() {
     try {
       const apiUrl = new URL("x/api", baseHref);
       return normalizePath(apiUrl.pathname || "/x/api");
-    } catch (e) {}
+    } catch {}
   }
   return "/x/api";
 }

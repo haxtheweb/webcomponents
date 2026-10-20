@@ -359,11 +359,11 @@ class SiteTopMenu extends I18NMixin(LitElement) {
   humanIndex(index) {
     return index + 1;
   }
-  toggleOpen(e) {
+  toggleOpen(_e) {
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
   manageOpen(state) {
-    var wrapper = this.shadowRoot.querySelector("#wrapper");
+    let wrapper = this.shadowRoot.querySelector("#wrapper");
     if (!state) {
       wrapper.classList.remove("responsive");
     } else {
@@ -441,7 +441,7 @@ class SiteTopMenu extends I18NMixin(LitElement) {
       .querySelector("#menu")
       .addEventListener("click", this.toggleOpen.bind(this));
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -452,7 +452,7 @@ class SiteTopMenu extends I18NMixin(LitElement) {
     // needed if routes set on first paint or lifecycles miss
     setTimeout(() => {
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           this.activeId = toJS(store.activeId);
         }),
       );
@@ -470,7 +470,7 @@ class SiteTopMenu extends I18NMixin(LitElement) {
   }
   disconnectedCallback() {
     // clean up state
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

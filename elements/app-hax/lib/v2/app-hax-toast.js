@@ -237,7 +237,7 @@ export class AppHaxToast extends RPGCharacterToast {
     );
   }
 
-  hideSimpleToast(e) {
+  hideSimpleToast(_e) {
     this.hide();
   }
 

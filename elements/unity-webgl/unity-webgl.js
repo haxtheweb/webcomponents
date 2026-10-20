@@ -75,7 +75,7 @@ class UnityWebgl extends HTMLElement {
       globalThis.ShadyCSS.prepareTemplate(this.template, this.constructor.tag);
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-    var script = globalThis.document.createElement("script");
+    let script = globalThis.document.createElement("script");
     script.onload = () => {
       // do stuff with the script
       createUnityInstance(this.shadowRoot.querySelector("canvas"), {

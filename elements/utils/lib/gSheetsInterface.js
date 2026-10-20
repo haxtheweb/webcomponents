@@ -21,7 +21,7 @@ export class gSheetInterface {
   /**
    * generate appstore query
    */
-  async loadCSVData(source, sheet) {
+  async loadCSVData(source, _sheet) {
     return await fetch(source, {
       method: this.method,
     })

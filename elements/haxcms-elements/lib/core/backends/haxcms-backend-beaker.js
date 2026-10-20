@@ -74,7 +74,7 @@ class HAXCMSBackendBeaker extends I18NMixin(LitElement) {
     this.__disposer = [];
     // set up a tag to place RIGHT next to the site-builder itself
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.jwt);
         Promise.resolve().then(() => {
           this.jwt = _mobx_val_0;
@@ -858,7 +858,7 @@ class HAXCMSBackendBeaker extends I18NMixin(LitElement) {
    * Detached life cycle
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -876,10 +876,10 @@ class HAXCMSBackendBeaker extends I18NMixin(LitElement) {
     super.connectedCallback();
     let beaker = this.shadowRoot.querySelector("#beaker");
     this.jwt = beaker.archive.url;
-    var info = await beaker.archive.getInfo();
+    let info = await beaker.archive.getInfo();
     // test that we have a url (we'll call it jwt for now) and that we own the site
-    if (this.jwt != null && typeof this.jwt == "string" && info.isOwner) {
-      var appstore = JSON.parse(await beaker.read("appstore.json"));
+    if (this.jwt != null && typeof this.jwt === "string" && info.isOwner) {
+      let appstore = JSON.parse(await beaker.read("appstore.json"));
 
       // Check if we're in view-only mode - if so, don't import editor
       const viewOnlyMode = UserScaffoldInstance.readMemory("ViewOnlyMode");
@@ -892,16 +892,16 @@ class HAXCMSBackendBeaker extends I18NMixin(LitElement) {
           import(
           "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
         ).then(
-          (e) => {
+          (_e) => {
             store.cmsSiteEditorAvailability();
             store.cmsSiteEditor.instance.jwt = this.jwt;
             store.cmsSiteEditor.instance.appStore = appstore;
           },
-          (e) => {
+          (_e) => {
             //import failed
           }
         );
-        } catch (err) {
+        } catch {
           // error in the event this is a double registration
         }
       }

@@ -149,7 +149,7 @@ class ScrollButton extends LitElement {
   /**
    * life cycle, element is afixed to the DOM
    */
-  scrollEvent(e) {
+  scrollEvent(_e) {
     if (this.target) {
       this.target.scrollIntoView({
         behavior: "smooth",

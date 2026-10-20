@@ -141,7 +141,7 @@ class DocumentationPlayer extends I18NMixin(LitElement) {
       >
     `;
   }
-  _injectHAX(e) {
+  _injectHAX(_e) {
     globalThis.dispatchEvent(
       new CustomEvent("hax-insert", {
         detail: {

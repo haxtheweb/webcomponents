@@ -78,7 +78,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
     });
     try {
       this.basePath = globalThis.document.querySelector("base").href;
-    } catch (e) {
+    } catch {
       this.basePath = globalThis.location.origin;
     }
 
@@ -90,7 +90,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
     };
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0;
@@ -117,7 +117,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           this.activeItem = _mobx_val_0;
@@ -125,7 +125,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.ancestorItem);
         Promise.resolve().then(() => {
           this.ancestorItem = _mobx_val_0;
@@ -133,7 +133,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.location);
         Promise.resolve().then(() => {
           let location = _mobx_val_0;
@@ -143,7 +143,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
     );
     // gets current a total page count
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.pageCounter);
         Promise.resolve().then(() => {
           const counter = _mobx_val_0;
@@ -824,7 +824,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
   }
 
 
-  togglePalette(e) {
+  togglePalette(_e) {
     this.dataPalette++;
     if (this.dataPalette > 11) this.dataPalette = 0;
   }
@@ -866,7 +866,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       <a tabindex="-1" href="${this.basePath}" class="top article-link-icon"><simple-icon-button-lite id="top" title="${this.t.home}" label="${this.t.home}" icon="${this.manifest.metadata.icon ? this.manifest.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
       ${
         this.location && this.location.route.name !== "home"
-          ? html` ${this._items.map((item, index) => {
+          ? html` ${this._items.map((item, _index) => {
               return html`
                 <simple-tooltip for="top-${item.id}" position="bottom"
                   >${item.title}</simple-tooltip

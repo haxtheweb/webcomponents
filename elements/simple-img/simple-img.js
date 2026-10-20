@@ -147,7 +147,7 @@ export class SimpleImg extends HTMLElement {
   }
 
   // rerender when we get hits on these important aspects
-  attributeChangedCallback(attr, oldValue, newValue) {
+  attributeChangedCallback(attr, _oldValue, _newValue) {
     if (
       [
         "width",

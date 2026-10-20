@@ -387,7 +387,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   _dragStart(e) {
     // create the tag
     let schema = HAXStore.haxSchemaFromTag(e.target.eventData);
-    var target;
+    let target;
     if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
       target = haxElementToNode(schema.demoSchema[0]);
     } else {

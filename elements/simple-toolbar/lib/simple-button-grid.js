@@ -109,7 +109,7 @@ const SimpleButtonGridBehaviors = function (SuperClass) {
 
     get gridStyles() {
       let styles = [];
-      if (!!this.columns)
+      if (this.columns)
         styles.push(`--simple-button-grid-cols:${100 / this.columns}%`);
       return styles.join(";");
     }

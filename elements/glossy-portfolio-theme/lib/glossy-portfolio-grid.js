@@ -41,7 +41,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     
     // get children, related content, or prev and next pages
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           const activeItem = _mobx_val_0;
@@ -306,7 +306,7 @@ ${this.data.length > 0 ?   html`
 
   disconnectedCallback() {
     // dispose the store reaction so a detached grid stops reacting
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

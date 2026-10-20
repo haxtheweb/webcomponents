@@ -215,7 +215,7 @@ export class UserScaffold extends HTMLElement {
     if (e.isTrusted) {
       if (e.dataTransfer.items) {
         // Use DataTransferItemList interface to access the file(s)
-        [...e.dataTransfer.items].forEach((item, i) => {
+        [...e.dataTransfer.items].forEach((item, _i) => {
           // If dropped items aren't files, reject them
           if (item.kind === "file") {
             let file = item.getAsFile();
@@ -236,7 +236,7 @@ export class UserScaffold extends HTMLElement {
         // Use DataTransfer interface to access the file(s)
         // this branch only runs when e.dataTransfer.items is absent,
         // so describe the drop from the file itself
-        [...e.dataTransfer.files].forEach((file, i) => {
+        [...e.dataTransfer.files].forEach((file, _i) => {
           this.action = {
             type: "drop",
             architype: "input",
@@ -336,7 +336,7 @@ export class UserScaffold extends HTMLElement {
   isBase64(str) {
     try {
       return btoa(atob(str)) == str;
-    } catch (err) {
+    } catch {
       return false;
     }
   }

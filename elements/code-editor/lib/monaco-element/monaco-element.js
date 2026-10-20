@@ -205,7 +205,7 @@ class MonacoElement extends I18NMixin(LitElement) {
       const div = globalThis.document.createElement("div");
       div.id = "container";
       this.document.body.appendChild(div);
-      var iframeScript = `
+      let iframeScript = `
   var eventTypes = {
     ready: 'ready',
     focus: 'focus',
@@ -451,7 +451,7 @@ class MonacoElement extends I18NMixin(LitElement) {
   }
 
   insertScriptElement({ src, text, onload }) {
-    var ele = this.document.createElement("script");
+    let ele = this.document.createElement("script");
     if (src) ele.src = src;
     if (text) ele.text = text;
     if (onload) ele.onload = onload;
@@ -466,7 +466,7 @@ class MonacoElement extends I18NMixin(LitElement) {
     // No-op when the meta is absent (static-published sites or local dev with
     // CSP disabled), preserving prior behavior.
     if (text && !src) {
-      var nonceMeta = globalThis.document.querySelector(
+      let nonceMeta = globalThis.document.querySelector(
         'meta[name="csp-nonce"]',
       );
       if (nonceMeta && nonceMeta.content) {
@@ -477,7 +477,7 @@ class MonacoElement extends I18NMixin(LitElement) {
   }
 
   insertStyle() {
-    var css = `
+    let css = `
     body {
       height: 100vh;
       overflow: hidden;

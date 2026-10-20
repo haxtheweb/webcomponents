@@ -461,7 +461,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       };
     }
     checkUserStylesMenuOpen(e) {
-      var target = normalizeEventPath(e);
+      let target = normalizeEventPath(e);
       const localTarget = target && target[0] ? target[0] : null;
       const isButtonTarget =
         localTarget && localTarget.tagName && localTarget.tagName === "BUTTON";
@@ -501,7 +501,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       this.shadowRoot.querySelector("#haxcmsuserstylesmenu").target =
         this.toggleUserStylesMenuTarget;
     }
-    toggleUserStylesMenu(e) {
+    toggleUserStylesMenu(_e) {
       this.hideUserStylesMenu = !this.hideUserStylesMenu;
     }
     _eventPathButtonTarget(e) {
@@ -517,13 +517,13 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       }
       return null;
     }
-    UserStylesSizeDown(e) {
+    UserStylesSizeDown(_e) {
       if (this.fontSize > 0) {
         this.fontSize = this.fontSize - 1;
         localStorageSet("haxcms-bootstrap-userPref-fontSize", this.fontSize);
       }
     }
-    UserStylesSizeUp(e) {
+    UserStylesSizeUp(_e) {
       if (this.fontSize < 4) {
         this.fontSize = this.fontSize + 1;
         localStorageSet("haxcms-bootstrap-userPref-fontSize", this.fontSize);

@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement } from "lit";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
 import "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
@@ -194,7 +194,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * @memberof RichTextEditorPrompt
      */
     getPropValue(prop) {
-      let val = !!this.value ? { ...this.value } : false,
+      let val = this.value ? { ...this.value } : false,
         rawVal =
           !val || !val[prop]
             ? false
@@ -262,7 +262,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       // inside the highlight for link creation/removal and underline.
       if (isWebKit() && !this.__highlight.hidden) {
         if (command === "createLink" && commandVal) {
-          var a = globalThis.document.createElement("a");
+          let a = globalThis.document.createElement("a");
           a.href = commandVal;
           while (this.__highlight.firstChild) {
             a.appendChild(this.__highlight.firstChild);
@@ -270,7 +270,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           this.__highlight.appendChild(a);
           return;
         } else if (command === "unlink") {
-          var link = this.__highlight.querySelector("a");
+          let link = this.__highlight.querySelector("a");
           if (link) {
             while (link.firstChild) {
               link.parentNode.insertBefore(link.firstChild, link);
@@ -279,7 +279,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           }
           return;
         } else if (command === "underline") {
-          var existing = this.__highlight.querySelector("u");
+          let existing = this.__highlight.querySelector("u");
           if (existing) {
             // Already underlined — unwrap <u>
             while (existing.firstChild) {
@@ -288,7 +288,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
             existing.remove();
           } else {
             // Wrap content in <u>
-            var u = globalThis.document.createElement("u");
+            let u = globalThis.document.createElement("u");
             while (this.__highlight.firstChild) {
               u.appendChild(this.__highlight.firstChild);
             }
@@ -323,7 +323,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * Handles range change
      * @param {event} e button tap event
      */
-    _rangeChanged(newVal, oldVal) {
+    _rangeChanged(_newVal, _oldVal) {
       this.value = this.getValue();
       this.setToggled();
     }

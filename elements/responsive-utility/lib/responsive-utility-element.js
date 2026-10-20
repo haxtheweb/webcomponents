@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement } from "lit";
 import { ResponsiveUtilityBehaviors } from "./responsive-utility-behaviors.js";
 /**
  * `responsive-utility-element`

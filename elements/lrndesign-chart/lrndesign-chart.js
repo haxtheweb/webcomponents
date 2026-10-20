@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { ChartistRenderSuper } from "@haxtheweb/chartist-render/chartist-render.js";
 /**
  * `lrndesign-chart`

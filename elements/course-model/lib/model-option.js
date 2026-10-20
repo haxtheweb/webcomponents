@@ -88,7 +88,7 @@ class ModelOption extends LitElement {
   /**
    * Sends custom event 'model-select' to 'course-model'.
    */
-  _handleClick(e) {
+  _handleClick(_e) {
     let modelSelect = new CustomEvent("model-select", {
       detail: this,
       bubbles: true,

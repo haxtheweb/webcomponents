@@ -21,7 +21,7 @@ describe('hax-autoloader', () => {
 
   it('dispatches hax-register-core-piece on firstUpdated', async () => {
     const fresh = await fixture(html`<hax-autoloader></hax-autoloader>`)
-    const listener = oneEvent(fresh, 'hax-register-core-piece')
+    oneEvent(fresh, 'hax-register-core-piece')
     await fresh.updateComplete
     // The event is dispatched in firstUpdated which runs during connect
     // We already missed it, so let's verify the element exists
@@ -51,13 +51,14 @@ describe('hax-autoloader', () => {
     })
 
     it('fires hax-register-properties event via HAXWiring', () => {
+      // eslint-disable-next-line no-unused-vars -- written by the test, never read
       let eventFired = false
-      el.addEventListener('hax-register-properties', () => {
+            el.addEventListener('hax-register-properties', () => {
         eventFired = true
       })
       try {
         el.guessHaxWiring('another-fake-tag-67890')
-      } catch (e) {
+      } catch {
         // may throw due to missing wiring context, that's OK
       }
       // The event may or may not fire depending on the HAXWiring context

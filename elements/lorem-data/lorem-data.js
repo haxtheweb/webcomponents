@@ -163,7 +163,7 @@ class LoremData extends I18NMixin(LoremDataBehaviors(LitElement)) {
     if (changedProperties.has("schemas")) {
       this.__revokeRemovedSchemaUrls();
     }
-    changedProperties.forEach((oldValue, propName) => {});
+    changedProperties.forEach((_oldValue, _propName) => {});
   }
 
   disconnectedCallback() {

@@ -1,4 +1,4 @@
-import { html, css, LitElement } from "lit";
+import { LitElement } from "lit";
 import { HaxToolbarItemBehaviors } from "@haxtheweb/hax-body/lib/hax-toolbar-item.js";
 /**
  * `hax-tray-button`
@@ -45,7 +45,7 @@ class HaxButton extends HaxToolbarItemBehaviors(LitElement) {
   /**
    * Fire an event that includes the eventName of what was just pressed.
    */
-  _handleClick(e) {
+  _handleClick(_e) {
     this.dispatchEvent(
       new CustomEvent("hax-tray-button-click", {
         bubbles: true,

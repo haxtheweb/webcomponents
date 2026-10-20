@@ -1,4 +1,3 @@
-/* eslint-disable no-return-assign */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";

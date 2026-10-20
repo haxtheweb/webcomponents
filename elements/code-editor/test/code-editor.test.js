@@ -1,5 +1,5 @@
-import { fixture, expect, html, oneEvent, waitUntil } from "@open-wc/testing";
-import { sendKeys } from "@web/test-runner-commands";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
+import "@web/test-runner-commands";
 import sinon from "sinon";
 
 // Mock monaco-element dependency
@@ -685,7 +685,7 @@ describe("code-editor test", () => {
       };
 
       element.value = "<div>test</div>";
-      const result = element.haxactiveElementChanged(mockEl, false);
+      element.haxactiveElementChanged(mockEl, false);
 
       expect(mockEl.replaceWith.called).to.be.true;
     });
@@ -860,7 +860,7 @@ describe("code-editor test", () => {
       await waitUntil(() => el.ready);
 
       // Verify event listeners are set up
-      const addEventListenerSpy = sandbox.spy(el, "addEventListener");
+      sandbox.spy(el, "addEventListener");
 
       // Trigger editor ready again
       el.editorReady({ target: el.shadowRoot.querySelector("monaco-element") });

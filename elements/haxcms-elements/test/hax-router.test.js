@@ -7,9 +7,10 @@ import { HaxRouter } from '../lib/core/hax-router.js'
 
 describe('HaxRouter route matching', () => {
   let router
-  let originalLocation
+  // eslint-disable-next-line no-unused-vars -- written by the test, never read
   let originalHistory
-
+  // eslint-disable-next-line no-unused-vars -- written by the test, never read
+  let originalLocation
   beforeEach(() => {
     originalLocation = { ...globalThis.location }
     originalHistory = { ...globalThis.history }
@@ -306,9 +307,8 @@ describe('HaxRouter resolve and events', () => {
 describe('HaxRouter click interception', () => {
   let router
   let anchor
-  let originalPreventDefault
+  // eslint-disable-next-line no-unused-vars -- written by the test, never read
   let preventDefaultCalled
-
   beforeEach(() => {
     router = new HaxRouter(document.createElement('div'), { baseUrl: '' })
     router.routes = [

@@ -236,7 +236,7 @@ describe('hax-app-search', () => {
         gizmo: { id: 'id' },
       }
       el.loading = true
-      const result = el._requestDataChanged(null)
+      el._requestDataChanged(null)
       expect(el.loading).to.equal(false)
     })
   })

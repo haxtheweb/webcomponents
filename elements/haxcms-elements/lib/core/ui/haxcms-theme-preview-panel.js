@@ -617,7 +617,7 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
           }
         }
       }
-    } catch (e) {}
+    } catch {}
     this._mergeThemeRegistry();
     this._buildThemeOptions();
     this.loadingThemes = false;

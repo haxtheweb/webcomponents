@@ -1030,7 +1030,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   // selectable list of items in the current site
   getSiteItems() {
     // default to null parent as the whole site
-    var items = [
+    let items = [
       {
         text: this.t.selectTarget,
         value: null,
@@ -1191,7 +1191,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     }
     return false;
   }
-  toggleDelete(e) {
+  toggleDelete(_e) {
     this.hideDelete = !this.hideDelete;
   }
 
@@ -1320,7 +1320,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this.requestUpdate();
   }
 
-  _toggleActionsMenu(e, index) {
+  _toggleActionsMenu(e, _index) {
     e.stopPropagation();
     const button = e.target;
     const listItem = button.closest("li");
@@ -2047,7 +2047,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     target.focus();
     // get the selection and select all
     if (this.shadowRoot.getSelection) {
-      var range = globalThis.document.createRange();
+      let range = globalThis.document.createRange();
       range.selectNodeContents(target);
       this.shadowRoot.getSelection().removeAllRanges();
       this.shadowRoot.getSelection().addRange(range);
@@ -2677,14 +2677,14 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   /**
    * Leaving an element while dragging.
    */
-  _dragLeave(e) {
+  _dragLeave(_e) {
     // Cleanup is now handled in _dragEnter for better accuracy
     // This prevents flickering when moving between child elements
   }
   /**
    * When we end dragging this is the same as a drop event; ensure we remove the mover class.
    */
-  _dragEnd(e) {
+  _dragEnd(_e) {
     // Remove dragging state
     if (this._targetDrag) {
       this._targetDrag.removeAttribute("data-dragging");

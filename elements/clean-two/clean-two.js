@@ -723,7 +723,7 @@ class CleanTwo extends LTIResizingMixin(
     DesignSystemManager.active = "ddd";
   }
 
-  searchItemSelected(e) {
+  searchItemSelected(_e) {
     // an item was picked, let's just make the UI jump to that item
     this.searchTerm = "";
   }
@@ -932,7 +932,7 @@ class CleanTwo extends LTIResizingMixin(
     this.searchTerm = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);
         Promise.resolve().then(() => {
           this.activeManifestIndex = _mobx_val_0;
@@ -941,7 +941,7 @@ class CleanTwo extends LTIResizingMixin(
     );
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         if (
           store.activeItem &&
           store.activeItem.metadata &&
@@ -955,7 +955,7 @@ class CleanTwo extends LTIResizingMixin(
       }),
     );
   }
-  siteModalForceClick(e) {
+  siteModalForceClick(_e) {
     setTimeout(() => {
       const theme = globalThis.document.querySelector("clean-two");
       // edge cases where we're switching themes and this callback is not valid
@@ -978,11 +978,11 @@ class CleanTwo extends LTIResizingMixin(
   /**
    * Delay importing site-search until we click to open it directly
    */
-  siteModalClick(e) {
+  siteModalClick(_e) {
     // prettier-ignore
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-    ).then((m) => {
+    ).then((_m) => {
       if (store.getInternalRoute() !== 'displays/search') {
         globalThis.history.replaceState({}, null, "x/displays/search");
       }

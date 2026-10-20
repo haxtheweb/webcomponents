@@ -31,7 +31,7 @@ class CmsHax extends LitElement {
   }
 
   decodeHTMLEntities(text) {
-    var entities = [
+    let entities = [
       ["amp", "&"],
       ["apos", "'"],
       ["#x27", "'"],
@@ -44,7 +44,7 @@ class CmsHax extends LitElement {
       ["quot", '"'],
     ];
 
-    for (var i = 0, max = entities.length; i < max; ++i)
+    for (let i = 0, max = entities.length; i < max; ++i)
       text = text.replace(
         new RegExp("&" + entities[i][0] + ";", "g"),
         entities[i][1],
@@ -162,7 +162,7 @@ class CmsHax extends LitElement {
   /**
    * Ensure we've imported our content on initial setup
    */
-  _activeHaxBodyUpdated(ready) {
+  _activeHaxBodyUpdated(_ready) {
     // ensure we import our content once we get an initial registration of active body
     if (!this.__imported) {
       this.__imported = true;
@@ -217,7 +217,7 @@ class CmsHax extends LitElement {
   /**
    * Set certain data bound values to the store once it's ready
    */
-  _storeReady(e) {
+  _storeReady(_e) {
     // delay as there can be some timing issues with attributes in CMSs
     setTimeout(() => {
       // trigger the update of different parts of the global state
@@ -231,7 +231,7 @@ class CmsHax extends LitElement {
       this.windowControllersReady.abort();
     }, 0);
   }
-  _appstoreLoaded(e) {
+  _appstoreLoaded(_e) {
     setTimeout(() => {
       this.ready = true;
       this.windowControllersLoaded.abort();
@@ -346,7 +346,7 @@ class CmsHax extends LitElement {
   async __applyMO() {
     // notice ANY change to body and bubble up, only when we are attached though
     if (!this._observer && this.syncBody && HAXStore.activeHaxBody) {
-      this._observer = new MutationObserver(async (mutations) => {
+      this._observer = new MutationObserver(async (_mutations) => {
         if (!this.__lock) {
           this.__lock = true;
           this.dispatchEvent(
@@ -371,7 +371,7 @@ class CmsHax extends LitElement {
   /**
    * _cancelFired
    */
-  _cancelFired(e) {
+  _cancelFired(_e) {
     // cancel
     HAXStore.skipExitTrap = true;
     HAXStore.editMode = false;
@@ -406,7 +406,7 @@ class CmsHax extends LitElement {
         if (response.ok) {
           this._handleUpdateResponse();
         }
-      } catch (err) {
+      } catch {
         // fail silently
       }
     }

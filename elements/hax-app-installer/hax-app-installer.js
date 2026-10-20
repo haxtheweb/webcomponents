@@ -1274,7 +1274,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
       if (globalThis.navigator && globalThis.navigator.clipboard) {
         await globalThis.navigator.clipboard.writeText(text);
       }
-    } catch (e) {
+    } catch {
       // fallback - ignore
     }
     this._copiedField = field;

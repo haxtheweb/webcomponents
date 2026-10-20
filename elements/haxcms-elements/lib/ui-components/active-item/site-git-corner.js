@@ -55,7 +55,7 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     this.activeGitFileLink = "";
     this.__disposer = [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         if (
           varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") != "" &&
           !globalThis.customElements.get("git-corner")
@@ -65,7 +65,7 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
         const _mobx_val_1 = toJS(store.manifest);
         Promise.resolve().then(() => {
@@ -85,7 +85,7 @@ class SiteGitCorner extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     );
   }
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

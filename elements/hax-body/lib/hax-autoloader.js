@@ -51,7 +51,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
   /**
    * LitElement ready life cycle
    */
-  firstUpdated(changedProperties) {
+  firstUpdated(_changedProperties) {
     // fire an event that this is a core piece of the system
     this.dispatchEvent(
       new CustomEvent("hax-register-core-piece", {
@@ -85,7 +85,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
   /**
    * Process new elements
    */
-  processNewElements(e) {
+  processNewElements(_e) {
     // when new nodes show up in the slots then fire the needed pieces
     let effectiveChildren = this.childNodes;
     for (let i = 0; i < effectiveChildren.length; i++) {
@@ -160,7 +160,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                 }${nameLocation}`;
               }
               import(fileLocation)
-                .then((response) => {
+                .then((_response) => {
                   // get the custom element definition we used to add that file
                   let CEClass = globalThis.customElements.get(name);
                   if (!CEClass) {
@@ -229,7 +229,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
             }
           }
           this.processedList[name] = name;
-        } catch (err) {
+        } catch {
           // error in the event this is a double registration
         }
       }
@@ -301,7 +301,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
         }
       }
       wiring.readyToFireHAXSchema(name, props, this);
-    } catch (e) {
+    } catch {
       console.warn("HAX failed to create wiring that worked");
     }
   }

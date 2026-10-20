@@ -34,10 +34,10 @@ export function isWebKit() {
   }
   // Feature detect + UA check: webkitLineBreak exists in BOTH WebKit AND
   // Blink (Chrome inherited it), so we must also exclude Blink browsers.
-  var docStyle = globalThis.document.documentElement
+  let docStyle = globalThis.document.documentElement
     ? globalThis.document.documentElement.style
     : null;
-  var ua = (globalThis.navigator && globalThis.navigator.userAgent) || "";
+  let ua = (globalThis.navigator && globalThis.navigator.userAgent) || "";
   if (docStyle && "webkitLineBreak" in docStyle) {
     _isWebKit = !/Chrome\/|Chromium\/|Edg\/|OPR\/|Brave\//i.test(ua);
     return _isWebKit;
@@ -57,7 +57,7 @@ export function isWebKit() {
  */
 export function isSafari() {
   if (_isSafari !== undefined) return _isSafari;
-  var ua = (globalThis.navigator && globalThis.navigator.userAgent) || "";
+  let ua = (globalThis.navigator && globalThis.navigator.userAgent) || "";
   // Safari UA contains "Safari/" but NOT "Chrome/", "CriOS/", "FxiOS/", "Edg/", etc.
   _isSafari =
     /Safari\//i.test(ua) &&

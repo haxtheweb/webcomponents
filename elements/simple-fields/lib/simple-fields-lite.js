@@ -626,7 +626,7 @@ class SimpleFieldsLite extends LitElement {
 
         //get any properties that haven't been specifically added to element data
         Object.keys(elementProperties || {}).forEach((key) => {
-          if (!!schemaProp[key]) element[key] = schemaProp[key];
+          if (schemaProp[key]) element[key] = schemaProp[key];
         });
         // support for dynamic import of location of this field
         if (!globalThis.customElements.get(data.element) && data.import) {
@@ -862,7 +862,7 @@ class SimpleFieldsLite extends LitElement {
       this._insertArrayItem(schema, previewBy, element, parent, item, i);
     });
     //listen for item additions
-    parent.addEventListener("add", (e) => {
+    parent.addEventListener("add", (_e) => {
       this._insertArrayItem(schema, previewBy, element, parent, {});
     });
     //listen for changes to copy
@@ -873,7 +873,7 @@ class SimpleFieldsLite extends LitElement {
       this._reorderArrayItems(parent);
     });
     //listen for changes to item order
-    parent.addEventListener("reorder", (e) => {
+    parent.addEventListener("reorder", (_e) => {
       this._reorderArrayItems(parent);
     });
     //listen for item deletions
@@ -1033,7 +1033,7 @@ class SimpleFieldsLite extends LitElement {
    * Fires when form changes to set focus on the first field if this has auto-focus
    * @event fields-changed
    */
-  _formFieldsChanged(e) {
+  _formFieldsChanged(_e) {
     this.dispatchEvent(
       new CustomEvent("fields-changed", {
         bubbles: true,
@@ -1120,7 +1120,7 @@ class SimpleFieldsLite extends LitElement {
       newValue = this.value,
       props = propName ? propName.split(".") : [],
       l = props.length;
-    for (var i = 0; i < l - 1; i++) {
+    for (let i = 0; i < l - 1; i++) {
       let pointer = props[i];
       if (!newValue[pointer]) newValue[pointer] = {};
       newValue = newValue[pointer];

@@ -134,13 +134,13 @@ class HaxViewSource extends I18NMixin(LitElement) {
   }
   // ability to refresh source view; possible something else in the system updated it
   // after we loaded
-  refreshHTMLEditor(e) {
+  refreshHTMLEditor(_e) {
     this.updateEditor();
   }
   /**
    * Import content into body area.
    */
-  async updateBodyFromHTML(e) {
+  async updateBodyFromHTML(_e) {
     // import contents of this text area into the activeHaxBody
     let htmlBody = this.shadowRoot.querySelector("#textarea").value || "";
     let children =
@@ -170,7 +170,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
   /**
    * Scrub and then import content as if pasted from Word / GDocs
    */
-  scrubContent(e) {
+  scrubContent(_e) {
     // import contents of this text area into the activeHaxBody
     const htmlBody = this.shadowRoot.querySelector("#textarea").value || "";
     HAXStore.toast(this.t.scrubbedContentUpdated);
@@ -178,7 +178,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
     this.close();
   }
 
-  async prettifyContent(e) {
+  async prettifyContent(_e) {
     let haxBodyHtml = await HAXStore.activeHaxBody.haxToContent();
     const response = await MicroFrontendRegistry.call("@core/prettyHtml", {
       html: haxBodyHtml,
@@ -220,7 +220,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
   /**
    * selectBody
    */
-  selectBody(e) {
+  selectBody(_e) {
     let hiddenarea = this.shadowRoot.querySelector("#hiddentextarea");
     hiddenarea.value = this.shadowRoot.querySelector("#textarea").value || "";
     hiddenarea.removeAttribute("hidden");
@@ -257,7 +257,7 @@ class HaxViewSource extends I18NMixin(LitElement) {
    */
   async contentToFile(full) {
     let body = await HAXStore.activeHaxBody.haxToContent();
-    var content = body;
+    let content = body;
     // if you want full HTML headers or not
     if (full) {
       // derive the CDN base from the generating page when it defines one,

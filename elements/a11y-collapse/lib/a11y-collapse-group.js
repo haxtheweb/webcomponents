@@ -166,7 +166,7 @@ class A11yCollapseGroup extends LitElement {
       );
     });
   }
-  _updateItem(item, propName, oldValue = undefined) {
+  _updateItem(item, propName, _oldValue = undefined) {
     if (propName === "globalOptions" || propName === "__items") {
       if (Object.keys(this.globalOptions).length > 0)
         for (let key in this.globalOptions) {

@@ -272,7 +272,7 @@ class A11yTab extends I18NMixin(LitElement) {
    * @returns {object} MutationObserver to unwrap contents
    */
   get observer() {
-    let lc = (e) => this._labelChanged();
+    let lc = (_e) => this._labelChanged();
     return new MutationObserver(lc);
   }
   /**

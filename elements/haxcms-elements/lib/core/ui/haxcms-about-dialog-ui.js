@@ -1,9 +1,9 @@
 import { html, css } from "lit";
-import { autorun, toJS } from "mobx";
+import "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { store, HAXcmsStore } from "../haxcms-site-store.js";
-import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
+import { HAXcmsStore } from "../haxcms-site-store.js";
+import "@haxtheweb/hax-body/lib/hax-store.js";
 import {
   KeyboardShortcutManagerInstance,
   KeyboardShortcutManager,
@@ -240,7 +240,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
         : `${globalThis.location.origin}/`;
     try {
       return new URL(outlineLocation || ".", baseHref).toString();
-    } catch (e) {}
+    } catch {}
     return baseHref;
   }
 
@@ -248,7 +248,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
     const cleanResource = String(resource || "").replace(/^\/+/, "");
     try {
       return new URL(cleanResource, this._currentSiteBaseHref()).toString();
-    } catch (e) {}
+    } catch {}
     return cleanResource;
   }
 

@@ -15,7 +15,7 @@ const clear = () => {
     Object.keys(globalThis.localStorage)
       .filter((k) => k.startsWith("bullet-check-list:"))
       .forEach((k) => globalThis.localStorage.removeItem(k));
-  } catch (e) {
+  } catch {
     // ignore
   }
 };

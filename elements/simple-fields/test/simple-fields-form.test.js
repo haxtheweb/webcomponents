@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout, oneEvent } from '@open-wc/testing'
+import { fixture, expect, html, oneEvent } from '@open-wc/testing'
 
 import '../lib/simple-fields-form-lite.js'
 import '../lib/simple-fields-form.js'
@@ -143,7 +143,7 @@ describe('simple-fields-form-lite', () => {
   it('fetchData with GET appends body as query params', async () => {
     const originalFetch = globalThis.fetch
     let capturedUrl = ''
-    globalThis.fetch = (url, opts) => {
+    globalThis.fetch = (url, _opts) => {
       capturedUrl = url
       return Promise.resolve({
         json: () => Promise.resolve({ ok: true }),

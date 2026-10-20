@@ -41,7 +41,7 @@ export const SimpleModalHandler = function (SuperClass) {
     /**
      * Click callback
      */
-    __SimpleModalHandlerClick(e) {
+    __SimpleModalHandlerClick(_e) {
       // fire event
       const evt = new CustomEvent("simple-modal-show", {
         bubbles: true,

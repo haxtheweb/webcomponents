@@ -195,7 +195,7 @@ class PolarisMark extends I18NMixin(LitElement) {
     `;
   }
 
-  renderDefault(type = "default") {
+  renderDefault(_type = "default") {
     return svg`
       <div id="svg">
         <svg viewBox="0 0 ${this.svgwidth} ${this.svgheight}" xmlns="http://www.w3.org/2000/svg">

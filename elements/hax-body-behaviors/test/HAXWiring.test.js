@@ -290,7 +290,7 @@ describe('HAXWiring class', () => {
     let threw = false
     try {
       wiring._haxStoreReady({})
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.equal(false)

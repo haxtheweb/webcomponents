@@ -157,7 +157,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
       `,
     ];
   }
-  hideSimpleToast(e) {
+  hideSimpleToast(_e) {
     if (!this.alwaysvisible) {
       // tricks into closing via event in a graceful way
       this.style.animation = "forcedfadeout 0.6s .3s";

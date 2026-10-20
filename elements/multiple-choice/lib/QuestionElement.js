@@ -200,7 +200,7 @@ export class QuestionElement extends SchemaBehaviors(
   /**
    * Reset user answers and shuffle the board again.
    */
-  resetAnswer(e) {
+  resetAnswer(_e) {
     this.showAnswer = false;
     globalThis.dispatchEvent(
       new CustomEvent("simple-toast-hide", {
@@ -224,7 +224,7 @@ export class QuestionElement extends SchemaBehaviors(
   isCorrect() {
     let gotRight = true;
     // see that they got them all right
-    for (var i in this.displayedAnswers) {
+    for (let i in this.displayedAnswers) {
       if (
         gotRight != false &&
         this.displayedAnswers[i].correct &&
@@ -247,7 +247,7 @@ export class QuestionElement extends SchemaBehaviors(
   }
 
   makeItRain() {
-    import("./confetti-container.js").then((module) => {
+    import("./confetti-container.js").then((_module) => {
       setTimeout(() => {
         this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
       }, 0);
@@ -257,7 +257,7 @@ export class QuestionElement extends SchemaBehaviors(
    * Verify the answers of the user based on their saying
    * that they want to see how they did.
    */
-  checkAnswer(e) {
+  checkAnswer(_e) {
     // respect the max attempts limit; once the attempts are spent the
     // interaction no longer accepts checks (0 implies unlimited)
     if (this.attemptsExhausted()) {
@@ -370,7 +370,7 @@ export class QuestionElement extends SchemaBehaviors(
       !this._haxstate
     ) {
       let random = answers;
-      var currentIndex = random.length,
+      let currentIndex = random.length,
         temporaryValue,
         randomIndex;
       // While there remain elements to shuffle...
@@ -899,7 +899,7 @@ export class QuestionElement extends SchemaBehaviors(
   /**
    * HAX preprocess insert content hook
    */
-  haxpreProcessInsertContent(detail, activeNode) {
+  haxpreProcessInsertContent(detail, _activeNode) {
     // ensure we don't accidentally have the answer displayed!
     if (
       detail.properties.answers &&
@@ -1267,7 +1267,7 @@ export class QuestionElement extends SchemaBehaviors(
     return newAnswers;
   }
 
-  cleanAnswerDataBeforeSend(answer, index, answers) {
+  cleanAnswerDataBeforeSend(answer, _index, _answers) {
     // stub for advanced element usage where items are relative to each other
     return answer;
   }
@@ -1297,7 +1297,7 @@ export class QuestionElement extends SchemaBehaviors(
     return input.getAttribute("correct") !== null;
   }
   // convert the input to data
-  processInput(index, inputs, answers) {
+  processInput(index, inputs, _answers) {
     let input = inputs[index];
     // guard against missing input (e.g. index out of range)
     if (!input) {
@@ -1404,7 +1404,7 @@ export class QuestionElement extends SchemaBehaviors(
       },
     ];
   }
-  haxToggleEdit(e) {
+  haxToggleEdit(_e) {
     this.edit = !this.edit;
     return true;
   }

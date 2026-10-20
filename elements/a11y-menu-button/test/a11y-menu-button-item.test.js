@@ -115,7 +115,7 @@ describe('a11y-menu-button-item', () => {
     let threw = false
     try {
       bare.focus()
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.equal(false)

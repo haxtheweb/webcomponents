@@ -19,8 +19,6 @@ const fakeContainer = {
   },
   on: () => {},
 };
-const originalRequestAvailability =
-  window.WebContainerManager.requestAvailability;
 window.WebContainerManager.requestAvailability = async () => fakeContainer;
 
 describe("webContainer test", () => {

@@ -80,7 +80,6 @@ export class AppHaxRouter extends HTMLElement {
    * @param {event} e
    */
 
-  // eslint-disable-next-line class-methods-use-this
   _routerLocationChanged(e) {
     store.location = e.detail.location;
   }

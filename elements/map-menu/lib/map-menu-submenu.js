@@ -310,7 +310,7 @@ class MapMenuSubmenu extends LitElement {
     };
   }
 
-  _headerClickHandler(e) {
+  _headerClickHandler(_e) {
     if (!this.opened) {
       this.opened = !this.opened;
     }

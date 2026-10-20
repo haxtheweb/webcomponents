@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { expect } from "@open-wc/testing";
 import { LrndesignImagemap } from "../lrndesign-imagemap.js";
 
 describe("lrndesign-imagemap HAX properties", () => {

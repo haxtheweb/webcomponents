@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout } from '@open-wc/testing'
+import { fixture, expect, html } from '@open-wc/testing'
 
 import '../hax-body.js'
 import { HAXStore } from '../lib/hax-store.js'

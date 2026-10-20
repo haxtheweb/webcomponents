@@ -1058,7 +1058,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
     return "polaris-flex-theme";
   }
 
-  appStoreReady(e) {
+  appStoreReady(_e) {
     if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability()) {
       let store = globalThis.HaxStore.requestAvailability();
       // elements that are in HAXcms that are injected regardless of what editor says
@@ -1117,7 +1117,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
     this.__disposer = this.__disposer ? this.__disposer : [];
 
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         // guard themeData: the store may not have a manifest yet at construction
         // time, in which case themeData is undefined and reading .variables would
         // throw synchronously inside the autorun (the Promise guard below only
@@ -1136,7 +1136,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.siteDescription);
         Promise.resolve().then(() => {
           this.siteDescription = _mobx_val_0;
@@ -1144,7 +1144,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);
         Promise.resolve().then(() => {
           this.activeManifestIndex = _mobx_val_0;
@@ -1152,7 +1152,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(
           store.activeItem && store.activeItem.metadata
             ? store.activeItem.metadata.updated
@@ -1196,11 +1196,11 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
   /**
    * Delay importing site-search until we click to open it directly
    */
-  siteModalClick(e) {
+  siteModalClick(_e) {
     // prettier-ignore
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-    ).then((m) => {
+    ).then((_m) => {
       if (store.getInternalRoute() !== 'displays/search') {
         globalThis.history.replaceState({}, null, "x/displays/search");
       }
@@ -1227,7 +1227,7 @@ function localStorageGet(name, defaultValue = "") {
       return defaultValue;
     }
     return JSON.parse(localStorage.getItem(name));
-  } catch (e) {
+  } catch {
     return false;
   }
 }

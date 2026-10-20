@@ -20,7 +20,7 @@ const _t = (context, key) =>
  * @returns {Function} The program function that returns title editing options
  */
 export const createEditTitleProgram = (context) => {
-  return async (input, values) => {
+  return async (input, _values) => {
     const results = [];
     const activeItem = toJS(store.activeItem);
 

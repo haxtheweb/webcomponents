@@ -198,7 +198,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @param {obj} pasteContent content to paste
      * @memberof RichTextEditorSelection
      */
-    paste(pasteContent, range = this.range, sanitize = true) {
+    paste(pasteContent, _range = this.range, sanitize = true) {
       this.dispatchEvent(
         new CustomEvent("paste", {
           bubbles: true,
@@ -310,7 +310,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
             : command === "wrapRange"
               ? !!this.rangeOrMatchingAncestor(commandVal)
               : query;
-      return !!block ? true : false;
+      return block ? true : false;
     }
     /**
      * returns an array of all toggled commands for a range.
@@ -445,7 +445,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     rangeNodes(range = this.range || this.getRange()) {
       let node = this.rangeFirstNode(range),
         nodes = [];
-      while (!!node) {
+      while (node) {
         nodes.push(node);
         node = node.nextSibling;
       }
@@ -524,7 +524,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      */
     highlightNode(node, range = this.range) {
       let element = node || this.rangeOrMatchingAncestor();
-      if (!!element) this.selectNode(node, range);
+      if (element) this.selectNode(node, range);
       this.__toolbar.updateRange();
       this.__highlight.wrap(range);
     }
@@ -638,15 +638,15 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           if (this.__highlight.parentNode !== globalThis.document.body) {
             this.__highlight.emptyContents();
           }
-          var webkitRange = toolbar.__webkitSavedRange || range;
+          let webkitRange = toolbar.__webkitSavedRange || range;
           toolbar.__webkitSavedRange = null;
           target.focus({ preventScroll: true });
           if (webkitRange) {
-            var sel = globalThis.getSelection();
+            let sel = globalThis.getSelection();
             sel.removeAllRanges();
             try {
               sel.addRange(webkitRange);
-            } catch (err) {}
+            } catch {}
             // addRange may silently fail in shadow DOM; try setBaseAndExtent
             if (sel.rangeCount === 0) {
               try {
@@ -656,14 +656,14 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
                   webkitRange.endContainer,
                   webkitRange.endOffset,
                 );
-              } catch (err) {
+              } catch {
                 // last resort: collapse to caret position
                 try {
                   sel.collapse(
                     webkitRange.startContainer,
                     webkitRange.startOffset,
                   );
-                } catch (err2) {}
+                } catch {}
               }
             }
           }

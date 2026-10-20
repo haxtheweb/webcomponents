@@ -239,7 +239,7 @@ class SimpleBlog extends I18NMixin(
   connectedCallback() {
     super.connectedCallback();
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeId);
         Promise.resolve().then(() => {
           this.activeId = _mobx_val_0;
@@ -247,7 +247,7 @@ class SimpleBlog extends I18NMixin(
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.location);
         Promise.resolve().then(() => {
           let location = _mobx_val_0;
@@ -283,7 +283,7 @@ class SimpleBlog extends I18NMixin(
   /**
    * Reset the active item to reset state
    */
-  _goBack(e) {
+  _goBack(_e) {
     const prevActiveItemId = store.activeId;
     globalThis.history.pushState(null, null, store.location.baseUrl);
     globalThis.dispatchEvent(new PopStateEvent("popstate"));

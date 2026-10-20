@@ -34,7 +34,7 @@ import "./hax-tray-button.js";
 import "./hax-toolbar-menu.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { Undo } from "@haxtheweb/undo-manager/undo-manager.js";
+import "@haxtheweb/undo-manager/undo-manager.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
@@ -194,7 +194,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       });
     });
   }
-  _expandSettingsPanel(e) {
+  _expandSettingsPanel(_e) {
     if (!this.hideToolbar) {
       this.shadowRoot.querySelector("#content-edit").click();
     }
@@ -223,7 +223,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
     if (this.shadowRoot && this.shadowRoot.querySelector("#settingsform")) {
       try {
         this.__lockAllSettings(this.locked);
-      } catch (err) {
+      } catch {
         // settings form may not be initialized yet; fail silently
       }
     }
@@ -711,7 +711,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
     `;
   }
 
-  resetSize(e) {
+  resetSize(_e) {
     this.resizeDrag = false;
     this.dragController.abort();
     setTimeout(() => {
@@ -755,7 +755,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
     );
     this.addEventListener(
       "mouseup",
-      (e) => {
+      (_e) => {
         this.resizeDrag = false;
         this.dragController.abort();
       },
@@ -941,7 +941,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       >
       </hax-tray-button>`;
   }
-  _clickMediaButton(e) {
+  _clickMediaButton(_e) {
     SuperDaemonInstance.runProgram("");
     SuperDaemonInstance.open();
   }
@@ -1070,7 +1070,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
    * Process event for simple content inserts.
    */
   _processTrayEvent(e) {
-    var target = normalizeEventPath(e)[0],
+    let target = normalizeEventPath(e)[0],
       evt = e.detail.eventName;
     // allow buttons to toggle collapse if desired by user
     if (
@@ -1145,7 +1145,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
         break;
       case "toggle-element-align":
         let directions = ["left", "right"],
-          direction = !!directions[e.detail.index]
+          direction = directions[e.detail.index]
             ? directions[e.detail.index]
             : "left";
         HAXStore.elementAlign = direction;
@@ -1861,7 +1861,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
             },
           );
           this.collapsed = false;
-        } catch (err) {
+        } catch {
           // collapse as a fallback if there are no valid nodes
           this.collapsed = true;
         }
@@ -1919,7 +1919,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           settings[key] = this.flattenObject(settings[key]);
         }
       }
-      var setAhead;
+      let setAhead;
       clearTimeout(this.__contextPropDebounce);
       this.__contextPropDebounce = setTimeout(() => {
         for (let key in settingsKeys) {
@@ -2045,7 +2045,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
                           (wrapper) => !exclusions.includes(wrapper),
                         );
                     }
-                    var tmpel = globalThis.document.createElement(slotTag);
+                    let tmpel = globalThis.document.createElement(slotTag);
                     if (
                       this.__activePropSchema.settings[key][propTmp]
                         .slotAttributes
@@ -2175,7 +2175,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
   /**
    * Edit clicked, activate
    */
-  _clickEditButton(e) {
+  _clickEditButton(_e) {
     HAXStore.editMode = true;
     globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {

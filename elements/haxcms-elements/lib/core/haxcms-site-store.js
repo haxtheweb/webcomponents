@@ -16,7 +16,7 @@ configure({ enforceActions: false }); // strict mode off
 function hasStoredSoundPreference() {
   try {
     return globalThis.localStorage.getItem("app-hax-soundStatus") !== null;
-  } catch (e) {
+  } catch {
     return false;
   }
 }
@@ -299,7 +299,7 @@ class Store {
    */
   get entityData() {
     if (this.manifest && this.manifest.items) {
-      var entityData = {};
+      let entityData = {};
       this.manifest.items.map((item) => {
         if (item.metadata) {
           entityData[item.id] = {
@@ -322,7 +322,7 @@ class Store {
     // fallback juuuuust to be safe... this is also what we hand back when
     // there is no manifest yet, so consumers (site-region) always get a
     // region object to read keys from instead of undefined
-    var regionData = {
+    let regionData = {
       header: null,
       sidebarFirst: null,
       sidebarSecond: null,
@@ -365,7 +365,7 @@ class Store {
     while (!ready) {
       ready = true;
       // loop through items
-      for (var key in this.manifest.items) {
+      for (let key in this.manifest.items) {
         let item = this.manifest.items[key];
         // if our slug matches an existing
         if (rSlug == item.slug) {
@@ -396,7 +396,7 @@ class Store {
       this.soundStatus = false;
     }
   }
-  // eslint-disable-next-line class-methods-use-this
+
   playSound(sound) {
     if (this.soundStatus && this.appReady) {
       try {
@@ -537,12 +537,12 @@ class Store {
         array[index].parent = null;
       }
     });
-    var site = new JsonOutlineSchema();
+    let site = new JsonOutlineSchema();
     // we already have our items, pass them in
-    var nodes = site.itemsToNodes(manifest.items);
+    let nodes = site.itemsToNodes(manifest.items);
     // smash outline into flat to get the correct order
-    var correctOrder = site.nodesToItems(nodes);
-    var newItems = [];
+    let correctOrder = site.nodesToItems(nodes);
+    let newItems = [];
     // build a new array in the correct order by pushing the old items around
     for (var key in correctOrder) {
       newItems.push(
@@ -640,7 +640,7 @@ class Store {
           }
           break;
       }
-      items.forEach((item, i) => {
+      items.forEach((item, _i) => {
         this._spiderChildren(item, data, start, end, parent, false);
       });
       return data;
@@ -703,7 +703,7 @@ class Store {
       });
 
       // build the children into a hierarchy too
-      manifestItems.forEach((item, i) => {
+      manifestItems.forEach((item, _i) => {
         this._setChildren(item, manifestItems);
       });
 
@@ -857,7 +857,7 @@ class Store {
    */
   get themeData() {
     if (this.manifest) {
-      var themeData = {};
+      let themeData = {};
       // this is required so better be...
       if (varExists(this.manifest, "metadata.theme")) {
         themeData = this.manifest.metadata.theme;
@@ -898,7 +898,7 @@ class Store {
    */
   get activeManifestIndex() {
     if (this.manifest && this.manifest.items && this.activeId) {
-      for (var index in this.manifest.items) {
+      for (let index in this.manifest.items) {
         if (this.manifest.items[index].id === this.activeId) {
           return parseInt(index);
         }
@@ -908,7 +908,7 @@ class Store {
   }
   get activeRouterManifestIndex() {
     if (this.routerManifest && this.routerManifest.items && this.activeId) {
-      for (var index in this.routerManifest.items) {
+      for (let index in this.routerManifest.items) {
         if (this.routerManifest.items[index].id === this.activeId) {
           return parseInt(index);
         }
@@ -1129,7 +1129,7 @@ class Store {
     useToJS = true,
   ) {
     if (this.manifest && id) {
-      var tmpItem = await this.manifest.items.find((item) => {
+      let tmpItem = await this.manifest.items.find((item) => {
         if (item[attrLookup] !== id) {
           return false;
         }
@@ -1336,7 +1336,7 @@ class Store {
    * Add an item
    */
   async addItem(item) {
-    var schema = new JsonOutlineSchema();
+    let schema = new JsonOutlineSchema();
     let newItem = schema.newItem();
     if (item.id) {
       newItem.id = item.id;
@@ -1356,10 +1356,10 @@ class Store {
     let safeItem = { ...schema.validateItem(newItem) };
     schema.items.push(safeItem);
     // we already have our items, pass them in
-    var nodes = schema.itemsToNodes(schema.items);
+    let nodes = schema.itemsToNodes(schema.items);
     // smash outline into flat to get the correct order
-    var correctOrder = schema.nodesToItems(nodes);
-    var newItems = [];
+    let correctOrder = schema.nodesToItems(nodes);
+    let newItems = [];
     // build a new array in the correct order by pushing the old items around
     for (var key in correctOrder) {
       newItems.push(
@@ -1728,7 +1728,7 @@ class Store {
           }
           break;
       }
-      _routerManifest.items.forEach((item, i) => {
+      _routerManifest.items.forEach((item, _i) => {
         store.spiderChildren(
           item,
           data,

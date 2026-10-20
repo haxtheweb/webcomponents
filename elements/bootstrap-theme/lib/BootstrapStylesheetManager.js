@@ -41,7 +41,7 @@ async function buildSheet(path) {
       return sheet;
     }
     return null;
-  } catch (e) {
+  } catch {
     return null;
   }
 }

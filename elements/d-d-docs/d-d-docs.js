@@ -31,10 +31,8 @@ import { DDDLineHeight } from "@haxtheweb/d-d-d/lib/DDDLineHeight.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
 // DDD Atomic Design pattern library (single source of truth)
 import {
-  DDDPATTERNS,
   INTERNAL_CONTRACTS,
   getPatternsByLevel,
-  getContractsForElement,
   resolveHaxCapabilityReport,
 } from "@haxtheweb/d-d-d/lib/DDDPatternLibrary.js";
 // Elements referenced by pattern previews not already imported above
@@ -3118,7 +3116,7 @@ class DDDocs extends I18NMixin(DDD) {
   renderButtons() {
     let headers = [];
     for (let i = 0; i < 22; i++) {
-      let random = Math.floor(Math.random() * 14);
+      Math.floor(Math.random() * 14);
       headers.push(html`
         <div class="grid-3 ">
           <simple-cta data-primary="${i}">Primary-${i}</simple-cta>
@@ -3634,7 +3632,7 @@ class DDDocs extends I18NMixin(DDD) {
   async _copyToClipboard(text, id) {
     try {
       await globalThis.navigator.clipboard.writeText(text);
-    } catch (e) {
+    } catch {
       // no-op; clipboard may be unavailable in some contexts
     }
     const feedback = this.shadowRoot.querySelector(
@@ -3681,13 +3679,13 @@ class DDDocs extends I18NMixin(DDD) {
           );
           return;
         }
-      } catch (e) {
+      } catch {
         // fall through to clipboard copy
       }
     }
     try {
       await globalThis.navigator.clipboard.writeText(pattern.html);
-    } catch (e) {
+    } catch {
       // no-op; clipboard may be unavailable
     }
   }

@@ -163,21 +163,21 @@ class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
    * Handles when Delete Row/Column is clicked
    * @param {event} e button event
    */
-  _onDelete(e) {
+  _onDelete(_e) {
     this.rowColAction(this.index, false);
   }
   /**
    * Handles when Insert Row/Column is clicked
    * @param {event} e button event
    */
-  _onInsertBefore(e) {
+  _onInsertBefore(_e) {
     this.rowColAction(this.row ? this.index - 1 : this.index);
   }
   /**
    * Handles when Insert Row/Column After is clicked
    * @param {event} e button event
    */
-  _onInsertAfter(e) {
+  _onInsertAfter(_e) {
     this.rowColAction(this.row ? this.index : this.index + 1);
   }
 }

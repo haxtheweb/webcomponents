@@ -1,6 +1,6 @@
 import { LitElement, html, css, nothing } from "lit";
 import { GradeBookStore } from "./grade-book-store.js";
-import { autorun, toJS } from "mobx";
+import { toJS } from "mobx";
 import "./letter-grade.js";
 /**
  * `letter-grade-picker`

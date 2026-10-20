@@ -78,7 +78,7 @@ export class CleanOneSearchBox extends I18NMixin(LitElement) {
       value: { type: String },
     };
   }
-  searchChanged(e) {
+  searchChanged(_e) {
     if (this.shadowRoot) {
       this.dispatchEvent(
         new CustomEvent("input-changed", {

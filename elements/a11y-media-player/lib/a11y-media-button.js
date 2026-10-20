@@ -211,7 +211,7 @@ class A11yMediaButton extends LitElement {
   /**
    * lets player know this button was clicked
    */
-  _buttonClick(e) {
+  _buttonClick(_e) {
     /**
      * Fires when button is clicked
      * @event click-details

@@ -260,7 +260,7 @@ export class SiteView extends I18NMixin(DDD) {
     }
     try {
       return JSON.stringify(a) === JSON.stringify(b);
-    } catch (e) {
+    } catch {
       return false;
     }
   }

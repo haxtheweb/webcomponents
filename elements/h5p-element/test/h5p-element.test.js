@@ -134,7 +134,7 @@ describe("h5p-element with a source", () => {
   });
 
   it("requests the h5p-standalone bundle through the bridge", async () => {
-    const el = await fixture(html`<h5p-element></h5p-element>`);
+    await fixture(html`<h5p-element></h5p-element>`);
     expect(bridgeLoads.length).to.be.greaterThan(0);
     const request = bridgeLoads[bridgeLoads.length - 1];
     expect(request.name).to.equal("h5p-standalone");

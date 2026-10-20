@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { expect } from "@open-wc/testing";
 import { ESGlobalBridge, ESGlobalBridgeStore } from "../es-global-bridge.js";
 
 describe("ESGlobalBridge test", () => {
@@ -39,7 +39,7 @@ describe("ESGlobalBridge test", () => {
     const testLocation = "https://example.com/test.js";
     
     // Start the load (won't complete since it's a fake URL)
-    const loadPromise = bridge.load(testName, testLocation);
+    bridge.load(testName, testLocation);
     
     // Check that script was created
     const script = document.querySelector(`script[data-name="${testName}"]`);

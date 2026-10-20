@@ -1,4 +1,4 @@
-import { fixture, expect } from "@open-wc/testing";
+import { expect } from "@open-wc/testing";
 import {
   badJSEventAttributes,
   removeBadJSEventAttributes,
@@ -414,7 +414,7 @@ describe("Utils test", () => {
 
     it("copyToClipboard copies text and shows toast on success", async () => {
       const mockClipboard = {
-        writeText: async (text) => Promise.resolve(),
+        writeText: async (_text) => Promise.resolve(),
       };
       Object.defineProperty(globalThis.navigator, "clipboard", {
         value: mockClipboard,
@@ -439,7 +439,7 @@ describe("Utils test", () => {
 
     it("copyToClipboard handles clipboard API failures", async () => {
       const mockClipboard = {
-        writeText: async (text) =>
+        writeText: async (_text) =>
           Promise.reject(new Error("Permission denied")),
       };
       Object.defineProperty(globalThis.navigator, "clipboard", {
@@ -463,7 +463,7 @@ describe("Utils test", () => {
 
     it("copyToClipboard uses custom message", async () => {
       const mockClipboard = {
-        writeText: async (text) => Promise.resolve(),
+        writeText: async (_text) => Promise.resolve(),
       };
       Object.defineProperty(globalThis.navigator, "clipboard", {
         value: mockClipboard,
@@ -486,7 +486,7 @@ describe("Utils test", () => {
 
     it("copyToClipboard uses HAXCMSToast when available", async () => {
       const mockClipboard = {
-        writeText: async (text) => Promise.resolve(),
+        writeText: async (_text) => Promise.resolve(),
       };
       Object.defineProperty(globalThis.navigator, "clipboard", {
         value: mockClipboard,
@@ -716,7 +716,7 @@ describe("Utils test", () => {
       // Mock selection
       const mockSelection = {
         rangeCount: 1,
-        getRangeAt: (index) => range,
+        getRangeAt: (_index) => range,
       };
 
       const result = getRange({ getSelection: () => mockSelection });
@@ -741,7 +741,7 @@ describe("Utils test", () => {
       const mockRoot = {
         getSelection: () => ({
           rangeCount: 1,
-          getRangeAt: (index) => document.createRange(),
+          getRangeAt: (_index) => document.createRange(),
         }),
       };
 

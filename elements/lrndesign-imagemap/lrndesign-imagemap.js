@@ -192,7 +192,7 @@ class LrndesignImagemap extends LitElement {
       obj.hotspot.setAttribute("role", "button");
       obj.hotspot.setAttribute("aria-label", obj.label);
       obj.hotspot.setAttribute("aria-controls", "figure");
-      obj.hotspot.addEventListener("click", (e) => this.openHotspot(obj));
+      obj.hotspot.addEventListener("click", (_e) => this.openHotspot(obj));
 
       //Copy hotspot details from printable hotspots
 

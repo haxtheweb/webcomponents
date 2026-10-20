@@ -107,7 +107,7 @@ describe('simple-fields-array', () => {
   })
 
   it('focus with index focuses the item at that index', async () => {
-    const item1 = el.buildItem('focus-1')
+    el.buildItem('focus-1')
     const item2 = el.buildItem('focus-2')
     let focused = null
     item2.focus = () => { focused = 'item2' }

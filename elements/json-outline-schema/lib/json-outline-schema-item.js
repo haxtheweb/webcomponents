@@ -29,7 +29,7 @@ class JSONOutlineSchemaItem {
   /**
    * Load data from the location specified
    */
-  readLocation(basePath = "") {
+  readLocation(_basePath = "") {
     // @todo read location and return contents of it
     //    if (file_exists(basePath + this.location)) {
     //      return file_get_contents(basePath + this.location);
@@ -39,7 +39,7 @@ class JSONOutlineSchemaItem {
   /**
    * Load data from the location specified
    */
-  writeLocation(body, basePath = "") {
+  writeLocation(body, _basePath = "") {
     //    if (file_exists(basePath + this.location)) {
     //      return file_put_contents(basePath + this.location, body);
     //    }

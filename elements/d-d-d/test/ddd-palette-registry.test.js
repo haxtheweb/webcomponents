@@ -67,10 +67,7 @@ describe('getDDDPaletteOptions', () => {
   })
 
   it('builds aliases from key and dataPalette when entry has no aliases', () => {
-    const customRegistry = [
-      { key: 'custom-key', label: 'Custom', dataPalette: '99' },
-    ]
-    const options = getDDDPaletteOptions()
+        const options = getDDDPaletteOptions()
     // verify the function handles entries without aliases gracefully
     expect(options[0].aliases).to.include('wisdom-walk-green')
     expect(options[0].aliases).to.include('0')

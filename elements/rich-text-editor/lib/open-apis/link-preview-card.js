@@ -167,7 +167,7 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
       globalThis.MicroFrontendRegistry.requestAvailability();
     await import(
       "@haxtheweb/micro-frontend-registry/lib/microServices.js"
-    ).then((e) => {
+    ).then((_e) => {
       MicroFrontendRegistry.enableServices(["core"]);
     });
     this.loadingState = true;
@@ -216,7 +216,7 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
     try {
       new URL(url);
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   }
@@ -233,7 +233,7 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
       if (hostname.endsWith("psu.edu")) {
         return "var(--ddd-primary-2)";
       }
-    } catch (error) {
+    } catch {
       console.warn("Invalid URL format:", link);
     }
 

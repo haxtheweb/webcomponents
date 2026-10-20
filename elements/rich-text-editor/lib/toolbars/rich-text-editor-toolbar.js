@@ -4,10 +4,9 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimpleToolbarBehaviors } from "@haxtheweb/simple-toolbar/simple-toolbar.js";
-import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import {
   RichTextStyles,
-  RichTextToolbarStyles,
 } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-button.js";
 import { RichTextEditorRangeBehaviors } from "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
 import "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
@@ -965,7 +964,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       // saved by the mouseup handler with a valid composed range.
       this.addEventListener("pointerdown", () => {
         if (isWebKit()) {
-          var range = this.getRange();
+          let range = this.getRange();
           if (range && !range.collapsed) {
             this.__webkitSavedRange = range.cloneRange();
           }
@@ -1020,10 +1019,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (this.hasBreadcrumbs && this.editor)
         this.positionByTarget(this.editor);
       this.__prompt = globalThis.RichTextEditorPrompt.requestAvailability();
-      this.__prompt.addEventListener("open", (e) => {
+      this.__prompt.addEventListener("open", (_e) => {
         this.__promptOpen = true;
       });
-      this.__prompt.addEventListener("close", (e) => {
+      this.__prompt.addEventListener("close", (_e) => {
         this.__promptOpen = false;
       });
       this.onmousedown = this._addHighlight;
@@ -1047,7 +1046,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     get controls() {
       let controls = !this.target ? undefined : this.target.getAttribute("id");
-      if (!!this.target) this.setAttribute("controls", controls);
+      if (this.target) this.setAttribute("controls", controls);
       return controls;
     }
 
@@ -1167,26 +1166,26 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         var sel = globalThis.getSelection();
         if (sel && sel.getComposedRanges) {
           try {
-            var allRoots = [];
-            var node = this.target;
+            let allRoots = [];
+            let node = this.target;
             while (node) {
               if (node.shadowRoot) allRoots.push(node.shadowRoot);
-              var rn = node.getRootNode ? node.getRootNode() : null;
+              let rn = node.getRootNode ? node.getRootNode() : null;
               if (rn && rn !== node && rn.host) node = rn.host;
               else node = node.parentNode;
             }
             if (allRoots.length > 0) {
-              var cr = sel.getComposedRanges.apply(sel, allRoots);
+              let cr = sel.getComposedRanges.apply(sel, allRoots);
               if (cr && cr.length > 0) {
-                var sr = cr[0];
-                var range = globalThis.document.createRange();
+                let sr = cr[0];
+                let range = globalThis.document.createRange();
                 range.setStart(sr.startContainer, sr.startOffset);
                 range.setEnd(sr.endContainer, sr.endOffset);
                 this.range = range;
                 return this.range;
               }
             }
-          } catch (e) {
+          } catch {
             // fall through to native fallback
           }
         }
@@ -1200,14 +1199,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           ? globalThis.document.getSelection()
           : globalThis.getSelection();
         if (sel && sel.rangeCount > 0) {
-          var candidate = sel.getRangeAt(0);
+          let candidate = sel.getRangeAt(0);
           if (candidate && this.rangeInTarget(candidate, this.target)) {
             this.range = candidate;
             return this.range;
           }
         }
         this.range = undefined;
-      } catch (e) {
+      } catch {
         this.range = undefined;
       }
       return this.range;
@@ -1225,13 +1224,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     rangeInTarget(range, target) {
       if (!range || !target) return false;
-      var container = range.commonAncestorContainer;
+      let container = range.commonAncestorContainer;
       if (!container || !container.nodeType) return false;
       if (target.contains(container)) return true;
       // walk up the composed tree, crossing shadow-root boundaries via
       // host, until we run out of ancestors (nodes have no composedPath,
       // so the old fallback never fired)
-      var node = container;
+      let node = container;
       while (node) {
         if (node === target) return true;
         node = node.nodeType === 11 && node.host ? node.host : node.parentNode;
@@ -1254,7 +1253,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @event range-changed
      * @param {event} e
      */
-    _rangeChanged(newValue, oldValue) {
+    _rangeChanged(_newValue, _oldValue) {
       this._updateButtonRanges();
       this.dispatchEvent(
         new CustomEvent("range-changed", {
@@ -1306,7 +1305,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       button.__toolbar = this;
       button.disabled = !this.target;
       (button.tagsArray || []).forEach((tag) => {
-        if (!!button.tagClickCallback) this.clickableElements[tag] = button;
+        if (button.tagClickCallback) this.clickableElements[tag] = button;
       });
     }
     /**
@@ -1420,7 +1419,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {object} target
      */
     positionByTarget(target) {
-      if (!!target) {
+      if (target) {
         target.parentNode.insertBefore(this, target);
         this.slot = target.slot;
         if (this.hasBreadcrumbs) {
@@ -1464,9 +1463,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.updateRange(target);
         this.observeChanges(true);
 
-        this.getRoot(target).onselectionchange = (e) => {
+        this.getRoot(target).onselectionchange = (_e) => {
           if (!this.__promptOpen) {
-            var currentRange = this.getRange();
+            let currentRange = this.getRange();
             this.updateRange(target, currentRange);
             // WebKit: always keep __webkitSavedRange in sync with the
             // current composed range so it never goes stale
@@ -1486,20 +1485,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             this.__webkitTargetSelHandler = () => {
               // Always update the saved range (including collapsed/caret)
               // so it reflects the CURRENT position, not a stale one
-              var sel = globalThis.getSelection();
+              let sel = globalThis.getSelection();
               if (sel && sel.getComposedRanges) {
                 try {
-                  var allRoots = [];
-                  var nd = toolbarRef.target;
+                  let allRoots = [];
+                  let nd = toolbarRef.target;
                   while (nd) {
                     if (nd.shadowRoot) allRoots.push(nd.shadowRoot);
-                    var rn = nd.getRootNode ? nd.getRootNode() : null;
+                    let rn = nd.getRootNode ? nd.getRootNode() : null;
                     if (rn && rn !== nd && rn.host) nd = rn.host;
                     else nd = nd.parentNode;
                   }
-                  var cr = sel.getComposedRanges.apply(sel, allRoots);
+                  let cr = sel.getComposedRanges.apply(sel, allRoots);
                   if (cr && cr.length > 0) {
-                    var range = globalThis.document.createRange();
+                    let range = globalThis.document.createRange();
                     range.setStart(cr[0].startContainer, cr[0].startOffset);
                     range.setEnd(cr[0].endContainer, cr[0].endOffset);
                     // Always update both saved range and current range
@@ -1507,15 +1506,15 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
                     toolbarRef.range = range;
                     return;
                   }
-                } catch (e) {}
+                } catch {}
               }
               // Fallback
               try {
-                var r = toolbarRef.getRange();
+                let r = toolbarRef.getRange();
                 if (r) {
                   toolbarRef.__webkitSavedRange = r.cloneRange();
                 }
-              } catch (e) {}
+              } catch {}
             };
           }
           target.addEventListener("mouseup", this.__webkitTargetSelHandler);
@@ -1523,7 +1522,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           // Double-click word selection is applied asynchronously;
           // defer with setTimeout to let the browser finalize it
           if (!this.__webkitDblClickHandler) {
-            var tbRef = toolbarRef;
+            let tbRef = toolbarRef;
             this.__webkitDblClickHandler = () => {
               setTimeout(() => {
                 if (tbRef.__webkitTargetSelHandler)
@@ -1550,8 +1549,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     disableEditing(target = this.target) {
       let handlers = this.enabledTargetHandlers,
         range = this.getRange();
-      if (!!target) {
-        if (!!range) range.collapse(false);
+      if (target) {
+        if (range) range.collapse(false);
         this.__highlight.emptyContents();
         this.getRoot(target).onselectionchange = undefined;
         // WebKit: clean up the target mouseup/keyup handlers
@@ -1623,7 +1622,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @memberof RichTextEditor
      */
-    revertTarget(target = this.target) {
+    revertTarget(_target = this.target) {
       if (this.target) this.target.innerHTML = this.__canceledEdits;
     }
 
@@ -1663,7 +1662,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     setTarget(target) {
       let handlers = this.targetHandlers(target),
         oldTarget = this.target;
-      if (!!target) {
+      if (target) {
         if (
           oldTarget &&
           oldTarget.getAttribute &&
@@ -1675,13 +1674,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           target.setAttribute("role", "textbox");
         }
         if (oldTarget !== target) {
-          if (!!oldTarget) this.unsetTarget(oldTarget);
+          if (oldTarget) this.unsetTarget(oldTarget);
           Object.keys(handlers).forEach((handler) =>
             target.addEventListener(handler, handlers[handler]),
           );
-          this.getRoot(target).onselectionchange = (e) => {
+          this.getRoot(target).onselectionchange = (_e) => {
             if (!this.__promptOpen) {
-              var currentRange = this.getRange();
+              let currentRange = this.getRange();
               this.updateRange(target, currentRange);
               if (isWebKit() && currentRange) {
                 this.__webkitSavedRange = currentRange.cloneRange();
@@ -1746,13 +1745,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
 
     get targetHTML() {
-      return !!this.target
+      return this.target
         ? this.outdentHTML(this.target.innerHTML)
         : undefined;
     }
 
     htmlMatchesTarget(html) {
-      let outdentedHTML = !!html ? this.outdentHTML(html) : undefined,
+      let outdentedHTML = html ? this.outdentHTML(html) : undefined,
         cleanHTML = outdentedHTML
           ? outdentedHTML.replace(/\s+/gm, "")
           : undefined,
@@ -1790,7 +1789,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.range = this.getRange();
       this.updateRange();
     }
-    _handleTargetFocus(target, e) {
+    _handleTargetFocus(target, _e) {
       if (!this.__promptOpen && !target.disabled) this.setTarget(target);
     }
 
@@ -1831,7 +1830,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         }
       });
     }
-    _handleTargetSelection(e) {
+    _handleTargetSelection(_e) {
       if (!this.__promptOpen) {
         this.range = this.getRange();
         // WebKit: always keep saved range in sync (collapsed or not)
@@ -1853,9 +1852,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       // on mouseup in the contenteditable) so it survives the upcoming
       // selectionchange collapse when the user clicks a toolbar button.
       if (isWebKit()) {
-        var sel = globalThis.getSelection();
+        let sel = globalThis.getSelection();
         if (sel && sel.rangeCount > 0) {
-          var r = sel.getRangeAt(0);
+          let r = sel.getRangeAt(0);
           if (r && !r.collapsed) {
             this.__webkitSavedRange = r.cloneRange();
             this.range = r.cloneRange();

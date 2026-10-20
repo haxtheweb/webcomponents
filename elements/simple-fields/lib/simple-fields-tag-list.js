@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { SimpleFieldsFieldBehaviors } from "./simple-fields-field.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "./simple-tag.js";
@@ -122,10 +122,10 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
       if (propName === "tagList") this._fireTagListChanged();
     });
   }
-  _handleGlobalTagDrop(e) {
+  _handleGlobalTagDrop(_e) {
     this.classList.remove("drop-possible");
   }
-  _handleGlobalTagDrag(e) {
+  _handleGlobalTagDrag(_e) {
     this.classList.add("drop-possible");
   }
   /**
@@ -193,7 +193,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
       }),
     ];
   }
-  _handleDragLeave(e) {
+  _handleDragLeave(_e) {
     this.classList.remove("drag-focus");
     this.classList.add("drop-possible");
   }
@@ -307,7 +307,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
    * fires when tagList changes
    * @event simple-fields-tag-list-changed
    */
-  _fireTagListChanged(e) {
+  _fireTagListChanged(_e) {
     this.dispatchEvent(
       new CustomEvent("simple-fields-tag-list-changed", {
         bubbles: true,

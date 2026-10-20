@@ -276,7 +276,7 @@ class EditableTableDisplay extends I18NMixin(
     import("./editable-table-sort.js");
     import("./editable-table-filter.js");
     // notice changes and update the data to match
-    this._observer = new MutationObserver((mutations) => {
+    this._observer = new MutationObserver((_mutations) => {
       if (this.shadowRoot) {
         this.importHTML(this.children.item(0));
       }
@@ -458,7 +458,7 @@ class EditableTableDisplay extends I18NMixin(
    * @event change
    * @param {event} event
    */
-  _dataChanged(newValue, oldValue) {
+  _dataChanged(newValue, _oldValue) {
     if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
       let table =
         this.children && this.children.item ? this.children.item(0) : null;
@@ -525,7 +525,7 @@ class EditableTableDisplay extends I18NMixin(
    * Handles column  selector change
    */
   _selectedChanged(e) {
-    if (!!e.detail.value) this.selected = e.detail.value;
+    if (e.detail.value) this.selected = e.detail.value;
   }
 
   /**

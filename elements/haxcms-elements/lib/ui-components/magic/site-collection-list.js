@@ -230,7 +230,7 @@ export class SiteCollectionList extends CollectionList {
   haxsetupActiveElementForm(props) {
     const itemManifest = store.getManifestItems(true);
     // default to null parent as the whole site
-    var items = [];
+    let items = [];
     itemManifest.forEach((el) => {
       if (el.id != this.itemId) {
         // calculate -- depth so it looks like a tree

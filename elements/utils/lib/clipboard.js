@@ -9,7 +9,7 @@ export async function copyToClipboard(value, msg = null) {
   // the official way but they have to authorize it in navigator hence async
   try {
     await globalThis.navigator.clipboard.writeText(value);
-  } catch (err) {
+  } catch {
     msg = "Failed to authorize copy, refresh and authorize action";
   }
   let toastShowEventName = globalThis.HAXCMSToast

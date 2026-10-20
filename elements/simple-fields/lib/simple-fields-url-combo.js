@@ -1,5 +1,5 @@
-import { LitElement, html, css } from "lit";
-import { SimpleFieldsFieldBehaviors } from "./simple-fields-field.js";
+import { html, css } from "lit";
+import "./simple-fields-field.js";
 import { SimpleFieldsCombo } from "./simple-fields-combo.js";
 import "./simple-fields-url-combo-item.js";
 

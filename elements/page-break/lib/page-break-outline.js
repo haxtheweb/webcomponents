@@ -46,12 +46,12 @@ export class PageBreakOutline extends HTMLElement {
     this.windowControllers.abort();
   }
   clickHandler(e) {
-    var target = normalizeEventPath(e)[0];
+    let target = normalizeEventPath(e)[0];
     if (target.tagName === "A") {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      for (var i = 0; i < pageBreakManager.breaks.length; i++) {
+      for (let i = 0; i < pageBreakManager.breaks.length; i++) {
         if (pageBreakManager.breaks[i].path === target.getAttribute("href")) {
           pageBreakManager.breaks[i].scrollIntoView({
             behavior: "smooth",
@@ -90,8 +90,8 @@ export class PageBreakOutline extends HTMLElement {
       this.target.children.length > 0
     ) {
       // wipe inner
-      var html = "<ul>" + "\n";
-      var parents = [];
+      let html = "<ul>" + "\n";
+      let parents = [];
       // loop children
       const kids = this.target.querySelectorAll("page-break");
       for (let i = 0; i < kids.length; i++) {

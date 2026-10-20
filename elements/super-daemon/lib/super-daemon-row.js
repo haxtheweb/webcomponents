@@ -313,7 +313,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
     }
   }
 
-  clickEvent(e) {
+  clickEvent(_e) {
     this.selected();
   }
 
@@ -350,10 +350,10 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       );
     }
   }
-  _focusIn(e) {
+  _focusIn(_e) {
     this.active = true;
   }
-  _focusOut(e) {
+  _focusOut(_e) {
     this.active = false;
   }
 

@@ -58,9 +58,9 @@ class XLSXFileSystemBroker extends FileSystemBroker {
   }
 
   __toJSON(workbook, stringify) {
-    var result = {};
+    let result = {};
     workbook.SheetNames.forEach((sheetName) => {
-      var roa = this.XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {
+      let roa = this.XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {
         header: 1,
         blankrows: false,
         raw: false,
@@ -76,9 +76,9 @@ class XLSXFileSystemBroker extends FileSystemBroker {
   }
 
   __toCSV(workbook) {
-    var result = [];
+    let result = [];
     workbook.SheetNames.forEach((sheetName) => {
-      var csv = this.XLSX.utils.sheet_to_csv(workbook.Sheets[sheetName]);
+      let csv = this.XLSX.utils.sheet_to_csv(workbook.Sheets[sheetName]);
       if (csv.length) {
         result.push("SHEET: " + sheetName);
         result.push("");
@@ -89,9 +89,9 @@ class XLSXFileSystemBroker extends FileSystemBroker {
   }
 
   __toFMLA(workbook) {
-    var result = [];
+    let result = [];
     workbook.SheetNames.forEach((sheetName) => {
-      var formulae = this.XLSX.utils.get_formulae(workbook.Sheets[sheetName]);
+      let formulae = this.XLSX.utils.get_formulae(workbook.Sheets[sheetName]);
       if (formulae.length) {
         result.push("SHEET: " + sheetName);
         result.push("");
@@ -102,9 +102,9 @@ class XLSXFileSystemBroker extends FileSystemBroker {
   }
 
   __toHTML(workbook) {
-    var content = "";
+    let content = "";
     workbook.SheetNames.forEach((sheetName) => {
-      var htmlstr = this.XLSX.write(workbook, {
+      let htmlstr = this.XLSX.write(workbook, {
         sheet: sheetName,
         type: "string",
         bookType: "html",
@@ -113,13 +113,13 @@ class XLSXFileSystemBroker extends FileSystemBroker {
     });
     return content;
   }
-  __toXLSX(workbook, filename) {
+  __toXLSX(workbook, _filename) {
     //this.XLSX.writeFile(workbook, filename);
     return this.XLSX.write(workbook);
   }
 
   processWorker(wb, format, filename) {
-    var output = "";
+    let output = "";
     switch (format) {
       case "form":
         output = this.__toFMLA(wb);
@@ -143,7 +143,7 @@ class XLSXFileSystemBroker extends FileSystemBroker {
   }
 
   processFile(input, format, filename) {
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = (e) => {
       this.__executeWorker(e.target.result, format, "read", filename);
     };
@@ -151,7 +151,7 @@ class XLSXFileSystemBroker extends FileSystemBroker {
   }
 
   __executeWorker(data, format, op = "read", filename = "") {
-    var worker = new Worker(this.XW.worker);
+    let worker = new Worker(this.XW.worker);
     worker.onmessage = (e) => {
       switch (e.data.t) {
         case "ready":

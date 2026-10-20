@@ -100,7 +100,7 @@ class DOCXFileSystemBroker extends FileSystemBroker {
   }
 
   fileToHTML(input, name = "filepicked") {
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = async (arrayBuffer) => {
       if (this.docx) {
         await this.docx

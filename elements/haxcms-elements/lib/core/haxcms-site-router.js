@@ -36,7 +36,7 @@ class HAXCMSSiteRouter extends HTMLElement {
      */
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         this._updateRouter(store.routerManifest);
       }),
     );
@@ -56,7 +56,7 @@ class HAXCMSSiteRouter extends HTMLElement {
    * Detached life cycle
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

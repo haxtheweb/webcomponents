@@ -541,8 +541,7 @@ describe("HaxAppInstaller input handlers", () => {
   });
 
   it("_copyToClipboard handles missing navigator.clipboard gracefully", async () => {
-    const origClipboard = globalThis.navigator;
-    // Temporarily remove clipboard
+        // Temporarily remove clipboard
     await element._copyToClipboard("test", "password");
     expect(element._copiedField).to.equal("password");
   });
@@ -1067,7 +1066,7 @@ describe("HaxAppInstaller _applyState and confetti", () => {
 
   it("_applyState dispatches language change when language differs", () => {
     let eventCaught = false;
-    const handler = (e) => {
+    const handler = (_e) => {
       eventCaught = true;
     };
     globalThis.addEventListener("languagechange", handler);

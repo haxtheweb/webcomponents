@@ -41,7 +41,7 @@ class SiteMenuContent extends HAXCMSThemeParts(I18NMixin(PageContentsMenu)) {
     this.hideIfEmpty = true;
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         Promise.resolve().then(() => {
           this.contentContainer = store.themeElement;
           // target container if we have a fixed UI layout
@@ -62,11 +62,10 @@ class SiteMenuContent extends HAXCMSThemeParts(I18NMixin(PageContentsMenu)) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
-        const _mobx_val_0 = toJS(store.activeItemContent);
+      autorun((_reaction) => {
+        toJS(store.activeItemContent);
         Promise.resolve().then(() => {
           // forces a menu rebuild on content change
-          let content = _mobx_val_0;
           setTimeout(() => {
             this.updateMenu();
           }, 10);

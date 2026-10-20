@@ -314,12 +314,12 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
       if (format === "json") {
         try {
           JSON.parse(data);
-        } catch (e) {
+        } catch {
           return null;
         }
       }
       return data;
-    } catch (e) {
+    } catch {
       return null;
     }
   }
@@ -354,7 +354,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     this.requestUpdate();
   }
 
-  async copyToClipboard(e) {
+  async copyToClipboard(_e) {
     if (globalThis.navigator && globalThis.navigator.clipboard) {
       try {
         let dataToCopy;
@@ -414,7 +414,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     }
   }
 
-  async copyNativeRoute(e) {
+  async copyNativeRoute(_e) {
     if (
       this.nativeFormatUrl &&
       globalThis.navigator &&
@@ -475,14 +475,14 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     cleanUrl.pathname = this.nativeFormatPath;
     this.nativeFormatUrl = cleanUrl.toString();
   }
-  goBack(e) {
+  goBack(_e) {
     // Remove the format parameter and reload
     const url = new URL(globalThis.location);
     url.searchParams.delete("format");
     globalThis.location.href = url.toString();
   }
 
-  async toggleChildren(e) {
+  async toggleChildren(_e) {
     this.showChildren = !this.showChildren;
     // If we're in YAML mode, regenerate YAML data with new children setting
     if (this.viewMode === "yaml") {

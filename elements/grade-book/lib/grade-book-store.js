@@ -42,7 +42,7 @@ class GradeBookStoreClass extends LitElement {
     const db = toJS(this.database);
     const activeStudent = toJS(this.activeStudent);
     const activeAssignment = toJS(this.activeAssignment);
-    for (var i in this.database.submissions) {
+    for (let i in this.database.submissions) {
       let row = this.database.submissions[i];
       // look for student AND that the assignment column name is there;
       // roster / assignments may be missing entirely in partial data

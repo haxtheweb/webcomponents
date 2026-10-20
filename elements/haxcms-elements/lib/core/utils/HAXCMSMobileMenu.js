@@ -32,7 +32,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       }
       this.__disposer = this.__disposer ? this.__disposer : [];
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.activeId);
           Promise.resolve().then(() => {
             const activeId = _mobx_val_0;
@@ -136,7 +136,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         }
       }
     }
-    HAXCMSMobileMenu(e) {
+    HAXCMSMobileMenu(_e) {
       return html`
         <nav
           id="haxcmsmobilemenunav"

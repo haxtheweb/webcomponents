@@ -83,7 +83,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       } else {
         // start talking which listeners in super-daemon will activate
         // after the text is spoken to avoid polluting input
-        sdi.hal.speak(this.t.howMayIHelp, sdi.santaMode).then((e) => {
+        sdi.hal.speak(this.t.howMayIHelp, sdi.santaMode).then((_e) => {
           sdi.playSound();
           sdi.listeningForInput = true;
         });
@@ -363,11 +363,11 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     }
   }
 
-  fieldFocusLoss(e) {
+  fieldFocusLoss(_e) {
     this.focused = false;
   }
 
-  fieldFocus(e) {
+  fieldFocus(_e) {
     this.focused = true;
   }
 

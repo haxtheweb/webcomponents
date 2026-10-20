@@ -177,7 +177,7 @@ class BootstrapFooter extends I18NMixin(LitElement) {
     this._routerManifest = {};
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);
         const _mobx_val_1 = toJS(store.routerManifest);
         Promise.resolve().then(() => {

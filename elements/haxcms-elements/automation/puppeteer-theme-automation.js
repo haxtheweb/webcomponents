@@ -62,7 +62,7 @@ async function isServerRunning(port) {
   try {
     const response = await fetch(`http://localhost:${port}`);
     return response.ok;
-  } catch (error) {
+  } catch {
     return false;
   }
 }
@@ -81,7 +81,7 @@ async function waitForServer(url, timeout = 30000) {
         console.log(`\n✓ Server ready at ${url}`);
         return true;
       }
-    } catch (error) {
+    } catch {
       // Server not ready yet, continue waiting
     }
 
@@ -131,6 +131,7 @@ async function startServer() {
   );
 
   // Handle server output - look for startup confirmation
+  // eslint-disable-next-line no-unused-vars -- written by the test, never read
   let serverReady = false;
 
   serverProcess.stdout.on("data", (data) => {

@@ -127,7 +127,7 @@ class PerformanceDetect extends HTMLElement {
           if (!battery.charging && battery.level < 0.25) {
             details.lowBattery = true;
           }
-        } catch (e) {
+        } catch {
           // ignore
         }
       }

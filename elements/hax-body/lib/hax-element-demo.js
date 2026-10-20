@@ -132,7 +132,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
       if (propName === "renderTag" && this[propName]) {
         this.innerHTML = "";
         let schema = HAXStore.haxSchemaFromTag(this[propName]);
-        var el;
+        let el;
         // support for active element being run through for a conversion
         if (
           this.activePickerSchema !== -1 &&

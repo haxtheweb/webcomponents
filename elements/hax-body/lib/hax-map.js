@@ -270,7 +270,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
       attributeFilter: ["slot", "data-hax-lock", "class", "id"],
     });
   }
-  async updateHAXMap(e) {
+  async updateHAXMap(_e) {
     this._connectBodyObserver();
     const activeBody = HAXStore.activeHaxBody;
     if (!activeBody || !activeBody.childNodes) {
@@ -291,7 +291,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
       tmpNode.node = node;
       list.push(tmpNode);
       if (node.children && node.children.length > 0) {
-        for (var j = 0; j < node.children.length; j++) {
+        for (let j = 0; j < node.children.length; j++) {
           if (
             !node.children[j] ||
             !node.children[j].tagName ||
@@ -386,8 +386,8 @@ class HaxMap extends I18NMixin(SimpleColors) {
               >
                 <hax-toolbar-item
                   align-horizontal="left"
-                  @click="${(e) => this.goToItem(index)}"
-                  @dblclick="${(e) => this.editItem(index)}"
+                  @click="${(_e) => this.goToItem(index)}"
+                  @dblclick="${(_e) => this.editItem(index)}"
                   data-index="${index}"
                   ?data-active-item="${element.node === this.activeNode}"
                   icon="${element.icon}"
@@ -401,25 +401,25 @@ class HaxMap extends I18NMixin(SimpleColors) {
                         icon="${this.isLocked(index)
                           ? "icons:lock"
                           : "icons:lock-open"}"
-                        @click="${(e) => this.itemOp(index, "lock")}"
+                        @click="${(_e) => this.itemOp(index, "lock")}"
                         title="${this.t.lockUnlock}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         icon="hax:keyboard-arrow-up"
-                        @click="${(e) => this.itemOp(index, "up")}"
+                        @click="${(_e) => this.itemOp(index, "up")}"
                         title="${this.t.moveUp}"
                         ?disabled="${this.isLocked(index)}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         icon="hax:keyboard-arrow-down"
-                        @click="${(e) => this.itemOp(index, "down")}"
+                        @click="${(_e) => this.itemOp(index, "down")}"
                         title="${this.t.moveDown}"
                         ?disabled="${this.isLocked(index)}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         class="del"
                         icon="delete"
-                        @click="${(e) => this.itemOp(index, "delete")}"
+                        @click="${(_e) => this.itemOp(index, "delete")}"
                         title="${this.t.delete}"
                         ?disabled="${this.isLocked(index)}"
                       ></simple-icon-button-lite>
@@ -556,7 +556,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
     }
   }
   scrollInMap() {
-    var target = normalizeEventPath(e)[0];
+    let target = normalizeEventPath(e)[0];
     this.goToItem(target.getAttribute("data-index"));
   }
   static get tag() {

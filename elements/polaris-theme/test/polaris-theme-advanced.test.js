@@ -167,8 +167,9 @@ describe('polaris-theme store wiring', () => {
     let input
     let fakeModal
     let replaceStateCalls
+    // eslint-disable-next-line no-unused-vars -- written by the test, never read
     let savedGetInternalRoute
-    let savedRouterLocation
+        let savedRouterLocation
 
     beforeEach(() => {
       input = {

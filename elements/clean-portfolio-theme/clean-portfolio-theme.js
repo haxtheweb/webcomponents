@@ -2,7 +2,7 @@
  * Copyright 2025 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -131,14 +131,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.__boundViewportSync = this._syncViewportLayout.bind(this);
 
     // gets site title and home link for site-title
-    this.__disposer.push(autorun((reaction) => {
+    this.__disposer.push(autorun((_reaction) => {
       const _mobx_val_0 = toJS(store.homeLink);
       Promise.resolve().then(() => {
         this.homeLink = _mobx_val_0;
       });
     }));
 
-    this.__disposer.push(autorun((reaction) => {
+    this.__disposer.push(autorun((_reaction) => {
       const _mobx_val_0 = toJS(store.siteTitle);
       Promise.resolve().then(() => {
         this.siteTitle = _mobx_val_0;
@@ -146,7 +146,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     }));
 
     // gets active page's ancestor for menu-item:after
-    this.__disposer.push(autorun((reaction) => {
+    this.__disposer.push(autorun((_reaction) => {
       const _mobx_val_0 = toJS(store.ancestorItem);
       Promise.resolve().then(() => {
         this.ancestorItem = _mobx_val_0;
@@ -154,7 +154,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     }));
 
     // gets active page's tags and inserts them into an array for media-tag
-    this.__disposer.push(autorun((reaction) => {
+    this.__disposer.push(autorun((_reaction) => {
       const _mobx_val_0 = toJS(store.activeTags);
       Promise.resolve().then(() => {
         this.activeTags = normalizeTags(_mobx_val_0);
@@ -162,7 +162,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     }));
 
     // gets top level items for menu-item
-    this.__disposer.push(autorun((reaction) => {
+    this.__disposer.push(autorun((_reaction) => {
       let items = store.getItemChildren(null); 
       if (items && items.length > 0) {
         this.topItems = [...items];
@@ -173,7 +173,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     // - if the current page has no child, it's Text
     // - if the current page has a child, it's Listing
     // - if the current page has a parent, it's Media
-    this.__disposer.push(autorun((reaction) => {
+    this.__disposer.push(autorun((_reaction) => {
       const _mobx_val_0 = toJS(store.activeItem);
       Promise.resolve().then(() => {
         const active = _mobx_val_0;
@@ -275,7 +275,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     }));
 
     // determines if hax editor is enabled
-    this.__disposer.push(autorun((reaction) => {
+    this.__disposer.push(autorun((_reaction) => {
       const _mobx_val_0 = toJS(store.editMode);
       Promise.resolve().then(() => {
         const editMode = _mobx_val_0;
@@ -287,7 +287,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     }));
 
     // gets licensing stuff
-    this.__disposer.push(autorun((reaction) => {
+    this.__disposer.push(autorun((_reaction) => {
       const _mobx_val_0 = toJS(store.manifest);
       Promise.resolve().then(() => {
         this.manifest = _mobx_val_0;
@@ -301,7 +301,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     }));
 
     // gets current and total page count
-    this.__disposer.push(autorun((reaction) => {
+    this.__disposer.push(autorun((_reaction) => {
       const _mobx_val_0 = toJS(store.pageCounter);
       Promise.resolve().then(() => {
         const counter = _mobx_val_0;
@@ -1401,7 +1401,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     }
   }
 
-  togglePalette(e) {
+  togglePalette(_e) {
     this.dataPalette++;
     if (this.dataPalette > 10) this.dataPalette = 0;
   }

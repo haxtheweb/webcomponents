@@ -108,12 +108,12 @@ class SimpleTour extends I18NMixin(LitElement) {
   /**
    * Move ahead or back in the stack
    */
-  nextStop(e) {
+  nextStop(_e) {
     if (this.stop < this.stacks[this.active].length - 1) {
       this.stop += 1;
     }
   }
-  prevStop(e) {
+  prevStop(_e) {
     if (this.stop > 0) {
       this.stop -= 1;
     }
@@ -130,7 +130,7 @@ class SimpleTour extends I18NMixin(LitElement) {
       }),
     );
   }
-  stopTour(e) {
+  stopTour(_e) {
     globalThis.SimplePopoverManager.requestAvailability().setPopover(
       this,
       this,

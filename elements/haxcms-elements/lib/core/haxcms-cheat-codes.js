@@ -637,8 +637,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
    * Execute BEEPS cheat - Add click sounds everywhere
    */
   editorInstance._executeCheatBeeps = function () {
-    const beepSounds = ["beep", "boop", "ding", "ping", "click"];
-    let beepActive = globalThis.document.body.hasAttribute("data-beeps-active");
+        let beepActive = globalThis.document.body.hasAttribute("data-beeps-active");
 
     if (beepActive) {
       // Remove beep mode
@@ -652,7 +651,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       // Add beep mode
       globalThis.document.body.setAttribute("data-beeps-active", "true");
 
-      globalThis.beepClickHandler = (e) => {
+      globalThis.beepClickHandler = (_e) => {
         // Create audio context for beep sounds
         const audioContext = new (globalThis.AudioContext ||
           globalThis.webkitAudioContext)();

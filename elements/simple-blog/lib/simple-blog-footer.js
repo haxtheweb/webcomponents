@@ -293,7 +293,7 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
     super.connectedCallback();
     this.__disposer = [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.routerManifest);
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0;
@@ -315,7 +315,7 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);
         Promise.resolve().then(() => {
           this.activeManifestIndex = _mobx_val_0;
@@ -323,7 +323,7 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -335,7 +335,7 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
    * HTMLElement
    */
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       if (typeof this.__disposer[i] === "function") {
         this.__disposer[i]();
       } else if (
@@ -351,7 +351,7 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
   /**
    * Fire event to unset the global activeItem.
    */
-  _backButtonTap(e) {
+  _backButtonTap(_e) {
     globalThis.history.pushState(null, null, store.location.baseUrl);
     globalThis.dispatchEvent(new PopStateEvent("popstate"));
   }

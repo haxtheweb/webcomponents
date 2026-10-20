@@ -1,4 +1,4 @@
-import { expect, oneEvent, aTimeout } from "@open-wc/testing";
+import { expect, aTimeout } from "@open-wc/testing";
 
 import { HAXStore } from "../lib/hax-store.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";

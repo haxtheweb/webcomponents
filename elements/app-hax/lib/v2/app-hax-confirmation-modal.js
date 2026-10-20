@@ -266,7 +266,7 @@ export class AppHaxConfirmationModal extends I18NMixin(DDDSuper(LitElement)) {
     }
   }
 
-  handleModalClosed(e) {
+  handleModalClosed(_e) {
     // Restore body scrolling
     document.body.style.overflow = "";
 

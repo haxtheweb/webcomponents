@@ -127,7 +127,7 @@ class MomentElement extends LitElement {
 
   _computeOutput(datetime, inputFormat, outputFormat, from, to, libraryLoaded) {
     if (libraryLoaded) {
-      var output = inputFormat
+      let output = inputFormat
         ? moment(datetime, inputFormat)
         : moment(datetime);
       if (outputFormat) {

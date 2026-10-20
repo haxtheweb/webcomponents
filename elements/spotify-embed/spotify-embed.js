@@ -139,7 +139,7 @@ class SpotifyEmbed extends LitElement {
     return node;
   }
   // ALWAYS enable edit mode if HAX is around
-  haxactiveElementChanged(el, val) {
+  haxactiveElementChanged(el, _val) {
     this.editing = true;
     el.editing = true;
     return el;

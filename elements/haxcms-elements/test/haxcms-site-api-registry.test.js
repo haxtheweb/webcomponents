@@ -9,11 +9,6 @@ import {
 // Reset it in place between tests so nothing leaks across cases, and
 // snapshot/remove any @site/* operations we register so the shared
 // registry singleton is left as we found it.
-const SITE_OPS = [
-  "@site/getSiteManifest",
-  "@site/createItem",
-  "@site/deleteItem",
-];
 
 function getState() {
   return globalThis.__HAXCMSSiteApiRegistryState;

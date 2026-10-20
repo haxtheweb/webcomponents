@@ -232,7 +232,7 @@ class RelativeHeadingStateManager extends LitElement {
    * updates heading level based on default level
    * @param {object} heading to be updated
    */
-  updateDefaultLevel(heading, old = null) {
+  updateDefaultLevel(heading, _old = null) {
     if (heading) this.updateLevel(heading);
   }
 

@@ -9,13 +9,6 @@ const MID =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7?t=mid'
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-async function poll(predicate, attempts = 100, delayMs = 20) {
-  for (let i = 0; i < attempts; i++) {
-    if (predicate()) return true
-    await sleep(delayMs)
-  }
-  return predicate()
-}
 
 describe('a11y-compare-image rendering', () => {
   it('renders the figure, layers and labeled slider', async () => {

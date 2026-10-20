@@ -190,7 +190,7 @@ class GradeBook extends UIRenderPieces(
     this.__resizeObserver = new ResizeObserver((entries) => {
       clearTimeout(this.__resizer);
       this.__resizer = setTimeout(() => {
-        var pixels = 0;
+        let pixels = 0;
         for (let entry of entries) {
           if (entry.contentBoxSize) {
             pixels = Math.round(
@@ -230,7 +230,7 @@ class GradeBook extends UIRenderPieces(
    */
   getStudentSubmissions(activeStudent) {
     let response = [];
-    for (var i in this.database.submissions) {
+    for (let i in this.database.submissions) {
       let row = this.database.submissions[i];
       // look for student, need a match before we render anything;
       // the roster / the active student's roster row can be missing
@@ -242,7 +242,7 @@ class GradeBook extends UIRenderPieces(
         this.database.roster[activeStudent] &&
         row.student === this.database.roster[activeStudent].student
       ) {
-        for (var j in row) {
+        for (let j in row) {
           if (j !== "student") {
             let a = this.getAssignmentByShortName(j);
             if (a) {
@@ -361,7 +361,7 @@ class GradeBook extends UIRenderPieces(
                 settings: 1413275461,
               });
               setTimeout(async () => {
-                for (var i in this.gSheet.sheetGids) {
+                for (let i in this.gSheet.sheetGids) {
                   let loadedData = await this.gSheet.loadSheetData(i);
                   loadedData = this.transformTable(loadedData);
                   if (typeof this[`process${i}Data`] === "function") {
@@ -416,7 +416,7 @@ class GradeBook extends UIRenderPieces(
             // this listener gets the event from the service worker
             this.__xlsxFileSystemDataHandler = (e) => {
               let database = e.detail.data;
-              for (var i in database) {
+              for (let i in database) {
                 let loadedData = this.transformTable(database[i]);
                 if (typeof this[`process${i}Data`] === "function") {
                   loadedData = this[`process${i}Data`](loadedData);
@@ -451,7 +451,7 @@ class GradeBook extends UIRenderPieces(
       this.__xlsxFileSystemDataHandler = null;
       this.__applied = false;
     }
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -481,7 +481,7 @@ class GradeBook extends UIRenderPieces(
     }
     for (var i in table) {
       let item = {};
-      for (var j in headings) {
+      for (let j in headings) {
         item[j] = table[i][headings[j]];
       }
       // push data onto the database of all data we have now as objects
@@ -540,12 +540,12 @@ class GradeBook extends UIRenderPieces(
    * process assignment data to normalize date string
    */
   processassignmentsData(data) {
-    for (var i in data) {
+    for (let i in data) {
       if (data[i].dueDate != "") {
         try {
           const event = new Date(`${data[i].dueDate} ${data[i].dueTime}`);
           data[i]._ISODueDate = event.toISOString();
-        } catch (e) {}
+        } catch {}
       }
     }
     return data;
@@ -559,7 +559,7 @@ class GradeBook extends UIRenderPieces(
     let categories = new Set([]);
     let rCategories = [];
     // these must all exist as keys for us to proceed
-    for (var i in data) {
+    for (let i in data) {
       data[i].category = data[i].category ? data[i].category.split(",") : [];
       data[i].associatedMaterial = data[i].associatedMaterial
         ? data[i].associatedMaterial.split(",")
@@ -577,7 +577,7 @@ class GradeBook extends UIRenderPieces(
     };
   }
   processrubricsData(data) {
-    for (var i in data) {
+    for (let i in data) {
       data[i].qualitative = data[i].qualitative
         ? data[i].qualitative.split(",")
         : [];
@@ -585,14 +585,14 @@ class GradeBook extends UIRenderPieces(
     return data;
   }
   processrosterData(data) {
-    for (var i in data) {
+    for (let i in data) {
       data[i].interests = data[i].interests ? data[i].interests.split(",") : [];
     }
     return data;
   }
   processsettingsData(data) {
     let d = {};
-    for (var i in data) {
+    for (let i in data) {
       d[data[i].key] = data[i].value;
     }
     return d;
@@ -1310,7 +1310,7 @@ class GradeBook extends UIRenderPieces(
       }
     }, 10);
   }
-  mouseLeave(e) {
+  mouseLeave(_e) {
     clearTimeout(this.__mdebounce);
     this.__mdebounce = setTimeout(() => {
       this.shadowRoot
@@ -1338,7 +1338,7 @@ class GradeBook extends UIRenderPieces(
       }
     }
   }
-  checkTabHeight(e) {
+  checkTabHeight(_e) {
     // toggle between height
     const height = parseInt(
       this.shadowRoot.querySelector("#studentgrid").getBoundingClientRect()
@@ -1349,12 +1349,12 @@ class GradeBook extends UIRenderPieces(
       this.shadowRoot.querySelector("#studentgrid").style.height = null;
     }
   }
-  studentreportClick(e) {
+  studentreportClick(_e) {
     ESGlobalBridgeStore.import(
       "jspdf",
       new URL(`./lib/grade-book.js`, import.meta.url).href + "/../jspdf.min.js",
     ).then(() => {
-      var pdf = new jsPDF();
+      let pdf = new jsPDF();
       pdf.fromHTML(
         this.shadowRoot.querySelector("#studentreport").outerHTML,
         15,
@@ -1369,7 +1369,7 @@ class GradeBook extends UIRenderPieces(
     });
   }
   // open extra window and then render content
-  openWindow(e) {
+  openWindow(_e) {
     if (this.__openWindow && !this.__openWindow.closed) {
       this.__openWindow.focus();
     } else {
@@ -1416,7 +1416,7 @@ class GradeBook extends UIRenderPieces(
     return html`
       <div class="oer-assessment-schema" hidden>
         ${this.database.assignments.map(
-          (a) => html`
+          (_a) => html`
             <span typeof="oer:Assessment">
               <meta property="oer:gradingFormat" content="points" />
               ${this.forCourse
@@ -1587,7 +1587,7 @@ class GradeBook extends UIRenderPieces(
                 <col />
               </colgroup>
               ${this.database.assignments.map(
-                (a, h) =>
+                (_a, _h) =>
                   html`<colgroup>
                     <col />
                   </colgroup>`,
@@ -2007,10 +2007,10 @@ class GradeBook extends UIRenderPieces(
       </a11y-tabs>
     `;
   }
-  selectSource(e) {
+  selectSource(_e) {
     this.source = this.shadowRoot.querySelector("#source").value;
   }
-  loadFromSource(e) {
+  loadFromSource(_e) {
     this.source = this.shadowRoot.querySelector("#source").value;
     if (this.source === "json") {
       this.sourceData = this.shadowRoot.querySelector("#sourcedatablob").value;
@@ -2020,7 +2020,7 @@ class GradeBook extends UIRenderPieces(
       this.sourceData = this.shadowRoot.querySelector("#sourcedata").value;
     }
   }
-  loadFromExistingSource(e) {
+  loadFromExistingSource(_e) {
     this.source = this.shadowRoot.querySelector("#source").value;
     this.loadFromFilesystem(true);
   }
@@ -2047,7 +2047,7 @@ class GradeBook extends UIRenderPieces(
       });
     }
   }
-  async saveToFilesystem(e) {
+  async saveToFilesystem(_e) {
     // return as Blob based output
     // @todo undo the table transform on import so that we can have it as an array
     // form that they want in xlsx files
@@ -2091,7 +2091,7 @@ class GradeBook extends UIRenderPieces(
       "#assessment simple-fields-field[type='number']:not(#totalpts)",
     );
     // add the scores up based on values of the pieces
-    for (var i in Array.from(tables)) {
+    for (let i in Array.from(tables)) {
       if (tables[i].value) {
         score = score + parseInt(tables[i].value);
       }
@@ -2119,7 +2119,7 @@ class GradeBook extends UIRenderPieces(
   /**
    * lock toggle
    */
-  toggleLock(e) {
+  toggleLock(_e) {
     this.scoreLock = !this.scoreLock;
   }
   /**
@@ -2137,7 +2137,7 @@ class GradeBook extends UIRenderPieces(
       "#assessment editable-table-display",
     );
     // add the scores up based on values of the pieces
-    for (var i in Array.from(tables)) {
+    for (let i in Array.from(tables)) {
       if (
         tables[i].shadowRoot.querySelector(
           `[data-rubric-score][data-criteria="${criteria}"]`,
@@ -2189,7 +2189,7 @@ class GradeBook extends UIRenderPieces(
   }
   // ensure when we drop a tag onto the UI that it removes all the outlines
   // of fields that can have items dropped into them
-  _handleDragDrop(e) {
+  _handleDragDrop(_e) {
     globalThis.dispatchEvent(
       new CustomEvent("simple-tag-drop", {
         detail: {

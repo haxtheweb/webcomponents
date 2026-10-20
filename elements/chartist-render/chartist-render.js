@@ -1517,7 +1517,7 @@ const ChartistRenderSuper = function (SuperClass) {
     /**
      * Updates data from table
      */
-    _updateData(mutationsList, observer) {
+    _updateData(_mutationsList, _observer) {
       let table = this.querySelector("table"),
         data = [];
       if (table)

@@ -90,7 +90,7 @@ class SiteModal extends HAXCMSThemeParts(I18NMixin(LitElement)) {
   /**
    * Fire an event for things to react to above us; useful for lazy loading
    */
-  fireEvent(e) {
+  fireEvent(_e) {
     this.dispatchEvent(
       new CustomEvent("site-modal-click", {
         detail: { value: true },
@@ -135,7 +135,7 @@ class SiteModal extends HAXCMSThemeParts(I18NMixin(LitElement)) {
       .associateEvents(this.shadowRoot.querySelector("#btn"));
     setTimeout(() => {
       if (this.children && this.shadowRoot.querySelector("#content")) {
-        for (var i in this.children) {
+        for (let i in this.children) {
           if (typeof this.children[i] === "object") {
             this.shadowRoot
               .querySelector("#content")

@@ -15,7 +15,7 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
     this.visited = false;
     this.slug = null;
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;

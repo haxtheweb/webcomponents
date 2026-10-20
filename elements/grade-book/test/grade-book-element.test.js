@@ -79,7 +79,7 @@ describe("grade-book element", () => {
       brokerCalls.saved.push([format, output]);
       return Promise.resolve(true);
     };
-    XLSXFileSystemBrokerSingleton.loadFile = (ext) => {
+    XLSXFileSystemBrokerSingleton.loadFile = (_ext) => {
       brokerCalls.loaded++;
       return Promise.resolve({ name: "book.xls" });
     };

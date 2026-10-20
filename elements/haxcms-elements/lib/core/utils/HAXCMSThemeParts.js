@@ -8,7 +8,7 @@ const HAXCMSThemeParts = function (SuperClass) {
       super();
       this.__disposer = this.__disposer ? this.__disposer : [];
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.editMode);
           Promise.resolve().then(() => {
             const editMode = _mobx_val_0;
@@ -19,7 +19,7 @@ const HAXCMSThemeParts = function (SuperClass) {
         }),
       );
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.darkMode);
           Promise.resolve().then(() => {
             const darkMode = _mobx_val_0;

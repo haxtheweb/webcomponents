@@ -244,7 +244,7 @@ describe('vendored hljs core API', () => {
     let threw = false
     try {
       hljs.highlight('nosuchlang', 'code')
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.be.true

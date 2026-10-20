@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
-import { SimpleFieldsLite } from "./simple-fields-lite.js";
-import { SimpleFields } from "../simple-fields.js";
+import "./simple-fields-lite.js";
+import "../simple-fields.js";
 /**
  * `simple-fields-form-lite`
  * binding and submission capabilities on top of simple-fields-lite

@@ -204,7 +204,7 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
   handleResponse(response) {
     // the key of pages is a number so need to look for it
     if (typeof response !== typeof undefined && response.query) {
-      for (var key in response.query.pages) {
+      for (let key in response.query.pages) {
         // skip anything that's prototype object
         if (!response.query.pages.hasOwnProperty(key)) continue;
         // load object response, double check we have an extract
@@ -248,7 +248,7 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
     // provider of display for things coming off the API
     store.validGizmoTypes.push("wikipedia");
     if (
-      store.appList.filter((el, i) => {
+      store.appList.filter((el, _i) => {
         // ensure we don't double load the endpoint if already defined
         if (el.connection.url === this.language + ".wikipedia.org") {
           return true;

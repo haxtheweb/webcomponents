@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors";
 

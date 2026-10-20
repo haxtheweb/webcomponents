@@ -1,5 +1,5 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
@@ -210,7 +210,7 @@ class InlineAudio extends I18NMixin(DDD) {
             }
           }
         }
-      } catch (e) {
+      } catch {
         // do nothing if selection fails some how
       }
     }

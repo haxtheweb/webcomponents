@@ -871,7 +871,7 @@ describe('editable-table-display', () => {
     let threw = false
     try {
       display._updateCols()
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.be.false
@@ -1029,7 +1029,7 @@ describe('editable-table-edit', () => {
     const events = []
     const names = ['row-inserted', 'column-inserted', 'row-deleted', 'column-deleted']
     names.forEach((name) =>
-      editor.addEventListener(name, (e) => events.push(name)),
+      editor.addEventListener(name, (_e) => events.push(name)),
     )
     editor.data = [
       ['H1', 'H2'],
@@ -1095,7 +1095,7 @@ describe('editable-table-edit', () => {
       editor.changeCell(99, 99, 'nope')
       editor.changeCell(-1, 0, 'nope')
       editor.changeCell(0, 99, 'nope')
-    } catch (e) {
+    } catch {
       threw = true
     }
     expect(threw).to.be.false

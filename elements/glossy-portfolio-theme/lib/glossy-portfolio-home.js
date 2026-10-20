@@ -26,7 +26,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
 
     // get csite description
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.siteDescription);
         Promise.resolve().then(() => {
           this.siteDescription =
@@ -36,7 +36,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         // themeData is undefined until a manifest with theme variables exists
         // (an unguarded read crashed the reaction before this guard)
         const _mobx_val_0 = toJS(
@@ -53,7 +53,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
 
   disconnectedCallback() {
     // dispose the store reactions so a detached hero stops reacting
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

@@ -53,7 +53,7 @@ describe("grade-book-lite element", () => {
       brokerCalls.saved.push([format, output]);
       return Promise.resolve(true);
     };
-    XLSXFileSystemBrokerSingleton.loadFile = (ext) => {
+    XLSXFileSystemBrokerSingleton.loadFile = (_ext) => {
       brokerCalls.loaded++;
       return Promise.resolve({ name: "book.xls" });
     };
@@ -168,7 +168,7 @@ describe("grade-book-lite element", () => {
 
   it("downloadPDFviaMicro calls the htmlToPdf microservice and resets the loading flag", async () => {
     const el = await loadJsonLite();
-    globalThis.fetch = (url, options) => {
+    globalThis.fetch = (url, _options) => {
       fetchUrls.push(String(url));
       return Promise.resolve({
         ok: true,
@@ -197,7 +197,7 @@ describe("grade-book-lite element", () => {
     // null that MicroFrontendRegistry.call returns for an unregistered
     // service, throwing a TypeError and leaving __pdfLoading stuck on true
     const el = await loadJsonLite();
-    globalThis.fetch = (url, options) => {
+    globalThis.fetch = (url, _options) => {
       fetchUrls.push(String(url));
       return Promise.resolve({
         ok: true,
@@ -211,7 +211,7 @@ describe("grade-book-lite element", () => {
     let threw = false;
     try {
       await el.downloadPDFviaMicro();
-    } catch (e) {
+    } catch {
       threw = true;
     }
     MicroFrontendRegistry.list = savedList;

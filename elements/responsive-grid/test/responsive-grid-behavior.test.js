@@ -130,7 +130,7 @@ describe('responsive-grid-row', () => {
     const fired = new Promise((resolve) =>
       document.addEventListener('responsive-element', resolve, { once: true }),
     )
-    const el = await fixture(html`<responsive-grid-row></responsive-grid-row>`)
+    await fixture(html`<responsive-grid-row></responsive-grid-row>`)
     const e = await fired
     expect(e.detail.attribute).to.equal('screen')
     expect(e.detail.relativeToParent).to.be.false

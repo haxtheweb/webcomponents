@@ -422,7 +422,7 @@ class MatchingQuestion extends QuestionElement {
     this.dragging = false;
     this.dragEnter = false;
     let dragNodes = Array.from(this.shadowRoot.querySelectorAll(".drag-enter"));
-    for (var i in dragNodes) {
+    for (let i in dragNodes) {
       dragNodes[i].classList.remove("drag-enter");
     }
     const text = e.dataTransfer.getData("text/plain");
@@ -501,7 +501,7 @@ class MatchingQuestion extends QuestionElement {
     let active = 0;
     this.__activeOption = { ...tagOption };
     let options = Array.from(this.shadowRoot.querySelectorAll("dialog option"));
-    for (var i in options) {
+    for (let i in options) {
       if (parseInt(options[i].value) === tagOption.guess) {
         active = i;
       }

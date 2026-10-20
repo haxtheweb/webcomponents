@@ -228,7 +228,7 @@ const RadioBehaviors = function (SuperClass) {
      * @param {*} mutationsList
      * @param {*} observer
      */
-    _handleItemChange(mutationsList, observer) {
+    _handleItemChange(mutationsList, _observer) {
       let changed = false;
       //see if any mutations are relevant enough
       mutationsList.forEach((m) => {

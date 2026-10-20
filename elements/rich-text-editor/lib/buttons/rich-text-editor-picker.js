@@ -192,7 +192,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
     }
 
     get labelVisibleClass() {
-      return !!this.icon ? "hide" : "show";
+      return this.icon ? "hide" : "show";
     }
 
     get picker() {

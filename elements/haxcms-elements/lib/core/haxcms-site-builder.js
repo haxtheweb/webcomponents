@@ -7,7 +7,6 @@ import {
   localStorageSet,
   localStorageGet,
   nodeToHaxElement,
-  haxElementToNode,
   sanitizeURLValue,
 } from "@haxtheweb/utils/utils.js";
 import { autorun, toJS } from "mobx";
@@ -369,7 +368,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         let data = JSON.parse(this.file);
         this._updateManifest(data);
         this.loading = false;
-      } catch (e) {
+      } catch {
         // weird looking but this is the typical use-case in which
         // we got a file path and try to load it because the above silently failed
         if (this._timeStamp && this._timeStamp != "") {
@@ -379,7 +378,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             url += `?${this._timeStamp}`;
           }
         }
-        var headers = { cache: "no-cache" };
+        let headers = { cache: "no-cache" };
         await fetch(url, headers)
           .then((response) => {
             if (response.ok) {
@@ -778,7 +777,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       HAXcmsStore.storePieces.siteBuilder = this;
     }
     // support initial setup stuff with slots
-    for (var i in this.children) {
+    for (let i in this.children) {
       if (this.children[i].tagName && this.children[i].getAttribute("slot")) {
         const item = this.children[i].cloneNode(true);
         let key = item.getAttribute("slot");
@@ -903,7 +902,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     import(
       "@haxtheweb/haxcms-elements/lib/core/haxcms-editor-builder.js"
     )
-      .then((response) => {
+      .then((_response) => {
         import("./haxcms-toast.js");
 
         this.editorBuilder = globalThis.document.createElement("haxcms-editor-builder");
@@ -941,7 +940,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     }
     setTimeout(() => {
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.themeData);
           Promise.resolve().then(() => {
             const themeData = _mobx_val_0;
@@ -988,7 +987,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         }),
       );
       this.__disposer.push(
-        autorun((reaction) => {
+        autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.activeItem);
           Promise.resolve().then(() => {
             const activeItem = _mobx_val_0;
@@ -1031,7 +1030,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       clearTimeout(this.__themePaletteReapplyTimer);
       this.__themePaletteReapplyTimer = null;
     }
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();
@@ -1043,7 +1042,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.windowControllers.abort();
     super.disconnectedCallback();
   }
-  storeReady(e) {
+  storeReady(_e) {
     // append UI element to body to avoid stack order issues
     if (
       store.cmsSiteEditor &&
@@ -1074,9 +1073,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   replaceTagReplacement(html) {
     // all closing tags
-    var myRegexp = /\<(\w+?\-\w*.*)\s*?\>/gim;
+    let myRegexp = /\<(\w+?\-\w*.*)\s*?\>/gim;
     // execute 1st match
-    var match = myRegexp.exec(html);
+    let match = myRegexp.exec(html);
     while (match != null) {
       let tag = match[1].replace("<", "").replace(">", "");
       if (tag.indexOf(" ")) {
@@ -1102,7 +1101,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    * React to content being loaded from a page.
    */
   async _activeItemContentChanged(newValue, activeItem) {
-    var htmlcontent = newValue;
+    let htmlcontent = newValue;
     if (htmlcontent !== null && activeItem && activeItem.metadata) {
       // Check if page-break should be hidden by platform configuration
       const pageBreakHidden = store.platformAllows("pageBreak") === false;
@@ -1234,7 +1233,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           const basePath =
             new URL("../../locales/haxcms.es.json", import.meta.url).href +
             "/../";
-          for (var i in tagsFound) {
+          for (let i in tagsFound) {
             const tagName = tagsFound[i];
             if (
               this.manifest.metadata.node.dynamicElementLoader[tagName] &&
@@ -1244,7 +1243,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
               import(
                 `${basePath}../../../../${this.manifest.metadata.node.dynamicElementLoader[tagName]}`
               )
-                .then((response) => {
+                .then((_response) => {
                   //console.warn(tagName + ' dynamic import');
                 })
                 .catch((error) => {
@@ -1266,7 +1265,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   /**
    * got a message that we need to update our json manifest data
    */
-  _triggerUpdatedData(e) {
+  _triggerUpdatedData(_e) {
     // get fresh data if not published
     if (this.isLoggedIn) {
       this._timeStamp = Math.floor(Date.now() / 1000);
@@ -1278,13 +1277,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   /**
    * got a message that we need to update our page content
    */
-  _triggerUpdatedNode(e) {
+  _triggerUpdatedNode(_e) {
     this.loadPageData();
   }
   /**
    * notice manifest changes and ensure slot is rebuilt.
    */
-  _manifestChanged(newValue, oldValue) {
+  _manifestChanged(newValue, _oldValue) {
     if (newValue && newValue.metadata && newValue.items) {
       store.loadManifest(newValue, this);
     }
@@ -1292,7 +1291,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   /**
    * notice theme changes and ensure slot is rebuilt.
    */
-  _themeChanged(newValue, oldValue) {
+  _themeChanged(newValue, _oldValue) {
     if (newValue) {
       this._applyThemePalette(store.themeElement, newValue);
       this._scheduleThemePaletteReapply(newValue);
@@ -1321,7 +1320,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           // import the reference to the item dynamically, if we can
           try {
             // prettier-ignore
-            import(new URL("./../../../../../" + newValue.path, import.meta.url).href).then((e) => {
+            import(new URL("./../../../../../" + newValue.path, import.meta.url).href).then((_e) => {
               // add it into ourselves so it unpacks and we kick this off!
               this.__imported[theme.element] = theme.element;
               this.themeLoaded = true;
@@ -1335,7 +1334,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
                 this.themeLoaded = true;
               });
             });
-          } catch (err) {
+          } catch {
             // error in the event this is a double registration
             // also strange to be able to reach this but technically possible
             this.themeLoaded = true;
@@ -1489,7 +1488,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           .catch(() => {
             /* graph absent on older builds -- no-op */
           });
-      } catch (e) {
+      } catch {
         /* never let warmup break rendering */
       }
     };

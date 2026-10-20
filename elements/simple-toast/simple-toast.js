@@ -195,7 +195,7 @@ class SimpleToast extends DDD {
   /**
    * Hide callback
    */
-  hideSimpleToast(e) {
+  hideSimpleToast(_e) {
     this.hide();
   }
   openedChanged(e) {
@@ -244,10 +244,10 @@ class SimpleToast extends DDD {
     this.show();
   }
 
-  show(e) {
+  show(_e) {
     this.opened = true;
   }
-  hide(e) {
+  hide(_e) {
     if (this.eventCallback) {
       const evt = new CustomEvent(this.eventCallback, {
         bubbles: true,

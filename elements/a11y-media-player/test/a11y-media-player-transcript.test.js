@@ -32,8 +32,9 @@ async function loadCues(el, media) {
 describe("a11y-media-player transcript system", () => {
   let el;
   let media;
+  // eslint-disable-next-line no-unused-vars -- written by the test, never read
   let track;
-  beforeEach(async () => {
+    beforeEach(async () => {
     el = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
     await el.updateComplete;
     media = el.querySelector("video");

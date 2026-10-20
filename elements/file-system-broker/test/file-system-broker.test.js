@@ -343,7 +343,7 @@ describe("FileSystemBroker test", () => {
 
       try {
         await element.openDir();
-      } catch (e) {
+      } catch {
         // Expected in test environment
       }
 
@@ -468,7 +468,7 @@ describe("FileSystemBroker test", () => {
         "fileWithCamelCase.txt",
       ];
 
-      specialNames.forEach((name) => {
+      specialNames.forEach((_name) => {
         const accept = element.typeToAccept("csv");
         expect(accept).to.exist; // Should handle without throwing
       });

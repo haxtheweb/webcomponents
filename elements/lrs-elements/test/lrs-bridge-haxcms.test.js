@@ -13,8 +13,8 @@ const BASE_LOCATION = { baseUrl: 'https://example.com', pathname: '/base' }
 
 describe('lrs-bridge-haxcms test', () => {
   let sandbox
+  // eslint-disable-next-line no-unused-vars -- written by the test, never read
   let fetchStub
-
   beforeEach(async () => {
     sandbox = sinon.createSandbox()
     // stub ALL network access; recordStatement posts to an endpoint

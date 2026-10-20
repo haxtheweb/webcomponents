@@ -259,8 +259,8 @@ class Hal9000 extends LitElement {
     if (this.annyang) {
       this.annyang.removeCommands();
     }
-    var commands = {};
-    for (var i in this.commands) {
+    let commands = {};
+    for (let i in this.commands) {
       if (i.replace(oldValue, newValue) !== i) {
         commands[i.replace(oldValue, newValue)] = this.commands[i];
       } else {
@@ -300,7 +300,7 @@ class Hal9000 extends LitElement {
   /**
    * debug mode changed
    */
-  _debugChanged(newValue, oldValue) {
+  _debugChanged(newValue, _oldValue) {
     if (this.annyang) {
       this.annyang.debug(newValue);
     }

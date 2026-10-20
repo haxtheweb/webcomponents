@@ -25,7 +25,7 @@ class PortalLauncher extends HTMLElement {
   /**
    * life cycle
    */
-  constructor(delayRender = false) {
+  constructor(_delayRender = false) {
     super();
     // set tag for later use
     this.tag = PortalLauncher.tag;
@@ -52,7 +52,7 @@ class PortalLauncher extends HTMLElement {
    */
   click(e) {
     let target = e.target;
-    var eventPath = this.normalizeEventPath(e);
+    let eventPath = this.normalizeEventPath(e);
     // support walking the path in order to find the link clicked
     if (target.tagName !== "A") {
       eventPath.forEach((item) => {

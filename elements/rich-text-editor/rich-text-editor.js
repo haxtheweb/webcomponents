@@ -119,10 +119,10 @@ const RichTextEditorBehaviors = function (SuperClass) {
     render() {
       return html` <div
         id="container"
-        @focus="${(e) => (this.__focused = true)}"
-        @blur="${(e) => (this.__focused = false)}"
-        @mouseover="${(e) => (this.__hovered = true)}"
-        @mouseout="${(e) => (this.__hovered = false)}"
+        @focus="${(_e) => (this.__focused = true)}"
+        @blur="${(_e) => (this.__focused = false)}"
+        @mouseover="${(_e) => (this.__hovered = true)}"
+        @mouseout="${(_e) => (this.__hovered = false)}"
       >
         <slot></slot>
       </div>`;

@@ -2,7 +2,7 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "../flash-card.js";
 import { FlashCard } from "../flash-card.js";
 import "../lib/flash-card-answer-box.js";
-import { FlashCardAnswerBox } from "../lib/flash-card-answer-box.js";
+import "../lib/flash-card-answer-box.js";
 import "../lib/flash-card-prompt-img.js";
 import { FlashCardPromptImg } from "../lib/flash-card-prompt-img.js";
 import "../lib/flash-card-set.js";

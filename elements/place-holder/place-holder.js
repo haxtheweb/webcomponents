@@ -152,7 +152,7 @@ class PlaceHolder extends DDD {
   /**
    * Fire an event for things to react to above us
    */
-  fireReplaceEvent(e) {
+  fireReplaceEvent(_e) {
     this.dispatchEvent(
       new CustomEvent("place-holder-replace", {
         bubbles: true,
@@ -247,7 +247,7 @@ class PlaceHolder extends DDD {
             }),
           );
         }
-      } catch (e) {}
+      } catch {}
     });
   }
   /**

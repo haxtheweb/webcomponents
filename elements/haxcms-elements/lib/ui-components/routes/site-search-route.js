@@ -73,7 +73,7 @@ export class SiteSearchRoute extends HAXCMSI18NMixin(DDD) {
   }
 
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

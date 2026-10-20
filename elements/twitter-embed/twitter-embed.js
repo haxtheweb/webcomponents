@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 const FALLBACK_LANG = "en";
 
@@ -98,7 +98,7 @@ class TwitterEmbed extends I18NMixin(LitElement) {
   /**
    * Supply translations for the UI elements of HAX in meme-maker
    */
-  haxgizmoRegistration(store) {
+  haxgizmoRegistration(_store) {
     globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {

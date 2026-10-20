@@ -173,7 +173,7 @@ class SimpleBlogHeader extends SimpleColors {
     super.connectedCallback();
     this.__disposer = [];
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           let manifest = _mobx_val_0;
@@ -199,7 +199,7 @@ class SimpleBlogHeader extends SimpleColors {
     );
   }
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       if (typeof this.__disposer[i] === "function") {
         this.__disposer[i]();
       } else if (

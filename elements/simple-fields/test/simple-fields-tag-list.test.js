@@ -1,4 +1,4 @@
-import { fixture, expect, html, oneEvent, aTimeout } from '@open-wc/testing'
+import { fixture, expect, html, oneEvent } from '@open-wc/testing'
 
 import '../lib/simple-fields-tag-list.js'
 

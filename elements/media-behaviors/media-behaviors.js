@@ -38,8 +38,8 @@ globalThis.MediaBehaviors.Video = {
     // ensure we are NOT local and do a sanity check
     if (type != "local" && typeof input === "string") {
       // strip off the ? modifier for youtube/vimeo so we can build ourselves
-      var tmp = input.split("?");
-      var v = "";
+      let tmp = input.split("?");
+      let v = "";
       input = tmp[0];
       if (tmp.length == 2) {
         let tmp2 = tmp[1].split("&"),

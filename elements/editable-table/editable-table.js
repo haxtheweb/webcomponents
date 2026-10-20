@@ -5,13 +5,7 @@
 import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
-import {
-  editBehaviors,
-  editableTableStyles,
-  tableHtmlProperties,
-  displayProperties,
-  dataProperties,
-} from "./lib/editable-table-behaviors.js";
+import { editBehaviors } from "./lib/editable-table-behaviors.js";
 import "./lib/editable-table-display.js";
 import "./lib/editable-table-edit.js";
 
@@ -193,7 +187,7 @@ class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
             `
           : nothing}
         ${this.tbody.map(
-          (row, rowIndex) => html`
+          (row, _rowIndex) => html`
             <span typeof="oer:RubricCriterion">
               <meta property="oer:criterionWeight" content="1" />
               ${row.map((cell, colIndex) =>
@@ -350,7 +344,7 @@ class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
     }
   }
 
-  async _handleCellChanged(e) {
+  async _handleCellChanged(_e) {
     // ensure the DOM is updated to match the data
     if (this.editor && globalThis.HaxStore) {
       // if HAX is here, ensure we ignore activation

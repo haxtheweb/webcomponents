@@ -126,7 +126,7 @@ class HAXCMSSystemAllowedBlocks extends HAXCMSAllowedBlocksUI {
         await HAXStore._loadAppStoreData(appStoreData);
       }
       this.__inventoryBootstrapComplete = true;
-    } catch (e) {
+    } catch {
       this.__inventoryBootstrapComplete = false;
     }
     this.__inventoryBootstrapPending = false;

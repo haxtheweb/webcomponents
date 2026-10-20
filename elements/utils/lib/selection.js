@@ -68,7 +68,7 @@ export function isElementInViewport(
     left: 0,
   },
 ) {
-  var rect = el.getBoundingClientRect();
+  let rect = el.getBoundingClientRect();
   return (
     rect.top >= bounds.top &&
     rect.left >= bounds.left &&

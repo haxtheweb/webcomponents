@@ -19,9 +19,9 @@ export function varGet(obj, path, fallback = "") {
 export function objectValFromStringPos(o, s, r = null) {
   s = s.replace(/\[(\w+)\]/g, ".$1"); // convert indexes to properties
   s = s.replace(/^\./, ""); // strip a leading dot
-  var a = s.split(".");
-  for (var i = 0, n = a.length; i < n; ++i) {
-    var k = a[i];
+  let a = s.split(".");
+  for (let i = 0, n = a.length; i < n; ++i) {
+    let k = a[i];
     if (o) {
       if (k in o) {
         o = o[k];
@@ -46,7 +46,7 @@ export function valueMapTransform(items, map) {
     items.forEach((item) => {
       // create tag for the map
       let tmp = {};
-      for (var key in map) {
+      for (let key in map) {
         let value = map[key];
         // complex transform capability for values that need processing
         // prior to being set

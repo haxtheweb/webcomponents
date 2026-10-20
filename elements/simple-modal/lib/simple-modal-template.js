@@ -75,7 +75,7 @@ class SimpleModalTemplate extends LitElement {
    * @returns {object} the modal object
    */
   associateEvents(target, evt = "click", bubbles = true, cancelable = true) {
-    target.addEventListener(evt, (e) => {
+    target.addEventListener(evt, (_e) => {
       this.openModal(target, bubbles, cancelable);
     });
     return this.modal;

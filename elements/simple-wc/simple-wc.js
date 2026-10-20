@@ -99,7 +99,7 @@ export function createSWC(swc) {
       }
       changedProperties.forEach((old, name) => {
         if (swc.data.observe) {
-          swc.data.observe.forEach((value, key) => {
+          swc.data.observe.forEach((value, _key) => {
             // we have something we are observing
             if (value[0].includes(name)) {
               let result;

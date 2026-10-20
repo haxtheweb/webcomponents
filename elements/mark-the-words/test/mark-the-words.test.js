@@ -37,10 +37,7 @@ describe("mark-the-words test", () => {
       if (buttons.length > 0) {
         const firstButton = buttons[0];
         // Check that focus styling exists
-        const computedStyle = globalThis.getComputedStyle(
-          firstButton,
-          ":focus",
-        );
+        globalThis.getComputedStyle(firstButton, ":focus");
         expect(firstButton).to.exist;
       }
     });

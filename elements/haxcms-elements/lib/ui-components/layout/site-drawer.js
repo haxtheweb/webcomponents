@@ -105,10 +105,10 @@ class SiteDrawer extends LitElement {
       </div>
     `;
   }
-  toggle(e) {
+  toggle(_e) {
     this.opened = !this.opened;
   }
-  close(e) {
+  close(_e) {
     this.opened = false;
   }
   static get tag() {

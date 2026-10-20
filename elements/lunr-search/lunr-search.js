@@ -237,7 +237,7 @@ class LunrSearch extends I18NMixin(LitElement) {
     this.windowControllers.abort();
     super.disconnectedCallback();
   }
-  _lunrLoaded(e) {
+  _lunrLoaded(_e) {
     // callback when loaded
     this.__lunrLoaded = true;
     this.windowControllers.abort();
@@ -335,17 +335,17 @@ class LunrSearch extends I18NMixin(LitElement) {
               // index under the data's own id when present so
               // searched() matches refs against j.id
               // (haxtheweb/issues#3102)
-              var toIndex = {
+              let toIndex = {
                 id:
                   data[i].id !== undefined && data[i].id !== null
                     ? data[i].id
                     : i,
               };
-              for (var f = 0; f < fields.length; f++) {
+              for (let f = 0; f < fields.length; f++) {
                 if (
                   data[i].hasOwnProperty(fields[f]) &&
                   data[i][fields[f]] !== null &&
-                  typeof data[i][fields[f]].toString == "function" &&
+                  typeof data[i][fields[f]].toString === "function" &&
                   (data[i][fields[f]].toString().split(" ").length > 2 ||
                     data[i][fields[f]].toString().length < 30)
                 ) {
@@ -362,7 +362,7 @@ class LunrSearch extends I18NMixin(LitElement) {
           // find fields
           // TODO only word best fields.
           var fields = [];
-          var ddup = {};
+          let ddup = {};
           return lunr(function () {
             // remove the stop word filter BEFORE add() (see explicit
             // fields branch, haxtheweb/issues#3102)
@@ -370,11 +370,11 @@ class LunrSearch extends I18NMixin(LitElement) {
               this.pipeline.remove(lunr.stopWordFilter);
             }
             for (
-              var indexOfData = 0;
+              let indexOfData = 0;
               indexOfData < data.length;
               indexOfData++
             ) {
-              for (var prop in data[indexOfData]) {
+              for (let prop in data[indexOfData]) {
                 if (
                   prop.charAt(0) !== "_" &&
                   !ddup.hasOwnProperty(prop) &&
@@ -394,13 +394,13 @@ class LunrSearch extends I18NMixin(LitElement) {
             if (fields.length > 0) {
               root.fields = fields;
             }
-            for (var i = 0; i < data.length; i++) {
-              var toIndex = { id: i };
-              for (var f = 0; f < fields.length; f++) {
+            for (let i = 0; i < data.length; i++) {
+              let toIndex = { id: i };
+              for (let f = 0; f < fields.length; f++) {
                 if (
                   data[i].hasOwnProperty(fields[f]) &&
                   data[i][fields[f]] !== null &&
-                  typeof data[i][fields[f]].toString == "function" &&
+                  typeof data[i][fields[f]].toString === "function" &&
                   (data[i][fields[f]].toString().split(" ").length > 2 ||
                     data[i][fields[f]].toString().length < 30)
                 ) {

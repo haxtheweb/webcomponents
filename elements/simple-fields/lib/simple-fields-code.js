@@ -124,7 +124,7 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
     this.readonly = false;
   }
   disconnectedCallback() {
-    this.removeEventListener("click", (e) => this.focus());
+    this.removeEventListener("click", (_e) => this.focus());
     super.disconnectedCallback();
   }
 
@@ -161,8 +161,8 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
           ?read-only="${this.readonly || this.disabled}"
           @value-changed="${this._onChange}"
           @focused-changed="${this._onFocusChange}"
-          @code-editor-focus="${(e) => this.focused == true}"
-          @code-editor-blur="${(e) => this.focused == false}"
+          @code-editor-focus="${(_e) => this.focused == true}"
+          @code-editor-blur="${(_e) => this.focused == false}"
           part="editor"
         >
         </code-editor>
@@ -177,7 +177,7 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
    * @memberof SimpleFieldsCode
    */
   _onChange(e) {
-    var target = normalizeEventPath(e)[0];
+    let target = normalizeEventPath(e)[0];
     if (!target) return;
     if (this.value !== target.value) this.value = target.value;
     //this.autoGrow(target);

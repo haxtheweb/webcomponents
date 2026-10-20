@@ -304,7 +304,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
     let path = "";
     try {
       path = globalThis.location.pathname || "";
-    } catch (e) {
+    } catch {
       path = "";
     }
     const base = BulletCheckList.baseId(this);
@@ -315,7 +315,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
       n = peers
         .filter((peer) => BulletCheckList.baseId(peer) === base)
         .indexOf(this);
-    } catch (e) {
+    } catch {
       n = 0;
     }
     return `bullet-check-list:v1:${path}:${base}${n > 0 ? `:${n}` : ""}`;
@@ -328,7 +328,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
       if (data && Array.isArray(data.checked)) {
         return data.checked.filter((k) => typeof k === "string");
       }
-    } catch (e) {
+    } catch {
       // storage blocked, full or corrupt: behave as if nothing is saved
     }
     return [];
@@ -341,7 +341,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
         JSON.stringify({ v: 1, checked: this._checked }),
       );
       return true;
-    } catch (e) {
+    } catch {
       // keep working in memory only
       return false;
     }
@@ -516,7 +516,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
   static generateId() {
     try {
       return `bcl-${globalThis.crypto.randomUUID()}`;
-    } catch (e) {
+    } catch {
       return `bcl-${Date.now().toString(36)}-${Math.random()
         .toString(36)
         .slice(2, 10)}`;

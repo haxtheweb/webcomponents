@@ -164,7 +164,7 @@ class A11yGifPlayer extends I18NMixin(
       `,
     ];
   }
-  __imageLoaded(e) {
+  __imageLoaded(_e) {
     this.__gifLoaded = true;
   }
   render() {
@@ -352,7 +352,7 @@ class A11yGifPlayer extends I18NMixin(
       globalThis.MicroFrontendRegistry.requestAvailability();
     await import(
       "@haxtheweb/micro-frontend-registry/lib/microServices.js"
-    ).then((e) => {
+    ).then((_e) => {
       MicroFrontendRegistry.enableServices(["core"]);
     });
     return MicroFrontendRegistry.url("@core/imgManipulate", {
@@ -378,14 +378,14 @@ class A11yGifPlayer extends I18NMixin(
     });
     globalThis.addEventListener(
       "beforeprint",
-      (event) => {
+      (_event) => {
         this.shadowRoot.querySelector("#longdesc").toggleOpen();
       },
       { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener(
       "afterprint",
-      (event) => {
+      (_event) => {
         this.shadowRoot.querySelector("#longdesc").toggleOpen();
       },
       { signal: this.windowControllers.signal },

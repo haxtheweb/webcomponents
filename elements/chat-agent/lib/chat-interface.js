@@ -654,7 +654,7 @@ class ChatInterface extends DDD {
     `;
   }
 
-  finishedTyping(e) {
+  finishedTyping(_e) {
     if (this.chatLog.length > 1) {
       // Ensures that scroll to bottom does not occur on intro message
       const SCROLLABLE_ELEMENT =

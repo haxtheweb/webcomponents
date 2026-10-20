@@ -372,7 +372,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
               values,
             );
             this.loading = false;
-          } catch (e) {
+          } catch {
             this.loading = false;
           }
         }, 50);
@@ -998,8 +998,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     });
     // order alphabeticly
     tmpItems.sort((a, b) => {
-      var textA = a.title.toUpperCase();
-      var textB = b.title.toUpperCase();
+      let textA = a.title.toUpperCase();
+      let textB = b.title.toUpperCase();
       return textA < textB ? -1 : textA > textB ? 1 : 0;
     });
     // highest priority if item title is exact match
@@ -1269,7 +1269,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   // if we have no results, allow for a slot to be applied via someone
   // consuming this in their app. example - providing a link to suggest a
   // new command be added
-  noResultsSlot(searchTerm) {
+  noResultsSlot(_searchTerm) {
     return;
   }
   /**
@@ -1363,25 +1363,25 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   randomResponse(responses) {
     return responses[Math.floor(Math.random() * responses.length)];
   }
-  toggleSantaMode(e) {
+  toggleSantaMode(_e) {
     this.santaMode = !this.santaMode;
     setTimeout(() => {
       let say = this.t.santaModeActivated;
       if (!this.santaMode) {
         say = this.t.santaModeDeactivated;
       }
-      this.hal.speak(say, this.santaMode).then((e) => {
+      this.hal.speak(say, this.santaMode).then((_e) => {
         this.setListeningStatus(this.santaMode);
         this.hal.setToast(this.t.listening);
       });
     }, 0);
   }
   merlinSpeak(phrase) {
-    this.hal.speak(phrase, false, false).then((e) => {
+    this.hal.speak(phrase, false, false).then((_e) => {
       this.close();
     });
   }
-  promptMerlin(e) {
+  promptMerlin(_e) {
     if (!this.opened) {
       this.open();
     }
@@ -1399,20 +1399,20 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         ]),
         this.santaMode,
       )
-      .then((e) => {
-        this.playSound().then((e) => {
+      .then((_e) => {
+        this.playSound().then((_e) => {
           this.listeningForInput = true;
           this.__closeLock = false;
         });
       });
   }
-  stopMerlin(e) {
+  stopMerlin(_e) {
     if (this.santaMode) {
       this.hal.speak(this.t.disableSantaModeToStop, this.santaMode);
     }
     this.setListeningStatus(false);
   }
-  closeMerlin(e) {
+  closeMerlin(_e) {
     if (!this.santaMode) {
       this.hal
         .speak(
@@ -1424,7 +1424,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           ]),
           this.santaMode,
         )
-        .then((e) => {
+        .then((_e) => {
           this.close();
         });
     } else {
@@ -1448,36 +1448,36 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.addVoiceCommand(`belsnickel`, this, "belsnickel");
     this.addVoiceCommand(`scroll`, this, "scroll");
 
-    this.voiceCommands[`scroll up`] = (response) => {
+    this.voiceCommands[`scroll up`] = (_response) => {
       globalThis.scrollBy({
         top: -(globalThis.innerHeight * 0.5),
         left: 0,
         behavior: "smooth",
       });
     };
-    this.voiceCommands[`scroll (down)`] = (response) => {
+    this.voiceCommands[`scroll (down)`] = (_response) => {
       globalThis.scrollBy({
         top: globalThis.innerHeight * 0.5,
         left: 0,
         behavior: "smooth",
       });
     };
-    this.voiceCommands[`scroll (to) bottom`] = (response) => {
+    this.voiceCommands[`scroll (to) bottom`] = (_response) => {
       globalThis.scrollTo(0, globalThis.document.body.scrollHeight);
     };
-    this.voiceCommands[`scroll (to) top`] = (response) => {
+    this.voiceCommands[`scroll (to) top`] = (_response) => {
       globalThis.scrollTo(0, 0);
     };
-    this.voiceCommands[`back to top`] = (response) => {
+    this.voiceCommands[`back to top`] = (_response) => {
       globalThis.scrollTo(0, 0);
     };
 
-    this.voiceCommands["(run) program"] = (response) => {
+    this.voiceCommands["(run) program"] = (_response) => {
       this.commandContextChanged({
         detail: { value: "/", label: this.t.programModeActivated },
       });
     };
-    this.voiceCommands["developer (mode)"] = (response) => {
+    this.voiceCommands["developer (mode)"] = (_response) => {
       this.commandContextChanged({
         detail: { value: ">", label: this.t.developerModeActivated },
       });
@@ -1613,7 +1613,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
               item.voice
                 ? item.voice.toLocaleLowerCase()
                 : item.title.toLocaleLowerCase()
-            ] = (response) => {
+            ] = (_response) => {
               this.shadowRoot.querySelector("super-daemon-ui").items = [item];
               this.value = item.title;
               this.shadowRoot.querySelector("super-daemon-ui").filtered = [
@@ -1627,7 +1627,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
               }, 0);
               // if program, reset input and prompt for more!
               if (item.value.program) {
-                this.playSound().then((e) => {
+                this.playSound().then((_e) => {
                   this.shadowRoot.querySelector("super-daemon-ui").focusInput();
                 });
               } else {
@@ -1662,8 +1662,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         if (e.detail.label) {
           this.__closeLock = true;
           this.listeningForInput = false;
-          this.hal.speak(`${e.detail.label} mode activated`).then((e) => {
-            this.playSound().then((e) => {
+          this.hal.speak(`${e.detail.label} mode activated`).then((_e) => {
+            this.playSound().then((_e) => {
               this.reprocessVoiceCommands();
               this.__closeLock = false;
               this.listeningForInput = true;

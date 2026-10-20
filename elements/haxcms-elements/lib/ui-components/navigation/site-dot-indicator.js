@@ -148,7 +148,7 @@ class SiteDotIndicator extends LitElement {
         .querySelector("#list")
         .removeChild(this.shadowRoot.querySelector("#list").firstChild);
     }
-    for (var i in routerManifest.items) {
+    for (let i in routerManifest.items) {
       let li = globalThis.document.createElement("li");
       li.setAttribute("data-item", routerManifest.items[i].id);
       li.setAttribute("title", routerManifest.items[i].title);
@@ -164,7 +164,7 @@ class SiteDotIndicator extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.routerManifest);
         Promise.resolve().then(() => {
           this.routerManifest = _mobx_val_0;
@@ -172,7 +172,7 @@ class SiteDotIndicator extends LitElement {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeId);
         Promise.resolve().then(() => {
           this.activeId = _mobx_val_0;
@@ -182,7 +182,7 @@ class SiteDotIndicator extends LitElement {
     // keep editMode in sync globally so we can block navigation through the
     // dot indicator while the user is modifying the active page
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -205,7 +205,7 @@ class SiteDotIndicator extends LitElement {
     }
   }
   disconnectedCallback() {
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

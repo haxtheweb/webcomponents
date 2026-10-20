@@ -508,7 +508,7 @@ describe("app-hax test", () => {
 
     it("should create bug report URL", async () => {
       let capturedUrl = null;
-      globalThis.open = (url, target) => {
+      globalThis.open = (url, _target) => {
         capturedUrl = url;
       };
 
@@ -521,7 +521,7 @@ describe("app-hax test", () => {
 
     it("should create feature request URL", async () => {
       let capturedUrl = null;
-      globalThis.open = (url, target) => {
+      globalThis.open = (url, _target) => {
         capturedUrl = url;
       };
 
@@ -533,7 +533,7 @@ describe("app-hax test", () => {
 
     it("should create merlin command request", async () => {
       let capturedUrl = null;
-      globalThis.open = (url, target) => {
+      globalThis.open = (url, _target) => {
         capturedUrl = url;
       };
 

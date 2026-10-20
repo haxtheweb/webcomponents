@@ -47,7 +47,7 @@ const PAGE_AS_DATA_FORMATS = [
 ];
 
 export const createPageAsDataProgram = (context) => {
-  return async (input, values) => {
+  return async (input, _values) => {
     let results = [];
     let normalizedInput = "";
     if (input) {

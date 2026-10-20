@@ -1,6 +1,6 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
-import { TaggingQuestion } from "../tagging-question.js";
+import "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import "../tagging-question.js";
 import { render } from "lit";
 
 // directions text comes from this.t, so read what actually renders

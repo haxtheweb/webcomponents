@@ -36,7 +36,7 @@ class MoarSarcasm extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.render();
     this.observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
+      mutations.forEach((_mutation) => {
         this.say = this.innerText;
       });
     });
@@ -124,7 +124,7 @@ class MoarSarcasm extends HTMLElement {
     // empty whats there
     this.shadowRoot.querySelector(".sarcastic").innerHTML = "";
     // loop through text to process and convert to span tags
-    for (var i = 0; i < text.length; i++) {
+    for (let i = 0; i < text.length; i++) {
       let tag = globalThis.document.createElement("span");
       if (text.charAt(i).match(/[a-z]/i)) {
         tag.classList.add("letter");

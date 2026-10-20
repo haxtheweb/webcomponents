@@ -133,7 +133,7 @@ class SiteActiveTags extends I18NMixin(LitElement) {
       basePath: import.meta.url,
     });
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeTags);
         Promise.resolve().then(() => {
           this.tags = _mobx_val_0;
@@ -141,7 +141,7 @@ class SiteActiveTags extends I18NMixin(LitElement) {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
         Promise.resolve().then(() => {
           this.editMode = _mobx_val_0;
@@ -168,7 +168,7 @@ class SiteActiveTags extends I18NMixin(LitElement) {
             this.activateController = new AbortController();
             this.addEventListener(
               "click",
-              (e) => {
+              (_e) => {
                 haxStore.activeNode =
                   haxStore.activeHaxBody.querySelector("page-break");
               },
@@ -217,7 +217,7 @@ class SiteActiveTags extends I18NMixin(LitElement) {
    */
   disconnectedCallback() {
     // clean up state
-    for (var i in this.__disposer) {
+    for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
         disposer();

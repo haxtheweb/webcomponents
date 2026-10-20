@@ -35,7 +35,7 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
     this.items = [];
     // keep manifest / items in sync globally, same pattern used by other themes
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0 || {};
@@ -43,7 +43,7 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
       }),
     );
     this.__disposer.push(
-      autorun((reaction) => {
+      autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.routerManifest);
         Promise.resolve().then(() => {
           this.items = (_mobx_val_0 && _mobx_val_0.items) || [];
@@ -260,8 +260,8 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
    * that it ensures that happens
    */
   _itemTapped(e) {
-    var local = e.target;
-    var activeId = local.getAttribute("data-id");
+    let local = e.target;
+    let activeId = local.getAttribute("data-id");
     if (local.tagName === "BUTTON" && typeof activeId !== typeof undefined) {
       // console log these so you can debug easily as you build out
       console.warn(this.manifest);

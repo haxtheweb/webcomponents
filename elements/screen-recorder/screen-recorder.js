@@ -411,7 +411,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
     };
   }
 
-  haxgizmoRegistration(store) {
+  haxgizmoRegistration(_store) {
     globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
