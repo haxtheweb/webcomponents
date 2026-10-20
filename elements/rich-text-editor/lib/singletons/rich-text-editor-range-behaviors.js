@@ -6,6 +6,7 @@ import "./rich-text-editor-highlight.js";
 import "./rich-text-editor-clipboard.js";
 import "./rich-text-editor-source.js";
 import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
+import { stripHtmlComments } from "../stripHtmlComments.js";
 
 export const RichTextEditorRangeBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -157,9 +158,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @returns {string}
      */
     trimString(str) {
-      return (str || "")
-        .replace(/<!--[\s\S]*?-->/g, "")
-        .replace(/[\s\t\r\n]/gim, "");
+      return stripHtmlComments(str).replace(/[\s\t\r\n]/gim, "");
     }
     /**
      * cleans up indents and extra spaces in HTML string for source code editor

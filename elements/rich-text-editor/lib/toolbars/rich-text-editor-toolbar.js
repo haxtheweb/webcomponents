@@ -19,6 +19,7 @@ import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-underline.js";
 import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-image.js";
 import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-link.js";
 import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-unlink.js";
+import { stripHtmlComments } from "../stripHtmlComments.js";
 
 globalThis.RichTextEditorToolbars = globalThis.RichTextEditorToolbars || [];
 /**
@@ -1541,9 +1542,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             bubbles: true,
             composed: true,
             cancelable: true,
-            detail: (this.target.innerHTML || "")
-              .replace(/<!--[\s\S]*?-->/g, "")
-              .trim(),
+            detail: stripHtmlComments(this.target.innerHTML).trim(),
           }),
         );
       }
@@ -1583,9 +1582,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             bubbles: true,
             composed: true,
             cancelable: true,
-            detail: (this.target.innerHTML || "")
-              .replace(/<!--[\s\S]*?-->/g, "")
-              .trim(),
+            detail: stripHtmlComments(this.target.innerHTML).trim(),
           }),
         );
       }
