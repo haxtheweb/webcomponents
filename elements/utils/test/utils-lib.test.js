@@ -1429,6 +1429,8 @@ describe("utils regex hardening", () => {
 
   it("stripMSWord removes comments, declarations and attributes as before", () => {
     expect(stripMSWord("a<!-- c\n x -->b<!DOCTYPE html>c")).to.equal("abc");
+    // nested comment openers cannot survive a single pass
+    expect(stripMSWord("a<!<!-- x -->-- y -->b")).to.not.contain("<!--");
     expect(
       stripMSWord('<p style="color:red" id="a" class="x">hi</p>'),
     ).to.equal("<p>hi</p>");

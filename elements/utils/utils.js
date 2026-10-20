@@ -1516,7 +1516,12 @@ function stripMSWord(input) {
     .replace(/( class=(")?Mso[a-zA-Z]+(")?)/g, "");
 
   // 2. strip Word generated HTML comments
-  output = output.replace(/<!--[\s\S]*?-->/gim, "");
+  // repeat until stable so "<!<!-- x -->-- y -->" cannot leave a comment opener behind
+  let beforeCommentStrip;
+  do {
+    beforeCommentStrip = output;
+    output = output.replace(/<!--[\s\S]*?-->/gim, "");
+  } while (output !== beforeCommentStrip);
   output = output.replace(/<![^>]*>/gim, "");
   // 3. remove tags leave content if any (but NOT span tags yet)
   output = output.replace(
