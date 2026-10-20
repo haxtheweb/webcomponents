@@ -75,22 +75,23 @@ class PouchDb extends HTMLElement {
     let eventData = e.detail;
     let whatEvent = e.target.tagName;
 
+    let activityDisplay, activityId, objectId, objectName, objectDescription, resultScoreScaled, resultScoreMin, resultScoreMax, resultScoreRaw, resultSuccess, resultCompletion, resultResponse, resultDuration;
     switch (whatEvent) {
       case "MULTIPLE-CHOICE": {
-        var activityDisplay = eventData.activityDisplay;
-        var activityId = "http://adlnet.gov/expapi/verbs/" + activityDisplay; //this may need to be changed in the future for more verbs
-        var objectId = "http://haxcms.psu.edu/haxQuiz";
-        var objectName = eventData.objectName;
-        var objectDescription = "HAX Quiz";
+        activityDisplay = eventData.activityDisplay;
+        activityId = "http://adlnet.gov/expapi/verbs/" + activityDisplay; //this may need to be changed in the future for more verbs
+        objectId = "http://haxcms.psu.edu/haxQuiz";
+        objectName = eventData.objectName;
+        objectDescription = "HAX Quiz";
         //hard-coded for now for results, future tracking change to pull data from eventData.x
-        var resultScoreScaled = 1;
-        var resultScoreMin = 0;
-        var resultScoreMax = 100;
-        var resultScoreRaw = 100;
-        var resultSuccess = eventData.resultSuccess;
-        var resultCompletion = true;
-        var resultResponse = "sample";
-        var resultDuration = "sample";
+        resultScoreScaled = 1;
+        resultScoreMin = 0;
+        resultScoreMax = 100;
+        resultScoreRaw = 100;
+        resultSuccess = eventData.resultSuccess;
+        resultCompletion = true;
+        resultResponse = "sample";
+        resultDuration = "sample";
         //hard-coded for now for results, future tracking change to pull data from eventData.x
         break;
       }

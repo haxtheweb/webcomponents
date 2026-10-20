@@ -79,10 +79,11 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             border-bottom: var(--a11y-menu-button-border-bottom, unset);
             border: var(
               --a11y-menu-button-border,
-              1px solid light-dark(
-                var(--ddd-theme-default-limestoneLight),
-                var(--ddd-theme-default-limestoneMaxLight)
-              )
+              1px solid
+                light-dark(
+                  var(--ddd-theme-default-limestoneLight),
+                  var(--ddd-theme-default-limestoneMaxLight)
+                )
             );
             box-shadow: var(--a11y-menu-button-box-shadow, unset);
             transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
@@ -117,10 +118,11 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
               --a11y-menu-button-focus-border,
               var(
                 --a11y-menu-button-border,
-                1px solid light-dark(
-                  var(--ddd-theme-default-limestoneLight),
-                  var(--ddd-theme-default-limestoneMaxLight)
-                )
+                1px solid
+                  light-dark(
+                    var(--ddd-theme-default-limestoneLight),
+                    var(--ddd-theme-default-limestoneMaxLight)
+                  )
               )
             );
             box-shadow: var(
@@ -135,10 +137,11 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
               --a11y-menu-button-list-border,
               var(
                 --a11y-menu-button-border,
-                1px solid light-dark(
-                  var(--ddd-theme-default-limestoneLight),
-                  var(--ddd-theme-default-limestoneMaxLight)
-                )
+                1px solid
+                  light-dark(
+                    var(--ddd-theme-default-limestoneLight),
+                    var(--ddd-theme-default-limestoneMaxLight)
+                  )
               )
             );
             background-color: var(
@@ -444,17 +447,16 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     focusByCharacter(char) {
-      var start,
-        index,
-        char = char.toLowerCase(),
-        firstChars = (startIndex, char) => {
-          for (let i = startIndex; i < this.firstChars.length; i++) {
-            if (char === this.firstChars[i]) {
-              return i;
-            }
+      let start, index;
+      char = char.toLowerCase();
+      const firstChars = (startIndex, char) => {
+        for (let i = startIndex; i < this.firstChars.length; i++) {
+          if (char === this.firstChars[i]) {
+            return i;
           }
-          return -1;
-        };
+        }
+        return -1;
+      };
 
       // Get start index for search based on position of currentItem
       start = this.menuItems.indexOf(this.currentItem) + 1;
@@ -783,7 +785,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
               flag = true;
             }
             break;
-}
+          }
 
           default:
             if (isPrintableCharacter(char)) {

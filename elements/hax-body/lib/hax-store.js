@@ -4366,14 +4366,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   async _haxStoreContribute(type, tags, daemonTerm = null) {
     const reportType = type || "bug";
     let body = "";
+    let title;
     if (reportType == "merlin") {
-      var title = `[${reportType}] New command request from HAX daemon`;
+      title = `[${reportType}] New command request from HAX daemon`;
       body = `Location: ${globalThis.location.href}
 Merlin command: ${daemonTerm}
 What did you want merlin to do?
 `;
     } else {
-      var title = `[${reportType}] User report from HAX daemon`;
+      title = `[${reportType}] User report from HAX daemon`;
       body = `Location: ${globalThis.location.href}
 Browser: ${navigator.userAgent}
 OS: ${this.getOperatingSystem()} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores

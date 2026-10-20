@@ -279,8 +279,9 @@ class LunrSearch extends I18NMixin(LitElement) {
     }
     if (data && index && search) {
       let results = [];
+      let searched;
       if ("" + search !== "") {
-        var searched = index.search(search);
+        searched = index.search(search);
         for (let i = 0; i < searched.length; i++) {
           if (i === limit || searched[i].score < minScore) {
             break;
@@ -300,7 +301,6 @@ class LunrSearch extends I18NMixin(LitElement) {
           );
         }
         searched = this.indexNoStopWords.search(search);
-        let results = [];
         for (let i = 0; i < searched.length; i++) {
           if (i === limit || searched[i].score < minScore) {
             break;

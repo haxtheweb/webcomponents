@@ -124,7 +124,6 @@ class SimpleFieldsArray extends I18NMixin(
           controls="item-fields"
           @click="${(_e) => this._handleAdd()}"
           part="add"
-          icon="more-vert"
           ?toggled="${this.expanded}"
           toggles
           label="${this.t.addItem}"
