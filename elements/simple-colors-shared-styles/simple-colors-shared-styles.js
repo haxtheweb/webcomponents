@@ -981,9 +981,12 @@ class SimpleColorsSharedStyles extends LitElement {
           : "colorColor",
       aa = isLarge ? "aaLarge" : "aa",
       index = this.shadeToIndex(colorShade),
-      range = this.contrasts
-        ? this.contrasts[hasGrey][aa][index]
-        : { min: 0, max: -1 };
+      range = this.contrasts && this.contrasts[hasGrey][aa][index];
+    // no contrast data (unset, or a shade outside 1-12, such as the demo
+    // swatch-info's default "grey_0"): nothing is known to be compliant
+    if (!range) {
+      return [];
+    }
     return Array(range.max - range.min + 1)
       .fill()
       .map((_, idx) => range.min + idx);
@@ -1034,8 +1037,12 @@ class SimpleColorsSharedStyles extends LitElement {
           : "colorColor",
       aa = isLarge ? "aaLarge" : "aa",
       index = this.shadeToIndex(colorShade),
-      range = this.contrasts[hasGrey][aa][index];
-    return contrastShade >= range.min && contrastShade <= range.max;
+      range = this.contrasts && this.contrasts[hasGrey][aa][index];
+    return (
+      Boolean(range) &&
+      contrastShade >= range.min &&
+      contrastShade <= range.max
+    );
   }
 
   /**

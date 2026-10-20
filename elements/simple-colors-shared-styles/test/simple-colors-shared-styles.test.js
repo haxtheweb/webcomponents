@@ -276,15 +276,17 @@ describe('getContrastingShades', () => {
     expect(small).to.deep.equal([8, 9, 10, 11, 12])
   })
 
-  it('throws for invalid shade 0 (shades run 1-12)', () => {
-    expect(() =>
+  it('returns no shades for an invalid shade 0 (shades run 1-12)', () => {
+    // used to throw a TypeError; the demo swatch-info element defaults to
+    // "grey_0", which made it fail to render on the server
+    expect(
       SimpleColorsSharedStylesGlobal.getContrastingShades(
         true,
         'grey',
         0,
         'grey',
       ),
-    ).to.throw(TypeError)
+    ).to.deep.equal([])
   })
 
   it('handles string shade values ("3")', () => {
