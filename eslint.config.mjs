@@ -34,6 +34,9 @@ export default [
       "**/*.amd.js",
       "**/*.es6.js",
       "**/*.cjs",
+      // Tests are not linted (they run under web-test-runner).
+      "elements/**/test/**",
+      "elements/**/*.test.js",
       "elements/h5p-element/lib/**",
       "elements/wave-player/lib/**",
       "elements/moment-element/lib/**",
@@ -102,17 +105,6 @@ export default [
       "no-undef": "error",
       eqeqeq: "error",
       "no-var": "error",
-    },
-  },
-  {
-    // Browser-run test files (web-test-runner + mocha via @open-wc/testing)
-    // expose mocha's BDD globals (describe/it/before.../expect helpers) in
-    // the browser context rather than importing them.
-    files: ["elements/**/test/**/*.js", "elements/**/*.test.js"],
-    languageOptions: {
-      globals: {
-        ...globals.mocha,
-      },
     },
   },
   {
