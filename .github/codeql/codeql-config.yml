@@ -1,0 +1,22 @@
+name: "webcomponents CodeQL config"
+
+# Paths excluded from analysis. Everything else stays scanned.
+# - Tests (**/test/**, *.test.js): fixtures and assertions, not shipped code.
+# - elements/*/demo/**: demo pages and their helper scripts, which are not part
+#   of the published element packages' runtime code.
+# - Vendored third-party files (each carries an upstream header/licence and is
+#   not edited here, so alerts in them are upstream patterns):
+#     elements/utils/lib/marked.js                      marked (markedjs)
+#     elements/la-tex/lib/latex2html5.js                latex2html5 (Dan Lynch)
+#     elements/slide-deck/lib/pptx-rendered.js          minified pptx renderer bundle
+#     elements/chartist-render/lib/**                   chartist + chartist plugins
+#     elements/file-system-broker/lib/xlsx/**           SheetJS
+paths-ignore:
+  - "**/test/**"
+  - "**/*.test.js"
+  - "elements/*/demo/**"
+  - elements/utils/lib/marked.js
+  - elements/la-tex/lib/latex2html5.js
+  - elements/slide-deck/lib/pptx-rendered.js
+  - elements/chartist-render/lib/**
+  - elements/file-system-broker/lib/xlsx/**
