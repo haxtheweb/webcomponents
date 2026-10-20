@@ -7,6 +7,7 @@
  *   elements/i18n-manager/lib/languages.json
  *     -> ../haxcms-nodejs/src/coreConfig/languages.json
  *     -> ../haxcms-php/system/coreConfig/languages.json
+ *     -> ../create/src/lib/languages.json (the hax CLI)
  *   elements/haxcms-elements/lib/haxcms-api-codes.json
  *     -> ../haxcms-nodejs/src/lib/haxcmsApiCodes.json
  *     -> ../haxcms-php/system/backend/php/lib/haxcms-api-codes.json
@@ -33,6 +34,7 @@ const FILES = [
     targets: [
       "../haxcms-nodejs/src/coreConfig/languages.json",
       "../haxcms-php/system/coreConfig/languages.json",
+      "../create/src/lib/languages.json",
     ],
   },
   {
