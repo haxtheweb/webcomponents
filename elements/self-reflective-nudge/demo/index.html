@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>SelfReflectiveNudge: self-reflective-nudge Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../self-reflective-nudge.js";
+      // listen for what the student chose and which nudge they were given
+      document.addEventListener("self-reflective-nudge-response", (e) => {
+        console.log("self-reflective-nudge-response", e.detail);
+      });
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Grade input</h3>
+      <self-reflective-nudge
+        input="grade"
+        prompt="What did you get on the last quiz?"
+      >
+        <p data-nudge data-max-value="1" data-link="node/15">
+          To improve, try focusing on the end of lesson interactive exercises.
+          While not on the exam directly, they show how to answer when it comes
+          time for the next examination. Here is where the previous one was in
+          case you missed it.
+        </p>
+        <p data-nudge data-min-value="2">
+          That is great! Make sure to keep engaging with the materials fully and
+          keep crushing it!
+        </p>
+      </self-reflective-nudge>
+
+      <h3>Mood input (default prompt)</h3>
+      <self-reflective-nudge input="mood">
+        <p data-nudge data-max-value="2" data-link="node/3">
+          Feeling stuck is normal. Revisit the last lesson summary, then try the
+          practice questions again.
+        </p>
+        <p data-nudge data-min-value="3">
+          Glad to hear it. Keep going at your current pace.
+        </p>
+      </self-reflective-nudge>
+    </div>
+  </body>
+</html>
