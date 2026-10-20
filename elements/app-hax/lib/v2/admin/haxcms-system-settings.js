@@ -5,6 +5,10 @@ import {
   HaxSchematizer,
   HaxElementizer,
 } from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
+import {
+  loadLanguageRegistry,
+  matchLanguageCode,
+} from "@haxtheweb/i18n-manager/lib/LanguageRegistry.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -70,39 +74,6 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     this.t = {
       ...this.t,
       providerApiKey: "{provider} API key",
-      langEnUS: "English (United States)",
-      langEnGB: "English (United Kingdom)",
-      langEsES: "Spanish (Spain)",
-      langEsMX: "Spanish (Mexico)",
-      langFrFR: "French (France)",
-      langDeDE: "German (Germany)",
-      langItIT: "Italian (Italy)",
-      langPtBR: "Portuguese (Brazil)",
-      langPtPT: "Portuguese (Portugal)",
-      langNlNL: "Dutch (Netherlands)",
-      langPlPL: "Polish (Poland)",
-      langRuRU: "Russian (Russia)",
-      langUkUA: "Ukrainian (Ukraine)",
-      langJaJP: "Japanese (Japan)",
-      langKoKR: "Korean (Korea)",
-      langZhCN: "Chinese (Simplified)",
-      langZhTW: "Chinese (Traditional)",
-      langArSA: "Arabic (Saudi Arabia)",
-      langHiIN: "Hindi (India)",
-      langTrTR: "Turkish (Turkey)",
-      langSvSE: "Swedish (Sweden)",
-      langDaDK: "Danish (Denmark)",
-      langFiFI: "Finnish (Finland)",
-      langNbNO: "Norwegian (Norway)",
-      langCsCZ: "Czech (Czech Republic)",
-      langElGR: "Greek (Greece)",
-      langHeIL: "Hebrew (Israel)",
-      langThTH: "Thai (Thailand)",
-      langViVN: "Vietnamese (Vietnam)",
-      langIdID: "Indonesian (Indonesia)",
-      langRoRO: "Romanian (Romania)",
-      langHuHU: "Hungarian (Hungary)",
-      langCaES: "Catalan (Spain)",
       status: "Status",
       skeletons: "Skeletons",
       themes: "Themes",
@@ -1319,42 +1290,8 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
               {
                 property: "defaultLanguage",
                 title: this.t.defaultLanguageForNewSites,
-                inputMethod: "select",
-                options: {
-                  "en-US": this.t.langEnUS,
-                  "en-GB": this.t.langEnGB,
-                  "es-ES": this.t.langEsES,
-                  "es-MX": this.t.langEsMX,
-                  "fr-FR": this.t.langFrFR,
-                  "de-DE": this.t.langDeDE,
-                  "it-IT": this.t.langItIT,
-                  "pt-BR": this.t.langPtBR,
-                  "pt-PT": this.t.langPtPT,
-                  "nl-NL": this.t.langNlNL,
-                  "pl-PL": this.t.langPlPL,
-                  "ru-RU": this.t.langRuRU,
-                  "uk-UA": this.t.langUkUA,
-                  "ja-JP": this.t.langJaJP,
-                  "ko-KR": this.t.langKoKR,
-                  "zh-CN": this.t.langZhCN,
-                  "zh-TW": this.t.langZhTW,
-                  "ar-SA": this.t.langArSA,
-                  "hi-IN": this.t.langHiIN,
-                  "tr-TR": this.t.langTrTR,
-                  "sv-SE": this.t.langSvSE,
-                  "da-DK": this.t.langDaDK,
-                  "fi-FI": this.t.langFiFI,
-                  "nb-NO": this.t.langNbNO,
-                  "cs-CZ": this.t.langCsCZ,
-                  "el-GR": this.t.langElGR,
-                  "he-IL": this.t.langHeIL,
-                  "th-TH": this.t.langThTH,
-                  "vi-VN": this.t.langViVN,
-                  "id-ID": this.t.langIdID,
-                  "ro-RO": this.t.langRoRO,
-                  "hu-HU": this.t.langHuHU,
-                  "ca-ES": this.t.langCaES,
-                },
+                inputMethod: "haxcms-language-picker",
+                allowCustom: true,
                 default: "en-US",
               },
             ],
@@ -2590,50 +2527,30 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     return false;
   }
 
-  _localizationLanguageOptions() {
-    const panel = this._getPanelByKey("configuration");
-    if (!panel || !Array.isArray(panel.sections)) {
-      return {};
-    }
-    for (let i = 0; i < panel.sections.length; i++) {
-      const section = panel.sections[i];
-      if (!section || !Array.isArray(section.fields)) {
-        continue;
-      }
-      for (let j = 0; j < section.fields.length; j++) {
-        const field = section.fields[j];
-        if (
-          field &&
-          field.property === "defaultLanguage" &&
-          field.options &&
-          typeof field.options === "object" &&
-          !Array.isArray(field.options)
-        ) {
-          return field.options;
-        }
-      }
-    }
-    return {};
-  }
-
+  /**
+   * Tidy a language code from storage or the form. Known codes and aliases
+   * become the canonical registry code (zh_CN -> zh-CN). Any other
+   * well-formed tag (fr-CA) is kept as is, because the backends accept any
+   * BCP-47 shaped tag. Anything else falls back.
+   */
   _normalizeLanguageTagValue(value, fallback = "") {
-    const options = this._localizationLanguageOptions();
-    const normalized = typeof value === "string" ? value.trim() : "";
-    if (
-      normalized &&
-      Object.prototype.hasOwnProperty.call(options, normalized)
-    ) {
-      return normalized;
-    }
-    const normalizedFallback =
-      typeof fallback === "string" ? fallback.trim() : "";
-    if (
-      normalizedFallback &&
-      Object.prototype.hasOwnProperty.call(options, normalizedFallback)
-    ) {
-      return normalizedFallback;
-    }
-    return "en-US";
+    const clean = (candidate) => {
+      const text = typeof candidate === "string" ? candidate.trim() : "";
+      if (!text) {
+        return "";
+      }
+      let known = null;
+      try {
+        known = matchLanguageCode(text);
+      } catch (e) {
+        // registry not loaded yet; the shape check below still applies
+      }
+      if (known) {
+        return known;
+      }
+      return /^[a-z]{2,3}(-[a-z0-9]{2,8}){0,2}$/i.test(text) ? text : "";
+    };
+    return clean(value) || clean(fallback) || "en-US";
   }
 
   _normalizeLocalizationSettingsRecord(source = {}) {
@@ -2679,6 +2596,8 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
     if (this.__localizationLoaded && !force) {
       return;
     }
+    // so a stored code like zh_CN is shown as its canonical form
+    await loadLanguageRegistry().catch(() => {});
     const response = await this._callAppEndpoint(["getLocalizationSettings"]);
     if (response && response.data && typeof response.data === "object") {
       this._applyLocalizationSettingsRecord(response.data);

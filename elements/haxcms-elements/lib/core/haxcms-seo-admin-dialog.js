@@ -39,7 +39,7 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
       domain: "Domain",
       domainDescription: "Domain of this website",
       language: "Language",
-      languageDescription: "ISO 639-1 language code for this site (for example, en, es, fr).",
+      languageDescription: "Language of this site. Search by name or code, or enter another code such as fr-CA.",
       googleAnalyticsId: "Google Analytics ID",
       googleAnalyticsIdDescription: "Tracking ID used for analytics integrations",
       privateSite: "Private site",
@@ -419,7 +419,8 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
             property: "manifest-metadata-site-settings-lang",
             title: this.t.language,
             description: this.t.languageDescription,
-            inputMethod: "textfield",
+            inputMethod: "haxcms-language-picker",
+            allowCustom: true,
             required: false,
           },
           {
