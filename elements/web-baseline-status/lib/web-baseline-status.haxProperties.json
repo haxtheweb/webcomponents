@@ -1,0 +1,51 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": false,
+  "canEditSource": true,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "Baseline status",
+    "description": "Show the Baseline browser support status of a web platform feature.",
+    "icon": "icons:verified-user",
+    "color": "green",
+    "tags": [
+      "Other",
+      "Developer",
+      "baseline",
+      "web platform",
+      "browser support",
+      "interop"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "featureId",
+        "title": "Feature ID",
+        "description": "ID of the web feature, for example anchor-positioning. Find IDs at webstatus.dev; the ID is the last part of a feature page URL.",
+        "inputMethod": "textfield",
+        "required": true
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["_haxstate"]
+  },
+  "demoSchema": [
+    {
+      "tag": "web-baseline-status",
+      "content": "",
+      "properties": {
+        "featureId": "anchor-positioning"
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "@haxtheweb/web-baseline-status",
+  "version": "0.0.0",
+  "description": "Wrapper that makes the web-platform-dx baseline-status widget usable in HAX",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "haxtheweb"
+  },
+  "keywords": [
+    "webcomponents",
+    "lit",
+    "haxtheweb",
+    "baseline",
+    "web-platform"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haxtheweb/webcomponents.git"
+  },
+  "type": "module",
+  "main": "web-baseline-status.js",
+  "module": "web-baseline-status.js",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+  },
+  "dependencies": {
+    "@haxtheweb/d-d-d": "^26.8.0",
+    "baseline-status": "1.1.1",
+    "lit": "3.3.3"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.10.4",
+    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@open-wc/testing": "4.0.0",
+    "@web/dev-server": "0.4.6",
+    "concurrently": "9.1.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "hax": {
+    "cli": true
+  },
+  "customElements": "custom-elements.json"
+}
