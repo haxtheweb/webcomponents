@@ -6207,12 +6207,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // spacing niceness for output readability
     content = content.replace(/&nbsp;/gm, " ");
     // target and remove hax specific things from output if they slipped through
-    content = content.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
-    content = content.replace(/ data-hax-active="(\s|.)*?"/gim, "");
+    content = content.replace(/ data-hax-ray="[^"]*"/gim, "");
+    content = content.replace(/ data-hax-active="[^"]*"/gim, "");
     content = content.replace(/ class=""/gim, "");
     content = content.replace(/ style=""/gim, "");
-    content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
-    content = content.replace(/ t="(\s|.)*?"/gim, "");
+    content = content.replace(/ contenteditable="[^"]*"/gim, "");
+    content = content.replace(/ t="[^"]*"/gim, "");
     // wipe pure style spans which can pop up on copy paste if we didn't catch it
     // also ensure that we then remove purely visual chars laying around
     // this also helps clean up when we did a normal contenteditable paste

@@ -3158,14 +3158,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     content = content.replace(/\scontenteditable/g, "");
     content = content.replace(/\sdraggable/g, "");
     // target and remove hax specific things from output if they slipped through
-    content = content.replace(/\sdata-hax-ray="(\s|.)*?"/gim, "");
-    content = content.replace(/\sdata-hax-grid="(\s|.)*?"/gim, "");
+    content = content.replace(/\sdata-hax-ray="[^"]*"/gim, "");
+    content = content.replace(/\sdata-hax-grid="[^"]*"/gim, "");
     // slips through with no value at times
-    content = content.replace(/\sdata-hax-layout="(\s|.)*?"/gim, "");
-    content = content.replace(/\sdata-hax-active="(\s|.)*?"/gim, "");
+    content = content.replace(/\sdata-hax-layout="[^"]*"/gim, "");
+    content = content.replace(/\sdata-hax-active="[^"]*"/gim, "");
     content = content.replace(/ class=""/gim, "");
-    content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
-    content = content.replace(/\st="(\s|.)*?"/gim, "");
+    content = content.replace(/ contenteditable="[^"]*"/gim, "");
+    content = content.replace(/\st="[^"]*"/gim, "");
     // spacing niceness for output readability
     content = content.replace(/&nbsp;/gm, " ");
     // remove HAX specific classes / scoping classes
