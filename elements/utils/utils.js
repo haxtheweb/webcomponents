@@ -1853,40 +1853,41 @@ export function normalizeTypography(html) {
   if (!html || typeof html !== "string") {
     return html;
   }
-  const replacer = (match) => {
-    if (match.charAt(0) === "<") {
-      return match;
-    }
-    switch (match) {
+  const straighten = (char) => {
+    switch (char) {
       case "\u201C":
       case "\u201D":
       case "\u201E":
       case "\u201F":
         return '"';
-      case "\u2018":
-      case "\u2019":
-      case "\u201A":
-      case "\u201B":
-        return "'";
       default:
-        return match;
+        return "'";
     }
   };
-  // A "<" only starts a tag when a ">" follows somewhere. Everything after the
-  // last ">" can therefore only contain quotes to convert; matching `<[^>]*>`
-  // against it would rescan to the end of the string for every "<" (quadratic).
-  const lastGt = html.lastIndexOf(">") + 1;
-  return (
-    html
-      .slice(0, lastGt)
-      .replace(
-        /<[^>]*>|[\u2018\u2019\u201A\u201B\u201C\u201D\u201E\u201F]/g,
-        replacer,
-      ) +
-    html
-      .slice(lastGt)
-      .replace(/[\u2018\u2019\u201A\u201B\u201C\u201D\u201E\u201F]/g, replacer)
-  );
+  // Walk "<" and curly quotes left to right. A "<" with a ">" somewhere after it
+  // is a tag and is copied through untouched; once no ">" is left, any later "<"
+  // is plain text. (A single regex like /<[^>]*>|.../ would rescan to the end of
+  // the string for every "<" without a ">", i.e. quadratic time.)
+  const token = /[<\u2018\u2019\u201A\u201B\u201C\u201D\u201E\u201F]/g;
+  let out = "";
+  let pos = 0;
+  let noMoreGt = false;
+  let m;
+  while ((m = token.exec(html)) !== null) {
+    if (m[0] === "<") {
+      if (noMoreGt) continue;
+      const gt = html.indexOf(">", m.index);
+      if (gt === -1) {
+        noMoreGt = true;
+        continue;
+      }
+      token.lastIndex = gt + 1;
+    } else {
+      out += html.slice(pos, m.index) + straighten(m[0]);
+      pos = m.index + 1;
+    }
+  }
+  return out + html.slice(pos);
 }
 
 /**
