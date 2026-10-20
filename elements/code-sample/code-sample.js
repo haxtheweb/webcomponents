@@ -487,7 +487,7 @@ if ($MrTheCheat) {
     }
     // can't allow this to be null for a number of reasons related
     // to the tag's internals. This ensures it's not null on initial paint
-    if (this.innerHTML == "") {
+    if (this.innerHTML === "") {
       this.innerHTML =
         '<template preserve-content="preserve-content">const great="example";</template>';
     }

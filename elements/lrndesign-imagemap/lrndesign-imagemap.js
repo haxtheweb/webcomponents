@@ -224,7 +224,7 @@ class LrndesignImagemap extends LitElement {
     if (!node) {
       node = globalThis.document.createElement(nodeName);
       svg.prepend(node);
-      if (query && query.innerHTML != "") {
+      if (query && query.innerHTML !== "") {
         node.innerHTML = query.innerHTML;
       }
     }

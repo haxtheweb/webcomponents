@@ -85,7 +85,7 @@ export function isCrossOriginURL(value) {
       new URL(value, globalThis.location.href).origin !==
       globalThis.location.origin
     );
-  } catch (e) {
+  } catch {
     return false;
   }
 }
@@ -105,7 +105,7 @@ export function isSameOriginUploadedMarkup(value) {
       parsed.origin === globalThis.location.origin &&
       /\/files\/.*\.(x?html?|xml)$/i.test(parsed.pathname)
     );
-  } catch (e) {
+  } catch {
     return false;
   }
 }

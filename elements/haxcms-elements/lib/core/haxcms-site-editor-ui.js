@@ -1950,7 +1950,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const merlin = this.shadowRoot.querySelector("#merlin");
       store.playSound("click");
       // modal shouldn't be possible but just in-case
-      if (merlin.getAttribute("data-event") == "super-daemon-modal") {
+      if (merlin.getAttribute("data-event") === "super-daemon-modal") {
         HAXStore.haxTray.collapsed = false;
       } else {
         SuperDaemonInstance.mini = true;

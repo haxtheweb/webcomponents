@@ -31,7 +31,7 @@ export function WCRegistryLoaderCSS(
       el.style.setProperty("--laserEdgeAni-innerHeight", d.height - 2 + "px");
       el.style.setProperty("--laserEdgeAni-height", d.height + "px");
       customElements.whenDefined(el.localName).then((_response) => {
-        if (el.localName != "replace-tag") {
+        if (el.localName !== "replace-tag") {
           // this would be a way of doing loading state on ANYTHING without definition
           el.setAttribute("loaded", "loaded");
           el.removeAttribute("laser-loader");

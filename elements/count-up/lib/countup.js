@@ -86,7 +86,7 @@ let __assign =
             r = "";
 
             for (let l = 0, h = n.length; l < h; ++l)
-              0 !== l && l % 3 == 0 && (r = s.options.separator + r),
+              0 !== l && l % 3 === 0 && (r = s.options.separator + r),
                 (r = n[h - l - 1] + r);
 
             n = r;

@@ -434,7 +434,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
               this.filtered.length === 1 ||
               (this.filtered &&
                 this.filtered[0] &&
-                this.filtered[0].title.toLocaleLowerCase() ==
+                this.filtered[0].title.toLocaleLowerCase() ===
                   sdi.value.toLocaleLowerCase())
             ) {
               this.shadowRoot.querySelector("super-daemon-row").selected();

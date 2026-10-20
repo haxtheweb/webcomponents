@@ -1074,7 +1074,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       evt = e.detail.eventName;
     // allow buttons to toggle collapse if desired by user
     if (
-      target.tagName == "HAX-TRAY-BUTTON" &&
+      target.tagName === "HAX-TRAY-BUTTON" &&
       e.detail.eventName === this.trayDetail
     ) {
       this.collapsed = !this.collapsed;
@@ -1639,7 +1639,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
             else if (
               prop.slot == "" &&
               (el.getAttribute("slot") == null ||
-                el.getAttribute("slot") == "null")
+                el.getAttribute("slot") === "null")
             ) {
               this.activeValue.settings.configure[prop.slot] = el.innerHTML;
             }
@@ -1653,7 +1653,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
             else if (
               prop.slot == "" &&
               (el.getAttribute("slot") == null ||
-                el.getAttribute("slot") == "null")
+                el.getAttribute("slot") === "null")
             ) {
               this.activeValue.settings.advanced[prop.slot] = el.innerHTML;
             }
@@ -1667,7 +1667,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
             else if (
               prop.slot == "" &&
               (el.getAttribute("slot") == null ||
-                el.getAttribute("slot") == "null")
+                el.getAttribute("slot") === "null")
             ) {
               this.activeValue.settings.developer[prop.slot] = el.innerHTML;
             }

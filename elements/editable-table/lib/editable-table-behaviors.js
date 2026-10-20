@@ -686,7 +686,7 @@ export const displayBehaviors = function (SuperClass) {
     download() {
       let a = globalThis.document.createElement("a"),
         title =
-          this.downloadable && this.caption && this.caption.trim() != ""
+          this.downloadable && this.caption && this.caption.trim() !== ""
             ? `${this.caption} CSV`
             : `Table as CSV`,
         filename = title.replace(/[^\w\d]/g, ""),

@@ -354,7 +354,7 @@ class HaxAppSearch extends LitElement {
       let requestEndPoint =
         app.connection.protocol + "://" + app.connection.url;
       // ensure we build a url correctly
-      if (requestEndPoint.substr(requestEndPoint.length - 1) != "/") {
+      if (requestEndPoint.substr(requestEndPoint.length - 1) !== "/") {
         requestEndPoint += "/";
       }
       // support local end point modification

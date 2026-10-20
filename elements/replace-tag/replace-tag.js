@@ -61,7 +61,7 @@ const ReplaceTagSuper = function (SuperClass) {
       WCRegistryLoaderCSS();
       let badDevice = await DeviceDetails.badDevice();
       if (
-        this.getAttribute("import-method") != "view" &&
+        this.getAttribute("import-method") !== "view" &&
         this.getAttribute("import-only") == null
       ) {
         // look at browser performance
@@ -78,7 +78,7 @@ const ReplaceTagSuper = function (SuperClass) {
       if (
         !badDevice ||
         this.getAttribute("import-only") != null ||
-        this.getAttribute("import-method") == "view"
+        this.getAttribute("import-method") === "view"
       ) {
         this.setAttribute("laser-loader", "laser-loader");
         if (!this.importingText) {

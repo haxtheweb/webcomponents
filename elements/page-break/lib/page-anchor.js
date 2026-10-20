@@ -212,7 +212,7 @@ export class PageAnchor extends DDDSuper(LitElement) {
             ) {
               label = node[schema.gizmo.metadata.anchorLabel];
             } else {
-              if (node.innerText != "") {
+              if (node.innerText !== "") {
                 label = node.innerText;
               }
               if (node.getAttribute("id")) {

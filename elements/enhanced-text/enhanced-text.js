@@ -102,7 +102,7 @@ class EnhancedText extends LitElement {
         for (let j = 0; j < textNodes.length; j++) {
           let el = textNodes[j];
           if (
-            el.textContent.toLowerCase() == term.term.toLowerCase() &&
+            el.textContent.toLowerCase() === term.term.toLowerCase() &&
             (!found || this.haxcmsMarkAll)
           ) {
             // find term in contents of page

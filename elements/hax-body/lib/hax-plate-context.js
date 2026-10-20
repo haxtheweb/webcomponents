@@ -481,7 +481,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     // @note this is a hacky way of evaluating this
     right.disabled = false;
     rightremove.disabled = false;
-    if (active && active.tagName == "GRID-PLATE") {
+    if (active && active.tagName === "GRID-PLATE") {
       if (active.layout == "1-1-1-1") {
         right.disabled = true;
       }

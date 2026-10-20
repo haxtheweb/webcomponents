@@ -622,7 +622,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * updates buttons based on change in config
      */
     updateToolbar(config = this.config) {
-      if (!this || !this.config || this.config.length == 0) return;
+      if (!this || !this.config || this.config.length === 0) return;
       this.clearToolbar();
       if (typeof this.config !== typeof []) this.config = JSON.parse(config);
       this._addConfigItems(this.config);
@@ -929,7 +929,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           shiftKey = keys.includes("shift"),
           uppercase = keyEvt.shiftKey && keyEvt.code > 65 && keyEvt.code < 91,
           filter = keys
-            .filter((key) => key.length == 1)
+            .filter((key) => key.length === 1)
             .map((key) => (uppercase ? key.toUpperCase() : key)),
           key = filter[0],
           match =

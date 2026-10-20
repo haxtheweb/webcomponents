@@ -2612,7 +2612,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
   _captionsOptionChanged() {
     this.cc = this.__captionsOption > -1;
     Object.keys(this.loadedTracks.textTracks).forEach((key) => {
-      let showing = parseInt(key) == parseInt(this.__captionsOption);
+      let showing = parseInt(key) === parseInt(this.__captionsOption);
       this.loadedTracks.textTracks[key].mode = showing ? "showing" : "hidden";
       if (showing) this.captionsTrack = this.loadedTracks.textTracks[key];
     });
@@ -2646,7 +2646,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
   download() {
     let a = globalThis.document.createElement("a"),
       title =
-        this.mediaTitle && this.mediaTitle.trim() != ""
+        this.mediaTitle && this.mediaTitle.trim() !== ""
           ? `${this.mediaTitle} (${this.t.transcriptLabel})`
           : this.t.transcriptLabel,
       filename = title.replace(/[^\w\d]/g, ""),
@@ -2697,7 +2697,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
   print() {
     let cues = this.transcriptTrack.cues,
       title =
-        this.mediaTitle && this.mediaTitle.trim() != ""
+        this.mediaTitle && this.mediaTitle.trim() !== ""
           ? `${this.mediaTitle} (${this.t.transcriptLabel})`
           : this.t.transcriptLabel,
       print = globalThis.open(

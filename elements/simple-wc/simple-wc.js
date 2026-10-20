@@ -119,7 +119,7 @@ export function createSWC(swc) {
               // array values to propagate data binding
               // this only happens if we have a 3rd value which is what we are
               // storing the result in otherwise the result is not used
-              if (value.length == 3) {
+              if (value.length === 3) {
                 this[value[2]] = Array.isArray(result) ? [...result] : result;
               }
             }

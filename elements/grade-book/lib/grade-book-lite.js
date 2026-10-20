@@ -589,12 +589,12 @@ class GradeBookLite extends UIRenderPieces(
   async changeAssignment(e) {
     // have to possibly resolve UI click handler of span vs the button
     if (
-      e.target.getAttribute("value") == "prev" &&
+      e.target.getAttribute("value") === "prev" &&
       0 !== this.activeAssignment
     ) {
       GradeBookStore.activeAssignment--;
     } else if (
-      e.target.getAttribute("value") == "next" &&
+      e.target.getAttribute("value") === "next" &&
       this.database.assignments.length - 1 !== GradeBookStore.activeAssignment
     ) {
       GradeBookStore.activeAssignment++;
