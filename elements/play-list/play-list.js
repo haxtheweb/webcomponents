@@ -121,7 +121,7 @@ class PlayList extends I18NMixin(DDD) {
       // repeat until stable so nested input cannot leave a tag behind
       do {
         previous = stripped;
-        stripped = stripped.replace(/<[^>]*>/g, "");
+        stripped = stripped.replace(/<[^<>]*>/g, "");
       } while (stripped !== previous);
       const text = stripped.trim();
       if (text) {

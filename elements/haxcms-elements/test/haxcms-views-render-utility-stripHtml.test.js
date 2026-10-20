@@ -14,3 +14,11 @@ describe("haxcms-views-render-utility stripHtml", () => {
     expect(out).to.not.contain("</script");
   });
 });
+
+describe("haxcms-views-render-utility stripHtml performance", () => {
+  it("handles long runs of '<' in linear time", () => {
+    const start = performance.now();
+    stripHtml("<".repeat(100000));
+    expect(performance.now() - start).to.be.below(1000);
+  });
+});

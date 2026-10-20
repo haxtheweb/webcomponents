@@ -148,11 +148,11 @@ export const recordBodyIsHtml = (record) => {
 export const stripHtml = (value) => {
   let text = safeString(value);
   let previous;
-  // repeat until stable so nested input such as "<<b>script>" cannot
-  // leave a tag behind after one pass
+  // "[^<>]" keeps matching linear; repeat until stable so nested input such
+  // as "<<b>script>" cannot leave a tag behind after one pass
   do {
     previous = text;
-    text = text.replace(/<[^>]*>/g, " ");
+    text = text.replace(/<[^<>]*>/g, " ");
   } while (text !== previous);
   return text.replace(/\s+/g, " ").trim();
 };

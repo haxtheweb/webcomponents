@@ -12,7 +12,7 @@ export function detectMarkdown(text) {
   let previous;
   do {
     previous = stripped;
-    stripped = stripped.replace(/<[^>]*>/g, "");
+    stripped = stripped.replace(/<[^<>]*>/g, "");
   } while (stripped !== previous);
   const plainText = stripped.trim();
 
