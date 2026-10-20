@@ -938,13 +938,10 @@ class SimpleColorsSharedStyles extends LitElement {
     let temp1 = colorName
         .replace(/(simple-colors-)?(-text)?(-border)?/g, "")
         .split("-theme-"),
-      theme =
-        temp1.length > 1 ? temp1[0].replace(/^[.-]+/, "") : "default",
+      theme = temp1.length > 1 ? temp1[0].replace(/^[.-]+/, "") : "default",
       temp2 = (temp1.length > 1 ? temp1[1] : temp1[0]).split("-"),
       color =
-        temp2.length > 1
-          ? temp2.slice(0, temp2.length - 1).join("-")
-          : "grey",
+        temp2.length > 1 ? temp2.slice(0, temp2.length - 1).join("-") : "grey",
       shade = temp2.length > 1 ? temp2[temp2.length - 1] : "1";
     return {
       theme: theme,
@@ -1039,9 +1036,7 @@ class SimpleColorsSharedStyles extends LitElement {
       index = this.shadeToIndex(colorShade),
       range = this.contrasts && this.contrasts[hasGrey][aa][index];
     return (
-      Boolean(range) &&
-      contrastShade >= range.min &&
-      contrastShade <= range.max
+      Boolean(range) && contrastShade >= range.min && contrastShade <= range.max
     );
   }
 

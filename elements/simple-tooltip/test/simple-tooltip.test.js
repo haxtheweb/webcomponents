@@ -71,7 +71,7 @@ describe("simple-tooltip show", () => {
 
   it("is a no-op when all children are empty", async () => {
     const el = await fixture(
-      html`<simple-tooltip><span>   </span></simple-tooltip>`,
+      html`<simple-tooltip><span> </span></simple-tooltip>`,
     );
     el.show();
     expect(el._showing).to.be.undefined;

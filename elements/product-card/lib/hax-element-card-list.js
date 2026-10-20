@@ -16,7 +16,8 @@ class HAXElementCardList extends I18NMixin(LitElement) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      scanningRegistry: "Scanning Web Component Registry for more HAX elements..",
+      scanningRegistry:
+        "Scanning Web Component Registry for more HAX elements..",
       enabled: "Enabled",
       disabled: "Disabled",
       details: "Details",
@@ -135,7 +136,8 @@ class HAXElementCardList extends I18NMixin(LitElement) {
       ? ``
       : html`
           <p class="loaderText" ?hidden="${!this.loading}">
-            <strong>${this.t.scanningRegistry}</strong><hexagon-loader
+            <strong>${this.t.scanningRegistry}</strong
+            ><hexagon-loader
               item-count="4"
               ?loading="${this.loading}"
               size="small"
@@ -176,12 +178,14 @@ class HAXElementCardList extends I18NMixin(LitElement) {
                   <div slot="details-collapse-content">
                     <ul>
                       <li>
-                        <strong>${this.t.tags}</strong> ${el.schema.gizmo.tags.map(
+                        <strong>${this.t.tags}</strong>
+                        ${el.schema.gizmo.tags.map(
                           (group) => html` ${group}, `,
                         )}
                       </li>
                       <li>
-                        <strong>${this.t.tagName}</strong> <code>${el.tag}</code>
+                        <strong>${this.t.tagName}</strong>
+                        <code>${el.tag}</code>
                       </li>
                       <li>
                         <strong>${this.t.developerUsage}</strong>
@@ -256,9 +260,8 @@ class HAXElementCardList extends I18NMixin(LitElement) {
           composed: true,
           cancelable: false,
           detail: {
-            title: this.t.demoOf.replace(
-              "{tag}",
-              () => (e.target.getAttribute("data-tag")),
+            title: this.t.demoOf.replace("{tag}", () =>
+              e.target.getAttribute("data-tag"),
             ),
             styles: {
               "--simple-modal-width": "80vw",

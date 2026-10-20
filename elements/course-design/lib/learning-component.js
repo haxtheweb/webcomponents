@@ -152,10 +152,7 @@ class LearningComponent extends I18NMixin(DDD) {
               --ddd-theme-accent,
               var(--ddd-theme-default-limestoneMaxLight, inherit)
             ),
-            var(
-              --ddd-theme-accent,
-              var(--ddd-theme-default-coalyGray, inherit)
-            )
+            var(--ddd-theme-accent, var(--ddd-theme-default-coalyGray, inherit))
           );
           border-color: var(
             --ddd-component-learning-component-title-background,

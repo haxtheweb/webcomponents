@@ -11,7 +11,9 @@ describe("haxcms-files-admin-dialog bulk confirmation", () => {
     }));
 
   beforeEach(async () => {
-    el = await fixture(html`<haxcms-files-admin-dialog></haxcms-files-admin-dialog>`);
+    el = await fixture(
+      html`<haxcms-files-admin-dialog></haxcms-files-admin-dialog>`,
+    );
     prompts = [];
     ran = [];
     realConfirm = globalThis.confirm;
@@ -48,7 +50,9 @@ describe("haxcms-files-admin-dialog bulk confirmation", () => {
     expect(prompts.length).to.be.greaterThan(0);
     prompts.forEach((p) => expect(p).to.contain("4"));
     expect(prompts.some((p) => p.startsWith("Rotate 4 files"))).to.equal(true);
-    expect(prompts.some((p) => p.startsWith("Convert to JPG 4 files"))).to.equal(true);
+    expect(
+      prompts.some((p) => p.startsWith("Convert to JPG 4 files")),
+    ).to.equal(true);
   });
 
   it("cancelling a multi-file rotate does not run the operation", async () => {

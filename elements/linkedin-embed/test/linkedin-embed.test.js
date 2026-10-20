@@ -362,84 +362,84 @@ describe("linkedin-embed test", () => {
   });
 
   describe("Legacy fallbacks and guards", () => {
-    it('skips theme watching when matchMedia is unavailable', () => {
-      const original = globalThis.matchMedia
-      globalThis.matchMedia = undefined
-      const el = document.createElement('linkedin-embed')
-      el.__watchPreferredTheme()
-      expect(el.__darkModeMediaQuery).to.equal(null)
-      globalThis.matchMedia = original
-    })
+    it("skips theme watching when matchMedia is unavailable", () => {
+      const original = globalThis.matchMedia;
+      globalThis.matchMedia = undefined;
+      const el = document.createElement("linkedin-embed");
+      el.__watchPreferredTheme();
+      expect(el.__darkModeMediaQuery).to.equal(null);
+      globalThis.matchMedia = original;
+    });
 
-    it('uses the legacy addListener and removeListener APIs', () => {
-      const original = globalThis.matchMedia
-      const added = []
+    it("uses the legacy addListener and removeListener APIs", () => {
+      const original = globalThis.matchMedia;
+      const added = [];
       const fakeQuery = {
         matches: true,
         addListener(fn) {
-          added.push(fn)
+          added.push(fn);
         },
         removeListener(fn) {
-          const index = added.indexOf(fn)
+          const index = added.indexOf(fn);
           if (index > -1) {
-            added.splice(index, 1)
+            added.splice(index, 1);
           }
         },
-      }
-      globalThis.matchMedia = () => fakeQuery
-      const el = document.createElement('linkedin-embed')
-      el.__watchPreferredTheme()
-      expect(added.length).to.equal(1)
-      expect(el._prefersDark).to.be.true
-      el.disconnectedCallback()
-      expect(added.length).to.equal(0)
-      globalThis.matchMedia = original
-    })
+      };
+      globalThis.matchMedia = () => fakeQuery;
+      const el = document.createElement("linkedin-embed");
+      el.__watchPreferredTheme();
+      expect(added.length).to.equal(1);
+      expect(el._prefersDark).to.be.true;
+      el.disconnectedCallback();
+      expect(added.length).to.equal(0);
+      globalThis.matchMedia = original;
+    });
 
-    it('does not attach a second resize observer', () => {
-      const before = element.__resizeObserver
-      element.__watchContainer()
-      expect(element.__resizeObserver).to.equal(before)
-    })
+    it("does not attach a second resize observer", () => {
+      const before = element.__resizeObserver;
+      element.__watchContainer();
+      expect(element.__resizeObserver).to.equal(before);
+    });
 
-    it('returns early from badge requests before the badge host renders', () => {
+    it("returns early from badge requests before the badge host renders", () => {
       // simulate the pre-render window: renderRoot exists but has no badge host
-      const pending = element.__lastRequestUid
-      const root = element.renderRoot
-      root.querySelector = () => null
-      element.__requestBadgeMarkup()
-      delete root.querySelector
-      expect(element.__lastRequestUid).to.equal(pending)
-      expect(scriptsMatching('badges.linkedin').length).to.equal(0)
-    })
+      const pending = element.__lastRequestUid;
+      const root = element.renderRoot;
+      root.querySelector = () => null;
+      element.__requestBadgeMarkup();
+      delete root.querySelector;
+      expect(element.__lastRequestUid).to.equal(pending);
+      expect(scriptsMatching("badges.linkedin").length).to.equal(0);
+    });
 
-    it('returns early from badge requests before the render root exists', () => {
+    it("returns early from badge requests before the render root exists", () => {
       // a detached element has no renderRoot until its first render commits;
       // requesting a badge that early must not throw or hit the network
-      const el = document.createElement('linkedin-embed')
-      el.__requestBadgeMarkup()
-      expect(el.__lastRequestUid).to.equal(null)
-      expect(scriptsMatching('badges.linkedin').length).to.equal(0)
-    })
+      const el = document.createElement("linkedin-embed");
+      el.__requestBadgeMarkup();
+      expect(el.__lastRequestUid).to.equal(null);
+      expect(scriptsMatching("badges.linkedin").length).to.equal(0);
+    });
 
-    it('renders the badge when the callback delivers matching html', async () => {
+    it("renders the badge when the callback delivers matching html", async () => {
       element.__buildBadgeUrl = (uid) =>
-        `/elements/linkedin-embed/test/does-not-exist.js?uid=${uid}`
-      element.__requestBadgeMarkup()
-      const uid = element.__lastRequestUid
-      const manager = element.__ensureCallbackManager()
-      const handler = manager.handlers[uid]
-      expect(handler).to.be.a('function')
-      handler('<b>badge</b>', uid)
-      expect(element.__lastRequestUid).to.equal(null)
-      const badgeHost = element.renderRoot.querySelector('.badge-host')
-      const iframe = badgeHost.querySelector('iframe')
-      expect(iframe).to.exist
-      expect(iframe.srcdoc).to.include('<b>badge</b>')
+        `/elements/linkedin-embed/test/does-not-exist.js?uid=${uid}`;
+      element.__requestBadgeMarkup();
+      const uid = element.__lastRequestUid;
+      const manager = element.__ensureCallbackManager();
+      const handler = manager.handlers[uid];
+      expect(handler).to.be.a("function");
+      handler("<b>badge</b>", uid);
+      expect(element.__lastRequestUid).to.equal(null);
+      const badgeHost = element.renderRoot.querySelector(".badge-host");
+      const iframe = badgeHost.querySelector("iframe");
+      expect(iframe).to.exist;
+      expect(iframe.srcdoc).to.include("<b>badge</b>");
       // a callback for a different uid is ignored
-      handler('<i>other</i>', uid + 1)
-      expect(element.__lastRequestUid).to.equal(null)
-      expect(badgeHost.querySelectorAll('iframe').length).to.equal(1)
-    })
+      handler("<i>other</i>", uid + 1);
+      expect(element.__lastRequestUid).to.equal(null);
+      expect(badgeHost.querySelectorAll("iframe").length).to.equal(1);
+    });
   });
 });

@@ -155,7 +155,9 @@ describe("simple-img conversion pipeline", () => {
     // converted src 404s on the local test server, so the fallback runs
     MicroFrontendRegistry.url = () => "/definitely-missing.png";
     try {
-      const el = await fixture(html`<simple-img src="${DATA_URL}"></simple-img>`);
+      const el = await fixture(
+        html`<simple-img src="${DATA_URL}"></simple-img>`,
+      );
       expect(el.srcconverted).to.equal("/definitely-missing.png");
       const rendered = await poll(() => el.querySelector("img") !== null);
       expect(rendered).to.be.true;

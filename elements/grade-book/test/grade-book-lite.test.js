@@ -321,9 +321,8 @@ describe("grade-book-lite element", () => {
     select.value = "json";
     el.selectSource();
     expect(el.source).to.equal("json");
-    el.shadowRoot.querySelector("#sourcedatablob").value = JSON.stringify(
-      makeDatabase(),
-    );
+    el.shadowRoot.querySelector("#sourcedatablob").value =
+      JSON.stringify(makeDatabase());
     el.loadFromSource();
     await flush();
     expect(typeof el.sourceData).to.equal("string");

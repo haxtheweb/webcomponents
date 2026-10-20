@@ -250,29 +250,29 @@ describe("SimplePager", () => {
   });
 });
 
-describe('SimplePager edge cases', () => {
-  it('clamps totalPages to 1 when total or limit is non-positive', async () => {
-    const el = await fixture(html`<simple-pager></simple-pager>`)
-    expect(el._totalPages).to.equal(1)
-    el.total = 100
-    el.limit = 0
-    await el.updateComplete
-    expect(el._totalPages).to.equal(1)
-    expect(el._currentPage).to.equal(1)
-  })
+describe("SimplePager edge cases", () => {
+  it("clamps totalPages to 1 when total or limit is non-positive", async () => {
+    const el = await fixture(html`<simple-pager></simple-pager>`);
+    expect(el._totalPages).to.equal(1);
+    el.total = 100;
+    el.limit = 0;
+    await el.updateComplete;
+    expect(el._totalPages).to.equal(1);
+    expect(el._currentPage).to.equal(1);
+  });
 
-  it('un-hides itself when total grows past the limit', async () => {
+  it("un-hides itself when total grows past the limit", async () => {
     const el = await fixture(
       html`<simple-pager total="10" limit="25"></simple-pager>`,
-    )
-    await el.updateComplete
-    expect(el.hidden).to.be.true
-    el.total = 100
-    await el.updateComplete
-    expect(el.hidden).to.be.false
-  })
+    );
+    await el.updateComplete;
+    expect(el.hidden).to.be.true;
+    el.total = 100;
+    await el.updateComplete;
+    expect(el.hidden).to.be.false;
+  });
 
-  it('clamps the button window to the first page when near the start', async () => {
+  it("clamps the button window to the first page when near the start", async () => {
     const el = await fixture(
       html`<simple-pager
         mode="full"
@@ -281,20 +281,12 @@ describe('SimplePager edge cases', () => {
         max-page-buttons="5"
         offset="0"
       ></simple-pager>`,
-    )
-    await el.updateComplete
-    expect(el._pageTokens()).to.deep.equal([
-      1,
-      2,
-      3,
-      4,
-      5,
-      'ellipsis',
-      100,
-    ])
-  })
+    );
+    await el.updateComplete;
+    expect(el._pageTokens()).to.deep.equal([1, 2, 3, 4, 5, "ellipsis", 100]);
+  });
 
-  it('clamps the button window to the last page when near the end', async () => {
+  it("clamps the button window to the last page when near the end", async () => {
     const el = await fixture(
       html`<simple-pager
         mode="full"
@@ -303,12 +295,20 @@ describe('SimplePager edge cases', () => {
         max-page-buttons="5"
         offset="990"
       ></simple-pager>`,
-    )
-    await el.updateComplete
-    expect(el._pageTokens()).to.deep.equal([1, 'ellipsis', 96, 97, 98, 99, 100])
-  })
+    );
+    await el.updateComplete;
+    expect(el._pageTokens()).to.deep.equal([
+      1,
+      "ellipsis",
+      96,
+      97,
+      98,
+      99,
+      100,
+    ]);
+  });
 
-  it('does not fire page-changed from the guard branches of the nav methods', async () => {
+  it("does not fire page-changed from the guard branches of the nav methods", async () => {
     const el = await fixture(
       html`<simple-pager
         mode="full"
@@ -316,58 +316,58 @@ describe('SimplePager edge cases', () => {
         limit="25"
         offset="0"
       ></simple-pager>`,
-    )
-    await el.updateComplete
-    let fired = 0
-    el.addEventListener('page-changed', () => {
-      fired += 1
-    })
+    );
+    await el.updateComplete;
+    let fired = 0;
+    el.addEventListener("page-changed", () => {
+      fired += 1;
+    });
     // at the first page first/prev are no-ops
-    el._onFirst()
-    el._onPrev()
+    el._onFirst();
+    el._onPrev();
     // move to the last page, then last/next are no-ops
-    el.offset = 75
-    await el.updateComplete
-    el._onLast()
-    el._onNext()
-    await el.updateComplete
-    expect(fired).to.equal(0)
-  })
+    el.offset = 75;
+    await el.updateComplete;
+    el._onLast();
+    el._onNext();
+    await el.updateComplete;
+    expect(fired).to.equal(0);
+  });
 
-  it('_onPageClick ignores malformed events and targets', async () => {
+  it("_onPageClick ignores malformed events and targets", async () => {
     const el = await fixture(
       html`<simple-pager mode="full" total="100" limit="25"></simple-pager>`,
-    )
-    await el.updateComplete
-    let fired = 0
-    el.addEventListener('page-changed', () => {
-      fired += 1
-    })
-    el._onPageClick(null)
-    el._onPageClick({})
+    );
+    await el.updateComplete;
+    let fired = 0;
+    el.addEventListener("page-changed", () => {
+      fired += 1;
+    });
+    el._onPageClick(null);
+    el._onPageClick({});
     el._onPageClick({
       currentTarget: {
-        hasAttribute: (name) => name === 'disabled',
-        getAttribute: () => '3',
+        hasAttribute: (name) => name === "disabled",
+        getAttribute: () => "3",
       },
-    })
-    el._onPageClick({
-      currentTarget: {
-        hasAttribute: () => false,
-        getAttribute: () => 'not-a-number',
-      },
-    })
+    });
     el._onPageClick({
       currentTarget: {
         hasAttribute: () => false,
-        getAttribute: () => '0',
+        getAttribute: () => "not-a-number",
       },
-    })
-    await el.updateComplete
-    expect(fired).to.equal(0)
-  })
+    });
+    el._onPageClick({
+      currentTarget: {
+        hasAttribute: () => false,
+        getAttribute: () => "0",
+      },
+    });
+    await el.updateComplete;
+    expect(fired).to.equal(0);
+  });
 
-  it('appends the showing range to the status text when count is supplied', async () => {
+  it("appends the showing range to the status text when count is supplied", async () => {
     const el = await fixture(
       html`<simple-pager
         mode="mini"
@@ -376,14 +376,14 @@ describe('SimplePager edge cases', () => {
         offset="25"
         count="30"
       ></simple-pager>`,
-    )
-    await el.updateComplete
-    const status = el.shadowRoot.querySelector('.status')
-    expect(status.textContent).to.include('Page 2 of 4')
-    expect(status.textContent).to.include('Showing 26 to 55 of 100')
-  })
+    );
+    await el.updateComplete;
+    const status = el.shadowRoot.querySelector(".status");
+    expect(status.textContent).to.include("Page 2 of 4");
+    expect(status.textContent).to.include("Showing 26 to 55 of 100");
+  });
 
-  it('uses the custom label for the nav aria-label', async () => {
+  it("uses the custom label for the nav aria-label", async () => {
     const el = await fixture(
       html`<simple-pager
         mode="mini"
@@ -391,13 +391,14 @@ describe('SimplePager edge cases', () => {
         limit="25"
         label="Results pages"
       ></simple-pager>`,
-    )
-    await el.updateComplete
-    expect(el.shadowRoot.querySelector('nav').getAttribute('aria-label')).to
-      .equal('Results pages')
-  })
+    );
+    await el.updateComplete;
+    expect(
+      el.shadowRoot.querySelector("nav").getAttribute("aria-label"),
+    ).to.equal("Results pages");
+  });
 
-  it('passes the a11y audit with a status line and count data', async () => {
+  it("passes the a11y audit with a status line and count data", async () => {
     const el = await fixture(
       html`<simple-pager
         mode="full"
@@ -407,8 +408,8 @@ describe('SimplePager edge cases', () => {
         offset="500"
         count="10"
       ></simple-pager>`,
-    )
-    await el.updateComplete
-    await expect(el).shadowDom.to.be.accessible()
-  })
-})
+    );
+    await el.updateComplete;
+    await expect(el).shadowDom.to.be.accessible();
+  });
+});

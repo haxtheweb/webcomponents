@@ -53,7 +53,7 @@
               "name": "openAnswer",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Property for toggling \"checkbtn\"."

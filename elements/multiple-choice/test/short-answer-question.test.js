@@ -14,13 +14,11 @@ const flush = (ms = 60) => new Promise((r) => setTimeout(r, ms));
 
 // seed a guess value so assertions on the bound textarea value and the
 // guess flows below are deterministic from the start
-const saFixture = () => html`<short-answer-question
-  question="Name a duck"
-  .shortanswer=${"duck"}
->
-  <input correct value="Huey" />
-  <input value="Mickey" />
-</short-answer-question>`;
+const saFixture = () =>
+  html`<short-answer-question question="Name a duck" .shortanswer=${"duck"}>
+    <input correct value="Huey" />
+    <input value="Mickey" />
+  </short-answer-question>`;
 
 describe("short-answer-question", () => {
   it("has the expected tag and forces single option", () => {
@@ -32,20 +30,18 @@ describe("short-answer-question", () => {
   });
 
   it("exposes haxProperties as a file reference", () => {
-    expect(ShortAnswerQuestion.haxProperties.endsWith(
-      "short-answer-question.haxProperties.json",
-    )).to.equal(true);
+    expect(
+      ShortAnswerQuestion.haxProperties.endsWith(
+        "short-answer-question.haxProperties.json",
+      ),
+    ).to.equal(true);
   });
 
   it("renders its own directions and a textarea interaction", async () => {
     const el = await fixture(saFixture());
     await el.updateComplete;
-    expect(directionsText(el.renderDirections())).to.include(
-      "Type the answer",
-    );
-    const field = el.shadowRoot.querySelector(
-      'simple-fields-field[name="0"]',
-    );
+    expect(directionsText(el.renderDirections())).to.include("Type the answer");
+    const field = el.shadowRoot.querySelector('simple-fields-field[name="0"]');
     expect(field).to.exist;
     expect(field.getAttribute("type")).to.equal("textarea");
     expect(field.getAttribute("aria-label")).to.equal("Your answer");

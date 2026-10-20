@@ -37,9 +37,18 @@ export class PolarisCta extends LitElement {
              mapping so it stays raw. */
           --polaris-cta-psu-white: var(--ddd-theme-default-white, #ffffff);
           --polaris-cta-psu-blue: var(--ddd-theme-default-beaverBlue, #1e407c);
-          --polaris-cta-psu-darkblue: var(--ddd-theme-default-nittanyNavy, #001e44);
-          --polaris-cta-psu-lightblue: var(--ddd-theme-default-pughBlue, #96bee6);
-          --polaris-cta-psu-gray: var(--ddd-theme-default-limestoneLight, #e4e5e7);
+          --polaris-cta-psu-darkblue: var(
+            --ddd-theme-default-nittanyNavy,
+            #001e44
+          );
+          --polaris-cta-psu-lightblue: var(
+            --ddd-theme-default-pughBlue,
+            #96bee6
+          );
+          --polaris-cta-psu-gray: var(
+            --ddd-theme-default-limestoneLight,
+            #e4e5e7
+          );
           --polaris-cta-psu-black: var(--ddd-theme-default-black, #000000);
           --polaris-cta-psu-darkgray: #4f627c;
           --polaris-cta-border-width: 2px;

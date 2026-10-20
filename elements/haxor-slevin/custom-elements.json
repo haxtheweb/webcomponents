@@ -59,7 +59,7 @@
               "name": "siteModalClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Delay importing site-search until we click to open it directly"
@@ -83,10 +83,18 @@
               "name": "_goBack",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Manage the back button to get to the home page of items"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, skipToContent: \"Skip to content\", searchSite: \"Search site\", search: \"Search\", home: \"Home\", socialLinks: \"Social links\", shareOnTwitter: \"Share on twitter\", shareOnLinkedIn: \"Share on LinkedIn\", shareOnFacebook: \"Share on Facebook\", shareOnPinterest: \"Share on Pinterest\", neverMissAStory: \"Never miss a story from {title} use RSS today!\", shareOnSocialMedia: \"Share on social media\", }"
             },
             {
               "kind": "field",
@@ -231,6 +239,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "HAXCMSThemeParts",
               "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js"

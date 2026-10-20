@@ -4087,9 +4087,7 @@
       "zh",
       "zu"
     ],
-    "bullet-check-list": [
-      "en"
-    ],
+    "bullet-check-list": ["en"],
     "career-org-item": [
       "af",
       "am",
@@ -10569,12 +10567,7 @@
       "zh",
       "zu"
     ],
-    "example-hax-element": [
-      "ar",
-      "es",
-      "hi",
-      "zh"
-    ],
+    "example-hax-element": ["ar", "es", "hi", "zh"],
     "figure-label.haxProperties": [
       "af",
       "am",

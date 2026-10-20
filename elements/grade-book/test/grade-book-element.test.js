@@ -275,10 +275,7 @@ describe("grade-book element", () => {
     });
     it("processrubricsData splits qualitative lists", async () => {
       const el = await loadJsonBook();
-      const out = el.processrubricsData([
-        { qualitative: "good,bad" },
-        {},
-      ]);
+      const out = el.processrubricsData([{ qualitative: "good,bad" }, {}]);
       expect(out[0].qualitative).to.eql(["good", "bad"]);
       expect(out[1].qualitative).to.eql([]);
     });
@@ -460,12 +457,14 @@ describe("grade-book element", () => {
     });
     it("toggleSettings opens its popover and closes others", async () => {
       const el = await loadJsonBook();
-      el.shadowRoot.querySelector("simple-icon-button-lite[icon='settings']")
+      el.shadowRoot
+        .querySelector("simple-icon-button-lite[icon='settings']")
         .click();
       expect(el.hideSettings).to.equal(false);
       expect(el.hideGradeScale).to.equal(true);
       expect(el.hideActiveStudentOverview).to.equal(true);
-      el.shadowRoot.querySelector("simple-icon-button-lite[icon='settings']")
+      el.shadowRoot
+        .querySelector("simple-icon-button-lite[icon='settings']")
         .click();
       expect(el.hideSettings).to.equal(true);
     });
@@ -520,8 +519,9 @@ describe("grade-book element", () => {
       expect(el.displayMode).to.equal(2);
       await flush();
       // openWindow was stubbed to a fake window and grade-book-pop-up got rendered into it
-      expect(fakeWindow.document.body.innerHTML.includes("grade-book-pop-up"))
-        .to.equal(true);
+      expect(
+        fakeWindow.document.body.innerHTML.includes("grade-book-pop-up"),
+      ).to.equal(true);
       // a second openWindow call focuses the existing window
       el.openWindow();
       expect(fakeWindow.focusCount).to.equal(1);
@@ -600,7 +600,9 @@ describe("grade-book element", () => {
       // for a rendered-but-uninitialized field the value can still be
       // undefined until the field itself settles
       expect(
-        ["string", "undefined"].indexOf(typeof el.getCriteriaFeedback("design")),
+        ["string", "undefined"].indexOf(
+          typeof el.getCriteriaFeedback("design"),
+        ),
       ).to.not.equal(-1);
     });
     it("updateStudentReport just requests an update", async () => {
@@ -676,9 +678,8 @@ describe("grade-book element", () => {
       await el.updateComplete;
       const select = el.shadowRoot.querySelector("#source");
       select.value = "json";
-      el.shadowRoot.querySelector("#sourcedatablob").value = JSON.stringify(
-        makeDatabase(),
-      );
+      el.shadowRoot.querySelector("#sourcedatablob").value =
+        JSON.stringify(makeDatabase());
       el.loadFromSource();
       await flush();
       expect(typeof el.sourceData).to.equal("string");
@@ -870,8 +871,9 @@ describe("grade-book element", () => {
       el.__openWindow = fakeWindow;
       el.displayMode = 2;
       el.renderSubmissionInWindow();
-      expect(fakeWindow.document.body.innerHTML.includes("grade-book-pop-up"))
-        .to.equal(true);
+      expect(
+        fakeWindow.document.body.innerHTML.includes("grade-book-pop-up"),
+      ).to.equal(true);
       // CSSStyleDeclaration normalizes "0" to "0px"
       expect(fakeWindow.document.body.style.margin).to.equal("0px");
     });
@@ -885,8 +887,9 @@ describe("grade-book element", () => {
       el.database.assignments = [];
       el.displayMode = 2;
       el.renderSubmissionInWindow();
-      expect(fresh.document.body.innerHTML.includes("No submission found"))
-        .to.equal(true);
+      expect(
+        fresh.document.body.innerHTML.includes("No submission found"),
+      ).to.equal(true);
     });
     it("openWindow replaces a closed window instead of focusing it", async () => {
       const el = await loadJsonBook();

@@ -506,7 +506,10 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
 
       this.loading = false;
     } catch (error) {
-      this.error = this.t.failedToLoadThemes.replace("{error}", () => error.message);
+      this.error = this.t.failedToLoadThemes.replace(
+        "{error}",
+        () => error.message,
+      );
       this.loading = false;
       console.error("Error loading themes:", error);
     }
@@ -595,8 +598,14 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
                         class="preview-button"
                         type="button"
                         aria-label="${theme.element === this.currentTheme
-                          ? this.t.themeIsActive.replace("{name}", () => theme.name)
-                          : this.t.applyTheme.replace("{name}", () => theme.name)}"
+                          ? this.t.themeIsActive.replace(
+                              "{name}",
+                              () => theme.name,
+                            )
+                          : this.t.applyTheme.replace(
+                              "{name}",
+                              () => theme.name,
+                            )}"
                         ?disabled="${theme.element === this.currentTheme}"
                         @click="${() => this.switchTheme(theme.element)}"
                       >
@@ -694,7 +703,10 @@ export class SiteAvailableThemes extends I18NMixin(DDD) {
     const visibleThemes = this._getVisibleThemes();
     const themeCountLabel = this.showAllThemes
       ? this.t.themesShown.replace("{count}", () => visibleThemes.length)
-      : this.t.themesShownDefaults.replace("{count}", () => visibleThemes.length);
+      : this.t.themesShownDefaults.replace(
+          "{count}",
+          () => visibleThemes.length,
+        );
 
     return html`
       <div class="gallery-header">

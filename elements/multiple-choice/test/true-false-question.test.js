@@ -12,12 +12,11 @@ const directionsText = (tpl) => {
 
 const flush = (ms = 60) => new Promise((r) => setTimeout(r, ms));
 
-const tfFixture = () => html`<true-false-question
-  question="Ducks can fly?"
->
-  <input correct value="True" />
-  <input value="False" />
-</true-false-question>`;
+const tfFixture = () =>
+  html`<true-false-question question="Ducks can fly?">
+    <input correct value="True" />
+    <input value="False" />
+  </true-false-question>`;
 
 describe("true-false-question", () => {
   it("has the expected tag and forces single option", () => {
@@ -28,9 +27,11 @@ describe("true-false-question", () => {
   });
 
   it("exposes haxProperties as a file reference", () => {
-    expect(TrueFalseQuestion.haxProperties.endsWith(
-      "true-false-question.haxProperties.json",
-    )).to.equal(true);
+    expect(
+      TrueFalseQuestion.haxProperties.endsWith(
+        "true-false-question.haxProperties.json",
+      ),
+    ).to.equal(true);
   });
 
   it("parses the two inputs and renders radio options", async () => {

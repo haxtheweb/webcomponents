@@ -64,7 +64,9 @@ describe("a11y-media-player playback methods", () => {
   let el;
   let media;
   beforeEach(async () => {
-    el = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
+    el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
     await el.updateComplete;
     await sleep(50);
     media = el.querySelector("video");
@@ -286,7 +288,9 @@ describe("a11y-media-player playback methods", () => {
 describe("a11y-media-player control bar interactions", () => {
   let el;
   beforeEach(async () => {
-    el = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
+    el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
     await el.updateComplete;
     await sleep(50);
     const media = el.querySelector("video");
@@ -304,7 +308,9 @@ describe("a11y-media-player control bar interactions", () => {
     // the @click listener bound on the host
     btn.shadowRoot
       .querySelector("#button")
-      .dispatchEvent(new MouseEvent("click", { bubbles: true, composed: true }));
+      .dispatchEvent(
+        new MouseEvent("click", { bubbles: true, composed: true }),
+      );
   };
 
   it("clicking the play/pause control toggles playback", async () => {
@@ -368,12 +374,16 @@ describe("a11y-media-player control bar interactions", () => {
     const scroll = el.shadowRoot.querySelector("#scroll");
     scroll.shadowRoot
       .querySelector("#button")
-      .dispatchEvent(new MouseEvent("click", { bubbles: true, composed: true }));
+      .dispatchEvent(
+        new MouseEvent("click", { bubbles: true, composed: true }),
+      );
     await el.updateComplete;
     expect(el.disableScroll).to.equal(true);
     scroll.shadowRoot
       .querySelector("#button")
-      .dispatchEvent(new MouseEvent("click", { bubbles: true, composed: true }));
+      .dispatchEvent(
+        new MouseEvent("click", { bubbles: true, composed: true }),
+      );
     await el.updateComplete;
     expect(el.disableScroll).to.equal(false);
   });
@@ -383,7 +393,9 @@ describe("a11y-media-player seek handlers and slider", () => {
   let el;
   let media;
   beforeEach(async () => {
-    el = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
+    el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
     await el.updateComplete;
     await sleep(50);
     media = el.querySelector("video");
@@ -597,7 +609,9 @@ describe("a11y-media-player track selection", () => {
   let el;
   let fakeTracks;
   beforeEach(async () => {
-    el = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
+    el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
     await el.updateComplete;
     await sleep(50);
     fakeTracks = [
@@ -685,7 +699,12 @@ describe("a11y-media-player track selection", () => {
 
   it("selectTranscript without a track resolves the default track on array textTracks", async () => {
     // with a plain array of track-like objects the default track is found
-    const spanish = { label: "Spanish", language: "es", default: true, track: fakeTracks[1] };
+    const spanish = {
+      label: "Spanish",
+      language: "es",
+      default: true,
+      track: fakeTracks[1],
+    };
     el.__loadedTracks = fakeLoadedTracks([fakeTracks[0], spanish]);
     await el.updateComplete;
     el.selectTranscript();
@@ -741,7 +760,9 @@ describe("a11y-media-player track selection", () => {
 describe("a11y-media-player settings and sticky", () => {
   let el;
   beforeEach(async () => {
-    el = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
+    el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
     await el.updateComplete;
     await sleep(50);
   });
@@ -772,7 +793,11 @@ describe("a11y-media-player settings and sticky", () => {
     el.toggleSettings(true);
     await el.updateComplete;
     globalThis.document.body.dispatchEvent(
-      new MouseEvent("click", { bubbles: true, composed: true, cancelable: true }),
+      new MouseEvent("click", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      }),
     );
     await el.updateComplete;
     expect(el.__settingsOpen).to.equal(false);
@@ -824,7 +849,9 @@ describe("a11y-media-player settings and sticky", () => {
 describe("a11y-media-player audio description controls", () => {
   let el;
   beforeEach(async () => {
-    el = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
+    el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
     await el.updateComplete;
     await sleep(50);
     const media = el.querySelector("video");
@@ -928,7 +955,9 @@ describe("a11y-media-player link handling", () => {
 describe("a11y-media-player sources and iframe detection", () => {
   let el;
   beforeEach(async () => {
-    el = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
+    el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
     await el.updateComplete;
     await sleep(50);
   });

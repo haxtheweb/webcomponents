@@ -97,13 +97,24 @@ describe("HAXCMSApiMessages", () => {
         status: 403,
         data: null,
         message: "",
-        body: { status: 403, data: { message: "Access denied", code: "ACCESS_DENIED" } },
+        body: {
+          status: 403,
+          data: { message: "Access denied", code: "ACCESS_DENIED" },
+        },
       }),
-    ).to.deep.equal({ code: "ACCESS_DENIED", params: {}, message: "Access denied" });
+    ).to.deep.equal({
+      code: "ACCESS_DENIED",
+      params: {},
+      message: "Access denied",
+    });
     // PHP operations
     expect(
       apiMessageParts({
-        __failed: { status: 403, message: "invalid site token", code: "SITE_TOKEN_INVALID" },
+        __failed: {
+          status: 403,
+          message: "invalid site token",
+          code: "SITE_TOKEN_INVALID",
+        },
       }).code,
     ).to.equal("SITE_TOKEN_INVALID");
     // converters send data.error
@@ -112,7 +123,11 @@ describe("HAXCMSApiMessages", () => {
         .message,
     ).to.equal("Conversion failed");
     expect(apiMessageParts("plain text").message).to.equal("plain text");
-    expect(apiMessageParts(null)).to.deep.equal({ code: "", params: {}, message: "" });
+    expect(apiMessageParts(null)).to.deep.equal({
+      code: "",
+      params: {},
+      message: "",
+    });
   });
 
   it("shows the server's English message while the language is English", () => {

@@ -184,7 +184,7 @@
               "name": "haxToggleEdit",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -193,7 +193,7 @@
               "name": "haxAddImage",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -202,7 +202,7 @@
               "name": "haxRemoveLastImage",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -211,7 +211,7 @@
               "name": "haxBreakOutGallery",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },

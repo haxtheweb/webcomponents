@@ -76,7 +76,8 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
         }
 
         .random-content-container {
-          border: var(--ddd-border-size-xs) solid var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-size-xs) solid
+            var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-4);
           background: var(--ddd-theme-default-white);

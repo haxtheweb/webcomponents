@@ -91,8 +91,9 @@ describe("grade-book-pop-up", () => {
     await flush();
     expect(el.innerHTML.includes("Student submission")).to.equal(true);
     expect(el.querySelector("relative-time")).to.exist;
-    expect(el.querySelector("relative-time").getAttribute("datetime")).to.not
-      .equal(null);
+    expect(
+      el.querySelector("relative-time").getAttribute("datetime"),
+    ).to.not.equal(null);
   });
 
   it("changeActive respects the roster and assignment bounds", async () => {

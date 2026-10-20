@@ -32,7 +32,7 @@
                   "name": "newValue"
                 },
                 {
-                  "name": "oldValue"
+                  "name": "_oldValue"
                 }
               ],
               "description": "calculate if it is stopped"
@@ -45,7 +45,7 @@
                   "name": "newValue"
                 },
                 {
-                  "name": "oldValue"
+                  "name": "_oldValue"
                 }
               ],
               "description": "calculate if it is stopped"
@@ -58,7 +58,7 @@
                   "name": "newValue"
                 },
                 {
-                  "name": "oldValue"
+                  "name": "_oldValue"
                 }
               ],
               "description": "calculate if it is stopped"
@@ -73,7 +73,7 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Handle click events with accessibility considerations"
@@ -93,7 +93,7 @@
               "name": "_handleMouseOver",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Handle mouse over with reduced motion consideration"
@@ -103,7 +103,7 @@
               "name": "_handleMouseOut",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Handle mouse out"
@@ -128,7 +128,7 @@
               "name": "_setPlaySound",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Set the state to play from an event."
@@ -138,7 +138,7 @@
               "name": "_setStopSound",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Set the state to stop from an event."

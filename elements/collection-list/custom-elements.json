@@ -723,6 +723,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, skipToContent: \"Skip to content\", site: \"Site\", }"
+            },
+            {
+              "kind": "field",
               "name": "autoScroll",
               "type": {
                 "text": "boolean"

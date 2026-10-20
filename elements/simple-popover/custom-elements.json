@@ -55,8 +55,45 @@
             },
             {
               "kind": "field",
-              "name": "__popoverResizeObserver",
-              "default": "new ResizeObserver(() => { if (!this.hidden) { this.updatePosition(); } })"
+              "name": "__popoverResizeObserver"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible name for the popover's role=alertdialog content div.\nConsumers wire this by setting aria-label on the simple-popover\nhost (the host title attribute is used as a fallback). A name set\nonly on the host never reaches shadow DOM nodes, so the value is\nforwarded to the inner #content div to satisfy the axe\naria-dialog-name rule for every popover consumer.",
+              "attribute": "title",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "aria-label",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible name for the popover's role=alertdialog content div.\nConsumers wire this by setting aria-label on the simple-popover\nhost (the host title attribute is used as a fallback). A name set\nonly on the host never reaches shadow DOM nodes, so the value is\nforwarded to the inner #content div to satisfy the axe\naria-dialog-name rule for every popover consumer.",
+              "fieldName": "title"
+            },
+            {
+              "name": "aria-label",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "ariaLabel"
             }
           ],
           "superclass": {
@@ -160,13 +197,11 @@
             },
             {
               "kind": "field",
-              "name": "popover",
-              "privacy": "public",
+              "name": "popoverEl",
               "type": {
                 "text": "null"
               },
-              "default": "null",
-              "attribute": "popover"
+              "default": "null"
             },
             {
               "kind": "field",
@@ -239,14 +274,6 @@
               },
               "default": "\"tb\"",
               "fieldName": "orientation"
-            },
-            {
-              "name": "popover",
-              "type": {
-                "text": "null"
-              },
-              "default": "null",
-              "fieldName": "popover"
             }
           ],
           "superclass": {
@@ -318,7 +345,7 @@
               "name": "openedToggle",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -578,7 +605,7 @@
               "name": "nextStop",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Move ahead or back in the stack"
@@ -588,7 +615,7 @@
               "name": "prevStop",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -606,7 +633,7 @@
               "name": "stopTour",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -629,6 +656,14 @@
               "kind": "method",
               "name": "managerReset",
               "description": "The manager was called and he's pissed. Do not cross Go, do not collect $200 in tips.\nYou're fired. Me, you, every body. We're fired because someone just asked for the manager\nto do something else and we were already taking people on a tour and now the kitchen\nis on fire and someone must be blamed.\n\nAlso, global calls this to clean up local state when global is hijacked by another project\nthat also leverages the singleton and wants to ensure everyone cleans up after themselves\ninstead of flipping tables on their way out the door. We'll call this function pack up\non a Friday to avoid incidents."
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, stopTour: \"Stop Tour\", prev: \"Prev\", next: \"Next\", }"
             },
             {
               "kind": "field",
@@ -727,6 +762,12 @@
               },
               "default": "500",
               "fieldName": "activeElementDelay"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

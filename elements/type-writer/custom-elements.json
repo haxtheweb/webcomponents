@@ -109,15 +109,6 @@
             },
             {
               "kind": "field",
-              "name": "elementVisible",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "attribute": "elementVisible"
-            },
-            {
-              "kind": "field",
               "name": "_length",
               "privacy": "public",
               "type": {
@@ -174,13 +165,6 @@
               },
               "default": "150",
               "fieldName": "speed"
-            },
-            {
-              "name": "elementVisible",
-              "type": {
-                "text": "boolean"
-              },
-              "fieldName": "elementVisible"
             },
             {
               "name": "erase-speed",

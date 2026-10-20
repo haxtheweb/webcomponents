@@ -22,7 +22,7 @@
               "name": "fireReplaceEvent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Fire an event for things to react to above us"

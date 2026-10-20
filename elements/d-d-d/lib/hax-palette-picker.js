@@ -220,7 +220,8 @@ class HaxPalettePicker extends I18NMixin(DDD) {
       paletteSelection: "Palette selection",
       active: "Active",
       selected: "Selected",
-      currentlyActiveAndSelectedPalette: "Currently active and selected palette",
+      currentlyActiveAndSelectedPalette:
+        "Currently active and selected palette",
       currentlyActivePalette: "Currently active palette",
       selectedPaletteToApply: "Selected palette to apply",
     };

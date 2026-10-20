@@ -584,8 +584,8 @@ describe("citation-element test", () => {
       const aboutSpy = sandbox.spy(element, "_generateAboutLink");
       element._generateAboutLink("test-resource", "https://license-link.com");
 
-      expect(aboutSpy.calledWith("test-resource", "https://license-link.com")).to
-        .be.true;
+      expect(aboutSpy.calledWith("test-resource", "https://license-link.com"))
+        .to.be.true;
       const link = element._aboutLink;
 
       expect(link).to.exist;
@@ -865,9 +865,7 @@ describe("citation-element test", () => {
       // Simulate creating new links (should remove old ones). Keep the
       // element's internal pointers updated so the source code can find
       // and remove the previous link.
-      const newLicense = element._generateLicenseLink(
-        "https://new-test.com",
-      );
+      const newLicense = element._generateLicenseLink("https://new-test.com");
       element._licenseLink = newLicense;
       const newAbout = element._generateAboutLink(
         "new-test",

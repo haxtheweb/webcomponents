@@ -175,7 +175,12 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
             var(--ddd-theme-default-nittanyNavy, #001e44),
             var(--ddd-theme-default-skyBlue, #7eb3ff)
           );
-          box-shadow: 0 0 0 2px color-mix(in srgb, var(--ddd-theme-default-potentialMidnight) 30%, transparent);
+          box-shadow: 0 0 0 2px
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-potentialMidnight) 30%,
+              transparent
+            );
         }
 
         .buttons {
@@ -243,10 +248,19 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
           color: var(--ddd-theme-default-original87Pink);
           font-size: var(--ddd-font-size-xs);
           text-align: center;
-          background-color: color-mix(in srgb, var(--ddd-theme-default-original87Pink) 10%, transparent);
+          background-color: color-mix(
+            in srgb,
+            var(--ddd-theme-default-original87Pink) 10%,
+            transparent
+          );
           padding: var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-xs);
-          border: 1px solid color-mix(in srgb, var(--ddd-theme-default-original87Pink) 30%, transparent);
+          border: 1px solid
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-original87Pink) 30%,
+              transparent
+            );
         }
 
         .loading {
@@ -336,9 +350,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
                 ></rpg-character>
               `
             : html`
-                <div class="empty-character">
-                  ${this.t.characterWillAppear}
-                </div>
+                <div class="empty-character">${this.t.characterWillAppear}</div>
               `}
         </div>
 

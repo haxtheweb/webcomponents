@@ -148,7 +148,8 @@ class HAXCMSThemePreviewPanel extends I18NMixin(DDD) {
           overflow: visible;
         }
         :host(:focus-visible) {
-          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid
+            var(--ddd-theme-default-skyBlue);
           outline-offset: -2px;
         }
         .panel-toggle {

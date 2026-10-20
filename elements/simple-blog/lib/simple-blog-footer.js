@@ -190,7 +190,9 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
           ></simple-datetime>
           <span slot="prefix">${this.nextTitle}</span>
         </site-menu-button>
-        <button raised @click="${this._backButtonTap}">${this.t.backToList}</button>
+        <button raised @click="${this._backButtonTap}">
+          ${this.t.backToList}
+        </button>
         <h2 class="blog-title">
           ${varExists(this.manifest, "title") ? this.manifest.title : ""}
         </h2>

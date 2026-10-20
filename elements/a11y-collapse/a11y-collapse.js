@@ -18,7 +18,8 @@ class A11yCollapse extends DDD {
             --a11y-collapse-border-color,
             var(--ddd-theme-default-coalyGray)
           );
-          transition: all var(--ddd-duration-slow, 0.6s) cubic-bezier(0.075, 0.82, 0.165, 1);
+          transition: all var(--ddd-duration-slow, 0.6s)
+            cubic-bezier(0.075, 0.82, 0.165, 1);
         }
         :host([heading-button]) #heading {
           cursor: pointer;
@@ -176,10 +177,7 @@ class A11yCollapse extends DDD {
       ${this.headingButton || this.accordion
         ? this._makeHeadingButton()
         : this._makeIconButton()}
-      <div
-        id="content"
-        aria-hidden="${this.expanded ? "false" : "true"}"
-      >
+      <div id="content" aria-hidden="${this.expanded ? "false" : "true"}">
         <div id="content-inner">
           ${this.expanded
             ? html`<slot name="content"></slot><slot></slot>`

@@ -22,7 +22,11 @@ describe("undo-manager test", () => {
 
   it("announces undo availability as the stack changes", async () => {
     // first stack entry flips canUndo from false to true
-    element.undoStack.execute({ execute: () => {}, undo: () => {}, redo: () => {} });
+    element.undoStack.execute({
+      execute: () => {},
+      undo: () => {},
+      redo: () => {},
+    });
     await element.updateComplete;
     expect(element.canUndo).to.be.true;
     expect(element.__undoAnnouncement).to.equal("Undo available.");

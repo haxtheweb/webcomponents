@@ -40,7 +40,7 @@
               "name": "haxgizmoRegistration",
               "parameters": [
                 {
-                  "name": "store"
+                  "name": "_store"
                 }
               ],
               "description": "Supply translations for the UI elements of HAX in meme-maker"
@@ -50,7 +50,7 @@
               "name": "haxprogressiveEnhancement",
               "parameters": [
                 {
-                  "name": "el"
+                  "name": "_el"
                 }
               ],
               "description": "Hook for HAX to support progressive enhancement and return a string\nto place in the slot of this tag for RSS, bots and legacy formats"

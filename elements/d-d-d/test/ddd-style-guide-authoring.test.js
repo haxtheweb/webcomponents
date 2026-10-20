@@ -1,49 +1,49 @@
-import { expect } from '@open-wc/testing'
+import { expect } from "@open-wc/testing";
 
-import '../lib/DDDStyleGuideAuthoring.js'
-import { registerDDDStyleGuideAuthoring } from '../lib/DDDStyleGuideAuthoring.js'
+import "../lib/DDDStyleGuideAuthoring.js";
+import { registerDDDStyleGuideAuthoring } from "../lib/DDDStyleGuideAuthoring.js";
 
 // We need a real HAXOptionSampleFactory for the registration to proceed
-import { HAXOptionSampleFactory } from '../lib/DDDStyles.js'
+import { HAXOptionSampleFactory } from "../lib/DDDStyles.js";
 
-describe('registerDDDStyleGuideAuthoring', () => {
-  it('returns early when HAXOptionSampleFactory is not a function', () => {
+describe("registerDDDStyleGuideAuthoring", () => {
+  it("returns early when HAXOptionSampleFactory is not a function", () => {
     const result = registerDDDStyleGuideAuthoring({
       options: {},
-    })
-    expect(result).to.be.undefined
-  })
+    });
+    expect(result).to.be.undefined;
+  });
 
-  it('returns early when options is null', () => {
-    const result = registerDDDStyleGuideAuthoring({})
-    expect(result).to.be.undefined
-  })
+  it("returns early when options is null", () => {
+    const result = registerDDDStyleGuideAuthoring({});
+    expect(result).to.be.undefined;
+  });
 
-  it('returns early when payload is empty', () => {
-    const result = registerDDDStyleGuideAuthoring()
-    expect(result).to.be.undefined
-  })
+  it("returns early when payload is empty", () => {
+    const result = registerDDDStyleGuideAuthoring();
+    expect(result).to.be.undefined;
+  });
 
-  it('returns early when already registered', () => {
-    const wasRegistered = globalThis.__dddStyleGuideAuthoringRegistered
-    globalThis.__dddStyleGuideAuthoringRegistered = true
+  it("returns early when already registered", () => {
+    const wasRegistered = globalThis.__dddStyleGuideAuthoringRegistered;
+    globalThis.__dddStyleGuideAuthoringRegistered = true;
     try {
       const result = registerDDDStyleGuideAuthoring({
         options: { HAXOptionSampleFactory },
-      })
-      expect(result).to.be.undefined
+      });
+      expect(result).to.be.undefined;
     } finally {
-      globalThis.__dddStyleGuideAuthoringRegistered = wasRegistered
+      globalThis.__dddStyleGuideAuthoringRegistered = wasRegistered;
     }
-  })
-})
+  });
+});
 
-describe('registerDDDStyleGuideAuthoring with mocked HaxStore', () => {
-  it('registers and applies designSystemHAXProperties when HaxStore is available', () => {
-    const wasRegistered = globalThis.__dddStyleGuideAuthoringRegistered
-    const origHaxStore = globalThis.HaxStore
+describe("registerDDDStyleGuideAuthoring with mocked HaxStore", () => {
+  it("registers and applies designSystemHAXProperties when HaxStore is available", () => {
+    const wasRegistered = globalThis.__dddStyleGuideAuthoringRegistered;
+    const origHaxStore = globalThis.HaxStore;
     // Reset the registration flag so the function runs
-    globalThis.__dddStyleGuideAuthoringRegistered = false
+    globalThis.__dddStyleGuideAuthoringRegistered = false;
 
     const mockElementList = {
       h1: {
@@ -56,11 +56,11 @@ describe('registerDDDStyleGuideAuthoring with mocked HaxStore', () => {
         settings: { configure: [] },
         designSystem: true,
       },
-    }
+    };
 
     // eslint-disable-next-line no-unused-vars -- written by the test, never read
-    let designSystemHAXPropsCalled = false
-        globalThis.HaxStore = {
+    let designSystemHAXPropsCalled = false;
+    globalThis.HaxStore = {
       requestAvailability: () => ({
         elementList: mockElementList,
         editMode: false,
@@ -68,21 +68,21 @@ describe('registerDDDStyleGuideAuthoring with mocked HaxStore', () => {
         __dddStyleGuideDefaultSchemaReady: false,
         isInlineElement: () => false,
         designSystemHAXProperties: (props, _tag) => {
-          designSystemHAXPropsCalled = true
-          return props
+          designSystemHAXPropsCalled = true;
+          return props;
         },
       }),
-    }
+    };
 
     try {
       registerDDDStyleGuideAuthoring({
         options: { HAXOptionSampleFactory },
-      })
+      });
       // The function sets up listeners; verify it ran without error
-      expect(globalThis.__dddStyleGuideAuthoringRegistered).to.be.true
+      expect(globalThis.__dddStyleGuideAuthoringRegistered).to.be.true;
     } finally {
-      globalThis.__dddStyleGuideAuthoringRegistered = wasRegistered
-      globalThis.HaxStore = origHaxStore
+      globalThis.__dddStyleGuideAuthoringRegistered = wasRegistered;
+      globalThis.HaxStore = origHaxStore;
     }
-  })
-})
+  });
+});

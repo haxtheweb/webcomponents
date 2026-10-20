@@ -1,116 +1,118 @@
-import { fixture, expect, html } from '@open-wc/testing'
-import '../person-testimonial.js'
-import { PersonTestimonial } from '../person-testimonial.js'
+import { fixture, expect, html } from "@open-wc/testing";
+import "../person-testimonial.js";
+import { PersonTestimonial } from "../person-testimonial.js";
 
-describe('person-testimonial test', () => {
-  let element
+describe("person-testimonial test", () => {
+  let element;
 
   beforeEach(async () => {
     element = await fixture(html`
       <person-testimonial title="test-title"></person-testimonial>
-    `)
-  })
+    `);
+  });
 
-  it('passes the a11y audit', async () => {
-    await expect(element).shadowDom.to.be.accessible()
-  })
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
+  });
 
-  it('has the correct tag name', () => {
-    expect(element.tagName.toLowerCase()).to.equal('person-testimonial')
-    expect(PersonTestimonial.tag).to.equal('person-testimonial')
-  })
+  it("has the correct tag name", () => {
+    expect(element.tagName.toLowerCase()).to.equal("person-testimonial");
+    expect(PersonTestimonial.tag).to.equal("person-testimonial");
+  });
 
-  it('marks itself as OER schema SupportingMaterial', () => {
+  it("marks itself as OER schema SupportingMaterial", () => {
     // firstUpdated stamps the OER schema class on the host
-    expect(element.getAttribute('typeof')).to.equal('oer:SupportingMaterial')
-  })
+    expect(element.getAttribute("typeof")).to.equal("oer:SupportingMaterial");
+  });
 
-  it('has undefined defaults for its data properties', () => {
-    expect(element.image).to.equal(undefined)
-    expect(element.name).to.equal(undefined)
-    expect(element.position).to.equal(undefined)
-    expect(element.describedBy).to.equal(undefined)
-  })
+  it("has undefined defaults for its data properties", () => {
+    expect(element.image).to.equal(undefined);
+    expect(element.name).to.equal(undefined);
+    expect(element.position).to.equal(undefined);
+    expect(element.describedBy).to.equal(undefined);
+  });
 
-  it('renders the quote scaffolding without an image', () => {
-    expect(element.shadowRoot.querySelector('.card')).to.exist
-    expect(element.shadowRoot.querySelector('.image')).to.not.exist
-    expect(element.shadowRoot.querySelector('.arrow_right')).to.exist
-    expect(element.shadowRoot.querySelector('.wrap')).to.exist
-    expect(element.shadowRoot.querySelector('.testimonial')).to.exist
-    expect(element.shadowRoot.querySelector('slot')).to.exist
-    expect(element.shadowRoot.querySelector('#quotestart')).to.exist
-    expect(element.shadowRoot.querySelector('#quoteend')).to.exist
-  })
+  it("renders the quote scaffolding without an image", () => {
+    expect(element.shadowRoot.querySelector(".card")).to.exist;
+    expect(element.shadowRoot.querySelector(".image")).to.not.exist;
+    expect(element.shadowRoot.querySelector(".arrow_right")).to.exist;
+    expect(element.shadowRoot.querySelector(".wrap")).to.exist;
+    expect(element.shadowRoot.querySelector(".testimonial")).to.exist;
+    expect(element.shadowRoot.querySelector("slot")).to.exist;
+    expect(element.shadowRoot.querySelector("#quotestart")).to.exist;
+    expect(element.shadowRoot.querySelector("#quoteend")).to.exist;
+  });
 
-  it('renders the name and position with OER schema markup', async () => {
-    element.name = 'Jane Doe'
-    element.position = 'Chief Learner'
-    await element.updateComplete
-    const name = element.shadowRoot.querySelector('.name')
-    expect(name.getAttribute('property')).to.equal('oer:name')
-    expect(name.textContent).to.equal('Jane Doe')
-    const position = element.shadowRoot.querySelector('.position')
-    expect(position.textContent).to.equal('Chief Learner')
-  })
+  it("renders the name and position with OER schema markup", async () => {
+    element.name = "Jane Doe";
+    element.position = "Chief Learner";
+    await element.updateComplete;
+    const name = element.shadowRoot.querySelector(".name");
+    expect(name.getAttribute("property")).to.equal("oer:name");
+    expect(name.textContent).to.equal("Jane Doe");
+    const position = element.shadowRoot.querySelector(".position");
+    expect(position.textContent).to.equal("Chief Learner");
+  });
 
-  it('renders slotted testimonial content into the quote slot', async () => {
+  it("renders slotted testimonial content into the quote slot", async () => {
     const el = await fixture(html`
       <person-testimonial name="Jane Doe">
         This company rocks!
       </person-testimonial>
-    `)
-    expect(el.textContent.trim()).to.equal('This company rocks!')
-    const slot = el.shadowRoot.querySelector('slot')
-    expect(slot.getAttribute('property')).to.equal('oer:description')
-  })
+    `);
+    expect(el.textContent.trim()).to.equal("This company rocks!");
+    const slot = el.shadowRoot.querySelector("slot");
+    expect(slot.getAttribute("property")).to.equal("oer:description");
+  });
 
-  describe('image rendering', () => {
-    it('renders the image with OER schema markup when provided', async () => {
+  describe("image rendering", () => {
+    it("renders the image with OER schema markup when provided", async () => {
       // data URI so no real network request is ever made
-      const src = 'data:image/gif;base64,R0lGODlhAQABAAAAADs='
+      const src = "data:image/gif;base64,R0lGODlhAQABAAAAADs=";
       const el = await fixture(html`
         <person-testimonial
           name="Jane Doe"
           image="${src}"
           described-by="testimonial-source"
         ></person-testimonial>
-      `)
-      const img = el.shadowRoot.querySelector('.image img')
-      expect(img).to.exist
-      expect(img.getAttribute('property')).to.equal('oer:image')
-      expect(img.getAttribute('src')).to.equal(src)
-      expect(img.getAttribute('loading')).to.equal('lazy')
-      expect(img.getAttribute('alt')).to.equal('Jane Doe')
-      expect(img.getAttribute('aria-describedby')).to.equal(
-        'testimonial-source',
-      )
-    })
+      `);
+      const img = el.shadowRoot.querySelector(".image img");
+      expect(img).to.exist;
+      expect(img.getAttribute("property")).to.equal("oer:image");
+      expect(img.getAttribute("src")).to.equal(src);
+      expect(img.getAttribute("loading")).to.equal("lazy");
+      expect(img.getAttribute("alt")).to.equal("Jane Doe");
+      expect(img.getAttribute("aria-describedby")).to.equal(
+        "testimonial-source",
+      );
+    });
 
-    it('falls back to a meaningful alt when no name is given', async () => {
+    it("falls back to a meaningful alt when no name is given", async () => {
       const el = await fixture(html`
         <person-testimonial
           image="data:image/gif;base64,R0lGODlhAQABAAAAADs="
         ></person-testimonial>
-      `)
-      const img = el.shadowRoot.querySelector('.image img')
+      `);
+      const img = el.shadowRoot.querySelector(".image img");
       // a11y fix: the image is informative (the testimonial's author), so
       // an empty decorative alt is wrong; fall back to a real description
-      expect(img.getAttribute('alt')).to.equal('Person giving this testimonial')
-    })
+      expect(img.getAttribute("alt")).to.equal(
+        "Person giving this testimonial",
+      );
+    });
 
-    it('uses the position as the alt when no name is given', async () => {
+    it("uses the position as the alt when no name is given", async () => {
       const el = await fixture(html`
         <person-testimonial
           image="data:image/gif;base64,R0lGODlhAQABAAAAADs="
           position="Chief Learner"
         ></person-testimonial>
-      `)
-      const img = el.shadowRoot.querySelector('.image img')
-      expect(img.getAttribute('alt')).to.equal('Chief Learner')
-    })
+      `);
+      const img = el.shadowRoot.querySelector(".image img");
+      expect(img.getAttribute("alt")).to.equal("Chief Learner");
+    });
 
-    it('omits aria-describedby when described-by is unset', async () => {
+    it("omits aria-describedby when described-by is unset", async () => {
       // a11y fix: an empty aria-describedby attribute is invalid; only
       // render it when a described-by value is actually set
       const el = await fixture(html`
@@ -118,133 +120,133 @@ describe('person-testimonial test', () => {
           name="Jane Doe"
           image="data:image/gif;base64,R0lGODlhAQABAAAAADs="
         ></person-testimonial>
-      `)
-      const img = el.shadowRoot.querySelector('.image img')
-      expect(img.hasAttribute('aria-describedby')).to.be.false
-    })
+      `);
+      const img = el.shadowRoot.querySelector(".image img");
+      expect(img.hasAttribute("aria-describedby")).to.be.false;
+    });
 
-    it('removes the image when the property is cleared', async () => {
+    it("removes the image when the property is cleared", async () => {
       const el = await fixture(html`
         <person-testimonial
           name="Jane Doe"
           image="data:image/gif;base64,R0lGODlhAQABAAAAADs="
         ></person-testimonial>
-      `)
-      expect(el.shadowRoot.querySelector('.image img')).to.exist
+      `);
+      expect(el.shadowRoot.querySelector(".image img")).to.exist;
       // an empty string is falsy so the image block is removed entirely
-      el.image = ''
-      await el.updateComplete
-      expect(el.shadowRoot.querySelector('.image')).to.not.exist
-      el.image = undefined
-      await el.updateComplete
-      expect(el.shadowRoot.querySelector('.image')).to.not.exist
-    })
+      el.image = "";
+      await el.updateComplete;
+      expect(el.shadowRoot.querySelector(".image")).to.not.exist;
+      el.image = undefined;
+      await el.updateComplete;
+      expect(el.shadowRoot.querySelector(".image")).to.not.exist;
+    });
 
-    it('renders the image as a square with object-fit so it never scrunches', async () => {
+    it("renders the image as a square with object-fit so it never scrunches", async () => {
       const el = await fixture(html`
         <person-testimonial
           name="Jane Doe"
           image="data:image/gif;base64,R0lGODlhAQABAAAAADs="
         ></person-testimonial>
-      `)
-      const img = el.shadowRoot.querySelector('.image img')
-      const computed = getComputedStyle(img)
+      `);
+      const img = el.shadowRoot.querySelector(".image img");
+      const computed = getComputedStyle(img);
       // object-fit crops instead of distorting and the box stays square at
       // every breakpoint (the media queries only change which square)
-      expect(computed.objectFit).to.equal('cover')
-      expect(computed.width).to.equal(computed.height)
-    })
-  })
+      expect(computed.objectFit).to.equal("cover");
+      expect(computed.width).to.equal(computed.height);
+    });
+  });
 
-  describe('editable outline styles', () => {
-    it('applies the hax-body editable outline variable when HAX activates', () => {
+  describe("editable outline styles", () => {
+    it("applies the hax-body editable outline variable when HAX activates", () => {
       // fixed (person-testimonial.js): the editable outline var was
       // misspelled with three dashes so it never matched the real
       // --hax-body-editable-outline variable and the fallback always won;
       // a custom outline supplied by HAX now actually applies
-      element.setAttribute('data-hax-ray', 'block')
-      element.setAttribute('data-hax-active', 'true')
+      element.setAttribute("data-hax-ray", "block");
+      element.setAttribute("data-hax-active", "true");
       element.style.setProperty(
-        '--hax-body-editable-outline',
-        '4px solid rgb(10, 20, 30)',
-      )
-      const quote = element.shadowRoot.querySelector('.testimonial')
-      const computed = getComputedStyle(quote)
-      expect(computed.outlineWidth).to.equal('4px')
-      expect(computed.outlineColor).to.equal('rgb(10, 20, 30)')
-    })
-  })
+        "--hax-body-editable-outline",
+        "4px solid rgb(10, 20, 30)",
+      );
+      const quote = element.shadowRoot.querySelector(".testimonial");
+      const computed = getComputedStyle(quote);
+      expect(computed.outlineWidth).to.equal("4px");
+      expect(computed.outlineColor).to.equal("rgb(10, 20, 30)");
+    });
+  });
 
-  describe('accessibility', () => {
-    it('hides the decorative quote-mark graphics from assistive tech', () => {
+  describe("accessibility", () => {
+    it("hides the decorative quote-mark graphics from assistive tech", () => {
       expect(
         element.shadowRoot
-          .querySelector('#quotestart')
-          .getAttribute('aria-hidden'),
-      ).to.equal('true')
+          .querySelector("#quotestart")
+          .getAttribute("aria-hidden"),
+      ).to.equal("true");
       expect(
         element.shadowRoot
-          .querySelector('#quoteend')
-          .getAttribute('aria-hidden'),
-      ).to.equal('true')
-    })
-  })
+          .querySelector("#quoteend")
+          .getAttribute("aria-hidden"),
+      ).to.equal("true");
+    });
+  });
 
-  describe('HAX integration', () => {
-    let schema
+  describe("HAX integration", () => {
+    let schema;
 
     before(async () => {
       schema = await fetch(PersonTestimonial.haxProperties).then((res) =>
         res.json(),
-      )
-    })
+      );
+    });
 
-    it('exposes haxProperties as a lib file URL', () => {
-      const url = PersonTestimonial.haxProperties
-      expect(typeof url).to.equal('string')
-      expect(url.endsWith('lib/person-testimonial.haxProperties.json')).to.be
-        .true
-    })
+    it("exposes haxProperties as a lib file URL", () => {
+      const url = PersonTestimonial.haxProperties;
+      expect(typeof url).to.equal("string");
+      expect(url.endsWith("lib/person-testimonial.haxProperties.json")).to.be
+        .true;
+    });
 
-    it('defines the image source as an image field with file actions', () => {
+    it("defines the image source as an image field with file actions", () => {
       const imageField = schema.settings.configure.find(
-        (p) => p.property === 'image',
-      )
-      expect(imageField.inputMethod).to.equal('haxupload')
+        (p) => p.property === "image",
+      );
+      expect(imageField.inputMethod).to.equal("haxupload");
       // fileActions opts the field into the in-context quick image
       // operations (info panel, compress / resize / transform)
-      expect(imageField.fileActions).to.be.true
-    })
+      expect(imageField.fileActions).to.be.true;
+    });
 
-    it('replaces the dead accentColor with the DDD primary design system', () => {
-      expect(schema.designSystem.primary).to.be.true
-      expect(JSON.stringify(schema).includes('accentColor')).to.be.false
+    it("replaces the dead accentColor with the DDD primary design system", () => {
+      expect(schema.designSystem.primary).to.be.true;
+      expect(JSON.stringify(schema).includes("accentColor")).to.be.false;
       // the legacy attribute is garbage collected on save
-      expect(schema.saveOptions.unsetAttributes).to.include('accent-color')
-    })
+      expect(schema.saveOptions.unsetAttributes).to.include("accent-color");
+    });
 
-    it('drops the legacy dark attribute in favor of DDD light-dark', () => {
+    it("drops the legacy dark attribute in favor of DDD light-dark", () => {
       // no editor control for dark: the site color-scheme drives light-dark()
-      const props = [...schema.settings.configure, ...schema.settings.advanced]
-      expect(props.some((p) => p.property === 'dark')).to.be.false
-      expect(JSON.stringify(schema.demoSchema).includes('dark')).to.be.false
+      const props = [...schema.settings.configure, ...schema.settings.advanced];
+      expect(props.some((p) => p.property === "dark")).to.be.false;
+      expect(JSON.stringify(schema.demoSchema).includes("dark")).to.be.false;
       // the legacy attribute is garbage collected on save
-      expect(schema.saveOptions.unsetAttributes).to.include('dark')
-    })
+      expect(schema.saveOptions.unsetAttributes).to.include("dark");
+    });
 
-    it('no longer styles a legacy dark attribute of its own', async () => {
+    it("no longer styles a legacy dark attribute of its own", async () => {
       const withAttr = await fixture(
         html`<person-testimonial dark></person-testimonial>`,
-      )
-      const withoutAttr = await fixture(html`<person-testimonial />`)
-      await withAttr.updateComplete
-      await withoutAttr.updateComplete
+      );
+      const withoutAttr = await fixture(html`<person-testimonial />`);
+      await withAttr.updateComplete;
+      await withoutAttr.updateComplete;
       // the legacy dark attribute is inert: color-scheme is inherited from
       // the page (DDD sets it), so both elements resolve the same value and
       // the attribute can never force dark on its own
-      const a = getComputedStyle(withAttr).colorScheme
-      expect(a).to.equal(getComputedStyle(withoutAttr).colorScheme)
-      expect(a).to.not.equal('dark')
-    })
-  })
-})
+      const a = getComputedStyle(withAttr).colorScheme;
+      expect(a).to.equal(getComputedStyle(withoutAttr).colorScheme);
+      expect(a).to.not.equal("dark");
+    });
+  });
+});

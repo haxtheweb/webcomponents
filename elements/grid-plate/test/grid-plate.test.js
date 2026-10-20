@@ -278,7 +278,8 @@ describe("GridPlate drag and drop handlers", () => {
     await el.updateComplete;
     el._drop({});
     // active class should still be there since dataHaxRay is not set
-    expect(el.querySelector('[slot="col-1"]').classList.contains("active")).to.be.true;
+    expect(el.querySelector('[slot="col-1"]').classList.contains("active")).to
+      .be.true;
   });
 });
 
@@ -397,20 +398,35 @@ describe("GridPlate _getColumnWidths edge cases", () => {
   });
 
   it("falls back to old layout mapping for 8/4", () => {
-    const widths = element._getColumnWidths("md", "8/4", element.layouts, false);
+    const widths = element._getColumnWidths(
+      "md",
+      "8/4",
+      element.layouts,
+      false,
+    );
     expect(widths).to.exist;
     // 8/4 maps to "2-1" which is 66.66/33.33
     expect(widths.length).to.equal(2);
   });
 
   it("falls back to old layout mapping for 6/6", () => {
-    const widths = element._getColumnWidths("md", "6/6", element.layouts, false);
+    const widths = element._getColumnWidths(
+      "md",
+      "6/6",
+      element.layouts,
+      false,
+    );
     expect(widths).to.exist;
     expect(widths[0]).to.equal("50%");
   });
 
   it("falls back to old layout mapping for 4/8", () => {
-    const widths = element._getColumnWidths("md", "4/8", element.layouts, false);
+    const widths = element._getColumnWidths(
+      "md",
+      "4/8",
+      element.layouts,
+      false,
+    );
     expect(widths).to.exist;
     expect(widths.length).to.equal(2);
   });

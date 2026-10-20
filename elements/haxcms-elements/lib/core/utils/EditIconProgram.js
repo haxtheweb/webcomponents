@@ -95,7 +95,10 @@ export const createEditIconProgram = (context) => {
       return [
         {
           title: searchTerm
-            ? _t(context, "noIconsFoundFor").replace("{search}", () => searchTerm)
+            ? _t(context, "noIconsFoundFor").replace(
+                "{search}",
+                () => searchTerm,
+              )
             : _t(context, "noIconsAvailable"),
           icon: "icons:search",
           tags: ["empty"],

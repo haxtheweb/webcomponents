@@ -14,8 +14,7 @@ async function waitFor(fn, timeout = 3000) {
   return fn();
 }
 
-const dataImage =
-  "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
+const dataImage = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
 
 describe("self-check behavior", () => {
   it("exposes the expected static tag and haxProperties file reference", () => {
@@ -175,11 +174,11 @@ describe("self-check behavior", () => {
     );
     el.elementVisible = true;
     await el.updateComplete;
-    const userActionReady = await waitFor(
-      () => globalThis.customElements.get("user-action"),
+    const userActionReady = await waitFor(() =>
+      globalThis.customElements.get("user-action"),
     );
-    const tooltipReady = await waitFor(
-      () => globalThis.customElements.get("simple-tooltip"),
+    const tooltipReady = await waitFor(() =>
+      globalThis.customElements.get("simple-tooltip"),
     );
     expect(userActionReady).to.equal(true);
     expect(tooltipReady).to.equal(true);
@@ -197,7 +196,9 @@ describe("self-check behavior", () => {
 
   it("haxactiveElementChanged toggles contenteditable on the title", async () => {
     const el = await fixture(
-      html`<self-check title="Edit me"><span slot="question">Q</span>A</self-check>`,
+      html`<self-check title="Edit me"
+        ><span slot="question">Q</span>A</self-check
+      >`,
     );
     const title = el.shadowRoot.querySelector("#title");
     el.haxactiveElementChanged(el, true);

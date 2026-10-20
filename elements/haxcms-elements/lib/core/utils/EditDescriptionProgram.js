@@ -13,7 +13,9 @@ const EDIT_DESCRIPTION_T = {
   clearDescription: "Clear description",
 };
 const _t = (context, key) =>
-  context && context.t && context.t[key] ? context.t[key] : EDIT_DESCRIPTION_T[key];
+  context && context.t && context.t[key]
+    ? context.t[key]
+    : EDIT_DESCRIPTION_T[key];
 
 /**
  * Creates the edit description program for use in SuperDaemon
@@ -44,7 +46,8 @@ export const createEditDescriptionProgram = (context) => {
         input && input.trim() !== ""
           ? _t(context, "saveDescriptionValue").replace(
               "{description}",
-              () => (`${input.substring(0, 50)}${input.length > 50 ? "..." : ""}`),
+              () =>
+                `${input.substring(0, 50)}${input.length > 50 ? "..." : ""}`,
             )
           : _t(context, "clearDescription"),
       icon: "icons:check",

@@ -96,7 +96,7 @@
               "name": "_handleTouchEnd",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -126,7 +126,7 @@
               "name": "haxClickSlideIndex",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -145,7 +145,7 @@
               "name": "haxToggleEdit",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -154,9 +154,17 @@
               "name": "haxBreakOutPlaylist",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, playlist: \"Playlist\", carousel: \"carousel\", slide: \"slide\", slideNumber: \"Slide {number}\", slideOfTotal: \"Slide {number} of {total}\", previousSlide: \"Previous slide\", nextSlide: \"Next slide\", slidePages: \"Slide pages\", goToSlide: \"Go to slide {number}\", }"
             },
             {
               "kind": "field",
@@ -288,7 +296,7 @@
             {
               "kind": "field",
               "name": "_observer",
-              "default": "new MutationObserver((mutations) => { clearTimeout(this._debounceMutations); this._debounceMutations = setTimeout(() => { this.mirrorLightDomToItems(); }, 100); })"
+              "default": "new MutationObserver((_mutations) => { clearTimeout(this._debounceMutations); this._debounceMutations = setTimeout(() => { this.mirrorLightDomToItems(); }, 100); })"
             }
           ],
           "events": [
@@ -362,6 +370,12 @@
               },
               "default": "0",
               "fieldName": "slide"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

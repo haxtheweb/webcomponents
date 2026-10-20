@@ -856,9 +856,24 @@ export const DDDVariables = css`
     ); /* Material design easing */
     /* easing by intent: things arriving decelerate, things leaving
        accelerate, emphasized is for larger moves that should feel deliberate */
-    --ddd-timing-enter: cubic-bezier(0, 0, 0.2, 1); /* decelerate, elements entering */
-    --ddd-timing-exit: cubic-bezier(0.4, 0, 1, 1); /* accelerate, elements leaving */
-    --ddd-timing-emphasized: cubic-bezier(0.2, 0, 0, 1); /* large or deliberate moves */
+    --ddd-timing-enter: cubic-bezier(
+      0,
+      0,
+      0.2,
+      1
+    ); /* decelerate, elements entering */
+    --ddd-timing-exit: cubic-bezier(
+      0.4,
+      0,
+      1,
+      1
+    ); /* accelerate, elements leaving */
+    --ddd-timing-emphasized: cubic-bezier(
+      0.2,
+      0,
+      0,
+      1
+    ); /* large or deliberate moves */
     --ddd-timing-linear: linear; /* progress, spinners, continuous loops */
     /* for prefers-reduced-motion: near-zero rather than 0ms so transitionend
        still fires for code that waits on it */

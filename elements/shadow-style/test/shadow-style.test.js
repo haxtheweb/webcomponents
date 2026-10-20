@@ -144,9 +144,7 @@ describe("shadow-style upgrade-time processing (evil mode)", () => {
   });
 
   it("injects the parsed rule into every target shadow root", async () => {
-    const targets = [
-      ...globalThis.document.querySelectorAll("s-s-target-el"),
-    ];
+    const targets = [...globalThis.document.querySelectorAll("s-s-target-el")];
     expect(targets.length).to.equal(2);
     for (const target of targets) {
       const styles = [...target.shadowRoot.querySelectorAll("style")];

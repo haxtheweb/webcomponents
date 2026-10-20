@@ -148,17 +148,20 @@ export class PolarisTile extends I18NMixin(LitElement) {
         background-color: var(--ddd-theme-default-potential0, rgba(0, 0, 0, 0));
         background-image: linear-gradient(
           light-dark(
-            var(--ddd-theme-default-beaverBlue, #1e407c),
-            var(--ddd-theme-default-nittanyNavy, #001e44)
-          ) 0%,
+              var(--ddd-theme-default-beaverBlue, #1e407c),
+              var(--ddd-theme-default-nittanyNavy, #001e44)
+            )
+            0%,
           light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-potentialMidnight, #000321)
-          ) 65%,
+              var(--ddd-theme-default-nittanyNavy, #001e44),
+              var(--ddd-theme-default-potentialMidnight, #000321)
+            )
+            65%,
           light-dark(
-            var(--ddd-theme-default-nittanyNavy, #001e44),
-            var(--ddd-theme-default-potentialMidnight, #000321)
-          ) 100%
+              var(--ddd-theme-default-nittanyNavy, #001e44),
+              var(--ddd-theme-default-potentialMidnight, #000321)
+            )
+            100%
         );
       }
 
@@ -173,7 +176,10 @@ export class PolarisTile extends I18NMixin(LitElement) {
         background-blend-mode: multiply;
         /* exact DDD match for the potential midnight 50 percent overlay;
            kept the same in both schemes since it darkens the tile image */
-        background-color: var(--ddd-theme-default-potential50, rgba(0, 3, 33, 0.5));
+        background-color: var(
+          --ddd-theme-default-potential50,
+          rgba(0, 3, 33, 0.5)
+        );
         background-position: 50% 50%;
         background-size: cover;
       }
@@ -206,9 +212,7 @@ export class PolarisTile extends I18NMixin(LitElement) {
                 aria-label="${this.line1
                   ? this.line1
                   : this.t.additionalDetails}"
-                title="${this.line1
-                  ? this.line1
-                  : this.t.additionalDetails}"
+                title="${this.line1 ? this.line1 : this.t.additionalDetails}"
                 ><svg
                   viewBox="0 0 24 24"
                   width="24"

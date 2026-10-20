@@ -518,6 +518,16 @@
             },
             {
               "kind": "method",
+              "name": "hasVisibleChildren",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ],
+              "description": "Whether an item has at least one direct child that is not hidden from\nthe menu. When this is false the builder renders the item as a leaf\n(map-menu-item) instead of a collapsible submenu, so we never show an\nexpand arrow that opens to nothing. Recursion handles deeper levels:\na child that itself has no visible children also renders as a leaf, so\nempty collapses are pruned at every depth."
+            },
+            {
+              "kind": "method",
               "name": "getPublishedStatus",
               "parameters": [
                 {
@@ -756,7 +766,7 @@
                   "name": "newValue"
                 },
                 {
-                  "name": "oldValue"
+                  "name": "_oldValue"
                 }
               ]
             },
@@ -783,7 +793,7 @@
             },
             {
               "kind": "method",
-              "name": "__keypress",
+              "name": "__keydown",
               "parameters": [
                 {
                   "name": "e"
@@ -795,7 +805,7 @@
               "name": "__toggleEventHandler",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -1560,7 +1570,7 @@
               "name": "_headerClickHandler",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },

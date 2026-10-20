@@ -115,9 +115,23 @@ export const rawTables = {
     ["a3", "Assignment 3", "5", "r1", "not-a-date", "99:99"],
   ],
   rubrics: [
-    ["shortName", "name", "criteria", "description", "qualitative", "percentage"],
+    [
+      "shortName",
+      "name",
+      "criteria",
+      "description",
+      "qualitative",
+      "percentage",
+    ],
     ["r1", "Design rubric", "design", "Design criteria", "good,bad", "50"],
-    ["r2", "Writing rubric", "writing", "Writing criteria", "strong,weak", "50"],
+    [
+      "r2",
+      "Writing rubric",
+      "writing",
+      "Writing criteria",
+      "strong,weak",
+      "50",
+    ],
   ],
   submissions: [
     ["student", "a1", "a2"],

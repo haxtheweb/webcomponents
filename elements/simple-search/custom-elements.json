@@ -131,6 +131,15 @@
             },
             {
               "kind": "method",
+              "name": "_escapeRegExp",
+              "parameters": [
+                {
+                  "name": "term"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_getSearchText",
               "description": "gets the tab-index of cues based on whether or not interactive cues are disabled",
               "parameters": [
@@ -149,6 +158,14 @@
               "parameters": [
                 {
                   "name": "results"
+                },
+                {
+                  "name": "resetCount",
+                  "default": "true",
+                  "description": "whether to reset the running resultCount\nbefore matching (default true; the _handleChange sweep passes false)",
+                  "type": {
+                    "text": "boolean"
+                  }
                 },
                 {
                   "description": "array of search terms",

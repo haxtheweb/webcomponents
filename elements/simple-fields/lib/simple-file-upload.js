@@ -483,7 +483,10 @@ class SimpleFileUpload extends I18NMixin(DDD) {
     }
     // Check accept
     if (this.accept && !this._fileTypeAccepted(file)) {
-      const error = this.t.fileTypeNotAccepted.replace("{name}", () => file.name);
+      const error = this.t.fileTypeNotAccepted.replace(
+        "{name}",
+        () => file.name,
+      );
       this.dispatchEvent(
         new CustomEvent("file-reject", {
           bubbles: true,
@@ -627,7 +630,10 @@ class SimpleFileUpload extends I18NMixin(DDD) {
         file.complete = true;
         file.status = xhr.status === 200 ? "Complete" : `Error: ${xhr.status}`;
         if (xhr.status !== 200) {
-          file.error = this.t.uploadFailed.replace("{status}", () => xhr.status);
+          file.error = this.t.uploadFailed.replace(
+            "{status}",
+            () => xhr.status,
+          );
         }
         this.dispatchEvent(
           new CustomEvent("upload-response", {

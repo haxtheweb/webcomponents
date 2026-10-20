@@ -43,10 +43,7 @@ const partialFixture = () => html`
 `;
 
 const duplicateAnswersFixture = () => html`
-  <mark-the-words
-    question="Mark the fruit"
-    statement="Apples grow well here."
-  >
+  <mark-the-words question="Mark the fruit" statement="Apples grow well here.">
     <input correct value="Apples" />
     <input correct value="Apples" />
   </mark-the-words>
@@ -193,8 +190,7 @@ describe("mark-the-words behavior", () => {
       element.shadowRoot.querySelectorAll("h4"),
     ).find((h) => h.textContent.trim() === "Evidence");
     expect(evidenceHeading).to.exist;
-    expect(element.shadowRoot.querySelector('slot[name="evidence"]')).to
-      .exist;
+    expect(element.shadowRoot.querySelector('slot[name="evidence"]')).to.exist;
   });
 
   it("renders incorrect feedback and hint slots when not fully correct", async () => {

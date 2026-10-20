@@ -131,9 +131,7 @@ describe("I18NMixin", () => {
     });
 
     it("initialises t to {} for a non-LitElement base", async () => {
-      const el = await fixture(
-        html`<test-bare-element></test-bare-element>`,
-      );
+      const el = await fixture(html`<test-bare-element></test-bare-element>`);
       expect(el.t).to.deep.equal({});
     });
   });
@@ -247,9 +245,7 @@ describe("I18NMixin", () => {
     });
 
     it("leaves updateCallback undefined when neither requestUpdate nor render exist", async () => {
-      const el = await fixture(
-        html`<test-bare-element></test-bare-element>`,
-      );
+      const el = await fixture(html`<test-bare-element></test-bare-element>`);
       el.registerLocalization({
         context: el,
         localesPath: "/locales",
@@ -359,12 +355,8 @@ describe("I18NMixin", () => {
     });
 
     it("multiple elements with different contexts both register", async () => {
-      const el1 = await fixture(
-        html`<test-i18n-element></test-i18n-element>`,
-      );
-      const el2 = await fixture(
-        html`<test-i18n-element></test-i18n-element>`,
-      );
+      const el1 = await fixture(html`<test-i18n-element></test-i18n-element>`);
+      const el2 = await fixture(html`<test-i18n-element></test-i18n-element>`);
       el1.registerLocalization({
         context: el1,
         localesPath: "/locales",

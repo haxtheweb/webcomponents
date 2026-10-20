@@ -141,9 +141,7 @@ class SimpleIconsetDemo extends LitElement {
   }
   _getIconsets() {
     let imports =
-        this.imports.length < 1
-          ? [SimpleIconIconsetsManifest]
-          : this.imports,
+        this.imports.length < 1 ? [SimpleIconIconsetsManifest] : this.imports,
       iconsets = imports.flat(),
       excludeSets = (this.exclude || "").split(" "),
       includeSets = (this.include || "").split(" ");

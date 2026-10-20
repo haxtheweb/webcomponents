@@ -75,10 +75,12 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
     this.t = {
       ...this.t,
       noEntitiesFound: "No entities were found in /x/api/v1/entities.",
-      unableToLoadViewsMetadata: "Unable to load Views metadata from the site API specification.",
+      unableToLoadViewsMetadata:
+        "Unable to load Views metadata from the site API specification.",
       any: "Any",
       noListOperation: "No list operation is defined for this entity.",
-      unableToLoadPreview: "Unable to load preview results from the generated query.",
+      unableToLoadPreview:
+        "Unable to load preview results from the generated query.",
       filterableFields: "Filterable: {fields}",
       selectableFields: "Selectable fields: {fields}",
       loadingPreview: "Loading preview…",
@@ -96,7 +98,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       sortField: "Sort field",
       sortDescending: "Sort descending",
       filtersQueryParameters: "Filters / query parameters",
-      noAdditionalQueryParameters: "No additional query parameters are available for this entity endpoint.",
+      noAdditionalQueryParameters:
+        "No additional query parameters are available for this entity endpoint.",
       queryDataFeed: "Query / data feed",
       methodGet: "Method: GET",
       copyUrl: "Copy URL",
@@ -457,7 +460,12 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
         .query-code {
           display: block;
           margin-top: var(--ddd-spacing-2);
-          font-family: var(--ddd-font-mono, ui-monospace, "Courier New", monospace);
+          font-family: var(
+            --ddd-font-mono,
+            ui-monospace,
+            "Courier New",
+            monospace
+          );
           font-size: var(--ddd-font-size-5xs);
           white-space: pre-wrap;
           overflow-wrap: anywhere;
@@ -1821,7 +1829,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       pieces.push(
         this.t.filterableFields.replace(
           "{fields}",
-          () => (`${entityConfig.filterableFields.slice(0, 6).join(", ")}${entityConfig.filterableFields.length > 6 ? "…" : ""}`),
+          () =>
+            `${entityConfig.filterableFields.slice(0, 6).join(", ")}${entityConfig.filterableFields.length > 6 ? "…" : ""}`,
         ),
       );
     }
@@ -1832,7 +1841,8 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       pieces.push(
         this.t.selectableFields.replace(
           "{fields}",
-          () => (`${entityConfig.selectableFields.slice(0, 8).join(", ")}${entityConfig.selectableFields.length > 8 ? "…" : ""}`),
+          () =>
+            `${entityConfig.selectableFields.slice(0, 8).join(", ")}${entityConfig.selectableFields.length > 8 ? "…" : ""}`,
         ),
       );
     }
@@ -1864,9 +1874,7 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
       </p>`;
     }
     if (!Array.isArray(this.previewRecords) || this.previewRecords.length < 1) {
-      return html`<p class="empty-preview">
-        ${this.t.noResultsYet}
-      </p>`;
+      return html`<p class="empty-preview">${this.t.noResultsYet}</p>`;
     }
     const renderer =
       this.renderer === "playlist"
@@ -2016,19 +2024,19 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
           ? "grid"
           : this.renderer;
     const rendererLabels = {
-      "collection": this.t.rendererCollection,
-      "table": this.t.rendererTable,
-      "grid": this.t.rendererGrid,
-      "carousel": this.t.rendererCarousel,
+      collection: this.t.rendererCollection,
+      table: this.t.rendererTable,
+      grid: this.t.rendererGrid,
+      carousel: this.t.rendererCarousel,
       "image-gallery": this.t.rendererImageGallery,
       "media-playlist": this.t.rendererMediaPlaylist,
-      "list": this.t.rendererList,
-      "content": this.t.rendererContent,
-      "accordion": this.t.rendererAccordion,
-      "tabs": this.t.rendererTabs,
-      "timeline": this.t.rendererTimeline,
-      "chart": this.t.rendererChart,
-      "tree": this.t.rendererTree,
+      list: this.t.rendererList,
+      content: this.t.rendererContent,
+      accordion: this.t.rendererAccordion,
+      tabs: this.t.rendererTabs,
+      timeline: this.t.rendererTimeline,
+      chart: this.t.rendererChart,
+      tree: this.t.rendererTree,
     };
     const rendererOptions = RENDERER_OPTIONS.map((option) => ({
       value: option.value,

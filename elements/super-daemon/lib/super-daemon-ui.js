@@ -855,7 +855,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
               : this._selectedIndex - 1;
           this._updateActiveDescendant(prevIndex);
           break;
-}
+        }
         case "ArrowDown": {
           e.preventDefault();
           e.stopPropagation();
@@ -865,7 +865,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
               : this._selectedIndex + 1;
           this._updateActiveDescendant(nextIndex);
           break;
-}
+        }
         case "Escape":
           e.preventDefault();
           e.stopPropagation();
@@ -1052,7 +1052,10 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         </div>
         ${this.mini && this.filtered.length > 1
           ? html`<div class="mini-results-counter">
-              ${this.t.resultsCount.replace("{count}", () => this.filtered.length)}
+              ${this.t.resultsCount.replace(
+                "{count}",
+                () => this.filtered.length,
+              )}
             </div>`
           : nothing}
       </div>

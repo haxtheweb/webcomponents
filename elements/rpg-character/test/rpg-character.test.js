@@ -12,8 +12,7 @@ const lastImageHref = (el) => {
   return images.length ? images[images.length - 1].getAttribute("href") : null;
 };
 
-const num = (v) =>
-  typeof v === "number" ? v : Number.parseFloat(v);
+const num = (v) => (typeof v === "number" ? v : Number.parseFloat(v));
 
 /**
  * Allow Lit3 to flush a re-render scheduled by the previous updateComplete
@@ -347,7 +346,9 @@ describe("rpg-character", () => {
 
   describe("circle flag", () => {
     it("toggling circle adds an extra svg piece", async () => {
-      const el = await fixture(html`<rpg-character seed="btopro"></rpg-character>`);
+      const el = await fixture(
+        html`<rpg-character seed="btopro"></rpg-character>`,
+      );
       await settled(el);
       const baseline = pieceCount(el);
       el.circle = true;
@@ -379,7 +380,9 @@ describe("rpg-character", () => {
 
   describe("fire flag", () => {
     it("speed drops to 100 when fire=true and returns to 500 when fire=false", async () => {
-      const el = await fixture(html`<rpg-character seed="btopro"></rpg-character>`);
+      const el = await fixture(
+        html`<rpg-character seed="btopro"></rpg-character>`,
+      );
       await settled(el);
       expect(el.speed).to.equal(500);
 
@@ -393,7 +396,9 @@ describe("rpg-character", () => {
     });
 
     it("renders the fire piece when fire=true", async () => {
-      const el = await fixture(html`<rpg-character seed="btopro"></rpg-character>`);
+      const el = await fixture(
+        html`<rpg-character seed="btopro"></rpg-character>`,
+      );
       await settled(el);
       const renderedBefore = Array.from(
         el.shadowRoot.querySelectorAll(".wrapper > svg > image"),
@@ -413,7 +418,9 @@ describe("rpg-character", () => {
 
   describe("walking", () => {
     it("does not cycle legs when walking is false", async () => {
-      const el = await fixture(html`<rpg-character seed="btopro"></rpg-character>`);
+      const el = await fixture(
+        html`<rpg-character seed="btopro"></rpg-character>`,
+      );
       await settled(el);
       el.walking = false;
       el.leg = "";
@@ -436,7 +443,9 @@ describe("rpg-character", () => {
 
     it("does not cycle legs when reduceMotion is true at the time walking toggles on", async () => {
       // Build a fresh element with walking OFF so no pending timer is ever started.
-      const el = await fixture(html`<rpg-character seed="btopro"></rpg-character>`);
+      const el = await fixture(
+        html`<rpg-character seed="btopro"></rpg-character>`,
+      );
       await settled(el);
       el.reduceMotion = true;
       el.leg = "";
@@ -447,7 +456,9 @@ describe("rpg-character", () => {
     });
 
     it("walks noticeably faster when fire toggles the speed", async () => {
-      const el = await fixture(html`<rpg-character seed="btopro"></rpg-character>`);
+      const el = await fixture(
+        html`<rpg-character seed="btopro"></rpg-character>`,
+      );
       await settled(el);
       expect(el.speed).to.equal(500);
       el.fire = true;

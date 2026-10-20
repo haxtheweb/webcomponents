@@ -118,6 +118,25 @@
             },
             {
               "kind": "method",
+              "name": "_bindOptionI18n",
+              "parameters": [
+                {
+                  "name": "option"
+                }
+              ],
+              "description": "Keep an option's text translated. option.i18n is\n{ context: <element using I18NMixin>, field: tKey, \"value.name\": tKey }\nand fields are re-translated (and re-indexed) as that element's\ntranslations load."
+            },
+            {
+              "kind": "method",
+              "name": "_indexOption",
+              "parameters": [
+                {
+                  "name": "option"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_resolveShortcutLabel",
               "parameters": [
                 {
@@ -285,7 +304,7 @@
               "name": "noResultsSlot",
               "parameters": [
                 {
-                  "name": "searchTerm"
+                  "name": "_searchTerm"
                 }
               ]
             },
@@ -312,7 +331,7 @@
               "name": "toggleSantaMode",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -330,7 +349,7 @@
               "name": "promptMerlin",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -339,7 +358,7 @@
               "name": "stopMerlin",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -348,7 +367,7 @@
               "name": "closeMerlin",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -415,7 +434,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ toggleSantaMode: \"Toggle Santa Mode\", santaModeDescription: \"He sees you when your sleeping, he knows when your awake, and with this command active he is always listening for input ready to respond. He's.. Santa Merlin. Ho..Ho...Ho.\", santaModeActivated: \"Santa mode activated: Watch what you say\", santaModeDeactivated: \"Santa mode deactivated: Have a nice day believing you are not being watched\", disableSantaModeToStop: \"Please disable Santa mode to stop listening\", imHere: \"I'm here\", yes: \"Yes?\", what: \"What?\", whatCanIDo: \"What can I do for you?\", whatDoYouNeed: \"What do you need?\", howCanIHelp: \"How can I help?\", thanksForStopping: \"thanks for stopping by\", seeYa: \"See ya\", seeYouSoon: \"See you soon\", tillWeMeetAgain: \"Till we meet again\", howMayIHelp: \"How may I help you?\", listening: \"Listening..\", programModeActivated: \"program mode activated\", developerModeActivated: \"developer mode activated\", }"
+              "default": "{ // product name; no locale entries, so it stays \"Super Daemon\" unless a language adds one superDaemon: \"Super Daemon\", toggleSantaMode: \"Toggle Santa Mode\", santaModeDescription: \"He sees you when your sleeping, he knows when your awake, and with this command active he is always listening for input ready to respond. He's.. Santa Merlin. Ho..Ho...Ho.\", santaModeActivated: \"Santa mode activated: Watch what you say\", santaModeDeactivated: \"Santa mode deactivated: Have a nice day believing you are not being watched\", disableSantaModeToStop: \"Please disable Santa mode to stop listening\", imHere: \"I'm here\", yes: \"Yes?\", what: \"What?\", whatCanIDo: \"What can I do for you?\", whatDoYouNeed: \"What do you need?\", howCanIHelp: \"How can I help?\", thanksForStopping: \"thanks for stopping by\", seeYa: \"See ya\", seeYouSoon: \"See you soon\", tillWeMeetAgain: \"Till we meet again\", howMayIHelp: \"How may I help you?\", listening: \"Listening..\", programModeActivated: \"program mode activated\", developerModeActivated: \"developer mode activated\", }"
             },
             {
               "kind": "field",
@@ -1054,7 +1073,7 @@
               "name": "clickEvent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -1067,7 +1086,7 @@
               "name": "_focusIn",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -1076,7 +1095,7 @@
               "name": "_focusOut",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -1126,7 +1145,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ moreDetails: \"More details\", details: \"Details\", }"
+              "default": "{ moreDetails: \"More details\", details: \"Details\", opensInNewWindow: \"Opens in a new window\", }"
             },
             {
               "kind": "field",
@@ -1537,7 +1556,7 @@
               "name": "fieldFocusLoss",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -1546,7 +1565,7 @@
               "name": "fieldFocus",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -1979,7 +1998,7 @@
               "name": "hideSimpleToast",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -2361,6 +2380,16 @@
             },
             {
               "kind": "method",
+              "name": "_applyActiveDescendantDom",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ],
+              "description": "Apply active-descendant DOM state (row.active flags + scrolling) after\nrender. Split out from _updateActiveDescendant so updated() can reset\nthe DOM without setting reactive properties inside the update cycle."
+            },
+            {
+              "kind": "method",
               "name": "_announceResults",
               "description": "Announce results count to screen readers"
             },
@@ -2369,7 +2398,7 @@
               "name": "itemSelected",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -2531,7 +2560,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, noResultsForThisTerm: this._defaultTextEmpty, typeToSeeResults: \"Type something to see results\", voiceSearch: \"Voice search\", results: \"Results\", loadingResults: \"Loading results\", insertBlocks: \"Insert blocks\", findMedia: \"Find media\", submitIdeas: \"Submit your ideas\", dropFilesHere: \"Drop files here\", typeWhatYouWant: \"Type what you want to do\", opensMemoryPalace: \"opens Merlin\", clickToDoAnything: \"Click to do anything!\", }"
+              "default": "{ ...this.t, noResultsForThisTerm: this._defaultTextEmpty, typeToSeeResults: \"Type something to see results\", voiceSearch: \"Voice search\", results: \"Results\", resultsCount: \"{count} results\", loadingResults: \"Loading results\", insertBlocks: \"Insert blocks\", findMedia: \"Find media\", submitIdeas: \"Submit your ideas\", dropFilesHere: \"Drop files here\", typeWhatYouWant: \"Type what you want to do\", opensMemoryPalace: \"opens Merlin\", clickToDoAnything: \"Click to do anything!\", }"
             },
             {
               "kind": "field",

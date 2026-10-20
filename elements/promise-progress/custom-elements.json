@@ -102,12 +102,6 @@
               }
             }
           ],
-          "mixins": [
-            {
-              "name": "SimpleColorsSuper",
-              "package": "@haxtheweb/simple-colors/simple-colors.js"
-            }
-          ],
           "superclass": {
             "name": "PromiseProgressLite",
             "module": "/lib/promise-progress-lite.js"

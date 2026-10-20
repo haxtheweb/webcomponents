@@ -733,7 +733,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(DDD) {
             <span class="panel-header-title"
               >${this.t.revisionsFor.replace(
                 "{page}",
-                () => (pageLabel || this.t.page),
+                () => pageLabel || this.t.page,
               )}</span
             >
           </div>
@@ -773,7 +773,8 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(DDD) {
                           const revisionTimestamp =
                             this._getRevisionTimestamp(revision);
                           const dateDisplay =
-                            this._formatTimeAgo(revisionTimestamp) || this.t.unknown;
+                            this._formatTimeAgo(revisionTimestamp) ||
+                            this.t.unknown;
                           const dateTitle =
                             this._formatAbsoluteDate(revisionTimestamp) ||
                             this.t.unknownDate;

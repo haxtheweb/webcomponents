@@ -4,31 +4,31 @@ import { DisqusEmbed, DisqusBroker, DisqusInstance } from "../disqus-embed.js";
 // network stub: the broker loads the disqus embed script through the script
 // src property, so the descriptor is patched to capture the real url and
 // redirect the element to a local 404; no request ever reaches *.disqus.com
-const disqusScriptSrcs = []
+const disqusScriptSrcs = [];
 const scriptSrcDescriptor = Object.getOwnPropertyDescriptor(
   HTMLScriptElement.prototype,
   "src",
-)
+);
 Object.defineProperty(HTMLScriptElement.prototype, "src", {
   ...scriptSrcDescriptor,
   set(value) {
     if (String(value).includes("disqus.com")) {
-      disqusScriptSrcs.push(String(value))
+      disqusScriptSrcs.push(String(value));
       return scriptSrcDescriptor.set.call(
         this,
         "/elements/disqus-embed/test/does-not-exist.js",
-      )
+      );
     }
-    return scriptSrcDescriptor.set.call(this, value)
+    return scriptSrcDescriptor.set.call(this, value);
   },
-})
+});
 after(() => {
   Object.defineProperty(
     HTMLScriptElement.prototype,
     "src",
     scriptSrcDescriptor,
-  )
-})
+  );
+});
 
 describe("disqus-embed", () => {
   it("instantiates", async () => {
@@ -176,7 +176,8 @@ describe("disqus broker", () => {
   it("is available as a singleton in the document body", () => {
     const broker = globalThis.DisqusSingleton.requestAvailability();
     expect(broker).to.exist;
-    expect(globalThis.DisqusSingleton.requestAvailability() === DisqusInstance).to.be.true;
+    expect(globalThis.DisqusSingleton.requestAvailability() === DisqusInstance)
+      .to.be.true;
     expect(broker.tagName.toLowerCase()).to.equal("disqus-broker");
     expect(broker.getAttribute("id")).to.equal("disqus_thread");
   });

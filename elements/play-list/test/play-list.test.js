@@ -957,8 +957,9 @@ describe("play-list test", () => {
     });
 
     it("should strip tags from content and truncate long text", () => {
-      expect(element._getSlideTitle({ content: "<p>Some words</p>" }, 0)).to
-        .equal("Some words");
+      expect(
+        element._getSlideTitle({ content: "<p>Some words</p>" }, 0),
+      ).to.equal("Some words");
       const long = new Array(20).fill("word").join(" ");
       const result = element._getSlideTitle({ content: long }, 0);
       expect(result.length).to.equal(63);
@@ -1062,9 +1063,7 @@ describe("play-list test", () => {
     });
 
     it("should handle a template wrapper child", async () => {
-      const wrapper = await fixture(
-        html`<div><play-list></play-list></div>`,
-      );
+      const wrapper = await fixture(html`<div><play-list></play-list></div>`);
       const playlist = wrapper.querySelector("play-list");
       const template = document.createElement("template");
       const first = document.createElement("p");

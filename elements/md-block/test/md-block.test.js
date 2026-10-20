@@ -311,7 +311,9 @@ describe("md-block test", () => {
       expect(el._loadError).to.equal(
         "Unable to load markdown source (HTTP 404)",
       );
-      const status = el.shadowRoot.querySelector('.source-error[role="status"]');
+      const status = el.shadowRoot.querySelector(
+        '.source-error[role="status"]',
+      );
       expect(status).to.exist;
       expect(status.getAttribute("aria-live")).to.equal("polite");
       expect(status.textContent).to.contain("HTTP 404");
@@ -335,7 +337,9 @@ describe("md-block test", () => {
       expect(el._loadError).to.equal(
         "Unable to load markdown source (network error)",
       );
-      const status = el.shadowRoot.querySelector('.source-error[role="status"]');
+      const status = el.shadowRoot.querySelector(
+        '.source-error[role="status"]',
+      );
       expect(status).to.exist;
       expect(status.getAttribute("aria-live")).to.equal("polite");
       expect(status.textContent).to.contain("network error");

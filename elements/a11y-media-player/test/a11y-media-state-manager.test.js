@@ -152,7 +152,11 @@ describe("a11y-media-state-manager global listeners", () => {
     const manager = globalThis.A11yMediaStateManager.requestAvailability();
     const player = makePlayer({ playing: true, fullscreen: true });
     globalThis.dispatchEvent(
-      new CustomEvent("a11y-player", { detail: player, bubbles: true, composed: true }),
+      new CustomEvent("a11y-player", {
+        detail: player,
+        bubbles: true,
+        composed: true,
+      }),
     );
     expect(manager.players).to.include(player);
     globalThis.dispatchEvent(
@@ -182,7 +186,11 @@ describe("a11y-media-state-manager global listeners", () => {
     const before = manager.players.length;
     const player = makePlayer({});
     globalThis.dispatchEvent(
-      new CustomEvent("a11y-player", { detail: player, bubbles: true, composed: true }),
+      new CustomEvent("a11y-player", {
+        detail: player,
+        bubbles: true,
+        composed: true,
+      }),
     );
     expect(manager.players.length).to.equal(before);
   });

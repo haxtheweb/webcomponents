@@ -146,7 +146,12 @@ describe("haxcms-site-store computed state", () => {
     });
 
     it("returns a fallback theme when metadata.theme is missing", () => {
-      store.manifest = { id: "x", title: "X", metadata: { platform: {} }, items: [] };
+      store.manifest = {
+        id: "x",
+        title: "X",
+        metadata: { platform: {} },
+        items: [],
+      };
       expect(store.themeData).to.exist;
       expect(store.themeData.variables).to.exist;
     });
@@ -233,9 +238,9 @@ describe("haxcms-site-store computed state", () => {
       const rm = store.routerManifest;
       // the metadata-less item is kept: it is not explicitly unpublished
       expect(rm.items.length).to.equal(3);
-      expect(
-        rm.items.find((i) => i.id === "page-2").metadata,
-      ).to.equal(undefined);
+      expect(rm.items.find((i) => i.id === "page-2").metadata).to.equal(
+        undefined,
+      );
     });
   });
 
@@ -249,7 +254,9 @@ describe("haxcms-site-store computed state", () => {
       const result = store.getUniqueSlugName("page-1");
       expect(result).to.not.equal("page-1");
       // must not collide with any existing slug
-      expect(store.manifest.items.some((i) => i.slug === result)).to.equal(false);
+      expect(store.manifest.items.some((i) => i.slug === result)).to.equal(
+        false,
+      );
     });
 
     it("getInternalRoute returns false without route params", () => {
@@ -296,7 +303,9 @@ describe("haxcms-site-store iconFromPageType", () => {
   it("returns known icons for project/practice/connection/knowledge types", () => {
     expect(iconFromPageType("project")).to.equal("hax:bulletin-board");
     expect(iconFromPageType("practice")).to.equal("hax:shovel");
-    expect(iconFromPageType("connection")).to.equal("courseicons:chem-connection");
+    expect(iconFromPageType("connection")).to.equal(
+      "courseicons:chem-connection",
+    );
     expect(iconFromPageType("knowledge")).to.equal("courseicons:knowledge");
   });
 
@@ -617,7 +626,13 @@ describe("haxcms-site-store computed getters extended", () => {
         order: 2,
         parent: "page-1",
         indent: 1,
-        metadata: { published: true, locked: false, status: "", created: 1, updated: 5 },
+        metadata: {
+          published: true,
+          locked: false,
+          status: "",
+          created: 1,
+          updated: 5,
+        },
       });
       const last = await store.getLastChildItem("page-1");
       expect(last.id).to.equal("page-1-2");
@@ -716,23 +731,24 @@ describe("haxcms-site-store style guide and content loading", () => {
     });
 
     it("returns false for content without page-template tags", () => {
-      expect(store.isValidStyleGuideContent("<div>hello</div>")).to.equal(false);
+      expect(store.isValidStyleGuideContent("<div>hello</div>")).to.equal(
+        false,
+      );
     });
 
     it("returns true for content with page-template tags and no site index indicators", () => {
-      const content = '<page-template><div>style guide</div></page-template>';
+      const content = "<page-template><div>style guide</div></page-template>";
       expect(store.isValidStyleGuideContent(content)).to.equal(true);
     });
 
     it("returns false when content appears to be site index", () => {
       const content =
-        '<page-template><haxcms-site-builder></haxcms-site-builder></page-template>';
+        "<page-template><haxcms-site-builder></haxcms-site-builder></page-template>";
       expect(store.isValidStyleGuideContent(content)).to.equal(false);
     });
 
     it("returns false for content with site.json reference", () => {
-      const content =
-        '<page-template>site.json data</page-template>';
+      const content = "<page-template>site.json data</page-template>";
       expect(store.isValidStyleGuideContent(content)).to.equal(false);
     });
   });
@@ -814,7 +830,7 @@ describe("haxcms-site-store style guide and content loading", () => {
       const headers = new Map();
       headers.set("content-type", "text/html");
       const validContent =
-        '<page-template><div>real style guide</div></page-template>';
+        "<page-template><div>real style guide</div></page-template>";
       globalThis.fetch = () =>
         Promise.resolve({
           ok: true,
@@ -882,7 +898,9 @@ describe("haxcms-site-store toast, sound, and editor availability", () => {
     it("dispatches haxcms-toast-show when appReady", () => {
       store.appReady = true;
       let received = null;
-      const handler = (e) => { received = e.detail };
+      const handler = (e) => {
+        received = e.detail;
+      };
       globalThis.addEventListener("haxcms-toast-show", handler);
       try {
         store.toast("hello world", 1000, { hat: "random" });
@@ -898,7 +916,9 @@ describe("haxcms-site-store toast, sound, and editor availability", () => {
     it("does not dispatch when appReady is false", () => {
       store.appReady = false;
       let received = null;
-      const handler = (e) => { received = e.detail };
+      const handler = (e) => {
+        received = e.detail;
+      };
       globalThis.addEventListener("haxcms-toast-show", handler);
       try {
         store.toast("no show");

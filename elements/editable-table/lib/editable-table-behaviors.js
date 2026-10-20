@@ -34,7 +34,10 @@ export const editableTableStyles = [
       font-size: var(--editable-table-font-size, unset);
       font-family: var(--editable-table-font-family, inherit);
       font-weight: var(--editable-table-medium-weight, 300);
-      color: var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222));
+      color: var(
+        --editable-table-color,
+        var(--ddd-theme-default-coalyGray, #222)
+      );
       background-color: var(
         --editable-table-bg-color,
         var(--ddd-theme-default-white, #fff)
@@ -64,7 +67,10 @@ export const editableTableStyles = [
         var(--ddd-theme-default-coalyGray, #999)
       );
       font-weight: var(--editable-table-light-weight, 200);
-      color: var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222));
+      color: var(
+        --editable-table-color,
+        var(--ddd-theme-default-coalyGray, #222)
+      );
       background-color: var(
         --editable-table-bg-color,
         var(--ddd-theme-default-white, #fff)
@@ -74,7 +80,10 @@ export const editableTableStyles = [
     .td,
     .th-or-td .icon-container {
       font-weight: var(--editable-table-light-weight, 200);
-      color: var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222));
+      color: var(
+        --editable-table-color,
+        var(--ddd-theme-default-coalyGray, #222)
+      );
       background-color: var(
         --editable-table-bg-color,
         var(--ddd-theme-default-white, #fff)
@@ -164,10 +173,8 @@ export const editableTableStyles = [
     }
     .tfoot-tr .th,
     .tfoot-tr .td {
-      border-top: 2px solid var(
-        --editable-table-color,
-        var(--ddd-theme-default-coalyGray, #222)
-      );
+      border-top: 2px solid
+        var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222));
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(
         --editable-table-heading-color,

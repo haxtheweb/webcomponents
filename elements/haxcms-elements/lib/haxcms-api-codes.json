@@ -5,9 +5,7 @@
     {
       "code": "AUTH_RATE_LIMITED",
       "en": "Too many failed sign-in attempts. Please try again later.",
-      "match": [
-        "too many (?:failed )?login attempts.*"
-      ]
+      "match": ["too many (?:failed )?login attempts.*"]
     },
     {
       "code": "AUTH_INVALID_CREDENTIALS",
@@ -33,9 +31,7 @@
     {
       "code": "AUTH_REQUIRED_EXPORT",
       "en": "Sign in to export as {format}.",
-      "match": [
-        "authentication required for (?<format>\\S+) (?:site )?exports"
-      ]
+      "match": ["authentication required for (?<format>\\S+) (?:site )?exports"]
     },
     {
       "code": "AUTH_REQUIRED",
@@ -60,10 +56,7 @@
     {
       "code": "SESSION_NONE",
       "en": "No active session.",
-      "match": [
-        "no active session",
-        "no_session"
-      ],
+      "match": ["no active session", "no_session"],
       "kind": "info"
     },
     {
@@ -78,17 +71,13 @@
     {
       "code": "LOGGED_OUT",
       "en": "You have been signed out.",
-      "match": [
-        "loggedout"
-      ],
+      "match": ["loggedout"],
       "kind": "info"
     },
     {
       "code": "USER_TOKEN_REQUIRED",
       "en": "A user token is required for this request.",
-      "match": [
-        "x-haxcms-user-token header is required for this endpoint"
-      ]
+      "match": ["x-haxcms-user-token header is required for this endpoint"]
     },
     {
       "code": "USER_TOKEN_INVALID",
@@ -119,23 +108,17 @@
     {
       "code": "INSTALL_TOKEN_INVALID",
       "en": "The install token is invalid or missing.",
-      "match": [
-        "invalid or missing install token.*"
-      ]
+      "match": ["invalid or missing install token.*"]
     },
     {
       "code": "NOT_INSTALLED",
       "en": "HAXcms is not installed.",
-      "match": [
-        "haxcms is not installed"
-      ]
+      "match": ["haxcms is not installed"]
     },
     {
       "code": "INSTALL_STEP_INVALID",
       "en": "Invalid install step.",
-      "match": [
-        "invalid tostep.*"
-      ]
+      "match": ["invalid tostep.*"]
     },
     {
       "code": "SITE_ACCESS_DENIED",
@@ -161,9 +144,7 @@
     {
       "code": "HAXIAM_DISABLED",
       "en": "HAXIAM mode is not enabled.",
-      "match": [
-        "haxiam mode is not enabled"
-      ]
+      "match": ["haxiam mode is not enabled"]
     },
     {
       "code": "USER_NOT_SET_UP",
@@ -176,74 +157,53 @@
     {
       "code": "USER_ALREADY_HAS_ACCESS",
       "en": "That user already has access to this site.",
-      "match": [
-        "user already has access to this site"
-      ]
+      "match": ["user already has access to this site"]
     },
     {
       "code": "ACCESS_SELF_GRANT",
       "en": "You can't grant access to yourself.",
-      "match": [
-        "cannot grant access to yourself"
-      ]
+      "match": ["cannot grant access to yourself"]
     },
     {
       "code": "ACCESS_GRANTED",
       "en": "Access granted.",
-      "match": [
-        "user access granted successfully"
-      ],
+      "match": ["user access granted successfully"],
       "kind": "info"
     },
     {
       "code": "ACCESS_GRANT_FAILED",
       "en": "Unable to grant access.",
-      "match": [
-        "failed to create user access",
-        "failed to create symlink.*"
-      ]
+      "match": ["failed to create user access", "failed to create symlink.*"]
     },
     {
       "code": "FEATURE_DISABLED_OUTLINE",
       "en": "Changing the outline is disabled for this site.",
-      "match": [
-        "outline operations are disabled for this site"
-      ]
+      "match": ["outline operations are disabled for this site"]
     },
     {
       "code": "FEATURE_DISABLED_ADD_PAGE",
       "en": "Adding pages is disabled for this site.",
-      "match": [
-        "adding pages is disabled for this site"
-      ]
+      "match": ["adding pages is disabled for this site"]
     },
     {
       "code": "FEATURE_DISABLED_PAGE_DETAILS",
       "en": "Editing page details is disabled for this site.",
-      "match": [
-        "page details editing is disabled for this site"
-      ]
+      "match": ["page details editing is disabled for this site"]
     },
     {
       "code": "FEATURE_DISABLED_DELETE",
       "en": "Deleting is disabled for this site.",
-      "match": [
-        "delete is disabled for this site"
-      ]
+      "match": ["delete is disabled for this site"]
     },
     {
       "code": "FEATURE_DISABLED_FILES",
       "en": "File operations are disabled for this site.",
-      "match": [
-        "file operations are disabled for this site"
-      ]
+      "match": ["file operations are disabled for this site"]
     },
     {
       "code": "FEATURE_DISABLED_UPLOAD",
       "en": "Uploading media is disabled for this site.",
-      "match": [
-        "uploading media is disabled for this site"
-      ]
+      "match": ["uploading media is disabled for this site"]
     },
     {
       "code": "FEATURE_DISABLED_SETTINGS",
@@ -264,18 +224,12 @@
     {
       "code": "METHOD_NOT_ALLOWED",
       "en": "This request method is not allowed.",
-      "match": [
-        "method not allowed",
-        "unsupported method for (?<route>\\S+)"
-      ]
+      "match": ["method not allowed", "unsupported method for (?<route>\\S+)"]
     },
     {
       "code": "FORM_NOT_FOUND",
       "en": "Form not found.",
-      "match": [
-        "unknown form",
-        "(?!site )(?<form>[\\w-]+) does not exist"
-      ]
+      "match": ["unknown form", "(?!site )(?<form>[\\w-]+) does not exist"]
     },
     {
       "code": "ROUTE_NOT_FOUND",
@@ -288,9 +242,7 @@
     {
       "code": "API_HANDLER_MISSING",
       "en": "The server can't handle this request.",
-      "match": [
-        "(?:site|system) api handler (?:file missing|is not callable)"
-      ]
+      "match": ["(?:site|system) api handler (?:file missing|is not callable)"]
     },
     {
       "code": "OPENAPI_UNAVAILABLE",
@@ -336,17 +288,12 @@
     {
       "code": "SITE_NAME_INVALID",
       "en": "Site names can only use letters, numbers, hyphens and underscores.",
-      "match": [
-        "invalid site name",
-        "sitename must be a valid machine name.*"
-      ]
+      "match": ["invalid site name", "sitename must be a valid machine name.*"]
     },
     {
       "code": "USER_NAME_INVALID",
       "en": "User names can only use letters, numbers, hyphens and underscores.",
-      "match": [
-        "username must be a valid machine name.*"
-      ]
+      "match": ["username must be a valid machine name.*"]
     },
     {
       "code": "SITE_NAME_REQUIRED",
@@ -372,45 +319,33 @@
     {
       "code": "SITE_CONTEXT_UNRESOLVED",
       "en": "Unable to find the site for this request.",
-      "match": [
-        "unable to resolve site (?:context|name)(?: for (?<route>.+))?"
-      ]
+      "match": ["unable to resolve site (?:context|name)(?: for (?<route>.+))?"]
     },
     {
       "code": "SITE_CREATE_FAILED",
       "en": "Unable to create the site.",
-      "match": [
-        "unable to create site"
-      ]
+      "match": ["unable to create site"]
     },
     {
       "code": "SITE_THEME_INVALID",
       "en": "That theme can't be used for a new site.",
-      "match": [
-        "invalid theme supplied for site creation"
-      ]
+      "match": ["invalid theme supplied for site creation"]
     },
     {
       "code": "SITE_CLONE_FAILED",
       "en": "Unable to copy the site.",
-      "match": [
-        "unable to clone site"
-      ]
+      "match": ["unable to clone site"]
     },
     {
       "code": "SITE_ARCHIVED",
       "en": "Site archived.",
-      "match": [
-        "site archived"
-      ],
+      "match": ["site archived"],
       "kind": "info"
     },
     {
       "code": "SITE_ARCHIVE_FAILED",
       "en": "Unable to archive the site.",
-      "match": [
-        "unable to archive site"
-      ]
+      "match": ["unable to archive site"]
     },
     {
       "code": "TEMPLATE_SAVE_FAILED",
@@ -435,9 +370,7 @@
     {
       "code": "ITEM_COUNT_MISMATCH",
       "en": "The number of pages changed unexpectedly, so nothing was saved.",
-      "match": [
-        "item count mismatch.*"
-      ]
+      "match": ["item count mismatch.*"]
     },
     {
       "code": "ITEM_NOT_FOUND",
@@ -472,9 +405,7 @@
     {
       "code": "PAGE_BREAK_REQUIRED",
       "en": "The content must include a page break. Only content after it is saved.",
-      "match": [
-        "body must contain a <page-break> element.*"
-      ]
+      "match": ["body must contain a <page-break> element.*"]
     },
     {
       "code": "CONTENT_INVALID",
@@ -499,9 +430,7 @@
     {
       "code": "REVISION_LOAD_FAILED",
       "en": "Unable to load the page history.",
-      "match": [
-        "unable to load (?:item|node) revisions?(?: detail)?"
-      ]
+      "match": ["unable to load (?:item|node) revisions?(?: detail)?"]
     },
     {
       "code": "REVISION_RESTORE_FAILED",
@@ -522,10 +451,7 @@
     {
       "code": "BLOCK_NOT_FOUND",
       "en": "Block not found.",
-      "match": [
-        "block \"(?<name>.+)\" not found",
-        "block not found"
-      ]
+      "match": ["block \"(?<name>.+)\" not found", "block not found"]
     },
     {
       "code": "CUSTOM_ELEMENT_NOT_FOUND",
@@ -538,18 +464,12 @@
     {
       "code": "VIEW_NOT_FOUND",
       "en": "View not found.",
-      "match": [
-        "view \"(?<name>.+)\" not found",
-        "view not found"
-      ]
+      "match": ["view \"(?<name>.+)\" not found", "view not found"]
     },
     {
       "code": "REGION_NOT_FOUND",
       "en": "Region not found.",
-      "match": [
-        "region \"(?<name>.+)\" not found",
-        "region not found"
-      ]
+      "match": ["region \"(?<name>.+)\" not found", "region not found"]
     },
     {
       "code": "THEME_NOT_FOUND",
@@ -562,16 +482,12 @@
     {
       "code": "REPORT_UNKNOWN",
       "en": "Unknown report.",
-      "match": [
-        "unknown report \"(?<name>.+)\""
-      ]
+      "match": ["unknown report \"(?<name>.+)\""]
     },
     {
       "code": "FILE_UUID_INVALID",
       "en": "A valid file ID is required.",
-      "match": [
-        "file uuid is required(?: and must be a valid uuid)?"
-      ]
+      "match": ["file uuid is required(?: and must be a valid uuid)?"]
     },
     {
       "code": "FILE_NOT_FOUND",
@@ -587,9 +503,7 @@
     {
       "code": "FILE_EXISTS",
       "en": "A file with this name already exists.",
-      "match": [
-        "(?:a )?file (?:with this name )?already exists"
-      ]
+      "match": ["(?:a )?file (?:with this name )?already exists"]
     },
     {
       "code": "FILE_NAME_INVALID",
@@ -683,9 +597,7 @@
     {
       "code": "UPLOAD_XLS_UNSUPPORTED",
       "en": "Legacy .xls files aren't supported. Save the file as .xlsx and try again.",
-      "match": [
-        "legacy \\.xls files are not supported.*"
-      ]
+      "match": ["legacy \\.xls files are not supported.*"]
     },
     {
       "code": "UPLOAD_TYPE_NOT_ALLOWED",
@@ -707,9 +619,7 @@
     {
       "code": "DOWNLOAD_TOO_LARGE",
       "en": "The downloaded file is too large.",
-      "match": [
-        "downloaded file exceeds the maximum allowed size"
-      ]
+      "match": ["downloaded file exceeds the maximum allowed size"]
     },
     {
       "code": "DOWNLOAD_FAILED",
@@ -730,16 +640,12 @@
     {
       "code": "DECK_NAME_FAILED",
       "en": "Unable to work out a deck name from the file name.",
-      "match": [
-        "unable to derive a deck name from the file name"
-      ]
+      "match": ["unable to derive a deck name from the file name"]
     },
     {
       "code": "IMAGE_RASTER_ONLY",
       "en": "Only raster images (such as JPG or PNG) can be edited this way.",
-      "match": [
-        "only raster images can be .+"
-      ]
+      "match": ["only raster images can be .+"]
     },
     {
       "code": "IMAGE_FORMAT_UNSUPPORTED",
@@ -752,9 +658,7 @@
     {
       "code": "IMAGE_SUPPORT_UNAVAILABLE",
       "en": "Image editing isn't available on this server.",
-      "match": [
-        "image \\w+ support is unavailable on this server"
-      ]
+      "match": ["image \\w+ support is unavailable on this server"]
     },
     {
       "code": "IMAGE_OP_FAILED",
@@ -795,44 +699,32 @@
     {
       "code": "REPLACE_TEXT_TOO_SHORT",
       "en": "Replacement text must be empty or longer than one character.",
-      "match": [
-        "replacement text must be empty or more than 1 character"
-      ]
+      "match": ["replacement text must be empty or more than 1 character"]
     },
     {
       "code": "REPLACE_CONFIRM_REQUIRED",
       "en": "Confirm the replacement to continue.",
-      "match": [
-        "replacement requires confirmation"
-      ]
+      "match": ["replacement requires confirmation"]
     },
     {
       "code": "REMOVE_CONFIRM_REQUIRED",
       "en": "Removing the matched text needs a second confirmation.",
-      "match": [
-        "removing matched text requires a second confirmation"
-      ]
+      "match": ["removing matched text requires a second confirmation"]
     },
     {
       "code": "SEARCH_NO_MATCHES",
       "en": "The search term wasn't found in the site content.",
-      "match": [
-        "search term not found in site content"
-      ]
+      "match": ["search term not found in site content"]
     },
     {
       "code": "STYLE_GUIDE_EXTERNAL",
       "en": "The style guide comes from an external source and can't be edited in HAXcms.",
-      "match": [
-        "style guide is configured to use external source.*"
-      ]
+      "match": ["style guide is configured to use external source.*"]
     },
     {
       "code": "STYLE_GUIDE_SAVED",
       "en": "Style guide saved.",
-      "match": [
-        "style guide saved successfully"
-      ],
+      "match": ["style guide saved successfully"],
       "kind": "info"
     },
     {
@@ -846,23 +738,17 @@
     {
       "code": "SETTINGS_LOAD_FAILED",
       "en": "Unable to load settings.",
-      "match": [
-        "unable to load (?:api key|localization|media|theme) settings"
-      ]
+      "match": ["unable to load (?:api key|localization|media|theme) settings"]
     },
     {
       "code": "LANGUAGE_NOT_FOUND",
       "en": "Language not found.",
-      "match": [
-        "language not found"
-      ]
+      "match": ["language not found"]
     },
     {
       "code": "LANGUAGES_LOAD_FAILED",
       "en": "Unable to load languages.",
-      "match": [
-        "unable to load (?:languages|language|translations)"
-      ]
+      "match": ["unable to load (?:languages|language|translations)"]
     },
     {
       "code": "SETTINGS_SAVE_FAILED",
@@ -874,23 +760,17 @@
     {
       "code": "PLATFORM_SETTINGS_MISSING",
       "en": "Platform settings are missing.",
-      "match": [
-        "missing platform settings"
-      ]
+      "match": ["missing platform settings"]
     },
     {
       "code": "API_KEY_MISSING",
       "en": "An API key for {provider} is required.",
-      "match": [
-        "missing api key for (?<provider>.+)"
-      ]
+      "match": ["missing api key for (?<provider>.+)"]
     },
     {
       "code": "PROVIDER_UNSUPPORTED",
       "en": "Unsupported app store provider.",
-      "match": [
-        "unsupported app store provider"
-      ]
+      "match": ["unsupported app store provider"]
     },
     {
       "code": "UPSTREAM_UNREACHABLE",
@@ -999,10 +879,7 @@
     {
       "code": "INVALID_REQUEST",
       "en": "Invalid request.",
-      "match": [
-        "invalid request(?: payload)?",
-        "invalid action"
-      ]
+      "match": ["invalid request(?: payload)?", "invalid action"]
     },
     {
       "code": "PARAM_INVALID",

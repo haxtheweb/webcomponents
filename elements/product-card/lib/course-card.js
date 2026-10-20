@@ -193,7 +193,11 @@ class CourseCard extends I18NMixin(SimpleColors) {
           <div id="course_number">${this.number}</div>
           <div id="course_name">${this.name}</div>
           ${this.author
-            ? html` <div id="course_author">${this.t.byAuthor.replace("{author}", () => this.author)}</div> `
+            ? html`
+                <div id="course_author">
+                  ${this.t.byAuthor.replace("{author}", () => this.author)}
+                </div>
+              `
             : ``}
         </div>
       </a>

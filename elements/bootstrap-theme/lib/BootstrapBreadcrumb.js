@@ -251,7 +251,7 @@ class BootstrapBreadcrumb extends I18NMixin(LitElement) {
                         href="${item.slug}"
                         aria-label="${this.t.navigateToItem.replace(
                           "{title}",
-                          () => (item.title || ""),
+                          () => item.title || "",
                         )}"
                         >${item.title}</a
                       >`}

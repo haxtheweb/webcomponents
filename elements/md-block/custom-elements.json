@@ -53,6 +53,16 @@
               },
               "default": "\"\"",
               "attribute": "_parsedMarkdown"
+            },
+            {
+              "kind": "field",
+              "name": "_loadError",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "_loadError"
             }
           ],
           "attributes": [
@@ -79,6 +89,14 @@
               },
               "default": "\"\"",
               "fieldName": "_parsedMarkdown"
+            },
+            {
+              "name": "_loadError",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "_loadError"
             }
           ],
           "superclass": {

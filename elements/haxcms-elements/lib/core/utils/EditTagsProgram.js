@@ -84,7 +84,10 @@ export const createEditTagsProgram = (context) => {
     // clear them.
     if (currentTags) {
       results.push({
-        title: _t(context, "saveTagsValue").replace("{tags}", () => currentTags),
+        title: _t(context, "saveTagsValue").replace(
+          "{tags}",
+          () => currentTags,
+        ),
         icon: "icons:check",
         tags: ["confirm", "save"],
         value: {

@@ -87,7 +87,7 @@
               "name": "_handleCellChanged",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -156,6 +156,20 @@
               "readonly": true,
               "inheritedFrom": {
                 "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_defaultEditableTableToolbarConfig",
+              "description": "default rich text editor toolbar config, labels from this.t",
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              },
+              "inheritedFrom": {
+                "name": "editBehaviors",
                 "module": "lib/editable-table-behaviors.js"
               }
             },
@@ -305,11 +319,19 @@
             },
             {
               "kind": "field",
-              "name": "config",
+              "name": "t",
               "type": {
-                "text": "array"
+                "text": "object"
               },
-              "default": "[ { type: \"button-group\", buttons: [ { command: \"close\", icon: \"close\", label: \"Close toolbar\", toggles: false, type: \"rich-text-editor-button\", }, ], }, { type: \"button-group\", buttons: [ { command: \"bold\", icon: \"editor:format-bold\", label: \"Bold\", toggles: true, type: \"rich-text-editor-button\", }, { command: \"italic\", icon: \"editor:format-italic\", label: \"Italics\", toggles: true, type: \"rich-text-editor-button\", }, { command: \"removeFormat\", icon: \"editor:format-clear\", label: \"Erase Format\", type: \"rich-text-editor-button\", }, ], }, { type: \"button-group\", buttons: [ { command: \"link\", icon: \"link\", label: \"Link\", toggledCommand: \"unlink\", toggledIcon: \"mdextra:unlink\", toggledLabel: \"Unink\", toggles: true, type: \"rich-text-editor-link\", }, ], }, { label: \"Subscript and Superscript\", buttons: [ { command: \"subscript\", icon: \"mdextra:subscript\", label: \"Subscript\", toggles: true, type: \"rich-text-editor-button\", }, { command: \"superscript\", icon: \"mdextra:superscript\", label: \"Superscript\", toggles: true, type: \"rich-text-editor-button\", }, ], }, ]",
+              "default": "{ ...this.t, closeToolbar: \"Close toolbar\", bold: \"Bold\", italics: \"Italics\", eraseFormat: \"Erase Format\", link: \"Link\", unlink: \"Unink\", subscriptAndSuperscript: \"Subscript and Superscript\", subscript: \"Subscript\", superscript: \"Superscript\", }",
+              "inheritedFrom": {
+                "name": "editBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "config",
               "inheritedFrom": {
                 "name": "editBehaviors",
                 "module": "lib/editable-table-behaviors.js"
@@ -549,10 +571,10 @@
               "name": "_dataChanged",
               "parameters": [
                 {
-                  "name": "newValue"
+                  "name": "_newValue"
                 },
                 {
-                  "name": "oldValue"
+                  "name": "_oldValue"
                 },
                 {
                   "name": "event",
@@ -694,7 +716,7 @@
               "name": "_loadExternalData",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Convert from csv text to an array in table function",
@@ -956,7 +978,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` :host { display: block; width: 100%; max-width: 100%; margin: var(--ddd-spacing-4) 0; font-size: var(--editable-table-font-size, unset); font-family: var(--editable-table-font-family, inherit); font-weight: var(--editable-table-medium-weight, 300); color: var(--editable-table-color, #222); background-color: var(--editable-table-bg-color, #fff); } :host([hidden]) { display: none; } .offscreen { position: absolute; left: -9999px; font-size: 0; height: 0; width: 0; overflow: hidden; margin: 0; padding: 0; } table { width: calc(100% - 2 * var(--editable-table-border-width, 1px)); display: table; border-collapse: collapse; border-width: var(--editable-table-border-width, 1px); border-style: var(--editable-table-border-style, solid); border-color: var(--editable-table-border-color, #999); font-weight: var(--editable-table-light-weight, 200); color: var(--editable-table-color, #222); background-color: var( --editable-table-bg-color, var(--ddd-theme-default-white, #fff) ); } .th, .td, .th-or-td .icon-container { font-weight: var(--editable-table-light-weight, 200); color: var(--editable-table-color, #222); background-color: var( --editable-table-bg-color, var(--ddd-theme-default-white, #fff) ); } caption { font-size: var( --editable-table-caption-font-size, var(--editable-table-font-size, unset) ); font-weight: var(--editable-table-heavy-weight, 600); color: var( --editable-table-caption-color, var(--editable-table-color, #222) ); background-color: var( --editable-table-caption-bg-color, var(--editable-table-bg-color, #fff) ); width: 100%; } .tr { display: table-row; } .th-or-td { display: table-cell; } .thead-tr .th, .thead-tr .th .icon-container { background-color: var( --editable-table-heading-bg-color, var(--ddd-theme-default-limestoneLight, #e0e0e0) ); font-weight: var(--editable-table-heavy-weight, 600); color: var( --editable-table-heading-color, var(--ddd-theme-default-coalyGray, #000) ); } .tbody-tr .th, .tbody-tr .th .icon-container { font-weight: var(--editable-table-heavy-weight, 600); color: var( --editable-table-heading-color, var(--ddd-theme-default-coalyGray, #000) ); background-color: var( --editable-table-bg-color, var(--ddd-theme-default-white, #fff) ); text-align: left; } *[bordered] .th, *[bordered] .td { border-width: var(--editable-table-border-width, 1px); border-style: var(--editable-table-border-style, solid); border-color: var( --editable-table-border-color, var(--ddd-theme-default-coalyGray, #999) ); } *[condensed] { --editable-table-cell-vertical-padding: var( --editable-table-cell-vertical-padding-condensed, 2px ); --editable-table-cell-horizontal-padding: var( --editable-table-cell-horizontal-padding-condensed, 4px ); } *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td, *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td .icon-container { background-color: var( --editable-table-stripe-bg-color, var(--ddd-theme-default-limestoneMaxLight, #f0f0f0) ); } *[column-striped] .tbody-tr .th-or-td:nth-child(2n), *[column-striped] .tbody-tr .th-or-td:nth-child(2n) .icon-container, *[column-striped] .tfoot-tr .th-or-td:nth-child(2n), *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) .icon-container { background-color: var( --editable-table-stripe-bg-color, var(--ddd-theme-default-limestoneMaxLight, #f0f0f0) ); } .tfoot-tr .th, .tfoot-tr .td { border-top: 2px solid var(--editable-table-color, #222); font-weight: var(--editable-table-heavy-weight, 600); color: var( --editable-table-heading-color, var(--ddd-theme-default-coalyGray, #000) ); } caption, .th-or-td { text-align: left; } *[numeric-styles] .thead-tr .th-or-td[numeric], *[numeric-styles] .tfoot-tr .th-or-td[numeric], *[numeric-styles] .th-or-td[numeric] .cell { text-align: right; --editable-table-cell-justify: flex-end; } *[numeric-styles] .tfoot-tr .th-or-td[negative], *[numeric-styles] .td[negative] .cell { color: var(--editable-table-negative-color, red); --editable-table-cell-color: var(--editable-table-negative-color, red); } editable-table-display ::slotted(table) { display: none; } @media screen { :host { width: 100%; max-width: 100%; } :host([responsive]) { overflow-x: visible; } } `, ]",
+          "default": "[ css` :host { display: block; width: 100%; max-width: 100%; margin: var(--ddd-spacing-4) 0; font-size: var(--editable-table-font-size, unset); font-family: var(--editable-table-font-family, inherit); font-weight: var(--editable-table-medium-weight, 300); color: var( --editable-table-color, var(--ddd-theme-default-coalyGray, #222) ); background-color: var( --editable-table-bg-color, var(--ddd-theme-default-white, #fff) ); } :host([hidden]) { display: none; } .offscreen { position: absolute; left: -9999px; font-size: 0; height: 0; width: 0; overflow: hidden; margin: 0; padding: 0; } table { width: calc(100% - 2 * var(--editable-table-border-width, 1px)); display: table; border-collapse: collapse; border-width: var(--editable-table-border-width, 1px); border-style: var(--editable-table-border-style, solid); border-color: var( --editable-table-border-color, var(--ddd-theme-default-coalyGray, #999) ); font-weight: var(--editable-table-light-weight, 200); color: var( --editable-table-color, var(--ddd-theme-default-coalyGray, #222) ); background-color: var( --editable-table-bg-color, var(--ddd-theme-default-white, #fff) ); } .th, .td, .th-or-td .icon-container { font-weight: var(--editable-table-light-weight, 200); color: var( --editable-table-color, var(--ddd-theme-default-coalyGray, #222) ); background-color: var( --editable-table-bg-color, var(--ddd-theme-default-white, #fff) ); } caption { font-size: var( --editable-table-caption-font-size, var(--editable-table-font-size, unset) ); font-weight: var(--editable-table-heavy-weight, 600); color: var( --editable-table-caption-color, var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222)) ); background-color: var( --editable-table-caption-bg-color, var(--editable-table-bg-color, var(--ddd-theme-default-white, #fff)) ); width: 100%; } .tr { display: table-row; } .th-or-td { display: table-cell; } .thead-tr .th, .thead-tr .th .icon-container { background-color: var( --editable-table-heading-bg-color, var(--ddd-theme-default-limestoneLight, #e0e0e0) ); font-weight: var(--editable-table-heavy-weight, 600); color: var( --editable-table-heading-color, var(--ddd-theme-default-coalyGray, #000) ); } .tbody-tr .th, .tbody-tr .th .icon-container { font-weight: var(--editable-table-heavy-weight, 600); color: var( --editable-table-heading-color, var(--ddd-theme-default-coalyGray, #000) ); background-color: var( --editable-table-bg-color, var(--ddd-theme-default-white, #fff) ); text-align: left; } *[bordered] .th, *[bordered] .td { border-width: var(--editable-table-border-width, 1px); border-style: var(--editable-table-border-style, solid); border-color: var( --editable-table-border-color, var(--ddd-theme-default-coalyGray, #999) ); } *[condensed] { --editable-table-cell-vertical-padding: var( --editable-table-cell-vertical-padding-condensed, 2px ); --editable-table-cell-horizontal-padding: var( --editable-table-cell-horizontal-padding-condensed, 4px ); } *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td, *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td .icon-container { background-color: var( --editable-table-stripe-bg-color, var(--ddd-theme-default-limestoneMaxLight, #f0f0f0) ); } *[column-striped] .tbody-tr .th-or-td:nth-child(2n), *[column-striped] .tbody-tr .th-or-td:nth-child(2n) .icon-container, *[column-striped] .tfoot-tr .th-or-td:nth-child(2n), *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) .icon-container { background-color: var( --editable-table-stripe-bg-color, var(--ddd-theme-default-limestoneMaxLight, #f0f0f0) ); } .tfoot-tr .th, .tfoot-tr .td { border-top: 2px solid var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222)); font-weight: var(--editable-table-heavy-weight, 600); color: var( --editable-table-heading-color, var(--ddd-theme-default-coalyGray, #000) ); } caption, .th-or-td { text-align: left; } *[numeric-styles] .thead-tr .th-or-td[numeric], *[numeric-styles] .tfoot-tr .th-or-td[numeric], *[numeric-styles] .th-or-td[numeric] .cell { text-align: right; --editable-table-cell-justify: flex-end; } *[numeric-styles] .tfoot-tr .th-or-td[negative], *[numeric-styles] .td[negative] .cell { color: var( --editable-table-negative-color, var(--simple-colors-default-theme-red-10, red) ); --editable-table-cell-color: var( --editable-table-negative-color, var(--simple-colors-default-theme-red-10, red) ); } editable-table-display ::slotted(table) { display: none; } @media screen { :host { width: 100%; max-width: 100%; } :host([responsive]) { overflow-x: visible; } } `, ]",
           "description": "styling for table"
         },
         {
@@ -1194,10 +1216,10 @@
               "name": "_dataChanged",
               "parameters": [
                 {
-                  "name": "newValue"
+                  "name": "_newValue"
                 },
                 {
-                  "name": "oldValue"
+                  "name": "_oldValue"
                 },
                 {
                   "name": "event",
@@ -1315,7 +1337,7 @@
               "name": "_loadExternalData",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Convert from csv text to an array in table function"
@@ -1469,6 +1491,16 @@
               }
             },
             {
+              "kind": "method",
+              "name": "_defaultEditableTableToolbarConfig",
+              "description": "default rich text editor toolbar config, labels from this.t",
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              }
+            },
+            {
               "kind": "field",
               "name": "hidden",
               "type": {
@@ -1574,11 +1606,15 @@
             },
             {
               "kind": "field",
-              "name": "config",
+              "name": "t",
               "type": {
-                "text": "array"
+                "text": "object"
               },
-              "default": "[ { type: \"button-group\", buttons: [ { command: \"close\", icon: \"close\", label: \"Close toolbar\", toggles: false, type: \"rich-text-editor-button\", }, ], }, { type: \"button-group\", buttons: [ { command: \"bold\", icon: \"editor:format-bold\", label: \"Bold\", toggles: true, type: \"rich-text-editor-button\", }, { command: \"italic\", icon: \"editor:format-italic\", label: \"Italics\", toggles: true, type: \"rich-text-editor-button\", }, { command: \"removeFormat\", icon: \"editor:format-clear\", label: \"Erase Format\", type: \"rich-text-editor-button\", }, ], }, { type: \"button-group\", buttons: [ { command: \"link\", icon: \"link\", label: \"Link\", toggledCommand: \"unlink\", toggledIcon: \"mdextra:unlink\", toggledLabel: \"Unink\", toggles: true, type: \"rich-text-editor-link\", }, ], }, { label: \"Subscript and Superscript\", buttons: [ { command: \"subscript\", icon: \"mdextra:subscript\", label: \"Subscript\", toggles: true, type: \"rich-text-editor-button\", }, { command: \"superscript\", icon: \"mdextra:superscript\", label: \"Superscript\", toggles: true, type: \"rich-text-editor-button\", }, ], }, ]"
+              "default": "{ ...this.t, closeToolbar: \"Close toolbar\", bold: \"Bold\", italics: \"Italics\", eraseFormat: \"Erase Format\", link: \"Link\", unlink: \"Unink\", subscriptAndSuperscript: \"Subscript and Superscript\", subscript: \"Subscript\", superscript: \"Superscript\", }"
+            },
+            {
+              "kind": "field",
+              "name": "config"
             },
             {
               "kind": "field",
@@ -1823,10 +1859,10 @@
               "name": "_dataChanged",
               "parameters": [
                 {
-                  "name": "newValue"
+                  "name": "_newValue"
                 },
                 {
-                  "name": "oldValue"
+                  "name": "_oldValue"
                 },
                 {
                   "name": "event",
@@ -1968,7 +2004,7 @@
               "name": "_loadExternalData",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Convert from csv text to an array in table function",
@@ -2324,6 +2360,70 @@
             },
             {
               "kind": "method",
+              "name": "_sortValue",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents (may contain HTML)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Resolves the value used to sort a cell. Cells may embed an explicit\n`data-sort-value` attribute (e.g.\n`<span data-sort-value=\"1700000000000\">6 days ago</span>` or\n`<span data-sort-value=\"2097152\">2 MB</span>`) so that human-readable,\nformatted text (relative dates, byte sizes, currency, etc.) sorts by its\nunderlying numeric value instead of alphabetically. Falls back to\nexisting numeric-cell detection, then to a case-insensitive string value.",
+              "return": {
+                "type": {
+                  "text": "number|string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_explicitSortValue",
+              "parameters": [
+                {
+                  "name": "str",
+                  "description": "cell contents as a string, possibly with HTML",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Looks for a `data-sort-value` attribute on the cell's markup and returns\nits parsed value (numeric when possible), or `undefined` when no\nexplicit sort value is present.",
+              "return": {
+                "type": {
+                  "text": "number|string|undefined"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_compareSortValues",
+              "parameters": [
+                {
+                  "name": "a",
+                  "description": "first value",
+                  "type": {
+                    "text": "number|string"
+                  }
+                },
+                {
+                  "name": "b",
+                  "description": "second value",
+                  "type": {
+                    "text": "number|string"
+                  }
+                }
+              ],
+              "description": "Compares two resolved sort values, numerically when both are numbers,\notherwise as case-insensitive, numeric-aware strings.",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "toggleFilter",
               "parameters": [
                 {
@@ -2344,7 +2444,7 @@
                   "name": "newValue"
                 },
                 {
-                  "name": "oldValue"
+                  "name": "_oldValue"
                 },
                 {
                   "name": "event",
@@ -2557,12 +2657,15 @@
             {
               "kind": "method",
               "name": "_updateCols",
-              "parameters": [
-                {
-                  "name": "index"
-                }
-              ],
               "description": "update responsive columns menu"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, downloadAsCsv: \"Download as CSV.\", copyAsCsv: \"Copy as CSV.\", printTable: \"Print Table\", selectColumn: \"Select Column\", }"
             },
             {
               "kind": "field",
@@ -2619,7 +2722,7 @@
             {
               "kind": "field",
               "name": "_observer",
-              "default": "new MutationObserver((mutations) => { if (this.shadowRoot) { this.importHTML(this.children.item(0)); } })"
+              "default": "new MutationObserver((_mutations) => { if (this.shadowRoot) { // eslint-disable-next-line wc/no-constructor-attributes -- runs inside the observer callback, after construction this.importHTML(this.children.item(0)); } })"
             },
             {
               "kind": "field",
@@ -3036,7 +3139,7 @@
               "name": "_loadExternalData",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Convert from csv text to an array in table function",
@@ -3309,6 +3412,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "displayBehaviors",
               "module": "/lib/editable-table-behaviors.js"
@@ -3752,7 +3859,7 @@
                   "name": "data"
                 },
                 {
-                  "name": "oldData"
+                  "name": "_oldData"
                 }
               ],
               "description": "Makes sure there is always on cell to work from",
@@ -3835,11 +3942,37 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, firstRowColumnHeaders: \"First row has column headers.\", firstColumnRowHeaders: \"First column has row headers.\", lastRowFooter: \"Last row is a footer.\", borders: \"Borders.\", alternatingRows: \"Alternating rows.\", alternatingColumns: \"Alternating columns.\", condensedRows: \"Condensed rows.\", styleNumericCells: \"Style numeric cells.\", adjustWidthToScreenSize: \"Adjust width to screen size.\", columnSorting: \"Column sorting (for tables with column headers).\", columnFiltering: \"Column filtering.\", allowDownloadingCSV: \"Allow downloading as CSV.\", allowCopyingCSV: \"Allow copying as CSV.\", allowPrinting: \"Allow printing.\", headersAndFooters: \"Headers and footers\", display: \"Display\", data: \"Data\", editModeFor: \"Edit Mode for\", caption: \"Caption\", captionPlaceholder: \"Name your table by adding a caption here.\", cellLabel: \"Cell {cell}\", insertDeleteControls: \"Insert/Delete Controls\", tableEditor: \"Table Editor\", }",
+              "inheritedFrom": {
+                "name": "editBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "properties",
               "static": true,
               "readonly": true,
               "inheritedFrom": {
                 "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_defaultEditableTableToolbarConfig",
+              "description": "default rich text editor toolbar config, labels from this.t",
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              },
+              "inheritedFrom": {
+                "name": "editBehaviors",
                 "module": "lib/editable-table-behaviors.js"
               }
             },
@@ -3990,10 +4123,6 @@
             {
               "kind": "field",
               "name": "config",
-              "type": {
-                "text": "array"
-              },
-              "default": "[ { type: \"button-group\", buttons: [ { command: \"close\", icon: \"close\", label: \"Close toolbar\", toggles: false, type: \"rich-text-editor-button\", }, ], }, { type: \"button-group\", buttons: [ { command: \"bold\", icon: \"editor:format-bold\", label: \"Bold\", toggles: true, type: \"rich-text-editor-button\", }, { command: \"italic\", icon: \"editor:format-italic\", label: \"Italics\", toggles: true, type: \"rich-text-editor-button\", }, { command: \"removeFormat\", icon: \"editor:format-clear\", label: \"Erase Format\", type: \"rich-text-editor-button\", }, ], }, { type: \"button-group\", buttons: [ { command: \"link\", icon: \"link\", label: \"Link\", toggledCommand: \"unlink\", toggledIcon: \"mdextra:unlink\", toggledLabel: \"Unink\", toggles: true, type: \"rich-text-editor-link\", }, ], }, { label: \"Subscript and Superscript\", buttons: [ { command: \"subscript\", icon: \"mdextra:subscript\", label: \"Subscript\", toggles: true, type: \"rich-text-editor-button\", }, { command: \"superscript\", icon: \"mdextra:superscript\", label: \"Superscript\", toggles: true, type: \"rich-text-editor-button\", }, ], }, ]",
               "inheritedFrom": {
                 "name": "editBehaviors",
                 "module": "lib/editable-table-behaviors.js"
@@ -4364,7 +4493,7 @@
               "name": "_loadExternalData",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Convert from csv text to an array in table function",
@@ -4594,6 +4723,10 @@
           ],
           "mixins": [
             {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
               "name": "editBehaviors",
               "module": "/lib/editable-table-behaviors.js"
             }
@@ -4695,8 +4828,11 @@
               "name": "_onDelete",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "button event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -4709,8 +4845,11 @@
               "name": "_onInsertBefore",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "button event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -4723,8 +4862,11 @@
               "name": "_onInsertAfter",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "button event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -4891,7 +5033,7 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Fires when filter button is clicked"
@@ -4944,19 +5086,11 @@
             },
             {
               "kind": "field",
-              "name": "label",
+              "name": "t",
               "type": {
-                "text": "string"
+                "text": "object"
               },
-              "default": "\"Toggle filter.\""
-            },
-            {
-              "kind": "field",
-              "name": "tooltip",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Toggle filter for column.\""
+              "default": "{ ...this.t, toggleFilter: \"Toggle filter.\", toggleFilterForColumn: \"Toggle filter for column.\", toggleColumnFilter: \"Toggle Column {column} filter.\", }"
             },
             {
               "kind": "field",
@@ -4996,6 +5130,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "SimpleToolbarButtonBehaviors",
               "package": "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js"
@@ -5049,6 +5187,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, ascending: \"(ascending)\", descending: \"(descending)\", toggleSortMode: \"Toggle sort mode.\", togglesSortingByColumn: \"Toggles sorting by this column.\", }"
+            },
+            {
+              "kind": "field",
               "name": "sortMode",
               "privacy": "public",
               "type": {
@@ -5086,22 +5232,6 @@
                 "text": "string"
               },
               "default": "\"editable-table:sortable\""
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Toggle sort mode.\""
-            },
-            {
-              "kind": "field",
-              "name": "tooltip",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Toggles sorting by this column.\""
             },
             {
               "kind": "field",
@@ -5160,6 +5290,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "SimpleToolbarButtonBehaviors",
               "package": "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js"

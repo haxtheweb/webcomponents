@@ -22,9 +22,7 @@ export const HAXCMSOperationButtons = function (SuperClass) {
       }
       // themes using these buttons usually have no i18n of their own; pick up
       // the shared haxcms translations unless this element already registered
-      if (
-        !I18NManagerStore.elements.find((el) => el.context === this)
-      ) {
+      if (!I18NManagerStore.elements.find((el) => el.context === this)) {
         I18NManagerStore.registerLocalization({
           context: this,
           namespace: "haxcms",

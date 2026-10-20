@@ -654,7 +654,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
         <a class="skip-link" href="#contentcontainer"
           >${this.t.skipToContent}</a
         >
-        <div class="menu-outline" role="navigation" aria-label="${this.t.siteMenu}">
+        <div
+          class="menu-outline"
+          role="navigation"
+          aria-label="${this.t.siteMenu}"
+        >
           <div class="site-title" part="site-title">
             ${this.__siteImage
               ? html`<img
@@ -662,7 +666,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                   src="${this.__siteImage}"
                   alt="${this.t.siteLogo.replace(
                     "{title}",
-                    () => (this.__siteTitle || ""),
+                    () => this.__siteTitle || "",
                   )}"
                 />`
               : ``}

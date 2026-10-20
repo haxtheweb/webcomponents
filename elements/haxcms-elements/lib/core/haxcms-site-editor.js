@@ -52,38 +52,49 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       revisionRestored: "Revision restored as a new commit.",
       unableToSaveMissingSite: "Unable to save page: missing site context",
       pageSaveEndpointUnavailable: "Page save endpoint is not available.",
-      outlineOperationsDisabled: "Outline operations are disabled for this site",
-      unableToCompleteMissingId: "Unable to complete operation: missing page id",
-      unableToCompleteMissingOperation: "Unable to complete operation: missing operation",
+      outlineOperationsDisabled:
+        "Outline operations are disabled for this site",
+      unableToCompleteMissingId:
+        "Unable to complete operation: missing page id",
+      unableToCompleteMissingOperation:
+        "Unable to complete operation: missing operation",
       itemUpdateEndpointUnavailable: "Item update endpoint is not available.",
       unableToCompleteOperation: "Unable to complete operation",
       outlineSaveEndpointUnavailable: "Outline save endpoint is not available.",
       siteSaveEndpointUnavailable: "Site save endpoint is not available.",
-      slugNormalizationEndpointUnavailable: "Slug normalization endpoint is not available.",
+      slugNormalizationEndpointUnavailable:
+        "Slug normalization endpoint is not available.",
       slugNormalizationCompleted: "Slug normalization completed.",
       slugNormalizationFailed: "Slug normalization failed.",
       seoSaveEndpointUnavailable: "SEO save endpoint is not available.",
-      appearanceSaveEndpointUnavailable: "Appearance save endpoint is not available.",
-      platformSettingsSaveEndpointUnavailable: "Platform settings save endpoint is not available.",
-      editorSettingsSaveEndpointUnavailable: "Editor settings save endpoint is not available.",
+      appearanceSaveEndpointUnavailable:
+        "Appearance save endpoint is not available.",
+      platformSettingsSaveEndpointUnavailable:
+        "Platform settings save endpoint is not available.",
+      editorSettingsSaveEndpointUnavailable:
+        "Editor settings save endpoint is not available.",
       editorSettingsInvalid: "Editor settings are invalid.",
       blocksSaveEndpointUnavailable: "Blocks save endpoint is not available.",
-      contentReplaceEndpointUnavailable: "Content replace endpoint is not available.",
-      contentSearchEndpointUnavailable: "Content search endpoint is not available.",
+      contentReplaceEndpointUnavailable:
+        "Content replace endpoint is not available.",
+      contentSearchEndpointUnavailable:
+        "Content search endpoint is not available.",
       useUploadWorkflow: "Use the existing upload workflow to process files.",
       requestFailed: "Request failed",
       operationFailed: "Operation failed",
       pageDeletedSelecting: "Page deleted {title}, selecting another page",
       createdOpenToEdit: "Created {title} — open it to edit",
       page: "page",
-      recoveredUnsavedEdits: "Recovered unsaved edits to {title}. Open that page and select Edit to restore them.",
+      recoveredUnsavedEdits:
+        "Recovered unsaved edits to {title}. Open that page and select Edit to restore them.",
       aPreviousPage: "a previous page",
       restoredUnsavedEdits: "Restored unsaved edits to {title}",
       thisPage: "this page",
       pageSaved: "Page saved!",
       outlineSaved: "Outline saved!",
       operationCompleted: "Operation completed!",
-      unableToCompleteOperationStatus: "Unable to complete operation ({status})",
+      unableToCompleteOperationStatus:
+        "Unable to complete operation ({status})",
       normalizedPageSlugs: "Normalized {count} page slugs",
       createdTitle: "Created {title}!",
       processing: "Processing",
@@ -288,9 +299,13 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         const node = e.detail.value.data;
         globalThis.history.pushState({}, null, node.slug);
         globalThis.dispatchEvent(new PopStateEvent("popstate"));
-        store.toast(this.t.createdTitle.replace("{title}", () => node.title), 4000, {
-          hat: "random",
-        });
+        store.toast(
+          this.t.createdTitle.replace("{title}", () => node.title),
+          4000,
+          {
+            hat: "random",
+          },
+        );
 
         // Auto-enter edit mode if this page was created by a Merlin program.
         // Wait until the store has actually adopted the new page as the
@@ -381,7 +396,10 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       this.__autoEditDisposer();
       this.__autoEditDisposer = null;
       store.toast(
-        this.t.createdOpenToEdit.replace("{title}", () => (node.title || this.t.page)),
+        this.t.createdOpenToEdit.replace(
+          "{title}",
+          () => node.title || this.t.page,
+        ),
         4000,
         {
           hat: "random",
@@ -968,7 +986,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           });
           store.playSound("error");
           break;
-}
+        }
       }
     }
   }
@@ -1390,8 +1408,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
   }
 
   _schemaFormValueChanged(_e) {
-     // @todo figure out why this isn't adding a field in on the fly
-
+    // @todo figure out why this isn't adding a field in on the fly
     /*if (e.target.value.theme === "haxcms-custom-theme") {
       e.target.addField(customTag.property, customTag);
       e.target.value[customTag.property] = customTag.property;
@@ -1723,10 +1740,14 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     }
     try {
       const title = snapshot.title || this.t.thisPage;
-      store.toast(this.t.restoredUnsavedEdits.replace("{title}", () => title), 4000, {
-        fire: true,
-        hat: "save",
-      });
+      store.toast(
+        this.t.restoredUnsavedEdits.replace("{title}", () => title),
+        4000,
+        {
+          fire: true,
+          hat: "save",
+        },
+      );
     } catch {
       // intentionally empty
     }
@@ -2538,7 +2559,10 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       }
       const message = haxcmsApiMessage(
         response,
-        this.t.unableToCompleteOperationStatus.replace("{status}", () => status),
+        this.t.unableToCompleteOperationStatus.replace(
+          "{status}",
+          () => status,
+        ),
       );
       store.toast(message, 4000, { fire: true });
       store.playSound("error");

@@ -42,16 +42,17 @@ class LunrSearch extends I18NMixin(LitElement) {
             ${this.results && this.results.length > 0
               ? html`<ul aria-label="${this.t.searchResults}">
                   ${this.results.map(
-                    (item) => html`<li>
-                      ${item && item.title
-                        ? html`<span class="result-title"
-                            >${item.title}</span
-                          >`
-                        : ``}
-                      ${item && item.description
-                        ? html`<p>${item.description}</p>`
-                        : ``}
-                    </li>`,
+                    (item) =>
+                      html`<li>
+                        ${item && item.title
+                          ? html`<span class="result-title"
+                              >${item.title}</span
+                            >`
+                          : ``}
+                        ${item && item.description
+                          ? html`<p>${item.description}</p>`
+                          : ``}
+                      </li>`,
                   )}
                 </ul>`
               : ``}

@@ -83,10 +83,10 @@ class SiteMenuButton extends HAXCMSI18NMixin(
           transition: var(--ddd-duration-normal, 0.3s) color ease;
           --simple-icon-width: var(--site-menu-button-icon-width, 32px);
           --simple-icon-height: var(--site-menu-button-icon-height, 32px);
-          color: var(--site-menu-button-icon-fill-color, light-dark(
-            black,
-            var(--ddd-theme-default-linkLight)
-          ));
+          color: var(
+            --site-menu-button-icon-fill-color,
+            light-dark(black, var(--ddd-theme-default-linkLight))
+          );
         }
       `,
     ];
@@ -202,15 +202,9 @@ class SiteMenuButton extends HAXCMSI18NMixin(
           aria-label="${ifDefined(this.__accessibleLabel)}"
           .part="${this.editMode ? `edit-mode-active button` : `button`}"
         >
-          <slot
-            name="prefix"
-            @slotchange="${this.__syncSlottedText}"
-          ></slot>
+          <slot name="prefix" @slotchange="${this.__syncSlottedText}"></slot>
           <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
-          <slot
-            name="suffix"
-            @slotchange="${this.__syncSlottedText}"
-          ></slot>
+          <slot name="suffix" @slotchange="${this.__syncSlottedText}"></slot>
         </button>
       </a>
       ${!this.hideLabel && this.label

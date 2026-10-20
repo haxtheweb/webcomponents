@@ -16,7 +16,7 @@
               "name": "__imageLoaded",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -140,7 +140,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ toggleAnimation: \"Toggle animation\", }"
+              "default": "{ toggleAnimation: \"Toggle animation\", info: \"info\", }"
             },
             {
               "kind": "field",

@@ -2,23 +2,24 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "../multiple-choice.js";
 import { MultipleChoice } from "../multiple-choice.js";
 
-const duckFixture = () => html`<multiple-choice
-  id="basic"
-  name="basic"
-  title="Which are ducks?"
-  question="Which are ducks?"
->
-  <input correct value="Huey" />
-  <input correct value="Duey" />
-  <input correct value="Daffy" />
-  <input correct value="Donald" />
-  <input value="Mickey" />
-  <div slot="feedbackCorrect">Great job!</div>
-  <div slot="feedbackIncorrect">Try the pond again.</div>
-  <div slot="hint">They quack.</div>
-  <div slot="evidence">Ducks have bills.</div>
-  <div slot="content">Read about ducks.</div>
-</multiple-choice>`;
+const duckFixture = () =>
+  html`<multiple-choice
+    id="basic"
+    name="basic"
+    title="Which are ducks?"
+    question="Which are ducks?"
+  >
+    <input correct value="Huey" />
+    <input correct value="Duey" />
+    <input correct value="Daffy" />
+    <input correct value="Donald" />
+    <input value="Mickey" />
+    <div slot="feedbackCorrect">Great job!</div>
+    <div slot="feedbackIncorrect">Try the pond again.</div>
+    <div slot="hint">They quack.</div>
+    <div slot="evidence">Ducks have bills.</div>
+    <div slot="content">Read about ducks.</div>
+  </multiple-choice>`;
 
 const flush = (ms = 60) => new Promise((r) => setTimeout(r, ms));
 
@@ -64,12 +65,14 @@ describe("multiple-choice behavior", () => {
       const el = await ready();
       // nested template text lives in values, not strings, so assert on the
       // rendered directions text instead
-      expect(el.shadowRoot.querySelector("#directions").textContent).to
-        .include("Select all that apply");
+      expect(el.shadowRoot.querySelector("#directions").textContent).to.include(
+        "Select all that apply",
+      );
       el.singleOption = true;
       await el.updateComplete;
-      expect(el.shadowRoot.querySelector("#directions").textContent).to
-        .include("Select the answer");
+      expect(el.shadowRoot.querySelector("#directions").textContent).to.include(
+        "Select the answer",
+      );
     });
     it("haxinlineContextMenu wires the add/remove/edit buttons", () => {
       const el = globalThis.document.createElement("multiple-choice");
@@ -117,7 +120,10 @@ describe("multiple-choice behavior", () => {
       let answersChanged = 0;
       let displayedChanged = 0;
       el.addEventListener("answers-changed", () => answersChanged++);
-      el.addEventListener("displayed-answers-changed", () => displayedChanged++);
+      el.addEventListener(
+        "displayed-answers-changed",
+        () => displayedChanged++,
+      );
       el.answers = [{ label: "New", correct: true }];
       await el.updateComplete;
       await flush();
@@ -137,7 +143,11 @@ describe("multiple-choice behavior", () => {
     });
     it("processInput handles plain objects and out-of-range indexes", async () => {
       const el = await ready();
-      const fromObject = el.processInput(0, [{ label: "A", correct: true }], []);
+      const fromObject = el.processInput(
+        0,
+        [{ label: "A", correct: true }],
+        [],
+      );
       expect(fromObject.label).to.equal("A");
       expect(fromObject.correct).to.equal(true);
       expect(fromObject.order).to.equal(0);
@@ -296,7 +306,12 @@ describe("multiple-choice behavior", () => {
       const shuffled = el._computeDisplayedAnswers([...data], true);
       // shuffle preserves membership even if the order changes
       expect(shuffled.length).to.equal(3);
-      expect(shuffled.map((x) => x.label).sort().join("")).to.equal("abc");
+      expect(
+        shuffled
+          .map((x) => x.label)
+          .sort()
+          .join(""),
+      ).to.equal("abc");
       // editing via hax suppresses randomization
       el._haxstate = true;
       const frozen = el._computeDisplayedAnswers([...data], true);
@@ -387,8 +402,9 @@ describe("multiple-choice behavior", () => {
         }),
       );
       await el.updateComplete;
-      expect(el.displayedAnswers[fields[0].getAttribute("name")].userGuess).to
-        .equal(true);
+      expect(
+        el.displayedAnswers[fields[0].getAttribute("name")].userGuess,
+      ).to.equal(true);
       // Enter again untoggles it
       fields[0].dispatchEvent(
         new KeyboardEvent("keydown", {
@@ -397,8 +413,9 @@ describe("multiple-choice behavior", () => {
           composed: true,
         }),
       );
-      expect(el.displayedAnswers[fields[0].getAttribute("name")].userGuess).to
-        .equal("");
+      expect(
+        el.displayedAnswers[fields[0].getAttribute("name")].userGuess,
+      ).to.equal("");
     });
     it("ArrowUp/ArrowDown move focus through the options and wrap", async () => {
       const el = await ready();
@@ -633,9 +650,9 @@ describe("multiple-choice behavior", () => {
       await el.updateComplete;
       const shadow = el.shadowRoot;
       expect(
-        shadow.querySelector('meta[property="oer:gradingFormat"]').getAttribute(
-          "content",
-        ),
+        shadow
+          .querySelector('meta[property="oer:gradingFormat"]')
+          .getAttribute("content"),
       ).to.equal("points");
       expect(
         shadow
@@ -643,9 +660,9 @@ describe("multiple-choice behavior", () => {
           .getAttribute("content"),
       ).to.equal("identify ducks");
       expect(
-        shadow.querySelector('meta[property="oer:forCourse"]').getAttribute(
-          "content",
-        ),
+        shadow
+          .querySelector('meta[property="oer:forCourse"]')
+          .getAttribute("content"),
       ).to.equal("ART-100");
     });
     it("renders image answers with alt text", async () => {
@@ -719,10 +736,9 @@ describe("multiple-choice behavior", () => {
       const el = await ready();
       const menu = { ceButtons: null };
       // invoke the QuestionElement base implementation directly
-      Object.getPrototypeOf(Object.getPrototypeOf(el)).haxinlineContextMenu.call(
-        el,
-        menu,
-      );
+      Object.getPrototypeOf(
+        Object.getPrototypeOf(el),
+      ).haxinlineContextMenu.call(el, menu);
       expect(menu.ceButtons.length).to.equal(1);
       expect(menu.ceButtons[0].callback).to.equal("haxToggleEdit");
     });
@@ -739,8 +755,9 @@ describe("multiple-choice behavior", () => {
       expect(inputs[4].hasAttribute("data-correct")).to.equal(false);
       // run again to exercise the input wiping branch
       await el.haxpreProcessNodeToContent(el);
-      expect(Array.from(el.querySelectorAll("input:not([slot])")).length).to
-        .equal(5);
+      expect(
+        Array.from(el.querySelectorAll("input:not([slot])")).length,
+      ).to.equal(5);
     });
     it("haxpreProcessNodeToContent writes image and feedback attributes", async () => {
       const el = await ready();
@@ -769,10 +786,7 @@ describe("multiple-choice behavior", () => {
       const el = await ready();
       const detail = {
         properties: {
-          answers: [
-            { label: "a", userGuess: true },
-            { label: "b" },
-          ],
+          answers: [{ label: "a", userGuess: true }, { label: "b" }],
         },
       };
       const out = el.haxpreProcessInsertContent(detail, null);
@@ -792,8 +806,9 @@ describe("multiple-choice behavior", () => {
       await el.updateComplete;
       const wrapper = el.shadowRoot.querySelector(".edit-wrapper");
       expect(wrapper).to.exist;
-      expect(el.shadowRoot.querySelectorAll(".edit-wrapper slot").length).to
-        .equal(5);
+      expect(
+        el.shadowRoot.querySelectorAll(".edit-wrapper slot").length,
+      ).to.equal(5);
       el.edit = false;
       el._haxstate = false;
       await el.updateComplete;

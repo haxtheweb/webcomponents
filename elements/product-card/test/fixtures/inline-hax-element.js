@@ -5,24 +5,24 @@
 // (like product-card itself) exercise the noSchema branch instead.
 class InlineHaxElement extends HTMLElement {
   static get tag() {
-    return 'inline-hax-element'
+    return "inline-hax-element";
   }
   static get haxProperties() {
     return {
       gizmo: {
-        title: 'Inline HAX Element',
-        description: 'Fixture element with inline haxProperties',
-        icon: 'icons:code',
-        color: 'blue',
-        tags: ['Test', 'Card'],
-        meta: { chemistry: 'test fixture only' },
+        title: "Inline HAX Element",
+        description: "Fixture element with inline haxProperties",
+        icon: "icons:code",
+        color: "blue",
+        tags: ["Test", "Card"],
+        meta: { chemistry: "test fixture only" },
       },
       settings: { configure: [], advanced: [] },
       demoSchema: [
-        { tag: 'p', properties: {}, content: 'fixture demo content' },
+        { tag: "p", properties: {}, content: "fixture demo content" },
       ],
-    }
+    };
   }
 }
-globalThis.customElements.define(InlineHaxElement.tag, InlineHaxElement)
-export { InlineHaxElement }
+globalThis.customElements.define(InlineHaxElement.tag, InlineHaxElement);
+export { InlineHaxElement };

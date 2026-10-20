@@ -383,29 +383,26 @@ describe("CourseModel test", () => {
   });
 });
 
-describe('course-model OER schema metadata', () => {
-  it('applies the oer:MediaObject typeof and emits oer property metadata', async () => {
+describe("course-model OER schema metadata", () => {
+  it("applies the oer:MediaObject typeof and emits oer property metadata", async () => {
     const el = await fixture(
-      html`<course-model
-        title="Suit Model"
-        poster="suit.webp"
-      ></course-model>`,
+      html`<course-model title="Suit Model" poster="suit.webp"></course-model>`,
     );
     await el.updateComplete;
-    expect(el.getAttribute('typeof')).to.equal('oer:MediaObject');
+    expect(el.getAttribute("typeof")).to.equal("oer:MediaObject");
     expect(
       el.shadowRoot
         .querySelector('meta[property="oer:image"]')
-        .getAttribute('content'),
-    ).to.equal('suit.webp');
+        .getAttribute("content"),
+    ).to.equal("suit.webp");
     expect(
       el.shadowRoot.querySelector('h1[property="oer:name"]').textContent,
-    ).to.equal('Suit Model');
+    ).to.equal("Suit Model");
   });
 });
 
-describe('course-model HAX integration', () => {
-  it('registers its schema with a ready HaxStore and guards against repeats', () => {
+describe("course-model HAX integration", () => {
+  it("registers its schema with a ready HaxStore and guards against repeats", () => {
     const sent = [];
     globalThis.HaxStore = {
       instance: {
@@ -416,15 +413,15 @@ describe('course-model HAX integration', () => {
       },
     };
     const url = CourseModel.haxProperties;
-    expect(url.endsWith('lib/course-model.haxProperties.json')).to.be.true;
+    expect(url.endsWith("lib/course-model.haxProperties.json")).to.be.true;
     expect(sent.length).to.equal(1);
-    expect(sent[0][0]).to.equal('model-viewer');
-    expect(sent[0][1].gizmo.title).to.equal('3d Model');
+    expect(sent[0][0]).to.equal("model-viewer");
+    expect(sent[0][1].gizmo.title).to.equal("3d Model");
     expect(sent[0][1].settings.configure.length).to.equal(3);
     expect(sent[0][1].settings.advanced.length).to.equal(5);
-    expect(
-      sent[0][1].demoSchema[0].properties.src,
-    ).to.include('NeilArmstrong.glb');
+    expect(sent[0][1].demoSchema[0].properties.src).to.include(
+      "NeilArmstrong.glb",
+    );
     // the once-guard prevents repeat registration
     const url2 = CourseModel.haxProperties;
     expect(url2).to.equal(url);
@@ -433,16 +430,16 @@ describe('course-model HAX integration', () => {
   });
 });
 
-describe('course-model HaxStore constructor wiring', () => {
-  it('wires the insert-content listener when a HaxStore exists', async () => {
+describe("course-model HaxStore constructor wiring", () => {
+  it("wires the insert-content listener when a HaxStore exists", async () => {
     globalThis.HaxStore = {};
     await fixture(html`<course-model></course-model>`);
     expect(globalThis.ModelViewerController).to.exist;
     expect(globalThis.ModelViewerController.signal.aborted).to.be.false;
     // firing the insert-content event for a model-viewer import aborts it
     globalThis.dispatchEvent(
-      new CustomEvent('hax-insert-content', {
-        detail: { tag: 'model-viewer' },
+      new CustomEvent("hax-insert-content", {
+        detail: { tag: "model-viewer" },
       }),
     );
     await new Promise((resolve) => setTimeout(resolve, 50));
@@ -451,19 +448,19 @@ describe('course-model HaxStore constructor wiring', () => {
   });
 });
 
-describe('course-model view toggling', () => {
-  it('toggles back to model from text, animation, and check views', async () => {
-    const buttons = ['#moreinfo', '#animation', '#check'];
+describe("course-model view toggling", () => {
+  it("toggles back to model from text, animation, and check views", async () => {
+    const buttons = ["#moreinfo", "#animation", "#check"];
     for (const id of buttons) {
       const el = await fixture(
         html`<course-model title="Toggle"></course-model>`,
       );
       el.shadowRoot.querySelector(id).click();
       await el.updateComplete;
-      expect(el.visible).to.not.equal('model');
+      expect(el.visible).to.not.equal("model");
       el.shadowRoot.querySelector(id).click();
       await el.updateComplete;
-      expect(el.visible).to.equal('model');
+      expect(el.visible).to.equal("model");
     }
   });
 });

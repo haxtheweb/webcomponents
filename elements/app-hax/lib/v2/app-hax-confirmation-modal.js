@@ -199,7 +199,10 @@ export class AppHaxConfirmationModal extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         :host([dangerous]) .button-confirm:hover:not(:disabled) {
-          background: var(--ddd-theme-default-original87Pink, #bc204b) !important;
+          background: var(
+            --ddd-theme-default-original87Pink,
+            #bc204b
+          ) !important;
           color: var(--ddd-theme-default-white, white) !important;
         }
 

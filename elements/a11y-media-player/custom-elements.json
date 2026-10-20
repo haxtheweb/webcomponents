@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`a11y-media-player`\nan accessible video player\n\n### Styling\n`<a11y-media-player>` provides the following basic custom properties\nfor styling:\n\n#### Basic Styling\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-color` | default text color | `--simple-colors-default-theme-grey-11`\n`--a11y-media-bg-color` | default background color | `--simple-colors-default-theme-grey-2`\n`--a11y-media-border-color` | default border color | `--simple-colors-default-theme-grey-3`\n`--a11y-media-hover-color` | text color when hovering | `--simple-colors-default-theme-grey-12`\n`--a11y-media-hover-bg-color` | background color when hovering | `--simple-colors-default-theme-grey-2`\n`--a11y-media-accent-color` | accent color | `--simple-colors-default-theme-accent-9`\n`--a11y-media-faded-accent-color` | accent color when faded | `--simple-colors-default-theme-accent-8`\n`--a11y-media-disabled-color` | color for disabled items | `--simple-colors-default-theme-grey-5`\n`--a11y-media-transcript-color` | default text color of transcript | `--simple-colors-default-theme-grey-7`\n`--a11y-media-transcript-bg-color` | default background color of transcript | `--simple-colors-default-theme-grey-1`\n`--a11y-media-transcript-accent-color` | default accent color of transcript | `--simple-colors-default-theme-accent-8`\n`--a11y-media-transcript-faded-accent-color` | accent color of transcript, faded | `--simple-colors-default-theme-accent-10`\n`--a11y-media-transcript-cue-color` | text color of transcript cue | `--simple-colors-fixed-theme-grey-12`\n`--a11y-media-transcript-cue-bg-color` | background color of transcript cue  | `--simple-colors-fixed-theme-grey-1`\n`--a11y-media-transcript-active-cue-color` | text color of active transcript cue  | `--simple-colors-fixed-theme-grey-12`\n`--a11y-media-transcript-active-cue-bg-color` | background color of active transcript cue  | `--simple-colors-fixed-theme-accent-1`\n`--a11y-media-transcript-focused-cue-color` | text color of focused transcript cue  | `--simple-colors-fixed-theme-grey-12`\n`--a11y-media-transcript-focused-cue-bg-color` | background color of focused transcript cue  | `--simple-colors-fixed-theme-grey-2`\n`--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--simple-colors-fixed-theme-grey-1`\n`--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search | `--simple-colors-fixed-theme-accent-10`\n`--a11y-media-transcript-match-border-color` | border color of matched term in transcript search | `--simple-colors-fixed-theme-accent-12`\n\n#### Controls\nCustom property | Description | Default \n----------------|-------------|----------\n`--a11y-media-scrollbar-width` | default width of scrollbars | `5px`\n`--a11y-media-controls-font-family` | font-family of controls\n\n#### Buttons\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-button-color` | button text color | `--a11y-media-color`\n`--a11y-media-button-bg-color` | button background color | `--a11y-media-bg-color`\n`--a11y-media-button-hover-color` | button text color when hovering | `--a11y-media-accent-color`\n`--a11y-media-button-hover-bg-color` | button background color when hovering | `--a11y-media-hover-bg-color`\n`--a11y-media-button-disabled-color` | button text color when disabled | `--a11y-media-disabled-color`\n`--a11y-media-button-toggle-color` | button text color when toggled | `--a11y-media-faded-accent-color`\n\n#### Sliders\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-range-input-active-color` | slider color when active | `--a11y-media-accent-color`\n`--simple-range-input-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`\n`--simple-range-input-pin-color` | slider pin color | `--a11y-media-bg-color`\n`--simple-range-input-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`\n`--simple-range-input-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`\n`--simple-range-input-knob-color` | slider knob color | `--a11y-media-accent-color`\n`--simple-range-input-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`\n`--simple-range-input-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`\n`--simple-range-input-knob-border-color` | slider knob border color | `--a11y-media-accent-color`\n`--simple-range-input-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`\n`--simple-range-input-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`\n\n#### Settings Menu\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-settings-menu-color` | settings menu text color | `--a11y-media-color`\n`--a11y-media-settings-menu-bg-color` | settings menu background color | `--a11y-media-bg-color`\n`--a11y-media-settings-menu-hover-color` | settings menu text color when hovering | `--a11y-media-hover-color`\n`--a11y-media-settings-menu-hover-bg-color` | settings menu background color when hovering | `--a11y-media-hover-bg-color`\n\n#### Link Sharing Toast\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-toast-color` | toast text color | `--a11y-media-color`\n`--simple-toast-background-color` | toast background color | `--a11y-media-bg-color`",
+          "description": "`a11y-media-player`\nan accessible video player\n\n### Styling\n`<a11y-media-player>` provides the following basic custom properties\nfor styling:\n\n#### Basic Styling\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-color` | default text color | `light-dark(--ddd-theme-default-coalyGray, --ddd-theme-default-white)`\n`--a11y-media-bg-color` | default background color | `light-dark(--ddd-theme-default-limestoneMaxLight, --ddd-theme-default-potentialMidnight)`\n`--a11y-media-border-color` | default border color | `light-dark(--ddd-theme-default-limestoneLight, --ddd-theme-default-coalyGray)`\n`--a11y-media-hover-color` | text color when hovering | `light-dark(--ddd-theme-default-black, --ddd-theme-default-white)`\n`--a11y-media-hover-bg-color` | background color when hovering | `light-dark(--ddd-theme-default-limestoneMaxLight, --ddd-theme-default-potentialMidnight)`\n`--a11y-media-accent-color` | accent color | `light-dark(--simple-colors-default-theme-accent-9, --simple-colors-dark-theme-accent-9)`\n`--a11y-media-faded-accent-color` | accent color when faded | `light-dark(--simple-colors-default-theme-accent-8, --simple-colors-dark-theme-accent-8)`\n`--a11y-media-disabled-color` | color for disabled items | `light-dark(--ddd-theme-default-limestoneGray, --ddd-theme-default-coalyGray)`\n`--a11y-media-transcript-color` | default text color of transcript | `light-dark(--ddd-theme-default-coalyGray, --ddd-theme-default-white)`\n`--a11y-media-transcript-bg-color` | default background color of transcript | `light-dark(--ddd-theme-default-white, --ddd-theme-default-potentialMidnight)`\n`--a11y-media-transcript-accent-color` | default accent color of transcript | `light-dark(--simple-colors-default-theme-accent-8, --simple-colors-dark-theme-accent-8)`\n`--a11y-media-transcript-faded-accent-color` | accent color of transcript, faded | `light-dark(--simple-colors-default-theme-accent-10, --simple-colors-dark-theme-accent-10)`\n`--a11y-media-transcript-cue-color` | text color of transcript cue | `--ddd-theme-default-black`\n`--a11y-media-transcript-cue-bg-color` | background color of transcript cue  | `--ddd-theme-default-white`\n`--a11y-media-transcript-active-cue-color` | text color of active transcript cue  | `--ddd-theme-default-black`\n`--a11y-media-transcript-active-cue-bg-color` | background color of active transcript cue  | `--ddd-theme-default-white`\n`--a11y-media-transcript-focused-cue-color` | text color of focused transcript cue  | `--ddd-theme-default-black`\n`--a11y-media-transcript-focused-cue-bg-color` | background color of focused transcript cue  | `--ddd-theme-default-limestoneMaxLight`\n`--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--ddd-theme-default-white`\n`--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search  | `--ddd-theme-default-black`\n`--a11y-media-transcript-match-border-color` | border color of matched term in transcript search  | `--ddd-theme-default-black`\n`--a11y-media-caption-color` | caption text color on the accent | `light-dark(--ddd-theme-default-white, --ddd-theme-default-black)`\n\n#### Controls\nCustom property | Description | Default \n----------------|-------------|----------\n`--a11y-media-scrollbar-width` | default width of scrollbars | `5px`\n`--a11y-media-controls-font-family` | font-family of controls\n\n#### Buttons\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-button-color` | button text color | `--a11y-media-color`\n`--a11y-media-button-bg-color` | button background color | `--a11y-media-bg-color`\n`--a11y-media-button-hover-color` | button text color when hovering | `--a11y-media-accent-color`\n`--a11y-media-button-hover-bg-color` | button background color when hovering | `--a11y-media-hover-bg-color`\n`--a11y-media-button-disabled-color` | button text color when disabled | `--a11y-media-disabled-color`\n`--a11y-media-button-toggle-color` | button text color when toggled | `--a11y-media-faded-accent-color`\n\n#### Sliders\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-range-input-active-color` | slider color when active | `--a11y-media-accent-color`\n`--simple-range-input-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`\n`--simple-range-input-pin-color` | slider pin color | `--a11y-media-bg-color`\n`--simple-range-input-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`\n`--simple-range-input-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`\n`--simple-range-input-knob-color` | slider knob color | `--a11y-media-accent-color`\n`--simple-range-input-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`\n`--simple-range-input-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`\n`--simple-range-input-knob-border-color` | slider knob border color | `--a11y-media-accent-color`\n`--simple-range-input-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`\n`--simple-range-input-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`\n\n#### Settings Menu\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-settings-menu-color` | settings menu text color | `--a11y-media-color`\n`--a11y-media-settings-menu-bg-color` | settings menu background color | `--a11y-media-bg-color`\n`--a11y-media-settings-menu-hover-color` | settings menu text color when hovering | `--a11y-media-hover-color`\n`--a11y-media-settings-menu-hover-bg-color` | settings menu background color when hovering | `--a11y-media-hover-bg-color`\n\n#### Link Sharing Toast\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-toast-color` | toast text color | `--a11y-media-color`\n`--simple-toast-background-color` | toast background color | `--a11y-media-bg-color`",
           "name": "A11yMediaPlayer",
           "members": [
             {
@@ -423,6 +423,9 @@
                 },
                 {
                   "name": "val"
+                },
+                {
+                  "name": "media"
                 }
               ]
             },
@@ -880,7 +883,7 @@
               "name": "_handleMediaLoaded",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "handles media metadata when media is loaded"
@@ -918,8 +921,11 @@
               "name": "_handleSliderDragging",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "slider start event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -1030,8 +1036,11 @@
               "name": "_transcriptScroll",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "scroll event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -1320,7 +1329,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, audioLabel: \"Audio\", audioNotSupported: \"HTML5 video is not supported.\", autoScrollLabel: \"Scroll Transcript\", captionsLabel: \"Closed Captions\", captionsOff: \"Off\", downloadLabel: \"Download Transcript\", forwardLabel: \"Forward\", fullscreenLabel: \"Fullscreen\", copyLinkLabel: \"Copy Media Link\", closeLinkLabel: \"Close\", loadingLabel: \"Loading...\", loopLabel: \"Loop Playback\", muteLabel: \"Mute\", nextResultLabel: \"Next\", pauseLabel: \"Pause\", playLabel: \"Play\", prevResultLabel: \"Previous\", printLabel: \"Print Transcript\", restartLabel: \"Restart\", rewindLabel: \"Backward\", searchLabel: \"Search the transcript.\", seekSliderLabel: \"Seek Slider\", settingsLabel: \"Settings\", speedLabel: \"Speed %\", transcriptLabel: \"Transcript\", transcriptLoading: \"Loading the transcript(s)...\", transcriptOff: \"Off\", transcriptSkip: \"Skip to the transcript.\", unmuteLabel: \"Unmute\", videoLabel: \"Video\", videoNotSupported: \"HTML5 video is not supported.\", volumeLabel: \"Volume\", youTubeLoadingLabel: \"Loading...\", youTubeStartLoading: \"Press play.\", youTubeTranscriptLabel: \"Transcript will load once media plays.\", audioDescriptionLabel: \"Audio Description\", }"
+              "default": "{ ...this.t, audioLabel: \"Audio\", audioNotSupported: \"HTML5 video is not supported.\", autoScrollLabel: \"Scroll Transcript\", captionsLabel: \"Closed Captions\", captionsOff: \"Off\", downloadLabel: \"Download Transcript\", forwardLabel: \"Forward\", fullscreenLabel: \"Fullscreen\", copyLinkLabel: \"Copy Media Link\", closeLinkLabel: \"Close\", loadingLabel: \"Loading...\", loopLabel: \"Loop Playback\", muteLabel: \"Mute\", nextResultLabel: \"Next\", pauseLabel: \"Pause\", playLabel: \"Play\", prevResultLabel: \"Previous\", printLabel: \"Print Transcript\", restartLabel: \"Restart\", rewindLabel: \"Backward\", searchLabel: \"Search the transcript.\", seekSliderLabel: \"Seek Slider\", settingsLabel: \"Settings\", speedLabel: \"Speed %\", transcriptLabel: \"Transcript\", transcriptLoading: \"Loading the transcript(s)...\", transcriptOff: \"Off\", transcriptSkip: \"Skip to the transcript.\", unmuteLabel: \"Unmute\", videoLabel: \"Video\", videoNotSupported: \"HTML5 video is not supported.\", volumeLabel: \"Volume\", youTubeLoadingLabel: \"Loading...\", youTubeStartLoading: \"Press play.\", youTubeTranscriptLabel: \"Transcript will load once media plays.\", openOnYouTube: \"Open on YouTube\", audioDescriptionLabel: \"Audio Description\", }"
             },
             {
               "kind": "field",
@@ -1375,7 +1384,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Dash.js manifest source?\n/\n\"manifest\": {\n\"attribute\": \"manifest\",\n\"type\": String\n},\n/**\nthe language of the media (if different from user interface language)",
+              "description": "the language of the media (if different from user interface language)",
               "default": "\"en\"",
               "attribute": "media-lang"
             },
@@ -1686,6 +1695,16 @@
               },
               "description": "custom localization settings",
               "attribute": "localization"
+            },
+            {
+              "kind": "field",
+              "name": "manifest",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Dash.js manifest source?",
+              "attribute": "manifest"
             },
             {
               "kind": "field",
@@ -2059,11 +2078,19 @@
               "fieldName": "loop"
             },
             {
+              "name": "manifest",
+              "type": {
+                "text": "string"
+              },
+              "description": "Dash.js manifest source?",
+              "fieldName": "manifest"
+            },
+            {
               "name": "media-lang",
               "type": {
                 "text": "string"
               },
-              "description": "Dash.js manifest source?\n/\n\"manifest\": {\n\"attribute\": \"manifest\",\n\"type\": String\n},\n/**\nthe language of the media (if different from user interface language)",
+              "description": "the language of the media (if different from user interface language)",
               "default": "\"en\"",
               "fieldName": "mediaLang"
             },
@@ -2392,7 +2419,7 @@
               "name": "_buttonClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "lets player know this button was clicked"
@@ -2461,6 +2488,15 @@
             },
             {
               "kind": "field",
+              "name": "description",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "description"
+            },
+            {
+              "kind": "field",
               "name": "action",
               "privacy": "public",
               "type": {
@@ -2514,6 +2550,13 @@
               },
               "default": "false",
               "fieldName": "dark"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "description"
             },
             {
               "name": "action",
@@ -2641,7 +2684,7 @@
               "name": "_buttonClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "lets player know this button was clicked",
@@ -2738,6 +2781,19 @@
             },
             {
               "kind": "field",
+              "name": "description",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "description",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "action",
               "privacy": "public",
               "type": {
@@ -2806,6 +2862,17 @@
               },
               "default": "false",
               "fieldName": "dark",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "description",
               "inheritedFrom": {
                 "name": "A11yMediaButton",
                 "module": "lib/a11y-media-button.js"
@@ -2986,6 +3053,9 @@
                   "type": {
                     "text": "array"
                   }
+                },
+                {
+                  "name": "_observer"
                 },
                 {
                   "name": "observer",
@@ -3496,7 +3566,7 @@
               "name": "_handleMediaLoaded",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Fires as YouTube video time changes"
@@ -3521,9 +3591,12 @@
               "name": "_loadVideo",
               "parameters": [
                 {
-                  "name": "preload",
-                  "default": "this.preload",
+                  "name": "_preload",
+                  "default": "this.preload"
+                },
+                {
                   "description": "mode for preloading: `auto`, `metadata`, `none`",
+                  "name": "preload",
                   "type": {
                     "text": "string"
                   }

@@ -1,54 +1,54 @@
-import { fixture, expect, html, aTimeout } from '@open-wc/testing'
-import { UnityWebgl } from '../unity-webgl.js'
+import { fixture, expect, html, aTimeout } from "@open-wc/testing";
+import { UnityWebgl } from "../unity-webgl.js";
 
 // network stub: render() assigns the Unity loader through the script src
 // property, so the descriptor is patched to capture the url instead of ever
 // loading it; createUnityInstance is stubbed to capture the boot config
-const capturedScriptSrcs = []
+const capturedScriptSrcs = [];
 const scriptSrcDescriptor = Object.getOwnPropertyDescriptor(
   HTMLScriptElement.prototype,
-  'src',
-)
-Object.defineProperty(HTMLScriptElement.prototype, 'src', {
+  "src",
+);
+Object.defineProperty(HTMLScriptElement.prototype, "src", {
   ...scriptSrcDescriptor,
   set(value) {
-    capturedScriptSrcs.push(String(value))
+    capturedScriptSrcs.push(String(value));
   },
-})
+});
 after(() => {
   Object.defineProperty(
     HTMLScriptElement.prototype,
-    'src',
+    "src",
     scriptSrcDescriptor,
-  )
-})
+  );
+});
 
-describe('unity-webgl', () => {
-  let bootConfigs
+describe("unity-webgl", () => {
+  let bootConfigs;
 
   beforeEach(() => {
-    bootConfigs = []
+    bootConfigs = [];
     globalThis.createUnityInstance = (canvasElement, config) => {
-      bootConfigs.push({ canvasElement, config })
-    }
-  })
+      bootConfigs.push({ canvasElement, config });
+    };
+  });
 
   afterEach(() => {
-    delete globalThis.createUnityInstance
-  })
+    delete globalThis.createUnityInstance;
+  });
 
-  it('is defined with its tag name', () => {
-    expect(UnityWebgl.tag).to.equal('unity-webgl')
-    expect(globalThis.customElements.get('unity-webgl')).to.exist
-  })
+  it("is defined with its tag name", () => {
+    expect(UnityWebgl.tag).to.equal("unity-webgl");
+    expect(globalThis.customElements.get("unity-webgl")).to.exist;
+  });
 
-  it('exposes haxProperties from its lib schema file', () => {
-    const url = UnityWebgl.haxProperties
-    expect(typeof url).to.equal('string')
-    expect(url.endsWith('lib/unity-webgl.haxProperties.json')).to.be.true
-  })
+  it("exposes haxProperties from its lib schema file", () => {
+    const url = UnityWebgl.haxProperties;
+    expect(typeof url).to.equal("string");
+    expect(url.endsWith("lib/unity-webgl.haxProperties.json")).to.be.true;
+  });
 
-  it('renders its canvas and boot script into the shadow root', async () => {
+  it("renders its canvas and boot script into the shadow root", async () => {
     const el = await fixture(
       html`<unity-webgl
         target="demo-build"
@@ -61,23 +61,23 @@ describe('unity-webgl', () => {
         height="400px"
         background="#231F20"
       ></unity-webgl>`,
-    )
-    await aTimeout(50)
-    const canvas = el.shadowRoot.querySelector('canvas')
-    expect(canvas).to.exist
-    expect(canvas.getAttribute('style')).to.include('width: 460px')
-    expect(canvas.getAttribute('style')).to.include('height: 400px')
-    expect(canvas.getAttribute('style')).to.include('background: #231F20')
+    );
+    await aTimeout(50);
+    const canvas = el.shadowRoot.querySelector("canvas");
+    expect(canvas).to.exist;
+    expect(canvas.getAttribute("style")).to.include("width: 460px");
+    expect(canvas.getAttribute("style")).to.include("height: 400px");
+    expect(canvas.getAttribute("style")).to.include("background: #231F20");
     // the canvas announces itself to assistive technology
-    expect(canvas.getAttribute('role')).to.equal('img')
-    expect(canvas.getAttribute('aria-label')).to.equal('Unity WebGL player')
-    const script = el.shadowRoot.querySelector('script')
-    expect(script).to.exist
-    expect(capturedScriptSrcs.includes('demo-build.loader.js')).to.be.true
-    expect(script.hasAttribute('src')).to.be.false
-  })
+    expect(canvas.getAttribute("role")).to.equal("img");
+    expect(canvas.getAttribute("aria-label")).to.equal("Unity WebGL player");
+    const script = el.shadowRoot.querySelector("script");
+    expect(script).to.exist;
+    expect(capturedScriptSrcs.includes("demo-build.loader.js")).to.be.true;
+    expect(script.hasAttribute("src")).to.be.false;
+  });
 
-  it('boots the unity instance once the loader script loads', async () => {
+  it("boots the unity instance once the loader script loads", async () => {
     const el = await fixture(
       html`<unity-webgl
         target="demo-build"
@@ -87,37 +87,42 @@ describe('unity-webgl', () => {
         productname="test webgl"
         productversion="0.1"
       ></unity-webgl>`,
-    )
-    await aTimeout(50)
-    el.shadowRoot.querySelector('script').onload()
-    expect(bootConfigs.length).to.equal(1)
-    const boot = bootConfigs[0]
-    expect(boot.canvasElement === el.shadowRoot.querySelector('canvas')).to.be
-      .true
-    expect(boot.config.dataUrl).to.equal('demo-build.data.unityweb')
-    expect(boot.config.frameworkUrl).to.equal('demo-build.framework.js.unityweb')
-    expect(boot.config.codeUrl).to.equal('demo-build.wasm.unityweb')
-    expect(boot.config.streamingAssetsUrl).to.equal('StreamingAssets')
-    expect(boot.config.company_name).to.equal('DefaultCompany')
-    expect(boot.config.product_name).to.equal('test webgl')
-    expect(boot.config.product_version).to.equal('0.1')
-  })
+    );
+    await aTimeout(50);
+    el.shadowRoot.querySelector("script").onload();
+    expect(bootConfigs.length).to.equal(1);
+    const boot = bootConfigs[0];
+    expect(boot.canvasElement === el.shadowRoot.querySelector("canvas")).to.be
+      .true;
+    expect(boot.config.dataUrl).to.equal("demo-build.data.unityweb");
+    expect(boot.config.frameworkUrl).to.equal(
+      "demo-build.framework.js.unityweb",
+    );
+    expect(boot.config.codeUrl).to.equal("demo-build.wasm.unityweb");
+    expect(boot.config.streamingAssetsUrl).to.equal("StreamingAssets");
+    expect(boot.config.company_name).to.equal("DefaultCompany");
+    expect(boot.config.product_name).to.equal("test webgl");
+    expect(boot.config.product_version).to.equal("0.1");
+  });
 
-  it('logs when the loader script fails to load', async () => {
+  it("logs when the loader script fails to load", async () => {
     const el = await fixture(
-      html`<unity-webgl target="demo-build" compression="unityweb"></unity-webgl>`,
-    )
-    await aTimeout(50)
-    const logs = []
-    const originalLog = console.log
-    console.log = (...args) => logs.push(args.join(' '))
-    el.shadowRoot.querySelector('script').onerror()
-    console.log = originalLog
-    expect(logs.length).to.equal(1)
-    expect(logs[0]).to.include('Error loading')
-  })
+      html`<unity-webgl
+        target="demo-build"
+        compression="unityweb"
+      ></unity-webgl>`,
+    );
+    await aTimeout(50);
+    const logs = [];
+    const originalLog = console.log;
+    console.log = (...args) => logs.push(args.join(" "));
+    el.shadowRoot.querySelector("script").onerror();
+    console.log = originalLog;
+    expect(logs.length).to.equal(1);
+    expect(logs[0]).to.include("Error loading");
+  });
 
-  it('rerenders when presentation attributes change', async () => {
+  it("rerenders when presentation attributes change", async () => {
     const el = await fixture(
       html`<unity-webgl
         target="demo-build"
@@ -126,25 +131,25 @@ describe('unity-webgl', () => {
         height="400px"
         background="#231F20"
       ></unity-webgl>`,
-    )
-    await aTimeout(50)
-    const before = capturedScriptSrcs.length
-    el.setAttribute('width', '500px')
-    await aTimeout(50)
-    expect(capturedScriptSrcs.length).to.be.greaterThan(before)
-    const canvas = el.shadowRoot.querySelector('canvas')
-    expect(canvas.getAttribute('style')).to.include('width: 500px')
-  })
+    );
+    await aTimeout(50);
+    const before = capturedScriptSrcs.length;
+    el.setAttribute("width", "500px");
+    await aTimeout(50);
+    expect(capturedScriptSrcs.length).to.be.greaterThan(before);
+    const canvas = el.shadowRoot.querySelector("canvas");
+    expect(canvas.getAttribute("style")).to.include("width: 500px");
+  });
 
-  it('connects without attributes and renders placeholder values', async () => {
-    const el = await fixture(html`<unity-webgl></unity-webgl>`)
-    await aTimeout(50)
-    expect(capturedScriptSrcs.includes('null.loader.js')).to.be.true
-    const canvas = el.shadowRoot.querySelector('canvas')
-    expect(canvas.getAttribute('style')).to.include('width: null')
-  })
+  it("connects without attributes and renders placeholder values", async () => {
+    const el = await fixture(html`<unity-webgl></unity-webgl>`);
+    await aTimeout(50);
+    expect(capturedScriptSrcs.includes("null.loader.js")).to.be.true;
+    const canvas = el.shadowRoot.querySelector("canvas");
+    expect(canvas.getAttribute("style")).to.include("width: null");
+  });
 
-  it('clears the shadow root between renders', async () => {
+  it("clears the shadow root between renders", async () => {
     const el = await fixture(
       html`<unity-webgl
         target="demo-build"
@@ -153,70 +158,70 @@ describe('unity-webgl', () => {
         height="400px"
         background="#231F20"
       ></unity-webgl>`,
-    )
-    await aTimeout(50)
+    );
+    await aTimeout(50);
     // innerHTML is LegacyNullToEmptyString so assigning null clears the root,
     // leaving exactly one canvas after a rerender
-    el.setAttribute('width', '500px')
-    await aTimeout(50)
-    expect(el.shadowRoot.querySelectorAll('canvas').length).to.equal(1)
-    expect(el.shadowRoot.querySelectorAll('script').length).to.equal(1)
-    expect(el.shadowRoot.textContent).to.not.include('null')
-  })
+    el.setAttribute("width", "500px");
+    await aTimeout(50);
+    expect(el.shadowRoot.querySelectorAll("canvas").length).to.equal(1);
+    expect(el.shadowRoot.querySelectorAll("script").length).to.equal(1);
+    expect(el.shadowRoot.textContent).to.not.include("null");
+  });
 
-  it('reflects attribute access through its getters and setters', async () => {
-    const el = await fixture(html`<unity-webgl></unity-webgl>`)
-    await aTimeout(50)
-    el.target = 'new-target'
-    expect(el.target).to.equal('new-target')
-    expect(el.getAttribute('target')).to.equal('new-target')
-    el.compression = 'gzip'
-    expect(el.compression).to.equal('gzip')
-    el.streamingurl = 'assets'
-    expect(el.streamingurl).to.equal('assets')
-    el.companyname = 'ACME'
-    expect(el.companyname).to.equal('ACME')
-    el.productname = 'Game'
-    expect(el.productname).to.equal('Game')
-    el.productversion = '1.0'
-    expect(el.productversion).to.equal('1.0')
-    el.width = '320px'
-    expect(el.width).to.equal('320px')
-    el.height = '240px'
-    expect(el.height).to.equal('240px')
-    el.background = '#000000'
-    expect(el.background).to.equal('#000000')
-  })
+  it("reflects attribute access through its getters and setters", async () => {
+    const el = await fixture(html`<unity-webgl></unity-webgl>`);
+    await aTimeout(50);
+    el.target = "new-target";
+    expect(el.target).to.equal("new-target");
+    expect(el.getAttribute("target")).to.equal("new-target");
+    el.compression = "gzip";
+    expect(el.compression).to.equal("gzip");
+    el.streamingurl = "assets";
+    expect(el.streamingurl).to.equal("assets");
+    el.companyname = "ACME";
+    expect(el.companyname).to.equal("ACME");
+    el.productname = "Game";
+    expect(el.productname).to.equal("Game");
+    el.productversion = "1.0";
+    expect(el.productversion).to.equal("1.0");
+    el.width = "320px";
+    expect(el.width).to.equal("320px");
+    el.height = "240px";
+    expect(el.height).to.equal("240px");
+    el.background = "#000000";
+    expect(el.background).to.equal("#000000");
+  });
 
-  it('builds its markup from the current attributes', async () => {
+  it("builds its markup from the current attributes", async () => {
     const el = await fixture(
       html`<unity-webgl
         width="100px"
         height="80px"
         background="#111111"
       ></unity-webgl>`,
-    )
-    await aTimeout(50)
-    const markup = el.html
-    expect(markup).to.include(':host')
-    expect(markup).to.include('<canvas')
-    expect(markup).to.include('width: 100px')
-    expect(markup).to.include('height: 80px')
-    expect(markup).to.include('background: #111111')
-  })
+    );
+    await aTimeout(50);
+    const markup = el.html;
+    expect(markup).to.include(":host");
+    expect(markup).to.include("<canvas");
+    expect(markup).to.include("width: 100px");
+    expect(markup).to.include("height: 80px");
+    expect(markup).to.include("background: #111111");
+  });
 
-  it('styles through ShadyCSS when it is present', async () => {
-    const styled = []
-    const prepared = []
+  it("styles through ShadyCSS when it is present", async () => {
+    const styled = [];
+    const prepared = [];
     globalThis.ShadyCSS = {
       styleElement(element) {
-        styled.push(element)
+        styled.push(element);
       },
       prepareTemplate(template, tag) {
-        prepared.push(tag)
+        prepared.push(tag);
       },
-    }
-    let el
+    };
+    let el;
     try {
       el = await fixture(
         html`<unity-webgl
@@ -226,19 +231,19 @@ describe('unity-webgl', () => {
           height="400px"
           background="#231F20"
         ></unity-webgl>`,
-      )
-      await aTimeout(50)
+      );
+      await aTimeout(50);
     } finally {
-      delete globalThis.ShadyCSS
+      delete globalThis.ShadyCSS;
     }
-    expect(styled.length).to.be.greaterThan(0)
-    expect(prepared.length).to.be.greaterThan(0)
+    expect(styled.length).to.be.greaterThan(0);
+    expect(prepared.length).to.be.greaterThan(0);
     // render() prepares the template with the element tag so ShadyCSS scopes
     // the styles to unity-webgl instances
-    expect(prepared[0]).to.equal('unity-webgl')
-  })
+    expect(prepared[0]).to.equal("unity-webgl");
+  });
 
-  it('passes the a11y audit', async () => {
+  it("passes the a11y audit", async () => {
     const el = await fixture(
       html`<unity-webgl
         target="demo-build"
@@ -247,11 +252,11 @@ describe('unity-webgl', () => {
         height="400px"
         background="#231F20"
       ></unity-webgl>`,
-    )
-    await aTimeout(50)
-    await expect(el).shadowDom.to.be.accessible()
-  })
-})
+    );
+    await aTimeout(50);
+    await expect(el).shadowDom.to.be.accessible();
+  });
+});
 
 /*
 describe("unity-webgl test", () => {

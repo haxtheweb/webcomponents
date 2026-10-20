@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`a11y-details`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #000\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,1)\n--a11y-details-borderColor | border-color | #000\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-left | left position | 0\n--a11y-details-right | right position | 0\n--a11y-details-maxHeight | max-height | 400px",
+          "description": "`a11y-details`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #ddd\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,1)\n--a11y-details-borderColor | border-color | #999\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-left | left position | 0\n--a11y-details-right | right position | 0\n--a11y-details-maxHeight | max-height | 400px",
           "name": "A11yDetails",
           "members": [
             {
@@ -187,6 +187,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, details: \"Details\", }"
+            },
+            {
+              "kind": "field",
               "name": "closeText",
               "privacy": "public",
               "type": {
@@ -228,6 +236,12 @@
               "description": "optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"",
               "default": "\"\"",
               "fieldName": "openText"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

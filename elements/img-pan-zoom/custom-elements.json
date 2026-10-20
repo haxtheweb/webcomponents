@@ -683,6 +683,12 @@
               }
             },
             {
+              "name": "rotate",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
               "name": "update-viewport",
               "type": {
                 "text": "CustomEvent"

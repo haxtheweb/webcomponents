@@ -736,7 +736,9 @@ class CleanOne extends LTIResizingMixin(
   render() {
     return html`
       <div class="site">
-        <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
+        <a class="skip-link" href="#contentcontainer"
+          >${this.t.skipToContent}</a
+        >
         <nav class="menu-outline" aria-label="${this.t.siteMenu}">
           <div id="site-search-input" role="search" part="search-btn">
             <clean-one-search-box

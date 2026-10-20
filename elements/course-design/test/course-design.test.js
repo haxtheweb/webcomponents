@@ -101,9 +101,7 @@ describe("course-design test", () => {
     it("hosts activity-box elements", async () => {
       const el = await fixture(html`
         <course-design>
-          <activity-box icon="settings">
-            Complete this activity
-          </activity-box>
+          <activity-box icon="settings"> Complete this activity </activity-box>
         </course-design>
       `);
 
@@ -178,13 +176,13 @@ describe("course-design test", () => {
   });
 });
 
-describe('course-design OER schema metadata', () => {
-  it('applies the oer:Course typeof on first update', async () => {
+describe("course-design OER schema metadata", () => {
+  it("applies the oer:Course typeof on first update", async () => {
     const el = await fixture(html`<course-design></course-design>`);
-    expect(el.getAttribute('typeof')).to.equal('oer:Course');
+    expect(el.getAttribute("typeof")).to.equal("oer:Course");
   });
 
-  it('renders oer meta properties for course metadata', async () => {
+  it("renders oer meta properties for course metadata", async () => {
     const el = await fixture(html`
       <course-design
         course-identifier="MATH-100"
@@ -199,22 +197,22 @@ describe('course-design OER schema metadata', () => {
     expect(metas.length).to.equal(5);
     const meta = (name) =>
       el.shadowRoot.querySelector(`meta[property="oer:${name}"]`);
-    expect(meta('courseIdentifier').getAttribute('content')).to.equal(
-      'MATH-100',
+    expect(meta("courseIdentifier").getAttribute("content")).to.equal(
+      "MATH-100",
     );
-    expect(meta('primaryInstructor').getAttribute('content')).to.equal(
-      'Dr. Ada Lovelace',
+    expect(meta("primaryInstructor").getAttribute("content")).to.equal(
+      "Dr. Ada Lovelace",
     );
-    expect(meta('termOffered').getAttribute('content')).to.equal('Fall 2026');
-    expect(meta('syllabus').getAttribute('content')).to.equal(
-      'files/syllabus.pdf',
+    expect(meta("termOffered").getAttribute("content")).to.equal("Fall 2026");
+    expect(meta("syllabus").getAttribute("content")).to.equal(
+      "files/syllabus.pdf",
     );
-    expect(meta('deliveryFormat').getAttribute('content')).to.equal('online');
+    expect(meta("deliveryFormat").getAttribute("content")).to.equal("online");
   });
 
-  it('renders no oer metas by default', async () => {
+  it("renders no oer metas by default", async () => {
     const el = await fixture(html`<course-design></course-design>`);
     await el.updateComplete;
-    expect(el.shadowRoot.querySelectorAll('meta').length).to.equal(0);
+    expect(el.shadowRoot.querySelectorAll("meta").length).to.equal(0);
   });
 });

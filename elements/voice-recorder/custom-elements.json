@@ -23,7 +23,7 @@
               "name": "toggleRecording",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },

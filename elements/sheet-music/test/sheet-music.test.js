@@ -207,7 +207,9 @@ function makeFakeApi() {
     playerReady: { on: (cb) => (handlers.playerReady = cb) },
     playerStateChanged: { on: (cb) => (handlers.playerStateChanged = cb) },
     playerFinished: { on: (cb) => (handlers.playerFinished = cb) },
-    playerPositionChanged: { on: (cb) => (handlers.playerPositionChanged = cb) },
+    playerPositionChanged: {
+      on: (cb) => (handlers.playerPositionChanged = cb),
+    },
     soundFontLoad: { on: (cb) => (handlers.soundFontLoad = cb) },
     error: { on: (cb) => (handlers.error = cb) },
   };
@@ -497,9 +499,7 @@ describe("sheet-music stubbed-api surface", () => {
     el.source = "";
     el._tex = '\\title "Old" . :4 1';
     // empty detail bails
-    el._onEditorValueChanged(
-      new CustomEvent("value-changed", { detail: "" }),
-    );
+    el._onEditorValueChanged(new CustomEvent("value-changed", { detail: "" }));
     // same value bails
     el._onEditorValueChanged(
       new CustomEvent("value-changed", {

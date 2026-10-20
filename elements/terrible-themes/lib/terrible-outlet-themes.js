@@ -168,9 +168,7 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer"
-        >${this.t.skipToContent}</a
-      >
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <table role="presentation" align="left" border="0" width="1024">
         <tbody>
           <tr>

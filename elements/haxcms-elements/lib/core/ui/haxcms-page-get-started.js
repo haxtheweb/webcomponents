@@ -128,9 +128,7 @@ class HAXCMSPageGetStarted extends HAXCMSI18NMixin(LitElement) {
           <simple-icon-button-lite
             icon="hax:wizard-hat"
           ></simple-icon-button-lite>
-          <span class="tip"
-            >${this.t.getStartedDragDropTip}</span
-          >
+          <span class="tip">${this.t.getStartedDragDropTip}</span>
         </div>
       </div>
     `;

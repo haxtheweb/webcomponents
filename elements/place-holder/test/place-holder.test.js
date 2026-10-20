@@ -297,7 +297,6 @@ describe("place-holder test", () => {
 
       // Should end up with the last type
       expect(element.type).to.equal("text");
-
     });
 
     it("should handle empty and null values gracefully", async () => {

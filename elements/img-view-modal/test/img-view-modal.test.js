@@ -63,12 +63,15 @@ describe("img-view-modal modalOpen", () => {
     expect(viewer.style.getPropertyValue("--img-view-viewer-height")).to.equal(
       "calc(var(--simple-modal-height) - var(--simple-modal-titlebar-height))",
     );
-    expect(viewer.style.getPropertyValue("--img-view-viewer-color").trim()).to
-      .equal("black");
-    expect(viewer.style.getPropertyValue("--img-view-viewer-borderColor").trim())
-      .to.equal("#ddd");
     expect(
-      viewer.style.getPropertyValue("--img-view-viewer-toggled-backgroundColor")
+      viewer.style.getPropertyValue("--img-view-viewer-color").trim(),
+    ).to.equal("black");
+    expect(
+      viewer.style.getPropertyValue("--img-view-viewer-borderColor").trim(),
+    ).to.equal("#ddd");
+    expect(
+      viewer.style
+        .getPropertyValue("--img-view-viewer-toggled-backgroundColor")
         .trim(),
     ).to.equal("#eee");
     // modal styles read from the host css variables
@@ -131,9 +134,9 @@ describe("img-view-modal modalOpen", () => {
   });
 
   it("defaults the modal title to false when unset", async () => {
-    const el = await fixture(
-      html` <img-view-modal .toolbars=${TOOLBARS}></img-view-modal> `,
-    );
+    const el = await fixture(html`
+      <img-view-modal .toolbars=${TOOLBARS}></img-view-modal>
+    `);
     const shown = [];
     el.addEventListener("simple-modal-show", (e) => shown.push(e.detail));
     el.click();

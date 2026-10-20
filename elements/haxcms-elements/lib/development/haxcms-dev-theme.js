@@ -238,7 +238,9 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
                 <div>description: ${item.description}</div>
                 <div>slug: ${item.slug}</div>
                 <div>location: ${item.location}</div>
-                <div>changed: ${item.metadata ? item.metadata.updated : ""}</div>
+                <div>
+                  changed: ${item.metadata ? item.metadata.updated : ""}
+                </div>
               </div>
               <div class="card-actions">
                 <a tabindex="-1" href="${item.slug}"

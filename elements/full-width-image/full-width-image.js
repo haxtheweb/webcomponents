@@ -82,7 +82,9 @@ class FullWidthImage extends I18NMixin(LitElement) {
     return html` <div id="image">
       <simple-icon-button-lite
         id="captionToggle"
-        icon="${this.captionHidden ? "icons:visibility" : "icons:visibility-off"}"
+        icon="${this.captionHidden
+          ? "icons:visibility"
+          : "icons:visibility-off"}"
         toggles
         ?toggled="${this.captionHidden}"
         label="${this.t.toggleCaption}"

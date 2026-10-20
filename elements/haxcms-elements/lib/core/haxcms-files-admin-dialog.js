@@ -86,7 +86,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       uploadComplete: "Upload complete",
       unableToRunFileOperation: "Unable to run file operation.",
       fileUuidMissing: "File UUID is missing",
-      fileOperationEndpointUnavailable: "File operation endpoint is not available",
+      fileOperationEndpointUnavailable:
+        "File operation endpoint is not available",
       fileOperationFailed: "File operation failed",
       fileOperationComplete: "File operation complete",
       fileDeleted: "File deleted",
@@ -113,8 +114,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       transformed: "Transformed",
       onlyRasterCompressed: "Only raster images can be compressed.",
       duplicated: "Duplicated",
-      renamePromptSingle: "Rename file using letters, numbers, and hyphens. Keep the existing extension.",
-      renamePromptMultiple: "Rename {count} files. Enter a base name; files will be named base-1, base-2, etc.",
+      renamePromptSingle:
+        "Rename file using letters, numbers, and hyphens. Keep the existing extension.",
+      renamePromptMultiple:
+        "Rename {count} files. Enter a base name; files will be named base-1, base-2, etc.",
       renameCancelled: "Rename cancelled",
       renamed: "Renamed",
       selectedFilesCount: "{count} selected files",
@@ -129,7 +132,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       actionCompress: "Compress",
       noPublicUrl: "No public URL available for the selected file(s).",
       unableToEmbed: "Unable to embed: no active page editor found.",
-      insertedSkipped: "Inserted {count} file(s); skipped {skipped} without a public URL.",
+      insertedSkipped:
+        "Inserted {count} file(s); skipped {skipped} without a public URL.",
       insertedIntoPage: "Inserted {count} file(s) into page",
       type: "Type",
       extension: "Extension",
@@ -358,7 +362,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
           --simple-icon-button-border: var(--ddd-border-size-xs) solid
             var(--ddd-theme-default-limestoneGray);
           --simple-icon-button-focus-border: var(--ddd-border-size-xs) solid
-            light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            );
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
           padding: var(--ddd-spacing-2);
@@ -528,14 +535,14 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       const months = Math.floor(delta / month);
       return this.t.timeAgo.replace(
         "{time}",
-        () => (`${months} ${months === 1 ? this.t.month : this.t.months}`),
+        () => `${months} ${months === 1 ? this.t.month : this.t.months}`,
       );
     }
     if (delta >= day) {
       const days = Math.floor(delta / day);
       return this.t.timeAgo.replace(
         "{time}",
-        () => (`${days} ${days === 1 ? this.t.day : this.t.days}`),
+        () => `${days} ${days === 1 ? this.t.day : this.t.days}`,
       );
     }
     if (delta >= hour) {
@@ -544,12 +551,13 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       if (minutes > 0) {
         return this.t.timeAgo.replace(
           "{time}",
-          () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours} ${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes}`),
+          () =>
+            `${hours} ${hours === 1 ? this.t.hour : this.t.hours} ${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes}`,
         );
       }
       return this.t.timeAgo.replace(
         "{time}",
-        () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours}`),
+        () => `${hours} ${hours === 1 ? this.t.hour : this.t.hours}`,
       );
     }
     if (delta >= minute) {
@@ -557,12 +565,13 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       const seconds = Math.floor(delta % minute);
       return this.t.timeAgo.replace(
         "{time}",
-        () => (`${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes} ${seconds} ${seconds === 1 ? this.t.second : this.t.seconds}`),
+        () =>
+          `${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes} ${seconds} ${seconds === 1 ? this.t.second : this.t.seconds}`,
       );
     }
     return this.t.timeAgo.replace(
       "{time}",
-      () => (`${delta} ${delta === 1 ? this.t.second : this.t.seconds}`),
+      () => `${delta} ${delta === 1 ? this.t.second : this.t.seconds}`,
     );
   }
 
@@ -1186,7 +1195,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       else if (op === "scale" && options && options.size)
         message = this.t.scaledTo.replace("{size}", () => options.size);
       else if (op === "compress" && options && options.level)
-        message = this.t.compressedLevel.replace("{level}", () => options.level);
+        message = this.t.compressedLevel.replace(
+          "{level}",
+          () => options.level,
+        );
       else if (op === "duplicate") message = this.t.fileDuplicated;
       if (!silent) this._msg(message);
       if (!skipRefresh) await this.refreshFiles();
@@ -1225,7 +1237,7 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
         if (multi) {
           this._msg(
             this.t.processingProgress
-              .replace("{current}", () => (idx + 1))
+              .replace("{current}", () => idx + 1)
               .replace("{total}", () => rows.length),
           );
         }
@@ -1304,7 +1316,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       this._msg(this.t.onlyRasterScaled, true);
       return;
     }
-    if (!this._confirmBulkOverwrite(scalable.length, this.t.actionScale)) return;
+    if (!this._confirmBulkOverwrite(scalable.length, this.t.actionScale))
+      return;
     this.scalePreset = normalizedSize;
     await this._runBulkOp(
       scalable,
@@ -1324,7 +1337,8 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       this._msg(this.t.onlyRasterRotated, true);
       return;
     }
-    if (!this._confirmBulkOverwrite(scalable.length, this.t.actionRotate)) return;
+    if (!this._confirmBulkOverwrite(scalable.length, this.t.actionRotate))
+      return;
     await this._runBulkOp(
       scalable,
       (row) => this._op(row, "rotate-90", { silent: true, skipRefresh: true }),
@@ -1431,7 +1445,9 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
       rows.length === 1
         ? rows[0].path
         : this.t.selectedFilesCount.replace("{count}", () => rows.length);
-    if (!globalThis.confirm(this.t.deleteConfirm.replace("{label}", () => label)))
+    if (
+      !globalThis.confirm(this.t.deleteConfirm.replace("{label}", () => label))
+    )
       return;
     await this._runBulkOp(
       rows,
@@ -1559,7 +1575,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
                   .value="${this.filterType}"
                   .itemsList="${FILE_TYPE_FILTER_ITEMS.map((item) => ({
                     value: item.value,
-                    text: item.key && this.t[item.key] ? this.t[item.key] : item.text,
+                    text:
+                      item.key && this.t[item.key]
+                        ? this.t[item.key]
+                        : item.text,
                   }))}"
                   ?disabled="${this.busy || !this._canList}"
                   @value-changed="${this._onFilterTypeChanged}"
@@ -1692,7 +1711,10 @@ class HAXCMSFilesAdminDialog extends I18NMixin(DDD) {
                               <td>
                                 <input
                                   type="checkbox"
-                                  aria-label="${this.t.selectFile.replace("{name}", () => r.name)}"
+                                  aria-label="${this.t.selectFile.replace(
+                                    "{name}",
+                                    () => r.name,
+                                  )}"
                                   data-action="select-row"
                                   data-row-key="${this._rowKey(r)}"
                                   ?disabled="${this.busy}"

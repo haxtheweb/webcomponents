@@ -223,9 +223,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer"
-        >${this.t.skipToContent}</a
-      >
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <div align="center">
         <table
           role="presentation"
@@ -336,7 +334,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                                   <p class="posted">
                                     ${this.t.byAuthor.replace(
                                       "{author}",
-                                      () => (this.author || ""),
+                                      () => this.author || "",
                                     )}
                                   </p>
                                 </td>

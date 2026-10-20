@@ -28,7 +28,7 @@
               "name": "_generateforComponentLink",
               "parameters": [
                 {
-                  "name": "source"
+                  "name": "_source"
                 }
               ]
             },

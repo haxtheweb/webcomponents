@@ -12,6 +12,19 @@
           "name": "CitationElement",
           "members": [
             {
+              "kind": "method",
+              "name": "_fillTemplate",
+              "parameters": [
+                {
+                  "name": "str"
+                },
+                {
+                  "name": "values"
+                }
+              ],
+              "description": "splits a translated sentence on {placeholders} and swaps in the\nmatching values (strings or templates) so links stay inside one string"
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -73,6 +86,11 @@
             },
             {
               "kind": "method",
+              "name": "_licenseDisplayName",
+              "description": "translated license name for display; custom licenseName values pass through"
+            },
+            {
+              "kind": "method",
               "name": "_licenseUpdated",
               "parameters": [
                 {
@@ -80,6 +98,14 @@
                 }
               ],
               "description": "License was updated, time to update license name and link."
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, citationWithLicense: \"{title} by {creator}, licensed under {license}. Accessed {date}.\", citationWithoutLicense: \"{title} by {creator}. Accessed {date}.\", licenseGraphic: \"{license} graphic\", licenseBy: \"Attribution\", licenseBySa: \"Attribution Share a like\", licenseByNd: \"Attribution No derivatives\", licenseByNc: \"Attribution non-commercial\", licenseByNcSa: \"Attribution non-commercial share a like\", licenseByNcNd: \"Attribution Non-commercial No derivatives\", }"
             },
             {
               "kind": "field",
@@ -177,6 +203,16 @@
             },
             {
               "kind": "field",
+              "name": "licenseImage",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "License image URL, calculated when a known license is applied.",
+              "attribute": "license-image"
+            },
+            {
+              "kind": "field",
               "name": "license",
               "privacy": "public",
               "type": {
@@ -184,6 +220,16 @@
               },
               "description": "License short hand. Options cc0,",
               "attribute": "license"
+            },
+            {
+              "kind": "field",
+              "name": "relatedResource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Related resource id used to bind the citation to a sibling or parent.\nCalculated by `_scopeChanged`; declared here so reactive updates and\n`updated()` react to it via Lit.",
+              "attribute": "related-resource"
             }
           ],
           "attributes": [
@@ -254,6 +300,14 @@
               "fieldName": "licenseLink"
             },
             {
+              "name": "license-image",
+              "type": {
+                "text": "string"
+              },
+              "description": "License image URL, calculated when a known license is applied.",
+              "fieldName": "licenseImage"
+            },
+            {
               "name": "license",
               "type": {
                 "text": "string"
@@ -269,9 +323,21 @@
               "description": "OER Schema class for the cited work (default oer:ReferencedMaterial).\nAuthors can override via the HAX editor to use a more specific OER class.",
               "default": "\"oer:ReferencedMaterial\"",
               "fieldName": "typeof"
+            },
+            {
+              "name": "related-resource",
+              "type": {
+                "text": "string"
+              },
+              "description": "Related resource id used to bind the citation to a sibling or parent.\nCalculated by `_scopeChanged`; declared here so reactive updates and\n`updated()` react to it via Lit.",
+              "fieldName": "relatedResource"
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "SchemaBehaviors",
               "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"

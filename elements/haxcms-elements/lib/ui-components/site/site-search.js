@@ -7,9 +7,7 @@ import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
-import {
-  store,
-} from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-fields/lib/simple-tag.js";
@@ -336,7 +334,11 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
                         >(${item.location})</span
                       >
                       ${item.tags && item.tags != ""
-                        ? html`<div class="tags" role="list" aria-label="${this.t.searchResultTags}">
+                        ? html`<div
+                            class="tags"
+                            role="list"
+                            aria-label="${this.t.searchResultTags}"
+                          >
                             ${item.tags
                               .split(",")
                               .map(
@@ -359,7 +361,10 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
                       >
                     </div>
                     ${item.breadcrumb
-                      ? html`<nav class="breadcrumb" aria-label="${this.t.pageLocation}">
+                      ? html`<nav
+                          class="breadcrumb"
+                          aria-label="${this.t.pageLocation}"
+                        >
                           ${item.breadcrumb.map(
                             (crumb, i) =>
                               html`${i != 0

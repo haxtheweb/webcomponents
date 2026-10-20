@@ -222,7 +222,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           margin-bottom: var(--ddd-spacing-3);
         }
         .block-category-title:focus-visible {
-          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid
+            var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -812,7 +813,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                                   group.category,
                                 )}"
                                 @click="${this._selectAll}"
-                                >${this.t.selectAllButton}</simple-icon-button-lite
+                                >${this.t
+                                  .selectAllButton}</simple-icon-button-lite
                               >
                               <simple-icon-button-lite
                                 icon="icons:select-all"
@@ -822,7 +824,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                                   group.category,
                                 )}"
                                 @click="${this._deselectAll}"
-                                >${this.t.deselectAllButton}</simple-icon-button-lite
+                                >${this.t
+                                  .deselectAllButton}</simple-icon-button-lite
                               >
                             </div>
                           `}

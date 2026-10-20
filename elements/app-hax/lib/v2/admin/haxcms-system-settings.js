@@ -144,8 +144,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         "{panel} saved locally (backend wiring pending)",
       enabledBlocksSaved: "Enabled blocks saved",
       unableToSaveEnabledBlocks: "Unable to save enabled blocks",
-      savedApiKeysLoadFailed:
-        "Saved API keys could not be loaded right now.",
+      savedApiKeysLoadFailed: "Saved API keys could not be loaded right now.",
       apiKeySettingsSaveFailed: "API key settings could not be saved.",
       savedMediaSettingsLoadFailed:
         "Saved media settings could not be loaded right now.",
@@ -194,7 +193,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
       unableToRenameSkeleton: "Unable to rename skeleton.",
       deleteConfirmationUnavailable: "Delete confirmation is unavailable.",
       deleteSkeletonConfirm:
-        "Delete skeleton \"{machineName}\"? This cannot be undone.",
+        'Delete skeleton "{machineName}"? This cannot be undone.',
       deleteEndpointUnavailable: "Delete endpoint is unavailable.",
       deletedSkeleton: "Deleted skeleton {machineName}.",
       unableToDeleteSkeleton: "Unable to delete skeleton.",
@@ -984,7 +983,8 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           line-height: 1.4;
         }
         .api-key-input:focus-visible {
-          outline: var(--ddd-border-size-xs) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-xs) solid
+            var(--ddd-theme-default-skyBlue);
           outline-offset: 0;
           border-color: var(--ddd-theme-default-skyBlue);
         }
@@ -1045,7 +1045,10 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
           outline: none;
         }
         button.action.primary {
-          border-color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-linkLight)
+          );
           background: light-dark(
             var(--ddd-theme-default-skyBlue),
             var(--ddd-theme-default-nittanyNavy)
@@ -1119,8 +1122,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         icon: "hax:graph",
         group: "primary",
         description: this.t.runtimeAndUpdateStatus,
-        intro:
-          this.t.statusPanelIntro,
+        intro: this.t.statusPanelIntro,
         panelType: "status",
       },
       {
@@ -1129,8 +1131,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         icon: "hax:site-map",
         group: "primary",
         description: this.t.availableStarterStructures,
-        intro:
-          this.t.skeletonsPanelIntro,
+        intro: this.t.skeletonsPanelIntro,
         panelType: "skeletons",
       },
       {
@@ -1139,8 +1140,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         icon: "lrn:palette",
         group: "primary",
         description: this.t.availableThemes,
-        intro:
-          this.t.themesPanelIntro,
+        intro: this.t.themesPanelIntro,
         panelType: "themes",
       },
       {
@@ -1149,8 +1149,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         icon: "hax:blocks",
         group: "primary",
         description: this.t.allowedBlockRegistry,
-        intro:
-          this.t.blocksPanelIntro,
+        intro: this.t.blocksPanelIntro,
         panelType: "blocks",
         disabled: true,
       },
@@ -1160,8 +1159,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         icon: "communication:vpn-key",
         group: "advanced",
         description: this.t.thirdPartyCredentials,
-        intro:
-          this.t.integrationsPanelIntro,
+        intro: this.t.integrationsPanelIntro,
         panelType: "integrations",
         disabled: true,
         sections: [
@@ -1169,8 +1167,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
             key: "api-keys",
             label: this.t.apiKeys,
             icon: "communication:vpn-key",
-            description:
-              this.t.apiKeysSectionDescription,
+            description: this.t.apiKeysSectionDescription,
             fields: [
               {
                 property: "youtubeApiKey",
@@ -1237,16 +1234,14 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         icon: "image:image",
         group: "advanced",
         description: this.t.mediaDefaults,
-        intro:
-          this.t.mediaPanelIntro,
+        intro: this.t.mediaPanelIntro,
         panelType: "fields",
         sections: [
           {
             key: "media-policy",
             label: this.t.mediaPolicy,
             icon: "image:image",
-            description:
-              this.t.mediaPolicySectionDescription,
+            description: this.t.mediaPolicySectionDescription,
             fields: [
               {
                 property: "jpegQuality",
@@ -1276,16 +1271,14 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         icon: "icons:language",
         group: "advanced",
         description: this.t.systemWideDefaults,
-        intro:
-          this.t.configurationPanelIntro,
+        intro: this.t.configurationPanelIntro,
         panelType: "fields",
         sections: [
           {
             key: "localization",
             label: this.t.localization,
             icon: "icons:language",
-            description:
-              this.t.localizationSectionDescription,
+            description: this.t.localizationSectionDescription,
             fields: [
               {
                 property: "defaultLanguage",
@@ -1304,8 +1297,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         icon: "editor:format-color-text",
         group: "advanced",
         description: this.t.authoringStyleGuidance,
-        intro:
-          this.t.styleGuidePanelIntro,
+        intro: this.t.styleGuidePanelIntro,
         panelType: "style-guide",
         disabled: true,
       },
@@ -1315,8 +1307,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         icon: "code",
         group: "advanced",
         description: this.t.globalCssAndJavaScript,
-        intro:
-          this.t.customCodePanelIntro,
+        intro: this.t.customCodePanelIntro,
         panelType: "custom-code",
         disabled: true,
       },
@@ -1998,38 +1989,34 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         this._reloadAfterOptionSave(panelKey);
       }
     } else if (panelKey === "custom-code") {
-      this.statusMessage = this.t.panelSavedLocally.replace(
-        "{panel}",
-        () => (this._panelLabel(panelKey)),
+      this.statusMessage = this.t.panelSavedLocally.replace("{panel}", () =>
+        this._panelLabel(panelKey),
       );
     } else if (panelKey === "integrations") {
       saved = await this._saveApiKeysData(savePayload);
       this.statusMessage = saved
-        ? this.t.panelSaved.replace("{panel}", () => (this._panelLabel(panelKey)))
-        : this.t.unableToSavePanel.replace(
-            "{panel}",
-            () => (this._panelLabel(panelKey).toLowerCase()),
+        ? this.t.panelSaved.replace("{panel}", () => this._panelLabel(panelKey))
+        : this.t.unableToSavePanel.replace("{panel}", () =>
+            this._panelLabel(panelKey).toLowerCase(),
           );
     } else if (panelKey === "media") {
       saved = await this._saveMediaSettingsData(savePayload);
       this.statusMessage = saved
-        ? this.t.panelSaved.replace("{panel}", () => (this._panelLabel(panelKey)))
-        : this.t.unableToSavePanel.replace(
-            "{panel}",
-            () => (this._panelLabel(panelKey).toLowerCase()),
+        ? this.t.panelSaved.replace("{panel}", () => this._panelLabel(panelKey))
+        : this.t.unableToSavePanel.replace("{panel}", () =>
+            this._panelLabel(panelKey).toLowerCase(),
           );
     } else if (panelKey === "configuration") {
       saved = await this._saveLocalizationSettingsData(savePayload);
       this.statusMessage = saved
-        ? this.t.panelSaved.replace("{panel}", () => (this._panelLabel(panelKey)))
-        : this.t.unableToSavePanel.replace(
-            "{panel}",
-            () => (this._panelLabel(panelKey).toLowerCase()),
+        ? this.t.panelSaved.replace("{panel}", () => this._panelLabel(panelKey))
+        : this.t.unableToSavePanel.replace("{panel}", () =>
+            this._panelLabel(panelKey).toLowerCase(),
           );
     } else {
       this.statusMessage = this.t.panelSavedLocallyPending.replace(
         "{panel}",
-        () => (this._panelLabel(panelKey)),
+        () => this._panelLabel(panelKey),
       );
     }
     this.dispatchEvent(
@@ -3107,11 +3094,11 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         ? this.t.currentLatestVersion
             .replace(
               "{current}",
-              () => (summary.haxcmsVersionCurrent || this.t.unknownLower),
+              () => summary.haxcmsVersionCurrent || this.t.unknownLower,
             )
             .replace(
               "{latest}",
-              () => (summary.haxcmsVersionLatest || this.t.unknownLower),
+              () => summary.haxcmsVersionLatest || this.t.unknownLower,
             )
         : description;
     const nextRows = Array.isArray(rows) ? this._cloneData(rows) : [];
@@ -3334,9 +3321,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
             ? html`<p class="helper">${this.t.loadingSkeletonOptions}</p>`
             : ""}
           <div class="skeleton-upload-wrap">
-            <p class="helper">
-              ${this.t.dragDropSkeleton}
-            </p>
+            <p class="helper">${this.t.dragDropSkeleton}</p>
             ${this._hasSchemaFileOperationEndpoint()
               ? html`
                   <hax-upload-field
@@ -3349,9 +3334,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
                   ></hax-upload-field>
                 `
               : html`
-                  <p class="empty-state">
-                    ${this.t.uploadEndpointUnavailable}
-                  </p>
+                  <p class="empty-state">${this.t.uploadEndpointUnavailable}</p>
                 `}
           </div>
           ${options.length > 0
@@ -3373,9 +3356,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
                   </table>
                 </div>
               `
-            : html`<p class="empty-state">
-                ${this.t.noSkeletonOptions}
-              </p>`}
+            : html`<p class="empty-state">${this.t.noSkeletonOptions}</p>`}
         </div>
       </section>
     `;
@@ -3701,7 +3682,10 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
               ? html`
                   <img
                     src="${option.screenshot}"
-                    alt="${this.t.themePreviewAlt.replace("{theme}", () => option.label)}"
+                    alt="${this.t.themePreviewAlt.replace(
+                      "{theme}",
+                      () => option.label,
+                    )}"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
@@ -3952,9 +3936,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
             ? html`<p class="status-message error">${this.apiKeysError}</p>`
             : ""}
           ${fields.length === 0
-            ? html`<p class="empty-state">
-                ${this.t.noIntegrationProviders}
-              </p>`
+            ? html`<p class="empty-state">${this.t.noIntegrationProviders}</p>`
             : html`
                 <div class="api-key-list">
                   ${fields.map(
@@ -4051,9 +4033,7 @@ class HAXCMSSystemSettings extends I18NMixin(DDD) {
         this._renderPanelSection(panel.key, section),
       );
     }
-    return html`<p class="empty-state">
-      ${this.t.noSettingsForPanel}
-    </p>`;
+    return html`<p class="empty-state">${this.t.noSettingsForPanel}</p>`;
   }
 
   _renderActivePanel(panel) {

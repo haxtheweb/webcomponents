@@ -16,7 +16,7 @@
               "name": "toggleOpen",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -91,7 +91,7 @@
               "name": "haxResolveThread",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -321,6 +321,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, reaction: \"Reaction\", comment: \"Comment\", edit: \"Edit\", update: \"Update\", reply: \"Reply\", delete: \"Delete\", }"
+            },
+            {
+              "kind": "field",
               "name": "mood",
               "privacy": "public",
               "type": {
@@ -474,6 +482,12 @@
               },
               "default": "true",
               "fieldName": "readOnly"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

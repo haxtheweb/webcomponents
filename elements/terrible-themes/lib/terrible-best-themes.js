@@ -158,9 +158,7 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer"
-        >${this.t.skipToContent}</a
-      >
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <table
         role="presentation"
         width="100%"

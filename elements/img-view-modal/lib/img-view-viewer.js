@@ -761,7 +761,7 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
    */
   get pageXofY() {
     return this.t.pageXOfY
-      .replace("{x}", () => ((this.page || 0) + 1))
+      .replace("{x}", () => (this.page || 0) + 1)
       .replace("{y}", () => this.pages.length);
   }
   get navXofY() {

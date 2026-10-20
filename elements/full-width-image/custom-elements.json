@@ -13,6 +13,11 @@
           "members": [
             {
               "kind": "method",
+              "name": "_toggleCaption",
+              "description": "toggles the caption overlay; the caption stays visible and hoverable\nuntil it is explicitly dismissed (WCAG 1.4.13)"
+            },
+            {
+              "kind": "method",
               "name": "haxHooks",
               "description": "#3050: a file backing this background image was modified in place. Refresh\nthe live preview by cache-busting the #image background-image style\ndirectly so the persisted `source` property (and saved content) stays\nclean."
             },
@@ -52,6 +57,26 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, toggleCaption: \"toggle caption\", }"
+            },
+            {
+              "kind": "field",
+              "name": "captionHidden",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether the caption overlay has been dismissed",
+              "default": "false",
+              "attribute": "caption-hidden",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "source",
               "privacy": "public",
               "type": {
@@ -85,6 +110,21 @@
                 "text": "string"
               },
               "fieldName": "caption"
+            },
+            {
+              "name": "caption-hidden",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether the caption overlay has been dismissed",
+              "default": "false",
+              "fieldName": "captionHidden"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

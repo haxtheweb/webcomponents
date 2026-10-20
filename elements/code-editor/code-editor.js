@@ -156,10 +156,7 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
     // register synchronously so monaco-element-ready events dispatched
     // during the first update window are never dropped (issue #3102 bug 19);
     // the event is composed and bubbles up from the shadow child
-    this.addEventListener(
-      "monaco-element-ready",
-      this.editorReady.bind(this),
-    );
+    this.addEventListener("monaco-element-ready", this.editorReady.bind(this));
   }
   /**
    * LitElement render

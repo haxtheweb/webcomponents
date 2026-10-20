@@ -58,9 +58,7 @@ describe("grade-book-store", () => {
     it("returns null when the submission column is empty for the assignment", async () => {
       const store = new GradeBookStoreClass();
       const db = makeDatabase();
-      db.submissions = [
-        { student: "Alice", a1: "", a2: "" },
-      ];
+      db.submissions = [{ student: "Alice", a1: "", a2: "" }];
       store.database = db;
       expect(store.activeSubmission).to.equal(null);
     });
@@ -81,9 +79,7 @@ describe("grade-book-store", () => {
       expect(GradeBookStore.activeSubmission).to.equal(null);
       GradeBookStore.activeStudent = 0;
       await flush();
-      expect(GradeBookStore.activeSubmission).to.equal(
-        "plain text feedback",
-      );
+      expect(GradeBookStore.activeSubmission).to.equal("plain text feedback");
       // leave the shared singleton in a safe state for other suites
       GradeBookStore.activeStudent = 0;
       GradeBookStore.activeAssignment = 0;

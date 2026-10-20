@@ -38,23 +38,12 @@
               "name": "HAXCMSGlobalStyleSheetContent"
             },
             {
-              "kind": "method",
-              "name": "prevPage",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "nextPage",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ],
-              "description": "Next page to hook into when next is hit"
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, skipToContent: \"Skip to content\", siteMenu: \"Site menu\", pageNavigation: \"Page navigation\", }"
             },
             {
               "kind": "field",
@@ -196,7 +185,7 @@
               "name": "searchChanged",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },

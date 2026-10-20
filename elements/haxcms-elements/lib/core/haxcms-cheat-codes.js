@@ -27,7 +27,8 @@ const CHEAT_CODES_T = {
   cheatSantaModeDeactivated: "🎅 Santa mode deactivated. Back to normal voice.",
   cheatSantaModeUnavailable: "🎅 Santa mode unavailable",
   cheatSantaSpeak: "Ho ho ho! Have you been naughty or nice?",
-  cheatTimeTravelDisabled: "⏳ Time travel disabled - Welcome back to the present!",
+  cheatTimeTravelDisabled:
+    "⏳ Time travel disabled - Welcome back to the present!",
   cheatTimeTravelActivated: "⏳ TIME TRAVEL ACTIVATED! Welcome to the past!",
   cheatTimeTravelExpired: "⏳ Time travel expired - Returned to present",
   cheatTimeTravelSpeak: "Great Scott! We have traveled through time itself!",
@@ -41,7 +42,8 @@ const CHEAT_CODES_T = {
   cheatRickRolled: "🎤 RICK ROLLED! Never gonna give you up!",
   cheatRickRollSpeak: "Never gonna give you up, never gonna let you down!",
   cheatNyanCatActivated: "🐈 NYAN CAT ACTIVATED! Rainbow cats incoming!",
-  cheatNyanCatSpeak: "Nyan nyan nyan! Rainbow cats are taking over the internet!",
+  cheatNyanCatSpeak:
+    "Nyan nyan nyan! Rainbow cats are taking over the internet!",
   cheatWorldChangerActivated: "🌍 WORLD CHANGER ACTIVATED! Be the change!",
   cheatWorldChangerSpeak: "You must be the change you wish to see in the world",
   cheatTechnoPartyStopped: "🎵 Techno party stopped!",
@@ -50,27 +52,38 @@ const CHEAT_CODES_T = {
   cheatTechnoPartyOver: "🎵 Techno party over! Back to reality.",
   cheatCreditsLoadFailed: "🎬 Failed to load contributors component",
   cheatCreditsRoll: "🎬 CREDITS ROLL! Thank you contributors!",
-  cheatCreditsSpeak: "Thank you for helping to build something amazing, free, and ubiquitous",
+  cheatCreditsSpeak:
+    "Thank you for helping to build something amazing, free, and ubiquitous",
   cheatJokerSubsided: "🃏 Joker chaos subsided... for now",
   cheatJokerActivated: "🃏 JOKER ACTIVATED! Chaos unleashed!",
   cheatJokerSpeak: "It's not about the money, it's about sending a message",
-  cheatFurbyAttackEnded: "👾 Furby attack ended! They returned to the digital realm!",
+  cheatFurbyAttackEnded:
+    "👾 Furby attack ended! They returned to the digital realm!",
   cheatFurbyAttack: "👾 FURBY TRADING CARD ATTACK! Close one, two more appear!",
-  cheatFurbySpeak: "Me-dah-loo-loo! Each Furby carries ancient trading card wisdom!",
+  cheatFurbySpeak:
+    "Me-dah-loo-loo! Each Furby carries ancient trading card wisdom!",
   cheatWindows95Activated: "💻 WINDOWS 95 ACTIVATED! Welcome to the future!",
-  cheatWindows95Speak: "Welcome to Windows 95! The operating system of tomorrow, today!",
-  cheatEternalDarknessDisabled: "🌙 ETERNAL DARKNESS DISABLED - Sanity restored!",
+  cheatWindows95Speak:
+    "Welcome to Windows 95! The operating system of tomorrow, today!",
+  cheatEternalDarknessDisabled:
+    "🌙 ETERNAL DARKNESS DISABLED - Sanity restored!",
   cheatEternalDarknessEndsSpeak: "The nightmare ends... for now.",
   cheatEternalDarknessSpeak: "This. Can't. Be. Happening.",
-  cheatEternalDarknessActivated: "🌙 ETERNAL DARKNESS - Your sanity slips away...",
+  cheatEternalDarknessActivated:
+    "🌙 ETERNAL DARKNESS - Your sanity slips away...",
   cheatYtmndActivated: "🎵 YTMND ACTIVATED! You're the man now, dog!",
-  cheatYtmndSpeak: "You're the man now, dog! Welcome to the golden age of internet memes!",
+  cheatYtmndSpeak:
+    "You're the man now, dog! Welcome to the golden age of internet memes!",
   cheatGeocitiesActivated: "🌈 GEOCITIES ACTIVATED! Welcome to 1999!",
-  cheatGeocitiesSpeak: "Welcome to the information superhighway! Don't forget to sign the guestbook!",
+  cheatGeocitiesSpeak:
+    "Welcome to the information superhighway! Don't forget to sign the guestbook!",
   cheatClippyActivated: "📎 CLIPPY ACTIVATED! I'm here to help!",
-  cheatClippySpeak: "It looks like you're trying to activate an assistant. I can help with that!",
-  cheatChickenButtActivated: "🐔 CHICKEN BUTT FREEZE RAY RAWR! Find the three special items!",
-  cheatChickenButtSpeak: "I love you to the moon and back! Can you find the chicken, freeze ray, and rawr monster?",
+  cheatClippySpeak:
+    "It looks like you're trying to activate an assistant. I can help with that!",
+  cheatChickenButtActivated:
+    "🐔 CHICKEN BUTT FREEZE RAY RAWR! Find the three special items!",
+  cheatChickenButtSpeak:
+    "I love you to the moon and back! Can you find the chicken, freeze ray, and rawr monster?",
 };
 const _t = (context, key) =>
   context && context.t && context.t[key] ? context.t[key] : CHEAT_CODES_T[key];
@@ -482,9 +495,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       HAXStore.toast(_t(editorInstance, "cheatDkModeNoCharacter"));
     }
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatDkModeSpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatDkModeSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -570,7 +581,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     }, 300);
 
     HAXStore.toast(_t(editorInstance, "cheatDanceDanceRevolution"));
-    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatDanceDanceRevolutionSpeak"));
+    SuperDaemonInstance.merlinSpeak(
+      _t(editorInstance, "cheatDanceDanceRevolutionSpeak"),
+    );
     SuperDaemonInstance.close();
   };
 
@@ -627,9 +640,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     }
 
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatTimeTravelSpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatTimeTravelSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -637,7 +648,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
    * Execute BEEPS cheat - Add click sounds everywhere
    */
   editorInstance._executeCheatBeeps = function () {
-        let beepActive = globalThis.document.body.hasAttribute("data-beeps-active");
+    let beepActive = globalThis.document.body.hasAttribute("data-beeps-active");
 
     if (beepActive) {
       // Remove beep mode
@@ -687,9 +698,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     }
 
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatBeepsSpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatBeepsSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -778,9 +787,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     }
 
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatMatrixSpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatMatrixSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -894,9 +901,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     HAXStore.toast(_t(editorInstance, "cheatRickRolled"));
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatRickRollSpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatRickRollSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -971,9 +976,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     HAXStore.toast(_t(editorInstance, "cheatNyanCatActivated"));
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatNyanCatSpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatNyanCatSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -1301,9 +1304,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     HAXStore.toast(_t(editorInstance, "cheatCreditsRoll"));
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatCreditsSpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatCreditsSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -1405,9 +1406,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     HAXStore.toast(_t(editorInstance, "cheatJokerActivated"));
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatJokerSpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatJokerSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -1665,16 +1664,12 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       // Clear the popupWindows array
       popupWindows.length = 0;
 
-      HAXStore.toast(
-        _t(editorInstance, "cheatFurbyAttackEnded"),
-      );
+      HAXStore.toast(_t(editorInstance, "cheatFurbyAttackEnded"));
     }, 20000);
 
     HAXStore.toast(_t(editorInstance, "cheatFurbyAttack"));
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatFurbySpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatFurbySpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -2076,9 +2071,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     HAXStore.toast(_t(editorInstance, "cheatWindows95Activated"));
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatWindows95Speak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatWindows95Speak"));
     SuperDaemonInstance.close();
   };
 
@@ -2161,7 +2154,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       }, 500);
 
       HAXStore.toast(_t(editorInstance, "cheatEternalDarknessDisabled"));
-      SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatEternalDarknessEndsSpeak"));
+      SuperDaemonInstance.merlinSpeak(
+        _t(editorInstance, "cheatEternalDarknessEndsSpeak"),
+      );
       SuperDaemonInstance.close();
       return;
     }
@@ -2328,7 +2323,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             }
           };
           break;
-}
+        }
 
         case "fakeError": {
           const errorModal = globalThis.document.createElement("div");
@@ -2370,7 +2365,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             if (errorModal.parentNode) errorModal.remove();
           };
           break;
-}
+        }
 
         case "volumeMeter": {
           const volumeModal = globalThis.document.createElement("div");
@@ -2415,7 +2410,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             clearInterval(volumeInterval),
           );
           break;
-}
+        }
 
         case "cursorGlitch": {
           const originalCursor = globalThis.document.body.style.cursor;
@@ -2445,7 +2440,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             clearInterval(cursorInterval),
           );
           break;
-}
+        }
 
         case "zombieInvasion": {
           const invasionContainer = globalThis.document.createElement("div");
@@ -2575,7 +2570,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             clearInterval(growthInterval),
           );
           break;
-}
+        }
 
         case "buttonSwap": {
           const buttons = globalThis.document.querySelectorAll("button");
@@ -2596,7 +2591,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             });
           };
           break;
-}
+        }
 
         case "textScramble": {
           const textElements = globalThis.document.querySelectorAll(
@@ -2629,7 +2624,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             });
           };
           break;
-}
+        }
 
         case "mouseScaleDown": {
           const body = globalThis.document.body;
@@ -2667,7 +2662,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             body.style.transition = "";
           };
           break;
-}
+        }
 
         case "mouseScaleUp": {
           const bodyUp = globalThis.document.body;
@@ -2702,7 +2697,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             bodyUp.style.transition = "";
           };
           break;
-}
+        }
       }
 
       // Store cleanup function
@@ -2754,7 +2749,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         }, 800);
 
         // Play the signature voice line
-        SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatEternalDarknessSpeak"));
+        SuperDaemonInstance.merlinSpeak(
+          _t(editorInstance, "cheatEternalDarknessSpeak"),
+        );
 
         // Cleanup current effect but keep the system active
         if (effectCleanup) {
@@ -2913,9 +2910,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     HAXStore.toast(_t(editorInstance, "cheatYtmndActivated"));
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatYtmndSpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatYtmndSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -3079,9 +3074,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     HAXStore.toast(_t(editorInstance, "cheatGeocitiesActivated"));
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatGeocitiesSpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatGeocitiesSpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -3342,9 +3335,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     HAXStore.toast(_t(editorInstance, "cheatClippyActivated"));
     store.playSound("success");
-    SuperDaemonInstance.merlinSpeak(
-      _t(editorInstance, "cheatClippySpeak"),
-    );
+    SuperDaemonInstance.merlinSpeak(_t(editorInstance, "cheatClippySpeak"));
     SuperDaemonInstance.close();
   };
 
@@ -3642,9 +3633,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     globalThis.document.body.appendChild(gameOverlay);
 
-    HAXStore.toast(
-      _t(editorInstance, "cheatChickenButtActivated"),
-    );
+    HAXStore.toast(_t(editorInstance, "cheatChickenButtActivated"));
     store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
       _t(editorInstance, "cheatChickenButtSpeak"),

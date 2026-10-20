@@ -29,10 +29,7 @@ export class PromiseProgress extends PromiseProgressLite {
       super.styles,
       css`
         :host {
-          accent-color: var(
-            --ddd-theme-primary,
-            var(--ddd-theme-default-link)
-          );
+          accent-color: var(--ddd-theme-primary, var(--ddd-theme-default-link));
         }
       `,
     ];

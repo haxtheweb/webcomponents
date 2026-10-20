@@ -21,7 +21,9 @@ describe("a11y-media-youtube warm connections", () => {
     expect(appended.length).to.equal(4);
     expect(appended[0].rel).to.equal("preconnect");
     // hints were captured by the stub so no real connection was ever opened
-    expect(globalThis.document.querySelectorAll("link[rel=preconnect]").length).to.equal(0);
+    expect(
+      globalThis.document.querySelectorAll("link[rel=preconnect]").length,
+    ).to.equal(0);
   });
 });
 
@@ -156,7 +158,9 @@ describe("a11y-media-youtube lifecycle", () => {
     await sleep(60);
     const frame = el.querySelector("iframe");
     expect(frame).to.exist;
-    expect(frame.getAttribute("title")).to.equal("YouTube video player: My Video");
+    expect(frame.getAttribute("title")).to.equal(
+      "YouTube video player: My Video",
+    );
     expect(frame.getAttribute("aria-label")).to.equal(
       "YouTube video player: My Video",
     );

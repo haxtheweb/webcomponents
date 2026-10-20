@@ -339,7 +339,9 @@ describe("collection-list desktop responsiveness", () => {
     // lit template; calling html([string]) as a function is rejected by
     // lit-html because the strings array lacks a `raw` field (XSS guard).
     const el = await fixture(html`
-      <collection-list responsive-size="xl"> ${unsafeHTML(items)} </collection-list>
+      <collection-list responsive-size="xl">
+        ${unsafeHTML(items)}
+      </collection-list>
     `);
 
     expect(el).to.exist;

@@ -125,7 +125,11 @@ class HAXConfirmDialog extends I18NMixin(DDD) {
           min-width: 124px;
           color: var(--ddd-theme-default-white);
           background-color: var(--ddd-theme-default-skyBlue);
-          border: var(--ddd-border-size-xs) solid light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
+          border: var(--ddd-border-size-xs) solid
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            );
           border-radius: var(--ddd-radius-sm);
           font-family: var(--ddd-font-navigation, sans-serif);
           cursor: pointer;

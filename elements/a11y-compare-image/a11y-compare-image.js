@@ -78,10 +78,7 @@ class a11yCompareImage extends SimpleColors {
           position: absolute;
           width: 1px;
           outline: 1px solid
-            var(
-              --simple-range-input-bg,
-              var(--ddd-theme-default-accent, grey)
-            );
+            var(--simple-range-input-bg, var(--ddd-theme-default-accent, grey));
           background-color: var(
             --simple-range-input-color,
             var(--ddd-theme-default-limestoneGray, grey)
@@ -255,8 +252,8 @@ class a11yCompareImage extends SimpleColors {
     // This is the layer number that is current on top.
     this.activeLayer = active + 1;
     // This is the slider percent when upper image is at 0.
-        // How far we are into the current section.
-        /* Percentage into the current section
+    // How far we are into the current section.
+    /* Percentage into the current section
     if (this.position === 100 && relativePosition === 0) {
     } else {
       this.position = (relativePosition * 100) / section || 0;
@@ -273,10 +270,7 @@ class a11yCompareImage extends SimpleColors {
       this._updateMarkers(total);
     }
     if (wipe && this.opacity === false) {
-      wipe.style.setProperty(
-        "--a11y-compare-image-width",
-        this.position + "%",
-      );
+      wipe.style.setProperty("--a11y-compare-image-width", this.position + "%");
       wipe.style.setProperty("--a11y-compare-image-opacity", 1);
     } else if (wipe) {
       wipe.style.setProperty("--a11y-compare-image-width", "100%");

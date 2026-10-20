@@ -265,7 +265,8 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
             display: flex;
             padding: 20px 20px 20px 50px;
             opacity: 0;
-            transition: opacity var(--ddd-duration-normal, 0.3s) delay var(--ddd-duration-normal, 0.3s);
+            transition: opacity var(--ddd-duration-normal, 0.3s) delay
+              var(--ddd-duration-normal, 0.3s);
           }
 
           :host(:not([timeline-size="xs"]))
@@ -561,7 +562,9 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
     // dark property drives color-scheme so the light-dark() token pairs and
     // the SimpleColors accent shades stay in sync
     if (globalThis.matchMedia) {
-      this.__schemeQuery = globalThis.matchMedia("(prefers-color-scheme: dark)");
+      this.__schemeQuery = globalThis.matchMedia(
+        "(prefers-color-scheme: dark)",
+      );
       this.__schemeLocked = this.hasAttribute("dark");
       if (!this.__schemeLocked) {
         this.dark = this.__schemeQuery.matches;

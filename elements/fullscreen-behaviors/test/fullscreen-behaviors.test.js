@@ -15,7 +15,7 @@ describe("fullscreen-behaviors test", () => {
   });
 });
 
-describe('fullscreen-behaviors core behavior', () => {
+describe("fullscreen-behaviors core behavior", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
@@ -23,63 +23,61 @@ describe('fullscreen-behaviors core behavior', () => {
     );
   });
 
-  it('reflects the fullscreen boolean properties as attributes', async () => {
+  it("reflects the fullscreen boolean properties as attributes", async () => {
     expect(element.fullscreen).to.be.false;
-    expect(element.hasAttribute('fullscreen')).to.be.false;
-    expect(typeof element.fullscreenEnabled).to.equal('boolean');
+    expect(element.hasAttribute("fullscreen")).to.be.false;
+    expect(typeof element.fullscreenEnabled).to.equal("boolean");
     element.fullscreen = true;
     await element.updateComplete;
-    expect(element.hasAttribute('fullscreen')).to.be.true;
-    expect(element.getAttribute('fullscreen')).to.equal('');
+    expect(element.hasAttribute("fullscreen")).to.be.true;
+    expect(element.getAttribute("fullscreen")).to.equal("");
     element.fullscreen = false;
     await element.updateComplete;
-    expect(element.hasAttribute('fullscreen')).to.be.false;
+    expect(element.hasAttribute("fullscreen")).to.be.false;
   });
 
-  it('fullscreenTarget defaults to the element itself', () => {
+  it("fullscreenTarget defaults to the element itself", () => {
     expect(element.fullscreenTarget === element).to.be.true;
   });
 
-  it('_handleFullscreenChange tracks the document fullscreen element', async () => {
+  it("_handleFullscreenChange tracks the document fullscreen element", async () => {
     element._handleFullscreenChange({});
     expect(element.fullscreen).to.be.false;
-    Object.defineProperty(globalThis.document, 'fullscreenElement', {
+    Object.defineProperty(globalThis.document, "fullscreenElement", {
       get: () => element,
       configurable: true,
     });
     try {
       // the document-level handler wired in the constructor runs this
-      globalThis.document.dispatchEvent(new Event('fullscreenchange'));
+      globalThis.document.dispatchEvent(new Event("fullscreenchange"));
       await element.updateComplete;
       expect(element.fullscreen).to.be.true;
-      expect(element.hasAttribute('fullscreen')).to.be.true;
+      expect(element.hasAttribute("fullscreen")).to.be.true;
       // element-level handler is wired as well
-      Object.defineProperty(globalThis.document, 'fullscreenElement', {
+      Object.defineProperty(globalThis.document, "fullscreenElement", {
         get: () => null,
         configurable: true,
       });
-      element.dispatchEvent(new Event('fullscreenchange'));
+      element.dispatchEvent(new Event("fullscreenchange"));
       await element.updateComplete;
       expect(element.fullscreen).to.be.false;
-      expect(element.hasAttribute('fullscreen')).to.be.false;
+      expect(element.hasAttribute("fullscreen")).to.be.false;
     } finally {
       delete globalThis.document.fullscreenElement;
     }
   });
 
-  it('preserves existing document-level fullscreen handlers', async () => {
+  it("preserves existing document-level fullscreen handlers", async () => {
     const sentinel = () => {};
     globalThis.document.onfullscreenchange = sentinel;
-    await fixture(
-      html`<fullscreen-behaviors></fullscreen-behaviors>`,
-    );
+    await fixture(html`<fullscreen-behaviors></fullscreen-behaviors>`);
     // fixed: the document-level handler is wired with addEventListener so
     // the document.onfullscreenchange handler slot is never clobbered
     expect(globalThis.document.onfullscreenchange === sentinel).to.be.true;
     globalThis.document.onfullscreenchange = null;
   });
 
-  it('multiple instances independently track document fullscreen state', async () => {
+  it("multiple instances independently track document fullscreen state", async () => {
     const el1 = await fixture(
       html`<fullscreen-behaviors></fullscreen-behaviors>`,
     );
@@ -88,27 +86,27 @@ describe('fullscreen-behaviors core behavior', () => {
     );
     el2.fullscreen = true;
     await el2.updateComplete;
-    Object.defineProperty(globalThis.document, 'fullscreenElement', {
+    Object.defineProperty(globalThis.document, "fullscreenElement", {
       get: () => el1,
       configurable: true,
     });
     try {
-      globalThis.document.dispatchEvent(new Event('fullscreenchange'));
+      globalThis.document.dispatchEvent(new Event("fullscreenchange"));
       await el1.updateComplete;
       await el2.updateComplete;
       // both listeners fired: el1 is the fullscreen element, while el2's own
       // listener flipped it back off since it is not the fullscreen element
       expect(el1.fullscreen).to.be.true;
       expect(el2.fullscreen).to.be.false;
-      expect(el1.hasAttribute('fullscreen')).to.be.true;
-      expect(el2.hasAttribute('fullscreen')).to.be.false;
+      expect(el1.hasAttribute("fullscreen")).to.be.true;
+      expect(el2.hasAttribute("fullscreen")).to.be.false;
     } finally {
       delete globalThis.document.fullscreenElement;
     }
   });
 });
 
-describe('fullscreen-behaviors toggleFullscreen', () => {
+describe("fullscreen-behaviors toggleFullscreen", () => {
   let element;
   let requested;
   let exited;
@@ -122,7 +120,7 @@ describe('fullscreen-behaviors toggleFullscreen', () => {
     element.requestFullscreen = () => {
       requested++;
     };
-    Object.defineProperty(globalThis.document, 'exitFullscreen', {
+    Object.defineProperty(globalThis.document, "exitFullscreen", {
       value: () => {
         exited++;
       },
@@ -136,25 +134,25 @@ describe('fullscreen-behaviors toggleFullscreen', () => {
     delete globalThis.document.fullscreenElement;
   });
 
-  it('requests fullscreen when mode is true and not already fullscreen', () => {
+  it("requests fullscreen when mode is true and not already fullscreen", () => {
     element.toggleFullscreen(true);
     expect(requested).to.equal(1);
     expect(exited).to.equal(0);
   });
 
-  it('exits fullscreen when mode is false', () => {
+  it("exits fullscreen when mode is false", () => {
     element.toggleFullscreen(false);
     expect(exited).to.equal(1);
     expect(requested).to.equal(0);
   });
 
-  it('defaults mode from the document fullscreen state', () => {
+  it("defaults mode from the document fullscreen state", () => {
     // not fullscreen so the default mode is true
     element.toggleFullscreen();
     expect(requested).to.equal(1);
     expect(exited).to.equal(0);
     // already fullscreen as this element so the default mode is false
-    Object.defineProperty(globalThis.document, 'fullscreenElement', {
+    Object.defineProperty(globalThis.document, "fullscreenElement", {
       get: () => element,
       configurable: true,
     });
@@ -163,8 +161,8 @@ describe('fullscreen-behaviors toggleFullscreen', () => {
     expect(requested).to.equal(1);
   });
 
-  it('is a no-op when already fullscreen with mode true', () => {
-    Object.defineProperty(globalThis.document, 'fullscreenElement', {
+  it("is a no-op when already fullscreen with mode true", () => {
+    Object.defineProperty(globalThis.document, "fullscreenElement", {
       get: () => element,
       configurable: true,
     });

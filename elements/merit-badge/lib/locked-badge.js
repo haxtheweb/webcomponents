@@ -48,7 +48,8 @@ class LockedBadge extends I18NMixin(LitElement) {
               var(--ddd-theme-default-coalyGray),
               var(--ddd-theme-default-white)
             );
-          box-shadow: 0 0 0 4px
+          box-shadow:
+            0 0 0 4px
               light-dark(
                 var(--ddd-theme-default-limestoneGray),
                 var(--ddd-theme-default-slateGray)

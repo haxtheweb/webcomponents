@@ -16,7 +16,7 @@
               "name": "siteModalClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Delay importing site-search until we click to open it directly"
@@ -33,7 +33,7 @@
               "name": "toggleDrawer",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -42,9 +42,17 @@
               "name": "_closeDrawer",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, skipToContent: \"Skip to content\", toggleSiteMenu: \"Toggle site menu\", searchSite: \"Search site\", search: \"Search\", siteNavigation: \"Site navigation\", }"
             },
             {
               "kind": "field",
@@ -61,6 +69,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "attribute": "opened",
               "reflects": true
             }
@@ -71,6 +80,7 @@
               "type": {
                 "text": "boolean"
               },
+              "default": "false",
               "fieldName": "opened"
             }
           ],

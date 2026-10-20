@@ -62,9 +62,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
   }
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer"
-        >${this.t.skipToContent}</a
-      >
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="logo-wrapper">
           <site-region name="header"></site-region>

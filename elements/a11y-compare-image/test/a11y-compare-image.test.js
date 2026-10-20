@@ -1,48 +1,48 @@
-import { fixture, expect, html } from '@open-wc/testing'
-import '../a11y-compare-image.js'
+import { fixture, expect, html } from "@open-wc/testing";
+import "../a11y-compare-image.js";
 
 const TOP =
-  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7?t=top'
+  "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7?t=top";
 const BOTTOM =
-  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7?t=bottom'
+  "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7?t=bottom";
 const MID =
-  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7?t=mid'
+  "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7?t=mid";
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-describe('a11y-compare-image rendering', () => {
-  it('renders the figure, layers and labeled slider', async () => {
+describe("a11y-compare-image rendering", () => {
+  it("renders the figure, layers and labeled slider", async () => {
     const el = await fixture(
       html`<a11y-compare-image label="Compare the images">
         <img slot="bottom" src="${BOTTOM}" alt="bottom image" />
         <img slot="top" src="${TOP}" alt="top image" />
       </a11y-compare-image>`,
-    )
-    await el.updateComplete
-    expect(el.shadowRoot.querySelector('figure')).to.exist
-    expect(
-      el.shadowRoot.querySelector('figcaption slot[name="heading"]'),
-    ).to.exist
-    expect(el.shadowRoot.querySelector('#description')).to.exist
-    expect(el.shadowRoot.querySelector('#container')).to.exist
-    expect(el.shadowRoot.querySelector('#layer')).to.exist
-    expect(el.shadowRoot.querySelector('#placeholder')).to.exist
+    );
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("figure")).to.exist;
+    expect(el.shadowRoot.querySelector('figcaption slot[name="heading"]')).to
+      .exist;
+    expect(el.shadowRoot.querySelector("#description")).to.exist;
+    expect(el.shadowRoot.querySelector("#container")).to.exist;
+    expect(el.shadowRoot.querySelector("#layer")).to.exist;
+    expect(el.shadowRoot.querySelector("#placeholder")).to.exist;
     // the top slot is hidden in the shadow DOM; layers are backgrounds
-    expect(el.shadowRoot.querySelector('slot[name="top"]').hasAttribute('hidden'))
-      .to.be.true
-    const slider = el.shadowRoot.querySelector('#slider')
-    expect(slider.getAttribute('label')).to.equal('Compare the images')
-    expect(slider.getAttribute('accent-color')).to.equal('blue')
-    expect(slider.getAttribute('value')).to.equal('50')
+    expect(
+      el.shadowRoot.querySelector('slot[name="top"]').hasAttribute("hidden"),
+    ).to.be.true;
+    const slider = el.shadowRoot.querySelector("#slider");
+    expect(slider.getAttribute("label")).to.equal("Compare the images");
+    expect(slider.getAttribute("accent-color")).to.equal("blue");
+    expect(slider.getAttribute("value")).to.equal("50");
     // the default enticement knob is off
-    expect(el.dataPulse).to.be.false
-    expect(el.shadowRoot.querySelector('.knob-enticement')).to.equal(null)
+    expect(el.dataPulse).to.be.false;
+    expect(el.shadowRoot.querySelector(".knob-enticement")).to.equal(null);
     // default position is centered and reflected
-    expect(el.position).to.equal(50)
-    expect(el.hasAttribute('position')).to.be.true
-  })
+    expect(el.position).to.equal(50);
+    expect(el.hasAttribute("position")).to.be.true;
+  });
 
-  it('passes the a11y audit', async () => {
+  it("passes the a11y audit", async () => {
     const el = await fixture(
       html`<a11y-compare-image label="Compare the images">
         <h2 slot="heading">A comparison</h2>
@@ -50,198 +50,208 @@ describe('a11y-compare-image rendering', () => {
         <img slot="bottom" src="${BOTTOM}" alt="bottom image" />
         <img slot="top" src="${TOP}" alt="top image" />
       </a11y-compare-image>`,
-    )
-    await expect(el).shadowDom.to.be.accessible()
-  })
-})
+    );
+    await expect(el).shadowDom.to.be.accessible();
+  });
+});
 
-describe('a11y-compare-image sliding', () => {
-  it('wipes the top layer across the bottom at the position', async () => {
+describe("a11y-compare-image sliding", () => {
+  it("wipes the top layer across the bottom at the position", async () => {
     const el = await fixture(
       html`<a11y-compare-image>
         <img slot="bottom" src="${BOTTOM}" alt="bottom image" />
         <img slot="top" src="${TOP}" alt="top image" />
       </a11y-compare-image>`,
-    )
-    await el.updateComplete
-    const container = el.shadowRoot.querySelector('#container')
-    const wipe = el.shadowRoot.querySelector('#wipe')
-    const input = el.shadowRoot.querySelector('#input')
+    );
+    await el.updateComplete;
+    const container = el.shadowRoot.querySelector("#container");
+    const wipe = el.shadowRoot.querySelector("#wipe");
+    const input = el.shadowRoot.querySelector("#input");
     // firstUpdated slides to the default position
-    expect(el.__upper).to.equal(TOP)
-    expect(el.__lower).to.equal(BOTTOM)
-    expect(el.activeLayer).to.equal(1)
+    expect(el.__upper).to.equal(TOP);
+    expect(el.__lower).to.equal(BOTTOM);
+    expect(el.activeLayer).to.equal(1);
     // the slider position marker on #input survives re-renders
-    expect(input.style.getPropertyValue('--a11y-compare-image-position')).to
-      .equal('50%')
+    expect(
+      input.style.getPropertyValue("--a11y-compare-image-position"),
+    ).to.equal("50%");
     // two layers: one transition, so the single boundary marker at 100%
     // renders (hidden, since the 100% boundary sits at the far edge)
-    expect(el.__markers).to.deep.equal([100])
-    const markers = el.shadowRoot.querySelectorAll('.marker')
-    expect(markers.length).to.equal(1)
-    expect(markers[0].hasAttribute('hidden')).to.be.true
+    expect(el.__markers).to.deep.equal([100]);
+    const markers = el.shadowRoot.querySelectorAll(".marker");
+    expect(markers.length).to.equal(1);
+    expect(markers[0].hasAttribute("hidden")).to.be.true;
     // the container shows the lower layer as its background
-    expect(container.style.backgroundImage).to.include('t=bottom')
+    expect(container.style.backgroundImage).to.include("t=bottom");
     // the wipe geometry custom properties live on #wipe, which the template
     // never re-commits, so they persist from the very first slide (the
     // re-committed style attribute on #container used to wipe them)
-    expect(wipe.style.getPropertyValue('--a11y-compare-image-width')).to
-      .equal('50%')
-    expect(wipe.style.getPropertyValue('--a11y-compare-image-opacity')).to
-      .equal('1')
-  })
+    expect(wipe.style.getPropertyValue("--a11y-compare-image-width")).to.equal(
+      "50%",
+    );
+    expect(
+      wipe.style.getPropertyValue("--a11y-compare-image-opacity"),
+    ).to.equal("1");
+  });
 
-  it('sets the wipe width on slides that keep the same layers', async () => {
+  it("sets the wipe width on slides that keep the same layers", async () => {
     const el = await fixture(
       html`<a11y-compare-image>
         <img slot="bottom" src="${BOTTOM}" alt="bottom image" />
         <img slot="top" src="${TOP}" alt="top image" />
       </a11y-compare-image>`,
-    )
-    await el.updateComplete
-    const wipe = el.shadowRoot.querySelector('#wipe')
+    );
+    await el.updateComplete;
+    const wipe = el.shadowRoot.querySelector("#wipe");
     // a slide within the same section keeps __lower unchanged
-    el.position = 25
-    await el.updateComplete
-    expect(wipe.style.getPropertyValue('--a11y-compare-image-width')).to
-      .equal('25%')
-    expect(wipe.style.getPropertyValue('--a11y-compare-image-opacity')).to
-      .equal('1')
-  })
+    el.position = 25;
+    await el.updateComplete;
+    expect(wipe.style.getPropertyValue("--a11y-compare-image-width")).to.equal(
+      "25%",
+    );
+    expect(
+      wipe.style.getPropertyValue("--a11y-compare-image-opacity"),
+    ).to.equal("1");
+  });
 
-  it('fades the top layer in opacity mode', async () => {
+  it("fades the top layer in opacity mode", async () => {
     const el = await fixture(
       html`<a11y-compare-image opacity>
         <img slot="bottom" src="${BOTTOM}" alt="bottom image" />
         <img slot="top" src="${TOP}" alt="top image" />
       </a11y-compare-image>`,
-    )
-    await el.updateComplete
-    const wipe = el.shadowRoot.querySelector('#wipe')
-    el.position = 60
-    await el.updateComplete
+    );
+    await el.updateComplete;
+    const wipe = el.shadowRoot.querySelector("#wipe");
+    el.position = 60;
+    await el.updateComplete;
     // opacity mode keeps the top layer full width and fades it instead
-    expect(wipe.style.getPropertyValue('--a11y-compare-image-width')).to
-      .equal('100%')
-    expect(wipe.style.getPropertyValue('--a11y-compare-image-opacity')).to
-      .equal('0.6')
-  })
+    expect(wipe.style.getPropertyValue("--a11y-compare-image-width")).to.equal(
+      "100%",
+    );
+    expect(
+      wipe.style.getPropertyValue("--a11y-compare-image-opacity"),
+    ).to.equal("0.6");
+  });
 
-  it('slides between three layers and recomputes markers', async () => {
+  it("slides between three layers and recomputes markers", async () => {
     const el = await fixture(
       html`<a11y-compare-image>
         <img slot="bottom" src="${BOTTOM}" alt="bottom image" />
         <img slot="top" src="${MID}" alt="middle image" />
         <img slot="top" src="${TOP}" alt="top image" />
       </a11y-compare-image>`,
-    )
-    await el.updateComplete
+    );
+    await el.updateComplete;
     // three layers: two transitions, markers at 50 and 100
-    expect(el.__markers).to.deep.equal([50, 100])
-    let markers = el.shadowRoot.querySelectorAll('.marker')
-    expect(markers.length).to.equal(2)
-    expect(markers[0].hasAttribute('hidden')).to.be.false
-    expect(markers[1].hasAttribute('hidden')).to.be.true
+    expect(el.__markers).to.deep.equal([50, 100]);
+    let markers = el.shadowRoot.querySelectorAll(".marker");
+    expect(markers.length).to.equal(2);
+    expect(markers[0].hasAttribute("hidden")).to.be.false;
+    expect(markers[1].hasAttribute("hidden")).to.be.true;
     // position 75 selects the middle layer as upper and lower
-    el.position = 75
-    await el.updateComplete
-    expect(el.activeLayer).to.equal(2)
-    expect(el.__upper).to.equal(TOP)
-    expect(el.__lower).to.equal(MID)
+    el.position = 75;
+    await el.updateComplete;
+    expect(el.activeLayer).to.equal(2);
+    expect(el.__upper).to.equal(TOP);
+    expect(el.__lower).to.equal(MID);
     // the wipe geometry persists through the layer transition (__lower
     // changed BOTTOM -> MID, which used to wipe the custom properties)
-    const wipe = el.shadowRoot.querySelector('#wipe')
-    expect(wipe.style.getPropertyValue('--a11y-compare-image-width')).to
-      .equal('75%')
-    expect(wipe.style.getPropertyValue('--a11y-compare-image-opacity')).to
-      .equal('1')
+    const wipe = el.shadowRoot.querySelector("#wipe");
+    expect(wipe.style.getPropertyValue("--a11y-compare-image-width")).to.equal(
+      "75%",
+    );
+    expect(
+      wipe.style.getPropertyValue("--a11y-compare-image-opacity"),
+    ).to.equal("1");
     // position 100 collapses to the final layer on top
-    el.position = 100
-    await el.updateComplete
-    expect(el.activeLayer).to.equal(3)
-    expect(el.__upper).to.equal(TOP)
-    expect(el.__lower).to.equal(TOP)
+    el.position = 100;
+    await el.updateComplete;
+    expect(el.activeLayer).to.equal(3);
+    expect(el.__upper).to.equal(TOP);
+    expect(el.__lower).to.equal(TOP);
     // markers stay stable across slides
-    expect(el.__markers).to.deep.equal([50, 100])
-    markers = el.shadowRoot.querySelectorAll('.marker')
-    expect(markers.length).to.equal(2)
-  })
+    expect(el.__markers).to.deep.equal([50, 100]);
+    markers = el.shadowRoot.querySelectorAll(".marker");
+    expect(markers.length).to.equal(2);
+  });
 
-  it('relays slider value changes into the position', async () => {
+  it("relays slider value changes into the position", async () => {
     const el = await fixture(
       html`<a11y-compare-image>
         <img slot="bottom" src="${BOTTOM}" alt="bottom image" />
         <img slot="top" src="${TOP}" alt="top image" />
       </a11y-compare-image>`,
-    )
-    await el.updateComplete
-    const slider = el.shadowRoot.querySelector('#slider')
+    );
+    await el.updateComplete;
+    const slider = el.shadowRoot.querySelector("#slider");
     slider.dispatchEvent(
-      new CustomEvent('immediate-value-changed', {
+      new CustomEvent("immediate-value-changed", {
         bubbles: true,
         composed: true,
         detail: { value: 25 },
       }),
-    )
-    await el.updateComplete
-    expect(el.position).to.equal(25)
+    );
+    await el.updateComplete;
+    expect(el.position).to.equal(25);
     expect(
       el.shadowRoot
-        .querySelector('#wipe')
-        .style.getPropertyValue('--a11y-compare-image-width'),
-    ).to.equal('25%')
-    expect(el.shadowRoot.querySelector('#slider').getAttribute('value')).to
-      .equal('25')
-  })
-})
+        .querySelector("#wipe")
+        .style.getPropertyValue("--a11y-compare-image-width"),
+    ).to.equal("25%");
+    expect(
+      el.shadowRoot.querySelector("#slider").getAttribute("value"),
+    ).to.equal("25");
+  });
+});
 
-describe('a11y-compare-image enticement and colors', () => {
-  it('shows the pulse knob until first interaction', async () => {
+describe("a11y-compare-image enticement and colors", () => {
+  it("shows the pulse knob until first interaction", async () => {
     const el = await fixture(
       html`<a11y-compare-image data-pulse>
         <img slot="bottom" src="${BOTTOM}" alt="bottom image" />
         <img slot="top" src="${TOP}" alt="top image" />
       </a11y-compare-image>`,
-    )
-    await el.updateComplete
-    expect(el.dataPulse).to.be.true
-    expect(el.hasAttribute('data-pulse')).to.be.true
-    expect(el.shadowRoot.querySelector('.knob-enticement')).to.exist
+    );
+    await el.updateComplete;
+    expect(el.dataPulse).to.be.true;
+    expect(el.hasAttribute("data-pulse")).to.be.true;
+    expect(el.shadowRoot.querySelector(".knob-enticement")).to.exist;
     // a mouseenter dismisses the enticement
-    el.dispatchEvent(new Event('mouseenter', { bubbles: true }))
-    await el.updateComplete
-    expect(el.dataPulse).to.be.false
-    expect(el.shadowRoot.querySelector('.knob-enticement')).to.equal(null)
-  })
+    el.dispatchEvent(new Event("mouseenter", { bubbles: true }));
+    await el.updateComplete;
+    expect(el.dataPulse).to.be.false;
+    expect(el.shadowRoot.querySelector(".knob-enticement")).to.equal(null);
+  });
 
-  it('dismisses the pulse knob on focusin as well', async () => {
+  it("dismisses the pulse knob on focusin as well", async () => {
     const el = await fixture(
       html`<a11y-compare-image data-pulse>
         <img slot="bottom" src="${BOTTOM}" alt="bottom image" />
         <img slot="top" src="${TOP}" alt="top image" />
       </a11y-compare-image>`,
-    )
-    await el.updateComplete
-    expect(el.shadowRoot.querySelector('.knob-enticement')).to.exist
-    el.dispatchEvent(new Event('focusin', { bubbles: true }))
-    await el.updateComplete
-    expect(el.shadowRoot.querySelector('.knob-enticement')).to.equal(null)
-  })
+    );
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".knob-enticement")).to.exist;
+    el.dispatchEvent(new Event("focusin", { bubbles: true }));
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".knob-enticement")).to.equal(null);
+  });
 
-  it('passes accent color and dark mode to the slider', async () => {
+  it("passes accent color and dark mode to the slider", async () => {
     const el = await fixture(
       html`<a11y-compare-image accent-color="green">
         <img slot="bottom" src="${BOTTOM}" alt="bottom image" />
         <img slot="top" src="${TOP}" alt="top image" />
       </a11y-compare-image>`,
-    )
-    await el.updateComplete
-    const slider = el.shadowRoot.querySelector('#slider')
-    expect(slider.getAttribute('accent-color')).to.equal('green')
-    expect(slider.hasAttribute('dark')).to.be.false
-    el.dark = true
-    await el.updateComplete
-    expect(el.shadowRoot.querySelector('#slider').hasAttribute('dark')).to.be
-      .true
-  })
-})
+    );
+    await el.updateComplete;
+    const slider = el.shadowRoot.querySelector("#slider");
+    expect(slider.getAttribute("accent-color")).to.equal("green");
+    expect(slider.hasAttribute("dark")).to.be.false;
+    el.dark = true;
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("#slider").hasAttribute("dark")).to.be
+      .true;
+  });
+});

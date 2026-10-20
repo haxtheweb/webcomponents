@@ -34,7 +34,9 @@ describe("grade-book-student-block", () => {
     expect(el.shadowRoot.innerHTML.includes("Alice Alvarez")).to.equal(true);
     expect(el.shadowRoot.innerHTML.includes("abc123")).to.equal(true);
     expect(el.shadowRoot.innerHTML.includes("Alice")).to.equal(true);
-    const mail = el.shadowRoot.querySelector('a[href="mailto:alice@example.com"]');
+    const mail = el.shadowRoot.querySelector(
+      'a[href="mailto:alice@example.com"]',
+    );
     expect(mail).to.exist;
     expect(el.shadowRoot.innerHTML.includes("great with typography")).to.equal(
       true,

@@ -18,8 +18,8 @@ class SimpleCameraSnap extends HTMLElement {
           context: this,
           namespace: "simple-fields",
           localesPath:
-            new URL("../locales/simple-fields.es.json", import.meta.url)
-              .href + "/../",
+            new URL("../locales/simple-fields.es.json", import.meta.url).href +
+            "/../",
           updateCallback: "render",
         },
       }),

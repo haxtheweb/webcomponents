@@ -832,9 +832,8 @@ describe("TaggingQuestion gap coverage", () => {
     await el.updateComplete;
 
     expect(el.isCorrect()).to.be.true;
-    expect(
-      el.shadowRoot.querySelector('slot[name="feedbackCorrect"]'),
-    ).to.exist;
+    expect(el.shadowRoot.querySelector('slot[name="feedbackCorrect"]')).to
+      .exist;
     expect(el.shadowRoot.querySelector('slot[name="evidence"]')).to.exist;
     const evidenceHeading = Array.from(
       el.shadowRoot.querySelectorAll("h4"),
@@ -862,9 +861,8 @@ describe("TaggingQuestion gap coverage", () => {
     await el.updateComplete;
 
     expect(el.isCorrect()).to.be.false;
-    expect(
-      el.shadowRoot.querySelector('slot[name="feedbackIncorrect"]'),
-    ).to.exist;
+    expect(el.shadowRoot.querySelector('slot[name="feedbackIncorrect"]')).to
+      .exist;
     expect(el.shadowRoot.querySelector('slot[name="hint"]')).to.exist;
     const hintHeading = Array.from(el.shadowRoot.querySelectorAll("h4")).find(
       (h) => h.textContent.trim() === "Need a hint?",

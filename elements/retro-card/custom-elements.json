@@ -39,7 +39,7 @@
               "name": "_hoverStateOff",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -48,7 +48,7 @@
               "name": "_hoverStateOn",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },

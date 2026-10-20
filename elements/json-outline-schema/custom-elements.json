@@ -157,7 +157,7 @@
               "name": "_toggleDebug",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Allow toggling of debug mode which visualizes the outline and writes it to console."
@@ -174,11 +174,7 @@
             },
             {
               "kind": "field",
-              "name": "file",
-              "type": {
-                "text": "null"
-              },
-              "default": "null"
+              "name": "file"
             },
             {
               "kind": "field",
@@ -363,6 +359,14 @@
                 "text": "boolean"
               },
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "__pending",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
             },
             {
               "kind": "field",
@@ -563,7 +567,7 @@
               "name": "readLocation",
               "parameters": [
                 {
-                  "name": "basePath",
+                  "name": "_basePath",
                   "default": "\"\""
                 }
               ],
@@ -577,7 +581,7 @@
                   "name": "body"
                 },
                 {
-                  "name": "basePath",
+                  "name": "_basePath",
                   "default": "\"\""
                 }
               ],

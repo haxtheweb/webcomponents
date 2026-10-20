@@ -85,7 +85,11 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         :host([correct]) div.card {
           border-color: var(--ddd-theme-default-opportunityGreen);
           box-shadow: 0 0 8px
-            color-mix(in srgb, var(--ddd-theme-default-opportunityGreen) 30%, transparent);
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-opportunityGreen) 30%,
+              transparent
+            );
         }
 
         simple-icon-button-lite {

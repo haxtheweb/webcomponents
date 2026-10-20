@@ -47,9 +47,7 @@ describe("CountUp library (lib/countup.js)", () => {
   it("flags a missing target as an error and start is a no-op", async () => {
     const cu = new CountUp("does-not-exist-anywhere", 5);
     expect(cu.el).to.equal(null);
-    expect(cu.error).to.equal(
-      "[CountUp] target is null or undefined",
-    );
+    expect(cu.error).to.equal("[CountUp] target is null or undefined");
     cu.start();
     await flush(100);
     expect(cu.paused).to.equal(true);

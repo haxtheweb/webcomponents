@@ -243,7 +243,9 @@ describe("awesome-explosion test", () => {
         "awesome-explosion-sound-enabled",
         "false",
       );
-      const elOff = await fixture(html`<awesome-explosion></awesome-explosion>`);
+      const elOff = await fixture(
+        html`<awesome-explosion></awesome-explosion>`,
+      );
       expect(elOff.soundEnabled).to.be.false;
       globalThis.localStorage.setItem(
         "awesome-explosion-sound-enabled",

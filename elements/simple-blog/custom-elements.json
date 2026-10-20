@@ -37,10 +37,18 @@
               "name": "_goBack",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Reset the active item to reset state"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, skipToContent: \"Skip to content\", backToBlog: \"Back to blog\", backToListing: \"Back to listing\", }"
             },
             {
               "kind": "field",
@@ -65,6 +73,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "SimpleColorsSuper",
               "package": "@haxtheweb/simple-colors/simple-colors.js"
@@ -130,10 +142,18 @@
               "name": "_backButtonTap",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Fire event to unset the global activeItem."
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, backToList: \"Back to list\", }"
             },
             {
               "kind": "field",
@@ -261,6 +281,12 @@
               },
               "default": "\"\"",
               "fieldName": "nextTitle"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {
@@ -492,7 +518,7 @@
               "name": "tapEventOn",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "special handling for taps on the thing"
@@ -502,7 +528,7 @@
               "name": "tapEventOff",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Hover off stop showing the deeper shadow."
@@ -687,7 +713,7 @@
               "name": "_scrollListener",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Scroll event listener to do image effects."
@@ -700,7 +726,7 @@
                   "name": "newValue"
                 },
                 {
-                  "name": "oldValue"
+                  "name": "_oldValue"
                 }
               ],
               "description": "image has changed, ensure we set padding appropriately."

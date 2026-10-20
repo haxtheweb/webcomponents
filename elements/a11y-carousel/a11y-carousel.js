@@ -88,10 +88,8 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
             align-items: flex-end;
           }
           a11y-carousel-button.button {
-            flex: 0 0 var(
-              --a11y-carousel-button-width,
-              var(--ddd-spacing-10, 40px)
-            );
+            flex: 0 0
+              var(--a11y-carousel-button-width, var(--ddd-spacing-10, 40px));
             height: var(--a11y-carousel-button-height, 10px);
             margin: var(
               --a11y-carousel-button-margin,

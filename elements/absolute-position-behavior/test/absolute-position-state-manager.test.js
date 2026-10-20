@@ -61,7 +61,7 @@ describe("AbsolutePositionStateManager direct lib import", () => {
     });
 
     it("loadElement does not duplicate existing element", () => {
-            manager.loadElement(el);
+      manager.loadElement(el);
       manager.loadElement(el);
       expect(manager.elements.filter((e) => e === el).length).to.equal(1);
     });
@@ -264,9 +264,7 @@ describe("AbsolutePositionStateManager direct lib import", () => {
           </absolute-position-behavior>
         </div>
       `);
-      const el = nonStickyContainer.querySelector(
-        "absolute-position-behavior",
-      );
+      const el = nonStickyContainer.querySelector("absolute-position-behavior");
       await el.updateComplete;
       // Ensure no sticky elements
       manager.elements.forEach((e) => {

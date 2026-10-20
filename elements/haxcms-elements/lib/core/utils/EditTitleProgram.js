@@ -43,7 +43,10 @@ export const createEditTitleProgram = (context) => {
     if (!input || input.trim() === "") {
       if (currentTitle) {
         results.push({
-          title: _t(context, "saveTitleValue").replace("{title}", () => currentTitle),
+          title: _t(context, "saveTitleValue").replace(
+            "{title}",
+            () => currentTitle,
+          ),
           icon: "icons:check",
           tags: ["confirm", "save"],
           value: {

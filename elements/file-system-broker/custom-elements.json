@@ -314,6 +314,11 @@
             },
             {
               "kind": "method",
+              "name": "__flushDocxReadQueue",
+              "description": "Run a queued conversion through mammoth now that it is loaded"
+            },
+            {
+              "kind": "method",
               "name": "__toHTML",
               "parameters": [
                 {
@@ -361,6 +366,14 @@
                 "text": "string"
               },
               "default": "\"mammoth/\""
+            },
+            {
+              "kind": "field",
+              "name": "docxReadQueue",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
             },
             {
               "kind": "method",
@@ -787,7 +800,7 @@
                   "name": "workbook"
                 },
                 {
-                  "name": "filename"
+                  "name": "_filename"
                 }
               ]
             },

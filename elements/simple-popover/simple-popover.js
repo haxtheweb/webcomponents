@@ -47,7 +47,7 @@ class SimplePopover extends AbsolutePositionBehavior {
         type: String,
         reflect: true,
         attribute: "aria-label",
-      }
+      },
     };
   }
 

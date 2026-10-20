@@ -25,10 +25,25 @@
             },
             {
               "kind": "method",
-              "name": "_playSound",
+              "name": "_updateAriaLabel",
+              "description": "Keep the accessible name in sync with the visible slotted text so the\ntwo never mismatch (label-content-name-mismatch)."
+            },
+            {
+              "kind": "method",
+              "name": "_keyDown",
               "parameters": [
                 {
                   "name": "e"
+                }
+              ],
+              "description": "Enter and Space activate the horn like a native button would."
+            },
+            {
+              "kind": "method",
+              "name": "_playSound",
+              "parameters": [
+                {
+                  "name": "_e"
                 }
               ],
               "description": "Play the sound effect."
@@ -36,6 +51,14 @@
             {
               "kind": "field",
               "name": "template"
+            },
+            {
+              "kind": "field",
+              "name": "__playSoundBound"
+            },
+            {
+              "kind": "field",
+              "name": "__keyDownBound"
             }
           ],
           "superclass": {

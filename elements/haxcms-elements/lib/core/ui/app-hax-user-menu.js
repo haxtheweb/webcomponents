@@ -219,13 +219,25 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
           class="user-menu ${this.isOpen ? "open" : ""}"
           ?inert="${!this.isOpen}"
         >
-          <div class="pre-menu" role="group" aria-label="${this.t.menuControls}">
+          <div
+            class="pre-menu"
+            role="group"
+            aria-label="${this.t.menuControls}"
+          >
             <slot name="pre-menu"></slot>
           </div>
-          <div class="main-menu" role="group" aria-label="${this.t.mainMenuItems}">
+          <div
+            class="main-menu"
+            role="group"
+            aria-label="${this.t.mainMenuItems}"
+          >
             <slot name="main-menu"></slot>
           </div>
-          <div class="post-menu" role="group" aria-label="${this.t.accountActions}">
+          <div
+            class="post-menu"
+            role="group"
+            aria-label="${this.t.accountActions}"
+          >
             <slot name="post-menu"></slot>
           </div>
         </div>

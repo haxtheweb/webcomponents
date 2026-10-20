@@ -30,7 +30,9 @@ function dddLayoutScales() {
   let m;
   while ((m = re.exec(src))) {
     const entries = {};
-    for (const [, key, num] of m[2].matchAll(/(\w+):\s*(-?\d+(?:\.\d+)?)\s*,?/g)) {
+    for (const [, key, num] of m[2].matchAll(
+      /(\w+):\s*(-?\d+(?:\.\d+)?)\s*,?/g,
+    )) {
       entries[key] = num;
     }
     if (Object.keys(entries).length) scales[m[1]] = entries;
@@ -120,7 +122,8 @@ export function simpleColors() {
   const darkSrc = read("elements", "simple-colors", "simple-colors.js");
   const hues = [];
   const shades = {};
-  const re = /--simple-colors-fixed-theme-([a-z-]+)-(\d+):\s*(#[0-9a-fA-F]{6});/g;
+  const re =
+    /--simple-colors-fixed-theme-([a-z-]+)-(\d+):\s*(#[0-9a-fA-F]{6});/g;
   let m;
   while ((m = re.exec(css))) {
     if (m[1] === "accent") continue;

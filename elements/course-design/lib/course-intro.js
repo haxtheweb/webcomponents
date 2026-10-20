@@ -66,7 +66,8 @@ export class CourseIntro extends LitElement {
       <div
         class="course-intro-footer"
         part="course-intro-footer"
-        style="border-top: var(--ddd-border-size-md) solid ${this.color || "var(--ddd-theme-primary)"};"
+        style="border-top: var(--ddd-border-size-md) solid ${this.color ||
+        "var(--ddd-theme-primary)"};"
       >
         <div slot="footer-left">
           <slot name="footer-left"></slot>

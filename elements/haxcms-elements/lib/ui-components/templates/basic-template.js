@@ -150,7 +150,10 @@ let BasicTemplate = (superclass) =>
           </grid-plate>
         </div>
         <site-footer></site-footer>
-        <scroll-button position="right" label="${this.t.backToTop}"></scroll-button>
+        <scroll-button
+          position="right"
+          label="${this.t.backToTop}"
+        ></scroll-button>
       `;
     }
   };

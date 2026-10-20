@@ -747,9 +747,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       useSearchToLocateTheContentYouAreLookingFor:
         "Use Search to locate the content you are looking for",
       goToTheHomePage: "Go to the home page",
-      redirectHint: "If the redirect doesn't work, please click the link above.",
+      redirectHint:
+        "If the redirect doesn't work, please click the link above.",
       styleGuideTemplate: "Template",
-      styleGuideTemplateDescription: "Choose a predefined style template for this element",
+      styleGuideTemplateDescription:
+        "Choose a predefined style template for this element",
       styleGuideTemplateCustom: "Custom",
     };
     this.registerLocalization({

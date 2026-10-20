@@ -180,9 +180,7 @@ class ChatControlBar extends I18NMixin(DDD) {
               icon="lrn:data_usage"
               class="data-collection-icon"
             ></simple-icon-lite>
-            <span class="data-collection-label"
-              >${this.t.dataCollection}</span
-            >
+            <span class="data-collection-label">${this.t.dataCollection}</span>
           </button>
           <simple-tooltip
             for="data-collection-button"

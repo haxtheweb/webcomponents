@@ -139,8 +139,9 @@ describe("simple-img progressive enhancement on upgrade", () => {
       const rendered = await poll(() => el.querySelector("img") !== null);
       expect(rendered).to.be.true;
       const img = el.querySelector("img");
-      expect(img.getAttribute("src").endsWith("/definitely-missing-original.png"))
-        .to.be.true;
+      expect(
+        img.getAttribute("src").endsWith("/definitely-missing-original.png"),
+      ).to.be.true;
       expect(img.getAttribute("width")).to.equal("50");
       expect(img.getAttribute("height")).to.equal("40");
     } finally {

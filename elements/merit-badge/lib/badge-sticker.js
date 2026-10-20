@@ -193,7 +193,11 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
           date="${this.badgeDate}"
         ></date-title>
 
-        <img class="badgepic" src="${this.badgeImage}" alt="${this.badgeTitle}" />
+        <img
+          class="badgepic"
+          src="${this.badgeImage}"
+          alt="${this.badgeTitle}"
+        />
 
         <div class="details">
           <button

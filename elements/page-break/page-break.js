@@ -1203,11 +1203,9 @@ export class PageBreak extends IntersectionObserverMixin(
     if (this.locked) {
       const menu = this.shadowRoot.querySelector("#menu");
       if (menu) menu.close();
-      store.toast(
-        this.t.pageLockedUnlockToChangePublishStatus,
-        3000,
-        { hat: "error" },
-      );
+      store.toast(this.t.pageLockedUnlockToChangePublishStatus, 3000, {
+        hat: "error",
+      });
       store.playSound("error");
       return;
     }

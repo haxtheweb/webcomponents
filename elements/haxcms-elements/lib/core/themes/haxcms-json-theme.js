@@ -127,7 +127,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
       ? this.t.loadedDirectlyFrom.replace("{path}", () => this.nativeFormatPath)
       : this.t.nativeFileNotFoundFallback
           .replace("{extension}", () => routeFormat)
-          .replace("{type}", () => (generatedData.type.toUpperCase()));
+          .replace("{type}", () => generatedData.type.toUpperCase());
 
     return html`
       <a class="skip-link" href="#main-content">${this.t.skipToContent}</a>
@@ -137,9 +137,8 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           id="copybtn"
           icon="content-copy"
           label="${this.t.copyDataToClipboard}"
-          title="${this.t.copyFormatToClipboard.replace(
-            "{format}",
-            () => (copyFormat.toUpperCase()),
+          title="${this.t.copyFormatToClipboard.replace("{format}", () =>
+            copyFormat.toUpperCase(),
           )}"
         ></simple-icon-button-lite>
         <simple-icon-button-lite
@@ -154,9 +153,8 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
         <article>
           <section>
             <h1>
-              ${this.t.activeItemDataFormat.replace(
-                "{format}",
-                () => (routeFormat.toUpperCase()),
+              ${this.t.activeItemDataFormat.replace("{format}", () =>
+                routeFormat.toUpperCase(),
               )}
             </h1>
             <p>
@@ -215,9 +213,8 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
             ${this.loading
               ? html`
                   <div class="loading">
-                    ${this.t.loadingFormatData.replace(
-                      "{format}",
-                      () => (routeFormat.toUpperCase()),
+                    ${this.t.loadingFormatData.replace("{format}", () =>
+                      routeFormat.toUpperCase(),
                     )}
                   </div>
                 `
@@ -384,9 +381,8 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
         ) {
           const toast = globalThis.SimpleToast.requestAvailability();
           toast.showSimpleToast(
-            this.t.formatDataCopiedToClipboard.replace(
-              "{format}",
-              () => (copyFormat.toUpperCase()),
+            this.t.formatDataCopiedToClipboard.replace("{format}", () =>
+              copyFormat.toUpperCase(),
             ),
           );
         } else {
@@ -402,9 +398,8 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
         ) {
           const toast = globalThis.SimpleToast.requestAvailability();
           toast.showSimpleToast(
-            this.t.failedToCopyFormatData.replace(
-              "{format}",
-              () => (copyFormat.toUpperCase()),
+            this.t.failedToCopyFormatData.replace("{format}", () =>
+              copyFormat.toUpperCase(),
             ),
             3000,
             { hat: "error" },

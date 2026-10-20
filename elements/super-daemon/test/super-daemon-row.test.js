@@ -69,7 +69,10 @@ describe("super-daemon-row behavior", () => {
     let rowSelected = false;
     let named = null;
     let closed = false;
-    el.addEventListener("super-daemon-row-selected", () => (rowSelected = true));
+    el.addEventListener(
+      "super-daemon-row-selected",
+      () => (rowSelected = true),
+    );
     el.addEventListener("my-event", (e) => (named = e.detail));
     el.addEventListener("super-daemon-close", () => (closed = true));
     el.selected();
@@ -105,7 +108,11 @@ describe("super-daemon-row behavior", () => {
       }),
     );
     el.keyEvent(
-      new KeyboardEvent("keydown", { code: "Space", key: " ", cancelable: true }),
+      new KeyboardEvent("keydown", {
+        code: "Space",
+        key: " ",
+        cancelable: true,
+      }),
     );
     el.keyEvent(new KeyboardEvent("keydown", { key: "a", cancelable: true }));
     expect(fired).to.equal(2);

@@ -348,7 +348,10 @@ class TestDownloadElementWithBase extends MtzFileDownloadBehaviors(
     return html`<div>Download behavior over a base with properties</div>`;
   }
 }
-customElements.define(TestDownloadElementWithBase.tag, TestDownloadElementWithBase);
+customElements.define(
+  TestDownloadElementWithBase.tag,
+  TestDownloadElementWithBase,
+);
 
 describe("MtzFileDownloadBehaviors static properties merge", () => {
   it("merges fileTypes with super.properties when the base class defines them", () => {

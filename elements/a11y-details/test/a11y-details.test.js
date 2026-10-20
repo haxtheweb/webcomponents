@@ -522,9 +522,7 @@ describe("a11y-details test", () => {
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
     it("syncs slots when a native details element is added", async () => {
-      const testElement = await fixture(html`
-        <a11y-details></a11y-details>
-      `);
+      const testElement = await fixture(html` <a11y-details></a11y-details> `);
       await testElement.updateComplete;
       const native = globalThis.document.createElement("details");
       native.innerHTML =
@@ -551,19 +549,17 @@ describe("a11y-details test", () => {
     });
 
     it("disconnects the details observer when the details element is removed", async () => {
-      const testElement = await fixture(html`
-        <a11y-details></a11y-details>
-      `);
+      const testElement = await fixture(html` <a11y-details></a11y-details> `);
       await testElement.updateComplete;
       const native = globalThis.document.createElement("details");
       native.innerHTML = "<summary>Temp</summary><p>Temp content</p>";
       testElement.appendChild(native);
       await sleep(60);
-      expect(testElement.querySelector('* > details')).to.exist;
+      expect(testElement.querySelector("* > details")).to.exist;
       native.remove();
       await sleep(60);
       // the removedNodes branch disconnected the details observer
-      expect(testElement.querySelector('* > details')).to.not.exist;
+      expect(testElement.querySelector("* > details")).to.not.exist;
     });
   });
 

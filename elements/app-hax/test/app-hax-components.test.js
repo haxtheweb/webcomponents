@@ -1,515 +1,577 @@
-import { fixture, expect, html } from '@open-wc/testing'
+import { fixture, expect, html } from "@open-wc/testing";
 
 // Clear demo appSettings before importing store-dependent modules
-globalThis.appSettings = {}
+globalThis.appSettings = {};
 
 // Directly import each lib file so istanbul instruments them
-await import('../lib/v2/app-hax-filter-tag.js')
-await import('../lib/v2/app-hax-scroll-button.js')
-await import('../lib/v2/app-hax-use-case.js')
-await import('../lib/v2/app-hax-simple-hat-progress.js')
-await import('../lib/v2/app-hax-darkmode-toggle.js')
-const { store } = await import('../lib/v2/AppHaxStore.js')
+await import("../lib/v2/app-hax-filter-tag.js");
+await import("../lib/v2/app-hax-scroll-button.js");
+await import("../lib/v2/app-hax-use-case.js");
+await import("../lib/v2/app-hax-simple-hat-progress.js");
+await import("../lib/v2/app-hax-darkmode-toggle.js");
+const { store } = await import("../lib/v2/AppHaxStore.js");
 
-describe('app-hax-filter-tag', () => {
-  it('renders label text', async () => {
-    const el = await fixture(html`<app-hax-filter-tag label="My Tag"></app-hax-filter-tag>`)
-    await el.updateComplete
-    const label = el.shadowRoot.querySelector('.tag-label')
-    expect(label).to.exist
-    expect(label.textContent).to.equal('My Tag')
-  })
+describe("app-hax-filter-tag", () => {
+  it("renders label text", async () => {
+    const el = await fixture(
+      html`<app-hax-filter-tag label="My Tag"></app-hax-filter-tag>`,
+    );
+    await el.updateComplete;
+    const label = el.shadowRoot.querySelector(".tag-label");
+    expect(label).to.exist;
+    expect(label.textContent).to.equal("My Tag");
+  });
 
-  it('dispatches remove-tag event with label as detail', async () => {
-    const el = await fixture(html`<app-hax-filter-tag label="RemoveMe"></app-hax-filter-tag>`)
-    await el.updateComplete
-    let capturedDetail = null
-    el.addEventListener('remove-tag', (e) => {
-      capturedDetail = e.detail
-    })
-    const removeEl = el.shadowRoot.querySelector('.remove')
-    removeEl.click()
-    expect(capturedDetail).to.equal('RemoveMe')
-  })
+  it("dispatches remove-tag event with label as detail", async () => {
+    const el = await fixture(
+      html`<app-hax-filter-tag label="RemoveMe"></app-hax-filter-tag>`,
+    );
+    await el.updateComplete;
+    let capturedDetail = null;
+    el.addEventListener("remove-tag", (e) => {
+      capturedDetail = e.detail;
+    });
+    const removeEl = el.shadowRoot.querySelector(".remove");
+    removeEl.click();
+    expect(capturedDetail).to.equal("RemoveMe");
+  });
 
-  it('has correct tag name', () => {
-    const el = document.createElement('app-hax-filter-tag')
-    expect(el.constructor.tag).to.equal('app-hax-filter-tag')
-  })
+  it("has correct tag name", () => {
+    const el = document.createElement("app-hax-filter-tag");
+    expect(el.constructor.tag).to.equal("app-hax-filter-tag");
+  });
 
-  it('defaults label to empty string', () => {
-    const el = document.createElement('app-hax-filter-tag')
-    expect(el.label).to.equal('')
-  })
+  it("defaults label to empty string", () => {
+    const el = document.createElement("app-hax-filter-tag");
+    expect(el.label).to.equal("");
+  });
 
-  it('has static styles defined', () => {
-    const el = document.createElement('app-hax-filter-tag')
-    expect(el.constructor.styles).to.exist
-    expect(el.constructor.styles.length).to.be.greaterThan(0)
-  })
-})
+  it("has static styles defined", () => {
+    const el = document.createElement("app-hax-filter-tag");
+    expect(el.constructor.styles).to.exist;
+    expect(el.constructor.styles.length).to.be.greaterThan(0);
+  });
+});
 
-describe('app-hax-scroll-button', () => {
-  it('renders with label and role=button', async () => {
-    const el = await fixture(html`<app-hax-scroll-button label="Section 1"></app-hax-scroll-button>`)
-    await el.updateComplete
-    const div = el.shadowRoot.querySelector('div[role="button"]')
-    expect(div).to.exist
-    expect(div.getAttribute('aria-label')).to.include('Section 1')
-  })
+describe("app-hax-scroll-button", () => {
+  it("renders with label and role=button", async () => {
+    const el = await fixture(
+      html`<app-hax-scroll-button label="Section 1"></app-hax-scroll-button>`,
+    );
+    await el.updateComplete;
+    const div = el.shadowRoot.querySelector('div[role="button"]');
+    expect(div).to.exist;
+    expect(div.getAttribute("aria-label")).to.include("Section 1");
+  });
 
-  it('defaults label and targetId to empty strings', () => {
-    const el = document.createElement('app-hax-scroll-button')
-    expect(el.label).to.equal('')
-    expect(el.targetId).to.equal('')
-  })
+  it("defaults label and targetId to empty strings", () => {
+    const el = document.createElement("app-hax-scroll-button");
+    expect(el.label).to.equal("");
+    expect(el.targetId).to.equal("");
+  });
 
-  it('does not scroll when targetId is empty', () => {
-    const el = document.createElement('app-hax-scroll-button')
-    expect(() => el.scrollToTarget()).to.not.throw()
-  })
+  it("does not scroll when targetId is empty", () => {
+    const el = document.createElement("app-hax-scroll-button");
+    expect(() => el.scrollToTarget()).to.not.throw();
+  });
 
-  it('warns when target element not found', () => {
-    const el = document.createElement('app-hax-scroll-button')
-    el.targetId = 'nonexistent-id'
-    let warned = false
-    const originalWarn = console.warn
+  it("warns when target element not found", () => {
+    const el = document.createElement("app-hax-scroll-button");
+    el.targetId = "nonexistent-id";
+    let warned = false;
+    const originalWarn = console.warn;
     console.warn = () => {
-      warned = true
-    }
-    el.scrollToTarget()
-    console.warn = originalWarn
-    expect(warned).to.be.true
-  })
+      warned = true;
+    };
+    el.scrollToTarget();
+    console.warn = originalWarn;
+    expect(warned).to.be.true;
+  });
 
-  it('scrolls target element into view when found via getElementById', async () => {
+  it("scrolls target element into view when found via getElementById", async () => {
     const el = await fixture(
-      html`<app-hax-scroll-button label="Go" .targetId=${'found-target'}></app-hax-scroll-button>`,
-    )
-    await el.updateComplete
+      html`<app-hax-scroll-button
+        label="Go"
+        .targetId=${"found-target"}
+      ></app-hax-scroll-button>`,
+    );
+    await el.updateComplete;
     // Create a target element in the document
-    const target = document.createElement('div')
-    target.id = 'found-target'
-    document.body.appendChild(target)
-    let scrolled = false
-    Object.defineProperty(target, 'scrollIntoView', {
+    const target = document.createElement("div");
+    target.id = "found-target";
+    document.body.appendChild(target);
+    let scrolled = false;
+    Object.defineProperty(target, "scrollIntoView", {
       value: () => {
-        scrolled = true
+        scrolled = true;
       },
       configurable: true,
-    })
-    el.scrollToTarget()
+    });
+    el.scrollToTarget();
     // Clean up
-    target.remove()
-    expect(scrolled).to.be.true
-  })
+    target.remove();
+    expect(scrolled).to.be.true;
+  });
 
-  it('handles Enter key to trigger scroll', async () => {
+  it("handles Enter key to trigger scroll", async () => {
     const el = await fixture(
-      html`<app-hax-scroll-button label="Go" .targetId=${'kbd-target'}></app-hax-scroll-button>`,
-    )
-    await el.updateComplete
-    const target = document.createElement('div')
-    target.id = 'kbd-target'
-    document.body.appendChild(target)
-    let scrolled = false
-    Object.defineProperty(target, 'scrollIntoView', {
+      html`<app-hax-scroll-button
+        label="Go"
+        .targetId=${"kbd-target"}
+      ></app-hax-scroll-button>`,
+    );
+    await el.updateComplete;
+    const target = document.createElement("div");
+    target.id = "kbd-target";
+    document.body.appendChild(target);
+    let scrolled = false;
+    Object.defineProperty(target, "scrollIntoView", {
       value: () => {
-        scrolled = true
+        scrolled = true;
       },
       configurable: true,
-    })
-    el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }))
-    target.remove()
-    expect(scrolled).to.be.true
-  })
+    });
+    el.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+    target.remove();
+    expect(scrolled).to.be.true;
+  });
 
-  it('handles Space key to trigger scroll', async () => {
+  it("handles Space key to trigger scroll", async () => {
     const el = await fixture(
-      html`<app-hax-scroll-button label="Go" .targetId=${'space-target'}></app-hax-scroll-button>`,
-    )
-    await el.updateComplete
-    const target = document.createElement('div')
-    target.id = 'space-target'
-    document.body.appendChild(target)
-    let scrolled = false
-    Object.defineProperty(target, 'scrollIntoView', {
+      html`<app-hax-scroll-button
+        label="Go"
+        .targetId=${"space-target"}
+      ></app-hax-scroll-button>`,
+    );
+    await el.updateComplete;
+    const target = document.createElement("div");
+    target.id = "space-target";
+    document.body.appendChild(target);
+    let scrolled = false;
+    Object.defineProperty(target, "scrollIntoView", {
       value: () => {
-        scrolled = true
+        scrolled = true;
       },
       configurable: true,
-    })
-    el.dispatchEvent(new KeyboardEvent('keydown', { key: ' ' }))
-    target.remove()
-    expect(scrolled).to.be.true
-  })
+    });
+    el.dispatchEvent(new KeyboardEvent("keydown", { key: " " }));
+    target.remove();
+    expect(scrolled).to.be.true;
+  });
 
-  it('ignores other keys', async () => {
+  it("ignores other keys", async () => {
     const el = await fixture(
-      html`<app-hax-scroll-button label="Go" .targetId=${'other-target'}></app-hax-scroll-button>`,
-    )
-    await el.updateComplete
-    const target = document.createElement('div')
-    target.id = 'other-target'
-    document.body.appendChild(target)
-    let scrolled = false
-    Object.defineProperty(target, 'scrollIntoView', {
+      html`<app-hax-scroll-button
+        label="Go"
+        .targetId=${"other-target"}
+      ></app-hax-scroll-button>`,
+    );
+    await el.updateComplete;
+    const target = document.createElement("div");
+    target.id = "other-target";
+    document.body.appendChild(target);
+    let scrolled = false;
+    Object.defineProperty(target, "scrollIntoView", {
       value: () => {
-        scrolled = true
+        scrolled = true;
       },
       configurable: true,
-    })
-    el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }))
-    target.remove()
-    expect(scrolled).to.be.false
-  })
+    });
+    el.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab" }));
+    target.remove();
+    expect(scrolled).to.be.false;
+  });
 
-  it('disconnects MutationObserver on disconnectedCallback', async () => {
+  it("disconnects MutationObserver on disconnectedCallback", async () => {
     const el = await fixture(
       html`<app-hax-scroll-button label="Test"></app-hax-scroll-button>`,
-    )
-    await el.updateComplete
-    expect(el._darkModeObserver).to.exist
-    el.disconnectedCallback()
+    );
+    await el.updateComplete;
+    expect(el._darkModeObserver).to.exist;
+    el.disconnectedCallback();
     // Observer should still exist but be disconnected (no error)
-    expect(el._darkModeObserver).to.exist
-  })
+    expect(el._darkModeObserver).to.exist;
+  });
 
-  it('reflects isDarkMode property', async () => {
+  it("reflects isDarkMode property", async () => {
     const el = await fixture(
-      html`<app-hax-scroll-button label="Test" .isDarkMode=${true}></app-hax-scroll-button>`,
-    )
-    await el.updateComplete
-    expect(el.isDarkMode).to.be.true
-    expect(el.hasAttribute('isDarkMode')).to.be.true
-  })
-})
+      html`<app-hax-scroll-button
+        label="Test"
+        .isDarkMode=${true}
+      ></app-hax-scroll-button>`,
+    );
+    await el.updateComplete;
+    expect(el.isDarkMode).to.be.true;
+    expect(el.hasAttribute("isDarkMode")).to.be.true;
+  });
+});
 
-describe('app-hax-use-case', () => {
-  it('renders card with title', async () => {
+describe("app-hax-use-case", () => {
+  it("renders card with title", async () => {
     const el = await fixture(
-      html`<app-hax-use-case title="My Template" description="A test template"></app-hax-use-case>`,
-    )
-    await el.updateComplete
-    const h3 = el.shadowRoot.querySelector('h3')
-    expect(h3).to.exist
-    expect(h3.textContent).to.equal('My Template')
-  })
+      html`<app-hax-use-case
+        title="My Template"
+        description="A test template"
+      ></app-hax-use-case>`,
+    );
+    await el.updateComplete;
+    const h3 = el.shadowRoot.querySelector("h3");
+    expect(h3).to.exist;
+    expect(h3.textContent).to.equal("My Template");
+  });
 
-  it('shows Untitled template when title is empty', async () => {
-    const el = await fixture(html`<app-hax-use-case></app-hax-use-case>`)
-    await el.updateComplete
-    const h3 = el.shadowRoot.querySelector('h3')
-    expect(h3.textContent).to.equal('Untitled template')
-  })
+  it("shows Untitled template when title is empty", async () => {
+    const el = await fixture(html`<app-hax-use-case></app-hax-use-case>`);
+    await el.updateComplete;
+    const h3 = el.shadowRoot.querySelector("h3");
+    expect(h3.textContent).to.equal("Untitled template");
+  });
 
-  it('renders image when source is provided', async () => {
+  it("renders image when source is provided", async () => {
     const el = await fixture(
       html`<app-hax-use-case title="Test" source="img.png"></app-hax-use-case>`,
-    )
-    await el.updateComplete
-    const img = el.shadowRoot.querySelector('img')
-    expect(img).to.exist
-    expect(img.getAttribute('src')).to.equal('img.png')
-  })
+    );
+    await el.updateComplete;
+    const img = el.shadowRoot.querySelector("img");
+    expect(img).to.exist;
+    expect(img.getAttribute("src")).to.equal("img.png");
+  });
 
-  it('renders placeholder icon when no source', async () => {
-    const el = await fixture(html`<app-hax-use-case title="Test"></app-hax-use-case>`)
-    await el.updateComplete
-    const placeholder = el.shadowRoot.querySelector('.image-placeholder')
-    expect(placeholder).to.exist
-  })
-
-  it('toggleDisplay flips isSelected and showContinue', async () => {
-    const el = await fixture(html`<app-hax-use-case title="Test"></app-hax-use-case>`)
-    await el.updateComplete
-    expect(el.isSelected).to.be.false
-    el.toggleDisplay()
-    expect(el.isSelected).to.be.true
-    expect(el.showContinue).to.be.true
-  })
-
-  it('toggleDisplay dispatches toggle-display event', async () => {
-    const el = await fixture(html`<app-hax-use-case title="Test"></app-hax-use-case>`)
-    await el.updateComplete
-    let capturedDetail = null
-    el.addEventListener('toggle-display', (e) => {
-      capturedDetail = e.detail
-    })
-    el.toggleDisplay()
-    expect(capturedDetail).to.exist
-    expect(capturedDetail.isSelected).to.be.true
-  })
-
-  it('toggleDisplay triggers continueAction after delay when selected', async () => {
-    const el = await fixture(html`<app-hax-use-case title="Test"></app-hax-use-case>`)
-    await el.updateComplete
-    let continued = false
-    el.addEventListener('continue-action', () => {
-      continued = true
-    })
-    el.toggleDisplay()
-    await new Promise((r) => setTimeout(r, 150))
-    expect(continued).to.be.true
-  })
-
-  it('continueAction dispatches event with title and description', async () => {
+  it("renders placeholder icon when no source", async () => {
     const el = await fixture(
-      html`<app-hax-use-case title="MyTitle" description="MyDesc" source="src"></app-hax-use-case>`,
-    )
-    await el.updateComplete
-    let capturedDetail = null
-    el.addEventListener('continue-action', (e) => {
-      capturedDetail = e.detail
-    })
-    el.continueAction()
-    expect(capturedDetail).to.exist
-    expect(capturedDetail.title).to.equal('MyTitle')
-    expect(capturedDetail.description).to.equal('MyDesc')
-    expect(capturedDetail.source).to.equal('src')
-    expect(capturedDetail.template).to.equal('MyTitle')
-  })
+      html`<app-hax-use-case title="Test"></app-hax-use-case>`,
+    );
+    await el.updateComplete;
+    const placeholder = el.shadowRoot.querySelector(".image-placeholder");
+    expect(placeholder).to.exist;
+  });
 
-  it('openDemo opens demoLink in new window when set', async () => {
+  it("toggleDisplay flips isSelected and showContinue", async () => {
     const el = await fixture(
-      html`<app-hax-use-case .demoLink=${'https://demo.example.com'}></app-hax-use-case>`,
-    )
-    await el.updateComplete
-    let openedUrl = null
-    let openedTarget = null
-    const originalOpen = globalThis.open
+      html`<app-hax-use-case title="Test"></app-hax-use-case>`,
+    );
+    await el.updateComplete;
+    expect(el.isSelected).to.be.false;
+    el.toggleDisplay();
+    expect(el.isSelected).to.be.true;
+    expect(el.showContinue).to.be.true;
+  });
+
+  it("toggleDisplay dispatches toggle-display event", async () => {
+    const el = await fixture(
+      html`<app-hax-use-case title="Test"></app-hax-use-case>`,
+    );
+    await el.updateComplete;
+    let capturedDetail = null;
+    el.addEventListener("toggle-display", (e) => {
+      capturedDetail = e.detail;
+    });
+    el.toggleDisplay();
+    expect(capturedDetail).to.exist;
+    expect(capturedDetail.isSelected).to.be.true;
+  });
+
+  it("toggleDisplay triggers continueAction after delay when selected", async () => {
+    const el = await fixture(
+      html`<app-hax-use-case title="Test"></app-hax-use-case>`,
+    );
+    await el.updateComplete;
+    let continued = false;
+    el.addEventListener("continue-action", () => {
+      continued = true;
+    });
+    el.toggleDisplay();
+    await new Promise((r) => setTimeout(r, 150));
+    expect(continued).to.be.true;
+  });
+
+  it("continueAction dispatches event with title and description", async () => {
+    const el = await fixture(
+      html`<app-hax-use-case
+        title="MyTitle"
+        description="MyDesc"
+        source="src"
+      ></app-hax-use-case>`,
+    );
+    await el.updateComplete;
+    let capturedDetail = null;
+    el.addEventListener("continue-action", (e) => {
+      capturedDetail = e.detail;
+    });
+    el.continueAction();
+    expect(capturedDetail).to.exist;
+    expect(capturedDetail.title).to.equal("MyTitle");
+    expect(capturedDetail.description).to.equal("MyDesc");
+    expect(capturedDetail.source).to.equal("src");
+    expect(capturedDetail.template).to.equal("MyTitle");
+  });
+
+  it("openDemo opens demoLink in new window when set", async () => {
+    const el = await fixture(
+      html`<app-hax-use-case
+        .demoLink=${"https://demo.example.com"}
+      ></app-hax-use-case>`,
+    );
+    await el.updateComplete;
+    let openedUrl = null;
+    let openedTarget = null;
+    const originalOpen = globalThis.open;
     globalThis.open = (url, target) => {
-      openedUrl = url
-      openedTarget = target
-    }
-    el.openDemo()
-    globalThis.open = originalOpen
-    expect(openedUrl).to.equal('https://demo.example.com')
-    expect(openedTarget).to.equal('_blank')
-  })
+      openedUrl = url;
+      openedTarget = target;
+    };
+    el.openDemo();
+    globalThis.open = originalOpen;
+    expect(openedUrl).to.equal("https://demo.example.com");
+    expect(openedTarget).to.equal("_blank");
+  });
 
-  it('openDemo does nothing when demoLink is empty', async () => {
-    const el = await fixture(html`<app-hax-use-case></app-hax-use-case>`)
-    await el.updateComplete
-    let opened = false
-    const originalOpen = globalThis.open
+  it("openDemo does nothing when demoLink is empty", async () => {
+    const el = await fixture(html`<app-hax-use-case></app-hax-use-case>`);
+    await el.updateComplete;
+    let opened = false;
+    const originalOpen = globalThis.open;
     globalThis.open = () => {
-      opened = true
-    }
-    el.openDemo()
-    globalThis.open = originalOpen
-    expect(opened).to.be.false
-  })
+      opened = true;
+    };
+    el.openDemo();
+    globalThis.open = originalOpen;
+    expect(opened).to.be.false;
+  });
 
-  it('uses custom iconImage when provided', async () => {
+  it("uses custom iconImage when provided", async () => {
     const el = await fixture(
       html`<app-hax-use-case
         title="Test"
-        .iconImage=${[{ icon: 'custom:icon', tooltip: 'Custom' }]}
+        .iconImage=${[{ icon: "custom:icon", tooltip: "Custom" }]}
       ></app-hax-use-case>`,
-    )
-    await el.updateComplete
-    const icon = el.shadowRoot.querySelector('simple-icon-lite')
-    expect(icon).to.exist
-    expect(icon.getAttribute('icon')).to.equal('custom:icon')
-  })
+    );
+    await el.updateComplete;
+    const icon = el.shadowRoot.querySelector("simple-icon-lite");
+    expect(icon).to.exist;
+    expect(icon.getAttribute("icon")).to.equal("custom:icon");
+  });
 
-  it('defaults to cloud-download icon when no iconImage', async () => {
-    const el = await fixture(html`<app-hax-use-case title="Test"></app-hax-use-case>`)
-    await el.updateComplete
-    const icon = el.shadowRoot.querySelector('simple-icon-lite')
-    expect(icon).to.exist
-    expect(icon.getAttribute('icon')).to.equal('icons:cloud-download')
-  })
-})
-
-describe('app-hax-simple-hat-progress', () => {
-  it('renders with progress 0 by default', async () => {
-    const el = await fixture(html`<app-hax-simple-hat-progress></app-hax-simple-hat-progress>`)
-    await el.updateComplete
-    const text = el.shadowRoot.querySelector('.progress-text')
-    expect(text).to.exist
-    expect(text.textContent).to.equal('0%')
-  })
-
-  it('renders correct percentage for progress 50 of 100', async () => {
+  it("defaults to cloud-download icon when no iconImage", async () => {
     const el = await fixture(
-      html`<app-hax-simple-hat-progress .progress=${50} .max=${100}></app-hax-simple-hat-progress>`,
-    )
-    await el.updateComplete
-    const text = el.shadowRoot.querySelector('.progress-text')
-    expect(text.textContent).to.equal('50%')
-  })
+      html`<app-hax-use-case title="Test"></app-hax-use-case>`,
+    );
+    await el.updateComplete;
+    const icon = el.shadowRoot.querySelector("simple-icon-lite");
+    expect(icon).to.exist;
+    expect(icon.getAttribute("icon")).to.equal("icons:cloud-download");
+  });
+});
 
-  it('caps percentage at 100 when progress exceeds max', async () => {
+describe("app-hax-simple-hat-progress", () => {
+  it("renders with progress 0 by default", async () => {
     const el = await fixture(
-      html`<app-hax-simple-hat-progress .progress=${150} .max=${100}></app-hax-simple-hat-progress>`,
-    )
-    await el.updateComplete
-    const text = el.shadowRoot.querySelector('.progress-text')
-    expect(text.textContent).to.equal('100%')
-  })
+      html`<app-hax-simple-hat-progress></app-hax-simple-hat-progress>`,
+    );
+    await el.updateComplete;
+    const text = el.shadowRoot.querySelector(".progress-text");
+    expect(text).to.exist;
+    expect(text.textContent).to.equal("0%");
+  });
 
-  it('floors percentage at 0 when progress is negative', async () => {
+  it("renders correct percentage for progress 50 of 100", async () => {
     const el = await fixture(
-      html`<app-hax-simple-hat-progress .progress=${-20} .max=${100}></app-hax-simple-hat-progress>`,
-    )
-    await el.updateComplete
-    const text = el.shadowRoot.querySelector('.progress-text')
-    expect(text.textContent).to.equal('0%')
-  })
+      html`<app-hax-simple-hat-progress
+        .progress=${50}
+        .max=${100}
+      ></app-hax-simple-hat-progress>`,
+    );
+    await el.updateComplete;
+    const text = el.shadowRoot.querySelector(".progress-text");
+    expect(text.textContent).to.equal("50%");
+  });
 
-  it('updates progress-fill width on property change', async () => {
-    const el = await fixture(html`<app-hax-simple-hat-progress></app-hax-simple-hat-progress>`)
-    await el.updateComplete
-    el.progress = 75
-    await el.updateComplete
-    const fill = el.shadowRoot.querySelector('.progress-fill')
-    expect(fill).to.exist
-    expect(fill.style.width).to.equal('75%')
-  })
+  it("caps percentage at 100 when progress exceeds max", async () => {
+    const el = await fixture(
+      html`<app-hax-simple-hat-progress
+        .progress=${150}
+        .max=${100}
+      ></app-hax-simple-hat-progress>`,
+    );
+    await el.updateComplete;
+    const text = el.shadowRoot.querySelector(".progress-text");
+    expect(text.textContent).to.equal("100%");
+  });
 
-  it('renders hat image', async () => {
-    const el = await fixture(html`<app-hax-simple-hat-progress></app-hax-simple-hat-progress>`)
-    await el.updateComplete
-    const img = el.shadowRoot.querySelector('.hat-image')
-    expect(img).to.exist
-    expect(img.getAttribute('alt')).to.equal('Progress Hat')
-  })
+  it("floors percentage at 0 when progress is negative", async () => {
+    const el = await fixture(
+      html`<app-hax-simple-hat-progress
+        .progress=${-20}
+        .max=${100}
+      ></app-hax-simple-hat-progress>`,
+    );
+    await el.updateComplete;
+    const text = el.shadowRoot.querySelector(".progress-text");
+    expect(text.textContent).to.equal("0%");
+  });
 
-  it('defaults max to 100', () => {
-    const el = document.createElement('app-hax-simple-hat-progress')
-    expect(el.max).to.equal(100)
-  })
+  it("updates progress-fill width on property change", async () => {
+    const el = await fixture(
+      html`<app-hax-simple-hat-progress></app-hax-simple-hat-progress>`,
+    );
+    await el.updateComplete;
+    el.progress = 75;
+    await el.updateComplete;
+    const fill = el.shadowRoot.querySelector(".progress-fill");
+    expect(fill).to.exist;
+    expect(fill.style.width).to.equal("75%");
+  });
 
-  it('defaults progress to 0', () => {
-    const el = document.createElement('app-hax-simple-hat-progress')
-    expect(el.progress).to.equal(0)
-  })
-})
+  it("renders hat image", async () => {
+    const el = await fixture(
+      html`<app-hax-simple-hat-progress></app-hax-simple-hat-progress>`,
+    );
+    await el.updateComplete;
+    const img = el.shadowRoot.querySelector(".hat-image");
+    expect(img).to.exist;
+    expect(img.getAttribute("alt")).to.equal("Progress Hat");
+  });
 
-describe('app-hax-darkmode-toggle', () => {
-  it('has correct tag name', () => {
-    const el = document.createElement('app-hax-darkmode-toggle')
-    expect(el.constructor.tag).to.equal('app-hax-darkmode-toggle')
-  })
+  it("defaults max to 100", () => {
+    const el = document.createElement("app-hax-simple-hat-progress");
+    expect(el.max).to.equal(100);
+  });
 
-  it('removes media query listener on disconnect', async () => {
-    const el = await fixture(html`<app-hax-darkmode-toggle></app-hax-darkmode-toggle>`)
-    await el.updateComplete
-    expect(el.darkModeMediaQuery).to.exist
-    expect(el._updateToggleState).to.be.a('function')
+  it("defaults progress to 0", () => {
+    const el = document.createElement("app-hax-simple-hat-progress");
+    expect(el.progress).to.equal(0);
+  });
+});
+
+describe("app-hax-darkmode-toggle", () => {
+  it("has correct tag name", () => {
+    const el = document.createElement("app-hax-darkmode-toggle");
+    expect(el.constructor.tag).to.equal("app-hax-darkmode-toggle");
+  });
+
+  it("removes media query listener on disconnect", async () => {
+    const el = await fixture(
+      html`<app-hax-darkmode-toggle></app-hax-darkmode-toggle>`,
+    );
+    await el.updateComplete;
+    expect(el.darkModeMediaQuery).to.exist;
+    expect(el._updateToggleState).to.be.a("function");
     // Should not throw on disconnect
-    expect(() => el.disconnectedCallback()).to.not.throw()
-  })
+    expect(() => el.disconnectedCallback()).to.not.throw();
+  });
 
-  it('disables the toggle when the platform prefers dark mode', () => {
-    const el = document.createElement('app-hax-darkmode-toggle')
-    Object.defineProperty(el.darkModeMediaQuery, 'matches', {
+  it("disables the toggle when the platform prefers dark mode", () => {
+    const el = document.createElement("app-hax-darkmode-toggle");
+    Object.defineProperty(el.darkModeMediaQuery, "matches", {
       value: true,
       configurable: true,
-    })
-    el._updateToggleState()
-    expect(el.disabled).to.be.true
-  })
+    });
+    el._updateToggleState();
+    expect(el.disabled).to.be.true;
+  });
 
-  it('syncs a checked change into the store on updated', () => {
-    const el = document.createElement('app-hax-darkmode-toggle')
-    const savedDarkMode = store.darkMode
-    el.checked = true
-    el.updated(new Map([['checked', false]]))
-    expect(store.darkMode).to.be.true
-    el.updated(new Map([['checked', undefined]]))
-    store.darkMode = savedDarkMode
-  })
-})
+  it("syncs a checked change into the store on updated", () => {
+    const el = document.createElement("app-hax-darkmode-toggle");
+    const savedDarkMode = store.darkMode;
+    el.checked = true;
+    el.updated(new Map([["checked", false]]));
+    expect(store.darkMode).to.be.true;
+    el.updated(new Map([["checked", undefined]]));
+    store.darkMode = savedDarkMode;
+  });
+});
 
-describe('app-hax-scroll-button dark mode and app context', () => {
-  it('updates isDarkMode when the body dark-mode class changes', async () => {
-    const el = await fixture(html`<app-hax-scroll-button label="Dark"></app-hax-scroll-button>`)
-    await el.updateComplete
-    document.body.classList.add('dark-mode')
-    await new Promise((r) => setTimeout(r, 50))
-    expect(el.isDarkMode).to.be.true
-    document.body.classList.remove('dark-mode')
-    await new Promise((r) => setTimeout(r, 50))
-    expect(el.isDarkMode).to.be.false
-  })
-
-  it('scrolls to a target resolved through the app-hax use-case filter context', async () => {
+describe("app-hax-scroll-button dark mode and app context", () => {
+  it("updates isDarkMode when the body dark-mode class changes", async () => {
     const el = await fixture(
-      html`<app-hax-scroll-button label="Jump" .targetId=${'ucf-target'}></app-hax-scroll-button>`,
-    )
-    await el.updateComplete
-    let scrolledInto = null
+      html`<app-hax-scroll-button label="Dark"></app-hax-scroll-button>`,
+    );
+    await el.updateComplete;
+    document.body.classList.add("dark-mode");
+    await new Promise((r) => setTimeout(r, 50));
+    expect(el.isDarkMode).to.be.true;
+    document.body.classList.remove("dark-mode");
+    await new Promise((r) => setTimeout(r, 50));
+    expect(el.isDarkMode).to.be.false;
+  });
+
+  it("scrolls to a target resolved through the app-hax use-case filter context", async () => {
+    const el = await fixture(
+      html`<app-hax-scroll-button
+        label="Jump"
+        .targetId=${"ucf-target"}
+      ></app-hax-scroll-button>`,
+    );
+    await el.updateComplete;
+    let scrolledInto = null;
     const fakeTarget = {
       scrollIntoView: (opts) => {
-        scrolledInto = opts
+        scrolledInto = opts;
       },
-    }
+    };
     const fakeFilter = {
       shadowRoot: {
-        getElementById: (id) => (id === 'ucf-target' ? fakeTarget : null),
+        getElementById: (id) => (id === "ucf-target" ? fakeTarget : null),
       },
-    }
+    };
     const fakeAppHax = {
       shadowRoot: {
         querySelector: (sel) =>
-          sel === 'app-hax-use-case-filter' ? fakeFilter : null,
+          sel === "app-hax-use-case-filter" ? fakeFilter : null,
       },
-    }
-    el.closest = () => fakeAppHax
-    el.scrollToTarget()
-    expect(scrolledInto).to.exist
-    expect(scrolledInto.block).to.equal('start')
+    };
+    el.closest = () => fakeAppHax;
+    el.scrollToTarget();
+    expect(scrolledInto).to.exist;
+    expect(scrolledInto.block).to.equal("start");
     // announcement is written then cleared after the timeout
-    const announcement = el.shadowRoot.querySelector('#scroll-announcement')
-    expect(announcement.textContent).to.include('Jump')
-    await new Promise((r) => setTimeout(r, 1100))
-    expect(announcement.textContent).to.equal('')
-  })
-})
+    const announcement = el.shadowRoot.querySelector("#scroll-announcement");
+    expect(announcement.textContent).to.include("Jump");
+    await new Promise((r) => setTimeout(r, 1100));
+    expect(announcement.textContent).to.equal("");
+  });
+});
 
-describe('app-hax-router', () => {
-  it('builds routes from manifest items on construction', async () => {
-    await import('../lib/v2/AppHaxRouter.js')
-    const savedManifest = store.manifest
-    const savedRoutes = store.routes
-    const savedAPI = store.AppHaxAPI
-    store.manifest = { items: [{ id: 'site-1', slug: '/base/site-1' }] }
-    store.AppHaxAPI = { basePath: '/base' }
-    document.createElement('app-hax-router')
+describe("app-hax-router", () => {
+  it("builds routes from manifest items on construction", async () => {
+    await import("../lib/v2/AppHaxRouter.js");
+    const savedManifest = store.manifest;
+    const savedRoutes = store.routes;
+    const savedAPI = store.AppHaxAPI;
+    store.manifest = { items: [{ id: "site-1", slug: "/base/site-1" }] };
+    store.AppHaxAPI = { basePath: "/base" };
+    document.createElement("app-hax-router");
     // the constructor autoruns run their work on a microtask
-    await new Promise((r) => setTimeout(r, 0))
-    const route = store.routes.find((r) => r.name === 'site-1')
-    expect(route).to.exist
-    expect(route.path).to.equal('/site-1')
-    expect(route.component).to.equal('fake-site-1-e')
-    store.manifest = savedManifest
-    store.AppHaxAPI = savedAPI
-    store.routes = savedRoutes
-  })
-})
+    await new Promise((r) => setTimeout(r, 0));
+    const route = store.routes.find((r) => r.name === "site-1");
+    expect(route).to.exist;
+    expect(route.path).to.equal("/site-1");
+    expect(route.component).to.equal("fake-site-1-e");
+    store.manifest = savedManifest;
+    store.AppHaxAPI = savedAPI;
+    store.routes = savedRoutes;
+  });
+});
 
-describe('app-hax-toast', () => {
-  it('hides the global toast on a haxcms-toast-hide event', async () => {
-    const { AppHaxToastInstance } = await import('../lib/v2/app-hax-toast.js')
-    const el = AppHaxToastInstance
-    expect(el).to.exist
-    let hidden = false
-    const orig = el.hide
+describe("app-hax-toast", () => {
+  it("hides the global toast on a haxcms-toast-hide event", async () => {
+    const { AppHaxToastInstance } = await import("../lib/v2/app-hax-toast.js");
+    const el = AppHaxToastInstance;
+    expect(el).to.exist;
+    let hidden = false;
+    const orig = el.hide;
     el.hide = () => {
-      hidden = true
-    }
-    globalThis.dispatchEvent(new CustomEvent('haxcms-toast-hide'))
-    el.hide = orig
-    expect(hidden).to.be.true
-  })
+      hidden = true;
+    };
+    globalThis.dispatchEvent(new CustomEvent("haxcms-toast-hide"));
+    el.hide = orig;
+    expect(hidden).to.be.true;
+  });
 
-  it('aborts window controllers when removed from the document', async () => {
-    await import('../lib/v2/app-hax-toast.js')
-    const el = document.createElement('app-hax-toast')
-    document.body.appendChild(el)
-    expect(() => el.remove()).to.not.throw()
-  })
-})
+  it("aborts window controllers when removed from the document", async () => {
+    await import("../lib/v2/app-hax-toast.js");
+    const el = document.createElement("app-hax-toast");
+    document.body.appendChild(el);
+    expect(() => el.remove()).to.not.throw();
+  });
+});

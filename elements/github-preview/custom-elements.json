@@ -64,7 +64,7 @@
               "name": "readmeViewMoreHandler",
               "parameters": [
                 {
-                  "name": "event"
+                  "name": "_event"
                 }
               ]
             },
@@ -492,6 +492,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, githubRepo: \"GitHub Repo:\", commits: \"Commits: {count}\", }"
+            },
+            {
+              "kind": "field",
               "name": "org",
               "privacy": "public",
               "type": {
@@ -567,6 +575,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "DDDSuper",
               "package": "@haxtheweb/d-d-d/d-d-d.js"

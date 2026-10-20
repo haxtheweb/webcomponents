@@ -150,7 +150,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           :host([type="radio"]) .option {
             align-items: center;
             border-radius: var(--simple-fields-border-radius, 4px);
-            transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
+            transition: background-color var(--ddd-duration-normal, 0.3s)
+              ease-in-out;
           }
           :host([type="checkbox"]) .option label,
           :host([type="radio"]) .option label {
@@ -173,7 +174,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                 var(--simple-fields-accent-color, #3f51b5)
               );
             outline-offset: -1px;
-            transition: outline-color var(--ddd-duration-normal, 0.3s) ease-in-out;
+            transition: outline-color var(--ddd-duration-normal, 0.3s)
+              ease-in-out;
           }
           :host([type]) fieldset .border-bottom {
             display: block;
@@ -413,7 +415,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
                 var(--simple-fields-accent-color, #3f51b5)
               );
             outline-offset: -1px;
-            transition: outline-color var(--ddd-duration-normal, 0.3s) ease-in-out;
+            transition: outline-color var(--ddd-duration-normal, 0.3s)
+              ease-in-out;
           }
           /* Styles the option that is currently selected inside the open list */
           select option:checked,
@@ -1348,8 +1351,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
      * @memberof SimpleFieldsField
      */
     get slottedFieldObserver() {
-    return undefined;
-  }
+      return undefined;
+    }
 
     /**
      * template for `textarea` in shadow DOM. Value binds via the .value

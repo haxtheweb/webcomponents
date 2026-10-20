@@ -51,6 +51,21 @@
             },
             {
               "kind": "method",
+              "name": "cleanAnswerData",
+              "parameters": [
+                {
+                  "name": "answers"
+                }
+              ],
+              "description": "Answers here are derived from the statement via rebuildWordList, not\nauthored like multiple choice options. Skip the base class normalization\nwhich injects multiple choice keys and force resets showAnswer every\ntime answers change."
+            },
+            {
+              "kind": "method",
+              "name": "loadLightDomData",
+              "description": "The base class reads answers from slot-less <input> children on first\npaint. This element never authors answers that way (they come from the\nstatement) and its light dom children are feedback/hint/evidence slots,\nso the base scan would wipe the generated answers to an empty array."
+            },
+            {
+              "kind": "method",
               "name": "renderInteraction"
             },
             {
@@ -67,7 +82,7 @@
               "name": "refreshEvent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -89,11 +104,22 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, ...fillInTheBlanksT }"
+            },
+            {
+              "kind": "field",
               "name": "question",
+              "privacy": "public",
               "type": {
                 "text": "string"
               },
-              "default": "\"Fill in the blanks\""
+              "default": "\"Fill in the blanks\"",
+              "attribute": "question",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -102,6 +128,33 @@
                 "text": "boolean"
               },
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "statement",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "statement",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "question",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Fill in the blanks\"",
+              "fieldName": "question"
+            },
+            {
+              "name": "statement",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "statement"
             }
           ],
           "superclass": {

@@ -25,12 +25,6 @@
             },
             {
               "kind": "field",
-              "name": "eventsElement",
-              "description": "events container element",
-              "readonly": true
-            },
-            {
-              "kind": "field",
               "name": "eventsList",
               "description": "ensures that events list is an Array",
               "readonly": true
@@ -60,7 +54,7 @@
               "name": "_checkScroll",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "checks the scroll of each event"
@@ -91,6 +85,26 @@
               "default": "\"xs\"",
               "attribute": "timeline-size",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "timelineTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "title of timeline",
+              "attribute": "timeline-title",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "title"
             }
           ],
           "attributes": [
@@ -111,6 +125,21 @@
               "description": "the timline size, calculated by responsive utility",
               "default": "\"xs\"",
               "fieldName": "timelineSize"
+            },
+            {
+              "name": "timeline-title",
+              "type": {
+                "text": "string"
+              },
+              "description": "title of timeline",
+              "fieldName": "timelineTitle"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "title"
             }
           ],
           "mixins": [

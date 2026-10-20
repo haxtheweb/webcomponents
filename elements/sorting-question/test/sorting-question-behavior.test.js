@@ -71,9 +71,7 @@ describe("sorting-question behavior", () => {
   it("exposes haxProperties as a file reference", () => {
     const href = SortingQuestion.haxProperties;
     expect(typeof href).to.equal("string");
-    expect(href.endsWith("sorting-question.haxProperties.json")).to.equal(
-      true,
-    );
+    expect(href.endsWith("sorting-question.haxProperties.json")).to.equal(true);
   });
 
   it("reads inputs into answers in order and strips the inputs", async () => {
@@ -129,9 +127,7 @@ describe("sorting-question behavior", () => {
     const original = globalThis.document.startViewTransition;
     globalThis.document.startViewTransition = fakeViewTransition;
     try {
-      el.getOptions()[0]
-        .shadowRoot.querySelector("#downArrow")
-        .click();
+      el.getOptions()[0].shadowRoot.querySelector("#downArrow").click();
       await el.updateComplete;
       await flush();
     } finally {
@@ -158,9 +154,9 @@ describe("sorting-question behavior", () => {
     expect(feedback.textContent.includes("out of")).to.equal(true);
     expect(el.shadowRoot.innerHTML.includes("Need a hint?")).to.equal(true);
     expect(
-      el.shadowRoot.querySelector('slot[name="feedbackIncorrect"]').getAttribute(
-        "property",
-      ),
+      el.shadowRoot
+        .querySelector('slot[name="feedbackIncorrect"]')
+        .getAttribute("property"),
     ).to.equal("oer:incorrectFeedback");
   });
 
@@ -187,9 +183,9 @@ describe("sorting-question behavior", () => {
       true,
     );
     expect(
-      el.shadowRoot.querySelector('slot[name="feedbackCorrect"]').getAttribute(
-        "property",
-      ),
+      el.shadowRoot
+        .querySelector('slot[name="feedbackCorrect"]')
+        .getAttribute("property"),
     ).to.equal("oer:correctFeedback");
     expect(el.shadowRoot.innerHTML.includes("Evidence")).to.equal(true);
     expect(el.shadowRoot.querySelector('slot[name="evidence"]')).to.exist;
@@ -374,9 +370,9 @@ describe("sorting-question behavior", () => {
     expect(el.getAttribute("typeof")).to.equal("oer:Assessment");
     const shadow = el.shadowRoot;
     expect(
-      shadow.querySelector('meta[property="oer:assessing"]').getAttribute(
-        "content",
-      ),
+      shadow
+        .querySelector('meta[property="oer:assessing"]')
+        .getAttribute("content"),
     ).to.equal("");
     el.relatedResource = "related-123";
     el.gradingFormat = "points";
@@ -384,14 +380,14 @@ describe("sorting-question behavior", () => {
     el.forCourse = "MATH-101";
     await el.updateComplete;
     expect(
-      shadow.querySelector('meta[property="oer:assessing"]').getAttribute(
-        "content",
-      ),
+      shadow
+        .querySelector('meta[property="oer:assessing"]')
+        .getAttribute("content"),
     ).to.equal("related-123");
     expect(
-      shadow.querySelector('meta[property="oer:gradingFormat"]').getAttribute(
-        "content",
-      ),
+      shadow
+        .querySelector('meta[property="oer:gradingFormat"]')
+        .getAttribute("content"),
     ).to.equal("points");
     expect(
       shadow
@@ -399,9 +395,9 @@ describe("sorting-question behavior", () => {
         .getAttribute("content"),
     ).to.equal("order sequences");
     expect(
-      shadow.querySelector('meta[property="oer:forCourse"]').getAttribute(
-        "content",
-      ),
+      shadow
+        .querySelector('meta[property="oer:forCourse"]')
+        .getAttribute("content"),
     ).to.equal("MATH-101");
     const name = shadow.querySelector('h3[property="oer:name"]');
     expect(name).to.exist;
@@ -472,8 +468,9 @@ describe("sorting-question behavior", () => {
     await flush();
     const wrapper = el.shadowRoot.querySelector(".edit-wrapper");
     expect(wrapper).to.exist;
-    expect(el.shadowRoot.querySelectorAll(".edit-wrapper slot").length).to
-      .be.above(0);
+    expect(
+      el.shadowRoot.querySelectorAll(".edit-wrapper slot").length,
+    ).to.be.above(0);
     el.edit = false;
     el._haxstate = false;
     await el.updateComplete;

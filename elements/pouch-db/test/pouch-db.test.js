@@ -229,33 +229,33 @@ describe("pouch-db test", () => {
   // TypeError. These tests invoke the methods directly with real
   // assertions.
   describe("Query Request Branches (direct invocation)", () => {
-    const wait = (ms) => new Promise((r) => setTimeout(r, ms))
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
     it("executes the single-quiz query branch and dispatches show-data", async () => {
-      await wait(150)
+      await wait(150);
       await new Promise((resolve, reject) => {
         const timer = setTimeout(
           () => reject(new Error("pouch-db-show-data never dispatched")),
           5000,
-        )
+        );
         globalThis.addEventListener(
           "pouch-db-show-data",
           (event) => {
-            clearTimeout(timer)
-            expect(event.detail.labels).to.exist
-            resolve()
+            clearTimeout(timer);
+            expect(event.detail.labels).to.exist;
+            resolve();
           },
           { once: true },
-        )
+        );
         element.getDataFunction({
           detail: { queryRequest: "single-quiz", objectName: "Quiz1" },
           target: { tagName: "TEST-ELEMENT" },
-        })
-      })
-    })
+        });
+      });
+    });
 
     it("executes the future-query branch without throwing", async () => {
-      await wait(150)
+      await wait(150);
       expect(() =>
         element.getDataFunction({
           detail: {
@@ -267,21 +267,21 @@ describe("pouch-db test", () => {
           },
           target: { tagName: "TEST-ELEMENT" },
         }),
-      ).to.not.throw()
-    })
+      ).to.not.throw();
+    });
 
     it("executes the default switch branch for unknown query requests", async () => {
-      await wait(150)
+      await wait(150);
       expect(() =>
         element.getDataFunction({
           detail: { queryRequest: "unknown-query" },
           target: { tagName: "TEST-ELEMENT" },
         }),
-      ).to.not.throw()
-    })
+      ).to.not.throw();
+    });
 
     it("executes the default switch branch of userEngagmentFunction for non multiple-choice sources", async () => {
-      await wait(150)
+      await wait(150);
       expect(() =>
         element.userEngagmentFunction({
           detail: {
@@ -291,8 +291,8 @@ describe("pouch-db test", () => {
           },
           target: { tagName: "UNKNOWN-ELEMENT" },
         }),
-      ).to.not.throw()
-    })
+      ).to.not.throw();
+    });
   });
 
   describe("Event Dispatching", () => {

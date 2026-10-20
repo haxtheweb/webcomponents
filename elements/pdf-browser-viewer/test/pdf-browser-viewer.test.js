@@ -22,9 +22,7 @@ describe("pdf-browser-viewer test", () => {
 
 describe("pdf-browser-viewer rendering", () => {
   it("hides without a file and shows with one", async () => {
-    const el = await fixture(
-      html`<pdf-browser-viewer></pdf-browser-viewer>`,
-    );
+    const el = await fixture(html`<pdf-browser-viewer></pdf-browser-viewer>`);
     await el.updateComplete;
     expect(getComputedStyle(el).display).to.equal("none");
     el.file = "document.pdf";

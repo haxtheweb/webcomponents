@@ -137,7 +137,10 @@ class TrainingTheme extends HAXCMSOperationButtons(
             var(--ddd-theme-default-shrineLight, #fefcf7),
             var(--ddd-theme-default-potentialMidnight, #000321)
           );
-          --training-theme-forestGreenLight: var(--ddd-theme-default-futureLime, #4a7729);
+          --training-theme-forestGreenLight: var(
+            --ddd-theme-default-futureLime,
+            #4a7729
+          );
           --training-theme-navText: var(
             --ddd-theme-default-slateLight,
             #ccdae6
@@ -430,7 +433,10 @@ class TrainingTheme extends HAXCMSOperationButtons(
           box-shadow: var(--ddd-boxShadow-sm);
           pointer-events: auto;
           text-transform: none;
-          --site-menu-button-icon-fill-color: light-dark(var(--ddd-theme-default-white, #ffffff), var(--ddd-theme-default-nittanyNavy, #001e44));
+          --site-menu-button-icon-fill-color: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-nittanyNavy, #001e44)
+          );
         }
         site-menu-button[type="next"]::part(button) {
           color: inherit;

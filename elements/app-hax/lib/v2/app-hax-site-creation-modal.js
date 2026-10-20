@@ -1202,7 +1202,10 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
               <div class="template-image">
                 <img
                   src="${this.source}"
-                  alt="${this.t.templatePreview.replace("{title}", () => this.title)}"
+                  alt="${this.t.templatePreview.replace(
+                    "{title}",
+                    () => this.title,
+                  )}"
                   loading="lazy"
                   decoding="async"
                   fetchpriority="high"
@@ -1217,9 +1220,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="siteName"
-          >${this.t.siteName}</label
-        >
+        <label class="form-label" for="siteName">${this.t.siteName}</label>
         <simple-icon-lite
           class="form-icon"
           icon="icons:create"

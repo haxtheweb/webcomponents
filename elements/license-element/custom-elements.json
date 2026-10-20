@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A list of licenses that we support the references for.",
+          "description": "A list of licenses that we support the references for.\n`name` is the English label; elements that display it translate via\n`this.t[tKey]` (see license-element / citation-element _licenseDisplayName)",
           "name": "licenseList"
         },
         {
@@ -16,6 +16,19 @@
           "description": "`license-element`\n`A simple way of applying a semantically accurate license to work.`",
           "name": "LicenseElement",
           "members": [
+            {
+              "kind": "method",
+              "name": "_fillTemplate",
+              "parameters": [
+                {
+                  "name": "str"
+                },
+                {
+                  "name": "values"
+                }
+              ],
+              "description": "splits a translated sentence on {placeholders} and swaps in the\nmatching values (strings or templates) so links stay inside one string"
+            },
             {
               "kind": "field",
               "name": "tag",
@@ -40,6 +53,11 @@
             },
             {
               "kind": "method",
+              "name": "_licenseDisplayName",
+              "description": "translated license name for display; custom licenseName values pass through"
+            },
+            {
+              "kind": "method",
               "name": "_licenseUpdated",
               "parameters": [
                 {
@@ -50,19 +68,16 @@
             },
             {
               "kind": "field",
-              "name": "licenseList",
-              "default": "new licenseList()"
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, licenseGraphic: \"{license} graphic\", workByCreator: \"{title} by {creator}\", workByCreatorLicensed: \"{title} by {creator} is licensed under a {license}.\", permissionsBeyondScope: \"Permissions beyond the scope of this license are available {link}.\", author: \"(author)\", onTheLicensingDetailsPage: \"on the licensing details page\", licenseBy: \"Attribution\", licenseBySa: \"Attribution Share a like\", licenseByNd: \"Attribution No derivatives\", licenseByNc: \"Attribution non-commercial\", licenseByNcSa: \"Attribution non-commercial share a like\", licenseByNcNd: \"Attribution Non-commercial No derivatives\", }"
             },
             {
               "kind": "field",
-              "name": "creator",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "description": "Person or group that owns / created the work.",
-              "default": "\"(author)\"",
-              "attribute": "creator"
+              "name": "licenseList",
+              "default": "new licenseList()"
             },
             {
               "kind": "field",
@@ -77,17 +92,6 @@
             },
             {
               "kind": "field",
-              "name": "moreLabel",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "description": "More details label",
-              "default": "\"on the licensing details page\"",
-              "attribute": "more-label"
-            },
-            {
-              "kind": "field",
               "name": "title",
               "privacy": "public",
               "type": {
@@ -95,6 +99,16 @@
               },
               "description": "Title of the work.",
               "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "creator",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Person or group that owns / created the work.",
+              "attribute": "creator"
             },
             {
               "kind": "field",
@@ -137,6 +151,16 @@
             },
             {
               "kind": "field",
+              "name": "moreLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "More details label",
+              "attribute": "more-label"
+            },
+            {
+              "kind": "field",
               "name": "moreLink",
               "privacy": "public",
               "type": {
@@ -171,7 +195,6 @@
                 "text": "string"
               },
               "description": "Person or group that owns / created the work.",
-              "default": "\"(author)\"",
               "fieldName": "creator"
             },
             {
@@ -220,7 +243,6 @@
                 "text": "string"
               },
               "description": "More details label",
-              "default": "\"on the licensing details page\"",
               "fieldName": "moreLabel"
             },
             {
@@ -241,6 +263,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "SchemaBehaviors",
               "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"

@@ -7,15 +7,24 @@ describe("a11y-carousel test", () => {
     element = await fixture(html`
       <a11y-carousel id="demo1" no-prev-next>
         <figure id="figure-1">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Random Kitten, 400 X 200" />
+          <img
+            src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+            alt="Random Kitten, 400 X 200"
+          />
           <figcaption>Item 1</figcaption>
         </figure>
         <figure id="figure-2">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Random Kitten, 300 X 100" />
+          <img
+            src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+            alt="Random Kitten, 300 X 100"
+          />
           <figcaption>Item 2</figcaption>
         </figure>
         <figure id="figure-3">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Random Kitten, 400 X 300" />
+          <img
+            src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+            alt="Random Kitten, 400 X 300"
+          />
           <figcaption>Item 3</figcaption>
         </figure>
       </a11y-carousel>
@@ -37,11 +46,17 @@ describe("a11y-carousel test", () => {
         <a11y-carousel>
           <div slot="above">Above content</div>
           <figure id="img-figure" slot="img">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Slotted Image" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Slotted Image"
+            />
             <figcaption>Slotted Image</figcaption>
           </figure>
           <figure id="default-figure">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Default Image" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Default Image"
+            />
             <figcaption>Default Image</figcaption>
           </figure>
           <div slot="below">Below content</div>
@@ -85,7 +100,10 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="only-figure">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Only Image" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Only Image"
+            />
             <figcaption>Only Image</figcaption>
           </figure>
         </a11y-carousel>
@@ -106,11 +124,17 @@ describe("a11y-carousel test", () => {
       testElement = await fixture(html`
         <a11y-carousel>
           <figure id="test-figure-1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Test Image 1" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Test Image 1"
+            />
             <figcaption>Test Image 1</figcaption>
           </figure>
           <figure id="test-figure-2">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Test Image 2" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Test Image 2"
+            />
             <figcaption>Test Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -331,7 +355,10 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel no-prev-next>
           <figure id="test-figure-1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Test Image 1" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Test Image 1"
+            />
             <figcaption>Test Image 1</figcaption>
           </figure>
         </a11y-carousel>
@@ -344,7 +371,10 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel no-buttons>
           <figure id="test-figure-1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Test Image 1" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Test Image 1"
+            />
             <figcaption>Test Image 1</figcaption>
           </figure>
         </a11y-carousel>
@@ -361,15 +391,24 @@ describe("a11y-carousel test", () => {
       navElement = await fixture(html`
         <a11y-carousel>
           <figure id="nav-fig-1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Navigation Image 1" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Navigation Image 1"
+            />
             <figcaption>Navigation Image 1</figcaption>
           </figure>
           <figure id="nav-fig-2">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Navigation Image 2" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Navigation Image 2"
+            />
             <figcaption>Navigation Image 2</figcaption>
           </figure>
           <figure id="nav-fig-3">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Navigation Image 3" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Navigation Image 3"
+            />
             <figcaption>Navigation Image 3</figcaption>
           </figure>
         </a11y-carousel>
@@ -442,11 +481,17 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="bg-fig-1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Background Image 1" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Background Image 1"
+            />
             <figcaption>Background Image 1</figcaption>
           </figure>
           <figure id="bg-fig-2">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Background Image 2" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Background Image 2"
+            />
             <figcaption>Background Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -484,11 +529,17 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel no-prev-next no-buttons>
           <figure id="fig-1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 1" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Image 1"
+            />
             <figcaption>Image 1</figcaption>
           </figure>
           <figure id="fig-2">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 2" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Image 2"
+            />
             <figcaption>Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -501,11 +552,17 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="fig-1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 1" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Image 1"
+            />
             <figcaption>Image 1</figcaption>
           </figure>
           <figure id="fig-2">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 2" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Image 2"
+            />
             <figcaption>Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -523,11 +580,17 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="fig-1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 1" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Image 1"
+            />
             <figcaption>Image 1</figcaption>
           </figure>
           <figure id="fig-2">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Image 2" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Image 2"
+            />
             <figcaption>Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -550,11 +613,17 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="event-fig-1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Event Image 1" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Event Image 1"
+            />
             <figcaption>Event Image 1</figcaption>
           </figure>
           <figure id="event-fig-2">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Event Image 2" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Event Image 2"
+            />
             <figcaption>Event Image 2</figcaption>
           </figure>
         </a11y-carousel>
@@ -581,7 +650,10 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="lifecycle-fig-1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Lifecycle Image 1" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Lifecycle Image 1"
+            />
             <figcaption>Lifecycle Image 1</figcaption>
           </figure>
         </a11y-carousel>
@@ -601,7 +673,10 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="edge-fig-1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Edge Image 1" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Edge Image 1"
+            />
             <figcaption>Edge Image 1</figcaption>
           </figure>
         </a11y-carousel>
@@ -636,7 +711,10 @@ describe("a11y-carousel test", () => {
       const testElement = await fixture(html`
         <a11y-carousel>
           <figure id="single-fig">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAADs=" alt="Single Image" />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAAAADs="
+              alt="Single Image"
+            />
             <figcaption>Single Image</figcaption>
           </figure>
         </a11y-carousel>
@@ -676,9 +754,15 @@ describe("a11y-carousel test", () => {
       );
       await button.updateComplete;
       const fired = [];
-      button.addEventListener("select-carousel-item", (e) => fired.push(e.detail));
+      button.addEventListener("select-carousel-item", (e) =>
+        fired.push(e.detail),
+      );
       button.dispatchEvent(
-        new MouseEvent("click", { bubbles: true, composed: true, cancelable: true }),
+        new MouseEvent("click", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
       );
       expect(fired.length).to.equal(1);
       expect(fired[0] === button).to.be.true;
@@ -691,7 +775,9 @@ describe("a11y-carousel test", () => {
       );
       await button.updateComplete;
       const fired = [];
-      button.addEventListener("select-carousel-item", (e) => fired.push(e.detail));
+      button.addEventListener("select-carousel-item", (e) =>
+        fired.push(e.detail),
+      );
       button.dispatchEvent(
         new KeyboardEvent("keydown", {
           key: "Enter",
@@ -721,14 +807,18 @@ describe("a11y-carousel test", () => {
       );
       await button.updateComplete;
       const fired = [];
-      button.addEventListener("select-carousel-item", (e) => fired.push(e.detail));
+      button.addEventListener("select-carousel-item", (e) =>
+        fired.push(e.detail),
+      );
       // an active button is disabled for further selection
       button.active = true;
       await button.updateComplete;
       expect(button.disabled).to.equal(true);
       expect(button.getAttribute("aria-disabled")).to.equal("true");
       expect(button.getAttribute("tabindex")).to.equal("-1");
-      button.dispatchEvent(new MouseEvent("click", { bubbles: true, composed: true }));
+      button.dispatchEvent(
+        new MouseEvent("click", { bubbles: true, composed: true }),
+      );
       expect(fired.length).to.equal(0);
       // clearing controls also disables the button
       button.active = false;
@@ -751,7 +841,9 @@ describe("a11y-carousel test", () => {
       await button.updateComplete;
       button.remove();
       const fired = [];
-      button.addEventListener("select-carousel-item", (e) => fired.push(e.detail));
+      button.addEventListener("select-carousel-item", (e) =>
+        fired.push(e.detail),
+      );
       button.dispatchEvent(
         new MouseEvent("click", { bubbles: true, composed: true }),
       );
@@ -836,7 +928,9 @@ describe("a11y-carousel test", () => {
       await testElement.updateComplete;
 
       const byType = (type) =>
-        testElement.querySelector(`a11y-carousel-button[button-type="${type}"]`);
+        testElement.querySelector(
+          `a11y-carousel-button[button-type="${type}"]`,
+        );
       // first figure is selected by default
       expect(byType("first").controls).to.equal("sync-fig-1");
       expect(byType("prev").controls).to.equal("sync-fig-3");

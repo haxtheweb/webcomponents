@@ -82,11 +82,7 @@ describe("letter-grade", () => {
 
   it("renders score and range when show-scale is set", async () => {
     const el = await fixture(
-      html`<letter-grade
-        score="90"
-        total="100"
-        show-scale
-      ></letter-grade>`,
+      html`<letter-grade score="90" total="100" show-scale></letter-grade>`,
     );
     await flush();
     expect(el.showScale).to.equal(true);
@@ -160,11 +156,7 @@ describe("letter-grade", () => {
 
   it("display-only skips letter recalculation", async () => {
     const el = await fixture(
-      html`<letter-grade
-        display-only
-        score="95"
-        total="100"
-      ></letter-grade>`,
+      html`<letter-grade display-only score="95" total="100"></letter-grade>`,
     );
     await flush();
     expect(el.letter).to.equal("");

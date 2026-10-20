@@ -146,9 +146,8 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
                 rel="noopener noreferrer"
                 ><img
                   loading="lazy"
-                  alt="${this.t.licenseGraphic.replace(
-                    "{license}",
-                    () => (this._licenseDisplayName()),
+                  alt="${this.t.licenseGraphic.replace("{license}", () =>
+                    this._licenseDisplayName(),
                   )}"
                   src="${this.licenseImage}"
               /></a>

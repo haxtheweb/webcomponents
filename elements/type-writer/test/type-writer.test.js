@@ -25,7 +25,9 @@ describe("type-writer", () => {
     });
 
     it("starts with empty text and no typing flag", async () => {
-      expect(element.shadowRoot.querySelector("#text").textContent).to.equal("");
+      expect(element.shadowRoot.querySelector("#text").textContent).to.equal(
+        "",
+      );
       expect(element.typing).to.equal(false);
     });
 
@@ -72,7 +74,10 @@ describe("type-writer", () => {
 
     it("reads numeric attributes from markup (cursor-duration, erase-speed)", async () => {
       element = await fixture(
-        html`<type-writer cursor-duration="250" erase-speed="42"></type-writer>`,
+        html`<type-writer
+          cursor-duration="250"
+          erase-speed="42"
+        ></type-writer>`,
       );
       expect(element.cursorDuration).to.equal(250);
       expect(element.eraseSpeed).to.equal(42);
@@ -117,8 +122,7 @@ describe("type-writer", () => {
     });
 
     it("exposes text / delay / speed / cursorDuration / typing as configure settings", () => {
-      const configure =
-        element.constructor.haxProperties.settings.configure;
+      const configure = element.constructor.haxProperties.settings.configure;
       const names = configure.map((c) => c.property);
       expect(names).to.include.members([
         "delay",

@@ -28,9 +28,7 @@ const chartistPluginsLoaded = () =>
 describe("chartist-render test", () => {
   describe("Basic instantiation and properties", () => {
     it("element is an instance of ChartistRender", async () => {
-      const element = await fixture(
-        html`<chartist-render></chartist-render>`,
-      );
+      const element = await fixture(html`<chartist-render></chartist-render>`);
       expect(element).to.be.instanceOf(ChartistRender);
     });
 
@@ -43,9 +41,7 @@ describe("chartist-render test", () => {
     });
 
     it("element has correct default properties", async () => {
-      const element = await fixture(
-        html`<chartist-render></chartist-render>`,
-      );
+      const element = await fixture(html`<chartist-render></chartist-render>`);
       expect(element.id).to.equal("chart");
       expect(element.type).to.equal("bar");
       expect(element.scale).to.equal("ct-minor-seventh");
@@ -55,7 +51,6 @@ describe("chartist-render test", () => {
       expect(element.showTable).to.be.false;
       expect(element.__chartId).to.include("chart-");
     });
-
   });
 
   describe("table-driven data", () => {
@@ -77,8 +72,16 @@ describe("chartist-render test", () => {
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>2</td><td>3</td></tr>
-              <tr><td>4</td><td>5</td><td>6</td></tr>
+              <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+              </tr>
             </tbody>
           </table>
         </chartist-render>
@@ -138,9 +141,7 @@ describe("chartist-render test", () => {
     });
 
     it("renders heading and description slots", async () => {
-      expect(
-        element.shadowRoot.querySelector('slot[name="heading"]'),
-      ).to.exist;
+      expect(element.shadowRoot.querySelector('slot[name="heading"]')).to.exist;
       expect(element.shadowRoot.querySelector('slot[name="desc"]')).to.exist;
     });
 
@@ -189,9 +190,7 @@ describe("chartist-render test", () => {
       await el.updateComplete;
       await aTimeout(100);
       const chart = el.shadowRoot.querySelector("#chart");
-      expect(chart.getAttribute("aria-label")).to.equal(
-        "Quarterly slices",
-      );
+      expect(chart.getAttribute("aria-label")).to.equal("Quarterly slices");
     });
 
     it("renders a line chart", async () => {
@@ -212,12 +211,18 @@ describe("chartist-render test", () => {
 
     it("swaps noop interpolation functions from responsive options", async () => {
       element.responsiveOptions = [
-        ["screen and (min-width: 1px)", {
-          axisX: { labelInterpolationFnc: "noop" },
-        }],
-        ["screen and (min-width: 2px)", {
-          axisY: { labelInterpolationFnc: "noop" },
-        }],
+        [
+          "screen and (min-width: 1px)",
+          {
+            axisX: { labelInterpolationFnc: "noop" },
+          },
+        ],
+        [
+          "screen and (min-width: 2px)",
+          {
+            axisY: { labelInterpolationFnc: "noop" },
+          },
+        ],
       ];
       element.chartData = { labels: ["a", "b"], series: [[1, 2]] };
       await element.updateComplete;
@@ -266,7 +271,9 @@ describe("chartist-render test", () => {
       element.pluginPointLabels = undefined;
       element.type = "pie";
       element.options = { donut: true };
-      element.pluginFillDonutItems = [{ content: "center", position: "center" }];
+      element.pluginFillDonutItems = [
+        { content: "center", position: "center" },
+      ];
       element.chartData = { labels: ["a", "b"], series: [1, 2] };
       await element.updateComplete;
       await aTimeout(100);

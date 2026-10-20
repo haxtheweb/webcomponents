@@ -51,9 +51,9 @@ describe("promise-progress-lite behavior", () => {
     el.value = 40;
     await el.updateComplete;
     expect(el.getAttribute("value")).to.equal("40");
-    expect(el.shadowRoot.querySelector("progress").getAttribute("value")).to.equal(
-      "40",
-    );
+    expect(
+      el.shadowRoot.querySelector("progress").getAttribute("value"),
+    ).to.equal("40");
   });
 
   it("renders the counter text only when show-count is on", async () => {
@@ -73,8 +73,12 @@ describe("promise-progress-lite behavior", () => {
       html`<promise-progress-lite></promise-progress-lite>`,
     );
     const seen = [];
-    el.addEventListener("value-changed", (e) => seen.push(["value", e.detail.value]));
-    el.addEventListener("max-changed", (e) => seen.push(["max", e.detail.value]));
+    el.addEventListener("value-changed", (e) =>
+      seen.push(["value", e.detail.value]),
+    );
+    el.addEventListener("max-changed", (e) =>
+      seen.push(["max", e.detail.value]),
+    );
     el.value = 40;
     await el.updateComplete;
     el.max = 200;
@@ -122,7 +126,9 @@ describe("promise-progress-lite behavior", () => {
       finishedDetail = e.detail.value;
     });
     let finishedDetail = null;
-    el.addEventListener("value-changed", (e) => valueEvents.push(e.detail.value));
+    el.addEventListener("value-changed", (e) =>
+      valueEvents.push(e.detail.value),
+    );
     el.list = [() => one.promise, () => two.promise];
     await el.updateComplete;
     const done = el.process();
@@ -178,7 +184,10 @@ describe("promise-progress-lite behavior", () => {
     el.addEventListener("promise-progress-finished", (e) => {
       finishedDetail = e.detail.value;
     });
-    el.list = [() => Promise.resolve("ok"), () => Promise.reject(new Error("boom"))];
+    el.list = [
+      () => Promise.resolve("ok"),
+      () => Promise.reject(new Error("boom")),
+    ];
     await el.updateComplete;
     await el.process();
     await flush(150);

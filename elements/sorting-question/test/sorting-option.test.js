@@ -36,9 +36,7 @@ describe("sorting-option (lib/sorting-option.js)", () => {
   });
 
   it("defaults to enabled, not dragging, and draggable", async () => {
-    const el = await fixture(
-      html`<sorting-option>Step</sorting-option>`,
-    );
+    const el = await fixture(html`<sorting-option>Step</sorting-option>`);
     expect(el.dragging).to.equal(false);
     expect(el.disabled).to.equal(false);
     expect(el.hasAttribute("draggable")).to.equal(true);
@@ -46,9 +44,7 @@ describe("sorting-option (lib/sorting-option.js)", () => {
   });
 
   it("drops draggable while disabled and restores it after", async () => {
-    const el = await fixture(
-      html`<sorting-option>Step</sorting-option>`,
-    );
+    const el = await fixture(html`<sorting-option>Step</sorting-option>`);
     el.disabled = true;
     await el.updateComplete;
     expect(el.hasAttribute("draggable")).to.equal(false);
@@ -58,9 +54,7 @@ describe("sorting-option (lib/sorting-option.js)", () => {
   });
 
   it("renders arrows with titles and an empty feedback icon", async () => {
-    const el = await fixture(
-      html`<sorting-option>Step</sorting-option>`,
-    );
+    const el = await fixture(html`<sorting-option>Step</sorting-option>`);
     const up = el.shadowRoot.querySelector("#upArrow");
     const down = el.shadowRoot.querySelector("#downArrow");
     expect(up).to.exist;
@@ -76,46 +70,40 @@ describe("sorting-option (lib/sorting-option.js)", () => {
   });
 
   it("renders check and clear feedback icons for correctness", async () => {
-    const el = await fixture(
-      html`<sorting-option>Step</sorting-option>`,
-    );
+    const el = await fixture(html`<sorting-option>Step</sorting-option>`);
     el.correct = true;
     await el.updateComplete;
     let icon = el.shadowRoot.querySelector("simple-icon-lite");
     expect(icon.getAttribute("icon")).to.equal("check");
-    expect(icon.getAttribute("title")).to.equal(
-      "Answer is in correct order",
-    );
+    expect(icon.getAttribute("title")).to.equal("Answer is in correct order");
     el.correct = null;
     el.incorrect = true;
     await el.updateComplete;
     icon = el.shadowRoot.querySelector("simple-icon-lite");
     expect(icon.getAttribute("icon")).to.equal("clear");
-    expect(icon.getAttribute("title")).to.equal(
-      "Answer is in incorrect order",
-    );
+    expect(icon.getAttribute("title")).to.equal("Answer is in incorrect order");
   });
 
   it("tracks the press position and clears correctness flags", async () => {
-    const el = await fixture(
-      html`<sorting-option>Step</sorting-option>`,
-    );
+    const el = await fixture(html`<sorting-option>Step</sorting-option>`);
     el.correct = true;
     el.incorrect = true;
-    el.dispatchEvent(new MouseEvent("mousedown", { clientY: 100, bubbles: true }));
+    el.dispatchEvent(
+      new MouseEvent("mousedown", { clientY: 100, bubbles: true }),
+    );
     expect(el.currentPosition).to.equal(100);
     expect(el.correct).to.equal(null);
     expect(el.incorrect).to.equal(null);
   });
 
   it("ignores presses while disabled", async () => {
-    const el = await fixture(
-      html`<sorting-option>Step</sorting-option>`,
-    );
+    const el = await fixture(html`<sorting-option>Step</sorting-option>`);
     el.disabled = true;
     await el.updateComplete;
     el.correct = true;
-    el.dispatchEvent(new MouseEvent("mousedown", { clientY: 100, bubbles: true }));
+    el.dispatchEvent(
+      new MouseEvent("mousedown", { clientY: 100, bubbles: true }),
+    );
     expect(el.currentPosition).to.equal(undefined);
     expect(el.correct).to.equal(true);
   });
@@ -274,9 +262,7 @@ describe("sorting-option (lib/sorting-option.js)", () => {
     // the delegatesFocus option must be set through the static
     // shadowRootOptions getter; assigning it in the constructor is too late
     // for Lit to see when it attaches the shadow root
-    const el = await fixture(
-      html`<sorting-option>Step</sorting-option>`,
-    );
+    const el = await fixture(html`<sorting-option>Step</sorting-option>`);
     expect(SortingOption.shadowRootOptions.delegatesFocus).to.equal(true);
     expect(SortingOption.shadowRootOptions.mode).to.equal("open");
     expect(el.shadowRoot.delegatesFocus).to.equal(true);
@@ -388,9 +374,7 @@ describe("sorting-option (lib/sorting-option.js)", () => {
   });
 
   it("passes the a11y audit", async () => {
-    const el = await fixture(
-      html`<sorting-option>Order me</sorting-option>`,
-    );
+    const el = await fixture(html`<sorting-option>Order me</sorting-option>`);
     await expect(el).shadowDom.to.be.accessible();
   });
 });

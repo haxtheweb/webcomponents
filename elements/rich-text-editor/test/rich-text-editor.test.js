@@ -111,9 +111,9 @@ describe("rich-text-editor behavior", () => {
     expect(element.__focused).to.equal(true);
     // the native focus event also fires, so at least one event carries the
     // first child element as its detail
-    expect(events.some((detail) => detail === element.querySelector("*"))).to.equal(
-      true,
-    );
+    expect(
+      events.some((detail) => detail === element.querySelector("*")),
+    ).to.equal(true);
   });
 
   it("focus on a disabled editor does not enable editing", async () => {
@@ -217,8 +217,8 @@ describe("rich-text-editor behavior", () => {
 
 describe("rich-text-editor toolbar creation", () => {
   it("creates a toolbar when none are registered", async () => {
-    const saved = globalThis.RichTextEditorToolbars
-    globalThis.RichTextEditorToolbars = []
+    const saved = globalThis.RichTextEditorToolbars;
+    globalThis.RichTextEditorToolbars = [];
     const element = await fixture(
       html`<rich-text-editor>
         <p id="first">hello world</p>
@@ -227,19 +227,19 @@ describe("rich-text-editor toolbar creation", () => {
     element.dispatchEvent(
       new MouseEvent("click", { bubbles: true, composed: true }),
     );
-    const created = element.__toolbar
-    expect(created === undefined).to.equal(false)
-    expect(created.tagName.toLowerCase()).to.equal("rich-text-editor-toolbar")
-    globalThis.RichTextEditorToolbars = saved
+    const created = element.__toolbar;
+    expect(created === undefined).to.equal(false);
+    expect(created.tagName.toLowerCase()).to.equal("rich-text-editor-toolbar");
+    globalThis.RichTextEditorToolbars = saved;
     // clean up: park the created toolbar without a target
     if (created && created.target) {
-      created.unsetTarget(created.target)
+      created.unsetTarget(created.target);
     }
     if (created) {
-      created.remove()
+      created.remove();
     }
-  })
-})
+  });
+});
 
 /*
 describe("A11y/chai axe tests", () => {

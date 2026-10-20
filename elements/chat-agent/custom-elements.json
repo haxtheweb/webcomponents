@@ -160,6 +160,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, openInterface: \"Open Interface\", closeInterface: \"Close Interface\", }"
+            },
+            {
+              "kind": "field",
               "name": "buttonIcon",
               "privacy": "public",
               "type": {
@@ -244,6 +252,12 @@
               "fieldName": "isInterfaceHidden"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "superclass": {
             "name": "DDD",
             "package": "@haxtheweb/d-d-d/d-d-d.js"
@@ -317,6 +331,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, downloadLogAsTxt: \"Download Log as txt\", downloadChatLog: \"Download Chat Log\", resetChat: \"Reset Chat\", toggleDataCollection: \"Toggle Data Collection\", dataCollection: \"Data Collection\", toggleDeveloperMode: \"Toggle Developer Mode\", exitFullView: \"Exit Full View\", enterFullView: \"Enter Full View\", hideInterface: \"Hide Interface\", resetChatConfirm: \"Reset the chat?\", downloadBeforeResetConfirm: \"Download the chat log before you reset?\", dataCollectionOn: \"Your conversations will be used to train our AI models\", dataCollectionOff: \"Your conversations will not be used to train our AI models\", }"
+            },
+            {
+              "kind": "field",
               "name": "dataCollectionEnabled",
               "privacy": "public",
               "type": {
@@ -381,6 +403,12 @@
               },
               "default": "null",
               "fieldName": "isInterfaceHidden"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {
@@ -462,6 +490,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, consoleTableUserLabel: \"Console table user chat log\", consoleTableUserText: \"console.table() user chat log\", consoleTableUserTooltip: \"Print User Chat Log as Table to Console\", consoleTableMerlinLabel: \"Console table merlin chat log\", consoleTableMerlinText: \"console.table() merlin chat log\", consoleTableMerlinTooltip: \"Print Merlin Chat Log as Table to Console\", consoleTableAllLabel: \"Console table entire chat log\", consoleTableAllText: \"console.table() entire chat log\", consoleTableAllTooltip: \"Print Entire Chat Log as Table to Console\", downloadChatLogJson: \"Download chat log as .json\", downloadChatLogJsonTooltip: \"Download Chat Log as .json\", }"
+            },
+            {
+              "kind": "field",
               "name": "chatLog",
               "type": {
                 "text": "array"
@@ -532,6 +568,12 @@
               },
               "default": "null",
               "fieldName": "isFullView"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {
@@ -623,6 +665,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, displayPreviousMessageUp: \"Display previously sent message (up)\", displayPreviousMessageDown: \"Display previously sent message (down)\", sendPrompt: \"Send Prompt\", sendPromptToMerlin: \"Send Prompt to Merlin\", shortenPrompt: \"Please shorten your prompt to no more than {limit} characters.\", }"
+            },
+            {
+              "kind": "field",
               "name": "chatLog",
               "type": {
                 "text": "array"
@@ -701,6 +751,12 @@
               "fieldName": "userName"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "superclass": {
             "name": "DDD",
             "package": "@haxtheweb/d-d-d/d-d-d.js"
@@ -745,7 +801,7 @@
               "name": "finishedTyping",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -937,6 +993,19 @@
                   "description": "click",
                   "type": {
                     "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleSuggestionKeydown",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "keydown",
+                  "type": {
+                    "text": "KeyboardEvent"
                   }
                 }
               ]
@@ -1137,7 +1206,24 @@
             },
             {
               "kind": "method",
+              "name": "handleSuggestionKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "handleSuggestion"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, sendSuggestionToMerlin: 'Send suggestion \"{suggestion}\" to Merlin', }"
             },
             {
               "kind": "field",
@@ -1236,6 +1322,12 @@
               },
               "default": "\"\"",
               "fieldName": "suggestion"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

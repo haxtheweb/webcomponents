@@ -105,13 +105,17 @@ function stepDtcg() {
   for (const [name, data] of Object.entries(files)) {
     writeJson(path.join(dir, name), data, 2);
   }
-  log(`1. DTCG: ${stats.light} tokens, ${stats.dark} dark overrides -> elements/d-d-d/tokens/`);
+  log(
+    `1. DTCG: ${stats.light} tokens, ${stats.dark} dark overrides -> elements/d-d-d/tokens/`,
+  );
 }
 
 // ------------------------------------------------------- 2. tokens.json --
 
 function stepTokens() {
-  const tokens = JSON.parse(fs.readFileSync(path.join(SRC, "tokens.json"), "utf8"));
+  const tokens = JSON.parse(
+    fs.readFileSync(path.join(SRC, "tokens.json"), "utf8"),
+  );
   const vars = dddVariables();
   const byName = new Map(vars.map((v) => [v.name, v]));
   const resolve = (value, seen = new Set()) => {
@@ -134,7 +138,10 @@ function stepTokens() {
       const dark = sc.dark[h][i];
       scValue.set(`simple-colors-default-theme-${h}-${n}`, {
         light: `{simple-colors-fixed-theme-${h}-${n}}`,
-        dark: dark === inverse ? `{simple-colors-fixed-theme-${h}-${13 - n}}` : dark,
+        dark:
+          dark === inverse
+            ? `{simple-colors-fixed-theme-${h}-${13 - n}}`
+            : dark,
       });
     });
   }
@@ -153,7 +160,11 @@ function stepTokens() {
         if (ld) next = { light: ld.light, dark: ld.dark };
         else if (family === "color") next = aliasOf(raw) || raw;
         else next = raw;
-      } else if (/^(ddd-(?!scheme-)|simple-colors-fixed|simple-colors-default-theme-(?!accent))/.test(t.name)) {
+      } else if (
+        /^(ddd-(?!scheme-)|simple-colors-fixed|simple-colors-default-theme-(?!accent))/.test(
+          t.name,
+        )
+      ) {
         removed.push(t.name);
         return false;
       } else return true; // synthetic: ddd-scheme-* pairs, accent-color shades
@@ -192,11 +203,16 @@ function stepTokens() {
       !seen.has(n) &&
       /^ddd-/.test(n) &&
       // these are documented by the type block (families, scale, h1-h6)
-      !/^ddd-(theme-(h\d|body)-font-size|font-size-|font-(primary|secondary|navigation|mono)$)/.test(n),
+      !/^ddd-(theme-(h\d|body)-font-size|font-size-|font-(primary|secondary|navigation|mono)$)/.test(
+        n,
+      ),
   );
   for (const h of sc.hues) {
     for (let i = 1; i <= 12; i++) {
-      for (const k of [`simple-colors-fixed-theme-${h}-${i}`, `simple-colors-default-theme-${h}-${i}`]) {
+      for (const k of [
+        `simple-colors-fixed-theme-${h}-${i}`,
+        `simple-colors-default-theme-${h}-${i}`,
+      ]) {
         if (!seen.has(k)) missing.push(k);
       }
     }
@@ -206,37 +222,51 @@ function stepTokens() {
       `tokens.json has no entry for ${missing.length} source tokens; add them (with a usage note) to source/tokens.json: ${missing.slice(0, 20).join(", ")}${missing.length > 20 ? " ..." : ""}`,
     );
   }
-  if (removed.length) warn(`dropped tokens no longer in source: ${removed.join(", ")}`);
+  if (removed.length)
+    warn(`dropped tokens no longer in source: ${removed.join(", ")}`);
   if (tokens.meta) tokens.meta.synced = new Date().toISOString().slice(0, 10);
   const colors = tokens.color.tokens.length;
-  if (colors > LIMITS.colors) warn(`${colors} colors exceeds the artifact limit of ${LIMITS.colors}`);
+  if (colors > LIMITS.colors)
+    warn(`${colors} colors exceeds the artifact limit of ${LIMITS.colors}`);
   writeJson(path.join(OUT, "tokens.json"), tokens);
-  log(`2. tokens.json: ${changed} values updated from source, ${colors} colors`);
+  log(
+    `2. tokens.json: ${changed} values updated from source, ${colors} colors`,
+  );
 }
 
 // ------------------------------------------------- 3. cards, docs, data --
 
 function stepCopy() {
   for (const f of fs.readdirSync(SRC)) {
-    if (["tokens.json", "bundle", "runtime", "components"].includes(f)) continue;
+    if (["tokens.json", "bundle", "runtime", "components"].includes(f))
+      continue;
     const a = path.join(SRC, f);
     if (fs.statSync(a).isFile()) fs.copyFileSync(a, path.join(OUT, f));
     else copyDir(a, path.join(OUT, f));
   }
   copyDir(path.join(SRC, "components"), path.join(OUT, "components"));
   copyDir(path.join(SRC, "runtime", "data"), path.join(OUT, "runtime", "data"));
-  copyDir(path.join(SRC, "runtime", "media"), path.join(OUT, "runtime", "media"));
+  copyDir(
+    path.join(SRC, "runtime", "media"),
+    path.join(OUT, "runtime", "media"),
+  );
   const cards = fs
     .readdirSync(path.join(OUT, "components"), { withFileTypes: true })
     .filter((e) => e.isDirectory() && e.name !== "lib")
     .map((e) => e.name);
   // the bundle header lists the cards in display order
-  const header = JSON.parse(fs.readFileSync(path.join(SRC, "bundle", "header.json"), "utf8"));
+  const header = JSON.parse(
+    fs.readFileSync(path.join(SRC, "bundle", "header.json"), "utf8"),
+  );
   const listed = new Set(header.components.map((c) => c.name));
   const unlisted = cards.filter((c) => !listed.has(c));
   const orphan = [...listed].filter((c) => !cards.includes(c));
-  if (unlisted.length) warn(`cards not in source/bundle/header.json (they will sort last): ${unlisted.join(", ")}`);
-  if (orphan.length) warn(`header.json lists cards with no folder: ${orphan.join(", ")}`);
+  if (unlisted.length)
+    warn(
+      `cards not in source/bundle/header.json (they will sort last): ${unlisted.join(", ")}`,
+    );
+  if (orphan.length)
+    warn(`header.json lists cards with no folder: ${orphan.join(", ")}`);
   log(`3. copied ${cards.length} cards, docs, data and media`);
 }
 
@@ -261,7 +291,8 @@ function stepIcons() {
         if (!f.endsWith(".svg")) continue;
         const svg = fs.readFileSync(path.join(sdir, f));
         sets[set] = sets[set] || {};
-        sets[set][f.slice(0, -4)] = "data:image/svg+xml;base64," + svg.toString("base64");
+        sets[set][f.slice(0, -4)] =
+          "data:image/svg+xml;base64," + svg.toString("base64");
       }
     }
   }
@@ -288,15 +319,21 @@ function stepIcons() {
     writeJson(path.join(dir, f), p, 0);
     return f;
   });
-  const counts = Object.fromEntries(Object.entries(sets).map(([k, v]) => [k, Object.keys(v).length]));
+  const counts = Object.fromEntries(
+    Object.entries(sets).map(([k, v]) => [k, Object.keys(v).length]),
+  );
   writeJson(path.join(dir, "index.json"), { files, sets: counts });
-  log(`4. icons: ${Object.values(counts).reduce((a, b) => a + b, 0)} in ${Object.keys(sets).length} sets, ${files.length} files`);
+  log(
+    `4. icons: ${Object.values(counts).reduce((a, b) => a + b, 0)} in ${Object.keys(sets).length} sets, ${files.length} files`,
+  );
 }
 
 // ------------------------------------------------------- 5. theme sites --
 
 function stepSites() {
-  const manifest = JSON.parse(fs.readFileSync(path.join(SRC, "runtime", "sites.json"), "utf8"));
+  const manifest = JSON.parse(
+    fs.readFileSync(path.join(SRC, "runtime", "sites.json"), "utf8"),
+  );
   let n = 0;
   for (const [theme, files] of Object.entries(manifest.sites)) {
     const demo = path.join(REPO, "elements", theme, "demo");
@@ -312,14 +349,21 @@ function stepSites() {
       n++;
     }
   }
-  copyDir(path.join(SRC, "runtime", "sites"), path.join(OUT, "runtime", "sites"));
-  log(`5. theme sites: ${Object.keys(manifest.sites).length} themes, ${n} demo files + overrides`);
+  copyDir(
+    path.join(SRC, "runtime", "sites"),
+    path.join(OUT, "runtime", "sites"),
+  );
+  log(
+    `5. theme sites: ${Object.keys(manifest.sites).length} themes, ${n} demo files + overrides`,
+  );
 }
 
 // --------------------------------------------------------- 6. runtime/nm --
 
 function stepNm() {
-  const { files } = JSON.parse(fs.readFileSync(path.join(SRC, "runtime", "nm.json"), "utf8"));
+  const { files } = JSON.parse(
+    fs.readFileSync(path.join(SRC, "runtime", "nm.json"), "utf8"),
+  );
   let n = 0;
   for (const rel of files) {
     const a = resolveModule(rel);
@@ -359,7 +403,10 @@ function wrap(code, global) {
     else {
       const v = o - 0x10000;
       ascii +=
-        "\\u" + (0xd800 + (v >> 10)).toString(16) + "\\u" + (0xdc00 + (v & 0x3ff)).toString(16);
+        "\\u" +
+        (0xd800 + (v >> 10)).toString(16) +
+        "\\u" +
+        (0xdc00 + (v & 0x3ff)).toString(16);
     }
   }
   return ascii;
@@ -368,7 +415,13 @@ function wrap(code, global) {
 // import.meta.url -> runtime/nm/<path under node_modules>, other import.meta -> {}
 function rewriteImportMeta(file, text) {
   const i = file.lastIndexOf(`${path.sep}node_modules${path.sep}`);
-  const rel = i > -1 ? file.slice(i + 14).split(path.sep).join("/") : file.split(path.sep).slice(-3).join("/");
+  const rel =
+    i > -1
+      ? file
+          .slice(i + 14)
+          .split(path.sep)
+          .join("/")
+      : file.split(path.sep).slice(-3).join("/");
   return text
     .replaceAll(
       "import.meta.url",
@@ -393,7 +446,10 @@ async function bundleOne(entryCode, label) {
             name: "import-meta",
             setup(b) {
               b.onLoad({ filter: /\.m?js$/ }, async (a) => ({
-                contents: rewriteImportMeta(a.path, await globalThis.Bun.file(a.path).text()),
+                contents: rewriteImportMeta(
+                  a.path,
+                  await globalThis.Bun.file(a.path).text(),
+                ),
                 loader: "js",
               }));
             },
@@ -407,7 +463,9 @@ async function bundleOne(entryCode, label) {
     try {
       esbuild = await import("esbuild");
     } catch {
-      throw new Error("esbuild not found: run yarn install at the repo root (or run this script with bun)");
+      throw new Error(
+        "esbuild not found: run yarn install at the repo root (or run this script with bun)",
+      );
     }
     const r = await esbuild.build({
       entryPoints: [tmp],
@@ -425,7 +483,10 @@ async function bundleOne(entryCode, label) {
           name: "import-meta",
           setup(b) {
             b.onLoad({ filter: /\.m?js$/ }, async (a) => ({
-              contents: rewriteImportMeta(a.path, await fs.promises.readFile(a.path, "utf8")),
+              contents: rewriteImportMeta(
+                a.path,
+                await fs.promises.readFile(a.path, "utf8"),
+              ),
               loader: "js",
             }));
           },
@@ -440,7 +501,9 @@ async function bundleOne(entryCode, label) {
 
 async function stepBundles() {
   const B = path.join(SRC, "bundle");
-  const entries = JSON.parse(fs.readFileSync(path.join(B, "entries.json"), "utf8"));
+  const entries = JSON.parse(
+    fs.readFileSync(path.join(B, "entries.json"), "utf8"),
+  );
   const header = fs.readFileSync(path.join(B, "header.json"), "utf8").trim();
   const prelude = JSON.stringify(path.join(B, "prelude.js"));
   const postlude = JSON.stringify(path.join(B, "postlude.js"));
@@ -471,8 +534,12 @@ async function stepBundles() {
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, text);
     const size = Buffer.byteLength(text);
-    if (size > out[key].limit) warn(`${out[key].file} is ${size} bytes, over the ${out[key].limit} limit`);
-    if (/import\.meta/.test(text)) warn(`${out[key].file} still contains import.meta`);
+    if (size > out[key].limit)
+      warn(
+        `${out[key].file} is ${size} bytes, over the ${out[key].limit} limit`,
+      );
+    if (/import\.meta/.test(text))
+      warn(`${out[key].file} still contains import.meta`);
     log(`7. ${out[key].file}: ${(size / 1024 / 1024).toFixed(2)} MB`);
   }
 }
@@ -489,20 +556,36 @@ function stepChecks() {
     }
   };
   walk(OUT);
-  const big = new Set(["components/bundle.js", "components/lib/ddd-sheet-music.js", "components/lib/ddd-slide-deck.js"]);
+  const big = new Set([
+    "components/bundle.js",
+    "components/lib/ddd-sheet-music.js",
+    "components/lib/ddd-slide-deck.js",
+  ]);
   for (const f of all) {
     const size = fs.statSync(path.join(OUT, f)).size;
-    if (!big.has(f) && size > LIMITS.file) warn(`${f} is ${size} bytes, over the ${LIMITS.file} per-file limit`);
-    if (f.split("/").includes("node_modules")) warn(`${f}: node_modules path segments are refused`);
-    if (/\.(pptx|docx|xlsx|zip)$/i.test(f)) warn(`${f}: this file type is not served by artifacts`);
-    if (/\.xml$/i.test(f) && /<!DOCTYPE/i.test(fs.readFileSync(path.join(OUT, f), "utf8"))) warn(`${f}: XML must not contain a DOCTYPE`);
+    if (!big.has(f) && size > LIMITS.file)
+      warn(`${f} is ${size} bytes, over the ${LIMITS.file} per-file limit`);
+    if (f.split("/").includes("node_modules"))
+      warn(`${f}: node_modules path segments are refused`);
+    if (/\.(pptx|docx|xlsx|zip)$/i.test(f))
+      warn(`${f}: this file type is not served by artifacts`);
+    if (
+      /\.xml$/i.test(f) &&
+      /<!DOCTYPE/i.test(fs.readFileSync(path.join(OUT, f), "utf8"))
+    )
+      warn(`${f}: XML must not contain a DOCTYPE`);
   }
   for (const d of fs.readdirSync(path.join(OUT, "components"))) {
-    if (d !== "lib" && fs.statSync(path.join(OUT, "components", d)).isDirectory() && !/^[A-Za-z_$][A-Za-z0-9_$]{0,63}$/.test(d)) {
+    if (
+      d !== "lib" &&
+      fs.statSync(path.join(OUT, "components", d)).isDirectory() &&
+      !/^[A-Za-z_$][A-Za-z0-9_$]{0,63}$/.test(d)
+    ) {
       warn(`components/${d}: not a valid component name`);
     }
   }
-  if (all.length > LIMITS.files) warn(`${all.length} files, over the ${LIMITS.files} per-version limit`);
+  if (all.length > LIMITS.files)
+    warn(`${all.length} files, over the ${LIMITS.files} per-version limit`);
   log(`8. ${all.length} files checked`);
 }
 
@@ -524,7 +607,9 @@ async function main() {
     console.log(`\n${warnings.length} warning(s):`);
     for (const w of warnings) console.log(`  - ${w}`);
   }
-  console.log(`\nDone: ${path.relative(process.cwd(), OUT) || OUT}. Publish it as the DDD design system (publish design-system.json last).`);
+  console.log(
+    `\nDone: ${path.relative(process.cwd(), OUT) || OUT}. Publish it as the DDD design system (publish design-system.json last).`,
+  );
 }
 
 main().catch((e) => {

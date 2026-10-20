@@ -152,9 +152,7 @@ describe("stop-note gap coverage", () => {
   });
 
   it("registers hax hooks and applies hax edit state to the title", async () => {
-    const el = await fixture(
-      html`<stop-note title="Editable"></stop-note>`,
-    );
+    const el = await fixture(html`<stop-note title="Editable"></stop-note>`);
     await el.updateComplete;
 
     const hooks = el.haxHooks();
@@ -183,9 +181,7 @@ describe("stop-note gap coverage", () => {
   });
 
   it("ignores hax active changes while data-hax-lock is set", async () => {
-    const el = await fixture(
-      html`<stop-note title="Locked"></stop-note>`,
-    );
+    const el = await fixture(html`<stop-note title="Locked"></stop-note>`);
     await el.updateComplete;
 
     el.setAttribute("data-hax-lock", "locked");
@@ -219,8 +215,9 @@ describe("stop-note gap coverage", () => {
 
   it("guards _applySlottedLinkColor against non-element targets", () => {
     // null and plain objects must not throw (defensive guard branches)
-    expect(() => StopNote.prototype._applySlottedLinkColor.call(null)).to.not
-      .throw();
+    expect(() =>
+      StopNote.prototype._applySlottedLinkColor.call(null),
+    ).to.not.throw();
     expect(() =>
       StopNote.prototype._applySlottedLinkColor.call({}, {}),
     ).to.not.throw();
@@ -228,8 +225,9 @@ describe("stop-note gap coverage", () => {
 
   it("guards _syncSlottedLinkColor before a shadow root exists", () => {
     // a this without shadowRoot must be a no-op rather than throw
-    expect(() => StopNote.prototype._syncSlottedLinkColor.call({})).to.not
-      .throw();
+    expect(() =>
+      StopNote.prototype._syncSlottedLinkColor.call({}),
+    ).to.not.throw();
   });
 
   it("makes anchors nested inside slotted content inherit color", async () => {

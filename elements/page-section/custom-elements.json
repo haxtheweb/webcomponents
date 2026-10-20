@@ -25,7 +25,7 @@
               "name": "videoPlay",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -34,7 +34,7 @@
               "name": "videoPause",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -58,7 +58,7 @@
               "name": "scrollToNextTarget",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },

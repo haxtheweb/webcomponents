@@ -131,15 +131,11 @@ describe("GitCorner test", () => {
     // with alt set, the label mirrors it
     element.alt = "Our project repository";
     await element.updateComplete;
-    expect(link.getAttribute("aria-label")).to.equal(
-      "Our project repository",
-    );
+    expect(link.getAttribute("aria-label")).to.equal("Our project repository");
     // with alt unset, the fallback keeps the link labelled
     element.alt = null;
     await element.updateComplete;
-    expect(link.getAttribute("aria-label")).to.equal(
-      "View source on GitHub",
-    );
+    expect(link.getAttribute("aria-label")).to.equal("View source on GitHub");
   });
 
   // Edge cases

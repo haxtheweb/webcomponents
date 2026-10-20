@@ -26,7 +26,7 @@
                   "name": "newValue"
                 },
                 {
-                  "name": "oldValue"
+                  "name": "_oldValue"
                 }
               ],
               "description": "Notice the schema map has changed, reprocess attributes."

@@ -150,9 +150,7 @@ export class TableauEmbed extends I18NMixin(LitElement) {
     if (!this.loaded) {
       return html`
         <div class="loading-msg" role="status" aria-live="polite">
-          ${this.loading
-            ? this.t.loadingTableau
-            : this.t.unableToLoadTableau}
+          ${this.loading ? this.t.loadingTableau : this.t.unableToLoadTableau}
         </div>
       `;
     }

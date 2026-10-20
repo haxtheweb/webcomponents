@@ -47,7 +47,8 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       lessonApproxReading: "Approx. {time} of reading",
       lessonReadingEstimate: "This is just an estimate of words to read",
       lessonInteractiveItemsCount: "{count} Interactive items",
-      lessonSelfChecksSubtitle: "Self checks and interactive widgets to learn by applying knowledge",
+      lessonSelfChecksSubtitle:
+        "Self checks and interactive widgets to learn by applying knowledge",
       lessonVideosCount: "{count} Videos",
       lessonVideoLength: "{time} of video",
       lessonValueOfKey: "{value} of {key}",
@@ -152,25 +153,40 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
         // walk response details, setting things into associated smart blocks
         switch (key) {
           case "audio":
-            item.title = this.t.lessonAudioCount.replace("{count}", () => value);
+            item.title = this.t.lessonAudioCount.replace(
+              "{count}",
+              () => value,
+            );
             item.icon = "av:music-video";
             break;
           case "images":
-            item.title = this.t.lessonImagesCount.replace("{count}", () => value);
+            item.title = this.t.lessonImagesCount.replace(
+              "{count}",
+              () => value,
+            );
             item.icon = "image:image";
             break;
           case "objectives":
-            item.title = this.t.lessonObjectivesCount.replace("{count}", () => value);
+            item.title = this.t.lessonObjectivesCount.replace(
+              "{count}",
+              () => value,
+            );
             item.subtitle = this.t.lessonObjectivesSubtitle;
             item.icon = "editor:format-list-numbered";
             break;
           case "dataTables":
-            item.title = this.t.lessonDataTablesCount.replace("{count}", () => value);
+            item.title = this.t.lessonDataTablesCount.replace(
+              "{count}",
+              () => value,
+            );
             item.icon = "image:grid-on";
             break;
           case "pages": {
             let items = [];
-            item.title = this.t.lessonPagesCount.replace("{count}", () => value);
+            item.title = this.t.lessonPagesCount.replace(
+              "{count}",
+              () => value,
+            );
             if (data.objectives) {
               items.push(
                 this.t.lessonLearningObjectivesCount.replace(
@@ -181,7 +197,10 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
             }
             if (data.images) {
               items.push(
-                this.t.lessonImagesLowerCount.replace("{count}", () => data.images),
+                this.t.lessonImagesLowerCount.replace(
+                  "{count}",
+                  () => data.images,
+                ),
               );
             }
             if (data.dataTables) {
@@ -195,7 +214,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
             item.subtitle = items.join(", ");
             item.icon = "editor:insert-drive-file";
             break;
-}
+          }
           case "readTime": {
             let readVal = [];
             let hours = Math.floor(value / 60);
@@ -216,14 +235,13 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
             } else {
               readVal.push(`${minutes} ${this.t.minutes}`);
             }
-            item.title = this.t.lessonApproxReading.replace(
-              "{time}",
-              () => (readVal.join(", ")),
+            item.title = this.t.lessonApproxReading.replace("{time}", () =>
+              readVal.join(", "),
             );
             item.subtitle = this.t.lessonReadingEstimate;
             item.icon = "communication:import-contacts";
             break;
-}
+          }
           case "selfChecks":
             item.title = this.t.lessonInteractiveItemsCount.replace(
               "{count}",
@@ -233,19 +251,20 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
             item.icon = "hardware:videogame-asset";
             break;
           case "video":
-            item.title = this.t.lessonVideosCount.replace("{count}", () => value);
+            item.title = this.t.lessonVideosCount.replace(
+              "{count}",
+              () => value,
+            );
             if (data.videoLength) {
-              item.subtitle = this.t.lessonVideoLength.replace(
-                "{time}",
-                () => (toHHMMSS(data.videoLength)),
+              item.subtitle = this.t.lessonVideoLength.replace("{time}", () =>
+                toHHMMSS(data.videoLength),
               );
             }
             item.icon = "av:play-circle-outline";
             break;
           case "videoLength":
-            item.title = this.t.lessonVideoLength.replace(
-              "{time}",
-              () => (toHHMMSS(value)),
+            item.title = this.t.lessonVideoLength.replace("{time}", () =>
+              toHHMMSS(value),
             );
             item.icon = "av:play-circle-outline";
             break;

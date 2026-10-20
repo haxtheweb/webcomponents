@@ -72,6 +72,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, zoomIn: \"Zoom in\", zoomOut: \"Zoom out\", rotateRight: \"Rotate right\", mirrorImage: \"Mirror image\", openInNewWindow: \"Open in new window\", }"
+            },
+            {
+              "kind": "field",
               "name": "hoverClass",
               "privacy": "public",
               "type": {
@@ -115,6 +123,12 @@
               },
               "description": "Hover class for button styling",
               "fieldName": "hoverClass"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

@@ -7,10 +7,6 @@
       "path": "i18n-manager.js",
       "declarations": [
         {
-          "kind": "variable",
-          "name": "I18NManagerStore"
-        },
-        {
           "kind": "class",
           "description": "`i18n-manager`\n`internationalization management singleton and helper classes`",
           "name": "I18NManager",
@@ -216,17 +212,13 @@
           },
           "tagName": "i18n-manager",
           "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "I18NManagerStore"
         }
       ],
       "exports": [
-        {
-          "kind": "js",
-          "name": "I18NManagerStore",
-          "declaration": {
-            "name": "I18NManagerStore",
-            "module": "i18n-manager.js"
-          }
-        },
         {
           "kind": "custom-element-definition",
           "declaration": {
@@ -239,6 +231,14 @@
           "name": "I18NManager",
           "declaration": {
             "name": "I18NManager",
+            "module": "i18n-manager.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "I18NManagerStore",
+          "declaration": {
+            "name": "I18NManagerStore",
             "module": "i18n-manager.js"
           }
         }
@@ -259,6 +259,86 @@
               "static": true,
               "description": "Enhanced data reactivity for LitElement if available",
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "i18nDefault",
+              "parameters": [
+                {
+                  "name": "prop",
+                  "description": "property on this element",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "key",
+                  "description": "this.t key, or (t) => value",
+                  "type": {
+                    "text": "String|Function"
+                  }
+                }
+              ],
+              "description": "Set a property to a translated default and keep it translated.\nTranslations load after the constructor runs, so a value copied\nfrom this.t there would otherwise stay in English. The property\nfollows this.t until something sets it to a different value\n(an attribute, the author, the app), then it is left alone."
+            },
+            {
+              "kind": "method",
+              "name": "i18nBind",
+              "parameters": [
+                {
+                  "name": "obj",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "field",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "key",
+                  "description": "this.t key, or (t) => value",
+                  "type": {
+                    "text": "String|Function"
+                  }
+                },
+                {
+                  "name": "onChange",
+                  "optional": true,
+                  "type": {
+                    "text": "Function"
+                  }
+                }
+              ],
+              "description": "Same as i18nDefault for a field on any object (an option, a program\ndefinition...). onChange(obj) runs after the field is re-translated."
+            },
+            {
+              "kind": "method",
+              "name": "_i18nValue",
+              "parameters": [
+                {
+                  "name": "key"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_syncI18nBindings",
+              "description": "Re-apply translated defaults; bindings whose value was changed by\nsomething else are dropped."
+            },
+            {
+              "kind": "method",
+              "name": "_i18nSame",
+              "parameters": [
+                {
+                  "name": "a"
+                },
+                {
+                  "name": "b"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -310,6 +390,352 @@
           "declaration": {
             "name": "I18NMixin",
             "module": "lib/I18NMixin.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/LanguageRegistry.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "LANGUAGE_REGISTRY_URL",
+          "description": "Helpers for the canonical language registry (`languages.json`).\n\nThe registry is the one list of languages HAX knows about. Anything that\nlets a person pick, store or resolve a language (installer, system\nsettings, site settings, the CLI, the backends) should go through it\ninstead of keeping its own list.\n\nShape of `languages.json`:\n- `languages` is keyed by the canonical code that gets stored (`en`, `sw`,\n  `pt-BR`, `zh-CN`).\n- An entry without `parent` is a language. An entry with `parent` is a\n  regional variant (`en-GB`) that resolves to its parent's translations.\n- `locale` is the translation file suffix (`<namespace>.<locale>.json`),\n  so `zh-CN` stores as `zh-CN` but loads `zh` files.\n- `aliases` are other codes that resolve to the entry (legacy codes like\n  `iw`, script tags like `zh-Hans`).\n- `popular` is an optional rank used to put the most common languages\n  first in short lists.\n\nThis module has no DOM or DDD dependency so the same code can run in a\nbrowser, in Node (inject the parsed JSON with `setLanguageRegistry`) and\nin tests."
+        },
+        {
+          "kind": "function",
+          "name": "setLanguageRegistry",
+          "parameters": [
+            {
+              "name": "data",
+              "description": "parsed languages.json",
+              "type": {
+                "text": "Object"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getLanguageRegistry"
+        },
+        {
+          "kind": "function",
+          "name": "loadLanguageRegistry",
+          "parameters": [
+            {
+              "name": "url",
+              "default": "LANGUAGE_REGISTRY_URL",
+              "description": "override for where languages.json lives",
+              "type": {
+                "text": "String"
+              }
+            }
+          ],
+          "return": {
+            "type": {
+              "text": "Promise<Object>"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "normalizeLanguageCode",
+          "parameters": [
+            {
+              "name": "value",
+              "description": "a language code or locale",
+              "type": {
+                "text": "String"
+              }
+            },
+            {
+              "name": "source",
+              "description": "optional raw registry (defaults to the loaded one)",
+              "type": {
+                "text": "Object"
+              }
+            }
+          ],
+          "return": {
+            "type": {
+              "text": "String|null"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "matchLanguageCode",
+          "parameters": [
+            {
+              "name": "value",
+              "description": "a language code",
+              "type": {
+                "text": "String"
+              }
+            },
+            {
+              "name": "source",
+              "description": "optional raw registry (defaults to the loaded one)",
+              "type": {
+                "text": "Object"
+              }
+            }
+          ],
+          "return": {
+            "type": {
+              "text": "String|null"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "isSupportedLanguageCode",
+          "parameters": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "source"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getLanguageByCode",
+          "parameters": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "source"
+            }
+          ],
+          "return": {
+            "type": {
+              "text": "Object|null"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "getLanguageLocale",
+          "parameters": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "source"
+            }
+          ],
+          "return": {
+            "type": {
+              "text": "String|null"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "getLanguageDirection",
+          "parameters": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "source"
+            }
+          ],
+          "return": {
+            "type": {
+              "text": "\"ltr\"|\"rtl\""
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "getLanguageLabel",
+          "parameters": [
+            {
+              "name": "entry"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getLanguageOptions",
+          "parameters": [
+            {
+              "name": "{\n  includeRegions = \"featured\",\n  popularFirst = false,\n  registry,\n}",
+              "default": "{}"
+            },
+            {
+              "name": "config",
+              "type": {
+                "text": "@param {Boolean|\"featured\"} config.includeRegions regional variants to\n * include: `\"featured\"` (default) only the ones worth choosing separately\n * (en-GB, pt-BR...), `true` all of them, `false` none\n * @param {Boolean} config.popularFirst put ranked languages first, in rank\n * order, then the rest by name\n * @param {Object} config.registry optional raw registry\n * "
+              }
+            }
+          ],
+          "return": {
+            "type": {
+              "text": "Array"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "getPopularLanguageOptions",
+          "parameters": [
+            {
+              "name": "limit",
+              "default": "10",
+              "description": "how many to return",
+              "type": {
+                "text": "Number"
+              }
+            },
+            {
+              "name": "registry"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "searchLanguageOptions",
+          "parameters": [
+            {
+              "name": "query",
+              "description": "what was typed",
+              "type": {
+                "text": "String"
+              }
+            },
+            {
+              "name": "options",
+              "description": "from getLanguageOptions (defaults to all languages)",
+              "type": {
+                "text": "Array"
+              }
+            }
+          ],
+          "return": {
+            "type": {
+              "text": "Array"
+            }
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LANGUAGE_REGISTRY_URL",
+          "declaration": {
+            "name": "LANGUAGE_REGISTRY_URL",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "setLanguageRegistry",
+          "declaration": {
+            "name": "setLanguageRegistry",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getLanguageRegistry",
+          "declaration": {
+            "name": "getLanguageRegistry",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "loadLanguageRegistry",
+          "declaration": {
+            "name": "loadLanguageRegistry",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "normalizeLanguageCode",
+          "declaration": {
+            "name": "normalizeLanguageCode",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "matchLanguageCode",
+          "declaration": {
+            "name": "matchLanguageCode",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "isSupportedLanguageCode",
+          "declaration": {
+            "name": "isSupportedLanguageCode",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getLanguageByCode",
+          "declaration": {
+            "name": "getLanguageByCode",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getLanguageLocale",
+          "declaration": {
+            "name": "getLanguageLocale",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getLanguageDirection",
+          "declaration": {
+            "name": "getLanguageDirection",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getLanguageLabel",
+          "declaration": {
+            "name": "getLanguageLabel",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getLanguageOptions",
+          "declaration": {
+            "name": "getLanguageOptions",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getPopularLanguageOptions",
+          "declaration": {
+            "name": "getPopularLanguageOptions",
+            "module": "lib/LanguageRegistry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "searchLanguageOptions",
+          "declaration": {
+            "name": "searchLanguageOptions",
+            "module": "lib/LanguageRegistry.js"
           }
         }
       ]

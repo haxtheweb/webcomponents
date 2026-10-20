@@ -529,9 +529,7 @@ describe("accent-card test", () => {
       expect(testElement.elementVisible).to.be.false;
       expect(imageWrapper.hasAttribute("hidden")).to.be.true;
 
-      testElement.handleIntersectionCallback([
-        { intersectionRatio: 1 },
-      ]);
+      testElement.handleIntersectionCallback([{ intersectionRatio: 1 }]);
       await testElement.updateComplete;
 
       expect(testElement.elementVisible).to.be.true;

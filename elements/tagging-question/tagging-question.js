@@ -25,7 +25,8 @@ class TaggingQuestion extends QuestionElement {
       selectAllDirections:
         "Select all that apply. When you are done, press {checkAnswer}. You will get feedback indicating correctness of your answer and how to proceed.",
       numCorrectOutOfTotal: "{correct} out of {total} correct.",
-      numCorrectOutOfTotalTooMany: "{correct} out of {total} correct, {warning}",
+      numCorrectOutOfTotalTooMany:
+        "{correct} out of {total} correct, {warning}",
       tooManyOptionsPresent: "but too many options present!",
       answersSelected: "Answers selected",
       answersNotSelected: "Answers not selected",

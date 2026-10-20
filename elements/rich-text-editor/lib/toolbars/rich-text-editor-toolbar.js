@@ -5,9 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { SimpleToolbarBehaviors } from "@haxtheweb/simple-toolbar/simple-toolbar.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import {
-  RichTextStyles,
-} from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-button.js";
+import { RichTextStyles } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-button.js";
 import { RichTextEditorRangeBehaviors } from "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
 import "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
@@ -1350,7 +1348,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     _renderButtonGroup(config) {
       let group = super._renderButtonGroup(config);
-      if (config.subtype && group.classList) group.classList.add(config.subtype);
+      if (config.subtype && group.classList)
+        group.classList.add(config.subtype);
       return group;
     }
 
@@ -1749,9 +1748,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
 
     get targetHTML() {
-      return this.target
-        ? this.outdentHTML(this.target.innerHTML)
-        : undefined;
+      return this.target ? this.outdentHTML(this.target.innerHTML) : undefined;
     }
 
     htmlMatchesTarget(html) {
@@ -1867,10 +1864,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         return;
       }
       this.range = this.getRange();
-      if (
-        !this.target ||
-        this.target.getAttribute("contenteditable") != "true"
-      )
+      if (!this.target || this.target.getAttribute("contenteditable") != "true")
         return;
       this.__highlight.wrap(this.range || this.getRange());
     }

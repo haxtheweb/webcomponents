@@ -34,7 +34,7 @@
               "name": "_handleFullscreenChange",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -68,6 +68,10 @@
               },
               "attribute": "fullscreen-enabled",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__documentFullscreenChange"
             },
             {
               "kind": "field",
@@ -174,7 +178,7 @@
               "name": "_handleFullscreenChange",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -220,6 +224,14 @@
               },
               "attribute": "fullscreen-enabled",
               "reflects": true,
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__documentFullscreenChange",
               "inheritedFrom": {
                 "name": "FullscreenBehaviors",
                 "module": "fullscreen-behaviors.js"

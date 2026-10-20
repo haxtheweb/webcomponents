@@ -1087,10 +1087,7 @@
         },
         "secondary": {
           "$type": "fontFamily",
-          "$value": [
-            "Roboto Slab",
-            "serif"
-          ],
+          "$value": ["Roboto Slab", "serif"],
           "$extensions": {
             "org.haxtheweb.ddd": {
               "cssVar": "--ddd-font-secondary"
@@ -1099,10 +1096,7 @@
         },
         "navigation": {
           "$type": "fontFamily",
-          "$value": [
-            "Roboto Condensed",
-            "sans-serif"
-          ],
+          "$value": ["Roboto Condensed", "sans-serif"],
           "$description": "navigation font",
           "$extensions": {
             "org.haxtheweb.ddd": {
@@ -2931,12 +2925,7 @@
     "easing": {
       "ease": {
         "$type": "cubicBezier",
-        "$value": [
-          0.4,
-          0,
-          0.2,
-          1
-        ],
+        "$value": [0.4, 0, 0.2, 1],
         "$description": "Material design easing",
         "$extensions": {
           "org.haxtheweb.ddd": {
@@ -2946,12 +2935,7 @@
       },
       "enter": {
         "$type": "cubicBezier",
-        "$value": [
-          0,
-          0,
-          0.2,
-          1
-        ],
+        "$value": [0, 0, 0.2, 1],
         "$description": "decelerate, elements entering",
         "$extensions": {
           "org.haxtheweb.ddd": {
@@ -2961,12 +2945,7 @@
       },
       "exit": {
         "$type": "cubicBezier",
-        "$value": [
-          0.4,
-          0,
-          1,
-          1
-        ],
+        "$value": [0.4, 0, 1, 1],
         "$description": "accelerate, elements leaving",
         "$extensions": {
           "org.haxtheweb.ddd": {
@@ -2976,12 +2955,7 @@
       },
       "emphasized": {
         "$type": "cubicBezier",
-        "$value": [
-          0.2,
-          0,
-          0,
-          1
-        ],
+        "$value": [0.2, 0, 0, 1],
         "$description": "large or deliberate moves",
         "$extensions": {
           "org.haxtheweb.ddd": {

@@ -57,6 +57,17 @@
             },
             {
               "kind": "field",
+              "name": "__embedCredentialless",
+              "description": "Whether the raw-iframe path needs the `credentialless` attribute:\nonly on cross-origin isolated pages (COEP+COOP, e.g. `hax serve` dev\nmode) and only for cross-origin sources, since same-origin frames pass\nCOEP checks automatically and keep their credentials.",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
               "name": "isA11yMedia",
               "description": "Determines if compatible with `a11y-media-player`",
               "readonly": true,
@@ -225,7 +236,7 @@
               "name": "haxClickTimeCode",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -307,7 +318,7 @@
               "name": "_visChange",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -390,7 +401,7 @@
               },
               "description": "Use dark theme on transcript? Default is false, even when player is dark.",
               "default": "false",
-              "attribute": "darkTranscript"
+              "attribute": "dark-transcript"
             },
             {
               "kind": "field",
@@ -401,7 +412,7 @@
               },
               "description": "disable interactive mode that makes transcript clickable",
               "default": "false",
-              "attribute": "disableInteractive"
+              "attribute": "disable-interactive"
             },
             {
               "kind": "field",
@@ -714,7 +725,7 @@
               "fieldName": "dark"
             },
             {
-              "name": "darkTranscript",
+              "name": "dark-transcript",
               "type": {
                 "text": "boolean"
               },
@@ -723,7 +734,7 @@
               "fieldName": "darkTranscript"
             },
             {
-              "name": "disableInteractive",
+              "name": "disable-interactive",
               "type": {
                 "text": "boolean"
               },

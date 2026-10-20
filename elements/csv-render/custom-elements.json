@@ -82,6 +82,25 @@
             },
             {
               "kind": "field",
+              "name": "debounceDelay",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Delay in ms before a data-source/visibility change triggers a load.\nExposed primarily so tests can shrink it; production default is 500.",
+              "default": "500",
+              "attribute": "debounce-delay"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, downloadTableData: \"Download table data\", }"
+            },
+            {
+              "kind": "field",
               "name": "dataSource",
               "privacy": "public",
               "type": {
@@ -129,6 +148,15 @@
               "fieldName": "loading"
             },
             {
+              "name": "debounce-delay",
+              "type": {
+                "text": "number"
+              },
+              "description": "Delay in ms before a data-source/visibility change triggers a load.\nExposed primarily so tests can shrink it; production default is 500.",
+              "default": "500",
+              "fieldName": "debounceDelay"
+            },
+            {
               "name": "caption",
               "type": {
                 "text": "string"
@@ -174,13 +202,17 @@
           ],
           "mixins": [
             {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
               "name": "IntersectionObserverMixin",
               "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
             }
           ],
           "superclass": {
-            "name": "SimpleColors",
-            "package": "@haxtheweb/simple-colors/simple-colors.js"
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
           },
           "tagName": "csv-render",
           "customElement": true

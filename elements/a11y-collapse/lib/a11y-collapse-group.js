@@ -24,10 +24,7 @@ class A11yCollapseGroup extends LitElement {
       css`
         :host {
           display: block;
-          margin: var(
-            --a11y-collapse-group-margin,
-            var(--ddd-spacing-4) 0
-          );
+          margin: var(--a11y-collapse-group-margin, var(--ddd-spacing-4) 0);
           --a11y-collapse-margin: var(--ddd-spacing-4);
         }
         :host([hidden]) {

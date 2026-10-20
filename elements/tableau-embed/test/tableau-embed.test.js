@@ -3,17 +3,19 @@ import { TableauEmbed } from "../tableau-embed.js";
 
 // network stub: pre-register a tableau-viz placeholder so loadTableau never
 // dynamic-imports the real https://public.tableau.com Embedding API in tests
-const tableauVizStub = class TableauVizStub {}
-const originalGet = globalThis.customElements.get.bind(globalThis.customElements)
+const tableauVizStub = class TableauVizStub {};
+const originalGet = globalThis.customElements.get.bind(
+  globalThis.customElements,
+);
 globalThis.customElements.get = (name) => {
   if (name === "tableau-viz") {
-    return tableauVizStub
+    return tableauVizStub;
   }
-  return originalGet(name)
-}
+  return originalGet(name);
+};
 after(() => {
-  globalThis.customElements.get = originalGet
-})
+  globalThis.customElements.get = originalGet;
+});
 
 describe("TableauEmbed test", () => {
   let element;

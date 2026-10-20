@@ -40,6 +40,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, toggleSection: \"Toggle section\", details: \"Details\", demo: \"Demo\", }"
+            },
+            {
+              "kind": "field",
               "name": "heading",
               "privacy": "public",
               "type": {
@@ -121,6 +129,12 @@
               "fieldName": "hasDemo"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "superclass": {
             "name": "SimpleColors",
             "package": "@haxtheweb/simple-colors/simple-colors.js"
@@ -161,6 +175,14 @@
               "name": "tag",
               "static": true,
               "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, byAuthor: \"By: {author}\", }"
             },
             {
               "kind": "field",
@@ -327,6 +349,12 @@
               "fieldName": "zoom"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "superclass": {
             "name": "SimpleColors",
             "package": "@haxtheweb/simple-colors/simple-colors.js"
@@ -451,6 +479,11 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "__updateDemoTemplates",
+              "description": "Fill the code-sample demo templates after render. lit-html forbids\nexpressions inside <template> elements ('Expressions are not\nsupported inside template elements'), and code-sample consumes its\nlight-DOM <template> child as the snippet source, so the demo markup\nis injected into the templates imperatively here instead."
+            },
+            {
               "kind": "field",
               "name": "showCardList",
               "privacy": "public",
@@ -509,6 +542,14 @@
               },
               "default": "\"1-1-1\"",
               "attribute": "_layout"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, scanningRegistry: \"Scanning Web Component Registry for more HAX elements..\", enabled: \"Enabled\", disabled: \"Disabled\", details: \"Details\", tags: \"Tags:\", tagName: \"Tag name:\", developerUsage: \"Developer usage:\", demo: \"Demo\", popUpDemo: \"Pop up demo\", demoOf: \"Demo of {tag}\", }"
             },
             {
               "kind": "field",
@@ -624,6 +665,12 @@
               "fieldName": "_layout"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
@@ -721,7 +768,7 @@
               "name": "_response",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Listen for response and then apply initial settings"

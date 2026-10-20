@@ -103,7 +103,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         }
         .report-tabs .report-tab-button[toggled] {
           --simple-icon-button-border: var(--ddd-border-size-sm) solid
-            light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            );
           --simple-icon-color: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-white)
@@ -131,7 +134,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           gap: var(--ddd-spacing-2);
         }
         .report-tabs .report-tab-button:focus-within {
-          outline: var(--ddd-border-size-sm) solid var(--haxcms-insights-focus-color);
+          outline: var(--ddd-border-size-sm) solid
+            var(--haxcms-insights-focus-color);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-sm);
         }
@@ -184,7 +188,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         }
         .report-table-scroll .report-native-table th,
         .report-table-scroll .report-native-table td {
-          border: var(--ddd-border-size-xs) solid var(--haxcms-insights-border-color);
+          border: var(--ddd-border-size-xs) solid
+            var(--haxcms-insights-border-color);
           padding: var(--ddd-spacing-2);
           text-align: left;
           vertical-align: top;
@@ -236,7 +241,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           font-family: var(--ddd-font-navigation);
         }
         .selector-wrapper select:focus-visible {
-          outline: var(--ddd-border-size-sm) solid var(--haxcms-insights-focus-color);
+          outline: var(--ddd-border-size-sm) solid
+            var(--haxcms-insights-focus-color);
           outline-offset: 2px;
         }
         .selector-wrapper simple-icon-button-lite {
@@ -270,7 +276,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           font-family: var(--ddd-font-navigation);
         }
         .selector-wrapper simple-icon-button-lite:focus-within {
-          outline: var(--ddd-border-size-sm) solid var(--haxcms-insights-focus-color);
+          outline: var(--ddd-border-size-sm) solid
+            var(--haxcms-insights-focus-color);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -366,7 +373,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           );
         }
         .group-summary:focus-visible {
-          outline: var(--ddd-border-size-sm) solid var(--haxcms-insights-focus-color);
+          outline: var(--ddd-border-size-sm) solid
+            var(--haxcms-insights-focus-color);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -425,7 +433,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           color: var(--haxcms-insights-link-hover-color);
         }
         .group-body a:focus-visible {
-          outline: var(--ddd-border-size-sm) solid var(--haxcms-insights-focus-color);
+          outline: var(--ddd-border-size-sm) solid
+            var(--haxcms-insights-focus-color);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -505,7 +514,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           color: var(--haxcms-insights-link-hover-color);
         }
         .content-item .title-link:focus-visible {
-          outline: var(--ddd-border-size-sm) solid var(--haxcms-insights-focus-color);
+          outline: var(--ddd-border-size-sm) solid
+            var(--haxcms-insights-focus-color);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -1655,7 +1665,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
     if (statusData.ok === false) {
       return statusData.status
-        ? this.t.linkStatusErrorCode.replace("{status}", () => statusData.status)
+        ? this.t.linkStatusErrorCode.replace(
+            "{status}",
+            () => statusData.status,
+          )
         : this.t.linkStatusError;
     }
     return this.t.linkStatusUnknown;

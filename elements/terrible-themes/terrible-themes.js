@@ -321,9 +321,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
    */
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer"
-        >${this.t.skipToContent}</a
-      >
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <table
         role="presentation"
         border="4"
@@ -347,9 +345,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
               >
                 <tbody>
                   <tr>
-                    <td align="left">
-                      ${this.t.terribleQuote}
-                    </td>
+                    <td align="left">${this.t.terribleQuote}</td>
                     <td align="right" width="100">
                       <p class="loginState">
                         <a
@@ -444,7 +440,9 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                         <site-active-title></site-active-title>
                                         <slot></slot>
                                       </section>
-                                      <aside aria-label="${this.t.pageNavigation}">
+                                      <aside
+                                        aria-label="${this.t.pageNavigation}"
+                                      >
                                         <site-menu-button
                                           hide-label
                                           type="prev"
@@ -454,7 +452,9 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                             .__prevPageLabelChanged}"
                                         >
                                           <div slot="suffix" class="wrapper">
-                                            <div class="top">${this.t.previous}</div>
+                                            <div class="top">
+                                              ${this.t.previous}
+                                            </div>
                                             <div class="bottom">
                                               ${this.prevPage}
                                             </div>
@@ -469,7 +469,9 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                             .__nextPageLabelChanged}"
                                         >
                                           <div slot="prefix" class="wrapper">
-                                            <div class="top">${this.t.next}</div>
+                                            <div class="top">
+                                              ${this.t.next}
+                                            </div>
                                             <div class="bottom">
                                               ${this.nextPage}
                                             </div>

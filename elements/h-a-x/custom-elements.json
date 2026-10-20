@@ -49,7 +49,7 @@
               "name": "cancelEvent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },

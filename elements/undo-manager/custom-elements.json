@@ -23,7 +23,7 @@
               "name": "undoManagerStackLogic",
               "parameters": [
                 {
-                  "name": "mutations"
+                  "name": "_mutations"
                 }
               ],
               "description": "While a mutation observer, we only respond to there being ANY change\nnot the specfic record. This lets the developer select granularity\nin what to notice (lots of stuff) yet only push state change\nif it matches what they care to monitor as far as detail.\nDefault is to monitor every possible useful detail"
@@ -39,6 +39,40 @@
             {
               "kind": "method",
               "name": "commands"
+            },
+            {
+              "kind": "field",
+              "name": "canUndo",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently undo based on stack position",
+              "default": "false",
+              "attribute": "can-undo",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "canRedo",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently redo based on stack position",
+              "default": "false",
+              "attribute": "can-redo",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__undoAnnouncement",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Assistive-tech status message for undo/redo capability\ntransitions; rendered by the visually-hidden polite live\nregion in the undo-manager element (WCAG 4.1.3)",
+              "default": "\"\""
             },
             {
               "kind": "field",
@@ -93,26 +127,6 @@
             },
             {
               "kind": "field",
-              "name": "canUndo",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "If we can currently undo based on stack position",
-              "attribute": "can-undo"
-            },
-            {
-              "kind": "field",
-              "name": "canRedo",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "If we can currently redo based on stack position",
-              "attribute": "can-redo"
-            },
-            {
-              "kind": "field",
               "name": "target",
               "privacy": "public",
               "type": {
@@ -159,6 +173,7 @@
                 "text": "boolean"
               },
               "description": "If we can currently undo based on stack position",
+              "default": "false",
               "fieldName": "canUndo"
             },
             {
@@ -167,6 +182,7 @@
                 "text": "boolean"
               },
               "description": "If we can currently redo based on stack position",
+              "default": "false",
               "fieldName": "canRedo"
             },
             {
@@ -229,7 +245,7 @@
               "name": "undoManagerStackLogic",
               "parameters": [
                 {
-                  "name": "mutations"
+                  "name": "_mutations"
                 }
               ],
               "description": "While a mutation observer, we only respond to there being ANY change\nnot the specfic record. This lets the developer select granularity\nin what to notice (lots of stuff) yet only push state change\nif it matches what they care to monitor as far as detail.\nDefault is to monitor every possible useful detail",
@@ -257,6 +273,52 @@
             {
               "kind": "method",
               "name": "commands",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "canUndo",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently undo based on stack position",
+              "default": "false",
+              "attribute": "can-undo",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "canRedo",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently redo based on stack position",
+              "default": "false",
+              "attribute": "can-redo",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__undoAnnouncement",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Assistive-tech status message for undo/redo capability\ntransitions; rendered by the visually-hidden polite live\nregion in the undo-manager element (WCAG 4.1.3)",
+              "default": "\"\"",
               "inheritedFrom": {
                 "name": "UndoManagerBehaviors",
                 "module": "undo-manager.js"
@@ -343,34 +405,6 @@
             },
             {
               "kind": "field",
-              "name": "canUndo",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "If we can currently undo based on stack position",
-              "attribute": "can-undo",
-              "inheritedFrom": {
-                "name": "UndoManagerBehaviors",
-                "module": "undo-manager.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "canRedo",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "If we can currently redo based on stack position",
-              "attribute": "can-redo",
-              "inheritedFrom": {
-                "name": "UndoManagerBehaviors",
-                "module": "undo-manager.js"
-              }
-            },
-            {
-              "kind": "field",
               "name": "target",
               "privacy": "public",
               "type": {
@@ -417,6 +451,7 @@
                 "text": "boolean"
               },
               "description": "If we can currently undo based on stack position",
+              "default": "false",
               "fieldName": "canUndo",
               "inheritedFrom": {
                 "name": "UndoManagerBehaviors",
@@ -429,6 +464,7 @@
                 "text": "boolean"
               },
               "description": "If we can currently redo based on stack position",
+              "default": "false",
               "fieldName": "canRedo",
               "inheritedFrom": {
                 "name": "UndoManagerBehaviors",

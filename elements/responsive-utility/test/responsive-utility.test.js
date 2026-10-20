@@ -45,7 +45,10 @@ describe("ResponsiveUtility.setSize", () => {
   function makeDetail(width) {
     const el = globalThis.document.createElement("div");
     // offsetWidth is read from layout; we mock it for determinism
-    Object.defineProperty(el, "offsetWidth", { value: width, configurable: true });
+    Object.defineProperty(el, "offsetWidth", {
+      value: width,
+      configurable: true,
+    });
     return {
       element: el,
       attribute: "responsive-size",
@@ -197,7 +200,10 @@ describe("responiveElementEvent", () => {
 
   it("sets initial size attributes from offsetWidth", () => {
     const el = globalThis.document.createElement("div");
-    Object.defineProperty(el, "offsetWidth", { value: 100, configurable: true });
+    Object.defineProperty(el, "offsetWidth", {
+      value: 100,
+      configurable: true,
+    });
     globalThis.document.body.appendChild(el);
     const event = new CustomEvent("responsive-element", {
       bubbles: true,
@@ -225,9 +231,10 @@ describe("responiveElementEvent", () => {
       lg: 1200,
       xl: 1500,
     };
-    expect(() =>
-      globalThis.ResponsiveUtility.setSize(detail, 0),
-    ).to.throw(TypeError, "getAttribute");
+    expect(() => globalThis.ResponsiveUtility.setSize(detail, 0)).to.throw(
+      TypeError,
+      "getAttribute",
+    );
   });
 
   it("creates a ResizeObserver when available", () => {
@@ -298,12 +305,34 @@ describe("__handleResizeFallback", () => {
 
   it("calls setSize for each detail with an element", () => {
     const el1 = globalThis.document.createElement("div");
-    Object.defineProperty(el1, "offsetWidth", { value: 100, configurable: true });
+    Object.defineProperty(el1, "offsetWidth", {
+      value: 100,
+      configurable: true,
+    });
     const el2 = globalThis.document.createElement("div");
-    Object.defineProperty(el2, "offsetWidth", { value: 200, configurable: true });
+    Object.defineProperty(el2, "offsetWidth", {
+      value: 200,
+      configurable: true,
+    });
     instance.details = [
-      { element: el1, attribute: "rs", custom: "rw", sm: 200, md: 300, lg: 400, xl: 500 },
-      { element: el2, attribute: "rs", custom: "rw", sm: 300, md: 400, lg: 500, xl: 600 },
+      {
+        element: el1,
+        attribute: "rs",
+        custom: "rw",
+        sm: 200,
+        md: 300,
+        lg: 400,
+        xl: 500,
+      },
+      {
+        element: el2,
+        attribute: "rs",
+        custom: "rw",
+        sm: 300,
+        md: 400,
+        lg: 500,
+        xl: 600,
+      },
     ];
     instance.__handleResizeFallback();
     expect(el1.getAttribute("rs")).to.equal("xs");
@@ -314,7 +343,15 @@ describe("__handleResizeFallback", () => {
 
   it("skips details with no element", () => {
     instance.details = [
-      { element: null, attribute: "rs", custom: "rw", sm: 200, md: 300, lg: 400, xl: 500 },
+      {
+        element: null,
+        attribute: "rs",
+        custom: "rw",
+        sm: 200,
+        md: 300,
+        lg: 400,
+        xl: 500,
+      },
     ];
     // Should not throw
     expect(() => instance.__handleResizeFallback()).to.not.throw();
@@ -452,9 +489,7 @@ describe("ResponsiveUtilityBehaviors mixin", () => {
       await el.updateComplete;
       // The responsive-element event should have been picked up
       expect(instance.details.length).to.be.greaterThan(0);
-      const detail = instance.details.find(
-        (d) => d.element === el,
-      );
+      const detail = instance.details.find((d) => d.element === el);
       expect(detail).to.exist;
       expect(detail.sm).to.equal(600);
       expect(detail.md).to.equal(900);
@@ -474,7 +509,9 @@ describe("ResponsiveUtilityBehaviors mixin", () => {
     instance.details = [];
     try {
       const el = await fixture(
-        html`<test-responsive-mixin disable-responsive></test-responsive-mixin>`,
+        html`<test-responsive-mixin
+          disable-responsive
+        ></test-responsive-mixin>`,
       );
       await el.updateComplete;
       // No detail should have been added for this element
@@ -542,9 +579,7 @@ describe("responsive-utility-element", () => {
 describe("ResponsiveUtility disconnectedCallback", () => {
   it("removes the resize fallback listener on disconnect", async () => {
     // Create a fresh element to test disconnect logic
-    const el = await fixture(
-      html`<responsive-utility></responsive-utility>`,
-    );
+    const el = await fixture(html`<responsive-utility></responsive-utility>`);
     expect(el.__resizeFallbackHandler).to.exist;
     // remove from DOM to trigger disconnectedCallback
     el.remove();

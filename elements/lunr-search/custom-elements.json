@@ -16,7 +16,7 @@
               "name": "_lunrLoaded",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -100,6 +100,14 @@
                   "name": "ready"
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, searchResults: \"Search results\", }"
             },
             {
               "kind": "field",
@@ -372,6 +380,12 @@
                 "text": "boolean"
               },
               "fieldName": "demo"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

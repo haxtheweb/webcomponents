@@ -39,15 +39,18 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       ...this.t,
       page: "Page",
       palette: "Palette",
-      paletteDescription: "DDD palette applied at theme scope for color-token cascading",
+      paletteDescription:
+        "DDD palette applied at theme scope for color-token cascading",
       theme: "Theme",
       themeGroupDescription: "Choose the active theme for your site.",
       themeFieldDescription: "Design and presentation layer for your site",
       paletteGroupDescription: "Control accent colors and DDD palette tokens.",
       accentColor: "Accent color",
-      accentColorDescription: "Accent color applied to themes that implement it",
+      accentColorDescription:
+        "Accent color applied to themes that implement it",
       branding: "Branding",
-      brandingDescription: "Set brand imagery, iconography, and related metadata.",
+      brandingDescription:
+        "Set brand imagery, iconography, and related metadata.",
       image: "Image",
       imageDescription: "Image applied to themes that implement one",
       bannerAlt: "Banner alt",
@@ -74,7 +77,8 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       footerSecondaryDescription: "Page shown in the secondary footer region",
       unableToLoadAppearanceSettings: "Unable to load appearance settings.",
       appearance: "Appearance",
-      appearanceNote: "Configure theme, palette, branding, and layout regions for your site.",
+      appearanceNote:
+        "Configure theme, palette, branding, and layout regions for your site.",
       noAppearanceSettings: "No appearance settings are available.",
       themePreview: "Theme Preview",
       save: "Save",
@@ -176,7 +180,8 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
           cursor: pointer;
         }
         .group-summary:focus-visible {
-          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid
+            var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -1074,7 +1079,12 @@ class HAXCMSAppearanceAdminDialog extends I18NMixin(DDD) {
       this.__groupValues[groupKey] = incoming;
     }
     // if the theme changed, update the palette field options
-    if (Object.prototype.hasOwnProperty.call(incoming, "manifest-metadata-theme-element")) {
+    if (
+      Object.prototype.hasOwnProperty.call(
+        incoming,
+        "manifest-metadata-theme-element",
+      )
+    ) {
       this._updatePaletteFieldOptions(
         incoming["manifest-metadata-theme-element"],
       );

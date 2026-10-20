@@ -34,7 +34,7 @@
               "name": "toggleSettings",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },

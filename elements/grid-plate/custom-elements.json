@@ -16,7 +16,7 @@
               "name": "_drop",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -168,10 +168,10 @@
               "name": "haxactiveElementChanged",
               "parameters": [
                 {
-                  "name": "el"
+                  "name": "_el"
                 },
                 {
-                  "name": "val"
+                  "name": "_val"
                 }
               ]
             },

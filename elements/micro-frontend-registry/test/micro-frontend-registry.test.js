@@ -219,7 +219,9 @@ describe("Experimental services", () => {
 describe("enableServices dispatcher", () => {
   it("calls the correct sub-enabler for each known service name", () => {
     // enableServices(['core','experimental','haxcms']) should not throw
-    expect(() => enableServices(["core", "experimental", "haxcms"])).to.not.throw();
+    expect(() =>
+      enableServices(["core", "experimental", "haxcms"]),
+    ).to.not.throw();
   });
 
   it("ignores unknown service names without error", () => {
@@ -278,9 +280,7 @@ describe("_resolveEndpointTemplate", () => {
       "https://example.com/{id}/sub/{action}",
       { id: "42", action: "run", keep: "me" },
     );
-    expect(result.endpoint).to.equal(
-      "https://example.com/42/sub/run",
-    );
+    expect(result.endpoint).to.equal("https://example.com/42/sub/run");
     expect(result.params).to.deep.equal({ keep: "me" });
   });
 
@@ -694,13 +694,9 @@ describe("call() method", () => {
     });
     globalThis.fetch = () =>
       Promise.resolve(makeMockResponse({ jsonData: { ok: true } }));
-    await MicroFrontendRegistry.call(
-      name,
-      {},
-      async (data) => {
-        callbackData = data;
-      },
-    );
+    await MicroFrontendRegistry.call(name, {}, async (data) => {
+      callbackData = data;
+    });
     expect(callbackData).to.deep.equal({ ok: true });
   });
 

@@ -106,7 +106,10 @@ describe("progress-donut data model", () => {
     el.complete = [2, 8];
     await el.updateComplete;
     await el.updateComplete;
-    expect(el.data).to.deep.equal([["Item 1", "Item 2"], [2, 8]]);
+    expect(el.data).to.deep.equal([
+      ["Item 1", "Item 2"],
+      [2, 8],
+    ]);
   });
 
   it("exposes the inherited chart options", async () => {
@@ -279,7 +282,12 @@ describe("progress-donut animation and center content", () => {
     };
     const fakeGroup = { append() {} };
     el.dispatchEvent(
-      drawEvent({ type: "slice", index: 0, element: fakeElement, group: fakeGroup }),
+      drawEvent({
+        type: "slice",
+        index: 0,
+        element: fakeElement,
+        group: fakeGroup,
+      }),
     );
     // no value means the slice gets an even share of the total
     expect(animations).to.have.lengthOf(1);

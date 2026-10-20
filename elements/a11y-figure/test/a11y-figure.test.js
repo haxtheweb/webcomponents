@@ -25,10 +25,7 @@ describe("a11y-figure test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <a11y-figure
-        img-src="${PLACEHOLDER_400x300}"
-        img-alt="Placeholder image"
-      >
+      <a11y-figure img-src="${PLACEHOLDER_400x300}" img-alt="Placeholder image">
         <p slot="figcaption">Figure caption text</p>
         <div slot="summary">Image description</div>
         <div slot="details">

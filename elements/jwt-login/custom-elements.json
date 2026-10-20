@@ -81,6 +81,19 @@
             },
             {
               "kind": "method",
+              "name": "_dispatchSessionTokens",
+              "parameters": [
+                {
+                  "name": "payload"
+                },
+                {
+                  "name": "context"
+                }
+              ],
+              "description": "Security (SEC-SESSION): HAXcms login and refresh responses carry the\nrequest tokens (userToken, and siteToken when a site resolves) next to\nthe JWT, because connection-settings may omit them for anonymous page\nloads. Re-broadcast any that are present as `jwt-login-session-tokens`\n({ userToken?, siteToken?, context }) so the host app can store them.\nNothing is dispatched when neither token is present."
+            },
+            {
+              "kind": "method",
               "name": "_invokeRefreshCallback",
               "parameters": [
                 {
@@ -353,6 +366,12 @@
             },
             {
               "name": "jwt-token",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "jwt-login-session-tokens",
               "type": {
                 "text": "CustomEvent"
               }

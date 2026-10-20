@@ -39,8 +39,7 @@ export function createExportPageProgram(context) {
 
     // Filter results based on input
     PAGE_EXPORT_FORMATS.forEach((format) => {
-      const formatTitle =
-        _t(context, `${format.tKey}Title`) || format.title;
+      const formatTitle = _t(context, `${format.tKey}Title`) || format.title;
       const formatDescription =
         _t(context, `${format.tKey}Description`) || format.description;
       if (
@@ -107,7 +106,10 @@ export async function exportPageAs(format) {
 
       default:
         HAXStore.toast(
-          _t(this, "exportFormatNotSupported").replace("{format}", () => format),
+          _t(this, "exportFormatNotSupported").replace(
+            "{format}",
+            () => format,
+          ),
           3000,
           "fit-bottom",
         );
@@ -206,9 +208,8 @@ export async function _exportPageRouteVariant(format, title) {
     this._downloadFile(content, `${title}.${ext}`, mime);
     this.clearProcessingVisual();
     HAXStore.toast(
-      _t(this, "formatFileDownloadedSuccessfully").replace(
-        "{format}",
-        () => (ext.toUpperCase()),
+      _t(this, "formatFileDownloadedSuccessfully").replace("{format}", () =>
+        ext.toUpperCase(),
       ),
       3000,
       "fit-bottom",
@@ -217,7 +218,10 @@ export async function _exportPageRouteVariant(format, title) {
     console.error(`Page ${format} export error:`, error);
     this.clearProcessingVisual();
     HAXStore.toast(
-      _t(this, "pageFormatExportNotAvailable").replace("{format}", () => format),
+      _t(this, "pageFormatExportNotAvailable").replace(
+        "{format}",
+        () => format,
+      ),
       3000,
       "fit-bottom",
     );
@@ -237,7 +241,10 @@ export async function _exportPageAsDOCX(title) {
       this._downloadBlob(blob, `${title}.docx`);
       this.clearProcessingVisual();
       HAXStore.toast(
-        _t(this, "formatFileDownloadedSuccessfully").replace("{format}", "DOCX"),
+        _t(this, "formatFileDownloadedSuccessfully").replace(
+          "{format}",
+          "DOCX",
+        ),
         3000,
         "fit-bottom",
       );
@@ -299,7 +306,10 @@ export async function _exportPageAsEPUB(title) {
       this._downloadBlob(blob, `${title}.epub`);
       this.clearProcessingVisual();
       HAXStore.toast(
-        _t(this, "formatFileDownloadedSuccessfully").replace("{format}", "EPUB"),
+        _t(this, "formatFileDownloadedSuccessfully").replace(
+          "{format}",
+          "EPUB",
+        ),
         3000,
         "fit-bottom",
       );

@@ -19,6 +19,17 @@
             },
             {
               "kind": "field",
+              "name": "__chartLabel",
+              "description": "gets the accessible label for the chart, falling back to slotted\nheading text and then a generic label so a bare chart is never\nrendered as role=\"img\" with an empty accessible name",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "__headingSlotChange",
+              "description": "re-evaluates the aria-label fallback when heading content is slotted"
+            },
+            {
+              "kind": "field",
               "name": "properties",
               "static": true,
               "readonly": true
@@ -69,7 +80,7 @@
                   }
                 }
               ],
-              "description": "Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data",
+              "description": "Parse csv text via the shared",
               "return": {
                 "type": {
                   "text": "array"
@@ -151,10 +162,10 @@
               "name": "_updateData",
               "parameters": [
                 {
-                  "name": "mutationsList"
+                  "name": "_mutationsList"
                 },
                 {
-                  "name": "observer"
+                  "name": "_observer"
                 }
               ],
               "description": "Updates data from table"
@@ -694,6 +705,25 @@
             },
             {
               "kind": "field",
+              "name": "__chartLabel",
+              "description": "gets the accessible label for the chart, falling back to slotted\nheading text and then a generic label so a bare chart is never\nrendered as role=\"img\" with an empty accessible name",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__headingSlotChange",
+              "description": "re-evaluates the aria-label fallback when heading content is slotted",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "properties",
               "static": true,
               "readonly": true,
@@ -768,7 +798,7 @@
                   }
                 }
               ],
-              "description": "Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data",
+              "description": "Parse csv text via the shared",
               "return": {
                 "type": {
                   "text": "array"
@@ -878,10 +908,10 @@
               "name": "_updateData",
               "parameters": [
                 {
-                  "name": "mutationsList"
+                  "name": "_mutationsList"
                 },
                 {
-                  "name": "observer"
+                  "name": "_observer"
                 }
               ],
               "description": "Updates data from table",

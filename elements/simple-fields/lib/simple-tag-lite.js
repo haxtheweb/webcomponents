@@ -126,7 +126,10 @@ export const SimpleTagLiteSuper = function (SuperClass) {
                 icon="${!!this.toggles && !!this.toggled && !!this.toggledIcon
                   ? this.toggledIcon
                   : this.icon}"
-                label="${this.t.removeValue.replace("{value}", () => this.value)}"
+                label="${this.t.removeValue.replace(
+                  "{value}",
+                  () => this.value,
+                )}"
                 ?hidden="${!this.cancelButton}"
                 @click="${this.clickEvent}"
                 ?disabled="${this.disabled}"

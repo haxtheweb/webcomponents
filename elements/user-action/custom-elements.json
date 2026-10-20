@@ -41,11 +41,7 @@
             },
             {
               "kind": "field",
-              "name": "demo",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
+              "name": "demo"
             },
             {
               "kind": "method",
@@ -84,7 +80,7 @@
               "name": "haxgizmoRegistration",
               "parameters": [
                 {
-                  "name": "store"
+                  "name": "_store"
                 }
               ],
               "description": "Supply translations for the UI elements of HAX in meme-maker"

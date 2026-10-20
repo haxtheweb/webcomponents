@@ -310,7 +310,9 @@ describe("video-player hax hooks", () => {
 
   it("haxHooks returns expected hooks", () => {
     const hooks = el.haxHooks();
-    expect(hooks.postProcessNodeToContent).to.equal("haxpostProcessNodeToContent");
+    expect(hooks.postProcessNodeToContent).to.equal(
+      "haxpostProcessNodeToContent",
+    );
     expect(hooks.inlineContextMenu).to.equal("haxinlineContextMenu");
     expect(hooks.mediaSourceUpdated).to.equal("haxmediaSourceUpdated");
   });
@@ -572,7 +574,9 @@ describe("video-player audio description preference", () => {
   it("_handleAudioDescriptionToggle sets enabled from event", () => {
     el.source = "https://example.com/video.mp4";
     el.audioDescriptionSource = "https://example.com/audio.mp3";
-    el._handleAudioDescriptionToggle({ detail: { audioDescriptionEnabled: true } });
+    el._handleAudioDescriptionToggle({
+      detail: { audioDescriptionEnabled: true },
+    });
     expect(el.audioDescriptionEnabled).to.equal(true);
   });
 });

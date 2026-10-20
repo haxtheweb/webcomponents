@@ -31,9 +31,11 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
       import: "Import",
       importDescription: "Bring external files or links into your site.",
       exportThisPage: "Export this page",
-      exportThisPageDescription: "Download or copy the current page in multiple formats.",
+      exportThisPageDescription:
+        "Download or copy the current page in multiple formats.",
       exportThisSite: "Export this site",
-      exportThisSiteDescription: "Download the full site in publication-ready or portable formats.",
+      exportThisSiteDescription:
+        "Download the full site in publication-ready or portable formats.",
       importFileTitle: "Import from file",
       importFileDescription:
         "Pick a local file, then choose how to apply it to content or site structure.",
@@ -41,47 +43,35 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
       importLinkDescription:
         "Paste a URL and choose how to embed it, link it, or transform it in content.",
       exportPageHtmlTitle: "Export as HTML",
-      exportPageHtmlDescription:
-        "Download current page as HTML file",
+      exportPageHtmlDescription: "Download current page as HTML file",
       exportPageMarkdownTitle: "Export as Markdown",
       exportPageMarkdownDescription:
         "Download current page as Markdown (.md) file",
       exportPageJsonTitle: "Export as JSON",
-      exportPageJsonDescription:
-        "Download current page as JSON",
+      exportPageJsonDescription: "Download current page as JSON",
       exportPageYamlTitle: "Export as YAML",
-      exportPageYamlDescription:
-        "Download current page as YAML",
+      exportPageYamlDescription: "Download current page as YAML",
       exportPageXmlTitle: "Export as XML",
-      exportPageXmlDescription:
-        "Download current page as XML",
+      exportPageXmlDescription: "Download current page as XML",
       exportPageDocxTitle: "Export as DOCX",
-      exportPageDocxDescription:
-        "Download current page as Word document",
+      exportPageDocxDescription: "Download current page as Word document",
       exportPagePdfTitle: "Export as PDF",
-      exportPagePdfDescription:
-        "Download current page as PDF file",
+      exportPagePdfDescription: "Download current page as PDF file",
       exportPageEpubTitle: "Export as EPUB",
-      exportPageEpubDescription:
-        "Download current page as an EPUB book",
+      exportPageEpubDescription: "Download current page as an EPUB book",
       exportSiteArchiveTitle: "Download site archive",
-      exportSiteArchiveDescription:
-        "Download the complete site as a ZIP file",
+      exportSiteArchiveDescription: "Download the complete site as a ZIP file",
       exportSiteHtmlTitle: "Export site as HTML",
       exportSiteHtmlDescription:
         "Download the entire site as a single HTML document",
       exportSiteMarkdownTitle: "Export site as Markdown",
-      exportSiteMarkdownDescription:
-        "Download the entire site as Markdown",
+      exportSiteMarkdownDescription: "Download the entire site as Markdown",
       exportSiteDocxTitle: "Export site as DOCX",
-      exportSiteDocxDescription:
-        "Download the entire site as a Word document",
+      exportSiteDocxDescription: "Download the entire site as a Word document",
       exportSitePdfTitle: "Export site as PDF",
-      exportSitePdfDescription:
-        "Download the entire site as a PDF document",
+      exportSitePdfDescription: "Download the entire site as a PDF document",
       exportSiteEpubTitle: "Export site as EPUB",
-      exportSiteEpubDescription:
-        "Download the site as an EPUB book",
+      exportSiteEpubDescription: "Download the site as an EPUB book",
       exportSiteSkeletonTitle: "Export site skeleton",
       exportSiteSkeletonDescription:
         "Export a reusable site template for creating similar sites",
@@ -258,9 +248,7 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
           aria-hidden="true"
         ></simple-icon-lite>
         <span>
-          <span class="action-title"
-            >${this._actionText(item, "title")}</span
-          >
+          <span class="action-title">${this._actionText(item, "title")}</span>
           <span class="action-description"
             >${this._actionText(item, "description")}</span
           >

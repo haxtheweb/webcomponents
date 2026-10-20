@@ -73,9 +73,7 @@ const RadioBehaviors = function (SuperClass) {
      * @readonly
      */
     get selectedIndex() {
-      let item = (this.itemData || []).filter(
-        (i) => i.id === this.selection,
-      );
+      let item = (this.itemData || []).filter((i) => i.id === this.selection);
       return item && item[0] ? item[0].index : 0;
     }
 

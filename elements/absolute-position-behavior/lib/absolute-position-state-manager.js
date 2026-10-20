@@ -205,7 +205,9 @@ class AbsolutePositionStateManager extends LitElement {
       ancestor !== document
     ) {
       ancestor = ancestor.parentNode;
-      target = ancestor ? this._safeQuerySelector(ancestor, selector) : undefined;
+      target = ancestor
+        ? this._safeQuerySelector(ancestor, selector)
+        : undefined;
       if (ancestor.nodeType === 11) ancestor = ancestor.host;
       target =
         !target && ancestor

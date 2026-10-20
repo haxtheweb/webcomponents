@@ -37,9 +37,11 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
       homePageDescription: "Page to use as the default landing / home page",
       advanced: "Advanced",
       serviceWorker: "Add service worker to dynamic page",
-      serviceWorkerDescription: "Disable this if users should always see the latest server output immediately.",
+      serviceWorkerDescription:
+        "Disable this if users should always see the latest server output immediately.",
       forceBrowserUpgrade: "Force browser upgrade",
-      forceBrowserUpgradeDescription: "Require evergreen browsers before loading the site experience.",
+      forceBrowserUpgradeDescription:
+        "Require evergreen browsers before loading the site experience.",
       unableToLoadSiteDetails: "Unable to load site details.",
       noSiteDetails: "No site details are available.",
       save: "Save",
@@ -157,7 +159,8 @@ class HAXCMSSiteDetailsDialog extends I18NMixin(DDD) {
           display: none;
         }
         .group-summary:focus-visible {
-          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid
+            var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }

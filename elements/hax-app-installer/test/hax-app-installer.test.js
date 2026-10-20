@@ -541,7 +541,7 @@ describe("HaxAppInstaller input handlers", () => {
   });
 
   it("_copyToClipboard handles missing navigator.clipboard gracefully", async () => {
-        // Temporarily remove clipboard
+    // Temporarily remove clipboard
     await element._copyToClipboard("test", "password");
     expect(element._copiedField).to.equal("password");
   });
@@ -908,7 +908,9 @@ describe("HaxAppInstaller prepare environment", () => {
     };
     await element._prepareEnvironment();
     expect(element._preparePermissionCommand).to.equal("chmod 777 _config");
-    expect(element._preparePermissionHint).to.equal("Run this as the file owner");
+    expect(element._preparePermissionHint).to.equal(
+      "Run this as the file owner",
+    );
   });
 
   it("_prepareEnvironment handles error", async () => {
@@ -1263,7 +1265,9 @@ describe("HaxAppInstaller rendering edge cases", () => {
     element._passwordInput = "Abc123!@";
     element._confirmPasswordInput = "Abc123!@";
     await element.updateComplete;
-    const feedback = element.shadowRoot.querySelector(".confirm-feedback.match");
+    const feedback = element.shadowRoot.querySelector(
+      ".confirm-feedback.match",
+    );
     expect(feedback).to.exist;
   });
 
@@ -1300,9 +1304,8 @@ describe("HaxAppInstaller rendering edge cases", () => {
     // Toggle reveal
     revealBtn.click();
     await element.updateComplete;
-    const credValueAfter = element.shadowRoot.querySelectorAll(
-      ".credential-value",
-    );
+    const credValueAfter =
+      element.shadowRoot.querySelectorAll(".credential-value");
     expect(credValueAfter[1].textContent).to.contain("SecretP@ss1");
   });
 

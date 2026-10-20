@@ -21,6 +21,7 @@
               "kind": "field",
               "name": "haxProperties",
               "static": true,
+              "description": "haxProperties integration via file reference",
               "readonly": true
             },
             {
@@ -28,7 +29,7 @@
               "name": "_aframeLoaded",
               "parameters": [
                 {
-                  "name": "el"
+                  "name": "_el"
                 }
               ]
             },
@@ -46,10 +47,10 @@
                   "name": "z"
                 },
                 {
-                  "name": "width"
+                  "name": "_width"
                 },
                 {
-                  "name": "height"
+                  "name": "_height"
                 }
               ],
               "description": "Generate position object based on format a-frame expects."

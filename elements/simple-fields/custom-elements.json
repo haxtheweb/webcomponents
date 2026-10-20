@@ -51,6 +51,13 @@
             },
             {
               "kind": "field",
+              "name": "defaultSchemaConversion",
+              "static": true,
+              "description": "gets default JSON schema to form element conversion object,\nused as a fallback when no `elementizer` is set, and exposed\nstatically so it can be extended/overridden (e.g. by\nsimple-fields-form's `defaultSchemaConversion` getter)",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "fieldsConversion",
               "description": "gets fields array to JSON schema conversion object",
               "readonly": true
@@ -644,7 +651,7 @@
               "name": "_formFieldsChanged",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Fires when form changes to set focus on the first field if this has auto-focus",
@@ -1173,6 +1180,89 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/simple-camera-snap.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SimpleCameraSnap",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "snapPhoto",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clearPhoto",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ takePhoto: \"Take Photo\", }"
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            }
+          ],
+          "events": [
+            {
+              "name": "simple-camera-snap-image",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleCameraSnap",
+            "module": "lib/simple-camera-snap.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleCameraSnap",
+          "declaration": {
+            "name": "SimpleCameraSnap",
+            "module": "lib/simple-camera-snap.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/simple-context-menu.js",
       "declarations": [
         {
@@ -1543,7 +1633,7 @@
               "name": "_dragEnd",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "When we end dragging ensure we remove the mover class."
@@ -1563,7 +1653,7 @@
               "name": "_dragEnter",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Enter an element, meaning we've over it while dragging"
@@ -1573,7 +1663,7 @@
               "name": "_dragLeave",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Leaving an element while dragging."
@@ -1745,6 +1835,14 @@
               "default": "\"sm\"",
               "attribute": "responsive-size",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, reorderThisItem: \"Reorder this item\", up: \"Up\", down: \"Down\", toggleExpand: \"Toggle expand\", copyThisItem: \"Copy this item\", remove: \"Remove\", }"
             },
             {
               "kind": "field",
@@ -2195,6 +2293,10 @@
           ],
           "mixins": [
             {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
               "name": "SimpleFieldsFieldsetBehaviors",
               "module": "/lib/simple-fields-fieldset.js"
             }
@@ -2392,6 +2494,14 @@
               "default": "\"sm\"",
               "attribute": "responsive-size",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, collapseAll: \"Collapse All\", expandAll: \"Expand All\", addItem: \"Add Item\", }"
             },
             {
               "kind": "field",
@@ -2787,6 +2897,10 @@
           ],
           "mixins": [
             {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
               "name": "SimpleFieldsFieldsetBehaviors",
               "module": "/lib/simple-fields-fieldset.js"
             }
@@ -3103,7 +3217,7 @@
               "name": "autoGrow",
               "parameters": [
                 {
-                  "name": "field",
+                  "name": "_field",
                   "default": "this.field"
                 }
               ],
@@ -3514,8 +3628,11 @@
               "name": "stepDown",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -3533,8 +3650,11 @@
               "name": "stepUp",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -3819,20 +3939,6 @@
               },
               "description": "Validation error message to display",
               "attribute": "errorMessage",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "privacy": "public",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "attribute": "field",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -4248,18 +4354,6 @@
               "description": "Whether the field is hidden",
               "default": "false",
               "fieldName": "hidden",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
-              "name": "field",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "fieldName": "field",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -4696,6 +4790,9 @@
               "name": "_onButtonClick",
               "parameters": [
                 {
+                  "name": "_event"
+                },
+                {
                   "name": "event",
                   "type": {
                     "text": "event"
@@ -4708,6 +4805,9 @@
               "kind": "method",
               "name": "_onInputClick",
               "parameters": [
+                {
+                  "name": "_event"
+                },
                 {
                   "name": "event",
                   "type": {
@@ -4722,6 +4822,9 @@
               "name": "_onInputBlur",
               "parameters": [
                 {
+                  "name": "_event"
+                },
+                {
                   "name": "event",
                   "type": {
                     "text": "event"
@@ -4735,7 +4838,7 @@
               "name": "_onInputPaste",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -4743,6 +4846,9 @@
               "kind": "method",
               "name": "_onInputFocus",
               "parameters": [
+                {
+                  "name": "_event"
+                },
                 {
                   "name": "event",
                   "type": {
@@ -4830,7 +4936,7 @@
               "name": "_onListboxMouseover",
               "parameters": [
                 {
-                  "name": "event"
+                  "name": "_event"
                 }
               ]
             },
@@ -4839,7 +4945,7 @@
               "name": "_onListboxMouseout",
               "parameters": [
                 {
-                  "name": "event"
+                  "name": "_event"
                 }
               ]
             },
@@ -4885,10 +4991,10 @@
               "name": "_onOptionMouseout",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 },
                 {
-                  "name": "option"
+                  "name": "_option"
                 }
               ]
             },
@@ -4916,6 +5022,14 @@
               "kind": "field",
               "name": "keyCode",
               "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, open: \"open\", }"
             },
             {
               "kind": "field",
@@ -5108,7 +5222,7 @@
               "name": "_selectionShortCut",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -5360,7 +5474,7 @@
             {
               "kind": "field",
               "name": "textareaTemplate",
-              "description": "template for `textarea` in shadow DOM",
+              "description": "template for `textarea` in shadow DOM. Value binds via the .value\nproperty because Lit cannot patch expressions inside textarea child\ncontent (dev-mode warns; the value never rendered through the old\nchild expression).",
               "readonly": true,
               "return": {
                 "type": {
@@ -5387,7 +5501,7 @@
               "description": "handles field changes by field type",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -5796,7 +5910,7 @@
               "name": "autoGrow",
               "parameters": [
                 {
-                  "name": "field",
+                  "name": "_field",
                   "default": "this.field"
                 }
               ],
@@ -6164,8 +6278,11 @@
               "name": "stepDown",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -6183,8 +6300,11 @@
               "name": "stepUp",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -6475,20 +6595,6 @@
               },
               "description": "Validation error message to display",
               "attribute": "errorMessage",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "privacy": "public",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "attribute": "field",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -7189,18 +7295,6 @@
               }
             },
             {
-              "name": "field",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "fieldName": "field",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
               "name": "id",
               "type": {
                 "text": "string"
@@ -7434,6 +7528,10 @@
           ],
           "mixins": [
             {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
               "name": "SimpleFieldsFieldBehaviors",
               "module": "/lib/simple-fields-field.js"
             }
@@ -7496,7 +7594,7 @@
               "name": "autoGrow",
               "parameters": [
                 {
-                  "name": "field",
+                  "name": "_field",
                   "default": "this.field"
                 }
               ],
@@ -7825,8 +7923,11 @@
               "name": "stepDown",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -7840,8 +7941,11 @@
               "name": "stepUp",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -8089,16 +8193,6 @@
               },
               "description": "Validation error message to display",
               "attribute": "errorMessage"
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "privacy": "public",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "attribute": "field"
             },
             {
               "kind": "field",
@@ -8350,14 +8444,6 @@
               "description": "Whether the field is hidden",
               "default": "false",
               "fieldName": "hidden"
-            },
-            {
-              "name": "field",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "fieldName": "field"
             },
             {
               "name": "id",
@@ -8660,18 +8746,6 @@
               }
             },
             {
-              "name": "field",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "fieldName": "field",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
               "name": "id",
               "type": {
                 "text": "string"
@@ -8951,7 +9025,7 @@
               "name": "autoGrow",
               "parameters": [
                 {
-                  "name": "field",
+                  "name": "_field",
                   "default": "this.field"
                 }
               ],
@@ -9392,8 +9466,11 @@
               "name": "stepDown",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -9411,8 +9488,11 @@
               "name": "stepUp",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -9771,20 +9851,6 @@
             },
             {
               "kind": "field",
-              "name": "field",
-              "privacy": "public",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "attribute": "field",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
-              "kind": "field",
               "name": "label",
               "privacy": "public",
               "type": {
@@ -10096,7 +10162,7 @@
               "name": "_selectionShortCut",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -10339,7 +10405,7 @@
             {
               "kind": "field",
               "name": "textareaTemplate",
-              "description": "template for `textarea` in shadow DOM",
+              "description": "template for `textarea` in shadow DOM. Value binds via the .value\nproperty because Lit cannot patch expressions inside textarea child\ncontent (dev-mode warns; the value never rendered through the old\nchild expression).",
               "readonly": true,
               "return": {
                 "type": {
@@ -10358,7 +10424,7 @@
               "description": "handles field changes by field type",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -10694,7 +10760,7 @@
               "name": "autoGrow",
               "parameters": [
                 {
-                  "name": "field",
+                  "name": "_field",
                   "default": "this.field"
                 }
               ],
@@ -11062,8 +11128,11 @@
               "name": "stepDown",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -11081,8 +11150,11 @@
               "name": "stepUp",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -11373,20 +11445,6 @@
               },
               "description": "Validation error message to display",
               "attribute": "errorMessage",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "privacy": "public",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "attribute": "field",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -11897,18 +11955,6 @@
               "description": "Whether the field is hidden",
               "default": "false",
               "fieldName": "hidden",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
-              "name": "field",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "fieldName": "field",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -12547,18 +12593,6 @@
               }
             },
             {
-              "name": "field",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "fieldName": "field",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
               "name": "id",
               "type": {
                 "text": "string"
@@ -12826,7 +12860,7 @@
               "name": "_selectionShortCut",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -13141,7 +13175,7 @@
             {
               "kind": "field",
               "name": "textareaTemplate",
-              "description": "template for `textarea` in shadow DOM",
+              "description": "template for `textarea` in shadow DOM. Value binds via the .value\nproperty because Lit cannot patch expressions inside textarea child\ncontent (dev-mode warns; the value never rendered through the old\nchild expression).",
               "readonly": true,
               "return": {
                 "type": {
@@ -13168,7 +13202,7 @@
               "description": "handles field changes by field type",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -13592,7 +13626,7 @@
               "name": "autoGrow",
               "parameters": [
                 {
-                  "name": "field",
+                  "name": "_field",
                   "default": "this.field"
                 }
               ],
@@ -13960,8 +13994,11 @@
               "name": "stepDown",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -13979,8 +14016,11 @@
               "name": "stepUp",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -14271,20 +14311,6 @@
               },
               "description": "Validation error message to display",
               "attribute": "errorMessage",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "privacy": "public",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "attribute": "field",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -15962,7 +15988,7 @@
               "name": "_formFieldsChanged",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Fires when form changes to set focus on the first field if this has auto-focus"
@@ -16455,7 +16481,7 @@
               "name": "_handleGlobalTagDrop",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -16464,7 +16490,7 @@
               "name": "_handleGlobalTagDrag",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -16510,7 +16536,7 @@
               "name": "_handleDragLeave",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -16592,7 +16618,7 @@
               "name": "_fireTagListChanged",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "fires when tagList changes"
@@ -16741,7 +16767,7 @@
               "name": "_selectionShortCut",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -17028,7 +17054,7 @@
             {
               "kind": "field",
               "name": "textareaTemplate",
-              "description": "template for `textarea` in shadow DOM",
+              "description": "template for `textarea` in shadow DOM. Value binds via the .value\nproperty because Lit cannot patch expressions inside textarea child\ncontent (dev-mode warns; the value never rendered through the old\nchild expression).",
               "readonly": true,
               "return": {
                 "type": {
@@ -17046,7 +17072,7 @@
               "description": "handles field changes by field type",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -17435,7 +17461,7 @@
               "name": "autoGrow",
               "parameters": [
                 {
-                  "name": "field",
+                  "name": "_field",
                   "default": "this.field"
                 }
               ],
@@ -17788,8 +17814,11 @@
               "name": "stepDown",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -17807,8 +17836,11 @@
               "name": "stepUp",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -18066,20 +18098,6 @@
               },
               "description": "Validation error message to display",
               "attribute": "errorMessage",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "privacy": "public",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "attribute": "field",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -18700,18 +18718,6 @@
               }
             },
             {
-              "name": "field",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "fieldName": "field",
-              "inheritedFrom": {
-                "name": "SimpleFieldsContainerBehaviors",
-                "module": "lib/simple-fields-container.js"
-              }
-            },
-            {
               "name": "id",
               "type": {
                 "text": "string"
@@ -18978,7 +18984,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` :host .label-main:after { content: var(--simple-fields-label-flag, \"\"); } :host([focused]) .label-main, :host(:focus-within) .label-main { color: var(--simple-fields-accent-color, #3f51b5); transition: color 0.3s ease-in-out; font-weight: var(--ddd-font-weight-bold); } .label-main { font-weight: var(--ddd-font-weight-medium); } .inline { --simple-fields-radio-option-display: flex; --simple-fields-radio-option-flex-wrap: wrap; } label { margin: 0 0 0 0; } .inline label, .option label { margin: 0 var(--simple-fields-margin-small, 8px) 0 0; flex: 0 1 var(--simple-fields-label-width, auto); } .inline label, .option label, .field-main > div, .field, ::slotted([slot=\"field\"]) { font-size: var(--simple-fields-font-size, 16px); text-align: var(--simple-fields-text-align); font-family: var(--simple-fields-font-family, sans-serif); line-height: var(--simple-fields-line-height, 22px); } `, ]"
+          "default": "[ css` :host .label-main:after { content: var(--simple-fields-label-flag, \"\"); } :host([focused]) .label-main, :host(:focus-within) .label-main { color: var(--simple-fields-accent-color, #3f51b5); transition: color var(--ddd-duration-normal, 0.3s) ease-in-out; font-weight: var(--ddd-font-weight-bold); } .label-main { font-weight: var(--ddd-font-weight-medium); } .inline { --simple-fields-radio-option-display: flex; --simple-fields-radio-option-flex-wrap: wrap; } label { margin: 0 0 0 0; } .inline label, .option label { margin: 0 var(--simple-fields-margin-small, 8px) 0 0; flex: 0 1 var(--simple-fields-label-width, auto); } .inline label, .option label, .field-main > div, .field, ::slotted([slot=\"field\"]) { font-size: var(--simple-fields-font-size, 16px); text-align: var(--simple-fields-text-align); font-family: var(--simple-fields-font-family, sans-serif); line-height: var(--simple-fields-line-height, 22px); } `, ]"
         },
         {
           "kind": "variable",
@@ -19010,7 +19016,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` /* Ubuntu-style settings row hover/focus affordance (issue #2996). Scoped to the [row-layout] host attribute so it applies to every row-based field type (checkbox, single select, bounded number, and future phases) without affecting non-row fields. */ :host([row-layout]:hover) { background-color: var( --simple-fields-row-hover-background-color, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)) ); transition: background-color 0.3s ease-in-out; } :host([row-layout]:focus-within) { outline: var(--simple-fields-row-focus-outline-width, 1px) solid var( --simple-fields-row-focus-outline-color, var(--simple-fields-accent-color, #3f51b5) ); outline-offset: -1px; transition: outline-color 0.3s ease-in-out; } /* Ubuntu-style settings rows are start-aligned (issue #2996). The pre-existing .inline label rule sets text-align to var(--simple-fields-text-align) with no fallback, so when that custom property is unset the value inherits from the host page. The .label-text wrapper stretches its children to a shared width, which exposes any inherited ambient center alignment. Force start here so row-layout labels and descriptions never inherit center. */ .field-main.row-layout .label-main, .field-main.row-layout .label-text { text-align: start; } /* Row-layout labels grow to fill the left side so the (i) info icon (fixed-size, flex: 0 0 auto) is pushed to the right edge of the label and sits next to the field control (issue #2996). Without this, the pre-existing .inline label flex rule in SimpleFieldsLabelStyles keeps checkbox/color/radio labels at content width, stranding the info icon at the far left while text/select labels grow and place it next to the field. */ .field-main.row-layout .label-main, .field-main.row-layout > label { flex: 1 1 auto; } /* Base row-layout flex (issue #2996). Declared in the shared styles so every consumer that writes the row-layout class gets the horizontal label-left / control-right row, including elements that do NOT inherit simple-fields-field.js styles (e.g. simple-fields-code, which extends the container directly) and slotted-field containers. Elements that also inherit field.js carry an identical rule; the duplication is harmless and keeps each module self-consistent. */ .field-main.row-layout { display: flex; align-items: center; justify-content: space-between; } `, ]"
+          "default": "[ css` /* Ubuntu-style settings row hover/focus affordance (issue #2996). Scoped to the [row-layout] host attribute so it applies to every row-based field type (checkbox, single select, bounded number, and future phases) without affecting non-row fields. */ :host([row-layout]:hover) { background-color: var( --simple-fields-row-hover-background-color, light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.12)) ); transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out; } :host([row-layout]:focus-within) { outline: var(--simple-fields-row-focus-outline-width, 1px) solid var( --simple-fields-row-focus-outline-color, var(--simple-fields-accent-color, #3f51b5) ); outline-offset: -1px; transition: outline-color var(--ddd-duration-normal, 0.3s) ease-in-out; } /* Ubuntu-style settings rows are start-aligned (issue #2996). The pre-existing .inline label rule sets text-align to var(--simple-fields-text-align) with no fallback, so when that custom property is unset the value inherits from the host page. The .label-text wrapper stretches its children to a shared width, which exposes any inherited ambient center alignment. Force start here so row-layout labels and descriptions never inherit center. */ .field-main.row-layout .label-main, .field-main.row-layout .label-text { text-align: start; } /* Row-layout labels grow to fill the left side so the (i) info icon (fixed-size, flex: 0 0 auto) is pushed to the right edge of the label and sits next to the field control (issue #2996). Without this, the pre-existing .inline label flex rule in SimpleFieldsLabelStyles keeps checkbox/color/radio labels at content width, stranding the info icon at the far left while text/select labels grow and place it next to the field. */ .field-main.row-layout .label-main, .field-main.row-layout > label { flex: 1 1 auto; } /* Base row-layout flex (issue #2996). Declared in the shared styles so every consumer that writes the row-layout class gets the horizontal label-left / control-right row, including elements that do NOT inherit simple-fields-field.js styles (e.g. simple-fields-code, which extends the container directly) and slotted-field containers. Elements that also inherit field.js carry an identical rule; the duplication is harmless and keeps each module self-consistent. */ .field-main.row-layout { display: flex; align-items: center; justify-content: space-between; } `, ]"
         },
         {
           "kind": "variable",
@@ -19018,7 +19024,7 @@
           "type": {
             "text": "array"
           },
-          "default": "[ css` fieldset { padding: var(--simple-fields-margin-small, 8px) var(--simple-fields-margin, 16px); margin: var(--simple-fields-margin-small, 8px) 0 var(--simple-fields-margin, 16px); border-width: 1px; border-style: solid; border-color: var( --simple-fields-fieldset-border-color, var(--simple-fields-border-color-light, #ccc) ); border-radius: var(--simple-fields-border-radius, 4px); transition: all 0.3s ease-in-out; max-width: calc(100% - 2 * var(--simple-fields-margin, 16px) - 2px); } :host(:last-of-type) { margin-bottom: 0; } *[part=\"legend\"] { font-family: var(--simple-fields-font-family, sans-serif); font-size: var( --simple-fields-legend-font-size, var(--simple-fields-font-size, 16px) ); line-height: var(--simple-fields-line-height, 22px); text-transform: var(--simple-fields-legend-text-transform, unset); } :host([error]) *[part=\"legend\"] { color: var(--simple-fields-error-color, #b40000); transition: all 0.3s ease-in-out; } `, ]"
+          "default": "[ css` fieldset { padding: var(--simple-fields-margin-small, 8px) var(--simple-fields-margin, 16px); margin: var(--simple-fields-margin-small, 8px) 0 var(--simple-fields-margin, 16px); border-width: 1px; border-style: solid; border-color: var( --simple-fields-fieldset-border-color, var(--simple-fields-border-color-light, #ccc) ); border-radius: var(--simple-fields-border-radius, 4px); transition: all var(--ddd-duration-normal, 0.3s) ease-in-out; max-width: calc(100% - 2 * var(--simple-fields-margin, 16px) - 2px); } :host(:last-of-type) { margin-bottom: 0; } *[part=\"legend\"] { font-family: var(--simple-fields-font-family, sans-serif); font-size: var( --simple-fields-legend-font-size, var(--simple-fields-font-size, 16px) ); line-height: var(--simple-fields-line-height, 22px); text-transform: var(--simple-fields-legend-text-transform, unset); } :host([error]) *[part=\"legend\"] { color: var(--simple-fields-error-color, #b40000); transition: all var(--ddd-duration-normal, 0.3s) ease-in-out; } `, ]"
         }
       ],
       "exports": [
@@ -19153,7 +19159,7 @@
               "name": "_fileUploadResponse",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -19300,7 +19306,7 @@
               "name": "_takeSelfie",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Invoke the camera to set itself up"
@@ -19310,7 +19316,7 @@
               "name": "_voiceRecorder",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -19319,7 +19325,7 @@
               "name": "_screenRecorder",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -19350,7 +19356,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, dropMediaHereOr: \"drop media here or\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", recordScreen: \"Record screen\", cancel: \"Cancel\", uploadMedia: \"Upload media\", }"
+              "default": "{ ...this.t, dropMediaHereOr: \"drop media here or\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", recordScreen: \"Record screen\", cancel: \"Cancel\", uploadMedia: \"Upload media\", url: \"URL\", }"
             },
             {
               "kind": "field",
@@ -20459,7 +20465,7 @@
               "name": "_selectionShortCut",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -20764,7 +20770,7 @@
             {
               "kind": "field",
               "name": "textareaTemplate",
-              "description": "template for `textarea` in shadow DOM",
+              "description": "template for `textarea` in shadow DOM. Value binds via the .value\nproperty because Lit cannot patch expressions inside textarea child\ncontent (dev-mode warns; the value never rendered through the old\nchild expression).",
               "readonly": true,
               "return": {
                 "type": {
@@ -20791,7 +20797,7 @@
               "description": "handles field changes by field type",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -21215,7 +21221,7 @@
               "name": "autoGrow",
               "parameters": [
                 {
-                  "name": "field",
+                  "name": "_field",
                   "default": "this.field"
                 }
               ],
@@ -21583,8 +21589,11 @@
               "name": "stepDown",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -21602,8 +21611,11 @@
               "name": "stepUp",
               "parameters": [
                 {
+                  "name": "_n",
+                  "default": "1"
+                },
+                {
                   "name": "n",
-                  "default": "1",
                   "optional": true,
                   "type": {
                     "text": "number"
@@ -21894,20 +21906,6 @@
               },
               "description": "Validation error message to display",
               "attribute": "errorMessage",
-              "inheritedFrom": {
-                "name": "SimpleFieldsCombo",
-                "module": "lib/simple-fields-combo.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "field",
-              "privacy": "public",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "attribute": "field",
               "inheritedFrom": {
                 "name": "SimpleFieldsCombo",
                 "module": "lib/simple-fields-combo.js"
@@ -22259,6 +22257,9 @@
               "name": "_onButtonClick",
               "parameters": [
                 {
+                  "name": "_event"
+                },
+                {
                   "name": "event",
                   "type": {
                     "text": "event"
@@ -22275,6 +22276,9 @@
               "kind": "method",
               "name": "_onInputClick",
               "parameters": [
+                {
+                  "name": "_event"
+                },
                 {
                   "name": "event",
                   "type": {
@@ -22293,6 +22297,9 @@
               "name": "_onInputBlur",
               "parameters": [
                 {
+                  "name": "_event"
+                },
+                {
                   "name": "event",
                   "type": {
                     "text": "event"
@@ -22310,7 +22317,7 @@
               "name": "_onInputPaste",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "inheritedFrom": {
@@ -22322,6 +22329,9 @@
               "kind": "method",
               "name": "_onInputFocus",
               "parameters": [
+                {
+                  "name": "_event"
+                },
                 {
                   "name": "event",
                   "type": {
@@ -22400,7 +22410,7 @@
               "name": "_onListboxMouseover",
               "parameters": [
                 {
-                  "name": "event"
+                  "name": "_event"
                 }
               ],
               "inheritedFrom": {
@@ -22413,7 +22423,7 @@
               "name": "_onListboxMouseout",
               "parameters": [
                 {
-                  "name": "event"
+                  "name": "_event"
                 }
               ],
               "inheritedFrom": {
@@ -22479,10 +22489,10 @@
               "name": "_onOptionMouseout",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 },
                 {
-                  "name": "option"
+                  "name": "_option"
                 }
               ],
               "inheritedFrom": {
@@ -22530,6 +22540,18 @@
               "kind": "field",
               "name": "keyCode",
               "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, open: \"open\", }",
               "inheritedFrom": {
                 "name": "SimpleFieldsCombo",
                 "module": "lib/simple-fields-combo.js"
@@ -23134,18 +23156,6 @@
               }
             },
             {
-              "name": "field",
-              "type": {
-                "text": "object"
-              },
-              "description": "Field element",
-              "fieldName": "field",
-              "inheritedFrom": {
-                "name": "SimpleFieldsCombo",
-                "module": "lib/simple-fields-combo.js"
-              }
-            },
-            {
               "name": "id",
               "type": {
                 "text": "string"
@@ -23590,6 +23600,19 @@
             },
             {
               "kind": "method",
+              "name": "_statusLabel",
+              "parameters": [
+                {
+                  "name": "status",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ],
+              "description": "Translate an internal file status value for display. Status values\nstay in English internally because they are compared in logic."
+            },
+            {
+              "kind": "method",
               "name": "addFile",
               "parameters": [
                 {
@@ -23828,6 +23851,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, dropFilesHere: \"Drop files here\", uploadQueue: \"Upload queue\", pending: \"Pending\", preparing: \"Preparing\", uploading: \"Uploading\", complete: \"Complete\", aborted: \"Aborted\", cancelled: \"Cancelled\", error: \"Error\", errorWithStatus: \"Error: {status}\", cancel: \"Cancel\", cancelUploadOf: \"Cancel upload of {name}\", retry: \"Retry\", retryUploadOf: \"Retry upload of {name}\", remove: \"Remove\", removeFromQueue: \"Remove {name} from queue\", fileTypeNotAccepted: \"File type not accepted: {name}\", uploadFailed: \"Upload failed: {status}\", networkError: \"Network error\", }"
+            },
+            {
+              "kind": "field",
               "name": "_preventWindowDrop"
             }
           ],
@@ -23928,6 +23959,12 @@
               "fieldName": "_dragover"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "superclass": {
             "name": "DDD",
             "package": "@haxtheweb/d-d-d/d-d-d.js"
@@ -23950,6 +23987,261 @@
           "declaration": {
             "name": "SimpleFileUpload",
             "module": "lib/simple-file-upload.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/simple-login-avatar.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`simple-login-avatar`",
+          "name": "SimpleLoginAvatar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_copyAttribute",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "to"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "simple-login-avatar",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleLoginAvatar",
+            "module": "lib/simple-login-avatar.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleLoginAvatar",
+          "declaration": {
+            "name": "SimpleLoginAvatar",
+            "module": "lib/simple-login-avatar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/simple-login-camera.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Inspiration from https://github.com/wanoo21/MyCamera",
+          "name": "SimpleLoginCamera",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_startRecording"
+            },
+            {
+              "kind": "method",
+              "name": "_stopRecording"
+            },
+            {
+              "kind": "method",
+              "name": "_pauseRecording"
+            },
+            {
+              "kind": "method",
+              "name": "_resumeRecording"
+            },
+            {
+              "kind": "method",
+              "name": "_saveVideo",
+              "parameters": [
+                {
+                  "name": "blob"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_cameraStream"
+            },
+            {
+              "kind": "method",
+              "name": "takeASnap"
+            },
+            {
+              "kind": "method",
+              "name": "renderImage",
+              "parameters": [
+                {
+                  "name": "blob"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "imageBlob",
+              "parameters": [
+                {
+                  "name": "blob"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "download",
+              "parameters": [
+                {
+                  "name": "blob"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_addVideoAtributes"
+            },
+            {
+              "kind": "method",
+              "name": "_msrLoaded",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_applyMSR"
+            },
+            {
+              "kind": "method",
+              "name": "_setupRecordControls",
+              "description": "record controls depend on the record attribute, which can not be read\nin the constructor, so they are wired once when connected"
+            },
+            {
+              "kind": "method",
+              "name": "documentLoaded",
+              "parameters": [
+                {
+                  "name": "_e"
+                }
+              ],
+              "description": "Try to apply when fully loaded dom"
+            },
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ record: \"Record\", pause: \"Pause record\", stopSave: \"Stop & Save\", clickToTakePhoto: \"Click to take photo\", }"
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            },
+            {
+              "kind": "field",
+              "name": "_shadow"
+            },
+            {
+              "kind": "field",
+              "name": "_video"
+            },
+            {
+              "kind": "field",
+              "name": "_error"
+            },
+            {
+              "kind": "field",
+              "name": "_record"
+            },
+            {
+              "kind": "field",
+              "name": "_pauseRecord"
+            }
+          ],
+          "events": [
+            {
+              "name": "simple-login-camera-icon-click",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "autoplay"
+            },
+            {
+              "name": "controls"
+            },
+            {
+              "name": "audio"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleLoginCamera",
+            "module": "lib/simple-login-camera.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleLoginCamera",
+          "declaration": {
+            "name": "SimpleLoginCamera",
+            "module": "lib/simple-login-camera.js"
           }
         }
       ]
@@ -23980,9 +24272,17 @@
               "name": "clickEvent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, removeValue: \"Remove {value}\", }"
             },
             {
               "kind": "field",
@@ -24151,6 +24451,12 @@
               "fieldName": "toggledIcon"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "parameters": [
             {
               "name": "SuperClass"
@@ -24193,9 +24499,21 @@
               "name": "clickEvent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
+              "inheritedFrom": {
+                "name": "SimpleTagLiteSuper",
+                "module": "lib/simple-tag-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, removeValue: \"Remove {value}\", }",
               "inheritedFrom": {
                 "name": "SimpleTagLiteSuper",
                 "module": "lib/simple-tag-lite.js"
@@ -24549,9 +24867,21 @@
               "name": "clickEvent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
+              "inheritedFrom": {
+                "name": "SimpleTagLiteSuper",
+                "module": "lib/simple-tag-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, removeValue: \"Remove {value}\", }",
               "inheritedFrom": {
                 "name": "SimpleTagLiteSuper",
                 "module": "lib/simple-tag-lite.js"

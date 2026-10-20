@@ -119,7 +119,8 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
         .message_wrap {
           padding: var(--ddd-spacing-1) var(--ddd-spacing-6);
           flex: 1 1 auto;
-          transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
+          transition: background-color var(--ddd-duration-normal, 0.3s)
+            ease-in-out;
           color: var(--text-color);
           background-color: var(
             --ddd-component-stop-note-text-background,
@@ -180,7 +181,8 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
+          transition: background-color var(--ddd-duration-normal, 0.3s)
+            ease-in-out;
           background-color: var(
             --ddd-component-stop-note-icon-background,
             var(--accent-color)
@@ -332,11 +334,7 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
       this.icon = StopNoteIconList[this.status];
     }
     // reverse-lookup: if no status but icon supplied (legacy), derive status
-    if (
-      !this.hasUpdated &&
-      this.status === null &&
-      this.icon
-    ) {
+    if (!this.hasUpdated && this.status === null && this.icon) {
       Object.keys(StopNoteIconList).map((value) => {
         if (StopNoteIconList[value] === this.icon) {
           this.status = value;

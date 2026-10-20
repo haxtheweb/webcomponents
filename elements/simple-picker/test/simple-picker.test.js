@@ -30,7 +30,11 @@ describe("simple-picker basic functionality", () => {
       ],
     ];
     const el = await fixture(
-      html`<simple-picker label="Pick a color" .options=${options} .value=${"blue"}></simple-picker>`,
+      html`<simple-picker
+        label="Pick a color"
+        .options=${options}
+        .value=${"blue"}
+      ></simple-picker>`,
     );
     await el.updateComplete;
     await expect(el).shadowDom.to.be.accessible();
@@ -47,9 +51,7 @@ describe("simple-picker basic functionality", () => {
 // Property and state behavior
 describe("simple-picker property behavior", () => {
   it("reflects the disabled attribute", async () => {
-    const el = await fixture(
-      html`<simple-picker disabled></simple-picker>`,
-    );
+    const el = await fixture(html`<simple-picker disabled></simple-picker>`);
     expect(el.hasAttribute("disabled")).to.be.true;
   });
 
@@ -90,7 +92,10 @@ describe("simple-picker property behavior", () => {
       ],
     ];
     const el = await fixture(
-      html`<simple-picker .options=${options} .value=${"blue"}></simple-picker>`,
+      html`<simple-picker
+        .options=${options}
+        .value=${"blue"}
+      ></simple-picker>`,
     );
     await el.updateComplete;
     expect(el.__selectedOption).to.exist;
@@ -150,9 +155,7 @@ describe("simple-picker listbox toggle", () => {
   });
 
   it("ignores toggles when disabled", async () => {
-    const el = await fixture(
-      html`<simple-picker disabled></simple-picker>`,
-    );
+    const el = await fixture(html`<simple-picker disabled></simple-picker>`);
     el._toggleListbox(true);
     expect(el.expanded).to.not.be.true;
   });
@@ -203,9 +206,7 @@ describe("simple-picker-option", () => {
 // simple-emoji-picker (kept from the original suite)
 describe("simple-emoji-picker", () => {
   it("passes the a11y audit (shadow DOM)", async () => {
-    const el = await fixture(
-      html`<simple-emoji-picker></simple-emoji-picker>`,
-    );
+    const el = await fixture(html`<simple-emoji-picker></simple-emoji-picker>`);
     await expect(el).shadowDom.to.be.accessible();
   });
 });

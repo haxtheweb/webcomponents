@@ -134,8 +134,11 @@
               "name": "_handleListboxClick",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -153,8 +156,11 @@
               "name": "_handleListboxMousedown",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -229,15 +235,18 @@
               "name": "_valueChanged",
               "parameters": [
                 {
-                  "name": "oldValue",
-                  "description": "old value for picker",
+                  "name": "_oldValue"
+                },
+                {
+                  "description": "new value for picker",
+                  "name": "newValue",
                   "type": {
                     "text": "object"
                   }
                 },
                 {
-                  "description": "new value for picker",
-                  "name": "newValue",
+                  "description": "old value for picker",
+                  "name": "oldValue",
                   "type": {
                     "text": "object"
                   }
@@ -252,18 +261,31 @@
             },
             {
               "kind": "method",
+              "name": "_computeListboxAriaLabel",
+              "description": "Returns the fallback aria-label applied to the listbox when neither a\nconsumer-supplied `aria-labelledby` nor a `label` property provide an\naccessible name. Returns `undefined` (which suppresses the attribute)\nwhen a label source already exists, so existing setups are unchanged.\n\nSubclasses should override this to provide a domain-appropriate string\n(for example `simple-icon-picker` returns \"Select an icon\").",
+              "return": {
+                "type": {
+                  "text": "string | undefined"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_optionsChanged",
               "parameters": [
                 {
-                  "name": "oldValue",
-                  "description": "old options for picker",
+                  "name": "_oldValue"
+                },
+                {
+                  "description": "new options for picker",
+                  "name": "newValue",
                   "type": {
                     "text": "object"
                   }
                 },
                 {
-                  "description": "new options for picker",
-                  "name": "newValue",
+                  "description": "old options for picker",
+                  "name": "oldValue",
                   "type": {
                     "text": "object"
                   }
@@ -410,6 +432,18 @@
             },
             {
               "kind": "field",
+              "name": "hideNullOption",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
+              "default": "false",
+              "attribute": "hide-null-option",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "hideSample",
               "privacy": "public",
               "type": {
@@ -504,17 +538,6 @@
               "description": "Selected option based on value of picker",
               "default": "{}",
               "attribute": "__selectedOption"
-            },
-            {
-              "kind": "field",
-              "name": "hideNullOption",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
-              "attribute": "hide-null-option",
-              "reflects": true
             },
             {
               "kind": "field",
@@ -672,6 +695,7 @@
                 "text": "boolean"
               },
               "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
+              "default": "false",
               "fieldName": "hideNullOption"
             },
             {
@@ -882,6 +906,7 @@
                 "text": "boolean"
               },
               "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
+              "default": "false",
               "fieldName": "hideNullOption",
               "inheritedFrom": {
                 "name": "SimplePickerBehaviors",
@@ -1180,8 +1205,11 @@
               "name": "_handleListboxClick",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -1203,8 +1231,11 @@
               "name": "_handleListboxMousedown",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -1295,15 +1326,18 @@
               "name": "_valueChanged",
               "parameters": [
                 {
-                  "name": "oldValue",
-                  "description": "old value for picker",
+                  "name": "_oldValue"
+                },
+                {
+                  "description": "new value for picker",
+                  "name": "newValue",
                   "type": {
                     "text": "object"
                   }
                 },
                 {
-                  "description": "new value for picker",
-                  "name": "newValue",
+                  "description": "old value for picker",
+                  "name": "oldValue",
                   "type": {
                     "text": "object"
                   }
@@ -1322,18 +1356,35 @@
             },
             {
               "kind": "method",
+              "name": "_computeListboxAriaLabel",
+              "description": "Returns the fallback aria-label applied to the listbox when neither a\nconsumer-supplied `aria-labelledby` nor a `label` property provide an\naccessible name. Returns `undefined` (which suppresses the attribute)\nwhen a label source already exists, so existing setups are unchanged.\n\nSubclasses should override this to provide a domain-appropriate string\n(for example `simple-icon-picker` returns \"Select an icon\").",
+              "return": {
+                "type": {
+                  "text": "string | undefined"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_optionsChanged",
               "parameters": [
                 {
-                  "name": "oldValue",
-                  "description": "old options for picker",
+                  "name": "_oldValue"
+                },
+                {
+                  "description": "new options for picker",
+                  "name": "newValue",
                   "type": {
                     "text": "object"
                   }
                 },
                 {
-                  "description": "new options for picker",
-                  "name": "newValue",
+                  "description": "old options for picker",
+                  "name": "oldValue",
                   "type": {
                     "text": "object"
                   }
@@ -1524,6 +1575,22 @@
             },
             {
               "kind": "field",
+              "name": "hideNullOption",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
+              "default": "false",
+              "attribute": "hide-null-option",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "hideSample",
               "privacy": "public",
               "type": {
@@ -1650,21 +1717,6 @@
               "description": "Selected option based on value of picker",
               "default": "{}",
               "attribute": "__selectedOption",
-              "inheritedFrom": {
-                "name": "SimplePickerBehaviors",
-                "module": "simple-picker.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "hideNullOption",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
-              "attribute": "hide-null-option",
-              "reflects": true,
               "inheritedFrom": {
                 "name": "SimplePickerBehaviors",
                 "module": "simple-picker.js"
@@ -2106,8 +2158,11 @@
               "name": "_handleListboxClick",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -2129,8 +2184,11 @@
               "name": "_handleListboxMousedown",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -2221,15 +2279,18 @@
               "name": "_valueChanged",
               "parameters": [
                 {
-                  "name": "oldValue",
-                  "description": "old value for picker",
+                  "name": "_oldValue"
+                },
+                {
+                  "description": "new value for picker",
+                  "name": "newValue",
                   "type": {
                     "text": "object"
                   }
                 },
                 {
-                  "description": "new value for picker",
-                  "name": "newValue",
+                  "description": "old value for picker",
+                  "name": "oldValue",
                   "type": {
                     "text": "object"
                   }
@@ -2248,18 +2309,35 @@
             },
             {
               "kind": "method",
+              "name": "_computeListboxAriaLabel",
+              "description": "Returns the fallback aria-label applied to the listbox when neither a\nconsumer-supplied `aria-labelledby` nor a `label` property provide an\naccessible name. Returns `undefined` (which suppresses the attribute)\nwhen a label source already exists, so existing setups are unchanged.\n\nSubclasses should override this to provide a domain-appropriate string\n(for example `simple-icon-picker` returns \"Select an icon\").",
+              "return": {
+                "type": {
+                  "text": "string | undefined"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_optionsChanged",
               "parameters": [
                 {
-                  "name": "oldValue",
-                  "description": "old options for picker",
+                  "name": "_oldValue"
+                },
+                {
+                  "description": "new options for picker",
+                  "name": "newValue",
                   "type": {
                     "text": "object"
                   }
                 },
                 {
-                  "description": "new options for picker",
-                  "name": "newValue",
+                  "description": "old options for picker",
+                  "name": "oldValue",
                   "type": {
                     "text": "object"
                   }
@@ -2436,6 +2514,22 @@
             },
             {
               "kind": "field",
+              "name": "hideNullOption",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
+              "default": "false",
+              "attribute": "hide-null-option",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "hideSample",
               "privacy": "public",
               "type": {
@@ -2532,21 +2626,6 @@
               "description": "Selected option based on value of picker",
               "default": "{}",
               "attribute": "__selectedOption",
-              "inheritedFrom": {
-                "name": "SimplePickerBehaviors",
-                "module": "simple-picker.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "hideNullOption",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
-              "attribute": "hide-null-option",
-              "reflects": true,
               "inheritedFrom": {
                 "name": "SimplePickerBehaviors",
                 "module": "simple-picker.js"
@@ -2689,6 +2768,7 @@
                 "text": "boolean"
               },
               "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
+              "default": "false",
               "fieldName": "hideNullOption",
               "inheritedFrom": {
                 "name": "SimplePickerBehaviors",
@@ -3507,8 +3587,11 @@
               "name": "_handleListboxClick",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -3530,8 +3613,11 @@
               "name": "_handleListboxMousedown",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -3622,15 +3708,18 @@
               "name": "_valueChanged",
               "parameters": [
                 {
-                  "name": "oldValue",
-                  "description": "old value for picker",
+                  "name": "_oldValue"
+                },
+                {
+                  "description": "new value for picker",
+                  "name": "newValue",
                   "type": {
                     "text": "object"
                   }
                 },
                 {
-                  "description": "new value for picker",
-                  "name": "newValue",
+                  "description": "old value for picker",
+                  "name": "oldValue",
                   "type": {
                     "text": "object"
                   }
@@ -3649,18 +3738,35 @@
             },
             {
               "kind": "method",
+              "name": "_computeListboxAriaLabel",
+              "description": "Returns the fallback aria-label applied to the listbox when neither a\nconsumer-supplied `aria-labelledby` nor a `label` property provide an\naccessible name. Returns `undefined` (which suppresses the attribute)\nwhen a label source already exists, so existing setups are unchanged.\n\nSubclasses should override this to provide a domain-appropriate string\n(for example `simple-icon-picker` returns \"Select an icon\").",
+              "return": {
+                "type": {
+                  "text": "string | undefined"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_optionsChanged",
               "parameters": [
                 {
-                  "name": "oldValue",
-                  "description": "old options for picker",
+                  "name": "_oldValue"
+                },
+                {
+                  "description": "new options for picker",
+                  "name": "newValue",
                   "type": {
                     "text": "object"
                   }
                 },
                 {
-                  "description": "new options for picker",
-                  "name": "newValue",
+                  "description": "old options for picker",
+                  "name": "oldValue",
                   "type": {
                     "text": "object"
                   }
@@ -3837,6 +3943,22 @@
             },
             {
               "kind": "field",
+              "name": "hideNullOption",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
+              "default": "false",
+              "attribute": "hide-null-option",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "hideSample",
               "privacy": "public",
               "type": {
@@ -3933,21 +4055,6 @@
               "description": "Selected option based on value of picker",
               "default": "{}",
               "attribute": "__selectedOption",
-              "inheritedFrom": {
-                "name": "SimplePickerBehaviors",
-                "module": "simple-picker.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "hideNullOption",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
-              "attribute": "hide-null-option",
-              "reflects": true,
               "inheritedFrom": {
                 "name": "SimplePickerBehaviors",
                 "module": "simple-picker.js"
@@ -4090,6 +4197,7 @@
                 "text": "boolean"
               },
               "description": "hide the null option\nDefault behavior/false will select first option and set value accordingly.",
+              "default": "false",
               "fieldName": "hideNullOption",
               "inheritedFrom": {
                 "name": "SimplePickerBehaviors",

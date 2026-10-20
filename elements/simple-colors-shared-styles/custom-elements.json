@@ -249,6 +249,23 @@
               "description": "gets the current shade based on the index"
             },
             {
+              "kind": "method",
+              "name": "invertShade",
+              "parameters": [
+                {
+                  "name": "shade"
+                },
+                {
+                  "description": "inverted shade",
+                  "name": "the",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets the inverse of a shade across the 12-step color scale"
+            },
+            {
               "kind": "field",
               "name": "colors",
               "privacy": "public",

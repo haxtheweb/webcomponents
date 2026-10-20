@@ -625,10 +625,7 @@ describe("EditableTable test", () => {
           "Far past",
           `<span data-sort-value="${months(10)}">10 months ago</span>`,
         ],
-        [
-          "Recent days",
-          `<span data-sort-value="${days(5)}">5 days ago</span>`,
-        ],
+        ["Recent days", `<span data-sort-value="${days(5)}">5 days ago</span>`],
         [
           "Last hour",
           `<span data-sort-value="${minutes(45)}">45 minutes ago</span>`,

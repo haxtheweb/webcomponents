@@ -276,9 +276,15 @@ describe("UserScaffold user action handlers", () => {
     let immediateStopped = false;
     const fakeEvent = {
       isTrusted: true,
-      preventDefault: () => { prevented = true; },
-      stopPropagation: () => { stopped = true; },
-      stopImmediatePropagation: () => { immediateStopped = true; },
+      preventDefault: () => {
+        prevented = true;
+      },
+      stopPropagation: () => {
+        stopped = true;
+      },
+      stopImmediatePropagation: () => {
+        immediateStopped = true;
+      },
       dataTransfer: { items: [] },
     };
     element.userDropAction(fakeEvent);
@@ -307,9 +313,7 @@ describe("UserScaffold user action handlers", () => {
       isTrusted: true,
       clipboardData: {
         getData: (type) =>
-          type === "text/html"
-            ? '<div style="color:red;">Hello</div>'
-            : "",
+          type === "text/html" ? '<div style="color:red;">Hello</div>' : "",
         files: [],
       },
     };
@@ -325,8 +329,7 @@ describe("UserScaffold user action handlers", () => {
     const fakeEvent = {
       isTrusted: true,
       clipboardData: {
-        getData: (type) =>
-          type === "text/html" ? "<span></span>text" : "",
+        getData: (type) => (type === "text/html" ? "<span></span>text" : ""),
         files: [],
       },
     };
@@ -393,11 +396,8 @@ describe("UserScaffold interval polling", () => {
   it("increments interactionDelay when active", async () => {
     const element = await fixture(html`<user-scaffold></user-scaffold>`);
     const before = element.readMemory("interactionDelay") || 0;
- // trigger a manual increment
-    element.incrementWriteMemory(
-      "interactionDelay",
-      300,
-    );
+    // trigger a manual increment
+    element.incrementWriteMemory("interactionDelay", 300);
     expect(element.readMemory("interactionDelay")).to.equal(before + 300);
     element.disconnectedCallback();
   });

@@ -465,7 +465,9 @@ const SimplePickerBehaviors = function (SuperClass) {
         <div
           id="listbox"
           role="listbox"
-          aria-activedescendant="${this.expanded ? this.__activeDesc : undefined}"
+          aria-activedescendant="${this.expanded
+            ? this.__activeDesc
+            : undefined}"
           aria-labelledby="${this.ariaLabelledby ||
           (this.label && this.label.trim() !== "" ? "listLabel" : undefined)}"
           aria-label="${this._computeListboxAriaLabel()}"

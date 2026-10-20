@@ -16,13 +16,15 @@ describe("image-gallery behavior gaps", () => {
   });
 
   async function ready() {
-    const el = await fixture(html`<image-gallery>
-      <media-image
-        source="https://placehold.co/200x100"
-        alt="first"
-      ></media-image>
-      <img src="https://placehold.co/100x200" alt="second" />
-    </image-gallery>`);
+    const el = await fixture(
+      html`<image-gallery>
+        <media-image
+          source="https://placehold.co/200x100"
+          alt="first"
+        ></media-image>
+        <img src="https://placehold.co/100x200" alt="second" />
+      </image-gallery>`,
+    );
     await el.updateComplete;
     // let the mutation observer's debounce run so images settle
     await flush(150);
@@ -253,8 +255,8 @@ describe("image-gallery behavior gaps", () => {
   });
 
   it("exposes haxProperties as a file reference", () => {
-    expect(ImageGallery.haxProperties.endsWith(
-      "image-gallery.haxProperties.json",
-    )).to.equal(true);
+    expect(
+      ImageGallery.haxProperties.endsWith("image-gallery.haxProperties.json"),
+    ).to.equal(true);
   });
 });

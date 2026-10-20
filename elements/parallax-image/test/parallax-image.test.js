@@ -23,12 +23,14 @@ describe("parallax-image behavior", () => {
     await el.updateComplete;
     expect(el.imageBg).to.equal("photo.png");
     expect(el.getAttribute("image-bg")).to.equal("photo.png");
-    expect(el.style.getPropertyValue("--parallax-image-background").trim()).to
-      .equal("url(photo.png)");
+    expect(
+      el.style.getPropertyValue("--parallax-image-background").trim(),
+    ).to.equal("url(photo.png)");
     el.imageBg = "other.png";
     await el.updateComplete;
-    expect(el.style.getPropertyValue("--parallax-image-background").trim()).to
-      .equal("url(other.png)");
+    expect(
+      el.style.getPropertyValue("--parallax-image-background").trim(),
+    ).to.equal("url(other.png)");
   });
 
   it("renders the parallax structure with describedBy passthrough", async () => {
@@ -39,15 +41,14 @@ describe("parallax-image behavior", () => {
     );
     await el.updateComplete;
     expect(
-      el.shadowRoot.querySelector(".parallax_container").getAttribute(
-        "aria-describedby",
-      ),
+      el.shadowRoot
+        .querySelector(".parallax_container")
+        .getAttribute("aria-describedby"),
     ).to.equal("desc-1");
     expect(el.shadowRoot.querySelector("#bgParallax")).to.exist;
     expect(el.shadowRoot.querySelector("#titleParallax")).to.exist;
-    expect(
-      el.shadowRoot.querySelector('slot[name="parallax_heading"]'),
-    ).to.exist;
+    expect(el.shadowRoot.querySelector('slot[name="parallax_heading"]')).to
+      .exist;
   });
 
   it("scrollBy moves the background and title relative to scrollY", async () => {

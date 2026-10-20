@@ -383,7 +383,7 @@
               "name": "_handleResize",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "resizes toolbar on window resize"
@@ -1500,7 +1500,7 @@
               "name": "_handleResize",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "resizes toolbar on window resize",
@@ -2510,7 +2510,7 @@
               "name": "_handleResize",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "resizes toolbar on window resize",
@@ -3917,7 +3917,7 @@
               "name": "_handleResize",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "resizes toolbar on window resize",
@@ -4569,8 +4569,11 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -4583,8 +4586,11 @@
               "name": "_handleBlur",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -4597,8 +4603,11 @@
               "name": "_handleFocus",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -4611,8 +4620,11 @@
               "name": "_handleKeydown",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -4625,21 +4637,27 @@
               "name": "_handleKeys",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
                 }
               ],
-              "description": "handles keypress"
+              "description": "handles keydown"
             },
             {
               "kind": "method",
               "name": "_handleShortcutKeys",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
+                },
+                {
+                  "name": "_key"
                 },
                 {
                   "name": "key",
@@ -5289,8 +5307,11 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -5307,8 +5328,11 @@
               "name": "_handleBlur",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -5325,8 +5349,11 @@
               "name": "_handleFocus",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -5343,8 +5370,11 @@
               "name": "_handleKeydown",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -5361,14 +5391,17 @@
               "name": "_handleKeys",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
                 }
               ],
-              "description": "handles keypress",
+              "description": "handles keydown",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -5379,7 +5412,10 @@
               "name": "_handleShortcutKeys",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
+                },
+                {
+                  "name": "_key"
                 },
                 {
                   "name": "key",
@@ -5950,7 +5986,7 @@
               "name": "toggleFocus",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -5974,7 +6010,7 @@
               "name": "_watchChildren",
               "parameters": [
                 {
-                  "name": "mutationsList"
+                  "name": "_mutationsList"
                 }
               ]
             },
@@ -6104,8 +6140,11 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -6122,8 +6161,11 @@
               "name": "_handleBlur",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -6140,8 +6182,11 @@
               "name": "_handleFocus",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -6158,8 +6203,11 @@
               "name": "_handleKeydown",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -6176,14 +6224,17 @@
               "name": "_handleKeys",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
                 }
               ],
-              "description": "handles keypress",
+              "description": "handles keydown",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -6194,7 +6245,10 @@
               "name": "_handleShortcutKeys",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
+                },
+                {
+                  "name": "_key"
                 },
                 {
                   "name": "key",
@@ -7169,8 +7223,11 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -7187,8 +7244,11 @@
               "name": "_handleKeydown",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -7205,14 +7265,17 @@
               "name": "_handleKeys",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
                 }
               ],
-              "description": "handles keypress",
+              "description": "handles keydown",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -7223,7 +7286,10 @@
               "name": "_handleShortcutKeys",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
+                },
+                {
+                  "name": "_key"
                 },
                 {
                   "name": "key",
@@ -8074,8 +8140,11 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -8092,8 +8161,11 @@
               "name": "_handleKeydown",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -8110,14 +8182,17 @@
               "name": "_handleKeys",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
                 }
               ],
-              "description": "handles keypress",
+              "description": "handles keydown",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -8128,7 +8203,10 @@
               "name": "_handleShortcutKeys",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
+                },
+                {
+                  "name": "_key"
                 },
                 {
                   "name": "key",
@@ -8688,6 +8766,9 @@
                   "name": "e"
                 },
                 {
+                  "name": "_key"
+                },
+                {
                   "name": "key",
                   "type": {
                     "text": "string"
@@ -8889,8 +8970,11 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -8907,8 +8991,11 @@
               "name": "_handleBlur",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -8925,8 +9012,11 @@
               "name": "_handleFocus",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -8943,8 +9033,11 @@
               "name": "_handleKeydown",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
@@ -8961,14 +9054,17 @@
               "name": "_handleKeys",
               "parameters": [
                 {
-                  "name": "e",
+                  "name": "_e"
+                },
+                {
                   "description": "event",
+                  "name": "e",
                   "type": {
                     "text": "event"
                   }
                 }
               ],
-              "description": "handles keypress",
+              "description": "handles keydown",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"

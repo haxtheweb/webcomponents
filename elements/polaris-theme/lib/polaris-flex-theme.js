@@ -33,10 +33,8 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
  * @element polaris-flex-theme
  */
 class PolarisFlexTheme extends HAXCMSOperationButtons(
-  HAXCMSThemeParts(
-    HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
-  ),
-  ) {
+  HAXCMSThemeParts(HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme))),
+) {
   //styles function
   static get styles() {
     return [
@@ -205,11 +203,17 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
           width: 340px;
           text-transform: none;
         }
-        :host([responsive-size="sm"]) .header-top-menu site-region[name="header"] polaris-mark {
+        :host([responsive-size="sm"])
+          .header-top-menu
+          site-region[name="header"]
+          polaris-mark {
           --polaris-mark-stroke-line-display: none;
           --polaris-mark-name3-display: none;
         }
-        :host([responsive-size="xs"]) .header-top-menu site-region[name="header"] polaris-mark {
+        :host([responsive-size="xs"])
+          .header-top-menu
+          site-region[name="header"]
+          polaris-mark {
           --polaris-mark-stroke-line-display: none;
           --polaris-mark-name1-display: none;
           --polaris-mark-name2-display: none;
@@ -879,14 +883,11 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
   renderStickyNavMirror() {
     return html`
       <div
-        class="nav-section sticky-nav-mirror${this.__navStuck &&
-        !this.editMode
+        class="nav-section sticky-nav-mirror${this.__navStuck && !this.editMode
           ? ` stuck`
           : ``}"
       >
-        <div class="header-branding">
-          ${this.renderMirrorMobileButton()}
-        </div>
+        <div class="header-branding">${this.renderMirrorMobileButton()}</div>
         <nav
           id="haxcmsmobilemenunav-mirror"
           role="navigation"
@@ -954,16 +955,22 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
                 part="search-btn"
                 position="left"
               >
-              <site-search></site-search>
+                <site-search></site-search>
               </site-modal>
               <div class="header-links">
                 <slot name="header"> ${this.renderHeaderSlot()} </slot>
               </div>
             </div>
           </div>
-          <div class="nav-section" id="primary-nav" aria-hidden="${this.__navStuck ? "true" : "false"}">
+          <div
+            class="nav-section"
+            id="primary-nav"
+            aria-hidden="${this.__navStuck ? "true" : "false"}"
+          >
             <div class="header-branding">
-            ${["xs", "sm"].includes(this.responsiveSize) ? this.HAXCMSMobileMenuButton("right") : ``}
+              ${["xs", "sm"].includes(this.responsiveSize)
+                ? this.HAXCMSMobileMenuButton("right")
+                : ``}
             </div>
             ${this.HAXCMSFlexMenu()}
           </div>
@@ -1122,9 +1129,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
         // time, in which case themeData is undefined and reading .variables would
         // throw synchronously inside the autorun (the Promise guard below only
         // protects the deferred body, not the toJS call itself)
-        const _mobx_val_0 = toJS(
-          store.themeData && store.themeData.variables,
-        );
+        const _mobx_val_0 = toJS(store.themeData && store.themeData.variables);
         Promise.resolve().then(() => {
           if (store.themeData && store.themeData.variables) {
             const vars = _mobx_val_0;

@@ -538,9 +538,7 @@ describe("app-hax test", () => {
       };
 
       await element._haxStoreContribute("merlin", "merlin", "test command");
-      expect(capturedUrl).to.include(
-        "%5Bmerlin%5D%20New%20command%20request",
-      );
+      expect(capturedUrl).to.include("%5Bmerlin%5D%20New%20command%20request");
       expect(capturedUrl).to.include("test%20command");
     });
   });

@@ -364,10 +364,7 @@ describe("csv-render test", () => {
 
     it("debounces data loading", async () => {
       const el = await fixture(html`
-        <csv-render
-          data-source="debounce.csv"
-          debounce-delay="20"
-        ></csv-render>
+        <csv-render data-source="debounce.csv" debounce-delay="20"></csv-render>
       `);
       // ignore the call made while loading the shared beforeEach fixture
       fetchStub.resetHistory();
@@ -395,10 +392,7 @@ describe("csv-render test", () => {
       fetchStub.resetHistory();
 
       const el = await fixture(html`
-        <csv-render
-          data-source="invisible.csv"
-          debounce-delay="0"
-        ></csv-render>
+        <csv-render data-source="invisible.csv" debounce-delay="0"></csv-render>
       `);
 
       // Element not visible, should not load

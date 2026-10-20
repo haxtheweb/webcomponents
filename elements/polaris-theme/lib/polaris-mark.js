@@ -121,8 +121,9 @@ class PolarisMark extends I18NMixin(LitElement) {
           rel="noopener"
           aria-label="${this.t.visitPsuEdu.replace(
             "{name}",
-            () => ([this.name, this.name2, this.name3].filter(Boolean).join(" ") ||
-              "Penn State"),
+            () =>
+              [this.name, this.name2, this.name3].filter(Boolean).join(" ") ||
+              "Penn State",
           )}"
           @click="${this._clickPrevent}"
         >
@@ -182,17 +183,27 @@ class PolarisMark extends I18NMixin(LitElement) {
           <text fill="#000000" x="94" y="70" id="name-line1">
             ${this.name}
           </text>
-          ${this.name2 ? svg`<text fill="#000000" x="94" y="100" id="name-line2">
+          ${
+            this.name2
+              ? svg`<text fill="#000000" x="94" y="100" id="name-line2">
             ${this.name2}
-          </text>` : ""}
-          ${this.name3 ? (this.vert ? svg`<line x1="94" y1="120" x2="295" y2="120" stroke="#96bee6" stroke-width="2"></line>
+          </text>`
+              : ""
+          }
+          ${
+            this.name3
+              ? this.vert
+                ? svg`<line x1="94" y1="120" x2="295" y2="120" stroke="#96bee6" stroke-width="2"></line>
           <text fill="#000000" x="94" y="160" id="name-line3">
             ${this.name3}
-          </text>` : svg`
+          </text>`
+                : svg`
           <line x1="${this.linex}" y1="0" x2="${this.linex}" y2="110" stroke="#96bee6" id="stroke-line" stroke-width="2"></line>
           <text fill="#000000" x="${this.name3x}" y="40" id="name-line3">
             ${this.name3}
-          </text> `) : ""}
+          </text> `
+              : ""
+          }
         </svg>
       </div>
     `;
@@ -240,17 +251,27 @@ class PolarisMark extends I18NMixin(LitElement) {
           <text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="94" y="70" id="name-line1">
             ${this.name}
           </text>
-          ${this.name2 ? svg`<text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="94" y="100" id="name-line2">
+          ${
+            this.name2
+              ? svg`<text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="94" y="100" id="name-line2">
             ${this.name2}
-          </text>` : ""}
-          ${this.name3 ? (this.vert ? svg`<line x1="94" y1="120" x2="295" y2="120" stroke="#96bee6" stroke-width="2"></line>
+          </text>`
+              : ""
+          }
+          ${
+            this.name3
+              ? this.vert
+                ? svg`<line x1="94" y1="120" x2="295" y2="120" stroke="#96bee6" stroke-width="2"></line>
           <text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="94" y="160" id="name-line3">
             ${this.name3}
-          </text>` : svg`
+          </text>`
+                : svg`
           <line x1="${this.linex}" y1="0" x2="${this.linex}" y2="110" stroke="#96bee6" id="stroke-line" stroke-width="2"></line>
           <text fill="${this.type == "default" ? "#1e407c" : "#ffffff"}" x="${this.name3x}" y="40" id="name-line3">
             ${this.name3}
-          </text> `) : ""}
+          </text> `
+              : ""
+          }
         </svg>
       </div>
     `;

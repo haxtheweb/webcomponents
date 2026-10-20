@@ -292,6 +292,9 @@
               "name": "_excludeEvent",
               "parameters": [
                 {
+                  "name": "_event"
+                },
+                {
                   "name": "event",
                   "type": {
                     "text": "event"
@@ -349,6 +352,9 @@
               "name": "_handleFocus",
               "parameters": [
                 {
+                  "name": "_event"
+                },
+                {
                   "name": "event",
                   "type": {
                     "text": "event"
@@ -363,6 +369,8 @@
               "parameters": [
                 {
                   "name": "event",
+                  "description": "optional FocusEvent; guards against missing\narg when called outside the browser's blur pipeline (tests).",
+                  "optional": true,
                   "type": {
                     "text": "event"
                   }
@@ -374,6 +382,9 @@
               "kind": "method",
               "name": "_handleMouseover",
               "parameters": [
+                {
+                  "name": "_event"
+                },
                 {
                   "name": "event",
                   "type": {
@@ -387,6 +398,9 @@
               "kind": "method",
               "name": "_handleMouseout",
               "parameters": [
+                {
+                  "name": "_event"
+                },
                 {
                   "name": "event",
                   "type": {
@@ -487,6 +501,11 @@
                 "text": "boolean"
               },
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_itemListeners",
+              "default": "new WeakMap()"
             },
             {
               "kind": "field",
@@ -656,7 +675,7 @@
         },
         {
           "kind": "class",
-          "description": "a11y-menu-button\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-vertical-padding | vertical padding for menu button | 2px\n--a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px\n--a11y-menu-button-text-align | text alignment for menu button | center\n--a11y-menu-button-bg-color | default background color | white\n--a11y-menu-button-color | default text color | black\n--a11y-menu-button-box-shadow | menu button box-shadow | unset\n--a11y-menu-button-border-radius | menu button border-radius | 0\n--a11y-menu-button-border | default border | 1px solid #ddd\n--a11y-menu-button-border-left | overrides default left-border | unset\n--a11y-menu-button-border-top | overrides default top-border | unset\n--a11y-menu-button-border-right | overrides default right-border | unset\n--a11y-menu-button-border-bottom | overrides default bottom-border | unset\n--a11y-menu-button-focus-bg-color | background color for menu button when focused | --a11y-menu-button-bg-color\n--a11y-menu-button-focus-color | text color for menu button when focused | --a11y-menu-button-color\n--a11y-menu-button-focus-border | border for menu button when focused | --a11y-menu-button-border\n--a11y-menu-button-focus-border-left | menu button left-border when focused | --a11y-menu-button-border-left\n--a11y-menu-button-focus-border-top | menu button top-border when focused | --a11y-menu-button-border-top\n--a11y-menu-button-focus-border-right | menu button right-border when focused | --a11y-menu-button-border-right\n--a11y-menu-button-focus-border-bottom | menu button bottom-border when focused | --a11y-menu-button-border-bottom\n--a11y-menu-button-focus-box-shadow | menu button box-shadow when focused | --a11y-menu-button-box-shadow\n--a11y-menu-button-list-width | width of menu list | unset\n--a11y-menu-button-list-height | height of menu list | unset\n--a11y-menu-button-list-left | left position of menu list | 0\n--a11y-menu-button-list-top | top position of menu list | unset\n--a11y-menu-button-list-bottom | bottom position of menu list | unset\n--a11y-menu-button-list-right | right position of menu list | unset\n--a11y-menu-button-list-bg-color | overrides default background color for list box | --a11y-menu-button-bg-color\n--a11y-menu-button-border | overrides default border for list box | --a11y-menu-button-list-border\n--a11y-menu-button-list-box-shadow | overrides default box shadow for list box | unset",
+          "description": "a11y-menu-button\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-vertical-padding | vertical padding for menu button | 2px\n--a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px\n--a11y-menu-button-text-align | text alignment for menu button | center\n--a11y-menu-button-bg-color | default background color | white\n--a11y-menu-button-color | default text color | black\n--a11y-menu-button-box-shadow | menu button box-shadow | unset\n--a11y-menu-button-border-radius | menu button border-radius | 0\n--a11y-menu-button-border | default border | 1px solid `--ddd-theme-default-limestoneLight` (dark: `--ddd-theme-default-limestoneMaxLight`)\n--a11y-menu-button-border-left | overrides default left-border | unset\n--a11y-menu-button-border-top | overrides default top-border | unset\n--a11y-menu-button-border-right | overrides default right-border | unset\n--a11y-menu-button-border-bottom | overrides default bottom-border | unset\n--a11y-menu-button-focus-bg-color | background color for menu button when focused | --a11y-menu-button-bg-color\n--a11y-menu-button-focus-color | text color for menu button when focused | --a11y-menu-button-color\n--a11y-menu-button-focus-border | border for menu button when focused | --a11y-menu-button-border\n--a11y-menu-button-focus-border-left | menu button left-border when focused | --a11y-menu-button-border-left\n--a11y-menu-button-focus-border-top | menu button top-border when focused | --a11y-menu-button-border-top\n--a11y-menu-button-focus-border-right | menu button right-border when focused | --a11y-menu-button-border-right\n--a11y-menu-button-focus-border-bottom | menu button bottom-border when focused | --a11y-menu-button-border-bottom\n--a11y-menu-button-focus-box-shadow | menu button box-shadow when focused | --a11y-menu-button-box-shadow\n--a11y-menu-button-list-width | width of menu list | unset\n--a11y-menu-button-list-height | height of menu list | unset\n--a11y-menu-button-list-left | left position of menu list | 0\n--a11y-menu-button-list-top | top position of menu list | unset\n--a11y-menu-button-list-bottom | bottom position of menu list | unset\n--a11y-menu-button-list-right | right position of menu list | unset\n--a11y-menu-button-list-bg-color | overrides default background color for list box | --a11y-menu-button-bg-color\n--a11y-menu-button-border | overrides default border for list box | --a11y-menu-button-list-border\n--a11y-menu-button-list-box-shadow | overrides default box shadow for list box | unset",
           "name": "A11yMenuButton",
           "mixins": [
             {
@@ -1205,6 +1224,9 @@
               "name": "_excludeEvent",
               "parameters": [
                 {
+                  "name": "_event"
+                },
+                {
                   "name": "event",
                   "type": {
                     "text": "event"
@@ -1278,6 +1300,9 @@
               "name": "_handleFocus",
               "parameters": [
                 {
+                  "name": "_event"
+                },
+                {
                   "name": "event",
                   "type": {
                     "text": "event"
@@ -1296,6 +1321,8 @@
               "parameters": [
                 {
                   "name": "event",
+                  "description": "optional FocusEvent; guards against missing\narg when called outside the browser's blur pipeline (tests).",
+                  "optional": true,
                   "type": {
                     "text": "event"
                   }
@@ -1311,6 +1338,9 @@
               "kind": "method",
               "name": "_handleMouseover",
               "parameters": [
+                {
+                  "name": "_event"
+                },
                 {
                   "name": "event",
                   "type": {
@@ -1328,6 +1358,9 @@
               "kind": "method",
               "name": "_handleMouseout",
               "parameters": [
+                {
+                  "name": "_event"
+                },
                 {
                   "name": "event",
                   "type": {
@@ -1464,6 +1497,15 @@
                 "text": "boolean"
               },
               "default": "false",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_itemListeners",
+              "default": "new WeakMap()",
               "inheritedFrom": {
                 "name": "A11yMenuButtonBehaviors",
                 "module": "a11y-menu-button.js"
@@ -1707,13 +1749,6 @@
                 "text": "CustomEvent"
               },
               "description": "Fires when menu item is added to dom"
-            },
-            {
-              "name": "remove-a11y-menu-button-item",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fires when menu item is removed from dom"
             }
           ],
           "attributes": [
@@ -1766,7 +1801,7 @@
         },
         {
           "kind": "class",
-          "description": "a11y-menu-button-item\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button-item>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-item-text-decoration | button or link text decoration | none\n--a11y-menu-button-item-color | button or link text color | --a11y-menu-button-color\n--a11y-menu-button-item-text-align | button or link text alignment | left\n--a11y-menu-button-item-vertical-padding | button or link vertical padding | --a11y-menu-button-vertical-padding\n--a11y-menu-button-item-horizontal-padding | button or link horizontal padding | --a11y-menu-button-horizontal-padding\n--a11y-menu-button-item-bg-color | button or link background color | --a11y-menu-button-bg-color\n--a11y-menu-button-item-border | default button or link border  | none\n--a11y-menu-button-item-border-left | overrides button or link left border  | none\n--a11y-menu-button-item-border-right | overrides button or link right border | none\n--a11y-menu-button-item-border-top | overrides button or link top border | none\n--a11y-menu-button-item-border-bottom | overrides button or link bottom border | none\n--a11y-menu-button-item-focus-text-decoration | button or link text decoration when focused | none\n--a11y-menu-button-item-focus-color | button or link text color when focused | black\n--a11y-menu-button-item-focus-bg-color | button or link background color when focused | #e0e0ff\n--a11y-menu-button-item-focus-border-left | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-right | overrides button or link left border when focused | unset)\n--a11y-menu-button-item-focus-border-top | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-bottom | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border | button or link border when focused | unset",
+          "description": "a11y-menu-button-item\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button-item>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-item-text-decoration | button or link text decoration | none\n--a11y-menu-button-item-color | button or link text color | --a11y-menu-button-color\n--a11y-menu-button-item-text-align | button or link text alignment | left\n--a11y-menu-button-item-vertical-padding | button or link vertical padding | --a11y-menu-button-vertical-padding\n--a11y-menu-button-item-horizontal-padding | button or link horizontal padding | --a11y-menu-button-horizontal-padding\n--a11y-menu-button-item-bg-color | button or link background color | --a11y-menu-button-bg-color\n--a11y-menu-button-item-border | default button or link border  | none\n--a11y-menu-button-item-border-left | overrides button or link left border  | none\n--a11y-menu-button-item-border-right | overrides button or link right border | none\n--a11y-menu-button-item-border-top | overrides button or link top border | none\n--a11y-menu-button-item-border-bottom | overrides button or link bottom border | none\n--a11y-menu-button-item-focus-text-decoration | button or link text decoration when focused | none\n--a11y-menu-button-item-focus-color | button or link text color when focused | black\n--a11y-menu-button-item-focus-bg-color | button or link background color when focused | `--ddd-theme-default-skyMaxLight` (dark: `--ddd-theme-default-nittanyNavy`)\n--a11y-menu-button-item-focus-border-left | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-right | overrides button or link left border when focused | unset)\n--a11y-menu-button-item-focus-border-top | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-bottom | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border | button or link border when focused | unset",
           "name": "A11yMenuButtonItem",
           "mixins": [
             {
@@ -2005,17 +2040,6 @@
                 "text": "CustomEvent"
               },
               "description": "Fires when menu item is added to dom",
-              "inheritedFrom": {
-                "name": "A11yMenuButtonItemBehaviors",
-                "module": "lib/a11y-menu-button-item.js"
-              }
-            },
-            {
-              "name": "remove-a11y-menu-button-item",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fires when menu item is removed from dom",
               "inheritedFrom": {
                 "name": "A11yMenuButtonItemBehaviors",
                 "module": "lib/a11y-menu-button-item.js"

@@ -14,9 +14,11 @@ import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 // English text for every code; keep in sync with locales/haxcms-api.en.json
 export const HAXCMS_API_MESSAGES_EN = Object.freeze({
-  AUTH_RATE_LIMITED: "Too many failed sign-in attempts. Please try again later.",
+  AUTH_RATE_LIMITED:
+    "Too many failed sign-in attempts. Please try again later.",
   AUTH_INVALID_CREDENTIALS: "Invalid username or password.",
-  AUTH_TOKEN_INVALID: "Your sign-in has expired or is invalid. Please sign in again.",
+  AUTH_TOKEN_INVALID:
+    "Your sign-in has expired or is invalid. Please sign in again.",
   AUTH_REQUIRED_EXPORT: "Sign in to export as {format}.",
   AUTH_REQUIRED: "You need to sign in to do this.",
   AUTH_FAILED: "Sign-in failed.",
@@ -24,23 +26,27 @@ export const HAXCMS_API_MESSAGES_EN = Object.freeze({
   SESSION_STORE_UNAVAILABLE: "The session store is unavailable.",
   LOGGED_OUT: "You have been signed out.",
   USER_TOKEN_REQUIRED: "A user token is required for this request.",
-  USER_TOKEN_INVALID: "Your request token is invalid. Reload the page and try again.",
+  USER_TOKEN_INVALID:
+    "Your request token is invalid. Reload the page and try again.",
   SITE_TOKEN_REQUIRED: "A site token is required for this request.",
-  SITE_TOKEN_INVALID: "The site token is invalid. Reload the page and try again.",
+  SITE_TOKEN_INVALID:
+    "The site token is invalid. Reload the page and try again.",
   INSTALL_TOKEN_INVALID: "The install token is invalid or missing.",
   NOT_INSTALLED: "HAXcms is not installed.",
   INSTALL_STEP_INVALID: "Invalid install step.",
   SITE_ACCESS_DENIED: "You don't have access to this site.",
   ACCESS_DENIED: "Access denied.",
   HAXIAM_DISABLED: "HAXIAM mode is not enabled.",
-  USER_NOT_SET_UP: "That user hasn't set up HAXIAM yet. They need to sign in first.",
+  USER_NOT_SET_UP:
+    "That user hasn't set up HAXIAM yet. They need to sign in first.",
   USER_ALREADY_HAS_ACCESS: "That user already has access to this site.",
   ACCESS_SELF_GRANT: "You can't grant access to yourself.",
   ACCESS_GRANTED: "Access granted.",
   ACCESS_GRANT_FAILED: "Unable to grant access.",
   FEATURE_DISABLED_OUTLINE: "Changing the outline is disabled for this site.",
   FEATURE_DISABLED_ADD_PAGE: "Adding pages is disabled for this site.",
-  FEATURE_DISABLED_PAGE_DETAILS: "Editing page details is disabled for this site.",
+  FEATURE_DISABLED_PAGE_DETAILS:
+    "Editing page details is disabled for this site.",
   FEATURE_DISABLED_DELETE: "Deleting is disabled for this site.",
   FEATURE_DISABLED_FILES: "File operations are disabled for this site.",
   FEATURE_DISABLED_UPLOAD: "Uploading media is disabled for this site.",
@@ -54,9 +60,12 @@ export const HAXCMS_API_MESSAGES_EN = Object.freeze({
   SERVER_ERROR: "Something went wrong on the server.",
   REQUEST_TOO_LARGE: "The request is too large.",
   INPUT_TOO_LARGE: "The input is too large (maximum {maxBytes} bytes).",
-  FILE_RATE_LIMITED: "Too many file operations on this site. Try again in {retryAfter}.",
-  SITE_NAME_INVALID: "Site names can only use letters, numbers, hyphens and underscores.",
-  USER_NAME_INVALID: "User names can only use letters, numbers, hyphens and underscores.",
+  FILE_RATE_LIMITED:
+    "Too many file operations on this site. Try again in {retryAfter}.",
+  SITE_NAME_INVALID:
+    "Site names can only use letters, numbers, hyphens and underscores.",
+  USER_NAME_INVALID:
+    "User names can only use letters, numbers, hyphens and underscores.",
   SITE_NAME_REQUIRED: "A site name is required.",
   SITE_NOT_FOUND: "Site not found.",
   SITE_CONTEXT_UNRESOLVED: "Unable to find the site for this request.",
@@ -67,11 +76,13 @@ export const HAXCMS_API_MESSAGES_EN = Object.freeze({
   SITE_ARCHIVE_FAILED: "Unable to archive the site.",
   TEMPLATE_SAVE_FAILED: "Unable to save the site as a template.",
   TEMPLATE_NOT_FOUND: "Template not found.",
-  ITEM_COUNT_MISMATCH: "The number of pages changed unexpectedly, so nothing was saved.",
+  ITEM_COUNT_MISMATCH:
+    "The number of pages changed unexpectedly, so nothing was saved.",
   ITEM_NOT_FOUND: "Page not found.",
   ITEM_UPDATE_FAILED: "Unable to update the page.",
   OUTLINE_INVALID: "The outline is invalid.",
-  PAGE_BREAK_REQUIRED: "The content must include a page break. Only content after it is saved.",
+  PAGE_BREAK_REQUIRED:
+    "The content must include a page break. Only content after it is saved.",
   CONTENT_INVALID: "The page content is invalid.",
   REVISION_NOT_FOUND: "Revision not found.",
   REVISION_LOAD_FAILED: "Unable to load the page history.",
@@ -94,25 +105,31 @@ export const HAXCMS_API_MESSAGES_EN = Object.freeze({
   UPLOAD_READ_FAILED: "Unable to read the uploaded file.",
   UPLOAD_WRONG_TYPE: "Wrong file type. Expected {expected}.",
   UPLOAD_NOT_VALID: "The uploaded file isn't a valid {expected} file.",
-  UPLOAD_XLS_UNSUPPORTED: "Legacy .xls files aren't supported. Save the file as .xlsx and try again.",
+  UPLOAD_XLS_UNSUPPORTED:
+    "Legacy .xls files aren't supported. Save the file as .xlsx and try again.",
   UPLOAD_TYPE_NOT_ALLOWED: "This file type isn't allowed.",
   UPLOAD_TOO_LARGE: "The file is larger than the {maxMb} MB upload limit.",
   DOWNLOAD_TOO_LARGE: "The downloaded file is too large.",
   DOWNLOAD_FAILED: "Unable to download the remote file.",
   URL_NOT_ALLOWED: "That URL isn't allowed.",
   DECK_NAME_FAILED: "Unable to work out a deck name from the file name.",
-  IMAGE_RASTER_ONLY: "Only raster images (such as JPG or PNG) can be edited this way.",
+  IMAGE_RASTER_ONLY:
+    "Only raster images (such as JPG or PNG) can be edited this way.",
   IMAGE_FORMAT_UNSUPPORTED: "This image format can't be edited in place.",
   IMAGE_SUPPORT_UNAVAILABLE: "Image editing isn't available on this server.",
   IMAGE_OP_FAILED: "Unable to edit the image.",
   SEARCH_QUERY_TOO_LONG: "The search is too long (maximum {max} characters).",
   SELECTOR_INVALID: "Invalid selector.",
-  SEARCH_TEXT_TOO_SHORT: "Search text must be longer than one character to replace it.",
-  REPLACE_TEXT_TOO_SHORT: "Replacement text must be empty or longer than one character.",
+  SEARCH_TEXT_TOO_SHORT:
+    "Search text must be longer than one character to replace it.",
+  REPLACE_TEXT_TOO_SHORT:
+    "Replacement text must be empty or longer than one character.",
   REPLACE_CONFIRM_REQUIRED: "Confirm the replacement to continue.",
-  REMOVE_CONFIRM_REQUIRED: "Removing the matched text needs a second confirmation.",
+  REMOVE_CONFIRM_REQUIRED:
+    "Removing the matched text needs a second confirmation.",
   SEARCH_NO_MATCHES: "The search term wasn't found in the site content.",
-  STYLE_GUIDE_EXTERNAL: "The style guide comes from an external source and can't be edited in HAXcms.",
+  STYLE_GUIDE_EXTERNAL:
+    "The style guide comes from an external source and can't be edited in HAXcms.",
   STYLE_GUIDE_SAVED: "Style guide saved.",
   STYLE_GUIDE_SAVE_FAILED: "Unable to save the style guide.",
   SETTINGS_LOAD_FAILED: "Unable to load settings.",
@@ -127,7 +144,7 @@ export const HAXCMS_API_MESSAGES_EN = Object.freeze({
   IMPORT_SOURCE_INVALID: "The import source couldn't be found or read.",
   IMPORT_FETCH_FAILED: "Unable to fetch the import source.",
   IMPORT_FAILED: "The import failed.",
-  EXPORT_FORMAT_UNSUPPORTED: "Export format \"{format}\" isn't supported.",
+  EXPORT_FORMAT_UNSUPPORTED: 'Export format "{format}" isn\'t supported.',
   EXPORT_FAILED: "The export failed.",
   CONVERSION_FAILED: "The conversion failed.",
   PARAM_REQUIRED: "A required value is missing: {param}.",
@@ -237,7 +254,10 @@ function fill(template, params) {
  * @param {object} params
  */
 export function translateApiCode(code, params = {}) {
-  if (!code || !Object.prototype.hasOwnProperty.call(HAXCMSApiMessages.t, code)) {
+  if (
+    !code ||
+    !Object.prototype.hasOwnProperty.call(HAXCMSApiMessages.t, code)
+  ) {
     return null;
   }
   const template = HAXCMSApiMessages.t[code];
@@ -260,7 +280,10 @@ export function haxcmsApiMessage(response, fallback = "") {
   const parts = apiMessageParts(response);
   if (parts.code && HAXCMS_API_MESSAGES_EN[parts.code]) {
     const translated = translateApiCode(parts.code, parts.params);
-    if (translated && HAXCMSApiMessages.t[parts.code] !== HAXCMS_API_MESSAGES_EN[parts.code]) {
+    if (
+      translated &&
+      HAXCMSApiMessages.t[parts.code] !== HAXCMS_API_MESSAGES_EN[parts.code]
+    ) {
       return translated;
     }
     if (parts.message) {

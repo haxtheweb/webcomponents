@@ -29,7 +29,7 @@
               "name": "_openInfo",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Open Explore Slot"
@@ -39,7 +39,7 @@
               "name": "_openText",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Open Info Slot"
@@ -49,7 +49,7 @@
               "name": "_openAnimation",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Open Animation Slot"
@@ -59,7 +59,7 @@
               "name": "_openCheck",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Open Knowledge-Check Slot"
@@ -117,6 +117,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, exploreModels: \"Explore Models\", moreInformation: \"More Information\", playAnimation: \"Play Animation\", knowledgeCheck: \"Knowledge Check\", }"
+            },
+            {
+              "kind": "field",
               "name": "alt",
               "privacy": "public",
               "type": {
@@ -167,6 +175,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "SchemaBehaviors",
               "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
@@ -275,10 +287,20 @@
               "name": "_handleClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Sends custom event 'model-select' to 'course-model'."
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Activates the selection card from the keyboard like a button."
             },
             {
               "kind": "field",

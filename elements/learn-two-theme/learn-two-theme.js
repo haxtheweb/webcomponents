@@ -518,7 +518,9 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
   render() {
     return html`
       <div class="layout">
-        <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
+        <a class="skip-link" href="#contentcontainer"
+          >${this.t.skipToContent}</a
+        >
         <simple-icon-button-lite
           id="menubutton"
           icon="menu"

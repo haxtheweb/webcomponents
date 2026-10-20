@@ -378,7 +378,8 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           cursor: pointer;
         }
         .section-title:focus-visible {
-          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid
+            var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -1306,8 +1307,10 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         "../utils/site-skeleton-generator.js"
       );
 
-      const skeleton =
-        await SiteSkeletonGenerator.generateFromCurrentSite(true, this.t);
+      const skeleton = await SiteSkeletonGenerator.generateFromCurrentSite(
+        true,
+        this.t,
+      );
 
       const platformConfig = this._platformConfigForExport();
       if (!skeleton.site) {
@@ -1368,7 +1371,10 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     } catch (error) {
       console.error("Saving platform settings failed:", error);
       HAXStore.toast(
-        this.t.savingPlatformSettingsFailed.replace("{error}", () => error.message),
+        this.t.savingPlatformSettingsFailed.replace(
+          "{error}",
+          () => error.message,
+        ),
         5000,
         {},
         "fit-bottom",

@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`a11y-tabs`\nan accessible and responsive tabbed interface\n\n### Styling\n\n`<a11y-tabs>` provides the following custom properties\nfor styling:\n\n#### General\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-font-family` | font-family | unset\n`--a11y-tabs-font-size` | font-size | unset\n`--a11y-tabs-border-color` | border | #ddd\n`--a11y-tabs-color` | text color | #222\n`--a11y-tabs-focus-color` | text color when focused | #000\n`--a11y-tabs-margin` |  | 16px 0\n`--a11y-tabs-width` | total width | 100%\n`--a11y-tabs-height` | total height | unset\n`--a11y-tabs-overflow` | default overflow | auto\n`--a11y-tabs-overflow-x` | overflow of x-axis | `--a11y-tabs-overflow`\n`--a11y-tabs-overflow-y` | overflow of y-axis | `--a11y-tabs-overflow`\n`--a11y-tabs-border-radius` | default border radius | 2px\n`--a11y-tabs-horizontal-border-radius` | border-radius when horizontal | `--a11y-tabs-border-radius`\n`--a11y-tabs-vertical-border-radius` | border-radius when veritcal | `--a11y-tabs-border-radius`\n`--a11y-tabs-text-decoration` | default text decoration for tab button | none\n`--a11y-tabs-focus-text-decoration` | default text on focus or hover | underline\n\n#### Tab Panel\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-font-family` | font-family | `--a11y-tabs-font-family`\n`--a11y-tabs-tab-font-size` | font-size | `--a11y-tabs-font-size`\n`--a11y-tabs-font-weight` | default font weight | normal\n`--a11y-tabs-selected-font-weight` | font weight of selected tabs | normal\n`--a11y-tabs-focus-font-weight` | font weight of focused/hovered tabs | normal\n`--a11y-tabs-text-decoration` | default text-decoration | none\n`--a11y-tabs-focus-text-decoration` | text-decoration when focused/hovered | underline\n`--a11y-tabs-selected-text-decoration` | text-decoration when selected | none\n`--a11y-tabs-color` | default text color | #000\n`--a11y-tabs-focus-color` | text color of focused/hovered tab | --a11y-tabs-color`\n`--a11y-tabs-faded-color` | text color of disabled items |  #333;\n`--a11y-tabs-selected-color` | text color of selected tab | `--a11y-tabs-focus-color`\n`--a11y-tabs-background` | background for active tab and tab content | white\n`--a11y-tabs-faded-background` | background inactive tabs | #eee\n`--a11y-tabs-horizontal-background` | background for tabs container when horizontal | unset\n`--a11y-tabs-vertical-background` | background for tabs container when vertical | `--a11y-tabs-border-color`\n`--a11y-tabs-horizontal-sticky-background` | background for tabs container when sticky and horizontal | `--a11y-tabs-background`\n`--a11y-tabs-justify-tabs` | tab justification | flex-start\n`--a11y-tabs-vertical-justify-tabs` | tab justification when vertical | `--a11y-tabs-justify-tabs`\n`--a11y-tabs-horizontal-justify-tabs` | tab justification when horizontal | `--a11y-tabs-justify-tabs`\n`--a11y-tabs-wrap` | tab wrapping | unset\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`\n`--a11y-tabs-button-padding` | padding for tabs | 8px\n`--a11y-tabs-vertical-button-padding` | padding for tabs when vertical | `--a11y-tabs-button-padding`\n`--a11y-tabs-horizontal-button-padding` | padding for tabs when horizontal | `--a11y-tabs-button-padding`\n`--a11y-tabs-border-accent` | optional thicker border for top of horizontal tabs or left of vertical tabs (ex. 4px solid blue) | unset\n`--a11y-tabs-selected-border-accent` | optional thicker border for top of selected horizontal tab or left of vertical tab | unset\n`--a11y-tabs-selected-focus-accent` | optional thicker border for top of focused/hovered horizontal tab or left of vertical tab | unset\n`--a11y-tabs-selected-disabled-accent` | optional thicker border for top of disabled horizontal tabs or left of vertical tabs | unset\n\n#### Content Section\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-content-padding` | padding for content of tab | 16px\n`--a11y-tabs-content-background` | background color for content of tab | `--a11y-tabs-background`",
+          "description": "`a11y-tabs`\nan accessible and responsive tabbed interface\n\n### Styling\n\n`<a11y-tabs>` provides the following custom properties\nfor styling:\n\n#### General\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-font-family` | font-family | unset\n`--a11y-tabs-font-size` | font-size | unset\n`--a11y-tabs-border-color` | border | `--ddd-theme-default-limestoneLight` (dark: `--ddd-theme-default-limestoneMaxLight`)\n`--a11y-tabs-color` | text color | #222\n`--a11y-tabs-focus-color` | text color when focused | #000\n`--a11y-tabs-margin` |  | 16px 0\n`--a11y-tabs-width` | total width | 100%\n`--a11y-tabs-height` | total height | unset\n`--a11y-tabs-overflow` | default overflow | auto\n`--a11y-tabs-overflow-x` | overflow of x-axis | `--a11y-tabs-overflow`\n`--a11y-tabs-overflow-y` | overflow of y-axis | `--a11y-tabs-overflow`\n`--a11y-tabs-border-radius` | default border radius | 2px\n`--a11y-tabs-horizontal-border-radius` | border-radius when horizontal | `--a11y-tabs-border-radius`\n`--a11y-tabs-vertical-border-radius` | border-radius when veritcal | `--a11y-tabs-border-radius`\n`--a11y-tabs-text-decoration` | default text decoration for tab button | none\n`--a11y-tabs-focus-text-decoration` | default text on focus or hover | underline\n\n#### Tab Panel\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-font-family` | font-family | `--a11y-tabs-font-family`\n`--a11y-tabs-tab-font-size` | font-size | `--a11y-tabs-font-size`\n`--a11y-tabs-font-weight` | default font weight | normal\n`--a11y-tabs-selected-font-weight` | font weight of selected tabs | normal\n`--a11y-tabs-focus-font-weight` | font weight of focused/hovered tabs | normal\n`--a11y-tabs-text-decoration` | default text-decoration | none\n`--a11y-tabs-focus-text-decoration` | text-decoration when focused/hovered | underline\n`--a11y-tabs-selected-text-decoration` | text-decoration when selected | none\n`--a11y-tabs-color` | default text color | #000\n`--a11y-tabs-focus-color` | text color of focused/hovered tab | --a11y-tabs-color`\n`--a11y-tabs-faded-color` | text color of disabled items |  #333;\n`--a11y-tabs-selected-color` | text color of selected tab | `--a11y-tabs-focus-color`\n`--a11y-tabs-background` | background for active tab and tab content | white\n`--a11y-tabs-faded-background` | background inactive tabs | #eee\n`--a11y-tabs-horizontal-background` | background for tabs container when horizontal | unset\n`--a11y-tabs-vertical-background` | background for tabs container when vertical | `--a11y-tabs-border-color`\n`--a11y-tabs-horizontal-sticky-background` | background for tabs container when sticky and horizontal | `--a11y-tabs-background`\n`--a11y-tabs-justify-tabs` | tab justification | flex-start\n`--a11y-tabs-vertical-justify-tabs` | tab justification when vertical | `--a11y-tabs-justify-tabs`\n`--a11y-tabs-horizontal-justify-tabs` | tab justification when horizontal | `--a11y-tabs-justify-tabs`\n`--a11y-tabs-wrap` | tab wrapping | unset\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`\n`--a11y-tabs-button-padding` | padding for tabs | 8px\n`--a11y-tabs-vertical-button-padding` | padding for tabs when vertical | `--a11y-tabs-button-padding`\n`--a11y-tabs-horizontal-button-padding` | padding for tabs when horizontal | `--a11y-tabs-button-padding`\n`--a11y-tabs-border-accent` | optional thicker border for top of horizontal tabs or left of vertical tabs (ex. 4px solid blue) | unset\n`--a11y-tabs-selected-border-accent` | optional thicker border for top of selected horizontal tab or left of vertical tab | unset\n`--a11y-tabs-selected-focus-accent` | optional thicker border for top of focused/hovered horizontal tab or left of vertical tab | unset\n`--a11y-tabs-selected-disabled-accent` | optional thicker border for top of disabled horizontal tabs or left of vertical tabs | unset\n\n#### Content Section\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-content-padding` | padding for content of tab | 16px\n`--a11y-tabs-content-background` | background color for content of tab | `--a11y-tabs-background`",
           "name": "A11yTabs",
           "members": [
             {
@@ -111,7 +111,7 @@
               "name": "updateTabs",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "updates the list of items based on slotted a11y-tab elements"
@@ -184,8 +184,11 @@
                   }
                 },
                 {
-                  "name": "oldValue",
+                  "name": "_oldValue"
+                },
+                {
                   "description": "the old id",
+                  "name": "oldValue",
                   "type": {
                     "text": "string"
                   }
@@ -668,6 +671,16 @@
               }
             },
             {
+              "kind": "method",
+              "name": "_endOfTabParts",
+              "description": "splits the translated \"end of tab\" sentence around the {tabs} link",
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              }
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -697,6 +710,14 @@
               "kind": "method",
               "name": "_fireTabChanged",
               "description": "handles any change in the tab attributes"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, tabXOfY: \"Tab {xOfY}\", xOfY: \"{order} of {total}\", endOfTab: \"End of tab {xOfY}. Back to {tabs}.\", tabs: \"tabs\", }"
             },
             {
               "kind": "field",
@@ -773,6 +794,10 @@
               "default": "\"\"",
               "attribute": "flag",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_onTabFlag"
             },
             {
               "kind": "field",
@@ -945,6 +970,12 @@
               "description": "total number of tabs",
               "default": "1",
               "fieldName": "total"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

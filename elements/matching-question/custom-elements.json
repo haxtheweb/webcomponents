@@ -224,6 +224,14 @@
               "default": "false",
               "attribute": "match-target",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, matchRegion: \"Matching interface\", close: \"Close\", matchItemTo: \"Match {item} to:\", possibleOptions: \"-- Possible options --\", target: \"Target\", match: \"Match\", selectAllDirections: \"Select all that apply. When you are done, press {checkAnswer}. You will get feedback indicating correctness of your answer and how to proceed.\", }"
             }
           ],
           "attributes": [

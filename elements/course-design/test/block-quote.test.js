@@ -6,9 +6,7 @@ describe("block-quote test", () => {
   beforeEach(async () => {
     element = await fixture(html`
       <block-quote citation="Albert Einstein">
-        <span slot="quote"
-          >Imagination is more important than knowledge.</span
-        >
+        <span slot="quote">Imagination is more important than knowledge.</span>
       </block-quote>
     `);
   });

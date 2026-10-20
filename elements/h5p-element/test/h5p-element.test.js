@@ -153,7 +153,9 @@ describe("h5p-element with a source", () => {
 
   it("defaults the standalone base to the co-installed package", async () => {
     const el = await fixture(html`<h5p-element></h5p-element>`);
-    expect(el.h5pStandaloneBase).to.include("node_modules/h5p-standalone/dist/");
+    expect(el.h5pStandaloneBase).to.include(
+      "node_modules/h5p-standalone/dist/",
+    );
   });
 
   it("sets up h5p content through the player", async () => {
@@ -247,8 +249,7 @@ describe("h5p-element with a source", () => {
     const container = el.querySelector(".h5p-container");
     expect(container).to.exist;
     expect(
-      container.getAttribute("data-content-id") ===
-        "wrapper-" + el.contentId,
+      container.getAttribute("data-content-id") === "wrapper-" + el.contentId,
     ).to.be.true;
     expect(playerCalls.length).to.be.greaterThan(0);
     expect(playerCalls[playerCalls.length - 1].container === container).to.be

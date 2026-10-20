@@ -23,7 +23,9 @@ describe("elementName test", () => {
 
 describe("future-terminal-text behavior", () => {
   it("has sensible defaults", async () => {
-    const el = await fixture(html`<future-terminal-text></future-terminal-text>`);
+    const el = await fixture(
+      html`<future-terminal-text></future-terminal-text>`,
+    );
     expect(el.red).to.be.false;
     expect(el.fadein).to.be.false;
     expect(el.glitch).to.be.false;
@@ -36,7 +38,9 @@ describe("future-terminal-text behavior", () => {
   });
 
   it("exposes the full simple-colors palette through inheritance", async () => {
-    const el = await fixture(html`<future-terminal-text></future-terminal-text>`);
+    const el = await fixture(
+      html`<future-terminal-text></future-terminal-text>`,
+    );
     expect(Object.keys(el.colors)).to.deep.equal([
       "grey",
       "red",
@@ -138,7 +142,9 @@ describe("future-terminal-text-lite (lib) behavior", () => {
 
   it("passes the a11y audit with readable default colors", async () => {
     const el = await fixture(
-      html`<future-terminal-text-lite>terminal words</future-terminal-text-lite>`,
+      html`<future-terminal-text-lite
+        >terminal words</future-terminal-text-lite
+      >`,
     );
     // the default fallback colors meet contrast so the audit passes
     await expect(el).shadowDom.to.be.accessible();
@@ -207,7 +213,11 @@ describe("future-terminal-text-lite (lib) behavior", () => {
     try {
       // stub a styles definition on the anonymous mixin base class so the
       // super.styles branch in FutureTerminalTextLite.styles runs
-      base.styles = css`span { color: red }`;
+      base.styles = css`
+        span {
+          color: red;
+        }
+      `;
       const styles = FutureTerminalTextLite.styles;
       expect(styles.length).to.equal(2);
       expect(styles[0]).to.equal(base.styles);
@@ -300,9 +310,9 @@ describe("inherited simple-colors helpers (via future-terminal-text)", () => {
   });
 
   it("handles the darkest shade 12 (contrast table indexes by shade)", () => {
-    expect(el.getContrastingShades(false, "grey", "12", "grey")).to.deep.equal(
-      [1, 2, 3, 4, 5, 6],
-    );
+    expect(el.getContrastingShades(false, "grey", "12", "grey")).to.deep.equal([
+      1, 2, 3, 4, 5, 6,
+    ]);
   });
 
   it("invertShade inverts a shade across the scale", () => {

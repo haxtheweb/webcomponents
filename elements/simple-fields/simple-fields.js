@@ -280,401 +280,396 @@ class SimpleFields extends SimpleFieldsLite {
    * @memberof SimpleFields
    */
   static get defaultSchemaConversion() {
-    return (
-      {
-        defaultSettings: {
-          element: "simple-fields-field",
-          errorProperty: "errorMessage",
-          invalidProperty: "invalid",
-          noWrap: true,
-          attributes: {
-            type: "text",
-          },
-          properties: {
-            minLength: "minlength",
-            maxLength: "maxlength",
+    return {
+      defaultSettings: {
+        element: "simple-fields-field",
+        errorProperty: "errorMessage",
+        invalidProperty: "invalid",
+        noWrap: true,
+        attributes: {
+          type: "text",
+        },
+        properties: {
+          minLength: "minlength",
+          maxLength: "maxlength",
+        },
+      },
+      format: {
+        radio: {
+          defaultSettings: {
+            element: "simple-fields-field",
+            noWrap: true,
+            attributes: {
+              autofocus: true,
+              type: "radio",
+            },
+            properties: {
+              options: "options",
+            },
+            child: {
+              element: "simple-fields-array-item",
+              noWrap: true,
+              descriptionProperty: "description",
+              properties: {
+                previewBy: "previewBy",
+              },
+            },
           },
         },
-        format: {
-          radio: {
-            defaultSettings: {
-              element: "simple-fields-field",
+        select: {
+          defaultSettings: {
+            element: "simple-fields-field",
+            noWrap: true,
+            attributes: {
+              autofocus: true,
+              type: "select",
+            },
+            properties: {
+              options: "options",
+              items: "itemsList",
+            },
+          },
+        },
+        "simple-picker": {
+          defaultSettings: {
+            import: "@haxtheweb/simple-picker/simple-picker.js",
+            element: "simple-picker",
+            attributes: {
+              autofocus: true,
+              justify: true,
+            },
+            properties: {
+              options: "options",
+              justify: "justify",
+            },
+          },
+        },
+      },
+      type: {
+        array: {
+          defaultSettings: {
+            element: "simple-fields-array",
+            noWrap: true,
+            descriptionProperty: "description",
+            child: {
+              element: "simple-fields-array-item",
               noWrap: true,
-              attributes: {
-                autofocus: true,
-                type: "radio",
-              },
+              descriptionProperty: "description",
               properties: {
-                options: "options",
+                previewBy: "previewBy",
+                sortable: true,
               },
-              child: {
-                element: "simple-fields-array-item",
+            },
+          },
+        },
+        boolean: {
+          defaultSettings: {
+            element: "simple-fields-field",
+            noWrap: true,
+            attributes: {
+              autofocus: true,
+              type: "checkbox",
+              value: false,
+            },
+          },
+        },
+        file: {
+          defaultSettings: {
+            element: "simple-fields-field",
+            noWrap: true,
+            attributes: {
+              autofocus: true,
+              type: "file",
+            },
+            properties: {
+              accepts: "accepts",
+            },
+          },
+        },
+        integer: {
+          defaultSettings: {
+            element: "simple-fields-field",
+            noWrap: true,
+            attributes: {
+              autofocus: true,
+              step: 1,
+              type: "number",
+            },
+            properties: {
+              minimum: "min",
+              maximum: "max",
+              multipleOf: "step",
+            },
+          },
+        },
+        "html-block": {
+          defaultSettings: {
+            import: "@haxtheweb/simple-fields/lib/simple-fields-html-block.js",
+            element: "simple-fields-html-block",
+            noWrap: true,
+            attributes: {
+              autofocus: false,
+              required: false,
+            },
+          },
+        },
+        markup: {
+          defaultSettings: {
+            import: "@haxtheweb/simple-fields/lib/simple-fields-code.js",
+            element: "simple-fields-code",
+            setValueProperty: "editorValue",
+            noWrap: true,
+            properties: {
+              theme: "theme",
+            },
+          },
+          format: {
+            "md-block": {
+              defaultSettings: {
+                element: "md-block",
+                setValueProperty: "source",
+                noWrap: true,
+              },
+            },
+          },
+        },
+        number: {
+          defaultSettings: {
+            element: "simple-fields-field",
+            noWrap: true,
+            type: "number",
+            attributes: {
+              autofocus: true,
+              type: "number",
+            },
+            properties: {
+              minimum: "min",
+              maximum: "max",
+              multipleOf: "step",
+            },
+          },
+        },
+        object: {
+          defaultSettings: {
+            element: "simple-fields-fieldset",
+            noWrap: true,
+          },
+          format: {
+            tabs: {
+              defaultSettings: {
+                import: "@haxtheweb/simple-fields/lib/simple-fields-tabs.js",
+                element: "simple-fields-tabs",
+                noWrap: true,
+                child: {
+                  import: "@haxtheweb/simple-fields/lib/simple-fields-tab.js",
+                  element: "simple-fields-tab",
+                  noWrap: true,
+                  labelSlot: "label",
+                  descriptionSlot: "",
+                },
+                properties: {
+                  layoutBreakpoint: "layoutBreakpoint",
+                  iconBreakpoint: "iconBreakpoint",
+                  sticky: "sticky",
+                  disableResponsive: false,
+                },
+              },
+            },
+            collapse: {
+              defaultSettings: {
+                import: "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js",
+                element: "a11y-collapse-group",
+                noWrap: true,
+                child: {
+                  import: "@haxtheweb/a11y-collapse/a11y-collapse.js",
+                  element: "a11y-collapse",
+                  noWrap: true,
+                  labelSlot: "heading",
+                  descriptionSlot: "",
+                },
+                attributes: {
+                  accordion: "accordion",
+                },
+              },
+            },
+            fields: {
+              defaultSettings: {
+                element: "simple-fields",
                 noWrap: true,
                 descriptionProperty: "description",
                 properties: {
-                  previewBy: "previewBy",
+                  schema: "schema",
                 },
               },
             },
           },
-          select: {
-            defaultSettings: {
-              element: "simple-fields-field",
-              noWrap: true,
-              attributes: {
-                autofocus: true,
-                type: "select",
-              },
-              properties: {
-                options: "options",
-                items: "itemsList",
+        },
+        string: {
+          format: {
+            alt: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  required: true,
+                },
               },
             },
-          },
-          "simple-picker": {
-            defaultSettings: {
-              import: "@haxtheweb/simple-picker/simple-picker.js",
-              element: "simple-picker",
-              attributes: {
-                autofocus: true,
-                justify: true,
+            color: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "color",
+                },
+              },
+            },
+            colorpicker: {
+              defaultSettings: {
+                import: "@haxtheweb/simple-colors/lib/simple-colors-picker.js",
+                element: "simple-colors-picker",
+                attributes: {
+                  autofocus: true,
+                },
+              },
+            },
+            combo: {
+              defaultSettings: {
+                import: "@haxtheweb/simple-fields/lib/simple-fields-combo.js",
+                element: "simple-fields-combo",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  justify: true,
+                },
               },
               properties: {
-                options: "options",
+                autocomplete: "autocomplete",
                 justify: "justify",
               },
             },
-          },
-        },
-        type: {
-          array: {
-            defaultSettings: {
-              element: "simple-fields-array",
-              noWrap: true,
-              descriptionProperty: "description",
-              child: {
-                element: "simple-fields-array-item",
+            date: {
+              defaultSettings: {
+                element: "simple-fields-field",
                 noWrap: true,
-                descriptionProperty: "description",
+                attributes: {
+                  autofocus: true,
+                  type: "date",
+                },
+              },
+            },
+            "date-time": {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "datetime-local",
+                },
+              },
+            },
+            email: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "email",
+                },
+              },
+            },
+            fileupload: {
+              defaultSettings: {
+                import: "@haxtheweb/simple-fields/lib/simple-fields-upload.js",
+                element: "simple-fields-upload",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                },
+              },
+              properties: {
+                autocomplete: "autocomplete",
+              },
+            },
+            iconpicker: {
+              defaultSettings: {
+                import: "@haxtheweb/simple-icon-picker/simple-icon-picker.js",
+                element: "simple-icon-picker",
+                attributes: {
+                  autofocus: true,
+                },
                 properties: {
-                  previewBy: "previewBy",
-                  sortable: true,
+                  options: "icons",
+                  exclude: "exclude",
+                  excludeSets: "excludeSets",
+                  includeSets: "includeSets",
                 },
               },
             },
-          },
-          boolean: {
-            defaultSettings: {
-              element: "simple-fields-field",
-              noWrap: true,
-              attributes: {
-                autofocus: true,
-                type: "checkbox",
-                value: false,
-              },
-            },
-          },
-          file: {
-            defaultSettings: {
-              element: "simple-fields-field",
-              noWrap: true,
-              attributes: {
-                autofocus: true,
-                type: "file",
-              },
-              properties: {
-                accepts: "accepts",
-              },
-            },
-          },
-          integer: {
-            defaultSettings: {
-              element: "simple-fields-field",
-              noWrap: true,
-              attributes: {
-                autofocus: true,
-                step: 1,
-                type: "number",
-              },
-              properties: {
-                minimum: "min",
-                maximum: "max",
-                multipleOf: "step",
-              },
-            },
-          },
-          "html-block": {
-            defaultSettings: {
-              import:
-                "@haxtheweb/simple-fields/lib/simple-fields-html-block.js",
-              element: "simple-fields-html-block",
-              noWrap: true,
-              attributes: {
-                autofocus: false,
-                required: false,
-              },
-            },
-          },
-          markup: {
-            defaultSettings: {
-              import: "@haxtheweb/simple-fields/lib/simple-fields-code.js",
-              element: "simple-fields-code",
-              setValueProperty: "editorValue",
-              noWrap: true,
-              properties: {
-                theme: "theme",
-              },
-            },
-            format: {
-              "md-block": {
-                defaultSettings: {
-                  element: "md-block",
-                  setValueProperty: "source",
-                  noWrap: true,
+            month: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "month",
                 },
               },
             },
-          },
-          number: {
-            defaultSettings: {
-              element: "simple-fields-field",
-              noWrap: true,
-              type: "number",
-              attributes: {
-                autofocus: true,
-                type: "number",
-              },
-              properties: {
-                minimum: "min",
-                maximum: "max",
-                multipleOf: "step",
-              },
-            },
-          },
-          object: {
-            defaultSettings: {
-              element: "simple-fields-fieldset",
-              noWrap: true,
-            },
-            format: {
-              tabs: {
-                defaultSettings: {
-                  import: "@haxtheweb/simple-fields/lib/simple-fields-tabs.js",
-                  element: "simple-fields-tabs",
-                  noWrap: true,
-                  child: {
-                    import: "@haxtheweb/simple-fields/lib/simple-fields-tab.js",
-                    element: "simple-fields-tab",
-                    noWrap: true,
-                    labelSlot: "label",
-                    descriptionSlot: "",
-                  },
-                  properties: {
-                    layoutBreakpoint: "layoutBreakpoint",
-                    iconBreakpoint: "iconBreakpoint",
-                    sticky: "sticky",
-                    disableResponsive: false,
-                  },
-                },
-              },
-              collapse: {
-                defaultSettings: {
-                  import: "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js",
-                  element: "a11y-collapse-group",
-                  noWrap: true,
-                  child: {
-                    import: "@haxtheweb/a11y-collapse/a11y-collapse.js",
-                    element: "a11y-collapse",
-                    noWrap: true,
-                    labelSlot: "heading",
-                    descriptionSlot: "",
-                  },
-                  attributes: {
-                    accordion: "accordion",
-                  },
-                },
-              },
-              fields: {
-                defaultSettings: {
-                  element: "simple-fields",
-                  noWrap: true,
-                  descriptionProperty: "description",
-                  properties: {
-                    schema: "schema",
-                  },
+            textarea: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "textarea",
                 },
               },
             },
-          },
-          string: {
-            format: {
-              alt: {
-                defaultSettings: {
-                  element: "simple-fields-field",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                    required: true,
-                  },
+            time: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "time",
                 },
               },
-              color: {
-                defaultSettings: {
-                  element: "simple-fields-field",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                    type: "color",
-                  },
+            },
+            uri: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "file",
                 },
               },
-              colorpicker: {
-                defaultSettings: {
-                  import:
-                    "@haxtheweb/simple-colors/lib/simple-colors-picker.js",
-                  element: "simple-colors-picker",
-                  attributes: {
-                    autofocus: true,
-                  },
-                },
-              },
-              combo: {
-                defaultSettings: {
-                  import: "@haxtheweb/simple-fields/lib/simple-fields-combo.js",
-                  element: "simple-fields-combo",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                    justify: true,
-                  },
+            },
+            url: {
+              defaultSettings: {
+                import:
+                  "@haxtheweb/simple-fields/lib/simple-fields-url-combo.js",
+                element: "simple-fields-url-combo",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  justify: true,
                 },
                 properties: {
                   autocomplete: "autocomplete",
-                  justify: "justify",
-                },
-              },
-              date: {
-                defaultSettings: {
-                  element: "simple-fields-field",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                    type: "date",
-                  },
-                },
-              },
-              "date-time": {
-                defaultSettings: {
-                  element: "simple-fields-field",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                    type: "datetime-local",
-                  },
-                },
-              },
-              email: {
-                defaultSettings: {
-                  element: "simple-fields-field",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                    type: "email",
-                  },
-                },
-              },
-              fileupload: {
-                defaultSettings: {
-                  import:
-                    "@haxtheweb/simple-fields/lib/simple-fields-upload.js",
-                  element: "simple-fields-upload",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                  },
-                },
-                properties: {
-                  autocomplete: "autocomplete",
-                },
-              },
-              iconpicker: {
-                defaultSettings: {
-                  import: "@haxtheweb/simple-icon-picker/simple-icon-picker.js",
-                  element: "simple-icon-picker",
-                  attributes: {
-                    autofocus: true,
-                  },
-                  properties: {
-                    options: "icons",
-                    exclude: "exclude",
-                    excludeSets: "excludeSets",
-                    includeSets: "includeSets",
-                  },
-                },
-              },
-              month: {
-                defaultSettings: {
-                  element: "simple-fields-field",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                    type: "month",
-                  },
-                },
-              },
-              textarea: {
-                defaultSettings: {
-                  element: "simple-fields-field",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                    type: "textarea",
-                  },
-                },
-              },
-              time: {
-                defaultSettings: {
-                  element: "simple-fields-field",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                    type: "time",
-                  },
-                },
-              },
-              uri: {
-                defaultSettings: {
-                  element: "simple-fields-field",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                    type: "file",
-                  },
-                },
-              },
-              url: {
-                defaultSettings: {
-                  import:
-                    "@haxtheweb/simple-fields/lib/simple-fields-url-combo.js",
-                  element: "simple-fields-url-combo",
-                  noWrap: true,
-                  attributes: {
-                    autofocus: true,
-                    justify: true,
-                  },
-                  properties: {
-                    autocomplete: "autocomplete",
-                    alwaysExpanded: "alwaysExpanded",
-                    displayAs: "displayAs",
-                    options: "options",
-                  },
+                  alwaysExpanded: "alwaysExpanded",
+                  displayAs: "displayAs",
+                  options: "options",
                 },
               },
             },
           },
         },
-      }
-    );
+      },
+    };
   }
   /**
    * gets fields array to JSON schema conversion object

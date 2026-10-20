@@ -63,10 +63,7 @@ class ScrollButton extends LitElement {
             --scroll-button-background-color,
             color-mix(in srgb, var(--ddd-theme-default-black) 60%, transparent)
           );
-          color: var(
-            --scroll-button-color,
-            var(--ddd-theme-default-white)
-          );
+          color: var(--scroll-button-color, var(--ddd-theme-default-white));
         }
 
         simple-icon-button-lite:hover,

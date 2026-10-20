@@ -32,30 +32,70 @@ const OUT = path.join(DDD_DIR, "tokens");
 // ------------------------------------------------------------ name -> path --
 
 const rules = [
-  [/^ddd-theme-default-gradient-(.+)$/, (m) => ["color", "gradient", m[1]], null],
+  [
+    /^ddd-theme-default-gradient-(.+)$/,
+    (m) => ["color", "gradient", m[1]],
+    null,
+  ],
   [/^ddd-theme-default-(.+)$/, (m) => ["color", m[1]], "color"],
   [/^ddd-primary-(\d+)-rgb$/, null],
   [/^ddd-primary-(\d+)$/, (m) => ["color", "primary", m[1]], "color"],
   [/^ddd-accent-(\d+)$/, (m) => ["color", "accent", m[1]], "color"],
-  [/^ddd-font-(primary|secondary|navigation|mono)$/, (m) => ["font", "family", m[1]], "fontFamily"],
+  [
+    /^ddd-font-(primary|secondary|navigation|mono)$/,
+    (m) => ["font", "family", m[1]],
+    "fontFamily",
+  ],
   [/^ddd-font-weight-(.+)$/, (m) => ["font", "weight", m[1]], "fontWeight"],
   [/^ddd-font-size-(.+)$/, (m) => ["font", "size", m[1]], "dimension"],
-  [/^ddd-theme-(h\d|body)-font-size$/, (m) => ["font", "size", m[1]], "dimension"],
+  [
+    /^ddd-theme-(h\d|body)-font-size$/,
+    (m) => ["font", "size", m[1]],
+    "dimension",
+  ],
   [/^ddd-lh-(\d+)$/, (m) => ["lineHeight", m[1]], "number"],
   [/^ddd-ls-(.+)$/, (m) => ["letterSpacing", m[1]], "dimension"],
   [/^ddd-spacing-(\d+)$/, (m) => ["spacing", m[1]], "dimension"],
   [/^ddd-border-size-(.+)$/, (m) => ["border", "width", m[1]], "dimension"],
   [/^ddd-border-(xs|sm|md|lg)$/, (m) => ["border", m[1]], "border"],
-  [/^ddd-theme-header-border-(thickness|treatment)-(.+)$/, (m) => ["headerBorder", m[1], m[2]], "dimension"],
-  [/^ddd-theme-header-border-(thickness|treatment)$/, (m) => ["headerBorder", m[1], "default"], "dimension"],
+  [
+    /^ddd-theme-header-border-(thickness|treatment)-(.+)$/,
+    (m) => ["headerBorder", m[1], m[2]],
+    "dimension",
+  ],
+  [
+    /^ddd-theme-header-border-(thickness|treatment)$/,
+    (m) => ["headerBorder", m[1], "default"],
+    "dimension",
+  ],
   [/^ddd-boxShadow-(.+)$/, (m) => ["shadow", m[1]], "shadow"],
   [/^ddd-breakpoint-(.+)$/, (m) => ["breakpoint", m[1]], "dimension"],
-  [/^ddd-content-width-(.+)$/, (m) => ["layout", "contentWidth", m[1]], "dimension"],
-  [/^ddd-sidebar-width-(.+)$/, (m) => ["layout", "sidebarWidth", m[1]], "dimension"],
-  [/^ddd-container-width-(.+)$/, (m) => ["layout", "containerWidth", m[1]], "dimension"],
-  [/^ddd-theme-(content|sidebar|container)-width$/, (m) => ["layout", `${m[1]}Width`, "theme"], "dimension"],
+  [
+    /^ddd-content-width-(.+)$/,
+    (m) => ["layout", "contentWidth", m[1]],
+    "dimension",
+  ],
+  [
+    /^ddd-sidebar-width-(.+)$/,
+    (m) => ["layout", "sidebarWidth", m[1]],
+    "dimension",
+  ],
+  [
+    /^ddd-container-width-(.+)$/,
+    (m) => ["layout", "containerWidth", m[1]],
+    "dimension",
+  ],
+  [
+    /^ddd-theme-(content|sidebar|container)-width$/,
+    (m) => ["layout", `${m[1]}Width`, "theme"],
+    "dimension",
+  ],
   [/^ddd-theme-layout-gutter$/, () => ["layout", "gutter"], "dimension"],
-  [/^ddd-grid-(gap|item-spacing)$/, (m) => ["layout", "grid", m[1]], "dimension"],
+  [
+    /^ddd-grid-(gap|item-spacing)$/,
+    (m) => ["layout", "grid", m[1]],
+    "dimension",
+  ],
   [/^ddd-measure-(.+)$/, (m) => ["layout", "measure", m[1]], null],
   [/^ddd-theme-measure$/, () => ["layout", "measure", "theme"], null],
   [/^ddd-aspect-(.+)$/, (m) => ["aspectRatio", m[1]], null],
@@ -69,9 +109,17 @@ const rules = [
   [/^ddd-focus-ring$/, () => ["focus", "ring"], "border"],
   [/^ddd-focus-offset$/, () => ["focus", "offset"], "dimension"],
   [/^ddd-drop-zone-(.+-color)$/, (m) => ["dropZone", m[1]], "color"],
-  [/^ddd-drop-zone-(outline-width|outline-offset|radius)$/, (m) => ["dropZone", m[1]], "dimension"],
+  [
+    /^ddd-drop-zone-(outline-width|outline-offset|radius)$/,
+    (m) => ["dropZone", m[1]],
+    "dimension",
+  ],
   [/^ddd-drop-zone-(.+)$/, (m) => ["dropZone", m[1]], null],
-  [/^ddd-textfield-height-(.+)$/, (m) => ["textfieldHeight", m[1]], "dimension"],
+  [
+    /^ddd-textfield-height-(.+)$/,
+    (m) => ["textfieldHeight", m[1]],
+    "dimension",
+  ],
   [/^ddd-control-height-(.+)$/, (m) => ["controlHeight", m[1]], "dimension"],
   [/^ddd-target-(min|comfortable)$/, (m) => ["targetSize", m[1]], "dimension"],
   [/^ddd-state-(.+)-opacity$/, (m) => ["state", m[1]], "number"],
@@ -88,7 +136,10 @@ function classify(name) {
 // ---------------------------------------------------------- value parsing --
 
 function rgbaToHex(v) {
-  const m = /^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*(?:,\s*([\d.]+%?)\s*)?\)$/.exec(v);
+  const m =
+    /^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*(?:,\s*([\d.]+%?)\s*)?\)$/.exec(
+      v,
+    );
   if (!m) return null;
   const h = (n) => Math.round(Number(n)).toString(16).padStart(2, "0");
   let a = "";
@@ -164,7 +215,8 @@ export default function build() {
         return m ? m[1].split(",").map((n) => Number(n.trim())) : null;
       }
       case "border": {
-        const m = /^(\S+)\s+(solid|dashed|dotted|double|groove|ridge)\s+(.+)$/.exec(v);
+        const m =
+          /^(\S+)\s+(solid|dashed|dotted|double|groove|ridge)\s+(.+)$/.exec(v);
         if (!m) return null;
         return {
           color: alias(m[3]) || color(literal(m[3])),
@@ -173,10 +225,16 @@ export default function build() {
         };
       }
       case "shadow": {
-        let m = /^((?:rgba?\([^)]*\))|#[0-9a-fA-F]+)\s+(\S+)\s+(\S+)\s+(\S+)(?:\s+(\S+))?$/.exec(v);
+        let m =
+          /^((?:rgba?\([^)]*\))|#[0-9a-fA-F]+)\s+(\S+)\s+(\S+)\s+(\S+)(?:\s+(\S+))?$/.exec(
+            v,
+          );
         if (!m) {
           // offsets first, colour last: "0px 0px 0px 0px rgba(0, 0, 0, 0)"
-          const r = /^(\S+)\s+(\S+)\s+(\S+)(?:\s+(\S+))?\s+((?:rgba?\([^)]*\))|#[0-9a-fA-F]+)$/.exec(v);
+          const r =
+            /^(\S+)\s+(\S+)\s+(\S+)(?:\s+(\S+))?\s+((?:rgba?\([^)]*\))|#[0-9a-fA-F]+)$/.exec(
+              v,
+            );
           if (r) m = [r[0], r[5], r[1], r[2], r[3], r[4]];
         }
         if (!m) return null;
@@ -236,19 +294,26 @@ export default function build() {
       put(light, ["simple-colors", "fixed", h, n], {
         $type: "color",
         $value: hex,
-        $extensions: { [EXT]: { cssVar: `--simple-colors-fixed-theme-${h}-${n}` } },
+        $extensions: {
+          [EXT]: { cssVar: `--simple-colors-fixed-theme-${h}-${n}` },
+        },
       });
       put(light, ["simple-colors", "default", h, n], {
         $type: "color",
         $value: `{simple-colors.fixed.${h}.${n}}`,
-        $extensions: { [EXT]: { cssVar: `--simple-colors-default-theme-${h}-${n}` } },
+        $extensions: {
+          [EXT]: { cssVar: `--simple-colors-default-theme-${h}-${n}` },
+        },
       });
       const inverse = sc.shades[h][12 - (i + 1)];
       const d = sc.dark[h][i];
       put(dark, ["simple-colors", "default", h, n], {
         $type: "color",
-        $value: d === inverse ? `{simple-colors.fixed.${h}.${13 - (i + 1)}}` : d,
-        $extensions: { [EXT]: { cssVar: `--simple-colors-default-theme-${h}-${n}` } },
+        $value:
+          d === inverse ? `{simple-colors.fixed.${h}.${13 - (i + 1)}}` : d,
+        $extensions: {
+          [EXT]: { cssVar: `--simple-colors-default-theme-${h}-${n}` },
+        },
       });
     });
   }
@@ -281,12 +346,18 @@ export default function build() {
       {
         id: "light",
         name: "Light",
-        selectedTokenSets: { "ddd.tokens": "enabled", "ddd.dark.tokens": "disabled" },
+        selectedTokenSets: {
+          "ddd.tokens": "enabled",
+          "ddd.dark.tokens": "disabled",
+        },
       },
       {
         id: "dark",
         name: "Dark",
-        selectedTokenSets: { "ddd.tokens": "enabled", "ddd.dark.tokens": "enabled" },
+        selectedTokenSets: {
+          "ddd.tokens": "enabled",
+          "ddd.dark.tokens": "enabled",
+        },
       },
     ],
   };
@@ -321,7 +392,9 @@ if (isMain) {
       // compare parsed JSON so a prettier pass over the files does not count as drift
       let same = false;
       try {
-        same = JSON.stringify(JSON.parse(fs.readFileSync(file, "utf8"))) === JSON.stringify(data);
+        same =
+          JSON.stringify(JSON.parse(fs.readFileSync(file, "utf8"))) ===
+          JSON.stringify(data);
       } catch {
         same = false;
       }
@@ -338,6 +411,8 @@ if (isMain) {
   }
   console.log(
     `${check ? "checked" : "wrote"} ${Object.keys(files).length} files in elements/d-d-d/tokens: ${stats.light} tokens, ${stats.dark} dark overrides` +
-      (stats.skipped.length ? `; not exported (RGB channel triplets and component defaults): ${stats.skipped.length}` : ""),
+      (stats.skipped.length
+        ? `; not exported (RGB channel triplets and component defaults): ${stats.skipped.length}`
+        : ""),
   );
 }

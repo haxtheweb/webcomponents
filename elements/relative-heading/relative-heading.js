@@ -57,7 +57,10 @@ class RelativeHeading extends RelativeHeadingLite {
         simple-icon-button-lite {
           color: var(
             --relative-heading-button-color,
-            light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-theme-default-slateLight))
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-slateLight)
+            )
           );
           background: var(--relative-heading-button-bg);
           border: var(--relative-heading-button-border);
@@ -65,7 +68,10 @@ class RelativeHeading extends RelativeHeadingLite {
           margin: var(--relative-heading-button-margin, 0 0 0 8px);
           padding: var(--relative-heading-button-padding, 8px);
           opacity: var(--relative-heading-button-opacity, 0);
-          transition: var(--relative-heading-button-transition, all var(--ddd-duration-slow, 0.6s));
+          transition: var(
+            --relative-heading-button-transition,
+            all var(--ddd-duration-slow, 0.6s)
+          );
         }
 
         :host([link-align-right]) simple-icon-button-lite,
@@ -80,7 +86,10 @@ class RelativeHeading extends RelativeHeadingLite {
         simple-icon-button-lite:hover {
           color: var(
             --relative-heading-button-focus-color,
-            light-dark(var(--ddd-theme-default-black), var(--ddd-theme-default-white))
+            light-dark(
+              var(--ddd-theme-default-black),
+              var(--ddd-theme-default-white)
+            )
           );
           background: var(--relative-heading-button-focus-bg);
           border: var(--relative-heading-button-focus-border);

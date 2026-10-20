@@ -708,9 +708,9 @@ describe("i18n-manager test", () => {
       expect(element.manifestLoaded).to.equal(true);
       expect(element.manifestLoading).to.equal(false);
       expect(fetchMock.calls.length).to.equal(1);
-      expect(fetchMock.calls[0].indexOf("translation-manifest.json")).to.not.equal(
-        -1,
-      );
+      expect(
+        fetchMock.calls[0].indexOf("translation-manifest.json"),
+      ).to.not.equal(-1);
     });
 
     it("short-circuits on second call (manifestLoaded guard)", async () => {
@@ -921,9 +921,9 @@ describe("i18n-manager test", () => {
       // "my-el" is in mock manifest with ["es"], so supportsExact will be true
       const result = await element.loadNamespaceFile("my-el", "es");
       expect(result).to.deep.equal({ hello: "translated" });
-      expect(
-        element.fetchTargets["/locales/my-el.es.json"],
-      ).to.deep.equal({ hello: "translated" });
+      expect(element.fetchTargets["/locales/my-el.es.json"]).to.deep.equal({
+        hello: "translated",
+      });
     });
 
     it("fetches base locale match (e.g. es from es-MX) via manifest support", async () => {
@@ -936,9 +936,9 @@ describe("i18n-manager test", () => {
       // "my-el" supports "es" in manifest, so base match for es-MX works
       const result = await element.loadNamespaceFile("my-el", "es-MX");
       expect(result).to.deep.equal({ hello: "translated" });
-      expect(
-        element.fetchTargets["/locales/my-el.es.json"],
-      ).to.deep.equal({ hello: "translated" });
+      expect(element.fetchTargets["/locales/my-el.es.json"]).to.deep.equal({
+        hello: "translated",
+      });
     });
 
     it("fetches via component locales when manifest not loaded (en lang)", async () => {
@@ -952,9 +952,9 @@ describe("i18n-manager test", () => {
       // and component locales are used as fallback
       const result = await element.loadNamespaceFile("comp-el", "en");
       expect(result).to.deep.equal({ hello: "translated" });
-      expect(
-        element.fetchTargets["/locales/comp-el.en.json"],
-      ).to.deep.equal({ hello: "translated" });
+      expect(element.fetchTargets["/locales/comp-el.en.json"]).to.deep.equal({
+        hello: "translated",
+      });
     });
 
     it("caches fetch results in fetchTargets (second call reuses cache)", async () => {

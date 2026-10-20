@@ -86,6 +86,17 @@
               ]
             },
             {
+              "kind": "field",
+              "name": "hasDetailContent",
+              "description": "whether or not slotted content exists to progressively disclose",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
               "kind": "method",
               "name": "_watchChildren",
               "parameters": [

@@ -28,6 +28,11 @@
             },
             {
               "kind": "method",
+              "name": "_styleBackdrop",
+              "description": "Applies the backdrop background color. web-dialog may not have upgraded\n(and built its shadow root) when the dynamic import resolves, so every\nstep of the chain is guarded before it is dereferenced."
+            },
+            {
+              "kind": "method",
               "name": "showEvent",
               "parameters": [
                 {
@@ -194,6 +199,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, close: \"Close\", modalDialog: \"Modal Dialog\", modalBreadcrumb: \"Modal breadcrumb\", }"
+            },
+            {
+              "kind": "field",
               "name": "windowControllers",
               "default": "new AbortController()"
             },
@@ -271,17 +284,6 @@
             },
             {
               "kind": "field",
-              "name": "closeLabel",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "description": "Close label",
-              "default": "\"Close\"",
-              "attribute": "close-label"
-            },
-            {
-              "kind": "field",
               "name": "closeIcon",
               "privacy": "public",
               "type": {
@@ -301,6 +303,16 @@
               "description": "support for modal flag",
               "default": "false",
               "attribute": "modal"
+            },
+            {
+              "kind": "field",
+              "name": "closeLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Close label",
+              "attribute": "close-label"
             },
             {
               "kind": "field",
@@ -357,7 +369,6 @@
                 "text": "string"
               },
               "description": "Close label",
-              "default": "\"Close\"",
               "fieldName": "closeLabel"
             },
             {
@@ -422,6 +433,12 @@
               "fieldName": "breadcrumbs"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
@@ -479,7 +496,7 @@
           "members": [
             {
               "kind": "method",
-              "name": "_keyPress",
+              "name": "_keydown",
               "parameters": [
                 {
                   "name": "e"
@@ -492,7 +509,7 @@
               "name": "__SimpleModalHandlerClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Click callback"

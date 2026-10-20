@@ -304,7 +304,10 @@ class ChatInput extends I18NMixin(DDD) {
     ) {
       // ensures prompt is within character limit, even if user changes "maxlength" attribute in dev tools
       alert(
-        this.t.shortenPrompt.replace("{limit}", () => ChatStore.promptCharacterLimit),
+        this.t.shortenPrompt.replace(
+          "{limit}",
+          () => ChatStore.promptCharacterLimit,
+        ),
       );
     }
 

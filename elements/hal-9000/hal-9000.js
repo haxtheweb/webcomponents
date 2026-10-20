@@ -312,16 +312,10 @@ class Hal9000 extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       // only react to changes away from a defined previous value so the
       // constructor defaults never clobber attribute-set initial values
-      if (
-        propName == "commands" &&
-        typeof oldValue !== typeof undefined
-      ) {
+      if (propName == "commands" && typeof oldValue !== typeof undefined) {
         this._commandsChanged(this[propName]);
       }
-      if (
-        propName == "respondsTo" &&
-        typeof oldValue !== typeof undefined
-      ) {
+      if (propName == "respondsTo" && typeof oldValue !== typeof undefined) {
         this._respondsToChanged(this[propName], oldValue);
       }
       if (propName == "debug" && typeof oldValue !== typeof undefined) {

@@ -575,9 +575,7 @@ describe("aframe-player test", () => {
   describe("A-Frame loaded lifecycle", () => {
     it("should apply the model and position once aframe reports loaded", async () => {
       const testElement = await fixture(html`
-        <aframe-player
-          source="https://example.com/model.gltf"
-        ></aframe-player>
+        <aframe-player source="https://example.com/model.gltf"></aframe-player>
       `);
       await testElement.updateComplete;
       // aframe never loads for real in tests (CDN stubbed above), so the

@@ -12,6 +12,16 @@
           "name": "SimpleCta",
           "members": [
             {
+              "kind": "method",
+              "name": "_computeAriaLabel",
+              "description": "Compute an accessible name for the rendered anchor.\n\nPriority: explicit `label` property, then the host element's `title`\nattribute (the most common fallback consumers already supply), then the\ntarget URL so the link is at least self-describing. An empty `link=\"#\"`\nplaceholder falls through to a generic call-to-action string.",
+              "return": {
+                "type": {
+                  "text": "string | undefined"
+                }
+              }
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,
@@ -47,7 +57,7 @@
                   "name": "e"
                 }
               ],
-              "description": "special support for HAX since the whole card is selectable"
+              "description": "special support for HAX since the whole card is selectable; also honor\nthe declared/reflected disabled property so a disabled CTA cannot be\nactivated (haxtheweb/issues#3102 #36)"
             },
             {
               "kind": "method",
@@ -318,6 +328,20 @@
               "attribute": "href"
             },
             {
+              "kind": "method",
+              "name": "_computeAriaLabel",
+              "description": "Compute an accessible name for the rendered anchor.\n\nPriority: explicit `label` property, then the host element's `title`\nattribute (the most common fallback consumers already supply), then the\ntarget URL so the link is at least self-describing. An empty `link=\"#\"`\nplaceholder falls through to a generic call-to-action string.",
+              "return": {
+                "type": {
+                  "text": "string | undefined"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,
@@ -358,7 +382,7 @@
                   "name": "e"
                 }
               ],
-              "description": "special support for HAX since the whole card is selectable",
+              "description": "special support for HAX since the whole card is selectable; also honor\nthe declared/reflected disabled property so a disabled CTA cannot be\nactivated (haxtheweb/issues#3102 #36)",
               "inheritedFrom": {
                 "name": "SimpleCta",
                 "module": "simple-cta.js"

@@ -922,6 +922,19 @@
             },
             {
               "kind": "method",
+              "name": "_safeQuerySelector",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "selector"
+                }
+              ],
+              "description": "Safely query for a selector, returning undefined instead of throwing\nwhen `for` produces an invalid CSS selector (e.g. non-string values\nor characters that are illegal in an id selector)."
+            },
+            {
+              "kind": "method",
               "name": "removeEventListeners",
               "description": "Removes event listeners",
               "return": {

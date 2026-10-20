@@ -34,8 +34,10 @@ describe("a11y-media-player transcript system", () => {
   let media;
   // eslint-disable-next-line no-unused-vars -- written by the test, never read
   let track;
-    beforeEach(async () => {
-    el = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
+  beforeEach(async () => {
+    el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
     await el.updateComplete;
     media = el.querySelector("video");
     media.play = () => Promise.resolve();
@@ -103,7 +105,9 @@ describe("a11y-media-player transcript system", () => {
     el.selectTranscriptByKey(0);
     await el.updateComplete;
     const cue = el.shadowRoot.querySelector("a11y-media-transcript-cue");
-    cue.dispatchEvent(new MouseEvent("click", { bubbles: true, composed: true }));
+    cue.dispatchEvent(
+      new MouseEvent("click", { bubbles: true, composed: true }),
+    );
     await el.updateComplete;
     expect(el.__currentTime).to.equal(1);
     expect(el.__playing).to.equal(true);
@@ -115,7 +119,11 @@ describe("a11y-media-player transcript system", () => {
     await el.updateComplete;
     const cues = el.shadowRoot.querySelectorAll("a11y-media-transcript-cue");
     cues[1].dispatchEvent(
-      new KeyboardEvent("keydown", { key: "Enter", cancelable: true, bubbles: true }),
+      new KeyboardEvent("keydown", {
+        key: "Enter",
+        cancelable: true,
+        bubbles: true,
+      }),
     );
     await el.updateComplete;
     expect(el.__currentTime).to.equal(6);
@@ -134,7 +142,9 @@ describe("a11y-media-player transcript system", () => {
     // scrolling is skipped when disabled
     el.disableScroll = true;
     await el.updateComplete;
-    const second = el.shadowRoot.querySelectorAll("a11y-media-transcript-cue")[1];
+    const second = el.shadowRoot.querySelectorAll(
+      "a11y-media-transcript-cue",
+    )[1];
     second.active = true;
     await second.updateComplete;
     expect(second.active).to.equal(true);

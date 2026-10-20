@@ -73,7 +73,9 @@ class DisqusEmbed extends LitElement {
    * LitElement render callback
    */
   render() {
-    return html`<slot role="status" aria-live="polite">${this.loadingText}</slot>`;
+    return html`<slot role="status" aria-live="polite"
+      >${this.loadingText}</slot
+    >`;
   }
 
   updated(changedProperties) {

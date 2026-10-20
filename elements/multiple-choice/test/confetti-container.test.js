@@ -1,7 +1,8 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../lib/confetti-container.js";
 
-const frame = () => new Promise((r) => globalThis.requestAnimationFrame(() => r()));
+const frame = () =>
+  new Promise((r) => globalThis.requestAnimationFrame(() => r()));
 
 describe("confetti-container", () => {
   it("creates a canvas overlay when connected", async () => {

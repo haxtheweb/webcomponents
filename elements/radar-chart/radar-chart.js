@@ -502,14 +502,12 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
               const [x, y] = this._point(i, n, max, max);
               return svg`<line class="axis" x1="${this._box.cx}" y1="${this._box.cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"></line>`;
             })}
-            ${
-              compact
-                ? ""
-                : levels.map((l) => {
-                    const [x, y] = this._point(0, n, l * step, max);
-                    return svg`<text class="scale-label" x="${x + 3}" y="${y - 2}">${Number((l * step).toFixed(1))}</text>`;
-                  })
-            }
+            ${compact
+              ? ""
+              : levels.map((l) => {
+                  const [x, y] = this._point(0, n, l * step, max);
+                  return svg`<text class="scale-label" x="${x + 3}" y="${y - 2}">${Number((l * step).toFixed(1))}</text>`;
+                })}
             <polygon
               class="target"
               points="${this._polygon(rows, "target", max)}"
@@ -526,11 +524,9 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
               const [x, y] = this._point(i, n, row.score, max);
               return svg`<circle class="dot ${i === active ? "active" : ""}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4"></circle>`;
             })}
-            ${
-              compact
-                ? ""
-                : rows.map((row, i) => this._renderLabel(row, i, n, max))
-            }
+            ${compact
+              ? ""
+              : rows.map((row, i) => this._renderLabel(row, i, n, max))}
             ${rows.map((row, i) => {
               // generous invisible targets; target points first so the
               // score point wins where the two coincide
@@ -551,43 +547,39 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           ${this._renderTip(rows, max)}
         </div>
         <p id="desc" hidden>${this._description(data)}</p>
-        ${
-          this.showLegend && !compact
-            ? html`<ul class="legend">
-                <li><span class="swatch score"></span>${this.scoreLabel}</li>
-                <li><span class="swatch target"></span>${this.targetLabel}</li>
-              </ul>`
-            : ""
-        }
-        ${
-          compact
-            ? ""
-            : html`<details>
-                <summary>${this.t.showData}</summary>
-                <table>
-                  <caption>
-                    ${this.title}
-                  </caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">${this.t.category}</th>
-                      <th scope="col">${this.scoreLabel}</th>
-                      <th scope="col">${this.targetLabel}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    ${rows.map(
-                      (row) =>
-                        html`<tr>
-                          <th scope="row">${row.name}</th>
-                          <td class="num">${row.score} / ${max}</td>
-                          <td class="num">${row.target} / ${max}</td>
-                        </tr>`,
-                    )}
-                  </tbody>
-                </table>
-              </details>`
-        }
+        ${this.showLegend && !compact
+          ? html`<ul class="legend">
+              <li><span class="swatch score"></span>${this.scoreLabel}</li>
+              <li><span class="swatch target"></span>${this.targetLabel}</li>
+            </ul>`
+          : ""}
+        ${compact
+          ? ""
+          : html`<details>
+              <summary>${this.t.showData}</summary>
+              <table>
+                <caption>
+                  ${this.title}
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">${this.t.category}</th>
+                    <th scope="col">${this.scoreLabel}</th>
+                    <th scope="col">${this.targetLabel}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rows.map(
+                    (row) =>
+                      html`<tr>
+                        <th scope="row">${row.name}</th>
+                        <td class="num">${row.score} / ${max}</td>
+                        <td class="num">${row.target} / ${max}</td>
+                      </tr>`,
+                  )}
+                </tbody>
+              </table>
+            </details>`}
       </figure>
     `;
   }

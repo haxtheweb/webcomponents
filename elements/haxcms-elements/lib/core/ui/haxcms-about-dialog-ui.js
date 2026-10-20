@@ -151,12 +151,10 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
    * matching template values so links / code can live inside one sentence
    */
   _fillTemplate(text, values = {}) {
-    return text
-      .split(/(\{[a-zA-Z]+\})/)
-      .map((part) => {
-        const m = part.match(/^\{([a-zA-Z]+)\}$/);
-        return m && values[m[1]] !== undefined ? values[m[1]] : part;
-      });
+    return text.split(/(\{[a-zA-Z]+\})/).map((part) => {
+      const m = part.match(/^\{([a-zA-Z]+)\}$/);
+      return m && values[m[1]] !== undefined ? values[m[1]] : part;
+    });
   }
 
   _handleKeyboardShortcutsUpdated() {
@@ -370,7 +368,8 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
         }
 
         .section-title:focus-visible {
-          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid
+            var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -646,9 +645,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
                     >${this.t.customThemeDevelopmentDocs}</a
                   >
                 </li>
-                <li>
-                  ${this.t.searchOnboardingPath} <code>CMS/welcome</code>
-                </li>
+                <li>${this.t.searchOnboardingPath} <code>CMS/welcome</code></li>
               </ul>
             </div>
           </details>
@@ -669,35 +666,35 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
                 <li>
                   ${this._fillTemplate(this.t.apiLinksFormats, {
                     formats: html`<a
-                    href="${this._currentPageFormatHref("html")}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><code>.html</code></a
-                  >,
-                  <a
-                    href="${this._currentPageFormatHref("md")}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><code>.md</code></a
-                  >,
-                  <a
-                    href="${this._currentPageFormatHref("json")}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><code>.json</code></a
-                  >,
-                  <a
-                    href="${this._currentPageFormatHref("yaml")}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><code>.yaml</code></a
-                  >,
-                  <a
-                    href="${this._currentPageFormatHref("xml")}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><code>.xml</code></a
-                  >`,
+                        href="${this._currentPageFormatHref("html")}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><code>.html</code></a
+                      >,
+                      <a
+                        href="${this._currentPageFormatHref("md")}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><code>.md</code></a
+                      >,
+                      <a
+                        href="${this._currentPageFormatHref("json")}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><code>.json</code></a
+                      >,
+                      <a
+                        href="${this._currentPageFormatHref("yaml")}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><code>.yaml</code></a
+                      >,
+                      <a
+                        href="${this._currentPageFormatHref("xml")}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><code>.xml</code></a
+                      >`,
                   })}
                 </li>
                 <li>

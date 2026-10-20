@@ -35,21 +35,27 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
       description: "Description",
       descriptionDescription: "Simple description of the site",
       favicon: "Favicon",
-      faviconDescription: "Browser tab image / used on phones as small site logo",
+      faviconDescription:
+        "Browser tab image / used on phones as small site logo",
       domain: "Domain",
       domainDescription: "Domain of this website",
       language: "Language",
-      languageDescription: "Language of this site. Search by name or code, or enter another code such as fr-CA.",
+      languageDescription:
+        "Language of this site. Search by name or code, or enter another code such as fr-CA.",
       googleAnalyticsId: "Google Analytics ID",
-      googleAnalyticsIdDescription: "Tracking ID used for analytics integrations",
+      googleAnalyticsIdDescription:
+        "Tracking ID used for analytics integrations",
       privateSite: "Private site",
-      privateSiteDescription: "Prevent indexing and require authentication to access content",
+      privateSiteDescription:
+        "Prevent indexing and require authentication to access content",
       canonical: "Canonical",
-      canonicalDescription: "Treat domain as canonical to improve SEO consistency",
+      canonicalDescription:
+        "Treat domain as canonical to improve SEO consistency",
       pathauto: "Pathauto",
       pathautoDescription: "Automatically maintain and update page paths",
       hideUnpublishedPages: "Hide unpublished pages",
-      hideUnpublishedPagesDescription: "Check the box to hide unpublished pages",
+      hideUnpublishedPagesDescription:
+        "Check the box to hide unpublished pages",
       license: "License",
       licenseDescription: "License applied to your site content",
       image: "Image",
@@ -61,7 +67,8 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
       socialMediaLink: "Social media link",
       socialMediaLinkDescription: "A primary social space or point of contact",
       socialMediaLink2: "Social media link 2",
-      socialMediaLink2Description: "An additional social space or point of contact",
+      socialMediaLink2Description:
+        "An additional social space or point of contact",
       phone: "Phone",
       phoneDescription: "Phone number for contact",
       location: "Location",
@@ -190,7 +197,8 @@ class HAXCMSSEOAdminDialog extends I18NMixin(DDD) {
           display: none;
         }
         .group-summary:focus-visible {
-          outline: var(--ddd-border-size-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-size-sm) solid
+            var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }

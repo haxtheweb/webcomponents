@@ -265,10 +265,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
         );
         /* accent1/accent8 were undefined token names; the defined accent
            palette tokens preserve the intended subtle hover tint */
-        background-color: light-dark(
-          var(--ddd-accent-1),
-          var(--ddd-accent-8)
-        );
+        background-color: light-dark(var(--ddd-accent-1), var(--ddd-accent-8));
         color: var(--lowContrast-override, var(--ddd-theme-bgContrast, white));
       }
       button:hover {
@@ -350,7 +347,10 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
               >${this.message}
             </p>
             <p class="answer-message">
-              ${this.t.correctAnswer.replace("{answer}", () => this.correctAnswer)}
+              ${this.t.correctAnswer.replace(
+                "{answer}",
+                () => this.correctAnswer,
+              )}
             </p>`
         : ``}
       <div id="buttons">

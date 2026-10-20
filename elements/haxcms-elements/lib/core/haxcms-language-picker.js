@@ -681,16 +681,14 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
         }}"
       >
         <span>${option.label}</span>
-        ${
-          showNative
-            ? html`<span
-                class="native"
-                lang="${option.locale}"
-                dir="${option.dir}"
-                >${option.nativeName}</span
-              >`
-            : ""
-        }
+        ${showNative
+          ? html`<span
+              class="native"
+              lang="${option.locale}"
+              dir="${option.dir}"
+              >${option.nativeName}</span
+            >`
+          : ""}
       </li>
     `;
   }
@@ -748,13 +746,11 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
           ?hidden="${!this._open}"
         >
           ${options.map((option, index) => this._renderOption(option, index))}
-          ${
-            options.length === 0 && this._ready
-              ? html`<li class="empty" role="presentation">
-                  ${this.t.noResults}
-                </li>`
-              : ""
-          }
+          ${options.length === 0 && this._ready
+            ? html`<li class="empty" role="presentation">
+                ${this.t.noResults}
+              </li>`
+            : ""}
         </ul>
       </div>
       <p class="status-text" ?hidden="${!this._loadFailed}">

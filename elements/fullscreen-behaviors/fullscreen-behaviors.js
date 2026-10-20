@@ -26,9 +26,7 @@ const FullscreenBehaviors = function (SuperClass) {
       super();
       this.fullscreen = false;
       this.fullscreenEnabled = globalThis.document.fullscreenEnabled;
-      this.__documentFullscreenChange = this._handleFullscreenChange.bind(
-        this,
-      );
+      this.__documentFullscreenChange = this._handleFullscreenChange.bind(this);
       this.onfullscreenchange = this._handleFullscreenChange;
     }
 

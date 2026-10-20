@@ -276,6 +276,16 @@
             },
             {
               "kind": "field",
+              "name": "schemaResourceID",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Resource ID for microdata, generated through SchemaBehaviors.",
+              "attribute": "schemaResourceID"
+            },
+            {
+              "kind": "field",
               "name": "__figureLabel",
               "privacy": "public",
               "type": {
@@ -294,6 +304,14 @@
             }
           ],
           "attributes": [
+            {
+              "name": "schemaResourceID",
+              "type": {
+                "text": "string"
+              },
+              "description": "Resource ID for microdata, generated through SchemaBehaviors.",
+              "fieldName": "schemaResourceID"
+            },
             {
               "name": "link",
               "type": {
@@ -449,6 +467,12 @@
               "fieldName": "figureLabelDescription"
             }
           ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            }
+          ],
           "superclass": {
             "name": "DDD",
             "package": "@haxtheweb/d-d-d/d-d-d.js"
@@ -466,7 +490,7 @@
               "name": "__modalShowEvent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Only import the definition if they call up the modal because it's a pretty\nheavy library tree"

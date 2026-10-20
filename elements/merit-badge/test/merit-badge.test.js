@@ -64,9 +64,7 @@ describe("elementName test", () => {
 
       // Check for proper semantic structure
       const figure = element.shadowRoot.querySelector("figure");
-      element.shadowRoot.querySelector(
-        ".container, .badge-container",
-      );
+      element.shadowRoot.querySelector(".container, .badge-container");
 
       if (figure) {
         expect(figure).to.exist;
@@ -177,36 +175,36 @@ describe("elementName test", () => {
   });
 });
 
-describe('merit-badge element', () => {
-  it('registers the custom element and static tag', () => {
-    expect(globalThis.customElements.get('merit-badge')).to.exist
-    expect(MeritBadge.tag).to.equal('merit-badge')
-  })
+describe("merit-badge element", () => {
+  it("registers the custom element and static tag", () => {
+    expect(globalThis.customElements.get("merit-badge")).to.exist;
+    expect(MeritBadge.tag).to.equal("merit-badge");
+  });
 
-  it('shows the locked badge by default', async () => {
-    const el = await fixture(html`<merit-badge></merit-badge>`)
-    await el.updateComplete
-    expect(el.badgeUnlocked).to.be.false
-    expect(el.shadowRoot.querySelector('locked-badge')).to.exist
-    expect(el.shadowRoot.querySelector('badge-sticker')).to.not.exist
-    const button = el.shadowRoot.querySelector('.unlockButton')
-    expect(button.textContent.trim()).to.equal('Unlock?')
-  })
+  it("shows the locked badge by default", async () => {
+    const el = await fixture(html`<merit-badge></merit-badge>`);
+    await el.updateComplete;
+    expect(el.badgeUnlocked).to.be.false;
+    expect(el.shadowRoot.querySelector("locked-badge")).to.exist;
+    expect(el.shadowRoot.querySelector("badge-sticker")).to.not.exist;
+    const button = el.shadowRoot.querySelector(".unlockButton");
+    expect(button.textContent.trim()).to.equal("Unlock?");
+  });
 
-  it('applies the oer:LearningObjective typeof and emits the oer:skill meta', async () => {
+  it("applies the oer:LearningObjective typeof and emits the oer:skill meta", async () => {
     const el = await fixture(
       html`<merit-badge skill="Resilience"></merit-badge>`,
-    )
-    await el.updateComplete
-    expect(el.getAttribute('typeof')).to.equal('oer:LearningObjective')
+    );
+    await el.updateComplete;
+    expect(el.getAttribute("typeof")).to.equal("oer:LearningObjective");
     expect(
       el.shadowRoot
         .querySelector('meta[property="oer:skill"]')
-        .getAttribute('content'),
-    ).to.equal('Resilience')
-  })
+        .getAttribute("content"),
+    ).to.equal("Resilience");
+  });
 
-  it('unlocks into a badge sticker and back through the button', async () => {
+  it("unlocks into a badge sticker and back through the button", async () => {
     // properties map to kebab-case attribute names, aligned with
     // badge-sticker and the serialized attribute contract
     const el = await fixture(html`
@@ -218,43 +216,43 @@ describe('merit-badge element', () => {
         badge-skills="leadership,navigation"
         badge-color="#2b6cb0"
       ></merit-badge>
-    `)
-    await el.updateComplete
-    const button = el.shadowRoot.querySelector('.unlockButton')
-    button.click()
-    await el.updateComplete
-    expect(el.badgeUnlocked).to.be.true
-    expect(el.shadowRoot.querySelector('locked-badge')).to.not.exist
-    const sticker = el.shadowRoot.querySelector('badge-sticker')
-    expect(sticker).to.exist
+    `);
+    await el.updateComplete;
+    const button = el.shadowRoot.querySelector(".unlockButton");
+    button.click();
+    await el.updateComplete;
+    expect(el.badgeUnlocked).to.be.true;
+    expect(el.shadowRoot.querySelector("locked-badge")).to.not.exist;
+    const sticker = el.shadowRoot.querySelector("badge-sticker");
+    expect(sticker).to.exist;
     // the child serializes with kebab-case attribute names
-    expect(sticker.getAttribute('badge-title')).to.equal('Trailblazer')
-    expect(sticker.getAttribute('badge-image')).to.equal(DATA_URI)
-    expect(sticker.getAttribute('badge-details')).to.equal(
-      'Earned for blazing trails',
-    )
-    expect(sticker.getAttribute('hyper-link')).to.equal(
-      'https://example.com/verify',
-    )
-    expect(sticker.getAttribute('badge-skills')).to.equal(
-      'leadership,navigation',
-    )
-    expect(sticker.getAttribute('badge-color')).to.equal('#2b6cb0')
-    expect(button.textContent.trim()).to.equal('Unlocked')
-    button.click()
-    await el.updateComplete
-    expect(el.badgeUnlocked).to.be.false
-    expect(el.shadowRoot.querySelector('locked-badge')).to.exist
-  })
+    expect(sticker.getAttribute("badge-title")).to.equal("Trailblazer");
+    expect(sticker.getAttribute("badge-image")).to.equal(DATA_URI);
+    expect(sticker.getAttribute("badge-details")).to.equal(
+      "Earned for blazing trails",
+    );
+    expect(sticker.getAttribute("hyper-link")).to.equal(
+      "https://example.com/verify",
+    );
+    expect(sticker.getAttribute("badge-skills")).to.equal(
+      "leadership,navigation",
+    );
+    expect(sticker.getAttribute("badge-color")).to.equal("#2b6cb0");
+    expect(button.textContent.trim()).to.equal("Unlocked");
+    button.click();
+    await el.updateComplete;
+    expect(el.badgeUnlocked).to.be.false;
+    expect(el.shadowRoot.querySelector("locked-badge")).to.exist;
+  });
 
-  it('exposes haxProperties with badge settings', () => {
-    const props = MeritBadge.haxProperties
-    expect(props.canScale).to.be.true
-    expect(props.gizmo.title).to.equal('Merit Badge')
-    expect(props.gizmo.icon).to.equal('icons:verified')
-    expect(props.settings.configure.length).to.equal(6)
-    expect(props.settings.configure[5].property).to.equal('skill')
-    expect(props.settings.configure[5].inputMethod).to.equal('textfield')
-    expect(props.settings.advanced.length).to.equal(0)
-  })
-})
+  it("exposes haxProperties with badge settings", () => {
+    const props = MeritBadge.haxProperties;
+    expect(props.canScale).to.be.true;
+    expect(props.gizmo.title).to.equal("Merit Badge");
+    expect(props.gizmo.icon).to.equal("icons:verified");
+    expect(props.settings.configure.length).to.equal(6);
+    expect(props.settings.configure[5].property).to.equal("skill");
+    expect(props.settings.configure[5].inputMethod).to.equal("textfield");
+    expect(props.settings.advanced.length).to.equal(0);
+  });
+});

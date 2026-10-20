@@ -20,9 +20,7 @@ import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simp
  * @extends LitElement
  * @extends editableTableCellStyles
  */
-class EditableTableSort extends I18NMixin(
-  SimpleToolbarButtonBehaviors(DDD),
-) {
+class EditableTableSort extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
   static get styles() {
     return [
       ...(super.styles || []),

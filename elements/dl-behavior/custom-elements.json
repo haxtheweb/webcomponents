@@ -83,6 +83,14 @@
                   "text": "Boolean"
                 }
               }
+            },
+            {
+              "kind": "field",
+              "name": "fileTypes",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ CSV: \"text/csv\", JSON: \"text/json\", PDF: \"application/pdf\", TXT: \"text/plain\", HTML: \"text/html\", }"
             }
           ],
           "parameters": [

@@ -436,9 +436,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
   // render function
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer"
-        >${this.t.skipToContent}</a
-      >
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <header itemscope itemtype="http://schema.org/WPHeader">
         <site-modal
           @site-modal-click="${this.siteModalClick}"

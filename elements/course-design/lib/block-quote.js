@@ -168,10 +168,7 @@ export class BlockQuote extends DDD {
         }
 
         :host(:not([data-border])) #wrap {
-          border-width: var(
-            --ddd-theme-border-size,
-            var(--ddd-border-size-lg)
-          );
+          border-width: var(--ddd-theme-border-size, var(--ddd-border-size-lg));
         }
         :host([data-border="xs"]) #wrap,
         :host([data-border="sm"]) #wrap,

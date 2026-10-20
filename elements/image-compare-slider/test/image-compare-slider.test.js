@@ -116,7 +116,9 @@ describe("image-compare-slider behavior", () => {
     const Ctor = globalThis.customElements.get("image-compare-slider");
     expect(Ctor.haxProperties).to.be.a("string");
     expect(
-      Ctor.haxProperties.endsWith("lib/image-compare-slider.haxProperties.json"),
+      Ctor.haxProperties.endsWith(
+        "lib/image-compare-slider.haxProperties.json",
+      ),
     ).to.be.true;
   });
 });

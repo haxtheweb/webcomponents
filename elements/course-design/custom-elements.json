@@ -316,6 +316,28 @@
               },
               "default": "\"\"",
               "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "dataTextAlign",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"center\"",
+              "attribute": "data-text-align",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "noBorder",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "no-border",
+              "reflects": true
             }
           ],
           "attributes": [
@@ -342,6 +364,22 @@
               },
               "default": "\"\"",
               "fieldName": "alt"
+            },
+            {
+              "name": "data-text-align",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"center\"",
+              "fieldName": "dataTextAlign"
+            },
+            {
+              "name": "no-border",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "noBorder"
             }
           ],
           "superclass": {
@@ -1070,6 +1108,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, edit: \"edit\", }"
+            },
+            {
+              "kind": "field",
               "name": "_editing",
               "privacy": "public",
               "type": {
@@ -1091,6 +1137,12 @@
               },
               "default": "false",
               "fieldName": "_editing"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

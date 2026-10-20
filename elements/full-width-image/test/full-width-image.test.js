@@ -30,14 +30,15 @@ describe("full-width-image behavior", () => {
     expect(el.getAttribute("caption")).to.equal("A caption");
     const image = el.shadowRoot.querySelector("#image");
     expect(image.style.backgroundImage).to.include("photo.png");
-    expect(
-      el.shadowRoot.querySelector(".caption").textContent.trim(),
-    ).to.equal("A caption");
+    expect(el.shadowRoot.querySelector(".caption").textContent.trim()).to.equal(
+      "A caption",
+    );
     // changing the source rewires the background
     el.source = "other.png";
     await el.updateComplete;
-    expect(el.shadowRoot.querySelector("#image").style.backgroundImage).to
-      .include("other.png");
+    expect(
+      el.shadowRoot.querySelector("#image").style.backgroundImage,
+    ).to.include("other.png");
   });
 
   it("dismisses and restores the caption via the toggle button", async () => {

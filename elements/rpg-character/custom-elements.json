@@ -282,6 +282,10 @@
             },
             {
               "kind": "field",
+              "name": "_demoClickHandler"
+            },
+            {
+              "kind": "field",
               "name": "reduceMotion",
               "privacy": "public",
               "type": {

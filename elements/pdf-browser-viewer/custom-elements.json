@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "\n\nExample:\n```html\n<pdf-browser-viewer id=\"pdfViewer\" file=\"[[pdfUrl]]\" width=\"100%\"></pdf-browser-viewer>\n```\n\nData Bind with Blob example:\n```js\nthis.pdfUrl = URL.createObjectURL(blob);\n```\n\nClear PDF container example:\n```js\nthis.shadowRoot.querySelector('#pdfViewer').clear();\n```\n\nMessage example:\n```html\n<pdf-browser-viewer\n file=\"[[pdfUrl]]\"\n not-supported-message=\"Not supported by your browser\"\n not-supported-link-message=\"see the file here!\">\n</pdf-browser-viewer>\n```\n\nCard example:\n```html\n<pdf-browser-viewer\n file=\"[[pdfUrl]]\"\n card elevation=\"3\"\n download-label=\"Baixar\">\n</pdf-browser-viewer>\n```",
+          "description": "\n\nExample:\n```html\n<pdf-browser-viewer id=\"pdfViewer\" file=\"[[pdfUrl]]\" width=\"100%\"></pdf-browser-viewer>\n```\n\nData Bind with Blob example:\n```js\nthis.pdfUrl = URL.createObjectURL(blob);\n```\n\nClear PDF container example:\n```js\nthis.shadowRoot.querySelector('#pdfViewer').clear();\n```\n\nMessage example:\n```html\n<pdf-browser-viewer\n file=\"[[pdfUrl]]\"\n not-supported-message=\"Not supported by your browser\"\n not-supported-link-message=\"see the file here!\">\n</pdf-browser-viewer>\n```\n\nCard example:\n```html\n<pdf-browser-viewer\n file=\"[[pdfUrl]]\"\n card\n heading=\"Quarterly Report\"\n elevation=\"3\"\n download-label=\"Baixar\">\n</pdf-browser-viewer>\n```",
           "name": "PdfBrowserViewer",
           "members": [
             {
@@ -26,6 +26,13 @@
               "kind": "method",
               "name": "_download",
               "description": "Downloads the pdf file"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
             },
             {
               "kind": "field",
@@ -48,7 +55,7 @@
               },
               "description": "The message when browser doesn't support pdf object",
               "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\"",
-              "attribute": "notSupportedMessage"
+              "attribute": "not-supported-message"
             },
             {
               "kind": "field",
@@ -59,7 +66,7 @@
               },
               "description": "The PDF link message when browser doesn't support pdf object",
               "default": "\"click here to download the PDF file.\"",
-              "attribute": "notSupportedLinkMessage"
+              "attribute": "not-supported-link-message"
             },
             {
               "kind": "field",
@@ -103,7 +110,7 @@
               },
               "description": "Download button label.",
               "default": "\"Download\"",
-              "attribute": "downloadLabel"
+              "attribute": "download-label"
             },
             {
               "kind": "field",
@@ -115,6 +122,16 @@
               "description": "The z-depth of the card, from 0-5.",
               "default": "\"1\"",
               "attribute": "elevation"
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The heading for the card variant.",
+              "attribute": "heading"
             }
           ],
           "attributes": [
@@ -128,7 +145,7 @@
               "fieldName": "file"
             },
             {
-              "name": "notSupportedMessage",
+              "name": "not-supported-message",
               "type": {
                 "text": "string"
               },
@@ -137,7 +154,7 @@
               "fieldName": "notSupportedMessage"
             },
             {
-              "name": "notSupportedLinkMessage",
+              "name": "not-supported-link-message",
               "type": {
                 "text": "string"
               },
@@ -173,7 +190,15 @@
               "fieldName": "card"
             },
             {
-              "name": "downloadLabel",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "description": "The heading for the card variant.",
+              "fieldName": "heading"
+            },
+            {
+              "name": "download-label",
               "type": {
                 "text": "string"
               },

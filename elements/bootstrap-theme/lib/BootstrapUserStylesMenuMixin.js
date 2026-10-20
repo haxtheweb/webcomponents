@@ -239,8 +239,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
             color: var(--bootstrap-theme-dark-color) !important;
           }
 
-          :host([color-theme="1"])
-            .btn-group .btn {
+          :host([color-theme="1"]) .btn-group .btn {
             color: white;
           }
 
@@ -267,8 +266,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           }
 
           /* palenight theme */
-          :host([color-theme="2"])
-            .btn-group .btn {
+          :host([color-theme="2"]) .btn-group .btn {
             color: white;
           }
           :host([color-theme="2"]) {
@@ -387,7 +385,11 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
               </button>
             </div>
             <div class="btn-group-title">${this.t.fontFamilyLabel}</div>
-            <div class="btn-group" role="group" aria-label="${this.t.fontFamily}">
+            <div
+              class="btn-group"
+              role="group"
+              aria-label="${this.t.fontFamily}"
+            >
               <button
                 class="btn btn-font"
                 data-font="0"
@@ -406,7 +408,11 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
               </button>
             </div>
             <div class="btn-group-title">${this.t.themeColorLabel}</div>
-            <div class="btn-group" role="group" aria-label="${this.t.themeColor}">
+            <div
+              class="btn-group"
+              role="group"
+              aria-label="${this.t.themeColor}"
+            >
               <button
                 class="btn btn-light"
                 data-theme="0"

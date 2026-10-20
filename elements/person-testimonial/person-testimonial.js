@@ -171,7 +171,9 @@ class PersonTestimonial extends SchemaBehaviors(DDD) {
                 property="oer:image"
                 src="${this.image}"
                 loading="lazy"
-                alt="${this.name || this.position || 'Person giving this testimonial'}"
+                alt="${this.name ||
+                this.position ||
+                "Person giving this testimonial"}"
                 aria-describedby="${ifDefined(this.describedBy)}"
               />
             </div>`

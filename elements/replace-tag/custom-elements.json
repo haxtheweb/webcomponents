@@ -163,10 +163,6 @@
       "path": "lib/PerformanceDetect.js",
       "declarations": [
         {
-          "kind": "variable",
-          "name": "DeviceDetails"
-        },
-        {
           "kind": "class",
           "description": "",
           "name": "PerformanceDetect",
@@ -216,21 +212,25 @@
             "name": "HTMLElement"
           },
           "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "DeviceDetails"
         }
       ],
       "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PerformanceDetect",
+            "module": "lib/PerformanceDetect.js"
+          }
+        },
         {
           "kind": "js",
           "name": "DeviceDetails",
           "declaration": {
             "name": "DeviceDetails",
-            "module": "lib/PerformanceDetect.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "declaration": {
-            "name": "PerformanceDetect",
             "module": "lib/PerformanceDetect.js"
           }
         },

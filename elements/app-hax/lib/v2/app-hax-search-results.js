@@ -526,8 +526,7 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
         ${itemsToRender.length === 0
           ? html`<div id="noResult" role="status" aria-live="polite">
               ${this.searchTerm !== ""
-                ? html`${this.t
-                      .noResults}<strong>"${this.searchTerm}"</strong>`
+                ? html`${this.t.noResults}<strong>"${this.searchTerm}"</strong>`
                 : this.t.noResultsCreateNewSite}
             </div>`
           : ``}

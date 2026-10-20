@@ -246,9 +246,9 @@ describe("hal-9000 property change handlers", () => {
     // from the rename and once from the commands change handler
     expect(stub.removeCommandsCalls).to.equal(2);
     expect(Object.keys(el.commands)).to.deep.equal(["hal hello", "plain"]);
-    expect(
-      stub.addCommandsArgs[stub.addCommandsArgs.length - 1],
-    ).to.deep.equal(el.commands);
+    expect(stub.addCommandsArgs[stub.addCommandsArgs.length - 1]).to.deep.equal(
+      el.commands,
+    );
   });
 
   it("starts with autoRestart and continuous when auto is enabled", async () => {
@@ -350,9 +350,13 @@ describe("hal-9000 _annyangLoaded", () => {
     const originalAnnyang = globalThis.annyang;
     globalThis.annyang = undefined;
     let onlineFired = false;
-    el.addEventListener("hal-9000-online", () => {
-      onlineFired = true;
-    }, { once: true });
+    el.addEventListener(
+      "hal-9000-online",
+      () => {
+        onlineFired = true;
+      },
+      { once: true },
+    );
     try {
       dispatchBridgeEvent();
     } finally {

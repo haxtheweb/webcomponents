@@ -1860,7 +1860,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                 }
                 content += h.outerHTML;
                 break;
-}
+              }
             }
           } else {
             content += node.outerHTML;
@@ -2662,9 +2662,15 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       if (targetItem) {
         let announcement = "";
         if (dropZone === "above") {
-          announcement = this.t.dropAbove.replace("{title}", () => targetItem.title);
+          announcement = this.t.dropAbove.replace(
+            "{title}",
+            () => targetItem.title,
+          );
         } else if (dropZone === "below") {
-          announcement = this.t.dropBelow.replace("{title}", () => targetItem.title);
+          announcement = this.t.dropBelow.replace(
+            "{title}",
+            () => targetItem.title,
+          );
         } else {
           announcement = this.t.dropAsChildOf.replace(
             "{title}",
@@ -3100,7 +3106,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             );
             globalThis.location.href = href;
             break;
-}
+          }
           case "lock":
             this.items[index].metadata.locked = true;
             if (this.hasChildren(this.items[index].id)) {
@@ -3221,7 +3227,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
               this.scrollIntoViewIfNeeded(element.id);
             }
             break;
-}
+          }
         }
         // has to be on its own bc we block ALL actions if we are locked
       } else if (action === "lock") {

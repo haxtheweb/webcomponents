@@ -620,10 +620,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     if (!values || typeof values.source !== "string") return false;
     if (!/\.pptx$/i.test(values.source)) return false;
     const fileUuid =
-      response &&
-      response.data &&
-      response.data.file &&
-      response.data.file.uuid
+      response && response.data && response.data.file && response.data.file.uuid
         ? response.data.file.uuid
         : "";
     if (!fileUuid) return false;

@@ -148,7 +148,10 @@ export class AppHaxScrollButton extends I18NMixin(LitElement) {
         @click="${this.scrollToTarget}"
         tabindex="0"
         role="button"
-        aria-label="${this.t.navigateToSection.replace("{label}", () => this.label)}"
+        aria-label="${this.t.navigateToSection.replace(
+          "{label}",
+          () => this.label,
+        )}"
         aria-describedby="scroll-desc"
       >
         <span aria-hidden="true">${this.label}</span>

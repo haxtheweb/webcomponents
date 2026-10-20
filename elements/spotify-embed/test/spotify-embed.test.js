@@ -57,7 +57,8 @@ describe("spotify-embed source parsing", () => {
   });
 
   it("parses album sources", async () => {
-    element.source = "https://open.spotify.com/album/5dRcZuEijcy8xMfSaRjtk8?si=abc";
+    element.source =
+      "https://open.spotify.com/album/5dRcZuEijcy8xMfSaRjtk8?si=abc";
     await element.updateComplete;
     expect(element.type).to.equal("album");
     expect(element.playlistid).to.equal("5dRcZuEijcy8xMfSaRjtk8");
@@ -106,7 +107,9 @@ describe("spotify-embed rendering", () => {
     expect(iframe).to.exist;
     expect(iframe.hasAttribute("src")).to.be.false;
     const src = iframe.getAttribute("data-blocked-src");
-    expect(src).to.include("https://open.spotify.com/embed/album/5dRcZuEijcy8xMfSaRjtk8");
+    expect(src).to.include(
+      "https://open.spotify.com/embed/album/5dRcZuEijcy8xMfSaRjtk8",
+    );
     expect(src).to.include("theme=0");
     expect(src).to.include("utm_source=generator");
     expect(iframe.getAttribute("height")).to.equal("152");

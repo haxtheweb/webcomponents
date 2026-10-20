@@ -2,7 +2,9 @@ import { expect } from "@open-wc/testing";
 import { DDDVariables } from "../lib/DDDStyles.js";
 
 const z = (name) => {
-  const m = new RegExp(`--ddd-z-${name}:\\s*(-?\\d+)`).exec(DDDVariables.cssText);
+  const m = new RegExp(`--ddd-z-${name}:\\s*(-?\\d+)`).exec(
+    DDDVariables.cssText,
+  );
   return m ? Number(m[1]) : NaN;
 };
 

@@ -144,7 +144,8 @@ class LetterGradePicker extends LitElement {
   clickScore(e) {
     // clicks can land on the inner letter-grade element; resolve the button
     // that owns the letter attribute before reading it
-    let button = e.target && e.target.closest ? e.target.closest("button") : null;
+    let button =
+      e.target && e.target.closest ? e.target.closest("button") : null;
     if (button) {
       this.value = button.getAttribute("letter");
     }

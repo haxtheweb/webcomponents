@@ -134,11 +134,17 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
           border-bottom: var(
             --vocab-term-border-bottom,
             1px dashed
-              light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-theme-default-slateLight))
+              light-dark(
+                var(--ddd-theme-default-limestoneGray),
+                var(--ddd-theme-default-slateLight)
+              )
           );
           color: var(
             --vocab-term-color,
-            light-dark(var(--ddd-theme-default-black), var(--ddd-theme-default-white))
+            light-dark(
+              var(--ddd-theme-default-black),
+              var(--ddd-theme-default-white)
+            )
           );
         }
       `,

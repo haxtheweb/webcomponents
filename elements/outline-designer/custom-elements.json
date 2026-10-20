@@ -28,7 +28,7 @@
               "name": "toggleDelete",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -107,7 +107,7 @@
                   "name": "e"
                 },
                 {
-                  "name": "index"
+                  "name": "_index"
                 }
               ]
             },
@@ -524,7 +524,7 @@
               "name": "_dragLeave",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Leaving an element while dragging."
@@ -534,7 +534,7 @@
               "name": "_dragEnd",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "When we end dragging this is the same as a drop event; ensure we remove the mover class."
@@ -860,7 +860,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ selectTarget: \"Select target\", importContentUnderThisPage: \"Import content under this page\", importThisContent: \"Import this content\", thisPage: \"this page\", newPage: \"New page\", copyOf: \"Copy of\", pageActions: \"Page Actions\", editTitle: \"Edit title\", lock: \"Lock\", unlock: \"Unlock\", moveUp: \"Move up\", moveDown: \"Move down\", makeChild: \"Make child\", moveToParentLevel: \"Move to parent level\", addPage: \"Add page\", duplicate: \"Duplicate\", delete: \"Delete\", restore: \"Restore\", goToPage: \"Go to page\", }"
+              "default": "{ selectTarget: \"Select target\", importContentUnderThisPage: \"Import content under this page\", importThisContent: \"Import this content\", thisPage: \"this page\", newPage: \"New page\", copyOf: \"Copy of\", pageActions: \"Page Actions\", editTitle: \"Edit title\", lock: \"Lock\", unlock: \"Unlock\", moveUp: \"Move up\", moveDown: \"Move down\", makeChild: \"Make child\", moveToParentLevel: \"Move to parent level\", addPage: \"Add page\", duplicate: \"Duplicate\", delete: \"Delete\", restore: \"Restore\", goToPage: \"Go to page\", collapseAll: \"Collapse all\", expandAll: \"Expand all\", deleteSelected: \"Delete Selected ({count})\", zoomIn: \"Zoom In\", zoomOut: \"Zoom Out\", hideDeleted: \"Hide Deleted\", showDeleted: \"Show Deleted\", outlineStructure: \"Outline structure of pages and content\", close: \"Close\", asChildrenOf: \"as children of\", above: \"Above\", below: \"Below\", modified: \"modified\", markedForDeletion: \"marked for deletion\", expandChildren: \"Expand children\", collapseChildren: \"Collapse children\", dragToReorder: \"Drag to reorder\", dragToReorderKeyboard: \"Drag to reorder or press Enter to activate keyboard controls\", contentStructure: \"Content structure\", indent: \"Indent\", outdent: \"Outdent\", addContentType: \"Add {title}\", clickToPreview: \"Click to preview\", increaseHeading: \"Increase heading\", decreaseHeading: \"Decrease Heading\", promoteToPage: \"Promote to page\", keyboardControlsDeactivated: \"Keyboard controls deactivated\", keyboardControlsActivated: \"Keyboard controls activated. Use arrow keys to move, Enter or Escape to deactivate\", movingItemUp: \"Moving item up\", movingItemDown: \"Moving item down\", indentingItem: \"Indenting item\", outdentingItem: \"Outdenting item\", titleEditingActivated: \"Title editing activated\", movedToNextItem: \"Moved to next item\", movedToPreviousItem: \"Moved to previous item\", expanded: \"Expanded\", collapsed: \"Collapsed\", movedToFirstChild: \"Moved to first child\", movedToParent: \"Moved to parent\", movedToFirstItem: \"Moved to first item\", movedToLastItem: \"Moved to last item\", itemMarkedForDeletion: \"Item marked for deletion\", itemDuplicated: \"Item duplicated\", dropAbove: \"Drop above {title}\", dropBelow: \"Drop below {title}\", dropAsChildOf: \"Drop as child of {title}\", }"
             },
             {
               "kind": "field",

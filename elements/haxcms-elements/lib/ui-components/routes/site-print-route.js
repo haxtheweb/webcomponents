@@ -28,9 +28,11 @@ export class SitePrintRoute extends HAXCMSI18NMixin(DDD) {
     this.t.pageNotFound = "The specified page could not be found";
     this.t.printError = "Print Error";
     this.t.printYouCanTry = "You can try:";
-    this.t.printTryGoingBack = "Going back to a specific page and using the print function there";
+    this.t.printTryGoingBack =
+      "Going back to a specific page and using the print function there";
     this.t.printUsingTheFormat = "Using the format:";
-    this.t.printTryCheckingPage = "Checking that the page exists and is published";
+    this.t.printTryCheckingPage =
+      "Checking that the page exists and is published";
 
     // Redirect immediately using the existing format=print-page functionality
     this.redirectToPrintMode();

@@ -312,9 +312,7 @@ describe("FileSystemBroker test", () => {
     it("detects when File System API is not available", () => {
       // Detection should always return a boolean regardless of whether the
       // File System Access API is present in the current browser.
-      expect(typeof element.isFileSystemAccessSupported()).to.equal(
-        "boolean",
-      );
+      expect(typeof element.isFileSystemAccessSupported()).to.equal("boolean");
     });
 
     it("handles missing File System API gracefully", async () => {

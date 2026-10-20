@@ -134,10 +134,7 @@ class PlaceHolder extends DDD {
     // Derive iconFromType + calcText in willUpdate so reactive sets batch
     // into the current update cycle. Setting them in updated() scheduled
     // a redundant second update (Lit change-in-update warning).
-    if (
-      changedProperties.has("type") ||
-      changedProperties.has("dragOver")
-    ) {
+    if (changedProperties.has("type") || changedProperties.has("dragOver")) {
       this.iconFromType = this._getIconFromType(this.type, this.dragOver);
     }
     if (

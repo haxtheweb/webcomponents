@@ -254,7 +254,7 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
       .replace("{operationName}", () => opName)
       .replace("{siteName}", () => site.metadata.site.name);
     modal.message = this.t.siteOperationConfirmMessage
-      .replace("{operation}", () => (this._operationVerb(op)))
+      .replace("{operation}", () => this._operationVerb(op))
       .replace("{siteName}", () => site.metadata.site.name);
     modal.confirmText = this.t.confirm;
     modal.cancelText = this.t.cancel;
@@ -383,7 +383,7 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
         store.toast(
           this.t.siteOperationSuccessful
             .replace("{siteName}", () => site.metadata.site.name)
-            .replace("{operation}", () => (this._operationVerb(op))),
+            .replace("{operation}", () => this._operationVerb(op)),
           3000,
           {
             hat: "random",
@@ -401,7 +401,7 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
       store.toast(
         this.t.siteOperationFailed
           .replace("{siteName}", () => site.metadata.site.name)
-          .replace("{operation}", () => (this._operationVerb(op))),
+          .replace("{operation}", () => this._operationVerb(op)),
         3000,
         { hat: "random" },
       );

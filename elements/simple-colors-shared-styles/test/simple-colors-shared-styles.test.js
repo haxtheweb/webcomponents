@@ -1,533 +1,539 @@
-import { fixture, expect, html } from '@open-wc/testing'
+import { fixture, expect, html } from "@open-wc/testing";
 
 import {
   SimpleColorsSharedStyles,
   SimpleColorsSharedStylesGlobal,
-} from '../simple-colors-shared-styles.js'
+} from "../simple-colors-shared-styles.js";
 
 // ---------------------------------------------------------------------------
 // a11y smoke test (kept from the original scaffold)
 // ---------------------------------------------------------------------------
-describe('simple-colors-shared-styles test', () => {
-  let element
+describe("simple-colors-shared-styles test", () => {
+  let element;
   beforeEach(async () => {
     element = await fixture(html`
       <simple-colors-shared-styles
         title="test-title"
       ></simple-colors-shared-styles>
-    `)
-  })
+    `);
+  });
 
-  it('passes the a11y audit', async () => {
-    await expect(element).shadowDom.to.be.accessible()
-  })
-})
+  it("passes the a11y audit", async () => {
+    await expect(element).shadowDom.to.be.accessible();
+  });
+});
 
 // ---------------------------------------------------------------------------
 // Data-shape tests: colors and contrasts objects
 // ---------------------------------------------------------------------------
-describe('SimpleColorsSharedStylesGlobal data', () => {
-  it('has a colors object with all expected color keys', () => {
+describe("SimpleColorsSharedStylesGlobal data", () => {
+  it("has a colors object with all expected color keys", () => {
     const expectedKeys = [
-      'grey',
-      'red',
-      'pink',
-      'purple',
-      'deep-purple',
-      'indigo',
-      'blue',
-      'light-blue',
-      'cyan',
-      'teal',
-      'green',
-      'light-green',
-      'lime',
-      'yellow',
-      'amber',
-      'orange',
-      'deep-orange',
-      'brown',
-      'blue-grey',
-    ]
+      "grey",
+      "red",
+      "pink",
+      "purple",
+      "deep-purple",
+      "indigo",
+      "blue",
+      "light-blue",
+      "cyan",
+      "teal",
+      "green",
+      "light-green",
+      "lime",
+      "yellow",
+      "amber",
+      "orange",
+      "deep-orange",
+      "brown",
+      "blue-grey",
+    ];
     for (const key of expectedKeys) {
-      expect(SimpleColorsSharedStylesGlobal.colors).to.have.property(key)
+      expect(SimpleColorsSharedStylesGlobal.colors).to.have.property(key);
     }
-  })
+  });
 
-  it('has 12 shades per color, each a hex string', () => {
+  it("has 12 shades per color, each a hex string", () => {
     for (const key of Object.keys(SimpleColorsSharedStylesGlobal.colors)) {
-      const shades = SimpleColorsSharedStylesGlobal.colors[key]
-      expect(shades.length).to.equal(12, `${key} should have 12 shades`)
+      const shades = SimpleColorsSharedStylesGlobal.colors[key];
+      expect(shades.length).to.equal(12, `${key} should have 12 shades`);
       for (const shade of shades) {
-        expect(shade).to.match(/^#[0-9a-f]{6}$/i, `${key} shade ${shade} is hex`)
+        expect(shade).to.match(
+          /^#[0-9a-f]{6}$/i,
+          `${key} shade ${shade} is hex`,
+        );
       }
     }
-  })
+  });
 
-  it('has a contrasts object with greyColor and colorColor', () => {
-    const c = SimpleColorsSharedStylesGlobal.contrasts
-    expect(c).to.have.property('greyColor')
-    expect(c).to.have.property('colorColor')
-  })
+  it("has a contrasts object with greyColor and colorColor", () => {
+    const c = SimpleColorsSharedStylesGlobal.contrasts;
+    expect(c).to.have.property("greyColor");
+    expect(c).to.have.property("colorColor");
+  });
 
-  it('has aaLarge and aa arrays of 12 entries each in contrasts', () => {
-    const c = SimpleColorsSharedStylesGlobal.contrasts
-    for (const group of ['greyColor', 'colorColor']) {
-      for (const aa of ['aaLarge', 'aa']) {
-        const arr = c[group][aa]
+  it("has aaLarge and aa arrays of 12 entries each in contrasts", () => {
+    const c = SimpleColorsSharedStylesGlobal.contrasts;
+    for (const group of ["greyColor", "colorColor"]) {
+      for (const aa of ["aaLarge", "aa"]) {
+        const arr = c[group][aa];
         expect(arr.length).to.equal(
           12,
           `${group}.${aa} should have 12 entries`,
-        )
+        );
         for (const entry of arr) {
-          expect(entry).to.have.property('min')
-          expect(entry).to.have.property('max')
-          expect(entry.min).to.be.a('number')
-          expect(entry.max).to.be.a('number')
-          expect(entry.min).to.be.at.least(1)
-          expect(entry.max).to.be.at.most(12)
+          expect(entry).to.have.property("min");
+          expect(entry).to.have.property("max");
+          expect(entry.min).to.be.a("number");
+          expect(entry.max).to.be.a("number");
+          expect(entry.min).to.be.at.least(1);
+          expect(entry.max).to.be.at.most(12);
         }
       }
     }
-  })
-})
+  });
+});
 
 // ---------------------------------------------------------------------------
 // makeVariable
 // ---------------------------------------------------------------------------
-describe('makeVariable', () => {
-  it('returns the default variable when called with no args', () => {
+describe("makeVariable", () => {
+  it("returns the default variable when called with no args", () => {
     expect(SimpleColorsSharedStylesGlobal.makeVariable()).to.equal(
-      '--simple-colors-default-theme-grey-1',
-    )
-  })
+      "--simple-colors-default-theme-grey-1",
+    );
+  });
 
-  it('builds a variable with color only (defaults shade=1, theme=default)', () => {
-    expect(SimpleColorsSharedStylesGlobal.makeVariable('red')).to.equal(
-      '--simple-colors-default-theme-red-1',
-    )
-  })
+  it("builds a variable with color only (defaults shade=1, theme=default)", () => {
+    expect(SimpleColorsSharedStylesGlobal.makeVariable("red")).to.equal(
+      "--simple-colors-default-theme-red-1",
+    );
+  });
 
-  it('builds a variable with color and shade', () => {
-    expect(SimpleColorsSharedStylesGlobal.makeVariable('red', 5)).to.equal(
-      '--simple-colors-default-theme-red-5',
-    )
-  })
+  it("builds a variable with color and shade", () => {
+    expect(SimpleColorsSharedStylesGlobal.makeVariable("red", 5)).to.equal(
+      "--simple-colors-default-theme-red-5",
+    );
+  });
 
-  it('builds a variable with a multi-word color name', () => {
+  it("builds a variable with a multi-word color name", () => {
     expect(
-      SimpleColorsSharedStylesGlobal.makeVariable('deep-purple', 12, 'fixed'),
-    ).to.equal('--simple-colors-fixed-theme-deep-purple-12')
-  })
+      SimpleColorsSharedStylesGlobal.makeVariable("deep-purple", 12, "fixed"),
+    ).to.equal("--simple-colors-fixed-theme-deep-purple-12");
+  });
 
-  it('builds a fixed-theme variable', () => {
+  it("builds a fixed-theme variable", () => {
     expect(
-      SimpleColorsSharedStylesGlobal.makeVariable('blue', 7, 'fixed'),
-    ).to.equal('--simple-colors-fixed-theme-blue-7')
-  })
+      SimpleColorsSharedStylesGlobal.makeVariable("blue", 7, "fixed"),
+    ).to.equal("--simple-colors-fixed-theme-blue-7");
+  });
 
-  it('passes shade as a number in the string', () => {
-    const v = SimpleColorsSharedStylesGlobal.makeVariable('green', 9)
-    expect(v).to.equal('--simple-colors-default-theme-green-9')
-  })
-})
+  it("passes shade as a number in the string", () => {
+    const v = SimpleColorsSharedStylesGlobal.makeVariable("green", 9);
+    expect(v).to.equal("--simple-colors-default-theme-green-9");
+  });
+});
 
 // ---------------------------------------------------------------------------
 // getColorInfo
 // ---------------------------------------------------------------------------
-describe('getColorInfo', () => {
-  it('parses a fixed-theme red variable', () => {
+describe("getColorInfo", () => {
+  it("parses a fixed-theme red variable", () => {
     const info = SimpleColorsSharedStylesGlobal.getColorInfo(
-      '--simple-colors-fixed-theme-red-3',
-    )
-    expect(info.shade).to.equal('3')
-    expect(info.theme).to.equal('fixed')
-    expect(info.color).to.equal('red')
-  })
+      "--simple-colors-fixed-theme-red-3",
+    );
+    expect(info.shade).to.equal("3");
+    expect(info.theme).to.equal("fixed");
+    expect(info.color).to.equal("red");
+  });
 
-  it('parses a default-theme grey variable', () => {
+  it("parses a default-theme grey variable", () => {
     const info = SimpleColorsSharedStylesGlobal.getColorInfo(
-      '--simple-colors-default-theme-grey-1',
-    )
-    expect(info.shade).to.equal('1')
-    expect(info.theme).to.equal('default')
-  })
+      "--simple-colors-default-theme-grey-1",
+    );
+    expect(info.shade).to.equal("1");
+    expect(info.theme).to.equal("default");
+  });
 
-  it('parses a variable without the leading -- prefix (theme has no --)', () => {
+  it("parses a variable without the leading -- prefix (theme has no --)", () => {
     const info = SimpleColorsSharedStylesGlobal.getColorInfo(
-      'simple-colors-fixed-theme-red-3-text',
-    )
-    expect(info.theme).to.equal('fixed')
-    expect(info.shade).to.equal('3')
-  })
+      "simple-colors-fixed-theme-red-3-text",
+    );
+    expect(info.theme).to.equal("fixed");
+    expect(info.shade).to.equal("3");
+  });
 
-  it('strips -text and -border suffixes', () => {
+  it("strips -text and -border suffixes", () => {
     const info = SimpleColorsSharedStylesGlobal.getColorInfo(
-      'simple-colors-fixed-theme-blue-5-border',
-    )
-    expect(info.shade).to.equal('5')
-  })
+      "simple-colors-fixed-theme-blue-5-border",
+    );
+    expect(info.shade).to.equal("5");
+  });
 
-  it('falls back to color=grey, shade=1 when shade part is a single element', () => {
+  it("falls back to color=grey, shade=1 when shade part is a single element", () => {
     // After stripping simple-colors- and splitting on -theme-,
     // the shade part is just "3" (no dashes), so temp2.length === 1
     const info = SimpleColorsSharedStylesGlobal.getColorInfo(
-      'simple-colors-fixed-theme-3',
-    )
-    expect(info.color).to.equal('grey')
-    expect(info.shade).to.equal('1')
-  })
+      "simple-colors-fixed-theme-3",
+    );
+    expect(info.color).to.equal("grey");
+    expect(info.shade).to.equal("1");
+  });
 
-  it('round-trips makeVariable output', () => {
+  it("round-trips makeVariable output", () => {
     const variable = SimpleColorsSharedStylesGlobal.makeVariable(
-      'deep-purple',
+      "deep-purple",
       7,
-      'fixed',
-    )
+      "fixed",
+    );
     expect(SimpleColorsSharedStylesGlobal.getColorInfo(variable)).to.deep.equal(
-      { theme: 'fixed', color: 'deep-purple', shade: '7' },
-    )
-  })
+      { theme: "fixed", color: "deep-purple", shade: "7" },
+    );
+  });
 
-  it('falls back to default info for input without -theme-', () => {
-    expect(SimpleColorsSharedStylesGlobal.getColorInfo('red')).to.deep.equal({
-      theme: 'default',
-      color: 'grey',
-      shade: '1',
-    })
-  })
+  it("falls back to default info for input without -theme-", () => {
+    expect(SimpleColorsSharedStylesGlobal.getColorInfo("red")).to.deep.equal({
+      theme: "default",
+      color: "grey",
+      shade: "1",
+    });
+  });
 
-  it('falls back to default info for empty string input', () => {
-    expect(SimpleColorsSharedStylesGlobal.getColorInfo('')).to.deep.equal({
-      theme: 'default',
-      color: 'grey',
-      shade: '1',
-    })
-  })
-})
+  it("falls back to default info for empty string input", () => {
+    expect(SimpleColorsSharedStylesGlobal.getColorInfo("")).to.deep.equal({
+      theme: "default",
+      color: "grey",
+      shade: "1",
+    });
+  });
+});
 
 // ---------------------------------------------------------------------------
 // getContrastingShades
 // ---------------------------------------------------------------------------
-describe('getContrastingShades', () => {
-  it('returns shades 7-12 for grey shade 1, large text (greyColor)', () => {
-    const shades =
-      SimpleColorsSharedStylesGlobal.getContrastingShades(
-        true,
-        'grey',
-        1,
-        'grey',
-      )
-    expect(shades).to.deep.equal([7, 8, 9, 10, 11, 12])
-  })
+describe("getContrastingShades", () => {
+  it("returns shades 7-12 for grey shade 1, large text (greyColor)", () => {
+    const shades = SimpleColorsSharedStylesGlobal.getContrastingShades(
+      true,
+      "grey",
+      1,
+      "grey",
+    );
+    expect(shades).to.deep.equal([7, 8, 9, 10, 11, 12]);
+  });
 
-  it('returns shades 7-12 for grey shade 1, small text (greyColor)', () => {
-    const shades =
-      SimpleColorsSharedStylesGlobal.getContrastingShades(
-        false,
-        'grey',
-        1,
-        'grey',
-      )
-    expect(shades).to.deep.equal([7, 8, 9, 10, 11, 12])
-  })
+  it("returns shades 7-12 for grey shade 1, small text (greyColor)", () => {
+    const shades = SimpleColorsSharedStylesGlobal.getContrastingShades(
+      false,
+      "grey",
+      1,
+      "grey",
+    );
+    expect(shades).to.deep.equal([7, 8, 9, 10, 11, 12]);
+  });
 
-  it('uses colorColor table when neither color is grey', () => {
-    const shades =
-      SimpleColorsSharedStylesGlobal.getContrastingShades(
-        true,
-        'red',
-        7,
-        'blue',
-      )
+  it("uses colorColor table when neither color is grey", () => {
+    const shades = SimpleColorsSharedStylesGlobal.getContrastingShades(
+      true,
+      "red",
+      7,
+      "blue",
+    );
     // colorColor.aaLarge shade 7 (index 6) = { min: 1, max: 2 }
-    expect(shades).to.deep.equal([1, 2])
-  })
+    expect(shades).to.deep.equal([1, 2]);
+  });
 
-  it('uses greyColor table when one color is grey', () => {
-    const shades =
-      SimpleColorsSharedStylesGlobal.getContrastingShades(
-        true,
-        'red',
-        6,
-        'grey',
-      )
+  it("uses greyColor table when one color is grey", () => {
+    const shades = SimpleColorsSharedStylesGlobal.getContrastingShades(
+      true,
+      "red",
+      6,
+      "grey",
+    );
     // greyColor.aaLarge shade 6 (index 5) = { min: 10, max: 12 }
-    expect(shades).to.deep.equal([10, 11, 12])
-  })
+    expect(shades).to.deep.equal([10, 11, 12]);
+  });
 
-  it('large vs small text give different results for colorColor shade 1', () => {
-    const large =
-      SimpleColorsSharedStylesGlobal.getContrastingShades(
-        true,
-        'red',
-        1,
-        'blue',
-      )
-    const small =
-      SimpleColorsSharedStylesGlobal.getContrastingShades(
-        false,
-        'red',
-        1,
-        'blue',
-      )
+  it("large vs small text give different results for colorColor shade 1", () => {
+    const large = SimpleColorsSharedStylesGlobal.getContrastingShades(
+      true,
+      "red",
+      1,
+      "blue",
+    );
+    const small = SimpleColorsSharedStylesGlobal.getContrastingShades(
+      false,
+      "red",
+      1,
+      "blue",
+    );
     // colorColor.aaLarge[1] = {min:7,max:12}, colorColor.aa[1] = {min:8,max:12}
-    expect(large).to.deep.equal([7, 8, 9, 10, 11, 12])
-    expect(small).to.deep.equal([8, 9, 10, 11, 12])
-  })
+    expect(large).to.deep.equal([7, 8, 9, 10, 11, 12]);
+    expect(small).to.deep.equal([8, 9, 10, 11, 12]);
+  });
 
-  it('returns no shades for an invalid shade 0 (shades run 1-12)', () => {
+  it("returns no shades for an invalid shade 0 (shades run 1-12)", () => {
     // used to throw a TypeError; the demo swatch-info element defaults to
     // "grey_0", which made it fail to render on the server
     expect(
       SimpleColorsSharedStylesGlobal.getContrastingShades(
         true,
-        'grey',
+        "grey",
         0,
-        'grey',
+        "grey",
       ),
-    ).to.deep.equal([])
-  })
+    ).to.deep.equal([]);
+  });
 
   it('handles string shade values ("3")', () => {
-    const shades =
-      SimpleColorsSharedStylesGlobal.getContrastingShades(
-        true,
-        'grey',
-        '3',
-        'grey',
-      )
-    expect(shades).to.deep.equal([7, 8, 9, 10, 11, 12])
-  })
+    const shades = SimpleColorsSharedStylesGlobal.getContrastingShades(
+      true,
+      "grey",
+      "3",
+      "grey",
+    );
+    expect(shades).to.deep.equal([7, 8, 9, 10, 11, 12]);
+  });
 
-  it('handles the darkest shade 12 (index 11)', () => {
-    const shades =
-      SimpleColorsSharedStylesGlobal.getContrastingShades(
-        true,
-        'grey',
-        12,
-        'grey',
-      )
+  it("handles the darkest shade 12 (index 11)", () => {
+    const shades = SimpleColorsSharedStylesGlobal.getContrastingShades(
+      true,
+      "grey",
+      12,
+      "grey",
+    );
     // greyColor.aaLarge shade 12 (index 11) = { min: 1, max: 6 }
-    expect(shades).to.deep.equal([1, 2, 3, 4, 5, 6])
-  })
-})
+    expect(shades).to.deep.equal([1, 2, 3, 4, 5, 6]);
+  });
+});
 
 // ---------------------------------------------------------------------------
 // getContrastingColors
 // ---------------------------------------------------------------------------
-describe('getContrastingColors', () => {
-  it('returns an object keyed by every color name', () => {
-    const result =
-      SimpleColorsSharedStylesGlobal.getContrastingColors('red', 1, true)
-    const colorKeys = Object.keys(SimpleColorsSharedStylesGlobal.colors)
+describe("getContrastingColors", () => {
+  it("returns an object keyed by every color name", () => {
+    const result = SimpleColorsSharedStylesGlobal.getContrastingColors(
+      "red",
+      1,
+      true,
+    );
+    const colorKeys = Object.keys(SimpleColorsSharedStylesGlobal.colors);
     for (const key of colorKeys) {
-      expect(result).to.have.property(key)
+      expect(result).to.have.property(key);
     }
-  })
+  });
 
-  it('each value is an array of shade numbers', () => {
-    const result =
-      SimpleColorsSharedStylesGlobal.getContrastingColors('grey', 1, true)
+  it("each value is an array of shade numbers", () => {
+    const result = SimpleColorsSharedStylesGlobal.getContrastingColors(
+      "grey",
+      1,
+      true,
+    );
     for (const key of Object.keys(result)) {
-      expect(result[key]).to.be.an('array')
-      expect(result[key].length).to.be.greaterThan(0)
+      expect(result[key]).to.be.an("array");
+      expect(result[key].length).to.be.greaterThan(0);
     }
-  })
+  });
 
-  it('grey contrast values match getContrastingShades for each color', () => {
-    const result =
-      SimpleColorsSharedStylesGlobal.getContrastingColors('grey', 1, true)
+  it("grey contrast values match getContrastingShades for each color", () => {
+    const result = SimpleColorsSharedStylesGlobal.getContrastingColors(
+      "grey",
+      1,
+      true,
+    );
     for (const color of Object.keys(SimpleColorsSharedStylesGlobal.colors)) {
-      const direct =
-        SimpleColorsSharedStylesGlobal.getContrastingShades(
-          true,
-          'grey',
-          1,
-          color,
-        )
-      expect(result[color]).to.deep.equal(direct, `mismatch for ${color}`)
+      const direct = SimpleColorsSharedStylesGlobal.getContrastingShades(
+        true,
+        "grey",
+        1,
+        color,
+      );
+      expect(result[color]).to.deep.equal(direct, `mismatch for ${color}`);
     }
-  })
+  });
 
-  it('passes isLarge through to getContrastingShades', () => {
-    const largeResult =
-      SimpleColorsSharedStylesGlobal.getContrastingColors('red', 1, true)
-    const smallResult =
-      SimpleColorsSharedStylesGlobal.getContrastingColors('red', 1, false)
+  it("passes isLarge through to getContrastingShades", () => {
+    const largeResult = SimpleColorsSharedStylesGlobal.getContrastingColors(
+      "red",
+      1,
+      true,
+    );
+    const smallResult = SimpleColorsSharedStylesGlobal.getContrastingColors(
+      "red",
+      1,
+      false,
+    );
     // colorColor.aaLarge[1] vs aa[1] for a non-grey color
-    const largeBlue = largeResult['blue']
-    const smallBlue = smallResult['blue']
+    const largeBlue = largeResult["blue"];
+    const smallBlue = smallResult["blue"];
     // colorColor.aaLarge[1]={min:7,max:12}, colorColor.aa[1]={min:8,max:12}
-    expect(largeBlue).to.deep.equal([7, 8, 9, 10, 11, 12])
-    expect(smallBlue).to.deep.equal([8, 9, 10, 11, 12])
-  })
-})
+    expect(largeBlue).to.deep.equal([7, 8, 9, 10, 11, 12]);
+    expect(smallBlue).to.deep.equal([8, 9, 10, 11, 12]);
+  });
+});
 
 // ---------------------------------------------------------------------------
 // isContrastCompliant
 // ---------------------------------------------------------------------------
-describe('isContrastCompliant', () => {
-  it('returns false when contrastShade is below range.min', () => {
+describe("isContrastCompliant", () => {
+  it("returns false when contrastShade is below range.min", () => {
     // greyColor.aaLarge shade 1 (index 0) = {min:7, max:12}, shade 1 < 7 -> false
-    const result =
-      SimpleColorsSharedStylesGlobal.isContrastCompliant(
-        true,
-        'grey',
-        1,
-        'grey',
-        1,
-      )
-    expect(result).to.equal(false)
-  })
+    const result = SimpleColorsSharedStylesGlobal.isContrastCompliant(
+      true,
+      "grey",
+      1,
+      "grey",
+      1,
+    );
+    expect(result).to.equal(false);
+  });
 
-  it('returns true when contrastShade is inside the range', () => {
+  it("returns true when contrastShade is inside the range", () => {
     // greyColor.aaLarge shade 1 (index 0) = {min:7, max:12}
-    const result =
-      SimpleColorsSharedStylesGlobal.isContrastCompliant(
-        true,
-        'grey',
-        1,
-        'grey',
-        7,
-      )
-    expect(result).to.equal(true)
-  })
+    const result = SimpleColorsSharedStylesGlobal.isContrastCompliant(
+      true,
+      "grey",
+      1,
+      "grey",
+      7,
+    );
+    expect(result).to.equal(true);
+  });
 
-  it('returns false when contrastShade is above range.max', () => {
+  it("returns false when contrastShade is above range.max", () => {
     // greyColor.aa shade 7 (index 6) = {min:1, max:2}, shade 3 > 2 -> false
-    const result =
-      SimpleColorsSharedStylesGlobal.isContrastCompliant(
-        false,
-        'grey',
-        7,
-        'grey',
-        3,
-      )
-    expect(result).to.equal(false)
-  })
+    const result = SimpleColorsSharedStylesGlobal.isContrastCompliant(
+      false,
+      "grey",
+      7,
+      "grey",
+      3,
+    );
+    expect(result).to.equal(false);
+  });
 
-  it('checks the colorColor table when neither color is grey', () => {
+  it("checks the colorColor table when neither color is grey", () => {
     // colorColor.aaLarge shade 1 (index 0) = {min:7, max:12}
     expect(
       SimpleColorsSharedStylesGlobal.isContrastCompliant(
         true,
-        'red',
+        "red",
         1,
-        'blue',
+        "blue",
         1,
       ),
-    ).to.equal(false)
+    ).to.equal(false);
     expect(
       SimpleColorsSharedStylesGlobal.isContrastCompliant(
         true,
-        'red',
+        "red",
         1,
-        'blue',
+        "blue",
         8,
       ),
-    ).to.equal(true)
-  })
+    ).to.equal(true);
+  });
 
-  it('checks the small text (aa) table', () => {
+  it("checks the small text (aa) table", () => {
     // greyColor.aa shade 1 (index 0) = {min:7, max:12}
     expect(
       SimpleColorsSharedStylesGlobal.isContrastCompliant(
         false,
-        'grey',
+        "grey",
         1,
-        'grey',
+        "grey",
         1,
       ),
-    ).to.equal(false)
+    ).to.equal(false);
     expect(
       SimpleColorsSharedStylesGlobal.isContrastCompliant(
         false,
-        'grey',
+        "grey",
         1,
-        'grey',
+        "grey",
         7,
       ),
-    ).to.equal(true)
-  })
-})
+    ).to.equal(true);
+  });
+});
 
 // ---------------------------------------------------------------------------
 // indexToShade / shadeToIndex
 // ---------------------------------------------------------------------------
-describe('indexToShade', () => {
-  it('returns 1 for index 0', () => {
-    expect(SimpleColorsSharedStylesGlobal.indexToShade(0)).to.equal(1)
-  })
+describe("indexToShade", () => {
+  it("returns 1 for index 0", () => {
+    expect(SimpleColorsSharedStylesGlobal.indexToShade(0)).to.equal(1);
+  });
 
-  it('returns 6 for index 5', () => {
-    expect(SimpleColorsSharedStylesGlobal.indexToShade(5)).to.equal(6)
-  })
+  it("returns 6 for index 5", () => {
+    expect(SimpleColorsSharedStylesGlobal.indexToShade(5)).to.equal(6);
+  });
 
-  it('parses string index', () => {
-    expect(SimpleColorsSharedStylesGlobal.indexToShade('3')).to.equal(4)
-  })
-})
+  it("parses string index", () => {
+    expect(SimpleColorsSharedStylesGlobal.indexToShade("3")).to.equal(4);
+  });
+});
 
-describe('shadeToIndex', () => {
-  it('returns 0 for shade 1', () => {
-    expect(SimpleColorsSharedStylesGlobal.shadeToIndex(1)).to.equal(0)
-  })
+describe("shadeToIndex", () => {
+  it("returns 0 for shade 1", () => {
+    expect(SimpleColorsSharedStylesGlobal.shadeToIndex(1)).to.equal(0);
+  });
 
-  it('returns 5 for shade 6', () => {
-    expect(SimpleColorsSharedStylesGlobal.shadeToIndex(6)).to.equal(5)
-  })
+  it("returns 5 for shade 6", () => {
+    expect(SimpleColorsSharedStylesGlobal.shadeToIndex(6)).to.equal(5);
+  });
 
-  it('parses string shade', () => {
-    expect(SimpleColorsSharedStylesGlobal.shadeToIndex('12')).to.equal(11)
-  })
-})
+  it("parses string shade", () => {
+    expect(SimpleColorsSharedStylesGlobal.shadeToIndex("12")).to.equal(11);
+  });
+});
 
-describe('invertShade', () => {
-  it('inverts a shade across the 12-step scale', () => {
-    expect(SimpleColorsSharedStylesGlobal.invertShade(1)).to.equal(12)
-    expect(SimpleColorsSharedStylesGlobal.invertShade(5)).to.equal(8)
-    expect(SimpleColorsSharedStylesGlobal.invertShade('12')).to.equal(1)
-  })
-})
+describe("invertShade", () => {
+  it("inverts a shade across the 12-step scale", () => {
+    expect(SimpleColorsSharedStylesGlobal.invertShade(1)).to.equal(12);
+    expect(SimpleColorsSharedStylesGlobal.invertShade(5)).to.equal(8);
+    expect(SimpleColorsSharedStylesGlobal.invertShade("12")).to.equal(1);
+  });
+});
 
 // ---------------------------------------------------------------------------
 // requestAvailability singleton
 // ---------------------------------------------------------------------------
-describe('requestAvailability', () => {
-  it('returns the same instance on repeated calls', () => {
-    const a = globalThis.SimpleColorsSharedStyles.requestAvailability()
-    const b = globalThis.SimpleColorsSharedStyles.requestAvailability()
-    expect(a).to.equal(b)
-  })
+describe("requestAvailability", () => {
+  it("returns the same instance on repeated calls", () => {
+    const a = globalThis.SimpleColorsSharedStyles.requestAvailability();
+    const b = globalThis.SimpleColorsSharedStyles.requestAvailability();
+    expect(a).to.equal(b);
+  });
 
-  it('sets colors and contrasts on the global object', () => {
-    globalThis.SimpleColorsSharedStyles.requestAvailability()
-    expect(globalThis.SimpleColorsSharedStyles.colors).to.exist
-    expect(globalThis.SimpleColorsSharedStyles.contrasts).to.exist
+  it("sets colors and contrasts on the global object", () => {
+    globalThis.SimpleColorsSharedStyles.requestAvailability();
+    expect(globalThis.SimpleColorsSharedStyles.colors).to.exist;
+    expect(globalThis.SimpleColorsSharedStyles.contrasts).to.exist;
     expect(globalThis.SimpleColorsSharedStyles.colors).to.equal(
       globalThis.SimpleColorsSharedStyles.instance.colors,
-    )
-  })
+    );
+  });
 
-  it('appends a stylesheet to document.head', () => {
-    globalThis.SimpleColorsSharedStyles.requestAvailability()
-    expect(globalThis.SimpleColorsSharedStyles.stylesheet).to.exist
+  it("appends a stylesheet to document.head", () => {
+    globalThis.SimpleColorsSharedStyles.requestAvailability();
+    expect(globalThis.SimpleColorsSharedStyles.stylesheet).to.exist;
     expect(
       globalThis.document.head.contains(
         globalThis.SimpleColorsSharedStyles.stylesheet,
       ),
-    ).to.equal(true)
-  })
-})
+    ).to.equal(true);
+  });
+});
 
 // ---------------------------------------------------------------------------
 // Class static properties
 // ---------------------------------------------------------------------------
-describe('SimpleColorsSharedStyles class', () => {
-  it('has the correct tag name', () => {
+describe("SimpleColorsSharedStyles class", () => {
+  it("has the correct tag name", () => {
     expect(SimpleColorsSharedStyles.tag).to.equal(
-      'simple-colors-shared-styles',
-    )
-  })
-})
+      "simple-colors-shared-styles",
+    );
+  });
+});

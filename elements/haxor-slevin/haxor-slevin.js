@@ -347,9 +347,7 @@ class HaxorSlevin extends I18NMixin(
   }
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer"
-        >${this.t.skipToContent}</a
-      >
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <header class="header-wrapper">
         <div>
           <site-modal
@@ -527,7 +525,9 @@ class HaxorSlevin extends I18NMixin(
                 ${this.t.neverMissAStory
                   .split("{title}")
                   .map((part, i) =>
-                    i === 0 ? part : html`<strong>${this.title}</strong>${part}`,
+                    i === 0
+                      ? part
+                      : html`<strong>${this.title}</strong>${part}`,
                   )}
               </span>
               <span class="rss">

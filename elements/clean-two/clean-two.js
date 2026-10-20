@@ -732,7 +732,9 @@ class CleanTwo extends LTIResizingMixin(
   render() {
     return html`
       <div class="body-wrapper">
-        <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
+        <a class="skip-link" href="#contentcontainer"
+          >${this.t.skipToContent}</a
+        >
         <div class="left-col" part="left-col">${this.HAXCMSMobileMenu()}</div>
         <div class="content-wrapper">
           <div class="content">

@@ -14,9 +14,8 @@ describe("lrndesign-imagemap HAX properties", () => {
     expect(schema.gizmo.title).to.equal("Image map");
     const configure = schema.settings.configure;
     expect(configure.find((item) => item.property === "label")).to.exist;
-    expect(
-      configure.find((item) => item.property === "hotspotDetails"),
-    ).to.exist;
+    expect(configure.find((item) => item.property === "hotspotDetails")).to
+      .exist;
   });
 });
 /*

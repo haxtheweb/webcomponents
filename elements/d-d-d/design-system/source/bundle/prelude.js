@@ -5,22 +5,36 @@
 // URL-based registration never replaces a loaded map. Module-level lookups (no
 // element) still get the URL, so CSS masks built at import time keep working.
 function patchIconStore(proto) {
-  const register = proto.registerIconset, get = proto.getIcon;
+  const register = proto.registerIconset,
+    get = proto.getIcon;
   proto.registerIconset = function (name, value) {
-    if (typeof value === "string" && this.iconsets && typeof this.iconsets[name] === "object") return;
+    if (
+      typeof value === "string" &&
+      this.iconsets &&
+      typeof this.iconsets[name] === "object"
+    )
+      return;
     return register.call(this, name, value);
   };
   proto.getIcon = function (icon, el) {
-    const parts = String(icon).replaceAll("/", "-").split(":"), set = parts.length === 1 ? "icons" : parts[0];
-    if (el && !globalThis.DDD_ICONS_READY && typeof (this.iconsets || {})[set] === "string") {
-      if (el !== this && !this.needsHydrated.includes(el)) this.needsHydrated.push(el);
+    const parts = String(icon).replaceAll("/", "-").split(":"),
+      set = parts.length === 1 ? "icons" : parts[0];
+    if (
+      el &&
+      !globalThis.DDD_ICONS_READY &&
+      typeof (this.iconsets || {})[set] === "string"
+    ) {
+      if (el !== this && !this.needsHydrated.includes(el))
+        this.needsHydrated.push(el);
       return null;
     }
     return get.call(this, icon, el);
   };
 }
 if (globalThis.customElements && !globalThis.customElements.__dddIdempotent) {
-  const define = globalThis.customElements.define.bind(globalThis.customElements);
+  const define = globalThis.customElements.define.bind(
+    globalThis.customElements,
+  );
   globalThis.customElements.define = (name, ctor, opts) => {
     if (globalThis.customElements.get(name)) return;
     if (name === "simple-iconset") patchIconStore(ctor.prototype);
@@ -32,4 +46,5 @@ if (globalThis.customElements && !globalThis.customElements.__dddIdempotent) {
 // for this registry to decide a theme is "imported"; without it, it tries a
 // network import() that cannot resolve here and never reveals the theme.
 globalThis.WCAutoload = globalThis.WCAutoload || {};
-if (typeof globalThis.WCAutoload.process !== "function") globalThis.WCAutoload.process = () => {};
+if (typeof globalThis.WCAutoload.process !== "function")
+  globalThis.WCAutoload.process = () => {};

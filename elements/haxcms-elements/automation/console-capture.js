@@ -12,7 +12,9 @@
 
 import puppeteer from "puppeteer";
 
-const URL = process.argv[2] || "http://localhost:8000/elements/haxcms-elements/demo/welcome";
+const URL =
+  process.argv[2] ||
+  "http://localhost:8000/elements/haxcms-elements/demo/welcome";
 
 const browser = await puppeteer.launch({
   headless: true,
@@ -203,7 +205,7 @@ for (const m of messages) {
     m.location && m.location.url
       ? ` [${m.location.url}:${m.location.lineNumber}]`
       : "";
-console.log(`${m.type.toUpperCase()}${loc}: ${m.text}`);
+  console.log(`${m.type.toUpperCase()}${loc}: ${m.text}`);
   if (m.stack) {
     console.log(m.stack);
   }

@@ -29,8 +29,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       startFromBlankSiteWithTheme: "Start from a blank site using a theme",
       fromScratchTooltip: "From scratch",
       import: "Import",
-      importContentFromExistingSource:
-        "Import content from an existing source",
+      importContentFromExistingSource: "Import content from an existing source",
       importContent: "Import content",
       createNewSiteEllipsis: "Create New Site...",
       quickCreateOptions: "Quick create options",
@@ -65,15 +64,13 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       noTemplatesAvailable:
         "No templates available. You can still create a blank site.",
       blankSite: "Blank Site",
-      blankSiteDescription:
-        "Create a blank site using the clean-one theme",
+      blankSiteDescription: "Create a blank site using the clean-one theme",
       couldNotFindUseCase: "Could not find use-case: {useCase}",
       skeletonsEndpointNotConfigured: "Skeletons endpoint not configured",
       untitledTemplate: "Untitled Template",
       customizable: "Customizable",
       untitledTheme: "Untitled Theme",
-      startWithBlankSiteUsingTheme:
-        "Start with a blank site using this theme",
+      startWithBlankSiteUsingTheme: "Start with a blank site using this theme",
       noTemplatesFound: "No Templates Found",
       failedToLoadData: "Failed to load data: {error}",
       noSitesFound: "No Sites Found",
@@ -88,13 +85,11 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       importInvalidStructure: "Import did not return a valid structure",
       importFailed: "Import failed",
       wordDocImportTitle: "Word Doc",
-      wordDocImportDescription:
-        "Import a .docx outline into a new HAX site",
+      wordDocImportDescription: "Import a .docx outline into a new HAX site",
       wordDocImportTooltip: "DOCX import",
       pdfImportDescription: "Import a .pdf outline into a new HAX site",
       pdfImportTooltip: "PDF import",
-      powerpointImportDescription:
-        "Import a .pptx outline into a new HAX site",
+      powerpointImportDescription: "Import a .pptx outline into a new HAX site",
       powerpointImportTooltip: "PPTX import",
       excelImportDescription:
         "Import a .xlsx site structure into a new HAX site",
@@ -103,12 +98,10 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       htmlFileImportDescription:
         "Import a .html/.htm outline into a new HAX site",
       htmlFileImportTooltip: "HTML file import",
-      gitbookImportDescription:
-        "Import a GitBook repo into a new HAX site",
+      gitbookImportDescription: "Import a GitBook repo into a new HAX site",
       gitBasedImport: "Git-based import",
       gitbookImportPrompt: "URL for the GitBook git repo",
-      haxcmsImportDescription:
-        "Import content from an existing HAXcms site",
+      haxcmsImportDescription: "Import content from an existing HAXcms site",
       haxcmsImportTooltip: "HAXcms import",
       haxcmsImportPrompt: "URL for the HAXcms site",
       notionImportDescription: "Import a Notion-exported git repo",
@@ -1508,8 +1501,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                   : html`
                       <div class="fallback-message">
                         <p role="status" class="no-results" aria-live="polite">
-                          ${this.errorMessage ||
-                          this.t.noTemplatesAvailable}
+                          ${this.errorMessage || this.t.noTemplatesAvailable}
                         </p>
                         <app-hax-use-case
                           .source=""
@@ -1549,7 +1541,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         useCaseTitle: this.t.wordDocImportTitle,
         useCaseImage: "",
         useCaseDescription: this.t.wordDocImportDescription,
-        useCaseIcon: [{ icon: "hax:file-docx", tooltip: this.t.wordDocImportTooltip }],
+        useCaseIcon: [
+          { icon: "hax:file-docx", tooltip: this.t.wordDocImportTooltip },
+        ],
         useCaseTag: ["Import", "Docx"],
         demoLink: "#",
       },
@@ -1562,7 +1556,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         useCaseTitle: "PDF",
         useCaseImage: "",
         useCaseDescription: this.t.pdfImportDescription,
-        useCaseIcon: [{ icon: "hax:file-pdf", tooltip: this.t.pdfImportTooltip }],
+        useCaseIcon: [
+          { icon: "hax:file-pdf", tooltip: this.t.pdfImportTooltip },
+        ],
         useCaseTag: ["Import", "PDF"],
         demoLink: "#",
       },
@@ -1575,7 +1571,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         useCaseTitle: "PowerPoint",
         useCaseImage: "",
         useCaseDescription: this.t.powerpointImportDescription,
-        useCaseIcon: [{ icon: "hax:file-ppt", tooltip: this.t.powerpointImportTooltip }],
+        useCaseIcon: [
+          { icon: "hax:file-ppt", tooltip: this.t.powerpointImportTooltip },
+        ],
         useCaseTag: ["Import", "PPTX"],
         demoLink: "#",
       },
@@ -1588,7 +1586,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         useCaseTitle: "Excel",
         useCaseImage: "",
         useCaseDescription: this.t.excelImportDescription,
-        useCaseIcon: [{ icon: "hax:file-xls", tooltip: this.t.excelImportTooltip }],
+        useCaseIcon: [
+          { icon: "hax:file-xls", tooltip: this.t.excelImportTooltip },
+        ],
         useCaseTag: ["Import", "XLSX"],
         demoLink: "#",
       },
@@ -1601,7 +1601,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         useCaseTitle: this.t.htmlFileImportTitle,
         useCaseImage: "",
         useCaseDescription: this.t.htmlFileImportDescription,
-        useCaseIcon: [{ icon: "icons:code", tooltip: this.t.htmlFileImportTooltip }],
+        useCaseIcon: [
+          { icon: "icons:code", tooltip: this.t.htmlFileImportTooltip },
+        ],
         useCaseTag: ["Import", "HTML"],
         demoLink: "#",
       },
@@ -1631,7 +1633,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         useCaseTitle: "HAXcms",
         useCaseImage: "",
         useCaseDescription: this.t.haxcmsImportDescription,
-        useCaseIcon: [{ icon: "hax:hax2022", tooltip: this.t.haxcmsImportTooltip }],
+        useCaseIcon: [
+          { icon: "hax:hax2022", tooltip: this.t.haxcmsImportTooltip },
+        ],
         useCaseTag: ["Import", "HAXcms"],
         demoLink: "#",
       },
@@ -1659,7 +1663,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         useCaseTitle: this.t.htmlUrlImportTitle,
         useCaseImage: "",
         useCaseDescription: this.t.htmlUrlImportDescription,
-        useCaseIcon: [{ icon: "icons:code", tooltip: this.t.htmlUrlImportTooltip }],
+        useCaseIcon: [
+          { icon: "icons:code", tooltip: this.t.htmlUrlImportTooltip },
+        ],
         useCaseTag: ["Import", "HTML"],
         demoLink: "#",
       },
@@ -1673,7 +1679,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         useCaseTitle: "Pressbooks",
         useCaseImage: "",
         useCaseDescription: this.t.pressbooksImportDescription,
-        useCaseIcon: [{ icon: "hax:wordpress", tooltip: this.t.pressbooksImportTooltip }],
+        useCaseIcon: [
+          { icon: "hax:wordpress", tooltip: this.t.pressbooksImportTooltip },
+        ],
         useCaseTag: ["Import", "Pressbooks"],
         demoLink: "#",
       },
@@ -1687,7 +1695,12 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         useCaseTitle: this.t.wordpressPagesImportTitle,
         useCaseImage: "",
         useCaseDescription: this.t.wordpressPagesImportDescription,
-        useCaseIcon: [{ icon: "hax:wordpress", tooltip: this.t.wordpressPagesImportTooltip }],
+        useCaseIcon: [
+          {
+            icon: "hax:wordpress",
+            tooltip: this.t.wordpressPagesImportTooltip,
+          },
+        ],
         useCaseTag: ["Import", "WordPress"],
         demoLink: "#",
       },
@@ -1701,7 +1714,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         useCaseTitle: "Drupal",
         useCaseImage: "",
         useCaseDescription: this.t.drupalImportDescription,
-        useCaseIcon: [{ icon: "hax:drupal", tooltip: this.t.drupalImportTooltip }],
+        useCaseIcon: [
+          { icon: "hax:drupal", tooltip: this.t.drupalImportTooltip },
+        ],
         useCaseTag: ["Import", "Drupal"],
         demoLink: "#",
       },
@@ -1716,7 +1731,10 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         useCaseImage: "",
         useCaseDescription: this.t.ploneImportDescription,
         useCaseIcon: [
-          { icon: "communication:business", tooltip: this.t.ploneImportTooltip },
+          {
+            icon: "communication:business",
+            tooltip: this.t.ploneImportTooltip,
+          },
         ],
         useCaseTag: ["Import", "Plone"],
         demoLink: "#",
@@ -2255,7 +2273,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
             }
 
             // Simple icon array for blank themes
-            const icons = [{ icon: "icons:build", tooltip: this.t.customizable }];
+            const icons = [
+              { icon: "icons:build", tooltip: this.t.customizable },
+            ];
 
             // Resolve thumbnail path using import.meta.url navigation
             let thumbnailPath = theme.thumbnail || "";
@@ -2441,9 +2461,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       this.loading = false;
     } catch (error) {
       this.errorMessage = this.t.failedToLoadData.replace(
-          "{error}",
-          () => error.message,
-        );
+        "{error}",
+        () => error.message,
+      );
       this.returningSites = [];
       this.filteredSites = [];
       this.filters = [];
@@ -2617,10 +2637,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         store.appEl.playSound("error");
       }
       if (store && store.toast) {
-        store.toast(
-          this.t.templateMissingSkeletonUrl,
-          4000,
-        );
+        store.toast(this.t.templateMissingSkeletonUrl, 4000);
       }
       return;
     }
@@ -2646,10 +2663,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
             store.appEl.playSound("error");
           }
           if (store && store.toast) {
-            store.toast(
-              this.t.templateInvalidSkeletonUrl,
-              4000,
-            );
+            store.toast(this.t.templateInvalidSkeletonUrl, 4000);
           }
           console.warn("Refusing to load skeleton from URL:", rawUrl);
           return;

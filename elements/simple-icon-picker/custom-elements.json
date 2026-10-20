@@ -20,6 +20,11 @@
             },
             {
               "kind": "method",
+              "name": "_computeListboxAriaLabel",
+              "description": "Override the base-class listbox aria-label fallback so the picker has\nan accessible name that describes the kind of value being selected."
+            },
+            {
+              "kind": "method",
               "name": "_getStoredIcons",
               "description": "gets icons that are registered in SimpleIconsetStore and filters based on include/exclude lists",
               "return": {

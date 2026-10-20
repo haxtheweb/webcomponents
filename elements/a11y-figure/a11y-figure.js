@@ -117,7 +117,9 @@ class A11yFigure extends A11yDetails {
             close-text="${this.closeText}"
             ?hidden="${!this.__hasDetail}"
           >
-            <div slot="summary"><slot name="summary">${this.t.details}</slot></div>
+            <div slot="summary">
+              <slot name="summary">${this.t.details}</slot>
+            </div>
             <div slot="details"><slot name="details"></slot></div>
             <slot name="figdetails"></slot>
           </a11y-details>

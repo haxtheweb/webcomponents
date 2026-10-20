@@ -21,6 +21,29 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "_isCrossOriginSource",
+              "parameters": [
+                {
+                  "name": "source"
+                }
+              ],
+              "description": "Whether a source URL targets another origin than the current page."
+            },
+            {
+              "kind": "method",
+              "name": "_applyEmbedPolicy",
+              "parameters": [
+                {
+                  "name": "frame"
+                },
+                {
+                  "name": "source"
+                }
+              ],
+              "description": "Applies the embed policy to a managed iframe: embeds like YouTube\nrequire the origin referrer that strict page Referrer-Policy defaults\nstrip, and cross-origin isolated pages (COEP+COOP, e.g. `hax serve`\ndev mode) block cross-origin frames that don't opt into credentialless\nloading. Same-origin frames pass COEP checks automatically and keep\ntheir credentials, so those are left alone."
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -56,7 +79,7 @@
                   "name": "el"
                 },
                 {
-                  "name": "val"
+                  "name": "_val"
                 }
               ]
             },
@@ -86,14 +109,6 @@
               "default": "false",
               "attribute": "is-pdf",
               "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "invalidSource",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
             },
             {
               "kind": "field",
@@ -146,13 +161,17 @@
             },
             {
               "kind": "field",
+              "name": "__iframeLoadingCallback"
+            },
+            {
+              "kind": "field",
               "name": "__mutationObserver",
               "default": "new MutationObserver((mutations) => { mutations.forEach((mutation) => { if (mutation.target.offsetHeight) { // if we are still in the loading state if (this.loading) { this.height = mutation.target.offsetHeight; } } }); })"
             },
             {
               "kind": "field",
               "name": "__observer",
-              "default": "new MutationObserver((mutations) => { if (this.querySelector(\"iframe\")) { this.__iframe = this.querySelector(\"iframe\"); this.source = this._safeSource(this.__iframe.getAttribute(\"src\")); // Listen for new this.__iframe.addEventListener( \"load\", this.iframeLoadingCallback.bind(this), ); this.__mutationObserver.observe(this.__iframe, { attributes: true, }); } })"
+              "default": "new MutationObserver((_mutations) => { if (this.querySelector(\"iframe\")) { this.__iframe = this.querySelector(\"iframe\"); this.source = this._safeSource(this.__iframe.getAttribute(\"src\")); // ensure our own height/width mirror the supplied iframe so that // the updated() height/width sync below doesn't clobber it with // our stale defaults this.height = this.__iframe.getAttribute(\"height\") || this.height; this.width = this.__iframe.getAttribute(\"width\") || this.width; // Listen for new this.__iframe.addEventListener(\"load\", this.__iframeLoadingCallback); this.__mutationObserver.observe(this.__iframe, { attributes: true, }); } })"
             },
             {
               "kind": "field",

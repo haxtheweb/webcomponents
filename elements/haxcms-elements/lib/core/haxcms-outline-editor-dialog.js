@@ -56,7 +56,11 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           margin: var(--ddd-spacing-2);
           color: white;
           background-color: var(--ddd-theme-default-skyBlue);
-          border: 2px solid light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
+          border: 2px solid
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            );
           border-radius: var(--ddd-radius-sm);
           font-family: var(--ddd-font-navigation);
           cursor: pointer;
@@ -122,8 +126,10 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       outlinePagesUpdated: "{count} pages will be updated",
       outlinePageDeleted: "{count} page will be deleted",
       outlinePagesDeleted: "{count} pages will be deleted",
-      outlineUnsavedChangesConfirm: "You have unsaved changes in Site Outline:\n{changes}\nIf you continue, these changes will be lost. Continue?",
-      outlineSaveConfirm: "Saving will apply these Site Outline changes:\n{changes}\nContinue?",
+      outlineUnsavedChangesConfirm:
+        "You have unsaved changes in Site Outline:\n{changes}\nIf you continue, these changes will be lost. Continue?",
+      outlineSaveConfirm:
+        "Saving will apply these Site Outline changes:\n{changes}\nContinue?",
     };
   }
   static get properties() {
@@ -336,7 +342,10 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       return true;
     }
     return globalThis.confirm(
-      this.t.outlineUnsavedChangesConfirm.replace("{changes}", () => sumChanges),
+      this.t.outlineUnsavedChangesConfirm.replace(
+        "{changes}",
+        () => sumChanges,
+      ),
     );
   }
   _ownsSimpleModalEvent(e) {

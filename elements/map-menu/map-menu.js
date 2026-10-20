@@ -147,7 +147,7 @@ class MapMenu extends SchemaBehaviors(LitElement) {
           padding: var(--map-menu-layer-2-vertical-padding, 28px 0px 40px);
           background-color: var(
             --map-menu-layer-2-background-color,
-              var(--ddd-theme-default-white, white)
+            var(--ddd-theme-default-white, white)
           );
         }
 

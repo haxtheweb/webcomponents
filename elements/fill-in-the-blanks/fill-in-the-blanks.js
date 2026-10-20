@@ -294,7 +294,7 @@ class FillInTheBlanks extends MarkTheWords {
       ];
       return html`<simple-fields-field
           data-answer-index="${index}"
-          label="${this.t.blankNumber.replace("{number}", () => (index + 1))}"
+          label="${this.t.blankNumber.replace("{number}", () => index + 1)}"
           @value-changed="${this.refreshEvent}"
           type="select"
           .itemsList="${selectItems}"
@@ -309,7 +309,7 @@ class FillInTheBlanks extends MarkTheWords {
     } else {
       return html` <simple-fields-field
           type="text"
-          label="${this.t.blankNumber.replace("{number}", () => (index + 1))}"
+          label="${this.t.blankNumber.replace("{number}", () => index + 1)}"
           @value-changed="${this.refreshEvent}"
           data-answer-index="${index}"
           ?disabled="${this.showAnswer}"

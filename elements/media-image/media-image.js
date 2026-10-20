@@ -151,8 +151,7 @@ class MediaImage extends SchemaBehaviors(DDD) {
       this.disableZoom = true;
     }
     if (
-      (changedProperties.has("thumbnail") ||
-        changedProperties.has("source")) &&
+      (changedProperties.has("thumbnail") || changedProperties.has("source")) &&
       this.thumbnail &&
       !this.source
     ) {

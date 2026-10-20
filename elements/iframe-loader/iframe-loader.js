@@ -114,10 +114,7 @@ export class IframeLoader extends LitElement {
     // if we have an initial iframe, go for it
     if (this.querySelector && this.querySelector("iframe")) {
       this.__iframe = this.querySelector("iframe");
-      this.__iframe.addEventListener(
-        "load",
-        this.__iframeLoadingCallback,
-      );
+      this.__iframe.addEventListener("load", this.__iframeLoadingCallback);
       // ensure source matches iframe source
       if (this.__iframe.getAttribute("src")) {
         this.source = this._safeSource(this.__iframe.getAttribute("src"));
@@ -147,10 +144,7 @@ export class IframeLoader extends LitElement {
         this.height = this.__iframe.getAttribute("height") || this.height;
         this.width = this.__iframe.getAttribute("width") || this.width;
         // Listen for new
-        this.__iframe.addEventListener(
-          "load",
-          this.__iframeLoadingCallback,
-        );
+        this.__iframe.addEventListener("load", this.__iframeLoadingCallback);
         this.__mutationObserver.observe(this.__iframe, {
           attributes: true,
         });
@@ -278,10 +272,7 @@ export class IframeLoader extends LitElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     if (this.__iframe) {
-      this.__iframe.removeEventListener(
-        "load",
-        this.__iframeLoadingCallback,
-      );
+      this.__iframe.removeEventListener("load", this.__iframeLoadingCallback);
     }
     this.__observer.disconnect();
   }
@@ -343,16 +334,10 @@ export class IframeLoader extends LitElement {
           this.__iframe.setAttribute("width", this.width);
           this.__iframe.setAttribute("height", this.height);
           // frames must have a title for WCAG 2.4.1 (axe frame-title)
-          this.__iframe.setAttribute(
-            "title",
-            this.title || "Embedded content",
-          );
+          this.__iframe.setAttribute("title", this.title || "Embedded content");
           // created frames need the load listener as well or loading never
           // clears and the slotted content stays hidden forever
-          this.__iframe.addEventListener(
-            "load",
-            this.__iframeLoadingCallback,
-          );
+          this.__iframe.addEventListener("load", this.__iframeLoadingCallback);
           this.__mutationObserver.observe(this.__iframe, {
             attributes: true,
           });

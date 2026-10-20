@@ -108,7 +108,9 @@ describe("a11y-media-player offline youtube stubbing", () => {
 describe("a11y-media-player boolean and string properties", () => {
   let el;
   beforeEach(async () => {
-    el = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
+    el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
     await el.updateComplete;
     await sleep(50);
   });
@@ -249,9 +251,13 @@ describe("a11y-media-player calculated getters", () => {
   let video;
   let yt;
   beforeEach(async () => {
-    video = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
+    video = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
     await video.updateComplete;
-    yt = await fixture(html`<a11y-media-player youtube-id="abc123"></a11y-media-player>`);
+    yt = await fixture(
+      html`<a11y-media-player youtube-id="abc123"></a11y-media-player>`,
+    );
     await yt.updateComplete;
     await waitUntil(
       () => yt.youtube && yt.youtube.__yt,
@@ -350,7 +356,9 @@ describe("a11y-media-player calculated getters", () => {
     expect(video.playerStyle.indexOf("%")).to.be.above(-1);
     video.thumbnailSrc = "data:image/gif;base64,R0lGODlhAQABAAAAADs=";
     video.youtubeId = "xyz789";
-    expect(video.playerStyle.indexOf("background-image:url('data:")).to.be.above(-1);
+    expect(
+      video.playerStyle.indexOf("background-image:url('data:"),
+    ).to.be.above(-1);
   });
 
   it("poster prefers thumbnailSrc and wraps external youtube urls", () => {
@@ -469,7 +477,9 @@ describe("a11y-media-player calculated getters", () => {
 describe("a11y-media-player render branches", () => {
   let el;
   beforeEach(async () => {
-    el = await fixture(html`<a11y-media-player><video></video></a11y-media-player>`);
+    el = await fixture(
+      html`<a11y-media-player><video></video></a11y-media-player>`,
+    );
     await el.updateComplete;
     await sleep(50);
   });
@@ -562,7 +572,10 @@ describe("a11y-media-player render branches", () => {
 
   it("autoplay starts playback through the youtube stub", async () => {
     const yt = await fixture(
-      html`<a11y-media-player youtube-id="abc123" autoplay></a11y-media-player>`,
+      html`<a11y-media-player
+        youtube-id="abc123"
+        autoplay
+      ></a11y-media-player>`,
     );
     await yt.updateComplete;
     await sleep(150);

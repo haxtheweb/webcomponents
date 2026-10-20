@@ -72,7 +72,7 @@ export const createPageAsDataProgram = (context) => {
           tags: ["developer", "page", "data", "format"].concat(item.tags),
           more: _t(context, "reloadPageUsingQuery").replace(
             "{query}",
-            () => (`?format=${item.format}`),
+            () => `?format=${item.format}`,
           ),
           value: {
             target: context,

@@ -15,7 +15,8 @@ const badResponse = () => ({
 });
 
 const makeJwt = (payload) => {
-  const b64 = globalThis.btoa(JSON.stringify(payload))
+  const b64 = globalThis
+    .btoa(JSON.stringify(payload))
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
     .replace(/=+$/, "");
@@ -249,9 +250,9 @@ describe("jwt-login behavior", () => {
       element.isDifferentDomain("https://other.example.com/logout"),
     ).to.equal(true);
     expect(element.isDifferentDomain("/local-logout")).to.equal(false);
-    expect(element.isDifferentDomain(`${globalThis.location.origin}/x`)).to.equal(
-      false,
-    );
+    expect(
+      element.isDifferentDomain(`${globalThis.location.origin}/x`),
+    ).to.equal(false);
     expect(element.isDifferentDomain("http://[invalid")).to.equal(false);
   });
 
@@ -299,9 +300,13 @@ describe("jwt-login behavior", () => {
       Promise.resolve(
         okJson({ status: 200, jwt: "j", userToken: " u ", siteToken: "s" }),
       );
-    await element.generateRequest("https://example.com/login", {}, {
-      context: "login",
-    });
+    await element.generateRequest(
+      "https://example.com/login",
+      {},
+      {
+        context: "login",
+      },
+    );
     await sleep(0);
     expect(seen).to.deep.equal([
       { userToken: "u", siteToken: "s", context: "login" },
@@ -333,9 +338,13 @@ describe("jwt-login behavior", () => {
     await element.generateRequest("https://example.com/login");
     globalThis.fetch = () =>
       Promise.resolve(okJson({ status: 200, userToken: "u" }));
-    await element.generateRequest("https://example.com/logout", {}, {
-      context: "logout",
-    });
+    await element.generateRequest(
+      "https://example.com/logout",
+      {},
+      {
+        context: "logout",
+      },
+    );
     await sleep(0);
     expect(seen).to.deep.equal([]);
   });
@@ -490,7 +499,11 @@ describe("jwt-login behavior", () => {
     // a throwing callback is caught and warned
     element._invokeRefreshCallback(
       {
-        obj: { boom: () => { throw new Error("boom"); } },
+        obj: {
+          boom: () => {
+            throw new Error("boom");
+          },
+        },
         callback: "boom",
         params: [],
       },

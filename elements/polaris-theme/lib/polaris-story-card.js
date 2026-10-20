@@ -191,7 +191,8 @@ class PolarisStoryCard extends I18NMixin(LitElement) {
       ? html`<a
           class="link"
           href="${this.link}"
-          aria-label="${[this.pillar, this.label].filter(Boolean).join(" ") || this.t.storyCard}"
+          aria-label="${[this.pillar, this.label].filter(Boolean).join(" ") ||
+          this.t.storyCard}"
           @click="${this._clickLink}"
           >${card}</a
         >`

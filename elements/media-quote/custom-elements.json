@@ -27,6 +27,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, showCaption: \"Show Caption\", }"
+            },
+            {
+              "kind": "field",
               "name": "src",
               "privacy": "public",
               "type": {
@@ -73,7 +81,8 @@
                 "text": "string"
               },
               "default": "\"\"",
-              "attribute": "author-detail"
+              "attribute": "author-detail",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -93,11 +102,36 @@
                 "text": "boolean"
               },
               "default": "false",
-              "attribute": "filter"
+              "attribute": "filter",
+              "reflects": true
             },
             {
               "kind": "field",
               "name": "_isCaptionOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "hasAuthor",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "hasAuthorDetail",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "hasCaption",
               "type": {
                 "text": "boolean"
               },
@@ -160,6 +194,12 @@
               },
               "default": "\"\"",
               "fieldName": "caption"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

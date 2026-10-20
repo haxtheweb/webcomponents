@@ -23,7 +23,7 @@
               "name": "scrollEvent",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "life cycle, element is afixed to the DOM"

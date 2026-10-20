@@ -28,7 +28,7 @@
               "name": "siteModalClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Delay importing site-search until we click to open it directly"
@@ -56,7 +56,7 @@
               "name": "_toggleMenu",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Link menu button to open and closing the side panel."
@@ -66,7 +66,7 @@
               "name": "_closeDrawer",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -80,10 +80,10 @@
               "name": "_activeIdChanged",
               "parameters": [
                 {
-                  "name": "newValue"
+                  "name": "_newValue"
                 },
                 {
-                  "name": "oldValue"
+                  "name": "_oldValue"
                 }
               ],
               "description": "active id has changed."
@@ -109,6 +109,14 @@
               "default": "true",
               "attribute": "opened",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, skipToContent: \"Skip to content\", siteNavigation: \"Site navigation\", toggleNavigation: \"Toggle navigation\", searchSite: \"Search site\", search: \"Search\", }"
             },
             {
               "kind": "field",
@@ -187,6 +195,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "SchemaBehaviors",
               "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"

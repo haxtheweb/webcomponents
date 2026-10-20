@@ -929,9 +929,7 @@ describe("MatchingQuestion gap coverage", () => {
 
   it("replaces an existing placement when dropped back on possible", async () => {
     element.answers = [{ label: "Item", order: 0 }];
-    element.displayedAnswers = [
-      { label: "Item", order: 0, matchOption: true },
-    ];
+    element.displayedAnswers = [{ label: "Item", order: 0, matchOption: true }];
     element.matchAnswers = [];
     element.shadowRoot.querySelectorAll = () => [];
     const mockEvent = {

@@ -144,7 +144,8 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           ::slotted(label:focus),
           ::slotted(label:focus-within) {
             color: var(--simple-fields-accent-color, #3f51b5);
-            transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
+            transition: background-color var(--ddd-duration-normal, 0.3s)
+              ease-in-out;
           }
           ::slotted(input) {
             padding: 0px;

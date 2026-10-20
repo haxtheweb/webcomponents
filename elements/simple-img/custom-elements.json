@@ -18,6 +18,11 @@
               "readonly": true
             },
             {
+              "kind": "method",
+              "name": "__adoptLightDomImage",
+              "description": "adopts a pre-upgrade light DOM image (an <img> child or one inside a\n<template>) and applies the documented default attributes/styles"
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,
@@ -115,19 +120,11 @@
             },
             {
               "kind": "field",
-              "name": "display",
+              "name": "__lightDomAdopted",
               "type": {
-                "text": "string"
+                "text": "boolean"
               },
-              "default": "\"inline-block\""
-            },
-            {
-              "kind": "field",
-              "name": "innerHTML",
-              "type": {
-                "text": "null"
-              },
-              "default": "null"
+              "default": "false"
             }
           ],
           "attributes": [

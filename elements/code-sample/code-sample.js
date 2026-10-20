@@ -87,7 +87,8 @@ class CodeSample extends I18NMixin(LitElement) {
           user-select: none;
         }
         tr {
-          transition: background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
+          transition: background-color var(--ddd-duration-normal, 0.3s)
+            ease-in-out;
         }
         @media (prefers-reduced-motion: reduce) {
           tr {
@@ -134,10 +135,7 @@ class CodeSample extends I18NMixin(LitElement) {
             --code-sample-copy-button-bg-color,
             light-dark(white, #333)
           );
-          color: var(
-            --code-sample-copy-button-color,
-            light-dark(black, white)
-          );
+          color: var(--code-sample-copy-button-color, light-dark(black, white));
           border: none;
           cursor: pointer;
           display: block;

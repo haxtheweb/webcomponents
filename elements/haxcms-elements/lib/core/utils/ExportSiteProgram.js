@@ -67,8 +67,7 @@ export function createExportSiteProgram(context) {
 
     // Filter results based on input
     SITE_EXPORT_FORMATS.forEach((format) => {
-      const formatTitle =
-        _t(context, `${format.tKey}Title`) || format.title;
+      const formatTitle = _t(context, `${format.tKey}Title`) || format.title;
       const formatDescription =
         _t(context, `${format.tKey}Description`) || format.description;
       if (
@@ -147,7 +146,10 @@ export async function exportSiteAs(format, options = {}) {
 
       default:
         HAXStore.toast(
-          _t(this, "exportFormatNotSupported").replace("{format}", () => format),
+          _t(this, "exportFormatNotSupported").replace(
+            "{format}",
+            () => format,
+          ),
           3000,
           "fit-bottom",
         );
@@ -285,10 +287,7 @@ export async function _exportSiteAsPDF(manifest, title, baseUrl) {
       this._downloadBlob(blob, `${title}.pdf`);
       this.clearProcessingVisual();
       HAXStore.toast(
-        _t(this, "siteFormatDownloadedSuccessfully").replace(
-          "{format}",
-          "PDF",
-        ),
+        _t(this, "siteFormatDownloadedSuccessfully").replace("{format}", "PDF"),
         3000,
         "fit-bottom",
       );
@@ -428,7 +427,11 @@ export async function _downloadSiteArchive() {
     link.click();
     globalThis.document.body.removeChild(link);
     this.clearProcessingVisual();
-    HAXStore.toast(_t(this, "siteArchiveDownloadInitiated"), 3000, "fit-bottom");
+    HAXStore.toast(
+      _t(this, "siteArchiveDownloadInitiated"),
+      3000,
+      "fit-bottom",
+    );
   } catch (error) {
     console.error("Site archive download error:", error);
     this.clearProcessingVisual();

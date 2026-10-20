@@ -512,8 +512,14 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
   render() {
     return html`
       <div class="resume-layout">
-        <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
-        <aside class="sidebar" part="sidebar" aria-label="${this.t.contactInformation}">
+        <a class="skip-link" href="#contentcontainer"
+          >${this.t.skipToContent}</a
+        >
+        <aside
+          class="sidebar"
+          part="sidebar"
+          aria-label="${this.t.contactInformation}"
+        >
           <div class="avatar-wrapper" part="avatar-wrapper">
             ${this.authorImage
               ? html`<img

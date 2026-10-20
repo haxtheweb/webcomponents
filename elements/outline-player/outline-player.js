@@ -408,15 +408,10 @@ class OutlinePlayer extends I18NMixin(
   // render function
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer"
-        >${this.t.skipToContent}</a
-      >
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <site-git-corner part="git-corner-btn"></site-git-corner>
       <div class="layout">
-        <nav
-          aria-label="${this.t.siteNavigation}"
-          typeof="oer:TableOfContents"
-        >
+        <nav aria-label="${this.t.siteNavigation}" typeof="oer:TableOfContents">
           <div
             class="drawer ${this.opened ? "opened" : ""} ${this.closed
               ? "closed"

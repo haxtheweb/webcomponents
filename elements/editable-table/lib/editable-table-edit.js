@@ -64,7 +64,10 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
           margin: 0;
           color: var(
             --editable-table-caption-color,
-            var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222))
+            var(
+              --editable-table-color,
+              var(--ddd-theme-default-coalyGray, #222)
+            )
           );
         }
         table *[data-expanded="true"] {
@@ -125,7 +128,10 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
           transition: all 2s;
           color: var(
             --editable-table-caption-color,
-            var(--editable-table-color, var(--ddd-theme-default-coalyGray, #222))
+            var(
+              --editable-table-color,
+              var(--ddd-theme-default-coalyGray, #222)
+            )
           );
         }
         .group:not([hidden]) {
@@ -625,11 +631,11 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
         id="cell-${rowIndex}-${colIndex}"
         aria-label="${this.t.cellLabel.replace(
           "{cell}",
-          () => (`${this._getLabel(colIndex, false)}${rowIndex}`),
+          () => `${this._getLabel(colIndex, false)}${rowIndex}`,
         )}"
         label="${this.t.cellLabel.replace(
           "{cell}",
-          () => (`${this._getLabel(colIndex, false)}${rowIndex}`),
+          () => `${this._getLabel(colIndex, false)}${rowIndex}`,
         )}"
         rawhtml="${contents}"
         type="rich-text-editor-toolbar-mini"

@@ -59,10 +59,12 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       second: "second",
       seconds: "seconds",
       bulkReplaceConfirm: "This bulk replacement cannot be undone. Continue?",
-      emptyReplacementConfirm: "Replacement text is empty, so this will remove all matches. Confirm again to continue.",
+      emptyReplacementConfirm:
+        "Replacement text is empty, so this will remove all matches. Confirm again to continue.",
       tag: "Tag",
       parentPageTitle: "Parent page title",
-      selectorPlaceholder: "Simple selector (example: h2, a[href], img[alt=\"\"])",
+      selectorPlaceholder:
+        'Simple selector (example: h2, a[href], img[alt=""])',
       fullTextPlaceholder: "Text to find across title, tags, and content",
       filterValue: "Filter value",
       showOnlyItemsWhere: "Show only items where",
@@ -102,7 +104,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       viewRevisions: "View revisions",
       viewPageRevisions: "View page revisions",
       contentPagination: "Content pagination",
-      replaceSummary: "Updated {pageCount} {pageUnit} with {replacementCount} {replacementUnit}.",
+      replaceSummary:
+        "Updated {pageCount} {pageUnit} with {replacementCount} {replacementUnit}.",
       pageUnit: "page",
       pagesUnit: "pages",
       replacementUnit: "replacement",
@@ -194,7 +197,10 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         }
         simple-icon-button-lite.replace-btn {
           --simple-icon-button-border: var(--ddd-border-size-xs) solid
-            light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-linkLight));
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            );
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
@@ -495,14 +501,14 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       const months = Math.floor(delta / month);
       return this.t.timeAgo.replace(
         "{time}",
-        () => (`${months} ${months === 1 ? this.t.month : this.t.months}`),
+        () => `${months} ${months === 1 ? this.t.month : this.t.months}`,
       );
     }
     if (delta >= day) {
       const days = Math.floor(delta / day);
       return this.t.timeAgo.replace(
         "{time}",
-        () => (`${days} ${days === 1 ? this.t.day : this.t.days}`),
+        () => `${days} ${days === 1 ? this.t.day : this.t.days}`,
       );
     }
     if (delta >= hour) {
@@ -511,12 +517,13 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       if (minutes > 0) {
         return this.t.timeAgo.replace(
           "{time}",
-          () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours} ${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes}`),
+          () =>
+            `${hours} ${hours === 1 ? this.t.hour : this.t.hours} ${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes}`,
         );
       }
       return this.t.timeAgo.replace(
         "{time}",
-        () => (`${hours} ${hours === 1 ? this.t.hour : this.t.hours}`),
+        () => `${hours} ${hours === 1 ? this.t.hour : this.t.hours}`,
       );
     }
     if (delta >= minute) {
@@ -524,12 +531,13 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
       const seconds = Math.floor(delta % minute);
       return this.t.timeAgo.replace(
         "{time}",
-        () => (`${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes} ${seconds} ${seconds === 1 ? this.t.second : this.t.seconds}`),
+        () =>
+          `${minutes} ${minutes === 1 ? this.t.minute : this.t.minutes} ${seconds} ${seconds === 1 ? this.t.second : this.t.seconds}`,
       );
     }
     return this.t.timeAgo.replace(
       "{time}",
-      () => (`${delta} ${delta === 1 ? this.t.second : this.t.seconds}`),
+      () => `${delta} ${delta === 1 ? this.t.second : this.t.seconds}`,
     );
   }
 
@@ -589,9 +597,8 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
         ? e.detail.value.trim()
         : "";
     const value = parseInt(raw, 10);
-    const next = !Number.isNaN(value) && PAGE_SIZE_OPTIONS.includes(value)
-      ? value
-      : 25;
+    const next =
+      !Number.isNaN(value) && PAGE_SIZE_OPTIONS.includes(value) ? value : 25;
     if (next === this.searchLimit && next === this.pageLimit) {
       this._debounceSearchRequest();
       return;
@@ -690,13 +697,14 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
     store.toast(
       this.t.replaceSummary
         .replace("{pageCount}", () => updatedItems)
-        .replace("{pageUnit}", () => (updatedItems === 1 ? this.t.pageUnit : this.t.pagesUnit))
+        .replace("{pageUnit}", () =>
+          updatedItems === 1 ? this.t.pageUnit : this.t.pagesUnit,
+        )
         .replace("{replacementCount}", () => totalReplacements)
-        .replace(
-          "{replacementUnit}",
-          () => (totalReplacements === 1
+        .replace("{replacementUnit}", () =>
+          totalReplacements === 1
             ? this.t.replacementUnit
-            : this.t.replacementsUnit),
+            : this.t.replacementsUnit,
         ),
       3000,
       { hat: "construction" },
@@ -719,7 +727,9 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
    */
   _refreshTable() {
     if (!this.shadowRoot) return;
-    const tableDisplay = this.shadowRoot.querySelector("editable-table-display");
+    const tableDisplay = this.shadowRoot.querySelector(
+      "editable-table-display",
+    );
     if (
       tableDisplay &&
       typeof tableDisplay.requestUpdate === "function" &&
@@ -1062,7 +1072,7 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                         : (this._searchMatchCount() === 1
                             ? this.t.matchCountSingular
                             : this.t.matchCountPlural
-                          ).replace("{count}", () => (this._searchMatchCount()))}
+                          ).replace("{count}", () => this._searchMatchCount())}
                     </p>
                   `
                 : ``}
@@ -1102,7 +1112,11 @@ class HAXCMSContentAdminDialog extends I18NMixin(DDD) {
                             <tr>
                               <td><a href="${row.slug}">${row.title}</a></td>
                               <td>${row.statusLabel}</td>
-                              <td><span data-sort-value="${row.updated}">${row.updatedLabel}</span></td>
+                              <td>
+                                <span data-sort-value="${row.updated}"
+                                  >${row.updatedLabel}</span
+                                >
+                              </td>
                               <td>
                                 ${row.parentSlug
                                   ? html`<a href="${row.parentSlug}"

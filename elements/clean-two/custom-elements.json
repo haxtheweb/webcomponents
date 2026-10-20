@@ -16,16 +16,7 @@
               "name": "searchItemSelected",
               "parameters": [
                 {
-                  "name": "e"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "searchChanged",
-              "parameters": [
-                {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -59,7 +50,7 @@
               "name": "siteModalForceClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ]
             },
@@ -68,10 +59,18 @@
               "name": "siteModalClick",
               "parameters": [
                 {
-                  "name": "e"
+                  "name": "_e"
                 }
               ],
               "description": "Delay importing site-search until we click to open it directly"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, skipToContent: \"Skip to content\", searchSite: \"Search site\", search: \"Search\", previous: \"Previous\", next: \"Next\", lastUpdated: \"Last updated\", }"
             },
             {
               "kind": "field",
