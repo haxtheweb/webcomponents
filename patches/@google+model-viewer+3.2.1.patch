@@ -1,0 +1,30 @@
+diff --git a/node_modules/@google/model-viewer/dist/model-viewer.js b/node_modules/@google/model-viewer/dist/model-viewer.js
+index 03bbdf9..fcdd6da 100644
+--- a/node_modules/@google/model-viewer/dist/model-viewer.js
++++ b/node_modules/@google/model-viewer/dist/model-viewer.js
+@@ -38471,7 +38471,7 @@ const resolveDpr = (() => {
+         var _a;
+         // Search result pages sometimes do not include a meta viewport tag even
+         // though they are certainly modern and work properly with devicePixelRatio.
+-        if ((_a = document.documentElement.getAttribute('itemtype')) === null || _a === void 0 ? void 0 : _a.includes('schema.org/SearchResultsPage')) {
++        if ((_a = document.documentElement && document.documentElement.getAttribute('itemtype')) === null || _a === void 0 ? void 0 : _a.includes('schema.org/SearchResultsPage')) {
+             return true;
+         }
+         const metas = document.head != null ?
+@@ -54712,12 +54712,14 @@ class Renderer extends EventDispatcher {
+         return elements;
+     }
+ }
+-Renderer._singleton = new Renderer({
++// SSR: without a real document there is no canvas to render into, so skip
++// building the shared renderer; it is only needed once an element connects.
++Renderer._singleton = (typeof document !== 'undefined' && document.documentElement) ? new Renderer({
+     powerPreference: (self.ModelViewerElement || {})
+         .powerPreference ||
+         DEFAULT_POWER_PREFERENCE,
+     debug: isDebugMode()
+-});
++}) : null;
+ 
+ /* @license
+  * Copyright 2020 Google LLC. All Rights Reserved.
