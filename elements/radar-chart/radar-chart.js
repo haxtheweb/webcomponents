@@ -3,14 +3,19 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css, svg } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-// geometry of the drawing, expressed in viewBox units
-const SIZE = 500;
-const CENTER = SIZE / 2;
-const RADIUS = 160;
-const LABEL_FACTOR = 1.18;
+// geometry of the drawing, expressed in viewBox units. The full chart is wider
+// than tall so axis labels have room on the left and right; the compact chart
+// has no labels so it only needs the plot itself.
+const RADIUS = 150;
+const LABEL_GAP = 14;
+const LABEL_WRAP = 18; // characters per label line
+const LINE_HEIGHT = 12;
+const FULL_BOX = { w: 700, h: 440 };
+const COMPACT_BOX = { w: 340, h: 340 };
 
 const DEFAULT_CATEGORIES = [
   "Legal & Licensing",
@@ -73,6 +78,8 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
     this.scores = DEFAULT_CATEGORIES.map(() => 0);
     this.targetScores = DEFAULT_CATEGORIES.map(() => 5);
     this.showLegend = true;
+    this.compact = false;
+    this._tip = null;
     this.scoreLabel = "Your score";
     this.targetLabel = "Target / Level 5";
     this.t = this.t || {};
@@ -108,8 +115,14 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           toAttribute: (value) => (value ? "" : null),
         },
       },
+      /**
+       * Smaller chart with no axis labels, scale labels, legend or data table;
+       * values are shown by hovering a point.
+       */
+      compact: { type: Boolean, reflect: true },
       scoreLabel: { type: String, attribute: "score-label" },
       targetLabel: { type: String, attribute: "target-label" },
+      _tip: { state: true },
     };
   }
 
@@ -123,6 +136,10 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           color: var(--ddd-theme-primary);
           font-family: var(--ddd-font-navigation);
           max-width: var(--radar-chart-max-width, 40rem);
+          margin-inline: auto;
+        }
+        :host([compact]) {
+          max-width: var(--radar-chart-compact-max-width, 14rem);
         }
         :host([hidden]) {
           display: none;
@@ -136,6 +153,9 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           font-weight: var(--ddd-font-weight-bold);
           text-align: center;
           margin-bottom: var(--ddd-spacing-2);
+        }
+        .chart {
+          position: relative;
         }
         svg {
           width: 100%;
@@ -158,14 +178,19 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           );
           stroke-width: 1;
         }
-        .scale-label,
+        /* font sizes are viewBox units, so text scales with the chart */
+        .scale-label {
+          font-size: var(--radar-chart-scale-size, 8px);
+          fill: currentColor;
+          opacity: 0.7;
+        }
         .pct {
-          font-size: var(--ddd-font-size-4xs, 10px);
+          font-size: var(--radar-chart-pct-size, 9px);
           fill: currentColor;
           opacity: 0.75;
         }
         .name {
-          font-size: var(--ddd-font-size-3xs, 12px);
+          font-size: var(--radar-chart-label-size, 10px);
           fill: currentColor;
         }
         .target {
@@ -194,6 +219,63 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
             --radar-chart-score-color,
             var(--ddd-theme-default-skyBlue, currentColor)
           );
+          transition: r 0.1s ease-in-out;
+        }
+        .dot.active {
+          r: 6px;
+        }
+        .tmark {
+          fill: var(
+            --radar-chart-target-color,
+            var(--ddd-theme-default-keystoneYellow, currentColor)
+          );
+        }
+        .hit {
+          fill: transparent;
+          cursor: pointer;
+        }
+        .tip {
+          position: absolute;
+          z-index: 1;
+          pointer-events: none;
+          box-sizing: border-box;
+          max-width: 11rem;
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-xs, 4px);
+          font-size: var(--radar-chart-tip-size, 0.75rem);
+          line-height: 1.3;
+          background: light-dark(
+            var(--ddd-theme-default-coalyGray, #222),
+            var(--ddd-theme-default-white, #fff)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white, #fff),
+            var(--ddd-theme-default-coalyGray, #222)
+          );
+          box-shadow: var(--ddd-boxShadow-sm, 0 1px 4px rgba(0, 0, 0, 0.4));
+          /* above the point, centered; the modifiers keep it inside the chart */
+          transform: translate(-50%, calc(-100% - 10px));
+        }
+        .tip.start {
+          transform: translate(-12%, calc(-100% - 10px));
+        }
+        .tip.end {
+          transform: translate(-88%, calc(-100% - 10px));
+        }
+        .tip.below {
+          transform: translate(-50%, 10px);
+        }
+        .tip.below.start {
+          transform: translate(-12%, 10px);
+        }
+        .tip.below.end {
+          transform: translate(-88%, 10px);
+        }
+        .tip strong {
+          display: block;
+        }
+        .tip[hidden] {
+          display: none;
         }
         ul.legend {
           list-style: none;
@@ -281,11 +363,18 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
     };
   }
 
-  /** Point on spoke `i` of `n` at `value` of `max`, scaled by `factor`. */
-  _point(i, n, value, max, factor = 1) {
+  /** Size and center of the drawing for the current mode. */
+  get _box() {
+    const { w, h } = this.compact ? COMPACT_BOX : FULL_BOX;
+    return { w, h, cx: w / 2, cy: h / 2 };
+  }
+
+  /** Point on spoke `i` of `n` at `value` of `max`, `extra` units further out. */
+  _point(i, n, value, max, extra = 0) {
+    const { cx, cy } = this._box;
     const angle = -Math.PI / 2 + (2 * Math.PI * i) / n;
-    const r = (value / max) * RADIUS * factor;
-    return [CENTER + r * Math.cos(angle), CENTER + r * Math.sin(angle)];
+    const r = (value / max) * RADIUS + extra;
+    return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)];
   }
 
   _polygon(rows, key, max, level) {
@@ -298,12 +387,20 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
       .join(" ");
   }
 
-  /** Split long names onto two lines at the middle word. */
+  /** Greedy word wrap so long category names fit beside the chart. */
   _lines(name) {
-    const words = name.split(" ");
-    if (words.length < 3) return [name];
-    const mid = Math.ceil(words.length / 2);
-    return [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
+    const lines = [];
+    let line = "";
+    for (const word of name.split(/\s+/)) {
+      if (line && `${line} ${word}`.length > LABEL_WRAP) {
+        lines.push(line);
+        line = word;
+      } else {
+        line = line ? `${line} ${word}` : word;
+      }
+    }
+    if (line) lines.push(line);
+    return lines;
   }
 
   _pct(row, max) {
@@ -321,17 +418,54 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   _renderLabel(row, i, n, max) {
-    const [x, y] = this._point(i, n, max, max, LABEL_FACTOR);
-    const anchor =
-      Math.abs(x - CENTER) < 8 ? "middle" : x < CENTER ? "end" : "start";
+    const { cx, cy } = this._box;
+    const [x, y] = this._point(i, n, max, max, LABEL_GAP);
+    const anchor = Math.abs(x - cx) < 8 ? "middle" : x < cx ? "end" : "start";
     const lines = this._lines(row.name);
-    return svg`<text x="${x}" y="${y}" text-anchor="${anchor}">
+    // the label grows away from the chart: upward above it, downward below it
+    const count = lines.length + 1;
+    const vertical = (y - cy) / (RADIUS + LABEL_GAP);
+    let y0 = y + 3 - ((count - 1) * LINE_HEIGHT) / 2;
+    if (vertical < -0.35) y0 = y - (count - 1) * LINE_HEIGHT - 2;
+    else if (vertical > 0.35) y0 = y + 10;
+    return svg`<text x="${x.toFixed(1)}" y="${y0.toFixed(1)}" text-anchor="${anchor}">
       ${lines.map(
         (line, li) =>
-          svg`<tspan class="name" x="${x}" dy="${li === 0 ? "0" : "1.2em"}">${line}</tspan>`,
+          svg`<tspan class="name" x="${x.toFixed(1)}" dy="${li === 0 ? "0" : LINE_HEIGHT}">${line}</tspan>`,
       )}
-      <tspan class="pct" x="${x}" dy="1.3em">${this._pct(row, max)}%</tspan>
+      <tspan class="pct" x="${x.toFixed(1)}" dy="${LINE_HEIGHT}">${this._pct(row, max)}%</tspan>
     </text>`;
+  }
+
+  _showTip(i, x, y) {
+    this._tip = { i, x, y };
+  }
+
+  _hideTip() {
+    this._tip = null;
+  }
+
+  _renderTip(rows, max) {
+    const tip = this._tip;
+    const row = tip && rows[tip.i];
+    if (!row) return "";
+    const { w, h } = this._box;
+    const fx = tip.x / w;
+    const fy = tip.y / h;
+    const classes = [
+      fx < 0.25 ? "start" : fx > 0.75 ? "end" : "",
+      fy < 0.25 ? "below" : "",
+    ].join(" ");
+    return html`<div
+      class="tip ${classes}"
+      aria-hidden="true"
+      style="left:${(fx * 100).toFixed(1)}%;top:${(fy * 100).toFixed(1)}%"
+    >
+      <strong>${row.name}</strong>
+      ${this.scoreLabel}: ${row.score} ${this.t.outOf} ${max}
+      (${this._pct(row, max)}%)<br />
+      ${this.targetLabel}: ${row.target}
+    </div>`;
   }
 
   render() {
@@ -346,75 +480,114 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
       (_, i) => i + 1,
     );
     const step = max / levels.length;
+    const { w, h } = this._box;
+    const compact = this.compact;
+    const active = this._tip ? this._tip.i : -1;
     return html`
       <figure>
-        <figcaption id="cap">${this.title}</figcaption>
-        <svg
-          viewBox="0 0 ${SIZE} ${SIZE}"
-          role="img"
-          aria-labelledby="cap"
-          aria-describedby="desc"
-        >
-          ${levels.map(
-            (l) =>
-              svg`<polygon class="grid" points="${this._polygon(rows, "", max, l * step)}"></polygon>`,
-          )}
-          ${rows.map((row, i) => {
-            const [x, y] = this._point(i, n, max, max);
-            return svg`<line class="axis" x1="${CENTER}" y1="${CENTER}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"></line>`;
-          })}
-          ${levels.map((l) => {
-            const [x, y] = this._point(0, n, l * step, max);
-            return svg`<text class="scale-label" x="${x + 4}" y="${y - 2}">${Number((l * step).toFixed(1))}/${max}</text>`;
-          })}
-          <polygon
-            class="target"
-            points="${this._polygon(rows, "target", max)}"
-          ></polygon>
-          <polygon
-            class="score"
-            points="${this._polygon(rows, "score", max)}"
-          ></polygon>
-          ${rows.map((row, i) => {
-            const [x, y] = this._point(i, n, row.score, max);
-            return svg`<circle class="dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4"></circle>`;
-          })}
-          ${rows.map((row, i) => this._renderLabel(row, i, n, max))}
-        </svg>
+        ${compact ? "" : html`<figcaption id="cap">${this.title}</figcaption>`}
+        <div class="chart">
+          <svg
+            viewBox="0 0 ${w} ${h}"
+            role="img"
+            aria-label="${ifDefined(compact ? this.title : undefined)}"
+            aria-labelledby="${ifDefined(compact ? undefined : "cap")}"
+            aria-describedby="desc"
+          >
+            ${levels.map(
+              (l) =>
+                svg`<polygon class="grid" points="${this._polygon(rows, "", max, l * step)}"></polygon>`,
+            )}
+            ${rows.map((row, i) => {
+              const [x, y] = this._point(i, n, max, max);
+              return svg`<line class="axis" x1="${this._box.cx}" y1="${this._box.cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"></line>`;
+            })}
+            ${
+              compact
+                ? ""
+                : levels.map((l) => {
+                    const [x, y] = this._point(0, n, l * step, max);
+                    return svg`<text class="scale-label" x="${x + 3}" y="${y - 2}">${Number((l * step).toFixed(1))}</text>`;
+                  })
+            }
+            <polygon
+              class="target"
+              points="${this._polygon(rows, "target", max)}"
+            ></polygon>
+            <polygon
+              class="score"
+              points="${this._polygon(rows, "score", max)}"
+            ></polygon>
+            ${rows.map((row, i) => {
+              const [x, y] = this._point(i, n, row.target, max);
+              return svg`<circle class="tmark" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"></circle>`;
+            })}
+            ${rows.map((row, i) => {
+              const [x, y] = this._point(i, n, row.score, max);
+              return svg`<circle class="dot ${i === active ? "active" : ""}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4"></circle>`;
+            })}
+            ${
+              compact
+                ? ""
+                : rows.map((row, i) => this._renderLabel(row, i, n, max))
+            }
+            ${rows.map((row, i) => {
+              // generous invisible targets; target points first so the
+              // score point wins where the two coincide
+              const [x, y] = this._point(i, n, row.target, max);
+              return svg`<circle class="hit" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="12"
+                @pointerenter="${() => this._showTip(i, x, y)}"
+                @pointerdown="${() => this._showTip(i, x, y)}"
+                @pointerleave="${this._hideTip}"></circle>`;
+            })}
+            ${rows.map((row, i) => {
+              const [x, y] = this._point(i, n, row.score, max);
+              return svg`<circle class="hit" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="12"
+                @pointerenter="${() => this._showTip(i, x, y)}"
+                @pointerdown="${() => this._showTip(i, x, y)}"
+                @pointerleave="${this._hideTip}"></circle>`;
+            })}
+          </svg>
+          ${this._renderTip(rows, max)}
+        </div>
         <p id="desc" hidden>${this._description(data)}</p>
         ${
-          this.showLegend
+          this.showLegend && !compact
             ? html`<ul class="legend">
                 <li><span class="swatch score"></span>${this.scoreLabel}</li>
                 <li><span class="swatch target"></span>${this.targetLabel}</li>
               </ul>`
             : ""
         }
-        <details>
-          <summary>${this.t.showData}</summary>
-          <table>
-            <caption>
-              ${this.title}
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">${this.t.category}</th>
-                <th scope="col">${this.scoreLabel}</th>
-                <th scope="col">${this.targetLabel}</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${rows.map(
-                (row) =>
-                  html`<tr>
-                    <th scope="row">${row.name}</th>
-                    <td class="num">${row.score} / ${max}</td>
-                    <td class="num">${row.target} / ${max}</td>
-                  </tr>`,
-              )}
-            </tbody>
-          </table>
-        </details>
+        ${
+          compact
+            ? ""
+            : html`<details>
+                <summary>${this.t.showData}</summary>
+                <table>
+                  <caption>
+                    ${this.title}
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">${this.t.category}</th>
+                      <th scope="col">${this.scoreLabel}</th>
+                      <th scope="col">${this.targetLabel}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${rows.map(
+                      (row) =>
+                        html`<tr>
+                          <th scope="row">${row.name}</th>
+                          <td class="num">${row.score} / ${max}</td>
+                          <td class="num">${row.target} / ${max}</td>
+                        </tr>`,
+                    )}
+                  </tbody>
+                </table>
+              </details>`
+        }
       </figure>
     `;
   }

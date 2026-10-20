@@ -65,6 +65,13 @@
         "title": "Show legend",
         "inputMethod": "boolean",
         "icon": "icons:list"
+      },
+      {
+        "property": "compact",
+        "title": "Compact",
+        "description": "Smaller chart with no labels, legend or data table. Hover a point to see its values.",
+        "inputMethod": "boolean",
+        "icon": "icons:zoom-out-map"
       }
     ],
     "advanced": [
