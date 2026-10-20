@@ -1838,15 +1838,6 @@
     "@polymer/iron-iconset-svg" "^3.0.0"
     "@polymer/polymer" "^3.5.1"
 
-"@haxtheweb/lrndesign-avatar@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/lrndesign-avatar/-/lrndesign-avatar-9.0.1.tgz#ce9d84ed4f826eaaa1ed10a353fe8dccd04d4641"
-  integrity sha512-vfzB88FKoU28gpvh79aw/JoVyqBoef+/ZuWEBxHs4ZZN0nhPDrpgg2nNda9bqNj2ASnfI8n3GMd186NdRlhVLQ==
-  dependencies:
-    "@haxtheweb/paper-avatar" "^9.0.1"
-    "@haxtheweb/simple-colors" "^9.0.1"
-    lit "^3.1.4"
-
 "@haxtheweb/lrndesign-sidenote@9.0.1":
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/@haxtheweb/lrndesign-sidenote/-/lrndesign-sidenote-9.0.1.tgz#b65fd028002f85c4e4078977a00500e4fe8495ca"
@@ -1874,15 +1865,6 @@
     "@polymer/iron-icon" "^3.0.1"
     "@polymer/iron-iconset-svg" "^3.0.1"
     "@polymer/polymer" "^3.5.1"
-
-"@haxtheweb/paper-avatar@^9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/paper-avatar/-/paper-avatar-9.0.1.tgz#6d357c9cbf2a2d19127ba0a6db83d47b9ee4bb1f"
-  integrity sha512-mY1SO0/S2NAMLAAjxqNdG0WUJJ2vz9okpaA7MtR3fHw7fVbSR8c1x6fW3vSVRs1Bkut8IXo4HRK0sVJ/gx60HQ==
-  dependencies:
-    "@haxtheweb/es-global-bridge" "^9.0.1"
-    "@haxtheweb/simple-icon" "^9.0.1"
-    lit "^3.1.4"
 
 "@haxtheweb/simple-colors@^9.0.1":
   version "26.8.0"
