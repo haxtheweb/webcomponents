@@ -1,0 +1,65 @@
+{
+  "name": "@haxtheweb/bullet-check-list",
+  "wcfactory": {
+    "className": "BulletCheckList",
+    "customElementClass": "LitElement",
+    "elementName": "bullet-check-list",
+    "generator-wcfactory-version": "0.3.2",
+    "useHAX": true,
+    "useSass": false,
+    "files": {},
+    "sharedStyles": []
+  },
+  "version": "26.8.0",
+  "description": "Bulleted or numbered list of checkboxes whose state is remembered on this machine",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haxtheweb/webcomponents.git"
+  },
+  "type": "module",
+  "main": "bullet-check-list.js",
+  "module": "bullet-check-list.js",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --dev --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+  },
+  "author": {
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@haxtheweb/d-d-d": "^26.8.0",
+    "@haxtheweb/hax-iconset": "^26.8.0",
+    "@haxtheweb/i18n-manager": "^26.8.0",
+    "@haxtheweb/schema-behaviors": "^26.8.0",
+    "@haxtheweb/simple-colors": "^26.8.0",
+    "@haxtheweb/simple-icon": "^26.8.0",
+    "lit": "3.3.3"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.10.4",
+    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@open-wc/testing": "4.0.0",
+    "@web/dev-server": "0.4.6",
+    "concurrently": "9.1.2",
+    "wc-dox": "1.1.0"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "customElements": "custom-elements.json",
+  "keywords": [
+    "webcomponents",
+    "html",
+    "haxtheweb",
+    "lit"
+  ]
+}

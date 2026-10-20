@@ -1,0 +1,106 @@
+{
+  "type": "element",
+  "canScale": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Bullet check list",
+    "description": "A list of checkboxes. Readers tick items off and their progress is remembered on their own device.",
+    "icon": "hax:clipboard-pulse",
+    "color": "orange",
+    "tags": [
+      "Instructional",
+      "content",
+      "pedagogy",
+      "checklist",
+      "todo",
+      "steps",
+      "progress"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "Name of the list. Read aloud as the label of the group of checkboxes.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "items",
+        "title": "Items",
+        "description": "Each item is a checkbox. Checked or disabled items can not be changed by readers.",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "expanded": false,
+        "properties": [
+          {
+            "property": "label",
+            "title": "Label",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "checked",
+            "title": "Already checked",
+            "description": "Shown as done and locked.",
+            "inputMethod": "boolean"
+          },
+          {
+            "property": "disabled",
+            "title": "Disabled",
+            "description": "Shown but readers can not change it.",
+            "inputMethod": "boolean"
+          }
+        ]
+      },
+      {
+        "property": "ordered",
+        "title": "Numbered",
+        "description": "Show a numbered list instead of a bulleted one.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "status",
+        "title": "Status",
+        "description": "Changes the colors to match stop-note.",
+        "inputMethod": "select",
+        "options": {
+          "info": "Notice",
+          "success": "Confirmation",
+          "warning": "Warning",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "storageId",
+        "title": "Storage id",
+        "description": "Unique id used to remember reader progress on their device. Generated automatically; change only to share progress between lists or to start fresh.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["t", "_checked", "_haxstate"]
+  },
+  "demoSchema": [
+    {
+      "tag": "bullet-check-list",
+      "properties": {
+        "title": "Before you begin",
+        "items": [
+          { "label": "Read the syllabus" },
+          { "label": "Introduce yourself in the forum" },
+          { "label": "Install the course software" }
+        ]
+      },
+      "content": ""
+    }
+  ]
+}
