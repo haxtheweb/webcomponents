@@ -37,6 +37,13 @@
     {
       "enabled": false,
       "matchUpdateTypes": ["digest"]
+    },
+    {
+      "description": "Pin Docker base images to digests (OpenSSF Scorecard Pinned-Dependencies) and keep the pins fresh",
+      "matchManagers": ["dockerfile"],
+      "pinDigests": true,
+      "enabled": true,
+      "matchUpdateTypes": ["pinDigest", "digest"]
     }
   ],
   "ignoreDeps": [

@@ -108,7 +108,7 @@ fi
 
 # if package isn't installed install it
 if ! command -v yarn >/dev/null 2>&1;then
-  npm -g install yarn
+  npm -g install yarn@1.22.22
 fi
 
 if ! command -v hax >/dev/null 2>&1;then
@@ -116,7 +116,7 @@ if ! command -v hax >/dev/null 2>&1;then
 fi
 
 if ! command -v web-component-analyzer >/dev/null 2>&1;then
-  yarn global add web-component-analyzer
+  yarn global add web-component-analyzer@2.0.0
 fi
 
 # Optionally install advanced HAX tooling, only runs in interactive shells
@@ -126,8 +126,9 @@ if [ -t 0 ] && ! command -v lerna >/dev/null 2>&1; then
     read -r confirm
     confirm_lowercase=$(echo "$confirm" | tr '[:upper:]' '[:lower:]')
     if [ "$confirm_lowercase" = "y" ] || [ "$confirm_lowercase" = "yes" ]; then
-      yarn global add symlink-dir @web/test-runner @web/test-runner-commands \
-        @web/test-runner-puppeteer @web/test-runner-playwright lerna
+      yarn global add symlink-dir@10.0.3 @web/test-runner@1.0.0 \
+        @web/test-runner-commands@1.0.1 @web/test-runner-puppeteer@1.0.1 \
+        @web/test-runner-playwright@1.0.0 lerna@10.1.1
       break
     elif [ "$confirm_lowercase" = "n" ] || [ "$confirm_lowercase" = "no" ]; then
       break

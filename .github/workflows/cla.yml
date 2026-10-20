@@ -5,16 +5,19 @@ on:
   pull_request_target:
     types: [opened, closed, synchronize]
 
-# explicitly configure permissions, in case your GITHUB_TOKEN workflow permissions are set to read-only in repository settings
+# Top level is read-only; the write scopes the CLA action needs are granted on
+# the job only.
 permissions:
-  actions: read
-  contents: read # this can be 'read' if the signatures are in remote repository
-  pull-requests: write
-  statuses: write
+  contents: read
 
 jobs:
   CLAAssistant:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read # signatures live in the remote haxtheweb/cla repository
+      pull-requests: write
+      statuses: write
     steps:
       - name: "CLA Assistant"
         if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request_target'
