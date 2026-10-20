@@ -29,7 +29,8 @@ const LINE_TERMINATORS = /([\n\r\u2028\u2029])/;
  * line up to the next literal, and so on. The whole run (first literal through
  * the last literal) is replaced.
  * @param {string} input
- * @param {string[]} tokens literal strings, matched in order, earliest first
+ * @param {Array<string|RegExp>} tokens literal strings (or simple RegExps such as
+ *   /\sdata-x="/), matched in order, earliest first
  * @param {Object} [opts]
  * @param {boolean} [opts.ignoreCase=false]
  * @param {string} [opts.replacement=""]
@@ -43,7 +44,10 @@ export function replaceLazyRun(
 ) {
   if (typeof input !== "string" || !tokens.length) return input;
   const flags = ignoreCase ? "gi" : "g";
-  const res = tokens.map((t) => new RegExp(escapeRegExp(t), flags));
+  const res = tokens.map(
+    (t) =>
+      new RegExp(typeof t === "string" ? escapeRegExp(t) : t.source, flags),
+  );
   // `.` never matches a line terminator, so each line is independent
   const parts = crossLines ? [input] : input.split(LINE_TERMINATORS);
   for (let p = 0; p < parts.length; p += 2) {
@@ -221,4 +225,16 @@ export function findClosingCustomTags(html) {
     }
   }
   return tags;
+}
+
+/**
+ * Remove `style="prop: value; prop2: value2;"` attributes whose value is a plain
+ * declaration list (what Word / Docs / contenteditable pastes produce).
+ * Replaces `/(?:style="(\S+:\s*[^;"]+;\s*)*)+"/g`, which backtracks exponentially:
+ * its `\S+` property name could swallow ";" and ":" so a declaration list had
+ * many ways to be split. Property names here exclude whitespace, ":", ";" and
+ * quotes, and values are `[^;"]+`, so every string has one parse.
+ */
+export function stripInlineStyleAttributes(str) {
+  return str.replace(/style="(?:[^\s:;"]+:[^;"]+;\s*)*"/g, "");
 }

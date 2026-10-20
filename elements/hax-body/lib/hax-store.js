@@ -27,6 +27,10 @@ import {
   iframeSandboxForSource,
 } from "@haxtheweb/utils/lib/url.js";
 import {
+  replaceLazyRun,
+  stripInlineStyleAttributes,
+} from "@haxtheweb/utils/lib/safe-html.js";
+import {
   observable,
   makeObservable,
   computed,
@@ -2378,10 +2382,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // clear empty span tags that can pop up
       pasteContent = pasteContent.replace(/<span>\s*?<\/span>/g, " ");
       //remove styling
-      pasteContent = pasteContent.replace(
-        /(?:style="(\S+:\s*[^;"]+;\s*)*)+"/g,
-        "",
-      );
+      pasteContent = stripInlineStyleAttributes(pasteContent);
       // clean up div tags that can come in from contenteditable pastes
       // p tags make more sense in the content area
       pasteContent = pasteContent.replace(/<div/g, "<p");
@@ -3634,7 +3635,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           // simple-symbol-picker.js (no standalone data file), so importing
           // that module populates the globalThis entry as a side effect.
           if (!globalThis.SimplePickerSymbols) {
-            await import("@haxtheweb/simple-picker/lib/simple-symbol-picker.js");
+            await import(
+              "@haxtheweb/simple-picker/lib/simple-symbol-picker.js"
+            );
           }
           // resolve a readable name for an entity, falling back to a
           // title-cased version of the entity name when unmapped
@@ -6215,25 +6218,55 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // spacing niceness for output readability
     content = content.replace(/&nbsp;/gm, " ");
     // target and remove hax specific things from output if they slipped through
-    content = content.replace(/ data-hax-ray="[^"]*"/gim, "");
-    content = content.replace(/ data-hax-active="[^"]*"/gim, "");
+    content = replaceLazyRun(content, [' data-hax-ray="', '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
+    content = replaceLazyRun(content, [' data-hax-active="', '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
     content = content.replace(/ class=""/gim, "");
     content = content.replace(/ style=""/gim, "");
-    content = content.replace(/ contenteditable="[^"]*"/gim, "");
-    content = content.replace(/ t="[^"]*"/gim, "");
+    content = replaceLazyRun(content, [' contenteditable="', '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
+    content = replaceLazyRun(content, [' t="', '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
     // wipe pure style spans which can pop up on copy paste if we didn't catch it
     // also ensure that we then remove purely visual chars laying around
     // this also helps clean up when we did a normal contenteditable paste
     // as opposed to our multi-element sanitizing option that we support
-    content = content.replace(/<span style="(.*?)">/gim, "<span>");
+    content = replaceLazyRun(content, ['<span style="', '">'], {
+      ignoreCase: true,
+      replacement: "<span>",
+    });
     content = content.replace(/<span>\s*?<\/span>/g, " ");
     content = content.replace(/<span><br\/><\/span>/gm, "");
     // account for things that on normal paste would pick up too many css vars
-    content = content.replace(/<strong style="(.*?)">/gim, "<strong>");
-    content = content.replace(/<b style="(.*?)">/gim, "<b>");
-    content = content.replace(/<strike style="(.*?)">/gim, "<strike>");
-    content = content.replace(/<em style="(.*?)">/gim, "<em>");
-    content = content.replace(/<i style="(.*?)">/gim, "<i>");
+    content = replaceLazyRun(content, ['<strong style="', '">'], {
+      ignoreCase: true,
+      replacement: "<strong>",
+    });
+    content = replaceLazyRun(content, ['<b style="', '">'], {
+      ignoreCase: true,
+      replacement: "<b>",
+    });
+    content = replaceLazyRun(content, ['<strike style="', '">'], {
+      ignoreCase: true,
+      replacement: "<strike>",
+    });
+    content = replaceLazyRun(content, ['<em style="', '">'], {
+      ignoreCase: true,
+      replacement: "<em>",
+    });
+    content = replaceLazyRun(content, ['<i style="', '">'], {
+      ignoreCase: true,
+      replacement: "<i>",
+    });
     // empty with lots of space
     content = content.replace(/<p>(\s*)<\/p>/gm, "<p></p>");
     // empty p / more or less empty
