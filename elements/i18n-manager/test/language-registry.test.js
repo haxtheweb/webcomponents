@@ -3,6 +3,7 @@ import {
   loadLanguageRegistry,
   setLanguageRegistry,
   normalizeLanguageCode,
+  matchLanguageCode,
   isSupportedLanguageCode,
   getLanguageByCode,
   getLanguageLocale,
@@ -80,6 +81,25 @@ describe("LanguageRegistry", () => {
       );
       expect(isSupportedLanguageCode("xx")).to.equal(false);
       expect(isSupportedLanguageCode("sw")).to.equal(true);
+    });
+  });
+
+  describe("matchLanguageCode", () => {
+    it("matches a code or alias exactly, ignoring case and _", () => {
+      expect(matchLanguageCode("zh_CN")).to.equal("zh-CN");
+      expect(matchLanguageCode("ZH-cn")).to.equal("zh-CN");
+      expect(matchLanguageCode("zh")).to.equal("zh-CN");
+      expect(matchLanguageCode("iw")).to.equal("he");
+      expect(matchLanguageCode("pt-BR")).to.equal("pt-BR");
+      expect(matchLanguageCode(" sw ")).to.equal("sw");
+    });
+
+    it("never drops a region, so custom codes are not folded into a language", () => {
+      expect(matchLanguageCode("fr-CA")).to.equal(null);
+      expect(normalizeLanguageCode("fr-CA")).to.equal("fr");
+      expect(matchLanguageCode("xx")).to.equal(null);
+      expect(matchLanguageCode("")).to.equal(null);
+      expect(matchLanguageCode(null)).to.equal(null);
     });
   });
 

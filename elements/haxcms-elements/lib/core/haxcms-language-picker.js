@@ -2,11 +2,10 @@ import { css, html } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
-  getLanguageByCode,
   getLanguageOptions,
   getLanguageRegistry,
   loadLanguageRegistry,
-  normalizeLanguageCode,
+  matchLanguageCode,
   searchLanguageOptions,
 } from "@haxtheweb/i18n-manager/lib/LanguageRegistry.js";
 
@@ -334,31 +333,6 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
   }
 
   /**
-   * The registry code a text is exactly (ignoring case, `_` vs `-`) or an
-   * alias of, else null. Unlike normalizeLanguageCode this never drops a
-   * region, so a custom code like fr-CA is not silently turned into fr.
-   */
-  _exactCode(text) {
-    if (!this._ready || !text) {
-      return null;
-    }
-    const registry = this._registryArg();
-    const code = normalizeLanguageCode(text, registry);
-    if (!code) {
-      return null;
-    }
-    const cleaned = String(text).trim().replace(/_/g, "-").toLowerCase();
-    if (code.toLowerCase() === cleaned) {
-      return code;
-    }
-    const entry = getLanguageByCode(code, registry);
-    const aliases = (entry && entry.aliases) || [];
-    return aliases.some((alias) => alias.toLowerCase() === cleaned)
-      ? code
-      : null;
-  }
-
-  /**
    * Canonical code for a value (zh_CN -> zh-CN, iw -> he), the trimmed value
    * when it is a custom code, or "" when empty.
    */
@@ -370,7 +344,22 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
     if (!text) {
       return "";
     }
-    return this._exactCode(text) || text;
+    return this._matchCode(text) || text;
+  }
+
+  /**
+   * The registry code a text is exactly (or an alias of); null when it is not
+   * in the registry or the registry is not available.
+   */
+  _matchCode(text) {
+    if (!this._ready || !text) {
+      return null;
+    }
+    try {
+      return matchLanguageCode(text, this._registryArg());
+    } catch (e) {
+      return null;
+    }
   }
 
   _registryArg() {
@@ -488,7 +477,7 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
     if (
       this.allowCustom &&
       this._looksLikeLanguageCode(query) &&
-      !this._exactCode(query)
+      !this._matchCode(query)
     ) {
       const code = query.trim();
       found.push({
