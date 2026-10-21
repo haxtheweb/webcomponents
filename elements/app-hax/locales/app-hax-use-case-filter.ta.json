@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax இறக்குமதி",
   "openstaxImportPrompt": "OpenStax புத்தகத்திற்கான URL",
   "vitepressImportDescription": "ஒரு VitePress ஆவணக் களஞ்சியத்தைப் புதிய HAX தளத்தில் இறக்குமதி செய்",
-  "vitepressImportPrompt": "VitePress git களஞ்சியத்திற்கான URL"
+  "vitepressImportPrompt": "VitePress git களஞ்சியத்திற்கான URL",
+  "quartoImportDescription": "ஒரு Quarto ஆவணக் களஞ்சியத்தைப் புதிய HAX தளத்தில் இறக்குமதி செய்",
+  "quartoImportPrompt": "Quarto git களஞ்சியத்திற்கான URL"
 }

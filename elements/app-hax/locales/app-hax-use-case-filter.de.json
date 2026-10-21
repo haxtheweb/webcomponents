@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax-Import",
   "openstaxImportPrompt": "URL des OpenStax-Buchs",
   "vitepressImportDescription": "Ein VitePress-Doku-Repo in eine neue HAX-Website importieren",
-  "vitepressImportPrompt": "URL des VitePress-Git-Repos"
+  "vitepressImportPrompt": "URL des VitePress-Git-Repos",
+  "quartoImportDescription": "Ein Quarto-Doku-Repo in eine neue HAX-Website importieren",
+  "quartoImportPrompt": "URL des Quarto-Git-Repos"
 }

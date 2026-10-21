@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax 导入",
   "openstaxImportPrompt": "OpenStax 图书的 URL",
   "vitepressImportDescription": "将 VitePress 文档仓库导入新的 HAX 站点",
-  "vitepressImportPrompt": "VitePress git 仓库的 URL"
+  "vitepressImportPrompt": "VitePress git 仓库的 URL",
+  "quartoImportDescription": "将 Quarto 文档仓库导入新的 HAX 站点",
+  "quartoImportPrompt": "Quarto git 仓库的 URL"
 }

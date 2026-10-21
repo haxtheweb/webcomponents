@@ -790,6 +790,7 @@
         ".+ (?:import )?produced no (?:pages to import|page-like content items)",
         "no pages found at (?<url>.+)",
         "the vitepress site has no pages to import",
+        "the quarto project has no pages to import",
         ".+ import failed to produce content",
         "no sheets found in excel file",
         ".+ discovered but import failed to produce content",
@@ -812,6 +813,7 @@
         "repourl is missing the owner\\/repo path.*",
         "could not find summary\\.md in .+",
         "no \\.vitepress\\/config file found in .+",
+        "no _quarto\\.ya?ml file found in .+",
         "unable to parse .+",
         "unsupported import platform .*",
         "unknown adapter .*",
@@ -843,7 +845,7 @@
       "en": "The import failed.",
       "match": [
         "error processing (?<format>.+?)(?: import| document)?: (?<detail>.+)",
-        "unable to import (?:site|the vitepress site|this openstax book)",
+        "unable to import (?:site|the vitepress site|the quarto project|this openstax book)",
         "error converting (?:elmsln|gitbook|notion): (?<detail>.+)"
       ]
     },

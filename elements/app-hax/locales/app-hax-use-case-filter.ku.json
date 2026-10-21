@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Hawirdekirina OpenStax",
   "openstaxImportPrompt": "URL-ya pirtûka OpenStax",
   "vitepressImportDescription": "Depoyeke belgeyên VitePress di malpereke nû ya HAX de hawirde bike",
-  "vitepressImportPrompt": "URL-ya depoya git a VitePress"
+  "vitepressImportPrompt": "URL-ya depoya git a VitePress",
+  "quartoImportDescription": "Depoyeke belgeyên Quarto di malpereke nû ya HAX de hawirde bike",
+  "quartoImportPrompt": "URL-ya depoya git a Quarto"
 }

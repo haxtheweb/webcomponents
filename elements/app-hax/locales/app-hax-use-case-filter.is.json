@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax-innflutningur",
   "openstaxImportPrompt": "URL-slóð OpenStax-bókarinnar",
   "vitepressImportDescription": "Flytja VitePress-skjölunargeymslu inn í nýjan HAX-vef",
-  "vitepressImportPrompt": "URL-slóð VitePress git-geymslunnar"
+  "vitepressImportPrompt": "URL-slóð VitePress git-geymslunnar",
+  "quartoImportDescription": "Flytja Quarto-skjölunargeymslu inn í nýjan HAX-vef",
+  "quartoImportPrompt": "URL-slóð Quarto git-geymslunnar"
 }

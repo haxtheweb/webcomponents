@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax-tuonti",
   "openstaxImportPrompt": "OpenStax-kirjan URL",
   "vitepressImportDescription": "Tuo VitePress-dokumentaatiorepositorio uudeksi HAX-sivustoksi",
-  "vitepressImportPrompt": "VitePressin git-repositorion URL"
+  "vitepressImportPrompt": "VitePressin git-repositorion URL",
+  "quartoImportDescription": "Tuo Quarto-dokumentaatiorepositorio uudeksi HAX-sivustoksi",
+  "quartoImportPrompt": "Quartoin git-repositorion URL"
 }

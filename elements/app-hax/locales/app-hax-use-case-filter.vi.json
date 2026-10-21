@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Nhập OpenStax",
   "openstaxImportPrompt": "URL của sách OpenStax",
   "vitepressImportDescription": "Nhập kho tài liệu VitePress vào trang HAX mới",
-  "vitepressImportPrompt": "URL của kho git VitePress"
+  "vitepressImportPrompt": "URL của kho git VitePress",
+  "quartoImportDescription": "Nhập kho tài liệu Quarto vào trang HAX mới",
+  "quartoImportPrompt": "URL của kho git Quarto"
 }

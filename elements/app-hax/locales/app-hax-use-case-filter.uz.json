@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax import",
   "openstaxImportPrompt": "OpenStax kitobi URL manzili",
   "vitepressImportDescription": "VitePress hujjatlar repozitoriysini yangi HAX saytiga import qilish",
-  "vitepressImportPrompt": "VitePress git repozitoriysi URL manzili"
+  "vitepressImportPrompt": "VitePress git repozitoriysi URL manzili",
+  "quartoImportDescription": "Quarto hujjatlar repozitoriysini yangi HAX saytiga import qilish",
+  "quartoImportPrompt": "Quarto git repozitoriysi URL manzili"
 }

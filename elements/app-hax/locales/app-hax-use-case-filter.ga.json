@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Iompórtáil OpenStax",
   "openstaxImportPrompt": "URL an leabhair OpenStax",
   "vitepressImportDescription": "Iompórtáil stór doiciméadúcháin VitePress isteach i suíomh nua HAX",
-  "vitepressImportPrompt": "URL an stóir git VitePress"
+  "vitepressImportPrompt": "URL an stóir git VitePress",
+  "quartoImportDescription": "Iompórtáil stór doiciméadúcháin Quarto isteach i suíomh nua HAX",
+  "quartoImportPrompt": "URL an stóir git Quarto"
 }

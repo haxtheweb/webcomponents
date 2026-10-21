@@ -75,6 +75,7 @@ describe("HAXcms site import services", () => {
   const importers = [
     ["@system/openstaxToSite", "/system/api/v1/site/import/openstax"],
     ["@system/vitepressToSite", "/system/api/v1/site/import/vitepress"],
+    ["@system/quartoToSite", "/system/api/v1/site/import/quarto"],
     ["@system/gitbookToSite", "/system/api/v1/site/import/gitbook"],
     ["@system/notionToSite", "/system/api/v1/site/import/notion"],
     ["@system/ploneToSite", "/system/api/v1/site/import/plone"],
@@ -103,6 +104,12 @@ describe("HAXcms site import services", () => {
     const vitepress = MicroFrontendRegistry.get("@system/vitepressToSite");
     expect(vitepress.params).to.have.property("repoUrl");
     expect(vitepress.title).to.equal("VitePress to Site");
+  });
+
+  it("asks the Quarto importer for a repoUrl, as the chooser sends", () => {
+    const quarto = MicroFrontendRegistry.get("@system/quartoToSite");
+    expect(quarto.params).to.have.property("repoUrl");
+    expect(quarto.title).to.equal("Quarto to Site");
   });
 });
 

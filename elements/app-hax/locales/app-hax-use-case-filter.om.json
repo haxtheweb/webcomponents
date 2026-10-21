@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Galchii OpenStax",
   "openstaxImportPrompt": "URL kitaaba OpenStax",
   "vitepressImportDescription": "Ripoo galmee VitePress gara marsariitii HAX haaraatti galchi",
-  "vitepressImportPrompt": "URL ripoo git VitePress"
+  "vitepressImportPrompt": "URL ripoo git VitePress",
+  "quartoImportDescription": "Ripoo galmee Quarto gara marsariitii HAX haaraatti galchi",
+  "quartoImportPrompt": "URL ripoo git Quarto"
 }

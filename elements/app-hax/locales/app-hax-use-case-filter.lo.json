@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "ນຳເຂົ້າ OpenStax",
   "openstaxImportPrompt": "URL ຂອງປຶ້ມ OpenStax",
   "vitepressImportDescription": "ນຳເຂົ້າ repo ເອກະສານ VitePress ເຂົ້າໃນເວັບໄຊ HAX ໃໝ່",
-  "vitepressImportPrompt": "URL ຂອງ repo git VitePress"
+  "vitepressImportPrompt": "URL ຂອງ repo git VitePress",
+  "quartoImportDescription": "ນຳເຂົ້າ repo ເອກະສານ Quarto ເຂົ້າໃນເວັບໄຊ HAX ໃໝ່",
+  "quartoImportPrompt": "URL ຂອງ repo git Quarto"
 }

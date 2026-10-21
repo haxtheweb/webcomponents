@@ -1483,4 +1483,18 @@ describe("AppHaxUseCaseFilter import cards", () => {
       "/system/api/v1/site/import/vitepress",
     );
   });
+
+  it("offers Quarto as a url import on the quarto endpoint", () => {
+    const quarto = importItems.find((item) => item.importType === "quarto");
+    expect(quarto, "a Quarto import card").to.exist;
+    expect(quarto.importKind).to.equal("url");
+    expect(quarto.callback).to.equal("@system/quartoToSite");
+    expect(quarto.param).to.equal("repoUrl");
+    expect(quarto.prompt).to.equal("URL for the Quarto git repo");
+    expect(quarto.useCaseTitle).to.equal("Quarto");
+    expect(quarto.useCaseTag).to.include("Import");
+    expect(MicroFrontendRegistry.get(quarto.callback).endpoint).to.equal(
+      "/system/api/v1/site/import/quarto",
+    );
+  });
 });

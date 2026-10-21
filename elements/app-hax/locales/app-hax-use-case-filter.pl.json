@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Import OpenStax",
   "openstaxImportPrompt": "URL książki OpenStax",
   "vitepressImportDescription": "Importuj repozytorium dokumentacji VitePress do nowej witryny HAX",
-  "vitepressImportPrompt": "URL repozytorium git VitePress"
+  "vitepressImportPrompt": "URL repozytorium git VitePress",
+  "quartoImportDescription": "Importuj repozytorium dokumentacji Quarto do nowej witryny HAX",
+  "quartoImportPrompt": "URL repozytorium git Quarto"
 }

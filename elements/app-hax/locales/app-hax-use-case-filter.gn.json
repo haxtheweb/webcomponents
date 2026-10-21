@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax gueru",
   "openstaxImportPrompt": "URL OpenStax arandukápe g̃uarã",
   "vitepressImportDescription": "Egueru peteĩ VitePress kuatia ñongatuha tenda HAX pyahúpe",
-  "vitepressImportPrompt": "URL VitePress git ñongatuhápe g̃uarã"
+  "vitepressImportPrompt": "URL VitePress git ñongatuhápe g̃uarã",
+  "quartoImportDescription": "Egueru peteĩ Quarto kuatia ñongatuha tenda HAX pyahúpe",
+  "quartoImportPrompt": "URL Quarto git ñongatuhápe g̃uarã"
 }

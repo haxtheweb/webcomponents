@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax ইমপোর্ট",
   "openstaxImportPrompt": "OpenStax বইয়ের URL",
   "vitepressImportDescription": "নতুন HAX সাইটে একটি VitePress ডকস রিপো ইমপোর্ট করুন",
-  "vitepressImportPrompt": "VitePress git রিপোর URL"
+  "vitepressImportPrompt": "VitePress git রিপোর URL",
+  "quartoImportDescription": "নতুন HAX সাইটে একটি Quarto ডকস রিপো ইমপোর্ট করুন",
+  "quartoImportPrompt": "Quarto git রিপোর URL"
 }

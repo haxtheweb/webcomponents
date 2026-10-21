@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax ආයාතය",
   "openstaxImportPrompt": "OpenStax පොත සඳහා URL",
   "vitepressImportDescription": "නව HAX අඩවියකට VitePress ලේඛන ගබඩාවක් ආයාත කරන්න",
-  "vitepressImportPrompt": "VitePress git ගබඩාව සඳහා URL"
+  "vitepressImportPrompt": "VitePress git ගබඩාව සඳහා URL",
+  "quartoImportDescription": "නව HAX අඩවියකට Quarto ලේඛන ගබඩාවක් ආයාත කරන්න",
+  "quartoImportPrompt": "Quarto git ගබඩාව සඳහා URL"
 }

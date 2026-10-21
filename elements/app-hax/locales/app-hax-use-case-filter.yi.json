@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax אימפּאָרט",
   "openstaxImportPrompt": "URL פֿונעם OpenStax בוך",
   "vitepressImportDescription": "אימפּאָרטיר אַ VitePress דאָקומענטאַציע־רעפּאָ אין אַ נײַ HAX וועבזײַטל",
-  "vitepressImportPrompt": "URL פֿונעם VitePress git רעפּאָ"
+  "vitepressImportPrompt": "URL פֿונעם VitePress git רעפּאָ",
+  "quartoImportDescription": "אימפּאָרטיר אַ Quarto דאָקומענטאַציע־רעפּאָ אין אַ נײַ HAX וועבזײַטל",
+  "quartoImportPrompt": "URL פֿונעם Quarto git רעפּאָ"
 }

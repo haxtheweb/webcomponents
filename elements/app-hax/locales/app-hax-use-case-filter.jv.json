@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Impor OpenStax",
   "openstaxImportPrompt": "URL kanggo buku OpenStax",
   "vitepressImportDescription": "Impor repo dokumen VitePress menyang situs HAX anyar",
-  "vitepressImportPrompt": "URL kanggo repo git VitePress"
+  "vitepressImportPrompt": "URL kanggo repo git VitePress",
+  "quartoImportDescription": "Impor repo dokumen Quarto menyang situs HAX anyar",
+  "quartoImportPrompt": "URL kanggo repo git Quarto"
 }

@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Воридоти OpenStax",
   "openstaxImportPrompt": "URL-и китоби OpenStax",
   "vitepressImportDescription": "Воридоти анбори ҳуҷҷатҳои VitePress ба сомонаи нави HAX",
-  "vitepressImportPrompt": "URL-и анбори git-и VitePress"
+  "vitepressImportPrompt": "URL-и анбори git-и VitePress",
+  "quartoImportDescription": "Воридоти анбори ҳуҷҷатҳои Quarto ба сомонаи нави HAX",
+  "quartoImportPrompt": "URL-и анбори git-и Quarto"
 }

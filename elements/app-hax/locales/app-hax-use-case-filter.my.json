@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax တင်သွင်းမှု",
   "openstaxImportPrompt": "OpenStax စာအုပ်၏ URL",
   "vitepressImportDescription": "VitePress docs repo ကို HAX ဆိုက်အသစ်သို့ တင်သွင်းရန်",
-  "vitepressImportPrompt": "VitePress git repo ၏ URL"
+  "vitepressImportPrompt": "VitePress git repo ၏ URL",
+  "quartoImportDescription": "Quarto docs repo ကို HAX ဆိုက်အသစ်သို့ တင်သွင်းရန်",
+  "quartoImportPrompt": "Quarto git repo ၏ URL"
 }

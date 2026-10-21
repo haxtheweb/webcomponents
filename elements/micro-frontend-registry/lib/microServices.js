@@ -395,6 +395,16 @@ export function enableHAXcmsServices() {
       repoUrl: "Location of the VitePress git repo",
     },
   });
+  // quartoToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/system/api/v1/site/import/quarto",
+    name: "@system/quartoToSite",
+    title: "Quarto to Site",
+    description: "Convert a Quarto book or website repo to Site schema",
+    params: {
+      repoUrl: "Location of the Quarto git repo",
+    },
+  });
   // courseStats
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/courseStats",
