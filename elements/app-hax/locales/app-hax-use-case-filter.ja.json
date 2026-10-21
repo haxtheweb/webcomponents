@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax インポート",
   "openstaxImportPrompt": "OpenStax の書籍の URL",
   "vitepressImportDescription": "VitePress のドキュメントリポジトリを新しい HAX サイトにインポート",
-  "vitepressImportPrompt": "VitePress の git リポジトリの URL"
+  "vitepressImportPrompt": "VitePress の git リポジトリの URL",
+  "quartoImportDescription": "Quarto のドキュメントリポジトリを新しい HAX サイトにインポート",
+  "quartoImportPrompt": "Quarto の git リポジトリの URL"
 }

@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Kulowetsa OpenStax",
   "openstaxImportPrompt": "URL ya buku la OpenStax",
   "vitepressImportDescription": "Lowetsani repo ya zolemba za VitePress mu webusayiti yatsopano ya HAX",
-  "vitepressImportPrompt": "URL ya repo ya git ya VitePress"
+  "vitepressImportPrompt": "URL ya repo ya git ya VitePress",
+  "quartoImportDescription": "Lowetsani repo ya zolemba za Quarto mu webusayiti yatsopano ya HAX",
+  "quartoImportPrompt": "URL ya repo ya git ya Quarto"
 }

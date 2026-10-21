@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Kupinza OpenStax",
   "openstaxImportPrompt": "URL yebhuku reOpenStax",
   "vitepressImportDescription": "Pinza repo yezvinyorwa zveVitePress musaiti itsva yeHAX",
-  "vitepressImportPrompt": "URL ye git repo yeVitePress"
+  "vitepressImportPrompt": "URL ye git repo yeVitePress",
+  "quartoImportDescription": "Pinza repo yezvinyorwa zveQuarto musaiti itsva yeHAX",
+  "quartoImportPrompt": "URL ye git repo yeQuarto"
 }

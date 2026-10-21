@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStaxi import",
   "openstaxImportPrompt": "OpenStaxi raamatu URL",
   "vitepressImportDescription": "Impordi VitePressi dokumentatsioonihoidla uude HAX-i saiti",
-  "vitepressImportPrompt": "VitePressi git-hoidla URL"
+  "vitepressImportPrompt": "VitePressi git-hoidla URL",
+  "quartoImportDescription": "Impordi Quartoi dokumentatsioonihoidla uude HAX-i saiti",
+  "quartoImportPrompt": "Quartoi git-hoidla URL"
 }

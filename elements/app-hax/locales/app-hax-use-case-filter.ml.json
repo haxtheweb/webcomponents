@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax ഇമ്പോർട്ട്",
   "openstaxImportPrompt": "OpenStax പുസ്തകത്തിന്റെ URL",
   "vitepressImportDescription": "ഒരു VitePress ഡോക്സ് റിപ്പോ പുതിയ HAX സൈറ്റിലേക്ക് ഇമ്പോർട്ട് ചെയ്യുക",
-  "vitepressImportPrompt": "VitePress git റിപ്പോയുടെ URL"
+  "vitepressImportPrompt": "VitePress git റിപ്പോയുടെ URL",
+  "quartoImportDescription": "ഒരു Quarto ഡോക്സ് റിപ്പോ പുതിയ HAX സൈറ്റിലേക്ക് ഇമ്പോർട്ട് ചെയ്യുക",
+  "quartoImportPrompt": "Quarto git റിപ്പോയുടെ URL"
 }

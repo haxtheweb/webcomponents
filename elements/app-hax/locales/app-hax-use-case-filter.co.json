@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Impurtazione OpenStax",
   "openstaxImportPrompt": "URL di u libru OpenStax",
   "vitepressImportDescription": "Impurtà un dipositu di ducumentazione VitePress in un novu situ HAX",
-  "vitepressImportPrompt": "URL di u dipositu git VitePress"
+  "vitepressImportPrompt": "URL di u dipositu git VitePress",
+  "quartoImportDescription": "Impurtà un dipositu di ducumentazione Quarto in un novu situ HAX",
+  "quartoImportPrompt": "URL di u dipositu git Quarto"
 }

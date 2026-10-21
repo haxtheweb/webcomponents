@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Mewnforio OpenStax",
   "openstaxImportPrompt": "URL y llyfr OpenStax",
   "vitepressImportDescription": "Mewnforio ystorfa ddogfennau VitePress i wefan HAX newydd",
-  "vitepressImportPrompt": "URL ystorfa git VitePress"
+  "vitepressImportPrompt": "URL ystorfa git VitePress",
+  "quartoImportDescription": "Mewnforio ystorfa ddogfennau Quarto i wefan HAX newydd",
+  "quartoImportPrompt": "URL ystorfa git Quarto"
 }

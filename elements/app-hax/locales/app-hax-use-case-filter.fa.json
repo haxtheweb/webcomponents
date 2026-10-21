@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "واردسازی OpenStax",
   "openstaxImportPrompt": "URL کتاب OpenStax",
   "vitepressImportDescription": "واردسازی مخزن مستندات VitePress در یک سایت HAX جدید",
-  "vitepressImportPrompt": "URL مخزن git مربوط به VitePress"
+  "vitepressImportPrompt": "URL مخزن git مربوط به VitePress",
+  "quartoImportDescription": "واردسازی مخزن مستندات Quarto در یک سایت HAX جدید",
+  "quartoImportPrompt": "URL مخزن git مربوط به Quarto"
 }

@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Kawemai OpenStax",
   "openstaxImportPrompt": "URL mō te pukapuka OpenStax",
   "vitepressImportDescription": "Kawemai i tētahi repo tuhinga VitePress ki tētahi pae HAX hou",
-  "vitepressImportPrompt": "URL mō te repo git VitePress"
+  "vitepressImportPrompt": "URL mō te repo git VitePress",
+  "quartoImportDescription": "Kawemai i tētahi repo tuhinga Quarto ki tētahi pae HAX hou",
+  "quartoImportPrompt": "URL mō te repo git Quarto"
 }

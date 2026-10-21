@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Shigo da OpenStax",
   "openstaxImportPrompt": "URL na littafin OpenStax",
   "vitepressImportDescription": "Shigo da ma'ajiyar takardun VitePress zuwa sabon gidan yanar gizo na HAX",
-  "vitepressImportPrompt": "URL na ma'ajiyar git ta VitePress"
+  "vitepressImportPrompt": "URL na ma'ajiyar git ta VitePress",
+  "quartoImportDescription": "Shigo da ma'ajiyar takardun Quarto zuwa sabon gidan yanar gizo na HAX",
+  "quartoImportPrompt": "URL na ma'ajiyar git ta Quarto"
 }

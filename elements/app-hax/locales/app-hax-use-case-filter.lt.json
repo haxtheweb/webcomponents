@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax importas",
   "openstaxImportPrompt": "OpenStax knygos URL",
   "vitepressImportDescription": "Importuoti VitePress dokumentacijos saugyklą į naują HAX svetainę",
-  "vitepressImportPrompt": "VitePress git saugyklos URL"
+  "vitepressImportPrompt": "VitePress git saugyklos URL",
+  "quartoImportDescription": "Importuoti Quarto dokumentacijos saugyklą į naują HAX svetainę",
+  "quartoImportPrompt": "Quarto git saugyklos URL"
 }

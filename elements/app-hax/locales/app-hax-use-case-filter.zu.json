@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Ukungenisa kwe-OpenStax",
   "openstaxImportPrompt": "I-URL yencwadi ye-OpenStax",
   "vitepressImportDescription": "Ngenisa i-repo yemibhalo ye-VitePress kusayithi entsha ye-HAX",
-  "vitepressImportPrompt": "I-URL ye-repo ye-git ye-VitePress"
+  "vitepressImportPrompt": "I-URL ye-repo ye-git ye-VitePress",
+  "quartoImportDescription": "Ngenisa i-repo yemibhalo ye-Quarto kusayithi entsha ye-HAX",
+  "quartoImportPrompt": "I-URL ye-repo ye-git ye-Quarto"
 }

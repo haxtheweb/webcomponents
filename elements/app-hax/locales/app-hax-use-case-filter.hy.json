@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax ներմուծում",
   "openstaxImportPrompt": "OpenStax գրքի URL-ը",
   "vitepressImportDescription": "Ներմուծել VitePress փաստաթղթերի պահոց նոր HAX կայքում",
-  "vitepressImportPrompt": "VitePress git պահոցի URL-ը"
+  "vitepressImportPrompt": "VitePress git պահոցի URL-ը",
+  "quartoImportDescription": "Ներմուծել Quarto փաստաթղթերի պահոց նոր HAX կայքում",
+  "quartoImportPrompt": "Quarto git պահոցի URL-ը"
 }

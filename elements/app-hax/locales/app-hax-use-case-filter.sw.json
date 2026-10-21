@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Uingizaji wa OpenStax",
   "openstaxImportPrompt": "URL ya kitabu cha OpenStax",
   "vitepressImportDescription": "Ingiza hazina ya nyaraka za VitePress kwenye tovuti mpya ya HAX",
-  "vitepressImportPrompt": "URL ya hazina ya git ya VitePress"
+  "vitepressImportPrompt": "URL ya hazina ya git ya VitePress",
+  "quartoImportDescription": "Ingiza hazina ya nyaraka za Quarto kwenye tovuti mpya ya HAX",
+  "quartoImportPrompt": "URL ya hazina ya git ya Quarto"
 }

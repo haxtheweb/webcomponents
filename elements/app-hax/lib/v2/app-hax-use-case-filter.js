@@ -133,6 +133,8 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       vitepressImportDescription:
         "Import a VitePress docs repo into a new HAX site",
       vitepressImportPrompt: "URL for the VitePress git repo",
+      quartoImportDescription: "Import a Quarto docs repo into a new HAX site",
+      quartoImportPrompt: "URL for the Quarto git repo",
     };
     this.registerLocalization({
       context: this,
@@ -1765,6 +1767,22 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           { icon: "mdi-social:github-circle", tooltip: this.t.gitBasedImport },
         ],
         useCaseTag: ["Import", "VitePress"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "url",
+        importType: "quarto",
+        callback: "@system/quartoToSite",
+        prompt: this.t.quartoImportPrompt,
+        param: "repoUrl",
+        useCaseTitle: "Quarto",
+        useCaseImage: "",
+        useCaseDescription: this.t.quartoImportDescription,
+        useCaseIcon: [
+          { icon: "mdi-social:github-circle", tooltip: this.t.gitBasedImport },
+        ],
+        useCaseTag: ["Import", "Quarto"],
         demoLink: "#",
       },
     ];

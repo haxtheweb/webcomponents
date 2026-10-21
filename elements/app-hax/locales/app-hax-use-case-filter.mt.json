@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Importazzjoni OpenStax",
   "openstaxImportPrompt": "URL għall-ktieb OpenStax",
   "vitepressImportDescription": "Importa repo tad-dokumenti VitePress f'sit HAX ġdid",
-  "vitepressImportPrompt": "URL għar-repo git ta' VitePress"
+  "vitepressImportPrompt": "URL għar-repo git ta' VitePress",
+  "quartoImportDescription": "Importa repo tad-dokumenti Quarto f'sit HAX ġdid",
+  "quartoImportPrompt": "URL għar-repo git ta' Quarto"
 }

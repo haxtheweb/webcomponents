@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Mbubata OpenStax",
   "openstaxImportPrompt": "URL maka akwụkwọ OpenStax",
   "vitepressImportDescription": "Bubata repo akwụkwọ VitePress n'ime saịtị HAX ọhụrụ",
-  "vitepressImportPrompt": "URL maka repo git VitePress"
+  "vitepressImportPrompt": "URL maka repo git VitePress",
+  "quartoImportDescription": "Bubata repo akwụkwọ Quarto n'ime saịtị HAX ọhụrụ",
+  "quartoImportPrompt": "URL maka repo git Quarto"
 }

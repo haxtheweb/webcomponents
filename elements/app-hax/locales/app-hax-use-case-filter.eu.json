@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax inportazioa",
   "openstaxImportPrompt": "OpenStax liburuaren URLa",
   "vitepressImportDescription": "Inportatu VitePress dokumentazio-biltegi bat HAX gune berri batera",
-  "vitepressImportPrompt": "VitePress git biltegiaren URLa"
+  "vitepressImportPrompt": "VitePress git biltegiaren URLa",
+  "quartoImportDescription": "Inportatu Quarto dokumentazio-biltegi bat HAX gune berri batera",
+  "quartoImportPrompt": "Quarto git biltegiaren URLa"
 }

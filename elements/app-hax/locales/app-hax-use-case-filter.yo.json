@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "Ìkówọlé OpenStax",
   "openstaxImportPrompt": "URL fún ìwé OpenStax",
   "vitepressImportDescription": "Kó ibi ìpamọ́ ìwé VitePress wọlé sínú ojú òpó HAX tuntun",
-  "vitepressImportPrompt": "URL fún ibi ìpamọ́ git VitePress"
+  "vitepressImportPrompt": "URL fún ibi ìpamọ́ git VitePress",
+  "quartoImportDescription": "Kó ibi ìpamọ́ ìwé Quarto wọlé sínú ojú òpó HAX tuntun",
+  "quartoImportPrompt": "URL fún ibi ìpamọ́ git Quarto"
 }

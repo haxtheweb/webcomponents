@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax आयात",
   "openstaxImportPrompt": "OpenStax पुस्तकाची URL",
   "vitepressImportDescription": "VitePress दस्तऐवज रेपो नवीन HAX साइटमध्ये आयात करा",
-  "vitepressImportPrompt": "VitePress git रेपोची URL"
+  "vitepressImportPrompt": "VitePress git रेपोची URL",
+  "quartoImportDescription": "Quarto दस्तऐवज रेपो नवीन HAX साइटमध्ये आयात करा",
+  "quartoImportPrompt": "Quarto git रेपोची URL"
 }

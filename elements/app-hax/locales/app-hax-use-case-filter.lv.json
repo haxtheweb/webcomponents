@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax importēšana",
   "openstaxImportPrompt": "OpenStax grāmatas URL",
   "vitepressImportDescription": "Importēt VitePress dokumentācijas repozitoriju jaunā HAX vietnē",
-  "vitepressImportPrompt": "VitePress git repozitorija URL"
+  "vitepressImportPrompt": "VitePress git repozitorija URL",
+  "quartoImportDescription": "Importēt Quarto dokumentācijas repozitoriju jaunā HAX vietnē",
+  "quartoImportPrompt": "Quarto git repozitorija URL"
 }

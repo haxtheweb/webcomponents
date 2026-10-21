@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax 가져오기",
   "openstaxImportPrompt": "OpenStax 책 URL",
   "vitepressImportDescription": "VitePress 문서 저장소를 새 HAX 사이트로 가져오기",
-  "vitepressImportPrompt": "VitePress git 저장소 URL"
+  "vitepressImportPrompt": "VitePress git 저장소 URL",
+  "quartoImportDescription": "Quarto 문서 저장소를 새 HAX 사이트로 가져오기",
+  "quartoImportPrompt": "Quarto git 저장소 URL"
 }

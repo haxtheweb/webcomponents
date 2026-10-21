@@ -98,5 +98,7 @@
   "openstaxImportTooltip": "OpenStax ማስመጣት",
   "openstaxImportPrompt": "የOpenStax መጽሐፉ URL",
   "vitepressImportDescription": "የVitePress ሰነዶች ማከማቻን ወደ አዲስ የHAX ድረ-ገጽ አስመጣ",
-  "vitepressImportPrompt": "የVitePress git ማከማቻ URL"
+  "vitepressImportPrompt": "የVitePress git ማከማቻ URL",
+  "quartoImportDescription": "የQuarto ሰነዶች ማከማቻን ወደ አዲስ የHAX ድረ-ገጽ አስመጣ",
+  "quartoImportPrompt": "የQuarto git ማከማቻ URL"
 }
