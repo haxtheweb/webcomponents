@@ -3,8 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { css, html } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/a11y-media-player/a11y-media-player.js";
+import {
+  a11yMediaFallbackHTML,
+  removeA11yMediaFallback,
+} from "@haxtheweb/a11y-media-player/lib/a11y-media-fallback.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { MediaBehaviorsVideo } from "@haxtheweb/media-behaviors/media-behaviors.js";
@@ -137,10 +142,12 @@ class VideoPlayer extends IntersectionObserverMixin(
                           loading="lazy"
                           resource="${this.schemaResourceID}-video"
                           title="${this.mediaTitle || "Embedded video player"}"
-                          .src="${(this.sourceData &&
-                            this.sourceData[0] &&
-                            this.sourceData[0].src) ||
-                          undefined}"
+                          src="${ifDefined(
+                            (this.sourceData &&
+                              this.sourceData[0] &&
+                              this.sourceData[0].src) ||
+                              undefined,
+                          )}"
                           width="${this.width}"
                           height="${this.height}"
                           frameborder="0"
@@ -1154,7 +1161,32 @@ class VideoPlayer extends IntersectionObserverMixin(
       postProcessNodeToContent: "haxpostProcessNodeToContent",
       inlineContextMenu: "haxinlineContextMenu",
       mediaSourceUpdated: "haxmediaSourceUpdated",
+      progressiveEnhancement: "haxprogressiveEnhancement",
+      editModeChanged: "haxeditModeChanged",
     };
+  }
+  /**
+   * Hook for HAX progressive enhancement: links to the media and its text
+   * tracks, for RSS, markdown, bots and readers without JavaScript.
+   */
+  haxprogressiveEnhancement(_el) {
+    return a11yMediaFallbackHTML({
+      source: this.source,
+      sources: this.sources,
+      youtubeId: this.youtubeId,
+      mediaTitle: this.mediaTitle,
+      tracks: this.tracks,
+      track: this.track,
+    });
+  }
+  /**
+   * Drop the saved fallback while editing; the hook writes a fresh one on save
+   * so a stale copy is never kept next to it.
+   */
+  haxeditModeChanged(value) {
+    if (value) {
+      removeA11yMediaFallback(this);
+    }
   }
   /**
    * #3050: a file backing the poster image was modified in place. Refresh the
