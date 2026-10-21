@@ -11,6 +11,7 @@ npm-debug.log
 *-*.tgz
 analysis.json
 yarn-error.log
+package-lock.json
 .cache
 .yarn
 test/index.html
