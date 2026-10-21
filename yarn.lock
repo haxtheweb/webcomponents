@@ -1753,17 +1753,6 @@
     twig "3.0.0"
     winston "3.19.0"
 
-"@haxtheweb/editable-outline@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/editable-outline/-/editable-outline-9.0.1.tgz#4cb510589a7eb6e85c5149b1f38fce136b24980d"
-  integrity sha512-d5Th/xqG8ogc9fRKIGYdxXBGtnOlt+0SrPXXA4TQRFhvP0fhgfN1Y9lBj12+QV7zHe7icPLZJ3WVs72Ha3RbrQ==
-  dependencies:
-    "@haxtheweb/json-outline-schema" "^9.0.1"
-    "@haxtheweb/simple-icon" "^9.0.1"
-    "@haxtheweb/utils" "^9.0.1"
-    "@polymer/iron-a11y-keys" "^3.0.1"
-    "@polymer/polymer" "^3.5.1"
-
 "@haxtheweb/hax-iconset@^9.0.1":
   version "26.8.0"
   dependencies:
@@ -1810,14 +1799,6 @@
     ws "^8.21.0"
     xml2js "^0.6.2"
     yaml "^2.9.0"
-
-"@haxtheweb/json-editor@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/json-editor/-/json-editor-9.0.1.tgz#3e3a599e228de0312a78ec992e32e6843b6665c1"
-  integrity sha512-wn9xQQKwvqDAcYR9ECF6jqwhCiCzlOI4QLS07/dvXBbCcPNTqrW2UX30M90AEg0oI3w5SxgwOMMdXsLWE8m6GQ==
-  dependencies:
-    "@polymer/paper-input" "^3.0.2"
-    lit "^3.1.4"
 
 "@haxtheweb/json-outline-schema@^9.0.1":
   version "26.8.0"
