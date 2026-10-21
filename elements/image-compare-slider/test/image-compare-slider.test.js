@@ -72,6 +72,7 @@ describe("image-compare-slider behavior", () => {
       ></image-compare-slider>`,
     );
     expect(el.haxHooks()).to.deep.equal({
+      progressiveEnhancement: "haxprogressiveEnhancement",
       mediaSourceUpdated: "haxmediaSourceUpdated",
     });
   });
@@ -120,5 +121,32 @@ describe("image-compare-slider behavior", () => {
         "lib/image-compare-slider.haxProperties.json",
       ),
     ).to.be.true;
+  });
+});
+
+describe("image-compare-slider progressive enhancement", () => {
+  it("returns both images with escaped alt text", async () => {
+    const el = await fixture(
+      html`<image-compare-slider
+        top-src="a.png"
+        top-alt='say "hi"'
+        bottom-src="b.png"
+        bottom-alt="after"
+      ></image-compare-slider>`,
+    );
+    const markup = el.haxprogressiveEnhancement(el);
+    expect(markup).to.contain('src="a.png"');
+    expect(markup).to.contain("say &quot;hi&quot;");
+    expect(markup).to.contain('src="b.png"');
+    expect(el.haxHooks().progressiveEnhancement).to.equal(
+      "haxprogressiveEnhancement",
+    );
+  });
+
+  it("skips images without a source", async () => {
+    const el = await fixture(
+      html`<image-compare-slider top-src="a.png"></image-compare-slider>`,
+    );
+    expect(el.haxprogressiveEnhancement(el).match(/<img/g).length).to.equal(1);
   });
 });

@@ -132,6 +132,23 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
+  /**
+   * Specialized functions / life-cycle via haxHooks
+   */
+  haxHooks() {
+    return {
+      progressiveEnhancement: "haxprogressiveEnhancement",
+    };
+  }
+  /**
+   * Hook for HAX progressive enhancement: the number it counts up to, for RSS,
+   * bots and readers without JavaScript.
+   */
+  haxprogressiveEnhancement(_el) {
+    return this.end == null || Number.isNaN(Number(this.end))
+      ? ""
+      : `<span>${Number(this.end)}</span>`;
+  }
   static get tag() {
     return "count-up";
   }

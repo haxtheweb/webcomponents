@@ -501,3 +501,26 @@ describe("wikipedia-query test", () => {
     });
   });
 });
+
+describe("wikipedia-query progressive enhancement", () => {
+  it("returns a link to the article without fetching it", async () => {
+    const el = await fixture(
+      html`<wikipedia-query
+        search="Alan Turing"
+        language="en"
+      ></wikipedia-query>`,
+    );
+    const markup = el.haxprogressiveEnhancement(el);
+    expect(markup).to.contain("https://en.wikipedia.org/wiki/Alan_Turing");
+    expect(el.haxHooks().progressiveEnhancement).to.equal(
+      "haxprogressiveEnhancement",
+    );
+  });
+
+  it("returns nothing without a search term", async () => {
+    const el = await fixture(html`<wikipedia-query></wikipedia-query>`);
+    el.search = "";
+    el.title = "";
+    expect(el.haxprogressiveEnhancement(el)).to.equal("");
+  });
+});

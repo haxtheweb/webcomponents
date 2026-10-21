@@ -505,3 +505,20 @@ describe("count-up error handling", () => {
     expect(longEl._countUp).to.exist;
   });
 });
+
+describe("count-up progressive enhancement", () => {
+  it("names the hook in haxHooks", async () => {
+    const el = await fixture(html`<count-up end="42"></count-up>`);
+    expect(el.haxHooks().progressiveEnhancement).to.equal(
+      "haxprogressiveEnhancement",
+    );
+  });
+
+  it("returns the final number, or nothing without one", async () => {
+    const el = await fixture(html`<count-up end="42"></count-up>`);
+    expect(el.haxprogressiveEnhancement(el)).to.equal("<span>42</span>");
+    const none = await fixture(html`<count-up></count-up>`);
+    none.end = undefined;
+    expect(none.haxprogressiveEnhancement(none)).to.equal("");
+  });
+});
