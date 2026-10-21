@@ -1,0 +1,887 @@
+{
+  "elements/a11y-compare-image/a11y-compare-image.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/a11y-media-player/lib/a11y-media-play-button.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/absolute-position-behavior/absolute-position-behavior.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/absolute-position-behavior/lib/absolute-position-state-manager.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/aframe-player/aframe-player.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/app-hax/app-hax.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/app-hax/lib/v2/app-hax-use-case-filter.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/app-hax/lib/v2/app-hax-user-access-modal.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/awesome-explosion/awesome-explosion.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/beaker-broker/beaker-broker.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/chartist-render/chartist-render.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/chat-agent/lib/chat-agent-store.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/citation-element/citation-element.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/clean-one/clean-one.js": {
+    "eqeqeq": {
+      "count": 5
+    }
+  },
+  "elements/clean-portfolio-theme/clean-portfolio-theme.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/clean-two/clean-two.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/cms-hax/cms-hax.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/code-editor/code-editor.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/code-editor/lib/code-pen-button.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/code-editor/lib/monaco-element/monaco-element.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/code-sample/code-sample.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/count-up/count-up.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/course-design/lib/learning-component.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/course-model/course-model.js": {
+    "eqeqeq": {
+      "count": 8
+    }
+  },
+  "elements/csv-render/csv-render.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/editable-table/lib/editable-table-display.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/editable-table/lib/editable-table-edit.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/editable-table/lib/editable-table-filter.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/editable-table/lib/editable-table-sort.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/elmsln-loading/elmsln-loading.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/full-width-image/full-width-image.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/glossy-portfolio-theme/lib/glossy-portfolio-breadcrumb.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/grade-book/grade-book.js": {
+    "eqeqeq": {
+      "count": 13
+    }
+  },
+  "elements/grade-book/lib/GradeBookUIPieces.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/grade-book/lib/grade-book-lite.js": {
+    "eqeqeq": {
+      "count": 10
+    }
+  },
+  "elements/grade-book/lib/letter-grade-picker.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/h-a-x/h-a-x.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/hal-9000/hal-9000.js": {
+    "eqeqeq": {
+      "count": 5
+    }
+  },
+  "elements/hax-body-behaviors/lib/HAXWiring.js": {
+    "eqeqeq": {
+      "count": 7
+    }
+  },
+  "elements/hax-body/hax-body.js": {
+    "eqeqeq": {
+      "count": 24
+    }
+  },
+  "elements/hax-body/lib/hax-app-picker.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/hax-body/lib/hax-app-search.js": {
+    "eqeqeq": {
+      "count": 6
+    }
+  },
+  "elements/hax-body/lib/hax-context-item-textop.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/hax-body/lib/hax-export-dialog.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/hax-body/lib/hax-gizmo-browser.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/hax-body/lib/hax-map.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/hax-body/lib/hax-picker.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/hax-body/lib/hax-plate-context.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/hax-body/lib/hax-store.js": {
+    "eqeqeq": {
+      "count": 40
+    }
+  },
+  "elements/hax-body/lib/hax-tray-button.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/hax-body/lib/hax-tray.js": {
+    "eqeqeq": {
+      "count": 33
+    }
+  },
+  "elements/hax-body/lib/hax-upload-field.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/hax-body/lib/hax-view-source.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/haxcms-elements/lib/core/HAXCMSLitElementTheme.js": {
+    "eqeqeq": {
+      "count": 6
+    }
+  },
+  "elements/haxcms-elements/lib/core/HAXCMSThemeWiring.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/backends/haxcms-backend-demo.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/backends/haxcms-backend-nodejs.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/core/backends/haxcms-backend-php.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-appearance-admin-dialog.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-editor-builder.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-site-builder.js": {
+    "eqeqeq": {
+      "count": 11
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-site-dashboard.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-site-editor-ui.js": {
+    "eqeqeq": {
+      "count": 16
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-site-editor.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-site-insights.js": {
+    "eqeqeq": {
+      "count": 11
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-site-store.js": {
+    "eqeqeq": {
+      "count": 13
+    }
+  },
+  "elements/haxcms-elements/lib/core/haxcms-views-admin-dialog.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/micros/haxcms-button-add.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/core/micros/haxcms-page-operations.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/active-item/site-active-fields.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/active-item/site-active-tags.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/active-item/site-active-title.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/active-item/site-git-corner.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/blocks/site-outline-block.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/blocks/site-recent-content-block.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/magic/active-when-visible.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/magic/site-collection-list.js": {
+    "eqeqeq": {
+      "count": 5
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/navigation/site-dot-indicator.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/navigation/site-menu-button.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/navigation/site-top-menu.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/query/site-query.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/query/site-render-query.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/site/site-random-content.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/site/site-remote-content.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/site/site-rss-button.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/site/site-search.js": {
+    "eqeqeq": {
+      "count": 5
+    }
+  },
+  "elements/haxcms-elements/lib/ui-components/site/site-uuid-link.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/hexagon-loader/hexagon-loader.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/i18n-manager/i18n-manager.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/img-pan-zoom/img-pan-zoom.js": {
+    "eqeqeq": {
+      "count": 7
+    }
+  },
+  "elements/img-pan-zoom/lib/img-loader.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/json-outline-schema/json-outline-schema.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/json-outline-schema/lib/jos-render.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/jwt-login/jwt-login.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/lazy-image-helpers/lazy-image-helpers.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/license-element/license-element.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/lorem-data/lib/lorem-data-behaviors.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/lrs-elements/lib/lrs-emitter.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/lunr-search/lunr-search.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/map-menu/lib/map-menu-builder.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/map-menu/lib/map-menu-submenu.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/map-menu/map-menu.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/matching-question/matching-question.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/media-behaviors/media-behaviors.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/media-image/media-image.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/multiple-choice/lib/QuestionElement.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/oer-schema/oer-schema.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/outline-designer/outline-designer.js": {
+    "eqeqeq": {
+      "count": 15
+    }
+  },
+  "elements/outline-player/outline-player.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/page-break/lib/page-anchor.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/page-break/lib/page-break-outline.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/page-break/page-break.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/page-contents-menu/page-contents-menu.js": {
+    "eqeqeq": {
+      "count": 6
+    }
+  },
+  "elements/page-flag/lib/page-flag-comment.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/paper-input-flagged/paper-input-flagged.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/parallax-image/parallax-image.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/play-list/play-list.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/polaris-theme/lib/polaris-mark.js": {
+    "eqeqeq": {
+      "count": 5
+    }
+  },
+  "elements/portal-launcher/portal-launcher.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/product-card/lib/hax-element-card-list.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/product-card/lib/hax-element-list-selector.js": {
+    "eqeqeq": {
+      "count": 11
+    }
+  },
+  "elements/promise-progress/lib/promise-progress-lite.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/relative-heading/lib/relative-heading-state-manager.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/responsive-grid/lib/responsive-grid-row.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/retro-card/retro-card.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/rich-text-editor/lib/buttons/rich-text-editor-source-code.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js": {
+    "eqeqeq": {
+      "count": 5
+    }
+  },
+  "elements/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/schema-behaviors/schema-behaviors.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/self-check/self-check.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-autocomplete/lib/simple-autocomplete-text-trigger.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/simple-autocomplete/simple-autocomplete.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/simple-blog/lib/simple-blog-footer.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-blog/lib/simple-blog-post.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-fields/lib/simple-fields-code.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/simple-fields/lib/simple-fields-form-lite.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-fields/lib/simple-fields-tag-list.js": {
+    "eqeqeq": {
+      "count": 4
+    }
+  },
+  "elements/simple-fields/lib/simple-fields-upload.js": {
+    "eqeqeq": {
+      "count": 7
+    }
+  },
+  "elements/simple-fields/lib/simple-fields-url-combo-item.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-fields/lib/simple-tags.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-fields/simple-fields.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/simple-filter/simple-filter.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/simple-icon-picker/simple-icon-picker.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-icon/lib/simple-iconset-demo.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/simple-img/simple-img.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-modal/lib/simple-modal-template.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-modal/simple-modal.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-picker/simple-picker.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-popover/lib/simple-popover-manager.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/simple-popover/lib/simple-popover-selection.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/simple-popover/lib/simple-tour.js": {
+    "eqeqeq": {
+      "count": 6
+    }
+  },
+  "elements/simple-toast/lib/simple-toast-el.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/simple-tooltip/simple-tooltip.js": {
+    "eqeqeq": {
+      "count": 6
+    }
+  },
+  "elements/social-share-link/social-share-link.js": {
+    "eqeqeq": {
+      "count": 2
+    }
+  },
+  "elements/sorting-question/lib/sorting-option.js": {
+    "eqeqeq": {
+      "count": 3
+    }
+  },
+  "elements/spotify-embed/spotify-embed.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/super-daemon/lib/super-daemon-search.js": {
+    "eqeqeq": {
+      "count": 11
+    }
+  },
+  "elements/super-daemon/lib/super-daemon-ui.js": {
+    "eqeqeq": {
+      "count": 11
+    }
+  },
+  "elements/super-daemon/super-daemon.js": {
+    "eqeqeq": {
+      "count": 6
+    }
+  },
+  "elements/twitter-embed/lib/twitter-embed-vanilla.js": {
+    "eqeqeq": {
+      "count": 6
+    }
+  },
+  "elements/undo-manager/undo-manager.js": {
+    "eqeqeq": {
+      "count": 6
+    }
+  },
+  "elements/unity-webgl/unity-webgl.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/user-scaffold/user-scaffold.js": {
+    "eqeqeq": {
+      "count": 5
+    }
+  },
+  "elements/utils/lib/object-path.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/utils/lib/remoteLinkBehavior.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/utils/utils.js": {
+    "eqeqeq": {
+      "count": 21
+    }
+  },
+  "elements/video-player/lib/lecture-player.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/video-player/video-player.js": {
+    "eqeqeq": {
+      "count": 6
+    }
+  },
+  "elements/wikipedia-query/wikipedia-query.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  },
+  "elements/wysiwyg-hax/wysiwyg-hax.js": {
+    "eqeqeq": {
+      "count": 1
+    }
+  }
+}
