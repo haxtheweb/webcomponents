@@ -132,6 +132,45 @@ describe("SelfReflectiveNudge test", () => {
     expect(element.nudges.length).to.equal(3);
   });
 
+  it("writes the response as a checked attribute so server output is right", async () => {
+    // ?checked is what server side rendering can express; .checked is not
+    const radios = () => element.shadowRoot.querySelectorAll("input");
+    expect(Array.from(radios()).some((r) => r.hasAttribute("checked"))).to.be
+      .false;
+    element.response = 3;
+    await element.updateComplete;
+    expect(
+      Array.from(radios()).map((radio) => radio.hasAttribute("checked")),
+    ).to.deep.equal([false, false, false, true, false]);
+  });
+
+  it("clears the selected radio when the response is reset after a click", async () => {
+    element.shadowRoot.querySelector("#option-2").click();
+    await element.updateComplete;
+    expect(element.shadowRoot.querySelector("#option-2").checked).to.be.true;
+    element.response = null;
+    await element.updateComplete;
+    const radios = Array.from(element.shadowRoot.querySelectorAll("input"));
+    expect(radios.some((radio) => radio.checked)).to.be.false;
+  });
+
+  it("keeps picking up light DOM changes after the element is moved", async () => {
+    const host = await fixture(html`<div><section></section></div>`);
+    const section = host.querySelector("section");
+    host.appendChild(element);
+    await element.updateComplete;
+    section.appendChild(element);
+    await element.updateComplete;
+    const p = globalThis.document.createElement("p");
+    p.setAttribute("data-nudge", "");
+    p.setAttribute("data-min-value", "4");
+    p.textContent = "Perfect";
+    element.appendChild(p);
+    await new Promise((resolve) => setTimeout(resolve));
+    await element.updateComplete;
+    expect(element.nudges.length).to.equal(3);
+  });
+
   it("refuses script-bearing nudge links", async () => {
     expect(element._safeLink("javascript:alert(1)")).to.equal(null);
     expect(element._safeLink("  JaVa\tScRiPt:alert(1)")).to.equal(null);

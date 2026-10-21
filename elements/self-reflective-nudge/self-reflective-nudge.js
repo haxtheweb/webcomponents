@@ -323,7 +323,7 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
                   name="response"
                   id="option-${item.value}"
                   .value="${String(item.value)}"
-                  .checked="${this.response === item.value}"
+                  ?checked="${this.response === item.value}"
                   @change="${this._optionChanged}"
                 />
                 <label for="option-${item.value}" title="${item.label}">
@@ -377,6 +377,27 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
     );
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    // HAX (or any script) can change the light DOM after first paint. Watch
+    // from connect, not first render, so it also works after the element is
+    // moved (disconnect then connect never runs firstUpdated again).
+    if (!this._observer) {
+      this._observer = new MutationObserver(() => this.loadLightDomData());
+      this._observer.observe(this, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+        attributes: true,
+        attributeFilter: ["data-min-value", "data-max-value", "data-link"],
+      });
+    }
+    // the light DOM may have changed while the element was disconnected
+    if (this.hasUpdated) {
+      this.loadLightDomData();
+    }
+  }
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -384,15 +405,22 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
     // defer a microtask so setting nudges does not schedule a second update
     // from within firstUpdated (Lit change-in-update warning)
     queueMicrotask(() => this.loadLightDomData());
-    // HAX (or any script) can change the light DOM after first paint
-    this._observer = new MutationObserver(() => this.loadLightDomData());
-    this._observer.observe(this, {
-      childList: true,
-      subtree: true,
-      characterData: true,
-      attributes: true,
-      attributeFilter: ["data-min-value", "data-max-value", "data-link"],
-    });
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    // ?checked in the template only sets the default state (and is what the
+    // server renders), so keep the live state of the radios in step with the
+    // response, e.g. when it is reset after the student has already clicked
+    if (changedProperties.has("response") || changedProperties.has("input")) {
+      this.shadowRoot
+        .querySelectorAll("input[type='radio']")
+        .forEach((radio) => {
+          radio.checked = this.response === Number(radio.value);
+        });
+    }
   }
 
   disconnectedCallback() {
