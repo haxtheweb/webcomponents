@@ -225,6 +225,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
     this.ordered = false;
     this.status = "info";
     this.storageId = "";
+    this.typeof = "oer:LearningComponent";
     this._checked = [];
     this._haxstate = false;
     this._storageKey = null;
@@ -263,6 +264,11 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
        * Optional author supplied id used to build the localStorage key.
        */
       storageId: { type: String, attribute: "storage-id", reflect: true },
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in the server rendered HTML that crawlers read.
+       */
+      typeof: { type: String, reflect: true },
       _checked: { type: Array, state: true },
       _haxstate: { type: Boolean, state: true },
     };
@@ -373,9 +379,19 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
     }
   }
 
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) super.firstUpdated(changedProperties);
-    this.setAttribute("typeof", "oer:LearningComponent");
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    // ?checked in the template only sets the default state (and is what the
+    // server renders), so keep the live state of each box in step with it
+    const items = this._items;
+    const inputs = this.shadowRoot
+      ? this.shadowRoot.querySelectorAll("input[type='checkbox']")
+      : [];
+    inputs.forEach((input, index) => {
+      if (items[index]) {
+        input.checked = this._isChecked(items[index]);
+      }
+    });
   }
 
   _toggle(item, e) {
@@ -436,7 +452,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
         <label class="${disabled ? "locked" : ""}">
           <input
             type="checkbox"
-            .checked="${checked}"
+            ?checked="${checked}"
             ?disabled="${disabled}"
             @change="${(e) => this._toggle(item, e)}"
           />

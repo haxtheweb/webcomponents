@@ -251,6 +251,30 @@ describe("bullet-check-list storage keys", () => {
     expect(el._checked).to.deep.equal(["A"]);
   });
 
+  it("has the OER typeof as a reflected property, not set after first render", () => {
+    expect(element.typeof).to.equal("oer:LearningComponent");
+    expect(element.getAttribute("typeof")).to.equal("oer:LearningComponent");
+  });
+
+  it("writes the pre-checked state as an attribute so server output is right", () => {
+    // ?checked is what server side rendering can express; .checked is not
+    const boxes = element.shadowRoot.querySelectorAll("input");
+    expect(boxes[0].hasAttribute("checked")).to.be.false;
+    expect(boxes[3].hasAttribute("checked")).to.be.true;
+  });
+
+  it("keeps the live checked state in step when the stored state changes after a click", async () => {
+    // a clicked box no longer follows its checked attribute, so the element
+    // has to set the property itself when the remembered state is replaced
+    const boxes = () => element.shadowRoot.querySelectorAll("input");
+    boxes()[0].click();
+    await element.updateComplete;
+    expect(boxes()[0].checked).to.be.true;
+    element.storageId = "t2";
+    await element.updateComplete;
+    expect(boxes()[0].checked).to.be.false;
+  });
+
   it("exposes tag and haxProperties", () => {
     expect(BulletCheckList.tag).to.equal("bullet-check-list");
     expect(BulletCheckList.haxProperties).to.include("haxProperties.json");
