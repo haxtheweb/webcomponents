@@ -75,13 +75,6 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
     ]
   }
 
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.setAttribute("typeof", "oer:SupportingMaterial");
-  }
-
   render() {
     return html`
       <meta property="oer:uri" content="${this.uri || this.licenseLink}" />
@@ -131,6 +124,11 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       /**
        * License code shorthand, e.g. "NA", "WA", "CD", "TC", "DP", "IU".
        */
@@ -193,6 +191,7 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
 
   constructor() {
     super()
+    this.typeof = "oer:SupportingMaterial";
     this.license = null;
     this.modifier = null;
     this.licenseName = null;

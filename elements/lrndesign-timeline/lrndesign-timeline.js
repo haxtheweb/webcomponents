@@ -494,6 +494,11 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
 
       /**
     * the events of the timeline, in the desired order, as in:```
@@ -547,6 +552,7 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
   // life cycle
   constructor() {
     super();
+    this.typeof = "oer:LearningComponent";
     this.events = [];
     this.timelineSize = "xs";
     globalThis.ResponsiveUtility.requestAvailability();
@@ -583,7 +589,6 @@ class LrndesignTimeline extends SchemaBehaviors(SimpleColors) {
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    this.setAttribute("typeof", "oer:LearningComponent");
     globalThis.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {

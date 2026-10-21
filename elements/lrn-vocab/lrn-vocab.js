@@ -58,6 +58,7 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.typeof = "oer:LearningComponent";
     this.description = "";
     setTimeout(() => {
       this.addEventListener("click", this.openDialog.bind(this));
@@ -76,6 +77,11 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       term: {
         type: String,
         reflect: true,
@@ -155,7 +161,6 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.setAttribute("typeof", "oer:LearningComponent");
     if (!this.description) {
       this.description = (this.textContent || "").trim();
     }

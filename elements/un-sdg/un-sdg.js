@@ -6,6 +6,7 @@ export class UnSdg extends SchemaBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.typeof = 'oer:Topic';
     this.goal = 1;
     this.alt = '';
     this.colorOnly = false;
@@ -14,6 +15,11 @@ export class UnSdg extends SchemaBehaviors(LitElement) {
   }
   static get properties() {
     return {
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       loading: { type: String },
       fetchpriority: { type: String },
       goal: { type: Number, reflect: true },
@@ -74,13 +80,6 @@ export class UnSdg extends SchemaBehaviors(LitElement) {
       `;
       }
     }
-  }
-
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.setAttribute('typeof', 'oer:Topic');
   }
 
   static get haxProperties() {

@@ -121,6 +121,11 @@ class CourseDesign extends SchemaBehaviors(LitElement) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       courseIdentifier: { type: String, attribute: "course-identifier" },
       primaryInstructor: { type: String, attribute: "primary-instructor" },
       termOffered: { type: String, attribute: "term-offered" },
@@ -141,20 +146,12 @@ class CourseDesign extends SchemaBehaviors(LitElement) {
    */
   constructor() {
     super();
+    this.typeof = "oer:Course";
     this.courseIdentifier = "";
     this.primaryInstructor = "";
     this.termOffered = "";
     this.syllabus = "";
     this.deliveryFormat = "";
-  }
-  /**
-   * LitElement ready
-   */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.setAttribute("typeof", "oer:Course");
   }
 }
 globalThis.customElements.define(CourseDesign.tag, CourseDesign);

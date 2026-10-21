@@ -23,6 +23,7 @@ export class QuestionElement extends SchemaBehaviors(
   }
   constructor() {
     super();
+    this.typeof = "oer:Assessment";
     // default method of storing guess data
     this.guessDataValue = "display";
     this.maxAttempts = 0; // 0 implies unlimited
@@ -391,6 +392,11 @@ export class QuestionElement extends SchemaBehaviors(
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       edit: { type: Boolean, reflect: true },
       // show the solution feedback to the user
       showAnswer: { type: Boolean, reflect: true, attribute: "show-answer" },
@@ -919,7 +925,6 @@ export class QuestionElement extends SchemaBehaviors(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.setAttribute("typeof", "oer:Assessment");
     // check lightdom on setup for answers to be read in
     // this only happens on initial paint
     // defer a microtask so the reactive answers set inside loadLightDomData

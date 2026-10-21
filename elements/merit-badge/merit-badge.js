@@ -18,6 +18,11 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
   }
   static get properties() {
     return {
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       // kebab-case attribute names, aligned with badge-sticker and the
       // serialized attribute contract from the #3086 fix
       badgeDate: { type: String, attribute: "badge-date" },
@@ -91,6 +96,7 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
 
   constructor() {
     super();
+    this.typeof = "oer:LearningObjective";
     this.badgeUnlocked = false;
     this.skill = "";
   }
@@ -116,13 +122,6 @@ class MeritBadge extends SchemaBehaviors(LitElement) {
         </button>
       </div>
     `;
-  }
-
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.setAttribute("typeof", "oer:LearningObjective");
   }
 
   static get haxProperties() {

@@ -15,6 +15,7 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
+    this.typeof = "oer:Practice";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -35,6 +36,11 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       inverted: { type: Boolean },
       imgSource: { type: String, attribute: "img-source", reflect: true },
       imgKeyword: { type: String, attribute: "img-keyword" },
@@ -210,13 +216,6 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
         },
       }),
     );
-  }
-
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.setAttribute("typeof", "oer:Practice");
   }
 
   // HTML - specific to Lit
