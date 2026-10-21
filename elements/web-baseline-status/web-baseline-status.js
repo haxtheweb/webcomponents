@@ -9,6 +9,13 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 // in HAX. Import the ESM entry (not the .min.js bundle) so lit is not duplicated.
 import "baseline-status/baseline-status.js";
 
+const escapeAttr = (value) =>
+  String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
 /**
  * `web-baseline-status`
  * Displays the Baseline status (limited / newly available / widely available)
@@ -86,7 +93,21 @@ export class WebBaselineStatus extends DDD {
     return {
       editModeChanged: "haxeditModeChanged",
       activeElementChanged: "haxactiveElementChanged",
+      progressiveEnhancement: "haxprogressiveEnhancement",
     };
+  }
+
+  /**
+   * Hook for HAX progressive enhancement: a link to the feature's Baseline
+   * status, for RSS, bots and readers without JavaScript.
+   */
+  haxprogressiveEnhancement(_el) {
+    if (!this.featureId) {
+      return "";
+    }
+    return `<a href="https://webstatus.dev/features/${encodeURIComponent(
+      this.featureId,
+    )}">Baseline status: ${escapeAttr(this.featureId)}</a>`;
   }
 
   haxactiveElementChanged(el, value) {

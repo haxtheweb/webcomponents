@@ -200,3 +200,23 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+describe("music-player progressive enhancement", () => {
+  it("names the hook in haxHooks", async () => {
+    const el = await fixture(html`<music-player></music-player>`);
+    expect(el.haxHooks().progressiveEnhancement).to.equal(
+      "haxprogressiveEnhancement",
+    );
+  });
+
+  it("returns a link to the source, escaped, or nothing without one", async () => {
+    const el = await fixture(
+      html`<music-player source="a.mid?x=1&y=2"></music-player>`,
+    );
+    expect(el.haxprogressiveEnhancement(el)).to.equal(
+      '<a href="a.mid?x=1&amp;y=2">Play music</a>',
+    );
+    el.source = undefined;
+    expect(el.haxprogressiveEnhancement(el)).to.equal("");
+  });
+});

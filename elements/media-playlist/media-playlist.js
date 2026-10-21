@@ -23,6 +23,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
 
   constructor() {
     super();
+    this.typeof = "oer:LearningComponent";
     this.edit = false;
     this.activeIndex = 0;
     this.mediaItems = [];
@@ -117,6 +118,11 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       edit: { type: Boolean, reflect: true },
       activeIndex: { type: Number, reflect: true, attribute: "active-index" },
       mediaItems: { type: Array },
@@ -638,7 +644,6 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.setAttribute("typeof", "oer:LearningComponent");
     const playerArea = this.shadowRoot.querySelector(".player-area");
     const playlist = this.shadowRoot.querySelector(".playlist");
     if (

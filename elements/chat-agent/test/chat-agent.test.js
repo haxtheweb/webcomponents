@@ -272,8 +272,11 @@ describe("chat-agent test", () => {
 
       ChatStore.handleInteraction("Network test question");
 
-      // Wait for error handling
-      await new Promise((resolve) => setTimeout(resolve, 100));
+      // Wait for error handling (poll: a fixed 100ms is too short on a
+      // loaded CI runner)
+      for (let i = 0; i < 100 && ChatStore.isLoading; i++) {
+        await new Promise((resolve) => setTimeout(resolve, 50));
+      }
 
       expect(ChatStore.isLoading).to.be.false;
       expect(ChatStore.chatLog.length).to.be.greaterThan(initialLogLength);

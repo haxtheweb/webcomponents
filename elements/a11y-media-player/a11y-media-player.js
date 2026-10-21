@@ -1447,6 +1447,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       __playerReady: { type: Boolean },
       /**
        * Allow this media to play concurrently with other a11y-media-players?
@@ -1862,6 +1867,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
 
   constructor() {
     super();
+    this.typeof = "oer:MediaObject";
     globalThis.ResponsiveUtility.requestAvailability();
     globalThis.A11yMediaStateManager.requestAvailability();
     this.__playerReady = false;
@@ -3669,7 +3675,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.setAttribute("typeof", "oer:MediaObject");
     // Cache the slider element so currentTime reads and slider handlers don't
     // re-query the shadow root on every call.
     this.__sliderEl = this.shadowRoot

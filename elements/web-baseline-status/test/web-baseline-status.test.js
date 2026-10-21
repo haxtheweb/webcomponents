@@ -138,3 +138,25 @@ describe("WebBaselineStatus test", () => {
     });
   });
 });
+
+describe("web-baseline-status progressive enhancement", () => {
+  it("names the hook in haxHooks", async () => {
+    const el = await fixture(html`<web-baseline-status></web-baseline-status>`);
+    expect(el.haxHooks().progressiveEnhancement).to.equal(
+      "haxprogressiveEnhancement",
+    );
+  });
+
+  it("returns a link to the feature status, or nothing without a feature", async () => {
+    const el = await fixture(
+      html`<web-baseline-status
+        feature-id="anchor-positioning"
+      ></web-baseline-status>`,
+    );
+    expect(el.haxprogressiveEnhancement(el)).to.equal(
+      '<a href="https://webstatus.dev/features/anchor-positioning">Baseline status: anchor-positioning</a>',
+    );
+    el.featureId = "";
+    expect(el.haxprogressiveEnhancement(el)).to.equal("");
+  });
+});

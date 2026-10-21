@@ -176,6 +176,17 @@ describe("bullet-check-list test", () => {
 });
 
 describe("bullet-check-list storage keys", () => {
+  let element;
+  const makeElement = async () => {
+    element = await fixture(
+      html`<bullet-check-list
+        title="Steps"
+        storage-id="t1"
+        .items="${ITEMS}"
+      ></bullet-check-list>`,
+    );
+    return element;
+  };
   beforeEach(clear);
   afterEach(clear);
 
@@ -251,12 +262,14 @@ describe("bullet-check-list storage keys", () => {
     expect(el._checked).to.deep.equal(["A"]);
   });
 
-  it("has the OER typeof as a reflected property, not set after first render", () => {
+  it("has the OER typeof as a reflected property, not set after first render", async () => {
+    await makeElement();
     expect(element.typeof).to.equal("oer:LearningComponent");
     expect(element.getAttribute("typeof")).to.equal("oer:LearningComponent");
   });
 
-  it("writes the pre-checked state as an attribute so server output is right", () => {
+  it("writes the pre-checked state as an attribute so server output is right", async () => {
+    await makeElement();
     // ?checked is what server side rendering can express; .checked is not
     const boxes = element.shadowRoot.querySelectorAll("input");
     expect(boxes[0].hasAttribute("checked")).to.be.false;
@@ -264,6 +277,7 @@ describe("bullet-check-list storage keys", () => {
   });
 
   it("keeps the live checked state in step when the stored state changes after a click", async () => {
+    await makeElement();
     // a clicked box no longer follows its checked attribute, so the element
     // has to set the property itself when the remembered state is replaced
     const boxes = () => element.shadowRoot.querySelectorAll("input");

@@ -3,6 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+const escapeAttr = (value) =>
+  String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
 /**
  * `music-player`
  * `Visualize different types of music and simple format player`
@@ -107,6 +114,22 @@ class MusicPlayer extends LitElement {
       <midi-player src="${this.source}" sound-font></midi-player>
       <span class="screen-reader-text" aria-live="polite"></span>
     `;
+  }
+
+  haxHooks() {
+    return {
+      progressiveEnhancement: "haxprogressiveEnhancement",
+    };
+  }
+
+  /**
+   * Hook for HAX progressive enhancement: a link to the music file, for RSS,
+   * bots and readers without JavaScript.
+   */
+  haxprogressiveEnhancement(_el) {
+    return this.source
+      ? `<a href="${escapeAttr(this.source)}">Play music</a>`
+      : "";
   }
 
   // properties available to the custom element for data binding

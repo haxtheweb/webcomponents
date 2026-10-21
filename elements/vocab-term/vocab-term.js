@@ -21,6 +21,11 @@ Custom property | Description | Default
 class VocabTerm extends SchemaBehaviors(LitElement) {
   static get properties() {
     return {
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       popoverMode: { type: Boolean, reflect: true, attribute: "popover-mode" },
       detailsOpen: { type: Boolean },
       links: {
@@ -50,6 +55,7 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
    */
   constructor() {
     super();
+    this.typeof = "oer:LearningComponent";
     this._haxstate = false;
     this.popoverMode = false;
     this.term = null;
@@ -284,7 +290,6 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.setAttribute("typeof", "oer:LearningComponent");
     if (this.popoverMode === false) {
       const summaryEl = this.shadowRoot.querySelector("summary");
       this.shadowRoot

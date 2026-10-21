@@ -35,6 +35,7 @@ Custom property | Description | Default
 class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   constructor() {
     super();
+    this.typeof = "oer:Assessment";
     this.correct = false;
     this.alt = "";
     this.image = "";
@@ -509,15 +510,14 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
   static get tag() {
     return "self-check";
   }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.setAttribute("typeof", "oer:Assessment");
-  }
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       /**
        * Title.
        */
