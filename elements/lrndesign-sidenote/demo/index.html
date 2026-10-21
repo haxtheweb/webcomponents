@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>LrndesignSidenote: lrndesign-sidenote Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../lrndesign-sidenote.js';
+    </script>
+  </head>
+  <body>
+    <main class="vertical-section-container centered">
+      <h1>lrndesign-sidenote</h1>
+
+      <h2>Label and icon</h2>
+      <lrndesign-sidenote label="Instructor note" icon="icons:bookmark">
+        <p>Supporting information that sits beside the main text.</p>
+      </lrndesign-sidenote>
+
+      <h2>Accent colors</h2>
+      <lrndesign-sidenote label="Heads up" icon="icons:warning" accent-color="orange">
+        <p>The accent color tints the background, border and text.</p>
+      </lrndesign-sidenote>
+      <lrndesign-sidenote label="Good to know" icon="icons:check-circle" accent-color="green">
+        <p>Another accent color.</p>
+      </lrndesign-sidenote>
+
+      <h2>Dark</h2>
+      <lrndesign-sidenote label="Dark theme" icon="icons:book" accent-color="blue" dark>
+        <p>The dark attribute uses the dark theme of the accent color.</p>
+      </lrndesign-sidenote>
+
+      <h2>Icon name without an iconset</h2>
+      <lrndesign-sidenote label="From older content" icon="bookmark">
+        <p>Content written for the original element used the bare icon name.</p>
+      </lrndesign-sidenote>
+
+      <h2>No label</h2>
+      <lrndesign-sidenote>
+        <p>Without a label or icon only the content is shown.</p>
+      </lrndesign-sidenote>
+    </main>
+  </body>
+</html>

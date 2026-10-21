@@ -1835,16 +1835,6 @@
     "@polymer/iron-iconset-svg" "^3.0.0"
     "@polymer/polymer" "^3.5.1"
 
-"@haxtheweb/lrndesign-sidenote@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/lrndesign-sidenote/-/lrndesign-sidenote-9.0.1.tgz#b65fd028002f85c4e4078977a00500e4fe8495ca"
-  integrity sha512-FUFVnpr0IoFbUwKuUPvAgtSi8896Q246I5Aa97NBT6pZ0Qg7RC9zCYUION5Os0ckWUM9BcEBIiLm3xxJVmJymw==
-  dependencies:
-    "@haxtheweb/hax-iconset" "^9.0.1"
-    "@haxtheweb/simple-colors" "^9.0.1"
-    "@haxtheweb/simple-icon" "^9.0.1"
-    lit "^3.1.4"
-
 "@haxtheweb/md-extra-icons@9.0.1":
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/@haxtheweb/md-extra-icons/-/md-extra-icons-9.0.1.tgz#7881586797cc982df360050cb3d89fdb6a1b06a9"
