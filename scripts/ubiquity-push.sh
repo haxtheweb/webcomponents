@@ -197,6 +197,14 @@ npm publish
 
 cd ~/haxtheweb/haxsite/
 git pull origin main
+# haxsite is a standalone example site, not part of CI. Regenerate its managed files
+# (index.html, manifest, .htaccess, .well-known/agent-skills, sitemap/feeds/llms.txt, ...)
+# from the haxcms-nodejs core built above, so it always reflects this release.
+# Authored content (site.json, pages/, files/, theme/, custom/) is never touched.
+# This must stay AFTER the haxcms-nodejs build/publish block: it reads that build's
+# boilerplate, and runs in a scratch config so nothing leaks into haxcms-nodejs dist/.
+# Set HAXSITE_DOMAIN (or site.json metadata.site.domain) to refresh domain-bound files.
+node ~/haxtheweb/webcomponents/scripts/refresh-haxsite.mjs --haxsite ~/haxtheweb/haxsite --haxcms ~/haxtheweb/haxcms-nodejs || echo "WARNING: haxsite refresh failed; pushing build artifacts only"
 git add -A
 git commit -m "ubiquity publish"
 git push --follow-tags origin main

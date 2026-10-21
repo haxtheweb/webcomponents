@@ -127,5 +127,9 @@ cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-regi
 cd ~/haxtheweb/haxcms-nodejs/
 npm run build
 
+# preview the haxsite managed-file refresh the publish script will commit; review it with
+# `git -C ~/haxtheweb/haxsite diff` (nothing is committed here)
+node ~/haxtheweb/webcomponents/scripts/refresh-haxsite.mjs --haxsite ~/haxtheweb/haxsite --haxcms ~/haxtheweb/haxcms-nodejs || echo "WARNING: haxsite refresh failed"
+
 cd ~/haxtheweb/create
 npm run build
