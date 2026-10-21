@@ -213,7 +213,12 @@ class GradeBook extends UIRenderPieces(
     );
     // see if we have a previous file reference
     setTimeout(async () => {
-      this.prevLocalFileReference = await get("grade-book-prev-file");
+      const stored = await get("grade-book-prev-file");
+      // the lookup is async; do not clobber a reference that was set while
+      // it was pending (a file picked, or restored, in the meantime)
+      if (!this.prevLocalFileReference) {
+        this.prevLocalFileReference = stored;
+      }
       this.requestUpdate();
     }, 0);
   }
