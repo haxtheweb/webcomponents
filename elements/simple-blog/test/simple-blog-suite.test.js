@@ -10,6 +10,20 @@ import "../lib/simple-blog-overview.js";
 import "../lib/simple-blog-post.js";
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+// poll until a condition holds (or the timeout passes, so the real
+// assertion in the test reports the mismatch instead of a bare timeout)
+const waitFor = async (fn, timeout = 5000) => {
+  const start = Date.now();
+  while (Date.now() - start < timeout) {
+    try {
+      if (fn()) return true;
+    } catch (e) {
+      // not ready yet
+    }
+    await wait(20);
+  }
+  return false;
+};
 
 async function until(check, timeout = 1500, step = 25) {
   const start = Date.now();
@@ -430,7 +444,16 @@ describe("simple-blog-footer", () => {
     footer = await fixture(html`<simple-blog-footer></simple-blog-footer>`);
     await footer.updateComplete;
     // routerManifest, activeManifestIndex and editMode autoruns settle
-    await wait(250);
+    await waitFor(
+      () =>
+        footer.manifest &&
+        footer.activeManifestIndex === 1 &&
+        footer.prevTitle &&
+        footer.nextTitle &&
+        footer.accentColor === "pink" &&
+        footer.shadowRoot.querySelector("h2.blog-title"),
+    );
+    await footer.updateComplete;
   });
 
   it("renders the manifest title and description", () => {
