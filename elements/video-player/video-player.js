@@ -450,6 +450,11 @@ class VideoPlayer extends IntersectionObserverMixin(
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       sourceType: { type: String, attribute: "source-type", reflect: true },
       /**
        * Optional accent color for controls,
@@ -676,6 +681,7 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
   constructor() {
     super();
+    this.typeof = "oer:MediaObject";
     this.windowControllers = new AbortController();
     this.sourceType = "";
     this.crossorigin = "anonymous";
@@ -1359,7 +1365,6 @@ class VideoPlayer extends IntersectionObserverMixin(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.setAttribute("typeof", "oer:MediaObject");
     changedProperties.forEach((oldValue, propName) => {
       if (
         propName === "allowBackgroundPlay" &&

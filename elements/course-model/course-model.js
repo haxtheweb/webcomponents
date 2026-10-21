@@ -20,6 +20,11 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
 
   static get properties() {
     return {
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       visible: {
         type: String,
         reflect: true,
@@ -145,6 +150,7 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
 
   constructor() {
     super();
+    this.typeof = "oer:MediaObject";
     this.visible = "model";
     this.title = "";
     this.src = "";
@@ -393,7 +399,6 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.setAttribute("typeof", "oer:MediaObject");
     // this is a heavy library in memory so import if we actually are rendering
     import("@google/model-viewer/dist/model-viewer.js");
   }

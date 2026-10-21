@@ -195,18 +195,21 @@ class PersonTestimonial extends SchemaBehaviors(DDD) {
       </div>
     `;
   }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.setAttribute("typeof", "oer:SupportingMaterial");
-  }
   static get tag() {
     return "person-testimonial";
+  }
+  constructor() {
+    super();
+    this.typeof = "oer:SupportingMaterial";
   }
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       /**
        * Aria-describedby data passed down to appropriate tag
        */

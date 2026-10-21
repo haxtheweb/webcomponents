@@ -278,6 +278,7 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
   }
   constructor() {
     super();
+    this.typeof = "oer:LearningComponent";
     this.url = null;
     this.title = "";
     this.status = null;
@@ -294,6 +295,11 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       /**
        * Title Message
        */
@@ -357,7 +363,6 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    this.setAttribute("typeof", "oer:LearningComponent");
     this.remoteLinkTarget = this.shadowRoot.querySelector("#link");
     this._syncSlottedLinkColor();
   }

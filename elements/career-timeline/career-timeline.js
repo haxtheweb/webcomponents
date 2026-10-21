@@ -22,6 +22,7 @@ export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElemen
 
   constructor() {
     super();
+    this.typeof = "oer:LearningComponent";
     this.title = "";
     this.t = this.t || {};
     this.t = {
@@ -40,6 +41,11 @@ export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElemen
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * OER Schema type. Reflected (rather than set in firstUpdated) so it is
+       * also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
       title: { type: String },
     };
   }
@@ -58,13 +64,6 @@ export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElemen
         border: var(--ddd-border-md);
       }
     `];
-  }
-
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.setAttribute("typeof", "oer:LearningComponent");
   }
 
   // Lit render the HTML

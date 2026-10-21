@@ -289,29 +289,25 @@ class EditableTable extends editBehaviors(SchemaBehaviors(DDD)) {
         type: String,
         attribute: "rubric-type",
       },
+      /**
+       * OER Schema type, "oer:Rubric" while rubricMode is on. Reflected so it
+       * is also in server rendered HTML.
+       */
+      typeof: { type: String, reflect: true },
     };
   }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
+  /**
+   * Keep the OER type in step with rubricMode. Done in willUpdate (which also
+   * runs during server rendering) and reflected, so the type is in the
+   * server rendered HTML; it is removed again when rubricMode is turned off.
+   */
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
     }
-    if (this.rubricMode) {
-      this.setAttribute("typeof", "oer:Rubric");
+    if (changedProperties.has("rubricMode")) {
+      this.typeof = this.rubricMode ? "oer:Rubric" : undefined;
     }
-  }
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "rubricMode") {
-        if (this.rubricMode) {
-          this.setAttribute("typeof", "oer:Rubric");
-        } else {
-          this.removeAttribute("typeof");
-        }
-      }
-    });
   }
 
   get display() {
