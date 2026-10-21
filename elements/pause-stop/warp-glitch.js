@@ -629,7 +629,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
 
         :host([data-hax-ray]) .content:not(.visible) {
           min-height: var(--ddd-spacing-10, 40px);
-          outline: var(--ddd-border-xs, 1px) dashed
+          outline: var(--ddd-border-size-xs, 1px) dashed
             var(--ddd-theme-default-limestoneGray, #cccccc);
           outline-offset: 2px;
           margin-top: var(--ddd-spacing-2, 8px);
@@ -669,7 +669,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
           cursor: pointer;
           color: inherit;
           background: transparent;
-          border: var(--ddd-border-xs, 1px) solid currentColor;
+          border: var(--ddd-border-size-xs, 1px) solid currentColor;
           border-radius: var(--ddd-radius-xs, 0.25rem);
           padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
         }
@@ -706,7 +706,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
           text-align: center;
           vertical-align: middle;
           user-select: none;
-          border: var(--ddd-border-xs) solid transparent;
+          border: var(--ddd-border-size-xs) solid transparent;
           padding: var(--ddd-spacing-2, 0.375rem) var(--ddd-spacing-4, 0.75rem);
           font-size: var(--ddd-font-size-s, 1rem);
           line-height: var(--ddd-lh-150, 1.5);
@@ -746,18 +746,18 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
         .btn-main {
           border-top-left-radius: var(--ddd-radius-xs, 0.25rem);
           border-bottom-left-radius: var(--ddd-radius-xs, 0.25rem);
-          border-top-right-radius: var(--ddd-radius-none, 0);
-          border-bottom-right-radius: var(--ddd-radius-none, 0);
+          border-top-right-radius: var(--ddd-radius-0, 0);
+          border-bottom-right-radius: var(--ddd-radius-0, 0);
           padding-right: var(--ddd-spacing-3, 12px);
         }
 
         /* Toggle Button (Arrow) - Right radius only */
         .dropdown-toggle {
-          border-top-left-radius: var(--ddd-radius-none, 0);
-          border-bottom-left-radius: var(--ddd-radius-none, 0);
+          border-top-left-radius: var(--ddd-radius-0, 0);
+          border-bottom-left-radius: var(--ddd-radius-0, 0);
           border-top-right-radius: var(--ddd-radius-xs, 0.25rem);
           border-bottom-right-radius: var(--ddd-radius-xs, 0.25rem);
-          border-left: var(--ddd-border-xs) solid rgba(255, 255, 255, 0.3);
+          border-left: var(--ddd-border-size-xs) solid rgba(255, 255, 255, 0.3);
           padding-left: var(--ddd-spacing-2, 8px);
           padding-right: var(--ddd-spacing-2, 8px);
         }
@@ -810,8 +810,8 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
          * hard-coded corner radii and the dropdown anchor need flipping.
          */
         :host([dir="rtl"]) .btn-main {
-          border-top-left-radius: var(--ddd-radius-none, 0);
-          border-bottom-left-radius: var(--ddd-radius-none, 0);
+          border-top-left-radius: var(--ddd-radius-0, 0);
+          border-bottom-left-radius: var(--ddd-radius-0, 0);
           border-top-right-radius: var(--ddd-radius-xs, 0.25rem);
           border-bottom-right-radius: var(--ddd-radius-xs, 0.25rem);
           padding-right: var(--ddd-spacing-2, 8px);
@@ -821,10 +821,10 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
         :host([dir="rtl"]) .dropdown-toggle {
           border-top-left-radius: var(--ddd-radius-xs, 0.25rem);
           border-bottom-left-radius: var(--ddd-radius-xs, 0.25rem);
-          border-top-right-radius: var(--ddd-radius-none, 0);
-          border-bottom-right-radius: var(--ddd-radius-none, 0);
+          border-top-right-radius: var(--ddd-radius-0, 0);
+          border-bottom-right-radius: var(--ddd-radius-0, 0);
           border-left: none;
-          border-right: var(--ddd-border-xs) solid rgba(255, 255, 255, 0.3);
+          border-right: var(--ddd-border-size-xs) solid rgba(255, 255, 255, 0.3);
         }
 
         :host([dir="rtl"]) .dropdown-menu {
