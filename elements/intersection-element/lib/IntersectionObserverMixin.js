@@ -2,6 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { isServer } from "lit";
 /**
  * `IntersectionObserverMixin`
  * `Wiring to provide basic IntersectionObserver support to any web component`
@@ -15,7 +16,9 @@ const IntersectionObserverMixin = function (SuperClass) {
     constructor() {
       super();
       // listen for this to be true in your element
-      this.elementVisible = false;
+      // there is no viewport during server side rendering and the observer
+      // never runs, so treat the element as visible and let it render its content
+      this.elementVisible = isServer ? true : false;
       // threasholds to check for, every 25%
       this.IOThresholds = [0.0, 0.25, 0.5, 0.75, 1.0];
       // margin from root element
