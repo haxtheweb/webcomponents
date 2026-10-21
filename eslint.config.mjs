@@ -119,9 +119,11 @@ export default [
       // example an event handler signature that has to keep its arity).
       "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "no-undef": "error",
-      // New code should use ===, but existing == that works and passes tests is
-      // not a problem, so this is advisory and `== null` is allowed.
-      eqeqeq: ["warn", "always", { null: "ignore" }],
+      // New code must use ===; `== null` is allowed. Existing == that works and
+      // passes tests is recorded in eslint-suppressions.json so it stays out of
+      // the report. Fixing one lowers the count; `npx eslint elements
+      // --prune-suppressions` drops entries that no longer apply.
+      eqeqeq: ["error", "always", { null: "ignore" }],
       "no-var": "error",
     },
   },
