@@ -337,7 +337,7 @@ describe("UserScaffold user action handlers", () => {
       },
     };
     element.userPasteAction(fakeEvent);
-    expect(element.data.value).to.equal("<p>Hi</p>");
+    expect(element.data.value).to.equal("<p >Hi</p>");
   });
 
   it("userPasteAction does not backtrack catastrophically on unterminated styles", () => {

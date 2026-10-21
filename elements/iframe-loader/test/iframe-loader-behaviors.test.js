@@ -29,9 +29,8 @@ describe("iframe-loader behaviors", () => {
       const frame = el.querySelector("iframe");
       expect(frame).to.exist;
       expect(frame.hasAttribute("src")).to.equal(false);
-      expect(frame.getAttribute("sandbox")).to.equal(
-        "allow-scripts allow-same-origin",
-      );
+      // no source is not cross-origin, so allow-same-origin is withheld
+      expect(frame.getAttribute("sandbox")).to.equal("allow-scripts");
       expect(frame.getAttribute("width")).to.equal("100%");
       expect(frame.getAttribute("height")).to.equal("500");
       expect(el.__iframe).to.equal(frame);
@@ -82,13 +81,21 @@ describe("iframe-loader behaviors", () => {
     });
     it("allows relative paths", async () => {
       const el = await fixture(
+        html`<iframe-loader source="/files/notes.txt"></iframe-loader>`,
+      );
+      expect(el.source).to.equal("/files/notes.txt");
+      await elementUpdated(el);
+      const frame = el.querySelector("iframe");
+      expect(frame.getAttribute("src")).to.equal("/files/notes.txt");
+      expect(frame.getAttribute("sandbox")).to.equal("allow-scripts");
+    });
+    it("refuses same-origin uploaded markup", async () => {
+      const el = await fixture(
         html`<iframe-loader source="/files/index.html"></iframe-loader>`,
       );
-      expect(el.source).to.equal("/files/index.html");
+      expect(el.source).to.equal(null);
       await elementUpdated(el);
-      expect(el.querySelector("iframe").getAttribute("src")).to.equal(
-        "/files/index.html",
-      );
+      expect(el.querySelector("iframe").hasAttribute("src")).to.equal(false);
     });
     it("rejects javascript: urls", async () => {
       const el = await fixture(
@@ -439,9 +446,8 @@ describe("iframe-loader behaviors", () => {
       const frame = el.querySelector("iframe");
       expect(frame).to.exist;
       expect(frame.hasAttribute("src")).to.equal(false);
-      expect(frame.getAttribute("sandbox")).to.equal(
-        "allow-scripts allow-same-origin",
-      );
+      // no source is not cross-origin, so allow-same-origin is withheld
+      expect(frame.getAttribute("sandbox")).to.equal("allow-scripts");
     });
   });
 });
@@ -542,7 +548,7 @@ describe("iframe-loader embed policy", () => {
   it("leaves same-origin embeds alone on isolated pages", async () => {
     await withCrossOriginIsolated(true, async () => {
       const el = globalThis.document.createElement("iframe-loader");
-      el.source = "/files/index.html";
+      el.source = "/files/notes.txt";
       globalThis.document.body.appendChild(el);
       await elementUpdated(el);
       const frame = el.querySelector("iframe");
@@ -562,7 +568,7 @@ describe("iframe-loader embed policy", () => {
       await elementUpdated(el);
       const frame = el.querySelector("iframe");
       expect(frame.hasAttribute("credentialless")).to.equal(true);
-      el.source = "/files/index.html";
+      el.source = "/files/notes.txt";
       await elementUpdated(el);
       expect(frame.hasAttribute("credentialless")).to.equal(false);
       el.remove();

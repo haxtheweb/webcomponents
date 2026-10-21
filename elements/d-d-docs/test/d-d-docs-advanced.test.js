@@ -103,12 +103,28 @@ describe('d-d-docs wiring', function () {
     const card = copyButton.closest('.pattern-card')
     const feedback = card.querySelector('.pattern-copy-feedback')
     expect(feedback.hasAttribute('hidden')).to.equal(true)
-    copyButton.click()
-    await new Promise((resolve) => setTimeout(resolve, 200))
-    // the clipboard may be unavailable headless, but the feedback still fires
-    expect(feedback.hasAttribute('hidden')).to.equal(false)
-    await new Promise((resolve) => setTimeout(resolve, 1700))
-    expect(feedback.hasAttribute('hidden')).to.equal(true)
+    // headless clipboard access can hang on a permission prompt: stub it
+    const original = Object.getOwnPropertyDescriptor(
+      globalThis.navigator,
+      'clipboard',
+    )
+    Object.defineProperty(globalThis.navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText: async () => {} },
+    })
+    try {
+      copyButton.click()
+      await new Promise((resolve) => setTimeout(resolve, 200))
+      expect(feedback.hasAttribute('hidden')).to.equal(false)
+      await new Promise((resolve) => setTimeout(resolve, 1700))
+      expect(feedback.hasAttribute('hidden')).to.equal(true)
+    } finally {
+      if (original) {
+        Object.defineProperty(globalThis.navigator, 'clipboard', original)
+      } else {
+        delete globalThis.navigator.clipboard
+      }
+    }
   })
 
   it('inserts a pattern into HAX through the content array event', async () => {
@@ -133,9 +149,31 @@ describe('d-d-docs wiring', function () {
   it('falls back to the clipboard when HAX is not present', async () => {
     const savedHaxStore = globalThis.HaxStore
     delete globalThis.HaxStore
-    // no store active: the insert affordance degrades to a copy silently
-    await element._insertPattern({ html: '<p>pattern</p>' })
-    globalThis.HaxStore = savedHaxStore
+    const original = Object.getOwnPropertyDescriptor(
+      globalThis.navigator,
+      'clipboard',
+    )
+    let copied = null
+    Object.defineProperty(globalThis.navigator, 'clipboard', {
+      configurable: true,
+      value: {
+        writeText: async (t) => {
+          copied = t
+        },
+      },
+    })
+    try {
+      // no store active: the insert affordance degrades to a copy silently
+      await element._insertPattern({ html: '<p>pattern</p>' })
+    } finally {
+      globalThis.HaxStore = savedHaxStore
+      if (original) {
+        Object.defineProperty(globalThis.navigator, 'clipboard', original)
+      } else {
+        delete globalThis.navigator.clipboard
+      }
+    }
+    expect(copied === null || copied === '<p>pattern</p>').to.equal(true)
     expect(globalThis.HaxStore === savedHaxStore).to.equal(true)
   })
 
