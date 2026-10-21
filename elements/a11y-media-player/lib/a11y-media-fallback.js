@@ -74,8 +74,15 @@ export function a11yMediaFallbackHTML(media) {
  * @param {HTMLElement} el the player
  */
 export function removeA11yMediaFallback(el) {
-  if (!el || !el.querySelectorAll) {
+  if (!el || !el.children) {
     return;
   }
-  el.querySelectorAll("[data-prog-fallback]").forEach((node) => node.remove());
+  // walk children instead of querySelectorAll: video-player overrides
+  // querySelectorAll with an SSR stub that always returns [], which made this
+  // a silent no-op there
+  Array.from(el.children).forEach((node) => {
+    if (node.hasAttribute("data-prog-fallback")) {
+      node.remove();
+    }
+  });
 }
