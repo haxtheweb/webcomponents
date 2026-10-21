@@ -161,7 +161,7 @@ export const UIRenderPieces = function (SuperClass) {
                   <td>${this.t.highRange}</td>
                   <td>${this.t.lowRange}</td>
                 </tr>
-                ${this.database.gradeScale.map(
+                ${((this.database && this.database.gradeScale) || []).map(
                   (scale) => html`
                     <tr>
                       <td>${scale.letter}</td>

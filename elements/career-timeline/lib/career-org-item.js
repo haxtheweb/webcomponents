@@ -148,7 +148,9 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
    * @readonly
    */
   get earliestDate() {
-    const items = Array.from(this.querySelectorAll('career-role-item'));
+    const items = Array.from(
+      this.querySelectorAll ? this.querySelectorAll('career-role-item') : [],
+    );
     const startDates = items.map(item => new Date(item.startDate));
     return Math.min(...startDates);
   }
@@ -158,7 +160,9 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
    * @readonly
    */
   get latestDate(){
-    const items = Array.from(this.querySelectorAll('career-role-item'));
+    const items = Array.from(
+      this.querySelectorAll ? this.querySelectorAll('career-role-item') : [],
+    );
     const endDates = items.map(item => new Date(item.endDate));
     return Math.max(...endDates);
   }
@@ -187,7 +191,9 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   _sortByDate(e) {
-    const items = Array.from(this.querySelectorAll('career-role-item'));
+    const items = Array.from(
+      this.querySelectorAll ? this.querySelectorAll('career-role-item') : [],
+    );
 
     // Descending order; if an item doesn't have a start date, default to today's date
     const sorted = items.sort((curr, next) => 

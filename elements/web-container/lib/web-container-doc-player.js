@@ -63,7 +63,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
     this.rebuilding = false;
     this.__onFrameResizeMessage = this.__onFrameResizeMessage.bind(this);
     // listen for the frame sending back it's height
-    globalThis.addEventListener("message", this.__onFrameResizeMessage);
+    globalThis.addEventListener && globalThis.addEventListener("message", this.__onFrameResizeMessage);
   }
 
   updated(changedProperties) {

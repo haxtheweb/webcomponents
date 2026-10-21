@@ -792,42 +792,45 @@ class PolarisInventTheme extends LTIResizingMixin(
     };
     this.dataPalette = 8;
     // forcibly set things about the RPG toast for this design
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-display",
-      "none",
-    );
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-mid-background-image",
-      "none",
-    );
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-right-background-image",
-      "none",
-    );
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-left-background-image",
-      "none",
-    );
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-mid-padding",
-      0,
-    );
-    HAXCMSToastInstance.style.setProperty(
-      "--rpg-character-toast-height",
-      "96px",
-    );
-    HAXCMSToastInstance.style.backgroundColor =
-      "light-dark(var(--ddd-accent-6), var(--ddd-primary-4))";
+    if (HAXCMSToastInstance && HAXCMSToastInstance.style) {
+      HAXCMSToastInstance.style.setProperty(
+        "--rpg-character-toast-display",
+        "none",
+      );
+      HAXCMSToastInstance.style.setProperty(
+        "--rpg-character-toast-mid-background-image",
+        "none",
+      );
+      HAXCMSToastInstance.style.setProperty(
+        "--rpg-character-toast-right-background-image",
+        "none",
+      );
+      HAXCMSToastInstance.style.setProperty(
+        "--rpg-character-toast-left-background-image",
+        "none",
+      );
+      HAXCMSToastInstance.style.setProperty(
+        "--rpg-character-toast-mid-padding",
+        0,
+      );
+      HAXCMSToastInstance.style.setProperty(
+        "--rpg-character-toast-height",
+        "96px",
+      );
+      HAXCMSToastInstance.style.backgroundColor =
+        "light-dark(var(--ddd-accent-6), var(--ddd-primary-4))";
+    }
     this.windowControllersLoaded = new AbortController();
-    globalThis.addEventListener(
-      "hax-store-app-store-loaded",
-      this.appStoreReady.bind(this),
-      {
-        once: true,
-        passive: true,
-        signal: this.windowControllersLoaded.signal,
-      },
-    );
+    globalThis.addEventListener &&
+      globalThis.addEventListener(
+        "hax-store-app-store-loaded",
+        this.appStoreReady.bind(this),
+        {
+          once: true,
+          passive: true,
+          signal: this.windowControllersLoaded.signal,
+        },
+      );
     // @todo support injection of blocks specific to polaris
     // this way we can have blocks whos definitions only get
     // loaded in when we have a theme that intentionally

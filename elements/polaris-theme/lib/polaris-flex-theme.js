@@ -1101,7 +1101,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
     // helps with user preference on side of screen for the tray
     this.haxTrayAlignment = localStorageGet("hax-tray-elementAlign");
     this.windowControllersLoaded = new AbortController();
-    globalThis.addEventListener(
+    globalThis.addEventListener && globalThis.addEventListener(
       "hax-store-app-store-loaded",
       this.appStoreReady.bind(this),
       {

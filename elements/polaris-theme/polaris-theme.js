@@ -608,7 +608,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
       contents: "Contents",
     };
     this.windowControllersLoaded = new AbortController();
-    globalThis.addEventListener(
+    globalThis.addEventListener && globalThis.addEventListener(
       "hax-store-app-store-loaded",
       this.appStoreReady.bind(this),
       {

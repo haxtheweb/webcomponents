@@ -70,7 +70,7 @@ class VocabTerm extends SchemaBehaviors(LitElement) {
     if (!this.term && this.innerHTML) {
       this.term = this.innerHTML;
     }
-    if (this.querySelector(".links a")) {
+    if ((this.querySelector && this.querySelector(".links a"))) {
       this.querySelectorAll(".links a").forEach((el) => {
         this.links.push({
           title: el.textContent,

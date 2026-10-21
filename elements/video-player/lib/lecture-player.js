@@ -91,15 +91,16 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
         }
       }, 2000);
     }
-    globalThis.addEventListener("hashChange", () => {
-      let [id, timestamp] = globalThis.location.hash.split("--");
-      if (id === "#lecture-player-video" && !timestamp) {
-        this.showModal();
-        setTimeout(() => {
-          this.activeIndex = "slide-1";
-        }, 1000);
-      }
-    });
+    globalThis.addEventListener &&
+      globalThis.addEventListener("hashChange", () => {
+        let [id, timestamp] = globalThis.location.hash.split("--");
+        if (id === "#lecture-player-video" && !timestamp) {
+          this.showModal();
+          setTimeout(() => {
+            this.activeIndex = "slide-1";
+          }, 1000);
+        }
+      });
   }
 
   static get properties() {
@@ -607,10 +608,11 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
       document
         .querySelector("simple-modal .modal-content .videoSection video-player")
         .setAttribute("id", "lecture-player-video");
-      globalThis.addEventListener("simple-modal-closed", () => {
-        this.querySelector("video-player").removeAttribute("hidden");
-        this.open = false;
-      });
+      globalThis.addEventListener &&
+        globalThis.addEventListener("simple-modal-closed", () => {
+          this.querySelector("video-player").removeAttribute("hidden");
+          this.open = false;
+        });
     }, 3000);
   }
 
