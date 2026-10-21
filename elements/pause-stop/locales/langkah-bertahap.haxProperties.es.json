@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Paso a paso",
+    "description": "Muestra una sección de contenido cada vez que se pulsa el botón Continuar. Cada paso admite cualquier bloque de HAX (título, párrafo, opción múltiple, vídeo) y se puede duplicar desde el editor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta del botón Continuar",
+        "description": "Texto del botón principal que avanza el contenido"
+      },
+      {
+        "title": "Etiqueta Mostrar todo",
+        "description": "Texto de la opción del menú que muestra todos los pasos"
+      },
+      {
+        "title": "Contenido visible al inicio",
+        "description": "Número de secciones visibles al principio (predeterminado 1)"
+      },
+      {
+        "title": "Efecto de confeti",
+        "description": "Lanza confeti al pulsar el botón de pausa"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mostrar botones de control",
+        "description": "Activa o desactiva los botones divididos de pausa"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "buttonLabel": "Continuar...",
+        "showAllLabel": "Mostrar todo"
+      }
+    }
+  ]
+}

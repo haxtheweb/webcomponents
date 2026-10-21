@@ -1,0 +1,15 @@
+{
+    "title": "Paso a paso",
+    "continue": "Continuar...",
+    "showAll": "Mostrar todo",
+    "moreOptions": "Más opciones",
+    "step": "Paso",
+    "duplicateStep": "Duplicar",
+    "removeStep": "Eliminar",
+    "addStep": "Nuevo paso",
+    "addParagraph": "Texto",
+    "duplicateStepTitle": "Duplicar el contenido de este paso",
+    "removeStepTitle": "Eliminar este paso",
+    "addStepTitle": "Añadir un paso vacío después de este",
+    "addParagraphTitle": "Añadir un párrafo vacío a este paso para empezar a escribir"
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Langkah Bertahap",
+    "description": "Membuka konten satu bagian setiap kali tombol Lanjut ditekan. Tiap bagian bisa diisi blok HAX apa pun (heading, paragraf, multiple choice, video) dan bisa diduplikat langsung dari editor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label Tombol Lanjut",
+        "description": "Teks untuk tombol utama melanjutkan konten"
+      },
+      {
+        "title": "Label Tampilkan Semua",
+        "description": "Teks untuk opsi dropdown menampilkan semua"
+      },
+      {
+        "title": "Konten Terlihat Awal",
+        "description": "Jumlah bagian konten yang terlihat di awal (default 1)"
+      },
+      {
+        "title": "Efek Confetti",
+        "description": "Luncurkan confetti saat tombol jeda diklik"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tampilkan Tombol Kontrol",
+        "description": "Aktifkan/nonaktifkan penampakan tombol split pause"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "buttonLabel": "Lanjut...",
+        "showAllLabel": "Tampilkan Semua"
+      }
+    }
+  ]
+}

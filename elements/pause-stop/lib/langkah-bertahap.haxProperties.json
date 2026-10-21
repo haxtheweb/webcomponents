@@ -1,0 +1,90 @@
+{
+  "api": "1",
+  "canScale": true,
+  "canEditSource": true,
+  "type": "grid",
+  "contentEditable": false,
+  "designSystem": {
+    "accent": true,
+    "primary": true,
+    "card": false,
+    "text": true,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "Langkah Bertahap",
+    "description": "Membuka konten satu bagian setiap kali tombol Lanjut ditekan. Tiap bagian bisa diisi blok HAX apa pun (heading, paragraf, multiple choice, video) dan bisa diduplikat langsung dari editor.",
+    "icon": "av:pause-circle-outline",
+    "color": "blue",
+    "tags": [
+      "Content",
+      "Presentation",
+      "Instructional",
+      "Interactive",
+      "Steps",
+      "Reveal"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "andyid23"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "buttonLabel",
+        "title": "Label Tombol Lanjut",
+        "description": "Teks untuk tombol utama melanjutkan konten",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      },
+      {
+        "property": "showAllLabel",
+        "title": "Label Tampilkan Semua",
+        "description": "Teks untuk opsi dropdown menampilkan semua",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      },
+      {
+        "property": "visibleContent",
+        "title": "Konten Terlihat Awal",
+        "description": "Jumlah bagian konten yang terlihat di awal (default 1)",
+        "inputMethod": "number",
+        "icon": "image:filter-1"
+      },
+      {
+        "property": "confetti",
+        "title": "Efek Confetti",
+        "description": "Luncurkan confetti saat tombol jeda diklik",
+        "inputMethod": "boolean",
+        "icon": "image:flare"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "showButtons",
+        "title": "Tampilkan Tombol Kontrol",
+        "description": "Aktifkan/nonaktifkan penampakan tombol split pause",
+        "inputMethod": "boolean",
+        "icon": "av:play-circle-outline"
+      }
+    ]
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": [
+      "dir"
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "langkah-bertahap",
+      "properties": {
+        "buttonLabel": "Lanjut...",
+        "showAllLabel": "Tampilkan Semua",
+        "visibleContent": 1
+      },
+      "content": "<h3 slot=\"content-1\">Bagian pertama</h3><p slot=\"content-1\">Pelajari materi dasar ini sebelum melanjutkan.</p><h3 slot=\"content-2\">Bagian kedua</h3><p slot=\"content-2\">Penjelasan lebih mendalam dan evaluasi mandiri.</p><self-check slot=\"content-3\" title=\"Cek pemahaman\" accent-color=\"primary\"><p slot=\"question\">Apa inti dari materi ini?</p><p>Jelaskan dengan kalimat sendiri, lalu buka kunci jawaban untuk membandingkan.</p></self-check>"
+    }
+  ]
+}

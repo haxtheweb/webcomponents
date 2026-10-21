@@ -1,0 +1,15 @@
+{
+    "title": "Langkah Bertahap",
+    "continue": "Lanjutkan...",
+    "showAll": "Tampilkan Semua",
+    "moreOptions": "Opsi lainnya",
+    "step": "Bagian",
+    "duplicateStep": "Duplikat",
+    "removeStep": "Hapus",
+    "addStep": "Bagian baru",
+    "addParagraph": "Teks",
+    "duplicateStepTitle": "Duplikat isi bagian ini",
+    "removeStepTitle": "Hapus bagian ini",
+    "addStepTitle": "Tambah bagian kosong setelah bagian ini",
+    "addParagraphTitle": "Tambah paragraf kosong di bagian ini supaya bisa langsung mengetik"
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Step by Step",
+    "description": "Reveals one section of content each time the Continue button is pressed. Every step can hold any HAX block (heading, paragraph, multiple choice, video) and can be duplicated right from the editor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Continue Button Label",
+        "description": "Text for the main button that advances the content"
+      },
+      {
+        "title": "Show All Label",
+        "description": "Text for the dropdown option that reveals every step"
+      },
+      {
+        "title": "Initially Visible Content",
+        "description": "Number of content sections visible at the start (default 1)"
+      },
+      {
+        "title": "Confetti Effect",
+        "description": "Fire confetti when the pause button is clicked"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Show Control Buttons",
+        "description": "Turn the split pause controls on or off"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "buttonLabel": "Continue...",
+        "showAllLabel": "Show All"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+    "title": "خطوة بخطوة",
+    "continue": "متابعة...",
+    "showAll": "عرض الكل",
+    "moreOptions": "خيارات أخرى",
+    "step": "خطوة",
+    "duplicateStep": "تكرار",
+    "removeStep": "حذف",
+    "addStep": "خطوة جديدة",
+    "addParagraph": "نص",
+    "duplicateStepTitle": "تكرار محتوى هذه الخطوة",
+    "removeStepTitle": "حذف هذه الخطوة",
+    "addStepTitle": "إضافة خطوة فارغة بعد هذه الخطوة",
+    "addParagraphTitle": "إضافة فقرة فارغة إلى هذه الخطوة لبدء الكتابة"
+}

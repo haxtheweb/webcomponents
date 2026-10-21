@@ -1,0 +1,15 @@
+{
+    "title": "Step by Step",
+    "continue": "To be Continue...",
+    "showAll": "Show all",
+    "moreOptions": "More options",
+    "step": "Step",
+    "duplicateStep": "Duplicate",
+    "removeStep": "Delete",
+    "addStep": "New step",
+    "addParagraph": "Text",
+    "duplicateStepTitle": "Duplicate the content of this step",
+    "removeStepTitle": "Delete this step",
+    "addStepTitle": "Add an empty step after this one",
+    "addParagraphTitle": "Add an empty paragraph to this step so you can start typing"
+}
