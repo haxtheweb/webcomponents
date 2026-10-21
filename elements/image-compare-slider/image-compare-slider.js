@@ -179,8 +179,20 @@ class ImageCompareSlider extends I18NMixin(
   haxHooks() {
     return {
       progressiveEnhancement: "haxprogressiveEnhancement",
+      editModeChanged: "haxeditModeChanged",
       mediaSourceUpdated: "haxmediaSourceUpdated",
     };
+  }
+  /**
+   * Drop the saved fallback while editing; the hook writes a fresh one on save,
+   * so a stale copy is never saved next to it.
+   */
+  haxeditModeChanged(value) {
+    if (value) {
+      this.querySelectorAll("[data-prog-fallback]").forEach((node) =>
+        node.remove(),
+      );
+    }
   }
   /**
    * Hook for HAX progressive enhancement: the two images for RSS, bots and
@@ -194,7 +206,7 @@ class ImageCompareSlider extends I18NMixin(
       .filter(([src]) => src)
       .map(
         ([src, alt]) =>
-          `<img src="${escapeAttr(src)}" alt="${escapeAttr(alt)}" loading="lazy" />`,
+          `<img data-prog-fallback src="${escapeAttr(src)}" alt="${escapeAttr(alt)}" loading="lazy" />`,
       )
       .join("\n");
   }

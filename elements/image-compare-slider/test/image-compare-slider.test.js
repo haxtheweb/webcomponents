@@ -73,6 +73,7 @@ describe("image-compare-slider behavior", () => {
     );
     expect(el.haxHooks()).to.deep.equal({
       progressiveEnhancement: "haxprogressiveEnhancement",
+      editModeChanged: "haxeditModeChanged",
       mediaSourceUpdated: "haxmediaSourceUpdated",
     });
   });
@@ -148,5 +149,22 @@ describe("image-compare-slider progressive enhancement", () => {
       html`<image-compare-slider top-src="a.png"></image-compare-slider>`,
     );
     expect(el.haxprogressiveEnhancement(el).match(/<img/g).length).to.equal(1);
+  });
+
+  it("marks the images and removes them when editing starts, so none is saved twice", async () => {
+    const el = await fixture(
+      html`<image-compare-slider
+        top-src="a.png"
+        bottom-src="b.png"
+      ></image-compare-slider>`,
+    );
+    const markup = el.haxprogressiveEnhancement(el);
+    expect(markup.match(/data-prog-fallback/g).length).to.equal(2);
+    el.insertAdjacentHTML("beforeend", markup);
+    expect(el.querySelectorAll("[data-prog-fallback]").length).to.equal(2);
+    el.haxeditModeChanged(false);
+    expect(el.querySelectorAll("[data-prog-fallback]").length).to.equal(2);
+    el.haxeditModeChanged(true);
+    expect(el.querySelectorAll("[data-prog-fallback]").length).to.equal(0);
   });
 });

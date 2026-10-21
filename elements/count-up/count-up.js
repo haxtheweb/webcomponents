@@ -138,6 +138,7 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
   haxHooks() {
     return {
       progressiveEnhancement: "haxprogressiveEnhancement",
+      editModeChanged: "haxeditModeChanged",
     };
   }
   /**
@@ -147,7 +148,18 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
   haxprogressiveEnhancement(_el) {
     return this.end == null || Number.isNaN(Number(this.end))
       ? ""
-      : `<span>${Number(this.end)}</span>`;
+      : `<span data-prog-fallback>${Number(this.end)}</span>`;
+  }
+  /**
+   * Drop the saved fallback while editing; the hook writes a fresh one on save,
+   * so a stale copy is never saved next to it.
+   */
+  haxeditModeChanged(value) {
+    if (value) {
+      this.querySelectorAll("[data-prog-fallback]").forEach((node) =>
+        node.remove(),
+      );
+    }
   }
   static get tag() {
     return "count-up";
