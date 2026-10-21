@@ -61,11 +61,7 @@ const RTL_LANGUAGES = /^(ar|arc|ckb|dv|fa|he|khw|ks|ps|sd|ug|ur|yi)(-|$)/i;
  * announces its base language for the same reason.
  */
 export const normalizeLanguage = (lang = "") =>
-  String(lang)
-    .trim()
-    .replace(/_/g, "-")
-    .split("-")[0]
-    .toLowerCase();
+  String(lang).trim().replace(/_/g, "-").split("-")[0].toLowerCase();
 
 export const isRtlLanguage = (lang = "") => RTL_LANGUAGES.test(lang);
 
@@ -75,12 +71,11 @@ export const isRtlLanguage = (lang = "") => RTL_LANGUAGES.test(lang);
  */
 export const documentLanguage = () => {
   const doc = globalThis.document;
-  return normalizeLanguage(
-    doc?.body?.getAttribute("lang") ||
-      doc?.documentElement?.getAttribute("lang") ||
-      globalThis.navigator?.language ||
-      "en",
-  );
+  const fromBody = doc && doc.body && doc.body.getAttribute("lang");
+  const fromHtml =
+    doc && doc.documentElement && doc.documentElement.getAttribute("lang");
+  const fromBrowser = globalThis.navigator && globalThis.navigator.language;
+  return normalizeLanguage(fromBody || fromHtml || fromBrowser || "en");
 };
 
 /**
@@ -98,7 +93,11 @@ const normalizeLanguageList = (list) => {
       if (typeof entry === "string") {
         const code = normalizeLanguage(entry);
         const known = SUPPORTED_LANGUAGES.find((item) => item.code === code);
-        return known ? { ...known } : code ? { code, name: entry.trim() } : null;
+        return known
+          ? { ...known }
+          : code
+            ? { code, name: entry.trim() }
+            : null;
       }
       if (entry && entry.code) {
         return {
@@ -175,7 +174,10 @@ export class LanguagePicker extends LitElement {
   }
 
   disconnectedCallback() {
-    globalThis.removeEventListener("languagechange", this._handleWindowLanguage);
+    globalThis.removeEventListener(
+      "languagechange",
+      this._handleWindowLanguage,
+    );
     super.disconnectedCallback();
   }
 
@@ -218,7 +220,12 @@ export class LanguagePicker extends LitElement {
      * language. Skipped inside the HAX editor (`HaxStore` only exists there) so
      * switching language never throws away an unsaved page.
      */
-    if (this.reload && !globalThis.HaxStore && globalThis.location?.reload) {
+    if (
+      this.reload &&
+      !globalThis.HaxStore &&
+      globalThis.location &&
+      globalThis.location.reload
+    ) {
       globalThis.location.reload();
     }
   }
@@ -235,7 +242,7 @@ export class LanguagePicker extends LitElement {
   }
 
   _apply(lang) {
-    const root = globalThis.document?.documentElement;
+    const root = globalThis.document && globalThis.document.documentElement;
     if (root) {
       // assigning the same value still notifies the observer, so skip no-ops
       if (root.getAttribute("lang") !== lang) {
@@ -251,14 +258,18 @@ export class LanguagePicker extends LitElement {
      * updates every registered element, including a regional fallback such as
      * `en-US` -> `en`. The MutationObserver above covers the rest.
      */
-    globalThis.dispatchEvent(new CustomEvent("languagechange", { detail: lang }));
+    globalThis.dispatchEvent(
+      new CustomEvent("languagechange", { detail: lang }),
+    );
   }
 
   render() {
     const label = this.label || "Language";
     return html`
       <label class="field">
-        <span class="label-text ${this.hideLabel ? "sr-only" : ""}">${label}</span>
+        <span class="label-text ${this.hideLabel ? "sr-only" : ""}"
+          >${label}</span
+        >
         <select
           class="select"
           aria-label=${label}
@@ -312,7 +323,7 @@ export class LanguagePicker extends LitElement {
         position: absolute;
         width: 1px;
         height: 1px;
-        padding: 0;
+        padding: var(--ddd-spacing-0, 0);
         margin: -1px;
         overflow: hidden;
         clip: rect(0 0 0 0);

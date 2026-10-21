@@ -655,7 +655,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
           gap: var(--ddd-spacing-2, 8px);
           margin-top: var(--ddd-spacing-2, 8px);
           font-size: var(--ddd-font-size-4xs, 0.7rem);
-          letter-spacing: 0.04em;
+          letter-spacing: var(--ddd-ls-72-sm, 0.04em);
           text-transform: uppercase;
         }
 
@@ -747,7 +747,8 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
         .btn:focus-visible {
           outline: 2px solid var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: 2px;
-          box-shadow: 0 0 0 0.2rem rgba(0, 95, 169, 0.3);
+          box-shadow: 0 0 0 0.2rem
+            color-mix(in srgb, var(--ddd-theme-default-link) 30%, transparent);
         }
 
         /* Main Button (Lanjut) - Left radius only */
@@ -777,9 +778,9 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
           height: 0;
           margin: var(--ddd-spacing-0, 0);
           vertical-align: middle;
-          border-top: 5px solid currentColor;
-          border-right: 5px solid transparent;
-          border-left: 5px solid transparent;
+          border-top: var(--ddd-border-size-lg, 4px) solid currentColor;
+          border-right: var(--ddd-border-size-lg, 4px) solid transparent;
+          border-left: var(--ddd-border-size-lg, 4px) solid transparent;
         }
 
         /* Dropdown Menu */
