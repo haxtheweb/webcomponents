@@ -78,6 +78,7 @@ class PdfBrowserViewer extends LitElement {
                 : html``}
               <div class="card-content">
                 <object
+                  aria-label="${this.heading || "PDF document"}"
                   data="${this.file}"
                   type="application/pdf"
                   width="${this.width}"
@@ -98,6 +99,7 @@ class PdfBrowserViewer extends LitElement {
           `
         : html`
             <object
+              aria-label="${this.heading || "PDF document"}"
               data="${this.file}"
               type="application/pdf"
               width="${this.width}"

@@ -534,16 +534,50 @@ describe("HaxAppInstaller input handlers", () => {
     expect(element._passwordRevealed).to.be.false;
   });
 
+  // headless Chromium can leave navigator.clipboard.writeText pending forever
+  // (permission prompt), so use a deterministic stub
+  const stubClipboard = (impl) => {
+    const original = Object.getOwnPropertyDescriptor(
+      globalThis.navigator,
+      "clipboard",
+    );
+    Object.defineProperty(globalThis.navigator, "clipboard", {
+      configurable: true,
+      value: impl,
+    });
+    return () => {
+      if (original) {
+        Object.defineProperty(globalThis.navigator, "clipboard", original);
+      } else {
+        delete globalThis.navigator.clipboard;
+      }
+    };
+  };
+
   it("_copyToClipboard sets _copiedField and resets after timeout", async () => {
-    await element._copyToClipboard("test-text", "username");
-    expect(element._copiedField).to.equal("username");
-    // wait for the reset timeout (2000ms is too long, just verify it was set)
+    let written = null;
+    const restore = stubClipboard({
+      writeText: async (t) => {
+        written = t;
+      },
+    });
+    try {
+      await element._copyToClipboard("test-text", "username");
+      expect(written).to.equal("test-text");
+      expect(element._copiedField).to.equal("username");
+    } finally {
+      restore();
+    }
   });
 
   it("_copyToClipboard handles missing navigator.clipboard gracefully", async () => {
-    // Temporarily remove clipboard
-    await element._copyToClipboard("test", "password");
-    expect(element._copiedField).to.equal("password");
+    const restore = stubClipboard(undefined);
+    try {
+      await element._copyToClipboard("test", "password");
+      expect(element._copiedField).to.equal("password");
+    } finally {
+      restore();
+    }
   });
 
   it("_dispatchLanguageChange sets document lang and dispatches event", () => {

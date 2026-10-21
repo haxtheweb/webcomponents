@@ -447,9 +447,9 @@ describe("simple-blog-footer", () => {
         .querySelector(".background-closer-image")
         .getAttribute("style"),
     ).to.include("data:image");
-    expect(footer.shadowRoot.querySelector("button").textContent).to.equal(
-      "Back to list",
-    );
+    expect(
+      footer.shadowRoot.querySelector("button").textContent.trim(),
+    ).to.equal("Back to list");
   });
 
   it("maps the cssVariable theme token onto the accent color", () => {
