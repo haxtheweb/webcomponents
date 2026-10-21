@@ -424,7 +424,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
     }
     try {
       block.scrollIntoView({ block: "nearest", behavior: "smooth" });
-    } catch (e) {
+    } catch {
       /* scrolling is a nicety */
     }
     const place = () => {
@@ -442,7 +442,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
           selection.addRange(range);
         }
         return globalThis.document.activeElement === block;
-      } catch (e) {
+      } catch {
         return false;
       }
     };
@@ -495,7 +495,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
           } else if (typeof body.__applyNodeEditableState === "function") {
             body.__applyNodeEditableState(target, true);
           }
-        } catch (e) {
+        } catch {
           /* editing state is an editor nicety; the block still renders */
         }
       }
@@ -503,7 +503,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
         if (typeof body.__rehydrateLayoutDescendants === "function") {
           await body.__rehydrateLayoutDescendants(node, true);
         }
-      } catch (e) {
+      } catch {
         /* nested grid rehydration is best effort */
       }
     };

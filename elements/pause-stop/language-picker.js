@@ -118,7 +118,7 @@ const languagesConverter = {
     }
     try {
       return normalizeLanguageList(JSON.parse(value));
-    } catch (e) {
+    } catch {
       return normalizeLanguageList(value);
     }
   },
@@ -236,7 +236,7 @@ export class LanguagePicker extends LitElement {
     }
     try {
       globalThis.localStorage.setItem(this.storageKey, lang);
-    } catch (e) {
+    } catch {
       // private mode / storage disabled: switching still works for this view
     }
   }
