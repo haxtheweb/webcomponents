@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+
+    <title>langkah-bertahap demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <!-- canvas-confetti powers the celebration the element fires on the last step -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "../warp-glitch.js";
+      import "../language-picker.js";
+    </script>
+  </head>
+
+  <body>
+    <div class="vertical-section-container">
+      <h3>1. Penggunaan standar &lt;langkah-bertahap&gt; (slot bertahap)</h3>
+      <p>
+        Satu isi per langkah lewat <code>slot="content-N"</code>. tombol
+        "Lanjut..." membuka langkah berikutnya sampai langkah terakhir, tempat
+        konfeti perayaan diluncurkan.
+      </p>
+      <demo-snippet>
+        <template>
+          <langkah-bertahap>
+            <div slot="content-1">
+              <strong>Langkah 1:</strong> Bacalah ringkasan materi pengantar
+              berikut secara teliti sebelum melanjutkan ke penjelasan teknis.
+            </div>
+            <div slot="content-2">
+              <strong>Langkah 2:</strong> Analisis bagaimana logika inferensi
+              dan aturan penarikan kesimpulan bekerja pada contoh kasus nyata.
+            </div>
+            <div slot="content-3">
+              <strong>Langkah 3:</strong> Simpulkan intisari pembahasan dan
+              siapkan pertanyaan untuk diskusi kelompok.
+            </div>
+          </langkah-bertahap>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container">
+      <h3>2. Label kustom dan dua langkah pertama sekaligus</h3>
+      <p>
+        <code>button-label</code> mengganti teks tombol utama,
+        <code>show-all-label</code> mengganti label menu dropdown, dan
+        <code>visible-content="2"</code> menampilkan dua langkah di awal.
+      </p>
+      <demo-snippet>
+        <template>
+          <langkah-bertahap
+            button-label="Lanjutkan Membaca"
+            show-all-label="Buka Semua"
+            visible-content="2"
+          >
+            <div slot="content-1">
+              <strong>Poin A:</strong> Konten pertama sudah terlihat tanpa klik,
+              berguna bila langkah pertama adalah pengantar wajib.
+            </div>
+            <div slot="content-2">
+              <strong>Poin B:</strong> Langkah kedua ikut terbuka karena
+              <code>visible-content</code> diset ke 2.
+            </div>
+            <div slot="content-3">
+              <strong>Poin C:</strong> Sisa langkah tetap tersimpan di balik
+              tombol "Lanjutkan Membaca".
+            </div>
+          </langkah-bertahap>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container">
+      <h3>3. Kompatibilitas tag &lt;split-pause&gt; (alias lama)</h3>
+      <p>
+        <code>&lt;split-pause&gt;</code> dan <code>&lt;warp-glitch&gt;</code>
+        berbagi implementasi serta skema yang sama dengan
+        <code>&lt;langkah-bertahap&gt;</code>, sehingga halaman lama tetap
+        berjalan tanpa perubahan.
+      </p>
+      <demo-snippet>
+        <template>
+          <split-pause button-label="Lanjutkan Membaca">
+            <div slot="content-1">
+              <strong>Poin A:</strong> Komponen ini mendukung tag lama
+              <code>&lt;split-pause&gt;</code> sehingga halaman atau tema yang
+              sudah ada tetap berjalan tanpa perubahan kode HTML.
+            </div>
+            <div slot="content-2">
+              <strong>Poin B:</strong> Tombol mematuhi standar aksesibilitas
+              WCAG 2.0 AA (outline focus, aria-label, role menu).
+            </div>
+          </split-pause>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container">
+      <h3>4. Fallback konten otomatis (tanpa slot eksplisit)</h3>
+      <p>
+        Konten di default slot menjadi langkah pertama, jadi tidak wajib menulis
+        atribut <code>slot</code> untuk isi pertama.
+      </p>
+      <demo-snippet>
+        <template>
+          <langkah-bertahap>
+            <p>
+              Konten ini ditaruh di slot bawaan (default slot) dan otomatis
+              ditampilkan pada langkah pertama tanpa perlu menulis atribut slot
+              secara manual.
+            </p>
+            <div slot="content-2">
+              Konten langkah 2 yang akan muncul setelah mengklik "Lanjut...".
+            </div>
+          </langkah-bertahap>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container">
+      <h3>5. Pemilih bahasa &lt;language-picker&gt;</h3>
+      <p>
+        Mengganti bahasa dokumen (<code>&lt;html lang&gt;</code> dan
+        <code>dir</code>). i18n-manager mendeteksi perubahan itu, memuat ulang
+        <code>locales/langkah-bertahap.&lt;lang&gt;.json</code>, lalu label
+        tombol ikut berganti tanpa reload. Pilih <strong>العربية</strong> untuk
+        melihat arah tulisan berubah menjadi RTL.
+      </p>
+      <demo-snippet>
+        <template>
+          <language-picker label="Bahasa"></language-picker>
+          <langkah-bertahap>
+            <p>
+              Isi bagian ini tetap memakai bahasa yang kamu tulis. Yang
+              diterjemahkan adalah string antarmuka komponen: tombol
+              "Lanjut...", "Opsi lainnya", dan nama bagian.
+            </p>
+            <div slot="content-2">
+              Tombol yang tadinya "Lanjut..." sekarang mengikuti bahasa yang
+              dipilih.
+            </div>
+          </langkah-bertahap>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
