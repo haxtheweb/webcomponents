@@ -196,10 +196,17 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   _stripWrappedQuotes(value) {
-    return value
-      .replace(/(^&quot;|&quot;$)/g, "")
-      .replace(/(^"+|"+$)/g, "")
-      .replace(/(^'+|'+$)/g, "");
+    const trimRuns = (str, ch) => {
+      let start = 0;
+      let end = str.length;
+      while (start < end && str[start] === ch) start++;
+      while (end > start && str[end - 1] === ch) end--;
+      return str.slice(start, end);
+    };
+    return trimRuns(
+      trimRuns(value.replace(/(^&quot;|&quot;$)/g, ""), '"'),
+      "'",
+    );
   }
 
   _normalizeDate(value) {

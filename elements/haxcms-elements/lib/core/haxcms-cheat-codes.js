@@ -8,6 +8,7 @@
 
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "./haxcms-site-store.js";
+import { replaceThrough } from "@haxtheweb/utils/lib/safe-html.js";
 
 // English defaults for cheat code toasts and Merlin speech. These methods are
 // attached to haxcms-site-editor-ui, so translations come from its this.t
@@ -617,7 +618,12 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     if (existingFilter.includes("sepia")) {
       // Remove time travel effect
-      body.style.filter = existingFilter.replace(/sepia\([^)]*\)/g, "").trim();
+      body.style.filter = replaceThrough(
+        existingFilter,
+        /sepia\(/g,
+        ")",
+        "",
+      ).trim();
       HAXStore.toast(_t(editorInstance, "cheatTimeTravelDisabled"));
     } else {
       // Add sepia time travel effect
@@ -631,9 +637,12 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       setTimeout(() => {
         const currentFilter = body.style.filter || "";
         if (currentFilter.includes("sepia")) {
-          body.style.filter = currentFilter
-            .replace(/sepia\([^)]*\)/g, "")
-            .trim();
+          body.style.filter = replaceThrough(
+            currentFilter,
+            /sepia\(/g,
+            ")",
+            "",
+          ).trim();
           HAXStore.toast(_t(editorInstance, "cheatTimeTravelExpired"));
         }
       }, 30000);

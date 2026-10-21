@@ -37,6 +37,7 @@ import "@haxtheweb/page-flag/page-flag.js";
 import { SiteView } from "../ui-components/magic/site-view.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 import { urlHostMatches } from "./utils/urlHost.js";
+import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 
 const ADMIN_ROUTE_QUERY_PATHS = {
   admin: "admin",
@@ -6414,7 +6415,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!normalized) {
       return null;
     }
-    normalized = normalized.replace(/^\/+/, "").replace(/\/+$/, "");
+    normalized = trimSlashes(normalized);
     if (!normalized) {
       return null;
     }
@@ -6427,11 +6428,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (typeof path !== "string") {
       return null;
     }
-    const normalized = path
-      .trim()
-      .toLowerCase()
-      .replace(/^\/+/, "")
-      .replace(/\/+$/, "");
+    const normalized = trimSlashes(path.trim().toLowerCase());
     if (!normalized) {
       return null;
     }

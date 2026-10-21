@@ -6,6 +6,7 @@
 import { store } from "../haxcms-site-store.js";
 import { toJS } from "mobx";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
+import { extractFilesAttrPaths } from "@haxtheweb/utils/lib/safe-html.js";
 
 class SiteSkeletonGenerator {
   /**
@@ -351,12 +352,7 @@ class SiteSkeletonGenerator {
     const fileRefs = [];
     // Look for attributes like src="files/..." or href="files/..." etc.
     // Ensure the path ends with a file extension
-    const fileRegex = /\w+="files\/([^"'\s>]+\.[a-zA-Z0-9]+)"/gi;
-
-    let match;
-    while ((match = fileRegex.exec(content)) !== null) {
-      const filePath = match[1];
-
+    for (const filePath of extractFilesAttrPaths(content)) {
       fileRefs.push({
         path: filePath,
       });

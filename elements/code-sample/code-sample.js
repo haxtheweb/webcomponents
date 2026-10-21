@@ -646,8 +646,22 @@ if ($MrTheCheat) {
     }
   }
   _cleanIndentation(str) {
-    const pattern = str.match(/\s*\n[\t\s]*/);
-    return str.replace(new RegExp(pattern, "g"), "\n");
+    // first run of whitespace containing a newline, replaced everywhere by "\n"
+    let i = 0;
+    while (i < str.length) {
+      if (!/\s/.test(str[i])) {
+        i++;
+        continue;
+      }
+      let j = i;
+      let hasNewline = false;
+      for (; j < str.length && /\s/.test(str[j]); j++) {
+        if (str[j] === "\n") hasNewline = true;
+      }
+      if (hasNewline) return str.split(str.slice(i, j)).join("\n");
+      i = j;
+    }
+    return str;
   }
   _entitize(str) {
     return String(str)

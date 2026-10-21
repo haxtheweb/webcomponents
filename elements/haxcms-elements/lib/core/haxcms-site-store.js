@@ -1572,7 +1572,13 @@ class Store {
     }
 
     // Check for page-template tags (case insensitive)
-    const hasPageTemplate = /<page-template[\s\S]*?>/i.test(content);
+    const pageTemplateStart = /<page-template/i.exec(content);
+    const hasPageTemplate =
+      pageTemplateStart !== null &&
+      content.indexOf(
+        ">",
+        pageTemplateStart.index + pageTemplateStart[0].length,
+      ) !== -1;
 
     // Additional validation: ensure it's not just a site index by checking for typical HAXcms site elements
     // If it contains these, it's likely the site index being served instead of style-guide.html

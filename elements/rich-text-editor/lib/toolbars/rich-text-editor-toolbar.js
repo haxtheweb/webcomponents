@@ -20,6 +20,7 @@ import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-image.js";
 import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-link.js";
 import "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-unlink.js";
 import { stripHtmlComments } from "../stripHtmlComments.js";
+import { extractBodyContents } from "@haxtheweb/utils/lib/safe-html.js";
 
 globalThis.RichTextEditorToolbars = globalThis.RichTextEditorToolbars || [];
 /**
@@ -1638,12 +1639,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       // literal dots so it never matched single-line html, and the strip
       // pattern matched a literal "<?body" with no replacement argument,
       // inserting the string "undefined" — issue #3077, bug 27)
-      let regex = /<body[^>]*>[\s\S]*<\/body>/i;
-      if (html.match(regex) && html.match(regex).length > 0)
-        html = html
-          .match(regex)[0]
-          .replace(/<body[^>]*>/i, "")
-          .replace(/<\/body>/i, "");
+      const bodyContents = extractBodyContents(html);
+      if (bodyContents !== null) html = bodyContents;
       return html;
     }
     /**

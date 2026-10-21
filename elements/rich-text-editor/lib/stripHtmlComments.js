@@ -1,3 +1,5 @@
+import { stripHtmlComments as removeHtmlComments } from "@haxtheweb/utils/lib/safe-html.js";
+
 /**
  * Remove HTML comments from a string. Repeats until nothing changes so nested
  * input such as "<!<!-- x -->-- y -->" cannot leave a comment opener behind.
@@ -9,7 +11,7 @@ export function stripHtmlComments(str) {
   let previous;
   do {
     previous = result;
-    result = result.replace(/<!--[\s\S]*?-->/g, "");
+    result = removeHtmlComments(result);
   } while (result !== previous);
   return result;
 }

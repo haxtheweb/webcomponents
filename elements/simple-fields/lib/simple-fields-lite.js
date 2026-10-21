@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import "./simple-fields-container.js";
 import "./simple-fields-fieldset.js";
 import "./simple-fields-array.js";
+import { removeThroughLast } from "@haxtheweb/utils/lib/safe-html.js";
 /**
  * `simple-fields-lite`
  * Uses JSON Schema of fields to display a series of fields
@@ -910,7 +911,7 @@ class SimpleFieldsLite extends LitElement {
       //need to ingnore slotted content that is not an array item
       if (!item.isArrayItem) return;
       let base = item.id.replace(/\.\d+$/, ``),
-        i = parseInt(item.id.replace(/.*\./g, ""));
+        i = parseInt(removeThroughLast(item.id, "."));
       updateIndex(item, item.id, `${base}.${index}`);
       newVals.push(JSON.parse(JSON.stringify(vals[i])));
     });

@@ -19,6 +19,7 @@ import {
   configureHAXCMSSiteApiRegistry,
   waitForHAXCMSSiteApiRegistryReady,
 } from "./utils/haxcms-site-api-registry.js";
+import { findTagAttrValue } from "@haxtheweb/utils/lib/safe-html.js";
 
 /**
  * `haxcms-site-editor`
@@ -417,8 +418,8 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (typeof content !== "string" || content === "") {
       return null;
     }
-    const match = content.match(/<page-break[^>]*?\sitem-id=["']([^"']+)["']/i);
-    return match ? String(match[1]) : null;
+    const itemId = findTagAttrValue(content, "page-break", "item-id");
+    return itemId !== null ? String(itemId) : null;
   }
 
   _handleUserDataResponse(e) {

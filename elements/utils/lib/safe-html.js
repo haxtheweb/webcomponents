@@ -296,3 +296,276 @@ export function trimLineEdges(text) {
   }
   return out + text.slice(keepFrom);
 }
+
+/**
+ * Strip characters from the edges of a string without a regular expression.
+ * Linear replacement for `/^[-_]+|[-_]+$/g`, `/\/+$/`, `/^\/+/` and friends:
+ * `str.replace(/\/+$/, "")` rescans the whole slash run from every start
+ * position on input such as "////…x", this walks inward from each end once.
+ * @param {string} str
+ * @param {string} chars every character in this string is trimmed (a set)
+ * @param {Object} [opts]
+ * @param {boolean} [opts.start=true] trim the beginning
+ * @param {boolean} [opts.end=true] trim the end
+ */
+export function trimChars(str, chars, { start = true, end = true } = {}) {
+  if (typeof str !== "string") return str;
+  let s = 0;
+  let e = str.length;
+  if (start) while (s < e && chars.includes(str[s])) s++;
+  if (end) while (e > s && chars.includes(str[e - 1])) e--;
+  return s === 0 && e === str.length ? str : str.slice(s, e);
+}
+
+/** Linear `str.replace(/\/+$/, "")` */
+export function trimTrailingSlashes(str) {
+  return trimChars(str, "/", { start: false });
+}
+
+/** Linear `str.replace(/^\/+|\/+$/g, "")` */
+export function trimSlashes(str) {
+  return trimChars(str, "/");
+}
+
+/**
+ * Linear replacement for `.replace(/.*NEEDLE/g, "")` (or the non-global
+ * `.replace(/.*NEEDLE/, "")`): drop everything on a line up to and including
+ * the LAST occurrence of a literal. `.` does not cross line terminators so
+ * every line is handled on its own, exactly like the regex.
+ * @param {string} input
+ * @param {string} needle literal text
+ * @param {Object} [opts]
+ * @param {boolean} [opts.all=true] every line (g flag) or only the first
+ *   line that contains the literal
+ */
+export function removeThroughLast(input, needle, { all = true } = {}) {
+  if (typeof input !== "string" || !needle) return input;
+  if (!input.includes(needle)) return input;
+  const parts = input.split(LINE_TERMINATORS);
+  for (let p = 0; p < parts.length; p += 2) {
+    const idx = parts[p].lastIndexOf(needle);
+    if (idx >= 0) {
+      parts[p] = parts[p].slice(idx + needle.length);
+      if (!all) break;
+    }
+  }
+  return parts.join("");
+}
+
+/**
+ * Generalised replaceThroughGt: linear replacement for
+ * a global `PREFIX[^X]*X` or `PREFIX[\s\S]*?X` where X is a single character.
+ * Everything from each prefix match through the next `closeChar` is replaced.
+ * @param {string} input
+ * @param {RegExp} prefixRe global prefix pattern (no quantified groups)
+ * @param {string} closeChar single character that ends the run
+ * @param {string} replacement
+ */
+export function replaceThrough(input, prefixRe, closeChar, replacement) {
+  let out = "";
+  let pos = 0;
+  for (;;) {
+    const m = execFrom(prefixRe, input, pos);
+    if (!m) break;
+    const close = input.indexOf(closeChar, m.index + m[0].length);
+    if (close < 0) break; // no later prefix can find the close char either
+    out += input.slice(pos, m.index) + replacement;
+    pos = close + 1;
+  }
+  return out + input.slice(pos);
+}
+
+/**
+ * Linear replacement for the pattern "optional whitespace, `<tag` or `</tag`, any run of non-`>`,
+ * `>`, optional whitespace" (global, replaced by nothing): remove each tag
+ * together with the whitespace on both sides of it.
+ * @param {string} input
+ * @param {RegExp} prefixRe global pattern for the start of the tag, e.g. /<\/?template/g
+ */
+export function removeTagsWithSpace(input, prefixRe) {
+  const ws = /\s/;
+  let out = "";
+  let pos = 0;
+  for (;;) {
+    const m = execFrom(prefixRe, input, pos);
+    if (!m) break;
+    const gt = input.indexOf(">", m.index + m[0].length);
+    if (gt < 0) break;
+    let s = m.index;
+    while (s > pos && ws.test(input[s - 1])) s--;
+    let e = gt + 1;
+    while (e < input.length && ws.test(input[e])) e++;
+    out += input.slice(pos, s);
+    pos = e;
+  }
+  return out + input.slice(pos);
+}
+
+/**
+ * Linear replacement for the "full <body> wrapper" extraction
+ * `html.match(/<body[^>]*>[\s\S]*<\/body>/i)[0].replace(/<body[^>]*>/i, "")
+ * .replace(/<\/body>/i, "")`.
+ * @param {string} html
+ * @returns {string|null} the content between the opening tag and the last
+ *   closing tag (with the first closing tag removed, as the regex chain did),
+ *   or null when there is no complete <body>…</body> wrapper
+ */
+export function extractBodyContents(html) {
+  if (typeof html !== "string") return null;
+  const open = /<body/gi.exec(html);
+  if (!open) return null;
+  // the earliest "<body" is the only start that needs trying: any later start
+  // has a later ">" and therefore fewer possible closing tags
+  const gt = html.indexOf(">", open.index + open[0].length);
+  if (gt < 0) return null;
+  const close = /<\/body>/gi;
+  close.lastIndex = gt + 1;
+  let first = null;
+  let last = null;
+  let m;
+  while ((m = close.exec(html))) {
+    if (!first) first = m;
+    last = m;
+  }
+  if (!last) return null;
+  const inner = html.slice(gt + 1, last.index + last[0].length);
+  const f = first.index - (gt + 1);
+  return inner.slice(0, f) + inner.slice(f + first[0].length);
+}
+
+/**
+ * Linear equivalent of `!!text.match(/^\S+@\S+.\S+$/)` (note the unescaped
+ * "." – it may be any one character, including a single whitespace).
+ * @param {string} text
+ * @returns {boolean}
+ */
+export function looksLikeEmail(text) {
+  if (typeof text !== "string") return false;
+  const n = text.length;
+  const at = text.indexOf("@", 1);
+  if (at < 1) return false;
+  let wsCount = 0;
+  let p = -1;
+  for (let i = 0; i < n; i++) {
+    if (/\s/.test(text[i])) {
+      wsCount++;
+      p = i;
+      if (wsCount > 1) return false;
+    }
+  }
+  if (wsCount === 0) return n - at - 1 >= 3;
+  // the single whitespace has to be the "." and sit between two \S+ runs
+  return !/[\n\r\u2028\u2029]/.test(text[p]) && at <= p - 2 && p <= n - 2;
+}
+
+/**
+ * Linear replacement for the "find the first indent run, then replace every
+ * copy of it with a newline" idiom
+ * (match whitespace-then-newline-then-whitespace, then replace every copy of that
+ * exact text with a newline).
+ * The first match is the first whole whitespace run that contains a newline.
+ * (The regex version turned a missing match into `/null/g`, i.e. replaced the
+ * literal text "null"; here no run means the input is returned unchanged.)
+ * @param {string} str
+ */
+export function collapseFirstIndentRun(str) {
+  const ws = /\s/;
+  const n = str.length;
+  let i = 0;
+  while (i < n) {
+    if (!ws.test(str[i])) {
+      i++;
+      continue;
+    }
+    let j = i;
+    let hasNl = false;
+    while (j < n && ws.test(str[j])) {
+      if (str[j] === "\n") hasNl = true;
+      j++;
+    }
+    if (hasNl) return str.split(str.slice(i, j)).join("\n");
+    i = j;
+  }
+  return str;
+}
+
+/**
+ * Linear replacement for collecting capture group 1 of
+ * `/\w+="files\/([^"'\s>]+\.[a-zA-Z0-9]+)"/gi` – the paths in attributes such
+ * as src="files/img/a.png". The regex re-scans the word before every "=" and
+ * the path body for every start position; this finds each `="files/` once.
+ * @param {string} content
+ * @returns {string[]} the captured paths, in order
+ */
+export function extractFilesAttrPaths(content) {
+  const out = [];
+  if (typeof content !== "string") return out;
+  const re = /="files\//gi;
+  const stop = /["'\s>]/;
+  const alnum = /^[a-zA-Z0-9]+$/;
+  let consumed = 0; // end of the previous match: characters before it are spent
+  let scan = 0;
+  for (;;) {
+    const m = execFrom(re, content, scan);
+    if (!m) break;
+    scan = m.index + 1;
+    // \w+ immediately before the "="
+    if (m.index - 1 < consumed || !/\w/.test(content[m.index - 1])) continue;
+    const from = m.index + m[0].length;
+    let j = from;
+    while (j < content.length && !stop.test(content[j])) j++;
+    if (content[j] !== '"') continue;
+    const path = content.slice(from, j);
+    const dot = path.lastIndexOf(".");
+    if (dot < 1 || !alnum.test(path.slice(dot + 1))) continue;
+    out.push(path);
+    consumed = j + 1;
+    scan = consumed;
+  }
+  return out;
+}
+
+/**
+ * Linear replacement for
+ * `content.match(/<TAG[^>]*?\sATTR=["']([^"']+)["']/i)?.[1]`: the value of the
+ * first quoted `ATTR` attribute found inside the first opening `<TAG …>` that
+ * has one. The attribute name has to start inside the tag (before its ">"),
+ * the value itself may be followed by anything.
+ * @param {string} content
+ * @param {string} tag literal tag name, e.g. "page-break"
+ * @param {string} attr literal attribute name, e.g. "item-id"
+ * @returns {string|null}
+ */
+export function findTagAttrValue(content, tag, attr) {
+  if (typeof content !== "string") return null;
+  const open = new RegExp("<" + escapeRegExp(tag), "gi");
+  const attrRe = new RegExp("\\s" + escapeRegExp(attr) + "=[\"']", "gi");
+  let pos = 0;
+  for (;;) {
+    const m = execFrom(open, content, pos);
+    if (!m) return null;
+    const from = m.index + m[0].length;
+    const gt = content.indexOf(">", from);
+    const end = gt < 0 ? content.length : gt;
+    // later "<TAG" starts inside this same tag could only offer a subset of
+    // the attribute positions, so the whole tag is handled in one pass
+    let a;
+    attrRe.lastIndex = from;
+    while ((a = attrRe.exec(content)) && a.index < end) {
+      const vStart = a.index + a[0].length;
+      let vEnd = vStart;
+      while (
+        vEnd < content.length &&
+        content[vEnd] !== '"' &&
+        content[vEnd] !== "'"
+      )
+        vEnd++;
+      if (vEnd > vStart && vEnd < content.length) {
+        return content.slice(vStart, vEnd);
+      }
+      attrRe.lastIndex = a.index + 1;
+    }
+    if (gt < 0) return null;
+    pos = gt + 1;
+  }
+}

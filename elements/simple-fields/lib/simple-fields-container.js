@@ -1034,10 +1034,12 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
         this.errorMessage = this.patternMessage || `invalid format`;
       }
       if (this.hasFieldset && legend) {
-        legend.innerHTML = legend.innerHTML.replace(
-          /\**\s*$/,
-          this.error ? "*" : "",
-        );
+        // drop trailing "*" markers and whitespace, then re-add one on error
+        const legendHtml = legend.innerHTML;
+        let end = legendHtml.length;
+        while (end > 0 && /\s/.test(legendHtml[end - 1])) end--;
+        while (end > 0 && legendHtml[end - 1] === "*") end--;
+        legend.innerHTML = legendHtml.slice(0, end) + (this.error ? "*" : "");
         legend.style.color = this.error
           ? "var(--simple-fields-error-color, #b40000)"
           : "";

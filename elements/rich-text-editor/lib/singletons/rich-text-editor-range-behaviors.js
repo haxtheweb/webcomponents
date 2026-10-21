@@ -168,7 +168,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      */
     outdentHTML(str = "") {
       str = (this.sanitizeHTML(str) || "")
-        .replace(/[\s]*$/, "")
+        .trimEnd()
         .replace(/^[\n\r]*/, "")
         .replace(/[\n\r]+/gm, "\n");
       let match = str.match(/^\s+/),

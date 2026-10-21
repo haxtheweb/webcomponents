@@ -13,6 +13,7 @@ import { autorun, toJS } from "mobx";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
+import { replaceLazyRun } from "@haxtheweb/utils/lib/safe-html.js";
 
 /**
  * `haxcms-backend-userfs`
@@ -160,7 +161,10 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
   // write content to the active item location
   async writeActiveItemContent(htmlContent) {
     // need to pull <page-break> off and parse
-    htmlContent = htmlContent.replace(/<page-break(.*?)><\/page-break>/gm, "");
+    htmlContent = replaceLazyRun(htmlContent, [
+      "<page-break",
+      "></page-break>",
+    ]);
     // @todo need to parse HAXStore.activeHaxBody.children[0] and ensure it's saved into the manifest
     await HAXStore.nodeToContent(HAXStore.activeHaxBody.children[0]);
     // find the file handler that matches the current item based on location match

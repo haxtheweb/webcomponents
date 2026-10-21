@@ -20,6 +20,7 @@ import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-transcript-cue.js";
 import "./lib/a11y-media-youtube.js";
+import { removeThroughLast } from "@haxtheweb/utils/lib/safe-html.js";
 
 /**
   * `a11y-media-player`
@@ -3005,11 +3006,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
             ? this.querySelector("iframe").src
             : false,
         yt = iframeSrc
-          ? iframeSrc.match(/youtube(-\w*)*.com/) ||
+          ? iframeSrc.match(/youtube(?:-nocookie)?\.com/) ||
             iframeSrc.match(/youtu\.be/)
           : false;
       if (yt && iframeSrc) {
-        this.youtubeId = iframeSrc.replace(/.*\//g, "");
+        this.youtubeId = removeThroughLast(iframeSrc, "/");
         hasVideo = true;
         this.querySelector("iframe").remove();
       }
