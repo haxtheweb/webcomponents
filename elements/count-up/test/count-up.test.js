@@ -516,9 +516,21 @@ describe("count-up progressive enhancement", () => {
 
   it("returns the final number, or nothing without one", async () => {
     const el = await fixture(html`<count-up end="42"></count-up>`);
-    expect(el.haxprogressiveEnhancement(el)).to.equal("<span>42</span>");
+    expect(el.haxprogressiveEnhancement(el)).to.equal(
+      "<span data-prog-fallback>42</span>",
+    );
     const none = await fixture(html`<count-up></count-up>`);
     none.end = undefined;
     expect(none.haxprogressiveEnhancement(none)).to.equal("");
+  });
+
+  it("removes a saved fallback when editing starts, so none is saved twice", async () => {
+    const el = await fixture(
+      html`<count-up end="42"><span data-prog-fallback>42</span></count-up>`,
+    );
+    el.haxeditModeChanged(false);
+    expect(el.querySelector("[data-prog-fallback]")).to.not.equal(null);
+    el.haxeditModeChanged(true);
+    expect(el.querySelector("[data-prog-fallback]")).to.equal(null);
   });
 });
