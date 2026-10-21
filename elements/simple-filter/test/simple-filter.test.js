@@ -189,17 +189,19 @@ describe("simple-filter _computeFiltered direct behavior", () => {
     expect(result).to.deep.equal(["join us"]);
   });
 
-  it("survives regex-breaking user input and returns no items", () => {
-    // backslash escaping is partially undone by the multiMatch branch;
-    // an invalid leftover pattern must be swallowed by the try/catch
-    const result = el._computeFiltered(
-      ["anything"],
-      "title",
-      "a\\",
-      false,
-      true,
-    );
-    expect(result).to.deep.equal([]);
+  it("multiMatch treats regex-breaking user input literally and never throws", () => {
+    // ignored punctuation (backslash ? . !) is stripped from each word before
+    // escaping; everything else, including ( + [, matches as plain text
+    const items = ["anything", "c++ rocks", "a(b test", "what now"];
+    const run = (like) =>
+      el._computeFiltered(items, "title", like, false, true);
+    expect(run("a\\")).to.deep.equal(["anything", "a(b test"]);
+    expect(run("c++")).to.deep.equal(["c++ rocks"]);
+    expect(run("a(b")).to.deep.equal(["a(b test"]);
+    expect(run("(a+)+$")).to.deep.equal([]);
+    // "what?" no longer turns into the regex /what?/ (optional t)
+    expect(run("what?")).to.deep.equal(["what now"]);
+    expect(run("wha?")).to.deep.equal(["what now"]);
   });
 
   it("warns when the where property is missing during active filtering", () => {
