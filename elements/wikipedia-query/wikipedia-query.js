@@ -8,6 +8,13 @@ import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
  * @demo demo/index.html
  * @element wikipedia-query
  */
+const escapeAttr = (value) =>
+  String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
 class WikipediaQuery extends IntersectionObserverMixin(DDD) {
   /**
    * LitElement constructable styles enhancement
@@ -229,8 +236,21 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
    */
   haxHooks() {
     return {
+      progressiveEnhancement: "haxprogressiveEnhancement",
       gizmoRegistration: "haxgizmoRegistration",
     };
+  }
+  /**
+   * Hook for HAX progressive enhancement: a link to the article for RSS, bots
+   * and readers without JavaScript (the article itself is fetched client side).
+   */
+  haxprogressiveEnhancement(_el) {
+    const search = this.search || this.title;
+    if (!search) {
+      return "";
+    }
+    const language = this.language || "en";
+    return `<a href="https://${escapeAttr(language)}.wikipedia.org/wiki/${encodeURIComponent(String(search).replace(/ /g, "_"))}">${escapeAttr(this.title || search)}</a>`;
   }
   /**
    * @see haxHooks: gizmoRegistration

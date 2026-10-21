@@ -93,7 +93,9 @@ class LoremData extends I18NMixin(LoremDataBehaviors(LitElement)) {
                 >${key}:
               </a>
               <br />
-              <textarea>${this.getJson(this.schemas[key])}</textarea>
+              <textarea
+                .value="${this.getJson(this.schemas[key])}"
+              ></textarea>
             </label>
           </p>
         `,

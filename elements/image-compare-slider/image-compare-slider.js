@@ -9,6 +9,13 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
  * @demo demo/index.html
  * @element image-compare-slider
  */
+const escapeAttr = (value) =>
+  String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
 class ImageCompareSlider extends I18NMixin(
   IntersectionObserverMixin(SchemaBehaviors(SimpleColors)),
 ) {
@@ -171,8 +178,25 @@ class ImageCompareSlider extends I18NMixin(
    */
   haxHooks() {
     return {
+      progressiveEnhancement: "haxprogressiveEnhancement",
       mediaSourceUpdated: "haxmediaSourceUpdated",
     };
+  }
+  /**
+   * Hook for HAX progressive enhancement: the two images for RSS, bots and
+   * readers without JavaScript.
+   */
+  haxprogressiveEnhancement(_el) {
+    return [
+      [this.topSrc, this.topAlt],
+      [this.bottomSrc, this.bottomAlt],
+    ]
+      .filter(([src]) => src)
+      .map(
+        ([src, alt]) =>
+          `<img src="${escapeAttr(src)}" alt="${escapeAttr(alt)}" loading="lazy" />`,
+      )
+      .join("\n");
   }
   haxmediaSourceUpdated(path, store) {
     if (!path || !store || typeof store._mediaSrcMatches !== "function") {
