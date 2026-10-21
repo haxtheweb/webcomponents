@@ -91,7 +91,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
     const baseLanguage = (this._documentLanguage() || "").split("-")[0];
     if (baseLanguage) {
       globalThis.dispatchEvent(
-        new CustomEvent("languagechange", { detail: baseLanguage })
+        new CustomEvent("languagechange", { detail: baseLanguage }),
       );
     }
   }
@@ -158,7 +158,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
      */
     if (globalThis.MutationObserver && !this._slotObserver) {
       this._slotObserver = new MutationObserver(() =>
-        this._detectSlottedContent()
+        this._detectSlottedContent(),
       );
       this._slotObserver.observe(this, {
         childList: true,
@@ -180,7 +180,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
       !this._documentLangObserver
     ) {
       this._documentLangObserver = new MutationObserver(() =>
-        this._syncDirection()
+        this._syncDirection(),
       );
       const options = {
         attributes: true,
@@ -188,7 +188,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
       };
       this._documentLangObserver.observe(
         globalThis.document.documentElement,
-        options
+        options,
       );
       if (globalThis.document.body) {
         this._documentLangObserver.observe(globalThis.document.body, options);
@@ -214,7 +214,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
    */
   _isRtlLanguage(lang) {
     return /^(ar|arc|ckb|dv|fa|he|khw|ks|ps|sd|ug|ur|yi)(-|$)/i.test(
-      lang || ""
+      lang || "",
     );
   }
 
@@ -356,7 +356,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
    */
   _duplicateStep(index) {
     const stepChildren = Array.from(this.children || []).filter(
-      (child) => child.getAttribute("slot") === "content-" + index
+      (child) => child.getAttribute("slot") === "content-" + index,
     );
     if (stepChildren.length === 0) {
       return;
@@ -547,7 +547,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
     const children = Array.from(this.children || []);
     const paragraph = this._createStepParagraph(index);
     const inStep = children.filter(
-      (child) => child.getAttribute("slot") === "content-" + index
+      (child) => child.getAttribute("slot") === "content-" + index,
     );
     const anchor = inStep.length
       ? inStep[inStep.length - 1]
@@ -605,7 +605,9 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
           max-height: 0;
           opacity: 0;
           overflow: hidden;
-          transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+          transition:
+            max-height 0.4s ease-out,
+            opacity 0.3s ease-out;
         }
 
         .content.visible {
@@ -710,10 +712,16 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
           padding: var(--ddd-spacing-2, 0.375rem) var(--ddd-spacing-4, 0.75rem);
           font-size: var(--ddd-font-size-s, 1rem);
           line-height: var(--ddd-lh-150, 1.5);
-          transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-            border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+          transition:
+            color 0.15s ease-in-out,
+            background-color 0.15s ease-in-out,
+            border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out;
           cursor: pointer;
-          color: var(--pause-button-color, var(--ddd-theme-default-white, #ffffff));
+          color: var(
+            --pause-button-color,
+            var(--ddd-theme-default-white, #ffffff)
+          );
           background-color: var(
             --pause-button-bg,
             var(--ddd-theme-default-beaverBlue, #005fa9)
@@ -905,7 +913,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
             : html`<slot name="content-${index + 1}">${label}</slot>`}
           ${editing ? this.renderStepTools(index + 1) : ""}
         </div>
-      `
+      `,
     );
   }
 
@@ -980,10 +988,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
         </button>
 
         <!-- Dropdown Menu -->
-        <div
-          class="dropdown-menu ${this.isMenuOpen ? "show" : ""}"
-          role="menu"
-        >
+        <div class="dropdown-menu ${this.isMenuOpen ? "show" : ""}" role="menu">
           <button
             type="button"
             class="dropdown-item"
@@ -1037,7 +1042,7 @@ export class LangkahBertahap extends DDDSuper(I18NMixin(LitElement)) {
           total: this.labels.length,
           finished: !this.showButtons,
         },
-      })
+      }),
     );
   }
 
@@ -1129,6 +1134,6 @@ if (!globalThis.customElements.get("split-pause")) {
       static get haxProperties() {
         return LangkahBertahap.haxProperties;
       }
-    }
+    },
   );
 }
