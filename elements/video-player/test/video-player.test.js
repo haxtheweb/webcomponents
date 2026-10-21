@@ -680,3 +680,38 @@ describe("video-player raw iframe embed policy", () => {
     });
   });
 });
+
+describe("video-player progressive enhancement", () => {
+  it("names the hooks in haxHooks", async () => {
+    const el = await fixture(html`<video-player></video-player>`);
+    const hooks = el.haxHooks();
+    expect(hooks.progressiveEnhancement).to.equal("haxprogressiveEnhancement");
+    expect(hooks.editModeChanged).to.equal("haxeditModeChanged");
+  });
+
+  it("returns links to the media and tracks, or nothing without a source", async () => {
+    const el = await fixture(
+      html`<video-player
+        source="https://example.com/v.mp4"
+        media-title="Sample"
+        .tracks=${[{ src: "https://example.com/en.vtt", label: "English" }]}
+      ></video-player>`,
+    );
+    const out = el.haxprogressiveEnhancement(el);
+    expect(out).to.contain('href="https://example.com/v.mp4"');
+    expect(out).to.contain("Sample");
+    expect(out).to.contain("Subtitles (English)");
+    const none = await fixture(html`<video-player></video-player>`);
+    expect(none.haxprogressiveEnhancement(none)).to.equal("");
+  });
+
+  it("removes a saved fallback when editing starts", async () => {
+    const el = await fixture(
+      html`<video-player source="https://example.com/v.mp4"
+        ><div data-prog-fallback>old</div></video-player
+      >`,
+    );
+    el.haxeditModeChanged(true);
+    expect(el.querySelector("[data-prog-fallback]")).to.equal(null);
+  });
+});
