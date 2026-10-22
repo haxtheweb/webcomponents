@@ -584,3 +584,19 @@ describe("a11y-media-player render branches", () => {
     await yt.updateComplete;
   });
 });
+
+describe("a11y-media-player print thumbnail", () => {
+  it("writes the poster as a src attribute so it is also in server rendered HTML", async () => {
+    const el = await fixture(
+      html`<a11y-media-player
+        source="https://example.com/v.mp4"
+        thumbnail-src="https://example.com/p.jpg"
+      ></a11y-media-player>`,
+    );
+    await el.updateComplete;
+    const img = el.shadowRoot.querySelector("#print-thumbnail");
+    expect(img).to.exist;
+    expect(img.getAttribute("src")).to.equal("https://example.com/p.jpg");
+    expect(img.getAttribute("aria-hidden")).to.equal("true");
+  });
+});
