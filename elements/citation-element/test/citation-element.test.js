@@ -484,12 +484,19 @@ describe("citation-element test", () => {
       expect(element.licenseName).to.equal(originalName);
     });
 
-    it("handles cc0 (not in real licenseList) gracefully", async () => {
-      const originalName = element.licenseName;
+    it("picks up cc0 from the real licenseList", async () => {
       element._licenseUpdated("cc0");
 
-      // cc0 not present in the real @haxtheweb/license-element licenseList,
-      // so licenseName should be left untouched.
+      expect(element.licenseName).to.equal("CC0 1.0 Universal");
+      expect(element.licenseLink).to.equal(
+        "https://creativecommons.org/publicdomain/zero/1.0/",
+      );
+    });
+
+    it("leaves licenseName alone for a code that is not in the list", async () => {
+      const originalName = element.licenseName;
+      element._licenseUpdated("not-a-license");
+
       expect(element.licenseName).to.equal(originalName);
     });
 
