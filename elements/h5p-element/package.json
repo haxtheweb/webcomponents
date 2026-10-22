@@ -45,6 +45,7 @@
     "@haxtheweb/haxcms-elements": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/iframe-loader": "^26.8.0",
+    "fflate": "0.8.2",
     "h5p-standalone": "3.8.2",
     "lit": "3.3.3",
     "mobx": "6.13.7"

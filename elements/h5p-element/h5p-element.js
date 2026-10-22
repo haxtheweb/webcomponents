@@ -8,6 +8,10 @@
  * H5P core has been removed, so this Apache-2.0 package conveys no H5P core
  * code. lib/h5p-resizer.js and lib/h5p-wrapped-element.js are first-party
  * Apache-2.0 helpers kept alongside this element.
+ *
+ * `source` may be (a) a raw .h5p file (or a blob: URL of one), which is
+ * unzipped in the browser and played with no server, or (b) the URL of an
+ * already extracted .h5p folder.
  */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
@@ -37,12 +41,148 @@ class H5PElement extends LitElement {
 
   // render function
   render() {
-    return html` ${!this.source
-      ? html`<h5p-wrapped-element><slot></slot></h5p-wrapped-element>`
-      : html`<div
-          class="h5p-container"
-          data-content-id="wrapper-${this.contentId}"
-        ></div>`}`;
+    return html` ${
+      !this.source
+        ? html`<h5p-wrapped-element><slot></slot></h5p-wrapped-element>`
+        : html`<div
+              class="h5p-container"
+              data-content-id="wrapper-${this.contentId}"
+            ></div>
+            ${
+              this.status === "loading" || this.status === "error"
+                ? html`<p
+                    role="status"
+                    aria-live="polite"
+                    style="margin:0;padding:var(--ddd-spacing-3, 12px);font-family:var(--ddd-font-navigation, sans-serif);font-size:var(--ddd-font-size-xs, 14px);"
+                  >
+                    ${
+                      this.status === "loading"
+                        ? "Unpacking H5P content…"
+                        : this.errorMessage
+                    }
+                  </p>`
+                : ""
+            }`
+    }`;
+  }
+
+  /**
+   * True when source is a .h5p file (or a blob: URL made from one) rather
+   * than an already extracted folder.
+   */
+  get isPackage() {
+    return (
+      !!this.source &&
+      (/\.h5p([?#]|$)/i.test(this.source) || /^blob:/i.test(this.source))
+    );
+  }
+
+  /**
+   * Play a File the user picked or dropped, without uploading it anywhere.
+   */
+  loadFile(file) {
+    if (this._objectUrl) {
+      URL.revokeObjectURL(this._objectUrl);
+    }
+    this._objectUrl = URL.createObjectURL(file);
+    this.source = this._objectUrl;
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    // source changed after first render, e.g. edited in the HAX settings form
+    if (
+      changedProperties.has("source") &&
+      changedProperties.get("source") !== undefined &&
+      this.isPackage
+    ) {
+      this.loadPackage();
+    }
+  }
+
+  /**
+   * Fetch a .h5p, unzip it in memory and play it. No server, no service
+   * worker; see lib/h5p-package.js and lib/h5p-package-player.js.
+   */
+  async loadPackage() {
+    const container = this.querySelector(
+      '[data-content-id="wrapper-' + this.contentId + '"]',
+    );
+    if (!container) {
+      return false;
+    }
+    this._disposePlayer();
+    const token = (this._loadToken = (this._loadToken || 0) + 1);
+    this.status = "loading";
+    const started = performance.now();
+    try {
+      const res = await fetch(this.source);
+      if (!res.ok) {
+        throw new Error(
+          `Could not download the H5P file (HTTP ${res.status}).`,
+        );
+      }
+      const bytes = new Uint8Array(await res.arrayBuffer());
+      const [{ unpackH5P }, { renderH5PPackage }] = await Promise.all([
+        import("./lib/h5p-package.js"),
+        import("./lib/h5p-package-player.js"),
+      ]);
+      const pkg = unpackH5P(bytes);
+      if (token !== this._loadToken) {
+        pkg.dispose();
+        return false;
+      }
+      const player = await renderH5PPackage(container, pkg, {
+        // one id per load so a stale player never shares state with a new one
+        id: this.contentId + "-" + token,
+        coreBase: this.h5pStandaloneBase,
+      });
+      if (token !== this._loadToken) {
+        // source changed while this one was starting; drop the stale player
+        player.dispose();
+        return false;
+      }
+      this._player = player;
+      this.status = "ready";
+      this.dispatchEvent(
+        new CustomEvent("h5p-package-loaded", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            title: pkg.h5p.title,
+            mainLibrary: pkg.mainLibraryString,
+            files: pkg.files.size,
+            bytes: pkg.totalBytes,
+            compressedBytes: bytes.length,
+            libraries: pkg.libraries.map((l) => l.folder),
+            ms: Math.round(performance.now() - started),
+          },
+        }),
+      );
+      return true;
+    } catch (e) {
+      if (token === this._loadToken) {
+        this.status = "error";
+        this.errorMessage = e && e.message ? e.message : String(e);
+        this.dispatchEvent(
+          new CustomEvent("h5p-package-error", {
+            bubbles: true,
+            composed: true,
+            detail: { message: this.errorMessage },
+          }),
+        );
+      }
+      return false;
+    }
+  }
+
+  _disposePlayer() {
+    if (this._player) {
+      this._player.dispose();
+      this._player = null;
+    }
   }
 
   /**
@@ -59,11 +199,23 @@ class H5PElement extends LitElement {
       ...super.properties,
 
       /**
-       * Source of the .h5p file (URL path to an extracted .h5p content folder)
+       * Source of the H5P content: a .h5p file (unzipped in the browser) or
+       * the URL path to an extracted .h5p content folder
        */
       source: {
         name: "source",
         type: String,
+      },
+      /**
+       * loading | ready | error, for package (.h5p) sources
+       */
+      status: {
+        type: String,
+        attribute: false,
+      },
+      errorMessage: {
+        type: String,
+        attribute: false,
       },
       /**
        * Optional override for the base URL where the h5p-standalone dist is
@@ -98,6 +250,9 @@ class H5PElement extends LitElement {
    */
   createRenderRoot() {
     if (this.source) {
+      // rendering into light DOM: drop anything a clone of an already rendered
+      // copy brought along, or it sits next to the new render
+      this.replaceChildren();
       return this;
     }
     return super.createRenderRoot();
@@ -150,7 +305,20 @@ class H5PElement extends LitElement {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    if (
+    if (this.isPackage) {
+      // unpack only once the block is actually on screen: a hidden copy (for
+      // example one the editor keeps off to the side) never downloads anything
+      this._visibilityObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            this._visibilityObserver.disconnect();
+            this.loadPackage();
+          }
+        },
+        { rootMargin: "200px" },
+      );
+      this._visibilityObserver.observe(this);
+    } else if (
       this.source &&
       globalThis.ESGlobalBridge.requestAvailability().imports[
         "h5p-standalone"
@@ -209,14 +377,27 @@ class H5PElement extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    this.H5PDepsLoader();
+    // extracted folders go through h5p-standalone; packages need no loader
+    if (!this.isPackage) {
+      this.H5PDepsLoader();
+    }
   }
 
   /**
    * life cycle, element removed from DOM
    */
   disconnectedCallback() {
-    this.windowControllers.abort();
+    if (this.windowControllers) {
+      this.windowControllers.abort();
+    }
+    if (this._visibilityObserver) {
+      this._visibilityObserver.disconnect();
+    }
+    this._disposePlayer();
+    if (this._objectUrl) {
+      URL.revokeObjectURL(this._objectUrl);
+      this._objectUrl = null;
+    }
     super.disconnectedCallback();
   }
 }
