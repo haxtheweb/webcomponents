@@ -440,7 +440,9 @@ describe("license-element behavior", () => {
 
 describe("licenses.json single source", () => {
   it("licenseList and licenseGroups are generated from licenses.json", async () => {
-    const canonical = await (await fetch("../lib/licenses.json")).json();
+    const canonical = await (
+      await fetch(new URL("../lib/licenses.json", import.meta.url))
+    ).json();
     expect(Object.keys(new licenseList())).to.deep.equal(
       canonical.licenses.map((l) => l.code),
     );
