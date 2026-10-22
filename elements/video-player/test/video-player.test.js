@@ -581,20 +581,6 @@ describe("video-player audio description preference", () => {
   });
 });
 
-describe("video-player html5 getter", () => {
-  let el;
-  beforeEach(async () => {
-    el = await fixture(html`<video-player></video-player>`);
-  });
-
-  it("returns html template", () => {
-    el.sources = [{ src: "https://example.com/video.mp4", type: "video/mp4" }];
-    el.source = "";
-    const result = el.html5;
-    expect(result).to.exist;
-  });
-});
-
 describe("video-player querySelectorAll SSR stub", () => {
   let el;
   beforeEach(async () => {

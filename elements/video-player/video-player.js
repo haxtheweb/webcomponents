@@ -817,34 +817,6 @@ class VideoPlayer extends IntersectionObserverMixin(
     super.disconnectedCallback();
   }
   /**
-   * gets the HTML5 `audio` or `video` children
-   * @readonly
-   * @returns {object} HTML template
-   */
-  get html5() {
-    return html`
-      ${this.sourceData
-        .filter((item) => item.type !== "youtube")
-        .map((sd) => {
-          html`
-            <source
-              .src="${sd.src || undefined}"
-              .type="${sd.type || undefined}"
-            />
-          `;
-        })}
-      ${this.trackData.map((track) => {
-        `<track
-           .src="${track.src || undefined}"
-           .kind="${track.kind || undefined}"
-           .label="${track.label || undefined}"
-           .srclang="${track.lang || undefined}"
-         />`;
-      })}
-    `;
-  }
-
-  /**
    * Computes whether uses iframe
    * @readonly
    * @returns {Boolean}

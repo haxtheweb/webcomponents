@@ -1017,7 +1017,10 @@ class Store {
   }
 
   get viewOnlyMode() {
-    return UserScaffoldInstance.readMemory("ViewOnlyMode");
+    // UserScaffoldInstance does not exist during SSR (no document.body)
+    return UserScaffoldInstance
+      ? UserScaffoldInstance.readMemory("ViewOnlyMode")
+      : null;
   }
 
   get isMobile() {
