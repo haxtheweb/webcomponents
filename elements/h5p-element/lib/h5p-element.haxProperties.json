@@ -1,10 +1,9 @@
 {
   "canScale": false,
-
   "canEditSource": true,
   "gizmo": {
     "title": "H5P",
-    "description": "h5p wrapper for loading and presenting .h5p files",
+    "description": "Plays H5P interactive content from an uploaded .h5p file, with no H5P server needed",
     "icon": "icons:android",
     "color": "green",
     "tags": [
@@ -19,13 +18,23 @@
   "settings": {
     "configure": [
       {
-        "slot": "",
-        "description": "H5P iframe embed code",
-        "inputMethod": "code-editor",
-        "required": true
+        "property": "source",
+        "title": "H5P file",
+        "description": "Upload or link a .h5p file. It is unpacked in the browser; no H5P server is required.",
+        "inputMethod": "haxupload",
+        "noCamera": true,
+        "noVoiceRecord": true,
+        "required": false
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "slot": "",
+        "title": "Legacy iframe embed code",
+        "description": "Only for older content that embeds an H5P iframe from another site. Leave empty when a .h5p file is set above.",
+        "inputMethod": "code-editor"
+      }
+    ]
   },
   "saveOptions": {
     "wipeSlot": true,
@@ -36,8 +45,7 @@
   "demoSchema": [
     {
       "tag": "h5p-element",
-      "properties": {
-      },
+      "properties": {},
       "content": "<iframe width=\"100%\" height=\"auto\" src=\"https://media.ed.science.psu.edu/entity_iframe/node/4272\" frameborder=\"0\" class=\"entity_iframe entity_iframe_node\" id=\"entity_iframe_node_2653\" allowfullscreen=\"true\" webkitallowfullscreen=\"true\" mozallowfullscreen=\"true\" style=\"height: 576px;\"></iframe>"
     }
   ]
