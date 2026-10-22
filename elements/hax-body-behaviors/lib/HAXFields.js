@@ -407,12 +407,6 @@ export const HaxElementizer = {
         noWrap: true,
       },
       format: {
-        cardlist: {
-          defaultSettings: {
-            element: "hax-element-card-list",
-            noWrap: true,
-          },
-        },
         tabs: {
           defaultSettings: {
             import: "@haxtheweb/simple-fields/lib/simple-fields-tabs.js",

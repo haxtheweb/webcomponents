@@ -155,7 +155,6 @@ Every element in this monorepo (226 packages). Browse them live with `yarn galle
 | [portal-launcher](./portal-launcher/) | silly thing to play with portal tag and progressive enhancement | `@haxtheweb/portal-launcher` | [demo](./portal-launcher/demo/) |
 | [post-card](./post-card/) | sending you mail from afar, or the browser. | `@haxtheweb/post-card` | [demo](./post-card/demo/) |
 | [pouch-db](./pouch-db/) | read and write localized data elements | `@haxtheweb/pouch-db` |  |
-| [product-card](./product-card/) | basic display of a product with advanced data driven helpers | `@haxtheweb/product-card` | [demo](./product-card/demo/) |
 | [product-glance](./product-glance/) | glance / overview of a product feature | `@haxtheweb/product-glance` | [demo](./product-glance/demo/) |
 | [product-offering](./product-offering/) | Simple card for displaying product info | `@haxtheweb/product-offering` | [demo](./product-offering/demo/) |
 | [progress-donut](./progress-donut/) | Donut chart that visualizes progress or proportions | `@haxtheweb/progress-donut` | [demo](./progress-donut/demo/) |

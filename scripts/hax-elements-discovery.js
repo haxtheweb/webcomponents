@@ -182,7 +182,6 @@ const EXCLUDED_ELEMENT_TAGS = new Set([
   "hax-body",
   "hax-context-item",
   "hax-context-item-textop",
-  "hax-element-list-selector",
   "hax-store",
   // HAXCMS system internals, not authorable content
   "haxcms-site-disqus",

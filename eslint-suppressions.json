@@ -629,16 +629,6 @@
       "count": 1
     }
   },
-  "elements/product-card/lib/hax-element-card-list.js": {
-    "eqeqeq": {
-      "count": 2
-    }
-  },
-  "elements/product-card/lib/hax-element-list-selector.js": {
-    "eqeqeq": {
-      "count": 11
-    }
-  },
   "elements/promise-progress/lib/promise-progress-lite.js": {
     "eqeqeq": {
       "count": 1
