@@ -1,7 +1,27 @@
 /**
+ * The groups licenses are sorted into, in display order. `name` is the English
+ * label for the group; CC, public domain and software licenses are kept apart
+ * because they say very different things about reuse.
+ */
+export const licenseGroups = {
+  "creative-commons": { name: "Creative Commons" },
+  "public-domain": { name: "Public domain" },
+  software: { name: "Software" },
+};
+
+/**
  * A list of licenses that we support the references for.
  * `name` is the English label; elements that display it translate via
- * `this.t[tKey]` (see license-element / citation-element _licenseDisplayName)
+ * `this.t[tKey]` (see license-element / citation-element _licenseDisplayName).
+ * Software license names are proper names and are not translated.
+ * `group` is a key of `licenseGroups`; `image` is empty when the license has
+ * no badge. Codes are lower case and match the SPDX identifier where one exists.
+ *
+ * Modes:
+ * - "full" (default): code -> { name, tKey?, group, link, image }
+ * - "select": code -> "<Group>: <name>", for forms that take a flat option map
+ * - "grouped": [{ value, text, group }] in display order, for selects that
+ *   can render option groups (`group` is the English group label)
  */
 export class licenseList {
   constructor(mode = "full") {
@@ -10,47 +30,139 @@ export class licenseList {
       by: {
         name: "Attribution",
         tKey: "licenseBy",
+        group: "creative-commons",
         link: "https://creativecommons.org/licenses/by/4.0/",
         image: "https://i.creativecommons.org/l/by/4.0/88x31.png",
       },
       "by-sa": {
         name: "Attribution Share a like",
         tKey: "licenseBySa",
+        group: "creative-commons",
         link: "https://creativecommons.org/licenses/by-sa/4.0/",
         image: "https://i.creativecommons.org/l/by-sa/4.0/88x31.png",
       },
       "by-nd": {
         name: "Attribution No derivatives",
         tKey: "licenseByNd",
+        group: "creative-commons",
         link: "https://creativecommons.org/licenses/by-nd/4.0/",
         image: "https://i.creativecommons.org/l/by-nd/4.0/88x31.png",
       },
       "by-nc": {
         name: "Attribution non-commercial",
         tKey: "licenseByNc",
+        group: "creative-commons",
         link: "https://creativecommons.org/licenses/by-nc/4.0/",
         image: "https://i.creativecommons.org/l/by-nc/4.0/88x31.png",
       },
       "by-nc-sa": {
         name: "Attribution non-commercial share a like",
         tKey: "licenseByNcSa",
+        group: "creative-commons",
         link: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
         image: "https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png",
       },
       "by-nc-nd": {
         name: "Attribution Non-commercial No derivatives",
         tKey: "licenseByNcNd",
+        group: "creative-commons",
         link: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
         image: "https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png",
+      },
+      cc0: {
+        name: "CC0 1.0 Universal",
+        group: "public-domain",
+        link: "https://creativecommons.org/publicdomain/zero/1.0/",
+        image: "https://licensebuttons.net/p/zero/1.0/88x31.png",
+      },
+      pdm: {
+        name: "Public Domain Mark 1.0",
+        group: "public-domain",
+        link: "https://creativecommons.org/publicdomain/mark/1.0/",
+        image: "https://licensebuttons.net/p/mark/1.0/88x31.png",
+      },
+      mit: {
+        name: "MIT License",
+        group: "software",
+        link: "https://opensource.org/license/mit",
+        image: "",
+      },
+      "apache-2.0": {
+        name: "Apache License 2.0",
+        group: "software",
+        link: "https://www.apache.org/licenses/LICENSE-2.0",
+        image: "",
+      },
+      "bsd-2-clause": {
+        name: "BSD 2-Clause License",
+        group: "software",
+        link: "https://opensource.org/license/bsd-2-clause",
+        image: "",
+      },
+      "bsd-3-clause": {
+        name: "BSD 3-Clause License",
+        group: "software",
+        link: "https://opensource.org/license/bsd-3-clause",
+        image: "",
+      },
+      isc: {
+        name: "ISC License",
+        group: "software",
+        link: "https://opensource.org/license/isc-license-txt",
+        image: "",
+      },
+      "mpl-2.0": {
+        name: "Mozilla Public License 2.0",
+        group: "software",
+        link: "https://www.mozilla.org/MPL/2.0/",
+        image: "",
+      },
+      "gpl-2.0": {
+        name: "GNU General Public License v2.0",
+        group: "software",
+        link: "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
+        image: "",
+      },
+      "gpl-3.0": {
+        name: "GNU General Public License v3.0",
+        group: "software",
+        link: "https://www.gnu.org/licenses/gpl-3.0.html",
+        image: "",
+      },
+      "lgpl-3.0": {
+        name: "GNU Lesser General Public License v3.0",
+        group: "software",
+        link: "https://www.gnu.org/licenses/lgpl-3.0.html",
+        image: "",
+      },
+      "agpl-3.0": {
+        name: "GNU Affero General Public License v3.0",
+        group: "software",
+        link: "https://www.gnu.org/licenses/agpl-3.0.html",
+        image: "",
+      },
+      unlicense: {
+        name: "The Unlicense",
+        group: "software",
+        link: "https://unlicense.org/",
+        image: "",
       },
     };
     // support mutating the array into a select list
     if (mode == "select") {
       let select = {};
       for (let i in list) {
-        select[i] = list[i].name;
+        select[i] = `${licenseGroups[list[i].group].name}: ${list[i].name}`;
       }
       return select;
+    }
+    // or into grouped options in display order
+    if (mode == "grouped") {
+      return Object.keys(list).map((i) => ({
+        value: i,
+        text: list[i].name,
+        group: licenseGroups[list[i].group].name,
+      }));
     }
     return list;
   }

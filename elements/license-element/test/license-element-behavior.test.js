@@ -1,9 +1,26 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../license-element.js";
-import { LicenseElement, licenseList } from "../license-element.js";
+import {
+  LicenseElement,
+  licenseList,
+  licenseGroups,
+} from "../license-element.js";
 
 const CC_KEYS = ["by", "by-sa", "by-nd", "by-nc", "by-nc-sa", "by-nc-nd"];
+const SOFTWARE_KEYS = [
+  "mit",
+  "apache-2.0",
+  "bsd-2-clause",
+  "bsd-3-clause",
+  "isc",
+  "mpl-2.0",
+  "gpl-2.0",
+  "gpl-3.0",
+  "lgpl-3.0",
+  "agpl-3.0",
+  "unlicense",
+];
 
 describe("licenseList", () => {
   it("returns the full license map by default", () => {
@@ -13,7 +30,69 @@ describe("licenseList", () => {
       expect(typeof list[key].link).to.equal("string");
       expect(typeof list[key].image).to.equal("string");
     });
-    expect(Object.keys(list).length).to.equal(6);
+    expect(Object.keys(list).length).to.equal(19);
+  });
+
+  it("keeps every Creative Commons license first and in the original order", () => {
+    expect(Object.keys(new licenseList()).slice(0, 6)).to.deep.equal(CC_KEYS);
+  });
+
+  it("assigns every license to a known group, in group order", () => {
+    const list = new licenseList();
+    const groupOrder = Object.keys(licenseGroups);
+    let last = 0;
+    Object.keys(list).forEach((key) => {
+      const index = groupOrder.indexOf(list[key].group);
+      expect(index, key).to.be.greaterThan(-1);
+      expect(index, `${key} out of group order`).to.be.at.least(last);
+      last = index;
+    });
+  });
+
+  it("groups Creative Commons, public domain and software licenses", () => {
+    const list = new licenseList();
+    CC_KEYS.forEach((key) =>
+      expect(list[key].group, key).to.equal("creative-commons"),
+    );
+    ["cc0", "pdm"].forEach((key) =>
+      expect(list[key].group, key).to.equal("public-domain"),
+    );
+    SOFTWARE_KEYS.forEach((key) =>
+      expect(list[key].group, key).to.equal("software"),
+    );
+  });
+
+  it("gives every license a name and an https link", () => {
+    const list = new licenseList();
+    Object.keys(list).forEach((key) => {
+      expect(list[key].name, key).to.be.a("string").that.is.not.empty;
+      expect(list[key].link, key).to.match(/^https:\/\//);
+    });
+  });
+
+  it("gives badges to Creative Commons and public domain only", () => {
+    const list = new licenseList();
+    CC_KEYS.concat(["cc0", "pdm"]).forEach((key) =>
+      expect(list[key].image, key).to.match(/^https:\/\//),
+    );
+    SOFTWARE_KEYS.forEach((key) => expect(list[key].image, key).to.equal(""));
+  });
+
+  it("links CC0 and the public domain mark to their public domain pages", () => {
+    const list = new licenseList();
+    expect(list.cc0.link).to.equal(
+      "https://creativecommons.org/publicdomain/zero/1.0/",
+    );
+    expect(list.pdm.link).to.equal(
+      "https://creativecommons.org/publicdomain/mark/1.0/",
+    );
+  });
+
+  it("uses SPDX-style lower case codes for software licenses", () => {
+    const list = new licenseList();
+    ["mit", "apache-2.0", "gpl-3.0", "agpl-3.0", "bsd-3-clause"].forEach(
+      (key) => expect(list[key], key).to.exist,
+    );
   });
 
   it("returns the full license map for explicit full mode", () => {
@@ -29,10 +108,35 @@ describe("licenseList", () => {
     CC_KEYS.forEach((key) => {
       expect(typeof list[key]).to.equal("string");
     });
-    expect(list.by).to.equal("Attribution");
+    expect(list.by).to.equal("Creative Commons: Attribution");
     expect(list["by-nc-sa"]).to.equal(
-      "Attribution non-commercial share a like",
+      "Creative Commons: Attribution non-commercial share a like",
     );
+    expect(list.cc0).to.equal("Public domain: CC0 1.0 Universal");
+    expect(list.mit).to.equal("Software: MIT License");
+    expect(Object.keys(list).length).to.equal(19);
+  });
+
+  it("returns grouped options in display order in grouped mode", () => {
+    const grouped = new licenseList("grouped");
+    expect(grouped).to.be.an("array").with.lengthOf(19);
+    expect(grouped[0]).to.deep.equal({
+      value: "by",
+      text: "Attribution",
+      group: "Creative Commons",
+    });
+    const groups = [];
+    grouped.forEach((option) => {
+      if (groups[groups.length - 1] !== option.group) {
+        groups.push(option.group);
+      }
+    });
+    // each group is one contiguous run, so optgroups never repeat
+    expect(groups).to.deep.equal([
+      "Creative Commons",
+      "Public domain",
+      "Software",
+    ]);
   });
 
   it("falls back to the full map for unknown modes", () => {
