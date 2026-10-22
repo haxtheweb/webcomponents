@@ -1,0 +1,170 @@
+{
+  "$comment": "Canonical HAXcms license list. Source of truth: @haxtheweb/license-element/lib/licenses.json. Everything else is a copy or is generated from this file by scripts/sync-language-registry.js: the backend mirrors (haxcms-nodejs src/lib/licenses.json, haxcms-php system/backend/php/lib/licenses.json), elements/license-element/lib/licenses-data.js and the standalone block in haxcms-php system/boilerplate/site/config.php. Edit only this file, then run `yarn run language-registry-sync`. Order is display order and groups must appear in the order listed. `name` has no group prefix (backends show \"<Group>: <name>\"). `tKey` marks names that the client translates; software and public domain names are proper names. `image` is empty when a license has no badge.",
+  "version": 1,
+  "groups": [
+    {
+      "id": "creative-commons",
+      "name": "Creative Commons"
+    },
+    {
+      "id": "public-domain",
+      "name": "Public domain"
+    },
+    {
+      "id": "software",
+      "name": "Software"
+    },
+    {
+      "id": "copyright",
+      "name": "Copyright"
+    }
+  ],
+  "licenses": [
+    {
+      "code": "by",
+      "group": "creative-commons",
+      "name": "Attribution",
+      "tKey": "licenseBy",
+      "link": "https://creativecommons.org/licenses/by/4.0/",
+      "image": "https://i.creativecommons.org/l/by/4.0/88x31.png"
+    },
+    {
+      "code": "by-sa",
+      "group": "creative-commons",
+      "name": "Attribution Share a like",
+      "tKey": "licenseBySa",
+      "link": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "image": "https://i.creativecommons.org/l/by-sa/4.0/88x31.png"
+    },
+    {
+      "code": "by-nd",
+      "group": "creative-commons",
+      "name": "Attribution No derivatives",
+      "tKey": "licenseByNd",
+      "link": "https://creativecommons.org/licenses/by-nd/4.0/",
+      "image": "https://i.creativecommons.org/l/by-nd/4.0/88x31.png"
+    },
+    {
+      "code": "by-nc",
+      "group": "creative-commons",
+      "name": "Attribution non-commercial",
+      "tKey": "licenseByNc",
+      "link": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "image": "https://i.creativecommons.org/l/by-nc/4.0/88x31.png"
+    },
+    {
+      "code": "by-nc-sa",
+      "group": "creative-commons",
+      "name": "Attribution non-commercial share a like",
+      "tKey": "licenseByNcSa",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "image": "https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
+    },
+    {
+      "code": "by-nc-nd",
+      "group": "creative-commons",
+      "name": "Attribution Non-commercial No derivatives",
+      "tKey": "licenseByNcNd",
+      "link": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "image": "https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"
+    },
+    {
+      "code": "cc0",
+      "group": "public-domain",
+      "name": "CC0 1.0 Universal",
+      "link": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://licensebuttons.net/p/zero/1.0/88x31.png"
+    },
+    {
+      "code": "pdm",
+      "group": "public-domain",
+      "name": "Public Domain Mark 1.0",
+      "link": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "image": "https://licensebuttons.net/p/mark/1.0/88x31.png"
+    },
+    {
+      "code": "mit",
+      "group": "software",
+      "name": "MIT License",
+      "link": "https://opensource.org/license/mit",
+      "image": ""
+    },
+    {
+      "code": "apache-2.0",
+      "group": "software",
+      "name": "Apache License 2.0",
+      "link": "https://www.apache.org/licenses/LICENSE-2.0",
+      "image": ""
+    },
+    {
+      "code": "bsd-2-clause",
+      "group": "software",
+      "name": "BSD 2-Clause License",
+      "link": "https://opensource.org/license/bsd-2-clause",
+      "image": ""
+    },
+    {
+      "code": "bsd-3-clause",
+      "group": "software",
+      "name": "BSD 3-Clause License",
+      "link": "https://opensource.org/license/bsd-3-clause",
+      "image": ""
+    },
+    {
+      "code": "isc",
+      "group": "software",
+      "name": "ISC License",
+      "link": "https://opensource.org/license/isc-license-txt",
+      "image": ""
+    },
+    {
+      "code": "mpl-2.0",
+      "group": "software",
+      "name": "Mozilla Public License 2.0",
+      "link": "https://www.mozilla.org/MPL/2.0/",
+      "image": ""
+    },
+    {
+      "code": "gpl-2.0",
+      "group": "software",
+      "name": "GNU General Public License v2.0",
+      "link": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
+      "image": ""
+    },
+    {
+      "code": "gpl-3.0",
+      "group": "software",
+      "name": "GNU General Public License v3.0",
+      "link": "https://www.gnu.org/licenses/gpl-3.0.html",
+      "image": ""
+    },
+    {
+      "code": "lgpl-3.0",
+      "group": "software",
+      "name": "GNU Lesser General Public License v3.0",
+      "link": "https://www.gnu.org/licenses/lgpl-3.0.html",
+      "image": ""
+    },
+    {
+      "code": "agpl-3.0",
+      "group": "software",
+      "name": "GNU Affero General Public License v3.0",
+      "link": "https://www.gnu.org/licenses/agpl-3.0.html",
+      "image": ""
+    },
+    {
+      "code": "unlicense",
+      "group": "software",
+      "name": "The Unlicense",
+      "link": "https://unlicense.org/",
+      "image": ""
+    },
+    {
+      "code": "all-rights-reserved",
+      "group": "copyright",
+      "name": "All rights reserved",
+      "link": "https://en.wikipedia.org/wiki/All_rights_reserved",
+      "image": ""
+    }
+  ]
+}

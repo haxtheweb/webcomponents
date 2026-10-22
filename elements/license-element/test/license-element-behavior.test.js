@@ -30,7 +30,7 @@ describe("licenseList", () => {
       expect(typeof list[key].link).to.equal("string");
       expect(typeof list[key].image).to.equal("string");
     });
-    expect(Object.keys(list).length).to.equal(19);
+    expect(Object.keys(list).length).to.equal(20);
   });
 
   it("keeps every Creative Commons license first and in the original order", () => {
@@ -47,6 +47,13 @@ describe("licenseList", () => {
       expect(index, `${key} out of group order`).to.be.at.least(last);
       last = index;
     });
+  });
+
+  it("offers all rights reserved for work its owner does not share", () => {
+    const list = new licenseList();
+    expect(list["all-rights-reserved"].group).to.equal("copyright");
+    expect(list["all-rights-reserved"].image).to.equal("");
+    expect(Object.keys(list).pop()).to.equal("all-rights-reserved");
   });
 
   it("groups Creative Commons, public domain and software licenses", () => {
@@ -114,12 +121,12 @@ describe("licenseList", () => {
     );
     expect(list.cc0).to.equal("Public domain: CC0 1.0 Universal");
     expect(list.mit).to.equal("Software: MIT License");
-    expect(Object.keys(list).length).to.equal(19);
+    expect(Object.keys(list).length).to.equal(20);
   });
 
   it("returns grouped options in display order in grouped mode", () => {
     const grouped = new licenseList("grouped");
-    expect(grouped).to.be.an("array").with.lengthOf(19);
+    expect(grouped).to.be.an("array").with.lengthOf(20);
     expect(grouped[0]).to.deep.equal({
       value: "by",
       text: "Attribution",
@@ -136,6 +143,7 @@ describe("licenseList", () => {
       "Creative Commons",
       "Public domain",
       "Software",
+      "Copyright",
     ]);
   });
 
@@ -435,5 +443,19 @@ describe("license-element behavior", () => {
       ></license-element>
     `);
     await expect(el).shadowDom.to.be.accessible();
+  });
+});
+
+describe("licenses.json single source", () => {
+  it("licenseList and licenseGroups are generated from licenses.json", async () => {
+    const canonical = await (
+      await fetch(new URL("../lib/licenses.json", import.meta.url))
+    ).json();
+    expect(Object.keys(new licenseList())).to.deep.equal(
+      canonical.licenses.map((l) => l.code),
+    );
+    expect(Object.keys(licenseGroups)).to.deep.equal(
+      canonical.groups.map((g) => g.id),
+    );
   });
 });
