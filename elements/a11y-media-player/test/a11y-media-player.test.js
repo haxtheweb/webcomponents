@@ -590,13 +590,13 @@ describe("a11y-media-player print thumbnail", () => {
     const el = await fixture(
       html`<a11y-media-player
         source="https://example.com/v.mp4"
-        thumbnail-src="https://example.com/p.jpg"
+        thumbnail-src="http://localhost/p.jpg"
       ></a11y-media-player>`,
     );
     await el.updateComplete;
     const img = el.shadowRoot.querySelector("#print-thumbnail");
     expect(img).to.exist;
-    expect(img.getAttribute("src")).to.equal("https://example.com/p.jpg");
+    expect(img.getAttribute("src")).to.equal("http://localhost/p.jpg");
     expect(img.getAttribute("aria-hidden")).to.equal("true");
   });
 });
