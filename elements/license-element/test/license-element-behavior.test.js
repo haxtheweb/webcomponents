@@ -437,3 +437,15 @@ describe("license-element behavior", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 });
+
+describe("licenses.json single source", () => {
+  it("licenseList and licenseGroups are generated from licenses.json", async () => {
+    const canonical = await (await fetch("../lib/licenses.json")).json();
+    expect(Object.keys(new licenseList())).to.deep.equal(
+      canonical.licenses.map((l) => l.code),
+    );
+    expect(Object.keys(licenseGroups)).to.deep.equal(
+      canonical.groups.map((g) => g.id),
+    );
+  });
+});
