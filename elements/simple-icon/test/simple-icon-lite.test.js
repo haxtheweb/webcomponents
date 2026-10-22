@@ -537,4 +537,17 @@ describe("simple-icon-lite", () => {
       expect(Mixed.properties).to.have.property("icon");
     });
   });
+  describe("first render includes the icon image", () => {
+    it("sets the image href from icon in the first render, without waiting for updated()", async () => {
+      const el = await fixture(
+        html`<simple-icon-lite icon="icons:expand-more"></simple-icon-lite>`,
+      );
+      const href = el.shadowRoot
+        .querySelector("image")
+        .getAttribute("xlink:href");
+      expect(href).to.be.a("string");
+      expect(href).to.include("expand-more.svg");
+      expect(el.src).to.equal(href);
+    });
+  });
 });

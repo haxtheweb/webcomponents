@@ -68,7 +68,7 @@ export const SimpleIconBehaviors = function (SuperClass) {
             <feComposite operator="in" in="COLOR" in2="SourceAlpha" />
           </filter>
           <image
-            xlink:href=""
+            xlink:href="${this.src || ""}"
             width="24px"
             height="24px"
             focusable="false"
@@ -142,6 +142,17 @@ export const SimpleIconBehaviors = function (SuperClass) {
             return c === "\n" ? "\\a " : c === "\r" ? "\\d " : "\\" + c;
           })}") no-repeat center / contain`
         : "";
+    }
+    willUpdate(changedProperties) {
+      if (super.willUpdate) {
+        super.willUpdate(changedProperties);
+      }
+      // resolve icon -> src before the first render so server rendering (where
+      // updated() never runs) and the first client paint both include the image
+      if (changedProperties.has("icon") && this.icon) {
+        const src = SimpleIconsetStore.getIcon(this.icon, this);
+        if (src) this.src = src;
+      }
     }
     firstUpdated(changedProperties) {
       if (super.firstUpdated) {
