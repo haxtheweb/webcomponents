@@ -17,6 +17,10 @@ export const licenseData = {
     {
       "id": "software",
       "name": "Software"
+    },
+    {
+      "id": "copyright",
+      "name": "Copyright"
     }
   ],
   "licenses": [
@@ -157,6 +161,13 @@ export const licenseData = {
       "group": "software",
       "name": "The Unlicense",
       "link": "https://unlicense.org/",
+      "image": ""
+    },
+    {
+      "code": "all-rights-reserved",
+      "group": "copyright",
+      "name": "All rights reserved",
+      "link": "https://en.wikipedia.org/wiki/All_rights_reserved",
       "image": ""
     }
   ]
