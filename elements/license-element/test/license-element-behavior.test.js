@@ -418,7 +418,7 @@ describe("license-element behavior", () => {
       (s) => s.property === "license",
     );
     expect(licenseSetting.inputMethod).to.equal("select");
-    expect(licenseSetting.options.by).to.equal("Attribution");
+    expect(licenseSetting.options.by).to.equal("Creative Commons: Attribution");
     expect(props.demoSchema[0].tag).to.equal("license-element");
     expect(props.demoSchema[0].properties.license).to.equal("by");
   });
