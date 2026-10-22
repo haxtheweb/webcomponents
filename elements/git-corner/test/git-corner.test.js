@@ -213,3 +213,26 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+describe("git-corner link attributes", () => {
+  it("writes title and href as attributes so they are also in server rendered HTML", async () => {
+    const el = await fixture(
+      html`<git-corner
+        source="https://github.com/user/repo"
+        alt="Our repository"
+      ></git-corner>`,
+    );
+    const link = el.shadowRoot.querySelector("a");
+    expect(link.getAttribute("href")).to.equal("https://github.com/user/repo");
+    expect(link.getAttribute("title")).to.equal("Our repository");
+  });
+
+  it("has no title attribute without alt text", async () => {
+    const el = await fixture(
+      html`<git-corner source="https://github.com/user/repo"></git-corner>`,
+    );
+    expect(el.shadowRoot.querySelector("a").hasAttribute("title")).to.equal(
+      false,
+    );
+  });
+});

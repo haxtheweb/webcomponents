@@ -110,7 +110,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         ? html`
             <audio
               id="audio-description"
-              .src="${this.audioDescriptionSource}"
+              src="${this.audioDescriptionSource}"
               crossorigin="${this.crossorigin || "anonymous"}"
               style="display: none;"
             ></audio>
@@ -1528,7 +1528,16 @@ class VideoPlayer extends IntersectionObserverMixin(
   _loadAudioDescriptionPreference() {
     if (this.source && this.audioDescriptionSource) {
       const key = `video-player-ad-${this.source}`;
-      const stored = globalThis.localStorage.getItem(key);
+      // willUpdate also runs when the element is rendered on the server,
+      // where there is no localStorage, and storage can be blocked in browsers
+      let stored = null;
+      try {
+        stored = globalThis.localStorage
+          ? globalThis.localStorage.getItem(key)
+          : null;
+      } catch {
+        stored = null;
+      }
       if (stored !== null) {
         this.audioDescriptionEnabled = stored === "true";
       }
@@ -1543,7 +1552,13 @@ class VideoPlayer extends IntersectionObserverMixin(
       const key = `video-player-ad-${this.source}`;
       // Coerce to a boolean so we never call toString on null/undefined
       const enabled = !!this.audioDescriptionEnabled;
-      globalThis.localStorage.setItem(key, enabled.toString());
+      try {
+        if (globalThis.localStorage) {
+          globalThis.localStorage.setItem(key, enabled.toString());
+        }
+      } catch {
+        // storage is blocked or full; the preference just is not remembered
+      }
     }
   }
 

@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  * `git-corner`
@@ -95,8 +96,8 @@ class GitCorner extends LitElement {
   // render function
   render() {
     return html` <a
-      .title="${this.alt}"
-      .href="${this.source}"
+      title="${ifDefined(this.alt || undefined)}"
+      href="${this.source}"
       aria-label="${this.alt || "View source on GitHub"}"
       target="_blank"
       rel="noopener noreferrer"

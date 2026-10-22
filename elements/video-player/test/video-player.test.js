@@ -715,3 +715,57 @@ describe("video-player progressive enhancement", () => {
     expect(el.querySelector("[data-prog-fallback]")).to.equal(null);
   });
 });
+
+describe("video-player audio description storage", () => {
+  const getItem = Storage.prototype.getItem;
+  const setItem = Storage.prototype.setItem;
+  afterEach(() => {
+    Storage.prototype.getItem = getItem;
+    Storage.prototype.setItem = setItem;
+  });
+
+  it("writes the audio description source as a src attribute when enabled", async () => {
+    const el = await fixture(
+      html`<video-player
+        source="https://example.com/v.mp4"
+        audio-description-source="https://example.com/ad.mp3"
+        audio-description-enabled
+      ></video-player>`,
+    );
+    await el.updateComplete;
+    const audio = el.shadowRoot.querySelector("#audio-description");
+    expect(audio).to.exist;
+    expect(audio.getAttribute("src")).to.equal("https://example.com/ad.mp3");
+  });
+
+  it("keeps working when storage is blocked", async () => {
+    Storage.prototype.getItem = () => {
+      throw new Error("blocked");
+    };
+    Storage.prototype.setItem = () => {
+      throw new Error("blocked");
+    };
+    const el = await fixture(
+      html`<video-player
+        source="https://example.com/v.mp4"
+        audio-description-source="https://example.com/ad.mp3"
+      ></video-player>`,
+    );
+    await el.updateComplete;
+    expect(el.audioDescriptionEnabled).to.equal(false);
+    el._saveAudioDescriptionPreference();
+  });
+
+  it("reads the remembered preference", async () => {
+    Storage.prototype.getItem = (key) =>
+      key === "video-player-ad-https://example.com/v.mp4" ? "true" : null;
+    const el = await fixture(
+      html`<video-player
+        source="https://example.com/v.mp4"
+        audio-description-source="https://example.com/ad.mp3"
+      ></video-player>`,
+    );
+    await el.updateComplete;
+    expect(el.audioDescriptionEnabled).to.equal(true);
+  });
+});

@@ -1327,7 +1327,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         ? html`<img
             id="print-thumbnail"
             aria-hidden="true"
-            .src="${this.poster}"
+            src="${this.poster}"
           />`
         : ``}
       <div

@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, LitElement } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -838,7 +839,10 @@ export class PageBreak extends IntersectionObserverMixin(
         : "";
     const pagePath = pageAnchorId ? `#${pageAnchorId}` : this.slug;
     return html`
-      <a .href="${pagePath}" .name="${pageAnchorId}" class="sr-only"
+      <a
+        href="${pagePath}"
+        name="${ifDefined(pageAnchorId || undefined)}"
+        class="sr-only"
         >${this.title}</a
       >
       <div class="text">
