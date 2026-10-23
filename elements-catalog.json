@@ -1017,16 +1017,6 @@
       "tags": ["Media", "data", "number", "animation", "counter", "stats"]
     },
     {
-      "tag": "course-card",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/product-card",
-      "import": "@haxtheweb/product-card/lib/course-card.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
       "tag": "course-design",
       "title": "Course Design",
       "description": "some different elements specific to the design of educational materials. Lots of small elements and a catch all repo",
@@ -1725,7 +1715,7 @@
     {
       "tag": "h5p-element",
       "title": "H5p Element",
-      "description": "h5p wrapper for loading and presenting .h5p files",
+      "description": "Plays H5P interactive content from an uploaded .h5p file, with no H5P server needed",
       "package": "@haxtheweb/h5p-element",
       "import": "@haxtheweb/h5p-element/h5p-element.js",
       "type": "element",
@@ -1863,31 +1853,11 @@
       "tags": []
     },
     {
-      "tag": "hax-element-card-list",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/product-card",
-      "import": "@haxtheweb/product-card/lib/hax-element-card-list.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
       "tag": "hax-element-demo",
       "title": "",
       "description": "",
       "package": "@haxtheweb/hax-body",
       "import": "@haxtheweb/hax-body/lib/hax-element-demo.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "hax-element-list-selector",
-      "title": "",
-      "description": "selects a hax element",
-      "package": "@haxtheweb/product-card",
-      "import": "@haxtheweb/product-card/lib/hax-element-list-selector.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -3129,6 +3099,16 @@
       "tags": []
     },
     {
+      "tag": "lrndesign-sidenote",
+      "title": "Lrndesign Sidenote",
+      "description": "A note set apart from the surrounding content: an optional icon and label above the slotted content, tinted by the accent color. Content written for the original element keeps working: label, icon (with or without the icons: iconset prefix), accent-color, dark, and the --lrndesign-sidenote-contai...",
+      "package": "@haxtheweb/lrndesign-sidenote",
+      "import": "@haxtheweb/lrndesign-sidenote/lrndesign-sidenote.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Instructional", "Layout", "Content"]
+    },
+    {
       "tag": "lrndesign-timeline",
       "title": "Timeline",
       "description": "an element that displays events on a timeline",
@@ -3834,26 +3814,6 @@
       "description": "read and write localized data elements",
       "package": "@haxtheweb/pouch-db",
       "import": "@haxtheweb/pouch-db/pouch-db.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "product-banner",
-      "title": "",
-      "description": "",
-      "package": "@haxtheweb/product-card",
-      "import": "@haxtheweb/product-card/lib/product-banner.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "product-card",
-      "title": "",
-      "description": "basic display of a product with advanced data driven helpers",
-      "package": "@haxtheweb/product-card",
-      "import": "@haxtheweb/product-card/product-card.js",
       "type": "element",
       "haxCapable": false,
       "tags": []

@@ -119,6 +119,7 @@ Every element in this monorepo (226 packages). Browse them live with `yarn galle
 | [lrn-vocab](./lrn-vocab/) | A simple vocabulary term highlighted with pop up for more details | `@haxtheweb/lrn-vocab` | [demo](./lrn-vocab/demo/) |
 | [lrndesign-chart](./lrndesign-chart/) | Accessible charts rendered from CSV data | `@haxtheweb/lrndesign-chart` | [demo](./lrndesign-chart/demo/) |
 | [lrndesign-imagemap](./lrndesign-imagemap/) | Accessible image map with linked hotspots and descriptions | `@haxtheweb/lrndesign-imagemap` | [demo](./lrndesign-imagemap/demo/) |
+| [lrndesign-sidenote](./lrndesign-sidenote/) | Webcomponent lrndesign-sidenote following hax / open-wc recommendations | `@haxtheweb/lrndesign-sidenote` | [demo](./lrndesign-sidenote/demo/) |
 | [lrndesign-timeline](./lrndesign-timeline/) | an element that displays events on a timeline | `@haxtheweb/lrndesign-timeline` | [demo](./lrndesign-timeline/demo/) |
 | [lrs-elements](./lrs-elements/) | elements for interfacing with learning record stores | `@haxtheweb/lrs-elements` | [demo](./lrs-elements/demo/) |
 | [lunr-search](./lunr-search/) | LunrJS search element | `@haxtheweb/lunr-search` | [demo](./lunr-search/demo/) |
