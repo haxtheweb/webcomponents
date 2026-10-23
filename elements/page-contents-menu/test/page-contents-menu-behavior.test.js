@@ -383,6 +383,27 @@ describe("page-contents-menu scroll interactions", () => {
   });
 
   it("jumps to the referenced object on link click", async () => {
+    // WebKit defines globalThis.safari, which selects the plain scrollIntoView
+    // path covered by the Safari test below; this one covers the smooth path
+    const hadSafari = Object.getOwnPropertyDescriptor(globalThis, "safari");
+    try {
+      Object.defineProperty(globalThis, "safari", {
+        value: undefined,
+        configurable: true,
+        writable: true,
+      });
+    } catch (e) {
+      // not configurable here; the assertions below will say so
+    }
+    try {
+      await smoothJumpAssertions();
+    } finally {
+      if (hadSafari) Object.defineProperty(globalThis, "safari", hadSafari);
+      else delete globalThis.safari;
+    }
+  });
+
+  async function smoothJumpAssertions() {
     const root = await fixture(contentHTML);
     const el = root.querySelector("page-contents-menu");
     await wait(150);
@@ -400,7 +421,7 @@ describe("page-contents-menu scroll interactions", () => {
     expect(calls[0][0].inline).to.equal("start");
     // state is kept in history and the menu closes
     expect(el.hideSettings).to.equal(true);
-  });
+  }
 
   it("uses the plain scrollIntoView on Safari", async () => {
     const root = await fixture(contentHTML);

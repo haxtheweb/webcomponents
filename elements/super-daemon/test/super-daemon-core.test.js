@@ -132,12 +132,17 @@ describe("SuperDaemon core behavior", () => {
     expect(clicked).to.equal(true);
   });
 
-  it("keyHandler toggles opened with Shift+Alt", async () => {
+  // WebKit defines globalThis.safari, which makes the open shortcut Shift+Meta
+  const platformModifier = () =>
+    element.key1 === "Meta"
+      ? { metaKey: true, key: "Meta" }
+      : { altKey: true, key: "Alt" };
+
+  it("keyHandler toggles opened with Shift+Alt (Shift+Meta where globalThis.safari is defined)", async () => {
     globalThis.dispatchEvent(
       new KeyboardEvent("keydown", {
         shiftKey: true,
-        altKey: true,
-        key: "Alt",
+        ...platformModifier(),
       }),
     );
     await element.updateComplete;
@@ -146,8 +151,7 @@ describe("SuperDaemon core behavior", () => {
     globalThis.dispatchEvent(
       new KeyboardEvent("keydown", {
         shiftKey: true,
-        altKey: true,
-        key: "Alt",
+        ...platformModifier(),
       }),
     );
     await element.updateComplete;

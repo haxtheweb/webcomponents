@@ -542,6 +542,13 @@ describe("simple-icon-lite", () => {
       const el = await fixture(
         html`<simple-icon-lite icon="icons:expand-more"></simple-icon-lite>`,
       );
+      // WebKit renders icons through the CSS mask polyfill (a div, no <image>)
+      if (el.useSafariPolyfill) {
+        expect(el.shadowRoot.querySelector("#svg-polyfill")).to.exist;
+        expect(el.safariMask).to.include("expand-more.svg");
+        expect(el.src).to.include("expand-more.svg");
+        return;
+      }
       const img = el.shadowRoot.querySelector("image");
       // a plain setAttribute("xlink:href") creates a non-namespaced attribute the
       // browser ignores, so check the namespaced value and the resolved href
@@ -559,6 +566,10 @@ describe("simple-icon-lite", () => {
       el.icon = "icons:search";
       await el.updateComplete;
       await new Promise((r) => setTimeout(r, 50));
+      if (el.useSafariPolyfill) {
+        expect(el.safariMask).to.include("search.svg");
+        return;
+      }
       const img = el.shadowRoot.querySelector("image");
       expect(img.href.baseVal).to.include("search.svg");
       expect(

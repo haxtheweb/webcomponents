@@ -72,8 +72,9 @@ describe("DeckRenderer", () => {
         expect(target.firstElementChild === renderer.handle.element).to.be.true;
         expect(target.firstElementChild.className).to.equal("fake-slide");
         // the css engine normalizes the shorthand order
-        expect(target.firstElementChild.style.transformOrigin).to.equal(
-          "left top",
+        // Firefox serializes the shorthand with the implicit z offset ("left top 0px")
+        expect(target.firstElementChild.style.transformOrigin).to.match(
+          /^left top( 0px)?$/,
         );
         expect(target.firstElementChild.style.transform).to.equal("scale(0.1)");
       } finally {

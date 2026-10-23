@@ -412,6 +412,10 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
         // the cursor where the user expects (end of the input area)
         let range = globalThis.document.createRange();
         let sel = this.getSelection();
+        // the ponyfill hands back a Range, which cannot place a caret
+        if (!sel || typeof sel.removeAllRanges !== "function") {
+          sel = globalThis.getSelection();
+        }
         range.setEnd(this.$input.childNodes[0], this.$input.innerText.length);
         range.collapse(true);
         sel.removeAllRanges();

@@ -68,6 +68,17 @@ export default {
       <html lang="en">
         <body>
           <script>window.process = { env: { NODE_ENV: "development" } }</script>
+          <script>
+            // WebKit reports "ResizeObserver loop completed with undelivered
+            // notifications" as a window error; it is benign (a resize caused
+            // another resize in the same frame) and was failing unrelated tests
+            window.addEventListener("error", function (e) {
+              if (/ResizeObserver loop/.test(e.message || "")) {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+              }
+            });
+          </script>
           <script>document.body.removeAttribute('no-js');window.__appCDN="./node_modules/";window.__appForceUpgrade=false;</script>
           <script>
             window.WCAutoloadRegistryFile = "\/elements\/haxcms-elements\/demo\/wc-registry.json";
