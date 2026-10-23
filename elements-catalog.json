@@ -613,7 +613,7 @@
     },
     {
       "tag": "bibliography-item",
-      "title": "Bibliography Item",
+      "title": "Bibliography item",
       "description": "",
       "package": "@haxtheweb/bibliography-builder",
       "import": "@haxtheweb/bibliography-builder/lib/bibliography-item.js",
@@ -698,21 +698,21 @@
     },
     {
       "tag": "career-org-item",
-      "title": "Career Org Item",
+      "title": "Career Item",
       "description": "",
       "package": "@haxtheweb/career-timeline",
       "import": "@haxtheweb/career-timeline/lib/career-org-item.js",
-      "type": "element",
+      "type": "grid",
       "haxCapable": true,
       "tags": []
     },
     {
       "tag": "career-role-item",
-      "title": "Career Role Item",
+      "title": "Career Role",
       "description": "",
       "package": "@haxtheweb/career-timeline",
       "import": "@haxtheweb/career-timeline/lib/career-role-item.js",
-      "type": "element",
+      "type": "grid",
       "haxCapable": true,
       "tags": []
     },
