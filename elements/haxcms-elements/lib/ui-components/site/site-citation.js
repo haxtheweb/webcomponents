@@ -273,8 +273,10 @@ export class SiteCitation extends HAXCMSI18NMixin(DDD) {
     this._clearStatus();
     let ok = false;
     try {
+      /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught */
       if (globalThis.navigator && globalThis.navigator.clipboard) {
         await globalThis.navigator.clipboard.writeText(c.text);
+        /* eslint-enable baseline-js/use-baseline */
         ok = true;
       }
     } catch {

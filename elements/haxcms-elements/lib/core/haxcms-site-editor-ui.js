@@ -5328,11 +5328,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let copied = false;
     try {
       if (
+        /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught */
         globalThis.navigator &&
         globalThis.navigator.clipboard &&
         globalThis.navigator.clipboard.writeText
       ) {
         await globalThis.navigator.clipboard.writeText(shareLink);
+        /* eslint-enable baseline-js/use-baseline */
         copied = true;
       }
     } catch {

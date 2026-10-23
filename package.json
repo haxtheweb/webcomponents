@@ -54,6 +54,8 @@
     "design-system:sync": "node elements/d-d-d/design-system/sync.js",
     "test": "lerna run test --concurrency=1",
     "test:all": "web-test-runner \"elements/*/test/*.test.js\" --node-resolve --root-dir . --playwright --browsers chromium --static-logging",
+    "test:all:firefox": "web-test-runner \"elements/*/test/*.test.js\" --node-resolve --root-dir . --playwright --browsers firefox --static-logging",
+    "test:all:webkit": "web-test-runner \"elements/*/test/*.test.js\" --node-resolve --root-dir . --playwright --browsers webkit --static-logging",
     "build": "lerna run build && yarn run build-gallery",
     "publish": "echo 'NOTICE: You must run `lerna publish` manually'",
     "gallery": "yarn run build-gallery && npx @web/dev-server --open index.html --root-dir .",

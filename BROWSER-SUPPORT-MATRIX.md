@@ -14,15 +14,17 @@ HAX components support **all evergreen browsers** with auto-update enabled. We d
 |---------|----------|----------------|---------|
 | **Chrome** | Desktop (Windows, macOS, Linux) | Latest -1 version | Automated (CI) + Manual |
 | **Chrome** | Mobile (Android) | Latest version | Responsive testing |
-| **Firefox** | Desktop (Windows, macOS, Linux) | Latest -1 version | Automated (CI) + Manual |
+| **Firefox** | Desktop (Windows, macOS, Linux) | Latest -1 version | CI smoke job + full suite locally (`yarn test:all:firefox`) + Manual |
 | **Firefox** | Mobile (Android) | Latest version | Responsive testing |
-| **Safari** | Desktop (macOS) | Latest version | Manual |
+| **Safari** | Desktop (macOS) | Latest version | CI smoke job (WebKit) + full suite locally (`yarn test:all:webkit`) + Manual |
 | **Safari** | Mobile (iOS/iPadOS) | Latest version | Responsive testing |
-| **Edge** | Desktop (Windows) | Latest -1 version | Automated (CI) + Manual |
+| **Edge** | Desktop (Windows) | Latest -1 version | Covered by Chromium CI (same engine) + Manual |
 
 ## Testing Methodology
 
-- **Automated CI**: `yarn test:all` runs Playwright Chromium + axe a11ySuite on every PR
+- **Automated CI**: `yarn test:all` runs Playwright Chromium + axe a11ySuite on every PR. A small smoke job also runs `simple-icon`, `a11y-collapse` and `simple-tooltip` in Firefox and WebKit (advisory).
+- **Other engines, locally**: the full suite can run in Firefox or WebKit with `yarn test:all:firefox` and `yarn test:all:webkit` (first run: `npx playwright@1.63.0 install firefox webkit`). Run these before a release or after touching rendering, SVG, clipboard or file APIs. It is slower than Chromium alone, so it is a task rather than a CI gate.
+- **Platform capability lint**: `yarn lint` warns (non-blocking) on Web APIs that are not Baseline widely available. Each use should sit behind a feature check or carry an `eslint-disable-next-line baseline-js/use-baseline -- why` note.
 - **Manual QA**: Locally via haxcms-nodejs, haxcms-php as well as built in `npm start` capabilities
 - **Responsive**: All components tested at mobile, tablet, and desktop breakpoints
 - **QA Pipeline**: After passing local testing, then local platform, then CI/CD, it goes manually up to dev servers for testing before landing on staging. Only after passing staging via manual review does it get tagged and released to the general public.

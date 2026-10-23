@@ -50,6 +50,7 @@ class GradeBook extends UIRenderPieces(
     this.__xlsxFileSystemDataHandler = null;
     this.hasFilePicker = false;
     this.source = "googledocs";
+    // eslint-disable-next-line baseline-js/use-baseline -- feature check; falls back to the googledocs source
     if (globalThis.showOpenFilePicker) {
       this.source = "filesystem";
       this.hasFilePicker = true;

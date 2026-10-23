@@ -472,6 +472,26 @@ describe("FileSystemBroker test", () => {
       });
     });
   });
+
+  describe("saveFile without the File System Access API", () => {
+    it("falls back to a download instead of throwing", async () => {
+      // Firefox and Safari have no showSaveFilePicker
+      delete globalThis.showSaveFilePicker;
+      const clicked = [];
+      const origClick = HTMLAnchorElement.prototype.click;
+      HTMLAnchorElement.prototype.click = function () {
+        clicked.push({ download: this.download, href: this.href });
+      };
+      try {
+        await element.saveFile("xlsx", new Uint8Array([1, 2, 3]));
+      } finally {
+        HTMLAnchorElement.prototype.click = origClick;
+      }
+      expect(clicked.length).to.equal(1);
+      expect(clicked[0].download).to.equal("download.xlsx");
+      expect(clicked[0].href).to.match(/^blob:/);
+    });
+  });
 });
 
 describe("FileSystemBroker A11y tests", () => {

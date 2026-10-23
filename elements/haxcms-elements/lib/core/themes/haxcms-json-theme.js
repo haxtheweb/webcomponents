@@ -352,6 +352,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
   }
 
   async copyToClipboard(_e) {
+    // eslint-disable-next-line baseline-js/use-baseline -- feature check on navigator.clipboard
     if (globalThis.navigator && globalThis.navigator.clipboard) {
       try {
         let dataToCopy;
@@ -374,6 +375,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           dataToCopy = "";
         }
 
+        // eslint-disable-next-line baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught
         await globalThis.navigator.clipboard.writeText(dataToCopy);
         if (
           globalThis.SimpleToast &&
@@ -413,10 +415,12 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     if (
       this.nativeFormatUrl &&
       globalThis.navigator &&
+      /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught */
       globalThis.navigator.clipboard
     ) {
       try {
         await globalThis.navigator.clipboard.writeText(this.nativeFormatUrl);
+        /* eslint-enable baseline-js/use-baseline */
         if (
           globalThis.SimpleToast &&
           globalThis.SimpleToast.requestAvailability

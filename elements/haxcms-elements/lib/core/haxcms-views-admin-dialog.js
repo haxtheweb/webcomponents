@@ -1897,9 +1897,11 @@ class HAXCMSViewsAdminDialog extends I18NMixin(DDD) {
   }
 
   _copyToClipboard(text = "") {
+    /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught */
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard
         .writeText(text)
+        /* eslint-enable baseline-js/use-baseline */
         .then(() => {
           if (store && typeof store.toast === "function") {
             store.toast(this.t.copiedToClipboard, 2000);

@@ -151,6 +151,7 @@ What did you want merlin to do?
       title = `[${type}] User report from HAX daemon`;
       // userAgentData/deviceMemory/hardwareConcurrency are Chromium-only and
       // undefined in other browsers, so guard them before use
+      /* eslint-disable baseline-js/use-baseline -- Chromium-only fields; each is guarded by an existence check and omitted when absent */
       const osName =
         navigator.userAgentData && navigator.userAgentData.platform
           ? navigator.userAgentData.platform
@@ -175,6 +176,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         body += `Connection: ${navigator.connection.effectiveType}
 `;
       }
+      /* eslint-enable baseline-js/use-baseline */
       body += `${type == "feature" ? `Your idea:` : `Bug you experienced:`}
 `;
     }

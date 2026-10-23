@@ -8,6 +8,7 @@ export async function copyToClipboard(value, msg = null) {
   }
   // the official way but they have to authorize it in navigator hence async
   try {
+    // eslint-disable-next-line baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught
     await globalThis.navigator.clipboard.writeText(value);
   } catch {
     msg = "Failed to authorize copy, refresh and authorize action";

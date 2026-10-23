@@ -177,5 +177,17 @@ export default [
       ],
     },
   },
+  {
+    // Node-context tooling (Playwright/puppeteer scripts, build scripts) is not
+    // shipped to browsers, so browser Baseline does not apply to it.
+    files: [
+      "elements/haxcms-elements/automation/**/*.js",
+      "elements/haxcms-elements/theme-screenshot-automation.js",
+      "elements/d-d-d/design-system/**/*.js",
+      "elements/*/scripts/**/*.js",
+      "elements/**/*.config.{js,mjs,cjs}",
+    ],
+    rules: { "baseline-js/use-baseline": "off" },
+  },
   eslintConfigPrettier,
 ];

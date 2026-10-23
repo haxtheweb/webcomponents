@@ -1364,6 +1364,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       return;
     }
     const ric =
+      // eslint-disable-next-line baseline-js/use-baseline -- Safari lacks requestIdleCallback; setTimeout fallback below
       globalThis.requestIdleCallback ||
       function (cb) {
         return setTimeout(cb, 200);

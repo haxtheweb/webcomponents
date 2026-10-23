@@ -1271,8 +1271,10 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
    */
   async _copyToClipboard(text, field) {
     try {
+      /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught */
       if (globalThis.navigator && globalThis.navigator.clipboard) {
         await globalThis.navigator.clipboard.writeText(text);
+        /* eslint-enable baseline-js/use-baseline */
       }
     } catch {
       // fallback - ignore

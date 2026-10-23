@@ -100,6 +100,7 @@ class PerformanceDetect extends HTMLElement {
     };
     if (globalThis.navigator) {
       // if less than a gig we know its bad
+      /* eslint-disable baseline-js/use-baseline -- Chromium-only signals; each is guarded and simply not reported elsewhere */
       if (
         globalThis.navigator.deviceMemory &&
         globalThis.navigator.deviceMemory < 1
@@ -143,6 +144,7 @@ class PerformanceDetect extends HTMLElement {
       ) {
         details.dataSaver = true;
       }
+      /* eslint-enable baseline-js/use-baseline */
     }
     this.details = details;
     return details;

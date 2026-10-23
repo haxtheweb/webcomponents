@@ -284,6 +284,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     const url = new URL(globalThis.location.href);
     url.hash = `${this.hashPrefix}-slide-${this.slide}`;
     try {
+      // eslint-disable-next-line baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught
       await globalThis.navigator.clipboard.writeText(url.href);
       this._announce(this.t.linkCopied);
     } catch (error) {

@@ -680,6 +680,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         if (command != "paste" && command != "wrapRange") {
           globalThis.document.execCommand(command, false, commandVal);
           target.normalize();
+          // eslint-disable-next-line baseline-js/use-baseline -- feature check on navigator.clipboard
         } else if (navigator.clipboard && command == "paste") {
           this.pasteFromClipboard();
         }

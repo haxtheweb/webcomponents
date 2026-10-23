@@ -102,11 +102,13 @@ class SimpleClipboardCopyButton extends SimpleIconButtonLite {
 
   async _writeClipboard(text) {
     if (
+      /* eslint-disable baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught; legacy copy path exists */
       globalThis.navigator &&
       globalThis.navigator.clipboard &&
       globalThis.navigator.clipboard.writeText
     ) {
       await globalThis.navigator.clipboard.writeText(text);
+      /* eslint-enable baseline-js/use-baseline */
       return true;
     }
     return false;

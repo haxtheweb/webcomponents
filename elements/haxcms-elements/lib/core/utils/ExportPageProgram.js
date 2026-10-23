@@ -360,6 +360,7 @@ export async function _exportPageAsHAXSchema() {
     const haxSchema = JSON.stringify(elements, null, 2);
 
     // Copy to clipboard
+    // eslint-disable-next-line baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught
     await navigator.clipboard.writeText(haxSchema);
     this.clearProcessingVisual();
     HAXStore.toast(
