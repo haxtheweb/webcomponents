@@ -1214,6 +1214,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       store.activeItemContent = htmlcontent;
       // insert the content as quickly as possible, then work on the dynamic imports
       setTimeout(() => {
+        // the theme can be torn down before this deferred insert runs; there
+        // is nothing to insert into then, and the rest of this callback is
+        // about that theme's content, so stop here (this used to throw)
+        if (!store.themeElement) {
+          return;
+        }
         if (store.themeElement.childNodes.length === 0) {
           let frag = document
             .createRange()
