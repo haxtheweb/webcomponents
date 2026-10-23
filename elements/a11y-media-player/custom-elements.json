@@ -1114,6 +1114,18 @@
             },
             {
               "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:MediaObject\"",
+              "attribute": "typeof",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "__playerReady",
               "privacy": "public",
               "type": {
@@ -1668,6 +1680,10 @@
             },
             {
               "kind": "field",
+              "name": "addEventListener"
+            },
+            {
+              "kind": "field",
               "name": "crossorigin",
               "privacy": "public",
               "type": {
@@ -1851,6 +1867,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:MediaObject\"",
+              "fieldName": "typeof"
+            },
             {
               "name": "__playerReady",
               "type": {
@@ -2635,6 +2660,63 @@
           "declaration": {
             "name": "A11yMediaButton",
             "module": "lib/a11y-media-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/a11y-media-fallback.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "a11yMediaFallbackHTML",
+          "parameters": [
+            {
+              "name": "media",
+              "description": "source (url), sources ([{src}]), youtubeId,\nmediaTitle, tracks ([{src, label, srclang, kind}]) and track (url)",
+              "type": {
+                "text": "Object"
+              }
+            }
+          ],
+          "description": "Light DOM fallback for a video / audio player, for RSS, markdown, bots and\nreaders without JavaScript: a link to the media and to each text track\n(captions, subtitles, transcripts). It carries a slot name no shadow root\ndefines, so it is never drawn next to the real player, and a marker\nattribute so the player can remove it while the page is being edited (the\nhook writes a fresh copy on save).",
+          "return": {
+            "type": {
+              "text": "String"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "removeA11yMediaFallback",
+          "parameters": [
+            {
+              "name": "el",
+              "description": "the player",
+              "type": {
+                "text": "HTMLElement"
+              }
+            }
+          ],
+          "description": "Remove the fallback from a player's light DOM, used while editing so a\nstale copy is never saved alongside the fresh one the hook writes."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "a11yMediaFallbackHTML",
+          "declaration": {
+            "name": "a11yMediaFallbackHTML",
+            "module": "lib/a11y-media-fallback.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "removeA11yMediaFallback",
+          "declaration": {
+            "name": "removeA11yMediaFallback",
+            "module": "lib/a11y-media-fallback.js"
           }
         }
       ]

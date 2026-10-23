@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`image-compare-slider`\nhax-wired a11y-compare-image",
+          "description": "",
           "name": "ImageCompareSlider",
           "members": [
             {
@@ -21,6 +21,26 @@
               "kind": "method",
               "name": "haxHooks",
               "description": "#3050: a file backing the top or bottom image was modified in place.\nRefresh the live preview by cache-busting the slotted shadow <img> srcs\ndirectly so the persisted `topSrc` / `bottomSrc` properties (and saved\ncontent) stay clean."
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "Drop the saved fallback while editing; the hook writes a fresh one on save,\nso a stale copy is never saved next to it."
+            },
+            {
+              "kind": "method",
+              "name": "haxprogressiveEnhancement",
+              "parameters": [
+                {
+                  "name": "_el"
+                }
+              ],
+              "description": "Hook for HAX progressive enhancement: the two images for RSS, bots and\nreaders without JavaScript."
             },
             {
               "kind": "method",
@@ -246,9 +266,7 @@
           "superclass": {
             "name": "SimpleColors",
             "package": "@haxtheweb/simple-colors/simple-colors.js"
-          },
-          "tagName": "image-compare-slider",
-          "customElement": true
+          }
         }
       ],
       "exports": [

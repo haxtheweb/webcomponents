@@ -963,6 +963,40 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/stripHtmlComments.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "stripHtmlComments",
+          "parameters": [
+            {
+              "name": "str",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Remove HTML comments from a string. Repeats until nothing changes so nested\ninput such as \"<!<!-- x -->-- y -->\" cannot leave a comment opener behind.",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "stripHtmlComments",
+          "declaration": {
+            "name": "stripHtmlComments",
+            "module": "lib/stripHtmlComments.js"
+          }
+        }
+      ]
     }
   ]
 }

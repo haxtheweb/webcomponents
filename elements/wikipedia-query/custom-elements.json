@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`wikipedia-query`\n`Query and present information from wikipedia.`",
+          "description": "",
           "name": "WikipediaQuery",
           "members": [
             {
@@ -47,6 +47,16 @@
               "kind": "method",
               "name": "haxHooks",
               "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxprogressiveEnhancement",
+              "parameters": [
+                {
+                  "name": "_el"
+                }
+              ],
+              "description": "Hook for HAX progressive enhancement: a link to the article for RSS, bots\nand readers without JavaScript (the article itself is fetched client side)."
             },
             {
               "kind": "method",
@@ -205,9 +215,7 @@
           "superclass": {
             "name": "DDD",
             "package": "@haxtheweb/d-d-d/d-d-d.js"
-          },
-          "tagName": "wikipedia-query",
-          "customElement": true
+          }
         }
       ],
       "exports": [

@@ -35,17 +35,6 @@
             },
             {
               "kind": "field",
-              "name": "html5",
-              "description": "gets the HTML5 `audio` or `video` children",
-              "readonly": true,
-              "return": {
-                "type": {
-                  "text": "object"
-                }
-              }
-            },
-            {
-              "kind": "field",
               "name": "iframed",
               "description": "Computes whether uses iframe",
               "readonly": true,
@@ -210,6 +199,26 @@
             },
             {
               "kind": "method",
+              "name": "haxprogressiveEnhancement",
+              "parameters": [
+                {
+                  "name": "_el"
+                }
+              ],
+              "description": "Hook for HAX progressive enhancement: links to the media and its text\ntracks, for RSS, markdown, bots and readers without JavaScript."
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "Drop the saved fallback while editing; the hook writes a fresh one on save\nso a stale copy is never kept next to it."
+            },
+            {
+              "kind": "method",
               "name": "haxmediaSourceUpdated",
               "parameters": [
                 {
@@ -351,6 +360,18 @@
                 }
               ],
               "description": "Handle audio description toggle from settings checkbox"
+            },
+            {
+              "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:MediaObject\"",
+              "attribute": "typeof",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -690,6 +711,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:MediaObject\"",
+              "fieldName": "typeof"
+            },
             {
               "name": "source-type",
               "type": {
@@ -1247,6 +1277,10 @@
                 "text": "object"
               },
               "default": "{ ...this.t, missingTitle: \"Missing Title\", closeLecturePlayer: \"Close Lecture Player\", openLecturePlayer: \"Open Lecture Player\", }"
+            },
+            {
+              "kind": "field",
+              "name": "addEventListener"
             },
             {
               "kind": "field",

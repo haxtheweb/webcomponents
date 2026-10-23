@@ -485,6 +485,22 @@
             },
             {
               "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:Assessment\"",
+              "attribute": "typeof",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "guessDataValue",
               "type": {
                 "text": "string"
@@ -755,6 +771,19 @@
           "tagName": "multiple-choice",
           "customElement": true,
           "attributes": [
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:Assessment\"",
+              "fieldName": "typeof",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
             {
               "name": "edit",
               "type": {
@@ -1302,6 +1331,18 @@
             },
             {
               "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:Assessment\"",
+              "attribute": "typeof",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "guessDataValue",
               "type": {
                 "text": "string"
@@ -1516,6 +1557,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:Assessment\"",
+              "fieldName": "typeof"
+            },
             {
               "name": "edit",
               "type": {
@@ -2273,6 +2323,22 @@
             },
             {
               "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:Assessment\"",
+              "attribute": "typeof",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "maxAttempts",
               "privacy": "public",
               "type": {
@@ -2517,6 +2583,19 @@
               },
               "default": "null",
               "fieldName": "shortanswer"
+            },
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:Assessment\"",
+              "fieldName": "typeof",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
             },
             {
               "name": "edit",
@@ -3257,6 +3336,22 @@
             },
             {
               "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:Assessment\"",
+              "attribute": "typeof",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "guessDataValue",
               "type": {
                 "text": "string"
@@ -3525,6 +3620,19 @@
               },
               "default": "null",
               "fieldName": "_tfanswer"
+            },
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:Assessment\"",
+              "fieldName": "typeof",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
             },
             {
               "name": "edit",

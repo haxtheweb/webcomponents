@@ -25,6 +25,18 @@
             },
             {
               "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:SupportingMaterial\"",
+              "attribute": "typeof",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "describedBy",
               "privacy": "public",
               "type": {
@@ -65,6 +77,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:SupportingMaterial\"",
+              "fieldName": "typeof"
+            },
             {
               "name": "described-by",
               "type": {

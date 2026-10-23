@@ -1101,15 +1101,16 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
     // helps with user preference on side of screen for the tray
     this.haxTrayAlignment = localStorageGet("hax-tray-elementAlign");
     this.windowControllersLoaded = new AbortController();
-    globalThis.addEventListener && globalThis.addEventListener(
-      "hax-store-app-store-loaded",
-      this.appStoreReady.bind(this),
-      {
-        once: true,
-        passive: true,
-        signal: this.windowControllersLoaded.signal,
-      },
-    );
+    globalThis.addEventListener &&
+      globalThis.addEventListener(
+        "hax-store-app-store-loaded",
+        this.appStoreReady.bind(this),
+        {
+          once: true,
+          passive: true,
+          signal: this.windowControllersLoaded.signal,
+        },
+      );
     // @todo support injection of blocks specific to polaris
     // this way we can have blocks whos definitions only get
     // loaded in when we have a theme that intentionally

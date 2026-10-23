@@ -242,6 +242,10 @@
               "kind": "field",
               "name": "instance",
               "default": "this"
+            },
+            {
+              "kind": "field",
+              "name": "addEventListener"
             }
           ],
           "attributes": [

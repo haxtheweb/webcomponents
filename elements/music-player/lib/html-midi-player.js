@@ -26699,9 +26699,7 @@
     globalThis.dispatchEvent(t);
   }
   // SSR: no Node global (or no real document) means nothing to polyfill
-  "undefined" != typeof document &&
-    "undefined" != typeof Node &&
-    e(document);
+  "undefined" != typeof document && "undefined" != typeof Node && e(document);
 });
 
 /**

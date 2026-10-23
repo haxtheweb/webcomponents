@@ -794,21 +794,28 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         }
       }
     }
-    globalThis.addEventListener && globalThis.addEventListener("hax-store-ready", this.storeReady.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+    globalThis.addEventListener &&
+      globalThis.addEventListener(
+        "hax-store-ready",
+        this.storeReady.bind(this),
+        {
+          signal: this.windowControllers.signal,
+        },
+      );
 
-    globalThis.addEventListener && globalThis.addEventListener(
-      "haxcms-trigger-update",
-      this._triggerUpdatedData.bind(this),
-      { signal: this.windowControllers.signal },
-    );
+    globalThis.addEventListener &&
+      globalThis.addEventListener(
+        "haxcms-trigger-update",
+        this._triggerUpdatedData.bind(this),
+        { signal: this.windowControllers.signal },
+      );
 
-    globalThis.addEventListener && globalThis.addEventListener(
-      "haxcms-trigger-update-node",
-      this._triggerUpdatedNode.bind(this),
-      { signal: this.windowControllers.signal },
-    );
+    globalThis.addEventListener &&
+      globalThis.addEventListener(
+        "haxcms-trigger-update-node",
+        this._triggerUpdatedNode.bind(this),
+        { signal: this.windowControllers.signal },
+      );
     // in-case we miss the initial state as opposed to a change event.
     // Only apply the platform preference on a first-ever visit (no stored
     // choice) so we never clobber an explicit light/dark override.

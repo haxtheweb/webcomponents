@@ -114,11 +114,12 @@ class Hal9000 extends LitElement {
     const location = `${
       new URL("./lib/annyang/annyang.min.js", import.meta.url).href
     }`;
-    globalThis.addEventListener && globalThis.addEventListener(
-      "es-bridge-annyang-loaded",
-      this._annyangLoaded.bind(this),
-      { signal: this.windowControllers.signal },
-    );
+    globalThis.addEventListener &&
+      globalThis.addEventListener(
+        "es-bridge-annyang-loaded",
+        this._annyangLoaded.bind(this),
+        { signal: this.windowControllers.signal },
+      );
     globalThis.ESGlobalBridge.requestAvailability().load("annyang", location);
     // check for speech synthesis API
     if (

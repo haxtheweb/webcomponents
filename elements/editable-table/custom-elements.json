@@ -151,6 +151,17 @@
             },
             {
               "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type, \"oer:Rubric\" while rubricMode is on. Reflected so it\nis also in server rendered HTML.",
+              "attribute": "typeof",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "properties",
               "static": true,
               "readonly": true,
@@ -749,6 +760,29 @@
               }
             },
             {
+              "kind": "method",
+              "name": "_sanitizeCellHTML",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS-001)",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
               "kind": "field",
               "name": "columnHeader",
               "type": {
@@ -921,6 +955,14 @@
               "description": "Rubric style (analytic, holistic, single-point, checklist) emitted\nas oer:rubricType when rubricMode is true.",
               "default": "\"\"",
               "fieldName": "rubricType"
+            },
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type, \"oer:Rubric\" while rubricMode is on. Reflected so it\nis also in server rendered HTML.",
+              "fieldName": "typeof"
             }
           ],
           "mixins": [
@@ -1355,6 +1397,25 @@
                 }
               ],
               "description": "replaces a blank cell with \"-\" for accessibility",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_sanitizeCellHTML",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS-001)",
               "return": {
                 "type": {
                   "text": "string"
@@ -2026,6 +2087,29 @@
                 }
               ],
               "description": "replaces a blank cell with \"-\" for accessibility",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_sanitizeCellHTML",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS-001)",
               "return": {
                 "type": {
                   "text": "string"
@@ -3161,6 +3245,29 @@
                 }
               ],
               "description": "replaces a blank cell with \"-\" for accessibility",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_sanitizeCellHTML",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS-001)",
               "return": {
                 "type": {
                   "text": "string"
@@ -4515,6 +4622,29 @@
                 }
               ],
               "description": "replaces a blank cell with \"-\" for accessibility",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "displayBehaviors",
+                "module": "lib/editable-table-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_sanitizeCellHTML",
+              "parameters": [
+                {
+                  "name": "cell",
+                  "description": "cell contents",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS-001)",
               "return": {
                 "type": {
                   "text": "string"

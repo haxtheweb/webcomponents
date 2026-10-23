@@ -26,6 +26,18 @@
             },
             {
               "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:Course\"",
+              "attribute": "typeof",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "courseIdentifier",
               "privacy": "public",
               "type": {
@@ -76,6 +88,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in server rendered HTML.",
+              "default": "\"oer:Course\"",
+              "fieldName": "typeof"
+            },
             {
               "name": "course-identifier",
               "type": {

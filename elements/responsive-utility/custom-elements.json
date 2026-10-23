@@ -69,6 +69,10 @@
             {
               "kind": "field",
               "name": "__resizeFallbackHandler"
+            },
+            {
+              "kind": "field",
+              "name": "addEventListener"
             }
           ],
           "superclass": {

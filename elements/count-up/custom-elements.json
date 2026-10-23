@@ -12,10 +12,34 @@
           "name": "CountUpElement",
           "members": [
             {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Specialized functions / life-cycle via haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxprogressiveEnhancement",
+              "parameters": [
+                {
+                  "name": "_el"
+                }
+              ],
+              "description": "Hook for HAX progressive enhancement: the number it counts up to, for RSS,\nbots and readers without JavaScript."
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "Drop the saved fallback while editing; the hook writes a fresh one on save,\nso a stale copy is never saved next to it."
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
-              "description": "Store the tag name to make it easier to obtain directly.",
               "readonly": true
             },
             {

@@ -720,6 +720,10 @@
               },
               "default": "-1",
               "attribute": "stop"
+            },
+            {
+              "kind": "field",
+              "name": "addEventListener"
             }
           ],
           "events": [
