@@ -50,31 +50,76 @@ describe("hax-text-editor-paste-button", () => {
   });
 
   describe("sendCommand", () => {
-    it("calls HAXStore._onPaste with clipboard data when navigator.clipboard exists", () => {
-      let called = false;
+    async function withClipboard(fakeClipboard, fn) {
       let receivedArg = null;
       const originalOnPaste = HAXStore._onPaste;
       HAXStore._onPaste = (arg) => {
-        called = true;
         receivedArg = arg;
       };
-      const fakeClipboard = { readText: () => Promise.resolve("test") };
       const originalClipboard = globalThis.navigator.clipboard;
       Object.defineProperty(globalThis.navigator, "clipboard", {
         value: fakeClipboard,
         configurable: true,
       });
-      el.sendCommand({ test: true });
-      expect(called).to.equal(true);
-      expect(receivedArg.clipboardData).to.equal(fakeClipboard);
-      HAXStore._onPaste = originalOnPaste;
-      Object.defineProperty(globalThis.navigator, "clipboard", {
-        value: originalClipboard,
-        configurable: true,
-      });
+      try {
+        await fn();
+      } finally {
+        HAXStore._onPaste = originalOnPaste;
+        Object.defineProperty(globalThis.navigator, "clipboard", {
+          value: originalClipboard,
+          configurable: true,
+        });
+      }
+      return receivedArg;
+    }
+
+    it("reads the clipboard and gives _onPaste something with getData (was BUG: passed navigator.clipboard)", async () => {
+      const fake = {
+        read: () =>
+          Promise.resolve([
+            {
+              types: ["text/html", "text/plain"],
+              getType: (t) =>
+                Promise.resolve(
+                  new Blob([t === "text/html" ? "<b>hi</b>" : "hi"]),
+                ),
+            },
+          ]),
+        readText: () => Promise.resolve("hi"),
+      };
+      const arg = await withClipboard(fake, () => el.sendCommand({}));
+      expect(arg.clipboardData).to.not.equal(fake);
+      expect(arg.clipboardData.getData("text/html")).to.equal("<b>hi</b>");
+      expect(arg.clipboardData.getData("text/plain")).to.equal("hi");
+      expect(arg.clipboardData.getData("text")).to.equal("hi");
+      expect(arg.preventDefault).to.be.a("function");
     });
 
-    it("does not call _onPaste when navigator.clipboard is missing", () => {
+    it("falls back to readText when clipboard.read is unavailable (Firefox/Safari)", async () => {
+      const fake = { readText: () => Promise.resolve("plain only") };
+      const arg = await withClipboard(fake, () => el.sendCommand({}));
+      expect(arg.clipboardData.getData("text/plain")).to.equal("plain only");
+      expect(arg.clipboardData.getData("text/html")).to.equal("");
+    });
+
+    it("does not call _onPaste when the clipboard cannot be read", async () => {
+      const fake = {
+        readText: () => Promise.reject(new Error("denied")),
+      };
+      const originalWarn = console.warn;
+      console.warn = () => {};
+      let arg;
+      try {
+        arg = await withClipboard(fake, () => el.sendCommand({}));
+      } finally {
+        console.warn = originalWarn;
+      }
+      expect(arg).to.equal(null);
+    });
+  });
+
+  describe("sendCommand without clipboard", () => {
+    it("does not call _onPaste when navigator.clipboard is missing", async () => {
       let called = false;
       const originalOnPaste = HAXStore._onPaste;
       HAXStore._onPaste = () => {
@@ -85,7 +130,7 @@ describe("hax-text-editor-paste-button", () => {
         value: undefined,
         configurable: true,
       });
-      el.sendCommand({});
+      await el.sendCommand({});
       expect(called).to.equal(false);
       HAXStore._onPaste = originalOnPaste;
       Object.defineProperty(globalThis.navigator, "clipboard", {
