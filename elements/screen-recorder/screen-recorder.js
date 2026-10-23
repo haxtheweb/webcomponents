@@ -15,7 +15,6 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
  * @element screen-recorder
  */
 export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
-
   static get tag() {
     return "screen-recorder";
   }
@@ -33,7 +32,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
     this.audioStream = null;
     this.includeSystemAudio = true;
     this.includeMicrophoneAudio = true;
-    
+
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -70,101 +69,118 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
   // Lit scoped styles
   // the sr-only helper class ships in DDDReset through the DDDSuper chain
   static get styles() {
-    return [super.styles,
-    css`
-      :host {
-        display: block;
-        color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
-        font-family: var(--ddd-font-navigation);
-      }
-      .video-container {
-        text-align: center;
-      }
-      .video-container video {
-        max-width: 100%;
-        height: auto;
-        border: var(--ddd-border-sm);
-        border-radius: var(--ddd-radius-sm);
-      }
-      .controls {
-        text-align: center;
-        margin: var(--ddd-spacing-2) 0;
-      }
-      .controls simple-icon-button-lite {
-        background-color: var(--ddd-theme-default-error, #d32f2f);
-        color: white;
-        border: none;
-        padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
-        margin: var(--ddd-spacing-1, 4px);
-        border-radius: var(--ddd-radius-sm, 4px);
-        font-family: var(--ddd-font-navigation, sans-serif);
-        font-size: var(--ddd-font-size-4xs, 10px);
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-        min-width: 60px;
-        text-align: center;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        --simple-icon-width: 12px;
-        --simple-icon-height: 12px;
-      }
-      .controls button:hover {
-        background-color: var(--ddd-theme-default-original87Pink);
-      }
-      .controls button:disabled {
-        opacity: var(--ddd-opacity-60, 0.6);
-        cursor: not-allowed;
-      }
-      .download-link {
-        text-decoration: none;
-      }
-      .download-link simple-icon-button-lite {
-        background-color: var(--ddd-theme-default-keystoneYellow, #ffd100) !important;
-        color: var(--ddd-theme-default-coalyGray, #444) !important;
-      }
-      .download-link simple-icon-button-lite:hover {
-        background-color: var(--ddd-theme-default-original87Pink, #ff6b9d) !important;
-      }
-      .error-region {
-        margin: var(--ddd-spacing-2) 0;
-        padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
-        border-radius: var(--ddd-radius-sm, 4px);
-        background-color: var(--ddd-theme-default-error, #d32f2f);
-        color: white;
-        font-family: var(--ddd-font-navigation, sans-serif);
-        font-size: var(--ddd-font-size-3xs, 11px);
-        text-align: center;
-      }
-      .hidden {
-        display: none !important;
-      }
-      .audio-options {
-        text-align: center;
-      }
-      .audio-options h2 {
-        margin: 0 0 var(--ddd-spacing-1) 0;
-        font-size: var(--ddd-font-size-3xs);
-        color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
-        font-family: var(--ddd-font-navigation);
-      }
-      .checkbox-container {
-        display: inline-block;
-        margin: var(--ddd-spacing-1);
-      }
-      .checkbox-container label {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        font-size: var(--ddd-font-size-4xs);
-        color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
-        font-family: var(--ddd-font-navigation);
-      }
-      .checkbox-container input[type="checkbox"] {
-        margin-right: var(--ddd-spacing-1);
-        cursor: pointer;
-      }
-    `];
+    return [
+      super.styles,
+      css`
+        :host {
+          display: block;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          font-family: var(--ddd-font-navigation);
+        }
+        .video-container {
+          text-align: center;
+        }
+        .video-container video {
+          max-width: 100%;
+          height: auto;
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-sm);
+        }
+        .controls {
+          text-align: center;
+          margin: var(--ddd-spacing-2) 0;
+        }
+        .controls simple-icon-button-lite {
+          background-color: var(--ddd-theme-default-error, #d32f2f);
+          color: white;
+          border: none;
+          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+          margin: var(--ddd-spacing-1, 4px);
+          border-radius: var(--ddd-radius-sm, 4px);
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-size: var(--ddd-font-size-4xs, 10px);
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+          min-width: 60px;
+          text-align: center;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          --simple-icon-width: 12px;
+          --simple-icon-height: 12px;
+        }
+        .controls button:hover {
+          background-color: var(--ddd-theme-default-original87Pink);
+        }
+        .controls button:disabled {
+          opacity: var(--ddd-opacity-60, 0.6);
+          cursor: not-allowed;
+        }
+        .download-link {
+          text-decoration: none;
+        }
+        .download-link simple-icon-button-lite {
+          background-color: var(
+            --ddd-theme-default-keystoneYellow,
+            #ffd100
+          ) !important;
+          color: var(--ddd-theme-default-coalyGray, #444) !important;
+        }
+        .download-link simple-icon-button-lite:hover {
+          background-color: var(
+            --ddd-theme-default-original87Pink,
+            #ff6b9d
+          ) !important;
+        }
+        .error-region {
+          margin: var(--ddd-spacing-2) 0;
+          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+          border-radius: var(--ddd-radius-sm, 4px);
+          background-color: var(--ddd-theme-default-error, #d32f2f);
+          color: white;
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-size: var(--ddd-font-size-3xs, 11px);
+          text-align: center;
+        }
+        .hidden {
+          display: none !important;
+        }
+        .audio-options {
+          text-align: center;
+        }
+        .audio-options h2 {
+          margin: 0 0 var(--ddd-spacing-1) 0;
+          font-size: var(--ddd-font-size-3xs);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          font-family: var(--ddd-font-navigation);
+        }
+        .checkbox-container {
+          display: inline-block;
+          margin: var(--ddd-spacing-1);
+        }
+        .checkbox-container label {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          font-size: var(--ddd-font-size-4xs);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          font-family: var(--ddd-font-navigation);
+        }
+        .checkbox-container input[type="checkbox"] {
+          margin-right: var(--ddd-spacing-1);
+          cursor: pointer;
+        }
+      `,
+    ];
   }
 
   // Lit render the HTML
@@ -172,26 +188,26 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
     return html`
       <div class="wrapper">
         <div class="video-container">
-          <video 
-            controls 
-            class="${this.videoSrc ? '' : 'hidden'}"
+          <video
+            controls
+            class="${this.videoSrc ? "" : "hidden"}"
             .src="${this.videoSrc}"
           ></video>
         </div>
-        
+
         <div
-          class="error-region ${this.errorMessage ? '' : 'hidden'}"
+          class="error-region ${this.errorMessage ? "" : "hidden"}"
           role="alert"
         >
           ${this.errorMessage}
         </div>
-        
-        <div class="audio-options ${this.recording ? 'hidden' : ''}">
+
+        <div class="audio-options ${this.recording ? "hidden" : ""}">
           <h2>${this.t.audioOptions}</h2>
           <div class="checkbox-container">
             <label>
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 .checked="${this.includeSystemAudio}"
                 @change="${this._toggleSystemAudio}"
               />
@@ -200,8 +216,8 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
           </div>
           <div class="checkbox-container">
             <label>
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 .checked="${this.includeMicrophoneAudio}"
                 @change="${this._toggleMicrophoneAudio}"
               />
@@ -209,41 +225,42 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
             </label>
           </div>
         </div>
-        
+
         <div class="controls">
           <simple-icon-button-lite
             icon="av:fiber-smart-record"
             label="${this.t.startRecording}"
-            class="${this.recording ? 'hidden' : ''}"
+            class="${this.recording ? "hidden" : ""}"
             @click="${this._startRecording}"
           >
             ${this.t.startRecording}
           </simple-icon-button-lite>
-          
+
           <simple-icon-button-lite
             icon="av:stop"
             label="${this.t.stopRecording}"
-            class="${this.recording ? '' : 'hidden'}"
+            class="${this.recording ? "" : "hidden"}"
             @click="${this._stopRecording}"
           >
             ${this.t.stopRecording}
           </simple-icon-button-lite>
-          
-          <a 
-            class="download-link ${this.downloadUrl ? '' : 'hidden'}"
+
+          <a
+            class="download-link ${this.downloadUrl ? "" : "hidden"}"
             href="${this.downloadUrl}"
             download="screen-recording-${Date.now()}.webm"
           >
-            <simple-icon-button-lite icon="icons:file-download" label="${this.t.downloadVideo}">
+            <simple-icon-button-lite
+              icon="icons:file-download"
+              label="${this.t.downloadVideo}"
+            >
               ${this.t.downloadVideo}
             </simple-icon-button-lite>
           </a>
         </div>
-        
+
         <div class="sr-only" aria-live="polite">
-          ${this.recording
-            ? this.t.recordingStarted
-            : this.t.recordingStopped}
+          ${this.recording ? this.t.recordingStarted : this.t.recordingStopped}
         </div>
         <slot></slot>
       </div>
@@ -272,63 +289,68 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
       // Get display media with system audio if requested
       this.stream = await navigator.mediaDevices.getDisplayMedia({
         video: {
-          mediaSource: 'screen'
+          mediaSource: "screen",
         },
-        audio: this.includeSystemAudio
+        audio: this.includeSystemAudio,
       });
-      
+
       let finalStream = this.stream;
-      
+
       // If microphone audio is also requested, we need to combine streams
       if (this.includeMicrophoneAudio) {
         try {
           this.audioStream = await navigator.mediaDevices.getUserMedia({
-            audio: true
+            audio: true,
           });
-          
+
           // Create a new MediaStream combining video and both audio tracks
           const audioContext = new AudioContext();
           const destination = audioContext.createMediaStreamDestination();
-          
+
           // Add system audio if available
-          if (this.includeSystemAudio && this.stream.getAudioTracks().length > 0) {
-            const systemAudioSource = audioContext.createMediaStreamSource(this.stream);
+          if (
+            this.includeSystemAudio &&
+            this.stream.getAudioTracks().length > 0
+          ) {
+            const systemAudioSource = audioContext.createMediaStreamSource(
+              this.stream,
+            );
             systemAudioSource.connect(destination);
           }
-          
+
           // Add microphone audio
-          const micAudioSource = audioContext.createMediaStreamSource(this.audioStream);
+          const micAudioSource = audioContext.createMediaStreamSource(
+            this.audioStream,
+          );
           micAudioSource.connect(destination);
-          
+
           // Create final stream with video from display and mixed audio
           finalStream = new MediaStream([
             ...this.stream.getVideoTracks(),
-            ...destination.stream.getAudioTracks()
+            ...destination.stream.getAudioTracks(),
           ]);
         } catch (micError) {
-          console.warn('Could not access microphone:', micError);
+          console.warn("Could not access microphone:", micError);
           // Continue with just system audio
         }
       }
-      
+
       this.recorder = new MediaRecorder(finalStream);
       this.chunks = [];
-      
+
       this.recorder.ondataavailable = (e) => {
         this.chunks.push(e.data);
       };
-      
+
       this.recorder.onstop = () => {
         this._onRecordingStop();
       };
-      
+
       this.recorder.start();
       this.recording = true;
-      
     } catch (error) {
-      console.error('Error starting screen recording:', error);
-      this.errorMessage =
-        'Error starting screen recording: ' + error.message;
+      console.error("Error starting screen recording:", error);
+      this.errorMessage = "Error starting screen recording: " + error.message;
     }
   }
 
@@ -336,23 +358,23 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
    * Stop screen recording
    */
   _stopRecording() {
-    if (this.recorder && this.recorder.state === 'recording') {
+    if (this.recorder && this.recorder.state === "recording") {
       this.recorder.stop();
     }
-    
+
     if (this.stream) {
-      this.stream.getTracks().forEach(track => {
+      this.stream.getTracks().forEach((track) => {
         track.stop();
       });
     }
-    
+
     if (this.audioStream) {
-      this.audioStream.getTracks().forEach(track => {
+      this.audioStream.getTracks().forEach((track) => {
         track.stop();
       });
       this.audioStream = null;
     }
-    
+
     this.recording = false;
   }
 
@@ -361,12 +383,12 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
    */
   _onRecordingStop() {
     this.completeBlob = new Blob(this.chunks, {
-      type: this.chunks.length > 0 ? this.chunks[0].type : 'video/webm',
+      type: this.chunks.length > 0 ? this.chunks[0].type : "video/webm",
     });
-    
+
     this.videoSrc = URL.createObjectURL(this.completeBlob);
     this.downloadUrl = this.videoSrc;
-    
+
     // Dispatch event for external listeners (like SimpleFieldsUpload)
     this.dispatchEvent(
       new CustomEvent("screen-recorder-blob", {
@@ -378,7 +400,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
         },
       }),
     );
-    
+
     // Clean up
     this.chunks = [];
   }
@@ -388,16 +410,16 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    if (this.videoSrc && this.videoSrc.startsWith('blob:')) {
+    if (this.videoSrc && this.videoSrc.startsWith("blob:")) {
       URL.revokeObjectURL(this.videoSrc);
     }
-    
+
     // Clean up any active streams
     if (this.stream) {
-      this.stream.getTracks().forEach(track => track.stop());
+      this.stream.getTracks().forEach((track) => track.stop());
     }
     if (this.audioStream) {
-      this.audioStream.getTracks().forEach(track => track.stop());
+      this.audioStream.getTracks().forEach((track) => track.stop());
     }
   }
 

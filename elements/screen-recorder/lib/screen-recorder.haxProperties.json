@@ -15,13 +15,7 @@
     "description": "Record your screen, with optional system and microphone audio, and download the video.",
     "icon": "av:fiber-smart-record",
     "color": "red",
-    "tags": [
-      "Media",
-      "screen",
-      "recording",
-      "video",
-      "capture"
-    ],
+    "tags": ["Media", "screen", "recording", "video", "capture"],
     "handles": [],
     "meta": {
       "author": "haxtheweb"
