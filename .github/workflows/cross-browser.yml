@@ -1,0 +1,58 @@
+name: cross-browser smoke
+# The main build runs every test in Chromium only. Shadow DOM, SVG and attribute
+# handling differ in Firefox and WebKit (Safari), and a bug there (for example a
+# namespaced SVG attribute, see the simple-icon xlink:href regression) passes the
+# Chromium suite. This job runs a small set of rendering-sensitive elements in
+# Firefox and WebKit on every PR.
+#
+# Advisory for now (continue-on-error): it shows up as a check on the PR without
+# blocking it. Once it has been green for a while, drop continue-on-error and add
+# the elements that matter most to the list below.
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    name: "${{ matrix.browser }}"
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [firefox, webkit]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Install Playwright ${{ matrix.browser }}
+        run: npx playwright@1.63.0 install --with-deps ${{ matrix.browser }}
+      - name: Test rendering-sensitive elements
+        run: >
+          npx web-test-runner
+          "elements/simple-icon/test/*.test.js"
+          "elements/a11y-collapse/test/*.test.js"
+          "elements/simple-tooltip/test/*.test.js"
+          --node-resolve --root-dir . --playwright --browsers ${{ matrix.browser }} --static-logging
+          2>&1 | tee wtr-${{ matrix.browser }}.log; test "${PIPESTATUS[0]}" -eq 0
+      - name: Summarize failures
+        if: always()
+        run: |
+          {
+            echo "### ${{ matrix.browser }}"
+            echo '```'
+            sed 's/\x1b\[[0-9;]*[A-Za-z]//g' wtr-${{ matrix.browser }}.log | grep -E '❌|✗|passed|failed|Error|did not finish' | tail -60
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload full log
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: wtr-${{ matrix.browser }}-log
+          path: wtr-${{ matrix.browser }}.log
