@@ -22,13 +22,14 @@
   "main": "twenty-six-theme.js",
   "module": "twenty-six-theme.js",
   "scripts": {
-    "start": "web-dev-server",
-    "build": "npm run analyze",
-    "analyze": "cem analyze --litelement --exclude public",
+    "start": "yarn run dev",
+    "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
     "dddaudit": "hax audit",
-    "release": "npm run build && commit-and-tag-version && git push --follow-tags origin main && npm publish",
-    "test": "web-test-runner test/**/*.test.js --coverage --node-resolve --config=../../web-test-runner.config.mjs",
-    "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch --config=../../web-test-runner.config.mjs"
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
     "@babel/core": "7.29.7",
@@ -41,27 +42,11 @@
     "mobx": "6.13.7"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.29.5",
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@open-wc/building-rollup": "^3.0.0",
+    "@haxtheweb/deduping-fix": "^26.8.0",
     "@open-wc/testing": "4.0.0",
-    "@rollup/plugin-babel": "6.0.4",
-    "@rollup/plugin-node-resolve": "16.0.1",
-    "@rollup/plugin-terser": "1.0.0",
     "@web/dev-server": "0.4.6",
-    "@web/rollup-plugin-html": "3.1.0",
-    "@web/rollup-plugin-import-meta-assets": "2.3.0",
-    "@web/test-runner": "^1.0.0",
-    "babel-plugin-template-html-minifier": "4.1.0",
-    "babel-plugin-transform-dynamic-import": "2.1.0",
-    "commit-and-tag-version": "12.7.3",
-    "rimraf": "5.0.7",
-    "rollup-plugin-esbuild": "6.2.1",
-    "lerna": "10.1.1",
-    "@haxtheweb/create": "26.8.1",
-    "gulp-sourcemaps": "2.6.5",
-    "@web/dev-server-esbuild": "1.0.5",
-    "lint-staged": "15.5.2"
+    "concurrently": "9.1.2"
   },
   "private": false,
   "publishConfig": {
