@@ -68,7 +68,8 @@ export const SimpleIconBehaviors = function (SuperClass) {
             <feComposite operator="in" in="COLOR" in2="SourceAlpha" />
           </filter>
           <image
-            xlink:href="${this.src || ""}"
+            xlink:href=""
+            href="${this.src || ""}"
             width="24px"
             height="24px"
             focusable="false"

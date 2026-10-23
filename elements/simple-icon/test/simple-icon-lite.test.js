@@ -538,16 +538,32 @@ describe("simple-icon-lite", () => {
     });
   });
   describe("first render includes the icon image", () => {
-    it("sets the image href from icon in the first render, without waiting for updated()", async () => {
+    it("points the image at the icon svg in the first render, as a real xlink/href attribute", async () => {
       const el = await fixture(
         html`<simple-icon-lite icon="icons:expand-more"></simple-icon-lite>`,
       );
-      const href = el.shadowRoot
-        .querySelector("image")
-        .getAttribute("xlink:href");
-      expect(href).to.be.a("string");
-      expect(href).to.include("expand-more.svg");
-      expect(el.src).to.equal(href);
+      const img = el.shadowRoot.querySelector("image");
+      // a plain setAttribute("xlink:href") creates a non-namespaced attribute the
+      // browser ignores, so check the namespaced value and the resolved href
+      expect(
+        img.getAttributeNS("http://www.w3.org/1999/xlink", "href"),
+      ).to.include("expand-more.svg");
+      expect(img.href.baseVal).to.include("expand-more.svg");
+      expect(el.src).to.include("expand-more.svg");
+    });
+
+    it("updates the image when the icon changes", async () => {
+      const el = await fixture(
+        html`<simple-icon-lite icon="icons:expand-more"></simple-icon-lite>`,
+      );
+      el.icon = "icons:search";
+      await el.updateComplete;
+      await new Promise((r) => setTimeout(r, 50));
+      const img = el.shadowRoot.querySelector("image");
+      expect(img.href.baseVal).to.include("search.svg");
+      expect(
+        img.getAttributeNS("http://www.w3.org/1999/xlink", "href"),
+      ).to.include("search.svg");
     });
   });
 });
