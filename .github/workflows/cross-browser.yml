@@ -40,3 +40,19 @@ jobs:
           "elements/a11y-collapse/test/*.test.js"
           "elements/simple-tooltip/test/*.test.js"
           --node-resolve --root-dir . --playwright --browsers ${{ matrix.browser }} --static-logging
+          2>&1 | tee wtr-${{ matrix.browser }}.log; test "${PIPESTATUS[0]}" -eq 0
+      - name: Summarize failures
+        if: always()
+        run: |
+          {
+            echo "### ${{ matrix.browser }}"
+            echo '```'
+            sed 's/\x1b\[[0-9;]*[A-Za-z]//g' wtr-${{ matrix.browser }}.log | grep -E '❌|✗|passed|failed|Error|did not finish' | tail -60
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload full log
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: wtr-${{ matrix.browser }}-log
+          path: wtr-${{ matrix.browser }}.log
