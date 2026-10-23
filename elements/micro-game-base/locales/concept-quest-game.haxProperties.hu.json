@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Fogalmi küldetés-játék",
+    "description": "Bebarangolható felvilág. A fogalmak megtalálnak, és kérdést tesznek fel. Válaszolj helyesen, hogy legyőzz egyet és feloldd a házát. Az összefoglaló mutatja a próbálkozásokat és az átnézendőket."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Küldetés címe"
+      },
+      {
+        "property": "quest",
+        "title": "Küldetés",
+        "description": "A kezdőképernyőn látható felirat. Mondd el a játékosnak, mire való az út."
+      },
+      {
+        "property": "nodes",
+        "title": "Fogalmak",
+        "description": "Minden fogalom egy ház egy szörnnyel."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Középső felirat",
+        "description": "Az az ötlet, amivé az összes fogalom összeáll."
+      },
+      {
+        "slot": "finish",
+        "title": "A játék után",
+        "description": "Nem kötelező. A befejező panel prompt-másoló mezőjét a saját tartalmaddal váltja fel, például következő lépéssel vagy hivatkozással."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "További gombok a játék után",
+        "description": "Nem kötelező. Gombok vagy hivatkozások az Újra gomb mellett a befejező panelen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Szívek",
+        "description": "Rossz válaszok, mielőtt a fogalom elmenekül."
+      },
+      {
+        "property": "seed",
+        "title": "Karakter seed",
+        "description": "Bármilyen szöveg. Ugyanabból a seedből mindig ugyanaz a karakter lesz. Ugyanezt a seedet használja a HAX avatar."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "A bejelentkezett személy karakterét használja",
+        "description": "Ha valaki be van jelentkezve a HAX-ba, a karakter a saját avatarjára hasonlít. Mindenki más a fenti seedet látja."
+      },
+      {
+        "property": "hat",
+        "title": "Karakter sapkája",
+        "options": {
+          "none": "Nincs",
+          "random": "Véletlen",
+          "bunny": "Nyuszi",
+          "coffee": "Kávé",
+          "construction": "Építkezés",
+          "cowboy": "Cowboy",
+          "education": "Oktatás",
+          "knight": "Lovag",
+          "ninja": "Nindzsa",
+          "party": "Parti",
+          "pirate": "Kalóz",
+          "watermelon": "Görögdinnye"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Befejező cím"
+      },
+      {
+        "property": "finishText",
+        "title": "Befejező üzenet"
+      },
+      {
+        "property": "finishLead",
+        "title": "Sor a prompt felett",
+        "description": "Hagyd üresen az alapértelmezett sorhoz."
+      },
+      {
+        "property": "prompt",
+        "title": "Másolandó prompt",
+        "description": "A befejező panelen jelenik meg másolás gombbal. Töröld ki, ha el akarod rejteni a mezőt."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Játék neve",
+        "description": "Ezen a néven szerepel a játék az előrehaladási eseményekben és az OER Schema jelölésben."
+      },
+      {
+        "property": "gameId",
+        "title": "Játék azonosítója",
+        "description": "Nem kötelező. Megkülönbözteti ezt a játékot az oldalon lévő többitől az előrehaladási eseményekben."
+      }
+    ]
+  }
+}

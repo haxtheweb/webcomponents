@@ -33,7 +33,7 @@
       {
         "property": "nodes",
         "title": "Concepts",
-        "description": "Each concept is a tile on the map. Leave empty to use the seven HAX pillars.",
+        "description": "Each concept is a tile on the map.",
         "inputMethod": "array",
         "itemLabel": "label",
         "properties": [
@@ -79,7 +79,7 @@
       {
         "slot": "finish",
         "title": "After the game",
-        "description": "Optional. Replaces the default copy-a-prompt box on the finish panel with your own content, such as a next step or a link.",
+        "description": "Optional. Replaces the copy-a-prompt box on the finish panel with your own content, such as a next step or a link.",
         "inputMethod": "textarea",
         "slotWrapper": "div"
       },

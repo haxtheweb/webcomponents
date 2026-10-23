@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Joc de misiune cu concepte",
+    "description": "O lume deschisă de explorat. Conceptele te găsesc și îți pun o întrebare. Răspunde corect ca să învingi unul și să-i deblochezi casa. Recapitularea arată încercările și ce trebuie recapitulat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titlul misiunii"
+      },
+      {
+        "property": "quest",
+        "title": "Misiune",
+        "description": "Promptul afișat pe ecranul de start. Spune-i jucătorului la ce folosește călătoria."
+      },
+      {
+        "property": "nodes",
+        "title": "Concepte",
+        "description": "Fiecare concept este o casă cu un monstru."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Eticheta centrală",
+        "description": "Ideea la care se adună toate conceptele."
+      },
+      {
+        "slot": "finish",
+        "title": "După joc",
+        "description": "Opțional. Înlocuiește caseta de copiere a promptului din panoul final cu propriul tău conținut, de exemplu un pas următor sau un link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Butoane suplimentare după joc",
+        "description": "Opțional. Butoane sau linkuri afișate lângă Joacă din nou în panoul final."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Inimi",
+        "description": "Răspunsuri greșite înainte ca conceptul să scape."
+      },
+      {
+        "property": "seed",
+        "title": "Sămânța personajului",
+        "description": "Orice text. Aceeași sămânță creează mereu același personaj. Este aceeași sămânță pe care o folosește avatarul HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Folosește personajul persoanei autentificate",
+        "description": "Când cineva este autentificat în HAX, personajul arată ca propriul avatar. Ceilalți văd sămânța de mai sus."
+      },
+      {
+        "property": "hat",
+        "title": "Pălăria personajului",
+        "options": {
+          "none": "Niciuna",
+          "random": "Aleatorie",
+          "bunny": "Iepuraș",
+          "coffee": "Cafea",
+          "construction": "Construcții",
+          "cowboy": "Cowboy",
+          "education": "Educație",
+          "knight": "Cavaler",
+          "ninja": "Ninja",
+          "party": "Petrecere",
+          "pirate": "Pirat",
+          "watermelon": "Pepene verde"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titlul final"
+      },
+      {
+        "property": "finishText",
+        "title": "Mesajul final"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rândul de deasupra promptului",
+        "description": "Lasă gol pentru rândul implicit."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt de copiat",
+        "description": "Afișat în panoul final cu un buton de copiere. Golește-l pentru a ascunde caseta."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Numele jocului",
+        "description": "Denumește acest joc în evenimentele de progres și în marcajul OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID-ul jocului",
+        "description": "Opțional. Deosebește acest joc de altele din pagină în evenimentele de progres."
+      }
+    ]
+  }
+}

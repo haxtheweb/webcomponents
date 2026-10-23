@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "개념 러너 게임",
+    "description": "횡스크롤 게임이에요. 캐릭터는 불타며 멈추지 않고 달려요. 점프해서 좋은 개념은 잡고 나쁜 개념은 뛰어넘은 다음, 무엇이 좋았고 나빴는지 요약을 확인하세요."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "퀘스트 제목"
+      },
+      {
+        "property": "quest",
+        "title": "퀘스트",
+        "description": "시작 화면의 문구예요."
+      },
+      {
+        "property": "items",
+        "title": "개념",
+        "description": "좋은 것은 잡고, 나쁜 것은 뛰어넘어요."
+      },
+      {
+        "property": "duration",
+        "title": "달리기 길이(초)",
+        "description": "보통 속도에서 달리기가 지속되는 대략적인 시간이에요."
+      },
+      {
+        "slot": "finish",
+        "title": "게임 후",
+        "description": "선택 사항이에요. 완료 패널의 프롬프트 복사 상자를 다음 단계나 링크 같은 내 콘텐츠로 바꿔요."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "게임 후 추가 버튼",
+        "description": "선택 사항이에요. 완료 패널의 다시 하기 옆에 표시되는 버튼이나 링크예요."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "캐릭터 시드",
+        "description": "아무 텍스트나 가능해요. 같은 시드는 항상 같은 캐릭터를 만들어요. HAX 아바타가 사용하는 시드와 같아요."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "로그인한 사람의 캐릭터 사용",
+        "description": "HAX에 로그인한 사람이 있으면 캐릭터가 그 사람의 아바타 모습이 돼요. 그 외 사람들에게는 위의 시드가 적용돼요."
+      },
+      {
+        "property": "hat",
+        "title": "캐릭터 모자",
+        "options": {
+          "none": "없음",
+          "random": "무작위",
+          "bunny": "토끼",
+          "coffee": "커피",
+          "construction": "공사장",
+          "cowboy": "카우보이",
+          "education": "교육",
+          "knight": "기사",
+          "ninja": "닌자",
+          "party": "파티",
+          "pirate": "해적",
+          "watermelon": "수박"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "통과 점수",
+        "description": "0에서 1 사이의 숫자예요. 완료 진행 이벤트와 함께 성공 기준값으로 전송돼요."
+      },
+      {
+        "property": "finishTitle",
+        "title": "완료 제목"
+      },
+      {
+        "property": "finishText",
+        "title": "완료 메시지"
+      },
+      {
+        "property": "finishLead",
+        "title": "프롬프트 위 문구"
+      },
+      {
+        "property": "prompt",
+        "title": "복사할 프롬프트"
+      },
+      {
+        "property": "gameTitle",
+        "title": "게임 이름",
+        "description": "진행 이벤트와 OER Schema 마크업에서 이 게임의 이름으로 쓰여요."
+      },
+      {
+        "property": "gameId",
+        "title": "게임 ID",
+        "description": "선택 사항이에요. 진행 이벤트에서 이 게임을 페이지의 다른 게임과 구분해 줘요."
+      }
+    ]
+  }
+}

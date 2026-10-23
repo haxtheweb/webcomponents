@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Kontzeptu-bilaketaren jokoa",
+    "description": "Miatzeko mundu bat. Kontzeptuek aurkituko zaituzte eta galdera bat egingo dizute. Erantzun zuzen bat emanda, bat garaitu eta bere etxea irekiko duzu. Laburpenak saiakerak eta berrikusi beharrekoa erakusten ditu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Bilaketaren izenburua"
+      },
+      {
+        "property": "quest",
+        "title": "Bilaketa",
+        "description": "Hasierako pantailan erakusten den prompta. Esan jokalariari zertarako den bidaia."
+      },
+      {
+        "property": "nodes",
+        "title": "Kontzeptuak",
+        "description": "Kontzeptu bakoitza munstro bat duen etxe bat da."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Erdiko etiketa",
+        "description": "Kontzeptu guztiek osatzen duten ideia."
+      },
+      {
+        "slot": "finish",
+        "title": "Jokoaren ondoren",
+        "description": "Aukerakoa. Amaierako panelean prompta kopiatzeko koadroa ordezkatzen du zure edukiarekin, adibidez hurrengo urratsarekin edo esteka batekin."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Jokoaren ondoko botoi gehigarriak",
+        "description": "Aukerakoa. Amaierako panelean Jokatu berriro botoiaren ondoan erakusten diren botoiak edo estekak."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Bihotzak",
+        "description": "Kontzeptua ihes egin baino lehenagoko erantzun okerrak."
+      },
+      {
+        "property": "seed",
+        "title": "Pertsonaiaren hazia",
+        "description": "Edozein testu. Hazi berak beti pertsonaia bera sortzen du. HAX avatarrak erabiltzen duen hazi bera da."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Erabili saioa hasita duen pertsonaren pertsonaia",
+        "description": "Norbait HAX-en saioa hasita dagoenean, pertsonaiak bere avatarraren itxura du. Gainerakoek goiko hazia ikusten dute."
+      },
+      {
+        "property": "hat",
+        "title": "Pertsonaiaren txapela",
+        "options": {
+          "none": "Bat ere ez",
+          "random": "Ausazkoa",
+          "bunny": "Untxia",
+          "coffee": "Kafea",
+          "construction": "Eraikuntza",
+          "cowboy": "Cowboya",
+          "education": "Hezkuntza",
+          "knight": "Zalduna",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "pirate": "Piratea",
+          "watermelon": "Sandia"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Amaierako izenburua"
+      },
+      {
+        "property": "finishText",
+        "title": "Amaierako mezua"
+      },
+      {
+        "property": "finishLead",
+        "title": "Promptaren gaineko lerroa",
+        "description": "Utzi hutsik lehenetsitako lerrorako."
+      },
+      {
+        "property": "prompt",
+        "title": "Kopiatzeko prompta",
+        "description": "Amaierako panelean kopiatzeko botoiarekin erakusten da. Garbitu koadroa ezkutatzeko."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Jokoaren izena",
+        "description": "Joko honi izena ematen dio aurrerapen-gertaeretan eta OER Schema markaketan."
+      },
+      {
+        "property": "gameId",
+        "title": "Jokoaren IDa",
+        "description": "Aukerakoa. Orrialdeko beste jokoetatik bereizten du joko hau aurrerapen-gertaeretan."
+      }
+    ]
+  }
+}

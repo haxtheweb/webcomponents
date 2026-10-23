@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Trò chơi bản đồ khái niệm",
+    "description": "Một trò chơi bàn phím ngắn. Một nhân vật đi đến từng khái niệm trên bản đồ và khái niệm đó tự giải thích. Chạm hết để nhận pháo giấy và một lời nhắc để sao chép."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Tiêu đề nhiệm vụ"
+      },
+      {
+        "property": "quest",
+        "title": "Nhiệm vụ",
+        "description": "Lời nhắc hiển thị ở màn hình bắt đầu. Cho người chơi biết hành trình này để làm gì."
+      },
+      {
+        "property": "nodes",
+        "title": "Khái niệm",
+        "description": "Mỗi khái niệm là một ô trên bản đồ."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Nhãn trung tâm",
+        "description": "Ý tưởng mà tất cả khái niệm cùng tạo nên."
+      },
+      {
+        "slot": "finish",
+        "title": "Sau trò chơi",
+        "description": "Tùy chọn. Thay hộp sao chép lời nhắc trên bảng kết thúc bằng nội dung của bạn, chẳng hạn bước tiếp theo hoặc một liên kết."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Nút bổ sung sau trò chơi",
+        "description": "Tùy chọn. Các nút hoặc liên kết hiển thị bên cạnh Chơi lại trên bảng kết thúc."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Hạt giống nhân vật",
+        "description": "Văn bản bất kỳ. Cùng một hạt giống luôn tạo ra cùng một nhân vật. Đây là hạt giống mà ảnh đại diện HAX sử dụng."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Dùng nhân vật của người đang đăng nhập",
+        "description": "Khi ai đó đăng nhập vào HAX, nhân vật trông giống ảnh đại diện của họ. Những người khác thấy hạt giống ở trên."
+      },
+      {
+        "property": "hat",
+        "title": "Mũ nhân vật",
+        "options": {
+          "none": "Không có",
+          "random": "Ngẫu nhiên",
+          "bunny": "Thỏ",
+          "coffee": "Cà phê",
+          "construction": "Công trường",
+          "cowboy": "Cao bồi",
+          "education": "Giáo dục",
+          "knight": "Hiệp sĩ",
+          "ninja": "Ninja",
+          "party": "Tiệc",
+          "pirate": "Cướp biển",
+          "watermelon": "Dưa hấu"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Tiêu đề kết thúc"
+      },
+      {
+        "property": "finishText",
+        "title": "Thông điệp kết thúc"
+      },
+      {
+        "property": "finishLead",
+        "title": "Dòng phía trên lời nhắc",
+        "description": "Để trống để dùng dòng mặc định."
+      },
+      {
+        "property": "prompt",
+        "title": "Lời nhắc để sao chép",
+        "description": "Hiển thị trên bảng kết thúc cùng nút sao chép. Xóa đi để ẩn hộp này."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Tên trò chơi",
+        "description": "Đặt tên cho trò chơi này trong các sự kiện tiến độ và đánh dấu OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Mã trò chơi",
+        "description": "Tùy chọn. Phân biệt trò chơi này với các trò khác trên trang trong các sự kiện tiến độ."
+      }
+    ]
+  }
+}

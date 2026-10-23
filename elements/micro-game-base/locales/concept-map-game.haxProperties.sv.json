@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Begreppskartespel",
+    "description": "Ett kort tangentbordsspel. En figur går till varje begrepp på en karta och begreppet förklarar sig självt. Rör vid alla för konfetti och en prompt att kopiera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Rubrik för uppdraget"
+      },
+      {
+        "property": "quest",
+        "title": "Uppdrag",
+        "description": "Texten som visas på startskärmen. Berätta för spelaren vad resan handlar om."
+      },
+      {
+        "property": "nodes",
+        "title": "Begrepp",
+        "description": "Varje begrepp är en ruta på kartan."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Etikett i mitten",
+        "description": "Idén som alla begrepp tillsammans leder till."
+      },
+      {
+        "slot": "finish",
+        "title": "Efter spelet",
+        "description": "Valfritt. Ersätter rutan med prompt att kopiera på slutpanelen med ditt eget innehåll, till exempel ett nästa steg eller en länk."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Extra knappar efter spelet",
+        "description": "Valfritt. Knappar eller länkar som visas bredvid Spela igen på slutpanelen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Figurens frö",
+        "description": "Valfri text. Samma frö ger alltid samma figur. Det är samma frö som HAX-avataren använder."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Använd den inloggade personens figur",
+        "description": "När någon är inloggad i HAX ser figuren ut som personens egen avatar. Alla andra ser fröet ovan."
+      },
+      {
+        "property": "hat",
+        "title": "Figurens hatt",
+        "options": {
+          "none": "Ingen",
+          "random": "Slumpmässig",
+          "bunny": "Kanin",
+          "coffee": "Kaffe",
+          "construction": "Bygg",
+          "cowboy": "Cowboy",
+          "education": "Examen",
+          "knight": "Riddare",
+          "ninja": "Ninja",
+          "party": "Fest",
+          "pirate": "Pirat",
+          "watermelon": "Vattenmelon"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Rubrik vid slutet"
+      },
+      {
+        "property": "finishText",
+        "title": "Slutmeddelande"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rad ovanför prompten",
+        "description": "Lämna tomt för standardraden."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt att kopiera",
+        "description": "Visas på slutpanelen med en kopieringsknapp. Töm fältet för att dölja rutan."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spelets namn",
+        "description": "Namnger spelet i förloppshändelser och OER Schema-markering."
+      },
+      {
+        "property": "gameId",
+        "title": "Spel-id",
+        "description": "Valfritt. Skiljer spelet från andra på sidan i förloppshändelser."
+      }
+    ]
+  }
+}

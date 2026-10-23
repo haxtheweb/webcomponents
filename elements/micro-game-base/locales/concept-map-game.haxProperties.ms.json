@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Permainan peta konsep",
+    "description": "Permainan papan kekunci yang ringkas. Seorang watak berjalan ke setiap konsep pada peta dan konsep itu menerangkan dirinya. Sentuh semuanya untuk konfeti dan gesaan untuk disalin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Tajuk misi"
+      },
+      {
+        "property": "quest",
+        "title": "Misi",
+        "description": "Gesaan yang ditunjukkan pada skrin permulaan. Beritahu pemain tujuan perjalanan ini."
+      },
+      {
+        "property": "nodes",
+        "title": "Konsep",
+        "description": "Setiap konsep ialah satu jubin pada peta."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Label tengah",
+        "description": "Idea yang menyatukan semua konsep."
+      },
+      {
+        "slot": "finish",
+        "title": "Selepas permainan",
+        "description": "Pilihan. Menggantikan kotak salin gesaan pada panel tamat dengan kandungan anda sendiri, seperti langkah seterusnya atau pautan."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Butang tambahan selepas permainan",
+        "description": "Pilihan. Butang atau pautan yang dipaparkan di sebelah Main lagi pada panel tamat."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Benih watak",
+        "description": "Sebarang teks. Benih yang sama sentiasa menghasilkan watak yang sama. Ini benih yang sama digunakan oleh avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Guna watak orang yang log masuk",
+        "description": "Apabila seseorang log masuk ke HAX, watak kelihatan seperti avatar mereka sendiri. Orang lain melihat benih di atas."
+      },
+      {
+        "property": "hat",
+        "title": "Topi watak",
+        "options": {
+          "none": "Tiada",
+          "random": "Rawak",
+          "bunny": "Arnab",
+          "coffee": "Kopi",
+          "construction": "Pembinaan",
+          "cowboy": "Koboi",
+          "education": "Pendidikan",
+          "knight": "Kesatria",
+          "ninja": "Ninja",
+          "party": "Parti",
+          "pirate": "Lanun",
+          "watermelon": "Tembikai"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Tajuk penamat"
+      },
+      {
+        "property": "finishText",
+        "title": "Mesej penamat"
+      },
+      {
+        "property": "finishLead",
+        "title": "Baris di atas gesaan",
+        "description": "Biarkan kosong untuk baris lalai."
+      },
+      {
+        "property": "prompt",
+        "title": "Gesaan untuk disalin",
+        "description": "Dipaparkan pada panel tamat dengan butang salin. Kosongkan untuk menyembunyikan kotak."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nama permainan",
+        "description": "Menamakan permainan ini dalam acara kemajuan dan markup OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID permainan",
+        "description": "Pilihan. Membezakan permainan ini daripada yang lain pada halaman dalam acara kemajuan."
+      }
+    ]
+  }
+}

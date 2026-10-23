@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Ghjocu di corsa di cuncetti",
+    "description": "Un ghjocu à scorrimentu laterale. U persunagiu corre in u focu è ùn si ferma mai. Saltate per piglià i boni cuncetti è sopra à i gattivi, dopu fighjate un riassuntu di ciò chì era bonu è gattivu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titulu di a missione"
+      },
+      {
+        "property": "quest",
+        "title": "Missione",
+        "description": "U messaghju nant'à a schermata d'avvia."
+      },
+      {
+        "property": "items",
+        "title": "Cuncetti",
+        "description": "I boni sò pigliati, i gattivi sò saltati."
+      },
+      {
+        "property": "duration",
+        "title": "Durata di a corsa in seconde",
+        "description": "Più o menu quantu dura a corsa à a velocità nurmale."
+      },
+      {
+        "slot": "finish",
+        "title": "Dopu à u ghjocu",
+        "description": "Facultativu. Rimpiazza a casella per cupià u prompt nant'à u pannellu finale cù u vostru propiu cuntenutu, cum'è un passu seguente o un ligame."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Buttoni supplementari dopu à u ghjocu",
+        "description": "Facultativu. Buttoni o ligami mostri accantu à Ghjucà torna nant'à u pannellu finale."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Sumente di u persunagiu",
+        "description": "Qualsiasi testu. A listessa sumente face sempre u listessu persunagiu. Hè a listessa sumente chì adopra l'avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Aduprà u persunagiu di a persona cunnessa",
+        "description": "Quandu qualchissia hè cunnessu à HAX, u persunagiu s'assumiglia à u so avatar. Tutti l'altri videnu a sumente di sopra."
+      },
+      {
+        "property": "hat",
+        "title": "Cappellu di u persunagiu",
+        "options": {
+          "none": "Nisunu",
+          "random": "Aleatoriu",
+          "bunny": "Cunigliulu",
+          "coffee": "Caffè",
+          "construction": "Custruzzione",
+          "cowboy": "Cowboy",
+          "education": "Educazione",
+          "knight": "Cavalieru",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "pirate": "Pirata",
+          "watermelon": "Anguria"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Puntu per passà",
+        "description": "Un numeru da 0 à 1. Mandatu cù l'eventu di prugressu cumpletu cum'è sogliu di successu."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titulu finale"
+      },
+      {
+        "property": "finishText",
+        "title": "Messaghju finale"
+      },
+      {
+        "property": "finishLead",
+        "title": "Linea sopra à u prompt"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt da cupià"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nome di u ghjocu",
+        "description": "Dà un nome à stu ghjocu in l'eventi di prugressu è in u marcatu OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Id di u ghjocu",
+        "description": "Facultativu. Distingue stu ghjocu di l'altri nant'à a pagina in l'eventi di prugressu."
+      }
+    ]
+  }
+}

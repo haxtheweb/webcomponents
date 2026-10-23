@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Jēdzienu kartes spēle",
+    "description": "Īsa tastatūras spēle. Tēls iet pie katra jēdziena kartē, un tas pats sevi paskaidro. Pieskaries visiem, lai saņemtu konfeti un uzvedni kopēšanai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Piedzīvojuma virsraksts"
+      },
+      {
+        "property": "quest",
+        "title": "Piedzīvojums",
+        "description": "Uzvedne, kas redzama sākuma ekrānā. Pastāsti spēlētājam, kam šis ceļojums domāts."
+      },
+      {
+        "property": "nodes",
+        "title": "Jēdzieni",
+        "description": "Katrs jēdziens ir flīze kartē."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Centra uzraksts",
+        "description": "Ideja, kurā saplūst visi jēdzieni."
+      },
+      {
+        "slot": "finish",
+        "title": "Pēc spēles",
+        "description": "Pēc izvēles. Aizstāj uzvednes kopēšanas lodziņu noslēguma panelī ar tavu saturu, piemēram, nākamo soli vai saiti."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Papildu pogas pēc spēles",
+        "description": "Pēc izvēles. Pogas vai saites, kas noslēguma panelī redzamas blakus pogai Spēlēt vēlreiz."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Tēla sēkla",
+        "description": "Jebkurš teksts. Viena un tā pati sēkla vienmēr izveido vienu un to pašu tēlu. Šī ir tā pati sēkla, ko izmanto HAX avatars."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Izmantot pierakstījušās personas tēlu",
+        "description": "Kad kāds ir pierakstījies HAX, tēls izskatās kā viņa paša avatars. Visi pārējie redz augstāk norādīto sēklu."
+      },
+      {
+        "property": "hat",
+        "title": "Tēla cepure",
+        "options": {
+          "none": "Nav",
+          "random": "Nejauša",
+          "bunny": "Zaķis",
+          "coffee": "Kafija",
+          "construction": "Celtniecība",
+          "cowboy": "Kovbojs",
+          "education": "Izglītība",
+          "knight": "Bruņinieks",
+          "ninja": "Nindzja",
+          "party": "Ballīte",
+          "pirate": "Pirāts",
+          "watermelon": "Arbūzs"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Noslēguma virsraksts"
+      },
+      {
+        "property": "finishText",
+        "title": "Noslēguma ziņa"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rinda virs uzvednes",
+        "description": "Atstāj tukšu, lai izmantotu noklusējuma rindu."
+      },
+      {
+        "property": "prompt",
+        "title": "Kopējamā uzvedne",
+        "description": "Tiek rādīta noslēguma panelī ar kopēšanas pogu. Notīri, lai paslēptu lodziņu."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spēles nosaukums",
+        "description": "Nosauc šo spēli progresa notikumos un OER Schema marķējumā."
+      },
+      {
+        "property": "gameId",
+        "title": "Spēles id",
+        "description": "Pēc izvēles. Progresa notikumos atšķir šo spēli no citām lapā."
+      }
+    ]
+  }
+}

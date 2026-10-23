@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Ludo de konceptoserĉo",
+    "description": "Malferma mondo por vagi. Konceptoj trovas vin kaj demandas. Respondu ĝuste por venki unu kaj malŝlosi ĝian domon. La resumo montras provojn kaj kion revizori."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titolo de la serĉo"
+      },
+      {
+        "property": "quest",
+        "title": "Serĉo",
+        "description": "La peto montrata sur la komenca ekrano. Diru al la ludanto por kio utilas la vojaĝo."
+      },
+      {
+        "property": "nodes",
+        "title": "Konceptoj",
+        "description": "Ĉiu koncepto estas domo kun monstro."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Meza etikedo",
+        "description": "La ideo, al kiu ĉiuj konceptoj sumiĝas."
+      },
+      {
+        "slot": "finish",
+        "title": "Post la ludo",
+        "description": "Libervola. Anstataŭigas la kopiindan skatolon sur la fina panelo per via propra enhavo, ekzemple sekva paŝo aŭ ligilo."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Aldonaj butonoj post la ludo",
+        "description": "Libervola. Butonoj aŭ ligiloj montrataj apud Ludi denove sur la fina panelo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Koroj",
+        "description": "Malĝustaj respondoj antaŭ ol la koncepto forkuras."
+      },
+      {
+        "property": "seed",
+        "title": "Greno de la figuro",
+        "description": "Ajna teksto. La sama greno ĉiam kreas la saman figuron. Ĝi estas la sama greno, kiun uzas la HAX-avataro."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Uzi la figuron de la salutinta persono",
+        "description": "Kiam iu estas salutinta en HAX, la figuro aspektas kiel ties propra avataro. Ĉiuj aliaj vidas la supran grenon."
+      },
+      {
+        "property": "hat",
+        "title": "Ĉapelo de la figuro",
+        "options": {
+          "none": "Neniu",
+          "random": "Hazarda",
+          "bunny": "Leporo",
+          "coffee": "Kafo",
+          "construction": "Konstruado",
+          "cowboy": "Vakero",
+          "education": "Edukado",
+          "knight": "Kavaliro",
+          "ninja": "Nindzo",
+          "party": "Festo",
+          "pirate": "Pirato",
+          "watermelon": "Akvomelono"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titolo de la fino"
+      },
+      {
+        "property": "finishText",
+        "title": "Mesaĝo de la fino"
+      },
+      {
+        "property": "finishLead",
+        "title": "Linio super la peto",
+        "description": "Lasu malplena por la implicita linio."
+      },
+      {
+        "property": "prompt",
+        "title": "Peto por kopii",
+        "description": "Montrata sur la fina panelo kun kopia butono. Malplenigu por kaŝi la skatolon."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nomo de la ludo",
+        "description": "Nomas ĉi tiun ludon en progresaj eventoj kaj en OER Schema marko."
+      },
+      {
+        "property": "gameId",
+        "title": "Id de la ludo",
+        "description": "Libervola. Distingas ĉi tiun ludon de aliaj sur la paĝo en progresaj eventoj."
+      }
+    ]
+  }
+}

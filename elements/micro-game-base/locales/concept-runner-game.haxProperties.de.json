@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Konzept-Runner-Spiel",
+    "description": "Ein Side-Scroller. Die Figur rennt in Flammen und hält nie an. Spring, um die guten Konzepte zu schnappen und über die schlechten hinweg, und sieh dir dann eine Zusammenfassung an, was gut und was schlecht war."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Überschrift der Quest"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "Der Text auf dem Startbildschirm."
+      },
+      {
+        "property": "items",
+        "title": "Konzepte",
+        "description": "Gute werden geschnappt, schlechte übersprungen."
+      },
+      {
+        "property": "duration",
+        "title": "Länge des Laufs in Sekunden",
+        "description": "Etwa so lange dauert der Lauf bei normaler Geschwindigkeit."
+      },
+      {
+        "slot": "finish",
+        "title": "Nach dem Spiel",
+        "description": "Optional. Ersetzt das Feld zum Kopieren des Prompts im Abschlussfenster durch eigene Inhalte, etwa einen nächsten Schritt oder einen Link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Zusätzliche Schaltflächen nach dem Spiel",
+        "description": "Optional. Schaltflächen oder Links, die im Abschlussfenster neben Nochmal spielen angezeigt werden."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Figuren-Seed",
+        "description": "Beliebiger Text. Derselbe Seed ergibt immer dieselbe Figur. Es ist derselbe Seed, den der HAX-Avatar verwendet."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Figur der angemeldeten Person verwenden",
+        "description": "Wenn jemand bei HAX angemeldet ist, sieht die Figur wie der eigene Avatar aus. Alle anderen sehen den Seed von oben."
+      },
+      {
+        "property": "hat",
+        "title": "Hut der Figur",
+        "options": {
+          "none": "Keiner",
+          "random": "Zufällig",
+          "bunny": "Hase",
+          "coffee": "Kaffee",
+          "construction": "Bauarbeiter",
+          "cowboy": "Cowboy",
+          "education": "Bildung",
+          "knight": "Ritter",
+          "ninja": "Ninja",
+          "party": "Party",
+          "pirate": "Pirat",
+          "watermelon": "Wassermelone"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Bestehensgrenze",
+        "description": "Eine Zahl von 0 bis 1. Wird mit dem Abschluss-Fortschrittsereignis als Erfolgsschwelle gesendet."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Überschrift zum Abschluss"
+      },
+      {
+        "property": "finishText",
+        "title": "Abschlussnachricht"
+      },
+      {
+        "property": "finishLead",
+        "title": "Zeile über dem Prompt"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt zum Kopieren"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spielname",
+        "description": "Benennt dieses Spiel in Fortschrittsereignissen und im OER Schema-Markup."
+      },
+      {
+        "property": "gameId",
+        "title": "Spiel-ID",
+        "description": "Optional. Unterscheidet dieses Spiel von anderen auf der Seite in Fortschrittsereignissen."
+      }
+    ]
+  }
+}

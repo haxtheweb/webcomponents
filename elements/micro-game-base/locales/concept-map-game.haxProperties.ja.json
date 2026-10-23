@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "コンセプトマップゲーム",
+    "description": "短いキーボードゲームです。キャラクターがマップ上の各コンセプトまで歩くと、コンセプトが自己紹介します。すべてに触れると紙吹雪とコピー用のプロンプトが出ます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "クエストの見出し"
+      },
+      {
+        "property": "quest",
+        "title": "クエスト",
+        "description": "スタート画面に表示するプロンプトです。この旅の目的をプレイヤーに伝えましょう。"
+      },
+      {
+        "property": "nodes",
+        "title": "コンセプト",
+        "description": "各コンセプトはマップ上のタイルになります。"
+      },
+      {
+        "property": "hubLabel",
+        "title": "中心のラベル",
+        "description": "すべてのコンセプトが集まって示すアイデア。"
+      },
+      {
+        "slot": "finish",
+        "title": "ゲームのあと",
+        "description": "任意です。終了パネルのプロンプトコピー欄を、次のステップやリンクなど独自のコンテンツに置き換えます。"
+      },
+      {
+        "slot": "finish-actions",
+        "title": "ゲームのあとの追加ボタン",
+        "description": "任意です。終了パネルの「もう一度遊ぶ」の横に表示するボタンやリンク。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "キャラクターのシード",
+        "description": "任意のテキスト。同じシードからは必ず同じキャラクターが作られます。HAX アバターと同じシードです。"
+      },
+      {
+        "property": "seedFromUser",
+        "title": "サインイン中のユーザーのキャラクターを使う",
+        "description": "HAX にサインインしている人には、その人自身のアバターに似たキャラクターが表示されます。それ以外の人には上のシードのキャラクターが表示されます。"
+      },
+      {
+        "property": "hat",
+        "title": "キャラクターの帽子",
+        "options": {
+          "none": "なし",
+          "random": "ランダム",
+          "bunny": "うさぎ",
+          "coffee": "コーヒー",
+          "construction": "工事",
+          "cowboy": "カウボーイ",
+          "education": "教育",
+          "knight": "騎士",
+          "ninja": "忍者",
+          "party": "パーティー",
+          "pirate": "海賊",
+          "watermelon": "スイカ"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "終了時の見出し"
+      },
+      {
+        "property": "finishText",
+        "title": "終了時のメッセージ"
+      },
+      {
+        "property": "finishLead",
+        "title": "プロンプトの上の行",
+        "description": "空のままにすると標準の文が入ります。"
+      },
+      {
+        "property": "prompt",
+        "title": "コピー用プロンプト",
+        "description": "コピーボタン付きで終了パネルに表示されます。空にすると非表示になります。"
+      },
+      {
+        "property": "gameTitle",
+        "title": "ゲーム名",
+        "description": "進捗イベントと OER Schema マークアップでこのゲームの名前になります。"
+      },
+      {
+        "property": "gameId",
+        "title": "ゲーム ID",
+        "description": "任意です。進捗イベントで、ページ上の他のゲームとこのゲームを区別します。"
+      }
+    ]
+  }
+}

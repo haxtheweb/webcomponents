@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Lojë me hartë konceptesh",
+    "description": "Një lojë e shkurtër me tastierë. Një personazh ecën te çdo koncept në një hartë dhe ai shpjegohet vetë. Prek të gjitha për konfeti dhe një kërkesë për ta kopjuar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titulli i misionit"
+      },
+      {
+        "property": "quest",
+        "title": "Misioni",
+        "description": "Kërkesa që shfaqet në ekranin e fillimit. I tregon lojtarit për çfarë shërben udhëtimi."
+      },
+      {
+        "property": "nodes",
+        "title": "Konceptet",
+        "description": "Çdo koncept është një pllakë në hartë."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Etiketa e qendrës",
+        "description": "Ideja ku përfundojnë të gjitha konceptet."
+      },
+      {
+        "slot": "finish",
+        "title": "Pas lojës",
+        "description": "Opsionale. Zëvendëson kutinë e kopjimit të kërkesës në panelin e fundit me përmbajtjen tënde, si një hap tjetër ose një lidhje."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Butona shtesë pas lojës",
+        "description": "Opsionale. Butona ose lidhje që shfaqen pranë Luaj përsëri në panelin e fundit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Fara e personazhit",
+        "description": "Çdo tekst. E njëjta farë krijon gjithmonë të njëjtin personazh. Kjo është e njëjta farë që përdor avatari i HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Përdor personazhin e personit të identifikuar",
+        "description": "Kur dikush është identifikuar në HAX, personazhi duket si avatari i tij. Të gjithë të tjerët shohin farën më sipër."
+      },
+      {
+        "property": "hat",
+        "title": "Kapela e personazhit",
+        "options": {
+          "none": "Asnjë",
+          "random": "Të rastësishme",
+          "bunny": "Lepurush",
+          "coffee": "Kafe",
+          "construction": "Ndërtimi",
+          "cowboy": "Kauboj",
+          "education": "Arsimi",
+          "knight": "Kalorës",
+          "ninja": "Ninxha",
+          "party": "Festë",
+          "pirate": "Pirat",
+          "watermelon": "Shalqi"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titulli i përfundimit"
+      },
+      {
+        "property": "finishText",
+        "title": "Mesazhi i përfundimit"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rreshti mbi kërkesë",
+        "description": "Lëre bosh për rreshtin e parazgjedhur."
+      },
+      {
+        "property": "prompt",
+        "title": "Kërkesa për t'u kopjuar",
+        "description": "Shfaqet në panelin e fundit me një buton kopjimi. Pastroje për të fshehur kutinë."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Emri i lojës",
+        "description": "I jep emër kësaj loje në ngjarjet e progresit dhe në shënimin OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID e lojës",
+        "description": "Opsionale. E dallon këtë lojë nga të tjerat në faqe në ngjarjet e progresit."
+      }
+    ]
+  }
+}

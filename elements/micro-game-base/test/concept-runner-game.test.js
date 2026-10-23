@@ -12,7 +12,7 @@ describe("ConceptRunnerGame test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <concept-runner-game></concept-runner-game>
+      <concept-runner-game .items="${ITEMS}"></concept-runner-game>
     `);
   });
 
@@ -39,7 +39,7 @@ describe("ConceptRunnerGame test", () => {
 
   it("makes the same course for the same seed", async () => {
     const other = await fixture(html`
-      <concept-runner-game></concept-runner-game>
+      <concept-runner-game .items="${ITEMS}"></concept-runner-game>
     `);
     expect(other._seq.map((i) => i.label)).to.deep.equal(
       element._seq.map((i) => i.label),

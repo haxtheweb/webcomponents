@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Anlayış qaçışı oyunu",
+    "description": "Yan sürüşməli oyun. Personaj alovla qaçır və dayanmır. Yaxşı anlayışları tutmaq, pisləri aşmaq üçün tullanın, sonra nəyin yaxşı, nəyin pis olduğunun xülasəsinə baxın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Macəra başlığı"
+      },
+      {
+        "property": "quest",
+        "title": "Macəra",
+        "description": "Start ekranındakı sorğu."
+      },
+      {
+        "property": "items",
+        "title": "Anlayışlar",
+        "description": "Yaxşılar tutulur, pislər aşılır."
+      },
+      {
+        "property": "duration",
+        "title": "Qaçışın uzunluğu (saniyə)",
+        "description": "Normal sürətdə qaçışın təxminən nə qədər davam etdiyi."
+      },
+      {
+        "slot": "finish",
+        "title": "Oyundan sonra",
+        "description": "İstəyə bağlı. Bitiş panelindəki sorğu kopyalama qutusunu öz məzmununuzla əvəz edir, məsələn növbəti addım və ya keçid."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Oyundan sonra əlavə düymələr",
+        "description": "İstəyə bağlı. Bitiş panelində Yenidən oyna düyməsinin yanında göstərilən düymələr və ya keçidlər."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Personaj toxumu",
+        "description": "İstənilən mətn. Eyni toxum həmişə eyni personajı yaradır. Bu, HAX avatarının istifadə etdiyi toxumdur."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Daxil olmuş şəxsin personajından istifadə et",
+        "description": "Kimsə HAX-a daxil olduqda personaj onun öz avatarına bənzəyir. Digərləri yuxarıdakı toxumu görür."
+      },
+      {
+        "property": "hat",
+        "title": "Personajın papağı",
+        "options": {
+          "none": "Yoxdur",
+          "random": "Təsadüfi",
+          "bunny": "Dovşan",
+          "coffee": "Qəhvə",
+          "construction": "Tikinti",
+          "cowboy": "Kovboy",
+          "education": "Təhsil",
+          "knight": "Cəngavər",
+          "ninja": "Ninca",
+          "party": "Şənlik",
+          "pirate": "Quldur",
+          "watermelon": "Qarpız"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Keçid balı",
+        "description": "0-dan 1-ə qədər rəqəm. Tamamlanma irəliləyiş hadisəsi ilə uğur həddi kimi göndərilir."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Bitiş başlığı"
+      },
+      {
+        "property": "finishText",
+        "title": "Bitiş mesajı"
+      },
+      {
+        "property": "finishLead",
+        "title": "Sorğunun üstündəki sətir"
+      },
+      {
+        "property": "prompt",
+        "title": "Kopyalanacaq sorğu"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Oyunun adı",
+        "description": "Bu oyunu irəliləyiş hadisələrində və OER Schema işarələməsində adlandırır."
+      },
+      {
+        "property": "gameId",
+        "title": "Oyun id-si",
+        "description": "İstəyə bağlı. İrəliləyiş hadisələrində bu oyunu səhifədəki digərlərindən ayırır."
+      }
+    ]
+  }
+}

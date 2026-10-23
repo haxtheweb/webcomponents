@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Joc de missió de conceptes",
+    "description": "Un món per explorar. Els conceptes et troben i et fan una pregunta. Respon bé per derrotar-ne un i desbloquejar-ne la casa. El resum mostra els intents i què cal repassar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Títol de la missió"
+      },
+      {
+        "property": "quest",
+        "title": "Missió",
+        "description": "La indicació que es mostra a la pantalla d'inici. Explica al jugador per a què serveix el viatge."
+      },
+      {
+        "property": "nodes",
+        "title": "Conceptes",
+        "description": "Cada concepte és una casa amb un monstre."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Etiqueta central",
+        "description": "La idea a la qual porten tots els conceptes."
+      },
+      {
+        "slot": "finish",
+        "title": "Després del joc",
+        "description": "Opcional. Substitueix el quadre de còpia de la indicació al panell final pel teu propi contingut, com ara un pas següent o un enllaç."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Botons addicionals després del joc",
+        "description": "Opcional. Botons o enllaços que es mostren al costat de Torna a jugar al panell final."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Cors",
+        "description": "Respostes errònies abans que el concepte s'escapi."
+      },
+      {
+        "property": "seed",
+        "title": "Llavor del personatge",
+        "description": "Qualsevol text. La mateixa llavor sempre crea el mateix personatge. És la mateixa llavor que fa servir l'avatar de HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Fes servir el personatge de la persona connectada",
+        "description": "Quan algú ha iniciat sessió a HAX, el personatge s'assembla al seu propi avatar. La resta de gent veu la llavor de dalt."
+      },
+      {
+        "property": "hat",
+        "title": "Barret del personatge",
+        "options": {
+          "none": "Cap",
+          "random": "Aleatori",
+          "bunny": "Conill",
+          "coffee": "Cafè",
+          "construction": "Obra",
+          "cowboy": "Cowboy",
+          "education": "Educació",
+          "knight": "Cavaller",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "pirate": "Pirata",
+          "watermelon": "Síndria"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Títol del final"
+      },
+      {
+        "property": "finishText",
+        "title": "Missatge final"
+      },
+      {
+        "property": "finishLead",
+        "title": "Línia sobre la indicació",
+        "description": "Deixa-ho buit per al text per defecte."
+      },
+      {
+        "property": "prompt",
+        "title": "Indicació per copiar",
+        "description": "Es mostra al panell final amb un botó de còpia. Esborra-la per amagar el quadre."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nom del joc",
+        "description": "Dona nom a aquest joc als esdeveniments de progrés i al marcatge d'OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Identificador del joc",
+        "description": "Opcional. Distingeix aquest joc dels altres de la pàgina als esdeveniments de progrés."
+      }
+    ]
+  }
+}

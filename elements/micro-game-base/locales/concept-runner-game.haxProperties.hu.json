@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Fogalomfutó játék",
+    "description": "Oldalnézetes játék. A karakter lángolva fut, és soha nem áll meg. Ugorj, hogy elkapd a jó fogalmakat, és ugord át a rosszakat, aztán nézd meg az összefoglalót arról, mi volt jó és mi rossz."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Küldetés címe"
+      },
+      {
+        "property": "quest",
+        "title": "Küldetés",
+        "description": "A kezdőképernyő felirata."
+      },
+      {
+        "property": "items",
+        "title": "Fogalmak",
+        "description": "A jókat elkapod, a rosszakat átugrod."
+      },
+      {
+        "property": "duration",
+        "title": "Futás hossza másodpercben",
+        "description": "Nagyjából ennyi ideig tart a futás normál sebességnél."
+      },
+      {
+        "slot": "finish",
+        "title": "A játék után",
+        "description": "Nem kötelező. A befejező panel prompt-másoló mezőjét a saját tartalmaddal váltja fel, például következő lépéssel vagy hivatkozással."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "További gombok a játék után",
+        "description": "Nem kötelező. Gombok vagy hivatkozások az Újra gomb mellett a befejező panelen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Karakter seed",
+        "description": "Bármilyen szöveg. Ugyanabból a seedből mindig ugyanaz a karakter lesz. Ugyanezt a seedet használja a HAX avatar."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "A bejelentkezett személy karakterét használja",
+        "description": "Ha valaki be van jelentkezve a HAX-ba, a karakter a saját avatarjára hasonlít. Mindenki más a fenti seedet látja."
+      },
+      {
+        "property": "hat",
+        "title": "Karakter sapkája",
+        "options": {
+          "none": "Nincs",
+          "random": "Véletlen",
+          "bunny": "Nyuszi",
+          "coffee": "Kávé",
+          "construction": "Építkezés",
+          "cowboy": "Cowboy",
+          "education": "Oktatás",
+          "knight": "Lovag",
+          "ninja": "Nindzsa",
+          "party": "Parti",
+          "pirate": "Kalóz",
+          "watermelon": "Görögdinnye"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Átmenő pontszám",
+        "description": "0 és 1 közötti szám. A befejezett előrehaladási eseménnyel együtt a siker küszöbeként megy el."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Befejező cím"
+      },
+      {
+        "property": "finishText",
+        "title": "Befejező üzenet"
+      },
+      {
+        "property": "finishLead",
+        "title": "Sor a prompt felett"
+      },
+      {
+        "property": "prompt",
+        "title": "Másolandó prompt"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Játék neve",
+        "description": "Ezen a néven szerepel a játék az előrehaladási eseményekben és az OER Schema jelölésben."
+      },
+      {
+        "property": "gameId",
+        "title": "Játék azonosítója",
+        "description": "Nem kötelező. Megkülönbözteti ezt a játékot az oldalon lévő többitől az előrehaladási eseményekben."
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Laro ng quest ng konsepto",
+    "description": "Isang overworld na malalakad. Hahanapin ka ng mga konsepto at magtatanong. Sumagot nang tama para talunin ang isa at buksan ang bahay nito. Ipinapakita ng recap ang mga subok at ang uulitin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Pamagat ng quest"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "Ang prompt na ipinapakita sa start screen. Sabihin sa manlalaro kung para saan ang paglalakbay."
+      },
+      {
+        "property": "nodes",
+        "title": "Mga konsepto",
+        "description": "Ang bawat konsepto ay bahay na may halimaw."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Label sa gitna",
+        "description": "Ang ideyang binubuo ng lahat ng konsepto."
+      },
+      {
+        "slot": "finish",
+        "title": "Pagkatapos ng laro",
+        "description": "Opsyonal. Pinapalitan ang kahon ng pagkopya ng prompt sa finish panel ng sarili mong nilalaman, tulad ng susunod na hakbang o link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Mga dagdag na button pagkatapos ng laro",
+        "description": "Opsyonal. Mga button o link na ipinapakita katabi ng Maglaro ulit sa finish panel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Puso",
+        "description": "Maling sagot bago makatakas ang konsepto."
+      },
+      {
+        "property": "seed",
+        "title": "Seed ng karakter",
+        "description": "Anumang teksto. Ang parehong seed ay laging gumagawa ng parehong karakter. Ito rin ang seed na ginagamit ng HAX avatar."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Gamitin ang karakter ng naka-sign in na tao",
+        "description": "Kapag may naka-sign in sa HAX, kamukha ng sarili niyang avatar ang karakter. Ang seed sa itaas ang nakikita ng iba."
+      },
+      {
+        "property": "hat",
+        "title": "Sombrero ng karakter",
+        "options": {
+          "none": "Wala",
+          "random": "Random",
+          "bunny": "Kuneho",
+          "coffee": "Kape",
+          "construction": "Konstruksyon",
+          "cowboy": "Kauboy",
+          "education": "Edukasyon",
+          "knight": "Kabalyero",
+          "ninja": "Ninja",
+          "party": "Party",
+          "pirate": "Pirata",
+          "watermelon": "Pakwan"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Pamagat ng pagtatapos"
+      },
+      {
+        "property": "finishText",
+        "title": "Mensahe ng pagtatapos"
+      },
+      {
+        "property": "finishLead",
+        "title": "Linya sa itaas ng prompt",
+        "description": "Iwanang walang laman para sa default na linya."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt na kokopyahin",
+        "description": "Ipinapakita sa finish panel na may button na kopyahin. I-clear para itago ang kahon."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Pangalan ng laro",
+        "description": "Pinapangalanan ang larong ito sa mga progress event at OER Schema markup."
+      },
+      {
+        "property": "gameId",
+        "title": "ID ng laro",
+        "description": "Opsyonal. Ibinubukod ang larong ito sa iba pa sa pahina sa mga progress event."
+      }
+    ]
+  }
+}

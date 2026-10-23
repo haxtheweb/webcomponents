@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Pāʻani holo manaʻo",
+    "description": "He pāʻani ʻaoʻao. Holo ke kanaka i loko o ke ahi, ʻaʻole hoʻōki. E lele e kiʻi i nā manaʻo maikaʻi a ma luna o nā mea maikaʻi ʻole, a laila e nānā i ka hōʻuluʻulu o ka maikaʻi a me ka maikaʻi ʻole."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Poʻomanaʻo o ka huakaʻi"
+      },
+      {
+        "property": "quest",
+        "title": "Huakaʻi",
+        "description": "Ke koi ma ka pale hoʻomaka."
+      },
+      {
+        "property": "items",
+        "title": "Nā manaʻo",
+        "description": "Kiʻi ʻia nā mea maikaʻi, lele ʻia nā mea maikaʻi ʻole."
+      },
+      {
+        "property": "duration",
+        "title": "Lōʻihi o ka holo ma nā kekona",
+        "description": "Ka lōʻihi o ka holo ma ka wikiwiki maʻamau."
+      },
+      {
+        "slot": "finish",
+        "title": "Ma hope o ka pāʻani",
+        "description": "Koho. Hoʻololi i ka pahu kope koi ma ka papa hoʻopau me kāu ʻike ponoʻī, e like me ka hana aʻe a i ʻole he loulou."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Nā pihi hou ma hope o ka pāʻani",
+        "description": "Koho. Nā pihi a i ʻole nā loulou i hōʻike ʻia ma ka ʻaoʻao o E pāʻani hou ma ka papa hoʻopau."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Hua o ke kanaka",
+        "description": "Kekahi ʻōlelo. Hana mau ka hua like i ke kanaka like. ʻO ia ka hua like a ka avatar HAX e hoʻohana ai."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "E hoʻohana i ke kanaka o ka mea i komo",
+        "description": "Inā komo kekahi i HAX, e like ke kanaka me kā lākou avatar ponoʻī. ʻIke nā mea ʻē aʻe i ka hua ma luna."
+      },
+      {
+        "property": "hat",
+        "title": "Pāpale o ke kanaka",
+        "options": {
+          "none": "ʻAʻohe",
+          "random": "Pono ʻole",
+          "bunny": "Lāpaki",
+          "coffee": "Kofe",
+          "construction": "Kūkulu hale",
+          "cowboy": "Paniolo",
+          "education": "Hoʻonaʻauao",
+          "knight": "Naita",
+          "ninja": "Ninja",
+          "party": "Pāʻina",
+          "pirate": "Pōā moana",
+          "watermelon": "Waimelona"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Helu hala",
+        "description": "He helu mai 0 a 1. Hoʻouna ʻia me ka hanana holomua i pau ma ke ʻano palena kūleʻa."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Poʻomanaʻo hoʻopau"
+      },
+      {
+        "property": "finishText",
+        "title": "Memo hoʻopau"
+      },
+      {
+        "property": "finishLead",
+        "title": "Laina ma luna o ke koi"
+      },
+      {
+        "property": "prompt",
+        "title": "Koi e kope ai"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Inoa pāʻani",
+        "description": "Hoʻohua i ka inoa o kēia pāʻani ma nā hanana holomua a me ka māka OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID pāʻani",
+        "description": "Koho. Hoʻokaʻawale i kēia pāʻani mai nā mea ʻē aʻe ma ka ʻaoʻao ma nā hanana holomua."
+      }
+    ]
+  }
+}

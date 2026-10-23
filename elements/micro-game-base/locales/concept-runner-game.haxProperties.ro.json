@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Joc de alergare cu concepte",
+    "description": "Un joc cu derulare laterală. Personajul aleargă în flăcări și nu se oprește niciodată. Sari ca să prinzi conceptele bune și peste cele rele, apoi vezi o recapitulare a ce a fost bun și ce a fost rău."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titlul misiunii"
+      },
+      {
+        "property": "quest",
+        "title": "Misiune",
+        "description": "Promptul de pe ecranul de start."
+      },
+      {
+        "property": "items",
+        "title": "Concepte",
+        "description": "Cele bune se prind, peste cele rele se sare."
+      },
+      {
+        "property": "duration",
+        "title": "Durata alergării în secunde",
+        "description": "Cam cât durează alergarea la viteză normală."
+      },
+      {
+        "slot": "finish",
+        "title": "După joc",
+        "description": "Opțional. Înlocuiește caseta de copiere a promptului din panoul final cu propriul tău conținut, de exemplu un pas următor sau un link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Butoane suplimentare după joc",
+        "description": "Opțional. Butoane sau linkuri afișate lângă Joacă din nou în panoul final."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Sămânța personajului",
+        "description": "Orice text. Aceeași sămânță creează mereu același personaj. Este aceeași sămânță pe care o folosește avatarul HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Folosește personajul persoanei autentificate",
+        "description": "Când cineva este autentificat în HAX, personajul arată ca propriul avatar. Ceilalți văd sămânța de mai sus."
+      },
+      {
+        "property": "hat",
+        "title": "Pălăria personajului",
+        "options": {
+          "none": "Niciuna",
+          "random": "Aleatorie",
+          "bunny": "Iepuraș",
+          "coffee": "Cafea",
+          "construction": "Construcții",
+          "cowboy": "Cowboy",
+          "education": "Educație",
+          "knight": "Cavaler",
+          "ninja": "Ninja",
+          "party": "Petrecere",
+          "pirate": "Pirat",
+          "watermelon": "Pepene verde"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Scor de trecere",
+        "description": "Un număr de la 0 la 1. Trimis cu evenimentul de progres finalizat ca prag de succes."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titlul final"
+      },
+      {
+        "property": "finishText",
+        "title": "Mesajul final"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rândul de deasupra promptului"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt de copiat"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Numele jocului",
+        "description": "Denumește acest joc în evenimentele de progres și în marcajul OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID-ul jocului",
+        "description": "Opțional. Deosebește acest joc de altele din pagină în evenimentele de progres."
+      }
+    ]
+  }
+}

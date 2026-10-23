@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Käsitejuoksupeli",
+    "description": "Sivulle vieritettävä peli. Hahmo juoksee tulessa eikä pysähdy koskaan. Hyppää napataksesi hyvät käsitteet ja ylittääksesi huonot, ja katso sitten yhteenveto siitä, mikä oli hyvää ja mikä huonoa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Tehtävän otsikko"
+      },
+      {
+        "property": "quest",
+        "title": "Tehtävä",
+        "description": "Aloitusnäytön kehote."
+      },
+      {
+        "property": "items",
+        "title": "Käsitteet",
+        "description": "Hyvät napataan, huonot hypätään yli."
+      },
+      {
+        "property": "duration",
+        "title": "Juoksun pituus sekunteina",
+        "description": "Suunnilleen kuinka kauan juoksu kestää normaalinopeudella."
+      },
+      {
+        "slot": "finish",
+        "title": "Pelin jälkeen",
+        "description": "Valinnainen. Korvaa lopetuspaneelin kopioitavan kehotteen laatikon omalla sisällölläsi, kuten seuraavalla askeleella tai linkillä."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Lisäpainikkeet pelin jälkeen",
+        "description": "Valinnainen. Lopetuspaneelissa Pelaa uudelleen -painikkeen vieressä näkyvät painikkeet tai linkit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Hahmon siemen",
+        "description": "Mikä tahansa teksti. Sama siemen tekee aina saman hahmon. Tämä on sama siemen, jota HAX-avatar käyttää."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Käytä kirjautuneen henkilön hahmoa",
+        "description": "Kun joku on kirjautunut HAXiin, hahmo näyttää hänen omalta avatariltaan. Kaikki muut näkevät yllä olevan siemenen."
+      },
+      {
+        "property": "hat",
+        "title": "Hahmon hattu",
+        "options": {
+          "none": "Ei mitään",
+          "random": "Satunnainen",
+          "bunny": "Pupu",
+          "coffee": "Kahvi",
+          "construction": "Rakennus",
+          "cowboy": "Cowboy",
+          "education": "Koulutus",
+          "knight": "Ritari",
+          "ninja": "Ninja",
+          "party": "Juhla",
+          "pirate": "Merirosvo",
+          "watermelon": "Vesimeloni"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Läpäisypistemäärä",
+        "description": "Luku väliltä 0–1. Lähetetään valmistuneen edistymistapahtuman mukana onnistumisen kynnyksenä."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Lopetuksen otsikko"
+      },
+      {
+        "property": "finishText",
+        "title": "Lopetusviesti"
+      },
+      {
+        "property": "finishLead",
+        "title": "Kehotteen yläpuolinen rivi"
+      },
+      {
+        "property": "prompt",
+        "title": "Kopioitava kehote"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Pelin nimi",
+        "description": "Nimeää tämän pelin edistymistapahtumissa ja OER Schema -merkinnöissä."
+      },
+      {
+        "property": "gameId",
+        "title": "Pelin tunnus",
+        "description": "Valinnainen. Erottaa tämän pelin muista sivun peleistä edistymistapahtumissa."
+      }
+    ]
+  }
+}

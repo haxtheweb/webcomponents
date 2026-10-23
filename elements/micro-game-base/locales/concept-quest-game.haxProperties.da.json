@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Begrebs-questspil",
+    "description": "En oververden at vandre rundt i. Begreber finder dig og stiller et spørgsmål. Svar rigtigt for at besejre et og låse dets hus op. Opsummeringen viser forsøg og hvad du bør gennemgå."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Overskrift for quest"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "Prompten, der vises på startskærmen. Fortæl spilleren, hvad rejsen går ud på."
+      },
+      {
+        "property": "nodes",
+        "title": "Begreber",
+        "description": "Hvert begreb er et hus med et monster."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Midterlabel",
+        "description": "Den idé, som alle begreberne tilsammen udgør."
+      },
+      {
+        "slot": "finish",
+        "title": "Efter spillet",
+        "description": "Valgfrit. Erstatter kopiér-en-prompt-boksen på afslutningspanelet med dit eget indhold, f.eks. et næste skridt eller et link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Ekstra knapper efter spillet",
+        "description": "Valgfrit. Knapper eller links, der vises ved siden af Spil igen på afslutningspanelet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Hjerter",
+        "description": "Forkerte svar, før begrebet slipper væk."
+      },
+      {
+        "property": "seed",
+        "title": "Figurens seed",
+        "description": "Vilkårlig tekst. Samme seed giver altid samme figur. Det er den samme seed, som HAX-avataren bruger."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Brug den loggede brugers figur",
+        "description": "Når nogen er logget ind på HAX, ligner figuren deres egen avatar. Alle andre ser seed'en ovenfor."
+      },
+      {
+        "property": "hat",
+        "title": "Figurens hat",
+        "options": {
+          "none": "Ingen",
+          "random": "Tilfældig",
+          "bunny": "Kanin",
+          "coffee": "Kaffe",
+          "construction": "Byggeri",
+          "cowboy": "Cowboy",
+          "education": "Uddannelse",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Fest",
+          "pirate": "Pirat",
+          "watermelon": "Vandmelon"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Overskrift ved afslutning"
+      },
+      {
+        "property": "finishText",
+        "title": "Besked ved afslutning"
+      },
+      {
+        "property": "finishLead",
+        "title": "Linje over prompten",
+        "description": "Lad feltet stå tomt for at bruge standardlinjen."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt til kopiering",
+        "description": "Vises på afslutningspanelet med en kopiér-knap. Ryd feltet for at skjule boksen."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spillets navn",
+        "description": "Navngiver dette spil i fremskridtshændelser og OER Schema-markup."
+      },
+      {
+        "property": "gameId",
+        "title": "Spil-id",
+        "description": "Valgfrit. Adskiller dette spil fra andre på siden i fremskridtshændelser."
+      }
+    ]
+  }
+}

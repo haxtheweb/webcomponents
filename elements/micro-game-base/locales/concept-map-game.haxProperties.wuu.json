@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "概念地图游戏",
+    "description": "一个短短个键盘游戏。角色走到地图上每个概念，概念会自家讲解。全部碰着，就有彩纸花同一个好复制个提示词。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "任务标题"
+      },
+      {
+        "property": "quest",
+        "title": "任务",
+        "description": "开始画面上显示个提示词。告诉玩家这趟旅程是做啥个。"
+      },
+      {
+        "property": "nodes",
+        "title": "概念",
+        "description": "每个概念是地图上一块方砖。"
+      },
+      {
+        "property": "hubLabel",
+        "title": "中间标签",
+        "description": "所有概念合起来个那个想法。"
+      },
+      {
+        "slot": "finish",
+        "title": "游戏结束后",
+        "description": "可选。用侬自家个内容，比方下一步或者链接，换掉结束面板上个复制提示词框。"
+      },
+      {
+        "slot": "finish-actions",
+        "title": "游戏结束后个额外按钮",
+        "description": "可选。勒结束面板上「再玩一遍」旁边显示个按钮或者链接。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "角色种子",
+        "description": "随便啥文字。同样个种子永远生成同样个角色。这搭 HAX 头像用个是同一个种子。"
+      },
+      {
+        "property": "seedFromUser",
+        "title": "用已登录个人个角色",
+        "description": "有人登录 HAX 个辰光，角色看上去像伊自家个头像。其他人看到个是上头个种子。"
+      },
+      {
+        "property": "hat",
+        "title": "角色帽子",
+        "options": {
+          "none": "呒没",
+          "random": "随机",
+          "bunny": "兔子",
+          "coffee": "咖啡",
+          "construction": "工地",
+          "cowboy": "牛仔",
+          "education": "教育",
+          "knight": "骑士",
+          "ninja": "忍者",
+          "party": "派对",
+          "pirate": "海盗",
+          "watermelon": "西瓜"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "结束标题"
+      },
+      {
+        "property": "finishText",
+        "title": "结束消息"
+      },
+      {
+        "property": "finishLead",
+        "title": "提示词上头一行",
+        "description": "留空就用默认个一行。"
+      },
+      {
+        "property": "prompt",
+        "title": "要复制个提示词",
+        "description": "带复制按钮显示勒结束面板上。清空就隐藏这个框。"
+      },
+      {
+        "property": "gameTitle",
+        "title": "游戏名称",
+        "description": "勒进度事件同 OER Schema 标记里给这个游戏命名。"
+      },
+      {
+        "property": "gameId",
+        "title": "游戏 ID",
+        "description": "可选。勒进度事件里，让这个游戏同页面上其他游戏区分开来。"
+      }
+    ]
+  }
+}

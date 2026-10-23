@@ -71,7 +71,10 @@ describe("ConceptMapGame test", () => {
 
   it("shows the quest on the start screen", async () => {
     element = await fixture(html`
-      <concept-map-game quest="Go on a journey."></concept-map-game>
+      <concept-map-game
+        quest="Go on a journey."
+        .nodes="${NODES}"
+      ></concept-map-game>
     `);
     expect(element.shadowRoot.querySelector(".ov-sub").textContent).to.contain(
       "Go on a journey.",

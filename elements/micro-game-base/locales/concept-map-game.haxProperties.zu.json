@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Umdlalo wemephu yemiqondo",
+    "description": "Umdlalo omfushane wekhibhodi. Isiqephu sihamba siye kumqondo ngamunye emephwini futhi siyazichaza. Thinta yonke ukuze uthole i-confetti nesikhuthazo sokukopisha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Isihloko sohambo"
+      },
+      {
+        "property": "quest",
+        "title": "Uhambo",
+        "description": "Isikhuthazo esiboniswa esikrinini sokuqala. Tshela umdlali ukuthi uhambo luyini."
+      },
+      {
+        "property": "nodes",
+        "title": "Imiqondo",
+        "description": "Umqondo ngamunye uyithayela emephwini."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Ilebula esenkabeni",
+        "description": "Umbono ohlanganiswa yiyo yonke imiqondo."
+      },
+      {
+        "slot": "finish",
+        "title": "Ngemuva komdlalo",
+        "description": "Akuphoqelekile. Kufaka esikhundleni sebhokisi lokukopisha isikhuthazo kuphaneli yokuphela okuqukethwe kwakho, njengesinyathelo esilandelayo noma isixhumanisi."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Izinkinobho eziyisengezo ngemuva komdlalo",
+        "description": "Akuphoqelekile. Izinkinobho noma izixhumanisi eziboniswa eduze kokuthi Dlala futhi kuphaneli yokuphela."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Imbewu yesiqephu",
+        "description": "Noma yimuphi umbhalo. Imbewu efanayo njalo yenza isiqephu esifanayo. Le yimbewu efanayo esetshenziswa yi-avatar ye-HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Sebenzisa isiqephu somuntu ongenile",
+        "description": "Uma othile engene ku-HAX, isiqephu sibukeka njenge-avatar yakhe. Abanye bonke bayabona imbewu engenhla."
+      },
+      {
+        "property": "hat",
+        "title": "Isigqoko sesiqephu",
+        "options": {
+          "none": "Lutho",
+          "random": "Okungahleliwe",
+          "bunny": "Unogwaja",
+          "coffee": "Ikhofi",
+          "construction": "Ukwakha",
+          "cowboy": "Ikhaubhoyi",
+          "education": "Imfundo",
+          "knight": "Inayithi",
+          "ninja": "I-Ninja",
+          "party": "Ipati",
+          "pirate": "Umphangi wolwandle",
+          "watermelon": "Ikhabe"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Isihloko sokuphela"
+      },
+      {
+        "property": "finishText",
+        "title": "Umlayezo wokuphela"
+      },
+      {
+        "property": "finishLead",
+        "title": "Umugqa ngenhla kwesikhuthazo",
+        "description": "Yiyeke ize ukuze uthole umugqa ozenzakalelayo."
+      },
+      {
+        "property": "prompt",
+        "title": "Isikhuthazo sokukopisha",
+        "description": "Siboniswa kuphaneli yokuphela nenkinobho yokukopisha. Sula ukuze ufihle ibhokisi."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Igama lomdlalo",
+        "description": "Kubiza lo mdlalo ezehlakalweni zenqubekelaphambili nasekumakeni kwe-OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "I-ID yomdlalo",
+        "description": "Akuphoqelekile. Kwehlukanisa lo mdlalo nabanye kusiqephu ezehlakalweni zenqubekelaphambili."
+      }
+    ]
+  }
+}

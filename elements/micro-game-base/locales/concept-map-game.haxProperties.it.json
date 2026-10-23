@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Gioco della mappa dei concetti",
+    "description": "Un breve gioco da tastiera. Un personaggio raggiunge ogni concetto su una mappa e questo si spiega da solo. Toccali tutti per i coriandoli e un prompt da copiare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titolo della missione"
+      },
+      {
+        "property": "quest",
+        "title": "Missione",
+        "description": "Il messaggio mostrato nella schermata iniziale. Spiega al giocatore a cosa serve il viaggio."
+      },
+      {
+        "property": "nodes",
+        "title": "Concetti",
+        "description": "Ogni concetto è una tessera sulla mappa."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Etichetta centrale",
+        "description": "L'idea a cui portano tutti i concetti."
+      },
+      {
+        "slot": "finish",
+        "title": "Dopo il gioco",
+        "description": "Facoltativo. Sostituisce il riquadro per copiare il prompt nel pannello finale con un tuo contenuto, come un passo successivo o un link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Pulsanti extra dopo il gioco",
+        "description": "Facoltativo. Pulsanti o link mostrati accanto a Gioca ancora nel pannello finale."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Seme del personaggio",
+        "description": "Un testo qualsiasi. Lo stesso seme crea sempre lo stesso personaggio. È lo stesso seme usato dall'avatar di HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Usa il personaggio della persona connessa",
+        "description": "Quando qualcuno ha effettuato l'accesso a HAX, il personaggio assomiglia al suo avatar. Tutti gli altri vedono il seme qui sopra."
+      },
+      {
+        "property": "hat",
+        "title": "Cappello del personaggio",
+        "options": {
+          "none": "Nessuno",
+          "random": "Casuale",
+          "bunny": "Coniglietto",
+          "coffee": "Caffè",
+          "construction": "Cantiere",
+          "cowboy": "Cowboy",
+          "education": "Istruzione",
+          "knight": "Cavaliere",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "pirate": "Pirata",
+          "watermelon": "Anguria"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titolo finale"
+      },
+      {
+        "property": "finishText",
+        "title": "Messaggio finale"
+      },
+      {
+        "property": "finishLead",
+        "title": "Riga sopra il prompt",
+        "description": "Lascia vuoto per la riga predefinita."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt da copiare",
+        "description": "Mostrato nel pannello finale con un pulsante di copia. Cancellalo per nascondere il riquadro."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nome del gioco",
+        "description": "Dà un nome a questo gioco negli eventi di avanzamento e nel markup OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID del gioco",
+        "description": "Facoltativo. Distingue questo gioco dagli altri nella pagina negli eventi di avanzamento."
+      }
+    ]
+  }
+}

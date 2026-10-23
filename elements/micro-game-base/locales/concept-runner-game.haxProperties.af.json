@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Konsep-hardloopspeletjie",
+    "description": "'n Syrollende speletjie. Die karakter hardloop in vlamme en stop nooit. Spring om die goeie konsepte te gryp en oor die slegtes, en sien dan 'n opsomming van wat goed en wat sleg was."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Soektogopskrif"
+      },
+      {
+        "property": "quest",
+        "title": "Soektog",
+        "description": "Die opdrag op die beginskerm."
+      },
+      {
+        "property": "items",
+        "title": "Konsepte",
+        "description": "Goeies word gegryp, slegtes word oorgespring."
+      },
+      {
+        "property": "duration",
+        "title": "Hardlooptyd in sekondes",
+        "description": "Ongeveer hoe lank die hardloop duur teen normale spoed."
+      },
+      {
+        "slot": "finish",
+        "title": "Na die speletjie",
+        "description": "Opsioneel. Vervang die kopieer-'n-opdrag-blokkie op die eindpaneel met jou eie inhoud, soos 'n volgende stap of 'n skakel."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Ekstra knoppies na die speletjie",
+        "description": "Opsioneel. Knoppies of skakels wat langs Speel weer op die eindpaneel gewys word."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Karakter-saad",
+        "description": "Enige teks. Dieselfde saad maak altyd dieselfde karakter. Dit is dieselfde saad wat die HAX-avatar gebruik."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Gebruik die ingetekende persoon se karakter",
+        "description": "Wanneer iemand by HAX ingeteken is, lyk die karakter soos hul eie avatar. Almal anders sien die saad hierbo."
+      },
+      {
+        "property": "hat",
+        "title": "Karakter-hoed",
+        "options": {
+          "none": "Geen",
+          "random": "Ewekansig",
+          "bunny": "Haas",
+          "coffee": "Koffie",
+          "construction": "Konstruksie",
+          "cowboy": "Cowboy",
+          "education": "Onderwys",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Partytjie",
+          "pirate": "Seerower",
+          "watermelon": "Waatlemoen"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Slaagpunt",
+        "description": "'n Getal van 0 tot 1. Word met die voltooide vorderingsgebeurtenis gestuur as die suksesdrempel."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Eindopskrif"
+      },
+      {
+        "property": "finishText",
+        "title": "Eindboodskap"
+      },
+      {
+        "property": "finishLead",
+        "title": "Reël bo die opdrag"
+      },
+      {
+        "property": "prompt",
+        "title": "Opdrag om te kopieer"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Speletjienaam",
+        "description": "Noem hierdie speletjie in vorderingsgebeure en OER Schema-opmerking."
+      },
+      {
+        "property": "gameId",
+        "title": "Speletjie-ID",
+        "description": "Opsioneel. Onderskei hierdie speletjie van ander op die bladsy in vorderingsgebeure."
+      }
+    ]
+  }
+}

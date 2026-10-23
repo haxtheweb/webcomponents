@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Taphaa imala yaadaa",
+    "description": "Addunyaa naannoo naannoo deemamu. Yaadonni si argatanii gaaffii gaafatu. Sirriitti deebisii tokko mo'adhuu mana isaa bani. Gabaasni yaalii fi kan irra deebi'ee ilaalamu agarsiisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Mataduree imala"
+      },
+      {
+        "property": "quest",
+        "title": "Imala",
+        "description": "Ajajni fuula jalqabaa irratti agarsiifamu. Imalli kun maaliif akka ta'e taphataadhaaf himi."
+      },
+      {
+        "property": "nodes",
+        "title": "Yaadota",
+        "description": "Yaadni tokkoon tokkoon mana bineensa qabu."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Mallattoo gidduu",
+        "description": "Yaada yaadonni hundi walitti qabamanii uuman."
+      },
+      {
+        "slot": "finish",
+        "title": "Erga taphni xumuramee booda",
+        "description": "Filannoo. Saanduqa ajaja waraabuu paanela xumuraa irratti qabiyyee keetiin bakka buusa, fakkeenyaaf tarkaanfii itti aanu ykn hidhaa."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Qabduuwwan dabalataa erga taphni xumuramee booda",
+        "description": "Filannoo. Qabduuwwan ykn hidhaawwan paanela xumuraa irratti \"Irra deebi'ii taphadhu\" biratti agarsiifaman."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Onnee",
+        "description": "Deebii dogoggoraa osoo yaadni hin baqatin dura."
+      },
+      {
+        "property": "seed",
+        "title": "Sanyii amala",
+        "description": "Barreeffama kamiyyuu. Sanyiin tokkoon yeroo hunda amala tokko uuma. Kun sanyii avatar HAX itti fayyadamu sana."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Amala nama seene fayyadami",
+        "description": "Yeroo namni tokko HAX seenu, amalichi avatar isaa fakkaata. Warri kaan sanyii gubbaa ni argu."
+      },
+      {
+        "property": "hat",
+        "title": "Gonfoo amalaa",
+        "options": {
+          "none": "Hin jiru",
+          "random": "Carraa",
+          "bunny": "Bunny",
+          "coffee": "Buna",
+          "construction": "Ijaarsa",
+          "cowboy": "Kaaboyii",
+          "education": "Barnoota",
+          "knight": "Gootaa",
+          "ninja": "Ninjaa",
+          "party": "Cidha",
+          "pirate": "Saamtuu galaanaa",
+          "watermelon": "Watermelon"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Mataduree xumuraa"
+      },
+      {
+        "property": "finishText",
+        "title": "Ergaa xumuraa"
+      },
+      {
+        "property": "finishLead",
+        "title": "Sarara ajaja gubbaa",
+        "description": "Sarara durtii argachuuf duwwaa dhiisi."
+      },
+      {
+        "property": "prompt",
+        "title": "Ajaja waraabamu",
+        "description": "Paanela xumuraa irratti qabduu waraabuu wajjin agarsiifama. Saanduqa dhoksuuf haqi."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Maqaa taphaa",
+        "description": "Taphicha kana taateewwan adeemsaa fi mallattoo OER Schema keessatti moggaasa."
+      },
+      {
+        "property": "gameId",
+        "title": "ID taphaa",
+        "description": "Filannoo. Taateewwan adeemsaa keessatti taphicha kana kan fuula irra jiran kaan irraa addaan baasa."
+      }
+    ]
+  }
+}

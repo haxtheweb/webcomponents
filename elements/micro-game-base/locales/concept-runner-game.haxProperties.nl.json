@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Conceptrenner",
+    "description": "Een sidescroller. Het personage rent in vuur en vlam en stopt nooit. Spring om de goede concepten te pakken en over de slechte heen, en bekijk daarna een overzicht van wat goed en wat slecht was."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titel van de quest"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "De tekst op het startscherm."
+      },
+      {
+        "property": "items",
+        "title": "Concepten",
+        "description": "Goede worden gepakt, slechte worden overgesprongen."
+      },
+      {
+        "property": "duration",
+        "title": "Duur van de run in seconden",
+        "description": "Ongeveer hoe lang de run duurt bij normale snelheid."
+      },
+      {
+        "slot": "finish",
+        "title": "Na het spel",
+        "description": "Optioneel. Vervangt het kopieer-een-promptvak op het eindscherm door je eigen inhoud, zoals een volgende stap of een link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Extra knoppen na het spel",
+        "description": "Optioneel. Knoppen of links naast Nog een keer spelen op het eindscherm."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Seed van het personage",
+        "description": "Willekeurige tekst. Dezelfde seed maakt altijd hetzelfde personage. Dit is dezelfde seed die de HAX-avatar gebruikt."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Gebruik het personage van de ingelogde persoon",
+        "description": "Als iemand is ingelogd bij HAX, ziet het personage eruit als de eigen avatar. Iedereen anders ziet de seed hierboven."
+      },
+      {
+        "property": "hat",
+        "title": "Hoed van het personage",
+        "options": {
+          "none": "Geen",
+          "random": "Willekeurig",
+          "bunny": "Konijn",
+          "coffee": "Koffie",
+          "construction": "Bouw",
+          "cowboy": "Cowboy",
+          "education": "Onderwijs",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Feest",
+          "pirate": "Piraat",
+          "watermelon": "Watermeloen"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Slaagscore",
+        "description": "Een getal van 0 tot 1. Wordt verstuurd met de voltooide voortgangsgebeurtenis als succesdrempel."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titel aan het einde"
+      },
+      {
+        "property": "finishText",
+        "title": "Bericht aan het einde"
+      },
+      {
+        "property": "finishLead",
+        "title": "Regel boven de prompt"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt om te kopiëren"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spelnaam",
+        "description": "Geeft dit spel een naam in voortgangsgebeurtenissen en OER Schema-markup."
+      },
+      {
+        "property": "gameId",
+        "title": "Spel-ID",
+        "description": "Optioneel. Onderscheidt dit spel van andere op de pagina in voortgangsgebeurtenissen."
+      }
+    ]
+  }
+}

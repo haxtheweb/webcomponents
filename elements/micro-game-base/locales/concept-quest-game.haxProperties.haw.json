@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Pāʻani huakaʻi manaʻo",
+    "description": "He honua e ʻauwana ai. Loaʻa nā manaʻo iā ʻoe a nīnau mai. E pane pololei e lanakila a wehe i kona hale. Hōʻike ka hōʻuluʻulu i nā hoʻāʻo a me ka mea e nānā hou ai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Poʻomanaʻo o ka huakaʻi"
+      },
+      {
+        "property": "quest",
+        "title": "Huakaʻi",
+        "description": "Ke koi e hōʻike ʻia ma ka pale hoʻomaka. E haʻi i ka mea pāʻani i ke kumu o ka huakaʻi."
+      },
+      {
+        "property": "nodes",
+        "title": "Nā manaʻo",
+        "description": "He hale kēlā me kēia manaʻo me kekahi monster."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Kapa waena",
+        "description": "Ka manaʻo i hui pū ʻia e nā manaʻo a pau."
+      },
+      {
+        "slot": "finish",
+        "title": "Ma hope o ka pāʻani",
+        "description": "Koho. Hoʻololi i ka pahu kope koi ma ka papa hoʻopau me kāu ʻike ponoʻī, e like me ka hana aʻe a i ʻole he loulou."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Nā pihi hou ma hope o ka pāʻani",
+        "description": "Koho. Nā pihi a i ʻole nā loulou i hōʻike ʻia ma ka ʻaoʻao o E pāʻani hou ma ka papa hoʻopau."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Nā puʻuwai",
+        "description": "Nā pane hewa ma mua o ka pakele ʻana o ka manaʻo."
+      },
+      {
+        "property": "seed",
+        "title": "Hua o ke kanaka",
+        "description": "Kekahi ʻōlelo. Hana mau ka hua like i ke kanaka like. ʻO ia ka hua like a ka avatar HAX e hoʻohana ai."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "E hoʻohana i ke kanaka o ka mea i komo",
+        "description": "Inā komo kekahi i HAX, e like ke kanaka me kā lākou avatar ponoʻī. ʻIke nā mea ʻē aʻe i ka hua ma luna."
+      },
+      {
+        "property": "hat",
+        "title": "Pāpale o ke kanaka",
+        "options": {
+          "none": "ʻAʻohe",
+          "random": "Pono ʻole",
+          "bunny": "Lāpaki",
+          "coffee": "Kofe",
+          "construction": "Kūkulu hale",
+          "cowboy": "Paniolo",
+          "education": "Hoʻonaʻauao",
+          "knight": "Naita",
+          "ninja": "Ninja",
+          "party": "Pāʻina",
+          "pirate": "Pōā moana",
+          "watermelon": "Waimelona"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Poʻomanaʻo hoʻopau"
+      },
+      {
+        "property": "finishText",
+        "title": "Memo hoʻopau"
+      },
+      {
+        "property": "finishLead",
+        "title": "Laina ma luna o ke koi",
+        "description": "E waiho ʻole no ka laina maʻamau."
+      },
+      {
+        "property": "prompt",
+        "title": "Koi e kope ai",
+        "description": "Hōʻike ʻia ma ka papa hoʻopau me ke pihi kope. E holoi e hūnā i ka pahu."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Inoa pāʻani",
+        "description": "Hoʻohua i ka inoa o kēia pāʻani ma nā hanana holomua a me ka māka OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID pāʻani",
+        "description": "Koho. Hoʻokaʻawale i kēia pāʻani mai nā mea ʻē aʻe ma ka ʻaoʻao ma nā hanana holomua."
+      }
+    ]
+  }
+}

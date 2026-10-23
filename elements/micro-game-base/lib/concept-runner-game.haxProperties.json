@@ -33,7 +33,7 @@
       {
         "property": "items",
         "title": "Concepts",
-        "description": "Good ones are grabbed, bad ones are jumped. Leave empty for the web component specification.",
+        "description": "Good ones are grabbed, bad ones are jumped.",
         "inputMethod": "array",
         "itemLabel": "label",
         "properties": [
@@ -70,7 +70,7 @@
       {
         "slot": "finish",
         "title": "After the game",
-        "description": "Optional. Replaces the default copy-a-prompt box on the finish panel with your own content, such as a next step or a link.",
+        "description": "Optional. Replaces the copy-a-prompt box on the finish panel with your own content, such as a next step or a link.",
         "inputMethod": "textarea",
         "slotWrapper": "div"
       },

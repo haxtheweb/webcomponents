@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "개념 퀘스트 게임",
+    "description": "돌아다니는 오버월드예요. 개념이 찾아와 질문을 해요. 맞게 답하면 물리치고 그 집이 열려요. 요약에서 시도 횟수와 복습할 내용을 볼 수 있어요."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "퀘스트 제목"
+      },
+      {
+        "property": "quest",
+        "title": "퀘스트",
+        "description": "시작 화면에 표시되는 문구예요. 이 여정이 무엇을 위한 것인지 플레이어에게 알려 주세요."
+      },
+      {
+        "property": "nodes",
+        "title": "개념",
+        "description": "각 개념은 몬스터가 있는 집이에요."
+      },
+      {
+        "property": "hubLabel",
+        "title": "중앙 라벨",
+        "description": "모든 개념이 모여 이루는 하나의 아이디어예요."
+      },
+      {
+        "slot": "finish",
+        "title": "게임 후",
+        "description": "선택 사항이에요. 완료 패널의 프롬프트 복사 상자를 다음 단계나 링크 같은 내 콘텐츠로 바꿔요."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "게임 후 추가 버튼",
+        "description": "선택 사항이에요. 완료 패널의 다시 하기 옆에 표시되는 버튼이나 링크예요."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "하트",
+        "description": "개념이 도망가기 전까지 허용되는 오답 횟수예요."
+      },
+      {
+        "property": "seed",
+        "title": "캐릭터 시드",
+        "description": "아무 텍스트나 가능해요. 같은 시드는 항상 같은 캐릭터를 만들어요. HAX 아바타가 사용하는 시드와 같아요."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "로그인한 사람의 캐릭터 사용",
+        "description": "HAX에 로그인한 사람이 있으면 캐릭터가 그 사람의 아바타 모습이 돼요. 그 외 사람들에게는 위의 시드가 적용돼요."
+      },
+      {
+        "property": "hat",
+        "title": "캐릭터 모자",
+        "options": {
+          "none": "없음",
+          "random": "무작위",
+          "bunny": "토끼",
+          "coffee": "커피",
+          "construction": "공사장",
+          "cowboy": "카우보이",
+          "education": "교육",
+          "knight": "기사",
+          "ninja": "닌자",
+          "party": "파티",
+          "pirate": "해적",
+          "watermelon": "수박"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "완료 제목"
+      },
+      {
+        "property": "finishText",
+        "title": "완료 메시지"
+      },
+      {
+        "property": "finishLead",
+        "title": "프롬프트 위 문구",
+        "description": "기본 문구를 쓰려면 비워 두세요."
+      },
+      {
+        "property": "prompt",
+        "title": "복사할 프롬프트",
+        "description": "복사 버튼과 함께 완료 패널에 표시돼요. 상자를 숨기려면 비우세요."
+      },
+      {
+        "property": "gameTitle",
+        "title": "게임 이름",
+        "description": "진행 이벤트와 OER Schema 마크업에서 이 게임의 이름으로 쓰여요."
+      },
+      {
+        "property": "gameId",
+        "title": "게임 ID",
+        "description": "선택 사항이에요. 진행 이벤트에서 이 게임을 페이지의 다른 게임과 구분해 줘요."
+      }
+    ]
+  }
+}

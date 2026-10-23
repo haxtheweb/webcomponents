@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Jeu de course de concepts",
+    "description": "Un jeu à défilement latéral. Le personnage court en flammes et ne s'arrête jamais. Saute pour attraper les bons concepts et passer par-dessus les mauvais, puis découvre un récapitulatif de ce qui était bon et mauvais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titre de la quête"
+      },
+      {
+        "property": "quest",
+        "title": "Quête",
+        "description": "Le message de l'écran de départ."
+      },
+      {
+        "property": "items",
+        "title": "Concepts",
+        "description": "Les bons sont attrapés, les mauvais sont sautés."
+      },
+      {
+        "property": "duration",
+        "title": "Durée de la course en secondes",
+        "description": "Environ la durée de la course à vitesse normale."
+      },
+      {
+        "slot": "finish",
+        "title": "Après le jeu",
+        "description": "Facultatif. Remplace la zone de prompt à copier du panneau de fin par ton propre contenu, comme une prochaine étape ou un lien."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Boutons supplémentaires après le jeu",
+        "description": "Facultatif. Boutons ou liens affichés à côté de Rejouer sur le panneau de fin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Graine du personnage",
+        "description": "Un texte quelconque. La même graine donne toujours le même personnage. C'est la même graine que celle de l'avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Utiliser le personnage de la personne connectée",
+        "description": "Quand quelqu'un est connecté à HAX, le personnage ressemble à son propre avatar. Les autres voient la graine ci-dessus."
+      },
+      {
+        "property": "hat",
+        "title": "Chapeau du personnage",
+        "options": {
+          "none": "Aucun",
+          "random": "Aléatoire",
+          "bunny": "Lapin",
+          "coffee": "Café",
+          "construction": "Chantier",
+          "cowboy": "Cow-boy",
+          "education": "Études",
+          "knight": "Chevalier",
+          "ninja": "Ninja",
+          "party": "Fête",
+          "pirate": "Pirate",
+          "watermelon": "Pastèque"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Score de réussite",
+        "description": "Un nombre de 0 à 1. Envoyé avec l'événement de progression terminé comme seuil de réussite."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titre de fin"
+      },
+      {
+        "property": "finishText",
+        "title": "Message de fin"
+      },
+      {
+        "property": "finishLead",
+        "title": "Ligne au-dessus du prompt"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt à copier"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nom du jeu",
+        "description": "Nomme ce jeu dans les événements de progression et le balisage OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Identifiant du jeu",
+        "description": "Facultatif. Distingue ce jeu des autres sur la page dans les événements de progression."
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Logħba tar-runner tal-kunċetti",
+    "description": "Logħba bi scroll bil-ġenb. Il-karattru jiġri fin-nar u qatt ma jieqaf. Aqbeż biex taqbad il-kunċetti tajbin u fuq il-ħżiena, imbagħad ara sommarju ta' dak li kien tajjeb u ħażin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titlu tal-missjoni"
+      },
+      {
+        "property": "quest",
+        "title": "Missjoni",
+        "description": "Il-prompt fuq l-iskrin tal-bidu."
+      },
+      {
+        "property": "items",
+        "title": "Kunċetti",
+        "description": "It-tajbin jinqabdu, il-ħżiena jinqabżu."
+      },
+      {
+        "property": "duration",
+        "title": "Tul tal-ġirja f'sekondi",
+        "description": "Madwar kemm idum il-ġirja bi speed normali."
+      },
+      {
+        "slot": "finish",
+        "title": "Wara l-logħba",
+        "description": "Mhux obbligatorju. Jissostitwixxi l-kaxxa tal-prompt biex tikkopja fuq il-pannell tat-tmiem bil-kontenut tiegħek, bħal pass li jmiss jew link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Buttuni żejda wara l-logħba",
+        "description": "Mhux obbligatorju. Buttuni jew links li jidhru ħdejn Ilgħab terġa' fuq il-pannell tat-tmiem."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Żerriegħa tal-karattru",
+        "description": "Kwalunkwe test. L-istess żerriegħa dejjem tagħmel l-istess karattru. Din hija l-istess żerriegħa li juża l-avatar tal-HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Uża l-karattru tal-persuna rreġistrata",
+        "description": "Meta xi ħadd ikun daħal f'HAX, il-karattru jidher bħall-avatar tiegħu stess. Kulħadd ieħor jara ż-żerriegħa ta' hawn fuq."
+      },
+      {
+        "property": "hat",
+        "title": "Kappell tal-karattru",
+        "options": {
+          "none": "L-ebda wieħed",
+          "random": "Każwali",
+          "bunny": "Fniek",
+          "coffee": "Kafè",
+          "construction": "Kostruzzjoni",
+          "cowboy": "Cowboy",
+          "education": "Edukazzjoni",
+          "knight": "Kavallier",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "pirate": "Pirata",
+          "watermelon": "Bettieħ aħmar"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Punteġġ biex tgħaddi",
+        "description": "Numru minn 0 sa 1. Jintbagħat mal-avveniment tal-progress lest bħala l-limitu tas-suċċess."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titlu tat-tmiem"
+      },
+      {
+        "property": "finishText",
+        "title": "Messaġġ tat-tmiem"
+      },
+      {
+        "property": "finishLead",
+        "title": "Linja fuq il-prompt"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt biex tikkopja"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Isem il-logħba",
+        "description": "Jagħti isem lil din il-logħba fl-avvenimenti tal-progress u fil-markup tal-OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID tal-logħba",
+        "description": "Mhux obbligatorju. Jiddistingwi din il-logħba minn oħrajn fuq il-paġna fl-avvenimenti tal-progress."
+      }
+    ]
+  }
+}

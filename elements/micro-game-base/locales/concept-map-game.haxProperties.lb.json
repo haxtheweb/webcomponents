@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Konzeptkaarte-Spill",
+    "description": "E kuerzt Tastaturspill. E Charakter geet bei all Konzept op enger Kaart a säin Text erkläert sech selwer. Beréier se all fir Konfetti an e Prompt zum Kopéieren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Iwwerschrëft vun der Quest"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "De Prompt um Startbildschierm. Sot dem Spiller, wofir d'Rees ass."
+      },
+      {
+        "property": "nodes",
+        "title": "Konzepter",
+        "description": "All Konzept ass eng Plack op der Kaart."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Label an der Mëtt",
+        "description": "D'Iddi, op déi sech all d'Konzepter zesummenzielen."
+      },
+      {
+        "slot": "finish",
+        "title": "Nom Spill",
+        "description": "Optional. Ersetzt d'Këscht fir e Prompt ze kopéieren um Schlusspanel duerch däin eegenen Inhalt, zum Beispill e nächste Schrëtt oder e Link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Zousätzlech Knäppercher nom Spill",
+        "description": "Optional. Knäpper oder Linken, déi niewent Nach eng Kéier spillen um Schlusspanel ugewise ginn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Seed vum Charakter",
+        "description": "Iergendeen Text. Dee selwechte Seed mécht ëmmer dee selwechte Charakter. Dëst ass deen selwechte Seed, deen och den HAX-Avatar benotzt."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Charakter vun der ugemellter Persoun benotzen",
+        "description": "Wann een bei HAX ugemellt ass, gesäit de Charakter aus wéi säin eegenen Avatar. Jiddereen anescht gesäit de Seed hei uewen."
+      },
+      {
+        "property": "hat",
+        "title": "Hutt vum Charakter",
+        "options": {
+          "none": "Keen",
+          "random": "Zoufälleg",
+          "bunny": "Hues",
+          "coffee": "Kaffi",
+          "construction": "Bau",
+          "cowboy": "Cowboy",
+          "education": "Educatioun",
+          "knight": "Ritter",
+          "ninja": "Ninja",
+          "party": "Party",
+          "pirate": "Piratt",
+          "watermelon": "Waassermeloun"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Iwwerschrëft um Enn"
+      },
+      {
+        "property": "finishText",
+        "title": "Message um Enn"
+      },
+      {
+        "property": "finishLead",
+        "title": "Zeil iwwer dem Prompt",
+        "description": "Eidel loossen fir déi Standardzeil."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt zum Kopéieren",
+        "description": "Gëtt um Schlusspanel mat engem Kopéier-Knapp ugewisen. Läsch en, fir d'Këscht ze verstoppen."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Numm vum Spill",
+        "description": "Benennt dëst Spill an de Fortschrëttsevenementer a bei der OER Schema-Markéierung."
+      },
+      {
+        "property": "gameId",
+        "title": "Spill-ID",
+        "description": "Optional. Ënnerscheet dëst Spill vun anere Spiller op der Säit an de Fortschrëttsevenementer."
+      }
+    ]
+  }
+}

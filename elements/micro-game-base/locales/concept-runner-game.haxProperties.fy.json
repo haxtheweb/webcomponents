@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Konseptrinnerspultsje",
+    "description": "In sidescroller. It figuer rint yn brân en stopt nea. Spring om de goede konsepten te pakken en oer de minne hinne, en sjoch dan in gearfetting fan wat goed en wat min wie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Opdrachtkop"
+      },
+      {
+        "property": "quest",
+        "title": "Opdracht",
+        "description": "De prompt op it startskerm."
+      },
+      {
+        "property": "items",
+        "title": "Konsepten",
+        "description": "Goeden wurde pakt, minne wurde oerspringe."
+      },
+      {
+        "property": "duration",
+        "title": "Runlingte yn sekonden",
+        "description": "Likernôch hoe lang de run duorret op normale snelheid."
+      },
+      {
+        "slot": "finish",
+        "title": "Nei it spultsje",
+        "description": "Opsjoneel. Ferfangt it kopiearfak foar de prompt op it einpaniel troch jo eigen ynhâld, lykas in folgjende stap of in keppeling."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Ekstra knoppen nei it spultsje",
+        "description": "Opsjoneel. Knoppen of keppelingen njonken Nochris spylje op it einpaniel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Figuerseed",
+        "description": "Hokker tekst dan ek. Deselde seed makket altyd itselde figuer. Dit is deselde seed dy't de HAX-avatar brûkt."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Brûk it figuer fan de oanmelde persoan",
+        "description": "As immen oanmeld is by HAX, sjocht it figuer der út as harren eigen avatar. Elkenien oars sjocht de seed hjirboppe."
+      },
+      {
+        "property": "hat",
+        "title": "Figuerhoed",
+        "options": {
+          "none": "Gjin",
+          "random": "Willekeurich",
+          "bunny": "Hazze",
+          "coffee": "Kofje",
+          "construction": "Bouw",
+          "cowboy": "Cowboy",
+          "education": "Underwiis",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Feest",
+          "pirate": "Piraat",
+          "watermelon": "Wettermeloen"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Slagingsskoare",
+        "description": "In getal fan 0 oant 1. Stjoerd mei it foltôgingsgebeurtenis as slagingsdrompel."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Einkop"
+      },
+      {
+        "property": "finishText",
+        "title": "Einberjocht"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rigel boppe de prompt"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt om te kopiearjen"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spultsjenamme",
+        "description": "Neamt dit spultsje yn foartgongsgebeurtenissen en OER Schema-markup."
+      },
+      {
+        "property": "gameId",
+        "title": "Spultsje-id",
+        "description": "Opsjoneel. Skiedt dit spultsje fan oaren op de side yn foartgongsgebeurtenissen."
+      }
+    ]
+  }
+}

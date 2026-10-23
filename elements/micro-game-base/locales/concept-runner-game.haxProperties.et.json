@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Mõistete jooksumäng",
+    "description": "Külgsuunas kerimise mäng. Tegelane jookseb tules ega peatu kunagi. Hüppa, et püüda häid mõisteid ja hüpata üle halbadest, siis vaata kokkuvõtet, mis oli hea ja mis halb."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Ülesande pealkiri"
+      },
+      {
+        "property": "quest",
+        "title": "Ülesanne",
+        "description": "Alguskuval kuvatav viip."
+      },
+      {
+        "property": "items",
+        "title": "Mõisted",
+        "description": "Head püütakse, halbadest hüpatakse üle."
+      },
+      {
+        "property": "duration",
+        "title": "Jooksu pikkus sekundites",
+        "description": "Umbes kui kaua jooks tavakiirusel kestab."
+      },
+      {
+        "slot": "finish",
+        "title": "Pärast mängu",
+        "description": "Valikuline. Asendab lõpupaneelil viiba kopeerimise kasti sinu enda sisuga, näiteks järgmise sammu või lingiga."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Lisanupud pärast mängu",
+        "description": "Valikuline. Lõpupaneelil nupu Mängi uuesti kõrval kuvatavad nupud või lingid."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Tegelase seeme",
+        "description": "Mis tahes tekst. Sama seeme loob alati sama tegelase. See on sama seeme, mida kasutab HAX-i avatar."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Kasuta sisselogitud isiku tegelast",
+        "description": "Kui keegi on HAX-i sisse logitud, näeb tegelane välja nagu tema enda avatar. Kõik teised näevad ülaltoodud seemet."
+      },
+      {
+        "property": "hat",
+        "title": "Tegelase müts",
+        "options": {
+          "none": "Puudub",
+          "random": "Juhuslik",
+          "bunny": "Jänku",
+          "coffee": "Kohv",
+          "construction": "Ehitaja",
+          "cowboy": "Kauboi",
+          "education": "Haridus",
+          "knight": "Rüütel",
+          "ninja": "Ninja",
+          "party": "Pidu",
+          "pirate": "Piraat",
+          "watermelon": "Arbuus"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Läbimise skoor",
+        "description": "Arv vahemikus 0 kuni 1. Saadetakse lõpetatud edenemissündmusega edukuse lävena."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Lõpu pealkiri"
+      },
+      {
+        "property": "finishText",
+        "title": "Lõpu sõnum"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rida viiba kohal"
+      },
+      {
+        "property": "prompt",
+        "title": "Kopeeritav viip"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Mängu nimi",
+        "description": "Annab sellele mängule nime edenemissündmustes ja OER Schema märgistuses."
+      },
+      {
+        "property": "gameId",
+        "title": "Mängu ID",
+        "description": "Valikuline. Eristab selle mängu lehel olevatest teistest edenemissündmustes."
+      }
+    ]
+  }
+}

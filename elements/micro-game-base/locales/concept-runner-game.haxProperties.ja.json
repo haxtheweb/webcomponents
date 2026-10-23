@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "コンセプトランナーゲーム",
+    "description": "横スクロールゲーム。キャラクターは炎をまとって止まらずに走ります。ジャンプして良いコンセプトを取り、悪いものを飛び越えたあと、何が良くて何が悪かったかの振り返りを見ましょう。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "クエストの見出し"
+      },
+      {
+        "property": "quest",
+        "title": "クエスト",
+        "description": "スタート画面のプロンプト。"
+      },
+      {
+        "property": "items",
+        "title": "コンセプト",
+        "description": "良いものは取り、悪いものは飛び越えます。"
+      },
+      {
+        "property": "duration",
+        "title": "走る長さ(秒)",
+        "description": "通常の速さで走りが続くおよその時間。"
+      },
+      {
+        "slot": "finish",
+        "title": "ゲームのあと",
+        "description": "任意です。終了パネルのプロンプトコピー欄を、次のステップやリンクなど独自のコンテンツに置き換えます。"
+      },
+      {
+        "slot": "finish-actions",
+        "title": "ゲームのあとの追加ボタン",
+        "description": "任意です。終了パネルの「もう一度遊ぶ」の横に表示するボタンやリンク。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "キャラクターのシード",
+        "description": "任意のテキスト。同じシードからは必ず同じキャラクターが作られます。HAX アバターと同じシードです。"
+      },
+      {
+        "property": "seedFromUser",
+        "title": "サインイン中のユーザーのキャラクターを使う",
+        "description": "HAX にサインインしている人には、その人自身のアバターに似たキャラクターが表示されます。それ以外の人には上のシードのキャラクターが表示されます。"
+      },
+      {
+        "property": "hat",
+        "title": "キャラクターの帽子",
+        "options": {
+          "none": "なし",
+          "random": "ランダム",
+          "bunny": "うさぎ",
+          "coffee": "コーヒー",
+          "construction": "工事",
+          "cowboy": "カウボーイ",
+          "education": "教育",
+          "knight": "騎士",
+          "ninja": "忍者",
+          "party": "パーティー",
+          "pirate": "海賊",
+          "watermelon": "スイカ"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "合格スコア",
+        "description": "0から1の数値。成功のしきい値として、完了の進捗イベントとともに送信されます。"
+      },
+      {
+        "property": "finishTitle",
+        "title": "終了時の見出し"
+      },
+      {
+        "property": "finishText",
+        "title": "終了時のメッセージ"
+      },
+      {
+        "property": "finishLead",
+        "title": "プロンプトの上の行"
+      },
+      {
+        "property": "prompt",
+        "title": "コピー用プロンプト"
+      },
+      {
+        "property": "gameTitle",
+        "title": "ゲーム名",
+        "description": "進捗イベントと OER Schema マークアップでこのゲームの名前になります。"
+      },
+      {
+        "property": "gameId",
+        "title": "ゲーム ID",
+        "description": "任意です。進捗イベントで、ページ上の他のゲームとこのゲームを区別します。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Game pelari konsep",
+    "description": "Game side scroller. Karakter berlari dengan api dan tidak pernah berhenti. Lompat untuk mengambil konsep yang baik dan melewati yang buruk, lalu lihat rangkuman mana yang baik dan mana yang buruk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Judul misi"
+      },
+      {
+        "property": "quest",
+        "title": "Misi",
+        "description": "Prompt di layar awal."
+      },
+      {
+        "property": "items",
+        "title": "Konsep",
+        "description": "Yang baik diambil, yang buruk dilompati."
+      },
+      {
+        "property": "duration",
+        "title": "Lama lari dalam detik",
+        "description": "Perkiraan lamanya lari pada kecepatan normal."
+      },
+      {
+        "slot": "finish",
+        "title": "Setelah game",
+        "description": "Opsional. Mengganti kotak salin prompt di panel akhir dengan konten Anda sendiri, seperti langkah berikutnya atau tautan."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Tombol tambahan setelah game",
+        "description": "Opsional. Tombol atau tautan yang ditampilkan di samping Main lagi di panel akhir."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Seed karakter",
+        "description": "Teks apa saja. Seed yang sama selalu menghasilkan karakter yang sama. Ini seed yang sama dengan yang dipakai avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Gunakan karakter orang yang sedang masuk",
+        "description": "Saat seseorang masuk ke HAX, karakter terlihat seperti avatar miliknya. Orang lain melihat seed di atas."
+      },
+      {
+        "property": "hat",
+        "title": "Topi karakter",
+        "options": {
+          "none": "Tidak ada",
+          "random": "Acak",
+          "bunny": "Kelinci",
+          "coffee": "Kopi",
+          "construction": "Konstruksi",
+          "cowboy": "Koboi",
+          "education": "Pendidikan",
+          "knight": "Ksatria",
+          "ninja": "Ninja",
+          "party": "Pesta",
+          "pirate": "Bajak laut",
+          "watermelon": "Semangka"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Nilai kelulusan",
+        "description": "Angka dari 0 sampai 1. Dikirim bersama event kemajuan selesai sebagai ambang keberhasilan."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Judul akhir"
+      },
+      {
+        "property": "finishText",
+        "title": "Pesan akhir"
+      },
+      {
+        "property": "finishLead",
+        "title": "Baris di atas prompt"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt untuk disalin"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nama game",
+        "description": "Menamai game ini dalam event kemajuan dan markup OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID game",
+        "description": "Opsional. Membedakan game ini dari game lain di halaman dalam event kemajuan."
+      }
+    ]
+  }
+}

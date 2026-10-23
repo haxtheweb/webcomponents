@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "משחק מפת מושגים",
+    "description": "משחק מקלדת קצר. דמות הולכת אל כל מושג במפה והוא מסביר את עצמו. אם תיגעו בכולם תקבלו קונפטי והנחיה להעתקה."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "כותרת המשימה"
+      },
+      {
+        "property": "quest",
+        "title": "משימה",
+        "description": "ההנחיה שמוצגת במסך הפתיחה. ספרו לשחקן לְמה מיועד המסע."
+      },
+      {
+        "property": "nodes",
+        "title": "מושגים",
+        "description": "כל מושג הוא אריח במפה."
+      },
+      {
+        "property": "hubLabel",
+        "title": "תווית מרכזית",
+        "description": "הרעיון שכל המושגים מרכיבים יחד."
+      },
+      {
+        "slot": "finish",
+        "title": "אחרי המשחק",
+        "description": "אופציונלי. מחליף את תיבת העתקת ההנחיה בלוח הסיום בתוכן משלכם, כמו צעד הבא או קישור."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "כפתורים נוספים אחרי המשחק",
+        "description": "אופציונלי. כפתורים או קישורים שמוצגים לצד לשחק שוב בלוח הסיום."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "זרע הדמות",
+        "description": "כל טקסט. אותו זרע תמיד יוצר את אותה דמות. זה אותו זרע שבו משתמש האווטאר של HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "שימוש בדמות של האדם המחובר",
+        "description": "כשמישהו מחובר ל-HAX, הדמות נראית כמו האווטאר שלו. כל השאר רואים את הזרע שלמעלה."
+      },
+      {
+        "property": "hat",
+        "title": "כובע הדמות",
+        "options": {
+          "none": "ללא",
+          "random": "אקראי",
+          "bunny": "ארנב",
+          "coffee": "קפה",
+          "construction": "בנייה",
+          "cowboy": "קאובוי",
+          "education": "חינוך",
+          "knight": "אביר",
+          "ninja": "נינג'ה",
+          "party": "מסיבה",
+          "pirate": "פיראט",
+          "watermelon": "אבטיח"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "כותרת הסיום"
+      },
+      {
+        "property": "finishText",
+        "title": "הודעת הסיום"
+      },
+      {
+        "property": "finishLead",
+        "title": "שורה מעל ההנחיה",
+        "description": "השאירו ריק לשורת ברירת המחדל."
+      },
+      {
+        "property": "prompt",
+        "title": "הנחיה להעתקה",
+        "description": "מוצגת בלוח הסיום עם כפתור העתקה. מחקו אותה כדי להסתיר את התיבה."
+      },
+      {
+        "property": "gameTitle",
+        "title": "שם המשחק",
+        "description": "נותן שם למשחק הזה באירועי התקדמות ובסימון OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "מזהה המשחק",
+        "description": "אופציונלי. מבדיל בין המשחק הזה לאחרים בדף באירועי התקדמות."
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Běžecká hra s pojmy",
+    "description": "Hra s bočním posunem. Postava běží v plamenech a nikdy se nezastaví. Skákej pro dobré pojmy a přes ty špatné, pak uvidíš shrnutí, co bylo dobré a co špatné."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Nadpis výpravy"
+      },
+      {
+        "property": "quest",
+        "title": "Výprava",
+        "description": "Text na úvodní obrazovce."
+      },
+      {
+        "property": "items",
+        "title": "Pojmy",
+        "description": "Dobré chytáš, špatné přeskakuješ."
+      },
+      {
+        "property": "duration",
+        "title": "Délka běhu v sekundách",
+        "description": "Přibližně jak dlouho běh trvá při běžné rychlosti."
+      },
+      {
+        "slot": "finish",
+        "title": "Po hře",
+        "description": "Volitelné. Nahradí na závěrečném panelu pole pro kopírování zadání tvým vlastním obsahem, například dalším krokem nebo odkazem."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Další tlačítka po hře",
+        "description": "Volitelné. Tlačítka nebo odkazy zobrazené vedle tlačítka Hrát znovu na závěrečném panelu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Základ postavy",
+        "description": "Libovolný text. Stejný základ vždy vytvoří stejnou postavu. Je to stejný základ, jaký používá avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Použít postavu přihlášené osoby",
+        "description": "Když je někdo přihlášený v HAX, postava vypadá jako jeho vlastní avatar. Ostatní uvidí výše uvedený základ."
+      },
+      {
+        "property": "hat",
+        "title": "Čepice postavy",
+        "options": {
+          "none": "Žádná",
+          "random": "Náhodná",
+          "bunny": "Králík",
+          "coffee": "Káva",
+          "construction": "Stavbyvedoucí",
+          "cowboy": "Kovboj",
+          "education": "Absolvent",
+          "knight": "Rytíř",
+          "ninja": "Nindža",
+          "party": "Párty",
+          "pirate": "Pirát",
+          "watermelon": "Meloun"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Hranice úspěchu",
+        "description": "Číslo od 0 do 1. Odesílá se s událostí dokončení jako práh úspěšnosti."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Nadpis závěru"
+      },
+      {
+        "property": "finishText",
+        "title": "Závěrečná zpráva"
+      },
+      {
+        "property": "finishLead",
+        "title": "Řádek nad zadáním"
+      },
+      {
+        "property": "prompt",
+        "title": "Zadání ke zkopírování"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Název hry",
+        "description": "Pojmenuje tuto hru v událostech průběhu a ve značkování OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID hry",
+        "description": "Volitelné. Odliší tuto hru od ostatních na stránce v událostech průběhu."
+      }
+    ]
+  }
+}

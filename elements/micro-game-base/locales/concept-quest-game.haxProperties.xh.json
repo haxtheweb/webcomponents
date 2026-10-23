@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Umdlalo woFambo lemibono",
+    "description": "Ihlabathi elivulekileyo lokuzulazula. Imibono ikufumana ize ibuze umbuzo. Phendula ngokuchanekileyo ukuze woyise omnye uvule indlu yawo. Ishwankathelo libonisa iinzame nento ekufuneka uyibuyekeze."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Isihloko sorhwebo"
+      },
+      {
+        "property": "quest",
+        "title": "Uhambo",
+        "description": "Umyalelo ochazwe kwiscreen sokuqala. Xelela umdlali ukuba uhambo lwenzelwe ntoni."
+      },
+      {
+        "property": "nodes",
+        "title": "Imibono",
+        "description": "Umbono ngamnye yindlu enesilo."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Ileyibhile esembindini",
+        "description": "Umbono ekudibana kuwo yonke imibono."
+      },
+      {
+        "slot": "finish",
+        "title": "Emva komdlalo",
+        "description": "Ukhetho. Ithatha indawo yebhokisi yokukopa umyalelo kwiphaneli yokugqibela ngomxholo wakho, onjengesinyathelo esilandelayo okanye ulwalamano."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Amaqhosha ongezelelweyo emva komdlalo",
+        "description": "Ukhetho. Amaqhosha okanye ulwalamano oluboniswa ecaleni kwe Dlala kwakhona kwiphaneli yokugqibela."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Iintliziyo",
+        "description": "Iimpendulo ezingachanekanga ngaphambi kokuba umbono ubaleke."
+      },
+      {
+        "property": "seed",
+        "title": "Imbewu yomlinganiswa",
+        "description": "Nawuphi na umbhalo. Imbewu efanayo yenza umlinganiswa ofanayo rhoqo. Le yimbewu efanayo esetyenziswa yi-avatar ye-HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Sebenzisa umlinganiswa womntu ongenileyo",
+        "description": "Xa umntu engene kwi-HAX, umlinganiswa ubonakala efana ne-avatar yakhe. Wonke umntu osele ubona imbewu engentla."
+      },
+      {
+        "property": "hat",
+        "title": "Umnqwazi womlinganiswa",
+        "options": {
+          "none": "Akukho",
+          "random": "Kungalindelekanga",
+          "bunny": "Ixhwane",
+          "coffee": "Ikofu",
+          "construction": "Ukwakha",
+          "cowboy": "Umalusi wenkomo",
+          "education": "Imfundo",
+          "knight": "Inkosi yemfazwe",
+          "ninja": "Ninja",
+          "party": "Ipati",
+          "pirate": "Umphangi wolwandle",
+          "watermelon": "Ikhwiniba"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Isihloko sokugqibela"
+      },
+      {
+        "property": "finishText",
+        "title": "Umyalezo wokugqibela"
+      },
+      {
+        "property": "finishLead",
+        "title": "Umgca ongaphezu komyalelo",
+        "description": "Shiya ungenanto ukuze usebenzise umgca ovelele."
+      },
+      {
+        "property": "prompt",
+        "title": "Umyalelo wokukopa",
+        "description": "Uboniswa kwiphaneli yokugqibela kunye neqhosha lokukopa. Cima ukuze ufihle ibhokisi."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Igama lomdlalo",
+        "description": "Linika lo mdlalo igama kwiziganeko zenkqubela kunye ne-OER Schema markup."
+      },
+      {
+        "property": "gameId",
+        "title": "I-ID yomdlalo",
+        "description": "Ukhetho. Ohlula lo mdlalo kwabanye kwiphepha kwiziganeko zenkqubela."
+      }
+    ]
+  }
+}

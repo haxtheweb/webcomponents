@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Düşünje ylgaýjy oýny",
+    "description": "Gapdala aýlanýan oýun. Gahryman ýalynly ylgaýar we hiç haçan durmaýar. Gowy düşünjeleri tutmak we erbetleriň üstünden bökmek üçin bök, soň nämäniň gowy, nämäniň erbet bolandygynyň jemini gör."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Gözlegiň sözbaşysy"
+      },
+      {
+        "property": "quest",
+        "title": "Gözleg",
+        "description": "Başlangyç ekrandaky görkezme."
+      },
+      {
+        "property": "items",
+        "title": "Düşünjeler",
+        "description": "Gowulary tutulýar, erbetlerinden bökülýär."
+      },
+      {
+        "property": "duration",
+        "title": "Ylgawyň uzynlygy sekuntda",
+        "description": "Adaty tizlikde ylgawyň takmynan näçe wagt dowam edýändigi."
+      },
+      {
+        "slot": "finish",
+        "title": "Oýundan soň",
+        "description": "Hökmany däl. Gutaryş panelindäki göçürme görkezmesi gutusyny öz mazmunyň bilen çalyşýar, meselem, indiki ädim ýa-da çykgyt."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Oýundan soňky goşmaça düwmeler",
+        "description": "Hökmany däl. Gutaryş panelinde «Ýene oýna» ýanynda görkezilýän düwmeler ýa-da çykgytlar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Gahrymanyň tohumy",
+        "description": "Islendik tekst. Şol bir tohum elmydama şol bir gahrymany döredýär. Bu HAX awatarynyň ulanýan tohumy bilen birmeňzeşdir."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Giren adamyň gahrymanyny ulan",
+        "description": "Biri HAX-a girende, gahryman onuň öz awatary ýaly görünýär. Beýlekiler ýokardaky tohumy görýär."
+      },
+      {
+        "property": "hat",
+        "title": "Gahrymanyň şlýapasy",
+        "options": {
+          "none": "Ýok",
+          "random": "Tötänleýin",
+          "bunny": "Towşan",
+          "coffee": "Kofe",
+          "construction": "Gurluşyk",
+          "cowboy": "Kowboý",
+          "education": "Bilim",
+          "knight": "Rys'ar",
+          "ninja": "Ninja",
+          "party": "Toý",
+          "pirate": "Garakçy",
+          "watermelon": "Garpyz"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Geçiş baly",
+        "description": "0-dan 1-e çenli san. Tamamlanan ösüş wakasy bilen üstünlik çägi hökmünde iberilýär."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Gutaryş sözbaşysy"
+      },
+      {
+        "property": "finishText",
+        "title": "Gutaryş habary"
+      },
+      {
+        "property": "finishLead",
+        "title": "Görkezmäniň ýokarsyndaky setir"
+      },
+      {
+        "property": "prompt",
+        "title": "Göçürmeli görkezme"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Oýnuň ady",
+        "description": "Bu oýna ösüş wakalarynda we OER Schema bellikleriniň içinde at berýär."
+      },
+      {
+        "property": "gameId",
+        "title": "Oýnuň ID-si",
+        "description": "Hökmany däl. Ösüş wakalarynda bu oýny sahypadaky beýlekilerden tapawutlandyrýar."
+      }
+    ]
+  }
+}
