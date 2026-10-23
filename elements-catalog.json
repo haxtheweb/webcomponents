@@ -1007,6 +1007,36 @@
       "tags": []
     },
     {
+      "tag": "concept-map-game",
+      "title": "Concept Map Game",
+      "description": "A short game for an interactive infographic. A character walks between the concepts on a map, each one explains itself on touch, and touching all of them pops confetti.",
+      "package": "@haxtheweb/micro-game-base",
+      "import": "@haxtheweb/micro-game-base/lib/concept-map-game.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Other", "Interactive", "Game"]
+    },
+    {
+      "tag": "concept-quest-game",
+      "title": "Concept Quest Game",
+      "description": "An overworld you wander. Each concept has a house, and each house is locked until you defeat the concept by answering its question. Concepts also find you at random while you walk. Wrong answers cost a heart and you try again. The end recap shows how many tries it took and what to review. Built o...",
+      "package": "@haxtheweb/micro-game-base",
+      "import": "@haxtheweb/micro-game-base/lib/concept-quest-game.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Other", "Interactive", "Game"]
+    },
+    {
+      "tag": "concept-runner-game",
+      "title": "Concept Runner Game",
+      "description": "A side scroller for about 20 seconds. The character runs on fire and never stops. Jump to grab the good concepts and over the bad ones. At the end the recap explains what was good and what was bad.",
+      "package": "@haxtheweb/micro-game-base",
+      "import": "@haxtheweb/micro-game-base/lib/concept-runner-game.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Other", "Interactive", "Game"]
+    },
+    {
       "tag": "count-up",
       "title": "Count Up",
       "description": "count up js wrapper with minimal styling",
@@ -2665,7 +2695,7 @@
     {
       "tag": "image-compare-slider",
       "title": "Image Compare Slider",
-      "description": "hax-wired a11y-compare-image",
+      "description": "Slider that allows comparison of two images",
       "package": "@haxtheweb/image-compare-slider",
       "import": "@haxtheweb/image-compare-slider/image-compare-slider.js",
       "type": "element",
@@ -5967,7 +5997,7 @@
     {
       "tag": "wikipedia-query",
       "title": "Wikipedia Query",
-      "description": "Query and present information from wikipedia.",
+      "description": "Queries Wikipedia and presents the result with citation",
       "package": "@haxtheweb/wikipedia-query",
       "import": "@haxtheweb/wikipedia-query/wikipedia-query.js",
       "type": "element",

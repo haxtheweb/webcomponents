@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (226 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (227 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -134,6 +134,7 @@ Every element in this monorepo (226 packages). Browse them live with `yarn galle
 | [meme-maker](./meme-maker/) | Overlays top and bottom caption text on an image, meme style | `@haxtheweb/meme-maker` | [demo](./meme-maker/demo/) |
 | [merit-badge](./merit-badge/) | visual badge to communicate obtaining a skill | `@haxtheweb/merit-badge` | [demo](./merit-badge/demo/) |
 | [micro-frontend-registry](./micro-frontend-registry/) | A singleton for registration and managing access to leverage microservices for web components | `@haxtheweb/micro-frontend-registry` |  |
+| [micro-game-base](./micro-game-base/) | Shared shell for short browser games that live inside a page: input, pause rules, progress events, OER Schema, player character, finish panel with slots, and i18n | `@haxtheweb/micro-game-base` | [demo](./micro-game-base/demo/) |
 | [moar-sarcasm](./moar-sarcasm/) | Provide a laugh and a good example of VanillaJS for demos | `@haxtheweb/moar-sarcasm` | [demo](./moar-sarcasm/demo/) |
 | [moment-element](./moment-element/) | Element wrapper for the moment date formatting library | `@haxtheweb/moment-element` | [demo](./moment-element/demo/) |
 | [multiple-choice](./multiple-choice/) | Multiple choice question with feedback for correct and incorrect answers | `@haxtheweb/multiple-choice` | [demo](./multiple-choice/demo/) |
