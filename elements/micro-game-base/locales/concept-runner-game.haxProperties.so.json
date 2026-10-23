@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Ciyaarta orodyahanka fikradaha",
+    "description": "Ciyaar dhinaca u rogta. Jilaha wuxuu ku orda dab oo weligiis ma istaago. Utaag si aad u qabato fikrado wanaagsan oo aad kuwa xun uga boodo, ka dibna arag soo koobid waxa wanaagsanaa iyo waxa xumaa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Cinwaanka hadafka"
+      },
+      {
+        "property": "quest",
+        "title": "Hadaf",
+        "description": "Tilmaanta shaashadda bilowga."
+      },
+      {
+        "property": "items",
+        "title": "Fikrado",
+        "description": "Kuwa wanaagsan waa la qabtaa, kuwa xunna waa laga boodaa."
+      },
+      {
+        "property": "duration",
+        "title": "Dhererka orodka ilbiriqsiyada",
+        "description": "Ilaa intee in le'eg ayuu orodku socdaa xawaaraha caadiga ah."
+      },
+      {
+        "slot": "finish",
+        "title": "Ka dib ciyaarta",
+        "description": "Ikhtiyaari. Waxay sanduuqa koobiyaynta tilmaanta ee guddiga dhammaadka ku beddelaysaa nuxur adiga kuu gaar ah, sida tallaabo xigta ama xiriir."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Badhamo dheeraad ah ka dib ciyaarta",
+        "description": "Ikhtiyaari. Badhamo ama xiriiryo lagu muujiyo agteeda Mar kale ciyaar ee guddiga dhammaadka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Abuurka jilaha",
+        "description": "Qoraal kasta. Abuurka isku mid ah had iyo jeer wuxuu sameeyaa jilaha isku mid ah. Kan waa abuurka isku mid ah ee avatar-ka HAX isticmaalo."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Isticmaal jilaha qofka soo galay",
+        "description": "Marka qof ku soo galo HAX, jilaha wuxuu u eg yahay avatar-kiisa. Dadka kale waxay arkaan abuurka kor ku xusan."
+      },
+      {
+        "property": "hat",
+        "title": "Koofiyadda jilaha",
+        "options": {
+          "none": "Midna",
+          "random": "La yaab",
+          "bunny": "Bakayle",
+          "coffee": "Qaxwo",
+          "construction": "Dhismo",
+          "cowboy": "Kawboy",
+          "education": "Waxbarasho",
+          "knight": "Ilaaliye",
+          "ninja": "Ninja",
+          "party": "Xaflad",
+          "pirate": "Budhcad badeed",
+          "watermelon": "Cabdelaawi"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Dhibcaha guusha",
+        "description": "Lambar 0 ilaa 1 ah. Waxaa lagu soo diraa dhacdada horumarka la dhammeeyay oo ah heerka guusha."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Cinwaanka dhammaadka"
+      },
+      {
+        "property": "finishText",
+        "title": "Fariinta dhammaadka"
+      },
+      {
+        "property": "finishLead",
+        "title": "Safka tilmaanta dusheeda"
+      },
+      {
+        "property": "prompt",
+        "title": "Tilmaanta la koobiyeeyo"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Magaca ciyaarta",
+        "description": "Wuxuu magac u bixiyaa ciyaartan dhacdooyinka horumarka iyo calaamadaynta OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Aqoonsiga ciyaarta",
+        "description": "Ikhtiyaari. Wuxuu ciyaartan ka soocaa kuwa kale ee boggaga ku jira dhacdooyinka horumarka."
+      }
+    ]
+  }
+}

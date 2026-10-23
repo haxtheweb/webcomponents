@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Igra teka za pojme",
+    "description": "Igra s stranskim drsenjem. Lik teče v ognju in se nikoli ne ustavi. Skači, da ujameš dobre pojme in preskočiš slabe, nato si oglej povzetek, kaj je bilo dobro in kaj slabo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Naslov odprave"
+      },
+      {
+        "property": "quest",
+        "title": "Odprava",
+        "description": "Poziv na začetnem zaslonu."
+      },
+      {
+        "property": "items",
+        "title": "Pojmi",
+        "description": "Dobre ujameš, slabe preskočiš."
+      },
+      {
+        "property": "duration",
+        "title": "Dolžina teka v sekundah",
+        "description": "Približno, kako dolgo traja tek pri običajni hitrosti."
+      },
+      {
+        "slot": "finish",
+        "title": "Po igri",
+        "description": "Neobvezno. Polje za kopiranje poziva na končni plošči zamenja z lastno vsebino, na primer naslednjim korakom ali povezavo."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Dodatni gumbi po igri",
+        "description": "Neobvezno. Gumbi ali povezave ob gumbu Igraj znova na končni plošči."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Seme lika",
+        "description": "Poljubno besedilo. Isto seme vedno ustvari istega lika. To je isto seme, ki ga uporablja avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Uporabi lik prijavljene osebe",
+        "description": "Ko je nekdo prijavljen v HAX, lik izgleda kot njegov avatar. Vsi drugi vidijo zgornje seme."
+      },
+      {
+        "property": "hat",
+        "title": "Klobuk lika",
+        "options": {
+          "none": "Brez",
+          "random": "Naključno",
+          "bunny": "Zajček",
+          "coffee": "Kava",
+          "construction": "Gradbinec",
+          "cowboy": "Kavboj",
+          "education": "Izobraževanje",
+          "knight": "Vitez",
+          "ninja": "Nindža",
+          "party": "Zabava",
+          "pirate": "Pirat",
+          "watermelon": "Lubenica"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Mejna ocena",
+        "description": "Število od 0 do 1. Pošlje se z dogodkom dokončanega napredka kot prag uspeha."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Naslov ob koncu"
+      },
+      {
+        "property": "finishText",
+        "title": "Sporočilo ob koncu"
+      },
+      {
+        "property": "finishLead",
+        "title": "Vrstica nad pozivom"
+      },
+      {
+        "property": "prompt",
+        "title": "Poziv za kopiranje"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Ime igre",
+        "description": "Poimenuje to igro v dogodkih napredka in oznakah OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID igre",
+        "description": "Neobvezno. V dogodkih napredka loči to igro od drugih na strani."
+      }
+    ]
+  }
+}

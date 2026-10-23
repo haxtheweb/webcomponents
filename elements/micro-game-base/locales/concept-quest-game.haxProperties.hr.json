@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Igra potrage za pojmovima",
+    "description": "Svijet za lutanje. Pojmovi te pronađu i postave pitanje. Odgovori točno da pobijediš jedan i otključaš njegovu kuću. Sažetak prikazuje pokušaje i što treba ponoviti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Naslov zadatka"
+      },
+      {
+        "property": "quest",
+        "title": "Zadatak",
+        "description": "Upit prikazan na početnom zaslonu. Reci igraču čemu služi putovanje."
+      },
+      {
+        "property": "nodes",
+        "title": "Pojmovi",
+        "description": "Svaki je pojam kuća s čudovištem."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Središnja oznaka",
+        "description": "Ideja u koju se svi pojmovi slažu."
+      },
+      {
+        "slot": "finish",
+        "title": "Nakon igre",
+        "description": "Neobavezno. Zamjenjuje okvir za kopiranje upita na završnoj ploči vlastitim sadržajem, na primjer sljedećim korakom ili poveznicom."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Dodatni gumbi nakon igre",
+        "description": "Neobavezno. Gumbi ili poveznice prikazani pored gumba Igraj ponovno na završnoj ploči."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Srca",
+        "description": "Pogrešni odgovori prije nego što pojam pobjegne."
+      },
+      {
+        "property": "seed",
+        "title": "Sjeme lika",
+        "description": "Bilo koji tekst. Isto sjeme uvijek stvara istog lika. To je isto sjeme koje koristi HAX avatar."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Koristi lika prijavljene osobe",
+        "description": "Kad je netko prijavljen u HAX, lik izgleda kao njegov vlastiti avatar. Svi ostali vide gornje sjeme."
+      },
+      {
+        "property": "hat",
+        "title": "Šešir lika",
+        "options": {
+          "none": "Nema",
+          "random": "Nasumično",
+          "bunny": "Zečić",
+          "coffee": "Kava",
+          "construction": "Gradilište",
+          "cowboy": "Kauboj",
+          "education": "Obrazovanje",
+          "knight": "Vitez",
+          "ninja": "Nindža",
+          "party": "Zabava",
+          "pirate": "Gusar",
+          "watermelon": "Lubenica"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Naslov završetka"
+      },
+      {
+        "property": "finishText",
+        "title": "Završna poruka"
+      },
+      {
+        "property": "finishLead",
+        "title": "Redak iznad upita",
+        "description": "Ostavi prazno za zadani redak."
+      },
+      {
+        "property": "prompt",
+        "title": "Upit za kopiranje",
+        "description": "Prikazuje se na završnoj ploči s gumbom za kopiranje. Obriši ga da sakriješ okvir."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Naziv igre",
+        "description": "Imenuje ovu igru u događajima napretka i oznakama OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID igre",
+        "description": "Neobavezno. Razlikuje ovu igru od drugih na stranici u događajima napretka."
+      }
+    ]
+  }
+}

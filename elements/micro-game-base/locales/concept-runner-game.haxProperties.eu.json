@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Kontzeptu-korrikalariaren jokoa",
+    "description": "Alboko korrituzko jokoa. Pertsonaia su artean korrika doa eta ez da inoiz gelditzen. Egin salto kontzeptu onak hartzeko eta txarren gainetik pasatzeko, gero ikusi zer zen on eta zer txar den laburpen batean."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Bilaketaren izenburua"
+      },
+      {
+        "property": "quest",
+        "title": "Bilaketa",
+        "description": "Hasierako pantailako prompta."
+      },
+      {
+        "property": "items",
+        "title": "Kontzeptuak",
+        "description": "Onak hartu egiten dira, txarren gainetik salto egiten da."
+      },
+      {
+        "property": "duration",
+        "title": "Korrikaren iraupena segundotan",
+        "description": "Korrikak abiadura normalean gutxi gorabehera zenbat irauten duen."
+      },
+      {
+        "slot": "finish",
+        "title": "Jokoaren ondoren",
+        "description": "Aukerakoa. Amaierako panelean prompta kopiatzeko koadroa ordezkatzen du zure edukiarekin, adibidez hurrengo urratsarekin edo esteka batekin."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Jokoaren ondoko botoi gehigarriak",
+        "description": "Aukerakoa. Amaierako panelean Jokatu berriro botoiaren ondoan erakusten diren botoiak edo estekak."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Pertsonaiaren hazia",
+        "description": "Edozein testu. Hazi berak beti pertsonaia bera sortzen du. HAX avatarrak erabiltzen duen hazi bera da."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Erabili saioa hasita duen pertsonaren pertsonaia",
+        "description": "Norbait HAX-en saioa hasita dagoenean, pertsonaiak bere avatarraren itxura du. Gainerakoek goiko hazia ikusten dute."
+      },
+      {
+        "property": "hat",
+        "title": "Pertsonaiaren txapela",
+        "options": {
+          "none": "Bat ere ez",
+          "random": "Ausazkoa",
+          "bunny": "Untxia",
+          "coffee": "Kafea",
+          "construction": "Eraikuntza",
+          "cowboy": "Cowboya",
+          "education": "Hezkuntza",
+          "knight": "Zalduna",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "pirate": "Piratea",
+          "watermelon": "Sandia"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Gainditzeko puntuazioa",
+        "description": "0tik 1era arteko zenbaki bat. Amaitutako aurrerapen-gertaerarekin batera bidaltzen da arrakasta-atalase gisa."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Amaierako izenburua"
+      },
+      {
+        "property": "finishText",
+        "title": "Amaierako mezua"
+      },
+      {
+        "property": "finishLead",
+        "title": "Promptaren gaineko lerroa"
+      },
+      {
+        "property": "prompt",
+        "title": "Kopiatzeko prompta"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Jokoaren izena",
+        "description": "Joko honi izena ematen dio aurrerapen-gertaeretan eta OER Schema markaketan."
+      },
+      {
+        "property": "gameId",
+        "title": "Jokoaren IDa",
+        "description": "Aukerakoa. Orrialdeko beste jokoetatik bereizten du joko hau aurrerapen-gertaeretan."
+      }
+    ]
+  }
+}

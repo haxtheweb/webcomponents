@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Mchezo wa safari ya dhana",
+    "description": "Ulimwengu wazi wa kuzurura. Dhana zinakupata na kukuuliza swali. Jibu kwa usahihi ili kumshinda mmoja na kufungua nyumba yake. Muhtasari unaonyesha majaribio na cha kukagua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Kichwa cha safari"
+      },
+      {
+        "property": "quest",
+        "title": "Safari",
+        "description": "Maelekezo yanayoonyeshwa kwenye skrini ya kuanza. Mwambie mchezaji safari hii ni ya nini."
+      },
+      {
+        "property": "nodes",
+        "title": "Dhana",
+        "description": "Kila dhana ni nyumba yenye monsta."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Lebo ya kati",
+        "description": "Wazo ambalo dhana zote zinaunda pamoja."
+      },
+      {
+        "slot": "finish",
+        "title": "Baada ya mchezo",
+        "description": "Si lazima. Inabadilisha kisanduku cha kunakili maelekezo kwenye paneli ya mwisho na maudhui yako mwenyewe, kama hatua inayofuata au kiungo."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Vitufe vya ziada baada ya mchezo",
+        "description": "Si lazima. Vitufe au viungo vinavyoonyeshwa kando ya Cheza tena kwenye paneli ya mwisho."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Mioyo",
+        "description": "Majibu yasiyo sahihi kabla dhana haijakimbia."
+      },
+      {
+        "property": "seed",
+        "title": "Mbegu ya mhusika",
+        "description": "Maandishi yoyote. Mbegu ileile daima huunda mhusika yuleyule. Hii ni mbegu ileile ambayo avatar ya HAX hutumia."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Tumia mhusika wa mtu aliyeingia",
+        "description": "Mtu anapoingia kwenye HAX, mhusika anaonekana kama avatar yake mwenyewe. Wengine wote wanaona mbegu iliyo hapo juu."
+      },
+      {
+        "property": "hat",
+        "title": "Kofia ya mhusika",
+        "options": {
+          "none": "Hakuna",
+          "random": "Nasibu",
+          "bunny": "Sungura",
+          "coffee": "Kahawa",
+          "construction": "Ujenzi",
+          "cowboy": "Kauboi",
+          "education": "Elimu",
+          "knight": "Shujaa wa zamani",
+          "ninja": "Ninja",
+          "party": "Sherehe",
+          "pirate": "Maharamia",
+          "watermelon": "Tikiti maji"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Kichwa cha mwisho"
+      },
+      {
+        "property": "finishText",
+        "title": "Ujumbe wa mwisho"
+      },
+      {
+        "property": "finishLead",
+        "title": "Mstari juu ya maelekezo",
+        "description": "Acha wazi kwa mstari chaguomsingi."
+      },
+      {
+        "property": "prompt",
+        "title": "Maelekezo ya kunakili",
+        "description": "Yanaonyeshwa kwenye paneli ya mwisho pamoja na kitufe cha kunakili. Yafute ili kuficha kisanduku."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Jina la mchezo",
+        "description": "Hupa mchezo huu jina katika matukio ya maendeleo na alama za OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Kitambulisho cha mchezo",
+        "description": "Si lazima. Hutofautisha mchezo huu na mingine kwenye ukurasa katika matukio ya maendeleo."
+      }
+    ]
+  }
+}

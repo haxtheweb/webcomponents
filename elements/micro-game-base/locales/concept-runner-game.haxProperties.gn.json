@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Kuaarã ñani ñembosarai",
+    "description": "Peteĩ ñembosarai oñembohasa yke gotyo. Pe personaje oñani tata ndive ha ndoúi. Eñani eju'u hag̃ua kuaarã porãme ha ehasa ivaívape ári, upéi ehecha mba'e iporã ha mba'e ivaíva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Tembiapo ryru"
+      },
+      {
+        "property": "quest",
+        "title": "Tembiapo",
+        "description": "Pe prompt ñepyrũha pantalla-pe."
+      },
+      {
+        "property": "items",
+        "title": "Kuaarã",
+        "description": "Iporãva ojejapyhy, ivaíva ojehasa."
+      },
+      {
+        "property": "duration",
+        "title": "Ñani pukukue sekundo-pe",
+        "description": "Sapy'a rupi mboy pukukue pe ñani pya'e normal reheve."
+      },
+      {
+        "slot": "finish",
+        "title": "Ñembosarai rire",
+        "description": "Ndaha'eva tekotevẽ. Ñemoambue pe prompt ñemokõi rãngue ne remiandu ndive, ha'eháicha tapykuehoha térã link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Votõ ambue ñembosarai rire",
+        "description": "Ndaha'eva tekotevẽ. Votõ térã link ojehecha Eñembosarai jey ypýpe opaha panel-pe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Personaje semilla",
+        "description": "Ñe'ẽjehaipy oimeraẽva. Pe semilla peteĩcha ojapo tapiaite personaje peteĩcha. Kóva ha'e pe semilla peteĩcha HAX avatar oipuru."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Eipuru pe tapicha oike va'ekue personaje",
+        "description": "Oĩ jave peteĩ tapicha oike HAX-pe, pe personaje ojogua hi'avatar-pe. Ambue kuimba'e ohecha pe semilla ári."
+      },
+      {
+        "property": "hat",
+        "title": "Personaje sombrero",
+        "options": {
+          "none": "Mavave",
+          "random": "Ndaha'e",
+          "bunny": "Tapiti",
+          "coffee": "Kafe",
+          "construction": "Ñemopu'ã",
+          "cowboy": "Cowboy",
+          "education": "Mbo'epy",
+          "knight": "Kavaju kavallero",
+          "ninja": "Ninja",
+          "party": "Kuarahy ñemoĩ",
+          "pirate": "Pirata",
+          "watermelon": "Sandía"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Puntaje ohasa hag̃ua",
+        "description": "Papapy 0 guive 1 peve. Ojeje'e ñepyrũ rembiapo opavaépe ndive tekoporã rembiapo ojeporavo."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Opaha ryru"
+      },
+      {
+        "property": "finishText",
+        "title": "Opaha ñe'ẽ"
+      },
+      {
+        "property": "finishLead",
+        "title": "Línea prompt ári"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt emokõi hag̃ua"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Ñembosarai téra",
+        "description": "Omotéra ko ñembosarai-pe ñepyrũ rembiapo ha OER Schema markup-pe."
+      },
+      {
+        "property": "gameId",
+        "title": "Ñembosarai id",
+        "description": "Ndaha'eva tekotevẽ. Ombojoavy ko ñembosarai ambuépe kuatiahai-pe ñepyrũ rembiapo-pe."
+      }
+    ]
+  }
+}

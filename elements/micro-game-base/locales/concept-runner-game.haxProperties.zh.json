@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "概念跑酷游戏",
+    "description": "横向卷轴游戏。角色燃着火焰不停奔跑。跳起来接住好概念、跳过坏概念，然后查看好与坏的回顾。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "任务标题"
+      },
+      {
+        "property": "quest",
+        "title": "任务",
+        "description": "开始界面上的提示。"
+      },
+      {
+        "property": "items",
+        "title": "概念",
+        "description": "好的接住，坏的跳过。"
+      },
+      {
+        "property": "duration",
+        "title": "跑步时长（秒）",
+        "description": "正常速度下一次跑步大约持续多久。"
+      },
+      {
+        "slot": "finish",
+        "title": "游戏结束后",
+        "description": "可选。用你自己的内容替换结束面板上的复制提示词框，例如下一步或一个链接。"
+      },
+      {
+        "slot": "finish-actions",
+        "title": "游戏结束后的额外按钮",
+        "description": "可选。显示在结束面板上“再玩一次”旁边的按钮或链接。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "角色种子",
+        "description": "任意文字。相同的种子总会生成相同的角色。这与 HAX 头像使用的种子相同。"
+      },
+      {
+        "property": "seedFromUser",
+        "title": "使用已登录用户的角色",
+        "description": "有人登录 HAX 时，角色会长得像他们自己的头像。其他人看到的是上面的种子。"
+      },
+      {
+        "property": "hat",
+        "title": "角色帽子",
+        "options": {
+          "none": "无",
+          "random": "随机",
+          "bunny": "兔子",
+          "coffee": "咖啡",
+          "construction": "工地",
+          "cowboy": "牛仔",
+          "education": "教育",
+          "knight": "骑士",
+          "ninja": "忍者",
+          "party": "派对",
+          "pirate": "海盗",
+          "watermelon": "西瓜"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "及格分数",
+        "description": "0 到 1 之间的数字。随完成进度事件一起发送，作为成功阈值。"
+      },
+      {
+        "property": "finishTitle",
+        "title": "结束标题"
+      },
+      {
+        "property": "finishText",
+        "title": "结束消息"
+      },
+      {
+        "property": "finishLead",
+        "title": "提示词上方的文字"
+      },
+      {
+        "property": "prompt",
+        "title": "要复制的提示词"
+      },
+      {
+        "property": "gameTitle",
+        "title": "游戏名称",
+        "description": "在进度事件和 OER Schema 标记中为这个游戏命名。"
+      },
+      {
+        "property": "gameId",
+        "title": "游戏 ID",
+        "description": "可选。在进度事件中把这个游戏与页面上的其他游戏区分开。"
+      }
+    ]
+  }
+}

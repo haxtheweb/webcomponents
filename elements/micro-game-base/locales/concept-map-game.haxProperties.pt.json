@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Jogo do mapa de conceitos",
+    "description": "Um jogo curto de teclado. Uma personagem anda até cada conceito num mapa e ele explica-se. Toca em todos para ver confetes e receber um prompt para copiar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Título da missão"
+      },
+      {
+        "property": "quest",
+        "title": "Missão",
+        "description": "O texto mostrado no ecrã inicial. Diz ao jogador para que serve a jornada."
+      },
+      {
+        "property": "nodes",
+        "title": "Conceitos",
+        "description": "Cada conceito é um bloco no mapa."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Legenda do centro",
+        "description": "A ideia para a qual todos os conceitos convergem."
+      },
+      {
+        "slot": "finish",
+        "title": "Depois do jogo",
+        "description": "Opcional. Substitui a caixa de copiar prompt no painel final pelo teu próprio conteúdo, como um passo seguinte ou uma ligação."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Botões extra depois do jogo",
+        "description": "Opcional. Botões ou ligações mostrados ao lado de Jogar novamente no painel final."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Semente da personagem",
+        "description": "Qualquer texto. A mesma semente cria sempre a mesma personagem. É a mesma semente que o avatar do HAX usa."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Usar a personagem da pessoa com sessão iniciada",
+        "description": "Quando alguém tem sessão iniciada no HAX, a personagem parece o seu próprio avatar. Os outros veem a semente acima."
+      },
+      {
+        "property": "hat",
+        "title": "Chapéu da personagem",
+        "options": {
+          "none": "Nenhum",
+          "random": "Aleatório",
+          "bunny": "Coelho",
+          "coffee": "Café",
+          "construction": "Construção",
+          "cowboy": "Cowboy",
+          "education": "Formatura",
+          "knight": "Cavaleiro",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "pirate": "Pirata",
+          "watermelon": "Melancia"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Título final"
+      },
+      {
+        "property": "finishText",
+        "title": "Mensagem final"
+      },
+      {
+        "property": "finishLead",
+        "title": "Linha acima do prompt",
+        "description": "Deixa vazio para usar a linha predefinida."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt a copiar",
+        "description": "Mostrado no painel final com um botão de copiar. Apaga para ocultar a caixa."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nome do jogo",
+        "description": "Dá nome a este jogo nos eventos de progresso e na marcação OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID do jogo",
+        "description": "Opcional. Distingue este jogo de outros na página nos eventos de progresso."
+      }
+    ]
+  }
+}

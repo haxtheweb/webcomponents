@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Eré àwòrán èròjà ìmọ̀",
+    "description": "Eré kékeré lórí pátákó kọ́kọ́rọ́. Ẹni kan rìn lọ sí èròjà ìmọ̀ kọ̀ọ̀kan lórí àwòrán, èròjà náà sì ṣàlàyé ara rẹ̀. Fọwọ́ kan gbogbo wọn láti rí konfẹ́ti àti ìtọ́ni láti dà kọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Àkọlé ìrìn àjò"
+      },
+      {
+        "property": "quest",
+        "title": "Ìrìn àjò",
+        "description": "Ìtọ́ni tí a fi hàn lórí ojú ìbẹ̀rẹ̀. Sọ fún olùṣeré ohun tí ìrìn àjò náà wà fún."
+      },
+      {
+        "property": "nodes",
+        "title": "Àwọn èròjà ìmọ̀",
+        "description": "Èròjà ìmọ̀ kọ̀ọ̀kan jẹ́ àpótí kan lórí àwòrán náà."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Àmì àárín",
+        "description": "Èrò tí gbogbo àwọn èròjà ìmọ̀ papọ̀ jẹ́."
+      },
+      {
+        "slot": "finish",
+        "title": "Lẹ́yìn eré náà",
+        "description": "Àṣàyàn. Ó rọ́pò àpótí ìdàkọ ìtọ́ni lórí pánẹ́ẹ̀lì ìparí pẹ̀lú àkóónú tìrẹ, bí ìgbésẹ̀ tó kàn tàbí ìsopọ̀."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Àwọn bọ́tìnì àfikún lẹ́yìn eré náà",
+        "description": "Àṣàyàn. Àwọn bọ́tìnì tàbí ìsopọ̀ tí a fi hàn lẹ́gbẹ̀ẹ́ Tún ṣeré lórí pánẹ́ẹ̀lì ìparí."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Irúgbìn ẹni náà",
+        "description": "Ọ̀rọ̀ èyíkéyìí. Irúgbìn kan náà máa ń ṣe ẹni kan náà nígbà gbogbo. Irúgbìn kan náà ni avatar HAX ń lò."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Lo ẹni ti ẹni tó wọlé",
+        "description": "Nígbà tí ẹnìkan bá wọlé sí HAX, ẹni náà dà bí avatar tirẹ̀. Gbogbo àwọn tó kù yóò rí irúgbìn tí ó wà lókè."
+      },
+      {
+        "property": "hat",
+        "title": "Fìlà ẹni náà",
+        "options": {
+          "none": "Kò sí",
+          "random": "Àìròtẹ́lẹ̀",
+          "bunny": "Ehoro",
+          "coffee": "Kọfí",
+          "construction": "Ìkọ́lé",
+          "cowboy": "Káwbọ́ì",
+          "education": "Ẹ̀kọ́",
+          "knight": "Jagunjagun",
+          "ninja": "Ninja",
+          "party": "Àríyá",
+          "pirate": "Ajalèlókun",
+          "watermelon": "Ẹ̀gúsí"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Àkọlé ìparí"
+      },
+      {
+        "property": "finishText",
+        "title": "Ìránṣẹ́ ìparí"
+      },
+      {
+        "property": "finishLead",
+        "title": "Ìlà lókè ìtọ́ni",
+        "description": "Fi sílẹ̀ ní òfo fún ìlà àtìbẹ̀rẹ̀."
+      },
+      {
+        "property": "prompt",
+        "title": "Ìtọ́ni láti dà kọ",
+        "description": "A fi hàn lórí pánẹ́ẹ̀lì ìparí pẹ̀lú bọ́tìnì ìdàkọ. Pa á rẹ́ láti fi àpótí náà pamọ́."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Orúkọ eré",
+        "description": "Ó fún eré yìí lórúkọ nínú àwọn ìṣẹ̀lẹ̀ ìlọsíwájú àti àmì OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Id eré",
+        "description": "Àṣàyàn. Ó yà eré yìí sọ́tọ̀ sí àwọn mìíràn lórí ojú ewé nínú àwọn ìṣẹ̀lẹ̀ ìlọsíwájú."
+      }
+    ]
+  }
+}

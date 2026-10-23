@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Permainan pelari konsep",
+    "description": "Permainan skrol sisi. Watak berlari dalam api dan tidak pernah berhenti. Lompat untuk mengutip konsep yang baik dan melompati yang buruk, kemudian lihat ringkasan apa yang baik dan apa yang buruk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Tajuk misi"
+      },
+      {
+        "property": "quest",
+        "title": "Misi",
+        "description": "Gesaan pada skrin permulaan."
+      },
+      {
+        "property": "items",
+        "title": "Konsep",
+        "description": "Yang baik dikutip, yang buruk dilompati."
+      },
+      {
+        "property": "duration",
+        "title": "Panjang larian dalam saat",
+        "description": "Kira-kira berapa lama larian berlangsung pada kelajuan biasa."
+      },
+      {
+        "slot": "finish",
+        "title": "Selepas permainan",
+        "description": "Pilihan. Menggantikan kotak salin gesaan pada panel tamat dengan kandungan anda sendiri, seperti langkah seterusnya atau pautan."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Butang tambahan selepas permainan",
+        "description": "Pilihan. Butang atau pautan yang dipaparkan di sebelah Main lagi pada panel tamat."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Benih watak",
+        "description": "Sebarang teks. Benih yang sama sentiasa menghasilkan watak yang sama. Ini benih yang sama digunakan oleh avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Guna watak orang yang log masuk",
+        "description": "Apabila seseorang log masuk ke HAX, watak kelihatan seperti avatar mereka sendiri. Orang lain melihat benih di atas."
+      },
+      {
+        "property": "hat",
+        "title": "Topi watak",
+        "options": {
+          "none": "Tiada",
+          "random": "Rawak",
+          "bunny": "Arnab",
+          "coffee": "Kopi",
+          "construction": "Pembinaan",
+          "cowboy": "Koboi",
+          "education": "Pendidikan",
+          "knight": "Kesatria",
+          "ninja": "Ninja",
+          "party": "Parti",
+          "pirate": "Lanun",
+          "watermelon": "Tembikai"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Skor lulus",
+        "description": "Nombor dari 0 hingga 1. Dihantar bersama acara kemajuan selesai sebagai ambang kejayaan."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Tajuk penamat"
+      },
+      {
+        "property": "finishText",
+        "title": "Mesej penamat"
+      },
+      {
+        "property": "finishLead",
+        "title": "Baris di atas gesaan"
+      },
+      {
+        "property": "prompt",
+        "title": "Gesaan untuk disalin"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nama permainan",
+        "description": "Menamakan permainan ini dalam acara kemajuan dan markup OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID permainan",
+        "description": "Pilihan. Membezakan permainan ini daripada yang lain pada halaman dalam acara kemajuan."
+      }
+    ]
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Begrepskartspill",
+    "description": "Et kort tastaturspill. En figur går til hvert begrep på et kart, og begrepet forklarer seg selv. Berør alle for konfetti og en ledetekst du kan kopiere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Oppdragsoverskrift"
+      },
+      {
+        "property": "quest",
+        "title": "Oppdrag",
+        "description": "Ledeteksten som vises på startskjermen. Fortell spilleren hva reisen er til for."
+      },
+      {
+        "property": "nodes",
+        "title": "Begreper",
+        "description": "Hvert begrep er en rute på kartet."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Midtetikett",
+        "description": "Ideen alle begrepene til sammen peker mot."
+      },
+      {
+        "slot": "finish",
+        "title": "Etter spillet",
+        "description": "Valgfritt. Erstatter boksen med ledetekst å kopiere på avslutningspanelet med ditt eget innhold, for eksempel et neste steg eller en lenke."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Ekstra knapper etter spillet",
+        "description": "Valgfritt. Knapper eller lenker som vises ved siden av Spill igjen på avslutningspanelet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Figurfrø",
+        "description": "Hvilken som helst tekst. Samme frø gir alltid samme figur. Dette er samme frø som HAX-avataren bruker."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Bruk figuren til den innloggede personen",
+        "description": "Når noen er logget inn i HAX, ser figuren ut som personens egen avatar. Alle andre ser frøet ovenfor."
+      },
+      {
+        "property": "hat",
+        "title": "Figurens hatt",
+        "options": {
+          "none": "Ingen",
+          "random": "Tilfeldig",
+          "bunny": "Kanin",
+          "coffee": "Kaffe",
+          "construction": "Bygg",
+          "cowboy": "Cowboy",
+          "education": "Utdanning",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Fest",
+          "pirate": "Pirat",
+          "watermelon": "Vannmelon"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Avslutningsoverskrift"
+      },
+      {
+        "property": "finishText",
+        "title": "Avslutningsmelding"
+      },
+      {
+        "property": "finishLead",
+        "title": "Linje over ledeteksten",
+        "description": "La stå tom for standardlinjen."
+      },
+      {
+        "property": "prompt",
+        "title": "Ledetekst å kopiere",
+        "description": "Vises på avslutningspanelet med en kopieringsknapp. Tøm feltet for å skjule boksen."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spillnavn",
+        "description": "Gir dette spillet navn i fremdriftshendelser og OER Schema-markup."
+      },
+      {
+        "property": "gameId",
+        "title": "Spill-id",
+        "description": "Valgfritt. Skiller dette spillet fra andre på siden i fremdriftshendelser."
+      }
+    ]
+  }
+}

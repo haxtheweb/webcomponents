@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Konzept-Laafspill",
+    "description": "E Sidescroller. De Charakter leeft a Flamen a stoppt ni. Sprong, fir déi gutt Konzepter ze packen an iwwer déi schlecht, a kuck dann eng Zesummefaassung vun deem, wat gutt a wat schlecht war."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Iwwerschrëft vun der Quest"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "De Prompt um Startbildschierm."
+      },
+      {
+        "property": "items",
+        "title": "Konzepter",
+        "description": "Déi gutt ginn gepackt, iwwer déi schlecht gëtt gesprongen."
+      },
+      {
+        "property": "duration",
+        "title": "Längt vum Laf a Sekonnen",
+        "description": "Ongeféier wéi laang de Laf bei normaler Vitess dauert."
+      },
+      {
+        "slot": "finish",
+        "title": "Nom Spill",
+        "description": "Optional. Ersetzt d'Këscht fir e Prompt ze kopéieren um Schlusspanel duerch däin eegenen Inhalt, zum Beispill e nächste Schrëtt oder e Link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Zousätzlech Knäppercher nom Spill",
+        "description": "Optional. Knäpper oder Linken, déi niewent Nach eng Kéier spillen um Schlusspanel ugewise ginn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Seed vum Charakter",
+        "description": "Iergendeen Text. Dee selwechte Seed mécht ëmmer dee selwechte Charakter. Dëst ass deen selwechte Seed, deen och den HAX-Avatar benotzt."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Charakter vun der ugemellter Persoun benotzen",
+        "description": "Wann een bei HAX ugemellt ass, gesäit de Charakter aus wéi säin eegenen Avatar. Jiddereen anescht gesäit de Seed hei uewen."
+      },
+      {
+        "property": "hat",
+        "title": "Hutt vum Charakter",
+        "options": {
+          "none": "Keen",
+          "random": "Zoufälleg",
+          "bunny": "Hues",
+          "coffee": "Kaffi",
+          "construction": "Bau",
+          "cowboy": "Cowboy",
+          "education": "Educatioun",
+          "knight": "Ritter",
+          "ninja": "Ninja",
+          "party": "Party",
+          "pirate": "Piratt",
+          "watermelon": "Waassermeloun"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Bestanen-Score",
+        "description": "Eng Zuel vun 0 bis 1. Gëtt mam ofgeschlossene Fortschrëttsevenement als Erfolgsschwell geschéckt."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Iwwerschrëft um Enn"
+      },
+      {
+        "property": "finishText",
+        "title": "Message um Enn"
+      },
+      {
+        "property": "finishLead",
+        "title": "Zeil iwwer dem Prompt"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt zum Kopéieren"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Numm vum Spill",
+        "description": "Benennt dëst Spill an de Fortschrëttsevenementer a bei der OER Schema-Markéierung."
+      },
+      {
+        "property": "gameId",
+        "title": "Spill-ID",
+        "description": "Optional. Ënnerscheet dëst Spill vun anere Spiller op der Säit an de Fortschrëttsevenementer."
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Hugtakaleiðangursleikur",
+    "description": "Heimur til að flakka um. Hugtökin finna þig og spyrja spurningar. Svaraðu rétt til að sigra eitt og opna húsið þess. Yfirlitið sýnir tilraunir og hvað á að skoða."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Fyrirsögn leiðangurs"
+      },
+      {
+        "property": "quest",
+        "title": "Leiðangur",
+        "description": "Textinn á upphafsskjánum. Segðu leikmanninum til hvers ferðin er."
+      },
+      {
+        "property": "nodes",
+        "title": "Hugtök",
+        "description": "Hvert hugtak er hús með skrímsli."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Miðjuheiti",
+        "description": "Hugmyndin sem öll hugtökin mynda saman."
+      },
+      {
+        "slot": "finish",
+        "title": "Eftir leikinn",
+        "description": "Valfrjálst. Skiptir út reitnum til að afrita fyrirmæli á lokaspjaldinu fyrir þitt eigið efni, til dæmis næsta skref eða tengil."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Aukahnappar eftir leikinn",
+        "description": "Valfrjálst. Hnappar eða tenglar sem birtast við hlið Spila aftur á lokaspjaldinu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Hjörtu",
+        "description": "Röng svör áður en hugtakið sleppur."
+      },
+      {
+        "property": "seed",
+        "title": "Fræ persónu",
+        "description": "Hvaða texti sem er. Sama fræ býr alltaf til sömu persónu. Þetta er sama fræ og HAX-avatarinn notar."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Nota persónu innskráðs notanda",
+        "description": "Þegar einhver er skráður inn í HAX lítur persónan út eins og hans eigin avatar. Allir aðrir sjá fræið hér að ofan."
+      },
+      {
+        "property": "hat",
+        "title": "Hattur persónu",
+        "options": {
+          "none": "Enginn",
+          "random": "Tilviljun",
+          "bunny": "Kanína",
+          "coffee": "Kaffi",
+          "construction": "Byggingarvinna",
+          "cowboy": "Kúreki",
+          "education": "Menntun",
+          "knight": "Riddari",
+          "ninja": "Ninja",
+          "party": "Partý",
+          "pirate": "Sjóræningi",
+          "watermelon": "Vatnsmelóna"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Lokafyrirsögn"
+      },
+      {
+        "property": "finishText",
+        "title": "Lokaskilaboð"
+      },
+      {
+        "property": "finishLead",
+        "title": "Lína fyrir ofan fyrirmælin",
+        "description": "Hafðu tómt til að nota sjálfgefna línu."
+      },
+      {
+        "property": "prompt",
+        "title": "Fyrirmæli til að afrita",
+        "description": "Birtist á lokaspjaldinu með afritunarhnappi. Hreinsaðu til að fela reitinn."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Heiti leiks",
+        "description": "Nefnir þennan leik í framvinduatburðum og OER Schema-merkingu."
+      },
+      {
+        "property": "gameId",
+        "title": "Auðkenni leiks",
+        "description": "Valfrjálst. Aðgreinir þennan leik frá öðrum á síðunni í framvinduatburðum."
+      }
+    ]
+  }
+}

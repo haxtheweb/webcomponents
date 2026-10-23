@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Begreppslöparspel",
+    "description": "Ett sidscrollande spel. Figuren springer i lågor och stannar aldrig. Hoppa för att ta de bra begreppen och över de dåliga, och se sedan en sammanfattning av vad som var bra och dåligt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Rubrik för uppdraget"
+      },
+      {
+        "property": "quest",
+        "title": "Uppdrag",
+        "description": "Texten på startskärmen."
+      },
+      {
+        "property": "items",
+        "title": "Begrepp",
+        "description": "De bra tas, de dåliga hoppas över."
+      },
+      {
+        "property": "duration",
+        "title": "Rundans längd i sekunder",
+        "description": "Ungefär hur länge rundan varar i normal hastighet."
+      },
+      {
+        "slot": "finish",
+        "title": "Efter spelet",
+        "description": "Valfritt. Ersätter rutan med prompt att kopiera på slutpanelen med ditt eget innehåll, till exempel ett nästa steg eller en länk."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Extra knappar efter spelet",
+        "description": "Valfritt. Knappar eller länkar som visas bredvid Spela igen på slutpanelen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Figurens frö",
+        "description": "Valfri text. Samma frö ger alltid samma figur. Det är samma frö som HAX-avataren använder."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Använd den inloggade personens figur",
+        "description": "När någon är inloggad i HAX ser figuren ut som personens egen avatar. Alla andra ser fröet ovan."
+      },
+      {
+        "property": "hat",
+        "title": "Figurens hatt",
+        "options": {
+          "none": "Ingen",
+          "random": "Slumpmässig",
+          "bunny": "Kanin",
+          "coffee": "Kaffe",
+          "construction": "Bygg",
+          "cowboy": "Cowboy",
+          "education": "Examen",
+          "knight": "Riddare",
+          "ninja": "Ninja",
+          "party": "Fest",
+          "pirate": "Pirat",
+          "watermelon": "Vattenmelon"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Godkänd poäng",
+        "description": "Ett tal från 0 till 1. Skickas med händelsen för slutfört förlopp som tröskel för lyckat resultat."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Rubrik vid slutet"
+      },
+      {
+        "property": "finishText",
+        "title": "Slutmeddelande"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rad ovanför prompten"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt att kopiera"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spelets namn",
+        "description": "Namnger spelet i förloppshändelser och OER Schema-markering."
+      },
+      {
+        "property": "gameId",
+        "title": "Spel-id",
+        "description": "Valfritt. Skiljer spelet från andra på sidan i förloppshändelser."
+      }
+    ]
+  }
+}

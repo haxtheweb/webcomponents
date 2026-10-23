@@ -1,0 +1,249 @@
+{
+  "api": "1",
+  "canScale": true,
+  "canEditSource": true,
+  "type": "element",
+  "designSystem": false,
+  "gizmo": {
+    "title": "Concept runner game",
+    "description": "A side scroller. The character runs on fire and never stops. Jump to grab the good concepts and over the bad ones, then see a recap of what was good and what was bad.",
+    "icon": "hax:hax2022",
+    "color": "purple",
+    "tags": ["Other", "Interactive", "Game"],
+    "handles": [],
+    "meta": {
+      "author": "haxtheweb"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Quest heading",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "The prompt on the start screen.",
+        "inputMethod": "textarea",
+        "icon": "communication:message"
+      },
+      {
+        "property": "items",
+        "title": "Concepts",
+        "description": "Good ones are grabbed, bad ones are jumped.",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "properties": [
+          {
+            "property": "label",
+            "title": "Name",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "kind",
+            "title": "Good or bad",
+            "inputMethod": "select",
+            "options": {
+              "good": "Good",
+              "bad": "Bad"
+            }
+          },
+          {
+            "property": "text",
+            "title": "Why it is good or bad",
+            "description": "Shown when the character meets it and again in the recap.",
+            "inputMethod": "textarea",
+            "required": true
+          }
+        ]
+      },
+      {
+        "property": "duration",
+        "title": "Run length in seconds",
+        "description": "About how long the run lasts at normal speed.",
+        "inputMethod": "number"
+      },
+      {
+        "slot": "finish",
+        "title": "After the game",
+        "description": "Optional. Replaces the copy-a-prompt box on the finish panel with your own content, such as a next step or a link.",
+        "inputMethod": "textarea",
+        "slotWrapper": "div"
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Extra buttons after the game",
+        "description": "Optional. Buttons or links shown beside Play again on the finish panel.",
+        "inputMethod": "textarea",
+        "slotWrapper": "div"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Character seed",
+        "inputMethod": "textfield",
+        "description": "Any text. The same seed always makes the same character. This is the same seed the HAX avatar uses."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Use the signed in person's character",
+        "description": "When someone is signed in to HAX, the character looks like their own avatar. Everyone else sees the seed above.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "hat",
+        "title": "Character hat",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "random": "Random",
+          "bunny": "Bunny",
+          "coffee": "Coffee",
+          "construction": "Construction",
+          "cowboy": "Cowboy",
+          "education": "Education",
+          "knight": "Knight",
+          "ninja": "Ninja",
+          "party": "Party",
+          "pirate": "Pirate",
+          "watermelon": "Watermelon"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Passing score",
+        "description": "A number from 0 to 1. Sent with the completed progress event as the success threshold.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "finishTitle",
+        "title": "Finish heading",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "finishText",
+        "title": "Finish message",
+        "inputMethod": "textarea"
+      },
+      {
+        "property": "finishLead",
+        "title": "Line above the prompt",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt to copy",
+        "inputMethod": "textarea"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Game name",
+        "description": "Names this game in progress events and OER Schema markup.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "gameId",
+        "title": "Game id",
+        "description": "Optional. Tells this game apart from others on the page in progress events.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": [
+      "state",
+      "done",
+      "edit-mode",
+      "element-visible",
+      "t",
+      "typeof",
+      "resource",
+      "prefix",
+      "schema-map",
+      "_userSeed",
+      "_finishSlotted"
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "concept-runner-game",
+      "properties": {
+        "items": [
+          {
+            "label": "Custom Elements",
+            "kind": "good",
+            "text": "Define your own HTML tag with customElements.define. Browsers run this natively, so no library is needed."
+          },
+          {
+            "label": "React",
+            "kind": "bad",
+            "text": "A framework with its own runtime and build step. Its components are not browser features, so they need React everywhere they run."
+          },
+          {
+            "label": "Shadow DOM",
+            "kind": "good",
+            "text": "Gives an element private markup and styles that the rest of the page cannot accidentally break."
+          },
+          {
+            "label": "TypeScript",
+            "kind": "bad",
+            "text": "Adds types, but browsers cannot run it. It has to be compiled to JavaScript before it ships."
+          },
+          {
+            "label": "HTML Templates",
+            "kind": "good",
+            "text": "The template element holds markup that stays inert until you clone it, so it is cheap to define and reuse."
+          },
+          {
+            "label": "Angular",
+            "kind": "bad",
+            "text": "A full framework with its own compiler and template language. Its components need that toolchain and runtime to work."
+          },
+          {
+            "label": "Slots",
+            "kind": "good",
+            "text": "Slots let authors drop their own content into an element, which is how one element can wrap anything."
+          },
+          {
+            "label": "JSX",
+            "kind": "bad",
+            "text": "Markup written inside JavaScript that browsers do not understand. It has to be compiled away first."
+          },
+          {
+            "label": "ES Modules",
+            "kind": "good",
+            "text": "Native import and export load an element's code with no bundler in between."
+          },
+          {
+            "label": "jQuery",
+            "kind": "bad",
+            "text": "A library that smoothed over old browser differences. Most of what it did is now native, like querySelector and fetch."
+          },
+          {
+            "label": "ElementInternals",
+            "kind": "good",
+            "text": "Lets a custom element join forms and expose accessibility roles and states through the browser itself."
+          },
+          {
+            "label": "Vue",
+            "kind": "bad",
+            "text": "Single file components need a compiler and the Vue runtime, so they are not plain browser code."
+          }
+        ],
+        "prompt": "Quiz me on the web component standards so I remember what I just played. Use custom elements, shadow DOM, HTML templates, slots, ES modules and ElementInternals.\n\nAsk one question at a time, wait for my answer, then tell me what I got right and what to review. After six questions, show me where each of them appears in a HAX element made with the HAX CLI (@haxtheweb/create).",
+        "seed": "runner",
+        "finishTitle": "Run complete",
+        "questTitle": "Your quest",
+        "quest": "Run through the web component specification. Jump to grab what is native web and over what is not.",
+        "finishLead": "Paste this into Claude to practice what you just ran."
+      },
+      "content": ""
+    }
+  ]
+}

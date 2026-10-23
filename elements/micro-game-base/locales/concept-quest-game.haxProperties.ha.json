@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Wasan manufar ra'ayoyi",
+    "description": "Duniya buɗaɗɗiya don yawo. Ra'ayoyi suna same ka suna yi maka tambaya. Amsa daidai don ka ci ɗaya ka buɗe gidansa. Taƙaitawar tana nuna ƙoƙari da abin da za a sake dubawa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Taken manufa"
+      },
+      {
+        "property": "quest",
+        "title": "Manufa",
+        "description": "Umarnin da ake nuna a allon farawa. Gaya wa ɗan wasa dalilin tafiyar."
+      },
+      {
+        "property": "nodes",
+        "title": "Ra'ayoyi",
+        "description": "Kowane ra'ayi gida ne mai dodo."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Lakabin tsakiya",
+        "description": "Ra'ayin da dukkan ra'ayoyin suke taruwa a kai."
+      },
+      {
+        "slot": "finish",
+        "title": "Bayan wasa",
+        "description": "Zaɓi ne. Yana maye gurbin akwatin kwafar umarni a allon ƙarshe da naka abun cikin, kamar mataki na gaba ko hanyar haɗi."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Ƙarin maɓallai bayan wasa",
+        "description": "Zaɓi ne. Maɓallai ko hanyoyin haɗi da ake nunawa kusa da Sake wasa a allon ƙarshe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Zukata",
+        "description": "Amsoshi marasa daidai kafin ra'ayin ya tsere."
+      },
+      {
+        "property": "seed",
+        "title": "Iri na halitta",
+        "description": "Kowane rubutu. Iri ɗaya yana haifar da halitta ɗaya koyaushe. Wannan iri ɗaya ne da avatar na HAX yake amfani da shi."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Yi amfani da halittar mutumin da ya shiga",
+        "description": "Idan wani ya shiga HAX, halittar tana kama da avatar ɗinsa. Sauran mutane suna ganin irin da ke sama."
+      },
+      {
+        "property": "hat",
+        "title": "Hular halitta",
+        "options": {
+          "none": "Babu",
+          "random": "Bazuwar",
+          "bunny": "Zomo",
+          "coffee": "Kofi",
+          "construction": "Gini",
+          "cowboy": "Kaboyi",
+          "education": "Ilimi",
+          "knight": "Jarumi",
+          "ninja": "Ninja",
+          "party": "Biki",
+          "pirate": "Ɗan fashin teku",
+          "watermelon": "Kankana"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Taken ƙarshe"
+      },
+      {
+        "property": "finishText",
+        "title": "Saƙon ƙarshe"
+      },
+      {
+        "property": "finishLead",
+        "title": "Layi a saman umarni",
+        "description": "Bar shi babu komai don layin da aka saba."
+      },
+      {
+        "property": "prompt",
+        "title": "Umarnin da za a kwafa",
+        "description": "Ana nuna shi a allon ƙarshe tare da maɓallin kwafa. Goge shi don ɓoye akwatin."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Sunan wasa",
+        "description": "Yana sanya wa wannan wasan suna a abubuwan ci gaba da alamar OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID na wasa",
+        "description": "Zaɓi ne. Yana bambanta wannan wasan da sauran a shafin cikin abubuwan ci gaba."
+      }
+    ]
+  }
+}

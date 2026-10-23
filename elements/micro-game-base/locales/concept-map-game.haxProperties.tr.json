@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Kavram haritası oyunu",
+    "description": "Kısa bir klavye oyunu. Bir karakter haritadaki her kavrama yürür ve kavram kendini anlatır. Hepsine dokunursan konfeti ve kopyalanacak bir istem gelir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Görev başlığı"
+      },
+      {
+        "property": "quest",
+        "title": "Görev",
+        "description": "Başlangıç ekranında gösterilen istem. Oyuncuya yolculuğun ne için olduğunu söyle."
+      },
+      {
+        "property": "nodes",
+        "title": "Kavramlar",
+        "description": "Her kavram haritada bir karedir."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Orta etiket",
+        "description": "Tüm kavramların birleşerek oluşturduğu fikir."
+      },
+      {
+        "slot": "finish",
+        "title": "Oyundan sonra",
+        "description": "İsteğe bağlı. Bitiş panelindeki istem kopyalama kutusunun yerine kendi içeriğini koyar, örneğin sonraki adım veya bir bağlantı."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Oyundan sonra ek düğmeler",
+        "description": "İsteğe bağlı. Bitiş panelinde Tekrar oyna düğmesinin yanında gösterilen düğmeler veya bağlantılar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Karakter tohumu",
+        "description": "Herhangi bir metin. Aynı tohum her zaman aynı karakteri oluşturur. Bu, HAX avatarının kullandığı tohumla aynıdır."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Oturum açan kişinin karakterini kullan",
+        "description": "Biri HAX'e giriş yaptığında karakter kendi avatarına benzer. Diğer herkes yukarıdaki tohumu görür."
+      },
+      {
+        "property": "hat",
+        "title": "Karakter şapkası",
+        "options": {
+          "none": "Yok",
+          "random": "Rastgele",
+          "bunny": "Tavşan",
+          "coffee": "Kahve",
+          "construction": "İnşaat",
+          "cowboy": "Kovboy",
+          "education": "Eğitim",
+          "knight": "Şövalye",
+          "ninja": "Ninja",
+          "party": "Parti",
+          "pirate": "Korsan",
+          "watermelon": "Karpuz"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Bitiş başlığı"
+      },
+      {
+        "property": "finishText",
+        "title": "Bitiş mesajı"
+      },
+      {
+        "property": "finishLead",
+        "title": "İstemin üstündeki satır",
+        "description": "Varsayılan satır için boş bırak."
+      },
+      {
+        "property": "prompt",
+        "title": "Kopyalanacak istem",
+        "description": "Bitiş panelinde bir kopyala düğmesiyle gösterilir. Kutuyu gizlemek için temizle."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Oyun adı",
+        "description": "Bu oyuna ilerleme olaylarında ve OER Schema işaretlemesinde ad verir."
+      },
+      {
+        "property": "gameId",
+        "title": "Oyun kimliği",
+        "description": "İsteğe bağlı. İlerleme olaylarında bu oyunu sayfadaki diğerlerinden ayırır."
+      }
+    ]
+  }
+}

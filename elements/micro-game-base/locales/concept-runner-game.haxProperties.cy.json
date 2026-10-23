@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Gêm rhedwr cysyniadau",
+    "description": "Gêm sgrolio ochr. Mae'r cymeriad yn rhedeg ar dân ac byth yn stopio. Neidiwch i gipio'r cysyniadau da ac dros y rhai drwg, yna gwelwch grynodeb o'r hyn oedd yn dda a'r hyn oedd yn ddrwg."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Pennawd y daith"
+      },
+      {
+        "property": "quest",
+        "title": "Taith",
+        "description": "Yr anogwr ar y sgrin gychwyn."
+      },
+      {
+        "property": "items",
+        "title": "Cysyniadau",
+        "description": "Mae'r rhai da yn cael eu cipio, mae'r rhai drwg yn cael eu neidio."
+      },
+      {
+        "property": "duration",
+        "title": "Hyd y rhediad mewn eiliadau",
+        "description": "Tua pha mor hir y mae'r rhediad yn para ar gyflymder arferol."
+      },
+      {
+        "slot": "finish",
+        "title": "Ar ôl y gêm",
+        "description": "Dewisol. Yn disodli'r blwch copïo anogwr ar y panel gorffen gyda'ch cynnwys eich hun, fel cam nesaf neu ddolen."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Botymau ychwanegol ar ôl y gêm",
+        "description": "Dewisol. Botymau neu ddolenni a ddangosir wrth ymyl Chwarae eto ar y panel gorffen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Hedyn y cymeriad",
+        "description": "Unrhyw destun. Mae'r un hedyn bob amser yn creu'r un cymeriad. Dyma'r un hedyn ag y mae afatar HAX yn ei ddefnyddio."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Defnyddio cymeriad y person sydd wedi mewngofnodi",
+        "description": "Pan fydd rhywun wedi mewngofnodi i HAX, mae'r cymeriad yn edrych fel eu hafatar eu hunain. Mae pawb arall yn gweld yr hedyn uchod."
+      },
+      {
+        "property": "hat",
+        "title": "Het y cymeriad",
+        "options": {
+          "none": "Dim",
+          "random": "Ar hap",
+          "bunny": "Cwningen",
+          "coffee": "Coffi",
+          "construction": "Adeiladu",
+          "cowboy": "Cowboi",
+          "education": "Addysg",
+          "knight": "Marchog",
+          "ninja": "Ninja",
+          "party": "Parti",
+          "pirate": "Môr-leidr",
+          "watermelon": "Melon dŵr"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Sgôr pasio",
+        "description": "Rhif o 0 i 1. Yn cael ei anfon gyda'r digwyddiad cynnydd cyflawn fel y trothwy llwyddiant."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Pennawd y diwedd"
+      },
+      {
+        "property": "finishText",
+        "title": "Neges y diwedd"
+      },
+      {
+        "property": "finishLead",
+        "title": "Llinell uwchben yr anogwr"
+      },
+      {
+        "property": "prompt",
+        "title": "Anogwr i'w gopïo"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Enw'r gêm",
+        "description": "Yn enwi'r gêm hon mewn digwyddiadau cynnydd a marcio OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID y gêm",
+        "description": "Dewisol. Yn gwahaniaethu'r gêm hon oddi wrth eraill ar y dudalen mewn digwyddiadau cynnydd."
+      }
+    ]
+  }
+}

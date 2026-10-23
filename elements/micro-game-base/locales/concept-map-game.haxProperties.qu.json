@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Yuyay mapa pukllay",
+    "description": "Pisi llavenchaq pukllay. Puriq runa mapapi sapa yuyayman rin, chaymi payman willakun. Llapanta llamiptiyki, confetiwan kopiana kamachiyniyuq kanki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Puriypa umanchaynin"
+      },
+      {
+        "property": "quest",
+        "title": "Puriy",
+        "description": "Qallariy llimpipi rikuchisqa kamachiy. Pukllaqman willay kay purina imapaq kasqanta."
+      },
+      {
+        "property": "nodes",
+        "title": "Yuyaykuna",
+        "description": "Sapa yuyayqa mapapi huk tikram."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Chawpi sutichay",
+        "description": "Llapa yuyaykuna huñunasqa yuyay."
+      },
+      {
+        "slot": "finish",
+        "title": "Pukllaypa qhipanpi",
+        "description": "Munaspalla. Tukuy panelpi kamachiyta kopianapaq kanchata hukniqmanta tikran qanpa kikin yachayniykiwan, hina qatiq ruray icha t'inki."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Pukllaypa qhipanpi yapasqa ñit'ikuna",
+        "description": "Munaspalla. Tukuy panelpi Wakmanta pukllay nisqapa ladonpi rikuchisqa ñit'ikuna icha t'inkikuna."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Puriq runap muhun",
+        "description": "Ima qillqapas. Kikin muhuqa sapa kuti kikin puriq runata ruwan. Kayqa HAX avatar llamk'achisqan muhu kikinmi."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Yaykusqa runap puriq runanta llamk'achiy",
+        "description": "Pipas HAXman yaykuptinqa, puriq runaqa paypa kikin avatarnintaqa rikchakun. Hukkunaqa patapi muhuta rikunku."
+      },
+      {
+        "property": "hat",
+        "title": "Puriq runap pukunan",
+        "options": {
+          "none": "Mana",
+          "random": "Mayqinpas",
+          "bunny": "Quwi",
+          "coffee": "Kafe",
+          "construction": "Wasichay",
+          "cowboy": "Cowboy",
+          "education": "Yachakuy",
+          "knight": "Awqa kuraka",
+          "ninja": "Ninja",
+          "party": "Raymi",
+          "pirate": "Pirata",
+          "watermelon": "Sandiya"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Tukuypa umanchaynin"
+      },
+      {
+        "property": "finishText",
+        "title": "Tukuypa willakuynin"
+      },
+      {
+        "property": "finishLead",
+        "title": "Kamachiypa hawanpi siq'i",
+        "description": "Ch'usaqta saqey sapa kutipa siq'inpaq."
+      },
+      {
+        "property": "prompt",
+        "title": "Kopianapaq kamachiy",
+        "description": "Tukuy panelpi kopiana ñit'iwan rikuchisqa. Pichay mana rikuchinaykipaq."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Pukllaypa sutin",
+        "description": "Kay pukllayta sutichan puririy ruwaykunapi hinallataq OER Schema willakuypi."
+      },
+      {
+        "property": "gameId",
+        "title": "Pukllaypa id nisqan",
+        "description": "Munaspalla. Kay pukllayta huk pukllaykunamanta rikuchin puririy ruwaykunapi."
+      }
+    ]
+  }
+}

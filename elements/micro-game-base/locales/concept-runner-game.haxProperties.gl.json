@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Xogo de carreira de conceptos",
+    "description": "Un xogo de desprazamento lateral. O personaxe corre en chamas e nunca para. Salta para coller os bos conceptos e esquivar os malos, e despois mira un resumo do que foi bo e do que foi malo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Título da misión"
+      },
+      {
+        "property": "quest",
+        "title": "Misión",
+        "description": "O texto da pantalla de inicio."
+      },
+      {
+        "property": "items",
+        "title": "Conceptos",
+        "description": "Os bos cóllense, os malos sáltanse."
+      },
+      {
+        "property": "duration",
+        "title": "Duración da carreira en segundos",
+        "description": "Aproximadamente canto dura a carreira a velocidade normal."
+      },
+      {
+        "slot": "finish",
+        "title": "Despois do xogo",
+        "description": "Opcional. Substitúe a caixa para copiar o prompt no panel final polo teu propio contido, como un seguinte paso ou unha ligazón."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Botóns extra despois do xogo",
+        "description": "Opcional. Botóns ou ligazóns que se mostran xunto a Xogar de novo no panel final."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Semente do personaxe",
+        "description": "Calquera texto. A mesma semente sempre crea o mesmo personaxe. É a mesma semente que usa o avatar de HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Usar o personaxe da persoa que iniciou sesión",
+        "description": "Cando alguén inicia sesión en HAX, o personaxe parécese ao seu propio avatar. Os demais ven a semente de arriba."
+      },
+      {
+        "property": "hat",
+        "title": "Sombreiro do personaxe",
+        "options": {
+          "none": "Ningún",
+          "random": "Aleatorio",
+          "bunny": "Coello",
+          "coffee": "Café",
+          "construction": "Obra",
+          "cowboy": "Vaqueiro",
+          "education": "Educación",
+          "knight": "Cabaleiro",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "pirate": "Pirata",
+          "watermelon": "Sandía"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Puntuación para aprobar",
+        "description": "Un número de 0 a 1. Envíase co evento de progreso completado como limiar de éxito."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Título do remate"
+      },
+      {
+        "property": "finishText",
+        "title": "Mensaxe do remate"
+      },
+      {
+        "property": "finishLead",
+        "title": "Liña sobre o prompt"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt para copiar"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nome do xogo",
+        "description": "Dá nome a este xogo nos eventos de progreso e no marcado de OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID do xogo",
+        "description": "Opcional. Distingue este xogo doutros da páxina nos eventos de progreso."
+      }
+    ]
+  }
+}

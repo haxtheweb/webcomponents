@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Kēmu oma huatau",
+    "description": "He kēmu hurihuri taha. Ka oma te kiripuaki me te ahi, kāore e tū. Peke hei hopu i ngā huatau pai, hei peke whakawhiti i ngā kino, ā, ka kite koe i te arotake o ngā mea pai me ngā mea kino."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Ingoa matua o te mahi"
+      },
+      {
+        "property": "quest",
+        "title": "Mahi",
+        "description": "Te tohutohu o te mata tīmatanga."
+      },
+      {
+        "property": "items",
+        "title": "Ngā huatau",
+        "description": "Ka hopukina ngā pai, ka pekehia ngā kino."
+      },
+      {
+        "property": "duration",
+        "title": "Te roa o te oma i ngā hēkona",
+        "description": "Te roa tata o te oma i te tere noa."
+      },
+      {
+        "slot": "finish",
+        "title": "Ā muri i te kēmu",
+        "description": "Kōwhiringa anake. Ka whakakapia te pouaka tārua tohutohu o te papa whakamutunga ki tāu ake ihirangi, pēnei i tētahi hīkoinga e whai ake nei, i tētahi hononga rānei."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Ētahi atu pātene ā muri i te kēmu",
+        "description": "Kōwhiringa anake. Ngā pātene, ngā hononga rānei e whakaaturia ana i te taha o Tākaro anō i te papa whakamutunga."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Kakano kiripuaki",
+        "description": "He kuputuhi tahi noa. Ka hanga tonu te kakano ōrite i te kiripuaki ōrite. Koinei te kakano ōrite e whakamahia ana e te hoahoa kanohi o HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Whakamahia te kiripuaki o te tangata kua takiuru",
+        "description": "Ka takiuru tētahi ki HAX, ka rite te kiripuaki ki tōna ake hoahoa kanohi. Ka kite ētahi atu i te kakano i runga ake nei."
+      },
+      {
+        "property": "hat",
+        "title": "Potae kiripuaki",
+        "options": {
+          "none": "Kāore",
+          "random": "Matapōkere",
+          "bunny": "Rāpeti",
+          "coffee": "Kawhi",
+          "construction": "Hanganga",
+          "cowboy": "Kaupoi",
+          "education": "Mātauranga",
+          "knight": "Hōia",
+          "ninja": "Ninja",
+          "party": "Pāti",
+          "pirate": "Kaipahua",
+          "watermelon": "Wōtamerena"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Piro kua tutuki",
+        "description": "He tau mai i te 0 ki te 1. Ka tukuna me te takahanga ahunga whakamua kua oti hei paepae angitu."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Ingoa matua whakamutunga"
+      },
+      {
+        "property": "finishText",
+        "title": "Karere whakamutunga"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rārangi i runga i te tohutohu"
+      },
+      {
+        "property": "prompt",
+        "title": "Tohutohu hei tāruatanga"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Ingoa kēmu",
+        "description": "Ka tapaina tēnei kēmu i ngā takahanga ahunga whakamua me te tohu OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Tohu kēmu",
+        "description": "Kōwhiringa anake. Ka wehewehe i tēnei kēmu i ētahi atu o te whārangi i ngā takahanga ahunga whakamua."
+      }
+    ]
+  }
+}

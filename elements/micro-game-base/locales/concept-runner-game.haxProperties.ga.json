@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Cluiche reatha coincheap",
+    "description": "Cluiche scrollaithe taobh. Ritheann an carachtar trí thine agus ní stopann sé choíche. Léim chun na coincheapa maithe a ghabháil agus thar na cinn dhroch, ansin féach ar achoimre ar cad a bhí maith agus cad a bhí dona."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Ceannteideal an chuardaigh"
+      },
+      {
+        "property": "quest",
+        "title": "Cuardach",
+        "description": "An leid ar an scáileán tosaigh."
+      },
+      {
+        "property": "items",
+        "title": "Coincheapa",
+        "description": "Gabhtar na cinn mhaithe, léimtear thar na cinn dhroch."
+      },
+      {
+        "property": "duration",
+        "title": "Fad an reatha i soicindí",
+        "description": "Thart ar chomh fada is a mhaireann an rith ar luas gnáth."
+      },
+      {
+        "slot": "finish",
+        "title": "Tar éis an chluiche",
+        "description": "Roghnach. Cuireann sé d'ábhar féin in ionad an bhosca cóipeála leide ar an bpainéal deiridh, mar chéim eile nó nasc."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Cnaipí breise tar éis an chluiche",
+        "description": "Roghnach. Cnaipí nó naisc a thaispeántar le hais Imir arís ar an bpainéal deiridh."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Síol an charachtair",
+        "description": "Aon téacs. Cruthaíonn an síol céanna an carachtar céanna i gcónaí. Is é seo an síol céanna a úsáideann avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Úsáid carachtar an duine atá sínithe isteach",
+        "description": "Nuair a bhíonn duine éigin sínithe isteach in HAX, bíonn cuma a avatar féin ar an gcarachtar. Feiceann gach duine eile an síol thuas."
+      },
+      {
+        "property": "hat",
+        "title": "Hata an charachtair",
+        "options": {
+          "none": "Ceann ar bith",
+          "random": "Randamach",
+          "bunny": "Coinín",
+          "coffee": "Caife",
+          "construction": "Tógáil",
+          "cowboy": "Cowboy",
+          "education": "Oideachas",
+          "knight": "Ridire",
+          "ninja": "Ninja",
+          "party": "Cóisir",
+          "pirate": "Foghlaí mara",
+          "watermelon": "Mealbhacan uisce"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Scór pasála",
+        "description": "Uimhir ó 0 go 1. Seoltar é leis an bhfeidhm dul chun cinn chríochnaithe mar thairseach rathúlachta."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Ceannteideal deiridh"
+      },
+      {
+        "property": "finishText",
+        "title": "Teachtaireacht dheiridh"
+      },
+      {
+        "property": "finishLead",
+        "title": "Líne os cionn na leide"
+      },
+      {
+        "property": "prompt",
+        "title": "Leid le cóipeáil"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Ainm an chluiche",
+        "description": "Ainmníonn sé an cluiche seo i bhfeidhmeanna dul chun cinn agus i marcáil OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID an chluiche",
+        "description": "Roghnach. Idirdhealaíonn sé an cluiche seo ó chluichí eile ar an leathanach i bhfeidhmeanna dul chun cinn."
+      }
+    ]
+  }
+}

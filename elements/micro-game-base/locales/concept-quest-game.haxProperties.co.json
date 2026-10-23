@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Ghjocu di cerca di cuncetti",
+    "description": "Un mondu apertu da girà. I cuncetti vi truvanu è vi facenu una dumanda. Rispondite bè per scunfighjene unu è sbluccà a so casa. U riassuntu mostra i tentativi è ciò chì ci hè da rivede."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titulu di a missione"
+      },
+      {
+        "property": "quest",
+        "title": "Missione",
+        "description": "U messaghju mostru nant'à a schermata d'avvia. Dite à u ghjucadore à chì serve u viaghju."
+      },
+      {
+        "property": "nodes",
+        "title": "Cuncetti",
+        "description": "Ogni cuncettu hè una casa cù un mostru."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Etichetta centrale",
+        "description": "L'idea chì tutti i cuncetti custituiscenu inseme."
+      },
+      {
+        "slot": "finish",
+        "title": "Dopu à u ghjocu",
+        "description": "Facultativu. Rimpiazza a casella per cupià u prompt nant'à u pannellu finale cù u vostru propiu cuntenutu, cum'è un passu seguente o un ligame."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Buttoni supplementari dopu à u ghjocu",
+        "description": "Facultativu. Buttoni o ligami mostri accantu à Ghjucà torna nant'à u pannellu finale."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Cori",
+        "description": "Risposte sbagliate prima chì u cuncettu scappi."
+      },
+      {
+        "property": "seed",
+        "title": "Sumente di u persunagiu",
+        "description": "Qualsiasi testu. A listessa sumente face sempre u listessu persunagiu. Hè a listessa sumente chì adopra l'avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Aduprà u persunagiu di a persona cunnessa",
+        "description": "Quandu qualchissia hè cunnessu à HAX, u persunagiu s'assumiglia à u so avatar. Tutti l'altri videnu a sumente di sopra."
+      },
+      {
+        "property": "hat",
+        "title": "Cappellu di u persunagiu",
+        "options": {
+          "none": "Nisunu",
+          "random": "Aleatoriu",
+          "bunny": "Cunigliulu",
+          "coffee": "Caffè",
+          "construction": "Custruzzione",
+          "cowboy": "Cowboy",
+          "education": "Educazione",
+          "knight": "Cavalieru",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "pirate": "Pirata",
+          "watermelon": "Anguria"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titulu finale"
+      },
+      {
+        "property": "finishText",
+        "title": "Messaghju finale"
+      },
+      {
+        "property": "finishLead",
+        "title": "Linea sopra à u prompt",
+        "description": "Lasciate vacu per a linea predefinita."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt da cupià",
+        "description": "Mostru nant'à u pannellu finale cù un buttone di copia. Sguassatelu per piattà a casella."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nome di u ghjocu",
+        "description": "Dà un nome à stu ghjocu in l'eventi di prugressu è in u marcatu OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Id di u ghjocu",
+        "description": "Facultativu. Distingue stu ghjocu di l'altri nant'à a pagina in l'eventi di prugressu."
+      }
+    ]
+  }
+}

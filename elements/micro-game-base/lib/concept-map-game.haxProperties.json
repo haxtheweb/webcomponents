@@ -1,0 +1,236 @@
+{
+  "api": "1",
+  "canScale": true,
+  "canEditSource": true,
+  "type": "element",
+  "designSystem": false,
+  "gizmo": {
+    "title": "Concept map game",
+    "description": "A short keyboard game. A character walks to each concept on a map and it explains itself. Touch them all for confetti and a prompt to copy.",
+    "icon": "hax:hax2022",
+    "color": "purple",
+    "tags": ["Other", "Interactive", "Game"],
+    "handles": [],
+    "meta": {
+      "author": "haxtheweb"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Quest heading",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "The prompt shown on the start screen. Tell the player what the journey is for.",
+        "inputMethod": "textarea",
+        "icon": "communication:message"
+      },
+      {
+        "property": "nodes",
+        "title": "Concepts",
+        "description": "Each concept is a tile on the map.",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "properties": [
+          {
+            "property": "label",
+            "title": "Name",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "glyph",
+            "title": "Tile letters",
+            "description": "Up to 3 characters on the tile. Leave empty to use the first letter.",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "link",
+            "title": "Short phrase shown after it is found",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "text",
+            "title": "What it is",
+            "description": "One or two sentences shown when the character touches it.",
+            "inputMethod": "textarea",
+            "required": true
+          },
+          {
+            "property": "url",
+            "title": "Learn more link",
+            "description": "Optional. A web address that starts with https:// or /",
+            "inputMethod": "textfield"
+          }
+        ]
+      },
+      {
+        "property": "hubLabel",
+        "title": "Center label",
+        "description": "The idea all of the concepts add up to.",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      },
+      {
+        "slot": "finish",
+        "title": "After the game",
+        "description": "Optional. Replaces the copy-a-prompt box on the finish panel with your own content, such as a next step or a link.",
+        "inputMethod": "textarea",
+        "slotWrapper": "div"
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Extra buttons after the game",
+        "description": "Optional. Buttons or links shown beside Play again on the finish panel.",
+        "inputMethod": "textarea",
+        "slotWrapper": "div"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Character seed",
+        "description": "Any text. The same seed always makes the same character. This is the same seed the HAX avatar uses.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Use the signed in person's character",
+        "description": "When someone is signed in to HAX, the character looks like their own avatar. Everyone else sees the seed above.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "hat",
+        "title": "Character hat",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "random": "Random",
+          "bunny": "Bunny",
+          "coffee": "Coffee",
+          "construction": "Construction",
+          "cowboy": "Cowboy",
+          "education": "Education",
+          "knight": "Knight",
+          "ninja": "Ninja",
+          "party": "Party",
+          "pirate": "Pirate",
+          "watermelon": "Watermelon"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Finish heading",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "finishText",
+        "title": "Finish message",
+        "inputMethod": "textarea"
+      },
+      {
+        "property": "finishLead",
+        "title": "Line above the prompt",
+        "description": "Leave empty for the default line.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt to copy",
+        "description": "Shown on the finish panel with a copy button. Clear it to hide the box.",
+        "inputMethod": "textarea"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Game name",
+        "description": "Names this game in progress events and OER Schema markup.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "gameId",
+        "title": "Game id",
+        "description": "Optional. Tells this game apart from others on the page in progress events.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": [
+      "state",
+      "done",
+      "edit-mode",
+      "element-visible",
+      "t",
+      "_found",
+      "_dialog",
+      "_copied",
+      "_pos",
+      "_ms",
+      "typeof",
+      "resource",
+      "prefix",
+      "schema-map",
+      "_userSeed",
+      "_finishSlotted"
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "concept-map-game",
+      "properties": {
+        "nodes": [
+          {
+            "label": "Accessible",
+            "link": "for everyone",
+            "text": "HAX will always strive to maximize accessibility. The best time to make content accessible is the moment it is created, so HAX builds that into authoring instead of leaving it for later."
+          },
+          {
+            "label": "Extensible",
+            "link": "anyone can add",
+            "text": "Nothing in HAX is monolithic. The ecosystem keeps growing and contributions are welcome, so the system can be extended sustainably."
+          },
+          {
+            "label": "Free and Open",
+            "link": "no cost, no lock-in",
+            "text": "Open documentation, open APIs and an open community. Content moves freely into and out of HAX, everything generates static files, and it costs nothing to use."
+          },
+          {
+            "label": "Efficient",
+            "link": "fast and light",
+            "text": "Built to perform well through good methodology, low-level browser APIs, micro-services and lazy loading."
+          },
+          {
+            "label": "Platform Agnostic",
+            "link": "runs anywhere",
+            "text": "HAX output works on its own, inside HAXcms or HAXiam, or on plain static pages, with no hosting-specific backend to depend on."
+          },
+          {
+            "label": "Remixable",
+            "link": "make it yours",
+            "text": "Duplicate a site, switch themes on the fly and reshape the structure of a whole site or a single page. The platform and what it produces are meant to be remixed."
+          },
+          {
+            "label": "Sustainable",
+            "link": "built to last",
+            "text": "Sustainable for the planet, with less data and battery use, and for the long run, because an open source community can outlive any single vendor."
+          }
+        ],
+        "prompt": "Help me get started with HAX (haxtheweb.org). Use the HAX CLI (@haxtheweb/create) to:\n\n1. Set up my environment and create a new HAXsite called \"hello-hax\".\n2. Scaffold a web component called \"my-first-element\" with Lit, DDD design tokens and HAXSchema (haxProperties) so it shows up in the HAX editor.\n3. Add a page to the site that uses my new element, then start the dev server so I can edit it.\n\nWhen you finish, tell me what you created and how to publish the site.",
+        "hubLabel": "The Ubiquitous Web",
+        "seed": "haxtheweb",
+        "finishTitle": "New element unlocked",
+        "finishText": "Seven pillars, one idea. HAX is built to be accessible, extensible, free and open, efficient, platform agnostic, remixable and sustainable, so anyone can publish on the web and keep what they make. That is the ubiquitous web.",
+        "questTitle": "Your quest",
+        "quest": "Help the RPG character go on a journey to learn about the pillars that make HAX unique.",
+        "finishLead": "Paste this into Claude to start building in HAX today."
+      },
+      "content": ""
+    }
+  ]
+}

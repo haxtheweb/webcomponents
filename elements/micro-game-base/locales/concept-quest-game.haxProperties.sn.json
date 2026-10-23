@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Mutambo wekutsvaga pfungwa",
+    "description": "Nyika yekufamba-famba. Pfungwa dzinokutsvaga ndokukubvunza mubvunzo. Pindura zvakanaka kuti ukunde imwe uye uvhure imba yayo. Chidimbu chinoratidza kuyedza nezvekuongorora."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Musoro wekutsvaga"
+      },
+      {
+        "property": "quest",
+        "title": "Kutsvaga",
+        "description": "Prompt inoratidzwa pascreen yekutanga. Udza mutambi kuti rwendo urwu rwekudiniko."
+      },
+      {
+        "property": "nodes",
+        "title": "Pfungwa",
+        "description": "Pfungwa imwe neimwe imba ine chikara."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Zita riri pakati",
+        "description": "Pfungwa inoumbwa nepfungwa dzese pamwe chete."
+      },
+      {
+        "slot": "finish",
+        "title": "Mushure memutambo",
+        "description": "Hazvisi zvekumanikidzwa. Inotsiva bhokisi rekukopa prompt pachikamu chekupedzisa nezvinyorwa zvako, senhanho inotevera kana link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Mabhatani akawedzerwa mushure memutambo",
+        "description": "Hazvisi zvekumanikidzwa. Mabhatani kana malink anoratidzwa padhuze neTambazve pachikamu chekupedzisa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Moyo",
+        "description": "Mhinduro dzisiri dzechokwadi pfungwa isati yatiza."
+      },
+      {
+        "property": "seed",
+        "title": "Mbeu yemunhu",
+        "description": "Zvinyorwa zvipi zvazvo. Mbeu imwe chete inogadzira munhu mumwe chete nguva dzese. Iyi ndiyo mbeu inoshandiswa neHAX avatar."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Shandisa munhu wemunhu akapinda",
+        "description": "Kana mumwe munhu akapinda muHAX, munhu uyu anotaridzika seavatar yake. Vamwe vese vanoona mbeu iri pamusoro."
+      },
+      {
+        "property": "hat",
+        "title": "Ngowani yemunhu",
+        "options": {
+          "none": "Hapana",
+          "random": "Isina kurongwa",
+          "bunny": "Gonye",
+          "coffee": "Kofi",
+          "construction": "Kuvaka",
+          "cowboy": "Cowboy",
+          "education": "Dzidzo",
+          "knight": "Knight",
+          "ninja": "Ninja",
+          "party": "Party",
+          "pirate": "Pirate",
+          "watermelon": "Tsvanzva"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Musoro wekupedzisa"
+      },
+      {
+        "property": "finishText",
+        "title": "Meseji yekupedzisa"
+      },
+      {
+        "property": "finishLead",
+        "title": "Mutsetse uri pamusoro peprompt",
+        "description": "Siya usina chinhu kuti uwane mutsetse wepakutanga."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt yekukopa",
+        "description": "Inoratidzwa pachikamu chekupedzisa nebhatani rekukopa. Idzima kuti ufukidze bhokisi."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Zita remutambo",
+        "description": "Inopa mutambo uyu zita muzviitiko zvekufambira mberi uye pamarkup yeOER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Id yemutambo",
+        "description": "Hazvisi zvekumanikidzwa. Inosiyanisa mutambo uyu nemimwe iri papeji muzviitiko zvekufambira mberi."
+      }
+    ]
+  }
+}

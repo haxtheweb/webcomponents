@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Wasan gudun ra'ayoyi",
+    "description": "Wasan gungurawa a gefe. Halittar tana gudu da wuta kuma ba ta tsayawa. Yi tsalle don ɗaukar ra'ayoyi masu kyau da tsallake marasa kyau, sannan ka ga taƙaitaccen abin da ya kyau da wanda bai kyau ba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Taken manufa"
+      },
+      {
+        "property": "quest",
+        "title": "Manufa",
+        "description": "Umarnin da ke allon farawa."
+      },
+      {
+        "property": "items",
+        "title": "Ra'ayoyi",
+        "description": "Ana ɗaukar masu kyau, ana tsallake marasa kyau."
+      },
+      {
+        "property": "duration",
+        "title": "Tsawon gudu da daƙiƙa",
+        "description": "Kusan tsawon lokacin da gudun yake ɗauka da saurin da aka saba."
+      },
+      {
+        "slot": "finish",
+        "title": "Bayan wasa",
+        "description": "Zaɓi ne. Yana maye gurbin akwatin kwafar umarni a allon ƙarshe da naka abun cikin, kamar mataki na gaba ko hanyar haɗi."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Ƙarin maɓallai bayan wasa",
+        "description": "Zaɓi ne. Maɓallai ko hanyoyin haɗi da ake nunawa kusa da Sake wasa a allon ƙarshe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Iri na halitta",
+        "description": "Kowane rubutu. Iri ɗaya yana haifar da halitta ɗaya koyaushe. Wannan iri ɗaya ne da avatar na HAX yake amfani da shi."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Yi amfani da halittar mutumin da ya shiga",
+        "description": "Idan wani ya shiga HAX, halittar tana kama da avatar ɗinsa. Sauran mutane suna ganin irin da ke sama."
+      },
+      {
+        "property": "hat",
+        "title": "Hular halitta",
+        "options": {
+          "none": "Babu",
+          "random": "Bazuwar",
+          "bunny": "Zomo",
+          "coffee": "Kofi",
+          "construction": "Gini",
+          "cowboy": "Kaboyi",
+          "education": "Ilimi",
+          "knight": "Jarumi",
+          "ninja": "Ninja",
+          "party": "Biki",
+          "pirate": "Ɗan fashin teku",
+          "watermelon": "Kankana"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Makin cin nasara",
+        "description": "Lamba daga 0 zuwa 1. Ana aika shi tare da abin da ya kammala ci gaba a matsayin iyakar nasara."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Taken ƙarshe"
+      },
+      {
+        "property": "finishText",
+        "title": "Saƙon ƙarshe"
+      },
+      {
+        "property": "finishLead",
+        "title": "Layi a saman umarni"
+      },
+      {
+        "property": "prompt",
+        "title": "Umarnin da za a kwafa"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Sunan wasa",
+        "description": "Yana sanya wa wannan wasan suna a abubuwan ci gaba da alamar OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID na wasa",
+        "description": "Zaɓi ne. Yana bambanta wannan wasan da sauran a shafin cikin abubuwan ci gaba."
+      }
+    ]
+  }
+}

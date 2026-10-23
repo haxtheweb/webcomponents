@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "የጽንሰ-ሐሳብ ካርታ ጨዋታ",
+    "description": "አጭር የቁልፍ ሰሌዳ ጨዋታ። አንድ ገጸ-ባህሪ በካርታ ላይ ወደ እያንዳንዱ ጽንሰ-ሐሳብ ይራመዳል፣ እርሱም ራሱን ያብራራል። ሁሉንም ከነካህ ኮንፌቲና ለመቅዳት የሚሆን ጥያቄ ታገኛለህ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "የጉዞው ርዕስ"
+      },
+      {
+        "property": "quest",
+        "title": "ጉዞ",
+        "description": "በመነሻ ማያ ላይ የሚታየው ጥያቄ። ጉዞው ለምን እንደሆነ ለተጫዋቹ ንገረው።"
+      },
+      {
+        "property": "nodes",
+        "title": "ጽንሰ-ሐሳቦች",
+        "description": "እያንዳንዱ ጽንሰ-ሐሳብ በካርታው ላይ አንድ ሰቅ ነው።"
+      },
+      {
+        "property": "hubLabel",
+        "title": "የመሃል መለያ",
+        "description": "ሁሉም ጽንሰ-ሐሳቦች አንድ ላይ የሚያመለክቱት ሐሳብ።"
+      },
+      {
+        "slot": "finish",
+        "title": "ከጨዋታው በኋላ",
+        "description": "አማራጭ። በማጠናቀቂያ ፓነል ላይ ያለውን ጥያቄ የመቅዳት ሳጥን በራስዎ ይዘት ይተካል፣ ለምሳሌ ቀጣይ እርምጃ ወይም አገናኝ።"
+      },
+      {
+        "slot": "finish-actions",
+        "title": "ከጨዋታው በኋላ ተጨማሪ አዝራሮች",
+        "description": "አማራጭ። በማጠናቀቂያ ፓነል ላይ ከእንደገና ተጫወት አጠገብ የሚታዩ አዝራሮች ወይም አገናኞች።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "የገጸ-ባህሪ ዘር",
+        "description": "ማንኛውም ጽሑፍ። ተመሳሳይ ዘር ሁልጊዜ ተመሳሳይ ገጸ-ባህሪ ይሠራል። የ HAX አምሳያ የሚጠቀመው ዘር ይህ ነው።"
+      },
+      {
+        "property": "seedFromUser",
+        "title": "የገባውን ሰው ገጸ-ባህሪ ተጠቀም",
+        "description": "አንድ ሰው በ HAX ሲገባ ገጸ-ባህሪው እንደ ራሱ አምሳያ ይመስላል። ሌሎች ሁሉ ከላይ ያለውን ዘር ያያሉ።"
+      },
+      {
+        "property": "hat",
+        "title": "የገጸ-ባህሪ ኮፍያ",
+        "options": {
+          "none": "ምንም",
+          "random": "በዘፈቀደ",
+          "bunny": "ጥንቸል",
+          "coffee": "ቡና",
+          "construction": "ግንባታ",
+          "cowboy": "ካውቦይ",
+          "education": "ትምህርት",
+          "knight": "ባላባት",
+          "ninja": "ኒንጃ",
+          "party": "ድግስ",
+          "pirate": "የባህር ወንበዴ",
+          "watermelon": "ሀብሀብ"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "የማጠናቀቂያ ርዕስ"
+      },
+      {
+        "property": "finishText",
+        "title": "የማጠናቀቂያ መልዕክት"
+      },
+      {
+        "property": "finishLead",
+        "title": "ከጥያቄው በላይ ያለ መስመር",
+        "description": "ለነባሪው መስመር ባዶ ይተዉት።"
+      },
+      {
+        "property": "prompt",
+        "title": "የሚቀዳ ጥያቄ",
+        "description": "በማጠናቀቂያ ፓነል ላይ ከመቅዳት አዝራር ጋር ይታያል። ሳጥኑን ለመደበቅ ያጽዱት።"
+      },
+      {
+        "property": "gameTitle",
+        "title": "የጨዋታ ስም",
+        "description": "በሂደት ክስተቶች እና በ OER Schema ምልክት ማድረጊያ ውስጥ ይህን ጨዋታ ይሰይማል።"
+      },
+      {
+        "property": "gameId",
+        "title": "የጨዋታ መለያ",
+        "description": "አማራጭ። በሂደት ክስተቶች ውስጥ ይህን ጨዋታ በገጹ ላይ ካሉ ሌሎች ይለያል።"
+      }
+    ]
+  }
+}

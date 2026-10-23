@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Kurludo de konceptoj",
+    "description": "Flanke rulumata ludo. La figuro kuras en fajro kaj neniam haltas. Saltu por kapti la bonajn konceptojn kaj super la malbonaj, poste vidu resumon de tio, kio estis bona kaj kio malbona."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titolo de la serĉo"
+      },
+      {
+        "property": "quest",
+        "title": "Serĉo",
+        "description": "La peto sur la komenca ekrano."
+      },
+      {
+        "property": "items",
+        "title": "Konceptoj",
+        "description": "La bonaj estas kaptataj, la malbonaj saltataj."
+      },
+      {
+        "property": "duration",
+        "title": "Daŭro de la kuro en sekundoj",
+        "description": "Proksimume kiom longe daŭras la kuro je normala rapido."
+      },
+      {
+        "slot": "finish",
+        "title": "Post la ludo",
+        "description": "Libervola. Anstataŭigas la kopiindan skatolon sur la fina panelo per via propra enhavo, ekzemple sekva paŝo aŭ ligilo."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Aldonaj butonoj post la ludo",
+        "description": "Libervola. Butonoj aŭ ligiloj montrataj apud Ludi denove sur la fina panelo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Greno de la figuro",
+        "description": "Ajna teksto. La sama greno ĉiam kreas la saman figuron. Ĝi estas la sama greno, kiun uzas la HAX-avataro."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Uzi la figuron de la salutinta persono",
+        "description": "Kiam iu estas salutinta en HAX, la figuro aspektas kiel ties propra avataro. Ĉiuj aliaj vidas la supran grenon."
+      },
+      {
+        "property": "hat",
+        "title": "Ĉapelo de la figuro",
+        "options": {
+          "none": "Neniu",
+          "random": "Hazarda",
+          "bunny": "Leporo",
+          "coffee": "Kafo",
+          "construction": "Konstruado",
+          "cowboy": "Vakero",
+          "education": "Edukado",
+          "knight": "Kavaliro",
+          "ninja": "Nindzo",
+          "party": "Festo",
+          "pirate": "Pirato",
+          "watermelon": "Akvomelono"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Sukcesa poentaro",
+        "description": "Nombro de 0 ĝis 1. Sendata kun la evento de finita progreso kiel sukcesa sojlo."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titolo de la fino"
+      },
+      {
+        "property": "finishText",
+        "title": "Mesaĝo de la fino"
+      },
+      {
+        "property": "finishLead",
+        "title": "Linio super la peto"
+      },
+      {
+        "property": "prompt",
+        "title": "Peto por kopii"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nomo de la ludo",
+        "description": "Nomas ĉi tiun ludon en progresaj eventoj kaj en OER Schema marko."
+      },
+      {
+        "property": "gameId",
+        "title": "Id de la ludo",
+        "description": "Libervola. Distingas ĉi tiun ludon de aliaj sur la paĝo en progresaj eventoj."
+      }
+    ]
+  }
+}

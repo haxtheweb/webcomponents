@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Hra s pojmovou mapou",
+    "description": "Krátká hra na klávesnici. Postava chodí k pojmům na mapě a každý se sám vysvětlí. Dotkni se všech a dostaneš konfety a zadání ke zkopírování."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Nadpis výpravy"
+      },
+      {
+        "property": "quest",
+        "title": "Výprava",
+        "description": "Text zobrazený na úvodní obrazovce. Řekni hráči, k čemu cesta slouží."
+      },
+      {
+        "property": "nodes",
+        "title": "Pojmy",
+        "description": "Každý pojem je políčko na mapě."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Popisek středu",
+        "description": "Myšlenka, ke které všechny pojmy vedou."
+      },
+      {
+        "slot": "finish",
+        "title": "Po hře",
+        "description": "Volitelné. Nahradí na závěrečném panelu pole pro kopírování zadání tvým vlastním obsahem, například dalším krokem nebo odkazem."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Další tlačítka po hře",
+        "description": "Volitelné. Tlačítka nebo odkazy zobrazené vedle tlačítka Hrát znovu na závěrečném panelu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Základ postavy",
+        "description": "Libovolný text. Stejný základ vždy vytvoří stejnou postavu. Je to stejný základ, jaký používá avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Použít postavu přihlášené osoby",
+        "description": "Když je někdo přihlášený v HAX, postava vypadá jako jeho vlastní avatar. Ostatní uvidí výše uvedený základ."
+      },
+      {
+        "property": "hat",
+        "title": "Čepice postavy",
+        "options": {
+          "none": "Žádná",
+          "random": "Náhodná",
+          "bunny": "Králík",
+          "coffee": "Káva",
+          "construction": "Stavbyvedoucí",
+          "cowboy": "Kovboj",
+          "education": "Absolvent",
+          "knight": "Rytíř",
+          "ninja": "Nindža",
+          "party": "Párty",
+          "pirate": "Pirát",
+          "watermelon": "Meloun"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Nadpis závěru"
+      },
+      {
+        "property": "finishText",
+        "title": "Závěrečná zpráva"
+      },
+      {
+        "property": "finishLead",
+        "title": "Řádek nad zadáním",
+        "description": "Nech prázdné pro výchozí řádek."
+      },
+      {
+        "property": "prompt",
+        "title": "Zadání ke zkopírování",
+        "description": "Zobrazí se na závěrečném panelu s tlačítkem kopírování. Vymaž ho a pole se skryje."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Název hry",
+        "description": "Pojmenuje tuto hru v událostech průběhu a ve značkování OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID hry",
+        "description": "Volitelné. Odliší tuto hru od ostatních na stránce v událostech průběhu."
+      }
+    ]
+  }
+}

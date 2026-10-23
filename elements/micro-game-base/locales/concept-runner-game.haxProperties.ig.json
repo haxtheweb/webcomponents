@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Egwuregwu ọsọ echiche",
+    "description": "Egwuregwu na-agbagharị n'akụkụ. Agbụrụ na-agba ọsọ n'ọkụ ma ọ naghị akwụsị. Wụpụ ka ị jide echiche ndị mara mma ma gafee ndị ọjọọ, mgbe ahụ hụ nchịkọta nke ihe dị mma na ihe jọrọ njọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Isi okwu njem"
+      },
+      {
+        "property": "quest",
+        "title": "Njem",
+        "description": "Ntụziaka dị na ihuenyo mmalite."
+      },
+      {
+        "property": "items",
+        "title": "Echiche",
+        "description": "A na-ejide ndị mara mma, a na-awụpụ n'elu ndị ọjọọ."
+      },
+      {
+        "property": "duration",
+        "title": "Ogologo ọsọ n'ime sekọnd",
+        "description": "Ihe dị ka ogologo oge ọsọ ahụ na-adịru n'ọsọ nkịtị."
+      },
+      {
+        "slot": "finish",
+        "title": "Mgbe egwuregwu gasịrị",
+        "description": "Nhọrọ. Na-dochi igbe detuo-ntụziaka dị n'ọkpụkpụ ngwụcha site n'ọdịnaya nke gị, dịka nzọụkwụ na-esote ma ọ bụ njikọ."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Bọtịnụ ndị ọzọ mgbe egwuregwu gasịrị",
+        "description": "Nhọrọ. Bọtịnụ ma ọ bụ njikọ e gosiri n'akụkụ Gbaa ọzọ na ọkpụkpụ ngwụcha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Mkpụrụ agbụrụ",
+        "description": "Ederede ọ bụla. Otu mkpụrụ na-eme otu agbụrụ mgbe niile. Nke a bụ otu mkpụrụ ahụ HAX avatar na-eji."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Jiri agbụrụ onye banyere",
+        "description": "Mgbe onye banyere na HAX, agbụrụ ahụ na-adị ka avatar nke ya. Mmadụ ndị ọzọ na-ahụ mkpụrụ dị n'elu."
+      },
+      {
+        "property": "hat",
+        "title": "Okpu agbụrụ",
+        "options": {
+          "none": "Ọ nweghị",
+          "random": "Enweghị usoro",
+          "bunny": "Oke ọhịa",
+          "coffee": "Kọfị",
+          "construction": "Owuwu",
+          "cowboy": "Cowboy",
+          "education": "Agụmakwụkwọ",
+          "knight": "Onye agha",
+          "ninja": "Ninja",
+          "party": "Oriri",
+          "pirate": "Onye ohi n'oké osimiri",
+          "watermelon": "Watamelọn"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Akara ịgafe",
+        "description": "Ọnụọgụ site na 0 ruo 1. Eziga ya na ihe omume ọganihu emechara dị ka ọnụ ụzọ ọga nke ọma."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Isi okwu ngwụcha"
+      },
+      {
+        "property": "finishText",
+        "title": "Ozi ngwụcha"
+      },
+      {
+        "property": "finishLead",
+        "title": "Ahịrị dị n'elu ntụziaka"
+      },
+      {
+        "property": "prompt",
+        "title": "Ntụziaka ị ga-edepụta"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Aha egwuregwu",
+        "description": "Na-enye egwuregwu a aha n'ihe omume ọganihu na ntụpọ OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Id egwuregwu",
+        "description": "Nhọrọ. Na-ekewa egwuregwu a n'ebe ndị ọzọ dị na peeji ahụ n'ihe omume ọganihu."
+      }
+    ]
+  }
+}

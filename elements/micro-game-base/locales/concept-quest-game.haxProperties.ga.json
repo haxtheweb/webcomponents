@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Cluiche cuardaigh coincheap",
+    "description": "Domhan oscailte le fánaíocht a dhéanamh ann. Gheobhaidh na coincheapa thú agus cuirfidh siad ceist ort. Freagair i gceart chun ceann a bhualadh agus a theach a dhíghlasáil. Taispeánann an t-achoimre iarrachtaí agus cad atá le hathbhreithniú."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Ceannteideal an chuardaigh"
+      },
+      {
+        "property": "quest",
+        "title": "Cuardach",
+        "description": "An leid a thaispeántar ar an scáileán tosaigh. Inis don imreoir cad chuige an turas."
+      },
+      {
+        "property": "nodes",
+        "title": "Coincheapa",
+        "description": "Is teach le arrachtach i ngach coincheap."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Lipéad lárnach",
+        "description": "An smaoineamh a gcuireann na coincheapa go léir suas leis."
+      },
+      {
+        "slot": "finish",
+        "title": "Tar éis an chluiche",
+        "description": "Roghnach. Cuireann sé d'ábhar féin in ionad an bhosca cóipeála leide ar an bpainéal deiridh, mar chéim eile nó nasc."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Cnaipí breise tar éis an chluiche",
+        "description": "Roghnach. Cnaipí nó naisc a thaispeántar le hais Imir arís ar an bpainéal deiridh."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Croíthe",
+        "description": "Freagraí mícheart sula n-éalaíonn an coincheap."
+      },
+      {
+        "property": "seed",
+        "title": "Síol an charachtair",
+        "description": "Aon téacs. Cruthaíonn an síol céanna an carachtar céanna i gcónaí. Is é seo an síol céanna a úsáideann avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Úsáid carachtar an duine atá sínithe isteach",
+        "description": "Nuair a bhíonn duine éigin sínithe isteach in HAX, bíonn cuma a avatar féin ar an gcarachtar. Feiceann gach duine eile an síol thuas."
+      },
+      {
+        "property": "hat",
+        "title": "Hata an charachtair",
+        "options": {
+          "none": "Ceann ar bith",
+          "random": "Randamach",
+          "bunny": "Coinín",
+          "coffee": "Caife",
+          "construction": "Tógáil",
+          "cowboy": "Cowboy",
+          "education": "Oideachas",
+          "knight": "Ridire",
+          "ninja": "Ninja",
+          "party": "Cóisir",
+          "pirate": "Foghlaí mara",
+          "watermelon": "Mealbhacan uisce"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Ceannteideal deiridh"
+      },
+      {
+        "property": "finishText",
+        "title": "Teachtaireacht dheiridh"
+      },
+      {
+        "property": "finishLead",
+        "title": "Líne os cionn na leide",
+        "description": "Fág folamh don líne réamhshocraithe."
+      },
+      {
+        "property": "prompt",
+        "title": "Leid le cóipeáil",
+        "description": "Taispeántar ar an bpainéal deiridh é le cnaipe cóipeála. Glan é chun an bosca a cheilt."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Ainm an chluiche",
+        "description": "Ainmníonn sé an cluiche seo i bhfeidhmeanna dul chun cinn agus i marcáil OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID an chluiche",
+        "description": "Roghnach. Idirdhealaíonn sé an cluiche seo ó chluichí eile ar an leathanach i bhfeidhmeanna dul chun cinn."
+      }
+    ]
+  }
+}

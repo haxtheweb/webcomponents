@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Game misi konsep",
+    "description": "Dunia terbuka untuk dijelajahi. Konsep menemukan Anda dan mengajukan pertanyaan. Jawab dengan benar untuk mengalahkannya dan membuka rumahnya. Rangkuman menampilkan percobaan dan apa yang perlu ditinjau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Judul misi"
+      },
+      {
+        "property": "quest",
+        "title": "Misi",
+        "description": "Prompt yang ditampilkan di layar awal. Beri tahu pemain tujuan perjalanan ini."
+      },
+      {
+        "property": "nodes",
+        "title": "Konsep",
+        "description": "Setiap konsep adalah rumah dengan monster."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Label tengah",
+        "description": "Gagasan yang menyatukan semua konsep."
+      },
+      {
+        "slot": "finish",
+        "title": "Setelah game",
+        "description": "Opsional. Mengganti kotak salin prompt di panel akhir dengan konten Anda sendiri, seperti langkah berikutnya atau tautan."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Tombol tambahan setelah game",
+        "description": "Opsional. Tombol atau tautan yang ditampilkan di samping Main lagi di panel akhir."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Nyawa",
+        "description": "Jawaban salah sebelum konsep kabur."
+      },
+      {
+        "property": "seed",
+        "title": "Seed karakter",
+        "description": "Teks apa saja. Seed yang sama selalu menghasilkan karakter yang sama. Ini seed yang sama dengan yang dipakai avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Gunakan karakter orang yang sedang masuk",
+        "description": "Saat seseorang masuk ke HAX, karakter terlihat seperti avatar miliknya. Orang lain melihat seed di atas."
+      },
+      {
+        "property": "hat",
+        "title": "Topi karakter",
+        "options": {
+          "none": "Tidak ada",
+          "random": "Acak",
+          "bunny": "Kelinci",
+          "coffee": "Kopi",
+          "construction": "Konstruksi",
+          "cowboy": "Koboi",
+          "education": "Pendidikan",
+          "knight": "Ksatria",
+          "ninja": "Ninja",
+          "party": "Pesta",
+          "pirate": "Bajak laut",
+          "watermelon": "Semangka"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Judul akhir"
+      },
+      {
+        "property": "finishText",
+        "title": "Pesan akhir"
+      },
+      {
+        "property": "finishLead",
+        "title": "Baris di atas prompt",
+        "description": "Kosongkan untuk memakai baris bawaan."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt untuk disalin",
+        "description": "Ditampilkan di panel akhir dengan tombol salin. Hapus untuk menyembunyikan kotaknya."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nama game",
+        "description": "Menamai game ini dalam event kemajuan dan markup OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID game",
+        "description": "Opsional. Membedakan game ini dari game lain di halaman dalam event kemajuan."
+      }
+    ]
+  }
+}

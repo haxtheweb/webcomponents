@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Lojë vrapimi me koncepte",
+    "description": "Një lojë me lëvizje anësore. Personazhi vrapon në zjarr dhe nuk ndalet kurrë. Hidhu për të kapur konceptet e mira dhe për të kapërcyer të këqijat, pastaj shiko një përmbledhje të asaj që ishte e mirë dhe e keqe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Titulli i misionit"
+      },
+      {
+        "property": "quest",
+        "title": "Misioni",
+        "description": "Kërkesa në ekranin e fillimit."
+      },
+      {
+        "property": "items",
+        "title": "Konceptet",
+        "description": "Të mirat kapen, të këqijat kapërcehen."
+      },
+      {
+        "property": "duration",
+        "title": "Kohëzgjatja e vrapimit në sekonda",
+        "description": "Afërsisht sa zgjat vrapimi me shpejtësi normale."
+      },
+      {
+        "slot": "finish",
+        "title": "Pas lojës",
+        "description": "Opsionale. Zëvendëson kutinë e kopjimit të kërkesës në panelin e fundit me përmbajtjen tënde, si një hap tjetër ose një lidhje."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Butona shtesë pas lojës",
+        "description": "Opsionale. Butona ose lidhje që shfaqen pranë Luaj përsëri në panelin e fundit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Fara e personazhit",
+        "description": "Çdo tekst. E njëjta farë krijon gjithmonë të njëjtin personazh. Kjo është e njëjta farë që përdor avatari i HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Përdor personazhin e personit të identifikuar",
+        "description": "Kur dikush është identifikuar në HAX, personazhi duket si avatari i tij. Të gjithë të tjerët shohin farën më sipër."
+      },
+      {
+        "property": "hat",
+        "title": "Kapela e personazhit",
+        "options": {
+          "none": "Asnjë",
+          "random": "Të rastësishme",
+          "bunny": "Lepurush",
+          "coffee": "Kafe",
+          "construction": "Ndërtimi",
+          "cowboy": "Kauboj",
+          "education": "Arsimi",
+          "knight": "Kalorës",
+          "ninja": "Ninxha",
+          "party": "Festë",
+          "pirate": "Pirat",
+          "watermelon": "Shalqi"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Pikët për kalim",
+        "description": "Një numër nga 0 në 1. Dërgohet me ngjarjen e progresit të përfunduar si prag suksesi."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Titulli i përfundimit"
+      },
+      {
+        "property": "finishText",
+        "title": "Mesazhi i përfundimit"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rreshti mbi kërkesë"
+      },
+      {
+        "property": "prompt",
+        "title": "Kërkesa për t'u kopjuar"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Emri i lojës",
+        "description": "I jep emër kësaj loje në ngjarjet e progresit dhe në shënimin OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID e lojës",
+        "description": "Opsionale. E dallon këtë lojë nga të tjerat në faqe në ngjarjet e progresit."
+      }
+    ]
+  }
+}

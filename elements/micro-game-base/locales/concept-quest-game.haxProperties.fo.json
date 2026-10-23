@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Hugtaksuppgávuspæl",
+    "description": "Ein heimur at ráfa í. Hugtøkini finna teg og spyrja ein spurning. Svara rætt fyri at sigra eitt og læsa húsið upp. Yvirlitið vísir royndir og hvat skal endurskoðast."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Uppgávuyvirskrift"
+      },
+      {
+        "property": "quest",
+        "title": "Uppgáva",
+        "description": "Boðið, sum verður víst á byrjanarskíggjanum. Sig spælaranum, hvat ferðin er til."
+      },
+      {
+        "property": "nodes",
+        "title": "Hugtøk",
+        "description": "Hvørt hugtak er eitt hús við einum ófreskju."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Miðjumerki",
+        "description": "Hugsanin, sum øll hugtøkini enda við at vera."
+      },
+      {
+        "slot": "finish",
+        "title": "Eftir spælið",
+        "description": "Valfrítt. Skiftir avritingarkassan á endapanelinum út við títt egna innihald, til dømis næsta stig ella ein leinkju."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Fleiri knappar eftir spælið",
+        "description": "Valfrítt. Knappar ella leinkjur, sum verða víst við síðuna av Spæl aftur á endapanelinum."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Hjørtu",
+        "description": "Skeiv svør, áðrenn hugtakið sleppur undan."
+      },
+      {
+        "property": "seed",
+        "title": "Persónsfræ",
+        "description": "Hvør sum helst tekstur. Sama fræ ger altíð sama persón. Hetta er sama fræ, sum HAX-avatarin brúkar."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Brúka persónin hjá innritaða brúkaranum",
+        "description": "Tá onkur er innritaður í HAX, sær persónurin út sum teirra egni avatar. Øll onnur síggja fræið omanfyri."
+      },
+      {
+        "property": "hat",
+        "title": "Hattur á persóni",
+        "options": {
+          "none": "Eingin",
+          "random": "Tilvildarligur",
+          "bunny": "Kanin",
+          "coffee": "Kaffi",
+          "construction": "Bygging",
+          "cowboy": "Cowboy",
+          "education": "Útbúgving",
+          "knight": "Riddari",
+          "ninja": "Ninja",
+          "party": "Veitsla",
+          "pirate": "Sjórøvari",
+          "watermelon": "Vatnmelon"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Endayvirskrift"
+      },
+      {
+        "property": "finishText",
+        "title": "Endaboð"
+      },
+      {
+        "property": "finishLead",
+        "title": "Linja omanfyri boðið",
+        "description": "Lat standa tómt fyri verandi linju."
+      },
+      {
+        "property": "prompt",
+        "title": "Boð at avrita",
+        "description": "Verður víst á endapanelinum við avritingarknappi. Strika tað fyri at fjala kassan."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spælanavn",
+        "description": "Nevnir hetta spælið í framgongdarhendingum og OER Schema-markup."
+      },
+      {
+        "property": "gameId",
+        "title": "Spæl-ID",
+        "description": "Valfrítt. Skilur hetta spælið frá øðrum á síðuni í framgongdarhendingum."
+      }
+    ]
+  }
+}

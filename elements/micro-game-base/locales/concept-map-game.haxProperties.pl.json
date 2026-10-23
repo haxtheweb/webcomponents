@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Gra z mapą pojęć",
+    "description": "Krótka gra klawiaturowa. Postać idzie do każdego pojęcia na mapie, a ono samo się wyjaśnia. Dotknij wszystkich, aby zobaczyć konfetti i polecenie do skopiowania."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Nagłówek zadania"
+      },
+      {
+        "property": "quest",
+        "title": "Zadanie",
+        "description": "Tekst widoczny na ekranie startowym. Powiedz graczowi, po co jest ta wyprawa."
+      },
+      {
+        "property": "nodes",
+        "title": "Pojęcia",
+        "description": "Każde pojęcie to pole na mapie."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Etykieta w środku",
+        "description": "Idea, którą razem tworzą wszystkie pojęcia."
+      },
+      {
+        "slot": "finish",
+        "title": "Po grze",
+        "description": "Opcjonalne. Zastępuje pole kopiowania polecenia na panelu końcowym twoją treścią, np. kolejnym krokiem lub linkiem."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Dodatkowe przyciski po grze",
+        "description": "Opcjonalne. Przyciski lub linki widoczne obok Zagraj ponownie na panelu końcowym."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Ziarno postaci",
+        "description": "Dowolny tekst. To samo ziarno zawsze tworzy tę samą postać. To samo ziarno wykorzystuje awatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Użyj postaci zalogowanej osoby",
+        "description": "Gdy ktoś jest zalogowany w HAX, postać wygląda jak jego awatar. Pozostali widzą ziarno podane powyżej."
+      },
+      {
+        "property": "hat",
+        "title": "Czapka postaci",
+        "options": {
+          "none": "Brak",
+          "random": "Losowa",
+          "bunny": "Króliczek",
+          "coffee": "Kawa",
+          "construction": "Budowlana",
+          "cowboy": "Kowboj",
+          "education": "Edukacja",
+          "knight": "Rycerz",
+          "ninja": "Ninja",
+          "party": "Imprezowa",
+          "pirate": "Pirat",
+          "watermelon": "Arbuz"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Nagłówek końcowy"
+      },
+      {
+        "property": "finishText",
+        "title": "Komunikat końcowy"
+      },
+      {
+        "property": "finishLead",
+        "title": "Wiersz nad poleceniem",
+        "description": "Zostaw puste, aby użyć domyślnego wiersza."
+      },
+      {
+        "property": "prompt",
+        "title": "Polecenie do skopiowania",
+        "description": "Pokazywane na panelu końcowym z przyciskiem kopiowania. Wyczyść, aby ukryć pole."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nazwa gry",
+        "description": "Nadaje nazwę tej grze w zdarzeniach postępu i znacznikach OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Identyfikator gry",
+        "description": "Opcjonalne. Odróżnia tę grę od innych na stronie w zdarzeniach postępu."
+      }
+    ]
+  }
+}

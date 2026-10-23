@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Game mlayu konsep",
+    "description": "Game side scroller. Karakter mlayu kobong lan ora tau mandheg. Mlumpata kanggo njupuk konsep apik lan ngliwati sing ala, banjur deleng ringkesan apa sing apik lan apa sing ala."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Judhul quest"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "Prompt ing layar wiwitan."
+      },
+      {
+        "property": "items",
+        "title": "Konsep",
+        "description": "Sing apik dijupuk, sing ala dilumpati."
+      },
+      {
+        "property": "duration",
+        "title": "Dawane mlayu ing detik",
+        "description": "Kira-kira suwene mlayu kanthi kacepetan normal."
+      },
+      {
+        "slot": "finish",
+        "title": "Sawise game",
+        "description": "Opsional. Ngganti kothak salin prompt ing panel pungkasan nganggo isimu dhewe, kayata langkah sabanjure utawa tautan."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Tombol tambahan sawise game",
+        "description": "Opsional. Tombol utawa tautan sing katon ing sandhinge Main maneh ing panel pungkasan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Seed karakter",
+        "description": "Teks apa wae. Seed sing padha mesthi nggawe karakter sing padha. Iki seed sing padha karo sing dienggo avatar HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Gunakake karakter wong sing wis mlebu",
+        "description": "Yen ana wong mlebu ing HAX, karakter katon kaya avatar dheweke dhewe. Wong liya weruh seed ing ndhuwur."
+      },
+      {
+        "property": "hat",
+        "title": "Topi karakter",
+        "options": {
+          "none": "Ora ana",
+          "random": "Acak",
+          "bunny": "Kelinci",
+          "coffee": "Kopi",
+          "construction": "Konstruksi",
+          "cowboy": "Koboi",
+          "education": "Pendhidhikan",
+          "knight": "Ksatria",
+          "ninja": "Ninja",
+          "party": "Pesta",
+          "pirate": "Bajak laut",
+          "watermelon": "Semangka"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Skor lulus",
+        "description": "Angka saka 0 nganti 1. Dikirim bareng acara kemajuan rampung minangka ambang kasil."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Judhul pungkasan"
+      },
+      {
+        "property": "finishText",
+        "title": "Pesen pungkasan"
+      },
+      {
+        "property": "finishLead",
+        "title": "Baris ing ndhuwur prompt"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt kanggo disalin"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Jeneng game",
+        "description": "Menehi jeneng game iki ing acara kemajuan lan markup OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID game",
+        "description": "Opsional. Mbedakake game iki saka liyane ing kaca ing acara kemajuan."
+      }
+    ]
+  }
+}

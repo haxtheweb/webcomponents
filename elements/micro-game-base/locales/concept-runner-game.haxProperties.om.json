@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Taphaa fiigaa yaadaa",
+    "description": "Taphaa gara cinaatti sosocho'u. Amalli ibidda keessa fiiga, hin dhaabbatu. Yaadota gaarii qabuuf fi kan hamaa irra utaali, achiis gabaasa kan gaarii fi kan hamaa ture ilaali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Mataduree imala"
+      },
+      {
+        "property": "quest",
+        "title": "Imala",
+        "description": "Ajaja fuula jalqabaa irratti."
+      },
+      {
+        "property": "items",
+        "title": "Yaadota",
+        "description": "Kan gaarii ni qabama, kan hamaa irra ni utaalama."
+      },
+      {
+        "property": "duration",
+        "title": "Dheerina fiigichaa sekondiin",
+        "description": "Saffisa idilee irratti fiigichi yeroo meeqa akka turu."
+      },
+      {
+        "slot": "finish",
+        "title": "Erga taphni xumuramee booda",
+        "description": "Filannoo. Saanduqa ajaja waraabuu paanela xumuraa irratti qabiyyee keetiin bakka buusa, fakkeenyaaf tarkaanfii itti aanu ykn hidhaa."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Qabduuwwan dabalataa erga taphni xumuramee booda",
+        "description": "Filannoo. Qabduuwwan ykn hidhaawwan paanela xumuraa irratti \"Irra deebi'ii taphadhu\" biratti agarsiifaman."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Sanyii amala",
+        "description": "Barreeffama kamiyyuu. Sanyiin tokkoon yeroo hunda amala tokko uuma. Kun sanyii avatar HAX itti fayyadamu sana."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Amala nama seene fayyadami",
+        "description": "Yeroo namni tokko HAX seenu, amalichi avatar isaa fakkaata. Warri kaan sanyii gubbaa ni argu."
+      },
+      {
+        "property": "hat",
+        "title": "Gonfoo amalaa",
+        "options": {
+          "none": "Hin jiru",
+          "random": "Carraa",
+          "bunny": "Bunny",
+          "coffee": "Buna",
+          "construction": "Ijaarsa",
+          "cowboy": "Kaaboyii",
+          "education": "Barnoota",
+          "knight": "Gootaa",
+          "ninja": "Ninjaa",
+          "party": "Cidha",
+          "pirate": "Saamtuu galaanaa",
+          "watermelon": "Watermelon"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Qabxii darbuu",
+        "description": "Lakkoofsa 0 hanga 1. Taatee adeemsa xumurame wajjin ulaagaa milkaa'inaa ta'ee ergama."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Mataduree xumuraa"
+      },
+      {
+        "property": "finishText",
+        "title": "Ergaa xumuraa"
+      },
+      {
+        "property": "finishLead",
+        "title": "Sarara ajaja gubbaa"
+      },
+      {
+        "property": "prompt",
+        "title": "Ajaja waraabamu"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Maqaa taphaa",
+        "description": "Taphicha kana taateewwan adeemsaa fi mallattoo OER Schema keessatti moggaasa."
+      },
+      {
+        "property": "gameId",
+        "title": "ID taphaa",
+        "description": "Filannoo. Taateewwan adeemsaa keessatti taphicha kana kan fuula irra jiran kaan irraa addaan baasa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>micro-game-base: Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import { html, css } from "lit";
+      import { MicroGameBase } from "../micro-game-base.js";
+      import "../lib/concept-map-game.js";
+      import "../lib/concept-runner-game.js";
+      import "../lib/concept-quest-game.js";
+
+      for (const tag of ["map", "runner", "quest"]) {
+        const name = "concept-" + tag + "-game";
+        fetch("../lib/" + name + ".haxProperties.json")
+          .then((r) => r.json())
+          .then((d) => {
+            Object.assign(document.getElementById(tag), d.demoSchema[0].properties);
+          });
+      }
+
+      // the smallest useful game: walk into the dot, three times
+      class DotGame extends MicroGameBase {
+        static get tag() { return "dot-game"; }
+        constructor() {
+          super();
+          this.seed = "dots";
+          this.finishTitle = "All three";
+          this.finishText = "You walked into every dot.";
+          this.hits = 0;
+          this.px = 40; this.py = 120; this.dx = 240; this.dy = 60;
+        }
+        static get properties() { return { ...super.properties, hits: { type: Number } }; }
+        gameUpdate(dt) {
+          const v = 160 * dt;
+          if (this.keys.has("l")) this.px -= v;
+          if (this.keys.has("r")) this.px += v;
+          if (this.keys.has("u")) this.py -= v;
+          if (this.keys.has("d")) this.py += v;
+          if (Math.hypot(this.px - this.dx, this.py - this.dy) < 30) {
+            this.hits++;
+            this.dx = 40 + Math.random() * 400;
+            this.dy = 40 + Math.random() * 120;
+            this.emitProgress("experienced", { objectDetail: "dot " + this.hits });
+            if (this.hits >= 3) this.gameComplete({ ms: 1000, progress: { resultSuccess: true, resultScore: 1 } });
+          }
+        }
+        _reset() { this.hits = 0; this.gameResetBase(); this.state = "paused"; this.gameStart(); }
+        render() {
+          return html`
+            <confetti-container id="confetti">
+              <div data-game-stage tabindex="0" style="position:relative;height:220px;border:3px solid">
+                <div style="position:absolute;left:${this.dx}px;top:${this.dy}px;width:20px;height:20px;border-radius:50%;background:currentColor"></div>
+                <div style="position:absolute;left:${this.px}px;top:${this.py}px">${this.renderPlayer({ width: 40, height: 50 })}</div>
+                ${this.renderOverlay()}${this.renderDpad()}
+              </div>
+            </confetti-container>
+            ${this.done ? this.renderFinishPanel({ stats: this.timeText() }) : ""}`;
+        }
+      }
+      customElements.define(DotGame.tag, DotGame);
+      document.addEventListener("user-engagement", (e) => console.log(e.detail));
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h2>The examples</h2>
+      <p>
+        Three small games built on the base. Each one is blank until it is
+        given content. Here the content comes from the demoSchema in each
+        game's haxProperties, which is also what HAX inserts.
+      </p>
+      <h3>concept-map-game</h3>
+      <concept-map-game id="map"></concept-map-game>
+      <h3>concept-runner-game</h3>
+      <concept-runner-game id="runner"></concept-runner-game>
+      <h3>concept-quest-game</h3>
+      <concept-quest-game id="quest"></concept-quest-game>
+      <h3>A blank tag</h3>
+      <concept-map-game></concept-map-game>
+      <h2>A game in about 40 lines</h2>
+      <dot-game seed-from-user prompt="Tell me what you would build next."></dot-game>
+      <h3>With your own ending</h3>
+      <dot-game><p slot="finish">Nice. On to the next lesson.</p></dot-game>
+    </div>
+  </body>
+</html>

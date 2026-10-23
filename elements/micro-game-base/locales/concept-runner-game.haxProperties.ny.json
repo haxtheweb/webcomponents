@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Masewera othamanga a malingaliro",
+    "description": "Masewera oyenda cham'mbali. Munthuyo amathamanga ali pamoto ndipo sayima. Lumphani kuti mutenge malingaliro abwino ndi kudumpha oipa, kenako muwone mwachidule zomwe zinali zabwino ndi zoipa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Mutu wa ulendo"
+      },
+      {
+        "property": "quest",
+        "title": "Ulendo",
+        "description": "Malangizo a pa sikirini yoyambira."
+      },
+      {
+        "property": "items",
+        "title": "Malingaliro",
+        "description": "Abwino amatengedwa, oipa amalumphidwa."
+      },
+      {
+        "property": "duration",
+        "title": "Utali wa kuthamanga mu masekondi",
+        "description": "Pafupifupi nthawi yomwe kuthamanga kumatenga pa liwiro lachibadwa."
+      },
+      {
+        "slot": "finish",
+        "title": "Masewera atatha",
+        "description": "Si lofunika. Limalowa m'malo mwa bokosi lokopera malangizo pa gawo lomaliza ndi zomwe mwalemba, monga sitepe yotsatira kapena ulalo."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Mabatani owonjezera masewera atatha",
+        "description": "Si ofunika. Mabatani kapena maulalo owonetsedwa pafupi ndi Sewerani kachiwiri pa gawo lomaliza."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Mbewu ya munthu",
+        "description": "Mawu aliwonse. Mbewu yomweyo imapanga munthu yemweyo nthawi zonse. Iyi ndi mbewu yomwe avatar ya HAX imagwiritsa ntchito."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Gwiritsani ntchito munthu wa amene walowa",
+        "description": "Wina akalowa mu HAX, munthuyo amawoneka ngati avatar yake. Ena onse amaona mbewu ya pamwambapa."
+      },
+      {
+        "property": "hat",
+        "title": "Chipewa cha munthu",
+        "options": {
+          "none": "Palibe",
+          "random": "Mwachisawawa",
+          "bunny": "Kalulu",
+          "coffee": "Khofi",
+          "construction": "Zomangamanga",
+          "cowboy": "Woweta ng'ombe",
+          "education": "Maphunziro",
+          "knight": "Msilikali wankhondo",
+          "ninja": "Ninja",
+          "party": "Phwando",
+          "pirate": "Wachifwamba wa panyanja",
+          "watermelon": "Chivwende"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Chiwerengero chopambana",
+        "description": "Nambala kuchokera pa 0 mpaka 1. Imatumizidwa ndi chochitika cha kumaliza kupita patsogolo ngati malire a kupambana."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Mutu womaliza"
+      },
+      {
+        "property": "finishText",
+        "title": "Uthenga womaliza"
+      },
+      {
+        "property": "finishLead",
+        "title": "Mzere pamwamba pa malangizo"
+      },
+      {
+        "property": "prompt",
+        "title": "Malangizo oti mukopere"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Dzina la masewera",
+        "description": "Limatchula masewerawa mu zochitika za kupita patsogolo ndi chizindikiro cha OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID ya masewera",
+        "description": "Si lofunika. Limasiyanitsa masewerawa ndi ena patsamba mu zochitika za kupita patsogolo."
+      }
+    ]
+  }
+}

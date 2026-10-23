@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Mõistete seiklusmäng",
+    "description": "Maailm avastamiseks. Mõisted leiavad sind ja esitavad küsimuse. Vasta õigesti, et üks võita ja selle maja avada. Kokkuvõte näitab katseid ja mida kordada."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Ülesande pealkiri"
+      },
+      {
+        "property": "quest",
+        "title": "Ülesanne",
+        "description": "Alguskuval kuvatav viip. Ütle mängijale, milleks teekond on."
+      },
+      {
+        "property": "nodes",
+        "title": "Mõisted",
+        "description": "Iga mõiste on maja koos koletisega."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Keskmine silt",
+        "description": "Mõte, milleks kõik mõisted kokku liituvad."
+      },
+      {
+        "slot": "finish",
+        "title": "Pärast mängu",
+        "description": "Valikuline. Asendab lõpupaneelil viiba kopeerimise kasti sinu enda sisuga, näiteks järgmise sammu või lingiga."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Lisanupud pärast mängu",
+        "description": "Valikuline. Lõpupaneelil nupu Mängi uuesti kõrval kuvatavad nupud või lingid."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Südamed",
+        "description": "Valesid vastuseid enne, kui mõiste põgeneb."
+      },
+      {
+        "property": "seed",
+        "title": "Tegelase seeme",
+        "description": "Mis tahes tekst. Sama seeme loob alati sama tegelase. See on sama seeme, mida kasutab HAX-i avatar."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Kasuta sisselogitud isiku tegelast",
+        "description": "Kui keegi on HAX-i sisse logitud, näeb tegelane välja nagu tema enda avatar. Kõik teised näevad ülaltoodud seemet."
+      },
+      {
+        "property": "hat",
+        "title": "Tegelase müts",
+        "options": {
+          "none": "Puudub",
+          "random": "Juhuslik",
+          "bunny": "Jänku",
+          "coffee": "Kohv",
+          "construction": "Ehitaja",
+          "cowboy": "Kauboi",
+          "education": "Haridus",
+          "knight": "Rüütel",
+          "ninja": "Ninja",
+          "party": "Pidu",
+          "pirate": "Piraat",
+          "watermelon": "Arbuus"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Lõpu pealkiri"
+      },
+      {
+        "property": "finishText",
+        "title": "Lõpu sõnum"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rida viiba kohal",
+        "description": "Jäta tühjaks vaikerea jaoks."
+      },
+      {
+        "property": "prompt",
+        "title": "Kopeeritav viip",
+        "description": "Kuvatakse lõpupaneelil koos kopeerimisnupuga. Tühjenda, et kast peita."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Mängu nimi",
+        "description": "Annab sellele mängule nime edenemissündmustes ja OER Schema märgistuses."
+      },
+      {
+        "property": "gameId",
+        "title": "Mängu ID",
+        "description": "Valikuline. Eristab selle mängu lehel olevatest teistest edenemissündmustes."
+      }
+    ]
+  }
+}

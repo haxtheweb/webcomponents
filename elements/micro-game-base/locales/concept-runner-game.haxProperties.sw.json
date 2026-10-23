@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Mchezo wa mkimbiaji wa dhana",
+    "description": "Mchezo wa kusogea pembeni. Mhusika anakimbia kwa moto na hasimami kamwe. Ruka ili kunyakua dhana nzuri na kuruka juu ya mbaya, kisha uone muhtasari wa yaliyokuwa mazuri na mabaya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Kichwa cha safari"
+      },
+      {
+        "property": "quest",
+        "title": "Safari",
+        "description": "Maelekezo kwenye skrini ya kuanza."
+      },
+      {
+        "property": "items",
+        "title": "Dhana",
+        "description": "Nzuri zinanyakuliwa, mbaya zinarukiwa."
+      },
+      {
+        "property": "duration",
+        "title": "Urefu wa mbio kwa sekunde",
+        "description": "Takriban mbio zinachukua muda gani kwa kasi ya kawaida."
+      },
+      {
+        "slot": "finish",
+        "title": "Baada ya mchezo",
+        "description": "Si lazima. Inabadilisha kisanduku cha kunakili maelekezo kwenye paneli ya mwisho na maudhui yako mwenyewe, kama hatua inayofuata au kiungo."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Vitufe vya ziada baada ya mchezo",
+        "description": "Si lazima. Vitufe au viungo vinavyoonyeshwa kando ya Cheza tena kwenye paneli ya mwisho."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Mbegu ya mhusika",
+        "description": "Maandishi yoyote. Mbegu ileile daima huunda mhusika yuleyule. Hii ni mbegu ileile ambayo avatar ya HAX hutumia."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Tumia mhusika wa mtu aliyeingia",
+        "description": "Mtu anapoingia kwenye HAX, mhusika anaonekana kama avatar yake mwenyewe. Wengine wote wanaona mbegu iliyo hapo juu."
+      },
+      {
+        "property": "hat",
+        "title": "Kofia ya mhusika",
+        "options": {
+          "none": "Hakuna",
+          "random": "Nasibu",
+          "bunny": "Sungura",
+          "coffee": "Kahawa",
+          "construction": "Ujenzi",
+          "cowboy": "Kauboi",
+          "education": "Elimu",
+          "knight": "Shujaa wa zamani",
+          "ninja": "Ninja",
+          "party": "Sherehe",
+          "pirate": "Maharamia",
+          "watermelon": "Tikiti maji"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Alama ya kufaulu",
+        "description": "Nambari kutoka 0 hadi 1. Hutumwa pamoja na tukio la maendeleo yaliyokamilika kama kiwango cha mafanikio."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Kichwa cha mwisho"
+      },
+      {
+        "property": "finishText",
+        "title": "Ujumbe wa mwisho"
+      },
+      {
+        "property": "finishLead",
+        "title": "Mstari juu ya maelekezo"
+      },
+      {
+        "property": "prompt",
+        "title": "Maelekezo ya kunakili"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Jina la mchezo",
+        "description": "Hupa mchezo huu jina katika matukio ya maendeleo na alama za OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Kitambulisho cha mchezo",
+        "description": "Si lazima. Hutofautisha mchezo huu na mingine kwenye ukurasa katika matukio ya maendeleo."
+      }
+    ]
+  }
+}

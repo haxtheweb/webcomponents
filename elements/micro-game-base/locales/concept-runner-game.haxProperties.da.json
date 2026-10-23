@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Begrebsløbespil",
+    "description": "Et sidescrollende spil. Figuren løber i flammer og stopper aldrig. Hop for at fange de gode begreber og over de dårlige, og se derefter en opsummering af, hvad der var godt, og hvad der var dårligt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Overskrift for quest"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "Prompten på startskærmen."
+      },
+      {
+        "property": "items",
+        "title": "Begreber",
+        "description": "De gode fanges, de dårlige hoppes over."
+      },
+      {
+        "property": "duration",
+        "title": "Løbets længde i sekunder",
+        "description": "Cirka hvor længe løbet varer i normal fart."
+      },
+      {
+        "slot": "finish",
+        "title": "Efter spillet",
+        "description": "Valgfrit. Erstatter kopiér-en-prompt-boksen på afslutningspanelet med dit eget indhold, f.eks. et næste skridt eller et link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Ekstra knapper efter spillet",
+        "description": "Valgfrit. Knapper eller links, der vises ved siden af Spil igen på afslutningspanelet."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Figurens seed",
+        "description": "Vilkårlig tekst. Samme seed giver altid samme figur. Det er den samme seed, som HAX-avataren bruger."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Brug den loggede brugers figur",
+        "description": "Når nogen er logget ind på HAX, ligner figuren deres egen avatar. Alle andre ser seed'en ovenfor."
+      },
+      {
+        "property": "hat",
+        "title": "Figurens hat",
+        "options": {
+          "none": "Ingen",
+          "random": "Tilfældig",
+          "bunny": "Kanin",
+          "coffee": "Kaffe",
+          "construction": "Byggeri",
+          "cowboy": "Cowboy",
+          "education": "Uddannelse",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Fest",
+          "pirate": "Pirat",
+          "watermelon": "Vandmelon"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Beståelsesgrænse",
+        "description": "Et tal fra 0 til 1. Sendes med den fuldførte fremskridtshændelse som succestærskel."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Overskrift ved afslutning"
+      },
+      {
+        "property": "finishText",
+        "title": "Besked ved afslutning"
+      },
+      {
+        "property": "finishLead",
+        "title": "Linje over prompten"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt til kopiering"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spillets navn",
+        "description": "Navngiver dette spil i fremskridtshændelser og OER Schema-markup."
+      },
+      {
+        "property": "gameId",
+        "title": "Spil-id",
+        "description": "Valgfrit. Adskiller dette spil fra andre på siden i fremskridtshændelser."
+      }
+    ]
+  }
+}

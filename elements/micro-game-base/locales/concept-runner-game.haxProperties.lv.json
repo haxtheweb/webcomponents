@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Jēdzienu skriešanas spēle",
+    "description": "Sānu ritināšanas spēle. Tēls skrien ugunī un nekad neapstājas. Lec, lai satvertu labos jēdzienus un pārlēktu sliktos, tad apskati kopsavilkumu par to, kas bija labs un kas slikts."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Piedzīvojuma virsraksts"
+      },
+      {
+        "property": "quest",
+        "title": "Piedzīvojums",
+        "description": "Uzvedne sākuma ekrānā."
+      },
+      {
+        "property": "items",
+        "title": "Jēdzieni",
+        "description": "Labos satver, sliktos pārlec."
+      },
+      {
+        "property": "duration",
+        "title": "Skrējiena garums sekundēs",
+        "description": "Aptuveni cik ilgi skrējiens ilgst parastā ātrumā."
+      },
+      {
+        "slot": "finish",
+        "title": "Pēc spēles",
+        "description": "Pēc izvēles. Aizstāj uzvednes kopēšanas lodziņu noslēguma panelī ar tavu saturu, piemēram, nākamo soli vai saiti."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Papildu pogas pēc spēles",
+        "description": "Pēc izvēles. Pogas vai saites, kas noslēguma panelī redzamas blakus pogai Spēlēt vēlreiz."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Tēla sēkla",
+        "description": "Jebkurš teksts. Viena un tā pati sēkla vienmēr izveido vienu un to pašu tēlu. Šī ir tā pati sēkla, ko izmanto HAX avatars."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Izmantot pierakstījušās personas tēlu",
+        "description": "Kad kāds ir pierakstījies HAX, tēls izskatās kā viņa paša avatars. Visi pārējie redz augstāk norādīto sēklu."
+      },
+      {
+        "property": "hat",
+        "title": "Tēla cepure",
+        "options": {
+          "none": "Nav",
+          "random": "Nejauša",
+          "bunny": "Zaķis",
+          "coffee": "Kafija",
+          "construction": "Celtniecība",
+          "cowboy": "Kovbojs",
+          "education": "Izglītība",
+          "knight": "Bruņinieks",
+          "ninja": "Nindzja",
+          "party": "Ballīte",
+          "pirate": "Pirāts",
+          "watermelon": "Arbūzs"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Izturēšanas rezultāts",
+        "description": "Skaitlis no 0 līdz 1. Tiek nosūtīts kopā ar pabeigtā progresa notikumu kā sekmīguma slieksnis."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Noslēguma virsraksts"
+      },
+      {
+        "property": "finishText",
+        "title": "Noslēguma ziņa"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rinda virs uzvednes"
+      },
+      {
+        "property": "prompt",
+        "title": "Kopējamā uzvedne"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spēles nosaukums",
+        "description": "Nosauc šo spēli progresa notikumos un OER Schema marķējumā."
+      },
+      {
+        "property": "gameId",
+        "title": "Spēles id",
+        "description": "Pēc izvēles. Progresa notikumos atšķir šo spēli no citām lapā."
+      }
+    ]
+  }
+}

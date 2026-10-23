@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "משחק ריצת מושגים",
+    "description": "משחק גלילה צדדית. הדמות רצה בלהבות ולא עוצרת לעולם. קפצו כדי לתפוס את המושגים הטובים ומעל הרעים, ואז ראו סיכום של מה היה טוב ומה היה רע."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "כותרת המשימה"
+      },
+      {
+        "property": "quest",
+        "title": "משימה",
+        "description": "ההנחיה במסך הפתיחה."
+      },
+      {
+        "property": "items",
+        "title": "מושגים",
+        "description": "את הטובים תופסים, מעל הרעים קופצים."
+      },
+      {
+        "property": "duration",
+        "title": "משך הריצה בשניות",
+        "description": "בערך כמה זמן נמשכת הריצה במהירות רגילה."
+      },
+      {
+        "slot": "finish",
+        "title": "אחרי המשחק",
+        "description": "אופציונלי. מחליף את תיבת העתקת ההנחיה בלוח הסיום בתוכן משלכם, כמו צעד הבא או קישור."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "כפתורים נוספים אחרי המשחק",
+        "description": "אופציונלי. כפתורים או קישורים שמוצגים לצד לשחק שוב בלוח הסיום."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "זרע הדמות",
+        "description": "כל טקסט. אותו זרע תמיד יוצר את אותה דמות. זה אותו זרע שבו משתמש האווטאר של HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "שימוש בדמות של האדם המחובר",
+        "description": "כשמישהו מחובר ל-HAX, הדמות נראית כמו האווטאר שלו. כל השאר רואים את הזרע שלמעלה."
+      },
+      {
+        "property": "hat",
+        "title": "כובע הדמות",
+        "options": {
+          "none": "ללא",
+          "random": "אקראי",
+          "bunny": "ארנב",
+          "coffee": "קפה",
+          "construction": "בנייה",
+          "cowboy": "קאובוי",
+          "education": "חינוך",
+          "knight": "אביר",
+          "ninja": "נינג'ה",
+          "party": "מסיבה",
+          "pirate": "פיראט",
+          "watermelon": "אבטיח"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "ציון עובר",
+        "description": "מספר בין 0 ל-1. נשלח עם אירוע ההתקדמות של סיום המשחק כסף ההצלחה."
+      },
+      {
+        "property": "finishTitle",
+        "title": "כותרת הסיום"
+      },
+      {
+        "property": "finishText",
+        "title": "הודעת הסיום"
+      },
+      {
+        "property": "finishLead",
+        "title": "שורה מעל ההנחיה"
+      },
+      {
+        "property": "prompt",
+        "title": "הנחיה להעתקה"
+      },
+      {
+        "property": "gameTitle",
+        "title": "שם המשחק",
+        "description": "נותן שם למשחק הזה באירועי התקדמות ובסימון OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "מזהה המשחק",
+        "description": "אופציונלי. מבדיל בין המשחק הזה לאחרים בדף באירועי התקדמות."
+      }
+    ]
+  }
+}

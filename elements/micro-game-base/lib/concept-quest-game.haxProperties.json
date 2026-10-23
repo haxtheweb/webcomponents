@@ -1,0 +1,268 @@
+{
+  "api": "1",
+  "canScale": true,
+  "canEditSource": true,
+  "type": "element",
+  "designSystem": false,
+  "gizmo": {
+    "title": "Concept quest game",
+    "description": "An overworld to wander. Concepts find you and ask a question. Answer right to defeat one and unlock its house. The recap shows tries and what to review.",
+    "icon": "hax:hax2022",
+    "color": "purple",
+    "tags": ["Other", "Interactive", "Game"],
+    "handles": [],
+    "meta": {
+      "author": "haxtheweb"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Quest heading",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "The prompt shown on the start screen. Tell the player what the journey is for.",
+        "inputMethod": "textarea",
+        "icon": "communication:message"
+      },
+      {
+        "property": "nodes",
+        "title": "Concepts",
+        "description": "Each concept is a house with a monster.",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "properties": [
+          {
+            "property": "label",
+            "title": "Name",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "link",
+            "title": "Short phrase shown after it is unlocked",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "text",
+            "title": "What it is",
+            "description": "Shown when the house unlocks and in the review list.",
+            "inputMethod": "textarea",
+            "required": true
+          },
+          {
+            "property": "question",
+            "title": "Question",
+            "description": "Asked when the concept finds you. Leave empty to ask which description belongs to it.",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "choices",
+            "title": "Choices, one per line",
+            "description": "Put the RIGHT answer on the first line. The game shuffles them.",
+            "inputMethod": "textarea"
+          },
+          {
+            "property": "hint",
+            "title": "Hint after a wrong answer",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "url",
+            "title": "Learn more link",
+            "description": "Optional. Starts with https:// or /",
+            "inputMethod": "textfield"
+          }
+        ]
+      },
+      {
+        "property": "hubLabel",
+        "title": "Center label",
+        "description": "The idea all of the concepts add up to.",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      },
+      {
+        "slot": "finish",
+        "title": "After the game",
+        "description": "Optional. Replaces the copy-a-prompt box on the finish panel with your own content, such as a next step or a link.",
+        "inputMethod": "textarea",
+        "slotWrapper": "div"
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Extra buttons after the game",
+        "description": "Optional. Buttons or links shown beside Play again on the finish panel.",
+        "inputMethod": "textarea",
+        "slotWrapper": "div"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Hearts",
+        "description": "Wrong answers before the concept gets away.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "seed",
+        "title": "Character seed",
+        "description": "Any text. The same seed always makes the same character. This is the same seed the HAX avatar uses.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Use the signed in person's character",
+        "description": "When someone is signed in to HAX, the character looks like their own avatar. Everyone else sees the seed above.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "hat",
+        "title": "Character hat",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "random": "Random",
+          "bunny": "Bunny",
+          "coffee": "Coffee",
+          "construction": "Construction",
+          "cowboy": "Cowboy",
+          "education": "Education",
+          "knight": "Knight",
+          "ninja": "Ninja",
+          "party": "Party",
+          "pirate": "Pirate",
+          "watermelon": "Watermelon"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Finish heading",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "finishText",
+        "title": "Finish message",
+        "inputMethod": "textarea"
+      },
+      {
+        "property": "finishLead",
+        "title": "Line above the prompt",
+        "description": "Leave empty for the default line.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt to copy",
+        "description": "Shown on the finish panel with a copy button. Clear it to hide the box.",
+        "inputMethod": "textarea"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Game name",
+        "description": "Names this game in progress events and OER Schema markup.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "gameId",
+        "title": "Game id",
+        "description": "Optional. Tells this game apart from others on the page in progress events.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": [
+      "state",
+      "done",
+      "edit-mode",
+      "element-visible",
+      "t",
+      "typeof",
+      "resource",
+      "prefix",
+      "schema-map",
+      "_userSeed",
+      "_finishSlotted"
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "concept-quest-game",
+      "properties": {
+        "nodes": [
+          {
+            "label": "Accessible",
+            "link": "for everyone",
+            "text": "HAX will always strive to maximize accessibility. The best time to make content accessible is the moment it is created, so HAX builds that into authoring instead of leaving it for later.",
+            "question": "When is the best time to make content accessible?",
+            "choices": "The moment it is created\nRight before it is published\nAfter someone complains\nOnly for public sites",
+            "hint": "Think about when authoring happens."
+          },
+          {
+            "label": "Extensible",
+            "link": "anyone can add",
+            "text": "Nothing in HAX is monolithic. The ecosystem keeps growing and contributions are welcome, so the system can be extended sustainably.",
+            "question": "What does it mean that HAX is non-monolithic?",
+            "choices": "It keeps growing as people add to it\nIt ships as one big package\nOnly the core team can change it\nIt cannot be extended",
+            "hint": "Contributions are welcome."
+          },
+          {
+            "label": "Free and Open",
+            "link": "no cost, no lock-in",
+            "text": "Open documentation, open APIs and an open community. Content moves freely into and out of HAX, everything generates static files, and it costs nothing to use.",
+            "question": "What happens to your content if you leave HAX?",
+            "choices": "It moves out freely as static files\nIt stays locked inside HAX\nIt is deleted\nYou pay to export it",
+            "hint": "Everything generates static files."
+          },
+          {
+            "label": "Efficient",
+            "link": "fast and light",
+            "text": "Built to perform well through good methodology, low-level browser APIs, micro-services and lazy loading.",
+            "question": "Which of these helps HAX stay efficient?",
+            "choices": "Lazy loading elements only when they are needed\nLoading every element on every page\nShipping a heavy framework\nRebuilding the page on every click",
+            "hint": "Load only what the page uses."
+          },
+          {
+            "label": "Platform Agnostic",
+            "link": "runs anywhere",
+            "text": "HAX output works on its own, inside HAXcms or HAXiam, or on plain static pages, with no hosting-specific backend to depend on.",
+            "question": "Where can HAX content run?",
+            "choices": "Standalone, in HAXcms or HAXiam, or on plain static pages\nOnly inside one vendor's hosting\nOnly with one specific database\nOnly on a single campus network",
+            "hint": "No hosting-specific backend."
+          },
+          {
+            "label": "Remixable",
+            "link": "make it yours",
+            "text": "Duplicate a site, switch themes on the fly and reshape the structure of a whole site or a single page. The platform and what it produces are meant to be remixed.",
+            "question": "Which of these can you do to remix a HAX site?",
+            "choices": "Duplicate it and switch themes on the fly\nNothing, sites are fixed once made\nEdit it only through a vendor\nChange the theme only by rewriting every page",
+            "hint": "Themes can change on the fly."
+          },
+          {
+            "label": "Sustainable",
+            "link": "built to last",
+            "text": "Sustainable for the planet, with less data and battery use, and for the long run, because an open source community can outlive any single vendor.",
+            "question": "Why is HAX sustainable beyond using less energy?",
+            "choices": "An open source community can outlive any single vendor\nIt needs a yearly subscription\nIt depends on one company\nIt is rebuilt from scratch every year",
+            "hint": "Vendors vanish, communities can last."
+          }
+        ],
+        "hubLabel": "The Ubiquitous Web",
+        "seed": "quest",
+        "finishTitle": "Every house unlocked",
+        "finishText": "Every concept has been defeated and every house is open.",
+        "questTitle": "Your quest",
+        "quest": "Wander the overworld. When a concept finds you, answer its question to defeat it and unlock its house.",
+        "finishLead": "Paste this into Claude to keep practicing."
+      },
+      "content": ""
+    }
+  ]
+}

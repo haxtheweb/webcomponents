@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Mutambo wekumhanya nepfungwa",
+    "description": "Mutambo unofamba nechemudivi. Munhu anomhanya akaita moto uye haamire. Svetuka kuti ubate pfungwa dzakanaka uye udarike dzakaipa, wobva waona muchidimbu zvakanga zvakanaka nezvakanga zvakaipa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Musoro wekutsvaga"
+      },
+      {
+        "property": "quest",
+        "title": "Kutsvaga",
+        "description": "Prompt iri pascreen yekutanga."
+      },
+      {
+        "property": "items",
+        "title": "Pfungwa",
+        "description": "Dzakanaka dzinobatwa, dzakaipa dzinosvetukwa."
+      },
+      {
+        "property": "duration",
+        "title": "Kureba kwekumhanya mumasekonzi",
+        "description": "Kuti kumhanya kunotora nguva yakareba sei pakumhanya kwenguva dzose."
+      },
+      {
+        "slot": "finish",
+        "title": "Mushure memutambo",
+        "description": "Hazvisi zvekumanikidzwa. Inotsiva bhokisi rekukopa prompt pachikamu chekupedzisa nezvinyorwa zvako, senhanho inotevera kana link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Mabhatani akawedzerwa mushure memutambo",
+        "description": "Hazvisi zvekumanikidzwa. Mabhatani kana malink anoratidzwa padhuze neTambazve pachikamu chekupedzisa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Mbeu yemunhu",
+        "description": "Zvinyorwa zvipi zvazvo. Mbeu imwe chete inogadzira munhu mumwe chete nguva dzese. Iyi ndiyo mbeu inoshandiswa neHAX avatar."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Shandisa munhu wemunhu akapinda",
+        "description": "Kana mumwe munhu akapinda muHAX, munhu uyu anotaridzika seavatar yake. Vamwe vese vanoona mbeu iri pamusoro."
+      },
+      {
+        "property": "hat",
+        "title": "Ngowani yemunhu",
+        "options": {
+          "none": "Hapana",
+          "random": "Isina kurongwa",
+          "bunny": "Gonye",
+          "coffee": "Kofi",
+          "construction": "Kuvaka",
+          "cowboy": "Cowboy",
+          "education": "Dzidzo",
+          "knight": "Knight",
+          "ninja": "Ninja",
+          "party": "Party",
+          "pirate": "Pirate",
+          "watermelon": "Tsvanzva"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Mapoinzi ekupasa",
+        "description": "Nhamba kubva pa 0 kusvika pa 1. Inotumirwa nechiitiko chekufambira mberi chakapera sekuganhurirwa kwekubudirira."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Musoro wekupedzisa"
+      },
+      {
+        "property": "finishText",
+        "title": "Meseji yekupedzisa"
+      },
+      {
+        "property": "finishLead",
+        "title": "Mutsetse uri pamusoro peprompt"
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt yekukopa"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Zita remutambo",
+        "description": "Inopa mutambo uyu zita muzviitiko zvekufambira mberi uye pamarkup yeOER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "Id yemutambo",
+        "description": "Hazvisi zvekumanikidzwa. Inosiyanisa mutambo uyu nemimwe iri papeji muzviitiko zvekufambira mberi."
+      }
+    ]
+  }
+}

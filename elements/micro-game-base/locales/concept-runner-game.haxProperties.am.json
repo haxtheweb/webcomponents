@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "የጽንሰ-ሐሳብ ሯጭ ጨዋታ",
+    "description": "ወደ ጎን የሚሸብልል ጨዋታ። ገጸ-ባህሪው በእሳት ላይ ይሮጣል እና በፍጹም አይቆምም። ጥሩ ጽንሰ-ሐሳቦችን ለመያዝ እና መጥፎዎቹን ለመዝለል ዝለል፣ ከዚያ ጥሩ እና መጥፎ የነበረውን ማጠቃለያ እይ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "የጉዞው ርዕስ"
+      },
+      {
+        "property": "quest",
+        "title": "ጉዞ",
+        "description": "በመነሻ ማያ ላይ ያለው ጥያቄ።"
+      },
+      {
+        "property": "items",
+        "title": "ጽንሰ-ሐሳቦች",
+        "description": "ጥሩዎቹ ይያዛሉ፣ መጥፎዎቹ ይዘለላሉ።"
+      },
+      {
+        "property": "duration",
+        "title": "የሩጫ ርዝመት በሰከንዶች",
+        "description": "በተለመደ ፍጥነት ሩጫው ምን ያህል እንደሚቆይ በግምት።"
+      },
+      {
+        "slot": "finish",
+        "title": "ከጨዋታው በኋላ",
+        "description": "አማራጭ። በማጠናቀቂያ ፓነል ላይ ያለውን ጥያቄ የመቅዳት ሳጥን በራስዎ ይዘት ይተካል፣ ለምሳሌ ቀጣይ እርምጃ ወይም አገናኝ።"
+      },
+      {
+        "slot": "finish-actions",
+        "title": "ከጨዋታው በኋላ ተጨማሪ አዝራሮች",
+        "description": "አማራጭ። በማጠናቀቂያ ፓነል ላይ ከእንደገና ተጫወት አጠገብ የሚታዩ አዝራሮች ወይም አገናኞች።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "የገጸ-ባህሪ ዘር",
+        "description": "ማንኛውም ጽሑፍ። ተመሳሳይ ዘር ሁልጊዜ ተመሳሳይ ገጸ-ባህሪ ይሠራል። የ HAX አምሳያ የሚጠቀመው ዘር ይህ ነው።"
+      },
+      {
+        "property": "seedFromUser",
+        "title": "የገባውን ሰው ገጸ-ባህሪ ተጠቀም",
+        "description": "አንድ ሰው በ HAX ሲገባ ገጸ-ባህሪው እንደ ራሱ አምሳያ ይመስላል። ሌሎች ሁሉ ከላይ ያለውን ዘር ያያሉ።"
+      },
+      {
+        "property": "hat",
+        "title": "የገጸ-ባህሪ ኮፍያ",
+        "options": {
+          "none": "ምንም",
+          "random": "በዘፈቀደ",
+          "bunny": "ጥንቸል",
+          "coffee": "ቡና",
+          "construction": "ግንባታ",
+          "cowboy": "ካውቦይ",
+          "education": "ትምህርት",
+          "knight": "ባላባት",
+          "ninja": "ኒንጃ",
+          "party": "ድግስ",
+          "pirate": "የባህር ወንበዴ",
+          "watermelon": "ሀብሀብ"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "የማለፊያ ነጥብ",
+        "description": "ከ0 እስከ 1 ያለ ቁጥር። ከተጠናቀቀው የሂደት ክስተት ጋር እንደ የስኬት ወሰን ይላካል።"
+      },
+      {
+        "property": "finishTitle",
+        "title": "የማጠናቀቂያ ርዕስ"
+      },
+      {
+        "property": "finishText",
+        "title": "የማጠናቀቂያ መልዕክት"
+      },
+      {
+        "property": "finishLead",
+        "title": "ከጥያቄው በላይ ያለ መስመር"
+      },
+      {
+        "property": "prompt",
+        "title": "የሚቀዳ ጥያቄ"
+      },
+      {
+        "property": "gameTitle",
+        "title": "የጨዋታ ስም",
+        "description": "በሂደት ክስተቶች እና በ OER Schema ምልክት ማድረጊያ ውስጥ ይህን ጨዋታ ይሰይማል።"
+      },
+      {
+        "property": "gameId",
+        "title": "የጨዋታ መለያ",
+        "description": "አማራጭ። በሂደት ክስተቶች ውስጥ ይህን ጨዋታ በገጹ ላይ ካሉ ሌሎች ይለያል።"
+      }
+    ]
+  }
+}

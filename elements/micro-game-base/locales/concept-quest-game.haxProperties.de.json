@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Konzept-Quest-Spiel",
+    "description": "Eine Oberwelt zum Erkunden. Konzepte finden dich und stellen eine Frage. Antworte richtig, um eines zu besiegen und sein Haus freizuschalten. Die Zusammenfassung zeigt die Versuche und was du wiederholen solltest."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Überschrift der Quest"
+      },
+      {
+        "property": "quest",
+        "title": "Quest",
+        "description": "Der Text auf dem Startbildschirm. Sag den Spielenden, wofür die Reise gut ist."
+      },
+      {
+        "property": "nodes",
+        "title": "Konzepte",
+        "description": "Jedes Konzept ist ein Haus mit einem Monster."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Beschriftung in der Mitte",
+        "description": "Die Idee, auf die alle Konzepte hinauslaufen."
+      },
+      {
+        "slot": "finish",
+        "title": "Nach dem Spiel",
+        "description": "Optional. Ersetzt das Feld zum Kopieren des Prompts im Abschlussfenster durch eigene Inhalte, etwa einen nächsten Schritt oder einen Link."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Zusätzliche Schaltflächen nach dem Spiel",
+        "description": "Optional. Schaltflächen oder Links, die im Abschlussfenster neben Nochmal spielen angezeigt werden."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Herzen",
+        "description": "Falsche Antworten, bevor das Konzept entkommt."
+      },
+      {
+        "property": "seed",
+        "title": "Figuren-Seed",
+        "description": "Beliebiger Text. Derselbe Seed ergibt immer dieselbe Figur. Es ist derselbe Seed, den der HAX-Avatar verwendet."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Figur der angemeldeten Person verwenden",
+        "description": "Wenn jemand bei HAX angemeldet ist, sieht die Figur wie der eigene Avatar aus. Alle anderen sehen den Seed von oben."
+      },
+      {
+        "property": "hat",
+        "title": "Hut der Figur",
+        "options": {
+          "none": "Keiner",
+          "random": "Zufällig",
+          "bunny": "Hase",
+          "coffee": "Kaffee",
+          "construction": "Bauarbeiter",
+          "cowboy": "Cowboy",
+          "education": "Bildung",
+          "knight": "Ritter",
+          "ninja": "Ninja",
+          "party": "Party",
+          "pirate": "Pirat",
+          "watermelon": "Wassermelone"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Überschrift zum Abschluss"
+      },
+      {
+        "property": "finishText",
+        "title": "Abschlussnachricht"
+      },
+      {
+        "property": "finishLead",
+        "title": "Zeile über dem Prompt",
+        "description": "Leer lassen für die Standardzeile."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt zum Kopieren",
+        "description": "Wird im Abschlussfenster mit einer Kopieren-Schaltfläche angezeigt. Leere es, um das Feld auszublenden."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spielname",
+        "description": "Benennt dieses Spiel in Fortschrittsereignissen und im OER Schema-Markup."
+      },
+      {
+        "property": "gameId",
+        "title": "Spiel-ID",
+        "description": "Optional. Unterscheidet dieses Spiel von anderen auf der Seite in Fortschrittsereignissen."
+      }
+    ]
+  }
+}

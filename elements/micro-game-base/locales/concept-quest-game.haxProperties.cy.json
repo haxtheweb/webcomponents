@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Gêm taith cysyniadau",
+    "description": "Byd agored i grwydro. Mae cysyniadau'n dod o hyd i chi ac yn gofyn cwestiwn. Atebwch yn gywir i drechu un a datgloi ei dŷ. Mae'r crynodeb yn dangos ymgeisiau a beth i'w adolygu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Pennawd y daith"
+      },
+      {
+        "property": "quest",
+        "title": "Taith",
+        "description": "Yr anogwr a ddangosir ar y sgrin gychwyn. Dywedwch wrth y chwaraewr beth yw pwrpas y daith."
+      },
+      {
+        "property": "nodes",
+        "title": "Cysyniadau",
+        "description": "Mae pob cysyniad yn dŷ gydag anghenfil."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Label y canol",
+        "description": "Y syniad y mae'r holl gysyniadau'n arwain ato."
+      },
+      {
+        "slot": "finish",
+        "title": "Ar ôl y gêm",
+        "description": "Dewisol. Yn disodli'r blwch copïo anogwr ar y panel gorffen gyda'ch cynnwys eich hun, fel cam nesaf neu ddolen."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Botymau ychwanegol ar ôl y gêm",
+        "description": "Dewisol. Botymau neu ddolenni a ddangosir wrth ymyl Chwarae eto ar y panel gorffen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Calonnau",
+        "description": "Atebion anghywir cyn i'r cysyniad ddianc."
+      },
+      {
+        "property": "seed",
+        "title": "Hedyn y cymeriad",
+        "description": "Unrhyw destun. Mae'r un hedyn bob amser yn creu'r un cymeriad. Dyma'r un hedyn ag y mae afatar HAX yn ei ddefnyddio."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Defnyddio cymeriad y person sydd wedi mewngofnodi",
+        "description": "Pan fydd rhywun wedi mewngofnodi i HAX, mae'r cymeriad yn edrych fel eu hafatar eu hunain. Mae pawb arall yn gweld yr hedyn uchod."
+      },
+      {
+        "property": "hat",
+        "title": "Het y cymeriad",
+        "options": {
+          "none": "Dim",
+          "random": "Ar hap",
+          "bunny": "Cwningen",
+          "coffee": "Coffi",
+          "construction": "Adeiladu",
+          "cowboy": "Cowboi",
+          "education": "Addysg",
+          "knight": "Marchog",
+          "ninja": "Ninja",
+          "party": "Parti",
+          "pirate": "Môr-leidr",
+          "watermelon": "Melon dŵr"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Pennawd y diwedd"
+      },
+      {
+        "property": "finishText",
+        "title": "Neges y diwedd"
+      },
+      {
+        "property": "finishLead",
+        "title": "Llinell uwchben yr anogwr",
+        "description": "Gadewch yn wag am y llinell ddiofyn."
+      },
+      {
+        "property": "prompt",
+        "title": "Anogwr i'w gopïo",
+        "description": "Yn cael ei ddangos ar y panel gorffen gyda botwm copïo. Cliriwch ef i guddio'r blwch."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Enw'r gêm",
+        "description": "Yn enwi'r gêm hon mewn digwyddiadau cynnydd a marcio OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID y gêm",
+        "description": "Dewisol. Yn gwahaniaethu'r gêm hon oddi wrth eraill ar y dudalen mewn digwyddiadau cynnydd."
+      }
+    ]
+  }
+}

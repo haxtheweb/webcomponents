@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Lîstika nexşeya têgehan",
+    "description": "Lîstikeke kurt a bi klavyeyê. Karakterek li ser nexşeyê diçe ba her têgehê û ew xwe rave dike. Destê xwe bide hemûyan ji bo konfeti û pêşniyarekê ku bê kopîkirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Sernavê gerê"
+      },
+      {
+        "property": "quest",
+        "title": "Geşt",
+        "description": "Pêşniyara ku li ser dîmenê destpêkê tê nîşandan. Ji lîstikvan re bêje ev rêwîtî ji bo çi ye."
+      },
+      {
+        "property": "nodes",
+        "title": "Têgeh",
+        "description": "Her têgeh kevirekî li ser nexşeyê ye."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Nîşana navendê",
+        "description": "Ew raman ku hemû têgeh pê digihin hev."
+      },
+      {
+        "slot": "finish",
+        "title": "Piştî lîstikê",
+        "description": "Bijarte. Qutiya kopîkirina pêşniyarê li ser panela dawiyê bi naveroka te ya xwe diguherîne, wek gavek din an lînkek."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Bişkokên zêde piştî lîstikê",
+        "description": "Bijarte. Bişkok an lînkên ku li kêleka Dîsa bilîze li ser panela dawiyê têne nîşandan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Tovê karakterê",
+        "description": "Her nivîsek. Heman tov her gav heman karakterî çêdike. Ev heman tov e ku avatara HAX bikar tîne."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Karakterê kesê têketî bikar bîne",
+        "description": "Gava kesek têketî HAX be, karakter mîna avatara wî/wê ya xwe xuya dike. Yên din tovê jorîn dibînin."
+      },
+      {
+        "property": "hat",
+        "title": "Kumê karakterê",
+        "options": {
+          "none": "Tune",
+          "random": "Rasthatî",
+          "bunny": "Kevrûşk",
+          "coffee": "Qehwe",
+          "construction": "Avahîsazî",
+          "cowboy": "Kawboy",
+          "education": "Perwerde",
+          "knight": "Şovalye",
+          "ninja": "Ninja",
+          "party": "Aheng",
+          "pirate": "Deryadizî",
+          "watermelon": "Zebeş"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Sernavê dawiyê"
+      },
+      {
+        "property": "finishText",
+        "title": "Peyama dawiyê"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rêzika li jora pêşniyarê",
+        "description": "Ji bo rêzika bingehîn vala bihêle."
+      },
+      {
+        "property": "prompt",
+        "title": "Pêşniyara ku bê kopîkirin",
+        "description": "Li ser panela dawiyê bi bişkokeke kopîkirinê tê nîşandan. Paqij bike da ku qutî veşartî bimîne."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Navê lîstikê",
+        "description": "Vê lîstikê di bûyerên pêşveçûnê û nîşankirina OER Schema de nav dike."
+      },
+      {
+        "property": "gameId",
+        "title": "ID ya lîstikê",
+        "description": "Bijarte. Di bûyerên pêşveçûnê de vê lîstikê ji yên din ên li ser rûpelê cuda dike."
+      }
+    ]
+  }
+}

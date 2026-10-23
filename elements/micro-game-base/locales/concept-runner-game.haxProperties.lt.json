@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Sąvokų bėgimo žaidimas",
+    "description": "Šoninio slinkimo žaidimas. Veikėjas bėga liepsnodamas ir niekada nesustoja. Šok, kad pagautum geras sąvokas ir peršoktum blogas, tada pamatyk santrauką, kas buvo gera ir kas bloga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Misijos antraštė"
+      },
+      {
+        "property": "quest",
+        "title": "Misija",
+        "description": "Tekstas pradžios ekrane."
+      },
+      {
+        "property": "items",
+        "title": "Sąvokos",
+        "description": "Gerosios pagaunamos, blogosios peršokamos."
+      },
+      {
+        "property": "duration",
+        "title": "Bėgimo trukmė sekundėmis",
+        "description": "Maždaug kiek trunka bėgimas įprastu greičiu."
+      },
+      {
+        "slot": "finish",
+        "title": "Po žaidimo",
+        "description": "Neprivaloma. Pabaigos skydelyje pakeičia užklausos kopijavimo langelį tavo turiniu, pavyzdžiui, kitu žingsniu ar nuoroda."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Papildomi mygtukai po žaidimo",
+        "description": "Neprivaloma. Mygtukai ar nuorodos, rodomi šalia Žaisti dar kartą pabaigos skydelyje."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Veikėjo sėkla",
+        "description": "Bet koks tekstas. Ta pati sėkla visada sukuria tą patį veikėją. Tai ta pati sėkla, kurią naudoja HAX avataras."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Naudoti prisijungusio asmens veikėją",
+        "description": "Kai kas nors prisijungęs prie HAX, veikėjas atrodo kaip jo avataras. Visi kiti mato aukščiau nurodytą sėklą."
+      },
+      {
+        "property": "hat",
+        "title": "Veikėjo skrybėlė",
+        "options": {
+          "none": "Jokios",
+          "random": "Atsitiktinė",
+          "bunny": "Triušis",
+          "coffee": "Kava",
+          "construction": "Statybininkas",
+          "cowboy": "Kaubojus",
+          "education": "Mokslas",
+          "knight": "Riteris",
+          "ninja": "Ninja",
+          "party": "Šventė",
+          "pirate": "Piratas",
+          "watermelon": "Arbūzas"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "Išlaikymo balas",
+        "description": "Skaičius nuo 0 iki 1. Siunčiamas su baigtos eigos įvykiu kaip sėkmės riba."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Pabaigos antraštė"
+      },
+      {
+        "property": "finishText",
+        "title": "Pabaigos žinutė"
+      },
+      {
+        "property": "finishLead",
+        "title": "Eilutė virš užklausos"
+      },
+      {
+        "property": "prompt",
+        "title": "Užklausa kopijuoti"
+      },
+      {
+        "property": "gameTitle",
+        "title": "Žaidimo pavadinimas",
+        "description": "Įvardija šį žaidimą eigos įvykiuose ir OER Schema žymėjime."
+      },
+      {
+        "property": "gameId",
+        "title": "Žaidimo ID",
+        "description": "Neprivaloma. Eigos įvykiuose atskiria šį žaidimą nuo kitų puslapyje."
+      }
+    ]
+  }
+}

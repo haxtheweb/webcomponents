@@ -1,0 +1,100 @@
+{
+  "gizmo": {
+    "title": "Tushunchalar yugurish o'yini",
+    "description": "Yon tomonga siljiydigan o'yin. Qahramon olovda yuguradi va hech to'xtamaydi. Yaxshi tushunchalarni olish va yomonlari ustidan o'tish uchun sakrang, so'ng nima yaxshi va nima yomon bo'lgani haqida xulosani ko'ring."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Sarguzasht sarlavhasi"
+      },
+      {
+        "property": "quest",
+        "title": "Sarguzasht",
+        "description": "Boshlang'ich ekrandagi prompt."
+      },
+      {
+        "property": "items",
+        "title": "Tushunchalar",
+        "description": "Yaxshilari olinadi, yomonlari ustidan sakraladi."
+      },
+      {
+        "property": "duration",
+        "title": "Yugurish davomiyligi soniyalarda",
+        "description": "Oddiy tezlikda yugurish taxminan qancha davom etadi."
+      },
+      {
+        "slot": "finish",
+        "title": "O'yindan keyin",
+        "description": "Ixtiyoriy. Yakuniy panelda nusxalash uchun prompt oynasini o'z kontentingiz bilan almashtiradi, masalan keyingi qadam yoki havola."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "O'yindan keyingi qo'shimcha tugmalar",
+        "description": "Ixtiyoriy. Yakuniy panelda Yana o'ynash yonida ko'rsatiladigan tugmalar yoki havolalar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Qahramon urug'i",
+        "description": "Istalgan matn. Bir xil urug' har doim bir xil qahramon yaratadi. Bu HAX avatari ishlatadigan urug'ning o'zi."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Tizimga kirgan shaxsning qahramonidan foydalanish",
+        "description": "Kimdir HAX tizimiga kirganida qahramon uning o'z avatariga o'xshaydi. Boshqalar yuqoridagi urug'ni ko'radi."
+      },
+      {
+        "property": "hat",
+        "title": "Qahramon shlyapasi",
+        "options": {
+          "none": "Yo'q",
+          "random": "Tasodifiy",
+          "bunny": "Quyon",
+          "coffee": "Qahva",
+          "construction": "Qurilish",
+          "cowboy": "Kovboy",
+          "education": "Bitiruvchi",
+          "knight": "Ritsar",
+          "ninja": "Ninja",
+          "party": "Bayram",
+          "pirate": "Qaroqchi",
+          "watermelon": "Tarvuz"
+        }
+      },
+      {
+        "property": "passScore",
+        "title": "O'tish bali",
+        "description": "0 dan 1 gacha son. Yakunlangan jarayon hodisasi bilan muvaffaqiyat chegarasi sifatida yuboriladi."
+      },
+      {
+        "property": "finishTitle",
+        "title": "Yakun sarlavhasi"
+      },
+      {
+        "property": "finishText",
+        "title": "Yakuniy xabar"
+      },
+      {
+        "property": "finishLead",
+        "title": "Prompt ustidagi qator"
+      },
+      {
+        "property": "prompt",
+        "title": "Nusxalash uchun prompt"
+      },
+      {
+        "property": "gameTitle",
+        "title": "O'yin nomi",
+        "description": "Bu o'yinni jarayon hodisalarida va OER Schema belgilashida nomlaydi."
+      },
+      {
+        "property": "gameId",
+        "title": "O'yin ID si",
+        "description": "Ixtiyoriy. Jarayon hodisalarida bu o'yinni sahifadagi boshqalardan ajratadi."
+      }
+    ]
+  }
+}

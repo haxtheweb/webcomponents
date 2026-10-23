@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Konseptkaartspultsje",
+    "description": "In koart toetsenburdspultsje. In figuer rint nei elk konsept op in kaart en it ferklearret himsels. Reitsje se allegear oan foar konfetti en in prompt om te kopiearjen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Opdrachtkop"
+      },
+      {
+        "property": "quest",
+        "title": "Opdracht",
+        "description": "De prompt dy't op it startskerm toand wurdt. Fertel de spiler wêr't de reis foar is."
+      },
+      {
+        "property": "nodes",
+        "title": "Konsepten",
+        "description": "Elk konsept is in tegel op de kaart."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Midsenlabel",
+        "description": "It idee dêr't alle konsepten op útkomme."
+      },
+      {
+        "slot": "finish",
+        "title": "Nei it spultsje",
+        "description": "Opsjoneel. Ferfangt it kopiearfak foar de prompt op it einpaniel troch jo eigen ynhâld, lykas in folgjende stap of in keppeling."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Ekstra knoppen nei it spultsje",
+        "description": "Opsjoneel. Knoppen of keppelingen njonken Nochris spylje op it einpaniel."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Figuerseed",
+        "description": "Hokker tekst dan ek. Deselde seed makket altyd itselde figuer. Dit is deselde seed dy't de HAX-avatar brûkt."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Brûk it figuer fan de oanmelde persoan",
+        "description": "As immen oanmeld is by HAX, sjocht it figuer der út as harren eigen avatar. Elkenien oars sjocht de seed hjirboppe."
+      },
+      {
+        "property": "hat",
+        "title": "Figuerhoed",
+        "options": {
+          "none": "Gjin",
+          "random": "Willekeurich",
+          "bunny": "Hazze",
+          "coffee": "Kofje",
+          "construction": "Bouw",
+          "cowboy": "Cowboy",
+          "education": "Underwiis",
+          "knight": "Ridder",
+          "ninja": "Ninja",
+          "party": "Feest",
+          "pirate": "Piraat",
+          "watermelon": "Wettermeloen"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Einkop"
+      },
+      {
+        "property": "finishText",
+        "title": "Einberjocht"
+      },
+      {
+        "property": "finishLead",
+        "title": "Rigel boppe de prompt",
+        "description": "Lit leech foar de standertrigel."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt om te kopiearjen",
+        "description": "Toand op it einpaniel mei in kopiearknop. Wiskje it om it fak te ferbergjen."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Spultsjenamme",
+        "description": "Neamt dit spultsje yn foartgongsgebeurtenissen en OER Schema-markup."
+      },
+      {
+        "property": "gameId",
+        "title": "Spultsje-id",
+        "description": "Opsjoneel. Skiedt dit spultsje fan oaren op de side yn foartgongsgebeurtenissen."
+      }
+    ]
+  }
+}

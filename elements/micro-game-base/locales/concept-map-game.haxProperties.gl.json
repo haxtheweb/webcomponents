@@ -1,0 +1,97 @@
+{
+  "gizmo": {
+    "title": "Xogo do mapa de conceptos",
+    "description": "Un xogo curto de teclado. Un personaxe camiña ata cada concepto nun mapa e este explícase. Toca todos para ver confeti e un prompt para copiar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Título da misión"
+      },
+      {
+        "property": "quest",
+        "title": "Misión",
+        "description": "O texto que se mostra na pantalla de inicio. Explícalle ao xogador para que serve a viaxe."
+      },
+      {
+        "property": "nodes",
+        "title": "Conceptos",
+        "description": "Cada concepto é un cadrado no mapa."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Etiqueta central",
+        "description": "A idea á que levan todos os conceptos."
+      },
+      {
+        "slot": "finish",
+        "title": "Despois do xogo",
+        "description": "Opcional. Substitúe a caixa para copiar o prompt no panel final polo teu propio contido, como un seguinte paso ou unha ligazón."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Botóns extra despois do xogo",
+        "description": "Opcional. Botóns ou ligazóns que se mostran xunto a Xogar de novo no panel final."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "seed",
+        "title": "Semente do personaxe",
+        "description": "Calquera texto. A mesma semente sempre crea o mesmo personaxe. É a mesma semente que usa o avatar de HAX."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Usar o personaxe da persoa que iniciou sesión",
+        "description": "Cando alguén inicia sesión en HAX, o personaxe parécese ao seu propio avatar. Os demais ven a semente de arriba."
+      },
+      {
+        "property": "hat",
+        "title": "Sombreiro do personaxe",
+        "options": {
+          "none": "Ningún",
+          "random": "Aleatorio",
+          "bunny": "Coello",
+          "coffee": "Café",
+          "construction": "Obra",
+          "cowboy": "Vaqueiro",
+          "education": "Educación",
+          "knight": "Cabaleiro",
+          "ninja": "Ninja",
+          "party": "Festa",
+          "pirate": "Pirata",
+          "watermelon": "Sandía"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Título do remate"
+      },
+      {
+        "property": "finishText",
+        "title": "Mensaxe do remate"
+      },
+      {
+        "property": "finishLead",
+        "title": "Liña sobre o prompt",
+        "description": "Déixao baleiro para usar a liña predeterminada."
+      },
+      {
+        "property": "prompt",
+        "title": "Prompt para copiar",
+        "description": "Móstrase no panel final cun botón de copiar. Bórrao para ocultar a caixa."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Nome do xogo",
+        "description": "Dá nome a este xogo nos eventos de progreso e no marcado de OER Schema."
+      },
+      {
+        "property": "gameId",
+        "title": "ID do xogo",
+        "description": "Opcional. Distingue este xogo doutros da páxina nos eventos de progreso."
+      }
+    ]
+  }
+}

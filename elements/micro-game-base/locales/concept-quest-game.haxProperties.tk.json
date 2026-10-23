@@ -1,0 +1,102 @@
+{
+  "gizmo": {
+    "title": "Düşünje gözleg oýny",
+    "description": "Aýlanmak üçin giň dünýä. Düşünjeler seni tapýar we sorag berýär. Dogry jogap berip birini ýeň we öýüni aç. Jem synanyşyklary we nämäni gaýtalamalydygyny görkezýär."
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "questTitle",
+        "title": "Gözlegiň sözbaşysy"
+      },
+      {
+        "property": "quest",
+        "title": "Gözleg",
+        "description": "Başlangyç ekranda görkezilýän görkezme. Oýunçla syýahatyň näme üçindigini aýt."
+      },
+      {
+        "property": "nodes",
+        "title": "Düşünjeler",
+        "description": "Her düşünje haýwanly bir öýdür."
+      },
+      {
+        "property": "hubLabel",
+        "title": "Merkezdäki ýazgy",
+        "description": "Ähli düşünjeleriň jemleýän pikiri."
+      },
+      {
+        "slot": "finish",
+        "title": "Oýundan soň",
+        "description": "Hökmany däl. Gutaryş panelindäki göçürme görkezmesi gutusyny öz mazmunyň bilen çalyşýar, meselem, indiki ädim ýa-da çykgyt."
+      },
+      {
+        "slot": "finish-actions",
+        "title": "Oýundan soňky goşmaça düwmeler",
+        "description": "Hökmany däl. Gutaryş panelinde «Ýene oýna» ýanynda görkezilýän düwmeler ýa-da çykgytlar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "hearts",
+        "title": "Ýürekler",
+        "description": "Düşünje gaçmanka ýalňyş jogaplar."
+      },
+      {
+        "property": "seed",
+        "title": "Gahrymanyň tohumy",
+        "description": "Islendik tekst. Şol bir tohum elmydama şol bir gahrymany döredýär. Bu HAX awatarynyň ulanýan tohumy bilen birmeňzeşdir."
+      },
+      {
+        "property": "seedFromUser",
+        "title": "Giren adamyň gahrymanyny ulan",
+        "description": "Biri HAX-a girende, gahryman onuň öz awatary ýaly görünýär. Beýlekiler ýokardaky tohumy görýär."
+      },
+      {
+        "property": "hat",
+        "title": "Gahrymanyň şlýapasy",
+        "options": {
+          "none": "Ýok",
+          "random": "Tötänleýin",
+          "bunny": "Towşan",
+          "coffee": "Kofe",
+          "construction": "Gurluşyk",
+          "cowboy": "Kowboý",
+          "education": "Bilim",
+          "knight": "Rys'ar",
+          "ninja": "Ninja",
+          "party": "Toý",
+          "pirate": "Garakçy",
+          "watermelon": "Garpyz"
+        }
+      },
+      {
+        "property": "finishTitle",
+        "title": "Gutaryş sözbaşysy"
+      },
+      {
+        "property": "finishText",
+        "title": "Gutaryş habary"
+      },
+      {
+        "property": "finishLead",
+        "title": "Görkezmäniň ýokarsyndaky setir",
+        "description": "Adaty setir üçin boş goý."
+      },
+      {
+        "property": "prompt",
+        "title": "Göçürmeli görkezme",
+        "description": "Gutaryş panelinde göçürme düwmesi bilen görkezilýär. Gutyny gizlemek üçin ony arassala."
+      },
+      {
+        "property": "gameTitle",
+        "title": "Oýnuň ady",
+        "description": "Bu oýna ösüş wakalarynda we OER Schema bellikleriniň içinde at berýär."
+      },
+      {
+        "property": "gameId",
+        "title": "Oýnuň ID-si",
+        "description": "Hökmany däl. Ösüş wakalarynda bu oýny sahypadaky beýlekilerden tapawutlandyrýar."
+      }
+    ]
+  }
+}
