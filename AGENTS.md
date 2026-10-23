@@ -230,6 +230,7 @@ LICENSE
 
 ## Security Considerations
 
+- **Security Audits**: For recurring security audits of this repo, start with `SECURITY-AUDIT.md` — it defines the read order, scope, commands, regression guards, and reporting convention
 - **Dependencies**: Keep dependencies updated before running `npm install`
 - **Sensitive Data**: Avoid committing API keys or sensitive data to `package.json`, `site.json`, or public files
 - **Site Imports**: Validate source URLs when using `--import-site` to prevent malicious content

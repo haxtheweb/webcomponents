@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { wipeSlot } from "@haxtheweb/utils/lib/slot.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 
 /**
  * `cms-base`
@@ -147,7 +148,9 @@ export class CMSBase extends LitElement {
       this._updateEditLink(data);
       wipeSlot(this);
       let frag = globalThis.document.createElement("span");
-      frag.innerHTML = data.content;
+      // security (JS-XSS-001): CMS content is remote/backend-sourced; sanitize
+      // before writing to innerHTML
+      frag.innerHTML = sanitizeHTMLString(data.content);
       this.appendChild(frag.cloneNode(true));
       setTimeout(() => {
         this.loading = false;
@@ -169,7 +172,9 @@ export class CMSBase extends LitElement {
       const link = globalThis.document.getElementById("cmstokenidtolockonto");
       link.setAttribute("href", data.editEndpoint);
       if (data.editText) {
-        link.innerHTML = data.editText;
+        // security (JS-XSS-001): CMS-provided edit link text; sanitize before
+        // writing to innerHTML
+        link.innerHTML = sanitizeHTMLString(data.editText);
       }
     }
   }

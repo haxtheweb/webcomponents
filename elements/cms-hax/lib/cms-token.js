@@ -3,6 +3,7 @@ import { CMSBase } from "./cms-base.js";
 // successful token fetch threw a silent ReferenceError inside _doRequest
 // (issue #3077, bug 11)
 import { wipeSlot } from "@haxtheweb/utils/lib/slot.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 /**
  * `cms-token`
  * Render and process a shortcode / token from a content management system.
@@ -104,7 +105,9 @@ class CMSToken extends CMSBase {
       }
       wipeSlot(this);
       let template = globalThis.document.createElement("template");
-      template.innerHTML = data.content;
+      // security (JS-XSS-001): CMS token content is remote/backend-sourced;
+      // sanitize before writing to innerHTML
+      template.innerHTML = sanitizeHTMLString(data.content);
       this.appendChild(globalThis.document.importNode(template.content, true));
       setTimeout(() => {
         if (globalThis.WCAutoload) {

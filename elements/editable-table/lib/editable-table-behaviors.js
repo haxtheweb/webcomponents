@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { css } from "lit";
+import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 /**
  * `editable-table-behaviors`
  * A set of common behaviors for editable-table web components.
@@ -894,13 +895,13 @@ export const displayBehaviors = function (SuperClass) {
           .map((cell) => {
             return `\n\t\t\t<th scope="row"${
               !addStyleClasses ? "" : ` class="${close} th-or-td"`
-            }>${this._replaceBlankCell(cell)}</th>`;
+            }>${this._sanitizeCellHTML(cell)}</th>`;
           })
           .join("")}${td
           .map((cell) => {
             return `\n\t\t\t<${open}${
               !addStyleClasses ? "" : ` class="${close} th-or-td"`
-            }>${this._replaceBlankCell(cell)}</${close}>`;
+            }>${this._sanitizeCellHTML(cell)}</${close}>`;
           })
           .join("")}\n\t\t</tr>`;
       };
@@ -1191,6 +1192,20 @@ export const displayBehaviors = function (SuperClass) {
      */
     _replaceBlankCell(cell) {
       return String(cell).trim() === "" ? "-" : cell;
+    }
+    /**
+     * Sanitizes cell content before it is interpolated into an HTML string
+     * (e.g. getTableHTML's print() sink). Cell data can originate from a
+     * remote data-csv fetch, so it must never be trusted as-is; sanitizing
+     * (rather than escaping) preserves legitimate rich-text formatting
+     * (bold/italic/links) authored via the cell editor while stripping
+     * scripts, event handler attributes, and unsafe URLs.
+     * security (JS-XSS-001)
+     * @param {string} cell cell contents
+     * @returns {string} sanitized cell contents, safe for innerHTML
+     */
+    _sanitizeCellHTML(cell) {
+      return sanitizeHTMLString(this._replaceBlankCell(cell));
     }
   };
 };
