@@ -44,12 +44,48 @@ class HaxTextEditorPasteButton extends RichTextEditorButtonBehaviors(
     this.icon = "content-paste";
     this.label = "Paste Clipboard";
   }
-  sendCommand(e) {
-    if (navigator && globalThis.navigator.clipboard)
-      HAXStore._onPaste({
-        ...e,
-        clipboardData: globalThis.navigator.clipboard,
-      });
+  async sendCommand(e) {
+    // eslint-disable-next-line baseline-js/use-baseline -- feature checked right here; clipboard.read falls back to readText
+    const clipboard = globalThis.navigator && globalThis.navigator.clipboard;
+    if (!clipboard) return;
+    // navigator.clipboard is not a DataTransfer, so _onPaste cannot call
+    // getData on it; read the clipboard and hand over an object that is
+    const data = { "text/html": "", "text/plain": "" };
+    try {
+      if (typeof clipboard.read === "function") {
+        for (const item of await clipboard.read()) {
+          for (const type of ["text/html", "text/plain"]) {
+            if (!data[type] && item.types.includes(type)) {
+              data[type] = await (await item.getType(type)).text();
+            }
+          }
+        }
+      }
+      if (!data["text/html"] && !data["text/plain"]) {
+        data["text/plain"] = await clipboard.readText();
+      }
+    } catch (err) {
+      // permission denied or no user gesture; try plain text before giving up
+      try {
+        data["text/plain"] = await clipboard.readText();
+      } catch (err2) {
+        console.warn("Unable to read the clipboard", err, err2);
+        return;
+      }
+    }
+    HAXStore._onPaste({
+      preventDefault: () => {},
+      stopPropagation: () => {},
+      stopImmediatePropagation: () => {},
+      ...e,
+      clipboardData: {
+        getData: (type) => {
+          const key = type === "text" ? "text/plain" : type;
+          return data[key] || "";
+        },
+        items: [],
+      },
+    });
   }
 }
 globalThis.customElements.define(

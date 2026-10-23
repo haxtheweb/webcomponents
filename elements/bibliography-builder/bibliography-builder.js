@@ -239,12 +239,24 @@ export class BibliographyBuilder extends SchemaBehaviors(
     const blobHtml = new Blob([htmlContent], { type: "text/html" });
     const blobText = new Blob([plainContent], { type: "text/plain" });
 
-    const data = [new ClipboardItem({
-      "text/html": blobHtml,
-      "text/plain": blobText // Fallback
-    })];
-
-    navigator.clipboard.write(data)
+    // rich (html + text) copy needs ClipboardItem, which is missing or restricted in
+    // some browsers and contexts; fall back to plain text and never throw
+    /* eslint-disable baseline-js/use-baseline -- ClipboardItem is feature checked; plain-text fallback below */
+    const clip = globalThis.navigator && globalThis.navigator.clipboard;
+    if (clip && globalThis.ClipboardItem && clip.write) {
+      const data = [
+        new ClipboardItem({
+          "text/html": blobHtml,
+          "text/plain": blobText, // Fallback
+        }),
+      ];
+      clip
+        .write(data)
+        .catch(() => clip.writeText && clip.writeText(plainContent).catch(() => {}));
+    } else if (clip && clip.writeText) {
+      clip.writeText(plainContent).catch(() => {});
+    }
+    /* eslint-enable baseline-js/use-baseline */
   }
 
   _addItemHandler(e){

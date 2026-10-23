@@ -30,6 +30,7 @@ class FileSystemBroker extends HTMLElement {
   isFileSystemAccessSupported() {
     return (
       "showOpenFilePicker" in globalThis &&
+      // eslint-disable-next-line baseline-js/use-baseline -- this is the feature detection
       typeof globalThis.showOpenFilePicker === "function"
     );
   }
@@ -163,6 +164,7 @@ class FileSystemBroker extends HTMLElement {
       let accept = this.typeToAccept(type);
       let fileHandle;
       let description = `${type} file`;
+      // eslint-disable-next-line baseline-js/use-baseline -- only reached when isFileSystemAccessSupported() is true, otherwise loadFileFallback()
       [fileHandle] = await globalThis.showOpenFilePicker({
         types: [
           {
@@ -245,6 +247,24 @@ class FileSystemBroker extends HTMLElement {
     return accept;
   }
   async saveFile(type, content) {
+    // File System Access (showSaveFilePicker) is Chromium-only; elsewhere hand
+    // the content to the browser as a normal download
+    // eslint-disable-next-line baseline-js/use-baseline -- this is the feature detection
+    if (typeof globalThis.showSaveFilePicker !== "function") {
+      const blob =
+        content instanceof Blob
+          ? content
+          : new Blob([content], { type: "application/octet-stream" });
+      const url = globalThis.URL.createObjectURL(blob);
+      const link = globalThis.document.createElement("a");
+      link.href = url;
+      link.download = `download.${type}`;
+      globalThis.document.body.appendChild(link);
+      link.click();
+      globalThis.document.body.removeChild(link);
+      globalThis.URL.revokeObjectURL(url);
+      return;
+    }
     let accept = this.typeToAccept(type);
     let description = `Save ${type} file`;
     const options = {
@@ -255,6 +275,7 @@ class FileSystemBroker extends HTMLElement {
         },
       ],
     };
+    // eslint-disable-next-line baseline-js/use-baseline -- showSaveFilePicker is Chromium-only; saveFile() falls back to a download
     this.fileHandler = await globalThis.showSaveFilePicker(options);
     // Create a FileSystemWritableFileStream to write to.
     const writable = await this.fileHandler.createWritable();
@@ -268,6 +289,7 @@ class FileSystemBroker extends HTMLElement {
    */
   async openDir(recursive = true, options = {}) {
     try {
+      // eslint-disable-next-line baseline-js/use-baseline -- Chromium-only; failure is caught and an empty result returned
       this.dirHandler = await globalThis.showDirectoryPicker(options);
     } catch (e) {
       console.warn(e);
@@ -287,6 +309,7 @@ class FileSystemBroker extends HTMLElement {
   }
   async readFileInDir(fileName, options = {}) {
     try {
+      // eslint-disable-next-line baseline-js/use-baseline -- Chromium-only; failure is caught and an empty result returned
       this.dirHandler = await globalThis.showDirectoryPicker(options);
       // need to load references found in the directory
       for await (const entry of this.dirHandler.values()) {
@@ -307,6 +330,7 @@ class FileSystemBroker extends HTMLElement {
   }
   async writeFileInDir(fileName, content = "", options = {}) {
     try {
+      // eslint-disable-next-line baseline-js/use-baseline -- Chromium-only; failure is caught and an empty result returned
       this.dirHandler = await globalThis.showDirectoryPicker(options);
       // need to load references found in the directory
       for await (const entry of this.dirHandler.values()) {

@@ -1298,6 +1298,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     registerButton(button) {
       if (super.registerButton) super.registerButton(button);
       //firefox doesn't allow for clipboard button
+      // eslint-disable-next-line baseline-js/use-baseline -- feature check on navigator.clipboard
       if (button.command === "paste" && !navigator.clipboard) {
         button.remove();
         return;

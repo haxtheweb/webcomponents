@@ -4382,9 +4382,10 @@ What did you want merlin to do?
 `;
     } else {
       title = `[${reportType}] User report from HAX daemon`;
+      /* eslint-disable baseline-js/use-baseline -- Chromium-only fields; each is guarded and omitted or shown as ? when absent */
       body = `Location: ${globalThis.location.href}
 Browser: ${navigator.userAgent}
-OS: ${this.getOperatingSystem()} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores
+OS: ${this.getOperatingSystem()} - ${navigator.deviceMemory || "?"}GB RAM - ${navigator.hardwareConcurrency} cores
 Screen: ${globalThis.screen.width}x${globalThis.screen.height}
 Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 `;
@@ -4402,6 +4403,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         body += `Connection: ${navigator.connection.effectiveType}
 `;
       }
+      /* eslint-enable baseline-js/use-baseline */
       if (reportType == "feature") {
         body += `Your idea:
 `;
@@ -4426,8 +4428,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
    * @returns {string} - The operating system either from userAgentData (if supported) with userAgent as back up
    */
   getOperatingSystem() {
+    /* eslint-disable baseline-js/use-baseline -- userAgentData is guarded; falls back to parsing userAgent */
     if (navigator.userAgentData && navigator.userAgentData.platform) {
       return navigator.userAgentData.platform;
+      /* eslint-enable baseline-js/use-baseline */
     } else {
       const USER_AGENT = navigator.userAgent.toLowerCase();
       if (USER_AGENT.includes("windows")) {

@@ -3690,6 +3690,7 @@ class DDDocs extends I18NMixin(DDD) {
    */
   async _copyToClipboard(text, id) {
     try {
+      // eslint-disable-next-line baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught
       await globalThis.navigator.clipboard.writeText(text);
     } catch {
       // no-op; clipboard may be unavailable in some contexts
@@ -3741,6 +3742,7 @@ class DDDocs extends I18NMixin(DDD) {
       }
     }
     try {
+      // eslint-disable-next-line baseline-js/use-baseline -- writeText works in Chrome, Firefox and Safari; failure is caught
       await globalThis.navigator.clipboard.writeText(pattern.html);
     } catch {
       // no-op; clipboard may be unavailable

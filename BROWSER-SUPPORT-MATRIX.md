@@ -14,15 +14,17 @@ HAX components support **all evergreen browsers** with auto-update enabled. We d
 |---------|----------|----------------|---------|
 | **Chrome** | Desktop (Windows, macOS, Linux) | Latest -1 version | Automated (CI) + Manual |
 | **Chrome** | Mobile (Android) | Latest version | Responsive testing |
-| **Firefox** | Desktop (Windows, macOS, Linux) | Latest -1 version | Automated (CI) + Manual |
+| **Firefox** | Desktop (Windows, macOS, Linux) | Latest -1 version | Full suite run outside CI (`yarn test:all:firefox`) + Manual |
 | **Firefox** | Mobile (Android) | Latest version | Responsive testing |
-| **Safari** | Desktop (macOS) | Latest version | Manual |
+| **Safari** | Desktop (macOS) | Latest version | Full suite run outside CI (`yarn test:all:webkit`) + Manual |
 | **Safari** | Mobile (iOS/iPadOS) | Latest version | Responsive testing |
-| **Edge** | Desktop (Windows) | Latest -1 version | Automated (CI) + Manual |
+| **Edge** | Desktop (Windows) | Latest -1 version | Covered by Chromium CI (same engine) + Manual |
 
 ## Testing Methodology
 
-- **Automated CI**: `yarn test:all` runs Playwright Chromium + axe a11ySuite on every PR
+- **Automated CI**: `yarn test:all` runs Playwright Chromium + axe a11ySuite on every PR.  Firefox and WebKit are deliberately not run on PRs (too slow); see below.
+- **Other engines, locally**: the full suite can run in Firefox or WebKit with `yarn test:all:firefox` and `yarn test:all:webkit` (first run: `npx playwright@1.63.0 install firefox webkit`). Run these before a release or after touching rendering, SVG, clipboard or file APIs. It is slower than Chromium alone, so it is a task run by a person or agent on a machine that can install the browsers, not a CI job. The Baseline lint (`baseline-js/use-baseline`) is the cheap PR-time signal for platform APIs that are missing in other engines.
+- **Platform capability lint**: `yarn lint` warns (non-blocking) on Web APIs that are not Baseline widely available. Each use should sit behind a feature check or carry an `eslint-disable-next-line baseline-js/use-baseline -- why` note.
 - **Manual QA**: Locally via haxcms-nodejs, haxcms-php as well as built in `npm start` capabilities
 - **Responsive**: All components tested at mobile, tablet, and desktop breakpoints
 - **QA Pipeline**: After passing local testing, then local platform, then CI/CD, it goes manually up to dev servers for testing before landing on staging. Only after passing staging via manual review does it get tagged and released to the general public.

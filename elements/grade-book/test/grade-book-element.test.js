@@ -706,9 +706,18 @@ describe("grade-book element", () => {
     it("url source import warns on fetch failure without exploding", async () => {
       const el = await fixture(html`<grade-book></grade-book>`);
       globalThis.fetch = () => Promise.reject(new Error("offline"));
-      el.source = "url";
-      el.sourceData = "https://example.com/nope.json";
-      await flush();
+      const warnings = [];
+      const originalWarn = console.warn;
+      console.warn = (...args) => warnings.push(args);
+      try {
+        el.source = "url";
+        el.sourceData = "https://example.com/nope.json";
+        await flush();
+      } finally {
+        console.warn = originalWarn;
+      }
+      // the failure is reported, not thrown
+      expect(warnings.length).to.be.greaterThan(0);
       expect(el.ready).to.equal(false);
       expect(el.loading).to.equal(true);
     });
@@ -724,9 +733,15 @@ describe("grade-book element", () => {
           status: 404,
           json: () => Promise.resolve({}),
         });
-      el.source = "url";
-      el.sourceData = "https://example.com/nope.json";
-      await flush();
+      const originalWarn = console.warn;
+      console.warn = () => {};
+      try {
+        el.source = "url";
+        el.sourceData = "https://example.com/nope.json";
+        await flush();
+      } finally {
+        console.warn = originalWarn;
+      }
       // the store was NOT overwritten with undefined
       expect(GradeBookStore.database).to.equal(before);
       expect(el.ready).to.equal(false);
@@ -824,8 +839,16 @@ describe("grade-book element", () => {
     });
     it("loadFromFilesystem saves the file reference and processes it", async () => {
       const el = await loadJsonBook();
+      // the file reference is an object, so the element must not be in
+      // json mode or updated() tries to JSON.parse it
+      el.source = "filesystem";
+      await el.updateComplete;
       el.loadFromFilesystem();
-      await flush(80);
+      // loadFromFilesystem awaits an IndexedDB write before processing, so
+      // wait for the result rather than guessing how long that takes
+      for (let i = 0; i < 50 && brokerCalls.processed.length === 0; i++) {
+        await flush(20);
+      }
       expect(brokerCalls.loaded).to.equal(1);
       expect(brokerCalls.processed.length).to.equal(1);
       expect(el.sourceData).to.eql({ name: "book.xls" });

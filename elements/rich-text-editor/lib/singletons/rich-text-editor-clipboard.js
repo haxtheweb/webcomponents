@@ -52,7 +52,22 @@ class RichTextEditorClipboard extends LitElement {
     this.__textarea =
       this.__textarea || this.shadowRoot.querySelector("textarea");
     setTimeout(async () => {
-      this.__textarea.value = await globalThis.navigator.clipboard.readText();
+      // readText is not available in every browser and context, and Safari only
+      // allows it during a user gesture; skip quietly instead of throwing
+      /* eslint-disable baseline-js/use-baseline -- feature checked and wrapped in try/catch */
+      if (
+        !globalThis.navigator.clipboard ||
+        typeof globalThis.navigator.clipboard.readText !== "function"
+      ) {
+        return;
+      }
+      try {
+        this.__textarea.value = await globalThis.navigator.clipboard.readText();
+      } catch (e) {
+        console.warn("clipboard read was not permitted", e);
+        return;
+      }
+      /* eslint-enable baseline-js/use-baseline */
       this.__textarea.focus();
       this.__textarea.select();
       globalThis.document.execCommand("paste");
