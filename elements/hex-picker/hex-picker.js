@@ -199,12 +199,10 @@ class HexPicker extends I18NMixin(LitElement) {
   }
 
   _validateInput(event) {
-    let char = String.fromCharCode(event.which);
-    if (
-      !char.match(/[0-9A-Fa-f\b]/g) &&
-      event.which !== 39 &&
-      event.which !== 37
-    ) {
+    // which is 0 on synthetic events in some engines; keyCode carries the same value
+    const code = event.which || event.keyCode;
+    let char = String.fromCharCode(code);
+    if (!char.match(/[0-9A-Fa-f\b]/g) && code !== 39 && code !== 37) {
       event.preventDefault();
     }
   }

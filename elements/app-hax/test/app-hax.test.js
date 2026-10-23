@@ -573,18 +573,18 @@ describe("app-hax test", () => {
     let originalRemoveItem;
 
     beforeEach(() => {
-      originalRemoveItem = globalThis.localStorage.removeItem;
+      originalRemoveItem = Storage.prototype.removeItem;
     });
 
     afterEach(() => {
       // localStorage is an unforgeable getter on globalThis, so spy on
       // removeItem via the live Storage object instead of replacing it
-      globalThis.localStorage.removeItem = originalRemoveItem;
+      Storage.prototype.removeItem = originalRemoveItem;
     });
 
     it("should clear localStorage items", () => {
       let removedItems = [];
-      globalThis.localStorage.removeItem = (key) => {
+      Storage.prototype.removeItem = (key) => {
         removedItems.push(key);
       };
 
@@ -594,7 +594,7 @@ describe("app-hax test", () => {
     });
 
     it("should handle localStorage errors gracefully", () => {
-      globalThis.localStorage.removeItem = () => {
+      Storage.prototype.removeItem = () => {
         throw new Error("Access denied");
       };
 

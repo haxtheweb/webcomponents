@@ -235,12 +235,14 @@ export function getRange(root) {
     }
   }
 
-  cachedRange.set(root, result.range);
+  // internalGetShadowSelection returns null when nothing is selected
+  const resolved = result ? result.range : null;
+  cachedRange.set(root, resolved);
   globalThis.setTimeout(() => {
     cachedRange.delete(root);
   }, 0);
   debug && console.debug("getRange got", result);
-  return result.range;
+  return resolved;
 }
 
 export function internalGetShadowSelection(root) {

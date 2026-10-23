@@ -37,7 +37,7 @@ class MoarSarcasm extends HTMLElement {
     this.render();
     this.observer = new MutationObserver((mutations) => {
       mutations.forEach((_mutation) => {
-        this.say = this.innerText;
+        this.say = this.textContent;
       });
     });
     this.observer.observe(this, {
@@ -95,7 +95,7 @@ class MoarSarcasm extends HTMLElement {
     // reconnecting (such as on page load) would clobber a saved say value
     // with whatever stale text still lives in the light DOM.
     if (!this.hasAttribute("say")) {
-      this.say = this.innerText;
+      this.say = this.textContent;
     } else {
       this.processText(this.getAttribute("say"));
     }
@@ -142,8 +142,8 @@ class MoarSarcasm extends HTMLElement {
     return ["say", "a11y"];
   }
   set say(val) {
-    if (val !== this.innerText) {
-      this.innerText = val;
+    if (val !== this.textContent) {
+      this.textContent = val;
     } else {
       this.setAttribute("say", val);
     }
@@ -172,9 +172,9 @@ class MoarSarcasm extends HTMLElement {
           // (eg the HAX settings tray writes attributes directly for
           // properties that aren't own-properties), which otherwise would
           // leave the light DOM stale.
-          if (newValue !== this.innerText) {
+          if (newValue !== this.textContent) {
             this.observer.disconnect();
-            this.innerText = newValue;
+            this.textContent = newValue;
             this.observer.observe(this, {
               characterData: true,
               attributes: false,
