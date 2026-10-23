@@ -2,6 +2,7 @@ import js from "@eslint/js";
 import litPlugin from "eslint-plugin-lit";
 import wcPlugin from "eslint-plugin-wc";
 import eslintConfigPrettier from "eslint-config-prettier";
+import baselineJs from "eslint-plugin-baseline-js";
 import globals from "globals";
 
 /**
@@ -153,6 +154,27 @@ export default [
       globals: {
         ...globals.node,
       },
+    },
+  },
+  {
+    // Web platform compatibility: warn when elements use a JS built-in or Web API
+    // that is not Baseline "widely available" (supported in current Chrome,
+    // Firefox and Safari for 30+ months). Warn only: each hit should either be
+    // behind a feature check (typeof / "in" / try-catch) or get a short
+    // `// eslint-disable-next-line baseline-js/use-baseline -- <why>` note, so
+    // the fallback for Firefox/Safari is a deliberate decision. This does not
+    // catch API misuse in a widely supported API (see cross-browser CI for that).
+    files: ["elements/**/*.js"],
+    plugins: { "baseline-js": baselineJs },
+    rules: {
+      "baseline-js/use-baseline": [
+        "warn",
+        {
+          available: "widely",
+          includeWebApis: { preset: "auto" },
+          includeJsBuiltins: { preset: "auto" },
+        },
+      ],
     },
   },
   eslintConfigPrettier,

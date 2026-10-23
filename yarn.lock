@@ -1592,7 +1592,7 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.27.7.tgz#8fe30b3088b89b4873c3a6cc87597ae3920c0a8b"
   integrity sha512-56hiAJPhwQ1R4i+21FVF7V8kSD5zZTdHcVuRFMW0hn753vVfQN8xlx4uOPT4xoGH0Z/oVATuR82AiqSTDIpaHg==
 
-"@eslint-community/eslint-utils@^4.8.0":
+"@eslint-community/eslint-utils@^4.1.2", "@eslint-community/eslint-utils@^4.7.0", "@eslint-community/eslint-utils@^4.8.0":
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.10.1.tgz#8911bd72b2c3640a543609e0400b8c4d2e7e7cb6"
   integrity sha512-cuadcxVFE8sDK6iWJbs8Sn0av2Nrh2QSGQhVlBW9AaAHqHwjWsZHT8LJ4hFGPh7ASBV2deFdM7H/DPjulmh8rg==
@@ -1753,11 +1753,6 @@
     twig "3.0.0"
     winston "3.19.0"
 
-"@haxtheweb/hax-iconset@^9.0.1":
-  version "26.8.0"
-  dependencies:
-    "@haxtheweb/simple-icon" "^26.8.0"
-
 "@haxtheweb/haxcms-nodejs@^26.8.0":
   version "26.8.1"
   resolved "https://registry.yarnpkg.com/@haxtheweb/haxcms-nodejs/-/haxcms-nodejs-26.8.1.tgz#867188722a2537c3b44cef6b37613aa1500080b4"
@@ -1800,13 +1795,6 @@
     xml2js "^0.6.2"
     yaml "^2.9.0"
 
-"@haxtheweb/json-outline-schema@^9.0.1":
-  version "26.8.0"
-  dependencies:
-    "@haxtheweb/dynamic-import-registry" "^26.8.0"
-    "@haxtheweb/utils" "^26.8.0"
-    lit "3.3.3"
-
 "@haxtheweb/lrn-icons@9.0.1":
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/@haxtheweb/lrn-icons/-/lrn-icons-9.0.1.tgz#3afbb86d70f58f8b1734a5c43c0e1e3a6a712c10"
@@ -1824,34 +1812,6 @@
     "@polymer/iron-icon" "^3.0.1"
     "@polymer/iron-iconset-svg" "^3.0.0"
     "@polymer/polymer" "^3.5.1"
-
-"@haxtheweb/mdi-iconset-svg@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@haxtheweb/mdi-iconset-svg/-/mdi-iconset-svg-9.0.1.tgz#46f3e7296718374914377747f434333ba7aadedb"
-  integrity sha512-7jfK1nmYD4bsiQPIhYGZgDCxNRuJIP4y+1o6nCcukJfmMhHjtn/+Ad/K0AD9dDeoIeX4UYXc6w6Uy0o7jnuYtA==
-  dependencies:
-    "@polymer/iron-icon" "^3.0.1"
-    "@polymer/iron-iconset-svg" "^3.0.1"
-    "@polymer/polymer" "^3.5.1"
-
-"@haxtheweb/simple-colors@^9.0.1":
-  version "26.8.0"
-  dependencies:
-    "@haxtheweb/simple-colors-shared-styles" "^26.8.0"
-    lit "3.3.3"
-
-"@haxtheweb/simple-icon@^9.0.1":
-  version "26.8.0"
-  dependencies:
-    "@haxtheweb/simple-colors" "^26.8.0"
-    flag-icons "6.6.4"
-    lit "3.3.3"
-
-"@haxtheweb/utils@^9.0.1":
-  version "26.8.0"
-  dependencies:
-    "@babel/core" "7.29.7"
-    lit "3.3.3"
 
 "@humanfs/core@^0.19.2":
   version "0.19.2"
@@ -3414,62 +3374,10 @@
   resolved "https://registry.yarnpkg.com/@polymer/esm-amd-loader/-/esm-amd-loader-1.0.4.tgz#4e77f2f59b29b01e0ad02aa83d33716cddc5f9f9"
   integrity sha512-h+hqYkL+tQV/y2ESD5gFXMl5z4cC+XY1jTlBeGSBaTcj3VbB5OBEScbvRXm63NcEbBneQQYbHfBAXAkF9i9wIA==
 
-"@polymer/font-roboto@^3.0.1":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@polymer/font-roboto/-/font-roboto-3.0.2.tgz#80cdaa7225db2359130dfb2c6d9a3be1820020c3"
-  integrity sha512-tx5TauYSmzsIvmSqepUPDYbs4/Ejz2XbZ1IkD7JEGqkdNUJlh+9KU85G56Tfdk/xjEZ8zorFfN09OSwiMrIQWA==
-
-"@polymer/iron-a11y-announcer@^3.0.0-pre.26":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-a11y-announcer/-/iron-a11y-announcer-3.2.0.tgz#d04b1301413d473336cc5797dfd97b3b36dd0cd7"
-  integrity sha512-We+hyaFHcg7Ke8ovsoxUpYEXFIJLHxMCDaLehTB4dELS+C+K0zMnGSiqQvb/YzGS+nSYpAfkQIyg1msOCdHMtA==
-  dependencies:
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-a11y-keys-behavior@^3.0.0-pre.26":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-a11y-keys-behavior/-/iron-a11y-keys-behavior-3.0.1.tgz#2868ea72912d2007ffab4734684a91f5aac49b84"
-  integrity sha512-lnrjKq3ysbBPT/74l0Fj0U9H9C35Tpw2C/tpJ8a+5g8Y3YJs1WSZYnEl1yOkw6sEyaxOq/1DkzH0+60gGu5/PQ==
-  dependencies:
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-a11y-keys@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-a11y-keys/-/iron-a11y-keys-3.0.1.tgz#bd59613c27248f7e516bbe389087d01be9396e9c"
-  integrity sha512-zmTi8xHeY4ZMJLAitW2hAmW5zXZ35hVy/eHQUFadAlOccuBK3oRRmoPRQRaZgpyJrCVFDAQRXXzzJtUDil/0CA==
-  dependencies:
-    "@polymer/iron-a11y-keys-behavior" "^3.0.0-pre.26"
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-autogrow-textarea@^3.0.0-pre.26":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-autogrow-textarea/-/iron-autogrow-textarea-3.0.3.tgz#b75dbebc23ce47d428a26156709d4a8a4c05823e"
-  integrity sha512-5r0VkWrIlm0JIp5E5wlnvkw7slK72lFRZXncmrsLZF+6n1dg2rI8jt7xpFzSmUWrqpcyXwyKaGaDvUjl3j4JLA==
-  dependencies:
-    "@polymer/iron-behaviors" "^3.0.0-pre.26"
-    "@polymer/iron-flex-layout" "^3.0.0-pre.26"
-    "@polymer/iron-validatable-behavior" "^3.0.0-pre.26"
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-behaviors@^3.0.0-pre.26":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-behaviors/-/iron-behaviors-3.0.1.tgz#a3b6f876779a7f0a91a15e4423890968b6525901"
-  integrity sha512-IMEwcv1lhf1HSQxuyWOUIL0lOBwmeaoSTpgCJeP9IBYnuB1SPQngmfRuHKgK6/m9LQ9F9miC7p3HeQQUdKAE0w==
-  dependencies:
-    "@polymer/iron-a11y-keys-behavior" "^3.0.0-pre.26"
-    "@polymer/polymer" "^3.0.0"
-
 "@polymer/iron-flex-layout@^3.0.0-pre.26":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@polymer/iron-flex-layout/-/iron-flex-layout-3.0.1.tgz#36f9e1a8eb792d279b2bc75d362628721ad37f0c"
   integrity sha512-7gB869czArF+HZcPTVSgvA7tXYFze9EKckvM95NB7SqYF+NnsQyhoXgKnpFwGyo95lUjUW9TFDLUwDXnCYFtkw==
-  dependencies:
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-form-element-behavior@^3.0.0-pre.26":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-form-element-behavior/-/iron-form-element-behavior-3.0.1.tgz#4c79e1981d7796ce659e997f3b8f5e14b4a075a4"
-  integrity sha512-G/e2KXyL5AY7mMjmomHkGpgS0uAf4ovNpKhkuUTRnMuMJuf589bKqE85KN4ovE1Tzhv2hJoh/igyD6ekHiYU1A==
   dependencies:
     "@polymer/polymer" "^3.0.0"
 
@@ -3482,7 +3390,7 @@
     "@polymer/iron-meta" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/iron-iconset-svg@^3.0.0", "@polymer/iron-iconset-svg@^3.0.1":
+"@polymer/iron-iconset-svg@^3.0.0":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@polymer/iron-iconset-svg/-/iron-iconset-svg-3.0.1.tgz#568d6e7dbc120299dae63be3600aeba0d30ddbea"
   integrity sha512-XNwURbNHRw6u2fJe05O5fMYye6GSgDlDqCO+q6K1zAnKIrpgZwf2vTkBd5uCcZwsN0FyCB3mvNZx4jkh85dRDw==
@@ -3490,50 +3398,11 @@
     "@polymer/iron-meta" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/iron-input@^3.0.0-pre.26":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-input/-/iron-input-3.0.1.tgz#dc866a25107f9b38d9ca4512dd9a3e51b78b4915"
-  integrity sha512-WLx13kEcbH9GKbj9+pWR6pbJkA5kxn3796ynx6eQd2rueMyUfVTR3GzOvadBKsciUuIuzrxpBWZ2+3UcueVUQQ==
-  dependencies:
-    "@polymer/iron-a11y-announcer" "^3.0.0-pre.26"
-    "@polymer/iron-validatable-behavior" "^3.0.0-pre.26"
-    "@polymer/polymer" "^3.0.0"
-
 "@polymer/iron-meta@^3.0.0-pre.26":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@polymer/iron-meta/-/iron-meta-3.0.1.tgz#7f140628d127b0a284f882f1bb323a261bc125f5"
   integrity sha512-pWguPugiLYmWFV9UWxLWzZ6gm4wBwQdDy4VULKwdHCqR7OP7u98h+XDdGZsSlDPv6qoryV/e3tGHlTIT0mbzJA==
   dependencies:
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-validatable-behavior@^3.0.0-pre.26":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-validatable-behavior/-/iron-validatable-behavior-3.0.1.tgz#73538f005a07741c31b6fc1e981168c3d3e0d92b"
-  integrity sha512-wwpYh6wOa4fNI+jH5EYKC7TVPYQ2OfgQqocWat7GsNWcsblKYhLYbwsvEY5nO0n2xKqNfZzDLrUom5INJN7msQ==
-  dependencies:
-    "@polymer/iron-meta" "^3.0.0-pre.26"
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/paper-input@^3.0.2":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@polymer/paper-input/-/paper-input-3.2.1.tgz#0fd0d30de3b43ba7d2c8d5d76f870d257b667ebf"
-  integrity sha512-6ghgwQKM6mS0hAQxQqj+tkeEY1VUBqAsrasAm8V5RpNcfSWQC/hhRFxU0beGuKTAhndzezDzWYP6Zz4b8fExGg==
-  dependencies:
-    "@polymer/iron-a11y-keys-behavior" "^3.0.0-pre.26"
-    "@polymer/iron-autogrow-textarea" "^3.0.0-pre.26"
-    "@polymer/iron-behaviors" "^3.0.0-pre.26"
-    "@polymer/iron-form-element-behavior" "^3.0.0-pre.26"
-    "@polymer/iron-input" "^3.0.0-pre.26"
-    "@polymer/paper-styles" "^3.0.0-pre.26"
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/paper-styles@^3.0.0-pre.26":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@polymer/paper-styles/-/paper-styles-3.0.1.tgz#bd4962b83ab8432cd1cf197bb5222d3a08f135e1"
-  integrity sha512-y6hmObLqlCx602TQiSBKHqjwkE7xmDiFkoxdYGaNjtv4xcysOTdVJsDR/R9UHwIaxJ7gHlthMSykir1nv78++g==
-  dependencies:
-    "@polymer/font-roboto" "^3.0.1"
-    "@polymer/iron-flex-layout" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
 "@polymer/polymer@^3.0.0", "@polymer/polymer@^3.5.1":
@@ -10125,6 +9994,22 @@ eslint-config-prettier@10.1.8:
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-10.1.8.tgz#15734ce4af8c2778cc32f0b01b37b0b5cd1ecb97"
   integrity sha512-82GZUjRS0p/jganf6q1rEO25VSoHH0hKPCTrgillPjdI/3bgBhAE1QzHrHTizjpRvy6pGAvKjDJtk2pF9NDq8w==
 
+eslint-plugin-baseline-js@0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-baseline-js/-/eslint-plugin-baseline-js-0.7.5.tgz#36b98a262efe4e4dcf77da9b340f89761e383b57"
+  integrity sha512-AQ0Z24q/ZVwceC6m09D3HVD7Gi/+EgIzPjLOBONai5W6Jl2Gl0TA7dgwhtD/YuNIQAfn1Dr3GrQEqfT4hNKwAA==
+  dependencies:
+    eslint-plugin-es-x "^9.7.0"
+
+eslint-plugin-es-x@^9.7.0:
+  version "9.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-es-x/-/eslint-plugin-es-x-9.7.0.tgz#fe94d50408a5c8b47eb0e1adb06632f2419d2bbc"
+  integrity sha512-BT0pUw0toxtrHulYycGiUTL++qC11opyPYMuGUR7AgmuQ/N1YN1xLupF8rGxlaGqEqkqeedJuacCxxAcYgGkvg==
+  dependencies:
+    "@eslint-community/eslint-utils" "^4.1.2"
+    "@eslint-community/regexpp" "^4.12.1"
+    eslint-type-tracer "^0.5.1"
+
 eslint-plugin-lit@2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-lit/-/eslint-plugin-lit-2.3.1.tgz#2a02918e74318f9e50b6a93c76060f7f8e5bf000"
@@ -10148,6 +10033,13 @@ eslint-scope@^8.4.0:
   dependencies:
     esrecurse "^4.3.0"
     estraverse "^5.2.0"
+
+eslint-type-tracer@^0.5.1:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/eslint-type-tracer/-/eslint-type-tracer-0.5.2.tgz#187e376dcc04a0b2a5254904ca388793d0bd22e5"
+  integrity sha512-YiJmgk6OD1suPB4UC3M/PB+oxahf145jQQ5gFXFk9F9Y7puWwnqGYC2BtTB+FoHqdOohImeTt0rNk0lhhECNaQ==
+  dependencies:
+    "@eslint-community/eslint-utils" "^4.7.0"
 
 eslint-visitor-keys@^3.4.3:
   version "3.4.3"
@@ -10764,6 +10656,11 @@ fecha@^4.2.0:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/fecha/-/fecha-4.2.3.tgz#4d9ccdbc61e8629b259fdca67e65891448d569fd"
   integrity sha512-OP2IUU6HeYKJi3i0z4A19kHMQoLVs4Hc+DPqqxI2h/DPZHTm/vjsfC6P0b4jCMy14XizLBqvndQ+UilD7707Jw==
+
+fflate@0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/fflate/-/fflate-0.8.2.tgz#fc8631f5347812ad6028bbe4a2308b2792aa1dea"
+  integrity sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==
 
 figures@3.2.0, figures@^3.0.0, figures@^3.2.0:
   version "3.2.0"
@@ -14881,7 +14778,7 @@ lit-html@3.3.3, "lit-html@^2.0.0 || ^3.0.0", lit-html@^3.3.0:
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
-lit@3.3.2, lit@3.3.3, "lit@^2.0.0 || ^3.0.0", lit@^2.0.2, lit@^2.2.5, lit@^2.7.2, lit@^3.0.0, lit@^3.1.3, lit@^3.1.4, lit@^3.2.0, lit@^3.2.1:
+lit@3.3.2, lit@3.3.3, "lit@^2.0.0 || ^3.0.0", lit@^2.0.2, lit@^2.2.5, lit@^2.7.2, lit@^3.0.0, lit@^3.1.3, lit@^3.2.0, lit@^3.2.1:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/lit/-/lit-3.3.3.tgz#93579885e51a20a772c68482a34706fe1636e8f0"
   integrity sha512-fycuvZg/hkpozL00lm1pEJH5nN/lr9ZXd6mJI2HSN4+Bzc+LDNdEApJ6HFbPkdFNHLvOplIIuJvxkS4XUxqirw==
