@@ -45,7 +45,7 @@ export class licenseList {
       }
     });
     // support mutating the array into a select list
-    if (mode == "select") {
+    if (mode === "select") {
       let select = {};
       for (let i in list) {
         select[i] = `${licenseGroups[list[i].group].name}: ${list[i].name}`;
@@ -53,7 +53,7 @@ export class licenseList {
       return select;
     }
     // or into grouped options in display order
-    if (mode == "grouped") {
+    if (mode === "grouped") {
       return Object.keys(list).map((i) => ({
         value: i,
         text: list[i].name,

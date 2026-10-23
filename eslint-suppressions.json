@@ -509,11 +509,6 @@
       "count": 2
     }
   },
-  "elements/license-element/license-element.js": {
-    "eqeqeq": {
-      "count": 1
-    }
-  },
   "elements/lorem-data/lib/lorem-data-behaviors.js": {
     "eqeqeq": {
       "count": 2
