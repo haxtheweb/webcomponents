@@ -383,7 +383,11 @@ describe("hal-9000 _annyangLoaded", () => {
 });
 
 describe("hal-9000 es-global-bridge integration", () => {
-  it("loads annyang through the bridge and wires the real lib up", async () => {
+  it("loads annyang through the bridge and wires the real lib up", async function () {
+    // the vendored lib is null where SpeechRecognition is missing (Firefox, Playwright WebKit)
+    if (!(globalThis.SpeechRecognition || globalThis.webkitSpeechRecognition)) {
+      this.skip();
+    }
     const store = ESGlobalBridgeStore;
     expect(store).to.exist;
     const started = Date.now();

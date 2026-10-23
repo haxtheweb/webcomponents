@@ -288,7 +288,14 @@ describe("linkedin-embed test", () => {
         `/elements/linkedin-embed/test/fixture-badge.js?uid=${uid}`;
       element.__requestBadgeMarkup();
       const uid = element.__lastRequestUid;
-      await aTimeout(300);
+      // wait for the script to load and remove itself (slower in Firefox/WebKit)
+      for (
+        let i = 0;
+        i < 30 && scriptsMatching("fixture-badge.js").length > 0;
+        i++
+      ) {
+        await aTimeout(100);
+      }
       expect(scriptsMatching("fixture-badge.js").length).to.equal(0);
       // the handler stays registered until the callback delivers the badge
       const manager = element.__ensureCallbackManager();
