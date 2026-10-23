@@ -414,6 +414,7 @@ export class MicroGameBase extends I18NMixin(
 
   async copyPrompt() {
     try {
+      // eslint-disable-next-line baseline-js/use-baseline -- inside try/catch with a text-selection fallback
       await globalThis.navigator.clipboard.writeText(this.prompt);
       this._copied = "ok";
     } catch {
