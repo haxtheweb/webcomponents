@@ -12,14 +12,13 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `bibliography-item`
- * 
+ *
  * @demo index.html
  * @element bibliography-item
  */
 export class BibliographyItem extends SchemaBehaviors(
   DDDSuper(I18NMixin(LitElement)),
 ) {
-
   static get tag() {
     return "bibliography-item";
   }
@@ -27,9 +26,7 @@ export class BibliographyItem extends SchemaBehaviors(
   constructor() {
     super();
     this.title = "HAX The Web";
-    this.authors = [
-      { given: 'John', surname: 'Doe' },
-    ];
+    this.authors = [{ given: "John", surname: "Doe" }];
     this.publicationDate = "";
     this.accessDate = "";
     this.citationType = "web";
@@ -66,116 +63,123 @@ export class BibliographyItem extends SchemaBehaviors(
       childVer: { type: Number, attribute: "child-ver" },
       volume: { type: String, attribute: "volume" },
       issue: { type: String, attribute: "issue" },
-      startPage: { type: String, attribute: 'start-page' },
-      endPage: { type: String, attribute: 'end-page' }
+      startPage: { type: String, attribute: "start-page" },
+      endPage: { type: String, attribute: "end-page" },
     };
   }
 
   // Lit scoped styles
   static get styles() {
-    return [super.styles,
-    css`
-      :host {
-        display: block;
-        font-family: var(--ddd-font-navigation);
-      }
-      :host([data-hax-active]) .wrapper{
-        outline: var(
-          --hax-body-active-outline,
-          1px solid var(--hax-ui-color-focus, #000)
-        );
-      }
-      .wrapper {
-        margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
-        border: var(--ddd-border-xs);
-        display: flex;
-        justify-content: space-between;
-      }
-      .italic-section {
-        display: inline;
-        font-style: italic;
-      }
-      .citation {
-        width: 80%;
-      }
-    `];
+    return [
+      super.styles,
+      css`
+        :host {
+          display: block;
+          font-family: var(--ddd-font-navigation);
+        }
+        :host([data-hax-active]) .wrapper {
+          outline: var(
+            --hax-body-active-outline,
+            1px solid var(--hax-ui-color-focus, #000)
+          );
+        }
+        .wrapper {
+          margin: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-4);
+          border: var(--ddd-border-xs);
+          display: flex;
+          justify-content: space-between;
+        }
+        .italic-section {
+          display: inline;
+          font-style: italic;
+        }
+        .citation {
+          width: 80%;
+        }
+      `,
+    ];
   }
 
   // Lit render the HTML
   render() {
-    return html`
-    <div class="wrapper" typeof="oer:ReferencedMaterial">
-        <meta property="oer:uri" content="${this.url}" />
-        <div class="citation">${this.exportAPA()}</div>
-        <div class="copy-button">
-            <simple-icon-button-lite
-              part="icon"
-              class="icon"
-              title="${this.t.copy}"
-              icon="content-copy"
-              @click=${this._copyToClipboard}
-            ></simple-icon-button-lite>
-        </div>
+    return html` <div class="wrapper" typeof="oer:ReferencedMaterial">
+      <meta property="oer:uri" content="${this.url}" />
+      <div class="citation">${this.exportAPA()}</div>
+      <div class="copy-button">
+        <simple-icon-button-lite
+          part="icon"
+          class="icon"
+          title="${this.t.copy}"
+          icon="content-copy"
+          @click=${this._copyToClipboard}
+        ></simple-icon-button-lite>
+      </div>
     </div>`;
   }
 
   /**
-  * LitElement lifecycle
-  */
+   * LitElement lifecycle
+   */
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "citationType" && oldValue !== undefined) {
-          globalThis.HaxStore.instance.refreshActiveNodeForm()
-      };
+        globalThis.HaxStore.instance.refreshActiveNodeForm();
+      }
     });
   }
 
-  _formatAuthors(){
-    if (!Array.isArray(this.authors) || this.authors.length === 0) return '';
+  _formatAuthors() {
+    if (!Array.isArray(this.authors) || this.authors.length === 0) return "";
 
     // author.given author.surname
     const formattedArr = this.authors
       .map((author) => {
-        const authorObj = author && typeof author === 'object' ? author : {};
-        const surname = typeof authorObj.surname === 'string' ? authorObj.surname.trim() : '';
-        const given = typeof authorObj.given === 'string' ? authorObj.given.trim() : '';
+        const authorObj = author && typeof author === "object" ? author : {};
+        const surname =
+          typeof authorObj.surname === "string" ? authorObj.surname.trim() : "";
+        const given =
+          typeof authorObj.given === "string" ? authorObj.given.trim() : "";
         const givenInitials = given
           .split(/\s+/)
           .filter((part) => part)
           .map((part) => `${part.charAt(0).toUpperCase()}.`)
-          .join(' ');
+          .join(" ");
 
         if (surname && givenInitials) return `${surname}, ${givenInitials}`;
         if (surname) return surname;
         if (givenInitials) return givenInitials;
-        return '';
+        return "";
       })
       .filter((author) => author);
 
-    if (formattedArr.length === 0) return '';
+    if (formattedArr.length === 0) return "";
     if (formattedArr.length === 1) return formattedArr[0];
 
     const last = formattedArr.pop();
-    return formattedArr.join(', ') + ', & ' + last;
+    return formattedArr.join(", ") + ", & " + last;
   }
 
-  _formatSource(){
+  _formatSource() {
     return {
       getJournalSource: (format) => {
-        if(format === "APA"){
+        if (format === "APA") {
           // Issue num only applies if there's a volume num
-          const volumeDetails = this.parentVer ? 
-            html`<i>${this.parentVer}</i>${this.childVer ? html`(${this.childVer})` : ''}` : '';
+          const volumeDetails = this.parentVer
+            ? html`<i>${this.parentVer}</i>${this.childVer
+                  ? html`(${this.childVer})`
+                  : ""}`
+            : "";
 
           // End page only applies if there's a start page
-          const pageRange = this.startPage ?
-            html`${this.startPage}${this.endPage ? ` - ${this.endPage}` : ''}` : '';
+          const pageRange = this.startPage
+            ? html`${this.startPage}${this.endPage ? ` - ${this.endPage}` : ""}`
+            : "";
 
-          if (!volumeDetails && !pageRange) return '';
+          if (!volumeDetails && !pageRange) return "";
           if (!pageRange) return html`${volumeDetails}`;
           if (!volumeDetails) return html`${pageRange}`;
 
@@ -183,56 +187,61 @@ export class BibliographyItem extends SchemaBehaviors(
         }
       },
       getBookSource: (format) => {
-        if(format === "APA"){
+        if (format === "APA") {
           // (#th ed., Vol. #, pp. #-#).
-          const editionDetails = this.parentVer ? 
-            html`${this.parentVer} ed.${this.childVer ? html`, Vol. ${this.childVer}` : ''}` : '';
+          const editionDetails = this.parentVer
+            ? html`${this.parentVer}
+              ed.${this.childVer ? html`, Vol. ${this.childVer}` : ""}`
+            : "";
           // End page only applies if there's a start page
-          const pageRange = this.startPage ?
-            html`${this.startPage}${this.endPage ? ` - ${this.endPage}` : ''}` : '';
+          const pageRange = this.startPage
+            ? html`${this.startPage}${this.endPage ? ` - ${this.endPage}` : ""}`
+            : "";
 
           return html`(${editionDetails}, pp. ${pageRange})`;
         }
-      }
-    }
-  };
+      },
+    };
+  }
 
   /**
-  * Parse a date value for formatting. ISO date-only strings (e.g.
-  * 2020-03-07) are parsed as UTC midnight by the platform, which shifts
-  * back a day in timezones behind UTC when read back with local methods,
-  * so build them as local calendar dates instead.
-  */
-  _parseDate(value){
+   * Parse a date value for formatting. ISO date-only strings (e.g.
+   * 2020-03-07) are parsed as UTC midnight by the platform, which shifts
+   * back a day in timezones behind UTC when read back with local methods,
+   * so build them as local calendar dates instead.
+   */
+  _parseDate(value) {
     if (typeof value === "string") {
       const dateOnly = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value.trim());
       if (dateOnly) {
         return new Date(
           Number(dateOnly[1]),
           Number(dateOnly[2]) - 1,
-          Number(dateOnly[3])
+          Number(dateOnly[3]),
         );
       }
     }
     return new Date(value);
   }
 
-  _formatDate(){
+  _formatDate() {
     const pubDateObj = this._parseDate(this.publicationDate);
     const accessDateObj = this._parseDate(this.accessDate);
 
     return {
       // The same between APA and BibTeX
       getPubYear: () => {
-        if(isNaN(pubDateObj)) return "(n.d.)";
+        if (isNaN(pubDateObj)) return "(n.d.)";
 
         return pubDateObj.getFullYear();
       },
       getFullPubDate: () => {
-        if(isNaN(pubDateObj)) return "(n.d.)";
+        if (isNaN(pubDateObj)) return "(n.d.)";
 
         const pubYear = pubDateObj.getFullYear();
-        const pubMonth = pubDateObj.toLocaleString('default', { month: 'long' });;
+        const pubMonth = pubDateObj.toLocaleString("default", {
+          month: "long",
+        });
         const pubDay = pubDateObj.getDate();
 
         if (!pubMonth) return `(${pubYear})`;
@@ -241,67 +250,84 @@ export class BibliographyItem extends SchemaBehaviors(
         return `(${pubYear}, ${pubMonth} ${pubDay})`;
       },
       getFullAccessDate: (format) => {
-        if(isNaN(accessDateObj)) return "(n.d.)";
+        if (isNaN(accessDateObj)) return "(n.d.)";
 
-        if (format === "APA"){
+        if (format === "APA") {
           const accessYear = accessDateObj.getFullYear();
-          const accessMonth = accessDateObj.toLocaleString('default', { month: 'long' });
+          const accessMonth = accessDateObj.toLocaleString("default", {
+            month: "long",
+          });
           const accessDay = accessDateObj.getDate();
 
           if (!accessMonth) return `Retrieved ${accessYear}, from`;
-          if (!accessDay) return `Retrieved ${accessMonth}, ${accessYear}, from`;
+          if (!accessDay)
+            return `Retrieved ${accessMonth}, ${accessYear}, from`;
 
           return `Retrieved ${accessMonth} ${accessDay}, ${accessYear}, from`;
         }
-        if(format === "BibTeX"){
+        if (format === "BibTeX") {
           const accessYear = accessDateObj.getFullYear();
-          const accessMonth = String(accessDateObj.getMonth() + 1).padStart(2, '0');
-          const accessDay = String(accessDateObj.getDate()).padStart(2, '0');
+          const accessMonth = String(accessDateObj.getMonth() + 1).padStart(
+            2,
+            "0",
+          );
+          const accessDay = String(accessDateObj.getDate()).padStart(2, "0");
 
           if (!accessMonth) return `${accessYear}`;
           if (!accessDay) return `${accessYear}-${accessMonth}`;
 
           return `${accessYear}-${accessMonth}-${accessDay}`;
-        };
-      }
+        }
+      },
     };
   }
 
-  exportAPA(){
-    switch(this.citationType) {
+  exportAPA() {
+    switch (this.citationType) {
       case "journal":
-        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <span property="oer:name">${this.title}</span>. <i>${this.publisher}</i>, ${this._formatSource().getJournalSource("APA")}. ${this.url}`;
+        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}.
+          <span property="oer:name">${this.title}</span>.
+          <i>${this.publisher}</i>,
+          ${this._formatSource().getJournalSource("APA")}. ${this.url}`;
       case "book":
-        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <i property="oer:name">${this.title}</i> ${this._formatSource().getBookSource("APA")}. ${this.publisher}. ${this.url}`
+        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}.
+          <i property="oer:name">${this.title}</i>
+          ${this._formatSource().getBookSource("APA")}. ${this.publisher}.
+          ${this.url}`;
       case "web":
       default:
-        return html`${this._formatAuthors()} ${this._formatDate().getFullPubDate()}. <i property="oer:name">${this.title}</i>. ${this.publisher}. ${this.url}`
+        return html`${this._formatAuthors()}
+          ${this._formatDate().getFullPubDate()}.
+          <i property="oer:name">${this.title}</i>. ${this.publisher}.
+          ${this.url}`;
     }
   }
 
-  exportBibtex(){    
+  exportBibtex() {
     // Indent is set to 4 spaces for each field
-    switch(this.citationType) {
+    switch (this.citationType) {
       case "journal": {
         const bibtexObj = [
           `@article{${this.title.replaceAll(" ", "")},`,
           `    title = {${this.title}},`,
           `    author = {${this._formatAuthors()}},`,
-          `    year = {${this._formatDate().getPubYear()}},`
+          `    year = {${this._formatDate().getPubYear()}},`,
         ];
 
-        if(this.volume) bibtexObj.push(`   volume = {${this.volume}},`)
-        if(this.issue) bibtexObj.push(`   number = {${this.issue}},`)
-        if(this.startPage && this.endPage){
-          bibtexObj.push(`    pages = {${this.startPage}--${this.endPage}},`)
-        } else if(this.startPage){
-          bibtexObj.push(`    pages = {${this.startPage}},`)
+        if (this.volume) bibtexObj.push(`   volume = {${this.volume}},`);
+        if (this.issue) bibtexObj.push(`   number = {${this.issue}},`);
+        if (this.startPage && this.endPage) {
+          bibtexObj.push(`    pages = {${this.startPage}--${this.endPage}},`);
+        } else if (this.startPage) {
+          bibtexObj.push(`    pages = {${this.startPage}},`);
         }
-        if(this.url) bibtexObj.push(`    doi = {${this.url}}`)
-        
+        if (this.url) bibtexObj.push(`    doi = {${this.url}}`);
+
         bibtexObj.push(`}`);
-        
-        return html`<div style="white-space: pre-wrap;">${bibtexObj.join('\n').trim()}</div>`;
+
+        return html`<div style="white-space: pre-wrap;">
+          ${bibtexObj.join("\n").trim()}
+        </div>`;
       }
       case "web":
       default: {
@@ -309,22 +335,26 @@ export class BibliographyItem extends SchemaBehaviors(
           `@misc{${this.title.replaceAll(" ", "")},`,
           `    title = {${this.title}},`,
           `    author = {${this._formatAuthors()}},`,
-          `    year = {${this._formatDate().getPubYear()}},`
+          `    year = {${this._formatDate().getPubYear()}},`,
         ];
 
-        if(this.url) bibtexObj.push(`    howpublished = {\\url{${this.url}}},`)
-        if(this.accessDate) bibtexObj.push(`    note = {Accessed: ${this.accessDate}}`);
+        if (this.url)
+          bibtexObj.push(`    howpublished = {\\url{${this.url}}},`);
+        if (this.accessDate)
+          bibtexObj.push(`    note = {Accessed: ${this.accessDate}}`);
 
         bibtexObj.push(`}`);
 
-        return html`<div style="white-space: pre-wrap;">${bibtexObj.join('\n').trim()}</div>`
+        return html`<div style="white-space: pre-wrap;">
+          ${bibtexObj.join("\n").trim()}
+        </div>`;
       }
     }
   }
 
-  _copyToClipboard(){  
+  _copyToClipboard() {
     const target = this.shadowRoot.querySelector(".citation");
-    const htmlContent = target.innerHTML; 
+    const htmlContent = target.innerHTML;
     const plainContent = target.textContent;
 
     // const wrappedHtml = `
@@ -356,7 +386,9 @@ export class BibliographyItem extends SchemaBehaviors(
       ];
       clip
         .write(data)
-        .catch(() => clip.writeText && clip.writeText(plainContent).catch(() => {}));
+        .catch(
+          () => clip.writeText && clip.writeText(plainContent).catch(() => {}),
+        );
     } else if (clip && clip.writeText) {
       clip.writeText(plainContent).catch(() => {});
     }
@@ -383,24 +415,28 @@ export class BibliographyItem extends SchemaBehaviors(
         icon: "communication:call-received",
         callback: "_addItemBelow",
         label: this.t.addCitationBelow,
-      }
+      },
     ];
   }
 
-  _addItemAbove(){
-    this.dispatchEvent(new CustomEvent('add-citation', {
-      detail: { direction: 'above', node: this },
-      bubbles: true,
-      composed: true
-    }));
+  _addItemAbove() {
+    this.dispatchEvent(
+      new CustomEvent("add-citation", {
+        detail: { direction: "above", node: this },
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
-  _addItemBelow(){
-    this.dispatchEvent(new CustomEvent('add-citation', {
-      detail: { direction: 'below', node: this },
-      bubbles: true,
-      composed: true
-    }));
+  _addItemBelow() {
+    this.dispatchEvent(
+      new CustomEvent("add-citation", {
+        detail: { direction: "below", node: this },
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   haxsetupActiveElementForm(props) {
@@ -408,107 +444,110 @@ export class BibliographyItem extends SchemaBehaviors(
 
     let configObj = [];
 
-    switch(this.citationType) {
+    switch (this.citationType) {
       case "book":
         configObj = [
           {
-            property: 'url',
-            title: 'URL',
-            description: 'Link to the item',
-            inputMethod: 'textfield',
+            property: "url",
+            title: "URL",
+            description: "Link to the item",
+            inputMethod: "textfield",
           },
           {
-            property: 'publicationDate',
-            title: 'Publication Date',
-            description: 'mm/dd/yyyy',
-            inputMethod: 'datepicker',
+            property: "publicationDate",
+            title: "Publication Date",
+            description: "mm/dd/yyyy",
+            inputMethod: "datepicker",
           },
           {
-            property: 'parentVer',
-            title: 'Edition',
-            description: 'Volume number',
-            inputMethod: 'textfield',
+            property: "parentVer",
+            title: "Edition",
+            description: "Volume number",
+            inputMethod: "textfield",
           },
           {
-            property: 'childVer',
-            title: 'Volume',
-            description: 'Issue number',
-            inputMethod: 'textfield',
+            property: "childVer",
+            title: "Volume",
+            description: "Issue number",
+            inputMethod: "textfield",
           },
           {
-            property: 'startPage',
-            title: 'Start Page',
-            description: 'First page of publication',
-            inputMethod: 'number',
+            property: "startPage",
+            title: "Start Page",
+            description: "First page of publication",
+            inputMethod: "number",
           },
           {
-            property: 'endPage',
-            title: 'End Page',
-            description: 'Final page of publication',
-            inputMethod: 'number',
-          }
-        ]
+            property: "endPage",
+            title: "End Page",
+            description: "Final page of publication",
+            inputMethod: "number",
+          },
+        ];
         break;
       case "journal":
         configObj = [
           {
-            property: 'url',
-            title: 'DOI / URL (Optional)',
-            description: 'Link to the item',
-            inputMethod: 'textfield',
+            property: "url",
+            title: "DOI / URL (Optional)",
+            description: "Link to the item",
+            inputMethod: "textfield",
           },
           {
-            property: 'publicationDate',
-            title: 'Publication Date',
-            description: 'mm/dd/yyyy',
-            inputMethod: 'datepicker',
+            property: "publicationDate",
+            title: "Publication Date",
+            description: "mm/dd/yyyy",
+            inputMethod: "datepicker",
           },
           {
-            property: 'volume',
-            title: 'Volume',
-            description: 'Volume number',
-            inputMethod: 'textfield',
+            property: "volume",
+            title: "Volume",
+            description: "Volume number",
+            inputMethod: "textfield",
           },
           {
-            property: 'issue',
-            title: 'Issue',
-            description: 'Issue number',
-            inputMethod: 'textfield',
+            property: "issue",
+            title: "Issue",
+            description: "Issue number",
+            inputMethod: "textfield",
           },
           {
-            property: 'startPage',
-            title: 'Start Page',
-            description: 'First page of publication',
-            inputMethod: 'number',
+            property: "startPage",
+            title: "Start Page",
+            description: "First page of publication",
+            inputMethod: "number",
           },
           {
-            property: 'endPage',
-            title: 'End Page',
-            description: 'Final page of publication',
-            inputMethod: 'number',
-          }
-        ]
+            property: "endPage",
+            title: "End Page",
+            description: "Final page of publication",
+            inputMethod: "number",
+          },
+        ];
         break;
       case "web":
       default:
         configObj = [
           {
-            property: 'url',
-            title: 'URL',
-            description: 'Link to the item',
-            inputMethod: 'textfield',
+            property: "url",
+            title: "URL",
+            description: "Link to the item",
+            inputMethod: "textfield",
           },
           {
-            property: 'publicationDate',
-            title: 'Publication Date',
-            description: 'mm/dd/yyyy',
-            inputMethod: 'datepicker',
-          }
-        ]
+            property: "publicationDate",
+            title: "Publication Date",
+            description: "mm/dd/yyyy",
+            inputMethod: "datepicker",
+          },
+        ];
         break;
     }
 
-    props.settings.configure = [...BibliographyItem.haxProperties.settings.configure, ...configObj];
+    props.settings.configure = [
+      ...BibliographyItem.haxProperties.settings.configure,
+      ...configObj,
+    ];
   }
 
   /**
@@ -516,35 +555,34 @@ export class BibliographyItem extends SchemaBehaviors(
    */
   static get haxProperties() {
     return {
-      "api": "1",
-      "canScale": true,
-      "canEditSource": true,
-      "type": "element",
-      "designSystem": false,
-      "gizmo": {
-        "title": "Bibliography item",
-        "description": "Item representing a single citation in a bibliography, supporting multiple formats and export options.",
-        "icon": "icons:android",
-        "color": "purple",
-        "tags": [
-          "Content", "portfolio", "citation", "reference", "bibliography"
-        ],
-        "handles": [],
-        "meta": {
-          "author": "HAXTheWeb core team",
-        }
+      api: "1",
+      canScale: true,
+      canEditSource: true,
+      type: "element",
+      designSystem: false,
+      gizmo: {
+        title: "Bibliography item",
+        description:
+          "Item representing a single citation in a bibliography, supporting multiple formats and export options.",
+        icon: "icons:android",
+        color: "purple",
+        tags: ["Content", "portfolio", "citation", "reference", "bibliography"],
+        handles: [],
+        meta: {
+          author: "HAXTheWeb core team",
+        },
       },
-      "settings": {
-        "configure": [
+      settings: {
+        configure: [
           {
-            property: 'citationType',
-            title: 'Type',
-            description: 'Citation type',
-            inputMethod: 'select',
+            property: "citationType",
+            title: "Type",
+            description: "Citation type",
+            inputMethod: "select",
             options: {
-              web: 'Web',
-              journal: 'Journal',
-              book: 'Book'
+              web: "Web",
+              journal: "Journal",
+              book: "Book",
             },
           },
           // Should we implement the tabs/fieldset menu for better organizing? List is getting a little long
@@ -555,7 +593,7 @@ export class BibliographyItem extends SchemaBehaviors(
             description: "Title of the item",
             inputMethod: "textfield",
             icon: "editor:title",
-            required: true
+            required: true,
           },
           {
             property: "authors",
@@ -579,29 +617,28 @@ export class BibliographyItem extends SchemaBehaviors(
             ],
           },
           {
-            property: 'publisher',
-            title: 'Publisher',
-            description: 'Original website',
-            inputMethod: 'textfield',
-          }
-        ]
-      },
-      "saveOptions": {
-        "wipeSlot": false,
-        "unsetAttributes": []
-      },
-      "demoSchema": [
-        {
-          "tag": "bibliography-item",
-          "properties": {
-            "title": "Sample property title"
+            property: "publisher",
+            title: "Publisher",
+            description: "Original website",
+            inputMethod: "textfield",
           },
-          "content": ""
-        }
-      ]
-    }
-  };
-
+        ],
+      },
+      saveOptions: {
+        wipeSlot: false,
+        unsetAttributes: [],
+      },
+      demoSchema: [
+        {
+          tag: "bibliography-item",
+          properties: {
+            title: "Sample property title",
+          },
+          content: "",
+        },
+      ],
+    };
+  }
 }
 
 globalThis.customElements.define(BibliographyItem.tag, BibliographyItem);

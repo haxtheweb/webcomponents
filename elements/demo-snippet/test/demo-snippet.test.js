@@ -1,13 +1,11 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect } from "@open-wc/testing";
 import "../demo-snippet.js";
 
 describe("DemoSnippet test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <demo-snippet
-        title="title"
-      ></demo-snippet>
+      <demo-snippet title="title"></demo-snippet>
     `);
   });
 

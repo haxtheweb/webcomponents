@@ -63,9 +63,7 @@ class ChamferTheme extends HAXCMSThemeParts(
     this.__disposer.push(
       autorun((_reaction) => {
         // guard for contexts where the store isn't fully hydrated yet
-        const _mobx_val_0 = toJS(
-          store.themeData && store.themeData.variables,
-        );
+        const _mobx_val_0 = toJS(store.themeData && store.themeData.variables);
         Promise.resolve().then(() => {
           if (store.themeData && store.themeData.variables) {
             const vars = _mobx_val_0;
@@ -281,9 +279,7 @@ class ChamferTheme extends HAXCMSThemeParts(
   // render function
   render() {
     return html`
-      <a class="skip-link" href="#contentcontainer"
-        >${this.t.skipToContent}</a
-      >
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <div class="chamfer-wrapper">
         <div class="banner" part="banner">
           <site-region name="banner"></site-region>

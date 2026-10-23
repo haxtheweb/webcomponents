@@ -61,7 +61,7 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
           font-family: var(--ddd-font-primary, sans-serif);
         }
 
-        :host([data-hax-active]){
+        :host([data-hax-active]) {
           outline: var(
             --hax-body-active-outline,
             1px solid var(--hax-ui-color-focus, #000)
@@ -70,9 +70,7 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
 
         .item-container {
           position: relative;
-          padding-left: calc(
-            var(--ddd-icon-md) + var(--ddd-spacing-4)
-          );
+          padding-left: calc(var(--ddd-icon-md) + var(--ddd-spacing-4));
         }
 
         .org-info {
@@ -89,7 +87,7 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
           padding-bottom: 20px;
         }
 
-        h3{
+        h3 {
           margin-top: 0px;
         }
 
@@ -117,30 +115,32 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
   render() {
     return html`
       <div class="org-info">
-        <img id="logo" src="${this.source}" alt=""/>
+        <img id="logo" src="${this.source}" alt="" />
         <div class="org">
           <h3>${this.organization}</h3>
           ${this.location} · ${this._formatDate()}
         </div>
       </div>
       <div class="steps-container">
-        <slot><career-role-item title="${this.t.addARole}"></career-role-item></slot>
+        <slot
+          ><career-role-item title="${this.t.addARole}"></career-role-item
+        ></slot>
         <div class="border-line"></div>
       </div>
     `;
   }
 
   /**
-  * LitElement lifecycle
-  */
+   * LitElement lifecycle
+   */
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('start-date-changed', this._sortByDate);
+    this.addEventListener("start-date-changed", this._sortByDate);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('start-date-changed', this._sortByDate);
+    this.removeEventListener("start-date-changed", this._sortByDate);
   }
 
   /**
@@ -149,33 +149,37 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
    */
   get earliestDate() {
     const items = Array.from(
-      this.querySelectorAll ? this.querySelectorAll('career-role-item') : [],
+      this.querySelectorAll ? this.querySelectorAll("career-role-item") : [],
     );
-    const startDates = items.map(item => new Date(item.startDate));
+    const startDates = items.map((item) => new Date(item.startDate));
     return Math.min(...startDates);
   }
-  
+
   /**
    * overrides query selector for slotted children
    * @readonly
    */
-  get latestDate(){
+  get latestDate() {
     const items = Array.from(
-      this.querySelectorAll ? this.querySelectorAll('career-role-item') : [],
+      this.querySelectorAll ? this.querySelectorAll("career-role-item") : [],
     );
-    const endDates = items.map(item => new Date(item.endDate));
+    const endDates = items.map((item) => new Date(item.endDate));
     return Math.max(...endDates);
   }
 
-  _formatDate(){
+  _formatDate() {
     // Math.max/min return Infinity for empty arrays
-    if(!Number.isFinite(this.earliestDate) || !Number.isFinite(this.latestDate)) return `${this.t.yearShort.replace("{count}", 0)} ${this.t.monthShort.replace("{count}", 0)}`;
+    if (
+      !Number.isFinite(this.earliestDate) ||
+      !Number.isFinite(this.latestDate)
+    )
+      return `${this.t.yearShort.replace("{count}", 0)} ${this.t.monthShort.replace("{count}", 0)}`;
     const startDateObj = new Date(this.earliestDate);
     const endDateObj = new Date(this.latestDate);
 
     // The career timeline also aggregates total timespan at a position
-    let totalYears = endDateObj.getFullYear() - startDateObj.getFullYear()
-    let totalMonths = endDateObj.getMonth() - startDateObj.getMonth()
+    let totalYears = endDateObj.getFullYear() - startDateObj.getFullYear();
+    let totalMonths = endDateObj.getMonth() - startDateObj.getMonth();
 
     // Sometimes something like 1 year -3 months will show up, this corrects for that
     if (totalMonths < 0) {
@@ -184,24 +188,28 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
     }
 
     // Accounting for proper grammar with small values
-    totalYears = (totalYears > 1 ? this.t.yearsShort : this.t.yearShort).replace("{count}", () => totalYears);
-    totalMonths = (totalMonths > 1 ? this.t.monthsShort : this.t.monthShort).replace("{count}", () => totalMonths);
+    totalYears = (
+      totalYears > 1 ? this.t.yearsShort : this.t.yearShort
+    ).replace("{count}", () => totalYears);
+    totalMonths = (
+      totalMonths > 1 ? this.t.monthsShort : this.t.monthShort
+    ).replace("{count}", () => totalMonths);
 
     return `${totalYears} ${totalMonths}`;
   }
 
   _sortByDate(e) {
     const items = Array.from(
-      this.querySelectorAll ? this.querySelectorAll('career-role-item') : [],
+      this.querySelectorAll ? this.querySelectorAll("career-role-item") : [],
     );
 
     // Descending order; if an item doesn't have a start date, default to today's date
-    const sorted = items.sort((curr, next) => 
-      new Date(next.startDate) - new Date(curr.startDate)
+    const sorted = items.sort(
+      (curr, next) => new Date(next.startDate) - new Date(curr.startDate),
     );
 
     // This just moves the existing nodes around, doesn't create new ones
-    sorted.forEach(item => this.appendChild(item));
+    sorted.forEach((item) => this.appendChild(item));
     this.requestUpdate();
 
     // Scroll to the active node
@@ -212,13 +220,13 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
     });
   }
 
-  _addItemHandler(_e){
+  _addItemHandler(_e) {
     const item = globalThis.document.createElement("career-role-item");
 
     // We need to hydrate these if we're directly appending
-    const attrs = { 
-      "data-hax-layout": true, 
-      "data-hax-ray": "career-role-item"
+    const attrs = {
+      "data-hax-layout": true,
+      "data-hax-ray": "career-role-item",
     };
 
     for (const name in attrs) {
@@ -226,7 +234,7 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
     }
 
     // Assumption is that users are working on newer items, so it appends to beginning
-    this.prepend(item)
+    this.prepend(item);
   }
 
   haxHooks() {
@@ -250,44 +258,44 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
    */
   static get haxProperties() {
     return {
-      "type": "grid",
-      "canScale": false,
-      "designSystem": false,
-      "canEditSource": false,
-      "contentEditable": false,
-      "hideDefaultSettings": true,
-      "gizmo": {
-        "title": "Career Item",
-        "description": "An individual organization and its affiliated roles",
-        "icon": "chrome-reader-mode",
-        "color": "light-blue",
-        "tags": ["Content", "list", "step"],
-        "handles": [],
-        "meta": {
-          "author": "HAXTheWeb core team",
-        }
+      type: "grid",
+      canScale: false,
+      designSystem: false,
+      canEditSource: false,
+      contentEditable: false,
+      hideDefaultSettings: true,
+      gizmo: {
+        title: "Career Item",
+        description: "An individual organization and its affiliated roles",
+        icon: "chrome-reader-mode",
+        color: "light-blue",
+        tags: ["Content", "list", "step"],
+        handles: [],
+        meta: {
+          author: "HAXTheWeb core team",
+        },
       },
-      "settings": {
-        "configure": [
+      settings: {
+        configure: [
           {
-            "property": "organization",
-            "title": "Organization Name",
-            "inputMethod": "textfield"
+            property: "organization",
+            title: "Organization Name",
+            inputMethod: "textfield",
           },
           {
-            "property": "location",
-            "title": "Location",
-            "inputMethod": "textfield"
+            property: "location",
+            title: "Location",
+            inputMethod: "textfield",
           },
           {
-            "property": "source",
-            "title": "Source",
-            "inputMethod": "haxupload"
-          }
+            property: "source",
+            title: "Source",
+            inputMethod: "haxupload",
+          },
         ],
-        "advanced": [],
-        "developer": []
-      }
+        advanced: [],
+        developer: [],
+      },
     };
   }
 }

@@ -582,7 +582,11 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         .sort="${this.topMenuSort}"
       ></site-query>
       <div class="layout">
-        <aside class="sidebar" part="sidebar" aria-label="${this.t.siteInformation}">
+        <aside
+          class="sidebar"
+          part="sidebar"
+          aria-label="${this.t.siteInformation}"
+        >
           <div class="sidebar-inner">
             <site-title
               .part="${this.editMode ? `edit-mode-active` : ``}"
@@ -592,7 +596,11 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             ${this.siteDescription
               ? html`<p class="site-description">${this.siteDescription}</p>`
               : ``}
-            <nav class="top-menu" aria-label="${this.t.topMenuLinks}" part="top-menu">
+            <nav
+              class="top-menu"
+              aria-label="${this.t.topMenuLinks}"
+              part="top-menu"
+            >
               <ul>
                 ${visibleMenuItems.map(
                   (item) => html`
@@ -756,7 +764,9 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             this.__prefersDarkMediaListener,
           );
         } else if (this.__prefersDarkMedia.removeListener) {
-          this.__prefersDarkMedia.removeListener(this.__prefersDarkMediaListener);
+          this.__prefersDarkMedia.removeListener(
+            this.__prefersDarkMediaListener,
+          );
         }
       }
       this.__prefersDarkMedia = null;
@@ -954,9 +964,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
 
   _tagsArray(tags) {
     if (Array.isArray(tags)) {
-      return tags
-        .map((tag) => String(tag).trim())
-        .filter((tag) => tag !== "");
+      return tags.map((tag) => String(tag).trim()).filter((tag) => tag !== "");
     }
     if (!tags || typeof tags !== "string") {
       return [];
@@ -994,7 +1002,6 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   __nextPageLabelChanged(e) {
     this.nextPage = e.detail && e.detail.value ? e.detail.value : "";
   }
-
 }
 
 globalThis.customElements.define(TwentySixTheme.tag, TwentySixTheme);

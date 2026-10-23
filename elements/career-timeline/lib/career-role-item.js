@@ -49,7 +49,7 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
       title: { type: String },
       startDate: { type: String, attribute: "start-date" },
       endDate: { type: String, attribute: "end-date" },
-      skills: { type: Array }
+      skills: { type: Array },
     };
   }
 
@@ -138,8 +138,8 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   /**
-  * LitElement lifecycle
-  */
+   * LitElement lifecycle
+   */
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -160,13 +160,15 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
           return;
         }
 
-        this.dispatchEvent(new CustomEvent('start-date-changed', {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: { node: this }
-        }));
-      };
+        this.dispatchEvent(
+          new CustomEvent("start-date-changed", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: { node: this },
+          }),
+        );
+      }
 
       if (propName === "endDate" && oldValue !== undefined) {
         const normalizedEndDate = this._normalizeDate(this.endDate);
@@ -180,7 +182,7 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
           this.endDate = normalizedEndDate;
           return;
         }
-      };
+      }
     });
   }
 
@@ -235,7 +237,7 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
     return dateObj.toISOString();
   }
 
-  _formatDate(){
+  _formatDate() {
     const normalizedStartDate = this._normalizeDate(this.startDate);
     const normalizedEndDate = this._normalizeDate(this.endDate);
     if (!normalizedStartDate) {
@@ -247,8 +249,8 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
     const endDateObj = hasEndDate ? new Date(normalizedEndDate) : new Date();
 
     // The career timeline also aggregates total timespan at a position
-    let totalYears = endDateObj.getFullYear() - startDateObj.getFullYear()
-    let totalMonths = endDateObj.getMonth() - startDateObj.getMonth()
+    let totalYears = endDateObj.getFullYear() - startDateObj.getFullYear();
+    let totalMonths = endDateObj.getMonth() - startDateObj.getMonth();
 
     // Sometimes something like 1 year -3 months will show up, this corrects for that
     if (totalMonths < 0) {
@@ -257,14 +259,18 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
     }
 
     // Accounting for proper grammar with small values
-    totalYears = (totalYears > 1 ? this.t.yearsShort : this.t.yearShort).replace("{count}", () => totalYears);
-    totalMonths = (totalMonths > 1 ? this.t.monthsShort : this.t.monthShort).replace("{count}", () => totalMonths);
+    totalYears = (
+      totalYears > 1 ? this.t.yearsShort : this.t.yearShort
+    ).replace("{count}", () => totalYears);
+    totalMonths = (
+      totalMonths > 1 ? this.t.monthsShort : this.t.monthShort
+    ).replace("{count}", () => totalMonths);
 
     // Using a 3-letter short format for the months
     // format in the document's language, falling back to the runtime default
     const dateOptions = {
-      year: 'numeric',
-      month: 'short'
+      year: "numeric",
+      month: "short",
     };
     const docLang =
       (globalThis.document &&
@@ -286,77 +292,82 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
     return `${shortStart} - ${shortEnd} · ${totalYears} ${totalMonths}`;
   }
 
-  _formatSkills(){
-    if(this.skills.length === 0) return;
+  _formatSkills() {
+    if (this.skills.length === 0) return;
 
     // SimpleFields/HAXFields defaults to an array of objects, so we map the skill names back out
-    const skills = this.skills.map(item => item.name);
+    const skills = this.skills.map((item) => item.name);
     // We don't want the list to be too long, especially with long skills names. This cuts off at 5 skills.
     // TODO: Include full list in <career-timeline> export mode.
-    const output = skills.length > 5 ? this.t.skillsAndMore.replace("{skills}", () => (skills.slice(0, 5).join(' · '))).replace("{count}", () => (skills.length - 5))
-      : skills.join(' · ');
+    const output =
+      skills.length > 5
+        ? this.t.skillsAndMore
+            .replace("{skills}", () => skills.slice(0, 5).join(" · "))
+            .replace("{count}", () => skills.length - 5)
+        : skills.join(" · ");
 
-    return html`<div class="skills">${this.t.skills}</div> ${output}`
+    return html`<div class="skills">${this.t.skills}</div>
+      ${output}`;
   }
 
   static get haxProperties() {
     return {
-      "type": "grid",
-      "canScale": false,
-      "designSystem": false,
-      "canEditSource": true,
-      "contentEditable": false,
-      "hideDefaultSettings": true,
-      "gizmo": {
-        "title": "Career Role",
-        "description": "An individual role within an organization",
-        "icon": "chrome-reader-mode",
-        "color": "light-blue",
-        "tags": ["Content", "list", "step"],
-        "handles": [],
-        "meta": {
-          "author": "HAXTheWeb core team",
-        }
+      type: "grid",
+      canScale: false,
+      designSystem: false,
+      canEditSource: true,
+      contentEditable: false,
+      hideDefaultSettings: true,
+      gizmo: {
+        title: "Career Role",
+        description: "An individual role within an organization",
+        icon: "chrome-reader-mode",
+        color: "light-blue",
+        tags: ["Content", "list", "step"],
+        handles: [],
+        meta: {
+          author: "HAXTheWeb core team",
+        },
       },
-      "settings": {
-        "configure": [
+      settings: {
+        configure: [
           {
-            "property": "title",
-            "title": "Title",
-            "inputMethod": "textfield"
+            property: "title",
+            title: "Title",
+            inputMethod: "textfield",
           },
           {
-            "property": "startDate",
-            "title": "Start Date",
-            "inputMethod": "datepicker"
+            property: "startDate",
+            title: "Start Date",
+            inputMethod: "datepicker",
           },
           {
-            "property": "endDate",
-            "title": "End Date (Optional)",
-            "inputMethod": "datepicker"
+            property: "endDate",
+            title: "End Date (Optional)",
+            inputMethod: "datepicker",
           },
           {
-            "property": "skills",
-            "title": "Associated Skills",
-            "description": "Select the + button to start adding skills",
-            "inputMethod": "array",
-            "itemLabel": "name",
-            "hideReorder": true,
-            "expanded": true,
-            "hideDuplicate": true,
-            "properties": [
+            property: "skills",
+            title: "Associated Skills",
+            description: "Select the + button to start adding skills",
+            inputMethod: "array",
+            itemLabel: "name",
+            hideReorder: true,
+            expanded: true,
+            hideDuplicate: true,
+            properties: [
               {
-                "property": "name",
-                "title": "Skill",
-                "inputMethod": "textfield",
-              }
-            ]
-          }
+                property: "name",
+                title: "Skill",
+                inputMethod: "textfield",
+              },
+            ],
+          },
         ],
-        "advanced": [],
-        "developer": []
+        advanced: [],
+        developer: [],
       },
-    }
+    };
   }
 }
 

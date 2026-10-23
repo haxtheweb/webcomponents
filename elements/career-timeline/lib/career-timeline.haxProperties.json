@@ -15,9 +15,7 @@
     "description": "A career timeline containing organizations, roles, and other data",
     "icon": "icons:android",
     "color": "purple",
-    "tags": [
-      "Content", "portfolio", "career", "timeline", "resume"
-    ],
+    "tags": ["Content", "portfolio", "career", "timeline", "resume"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

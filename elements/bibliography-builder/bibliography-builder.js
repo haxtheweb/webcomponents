@@ -10,18 +10,17 @@ import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import "./lib/bibliography-item.js"
+import "./lib/bibliography-item.js";
 
 /**
  * `bibliography-builder`
- * 
+ *
  * @demo index.html
  * @element bibliography-builder
  */
 export class BibliographyBuilder extends SchemaBehaviors(
   DDDSuper(I18NMixin(LitElement)),
 ) {
-
   static get tag() {
     return "bibliography-builder";
   }
@@ -43,8 +42,8 @@ export class BibliographyBuilder extends SchemaBehaviors(
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("./locales/bibliography-builder.ar.json", import.meta.url).href +
-        "/../",
+        new URL("./locales/bibliography-builder.ar.json", import.meta.url)
+          .href + "/../",
     });
     this.exportMode = "";
     // empty until a format is picked; render shows the translated prompt
@@ -60,57 +59,60 @@ export class BibliographyBuilder extends SchemaBehaviors(
       title: { type: String },
       exportMode: { type: String, attribute: "export-mode" },
       citationArr: { type: Array, attribute: "citation-array" },
-      forCourse: { type: String, attribute: "for-course" }
+      forCourse: { type: String, attribute: "for-course" },
     };
   }
 
   // Lit scoped styles
   static get styles() {
-    return [super.styles,
-    css`
-      :host {
-        display: block;
-        font-family: var(--ddd-font-navigation);
-      }
-      .wrapper {
-        padding: var(--ddd-spacing-4);
-        margin: var(--ddd-spacing-2);
-        border: var(--ddd-border-md);
-      }
-      h3 {
-        margin-top: var(--ddd-spacing-4);
-      }
-      h3 span {
-        font-size: var(--ddd-font-size-s);
-      }
-      .title-card {
-        display: flex;
-        justify-content: space-between;
-      }
+    return [
+      super.styles,
+      css`
+        :host {
+          display: block;
+          font-family: var(--ddd-font-navigation);
+        }
+        .wrapper {
+          padding: var(--ddd-spacing-4);
+          margin: var(--ddd-spacing-2);
+          border: var(--ddd-border-md);
+        }
+        h3 {
+          margin-top: var(--ddd-spacing-4);
+        }
+        h3 span {
+          font-size: var(--ddd-font-size-s);
+        }
+        .title-card {
+          display: flex;
+          justify-content: space-between;
+        }
 
-      #export-button {
-        align-self: center;
-      }
-    `];
+        #export-button {
+          align-self: center;
+        }
+      `,
+    ];
   }
 
   // Lit render the HTML
   render() {
-    return html`
-    <div class="wrapper" typeof="oer:LearningComponent">
+    return html` <div class="wrapper" typeof="oer:LearningComponent">
       <meta property="oer:forCourse" content="${this.forCourse}" />
       <div class="title-card">
         <h3><span>${this.t.title}:</span> ${this.title}</h3>
-        <button id="export-button" @click=${this._showExportModal}>${this.t.export}</button>
-      </div>      
+        <button id="export-button" @click=${this._showExportModal}>
+          ${this.t.export}
+        </button>
+      </div>
 
       <slot></slot>
     </div>`;
   }
 
   /**
-  * LitElement lifecycle
-  */
+   * LitElement lifecycle
+   */
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -123,104 +125,111 @@ export class BibliographyBuilder extends SchemaBehaviors(
     });
   }
 
-  _showExportModal(e){
-    this._modalContent = this._modalContent || globalThis.document.createElement('div');
+  _showExportModal(e) {
+    this._modalContent =
+      this._modalContent || globalThis.document.createElement("div");
     this.renderExport();
 
     this.dispatchEvent(
-      new CustomEvent('simple-modal-show', {
+      new CustomEvent("simple-modal-show", {
         bubbles: true,
         composed: true,
         cancelable: true,
         detail: {
           title: this.t.exportCitations,
           elements: { content: this._modalContent },
-          invokedBy: e.target
+          invokedBy: e.target,
         },
       }),
-    )
-  }
-
-  // simple-modal is independent from our main lit lifecycle, so we do a custom render
-  renderExport(){
-    render(
-      html`
-      <style>
-        .citation-list {
-          max-height: 40vh;
-          overflow-y: auto;
-          border: var(--ddd-border-xs);
-          padding: var(--ddd-spacing-2);
-          margin: var(--ddd-spacing-2);
-        }
-        .control-bar {
-          --simple-icon-button-border: var(--ddd-border-xs);
-          --simple-icon-button-border-radius: var(--ddd-radius-xs);
-          --simple-icon-button-focus-border: var(--ddd-border-sm);
-          --simple-icon-button-padding: var(--ddd-spacing-2);
-          --simple-icon-height: var(--ddd-icon-xs);
-          --simple-icon-width: var(--ddd-icon-xs);
-          display: flex;
-          justify-content: space-between;
-          margin-top: var(--ddd-spacing-4);
-        }
-        simple-icon-button-lite {
-          align-self: center;
-          width: fit-content;
-        }
-        simple-icon-button-lite::part(button) {
-          font-size: var(--ddd-font-size-xxs);
-        }
-      </style>
-      <div class="citation-list">
-        ${(this.citationArr.length ? this.citationArr : [this.t.selectCitationFormatBelow]).map(citation => html`<div class="citation-entry">${citation}</div>`)}
-      </div>
-      <div class="control-bar">
-        <div class="copy-button">
-          <simple-icon-button-lite
-            part="icon"
-            class="icon"
-            title="${this.t.copy}"
-            icon="content-copy"
-            @click=${this._copyToClipboard}
-          >${this.t.copy}</simple-icon-button-lite>
-        </div>
-        <div class="export-drop">
-          <select
-            id="export-dropdown"
-            aria-label="${this.t.exportCitationFormat}"
-            @change=${this._exportHandler}
-          >
-            <option value="Export">${this.t.export}</option>
-            <!-- i18n-ignore: citation format names -->
-            <option value="APA">APA</option>
-            <!-- i18n-ignore: citation format names -->
-            <option value="BibTeX">BibTeX</option>
-          </select>
-        </div>
-      </div>
-      `, 
-      this._modalContent,
-      { host: this }
     );
   }
 
-  _exportHandler(e){
-    this.exportMode = e.target.value;
-    const slot = this.shadowRoot.querySelector('slot').assignedElements();
+  // simple-modal is independent from our main lit lifecycle, so we do a custom render
+  renderExport() {
+    render(
+      html`
+        <style>
+          .citation-list {
+            max-height: 40vh;
+            overflow-y: auto;
+            border: var(--ddd-border-xs);
+            padding: var(--ddd-spacing-2);
+            margin: var(--ddd-spacing-2);
+          }
+          .control-bar {
+            --simple-icon-button-border: var(--ddd-border-xs);
+            --simple-icon-button-border-radius: var(--ddd-radius-xs);
+            --simple-icon-button-focus-border: var(--ddd-border-sm);
+            --simple-icon-button-padding: var(--ddd-spacing-2);
+            --simple-icon-height: var(--ddd-icon-xs);
+            --simple-icon-width: var(--ddd-icon-xs);
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--ddd-spacing-4);
+          }
+          simple-icon-button-lite {
+            align-self: center;
+            width: fit-content;
+          }
+          simple-icon-button-lite::part(button) {
+            font-size: var(--ddd-font-size-xxs);
+          }
+        </style>
+        <div class="citation-list">
+          ${(this.citationArr.length
+            ? this.citationArr
+            : [this.t.selectCitationFormatBelow]
+          ).map(
+            (citation) => html`<div class="citation-entry">${citation}</div>`,
+          )}
+        </div>
+        <div class="control-bar">
+          <div class="copy-button">
+            <simple-icon-button-lite
+              part="icon"
+              class="icon"
+              title="${this.t.copy}"
+              icon="content-copy"
+              @click=${this._copyToClipboard}
+              >${this.t.copy}</simple-icon-button-lite
+            >
+          </div>
+          <div class="export-drop">
+            <select
+              id="export-dropdown"
+              aria-label="${this.t.exportCitationFormat}"
+              @change=${this._exportHandler}
+            >
+              <option value="Export">${this.t.export}</option>
+              <!-- i18n-ignore: citation format names -->
+              <option value="APA">APA</option>
+              <!-- i18n-ignore: citation format names -->
+              <option value="BibTeX">BibTeX</option>
+            </select>
+          </div>
+        </div>
+      `,
+      this._modalContent,
+      { host: this },
+    );
+  }
 
-    if(this.exportMode === "APA") {
-      this.citationArr = slot.map((item) => item.exportAPA())
+  _exportHandler(e) {
+    this.exportMode = e.target.value;
+    const slot = this.shadowRoot.querySelector("slot").assignedElements();
+
+    if (this.exportMode === "APA") {
+      this.citationArr = slot.map((item) => item.exportAPA());
     } else if (this.exportMode === "BibTeX") {
-      this.citationArr = slot.map((item) => item.exportBibtex())
+      this.citationArr = slot.map((item) => item.exportBibtex());
     } else {
       this.citationArr = [];
     }
   }
 
-  _copyToClipboard(){  
+  _copyToClipboard() {
     const target = this._modalContent.querySelector(".citation-list");
-    const htmlContent = target.innerHTML; 
+    const htmlContent = target.innerHTML;
     const plainContent = target.textContent;
 
     // const wrappedHtml = `
@@ -252,31 +261,33 @@ export class BibliographyBuilder extends SchemaBehaviors(
       ];
       clip
         .write(data)
-        .catch(() => clip.writeText && clip.writeText(plainContent).catch(() => {}));
+        .catch(
+          () => clip.writeText && clip.writeText(plainContent).catch(() => {}),
+        );
     } else if (clip && clip.writeText) {
       clip.writeText(plainContent).catch(() => {});
     }
     /* eslint-enable baseline-js/use-baseline */
   }
 
-  _addItemHandler(e){
+  _addItemHandler(e) {
     const item = globalThis.document.createElement("bibliography-item");
 
-    const attrs = { 
-      "data-hax-layout": true, 
-      "data-hax-ray": "bibliography-item"
+    const attrs = {
+      "data-hax-layout": true,
+      "data-hax-ray": "bibliography-item",
     };
 
     for (const name in attrs) {
       item.setAttribute(name, attrs[name]);
     }
 
-    if(e.detail.direction === "above"){
+    if (e.detail.direction === "above") {
       // add above current citation
-      e.detail.node.before(item)
+      e.detail.node.before(item);
     } else if (e.detail.direction === "below") {
       // add below current citation
-      e.detail.node.after(item)
+      e.detail.node.after(item);
     } else {
       // add at the end of the citation list
       this.appendChild(item);

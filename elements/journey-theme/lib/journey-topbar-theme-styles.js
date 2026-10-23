@@ -21,7 +21,10 @@ export const JourneyTopbarThemeStyles = css`
       --ddd-palette-color-1,
       var(--ddd-theme-default-gradient-footer)
     );
-    --topbar-text: var(--ddd-palette-text-color-1, var(--ddd-theme-default-white));
+    --topbar-text: var(
+      --ddd-palette-text-color-1,
+      var(--ddd-theme-default-white)
+    );
     font-family: var(--ddd-font-primary, sans-serif);
     background-color: var(--content-bg);
   }

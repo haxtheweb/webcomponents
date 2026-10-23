@@ -42,7 +42,9 @@ class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
     this.activeId = null;
     autorun(() => {
       const _mobx_val_0 = toJS(store.activeId);
-      const _mobx_val_1 = toJS(store.manifest && store.manifest.items ? store.manifest.items : []);
+      const _mobx_val_1 = toJS(
+        store.manifest && store.manifest.items ? store.manifest.items : [],
+      );
       Promise.resolve().then(() => {
         this.activeId = _mobx_val_0;
         this._items = _mobx_val_1;
@@ -67,18 +69,18 @@ class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
-      :root {
-        --my-theme-low-tone: var(--ddd-theme-default-slateMaxLight);
-        --my-theme-high-tone: var(--ddd-theme-default-coalyGray);
-      }
-      body {
-        padding: var(--ddd-spacing-0);
-        margin: var(--ddd-spacing-0);
-        background-color: var(--my-theme-low-tone);
-      }
-      body.dark-mode {
-        background-color: var(--my-theme-high-tone);
-      }
+        :root {
+          --my-theme-low-tone: var(--ddd-theme-default-slateMaxLight);
+          --my-theme-high-tone: var(--ddd-theme-default-coalyGray);
+        }
+        body {
+          padding: var(--ddd-spacing-0);
+          margin: var(--ddd-spacing-0);
+          background-color: var(--my-theme-low-tone);
+        }
+        body.dark-mode {
+          background-color: var(--my-theme-high-tone);
+        }
       `,
     ];
   }
@@ -97,8 +99,14 @@ class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
           border: var(--ddd-border-lg);
           border-width: var(--ddd-spacing-5);
           border-radius: var(--ddd-radius-lg);
-          background-color: light-dark(var(--my-theme-low-tone), var(--my-theme-high-tone));
-          color: light-dark(var(--my-theme-high-tone), var(--my-theme-low-tone));
+          background-color: light-dark(
+            var(--my-theme-low-tone),
+            var(--my-theme-high-tone)
+          );
+          color: light-dark(
+            var(--my-theme-high-tone),
+            var(--my-theme-low-tone)
+          );
         }
         .wrapper {
           border-radius: var(--ddd-radius-lg);
@@ -136,8 +144,14 @@ class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
         }
 
         .active button {
-          background-color: light-dark(var(--my-theme-low-tone), var(--my-theme-high-tone));
-          color: light-dark(var(--my-theme-high-tone), var(--my-theme-low-tone));
+          background-color: light-dark(
+            var(--my-theme-low-tone),
+            var(--my-theme-high-tone)
+          );
+          color: light-dark(
+            var(--my-theme-high-tone),
+            var(--my-theme-low-tone)
+          );
           font-weight: bold;
         }
 
@@ -151,45 +165,41 @@ class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
 
   render() {
     return html`
-    <div class="wrapper">
-    <header>
-      <ul>
-        <li>
-          <site-menu-button
-            type="prev"
-            position="top"
-          ></site-menu-button>
-        </li>
-    ${this._items.map((item, index) => {
-      return html`
-        <li class="${item.id === this.activeId ? "active" : ""}">
-          <a href="${item.slug}"><button title="${item.title}">${(index+1)}</button></a>
-        </li>
-      `;
-    }
-    )}
-        <li>
-          <site-menu-button
-            type="next"
-            position="top"
-          ></site-menu-button>
-        </li>
-      </ul>
-    </header>
-    <main>
-      <site-active-title></site-active-title>
-      <article>
-        <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
-        <div id="contentcontainer"><div id="slot"><slot></slot></div></div>
-      </article>
-    </main>
-    <footer>
-      <slot name="footer"></slot>
-    </footer>
-  </div>
+      <div class="wrapper">
+        <header>
+          <ul>
+            <li>
+              <site-menu-button type="prev" position="top"></site-menu-button>
+            </li>
+            ${this._items.map((item, index) => {
+              return html`
+                <li class="${item.id === this.activeId ? "active" : ""}">
+                  <a href="${item.slug}"
+                    ><button title="${item.title}">${index + 1}</button></a
+                  >
+                </li>
+              `;
+            })}
+            <li>
+              <site-menu-button type="next" position="top"></site-menu-button>
+            </li>
+          </ul>
+        </header>
+        <main>
+          <site-active-title></site-active-title>
+          <article>
+            <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
+            <div id="contentcontainer">
+              <div id="slot"><slot></slot></div>
+            </div>
+          </article>
+        </main>
+        <footer>
+          <slot name="footer"></slot>
+        </footer>
+      </div>
     `;
   }
-
 }
 
 globalThis.customElements.define(ExampleHaxcmsTheme.tag, ExampleHaxcmsTheme);

@@ -55,14 +55,14 @@ export const JourneySidebarThemeStyles = css`
     min-height: 100vh;
     transition: margin-left var(--ddd-duration-normal, 0.3s) ease;
   }
-  
+
   main p,
   main li {
     font-size: var(--ddd-font-size-s);
     line-height: var(--ddd-lh-150);
     font-family: var(--ddd-font-primary);
   }
-  
+
   main a {
     color: light-dark(
       var(--ddd-palette-color-3, var(--ddd-theme-default-link)),
@@ -73,7 +73,7 @@ export const JourneySidebarThemeStyles = css`
     border-radius: var(--ddd-radius-xs);
     padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
   }
-  
+
   main a:hover,
   main a:focus {
     text-decoration: underline;
@@ -84,7 +84,7 @@ export const JourneySidebarThemeStyles = css`
     );
     outline: 2px solid transparent;
   }
-  
+
   main a:focus {
     outline: 2px solid
       light-dark(

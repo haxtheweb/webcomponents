@@ -4,15 +4,16 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 export class WebContainerWCRegistryDocs extends DDD {
   static get tag() {
-    return 'web-container-wc-registry-docs';
+    return "web-container-wc-registry-docs";
   }
 
   constructor() {
     super();
-    this.text = 'Select the project to produce a demo for. This will make a best attempt';
-    this.file = 'https://cdn.hax.cloud/cdn/wc-registry.json';
+    this.text =
+      "Select the project to produce a demo for. This will make a best attempt";
+    this.file = "https://cdn.hax.cloud/cdn/wc-registry.json";
     this.options = {
-      "": ""
+      "": "",
     };
   }
 
@@ -26,12 +27,14 @@ export class WebContainerWCRegistryDocs extends DDD {
 
   render() {
     return html`
-    <select @change="${this.selectChange}">
-      <option></option>
-      ${Object.keys(this.options).map((o) => html`<option value="${o}">${o}</option>`)}
-    </select>
-    <p>${this.text}</p>
-    <div id="container"></div>
+      <select @change="${this.selectChange}">
+        <option></option>
+        ${Object.keys(this.options).map(
+          (o) => html`<option value="${o}">${o}</option>`,
+        )}
+      </select>
+      <p>${this.text}</p>
+      <div id="container"></div>
     `;
   }
 
@@ -39,7 +42,7 @@ export class WebContainerWCRegistryDocs extends DDD {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    if (changedProperties.has('file') && this.file) {
+    if (changedProperties.has("file") && this.file) {
       fetch(this.file)
         .then((res) => {
           if (res && res.ok) {
@@ -52,38 +55,41 @@ export class WebContainerWCRegistryDocs extends DDD {
             this.options = Object.fromEntries(
               Object.entries(data).filter(
                 ([key, value]) =>
-                  value.includes('@haxtheweb/') && !key.startsWith('hax'),
+                  value.includes("@haxtheweb/") && !key.startsWith("hax"),
               ),
             );
           } else {
             // surface the failed registry load to the user instead of
             // failing silently
-            this.text = 'Unable to load the registry file.';
+            this.text = "Unable to load the registry file.";
           }
         })
         .catch(() => {
           // network failures and bad json must not reject unhandled; give
           // the user feedback through the same text surface
-          this.text = 'Unable to load the registry file.';
+          this.text = "Unable to load the registry file.";
         });
     }
   }
 
   async selectChange(_e) {
-    const select = this.shadowRoot.querySelector('select');
+    const select = this.shadowRoot.querySelector("select");
     if (select.value) {
       // ensure we have a container image
       await globalThis.WebContainerManager.requestAvailability();
-      let wcdp = globalThis.document.createElement('web-container-doc-player');
-      let ary = this.options[select.value].split('/');
+      let wcdp = globalThis.document.createElement("web-container-doc-player");
+      let ary = this.options[select.value].split("/");
       wcdp.project = `${ary.shift()}/${ary.shift()}`;
       wcdp.element = select.value;
       wcdp.importpath = this.options[select.value];
-      let container = this.shadowRoot.querySelector('#container');
-      container.innerHTML = '';
+      let container = this.shadowRoot.querySelector("#container");
+      container.innerHTML = "";
       container.appendChild(wcdp);
     }
   }
 }
 
-globalThis.customElements.define(WebContainerWCRegistryDocs.tag, WebContainerWCRegistryDocs);
+globalThis.customElements.define(
+  WebContainerWCRegistryDocs.tag,
+  WebContainerWCRegistryDocs,
+);

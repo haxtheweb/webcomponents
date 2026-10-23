@@ -1,0 +1,393 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "bullet-check-list.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "BulletCheckListStatusList",
+          "type": {
+            "text": "array"
+          },
+          "default": "[\"stop\", \"warning\", \"success\", \"info\"]",
+          "description": "`bullet-check-list`\n`A GitHub style list of checkboxes whose state is remembered on this machine`\n\nStorage key scheme (localStorage):\n  bullet-check-list:v1:<location.pathname>:<id>[:<n>]\n- <id> is the `storage-id` attribute when set, otherwise a deterministic\n  fingerprint (FNV-1a hash) of the title plus the item labels.\n- <n> is only appended when more than one list on the same page resolves to\n  the same <id>; it is the zero based document order among those lists and\n  is omitted for the first one so keys stay stable if a duplicate is added.\n- HAX generates and saves a random `storage-id` the first time the element\n  is edited, so authored lists keep their key when labels are re-worded.\nValue: JSON {\"v\":1,\"checked\":[\"<item label>\", ...]}"
+        },
+        {
+          "kind": "function",
+          "name": "bulletCheckListHash",
+          "parameters": [
+            {
+              "name": "str"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "BulletCheckList",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_items",
+              "description": "Items cleaned up: only objects / strings with a label are kept.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_isChecked",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "baseId",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "el"
+                }
+              ],
+              "description": "Id portion of the storage key, before duplicate disambiguation."
+            },
+            {
+              "kind": "method",
+              "name": "_computeStorageKey"
+            },
+            {
+              "kind": "method",
+              "name": "_readStore"
+            },
+            {
+              "kind": "method",
+              "name": "_writeStore"
+            },
+            {
+              "kind": "method",
+              "name": "_loadState"
+            },
+            {
+              "kind": "method",
+              "name": "_toggle",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_fire",
+              "parameters": [
+                {
+                  "name": "activityDisplay"
+                },
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "done"
+                },
+                {
+                  "name": "total"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "While authoring, block interaction / persistence and make sure the\nlist owns a stable storage-id that is saved with the content."
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "generateId",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Visible name of the list; also the accessible name of the group.",
+              "default": "\"\"",
+              "attribute": "title",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of {label, checked, disabled}. `checked` items are pre-completed\nby the author and, like `disabled` ones, can not be changed by readers.",
+              "default": "[]",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "ordered",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Render a numbered list instead of a bulleted one.",
+              "default": "false",
+              "attribute": "ordered",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Color / icon treatment, matches stop-note: stop, warning, success, info.",
+              "default": "\"info\"",
+              "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "storageId",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional author supplied id used to build the localStorage key.",
+              "default": "\"\"",
+              "attribute": "storage-id",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "typeof",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in the server rendered HTML that crawlers read.",
+              "default": "\"oer:LearningComponent\"",
+              "attribute": "typeof",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_checked",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "_checked"
+            },
+            {
+              "kind": "field",
+              "name": "_haxstate",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_haxstate"
+            },
+            {
+              "kind": "field",
+              "name": "_storageKey",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ progress: \"{done} of {total} complete\", currentStep: \"Current step\", checklist: \"Checklist\", }"
+            }
+          ],
+          "events": [
+            {
+              "name": "user-engagement",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "bullet-check-list-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Visible name of the list; also the accessible name of the group.",
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of {label, checked, disabled}. `checked` items are pre-completed\nby the author and, like `disabled` ones, can not be changed by readers.",
+              "default": "[]",
+              "fieldName": "items"
+            },
+            {
+              "name": "ordered",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Render a numbered list instead of a bulleted one.",
+              "default": "false",
+              "fieldName": "ordered"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "description": "Color / icon treatment, matches stop-note: stop, warning, success, info.",
+              "default": "\"info\"",
+              "fieldName": "status"
+            },
+            {
+              "name": "storage-id",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional author supplied id used to build the localStorage key.",
+              "default": "\"\"",
+              "fieldName": "storageId"
+            },
+            {
+              "name": "typeof",
+              "type": {
+                "text": "string"
+              },
+              "description": "OER Schema type. Reflected (rather than set in firstUpdated) so it is\nalso in the server rendered HTML that crawlers read.",
+              "default": "\"oer:LearningComponent\"",
+              "fieldName": "typeof"
+            },
+            {
+              "name": "_checked",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "_checked"
+            },
+            {
+              "name": "_haxstate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_haxstate"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BulletCheckListStatusList",
+          "declaration": {
+            "name": "BulletCheckListStatusList",
+            "module": "bullet-check-list.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "bulletCheckListHash",
+          "declaration": {
+            "name": "bulletCheckListHash",
+            "module": "bullet-check-list.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "BulletCheckList",
+            "module": "bullet-check-list.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "BulletCheckList",
+          "declaration": {
+            "name": "BulletCheckList",
+            "module": "bullet-check-list.js"
+          }
+        }
+      ]
+    }
+  ]
+}

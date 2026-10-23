@@ -10,12 +10,13 @@ import "./lib/career-org-item.js";
 
 /**
  * `career-timeline`
- * 
+ *
  * @demo index.html
  * @element career-timeline
  */
-export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement))) {
-
+export class CareerTimeline extends SchemaBehaviors(
+  DDDSuper(I18NMixin(LitElement)),
+) {
   static get tag() {
     return "career-timeline";
   }
@@ -52,18 +53,20 @@ export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElemen
 
   // Lit scoped styles
   static get styles() {
-    return [super.styles,
-    css`
-      :host {
-        display: block;
-        font-family: var(--ddd-font-navigation);
-      }
-      .wrapper {
-        margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
-        border: var(--ddd-border-md);
-      }
-    `];
+    return [
+      super.styles,
+      css`
+        :host {
+          display: block;
+          font-family: var(--ddd-font-navigation);
+        }
+        .wrapper {
+          margin: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-4);
+          border: var(--ddd-border-md);
+        }
+      `,
+    ];
   }
 
   // Lit render the HTML
@@ -78,33 +81,33 @@ export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElemen
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('start-date-changed', this._sortByDate);
+    this.addEventListener("start-date-changed", this._sortByDate);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('start-date-changed', this._sortByDate);
+    this.removeEventListener("start-date-changed", this._sortByDate);
   }
 
   _sortByDate(_e) {
-    const items = Array.from(this.querySelectorAll('career-org-item'));
+    const items = Array.from(this.querySelectorAll("career-org-item"));
 
     // Descending order; if an item doesn't have a start date, default to today's date
-    const sorted = items.sort((curr, next) => 
-      new Date(next.earliestDate) - new Date(curr.earliestDate)
+    const sorted = items.sort(
+      (curr, next) => new Date(next.earliestDate) - new Date(curr.earliestDate),
     );
 
     // This just moves the existing nodes around, doesn't create new ones
-    sorted.forEach(item => this.appendChild(item));
+    sorted.forEach((item) => this.appendChild(item));
   }
 
-  _addItemHandler(_e){
+  _addItemHandler(_e) {
     const item = globalThis.document.createElement("career-org-item");
 
     // We need to hydrate these if we're directly appending
-    const attrs = { 
-      "data-hax-layout": true, 
-      "data-hax-ray": "career-org-item"
+    const attrs = {
+      "data-hax-layout": true,
+      "data-hax-ray": "career-org-item",
     };
 
     for (const name in attrs) {
@@ -112,7 +115,7 @@ export class CareerTimeline extends SchemaBehaviors(DDDSuper(I18NMixin(LitElemen
     }
 
     // Assumption is that users are working on newer items, so it appends to beginning
-    this.prepend(item)
+    this.prepend(item);
   }
 
   haxHooks() {

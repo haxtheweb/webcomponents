@@ -11,7 +11,7 @@ import { autorun, toJS } from "mobx";
 
 /**
  * `glossy-portfolio-breadcrumb`
- * 
+ *
  * @demo index.html
  * @element glossy-portfolio-breadcrumb
  */
@@ -29,11 +29,11 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
           box-sizing: border-box;
         }
 
-        :host{
+        :host {
           --breadcrumb-font-size: 0.9rem;
         }
 
-        ol.breadcrumb{
+        ol.breadcrumb {
           list-style: none;
           margin: 0;
           padding: 0;
@@ -45,9 +45,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
           gap: 8px;
           list-style: ">";
           list-style-position: inside; /* Place bullets inside the container */
-
         }
-
 
         ol.breadcrumb li {
           font-size: var(--breadcrumb-font-size);
@@ -61,29 +59,24 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
         }
         ol.breadcrumb li a:hover {
           color: var(--link-color);
-
         }
         ol.breadcrumb li::marker {
           font-size: var(--breadcrumb-font-size);
           color: #ffffffa6;
         }
-        ol.breadcrumb li:last-child a{
+        ol.breadcrumb li:last-child a {
           color: var(--text-color);
         }
-        ol.breadcrumb li:last-child a:hover{
+        ol.breadcrumb li:last-child a:hover {
           text-decoration: none;
-          cursor: default
+          cursor: default;
         }
         ol.breadcrumb li:first-child::marker {
           content: "";
-          
         }
         ol.breadcrumb li:first-child a {
           margin-left: 0;
-      
         }
-
-
       `,
     ];
   }
@@ -123,7 +116,9 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
                   itemprop="itemListElement"
                   itemscope
                   itemtype="https://schema.org/ListItem"
-                  aria-current="${index === this.items.length - 1 ? "page" : undefined}"
+                  aria-current="${index === this.items.length - 1
+                    ? "page"
+                    : undefined}"
                 >
                   <a itemprop="item" href="${item.slug}"
                     ><span itemprop="name"
@@ -194,7 +189,6 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
             title: itemBuilder.title,
             slug: itemBuilder.slug,
           });
-
         }
       }
       if (this.includeHome) {
@@ -232,8 +226,10 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
     }
     this.__disposer = [];
     super.disconnectedCallback();
-    
   }
 }
 
-globalThis.customElements.define(GlossyPortfolioBreadcrumb.tag, GlossyPortfolioBreadcrumb);
+globalThis.customElements.define(
+  GlossyPortfolioBreadcrumb.tag,
+  GlossyPortfolioBreadcrumb,
+);

@@ -11,12 +11,11 @@ import { licenseList } from "@haxtheweb/license-element/license-element.js";
 
 /**
  * `glossy-portfolio-footer`
- * 
+ *
  * @demo index.html
  * @element glossy-portfolio-footer
  */
 export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
-
   static get tag() {
     return "glossy-portfolio-footer";
   }
@@ -35,7 +34,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
     this.title = "Title";
     this.homeLink = "";
     this.__disposer = this.__disposer || [];
-   
+
     // gets licensing stuff
     this.__disposer.push(
       autorun((_reaction) => {
@@ -43,7 +42,11 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
         Promise.resolve().then(() => {
           this.manifest = _mobx_val_0;
           let LList = new licenseList();
-          if (this.manifest && this.manifest.license && LList[this.manifest.license]) {
+          if (
+            this.manifest &&
+            this.manifest.license &&
+            LList[this.manifest.license]
+          ) {
             this.licenseName = LList[this.manifest.license].name;
             this.licenseLink = LList[this.manifest.license].link;
             this.licenseImage = LList[this.manifest.license].image;
@@ -60,12 +63,16 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(
-          store.manifest && store.manifest.metadata && store.manifest.metadata.site
+          store.manifest &&
+            store.manifest.metadata &&
+            store.manifest.metadata.site
             ? store.manifest.metadata.site.updated
             : null,
         );
         const _mobx_val_1 = toJS(
-          store.manifest && store.manifest.metadata && store.manifest.metadata.site
+          store.manifest &&
+            store.manifest.metadata &&
+            store.manifest.metadata.site
             ? store.manifest.metadata.site.created
             : null,
         );
@@ -79,11 +86,6 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
         });
       }),
     );
-
-    
-
- 
-
   }
 
   disconnectedCallback() {
@@ -101,90 +103,93 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
     }
   }
 
-  
   // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
       title: { type: String },
-      thumbnail: {type: String},
-      link: {type: String},
-      topItems: {type: Array},
+      thumbnail: { type: String },
+      link: { type: String },
+      topItems: { type: Array },
     };
   }
 
   // Lit scoped styles
   static get styles() {
-    return [super.styles,
-    css`
-      *{
-        box-sizing: border-box;
-      }
-      .background{
-        background-color: #161616;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-      .wrapper {
-        height: var(--footer-height, 76px); /* Default height if not set */
-        padding: var(--page-padding);
-        padding-top: 20px;
-        padding-bottom: 20px;
-        display: grid;
-        grid-template-columns: 1fr auto 1fr; /* Three columns: left, center, right */
-        align-items: center;
-        width: 100%;
-        max-width: var(--max-width);
-
-        
-      }
-      p {
-        margin: 0;
-        font-family: Inter;
-        color: var(--ddd-theme-default-white);
-        font-size: 0.8rem;
-        text-align: center; /* Center-align text inside the grid cell */
-        font-weight: 300;
-      }
-      .item {
-        justify-self: start; /* Align left-side text to the start */
-        text-align: left; /* Ensure text is left-aligned */
-
-      }
-      .center {
-        justify-self: center; /* Center-align the copyright text */
-      }
-      .license {
-        justify-self: end; /* Align the license image to the end */
-      }
-
-
-    `];
+    return [
+      super.styles,
+      css`
+        * {
+          box-sizing: border-box;
+        }
+        .background {
+          background-color: #161616;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .wrapper {
+          height: var(--footer-height, 76px); /* Default height if not set */
+          padding: var(--page-padding);
+          padding-top: 20px;
+          padding-bottom: 20px;
+          display: grid;
+          grid-template-columns: 1fr auto 1fr; /* Three columns: left, center, right */
+          align-items: center;
+          width: 100%;
+          max-width: var(--max-width);
+        }
+        p {
+          margin: 0;
+          font-family: Inter;
+          color: var(--ddd-theme-default-white);
+          font-size: 0.8rem;
+          text-align: center; /* Center-align text inside the grid cell */
+          font-weight: 300;
+        }
+        .item {
+          justify-self: start; /* Align left-side text to the start */
+          text-align: left; /* Ensure text is left-aligned */
+        }
+        .center {
+          justify-self: center; /* Center-align the copyright text */
+        }
+        .license {
+          justify-self: end; /* Align the license image to the end */
+        }
+      `,
+    ];
   }
-
 
   // Lit render the HTML
   render() {
     return html`
-<footer class="background" role="contentinfo">
-  <div class="wrapper">
-      <p class="item"> ${this.t.lastUpdatedOn.replace("{date}", () => (this.lastUpdated ?? ""))} </p>
-      <p class="center">© ${this.copyrightYear}   </p>
-    ${this.licenseLink ? html`
-    <div class="license item"> 
-      <a href="${this.licenseLink}" target="_blank">
-        <img src="${this.licenseImage}" alt="${this.licenseName}" />
-      </a>
-    </div>
-    ` : html``}
-  </div>
-</footer>
-
-
-  `;
+      <footer class="background" role="contentinfo">
+        <div class="wrapper">
+          <p class="item">
+            ${this.t.lastUpdatedOn.replace(
+              "{date}",
+              () => this.lastUpdated ?? "",
+            )}
+          </p>
+          <p class="center">© ${this.copyrightYear}</p>
+          ${this.licenseLink
+            ? html`
+                <div class="license item">
+                  <a href="${this.licenseLink}" target="_blank">
+                    <img src="${this.licenseImage}" alt="${this.licenseName}" />
+                  </a>
+                </div>
+              `
+            : html``}
+        </div>
+      </footer>
+    `;
   }
 }
 
-globalThis.customElements.define(GlossyPortfolioFooter.tag, GlossyPortfolioFooter);
+globalThis.customElements.define(
+  GlossyPortfolioFooter.tag,
+  GlossyPortfolioFooter,
+);

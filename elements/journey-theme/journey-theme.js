@@ -53,7 +53,8 @@ class JourneyTheme extends HAXCMSLitElementTheme {
     const storedPalette = UserScaffoldInstance
       ? UserScaffoldInstance.readMemory("HAXCMSSitePalette")
       : null;
-    this.dataPalette = storedPalette === "" || storedPalette === null ? 11 : storedPalette;
+    this.dataPalette =
+      storedPalette === "" || storedPalette === null ? 11 : storedPalette;
     this._items = [];
     this.location = null;
     this.activeItem = {};
@@ -107,7 +108,11 @@ class JourneyTheme extends HAXCMSLitElementTheme {
             ).getFullYear();
           }
           let LList = new licenseList();
-          if (this.manifest && this.manifest.license && LList[this.manifest.license]) {
+          if (
+            this.manifest &&
+            this.manifest.license &&
+            LList[this.manifest.license]
+          ) {
             this.licenseName = LList[this.manifest.license].name;
             this.licenseLink = LList[this.manifest.license].link;
             this.licenseImage = LList[this.manifest.license].image;
@@ -215,8 +220,16 @@ class JourneyTheme extends HAXCMSLitElementTheme {
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
-                    src="${store.manifest && store.manifest.metadata && store.manifest.metadata.author ? store.manifest.metadata.author.image : ''}"
-                    alt="${store.manifest && store.manifest.metadata && store.manifest.metadata.author ? store.manifest.metadata.author.name : ''}"
+                    src="${store.manifest &&
+                    store.manifest.metadata &&
+                    store.manifest.metadata.author
+                      ? store.manifest.metadata.author.image
+                      : ""}"
+                    alt="${store.manifest &&
+                    store.manifest.metadata &&
+                    store.manifest.metadata.author
+                      ? store.manifest.metadata.author.name
+                      : ""}"
                   />`}
               ${item.title}
             </a>`,
@@ -696,15 +709,11 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           --site-breadcrumb-margin: 0 0 var(--ddd-spacing-1) 2px;
           --site-breadcrumb-separator-color: var(--ddd-palette-1);
           --site-breadcrumb-color-hover: var(--ddd-palette-1);
-          --site-breadcrumb-decoration-color-hover: var(
-            --ddd-palette-2
-          );
+          --site-breadcrumb-decoration-color-hover: var(--ddd-palette-2);
         }
         :host([site-theme=""]) site-breadcrumb {
           --site-breadcrumb-color-hover: var(--ddd-palette-2);
-          --site-breadcrumb-decoration-color-hover: var(
-            --ddd-palette-1
-          );
+          --site-breadcrumb-decoration-color-hover: var(--ddd-palette-1);
           --site-breadcrumb-separator-color: var(--ddd-palette-2);
         }
         site-active-title h1 {
@@ -823,7 +832,6 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       this.HAXCMSThemeSettings.scrollTarget;
   }
 
-
   togglePalette(_e) {
     this.dataPalette++;
     if (this.dataPalette > 11) this.dataPalette = 0;
@@ -832,40 +840,67 @@ class JourneyTheme extends HAXCMSLitElementTheme {
   render() {
     if (!this.manifest || !this.manifest.metadata) {
       return html`
-      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
-      <div id="contentcontainer" tabindex="-1"><div id="slot"></div></div>
+        <a class="skip-link" href="#contentcontainer"
+          >${this.t.skipToContent}</a
+        >
+        <div id="contentcontainer" tabindex="-1"><div id="slot"></div></div>
       `;
     }
     return html`
-    <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
-    <header>
-      <simple-icon-button-lite icon="image:style" label="${this.t.changeTheme}" title="${this.t.changeTheme}" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
-      <div class="author">
-        <a href="${this.basePath}">${
-          this.manifest.metadata.author.image
-            ? html` <img
-                class="author-image"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                src="${this.manifest.metadata.author.image}"
-                alt="${this.manifest.metadata.author.name}"
-              />`
-            : ``
-        }
-          ${this.location && this.location.route.name === "home"
-            ? html`<h1>${this.manifest.title}</h1>
-                <h2>${this.manifest.description}</h2>`
-            : html`<div class="site-title-heading">${this.manifest.title}</div>
-                <div class="site-description">${this.manifest.description}</div>`}
-        </a>
-      </div>
-    </header>
-    <nav class="lower-header-box ${this.location && this.location.route.name === "home" ? "home" : "not-home"}" aria-label="${this.t.siteSections}">
-      <simple-tooltip for="top" position="bottom">${this.t.home}</simple-tooltip>
-      <a tabindex="-1" href="${this.basePath}" class="top article-link-icon"><simple-icon-button-lite id="top" title="${this.t.home}" label="${this.t.home}" icon="${this.manifest.metadata.icon ? this.manifest.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
-      ${
-        this.location && this.location.route.name !== "home"
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
+      <header>
+        <simple-icon-button-lite
+          icon="image:style"
+          label="${this.t.changeTheme}"
+          title="${this.t.changeTheme}"
+          class="theme-picker"
+          @click="${this.togglePalette}"
+        ></simple-icon-button-lite>
+        <div class="author">
+          <a href="${this.basePath}"
+            >${this.manifest.metadata.author.image
+              ? html` <img
+                  class="author-image"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  src="${this.manifest.metadata.author.image}"
+                  alt="${this.manifest.metadata.author.name}"
+                />`
+              : ``}
+            ${this.location && this.location.route.name === "home"
+              ? html`<h1>${this.manifest.title}</h1>
+                  <h2>${this.manifest.description}</h2>`
+              : html`<div class="site-title-heading">
+                    ${this.manifest.title}
+                  </div>
+                  <div class="site-description">
+                    ${this.manifest.description}
+                  </div>`}
+          </a>
+        </div>
+      </header>
+      <nav
+        class="lower-header-box ${this.location &&
+        this.location.route.name === "home"
+          ? "home"
+          : "not-home"}"
+        aria-label="${this.t.siteSections}"
+      >
+        <simple-tooltip for="top" position="bottom"
+          >${this.t.home}</simple-tooltip
+        >
+        <a tabindex="-1" href="${this.basePath}" class="top article-link-icon"
+          ><simple-icon-button-lite
+            id="top"
+            title="${this.t.home}"
+            label="${this.t.home}"
+            icon="${this.manifest.metadata.icon
+              ? this.manifest.metadata.icon
+              : "av:album"}"
+          ></simple-icon-button-lite
+        ></a>
+        ${this.location && this.location.route.name !== "home"
           ? html` ${this._items.map((item, _index) => {
               return html`
                 <simple-tooltip for="top-${item.id}" position="bottom"
@@ -891,13 +926,15 @@ class JourneyTheme extends HAXCMSLitElementTheme {
                 ></a>
               `;
             })}`
-          : ``
-      }
-    </nav>
-    <main class="main ${this.location && this.location.route.name === "home" ? "home" : "not-home"}"> 
-      <div class="articles">
-        ${
-          this.location && this.location.route.name === "home"
+          : ``}
+      </nav>
+      <main
+        class="main ${this.location && this.location.route.name === "home"
+          ? "home"
+          : "not-home"}"
+      >
+        <div class="articles">
+          ${this.location && this.location.route.name === "home"
             ? html` ${this._items.map((item, index) => {
                 return html`
                   <article class="post ${index % 2 === 0 ? "even" : "odd"}">
@@ -969,86 +1006,104 @@ class JourneyTheme extends HAXCMSLitElementTheme {
                   </article>
                 `;
               })}`
-            : ``
-        }
-      </div>
-      <article part="transitioncontent" class="${this.location && this.location.route.name === "home" ? "home" : "not-home"}">
-        ${
-          this.location && this.location.route.name !== "home"
+            : ``}
+        </div>
+        <article
+          part="transitioncontent"
+          class="${this.location && this.location.route.name === "home"
+            ? "home"
+            : "not-home"}"
+        >
+          ${this.location && this.location.route.name !== "home"
             ? html`
                 <site-breadcrumb></site-breadcrumb>
                 <site-active-title></site-active-title>
               `
-            : ``
-        }
-        <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
-        <div id="contentcontainer" tabindex="-1"><div id="slot">${
-          this.location && this.location.route.name !== "home"
-            ? html`<slot></slot>
-                <site-collection-list
-                  published="true"
-                  limit="0"
-                  sort="order"
-                  parent="${this.activeItem ? this.activeItem.id : null}"
-                ></site-collection-list>`
-            : ``
-        }</div></div>
-      </article>
-    </main>
-    <footer>
-      <div class="author">
-        <div class="spacing"><a href="${this.basePath}" title="${this.t.home}">${
-          this.manifest.metadata.author.image
-            ? html` <img
-                class="author-image"
-                loading="lazy"
-                decoding="async"
-                fetchpriority="low"
-                src="${this.manifest.metadata.author.image}"
-                alt="${this.manifest.metadata.author.name}"
-              />`
-            : ``
-        }
-          </a>
-          <div class="h1">${this.manifest.title}</div>
-          <div class="h2">${this.manifest.description}</div>
-          <div>
-              ${this.pageCurrent > 0 ? html`${this.t.pageOfTotal.replace("{current}", () => this.pageCurrent).replace("{total}", () => this.pageTotal)}` : nothing} <br /><br />
-              ${this.t.siteGenerated.replace("{date}", () => (this.lastUpdated ?? ""))}<br><br>
+            : ``}
+          <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
+          <div id="contentcontainer" tabindex="-1">
+            <div id="slot">
+              ${this.location && this.location.route.name !== "home"
+                ? html`<slot></slot>
+                    <site-collection-list
+                      published="true"
+                      limit="0"
+                      sort="order"
+                      parent="${this.activeItem ? this.activeItem.id : null}"
+                    ></site-collection-list>`
+                : ``}
+            </div>
+          </div>
+        </article>
+      </main>
+      <footer>
+        <div class="author">
+          <div class="spacing">
+            <a href="${this.basePath}" title="${this.t.home}"
+              >${this.manifest.metadata.author.image
+                ? html` <img
+                    class="author-image"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    src="${this.manifest.metadata.author.image}"
+                    alt="${this.manifest.metadata.author.name}"
+                  />`
+                : ``}
+            </a>
+            <div class="h1">${this.manifest.title}</div>
+            <div class="h2">${this.manifest.description}</div>
+            <div>
+              ${this.pageCurrent > 0
+                ? html`${this.t.pageOfTotal
+                    .replace("{current}", () => this.pageCurrent)
+                    .replace("{total}", () => this.pageTotal)}`
+                : nothing} <br /><br />
+              ${this.t.siteGenerated.replace(
+                "{date}",
+                () => this.lastUpdated ?? "",
+              )}<br /><br />
               © ${this.copyrightYear} ${this.manifest.author}.
+            </div>
+            <div
+              class="license-body"
+              xmlns:cc="${this.licenseLink}"
+              xmlns:dc="http://purl.org/dc/elements/1.1/"
+            >
+              ${this.licenseImage
+                ? html`
+                    <a
+                      class="big-license-link"
+                      target="_blank"
+                      href="${this.licenseLink}"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                        alt="${this.t.licenseGraphic.replace(
+                          "{license}",
+                          () => this.licenseName,
+                        )}"
+                        src="${this.licenseImage}"
+                      />
+                    </a>
+                  `
+                : ``}
+            </div>
+            <simple-icon-button-lite
+              label="${this.t.changeTheme}"
+              title="${this.t.changeTheme}"
+              icon="image:style"
+              class="theme-picker"
+              @click="${this.togglePalette}"
+            ></simple-icon-button-lite>
+            <scroll-button></scroll-button>
           </div>
-          <div
-            class="license-body"
-            xmlns:cc="${this.licenseLink}"
-            xmlns:dc="http://purl.org/dc/elements/1.1/"
-          >
-          ${
-            this.licenseImage
-              ? html`
-                  <a
-                    class="big-license-link"
-                    target="_blank"
-                    href="${this.licenseLink}"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      loading="lazy"
-                      decoding="async"
-                      fetchpriority="low"
-                      alt="${this.t.licenseGraphic.replace("{license}", () => this.licenseName)}"
-                      src="${this.licenseImage}"
-                    />
-                  </a>
-                `
-              : ``
-          }
-          </div>
-          <simple-icon-button-lite label="${this.t.changeTheme}" title="${this.t.changeTheme}" icon="image:style" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
-          <scroll-button></scroll-button>
         </div>
-        </div>
-      <slot name="footer"></slot>
-    </footer>
+        <slot name="footer"></slot>
+      </footer>
     `;
   }
 }

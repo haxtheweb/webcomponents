@@ -29,7 +29,7 @@ import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js"
  */
 
 const PortfolioFonts = [
-  "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+  "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap",
 ];
 
 function getPostLogo(item) {
@@ -38,10 +38,21 @@ function getPostLogo(item) {
     return item.metadata.image;
   }
   const manifest = store.manifest;
-  if (manifest && manifest.metadata && manifest.metadata.theme && manifest.metadata.theme.variables && manifest.metadata.theme.variables.image) {
+  if (
+    manifest &&
+    manifest.metadata &&
+    manifest.metadata.theme &&
+    manifest.metadata.theme.variables &&
+    manifest.metadata.theme.variables.image
+  ) {
     return toJS(manifest.metadata.theme.variables.image);
   }
-  if (manifest && manifest.metadata && manifest.metadata.site && manifest.metadata.site.logo) {
+  if (
+    manifest &&
+    manifest.metadata &&
+    manifest.metadata.site &&
+    manifest.metadata.site.logo
+  ) {
     return toJS(manifest.metadata.site.logo);
   }
   return "";
@@ -74,7 +85,6 @@ function normalizeTags(tags) {
 }
 
 export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
-
   static get tag() {
     return "clean-portfolio-theme";
   }
@@ -118,8 +128,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     // support for custom rendering of route html
     this.HAXSiteCustomRenderRoutes = {
       "x/displays/tags": {
-        "items": this.HAXSiteRenderXTagsItems,
-      }
+        items: this.HAXSiteRenderXTagsItems,
+      },
     };
     this.HAXCMSThemeSettings.autoScroll = true;
     // MobX variables/listeners
@@ -131,208 +141,255 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.__boundViewportSync = this._syncViewportLayout.bind(this);
 
     // gets site title and home link for site-title
-    this.__disposer.push(autorun((_reaction) => {
-      const _mobx_val_0 = toJS(store.homeLink);
-      Promise.resolve().then(() => {
-        this.homeLink = _mobx_val_0;
-      });
-    }));
+    this.__disposer.push(
+      autorun((_reaction) => {
+        const _mobx_val_0 = toJS(store.homeLink);
+        Promise.resolve().then(() => {
+          this.homeLink = _mobx_val_0;
+        });
+      }),
+    );
 
-    this.__disposer.push(autorun((_reaction) => {
-      const _mobx_val_0 = toJS(store.siteTitle);
-      Promise.resolve().then(() => {
-        this.siteTitle = _mobx_val_0;
-      });
-    }));
+    this.__disposer.push(
+      autorun((_reaction) => {
+        const _mobx_val_0 = toJS(store.siteTitle);
+        Promise.resolve().then(() => {
+          this.siteTitle = _mobx_val_0;
+        });
+      }),
+    );
 
     // gets active page's ancestor for menu-item:after
-    this.__disposer.push(autorun((_reaction) => {
-      const _mobx_val_0 = toJS(store.ancestorItem);
-      Promise.resolve().then(() => {
-        this.ancestorItem = _mobx_val_0;
-      });
-    }));
+    this.__disposer.push(
+      autorun((_reaction) => {
+        const _mobx_val_0 = toJS(store.ancestorItem);
+        Promise.resolve().then(() => {
+          this.ancestorItem = _mobx_val_0;
+        });
+      }),
+    );
 
     // gets active page's tags and inserts them into an array for media-tag
-    this.__disposer.push(autorun((_reaction) => {
-      const _mobx_val_0 = toJS(store.activeTags);
-      Promise.resolve().then(() => {
-        this.activeTags = normalizeTags(_mobx_val_0);
-      });
-    }));
+    this.__disposer.push(
+      autorun((_reaction) => {
+        const _mobx_val_0 = toJS(store.activeTags);
+        Promise.resolve().then(() => {
+          this.activeTags = normalizeTags(_mobx_val_0);
+        });
+      }),
+    );
 
     // gets top level items for menu-item
-    this.__disposer.push(autorun((_reaction) => {
-      let items = store.getItemChildren(null); 
-      if (items && items.length > 0) {
-        this.topItems = [...items];
-      }
-    }));
-    
+    this.__disposer.push(
+      autorun((_reaction) => {
+        let items = store.getItemChildren(null);
+        if (items && items.length > 0) {
+          this.topItems = [...items];
+        }
+      }),
+    );
+
     // determines active layout based on following conditions:
     // - if the current page has no child, it's Text
     // - if the current page has a child, it's Listing
     // - if the current page has a parent, it's Media
-    this.__disposer.push(autorun((_reaction) => {
-      const _mobx_val_0 = toJS(store.activeItem);
-      Promise.resolve().then(() => {
-        const active = _mobx_val_0;
-        if (active) {
-          // find parent of activeItem
-          let parent = store.manifest && store.manifest.items
-            ? store.manifest.items.find((d) => active.parent === d.id)
-            : undefined;
+    this.__disposer.push(
+      autorun((_reaction) => {
+        const _mobx_val_0 = toJS(store.activeItem);
+        Promise.resolve().then(() => {
+          const active = _mobx_val_0;
+          if (active) {
+            // find parent of activeItem
+            let parent =
+              store.manifest && store.manifest.items
+                ? store.manifest.items.find((d) => active.parent === d.id)
+                : undefined;
 
-          if (parent) {
-            const activeTags = normalizeTags(active.metadata && active.metadata.tags);
-            const category = activeTags[0] || null;
-            const siblings = store.manifest.items
-              .filter((item) => {
-                const itemTags = normalizeTags(item.metadata && item.metadata.tags);
+            if (parent) {
+              const activeTags = normalizeTags(
+                active.metadata && active.metadata.tags,
+              );
+              const category = activeTags[0] || null;
+              const siblings = store.manifest.items.filter((item) => {
+                const itemTags = normalizeTags(
+                  item.metadata && item.metadata.tags,
+                );
                 const itemCategory = itemTags[0] || null;
                 return (
-                  item.parent === active.parent &&
-                  itemCategory === category
+                  item.parent === active.parent && itemCategory === category
                 );
               });
 
-            const i = siblings.findIndex((item) => item.id === active.id);
-            this.prevSibling = siblings[i - 1] || null;
-            this.nextSibling = siblings[i + 1] || null;
-          } else {
-            parent = "";
-          }
+              const i = siblings.findIndex((item) => item.id === active.id);
+              this.prevSibling = siblings[i - 1] || null;
+              this.nextSibling = siblings[i + 1] || null;
+            } else {
+              parent = "";
+            }
 
-          if (this.menuOpen) {
-            this.menuOpen = false;
-          }
+            if (this.menuOpen) {
+              this.menuOpen = false;
+            }
 
-          if (globalThis.document && globalThis.document.startViewTransition && !globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            const transition = globalThis.document.startViewTransition(() => {
+            if (
+              globalThis.document &&
+              globalThis.document.startViewTransition &&
+              !globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ) {
+              const transition = globalThis.document.startViewTransition(() => {
+                this.activeItem = active;
+                this.activeParent = parent;
+              });
+              transition.ready.catch(() => {});
+            } else {
               this.activeItem = active;
               this.activeParent = parent;
-            });
-            transition.ready.catch(() => {});
-          }
-          else {
-            this.activeItem = active;
-            this.activeParent = parent;
-          }
+            }
 
-          const items = store.getItemChildren(store.activeId);
-          if (items) {
-            if (items.length > 0) {
-              this.setLayout("listing");
+            const items = store.getItemChildren(store.activeId);
+            if (items) {
+              if (items.length > 0) {
+                this.setLayout("listing");
 
-              const categoryTags = [];
-              const allTags = [];
+                const categoryTags = [];
+                const allTags = [];
 
-              // get tags for all children of activeItem, push to arrays
-              items.forEach(item => {
-                const tagArray = normalizeTags(item.metadata && item.metadata.tags);
-                if (tagArray.length > 0) {
-                  if (tagArray[0] && !categoryTags.includes(tagArray[0])) {
-                    categoryTags.push(tagArray[0]);
-                  }
-                  tagArray.forEach(tag => {
-                    if (tag && !allTags.includes(tag)) {
-                      allTags.push(tag);
+                // get tags for all children of activeItem, push to arrays
+                items.forEach((item) => {
+                  const tagArray = normalizeTags(
+                    item.metadata && item.metadata.tags,
+                  );
+                  if (tagArray.length > 0) {
+                    if (tagArray[0] && !categoryTags.includes(tagArray[0])) {
+                      categoryTags.push(tagArray[0]);
                     }
-                  });
-                }
-              });
+                    tagArray.forEach((tag) => {
+                      if (tag && !allTags.includes(tag)) {
+                        allTags.push(tag);
+                      }
+                    });
+                  }
+                });
 
-              if (globalThis.document && globalThis.document.startViewTransition && !globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                const transition = globalThis.document.startViewTransition(() => {
+                if (
+                  globalThis.document &&
+                  globalThis.document.startViewTransition &&
+                  !globalThis.matchMedia("(prefers-reduced-motion: reduce)")
+                    .matches
+                ) {
+                  const transition = globalThis.document.startViewTransition(
+                    () => {
+                      this.items = [...items];
+                      this.categoryTags = [...categoryTags];
+                      this.allTags = [...allTags];
+                    },
+                  );
+                  transition.ready.catch(() => {});
+                } else {
                   this.items = [...items];
                   this.categoryTags = [...categoryTags];
                   this.allTags = [...allTags];
-                });
-                transition.ready.catch(() => {});
-              }
-              else {
-                this.items = [...items];
-                this.categoryTags = [...categoryTags];
-                this.allTags = [...allTags];
-              }
-
-              // reset tag select filter
-              this.selectedTag = "";
-              if (this.shadowRoot) {
-                let select = this.shadowRoot.querySelector('#listing-filter');
-                if (select) {
-                  select.value = ""
                 }
+
+                // reset tag select filter
+                this.selectedTag = "";
+                if (this.shadowRoot) {
+                  let select = this.shadowRoot.querySelector("#listing-filter");
+                  if (select) {
+                    select.value = "";
+                  }
+                }
+              } else if (active.parent) {
+                this.setLayout("media");
+              } else {
+                this.setLayout("text");
               }
-            } else if (active.parent) {
-              this.setLayout("media");
-            } else {
-              this.setLayout("text");
             }
           }
-        }
-      });
-    }));
+        });
+      }),
+    );
 
     // determines if hax editor is enabled
-    this.__disposer.push(autorun((_reaction) => {
-      const _mobx_val_0 = toJS(store.editMode);
-      Promise.resolve().then(() => {
-        const editMode = _mobx_val_0;
-        if (editMode) {
-          const el = this.shadowRoot.querySelector("#slot") || globalThis.document.querySelector("#slot");
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-    }));
+    this.__disposer.push(
+      autorun((_reaction) => {
+        const _mobx_val_0 = toJS(store.editMode);
+        Promise.resolve().then(() => {
+          const editMode = _mobx_val_0;
+          if (editMode) {
+            const el =
+              this.shadowRoot.querySelector("#slot") ||
+              globalThis.document.querySelector("#slot");
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      }),
+    );
 
     // gets licensing stuff
-    this.__disposer.push(autorun((_reaction) => {
-      const _mobx_val_0 = toJS(store.manifest);
-      Promise.resolve().then(() => {
-        this.manifest = _mobx_val_0;
-        let LList = new licenseList();
-        if (this.manifest && this.manifest.license && LList[this.manifest.license]) {
-          this.licenseName = LList[this.manifest.license].name;
-          this.licenseLink = LList[this.manifest.license].link;
-          this.licenseImage = LList[this.manifest.license].image;
-        }
-      });
-    }));
+    this.__disposer.push(
+      autorun((_reaction) => {
+        const _mobx_val_0 = toJS(store.manifest);
+        Promise.resolve().then(() => {
+          this.manifest = _mobx_val_0;
+          let LList = new licenseList();
+          if (
+            this.manifest &&
+            this.manifest.license &&
+            LList[this.manifest.license]
+          ) {
+            this.licenseName = LList[this.manifest.license].name;
+            this.licenseLink = LList[this.manifest.license].link;
+            this.licenseImage = LList[this.manifest.license].image;
+          }
+        });
+      }),
+    );
 
     // gets current and total page count
-    this.__disposer.push(autorun((_reaction) => {
-      const _mobx_val_0 = toJS(store.pageCounter);
-      Promise.resolve().then(() => {
-        const counter = _mobx_val_0;
-        this.pageCurrent = counter.current;
-        this.pageTotal = counter.total;
-      });
-    }));
+    this.__disposer.push(
+      autorun((_reaction) => {
+        const _mobx_val_0 = toJS(store.pageCounter);
+        Promise.resolve().then(() => {
+          const counter = _mobx_val_0;
+          this.pageCurrent = counter.current;
+          this.pageTotal = counter.total;
+        });
+      }),
+    );
   }
 
   firstUpdated(changedProperties) {
     // design system override
     super.firstUpdated(changedProperties);
-    let DesignSystemManager = globalThis.DesignSystemManager.requestAvailability();
+    let DesignSystemManager =
+      globalThis.DesignSystemManager.requestAvailability();
     DesignSystemManager.addDesignSystem({
       name: "clean-portfolio-theme",
       styles: [...CleanPortfolioTheme.styles],
       fonts: PortfolioFonts,
       hax: true,
     });
-    DesignSystemManager.active = 'clean-portfolio-theme';
+    DesignSystemManager.active = "clean-portfolio-theme";
 
     // get timestamps for footer
-    if (store.manifest && store.manifest.metadata && store.manifest.metadata.site) {
-      this.lastUpdated = new Date(store.manifest.metadata.site.updated * 1000).toDateString();
-      this.copyrightYear = new Date(store.manifest.metadata.site.created * 1000).getFullYear();
+    if (
+      store.manifest &&
+      store.manifest.metadata &&
+      store.manifest.metadata.site
+    ) {
+      this.lastUpdated = new Date(
+        store.manifest.metadata.site.updated * 1000,
+      ).toDateString();
+      this.copyrightYear = new Date(
+        store.manifest.metadata.site.created * 1000,
+      ).getFullYear();
     }
 
     // window resize observer for mobile menu
     // NOTE: an event listener works for this too, but only for manual resizing and not in
     //       certain cases when the window is popped out via minimize or dragging
-    const nav = this.renderRoot.querySelector('nav');
+    const nav = this.renderRoot.querySelector("nav");
     if (nav) {
       this._resizeObserver = new ResizeObserver(() => {
         this._checkOverflow();
@@ -345,7 +402,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     requestAnimationFrame(() => this._syncViewportLayout());
   }
 
-    updated(changedProperties) {
+  updated(changedProperties) {
     super.updated(changedProperties);
     if (changedProperties.has("dataPalette")) {
       UserScaffoldInstance.writeMemory(
@@ -374,14 +431,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   // checks children of nav on resize for mobile menu
   _checkOverflow() {
-    const nav = this.renderRoot.querySelector('nav');
+    const nav = this.renderRoot.querySelector("nav");
     if (nav) {
       const items = Array.from(nav.children);
       const availableWidth = nav.clientWidth - 100;
 
       // Write phase: make all items visible so they can be measured
       items.forEach((item) => {
-        item.style.display = 'inline-block';
+        item.style.display = "inline-block";
       });
 
       // Read phase: batch all offsetWidth reads to avoid layout thrash
@@ -394,8 +451,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       items.forEach((item, index) => {
         usedWidth += widths[index];
         if (usedWidth > availableWidth) {
-          item.style.display = 'none';
-          overflow.push(this.topItems.find(topItem => topItem.slug === item.getAttribute('href')));
+          item.style.display = "none";
+          overflow.push(
+            this.topItems.find(
+              (topItem) => topItem.slug === item.getAttribute("href"),
+            ),
+          );
         }
       });
 
@@ -458,12 +519,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   }
 
   HAXCMSGlobalStyleSheetContent() {
-      return [
-        ...super.HAXCMSGlobalStyleSheetContent(),
-        DDDVariables,
-        DDDPaletteStyles,
-        css`
-        :root, html, body {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      DDDVariables,
+      DDDPaletteStyles,
+      css`
+        :root,
+        html,
+        body {
           --ddd-palette-light: var(--ddd-theme-default-white);
           --ddd-palette-dark: var(--ddd-theme-default-coalyGray);
 
@@ -475,35 +538,64 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           --ddd-palette-6: var(--ddd-palette-color-6, default);
           --ddd-palette-7: var(--ddd-palette-color-7, default);
 
-          --ddd-lightDark-background: light-dark(var(--ddd-palette-light), var(--ddd-palette-dark));
-          --ddd-lightDark-text: light-dark(var(--ddd-palette-dark), var(--ddd-palette-light));
-          --ddd-lightDark-1: light-dark(var(--ddd-palette-1), var(--ddd-palette-5));
-          --ddd-lightDark-2: light-dark(var(--ddd-palette-2), var(--ddd-palette-2));
-          --ddd-lightDark-3: light-dark(var(--ddd-palette-3), var(--ddd-palette-3));
-          --ddd-lightDark-4: light-dark(var(--ddd-palette-4), var(--ddd-palette-2));
-          --ddd-lightDark-5: light-dark(var(--ddd-palette-5), var(--ddd-palette-5));
-          --ddd-lightDark-6: light-dark(var(--ddd-palette-6), var(--ddd-palette-6));
-          --ddd-lightDark-7: light-dark(var(--ddd-palette-7), var(--ddd-palette-7));
+          --ddd-lightDark-background: light-dark(
+            var(--ddd-palette-light),
+            var(--ddd-palette-dark)
+          );
+          --ddd-lightDark-text: light-dark(
+            var(--ddd-palette-dark),
+            var(--ddd-palette-light)
+          );
+          --ddd-lightDark-1: light-dark(
+            var(--ddd-palette-1),
+            var(--ddd-palette-5)
+          );
+          --ddd-lightDark-2: light-dark(
+            var(--ddd-palette-2),
+            var(--ddd-palette-2)
+          );
+          --ddd-lightDark-3: light-dark(
+            var(--ddd-palette-3),
+            var(--ddd-palette-3)
+          );
+          --ddd-lightDark-4: light-dark(
+            var(--ddd-palette-4),
+            var(--ddd-palette-2)
+          );
+          --ddd-lightDark-5: light-dark(
+            var(--ddd-palette-5),
+            var(--ddd-palette-5)
+          );
+          --ddd-lightDark-6: light-dark(
+            var(--ddd-palette-6),
+            var(--ddd-palette-6)
+          );
+          --ddd-lightDark-7: light-dark(
+            var(--ddd-palette-7),
+            var(--ddd-palette-7)
+          );
 
-            /* site font variables */
-            --portfolio-font-body: "Source Code Pro", system-ui, Monaco, Consolas, "Lucida Console", monospace;
-            --portfolio-font-header: "Work Sans", system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+          /* site font variables */
+          --portfolio-font-body: "Source Code Pro", system-ui, Monaco, Consolas,
+            "Lucida Console", monospace;
+          --portfolio-font-header: "Work Sans", system-ui, -apple-system,
+            BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue",
+            "Lucida Grande", Arial, sans-serif;
 
-            --portfolio-fontsize-responsive: clamp(16px, 2vw, 22px);
+          --portfolio-fontsize-responsive: clamp(16px, 2vw, 22px);
 
-            font-family: var(--portfolio-font-body);
-            font-size: var(--portfolio-fontsize-responsive);
-            color-scheme: light dark;
-            scroll-behavior: smooth;
+          font-family: var(--portfolio-font-body);
+          font-size: var(--portfolio-fontsize-responsive);
+          color-scheme: light dark;
+          scroll-behavior: smooth;
         }
-        
 
         clean-portfolio-theme a,
         clean-portfolio-theme a:any-link,
         clean-portfolio-theme a:webkit-any-link {
           color: var(--ddd-lightDark-5);
         }
-            
+
         site-tags-route::part(simple-tag) {
           border-color: var(--ddd-palette-light);
         }
@@ -522,12 +614,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           view-transition-name: tags-listing-grid;
           grid-template-columns: repeat(4, 1fr);
         }
-        
+
         site-tags-route::part(listing-card) {
           width: 188px;
           margin-bottom: 48px;
           text-decoration: none;
-          transition: .4s;
+          transition: 0.4s;
         }
 
         site-tags-route::part(listing-cardimg) {
@@ -556,26 +648,28 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           font-size: clamp(15px, 2vw, 21px);
           text-transform: uppercase;
           margin-bottom: 5.5px;
-          transition: color, text-decoration-color var(--ddd-duration-normal, .3s) ease-in-out;
+          transition:
+            color,
+            text-decoration-color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
         site-tags-route::part(listing-cardtag) {
-          font-family: var(--portfolio-font-body); 
+          font-family: var(--portfolio-font-body);
           font-size: clamp(10px, 2vw, 16px);
           font-weight: 400;
-          transition: var(--ddd-duration-normal, .3s);
+          transition: var(--ddd-duration-normal, 0.3s);
         }
 
-      site-tags-route::part(listing-cardtitle):hover,
-      site-tags-route::part(listing-cardtitle):focus {
-        text-decoration-color: var(--ddd-lightDark-1);
-      }
+        site-tags-route::part(listing-cardtitle):hover,
+        site-tags-route::part(listing-cardtitle):focus {
+          text-decoration-color: var(--ddd-lightDark-1);
+        }
 
-      site-tags-route::part(listing-cardimg):hover,
-      site-tags-route::part(listing-cardimg):focus {
-        box-shadow: var(--ddd-boxShadow-sm);
-      }
-`
+        site-tags-route::part(listing-cardimg):hover,
+        site-tags-route::part(listing-cardimg):focus {
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+      `,
     ];
   }
 
@@ -585,10 +679,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       DDDVariables,
       DDDPaletteStyles,
       super.styles,
-    css`
-      /* Semantic elements */
+      css`
+        /* Semantic elements */
 
-      :host {
+        :host {
           --ddd-palette-light: var(--ddd-theme-default-white);
           --ddd-palette-dark: var(--ddd-theme-default-coalyGray);
 
@@ -600,211 +694,245 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           --ddd-palette-6: var(--ddd-palette-color-6, default);
           --ddd-palette-7: var(--ddd-palette-color-7, default);
 
-          --ddd-lightDark-background: light-dark(var(--ddd-palette-light), var(--ddd-palette-dark));
-          --ddd-lightDark-text: light-dark(var(--ddd-palette-dark), var(--ddd-palette-light));
-          --ddd-lightDark-1: light-dark(var(--ddd-palette-1), var(--ddd-palette-5));
-          --ddd-lightDark-2: light-dark(var(--ddd-palette-2), var(--ddd-palette-4));
-          --ddd-lightDark-3: light-dark(var(--ddd-palette-3), var(--ddd-palette-3));
-          --ddd-lightDark-4: light-dark(var(--ddd-palette-4), var(--ddd-palette-2));
-          --ddd-lightDark-5: light-dark(var(--ddd-palette-5), var(--ddd-palette-1));
-          --ddd-lightDark-6: light-dark(var(--ddd-palette-6), var(--ddd-palette-6));
-          --ddd-lightDark-7: light-dark(var(--ddd-palette-7), var(--ddd-palette-7));
+          --ddd-lightDark-background: light-dark(
+            var(--ddd-palette-light),
+            var(--ddd-palette-dark)
+          );
+          --ddd-lightDark-text: light-dark(
+            var(--ddd-palette-dark),
+            var(--ddd-palette-light)
+          );
+          --ddd-lightDark-1: light-dark(
+            var(--ddd-palette-1),
+            var(--ddd-palette-5)
+          );
+          --ddd-lightDark-2: light-dark(
+            var(--ddd-palette-2),
+            var(--ddd-palette-4)
+          );
+          --ddd-lightDark-3: light-dark(
+            var(--ddd-palette-3),
+            var(--ddd-palette-3)
+          );
+          --ddd-lightDark-4: light-dark(
+            var(--ddd-palette-4),
+            var(--ddd-palette-2)
+          );
+          --ddd-lightDark-5: light-dark(
+            var(--ddd-palette-5),
+            var(--ddd-palette-1)
+          );
+          --ddd-lightDark-6: light-dark(
+            var(--ddd-palette-6),
+            var(--ddd-palette-6)
+          );
+          --ddd-lightDark-7: light-dark(
+            var(--ddd-palette-7),
+            var(--ddd-palette-7)
+          );
 
-        display: block;
-        background-color: var(--ddd-lightDark-background);
-        transition: background-color var(--ddd-duration-normal, .3s) ease-in-out;
-      }
+          display: block;
+          background-color: var(--ddd-lightDark-background);
+          transition: background-color var(--ddd-duration-normal, 0.3s)
+            ease-in-out;
+        }
 
-      /* Palette variables */
+        /* Palette variables */
 
-      :host([data-palette="6"]) header{
-        background-color: var(--ddd-palette-4);
-      }
+        :host([data-palette="6"]) header {
+          background-color: var(--ddd-palette-4);
+        }
 
-      :host([data-palette="6"])  button,
-      :host([data-palette="6"]) .pagination a{
-        background-color: var(--ddd-palette-3); 
-      }
+        :host([data-palette="6"]) button,
+        :host([data-palette="6"]) .pagination a {
+          background-color: var(--ddd-palette-3);
+        }
 
-      :host([data-palette="6"]) .listing-cardtitle{
-        text-decoration-color: var(--ddd-palette-4);
-        color: var(--ddd-lightDark-4);
-      }
+        :host([data-palette="6"]) .listing-cardtitle {
+          text-decoration-color: var(--ddd-palette-4);
+          color: var(--ddd-lightDark-4);
+        }
 
-      :host([data-palette="6"]) .breadcrumb-parent {
-        color: var(--ddd-lightDark-4);
-      }
+        :host([data-palette="6"]) .breadcrumb-parent {
+          color: var(--ddd-lightDark-4);
+        }
 
-      :host([data-palette="6"]) #site-title:hover {
-        color: var(--ddd-lightDark-3);
-      }
-/* 
+        :host([data-palette="6"]) #site-title:hover {
+          color: var(--ddd-lightDark-3);
+        }
+        /* 
       ::slotted(a) {
         color: var(--ddd-lightDark-7) !important;
       }
  */
-      html, body {
-        height: 100%;
-        background-color: var(--ddd-lightDark-background);
-      }
+        html,
+        body {
+          height: 100%;
+          background-color: var(--ddd-lightDark-background);
+        }
 
-      header {
-        background-color: var(--ddd-palette-2);
-        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-        padding: 22px;
-      }
+        header {
+          background-color: var(--ddd-palette-2);
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          padding: 22px;
+        }
 
-      .header-inner {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        max-width: 1236px;
-        margin: 0 auto;
-        line-height: 1.7;
-        position: relative;
-      }
+        .header-inner {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          max-width: 1236px;
+          margin: 0 auto;
+          line-height: 1.7;
+          position: relative;
+        }
 
-      nav {
-        display: flex;
-        gap: .5rem;
-        justify-content: flex-end;
-        flex: 1 1 auto;
-        min-width: 0;
-      }
+        nav {
+          display: flex;
+          gap: 0.5rem;
+          justify-content: flex-end;
+          flex: 1 1 auto;
+          min-width: 0;
+        }
 
-      a {
-        color: var(--ddd-lightDark-5);
-        transition: color var(--ddd-duration-normal, .3s);
-      }
+        a {
+          color: var(--ddd-lightDark-5);
+          transition: color var(--ddd-duration-normal, 0.3s);
+        }
 
-      h1, h2, h3, h4, h5, h6 {
-        color: var(--ddd-lightDark-text);
-        line-height: 1.2;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-        margin-top: 0;
-      }
-      
-      p {
-        color: var(--ddd-lightDark-text);
-        font-size: var(--portfolio-fontsize-responsive);
-        line-height: 1.5;
-        margin-bottom: 1.3em;
-      }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: var(--ddd-lightDark-text);
+          line-height: 1.2;
+          font-weight: 700;
+          margin-bottom: 0.75rem;
+          margin-top: 0;
+        }
 
-      ul {
-        color: var(--ddd-lightDark-text);
-        list-style-type: disc;
-      }
+        p {
+          color: var(--ddd-lightDark-text);
+          font-size: var(--portfolio-fontsize-responsive);
+          line-height: 1.5;
+          margin-bottom: 1.3em;
+        }
 
-      li {
-        font-family: var(--portfolio-font-body);
-      }
+        ul {
+          color: var(--ddd-lightDark-text);
+          list-style-type: disc;
+        }
 
-      li::marker {
-        color: var(--ddd-lightDark-3) !important;
-      }
+        li {
+          font-family: var(--portfolio-font-body);
+        }
 
-      footer {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        background-color: var(--ddd-lightDark-1);
-        color: var(--ddd-lightDark-5);
-        font-family: var(--portfolio-font-body);
-        font-size: clamp(11px, 2vw, 15px);
-        padding: 40px 5vw;
-        margin-top: 96px;
-        transition: var(--ddd-duration-normal, .3s);
-      }
+        li::marker {
+          color: var(--ddd-lightDark-3) !important;
+        }
 
-      .footer-link {
-        transition: color var(--ddd-duration-normal, .3s);
-      }
+        footer {
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          background-color: var(--ddd-lightDark-1);
+          color: var(--ddd-lightDark-5);
+          font-family: var(--portfolio-font-body);
+          font-size: clamp(11px, 2vw, 15px);
+          padding: 40px 5vw;
+          margin-top: 96px;
+          transition: var(--ddd-duration-normal, 0.3s);
+        }
 
-      .page-counter {
-        font-family: var(--portfolio-font-body);
-        font-size: 0.9rem;
-        color: var(--ddd-lightDark-1);
-        margin: 0 0 1rem;
-      }
+        .footer-link {
+          transition: color var(--ddd-duration-normal, 0.3s);
+        }
 
-      :focus {
-        outline-offset: 8px;
-      }
+        .page-counter {
+          font-family: var(--portfolio-font-body);
+          font-size: 0.9rem;
+          color: var(--ddd-lightDark-1);
+          margin: 0 0 1rem;
+        }
 
-      a:focus-visible,
-      button:focus-visible {
-        outline: 2px solid currentColor;
-        outline-offset: 2px;
-      }
+        :focus {
+          outline-offset: 8px;
+        }
 
-      /* Site header elements */
-      #site-title {
-        padding: 0.5rem;
-        color: var(--ddd-palette-light);
-        font-family: var(--portfolio-font-header);
-        font-weight: bold;
-        font-size: var(--portfolio-fontsize-responsive);
-        text-transform: uppercase;
-        text-decoration: none;
-        border: 5px solid var(--ddd-palette-light);
-        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-      }
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
 
-      #site-title:hover,
-      #site-title:focus {
-        color: var(--ddd-lightDark-5);
-      }
+        /* Site header elements */
+        #site-title {
+          padding: 0.5rem;
+          color: var(--ddd-palette-light);
+          font-family: var(--portfolio-font-header);
+          font-weight: bold;
+          font-size: var(--portfolio-fontsize-responsive);
+          text-transform: uppercase;
+          text-decoration: none;
+          border: 5px solid var(--ddd-palette-light);
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+        }
 
-      header a.menu-item {
-        display: inline-block;
-        position: relative;
-        margin: 10px;
-        padding: 0 5px;
-        white-space: nowrap;
-        color: var(--ddd-palette-light);
-        font-family: var(--portfolio-font-header);
-        font-size: var(--portfolio-fontsize-responsive);
-        font-weight: 450;
-        text-align: center;
-        text-decoration: none;
-        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-      }
+        #site-title:hover,
+        #site-title:focus {
+          color: var(--ddd-lightDark-5);
+        }
 
-      header a.menu-item:after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        width: 0;
-        height: clamp(0.1em, 5vw, 0.2em);
-        background-color: var(--ddd-palette-5);
-        transform: translateX(-50%);
-        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-      }
+        header a.menu-item {
+          display: inline-block;
+          position: relative;
+          margin: 10px;
+          padding: 0 5px;
+          white-space: nowrap;
+          color: var(--ddd-palette-light);
+          font-family: var(--portfolio-font-header);
+          font-size: var(--portfolio-fontsize-responsive);
+          font-weight: 450;
+          text-align: center;
+          text-decoration: none;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+        }
 
-      .menu-item:hover,
-      .menu-item:focus,
-      .menu-item.active {
-        color: var(--ddd-palette-5);
-      }
+        header a.menu-item:after {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          width: 0;
+          height: clamp(0.1em, 5vw, 0.2em);
+          background-color: var(--ddd-palette-5);
+          transform: translateX(-50%);
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+        }
 
-      .menu-item:hover:after,
-      .menu-item:focus:after,
-      .menu-item.active:after {
-        width: 100%;
-        transform: translateX(-50%) scaleX(1);
-      }
+        .menu-item:hover,
+        .menu-item:focus,
+        .menu-item.active {
+          color: var(--ddd-palette-5);
+        }
 
-      /* Mobile menu */
-      .mobile-menu-wrapper {
-        position: relative;
-        display: flex;
-        justify-content: center;
-      }
+        .menu-item:hover:after,
+        .menu-item:focus:after,
+        .menu-item.active:after {
+          width: 100%;
+          transform: translateX(-50%) scaleX(1);
+        }
 
-      header button {
+        /* Mobile menu */
+        .mobile-menu-wrapper {
+          position: relative;
+          display: flex;
+          justify-content: center;
+        }
+
+        header button {
           display: inline-block;
           color: var(--ddd-palette-light);
           background-color: var(--ddd-palette-1);
@@ -814,473 +942,481 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           cursor: pointer;
           margin-left: 10px;
           transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-      }
+        }
 
-      .navicon {
+        .navicon {
           position: relative;
           width: 1.5rem;
-          height: .25rem;
+          height: 0.25rem;
           background: var(--ddd-palette-light);
           margin: auto;
-          transition: var(--ddd-duration-normal, .3s);
-      }
+          transition: var(--ddd-duration-normal, 0.3s);
+        }
 
-      .navicon:before,
-      .navicon:after {
+        .navicon:before,
+        .navicon:after {
           content: "";
           position: absolute;
           left: 0;
           width: 1.5rem;
-          height: .25rem;
+          height: 0.25rem;
           background: var(--ddd-palette-light);
-          transition: var(--ddd-duration-normal, .3s);
-      }
+          transition: var(--ddd-duration-normal, 0.3s);
+        }
 
-      .navicon:before {
+        .navicon:before {
           top: -0.5rem;
-      }
+        }
 
-      .navicon:after {
+        .navicon:after {
           bottom: -0.5rem;
-      }
+        }
 
-      .close .navicon {
+        .close .navicon {
           background: transparent;
-      }
+        }
 
-      .close .navicon:before,
-      .close .navicon:after {
+        .close .navicon:before,
+        .close .navicon:after {
           transform-origin: 50% 50%;
           top: 0;
           width: 1.5rem;
-      }
+        }
 
-      .close .navicon:before {
+        .close .navicon:before {
           transform: rotate3d(0, 0, 1, 45deg);
-      }
+        }
 
-      .close .navicon:after {
+        .close .navicon:after {
           transform: rotate3d(0, 0, 1, -45deg);
-      }
-
-      .hidden-links {
-        position: absolute;
-        top: calc(100% + 12px);
-        right: 0;
-        padding: 5px;
-        gap: 0;
-        border-radius: 4px;
-        box-shadow: var(--ddd-boxShadow-sm);
-        background-color: var(--ddd-palette-4);
-        z-index: 5;
-        transition: var(--ddd-duration-normal, .3s);
-      }
-
-      .hidden-links:before {
-        content: "";
-        position: absolute;
-        top: -8px;
-        right: 12px;
-        border-style: solid;
-        border-width: 0 10px 10px;
-        border-color: var(--ddd-lightDark-4) transparent;
-        transition: var(--ddd-duration-normal, .3s);
-      }
-
-      .hidden-links li {
-        display: block;
-        border-bottom: 1px solid var(--ddd-lightDark-background);
-        padding: 10px;
-      }
-
-      .hidden-links li:last-child {
-        border-bottom: none;
-      }
-
-      .hidden-links a {
-        color: var(--ddd-palette-1);
-        font-size: 16px;
-        font-weight: 400;
-        font-family: var(--portfolio-font-header);
-        text-decoration: none;
-        display: block;
-        text-align: start;
-        transition: var(--ddd-duration-normal, .3s);
-      }
-
-      .hidden-links a:hover,
-      .hidden-links a:focus,
-      .hidden-links a.active {
-        color: var(--ddd-palette-light);
-      }
-
-      .hidden {
-        display: none;
-      }
-
-      .visually-hidden,
-      .screen-reader-text,
-      .screen-reader-text span,
-      .screen-reader-shortcut {
-        position: absolute !important;
-        clip: rect(1px, 1px, 1px, 1px);
-        height: 1px !important;
-        width: 1px !important;
-        border: 0 !important;
-        overflow: hidden;
-      }
-
-      /* Imported elements */
-      site-active-title h1 {
-        font-family: "Playfair Display";
-        font-size: clamp(40px, 8vw, 88px);
-        font-weight: bold;
-        transition: var(--ddd-duration-normal, .3s);
-        view-transition-name: page-title;
-      }
-
-      site-active-media-banner {
-        --media-banner-background-color: none;
-        --media-banner-height: clamp(320px, 80vw, 640px);
-        margin: 0;
-      }
-
-      .theme-picker {
-        --simple-icon-width: var(--ddd-icon-xs);
-        --simple-icon-height: var(--ddd-icon-xs);
-        padding: 8px;
-        background-color: var(--ddd-lightDark-3);
-        z-index: 4;
-        color: var(--ddd-lightDark-1);
-        transition: color var(--ddd-duration-normal, .3s), border var(--ddd-duration-normal, .3s);
-      }
-
-      header .theme-picker {
-        position: absolute;
-        top: 8px;
-        right: 6px;
-      }
-
-      /* Tags */
-      .tag-list {
-        flex-direction: row;
-        flex-wrap: wrap;
-        list-style-type: none;
-        margin: 0 0 20px 0;
-        padding: 0;
-        border-top: 3px solid var(--ddd-lightDark-text);
-        border-bottom: 1px solid var(--ddd-lightDark-text);
-      }
-
-      .tag-list li {
-        margin: 0 10px 0 0;
-        padding-top: 5px;
-        padding-bottom: 5px;
-      }
-
-      .tag-list li a {
-        color: var(--ddd-lightDark-text);
-        font-weight: 400;
-        font-size: clamp(20px, 3vw, 27.5px);
-        text-transform: uppercase;
-      }
-
-      /* Breadcrumb */
-      .breadcrumb {
-        display: flex;
-        margin: 0 auto;
-        margin-top: 4px;
-        padding: 0 22px;
-        height: clamp(40px, 5vw, 60px);
-        max-width: 1236px;
-        align-items: center;
-        gap: 10px;
-        color: var(--ddd-lightDark-text);
-        font-family: var(--portfolio-font-header);
-        font-size: clamp(14px, 2vw, 18px);
-        view-transition-name: breadcrumb;
-      }
-
-      .breadcrumb a {
-        color: var(--ddd-lightDark-text);
-        text-decoration: none;
-        border-bottom: 2px solid var(--ddd-lightDark-4);
-        font-weight: 450;
-        transition: var(--ddd-duration-normal, .3s) ease-in-out;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        padding-bottom: 4px;
-      }
-
-      .breadcrumb-arrow {
-        color: var(--ddd-lightDark-4);
-        transition: color var(--ddd-duration-normal, .3s) ease-in-out;
-        padding-bottom: 4px;
-      }
-
-      .breadcrumb-parent {
-        color: var(--ddd-lightDark-1);
-        transition: color var(--ddd-duration-normal, .3s) ease-in-out;
-        padding-bottom: 4px;
-      }
-
-      .breadcrumb-split {
-        color: var(--ddd-lightDark-3);
-        transition: color var(--ddd-duration-normal, .3s) ease-in-out;
-        padding-bottom: 4px;
-      }
-
-      .breadcrumb-title {
-        font-weight: bold;
-        transition: color var(--ddd-duration-normal, .3s) ease-in-out;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding-bottom: 4px;
-      }
-
-      .breadcrumb a:hover,
-      .breadcrumb a:focus {
-        border-bottom: 2px solid var(--ddd-lightDark-1);
-      }
-      
-      /* Layouts */
-      .container {
-        margin: 64px auto;
-        width: 90%;
-        max-width: 840px;
-        text-align: left;
-        view-transition-name: main-content;
-      }
-
-      #contentcontainer {
-        min-height: 50vh;
-      } 
-
-      #slot {
-        min-height: 0vh;
-      }
-
-      .listing-titlecontainer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-bottom: 20px;
-        view-transition-name: listing-header;
-      }
-
-      #listing-filter {
-        font-size: 1rem;
-        padding: 0.5em;
-        max-width: 240px;
-        width: 100%;
-      }
-
-      .list-filter-label {
-        font-size: 14px;
-        margin-right: 54px;
-      }
-
-      .listing-category {
-        font-family: var(--portfolio-font-body);
-        font-size: var(--portfolio-fontsize-responsive);
-        text-transform: uppercase;
-        border-top: 6px solid var(--ddd-lightDark-4);
-        min-height: 36px;
-        transition: color var(--ddd-duration-normal, .3s);
-      }
-
-      .listing-category a {
-        color: var(--ddd-lightDark-text);
-      }
-
-      .listing-grid {
-        display: grid;
-        gap: var(--ddd-spacing-6, 24px);
-        width: 100%;
-        view-transition-name: listing-grid;
-        grid-template-columns: repeat(4, 1fr);
-      }
-
-      div .listing-card {
-        width: 188px;
-        margin-bottom: 48px;
-        text-decoration: none;
-        transition: .4s;
-      }
-
-      .listing-cardimg {
-        background-color: var(--ddd-lightDark-1);
-        border-radius: 6px;
-        margin-bottom: 12px;
-        height: 120px;
-        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-        overflow: hidden;
-        display: block;
-      }
-
-      .listing-cardimg img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .listing-cardtitle {
-        color: var(--ddd-lightDark-text);
-        text-decoration: underline;
-        text-decoration-color: var(--ddd-lightDark-5);
-        text-decoration-thickness: 4px !important;
-        text-underline-offset: 8px;
-        font-family: var(--portfolio-font-header);
-        font-weight: 400;
-        line-height: 1.7;
-        font-size: clamp(15px, 2vw, 21px);
-        text-transform: uppercase;
-        margin-bottom: 5.5px;
-        transition: color, text-decoration-color var(--ddd-duration-normal, .3s) ease-in-out;
-      }
-
-      .listing-cardtag {
-        color: var(--ddd-lightDark-text);
-        font-family: var(--portfolio-font-body);
-        font-size: clamp(10px, 2vw, 16px);
-        font-weight: 400;
-        transition: var(--ddd-duration-normal, .3s);
-      }
-
-      .listing-card:hover .listing-cardtitle,
-      .listing-card:focus .listing-cardtitle{
-        text-decoration-color: var(--ddd-lightDark-3);
-      }
-
-      .listing-card:hover .listing-cardimg,
-      .listing-card:focus .listing-cardimg {
-        box-shadow: var(--ddd-boxShadow-sm);
-      }
-
-      /* Pagination */
-      .pagination {
-        max-width: 840px;
-        margin: 0 auto;
-        padding: 0 22px;
-        display: flex;
-        gap: var(--ddd-spacing-6, 24px);
-        flex-direction: row;
-        align-items: center;
-        view-transition-name: pagination;
-      }
-      .pagination a {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        overflow: hidden;
-        width: 400px;
-        height: clamp(48px, 8vw, 96px);
-        border-radius: 8px;
-        background-color: var(--ddd-lightDark-2);
-        text-decoration: underline;
-        text-decoration-color: var(--ddd-lightDark-1);
-        text-decoration-thickness: 4px;
-        text-underline-offset: 8px;
-        line-height: 1.8;
-        font-family: var(--portfolio-font-header);
-        font-weight: 400;
-        transition: background-color var(--ddd-duration-normal, .3s), text-decoration-color var(--ddd-duration-normal, .3s), box-shadow var(--ddd-duration-normal, .3s);
-      }
-      .pagination-text {
-        display: -webkit-box;
-        color: var(--ddd-palette-light);
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
-      }
-      .pagination a simple-icon-lite {
-        color: var(--ddd-palette-light);
-        --simple-icon-width: clamp(24px, 4vw, 40px);
-        --simple-icon-height: clamp(24px, 4vw, 40px);
-      }
-      .pagination a:hover,
-      .pagination a:focus {
-        text-decoration-color: var(--ddd-lightDark-3);
-        box-shadow: var(--ddd-boxShadow-sm);
-      }
-      .pagination a.prev {
-        margin-left: 24px;
-        margin-right: auto;
-        padding-right: 12px;
-        justify-content: flex-start;
-      }
-      .pagination a.next {
-        margin-right: 24px;
-        margin-left: auto;
-        padding-left: 12px;
-        justify-content: flex-end;
-      }
-
-      /* Media queries */
-      @media (max-width: 60em) {
-        .listing-grid {
-          grid-template-columns: repeat(2, 1fr);
         }
-        div .listing-card {
-          width: 100%;
-          margin-bottom: 36px;
+
+        .hidden-links {
+          position: absolute;
+          top: calc(100% + 12px);
+          right: 0;
+          padding: 5px;
+          gap: 0;
+          border-radius: 4px;
+          box-shadow: var(--ddd-boxShadow-sm);
+          background-color: var(--ddd-palette-4);
+          z-index: 5;
+          transition: var(--ddd-duration-normal, 0.3s);
         }
-        .listing-cardimg {
-          height: 210px;
+
+        .hidden-links:before {
+          content: "";
+          position: absolute;
+          top: -8px;
+          right: 12px;
+          border-style: solid;
+          border-width: 0 10px 10px;
+          border-color: var(--ddd-lightDark-4) transparent;
+          transition: var(--ddd-duration-normal, 0.3s);
         }
+
+        .hidden-links li {
+          display: block;
+          border-bottom: 1px solid var(--ddd-lightDark-background);
+          padding: 10px;
+        }
+
+        .hidden-links li:last-child {
+          border-bottom: none;
+        }
+
+        .hidden-links a {
+          color: var(--ddd-palette-1);
+          font-size: 16px;
+          font-weight: 400;
+          font-family: var(--portfolio-font-header);
+          text-decoration: none;
+          display: block;
+          text-align: start;
+          transition: var(--ddd-duration-normal, 0.3s);
+        }
+
+        .hidden-links a:hover,
+        .hidden-links a:focus,
+        .hidden-links a.active {
+          color: var(--ddd-palette-light);
+        }
+
+        .hidden {
+          display: none;
+        }
+
+        .visually-hidden,
+        .screen-reader-text,
+        .screen-reader-text span,
+        .screen-reader-shortcut {
+          position: absolute !important;
+          clip: rect(1px, 1px, 1px, 1px);
+          height: 1px !important;
+          width: 1px !important;
+          border: 0 !important;
+          overflow: hidden;
+        }
+
+        /* Imported elements */
         site-active-title h1 {
-          font-size: 72px;
+          font-family: "Playfair Display";
+          font-size: clamp(40px, 8vw, 88px);
+          font-weight: bold;
+          transition: var(--ddd-duration-normal, 0.3s);
+          view-transition-name: page-title;
         }
+
+        site-active-media-banner {
+          --media-banner-background-color: none;
+          --media-banner-height: clamp(320px, 80vw, 640px);
+          margin: 0;
+        }
+
+        .theme-picker {
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-height: var(--ddd-icon-xs);
+          padding: 8px;
+          background-color: var(--ddd-lightDark-3);
+          z-index: 4;
+          color: var(--ddd-lightDark-1);
+          transition:
+            color var(--ddd-duration-normal, 0.3s),
+            border var(--ddd-duration-normal, 0.3s);
+        }
+
+        header .theme-picker {
+          position: absolute;
+          top: 8px;
+          right: 6px;
+        }
+
+        /* Tags */
+        .tag-list {
+          flex-direction: row;
+          flex-wrap: wrap;
+          list-style-type: none;
+          margin: 0 0 20px 0;
+          padding: 0;
+          border-top: 3px solid var(--ddd-lightDark-text);
+          border-bottom: 1px solid var(--ddd-lightDark-text);
+        }
+
+        .tag-list li {
+          margin: 0 10px 0 0;
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
+
+        .tag-list li a {
+          color: var(--ddd-lightDark-text);
+          font-weight: 400;
+          font-size: clamp(20px, 3vw, 27.5px);
+          text-transform: uppercase;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+          display: flex;
+          margin: 0 auto;
+          margin-top: 4px;
+          padding: 0 22px;
+          height: clamp(40px, 5vw, 60px);
+          max-width: 1236px;
+          align-items: center;
+          gap: 10px;
+          color: var(--ddd-lightDark-text);
+          font-family: var(--portfolio-font-header);
+          font-size: clamp(14px, 2vw, 18px);
+          view-transition-name: breadcrumb;
+        }
+
+        .breadcrumb a {
+          color: var(--ddd-lightDark-text);
+          text-decoration: none;
+          border-bottom: 2px solid var(--ddd-lightDark-4);
+          font-weight: 450;
+          transition: var(--ddd-duration-normal, 0.3s) ease-in-out;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          padding-bottom: 4px;
+        }
+
+        .breadcrumb-arrow {
+          color: var(--ddd-lightDark-4);
+          transition: color var(--ddd-duration-normal, 0.3s) ease-in-out;
+          padding-bottom: 4px;
+        }
+
+        .breadcrumb-parent {
+          color: var(--ddd-lightDark-1);
+          transition: color var(--ddd-duration-normal, 0.3s) ease-in-out;
+          padding-bottom: 4px;
+        }
+
+        .breadcrumb-split {
+          color: var(--ddd-lightDark-3);
+          transition: color var(--ddd-duration-normal, 0.3s) ease-in-out;
+          padding-bottom: 4px;
+        }
+
+        .breadcrumb-title {
+          font-weight: bold;
+          transition: color var(--ddd-duration-normal, 0.3s) ease-in-out;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding-bottom: 4px;
+        }
+
+        .breadcrumb a:hover,
+        .breadcrumb a:focus {
+          border-bottom: 2px solid var(--ddd-lightDark-1);
+        }
+
+        /* Layouts */
+        .container {
+          margin: 64px auto;
+          width: 90%;
+          max-width: 840px;
+          text-align: left;
+          view-transition-name: main-content;
+        }
+
+        #contentcontainer {
+          min-height: 50vh;
+        }
+
+        #slot {
+          min-height: 0vh;
+        }
+
+        .listing-titlecontainer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-bottom: 20px;
+          view-transition-name: listing-header;
+        }
+
+        #listing-filter {
+          font-size: 1rem;
+          padding: 0.5em;
+          max-width: 240px;
+          width: 100%;
+        }
+
+        .list-filter-label {
+          font-size: 14px;
+          margin-right: 54px;
+        }
+
+        .listing-category {
+          font-family: var(--portfolio-font-body);
+          font-size: var(--portfolio-fontsize-responsive);
+          text-transform: uppercase;
+          border-top: 6px solid var(--ddd-lightDark-4);
+          min-height: 36px;
+          transition: color var(--ddd-duration-normal, 0.3s);
+        }
+
+        .listing-category a {
+          color: var(--ddd-lightDark-text);
+        }
+
+        .listing-grid {
+          display: grid;
+          gap: var(--ddd-spacing-6, 24px);
+          width: 100%;
+          view-transition-name: listing-grid;
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        div .listing-card {
+          width: 188px;
+          margin-bottom: 48px;
+          text-decoration: none;
+          transition: 0.4s;
+        }
+
+        .listing-cardimg {
+          background-color: var(--ddd-lightDark-1);
+          border-radius: 6px;
+          margin-bottom: 12px;
+          height: 120px;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+          overflow: hidden;
+          display: block;
+        }
+
+        .listing-cardimg img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .listing-cardtitle {
+          color: var(--ddd-lightDark-text);
+          text-decoration: underline;
+          text-decoration-color: var(--ddd-lightDark-5);
+          text-decoration-thickness: 4px !important;
+          text-underline-offset: 8px;
+          font-family: var(--portfolio-font-header);
+          font-weight: 400;
+          line-height: 1.7;
+          font-size: clamp(15px, 2vw, 21px);
+          text-transform: uppercase;
+          margin-bottom: 5.5px;
+          transition:
+            color,
+            text-decoration-color var(--ddd-duration-normal, 0.3s) ease-in-out;
+        }
+
+        .listing-cardtag {
+          color: var(--ddd-lightDark-text);
+          font-family: var(--portfolio-font-body);
+          font-size: clamp(10px, 2vw, 16px);
+          font-weight: 400;
+          transition: var(--ddd-duration-normal, 0.3s);
+        }
+
+        .listing-card:hover .listing-cardtitle,
+        .listing-card:focus .listing-cardtitle {
+          text-decoration-color: var(--ddd-lightDark-3);
+        }
+
+        .listing-card:hover .listing-cardimg,
+        .listing-card:focus .listing-cardimg {
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+
+        /* Pagination */
         .pagination {
-          flex-direction: column;
-          gap: 16px;
+          max-width: 840px;
+          margin: 0 auto;
+          padding: 0 22px;
+          display: flex;
+          gap: var(--ddd-spacing-6, 24px);
+          flex-direction: row;
+          align-items: center;
+          view-transition-name: pagination;
+        }
+        .pagination a {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          overflow: hidden;
+          width: 400px;
+          height: clamp(48px, 8vw, 96px);
+          border-radius: 8px;
+          background-color: var(--ddd-lightDark-2);
+          text-decoration: underline;
+          text-decoration-color: var(--ddd-lightDark-1);
+          text-decoration-thickness: 4px;
+          text-underline-offset: 8px;
+          line-height: 1.8;
+          font-family: var(--portfolio-font-header);
+          font-weight: 400;
+          transition:
+            background-color var(--ddd-duration-normal, 0.3s),
+            text-decoration-color var(--ddd-duration-normal, 0.3s),
+            box-shadow var(--ddd-duration-normal, 0.3s);
         }
         .pagination-text {
-          -webkit-line-clamp: 1;
-          overflow: hidden;
-          padding: 4px 0;
-          line-height: 2;
+          display: -webkit-box;
+          color: var(--ddd-palette-light);
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          text-overflow: ellipsis;
         }
-        .pagination a.prev,
+        .pagination a simple-icon-lite {
+          color: var(--ddd-palette-light);
+          --simple-icon-width: clamp(24px, 4vw, 40px);
+          --simple-icon-height: clamp(24px, 4vw, 40px);
+        }
+        .pagination a:hover,
+        .pagination a:focus {
+          text-decoration-color: var(--ddd-lightDark-3);
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+        .pagination a.prev {
+          margin-left: 24px;
+          margin-right: auto;
+          padding-right: 12px;
+          justify-content: flex-start;
+        }
         .pagination a.next {
-          margin-left: 0;
-          margin-right: 0;
-          width: 100%;
+          margin-right: 24px;
+          margin-left: auto;
+          padding-left: 12px;
+          justify-content: flex-end;
         }
-      }
 
-      @media (max-width: 48em) {
-        .container {
-          width: 95%;
-          margin: 32px auto;
+        /* Media queries */
+        @media (max-width: 60em) {
+          .listing-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          div .listing-card {
+            width: 100%;
+            margin-bottom: 36px;
+          }
+          .listing-cardimg {
+            height: 210px;
+          }
+          site-active-title h1 {
+            font-size: 72px;
+          }
+          .pagination {
+            flex-direction: column;
+            gap: 16px;
+          }
+          .pagination-text {
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            padding: 4px 0;
+            line-height: 2;
+          }
+          .pagination a.prev,
+          .pagination a.next {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+          }
         }
-        site-active-title h1 {
-          font-size: clamp(32px, 7vw, 56px);
-        }
-        .breadcrumb {
-          padding: 0 12px;
-        }
-      }
 
-      @media (max-width: 37.5em) {
-        .listing-grid {
-          grid-template-columns: repeat(1, 1fr);
+        @media (max-width: 48em) {
+          .container {
+            width: 95%;
+            margin: 32px auto;
+          }
+          site-active-title h1 {
+            font-size: clamp(32px, 7vw, 56px);
+          }
+          .breadcrumb {
+            padding: 0 12px;
+          }
         }
-        div .listing-card {
-          margin-bottom: 24px;
+
+        @media (max-width: 37.5em) {
+          .listing-grid {
+            grid-template-columns: repeat(1, 1fr);
+          }
+          div .listing-card {
+            margin-bottom: 24px;
+          }
+          .listing-cardimg {
+            height: 240px;
+          }
+          site-active-title h1 {
+            font-size: clamp(56px, 12vw, 64px);
+          }
         }
-        .listing-cardimg {
-          height: 240px;
-        }
-        site-active-title h1 {
-          font-size: clamp(56px, 12vw, 64px);
-        }
-      }
-    `];
+      `,
+    ];
   }
 
   // prevents page changes during edit mode (from site-active-tags.js)
@@ -1289,8 +1425,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-    }
-    else {
+    } else {
       e.currentTarget.blur();
     }
   }
@@ -1298,7 +1433,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   _renderListing() {
     // Filter content based on selected tag, if there is one
     const filteredItems = this.selectedTag
-      ? this.items.filter(item => {
+      ? this.items.filter((item) => {
           // Check if item has tags, and return it if it has the tag
           const tags = normalizeTags(toJS(item.metadata && item.metadata.tags));
           return tags.includes(this.selectedTag);
@@ -1307,12 +1442,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
     // Filter category tags based on selected tag
     const filteredTags = this.selectedTag
-      ? this.categoryTags.filter(tag => 
-          filteredItems.some(item => {
+      ? this.categoryTags.filter((tag) =>
+          filteredItems.some((item) => {
             // Will return true if at least one category has the selected tag
-            const tags = normalizeTags(toJS(item.metadata && item.metadata.tags));
+            const tags = normalizeTags(
+              toJS(item.metadata && item.metadata.tags),
+            );
             return tags.includes(tag);
-          })
+          }),
         )
       : this.categoryTags;
 
@@ -1321,82 +1458,137 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ${filteredTags.length > 0
         ? filteredTags.map(
             (topTag) => html`
-              <h2 class="listing-category"><a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" @click="${this.testEditMode}" href="x/displays/tags?tag=${topTag.trim()}">${topTag}</a></h2>
+              <h2 class="listing-category">
+                <a
+                  tabindex="${this.editMode ? "-1" : "0"}"
+                  ?disabled="${this.editMode}"
+                  @click="${this.testEditMode}"
+                  href="x/displays/tags?tag=${topTag.trim()}"
+                  >${topTag}</a
+                >
+              </h2>
               <div class="listing-grid">
-                ${filteredItems.filter(item => {
-                  const tags = normalizeTags(toJS(item.metadata && item.metadata.tags));
-                  // Return all items with the filtered tag
-                  return tags.includes(topTag);
-                }).map(item => {
-                  // Get all tags from the item
-                  const itemTags = normalizeTags(toJS(item.metadata && item.metadata.tags));
-                  const secondTag = itemTags[1] || "";
+                ${filteredItems
+                  .filter((item) => {
+                    const tags = normalizeTags(
+                      toJS(item.metadata && item.metadata.tags),
+                    );
+                    // Return all items with the filtered tag
+                    return tags.includes(topTag);
+                  })
+                  .map((item) => {
+                    // Get all tags from the item
+                    const itemTags = normalizeTags(
+                      toJS(item.metadata && item.metadata.tags),
+                    );
+                    const secondTag = itemTags[1] || "";
 
-                  return html`
-                    <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" class="listing-card" href="${item.slug}" @click="${this.testEditMode}">
-                      <div class="listing-cardimg">
-                        <img src="${getPostLogo(item)}" alt="" loading="lazy"
+                    return html`
+                      <a
+                        tabindex="${this.editMode ? "-1" : "0"}"
+                        ?disabled="${this.editMode}"
+                        class="listing-card"
+                        href="${item.slug}"
+                        @click="${this.testEditMode}"
+                      >
+                        <div class="listing-cardimg">
+                          <img
+                            src="${getPostLogo(item)}"
+                            alt=""
+                            loading="lazy"
                             decoding="async"
-                            fetchpriority="low" />
-                      </div>
-                      <div class="listing-cardtitle">${item.title}</div>
-                      <div class="listing-cardtag">${secondTag}</div>
-                    </a>
-                  `;
-                })}
+                            fetchpriority="low"
+                          />
+                        </div>
+                        <div class="listing-cardtitle">${item.title}</div>
+                        <div class="listing-cardtag">${secondTag}</div>
+                      </a>
+                    `;
+                  })}
               </div>
-            `)
-        : html``
-      }
+            `,
+          )
+        : html``}
 
       <!-- Render cards with no tags -->
-      ${(!this.selectedTag && this.items.some(item => {
+      ${!this.selectedTag &&
+      this.items.some((item) => {
         // Will return true if at least one item does not have tags
-        return normalizeTags(toJS(item.metadata && item.metadata.tags)).length === 0;
-      })) ? html`
-        <div class="listing-category"></div>
-        <div class="listing-grid">
-          ${this.items.filter(item => {
-            // Return all items with no tags
-            return normalizeTags(toJS(item.metadata && item.metadata.tags)).length === 0;
-          }).map(item => html`
-            <a class="listing-card" href="${item.slug}" tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" @click="${this.testEditMode}">
-              <div class="listing-cardimg">
-                <img src="${getPostLogo(item)}" alt="" loading="lazy"
-                    decoding="async"
-                    fetchpriority="low" />
-              </div>
-              <div class="listing-cardtitle">${item.title}</div>
-            </a>
-          `)}
-        </div>
-      ` : ''}
+        return (
+          normalizeTags(toJS(item.metadata && item.metadata.tags)).length === 0
+        );
+      })
+        ? html`
+            <div class="listing-category"></div>
+            <div class="listing-grid">
+              ${this.items
+                .filter((item) => {
+                  // Return all items with no tags
+                  return (
+                    normalizeTags(toJS(item.metadata && item.metadata.tags))
+                      .length === 0
+                  );
+                })
+                .map(
+                  (item) => html`
+                    <a
+                      class="listing-card"
+                      href="${item.slug}"
+                      tabindex="${this.editMode ? "-1" : "0"}"
+                      ?disabled="${this.editMode}"
+                      @click="${this.testEditMode}"
+                    >
+                      <div class="listing-cardimg">
+                        <img
+                          src="${getPostLogo(item)}"
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          fetchpriority="low"
+                        />
+                      </div>
+                      <div class="listing-cardtitle">${item.title}</div>
+                    </a>
+                  `,
+                )}
+            </div>
+          `
+        : ""}
     `;
   }
 
   // custom rendering of the x/displays/tags route
   // node is site-tags-route reference
   HAXSiteRenderXTagsItems(items) {
-    return html`
-    <div part="listing-grid">
-      ${items.map(item => html`
-        <a class="listing-card" href="${item.slug}" part="listing-card">
-          <div class="listing-cardimg" part="listing-cardimg">
-            <img src="${item.metadata.image}" alt="${item.title ? item.title : ''}" part="listing-cardimg-img">
-          </div>
-          <div class="listing-cardtitle" part="listing-cardtitle">${item.title}</div>
-        </a>`
+    return html` <div part="listing-grid">
+      ${items.map(
+        (item) =>
+          html` <a class="listing-card" href="${item.slug}" part="listing-card">
+            <div class="listing-cardimg" part="listing-cardimg">
+              <img
+                src="${item.metadata.image}"
+                alt="${item.title ? item.title : ""}"
+                part="listing-cardimg-img"
+              />
+            </div>
+            <div class="listing-cardtitle" part="listing-cardtitle">
+              ${item.title}
+            </div>
+          </a>`,
       )}
     </div>`;
   }
 
   setLayout(layout) {
-    if (globalThis.document && globalThis.document.startViewTransition && !globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (
+      globalThis.document &&
+      globalThis.document.startViewTransition &&
+      !globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       globalThis.document.startViewTransition(() => {
         this.activeLayout = layout;
       });
-    }
-    else {
+    } else {
       this.activeLayout = layout;
     }
   }
@@ -1405,75 +1597,118 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.dataPalette++;
     if (this.dataPalette > 10) this.dataPalette = 0;
   }
-  
+
   // Lit render the HTML
   render() {
     return html`
       <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <header>
         <div class="header-inner">
-          <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" id="site-title" aria-label="${this.siteTitle || this.t.siteHome}" @click="${this.testEditMode}" href="${this.homeLink}">${this.siteTitle}</a>
+          <a
+            tabindex="${this.editMode ? "-1" : "0"}"
+            ?disabled="${this.editMode}"
+            id="site-title"
+            aria-label="${this.siteTitle || this.t.siteHome}"
+            @click="${this.testEditMode}"
+            href="${this.homeLink}"
+            >${this.siteTitle}</a
+          >
           <nav aria-label="${this.t.mainNavigation}">
             ${this.topItems.map(
-                (item) => html`
-                  <a
-                    tabindex="${this.editMode ? '-1' : '0'}"
-                    ?disabled="${this.editMode}"
-                    @click="${this.testEditMode}"
-                    class="menu-item ${this.activeItem && (item.id === this.activeItem.id || (this.ancestorItem && item.id === this.ancestorItem.id)) ? 'active' : ''}"
-                    href="${item.slug}"
-                  >
-                    ${item.title}
-                  </a>
-                `,
+              (item) => html`
+                <a
+                  tabindex="${this.editMode ? "-1" : "0"}"
+                  ?disabled="${this.editMode}"
+                  @click="${this.testEditMode}"
+                  class="menu-item ${this.activeItem &&
+                  (item.id === this.activeItem.id ||
+                    (this.ancestorItem && item.id === this.ancestorItem.id))
+                    ? "active"
+                    : ""}"
+                  href="${item.slug}"
+                >
+                  ${item.title}
+                </a>
+              `,
             )}
           </nav>
           ${this.menuOverflow.length > 0
             ? html`
-              <div class="mobile-menu-wrapper">
-                <button type="button" class=${this.menuOpen ? 'close' : ''} aria-label="${this.t.toggleMenu}" aria-expanded="${this.menuOpen ? 'true' : 'false'}" aria-controls="overflow-menu" @click="${() => this.menuOpen = !this.menuOpen}">
-                  <div class="navicon"></div>
-                </button>
-                <ul id="overflow-menu" class="hidden-links ${!this.menuOpen ? 'hidden' : ''}">
-                  ${this.menuOverflow.map(
-                    (item) => html`
-                    <li>
-                      <a
-                        class="${this.activeItem && (item.id === this.activeItem.id || (this.ancestorItem && item.id === this.ancestorItem.id)) ? 'active' : ''}"
-                        href="${item.slug}"
-                        tabindex="${this.editMode ? '-1' : '0'}"
-                        ?disabled="${this.editMode}"
-                        @click="${this.testEditMode}"
-                      >
-                        ${item.title}
-                      </a>
-                    </li>`
-                  )}
-                </ul>
-              </div>
-            ` : ''}
+                <div class="mobile-menu-wrapper">
+                  <button
+                    type="button"
+                    class=${this.menuOpen ? "close" : ""}
+                    aria-label="${this.t.toggleMenu}"
+                    aria-expanded="${this.menuOpen ? "true" : "false"}"
+                    aria-controls="overflow-menu"
+                    @click="${() => (this.menuOpen = !this.menuOpen)}"
+                  >
+                    <div class="navicon"></div>
+                  </button>
+                  <ul
+                    id="overflow-menu"
+                    class="hidden-links ${!this.menuOpen ? "hidden" : ""}"
+                  >
+                    ${this.menuOverflow.map(
+                      (item) =>
+                        html` <li>
+                          <a
+                            class="${this.activeItem &&
+                            (item.id === this.activeItem.id ||
+                              (this.ancestorItem &&
+                                item.id === this.ancestorItem.id))
+                              ? "active"
+                              : ""}"
+                            href="${item.slug}"
+                            tabindex="${this.editMode ? "-1" : "0"}"
+                            ?disabled="${this.editMode}"
+                            @click="${this.testEditMode}"
+                          >
+                            ${item.title}
+                          </a>
+                        </li>`,
+                    )}
+                  </ul>
+                </div>
+              `
+            : ""}
         </div>
         ${this.menuOverflow.length === 0
-            ? html`
-              <simple-icon-button-lite title="${this.t.changeTheme}" label="${this.t.changeTheme}" icon="image:style" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
-            ` : ''}
+          ? html`
+              <simple-icon-button-lite
+                title="${this.t.changeTheme}"
+                label="${this.t.changeTheme}"
+                icon="image:style"
+                class="theme-picker"
+                @click="${this.togglePalette}"
+              ></simple-icon-button-lite>
+            `
+          : ""}
       </header>
-      
+
       <nav class="breadcrumb" aria-label="${this.t.breadcrumb}">
         ${this.activeParent
           ? html`
-            <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" href=${this.activeParent.slug} @click="${this.testEditMode}">
-              <span class="breadcrumb-arrow">←</span>
-              <span class="breadcrumb-parent">${this.activeParent.title}</span>
-            </a>
-            <span class="breadcrumb-split">/</span>
-            <span class="breadcrumb-title">${this.activeItem.title}</span>
-          ` : ``}
+              <a
+                tabindex="${this.editMode ? "-1" : "0"}"
+                ?disabled="${this.editMode}"
+                href=${this.activeParent.slug}
+                @click="${this.testEditMode}"
+              >
+                <span class="breadcrumb-arrow">←</span>
+                <span class="breadcrumb-parent"
+                  >${this.activeParent.title}</span
+                >
+              </a>
+              <span class="breadcrumb-split">/</span>
+              <span class="breadcrumb-title">${this.activeItem.title}</span>
+            `
+          : ``}
       </nav>
 
       ${this.activeLayout == "media"
         ? html`<site-active-media-banner></site-active-media-banner>`
-        : ''}
+        : ""}
 
       <main id="contentcontainer" class="container" role="main">
         ${this.activeLayout == "listing"
@@ -1481,80 +1716,138 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
               <div class="listing-titlecontainer">
                 <site-active-title></site-active-title>
                 <!-- Render select for filtering tags (only appears if >1 tag OR 1 tag and items with no tag) -->
-                ${(this.categoryTags.length > 1 || (this.categoryTags.length > 0 && this.items.some(item => normalizeTags(toJS(item.metadata && item.metadata.tags)).length === 0)))
-                  ? html`
-                    <label class="list-filter-label" for="listing-filter">${this.t.tagFilter}</label>
-                    <select ?disabled="${this.editMode}" id="listing-filter" @change=${(e) => this.selectedTag = e.target.value}>
-                      <option value="" ?selected="${this.selectedTag === ''}">${this.t.all}</option>
-                      ${this.categoryTags.map(
-                        (tag) => html`
-                          <option value="${tag}" ?selected="${this.selectedTag === tag}">
-                            ${tag}
-                          </option>`
-                      )}
-                    </select>`
-                    : ''}
-              </div>
-          ` : html`
-                <site-active-title></site-active-title>
-                ${this.activeTags && this.activeTags.length > 0
-                  ? html`
-                      <ul class="tag-list">
-                        ${(this.activeLayout === "listing"
-                          ? this.activeTags
-                          : this.activeTags.slice(1)
-                        ).map(
-                          (item) => html`<li><a tabindex="${this.editMode ? '-1' : '0'}" @click="${this.testEditMode}" ?disabled="${this.editMode}" href="x/displays/tags?tag=${item.trim()}">${item}</a></li>`
+                ${this.categoryTags.length > 1 ||
+                (this.categoryTags.length > 0 &&
+                  this.items.some(
+                    (item) =>
+                      normalizeTags(toJS(item.metadata && item.metadata.tags))
+                        .length === 0,
+                  ))
+                  ? html` <label class="list-filter-label" for="listing-filter"
+                        >${this.t.tagFilter}</label
+                      >
+                      <select
+                        ?disabled="${this.editMode}"
+                        id="listing-filter"
+                        @change=${(e) => (this.selectedTag = e.target.value)}
+                      >
+                        <option value="" ?selected="${this.selectedTag === ""}">
+                          ${this.t.all}
+                        </option>
+                        ${this.categoryTags.map(
+                          (tag) =>
+                            html` <option
+                              value="${tag}"
+                              ?selected="${this.selectedTag === tag}"
+                            >
+                              ${tag}
+                            </option>`,
                         )}
-                      </ul>
-                  ` : ''}
-          `}
-
-        ${this.activeLayout == "listing"
-          ? this._renderListing()
-          : ''}
+                      </select>`
+                  : ""}
+              </div>
+            `
+          : html`
+              <site-active-title></site-active-title>
+              ${this.activeTags && this.activeTags.length > 0
+                ? html`
+                    <ul class="tag-list">
+                      ${(this.activeLayout === "listing"
+                        ? this.activeTags
+                        : this.activeTags.slice(1)
+                      ).map(
+                        (item) =>
+                          html`<li>
+                            <a
+                              tabindex="${this.editMode ? "-1" : "0"}"
+                              @click="${this.testEditMode}"
+                              ?disabled="${this.editMode}"
+                              href="x/displays/tags?tag=${item.trim()}"
+                              >${item}</a
+                            >
+                          </li>`,
+                      )}
+                    </ul>
+                  `
+                : ""}
+            `}
+        ${this.activeLayout == "listing" ? this._renderListing() : ""}
 
         <div id="slot"><slot></slot></div>
       </main>
 
       <div class="pagination">
         ${this.activeParent
-        ? html`
-          ${this.prevSibling
           ? html`
-            <a
-              class="prev"
-              tabindex="${this.editMode ? '-1' : '0'}"
-              ?disabled="${this.editMode}"
-              href="${this.prevSibling.slug}"
-              @click="${this.testEditMode}"
-            >
-              <simple-icon-lite icon="icons:chevron-left"></simple-icon-lite>
-              <span class="pagination-text">${this.prevSibling.title}</span>
-            </a>
-          ` : ""}
-          ${this.nextSibling
-          ? html`
-            <a
-              tabindex="${this.editMode ? '-1' : '0'}"
-              ?disabled="${this.editMode}"
-              class="next"
-              href="${this.nextSibling.slug}"
-              @click="${this.testEditMode}"
-            >
-              <span class="pagination-text">${this.nextSibling.title}</span>
-              <simple-icon-lite icon="icons:chevron-right"></simple-icon-lite>
-            </a>
-          ` : ""}
-        ` : ''}
+              ${this.prevSibling
+                ? html`
+                    <a
+                      class="prev"
+                      tabindex="${this.editMode ? "-1" : "0"}"
+                      ?disabled="${this.editMode}"
+                      href="${this.prevSibling.slug}"
+                      @click="${this.testEditMode}"
+                    >
+                      <simple-icon-lite
+                        icon="icons:chevron-left"
+                      ></simple-icon-lite>
+                      <span class="pagination-text"
+                        >${this.prevSibling.title}</span
+                      >
+                    </a>
+                  `
+                : ""}
+              ${this.nextSibling
+                ? html`
+                    <a
+                      tabindex="${this.editMode ? "-1" : "0"}"
+                      ?disabled="${this.editMode}"
+                      class="next"
+                      href="${this.nextSibling.slug}"
+                      @click="${this.testEditMode}"
+                    >
+                      <span class="pagination-text"
+                        >${this.nextSibling.title}</span
+                      >
+                      <simple-icon-lite
+                        icon="icons:chevron-right"
+                      ></simple-icon-lite>
+                    </a>
+                  `
+                : ""}
+            `
+          : ""}
       </div>
 
       <footer>
-        <div> 
-          <div>${this.t.pageNumberOfTotal.replace("{current}", () => (this.pageCurrent ?? "")).replace("{total}", () => (this.pageTotal ?? ""))}</div>
-          <div>${this.t.siteGenerated.replace("{date}", () => this.lastUpdated)}</div>
-          <div>${this.t.copyright.replace("{year}", () => this.copyrightYear).replace("{author}", () => (store.manifest && store.manifest.author ? store.manifest.author : ""))}</div>
-          <div><a class="footer-link" @click="${this.testEditMode}" tabindex="${this.editMode ? '-1' : '0'}" href="x/displays/tags" ?disabled="${this.editMode}">${this.t.viewContentByTag}</a></div>
+        <div>
+          <div>
+            ${this.t.pageNumberOfTotal
+              .replace("{current}", () => this.pageCurrent ?? "")
+              .replace("{total}", () => this.pageTotal ?? "")}
+          </div>
+          <div>
+            ${this.t.siteGenerated.replace("{date}", () => this.lastUpdated)}
+          </div>
+          <div>
+            ${this.t.copyright
+              .replace("{year}", () => this.copyrightYear)
+              .replace("{author}", () =>
+                store.manifest && store.manifest.author
+                  ? store.manifest.author
+                  : "",
+              )}
+          </div>
+          <div>
+            <a
+              class="footer-link"
+              @click="${this.testEditMode}"
+              tabindex="${this.editMode ? "-1" : "0"}"
+              href="x/displays/tags"
+              ?disabled="${this.editMode}"
+              >${this.t.viewContentByTag}</a
+            >
+          </div>
         </div>
         <div
           class="license-body"
@@ -1573,18 +1866,29 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
-                    alt="${this.t.licenseGraphic.replace("{license}", () => this.licenseName)}"
+                    alt="${this.t.licenseGraphic.replace(
+                      "{license}",
+                      () => this.licenseName,
+                    )}"
                     src="${this.licenseImage}"
                   />
                 </a>
-              ` : ``}
+              `
+            : ``}
         </div>
-        <simple-icon-button-lite icon="image:style" title="${this.t.changeTheme}" label="${this.t.changeTheme}" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
-        <scroll-button @click="${(e) => e.currentTarget.blur()}"></scroll-button>
+        <simple-icon-button-lite
+          icon="image:style"
+          title="${this.t.changeTheme}"
+          label="${this.t.changeTheme}"
+          class="theme-picker"
+          @click="${this.togglePalette}"
+        ></simple-icon-button-lite>
+        <scroll-button
+          @click="${(e) => e.currentTarget.blur()}"
+        ></scroll-button>
       </footer>
     `;
   }
-  
 }
 
 globalThis.customElements.define(CleanPortfolioTheme.tag, CleanPortfolioTheme);

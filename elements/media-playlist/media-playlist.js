@@ -16,7 +16,9 @@ import "@haxtheweb/audio-player/audio-player.js";
  * @demo index.html
  * @element media-playlist
  */
-export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement))) {
+export class MediaPlaylist extends SchemaBehaviors(
+  DDDSuper(I18NMixin(LitElement)),
+) {
   static get tag() {
     return "media-playlist";
   }
@@ -69,9 +71,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     });
     this.addEventListener("keydown", this._handleKeydown);
     this.addEventListener("drop", this._onDrop, true);
-    this._darkModeQuery = globalThis.matchMedia(
-      "(prefers-color-scheme: dark)",
-    );
+    this._darkModeQuery = globalThis.matchMedia("(prefers-color-scheme: dark)");
     this._darkModeHandler = (e) => {
       this._setDarkMode(e.matches);
     };
@@ -84,10 +84,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     this.removeEventListener("keydown", this._handleKeydown);
     this.removeEventListener("drop", this._onDrop, true);
     if (this._darkModeQuery && this._darkModeHandler) {
-      this._darkModeQuery.removeEventListener(
-        "change",
-        this._darkModeHandler,
-      );
+      this._darkModeQuery.removeEventListener("change", this._darkModeHandler);
     }
     if (this._resizeObserver) {
       this._resizeObserver.disconnect();
@@ -97,10 +94,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
       ? this.shadowRoot.querySelector("#player")
       : null;
     if (player) {
-      player.removeEventListener(
-        "mediastatechange",
-        this._onMediaStateChange,
-      );
+      player.removeEventListener("mediastatechange", this._onMediaStateChange);
     }
     if (this._lastMediaElement) {
       this._lastMediaElement.removeEventListener("ended", this._onMediaEnded);
@@ -376,21 +370,23 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
                       ? "active"
                       : ""}"
                     @click="${() => this._setActiveIndex(index)}"
-                    aria-current="${index === this.activeIndex ? "true" : "false"}"
+                    aria-current="${index === this.activeIndex
+                      ? "true"
+                      : "false"}"
                     aria-label="${this.t.play} ${item.title}, ${item.duration}"
                     data-index="${index}"
                   >
                     <span class="playlist-number">${index + 1}</span>
                     ${item.thumbnailSrc
                       ? html`
-                        <img
-                          class="playlist-thumbnail"
-                          src="${item.thumbnailSrc}"
-                          alt=""
-                          loading="lazy"
-                        />
-                      `
-                    : html` <div class="playlist-thumbnail"></div> `}
+                          <img
+                            class="playlist-thumbnail"
+                            src="${item.thumbnailSrc}"
+                            alt=""
+                            loading="lazy"
+                          />
+                        `
+                      : html` <div class="playlist-thumbnail"></div> `}
                     <div class="playlist-info">
                       <span class="playlist-title">${item.title}</span>
                       <span class="playlist-duration">${item.duration}</span>
@@ -434,8 +430,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
         source: el.source || el.getAttribute("source") || "",
         title: mediaTitle,
         mediaTitle: mediaTitle,
-        thumbnailSrc:
-          el.thumbnailSrc || el.getAttribute("thumbnail-src") || "",
+        thumbnailSrc: el.thumbnailSrc || el.getAttribute("thumbnail-src") || "",
         duration: el.duration || el.getAttribute("duration") || "",
         tracks: tracks,
         crossorigin:
@@ -444,9 +439,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
         isAudio: el.tagName === "AUDIO-PLAYER",
       };
     });
-    const isDark =
-      this._darkModeQuery &&
-      this._darkModeQuery.matches;
+    const isDark = this._darkModeQuery && this._darkModeQuery.matches;
     this.mediaItems.forEach((item) => {
       item.element.toggleAttribute("dark", isDark);
     });
@@ -485,9 +478,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
   }
 
   _scrollToActiveItem() {
-    const item = this.shadowRoot.querySelector(
-      ".playlist-item.active",
-    );
+    const item = this.shadowRoot.querySelector(".playlist-item.active");
     if (item) {
       item.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
@@ -514,7 +505,10 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
 
       if (media !== this._lastMediaElement) {
         if (this._lastMediaElement) {
-          this._lastMediaElement.removeEventListener("ended", this._onMediaEnded);
+          this._lastMediaElement.removeEventListener(
+            "ended",
+            this._onMediaEnded,
+          );
         }
         media.addEventListener("ended", this._onMediaEnded);
         this._lastMediaElement = media;
@@ -537,10 +531,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     }
     if (e.key === "ArrowDown") {
       e.preventDefault();
-      const next = Math.min(
-        this.activeIndex + 1,
-        this.mediaItems.length - 1,
-      );
+      const next = Math.min(this.activeIndex + 1, this.mediaItems.length - 1);
       this._setActiveIndex(next);
       this._focusPlaylistItem(next);
     } else if (e.key === "ArrowUp") {
@@ -550,9 +541,9 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
       this._focusPlaylistItem(prev);
     } else if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      const target = e.composedPath().find(
-        (el) => el.classList && el.classList.contains("playlist-item"),
-      );
+      const target = e
+        .composedPath()
+        .find((el) => el.classList && el.classList.contains("playlist-item"));
       if (target) {
         const index = parseInt(target.getAttribute("data-index"));
         this._setActiveIndex(index);
@@ -617,25 +608,25 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
         typeof oldValue !== "undefined" &&
         this.mediaItems[this.activeIndex]
       ) {
-          clearTimeout(this._playTimeout);
-          this._playTimeout = setTimeout(() => {
-            const player = this.shadowRoot
-              ? this.shadowRoot.querySelector("#player")
-              : null;
-            if (
-              player &&
-              player.restart &&
-              typeof player.restart === "function"
-            ) {
-              try {
-                player.restart();
-              } catch {
-                // intentionally empty
-              }
+        clearTimeout(this._playTimeout);
+        this._playTimeout = setTimeout(() => {
+          const player = this.shadowRoot
+            ? this.shadowRoot.querySelector("#player")
+            : null;
+          if (
+            player &&
+            player.restart &&
+            typeof player.restart === "function"
+          ) {
+            try {
+              player.restart();
+            } catch {
+              // intentionally empty
             }
-            this._attachPlayerListeners();
-            this._scrollToActiveItem();
-          }, 100);
+          }
+          this._attachPlayerListeners();
+          this._scrollToActiveItem();
+        }, 100);
       }
     });
   }
@@ -646,11 +637,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
     }
     const playerArea = this.shadowRoot.querySelector(".player-area");
     const playlist = this.shadowRoot.querySelector(".playlist");
-    if (
-      playerArea &&
-      playlist &&
-      "ResizeObserver" in globalThis
-    ) {
+    if (playerArea && playlist && "ResizeObserver" in globalThis) {
       this._resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
           if (entry.target === playerArea && entry.target.offsetHeight > 0) {
@@ -777,8 +764,7 @@ export class MediaPlaylist extends SchemaBehaviors(DDDSuper(I18NMixin(LitElement
       return false;
     }
     const items = Array.from(this.children).filter(
-      (el) =>
-        el.tagName === "VIDEO-PLAYER" || el.tagName === "AUDIO-PLAYER",
+      (el) => el.tagName === "VIDEO-PLAYER" || el.tagName === "AUDIO-PLAYER",
     );
     let cloneEl;
     items.forEach((item) => {

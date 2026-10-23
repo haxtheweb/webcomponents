@@ -49,7 +49,8 @@ export class LinkCardTheme extends HAXCMSThemeParts(
       profileImageOf: "{name} profile image",
       profileImage: "Profile image",
       linkCardProfile: "Link card profile",
-      emptyStateLinks: "Add top-level menu items in site.json to render link buttons.",
+      emptyStateLinks:
+        "Add top-level menu items in site.json to render link buttons.",
       titleOnPlatform: "{title} on {platform}",
       openPlatform: "Open {platform}",
       paletteUpdated: "Color palette updated to option {number}.",
@@ -480,7 +481,9 @@ export class LinkCardTheme extends HAXCMSThemeParts(
         ? manifest.metadata
         : {};
     const theme =
-      metadata.theme && typeof metadata.theme === "object" ? metadata.theme : {};
+      metadata.theme && typeof metadata.theme === "object"
+        ? metadata.theme
+        : {};
     const variables =
       theme.variables && typeof theme.variables === "object"
         ? theme.variables
@@ -558,8 +561,10 @@ export class LinkCardTheme extends HAXCMSThemeParts(
       paletteValue = 0;
     }
     this.dataPalette = `${paletteValue}`;
-    this.paletteAnnouncement =
-      this.t.paletteUpdated.replace("{number}", () => (paletteValue + 1));
+    this.paletteAnnouncement = this.t.paletteUpdated.replace(
+      "{number}",
+      () => paletteValue + 1,
+    );
   }
 
   testEditMode(e) {
@@ -576,7 +581,9 @@ export class LinkCardTheme extends HAXCMSThemeParts(
     const profileAlt = this.profileName
       ? this.t.profileImageOf.replace("{name}", () => this.profileName)
       : this.t.profileImage;
-    const profileLabel = this.profileName ? this.profileName : this.t.linkCardProfile;
+    const profileLabel = this.profileName
+      ? this.profileName
+      : this.t.linkCardProfile;
     return html`
       <div class="theme-shell">
         <a class="skip-link" href="#main-content">${this.t.skipToContent}</a>
@@ -618,36 +625,36 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           <nav class="primary-links" aria-label="${this.t.primaryLinks}">
             ${this.linkItems.length > 0
               ? this.linkItems.map(
-                  (item) => html`<a
-                    class="link-button"
-                    href="${item.href}"
-                    target="${item.target}"
-                    rel="${ifDefined(item.rel)}"
-                    @click="${this.testEditMode}"
-                    >${item.title}</a
-                  >`,
-                )
-              : html`<p class="empty-state">
-                  ${this.t.emptyStateLinks}
-                </p>`}
-          </nav>
-          ${this.socialItems.length > 0
-            ? html`<ul class="social-links" aria-label="${this.t.socialLinks}">
-                ${this.socialItems.map(
-                  (item) => html`<li>
-                    <a
-                      class="social-link"
+                  (item) =>
+                    html`<a
+                      class="link-button"
                       href="${item.href}"
                       target="${item.target}"
                       rel="${ifDefined(item.rel)}"
                       @click="${this.testEditMode}"
-                      aria-label="${this._socialAriaLabel(item)}"
-                    >
-                      <simple-icon-lite
-                        icon="${this._socialIcon(item.socialType)}"
-                      ></simple-icon-lite>
-                    </a>
-                  </li>`,
+                      >${item.title}</a
+                    >`,
+                )
+              : html`<p class="empty-state">${this.t.emptyStateLinks}</p>`}
+          </nav>
+          ${this.socialItems.length > 0
+            ? html`<ul class="social-links" aria-label="${this.t.socialLinks}">
+                ${this.socialItems.map(
+                  (item) =>
+                    html`<li>
+                      <a
+                        class="social-link"
+                        href="${item.href}"
+                        target="${item.target}"
+                        rel="${ifDefined(item.rel)}"
+                        @click="${this.testEditMode}"
+                        aria-label="${this._socialAriaLabel(item)}"
+                      >
+                        <simple-icon-lite
+                          icon="${this._socialIcon(item.socialType)}"
+                        ></simple-icon-lite>
+                      </a>
+                    </li>`,
                 )}
               </ul>`
             : ``}
@@ -658,7 +665,6 @@ export class LinkCardTheme extends HAXCMSThemeParts(
       </div>
     `;
   }
-
 }
 
 globalThis.customElements.define(LinkCardTheme.tag, LinkCardTheme);

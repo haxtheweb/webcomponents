@@ -10,9 +10,7 @@
     "description": "A tool for creating and managing bibliographies",
     "icon": "icons:android",
     "color": "purple",
-    "tags": [
-      "Content", "portfolio", "citation", "reference", "bibliography"
-    ],
+    "tags": ["Content", "portfolio", "citation", "reference", "bibliography"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -42,8 +40,7 @@
   "demoSchema": [
     {
       "tag": "bibliography-builder",
-      "properties": {
-      },
+      "properties": {},
       "content": "<bibliography-item title=\"Make your own citation\"></bibliography-item>"
     }
   ]

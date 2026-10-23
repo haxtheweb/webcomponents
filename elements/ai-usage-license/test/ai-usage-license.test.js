@@ -103,9 +103,7 @@ describe("AiUsageLicense test", () => {
   beforeEach(async () => {
     resetFetchMode("data");
     element = await fixture(html`
-      <ai-usage-license
-        title="title"
-      ></ai-usage-license>
+      <ai-usage-license title="title"></ai-usage-license>
     `);
   });
 

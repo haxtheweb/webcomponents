@@ -44,10 +44,7 @@ export class JourneyMenu extends I18NMixin(LitElement) {
       // the toggle is display none on desktop, so focus() on it is a no-op
       // there; return focus to the first navigation link instead so Escape
       // always lands the user on a focusable element
-      if (
-        toggle &&
-        globalThis.getComputedStyle(toggle).display !== "none"
-      ) {
+      if (toggle && globalThis.getComputedStyle(toggle).display !== "none") {
         toggle.focus();
       } else {
         const firstLink = this.shadowRoot.querySelector("nav ul li a");
@@ -64,17 +61,24 @@ export class JourneyMenu extends I18NMixin(LitElement) {
           var(--ddd-palette-text-color-5, var(--ddd-theme-default-nittanyNavy)),
           var(--ddd-palette-text-color-1, var(--ddd-theme-default-white))
         );
-        --accent-color: var(--ddd-palette-color-7, var(--ddd-theme-default-keystoneYellow));
+        --accent-color: var(
+          --ddd-palette-color-7,
+          var(--ddd-theme-default-keystoneYellow)
+        );
         --nav-bg: light-dark(
           var(--ddd-palette-color-2, var(--ddd-theme-default-gradient-footer)),
           linear-gradient(
-            var(--ddd-palette-color-1, var(--ddd-theme-default-potentialMidnight)) 0%,
+            var(
+                --ddd-palette-color-1,
+                var(--ddd-theme-default-potentialMidnight)
+              )
+              0%,
             var(--ddd-palette-color-4, var(--ddd-theme-default-coalyGray)) 65%,
             var(--ddd-palette-color-4, var(--ddd-theme-default-coalyGray)) 100%
           )
         );
       }
-      
+
       nav {
         position: fixed;
         top: 35px;
@@ -121,7 +125,11 @@ export class JourneyMenu extends I18NMixin(LitElement) {
       li a:hover,
       li a:focus {
         color: var(--accent-color);
-        background-color: color-mix(in srgb, var(--accent-color) 16%, transparent);
+        background-color: color-mix(
+          in srgb,
+          var(--accent-color) 16%,
+          transparent
+        );
         text-decoration: underline;
         outline: none;
       }
@@ -135,10 +143,14 @@ export class JourneyMenu extends I18NMixin(LitElement) {
       li a.active {
         font-weight: var(--ddd-font-weight-bold);
         color: var(--accent-color);
-        background-color: color-mix(in srgb, var(--accent-color) 22%, transparent);
+        background-color: color-mix(
+          in srgb,
+          var(--accent-color) 22%,
+          transparent
+        );
         border-left: var(--ddd-spacing-1) solid var(--accent-color);
       }
-      
+
       /* Mobile menu toggle / close buttons (hidden on desktop) */
       .menu-toggle,
       .menu-close {
@@ -192,7 +204,7 @@ export class JourneyMenu extends I18NMixin(LitElement) {
           transition: transform var(--ddd-duration-normal, 0.3s) ease;
           padding-top: 60px;
         }
-        
+
         nav.open {
           transform: translateX(0);
         }
@@ -210,11 +222,11 @@ export class JourneyMenu extends I18NMixin(LitElement) {
         nav {
           border-right-width: var(--ddd-border-size-lg);
         }
-        
+
         li a {
           border-width: 2px;
         }
-        
+
         li a:focus {
           box-shadow: 0 0 0 4px currentColor;
         }

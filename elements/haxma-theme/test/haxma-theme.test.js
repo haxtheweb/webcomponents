@@ -1,4 +1,4 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect } from "@open-wc/testing";
 import "../haxma-theme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 
@@ -57,11 +57,7 @@ describe("HaxmaTheme test", () => {
   });
 
   beforeEach(async () => {
-    element = await fixture(html`
-      <haxma-theme
-        title="title"
-      ></haxma-theme>
-    `);
+    element = await fixture(html` <haxma-theme title="title"></haxma-theme> `);
   });
 
   it("basic will it blend", async () => {

@@ -1,13 +1,11 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect } from "@open-wc/testing";
 import "../media-playlist.js";
 
 describe("MediaPlaylist test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <media-playlist
-        title="title"
-      ></media-playlist>
+      <media-playlist title="title"></media-playlist>
     `);
   });
 

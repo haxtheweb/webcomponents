@@ -83,8 +83,14 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
       css`
         :root {
           color-scheme: light dark;
-          --my-theme-low-tone: var(--ddd-palette-color-5, var(--ddd-theme-default-slateMaxLight));
-          --my-theme-high-tone: var(--ddd-palette-color-1, var(--ddd-theme-default-coalyGray));
+          --my-theme-low-tone: var(
+            --ddd-palette-color-5,
+            var(--ddd-theme-default-slateMaxLight)
+          );
+          --my-theme-high-tone: var(
+            --ddd-palette-color-1,
+            var(--ddd-theme-default-coalyGray)
+          );
         }
         body {
           padding: var(--ddd-spacing-0);
@@ -111,19 +117,19 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
     return html`
       <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <header>
-      <div class="topbar-container">
-        <nav class="topbar-scroll" aria-label="${this.t.pageNavigation}">
-          <ul>
-            ${this._items.map(
-              (item) => html`
-                <li class="${item.id === this.activeId ? "active" : ""}">
-                  <a href="${item.slug}">${item.title}</a>
-                </li>
-              `,
-            )}
-          </ul>
-        </nav>
-      </div>
+        <div class="topbar-container">
+          <nav class="topbar-scroll" aria-label="${this.t.pageNavigation}">
+            <ul>
+              ${this._items.map(
+                (item) => html`
+                  <li class="${item.id === this.activeId ? "active" : ""}">
+                    <a href="${item.slug}">${item.title}</a>
+                  </li>
+                `,
+              )}
+            </ul>
+          </nav>
+        </div>
       </header>
 
       <main>

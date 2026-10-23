@@ -84,27 +84,47 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
         :root {
-          --journey-theme-bg-light: var(--ddd-palette-color-5, var(--ddd-theme-default-white));
-          --journey-theme-bg-dark: var(--ddd-palette-color-1, var(--ddd-theme-default-coalyGray));
-          --journey-theme-text-light: var(--ddd-palette-text-color-5, var(--ddd-theme-default-nittanyNavy));
-          --journey-theme-text-dark: var(--ddd-palette-text-color-1, var(--ddd-theme-default-white));
+          --journey-theme-bg-light: var(
+            --ddd-palette-color-5,
+            var(--ddd-theme-default-white)
+          );
+          --journey-theme-bg-dark: var(
+            --ddd-palette-color-1,
+            var(--ddd-theme-default-coalyGray)
+          );
+          --journey-theme-text-light: var(
+            --ddd-palette-text-color-5,
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          --journey-theme-text-dark: var(
+            --ddd-palette-text-color-1,
+            var(--ddd-theme-default-white)
+          );
           color-scheme: light dark;
         }
-        
+
         body {
           padding: var(--ddd-spacing-0);
           margin: var(--ddd-spacing-0);
-          background-color: light-dark(var(--journey-theme-bg-light), var(--journey-theme-bg-dark));
-          color: light-dark(var(--journey-theme-text-light), var(--journey-theme-text-dark));
-          transition: background-color var(--ddd-duration-normal, 0.3s) ease, color var(--ddd-duration-normal, 0.3s) ease;
+          background-color: light-dark(
+            var(--journey-theme-bg-light),
+            var(--journey-theme-bg-dark)
+          );
+          color: light-dark(
+            var(--journey-theme-text-light),
+            var(--journey-theme-text-dark)
+          );
+          transition:
+            background-color var(--ddd-duration-normal, 0.3s) ease,
+            color var(--ddd-duration-normal, 0.3s) ease;
         }
-        
+
         body.dark-mode {
           background-color: var(--journey-theme-bg-dark);
           color: var(--journey-theme-text-dark);
           color-scheme: only dark;
         }
-        
+
         @media (prefers-color-scheme: dark) {
           body:not(.light-mode) {
             background-color: var(--journey-theme-bg-dark);
@@ -112,7 +132,7 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
             color-scheme: only dark;
           }
         }
-        
+
         @media (prefers-reduced-motion: reduce) {
           body {
             transition: none;

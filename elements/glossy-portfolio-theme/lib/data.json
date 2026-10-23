@@ -1,4 +1,5 @@
-{"status": 200,
+{
+  "status": 200,
   "data": [
     {
       "id": "0",
@@ -28,6 +29,5 @@
       "thumbnail": "shadow-work.avif",
       "url": "https://google.com"
     }
-
-
-]}
+  ]
+}

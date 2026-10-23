@@ -16,19 +16,13 @@
     "description": "A playlist that presents video and audio players in a player + sidebar layout.",
     "icon": "av:playlist-play",
     "color": "red",
-    "tags": [
-      "Media",
-      "video",
-      "audio",
-      "playlist",
-      "player"
-    ],
+    "tags": ["Media", "video", "audio", "playlist", "player"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
     }
   },
-    "settings": {
+  "settings": {
     "configure": [
       {
         "property": "activeIndex",
@@ -49,17 +43,13 @@
   },
   "saveOptions": {
     "wipeSlot": false,
-    "unsetAttributes": [
-      "items",
-      "edit",
-      "media-items"
-    ]
+    "unsetAttributes": ["items", "edit", "media-items"]
   },
   "documentation": {
     "howTo": null,
     "purpose": null
   },
-    "demoSchema": [
+  "demoSchema": [
     {
       "tag": "media-playlist",
       "properties": {},

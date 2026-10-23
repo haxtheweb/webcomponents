@@ -1,4 +1,4 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect } from "@open-wc/testing";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import "../spacebook-theme.js";
 
@@ -36,9 +36,7 @@ describe("SpacebookTheme test", () => {
 
   beforeEach(async () => {
     element = await fixture(html`
-      <spacebook-theme
-        title="title"
-      ></spacebook-theme>
+      <spacebook-theme title="title"></spacebook-theme>
     `);
     // Wait for the theme and its nested components to finish their first
     // render and for styles to settle before the a11y audit reads computed

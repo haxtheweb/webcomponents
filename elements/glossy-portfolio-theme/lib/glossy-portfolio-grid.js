@@ -10,12 +10,11 @@ import { autorun, toJS } from "mobx";
 
 /**
  * `glossy-portfolio-grid`
- * 
+ *
  * @demo index.html
  * @element glossy-portfolio-grid
  */
 export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
-
   static get tag() {
     return "glossy-portfolio-grid";
   }
@@ -35,10 +34,9 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     this.filtersList = [];
     this.filteredData = [];
     this.data = [];
-    this.activeFilter = '';
+    this.activeFilter = "";
     this.__disposer = this.__disposer || [];
 
-    
     // get children, related content, or prev and next pages
     this.__disposer.push(
       autorun((_reaction) => {
@@ -48,32 +46,46 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
           if (activeItem) {
             this.activeItem = activeItem;
             // find parent of activeItem
-            this.activeParent = store.findItem(activeItem.parent)||"";
+            this.activeParent = store.findItem(activeItem.parent) || "";
             const children = store.getItemChildren(store.activeId);
             this.title = "";
             this.data = [];
             let tmpData = [];
 
-            if (children && children.length > 0) { //display children if available
+            if (children && children.length > 0) {
+              //display children if available
               this.data = [...children];
               this.title = (this.activeItem && this.activeItem.title) || ""; // Use explicit null check and a fallback value
-            } else if(this.activeItem.metadata && this.activeItem.metadata.relatedItems) { //display related items if available (items may carry no metadata at all)
+            } else if (
+              this.activeItem.metadata &&
+              this.activeItem.metadata.relatedItems
+            ) {
+              //display related items if available (items may carry no metadata at all)
 
               this.title = "Related Content";
-              let relatedItem = store.findItem(activeItem.metadata.relatedItems);
-              if (!this.data.some((item) => item.id === relatedItem.id)) { //check for duplicates
-               tmpData.push(relatedItem);
+              let relatedItem = store.findItem(
+                activeItem.metadata.relatedItems,
+              );
+              if (!this.data.some((item) => item.id === relatedItem.id)) {
+                //check for duplicates
+                tmpData.push(relatedItem);
               }
               this.data = [...tmpData];
-
-            } else if(this.activeParent) { //display prev and next pages if available
+            } else if (this.activeParent) {
+              //display prev and next pages if available
               this.title = "Related Content";
-              let siblingsArray = [...store.getItemChildren(this.activeParent.id)];
-              let activeIndex = siblingsArray.findIndex((item) => item.id === this.activeItem.id);
-              if (siblingsArray[activeIndex - 1]) { //check for previous item
+              let siblingsArray = [
+                ...store.getItemChildren(this.activeParent.id),
+              ];
+              let activeIndex = siblingsArray.findIndex(
+                (item) => item.id === this.activeItem.id,
+              );
+              if (siblingsArray[activeIndex - 1]) {
+                //check for previous item
                 tmpData.push(siblingsArray[activeIndex - 1]);
               }
-              if (siblingsArray[activeIndex + 1]) { //check for next item
+              if (siblingsArray[activeIndex + 1]) {
+                //check for next item
                 tmpData.push(siblingsArray[activeIndex + 1]);
               }
               this.data = [...tmpData];
@@ -82,7 +94,6 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
         });
       }),
     );
-    
   }
 
   // Lit reactive properties
@@ -97,184 +108,193 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
   // Lit scoped styles
   static get styles() {
-    return [super.styles,
-    css`
-      :host {
-        display: block;
-        color: var(--text-color);
-        z-index: 2;
-        width: 100%;
+    return [
+      super.styles,
+      css`
+        :host {
+          display: block;
+          color: var(--text-color);
+          z-index: 2;
+          width: 100%;
+        }
+        * {
+          box-sizing: border-box;
+        }
+        button {
+          all: unset;
+          cursor: pointer;
+        }
 
-      }
-      *{
-        box-sizing: border-box;
-      }
-      button {
-        all: unset;
-        cursor: pointer;
-      }
+        .container-background {
+          margin: auto;
+          max-width: var(--max-width);
+          background-color: var(--bg-color);
 
-      .container-background{
-        margin: auto;
-        max-width: var(--max-width); 
-        background-color: var(--bg-color);
+          width: 100%;
+          padding: var(--page-padding);
+          padding-bottom: 30px;
+        }
+        .projects-header {
+          display: flex;
+          justify-content: space-between;
+          padding: 30px 0;
+          height: 35px;
+          align-items: center;
+          box-sizing: content-box;
+          max-width: 100%;
+        }
+        .grid-title {
+          font-size: 1rem;
+          font-weight: 800;
+          letter-spacing: 1.7px;
+        }
+        .filters {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .filter:hover,
+        .filter:active,
+        .filter:focus-visible {
+          cursor: pointer;
+          background-color: #1f1f1f;
+        }
+        /* Strengthen keyboard focus indicator on filter buttons (WCAG 2.4.7) */
+        .filter:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
 
-        width: 100%;
-        padding: var(--page-padding);
-        padding-bottom: 30px;
-      }
-      .projects-header{
-        display: flex;
-        justify-content: space-between;
-        padding: 30px 0;
-        height: 35px;
-        align-items: center;
-        box-sizing: content-box;
-        max-width: 100%;
-      }
-      .grid-title{
-        font-size: 1rem;
-        font-weight: 800;
-        letter-spacing: 1.7px;
-
-      }
-      .filters{
-        display: flex;
-        flex-wrap: wrap;
-
-      }
-      .filter:hover, .filter:active, .filter:focus-visible {
-        cursor: pointer;
-        background-color: #1f1f1f;
-  
-      }
-      /* Strengthen keyboard focus indicator on filter buttons (WCAG 2.4.7) */
-      .filter:focus-visible {
-        outline: 2px solid currentColor;
-        outline-offset: 2px;
-      }
-
-      .filter{
-        font-family: "Inter", "Inter Placeholder", sans-serif;
-        font-size: 1rem;
-        color: #b3b3b3; /* lightened from #999 to meet >=4.5:1 contrast on #111 bg */
-        padding: 8px 12px;
-        border-radius: 24px;
-      }
-      .card-container {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-        gap: 45px;
-        justify-content: center;
-        overflow: hidden;
-        max-width: var(--max-width); 
-      }
-
-      glossy-portfolio-card{
-        height: auto;
-      }
-
-
-      h3 span {
-        font-size: var(--glossy-portfolio-label-font-size, var(--ddd-font-size-s));
-      }
-      .filter.active {
-        font-weight: bold;
-      }
-
-      @media (max-width: 575.98px) {
-        .projects-header{
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 12px;
-          height: auto;
+        .filter {
+          font-family: "Inter", "Inter Placeholder", sans-serif;
+          font-size: 1rem;
+          color: #b3b3b3; /* lightened from #999 to meet >=4.5:1 contrast on #111 bg */
+          padding: 8px 12px;
+          border-radius: 24px;
         }
         .card-container {
-         grid-template-columns: 1fr;
-         gap: 25px;
-
+          display: grid;
+          grid-template-columns: repeat(2, minmax(200px, 1fr));
+          gap: 45px;
+          justify-content: center;
+          overflow: hidden;
+          max-width: var(--max-width);
         }
 
-      }
+        glossy-portfolio-card {
+          height: auto;
+        }
 
-    `];
+        h3 span {
+          font-size: var(
+            --glossy-portfolio-label-font-size,
+            var(--ddd-font-size-s)
+          );
+        }
+        .filter.active {
+          font-weight: bold;
+        }
+
+        @media (max-width: 575.98px) {
+          .projects-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            height: auto;
+          }
+          .card-container {
+            grid-template-columns: 1fr;
+            gap: 25px;
+          }
+        }
+      `,
+    ];
   }
 
   // Lit render the HTML
   render() {
-return html`
-${this.data.length > 0 ?   html`        
-  <div class="container-background">
-    <div class="projects-header">
-
-      <div class="grid-title">${this.title.toUpperCase()}</div>
-      <div class="filters">
-        ${this.displayFilters()}
-      </div>
-
-    </div>
-    <div class="card-container">
-      ${this.filteredData.map((item)=>{ return html`
-          <glossy-portfolio-card class="card" 
-          title="${item.title}" 
-          thumbnail=${item.metadata && item.metadata.image ?
-          item.metadata.image
-          : (store.manifest && store.manifest.metadata && store.manifest.metadata.site ? store.manifest.metadata.site.logo : '')}
-          slug="${item.slug}"
-          >
-        </glossy-portfolio-card>
-        `})}
-      </div> 
-  </div> `
-  :  html``
+    return html`
+      ${this.data.length > 0
+        ? html`
+            <div class="container-background">
+              <div class="projects-header">
+                <div class="grid-title">${this.title.toUpperCase()}</div>
+                <div class="filters">${this.displayFilters()}</div>
+              </div>
+              <div class="card-container">
+                ${this.filteredData.map((item) => {
+                  return html`
+                    <glossy-portfolio-card
+                      class="card"
+                      title="${item.title}"
+                      thumbnail=${item.metadata && item.metadata.image
+                        ? item.metadata.image
+                        : store.manifest &&
+                            store.manifest.metadata &&
+                            store.manifest.metadata.site
+                          ? store.manifest.metadata.site.logo
+                          : ""}
+                      slug="${item.slug}"
+                    >
+                    </glossy-portfolio-card>
+                  `;
+                })}
+              </div>
+            </div>
+          `
+        : html``}
+    `;
   }
-`;}
 
   displayFilters() {
     //display/print filters (top left of the grid)
 
-    if(this.filtersList.length > 0){
+    if (this.filtersList.length > 0) {
       return html`
-      <button class="filter active" name="all" @click="${this.updateFilter}">${this.t.all}</button>
-      ${Array.from(this.filtersList).map((filter) => html`
-        <button @click="${this.updateFilter}" name="${filter}"  class="filter"> 
-          ${this.capitalizeWords(filter)} 
+        <button class="filter active" name="all" @click="${this.updateFilter}">
+          ${this.t.all}
         </button>
-      `)}
-    `;
+        ${Array.from(this.filtersList).map(
+          (filter) => html`
+            <button
+              @click="${this.updateFilter}"
+              name="${filter}"
+              class="filter"
+            >
+              ${this.capitalizeWords(filter)}
+            </button>
+          `,
+        )}
+      `;
     }
-
- 
   }
 
   capitalizeWords(sentence) {
     return sentence
-      .split(" ")                             
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1)) 
-      .join(" ");                             
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   }
 
   updated(changedProperties) {
     super.updated(changedProperties);
     if (changedProperties.has("data")) {
-
       // Reset filters and filteredData when data changes (when changing pages).
       // The all button only exists while a grid is rendered, so guard for a
       // navigation that lands on a page with no children, related items, or
       // siblings (an empty grid renders no filter buttons at all).
-      if(this.filtersList.length > 0){
+      if (this.filtersList.length > 0) {
         this.activeFilter = "all";
         let all = this.renderRoot.querySelector('[name="all"]');
         if (all) {
-          all.classList.add('active'); //set active filter to "all"
+          all.classList.add("active"); //set active filter to "all"
         }
       }
 
-      if(this.data && this.data.length > 0){  
+      if (this.data && this.data.length > 0) {
         // if there is data, set filteredData to data and populate filtersList
-        this.filteredData = this.data; 
+        this.filteredData = this.data;
         this.filtersList = [];
-        
+
         this.data.forEach((d) => {
           // metadata.tags is an array in canonical site.json; older sites
           // may still store a comma-separated string
@@ -289,7 +309,8 @@ ${this.data.length > 0 ?   html`
           }
           const firstTag = tagList.length > 0 ? String(tagList[0]).trim() : "";
           if (firstTag !== "") {
-            if (!this.filtersList.includes(firstTag)) { //check for duplicate
+            if (!this.filtersList.includes(firstTag)) {
+              //check for duplicate
               this.filtersList.push(firstTag);
             }
           }
@@ -299,9 +320,7 @@ ${this.data.length > 0 ?   html`
         this.filteredData = [];
         this.filtersList = [];
       }
-      
     }
-
   }
 
   disconnectedCallback() {
@@ -320,44 +339,43 @@ ${this.data.length > 0 ?   html`
   }
 
   //called when a filter is clicked
-  updateFilter(e){
+  updateFilter(e) {
     const currentTarget = e.currentTarget;
     const reduceMotion =
       globalThis.matchMedia &&
-      globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!reduceMotion && globalThis.document.startViewTransition) {
       const transition = globalThis.document.startViewTransition(() => {
         this._updateFilter(currentTarget);
       });
       transition.ready.catch(() => {});
-    }
-    else {
+    } else {
       this._updateFilter(currentTarget);
     }
   }
-  _updateFilter(currentTarget){   
-
+  _updateFilter(currentTarget) {
     //bold active filter
-    const filters = this.renderRoot.querySelectorAll('.filter');
-    filters.forEach(el => el.classList.remove('active')); //remove active class from all filters
-    currentTarget.classList.add('active');
+    const filters = this.renderRoot.querySelectorAll(".filter");
+    filters.forEach((el) => el.classList.remove("active")); //remove active class from all filters
+    currentTarget.classList.add("active");
 
     //set activeFilter to the name of the clicked filter and call filterData
     this.activeFilter = currentTarget.getAttribute("name"); //filter name: "All" or "Blo"
     this.filterData(this.activeFilter);
   }
-      
-  // Filter data based on activeFilter
-  filterData(){
 
-    if(this.activeFilter === 'all'){
-      this.filteredData=this.data;
-    } else{
+  // Filter data based on activeFilter
+  filterData() {
+    if (this.activeFilter === "all") {
+      this.filteredData = this.data;
+    } else {
       this.filteredData = [];
-      this.filteredData = this.data.filter((item) => 
-        item.metadata && item.metadata.tags && item.metadata.tags.includes(this.activeFilter)
+      this.filteredData = this.data.filter(
+        (item) =>
+          item.metadata &&
+          item.metadata.tags &&
+          item.metadata.tags.includes(this.activeFilter),
       );
-    
     }
   }
 }

@@ -1,13 +1,11 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect } from "@open-wc/testing";
 import "../journey-theme.js";
 
 describe("JourneyTheme test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <journey-theme
-        title="title"
-      ></journey-theme>
+      <journey-theme title="title"></journey-theme>
     `);
   });
 

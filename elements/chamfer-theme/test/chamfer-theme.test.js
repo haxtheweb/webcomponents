@@ -1,13 +1,11 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect } from "@open-wc/testing";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import "../chamfer-theme.js";
 
 describe("ChamferTheme test", () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(html`
-      <chamfer-theme></chamfer-theme>
-    `);
+    element = await fixture(html` <chamfer-theme></chamfer-theme> `);
   });
 
   it("basic will it blend", async () => {
@@ -86,38 +84,43 @@ describe("ChamferTheme behavior", () => {
     expect(root.querySelector("div.banner[part='banner']") === null).to.equal(
       false,
     );
-    expect(root.querySelector("div.banner site-region[name='banner']") === null).to.equal(
-      false,
-    );
-    expect(root.querySelector("div.banner slot[name='banner']") === null).to.equal(
-      false,
-    );
+    expect(
+      root.querySelector("div.banner site-region[name='banner']") === null,
+    ).to.equal(false);
+    expect(
+      root.querySelector("div.banner slot[name='banner']") === null,
+    ).to.equal(false);
     const bodyArea = root.querySelector("div.body-area[part='body-area']");
     expect(bodyArea === null).to.equal(false);
     expect(
       root.querySelector("div.site-menu-col[part='site-menu']") === null,
     ).to.equal(false);
     expect(
-      root.querySelector("div.below-menu-region site-region[name='belowMenu']") ===
+      root.querySelector(
+        "div.below-menu-region site-region[name='belowMenu']",
+      ) === null,
+    ).to.equal(false);
+    expect(
+      root.querySelector("div.below-menu-region slot[name='below-menu']") ===
         null,
     ).to.equal(false);
     expect(
-      root.querySelector("div.below-menu-region slot[name='below-menu']") === null,
-    ).to.equal(false);
-    expect(
-      root.querySelector("main article#contentcontainer[tabindex='-1']") === null,
+      root.querySelector("main article#contentcontainer[tabindex='-1']") ===
+        null,
     ).to.equal(false);
     expect(
       root.querySelector("article site-breadcrumb[part='page-breadcrumb']") ===
         null,
     ).to.equal(false);
     expect(
-      root.querySelector("article site-active-title[part='page-title']") === null,
+      root.querySelector("article site-active-title[part='page-title']") ===
+        null,
     ).to.equal(false);
     expect(root.querySelector("article #slot slot") === null).to.equal(false);
     expect(
-      root.querySelector("footer[part='footer'] site-region[name='footerPrimary']") ===
-        null,
+      root.querySelector(
+        "footer[part='footer'] site-region[name='footerPrimary']",
+      ) === null,
     ).to.equal(false);
     expect(root.querySelector("footer slot[name='footer']") === null).to.equal(
       false,

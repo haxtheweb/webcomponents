@@ -22,12 +22,13 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * @title Design docs
  * `Inspired by Figma documentation for HAXcms`
- * 
+ *
  * @demo index.html
  * @element haxma-theme
  */
-export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme))) {
-
+export class HaxmaTheme extends I18NMixin(
+  HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)),
+) {
   static get tag() {
     return "haxma-theme";
   }
@@ -60,8 +61,8 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
     this.manifest = {};
     this.mobileNavOpen = false;
     this.searchOpen = false;
-    this.nextPage = '';
-    this.prevPage = '';
+    this.nextPage = "";
+    this.prevPage = "";
     this.__disposer = this.__disposer || [];
     // Set up reactivity to HAXcms store
     this.__disposer.push(
@@ -72,7 +73,7 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
         });
       }),
     );
-    
+
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
@@ -81,10 +82,12 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
         });
       }),
     );
-    
+
     this.__disposer.push(
       autorun((_reaction) => {
-        const _mobx_val_0 = toJS(store.manifest && store.manifest.items ? store.manifest.items : []);
+        const _mobx_val_0 = toJS(
+          store.manifest && store.manifest.items ? store.manifest.items : [],
+        );
         Promise.resolve().then(() => {
           this._items = _mobx_val_0;
         });
@@ -99,8 +102,12 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
       _items: { type: Array },
       activeItem: { type: Object },
       manifest: { type: Object },
-      mobileNavOpen: { type: Boolean, reflect: true, attribute: 'mobile-nav-open' },
-      searchOpen: { type: Boolean, reflect: true, attribute: 'search-open' },
+      mobileNavOpen: {
+        type: Boolean,
+        reflect: true,
+        attribute: "mobile-nav-open",
+      },
+      searchOpen: { type: Boolean, reflect: true, attribute: "search-open" },
       nextPage: { type: String },
       prevPage: { type: String },
     };
@@ -121,45 +128,49 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
              this theme and previously left dark mode resolving to
              near-light backgrounds with near-black text. */
           color-scheme: light dark;
-          --haxma-primary: #5551FF;
-          --haxma-primary-hover: #4942E6;
+          --haxma-primary: #5551ff;
+          --haxma-primary-hover: #4942e6;
           --haxma-text: #545454;
           --haxma-text-dark: var(--ddd-theme-default-black, #000000);
-          --haxma-bg: var(--ddd-theme-default-white, #FFFFFF);
-          --haxma-border: var(--ddd-theme-default-limestoneLight, #E5E7EB);
-          --haxma-border-light: var(--ddd-theme-default-limestoneMaxLight, #F3F4F6);
+          --haxma-bg: var(--ddd-theme-default-white, #ffffff);
+          --haxma-border: var(--ddd-theme-default-limestoneLight, #e5e7eb);
+          --haxma-border-light: var(
+            --ddd-theme-default-limestoneMaxLight,
+            #f3f4f6
+          );
           --haxma-nav-height: var(--ddd-spacing-18, 72px);
         }
-        
+
         body {
           margin: 0;
           padding: 0;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+            Arial, sans-serif;
           background-color: var(--haxma-bg);
           color: var(--haxma-text);
           line-height: 1.6;
         }
-        
+
         body.dark-mode {
-          background-color: #1A1A1A;
-          color: #E5E5E5;
-          --haxma-primary: #8B88FF;
-          --haxma-primary-hover: #A5A2FF;
-          --haxma-bg: #1A1A1A;
-          --haxma-text: #E5E5E5;
+          background-color: #1a1a1a;
+          color: #e5e5e5;
+          --haxma-primary: #8b88ff;
+          --haxma-primary-hover: #a5a2ff;
+          --haxma-bg: #1a1a1a;
+          --haxma-text: #e5e5e5;
           --haxma-text-dark: var(--ddd-theme-default-white, #ffffff);
           --haxma-border: #404040;
           --haxma-border-light: var(--ddd-theme-default-coalyGray, #262626);
         }
-        
+
         @media (prefers-color-scheme: dark) {
           body:not(.light-mode) {
-            background-color: #1A1A1A;
-            color: #E5E5E5;
-            --haxma-primary: #8B88FF;
-            --haxma-primary-hover: #A5A2FF;
-            --haxma-bg: #1A1A1A;
-            --haxma-text: #E5E5E5;
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+            --haxma-primary: #8b88ff;
+            --haxma-primary-hover: #a5a2ff;
+            --haxma-bg: #1a1a1a;
+            --haxma-text: #e5e5e5;
             --haxma-text-dark: var(--ddd-theme-default-white, #ffffff);
             --haxma-border: #404040;
             --haxma-border-light: var(--ddd-theme-default-coalyGray, #262626);
@@ -171,576 +182,585 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
 
   // Lit scoped styles
   static get styles() {
-    return [super.styles,
-    css`
-      :host {
-        display: block;
-        min-height: 100vh;
-        background-color: var(--haxma-bg);
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-        line-height: 1.6;
-        color-scheme: light;
-        --haxma-primary: #5551FF;
-        --haxma-primary-hover: #4942E6;
-        --haxma-text: #545454;
-        --haxma-text-dark: var(--ddd-theme-default-black, #000000);
-        --haxma-bg: var(--ddd-theme-default-white, #FFFFFF);
-        --haxma-border: var(--ddd-theme-default-limestoneLight, #E5E7EB);
-        --haxma-border-light: var(--ddd-theme-default-limestoneMaxLight, #F3F4F6);
-        --haxma-nav-height: var(--ddd-spacing-18, 72px);
-      }
-      
-      :host([dark-mode]) {
-        color-scheme: dark;
-        background-color: #1A1A1A;
-        --haxma-primary: #8B88FF;
-        --haxma-primary-hover: #A5A2FF;
-        --haxma-bg: #1A1A1A;
-        --haxma-text: #E5E5E5;
-        --haxma-text-dark: var(--ddd-theme-default-white, #ffffff);
-        --haxma-border: #404040;
-        --haxma-border-light: var(--ddd-theme-default-coalyGray, #262626);
-      }
-      
-      .app-container {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        overflow-x: hidden;
-      }
-      
-      /* Header styles */
-      .site-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 50;
-        background-color: var(--haxma-bg);
-        border-bottom: 1px solid var(--haxma-border);
-        height: var(--haxma-nav-height);
-        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-      }
-      
-      /* Adjust header position when user is logged in */
-      :host([is-logged-in]) .site-header {
-        top: 56px;
-      }
-      
-      .header-nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 100%;
-        padding: 0 var(--ddd-spacing-4);
-        max-width: 1400px;
-        margin: 0 auto;
-        min-width: 0;
-      }
-      
-      @media (min-width: 768px) {
+    return [
+      super.styles,
+      css`
+        :host {
+          display: block;
+          min-height: 100vh;
+          background-color: var(--haxma-bg);
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+            Arial, sans-serif;
+          line-height: 1.6;
+          color-scheme: light;
+          --haxma-primary: #5551ff;
+          --haxma-primary-hover: #4942e6;
+          --haxma-text: #545454;
+          --haxma-text-dark: var(--ddd-theme-default-black, #000000);
+          --haxma-bg: var(--ddd-theme-default-white, #ffffff);
+          --haxma-border: var(--ddd-theme-default-limestoneLight, #e5e7eb);
+          --haxma-border-light: var(
+            --ddd-theme-default-limestoneMaxLight,
+            #f3f4f6
+          );
+          --haxma-nav-height: var(--ddd-spacing-18, 72px);
+        }
+
+        :host([dark-mode]) {
+          color-scheme: dark;
+          background-color: #1a1a1a;
+          --haxma-primary: #8b88ff;
+          --haxma-primary-hover: #a5a2ff;
+          --haxma-bg: #1a1a1a;
+          --haxma-text: #e5e5e5;
+          --haxma-text-dark: var(--ddd-theme-default-white, #ffffff);
+          --haxma-border: #404040;
+          --haxma-border-light: var(--ddd-theme-default-coalyGray, #262626);
+        }
+
+        .app-container {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          overflow-x: hidden;
+        }
+
+        /* Header styles */
+        .site-header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 50;
+          background-color: var(--haxma-bg);
+          border-bottom: 1px solid var(--haxma-border);
+          height: var(--haxma-nav-height);
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+        }
+
+        /* Adjust header position when user is logged in */
+        :host([is-logged-in]) .site-header {
+          top: 56px;
+        }
+
         .header-nav {
-          padding: 0 var(--ddd-spacing-8);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 100%;
+          padding: 0 var(--ddd-spacing-4);
+          max-width: 1400px;
+          margin: 0 auto;
+          min-width: 0;
         }
-      }
-      
-      .nav-brand {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: var(--haxma-text-dark);
-        font-weight: 700;
-        font-size: 1.2rem;
-        min-width: 0;
-        flex-shrink: 1;
-        overflow: hidden;
-      }
-      
-      .nav-brand span {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      
-      @media (min-width: 768px) {
+
+        @media (min-width: 768px) {
+          .header-nav {
+            padding: 0 var(--ddd-spacing-8);
+          }
+        }
+
         .nav-brand {
-          font-size: 1.5rem;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: var(--haxma-text-dark);
+          font-weight: 700;
+          font-size: 1.2rem;
+          min-width: 0;
+          flex-shrink: 1;
+          overflow: hidden;
         }
-      }
-      
-      .nav-brand:hover {
-        color: var(--haxma-primary);
-      }
-      
-      /* Top navigation menu */
-      .nav-menu {
-        display: none;
-        align-items: center;
-        gap: var(--ddd-spacing-8);
-      }
-      
-      @media (min-width: 768px) {
+
+        .nav-brand span {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        @media (min-width: 768px) {
+          .nav-brand {
+            font-size: 1.5rem;
+          }
+        }
+
+        .nav-brand:hover {
+          color: var(--haxma-primary);
+        }
+
+        /* Top navigation menu */
         .nav-menu {
+          display: none;
+          align-items: center;
+          gap: var(--ddd-spacing-8);
+        }
+
+        @media (min-width: 768px) {
+          .nav-menu {
+            display: flex;
+          }
+        }
+
+        .nav-menu site-top-menu {
+          --site-top-menu-bg: transparent;
+          --site-top-menu-link-color: var(--haxma-text);
+          --site-top-menu-link-active-color: var(--haxma-primary);
+          --site-top-menu-item-active-background-color: transparent;
+          --site-top-menu-border-color: transparent;
+          --site-top-menu-container-padding: 0;
+        }
+
+        /* Header controls */
+        .header-controls {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-4);
+        }
+
+        .search-button {
+          --site-modal-button-background-color: var(--haxma-border-light);
+          --site-modal-button-border: 1px solid var(--haxma-border);
+          --site-modal-button-border-radius: 0.5rem;
+          --site-modal-button-padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          --site-modal-button-font-size: 0.875rem;
+          --site-modal-button-color: var(--haxma-text);
+        }
+
+        .search-button:hover {
+          --site-modal-button-background-color: var(--haxma-border);
+        }
+
+        .mobile-menu-btn {
+          display: block;
+          padding: var(--ddd-spacing-2);
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          color: var(--haxma-text);
+        }
+
+        @media (min-width: 768px) {
+          .mobile-menu-btn {
+            display: none;
+          }
+        }
+
+        .mobile-menu-btn:hover {
+          color: var(--haxma-primary);
+        }
+
+        /* Mobile overlay */
+        .mobile-nav-overlay {
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: 0;
+          border: 0;
+          cursor: pointer;
+          appearance: none;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 40;
+          opacity: 0;
+          visibility: hidden;
+          transition:
+            opacity var(--ddd-duration-normal, 0.3s) ease,
+            visibility var(--ddd-duration-normal, 0.3s) ease;
+        }
+
+        :host([mobile-nav-open]) .mobile-nav-overlay {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        @media (min-width: 768px) {
+          .mobile-nav-overlay {
+            display: none;
+          }
+        }
+
+        /* Mobile navigation */
+        .mobile-nav {
+          position: fixed;
+          top: var(--haxma-nav-height);
+          left: -100%;
+          width: 80%;
+          max-width: 300px;
+          height: calc(100vh - var(--haxma-nav-height));
+          background-color: var(--haxma-bg);
+          border-right: 1px solid var(--haxma-border);
+          transition: left var(--ddd-duration-normal, 0.3s) ease;
+          overflow-y: auto;
+          z-index: 45;
+          padding: var(--ddd-spacing-4);
+        }
+
+        :host([is-logged-in]) .mobile-nav {
+          top: calc(var(--haxma-nav-height) + 56px);
+          height: calc(100vh - var(--haxma-nav-height) - 56px);
+        }
+
+        :host([mobile-nav-open]) .mobile-nav {
+          left: 0;
+        }
+
+        @media (min-width: 768px) {
+          .mobile-nav {
+            display: none;
+          }
+        }
+
+        .mobile-close-btn {
+          display: block;
+          margin-left: auto;
+          padding: var(--ddd-spacing-2);
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          color: var(--haxma-text);
+          margin-bottom: var(--ddd-spacing-4);
+        }
+
+        /* Main content layout */
+        .main-content {
+          flex: 1;
+          display: flex;
+          margin-top: var(--haxma-nav-height);
+          min-height: calc(100vh - var(--haxma-nav-height));
+          min-width: 0;
+        }
+
+        :host([is-logged-in]) .main-content {
+          margin-top: calc(var(--haxma-nav-height) + 56px);
+          min-height: calc(100vh - var(--haxma-nav-height) - 56px);
+        }
+
+        .content-area {
+          flex: 1;
+          max-width: 1000px;
+          padding: var(--ddd-spacing-4);
+          overflow-x: hidden;
+          min-width: 0;
+        }
+
+        @media (min-width: 768px) {
+          .content-area {
+            padding: var(--ddd-spacing-8);
+          }
+        }
+
+        .sidebar-toc {
+          width: 280px;
+          padding: var(--ddd-spacing-8) var(--ddd-spacing-4);
+          border-left: 1px solid var(--haxma-border);
+          background-color: var(--haxma-bg);
+          display: none;
+          position: relative;
+          align-self: flex-start;
+        }
+
+        @media (min-width: 768px) {
+          .sidebar-toc {
+            display: block;
+          }
+        }
+
+        .toc-title {
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: var(--haxma-text);
+          margin-bottom: var(--ddd-spacing-4);
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+
+        site-menu {
           display: flex;
         }
-      }
-      
-      .nav-menu site-top-menu {
-        --site-top-menu-bg: transparent;
-        --site-top-menu-link-color: var(--haxma-text);
-        --site-top-menu-link-active-color: var(--haxma-primary);
-        --site-top-menu-item-active-background-color: transparent;
-        --site-top-menu-border-color: transparent;
-        --site-top-menu-container-padding: 0;
-      }
-      
-      /* Header controls */
-      .header-controls {
-        display: flex;
-        align-items: center;
-        gap: var(--ddd-spacing-4);
-      }
-      
-      .search-button {
-        --site-modal-button-background-color: var(--haxma-border-light);
-        --site-modal-button-border: 1px solid var(--haxma-border);
-        --site-modal-button-border-radius: 0.5rem;
-        --site-modal-button-padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-        --site-modal-button-font-size: 0.875rem;
-        --site-modal-button-color: var(--haxma-text);
-      }
-      
-      .search-button:hover {
-        --site-modal-button-background-color: var(--haxma-border);
-      }
-      
-      .mobile-menu-btn {
-        display: block;
-        padding: var(--ddd-spacing-2);
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        color: var(--haxma-text);
-      }
-      
-      @media (min-width: 768px) {
-        .mobile-menu-btn {
-          display: none;
-        }
-      }
-      
-      .mobile-menu-btn:hover {
-        color: var(--haxma-primary);
-      }
-      
-      /* Mobile overlay */
-      .mobile-nav-overlay {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 0;
-        border: 0;
-        cursor: pointer;
-        appearance: none;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 40;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity var(--ddd-duration-normal, 0.3s) ease, visibility var(--ddd-duration-normal, 0.3s) ease;
-      }
-      
-      :host([mobile-nav-open]) .mobile-nav-overlay {
-        opacity: 1;
-        visibility: visible;
-      }
-      
-      @media (min-width: 768px) {
-        .mobile-nav-overlay {
-          display: none;
-        }
-      }
-      
-      /* Mobile navigation */
-      .mobile-nav {
-        position: fixed;
-        top: var(--haxma-nav-height);
-        left: -100%;
-        width: 80%;
-        max-width: 300px;
-        height: calc(100vh - var(--haxma-nav-height));
-        background-color: var(--haxma-bg);
-        border-right: 1px solid var(--haxma-border);
-        transition: left var(--ddd-duration-normal, 0.3s) ease;
-        overflow-y: auto;
-        z-index: 45;
-        padding: var(--ddd-spacing-4);
-      }
-      
-      :host([is-logged-in]) .mobile-nav {
-        top: calc(var(--haxma-nav-height) + 56px);
-        height: calc(100vh - var(--haxma-nav-height) - 56px);
-      }
-      
-      :host([mobile-nav-open]) .mobile-nav {
-        left: 0;
-      }
-      
-      @media (min-width: 768px) {
-        .mobile-nav {
-          display: none;
-        }
-      }
-      
-      .mobile-close-btn {
-        display: block;
-        margin-left: auto;
-        padding: var(--ddd-spacing-2);
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        color: var(--haxma-text);
-        margin-bottom: var(--ddd-spacing-4);
-      }
-      
-      /* Main content layout */
-      .main-content {
-        flex: 1;
-        display: flex;
-        margin-top: var(--haxma-nav-height);
-        min-height: calc(100vh - var(--haxma-nav-height));
-        min-width: 0;
-      }
-      
-      :host([is-logged-in]) .main-content {
-        margin-top: calc(var(--haxma-nav-height) + 56px);
-        min-height: calc(100vh - var(--haxma-nav-height) - 56px);
-      }
-      
-      .content-area {
-        flex: 1;
-        max-width: 1000px;
-        padding: var(--ddd-spacing-4);
-        overflow-x: hidden;
-        min-width: 0;
-      }
-      
-      @media (min-width: 768px) {
-        .content-area {
-          padding: var(--ddd-spacing-8);
-        }
-      }
-      
-      .sidebar-toc {
-        width: 280px;
-        padding: var(--ddd-spacing-8) var(--ddd-spacing-4);
-        border-left: 1px solid var(--haxma-border);
-        background-color: var(--haxma-bg);
-        display: none;
-        position: relative;
-        align-self: flex-start;
-      }
-      
-      @media (min-width: 768px) {
-        .sidebar-toc {
-          display: block;
-        }
-      }
-      
-      .toc-title {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--haxma-text);
-        margin-bottom: var(--ddd-spacing-4);
-        display: flex;
-        align-items: center;
-        gap: var(--ddd-spacing-2);
-      }
 
-      site-menu {
-        display: flex;
-      }
-      
-      site-menu-content {
-        --site-menu-content-background-color: transparent;
-        --site-menu-content-link-color: var(--haxma-text);
-        --site-menu-content-link-active-color: var(--haxma-primary);
-        --site-menu-content-border-color: var(--haxma-border);
-        font-size: 0.875rem;
-        position: sticky;
-        max-height: calc(100vh - var(--haxma-nav-height) - 4rem);
-        overflow-y: auto;
-        background-color: var(--haxma-bg);
-        position: fixed;
-        top: 20vh;
-      }
-      
-      :host([is-logged-in]) site-menu-content {
-        top: calc(20vh + 56px);
-        max-height: calc(100vh - var(--haxma-nav-height) - 56px - 4rem);
-      }
-      
-      /* Breadcrumbs */
-      .breadcrumb-area {
-        margin-bottom: var(--ddd-spacing-4);
-      }
-      
-      site-breadcrumb {
-        --site-breadcrumb-color: var(--haxma-text);
-        --site-breadcrumb-active-color: var(--haxma-primary);
-        --site-breadcrumb-separator-color: var(--haxma-border);
-        font-size: 0.875rem;
-      }
-      
-      /* Article header */
-      .article-header {
-        margin-bottom: var(--ddd-spacing-8);
-      }
-      
-      .article-header h1 {
-        color: var(--haxma-text-dark);
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin: var(--ddd-spacing-4) 0;
-        line-height: 1.2;
-      }
-      
-      @media (max-width: 768px) {
+        site-menu-content {
+          --site-menu-content-background-color: transparent;
+          --site-menu-content-link-color: var(--haxma-text);
+          --site-menu-content-link-active-color: var(--haxma-primary);
+          --site-menu-content-border-color: var(--haxma-border);
+          font-size: 0.875rem;
+          position: sticky;
+          max-height: calc(100vh - var(--haxma-nav-height) - 4rem);
+          overflow-y: auto;
+          background-color: var(--haxma-bg);
+          position: fixed;
+          top: 20vh;
+        }
+
+        :host([is-logged-in]) site-menu-content {
+          top: calc(20vh + 56px);
+          max-height: calc(100vh - var(--haxma-nav-height) - 56px - 4rem);
+        }
+
+        /* Breadcrumbs */
+        .breadcrumb-area {
+          margin-bottom: var(--ddd-spacing-4);
+        }
+
+        site-breadcrumb {
+          --site-breadcrumb-color: var(--haxma-text);
+          --site-breadcrumb-active-color: var(--haxma-primary);
+          --site-breadcrumb-separator-color: var(--haxma-border);
+          font-size: 0.875rem;
+        }
+
+        /* Article header */
+        .article-header {
+          margin-bottom: var(--ddd-spacing-8);
+        }
+
         .article-header h1 {
-          font-size: 2rem;
-          margin: var(--ddd-spacing-2) 0;
+          color: var(--haxma-text-dark);
+          font-size: 2.5rem;
+          font-weight: 700;
+          margin: var(--ddd-spacing-4) 0;
+          line-height: 1.2;
         }
-      }
-      
-      /* Article content */
-      .article-content {
-        color: var(--haxma-text);
-        font-size: 1rem;
-        line-height: 1.7;
-      }
-      
-      .article-content h2,
-      .article-content h3,
-      .article-content h4 {
-        color: var(--haxma-text-dark);
-        margin: var(--ddd-spacing-8) 0 var(--ddd-spacing-4) 0;
-      }
-      
-      /* Page navigation */
-      .page-navigation {
-        display: flex;
-        justify-content: space-between;
-        margin-top: var(--ddd-spacing-12);
-        padding-top: var(--ddd-spacing-8);
-        border-top: 1px solid var(--haxma-border);
-        gap: var(--ddd-spacing-4);
-      }
-      
-      .nav-item {
-        flex: 1;
-        max-width: 300px;
-      }
-      
-      .nav-link {
-        display: block;
-        padding: var(--ddd-spacing-4);
-        text-decoration: none;
-        color: var(--haxma-text);
-        border: 1px solid var(--haxma-border);
-        border-radius: 0.5rem;
-        transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
-      }
-      
-      .nav-link:hover {
-        border-color: var(--haxma-primary);
-        background-color: var(--haxma-border-light);
-      }
-      
-      .nav-direction {
-        font-size: 0.875rem;
-        color: var(--haxma-primary);
-        font-weight: 600;
-        margin-bottom: var(--ddd-spacing-1);
-      }
-      
-      .nav-title {
-        font-weight: 500;
-        color: var(--haxma-text-dark);
-      }
-      
-      /* Footer */
-      .site-footer {
-        background-color: var(--haxma-bg);
-        border-top: 1px solid var(--haxma-border);
-        padding: var(--ddd-spacing-8) var(--ddd-spacing-4);
-        margin-top: auto;
-        overflow-x: hidden;
-        z-index: 10;
-      }
-      
-      @media (min-width: 768px) {
+
+        @media (max-width: 768px) {
+          .article-header h1 {
+            font-size: 2rem;
+            margin: var(--ddd-spacing-2) 0;
+          }
+        }
+
+        /* Article content */
+        .article-content {
+          color: var(--haxma-text);
+          font-size: 1rem;
+          line-height: 1.7;
+        }
+
+        .article-content h2,
+        .article-content h3,
+        .article-content h4 {
+          color: var(--haxma-text-dark);
+          margin: var(--ddd-spacing-8) 0 var(--ddd-spacing-4) 0;
+        }
+
+        /* Page navigation */
+        .page-navigation {
+          display: flex;
+          justify-content: space-between;
+          margin-top: var(--ddd-spacing-12);
+          padding-top: var(--ddd-spacing-8);
+          border-top: 1px solid var(--haxma-border);
+          gap: var(--ddd-spacing-4);
+        }
+
+        .nav-item {
+          flex: 1;
+          max-width: 300px;
+        }
+
+        .nav-link {
+          display: block;
+          padding: var(--ddd-spacing-4);
+          text-decoration: none;
+          color: var(--haxma-text);
+          border: 1px solid var(--haxma-border);
+          border-radius: 0.5rem;
+          transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
+        }
+
+        .nav-link:hover {
+          border-color: var(--haxma-primary);
+          background-color: var(--haxma-border-light);
+        }
+
+        .nav-direction {
+          font-size: 0.875rem;
+          color: var(--haxma-primary);
+          font-weight: 600;
+          margin-bottom: var(--ddd-spacing-1);
+        }
+
+        .nav-title {
+          font-weight: 500;
+          color: var(--haxma-text-dark);
+        }
+
+        /* Footer */
         .site-footer {
-          padding: var(--ddd-spacing-12) var(--ddd-spacing-8);
+          background-color: var(--haxma-bg);
+          border-top: 1px solid var(--haxma-border);
+          padding: var(--ddd-spacing-8) var(--ddd-spacing-4);
+          margin-top: auto;
+          overflow-x: hidden;
+          z-index: 10;
         }
-      }
-      
-      .footer-content {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--ddd-spacing-8);
-        padding: 0 var(--ddd-spacing-4);
-      }
-      
-      @media (min-width: 768px) {
+
+        @media (min-width: 768px) {
+          .site-footer {
+            padding: var(--ddd-spacing-12) var(--ddd-spacing-8);
+          }
+        }
+
         .footer-content {
-          grid-template-columns: 1fr 3fr;
-          padding: 0 var(--ddd-spacing-8);
+          max-width: 1400px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: var(--ddd-spacing-8);
+          padding: 0 var(--ddd-spacing-4);
         }
-      }
-      
-      .footer-brand {
-        margin-bottom: var(--ddd-spacing-8);
-      }
-      
-      @media (min-width: 768px) {
+
+        @media (min-width: 768px) {
+          .footer-content {
+            grid-template-columns: 1fr 3fr;
+            padding: 0 var(--ddd-spacing-8);
+          }
+        }
+
         .footer-brand {
-          margin-bottom: 0;
+          margin-bottom: var(--ddd-spacing-8);
         }
-      }
-      
-      .brand-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--haxma-text-dark);
-        margin-bottom: var(--ddd-spacing-2);
-      }
-      
-      .brand-description {
-        color: var(--haxma-text);
-        font-size: 0.875rem;
-      }
-      
-      .footer-section h3 {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--haxma-text-dark);
-        margin-bottom: var(--ddd-spacing-4);
-      }
-      
-      .footer-links {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      
-      .footer-links li {
-        margin-bottom: var(--ddd-spacing-2);
-      }
-      
-      .footer-links a {
-        color: var(--haxma-text);
-        text-decoration: none;
-        font-size: 0.875rem;
-        transition: color 0.2s;
-      }
-      
-      .footer-links a:hover {
-        color: var(--haxma-primary);
-      }
-      
-      .footer-page-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--ddd-spacing-2);
-        word-break: break-word;
-      }
-      
-      @media (min-width: 480px) {
+
+        @media (min-width: 768px) {
+          .footer-brand {
+            margin-bottom: 0;
+          }
+        }
+
+        .brand-title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--haxma-text-dark);
+          margin-bottom: var(--ddd-spacing-2);
+        }
+
+        .brand-description {
+          color: var(--haxma-text);
+          font-size: 0.875rem;
+        }
+
+        .footer-section h3 {
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: var(--haxma-text-dark);
+          margin-bottom: var(--ddd-spacing-4);
+        }
+
+        .footer-links {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .footer-links li {
+          margin-bottom: var(--ddd-spacing-2);
+        }
+
+        .footer-links a {
+          color: var(--haxma-text);
+          text-decoration: none;
+          font-size: 0.875rem;
+          transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+          color: var(--haxma-primary);
+        }
+
         .footer-page-grid {
-          grid-template-columns: repeat(3, 1fr);
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--ddd-spacing-2);
+          word-break: break-word;
         }
-      }
-      
-      @media (min-width: 768px) {
-        .footer-page-grid {
-          grid-template-columns: repeat(4, 1fr);
+
+        @media (min-width: 480px) {
+          .footer-page-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
         }
-      }
-      
-      @media (min-width: 1024px) {
-        .footer-page-grid {
-          grid-template-columns: repeat(5, 1fr);
+
+        @media (min-width: 768px) {
+          .footer-page-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
         }
-      }
-      
-      .footer-page-link {
-        color: var(--haxma-text);
-        text-decoration: none;
-        font-size: 0.875rem;
-        transition: color 0.2s;
-        padding: var(--ddd-spacing-1) 0;
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      
-      .footer-page-link:hover {
-        color: var(--haxma-primary);
-      }
-      
-      /* Keyboard focus indicators (WCAG 2.4.7) */
-      a:focus-visible,
-      button:focus-visible {
-        outline: 2px solid currentColor;
-        outline-offset: 2px;
-      }
-      .nav-link:focus-within {
-        outline: 2px solid var(--haxma-primary);
-        outline-offset: 2px;
-      }
-      
-      /* HAX button styling for better visibility when logged in */
-      :host([is-logged-in]) haxcms-button-add,
-      :host([is-logged-in]) simple-icon-button[part="edit-mode-active"] {
-        --simple-icon-button-color: var(--haxma-primary);
-        --simple-icon-button-background-color: var(--haxma-border-light);
-        --simple-icon-button-border-color: var(--haxma-border);
-      }
-      
-      :host([is-logged-in]) haxcms-button-add:hover,
-      :host([is-logged-in]) simple-icon-button[part="edit-mode-active"]:hover {
-        --simple-icon-button-color: var(--haxma-bg);
-        --simple-icon-button-background-color: var(--haxma-primary);
-      }
-    `];
+
+        @media (min-width: 1024px) {
+          .footer-page-grid {
+            grid-template-columns: repeat(5, 1fr);
+          }
+        }
+
+        .footer-page-link {
+          color: var(--haxma-text);
+          text-decoration: none;
+          font-size: 0.875rem;
+          transition: color 0.2s;
+          padding: var(--ddd-spacing-1) 0;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .footer-page-link:hover {
+          color: var(--haxma-primary);
+        }
+
+        /* Keyboard focus indicators (WCAG 2.4.7) */
+        a:focus-visible,
+        button:focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
+        .nav-link:focus-within {
+          outline: 2px solid var(--haxma-primary);
+          outline-offset: 2px;
+        }
+
+        /* HAX button styling for better visibility when logged in */
+        :host([is-logged-in]) haxcms-button-add,
+        :host([is-logged-in]) simple-icon-button[part="edit-mode-active"] {
+          --simple-icon-button-color: var(--haxma-primary);
+          --simple-icon-button-background-color: var(--haxma-border-light);
+          --simple-icon-button-border-color: var(--haxma-border);
+        }
+
+        :host([is-logged-in]) haxcms-button-add:hover,
+        :host([is-logged-in])
+          simple-icon-button[part="edit-mode-active"]:hover {
+          --simple-icon-button-color: var(--haxma-bg);
+          --simple-icon-button-background-color: var(--haxma-primary);
+        }
+      `,
+    ];
   }
 
   // Helper methods for navigation and search
   toggleMobileNav() {
     this.mobileNavOpen = !this.mobileNavOpen;
   }
-  
+
   closeMobileNav() {
     this.mobileNavOpen = false;
   }
-  
+
   toggleSearch() {
     this.searchOpen = !this.searchOpen;
   }
-  
+
   toggleDarkMode() {
     store.darkMode = !store.darkMode;
   }
-  
+
   __prevPageLabelChanged(e) {
     this.prevPage = e.detail.value;
   }
-  
+
   __nextPageLabelChanged(e) {
     this.nextPage = e.detail.value;
   }
@@ -748,9 +768,9 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
     this.HAXCMSThemeSettings.themeTop =
-    this.shadowRoot.querySelector(".main-content");
+      this.shadowRoot.querySelector(".main-content");
     this.HAXCMSThemeSettings.scrollTarget =
-    this.shadowRoot.querySelector(".main-content");
+      this.shadowRoot.querySelector(".main-content");
   }
   // Lit render the HTML
   render() {
@@ -759,7 +779,9 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
     const site = metadata.site || {};
     return html`
       <div class="app-container">
-        <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
+        <a class="skip-link" href="#contentcontainer"
+          >${this.t.skipToContent}</a
+        >
         <!-- Mobile nav overlay -->
         <button
           class="mobile-nav-overlay"
@@ -767,60 +789,84 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
           @click="${this.closeMobileNav}"
           aria-label="${this.t.closeNavigationMenu}"
         ></button>
-        
+
         <!-- Fixed Header -->
         <header class="site-header">
           <nav class="header-nav" aria-label="${this.t.primary}">
             <!-- Brand/Logo -->
             <a href="" class="nav-brand">
-              <span>${site.name || 'HAXma'}</span>
+              <span>${site.name || "HAXma"}</span>
             </a>
-            
+
             <!-- Desktop Navigation Menu -->
             <div class="nav-menu">
               <site-top-menu></site-top-menu>
             </div>
-            
+
             <!-- Header Controls -->
             <div class="header-controls">
               <!-- Search -->
-              <site-modal 
-                title="${this.t.search}" 
-                @click="${this.toggleSearch}" 
+              <site-modal
+                title="${this.t.search}"
+                @click="${this.toggleSearch}"
                 button-label="${this.t.search}"
                 icon="search"
                 position="bottom"
-                class="search-button">
+                class="search-button"
+              >
                 <site-search></site-search>
               </site-modal>
-              
+
               <!-- Mobile Menu Button -->
-              <button 
-                class="mobile-menu-btn" 
+              <button
+                class="mobile-menu-btn"
                 @click="${this.toggleMobileNav}"
-                aria-label="${this.t.toggleNavigation}">
-                <svg fill="none" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                aria-label="${this.t.toggleNavigation}"
+              >
+                <svg
+                  fill="none"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  ></path>
                 </svg>
               </button>
             </div>
           </nav>
         </header>
-        
+
         <!-- Mobile Navigation -->
         <nav class="mobile-nav" aria-label="${this.t.mobile}">
-          <button 
-            class="mobile-close-btn" 
+          <button
+            class="mobile-close-btn"
             @click="${this.closeMobileNav}"
-            aria-label="${this.t.closeNavigation}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            aria-label="${this.t.closeNavigation}"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
           <site-menu></site-menu>
         </nav>
-        
+
         <!-- Main Content -->
         <div class="main-content">
           <main class="content-area">
@@ -828,12 +874,12 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
             <div class="breadcrumb-area">
               <site-breadcrumb></site-breadcrumb>
             </div>
-            
+
             <!-- Article Header -->
             <div class="article-header">
               <site-active-title></site-active-title>
             </div>
-            
+
             <!-- Article Content -->
             <div class="article-content">
               <!-- Required HAXcms content container -->
@@ -843,41 +889,55 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
                 </div>
               </div>
             </div>
-            
+
             <!-- Page Navigation -->
             <nav class="page-navigation" aria-label="${this.t.page}">
               <div class="nav-item">
-                <site-menu-button 
-                  type="prev" 
-                  position="top" 
+                <site-menu-button
+                  type="prev"
+                  position="top"
                   class="nav-link"
-                  @label-changed="${this.__prevPageLabelChanged}">
-                  ${this.prevPage ? html`
-                    <div class="nav-direction">${this.t.previousArrow}</div>
-                    <div class="nav-title">${this.prevPage}</div>
-                  ` : ''}
+                  @label-changed="${this.__prevPageLabelChanged}"
+                >
+                  ${this.prevPage
+                    ? html`
+                        <div class="nav-direction">${this.t.previousArrow}</div>
+                        <div class="nav-title">${this.prevPage}</div>
+                      `
+                    : ""}
                 </site-menu-button>
               </div>
-              
+
               <div class="nav-item">
-                <site-menu-button 
-                  type="next" 
-                  position="top" 
+                <site-menu-button
+                  type="next"
+                  position="top"
                   class="nav-link"
-                  @label-changed="${this.__nextPageLabelChanged}">
-                  ${this.nextPage ? html`
-                    <div class="nav-direction">${this.t.nextArrow}</div>
-                    <div class="nav-title">${this.nextPage}</div>
-                  ` : ''}
+                  @label-changed="${this.__nextPageLabelChanged}"
+                >
+                  ${this.nextPage
+                    ? html`
+                        <div class="nav-direction">${this.t.nextArrow}</div>
+                        <div class="nav-title">${this.nextPage}</div>
+                      `
+                    : ""}
                 </site-menu-button>
               </div>
             </nav>
           </main>
-          
+
           <!-- Table of Contents Sidebar -->
           <aside class="sidebar-toc">
             <div class="toc-title" role="heading" aria-level="2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
                 <line x1="8" y1="6" x2="21" y2="6"></line>
                 <line x1="8" y1="12" x2="21" y2="12"></line>
                 <line x1="8" y1="18" x2="21" y2="18"></line>
@@ -890,27 +950,29 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
             <site-menu-content></site-menu-content>
           </aside>
         </div>
-        
+
         <!-- Footer -->
         <footer class="site-footer">
           <div class="footer-content">
             <!-- Brand Section -->
             <div class="footer-brand">
-              <div class="brand-title">${site.name || 'HAXma'}</div>
+              <div class="brand-title">${site.name || "HAXma"}</div>
               <div class="brand-description">
                 ${manifest.description || this.t.defaultSiteDescription}
               </div>
             </div>
-            
+
             <!-- Generated Site Links -->
             <div class="footer-section">
               <h3>${this.t.siteNavigation}</h3>
               <div class="footer-page-grid">
-                ${this._items.map((item) => html`
-                  <a href="${item.slug}" class="footer-page-link">
-                    ${item.title}
-                  </a>
-                `)}
+                ${this._items.map(
+                  (item) => html`
+                    <a href="${item.slug}" class="footer-page-link">
+                      ${item.title}
+                    </a>
+                  `,
+                )}
               </div>
             </div>
           </div>
@@ -918,7 +980,6 @@ export class HaxmaTheme extends I18NMixin(HAXCMSThemeParts(DDDSuper(HAXCMSLitEle
       </div>
     `;
   }
-
 }
 
 globalThis.customElements.define(HaxmaTheme.tag, HaxmaTheme);

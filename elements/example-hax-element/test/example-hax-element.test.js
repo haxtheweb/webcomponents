@@ -1,9 +1,9 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect } from "@open-wc/testing";
 import "../example-hax-element.js";
 
 describe("ExampleHaxElement test", () => {
   let element;
-  
+
   beforeEach(async () => {
     element = await fixture(html`
       <example-hax-element title="Test Title"></example-hax-element>
@@ -18,9 +18,11 @@ describe("ExampleHaxElement test", () => {
   });
 
   it("has correct default property values", async () => {
-    const defaultElement = await fixture(html`<example-hax-element></example-hax-element>`);
+    const defaultElement = await fixture(
+      html`<example-hax-element></example-hax-element>`,
+    );
     await defaultElement.updateComplete;
-    
+
     expect(defaultElement.title).to.equal("");
     expect(defaultElement.t).to.exist;
     expect(defaultElement.t.title).to.equal("Title");
@@ -30,14 +32,14 @@ describe("ExampleHaxElement test", () => {
   it("sets and gets title property correctly", async () => {
     element.title = "New Test Title";
     await element.updateComplete;
-    
+
     expect(element.title).to.equal("New Test Title");
   });
 
   it("handles empty title property", async () => {
     element.title = "";
     await element.updateComplete;
-    
+
     expect(element.title).to.equal("");
   });
 
@@ -45,29 +47,29 @@ describe("ExampleHaxElement test", () => {
     const specialTitle = "Title with & < > \" ' symbols and émojis 🎉";
     element.title = specialTitle;
     await element.updateComplete;
-    
+
     expect(element.title).to.equal(specialTitle);
   });
 
   // Rendering tests
   it("renders shadow DOM correctly", () => {
     expect(element.shadowRoot).to.exist;
-    
-    const wrapper = element.shadowRoot.querySelector('.wrapper');
+
+    const wrapper = element.shadowRoot.querySelector(".wrapper");
     expect(wrapper).to.exist;
-    
-    const h3 = element.shadowRoot.querySelector('h3');
+
+    const h3 = element.shadowRoot.querySelector("h3");
     expect(h3).to.exist;
-    
-    const slot = element.shadowRoot.querySelector('slot');
+
+    const slot = element.shadowRoot.querySelector("slot");
     expect(slot).to.exist;
   });
 
   it("displays title in template", async () => {
     element.title = "Rendered Title";
     await element.updateComplete;
-    
-    const h3 = element.shadowRoot.querySelector('h3');
+
+    const h3 = element.shadowRoot.querySelector("h3");
     expect(h3.textContent).to.include("Rendered Title");
     expect(h3.textContent).to.include("Title:"); // Localized label
   });
@@ -80,13 +82,13 @@ describe("ExampleHaxElement test", () => {
       </example-hax-element>
     `);
     await elementWithSlot.updateComplete;
-    
-    const slotElement = elementWithSlot.shadowRoot.querySelector('slot');
+
+    const slotElement = elementWithSlot.shadowRoot.querySelector("slot");
     expect(slotElement).to.exist;
-    
+
     // Check that slotted content is accessible
-    const slottedP = elementWithSlot.querySelector('p');
-    const slottedDiv = elementWithSlot.querySelector('div');
+    const slottedP = elementWithSlot.querySelector("p");
+    const slottedDiv = elementWithSlot.querySelector("div");
     expect(slottedP).to.exist;
     expect(slottedDiv).to.exist;
     expect(slottedP.textContent).to.equal("This is slotted content");
@@ -95,7 +97,7 @@ describe("ExampleHaxElement test", () => {
 
   // DDD integration tests
   it("extends DDDSuper correctly", () => {
-    expect(element.constructor.name).to.equal('ExampleHaxElement');
+    expect(element.constructor.name).to.equal("ExampleHaxElement");
     // Should inherit DDD properties
     expect(element.constructor.properties).to.exist;
   });
@@ -103,18 +105,18 @@ describe("ExampleHaxElement test", () => {
   it("uses DDD CSS custom properties", () => {
     const styles = element.constructor.styles;
     expect(styles).to.exist;
-    
+
     const stylesText = styles.toString();
-    expect(stylesText).to.include('--ddd-theme-primary');
-    expect(stylesText).to.include('--ddd-theme-accent');
-    expect(stylesText).to.include('--ddd-font-navigation');
-    expect(stylesText).to.include('--ddd-spacing-2');
-    expect(stylesText).to.include('--ddd-spacing-4');
+    expect(stylesText).to.include("--ddd-theme-primary");
+    expect(stylesText).to.include("--ddd-theme-accent");
+    expect(stylesText).to.include("--ddd-font-navigation");
+    expect(stylesText).to.include("--ddd-spacing-2");
+    expect(stylesText).to.include("--ddd-spacing-4");
   });
 
   it("has correct display property from CSS", () => {
     const computedStyle = getComputedStyle(element);
-    expect(computedStyle.display).to.equal('block');
+    expect(computedStyle.display).to.equal("block");
   });
 
   // I18N integration tests
@@ -124,8 +126,8 @@ describe("ExampleHaxElement test", () => {
   });
 
   it("registers localization correctly", () => {
-    expect(element.t).to.be.an('object');
-    expect(element.t.title).to.be.a('string');
+    expect(element.t).to.be.an("object");
+    expect(element.t.title).to.be.a("string");
   });
 
   it("has localization configuration", () => {
@@ -139,8 +141,8 @@ describe("ExampleHaxElement test", () => {
   it("provides haxProperties", () => {
     const haxProps = element.constructor.haxProperties;
     expect(haxProps).to.exist;
-    expect(haxProps).to.be.a('string');
-    expect(haxProps).to.include('.haxProperties.json');
+    expect(haxProps).to.be.a("string");
+    expect(haxProps).to.include(".haxProperties.json");
   });
 
   it("has correct tag name", () => {
@@ -155,7 +157,7 @@ describe("ExampleHaxElement test", () => {
   it("passes the a11y audit with different titles", async () => {
     element.title = "Accessibility Test Title";
     await element.updateComplete;
-    
+
     await expect(element).shadowDom.to.be.accessible();
   });
 
@@ -167,7 +169,7 @@ describe("ExampleHaxElement test", () => {
       </example-hax-element>
     `);
     await accessibleElement.updateComplete;
-    
+
     await expect(accessibleElement).shadowDom.to.be.accessible();
   });
 
@@ -175,19 +177,19 @@ describe("ExampleHaxElement test", () => {
   it("supports CSS custom properties", () => {
     const styles = element.constructor.styles;
     const styleText = styles.toString();
-    
-    expect(styleText).to.include('var(--example-hax-element-label-font-size');
-    expect(styleText).to.include('var(--ddd-font-size-s)');
+
+    expect(styleText).to.include("var(--example-hax-element-label-font-size");
+    expect(styleText).to.include("var(--ddd-font-size-s)");
   });
 
   it("has proper wrapper styling", () => {
-    const wrapper = element.shadowRoot.querySelector('.wrapper');
+    const wrapper = element.shadowRoot.querySelector(".wrapper");
     expect(wrapper).to.exist;
-    
+
     const styles = getComputedStyle(wrapper);
     // Verify margin and padding are applied (though exact values depend on DDD)
-    expect(styles.margin).to.not.equal('');
-    expect(styles.padding).to.not.equal('');
+    expect(styles.margin).to.not.equal("");
+    expect(styles.padding).to.not.equal("");
   });
 
   // Edge cases and error handling
@@ -195,20 +197,23 @@ describe("ExampleHaxElement test", () => {
     element.title = null;
     await element.updateComplete;
     expect(element.title).to.be.null;
-    
+
     element.title = undefined;
     await element.updateComplete;
     expect(element.title).to.be.undefined;
   });
 
   it("handles very long titles", async () => {
-    const longTitle = "This is a very long title that might cause layout issues if not handled properly ".repeat(10);
+    const longTitle =
+      "This is a very long title that might cause layout issues if not handled properly ".repeat(
+        10,
+      );
     element.title = longTitle;
     await element.updateComplete;
-    
+
     expect(element.title).to.equal(longTitle);
-    
-    const h3 = element.shadowRoot.querySelector('h3');
+
+    const h3 = element.shadowRoot.querySelector("h3");
     expect(h3.textContent).to.include(longTitle);
   });
 
@@ -216,33 +221,33 @@ describe("ExampleHaxElement test", () => {
     const entityTitle = "Title with &amp; &lt; &gt; &quot; entities";
     element.title = entityTitle;
     await element.updateComplete;
-    
+
     expect(element.title).to.equal(entityTitle);
   });
 
   // Performance tests
   it("handles rapid property changes efficiently", async () => {
-    const titles = ['Title 1', 'Title 2', 'Title 3', 'Title 4', 'Title 5'];
-    
+    const titles = ["Title 1", "Title 2", "Title 3", "Title 4", "Title 5"];
+
     const startTime = performance.now();
-    
+
     for (const title of titles) {
       element.title = title;
       await element.updateComplete;
     }
-    
+
     const endTime = performance.now();
     expect(endTime - startTime).to.be.lessThan(100); // Should be fast
-    expect(element.title).to.equal('Title 5');
+    expect(element.title).to.equal("Title 5");
   });
 
   // Integration tests
   it("works with different instantiation methods", async () => {
     // Direct creation
-    const directElement = document.createElement('example-hax-element');
+    const directElement = document.createElement("example-hax-element");
     directElement.title = "Direct Creation";
     expect(directElement.title).to.equal("Direct Creation");
-    
+
     // HTML instantiation
     const htmlElement = await fixture(html`
       <example-hax-element title="HTML Creation"></example-hax-element>
@@ -253,12 +258,12 @@ describe("ExampleHaxElement test", () => {
   it("maintains state during DOM operations", async () => {
     element.title = "Persistent Title";
     await element.updateComplete;
-    
+
     // Simulate DOM operations
     const parent = element.parentNode;
     parent.removeChild(element);
     parent.appendChild(element);
-    
+
     await element.updateComplete;
     expect(element.title).to.equal("Persistent Title");
   });
@@ -279,28 +284,32 @@ describe("ExampleHaxElement test", () => {
       </example-hax-element>
     `);
     await complexElement.updateComplete;
-    
-    expect(complexElement.querySelector('.nested')).to.exist;
-    expect(complexElement.querySelector('h4')).to.exist;
-    expect(complexElement.querySelector('footer')).to.exist;
-    
+
+    expect(complexElement.querySelector(".nested")).to.exist;
+    expect(complexElement.querySelector("h4")).to.exist;
+    expect(complexElement.querySelector("footer")).to.exist;
+
     await expect(complexElement).shadowDom.to.be.accessible();
   });
 
   it("maintains functionality with multiple instances", async () => {
-    const element1 = await fixture(html`<example-hax-element title="Instance 1"></example-hax-element>`);
-    const element2 = await fixture(html`<example-hax-element title="Instance 2"></example-hax-element>`);
-    
+    const element1 = await fixture(
+      html`<example-hax-element title="Instance 1"></example-hax-element>`,
+    );
+    const element2 = await fixture(
+      html`<example-hax-element title="Instance 2"></example-hax-element>`,
+    );
+
     await element1.updateComplete;
     await element2.updateComplete;
-    
+
     expect(element1.title).to.equal("Instance 1");
     expect(element2.title).to.equal("Instance 2");
-    
+
     // Modify one and ensure the other is unaffected
     element1.title = "Modified Instance 1";
     await element1.updateComplete;
-    
+
     expect(element1.title).to.equal("Modified Instance 1");
     expect(element2.title).to.equal("Instance 2");
   });
@@ -309,7 +318,7 @@ describe("ExampleHaxElement test", () => {
   it("handles missing localization gracefully", () => {
     // Even if localization fails, the element should still function
     expect(element.t).to.exist;
-    expect(element.t.title).to.be.a('string');
+    expect(element.t.title).to.be.a("string");
   });
 });
 

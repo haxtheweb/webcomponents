@@ -1,4 +1,4 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect } from "@open-wc/testing";
 import "../web-container.js";
 
 // firstUpdated boots a full @webcontainer/api instance through the
@@ -25,9 +25,7 @@ describe("webContainer test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <web-container
-        title="title"
-      ></web-container>
+      <web-container title="title"></web-container>
     `);
   });
 
