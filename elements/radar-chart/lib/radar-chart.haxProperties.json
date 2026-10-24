@@ -1,7 +1,6 @@
 {
   "api": "1",
   "canScale": true,
-  "canPosition": true,
   "canEditSource": true,
   "type": "element",
   "designSystem": {

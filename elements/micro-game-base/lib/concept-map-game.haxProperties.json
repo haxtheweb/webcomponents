@@ -176,8 +176,8 @@
       "resource",
       "prefix",
       "schema-map",
-      "_userSeed",
-      "_finishSlotted"
+      "_user-seed",
+      "_finish-slotted"
     ]
   },
   "demoSchema": [
