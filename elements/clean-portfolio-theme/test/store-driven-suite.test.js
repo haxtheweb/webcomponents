@@ -269,7 +269,7 @@ describe("clean-portfolio-theme store-driven rendering", () => {
     const options = select.querySelectorAll("option");
     expect(options.length).to.equal(4);
     expect(options[0].value).to.equal("");
-    expect(options[0].textContent).to.equal("All");
+    expect(options[0].textContent.trim()).to.equal("All");
     // category groups with cards
     const groups = element.shadowRoot.querySelectorAll("h2.listing-category a");
     expect(groups.length).to.equal(3);

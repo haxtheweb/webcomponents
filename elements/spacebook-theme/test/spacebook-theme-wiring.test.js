@@ -178,12 +178,14 @@ describe("spacebook-theme prev/next wiring", () => {
     await el.updateComplete;
     // labels render into the nav titles once set
     expect(
-      el.shadowRoot.querySelector('site-menu-button[type="next"] .nav-title')
-        .textContent,
+      el.shadowRoot
+        .querySelector('site-menu-button[type="next"] .nav-title')
+        .textContent.trim(),
     ).to.equal("Chapter Two");
     expect(
-      el.shadowRoot.querySelector('site-menu-button[type="prev"] .nav-title')
-        .textContent,
+      el.shadowRoot
+        .querySelector('site-menu-button[type="prev"] .nav-title')
+        .textContent.trim(),
     ).to.equal("Introduction");
   });
 });

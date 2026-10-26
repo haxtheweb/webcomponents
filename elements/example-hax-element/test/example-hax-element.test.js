@@ -176,7 +176,8 @@ describe("ExampleHaxElement test", () => {
   // Style integration tests
   it("supports CSS custom properties", () => {
     const styles = element.constructor.styles;
-    const styleText = styles.toString();
+    // CSS whitespace is not significant (the formatter wraps long var() calls)
+    const styleText = styles.toString().replace(/\s+/g, "");
 
     expect(styleText).to.include("var(--example-hax-element-label-font-size");
     expect(styleText).to.include("var(--ddd-font-size-s)");
