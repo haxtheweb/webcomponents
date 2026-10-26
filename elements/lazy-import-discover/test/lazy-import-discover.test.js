@@ -128,7 +128,11 @@ describe("lazy-import-discover", () => {
       expect(script.innerText).to.include(
         `import('${nodeModulesBase}/@haxtheweb/b-r/b-r.js');`,
       );
-      await waitForModuleLoad();
+      // the module loads over the network; Firefox and WebKit take longer than
+      // a fixed 50ms, so wait for the definition instead
+      for (let i = 0; i < 100 && !globalThis.customElements.get("b-r"); i++) {
+        await waitForModuleLoad();
+      }
       // the generated module script actually defined b-r for the document
       expect(globalThis.customElements.get("b-r")).to.exist;
     } finally {

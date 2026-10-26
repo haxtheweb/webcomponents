@@ -80,6 +80,10 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
           // set range appropriately for cursor placement
           let range = globalThis.document.createRange();
           let sel = this.getSelection();
+          // the ponyfill hands back a Range, which cannot place a caret
+          if (!sel || typeof sel.removeAllRanges !== "function") {
+            sel = globalThis.getSelection();
+          }
           range.setStart(
             this.target.childNodes[0],
             this._triggerStart - 1 + this.value.length,

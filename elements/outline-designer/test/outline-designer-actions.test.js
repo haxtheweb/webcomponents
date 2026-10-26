@@ -85,6 +85,11 @@ const keydown = (target, key, opts = {}) =>
     }),
   );
 
+// shadowRoot.getSelection() only exists in Chromium; Firefox and WebKit use the
+// document selection
+const selectionFor = (root) =>
+  root.getSelection ? root.getSelection() : globalThis.getSelection();
+
 describe("outline-designer item operations", () => {
   let element;
 
@@ -195,7 +200,7 @@ describe("outline-designer item operations", () => {
     // typing lands in the same uncommitted edit state)
     const range = globalThis.document.createRange();
     range.selectNodeContents(labelEdit);
-    const selection = element.shadowRoot.getSelection();
+    const selection = selectionFor(element.shadowRoot);
     selection.removeAllRanges();
     selection.addRange(range);
     globalThis.document.execCommand("insertText", false, "Renamed Page");
@@ -228,7 +233,7 @@ describe("outline-designer item operations", () => {
     // typing lands in the same uncommitted edit state)
     const range = globalThis.document.createRange();
     range.selectNodeContents(labelEdit);
-    const selection = element.shadowRoot.getSelection();
+    const selection = selectionFor(element.shadowRoot);
     selection.removeAllRanges();
     selection.addRange(range);
     globalThis.document.execCommand("insertText", false, "Renamed Page");

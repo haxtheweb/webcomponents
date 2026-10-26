@@ -258,7 +258,9 @@ describe("monaco-element", () => {
       await aTimeout(30);
       expect(got).to.exist;
       expect(got.detail).to.equal(true);
-      const posted = sent.map((m) => JSON.parse(m));
+      const posted = sent
+        .filter((m) => typeof m === "string")
+        .map((m) => JSON.parse(m));
       expect(
         posted.some((m) => m.event === "valueChanged" && m.payload === "a"),
       ).to.equal(true);

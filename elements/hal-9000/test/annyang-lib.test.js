@@ -3,7 +3,16 @@ import { expect } from "@open-wc/testing";
 // direct import of the vendored lib; it installs itself on globalThis.annyang
 import "../lib/annyang/annyang.min.js";
 
+// the lib sets globalThis.annyang to null where SpeechRecognition is missing
+// (Firefox, and the WebKit build Playwright runs), so there is nothing to test
+const hasSpeechRecognition = !!(
+  globalThis.SpeechRecognition || globalThis.webkitSpeechRecognition
+);
+
 describe("annyang (vendored lib)", () => {
+  before(function () {
+    if (!hasSpeechRecognition) this.skip();
+  });
   let annyang;
   let logs;
   let originalLog;
