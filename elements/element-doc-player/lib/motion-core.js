@@ -14,6 +14,9 @@
  *
  * Coordinate system: 1600 x 900. Look: monochrome line drawing.
  */
+/** value, or a fallback when it is null or undefined */
+const def = (v, d) => (v === undefined || v === null ? d : v);
+
 const NS = "http://www.w3.org/2000/svg";
 const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
 const lerp = (a, b, t) => a + (b - a) * t;
@@ -122,13 +125,13 @@ function paint(e, p, out) {
   }
 }
 const W = (o) => ({
-  in: o.in ?? 0,
-  d: o.d ?? 0.6,
-  out: o.out ?? null,
-  od: o.od ?? 0.4,
+  in: def(o.in, 0),
+  d: def(o.d, 0.6),
+  out: def(o.out, null),
+  od: def(o.od, 0.4),
 });
 const prog = (t, w, delay = 0, dur) =>
-  clamp01((t - w.in - delay) / (dur ?? w.d));
+  clamp01((t - w.in - delay) / def(dur, w.d));
 const outf = (t, w) =>
   w.out == null ? 1 : 1 - eio(clamp01((t - w.out) / w.od));
 const modeOf = (v) => (v === "slot" || v === "ph" || v === "cl" ? "f" : "d");
@@ -139,7 +142,7 @@ function makeTracks(base, keys, start) {
   for (const k in base) tr[k] = [[start, base[k]]];
   for (const [t, p, dur] of keys || [])
     for (const k in p) {
-      const arr = (tr[k] = tr[k] || [[start, base[k] ?? p[k]]]);
+      const arr = (tr[k] = tr[k] || [[start, def(base[k], p[k])]]);
       if (dur) {
         const last = arr[arr.length - 1];
         arr.push([Math.max(last[0], t - dur), last[1]]);
@@ -178,7 +181,7 @@ function textValue(o, t) {
       return [
         s.slice(
           0,
-          Math.round(s.length * clamp01((t - tk) / (o.typeDur ?? 0.7))),
+          Math.round(s.length * clamp01((t - tk) / def(o.typeDur, 0.7))),
         ),
         1,
       ];
@@ -197,7 +200,7 @@ function textValue(o, t) {
     const [ip, fp] = v.toFixed(c.dec || 0).split(".");
     return [
       (c.pre || "") +
-        ip.replace(/\B(?=(\d{3})+(?!\d))/g, c.sep ?? ",") +
+        ip.replace(/\B(?=(\d{3})+(?!\d))/g, def(c.sep, ",")) +
         (fp ? "." + fp : "") +
         (c.suf || ""),
       1,
@@ -213,7 +216,7 @@ function textValue(o, t) {
       ),
       1,
     ];
-  return [o.s ?? "", 1];
+  return [def(o.s, ""), 1];
 }
 
 /* ---------------------------------------------------------------- glyph shapes (unit space -1..1) */
@@ -342,7 +345,7 @@ function shapeD(name, x, y, s) {
 function genLayout(spec, n, area) {
   const [ax, ay, aw, ah] = area,
     out = [];
-  const gap = spec.gap ?? 8;
+  const gap = def(spec.gap, 8);
   switch (spec.gen) {
     case "masonry": {
       const cols = spec.cols || 3,
@@ -359,7 +362,7 @@ function genLayout(spec, n, area) {
     case "grid": {
       const cols = spec.cols || 3,
         cw = (aw - gap * (cols - 1)) / cols,
-        ch = spec.h ?? cw / (spec.aspect || 1);
+        ch = def(spec.h, cw / (spec.aspect || 1));
       for (let i = 0; i < n; i++)
         out.push({
           x: ax + (i % cols) * (cw + gap),
@@ -371,15 +374,15 @@ function genLayout(spec, n, area) {
     }
     case "strip": {
       const s = spec.size || 56,
-        g = spec.gap ?? 6;
+        g = def(spec.gap, 6);
       for (let i = 0; i < n; i++)
-        out.push({ x: ax + i * (s + g), y: spec.y ?? ay, w: s, h: s });
+        out.push({ x: ax + i * (s + g), y: def(spec.y, ay), w: s, h: s });
       break;
     }
     case "list": {
       const count = spec.count || n,
-        h = spec.h ?? (ah - gap * (count - 1)) / count,
-        w = spec.w ?? aw;
+        h = def(spec.h, (ah - gap * (count - 1)) / count),
+        w = def(spec.w, aw);
       for (let i = 0; i < n; i++)
         out.push(
           i < count
@@ -396,7 +399,7 @@ function genLayout(spec, n, area) {
       for (let i = 0; i < n; i++) {
         if (i < rs.length) {
           const w = (usable * rs[i]) / total;
-          out.push({ x, y: ay, w, h: spec.h ?? ah });
+          out.push({ x, y: ay, w, h: def(spec.h, ah) });
           x += w + gap;
         } else out.push(null);
       }
@@ -419,7 +422,7 @@ BUILD.box = (o, ctx) => {
     v = o.v || "hug",
     mode = modeOf(v);
   const g = el("g", {}, ctx.main);
-  const r = prep(el("rect", { rx: o.r ?? 6, class: v }, g), mode);
+  const r = prep(el("rect", { rx: def(o.r, 6), class: v }, g), mode);
   const xs = o.xbox
     ? [
         prep(el("line", { class: "thin" }, g), "f"),
@@ -438,7 +441,7 @@ BUILD.box = (o, ctx) => {
     let { x, y, w: bw, h: bh } = b,
       s = 1;
     if (o.pop) {
-      s = eo(clamp01((t - o.pop[0]) / (o.pop[1] ?? 0.6)));
+      s = eo(clamp01((t - o.pop[0]) / def(o.pop[1], 0.6)));
       bw *= s;
       bh *= s;
       x += (b.w - bw) / 2;
@@ -465,7 +468,7 @@ BUILD.box = (o, ctx) => {
       paint(
         lab,
         (o.pop ? s : clamp01((p - 0.6) / 0.4)) *
-          clamp01((bw - (o.labelMin ?? 90)) / 30) *
+          clamp01((bw - def(o.labelMin, 90)) / 30) *
           clamp01((bh - 30) / 14),
         out,
       );
@@ -522,11 +525,10 @@ BUILD.glyph = (o, ctx) => {
       "d",
     );
   const tr = makeTracks(
-    { x: o.x, y: o.y, s: o.s ?? 24, o: 1, name: 0 },
+    { x: o.x, y: o.y, s: def(o.s, 24), o: 1, name: 0 },
     o.keys,
     w.in,
   );
-  const names = o.names || [o.name];
   const shapeAt = (t) => {
     // optional swap list: names:[[t,"stop"],...]
     if (!o.swap) return o.name;
@@ -543,7 +545,7 @@ BUILD.glyph = (o, ctx) => {
 
 BUILD.callout = (o, ctx) => {
   const w = W(o),
-    s = o.dir ?? (o.ex >= o.px ? 1 : -1);
+    s = def(o.dir, o.ex >= o.px ? 1 : -1);
   const dot = prep(
     el("circle", { cx: o.px, cy: o.py, r: 2.6, class: "dot" }, ctx.main),
     "f",
@@ -665,8 +667,8 @@ BUILD.dim = (o, ctx) => {
 
 BUILD.panel = (o, ctx) => {
   const w = W(o),
-    rh = o.rowH ?? 52,
-    gap = o.gap ?? 12,
+    rh = def(o.rowH, 52),
+    gap = def(o.gap, 12),
     rows = [];
   const title = o.title
     ? prep(el("text", { x: o.x, y: o.y - 14, class: "vt" }, ctx.main), "f")
@@ -786,7 +788,7 @@ BUILD.stack = (o, ctx) => {
   const w = W(o),
     n = o.n,
     area = o.area,
-    md = o.md ?? 0.8;
+    md = def(o.md, 0.8);
   const layouts = {};
   for (const k in o.layouts) layouts[k] = genLayout(o.layouts[k], n, area);
   const tl = o.timeline;
@@ -833,7 +835,7 @@ BUILD.stack = (o, ctx) => {
   return (t) => {
     const out = outf(t, w);
     items.forEach((it, i) => {
-      const ap = appear[i] ?? 0,
+      const ap = def(appear[i], 0),
         mode = Array.isArray(as) ? as[i] || "draw" : as || "draw";
       const b = solve(i, t);
       let { x, y, w: bw, h: bh } = b,
@@ -1167,9 +1169,9 @@ export function createScene(svg, scene, docs) {
 
   // header from the docs data, so a renamed element updates its own film
   const h1 = el("text", { x: 60, y: 80, class: "head" }, head);
-  h1.textContent = scene.tag || docs?.tag || "";
+  h1.textContent = scene.tag || (docs && docs.tag) || "";
   const h2 = el("text", { x: 60, y: 106, class: "sub" }, head);
-  h2.textContent = `${docs?.title ? docs.title + " · " : ""}${docs?.package || "HAX element"}`;
+  h2.textContent = `${docs && docs.title ? docs.title + " · " : ""}${(docs && docs.package) || "HAX element"}`;
 
   const updaters = scene.objects.map((o) => {
     const b = BUILD[o.type];
@@ -1178,7 +1180,7 @@ export function createScene(svg, scene, docs) {
   });
 
   const beats = (scene.beats || []).map((b, i) => {
-    const w = { in: b.t, d: 0.5, out: b.out ?? null, od: 0.4 };
+    const w = { in: b.t, d: 0.5, out: def(b.out, null), od: 0.4 };
     const nb = prep(
       el("rect", { x: 60, y: 808, width: 26, height: 26, class: "nb" }, head),
       "d",
@@ -1206,21 +1208,16 @@ export function createScene(svg, scene, docs) {
   });
 
   const end = scene.end;
-  let endTexts = [];
   if (end) {
     const a = el(
       "text",
       { x: 800, y: 420, class: "hero", "text-anchor": "middle" },
       endG,
     );
-    a.textContent = (scene.tag || docs?.tag || "")
+    a.textContent = (scene.tag || (docs && docs.tag) || "")
       .replace(/^</, "")
       .replace(/>$/, "");
-    const l = el(
-      "line",
-      { x1: 700, y1: 446, x2: 900, y2: 446, class: "thin" },
-      endG,
-    );
+    el("line", { x1: 700, y1: 446, x2: 900, y2: 446, class: "thin" }, endG);
     const b = el(
       "text",
       {
@@ -1239,7 +1236,6 @@ export function createScene(svg, scene, docs) {
       endG,
     );
     c.textContent = end.code || "";
-    endTexts = [a, l, b, c];
   }
   endG.style.opacity = "0";
 

@@ -491,7 +491,7 @@ export class ElementDocPlayer extends DDDSuper(I18NMixin(LitElement)) {
         throw new Error(String(res.status));
       }
       this[prop] = await res.json();
-    } catch (e) {
+    } catch {
       // the motion file is optional; a missing docs file is worth saying
       if (prop === "docs") {
         this.loadError = `${this.t.loadFailed} ${src}`;
@@ -529,7 +529,11 @@ export class ElementDocPlayer extends DDDSuper(I18NMixin(LitElement)) {
       globalThis.matchMedia &&
       globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
     this._reduce = reduce;
-    const poster = this.scene.poster ?? (this.scene.beats?.[1]?.t ?? 4) + 1.5;
+    const beats = this.scene.beats || [];
+    const poster =
+      this.scene.poster !== undefined && this.scene.poster !== null
+        ? this.scene.poster
+        : (beats[1] && typeof beats[1].t === "number" ? beats[1].t : 4) + 1.5;
     this._seek(reduce ? poster : 0);
     if (this.autoplay && !reduce && this.activeTab === "motion") {
       this._play();
@@ -645,9 +649,10 @@ export class ElementDocPlayer extends DDDSuper(I18NMixin(LitElement)) {
     const text = this.snippets[key] || "";
     let ok = false;
     try {
+      // eslint-disable-next-line baseline-js/use-baseline -- try/catch falls back to execCommand copy
       await globalThis.navigator.clipboard.writeText(text);
       ok = true;
-    } catch (err) {
+    } catch {
       ok = this._copyFallback(text);
     }
     this.copied = `${key}:${ok ? "ok" : "fail"}`;
@@ -673,7 +678,7 @@ export class ElementDocPlayer extends DDDSuper(I18NMixin(LitElement)) {
       const ok = globalThis.document.execCommand("copy");
       ta.remove();
       return ok;
-    } catch (err) {
+    } catch {
       return false;
     }
   }
@@ -684,13 +689,13 @@ export class ElementDocPlayer extends DDDSuper(I18NMixin(LitElement)) {
     try {
       try {
         await import(/* @vite-ignore */ d.import);
-      } catch (err) {
+      } catch {
         await import(/* @vite-ignore */ d.cdn);
       }
       const mount = this.shadowRoot.querySelector("#mount");
       mount.innerHTML = d.demoHtml;
       this.liveState = "ok";
-    } catch (err) {
+    } catch {
       this.liveState = "fail";
     }
   }

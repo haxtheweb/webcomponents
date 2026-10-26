@@ -161,7 +161,7 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
       name: a.name,
       property: a.fieldName,
       type: (a.type && a.type.text) || "",
-      default: a.default ?? "",
+      default: a.default !== undefined && a.default !== null ? a.default : "",
       description: (a.description || "").replace(/\s+/g, " ").trim(),
       hax: byProp[a.fieldName]
         ? {
