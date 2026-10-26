@@ -112,9 +112,17 @@ describe("training-button", () => {
       ></training-button>`,
     );
     await btn.updateComplete;
-    const evt = new Event("click", { cancelable: true });
-    btn.shadowRoot.querySelector("a.wrapper").dispatchEvent(evt);
-    expect(evt.defaultPrevented).to.be.false;
+    const anchor = btn.shadowRoot.querySelector("a.wrapper");
+    // WebKit follows a dispatched click on a real link and navigates the test
+    // page away; record whether the component let it through (this listener
+    // runs after the component's own), then stop the navigation itself
+    let preventedByComponent = null;
+    anchor.addEventListener("click", (e) => {
+      preventedByComponent = e.defaultPrevented;
+      e.preventDefault();
+    });
+    anchor.dispatchEvent(new Event("click", { cancelable: true }));
+    expect(preventedByComponent).to.be.false;
   });
 
   it("reflects active, visited, and disabled attributes", async () => {

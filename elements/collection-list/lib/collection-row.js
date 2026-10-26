@@ -50,8 +50,12 @@ class CollectionRow extends DDD {
           );
         }
 
+        /* the title link sits inline with the description text, so it needs
+           something besides color to set it apart (WCAG 1.4.1); axe flags it
+           in Firefox */
         a {
-          text-decoration: none;
+          text-decoration: underline;
+          text-underline-offset: 0.15em;
         }
         :host([saturate]) .image-wrap {
           -webkit-filter: saturate(30%);
