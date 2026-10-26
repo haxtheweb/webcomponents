@@ -677,34 +677,156 @@ function generateHTML(components) {
       display: none;
     }
 
+    .mobile-bar {
+      display: none;
+    }
+
+    /* Phones: the component list becomes a drawer under a sticky bar, the
+       page scrolls as one document and the demo gets most of the screen. */
     @media (max-width: 768px) {
       body {
         height: auto;
         overflow: auto;
       }
 
+      .mobile-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--ddd-spacing-3);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+        padding-top: max(var(--ddd-spacing-2), env(safe-area-inset-top, 0px));
+        background: var(--gal-ground);
+        border-bottom: 1px solid var(--gal-line);
+      }
+
+      .mobile-title {
+        font-weight: var(--ddd-font-weight-bold);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+      }
+
+      .mobile-bar .btn {
+        flex: none;
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+      }
+
       .gallery-container {
-        flex-direction: column;
+        display: block;
         height: auto;
       }
 
       .sidebar {
-        width: 100%;
-        max-height: 40vh;
+        display: none;
+        position: fixed;
+        top: var(--gal-bar, 3rem);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 15;
+        width: auto;
         border-right: 0;
-        border-bottom: 1px solid var(--gal-line);
+        background: var(--gal-ground);
+      }
+
+      .sidebar.open {
+        display: flex;
+      }
+
+      .sidebar-header .eyebrow,
+      .sidebar-header h1 {
+        display: none;
+      }
+
+      .sidebar-header {
+        padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+      }
+
+      .component-list {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+
+      .component-item {
+        padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
       }
 
       .main-content {
-        height: 80vh;
+        display: block;
+        height: auto;
+        overflow: visible;
+      }
+
+      .demo-header {
+        padding: var(--ddd-spacing-4) var(--ddd-spacing-4) 0;
+      }
+
+      .demo-title {
+        font-size: var(--ddd-font-size-xs);
       }
 
       .snippets {
         grid-template-columns: minmax(0, 1fr) auto;
+        gap: var(--ddd-spacing-1) var(--ddd-spacing-2);
       }
 
       .snippet-label {
         grid-column: 1 / -1;
+        margin-top: var(--ddd-spacing-1);
+      }
+
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .demo-actions {
+        order: -1;
+      }
+
+      #fullscreenBtn {
+        display: none;
+      }
+
+      .view-tabs {
+        border-top: 1px solid var(--gal-line);
+      }
+
+      .view-tab {
+        flex: 1;
+      }
+
+      .stage {
+        min-height: 0;
+      }
+
+      .demo-frame {
+        height: 80vh;
+      }
+
+      .docs-pane {
+        height: auto;
+        overflow: visible;
+        padding: var(--ddd-spacing-3) var(--ddd-spacing-2);
+      }
+
+      /* the player repeats title, description and copy buttons, so the
+         gallery header steps back in the Documentation view */
+      .view-docs .demo-title,
+      .view-docs .demo-description,
+      .view-docs .snippets,
+      .view-docs .demo-actions,
+      .view-docs .demo-selector-container {
+        display: none;
+      }
+
+      .welcome-message {
+        height: auto;
+        padding: var(--ddd-spacing-10) var(--ddd-spacing-4);
       }
     }
   </style>
@@ -712,9 +834,14 @@ function generateHTML(components) {
 <body>
   <d-d-d></d-d-d>
 
+  <header class="mobile-bar" id="mobileBar">
+    <span class="mobile-title" id="mobileTitle">Component gallery</span>
+    <button class="btn" id="listToggle" aria-expanded="false" aria-controls="sidebar">Components</button>
+  </header>
+
   <div class="gallery-container">
     <!-- Sidebar with component list -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <header class="sidebar-header">
         <p class="eyebrow">HAX web components</p>
         <h1>Component gallery</h1>
@@ -832,6 +959,7 @@ function generateHTML(components) {
     // Demo and documentation views share one stage
     function setView(view) {
       currentView = view;
+      document.body.classList.toggle('view-docs', view === 'docs');
       viewTabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.view === view)));
       const docs = view === 'docs' && currentComponent;
       demoFrame.classList.toggle('hidden', Boolean(docs));
@@ -982,6 +1110,8 @@ function generateHTML(components) {
     function selectComponent(component) {
       currentComponent = component;
       currentDemoPath = component.demoPath;
+      mobileTitle.textContent = '<' + component.name + '>';
+      setDrawer(false);
       
       // Update active state
       document.querySelectorAll('.component-item').forEach(item => {
@@ -1197,9 +1327,39 @@ function generateHTML(components) {
       }
     }
 
+    // Phone layout: the component list is a drawer under the sticky bar
+    const sidebar = document.getElementById('sidebar');
+    const listToggle = document.getElementById('listToggle');
+    const mobileBar = document.getElementById('mobileBar');
+    const mobileTitle = document.getElementById('mobileTitle');
+    const phone = globalThis.matchMedia('(max-width: 768px)');
+    function setDrawer(open) {
+      sidebar.classList.toggle('open', open);
+      listToggle.setAttribute('aria-expanded', String(open));
+      listToggle.textContent = open ? 'Close' : 'Components';
+      // nothing to close back to until a component is chosen
+      listToggle.hidden = open && !currentComponent;
+      document.documentElement.style.setProperty('--gal-bar', mobileBar.offsetHeight + 'px');
+      if (!open && phone.matches) {
+        globalThis.scrollTo(0, 0);
+      }
+    }
+    listToggle.addEventListener('click', () => {
+      setDrawer(!sidebar.classList.contains('open'));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sidebar.classList.contains('open') && currentComponent) {
+        setDrawer(false);
+        listToggle.focus();
+      }
+    });
+
     // Initialize
     renderComponentList();
     applyRouteFromUrl();
+    if (!currentComponent) {
+      setDrawer(phone.matches);
+    }
   </script>
 </body>
 </html>`;

@@ -163,6 +163,7 @@ export class ElementDocPlayer extends DDDSuper(I18NMixin(LitElement)) {
           border-radius: var(--ddd-radius-xs);
           overflow: hidden;
           text-align: left;
+          container-type: inline-size;
         }
         header {
           display: flex;
@@ -196,7 +197,7 @@ export class ElementDocPlayer extends DDDSuper(I18NMixin(LitElement)) {
           border: 1px solid var(--edp-line);
           border-radius: var(--ddd-radius-xs);
           padding: 0 var(--ddd-spacing-2);
-          white-space: nowrap;
+          overflow-wrap: anywhere;
         }
         .badge.ok {
           color: var(--edp-main);
@@ -245,6 +246,34 @@ export class ElementDocPlayer extends DDDSuper(I18NMixin(LitElement)) {
           border-radius: var(--ddd-radius-xs);
           overflow: hidden;
           background: var(--edp-ground);
+        }
+        .now {
+          display: none;
+          margin: var(--ddd-spacing-3) 0 0;
+          min-height: 3lh;
+        }
+        .now:empty {
+          min-height: 0;
+        }
+        .now b {
+          display: block;
+          color: var(--edp-main);
+        }
+        /* small screens: the film's own captions are too small to read, so
+           the current beat is repeated as text under it */
+        @container (max-width: 560px) {
+          .now {
+            display: block;
+            color: var(--edp-second);
+          }
+          header,
+          section[role="tabpanel"] {
+            padding-left: var(--ddd-spacing-3);
+            padding-right: var(--ddd-spacing-3);
+          }
+          .time {
+            min-width: 0;
+          }
         }
         svg {
           display: block;
@@ -555,6 +584,33 @@ export class ElementDocPlayer extends DDDSuper(I18NMixin(LitElement)) {
     if (label) {
       label.textContent = `${this._time.toFixed(1)} / ${dur.toFixed(1)}s`;
     }
+    this._showBeat();
+  }
+
+  /** the beat on screen, as text, for small screens */
+  _showBeat() {
+    const now = this.shadowRoot.querySelector("#now");
+    const beats = (this.scene && this.scene.beats) || [];
+    if (!now) {
+      return;
+    }
+    let cur = null;
+    for (const b of beats) {
+      if (b.t <= this._time + 0.05) {
+        cur = b;
+      }
+    }
+    const key = cur ? cur.title : "";
+    if (now.dataset.key === key) {
+      return;
+    }
+    now.dataset.key = key;
+    now.textContent = "";
+    if (cur) {
+      const b = globalThis.document.createElement("b");
+      b.textContent = cur.title;
+      now.append(b, cur.text || "");
+    }
   }
 
   _play() {
@@ -733,6 +789,7 @@ export class ElementDocPlayer extends DDDSuper(I18NMixin(LitElement)) {
       <div class="stage">
         <svg role="img" aria-label="${this.docs ? this.docs.tag : ""}"></svg>
       </div>
+      <p class="now" id="now" aria-hidden="true"></p>
       <div class="controls">
         <button
           class="btn primary"
