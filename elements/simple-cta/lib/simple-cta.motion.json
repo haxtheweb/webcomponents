@@ -1,0 +1,188 @@
+{
+  "duration": 18.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "x": 480,
+      "y": 160,
+      "c": "code",
+      "in": 0.5,
+      "states": [
+        [0.5, "<simple-cta label=\"Learn more\">"],
+        [8, "<simple-cta icon=\"icons:link\">"],
+        [11, "<simple-cta hide-icon>"],
+        [13.6, "<simple-cta disabled>"]
+      ]
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 56,
+      "gap": 12,
+      "rows": [
+        {
+          "name": "label",
+          "desc": "Button text"
+        },
+        {
+          "name": "link",
+          "desc": "Where it goes"
+        },
+        {
+          "name": "icon",
+          "desc": "Icon after the label"
+        },
+        {
+          "name": "hide-icon",
+          "desc": "Text only"
+        }
+      ],
+      "active": [
+        [0.9, 0],
+        [2.8, 1],
+        [7.8, 2],
+        [10.8, 3]
+      ],
+      "in": 0.6
+    },
+    {
+      "type": "box",
+      "x": 600,
+      "y": 270,
+      "w": 400,
+      "h": 72,
+      "v": "obj",
+      "r": 36,
+      "in": 0.5,
+      "d": 0.8
+    },
+    {
+      "type": "text",
+      "x": 800,
+      "y": 314,
+      "c": "rn",
+      "a": "middle",
+      "in": 1,
+      "s": "Click to learn more",
+      "keys": [
+        [
+          11.2,
+          {
+            "x": 800
+          }
+        ]
+      ]
+    },
+    {
+      "type": "glyph",
+      "swap": [
+        [0, "chev-r"],
+        [8, "link"]
+      ],
+      "name": "chev-r",
+      "x": 940,
+      "y": 306,
+      "s": 22,
+      "v": "bold",
+      "in": 1.8,
+      "out": 11.2,
+      "od": 0.3
+    },
+    {
+      "type": "callout",
+      "px": 800,
+      "py": 342,
+      "ex": 800,
+      "ey": 440,
+      "label": "link",
+      "sub": "opens when clicked",
+      "dir": 1,
+      "in": 3,
+      "out": 6.6
+    },
+    {
+      "type": "text",
+      "x": 800,
+      "y": 400,
+      "c": "dts",
+      "a": "middle",
+      "in": 6.2,
+      "out": 7.4,
+      "s": "\u2192 haxtheweb.org"
+    },
+    {
+      "type": "box",
+      "x": 600,
+      "y": 270,
+      "w": 400,
+      "h": 72,
+      "v": "slot",
+      "r": 36,
+      "in": 13.8,
+      "d": 0.4,
+      "out": 17
+    },
+    {
+      "type": "text",
+      "x": 800,
+      "y": 380,
+      "c": "dt",
+      "a": "middle",
+      "in": 14.2,
+      "out": 17,
+      "s": "disabled: dimmed, no clicks"
+    },
+    {
+      "type": "cursor",
+      "show": [[4.8, 7.6]],
+      "clicks": [6],
+      "keys": [
+        [4.8, 880, 440],
+        [6, 800, 310],
+        [7.6, 960, 400]
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 2.7,
+      "title": "Write the label",
+      "text": "label is the words on the button."
+    },
+    {
+      "t": 2.9,
+      "out": 7.6,
+      "title": "Set where it goes",
+      "text": "link is the address the button opens."
+    },
+    {
+      "t": 7.8,
+      "out": 10.6,
+      "title": "Pick an icon",
+      "text": "icon changes the symbol after the label."
+    },
+    {
+      "t": 10.8,
+      "out": 17,
+      "title": "Simplify or switch off",
+      "text": "hide-icon keeps just text. disabled stops clicks."
+    }
+  ],
+  "end": {
+    "in": 17.2,
+    "line": "One clear action.",
+    "code": "<simple-cta label=\"Learn more\" link=\"\u2026\"></simple-cta>"
+  },
+  "version": 1,
+  "tag": "simple-cta",
+  "surfaceHash": "5524a11c784d",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

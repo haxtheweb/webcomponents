@@ -1,0 +1,180 @@
+{
+  "duration": 18,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "x": 480,
+      "y": 160,
+      "c": "code",
+      "in": 0.5,
+      "states": [
+        [0.5, "<count-up end=\"1250\">"],
+        [9, "<count-up end=\"98.6\" decimalplaces=\"1\">"]
+      ]
+    },
+    {
+      "type": "panel",
+      "title": "properties",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 56,
+      "gap": 12,
+      "rows": [
+        {
+          "name": "start / end",
+          "desc": "Where it counts from and to"
+        },
+        {
+          "name": "duration",
+          "desc": "Seconds to count"
+        },
+        {
+          "name": "suffixtext",
+          "desc": "Text after the number"
+        },
+        {
+          "name": "decimalplaces",
+          "desc": "Digits after the point"
+        }
+      ],
+      "active": [
+        [1, 0],
+        [4.8, 1],
+        [6, 2],
+        [9, 3]
+      ],
+      "in": 0.6
+    },
+    {
+      "type": "box",
+      "x": 560,
+      "y": 200,
+      "w": 520,
+      "h": 300,
+      "v": "slot",
+      "r": 10,
+      "in": 1.4,
+      "d": 0.6,
+      "out": 17
+    },
+    {
+      "type": "text",
+      "x": 600,
+      "y": 226,
+      "c": "dts",
+      "in": 1.6,
+      "out": 17,
+      "s": "visible part of the page"
+    },
+    {
+      "type": "text",
+      "x": 820,
+      "y": 700,
+      "c": "big",
+      "a": "middle",
+      "in": 1,
+      "out": 8.6,
+      "od": 0.3,
+      "count": {
+        "from": 0,
+        "to": 1250,
+        "t0": 4,
+        "t1": 6.6,
+        "suf": "+"
+      },
+      "keys": [
+        [
+          2.4,
+          {
+            "x": 820,
+            "y": 700
+          }
+        ],
+        [
+          3.6,
+          {
+            "x": 820,
+            "y": 350
+          }
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 820,
+      "y": 700,
+      "c": "big",
+      "a": "middle",
+      "in": 9.2,
+      "out": 17,
+      "count": {
+        "from": 0,
+        "to": 98.6,
+        "dec": 1,
+        "t0": 11,
+        "t1": 13.2,
+        "suf": "%"
+      },
+      "keys": [
+        [
+          9.4,
+          {
+            "x": 820,
+            "y": 700
+          }
+        ],
+        [
+          10.4,
+          {
+            "x": 820,
+            "y": 350
+          }
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 820,
+      "y": 580,
+      "c": "dts",
+      "a": "middle",
+      "in": 2,
+      "out": 3.8,
+      "s": "scrolls into view"
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4,
+      "title": "Set the target",
+      "text": "end is the number to reach. start defaults to 0."
+    },
+    {
+      "t": 4.2,
+      "out": 8.6,
+      "title": "It counts when seen",
+      "text": "The count starts as the number scrolls into view, over duration seconds."
+    },
+    {
+      "t": 9,
+      "out": 14.4,
+      "title": "Format the number",
+      "text": "decimalplaces, prefixtext and suffixtext shape what readers see."
+    }
+  ],
+  "end": {
+    "in": 14.8,
+    "line": "Numbers that earn attention.",
+    "code": "<count-up end=\"1250\" suffixtext=\"+\"></count-up>"
+  },
+  "version": 1,
+  "tag": "count-up",
+  "surfaceHash": "9b3fd85216a3",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "version": 1,
+  "tag": "simple-search",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/simple-search/simple-search.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [
+        [0.5, "import \"@haxtheweb/simple-search/simple-search.js\";"]
+      ],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 580,
+      "y": 310,
+      "w": 280,
+      "h": 64,
+      "v": "obj",
+      "r": 32,
+      "pop": [1.4, 0.6]
+    },
+    {
+      "type": "text",
+      "s": "simple-search",
+      "x": 720,
+      "y": 348,
+      "c": "vt",
+      "a": "middle",
+      "in": 1.7999999999999998
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [2, 940, 440],
+        [3.2, 760, 352]
+      ],
+      "show": [[2, 4.6]],
+      "clicks": [3.5]
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "always-float-label",
+          "desc": "always float label"
+        },
+        {
+          "name": "case-sensitive",
+          "desc": "Is the search case-sensitive"
+        },
+        {
+          "name": "controls",
+          "desc": "The id of the container element…"
+        },
+        {
+          "name": "inline",
+          "desc": "displays with label inline"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [12.4, 3],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<simple-search"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "always-float-label=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "case-sensitive=\"null\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "controls=\"null\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 368,
+      "c": "code",
+      "in": 12.4,
+      "s": "inline"
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</simple-search>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 432
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 382,
+      "ex": 616,
+      "ey": 434,
+      "label": "always-float-label",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 382,
+      "ex": 796,
+      "ey": 434,
+      "label": "case-sensitive",
+      "sub": "\"null\"",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 382,
+      "ex": 616,
+      "ey": 434,
+      "label": "controls",
+      "sub": "\"null\"",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 382,
+      "ex": 796,
+      "ey": 434,
+      "label": "inline",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 12.6,
+      "out": 14.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set always float label",
+      "text": "always-float-label and case-sensitive change how it looks and behaves."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set controls and inline",
+      "text": "The id of the container element that the navigation buttons control."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <simple-search>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Searches and highlights matching text within a region of th…",
+    "code": ""
+  },
+  "surfaceHash": "0eb4b6ee6a3b",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "button",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

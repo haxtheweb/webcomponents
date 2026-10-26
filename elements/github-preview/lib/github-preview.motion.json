@@ -1,0 +1,343 @@
+{
+  "version": 1,
+  "tag": "github-preview",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "HAX blocks",
+      "x": 80,
+      "y": 200,
+      "c": "vt",
+      "in": 0.4,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "h": 62,
+      "v": "obj",
+      "r": 10,
+      "in": 0.5,
+      "out": 4.4
+    },
+    {
+      "type": "text",
+      "s": "Github Preview",
+      "x": 104,
+      "y": 251,
+      "c": "rn",
+      "in": 0.7,
+      "out": 4.4
+    },
+    {
+      "type": "glyph",
+      "name": "plus",
+      "x": 380,
+      "y": 245,
+      "s": 10,
+      "in": 0.8,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 196,
+      "y": 232,
+      "w": 150,
+      "h": 36,
+      "v": "slot",
+      "r": 8,
+      "in": 1.5,
+      "d": 0.2,
+      "out": 2.6,
+      "od": 0.2,
+      "keys": [
+        [
+          2.5,
+          {
+            "x": 650,
+            "y": 322
+          },
+          0.9000000000000001
+        ]
+      ]
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [0.8, 300, 360],
+        [1.4, 240, 248],
+        [2.5, 720, 340]
+      ],
+      "show": [[0.8, 3.2]],
+      "clicks": [1.5, 2.6]
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 180,
+      "w": 400,
+      "h": 330,
+      "v": "obj",
+      "r": 8,
+      "pop": [2.6, 0.6]
+    },
+    {
+      "type": "line",
+      "x1": 520,
+      "y1": 220,
+      "x2": 920,
+      "y2": 220,
+      "v": "thin",
+      "in": 2.9
+    },
+    {
+      "type": "glyph",
+      "name": "link",
+      "x": 544,
+      "y": 200,
+      "s": 9,
+      "in": 3
+    },
+    {
+      "type": "text",
+      "s": "github-preview",
+      "x": 564,
+      "y": 205,
+      "c": "dts",
+      "in": 3.1
+    },
+    {
+      "type": "box",
+      "x": 544,
+      "y": 244,
+      "w": 352,
+      "h": 150,
+      "v": "well",
+      "r": 4,
+      "xbox": true,
+      "in": 3.2
+    },
+    {
+      "type": "line",
+      "x1": 544,
+      "y1": 430,
+      "x2": 896,
+      "y2": 430,
+      "v": "thin",
+      "in": 3.1,
+      "d": 0.5
+    },
+    {
+      "type": "line",
+      "x1": 544,
+      "y1": 452,
+      "x2": 755.2,
+      "y2": 452,
+      "v": "thin",
+      "in": 3.22,
+      "d": 0.5
+    },
+    {
+      "type": "panel",
+      "title": "HAX settings",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 4.6,
+      "rows": [
+        {
+          "name": "org",
+          "desc": "Organization"
+        },
+        {
+          "name": "repo",
+          "desc": "Repository"
+        },
+        {
+          "name": "extended",
+          "desc": "Extended View"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 2.8000000000000003,
+      "s": "<github-preview"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "org=\"haxtheweb\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "repo=\"webcomponents\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "extended=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 2.9,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 2.9,
+      "s": "</github-preview>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 518,
+      "ex": 616,
+      "ey": 570,
+      "label": "org",
+      "sub": "\"haxtheweb\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 518,
+      "ex": 796,
+      "ey": 570,
+      "label": "repo",
+      "sub": "\"webcomponents\"",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 518,
+      "ex": 616,
+      "ey": 570,
+      "label": "extended",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Add Github Preview",
+      "text": "Find Github Preview in the HAX blocks menu and drop it on the page."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set organization",
+      "text": "Github organization machine name."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set extended view",
+      "text": "Includes readme in element."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Edit in HAX",
+      "text": "Each setting is in the HAX sidebar and the page updates as you change it."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Accessible figure with long description",
+    "code": "<github-preview></github-preview>"
+  },
+  "surfaceHash": "9477b49451d3",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "embed",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

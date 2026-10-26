@@ -1,0 +1,276 @@
+{
+  "version": 1,
+  "tag": "rich-text-editor",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/rich-text-editor/rich-text-editor.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [
+        [0.5, "import \"@haxtheweb/rich-text-editor/rich-text-editor.js\";"]
+      ],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 200,
+      "w": 400,
+      "h": 260,
+      "v": "well",
+      "r": 6,
+      "pop": [1.4, 0.6]
+    },
+    {
+      "type": "text",
+      "s": "<rich-text-editor></rich-text-editor>",
+      "x": 540,
+      "y": 238,
+      "c": "cd",
+      "in": 1.9
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "id",
+          "desc": "editor's unique id"
+        },
+        {
+          "name": "contenteditable",
+          "desc": "Maps to editing attribute"
+        },
+        {
+          "name": "disabled",
+          "desc": "don't reveal toolbar on mouseov…"
+        },
+        {
+          "name": "disable-hover",
+          "desc": "don't reveal toolbar on mouseov…"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [12.4, 3],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<rich-text-editor"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "id=\"editor's unique id\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "contenteditable=\"Maps to editing a…\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "disabled=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 368,
+      "c": "code",
+      "in": 12.4,
+      "s": "disable-hover"
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</rich-text-editor>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 432
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 468,
+      "ex": 616,
+      "ey": 520,
+      "label": "id",
+      "sub": "\"editor's unique id\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 468,
+      "ex": 796,
+      "ey": 520,
+      "label": "contenteditable",
+      "sub": "\"Maps to editing a…\"",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 468,
+      "ex": 616,
+      "ey": 520,
+      "label": "disabled",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 468,
+      "ex": 796,
+      "ey": 520,
+      "label": "disable-hover",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 12.6,
+      "out": 14.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set editor's unique id",
+      "text": "Editor's unique id."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set disabled",
+      "text": "Don't reveal toolbar on mouseover."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <rich-text-editor>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "a standalone rich text editor",
+    "code": ""
+  },
+  "surfaceHash": "9acf34dfbe42",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "code",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

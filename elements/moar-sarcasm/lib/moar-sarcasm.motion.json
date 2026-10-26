@@ -1,0 +1,236 @@
+{
+  "version": 1,
+  "tag": "moar-sarcasm",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "HAX blocks",
+      "x": 80,
+      "y": 200,
+      "c": "vt",
+      "in": 0.4,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "h": 62,
+      "v": "obj",
+      "r": 10,
+      "in": 0.5,
+      "out": 4.4
+    },
+    {
+      "type": "text",
+      "s": "Sarcasm",
+      "x": 104,
+      "y": 251,
+      "c": "rn",
+      "in": 0.7,
+      "out": 4.4
+    },
+    {
+      "type": "glyph",
+      "name": "plus",
+      "x": 380,
+      "y": 245,
+      "s": 10,
+      "in": 0.8,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 196,
+      "y": 232,
+      "w": 150,
+      "h": 36,
+      "v": "slot",
+      "r": 8,
+      "in": 1.5,
+      "d": 0.2,
+      "out": 2.6,
+      "od": 0.2,
+      "keys": [
+        [
+          2.5,
+          {
+            "x": 650,
+            "y": 322
+          },
+          0.9000000000000001
+        ]
+      ]
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [0.8, 300, 360],
+        [1.4, 240, 248],
+        [2.5, 720, 340]
+      ],
+      "show": [[0.8, 3.2]],
+      "clicks": [1.5, 2.6]
+    },
+    {
+      "type": "line",
+      "x1": 528,
+      "y1": 210,
+      "x2": 528,
+      "y2": 420,
+      "v": "bold",
+      "in": 2.6,
+      "d": 0.6
+    },
+    {
+      "type": "text",
+      "s": "“",
+      "x": 550,
+      "y": 260,
+      "c": "big",
+      "in": 2.9
+    },
+    {
+      "type": "text",
+      "s": "I am so cool",
+      "x": 550,
+      "y": 310,
+      "c": "cdd",
+      "in": 3.1
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 550,
+      "y": 336,
+      "c": "cdd",
+      "in": 3.2
+    },
+    {
+      "type": "text",
+      "s": "— I am so cool",
+      "x": 550,
+      "y": 394,
+      "c": "dts",
+      "in": 3.4000000000000004,
+      "states": [[2.6, "— I am so cool"]]
+    },
+    {
+      "type": "panel",
+      "title": "HAX settings",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 4.6,
+      "rows": [
+        {
+          "name": "say",
+          "desc": "Text"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 2.8000000000000003,
+      "s": "<moar-sarcasm"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "say=\"I am so cool\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 2.9,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 2.9,
+      "s": "</moar-sarcasm>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 428,
+      "ex": 616,
+      "ey": 480,
+      "label": "say",
+      "sub": "\"I am so cool\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Add Sarcasm",
+      "text": "Find Sarcasm in the HAX blocks menu and drop it on the page."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set text",
+      "text": "Text to make sarcastic."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Edit in HAX",
+      "text": "Each setting is in the HAX sidebar and the page updates as you change it."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Presenting text in a trolly way",
+    "code": "<moar-sarcasm say=\"I am so cool\">"
+  },
+  "surfaceHash": "0fc969ce7124",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "quote",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

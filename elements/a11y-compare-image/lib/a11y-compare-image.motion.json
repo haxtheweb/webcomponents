@@ -1,0 +1,319 @@
+{
+  "version": 1,
+  "tag": "a11y-compare-image",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/a11y-compare-image/a11y-compare-image.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [
+        [0.5, "import \"@haxtheweb/a11y-compare-image/a11y-compare-image.js\";"]
+      ],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 180,
+      "w": 400,
+      "h": 330,
+      "v": "hug",
+      "r": 6,
+      "xbox": true,
+      "pop": [1.4, 0.6]
+    },
+    {
+      "type": "line",
+      "x1": 720,
+      "y1": 180,
+      "x2": 720,
+      "y2": 510,
+      "v": "bold",
+      "in": 1.9
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 720,
+      "y": 345,
+      "s": 18,
+      "in": 2.0999999999999996,
+      "keys": [
+        [
+          3.8,
+          {
+            "x": 640
+          },
+          1.2
+        ],
+        [
+          5.4,
+          {
+            "x": 800
+          },
+          1.2
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "before",
+      "x": 534,
+      "y": 206,
+      "c": "dts",
+      "in": 2.2
+    },
+    {
+      "type": "text",
+      "s": "after",
+      "x": 906,
+      "y": 206,
+      "c": "dts",
+      "a": "end",
+      "in": 2.2
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "active-layer",
+          "desc": "active layer"
+        },
+        {
+          "name": "data-pulse",
+          "desc": "data pulse"
+        },
+        {
+          "name": "opacity",
+          "desc": "mode for the slider: wipe"
+        },
+        {
+          "name": "label",
+          "desc": "label"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [12.4, 3],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<a11y-compare-image"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "active-layer=\"3\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "data-pulse=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "opacity=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 368,
+      "c": "code",
+      "in": 12.4,
+      "s": "label=\"Compare images\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</a11y-compare-image>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 432
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 518,
+      "ex": 616,
+      "ey": 570,
+      "label": "active-layer",
+      "sub": "a number",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 518,
+      "ex": 796,
+      "ey": 570,
+      "label": "data-pulse",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 518,
+      "ex": 616,
+      "ey": 570,
+      "label": "opacity",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 518,
+      "ex": 796,
+      "ey": 570,
+      "label": "label",
+      "sub": "\"Compare images\"",
+      "dir": 1,
+      "in": 12.6,
+      "out": 14.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set active layer",
+      "text": "active-layer and data-pulse change how it looks and behaves."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set opacity and label",
+      "text": "Mode for the slider: wipe."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <a11y-compare-image>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Slider that allows comparison of two images",
+    "code": ""
+  },
+  "surfaceHash": "85e4e594b44f",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "compare",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

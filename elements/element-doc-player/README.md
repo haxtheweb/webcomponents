@@ -4,8 +4,8 @@ Living documentation for a web component in one tag: an animated walkthrough, th
 
 ```html
 <element-doc-player
-  docs-src="./meme-maker.docs.json"
-  motion-src="../lib/meme-maker.motion.json"
+  docs-src="./demo/meme-maker.docs.json"
+  motion-src="../meme-maker/lib/meme-maker.motion.json"
 ></element-doc-player>
 ```
 

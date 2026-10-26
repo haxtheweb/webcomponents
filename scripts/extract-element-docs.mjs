@@ -60,15 +60,18 @@ function balanced(src, idx) {
 }
 
 /** haxProperties is a JSON file next to the element or an inline object literal */
-function loadHaxProperties(dir, src) {
+function loadHaxProperties(dir, src, tag) {
   const m = src.match(/static get haxProperties\(\)\s*\{/);
   if (!m) return null;
   const body = balanced(src, m.index);
   if (/new URL\(/.test(body)) {
     const lib = path.join(dir, "lib");
-    const f =
-      fs.existsSync(lib) &&
-      fs.readdirSync(lib).find((x) => x.endsWith(".haxProperties.json"));
+    // packages can hold several elements: prefer the file named for this tag
+    const own = `${tag}.haxProperties.json`;
+    const files = fs.existsSync(lib) ? fs.readdirSync(lib) : [];
+    const f = files.includes(own)
+      ? own
+      : files.find((x) => x.endsWith(".haxProperties.json"));
     return f ? readJson(path.join(lib, f)) : null;
   }
   const literal = balanced(body, body.indexOf("return"));
@@ -80,6 +83,45 @@ function loadHaxProperties(dir, src) {
     }
   }
   return new Function(`${preamble}return (${literal});`)();
+}
+
+/**
+ * attributes read from `static get properties()` when custom-elements.json has
+ * none, so elements without a manifest still document their attributes
+ */
+function propertiesFromSource(src) {
+  const m = src.match(/static get properties\(\)\s*\{/);
+  if (!m) return [];
+  let body;
+  try {
+    body = balanced(src, m.index);
+  } catch {
+    return [];
+  }
+  const out = [];
+  for (const pm of body.matchAll(/^\s{4,8}(\w+)\s*:\s*\{([^{}]*)\}/gm)) {
+    const [, field, spec] = pm;
+    if (field.startsWith("_") || /attribute\s*:\s*false/.test(spec) || /state\s*:\s*true/.test(spec)) continue;
+    const at = spec.match(/attribute\s*:\s*["'`]([\w-]+)["'`]/);
+    const ty = spec.match(/type\s*:\s*(\w+)/);
+    out.push({
+      name: at ? at[1] : field.toLowerCase(),
+      fieldName: field,
+      type: { text: ty ? ty[1].toLowerCase() : "" },
+    });
+  }
+  return out;
+}
+
+/** the opening sentence of a doc comment, without markdown sections */
+function firstSentence(text) {
+  const t = String(text || "")
+    .split(/\n\s*#|###/)[0]
+    .replace(/`/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const m = t.match(/^.{20,220}?[.!?](\s|$)/);
+  return m ? m[0].trim() : t.slice(0, 220);
 }
 
 /** stable stringify so the hash does not depend on key order */
@@ -130,7 +172,7 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
       [])[1] || name;
   let hax = {};
   try {
-    hax = loadHaxProperties(dir, src) || {};
+    hax = loadHaxProperties(dir, src, tag) || {};
   } catch (e) {
     hax = {};
   }
@@ -155,7 +197,7 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
   ];
   const byProp = Object.fromEntries(settings.map((s) => [s.property, s]));
 
-  const attributes = ((decl && decl.attributes) || [])
+  const attributes = ((decl && decl.attributes && decl.attributes.length ? decl.attributes : propertiesFromSource(src)) || [])
     .filter((a) => !a.name.startsWith("_"))
     .map((a) => ({
       name: a.name,
@@ -232,8 +274,8 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
     title: (hax.gizmo && hax.gizmo.title) || tag,
     description:
       (hax.gizmo && hax.gizmo.description) ||
-      (decl && decl.description) ||
       pkg.description ||
+      firstSentence(decl && decl.description) ||
       "",
     icon: (hax.gizmo && hax.gizmo.icon) || "",
     tags: (hax.gizmo && hax.gizmo.tags) || [],

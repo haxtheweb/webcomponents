@@ -1,0 +1,311 @@
+{
+  "version": 1,
+  "tag": "a11y-media-player",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/a11y-media-player/a11y-media-player.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [
+        [0.5, "import \"@haxtheweb/a11y-media-player/a11y-media-player.js\";"]
+      ],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 200,
+      "w": 400,
+      "h": 225,
+      "v": "hug",
+      "r": 6,
+      "pop": [1.4, 0.6]
+    },
+    {
+      "type": "glyph",
+      "name": "play",
+      "x": 720,
+      "y": 312,
+      "s": 34,
+      "in": 1.9
+    },
+    {
+      "type": "line",
+      "x1": 540,
+      "y1": 448,
+      "x2": 900,
+      "y2": 448,
+      "v": "thin",
+      "in": 2
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 540,
+      "y": 448,
+      "s": 7,
+      "v": "bold",
+      "in": 2.0999999999999996,
+      "keys": [
+        [
+          10.4,
+          {
+            "x": 780
+          },
+          8
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "a11y-media-player",
+      "x": 524,
+      "y": 486,
+      "c": "cdd",
+      "in": 2.0999999999999996
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "typeof",
+          "desc": "OER Schema type. Reflected (rat…"
+        },
+        {
+          "name": "allow-concurrent",
+          "desc": "Allow this media to play concur…"
+        },
+        {
+          "name": "audio-only",
+          "desc": "Is this an audio file?"
+        },
+        {
+          "name": "autoplay",
+          "desc": "autoplay is an option, but gene…"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [12.4, 3],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<a11y-media-player"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "typeof=\"oer:MediaObject\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "allow-concurrent=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "audio-only=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 368,
+      "c": "code",
+      "in": 12.4,
+      "s": "autoplay=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</a11y-media-player>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 432
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 494,
+      "ex": 616,
+      "ey": 546,
+      "label": "typeof",
+      "sub": "\"oer:MediaObject\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 494,
+      "ex": 796,
+      "ey": 546,
+      "label": "allow-concurrent",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 494,
+      "ex": 616,
+      "ey": 546,
+      "label": "audio-only",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 494,
+      "ex": 796,
+      "ey": 546,
+      "label": "autoplay",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 12.6,
+      "out": 14.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set typeof",
+      "text": "typeof and allow-concurrent change how it looks and behaves."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set is this an audio file?",
+      "text": "Is this an audio file?."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <a11y-media-player>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "A feature rich, highly accessible video player",
+    "code": ""
+  },
+  "surfaceHash": "77667da3d298",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "video",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

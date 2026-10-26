@@ -1,0 +1,314 @@
+{
+  "version": 1,
+  "tag": "simple-toast",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/simple-toast/simple-toast.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [[0.5, "import \"@haxtheweb/simple-toast/simple-toast.js\";"]],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 220,
+      "w": 400,
+      "h": 220,
+      "v": "well",
+      "r": 8,
+      "pop": [1.4, 0.6]
+    },
+    {
+      "type": "glyph",
+      "name": "info",
+      "x": 566,
+      "y": 280,
+      "s": 22,
+      "in": 1.9
+    },
+    {
+      "type": "text",
+      "s": "simple-toast",
+      "x": 604,
+      "y": 288,
+      "c": "vt",
+      "in": 1.7999999999999998,
+      "states": [
+        [1.4, "simple-toast"],
+        [7.4, "Plain text based…"]
+      ],
+      "typed": true
+    },
+    {
+      "type": "line",
+      "x1": 604,
+      "y1": 330,
+      "x2": 890,
+      "y2": 330,
+      "v": "thin",
+      "in": 2
+    },
+    {
+      "type": "line",
+      "x1": 604,
+      "y1": 354,
+      "x2": 890,
+      "y2": 354,
+      "v": "thin",
+      "in": 2.1
+    },
+    {
+      "type": "line",
+      "x1": 604,
+      "y1": 378,
+      "x2": 780,
+      "y2": 378,
+      "v": "thin",
+      "in": 2.2
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "opened",
+          "desc": "Opened state of the toast, use…"
+        },
+        {
+          "name": "text",
+          "desc": "Plain text based message to dis…"
+        },
+        {
+          "name": "class-style",
+          "desc": "Class name, fit-bottom being a…"
+        },
+        {
+          "name": "close-text",
+          "desc": "Text for the close button"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [12.4, 3],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<simple-toast"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "opened"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "text=\"Plain text based…\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "class-style=\"Class name, fit-b…\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 368,
+      "c": "code",
+      "in": 12.4,
+      "s": "close-text=\"Text for the clos…\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</simple-toast>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 432
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 448,
+      "ex": 616,
+      "ey": 500,
+      "label": "opened",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 448,
+      "ex": 796,
+      "ey": 500,
+      "label": "text",
+      "sub": "\"Plain text based…\"",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 448,
+      "ex": 616,
+      "ey": 500,
+      "label": "class-style",
+      "sub": "\"Class name, fit-b…\"",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 448,
+      "ex": 796,
+      "ey": 500,
+      "label": "close-text",
+      "sub": "\"Text for the clos…\"",
+      "dir": 1,
+      "in": 12.6,
+      "out": 14.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set opened and text",
+      "text": "Opened state of the toast, use event to change."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set class-style",
+      "text": "Class name, fit-bottom being a useful one."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <simple-toast>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "A singular toast / message for conistency",
+    "code": ""
+  },
+  "surfaceHash": "0e9a8d5920c5",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "note",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}
