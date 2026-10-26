@@ -1,0 +1,305 @@
+{
+  "version": 1,
+  "tag": "hex-picker",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "HAX blocks",
+      "x": 80,
+      "y": 200,
+      "c": "vt",
+      "in": 0.4,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "h": 62,
+      "v": "obj",
+      "r": 10,
+      "in": 0.5,
+      "out": 4.4
+    },
+    {
+      "type": "text",
+      "s": "Hex Picker",
+      "x": 104,
+      "y": 251,
+      "c": "rn",
+      "in": 0.7,
+      "out": 4.4
+    },
+    {
+      "type": "glyph",
+      "name": "plus",
+      "x": 380,
+      "y": 245,
+      "s": 10,
+      "in": 0.8,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 196,
+      "y": 232,
+      "w": 150,
+      "h": 36,
+      "v": "slot",
+      "r": 8,
+      "in": 1.5,
+      "d": 0.2,
+      "out": 2.6,
+      "od": 0.2,
+      "keys": [
+        [
+          2.5,
+          {
+            "x": 650,
+            "y": 322
+          },
+          0.9000000000000001
+        ]
+      ]
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [0.8, 300, 360],
+        [1.4, 240, 248],
+        [2.5, 720, 340]
+      ],
+      "show": [[0.8, 3.2]],
+      "clicks": [1.5, 2.6]
+    },
+    {
+      "type": "box",
+      "x": 580,
+      "y": 310,
+      "w": 280,
+      "h": 64,
+      "v": "obj",
+      "r": 32,
+      "pop": [2.6, 0.6]
+    },
+    {
+      "type": "text",
+      "s": "haxtheweb",
+      "x": 720,
+      "y": 348,
+      "c": "vt",
+      "a": "middle",
+      "in": 3
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [3.2, 940, 440],
+        [4.4, 760, 352]
+      ],
+      "show": [[3.2, 5.800000000000001]],
+      "clicks": [4.7]
+    },
+    {
+      "type": "panel",
+      "title": "HAX settings",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 4.6,
+      "rows": [
+        {
+          "name": "value",
+          "desc": "Default hex value"
+        },
+        {
+          "name": "disabled",
+          "desc": "Disable the text field"
+        },
+        {
+          "name": "large-display",
+          "desc": "Include color in large display"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 2.8000000000000003,
+      "s": "<hex-picker"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "value=\"Value\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "disabled"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "large-display"
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 2.9,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 2.9,
+      "s": "</hex-picker>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 382,
+      "ex": 616,
+      "ey": 434,
+      "label": "value",
+      "sub": "\"Value\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 382,
+      "ex": 796,
+      "ey": 434,
+      "label": "disabled",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 382,
+      "ex": 616,
+      "ey": 434,
+      "label": "large-display",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Add Hex Picker",
+      "text": "Find Hex Picker in the HAX blocks menu and drop it on the page."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set value and disabled",
+      "text": "Default hex value."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set large display",
+      "text": "Include color in large display."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Edit in HAX",
+      "text": "Each setting is in the HAX sidebar and the page updates as you change it."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Hexcode color picker",
+    "code": "<hex-picker org=\"haxtheweb\" repo=\"webcomponents\"></hex-picker>"
+  },
+  "surfaceHash": "aed5b3a48c6a",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "button",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

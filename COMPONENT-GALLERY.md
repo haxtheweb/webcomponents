@@ -162,3 +162,11 @@ node scripts/extract-element-docs.mjs --status
 ```
 
 A storyboard stores the surface hash of the element it was written for. When attributes, HAX settings, slots, events or demo schema change, the hash changes and the walkthrough shows as stale until someone updates and re-approves it.
+
+### Drafting a walkthrough
+
+```bash
+node scripts/draft-element-walkthrough.mjs <element> [element ...]
+```
+
+Builds a first draft from the element's HAX settings (or attributes), its demo markup and a sketch chosen by element type, and writes `lib/<tag>.motion.json` with `review.status: "draft"`. Treat it as a starting point: watch it in the gallery's Documentation view, then edit the JSON or hand it to a person to approve. Hand-written and approved storyboards are never overwritten unless `--force` is passed.

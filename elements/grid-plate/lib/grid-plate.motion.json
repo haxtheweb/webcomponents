@@ -1,0 +1,203 @@
+{
+  "duration": 20,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "x": 480,
+      "y": 150,
+      "c": "code",
+      "in": 0.5,
+      "states": [
+        [0.5, "<grid-plate layout=\"1-1\">"],
+        [4.8, "<grid-plate layout=\"2-1\">"],
+        [7.8, "<grid-plate layout=\"1-2-1\">"],
+        [10.8, "<grid-plate layout=\"1-1-1\">"]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 170,
+      "w": 640,
+      "h": 300,
+      "v": "well",
+      "r": 10,
+      "in": 0.4,
+      "d": 0.8,
+      "keys": [
+        [
+          14,
+          {
+            "x": 480,
+            "w": 640
+          }
+        ],
+        [
+          15.2,
+          {
+            "x": 640,
+            "w": 320
+          }
+        ]
+      ]
+    },
+    {
+      "type": "stack",
+      "n": 3,
+      "area": [496, 186, 608, 268],
+      "in": 0.4,
+      "md": 0.9,
+      "label": "col-{n}",
+      "appear": [0.8, 1.2, 0.4],
+      "layouts": {
+        "1-1": {
+          "gen": "row",
+          "ratios": [1, 1],
+          "gap": 12
+        },
+        "2-1": {
+          "gen": "row",
+          "ratios": [2, 1],
+          "gap": 12
+        },
+        "1-2-1": {
+          "gen": "row",
+          "ratios": [1, 2, 1],
+          "gap": 12
+        },
+        "1-1-1": {
+          "gen": "row",
+          "ratios": [1, 1, 1],
+          "gap": 12
+        },
+        "stack": {
+          "gen": "explicit",
+          "boxes": [
+            {
+              "x": 660,
+              "y": 190,
+              "w": 280,
+              "h": 80
+            },
+            {
+              "x": 660,
+              "y": 278,
+              "w": 280,
+              "h": 80
+            },
+            {
+              "x": 660,
+              "y": 366,
+              "w": 280,
+              "h": 80
+            }
+          ]
+        }
+      },
+      "timeline": [
+        [0, "1-1"],
+        [4.8, "2-1"],
+        [7.8, "1-2-1"],
+        [10.8, "1-1-1"],
+        [15.2, "stack"]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "Each column is a slot: col-1 \u2026 col-6",
+      "x": 800,
+      "y": 515,
+      "c": "dt",
+      "a": "middle",
+      "in": 2,
+      "out": 4.4
+    },
+    {
+      "type": "panel",
+      "title": "layout",
+      "x": 1180,
+      "y": 214,
+      "w": 340,
+      "rowH": 56,
+      "gap": 10,
+      "in": 4,
+      "out": 14,
+      "rows": [
+        {
+          "name": "1-1",
+          "desc": "Two equal columns"
+        },
+        {
+          "name": "2-1",
+          "desc": "Wide left, narrow right"
+        },
+        {
+          "name": "1-2-1",
+          "desc": "Wide centre"
+        },
+        {
+          "name": "1-1-1",
+          "desc": "Three equal columns"
+        }
+      ],
+      "active": [
+        [4.5, 1],
+        [7.8, 2],
+        [10.8, 3]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "Narrow screen? Columns stack to 100% width.",
+      "x": 800,
+      "y": 515,
+      "c": "dt",
+      "a": "middle",
+      "in": 14.6,
+      "out": 17.2
+    },
+    {
+      "type": "text",
+      "s": "breakpoint-sm / md / lg / xl set where it changes",
+      "x": 800,
+      "y": 540,
+      "c": "dts",
+      "a": "middle",
+      "in": 14.9,
+      "out": 17.2
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.4,
+      "title": "Put content in columns",
+      "text": "Content goes into numbered slots: col-1, col-2 and so on."
+    },
+    {
+      "t": 4.6,
+      "out": 13.8,
+      "title": "Choose a layout",
+      "text": "layout decides how wide each column is, from 1-1 to 1-1-1-1."
+    },
+    {
+      "t": 14,
+      "out": 17.4,
+      "title": "It responds on its own",
+      "text": "On narrow screens the columns stack. Breakpoints are adjustable."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Layouts that rearrange themselves.",
+    "code": "<grid-plate layout=\"1-2-1\"></grid-plate>"
+  },
+  "version": 1,
+  "tag": "grid-plate",
+  "surfaceHash": "3541ce17e89c",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

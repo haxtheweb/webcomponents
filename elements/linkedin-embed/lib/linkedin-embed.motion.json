@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "tag": "linkedin-embed",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/linkedin-embed/linkedin-embed.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [
+        [0.5, "import \"@haxtheweb/linkedin-embed/linkedin-embed.js\";"]
+      ],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 180,
+      "w": 400,
+      "h": 330,
+      "v": "obj",
+      "r": 8,
+      "pop": [1.4, 0.6]
+    },
+    {
+      "type": "line",
+      "x1": 520,
+      "y1": 220,
+      "x2": 920,
+      "y2": 220,
+      "v": "thin",
+      "in": 1.7
+    },
+    {
+      "type": "glyph",
+      "name": "link",
+      "x": 544,
+      "y": 200,
+      "s": 9,
+      "in": 1.7999999999999998
+    },
+    {
+      "type": "text",
+      "s": "linkedin-embed",
+      "x": 564,
+      "y": 205,
+      "c": "dts",
+      "in": 1.9
+    },
+    {
+      "type": "box",
+      "x": 544,
+      "y": 244,
+      "w": 352,
+      "h": 150,
+      "v": "well",
+      "r": 4,
+      "xbox": true,
+      "in": 2
+    },
+    {
+      "type": "line",
+      "x1": 544,
+      "y1": 430,
+      "x2": 896,
+      "y2": 430,
+      "v": "thin",
+      "in": 1.9,
+      "d": 0.5
+    },
+    {
+      "type": "line",
+      "x1": 544,
+      "y1": 452,
+      "x2": 755.2,
+      "y2": 452,
+      "v": "thin",
+      "in": 2.02,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<linkedin-embed>"
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": "</linkedin-embed>"
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 5,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <linkedin-embed>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "LinkedIn profile badge embed web component",
+    "code": ""
+  },
+  "surfaceHash": "85e58a5ed1c6",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "embed",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

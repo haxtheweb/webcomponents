@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "tag": "air-horn",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/air-horn/air-horn.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [[0.5, "import \"@haxtheweb/air-horn/air-horn.js\";"]],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 580,
+      "y": 310,
+      "w": 280,
+      "h": 64,
+      "v": "obj",
+      "r": 32,
+      "pop": [1.4, 0.6]
+    },
+    {
+      "type": "text",
+      "s": "air-horn",
+      "x": 720,
+      "y": 348,
+      "c": "vt",
+      "a": "middle",
+      "in": 1.7999999999999998
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [2, 940, 440],
+        [3.2, 760, 352]
+      ],
+      "show": [[2, 4.6]],
+      "clicks": [3.5]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<air-horn>"
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": "</air-horn>"
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 5,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <air-horn>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "demonstrative purposes via meme",
+    "code": ""
+  },
+  "surfaceHash": "ab7e9a6d2936",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "button",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

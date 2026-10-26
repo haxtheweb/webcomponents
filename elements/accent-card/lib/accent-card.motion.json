@@ -1,0 +1,254 @@
+{
+  "duration": 20,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "x": 480,
+      "y": 160,
+      "c": "code",
+      "in": 0.5,
+      "states": [
+        [0.5, "<accent-card>"],
+        [7.6, "<accent-card horizontal>"],
+        [14, "<accent-card horizontal flat>"]
+      ]
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 56,
+      "gap": 12,
+      "rows": [
+        {
+          "name": "accent-heading",
+          "desc": "Accent behind the heading"
+        },
+        {
+          "name": "horizontal",
+          "desc": "Image beside the text"
+        },
+        {
+          "name": "flat",
+          "desc": "No shadow"
+        },
+        {
+          "name": "no-border",
+          "desc": "No outline"
+        }
+      ],
+      "active": [
+        [3.4, 0],
+        [7.6, 1],
+        [14, 2],
+        [15.8, 3]
+      ],
+      "in": 0.6
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 180,
+      "w": 560,
+      "h": 340,
+      "v": "thin",
+      "r": 8,
+      "in": 0.5,
+      "d": 0.9,
+      "out": 16.2,
+      "od": 0.5
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 180,
+      "w": 560,
+      "h": 130,
+      "v": "well",
+      "r": 0,
+      "xbox": true,
+      "in": 1,
+      "d": 0.6,
+      "label": "image-src",
+      "labelMin": 50,
+      "keys": [
+        [
+          7.6,
+          {
+            "x": 480,
+            "y": 180,
+            "w": 200,
+            "h": 340
+          },
+          0.9
+        ]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 320,
+      "w": 560,
+      "h": 60,
+      "v": "hug",
+      "r": 0,
+      "in": 3.4,
+      "d": 0.5,
+      "keys": [
+        [
+          7.6,
+          {
+            "x": 680,
+            "y": 200,
+            "w": 360,
+            "h": 62
+          },
+          0.9
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "Accent card",
+      "x": 500,
+      "y": 357,
+      "c": "vt",
+      "in": 1.8,
+      "keys": [
+        [
+          7.6,
+          {
+            "x": 700,
+            "y": 238
+          },
+          0.9
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "Optional accent styling",
+      "x": 500,
+      "y": 404,
+      "c": "dts",
+      "in": 2.3,
+      "keys": [
+        [
+          7.6,
+          {
+            "x": 700,
+            "y": 296
+          },
+          0.9
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "Put any content in the content slot.",
+      "x": 500,
+      "y": 450,
+      "c": "cdd",
+      "in": 2.8,
+      "keys": [
+        [
+          7.6,
+          {
+            "x": 700,
+            "y": 340
+          },
+          0.9
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "footer slot",
+      "x": 500,
+      "y": 498,
+      "c": "dts",
+      "in": 3,
+      "keys": [
+        [
+          7.6,
+          {
+            "x": 700,
+            "y": 490
+          },
+          0.9
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 1030,
+      "py": 350,
+      "ex": 1120,
+      "ey": 300,
+      "label": "heading",
+      "sub": "slot",
+      "dir": 1,
+      "in": 4.8,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 1030,
+      "py": 440,
+      "ex": 1120,
+      "ey": 440,
+      "label": "content",
+      "sub": "slot",
+      "dir": 1,
+      "in": 5.4,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 1030,
+      "py": 230,
+      "ex": 1120,
+      "ey": 170,
+      "label": "image-src",
+      "sub": "attribute",
+      "dir": 1,
+      "in": 6,
+      "out": 7.2
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 7.2,
+      "title": "Slots build the card",
+      "text": "Heading, subheading, content, footer and an image come together in one card."
+    },
+    {
+      "t": 7.6,
+      "out": 13.6,
+      "title": "Flip the layout",
+      "text": "horizontal puts the image beside the text instead of above it."
+    },
+    {
+      "t": 14,
+      "out": 17.2,
+      "title": "Dial the look",
+      "text": "flat and no-border strip the card back for quieter pages."
+    }
+  ],
+  "end": {
+    "in": 17.6,
+    "line": "A card that adapts to what you put in it.",
+    "code": "<accent-card horizontal image-src=\"\u2026\"></accent-card>"
+  },
+  "version": 1,
+  "tag": "accent-card",
+  "surfaceHash": "3e2651088e82",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

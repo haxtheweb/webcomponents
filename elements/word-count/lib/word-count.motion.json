@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "tag": "word-count",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/word-count/word-count.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [[0.5, "import \"@haxtheweb/word-count/word-count.js\";"]],
+      "typeDur": 1.4
+    },
+    {
+      "type": "text",
+      "s": "word-count",
+      "x": 720,
+      "y": 340,
+      "c": "big",
+      "a": "middle",
+      "in": 1.4,
+      "typed": true,
+      "states": [[1.4, "word-count"]],
+      "typeDur": 1.2
+    },
+    {
+      "type": "line",
+      "x1": 560,
+      "y1": 370,
+      "x2": 880,
+      "y2": 370,
+      "v": "thin",
+      "in": 2.4
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "words",
+          "desc": "words"
+        },
+        {
+          "name": "words-prefix",
+          "desc": "words prefix"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<word-count"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "words=\"3\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "words-prefix=\"words prefix\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</word-count>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 378,
+      "ex": 616,
+      "ey": 430,
+      "label": "words",
+      "sub": "a number",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 378,
+      "ex": 796,
+      "ey": 430,
+      "label": "words-prefix",
+      "sub": "\"words prefix\"",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set words and words prefix",
+      "text": "words and words-prefix change how it looks and behaves."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <word-count>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Counts the words in slotted text and shows a small badge",
+    "code": ""
+  },
+  "surfaceHash": "d8ff0d631af7",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "heading",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

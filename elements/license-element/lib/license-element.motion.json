@@ -1,0 +1,316 @@
+{
+  "version": 1,
+  "tag": "license-element",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/license-element/license-element.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [
+        [0.5, "import \"@haxtheweb/license-element/license-element.js\";"]
+      ],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 220,
+      "w": 400,
+      "h": 220,
+      "v": "well",
+      "r": 8,
+      "pop": [1.4, 0.6]
+    },
+    {
+      "type": "glyph",
+      "name": "warning",
+      "x": 566,
+      "y": 280,
+      "s": 22,
+      "in": 1.9
+    },
+    {
+      "type": "text",
+      "s": "license-element",
+      "x": 604,
+      "y": 288,
+      "c": "vt",
+      "in": 1.7999999999999998,
+      "states": [
+        [1.4, "license-element"],
+        [5, "title"]
+      ],
+      "typed": true
+    },
+    {
+      "type": "line",
+      "x1": 604,
+      "y1": 330,
+      "x2": 890,
+      "y2": 330,
+      "v": "thin",
+      "in": 2
+    },
+    {
+      "type": "line",
+      "x1": 604,
+      "y1": 354,
+      "x2": 890,
+      "y2": 354,
+      "v": "thin",
+      "in": 2.1
+    },
+    {
+      "type": "line",
+      "x1": 604,
+      "y1": 378,
+      "x2": 780,
+      "y2": 378,
+      "v": "thin",
+      "in": 2.2
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "title",
+          "desc": "title"
+        },
+        {
+          "name": "creator",
+          "desc": "creator"
+        },
+        {
+          "name": "source",
+          "desc": "source"
+        },
+        {
+          "name": "license-name",
+          "desc": "license name"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [12.4, 3],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<license-element"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "title=\"title\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "creator=\"creator\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "source=\"source\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 368,
+      "c": "code",
+      "in": 12.4,
+      "s": "license-name=\"license name\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</license-element>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 432
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 448,
+      "ex": 616,
+      "ey": 500,
+      "label": "title",
+      "sub": "\"title\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 448,
+      "ex": 796,
+      "ey": 500,
+      "label": "creator",
+      "sub": "\"creator\"",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 448,
+      "ex": 616,
+      "ey": 500,
+      "label": "source",
+      "sub": "\"source\"",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 448,
+      "ex": 796,
+      "ey": 500,
+      "label": "license-name",
+      "sub": "\"license name\"",
+      "dir": 1,
+      "in": 12.6,
+      "out": 14.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set title and creator",
+      "text": "title and creator change how it looks and behaves."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set source and license name",
+      "text": "source and license-name change how it looks and behaves."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <license-element>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Semantically accurate license for a work",
+    "code": ""
+  },
+  "surfaceHash": "2c1ec963abc4",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "note",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

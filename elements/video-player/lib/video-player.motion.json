@@ -1,0 +1,240 @@
+{
+  "duration": 20,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "x": 480,
+      "y": 160,
+      "c": "code",
+      "in": 0.5,
+      "typed": true,
+      "typeDur": 2.2,
+      "states": [
+        [0.5, "<video-player source=\"youtu.be/abc\" track=\"en.vtt\">"]
+      ]
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 0.8,
+      "rows": [
+        {
+          "name": "source",
+          "desc": "YouTube, Vimeo, or a file"
+        },
+        {
+          "name": "track",
+          "desc": "Captions, shown as transcript"
+        },
+        {
+          "name": "sticky-corner",
+          "desc": "Docks the video as you scroll"
+        },
+        {
+          "name": "hide-transcript",
+          "desc": "Turn the transcript off"
+        }
+      ],
+      "active": [
+        [1, 0],
+        [2.4, 1],
+        [14.5, 2],
+        [15.9, 3]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 180,
+      "w": 640,
+      "h": 330,
+      "v": "hug",
+      "r": 8,
+      "xbox": true,
+      "in": 0.8,
+      "d": 0.9,
+      "label": "Video"
+    },
+    {
+      "type": "glyph",
+      "name": "play",
+      "x": 800,
+      "y": 345,
+      "s": 70,
+      "v": "bold",
+      "in": 3.2,
+      "out": 4,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 450,
+      "w": 640,
+      "h": 60,
+      "v": "obj",
+      "r": 0,
+      "in": 3.4,
+      "d": 0.6
+    },
+    {
+      "type": "glyph",
+      "name": "play",
+      "swap": [
+        [3.4, "play"],
+        [4, "pause"]
+      ],
+      "x": 508,
+      "y": 480,
+      "s": 18,
+      "v": "thin",
+      "in": 3.6
+    },
+    {
+      "type": "line",
+      "x1": 540,
+      "y1": 480,
+      "x2": 1050,
+      "y2": 480,
+      "v": "thin",
+      "in": 3.7
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 540,
+      "y": 480,
+      "s": 12,
+      "v": "bold",
+      "in": 3.8,
+      "keys": [
+        [
+          4,
+          {
+            "x": 540
+          }
+        ],
+        [
+          12,
+          {
+            "x": 790
+          }
+        ],
+        [
+          12.5,
+          {
+            "x": 960
+          }
+        ],
+        [
+          17,
+          {
+            "x": 1010
+          }
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "CC",
+      "x": 1090,
+      "y": 486,
+      "c": "dts",
+      "a": "middle",
+      "in": 4
+    },
+    {
+      "type": "panel",
+      "title": "transcript",
+      "x": 1160,
+      "y": 214,
+      "w": 360,
+      "rowH": 56,
+      "gap": 10,
+      "in": 3.8,
+      "dots": false,
+      "rows": [
+        {
+          "name": "Welcome to the course"
+        },
+        {
+          "name": "Let's open the editor"
+        },
+        {
+          "name": "Drop a video link"
+        },
+        {
+          "name": "Press play"
+        }
+      ],
+      "active": [
+        [4.6, 0],
+        [6.8, 1],
+        [9, 2],
+        [12.5, 3]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "click a line to jump",
+      "x": 1160,
+      "y": 500,
+      "c": "dts",
+      "in": 9.2,
+      "out": 13.6
+    },
+    {
+      "type": "cursor",
+      "show": [[10.2, 13.2]],
+      "clicks": [12.5],
+      "keys": [
+        [10.2, 1000, 600],
+        [12.5, 1340, 446]
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 3.8,
+      "title": "Point it at a video",
+      "text": "Set source. Add a track and the captions become a transcript."
+    },
+    {
+      "t": 4.2,
+      "out": 9,
+      "title": "Play and follow along",
+      "text": "The current line is highlighted as the video plays."
+    },
+    {
+      "t": 9.4,
+      "out": 14,
+      "title": "Click to jump",
+      "text": "Clicking a transcript line moves the video to that moment."
+    },
+    {
+      "t": 14.4,
+      "out": 17.4,
+      "title": "Tune the layout",
+      "text": "sticky-corner docks the player; hide-transcript removes the panel."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "A video, captions and a transcript in one tag.",
+    "code": "<video-player source=\"https://youtu.be/\u2026\"></video-player>"
+  },
+  "version": 1,
+  "tag": "video-player",
+  "surfaceHash": "ab1410e46a31",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

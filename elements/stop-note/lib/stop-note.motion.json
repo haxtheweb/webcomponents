@@ -1,0 +1,203 @@
+{
+  "duration": 19.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "x": 480,
+      "y": 170,
+      "c": "code",
+      "in": 0.5,
+      "states": [
+        [0.5, "<stop-note status=\"stop\">"],
+        [6.4, "<stop-note status=\"warning\">"],
+        [9.4, "<stop-note status=\"success\">"],
+        [12.2, "<stop-note status=\"info\">"]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 210,
+      "w": 640,
+      "h": 170,
+      "v": "hug",
+      "r": 0,
+      "in": 0.5,
+      "d": 0.9
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 210,
+      "w": 110,
+      "h": 170,
+      "v": "obj",
+      "r": 0,
+      "in": 0.9,
+      "d": 0.6
+    },
+    {
+      "type": "glyph",
+      "swap": [
+        [0, "stop"],
+        [6.4, "warning"],
+        [9.4, "check"],
+        [12.2, "info"]
+      ],
+      "name": "stop",
+      "x": 535,
+      "y": 295,
+      "s": 60,
+      "v": "bold",
+      "in": 1.3
+    },
+    {
+      "type": "text",
+      "states": [
+        [1.6, "Hold up there"],
+        [6.4, "Warning"],
+        [9.4, "All set"],
+        [12.2, "Good to know"]
+      ],
+      "x": 620,
+      "y": 262,
+      "c": "big",
+      "in": 1.6
+    },
+    {
+      "type": "text",
+      "states": [
+        [2.2, "Read these important things."],
+        [6.4, "You can write any warning here."],
+        [9.4, "Everything saved. You can move on."],
+        [12.2, "A tip that helps along the way."]
+      ],
+      "x": 620,
+      "y": 306,
+      "c": "cdd",
+      "in": 2.2
+    },
+    {
+      "type": "text",
+      "s": "More Information >",
+      "x": 620,
+      "y": 352,
+      "c": "dt",
+      "in": 13.8,
+      "out": 17
+    },
+    {
+      "type": "line",
+      "x1": 1118,
+      "y1": 210,
+      "x2": 1118,
+      "y2": 380,
+      "v": "bold",
+      "in": 1
+    },
+    {
+      "type": "callout",
+      "px": 800,
+      "py": 255,
+      "ex": 1180,
+      "ey": 240,
+      "label": "title",
+      "sub": "attribute",
+      "dir": 1,
+      "in": 1.8,
+      "out": 3.2
+    },
+    {
+      "type": "callout",
+      "px": 900,
+      "py": 303,
+      "ex": 1180,
+      "ey": 310,
+      "label": "message",
+      "sub": "slot, your text",
+      "dir": 1,
+      "in": 2.4,
+      "out": 3.4
+    },
+    {
+      "type": "callout",
+      "px": 760,
+      "py": 349,
+      "ex": 1180,
+      "ey": 400,
+      "label": "url",
+      "sub": "adds a More Information link",
+      "dir": 1,
+      "in": 14,
+      "out": 17
+    },
+    {
+      "type": "panel",
+      "title": "status",
+      "x": 80,
+      "y": 224,
+      "w": 330,
+      "rowH": 56,
+      "gap": 12,
+      "in": 3,
+      "out": 14.4,
+      "rows": [
+        {
+          "name": "stop",
+          "desc": "Stop and read"
+        },
+        {
+          "name": "warning",
+          "desc": "Be careful"
+        },
+        {
+          "name": "success",
+          "desc": "All good"
+        },
+        {
+          "name": "info",
+          "desc": "Helpful notice"
+        }
+      ],
+      "active": [
+        [3.4, 0],
+        [6.4, 1],
+        [9.4, 2],
+        [12.2, 3]
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 3,
+      "title": "A note that stops readers",
+      "text": "A title, your message in the message slot, and an icon."
+    },
+    {
+      "t": 3.2,
+      "out": 13.6,
+      "title": "Pick a status",
+      "text": "status sets the icon and colours: stop, warning, success or info."
+    },
+    {
+      "t": 13.8,
+      "out": 17.2,
+      "title": "Link to more",
+      "text": "Set url and a More Information link appears."
+    }
+  ],
+  "end": {
+    "in": 17.6,
+    "line": "Say what matters, in the right tone.",
+    "code": "<stop-note status=\"warning\" title=\"Careful\"></stop-note>"
+  },
+  "version": 1,
+  "tag": "stop-note",
+  "surfaceHash": "1c46800f012e",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

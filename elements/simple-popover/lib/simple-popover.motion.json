@@ -1,0 +1,232 @@
+{
+  "version": 1,
+  "tag": "simple-popover",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/simple-popover/simple-popover.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [
+        [0.5, "import \"@haxtheweb/simple-popover/simple-popover.js\";"]
+      ],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 220,
+      "w": 400,
+      "h": 220,
+      "v": "well",
+      "r": 8,
+      "pop": [1.4, 0.6]
+    },
+    {
+      "type": "glyph",
+      "name": "info",
+      "x": 566,
+      "y": 280,
+      "s": 22,
+      "in": 1.9
+    },
+    {
+      "type": "text",
+      "s": "simple-popover",
+      "x": 604,
+      "y": 288,
+      "c": "vt",
+      "in": 1.7999999999999998,
+      "states": [
+        [1.4, "simple-popover"],
+        [5, "Accessible name f…"]
+      ],
+      "typed": true
+    },
+    {
+      "type": "line",
+      "x1": 604,
+      "y1": 330,
+      "x2": 890,
+      "y2": 330,
+      "v": "thin",
+      "in": 2
+    },
+    {
+      "type": "line",
+      "x1": 604,
+      "y1": 354,
+      "x2": 890,
+      "y2": 354,
+      "v": "thin",
+      "in": 2.1
+    },
+    {
+      "type": "line",
+      "x1": 604,
+      "y1": 378,
+      "x2": 780,
+      "y2": 378,
+      "v": "thin",
+      "in": 2.2
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "title",
+          "desc": "Accessible name for the popover…"
+        },
+        {
+          "name": "aria-label",
+          "desc": "aria label"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<simple-popover"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "title=\"Accessible name f…\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "aria-label=\"aria label\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</simple-popover>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 448,
+      "ex": 616,
+      "ey": 500,
+      "label": "title",
+      "sub": "\"Accessible name f…\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 448,
+      "ex": 796,
+      "ey": 500,
+      "label": "aria-label",
+      "sub": "\"aria label\"",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set title and aria label",
+      "text": "title and aria-label change how it looks and behaves."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <simple-popover>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "A popover alertdialog that is positioned next to a target e…",
+    "code": ""
+  },
+  "surfaceHash": "23abc1f149d4",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "note",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}
