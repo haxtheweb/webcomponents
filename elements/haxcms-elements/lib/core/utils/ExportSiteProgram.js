@@ -15,6 +15,7 @@ import { SITE_EXPORT_FORMATS } from "./import-export-options.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { waitForAppHAXSystemApiRegistryReady } from "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js";
 import { haxcmsApiMessage } from "./HAXCMSApiMessages.js";
+import { siteApiFetch } from "./site-api-auth-fetch.js";
 
 // English defaults for messages these helpers show. They run with `this`
 // bound to haxcms-site-editor-ui, so translations come from its (haxcms
@@ -175,7 +176,7 @@ export async function _exportSiteAsHTML(manifest, title, baseUrl) {
         ? globalThis.__appCDN
         : "";
     const url = _buildV1ExportUrl(baseUrl, "html", { magic });
-    const response = await fetch(url, { credentials: "include" });
+    const response = await siteApiFetch(url, { credentials: "include" });
 
     if (response.ok) {
       const html = await response.text();
@@ -210,7 +211,7 @@ export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
   this.setProcessingVisual(600000);
   try {
     const url = _buildV1ContentUrl(baseUrl, { mode: "concat", format: "md" });
-    const response = await fetch(url, { credentials: "include" });
+    const response = await siteApiFetch(url, { credentials: "include" });
 
     if (response.ok) {
       const markdown = await response.text();
@@ -245,7 +246,7 @@ export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
   this.setProcessingVisual(600000);
   try {
     const url = _buildV1ExportUrl(baseUrl, "docx");
-    const response = await fetch(url, { credentials: "include" });
+    const response = await siteApiFetch(url, { credentials: "include" });
 
     if (response.ok) {
       const blob = await response.blob();
@@ -280,7 +281,7 @@ export async function _exportSiteAsPDF(manifest, title, baseUrl) {
   this.setProcessingVisual(600000);
   try {
     const url = _buildV1ExportUrl(baseUrl, "pdf");
-    const response = await fetch(url, { credentials: "include" });
+    const response = await siteApiFetch(url, { credentials: "include" });
 
     if (response.ok) {
       const blob = await response.blob();
@@ -312,7 +313,7 @@ export async function _exportSiteAsEPUB(manifest, title, baseUrl) {
   this.setProcessingVisual(600000);
   try {
     const url = _buildV1ExportUrl(baseUrl, "epub");
-    const response = await fetch(url, { credentials: "include" });
+    const response = await siteApiFetch(url, { credentials: "include" });
 
     if (response.ok) {
       const blob = await response.blob();

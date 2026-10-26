@@ -7,6 +7,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { toJS } from "mobx";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import { siteApiFetch } from "./site-api-auth-fetch.js";
 
 export const PrintBranchMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
@@ -164,7 +165,7 @@ export const PrintBranchMixin = function (SuperClass) {
         if (ancestor) {
           url.searchParams.set("filter.ancestor", ancestor);
         }
-        const response = await fetch(url.toString(), {
+        const response = await siteApiFetch(url.toString(), {
           credentials: "include",
         });
         if (response.ok) {
@@ -242,7 +243,7 @@ export const PrintBranchMixin = function (SuperClass) {
         if (magic) {
           url.searchParams.set("magic", magic);
         }
-        const response = await fetch(url.toString(), {
+        const response = await siteApiFetch(url.toString(), {
           credentials: "include",
         });
         if (response.ok) {
