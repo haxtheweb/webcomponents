@@ -1,0 +1,371 @@
+{
+  "version": 1,
+  "tag": "page-contents-menu",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/page-contents-menu/page-contents-menu.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [
+        [0.5, "import \"@haxtheweb/page-contents-menu/page-contents-menu.js\";"]
+      ],
+      "typeDur": 1.4
+    },
+    {
+      "type": "line",
+      "x1": 550,
+      "y1": 200,
+      "x2": 550,
+      "y2": 490,
+      "v": "thin",
+      "in": 1.4
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 550,
+      "y": 230,
+      "s": 9,
+      "v": "bold",
+      "in": 1.7
+    },
+    {
+      "type": "text",
+      "s": "Item 1",
+      "x": 580,
+      "y": 235,
+      "c": "dt",
+      "in": 1.7999999999999998
+    },
+    {
+      "type": "line",
+      "x1": 580,
+      "y1": 254,
+      "x2": 780,
+      "y2": 254,
+      "v": "thin",
+      "in": 1.9
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 550,
+      "y": 306,
+      "s": 9,
+      "v": "bold",
+      "in": 1.9
+    },
+    {
+      "type": "text",
+      "s": "Item 2",
+      "x": 580,
+      "y": 311,
+      "c": "dt",
+      "in": 1.9999999999999998
+    },
+    {
+      "type": "line",
+      "x1": 580,
+      "y1": 330,
+      "x2": 780,
+      "y2": 330,
+      "v": "thin",
+      "in": 2.1
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 550,
+      "y": 382,
+      "s": 9,
+      "v": "bold",
+      "in": 2.1
+    },
+    {
+      "type": "text",
+      "s": "Item 3",
+      "x": 580,
+      "y": 387,
+      "c": "dt",
+      "in": 2.1999999999999997
+    },
+    {
+      "type": "line",
+      "x1": 580,
+      "y1": 406,
+      "x2": 780,
+      "y2": 406,
+      "v": "thin",
+      "in": 2.3
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 550,
+      "y": 458,
+      "s": 9,
+      "v": "bold",
+      "in": 2.3
+    },
+    {
+      "type": "text",
+      "s": "Item 4",
+      "x": 580,
+      "y": 463,
+      "c": "dt",
+      "in": 2.4
+    },
+    {
+      "type": "line",
+      "x1": 580,
+      "y1": 482,
+      "x2": 780,
+      "y2": 482,
+      "v": "thin",
+      "in": 2.5
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "schemaMap",
+          "desc": "schemaMap"
+        },
+        {
+          "name": "contentContainer",
+          "desc": "contentContainer"
+        },
+        {
+          "name": "relationship",
+          "desc": "relationship"
+        },
+        {
+          "name": "items",
+          "desc": "items"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [12.4, 3],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<page-contents-menu"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "schemaMap=\"schemaMap\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "contentContainer=\"null\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "relationship=\"null\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 368,
+      "c": "code",
+      "in": 12.4,
+      "s": "items=\"[]\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</page-contents-menu>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 432
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 498,
+      "ex": 616,
+      "ey": 550,
+      "label": "schemaMap",
+      "sub": "\"schemaMap\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 498,
+      "ex": 796,
+      "ey": 550,
+      "label": "contentContainer",
+      "sub": "\"null\"",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 498,
+      "ex": 616,
+      "ey": 550,
+      "label": "relationship",
+      "sub": "\"null\"",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 498,
+      "ex": 796,
+      "ey": 550,
+      "label": "items",
+      "sub": "\"[]\"",
+      "dir": 1,
+      "in": 12.6,
+      "out": 14.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set schemamap",
+      "text": "schemaMap and contentContainer change how it looks and behaves."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set relationship and items",
+      "text": "relationship and items change how it looks and behaves."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <page-contents-menu>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Links that jump you to the right place in the page&#39;s co…",
+    "code": ""
+  },
+  "surfaceHash": "1bd5abc50c53",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "timeline",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

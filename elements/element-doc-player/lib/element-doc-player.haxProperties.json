@@ -86,8 +86,8 @@
     {
       "tag": "element-doc-player",
       "properties": {
-        "docs-src": "meme-maker.docs.json",
-        "motion-src": "meme-maker.motion.json"
+        "docsSrc": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/element-doc-player/demo/meme-maker.docs.json",
+        "motionSrc": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.motion.json"
       },
       "content": ""
     }

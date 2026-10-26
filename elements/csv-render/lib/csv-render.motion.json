@@ -1,0 +1,344 @@
+{
+  "version": 1,
+  "tag": "csv-render",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/csv-render/csv-render.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [[0.5, "import \"@haxtheweb/csv-render/csv-render.js\";"]],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 180,
+      "w": 400,
+      "h": 330,
+      "v": "obj",
+      "r": 8,
+      "pop": [1.4, 0.6]
+    },
+    {
+      "type": "line",
+      "x1": 520,
+      "y1": 246,
+      "x2": 920,
+      "y2": 246,
+      "v": "bold",
+      "in": 1.78
+    },
+    {
+      "type": "line",
+      "x1": 520,
+      "y1": 312,
+      "x2": 920,
+      "y2": 312,
+      "v": "thin",
+      "in": 1.8599999999999999
+    },
+    {
+      "type": "line",
+      "x1": 520,
+      "y1": 378,
+      "x2": 920,
+      "y2": 378,
+      "v": "thin",
+      "in": 1.94
+    },
+    {
+      "type": "line",
+      "x1": 520,
+      "y1": 444,
+      "x2": 920,
+      "y2": 444,
+      "v": "thin",
+      "in": 2.02
+    },
+    {
+      "type": "line",
+      "x1": 653.3333333333334,
+      "y1": 180,
+      "x2": 653.3333333333334,
+      "y2": 510,
+      "v": "thin",
+      "in": 1.9
+    },
+    {
+      "type": "line",
+      "x1": 786.6666666666667,
+      "y1": 180,
+      "x2": 786.6666666666667,
+      "y2": 510,
+      "v": "thin",
+      "in": 1.9
+    },
+    {
+      "type": "text",
+      "s": "Name",
+      "x": 536,
+      "y": 220,
+      "c": "dts",
+      "in": 2.0999999999999996
+    },
+    {
+      "type": "text",
+      "s": "Value",
+      "x": 669.3333333333334,
+      "y": 220,
+      "c": "dts",
+      "in": 2.0999999999999996
+    },
+    {
+      "type": "text",
+      "s": "Notes",
+      "x": 802.6666666666667,
+      "y": 220,
+      "c": "dts",
+      "in": 2.0999999999999996
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "data-source",
+          "desc": "Location of the CSV file."
+        },
+        {
+          "name": "loading",
+          "desc": "loading"
+        },
+        {
+          "name": "debounce-delay",
+          "desc": "Delay in ms before a data-sourc…"
+        },
+        {
+          "name": "caption",
+          "desc": "Caption for the table to improv…"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [12.4, 3],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<csv-render"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "data-source=\"Location of the C…\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "loading=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "debounce-delay=\"500\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 368,
+      "c": "code",
+      "in": 12.4,
+      "s": "caption=\"Caption for the t…\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</csv-render>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 432
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 518,
+      "ex": 616,
+      "ey": 570,
+      "label": "data-source",
+      "sub": "\"Location of the C…\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 518,
+      "ex": 796,
+      "ey": 570,
+      "label": "loading",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 518,
+      "ex": 616,
+      "ey": 570,
+      "label": "debounce-delay",
+      "sub": "a number",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 518,
+      "ex": 796,
+      "ey": 570,
+      "label": "caption",
+      "sub": "\"Caption for the t…\"",
+      "dir": 1,
+      "in": 12.6,
+      "out": 14.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set data-source and loading",
+      "text": "Location of the CSV file."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set debounce-delay",
+      "text": "debounce-delay and caption change how it looks and behaves."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <csv-render>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Remote render a CSV file in place as an accessible table.",
+    "code": ""
+  },
+  "surfaceHash": "9b97ba5e122b",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "table",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

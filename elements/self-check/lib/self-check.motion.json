@@ -1,0 +1,217 @@
+{
+  "duration": 19,
+  "camera": [],
+  "objects": [
+    {
+      "type": "panel",
+      "title": "properties",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 56,
+      "gap": 12,
+      "rows": [
+        {
+          "name": "title",
+          "desc": "Card heading"
+        },
+        {
+          "name": "question slot",
+          "desc": "The prompt"
+        },
+        {
+          "name": "image + alt",
+          "desc": "Optional picture"
+        },
+        {
+          "name": "default slot",
+          "desc": "The answer"
+        }
+      ],
+      "active": [
+        [1, 0],
+        [2.6, 1],
+        [4.2, 2],
+        [8.2, 3]
+      ],
+      "in": 0.6
+    },
+    {
+      "type": "text",
+      "x": 480,
+      "y": 160,
+      "c": "code",
+      "in": 0.5,
+      "s": "<self-check title=\"Sharks Self Check\">"
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 180,
+      "w": 640,
+      "h": 400,
+      "v": "hug",
+      "r": 8,
+      "in": 0.5,
+      "d": 0.9
+    },
+    {
+      "type": "box",
+      "x": 500,
+      "y": 200,
+      "w": 170,
+      "h": 130,
+      "v": "well",
+      "r": 4,
+      "xbox": true,
+      "in": 4,
+      "d": 0.6,
+      "label": "Image",
+      "labelMin": 50
+    },
+    {
+      "type": "text",
+      "x": 700,
+      "y": 226,
+      "c": "vt",
+      "in": 1.2,
+      "s": "Sharks self check"
+    },
+    {
+      "type": "text",
+      "x": 700,
+      "y": 268,
+      "c": "cdd",
+      "in": 2.6,
+      "s": "How large can the average great white"
+    },
+    {
+      "type": "text",
+      "x": 700,
+      "y": 290,
+      "c": "cdd",
+      "in": 2.9,
+      "s": "shark grow to be?"
+    },
+    {
+      "type": "box",
+      "x": 700,
+      "y": 330,
+      "w": 200,
+      "h": 46,
+      "v": "obj",
+      "r": 6,
+      "in": 5.2,
+      "d": 0.5
+    },
+    {
+      "type": "text",
+      "x": 800,
+      "y": 359,
+      "c": "rn",
+      "a": "middle",
+      "in": 5.5,
+      "s": "Reveal answer"
+    },
+    {
+      "type": "box",
+      "x": 500,
+      "y": 410,
+      "w": 600,
+      "h": 150,
+      "v": "obj",
+      "r": 8,
+      "pop": [8.4, 0.5],
+      "out": 13.9,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "x": 520,
+      "y": 446,
+      "c": "dt",
+      "in": 8.9,
+      "out": 13.9,
+      "s": "Answer, from the default slot"
+    },
+    {
+      "type": "text",
+      "x": 520,
+      "y": 476,
+      "c": "cdd",
+      "in": 9.3,
+      "out": 13.9,
+      "s": "Any content goes here: text, lists, images."
+    },
+    {
+      "type": "box",
+      "x": 1010,
+      "y": 520,
+      "w": 70,
+      "h": 30,
+      "v": "hug",
+      "r": 6,
+      "in": 9.8,
+      "d": 0.4,
+      "out": 13.9,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "x": 1045,
+      "y": 540,
+      "c": "dts",
+      "a": "middle",
+      "in": 10,
+      "out": 13.9,
+      "s": "Close"
+    },
+    {
+      "type": "cursor",
+      "show": [
+        [6.4, 9.6],
+        [12.7, 14.5]
+      ],
+      "clicks": [8, 13.6],
+      "keys": [
+        [6.4, 960, 520],
+        [8, 800, 354],
+        [9.6, 900, 440],
+        [12.7, 900, 440],
+        [13.6, 1045, 535]
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 6,
+      "title": "Ask a question",
+      "text": "A heading, a question slot and an optional image set up the check."
+    },
+    {
+      "t": 6.4,
+      "out": 13.4,
+      "title": "Reveal the answer",
+      "text": "The reader clicks Reveal Answer. Whatever is in the default slot appears."
+    },
+    {
+      "t": 13.6,
+      "out": 16.6,
+      "title": "Close and try again",
+      "text": "The answer closes, so the question can be used again."
+    }
+  ],
+  "end": {
+    "in": 16.8,
+    "line": "A question on top, the answer one click away.",
+    "code": "<self-check><p slot=\"question\">\u2026</p>\u2026</self-check>"
+  },
+  "version": 1,
+  "tag": "self-check",
+  "surfaceHash": "b9d5fc897c2a",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

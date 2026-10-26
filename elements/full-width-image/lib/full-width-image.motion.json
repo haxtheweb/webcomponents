@@ -1,0 +1,318 @@
+{
+  "version": 1,
+  "tag": "full-width-image",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "HAX blocks",
+      "x": 80,
+      "y": 200,
+      "c": "vt",
+      "in": 0.4,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "h": 62,
+      "v": "obj",
+      "r": 10,
+      "in": 0.5,
+      "out": 4.4
+    },
+    {
+      "type": "text",
+      "s": "Image section",
+      "x": 104,
+      "y": 251,
+      "c": "rn",
+      "in": 0.7,
+      "out": 4.4
+    },
+    {
+      "type": "glyph",
+      "name": "plus",
+      "x": 380,
+      "y": 245,
+      "s": 10,
+      "in": 0.8,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 196,
+      "y": 232,
+      "w": 150,
+      "h": 36,
+      "v": "slot",
+      "r": 8,
+      "in": 1.5,
+      "d": 0.2,
+      "out": 2.6,
+      "od": 0.2,
+      "keys": [
+        [
+          2.5,
+          {
+            "x": 650,
+            "y": 322
+          },
+          0.9000000000000001
+        ]
+      ]
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [0.8, 300, 360],
+        [1.4, 240, 248],
+        [2.5, 720, 340]
+      ],
+      "show": [[0.8, 3.2]],
+      "clicks": [1.5, 2.6]
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 180,
+      "w": 400,
+      "h": 330,
+      "v": "slot",
+      "r": 8,
+      "pop": [2.6, 0.6]
+    },
+    {
+      "type": "box",
+      "x": 536,
+      "y": 196,
+      "w": 176,
+      "h": 298,
+      "v": "hug",
+      "r": 4,
+      "in": 3,
+      "label": "col-1"
+    },
+    {
+      "type": "line",
+      "x1": 552,
+      "y1": 250,
+      "x2": 670,
+      "y2": 250,
+      "v": "thin",
+      "in": 3.3
+    },
+    {
+      "type": "line",
+      "x1": 552,
+      "y1": 274,
+      "x2": 670,
+      "y2": 274,
+      "v": "thin",
+      "in": 3.4
+    },
+    {
+      "type": "line",
+      "x1": 552,
+      "y1": 298,
+      "x2": 670,
+      "y2": 298,
+      "v": "thin",
+      "in": 3.5
+    },
+    {
+      "type": "box",
+      "x": 728,
+      "y": 196,
+      "w": 176,
+      "h": 298,
+      "v": "hug",
+      "r": 4,
+      "in": 3.2,
+      "label": "col-2"
+    },
+    {
+      "type": "line",
+      "x1": 744,
+      "y1": 250,
+      "x2": 862,
+      "y2": 250,
+      "v": "thin",
+      "in": 3.3
+    },
+    {
+      "type": "line",
+      "x1": 744,
+      "y1": 274,
+      "x2": 862,
+      "y2": 274,
+      "v": "thin",
+      "in": 3.4
+    },
+    {
+      "type": "line",
+      "x1": 744,
+      "y1": 298,
+      "x2": 862,
+      "y2": 298,
+      "v": "thin",
+      "in": 3.5
+    },
+    {
+      "type": "panel",
+      "title": "HAX settings",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 4.6,
+      "rows": [
+        {
+          "name": "source",
+          "desc": "Background image."
+        },
+        {
+          "name": "caption",
+          "desc": "Text heading."
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 2.8000000000000003,
+      "s": "<full-width-image"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "source=\"https://placehold.co/50…\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "caption=\"Kitten, being kittens\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 2.9,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 2.9,
+      "s": "</full-width-image>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 518,
+      "ex": 616,
+      "ey": 570,
+      "label": "source",
+      "sub": "upload or link",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 518,
+      "ex": 796,
+      "ey": 570,
+      "label": "caption",
+      "sub": "\"Kitten, being kittens\"",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Add Image section",
+      "text": "Find Image section in the HAX blocks menu and drop it on the page."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set source and caption",
+      "text": "Background image."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Edit in HAX",
+      "text": "Each setting is in the HAX sidebar and the page updates as you change it."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Full-width image that breaks up a page section.",
+    "code": "<full-width-image></full-width-image>"
+  },
+  "surfaceHash": "a15c32f14e54",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "layout",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

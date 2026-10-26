@@ -1,0 +1,277 @@
+{
+  "version": 1,
+  "tag": "a11y-carousel",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/a11y-carousel/a11y-carousel.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [
+        [0.5, "import \"@haxtheweb/a11y-carousel/a11y-carousel.js\";"]
+      ],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 180,
+      "w": 400,
+      "h": 270,
+      "v": "hug",
+      "r": 6,
+      "xbox": true,
+      "pop": [1.4, 0.6]
+    },
+    {
+      "type": "text",
+      "s": "a11y-carousel",
+      "x": 524,
+      "y": 480,
+      "c": "cdd",
+      "in": 2
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "nextLabel",
+          "desc": "nextLabel"
+        },
+        {
+          "name": "no-prev-next",
+          "desc": "no prev next"
+        },
+        {
+          "name": "no-buttons",
+          "desc": "no buttons"
+        },
+        {
+          "name": "prevLabel",
+          "desc": "prevLabel"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [12.4, 3],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<a11y-carousel"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "nextLabel=\"next\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "no-prev-next=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "no-buttons=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 368,
+      "c": "code",
+      "in": 12.4,
+      "s": "prevLabel=\"previous\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</a11y-carousel>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 432
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 488,
+      "ex": 616,
+      "ey": 540,
+      "label": "nextLabel",
+      "sub": "\"next\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 488,
+      "ex": 796,
+      "ey": 540,
+      "label": "no-prev-next",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 488,
+      "ex": 616,
+      "ey": 540,
+      "label": "no-buttons",
+      "sub": "on or off",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 488,
+      "ex": 796,
+      "ey": 540,
+      "label": "prevLabel",
+      "sub": "\"previous\"",
+      "dir": 1,
+      "in": 12.6,
+      "out": 14.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set nextlabel",
+      "text": "nextLabel and no-prev-next change how it looks and behaves."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set no buttons and prevlabel",
+      "text": "no-buttons and prevLabel change how it looks and behaves."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <a11y-carousel>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Accessible carousel / slideshow with navigation controls",
+    "code": ""
+  },
+  "surfaceHash": "e16e58b46d44",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "image",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

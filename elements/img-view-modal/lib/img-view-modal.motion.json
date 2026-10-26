@@ -1,0 +1,298 @@
+{
+  "version": 1,
+  "tag": "img-view-modal",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "import \"@haxtheweb/img-view-modal/img-view-modal.js\";",
+      "x": 80,
+      "y": 150,
+      "c": "cd",
+      "in": 0.5,
+      "typed": true,
+      "states": [
+        [0.5, "import \"@haxtheweb/img-view-modal/img-view-modal.js\";"]
+      ],
+      "typeDur": 1.4
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 200,
+      "w": 400,
+      "h": 52,
+      "v": "obj",
+      "r": 6,
+      "in": 1.4,
+      "keys": [
+        [
+          4,
+          {
+            "h": 172
+          },
+          0.6
+        ]
+      ]
+    },
+    {
+      "type": "glyph",
+      "name": "plus",
+      "x": 890,
+      "y": 226,
+      "s": 10,
+      "in": 1.7,
+      "keys": []
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 264,
+      "w": 400,
+      "h": 52,
+      "v": "hug",
+      "r": 6,
+      "in": 1.5499999999999998,
+      "keys": [
+        [
+          4,
+          {
+            "y": 384
+          },
+          0.6
+        ]
+      ]
+    },
+    {
+      "type": "glyph",
+      "name": "plus",
+      "x": 890,
+      "y": 290,
+      "s": 10,
+      "in": 1.8499999999999999,
+      "keys": [
+        [
+          4,
+          {
+            "y": 410
+          },
+          0.6
+        ]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 328,
+      "w": 400,
+      "h": 52,
+      "v": "hug",
+      "r": 6,
+      "in": 1.7,
+      "keys": [
+        [
+          4,
+          {
+            "y": 448
+          },
+          0.6
+        ]
+      ]
+    },
+    {
+      "type": "glyph",
+      "name": "plus",
+      "x": 890,
+      "y": 354,
+      "s": 10,
+      "in": 2,
+      "keys": [
+        [
+          4,
+          {
+            "y": 474
+          },
+          0.6
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "s": "img-view-modal",
+      "x": 540,
+      "y": 232,
+      "c": "vt",
+      "in": 1.7999999999999998
+    },
+    {
+      "type": "text",
+      "s": "Hidden until opened",
+      "x": 540,
+      "y": 280,
+      "c": "cdd",
+      "in": 4.3
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 540,
+      "y": 306,
+      "c": "cdd",
+      "in": 4.5
+    },
+    {
+      "type": "panel",
+      "title": "attributes",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 2.4,
+      "rows": [
+        {
+          "name": "title",
+          "desc": "title"
+        },
+        {
+          "name": "modal",
+          "desc": "modal"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 1.5999999999999999,
+      "s": "<img-view-modal"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "title=\"title\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "modal=\"modal\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.7,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 1.7,
+      "s": "</img-view-modal>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 508,
+      "ex": 616,
+      "ey": 560,
+      "label": "title",
+      "sub": "\"title\"",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 508,
+      "ex": 796,
+      "ey": 560,
+      "label": "modal",
+      "sub": "\"modal\"",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set title and modal",
+      "text": "title and modal change how it looks and behaves."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <img-view-modal>."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Slider that allows comparison of two images",
+    "code": ""
+  },
+  "surfaceHash": "fe24fab015b1",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "disclosure",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

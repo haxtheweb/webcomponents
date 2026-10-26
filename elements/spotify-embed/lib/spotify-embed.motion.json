@@ -1,0 +1,330 @@
+{
+  "version": 1,
+  "tag": "spotify-embed",
+  "duration": 20.5,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "HAX blocks",
+      "x": 80,
+      "y": 200,
+      "c": "vt",
+      "in": 0.4,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "h": 62,
+      "v": "obj",
+      "r": 10,
+      "in": 0.5,
+      "out": 4.4
+    },
+    {
+      "type": "text",
+      "s": "Spotify",
+      "x": 104,
+      "y": 251,
+      "c": "rn",
+      "in": 0.7,
+      "out": 4.4
+    },
+    {
+      "type": "glyph",
+      "name": "plus",
+      "x": 380,
+      "y": 245,
+      "s": 10,
+      "in": 0.8,
+      "out": 4.4
+    },
+    {
+      "type": "box",
+      "x": 196,
+      "y": 232,
+      "w": 150,
+      "h": 36,
+      "v": "slot",
+      "r": 8,
+      "in": 1.5,
+      "d": 0.2,
+      "out": 2.6,
+      "od": 0.2,
+      "keys": [
+        [
+          2.5,
+          {
+            "x": 650,
+            "y": 322
+          },
+          0.9000000000000001
+        ]
+      ]
+    },
+    {
+      "type": "cursor",
+      "keys": [
+        [0.8, 300, 360],
+        [1.4, 240, 248],
+        [2.5, 720, 340]
+      ],
+      "show": [[0.8, 3.2]],
+      "clicks": [1.5, 2.6]
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 290,
+      "w": 400,
+      "h": 110,
+      "v": "hug",
+      "r": 55,
+      "pop": [2.6, 0.6]
+    },
+    {
+      "type": "glyph",
+      "name": "play",
+      "x": 578,
+      "y": 345,
+      "s": 24,
+      "in": 3.1
+    },
+    {
+      "type": "text",
+      "s": "compact",
+      "x": 620,
+      "y": 332,
+      "c": "vt",
+      "in": 3.2
+    },
+    {
+      "type": "line",
+      "x1": 620,
+      "y1": 360,
+      "x2": 880,
+      "y2": 360,
+      "v": "thin",
+      "in": 3.2
+    },
+    {
+      "type": "glyph",
+      "name": "circle",
+      "x": 620,
+      "y": 360,
+      "s": 6,
+      "v": "bold",
+      "in": 3.3,
+      "keys": [
+        [
+          11.6,
+          {
+            "x": 770
+          },
+          8
+        ]
+      ]
+    },
+    {
+      "type": "panel",
+      "title": "HAX settings",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 4.6,
+      "rows": [
+        {
+          "name": "theme",
+          "desc": "Background color theme for the…"
+        },
+        {
+          "name": "size",
+          "desc": "Player size."
+        },
+        {
+          "name": "source",
+          "desc": "Embed or share link from Spotif…"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [7.4, 1],
+        [10, 2],
+        [14.8, 0]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 2.8000000000000003,
+      "s": "<spotify-embed"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "theme=\"0\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "size=\"compact\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
+      "s": "source=\"https://open.spotify.co…\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 2.9,
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 2.9,
+      "s": "</spotify-embed>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 408,
+      "ex": 616,
+      "ey": 460,
+      "label": "theme",
+      "sub": "0 ·",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 408,
+      "ex": 796,
+      "ey": 460,
+      "label": "size",
+      "sub": "normal · compact",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 408,
+      "ex": 616,
+      "ey": 460,
+      "label": "source",
+      "sub": "text",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 4.6,
+      "title": "Add Spotify",
+      "text": "Find Spotify in the HAX blocks menu and drop it on the page."
+    },
+    {
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set theme and size",
+      "text": "Background color theme for the player."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set source",
+      "text": "Embed or share link from Spotify."
+    },
+    {
+      "t": 14.8,
+      "out": 17.4,
+      "title": "Edit in HAX",
+      "text": "Each setting is in the HAX sidebar and the page updates as you change it."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Wrapper for Spotify player embeds.",
+    "code": "<spotify-embed></spotify-embed>"
+  },
+  "surfaceHash": "24c5b3b18605",
+  "review": {
+    "status": "draft",
+    "generator": "draft-element-walkthrough",
+    "sketch": "audio",
+    "notes": "Generated from docs data. Check the sketch, wording and which settings are shown."
+  }
+}

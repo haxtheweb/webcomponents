@@ -1,0 +1,180 @@
+{
+  "duration": 19,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "x": 480,
+      "y": 160,
+      "c": "code",
+      "in": 0.5,
+      "states": [
+        [0.5, "<media-image source=\"shark.jpg\">"],
+        [8.2, "<media-image source=\"shark.jpg\" size=\"small\">"]
+      ]
+    },
+    {
+      "type": "panel",
+      "title": "properties",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 56,
+      "gap": 12,
+      "rows": [
+        {
+          "name": "source",
+          "desc": "The image file"
+        },
+        {
+          "name": "caption",
+          "desc": "Text under the image"
+        },
+        {
+          "name": "citation",
+          "desc": "Credit the source"
+        },
+        {
+          "name": "size",
+          "desc": "How wide it sits"
+        }
+      ],
+      "active": [
+        [1, 0],
+        [3.2, 1],
+        [4.8, 2],
+        [8.2, 3]
+      ],
+      "in": 0.6
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 190,
+      "w": 560,
+      "h": 300,
+      "v": "hug",
+      "r": 4,
+      "xbox": true,
+      "in": 0.6,
+      "d": 0.9,
+      "label": "Image",
+      "labelMin": 50,
+      "keys": [
+        [
+          8.2,
+          {
+            "x": 620,
+            "y": 190,
+            "w": 360,
+            "h": 220
+          },
+          0.9
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 520,
+      "y": 530,
+      "c": "cdd",
+      "typed": true,
+      "typeDur": 1.4,
+      "in": 3,
+      "states": [[3.2, "Great white shark off Port Lincoln"]],
+      "keys": [
+        [
+          8.2,
+          {
+            "x": 620,
+            "y": 450
+          },
+          0.9
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 520,
+      "y": 556,
+      "c": "dts",
+      "in": 4.8,
+      "s": "Photo: Wikimedia Commons",
+      "keys": [
+        [
+          8.2,
+          {
+            "x": 620,
+            "y": 476
+          },
+          0.9
+        ]
+      ]
+    },
+    {
+      "type": "modal",
+      "area": [480, 180, 640, 400],
+      "box": [540, 210, 520, 340],
+      "title": "SHARK",
+      "in": 12.8,
+      "out": 16.2
+    },
+    {
+      "type": "text",
+      "s": "disable-zoom turns this off",
+      "x": 800,
+      "y": 600,
+      "c": "dts",
+      "a": "middle",
+      "in": 13.6,
+      "out": 16.2
+    },
+    {
+      "type": "cursor",
+      "show": [[11.6, 13.2]],
+      "clicks": [12.6],
+      "keys": [
+        [11.6, 900, 520],
+        [12.6, 800, 300]
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 3,
+      "title": "Point it at an image",
+      "text": "source is the picture. Add alt text so everyone knows what it shows."
+    },
+    {
+      "t": 3.2,
+      "out": 8,
+      "title": "Caption and credit",
+      "text": "caption sits under the image and citation credits where it came from."
+    },
+    {
+      "t": 8.2,
+      "out": 11.6,
+      "title": "Choose a size",
+      "text": "size changes how wide the image sits in the page."
+    },
+    {
+      "t": 11.8,
+      "out": 16.4,
+      "title": "Click to enlarge",
+      "text": "Readers can open the image larger in a dialog."
+    }
+  ],
+  "end": {
+    "in": 16.8,
+    "line": "Image, caption, credit and zoom.",
+    "code": "<media-image source=\"shark.jpg\" caption=\"\u2026\"></media-image>"
+  },
+  "version": 1,
+  "tag": "media-image",
+  "surfaceHash": "6ff8f36bd563",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}

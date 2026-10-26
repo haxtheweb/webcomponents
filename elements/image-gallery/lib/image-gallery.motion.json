@@ -1,0 +1,256 @@
+{
+  "duration": 20,
+  "camera": [],
+  "objects": [
+    {
+      "type": "text",
+      "s": "Your images",
+      "x": 120,
+      "y": 205,
+      "c": "vt",
+      "in": 0.4
+    },
+    {
+      "type": "box",
+      "x": 120,
+      "y": 230,
+      "w": 220,
+      "h": 90,
+      "v": "hug",
+      "xbox": true,
+      "label": "Image A",
+      "in": 0.5,
+      "out": 3,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 120,
+      "y": 340,
+      "w": 220,
+      "h": 90,
+      "v": "hug",
+      "xbox": true,
+      "label": "Image B",
+      "in": 0.7,
+      "out": 4,
+      "od": 0.3
+    },
+    {
+      "type": "box",
+      "x": 120,
+      "y": 450,
+      "w": 220,
+      "h": 90,
+      "v": "hug",
+      "xbox": true,
+      "label": "Image C",
+      "in": 0.9,
+      "out": 5,
+      "od": 0.3
+    },
+    {
+      "type": "text",
+      "s": "Drag, drop",
+      "x": 120,
+      "y": 570,
+      "c": "dts",
+      "in": 1.2,
+      "out": 6
+    },
+    {
+      "type": "text",
+      "x": 480,
+      "y": 160,
+      "c": "code",
+      "in": 0.5,
+      "states": [
+        [0.5, "<image-gallery mode=\"masonry\">"],
+        [8.2, "<image-gallery mode=\"grid\">"],
+        [11.2, "<image-gallery mode=\"gallery\">"]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 480,
+      "y": 180,
+      "w": 640,
+      "h": 442,
+      "v": "well",
+      "r": 10,
+      "in": 0.4,
+      "d": 0.8
+    },
+    {
+      "type": "stack",
+      "n": 6,
+      "area": [496, 196, 608, 410],
+      "in": 0.4,
+      "md": 0.9,
+      "as": "pop",
+      "appear": [3, 4, 5, 5.7, 6, 6.3],
+      "layouts": {
+        "masonry": {
+          "gen": "masonry",
+          "cols": 3,
+          "gap": 8,
+          "heights": [150, 200, 110, 170, 130, 190]
+        },
+        "grid": {
+          "gen": "grid",
+          "cols": 3,
+          "gap": 8,
+          "h": 152
+        },
+        "gallery": {
+          "gen": "explicit",
+          "boxes": [
+            {
+              "x": 496,
+              "y": 196,
+              "w": 608,
+              "h": 320
+            },
+            {
+              "x": 496,
+              "y": 530,
+              "w": 64,
+              "h": 64
+            },
+            {
+              "x": 568,
+              "y": 530,
+              "w": 64,
+              "h": 64
+            },
+            {
+              "x": 640,
+              "y": 530,
+              "w": 64,
+              "h": 64
+            },
+            {
+              "x": 712,
+              "y": 530,
+              "w": 64,
+              "h": 64
+            },
+            {
+              "x": 784,
+              "y": 530,
+              "w": 64,
+              "h": 64
+            }
+          ]
+        }
+      },
+      "timeline": [
+        [0, "masonry"],
+        [8.2, "grid"],
+        [11.2, "gallery"]
+      ]
+    },
+    {
+      "type": "panel",
+      "title": "mode",
+      "x": 1180,
+      "y": 214,
+      "w": 340,
+      "rowH": 56,
+      "gap": 12,
+      "in": 7,
+      "out": 13.6,
+      "rows": [
+        {
+          "name": "masonry",
+          "desc": "Default, pops in as you add",
+          "tag": "mode"
+        },
+        {
+          "name": "grid",
+          "desc": "Even tiles"
+        },
+        {
+          "name": "gallery",
+          "desc": "One large image, thumbnails"
+        }
+      ],
+      "active": [
+        [7.4, 0],
+        [8.2, 1],
+        [11.2, 2]
+      ]
+    },
+    {
+      "type": "modal",
+      "area": [480, 180, 640, 442],
+      "box": [560, 210, 480, 380],
+      "title": "IMAGE 2",
+      "in": 14.2,
+      "out": 17
+    },
+    {
+      "type": "keys",
+      "x": 1180,
+      "y": 300,
+      "caps": ["\u2190", "\u2192"],
+      "label": "move between images",
+      "in": 14.8,
+      "out": 17,
+      "press": [
+        [15.5, 1],
+        [16.1, 1]
+      ]
+    },
+    {
+      "type": "cursor",
+      "show": [
+        [2.3, 5.6],
+        [13.3, 14.8]
+      ],
+      "clicks": [3, 4, 5, 14.1],
+      "keys": [
+        [2.3, 230, 275],
+        [3, 700, 330],
+        [3.4, 230, 385],
+        [4, 700, 420],
+        [4.4, 230, 495],
+        [5, 860, 380],
+        [13.3, 900, 500],
+        [14.1, 700, 300]
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 6.4,
+      "title": "Drop in images",
+      "text": "Drag images onto the page in HAX. Each one pops into the gallery."
+    },
+    {
+      "t": 6.8,
+      "out": 13.6,
+      "title": "Pick a layout",
+      "text": "mode switches the same images between masonry, grid and gallery."
+    },
+    {
+      "t": 13.9,
+      "out": 17.4,
+      "title": "Click to enlarge",
+      "text": "A click opens the image. In gallery mode arrow keys move between images."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Drop images, choose a mode, done.",
+    "code": "<image-gallery mode=\"masonry\"></image-gallery>"
+  },
+  "version": 1,
+  "tag": "image-gallery",
+  "surfaceHash": "d43aab0fcffb",
+  "review": {
+    "status": "draft",
+    "notes": "Hand-written walkthrough. Needs human review before it is marked approved."
+  }
+}
