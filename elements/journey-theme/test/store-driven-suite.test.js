@@ -150,12 +150,13 @@ describe("journey-theme store-driven rendering", () => {
       header.querySelector("img.author-image").getAttribute("alt"),
     ).to.equal("Journey Author");
     // location null renders the non-home heading variant
-    expect(header.querySelector(".site-title-heading").textContent).to.equal(
-      "Journey Site",
-    );
-    expect(header.querySelector(".site-description").textContent).to.equal(
-      "A journey through pages",
-    );
+    // template whitespace around the text is not rendered, so compare trimmed
+    expect(
+      header.querySelector(".site-title-heading").textContent.trim(),
+    ).to.equal("Journey Site");
+    expect(
+      header.querySelector(".site-description").textContent.trim(),
+    ).to.equal("A journey through pages");
     // the theme picker button is available in the header
     const picker = header.querySelector("simple-icon-button-lite.theme-picker");
     expect(picker.getAttribute("label")).to.equal("Change theme");

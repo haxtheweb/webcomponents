@@ -189,10 +189,11 @@ export class BibliographyItem extends SchemaBehaviors(
       getBookSource: (format) => {
         if (format === "APA") {
           // (#th ed., Vol. #, pp. #-#).
-          const editionDetails = this.parentVer
-            ? html`${this.parentVer}
-              ed.${this.childVer ? html`, Vol. ${this.childVer}` : ""}`
-            : "";
+          let editionDetails = "";
+          if (this.parentVer) {
+            // prettier-ignore
+            editionDetails = html`${this.parentVer} ed.${this.childVer ? html`, Vol. ${this.childVer}` : ""}`;
+          }
           // End page only applies if there's a start page
           const pageRange = this.startPage
             ? html`${this.startPage}${this.endPage ? ` - ${this.endPage}` : ""}`
@@ -283,23 +284,19 @@ export class BibliographyItem extends SchemaBehaviors(
   }
 
   exportAPA() {
+    // the template whitespace below is part of the citation text, which is copied verbatim,
+    // so each return keeps prettier-ignore
     switch (this.citationType) {
       case "journal":
-        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}.
-          <span property="oer:name">${this.title}</span>.
-          <i>${this.publisher}</i>,
-          ${this._formatSource().getJournalSource("APA")}. ${this.url}`;
+        // prettier-ignore
+        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <span property="oer:name">${this.title}</span>. <i>${this.publisher}</i>, ${this._formatSource().getJournalSource("APA")}. ${this.url}`;
       case "book":
-        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}.
-          <i property="oer:name">${this.title}</i>
-          ${this._formatSource().getBookSource("APA")}. ${this.publisher}.
-          ${this.url}`;
+        // prettier-ignore
+        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <i property="oer:name">${this.title}</i> ${this._formatSource().getBookSource("APA")}. ${this.publisher}. ${this.url}`;
       case "web":
       default:
-        return html`${this._formatAuthors()}
-          ${this._formatDate().getFullPubDate()}.
-          <i property="oer:name">${this.title}</i>. ${this.publisher}.
-          ${this.url}`;
+        // prettier-ignore
+        return html`${this._formatAuthors()} ${this._formatDate().getFullPubDate()}. <i property="oer:name">${this.title}</i>. ${this.publisher}. ${this.url}`;
     }
   }
 
@@ -355,7 +352,8 @@ export class BibliographyItem extends SchemaBehaviors(
   _copyToClipboard() {
     const target = this.shadowRoot.querySelector(".citation");
     const htmlContent = target.innerHTML;
-    const plainContent = target.textContent;
+    // collapse template whitespace so the copied text is one clean line
+    const plainContent = target.textContent.replace(/\s+/g, " ").trim();
 
     // const wrappedHtml = `
     //   <html>
