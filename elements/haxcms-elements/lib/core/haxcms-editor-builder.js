@@ -195,12 +195,18 @@ class HAXCMSEditorBuilder extends HTMLElement {
         store.cmsSiteEditor.haxCmsSiteEditorUIElement,
       );
     }
-    // forces a nice fade in transition
-    setTimeout(() => {
-      if (store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
-        store.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
+    // reveal as soon as the first render has landed; no slide-in delay
+    const editorUI = store.cmsSiteEditor.haxCmsSiteEditorUIElement;
+    const reveal = () => {
+      if (editorUI) {
+        editorUI.painting = false;
       }
-    }, 600);
+    };
+    if (editorUI && editorUI.updateComplete) {
+      editorUI.updateComplete.then(reveal, reveal);
+    } else {
+      reveal();
+    }
   }
   editorLoaded(_e) {
     this._dedupeEditorUIElements();
