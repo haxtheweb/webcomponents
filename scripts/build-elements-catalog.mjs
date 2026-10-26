@@ -170,6 +170,13 @@ for (const pkgDir of fs.readdirSync(ELEMENTS).sort()) {
       }
     }
   }
+  // animated walkthrough storyboards ship next to the element as
+  // lib/<tag>.motion.json; the gallery and docs player pick them up
+  for (const entry of byTag.values()) {
+    if (entry.package === packageName && fs.existsSync(path.join(dir, 'lib', `${entry.tag}.motion.json`))) {
+      entry.walkthrough = true;
+    }
+  }
   // HAX schema details
   for (const file of haxPropertiesFiles(dir)) {
     const hax = readJSON(file);

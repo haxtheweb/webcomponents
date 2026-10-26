@@ -1,0 +1,211 @@
+{
+  "duration": 20,
+  "camera": [],
+  "objects": [
+    {
+      "type": "panel",
+      "title": "properties",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 0.6,
+      "rows": [
+        {
+          "name": "image-url",
+          "desc": "The picture"
+        },
+        {
+          "name": "top-text",
+          "desc": "Caption above"
+        },
+        {
+          "name": "bottom-text",
+          "desc": "Caption below"
+        },
+        {
+          "name": "alt",
+          "desc": "Describes the meme"
+        }
+      ],
+      "active": [
+        [1.4, 0],
+        [4, 1],
+        [7, 2],
+        [10.2, 3],
+        [13.4, 1]
+      ]
+    },
+    {
+      "type": "box",
+      "x": 520,
+      "y": 170,
+      "w": 420,
+      "h": 420,
+      "v": "hug",
+      "r": 6,
+      "xbox": true,
+      "in": 0.5,
+      "d": 0.9,
+      "label": ""
+    },
+    {
+      "type": "text",
+      "s": "your image",
+      "x": 730,
+      "y": 385,
+      "c": "dts",
+      "a": "middle",
+      "in": 1.6,
+      "out": 4
+    },
+    {
+      "type": "text",
+      "states": [
+        [4, "ONE DOES NOT"],
+        [13.4, "READ THE DOCS"]
+      ],
+      "typed": true,
+      "typeDur": 1.2,
+      "x": 730,
+      "y": 240,
+      "c": "impact",
+      "a": "middle",
+      "in": 3.8
+    },
+    {
+      "type": "text",
+      "states": [[7, "SIMPLY SHIP DOCS"]],
+      "typed": true,
+      "typeDur": 1.4,
+      "x": 730,
+      "y": 560,
+      "c": "impact",
+      "a": "middle",
+      "in": 6.8
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 240,
+      "c": "code",
+      "in": 0.6,
+      "s": "<meme-maker"
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 272,
+      "c": "code",
+      "in": 1.4,
+      "s": "  image-url=\"cat.jpg\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 4,
+      "states": [
+        [4, "  top-text=\"ONE DOES NOT\""],
+        [13.4, "  top-text=\"READ THE DOCS\""]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 336,
+      "c": "code",
+      "in": 7,
+      "s": "  bottom-text=\"SIMPLY SHIP DOCS\""
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 368,
+      "c": "code",
+      "in": 10.2,
+      "s": "  alt=\"Cat at a laptop\">"
+    },
+    {
+      "type": "callout",
+      "px": 940,
+      "py": 530,
+      "ex": 1000,
+      "ey": 470,
+      "label": "alt",
+      "sub": "for screen readers",
+      "dir": 1,
+      "in": 10.5,
+      "out": 13
+    },
+    {
+      "type": "box",
+      "x": 1000,
+      "y": 540,
+      "w": 300,
+      "h": 70,
+      "v": "slot",
+      "in": 13,
+      "d": 0.6,
+      "out": 16.8
+    },
+    {
+      "type": "text",
+      "s": "In HAX: type in the sidebar,",
+      "x": 1012,
+      "y": 570,
+      "c": "cdd",
+      "in": 13.2,
+      "out": 16.8
+    },
+    {
+      "type": "text",
+      "s": "the meme updates as you type.",
+      "x": 1012,
+      "y": 592,
+      "c": "cdd",
+      "in": 13.4,
+      "out": 16.8
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.3,
+      "out": 3.8,
+      "title": "Choose an image",
+      "text": "image-url sets the picture the text goes on."
+    },
+    {
+      "t": 4,
+      "out": 9.8,
+      "title": "Add the words",
+      "text": "top-text and bottom-text are drawn over the image in meme style."
+    },
+    {
+      "t": 10,
+      "out": 13.2,
+      "title": "Describe it",
+      "text": "alt tells screen reader users what the meme shows."
+    },
+    {
+      "t": 13.4,
+      "out": 17.2,
+      "title": "Edit in HAX",
+      "text": "Change the text in the sidebar and the image updates."
+    }
+  ],
+  "end": {
+    "in": 17.8,
+    "line": "Image, two captions and alt text.",
+    "code": "<meme-maker image-url=\"cat.jpg\" top-text=\"\u2026\"></meme-maker>"
+  },
+  "version": 1,
+  "tag": "meme-maker",
+  "surfaceHash": "261833596fc0",
+  "review": {
+    "status": "draft",
+    "notes": "Pilot walkthrough. Needs human review before it is marked approved."
+  }
+}
