@@ -221,6 +221,11 @@ class PouchDb extends HTMLElement {
     this.db.allDocs(
       { include_docs: true, descending: true },
       function (err, doc) {
+        // a failed read (storage blocked or an adapter error) has no rows to chart
+        if (err || !doc || !doc.rows) {
+          console.warn("pouch-db: unable to read stored data", err);
+          return;
+        }
         processxAPI(
           doc.rows,
           function displayxAPI(mapxAPI) {

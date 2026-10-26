@@ -948,6 +948,46 @@ export function highlightjs_line_numbers() {
     return false;
   }
 
+  function selectionIsInHljsLnCode(selection) {
+    if (!selection) {
+      return false;
+    }
+    if (isHljsLnCodeDescendant(selection.anchorNode)) {
+      return true;
+    }
+    try {
+      if (selection.rangeCount > 0) {
+        var range = selection.getRangeAt(0);
+        if (
+          isHljsLnCodeDescendant(range.startContainer) ||
+          isHljsLnCodeDescendant(range.commonAncestorContainer)
+        ) {
+          return true;
+        }
+      }
+      // composed ranges expose nodes inside shadow roots (Firefox, Safari)
+      if (typeof selection.getComposedRanges === "function") {
+        var roots = [];
+        var hosts = d.querySelectorAll("code-sample");
+        for (var i = 0; i < hosts.length; i++) {
+          if (hosts[i].shadowRoot) {
+            roots.push(hosts[i].shadowRoot);
+          }
+        }
+        var composed = selection.getComposedRanges({ shadowRoots: roots });
+        if (
+          composed.length > 0 &&
+          isHljsLnCodeDescendant(composed[0].startContainer)
+        ) {
+          return true;
+        }
+      }
+    } catch (err) {
+      // an unsupported getComposedRanges signature just means no match here
+    }
+    return false;
+  }
+
   function getHljsLnTable(hljsLnDomElt) {
     var curElt = hljsLnDomElt;
     while (curElt.nodeName !== "TABLE") {
@@ -1031,8 +1071,10 @@ export function highlightjs_line_numbers() {
   globalThis.document.addEventListener("copy", function (e) {
     // get current selection
     var selection = globalThis.getSelection();
-    // override behavior when one wants to copy line of codes
-    if (isHljsLnCodeDescendant(selection.anchorNode)) {
+    // override behavior when one wants to copy line of codes; the code lives
+    // in a shadow root, where Firefox and WebKit retarget anchorNode to the
+    // shadow host, so also look at the live range and the composed range
+    if (selectionIsInHljsLnCode(selection) && e.clipboardData) {
       var selectionText;
       // workaround an issue with Microsoft Edge as copied line breaks
       // are removed otherwise from the selection string

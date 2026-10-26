@@ -14,7 +14,8 @@ describe("DDDocs test", () => {
   it("passes the a11y audit", async function () {
     // d-d-docs renders every styleguide topic's DOM at once, so the axe-core
     // audit can exceed the default 2s mocha timeout, especially under coverage.
-    this.timeout(10000);
+    // Firefox needs about 35s for the full audit
+    this.timeout(90000);
     await expect(element).shadowDom.to.be.accessible();
   });
 });
