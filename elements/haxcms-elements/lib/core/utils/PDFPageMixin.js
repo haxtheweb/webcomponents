@@ -4,6 +4,7 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { toJS } from "mobx";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import { siteApiFetch } from "./site-api-auth-fetch.js";
 
 export const PDFPageMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
@@ -84,7 +85,7 @@ export const PDFPageMixin = function (SuperClass) {
           `x/api/v1/items/${encodeURIComponent(itemId)}/export/pdf`,
           baseUrl,
         ).toString();
-        const response = await fetch(url, { credentials: "include" });
+        const response = await siteApiFetch(url, { credentials: "include" });
         if (response.ok) {
           const blob = await response.blob();
           const link = globalThis.document.createElement("a");

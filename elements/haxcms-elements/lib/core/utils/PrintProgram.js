@@ -5,6 +5,7 @@
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { siteApiFetch } from "./site-api-auth-fetch.js";
 
 /**
  * Print helper functions that can be called from Merlin options
@@ -99,7 +100,7 @@ export class PrintHelper {
       if (ancestor) {
         url.searchParams.set("filter.ancestor", ancestor);
       }
-      const response = await fetch(url.toString(), {
+      const response = await siteApiFetch(url.toString(), {
         credentials: "include",
       });
       if (response.ok) {
@@ -137,7 +138,7 @@ export class PrintHelper {
       if (magic) {
         url.searchParams.set("magic", magic);
       }
-      const response = await fetch(url.toString(), {
+      const response = await siteApiFetch(url.toString(), {
         credentials: "include",
       });
       if (response.ok) {

@@ -2,6 +2,7 @@ import { expect } from "@open-wc/testing";
 import { LitElement } from "lit";
 import { store } from "../lib/core/haxcms-site-store.js";
 import { PDFPageMixin } from "../lib/core/utils/PDFPageMixin.js";
+import { SITE_API_STATE_KEY } from "../lib/core/utils/site-api-auth-fetch.js";
 
 // Covers the super-daemon option registration in the constructor, the
 // PDFPageButton template states, and the downloadPDFviaMicro fetch/blob
@@ -192,5 +193,37 @@ describe("PDFPageMixin", () => {
     const el = globalThis.document.createElement("pdf-page-test-host");
     await el.downloadPDFviaMicro({});
     expect(el.__pdfLoading).to.equal(false);
+  });
+  it("downloadPDFviaMicro sends the editor JWT so logged-in exports are not 401", async () => {
+    // the site API ignores cookies; without this header a logged-in editor is
+    // treated as anonymous and pdf exports answer 401
+    store.activeId = "page-1";
+    const savedState = globalThis[SITE_API_STATE_KEY];
+    globalThis[SITE_API_STATE_KEY] = Object.assign({}, savedState || {}, {
+      auth: { jwt: "editor-jwt", siteToken: "", userToken: "" },
+    });
+    let seenInit = null;
+    globalThis.fetch = async (url, init) => {
+      seenInit = init;
+      return {
+        ok: true,
+        status: 200,
+        blob: async () => new Blob(["pdf"], { type: "application/pdf" }),
+      };
+    };
+    globalThis.URL.createObjectURL = () => "blob:fake";
+    globalThis.URL.revokeObjectURL = () => {};
+    HTMLElement.prototype.click = function () {};
+    const el = globalThis.document.createElement("pdf-page-test-host");
+    globalThis.document.body.appendChild(el);
+    try {
+      await el.downloadPDFviaMicro({});
+      expect(seenInit).to.exist;
+      expect(seenInit.headers.Authorization).to.equal("Bearer editor-jwt");
+      expect(seenInit.credentials).to.equal("include");
+    } finally {
+      el.remove();
+      globalThis[SITE_API_STATE_KEY] = savedState;
+    }
   });
 });

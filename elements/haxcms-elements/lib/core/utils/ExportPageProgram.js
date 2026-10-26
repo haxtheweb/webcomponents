@@ -14,6 +14,7 @@
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { PAGE_EXPORT_FORMATS } from "./import-export-options.js";
+import { siteApiFetch } from "./site-api-auth-fetch.js";
 
 // English defaults for messages these helpers show. They run with `this`
 // bound to haxcms-site-editor-ui, so translations come from its (haxcms
@@ -198,7 +199,7 @@ export async function _exportPageRouteVariant(format, title) {
     if (!url) {
       throw new Error("Current page URL unavailable");
     }
-    const response = await fetch(url, {
+    const response = await siteApiFetch(url, {
       credentials: "same-origin",
     });
     if (!response.ok) {
@@ -235,7 +236,7 @@ export async function _exportPageAsDOCX(title) {
     if (!url) {
       throw new Error("Current page URL unavailable for DOCX export");
     }
-    const response = await fetch(url, { credentials: "include" });
+    const response = await siteApiFetch(url, { credentials: "include" });
     if (response.ok) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.docx`);
@@ -269,7 +270,7 @@ export async function _exportPageAsPDF(title) {
     if (!url) {
       throw new Error("Current page URL unavailable for PDF export");
     }
-    const response = await fetch(url, { credentials: "include" });
+    const response = await siteApiFetch(url, { credentials: "include" });
     if (response.ok) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.pdf`);
@@ -300,7 +301,7 @@ export async function _exportPageAsEPUB(title) {
     if (!url) {
       throw new Error("Current page URL unavailable for EPUB export");
     }
-    const response = await fetch(url, { credentials: "include" });
+    const response = await siteApiFetch(url, { credentials: "include" });
     if (response.ok) {
       const blob = await response.blob();
       this._downloadBlob(blob, `${title}.epub`);

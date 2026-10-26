@@ -1,6 +1,9 @@
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
+import { SITE_API_STATE_KEY } from "./site-api-auth-fetch.js";
 
-const SITE_STATE_KEY = "__HAXCMSSiteApiRegistryState";
+// site-api-auth-fetch.js reads auth.jwt from this same state for direct
+// site API fetches (exports, print), so keep the key shared.
+const SITE_STATE_KEY = SITE_API_STATE_KEY;
 const SITE_OPERATION_PREFIX = "@site/";
 const SITE_METHODS = [
   "get",
