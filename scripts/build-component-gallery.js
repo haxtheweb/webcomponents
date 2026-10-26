@@ -6,6 +6,22 @@ const path = require("path");
 const ELEMENTS_DIR = "./elements";
 const OUTPUT_FILE = "./index.html";
 const WC_REGISTRY_FILE = "./wc-registry.json";
+const DOCS_DIR = "./gallery-data";
+
+// Per-element documentation data (attributes, slots, events, HAX schema and
+// walkthrough status) is generated from source so the gallery never carries
+// hand written docs. Failure here must not stop the gallery build.
+function buildDocsData() {
+  try {
+    require("child_process").execFileSync(
+      process.execPath,
+      ["scripts/extract-element-docs.mjs", DOCS_DIR],
+      { stdio: "inherit" },
+    );
+  } catch (err) {
+    console.warn("Warning: could not generate element docs data");
+  }
+}
 
 // Function to extract HAX demo schema from component files
 function extractHaxDemoSchema(elementPath, elementName) {
@@ -209,8 +225,27 @@ function getComponentInfo() {
             haxDemoSchema,
           );
 
+          // Documentation data and walkthrough storyboard, when present
+          let docs = null;
+          const docsFile = path.join(DOCS_DIR, elementName + ".docs.json");
+          try {
+            if (fs.existsSync(docsFile)) {
+              docs = JSON.parse(fs.readFileSync(docsFile, "utf8"));
+            }
+          } catch (err) {
+            docs = null;
+          }
+          const motionStatus =
+            docs && docs.motion ? docs.motion.status : "none";
+
           components.push({
             name: elementName,
+            docsSrc: docs ? "gallery-data/" + elementName + ".docs.json" : "",
+            motionSrc:
+              docs && docs.motion && docs.motion.file
+                ? "elements/" + elementName + "/" + docs.motion.file
+                : "",
+            motionStatus,
             packageName: packageData.name,
             description,
             version,
@@ -250,7 +285,7 @@ function generateHTML(components) {
   <title>HAX Web Components Gallery</title>
   <script type="module">
     // Import DDD styles and system
-    import { DDDVariables, DDDGlobalStyles, DDDReset, DDDDataAttributes } from "./elements/d-d-d/lib/DDDStyles.js";
+    import { DDDVariables, DDDGlobalStyles, DDDReset, DDDDataAttributes } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
     import { css, html } from "lit";
     
     // Apply DDD styles to the document
@@ -263,466 +298,502 @@ function generateHTML(components) {
     \`;
     document.head.appendChild(dddStyles);
   </script>
-  <script type="module" src="./elements/d-d-d/d-d-d.js"></script>
+  <script type="module" src="./elements/element-doc-player/element-doc-player.js"></script>
   <style>
-    /* Gallery-specific styles using DDD variables */
+    /* Gallery styles. DDD tokens only: flat surfaces, hairline rules,
+       small tracked labels and no decorative icons. */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
+    :root {
+      --gal-ground: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-potentialMidnight));
+      --gal-text: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
+      --gal-muted: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneGray));
+      --gal-line: light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-theme-default-slateGray));
+      --gal-panel: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-coalyGray));
+      --gal-accent: light-dark(var(--ddd-theme-default-beaverBlue), var(--ddd-theme-default-skyBlue));
+    }
+
     body {
       font-family: var(--ddd-font-primary);
       font-size: var(--ddd-font-size-3xs);
       font-weight: var(--ddd-font-weight-regular);
       line-height: var(--ddd-lh-150);
-      color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
-      background: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-coalyGray));
-      margin: 0;
-      padding: 0;
+      color: var(--gal-text);
+      background: var(--gal-ground);
       height: 100vh;
       overflow: hidden;
     }
-    
+
+    button {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gal-accent);
+      outline-offset: 2px;
+    }
+
     .gallery-container {
       display: flex;
       height: 100vh;
-      background: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-potentialMidnight));
     }
-    
-    /* Sidebar Styles */
+
+    /* Sidebar */
     .sidebar {
-      width: 350px;
-      background: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));
-      border-right: light-dark(var(--ddd-border-sm), 2px solid var(--ddd-theme-default-slateGray));
+      width: 22rem;
+      flex: none;
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      border-right: 1px solid var(--gal-line);
     }
-    
+
     .sidebar-header {
-      padding: var(--ddd-spacing-4);
-      border-bottom: light-dark(var(--ddd-border-xs), 1px solid var(--ddd-theme-default-slateGray));
-      background: var(--ddd-theme-default-nittanyNavy);
-      color: var(--ddd-theme-default-white);
+      padding: var(--ddd-spacing-5) var(--ddd-spacing-4) var(--ddd-spacing-3);
+      border-bottom: 1px solid var(--gal-line);
     }
-    
+
+    .eyebrow {
+      font-size: var(--ddd-font-size-4xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gal-muted);
+    }
+
     .sidebar-header h1 {
-      font-family: var(--ddd-font-secondary);
-      font-size: var(--ddd-font-size-l);
+      font-family: var(--ddd-font-primary);
+      font-size: var(--ddd-font-size-xs);
       font-weight: var(--ddd-font-weight-bold);
-      margin-bottom: var(--ddd-spacing-2);
+      margin: var(--ddd-spacing-1) 0;
     }
-    
+
     .stats {
-      font-size: var(--ddd-font-size-3xs);
-      opacity: 0.9;
+      font-size: var(--ddd-font-size-4xs);
+      color: var(--gal-muted);
       margin-bottom: var(--ddd-spacing-4);
     }
-    
+
     .search-box {
       width: 100%;
-      padding: var(--ddd-spacing-3);
-      border: light-dark(var(--ddd-border-xs), 1px solid var(--ddd-theme-default-slateGray));
-      border-radius: var(--ddd-radius-xs);
+      padding: var(--ddd-spacing-2) 0;
+      border: 0;
+      border-bottom: 1px solid var(--gal-line);
+      border-radius: 0;
+      background: transparent;
+      color: var(--gal-text);
       font-family: var(--ddd-font-primary);
       font-size: var(--ddd-font-size-3xs);
-      background: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));
-      color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
     }
-    
+
     .search-box:focus {
-      outline: 2px solid var(--ddd-theme-default-keystoneYellow);
-      outline-offset: 1px;
+      outline: none;
+      border-bottom-color: var(--gal-accent);
     }
-    
+
     .search-box::placeholder {
-      color: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneGray));
+      color: var(--gal-muted);
     }
-    
-    /* Filter buttons */
+
     .filter-buttons {
       display: flex;
-      gap: var(--ddd-spacing-1);
-      margin-bottom: var(--ddd-spacing-3);
+      gap: var(--ddd-spacing-3);
+      margin-top: var(--ddd-spacing-3);
       flex-wrap: wrap;
     }
-    
+
     .filter-btn {
-      padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-      border: 1px solid light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneGray));
-      border-radius: var(--ddd-radius-xs);
-      background: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-potentialMidnight));
-      color: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneGray));
+      padding: var(--ddd-spacing-1) 0;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      background: none;
+      color: var(--gal-muted);
       cursor: pointer;
-      font-family: var(--ddd-font-primary);
       font-size: var(--ddd-font-size-4xs);
-      font-weight: var(--ddd-font-weight-medium);
-      transition: all 0.3s ease-in-out;
-      flex: 1;
-      min-width: 0;
-      text-align: center;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
-    
+
     .filter-btn:hover {
-      background: light-dark(var(--ddd-theme-default-keystoneYellow), var(--ddd-theme-default-nittanyNavy));
-      color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
-      border-color: var(--ddd-theme-default-beaverBlue);
+      color: var(--gal-text);
     }
-    
+
     .filter-btn.active {
-      background: var(--ddd-theme-default-beaverBlue);
-      color: var(--ddd-theme-default-white);
-      border-color: var(--ddd-theme-default-nittanyNavy);
+      color: var(--gal-text);
+      border-bottom-color: var(--gal-text);
+      font-weight: var(--ddd-font-weight-bold);
     }
-    
-    /* HAX capability indicator */
-    .hax-indicator {
-      display: inline-block;
-      margin-right: var(--ddd-spacing-1);
-      font-size: var(--ddd-font-size-4xs);
-      opacity: 0.8;
-    }
-    
+
     .component-list {
       flex: 1;
       overflow-y: auto;
-      padding: var(--ddd-spacing-2);
-      background: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-potentialMidnight));
     }
-    
+
     .component-item {
       display: block;
       width: 100%;
       padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
-      margin-bottom: var(--ddd-spacing-1);
-      background: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-coalyGray));
-      border: light-dark(var(--ddd-border-xs), 1px solid var(--ddd-theme-default-slateGray));
-      border-radius: var(--ddd-radius-xs);
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--gal-line);
+      border-radius: 0;
       cursor: pointer;
-      transition: all 0.3s ease-in-out;
       text-align: left;
-      font-family: var(--ddd-font-primary);
-      color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
     }
-    
+
     .component-item:hover {
-      background: light-dark(var(--ddd-theme-default-keystoneYellow), var(--ddd-theme-default-nittanyNavy));
-      border-color: var(--ddd-theme-default-beaverBlue);
-      color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
+      background: var(--gal-panel);
     }
-    
+
     .component-item.active {
-      background: var(--ddd-theme-default-beaverBlue);
-      color: var(--ddd-theme-default-white);
-      border-color: var(--ddd-theme-default-nittanyNavy);
+      background: var(--gal-panel);
     }
-    
+
+    .component-item.active .component-item-name {
+      color: var(--gal-accent);
+    }
+
     .component-item-name {
       font-size: var(--ddd-font-size-3xs);
-      font-weight: var(--ddd-font-weight-medium);
-      margin-bottom: var(--ddd-spacing-1);
+      font-weight: var(--ddd-font-weight-bold);
+      overflow-wrap: anywhere;
     }
-    
+
     .component-item-description {
       font-size: var(--ddd-font-size-4xs);
-      opacity: 0.8;
+      color: var(--gal-muted);
       line-height: var(--ddd-lh-140);
+      margin-top: var(--ddd-spacing-1);
     }
-    
-    .component-item.active .component-item-description {
-      opacity: 0.9;
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--ddd-spacing-1);
+      margin-top: var(--ddd-spacing-2);
     }
-    
-    /* Main content area */
+
+    .tag {
+      font-size: var(--ddd-font-size-4xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gal-muted);
+      border: 1px solid var(--gal-line);
+      padding: 0 var(--ddd-spacing-2);
+    }
+
+    .tag.walk {
+      color: var(--gal-text);
+      border-color: var(--gal-text);
+    }
+
+    .tag.stale {
+      color: var(--gal-accent);
+      border-color: var(--gal-accent);
+    }
+
+    /* Main area */
     .main-content {
       flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
-    
+
     .demo-header {
-      padding: var(--ddd-spacing-4);
-      background: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-potentialMidnight));
-      border-bottom: light-dark(var(--ddd-border-xs), 1px solid var(--ddd-theme-default-slateGray));
+      padding: var(--ddd-spacing-4) var(--ddd-spacing-5) 0;
+      border-bottom: 1px solid var(--gal-line);
     }
-    
+
     .demo-title {
-      font-family: var(--ddd-font-secondary);
-      font-size: var(--ddd-font-size-m);
+      font-family: var(--ddd-font-primary);
+      font-size: var(--ddd-font-size-s);
       font-weight: var(--ddd-font-weight-bold);
-      color: light-dark(var(--ddd-theme-default-nittanyNavy), var(--ddd-theme-default-white));
-      margin-bottom: var(--ddd-spacing-2);
+      overflow-wrap: anywhere;
     }
-    
+
     .demo-description {
-      color: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneGray));
+      color: var(--gal-muted);
+      margin: var(--ddd-spacing-1) 0 var(--ddd-spacing-4);
+      max-width: 60rem;
+    }
+
+    .snippets {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: var(--ddd-spacing-2) var(--ddd-spacing-3);
+      align-items: center;
       margin-bottom: var(--ddd-spacing-4);
+      max-width: 60rem;
     }
-    
-    .info-sections {
-      display: flex;
-      gap: var(--ddd-spacing-4);
-      margin-bottom: var(--ddd-spacing-4);
-    }
-    
-    .info-section {
-      flex: 1;
-    }
-    
-    .info-section summary {
-      background: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-coalyGray));
-      padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-      border-radius: var(--ddd-radius-xs);
-      cursor: pointer;
-      font-weight: var(--ddd-font-weight-medium);
-      border: light-dark(var(--ddd-border-xs), 1px solid var(--ddd-theme-default-slateGray));
-      margin-bottom: var(--ddd-spacing-2);
-      color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
-    }
-    
-    .info-section[open] summary {
-      background: var(--ddd-theme-default-beaverBlue);
-      color: var(--ddd-theme-default-white);
-      border-color: var(--ddd-theme-default-nittanyNavy);
-    }
-    
-    .info-content {
-      padding: var(--ddd-spacing-3);
-      background: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-theme-default-potentialMidnight));
-      border-radius: var(--ddd-radius-xs);
-      border: light-dark(var(--ddd-border-xs), 1px solid var(--ddd-theme-default-slateGray));
-      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+
+    .snippet-label {
       font-size: var(--ddd-font-size-4xs);
-      color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gal-muted);
     }
-    
-    .info-content pre {
-      margin: 0;
-      white-space: pre-wrap;
-      word-break: break-word;
+
+    .snippet-code {
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: var(--ddd-font-size-4xs);
+      padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
+      background: var(--gal-panel);
+      border: 1px solid var(--gal-line);
+      overflow-x: auto;
+      white-space: nowrap;
     }
-    
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--ddd-spacing-2) var(--ddd-spacing-4);
+    }
+
+    .view-tabs {
+      display: flex;
+      gap: var(--ddd-spacing-1);
+    }
+
+    .view-tab {
+      padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+      border: 0;
+      border-bottom: 2px solid transparent;
+      background: none;
+      color: var(--gal-muted);
+      cursor: pointer;
+    }
+
+    .view-tab[aria-selected="true"] {
+      color: var(--gal-text);
+      border-bottom-color: var(--gal-text);
+      font-weight: var(--ddd-font-weight-bold);
+    }
+
     .demo-selector-container {
       display: flex;
       align-items: center;
       gap: var(--ddd-spacing-2);
-      margin-bottom: var(--ddd-spacing-2);
     }
 
     .demo-selector-label {
       font-size: var(--ddd-font-size-4xs);
-      color: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneGray));
-      font-weight: var(--ddd-font-weight-medium);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gal-muted);
     }
 
     .demo-selector {
-      padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-      border-radius: var(--ddd-radius-xs);
-      border: light-dark(var(--ddd-border-xs), 1px solid var(--ddd-theme-default-slateGray));
-      background: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));
-      color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
-      font-family: var(--ddd-font-primary);
+      padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+      border: 1px solid var(--gal-line);
+      border-radius: 0;
+      background: var(--gal-ground);
+      color: var(--gal-text);
+      font-family: inherit;
       font-size: var(--ddd-font-size-4xs);
-    }
-
-    .demo-selector:focus {
-      outline: 2px solid var(--ddd-theme-default-keystoneYellow);
-      outline-offset: 1px;
     }
 
     .demo-actions {
       display: flex;
+      flex-wrap: wrap;
       gap: var(--ddd-spacing-2);
-      margin-bottom: var(--ddd-spacing-4);
+      padding-bottom: var(--ddd-spacing-1);
     }
-    
+
     .btn {
-      padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-      border: none;
-      border-radius: var(--ddd-radius-xs);
+      padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
+      border: 1px solid var(--gal-line);
+      border-radius: 0;
+      background: var(--gal-ground);
+      color: var(--gal-text);
       cursor: pointer;
-      font-family: var(--ddd-font-primary);
-      font-size: var(--ddd-font-size-3xs);
-      font-weight: var(--ddd-font-weight-medium);
+      font-size: var(--ddd-font-size-4xs);
       text-decoration: none;
-      transition: all 0.3s ease-in-out;
-      display: inline-flex;
-      align-items: center;
-      gap: var(--ddd-spacing-1);
     }
-    
-    .btn-primary {
-      background: var(--ddd-theme-default-beaverBlue);
-      color: var(--ddd-theme-default-white);
+
+    .btn:hover {
+      border-color: var(--gal-text);
     }
-    
-    .btn-primary:hover {
-      background: var(--ddd-theme-default-nittanyNavy);
-    }
-    
-    .btn-secondary {
-      background: var(--ddd-theme-default-slateGray);
-      color: var(--ddd-theme-default-white);
-    }
-    
-    .btn-secondary:hover {
-      background: var(--ddd-theme-default-coalyGray);
-    }
-    
-    .demo-frame-container {
+
+    .stage {
       flex: 1;
-      background: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));
-      border-radius: var(--ddd-radius-md);
-      overflow: hidden;
-      margin: 0 var(--ddd-spacing-4) var(--ddd-spacing-4);
-      border: var(--ddd-border-xs);
+      min-height: 0;
+      position: relative;
+      background: var(--gal-ground);
     }
-    
+
     .demo-frame {
       width: 100%;
       height: 100%;
-      border: none;
-      background: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));
+      border: 0;
+      background: var(--gal-ground);
     }
-    
+
+    .docs-pane {
+      height: 100%;
+      overflow-y: auto;
+      padding: var(--ddd-spacing-5);
+    }
+
+    .docs-pane element-doc-player {
+      max-width: 72rem;
+    }
+
     .welcome-message {
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100%;
       text-align: center;
-      font-size: var(--ddd-font-size-s);
+      padding: var(--ddd-spacing-5);
+      color: var(--gal-muted);
     }
-    
+
+    .welcome-message h2 {
+      font-size: var(--ddd-font-size-xs);
+      color: var(--gal-text);
+      margin-bottom: var(--ddd-spacing-2);
+    }
+
     .hidden {
       display: none !important;
     }
-    
+
     .no-results {
-      padding: var(--ddd-spacing-6);
-      text-align: center;
-      color: var(--ddd-theme-default-slateGray);
+      padding: var(--ddd-spacing-5);
+      color: var(--gal-muted);
     }
-    
+
     .codepen-form {
       display: none;
     }
-    
-    /* Mobile responsive */
+
     @media (max-width: 768px) {
+      body {
+        height: auto;
+        overflow: auto;
+      }
+
       .gallery-container {
         flex-direction: column;
+        height: auto;
       }
-      
+
       .sidebar {
         width: 100%;
         max-height: 40vh;
+        border-right: 0;
+        border-bottom: 1px solid var(--gal-line);
       }
-      
+
       .main-content {
-        height: 60vh;
+        height: 80vh;
       }
-      
-      .info-sections {
-        flex-direction: column;
+
+      .snippets {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+
+      .snippet-label {
+        grid-column: 1 / -1;
       }
     }
   </style>
 </head>
 <body>
   <d-d-d></d-d-d>
-  
+
   <div class="gallery-container">
     <!-- Sidebar with component list -->
-    <div class="sidebar">
-      <div class="sidebar-header">
-        <h1>Web Components Gallery</h1>
-        <div class="stats">${totalComponents} Components Available</div>
-        
-        <!-- Filter buttons -->
-        <div class="filter-buttons">
-          <button class="filter-btn active" data-filter="all" title="Show all components">
-            🔍 All (${totalComponents})
-          </button>
-          <button class="filter-btn" data-filter="hax" title="Show only HAX-capable components">
-            🧱 HAX (${components.filter((c) => c.isHaxCapable).length})
-          </button>
-          <button class="filter-btn" data-filter="hax-ecosystem" title="Show HAX ecosystem components">
-            ⚡ HAX-* (${components.filter((c) => c.name.startsWith("hax-")).length})
-          </button>
-        </div>
-        
-        <input type="text" 
-               class="search-box" 
-               placeholder="Search components..." 
+    <aside class="sidebar">
+      <header class="sidebar-header">
+        <p class="eyebrow">HAX web components</p>
+        <h1>Component gallery</h1>
+        <p class="stats">${totalComponents} components, ${components.filter((c) => c.motionStatus && c.motionStatus !== "none").length} with walkthroughs</p>
+
+        <input type="search"
+               class="search-box"
+               placeholder="Search components"
                id="searchBox"
                aria-label="Search components">
-      </div>
-      
-      <div class="component-list" id="componentList">
+
+        <div class="filter-buttons" role="group" aria-label="Filter components">
+          <button class="filter-btn active" data-filter="all" title="Show all components">
+            All (${totalComponents})
+          </button>
+          <button class="filter-btn" data-filter="hax" title="Show only HAX-capable components">
+            HAX (${components.filter((c) => c.isHaxCapable).length})
+          </button>
+          <button class="filter-btn" data-filter="walkthrough" title="Show components with an animated walkthrough">
+            Walkthrough (${components.filter((c) => c.motionStatus && c.motionStatus !== "none").length})
+          </button>
+          <button class="filter-btn" data-filter="hax-ecosystem" title="Show HAX ecosystem components">
+            hax-* (${components.filter((c) => c.name.startsWith("hax-")).length})
+          </button>
+        </div>
+      </header>
+
+      <nav class="component-list" id="componentList" aria-label="Components">
         <!-- Components will be populated by JavaScript -->
-      </div>
-      
-      <div class="no-results hidden" id="noResults">
-        <p>No components found</p>
-      </div>
-    </div>
-    
+      </nav>
+
+      <p class="no-results hidden" id="noResults">No components found</p>
+    </aside>
+
     <!-- Main content area -->
-    <div class="main-content">
-      <div class="demo-header hidden" id="demoHeader">
-        <h2 class="demo-title" id="demoTitle">Component Demo</h2>
+    <main class="main-content">
+      <header class="demo-header hidden" id="demoHeader">
+        <h2 class="demo-title" id="demoTitle">Component</h2>
         <p class="demo-description" id="demoDescription">Select a component to view its demo and documentation</p>
-        
-        <div class="info-sections">
-          <details class="info-section" id="installationSection">
-            <summary>📦 Installation</summary>
-            <div class="info-content">
-              <pre id="installationCode">npm install @haxtheweb/example-element</pre>
-            </div>
-          </details>
-          
-          <details class="info-section" id="usageSection">
-            <summary>💻 Usage</summary>
-            <div class="info-content">
-              <pre id="usageCode">import '@haxtheweb/example-element/example-element.js';</pre>
-            </div>
-          </details>
+
+        <div class="snippets">
+          <span class="snippet-label">Install</span>
+          <code class="snippet-code" id="installationCode">npm install @haxtheweb/example-element</code>
+          <button class="btn" data-copy="installationCode">Copy</button>
+          <span class="snippet-label">Import</span>
+          <code class="snippet-code" id="usageCode">import '@haxtheweb/example-element/example-element.js';</code>
+          <button class="btn" data-copy="usageCode">Copy</button>
         </div>
 
-        <div class="demo-selector-container hidden" id="demoSelectorContainer">
-          <span class="demo-selector-label">Demo:</span>
-          <select class="demo-selector" id="demoSelector" aria-label="Select demo variant"></select>
-        </div>
-        
-        <div class="demo-actions">
-          <button class="btn btn-primary" id="newTabBtn">
-            🔗 Open in New Tab
-          </button>
-          <button class="btn btn-secondary" id="codepenBtn">
-            ✏️ Try in CodePen
-          </button>
-          <button class="btn btn-secondary" id="fullscreenBtn">
-            ⛶ Fullscreen
-          </button>
-        </div>
-      </div>
-      
-      <div class="demo-frame-container">
-        <div class="welcome-message" id="welcomeMessage">
-          <div>
-            <h3>Welcome to the HAX Web Components Gallery</h3>
-            <p>Select a component from the sidebar to view its demo and documentation.</p>
+        <div class="toolbar">
+          <div class="view-tabs" role="tablist" aria-label="View">
+            <button class="view-tab" role="tab" id="tabDemo" data-view="demo" aria-selected="true">Live demo</button>
+            <button class="view-tab" role="tab" id="tabDocs" data-view="docs" aria-selected="false">Documentation</button>
+          </div>
+          <div class="demo-selector-container hidden" id="demoSelectorContainer">
+            <label class="demo-selector-label" for="demoSelector">Demo</label>
+            <select class="demo-selector" id="demoSelector"></select>
+          </div>
+          <div class="demo-actions">
+            <button class="btn" id="newTabBtn">Open in new tab</button>
+            <button class="btn" id="codepenBtn">Try in CodePen</button>
+            <button class="btn" id="fullscreenBtn">Fullscreen</button>
           </div>
         </div>
-        <iframe class="demo-frame hidden" id="demoFrame" title="Component Demo"></iframe>
+      </header>
+
+      <div class="stage">
+        <div class="welcome-message" id="welcomeMessage">
+          <div>
+            <h2>Welcome to the HAX web components gallery</h2>
+            <p>Choose a component to see its demo, documentation and walkthrough.</p>
+          </div>
+        </div>
+        <iframe class="demo-frame hidden" id="demoFrame" title="Component demo"></iframe>
+        <div class="docs-pane hidden" id="docsPane"></div>
       </div>
-    </div>
+    </main>
   </div>
-  
+
   <!-- Hidden CodePen form for posting -->
   <form class="codepen-form" id="codepenForm" action="https://codepen.io/pen/define" method="POST" target="_blank">
     <input type="hidden" name="data" id="codepenData">
@@ -754,6 +825,44 @@ function generateHTML(components) {
     const codepenForm = document.getElementById('codepenForm');
     const codepenData = document.getElementById('codepenData');
     const filterBtns = document.querySelectorAll('.filter-btn');
+    const docsPane = document.getElementById('docsPane');
+    const viewTabs = document.querySelectorAll('.view-tab');
+    let currentView = 'demo';
+
+    // Demo and documentation views share one stage
+    function setView(view) {
+      currentView = view;
+      viewTabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.view === view)));
+      const docs = view === 'docs' && currentComponent;
+      demoFrame.classList.toggle('hidden', Boolean(docs));
+      docsPane.classList.toggle('hidden', !docs);
+      demoSelectorContainer.style.visibility = docs ? 'hidden' : '';
+      docsPane.textContent = '';
+      if (docs) {
+        const player = document.createElement('element-doc-player');
+        if (currentComponent.docsSrc) player.setAttribute('docs-src', currentComponent.docsSrc);
+        if (currentComponent.motionSrc) player.setAttribute('motion-src', currentComponent.motionSrc);
+        player.setAttribute('demo-href', currentComponent.demoPath);
+        docsPane.appendChild(player);
+      }
+      updateUrlForCurrentDemo();
+    }
+
+    viewTabs.forEach(t => t.addEventListener('click', () => setView(t.dataset.view)));
+
+    // Copy buttons for the install and import rows
+    document.querySelectorAll('[data-copy]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const text = document.getElementById(btn.dataset.copy).textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.textContent = 'Copied';
+        } catch (e) {
+          btn.textContent = 'Press Ctrl+C';
+        }
+        setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
+      });
+    });
     let currentDemoPath = null;
     
     // Filter components based on current filter
@@ -763,6 +872,9 @@ function generateHTML(components) {
       switch (currentFilter) {
         case 'hax':
           components = COMPONENTS.filter(c => c.isHaxCapable);
+          break;
+        case 'walkthrough':
+          components = COMPONENTS.filter(c => c.motionStatus && c.motionStatus !== 'none');
           break;
         case 'hax-ecosystem':
           components = COMPONENTS.filter(c => c.name.startsWith('hax-'));
@@ -848,14 +960,17 @@ function generateHTML(components) {
         item.className = 'component-item';
         item.dataset.componentName = component.name;
         
-        // Add HAX indicator if component is HAX-capable
-        const haxIndicator = component.isHaxCapable
-          ? '<span class="hax-indicator" title="HAX-capable component">🧱</span>' 
-          : '';
-        
+        const tags = [];
+        if (component.isHaxCapable) tags.push('<span class="tag">HAX</span>');
+        if (component.motionStatus && component.motionStatus !== 'none') {
+          tags.push('<span class="tag walk">Walkthrough</span>');
+          if (component.motionStatus === 'stale') tags.push('<span class="tag stale">Needs update</span>');
+        }
+
         item.innerHTML = \`
-          <div class="component-item-name">\${haxIndicator}&lt;\${component.name}&gt;</div>
+          <div class="component-item-name">&lt;\${component.name}&gt;</div>
           <div class="component-item-description">\${component.description}</div>
+          \${tags.length ? '<div class="tags">' + tags.join('') + '</div>' : ''}
         \`;
         
         item.addEventListener('click', () => selectComponent(component));
@@ -889,6 +1004,7 @@ function generateHTML(components) {
       
       // Load selected demo in iframe
       demoFrame.src = currentDemoPath;
+      setView(getQueryParam('view') === 'docs' ? 'docs' : 'demo');
 
       // Reflect the current selection in the URL for shareable deep links.
       updateUrlForCurrentDemo();
@@ -1036,6 +1152,9 @@ function generateHTML(components) {
           params.set('demo', demoName);
         }
       }
+      if (currentView === 'docs') {
+        params.set('view', 'docs');
+      }
       const search = params.toString();
       globalThis.history.replaceState({}, '', globalThis.location.pathname + (search ? '?' + search : ''));
     }
@@ -1087,18 +1206,19 @@ function generateHTML(components) {
 }
 
 // Generate the gallery
-console.log("🔍 Scanning components...");
+console.log("Scanning components...");
+buildDocsData();
 const components = getComponentInfo();
 
 // Count components that are HAX-capable (have haxProperties wiring)
 const haxCapableCount = components.filter((c) => c.isHaxCapable).length;
 
-console.log(`✅ Found ${components.length} components with demos`);
-console.log(`🎭 ${haxCapableCount} components are HAX-capable`);
+console.log(`Found ${components.length} components with demos`);
+console.log(`${haxCapableCount} components are HAX-capable`);
 
 if (components.length === 0) {
   console.log(
-    "❌ No components found. Make sure you have elements with demo/index.html files.",
+    "No components found. Make sure you have elements with demo/index.html files.",
   );
   process.exit(1);
 }
@@ -1106,5 +1226,5 @@ if (components.length === 0) {
 const html = generateHTML(components);
 fs.writeFileSync(OUTPUT_FILE, html);
 
-console.log(`🎉 Component gallery generated: ${OUTPUT_FILE}`);
-console.log(`🚀 Run 'yarn gallery' to serve it locally`);
+console.log(`Component gallery generated: ${OUTPUT_FILE}`);
+console.log(`Run 'yarn gallery' to serve it locally`);
