@@ -91,9 +91,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           left: 0;
           top: 0;
           right: 0;
-          margin-top: 0;
-          opacity: 1;
-          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
           z-index: var(--ddd-z-modal, 10000);
           visibility: visible;
         }
@@ -106,9 +103,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         simple-tooltip:not(:defined) {
           display: none !important;
         }
+        /* hidden only until the first render lands; no slide / fade in,
+           the bar should just be there */
         :host([painting]) {
-          opacity: 0;
-          margin-top: -64px;
           visibility: hidden;
         }
         #editbutton {
@@ -242,7 +239,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           right: 0px;
           left: 0px;
           position: fixed;
-          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
+          transition:
+            background-color var(--ddd-duration-normal, 0.3s) ease-in-out,
+            color var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
         :host([dark-mode]) app-hax-top-bar {
           --bg-color: #000;
@@ -2988,7 +2987,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           store.cmsSiteEditor.haxCmsSiteEditorUIElement &&
           store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot
         ) {
-          // delay since it slides in
+          // small delay so the pulse is noticed after first paint
           setTimeout(() => {
             const editbtn =
               store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot.querySelector(
