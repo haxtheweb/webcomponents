@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (227 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (228 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -61,6 +61,7 @@ Every element in this monorepo (227 packages). Browse them live with `yarn galle
 | [documentation-player](./documentation-player/) | playlist like element but for documenting web components in the context of hax | `@haxtheweb/documentation-player` | [demo](./documentation-player/demo/) |
 | [dynamic-import-registry](./dynamic-import-registry/) | maintain manage the registration and usage of dynamic imports | `@haxtheweb/dynamic-import-registry` |  |
 | [editable-table](./editable-table/) | A table that's editable | `@haxtheweb/editable-table` | [demo](./editable-table/demo/) |
+| [element-doc-player](./element-doc-player/) | Webcomponent element-doc-player following hax / open-wc recommendations | `@haxtheweb/element-doc-player` | [demo](./element-doc-player/demo/) |
 | [elmsln-loading](./elmsln-loading/) | Basic loading spinner based on the ELMS:LN icon | `@haxtheweb/elmsln-loading` | [demo](./elmsln-loading/demo/) |
 | [enhanced-text](./enhanced-text/) | take text and process it with various enhancements | `@haxtheweb/enhanced-text` | [demo](./enhanced-text/demo/) |
 | [es-global-bridge](./es-global-bridge/) | A very simple class to help bridge global scoped code with ES Modules | `@haxtheweb/es-global-bridge` |  |
