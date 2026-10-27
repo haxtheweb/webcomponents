@@ -1716,8 +1716,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
 
   _onContextMenu(e) {
-    // a touch hold picks the row up for dragging instead
-    if (this._press || this._drag) {
+    // on touch a hold picks the row up for dragging (the ⋯ button has the
+    // actions), and phones raise this event for that same hold, sometimes
+    // after the finger has lifted
+    if (this._press || this._drag || this._recentTouch()) {
       e.preventDefault();
       return;
     }
@@ -3242,7 +3244,17 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this._clearPress();
   }
 
+  // a finger is on the outline, or was a moment ago
+  _recentTouch() {
+    return this._touchDown || Date.now() - (this._touchAt || 0) < 1000;
+  }
+
   _onPointerCancel(e) {
+    // phones cancel the pointer when their own long-press gesture kicks
+    // in; a touch drag already picked up carries on from touch events
+    if (this._drag && this._drag.touch && this._touchDown) {
+      return;
+    }
     if (this._drag && e.pointerId === this._drag.pointerId) {
       this._finishDrag(false);
       return;
@@ -3761,17 +3773,47 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     }
     // once a touch drag has picked a row up, the finger moves the row
     // rather than scrolling the page (needs a non-passive listener)
+    // touch events keep a touch drag going even after the browser has
+    // cancelled the pointer for its long-press gesture
     const list = this.shadowRoot.querySelector("#list");
     if (list) {
       list.addEventListener(
+        "touchstart",
+        () => {
+          this._touchDown = true;
+          this._touchAt = Date.now();
+        },
+        { passive: true },
+      );
+      list.addEventListener(
         "touchmove",
         (e) => {
-          if (this._drag && e.cancelable) {
-            e.preventDefault();
+          if (!this._drag) return;
+          if (e.cancelable) e.preventDefault();
+          const touch = e.changedTouches[0];
+          if (this._drag.touch && touch) {
+            this._dragTo(touch.clientX, touch.clientY);
           }
         },
         { passive: false },
       );
+      const touchEnd = (e) => {
+        this._touchDown = e.touches.length > 0;
+        this._touchAt = Date.now();
+        if (this._drag && this._drag.touch && !this._touchDown) {
+          this._finishDrag(e.type === "touchend");
+          this._suppressClick = true;
+          setTimeout(() => {
+            this._suppressClick = false;
+          }, 0);
+        }
+      };
+      list.addEventListener("touchend", touchEnd);
+      list.addEventListener("touchcancel", touchEnd);
+      // no text selection or callout while a row is held or carried
+      list.addEventListener("selectstart", (e) => {
+        if (this._press || this._drag) e.preventDefault();
+      });
     }
   }
 

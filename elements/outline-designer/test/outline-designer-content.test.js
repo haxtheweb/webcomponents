@@ -673,6 +673,65 @@ describe("outline-designer drag lifecycle", () => {
     expect(element.items.filter((i) => i.parent === null)[0].id).to.equal("p2");
   });
 
+  it("keeps a touch drag going through the phone's long-press gesture", async () => {
+    const opts = { pointerType: "touch", pointerId: 13 };
+    const label = pageLi(element, "p2").querySelector(".label.shown");
+    const from = at(label);
+    const touchAt = (type, point) => {
+      const touch = new Touch({
+        identifier: 13,
+        target: label,
+        clientX: point.x,
+        clientY: point.y,
+      });
+      const ended = type === "touchend" || type === "touchcancel";
+      label.dispatchEvent(
+        new TouchEvent(type, {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          touches: ended ? [] : [touch],
+          changedTouches: [touch],
+        }),
+      );
+    };
+    touchAt("touchstart", from);
+    pointer(label, "pointerdown", from, opts);
+    await new Promise((resolve) => setTimeout(resolve, 420));
+    expect(element._drag.touch).to.equal(true);
+    // the phone's long press: a contextmenu event and a cancelled pointer
+    const menuEvent = new MouseEvent("contextmenu", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+    });
+    label.dispatchEvent(menuEvent);
+    expect(menuEvent.defaultPrevented).to.equal(true);
+    pointer(list(), "pointercancel", from, opts);
+    expect(element._drag === null).to.equal(false);
+    // the finger keeps moving the row and lifting it drops it
+    const point = over(pageLi(element, "p1"), 0.1, from);
+    touchAt("touchmove", point);
+    await element.updateComplete;
+    touchAt("touchend", point);
+    await settle(element);
+    expect(element._drag).to.equal(null);
+    expect(element.items.filter((i) => i.parent === null)[0].id).to.equal("p2");
+    // no actions menu opened along the way, even just after lifting
+    const late = new MouseEvent("contextmenu", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+    });
+    pageLi(element, "p2").dispatchEvent(late);
+    expect(late.defaultPrevented).to.equal(true);
+    expect(
+      [...element.shadowRoot.querySelectorAll(".actions-menu")].some(
+        (m) => m.open,
+      ),
+    ).to.equal(false);
+  });
+
   it("treats an early touch move as scrolling", async () => {
     const opts = { pointerType: "touch", pointerId: 12 };
     const li = pageLi(element, "p2");
