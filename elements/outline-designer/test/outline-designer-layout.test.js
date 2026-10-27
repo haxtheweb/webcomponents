@@ -211,4 +211,51 @@ describe("outline-designer layout in a scrolling host", () => {
     expect(parseFloat(style.scrollPaddingTop)).to.equal(bar + 8);
     expect(parseFloat(style.scrollPaddingBottom)).to.equal(footer + 8);
   });
+
+  it("keeps moving the same page when Alt+arrow repeats during a move", async () => {
+    const el = await scrollingDesigner();
+    // full motion: each move is shown, so presses land mid-move
+    el.reducedMotion = "full";
+    const start = el.items.map((i) => i.id);
+    const id = start[4];
+    const li = el.shadowRoot.querySelector(`li.item[data-item-id="${id}"]`);
+    li.focus();
+    const press = () =>
+      li.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: "ArrowDown",
+          altKey: true,
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }),
+      );
+    press();
+    press();
+    press();
+    await el._moveChain;
+    await settle(el);
+    const order = [...el.items]
+      .sort((a, b) => a.order - b.order)
+      .map((i) => i.id);
+    // the page went down three places; everything else kept its order
+    expect(order.indexOf(id)).to.equal(7);
+    expect(order.filter((x) => x !== id)).to.deep.equal(
+      start.filter((x) => x !== id),
+    );
+  });
+
+  it("drops presses beyond the queue limit", async () => {
+    const el = await scrollingDesigner();
+    el.reducedMotion = "full";
+    const id = el.items[2].id;
+    for (let n = 0; n < 8; n++) el._queueKeyboardMove(id, "down");
+    await el._moveChain;
+    await settle(el);
+    const order = [...el.items]
+      .sort((a, b) => a.order - b.order)
+      .map((i) => i.id);
+    expect(order.indexOf(id)).to.equal(5);
+    expect(el._movingId).to.equal(null);
+  });
 });

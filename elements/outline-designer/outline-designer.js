@@ -78,6 +78,8 @@ const MOTION = {
 };
 // room kept between a revealed row and the sticky toolbar or footer
 const REVEAL_GAP = 8;
+// Alt+arrow presses that can wait behind a move still being shown
+const MAX_QUEUED_MOVES = 3;
 const UNDO_MS = 8000;
 const NUDGE_MS = 6000;
 /**
@@ -3154,8 +3156,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     let handled = true;
 
     if (e.altKey && !mod && moves[e.key]) {
-      // Alt+arrows move the page (with its sub-pages) straight from the row
-      this._moveByKeyboard(itemIndex, moves[e.key]);
+      // Alt+arrows move the page (with its sub-pages) straight from the row;
+      // while a move is still showing, the focused row can briefly be
+      // another page's, so a press then keeps moving the page in motion
+      this._queueKeyboardMove(this._movingId || itemId, moves[e.key]);
     } else if ((e.shiftKey && e.key === "F10") || e.key === "ContextMenu") {
       this._openActionsMenu(currentItem);
     } else if (mod && e.key === "Enter") {
@@ -3982,6 +3986,32 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
    * and show where it went. The operation itself is itemOp, so the data
    * written is the same.
    */
+  /**
+   * Alt+arrow moves run one after another: a key held down repeats faster
+   * than a move is shown, and each queued move finds its page by id when its
+   * turn comes. At most MAX_QUEUED_MOVES wait, so letting go of a held key
+   * stops the page soon after.
+   */
+  _queueKeyboardMove(id, action) {
+    if ((this._movesPending || 0) >= MAX_QUEUED_MOVES) return;
+    this._movesPending = (this._movesPending || 0) + 1;
+    this._movingId = id;
+    this._moveChain = (this._moveChain || Promise.resolve())
+      .then(() => {
+        const index = (this.items || []).findIndex((i) => i.id === id);
+        if (index === -1) return null;
+        return this._moveByKeyboard(index, action);
+      })
+      .catch((err) => {
+        console.warn(err);
+      })
+      .then(() => {
+        this._movesPending--;
+        if (!this._movesPending) this._movingId = null;
+      });
+    return this._moveChain;
+  }
+
   _moveByKeyboard(index, action, { fromMenu = false } = {}) {
     const item = this.items[index];
     if (!item) return;
