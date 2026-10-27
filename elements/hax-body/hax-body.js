@@ -193,9 +193,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           --simple-picker-option-active-background-color: var(
             --hax-ui-color-accent
           );
-          --simple-picker-option-active-color: var(--hax-tray-text-color);
-          --simple-picker-color-active: var(--hax-tray-text-color);
-          --simple-picker-color: var(--hax-tray-text-color);
         }
         :host([edit-mode][tray-status="full-panel"]) {
           opacity: var(--ddd-opacity-20, 0.2);
