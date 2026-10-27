@@ -948,6 +948,60 @@ export function highlightjs_line_numbers() {
     return false;
   }
 
+  // the selection's first range, resolved through every code-sample shadow
+  // root; Firefox takes ({shadowRoots}), older WebKit takes the roots as args
+  function getHljsComposedRange(selection) {
+    if (!selection || typeof selection.getComposedRanges !== "function") {
+      return null;
+    }
+    var roots = [];
+    var hosts = d.querySelectorAll("code-sample");
+    for (var i = 0; i < hosts.length; i++) {
+      if (hosts[i].shadowRoot) {
+        roots.push(hosts[i].shadowRoot);
+      }
+    }
+    var composed = [];
+    try {
+      composed = selection.getComposedRanges({ shadowRoots: roots });
+    } catch (err) {
+      composed = [];
+    }
+    if (
+      (!composed.length ||
+        !isHljsLnCodeDescendant(composed[0].startContainer)) &&
+      roots.length
+    ) {
+      try {
+        composed = selection.getComposedRanges.apply(selection, roots);
+      } catch (err) {
+        // neither signature supported
+      }
+    }
+    return composed && composed.length ? composed[0] : null;
+  }
+
+  // text of the selection; selection.toString() can be empty when the range
+  // lives in a shadow root, so rebuild it from the composed range
+  function getHljsSelectionText(selection) {
+    var text = selection.toString();
+    if (text) {
+      return text;
+    }
+    var composed = getHljsComposedRange(selection);
+    if (composed) {
+      try {
+        var r = d.createRange();
+        r.setStart(composed.startContainer, composed.startOffset);
+        r.setEnd(composed.endContainer, composed.endOffset);
+        return r.toString();
+      } catch (err) {
+        return text;
+      }
+    }
+    return text;
+  }
+
   function selectionIsInHljsLnCode(selection) {
     if (!selection) {
       return false;
@@ -966,21 +1020,9 @@ export function highlightjs_line_numbers() {
         }
       }
       // composed ranges expose nodes inside shadow roots (Firefox, Safari)
-      if (typeof selection.getComposedRanges === "function") {
-        var roots = [];
-        var hosts = d.querySelectorAll("code-sample");
-        for (var i = 0; i < hosts.length; i++) {
-          if (hosts[i].shadowRoot) {
-            roots.push(hosts[i].shadowRoot);
-          }
-        }
-        var composed = selection.getComposedRanges({ shadowRoots: roots });
-        if (
-          composed.length > 0 &&
-          isHljsLnCodeDescendant(composed[0].startContainer)
-        ) {
-          return true;
-        }
+      var composed = getHljsComposedRange(selection);
+      if (composed && isHljsLnCodeDescendant(composed.startContainer)) {
+        return true;
       }
     } catch (err) {
       // an unsupported getComposedRanges signature just means no match here
@@ -1082,7 +1124,7 @@ export function highlightjs_line_numbers() {
         selectionText = edgeGetSelectedCodeLines(selection);
       } else {
         // other browsers can directly use the selection string
-        selectionText = selection.toString();
+        selectionText = getHljsSelectionText(selection);
       }
       e.clipboardData.setData("text/plain", selectionText);
       e.preventDefault();
