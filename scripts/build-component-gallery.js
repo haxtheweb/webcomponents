@@ -298,7 +298,7 @@ function generateHTML(components) {
     \`;
     document.head.appendChild(dddStyles);
   </script>
-  <script type="module" src="./elements/element-doc-player/element-doc-player.js"></script>
+  <script type="module" src="./elements/documentation-player/documentation-player.js"></script>
   <style>
     /* Gallery styles. DDD tokens only: flat surfaces, hairline rules,
        small tracked labels and no decorative icons. */
@@ -644,7 +644,7 @@ function generateHTML(components) {
       padding: var(--ddd-spacing-5);
     }
 
-    .docs-pane element-doc-player {
+    .docs-pane documentation-player {
       max-width: 72rem;
     }
 
@@ -967,7 +967,7 @@ function generateHTML(components) {
       demoSelectorContainer.style.visibility = docs ? 'hidden' : '';
       docsPane.textContent = '';
       if (docs) {
-        const player = document.createElement('element-doc-player');
+        const player = document.createElement('documentation-player');
         if (currentComponent.docsSrc) player.setAttribute('docs-src', currentComponent.docsSrc);
         if (currentComponent.motionSrc) player.setAttribute('motion-src', currentComponent.motionSrc);
         player.setAttribute('demo-href', currentComponent.demoPath);

@@ -2,22 +2,29 @@
 /**
  * Extract living documentation data for elements in this monorepo.
  *
- * For each element folder it writes <folder>.docs.json: attributes, slots,
+ * For each element folder it builds docs data: attributes, slots,
  * events, haxProperties, demo markup, install snippets and a "surface hash"
  * (a fingerprint of what a person can see and use: attributes, HAX controls,
  * slots, events, demo schema). A walkthrough storyboard stores the hash it was
  * written against, so a changed element flags its walkthrough for review.
  *
- * Consumed by <element-doc-player> and by scripts/build-component-gallery.js.
+ * Consumed by <documentation-player> and by scripts/build-component-gallery.js.
  *
  * usage:
+ *   node scripts/extract-element-docs.mjs --write [element ...]
+ *       writes elements/<name>/lib/<tag>.docs.json, so the data ships with the
+ *       package. Each element's build runs this as `--write .`
  *   node scripts/extract-element-docs.mjs <out-dir> [element ...]
+ *       writes <out-dir>/<name>.docs.json (the gallery build uses this)
  *   node scripts/extract-element-docs.mjs --status [element ...]
+ *       lists walkthroughs as reviewed, awaiting or stale; exits 1 on stale
  *
  * With no element names every folder in elements/ is processed. Elements that
  * cannot be parsed are skipped with a warning; one bad element never stops a run.
  *
- * Walkthrough storyboards live at elements/<name>/lib/<tag>.motion.json.
+ * Walkthrough storyboards live at elements/<name>/lib/<tag>.motion.json and an
+ * optional video tutorial at elements/<name>/lib/<tag>.video.json
+ * ({ "source": "<YouTube, Vimeo or file URL>", "title": "..." }).
  * Status per element: none | stale | awaiting | reviewed
  *
  * Node built-ins only.
@@ -290,6 +297,7 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
     hax,
     surfaceHash,
     motion: motionStatus(dir, findMotion(dir, name, tag), surfaceHash),
+    video: readJson(path.join(dir, "lib", `${tag}.video.json`)),
     source: { path: `elements/${name}`, file: main },
   };
 }
@@ -297,11 +305,15 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
 function main() {
   const args = process.argv.slice(2);
   const statusMode = args.includes("--status");
-  const rest = args.filter((a) => !a.startsWith("--"));
-  const outDir = statusMode ? "" : rest.shift();
-  if (!statusMode && !outDir) {
+  const writeMode = args.includes("--write");
+  // element names, or paths to element folders (". " from an element build)
+  const rest = args
+    .filter((a) => !a.startsWith("--"))
+    .map((a) => (a === "." || a.includes("/") ? path.basename(path.resolve(a)) : a));
+  const outDir = statusMode || writeMode ? "" : rest.shift();
+  if (!statusMode && !writeMode && !outDir) {
     console.error(
-      "usage: extract-element-docs.mjs <out-dir> [element ...]\n       extract-element-docs.mjs --status [element ...]",
+      "usage: extract-element-docs.mjs --write [element ...]\n       extract-element-docs.mjs <out-dir> [element ...]\n       extract-element-docs.mjs --status [element ...]",
     );
     process.exit(1);
   }
@@ -324,6 +336,14 @@ function main() {
           path.join(outDir, `${name}.docs.json`),
           JSON.stringify(d),
         );
+      if (writeMode) {
+        const lib = path.join(ELEMENTS, name, "lib");
+        fs.mkdirSync(lib, { recursive: true });
+        fs.writeFileSync(
+          path.join(lib, `${d.tag}.docs.json`),
+          JSON.stringify(d, null, 2) + "\n",
+        );
+      }
       if (d.motion.status !== "none")
         rows.push([name, d.motion.status, d.surfaceHash]);
     } catch (e) {
@@ -335,7 +355,9 @@ function main() {
     if (!rows.length) console.log("no walkthroughs found");
     process.exit(rows.some((r) => r[1] === "stale") ? 1 : 0);
   }
-  console.log(`docs data for ${ok} of ${names.length} elements -> ${outDir}`);
+  console.log(
+    `docs data for ${ok} of ${names.length} elements -> ${writeMode ? "elements/*/lib" : outDir}`,
+  );
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) main();

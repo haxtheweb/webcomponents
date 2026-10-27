@@ -260,13 +260,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set target and icon",
-      "text": "target and icon change how it looks and behaves."
+      "text": "Set target=\"…\" in the markup. Set icon=\"…\" in the markup."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set label and position",
-      "text": "label and position change how it looks and behaves."
+      "text": "Set label=\"…\" in the markup. Set position=\"…\" in the markup."
     },
     {
       "t": 14.8,

@@ -249,13 +249,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set wikipedia and vide",
-      "text": "wikipedia and vide change how it looks and behaves."
+      "text": "Add wikipedia to switch wikipedia on. Add vide to switch vide on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set fixation point",
-      "text": "fixation-point and haxcms-glossary change how it looks and behaves."
+      "text": "Set fixation-point=\"…\" in the markup."
     },
     {
       "t": 14.8,

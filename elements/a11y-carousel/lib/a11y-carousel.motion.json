@@ -246,14 +246,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set nextlabel",
-      "text": "nextLabel and no-prev-next change how it looks and behaves."
+      "title": "Set nextlabel and no prev next",
+      "text": "Set nextLabel=\"…\" in the markup. Add no-prev-next to switch no prev next on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set no buttons and prevlabel",
-      "text": "no-buttons and prevLabel change how it looks and behaves."
+      "text": "Add no-buttons to switch no buttons on. Set prevLabel=\"…\" in the markup."
     },
     {
       "t": 14.8,

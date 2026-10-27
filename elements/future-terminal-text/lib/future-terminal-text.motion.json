@@ -249,13 +249,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set glitch and red",
-      "text": "glitch and red change how it looks and behaves."
+      "text": "Add glitch to switch glitch on. Add red to switch red on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set fadein and glitch max",
-      "text": "fadein and glitch-max change how it looks and behaves."
+      "text": "Add fadein to switch fadein on. Set glitch-max=\"…\" in the markup."
     },
     {
       "t": 14.8,

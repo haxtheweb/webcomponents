@@ -404,13 +404,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set scale name",
-      "text": "scale and accent-color change how it looks and behaves."
+      "text": "scale picks one of: ct-square, ct-minor-second, ct-major-second, ct-minor-third."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set csv file and dark theme",
-      "text": "Load data from a CSV."
+      "text": "Load data from a CSV. Enable Dark Theme."
     },
     {
       "t": 14.8,

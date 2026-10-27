@@ -58,10 +58,9 @@ Every element in this monorepo (228 packages). Browse them live with `yarn galle
 | [discord-embed](./discord-embed/) | widgetbot.io based embed widget for discord threads and channels | `@haxtheweb/discord-embed` | [demo](./discord-embed/demo/) |
 | [disqus-embed](./disqus-embed/) | Disqus service integration | `@haxtheweb/disqus-embed` | [demo](./disqus-embed/demo/) |
 | [dl-behavior](./dl-behavior/) | Mixin that adds file download helpers to an element | `@haxtheweb/dl-behavior` |  |
-| [documentation-player](./documentation-player/) | playlist like element but for documenting web components in the context of hax | `@haxtheweb/documentation-player` | [demo](./documentation-player/demo/) |
+| [documentation-player](./documentation-player/) | Living documentation for a web component: animated walkthrough, video tutorial, demo, docs and schema | `@haxtheweb/documentation-player` | [demo](./documentation-player/demo/) |
 | [dynamic-import-registry](./dynamic-import-registry/) | maintain manage the registration and usage of dynamic imports | `@haxtheweb/dynamic-import-registry` |  |
 | [editable-table](./editable-table/) | A table that's editable | `@haxtheweb/editable-table` | [demo](./editable-table/demo/) |
-| [element-doc-player](./element-doc-player/) | Webcomponent element-doc-player following hax / open-wc recommendations | `@haxtheweb/element-doc-player` | [demo](./element-doc-player/demo/) |
 | [elmsln-loading](./elmsln-loading/) | Basic loading spinner based on the ELMS:LN icon | `@haxtheweb/elmsln-loading` | [demo](./elmsln-loading/demo/) |
 | [enhanced-text](./enhanced-text/) | take text and process it with various enhancements | `@haxtheweb/enhanced-text` | [demo](./enhanced-text/demo/) |
 | [es-global-bridge](./es-global-bridge/) | A very simple class to help bridge global scoped code with ES Modules | `@haxtheweb/es-global-bridge` |  |

@@ -341,13 +341,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set schemamap",
-      "text": "schemaMap and contentContainer change how it looks and behaves."
+      "text": "Set schemaMap=\"…\" in the markup. Set contentContainer=\"…\" in the markup."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set relationship and items",
-      "text": "relationship and items change how it looks and behaves."
+      "text": "Set relationship=\"…\" in the markup. Set items=\"…\" in the markup."
     },
     {
       "t": 14.8,

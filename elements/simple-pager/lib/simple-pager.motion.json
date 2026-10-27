@@ -339,13 +339,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set limit and offset",
-      "text": "limit and offset change how it looks and behaves."
+      "text": "Set limit=\"…\" in the markup. Set offset=\"…\" in the markup."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set total and count",
-      "text": "total and count change how it looks and behaves."
+      "text": "Set total=\"…\" in the markup. Set count=\"…\" in the markup."
     },
     {
       "t": 14.8,

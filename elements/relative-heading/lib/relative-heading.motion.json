@@ -308,13 +308,13 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set parent and default-level",
-      "text": "Parent Heading's Resource ID."
+      "title": "Set parent and default level",
+      "text": "Parent Heading's Resource ID. Heading level if parent is not found."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set copymessage",
+      "title": "Set copymessage and linklabel",
       "text": "Overrides default text for copy link's toast message."
     },
     {

@@ -318,13 +318,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set image and full name",
-      "text": "Add an image to the testimonial."
+      "text": "Add an image to the testimonial. Name of the person giving the testimonial."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set position or job title",
-      "text": "Position or job title of the person."
+      "text": "Position or job title of the person. Quote from the testimonial author."
     },
     {
       "t": 14.8,

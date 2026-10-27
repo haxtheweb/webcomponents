@@ -35,7 +35,7 @@
       "in": 1.7999999999999998,
       "states": [
         [1.4, "simple-login"],
-        [5, "Title of the logi…"]
+        [5, "title"]
       ]
     },
     {
@@ -96,7 +96,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "title=\"Title of the logi…\""
+      "s": "title=\"title\""
     },
     {
       "type": "text",
@@ -104,7 +104,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "subtitle=\"Subtitle of the l…\""
+      "s": "subtitle=\"subtitle\""
     },
     {
       "type": "text",
@@ -112,7 +112,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "errorMsg=\"Error message to…\""
+      "s": "errorMsg=\"errorMsg\""
     },
     {
       "type": "text",
@@ -120,7 +120,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "username=\"Content of the us…\""
+      "s": "username=\"username\""
     },
     {
       "type": "text",
@@ -205,7 +205,7 @@
       "ex": 616,
       "ey": 434,
       "label": "title",
-      "sub": "\"Title of the logi…\"",
+      "sub": "\"title\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -217,7 +217,7 @@
       "ex": 796,
       "ey": 434,
       "label": "subtitle",
-      "sub": "\"Subtitle of the l…\"",
+      "sub": "\"subtitle\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -229,7 +229,7 @@
       "ex": 616,
       "ey": 434,
       "label": "errorMsg",
-      "sub": "\"Error message to…\"",
+      "sub": "\"errorMsg\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -241,7 +241,7 @@
       "ex": 796,
       "ey": 434,
       "label": "username",
-      "sub": "\"Content of the us…\"",
+      "sub": "\"username\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -258,7 +258,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and subtitle",
-      "text": "Title of the loginscreen."
+      "text": "Title of the loginscreen. Subtitle of the loginscreen."
     },
     {
       "t": 10,

@@ -281,7 +281,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set hide editor",
-      "text": "Hide the file editing interface."
+      "text": "Hide the file editing interface. Hide the terminal for auto-running programs."
     },
     {
       "t": 10,

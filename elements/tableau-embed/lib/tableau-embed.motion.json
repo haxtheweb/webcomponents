@@ -403,14 +403,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set toolbar",
-      "text": "Toolbar position."
+      "title": "Set toolbar and device layout",
+      "text": "Toolbar position. Device layout to render."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set tableau url and height",
-      "text": "URL to the Tableau workbook or view."
+      "text": "URL to the Tableau workbook or view. Visualization height."
     },
     {
       "t": 14.8,

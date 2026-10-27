@@ -184,7 +184,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "chart-title=\"DEPRECATED: Use h…\""
+      "s": "chart-title=\"chart title\""
     },
     {
       "type": "text",
@@ -192,7 +192,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "chart-data=\"Raw data pulled i…\""
+      "s": "chart-data=\"chart data\""
     },
     {
       "type": "text",
@@ -200,7 +200,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "chart-desc=\"DEPRECATED: Use d…\""
+      "s": "chart-desc=\"chart desc\""
     },
     {
       "type": "text",
@@ -293,7 +293,7 @@
       "ex": 616,
       "ey": 540,
       "label": "chart-title",
-      "sub": "\"DEPRECATED: Use h…\"",
+      "sub": "\"chart title\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -305,7 +305,7 @@
       "ex": 796,
       "ey": 540,
       "label": "chart-data",
-      "sub": "\"Raw data pulled i…\"",
+      "sub": "\"chart data\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -317,7 +317,7 @@
       "ex": 616,
       "ey": 540,
       "label": "chart-desc",
-      "sub": "\"DEPRECATED: Use d…\"",
+      "sub": "\"chart desc\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -345,13 +345,13 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set chart-title",
+      "title": "Set chart title and chart data",
       "text": "DEPRECATED: Use heading slot instead for progressive enhancement."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set chart-desc and data",
+      "title": "Set chart desc and data",
       "text": "DEPRECATED: Use desc slot instead for progressive enhancement."
     },
     {

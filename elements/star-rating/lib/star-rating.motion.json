@@ -391,13 +391,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set score and possible",
-      "text": "Current score value."
+      "text": "Current score value. Maximum possible score."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set number of stars",
-      "text": "Number of stars to display."
+      "text": "Number of stars to display. Allow user interaction to set the rating."
     },
     {
       "t": 14.8,

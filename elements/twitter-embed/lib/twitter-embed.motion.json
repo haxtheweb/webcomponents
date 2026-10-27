@@ -313,7 +313,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set tweet url and theme",
-      "text": "URL of the tweet to embed."
+      "text": "URL of the tweet to embed. Light or dark theme for X tweets."
     },
     {
       "t": 10,

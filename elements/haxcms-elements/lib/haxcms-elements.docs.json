@@ -1,0 +1,30 @@
+{
+  "tag": "haxcms-elements",
+  "folder": "haxcms-elements",
+  "package": "@haxtheweb/haxcms-elements",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "haxcms-elements",
+  "description": "HAX CMS series of elements to provide a full on CMS",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/haxcms-elements/haxcms-elements.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/haxcms-elements/haxcms-elements.js",
+  "install": "npm i @haxtheweb/haxcms-elements",
+  "demoHtml": "",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "6352c14b1376",
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/haxcms-elements",
+    "file": "haxcms-elements.js"
+  }
+}

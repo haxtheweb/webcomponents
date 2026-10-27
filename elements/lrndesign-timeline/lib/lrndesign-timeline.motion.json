@@ -399,13 +399,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set timeline events",
-      "text": "The events in the timeline."
+      "text": "The events in the timeline. A title for the timeline."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set accent color",
-      "text": "An optional accent color."
+      "text": "An optional accent color. Enable Dark Theme."
     },
     {
       "t": 14.8,

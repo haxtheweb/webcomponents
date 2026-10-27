@@ -226,8 +226,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set label",
-      "text": "Label for the image map."
+      "title": "Set label and hotspot details",
+      "text": "Label for the image map. The interactive hotspots on the image map."
     },
     {
       "t": 14.8,

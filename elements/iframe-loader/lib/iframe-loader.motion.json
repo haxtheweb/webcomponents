@@ -313,13 +313,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set resource url and height",
-      "text": "Resource URL."
+      "text": "Type the resource url in the sidebar. Type the height in the sidebar."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set width",
-      "text": "Iframe width."
+      "text": "Type the width in the sidebar."
     },
     {
       "t": 14.8,

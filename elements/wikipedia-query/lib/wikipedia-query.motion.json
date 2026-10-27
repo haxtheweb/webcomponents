@@ -313,7 +313,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set article name",
-      "text": "Word to search wikipedia for."
+      "text": "Word to search wikipedia for. Whether or not to render the title of the article."
     },
     {
       "t": 10,

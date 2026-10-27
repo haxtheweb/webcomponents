@@ -311,7 +311,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set source and height",
-      "text": "Image source URL."
+      "text": "Image source URL. Optional image height."
     },
     {
       "t": 14.8,

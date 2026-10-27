@@ -313,14 +313,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set output format",
-      "text": "Format to put it out."
+      "title": "Set output format and qr data",
+      "text": "Format to put it out. Source of the data for the QR code."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set alternate title and size",
-      "text": "Alternate title linked to the QR code source."
+      "text": "Alternate title linked to the QR code source. Size of the QR code."
     },
     {
       "t": 14.8,

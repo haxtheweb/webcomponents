@@ -335,7 +335,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set source and title",
-      "text": "URL for this CSV file."
+      "text": "URL for this CSV file. Title for the table to be generated."
     },
     {
       "t": 10,

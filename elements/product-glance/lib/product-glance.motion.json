@@ -350,13 +350,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set icon and title",
-      "text": "Icon representing the concept."
+      "text": "Icon representing the concept. Primary concept at a glance."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set subtitle",
-      "text": "Additional detail."
+      "title": "Set subtitle and accent color",
+      "text": "Additional detail. Accent color for the icon."
     },
     {
       "t": 14.8,

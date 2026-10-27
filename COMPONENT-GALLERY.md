@@ -4,7 +4,7 @@ A simple, fast, and reliable component gallery system that replaces Storybook fo
 
 ## Features
 
-- **Documentation view** - every element gets generated docs (attributes, slots, events, HAX schema, copy buttons) through `<element-doc-player>`
+- **Documentation view** - every element gets generated docs (attributes, slots, events, HAX schema, copy buttons) through `<documentation-player>`
 - **Animated walkthroughs** - elements that ship `lib/<tag>.motion.json` also play it; filter with Walkthrough
 - 🔍 **Search functionality** - Find components quickly by name or description
 - 📱 **Responsive design** - Works great on all devices
@@ -153,7 +153,26 @@ The gallery system is designed to be simple and maintainable - keep that philoso
 
 ## Documentation and walkthroughs
 
-`yarn build-gallery` first runs `scripts/extract-element-docs.mjs`, which writes one `<element>.docs.json` per element into the gitignored `gallery-data/` folder. The Documentation view hands that file, and the element's storyboard when one exists, to `<element-doc-player>`. Elements without a storyboard still get docs, demo and schema; only the Walkthrough tab is omitted.
+`yarn build-gallery` first runs `scripts/extract-element-docs.mjs`, which writes one `<element>.docs.json` per element into the gitignored `gallery-data/` folder. The Documentation view hands that file, and the element's storyboard when one exists, to `<documentation-player>`. Elements without a storyboard still get docs, demo and schema; only the Walkthrough tab is omitted.
+
+### What ships with each element
+
+Each element's `yarn build` ends with `node ../../scripts/extract-element-docs.mjs --write .`, which writes `lib/<tag>.docs.json` next to the element's other `lib/` files, so the docs data is published with the package and can be loaded from the CDN, for example on a Learn HAX page:
+
+```html
+<documentation-player
+  docs-src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.docs.json"
+  motion-src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/lib/meme-maker.motion.json"
+></documentation-player>
+```
+
+| File | Made by | Purpose |
+| --- | --- | --- |
+| `lib/<tag>.docs.json` | the element build (generated, do not edit) | attributes, slots, events, HAX schema, snippets, surface hash |
+| `lib/<tag>.motion.json` | a person, or `draft-element-walkthrough.mjs` | the animated walkthrough |
+| `lib/<tag>.video.json` | a person | `{ "source": "<YouTube, Vimeo or file URL>", "title": "..." }` for a short video tutorial, shown in the Video tab |
+
+### Walkthrough status
 
 Check which storyboards are current, awaiting review or stale:
 
@@ -161,7 +180,7 @@ Check which storyboards are current, awaiting review or stale:
 node scripts/extract-element-docs.mjs --status
 ```
 
-A storyboard stores the surface hash of the element it was written for. When attributes, HAX settings, slots, events or demo schema change, the hash changes and the walkthrough shows as stale until someone updates and re-approves it.
+A storyboard stores the surface hash of the element it was written for. When attributes, HAX settings, slots, events or demo schema change, the hash changes and the walkthrough shows as stale until someone updates and re-approves it. The `walkthrough-status` workflow runs this check on every pull request that touches an element and flags stale walkthroughs on the PR.
 
 ### Drafting a walkthrough
 

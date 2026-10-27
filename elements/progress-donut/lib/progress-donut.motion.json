@@ -404,13 +404,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and description",
-      "text": "The title of the element."
+      "text": "The title of the element. Accessible long description."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set image source",
-      "text": "Source of image inside donut."
+      "text": "Source of image inside donut. Alt text for image."
     },
     {
       "t": 14.8,

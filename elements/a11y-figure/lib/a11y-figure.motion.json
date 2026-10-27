@@ -305,13 +305,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set image and alt text",
-      "text": "img-src and img-alt change how it looks and behaves."
+      "text": "Upload a file or paste a link for image. Type the alt text in the sidebar."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set open-text and close-text",
-      "text": "open-text and close-text change how it looks and behaves."
+      "title": "Set open text and close text",
+      "text": "Type the open text in the sidebar. Type the close text in the sidebar."
     },
     {
       "t": 14.8,
