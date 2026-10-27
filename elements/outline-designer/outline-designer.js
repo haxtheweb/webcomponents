@@ -1455,6 +1455,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   // render function
   render() {
     const entries = this._buildEntries();
+    // the one row in the tab order, worked out once for every row
+    this.__renderRovingId = this._rovingId();
     const dt = this._dropTarget;
     const mod = this._isMac() ? "⌘" : "Ctrl";
     return html` <div class="controls ${this.storeTools ? "store-tools" : ""}">
@@ -1719,11 +1721,52 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
    * deleted pages are hidden, deleted ones
    */
   _visibleItems() {
+    // one pass with a lookup, so a large outline does not walk every page's
+    // ancestors with a search of the whole list (that was quadratic and ran
+    // on every render)
+    const folded = this._foldedIds();
     return (this.items || []).filter(
       (item) =>
-        this.getItemParentsCollapsed(item) === "" &&
-        !(this.hideDelete && item.delete),
+        !folded.has(String(item.id)) && !(this.hideDelete && item.delete),
     );
+  }
+
+  // ids (as strings) of the pages inside a folded page, in one pass
+  _foldedIds() {
+    const items = this.items || [];
+    const byId = this._itemsById(items);
+    const memo = new Map();
+    const underFolded = (item) => {
+      const key = String(item.id);
+      if (memo.has(key)) return memo.get(key);
+      // a parent chain that loops is treated as not folded
+      memo.set(key, false);
+      const parent =
+        item.parent !== null && item.parent !== undefined
+          ? byId.get(String(item.parent))
+          : null;
+      const result = parent
+        ? !!(parent.collapsed && parent.id) || underFolded(parent)
+        : false;
+      memo.set(key, result);
+      return result;
+    };
+    const folded = new Set();
+    items.forEach((item) => {
+      if (underFolded(item)) folded.add(String(item.id));
+    });
+    return folded;
+  }
+
+  // items by id (as a string, the way the outline compares ids with ==)
+  _itemsById(items) {
+    const byId = new Map();
+    (items || []).forEach((item) => {
+      if (item && item.id !== undefined && !byId.has(String(item.id))) {
+        byId.set(String(item.id), item);
+      }
+    });
+    return byId;
   }
 
   /**
@@ -1804,6 +1847,40 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       : "";
   }
 
+  // whether a row takes part in the running view transition: only the
+  // rows on screen when it started do, so a long outline does not capture
+  // and animate hundreds of rows nobody can see
+  _vtOn(key) {
+    return !this._vtKeys || this._vtKeys.has(String(key));
+  }
+
+  // the rows on screen (with a margin): page rows by id, add rows as
+  // "a:<parent>-<depth>"
+  _onScreenKeys(margin = 200) {
+    const scroller = this._scrollParent();
+    const isPage =
+      scroller === globalThis.document.scrollingElement ||
+      scroller === globalThis.document.documentElement;
+    const box = isPage
+      ? { top: 0, bottom: globalThis.innerHeight }
+      : scroller.getBoundingClientRect();
+    const keys = new Set();
+    this.shadowRoot
+      .querySelectorAll("li.item[data-item-id], li.add-row")
+      .forEach((li) => {
+        const r = li.getBoundingClientRect();
+        if (r.bottom < box.top - margin || r.top > box.bottom + margin) {
+          return;
+        }
+        keys.add(
+          li.classList.contains("add-row")
+            ? `a:${li.getAttribute("data-add-parent") || ""}-${li.getAttribute("data-add-depth")}`
+            : li.getAttribute("data-item-id"),
+        );
+      });
+    return keys;
+  }
+
   // a view-transition-name for a row part, valid as a CSS ident
   _vtName(kind, id) {
     return `od-${kind}-${String(id).replace(/[^a-zA-Z0-9_-]/g, "_")}`;
@@ -1867,7 +1944,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         title="${label}"
         data-add-parent="${entry.parentId || ""}"
         data-add-depth="${entry.depth}"
-        style="${this._vtActive
+        style="${this._vtActive &&
+        this._vtOn(`a:${entry.parentId || ""}-${entry.depth}`)
           ? `view-transition-name:${this._vtName(
               "a",
               `${entry.parentId || "root"}-${entry.depth}`,
@@ -1975,8 +2053,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const maxIndex = Math.max(startIndex, endIndex);
 
     this.selectedPages = [];
+    const folded = this._foldedIds();
     for (let i = minIndex; i <= maxIndex; i++) {
-      if (this.getItemParentsCollapsed(this.items[i]) === "") {
+      if (!folded.has(String(this.items[i].id))) {
         this.selectedPages.push(this.items[i].id);
       }
     }
@@ -2129,7 +2208,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     return html`
       <li
         role="treeitem"
-        tabindex="${this._rovingId() === item.id ? "0" : "-1"}"
+        tabindex="${this.__renderRovingId === item.id ? "0" : "-1"}"
         aria-label="${item.title}${states.length
           ? `, ${states.join(", ")}`
           : ""}"
@@ -2145,10 +2224,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         class="item indent-${item.indent < 20 ? item.indent : 20} ${!this
           .hideContentOps && item.showContent
           ? "content-open"
-          : ""} ${item.modified
-          ? "modified"
-          : ""} ${this.getItemParentsCollapsed(item)} ${this.activePage ===
-        item.id
+          : ""} ${item.modified ? "modified" : ""} ${this.activePage === item.id
           ? "active-page"
           : ""} ${selected ? "selected-page" : ""} ${locked
           ? "locked"
@@ -2161,7 +2237,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           : ""}"
         style="${[
           pressing ? `--outline-designer-press-ms:${this._press.holdMs}ms` : "",
-          this._vtActive
+          this._vtActive && this._vtOn(item.id)
             ? `view-transition-name:${this._vtName("r", item.id)};view-transition-class:od-row`
             : "",
         ]
@@ -2204,7 +2280,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         ></span>
         <span
           class="title"
-          style="${this._vtActive && !this._vtPlain.has(item.id)
+          style="${this._vtActive &&
+          this._vtOn(item.id) &&
+          !this._vtPlain.has(item.id)
             ? `view-transition-name:${this._vtName("t", item.id)};view-transition-class:od-title`
             : ""}"
         >
@@ -2850,13 +2928,18 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   // generate a class that includes all collapsed parents
   // based on the statefulness of that data
   getItemParentsCollapsed(activeItem) {
-    let parent = this.items.find((item) => item.id == activeItem.parent);
+    const byId = this._itemsById(this.items);
+    const lookup = (id) =>
+      id !== null && id !== undefined ? byId.get(String(id)) : undefined;
+    let parent = lookup(activeItem.parent);
     let list = "";
-    while (parent) {
+    const seen = new Set();
+    while (parent && !seen.has(parent)) {
+      seen.add(parent);
       if (parent.collapsed && parent.id) {
         list += `collapsed-by-${parent.id}` + " ";
       }
-      parent = this.items.find((item) => item.id == parent.parent);
+      parent = lookup(parent.parent);
     }
     return list;
   }
@@ -3323,6 +3406,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       // latest one cleans up after itself
       const runId = (this._motionRun = (this._motionRun || 0) + 1);
       this._vtPlain = new Set(flips);
+      this._vtKeys = this._onScreenKeys();
       this._vtActive = true;
       this.requestUpdate();
       await this.updateComplete;
@@ -3344,6 +3428,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         wrap.classList.remove("vt");
         this._clearFlipRules();
         this._vtPlain = new Set();
+        this._vtKeys = null;
         this._vtActive = false;
         this.requestUpdate();
         if (skipped) {
@@ -3528,10 +3613,21 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const easing = this._motionEasing();
     const flipped = new Set(changes ? changes.flipped : []);
     let added = 0;
+    // rows off screen before and after are left alone
+    const scroller = this._scrollParent();
+    const isPage =
+      scroller === globalThis.document.scrollingElement ||
+      scroller === globalThis.document.documentElement;
+    const box = isPage
+      ? { top: 0, bottom: globalThis.innerHeight }
+      : scroller.getBoundingClientRect();
+    const offScreen = (top) => top < box.top - 200 || top > box.bottom + 200;
     this.shadowRoot.querySelectorAll("li.item[data-item-id]").forEach((li) => {
       if (typeof li.animate !== "function") return;
       const id = li.getAttribute("data-item-id");
       const was = before.get(id);
+      const nowTop = li.getBoundingClientRect().top;
+      if (offScreen(nowTop) && (!was || offScreen(was.top))) return;
       if (!was) {
         if (flipMs && !quiet) {
           li.animate(
@@ -3572,7 +3668,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         );
       }
       const title = li.querySelector(".title");
-      const dy = was.top - li.getBoundingClientRect().top;
+      const dy = was.top - nowTop;
       const dx = was.left - (title || li).getBoundingClientRect().left;
       if (dy) {
         li.animate(
