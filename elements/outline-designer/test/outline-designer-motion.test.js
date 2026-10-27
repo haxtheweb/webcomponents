@@ -158,6 +158,79 @@ describe("outline-designer showing what changed", () => {
     expect(element.items.some((i) => i.new)).to.equal(false);
   });
 
+  it("flips an added page in and tells what flipped", async () => {
+    element.motionProfile = "touch";
+    const before = new Map(element._visibleItems().map((i) => [i.id, false]));
+    // adding changes the rows, so it animates them directly (Chromium
+    // aborts a scoped view transition when rows come or go)
+    await element._addTop();
+    const fresh = element.items.find((i) => i.new);
+    const flipping = pageLi(element, fresh.id)
+      .getAnimations()
+      .some((a) => a.effect.getKeyframes()[0].transform.includes("rotateX"));
+    expect(flipping).to.equal(true);
+    await settle(element);
+    const added = element.items.find((i) => i.new);
+    expect(element._whatFlipped(before).appeared).to.deep.equal([added.id]);
+    expect(element.items.indexOf(added)).to.equal(0);
+    expect(element._undo.message).to.equal("Added a page");
+    // rules are gone once it has played
+    if (element._flipSheet) {
+      expect(element._flipSheet.cssRules.length).to.equal(0);
+    }
+    expect(element._vtPlain.size).to.equal(0);
+  });
+
+  it("turns a deleted page and its sub-pages over in place", async () => {
+    element.motionProfile = "keyboard";
+    const before = new Map(element._visibleItems().map((i) => [i.id, false]));
+    await element._toggleDelete(element.items.findIndex((i) => i.id === "p1"));
+    await settle(element);
+    expect(element._whatFlipped(before).flipped).to.deep.equal([
+      "p1",
+      "c1",
+      "c2",
+    ]);
+    expect(element._undo.message).to.equal("Page One will be deleted on save");
+    // undo turns them back
+    element.undo();
+    await settle(element, 900);
+    expect(element.items.some((i) => i.delete)).to.equal(false);
+  });
+
+  it("flips hidden deletes away, moves focus on and can undo", async () => {
+    element.motionProfile = "keyboard";
+    element.hideDelete = true;
+    await settle(element);
+    await element._toggleDelete(element.items.findIndex((i) => i.id === "p1"));
+    await settle(element);
+    const gone = pageLi(element, "p1");
+    expect(gone === null || gone.hidden).to.equal(true);
+    // the row that took its place has focus
+    expect(element.shadowRoot.activeElement === pageLi(element, "p2")).to.equal(
+      true,
+    );
+    expect(element._undo.message).to.equal("Page One will be deleted on save");
+    element.undo();
+    await settle(element, 900);
+    expect(pageLi(element, "p1").hidden).to.equal(false);
+    expect(element.items.some((i) => i.delete)).to.equal(false);
+  });
+
+  it("deletes the selection from the toolbar with one undo", async () => {
+    element.motionProfile = "mouse";
+    element.selectedPages = ["p2", "p3"];
+    await element._deleteSelectedShown();
+    await settle(element);
+    expect(
+      element.items.filter((i) => i.delete).map((i) => i.id),
+    ).to.deep.equal(["p2", "p3"]);
+    expect(element._undo.message).to.equal("2 pages will be deleted on save");
+    element.undo();
+    await settle(element, 700);
+    expect(element.items.some((i) => i.delete)).to.equal(false);
+  });
+
   it("does not move anything with reduced motion", async () => {
     element.reducedMotion = "reduce";
     let named = false;

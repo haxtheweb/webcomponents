@@ -45,6 +45,7 @@ const MOTION = {
   mouse: {
     slide: 1,
     grow: 1,
+    flip: 1.6,
     landed: 700,
     quiet: true,
     flash: 0,
@@ -55,6 +56,7 @@ const MOTION = {
   keyboard: {
     slide: 1.2,
     grow: 1.2,
+    flip: 2,
     landed: 1100,
     quiet: false,
     flash: 700,
@@ -65,6 +67,7 @@ const MOTION = {
   touch: {
     slide: 1.7,
     grow: 1.7,
+    flip: 2.6,
     landed: 1500,
     quiet: false,
     flash: 1000,
@@ -791,6 +794,28 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             transform: scaleY(0.5);
           }
         }
+        /* pages flipping into and out of existence (added, deleted,
+           restored); timing per page is set while a change runs */
+        @keyframes outline-designer-flip-in {
+          from {
+            opacity: 0;
+            transform: perspective(700px) rotateX(-90deg);
+          }
+          to {
+            opacity: 1;
+            transform: none;
+          }
+        }
+        @keyframes outline-designer-flip-out {
+          from {
+            opacity: 1;
+            transform: none;
+          }
+          to {
+            opacity: 0;
+            transform: perspective(700px) rotateX(90deg);
+          }
+        }
         /* touch: move buttons that stay on the row after a menu move */
         li.item.nudging .trail,
         li.item.nudging .content-toggle-btn,
@@ -1121,6 +1146,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this.reducedMotion = "auto";
     this._lastModality = null;
     this._vtActive = false;
+    // rows whose title flips with the row instead of sliding on its own
+    this._vtPlain = new Set();
     this._flashGroup = null;
     this._nudgeId = null;
     this._undo = null;
@@ -1307,6 +1334,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       lockedPage: "Locked {title}",
       unlockedPage: "Unlocked {title}",
       markedPage: "{title} will be deleted on save",
+      markedPages: "{count} pages will be deleted on save",
     };
     this.registerLocalization({
       context: this,
@@ -1430,7 +1458,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         <simple-toolbar-button
           class="control"
           icon="add"
-          @click="${this.addItemToTop}"
+          @click="${this._addTop}"
           label="${this.t.addPage}"
           show-text-label
         ></simple-toolbar-button>
@@ -1451,7 +1479,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         ${this.selectedPages.length > 0
           ? html`<simple-toolbar-button
               icon="delete"
-              @click="${this.deleteSelected}"
+              @click="${this._deleteSelectedShown}"
               class="control"
               show-text-label
               label="${this.t.deleteSelected.replace(
@@ -2115,7 +2143,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         ></span>
         <span
           class="title"
-          style="${this._vtActive
+          style="${this._vtActive && !this._vtPlain.has(item.id)
             ? `view-transition-name:${this._vtName("t", item.id)};view-transition-class:od-title`
             : ""}"
         >
@@ -3111,11 +3139,29 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
 
   /**
    * Run a change and show it. run() makes the change and returns
-   * { focusId, landed, message, edit, quiet } or false when nothing
-   * changed. Options: slide (animate positions), undo (offer undo),
-   * nudge (show touch move buttons afterwards).
+   * { focusId, landed, message, edit, quiet, focusOnly } or false when
+   * nothing changed. Options: slide (animate positions), undo (offer
+   * undo), nudge (show touch move buttons afterwards), flips (ids of
+   * pages that may flip into or out of existence, or between kept and
+   * deleted; what actually changed is worked out afterwards), rows
+   * (the change adds or removes rows).
+   *
+   * Changes that keep the same rows run as a view transition scoped to
+   * the tree. Chromium aborts a scoped transition when a named row is
+   * added or removed during it ("Prepaint layout check failed"), so
+   * changes that add or remove rows animate the rows directly instead,
+   * as does any transition the browser skips.
    */
-  async _withMotion(run, { slide = true, undo = false, nudge = false } = {}) {
+  async _withMotion(
+    run,
+    {
+      slide = true,
+      undo = false,
+      nudge = false,
+      flips = [],
+      rows = false,
+    } = {},
+  ) {
     const modality = this._modality();
     const profile = MOTION[modality];
     const reduce = this._reduceMotion();
@@ -3123,49 +3169,98 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const slideOn = slide && !reduce;
     const ms = Math.round(this._motionMs() * profile.slide);
     const growMs = Math.round(this._motionMs() * profile.grow);
+    const flipMs = Math.round(this._motionMs() * profile.flip);
+    const shownBefore = new Map(
+      this._visibleItems().map((i) => [i.id, !!i.delete]),
+    );
+    const wrap = this.shadowRoot.querySelector(".tree-wrap");
+    const useVT =
+      slideOn &&
+      wrap &&
+      typeof wrap.startViewTransition === "function" &&
+      !rows &&
+      shownBefore.size <= 400;
     let info = null;
+    let changes = { appeared: [], left: [], flipped: [] };
+    let going = [];
     const apply = async () => {
       info = (await run()) || { changed: false };
+      // rows that turned away are let go before the change is drawn
+      going.forEach((a) => a.cancel());
+      going = [];
       await this._settled();
+      if (slideOn && !info.quiet && info.changed !== false) {
+        changes = this._whatFlipped(shownBefore);
+        if (useVT && changes.appeared.length) {
+          // a new page flips in whole, its title with it
+          changes.appeared.forEach((id) => this._vtPlain.add(id));
+          this.requestUpdate();
+          await this.updateComplete;
+        }
+        if (useVT) this._setFlipRules(changes, ms, flipMs);
+      }
       if (info.focusId) {
         this._revealRow(info.focusId, profile.scroll);
       }
     };
-    const wrap = this.shadowRoot.querySelector(".tree-wrap");
-    if (
-      slideOn &&
-      wrap &&
-      typeof wrap.startViewTransition === "function" &&
-      this._visibleItems().length <= 400
-    ) {
+    if (useVT) {
       // scoped to the tree: only it is captured and the rest of the
       // page stays usable while the rows move
       this.style.setProperty("--outline-designer-vt-ms", `${ms}ms`);
       this.style.setProperty("--outline-designer-grow-ms", `${growMs}ms`);
+      // a change started while another still plays takes over; only the
+      // latest one cleans up after itself
+      const runId = (this._motionRun = (this._motionRun || 0) + 1);
+      this._vtPlain = new Set(flips);
       this._vtActive = true;
       this.requestUpdate();
       await this.updateComplete;
       wrap.classList.add("vt");
+      const before = this._rowRects();
+      let skipped = false;
       try {
         const transition = wrap.startViewTransition(apply);
         // a skipped transition still runs apply; only the animation is lost
-        transition.ready.catch(() => {});
+        transition.ready.catch(() => {
+          skipped = true;
+        });
         await transition.finished;
       } catch {
+        skipped = true;
         if (!info) await apply();
       }
-      wrap.classList.remove("vt");
-      this._vtActive = false;
-      this.requestUpdate();
+      if (this._motionRun === runId) {
+        wrap.classList.remove("vt");
+        this._clearFlipRules();
+        this._vtPlain = new Set();
+        this._vtActive = false;
+        this.requestUpdate();
+        if (skipped) {
+          // still show it: slide the rows from where they were
+          await this.updateComplete;
+          this._flip(before, ms, growMs, {
+            flipMs,
+            changes,
+            quiet: info.quiet,
+          });
+        }
+      }
     } else if (slideOn) {
+      // flip the pages that may go first, then slide everything to its
+      // new place
+      going = await this._flipAway(flips, flipMs);
       const before = this._rowRects();
       await apply();
-      this._flip(before, ms, growMs);
+      this._flip(before, ms, growMs, { flipMs, changes, quiet: info.quiet });
     } else {
       await apply();
     }
+    if (snapshot && info && info.changed !== false && info.message) {
+      this._offerUndo(snapshot, info.message, info.focusId);
+    }
     if (!info || info.changed === false || !info.focusId) {
-      if (info && info.focusId) this.focusItem(info.focusId);
+      const target = info && (info.focusId || info.focusOnly);
+      if (target) this.focusItem(target);
       return info;
     }
     if (!info.quiet) {
@@ -3181,9 +3276,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
       }
     }
-    if (snapshot && info.message) {
-      this._offerUndo(snapshot, info.message, info.focusId);
-    }
     if (nudge && profile.nudge) {
       this._showNudge(info.focusId);
     }
@@ -3196,6 +3288,110 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       this.focusItem(info.focusId);
     }
     return info;
+  }
+
+  /**
+   * Which rows came into view, left it, or switched between kept and
+   * deleted, against the visible rows from before a change
+   */
+  _whatFlipped(shownBefore) {
+    const now = this._visibleItems();
+    const nowIds = new Set(now.map((i) => i.id));
+    return {
+      appeared: now.filter((i) => !shownBefore.has(i.id)).map((i) => i.id),
+      left: [...shownBefore.keys()].filter((id) => !nowIds.has(id)),
+      flipped: now
+        .filter(
+          (i) => shownBefore.has(i.id) && shownBefore.get(i.id) !== !!i.delete,
+        )
+        .map((i) => i.id),
+    };
+  }
+
+  /**
+   * Per-page view transition timing for the pages that flip. Added pages
+   * flip down into the gap that opens for them; pages that go flip up
+   * and away before the gap closes; a page marked deleted or restored
+   * turns over in place to show its other side. Sub-pages follow a beat
+   * behind their parent.
+   */
+  _setFlipRules({ appeared, left, flipped }, ms, flipMs) {
+    if (!appeared.length && !left.length && !flipped.length) {
+      this._clearFlipRules();
+      return;
+    }
+    if (!this._flipSheet) {
+      this._flipSheet = new CSSStyleSheet();
+      this.shadowRoot.adoptedStyleSheets = [
+        ...this.shadowRoot.adoptedStyleSheets,
+        this._flipSheet,
+      ];
+    }
+    const ease = "var(--hax-ui-easing-move)";
+    const beat = (i) => Math.min(i, 8) * 30;
+    const half = Math.round(flipMs / 2);
+    const both = (side, id) => {
+      const n = this._vtName("r", id);
+      return `::view-transition-${side}(${n}),::view-transition-${side}(${n}):only-child`;
+    };
+    const rules = [];
+    appeared.forEach((id, i) => {
+      rules.push(
+        `${both("new", id)}{animation:outline-designer-flip-in ${flipMs}ms ${ease} ${Math.round(ms * 0.4) + beat(i)}ms both;transform-origin:top center}`,
+      );
+    });
+    let wait = 0;
+    left.forEach((id, i) => {
+      rules.push(
+        `${both("old", id)}{animation:outline-designer-flip-out ${flipMs}ms ease-in ${beat(i)}ms both;transform-origin:top center}`,
+      );
+      wait = Math.max(wait, beat(i) + Math.round(flipMs * 0.7));
+    });
+    flipped.forEach((id, i) => {
+      rules.push(
+        `${both("old", id)}{animation:outline-designer-flip-out ${half}ms ease-in ${beat(i)}ms both;transform-origin:center;mix-blend-mode:normal}`,
+        `${both("new", id)}{animation:outline-designer-flip-in ${half}ms ease-out ${half + beat(i)}ms both;transform-origin:center;mix-blend-mode:normal}`,
+      );
+    });
+    if (wait) {
+      // the rest close the gap once the leaving pages have turned away
+      rules.push(
+        `::view-transition-group(*){animation-delay:${wait}ms;animation-fill-mode:both}`,
+      );
+    }
+    this._flipSheet.replaceSync(rules.join("\n"));
+  }
+
+  _clearFlipRules() {
+    if (this._flipSheet) this._flipSheet.replaceSync("");
+  }
+
+  // FLIP fallback: turn away the rows that may go, before the change
+  async _flipAway(ids, flipMs) {
+    const going = [];
+    ids.forEach((id, i) => {
+      const li = this.shadowRoot.querySelector(`li.item[data-item-id="${id}"]`);
+      if (!li || li.hidden || typeof li.animate !== "function") return;
+      going.push(
+        li.animate(
+          [
+            { opacity: 1, transform: "none" },
+            {
+              opacity: 0,
+              transform: "perspective(700px) rotateX(90deg)",
+            },
+          ],
+          {
+            duration: Math.round(flipMs / 2),
+            delay: Math.min(i, 8) * 30,
+            easing: "ease-in",
+            fill: "forwards",
+          },
+        ),
+      );
+    });
+    await Promise.all(going.map((a) => a.finished.catch(() => {})));
+    return going;
   }
 
   // where each visible row is now, for the FLIP fallback
@@ -3212,20 +3408,57 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
 
   // slide rows from where they were (no view transitions in this browser)
-  _flip(before, ms, growMs) {
+  _flip(
+    before,
+    ms,
+    growMs,
+    { flipMs = 0, changes = null, quiet = false } = {},
+  ) {
     const easing = this._motionEasing();
+    const flipped = new Set(changes ? changes.flipped : []);
+    let added = 0;
     this.shadowRoot.querySelectorAll("li.item[data-item-id]").forEach((li) => {
       if (typeof li.animate !== "function") return;
-      const was = before.get(li.getAttribute("data-item-id"));
+      const id = li.getAttribute("data-item-id");
+      const was = before.get(id);
       if (!was) {
+        if (flipMs && !quiet) {
+          li.animate(
+            [
+              {
+                opacity: 0,
+                transform: "perspective(700px) rotateX(-90deg)",
+                transformOrigin: "top center",
+              },
+              { opacity: 1, transform: "none", transformOrigin: "top center" },
+            ],
+            {
+              duration: flipMs,
+              delay: Math.round(ms * 0.4) + Math.min(added++, 8) * 30,
+              easing,
+              fill: "backwards",
+            },
+          );
+        } else {
+          li.animate(
+            [
+              { opacity: 0, transform: "translateY(-35%) scaleY(0.5)" },
+              { opacity: 1, transform: "none" },
+            ],
+            { duration: growMs, easing },
+          );
+        }
+        return;
+      }
+      if (flipped.has(id)) {
+        // the second half of the turn: its other side comes round
         li.animate(
           [
-            { opacity: 0, transform: "translateY(-35%) scaleY(0.5)" },
+            { opacity: 0, transform: "perspective(700px) rotateX(-90deg)" },
             { opacity: 1, transform: "none" },
           ],
-          { duration: growMs, easing },
+          { duration: Math.round(flipMs / 2), easing: "ease-out" },
         );
-        return;
       }
       const title = li.querySelector(".title");
       const dy = was.top - li.getBoundingClientRect().top;
@@ -3233,7 +3466,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       if (dy) {
         li.animate(
           [{ transform: `translateY(${dy}px)` }, { transform: "none" }],
-          { duration: ms, easing },
+          { duration: ms, easing, composite: "add" },
         );
       }
       if (dx && title) {
@@ -3354,15 +3587,33 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     clearTimeout(this._undoTimer);
     this._undo = null;
     this._hideNudge();
-    this._withMotion(() => {
-      this.items = last.items;
-      this.setAttribute("stop-animation", "true");
-      this.__syncUIAndDataModel();
-      const still = last.items.some((i) => i.id === last.focusId);
-      return still
-        ? { focusId: last.focusId }
-        : { changed: true, focusId: null };
-    });
+    // pages added since go away, pages deleted since come back, and
+    // pages whose deletion is undone turn over
+    const then = new Map(last.items.map((i) => [i.id, !!i.delete]));
+    const flips = this.items
+      .filter((i) => !then.has(i.id) || then.get(i.id) !== !!i.delete)
+      .map((i) => i.id);
+    // rows come or go when pages were added or removed, deleted pages
+    // are hidden, or a fold changed
+    const was = new Map(last.items.map((i) => [i.id, i]));
+    const rows =
+      last.items.length !== this.items.length ||
+      (this.hideDelete && flips.length > 0) ||
+      this.items.some(
+        (i) => was.has(i.id) && !!was.get(i.id).collapsed !== !!i.collapsed,
+      );
+    this._withMotion(
+      () => {
+        this.items = last.items;
+        this.setAttribute("stop-animation", "true");
+        this.__syncUIAndDataModel();
+        const still = last.items.some((i) => i.id === last.focusId);
+        return still
+          ? { focusId: last.focusId }
+          : { changed: true, focusId: null };
+      },
+      { flips, rows },
+    );
     this.announceAction(this.t.undone.replace("{action}", () => last.message));
   }
 
@@ -3544,7 +3795,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         this.announceAction(this.t.addedPage);
         return { focusId: added[0].id, edit: true, message: this.t.addedPage };
       },
-      { undo: true },
+      { undo: true, rows: true },
     );
   }
 
@@ -3588,7 +3839,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         this.announceAction(message);
         return { focusId: newItem.id, edit: true, message };
       },
-      { undo: true },
+      { undo: true, rows: true },
     );
   }
 
@@ -3611,7 +3862,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           message: this.t.itemDuplicated,
         };
       },
-      { undo: true },
+      { undo: true, rows: true },
     );
   }
 
@@ -3626,17 +3877,98 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const message = restoring
       ? this.t.restored.replace("{title}", () => item.title)
       : this.t.markedPage.replace("{title}", () => item.title);
+    const flips = this._subtreeIds(index);
+    const gone = this.hideDelete && !restoring;
+    const neighbour = gone ? this._neighbourOutside(flips) : null;
     return this._withMotion(
       () => {
         this.itemOp(index, "delete");
         this.announceAction(message);
-        // a page that disappears has nowhere to highlight
-        const shown = !this.hideDelete || restoring;
-        return shown
-          ? { focusId: item.id, message }
-          : { focusId: null, changed: true };
+        // a page that disappears has nowhere to highlight; focus moves
+        // to the row that takes its place
+        return gone
+          ? { focusId: null, changed: true, message, focusOnly: neighbour }
+          : { focusId: item.id, message };
       },
-      { undo: true, slide: this.hideDelete },
+      { undo: true, flips, rows: this.hideDelete },
+    );
+  }
+
+  // a page and every page under it, in outline order
+  _subtreeIds(index) {
+    const item = this.items[index];
+    if (!item) return [];
+    const ids = [item.id];
+    const depth = parseInt(item.indent) || 0;
+    for (let i = index + 1; i < this.items.length; i++) {
+      if ((parseInt(this.items[i].indent) || 0) <= depth) break;
+      ids.push(this.items[i].id);
+    }
+    return ids;
+  }
+
+  // the visible row after (or else before) a set of rows that will go
+  _neighbourOutside(ids) {
+    const going = new Set(ids);
+    const visible = this._visibleItems();
+    const first = visible.findIndex((i) => going.has(i.id));
+    if (first === -1) return null;
+    const after = visible.slice(first).find((i) => !going.has(i.id));
+    if (after) return after.id;
+    const before = visible
+      .slice(0, first)
+      .reverse()
+      .find((i) => !going.has(i.id));
+    return before ? before.id : null;
+  }
+
+  // the toolbar delete: the selected pages turn over (or flip away)
+  _deleteSelectedShown() {
+    const flips = [];
+    let count = 0;
+    this.selectedPages.forEach((id) => {
+      const index = this.items.findIndex((i) => i.id === id);
+      if (index !== -1 && !this.isLocked(index)) {
+        count++;
+        this._subtreeIds(index).forEach((sub) => {
+          if (!flips.includes(sub)) flips.push(sub);
+        });
+      }
+    });
+    if (!count) return;
+    const message =
+      count === 1
+        ? this.t.markedPage.replace(
+            "{title}",
+            () => this.items.find((i) => i.id === flips[0]).title,
+          )
+        : this.t.markedPages.replace("{count}", () => count);
+    const keep = this.hideDelete ? null : flips[0];
+    const neighbour = this.hideDelete ? this._neighbourOutside(flips) : null;
+    return this._withMotion(
+      () => {
+        this.deleteSelected();
+        this.announceAction(message);
+        return keep
+          ? { focusId: keep, message, landed: flips }
+          : { focusId: null, changed: true, message, focusOnly: neighbour };
+      },
+      { undo: true, flips, rows: this.hideDelete },
+    );
+  }
+
+  // the toolbar add: a new page flips in at the top and is named
+  _addTop() {
+    return this._withMotion(
+      () => {
+        const before = new Set(this.items.map((i) => i.id));
+        this.addItemToTop();
+        const added = this.items.find((i) => !before.has(i.id));
+        if (!added) return false;
+        this.announceAction(this.t.addedPage);
+        return { focusId: added.id, edit: true, message: this.t.addedPage };
+      },
+      { undo: true, rows: true },
     );
   }
 
@@ -3664,10 +3996,13 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       this.collapseExpand({ target: listItem });
       return;
     }
-    this._withMotion(() => {
-      this.collapseExpand({ target: listItem });
-      return { focusId: id, quiet: true };
-    });
+    this._withMotion(
+      () => {
+        this.collapseExpand({ target: listItem });
+        return { focusId: id, quiet: true };
+      },
+      { rows: true },
+    );
   }
 
   _onChevronClick(e) {
@@ -3689,7 +4024,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     } else if (parentId) {
       this.addChildItem(this.items.findIndex((i) => i.id === parentId));
     } else {
-      this.addItemToTop();
+      this._addTop();
     }
   }
 
