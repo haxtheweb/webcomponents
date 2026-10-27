@@ -342,7 +342,8 @@
       "import": "@haxtheweb/app-hax/app-hax.js",
       "type": "element",
       "haxCapable": false,
-      "tags": []
+      "tags": [],
+      "walkthrough": true
     },
     {
       "tag": "app-hax-backend-api",
@@ -1309,8 +1310,8 @@
     },
     {
       "tag": "documentation-player",
-      "title": "Documentation player",
-      "description": "Living documentation for a web component: animated walkthrough, video tutorial, demo, docs and schema",
+      "title": "Documentation Player",
+      "description": "playlist like element but for documenting web components in the context of hax",
       "package": "@haxtheweb/documentation-player",
       "import": "@haxtheweb/documentation-player/documentation-player.js",
       "type": "element",
