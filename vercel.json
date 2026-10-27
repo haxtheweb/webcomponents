@@ -7,6 +7,10 @@
       "destination": "/elements/:path*"
     },
     {
+      "source": "/@haxtheweb/:path*",
+      "destination": "/elements/:path*"
+    },
+    {
       "source": "/elements/:element/demo/node_modules/@haxtheweb/:path*",
       "destination": "/elements/:path*"
     },
@@ -17,6 +21,10 @@
     {
       "source": "/node_modules/:path*",
       "destination": "https://cdn.hax.cloud/cdn/build/es6/node_modules/:path*"
+    },
+    {
+      "source": "/:pkg/:path*",
+      "destination": "https://cdn.hax.cloud/cdn/build/es6/node_modules/:pkg/:path*"
     }
   ],
   "headers": [

@@ -27,7 +27,12 @@
  *     @haxtheweb ones to /elements/, everything else to the CDN.
  *
  * Non-module requests under /node_modules/ (json, css, svg fetched at run
- * time) are handled by the matching rewrites in vercel.json.
+ * time) are handled by the matching rewrites in vercel.json. So are the
+ * paths elements build by climbing out of their own folder to where
+ * node_modules would be (lunr-search, hax-store, code-editor...): on this
+ * deploy that is the site root, so /@haxtheweb/... goes to /elements/ and
+ * any other missing top-level path (/lunr/lunr.js) goes to the CDN. Vercel
+ * only applies a rewrite when no file matches, so real files are untouched.
  *
  * Source files in git are NOT affected — this only modifies the ephemeral
  * build-environment copies.
@@ -111,6 +116,9 @@ var imports = {
   // every @haxtheweb package is served from this deploy
   "@haxtheweb/": ELEMENTS,
   "/node_modules/@haxtheweb/": ELEMENTS,
+  // elements that find node_modules by climbing out of their own folder
+  // (new URL("./x.js", import.meta.url) + "/../../../") land at the root
+  "/@haxtheweb/": ELEMENTS,
 };
 var thirdParty = {
   lit: true,
