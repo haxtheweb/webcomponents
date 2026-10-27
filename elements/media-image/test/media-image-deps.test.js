@@ -721,6 +721,14 @@ describe("media-image shared toolchain", () => {
       );
       await aTimeout(100);
       expect(el.src).to.include("android.svg");
+      // WebKit renders icons through the CSS mask polyfill (a div, no
+      // <image>); asserting the SVG branch there fails on a DOM node and
+      // stalls the whole file
+      if (el.useSafariPolyfill) {
+        expect(el.shadowRoot.querySelector("#svg-polyfill")).to.exist;
+        expect(el.safariMask).to.include("android.svg");
+        return;
+      }
       // Chromium advertises Safari in its user agent but is excluded from
       // the polyfill, so the SVG filter branch renders in the test browser
       const polyfill = el.shadowRoot.querySelector("#svg-polyfill");

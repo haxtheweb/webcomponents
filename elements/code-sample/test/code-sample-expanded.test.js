@@ -503,7 +503,7 @@ const b = 2;</template></code-sample>`,
     expect(errors[0].includes("LineNumbers error")).to.be.true;
   });
 
-  it("captures selections inside line-number tables on copy", async () => {
+  it("captures selections inside line-number tables on copy", async function () {
     const el = await fixture(
       `<code-sample type="javascript"><template preserve-content="preserve-content">const a = 1;
 const b = 2;</template></code-sample>`,
@@ -511,11 +511,31 @@ const b = 2;</template></code-sample>`,
     await sleep(80);
     const codeTd = el.shadowRoot.querySelector("td.hljs-ln-code");
     expect(codeTd).to.exist;
-    const range = globalThis.document.createRange();
-    range.selectNodeContents(codeTd);
     const selection = globalThis.getSelection();
     selection.removeAllRanges();
-    selection.addRange(range);
+    // setBaseAndExtent keeps the selection inside the shadow root; WebKit
+    // moves an addRange() range out to the shadow host
+    selection.setBaseAndExtent(codeTd, 0, codeTd, codeTd.childNodes.length);
+    let placed = selection.toString().length > 0;
+    if (!placed && typeof selection.getComposedRanges === "function") {
+      try {
+        const composed = selection.getComposedRanges({
+          shadowRoots: [el.shadowRoot],
+        });
+        placed =
+          composed.length > 0 &&
+          !composed[0].collapsed &&
+          el.shadowRoot.contains(composed[0].startContainer);
+      } catch {
+        placed = false;
+      }
+    }
+    // an engine that cannot place a selection inside a shadow root from
+    // script cannot exercise the copy handler here
+    if (!placed) {
+      selection.removeAllRanges();
+      this.skip();
+    }
     // Firefox and WebKit copy (or drop) the clipboardData passed to the
     // ClipboardEvent constructor, so attach our DataTransfer directly
     const dataTransfer = new DataTransfer();
