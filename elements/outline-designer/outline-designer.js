@@ -76,6 +76,8 @@ const MOTION = {
     dropSlide: true,
   },
 };
+// room kept between a revealed row and the sticky toolbar or footer
+const REVEAL_GAP = 8;
 const UNDO_MS = 8000;
 const NUDGE_MS = 6000;
 /**
@@ -98,6 +100,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       css`
         :host {
           display: block;
+          /* only takes effect when a host makes the designer scroll */
+          scroll-padding-top: var(--outline-designer-scroll-pad-top, 0);
+          scroll-padding-bottom: var(--outline-designer-scroll-pad-bottom, 0);
           font-family: var(--hax-ui-admin-font-family);
           color: var(--hax-ui-text);
           --outline-designer-row-height: var(--hax-ui-row-height);
@@ -3769,20 +3774,64 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
 
   // scroll a row into view if it moved out of sight
-  _revealRow(id, block) {
+  // bring a row into the part of the scroller the tree shows in, clear of
+  // the sticky toolbar and footer, with a little room around it
+  _revealRow(id, block = "nearest") {
     const li = this.shadowRoot.querySelector(`li.item[data-item-id="${id}"]`);
     if (!li) return;
     const scroller = this._scrollParent();
     const isPage =
       scroller === globalThis.document.scrollingElement ||
       scroller === globalThis.document.documentElement;
-    const box = isPage
+    const outer = isPage
       ? { top: 0, bottom: globalThis.innerHeight }
       : scroller.getBoundingClientRect();
+    const box = this._visibleTreeBox(outer);
+    const top = box.top + REVEAL_GAP;
+    const bottom = box.bottom - REVEAL_GAP;
     const r = li.getBoundingClientRect();
-    if (r.top < box.top + 8 || r.bottom > box.bottom - 8) {
-      li.scrollIntoView({ block, inline: "nearest" });
+    if (r.top >= top && r.bottom <= bottom) return;
+    let dy;
+    if (block === "center") {
+      dy = (r.top + r.bottom) / 2 - (top + bottom) / 2;
+    } else if (block === "start") {
+      dy = r.top - top;
+    } else if (block === "end") {
+      dy = r.bottom - bottom;
+    } else {
+      // nearest; a row taller than the room lines up with its top
+      dy =
+        r.top < top || r.height > bottom - top
+          ? r.top - top
+          : r.bottom - bottom;
     }
+    dy = Math.round(dy);
+    if (!dy) return;
+    if (isPage) {
+      globalThis.scrollBy(0, dy);
+    } else {
+      scroller.scrollTop += dy;
+    }
+  }
+
+  // keep native scrolling (Tab, focus()) clear of the sticky toolbar and
+  // footer too, when the designer is its own scroller
+  _syncScrollPadding() {
+    const controls = this.shadowRoot.querySelector(".controls");
+    const footer = this.shadowRoot.querySelector(".footer");
+    const top = controls ? controls.offsetHeight : 0;
+    const bottom =
+      footer && getComputedStyle(footer).position === "sticky"
+        ? footer.offsetHeight
+        : 0;
+    this.style.setProperty(
+      "--outline-designer-scroll-pad-top",
+      `${top + REVEAL_GAP}px`,
+    );
+    this.style.setProperty(
+      "--outline-designer-scroll-pad-bottom",
+      `${bottom + REVEAL_GAP}px`,
+    );
   }
 
   /* ---------- undo ---------- */
@@ -4365,10 +4414,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     );
     if (targetItem) {
       targetItem.setAttribute("tabindex", "0");
-      targetItem.focus();
-      if (targetItem.scrollIntoView) {
-        targetItem.scrollIntoView({ block: "nearest" });
-      }
+      targetItem.focus({ preventScroll: true });
+      this._revealRow(itemId, "nearest");
     }
   }
   // Accessibility announcement helpers
@@ -5142,6 +5189,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this._observePadding();
     // avoid some misordering on 1st paint after making lots of things
     if (this.items) {
       setTimeout(() => {
@@ -5194,7 +5242,32 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     }
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    // back in the page after being moved: watch the toolbar and footer again
+    if (this.hasUpdated) {
+      this._observePadding();
+    }
+  }
+
+  // the sticky toolbar and footer change height as they wrap
+  _observePadding() {
+    if (globalThis.ResizeObserver) {
+      if (!this._padObserver) {
+        this._padObserver = new ResizeObserver(() => this._syncScrollPadding());
+      }
+      [".controls", ".footer"].forEach((sel) => {
+        const el = this.shadowRoot.querySelector(sel);
+        if (el) this._padObserver.observe(el);
+      });
+    }
+    this._syncScrollPadding();
+  }
+
   disconnectedCallback() {
+    if (this._padObserver) {
+      this._padObserver.disconnect();
+    }
     if (this._drag) {
       this._finishDrag(false);
     }

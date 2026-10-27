@@ -115,4 +115,100 @@ describe("outline-designer layout in a scrolling host", () => {
     expect(Math.round(box.bottom)).to.equal(Math.round(footer.top));
     expect(el._scrollParent()).to.equal(el);
   });
+
+  // where a row sits against the sticky toolbar and footer
+  function clearance(el, id) {
+    const li = el.shadowRoot.querySelector(`li.item[data-item-id="${id}"]`);
+    const r = li.getBoundingClientRect();
+    const bar = el.shadowRoot
+      .querySelector(".controls")
+      .getBoundingClientRect();
+    const footer = el.shadowRoot
+      .querySelector(".footer")
+      .getBoundingClientRect();
+    return { belowBar: r.top - bar.bottom, aboveFooter: footer.top - r.bottom };
+  }
+
+  it("keeps a page moved down by keyboard clear of the footer", async () => {
+    const el = await scrollingDesigner();
+    el.reducedMotion = "reduce";
+    // a page in the lower part of the view, then moved down past the edge
+    el.scrollTop = 200;
+    await new Promise((r) => requestAnimationFrame(r));
+    const box = el.getBoundingClientRect();
+    const footer = el.shadowRoot
+      .querySelector(".footer")
+      .getBoundingClientRect();
+    const li = [...el.shadowRoot.querySelectorAll("li.item")].find(
+      (l) => l.getBoundingClientRect().bottom > footer.top - 80,
+    );
+    expect(box.bottom).to.be.greaterThan(footer.top);
+    const id = li.getAttribute("data-item-id");
+    for (let n = 0; n < 6; n++) {
+      const index = el.items.findIndex((i) => i.id === id);
+      await el._moveByKeyboard(index, "down");
+      await settle(el);
+      const c = clearance(el, id);
+      expect(c.aboveFooter, "move " + (n + 1)).to.be.at.least(7);
+      expect(c.belowBar, "move " + (n + 1)).to.be.at.least(7);
+    }
+  });
+
+  it("keeps a page moved up by keyboard clear of the toolbar", async () => {
+    const el = await scrollingDesigner();
+    el.reducedMotion = "reduce";
+    el.scrollTop = 900;
+    await new Promise((r) => requestAnimationFrame(r));
+    const bar = el.shadowRoot
+      .querySelector(".controls")
+      .getBoundingClientRect();
+    const li = [...el.shadowRoot.querySelectorAll("li.item")].find(
+      (l) => l.getBoundingClientRect().top > bar.bottom + 4,
+    );
+    const id = li.getAttribute("data-item-id");
+    for (let n = 0; n < 6; n++) {
+      const index = el.items.findIndex((i) => i.id === id);
+      await el._moveByKeyboard(index, "up");
+      await settle(el);
+      const c = clearance(el, id);
+      expect(c.belowBar, "move " + (n + 1)).to.be.at.least(7);
+      expect(c.aboveFooter, "move " + (n + 1)).to.be.at.least(7);
+    }
+  });
+
+  it("keeps arrow-key focus clear of the toolbar and footer", async () => {
+    const el = await scrollingDesigner();
+    el.scrollTop = 400;
+    await new Promise((r) => requestAnimationFrame(r));
+    const bar = el.shadowRoot
+      .querySelector(".controls")
+      .getBoundingClientRect();
+    const li = [...el.shadowRoot.querySelectorAll("li.item")].find(
+      (l) => l.getBoundingClientRect().top > bar.bottom + 4,
+    );
+    // walk focus up past the toolbar, then down past the footer
+    let id = li.getAttribute("data-item-id");
+    for (let n = 0; n < 8; n++) {
+      const index = el.items.findIndex((i) => i.id === id);
+      el.focusItem(el.items[index - 1].id);
+      id = el.items[index - 1].id;
+      expect(clearance(el, id).belowBar).to.be.at.least(7);
+    }
+    for (let n = 0; n < 25; n++) {
+      const index = el.items.findIndex((i) => i.id === id);
+      el.focusItem(el.items[index + 1].id);
+      id = el.items[index + 1].id;
+      expect(clearance(el, id).aboveFooter).to.be.at.least(7);
+    }
+  });
+
+  it("pads native scrolling by the toolbar and footer", async () => {
+    const el = await scrollingDesigner();
+    await new Promise((r) => requestAnimationFrame(r));
+    const style = getComputedStyle(el);
+    const bar = el.shadowRoot.querySelector(".controls").offsetHeight;
+    const footer = el.shadowRoot.querySelector(".footer").offsetHeight;
+    expect(parseFloat(style.scrollPaddingTop)).to.equal(bar + 8);
+    expect(parseFloat(style.scrollPaddingBottom)).to.equal(footer + 8);
+  });
 });
