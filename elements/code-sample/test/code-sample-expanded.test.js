@@ -516,12 +516,11 @@ const b = 2;</template></code-sample>`,
     const selection = globalThis.getSelection();
     selection.removeAllRanges();
     selection.addRange(range);
+    // Firefox and WebKit copy (or drop) the clipboardData passed to the
+    // ClipboardEvent constructor, so attach our DataTransfer directly
     const dataTransfer = new DataTransfer();
-    const copyEvent = new ClipboardEvent("copy", {
-      clipboardData: dataTransfer,
-      bubbles: true,
-      cancelable: true,
-    });
+    const copyEvent = new Event("copy", { bubbles: true, cancelable: true });
+    Object.defineProperty(copyEvent, "clipboardData", { value: dataTransfer });
     globalThis.document.dispatchEvent(copyEvent);
     expect(dataTransfer.getData("text/plain")).to.include("const");
     expect(copyEvent.defaultPrevented).to.be.true;

@@ -1181,8 +1181,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
                 let range = globalThis.document.createRange();
                 range.setStart(sr.startContainer, sr.startOffset);
                 range.setEnd(sr.endContainer, sr.endOffset);
-                this.range = range;
-                return this.range;
+                // only a selection inside the target counts; anything else
+                // falls through to the scoped native check below
+                if (this.rangeInTarget(range, this.target)) {
+                  this.range = range;
+                  return this.range;
+                }
               }
             }
           } catch {
