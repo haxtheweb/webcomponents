@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <base href="/elements/outline-designer/demo/">
+    <!-- the HAXcms harness runs against the haxcms-elements demo site, where
+         its pages live; this demo's own files use absolute paths -->
+    <base href="/elements/haxcms-elements/demo/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>OutlineDesigner: outline-designer Demo</title>
@@ -22,7 +24,7 @@
           //document.querySelector('outline-designer').items = globalThis.HAXCMS.instance.store.getManifestItems(true);
 
           // get items from example import
-          await fetch(import.meta.url + '/../example.json').then((resp) => (resp.ok) ? resp.json() : []).then((data) => {document.querySelector('outline-designer').items = data;});
+          await fetch('/elements/outline-designer/demo/example.json').then((resp) => (resp.ok) ? resp.json() : []).then((data) => {document.querySelector('outline-designer').items = data;});
 
           // hide content operations
           //document.querySelector('outline-designer').hideContentOps = true;
@@ -79,7 +81,7 @@
     <!-- Reverse engineer of build.js based on what's needed to test locally -->
     <script>
       globalThis.__appCDN="./node_modules/";globalThis.__appForceUpgrade=false;
-      globalThis.WCAutoloadRegistryFile = "../../haxcms-elements/demo/wc-registry.json";
+      globalThis.WCAutoloadRegistryFile = "/elements/haxcms-elements/demo/wc-registry.json";
       globalThis.WCAutoloadBasePath = "/node_modules/";
       globalThis.WCGlobalBasePath = "/node_modules/";
       // set this in order to simulate the published form of the site
@@ -88,22 +90,22 @@
       // this will let you simulate more operations without having a backend
       globalThis.HAXCMSContext="demo";
       globalThis.appSettings = {
-        "createNodePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/createNodePath.json",
-        "saveOutlinePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
-        "saveManifestPath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveManifestPath.json",
-        "getSiteFieldsPath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/getSiteFieldsPath.json",
-        "deleteNodePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
-        "saveNodePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
-        "getUserDataPath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/userData.json",
-        "login": "..\/..\/haxcms-elements\/demo\/dist\/dev\/login.json",
-        "refreshUrl": "..\/..\/haxcms-elements\/demo\/dist\/dev\/refreshUrl.json",
-        "logout": "..\/..\/haxcms-elements\/demo\/dist\/dev\/logout.json",
-        "connectionSettings": "..\/..\/haxcms-elements\/demo\/dist\/dev\/connectionSettings.json",
-        "publishSitePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
-        "revertSitePath": "..\/..\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+        "createNodePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/createNodePath.json",
+        "saveOutlinePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+        "saveManifestPath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveManifestPath.json",
+        "getSiteFieldsPath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/getSiteFieldsPath.json",
+        "deleteNodePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+        "saveNodePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+        "getUserDataPath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/userData.json",
+        "login": "\/elements\/haxcms-elements\/demo\/dist\/dev\/login.json",
+        "refreshUrl": "\/elements\/haxcms-elements\/demo\/dist\/dev\/refreshUrl.json",
+        "logout": "\/elements\/haxcms-elements\/demo\/dist\/dev\/logout.json",
+        "connectionSettings": "\/elements\/haxcms-elements\/demo\/dist\/dev\/connectionSettings.json",
+        "publishSitePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
+        "revertSitePath": "\/elements\/haxcms-elements\/demo\/dist\/dev\/saveNode.json",
         "getFieldsToken": "adskjadshjudfu823u823u8fu8fij",
         "appStore": {
-          "url": "..\/..\/haxcms-elements\/demo\/dist\/dev\/appstore.json"
+          "url": "\/elements\/haxcms-elements\/demo\/dist\/dev\/appstore.json"
         },
         "jwt": "made-up-thing",
         // add your custom theme here if testing locally and wanting to emulate the theme selector
@@ -120,7 +122,7 @@
     <script type="module">
       import { LitElement, html } from 'lit'
       import '@haxtheweb/demo-snippet/demo-snippet.js'
-      import '../outline-designer.js'
+      import '/elements/outline-designer/outline-designer.js'
 
       const SAMPLE_ITEMS = [
         {

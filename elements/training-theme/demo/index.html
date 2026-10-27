@@ -27,6 +27,17 @@
         }
       };
     </script>
+    <script>
+      // a static demo of the theme: there is no backend to ask for editing
+      // settings, and the site's components load through the registry the
+      // HAXcms demo uses (otherwise the menu and other lazily loaded parts
+      // stay as "Loading" placeholders)
+      globalThis.HAXCMSContext = globalThis.HAXCMSContext || "published";
+      globalThis.WCAutoloadRegistryFile =
+        globalThis.WCAutoloadRegistryFile ||
+        "../../haxcms-elements/demo/wc-registry.json";
+      globalThis.WCGlobalBasePath = globalThis.WCGlobalBasePath || "/node_modules/";
+    </script>
     <script type="module">
       import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
       import '../training-theme.js';
