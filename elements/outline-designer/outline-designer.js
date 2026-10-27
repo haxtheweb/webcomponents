@@ -80,6 +80,8 @@ const MOTION = {
 const REVEAL_GAP = 8;
 // Alt+arrow presses that can wait behind a move still being shown
 const MAX_QUEUED_MOVES = 3;
+// more open pages than this and their "Add" buttons are made on demand
+const LAZY_OPS_MIN = 20;
 const UNDO_MS = 8000;
 const NUDGE_MS = 6000;
 /**
@@ -1012,19 +1014,6 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           visibility: visible;
           opacity: 1;
         }
-        li[class*="collapsed-by-"] {
-          opacity: 0;
-          height: 0px !important;
-          visibility: hidden;
-          padding: 0px !important;
-          margin: 0px !important;
-          width: 0px !important;
-          padding: 0px !important;
-          margin: 0px !important;
-          border: 0px !important;
-          pointer-events: none;
-          z-index: -1;
-        }
         /* content not rendered if hidden but in case we change that */
         li[data-contents-collapsed] {
           opacity: 0;
@@ -1165,6 +1154,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
   constructor() {
     super();
+    // pages whose content row has made its "Add" buttons
+    this._opsShown = new Set();
     this._blurBlock = false;
     this.fidelity = "medium";
     this.haxGizmos = [];
@@ -1462,6 +1453,12 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   // render function
   render() {
     const entries = this._buildEntries();
+    // lazy "Add" buttons only pay off with many pages open at once
+    this._lazyOps =
+      !!globalThis.IntersectionObserver &&
+      !!this.haxGizmos &&
+      this.haxGizmos.length > 0 &&
+      entries.filter((e) => e.kind === "contents").length > LAZY_OPS_MIN;
     // the one row in the tab order, worked out once for every row
     this.__renderRovingId = this._rovingId();
     const dt = this._dropTarget;
@@ -2552,7 +2549,14 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     if (!this.haxGizmos || !this.haxGizmos.length) {
       return nothing;
     }
+    // with many pages open, a row's buttons are made once it comes near the
+    // visible part of the outline; until then it keeps its place and height
+    const ready = !this._lazyOps || this._opsShown.has(item.id);
     return html` <li
+      ?data-ops-pending="${!ready}"
+      style="${!ready && this._opsRowHeight
+        ? `box-sizing:border-box;min-height:${this._opsRowHeight}px`
+        : ""}"
       role="treeitem"
       aria-level="${parseInt(item.indent) + 2}"
       tabindex="-1"
@@ -2565,24 +2569,26 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       ?hidden="${this.hideDelete && item.delete}"
     >
       ${cols}
-      ${this.haxGizmos.map(
-        (gizmo) => html`
-          <simple-icon-button-lite
-            class="operation"
-            icon="${gizmo.icon}"
-            value="${gizmo.tag}"
-            label="${this.t.addContentType.replace(
-              "{title}",
-              () => gizmo.title,
-            )}"
-            @click="${this.prependNodeToContent}"
-            >${this.t.addContentType.replace(
-              "{title}",
-              () => gizmo.title,
-            )}</simple-icon-button-lite
-          >
-        `,
-      )}
+      ${!ready
+        ? nothing
+        : this.haxGizmos.map(
+            (gizmo) => html`
+              <simple-icon-button-lite
+                class="operation"
+                icon="${gizmo.icon}"
+                value="${gizmo.tag}"
+                label="${this.t.addContentType.replace(
+                  "{title}",
+                  () => gizmo.title,
+                )}"
+                @click="${this.prependNodeToContent}"
+                >${this.t.addContentType.replace(
+                  "{title}",
+                  () => gizmo.title,
+                )}</simple-icon-button-lite
+              >
+            `,
+          )}
     </li>`;
   }
   // add content to the top of the item in question
@@ -3816,6 +3822,58 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     } else {
       scroller.scrollTop += dy;
     }
+  }
+
+  /**
+   * Make the "Add" buttons of a page's content row once the row is near the
+   * visible part of the outline (the scroller, or the window), and remember
+   * how tall a finished row is so the waiting rows hold the same space
+   */
+  _watchPendingOps() {
+    const done = this.shadowRoot.querySelector(
+      "li.content-adding-operations:not([data-ops-pending])",
+    );
+    if (
+      done &&
+      done.offsetHeight &&
+      this._lazyOps &&
+      done.offsetHeight !== this._opsRowHeight
+    ) {
+      // waiting rows take this height on the next render
+      this._opsRowHeight = done.offsetHeight;
+      this.requestUpdate();
+    }
+    const pending = this.shadowRoot.querySelectorAll(
+      "li.content-adding-operations[data-ops-pending]",
+    );
+    if (!pending.length || !globalThis.IntersectionObserver) return;
+    const scroller = this._scrollParent();
+    const root =
+      scroller === globalThis.document.scrollingElement ||
+      scroller === globalThis.document.documentElement
+        ? null
+        : scroller;
+    if (!this._opsObserver || this._opsObserverRoot !== root) {
+      if (this._opsObserver) this._opsObserver.disconnect();
+      this._opsObserverRoot = root;
+      this._opsObserver = new IntersectionObserver(
+        (seen) => {
+          let added = false;
+          seen.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.getAttribute("data-item-for-content-id");
+            this._opsObserver.unobserve(entry.target);
+            if (id && !this._opsShown.has(id)) {
+              this._opsShown.add(id);
+              added = true;
+            }
+          });
+          if (added) this.requestUpdate();
+        },
+        { root: root, rootMargin: "400px 0px" },
+      );
+    }
+    pending.forEach((li) => this._opsObserver.observe(li));
   }
 
   // keep native scrolling (Tab, focus()) clear of the sticky toolbar and
@@ -5175,6 +5233,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
   updated(changedProperties) {
     super.updated(changedProperties);
+    this._watchPendingOps();
     if (changedProperties.has("motionProfile")) {
       this._syncModality();
       this._hideNudge();
@@ -5297,6 +5356,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   disconnectedCallback() {
     if (this._padObserver) {
       this._padObserver.disconnect();
+    }
+    if (this._opsObserver) {
+      this._opsObserver.disconnect();
+      this._opsObserver = null;
     }
     if (this._drag) {
       this._finishDrag(false);
