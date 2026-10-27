@@ -94,7 +94,10 @@ describe("outline-designer item operations", () => {
   let element;
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    // data and focus tests run without motion so each step lands at once
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = makeItems();
     await settle(element);
   });

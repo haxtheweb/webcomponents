@@ -96,7 +96,10 @@ describe("outline-designer content operations", () => {
   });
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    // data and focus tests run without motion so each step lands at once
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = makeItems();
     await settle(element);
     // reveal contents of p1 for the content node tests (direct item
@@ -426,7 +429,9 @@ describe("outline-designer drag lifecycle", () => {
   };
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = dragItems();
     await settle(element);
   });
@@ -777,7 +782,10 @@ describe("outline-designer store tools", () => {
   });
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    // data and focus tests run without motion so each step lands at once
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = makeItems();
     await settle(element);
   });
@@ -856,7 +864,10 @@ describe("outline-designer updated branches", () => {
   let element;
 
   beforeEach(async () => {
-    element = await fixture(html`<outline-designer></outline-designer>`);
+    // data and focus tests run without motion so each step lands at once
+    element = await fixture(
+      html`<outline-designer reduced-motion="reduce"></outline-designer>`,
+    );
     element.items = makeItems();
     await settle(element);
   });

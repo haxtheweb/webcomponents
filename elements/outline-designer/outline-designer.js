@@ -38,6 +38,43 @@ const AUTOSCROLL_EDGE = 40;
 const MAX_DEPTH = 20;
 const DENSITIES = ["compact", "default", "roomy"];
 const DENSITY_KEY = "outline-designer-density";
+// how much to show after a change, by the input that made it: a drag
+// already showed a mouse user where things went, so mouse stays light;
+// touch, where a finger hides the spot, gets the most
+const MOTION = {
+  mouse: {
+    slide: 1,
+    grow: 1,
+    landed: 700,
+    quiet: true,
+    flash: 0,
+    nudge: false,
+    scroll: "nearest",
+    dropSlide: false,
+  },
+  keyboard: {
+    slide: 1.2,
+    grow: 1.2,
+    landed: 1100,
+    quiet: false,
+    flash: 700,
+    nudge: false,
+    scroll: "nearest",
+    dropSlide: true,
+  },
+  touch: {
+    slide: 1.7,
+    grow: 1.7,
+    landed: 1500,
+    quiet: false,
+    flash: 1000,
+    nudge: true,
+    scroll: "center",
+    dropSlide: true,
+  },
+};
+const UNDO_MS = 8000;
+const NUDGE_MS = 6000;
 /**
  * `outline-designer`
  * @element outline-designer
@@ -719,6 +756,118 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           color: var(--hax-ui-text-muted);
         }
 
+        /* showing what changed (see _withMotion) */
+        .tree-wrap.vt {
+          contain: layout;
+        }
+        /* the transition is scoped to the tree, so * is only its rows;
+           Chromium does not match view-transition-class inside shadow DOM */
+        ::view-transition-group(*) {
+          animation-duration: var(--outline-designer-vt-ms, 150ms);
+          animation-timing-function: var(--hax-ui-easing-move);
+        }
+        ::view-transition-old(*),
+        ::view-transition-new(*) {
+          animation-duration: var(--outline-designer-vt-ms, 150ms);
+        }
+        ::view-transition-new(*):only-child {
+          animation: outline-designer-grow
+            var(--outline-designer-grow-ms, 150ms) var(--hax-ui-easing-move)
+            both;
+        }
+        ::view-transition-old(*):only-child {
+          animation: outline-designer-shrink
+            var(--outline-designer-vt-ms, 150ms) var(--hax-ui-easing) both;
+        }
+        @keyframes outline-designer-grow {
+          from {
+            opacity: 0;
+            transform: translateY(-35%) scaleY(0.5);
+          }
+        }
+        @keyframes outline-designer-shrink {
+          to {
+            opacity: 0;
+            transform: scaleY(0.5);
+          }
+        }
+        /* touch: move buttons that stay on the row after a menu move */
+        li.item.nudging .trail,
+        li.item.nudging .content-toggle-btn,
+        li.item.nudging .hax-ui-pill {
+          visibility: hidden;
+        }
+        .nudge {
+          position: absolute;
+          right: var(--hax-ui-gap-md);
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 2;
+          display: flex;
+          gap: 2px;
+          padding: 2px;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-pill);
+          background-color: var(--hax-ui-surface);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        .nudge-btn {
+          all: unset;
+          box-sizing: border-box;
+          width: 36px;
+          height: 36px;
+          display: grid;
+          place-items: center;
+          border-radius: var(--ddd-radius-circle, 50%);
+          color: var(--hax-ui-text);
+          cursor: pointer;
+          touch-action: manipulation;
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
+        }
+        .nudge-btn:active,
+        .nudge-btn:hover {
+          background-color: var(--hax-ui-accent-soft);
+        }
+        .nudge-btn:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+        }
+        .nudge-btn[disabled] {
+          opacity: var(--ddd-state-disabled-opacity, 0.4);
+          pointer-events: none;
+        }
+        .nudge-btn.done {
+          color: var(--hax-ui-accent-strong);
+        }
+        /* the last change, with undo */
+        .drag-status .status-text {
+          flex: 1;
+          min-width: 0;
+        }
+        .undo-btn {
+          all: unset;
+          flex: none;
+          cursor: pointer;
+          color: var(--hax-ui-accent-strong);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          text-decoration: underline;
+          text-underline-offset: 2px;
+          padding: 0 var(--hax-ui-gap);
+          border-radius: var(--hax-ui-radius);
+        }
+        .undo-btn:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+        }
+        :host([data-modality="touch"]) .undo-btn {
+          text-decoration: none;
+          min-height: var(--hax-ui-row-height);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-accent-strong);
+          border-radius: var(--hax-ui-radius-pill);
+          display: inline-flex;
+          align-items: center;
+        }
+
         /* page content structure rows */
         li.content-child,
         li.content-adding-operations {
@@ -967,6 +1116,39 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this._typed = "";
     this._typedAt = 0;
     this.hideAddRows = false;
+    // motion: which input made the last change, and preview overrides
+    this.motionProfile = "auto";
+    this.reducedMotion = "auto";
+    this._lastModality = null;
+    this._vtActive = false;
+    this._flashGroup = null;
+    this._nudgeId = null;
+    this._undo = null;
+    this.addEventListener(
+      "pointerdown",
+      (e) => {
+        this._lastModality = e.pointerType === "mouse" ? "mouse" : "touch";
+        this._syncModality();
+        // a tap anywhere but the move buttons puts them away
+        if (
+          this._nudgeId &&
+          !e
+            .composedPath()
+            .some((n) => n.classList && n.classList.contains("nudge"))
+        ) {
+          this._hideNudge();
+        }
+      },
+      true,
+    );
+    this.addEventListener(
+      "keydown",
+      () => {
+        this._lastModality = "keyboard";
+        this._syncModality();
+      },
+      true,
+    );
     this.__windowUp = (e) => this._onPointerUp(e);
     this.__windowCancel = (e) => this._onPointerCancel(e);
     // a drag ends with a click on whatever is under the pointer; swallow it
@@ -1115,6 +1297,16 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       hintSelect: "select",
       hintDelete: "delete or restore",
       hintActions: "actions",
+      undo: "Undo",
+      undoAction: "Undo: {action}",
+      undone: "Undid: {action}",
+      movePage: "Move {title}",
+      nudgeDone: "Done moving",
+      addedPage: "Added a page",
+      addedSubpage: "Added a sub-page under {title}",
+      lockedPage: "Locked {title}",
+      unlockedPage: "Unlocked {title}",
+      markedPage: "{title} will be deleted on save",
     };
     this.registerLocalization({
       context: this,
@@ -1334,9 +1526,29 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                 : ``}`
           : ``}
       </div>
-      <div class="drag-status ${this._drag ? "live" : ""}" aria-hidden="true">
-        ${this._statusText ||
-        (this._coarsePointer() ? this.t.touchDragHint : this.t.dragHint)}
+      <div class="drag-status ${this._drag || this._undo ? "live" : ""}">
+        <span class="status-text" aria-hidden="true"
+          >${this._drag
+            ? this._statusText
+            : this._undo
+              ? this._undo.message
+              : this._coarsePointer()
+                ? this.t.touchDragHint
+                : this.t.dragHint}</span
+        >
+        ${this._undo && !this._drag
+          ? html`<button
+              type="button"
+              class="undo-btn"
+              aria-label="${this.t.undoAction.replace(
+                "{action}",
+                () => this._undo.message,
+              )}"
+              @click="${this.undo}"
+            >
+              ${this.t.undo}
+            </button>`
+          : nothing}
       </div>
       <div class="hints" id="hints">
         <span class="hax-ui-sr-only">${this.t.keyboardHelp}:</span>
@@ -1509,7 +1721,15 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
 
   _hl(group) {
-    return this._dropTarget && this._dropTarget.group === group ? "hl" : "";
+    return (this._dropTarget && this._dropTarget.group === group) ||
+      this._flashGroup === group
+      ? "hl"
+      : "";
+  }
+
+  // a view-transition-name for a row part, valid as a CSS ident
+  _vtName(kind, id) {
+    return `od-${kind}-${String(id).replace(/[^a-zA-Z0-9_-]/g, "_")}`;
   }
 
   _renderCols(entry, mode) {
@@ -1561,6 +1781,12 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         title="${label}"
         data-add-parent="${entry.parentId || ""}"
         data-add-depth="${entry.depth}"
+        style="${this._vtActive
+          ? `view-transition-name:${this._vtName(
+              "a",
+              `${entry.parentId || "root"}-${entry.depth}`,
+            )};view-transition-class:od-row`
+          : ""}"
         @click="${() => this._addInGroup(entry.parentId)}"
       >
         ${this._renderCols(entry, "add")}
@@ -1775,7 +2001,13 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       ["up", "down", "in", "out"].includes(action) &&
       index !== false
     ) {
-      this._moveByKeyboard(index, action);
+      this._moveByKeyboard(index, action, { fromMenu: true });
+    } else if (action === "duplicate" && index !== false) {
+      this._duplicate(index);
+    } else if (action === "delete" && index !== false) {
+      this._toggleDelete(index);
+    } else if (action === "lock" && index !== false) {
+      this._toggleLock(index);
     } else if (action && index !== false) {
       this.itemOp(index, action);
     }
@@ -1835,10 +2067,17 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         dt.zone === "child" &&
         dt.targetId === item.id
           ? "drop-target-child"
-          : ""} ${pressing ? "pressing" : ""}"
-        style="${pressing
-          ? `--outline-designer-press-ms:${this._press.holdMs}ms`
+          : ""} ${pressing ? "pressing" : ""} ${this._nudgeId === item.id
+          ? "nudging"
           : ""}"
+        style="${[
+          pressing ? `--outline-designer-press-ms:${this._press.holdMs}ms` : "",
+          this._vtActive
+            ? `view-transition-name:${this._vtName("r", item.id)};view-transition-class:od-row`
+            : "",
+        ]
+          .filter(Boolean)
+          .join(";")}"
         data-item-id="${item.id}"
         @focusin="${this._onItemFocusIn}"
         data-parents="${this.getItemParents(item)}"
@@ -1861,7 +2100,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                 title="${collapsed
                   ? this.t.expandChildren
                   : this.t.collapseChildren}"
-                @click="${this.collapseExpand}"
+                @click="${this._onChevronClick}"
               >
                 <simple-icon-lite
                   icon="${collapsed
@@ -1874,7 +2113,12 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         <span class="grip" aria-hidden="true" title="${this.t.dragToReorder}"
           ><simple-icon-lite icon="icons:reorder"></simple-icon-lite
         ></span>
-        <span class="title">
+        <span
+          class="title"
+          style="${this._vtActive
+            ? `view-transition-name:${this._vtName("t", item.id)};view-transition-class:od-title`
+            : ""}"
+        >
           <span
             class="label shown"
             ?disabled="${locked}"
@@ -1969,6 +2213,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             <simple-icon-lite icon="icons:more-horiz"></simple-icon-lite>
           </button>
         </span>
+        ${this._nudgeId === item.id ? this._renderNudge(item, index) : nothing}
         <simple-context-menu
           class="actions-menu"
           data-item-index="${index}"
@@ -2715,9 +2960,12 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       }
     } else if (mod && (e.key === "d" || e.key === "D")) {
       // Keyboard shortcut for duplicate
-      if (!this.isLocked(itemIndex)) {
-        this.itemOp(itemIndex, "duplicate");
-        this.announceAction(this.t.itemDuplicated);
+      this._duplicate(itemIndex);
+    } else if (mod && !e.shiftKey && (e.key === "z" || e.key === "Z")) {
+      if (this._undo) {
+        this.undo();
+      } else {
+        handled = false;
       }
     } else if (mod || e.altKey) {
       handled = false;
@@ -2735,7 +2983,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           break;
         case "ArrowRight":
           if (this.hasChildren(itemId) && this.isCollapsed(itemId)) {
-            this.collapseExpand(e);
+            this._fold(currentItem);
             this.announceStateChange(this.t.expanded);
           } else {
             this.focusFirstChild(itemIndex);
@@ -2743,7 +2991,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           break;
         case "ArrowLeft":
           if (this.hasChildren(itemId) && !this.isCollapsed(itemId)) {
-            this.collapseExpand(e);
+            this._fold(currentItem);
             this.announceStateChange(this.t.collapsed);
           } else {
             this.focusParent(itemIndex);
@@ -2777,21 +3025,12 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           break;
         case "Delete":
         case "Backspace":
-          if (this.isLocked(itemIndex)) {
-            this._sayLocked(itemIndex);
-          } else {
-            const restoring = !!this.items[itemIndex].delete;
-            const title = this.items[itemIndex].title;
-            this.itemOp(itemIndex, "delete");
-            this.announceAction(
-              restoring
-                ? this.t.restored.replace("{title}", () => title)
-                : this.t.itemMarkedForDeletion,
-            );
-          }
+          this._toggleDelete(itemIndex);
           break;
         case "Escape":
-          if (this.selectedPages.length) {
+          if (this._nudgeId) {
+            this._hideNudge();
+          } else if (this.selectedPages.length) {
             this.selectedPages = [];
             this.announceAction(this.t.selectionCleared);
           } else {
@@ -2818,44 +3057,456 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     );
   }
 
-  /**
-   * Move a page with the keyboard (or from its menu) and keep focus on it.
-   * The operation itself is itemOp, so the data written is the same.
+  /* ---------- showing what changed ----------
+   * Every change made from the menu, the keyboard, the touch move buttons
+   * or a drop goes through _withMotion, so the person can see it happen:
+   * rows slide to their new places (a view transition scoped to the tree
+   * where the browser supports one, a FLIP slide otherwise), new pages
+   * grow in, the page that moved gets a short highlight, the group it
+   * joined lights up, and the change can be undone. How much of that
+   * shows depends on the input (MOTION): a mouse drag already showed
+   * where things went, so mouse stays light; touch gets the most.
+   * Reduced motion keeps only a still highlight.
    */
-  _moveByKeyboard(index, action) {
+  _modality() {
+    if (MOTION[this.motionProfile]) {
+      return this.motionProfile;
+    }
+    return this._lastModality || "mouse";
+  }
+
+  _syncModality() {
+    this.setAttribute("data-modality", this._modality());
+  }
+
+  _reduceMotion() {
+    if (this.reducedMotion === "reduce") return true;
+    if (this.reducedMotion === "full") return false;
+    return !!(
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }
+
+  _motionMs() {
+    const ms = parseFloat(
+      getComputedStyle(this).getPropertyValue("--hax-ui-duration-move"),
+    );
+    return Number.isFinite(ms) && ms > 0 ? ms : 150;
+  }
+
+  _motionEasing() {
+    const easing = getComputedStyle(this)
+      .getPropertyValue("--hax-ui-easing-move")
+      .trim();
+    return easing || "cubic-bezier(0.2, 0, 0, 1)";
+  }
+
+  // let the pending outline sync land and render
+  async _settled() {
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    await this.updateComplete;
+    await this.updateComplete;
+  }
+
+  /**
+   * Run a change and show it. run() makes the change and returns
+   * { focusId, landed, message, edit, quiet } or false when nothing
+   * changed. Options: slide (animate positions), undo (offer undo),
+   * nudge (show touch move buttons afterwards).
+   */
+  async _withMotion(run, { slide = true, undo = false, nudge = false } = {}) {
+    const modality = this._modality();
+    const profile = MOTION[modality];
+    const reduce = this._reduceMotion();
+    const snapshot = undo ? this.items.map((i) => structuredClone(i)) : null;
+    const slideOn = slide && !reduce;
+    const ms = Math.round(this._motionMs() * profile.slide);
+    const growMs = Math.round(this._motionMs() * profile.grow);
+    let info = null;
+    const apply = async () => {
+      info = (await run()) || { changed: false };
+      await this._settled();
+      if (info.focusId) {
+        this._revealRow(info.focusId, profile.scroll);
+      }
+    };
+    const wrap = this.shadowRoot.querySelector(".tree-wrap");
+    if (
+      slideOn &&
+      wrap &&
+      typeof wrap.startViewTransition === "function" &&
+      this._visibleItems().length <= 400
+    ) {
+      // scoped to the tree: only it is captured and the rest of the
+      // page stays usable while the rows move
+      this.style.setProperty("--outline-designer-vt-ms", `${ms}ms`);
+      this.style.setProperty("--outline-designer-grow-ms", `${growMs}ms`);
+      this._vtActive = true;
+      this.requestUpdate();
+      await this.updateComplete;
+      wrap.classList.add("vt");
+      try {
+        const transition = wrap.startViewTransition(apply);
+        // a skipped transition still runs apply; only the animation is lost
+        transition.ready.catch(() => {});
+        await transition.finished;
+      } catch {
+        if (!info) await apply();
+      }
+      wrap.classList.remove("vt");
+      this._vtActive = false;
+      this.requestUpdate();
+    } else if (slideOn) {
+      const before = this._rowRects();
+      await apply();
+      this._flip(before, ms, growMs);
+    } else {
+      await apply();
+    }
+    if (!info || info.changed === false || !info.focusId) {
+      if (info && info.focusId) this.focusItem(info.focusId);
+      return info;
+    }
+    if (!info.quiet) {
+      const landed = info.landed || [info.focusId];
+      this._showLanded(landed, profile, reduce);
+      if (profile.flash) {
+        const item = this.items.find((i) => i.id === info.focusId);
+        if (item) {
+          this._flash(
+            `${item.parent || "root"}|${parseInt(item.indent) || 0}`,
+            profile.flash,
+          );
+        }
+      }
+    }
+    if (snapshot && info.message) {
+      this._offerUndo(snapshot, info.message, info.focusId);
+    }
+    if (nudge && profile.nudge) {
+      this._showNudge(info.focusId);
+    }
+    if (info.edit) {
+      const label = this.shadowRoot.querySelector(
+        `[data-item-id="${info.focusId}"] .label.shown`,
+      );
+      if (label) this.editTitle({ target: label });
+    } else {
+      this.focusItem(info.focusId);
+    }
+    return info;
+  }
+
+  // where each visible row is now, for the FLIP fallback
+  _rowRects() {
+    const rects = new Map();
+    this.shadowRoot.querySelectorAll("li.item[data-item-id]").forEach((li) => {
+      const title = li.querySelector(".title");
+      rects.set(li.getAttribute("data-item-id"), {
+        top: li.getBoundingClientRect().top,
+        left: (title || li).getBoundingClientRect().left,
+      });
+    });
+    return rects;
+  }
+
+  // slide rows from where they were (no view transitions in this browser)
+  _flip(before, ms, growMs) {
+    const easing = this._motionEasing();
+    this.shadowRoot.querySelectorAll("li.item[data-item-id]").forEach((li) => {
+      if (typeof li.animate !== "function") return;
+      const was = before.get(li.getAttribute("data-item-id"));
+      if (!was) {
+        li.animate(
+          [
+            { opacity: 0, transform: "translateY(-35%) scaleY(0.5)" },
+            { opacity: 1, transform: "none" },
+          ],
+          { duration: growMs, easing },
+        );
+        return;
+      }
+      const title = li.querySelector(".title");
+      const dy = was.top - li.getBoundingClientRect().top;
+      const dx = was.left - (title || li).getBoundingClientRect().left;
+      if (dy) {
+        li.animate(
+          [{ transform: `translateY(${dy}px)` }, { transform: "none" }],
+          { duration: ms, easing },
+        );
+      }
+      if (dx && title) {
+        title.animate(
+          [{ transform: `translateX(${dx}px)` }, { transform: "none" }],
+          { duration: ms, easing },
+        );
+      }
+    });
+  }
+
+  /**
+   * A token resolved to a plain color. Chromium crashes animating colors
+   * that still hold light-dark() (as these tokens do), so animations get
+   * the resolved value; a hidden probe resolves it in the current theme.
+   */
+  _resolvedColor(token) {
+    if (!this._colorProbe) {
+      this._colorProbe = globalThis.document.createElement("span");
+      this._colorProbe.hidden = true;
+      this.shadowRoot.appendChild(this._colorProbe);
+    }
+    this._colorProbe.style.color = `var(${token})`;
+    return getComputedStyle(this._colorProbe).color;
+  }
+
+  // a short highlight on the page that moved or arrived
+  _showLanded(ids, profile, reduce) {
+    const accent = this._resolvedColor("--hax-ui-accent-strong");
+    const tint = this._resolvedColor("--hax-ui-landed");
+    ids.forEach((id) => {
+      const li = this.shadowRoot.querySelector(`li.item[data-item-id="${id}"]`);
+      if (!li || typeof li.animate !== "function") return;
+      if (reduce) {
+        // no fading or moving: a still outline that goes away
+        li.animate(
+          [
+            { boxShadow: `inset 0 0 0 2px ${accent}` },
+            { boxShadow: `inset 0 0 0 2px ${accent}` },
+          ],
+          { duration: 1500, easing: "steps(1, end)" },
+        );
+      } else if (profile.quiet) {
+        li.animate(
+          [
+            { backgroundColor: tint, offset: 0 },
+            { backgroundColor: "transparent", offset: 1 },
+          ],
+          { duration: profile.landed, easing: "ease-out" },
+        );
+      } else {
+        li.animate(
+          [
+            {
+              backgroundColor: tint,
+              boxShadow: `inset 0 0 0 2px ${accent}`,
+              offset: 0,
+            },
+            {
+              backgroundColor: tint,
+              boxShadow: `inset 0 0 0 2px ${accent}`,
+              offset: 0.35,
+            },
+            {
+              backgroundColor: "transparent",
+              boxShadow: "inset 0 0 0 2px transparent",
+              offset: 1,
+            },
+          ],
+          { duration: profile.landed, easing: "ease-out" },
+        );
+      }
+    });
+  }
+
+  // light up the tree lines of the group a page joined
+  _flash(group, ms) {
+    clearTimeout(this._flashTimer);
+    this._flashGroup = group;
+    this._flashTimer = setTimeout(() => {
+      this._flashGroup = null;
+    }, ms);
+  }
+
+  // scroll a row into view if it moved out of sight
+  _revealRow(id, block) {
+    const li = this.shadowRoot.querySelector(`li.item[data-item-id="${id}"]`);
+    if (!li) return;
+    const scroller = this._scrollParent();
+    const isPage =
+      scroller === globalThis.document.scrollingElement ||
+      scroller === globalThis.document.documentElement;
+    const box = isPage
+      ? { top: 0, bottom: globalThis.innerHeight }
+      : scroller.getBoundingClientRect();
+    const r = li.getBoundingClientRect();
+    if (r.top < box.top + 8 || r.bottom > box.bottom - 8) {
+      li.scrollIntoView({ block, inline: "nearest" });
+    }
+  }
+
+  /* ---------- undo ---------- */
+  _offerUndo(snapshot, message, focusId) {
+    clearTimeout(this._undoTimer);
+    this._undo = { items: snapshot, message, focusId };
+    this._undoTimer = setTimeout(() => {
+      this._undo = null;
+    }, UNDO_MS);
+  }
+
+  /**
+   * Put the outline back as it was before the last change (the items
+   * themselves are restored, so getData() is exactly as it was)
+   */
+  undo() {
+    const last = this._undo;
+    if (!last) return;
+    clearTimeout(this._undoTimer);
+    this._undo = null;
+    this._hideNudge();
+    this._withMotion(() => {
+      this.items = last.items;
+      this.setAttribute("stop-animation", "true");
+      this.__syncUIAndDataModel();
+      const still = last.items.some((i) => i.id === last.focusId);
+      return still
+        ? { focusId: last.focusId }
+        : { changed: true, focusId: null };
+    });
+    this.announceAction(this.t.undone.replace("{action}", () => last.message));
+  }
+
+  /* ---------- touch: move buttons after a menu move ---------- */
+  _showNudge(id) {
+    this._nudgeId = id;
+    this._armNudge();
+  }
+
+  _armNudge() {
+    clearTimeout(this._nudgeTimer);
+    this._nudgeTimer = setTimeout(() => this._hideNudge(), NUDGE_MS);
+  }
+
+  _hideNudge() {
+    clearTimeout(this._nudgeTimer);
+    if (this._nudgeId) {
+      const id = this._nudgeId;
+      this._nudgeId = null;
+      this._focusId = id;
+    }
+  }
+
+  _nudge(action) {
+    const index = this.items.findIndex((i) => i.id === this._nudgeId);
+    if (index === -1) return;
+    this._armNudge();
+    this._moveByKeyboard(index, action, { fromMenu: true });
+  }
+
+  _renderNudge(item, index) {
+    const can = {
+      up: this._siblingBefore(index) !== null,
+      down: this._siblingAfter(index) !== null,
+      in: this._siblingBefore(index) !== null,
+      out: !!item.parent,
+    };
+    const button = (action, icon, label) =>
+      html`<button
+        type="button"
+        class="nudge-btn"
+        aria-label="${label}"
+        title="${label}"
+        ?disabled="${!can[action]}"
+        @click="${(e) => {
+          e.stopPropagation();
+          this._nudge(action);
+        }}"
+      >
+        <simple-icon-lite icon="${icon}"></simple-icon-lite>
+      </button>`;
+    return html`<span
+      class="nudge"
+      role="group"
+      aria-label="${this.t.movePage.replace("{title}", () => item.title)}"
+    >
+      ${button("up", "icons:arrow-upward", this.t.moveUp)}
+      ${button("down", "icons:arrow-downward", this.t.moveDown)}
+      ${button("out", "hax:outline-designer-outdent", this.t.outdent)}
+      ${button("in", "hax:outline-designer-indent", this.t.indent)}
+      <button
+        type="button"
+        class="nudge-btn done"
+        aria-label="${this.t.nudgeDone}"
+        title="${this.t.nudgeDone}"
+        @click="${(e) => {
+          e.stopPropagation();
+          this._hideNudge();
+          this.focusItem(item.id);
+        }}"
+      >
+        <simple-icon-lite icon="icons:check"></simple-icon-lite>
+      </button>
+    </span>`;
+  }
+
+  _siblingBefore(index) {
+    const item = this.items[index];
+    for (let i = index - 1; i >= 0; i--) {
+      if (this.items[i].id === item.parent) return null;
+      if ((this.items[i].parent || null) === (item.parent || null)) return i;
+    }
+    return null;
+  }
+
+  _siblingAfter(index) {
+    const item = this.items[index];
+    for (let i = index + 1; i < this.items.length; i++) {
+      const p = this.items[i].parent || null;
+      if (p === (item.parent || null)) return i;
+      if (parseInt(this.items[i].indent) < parseInt(item.indent)) return null;
+    }
+    return null;
+  }
+
+  /* ---------- operations, shown ---------- */
+
+  /**
+   * Move a page with the keyboard, its menu or the touch move buttons
+   * and show where it went. The operation itself is itemOp, so the data
+   * written is the same.
+   */
+  _moveByKeyboard(index, action, { fromMenu = false } = {}) {
     const item = this.items[index];
     if (!item) return;
     if (this.isLocked(index)) {
       this._sayLocked(index);
       return;
     }
-    const before = { parent: item.parent, order: item.order };
     const title = item.title;
-    this.itemOp(index, action);
-    const changed =
-      item.parent !== before.parent || item.order !== before.order;
-    let message;
-    if (!changed) {
-      message = {
-        up: this.t.alreadyFirst,
-        down: this.t.alreadyLast,
-        in: this.t.nothingAbove,
-        out: this.t.alreadyTop,
-      }[action];
-    } else if (action === "in") {
-      const parent = this.items.find((i) => i.id === item.parent);
-      message = this.t.indentedUnder.replace("{parent}", () =>
-        parent ? parent.title : "",
-      );
-    } else {
-      message = {
-        up: this.t.movedUp,
-        down: this.t.movedDown,
-        out: this.t.outdented,
-      }[action];
-    }
-    this.announceAction(message.replace("{title}", () => title));
-    this._focusAfterSync(item.id);
+    return this._withMotion(
+      () => {
+        const before = { parent: item.parent, order: item.order };
+        this.itemOp(index, action);
+        const changed =
+          item.parent !== before.parent || item.order !== before.order;
+        let message;
+        if (!changed) {
+          message = {
+            up: this.t.alreadyFirst,
+            down: this.t.alreadyLast,
+            in: this.t.nothingAbove,
+            out: this.t.alreadyTop,
+          }[action];
+        } else if (action === "in") {
+          const parent = this.items.find((i) => i.id === item.parent);
+          message = this.t.indentedUnder.replace("{parent}", () =>
+            parent ? parent.title : "",
+          );
+        } else {
+          message = {
+            up: this.t.movedUp,
+            down: this.t.movedDown,
+            out: this.t.outdented,
+          }[action];
+        }
+        message = message.replace("{title}", () => title);
+        this.announceAction(message);
+        return changed
+          ? { focusId: item.id, message }
+          : { changed: false, focusId: item.id };
+      },
+      { undo: true, nudge: fromMenu },
+    );
   }
 
   // focus a row once the pending outline sync has re-rendered
@@ -2877,24 +3528,29 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     }, 0);
   }
 
-  // add a page after this one and start naming it
+  // add a page after this one, grow it in and start naming it
   _addAfterAndEdit(index) {
     if (this.isLocked(index)) {
       this._sayLocked(index);
       return;
     }
-    const added = [];
-    this.setAttribute("stop-animation", "true");
-    this.addNewItem(index, false, added);
-    this.__syncUIAndDataModel();
-    if (added[0]) {
-      this._focusAfterSync(added[0].id, true);
-    }
+    return this._withMotion(
+      () => {
+        const added = [];
+        this.setAttribute("stop-animation", "true");
+        this.addNewItem(index, false, added);
+        this.__syncUIAndDataModel();
+        if (!added[0]) return false;
+        this.announceAction(this.t.addedPage);
+        return { focusId: added[0].id, edit: true, message: this.t.addedPage };
+      },
+      { undo: true },
+    );
   }
 
   /**
-   * Add a page as the last child of the page at index and start naming
-   * it. Same item shape as addNewItem.
+   * Add a page as the last child of the page at index, grow it in and
+   * start naming it. Same item shape as addNewItem.
    */
   addChildItem(index) {
     const parent = this.items[index];
@@ -2902,28 +3558,122 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       if (parent) this._sayLocked(index);
       return;
     }
-    const children = this.items.filter((i) => i.parent === parent.id);
-    const newItem = new JSONOutlineSchemaItem();
-    newItem.parent = parent.id;
-    newItem.indent = parseInt(parent.indent) + 1;
-    newItem.order = children.length
-      ? Math.max(...children.map((c) => Number(c.order) || 0)) + 1
-      : 0;
-    newItem.metadata.locked = false;
-    newItem.new = true;
-    newItem.contents = `<p></p>`;
-    let end = index + 1;
-    while (
-      end < this.items.length &&
-      parseInt(this.items[end].indent) > parseInt(parent.indent)
-    ) {
-      end++;
+    return this._withMotion(
+      () => {
+        const children = this.items.filter((i) => i.parent === parent.id);
+        const newItem = new JSONOutlineSchemaItem();
+        newItem.parent = parent.id;
+        newItem.indent = parseInt(parent.indent) + 1;
+        newItem.order = children.length
+          ? Math.max(...children.map((c) => Number(c.order) || 0)) + 1
+          : 0;
+        newItem.metadata.locked = false;
+        newItem.new = true;
+        newItem.contents = `<p></p>`;
+        let end = this.items.indexOf(parent) + 1;
+        while (
+          end < this.items.length &&
+          parseInt(this.items[end].indent) > parseInt(parent.indent)
+        ) {
+          end++;
+        }
+        this.items.splice(end, 0, newItem);
+        parent.collapsed = false;
+        this.setAttribute("stop-animation", "true");
+        this.__syncUIAndDataModel();
+        const message = this.t.addedSubpage.replace(
+          "{title}",
+          () => parent.title,
+        );
+        this.announceAction(message);
+        return { focusId: newItem.id, edit: true, message };
+      },
+      { undo: true },
+    );
+  }
+
+  // duplicate a page (and its sub-pages) right after it
+  _duplicate(index) {
+    if (this.isLocked(index)) {
+      this._sayLocked(index);
+      return;
     }
-    this.items.splice(end, 0, newItem);
-    parent.collapsed = false;
-    this.setAttribute("stop-animation", "true");
-    this.__syncUIAndDataModel();
-    this._focusAfterSync(newItem.id, true);
+    return this._withMotion(
+      () => {
+        const before = new Set(this.items.map((i) => i.id));
+        this.itemOp(index, "duplicate");
+        const added = this.items.filter((i) => !before.has(i.id));
+        if (!added.length) return false;
+        this.announceAction(this.t.itemDuplicated);
+        return {
+          focusId: added[0].id,
+          landed: added.map((i) => i.id),
+          message: this.t.itemDuplicated,
+        };
+      },
+      { undo: true },
+    );
+  }
+
+  // mark for deletion or restore; rows only move if deleted ones hide
+  _toggleDelete(index) {
+    if (this.isLocked(index)) {
+      this._sayLocked(index);
+      return;
+    }
+    const item = this.items[index];
+    const restoring = !!item.delete;
+    const message = restoring
+      ? this.t.restored.replace("{title}", () => item.title)
+      : this.t.markedPage.replace("{title}", () => item.title);
+    return this._withMotion(
+      () => {
+        this.itemOp(index, "delete");
+        this.announceAction(message);
+        // a page that disappears has nowhere to highlight
+        const shown = !this.hideDelete || restoring;
+        return shown
+          ? { focusId: item.id, message }
+          : { focusId: null, changed: true };
+      },
+      { undo: true, slide: this.hideDelete },
+    );
+  }
+
+  _toggleLock(index) {
+    const item = this.items[index];
+    const locking = !this.isLocked(index);
+    const message = (locking ? this.t.lockedPage : this.t.unlockedPage).replace(
+      "{title}",
+      () => item.title,
+    );
+    return this._withMotion(
+      () => {
+        this.itemOp(index, "lock");
+        this.announceAction(message);
+        return { focusId: item.id, message };
+      },
+      { undo: true, slide: false },
+    );
+  }
+
+  // fold or open a page; slides for keyboard and touch, instant for mouse
+  _fold(listItem) {
+    const id = listItem.getAttribute("data-item-id");
+    if (this._modality() === "mouse") {
+      this.collapseExpand({ target: listItem });
+      return;
+    }
+    this._withMotion(() => {
+      this.collapseExpand({ target: listItem });
+      return { focusId: id, quiet: true };
+    });
+  }
+
+  _onChevronClick(e) {
+    e.stopPropagation();
+    const listItem = e.target.closest("li[data-item-id]");
+    if (listItem) this._fold(listItem);
   }
 
   // the add row closing a level: a page at the end of that level
@@ -3566,8 +4316,25 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this.removeAttribute("data-dragging");
     globalThis.removeEventListener("pointerup", this.__windowUp);
     globalThis.removeEventListener("pointercancel", this.__windowCancel);
-    if (commit && target && this._applyDrop(drag, target)) {
+    if (
+      commit &&
+      target &&
+      !(target.zone === "self" && target.depth === drag.origDepth)
+    ) {
       this._statusText = "";
+      const profile = MOTION[this._modality()];
+      this._withMotion(
+        () => {
+          const id = this._applyDrop(drag, target);
+          if (!id) return false;
+          const root = this.items.find((i) => i.id === id);
+          return {
+            focusId: id,
+            message: this.t.movedPage.replace("{title}", () => root.title),
+          };
+        },
+        { undo: true, slide: profile.dropSlide },
+      );
       return;
     }
     if (!commit || target) {
@@ -3629,8 +4396,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     this.announceAction(this.t.movedPage.replace("{title}", () => root.title));
     this.setAttribute("stop-animation", "true");
     this.__syncUIAndDataModel();
-    this._focusAfterSync(root.id);
-    return true;
+    return root.id;
   }
 
   // give a sibling group the orders 0, 1, 2… in the order given
@@ -3733,12 +4499,29 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       liveRegionText: { type: String },
       activePage: { type: String },
       selectedPages: { type: Array },
+      /**
+       * Preview how changes are shown: auto (follow the input in use),
+       * mouse, keyboard or touch
+       */
+      motionProfile: { type: String, attribute: "motion-profile" },
+      /**
+       * auto (follow prefers-reduced-motion), reduce or full
+       */
+      reducedMotion: { type: String, attribute: "reduced-motion" },
       _focusId: { state: true },
       _statusText: { state: true },
+      _vtActive: { state: true },
+      _flashGroup: { state: true },
+      _nudgeId: { state: true },
+      _undo: { state: true },
     };
   }
   updated(changedProperties) {
     super.updated(changedProperties);
+    if (changedProperties.has("motionProfile")) {
+      this._syncModality();
+      this._hideNudge();
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (
         propName === "items" &&

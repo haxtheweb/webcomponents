@@ -671,6 +671,18 @@ export const HaxUiAdminTokens = [
       );
       --hax-ui-duration: var(--ddd-duration-fast, 150ms);
       --hax-ui-easing: var(--ddd-timing-ease, ease);
+      /* showing what changed: rows sliding to new places, new rows
+         growing in, the landing highlight; scaled per input in script */
+      --hax-ui-duration-move: var(--ddd-duration-fast, 150ms);
+      --hax-ui-easing-move: var(
+        --ddd-timing-emphasized,
+        cubic-bezier(0.2, 0, 0, 1)
+      );
+      --hax-ui-landed: color-mix(
+        in srgb,
+        var(--hax-ui-accent-strong) 24%,
+        transparent
+      );
     }
   `,
 ];
