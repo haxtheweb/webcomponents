@@ -266,12 +266,21 @@ describe("outline-designer showing what changed", () => {
 // the data, what they announce and how they read to assistive technology
 describe("outline-designer showing what changed: menu, touch and access", () => {
   let element;
+  // everything announced; the live region clears itself a second later,
+  // so reading it at one moment is timing-dependent
+  let said;
 
   beforeEach(async () => {
     element = await fixture(
       html`<outline-designer reduced-motion="full"></outline-designer>`,
     );
     element.items = makeItems();
+    said = [];
+    const announce = element.announceAction.bind(element);
+    element.announceAction = (text) => {
+      said.push(text);
+      return announce(text);
+    };
     await settle(element);
   });
 
@@ -380,10 +389,8 @@ describe("outline-designer showing what changed: menu, touch and access", () => 
     expect(buttons[2].disabled).to.equal(false);
     // outdent from the buttons, then Done returns focus to the row
     buttons[2].click();
-    // the live region clears itself a second after each announcement
-    await settle(element, 100);
-    expect(element.liveRegionText).to.equal("Child Two moved out a level");
-    await settle(element, 800);
+    await settle(element, 900);
+    expect(said[said.length - 1]).to.equal("Child Two moved out a level");
     expect(element.items.find((i) => i.id === "c2").parent).to.equal(null);
     pageLi(element, "c2").querySelector(".nudge .done").click();
     await settle(element);
@@ -411,16 +418,15 @@ describe("outline-designer showing what changed: menu, touch and access", () => 
       "Undo: Moved Page Two up",
     );
     button.click();
-    await settle(element, 100);
-    expect(element.liveRegionText).to.equal("Undid: Moved Page Two up");
-    await settle(element, 600);
+    await settle(element, 700);
+    expect(said[said.length - 1]).to.equal("Undid: Moved Page Two up");
     expect(undoButton()).to.equal(null);
   });
 
   it("still announces and offers undo with reduced motion", async () => {
     element.reducedMotion = "reduce";
     await choose("p2", "add", 120);
-    expect(element.liveRegionText).to.equal("Added a page");
+    expect(said[said.length - 1]).to.equal("Added a page");
     expect(element._undo.message).to.equal("Added a page");
     const added = element.items.find((i) => i.new);
     const moving = pageLi(element, added.id)

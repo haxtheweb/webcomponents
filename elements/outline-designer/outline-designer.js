@@ -1293,6 +1293,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       locked: "locked",
       hiddenSubpages: "{count} hidden sub-pages",
       isLocked: "{title} is locked. Unlock it to change it.",
+      insideDeleted: "{title} will be deleted on save. Restore it first.",
       alreadyFirst: "{title} is already first in its group.",
       alreadyLast: "{title} is already last in its group.",
       nothingAbove:
@@ -3087,6 +3088,32 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     );
   }
 
+  /**
+   * The page marked for deletion that a page sits in (itself or an
+   * ancestor), if any. Saving deletes it and moves any kept page left
+   * inside it to the top level, so nothing new may go into it.
+   */
+  _deletedFrom(id) {
+    let item = id ? this.items.find((i) => i.id === id) : null;
+    while (item) {
+      if (item.delete) return item;
+      const parent = item.parent;
+      item = parent ? this.items.find((i) => i.id === parent) : null;
+    }
+    return null;
+  }
+
+  // says why a page cannot go there; true when it cannot
+  _blockedByDeleted(id) {
+    const deleted = this._deletedFrom(id);
+    if (deleted) {
+      this.announceAction(
+        this.t.insideDeleted.replace("{title}", () => deleted.title),
+      );
+    }
+    return !!deleted;
+  }
+
   /* ---------- showing what changed ----------
    * Every change made from the menu, the keyboard, the touch move buttons
    * or a drop goes through _withMotion, so the person can see it happen:
@@ -3811,6 +3838,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       if (parent) this._sayLocked(index);
       return;
     }
+    if (this._blockedByDeleted(parent.id)) return;
     return this._withMotion(
       () => {
         const children = this.items.filter((i) => i.parent === parent.id);
@@ -4691,6 +4719,14 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     if (target.zone === "self" && target.depth === drag.origDepth) {
       return false;
     }
+    const dragged = this.items.find((i) => i.id === drag.id);
+    if (
+      dragged &&
+      !dragged.delete &&
+      this._blockedByDeleted(target.parentId || null)
+    ) {
+      return false;
+    }
     const moved = drag.rows.slice(drag.i, drag.i + drag.count + 1);
     const rest = drag.rows.filter((r) => !drag.ids.has(r.item.id));
     const delta = target.depth - drag.origDepth;
@@ -5048,10 +5084,31 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     if (this.items && this.items.length > 0 && this.items[targetItemIndex]) {
       item = this.items[targetItemIndex];
     }
+    // a new page never goes inside a page marked for deletion
+    if (orderAddon === 1 && this._blockedByDeleted(item.parent)) {
+      return;
+    }
     let newItem = new JSONOutlineSchemaItem();
     newItem.order = item.order + orderAddon;
     newItem.parent = item.parent;
     newItem.indent = item.indent;
+    // make room after the target: the backend breaks order ties by putting
+    // new pages last, so a new page sharing the next sibling's order would
+    // save one place lower than it shows
+    if (orderAddon === 1 && this.items) {
+      this.items.forEach((sibling) => {
+        if (
+          sibling !== item &&
+          (sibling.parent || null) === (newItem.parent || null) &&
+          Number(sibling.order) >= newItem.order
+        ) {
+          sibling.order = Number(sibling.order) + 1;
+          if (!sibling.new) {
+            sibling.modified = true;
+          }
+        }
+      });
+    }
     // slug and location NOT set because backend will fill these in
     newItem.metadata.locked = false;
     newItem.new = true;
@@ -5188,6 +5245,17 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           case "delete":
             if (this.items[index].delete) {
               this.items[index].delete = false;
+              // a kept page cannot stay inside a deleted one: saving would
+              // delete the parent and move this page to the top level, so
+              // restoring it restores the pages above it as well
+              let up = this.items.find(
+                (i) => i.id === this.items[index].parent,
+              );
+              while (up) {
+                if (up.delete) up.delete = false;
+                const next = up.parent;
+                up = next ? this.items.find((i) => i.id === next) : null;
+              }
             } else {
               this.items[index].delete = true;
             }
@@ -5221,6 +5289,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                 sibling = this.items[i];
                 break;
               }
+            }
+            if (sibling && !item.delete && this._blockedByDeleted(sibling.id)) {
+              sibling = null;
             }
             if (sibling) {
               const children = this.items.filter(
