@@ -43,6 +43,24 @@ class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
           background-color: transparent;
           border: none;
         }
+        /* the open menu is editor chrome, so it follows the HAX UI theme
+           (--hax-ui-*, which flips in HAX dark mode) and falls back to the
+           original light colors when used outside of HAX */
+        absolute-position-behavior {
+          --simple-toolbar-button-bg: var(
+            --editable-table-rowcol-menu-bg-color,
+            var(--hax-ui-background-color, var(--ddd-theme-default-white, #fff))
+          );
+          --simple-toolbar-button-color: var(
+            --editable-table-rowcol-menu-color,
+            var(--hax-ui-color, var(--ddd-theme-default-coalyGray, #262626))
+          );
+          --simple-toolbar-button-border-color: var(
+            --editable-table-rowcol-menu-border-color,
+            var(--hax-ui-color-faded, currentColor)
+          );
+          color: var(--simple-toolbar-button-color);
+        }
         [role="menuitem"] {
           --simple-toolbar-button-hover-border-color: transparent;
         }
@@ -50,11 +68,18 @@ class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
         [role="menuitem"]::part(button):focus,
         [role="menuitem"]::part(button):focus-within {
           border: none;
+          color: var(
+            --editable-table-rowcol-hover-color,
+            var(--hax-ui-color-accent, inherit)
+          );
           background-color: var(
             --editable-table-rowcol-hover-bg-color,
             var(
-              --editable-table-stripe-bg-color,
-              var(--ddd-theme-default-limestoneMaxLight, #f0f0f0)
+              --hax-ui-background-color-accent,
+              var(
+                --editable-table-stripe-bg-color,
+                var(--ddd-theme-default-limestoneMaxLight, #f0f0f0)
+              )
             )
           );
         }
