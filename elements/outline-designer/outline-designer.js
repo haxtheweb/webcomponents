@@ -1847,6 +1847,11 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       : "";
   }
 
+  // the tallest tree that still animates with a view transition
+  _vtMaxHeight() {
+    return Math.max(1200, Math.round((globalThis.innerHeight || 800) * 1.5));
+  }
+
   // whether a row takes part in the running view transition: only the
   // rows on screen when it started do, so a long outline does not capture
   // and animate hundreds of rows nobody can see
@@ -3368,12 +3373,17 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       this._visibleItems().map((i) => [i.id, !!i.delete]),
     );
     const wrap = this.shadowRoot.querySelector(".tree-wrap");
+    // a scoped view transition snapshots the whole tree twice, so its
+    // cost grows with the tree's height, not with what changed (a 5500px
+    // tree held a frame for ~400ms); a tall tree slides its on-screen rows
+    // instead
     const useVT =
       slideOn &&
       wrap &&
       typeof wrap.startViewTransition === "function" &&
       !rows &&
-      shownBefore.size <= 400;
+      shownBefore.size <= 400 &&
+      wrap.offsetHeight <= this._vtMaxHeight();
     let info = null;
     let changes = { appeared: [], left: [], flipped: [] };
     let going = [];

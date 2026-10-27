@@ -156,6 +156,8 @@ describe("outline-designer on a large outline", () => {
     const index = el.items.findIndex(
       (i) => i.id === target.getAttribute("data-item-id"),
     );
+    // let the tall tree use a view transition, to see what it names
+    el._vtMaxHeight = () => 1000000;
     let named = -1;
     const start = tree.startViewTransition;
     tree.startViewTransition = function (cb) {
@@ -175,5 +177,33 @@ describe("outline-designer on a large outline", () => {
     // and the list of named rows is let go once the move is shown
     await settle(el);
     expect(el._vtKeys).to.equal(null);
+  });
+
+  it("slides a tall tree's rows instead of snapshotting the whole tree", async () => {
+    const el = await fixture(
+      html`<outline-designer
+        motion-profile="keyboard"
+        reduced-motion="full"
+        .items="${bigOutline()}"
+      ></outline-designer>`,
+    );
+    await settle(el);
+    const tree = el.shadowRoot.querySelector(".tree-wrap");
+    expect(tree.offsetHeight).to.be.greaterThan(el._vtMaxHeight());
+    let started = false;
+    const start = tree.startViewTransition;
+    tree.startViewTransition = function (cb) {
+      started = true;
+      return start ? start.call(this, cb) : cb();
+    };
+    const id = el.items[5].id;
+    try {
+      await el._moveByKeyboard(5, "down");
+    } finally {
+      delete tree.startViewTransition;
+    }
+    expect(started).to.equal(false);
+    // the move still happened
+    expect(el.items.findIndex((i) => i.id === id)).to.not.equal(5);
   });
 });
