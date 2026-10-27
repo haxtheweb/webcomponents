@@ -300,13 +300,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set license and media modifier",
-      "text": "Type the license in the sidebar. modifier picks one of: ."
+      "text": "Fill in the License field in the sidebar. Choose for Media Modifier."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set aiul uri (oer schema)",
-      "text": "Type the aiul uri (oer schema) in the sidebar."
+      "text": "Fill in the AIUL URI (OER Schema) field in the sidebar."
     },
     {
       "t": 14.8,

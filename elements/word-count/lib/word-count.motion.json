@@ -169,7 +169,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set words and words prefix",
-      "text": "Set words=\"…\" in the markup. Set words-prefix=\"…\" in the markup."
+      "text": "Add words and words-prefix attributes to the tag."
     },
     {
       "t": 14.8,

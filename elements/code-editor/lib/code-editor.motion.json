@@ -244,7 +244,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and show code pen",
-      "text": "Set title=\"…\" in the markup. Show codePen button to fork it to there to run."
+      "text": "Add a title attribute to the tag."
     },
     {
       "t": 10,

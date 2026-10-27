@@ -249,13 +249,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set wikipedia and vide",
-      "text": "Add wikipedia to switch wikipedia on. Add vide to switch vide on."
+      "text": "Add the wikipedia attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set fixation point",
-      "text": "Set fixation-point=\"…\" in the markup."
+      "text": "Add a fixation-point attribute to the tag."
     },
     {
       "t": 14.8,

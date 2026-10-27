@@ -169,7 +169,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title",
-      "text": "Set title=\"…\" in the markup."
+      "text": "Add a title attribute to the tag."
     },
     {
       "t": 14.8,

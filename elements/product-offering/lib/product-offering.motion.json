@@ -292,13 +292,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set alt and source",
-      "text": "Set alt=\"…\" in the markup. Set source=\"…\" in the markup."
+      "text": "Add alt and source attributes to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set icon and title",
-      "text": "Set icon=\"…\" in the markup. Set title=\"…\" in the markup."
+      "text": "Add icon and title attributes to the tag."
     },
     {
       "t": 14.8,

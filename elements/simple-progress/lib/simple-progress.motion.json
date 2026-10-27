@@ -229,7 +229,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set disabled",
-      "text": "Set disabled=\"…\" in the markup."
+      "text": "Add a disabled attribute to the tag."
     },
     {
       "t": 14.8,

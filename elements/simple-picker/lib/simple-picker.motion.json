@@ -256,13 +256,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set allow null and align right",
-      "text": "Add allow-null to switch allow null on."
+      "text": "Add the allow-null attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set block label and disabled",
-      "text": "Add block-label to switch block label on. Add disabled to switch disabled on."
+      "text": "Add the block-label attribute to switch it on."
     },
     {
       "t": 14.8,

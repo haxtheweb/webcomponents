@@ -281,7 +281,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set for and manual mode",
-      "text": "Set for=\"…\" in the markup. Add manual-mode to switch manual mode on."
+      "text": "Add a for attribute to the tag. Add the manual-mode attribute to switch it on."
     },
     {
       "t": 10,

@@ -3,6 +3,7 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css, unsafeCSS } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { nodeToHaxElement } from "@haxtheweb/utils/utils.js";
@@ -71,7 +72,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
       tryCodePen: "Try in CodePen",
       insertIntoYourSite: "Insert into your site",
       openPreviewSource: "Open preview source",
-      videoNote: "A short video tutorial for this element.",
+      openTutorial: "Open the full tutorial",
       demo: "Demo",
       docs: "Documentation",
       schema: "Schema",
@@ -508,10 +509,30 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
   /** the video tutorial: video-src wins over the docs data */
   get video() {
     if (this.videoSrc) {
-      return { source: this.videoSrc, title: "" };
+      return { source: this.videoSrc, title: "", captions: "", tutorial: "" };
     }
     const v = this.docs && this.docs.video;
-    return v && v.source ? v : null;
+    if (!v || !v.source) {
+      return null;
+    }
+    return {
+      source: v.source,
+      title: v.title || "",
+      // captions ship next to the docs data, so resolve against its address
+      captions: v.captions ? this._resolve(v.captions, this.docsSrc) : "",
+      tutorial: v.tutorial || "",
+    };
+  }
+
+  _resolve(file, from) {
+    try {
+      const base = from
+        ? new URL(from, this._baseForLoads()).href
+        : this._baseForLoads();
+      return new URL(file, base).href;
+    } catch {
+      return file;
+    }
   }
 
   /** markup of the children, for elements documented the original way */
@@ -975,9 +996,21 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
     >
       ${v
         ? html`<video-player
-            source="${v.source}"
-            media-title="${v.title || ""}"
-          ></video-player>`
+              source="${v.source}"
+              media-title="${v.title}"
+              track="${ifDefined(v.captions || undefined)}"
+            ></video-player>
+            ${v.tutorial
+              ? html`<div class="row">
+                  <a
+                    class="btn"
+                    href="${v.tutorial}"
+                    target="_blank"
+                    rel="noopener"
+                    >${this.t.openTutorial}</a
+                  >
+                </div>`
+              : ""}`
         : html`<slot></slot>`}
     </section>`;
   }

@@ -247,13 +247,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set nextlabel and no prev next",
-      "text": "Set nextLabel=\"…\" in the markup. Add no-prev-next to switch no prev next on."
+      "text": "Add a nextLabel attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set no buttons and prevlabel",
-      "text": "Add no-buttons to switch no buttons on. Set prevLabel=\"…\" in the markup."
+      "text": "Add the no-buttons attribute to switch it on."
     },
     {
       "t": 14.8,

@@ -256,13 +256,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set always expanded",
-      "text": "Add always-expanded to switch always expanded on."
+      "text": "Add the always-expanded attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set config and more shortcuts",
-      "text": "Set config=\"…\" in the markup. Set more-shortcuts=\"…\" in the markup."
+      "text": "Add config and more-shortcuts attributes to the tag."
     },
     {
       "t": 14.8,

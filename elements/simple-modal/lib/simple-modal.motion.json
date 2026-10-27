@@ -350,13 +350,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and opened",
-      "text": "Heading / label of the modal. Add opened to switch opened on."
+      "text": "Heading / label of the modal. Add the opened attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set close label and close icon",
-      "text": "Set close-label=\"…\" in the markup. Set close-icon=\"…\" in the markup."
+      "text": "Add close-label and close-icon attributes to the tag."
     },
     {
       "t": 14.8,

@@ -260,13 +260,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set fields and schematizer",
-      "text": "Fields to convert to JSON Schema. Set schematizer=\"…\" in the markup."
+      "text": "Fields to convert to JSON Schema. Add a schematizer attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set label and active path",
-      "text": "Set label=\"…\" in the markup. Tracks all activeTabs as an object."
+      "text": "Add a label attribute to the tag. Tracks all activeTabs as an object."
     },
     {
       "t": 14.8,

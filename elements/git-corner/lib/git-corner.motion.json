@@ -254,7 +254,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set source and alt",
-      "text": "Source to point to. Set alt=\"…\" in the markup."
+      "text": "Source to point to. Add a alt attribute to the tag."
     },
     {
       "t": 10,

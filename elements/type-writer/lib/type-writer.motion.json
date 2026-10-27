@@ -309,13 +309,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set delay and cursor duration",
-      "text": "Type the delay in the sidebar. Type the cursor duration in the sidebar."
+      "text": "Fill in the Delay and Cursor duration fields in the sidebar."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set text and speed",
-      "text": "Type the text in the sidebar. Type the speed in the sidebar."
+      "text": "Fill in the Text and Speed fields in the sidebar."
     },
     {
       "t": 14.8,

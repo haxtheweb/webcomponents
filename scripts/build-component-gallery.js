@@ -235,6 +235,14 @@ function getComponentInfo() {
           } catch (err) {
             docs = null;
           }
+          // video captions ship next to the element's docs data; the player
+          // looks for them next to the docs file it loaded, so copy them over
+          if (docs && docs.video && docs.video.captions) {
+            const from = path.join(elementPath, "lib", docs.video.captions);
+            if (fs.existsSync(from)) {
+              fs.copyFileSync(from, path.join(DOCS_DIR, docs.video.captions));
+            }
+          }
           const motionStatus =
             docs && docs.motion ? docs.motion.status : "none";
 

@@ -170,7 +170,17 @@ Each element's `yarn build` ends with `node ../../scripts/extract-element-docs.m
 | --- | --- | --- |
 | `lib/<tag>.docs.json` | the element build (generated, do not edit) | attributes, slots, events, HAX schema, snippets, surface hash |
 | `lib/<tag>.motion.json` | a person, or `draft-element-walkthrough.mjs` | the animated walkthrough |
-| `lib/<tag>.video.json` | a person | `{ "source": "<YouTube, Vimeo or file URL>", "title": "..." }` for a short video tutorial, shown in the Video tab |
+| `lib/<tag>.video.json` | `scripts/link-element-tutorial.mjs` (or a person) | `{ "source", "title", "captions", "tutorial" }`: the short video tutorial shown in the Video tab, its captions file and a link to the full tutorial page |
+| `lib/<tag>.captions.vtt` | `scripts/link-element-tutorial.mjs` | WebVTT captions for that video |
+
+### Linking a video tutorial
+
+```bash
+node scripts/link-element-tutorial.mjs <element> --video <YouTube URL> \
+  --title "<video title>" --captions <transcript.vtt> --tutorial <tutorial page URL>
+```
+
+The `hax-tutorial-site` skill runs this for you when a tutorial is about an element, then opens a pull request. Running it again replaces the earlier link.
 
 ### Walkthrough status
 

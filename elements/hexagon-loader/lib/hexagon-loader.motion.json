@@ -262,7 +262,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set loading and item count",
-      "text": "Add loading to switch loading on. Count of the items."
+      "text": "Add the loading attribute to switch it on. Count of the items."
     },
     {
       "t": 14.8,

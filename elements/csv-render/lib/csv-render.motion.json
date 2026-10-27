@@ -314,7 +314,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set debounce delay and caption",
-      "text": "Set debounce-delay=\"…\" in the markup."
+      "text": "Add a debounce-delay attribute to the tag."
     },
     {
       "t": 10,

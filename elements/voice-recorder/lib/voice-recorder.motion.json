@@ -203,7 +203,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set recording and label",
-      "text": "Add recording to switch recording on. Set label=\"…\" in the markup."
+      "text": "Add the recording attribute to switch it on. Add a label attribute to the tag."
     },
     {
       "t": 14.8,

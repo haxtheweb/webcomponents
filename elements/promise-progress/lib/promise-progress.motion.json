@@ -346,13 +346,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set max and value",
-      "text": "Set max=\"…\" in the markup. Set value=\"…\" in the markup."
+      "text": "Add max and value attributes to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set list and show count",
-      "text": "Set list=\"…\" in the markup. Add show-count to switch show count on."
+      "text": "Add a list attribute to the tag. Add the show-count attribute to switch it on."
     },
     {
       "t": 14.8,

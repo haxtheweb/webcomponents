@@ -292,13 +292,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and scope",
-      "text": "Title of the work. Set scope=\"…\" in the markup."
+      "text": "Title of the work. Add a scope attribute to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set display method and creator",
-      "text": "Set display-method=\"…\" in the markup."
+      "text": "Add a display-method attribute to the tag."
     },
     {
       "t": 14.8,

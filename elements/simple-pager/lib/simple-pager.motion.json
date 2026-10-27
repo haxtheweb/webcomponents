@@ -339,13 +339,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set limit and offset",
-      "text": "Set limit=\"…\" in the markup. Set offset=\"…\" in the markup."
+      "text": "Add limit and offset attributes to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set total and count",
-      "text": "Set total=\"…\" in the markup. Set count=\"…\" in the markup."
+      "text": "Add total and count attributes to the tag."
     },
     {
       "t": 14.8,

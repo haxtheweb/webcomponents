@@ -24,7 +24,8 @@
  *
  * Walkthrough storyboards live at elements/<name>/lib/<tag>.motion.json and an
  * optional video tutorial at elements/<name>/lib/<tag>.video.json
- * ({ "source": "<YouTube, Vimeo or file URL>", "title": "..." }).
+ * ({ "source", "title", "captions", "tutorial" }, written by
+ * scripts/link-element-tutorial.mjs).
  * Status per element: none | stale | awaiting | reviewed
  *
  * Node built-ins only.

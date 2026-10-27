@@ -170,18 +170,40 @@ function shortName(r) {
 }
 
 /** one sentence about what a setting does */
+/** the setting's label as people see it in the HAX sidebar */
+const fieldLabel = (r) => {
+  const t = humanize(r.title || r.attr || r.name);
+  return t.charAt(0).toUpperCase() + t.slice(1);
+};
+
+/** whether a setting has a description worth showing as is */
+function goodDesc(r) {
+  const d = (r.desc || "").replace(/\s+/g, " ").trim();
+  return d.length > 14 && d.length <= 78 && !/\?$/.test(d) && /[a-z]/.test(d) && !/^(todo|@|https?:)/i.test(d);
+}
+
+/** one sentence about what a setting does */
 function captionFor(r, hax) {
   const name = r.attr || r.name;
-  const d = (r.desc || "").replace(/\s+/g, " ").trim();
-  const good = d.length > 14 && d.length <= 78 && !/\?$/.test(d) && /[a-z]/.test(d) && !/^(todo|@|https?:)/i.test(d);
-  if (good) return sentence(d.replace(/\.?$/, "."));
+  if (goodDesc(r)) return sentence(r.desc.replace(/\s+/g, " ").trim().replace(/\.?$/, "."));
   if (r.input === "boolean")
-    return hax ? `Switch ${shortName(r)} on or off in the sidebar.` : `Add ${name} to switch ${shortName(r)} on.`;
-  if (r.input === "select" && r.options.length) return clip(`${name} picks one of: ${r.options.slice(0, 4).join(", ")}.`, 80);
-  if (r.input === "haxupload") return `Upload a file or paste a link for ${shortName(r)}.`;
-  if (r.input === "colorpicker") return `${name} sets the color.`;
-  if (r.slot !== null) return `The ${shortName(r)} goes inside the tag as content.`;
-  return hax ? `Type the ${shortName(r)} in the sidebar.` : `Set ${name}="…" in the markup.`;
+    return hax ? `Switch ${fieldLabel(r)} on or off in the sidebar.` : `Add the ${name} attribute to switch it on.`;
+  if (r.input === "select" && r.options.length) return clip(`Choose ${r.options.slice(0, 3).join(", ")}${r.options.length > 3 ? " and more" : ""} for ${fieldLabel(r)}.`, 80);
+  if (r.input === "haxupload") return `Upload a file or paste a link for ${fieldLabel(r)}.`;
+  if (r.input === "colorpicker") return `Pick a color for ${fieldLabel(r)}.`;
+  if (r.slot !== null) return `${fieldLabel(r)} goes inside the tag as content.`;
+  return hax ? `Fill in the ${fieldLabel(r)} field in the sidebar.` : `Add a ${name} attribute to the tag.`;
+}
+
+/** two settings in one sentence when neither has its own description */
+function captionForPair(a, b, hax) {
+  const plain = (r) => !goodDesc(r) && r.slot === null && !["boolean", "select", "haxupload", "colorpicker"].includes(r.input);
+  if (plain(a) && plain(b)) {
+    return hax
+      ? `Fill in the ${fieldLabel(a)} and ${fieldLabel(b)} fields in the sidebar.`
+      : `Add ${a.attr || a.name} and ${b.attr || b.name} attributes to the tag.`;
+  }
+  return `${captionFor(a, hax)} ${captionFor(b, hax)}`;
 }
 
 function exampleValue(r) {
@@ -478,7 +500,7 @@ export function draftWalkthrough(d) {
     const title = both.length <= 30 ? both : clip(`Set ${names[0]}`, 30);
     let text = captionFor(rs[0], hax);
     if (rs[1]) {
-      const more = `${text} ${captionFor(rs[1], hax)}`;
+      const more = captionForPair(rs[0], rs[1], hax);
       if (more.length <= 80) text = more;
     }
     return { title, text: clip(text, 80) };

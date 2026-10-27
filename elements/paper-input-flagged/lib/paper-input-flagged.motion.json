@@ -289,13 +289,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set label and disabled",
-      "text": "Set label=\"…\" in the markup. Add disabled to switch disabled on."
+      "text": "Add a label attribute to the tag. Add the disabled attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set char counter and icon",
-      "text": "Add char-counter to switch char counter on. Set icon=\"…\" in the markup."
+      "text": "Add the char-counter attribute to switch it on. Add a icon attribute to the tag."
     },
     {
       "t": 14.8,

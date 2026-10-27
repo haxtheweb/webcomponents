@@ -256,7 +256,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set timestamp and format",
-      "text": "Javascript timestamp. Set format=\"…\" in the markup."
+      "text": "Javascript timestamp. Add a format attribute to the tag."
     },
     {
       "t": 10,

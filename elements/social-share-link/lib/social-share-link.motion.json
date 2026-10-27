@@ -287,13 +287,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set button style and dark",
-      "text": "Display link as a button. Add dark to switch dark on."
+      "text": "Display link as a button. Add the dark attribute to switch it on."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set disabled and image",
-      "text": "Add disabled to switch disabled on."
+      "text": "Add the disabled attribute to switch it on."
     },
     {
       "t": 14.8,

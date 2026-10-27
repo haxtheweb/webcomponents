@@ -507,6 +507,31 @@ describe("DocumentationPlayer video tutorial", () => {
     expect(element.video.title).to.equal("How to");
   });
 
+  it("adds captions and a link to the full tutorial", async () => {
+    const element = await fixture(
+      html`<documentation-player
+        docs-src="https://cdn.example.com/x-demo/lib/x-demo.docs.json"
+        .docs="${{
+          ...docs,
+          video: {
+            source: "https://www.youtube.com/watch?v=LrS7dqokTLE",
+            title: "How to",
+            captions: "x-demo.captions.vtt",
+            tutorial: "https://tutorial.example.com/",
+          },
+        }}"
+        tab="video"
+      ></documentation-player>`,
+    );
+    await element.updateComplete;
+    expect(element.video.captions).to.equal(
+      "https://cdn.example.com/x-demo/lib/x-demo.captions.vtt",
+    );
+    const link = element.shadowRoot.querySelector("#p-video a");
+    expect(link.getAttribute("href")).to.equal("https://tutorial.example.com/");
+    expect(link.textContent).to.include("Open the full tutorial");
+  });
+
   it("leaves the Video tab out when there is nothing to play", async () => {
     const element = await fixture(
       html`<documentation-player .docs="${docs}"></documentation-player>`,

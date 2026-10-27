@@ -404,7 +404,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set scale name",
-      "text": "scale picks one of: ct-square, ct-minor-second, ct-major-second, ct-minor-third."
+      "text": "Choose ct-square, ct-minor-second, ct-major-second and more for Scale Name."
     },
     {
       "t": 10,

@@ -245,7 +245,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set src and sources",
-      "text": "Set src=\"…\" in the markup. Array of image sources."
+      "text": "Add a src attribute to the tag. Array of image sources."
     },
     {
       "t": 10,

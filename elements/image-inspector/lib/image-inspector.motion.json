@@ -247,13 +247,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set degrees and src",
-      "text": "Set degrees=\"…\" in the markup. Set src=\"…\" in the markup."
+      "text": "Add degrees and src attributes to the tag."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set hover class and no left",
-      "text": "Hover class for button styling. Add no-left to switch no left on."
+      "text": "Hover class for button styling. Add the no-left attribute to switch it on."
     },
     {
       "t": 14.8,

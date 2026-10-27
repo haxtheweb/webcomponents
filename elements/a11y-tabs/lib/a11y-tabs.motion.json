@@ -416,7 +416,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set icon breakpoint",
-      "text": "Type the icon breakpoint in the sidebar. Unique ID for this tab set."
+      "text": "Fill in the Icon Breakpoint field in the sidebar. Unique ID for this tab set."
     },
     {
       "t": 14.8,

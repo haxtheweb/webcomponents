@@ -252,7 +252,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set disable hover",
-      "text": "Don't reveal toolbar on mouseover. Set toolbar-id=\"…\" in the markup."
+      "text": "Don't reveal toolbar on mouseover. Add a toolbar-id attribute to the tag."
     },
     {
       "t": 14.8,

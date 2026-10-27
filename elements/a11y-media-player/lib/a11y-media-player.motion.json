@@ -281,7 +281,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set allow concurrent",
-      "text": "Add allow-concurrent to switch allow concurrent on."
+      "text": "Add the allow-concurrent attribute to switch it on."
     },
     {
       "t": 10,
