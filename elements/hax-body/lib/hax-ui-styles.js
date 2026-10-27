@@ -599,6 +599,20 @@ export const HaxUiAdminTokens = [
           transparent
         )
       );
+      /* rows that belong to the row above (a page's content structure):
+         a lighter wash than hover, so hovering one still shows */
+      --hax-ui-content-group: light-dark(
+        color-mix(
+          in srgb,
+          var(--ddd-theme-default-limestoneMaxLight, #f2f2f4) 55%,
+          transparent
+        ),
+        color-mix(
+          in srgb,
+          var(--ddd-theme-default-white, #ffffff) 4%,
+          transparent
+        )
+      );
       --hax-ui-accent: var(
         --hax-ui-color-accent,
         light-dark(

@@ -177,13 +177,23 @@ describe("outline-designer item operations", () => {
     const contentChildren = element.shadowRoot.querySelectorAll(
       '[data-content-parent-id="p1"]',
     );
-    // the two content nodes of the page (the content-adding operations
-    // row is tracked by data-item-for-content-id, not the parent id)
+    // the two content nodes of the page, right under it: with no blocks
+    // to offer there is no (empty) content-adding row before them
     expect(contentChildren.length).to.equal(2);
     expect(
-      element.shadowRoot.querySelector('[data-item-for-content-id="p1"]') ===
-        null,
-    ).to.equal(false);
+      element.shadowRoot.querySelector('[data-item-for-content-id="p1"]'),
+    ).to.equal(null);
+    const pageRow = pageLi(element, "p1");
+    expect(pageRow.classList.contains("content-open")).to.equal(true);
+    expect(pageRow.nextElementSibling).to.equal(contentChildren[0]);
+    // the last one ends the line that joins them to the page
+    expect(contentChildren[1].classList.contains("last")).to.equal(true);
+    expect(contentChildren[0].classList.contains("last")).to.equal(false);
+    // rows have a fixed height, so their tree lines draw
+    expect(
+      contentChildren[0].querySelector(".cols").getBoundingClientRect().height >
+        0,
+    ).to.equal(true);
     // toggling again hides the content
     pageLi(element, "p1").querySelector(".content-toggle-btn").click();
     await settle(element);

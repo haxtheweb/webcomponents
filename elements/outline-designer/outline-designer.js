@@ -893,16 +893,38 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           align-items: center;
         }
 
-        /* page content structure rows */
+        /* page content structure rows: tucked under their page, a little
+           shorter, tinted as one group, and joined to the page by a line
+           that runs down from its dot or chevron and branches to each */
         li.content-child,
         li.content-adding-operations {
           position: relative;
           display: flex;
           align-items: center;
-          min-height: var(--outline-designer-row-height);
           padding: 0 var(--hax-ui-gap-md);
           font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
+          background-color: var(--hax-ui-content-group);
+        }
+        li.content-child {
+          /* a fixed height so the tree lines (height: 100%) can draw */
+          height: calc(var(--outline-designer-row-height) - 4px);
+        }
+        li.content-child.last {
+          border-end-start-radius: var(--hax-ui-radius);
+          border-end-end-radius: var(--hax-ui-radius);
+        }
+        li.content-child.last .ln.content-bot {
+          display: none;
+        }
+        li.item.content-open .toggle::after {
+          content: "";
+          position: absolute;
+          left: calc(50% - 0.5px);
+          top: calc(50% + 4px);
+          bottom: 0;
+          width: 1px;
+          background-color: var(--hax-ui-line);
         }
         li.content-child:hover {
           background-color: var(--hax-ui-hover);
@@ -1242,6 +1264,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       indent: "Indent",
       outdent: "Outdent",
       addContentType: "Add {title}",
+      contentOfPage: "{content}, in {title}",
+      headingLabel: "Heading",
       clickToPreview: "Click to preview",
       increaseHeading: "Increase heading",
       decreaseHeading: "Decrease Heading",
@@ -1766,7 +1790,16 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     for (let d = 1; d <= entry.depth; d++) {
       const g = this._groupKey(entry.anc, d);
       const cont = entry.cont[d];
-      if (d < entry.depth || mode === "contents") {
+      if (mode === "contents" && d === entry.depth) {
+        // the page's own column: each content row branches off a line
+        // running down from the page, which stops at the last one
+        cols.push(
+          html`<span class="col"
+            ><i class="ln top"></i><i class="ln tick"></i
+            ><i class="ln bot content-bot"></i
+          ></span>`,
+        );
+      } else if (d < entry.depth || mode === "contents") {
         cols.push(
           html`<span class="col"
             >${cont
@@ -2085,9 +2118,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         @mouseenter="${this.setActiveItemForActions}"
         @click="${this.handleItemClick}"
         @contextmenu="${this._onContextMenu}"
-        class="item indent-${item.indent < 20
-          ? item.indent
-          : 20} ${item.modified
+        class="item indent-${item.indent < 20 ? item.indent : 20} ${!this
+          .hideContentOps && item.showContent
+          ? "content-open"
+          : ""} ${item.modified
           ? "modified"
           : ""} ${this.getItemParentsCollapsed(item)} ${this.activePage ===
         item.id
@@ -2391,6 +2425,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             item,
             parseInt(item.indent) + activeHeadingDepth + modifier,
             cols,
+            index === div.childNodes.length - 1,
           ),
         );
       });
@@ -2399,7 +2434,14 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
   }
   // support very, very, very basic content adding
   itemContentsOperations(item, cols = nothing) {
+    // nothing to offer: no row (an empty one only left a gap)
+    if (!this.haxGizmos || !this.haxGizmos.length) {
+      return nothing;
+    }
     return html` <li
+      role="treeitem"
+      aria-level="${parseInt(item.indent) + 2}"
+      tabindex="-1"
       class="content-adding-operations indent-${item.indent < 20
         ? item.indent
         : 20}"
@@ -2415,6 +2457,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             class="operation"
             icon="${gizmo.icon}"
             value="${gizmo.tag}"
+            label="${this.t.addContentType.replace(
+              "{title}",
+              () => gizmo.title,
+            )}"
             @click="${this.prependNodeToContent}"
             >${this.t.addContentType.replace(
               "{title}",
@@ -2454,7 +2500,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     });
   }
   // render a content node within an item
-  renderNodeAsItem(node, index, item, indent, cols = nothing) {
+  renderNodeAsItem(node, index, item, indent, cols = nothing, last = false) {
     let tagName = node.tagName.toLowerCase();
     let icon = "hax:bricks";
     let label = tagName;
@@ -2476,8 +2522,20 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           break;
       }
     }
+    // a child of its page in the tree, one level below it, outside the
+    // arrow-key page navigation (tabindex -1)
     return html` <li
-      class="content-child content-${part} indent-${indent < 20 ? indent : 20}"
+      role="treeitem"
+      aria-level="${parseInt(item.indent) + 2}"
+      aria-label="${this.t.contentOfPage
+        .replace("{content}", () =>
+          part === "heading" ? `${this.t.headingLabel}: ${label}` : label,
+        )
+        .replace("{title}", () => item.title)}"
+      tabindex="-1"
+      class="content-child content-${part} indent-${indent < 20
+        ? indent
+        : 20} ${last ? "last" : ""}"
       data-node-index="${index}"
       data-content-parent-id="${item.id}"
       ?data-contents-collapsed="${!item.showContent}"

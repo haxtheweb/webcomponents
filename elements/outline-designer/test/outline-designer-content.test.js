@@ -109,7 +109,7 @@ describe("outline-designer content operations", () => {
     await new Promise((resolve) => setTimeout(resolve, 20));
   });
 
-  it("renders content nodes as children with heading semantics", () => {
+  it("renders content nodes as children with heading semantics", async () => {
     const heading = contentLi(element, "p1", 0);
     const para = contentLi(element, "p1", 1);
     expect(heading === null).to.equal(false);
@@ -130,7 +130,16 @@ describe("outline-designer content operations", () => {
         .querySelector('[title="Increase heading"]')
         .hasAttribute("hidden"),
     ).to.equal(false);
-    // the operations row renders for the page
+    // no blocks to offer: no (empty) operations row
+    expect(
+      element.shadowRoot.querySelector('[data-item-for-content-id="p1"]'),
+    ).to.equal(null);
+    // with blocks to offer, the row renders for the page
+    element.haxGizmos = [
+      { tag: "gizmo", icon: "icons:code", title: "Text block" },
+    ];
+    element.requestUpdate();
+    await settle(element);
     expect(
       element.shadowRoot.querySelector('[data-item-for-content-id="p1"]') ===
         null,

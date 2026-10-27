@@ -102,6 +102,27 @@ describe("outline-designer accessibility", () => {
       await expect(element).shadowDom.to.be.accessible();
     });
 
+    it("passes with a page's content structure open", async () => {
+      element.items.find((i) => i.id === "c1").showContent = true;
+      element.items.find((i) => i.id === "p2").showContent = true;
+      element.requestUpdate();
+      await settle(element);
+      expect(
+        element.shadowRoot.querySelectorAll("li.content-child").length > 0,
+      ).to.equal(true);
+      await expect(element).shadowDom.to.be.accessible(); // and with blocks offered to add
+      element.haxGizmos = [
+        { tag: "video-player", icon: "av:av", title: "Video" },
+      ];
+      element.requestUpdate();
+      await settle(element);
+      expect(
+        element.shadowRoot.querySelector("li.content-adding-operations") ===
+          null,
+      ).to.equal(false);
+      await expect(element).shadowDom.to.be.accessible();
+    });
+
     it("passes in every density", async () => {
       for (const density of ["compact", "roomy"]) {
         element.setDensity(density);
