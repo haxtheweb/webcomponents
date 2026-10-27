@@ -28,7 +28,7 @@ class SimplePopoverManager extends LitElement {
           display: flex;
           --simple-popover-padding: 0;
           --simple-icon-button-border: 1px solid
-            var(--simple-tour-border-color, #ddd);
+            var(--simple-tour-border-color, light-dark(#ddd, #444));
           --simple-icon-button-border-radius: 3px;
         }
         simple-popover[hidden] {
@@ -39,9 +39,10 @@ class SimplePopoverManager extends LitElement {
           flex: 0 0 auto;
           background-color: var(
             --simple-tour-titlebar-background-color,
-            #f0f4f8
+            light-dark(#f0f4f8, #262626)
           );
-          border-bottom: 1px solid var(--simple-tour-border-color, #ddd);
+          border-bottom: 1px solid
+            var(--simple-tour-border-color, light-dark(#ddd, #444));
           line-height: 130%;
           padding: var(--simple-tour-padding-sm, 2px)
             var(--simple-tour-padding-sm, 2px)
@@ -57,7 +58,10 @@ class SimplePopoverManager extends LitElement {
           flex: 1 1 auto;
           padding: var(--simple-tour-padding-sm, 2px)
             var(--simple-tour-padding-lg, 10px);
-          background-color: var(--simple-tour-background-color, #fff);
+          background-color: var(
+            --simple-tour-background-color,
+            light-dark(#fff, #000)
+          );
         }
         .nav {
           flex: 0 0 auto;
@@ -68,7 +72,16 @@ class SimplePopoverManager extends LitElement {
           justify-content: space-between;
           position: sticky;
           bottom: 0;
-          background-color: var(--simple-tour-background-color, #fff);
+          background-color: var(
+            --simple-tour-background-color,
+            light-dark(#fff, #000)
+          );
+        }
+        /* popovers driven by simple-popover-selection only fill the body,
+           so collapse the empty heading and nav instead of leaving a strip */
+        .heading.empty,
+        .nav.empty {
+          display: none;
         }
         ::slotted(.title) {
           font-size: var(--simple-tour-titlebar-font-size, 14px);
@@ -83,17 +96,35 @@ class SimplePopoverManager extends LitElement {
         }
         ::slotted(simple-icon-button-lite) {
           flex: 1 1 auto;
-          background-color: var(--simple-tour-background-color, #fff);
+          background-color: var(
+            --simple-tour-background-color,
+            light-dark(#fff, #000)
+          );
         }
         ::slotted(simple-icon-button-lite[slot="heading"]) {
           flex: 0 0 auto;
         }
         ::slotted(simple-icon-button-lite:focus-within),
         ::slotted(simple-icon-button-lite:hover) {
-          --simple-icon-button-border: 1px solid #000;
+          --simple-icon-button-border: 1px solid light-dark(#000, #fff);
         }
       `,
     ];
+  }
+  /**
+   * toggle the empty class on a heading / nav wrapper based on whether
+   * anything is assigned to its slot
+   */
+  _slotEmptyCheck(e) {
+    const slot = e.target;
+    const filled = slot
+      .assignedNodes({ flatten: true })
+      .some(
+        (n) =>
+          n.nodeType === Node.ELEMENT_NODE ||
+          (n.nodeType === Node.TEXT_NODE && n.textContent.trim() !== ""),
+      );
+    slot.parentNode.classList.toggle("empty", !filled);
   }
   render() {
     return html`
@@ -104,14 +135,14 @@ class SimplePopoverManager extends LitElement {
         position="${this.position}"
         fit-to-visible-bounds
       >
-        <div class="heading" part="simple-popover-heading">
-          <slot name="heading"></slot>
+        <div class="heading empty" part="simple-popover-heading">
+          <slot name="heading" @slotchange="${this._slotEmptyCheck}"></slot>
         </div>
         <div class="body" part="simple-popover-body">
           <slot name="body"></slot>
         </div>
-        <div class="nav" part="simple-popover-nav">
-          <slot name="nav"></slot>
+        <div class="nav empty" part="simple-popover-nav">
+          <slot name="nav" @slotchange="${this._slotEmptyCheck}"></slot>
         </div>
       </simple-popover>
     `;
