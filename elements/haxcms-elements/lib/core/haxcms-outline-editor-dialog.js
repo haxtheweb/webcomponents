@@ -6,6 +6,7 @@ import "@haxtheweb/json-outline-schema/json-outline-schema.js";
 import "@haxtheweb/outline-designer/outline-designer.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 /**
  * `haxcms-outline-editor-dialog`
  * `Dialog for presenting an editable outline`
@@ -21,20 +22,31 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
   static get styles() {
     return [
       css`
+        /* fill the modal below its titlebar so the outline is the one
+           thing that scrolls: the modal's height less its titlebar, its
+           content padding and the margin around its empty buttons area */
         :host {
-          display: block;
-          height: 70vh;
-          overflow: auto;
+          display: flex;
+          flex-direction: column;
+          height: calc(
+            var(--simple-modal-height, 80vh) - var(
+                --simple-modal-titlebar-height,
+                80px
+              ) - var(--ddd-spacing-10)
+          );
+          overflow: hidden;
           font-family: var(--ddd-font-navigation);
         }
+        outline-designer {
+          flex: 1 1 auto;
+          min-height: 0;
+          overflow: auto;
+          margin-bottom: 0;
+          overscroll-behavior: contain;
+        }
         .buttons {
-          position: absolute;
-          bottom: 0;
-          z-index: 1000000;
-          background-color: var(--simple-modal-titlebar-background, #000000);
-          left: 0;
-          right: 0px;
-          padding-left: 8px;
+          flex: none;
+          padding-top: var(--ddd-spacing-2);
         }
         .buttons button {
           color: black;
@@ -53,7 +65,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         button.hax-modal-btn {
           font-size: var(--ddd-font-size-s);
           padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
-          margin: var(--ddd-spacing-2);
+          margin: 0;
           color: white;
           background-color: var(--ddd-theme-default-skyBlue);
           border: 2px solid
@@ -65,9 +77,6 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           font-family: var(--ddd-font-navigation);
           cursor: pointer;
           transition: background-color var(--ddd-duration-normal, 0.3s) ease;
-        }
-        button.hax-modal-btn.import {
-          margin-left: var(--ddd-spacing-3);
         }
         button.hax-modal-btn:hover,
         button.hax-modal-btn:focus {
@@ -92,13 +101,18 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         @outline-designer-request-navigate="${this._outlineNavigateRequested}"
         .hidden="${this.viewMode}"
         .items="${this.manifestItems}"
-      ></outline-designer>
+      >
+        <simple-toolbar-button
+          slot="controls"
+          icon="file-upload"
+          label="${this.t.import}"
+          show-text-label
+          @click="${this._importTap}"
+        ></simple-toolbar-button>
+      </outline-designer>
       <div class="buttons">
         <button @click="${this._saveTap}" class="hax-modal-btn">
           ${this.t.save}
-        </button>
-        <button @click="${this._importTap}" class="hax-modal-btn import">
-          ${this.t.import}
         </button>
       </div>
     `;
@@ -119,7 +133,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     this.t = {
       ...this.t,
       save: "Save Outline",
-      import: "Import From File",
+      import: "Import from file",
       outlineNewPageCreated: "{count} new page will be created",
       outlineNewPagesCreated: "{count} new pages will be created",
       outlinePageUpdated: "{count} page will be updated",

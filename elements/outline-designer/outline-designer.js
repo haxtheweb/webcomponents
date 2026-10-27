@@ -115,7 +115,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
         .controls {
           position: sticky;
-          top: -16px;
+          top: var(--outline-designer-sticky-top, 0);
           display: flex;
           flex-wrap: wrap;
           align-items: center;
@@ -124,7 +124,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             var(--ddd-theme-default-white),
             var(--ddd-primary-4)
           );
-          z-index: 1;
+          /* above rows' toggles (1), nudge (2) and dropline (3) */
+          z-index: 4;
           padding: var(--ddd-spacing-2) 0;
           border-bottom: var(--ddd-border-xs);
           border-color: light-dark(
@@ -201,7 +202,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             var(--ddd-theme-default-keystoneYellow);
           outline-offset: 2px;
         }
-        .controls simple-toolbar-button.control {
+        .controls simple-toolbar-button.control,
+        .controls ::slotted(simple-toolbar-button) {
           margin: 0;
           --simple-toolbar-button-height: var(--ddd-icon-md);
           --simple-toolbar-button-min-width: var(--ddd-icon-md);
@@ -222,7 +224,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
             var(--ddd-accent-6)
           );
         }
-        .controls simple-toolbar-button.control:hover {
+        .controls simple-toolbar-button.control:hover,
+        .controls ::slotted(simple-toolbar-button:hover) {
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-primary-5)
@@ -270,7 +273,8 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           right: 0;
         }
         /* toolbar buttons at row height, with their words showing */
-        .controls simple-toolbar-button.control {
+        .controls simple-toolbar-button.control,
+        .controls ::slotted(simple-toolbar-button) {
           --simple-toolbar-button-height: var(--hax-ui-row-height);
           --simple-toolbar-button-min-width: var(--hax-ui-row-height);
           --simple-toolbar-button-padding: 0 var(--hax-ui-gap-md);
@@ -731,6 +735,21 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         .drag-ghost .ghost-count {
           font-weight: var(--ddd-font-weight-regular, 400);
           color: var(--hax-ui-text-muted);
+        }
+        /* status and keyboard hints stay in view while the outline
+           scrolls, when there is room for them */
+        .footer {
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-primary-4)
+          );
+        }
+        @media (min-height: 600px) {
+          .footer {
+            position: sticky;
+            bottom: var(--outline-designer-sticky-bottom, 0);
+            z-index: 4;
+          }
         }
         .drag-status {
           min-height: var(--hax-ui-row-height);
@@ -1536,6 +1555,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
               </button>`,
           )}
         </div>
+        <slot name="controls"></slot>
         <span class="summary">${this._summaryText()}</span>
       </div>
       <div class="tree-wrap">
@@ -1579,64 +1599,68 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                 : ``}`
           : ``}
       </div>
-      <div class="drag-status ${this._drag || this._undo ? "live" : ""}">
-        <span class="status-text" aria-hidden="true"
-          >${this._drag
-            ? this._statusText
-            : this._undo
-              ? this._undo.message
-              : this._coarsePointer()
-                ? this.t.touchDragHint
-                : this.t.dragHint}</span
-        >
-        ${this._undo && !this._drag
-          ? html`<button
-              type="button"
-              class="undo-btn"
-              aria-label="${this.t.undoAction.replace(
-                "{action}",
-                () => this._undo.message,
-              )}"
-              @click="${this.undo}"
-            >
-              ${this.t.undo}
-            </button>`
-          : nothing}
-      </div>
-      <div class="hints" id="hints">
-        <span class="hax-ui-sr-only">${this.t.keyboardHelp}:</span>
-        <span
-          ><kbd class="hax-ui-kbd">↑</kbd><kbd class="hax-ui-kbd">↓</kbd> ${this
-            .t.hintFocus}</span
-        >
-        <span
-          ><kbd class="hax-ui-kbd">←</kbd><kbd class="hax-ui-kbd">→</kbd> ${this
-            .t.hintFold}</span
-        >
-        <span
-          ><kbd class="hax-ui-kbd">Alt</kbd>+<kbd class="hax-ui-kbd">↑</kbd
-          ><kbd class="hax-ui-kbd">↓</kbd> ${this.t.hintReorder}</span
-        >
-        <span
-          ><kbd class="hax-ui-kbd">Alt</kbd>+<kbd class="hax-ui-kbd">←</kbd
-          ><kbd class="hax-ui-kbd">→</kbd> ${this.t.hintIndent}</span
-        >
-        <span
-          ><kbd class="hax-ui-kbd">Enter</kbd> /
-          <kbd class="hax-ui-kbd">F2</kbd> ${this.t.hintRename}</span
-        >
-        <span
-          ><kbd class="hax-ui-kbd">${mod}</kbd>+<kbd class="hax-ui-kbd"
-            >Enter</kbd
+      <div class="footer">
+        <div class="drag-status ${this._drag || this._undo ? "live" : ""}">
+          <span class="status-text" aria-hidden="true"
+            >${this._drag
+              ? this._statusText
+              : this._undo
+                ? this._undo.message
+                : this._coarsePointer()
+                  ? this.t.touchDragHint
+                  : this.t.dragHint}</span
           >
-          ${this.t.hintAddAfter}</span
-        >
-        <span><kbd class="hax-ui-kbd">Space</kbd> ${this.t.hintSelect}</span>
-        <span><kbd class="hax-ui-kbd">Del</kbd> ${this.t.hintDelete}</span>
-        <span
-          ><kbd class="hax-ui-kbd">Shift</kbd>+<kbd class="hax-ui-kbd">F10</kbd>
-          ${this.t.hintActions}</span
-        >
+          ${this._undo && !this._drag
+            ? html`<button
+                type="button"
+                class="undo-btn"
+                aria-label="${this.t.undoAction.replace(
+                  "{action}",
+                  () => this._undo.message,
+                )}"
+                @click="${this.undo}"
+              >
+                ${this.t.undo}
+              </button>`
+            : nothing}
+        </div>
+        <div class="hints" id="hints">
+          <span class="hax-ui-sr-only">${this.t.keyboardHelp}:</span>
+          <span
+            ><kbd class="hax-ui-kbd">↑</kbd
+            ><kbd class="hax-ui-kbd">↓</kbd> ${this.t.hintFocus}</span
+          >
+          <span
+            ><kbd class="hax-ui-kbd">←</kbd
+            ><kbd class="hax-ui-kbd">→</kbd> ${this.t.hintFold}</span
+          >
+          <span
+            ><kbd class="hax-ui-kbd">Alt</kbd>+<kbd class="hax-ui-kbd">↑</kbd
+            ><kbd class="hax-ui-kbd">↓</kbd> ${this.t.hintReorder}</span
+          >
+          <span
+            ><kbd class="hax-ui-kbd">Alt</kbd>+<kbd class="hax-ui-kbd">←</kbd
+            ><kbd class="hax-ui-kbd">→</kbd> ${this.t.hintIndent}</span
+          >
+          <span
+            ><kbd class="hax-ui-kbd">Enter</kbd> /
+            <kbd class="hax-ui-kbd">F2</kbd> ${this.t.hintRename}</span
+          >
+          <span
+            ><kbd class="hax-ui-kbd">${mod}</kbd>+<kbd class="hax-ui-kbd"
+              >Enter</kbd
+            >
+            ${this.t.hintAddAfter}</span
+          >
+          <span><kbd class="hax-ui-kbd">Space</kbd> ${this.t.hintSelect}</span>
+          <span><kbd class="hax-ui-kbd">Del</kbd> ${this.t.hintDelete}</span>
+          <span
+            ><kbd class="hax-ui-kbd">Shift</kbd>+<kbd class="hax-ui-kbd"
+              >F10</kbd
+            >
+            ${this.t.hintActions}</span
+          >
+        </div>
       </div>
       <div aria-live="polite" aria-atomic="true" class="sr-only">
         ${this.liveRegionText}
@@ -4844,10 +4868,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
 
   // the nearest scrolling ancestor, across shadow roots
   _scrollParent() {
+    // the designer itself scrolls when its host gives it a height
     let node = this;
     while (node) {
-      node = node.parentNode || node.host;
-      if (!node || node === globalThis.document) break;
+      if (node === globalThis.document) break;
       if (node.nodeType === 1) {
         const style = getComputedStyle(node);
         if (
@@ -4857,6 +4881,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           return node;
         }
       }
+      node = node.parentNode || node.host;
     }
     return (
       globalThis.document.scrollingElement ||
@@ -4864,6 +4889,23 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     );
   }
 
+  // the part of the scroller the tree shows in: below the toolbar and above
+  // the footer while they are stuck to its edges
+  _visibleTreeBox(outer) {
+    let top = outer.top;
+    let bottom = outer.bottom;
+    const controls = this.shadowRoot.querySelector(".controls");
+    const footer = this.shadowRoot.querySelector(".footer");
+    if (controls) {
+      const r = controls.getBoundingClientRect();
+      if (r.top <= top + 1 && r.bottom > top) top = r.bottom;
+    }
+    if (footer && getComputedStyle(footer).position === "sticky") {
+      const r = footer.getBoundingClientRect();
+      if (r.bottom >= bottom - 1 && r.top < bottom) bottom = r.top;
+    }
+    return { top: top, bottom: bottom };
+  }
   // scroll while the pointer is near the top or bottom of the scroller
   _autoScroll() {
     const drag = this._drag;
@@ -4875,9 +4917,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       const isPage =
         d.scroller === globalThis.document.scrollingElement ||
         d.scroller === globalThis.document.documentElement;
-      const box = isPage
+      const outer = isPage
         ? { top: 0, bottom: globalThis.innerHeight }
         : d.scroller.getBoundingClientRect();
+      const box = this._visibleTreeBox(outer);
       let dy = 0;
       if (d.y < box.top + AUTOSCROLL_EDGE) {
         dy = -Math.ceil((box.top + AUTOSCROLL_EDGE - d.y) / 4);
