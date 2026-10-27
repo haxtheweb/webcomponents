@@ -339,7 +339,14 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           text-decoration: line-through;
           color: var(--hax-ui-text-muted);
         }
+        /* carried rows dim their lines and controls; the text stays
+           readable (muted, not faded) */
         li.item[data-dragging] {
+          color: var(--hax-ui-text-muted);
+        }
+        li.item[data-dragging] .cols,
+        li.item[data-dragging] .toggle,
+        li.item[data-dragging] .grip {
           opacity: var(--ddd-opacity-40, 0.4);
         }
         li.item.drop-target-child {
@@ -1305,6 +1312,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         </ul>
         <div
           class="dropline"
+          aria-hidden="true"
           ?hidden="${!dt || !dt.line}"
           style="${dt && dt.line
             ? `top:${dt.line.top}px;left:${dt.line.left}px`
@@ -1782,13 +1790,19 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     const drag = this._drag;
     const dt = this._dropTarget;
     const pressing = this._press && this._press.id === item.id;
-    const siblings = this.items.filter((i) => i.parent === item.parent);
+    // only the siblings that are drawn count toward size and position
+    const siblings = this.items.filter(
+      (i) => i.parent === item.parent && !(this.hideDelete && i.delete),
+    );
     const group = ctx.group || "";
+    // the name starts with what the row shows (title, then its pills in
+    // order) so the visible text is part of it, then the rest
     const states = [];
-    if (item.modified) states.push(this.t.modified);
-    if (item.delete) states.push(this.t.markedForDeletion);
-    if (locked) states.push(this.t.locked);
+    if (item.new) states.push(this.t.newBadge);
+    if (item.delete) states.push(this.t.deletingBadge);
     if (current) states.push(this.t.currentPage);
+    if (item.modified) states.push(this.t.modified);
+    if (locked) states.push(this.t.locked);
     if (hiddenCount) {
       states.push(this.t.hiddenSubpages.replace("{count}", () => hiddenCount));
     }
